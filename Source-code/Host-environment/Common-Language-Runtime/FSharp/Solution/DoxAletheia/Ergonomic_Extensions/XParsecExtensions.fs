@@ -55,8 +55,8 @@ open DiagnosticsErgonomics
 // #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\Unicodepoint.fsx"
 
 open IntervalErgonomics
-// #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Extensions\ArrayExtensions.fsx"
-open ArrayExtensions
+// #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Extensions\ArrayErgonomics.fsx"
+open ArrayErgonomics
 *)
 
 open XParsec
@@ -72,6 +72,13 @@ open IntervalErgonomics
 
 // printfn "Vector.IsHardwareAccelerated = %b" Vector.IsHardwareAccelerated
 
+
+type Code_Point_Parser = Parser<Code_Point, Code_Point, unit, ReadableMemory<Code_Point>>
+type Code_Line_Parser = Parser<Code_Line, Code_Point, unit, ReadableMemory<Code_Point>>
+type Code_Square_Parser = Parser<Code_Square, Code_Point, unit, ReadableMemory<Code_Point>>
+type Code_Cube_Parser = Parser<Code_Cube, Code_Point, unit, ReadableMemory<Code_Point>>
+
+
 let parse_input happy_path sad_path parse_result =
 
     match parse_result with
@@ -80,6 +87,8 @@ let parse_input happy_path sad_path parse_result =
 
 
 module Code_Line =
+    let zero_array: Code_Line array = [| [| 0 |] |]
+
     let from_immutable_code_line (immutable_array: ImmutableArray<Code_Point>) : Code_Line =
         immutable_array.AsMemory().ToArray()
 
@@ -92,6 +101,8 @@ module Code_Line =
         |> Array.map (fun code_point -> sprintf "U+%04X" code_point)
 
 module Code_Square =
+    let zero_array: Code_Square array = [| [| [| 0 |] |] |]
+
     let from_immutable_code_square (immutable_array: ImmutableArray<Code_Line>) : Code_Square =
         immutable_array.AsMemory().ToArray()
         |> Array.map (fun array_ -> array_)

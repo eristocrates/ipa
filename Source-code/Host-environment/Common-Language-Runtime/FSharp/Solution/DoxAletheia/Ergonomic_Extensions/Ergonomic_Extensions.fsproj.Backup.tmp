@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <Compile Include="XParsecExtensions.fs" />
-    <Compile Include="ArrayExtensions.fs" />
+    <Compile Include="ArrayErgonomics.fs" />
     <Compile Include="Diagnostics.fs" />
     <Compile Include="Interval_Range.fs" />
   </ItemGroup>

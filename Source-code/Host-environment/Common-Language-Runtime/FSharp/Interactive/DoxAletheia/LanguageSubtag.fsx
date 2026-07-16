@@ -297,7 +297,7 @@ let codegen_by_registry_type (target_type: Registry_Type) =
     |> _.xmlDocs( XmlDocs "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"        )
 
 /// TODO keep namespace in parity
-let namespace_binding = "MyNamespace"
+let namespace_binding = "DoxAletheia"
 
 module LanguageSubtag = 
     module fs = 

@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+	  <TargetFrameworks>net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <FSharpToolsDirectory>typeproviders</FSharpToolsDirectory>
     <PackagePath>typeproviders</PackagePath>
@@ -15,11 +15,15 @@
 	<Compile Include="MimePath.fs" />
 	<Compile Include="MimeSubstring.fs" />
     <Compile Include="Iana_Schemes.fs" />
+
   
 	<None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="4.7.2" />
+	  <PackageReference Update="FSharp.Core" Version="8.0.403" />
+	  <ProjectReference Include="..\..\..\..\Solution\DoxAletheia\Unicodepoint\Unicodepoint.fsproj" />
+	  <ProjectReference Include="..\..\..\..\Solution\DoxAletheia\Interval_Range\Interval_Range.fsproj" />
+	  <ProjectReference Include="..\..\..\..\Solution\DoxAletheia\ParserCombinator\ParserCombinator.fsproj" />
     <ProjectReference Include="..\MyProvider.DesignTime\MyProvider.DesignTime.fsproj">
       <IsFSharpDesignTimeProvider>true</IsFSharpDesignTimeProvider>
       <PrivateAssets>all</PrivateAssets>

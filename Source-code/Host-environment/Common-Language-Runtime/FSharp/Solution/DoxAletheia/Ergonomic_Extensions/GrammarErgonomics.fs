@@ -4,7 +4,7 @@ open System
 open System.Text
 open XParsec
 
-open ArrayExtensions
+open ArrayErgonomics
 open StringExtensions
 
 open XParsecExtensions
@@ -12,7 +12,7 @@ open XParsecExtensions.Code_Parsers
 
 
 
-
+#noward 57
 
 [<Struct>]
 type Code_Point_Rule =

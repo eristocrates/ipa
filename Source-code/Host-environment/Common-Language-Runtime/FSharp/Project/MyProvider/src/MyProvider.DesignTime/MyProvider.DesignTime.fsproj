@@ -1,10 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <DefineConstants>IS_DESIGNTIME</DefineConstants>
     <!-- This allows the component to execute from 'bin' directory during build -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fsi">
@@ -16,23 +18,33 @@
       <Link>paket-files/ProvidedTypes.fs</Link>
     </Compile>
     <Compile Include="AssemblyInfo.fs" />
-	<Compile Include="..\MyProvider.Runtime\LanguageSubtag.fs" />
+    <Compile Include="..\MyProvider.Runtime\LanguageSubtag.fs" />
+    <Compile Include="..\..\..\..\Solution\DoxAletheia\ParserCombinator\Data.fs" />
+    <Compile Include="..\..\..\..\Solution\DoxAletheia\ParserCombinator\ResourceIdentifier.fs" />
     <Compile Include="..\MyProvider.Runtime\MyProvider.Runtime.fs" />
     <Compile Include="MyProvider.DesignTime.fs" />
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
-   <!-- 
+    <!-- 
     To use a reference to the FSharp.TypeProviders.SDK nuget package, do this:
     
     <PackageReference Include="FSharp.TypeProviders.SDK" Version="7.0.3">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     -->
-    <PackageReference Update="FSharp.Core" Version="4.7.2">
+    <PackageReference Update="FSharp.Core" Version="8.0.403">
       <!-- This excludes FSharp.Core.xml and FSharp.Core.resources.dll while referencing the right FSharp.Core.dll version -->
       <ExcludeAssets>runtime;contentFiles</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Solution\DoxAletheia\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
+    <ProjectReference Include="..\..\..\..\Solution\DoxAletheia\Interval_Range\Interval_Range.fsproj" />
+    <ProjectReference Include="..\..\..\..\Solution\DoxAletheia\Unicodepoint\Unicodepoint.fsproj" />
+  </ItemGroup>
+  <Target Name="CopyDesignTimeDependenciesToIntermediateOutput" AfterTargets="Build">
+    <Copy SourceFiles="@(ReferenceCopyLocalPaths)" DestinationFolder="$(IntermediateOutputPath)" SkipUnchangedFiles="true" />
+  </Target>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

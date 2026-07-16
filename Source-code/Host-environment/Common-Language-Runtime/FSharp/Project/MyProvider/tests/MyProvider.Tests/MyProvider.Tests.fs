@@ -1,6 +1,6 @@
 module MyProviderTests
 
-open MyNamespace
+open DoxAletheia
 open NUnit.Framework
 
 [<Test>]
@@ -32,4 +32,3 @@ let ``Can access properties of generative provider 4`` () =
     Assert.That(obj.Property2, Is.EqualTo(2))
     Assert.That(obj.Property3, Is.EqualTo(3))
     Assert.That(obj.Property4, Is.EqualTo(4))
-

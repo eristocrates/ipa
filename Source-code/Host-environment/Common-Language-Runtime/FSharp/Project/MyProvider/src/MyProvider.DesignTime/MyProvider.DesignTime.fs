@@ -1,4 +1,4 @@
-module MyProviderImplementation
+module DoxAletheia.MyProviderImplementation
 
 open System
 open System.Collections.Generic
@@ -6,7 +6,7 @@ open System.IO
 open System.Reflection
 open FSharp.Quotations
 open FSharp.Core.CompilerServices
-open MyNamespace
+open DoxAletheia
 open ProviderImplementation
 open ProviderImplementation.ProvidedTypes
 open VDS.RDF
@@ -31,7 +31,7 @@ type BasicErasingProvider(config: TypeProviderConfig) as this =
             addDefaultProbingLocation = true
         )
 
-    let ns = "MyNamespace"
+    let ns = "ErasingProvider"
     let asm = Assembly.GetExecutingAssembly()
 
     // check we contain a copy of runtime files, and are not referencing the runtime DLL
@@ -131,7 +131,7 @@ type BasicGenerativeProvider(config: TypeProviderConfig) as this =
             assemblyReplacementMap = [ ("MyProvider.DesignTime", "MyProvider.Runtime") ]
         )
 
-    let ns = "MyProvider"
+    let ns = "GenerativeProvider"
     let asm = Assembly.GetExecutingAssembly()
 
     // check we contain a copy of runtime files, and are not referencing the runtime DLL
@@ -253,7 +253,7 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
             addDefaultProbingLocation = true
         )
 
-    let ns = "MyProvider"
+    let ns = "Rdf_Provider"
     let asm = Assembly.GetExecutingAssembly()
 
     // check we contain a copy of runtime files, and are not referencing the runtime DLL
@@ -369,9 +369,9 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
                         )
                         ProvidedProperty(
                             "_vocabulary",
-                            typeof<Iri>,
+                            typeof<IRIREF>,
                             isStatic = true,
-                            getterCode = fun args -> <@@ NamespacedIri(rdf_namespace_name, "") |> Iri.FromNamespacedIri @@>
+                            getterCode = fun args -> <@@ Namespaced_IRI.parse rdf_namespace_name "" |> NamespacedName  @@>
                         )
                 
             ]
@@ -391,9 +391,9 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
                     let term_property =
                         ProvidedProperty(
                             property_name,
-                            typeof<Iri>,
+                            typeof<IRIREF>,
                             isStatic = true,
-                            getterCode = fun args -> <@@ NamespacedIri(rdf_namespace_name, local_part) |> Iri.FromNamespacedIri @@>
+                            getterCode = fun args -> <@@ Namespaced_IRI.parse rdf_namespace_name local_part |> NamespacedName @@>
                         )
 
                     if comments.Length > 0 then
@@ -414,7 +414,7 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
 
     let myParamType =
         let t =
-            ProvidedTypeDefinition(asm, ns, "RDF_Vocabulary", Some typeof<obj>, isErased = false)
+            ProvidedTypeDefinition(asm, ns, "Rdf_Vocabulary", Some typeof<obj>, isErased = false)
 
         t.DefineStaticParameters(
             parameters =

@@ -1,6 +1,26 @@
-namespace MyNamespace
+namespace DoxAletheia
 
 open System
+
+open DoxAletheia
+open GrammarErgonomics
+open StringExtensions
+open IntervalErgonomics
+open XParsecExtensions
+open XParsecExtensions.Code_Parsers
+open ArrayErgonomics
+open ByteExtensions
+open XParsec
+open XParsec.Parsers
+open Interval_Range
+open ParserCombinator.Data
+open ParserCombinator.ResourceIdentifier
+open Rfc_Types
+open Code_Point_Rule
+open Code_Line_Rule
+
+
+
 // open type VDS.RDF.ComparisonHelper
 // Put any utilities here
 [<AutoOpen>]
@@ -19,264 +39,191 @@ do ()
 
 
 
-
-
-[<CustomComparison; CustomEquality>]
 type Rdf_Triple =
     { curSubject: Rdf_Subject
       curPredicate: Rdf_Predicate
       curObject: Rdf_Object }
-    member this.rdf_string =
-        sprintf "%s %s %s" this.curSubject.rdf_string this.curPredicate.rdf_string this.curObject.rdf_string
-
-
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
-
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
+    member this.as_object = this |> TripleTerm |> TripleTermObject
 
 and Rdf_Quad =
     { triple: Rdf_Triple
       curGraph: Rdf_Subject option }
 
-and [<RequireQualifiedAccess; CustomComparison; CustomEquality>] Rdf_Subject =
-    | FromIri of Iri
-    | FromBlankNode of Blank_Node
-    member this.rdf_string =
+and Rdf_Subject =
+    | IRIREFSubject of IRIREF
+    | BlankNodeSubject of Blank_Node
+    member this.maybe_predicate =
         match this with
-        | FromIri iri -> iri.rdf_string
-        | FromBlankNode blank_node -> blank_node.rdf_string
+        | IRIREFSubject iriref -> Some iriref.as_subject
+        | BlankNodeSubject blank_node -> None
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
+    member this.as_object =
 
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-and [<RequireQualifiedAccess; CustomComparison; CustomEquality>] Rdf_Predicate =
-    | FromIri of Iri
-
-
-    member this.rdf_string =
         match this with
-        | FromIri iri -> iri.rdf_string
+        | IRIREFSubject iriref -> iriref.as_object
+        | BlankNodeSubject blank_node -> blank_node.as_object
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
+    member this.as_rendered_string =
 
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-and [<RequireQualifiedAccess; CustomComparison; CustomEquality>] Rdf_Object =
-    | FromIri of Iri
-    | FromBlankNode of Blank_Node
-    | FromLiteral of Rdf_Literal
-    | FromTripleTerm of Triple_Term
-
-    member this.rdf_string =
         match this with
-        | FromIri iri -> iri.rdf_string
-        | FromBlankNode blank_node -> blank_node.rdf_string
-        | FromLiteral literal -> literal.lexical_form
-        | FromTripleTerm triple_term -> triple_term.rdf_string
+        | IRIREFSubject iriref -> iriref.as_rendered_string
+        | BlankNodeSubject blank_node -> blank_node.as_rendered_string
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
 
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
+and Rdf_Predicate =
+    | IRIREFPredicate of IRIREF
+    member this.as_subject =
+        match this with
+        | IRIREFPredicate iriref -> iriref.as_subject
 
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
+    member this.as_object =
+        match this with
+        | IRIREFPredicate iriref -> iriref.as_object
+
+    member this.as_rendered_string =
+        match this with
+        | IRIREFPredicate iriref -> iriref.as_rendered_string
+
+
+and Rdf_Object =
+    | IRIREFObject of IRIREF
+    | BlankNodeObject of Blank_Node
+    | LiteralObject of Rdf_Literal
+    | TripleTermObject of Triple_Term
+    member this.maybe_subject =
+        match this with
+        | IRIREFObject iriref -> Some iriref.as_subject
+        | BlankNodeObject blank_node -> Some blank_node.as_subject
+        | LiteralObject rdf_literal -> None
+        // TODO figure out howto incorporate reified triple subjects
+        | TripleTermObject triple_term -> None
+
+    member this.maybe_predicate =
+        match this with
+        | IRIREFObject iriref -> Some iriref.as_predicate
+        | BlankNodeObject blank_node -> None
+        | LiteralObject rdf_literal -> None
+        | TripleTermObject triple_term -> None
 
 and PredicateObjectList =
-
     {
 
       verb: Rdf_Predicate
       objectLists: ObjectList array
 
      }
-    // TODO update this when handling annotations
-    member this.rdf_string =
-        let rdf_strings =
-            this.objectLists
-            |> Array.map (fun objectList -> objectList.rdf_object.rdf_string)
 
-        rdf_strings
-        |> Array.append [| this.verb.rdf_string |]
-        |> String.concat " "
+    static member inline from_terms (predicate: Rdf_Predicate) (objects: Rdf_Object array) =
+        {
+
+          verb = predicate
+          objectLists =
+            objects
+            |> Array.map (fun rdf_object ->
+                { rdf_object = rdf_object
+                  annotations = [||]
+
+                })
+
+        }
 
 and ObjectList =
     { rdf_object: Rdf_Object
       annotations: Annotation array }
 
 and Annotation =
-    | Reifier of Rdf_Subject
+    | AnnotationReifier of Rdf_Subject
     | AnnotationBlock of PredicateObjectList
 
-and [<CustomComparison; CustomEquality>] Triple_Term =
+and Triple_Term =
     | TripleTerm of Rdf_Triple
+    member this.as_object = TripleTermObject this
 
-
-    member this.rdf_string =
+    member this.ttSubject =
         match this with
-        | TripleTerm triple ->
-            sprintf "%s %s %s" triple.curSubject.rdf_string triple.curPredicate.rdf_string triple.curObject.rdf_string
+        | TripleTerm triple -> triple.curSubject
 
-    member this.as_object = Rdf_Object.FromTripleTerm this
-
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
-
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-
-
-and [<RequireQualifiedAccess; CustomComparison; CustomEquality>] Iri =
-    | FromNamespacedIri of Namespaced_Iri
-    | FromAtomicIri of Atomic_Iri
-    | FromSkolemIri of Skolem_Iri
-
-
-    member this.rdf_string =
+    member this.ttPredicate =
         match this with
-        | FromNamespacedIri namespaced_iri -> namespaced_iri.rdf_string
-        | FromAtomicIri atomic_iri -> atomic_iri.rdf_string
-        | FromSkolemIri skolem_iri -> skolem_iri.rdf_string
+        | TripleTerm triple -> triple.curPredicate
 
-    member this.as_subject = Rdf_Subject.FromIri this
-    member this.as_predicate = Rdf_Predicate.FromIri this
-    member this.as_object = Rdf_Object.FromIri this
-
-
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
-
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-
-and [<CustomComparison; CustomEquality>] Namespaced_Iri =
-    | NamespacedIri of string * string
-
-
-    member this.rdf_string =
+    member this.ttObject =
         match this with
-        | NamespacedIri (namespace_name, local_name) -> namespace_name + local_name
+        | TripleTerm triple -> triple.curObject
+// TODO next add string indexes to rdf types
+and IRIREF =
+    | NamespacedName of Namespaced_IRI
+    | SkolemIRIREF of Skolem_IRI
+    | IRIREF of IRI
+    | RelativeReference of Relative_Reference
+    member this.as_subject = IRIREFSubject this
+    member this.as_predicate = IRIREFPredicate this
+    member this.as_object = IRIREFObject this
 
-    member this.as_subject = Iri.FromNamespacedIri this |> Rdf_Subject.FromIri
+    static member parser: Parser<IRIREF, Code_Point, unit, ReadableMemory<Code_Point>> =
+        parser {
+            return!
+                choice [
 
-    member this.as_predicate =
-        Iri.FromNamespacedIri this
-        |> Rdf_Predicate.FromIri
+                         IRI.parser |>> IRIREF
+                         Relative_Reference.parser |>> RelativeReference
 
-    member this.as_object = Iri.FromNamespacedIri this |> Rdf_Object.FromIri
+                          ]
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
 
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
+        }
 
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
+    static member metasyntax =
+        """
+            IRI-reference  = IRI / irelative-ref
+            URI-reference = URI / relative-ref
 
-and [<CustomComparison; CustomEquality>] Atomic_Iri =
-    | AtomicIri of string
+        """
 
-    member this.rdf_string =
+    static member parse(input_string: string) =
+        match IRIREF.parser input_string.as_parser_input with
+        | Ok success -> success
+        | Error failure -> failwith $"{failure} : {code_line_message input_string.as_code_line IRIREF.metasyntax}"
+
+    member this.as_code_square =
         match this with
-        | AtomicIri rdf_string -> rdf_string
+        | IRIREF iri -> iri.as_code_square
+        | SkolemIRIREF iri -> iri.as_code_square
+        | NamespacedName namespaced_iri -> namespaced_iri.as_code_square
+        | RelativeReference relative_ref -> relative_ref.as_code_square
 
 
-    member this.as_subject = Iri.FromAtomicIri this |> Rdf_Subject.FromIri
-    member this.as_predicate = Iri.FromAtomicIri this |> Rdf_Predicate.FromIri
-    member this.as_object = Iri.FromAtomicIri this |> Rdf_Object.FromIri
+    member this.as_raw_strings = Strings.from_code_square this.as_code_square
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
-
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-
-and [<CustomComparison; CustomEquality>] Skolem_Iri =
-    | SkolemIri of string * Guid
-
-    member this.rdf_string =
+    member this.as_rendered_string =
         match this with
-        | SkolemIri (well_known_base, uuid) -> well_known_base + (uuid.ToString("N"))
+        | IRIREF iri -> iri.as_rendered_string
+        | SkolemIRIREF iri -> iri.as_rendered_string
+        | NamespacedName namespaced_iri -> namespaced_iri.as_rendered_string
+        | RelativeReference relative_ref -> relative_ref.as_rendered_string
 
-    member this.as_subject = Iri.FromSkolemIri this |> Rdf_Subject.FromIri
-    member this.as_predicate = Iri.FromSkolemIri this |> Rdf_Predicate.FromIri
-    member this.as_object = Iri.FromSkolemIri this |> Rdf_Object.FromIri
+    member this.fsi_printer =
+        let unames = Code_Square.Unames this.as_code_square
+        sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
 
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-and [<CustomComparison; CustomEquality>] Blank_Node =
-    | BlankNode of identifier: string
+and Blank_Node =
+    | BlankNodeIdentifier of identifier: string
     | BlankNodePropertyList of identifier: string * predicateObjectList: PredicateObjectList
-    member this.rdf_string =
+
+    member this.as_subject = BlankNodeSubject this
+    member this.as_object = BlankNodeObject this
+
+    member this.as_rendered_string =
         match this with
-        | BlankNode identifier -> identifier
-        | BlankNodePropertyList (identifier, predicateObjectList) ->
-            sprintf "%s %s" identifier predicateObjectList.rdf_string
+        | BlankNodeIdentifier identifier -> identifier
+        | BlankNodePropertyList (identifier, predicateObjectList) -> identifier
 
 
-    member this.as_subject = Rdf_Subject.FromBlankNode this
-    member this.as_object = Rdf_Object.FromBlankNode this
-
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
-
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
-
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
-
-and [<CustomComparison; CustomEquality>] Rdf_Literal =
+and Rdf_Literal =
     | SimpleLiteral of lexical_form: string
     | LongLiteral of lexical_form: string
-    | DatatypedLiteral of lexical_form: string * datatype: Iri
+    | DatatypedLiteral of lexical_form: string * datatype: IRIREF
     | LanguageString of lexical_form: string * language: Language_Tag
     | RegionString of lexical_form: string * language: Language_Tag * region: Region_Subtag
     | DirectedLanguageString of lexical_form: string * language: Language_Tag * base_direction: Initial_Text_Direction
@@ -296,349 +243,326 @@ and [<CustomComparison; CustomEquality>] Rdf_Literal =
         | DirectedLanguageString (lexical_form, language, base_direction) -> lexical_form
         | DirectedRegionString (lexical_form, language, region, base_direction) -> lexical_form
 
-    member this.as_object = Rdf_Object.FromLiteral this
+    member this.datatype =
+        match this with
+        | SimpleLiteral lexical_form -> IRIREF.parse "http://www.w3.org/2001/XMLSchema#string"
+        | LongLiteral lexical_form -> IRIREF.parse "http://www.w3.org/2001/XMLSchema#string"
+        | DatatypedLiteral (lexical_form, datatype) -> datatype
+        | LanguageString (lexical_form, language) ->
+            IRIREF.parse "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+        | RegionString (lexical_form, language, region) ->
+            IRIREF.parse "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+        | DirectedLanguageString (lexical_form, language, base_direction) ->
+            IRIREF.parse "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString"
+        | DirectedRegionString (lexical_form, language, region, base_direction) ->
+            IRIREF.parse "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString"
 
-    interface IComparable with
-        member this.CompareTo that =
-            CustomComparer.left_to_right_comparison this that
+    member this.language_tag =
+        match this with
+        | SimpleLiteral lexical_form -> None
+        | LongLiteral lexical_form -> None
+        | DatatypedLiteral (lexical_form, datatype) -> None
+        | LanguageString (lexical_form, language) -> Some language
+        | RegionString (lexical_form, language, region) -> Some language
+        | DirectedLanguageString (lexical_form, language, base_direction) -> Some language
+        | DirectedRegionString (lexical_form, language, region, base_direction) -> Some language
 
-    override this.Equals that =
-        CustomComparer.left_to_right_equality this that
+    member this.region_tag(literal: Rdf_Literal) =
+        match this with
+        | SimpleLiteral lexical_form -> None
+        | LongLiteral lexical_form -> None
+        | DatatypedLiteral (lexical_form, datatype) -> None
+        | LanguageString (lexical_form, language) -> None
+        | RegionString (lexical_form, language, region) -> Some region
+        | DirectedLanguageString (lexical_form, language, base_direction) -> None
+        | DirectedRegionString (lexical_form, language, region, base_direction) -> Some region
 
-    override this.GetHashCode() =
-        (CustomComparer.obj_to_term this).GetHashCode()
+    member this.base_direction(literal: Rdf_Literal) =
+        match this with
+        | SimpleLiteral lexical_form -> None
+        | LongLiteral lexical_form -> None
+        | DatatypedLiteral (lexical_form, datatype) -> None
+        | LanguageString (lexical_form, language) -> None
+        | RegionString (lexical_form, language, region) -> None
+        | DirectedLanguageString (lexical_form, language, base_direction) -> Some base_direction
+        | DirectedRegionString (lexical_form, language, region, base_direction) -> Some base_direction
 
-and [<StructuralComparison; StructuralEquality>] Initial_Text_Direction =
+    member this.as_object = LiteralObject this
+
+and Initial_Text_Direction =
     | Ltr
     | Rtl
+    member this.lexical_form =
 
+        match this with
+        | Ltr -> "ltr"
+        | Rtl -> "rtl"
 
-/// https://www.w3.org/TR/rdf12-concepts/#section-terms
-and [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>] private Rdf_Term =
+and Skolem_IRI =
+    | SkolemIRI of IRIREF * Guid
+    member this.well_known_iriref =
+        match this with
+        | SkolemIRI (well_known_stem, uuid) -> well_known_stem
 
-    {
+    member this.uuid =
+        match this with
+        | SkolemIRI (well_known_stem, uuid) -> uuid
 
-      lexical_form: string
-      datatype: Term option
-      language: string option
-      region: string option
-      base_direction: Initial_Text_Direction option
-      rdf_subject: Term option
-      rdf_predicate: Term option
-      rdf_object: Term option
+    member this.as_code_square =
+        Array.concat [| this.well_known_iriref.as_code_square
+                        [| this.uuid.ToString("N").as_code_line |] |]
 
-     }
+    member this.as_subject = this |> SkolemIRIREF |> IRIREFSubject
+    member this.as_predicate = this |> SkolemIRIREF |> IRIREFPredicate
+    member this.as_object = this |> SkolemIRIREF |> IRIREFObject
 
-and [<StructuralComparison; StructuralEquality>] Term =
+    member this.as_rendered_string =
+        match this with
+        | SkolemIRI (well_known_stem, uuid) ->
+            well_known_stem.as_rendered_string
+            + uuid.ToString("N")
+
+and Namespaced_IRI =
     private
-    | RdfTriple of Rdf_Term
-    | RdfIri of Rdf_Term
-    | RdfBlankNode of Rdf_Term
-    | RdfLiteral of Rdf_Term
+    | NamespacedIRI of IRIREF * Local_Name
+    member this.namespace_iriref =
+        match this with
+        | NamespacedIRI (namespace_name, local_name) -> namespace_name
 
-    static member from_skolem_iri(skolem_iri: Skolem_Iri) =
+    member this.local_name =
+        match this with
+        | NamespacedIRI (namespace_name, local_name) -> local_name
+
+    member this.as_prefixed_name (delimiter: string) (prefix_map: Map<string, string>) =
+        try
+            let namespace_name = this.namespace_iriref.as_rendered_string
+            let prefix_label = prefix_map[namespace_name]
+            sprintf "%s%s%s" prefix_label delimiter this.local_name.as_rendered_string
+        with
+        | err -> failwithf "%s failed with error %s" this.as_rendered_string err.Message
+
+    member this.as_curie(prefix_map: Map<string, string>) = this.as_prefixed_name ":" prefix_map
+
+    static member metasyntax =
+        """
+    
+            IRIREF            ::=  '<' ([^#x00-#x20<>"{}|^`\] | UCHAR)* '>' /* #x00=NULL #01-#x1F=control codes #x20=space */
+            PN_LOCAL          ::= ( PN_CHARS_U | ':' | [0-9] | PLX ) ( ( PN_CHARS | '.' | ':' | PLX )*  ( PN_CHARS | ':' | PLX ) ) ?
+
+        """
+
+    static member parse (namespace_name_input: string) (local_name_input: string) =
+        let namespace_name =
+            match IRIREF.parser namespace_name_input.as_parser_input with
+            | Ok success -> success
+            | Error failure ->
+                failwith $"{failure} : {code_line_message namespace_name_input.as_code_line IRIREF.metasyntax}"
+
+        let local_name =
+            match Local_Name.parser local_name_input.as_parser_input with
+            | Ok success -> success
+            | Error failure ->
+                failwith $"{failure} : {code_line_message local_name_input.as_code_line PN_LOCAL.metasyntax}"
+
+        NamespacedIRI(namespace_name, local_name)
+
+    member this.as_code_square =
+        match this with
+        | NamespacedIRI (namespace_name, local_name) ->
+            Array.concat [| namespace_name.as_code_square
+                            local_name.as_code_square |]
 
 
+    member this.as_raw_strings = Strings.from_code_square this.as_code_square
 
-        RdfIri
-            {
+    member this.as_rendered_string =
+        match this with
+        | NamespacedIRI (namespace_name, local_name) ->
+            namespace_name.as_rendered_string
+            + local_name.as_rendered_string
 
-              lexical_form = skolem_iri.rdf_string
-              rdf_subject = None
-              rdf_predicate = None
-              rdf_object = None
-              datatype = None
-              language = None
-              region = None
-              base_direction = None
+    member this.as_subject = this |> NamespacedName |> IRIREFSubject
+    member this.as_predicate = this |> NamespacedName |> IRIREFPredicate
+    member this.as_object = this |> NamespacedName |> IRIREFObject
 
-            }
+    member this.fsi_printer =
+        let unames = Code_Square.Unames this.as_code_square
+        sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
-    static member from_blank_node(blank_node: Blank_Node) =
+and Local_Name =
 
-        RdfBlankNode
-            {
+    private
+    | LocalName of PN_LOCAL
+    | LocalPath of Path_Rootless
+    static member parser: Parser<Local_Name, Code_Point, unit, ReadableMemory<Code_Point>> =
+        parser {
+            return!
+                choice [ PN_LOCAL.parser |>> LocalName
+                         Path_Rootless.parser |>> LocalPath ]
 
-              lexical_form = blank_node.rdf_string
-              rdf_subject = None
-              rdf_predicate = None
-              rdf_object = None
-              datatype = None
-              language = None
-              region = None
-              base_direction = None
+        }
 
-            }
+    static member metasyntax =
+        """
+                                      PN_LOCAL          ::= ( PN_CHARS_U | ':' | [0-9] | PLX ) ( ( PN_CHARS | '.' | ':' | PLX )*  ( PN_CHARS | ':' | PLX ) ) ?
+                                      ipath-rootless = isegment-nz *( "/" isegment )
+                                      """
 
-    static member from_atomic_iri(atomic_iri: Atomic_Iri) =
+    static member parse(input_string: string) =
+        match Local_Name.parser input_string.as_parser_input with
+        | Ok success -> success
+        | Error failure -> failwith $"{failure} : {code_line_message input_string.as_code_line Local_Name.metasyntax}"
 
-        RdfIri
-            {
+    member this.as_code_square =
+        match this with
+        | LocalName pn_local -> [| pn_local.as_code_line |]
+        | LocalPath path_rootless -> path_rootless.as_code_square
 
-              lexical_form = atomic_iri.rdf_string
-              rdf_subject = None
-              rdf_predicate = None
-              rdf_object = None
-              datatype = None
-              language = None
-              region = None
-              base_direction = None
 
-            }
+    member this.as_raw_strings = this.as_code_square |> Strings.from_code_square
 
-    static member from_namespaced_iri(namespaced_iri: Namespaced_Iri) =
+    member this.as_rendered_string =
 
-        RdfIri
-            {
+        match this with
+        | LocalName pn_local -> pn_local.as_rendered_string
+        | LocalPath path_rootless -> path_rootless.as_rendered_string
 
-              lexical_form = namespaced_iri.rdf_string
-              rdf_subject = None
-              rdf_predicate = None
-              rdf_object = None
-              datatype = None
-              language = None
-              region = None
-              base_direction = None
+    member this.fsi_printer =
+        let unames = Code_Square.Unames this.as_code_square
+        sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
-            }
+and PN_LOCAL =
+    private
+    | PN_LOCAL of Code_Line
+    static member parser: Parser<PN_LOCAL, Code_Point, unit, ReadableMemory<Code_Point>> =
+        parser {
 
-    static member from_iri(iri: Iri) =
-        match iri with
-        | Iri.FromNamespacedIri namespaced_iri -> Term.from_namespaced_iri namespaced_iri
-        | Iri.FromAtomicIri atomic_iri -> Term.from_atomic_iri atomic_iri
-        | Iri.FromSkolemIri skolem_iri -> Term.from_skolem_iri skolem_iri
+            let! head =
+                choice [
 
-    static member from_literal(literal: Rdf_Literal) =
-        match literal with
-        | SimpleLiteral lexical_form ->
-            RdfLiteral
-                {
+                         pn_chars_u.code_point_parser
+                         parse_char ':'
+                         any_point_from_interval Unicodepoint.Partition.Ascii_Digits
 
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype =
-                    Some(
-                        AtomicIri "http://www.w3.org/2001/XMLSchema#string"
-                        |> Term.from_atomic_iri
+                          ]
+
+            let! maybe_tail =
+                opt (
+
+                    many (
+                        choice [ pn_chars.code_point_parser
+                                 parse_char '.'
+                                 parse_char ':' ]
                     )
-                  language = None
-                  region = None
-                  base_direction = None
+                )
 
-                }
+            return
+                match maybe_tail with
+                | ValueNone -> PN_LOCAL [| head |]
+                | ValueSome immutable_code_line ->
+                    immutable_code_line
+                    |> Code_Line.from_immutable_code_line
+                    |> Array.insertAt 0 head
+                    |> PN_LOCAL
 
-        | LongLiteral lexical_form ->
+        }
 
-            RdfLiteral
-                {
+    static member metasyntax =
+        """
+                                  PN_LOCAL          ::= ( PN_CHARS_U | ':' | [0-9] | PLX ) ( ( PN_CHARS | '.' | ':' | PLX )*  ( PN_CHARS | ':' | PLX ) ) ?
+                                  """
 
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype =
-                    Some(
-                        AtomicIri "http://www.w3.org/2001/XMLSchema#string"
-                        |> Term.from_atomic_iri
-                    )
-                  language = None
-                  region = None
-                  base_direction = None
+    static member parse(input_string: string) =
+        match PN_LOCAL.parser input_string.as_parser_input with
+        | Ok (PN_LOCAL false_positive) when false_positive[false_positive.last_index] = int '.' ->
+            failwith
+                $"false positive for {input_string}, cannot end with full stop ``.`` : {code_line_message input_string.as_code_line PN_LOCAL.metasyntax}"
+        | Ok success -> success
+        | Error failure -> failwith $"{failure} : {code_line_message input_string.as_code_line PN_LOCAL.metasyntax}"
 
-                }
-        | DatatypedLiteral (lexical_form, datatype) ->
-            RdfLiteral
-                {
+    member this.as_code_line =
+        match this with
+        | PN_LOCAL code_line -> code_line
 
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype = Some(Term.from_iri datatype)
-                  language = None
-                  region = None
-                  base_direction = None
+    member this.as_raw_string = this.as_code_line |> String.from_code_line
 
-                }
-        | LanguageString (lexical_form, language) ->
-            RdfLiteral
-                {
 
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype =
-                    Some(
-                        AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-                        |> Term.from_atomic_iri
-                    )
-                  language = Some(language.ToString().ToLowerInvariant())
-                  region = None
-                  base_direction = None
+    member this.as_rendered_string = this.as_raw_string
 
-                }
-        | RegionString (lexical_form, language, region) ->
+    member this.fsi_printer =
+        let unames = Code_Line.Unames this.as_code_line
+        sprintf "%A %A ``%s``" this unames this.as_raw_string
 
-            RdfLiteral
-                {
 
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype =
-                    Some(
-                        AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-                        |> Term.from_atomic_iri
-                    )
-                  language = Some(language.ToString().ToLowerInvariant())
-                  region = Some(region.ToString().ToLowerInvariant())
-                  base_direction = None
-
-                }
-        | DirectedLanguageString (lexical_form, language, base_direction) ->
-            RdfLiteral
-                {
-
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype =
-                    Some(
-                        AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString"
-                        |> Term.from_atomic_iri
-                    )
-                  language = Some(language.ToString().ToLowerInvariant())
-                  region = None
-                  base_direction = Some(base_direction)
-
-                }
-        | DirectedRegionString (lexical_form, language, region, base_direction) ->
-
-            RdfLiteral
-                {
-
-                  lexical_form = lexical_form
-                  rdf_subject = None
-                  rdf_predicate = None
-                  rdf_object = None
-                  datatype =
-                    Some(
-                        AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString"
-                        |> Term.from_atomic_iri
-                    )
-                  language = Some(language.ToString().ToLowerInvariant())
-                  region = Some(region.ToString().ToLowerInvariant())
-                  base_direction = Some(base_direction)
-
-                }
-
-    static member from_subject(rdf_subject: Rdf_Subject) =
+and Vertex =
+    | SubjectVertex of Rdf_Subject
+    | ObjectVertex of Rdf_Object
+    static member subject_string
+        (rdf_subject: Rdf_Subject)
+        (prefix_delimiter: string)
+        (prefix_map: Map<string, string>)
+        =
         match rdf_subject with
-        | Rdf_Subject.FromIri iri -> Term.from_iri iri
-        | Rdf_Subject.FromBlankNode blank_node -> Term.from_blank_node blank_node
+        | IRIREFSubject (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
+        | IRIREFSubject iriref -> iriref.as_rendered_string
+        | BlankNodeSubject blank_node -> blank_node.as_rendered_string
 
-    static member from_predicate(rdf_predicate: Rdf_Predicate) =
-        match rdf_predicate with
-        | Rdf_Predicate.FromIri iri -> Term.from_iri iri
+    static member object_String (rdf_object: Rdf_Object) (prefix_delimiter: string) (prefix_map: Map<string, string>) =
 
-    static member from_object(rdf_object: Rdf_Object) =
         match rdf_object with
-        | Rdf_Object.FromIri iri -> Term.from_iri iri
-        | Rdf_Object.FromBlankNode blank_node -> Term.from_blank_node blank_node
-        | Rdf_Object.FromLiteral literal -> Term.from_literal literal
-        | Rdf_Object.FromTripleTerm triple_term -> Term.from_triple_term triple_term
+        | IRIREFObject (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
+        | IRIREFObject iriref -> iriref.as_rendered_string
+        | BlankNodeObject blank_node -> blank_node.as_rendered_string
+        | LiteralObject rdf_literal ->
+            match rdf_literal with
+            | SimpleLiteral lexical_form -> sprintf "%s" lexical_form
+            | LongLiteral lexical_form -> sprintf "%s" lexical_form
+            | DatatypedLiteral (lexical_form, (NamespacedName datatype_iri)) ->
+                sprintf "%s^^%s" lexical_form (datatype_iri.as_prefixed_name prefix_delimiter prefix_map)
+            | DatatypedLiteral (lexical_form, datatype) -> sprintf "%s^^%s" lexical_form datatype.as_rendered_string
+            | LanguageString (lexical_form, language) -> sprintf "%s@%s" lexical_form (language.ToString())
+            | RegionString (lexical_form, language, region) ->
+                sprintf "%s@%s-%s" lexical_form (language.ToString()) (region.ToString())
+            | DirectedLanguageString (lexical_form, language, base_direction) ->
+                sprintf "%s@%s--%s" lexical_form (language.ToString()) base_direction.lexical_form
+            | DirectedRegionString (lexical_form, language, region, base_direction) ->
+                sprintf
+                    "%s@%s-%s--%s"
+                    lexical_form
+                    (language.ToString())
+                    (region.ToString())
+                    base_direction.lexical_form
 
-    static member from_triple(triple: Rdf_Triple) =
-        RdfTriple
-            {
+        | TripleTermObject triple_term ->
+            sprintf
+                "%s %s %s"
+                (Vertex.subject_string triple_term.ttSubject prefix_delimiter prefix_map)
+                (Edge.predicate_string triple_term.ttPredicate prefix_delimiter prefix_map)
+                (Vertex.object_String triple_term.ttObject prefix_delimiter prefix_map)
 
-              lexical_form = triple.rdf_string
-              rdf_subject = Some(Term.from_subject triple.curSubject)
-              rdf_predicate = Some(Term.from_predicate triple.curPredicate)
-              rdf_object = Some(Term.from_object triple.curObject)
-              datatype = None
-              language = None
-              region = None
-              base_direction = None
-
-            }
-
-    static member from_triple_term(TripleTerm triple) = Term.from_triple triple
-
-
-
-and [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>] Vertex =
-    | FromSubject of Rdf_Subject
-    | FromObject of Rdf_Object
-
-and [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>] Edge =
-    | FromTriple of Rdf_Triple
-    | FromPredicate of Rdf_Predicate
-
-
-
-/// https://dotnetrdf.org/docs/stable/user_guide/equality_and_comparison.html
-/// https://www.w3.org/TR/rdf12-concepts/#dfn-rdf-string
-/// https://www.rfc-editor.org/info/rfc3987/#section-5
-and CustomComparer =
-    static member type_name(value: obj) =
-        if isNull value then
-            "null"
-        else
-            value.GetType().Name
-
-    static member this_before_that = -1
-    static member this_or_that = 0
-    static member this_after_that = 1
-
-    static member obj_to_term(unknown_object: obj) =
-        match unknown_object with
-        | :? Term as rdf_term -> rdf_term
-        | :? Rdf_Triple as triple -> Term.from_triple triple
-        | :? Triple_Term as triple_term -> Term.from_triple_term triple_term
-        | :? Rdf_Subject as subject_term -> Term.from_subject subject_term
-        | :? Rdf_Predicate as predicate_term -> Term.from_predicate predicate_term
-        | :? Rdf_Object as object_term -> Term.from_object object_term
-        | :? Iri as iri -> Term.from_iri iri
-        | :? Namespaced_Iri as namespaced_iri -> Term.from_namespaced_iri namespaced_iri
-        | :? Atomic_Iri as atomic_iri -> Term.from_atomic_iri atomic_iri
-        | :? Skolem_Iri as skolem_iri -> Term.from_skolem_iri skolem_iri
-        | :? Blank_Node as blank_node -> Term.from_blank_node blank_node
-        | :? Rdf_Literal as literal -> Term.from_literal literal
-        | _ ->
-            invalidArg
-                "obj_term"
-                (sprintf
-                    "Cannot convert (%O : %s)  to %s."
-                    unknown_object
-                    (CustomComparer.type_name unknown_object)
-                    typeof<Term>.Name)
-
-    static member left_to_right_comparison (left: obj) (right: obj) =
-        match left, right with
-        | null, null -> CustomComparer.this_or_that
-        | null, _ -> CustomComparer.this_before_that
-        | _, null -> CustomComparer.this_after_that
-        | this, that -> compare (CustomComparer.obj_to_term this) (CustomComparer.obj_to_term that)
-
-    static member left_to_right_equality (left: obj) (right: obj) =
-        match left, right with
-        | null, null -> true
-        | null, _
-        | _, null -> false
-        | this, that -> (CustomComparer.obj_to_term this) = (CustomComparer.obj_to_term that)
+    member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
+        match this with
+        | SubjectVertex rdf_subject -> Vertex.subject_string rdf_subject prefix_delimiter prefix_map
+        | ObjectVertex rdf_object -> Vertex.object_String rdf_object prefix_delimiter prefix_map
 
 
 
+and Edge =
+    | PredicateEdge of Rdf_Predicate
+    | TripleEdge of Rdf_Triple
+    static member predicate_string
+        (rdf_predicate: Rdf_Predicate)
+        (prefix_delimiter: string)
+        (prefix_map: Map<string, string>)
+        =
+        match rdf_predicate with
+        | IRIREFPredicate (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
+        | IRIREFPredicate iriref -> iriref.as_rendered_string
 
-
-
-
+    member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
+        match this with
+        | PredicateEdge rdf_predicate -> Edge.predicate_string rdf_predicate prefix_delimiter prefix_map
+        | TripleEdge rdf_triple -> Edge.predicate_string rdf_triple.curPredicate prefix_delimiter prefix_map
 
 
 
@@ -736,149 +660,11 @@ module Quad =
     let curObject (quad: Rdf_Quad) = quad.triple.curObject
 
 
-module Rdf_Subject =
 
 
 
-    let to_predicate (rdf_subject: Rdf_Subject) =
-        match rdf_subject with
-        | Rdf_Subject.FromIri iri -> [| Rdf_Predicate.FromIri iri |]
-        | Rdf_Subject.FromBlankNode blank_node -> [||]
-
-    let to_object (rdf_subject: Rdf_Subject) =
-        match rdf_subject with
-        | Rdf_Subject.FromIri iri -> [| Rdf_Object.FromIri iri |]
-        | Rdf_Subject.FromBlankNode blank_node -> [| Rdf_Object.FromBlankNode blank_node |]
 
 
-module Rdf_Predicate =
-    let to_subject (rdf_predicate: Rdf_Predicate) =
-        match rdf_predicate with
-        | Rdf_Predicate.FromIri iri -> [| Rdf_Subject.FromIri iri |]
-
-    let to_object (rdf_predicate: Rdf_Predicate) =
-        match rdf_predicate with
-        | Rdf_Predicate.FromIri iri -> [| Rdf_Object.FromIri iri |]
-
-module Rdf_Object =
-
-    let to_subject (rdf_object: Rdf_Object) =
-        match rdf_object with
-        | Rdf_Object.FromIri iri -> [| Rdf_Subject.FromIri iri |]
-        | Rdf_Object.FromBlankNode blank_node -> [| Rdf_Subject.FromBlankNode blank_node |]
-        | Rdf_Object.FromLiteral literal -> [||]
-        | Rdf_Object.FromTripleTerm triple_term -> [||]
-
-    let to_predicate (rdf_object: Rdf_Object) =
-        match rdf_object with
-        | Rdf_Object.FromIri iri -> [| Rdf_Predicate.FromIri iri |]
-        | Rdf_Object.FromBlankNode blank_node -> [||]
-        | Rdf_Object.FromLiteral literal -> [||]
-        | Rdf_Object.FromTripleTerm triple_term -> [||]
-
-module PredicateObjectList =
-
-    let inline from_terms (predicate: Rdf_Predicate) (objects: Rdf_Object array) =
-        {
-
-          verb = predicate
-          objectLists =
-            objects
-            |> Array.map (fun rdf_object ->
-                { rdf_object = rdf_object
-                  annotations = [||]
-
-                })
-
-        }
-
-module Triple_Term =
-
-    let ttSubject (triple_term: Triple_Term) =
-        match triple_term with
-        | TripleTerm triple -> triple.curSubject
-
-    let ttPredicate (triple_term: Triple_Term) =
-        match triple_term with
-        | TripleTerm triple -> triple.curPredicate
-
-    let ttObject (triple_term: Triple_Term) =
-        match triple_term with
-        | TripleTerm triple -> triple.curObject
-
-module Namespaced_Iri =
-
-    let namespace_name (namespaced_iri: Namespaced_Iri) =
-        match namespaced_iri with
-        | NamespacedIri (namespace_name, local_name) -> namespace_name
-
-    let local_name (namespaced_iri: Namespaced_Iri) =
-        match namespaced_iri with
-        | NamespacedIri (namespace_name, local_name) -> local_name
-
-module Rdf_Literal =
-
-    let lexical_form (literal: Rdf_Literal) =
-        match literal with
-        | SimpleLiteral lexical_form -> lexical_form
-        | LongLiteral lexical_form -> lexical_form
-        | DatatypedLiteral (lexical_form, datatype) -> lexical_form
-        | LanguageString (lexical_form, language) -> lexical_form
-        | RegionString (lexical_form, language, region) -> lexical_form
-        | DirectedLanguageString (lexical_form, language, base_direction) -> lexical_form
-        | DirectedRegionString (lexical_form, language, region, base_direction) -> lexical_form
-
-    let datatype (literal: Rdf_Literal) =
-        match literal with
-        | SimpleLiteral lexical_form -> Iri.FromAtomicIri(AtomicIri "http://www.w3.org/2001/XMLSchema#string")
-        | LongLiteral lexical_form -> Iri.FromAtomicIri(AtomicIri "http://www.w3.org/2001/XMLSchema#string")
-        | DatatypedLiteral (lexical_form, datatype) -> datatype
-        | LanguageString (lexical_form, language) ->
-            Iri.FromAtomicIri(AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString")
-        | RegionString (lexical_form, language, region) ->
-            Iri.FromAtomicIri(AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString")
-        | DirectedLanguageString (lexical_form, language, base_direction) ->
-            Iri.FromAtomicIri(AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString")
-        | DirectedRegionString (lexical_form, language, region, base_direction) ->
-            Iri.FromAtomicIri(AtomicIri "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString")
-
-    let language_tag (literal: Rdf_Literal) =
-        match literal with
-        | SimpleLiteral lexical_form -> None
-        | LongLiteral lexical_form -> None
-        | DatatypedLiteral (lexical_form, datatype) -> None
-        | LanguageString (lexical_form, language) -> Some language
-        | RegionString (lexical_form, language, region) -> Some language
-        | DirectedLanguageString (lexical_form, language, base_direction) -> Some language
-        | DirectedRegionString (lexical_form, language, region, base_direction) -> Some language
-
-    let region_tag (literal: Rdf_Literal) =
-        match literal with
-        | SimpleLiteral lexical_form -> None
-        | LongLiteral lexical_form -> None
-        | DatatypedLiteral (lexical_form, datatype) -> None
-        | LanguageString (lexical_form, language) -> None
-        | RegionString (lexical_form, language, region) -> Some region
-        | DirectedLanguageString (lexical_form, language, base_direction) -> None
-        | DirectedRegionString (lexical_form, language, region, base_direction) -> Some region
-
-    let base_direction (literal: Rdf_Literal) =
-        match literal with
-        | SimpleLiteral lexical_form -> None
-        | LongLiteral lexical_form -> None
-        | DatatypedLiteral (lexical_form, datatype) -> None
-        | LanguageString (lexical_form, language) -> None
-        | RegionString (lexical_form, language, region) -> None
-        | DirectedLanguageString (lexical_form, language, base_direction) -> Some base_direction
-        | DirectedRegionString (lexical_form, language, region, base_direction) -> Some base_direction
-
-//
-
-module Initial_Text_Direction =
-    let lexical_form (initial_text_direction: Initial_Text_Direction) =
-        match initial_text_direction with
-        | Ltr -> "ltr"
-        | Rtl -> "rtl"
 
 
 
@@ -896,20 +682,23 @@ type Mime_Type =
     member this.data_namespace_name = sprintf "data:%s;charset=UTF-8;" this.name
 
     member this.data_prefix local_name =
-        NamespacedIri(this.data_namespace_name, local_name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse this.data_namespace_name local_name
+        |> NamespacedName
+
 
     member this.iana_iri =
-        NamespacedIri(sprintf "https://www.iana.org/assignments/media-types/%s/" this.registry, this.name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse (sprintf "https://www.iana.org/assignments/media-types/%s/" this.registry) this.name
+        |> NamespacedName
 
     member this.resource_iri =
-        NamespacedIri(sprintf "http://www.w3.org/ns/iana/media-types/%s/%s#" this.registry this.name, "Resource")
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse (sprintf "http://www.w3.org/ns/iana/media-types/%s/%s#" this.registry this.name) "Resource"
+        |> NamespacedName
 
     member this.spar_iri =
-        NamespacedIri(sprintf "https://w3id.org/spar/mediatype/%s/%s#" this.registry this.name, "Resource")
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse (sprintf "https://w3id.org/spar/mediatype/%s/%s#" this.registry this.name) "Resource"
+        |> NamespacedName
+
+
 
 
 type Iana_Status =

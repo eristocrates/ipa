@@ -245,7 +245,7 @@ module DownloadedVocabularyKind =
 
 
 
-type Downloaded_RDF_Vocabulary =
+type Downloaded_Rdf_Vocabulary =
     { content: string
       content_type: string option
       kind: DownloadedVocabularyKind }
@@ -287,7 +287,7 @@ let distribution_http_response (distribution: string) : HttpResponseMessage opti
         printfn "HTTP failed for %s: %s" distribution err.Message
         None
 
-let download_distribution (distribution: string) : Downloaded_RDF_Vocabulary option =
+let download_distribution (distribution: string) : Downloaded_Rdf_Vocabulary option =
     match distribution_http_response (distribution) with
     | Some http_response when http_response.IsSuccessStatusCode ->
 
@@ -490,16 +490,16 @@ unsuccessful_http_namespace_names
 
 
 
-type RDF_Vocabulary_Kind =
+type Rdf_Vocabulary_Kind =
     | ExogenousVocabulary
     | EndogenousVocabulary
     | DerivedVocabulary
 
-type RDF_Vocabulary =
+type Rdf_Vocabulary =
     {
 
       namespace_name: string
-      namespace_kind: RDF_Vocabulary_Kind
+      namespace_kind: Rdf_Vocabulary_Kind
       preferred_prefix: string
       distribution: string option
 
@@ -507,7 +507,7 @@ type RDF_Vocabulary =
 
 
 
-    member this.get_downloaded_vocabulary() : Downloaded_RDF_Vocabulary option =
+    member this.get_downloaded_vocabulary() : Downloaded_Rdf_Vocabulary option =
         match this.http_response () with
         | Some http_response when http_response.IsSuccessStatusCode ->
 
@@ -539,7 +539,7 @@ type RDF_Vocabulary =
     member this.file_path_for(kind: DownloadedVocabularyKind) =
         Path.Combine(this.directory_path, this.file_name_for kind)
 
-    member this.save_downloaded_vocabulary(downloaded_vocabulary: Downloaded_RDF_Vocabulary) =
+    member this.save_downloaded_vocabulary(downloaded_vocabulary: Downloaded_Rdf_Vocabulary) =
         let file_path = Ensure.path (this.file_path_for downloaded_vocabulary.kind)
 
 
@@ -609,7 +609,7 @@ type RDF_Vocabulary =
 
 (*
 
-module RDF_Vocabulary =
+module Rdf_Vocabulary =
     module Endogenous =
         let from_prefix_reference (mappings: (string * string) array) =
             mappings
@@ -673,7 +673,7 @@ module RDF_Vocabulary =
 
             )
 
-    let to_prefix_map (namespaces: RDF_Vocabulary array) =
+    let to_prefix_map (namespaces: Rdf_Vocabulary array) =
         namespaces
         |> Array.map (fun rdf_namespace ->
 

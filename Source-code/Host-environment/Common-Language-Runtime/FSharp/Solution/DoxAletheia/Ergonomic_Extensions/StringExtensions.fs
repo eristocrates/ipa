@@ -22,6 +22,7 @@ type Char with
 
 
 type String with
+    member this.as_bytes = Encoding.UTF8.GetBytes this
 
     member this.rev = this |> Seq.rev |> Seq.toArray |> String
     /// just a crumb of humor to lighten the day

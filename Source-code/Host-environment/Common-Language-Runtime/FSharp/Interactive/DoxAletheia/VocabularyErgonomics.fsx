@@ -588,7 +588,7 @@ let fibo_content =
 
             )
         match maybe_namespace_prefix with
-        | Some (namespace_name, prefix_label) -> Some($"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_path}"> """)
+        | Some (namespace_name, prefix_label) -> Some($"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """)
         | None -> None)
 
 
@@ -616,7 +616,7 @@ fibo.namespaces_from_files
 
 *)
 // fibo.refresh()
-// $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
+// $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
 
 
 
@@ -1441,7 +1441,7 @@ let lov_content =
             | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
             | _ -> file_stem.Replace('-', '_').Replace('.', '_')
 
-        $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
+        $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
 
     )
 
@@ -1631,7 +1631,7 @@ let manual_content =
             | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
             | _ -> file_stem.Replace('-', '_').Replace('.', '_')
 
-        $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
+        $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
 
     )
 
@@ -1716,7 +1716,7 @@ let multipart_content =
                     .Replace('-', '_')
                     .Replace('.', '_')
 
-        $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_paths}"> """
+        $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_paths}"> """
 
     )
 
@@ -1734,7 +1734,7 @@ let provider_content =
         """
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\netstandard2.0\MyProvider.Runtime.dll"
 
-open MyNamespace
+open DoxAletheia
 open MyProvider
     """
 

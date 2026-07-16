@@ -1,8 +1,9 @@
-@prefix commonplace: <https://eristocrates.dev/ontology/commonplace/> .
+@prefix dbug: <https://eristocrates.dev/ontology/dbug/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix w3: <http://www.w3.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-commonplace:Brandon_Collier a foaf:Person .
-commonplace:Tierra_Fisher a foaf:Person .
+dbug:Bob a foaf:Person .
+dbug:Alice a foaf:Person .

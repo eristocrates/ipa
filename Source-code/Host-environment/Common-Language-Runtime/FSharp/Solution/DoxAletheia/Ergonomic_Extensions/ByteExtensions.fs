@@ -3,7 +3,8 @@ module DoxAletheia.ByteExtensions
 open System
 open ConversionErgonomics
 open FSharp.Units.DataStorage
-
+open Blake3
+open LightningDB
 
 type Byte with
     static member from_bool(predicate_is_true: bool) = bool_to_byte predicate_is_true
@@ -27,3 +28,11 @@ type MiB =
     /// Converts Bits to Mebibytes by passing through FSharp.Units mebibit.
     static member fromBits(value: float<b>) : float<MiB> =
         value |> b.toMebibits |> MiB.fromMebibits
+
+
+type Hash with 
+    member this.as_bytes = this.AsSpan().ToArray()
+
+
+type MDBValue with 
+    member this.as_bytes = this.AsSpan().ToArray() 

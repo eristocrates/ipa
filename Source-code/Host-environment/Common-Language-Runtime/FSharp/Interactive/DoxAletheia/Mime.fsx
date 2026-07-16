@@ -254,7 +254,7 @@ let rec nested_module (nonterminal_token: string) depth candidates =
 
 
 // TODO keep parity with actual namespace
-let my_namespace = "MyNamespace"
+let my_namespace = "DoxAletheia"
 
 
 

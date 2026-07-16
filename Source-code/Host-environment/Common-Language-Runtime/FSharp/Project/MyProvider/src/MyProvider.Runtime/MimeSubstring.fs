@@ -1,4 +1,4 @@
-namespace MyNamespace
+namespace DoxAletheia
 
 module Mime_Substring =
     module application =

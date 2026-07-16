@@ -1,5 +1,24 @@
 FSharp.Core
 dotNetRDF.Core
 FSharp.Data
+CommunityToolkit.HighPerformance
+FRange
+FsCheck
+FSharp.UMX
+FSharp.Units
+FsUnit
+Hedgehog
+MathNet.Numerics
+MathNet.Numerics.FSharp
+NeatIntervals copy_local: true
+NUnit
+TickSpec
+Unquote
+UUIDNext
+XParsec
+Blake3
+LightningDB
+BitFaster.Caching
 File:ProvidedTypes.fsi
 File:ProvidedTypes.fs
+

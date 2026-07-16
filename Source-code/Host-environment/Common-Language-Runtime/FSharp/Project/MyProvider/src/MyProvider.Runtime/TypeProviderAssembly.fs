@@ -1,4 +1,4 @@
-namespace MyNamespace
+namespace DoxAletheia
 
 open FSharp.Core.CompilerServices
 

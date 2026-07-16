@@ -46,8 +46,19 @@ open QuikGraph.Data
 open QuikGraph.MSAGL
 open QuikGraph.Petri
 
+#r "nuget: d2lang-cs"
+#r "nuget: DiagramStudio.Core"
+
+open DiagramStudio
+
+#r "nuget: Rubjerg.Graphviz"
+open Rubjerg.Graphviz
+
 #r "nuget: dotNetRdf"
-#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\netstandard2.0\MyProvider.Runtime.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\MyProvider.Runtime.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\Ergonomic_Extensions.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\XParsec.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\ParserCombinator.dll"
 
 open VDS.RDF
 open VDS.RDF.Parsing
@@ -56,114 +67,118 @@ open VDS.RDF.Storage
 open VDS.RDF.Writing
 open VDS.RDF.Query.Datasets
 open VDS.RDF.Writing.Formatting
-open MyNamespace
-open MyProvider
+
+open DoxAletheia
+open Rdf_Provider
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\MermaidErgonomics.fsx"
+open MermaidErgonomics
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Namespace_Prefixes.fsx"
 open Namespace_Prefixes
 // TODO test cyjs https://www.github.com/fslaborg/Cyjs.NET
-#r "nuget: Cyjs.NET" 
+#r "nuget: Cyjs.NET"
 // TODO test Plotly.NET
-#r "nuget: Plotly.NET" 
+#r "nuget: Plotly.NET"
 // TODO investigate flips solver https://fslab.org/flips/#/
 // TODO investigate deedle https://fslab.org/Deedle/tutorial.html
 // RDFa Core Initial Context
 // https://www.w3.org/2011/rdfa-context/rdfa-1.1
 type as_ =
-    RDF_Vocabulary<"https://www.w3.org/ns/activitystreams#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\www.w3.org\ns\activitystreams\hash\as.ttl">
+    Rdf_Vocabulary<"https://www.w3.org/ns/activitystreams#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\www.w3.org\ns\activitystreams\hash\as.ttl">
 
 type csvw =
-    RDF_Vocabulary<"http://www.w3.org/ns/csvw#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\csvw\hash\csvw.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/csvw#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\csvw\hash\csvw.ttl">
 
 type dcat =
-    RDF_Vocabulary<"http://www.w3.org/ns/dcat#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\dcat\hash\dcat.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/dcat#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\dcat\hash\dcat.ttl">
 
 type dqv =
-    RDF_Vocabulary<"http://www.w3.org/ns/dqv#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\dqv\hash\dqv.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/dqv#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\dqv\hash\dqv.ttl">
 
 type duv =
-    RDF_Vocabulary<"http://www.w3.org/ns/duv#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\duv\hash\duv.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/duv#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\duv\hash\duv.ttl">
 
 type grddl =
-    RDF_Vocabulary<"http://www.w3.org/2003/g/data-view#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2003\g\data-view\hash\grddl.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2003/g/data-view#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2003\g\data-view\hash\grddl.ttl">
 
 type jsonld =
-    RDF_Vocabulary<"http://www.w3.org/ns/json-ld#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\json-ld\hash\jsonld.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/json-ld#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\json-ld\hash\jsonld.ttl">
 
 type ldp =
-    RDF_Vocabulary<"http://www.w3.org/ns/ldp#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\ldp\hash\ldp.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/ldp#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\ldp\hash\ldp.ttl">
 
 type ma_ont =
-    RDF_Vocabulary<"http://www.w3.org/ns/ma-ont#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\ma-ont\hash\ma-ont.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/ma-ont#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\ma-ont\hash\ma-ont.ttl">
 
 type oa =
-    RDF_Vocabulary<"http://www.w3.org/ns/oa#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\oa\hash\oa.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/oa#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\oa\hash\oa.ttl">
 
 type odrl =
-    RDF_Vocabulary<"http://www.w3.org/ns/odrl/2/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\odrl\2\slash\odrl.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/odrl/2/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\odrl\2\slash\odrl.ttl">
 
 type org =
-    RDF_Vocabulary<"http://www.w3.org/ns/org#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\org\hash\org.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/org#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\org\hash\org.ttl">
 
 type owl =
-    RDF_Vocabulary<"http://www.w3.org/2002/07/owl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2002\07\owl\hash\owl.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2002/07/owl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2002\07\owl\hash\owl.ttl">
 
 type prov =
-    RDF_Vocabulary<"http://www.w3.org/ns/prov#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\prov\hash\prov.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/prov#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\prov\hash\prov.ttl">
 
 type qb =
-    RDF_Vocabulary<"http://purl.org/linked-data/cube#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\linked-data\cube\hash\qb.ttl">
+    Rdf_Vocabulary<"http://purl.org/linked-data/cube#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\linked-data\cube\hash\qb.ttl">
 
 type rdf =
-    RDF_Vocabulary<"http://www.w3.org/1999/02/22-rdf-syntax-ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\02\22-rdf-syntax-ns\hash\rdf.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/1999/02/22-rdf-syntax-ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\02\22-rdf-syntax-ns\hash\rdf.ttl">
 
 type rdfa =
-    RDF_Vocabulary<"http://www.w3.org/ns/rdfa#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\rdfa\hash\rdfa.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/rdfa#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\rdfa\hash\rdfa.ttl">
 
 type rdfs =
-    RDF_Vocabulary<"http://www.w3.org/2000/01/rdf-schema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2000\01\rdf-schema\hash\rdfs.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2000/01/rdf-schema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2000\01\rdf-schema\hash\rdfs.ttl">
 // TODO get rif 	http://www.w3.org/2007/rif#
 // unfortunately involves implementing mapping https://www.w3.org/TR/rif-in-rdf/
 type rr =
-    RDF_Vocabulary<"http://www.w3.org/ns/r2rml#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\r2rml\hash\rr.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/r2rml#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\r2rml\hash\rr.ttl">
 
 type sd =
-    RDF_Vocabulary<"http://www.w3.org/ns/sparql-service-description#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\sparql-service-description\hash\sd.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/sparql-service-description#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\sparql-service-description\hash\sd.ttl">
 
 type skos =
-    RDF_Vocabulary<"http://www.w3.org/2004/02/skos/core#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2004\02\skos\core\hash\skos.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2004/02/skos/core#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2004\02\skos\core\hash\skos.ttl">
 
 type skosxl =
-    RDF_Vocabulary<"http://www.w3.org/2008/05/skos-xl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2008\05\skos-xl\hash\skosxl.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2008/05/skos-xl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2008\05\skos-xl\hash\skosxl.ttl">
 
 type ssno =
-    RDF_Vocabulary<"http://www.w3.org/ns/ssn/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\ssn\slash\ssno.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/ssn/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\ssn\slash\ssno.ttl">
 
 type sosa =
-    RDF_Vocabulary<"http://www.w3.org/ns/sosa/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\sosa\slash\sosa.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/sosa/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\sosa\slash\sosa.ttl">
 
 
 type void_ =
-    RDF_Vocabulary<"http://rdfs.org/ns/void#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\rdfs.org\ns\void\hash\void.ttl">
+    Rdf_Vocabulary<"http://rdfs.org/ns/void#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\rdfs.org\ns\void\hash\void.ttl">
 
 type powder =
-    RDF_Vocabulary<"http://www.w3.org/2007/05/powder#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2007\05\powder\hash\powder.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2007/05/powder#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2007\05\powder\hash\powder.ttl">
 
 type wdrs =
-    RDF_Vocabulary<"http://www.w3.org/2007/05/powder-s#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2007\05\powder-s\hash\wdrs.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2007/05/powder-s#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2007\05\powder-s\hash\wdrs.ttl">
 
 type xhv =
-    RDF_Vocabulary<"http://www.w3.org/1999/xhtml/vocab#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\xhtml\vocab\hash\xhv.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/1999/xhtml/vocab#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\xhtml\vocab\hash\xhv.ttl">
 // TODO process full xhtml dtd https://www.w3.org/TR/xhtml1/xhtml1.zip
 
 type xsd =
-    RDF_Vocabulary<"http://www.w3.org/2001/XMLSchema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2001\XMLSchema\hash\xsd.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2001/XMLSchema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2001\XMLSchema\hash\xsd.ttl">
 
 
 // Some vocabularies are currently in development at W3C and they may become W3C Recommendations or Notes, i.e., may become part of the table above. It is therefore advisable to consider their prefixes reserved for now. These are:
 
 type earl =
-    RDF_Vocabulary<"http://www.w3.org/ns/earl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\earl\hash\earl.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/earl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\earl\hash\earl.ttl">
 
 
 
@@ -179,261 +194,261 @@ type earl =
 
 
 type cc =
-    RDF_Vocabulary<"http://creativecommons.org/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\creativecommons.org\ns\hash\cc.ttl">
+    Rdf_Vocabulary<"http://creativecommons.org/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\creativecommons.org\ns\hash\cc.ttl">
 
 type ctag =
-    RDF_Vocabulary<"http://commontag.org/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\commontag.org\ns\hash\ctag.ttl">
+    Rdf_Vocabulary<"http://commontag.org/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\commontag.org\ns\hash\ctag.ttl">
 
 type dcterms =
-    RDF_Vocabulary<"http://purl.org/dc/terms/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\dc\terms\slash\dcterms.ttl">
+    Rdf_Vocabulary<"http://purl.org/dc/terms/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\dc\terms\slash\dcterms.ttl">
 
 type dce =
-    RDF_Vocabulary<"http://purl.org/dc/elements/1.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\dc\elements\1.1\slash\dce.ttl">
+    Rdf_Vocabulary<"http://purl.org/dc/elements/1.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\dc\elements\1.1\slash\dce.ttl">
 
 type foaf =
-    RDF_Vocabulary<"http://xmlns.com/foaf/0.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\xmlns.com\foaf\0.1\slash\foaf.ttl">
+    Rdf_Vocabulary<"http://xmlns.com/foaf/0.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\xmlns.com\foaf\0.1\slash\foaf.ttl">
 
 type gr =
-    RDF_Vocabulary<"http://purl.org/goodrelations/v1#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\goodrelations\v1\hash\gr.ttl">
+    Rdf_Vocabulary<"http://purl.org/goodrelations/v1#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\goodrelations\v1\hash\gr.ttl">
 // TODO get ical 	http://www.w3.org/2002/12/cal/icaltzd#
 // unfortunately requires dealing with malformed syntax, multiple rdf:IDs
 // i'll try cal instead
 type cal =
-    RDF_Vocabulary<"http://www.w3.org/2002/12/cal/ical#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2002\12\cal\ical\hash\cal.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2002/12/cal/ical#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2002\12\cal\ical\hash\cal.ttl">
 
 type og =
-    RDF_Vocabulary<"http://ogp.me/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\ogp.me\ns\hash\og.ttl">
+    Rdf_Vocabulary<"http://ogp.me/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\ogp.me\ns\hash\og.ttl">
 
 type rev =
-    RDF_Vocabulary<"http://purl.org/stuff/rev#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\stuff\rev\hash\rev.ttl">
+    Rdf_Vocabulary<"http://purl.org/stuff/rev#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\stuff\rev\hash\rev.ttl">
 
 type sioc =
-    RDF_Vocabulary<"http://rdfs.org/sioc/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\rdfs.org\sioc\ns\hash\sioc.ttl">
+    Rdf_Vocabulary<"http://rdfs.org/sioc/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\rdfs.org\sioc\ns\hash\sioc.ttl">
 
 type vcard =
-    RDF_Vocabulary<"http://www.w3.org/2006/vcard/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\vcard\ns\hash\vcard.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2006/vcard/ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\vcard\ns\hash\vcard.ttl">
 
 type schemas =
-    RDF_Vocabulary<"https://schema.org/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\schema.org\slash\schemas.ttl">
+    Rdf_Vocabulary<"https://schema.org/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\schema.org\slash\schemas.ttl">
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 type tsioc =
-    RDF_Vocabulary<"http://rdfs.org/sioc/types#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\rdfs.org\sioc\types\hash\tsioc.ttl">
+    Rdf_Vocabulary<"http://rdfs.org/sioc/types#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\rdfs.org\sioc\types\hash\tsioc.ttl">
 
 type tzont =
-    RDF_Vocabulary<"http://www.w3.org/2006/timezone#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\timezone\hash\tzont.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2006/timezone#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\timezone\hash\tzont.ttl">
 
 
 type hydra =
-    RDF_Vocabulary<"http://www.w3.org/ns/hydra/core#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\hydra\core\hash\hydra.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/hydra/core#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\hydra\core\hash\hydra.ttl">
 
 
 type fresnel =
-    RDF_Vocabulary<"http://www.w3.org/2004/09/fresnel#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2004\09\fresnel\hash\fresnel.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2004/09/fresnel#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2004\09\fresnel\hash\fresnel.ttl">
 
 type voaf =
-    RDF_Vocabulary<"http://purl.org/vocommons/voaf#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\vocommons\voaf\hash\voaf.ttl">
+    Rdf_Vocabulary<"http://purl.org/vocommons/voaf#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\vocommons\voaf\hash\voaf.ttl">
 
 type vann =
-    RDF_Vocabulary<"http://purl.org/vocab/vann/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\vocab\vann\slash\vann.ttl">
+    Rdf_Vocabulary<"http://purl.org/vocab/vann/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\vocab\vann\slash\vann.ttl">
 
 type vaem =
-    RDF_Vocabulary<"http://www.linkedmodel.org/schema/vaem#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.linkedmodel.org\schema\vaem\hash\vaem.ttl">
+    Rdf_Vocabulary<"http://www.linkedmodel.org/schema/vaem#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.linkedmodel.org\schema\vaem\hash\vaem.ttl">
 
 type lemon =
-    RDF_Vocabulary<"http://lemon-model.net/lemon#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\lemon-model.net\lemon\hash\lemon.ttl">
+    Rdf_Vocabulary<"http://lemon-model.net/lemon#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\lemon-model.net\lemon\hash\lemon.ttl">
 
 type ontolex =
-    RDF_Vocabulary<"http://www.w3.org/ns/lemon/ontolex#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\ontolex\hash\ontolex.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/lemon/ontolex#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\ontolex\hash\ontolex.ttl">
 
 type vartrans =
-    RDF_Vocabulary<"http://www.w3.org/ns/lemon/vartrans#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\vartrans\hash\vartrans.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/lemon/vartrans#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\vartrans\hash\vartrans.ttl">
 
 type synsem =
-    RDF_Vocabulary<"http://www.w3.org/ns/lemon/synsem#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\synsem\hash\synsem.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/lemon/synsem#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\synsem\hash\synsem.ttl">
 
 type decomp =
-    RDF_Vocabulary<"http://www.w3.org/ns/lemon/decomp#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\decomp\hash\lexdcp.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/lemon/decomp#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\decomp\hash\lexdcp.ttl">
 
 type lime =
-    RDF_Vocabulary<"http://www.w3.org/ns/lemon/lime#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\lime\hash\lime.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/lemon/lime#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\lemon\lime\hash\lime.ttl">
 
 type lexinfo =
-    RDF_Vocabulary<"http://www.lexinfo.net/ontology/2.0/lexinfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.lexinfo.net\ontology\2.0\lexinfo\hash\lexinfo.ttl">
+    Rdf_Vocabulary<"http://www.lexinfo.net/ontology/2.0/lexinfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.lexinfo.net\ontology\2.0\lexinfo\hash\lexinfo.ttl">
 
 type termlex =
-    RDF_Vocabulary<"https://termlex.oeg.fi.upm.es/termlex#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\termlex.oeg.fi.upm.es\termlex\hash\termlex.ttl">
+    Rdf_Vocabulary<"https://termlex.oeg.fi.upm.es/termlex#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\termlex.oeg.fi.upm.es\termlex\hash\termlex.ttl">
 
 type fno =
-    RDF_Vocabulary<"https://w3id.org/function/ontology#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\ontology\hash\fno.ttl">
+    Rdf_Vocabulary<"https://w3id.org/function/ontology#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\ontology\hash\fno.ttl">
 
 type fnom =
-    RDF_Vocabulary<"https://w3id.org/function/vocabulary/mapping#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\vocabulary\mapping\hash\fnom.ttl">
+    Rdf_Vocabulary<"https://w3id.org/function/vocabulary/mapping#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\vocabulary\mapping\hash\fnom.ttl">
 
 type fnoi =
-    RDF_Vocabulary<"https://w3id.org/function/vocabulary/implementation#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\vocabulary\implementation\hash\fnoi.ttl">
+    Rdf_Vocabulary<"https://w3id.org/function/vocabulary/implementation#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\vocabulary\implementation\hash\fnoi.ttl">
 
 type fnoc =
-    RDF_Vocabulary<"https://w3id.org/function/vocabulary/composition#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\vocabulary\composition\hash\fnoc.ttl">
+    Rdf_Vocabulary<"https://w3id.org/function/vocabulary/composition#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\function\vocabulary\composition\hash\fnoc.ttl">
 
 type rml_io =
-    RDF_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-io.ttl">
+    Rdf_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-io.ttl">
 
 type rml_cc =
-    RDF_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-cc.ttl">
+    Rdf_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-cc.ttl">
 
 type rml_fnml =
-    RDF_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-fnml.ttl">
+    Rdf_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-fnml.ttl">
 
 type rml_star =
-    RDF_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-star.ttl">
+    Rdf_Vocabulary<"http://w3id.org/rml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\w3id.org\rml\slash\rml-star.ttl">
 
 type sh =
-    RDF_Vocabulary<"http://www.w3.org/ns/shacl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\shacl\hash\sh.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/shacl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\shacl\hash\sh.ttl">
 
 type psh =
-    RDF_Vocabulary<"http://ns.inria.fr/probabilistic-shacl/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\ns.inria.fr\probabilistic-shacl\slash\psh.ttl">
+    Rdf_Vocabulary<"http://ns.inria.fr/probabilistic-shacl/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\ns.inria.fr\probabilistic-shacl\slash\psh.ttl">
 
 type shsh =
-    RDF_Vocabulary<"http://www.w3.org/ns/shacl-shacl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\shacl-shacl\hash\shsh.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/shacl-shacl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\shacl-shacl\hash\shsh.ttl">
 
 type shex =
-    RDF_Vocabulary<"http://www.w3.org/ns/shex#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\shex\hash\shex.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/shex#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\shex\hash\shex.ttl">
 
 type sp =
-    RDF_Vocabulary<"http://spinrdf.org/sp#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\spinrdf.org\sp\hash\sp.ttl">
+    Rdf_Vocabulary<"http://spinrdf.org/sp#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\spinrdf.org\sp\hash\sp.ttl">
 
 type spin =
-    RDF_Vocabulary<"http://spinrdf.org/spin#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\spinrdf.org\spin\hash\spin.ttl">
+    Rdf_Vocabulary<"http://spinrdf.org/spin#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\spinrdf.org\spin\hash\spin.ttl">
 
 type agrontology =
-    RDF_Vocabulary<"http://aims.fao.org/aos/agrontology#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\aims.fao.org\aos\agrontology\hash\agrontology.ttl">
+    Rdf_Vocabulary<"http://aims.fao.org/aos/agrontology#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\aims.fao.org\aos\agrontology\hash\agrontology.ttl">
 
 type nmo =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\03\22\nmo\hash\nmo.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\03\22\nmo\hash\nmo.ttl">
 
 type nexif =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\05\10\nexif\hash\nexif.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\05\10\nexif\hash\nexif.ttl">
 
 type nid3 =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\05\10\nid3\hash\nid3.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\05\10\nid3\hash\nid3.ttl">
 
 type pimo =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\11\01\pimo\hash\pimo.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\11\01\pimo\hash\pimo.ttl">
 
 type tmo =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2008\05\20\tmo\hash\tmo.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2008\05\20\tmo\hash\tmo.ttl">
 
 type tnrl =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nrl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nrl\hash\tnrl.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nrl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nrl\hash\tnrl.ttl">
 
 type tnie =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nie#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nie\hash\tnie.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nie#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nie\hash\tnie.ttl">
 
 type tnao =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nao#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nao\hash\tnao.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nao#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nao\hash\tnao.ttl">
 
 type tnco =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nco#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nco\hash\tnco.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nco#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nco\hash\tnco.ttl">
 
 type tnfo =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nfo\hash\tnfo.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nfo\hash\tnfo.ttl">
 
 type tnmm =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nmm#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nmm\hash\tnmm.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/nmm#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\nmm\hash\tnmm.ttl">
 
 type tmfo =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/mfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\mfo\hash\tmfo.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/mfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\mfo\hash\tmfo.ttl">
 
 type tracker =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/tracker#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\tracker\hash\tracker.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/tracker#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\tracker\hash\tracker.ttl">
 
 type tslo =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/slo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\slo\hash\tslo.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/slo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\slo\hash\tslo.ttl">
 
 type tosinfo =
-    RDF_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/osinfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\osinfo\hash\tosinfo.ttl">
+    Rdf_Vocabulary<"http://tracker.api.gnome.org/ontology/v3/osinfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\tracker.api.gnome.org\ontology\v3\osinfo\hash\tosinfo.ttl">
 
 type nie =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/01/19/nie#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\01\19\nie\hash\nie.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/01/19/nie#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\01\19\nie\hash\nie.ttl">
 
 type nco =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/03/22/nco#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\03\22\nco\hash\nco.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/03/22/nco#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\03\22\nco\hash\nco.ttl">
 
 type nfo =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\03\22\nfo\hash\nfo.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\03\22\nfo\hash\nfo.ttl">
 
 type ncal =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\04\02\ncal\hash\ncal.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\04\02\ncal\hash\ncal.ttl">
 
 type nao =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/08/15/nao#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\08\15\nao\hash\nao.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/08/15/nao#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\08\15\nao\hash\nao.ttl">
 
 type nrl =
-    RDF_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\08\15\nrl\hash\nrl.ttl">
+    Rdf_Vocabulary<"http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.semanticdesktop.org\ontologies\2007\08\15\nrl\hash\nrl.ttl">
 
 type linkml =
-    RDF_Vocabulary<"https://w3id.org/linkml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.owl.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-annotations.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-annotations.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-datasets.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-datasets.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-extensions.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-extensions.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-mappings.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-mappings.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-types.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-types.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-units.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-units.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-validation.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-validation.ttl">
+    Rdf_Vocabulary<"https://w3id.org/linkml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.owl.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-annotations.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-annotations.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-datasets.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-datasets.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-extensions.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-extensions.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-mappings.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-mappings.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-types.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-types.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-units.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-units.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-validation.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-validation.ttl">
 
 type owl_time =
-    RDF_Vocabulary<"http://www.w3.org/2006/time#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\time\hash\time.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2006/time#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\time\hash\time.ttl">
 
 type ermrk =
-    RDF_Vocabulary<"http://www.essepuntato.it/2008/12/earmark#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.essepuntato.it\2008\12\earmark\hash\ermrk-ghost.owl.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.essepuntato.it\2008\12\earmark\hash\ermrk-shell.owl.ttl">
+    Rdf_Vocabulary<"http://www.essepuntato.it/2008/12/earmark#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.essepuntato.it\2008\12\earmark\hash\ermrk-ghost.owl.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.essepuntato.it\2008\12\earmark\hash\ermrk-shell.owl.ttl">
 
 type solid =
-    RDF_Vocabulary<"http://www.w3.org/ns/solid/terms#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\solid\terms\hash\solid.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/solid/terms#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\solid\terms\hash\solid.ttl">
 
 type ws =
-    RDF_Vocabulary<"http://www.w3.org/ns/pim/space#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\pim\space\hash\ws.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/pim/space#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\pim\space\hash\ws.ttl">
 
 type acl =
-    RDF_Vocabulary<"http://www.w3.org/ns/auth/acl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\auth\acl\hash\acl.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/ns/auth/acl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\auth\acl\hash\acl.ttl">
 
 type http =
-    RDF_Vocabulary<"http://www.w3.org/2011/http#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2011\http\hash\http.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2011/http#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2011\http\hash\http.ttl">
 
 type cnt =
-    RDF_Vocabulary<"http://www.w3.org/2011/content#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2011\content\hash\cnt.ttl">
+    Rdf_Vocabulary<"http://www.w3.org/2011/content#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2011\content\hash\cnt.ttl">
 
 type rel =
-    RDF_Vocabulary<"http://purl.org/vocab/relationship/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\vocab\relationship\slash\rel.ttl">
+    Rdf_Vocabulary<"http://purl.org/vocab/relationship/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\vocab\relationship\slash\rel.ttl">
 
 type pext =
-    RDF_Vocabulary<"http://www.ontotext.com/proton/protonext#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.ontotext.com\proton\protonext\hash\pext.ttl">
+    Rdf_Vocabulary<"http://www.ontotext.com/proton/protonext#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.ontotext.com\proton\protonext\hash\pext.ttl">
 
 type ptop =
-    RDF_Vocabulary<"http://www.ontotext.com/proton/protontop#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.ontotext.com\proton\protontop\hash\ptop.ttl">
+    Rdf_Vocabulary<"http://www.ontotext.com/proton/protontop#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.ontotext.com\proton\protontop\hash\ptop.ttl">
 
 type om =
-    RDF_Vocabulary<"https://open-metadata.org/ontology/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\open-metadata.org\ontology\slash\om.ttl">
+    Rdf_Vocabulary<"https://open-metadata.org/ontology/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\open-metadata.org\ontology\slash\om.ttl">
 
 type dbpedia_owl =
-    RDF_Vocabulary<"http://dbpedia.org/ontology/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\dbpedia.org\ontology\slash\dbpedia-owl.ttl">
+    Rdf_Vocabulary<"http://dbpedia.org/ontology/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\dbpedia.org\ontology\slash\dbpedia-owl.ttl">
 
 type dbnary =
-    RDF_Vocabulary<"http://kaiko.getalp.org/dbnary#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\kaiko.getalp.org\dbnary\hash\dbnary.ttl">
+    Rdf_Vocabulary<"http://kaiko.getalp.org/dbnary#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\kaiko.getalp.org\dbnary\hash\dbnary.ttl">
 
 type lib =
-    RDF_Vocabulary<"http://purl.org/library/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\library\slash\lib.ttl">
+    Rdf_Vocabulary<"http://purl.org/library/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\library\slash\lib.ttl">
 
 type frapo =
-    RDF_Vocabulary<"http://purl.org/cerif/frapo/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\cerif\frapo\slash\frapo.ttl">
+    Rdf_Vocabulary<"http://purl.org/cerif/frapo/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\cerif\frapo\slash\frapo.ttl">
 
 type ocds =
-    RDF_Vocabulary<"http://purl.org/onto-ocds/ocds#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\onto-ocds\ocds\hash\ocds.ttl">
+    Rdf_Vocabulary<"http://purl.org/onto-ocds/ocds#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\onto-ocds\ocds\hash\ocds.ttl">
 
 type dg =
-    RDF_Vocabulary<"https://w3id.org/dingo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\dingo\hash\dg.ttl">
+    Rdf_Vocabulary<"https://w3id.org/dingo#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\dingo\hash\dg.ttl">
 
 
 
 
 module fibo =
     type PaymentsAndSchedules =
-        RDF_Vocabulary<"https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\spec.edmcouncil.org\fibo\ontology\master\2026Q1\FND\ProductsAndServices\PaymentsAndSchedules.ttl">
+        Rdf_Vocabulary<"https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\spec.edmcouncil.org\fibo\ontology\master\2026Q1\FND\ProductsAndServices\PaymentsAndSchedules.ttl">
 
 let a = rdf.``type``
 
@@ -442,8 +457,8 @@ type xml =
     static member _namespace_name = "http://www.w3.org/XML/1998/namespace#"
 
     static member _prefix local_name =
-        NamespacedIri(xml._namespace_name, local_name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse xml._namespace_name local_name
+        |> NamespacedName
 
     /// Designed for identifying the human language used in the scope of the element to which it's attached.
     static member lang = xml._prefix "lang"
@@ -463,8 +478,8 @@ type xsi =
     static member _namespace_name = "https://www.w3.org/2001/XMLSchema-instance#"
 
     static member _prefix local_name =
-        NamespacedIri(xsi._namespace_name, local_name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse xsi._namespace_name local_name
+        |> NamespacedName
 
     /// https://www.w3.org/TR/xmlschema-1/#xsi_type
     static member type_ = xsi._prefix "type"
@@ -480,8 +495,8 @@ type xdt =
     static member _namespace_name = "https://www.w3.org/2003/05/xpath-datatypes#"
 
     static member _prefix local_name =
-        NamespacedIri(xdt._namespace_name, local_name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse xdt._namespace_name local_name
+        |> NamespacedName
 
     /// The datatype xdt:untyped denotes the dynamic type of an element node that has not been validated, or has been validated in skip mode. No predefined types are derived from xdt:untyped.
     static member untyped = xdt._prefix "untyped"
@@ -496,7 +511,6 @@ type xdt =
     static member yearMonthDuration = xdt._prefix "yearMonthDuration"
 
 
-// type data = static member _ "data:text/plain;charset=UTF-8;"
 
 
 
@@ -957,7 +971,7 @@ type Draft_Document =
 
     member this.add_literal literal =
         Rdf_Literal.autotyped literal
-        |> Rdf_Object.FromLiteral
+        |> Rdf_Object.LiteralObject
         |> this.add_object
 
     member this.add_literals literals =
@@ -966,59 +980,63 @@ type Draft_Document =
         |> Array.Parallel.map (fun literal ->
             literal
             |> Rdf_Literal.autotyped
-            |> Rdf_Object.FromLiteral)
+            |> Rdf_Object.LiteralObject)
         |> this.add_objects
 
 
 
 let global_prefix_map = global_prefix_declarations |> Map.ofArray
 
-let prefixed_name (delimiter: string) (iri: Namespaced_Iri) =
-    let namespace_name = Namespaced_Iri.namespace_name iri
+let prefixed_name (delimiter: string) (iri: Namespaced_IRI) =
+    let namespace_name = iri.namespace_iriref.as_rendered_string
+    let prefix_label = global_prefix_map[namespace_name]
+    sprintf "%s%s%s" prefix_label delimiter iri.local_name.as_rendered_string
 
-    match global_prefix_map[namespace_name], Namespaced_Iri.local_name iri with
-    | prefix_label, local_name -> sprintf "%s%s%s" prefix_label delimiter local_name
 
-let curie (iri: Namespaced_Iri) = iri |> prefixed_name ":"
+let curie (iri: Namespaced_IRI) = iri |> prefixed_name ":"
+
+(*
+
 
 module Vertex =
     let escaped_curie_presentation (vertex: Vertex) =
         match vertex with
-        | Vertex.FromSubject (Rdf_Subject.FromIri (Iri.FromNamespacedIri iri)) -> iri |> prefixed_name @"\:"
-        | Vertex.FromObject (Rdf_Object.FromIri (Iri.FromNamespacedIri iri)) -> iri |> prefixed_name @"\:"
-        | Vertex.FromSubject subject_term -> subject_term.rdf_string
-        | Vertex.FromObject object_term -> object_term.rdf_string
+        | SubjectVertex (Rdf_Subject.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
+        | ObjectVertex (Rdf_Object.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
+        | SubjectVertex subject_term -> subject_term.rdf_string
+        | ObjectVertex object_term -> object_term.rdf_string
 
     let curie_presentation (vertex: Vertex) =
         match vertex with
-        | Vertex.FromSubject (Rdf_Subject.FromIri (Iri.FromNamespacedIri iri)) -> curie iri
-        | Vertex.FromObject (Rdf_Object.FromIri (Iri.FromNamespacedIri iri)) -> curie iri
-        | Vertex.FromSubject subject_term -> subject_term.rdf_string
-        | Vertex.FromObject object_term -> object_term.rdf_string
+        | SubjectVertex (Rdf_Subject.FromIri (NamespacedName iri)) -> curie iri
+        | ObjectVertex (Rdf_Object.FromIri (NamespacedName iri)) -> curie iri
+        | SubjectVertex subject_term -> subject_term.rdf_string
+        | ObjectVertex object_term -> object_term.rdf_string
 
 module Edge =
     let escaped_curie_presentation (edge: Edge) =
         match edge with
         | Edge.FromTriple triple ->
             match triple.curPredicate with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> iri |> prefixed_name @"\:"
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
-        | Edge.FromPredicate predicate_term ->
+        | PredicateEdge predicate_term ->
             match predicate_term with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> iri |> prefixed_name @"\:"
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
 
     let curie_presentation (edge: Edge) =
         match edge with
         | Edge.FromTriple triple ->
             match triple.curPredicate with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> curie iri
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
-        | Edge.FromPredicate predicate_term ->
+        | PredicateEdge predicate_term ->
             match predicate_term with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> curie iri
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
 
+*)
 let map_prefixes (graph: IGraph) =
     global_prefix_declarations
     |> Array.Parallel.iter (fun (namespace_name, prefix_label) ->
@@ -1045,26 +1063,25 @@ let map_prefixes (graph: IGraph) =
         if term_is_namespaced then
             graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name)))
 
-(*
+// TODO next clean up printer code, and vertexes
 
-[<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
-type Vertex =
-    | FromSubject of Rdf_Subject
-    | FromObject of Rdf_Object
+// [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
+(*
     member this.yog_label =
         match this with
-        | FromSubject (Rdf_Subject.FromIri (Iri.FromNamespacedIri iri)) -> curie iri
-        | FromObject (Rdf_Object.FromIri (Iri.FromNamespacedIri iri)) -> curie iri
+        | FromSubject (Rdf_Subject.FromIri (NamespacedName iri)) -> curie iri
+        | FromObject (Rdf_Object.FromIri (NamespacedName iri)) -> curie iri
         | FromSubject subject_term -> subject_term.rdf_string
         | FromObject object_term -> object_term.rdf_string
 
     member this.d2_label =
         match this with
-        | FromSubject (Rdf_Subject.FromIri (Iri.FromNamespacedIri iri)) -> iri |> prefixed_name @"\:"
-        | FromObject (Rdf_Object.FromIri (Iri.FromNamespacedIri iri)) -> iri |> prefixed_name @"\:"
+        | FromSubject (Rdf_Subject.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
+        | FromObject (Rdf_Object.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
         | FromSubject subject_term -> subject_term.rdf_string
         | FromObject object_term -> object_term.rdf_string
 
+*)
 
 
 (*
@@ -1081,7 +1098,7 @@ type Vertex =
         match object_term with
         | Rdf_Object.FromIri iri -> FromIri iri
         | Rdf_Object.FromBlankNode blank_node -> FromBlankNode blank_node
-        | Rdf_Object.FromLiteral literal -> FromLiteral literal
+        | Rdf_Object.LiteralObject literal -> FromLiteral literal
         | Rdf_Object.FromTripleTerm triple_term -> FromTripleTerm triple_term
 
 
@@ -1090,35 +1107,32 @@ type Vertex =
 
 
 
-[<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
-type Edge =
-    | FromTriple of Rdf_Triple
-    | FromPredicate of Rdf_Predicate
-
+// [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
+(*
     member this.yog_label =
         match this with
         | FromTriple triple ->
             match triple.curPredicate with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> curie iri
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
         | FromPredicate predicate_term ->
             match predicate_term with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> curie iri
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
 
     member this.d2_label =
         match this with
         | FromTriple triple ->
             match triple.curPredicate with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> iri |> prefixed_name @"\:"
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
         | FromPredicate predicate_term ->
             match predicate_term with
-            | Rdf_Predicate.FromIri (Iri.FromNamespacedIri iri) -> iri |> prefixed_name @"\:"
+            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
 
-
 *)
+
 
 type Rdf_Graph = { triples: Set<Rdf_Triple> }
 
@@ -1152,62 +1166,55 @@ module NTriples =
         use reader = new StringReader(text)
         parser.Load(graph, reader)
 
-    let iri_nt (iri: Iri) =
-        let iri_string =
-            match iri with
-            | Iri.FromNamespacedIri namespaced_iri -> namespaced_iri.rdf_string
-            | Iri.FromAtomicIri atomic_iri -> atomic_iri.rdf_string
-            | Iri.FromSkolemIri skolem_iri -> skolem_iri.rdf_string
+    let iriref_nt (iriref: IRIREF) = "<" + iriref.as_rendered_string + ">"
 
-        sprintf "<%s>" iri_string
+
 
     let blank_node_nt (blank_node: Blank_Node) =
         match blank_node with
-        | BlankNode identifier -> sprintf "_:%s" identifier
+        | BlankNodeIdentifier identifier -> sprintf "_:%s" identifier
         // TODO handle nt representation of blanknodepropertylist
         | BlankNodePropertyList (identifier, predicateObjectList) -> sprintf "_:%s" identifier
 
     let subject_nt (rdf_subject: Rdf_Subject) =
         match rdf_subject with
-        | Rdf_Subject.FromIri iri -> iri_nt iri
-        | Rdf_Subject.FromBlankNode blank_node -> blank_node_nt blank_node
+        | IRIREFSubject iriref -> iriref_nt iriref
+        | BlankNodeSubject blank_node -> blank_node_nt blank_node
 
     let predicate_nt (rdf_predicate: Rdf_Predicate) =
         match rdf_predicate with
-        | Rdf_Predicate.FromIri iri -> iri_nt iri
+        | IRIREFPredicate iriref -> iriref_nt iriref
 
-    let literal_nt (rdf_literal: Rdf_Literal) =
+    let rdf_literal_nt (rdf_literal: Rdf_Literal) =
 
         match rdf_literal with
         | SimpleLiteral lexical_form -> sprintf "\"%s\"" lexical_form
         | LongLiteral lexical_form -> sprintf "\"\"\"%s\"\"\"" lexical_form
-        | DatatypedLiteral (lexical_form, datatype) -> sprintf "\"%s\"^^%s" lexical_form (iri_nt datatype)
+        | DatatypedLiteral (lexical_form, datatype) -> sprintf "\"%s\"^^%s" lexical_form (iriref_nt datatype)
         | LanguageString (lexical_form, language) -> sprintf "\"%s\"@%s" lexical_form (language.ToString())
         | RegionString (lexical_form, language, region) ->
             sprintf "\"%s\"@%s-%s" lexical_form (language.ToString()) (region.ToString())
         | DirectedLanguageString (lexical_form, language, base_direction) ->
-            sprintf "\"%s\"@%s--%s" lexical_form (language.ToString()) (base_direction.ToString())
+            sprintf "\"%s\"@%s--%s" lexical_form (language.ToString()) base_direction.lexical_form
         | DirectedRegionString (lexical_form, language, region, base_direction) ->
             sprintf
                 "\"%s\"@%s-%s--%s"
                 lexical_form
                 (language.ToString())
                 (region.ToString())
-                (base_direction.ToString())
+                base_direction.lexical_form
 
     let rec object_nt (rdf_object: Rdf_Object) =
         match rdf_object with
-        | Rdf_Object.FromIri iri -> iri_nt iri
-        | Rdf_Object.FromBlankNode blank_node -> blank_node_nt blank_node
-        | Rdf_Object.FromLiteral literal -> literal_nt literal
-        | Rdf_Object.FromTripleTerm triple_term ->
-            match triple_term with
-            | TripleTerm triple ->
-                sprintf
-                    "<<(%s %s %s)>>"
-                    (subject_nt triple.curSubject)
-                    (predicate_nt triple.curPredicate)
-                    (object_nt triple.curObject)
+        | IRIREFObject iriref -> iriref_nt iriref
+        | BlankNodeObject blank_node -> blank_node_nt blank_node
+        | LiteralObject rdf_literal -> rdf_literal_nt rdf_literal
+        | TripleTermObject triple_term ->
+            sprintf
+                "<<(%s %s %s)>>"
+                (subject_nt triple_term.ttSubject)
+                (predicate_nt triple_term.ttPredicate)
+                (object_nt triple_term.ttObject)
 
     let triple_nt (rdf_triple: Rdf_Triple) =
         sprintf
@@ -1221,9 +1228,9 @@ module NTriples =
         | TripleTerm triple ->
             sprintf
                 "<<(%s %s %s)>>"
-                (subject_nt triple.curSubject)
-                (predicate_nt triple.curPredicate)
-                (object_nt triple.curObject)
+                (subject_nt triple_term.ttSubject)
+                (predicate_nt triple_term.ttPredicate)
+                (object_nt triple_term.ttObject)
 
     let graph_lines (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
@@ -1286,24 +1293,21 @@ module D2 =
         { syntax_name = "D2"
           file_extension = "d2" }
 
-    let vertex_presentation (vertex: Vertex) =
-        Vertex.escaped_curie_presentation vertex
+    let prefix_delimiter = "\\:"
 
-    let edge_presentation (edge: Edge) = Edge.escaped_curie_presentation edge
+    let vertex_d2 (vertex: Vertex) =
+        vertex.as_rendered_string prefix_delimiter global_prefix_map
+
+    let edge_d2 (edge: Edge) =
+        edge.as_rendered_string prefix_delimiter global_prefix_map
 
     let graph_lines (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
         |> Set.toArray
         |> Array.Parallel.map (fun triple ->
-            Vertex.FromSubject triple.curSubject,
-            Vertex.FromObject triple.curObject,
-            Edge.FromPredicate triple.curPredicate)
+            SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
-            sprintf
-                "%s -> %s : %s"
-                (vertex_presentation in_vertex)
-                (vertex_presentation out_vertex)
-                (edge_presentation out_edge))
+            sprintf "%s -> %s : %s" (vertex_d2 in_vertex) (vertex_d2 out_vertex) (edge_d2 out_edge))
 
     let graph_text (rdf_graph: Rdf_Graph) =
         rdf_graph |> graph_lines |> String.concat "\n"
@@ -1333,9 +1337,7 @@ module Rdf_Graph =
         rdf_graph.triples
         |> Set.toArray
         |> Array.Parallel.map (fun triple ->
-            Vertex.FromSubject triple.curSubject,
-            Vertex.FromObject triple.curObject,
-            Edge.FromPredicate triple.curPredicate)
+            SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.toList
         |> Labeled.fromList Directed
         |> Labeled.toGraph
@@ -1348,9 +1350,9 @@ module Rdf_Graph =
         |> Array.map (fun triple ->
             quik_graph.AddVerticesAndEdge(
                 new Quik_Edge(
-                    Vertex.FromSubject triple.curSubject,
-                    Vertex.FromObject triple.curObject,
-                    Edge.FromPredicate triple.curPredicate
+                    SubjectVertex triple.curSubject,
+                    ObjectVertex triple.curObject,
+                    PredicateEdge triple.curPredicate
                 )
             ))
         |> ignore
@@ -1558,9 +1560,9 @@ module ddot =
         let triple_ddot (rdf_triple: Rdf_Triple) =
             sprintf
                 "%s..%s..%s"
-                rdf_triple.curSubject.rdf_string
-                rdf_triple.curPredicate.rdf_string
-                rdf_triple.curObject.rdf_string
+                (NTriples.subject_nt rdf_triple.curSubject)
+                (NTriples.predicate_nt rdf_triple.curPredicate)
+                (NTriples.object_nt rdf_triple.curObject)
 
         let graph_lines (rdf_graph: Rdf_Graph) =
             rdf_graph.triples
@@ -1585,15 +1587,19 @@ module Dot =
         { syntax_name = "Graphviz"
           file_extension = "dot" }
 
-    let vertex_presentation (vertex: Vertex) = Vertex.curie_presentation vertex
+    let prefix_delimiter = ":"
 
-    let edge_presentation (edge: Edge) = Edge.curie_presentation edge
+    let vertex_dot (vertex: Vertex) =
+        vertex.as_rendered_string prefix_delimiter global_prefix_map
+
+    let edge_dot (edge: Edge) =
+        edge.as_rendered_string prefix_delimiter global_prefix_map
 
     let yog_options: Dot.Options<Vertex, Edge> =
         {
 
-          NodeLabel = (fun vertex_id vertex -> vertex_presentation vertex)
-          EdgeLabel = (fun edge -> edge_presentation edge)
+          NodeLabel = (fun vertex_id vertex -> vertex_dot vertex)
+          EdgeLabel = (fun edge -> edge_dot edge)
           HighlightedSourceNodes = Set.empty
           HighlightedSinkNodes = Set.empty
           HighlightedNodes = Set.empty
@@ -1613,13 +1619,13 @@ module Dot =
 
         dot_graph.FormatVertex.Add (fun args ->
 
-            args.VertexFormat.Label <- (vertex_presentation args.Vertex)
+            args.VertexFormat.Label <- (vertex_dot args.Vertex)
 
         )
 
         dot_graph.FormatEdge.Add (fun args ->
 
-            args.EdgeFormat.Label.Value <- (edge_presentation args.Edge.Tag)
+            args.EdgeFormat.Label.Value <- (edge_dot args.Edge.Tag)
 
         )
 
@@ -1651,12 +1657,20 @@ module Mermaid =
         { syntax_name = "Mermaid"
           file_extension = "mmd" }
 
+    let prefix_delimiter = ":"
+
+    let vertex_mmd (vertex: Vertex) =
+        vertex.as_rendered_string prefix_delimiter global_prefix_map
+
+    let edge_mmd (edge: Edge) =
+        edge.as_rendered_string prefix_delimiter global_prefix_map
+
     let options: Mermaid.Options<Vertex, Edge> =
         {
 
           Direction = "LR"
-          NodeLabel = (fun vertex_id vertex -> Vertex.curie_presentation vertex)
-          EdgeLabel = (fun edge -> Edge.curie_presentation edge)
+          NodeLabel = (fun vertex_id vertex -> vertex_mmd vertex)
+          EdgeLabel = (fun edge -> edge_mmd edge)
           HighlightedEdges = Set.empty
           HighlightedNodes = Set.empty
           HighlightedSinkNodes = Set.empty
@@ -1722,7 +1736,7 @@ let inline (!<) (object_term: ^ObjectType when ^ObjectType: (member as_object: R
 
 let inline (!<=) value_object =
     Rdf_Literal.autotyped value_object
-    |> Rdf_Object.FromLiteral
+    |> Rdf_Object.LiteralObject
     |> Draft_Document.from_object
 
 
@@ -1784,14 +1798,14 @@ let inline (->=) (predicate: ^PredicateType when ^PredicateType: (member as_pred
     PredicateObjectList.from_terms
         predicate.as_predicate
         [| Rdf_Literal.autotyped value_object
-           |> Rdf_Object.FromLiteral |]
+           |> Rdf_Object.LiteralObject |]
 
 let inline (->=|) (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) value_objects =
     let objects =
         value_objects
         |> List.map (fun value_object ->
             Rdf_Literal.autotyped value_object
-            |> Rdf_Object.FromLiteral)
+            |> Rdf_Object.LiteralObject)
         |> List.toArray
 
     PredicateObjectList.from_terms predicate.as_predicate objects
@@ -1829,7 +1843,10 @@ let inline (-->/) (draft: Draft_Document) (object_term: ^ObjectType when ^Object
 
     { materialized_draft with
 
-        subjects = object_term.as_object |> Rdf_Object.to_subject
+        subjects =
+            match object_term.as_object.maybe_subject with
+            | Some subject -> [| subject |]
+            | None -> [||]
 
      }
 
@@ -1837,7 +1854,7 @@ let inline (-->=) (draft: Draft_Document) literal =
     draft.add_literal literal
     |> Draft_Document.materialize_triples
 
-let inline (-->^) (draft: Draft_Document) (lexical_form: string) (datatype: Iri) =
+let inline (-->^) (draft: Draft_Document) (lexical_form: string) (datatype: IRIREF) =
     draft.add_literal (lexical_form ^^ datatype)
     |> Draft_Document.materialize_triples
 
@@ -1861,7 +1878,7 @@ let inline (-->=|) (draft: Draft_Document) literals =
     draft.add_literals literals
     |> Draft_Document.materialize_triples
 
-let inline (-->^|) (draft: Draft_Document) (lexical_forms: string list) (datatype: Iri) =
+let inline (-->^|) (draft: Draft_Document) (lexical_forms: string list) (datatype: IRIREF) =
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^^ datatype)
     |> draft.add_literals
@@ -2045,6 +2062,8 @@ type Property_Graph =
 
 
 
+(*
+
 
 
 
@@ -2204,33 +2223,12 @@ module Identity =
 
 
 
+*)
 
 
 
 
 
-
-type String with
-    member this.utf8_encoding = Encoding.UTF8.GetBytes(this)
-
-    member this.blake3_hash =
-        Blake3
-            .Hasher
-            .Hash(this.utf8_encoding)
-            .AsSpan()
-            .ToArray()
-
-    member this.legisign_id = legisign_id.from_string this
-
-type Digest =
-    private
-    | Blake3 of byte array
-    static member from_string(string_value: string) = Blake3 string_value.blake3_hash
-
-let test_string = "test_string"
-let test2 = "testing"
-test_string.legisign_id
-test2.legisign_id
 (*
 fsi.ShowDeclarationValues <- true
 let changeable = cval 10
@@ -2278,12 +2276,23 @@ let write_draft parent_directory stem draft =
     Mermaid.write_draft parent_directory stem draft
     D2.write_draft parent_directory stem draft
 
+
+
+
+
+
+
+
+
+
+
+
 type dbug =
     static member _namespace_name = "https://eristocrates.dev/ontology/dbug/"
 
     static member _prefix local_name =
-        NamespacedIri(dbug._namespace_name, local_name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse dbug._namespace_name local_name
+        |> NamespacedName
 
     static member this_ = dbug._prefix "this"
     static member example = dbug._prefix "example"
@@ -2305,18 +2314,24 @@ type commonplace =
     static member _namespace_name = "https://eristocrates.dev/ontology/commonplace/"
 
     static member _prefix local_name =
-        NamespacedIri(commonplace._namespace_name, local_name)
-        |> Iri.FromNamespacedIri
-
-    static member Brandon_Collier = commonplace._prefix "Brandon_Collier"
-    static member Tierra_Fisher = commonplace._prefix "Tierra_Fisher"
+        Namespaced_IRI.parse commonplace._namespace_name local_name
+        |> NamespacedName
 
 
-!| [ commonplace.Brandon_Collier
-     commonplace.Tierra_Fisher ]
---- a
---> foaf.Person
+
+
+let (NamespacedName test_iri) = a
+let parse_test = IRIREF.parse rdf._namespace_name
+parse_test.as_rendered_string
+test_iri.as_prefixed_name ":" global_prefix_map
+test_iri.namespace_iriref.as_rendered_string
+global_prefix_map["https://eristocrates.dev/ontology/dbug/"]
+
+!| [ dbug.Alice; dbug.Bob ] --- a --> foaf.Person
 |> write_draft __SOURCE_DIRECTORY__ "test_graph"
+
+// TODO  next separate lmdb all string encodings and type serializations
+
 // TODO look into generation of force directed graphs (vasturiano, ngraph etc)
 // TODO look into fable for js generation
 // TODO look into formalizing https://archipelago.gg/
@@ -2328,8 +2343,8 @@ type sanctuary =
     static member _namespace_name = "https://eristocrates.dev/ontology/sanctuary/"
 
     static member _prefix local_name =
-        NamespacedIri(sanctuary._namespace_name, local_name)
-        |> Iri.FromNamespacedIri
+        Namespaced_IRI.parse sanctuary._namespace_name local_name
+        |> NamespacedName
 
     static member eristocrates = sanctuary._prefix "eristocrates"
     static member siamesederp = sanctuary._prefix "siamesederp"

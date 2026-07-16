@@ -1,9 +1,28 @@
 source https://api.nuget.org/v3/index.json
 
-nuget FSharp.Core 4.7.2
+nuget FSharp.Core 8.0.403
 nuget dotNetRDF.Core >= 3.0.0
 nuget FSharp.Data >= 4.0.0
 
+
+nuget CommunityToolkit.HighPerformance >= 8.4.2
+nuget FRange >= 1.1.0
+nuget FsCheck >= 3.3.3
+nuget FSharp.UMX >= 1.1.0
+nuget FSharp.Units >= 1.0.15
+nuget FsUnit >= 7.1.1
+nuget Hedgehog >= 2.0.4
+nuget MathNet.Numerics >= 6.0.0-beta2
+nuget MathNet.Numerics.FSharp >= 6.0.0-beta2
+nuget NeatIntervals >= 1.0.0
+nuget NUnit >= 5.0.0-beta.1
+nuget TickSpec >= 2.0.5
+nuget Unquote >= 7.0.1
+nuget UUIDNext >= 4.2.4
+nuget XParsec >= 1.0.0
+nuget Blake3 3.0.1
+nuget LightningDB 0.22.0
+nuget BitFaster.Caching 2.6.0
 
 # These lines are used by Paket to get the latest version of the Type Provider SDK files
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi

@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+	  <TargetFrameworks>net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Data.fs" />
     <Compile Include="ResourceIdentifier.fs" />
   </ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="Blake3" Version="3.0.1" />
+		<PackageReference Include="LightningDB" Version="0.22.0" />
+		<PackageReference Include="BitFaster.Caching" Version="2.6.0" />
+		<PackageReference Update="FSharp.Core" Version="8.0.403" />
 		<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
 		<PackageReference Include="FRange" Version="1.1.0" />
 		<PackageReference Include="FsCheck" Version="3.3.3" />
@@ -25,7 +30,8 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
+	  <ProjectReference Include="..\Interval_Range\Interval_Range.fsproj" />
 	  <ProjectReference Include="..\Unicodepoint\Unicodepoint.fsproj" />
-		<ProjectReference Include="..\Interval_Range\Interval_Range.fsproj" />
+		
 	</ItemGroup>
 </Project>

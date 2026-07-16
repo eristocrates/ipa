@@ -1,4 +1,4 @@
-namespace MyNamespace
+namespace DoxAletheia
 
 module Mime_Types =
     let all: Mime_Type array =

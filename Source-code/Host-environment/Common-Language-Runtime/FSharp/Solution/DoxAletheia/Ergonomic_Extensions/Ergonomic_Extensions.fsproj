@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+	  <TargetFrameworks>net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -14,19 +14,22 @@
     <Compile Include="StringExtensions.fs" />
     
     <Compile Include="IntervalErgonomics.fs" />
-	  <Compile Include="ArrayExtensions.fs" />
+	  <Compile Include="ArrayErgonomics.fs" />
 	  <Compile Include="DiagnosticsErgonomics.fs" />
 	  <Compile Include="XParsecExtensions.fs" />
 	  <Compile Include="GrammarErgonomics.fs" />
   </ItemGroup>
 
   <ItemGroup>
-    
+	  <PackageReference Include="Blake3" Version="3.0.1" />
+	  <PackageReference Include="LightningDB" Version="0.22.0" />
+	  <PackageReference Update="FSharp.Core" Version="8.0.403" />
     <PackageReference Include="FRange" Version="1.1.0" />
 	  <PackageReference Include="NeatIntervals" Version="1.0.0" />
 	  <PackageReference Include="XParsec" Version="1.0.0" />
 	  <PackageReference Include="FSharp.UMX" Version="1.1.0" />
 	  <PackageReference Include="FSharp.Units" Version="1.0.15" />
+	  <PackageReference Include="UUIDNext" Version="4.2.4" />
    
   </ItemGroup>    
   

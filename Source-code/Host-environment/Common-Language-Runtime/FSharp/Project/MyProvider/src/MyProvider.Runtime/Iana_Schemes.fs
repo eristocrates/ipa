@@ -1,4 +1,4 @@
-namespace MyNamespace
+namespace DoxAletheia
 
 module Uri_Scheme =
     module aaa =

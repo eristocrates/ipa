@@ -1,4 +1,4 @@
-namespace MyNamespace
+namespace DoxAletheia
 
 /// https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 [<RequireQualifiedAccess ; StructuralComparison; StructuralEquality>]
