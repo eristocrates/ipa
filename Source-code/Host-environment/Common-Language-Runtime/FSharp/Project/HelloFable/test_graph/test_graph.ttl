@@ -1,0 +1,14 @@
+@prefix commonplace: <https://eristocrates.dev/ontology/commonplace/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sanctuary: <https://eristocrates.dev/ontology/sanctuary/> .
+@prefix w3: <http://www.w3.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sanctuary:siamesederp a foaf:Person .
+sanctuary:eristocrates a foaf:Person .
+sanctuary:yaladre foaf:topic_interest commonplace:Quest_of_D .
+sanctuary:yaladre a foaf:Person .
+sanctuary:regen a foaf:Person .
+sanctuary:yaladre foaf:topic_interest commonplace:Gitadora .

@@ -172,13 +172,13 @@ type Memory_Map<'InputType, 'OutputType> =
 
 module Memory_Map =
     let string_index_to_string: Memory_Map<String_Index, string> =
-        Memory_Map.from_name_flags
+        Memory_Map<String_Index, string>.from_name_flags
             "String_Index_to_String"
             (DatabaseOpenFlags.Create
              ||| DatabaseOpenFlags.IntegerKey)
 
     let string_hash_to_string_index: Memory_Map<Hash, String_Index> =
-        Memory_Map.from_name_flags "String_Hash_to_String_Index" DatabaseOpenFlags.Create
+        Memory_Map<Hash, String_Index>.from_name_flags "String_Hash_to_String_Index" DatabaseOpenFlags.Create
 
 
 type Inbox<'MessageType> = MailboxProcessor<'MessageType>

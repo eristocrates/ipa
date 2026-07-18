@@ -1,10 +1,36 @@
 module DoxAletheia.Rdf_Document
-
-open Rdf_Vocabulary
 open System
+open System.IO
+open System.Text
 open System.Globalization
 open System.Xml
+open Rdf_Vocabulary
+open Namespace_Prefixes
+
 open FSharp.HashCollections
+open VDS.RDF
+open VDS.RDF.Parsing
+open VDS.RDF.Parsing.Tokens
+open VDS.RDF.Storage
+open VDS.RDF.Writing
+open VDS.RDF.Query.Datasets
+open VDS.RDF.Writing.Formatting
+
+open Yog.Model
+open Yog.Builder
+open Yog.IO
+open Yog.Pathfinding.Dijkstra
+open Yog.Render
+open Yog.Render.Dot
+open Yog.Render.Mermaid
+
+open QuikGraph
+open QuikGraph.Serialization
+open QuikGraph.Graphviz
+open QuikGraph.Data
+open QuikGraph.MSAGL
+open QuikGraph.Petri
+
 
 type Draft_Document =
     {
@@ -92,8 +118,7 @@ type Draft_Document =
           triples =
             HashSet.union
                 this.triples
-                (triples_from_terms
-                 + triples_from_subjects_predicateObjectLists)
+                (HashSet.union triples_from_terms triples_from_subjects_predicateObjectLists)
 
 
         }
@@ -214,8 +239,8 @@ module NTriples =
             parser.Load(graph, reader)
         with
         | err ->
-            clip text
-            failwithf "The text in the clipboard failed to parse with error %s" err.Message
+            
+            failwithf "The text %s failed to parse with error %s" text err.Message
 
     let iriref_nt (iriref: IRIREF) = "<" + iriref.as_raw_string + ">"
 
@@ -285,7 +310,7 @@ module NTriples =
 
     let graph_lines (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
-        |> HashSet.toArray
+        |> Array.ofSeq
         |> Array.Parallel.map (fun triple -> triple_nt triple)
 
     let graph_text (rdf_graph: Rdf_Graph) =
@@ -325,7 +350,7 @@ module D2 =
 
     let graph_lines (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
-        |> HashSet.toArray
+        |> Array.ofSeq
         |> Array.Parallel.map (fun triple ->
             SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
@@ -342,7 +367,7 @@ module D2 =
 
 
 
-type YoGraph = Graph<Vertex, Edge>
+type YoGraph = Yog.Model.Graph<Vertex, Edge>
 type Quik_Edge = TaggedEdge<Vertex, Edge>
 type Quik_Graph = BidirectionalGraph<Vertex, Quik_Edge>
 
@@ -356,7 +381,7 @@ module Rdf_Graph =
 
     let to_yograph (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
-        |> HashSet.toArray
+        |> Array.ofSeq
         |> Array.Parallel.map (fun triple ->
             SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.toList
@@ -367,7 +392,7 @@ module Rdf_Graph =
         let quik_graph = new Quik_Graph()
 
         rdf_graph.triples
-        |> HashSet.toArray
+        |> Array.ofSeq
         |> Array.map (fun triple ->
             quik_graph.AddVerticesAndEdge(
                 new Quik_Edge(
@@ -587,7 +612,7 @@ module ddot =
 
         let graph_lines (rdf_graph: Rdf_Graph) =
             rdf_graph.triples
-            |> HashSet.toArray
+            |> Array.ofSeq
             |> Array.Parallel.map (fun triple -> triple_ddot triple)
 
         let graph_text (rdf_graph: Rdf_Graph) =

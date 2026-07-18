@@ -41,12 +41,15 @@ and Rdf_Subject =
         | IRIREFSubject iriref -> iriref.as_object
         | BlankNodeSubject blank_node -> blank_node.as_object
 
-    member this.as_rendered_string =
+    member this.as_raw_string =
+        match this with
+        | IRIREFSubject iriref -> iriref.as_raw_string
+        | BlankNodeSubject blank_node -> blank_node.as_raw_string
 
+    member this.as_rendered_string =
         match this with
         | IRIREFSubject iriref -> iriref.as_rendered_string
         | BlankNodeSubject blank_node -> blank_node.as_raw_string
-
 
 and Rdf_Predicate =
     | IRIREFPredicate of IRIREF
@@ -61,6 +64,9 @@ and Rdf_Predicate =
     member this.as_rendered_string =
         match this with
         | IRIREFPredicate iriref -> iriref.as_rendered_string
+    member this.as_raw_string =
+        match this with
+        | IRIREFPredicate iriref -> iriref.as_raw_string
 
 
 and Rdf_Object =
@@ -83,6 +89,12 @@ and Rdf_Object =
         | LiteralObject rdf_literal -> None
         | TripleTermObject triple_term -> None
 
+    member this.as_raw_string =
+        match this with
+        | IRIREFObject iriref -> iriref.as_raw_string
+        | BlankNodeObject blank_node -> blank_node.as_raw_string
+        | LiteralObject rdf_literal -> rdf_literal.lexical_form
+        | TripleTermObject triple_term -> sprintf "%s %s %s" triple_term.ttSubject.as_raw_string triple_term.ttPredicate.as_raw_string triple_term.ttObject.as_raw_string
 and PredicateObjectList =
     {
 
@@ -117,15 +129,15 @@ and Triple_Term =
     | TripleTerm of Rdf_Triple
     member this.as_object = TripleTermObject this
 
-    member this.ttSubject =
+    member this.ttSubject:Rdf_Subject =
         match this with
         | TripleTerm triple -> triple.curSubject
 
-    member this.ttPredicate =
+    member this.ttPredicate:Rdf_Predicate =
         match this with
         | TripleTerm triple -> triple.curPredicate
 
-    member this.ttObject =
+    member this.ttObject:Rdf_Object =
         match this with
         | TripleTerm triple -> triple.curObject
 
@@ -600,7 +612,7 @@ module Triples =
 
 
         )
-        |> Set.ofArray
+        |> HashSet.ofSeq
 
 module Quad =
 

@@ -1,0 +1,15 @@
+digraph G {
+0 [label="sanctuary:siamesederp"];
+1 [label="foaf:Person"];
+2 [label="sanctuary:eristocrates"];
+3 [label="sanctuary:yaladre"];
+4 [label="commonplace:Quest_of_D"];
+5 [label="sanctuary:regen"];
+6 [label="commonplace:Gitadora"];
+0 -> 1 [label="rdf:type"];
+2 -> 1 [label="rdf:type"];
+3 -> 4 [label="foaf:topic_interest"];
+3 -> 1 [label="rdf:type"];
+3 -> 6 [label="foaf:topic_interest"];
+5 -> 1 [label="rdf:type"];
+}
