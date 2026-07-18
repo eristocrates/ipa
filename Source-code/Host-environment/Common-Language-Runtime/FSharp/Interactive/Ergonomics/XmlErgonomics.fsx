@@ -93,6 +93,9 @@ type XPathNavigator with
 
     member this.Attribute(local_name: string) = this.GetAttribute(local_name, "")
 
+    member this.Namespace_Attribute (namespace_name: string) (local_name: string) =
+        this.GetAttribute(local_name, namespace_name)
+
 
     member this.Parent =
         let navigator = this.Clone()

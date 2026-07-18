@@ -37,6 +37,12 @@ open FSharp.Data
 open FSharp.Data.JsonExtensions
 open FSharp.Json
 
+#r "nuget:  Fabulous.AST"
+open Fabulous.AST
+open Fantomas.Core.SyntaxOak
+open type Fabulous.AST.Ast
+
+
 #r "nuget: Unquote"
 open Swensen.Unquote.Assertions
 
@@ -49,6 +55,8 @@ open PowershellErgonomics
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\HttpErgonomics.fsx"
 open HttpErgonomics
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XmlErgonomics.fsx"
+open XmlErgonomics
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\FileSystemErgonomics.fsx"
 open FileSystemErgonomics
 
@@ -59,14 +67,17 @@ open JavascriptObjectNotationExtensions
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Extensions\ArrayExtensions.fsx"
 open ArrayExtensions
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\PrettierNaming.fsx"
-open PrettierNaming.FSharp_Keywords
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Namespace_Prefixes.fsx"
 open Namespace_Prefixes
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Manual_Prefixes.fsx"
 open Manual_Prefixes
 
+#r "nuget: FSharp.Compiler.Service, 43.10.102"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\PrettierNaming.fsx"
+
+open PrettierNaming
+open PrettierNaming.FSharp_Keywords
 
 
 
@@ -588,7 +599,7 @@ let fibo_content =
 
             )
         match maybe_namespace_prefix with
-        | Some (namespace_name, prefix_label) -> Some($"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """)
+        | Some (namespace_name, prefix_label) -> Some(namespace_name, ttl_path)
         | None -> None)
 
 
@@ -616,7 +627,7 @@ fibo.namespaces_from_files
 
 *)
 // fibo.refresh()
-// $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
+// namespace_name, ttl_path
 
 
 
@@ -1441,7 +1452,7 @@ let lov_content =
             | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
             | _ -> file_stem.Replace('-', '_').Replace('.', '_')
 
-        $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
+        namespace_name, ttl_path
 
     )
 
@@ -1631,7 +1642,7 @@ let manual_content =
             | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
             | _ -> file_stem.Replace('-', '_').Replace('.', '_')
 
-        $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
+        namespace_name, ttl_path
 
     )
 
@@ -1716,11 +1727,195 @@ let multipart_content =
                     .Replace('-', '_')
                     .Replace('.', '_')
 
-        $"""type {type_binding} = Rdf_Vocabulary<"{namespace_name}", @"{ttl_paths}"> """
+        namespace_name, ttl_paths
 
     )
 
-let provider_content =
+
+
+
+
+
+
+
+
+let rdfsharp_namespace (iri:string) = 
+    let uri = Uri(iri)
+    let terminal = 
+        match iri[iri.Length - 1] with 
+        | '#' -> "hash"
+        | '/' -> "slash"
+        | _ -> "bare"
+    let segments = 
+        Array.concat [|
+            [|uri.Scheme|]
+            (uri.Host.Split("."))
+            (uri.Segments
+            |> Array.collect (fun segment -> segment.Split(".")))
+            [|terminal|]
+
+        |]
+    segments
+            |> Array.map (fun segment -> segment.Replace("/","").Replace("-","_").Replace("~","_"))
+            |> Array.filter (fun segment -> segment <> "")
+            |> Array.map (fun segment -> 
+                let lead = 
+                    match segment with 
+                    | _ when Char.IsAsciiDigit segment[0] -> "_"
+                    |_ when FSharp_Keywords.keyword_names.Contains segment -> "_"
+                    | _ -> ""
+                lead + segment
+            )
+            |> String.concat "."
+
+
+let project_directory = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\Generated"
+    
+
+module IriDocs = 
+    open Xml_Documentation_Comments
+    let xmldoc (comments:string array)(iri:string) =
+        let comment = comments |> String.concat "\n"
+        summary {
+            // printfn "\n%s\n" comment
+            sprintf "\n%s\n" comment
+            see { 
+                FSharp.ViewEngine.Html._href iri
+                }
+        
+        }
+        |> Render.toXElement
+        |> fun xelement -> xelement.ToString()
+        |> fun xelement_string -> xelement_string.Split("\n")
+
+
+
+        
+// TODO keep parity with real namespace
+
+let my_namespace = "DoxAletheia"
+
+let global_prefix_map = global_prefix_declarations |> Map.ofArray
+let generate_vocabulary (rdf_namespace_name: string) (rdf_sources: string) =
+    let prefix_label = global_prefix_map[rdf_namespace_name]
+    
+    let term_label_comments =
+        let isEnglishOrUnspecified (literal: LiteralNode) =
+            String.IsNullOrWhiteSpace literal.Language
+            || literal.Language.StartsWith("en", StringComparison.OrdinalIgnoreCase)
+
+        let literalValuesForPredicate predicateFilter (graph: ThreadSafeGraph) subject predicate =
+            graph.GetTriplesWithSubjectPredicate(subject, predicate)
+            |> Seq.choose (fun triple ->
+                match triple.Object with
+                | :? LiteralNode as literal when predicateFilter literal ->
+                    Some literal.Value
+                | _ ->
+                    None
+            )
+            |> Seq.distinct
+            |> Seq.toArray
+
+        rdf_sources.Split([| ';' |], StringSplitOptions.RemoveEmptyEntries)
+        |> Array.map _.Trim()
+        |> Array.filter (String.IsNullOrWhiteSpace >> not)
+        |> Array.Parallel.collect (fun rdf_source ->
+
+            let graph = new ThreadSafeGraph()
+            FileLoader.Load(graph, rdf_source)
+
+            let rdfs_label =
+                graph.CreateUriNode(UriFactory.Create("http://www.w3.org/2000/01/rdf-schema#label"))
+
+            let rdfs_comment =
+                let comment = 
+                    match rdf_namespace_name with 
+                    | "https://w3id.org/linkml/" -> "https://w3id.org/linkml/comments"
+                    | _ -> "http://www.w3.org/2000/01/rdf-schema#comment"
+                graph.CreateUriNode(UriFactory.Create(comment))
+
+            let vocabulary_terms =
+                graph.AllNodes
+                |> Seq.choose (fun node ->
+                    match node with
+                    | :? UriNode as iri -> Some iri
+                    | _ -> None
+                )
+                |> Seq.filter (fun iri ->
+                    iri.Uri.OriginalString.StartsWith(rdf_namespace_name)
+                    && iri.Uri.OriginalString <> rdf_namespace_name
+                )
+                |> Seq.distinctBy (fun iri -> iri.Uri.OriginalString)
+                |> Seq.toArray
+
+            vocabulary_terms
+            |> Array.Parallel.map (fun vocabulary_term ->
+                let labels =
+                    literalValuesForPredicate
+                        (fun (_: LiteralNode) -> true)
+                        graph
+                        vocabulary_term
+                        rdfs_label
+
+                let comments =
+                    literalValuesForPredicate
+                        isEnglishOrUnspecified
+                        graph
+                        vocabulary_term
+                        rdfs_comment
+
+                vocabulary_term.Uri.OriginalString, labels, comments
+            )
+        )
+        |> Array.groupBy (fun (iri_string, _, _) -> iri_string)
+        |> Array.map (fun (iri_string, rows) ->
+            let labels =
+                rows
+                |> Array.collect (fun (_, labels, _) -> labels)
+                |> Array.distinct
+
+            let comments =
+                rows
+                |> Array.collect (fun (_, _, comments) -> comments)
+                |> Array.distinct
+
+            iri_string, labels, comments
+        )
+    let fs_text =
+        try
+            Oak() {
+                Namespace(rdfsharp_namespace rdf_namespace_name) {
+                    Open($"{my_namespace}.Rdf_Vocabulary")
+                    Module(prefix_label.Replace("-","_").normalize_identifier){
+                        Value("_namespace_name",String(rdf_namespace_name))
+
+                        for iri_string, labels, comments in term_label_comments do
+                            let local_part = iri_string[rdf_namespace_name.Length..]
+
+                            let property_name =
+                                match rdf_namespace_name, labels with
+                                | "", labels when labels.Length > 0 -> labels.[0]
+                                | _ -> local_part
+                            Value(property_name.normalize_identifier, $"Namespaced_IRI.parse _namespace_name \"{local_part}\" |> NamespacedName")
+                            |> _.xmlDocs(IriDocs.xmldoc comments iri_string)
+
+
+                    }
+
+                }
+            }
+            |> Gen.mkOak
+            |> Gen.run
+        with 
+        | err -> failwithf "namespace name %s\n\trdf sources %s\n failed with error %s" rdf_namespace_name rdf_sources err.Message
+    let relative_path = iriToRelativePath rdf_namespace_name
+    let fs_file = Path.Combine(project_directory, $"{prefix_label}.fs")
+
+    File.WriteAllText(fs_file,fs_text)
+    sprintf "<Compile Include=\"%s.fs\" />" prefix_label
+    
+
+let item_group = 
     Array.concat [|
 
                     lov_content
@@ -1729,19 +1924,26 @@ let provider_content =
                     fibo_content
 
                      |]
-    |> Array.insertAt
-        0
-        """
-#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\netstandard2.0\MyProvider.Runtime.dll"
+                     |> Array.map (fun (rdf_namespace_name, rdf_sources) -> 
 
-open DoxAletheia
-open MyProvider
-    """
+                        try 
+                             generate_vocabulary rdf_namespace_name  rdf_sources
+                        with 
+                        | err -> 
+                            errored_namespaces.Add(sprintf "namespace %s sources %s errored with %s" rdf_namespace_name rdf_sources err.Message)
+                            String.Empty
+
+                     )
+                    |> Array.filter (fun item -> item <> "")
 
 
-File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "RdfProvided.txt"), provider_content)
 File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "ErroredNamespaces.txt"), errored_namespaces)
 
+item_group 
+|> Array.distinct
+|> Array.sort
+|> String.concat "\n"
+|> clip
 // TODO investigate linkml output
 // TODO consider a prefix refresh of all ttl files
 // TODO investigate windows xsd files like event xsd in C:\Program Files (x86)\Windows Kits\10\Include

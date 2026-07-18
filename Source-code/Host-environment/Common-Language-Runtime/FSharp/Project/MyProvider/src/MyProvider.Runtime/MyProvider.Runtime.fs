@@ -67,7 +67,7 @@ and Rdf_Subject =
 
         match this with
         | IRIREFSubject iriref -> iriref.as_rendered_string
-        | BlankNodeSubject blank_node -> blank_node.as_rendered_string
+        | BlankNodeSubject blank_node -> blank_node.as_raw_string
 
 
 and Rdf_Predicate =
@@ -150,7 +150,10 @@ and Triple_Term =
     member this.ttObject =
         match this with
         | TripleTerm triple -> triple.curObject
-// TODO next add string indexes to rdf types
+
+
+
+
 and IRIREF =
     | NamespacedName of Namespaced_IRI
     | SkolemIRIREF of Skolem_IRI
@@ -185,26 +188,16 @@ and IRIREF =
         | Ok success -> success
         | Error failure -> failwith $"{failure} : {code_line_message input_string.as_code_line IRIREF.metasyntax}"
 
-    member this.as_code_square =
+
+    member this.as_raw_string =
         match this with
-        | IRIREF iri -> iri.as_code_square
-        | SkolemIRIREF iri -> iri.as_code_square
-        | NamespacedName namespaced_iri -> namespaced_iri.as_code_square
-        | RelativeReference relative_ref -> relative_ref.as_code_square
+        | IRIREF iri -> iri.as_raw_string
+        | SkolemIRIREF iri -> iri.as_raw_string
+        | NamespacedName namespaced_iri -> namespaced_iri.as_raw_string
+        | RelativeReference relative_ref -> relative_ref.as_raw_string
 
+    member this.as_rendered_string = "<" + this.as_raw_string + ">"
 
-    member this.as_raw_strings = Strings.from_code_square this.as_code_square
-
-    member this.as_rendered_string =
-        match this with
-        | IRIREF iri -> iri.as_rendered_string
-        | SkolemIRIREF iri -> iri.as_rendered_string
-        | NamespacedName namespaced_iri -> namespaced_iri.as_rendered_string
-        | RelativeReference relative_ref -> relative_ref.as_rendered_string
-
-    member this.fsi_printer =
-        let unames = Code_Square.Unames this.as_code_square
-        sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 
 and Blank_Node =
@@ -214,10 +207,12 @@ and Blank_Node =
     member this.as_subject = BlankNodeSubject this
     member this.as_object = BlankNodeObject this
 
-    member this.as_rendered_string =
+    member this.as_raw_string =
         match this with
         | BlankNodeIdentifier identifier -> identifier
         | BlankNodePropertyList (identifier, predicateObjectList) -> identifier
+
+    member this.as_rendered_string = "_:" + this.as_raw_string
 
 
 and Rdf_Literal =
@@ -308,19 +303,18 @@ and Skolem_IRI =
         match this with
         | SkolemIRI (well_known_stem, uuid) -> uuid
 
-    member this.as_code_square =
-        Array.concat [| this.well_known_iriref.as_code_square
-                        [| this.uuid.ToString("N").as_code_line |] |]
 
     member this.as_subject = this |> SkolemIRIREF |> IRIREFSubject
     member this.as_predicate = this |> SkolemIRIREF |> IRIREFPredicate
     member this.as_object = this |> SkolemIRIREF |> IRIREFObject
 
-    member this.as_rendered_string =
+    member this.as_raw_string =
         match this with
         | SkolemIRI (well_known_stem, uuid) ->
             well_known_stem.as_rendered_string
             + uuid.ToString("N")
+
+    member this.as_rendered_string = "<" + this.as_raw_string + ">"
 
 and Namespaced_IRI =
     private
@@ -333,13 +327,21 @@ and Namespaced_IRI =
         match this with
         | NamespacedIRI (namespace_name, local_name) -> local_name
 
+    member this.as_raw_string =
+        match this with
+        | NamespacedIRI (namespace_name, local_name) ->
+            namespace_name.as_raw_string
+            + local_name.as_raw_string
+
+    member this.as_rendered_string = "<" + this.as_raw_string + ">"
+
     member this.as_prefixed_name (delimiter: string) (prefix_map: Map<string, string>) =
         try
-            let namespace_name = this.namespace_iriref.as_rendered_string
+            let namespace_name = this.namespace_iriref.as_raw_string
             let prefix_label = prefix_map[namespace_name]
-            sprintf "%s%s%s" prefix_label delimiter this.local_name.as_rendered_string
+            sprintf "%s%s%s" prefix_label delimiter this.local_name.as_raw_string
         with
-        | err -> failwithf "%s failed with error %s" this.as_rendered_string err.Message
+        | err -> failwithf "%s failed with error %s" this.as_raw_string err.Message
 
     member this.as_curie(prefix_map: Map<string, string>) = this.as_prefixed_name ":" prefix_map
 
@@ -366,28 +368,14 @@ and Namespaced_IRI =
 
         NamespacedIRI(namespace_name, local_name)
 
-    member this.as_code_square =
-        match this with
-        | NamespacedIRI (namespace_name, local_name) ->
-            Array.concat [| namespace_name.as_code_square
-                            local_name.as_code_square |]
 
 
-    member this.as_raw_strings = Strings.from_code_square this.as_code_square
 
-    member this.as_rendered_string =
-        match this with
-        | NamespacedIRI (namespace_name, local_name) ->
-            namespace_name.as_rendered_string
-            + local_name.as_rendered_string
 
     member this.as_subject = this |> NamespacedName |> IRIREFSubject
     member this.as_predicate = this |> NamespacedName |> IRIREFPredicate
     member this.as_object = this |> NamespacedName |> IRIREFObject
 
-    member this.fsi_printer =
-        let unames = Code_Square.Unames this.as_code_square
-        sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 and Local_Name =
 
@@ -413,27 +401,25 @@ and Local_Name =
         | Ok success -> success
         | Error failure -> failwith $"{failure} : {code_line_message input_string.as_code_line Local_Name.metasyntax}"
 
-    member this.as_code_square =
+    member this.substrings =
         match this with
-        | LocalName pn_local -> [| pn_local.as_code_line |]
-        | LocalPath path_rootless -> path_rootless.as_code_square
+        | LocalName pn_local -> [| pn_local.as_raw_string |]
+        | LocalPath path_rootless ->
+            path_rootless.segments
+            |> Array.map Segment.raw_string
 
 
-    member this.as_raw_strings = this.as_code_square |> Strings.from_code_square
 
-    member this.as_rendered_string =
+    member this.as_raw_string =
 
         match this with
-        | LocalName pn_local -> pn_local.as_rendered_string
-        | LocalPath path_rootless -> path_rootless.as_rendered_string
+        | LocalName pn_local -> pn_local.as_raw_string
+        | LocalPath path_rootless -> path_rootless.as_raw_string
 
-    member this.fsi_printer =
-        let unames = Code_Square.Unames this.as_code_square
-        sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 and PN_LOCAL =
     private
-    | PN_LOCAL of Code_Line
+    | PN_LOCAL of string
     static member parser: Parser<PN_LOCAL, Code_Point, unit, ReadableMemory<Code_Point>> =
         parser {
 
@@ -458,11 +444,15 @@ and PN_LOCAL =
 
             return
                 match maybe_tail with
-                | ValueNone -> PN_LOCAL [| head |]
+                | ValueNone ->
+                    [| head |]
+                    |> String_Pool.from_code_line
+                    |> PN_LOCAL
                 | ValueSome immutable_code_line ->
                     immutable_code_line
                     |> Code_Line.from_immutable_code_line
                     |> Array.insertAt 0 head
+                    |> String_Pool.from_code_line
                     |> PN_LOCAL
 
         }
@@ -474,24 +464,18 @@ and PN_LOCAL =
 
     static member parse(input_string: string) =
         match PN_LOCAL.parser input_string.as_parser_input with
-        | Ok (PN_LOCAL false_positive) when false_positive[false_positive.last_index] = int '.' ->
+        | Ok (PN_LOCAL false_positive) when false_positive[false_positive.ToCharArray().last_index] = '.' ->
             failwith
                 $"false positive for {input_string}, cannot end with full stop ``.`` : {code_line_message input_string.as_code_line PN_LOCAL.metasyntax}"
         | Ok success -> success
         | Error failure -> failwith $"{failure} : {code_line_message input_string.as_code_line PN_LOCAL.metasyntax}"
 
-    member this.as_code_line =
+    member this.as_raw_string =
         match this with
-        | PN_LOCAL code_line -> code_line
-
-    member this.as_raw_string = this.as_code_line |> String.from_code_line
+        | PN_LOCAL raw_string -> raw_string
 
 
-    member this.as_rendered_string = this.as_raw_string
 
-    member this.fsi_printer =
-        let unames = Code_Line.Unames this.as_code_line
-        sprintf "%A %A ``%s``" this unames this.as_raw_string
 
 
 and Vertex =
@@ -505,14 +489,14 @@ and Vertex =
         match rdf_subject with
         | IRIREFSubject (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
         | IRIREFSubject iriref -> iriref.as_rendered_string
-        | BlankNodeSubject blank_node -> blank_node.as_rendered_string
+        | BlankNodeSubject blank_node -> blank_node.as_raw_string
 
     static member object_String (rdf_object: Rdf_Object) (prefix_delimiter: string) (prefix_map: Map<string, string>) =
 
         match rdf_object with
         | IRIREFObject (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
         | IRIREFObject iriref -> iriref.as_rendered_string
-        | BlankNodeObject blank_node -> blank_node.as_rendered_string
+        | BlankNodeObject blank_node -> blank_node.as_raw_string
         | LiteralObject rdf_literal ->
             match rdf_literal with
             | SimpleLiteral lexical_form -> sprintf "%s" lexical_form
@@ -658,8 +642,6 @@ module Quad =
     let curSubject (quad: Rdf_Quad) = quad.triple.curSubject
     let curPredicate (quad: Rdf_Quad) = quad.triple.curPredicate
     let curObject (quad: Rdf_Quad) = quad.triple.curObject
-
-
 
 
 

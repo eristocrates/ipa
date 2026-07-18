@@ -54,16 +54,21 @@ open DiagramStudio
 #r "nuget: Rubjerg.Graphviz"
 open Rubjerg.Graphviz
 
-#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\MyProvider.Runtime.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\Ergonomic_Extensions.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\XParsec.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\ParserCombinator.dll"
-#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\FRange.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\NeatIntervals.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\FRange.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\UUIDNext.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\Blake3.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\dotNetRdf.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\LightningDB.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\Interval_Range.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\MyProvider.Runtime.dll"
+open Rdf_Provider
+
+open LightningDB
+open Blake3
 
 open VDS.RDF
 open VDS.RDF.Parsing
@@ -74,7 +79,10 @@ open VDS.RDF.Query.Datasets
 open VDS.RDF.Writing.Formatting
 
 open DoxAletheia
-open Rdf_Provider
+open Interval_Range
+open IntervalErgonomics
+open StringExtensions
+open ByteExtensions
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\MermaidErgonomics.fsx"
 open MermaidErgonomics
@@ -92,8 +100,8 @@ open Namespace_Prefixes
 
 
 
-#r "nuget: FSharp.Data"
 
+#r "nuget: FSharp.Data"
 open FSharp.Data
 
 
@@ -101,29 +109,30 @@ open FSharp.Data
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PowershellErgonomics.fsx"
 open PowershellErgonomics
 open XParsec
-open FRange
 open NeatIntervals
 open UUIDNext
 open Blake3
 
-(*
-module The_16th_Sanctuary = 
-    module Rhythm_Games = 
-        module rhythm_game_chat = 
-
-
-            [<Literal>]
-            let sample_file_path =
-                @"D:\Surface\Personal\16thSanctuary\The 16th Sanctuary - Rhythm Games - rhythm-game-chat [879472415682490408].json"
-
-            let json = JsonProvider<sample_file_path>.Load sample_file_path
-
-
-*)
+open System
+open System.IO
+open System.Xml
+open System.Xml.Linq
+open System.Xml.XPath
 
 
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XmlErgonomics.fsx"
 
+open XmlErgonomics
+
+
+#r "nuget: FSharp.Collections.ParallelSeq"
+open FSharp.Collections.ParallelSeq
+
+
+#r "nuget: FSharp.HashCollections"
+
+open FSharp.HashCollections
 
 
 
@@ -154,8 +163,10 @@ type owl_time =
 type foaf =
     Rdf_Vocabulary<"http://xmlns.com/foaf/0.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\xmlns.com\foaf\0.1\slash\foaf.ttl">
 
+type olo = Rdf_Vocabulary<"http://purl.org/ontology/olo/core#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\ontology\olo\core\hash\olo.ttl"> 
 
 (*
+
 
 
 type as_ =
@@ -910,8 +921,7 @@ module Rdf_Literal =
 
 
 
-// TODO next transition to
-//  open FSharp.HashCollections
+// TODO consider FSharp.HashCollections
 
 
 type Draft_Document =
@@ -921,7 +931,7 @@ type Draft_Document =
       predicates: Rdf_Predicate array
       objects: Rdf_Object array
       predicateObjectLists: PredicateObjectList array
-      triples: Set<Rdf_Triple>
+      triples: HashSet<Rdf_Triple>
 
      }
 
@@ -931,7 +941,7 @@ type Draft_Document =
           predicates = [||]
           objects = [||]
           predicateObjectLists = [||]
-          triples = set [||]
+          triples = HashSet.empty
 
         }
 
@@ -941,7 +951,7 @@ type Draft_Document =
           predicates = [||]
           objects = [||]
           predicateObjectLists = [||]
-          triples = set [||]
+          triples = HashSet.empty
 
         }
 
@@ -951,7 +961,7 @@ type Draft_Document =
           predicates = [| predicate_term |]
           objects = [||]
           predicateObjectLists = [||]
-          triples = set [||]
+          triples = HashSet.empty
 
         }
 
@@ -961,7 +971,7 @@ type Draft_Document =
           predicates = predicates
           objects = [||]
           predicateObjectLists = [||]
-          triples = set [||]
+          triples = HashSet.empty
 
         }
 
@@ -971,7 +981,7 @@ type Draft_Document =
           predicates = [||]
           objects = [| object_term |]
           predicateObjectLists = [||]
-          triples = set [||]
+          triples = HashSet.empty
 
         }
 
@@ -981,7 +991,7 @@ type Draft_Document =
           predicates = [||]
           objects = objects
           predicateObjectLists = [||]
-          triples = set [||]
+          triples = HashSet.empty
 
         }
 
@@ -998,7 +1008,7 @@ type Draft_Document =
           objects = [||]
           predicateObjectLists = [||]
           triples =
-            Set.union
+            HashSet.union
                 this.triples
                 (triples_from_terms
                  + triples_from_subjects_predicateObjectLists)
@@ -1049,58 +1059,16 @@ type Draft_Document =
 
 let global_prefix_map = global_prefix_declarations |> Map.ofArray
 
+
 let prefixed_name (delimiter: string) (iri: Namespaced_IRI) =
     let namespace_name = iri.namespace_iriref.as_rendered_string
     let prefix_label = global_prefix_map[namespace_name]
-    sprintf "%s%s%s" prefix_label delimiter iri.local_name.as_rendered_string
+    sprintf "%s%s%s" prefix_label delimiter iri.local_name.as_raw_string
 
 
 let curie (iri: Namespaced_IRI) = iri |> prefixed_name ":"
 
 
-
-(*
-
-
-module Vertex =
-    let escaped_curie_presentation (vertex: Vertex) =
-        match vertex with
-        | SubjectVertex (Rdf_Subject.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
-        | ObjectVertex (Rdf_Object.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
-        | SubjectVertex subject_term -> subject_term.rdf_string
-        | ObjectVertex object_term -> object_term.rdf_string
-
-    let curie_presentation (vertex: Vertex) =
-        match vertex with
-        | SubjectVertex (Rdf_Subject.FromIri (NamespacedName iri)) -> curie iri
-        | ObjectVertex (Rdf_Object.FromIri (NamespacedName iri)) -> curie iri
-        | SubjectVertex subject_term -> subject_term.rdf_string
-        | ObjectVertex object_term -> object_term.rdf_string
-
-module Edge =
-    let escaped_curie_presentation (edge: Edge) =
-        match edge with
-        | Edge.FromTriple triple ->
-            match triple.curPredicate with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-        | PredicateEdge predicate_term ->
-            match predicate_term with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-
-    let curie_presentation (edge: Edge) =
-        match edge with
-        | Edge.FromTriple triple ->
-            match triple.curPredicate with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-        | PredicateEdge predicate_term ->
-            match predicate_term with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-
-*)
 
 
 let map_prefixes (graph: IGraph) =
@@ -1130,78 +1098,7 @@ let map_prefixes (graph: IGraph) =
             graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name)))
 
 
-// TODO next clean up printer code, and vertexes
-
-// [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
-(*
-    member this.yog_label =
-        match this with
-        | FromSubject (Rdf_Subject.FromIri (NamespacedName iri)) -> curie iri
-        | FromObject (Rdf_Object.FromIri (NamespacedName iri)) -> curie iri
-        | FromSubject subject_term -> subject_term.rdf_string
-        | FromObject object_term -> object_term.rdf_string
-
-    member this.d2_label =
-        match this with
-        | FromSubject (Rdf_Subject.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
-        | FromObject (Rdf_Object.FromIri (NamespacedName iri)) -> iri |> prefixed_name @"\:"
-        | FromSubject subject_term -> subject_term.rdf_string
-        | FromObject object_term -> object_term.rdf_string
-
-*)
-
-
-(*
-
-    | FromIri of  Iri
-    | FromBlankNode of  Blank_Node
-    | FromLiteral of  Rdf_Literal
-    | FromTripleTerm of Rdf_Triple
-    static member from_subject (subject_term :Rdf_Subject) =
-        match subject_term with
-        | Rdf_Subject.FromIri iri -> FromIri iri
-        | Rdf_Subject.FromBlankNode blank_node -> FromBlankNode blank_node
-    static member from_object (object_term :Rdf_Object) =
-        match object_term with
-        | Rdf_Object.FromIri iri -> FromIri iri
-        | Rdf_Object.FromBlankNode blank_node -> FromBlankNode blank_node
-        | Rdf_Object.LiteralObject literal -> FromLiteral literal
-        | Rdf_Object.FromTripleTerm triple_term -> FromTripleTerm triple_term
-
-
-    *)
-
-
-
-
-// [<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
-(*
-    member this.yog_label =
-        match this with
-        | FromTriple triple ->
-            match triple.curPredicate with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-        | FromPredicate predicate_term ->
-            match predicate_term with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> curie iri
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-
-    member this.d2_label =
-        match this with
-        | FromTriple triple ->
-            match triple.curPredicate with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-        | FromPredicate predicate_term ->
-            match predicate_term with
-            | Rdf_Predicate.FromIri (NamespacedName iri) -> iri |> prefixed_name @"\:"
-            | Rdf_Predicate.FromIri iri -> iri.rdf_string
-
-*)
-
-
-type Rdf_Graph = { triples: Set<Rdf_Triple> }
+type Rdf_Graph = { triples: HashSet<Rdf_Triple> }
 
 
 type Textual_Syntax =
@@ -1238,7 +1135,7 @@ module NTriples =
             clip text
             failwithf "The text in the clipboard failed to parse with error %s" err.Message
 
-    let iriref_nt (iriref: IRIREF) = "<" + iriref.as_rendered_string + ">"
+    let iriref_nt (iriref: IRIREF) = "<" + iriref.as_raw_string + ">"
 
 
 
@@ -1306,40 +1203,12 @@ module NTriples =
 
     let graph_lines (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
-        |> Set.toArray
+        |> HashSet.toArray
         |> Array.Parallel.map (fun triple -> triple_nt triple)
 
     let graph_text (rdf_graph: Rdf_Graph) =
         graph_lines rdf_graph |> String.concat "\n"
 
-
-
-
-(*
-    member this.nt_lines =
-        this.triples
-        |> Set.toArray
-        |> Array.Parallel.map (fun triple -> triple.nt)
-
-    member this.nt_text = this.nt_lines |> String.concat "\n"
-
-    member this.ddot_lines =
-        this.triples
-        |> Set.toArray
-        |> Array.Parallel.map (fun triple -> triple.ddot)
-
-    member this.ddot_text = this.ddot_lines |> String.concat "\n"
-
-
-    member this.to_igraph() =
-        let igraph = new ThreadSafeGraph()
-        NTriples.parse this.nt_text igraph
-        igraph
-
-
-    member this.as_igraph(igraph: IGraph) = NTriples.parse this.nt_text igraph
-
-    *)
 
 
 module NQuads =
@@ -1374,7 +1243,7 @@ module D2 =
 
     let graph_lines (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
-        |> Set.toArray
+        |> HashSet.toArray
         |> Array.Parallel.map (fun triple ->
             SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
@@ -1405,7 +1274,7 @@ module Rdf_Graph =
 
     let to_yograph (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
-        |> Set.toArray
+        |> HashSet.toArray
         |> Array.Parallel.map (fun triple ->
             SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.toList
@@ -1416,7 +1285,7 @@ module Rdf_Graph =
         let quik_graph = new Quik_Graph()
 
         rdf_graph.triples
-        |> Set.toArray
+        |> HashSet.toArray
         |> Array.map (fun triple ->
             quik_graph.AddVerticesAndEdge(
                 new Quik_Edge(
@@ -1636,7 +1505,7 @@ module ddot =
 
         let graph_lines (rdf_graph: Rdf_Graph) =
             rdf_graph.triples
-            |> Set.toArray
+            |> HashSet.toArray
             |> Array.Parallel.map (fun triple -> triple_ddot triple)
 
         let graph_text (rdf_graph: Rdf_Graph) =
@@ -1813,6 +1682,14 @@ let inline (-!>)
     (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
     =
     draft.add_subject subject_term.as_subject
+let inline (-!|)
+    (draft: Draft_Document)
+    (subject_terms: ^SubjectType list when ^SubjectType: (member as_subject: Rdf_Subject))
+    =
+    subject_terms
+    |> List.map (fun subject_term -> subject_term.as_subject)
+    |> List.toArray
+    |> draft.add_subjects
 
 
 // predicate adders
@@ -1982,100 +1859,12 @@ let inline (-->|)
     |> draft.add_objects
     |> Draft_Document.materialize_triples
 
+
+
+
+
+
 (*
-
-// let subjectlist, predicate = subjectlist_predicate
-// ttriples subjectlist [| predicateObjectList predicate [| object |] |]
-
-/// subject+ predicate
-let inline (-|--)
-    (subjectlist: ^SubjectType array when ^SubjectType: (member as_subject: Rdf_Subject))
-    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    =
-    subjectlist, predicate
-
-
-
-
-
-
-
-
-
-
-let inline (-->=)
-    (subjectlist_predicate: ^SubjectType array * ^PredicateType when ^SubjectType: (member as_subject: Rdf_Subject) and ^PredicateType: (member as_predicate:
-                                Rdf_Predicate))
-    object
-    =
-    let subjectlist, predicate = subjectlist_predicate
-    ttriples subjectlist [| predicateObjectList predicate [| Rdf_Literal.autotyped object |] |]
-
-let inline (-->@)
-    (subjectlist_predicate: ^SubjectType array * ^PredicateType when ^SubjectType: (member as_subject: Rdf_Subject) and ^PredicateType: (member as_predicate:
-                                Rdf_Predicate))
-    (lexical_form: string)
-    (language_tag: Language_Tag)
-    =
-    let subjectlist, predicate = subjectlist_predicate
-    ttriples subjectlist [| predicateObjectList predicate [| lexical_form ^@ language_tag |] |]
-
-let inline (-->^)
-    (subjectlist_predicate: ^SubjectType array * ^PredicateType when ^SubjectType: (member as_subject: Rdf_Subject) and ^PredicateType: (member as_predicate:
-                                Rdf_Predicate))
-    (lexical_form: string)
-    (datatype: Iri)
-    =
-    let subjectlist, predicate = subjectlist_predicate
-    ttriples subjectlist [| predicateObjectList predicate [| lexical_form ^^ datatype |] |]
-let inline (->~)
-    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    (objectlist: ^ObjectType array when ^ObjectType: (member as_object: Rdf_Object))
-    =
-    predicateObjectList predicate objectlist
-
-let inline (->~=) (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) objectlist =
-    predicateObjectList
-        predicate
-        (objectlist
-         |> Array.map (fun list_item -> Rdf_Literal.autotyped list_item))
-
-let inline (->~@)
-    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    (objectlist: string array)
-    (language_tag: Language_Tag)
-    =
-    predicateObjectList
-        predicate
-        (objectlist
-         |> Array.map (fun lexical_form -> lexical_form ^@ language_tag))
-
-let inline (->~^)
-    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    (objectlist: string array)
-    (datatype: Iri)
-    =
-    predicateObjectList
-        predicate
-        (objectlist
-         |> Array.map (fun lexical_form -> lexical_form ^^ datatype))
-
-
-let inline (->-@)
-    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    (lexical_form: string)
-    (language_tag: Language_Tag)
-    =
-    predicateObjectList predicate [| lexical_form ^@ language_tag |]
-
-let inline (->-^)
-    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    (lexical_form: string)
-    (datatype: Iri)
-    =
-    predicateObjectList predicate [| lexical_form ^^ datatype |]
-
-*)
 
 
 
@@ -2097,12 +1886,6 @@ type Rdf_Dataset =
 
 
 
-(*
-
-
-
-
-
 
 
 type Property_Graph =
@@ -2120,176 +1903,6 @@ type Property_Graph =
 *)
 
 
-
-
-
-
-
-
-
-
-(*
-
-
-
-
-type ID_message<'Key when 'Key: comparison> = GetID of key: 'Key * reply: AsyncReplyChannel<UInt32>
-
-type Legisign_ID() =
-    let mailbox_processor =
-        MailboxProcessor.Start (fun inbox ->
-            let rec loop (id_map: Map<string, UInt32>) =
-                async {
-                    let! id_message = inbox.Receive()
-
-                    match id_message with
-                    | GetID (legisign, message) ->
-                        if id_map.ContainsKey legisign then
-                            message.Reply id_map[legisign]
-                            return! loop id_map
-                        else
-                            let legisign_id = Map.count id_map + 1 |> uint32
-
-                            message.Reply legisign_id
-
-                            return! loop (id_map.Add(legisign, legisign_id))
-                }
-
-            loop Map.empty
-
-        )
-
-    member this.from_string(string_value) =
-        mailbox_processor.PostAndReply(fun reply -> GetID(string_value, reply))
-
-type Triple_ID() =
-    let mailbox_processor =
-        MailboxProcessor.Start (fun inbox ->
-            let rec loop (id_map: Map<Rdf_Triple, UInt32>) =
-                async {
-                    let! id_message = inbox.Receive()
-
-                    match id_message with
-                    | GetID (triple, message) ->
-                        if id_map.ContainsKey triple then
-                            message.Reply id_map[triple]
-                            return! loop id_map
-                        else
-                            let triple_id = Map.count id_map + 1 |> uint32
-
-                            message.Reply triple_id
-
-                            return! loop (id_map.Add(triple, triple_id))
-                }
-
-            loop Map.empty
-
-        )
-
-    member this.from_triple(triple: Rdf_Triple) =
-        mailbox_processor.PostAndReply(fun reply -> GetID(triple, reply))
-
-
-
-type Term_ID() =
-    let mailbox_processor =
-        MailboxProcessor.Start (fun inbox ->
-            let rec loop (id_map: Map<Term, UInt32>) =
-                async {
-                    let! id_message = inbox.Receive()
-
-                    match id_message with
-                    | GetID (term, message) ->
-                        if id_map.ContainsKey term then
-                            message.Reply id_map[term]
-                            return! loop id_map
-                        else
-                            let term_id = Map.count id_map + 1 |> uint32
-
-                            message.Reply term_id
-
-                            return! loop (id_map.Add(term, term_id))
-                }
-
-            loop Map.empty
-
-        )
-
-    member this.from_term(term: Term) =
-        mailbox_processor.PostAndReply(fun reply -> GetID(term, reply))
-
-type Vertex_ID() =
-    let mailbox_processor =
-        MailboxProcessor.Start (fun inbox ->
-            let rec loop (id_map: Map<Vertex, UInt32>) =
-                async {
-                    let! id_message = inbox.Receive()
-
-                    match id_message with
-                    | GetID (vertex, message) ->
-                        if id_map.ContainsKey vertex then
-                            message.Reply id_map[vertex]
-                            return! loop id_map
-                        else
-                            let vertex_id = Map.count id_map + 1 |> uint32
-
-                            message.Reply vertex_id
-
-                            return! loop (id_map.Add(vertex, vertex_id))
-                }
-
-            loop Map.empty
-
-        )
-
-    member this.from_vertex(vertex: Vertex) =
-        mailbox_processor.PostAndReply(fun reply -> GetID(vertex, reply))
-
-
-
-type Edge_ID() =
-    let mailbox_processor =
-        MailboxProcessor.Start (fun inbox ->
-            let rec loop (id_map: Map<Edge, UInt32>) =
-                async {
-                    let! id_message = inbox.Receive()
-
-                    match id_message with
-                    | GetID (edge, message) ->
-                        if id_map.ContainsKey edge then
-                            message.Reply id_map[edge]
-                            return! loop id_map
-                        else
-                            let edge_id = Map.count id_map + 1 |> uint32
-
-                            message.Reply edge_id
-
-                            return! loop (id_map.Add(edge, edge_id))
-                }
-
-            loop Map.empty
-
-        )
-
-    member this.from_edge(edge: Edge) =
-        mailbox_processor.PostAndReply(fun reply -> GetID(edge, reply))
-
-
-
-
-module Identity =
-    let legisign_id = Legisign_ID()
-    let triple_id = Triple_ID()
-    let term_id = Term_ID()
-    let vertex_id = Vertex_ID()
-    let edge_id = Edge_ID()
-
-
-
-
-
-
-*)
 
 
 
@@ -2352,6 +1965,421 @@ let write_draft parent_directory stem draft =
 
 
 
+
+let lmdb_directory_path = @"D:\Persistence\LMDB\DoxAletheia"
+
+
+
+let blake3_hash (string_input:string) = 
+    string_input
+    |> Encoding.UTF8.GetBytes
+    |> Blake3.Hasher.Hash
+
+
+type String_Index =
+    private
+    | StringIndex of uint64
+    member this.unwrap  =
+        match this with 
+        | StringIndex value -> value
+
+    member this.as_bytes  =
+        BitConverter.GetBytes this.unwrap
+    static member wrap_bytes (bytes:byte array) = bytes |> BitConverter.ToUInt64 |> StringIndex
+    static member wrap_mdb(mdb_string_index:MDBValue)  = String_Index.wrap_bytes mdb_string_index.as_bytes 
+    static member some_mdb(mdb_string_index:MDBValue)  = Some (String_Index.wrap_mdb mdb_string_index)
+
+
+
+
+
+
+
+
+
+let batch_size = 100_000
+let cache_capacity = 200_000
+
+
+
+
+
+
+
+
+let GiB = 1024L * 1024L * 1024L
+let bytes_to_gib (bytes: int64) = float bytes / 1024.0 / 1024.0 / 1024.0
+let map_size = int64 5 * GiB
+
+Directory.CreateDirectory(lmdb_directory_path)
+|> ignore
+
+
+let environment = new LightningEnvironment(lmdb_directory_path)
+
+
+environment.MapSize <- map_size
+environment.MaxDatabases <- 30
+
+
+environment.Open()
+
+let print_stats () =
+
+
+    let info = environment.Info
+    let stat = environment.EnvironmentStats
+
+    let page_size = int64 stat.PageSize
+
+    let used_bytes = (int64 info.LastPageNumber + 1L) * page_size
+
+    let map_size = info.MapSize
+
+    let remaining_bytes = map_size - used_bytes
+
+    let used_percent = (float used_bytes / float map_size) * 100.0
+
+    printfn ""
+    printfn "LMDB Environment"
+    printfn "----------------"
+    printfn "Page Size:        %i bytes" page_size
+    printfn "Last Page Number: %i" info.LastPageNumber
+    printfn "Map Size:         %.2f GiB" (bytes_to_gib map_size)
+    printfn "Used:             %.2f GiB" (bytes_to_gib used_bytes)
+    printfn "Remaining:        %.2f GiB" (bytes_to_gib remaining_bytes)
+    printfn "Usage:            %.2f%%" used_percent
+    printfn ""
+
+
+
+module Transaction = 
+    let read() = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+    let write() = environment.BeginTransaction()
+    let commit (transaction:LightningTransaction) = transaction.Commit() |> ignore
+
+
+
+type Memory_Map<'InputType,'OutputType> = 
+    {
+        name:string
+        database:LightningDatabase
+        flags:DatabaseOpenFlags
+    }
+    static member from_name_flags (name:string)(flags:DatabaseOpenFlags) =
+        use transaction = environment.BeginTransaction()
+        
+
+        let database =
+            transaction.OpenDatabase(
+                name,
+                DatabaseConfiguration(
+                    Flags = flags
+
+                )
+            )
+
+        transaction.Commit() |> ignore
+        {
+
+            name = name 
+            database = database
+            flags = flags
+
+        }
+    member this.Get
+        (key_as_bytes: byte array)
+        (some_continuation: MDBValue -> 'OutputType option)
+        : 'OutputType option =
+
+        use transaction =
+            Transaction.read()
+
+        match transaction.Get(this.database, key_as_bytes) with
+        | struct (MDBResultCode.Success, _, mdb_value) ->
+            some_continuation mdb_value
+
+        | struct (MDBResultCode.NotFound, _, _) ->
+            None
+
+        | struct (result_code, _, _) ->
+            failwithf
+                "%s.Get failed with MDBResultCode: %A"
+                this.name
+                result_code
+    member this.MDBContinuation (transaction: LightningTransaction)(mdb_result:MDBResultCode)   =
+                    if mdb_result <> MDBResultCode.Success then
+                        failwithf "%s.Put failed: %A" this.name mdb_result
+                    else
+                        transaction
+    member this.MDBCommit (transaction: LightningTransaction) (mdb_result:MDBResultCode)   = 
+    
+                    if mdb_result <> MDBResultCode.Success then
+                        failwithf "%s.Put failed: %A" this.name mdb_result
+                    else
+                        transaction.Commit() |> ignore
+
+    member this.Put (key_as_bytes:byte array)(value_as_bytes:byte array) (transaction: LightningTransaction) = transaction.Put(this.database, key_as_bytes,value_as_bytes) |> this.MDBContinuation transaction
+    member this.Delete (key_as_bytes:byte array) (transaction: LightningTransaction) = transaction.Delete(this.database, key_as_bytes)
+module Memory_Map = 
+    let string_index_to_string:Memory_Map<String_Index,string> =                 
+                    Memory_Map.from_name_flags
+                        "String_Index_to_String"
+                        (
+                            DatabaseOpenFlags.Create
+                            ||| DatabaseOpenFlags.IntegerKey
+                        )
+
+    let string_hash_to_string_index:Memory_Map<Hash,String_Index> =  Memory_Map.from_name_flags "String_Hash_to_String_Index" DatabaseOpenFlags.Create
+
+
+type Inbox<'MessageType> = MailboxProcessor<'MessageType>
+
+
+    
+type Index_Message =
+    | EnsureStringIndex of Blake3.Hash * string * AsyncReplyChannel<String_Index>
+        
+let rec watch_inbox(inbox:Inbox<'MessageType>) = 
+    async{
+
+        let! message = inbox.Receive()
+
+        printfn "\nmessage is: %A\n" message
+
+        return! watch_inbox inbox
+        }
+    
+
+    
+type Data_Index
+    (
+        string_index_to_string:
+            Memory_Map<String_Index, string>,
+
+        string_hash_to_string_index:
+            Memory_Map<Hash, String_Index>
+    ) =
+
+    let load_string_array () =
+
+        let string_array =
+            ResizeArray<string>()
+
+        use transaction =
+            Transaction.read()
+
+        use cursor =
+            transaction.CreateCursor(
+                string_index_to_string.database
+            )
+
+        let mutable cursor_result =
+            cursor.First()
+
+        let mutable continue_loading =
+            true
+
+        while continue_loading do
+
+            match cursor_result with
+            | struct (
+                MDBResultCode.Success,
+                mdb_string_index,
+                mdb_string
+              ) ->
+
+                let persisted_string_index =
+                    String_Index.wrap_mdb mdb_string_index
+
+                let expected_string_index =
+                    uint64 string_array.Count
+
+                if
+                    persisted_string_index.unwrap
+                    <> expected_string_index
+                then
+                    failwithf
+                        "Expected String_Index %i, but LMDB contained String_Index %i."
+                        expected_string_index
+                        persisted_string_index.unwrap
+
+                let string_value =
+                    mdb_string.as_bytes
+                    |> Encoding.UTF8.GetString
+
+                string_array.Add string_value
+
+                cursor_result <-
+                    cursor.Next()
+
+            | struct (MDBResultCode.NotFound, _, _) ->
+                continue_loading <- false
+
+            | struct (result_code, _, _) ->
+                failwithf
+                    "Initial String_Index_to_String load failed with MDBResultCode: %A"
+                    result_code
+
+        string_array
+
+
+    // Evaluated exactly once while this Data_Index is constructed.
+    let string_array =
+        load_string_array()
+
+
+    // Also created exactly once.
+    let index_agent =
+        MailboxProcessor.Start(fun inbox ->
+
+            let rec loop () =
+                async {
+                    let! message =
+                        inbox.Receive()
+
+                    match message with
+                    | EnsureStringIndex(
+                        string_hash,
+                        string_value,
+                        reply
+                      ) ->
+
+                        let string_index =
+                            uint64 string_array.Count
+                            |> StringIndex
+
+                        use transaction =
+                            Transaction.write()
+
+                        transaction
+                        |> string_hash_to_string_index.Put
+                            string_hash.as_bytes
+                            string_index.as_bytes
+                        |> string_index_to_string.Put
+                            string_index.as_bytes
+                            string_value.as_bytes
+                        |> Transaction.commit
+
+                        string_array.Add string_value
+
+                        reply.Reply string_index
+
+                    return! loop ()
+                }
+
+            loop ()
+        )
+
+
+    member _.maybe_string_index_for_hash
+        (string_hash: Hash)
+        : String_Index option =
+
+        String_Index.some_mdb
+        |> string_hash_to_string_index.Get string_hash.as_bytes
+            
+
+
+    member _.get_string_for_string_index
+        (string_index: String_Index)
+        : string =
+
+        string_index_to_string.Get
+            string_index.as_bytes
+            (fun mdb_string ->
+                mdb_string.as_bytes
+                |> Encoding.UTF8.GetString
+                |> Some
+            )
+        |> Option.get
+
+
+    member this.ensure_string_index_for_string
+        (string_value: string)
+        : String_Index =
+
+        let string_hash =
+            blake3_hash string_value
+
+        index_agent.PostAndReply(fun reply ->
+            EnsureStringIndex(
+                string_hash,
+                string_value,
+                reply
+            )
+        )
+
+
+    member this.intern_string
+        (string_value: string)
+        : unit =
+
+        this.ensure_string_index_for_string string_value
+        |> ignore
+
+
+
+
+
+let data_index = Data_Index(
+    Memory_Map.string_index_to_string,Memory_Map.string_hash_to_string_index
+)
+
+data_index.intern_string(String.Empty)   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 type dbug =
     static member _namespace_name = "https://eristocrates.dev/ontology/dbug/"
 
@@ -2367,8 +2395,6 @@ type dbug =
 
     static member Charlie = dbug._prefix "Charlie"
     static member Sasha = dbug._prefix "Sasha"
-    static member eris = dbug._prefix "eris"
-    static member syris = dbug._prefix "syris"
     static member Leonardo_da_Vinci = dbug._prefix "Leonardo_da_Vinci"
     static member La_Joconde_a_Washington = dbug._prefix "La_Joconde_à_Washington"
     static member archipelago = dbug._prefix "archipelago"
@@ -2393,7 +2419,27 @@ type sanctuary =
     static member eristocrates = sanctuary._prefix "eristocrates"
     static member siamesederp = sanctuary._prefix "siamesederp"
 
+
+
+
+
 (*
+
+
+module The_16th_Sanctuary = 
+    module Rhythm_Games = 
+        module rhythm_game_chat = 
+
+
+            [<Literal>]
+            let sample_file_path =
+                @"D:\Surface\Personal\16thSanctuary\The 16th Sanctuary - Rhythm Games - rhythm-game-chat [879472415682490408].json"
+
+            let json = JsonProvider<sample_file_path>.Load sample_file_path
+
+
+
+
 
 
 
@@ -2448,17 +2494,149 @@ roles_by_name["cndr_scnr"]
 *)
 
 
- 
-let test_draft = !| [ dbug.Alice; dbug.Bob ] --- a --> foaf.Person
-let test_graph = { triples = test_draft.triples}
-let test_igraph = Rdf_Graph.to_igraph test_graph
-// TODO deal with colon missing from iris
-(*
-<https//eristocrates.dev/ontology/dbug/Bob> <http//www.w3.org/1999/02/22-rdf-syntax-ns#type> <http//xmlns.com/foaf/0.1/Person> .
-<https//eristocrates.dev/ontology/dbug/Alice> <http//www.w3.org/1999/02/22-rdf-syntax-ns#type> <http//xmlns.com/foaf/0.1/Person> .
-*)
-!| [ dbug.eris; dbug.Bob ] --- a --> foaf.Person
-|> write_draft __SOURCE_DIRECTORY__ "test_graph"
+
+
+
+
+module ucd =
+
+    let _namespace_name = "http://www.unicode.org/ns/2003/ucd/1.0"
+    let _prefix (local_name:string) =
+        Namespaced_IRI.parse _namespace_name (local_name.Replace(" ","_"))
+        |> NamespacedName
+    [<Literal>]
+    let file_path = @"D:\Surface\Standards\Unicode\UCD\17.0.0\ucdxml\ucd.all.flat.xml"
+
+    let xpath = XPathNavigator.Load(file_path)
+    let namespace_manager = new XmlNamespaceManager(xpath.NameTable)
+
+    xpath
+    |> XPathNavigator.xmlns namespace_manager "ucd" _namespace_name
+    |> ignore
+    let xml = XmlProvider<file_path>.Load(file_path)
+
+
+let xpath (expression: string) (xpath_navigator: XPathNavigator) =
+    let xpath_expression = XPathExpression.Compile(expression)
+    xpath_expression.SetContext(ucd.namespace_manager)
+
+    xpath_navigator
+        .Select(
+            xpath_expression
+        )
+        .toElementArray
+
+let unicode_directory = Path.Combine(__SOURCE_DIRECTORY__,"unicode")
+
+
+type ucdx = 
+    static member _namespace_name = "https://eristocrates.dev/ontology/ucdx/"
+
+    static member _prefix (local_name:string) =
+        Namespaced_IRI.parse ucdx._namespace_name (local_name.Replace(" ","_"))
+        |> NamespacedName
+    static member Block = ucdx._prefix "Block"
+    static member Block_List = ucdx._prefix "Block_List"
+    static member Code_Point_List = ucdx._prefix "Code_Point_List"
+    static member name = ucdx._prefix "name"
+    static member first_code_point = ucdx._prefix "first_code_point"
+    static member last_code_point = ucdx._prefix "last_code_point"
+    static member Code_Point = ucdx._prefix "Code_Point"
+
+
+ucd.xml.Blocks
+|> Array.take 1
+|> Array.iter (fun Block -> 
+
+    let block = ucdx._prefix Block.Name
+    let first_code_point = ucdx._prefix Block.FirstCp.Value
+    let last_code_point = ucdx._prefix Block.LastCp
+    
+    let block_directory = Path.Combine(unicode_directory,Block.Name.Replace(" ","_"))
+    Directory.CreateDirectory block_directory |> ignore
+
+
+    !>block  -~|> [ 
+
+            a ->- ucdx.Block 
+            ucdx.name ->= Block.Name
+            ucdx.first_code_point ->- first_code_point
+            ucdx.last_code_point ->- last_code_point
+
+        ] 
+    -!| [ first_code_point ; last_code_point ] --- a --> ucdx.Code_Point 
+        |> write_draft block_directory Block.Name
+    
+)
+
+
+type Block_Range = 
+    {
+
+    name: string
+    interval_range: Interval<int, FRange.Range<int>>
+
+    }
+
+let block_ranges = 
+
+    ucd.xml.Blocks
+    |> Array.Parallel.map (fun Block -> 
+
+        {
+            name = Block.Name
+            interval_range =  (int $"0x{Block.FirstCp.Value}") +-+ (int $"0x{Block.LastCp}")
+        }
+
+
+
+)
+
+
+ucd.xpath
+|> xpath $"//ucd:char"
+|> Array.toSeq
+|> PSeq.filter (fun char_element ->
+
+    let cp = char_element.Attribute "cp" 
+    String.IsNullOrWhiteSpace(char_element.GetAttribute("first-cp", ""))
+    && block_ranges[0].interval_range |> Interval_Range.contains (int $"0x{cp}")
+
+)
+|>PSeq.iter (fun char_element -> 
+
+    let cp = char_element.Attribute "cp"
+    let code_point = ucd._prefix cp
+    let ordinal = int $"0x{cp}"
+    let block_name = 
+        block_ranges
+        |> Array.pick (fun block_range -> 
+        
+        if block_range.interval_range |> Interval_Range.contains ordinal then
+            Some block_range.name
+        else 
+            None
+        
+        )
+    let code_point_directory = Path.Combine(unicode_directory,block_name.Replace(" ","_"), cp)
+    let block = ucdx._prefix block_name
+    char_element.MoveToFirstAttribute() |> ignore
+    let predicateObjectLists =
+        char_element.Attributes
+        |> Array.Parallel.filter (fun char_attribute -> not (String.IsNullOrEmpty char_attribute.Value))
+        |> Array.Parallel.map (fun char_attribute -> (ucdx._prefix char_attribute.LocalName) ->= char_attribute.Value)
+        |> Array.toList
+    
+    !>block --- rdfs.``member``--> code_point
+    -!> code_point -~|> predicateObjectLists
+    |> write_draft code_point_directory cp
+        
+
+    
+
+
+)
+
 
 (*
 

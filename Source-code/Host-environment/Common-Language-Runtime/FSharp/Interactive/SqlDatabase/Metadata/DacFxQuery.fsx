@@ -172,7 +172,26 @@ let Views =
 
 
 
+
+
+
+let employee_constraints =
+    ForeignKeyConstraints
+    |> PSeq.choose (fun ForeignKeyConstraint ->
+        if ForeignKeyConstraint.Name.Parts.Contains("EMPLOYEE") then
+            Some ForeignKeyConstraint
+        else
+            None
+
+
+    )
+
+
 module RESOURCES =
+    let schema =
+        Schemas
+        |> Seq.find (fun Schema -> Schema.Name.Parts.Contains("RESOURCES"))
+
     module EMPLOYEE =
 
 
@@ -186,11 +205,10 @@ module RESOURCES =
             columns
             |> Seq.find (fun column -> column.Name.Parts.Contains("CONTACTKEY"))
 
-
 RESOURCES.EMPLOYEE.columns
 |> PSeq.iter (fun column -> printfn "%A" column.Name)
 
-RESOURCES.EMPLOYEE.CONTACTKEY
+RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Properties
 
 
 

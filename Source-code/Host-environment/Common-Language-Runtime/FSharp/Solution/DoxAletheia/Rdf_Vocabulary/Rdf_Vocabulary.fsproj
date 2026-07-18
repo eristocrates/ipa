@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>	  
+	  
+	  <Compile Include="LanguageTag.fs" />
+	  <Compile Include="Types.fs" />
+	  <Compile Include="MimeTypes.fs" />
+	  <Compile Include="MimePath.fs" />
+	  <Compile Include="MimeSubstring.fs" />
+	  <Compile Include=".\Generated\xsd.fs" />
+	  <Compile Include=".\Manual\xml.fs" /> 
+	  <Compile Include=".\Manual\xsi.fs" />
+	  <Compile Include=".\Manual\xdt.fs" />
+	  <Compile Include=".\Generated\*.fs" />
+	  <Compile Include="Rdf_Literal.fs" />
+	  <Compile Include="Rdf_Document.fs" />
+	  <Compile Include="Rdf_Shorthand.fs" />
+	  <Compile Include="Data_Store.fs" />
+	  
+
+  </ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Unquote" Version="7.0.1" />
+		<PackageReference Include="FSharp.HashCollections" Version="0.3.4" />
+		<PackageReference Include="Blake3" Version="3.0.1" />
+		<PackageReference Include="LightningDB" Version="0.22.0" />
+		<PackageReference Include="BitFaster.Caching" Version="2.6.0" />
+		<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
+		<PackageReference Include="FSharp.UMX" Version="1.1.0" />
+	</ItemGroup>
+	
+  <ItemGroup>
+	  
+    <ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
+    <ProjectReference Include="..\Interval_Range\Interval_Range.fsproj" />
+    <ProjectReference Include="..\ParserCombinator\ParserCombinator.fsproj" />
+    <ProjectReference Include="..\Unicodepoint\Unicodepoint.fsproj" />
+  </ItemGroup>
+
+</Project>

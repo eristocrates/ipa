@@ -49,7 +49,7 @@ Comments.*\r\n\s
 
 *)
 
-let ocaml_ident_ccccccds =
+let ocaml_ident_keywords =
     set [
 
           "asr"
@@ -311,6 +311,6 @@ module LanguageSubtag =
                     }
                     |> Gen.mkOak
                     |> Gen.run
-        let file_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\LanguageSubtag.fs"
+        let file_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\LanguageTag.fs"
 
 File.WriteAllText(LanguageSubtag.fs.file_path, LanguageSubtag.fs.text)

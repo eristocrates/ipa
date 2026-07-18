@@ -791,6 +791,9 @@ module Rfc_Types =
 
 
 
+    let interval_0_4 = 0 +-+ 4
+    let interval_0_5 = 0 +-+ 5
+    let interval_1_9 = 1 +-+ 9
 
 
 
@@ -804,10 +807,7 @@ module Rfc_Types =
 
     type Octet =
         private
-        | Octet of String_Index
-        static let interval_0_4 = 0 +-+ 4
-        static let interval_0_5 = 0 +-+ 5
-        static let interval_1_9 = 1 +-+ 9
+        | Octet of raw_string:string
 
         static member parser: Parser<Octet, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
@@ -843,8 +843,10 @@ module Rfc_Types =
                              |>> (fun digit -> [| digit |])
 
                               ]
+                 
                 
-                return digits |> String.from_code_line |> data_store.ensure_string_index_for_string |> Octet 
+                
+                return String_Pool.from_code_line digits |> Octet
 
             }
 
@@ -864,26 +866,17 @@ module Rfc_Types =
                 success
             | Error failure -> failwithf "%A: %s" failure (code_line_message input_string.as_code_line Octet.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with
-            | Octet string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
-
-        static member code_line(octet: Octet) = octet.as_code_line
+            | Octet raw_string -> raw_string
         member this.as_int = int this.as_raw_string
-
-
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%d``" this unames this.as_int
 
 
 
 
     type IPv4_Address =
         private
-        | IPv4 of String_Index * Octet * Octet * Octet * Octet
+        | IPv4 of  string * Octet * Octet * Octet * Octet
 
         static member parser: Parser<IPv4_Address, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
@@ -895,8 +888,8 @@ module Rfc_Types =
                 let! inner_right = Octet.parser
                 do! skip_char '.'
                 let! outer_right = Octet.parser
-                let ipv4_string = sprintf "%d.%d.%d.%d" outer_left.as_int inner_left.as_int inner_right.as_int outer_right.as_int
-                return IPv4(data_store.ensure_string_index_for_string ipv4_string, outer_left, inner_left, inner_right, outer_right)
+                let ipv4 = sprintf "%s.%s.%s.%s" outer_left.as_raw_string inner_left.as_raw_string inner_right.as_raw_string outer_right.as_raw_string
+                return IPv4( ipv4, outer_left, inner_left, inner_right, outer_right)
 
             }
 
@@ -908,12 +901,11 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match IPv4_Address.parser input_string.as_parser_input with
             | Ok success -> 
-                  data_store.intern_string input_string
                   success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line IPv4_Address.metasyntax)
 
-        member this.as_raw_octets =
+        member this.octets =
             match this with
             | IPv4 (_, outer_left, inner_left, inner_right, outer_right) ->
                 [| outer_left
@@ -921,23 +913,17 @@ module Rfc_Types =
                    inner_right
                    outer_right |]
 
-        member this.as_code_square: Code_Square =
-            this.as_raw_octets |> Array.map Octet.code_line
 
-        member this.outer_left_octet:Octet = this.as_raw_octets[0]
-        member this.inner_left_octet:Octet = this.as_raw_octets[1]
-        member this.inner_right_octet:Octet = this.as_raw_octets[2]
-        member this.outer_right_octet:Octet = this.as_raw_octets[3]
+        member this.outer_left:Octet = this.octets[0]
+        member this.inner_left:Octet = this.octets[1]
+        member this.inner_right:Octet = this.octets[2]
+        member this.outer_right:Octet = this.octets[3]
 
-        member this.string_index =
-            match this with
-            | IPv4 (string_index,_,_,_,_) -> string_index
 
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
+        member this.as_raw_string =
+            match this with 
+            | IPv4 (raw_string,_,_,_,_)  -> raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%s``" this unames this.as_rendered_string
 
 
 
@@ -945,7 +931,7 @@ module Rfc_Types =
 
     type Hextet =
         private
-        | Hextet of String_Index
+        | Hextet of string
         static member parser: Parser<Hextet, Code_Point, unit, ReadableMemory<Code_Point>> =
 
             parser {
@@ -964,8 +950,7 @@ module Rfc_Types =
 
                 return 
                     Code_Line.from_immutable_code_line immutable_code_line
-                    |> String.from_code_line
-                    |> data_store.ensure_string_index_for_string
+                    |> String_Pool.from_code_line
                     |> Hextet
 
 
@@ -992,26 +977,17 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Hextet.parser input_string.as_parser_input with
             | Ok success ->
-                data_store.intern_string success.as_raw_string 
 
                 success
 
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Hextet.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with
-            | Hextet string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
-
-
-
+            | Hextet raw_string -> raw_string
         static member raw_string(hextet: Hextet) = hextet.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
 
 
@@ -1051,7 +1027,6 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Least_Significant_32_Bits.parser input_string.as_parser_input with
             | Ok success -> 
-              success.as_raw_strings |> Array.iter data_store.intern_string  
 
               success
             | Error failure ->
@@ -1060,38 +1035,34 @@ module Rfc_Types =
                     failure
                     (code_line_message input_string.as_code_line Least_Significant_32_Bits.metasyntax)
 
-        member this.as_code_square:Code_Square =
-            match this with
-            | LeastSignificantHextets (left_hextet, right_hextet) -> [| left_hextet.as_code_line; right_hextet.as_code_line |]
-            | LeastSignificantIPv4 (IPv4 (_, outer_left, inner_left, inner_right, outer_right)) ->
-                [| outer_left.as_code_line
-                   inner_left.as_code_line
-                   inner_right.as_code_line
-                   outer_right.as_code_line |]
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
+        member this.substrings =
+            match this with 
+            | LeastSignificantHextets (left_hextet, right_hextet) -> [| left_hextet.as_raw_string; right_hextet.as_raw_string |]
+            | LeastSignificantIPv4 (ipv4_address) ->
+                [| ipv4_address.outer_left.as_raw_string
+                   ipv4_address.inner_left.as_raw_string
+                   ipv4_address.inner_right.as_raw_string
+                   ipv4_address.outer_right.as_raw_string |]
 
         member this.as_rendered_string =
             match this with
             | LeastSignificantHextets (left_h16, right_h16) ->
                 sprintf "%s:%s" left_h16.as_raw_string right_h16.as_raw_string
-            | LeastSignificantIPv4 ipv4_address -> ipv4_address.as_rendered_string
+            | LeastSignificantIPv4 ipv4_address -> ipv4_address.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 
     type IPv6_Address =
         private
-        | Six_h16__ls32 of String_Index * Hextet array * Least_Significant_32_Bits
-        | Five_h16__ls32 of String_Index * Hextet array * Least_Significant_32_Bits
-        | Maybe_One_h16__Four_h16__ls32 of String_Index * Hextet voption * Hextet array * Least_Significant_32_Bits
-        | Maybe_Two_h16__Three_h16__ls32 of String_Index * Hextet array voption * Hextet array * Least_Significant_32_Bits
-        | Maybe_Three_h16__Two_h16__ls32 of String_Index * Hextet array voption * Hextet array * Least_Significant_32_Bits
-        | Maybe_Four_h16__One_h16__ls32 of String_Index * Hextet array voption * Hextet * Least_Significant_32_Bits
-        | Maybe_Five_h16__ls32 of String_Index * Hextet array voption * Least_Significant_32_Bits
-        | Maybe_Six_h16__h16 of String_Index * Hextet array voption * Hextet
-        | Maybe_Seven_h16 of String_Index * Hextet array voption
+        | Six_h16__ls32 of string * Hextet array * Least_Significant_32_Bits
+        | Five_h16__ls32 of string * Hextet array * Least_Significant_32_Bits
+        | Maybe_One_h16__Four_h16__ls32 of string * Hextet voption * Hextet array * Least_Significant_32_Bits
+        | Maybe_Two_h16__Three_h16__ls32 of string * Hextet array voption * Hextet array * Least_Significant_32_Bits
+        | Maybe_Three_h16__Two_h16__ls32 of string * Hextet array voption * Hextet array * Least_Significant_32_Bits
+        | Maybe_Four_h16__One_h16__ls32 of string * Hextet array voption * Hextet * Least_Significant_32_Bits
+        | Maybe_Five_h16__ls32 of string * Hextet array voption * Least_Significant_32_Bits
+        | Maybe_Six_h16__h16 of string * Hextet array voption * Hextet
+        | Maybe_Seven_h16 of string * Hextet array voption
 
 
 
@@ -1108,7 +1079,7 @@ module Rfc_Types =
                     |> Array.map (fun hextet -> hextet.as_raw_string)
                     |> String.concat ":"
                 let ipv6_string = sprintf "%s:%s" hextet_string ls32.as_rendered_string
-                return Six_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, hextets, ls32)
+                return Six_h16__ls32(ipv6_string, hextets, ls32)
 
             }
 
@@ -1127,7 +1098,7 @@ module Rfc_Types =
                     |> Array.map (fun hextet -> hextet.as_raw_string)
                     |> String.concat ":")
                 let ipv6_string = sprintf "%s:%s" hextet_string ls32.as_rendered_string
-                return Five_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, hextets, ls32)
+                return Five_h16__ls32(ipv6_string, hextets, ls32)
 
             }
 
@@ -1152,7 +1123,7 @@ module Rfc_Types =
 
 
                 let ipv6_string = sprintf "%s::%s:%s" maybe_hextet_string hextet_string ls32.as_rendered_string
-                return Maybe_One_h16__Four_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, maybe_hextet, hextets, ls32)
+                return Maybe_One_h16__Four_h16__ls32(ipv6_string, maybe_hextet, hextets, ls32)
 
             }
 
@@ -1192,7 +1163,7 @@ module Rfc_Types =
                         |> Array.map (fun hextet -> hextet.as_raw_string)
                         |> String.concat ":"
                 let ipv6_string = sprintf "%s::%s:%s" maybe_hextet_string hextet_string ls32.as_rendered_string
-                return Maybe_Two_h16__Three_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, maybe_two_hextets, hextets, ls32)
+                return Maybe_Two_h16__Three_h16__ls32(ipv6_string, maybe_two_hextets, hextets, ls32)
 
 
 
@@ -1239,7 +1210,7 @@ module Rfc_Types =
                         |> Array.map (fun hextet -> hextet.as_raw_string)
                         |> String.concat ":"
                 let ipv6_string = sprintf "%s::%s:%s" maybe_hextet_string hextet_string ls32.as_rendered_string
-                return Maybe_Three_h16__Two_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, maybe_three_hextets, hextets, ls32)
+                return Maybe_Three_h16__Two_h16__ls32(ipv6_string, maybe_three_hextets, hextets, ls32)
 
 
 
@@ -1282,7 +1253,7 @@ module Rfc_Types =
                             |> String.concat ":"
                         | ValueNone -> String.Empty
                 let ipv6_string = sprintf "%s::%s:%s" maybe_hextet_string h16.as_raw_string ls32.as_rendered_string
-                return Maybe_Four_h16__One_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, maybe_four_hextets, h16, ls32)
+                return Maybe_Four_h16__One_h16__ls32(ipv6_string, maybe_four_hextets, h16, ls32)
 
 
 
@@ -1328,11 +1299,13 @@ module Rfc_Types =
                             |> String.concat ":"
                         | ValueNone -> String.Empty
                 let ipv6_string = sprintf "%s::%s" maybe_hextet_string  ls32.as_rendered_string
-                return Maybe_Five_h16__ls32(data_store.ensure_string_index_for_string ipv6_string, maybe_five_hextets, ls32)
+                return Maybe_Five_h16__ls32(ipv6_string, maybe_five_hextets, ls32)
 
 
 
             }
+
+
 
         /// [ *5( h16 ":" ) h16 ] "::"              h16
         static member Maybe_Six_h16__h16_parser: Parser<IPv6_Address, Code_Point, unit, ReadableMemory<Code_Point>> =
@@ -1379,7 +1352,7 @@ module Rfc_Types =
                             |> String.concat ":"
                         | ValueNone -> String.Empty
                 let ipv6_string = sprintf "%s::%s" maybe_hextet_string  h16.as_raw_string
-                return Maybe_Six_h16__h16(data_store.ensure_string_index_for_string ipv6_string, maybe_six_hextets, h16)
+                return Maybe_Six_h16__h16(ipv6_string, maybe_six_hextets, h16)
 
 
 
@@ -1429,7 +1402,7 @@ module Rfc_Types =
                             |> String.concat ":"
                         | ValueNone -> String.Empty
                 let ipv6_string = sprintf "%s::" maybe_hextet_string
-                return Maybe_Seven_h16(data_store.ensure_string_index_for_string ipv6_string, maybe_seven_hextets)
+                return Maybe_Seven_h16( ipv6_string, maybe_seven_hextets)
 
 
 
@@ -1479,7 +1452,6 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match IPv6_Address.parser input_string.as_parser_input with
             | Ok success -> 
-              success.as_raw_strings |> Array.iter data_store.intern_string  
               success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line IPv6_Address.metasyntax)
@@ -1487,129 +1459,108 @@ module Rfc_Types =
 
 
 
-        // TODO next handle other members like codes and strings
-
-
-        member this.as_code_square =
+        member this.as_raw_string = 
             match this with
-            | Six_h16__ls32 (_,h16_array, ls32) ->
-                h16_array
-                |> Array.map (fun h16 -> h16.as_code_line)
-                |> Array.append ls32.as_code_square
-            | Five_h16__ls32 (_,h16_array, ls32) ->
-                h16_array
-                |> Array.map (fun h16 -> h16.as_code_line)
-                |> Array.append ls32.as_code_square
-            | Maybe_One_h16__Four_h16__ls32 (_,maybe_hextet, hextets, ls32) ->
-                let prefix_hextets =
-                    match maybe_hextet with
-                    | ValueSome hextet -> [| hextet.as_code_line |]
-                    | ValueNone -> [||]
-
-                let hextet_code_lines =
-                    hextets
-                    |> Array.map (fun hextet -> hextet.as_code_line)
-
-                prefix_hextets
-                |> Array.append hextet_code_lines
-                |> Array.append ls32.as_code_square
-            | Maybe_Two_h16__Three_h16__ls32 (_,maybe_two_hextets, hextets, ls32) ->
-                let prefix_hextets =
-                    match maybe_two_hextets with
-                    | ValueSome hextets ->
-                        hextets
-                        |> Array.map (fun hextet -> hextet.as_code_line)
-                    | ValueNone -> [||]
-
-                let hextet_code_lines =
-                    hextets
-                    |> Array.map (fun hextet -> hextet.as_code_line)
-
-                prefix_hextets
-                |> Array.append hextet_code_lines
-                |> Array.append ls32.as_code_square
-            | Maybe_Three_h16__Two_h16__ls32 (_,maybe_three_hextets, hextets, ls32) ->
-                let prefix_hextets =
-                    match maybe_three_hextets with
-                    | ValueSome hextets ->
-                        hextets
-                        |> Array.map (fun hextet -> hextet.as_code_line)
-                    | ValueNone -> [||]
-
-                let hextet_code_lines =
-                    hextets
-                    |> Array.map (fun hextet -> hextet.as_code_line)
-
-                prefix_hextets
-                |> Array.append hextet_code_lines
-                |> Array.append ls32.as_code_square
-            | Maybe_Four_h16__One_h16__ls32 (_,maybe_four_hextets, h16, ls32) ->
-                let prefix_hextets =
-                    match maybe_four_hextets with
-                    | ValueSome hextets ->
-                        hextets
-                        |> Array.map (fun hextet -> hextet.as_code_line)
-                    | ValueNone -> [||]
-
-                let hextet_code_lines =
-                    prefix_hextets
-                    |> Array.append [| h16.as_code_line |]
-
-                hextet_code_lines
-                |> Array.append ls32.as_code_square
-            | Maybe_Five_h16__ls32 (_,maybe_five_hextets, ls32) ->
-                let prefix_hextets =
-                    match maybe_five_hextets with
-                    | ValueSome hextets ->
-                        hextets
-                        |> Array.map (fun hextet -> hextet.as_code_line)
-                    | ValueNone -> [||]
-
-                prefix_hextets |> Array.append ls32.as_code_square
-            | Maybe_Six_h16__h16 (_,maybe_six_hextets, h16) ->
-                let prefix_hextets =
-                    match maybe_six_hextets with
-                    | ValueSome hextets ->
-                        hextets
-                        |> Array.map (fun hextet -> hextet.as_code_line)
-                    | ValueNone -> [||]
-
-                prefix_hextets
-                |> Array.append [| h16.as_code_line |]
-            | Maybe_Seven_h16 (_, maybe_seven_hextets) ->
-                match maybe_seven_hextets with
-                | ValueSome hextets ->
-                    hextets
-                    |> Array.map (fun hextet -> hextet.as_code_line)
+            | Six_h16__ls32 (raw_string ,hextets, ls32) -> raw_string
+            | Five_h16__ls32 (raw_string ,hextets, ls32) -> raw_string
+            | Maybe_One_h16__Four_h16__ls32 (raw_string ,maybe_hextet, hextets, ls32) -> raw_string
+            | Maybe_Two_h16__Three_h16__ls32 (raw_string ,maybe_two_hextets, hextets, ls32) -> raw_string
+            | Maybe_Three_h16__Two_h16__ls32 (raw_string ,maybe_three_hextets, hextets, ls32) -> raw_string
+            | Maybe_Four_h16__One_h16__ls32 (raw_string ,maybe_four_hextets, h16, ls32) -> raw_string
+            | Maybe_Five_h16__ls32 (raw_string ,maybe_five_hextets, ls32) -> raw_string
+            | Maybe_Six_h16__h16 (raw_string ,maybe_six_hextets, h16) -> raw_string
+            | Maybe_Seven_h16 (raw_string , maybe_seven_hextets) -> raw_string
+        member this.substrings = 
+            match this with
+            | Six_h16__ls32 (raw_string ,hextets, ls32) -> 
+                Array.concat [|
+                    hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                    ls32.substrings
+                |]
+            | Five_h16__ls32 (raw_string ,hextets, ls32) -> 
+                Array.concat [|
+                    hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                    ls32.substrings
+                |]
+            | Maybe_One_h16__Four_h16__ls32 (raw_string ,maybe_hextet, hextets, ls32) -> 
+                match maybe_hextet with 
+                | ValueSome hextet -> 
+                    Array.concat [|
+                        [|hextet.as_raw_string|]
+                        hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                        ls32.substrings
+                    |]
+                | ValueNone -> 
+                    Array.concat [|
+                        hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                        ls32.substrings
+                    |]
+            | Maybe_Two_h16__Three_h16__ls32 (raw_string ,maybe_two_hextets, hextets, ls32) -> 
+                match maybe_two_hextets with 
+                | ValueSome h16s -> 
+                    Array.concat [|
+                        h16s |> Array.map (fun h16 -> h16.as_raw_string)
+                        hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                        ls32.substrings
+                    |]
+                | ValueNone -> 
+                    Array.concat [|
+                        hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                        ls32.substrings
+                    |]
+            | Maybe_Three_h16__Two_h16__ls32 (raw_string ,maybe_three_hextets, hextets, ls32) -> 
+                match maybe_three_hextets with 
+                | ValueSome h16s -> 
+                    Array.concat [|
+                        h16s |> Array.map (fun h16 -> h16.as_raw_string)
+                        hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                        ls32.substrings
+                    |]
+                | ValueNone -> 
+                    Array.concat [|
+                        hextets |> Array.map (fun hextet -> hextet.as_raw_string)
+                        ls32.substrings
+                    |]
+            | Maybe_Four_h16__One_h16__ls32 (raw_string ,maybe_four_hextets, h16, ls32) -> 
+                match maybe_four_hextets with 
+                | ValueSome h16s -> 
+                    Array.concat [|
+                        h16s |> Array.map (fun h16 -> h16.as_raw_string)
+                        [|h16.as_raw_string|]
+                        ls32.substrings
+                    |]
+                | ValueNone -> 
+                    Array.concat [|
+                        [|h16.as_raw_string|]
+                        ls32.substrings
+                    |]
+            | Maybe_Five_h16__ls32 (raw_string ,maybe_five_hextets, ls32) -> 
+                match maybe_five_hextets with 
+                | ValueSome h16s -> 
+                    Array.concat [|
+                        h16s |> Array.map (fun h16 -> h16.as_raw_string)
+                        ls32.substrings
+                    |]
+                | ValueNone -> ls32.substrings
+            | Maybe_Six_h16__h16 (raw_string ,maybe_six_hextets, h16) -> 
+                match maybe_six_hextets with 
+                | ValueSome h16s -> 
+                    Array.concat [|
+                        h16s |> Array.map (fun h16 -> h16.as_raw_string)
+                        [|h16.as_raw_string|]
+                    |]
+                | ValueNone -> [|h16.as_raw_string|]
+            | Maybe_Seven_h16 (raw_string , maybe_seven_hextets) -> 
+                match maybe_seven_hextets with 
+                | ValueSome h16s -> 
+                    Array.concat [|
+                        h16s |> Array.map (fun h16 -> h16.as_raw_string)
+                    |]
                 | ValueNone -> [||]
-
-
-        member this.as_raw_strings =
-            Strings.from_code_square this.as_code_square
-        member this.as_raw_string =
-            this.as_raw_strings
-            |> String.concat ""
-
-        member this.string_index = 
-            match this with
-            | Six_h16__ls32 (string_index ,h16_array, ls32) -> string_index
-            | Five_h16__ls32 (string_index ,h16_array, ls32) -> string_index
-            | Maybe_One_h16__Four_h16__ls32 (string_index ,maybe_hextet, hextets, ls32) -> string_index
-            | Maybe_Two_h16__Three_h16__ls32 (string_index ,maybe_two_hextets, hextets, ls32) -> string_index
-            | Maybe_Three_h16__Two_h16__ls32 (string_index ,maybe_three_hextets, hextets, ls32) -> string_index
-            | Maybe_Four_h16__One_h16__ls32 (string_index ,maybe_four_hextets, h16, ls32) -> string_index
-            | Maybe_Five_h16__ls32 (string_index ,maybe_five_hextets, ls32) -> string_index
-            | Maybe_Six_h16__h16 (string_index ,maybe_six_hextets, h16) -> string_index
-            | Maybe_Seven_h16 (string_index , maybe_seven_hextets) -> string_index
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
     type IPvFuture =
         private
-        | IPvFuture of String_Index * Code_Line * Code_Line
+        | IPvFuture of string * string * string
 
 
         static member parser: Parser<IPvFuture, Code_Point, unit, ReadableMemory<Code_Point>> =
@@ -1619,17 +1570,17 @@ module Rfc_Types =
 
                 let! hexdigits =
                     many1 hexdigit.code_point_parser
-                    |>> (fun immutable_code_line -> Code_Line.from_immutable_code_line immutable_code_line)
+                    |>> (fun immutable_code_line -> Code_Line.from_immutable_code_line immutable_code_line |> String_Pool.from_code_line)
 
                 do! skip_char '.'
 
                 let! address =
                     many1 (userinfo.code_point_parser)
-                    |>> (fun immutable_code_line -> Code_Line.from_immutable_code_line immutable_code_line)
-                let ipvfuture_string = sprintf "%s.%s" (String.from_code_line hexdigits) (String.from_code_line address)
+                    |>> (fun immutable_code_line -> Code_Line.from_immutable_code_line immutable_code_line |> String_Pool.from_code_line)
+                let ipvfuture_string = sprintf "%s.%s" hexdigits  address
 
 
-                return IPvFuture(data_store.ensure_string_index_for_string ipvfuture_string, hexdigits, address)
+                return IPvFuture(ipvfuture_string, hexdigits, address)
 
 
             }
@@ -1642,26 +1593,24 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match IPvFuture.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line IPvFuture.metasyntax)
 
-        member this.as_code_square =
+        member this.substrings =
             match this with
             | IPvFuture (_, hexdigits, address) -> [| hexdigits; address |]
-        member this.string_index =
+        member this.version =
+            match this with
+            | IPvFuture (_, hexdigits, address) -> hexdigits
+        member this.address =
+            match this with
+            | IPvFuture (_, hexdigits, address) -> address
+        member this.as_raw_string =
             match this with
             | IPvFuture (string_index, hexdigits, address) -> string_index
 
 
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 
     type IP_Literal =
@@ -1693,37 +1642,28 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match IP_Literal.parser input_string.as_parser_input with
             | Ok success -> 
-              success.as_raw_strings |> Array.iter data_store.intern_string  
               success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line IP_Literal.metasyntax)
 
-        member this.as_code_square =
-            match this with
-            | IPv6Literal ipv6_address -> ipv6_address.as_code_square
-            | IPvFutureLiteral ipvfuture -> ipvfuture.as_code_square
 
-        member this.as_raw_strings =
+        member this.substrings =
             match this with
-            | IPv6Literal ipv6_address -> [| ipv6_address.as_raw_string |]
-            | IPvFutureLiteral ipvfuture -> ipvfuture.as_raw_strings
-        member this.string_index = 
+            | IPv6Literal ipv6_address -> ipv6_address.substrings
+            | IPvFutureLiteral ipvfuture -> ipvfuture.substrings
+        member this.as_raw_string = 
                 match this with
-                | IPv6Literal ipv6_address -> ipv6_address.string_index
-                | IPvFutureLiteral ipvfuture -> ipvfuture.string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
+                | IPv6Literal ipv6_address -> ipv6_address.as_raw_string
+                | IPvFutureLiteral ipvfuture -> ipvfuture.as_raw_string
         member this.as_rendered_string = sprintf "[%s]" this.as_raw_string
 
             
 
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 
     type Port =
         private
-        | Port of String_Index
+        | Port of string
         static member parser: Parser<Port, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
@@ -1732,9 +1672,8 @@ module Rfc_Types =
                 let! digits =
                     many (any_point_from_interval Unicodepoint.Partition.Ascii_Digits)
                     |>> (fun immutable_code_line -> Code_Line.from_immutable_code_line immutable_code_line)
-                let port_string = String.from_code_line digits
 
-                return data_store.ensure_string_index_for_string port_string |> Port
+                return String_Pool.from_code_line digits |> Port
 
             }
 
@@ -1747,27 +1686,21 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Port.parser input_string.as_parser_input with
             | Ok success -> 
-              data_store.intern_string success.as_raw_string 
               success
             | Error failure -> failwithf "%A: %s" failure (code_line_message input_string.as_code_line Port.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with 
-            | Port string_index ->  string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
+            | Port raw_string ->  raw_string
 
         member this.as_int = int this.as_raw_string
         member this.as_rendered_string = sprintf ":%s" this.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
     // TODO consider pairing with iana scheme
     type Scheme =
         private
-        | Scheme of String_Index
+        | Scheme of string
         static member parser: Parser<Scheme, Code_Point, unit, ReadableMemory<Code_Point>> =
 
             parser {
@@ -1806,7 +1739,7 @@ module Rfc_Types =
                     Array.concat [| [| scheme_head |]
                                     scheme_tail.AsMemory().ToArray() |]
 
-                return scheme |> String.from_code_line |> data_store.ensure_string_index_for_string |> Scheme
+                return scheme |> String_Pool.from_code_line |> Scheme
 
 
             }
@@ -1819,23 +1752,17 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Scheme.parser input_string.as_parser_input with
             | Ok success -> 
-              data_store.intern_string success.as_raw_string 
               success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Scheme.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with 
-            | Scheme string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
+            | Scheme as_raw_string -> as_raw_string
 
 
         member this.as_rendered_string = this.as_raw_string.ToLowerInvariant() + ":"
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
 
 
@@ -1843,8 +1770,8 @@ module Rfc_Types =
 
     type Fragment =
         private
-        | UniformFragment of String_Index
-        | InternationalizedFragment of String_Index
+        | UniformFragment of string
+        | InternationalizedFragment of string
         static member parser: Parser<Fragment, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
@@ -1852,9 +1779,9 @@ module Rfc_Types =
 
                 let! fragment =
                     choice [ ifragment.code_line_parser
-                             |>> (fun code_line -> code_line |> String.from_code_line |> data_store.ensure_string_index_for_string |> InternationalizedFragment)
+                             |>> (fun code_line -> code_line |> String_Pool.from_code_line |> InternationalizedFragment)
                              query_fragment.code_line_parser
-                             |>> (fun code_line -> code_line |> String.from_code_line |> data_store.ensure_string_index_for_string |> UniformFragment) ]
+                             |>> (fun code_line -> code_line |> String_Pool.from_code_line |> UniformFragment) ]
 
                 return fragment
 
@@ -1869,36 +1796,29 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Fragment.parser input_string.as_parser_input with
             | Ok success -> 
-              data_store.intern_string success.as_raw_string 
               success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Fragment.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with 
-            | InternationalizedFragment string_index -> string_index
-            | UniformFragment string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
+            | InternationalizedFragment raw_string -> raw_string
+            | UniformFragment raw_string -> raw_string
         member this.as_rendered_string = sprintf "#%s" this.as_raw_string
-
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
 
     type Query =
         private
-        | InternationalizedQuery of String_Index
-        | UniformQuery of String_Index
+        | InternationalizedQuery of string
+        | UniformQuery of string
         static member parser: Parser<Query, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
                 do! skip_char '?'
 
                 return!
-                    choice [ iquery.code_line_parser |>> (fun code_line -> code_line |> String.from_code_line |> data_store.ensure_string_index_for_string |> InternationalizedQuery)
-                             query_fragment.code_line_parser |>> (fun code_line -> code_line |> String.from_code_line |> data_store.ensure_string_index_for_string |> UniformQuery) ]
+                    choice [ iquery.code_line_parser |>> (fun code_line -> code_line |> String_Pool.from_code_line |> InternationalizedQuery)
+                             query_fragment.code_line_parser |>> (fun code_line -> code_line |> String_Pool.from_code_line |> UniformQuery) ]
 
             }
 
@@ -1911,36 +1831,30 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Query.parser input_string.as_parser_input with
             | Ok success -> 
-              data_store.intern_string success.as_raw_string 
               success
             | Error failure -> failwithf "%A: %s" failure (code_line_message input_string.as_code_line Query.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with 
-            | InternationalizedQuery string_index -> string_index
-            | UniformQuery string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
+            | InternationalizedQuery raw_string -> raw_string
+            | UniformQuery raw_string -> raw_string
         member this.as_rendered_string = sprintf "?%s" this.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
     type Userinfo =
         private
-        | InternationalizedUserinfo of String_Index
-        | UniformUserinfo of String_Index
+        | InternationalizedUserinfo of string
+        | UniformUserinfo of string
         static member parser: Parser<Userinfo, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
                 let! userinfo =
                     choice [ many iuserinfo.code_point_parser
                              |>> (fun immutable_code_line ->
-                                 Code_Line.from_immutable_code_line immutable_code_line |> String.from_code_line |> data_store.ensure_string_index_for_string |> InternationalizedUserinfo)
+                                 Code_Line.from_immutable_code_line immutable_code_line |> String_Pool.from_code_line |> InternationalizedUserinfo)
                              many userinfo.code_point_parser
                              |>> (fun immutable_code_line ->
-                                 Code_Line.from_immutable_code_line immutable_code_line |> String.from_code_line |> data_store.ensure_string_index_for_string |> UniformUserinfo) ]
+                                 Code_Line.from_immutable_code_line immutable_code_line |> String_Pool.from_code_line |> UniformUserinfo) ]
 
                 do! skip_char '@'
                 return userinfo
@@ -1958,32 +1872,26 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Userinfo.parser input_string.as_parser_input with
             | Ok success -> 
-                data_store.intern_string success.as_raw_string 
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Userinfo.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with 
-            | InternationalizedUserinfo string_index -> string_index
-            | UniformUserinfo string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
+            | InternationalizedUserinfo raw_string -> raw_string
+            | UniformUserinfo raw_string -> raw_string
         member this.as_rendered_string = sprintf "%s@" this.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
 
     type Segment =
         private
-        | UniformSegment of String_Index
-        | UniformSegmentFromUniformNonZeroSegment of String_Index
-        | UniformSegmentFromUniformNonzeroNoncolonSegment of String_Index
-        | InternationalizedSegment of String_Index
-        | InternationalizedSegmentFromInternationalizedNonZeroSegment of String_Index
-        | InternationalizedSegmentFromInternationalizedNonzeroNoncolonSegment of String_Index
+        | UniformSegment of string
+        | UniformSegmentFromUniformNonZeroSegment of string
+        | UniformSegmentFromUniformNonzeroNoncolonSegment of string
+        | InternationalizedSegment of string
+        | InternationalizedSegmentFromInternationalizedNonZeroSegment of string
+        | InternationalizedSegmentFromInternationalizedNonzeroNoncolonSegment of string
         // TODO next implement isegment into parser as choice
         static member parser: Parser<Segment, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
@@ -1991,11 +1899,11 @@ module Rfc_Types =
                 return!
                     choice [ many ipchar_encoded.code_line_parser
                              |>> (fun immutable_code_square ->
-                                 Code_Line.from_immutable_code_square immutable_code_square  |> String.from_code_line |> data_store.ensure_string_index_for_string 
+                                 Code_Line.from_immutable_code_square immutable_code_square  |> String_Pool.from_code_line  
                                  |> InternationalizedSegment)
                              many pchar_encoded.code_line_parser
                              |>> (fun immutable_code_square ->
-                                 Code_Line.from_immutable_code_square immutable_code_square  |> String.from_code_line |> data_store.ensure_string_index_for_string
+                                 Code_Line.from_immutable_code_square immutable_code_square  |> String_Pool.from_code_line 
                                  |> UniformSegment) ]
 
 
@@ -2010,35 +1918,25 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Segment.parser input_string.as_parser_input with
             | Ok success -> 
-                data_store.intern_string success.as_raw_string 
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Segment.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with
-            | UniformSegment string_index -> string_index
-            | UniformSegmentFromUniformNonZeroSegment string_index -> string_index
-            | UniformSegmentFromUniformNonzeroNoncolonSegment string_index -> string_index
-            | InternationalizedSegment string_index -> string_index
-            | InternationalizedSegmentFromInternationalizedNonZeroSegment string_index -> string_index
-            | InternationalizedSegmentFromInternationalizedNonzeroNoncolonSegment string_index -> string_index
+            | UniformSegment raw_string -> raw_string
+            | UniformSegmentFromUniformNonZeroSegment raw_string -> raw_string
+            | UniformSegmentFromUniformNonzeroNoncolonSegment raw_string -> raw_string
+            | InternationalizedSegment raw_string -> raw_string
+            | InternationalizedSegmentFromInternationalizedNonZeroSegment raw_string -> raw_string
+            | InternationalizedSegmentFromInternationalizedNonzeroNoncolonSegment raw_string -> raw_string
 
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-
-        member this.as_code_line = this.as_raw_string.as_code_line
-        static member code_line(segment: Segment) = segment.as_code_line
         static member raw_string(segment: Segment) = segment.as_raw_string
-        member this.as_rendered_string = this.as_raw_string
-
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
     type Nonzero_Segment =
         private
-        | InternationalizedNonzeroSegment of String_Index
-        | UniformNonzeroSegment of String_Index
+        | InternationalizedNonzeroSegment of string
+        | UniformNonzeroSegment of string
 
         static member parser: Parser<Nonzero_Segment, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
@@ -2048,11 +1946,11 @@ module Rfc_Types =
 
                              many1 ipchar_encoded.code_line_parser
                              |>> (fun immutable_code_square ->
-                                 Code_Line.from_immutable_code_square immutable_code_square  |> String.from_code_line |> data_store.ensure_string_index_for_string 
+                                 Code_Line.from_immutable_code_square immutable_code_square  |> String_Pool.from_code_line 
                                  |> InternationalizedNonzeroSegment)
                              many1 pchar_encoded.code_line_parser
                              |>> (fun immutable_code_square ->
-                                 Code_Line.from_immutable_code_square immutable_code_square  |> String.from_code_line |> data_store.ensure_string_index_for_string
+                                 Code_Line.from_immutable_code_square immutable_code_square  |> String_Pool.from_code_line
                                  |> UniformNonzeroSegment)
 
                               ]
@@ -2068,40 +1966,33 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Nonzero_Segment.parser input_string.as_parser_input with
             | Ok success -> 
-                data_store.intern_string success.as_raw_string 
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Nonzero_Segment.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with
-            | UniformNonzeroSegment string_index -> string_index
-            | InternationalizedNonzeroSegment string_index -> string_index
+            | UniformNonzeroSegment raw_string -> raw_string
+            | InternationalizedNonzeroSegment raw_string -> raw_string
 
 
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
-        member this.as_rendered_string = this.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
     type Nonzero_Noncolon_Segment =
         private
-        | InternationalizedNonzeroNoncolonSegment of String_Index
-        | UniformNonzeroNoncolonSegment of String_Index
+        | InternationalizedNonzeroNoncolonSegment of string
+        | UniformNonzeroNoncolonSegment of string
         static member parser: Parser<Nonzero_Noncolon_Segment, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
                 return!
                     choice [ many1 ipchar_encoded_noncolon.code_line_parser
                              |>> (fun immutable_code_square ->
-                                 Code_Line.from_immutable_code_square immutable_code_square  |> String.from_code_line |> data_store.ensure_string_index_for_string
+                                 Code_Line.from_immutable_code_square immutable_code_square  |> String_Pool.from_code_line
                                  |> InternationalizedNonzeroNoncolonSegment)
                              many1 pchar_encoded_noncolon.code_line_parser
                              |>> (fun immutable_code_square ->
-                                 Code_Line.from_immutable_code_square immutable_code_square  |> String.from_code_line |> data_store.ensure_string_index_for_string
+                                 Code_Line.from_immutable_code_square immutable_code_square  |> String_Pool.from_code_line
                                  |> UniformNonzeroNoncolonSegment) ]
 
             }
@@ -2115,7 +2006,6 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Segment.parser input_string.as_parser_input with
             | Ok success -> 
-                data_store.intern_string success.as_raw_string 
                 success
             | Error failure ->
                 failwithf
@@ -2123,24 +2013,18 @@ module Rfc_Types =
                     failure
                     (code_line_message input_string.as_code_line Nonzero_Noncolon_Segment.metasyntax)
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with
-            | UniformNonzeroNoncolonSegment string_index -> string_index
-            | InternationalizedNonzeroNoncolonSegment string_index -> string_index
+            | UniformNonzeroNoncolonSegment raw_string -> raw_string
+            | InternationalizedNonzeroNoncolonSegment raw_string -> raw_string
 
 
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
-        member this.as_rendered_string = this.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
     type Path_Abempty =
         private
-        | UniformPathAbempty of String_Index * Segment array
-        | InternationalizedPathAbempty of String_Index * Segment array
+        | UniformPathAbempty of string * Segment array
+        | InternationalizedPathAbempty of string * Segment array
         static member parser: Parser<Path_Abempty, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
@@ -2161,9 +2045,9 @@ module Rfc_Types =
 
                 return
                     if is_internationalized then
-                         InternationalizedPathAbempty(data_store.ensure_string_index_for_string path_string, segments)
+                         InternationalizedPathAbempty( path_string, segments)
                     else
-                        UniformPathAbempty(data_store.ensure_string_index_for_string path_string, segments)
+                        UniformPathAbempty( path_string, segments)
 
             }
 
@@ -2180,57 +2064,39 @@ module Rfc_Types =
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Path_Abempty.metasyntax)
 
-        member this.as_raw_segments =
+        member this.segments =
             match this with
             | UniformPathAbempty (_,segments) -> segments
             | InternationalizedPathAbempty (_,segments) -> segments
 
-        member this.as_code_square =
-            match this with
-            | UniformPathAbempty (_,segments) ->
-                segments
-                |> Array.map (fun segment -> segment.as_code_line)
-            | InternationalizedPathAbempty (_,segments) ->
-                segments
-                |> Array.map (fun segment -> segment.as_code_line)
 
 
-        member this.as_string_segments =
-            this.as_raw_segments
-            |> Array.map Segment.raw_string
-        member this.string_index = 
+            
+        member this.as_raw_string = 
 
             match this with
-            | UniformPathAbempty (string_index,segments) -> string_index
-            | InternationalizedPathAbempty (string_index,segments) -> string_index
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
+            | UniformPathAbempty (raw_string,segments) -> raw_string
+            | InternationalizedPathAbempty (raw_string,segments) -> raw_string
 
-        member this.fsi_printer =
-            let unames =
-                this.as_raw_segments
-                |> Array.map Segment.code_line
-                |> Code_Square.Unames
-
-            sprintf "%A %A ``%A``" this unames this.as_string_segments
 
     type Path_Rootless =
         private
-        | UniformPathRootless of String_Index * Nonzero_Segment * Path_Abempty
-        | InternationalizedPathRootless of String_Index * Nonzero_Segment * Path_Abempty
+        | UniformPathRootless of string * Nonzero_Segment * Path_Abempty
+        | InternationalizedPathRootless of string * Nonzero_Segment * Path_Abempty
 
         static member parser: Parser<Path_Rootless, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
                 let! segment_nz = Nonzero_Segment.parser
                 let! abempty = Path_Abempty.parser
-                let path_string =  segment_nz.as_rendered_string + abempty.as_rendered_string
+                let path_string =  segment_nz.as_raw_string + abempty.as_raw_string
 
                 return
                     if segment_nz.IsInternationalizedNonzeroSegment
                        || abempty.IsInternationalizedPathAbempty then
-                        InternationalizedPathRootless(data_store.ensure_string_index_for_string path_string, segment_nz, abempty)
+                        InternationalizedPathRootless( path_string, segment_nz, abempty)
                     else
-                        UniformPathRootless(data_store.ensure_string_index_for_string path_string, segment_nz, abempty)
+                        UniformPathRootless( path_string, segment_nz, abempty)
 
             }
 
@@ -2243,62 +2109,34 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Path_Rootless.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Path_Rootless.metasyntax)
 
 
-        member this.as_raw_segments =
+        member this.segments =
             match this with
             | UniformPathRootless (_, segment_nz, path_abempty) ->
-                Array.concat [| [| (Segment.UniformSegmentFromUniformNonZeroSegment segment_nz.string_index) |]
-                                path_abempty.as_raw_segments |]
+                Array.concat [| [| (Segment.UniformSegmentFromUniformNonZeroSegment segment_nz.as_raw_string) |]
+                                path_abempty.segments |]
             | InternationalizedPathRootless (_,segment_nz, path_abempty) ->
                 Array.concat [| [| (Segment.InternationalizedSegmentFromInternationalizedNonZeroSegment
-                                       segment_nz.string_index) |]
-                                path_abempty.as_raw_segments |]
+                                       segment_nz.as_raw_string) |]
+                                path_abempty.segments |]
 
-        member this.as_code_square =
+
+
+
+        member this.as_raw_string =
             match this with
-            | UniformPathRootless (_, segment_nz, path_abempty) ->
-                Array.concat [| [| segment_nz.as_code_line |]
-                                path_abempty.as_code_square
-
-                                 |]
-
-            | InternationalizedPathRootless (_, segment_nz, path_abempty) ->
-
-                Array.concat [| [| segment_nz.as_code_line |]
-                                path_abempty.as_code_square
-
-                                 |]
-
-
-        member this.as_string_segments =
-            this.as_raw_segments
-            |> Array.map Segment.raw_string
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-
-        member this.string_index =
-            match this with
-            | UniformPathRootless (string_index, segment_nz, path_abempty) -> string_index
-            | InternationalizedPathRootless (string_index,segment_nz, path_abempty) -> string_index
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames =
-                this.as_raw_segments
-                |> Array.map Segment.code_line
-                |> Code_Square.Unames
-
-            sprintf "%A %A ``%A``" this unames this.as_string_segments
+            | UniformPathRootless (raw_string, segment_nz, path_abempty) -> raw_string
+            | InternationalizedPathRootless (raw_string,segment_nz, path_abempty) -> raw_string
 
     type Path_Absolute =
         private
-        | UniformAbsoluteRootPath of String_Index * Path_Rootless
-        | InternationalizedAbsoluteRootPath of String_Index * Path_Rootless
-        | AbsoluteRoot of String_Index
+        | UniformAbsoluteRootPath of string * Path_Rootless
+        | InternationalizedAbsoluteRootPath of string * Path_Rootless
+        | AbsoluteRoot of string
 
 
         static member parser: Parser<Path_Absolute, Code_Point, unit, ReadableMemory<Code_Point>> =
@@ -2309,15 +2147,15 @@ module Rfc_Types =
                 let path_string = 
                     "/" + (
                         match maybe_path with 
-                        | ValueSome path -> path.as_rendered_string
+                        | ValueSome path -> path.as_raw_string
                         | ValueNone -> String.Empty
                     )
 
                 return
                     match maybe_path with
-                    | ValueSome path when path.IsInternationalizedPathRootless -> InternationalizedAbsoluteRootPath(data_store.ensure_string_index_for_string path_string, path)
-                    | ValueSome path -> UniformAbsoluteRootPath (data_store.ensure_string_index_for_string path_string, path)
-                    | ValueNone ->  data_store.ensure_string_index_for_string path_string |> AbsoluteRoot
+                    | ValueSome path when path.IsInternationalizedPathRootless -> InternationalizedAbsoluteRootPath (path_string, path)
+                    | ValueSome path -> UniformAbsoluteRootPath(path_string, path)
+                    | ValueNone ->  AbsoluteRoot path_string
 
             }
 
@@ -2330,49 +2168,29 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Path_Absolute.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Path_Absolute.metasyntax)
 
-        member this.as_code_square =
+
+
+        member this.segments =
             match this with
-            | UniformAbsoluteRootPath (_, path_rootless) -> path_rootless.as_code_square
-            | InternationalizedAbsoluteRootPath (_, path_rootless) -> path_rootless.as_code_square
+            | UniformAbsoluteRootPath (_, path_rootless) -> path_rootless.segments
+            | InternationalizedAbsoluteRootPath (_, path_rootless) -> path_rootless.segments
             | AbsoluteRoot _ -> [||]
 
 
-        member this.as_raw_segments =
+        member this.as_raw_string =
             match this with
-            | UniformAbsoluteRootPath (_, path_rootless) -> path_rootless.as_raw_segments
-            | InternationalizedAbsoluteRootPath (_, path_rootless) -> path_rootless.as_raw_segments
-            | AbsoluteRoot _ -> [||]
-
-        static member code_line(segment: Segment) = segment.as_code_line
-
-        member this.as_string_segments =
-            this.as_raw_segments
-            |> Array.map Segment.raw_string
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-        member this.string_index =
-            match this with
-            | UniformAbsoluteRootPath (string_index, path_rootless) -> string_index
-            | InternationalizedAbsoluteRootPath (string_index, path_rootless) -> string_index
-            | AbsoluteRoot string_index -> string_index
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames =
-                this.as_raw_segments
-                |> Array.map Segment.code_line
-                |> Code_Square.Unames
-
-            sprintf "%A %A ``%A``" this unames this.as_string_segments
+            | UniformAbsoluteRootPath (raw_string, path_rootless) -> raw_string
+            | InternationalizedAbsoluteRootPath (raw_string, path_rootless) -> raw_string
+            | AbsoluteRoot raw_string -> raw_string
 
     type Path_Noscheme =
         private
-        | UniformPathNoscheme of String_Index * Nonzero_Noncolon_Segment * Path_Abempty
-        | InternationalizedPathNoscheme of String_Index * Nonzero_Noncolon_Segment * Path_Abempty
+        | UniformPathNoscheme of string * Nonzero_Noncolon_Segment * Path_Abempty
+        | InternationalizedPathNoscheme of string * Nonzero_Noncolon_Segment * Path_Abempty
 
 
         static member parser: Parser<Path_Noscheme, Code_Point, unit, ReadableMemory<Code_Point>> =
@@ -2380,13 +2198,13 @@ module Rfc_Types =
 
                 let! segment_nz_nc = Nonzero_Noncolon_Segment.parser
                 let! abempty = Path_Abempty.parser
-                let path_string =  segment_nz_nc.as_rendered_string + abempty.as_rendered_string
+                let path_string =  segment_nz_nc.as_raw_string + abempty.as_raw_string
 
                 return
                     if segment_nz_nc.IsInternationalizedNonzeroNoncolonSegment then
-                        InternationalizedPathNoscheme(data_store.ensure_string_index_for_string path_string, segment_nz_nc, abempty)
+                        InternationalizedPathNoscheme( path_string, segment_nz_nc, abempty)
                     else
-                        UniformPathNoscheme(data_store.ensure_string_index_for_string path_string, segment_nz_nc, abempty)
+                        UniformPathNoscheme( path_string, segment_nz_nc, abempty)
 
             }
 
@@ -2399,69 +2217,45 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Path_Noscheme.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Path_Noscheme.metasyntax)
 
-        member this.as_raw_segments =
+        member this.segments =
             match this with
             | UniformPathNoscheme (_, segment_nz_nc, path_abempty) ->
-                Array.concat [| [| Segment.UniformSegmentFromUniformNonzeroNoncolonSegment segment_nz_nc.string_index |]
-                                path_abempty.as_raw_segments |]
+                Array.concat [| [| Segment.UniformSegmentFromUniformNonzeroNoncolonSegment segment_nz_nc.as_raw_string |]
+                                path_abempty.segments |]
 
             | InternationalizedPathNoscheme (_, segment_nz_nc, path_abempty) ->
                 Array.concat [| [| Segment.InternationalizedSegmentFromInternationalizedNonzeroNoncolonSegment
-                                       segment_nz_nc.string_index |]
-                                path_abempty.as_raw_segments |]
+                                       segment_nz_nc.as_raw_string |]
+                                path_abempty.segments |]
 
-        member this.as_code_square =
+
+        member this.as_raw_string =
             match this with
-            | UniformPathNoscheme (_, segment_nz_nc, path_abempty) ->
-                Array.concat [| [| segment_nz_nc.as_code_line |]
-                                path_abempty.as_code_square |]
-            | InternationalizedPathNoscheme (_, segment_nz_nc, path_abempty) ->
-                Array.concat [| [| segment_nz_nc.as_code_line |]
-                                path_abempty.as_code_square |]
-
-
-        member this.as_string_segments =
-            this.as_raw_segments
-            |> Array.map Segment.raw_string
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-
-        member this.string_index =
-            match this with
-            | UniformPathNoscheme (string_index, segment_nz_nc, path_abempty) -> string_index
-            | InternationalizedPathNoscheme (string_index,segment_nz_nc, path_abempty) -> string_index
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames =
-                this.as_raw_segments
-                |> Array.map Segment.code_line
-                |> Code_Square.Unames
-
-            sprintf "%A %A ``%A``" this unames this.as_string_segments
+            | UniformPathNoscheme (raw_string, segment_nz_nc, path_abempty) -> raw_string
+            | InternationalizedPathNoscheme (raw_string,segment_nz_nc, path_abempty) -> raw_string
 
 
 
     type Registered_Name =
         private
-        | UniformRegisteredName of String_Index
-        | InternationalizedRegisteredName of String_Index
+        | UniformRegisteredName of string
+        | InternationalizedRegisteredName of string
         static member parser: Parser<Registered_Name, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
 
                 return!
                     choice [ many ireg_name.code_point_parser
                              |>> (fun immutable_code_line ->
-                                 immutable_code_line.AsSpan().ToArray() |> String.from_code_line |> data_store.ensure_string_index_for_string
-                                 |> InternationalizedRegisteredName)
+                                 immutable_code_line.AsSpan().ToArray() |> String_Pool.from_code_line
+                                 |> UniformRegisteredName)
                              many reg_name.code_point_parser
                              |>> (fun immutable_code_line ->
-                                 immutable_code_line.AsSpan().ToArray() |> String.from_code_line |> data_store.ensure_string_index_for_string
-                                 |> UniformRegisteredName) ]
+                                 immutable_code_line.AsSpan().ToArray() |> String_Pool.from_code_line
+                                 |> InternationalizedRegisteredName) ]
 
             }
 
@@ -2474,26 +2268,16 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Registered_Name.parser input_string.as_parser_input with
             | Ok success -> 
-            
-              data_store.intern_string success.as_raw_string 
               success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Registered_Name.metasyntax)
 
 
-        member this.string_index =
+        member this.as_raw_string =
             match this with
-            | UniformRegisteredName string_index -> string_index
-            | InternationalizedRegisteredName string_index -> string_index
+            | UniformRegisteredName raw_string -> raw_string
+            | InternationalizedRegisteredName raw_string -> raw_string
 
-
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
-        member this.as_code_line = this.as_raw_string.as_code_line
-        member this.as_rendered_string = this.as_raw_string
-
-        member this.fsi_printer =
-            let unames = Code_Line.Unames this.as_code_line
-            sprintf "%A %A ``%s``" this unames this.as_raw_string
 
 
 
@@ -2534,43 +2318,30 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Host.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line IP_Literal.metasyntax)
 
-        member this.as_code_square =
+        member this.as_raw_string = 
             match this with
-            | IPLiteralHost ip_literal -> ip_literal.as_code_square
-            | IPv4Host ipv4_address -> ipv4_address.as_code_square
-            | UniformRegisteredNameHost registered_name -> [| registered_name.as_code_line |]
-            | InternationalizedRegisteredNameHost registered_name -> [| registered_name.as_code_line |]
-
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-        member this.string_index = 
-            match this with
-            | IPLiteralHost ip_literal -> ip_literal.string_index
-            | IPv4Host ipv4_address -> ipv4_address.string_index
-            | UniformRegisteredNameHost registered_name -> registered_name.string_index
-            | InternationalizedRegisteredNameHost registered_name -> registered_name.string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index 
+            | IPLiteralHost ip_literal -> ip_literal.as_raw_string
+            | IPv4Host ipv4_address -> ipv4_address.as_raw_string
+            | UniformRegisteredNameHost registered_name -> registered_name.as_raw_string
+            | InternationalizedRegisteredNameHost registered_name -> registered_name.as_raw_string
 
         member this.as_rendered_string =
             match this with
             | IPLiteralHost ip_literal -> ip_literal.as_rendered_string
-            | IPv4Host ipv4_address -> ipv4_address.as_rendered_string
-            | UniformRegisteredNameHost registered_name -> registered_name.as_rendered_string
-            | InternationalizedRegisteredNameHost registered_name -> registered_name.as_rendered_string
+            | IPv4Host ipv4_address -> ipv4_address.as_raw_string
+            | UniformRegisteredNameHost registered_name -> registered_name.as_raw_string
+            | InternationalizedRegisteredNameHost registered_name -> registered_name.as_raw_string
 
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
     type Authority =
-        | HostAuthority of String_Index *  Host
-        | UserinfoHostAuthority of String_Index *  Userinfo * Host
-        | HostPortAuthority of String_Index *  Host * Port
-        | UserinfoHostPortAuthority of String_Index *  Userinfo * Host * Port
+        | HostAuthority of  Host
+        | UserinfoHostAuthority of string *  Userinfo * Host
+        | HostPortAuthority of string *  Host * Port
+        | UserinfoHostPortAuthority of string *  Userinfo * Host * Port
 
 
         static member parser: Parser<Authority, Code_Point, unit, ReadableMemory<Code_Point>> =
@@ -2581,16 +2352,16 @@ module Rfc_Types =
 
                 return
                     match maybe_userinfo, host, maybe_port with
-                    | ValueNone, host, ValueNone -> HostAuthority(host.string_index , host)
+                    | ValueNone, host, ValueNone -> HostAuthority host
                     | ValueSome userinfo, host, ValueNone -> 
                         let authority_string = userinfo.as_rendered_string + host.as_rendered_string
-                        UserinfoHostAuthority(data_store.ensure_string_index_for_string authority_string, userinfo, host)
+                        UserinfoHostAuthority( authority_string, userinfo, host)
                     | ValueNone, host, ValueSome port -> 
                         let authority_string = host.as_rendered_string + port.as_rendered_string
-                        HostPortAuthority(data_store.ensure_string_index_for_string authority_string, host, port)
+                        HostPortAuthority( authority_string, host, port)
                     | ValueSome userinfo, host, ValueSome port -> 
                         let authority_string = userinfo.as_rendered_string + host.as_rendered_string + port.as_rendered_string
-                        UserinfoHostPortAuthority(data_store.ensure_string_index_for_string authority_string, userinfo, host, port)
+                        UserinfoHostPortAuthority( authority_string, userinfo, host, port)
 
             }
 
@@ -2603,59 +2374,27 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Authority.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Authority.metasyntax)
 
-        member this.as_code_square =
-            match this with
-            | HostAuthority (_, host) -> host.as_code_square
-            | UserinfoHostAuthority (_, userinfo, host) ->
-                Array.concat [| [| userinfo.as_code_line |]
-                                host.as_code_square
-
-                                 |]
-
-            | HostPortAuthority (_, host, port) ->
-                Array.concat [| [| port.as_code_line |]
-                                host.as_code_square
-
-                                 |]
-            | UserinfoHostPortAuthority (_, userinfo, host, port) ->
-                Array.concat [|
-
-                                [| userinfo.as_code_line |]
-                                host.as_code_square
-                                [| port.as_code_line |]
-
-                                 |]
-
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-        member this.string_index = 
+        member this.as_raw_string = 
         
             match this with
-            | HostAuthority (string_index , host) ->  string_index 
-            | UserinfoHostAuthority (string_index , userinfo, host) -> string_index 
-            | HostPortAuthority (string_index , host, port) -> string_index 
-            | UserinfoHostPortAuthority (string_index , userinfo, host, port) -> string_index 
-
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
+            | HostAuthority host ->  host.as_raw_string
+            | UserinfoHostAuthority (raw_string , userinfo, host) -> raw_string 
+            | HostPortAuthority (raw_string , host, port) -> raw_string 
+            | UserinfoHostPortAuthority (raw_string , userinfo, host, port) -> raw_string 
 
 
 
 
 
     type Relative_Part =
-        | RelativeAuthorityAbemptyPart of String_Index * Authority * Path_Abempty
-        | RelativeAbsolutePart of String_Index * Path_Absolute
-        | RelativeNoschemePart of String_Index * Path_Noscheme
-        | RelativeEmptyPart of String_Index
+        | RelativeAuthorityAbemptyPart of string * Authority * Path_Abempty
+        | RelativeAbsolutePart of  Path_Absolute
+        | RelativeNoschemePart of  Path_Noscheme
+        | RelativeEmptyPart 
         static member parser: Parser<Relative_Part, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
                 let! maybe_part =
@@ -2665,10 +2404,10 @@ module Rfc_Types =
                                  skip_string "//" >>. Authority.parser
                                  .>>. Path_Abempty.parser
                                  |>> (fun struct (authority, abempty) ->
-                                     let relative_string = authority.as_rendered_string + abempty.as_rendered_string
-                                     RelativeAuthorityAbemptyPart(data_store.ensure_string_index_for_string relative_string, authority, abempty))
-                                 Path_Absolute.parser |>> (fun path -> RelativeAbsolutePart(path.string_index, path))
-                                 Path_Noscheme.parser |>> (fun path -> RelativeNoschemePart(path.string_index, path))
+                                     let relative_string = authority.as_raw_string + abempty.as_raw_string
+                                     RelativeAuthorityAbemptyPart(relative_string, authority, abempty))
+                                 Path_Absolute.parser |>> (fun path -> RelativeAbsolutePart( path))
+                                 Path_Noscheme.parser |>> (fun path -> RelativeNoschemePart( path))
 
                                   ]
                     )
@@ -2676,7 +2415,7 @@ module Rfc_Types =
                 return
                     match maybe_part with
                     | ValueSome part -> part
-                    | ValueNone -> RelativeEmptyPart(data_store.ensure_string_index_for_string "")
+                    | ValueNone -> RelativeEmptyPart
 
             }
 
@@ -2696,48 +2435,33 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Relative_Part.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Authority.metasyntax)
 
-        member this.as_code_square =
-            match this with
-            | RelativeAuthorityAbemptyPart (_, authority, abempty) ->
-                Array.concat [| authority.as_code_square
-                                abempty.as_code_square |]
-            | RelativeAbsolutePart (_, absolute) -> absolute.as_code_square
-            | RelativeNoschemePart (_, noscheme) -> noscheme.as_code_square
-            | RelativeEmptyPart _ -> [||]
-
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-        member this.string_index = 
+        member this.as_raw_string = 
             match this with 
-            | RelativeAuthorityAbemptyPart (string_index, authority, abempty) -> string_index
-            | RelativeAbsolutePart (string_index, absolute) ->  string_index
-            | RelativeNoschemePart (string_index,_) ->  string_index
-            | RelativeEmptyPart string_index -> string_index
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
+            | RelativeAuthorityAbemptyPart (raw_string, authority, abempty) -> raw_string
+            | RelativeAbsolutePart part ->  part.as_raw_string
+            | RelativeNoschemePart part ->  part.as_raw_string
+            | RelativeEmptyPart -> String.Empty
 
 
         member this.as_rendered_string =
             match this with
-            | RelativeAuthorityAbemptyPart (_, authority, abempty) -> "//" + this.as_raw_string
-            | RelativeAbsolutePart (_, absolute_)  -> this.as_raw_string
-            | RelativeNoschemePart (_, noscheme_)  -> this.as_raw_string
-            | RelativeEmptyPart _ -> this.as_raw_string
+            | RelativeAuthorityAbemptyPart (raw_string, authority, abempty) -> "//" + raw_string
+            | RelativeAbsolutePart part ->  part.as_raw_string
+            | RelativeNoschemePart part ->  part.as_raw_string
+            | RelativeEmptyPart -> String.Empty
 
 
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 
     type Hierarchical_Part =
-        | HierarchicalAuthorityAbemptyPart of String_Index * Authority * Path_Abempty
-        | HierarchicalAbsolutePart of String_Index * Path_Absolute
-        | HierarchicalRootlessPart of String_Index * Path_Rootless
-        | HierarchicalEmptyPart of String_Index
+        | HierarchicalAuthorityAbemptyPart of string * Authority * Path_Abempty
+        | HierarchicalAbsolutePart of Path_Absolute
+        | HierarchicalRootlessPart of Path_Rootless
+        | HierarchicalEmptyPart 
         static member parser: Parser<Hierarchical_Part, Code_Point, unit, ReadableMemory<Code_Point>> =
             parser {
                 let! maybe_part =
@@ -2747,10 +2471,10 @@ module Rfc_Types =
                                  skip_string "//" >>. Authority.parser
                                  .>>. Path_Abempty.parser
                                  |>> (fun struct (authority, abempty) ->
-                                     let hierarchical_string = authority.as_rendered_string + abempty.as_rendered_string
-                                     HierarchicalAuthorityAbemptyPart(data_store.ensure_string_index_for_string hierarchical_string, authority, abempty))
-                                 Path_Absolute.parser |>> (fun path -> HierarchicalAbsolutePart(path.string_index, path))
-                                 Path_Rootless.parser |>> (fun path -> HierarchicalRootlessPart(path.string_index, path))
+                                     let hierarchical_string = authority.as_raw_string + abempty.as_raw_string
+                                     HierarchicalAuthorityAbemptyPart( hierarchical_string, authority, abempty))
+                                 Path_Absolute.parser |>> (fun path -> HierarchicalAbsolutePart( path))
+                                 Path_Rootless.parser |>> (fun path -> HierarchicalRootlessPart( path))
 
                                   ]
                     )
@@ -2758,7 +2482,7 @@ module Rfc_Types =
                 return
                     match maybe_part with
                     | ValueSome part -> part
-                    | ValueNone -> HierarchicalEmptyPart(data_store.ensure_string_index_for_string "")
+                    | ValueNone -> HierarchicalEmptyPart
 
             }
 
@@ -2777,49 +2501,34 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Hierarchical_Part.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Authority.metasyntax)
 
-        member this.as_code_square =
-            match this with
-            | HierarchicalAuthorityAbemptyPart (_, authority, abempty) ->
-                Array.concat [| authority.as_code_square
-                                abempty.as_code_square |]
-            | HierarchicalAbsolutePart (_, absolute) -> absolute.as_code_square
-            | HierarchicalRootlessPart (_, rootless) -> rootless.as_code_square
-            | HierarchicalEmptyPart _ -> [||]
 
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-
-        member this.string_index = 
+        member this.as_raw_string = 
             match this with 
-            | HierarchicalAuthorityAbemptyPart (string_index, authority, abempty) -> string_index
-            | HierarchicalAbsolutePart (string_index, absolute) ->  string_index
-            | HierarchicalRootlessPart (string_index,_) ->  string_index
-            | HierarchicalEmptyPart string_index -> string_index
+            | HierarchicalAuthorityAbemptyPart (raw_string, authority, abempty) -> raw_string
+            | HierarchicalAbsolutePart part ->  part.as_raw_string
+            | HierarchicalRootlessPart part ->  part.as_raw_string
+            | HierarchicalEmptyPart  -> String.Empty
 
             
-        member this.as_raw_string = data_store.get_string_for_string_index this.string_index
 
         member this.as_rendered_string =
             match this with
             | HierarchicalAuthorityAbemptyPart (_, authority, abempty) -> "//" + this.as_raw_string
-            | HierarchicalAbsolutePart (_, absolute_)  -> this.as_raw_string
-            | HierarchicalRootlessPart (_, noscheme_)  -> this.as_raw_string
-            | HierarchicalEmptyPart _ -> this.as_raw_string
+            | HierarchicalAbsolutePart part ->  part.as_raw_string
+            | HierarchicalRootlessPart part ->  part.as_raw_string
+            | HierarchicalEmptyPart  -> String.Empty
 
 
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
     type Relative_Reference =
-        | RelativeReference of String_Index *  Relative_Part
-        | RelativeQueryReference of String_Index *  Relative_Part * Query
-        | RelativeFragmentReference of String_Index *  Relative_Part * Fragment
-        | RelativeQueryFragmentReference of String_Index *  Relative_Part * Query * Fragment
+        | RelativeReference  of Relative_Part
+        | RelativeQueryReference of string *  Relative_Part * Query
+        | RelativeFragmentReference of string *  Relative_Part * Fragment
+        | RelativeQueryFragmentReference of string *  Relative_Part * Query * Fragment
 
 
 
@@ -2831,16 +2540,16 @@ module Rfc_Types =
 
                 return
                     match relative_part, maybe_query, maybe_fragment with
-                    | part, ValueNone, ValueNone -> RelativeReference(part.string_index, part)
+                    | part, ValueNone, ValueNone -> RelativeReference( part)
                     | part, ValueSome query_, ValueNone -> 
                         let relative_string = part.as_rendered_string + query_.as_rendered_string
-                        RelativeQueryReference(data_store.ensure_string_index_for_string relative_string, part, query_)
+                        RelativeQueryReference( relative_string, part, query_)
                     | part, ValueNone, ValueSome fragment -> 
                         let relative_string = part.as_rendered_string + fragment.as_rendered_string
-                        RelativeFragmentReference(data_store.ensure_string_index_for_string relative_string, part, fragment)
+                        RelativeFragmentReference( relative_string, part, fragment)
                     | part, ValueSome query_, ValueSome fragment ->
                         let relative_string = part.as_rendered_string + query_.as_rendered_string + fragment.as_rendered_string
-                        RelativeQueryFragmentReference(data_store.ensure_string_index_for_string relative_string, part, query_, fragment)
+                        RelativeQueryFragmentReference( relative_string, part, query_, fragment)
 
             }
 
@@ -2854,49 +2563,29 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Relative_Reference.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Relative_Reference.metasyntax)
 
-        member this.as_code_square =
-            match this with
-            | RelativeReference (_, part) -> part.as_code_square
-            | RelativeQueryReference (_, part, query_) ->
-                part.as_code_square
-                |> Array.append [| query_.as_code_line |]
-            | RelativeFragmentReference (_, part, fragment) ->
-                part.as_code_square
-                |> Array.append [| fragment.as_code_line |]
-            | RelativeQueryFragmentReference (_, part, query_, fragment) ->
-                Array.concat [|
-
-                                part.as_code_square
-                                [| query_.as_code_line |]
-                                [| fragment.as_code_line |]
-
-                                 |]
-
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
 
 
-        member this.string_index = 
+        member this.as_raw_string = 
             match this with 
-            | RelativeReference (string_index, part) ->  string_index
-            | RelativeQueryReference (string_index, part, query_) -> string_index
-            | RelativeFragmentReference (string_index, part, fragment) -> string_index
-            | RelativeQueryFragmentReference (string_index, part, querystring_index, fragment) -> string_index
-
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
+            | RelativeReference ( part) ->   part.as_raw_string
+            | RelativeQueryReference (raw_string, part, query_) -> raw_string
+            | RelativeFragmentReference (raw_string, part, fragment) -> raw_string
+            | RelativeQueryFragmentReference (raw_string, part, raw_querystring, fragment) -> raw_string
+        member this.as_rendered_string = 
+            match this with 
+            | RelativeReference ( part) ->   part.as_rendered_string
+            | RelativeQueryReference (raw_string, part, query_) -> raw_string
+            | RelativeFragmentReference (raw_string, part, fragment) -> raw_string
+            | RelativeQueryFragmentReference (raw_string, part, raw_querystring, fragment) -> raw_string
 
 
     type Absolute_IRI =
-        | AbsoluteIRI of String_Index * Scheme * Hierarchical_Part
-        | AbsoluteQueryIRI of String_Index * Scheme * Hierarchical_Part * Query
+        | AbsoluteIRI of string * Scheme * Hierarchical_Part
+        | AbsoluteQueryIRI of string * Scheme * Hierarchical_Part * Query
         member this.scheme =
             match this with
             | AbsoluteIRI (_, scheme, hier_part) -> scheme
@@ -2913,11 +2602,11 @@ module Rfc_Types =
                     match maybe_query with
                     | ValueSome query_ -> 
                         let absolute_string = scheme.as_rendered_string + hier_part.as_rendered_string + query_.as_rendered_string
-                        AbsoluteQueryIRI(data_store.ensure_string_index_for_string absolute_string, scheme, hier_part, query_)
+                        AbsoluteQueryIRI( absolute_string, scheme, hier_part, query_)
                     | ValueNone -> 
                         let absolute_string = scheme.as_rendered_string + hier_part.as_rendered_string
 
-                        AbsoluteIRI(data_store.ensure_string_index_for_string absolute_string, scheme, hier_part)
+                        AbsoluteIRI( absolute_string, scheme, hier_part)
 
             }
 
@@ -2931,48 +2620,23 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match Absolute_IRI.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure ->
                 failwithf "%A: %s" failure (code_line_message input_string.as_code_line Absolute_IRI.metasyntax)
 
-        member this.as_code_square =
+        member this.as_raw_string = 
             match this with
-            | AbsoluteIRI (_, scheme, hier_part) ->
-                Array.concat [|
+            | AbsoluteIRI (raw_string, scheme, hier_part) -> raw_string
+            | AbsoluteQueryIRI (raw_string, scheme, hier_part, query_) -> raw_string
 
-                                [| scheme.as_code_line |]
-                                hier_part.as_code_square
-
-                                 |]
-            | AbsoluteQueryIRI (_, scheme, hier_part, query_) ->
-                Array.concat [|
-
-                                [| scheme.as_code_line |]
-                                hier_part.as_code_square
-                                [| query_.as_code_line |]
-
-                                 |]
-
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-        member this.string_index = 
-            match this with
-            | AbsoluteIRI (string_index, scheme, hier_part) -> string_index
-            | AbsoluteQueryIRI (string_index, scheme, hier_part, query_) -> string_index
-
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
 
 
 
     type IRI =
-        | IRI of String_Index * Scheme * Hierarchical_Part
-        | QueryIRI of String_Index * Scheme * Hierarchical_Part * Query
-        | FragmentIRI of String_Index * Scheme * Hierarchical_Part * Fragment
-        | QueryFragmentIRI of String_Index * Scheme * Hierarchical_Part * Query * Fragment
+        | IRI of string * Scheme * Hierarchical_Part
+        | QueryIRI of string * Scheme * Hierarchical_Part * Query
+        | FragmentIRI of string * Scheme * Hierarchical_Part * Fragment
+        | QueryFragmentIRI of string * Scheme * Hierarchical_Part * Query * Fragment
         member this.scheme =
             match this with
             | IRI (_, scheme, hier_part) -> scheme
@@ -3014,16 +2678,16 @@ module Rfc_Types =
                     match maybe_query, maybe_fragment with
                     | ValueNone, ValueNone -> 
                         let iri_string = scheme.as_rendered_string + hier_part.as_rendered_string
-                        IRI(data_store.ensure_string_index_for_string iri_string, scheme, hier_part)
+                        IRI( iri_string, scheme, hier_part)
                     | ValueSome query_, ValueNone -> 
                         let iri_string = scheme.as_rendered_string + hier_part.as_rendered_string + query_.as_rendered_string
-                        QueryIRI(data_store.ensure_string_index_for_string iri_string, scheme, hier_part, query_)
+                        QueryIRI( iri_string, scheme, hier_part, query_)
                     | ValueNone, ValueSome fragment -> 
                         let iri_string = scheme.as_rendered_string + hier_part.as_rendered_string + fragment.as_rendered_string
-                        FragmentIRI(data_store.ensure_string_index_for_string iri_string, scheme, hier_part, fragment)
+                        FragmentIRI( iri_string, scheme, hier_part, fragment)
                     | ValueSome query_, ValueSome fragment -> 
                         let iri_string = scheme.as_rendered_string + hier_part.as_rendered_string + fragment.as_rendered_string
-                        QueryFragmentIRI(data_store.ensure_string_index_for_string iri_string, scheme, hier_part, query_, fragment)
+                        QueryFragmentIRI( iri_string, scheme, hier_part, query_, fragment)
 
             }
 
@@ -3037,91 +2701,12 @@ module Rfc_Types =
         static member parse(input_string: string) =
             match IRI.parser input_string.as_parser_input with
             | Ok success -> 
-                success.as_raw_strings |> Array.iter data_store.intern_string  
                 success
             | Error failure -> failwithf "%A: %s" failure (code_line_message input_string.as_code_line IRI.metasyntax)
 
-        member this.as_code_square =
+        member this.as_raw_string =
             match this with
-            | IRI (_, scheme, hier_part) ->
-                Array.concat [|
-
-                                [| scheme.as_code_line |]
-                                hier_part.as_code_square
-
-                                 |]
-            | QueryIRI (_, scheme, hier_part, query_) ->
-                Array.concat [|
-
-                                [| scheme.as_code_line |]
-                                hier_part.as_code_square
-                                [| query_.as_code_line |]
-
-                                 |]
-
-            | FragmentIRI (_, scheme, hier_part, fragment) ->
-
-                Array.concat [|
-
-                                [| scheme.as_code_line |]
-                                hier_part.as_code_square
-                                [| fragment.as_code_line |]
-
-                                 |]
-            | QueryFragmentIRI (_, scheme, hier_part, query_, fragment) ->
-
-                Array.concat [|
-
-                                [| scheme.as_code_line |]
-                                hier_part.as_code_square
-                                [| fragment.as_code_line |]
-
-                                 |]
-
-
-        member this.as_raw_strings = Strings.from_code_square this.as_code_square
-
-        member this.string_index =
-            match this with
-            | IRI (string_index, scheme, hier_part) -> string_index
-            | QueryIRI (string_index, scheme, hier_part, query_) -> string_index
-            | FragmentIRI (string_index, scheme, hier_part, fragment) -> string_index
-            | QueryFragmentIRI (string_index, scheme, hier_part, querystring_index, fragment) -> string_index
-
-        member this.as_rendered_string = data_store.get_string_for_string_index this.string_index
-
-        member this.fsi_printer =
-            let unames = Code_Square.Unames this.as_code_square
-            sprintf "%A %A ``%A``" this unames this.as_raw_strings
-
-
-
-(*
-
-    fsi.AddPrinter<Absolute_IRI>(fun absolute_iri -> absolute_iri.fsi_printer)
-    fsi.AddPrinter<Authority>(fun authority -> authority.fsi_printer)
-    fsi.AddPrinter<Fragment>(fun fragment -> fragment.fsi_printer)
-    fsi.AddPrinter<Hextet>(fun hextet -> hextet.fsi_printer)
-    fsi.AddPrinter<Hierarchical_Part>(fun hierarchical_part -> hierarchical_part.fsi_printer)
-    fsi.AddPrinter<Host>(fun host -> host.fsi_printer)
-    fsi.AddPrinter<IP_Literal>(fun ip_literal -> ip_literal.fsi_printer)
-    fsi.AddPrinter<IPv4_Address>(fun ipv4_address -> ipv4_address.fsi_printer)
-    fsi.AddPrinter<IPv6_Address>(fun ipv6_address -> ipv6_address.fsi_printer)
-    fsi.AddPrinter<IPvFuture>(fun ipvfuture -> ipvfuture.fsi_printer)
-    fsi.AddPrinter<IRI>(fun iri -> iri.fsi_printer)
-    fsi.AddPrinter<Least_Significant_32_Bits>(fun least_significant_32_bits -> least_significant_32_bits.fsi_printer)
-    fsi.AddPrinter<Nonzero_Noncolon_Segment>(fun nonzero_noncolon_segment -> nonzero_noncolon_segment.fsi_printer)
-    fsi.AddPrinter<Nonzero_Segment>(fun nonzero_segment -> nonzero_segment.fsi_printer)
-    fsi.AddPrinter<Octet>(fun octet -> octet.fsi_printer)
-    fsi.AddPrinter<Path_Abempty>(fun path_abempty -> path_abempty.fsi_printer)
-    fsi.AddPrinter<Path_Absolute>(fun path_absolute -> path_absolute.fsi_printer)
-    fsi.AddPrinter<Path_Noscheme>(fun path_noscheme -> path_noscheme.fsi_printer)
-    fsi.AddPrinter<Path_Rootless>(fun path_rootless -> path_rootless.fsi_printer)
-    fsi.AddPrinter<Query>(fun query -> query.fsi_printer)
-    fsi.AddPrinter<Registered_Name>(fun registered_name -> registered_name.fsi_printer)
-    fsi.AddPrinter<Relative_Part>(fun relative_part -> relative_part.fsi_printer)
-    fsi.AddPrinter<Relative_Reference>(fun relative_reference -> relative_reference.fsi_printer)
-    fsi.AddPrinter<Scheme>(fun scheme -> scheme.fsi_printer)
-    fsi.AddPrinter<Segment>(fun segment -> segment.fsi_printer)
-    fsi.AddPrinter<Userinfo>(fun userinfo -> userinfo.fsi_printer)
-    *)
+            | IRI (raw_string, scheme, hier_part) -> raw_string
+            | QueryIRI (raw_string, scheme, hier_part, query_) -> raw_string
+            | FragmentIRI (raw_string, scheme, hier_part, fragment) -> raw_string
+            | QueryFragmentIRI (raw_string, scheme, hier_part, raw_querystring, fragment) -> raw_string

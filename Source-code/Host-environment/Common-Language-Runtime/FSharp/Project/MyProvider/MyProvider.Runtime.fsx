@@ -81,7 +81,7 @@ open System.Collections.Generic
 
 
 
-type ID_message<'Key> =
+type ID_message<'Key when 'Key: comparison> =
     | GetNext of AsyncReplyChannel<int>
     | GetOrCreate of key: 'Key * reply: AsyncReplyChannel<int>
     | TryGet of key: 'Key * reply: AsyncReplyChannel<int option>
