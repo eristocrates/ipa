@@ -251,15 +251,15 @@ let generated_graph_data_oak (graph_data: Force_Graph) =
             |> _.attribute(
                 Attribute(
                     "Emit",
-                    Ast.String(
+                    VerbatimString(
                         """
-fetch($0, { cache: "no-store" })
+fetch($0, { cache: 'no-store' })
     .then(response => {
         if (!response.ok) {
             throw new Error(
-                "Failed to load graph JSON: HTTP "
+                'Failed to load graph JSON: HTTP '
                 + response.status
-                + " "
+                + ' '
                 + response.statusText
             );
         }
