@@ -1,244 +1,171 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Securities.SecuritiesIssuance.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_sec_iss =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasFinancialInstrumentShortName"></see>
     /// </summary>
-    let hasFinancialInstrumentShortName =
-        Namespaced_IRI.parse _namespace_name "hasFinancialInstrumentShortName" |> NamespacedName
-
+    let hasFinancialInstrumentShortName = _prefix "hasFinancialInstrumentShortName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/FinancialInstrumentShortName"></see>
     /// </summary>
-    let FinancialInstrumentShortName =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrumentShortName" |> NamespacedName
-
+    let FinancialInstrumentShortName = _prefix "FinancialInstrumentShortName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasIssuerShortName"></see>
     /// </summary>
-    let hasIssuerShortName =
-        Namespaced_IRI.parse _namespace_name "hasIssuerShortName" |> NamespacedName
-
+    let hasIssuerShortName = _prefix "hasIssuerShortName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/isIssuedInForm"></see>
     /// </summary>
-    let isIssuedInForm =
-        Namespaced_IRI.parse _namespace_name "isIssuedInForm" |> NamespacedName
-
+    let isIssuedInForm = _prefix "isIssuedInForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/SecurityForm"></see>
     /// </summary>
-    let SecurityForm =
-        Namespaced_IRI.parse _namespace_name "SecurityForm" |> NamespacedName
-
+    let SecurityForm = _prefix "SecurityForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/isRegisteredWith"></see>
     /// </summary>
-    let isRegisteredWith =
-        Namespaced_IRI.parse _namespace_name "isRegisteredWith" |> NamespacedName
-
+    let isRegisteredWith = _prefix "isRegisteredWith"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/BearerAndRegisteredForm"></see>
     /// </summary>
-    let BearerAndRegisteredForm =
-        Namespaced_IRI.parse _namespace_name "BearerAndRegisteredForm" |> NamespacedName
-
+    let BearerAndRegisteredForm = _prefix "BearerAndRegisteredForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/BearerForm"></see>
     /// </summary>
-    let BearerForm = Namespaced_IRI.parse _namespace_name "BearerForm" |> NamespacedName
-
+    let BearerForm = _prefix "BearerForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/BestEffortsOffering"></see>
     /// </summary>
-    let BestEffortsOffering =
-        Namespaced_IRI.parse _namespace_name "BestEffortsOffering" |> NamespacedName
-
+    let BestEffortsOffering = _prefix "BestEffortsOffering"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/SecuritiesOffering"></see>
     /// </summary>
-    let SecuritiesOffering =
-        Namespaced_IRI.parse _namespace_name "SecuritiesOffering" |> NamespacedName
-
+    let SecuritiesOffering = _prefix "SecuritiesOffering"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/BookEntryForm"></see>
     /// </summary>
-    let BookEntryForm =
-        Namespaced_IRI.parse _namespace_name "BookEntryForm" |> NamespacedName
-
+    let BookEntryForm = _prefix "BookEntryForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/ConversionTerms"></see>
     /// </summary>
-    let ConversionTerms =
-        Namespaced_IRI.parse _namespace_name "ConversionTerms" |> NamespacedName
-
+    let ConversionTerms = _prefix "ConversionTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/specifiesConversionInto"></see>
     /// </summary>
-    let specifiesConversionInto =
-        Namespaced_IRI.parse _namespace_name "specifiesConversionInto" |> NamespacedName
-
+    let specifiesConversionInto = _prefix "specifiesConversionInto"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/ConvertibleSecurity"></see>
     /// </summary>
-    let ConvertibleSecurity =
-        Namespaced_IRI.parse _namespace_name "ConvertibleSecurity" |> NamespacedName
-
+    let ConvertibleSecurity = _prefix "ConvertibleSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/ExemptIssuer"></see>
     /// </summary>
-    let ExemptIssuer =
-        Namespaced_IRI.parse _namespace_name "ExemptIssuer" |> NamespacedName
-
+    let ExemptIssuer = _prefix "ExemptIssuer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/ExemptOffering"></see>
     /// </summary>
-    let ExemptOffering =
-        Namespaced_IRI.parse _namespace_name "ExemptOffering" |> NamespacedName
-
+    let ExemptOffering = _prefix "ExemptOffering"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/PublicOffering"></see>
     /// </summary>
-    let PublicOffering =
-        Namespaced_IRI.parse _namespace_name "PublicOffering" |> NamespacedName
-
+    let PublicOffering = _prefix "PublicOffering"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/ExemptTransaction"></see>
     /// </summary>
-    let ExemptTransaction =
-        Namespaced_IRI.parse _namespace_name "ExemptTransaction" |> NamespacedName
-
+    let ExemptTransaction = _prefix "ExemptTransaction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasInstrumentDescription"></see>
     /// </summary>
-    let hasInstrumentDescription =
-        Namespaced_IRI.parse _namespace_name "hasInstrumentDescription" |> NamespacedName
-
+    let hasInstrumentDescription = _prefix "hasInstrumentDescription"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/FirmCommitmentOffering"></see>
     /// </summary>
-    let FirmCommitmentOffering =
-        Namespaced_IRI.parse _namespace_name "FirmCommitmentOffering" |> NamespacedName
-
+    let FirmCommitmentOffering = _prefix "FirmCommitmentOffering"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/MiscellaneousForm"></see>
     /// </summary>
-    let MiscellaneousForm =
-        Namespaced_IRI.parse _namespace_name "MiscellaneousForm" |> NamespacedName
-
+    let MiscellaneousForm = _prefix "MiscellaneousForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/OfferingDocument"></see>
     /// </summary>
-    let OfferingDocument =
-        Namespaced_IRI.parse _namespace_name "OfferingDocument" |> NamespacedName
-
+    let OfferingDocument = _prefix "OfferingDocument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/OfferingStatement"></see>
     /// </summary>
-    let OfferingStatement =
-        Namespaced_IRI.parse _namespace_name "OfferingStatement" |> NamespacedName
-
+    let OfferingStatement = _prefix "OfferingStatement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/PrivateOffering"></see>
     /// </summary>
-    let PrivateOffering =
-        Namespaced_IRI.parse _namespace_name "PrivateOffering" |> NamespacedName
-
+    let PrivateOffering = _prefix "PrivateOffering"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/PrivatePlacementMemorandum"></see>
     /// </summary>
-    let PrivatePlacementMemorandum =
-        Namespaced_IRI.parse _namespace_name "PrivatePlacementMemorandum" |> NamespacedName
-
+    let PrivatePlacementMemorandum = _prefix "PrivatePlacementMemorandum"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/Prospectus"></see>
     /// </summary>
-    let Prospectus = Namespaced_IRI.parse _namespace_name "Prospectus" |> NamespacedName
-
+    let Prospectus = _prefix "Prospectus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/RegisteredForm"></see>
     /// </summary>
-    let RegisteredForm =
-        Namespaced_IRI.parse _namespace_name "RegisteredForm" |> NamespacedName
-
+    let RegisteredForm = _prefix "RegisteredForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/isUnderwrittenBy"></see>
     /// </summary>
-    let isUnderwrittenBy =
-        Namespaced_IRI.parse _namespace_name "isUnderwrittenBy" |> NamespacedName
-
+    let isUnderwrittenBy = _prefix "isUnderwrittenBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/SecurityUnderwriter"></see>
     /// </summary>
-    let SecurityUnderwriter =
-        Namespaced_IRI.parse _namespace_name "SecurityUnderwriter" |> NamespacedName
-
+    let SecurityUnderwriter = _prefix "SecurityUnderwriter"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/SecurityOfferingDistributionType"></see>
     /// </summary>
-    let SecurityOfferingDistributionType =
-        Namespaced_IRI.parse _namespace_name "SecurityOfferingDistributionType" |> NamespacedName
-
+    let SecurityOfferingDistributionType = _prefix "SecurityOfferingDistributionType"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/SecurityUnderwritingArrangement"></see>
     /// </summary>
-    let SecurityUnderwritingArrangement =
-        Namespaced_IRI.parse _namespace_name "SecurityUnderwritingArrangement" |> NamespacedName
-
+    let SecurityUnderwritingArrangement = _prefix "SecurityUnderwritingArrangement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasActualClosingDate"></see>
     /// </summary>
-    let hasActualClosingDate =
-        Namespaced_IRI.parse _namespace_name "hasActualClosingDate" |> NamespacedName
-
+    let hasActualClosingDate = _prefix "hasActualClosingDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasAnnouncementDate"></see>
     /// </summary>
-    let hasAnnouncementDate =
-        Namespaced_IRI.parse _namespace_name "hasAnnouncementDate" |> NamespacedName
-
+    let hasAnnouncementDate = _prefix "hasAnnouncementDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasFirstTradeDate"></see>
     /// </summary>
-    let hasFirstTradeDate =
-        Namespaced_IRI.parse _namespace_name "hasFirstTradeDate" |> NamespacedName
-
+    let hasFirstTradeDate = _prefix "hasFirstTradeDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasFirstTradeSettlementDate"></see>
     /// </summary>
-    let hasFirstTradeSettlementDate =
-        Namespaced_IRI.parse _namespace_name "hasFirstTradeSettlementDate" |> NamespacedName
-
+    let hasFirstTradeSettlementDate = _prefix "hasFirstTradeSettlementDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasSeries"></see>
     /// </summary>
-    let hasSeries = Namespaced_IRI.parse _namespace_name "hasSeries" |> NamespacedName
-
+    let hasSeries = _prefix "hasSeries"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasSubscriptionAmount"></see>
     /// </summary>
-    let hasSubscriptionAmount =
-        Namespaced_IRI.parse _namespace_name "hasSubscriptionAmount" |> NamespacedName
-
+    let hasSubscriptionAmount = _prefix "hasSubscriptionAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/hasSubscriptionPeriod"></see>
     /// </summary>
-    let hasSubscriptionPeriod =
-        Namespaced_IRI.parse _namespace_name "hasSubscriptionPeriod" |> NamespacedName
-
+    let hasSubscriptionPeriod = _prefix "hasSubscriptionPeriod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/isOverAllotted"></see>
     /// </summary>
-    let isOverAllotted =
-        Namespaced_IRI.parse _namespace_name "isOverAllotted" |> NamespacedName
-
+    let isOverAllotted = _prefix "isOverAllotted"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/underwrites"></see>
     /// </summary>
-    let underwrites =
-        Namespaced_IRI.parse _namespace_name "underwrites" |> NamespacedName
+    let underwrites = _prefix "underwrites"

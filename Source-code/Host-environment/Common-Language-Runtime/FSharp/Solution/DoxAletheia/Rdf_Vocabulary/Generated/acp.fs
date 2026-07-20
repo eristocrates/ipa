@@ -1,66 +1,55 @@
 namespace http.www.w3.org.ns.solid.acp.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module acp =
     let _namespace_name = "http://www.w3.org/ns/solid/acp#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// All Access Controls controlling member resources access via the acp:memberAccessControl property MUST be included in the set of Access Controls linked as acp:accessControl in the effective authorization graph of a resource.
     /// <see href="http://www.w3.org/ns/solid/acp#AccessControl"></see></summary>
-    let AccessControl =
-        Namespaced_IRI.parse _namespace_name "AccessControl" |> NamespacedName
-
+    let AccessControl = _prefix "AccessControl"
     /// <summary>
     /// Both the acp:resource property and its inverse acp:accessControlResource MUST be taken into account in determining the Access Control Resources controlling access to resources.
     /// <see href="http://www.w3.org/ns/solid/acp#AccessControlResource"></see></summary>
-    let AccessControlResource =
-        Namespaced_IRI.parse _namespace_name "AccessControlResource" |> NamespacedName
-
+    let AccessControlResource = _prefix "AccessControlResource"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#AccessGrant"></see>
     /// </summary>
-    let AccessGrant =
-        Namespaced_IRI.parse _namespace_name "AccessGrant" |> NamespacedName
-
+    let AccessGrant = _prefix "AccessGrant"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#AccessMode"></see>
     /// </summary>
-    let AccessMode = Namespaced_IRI.parse _namespace_name "AccessMode" |> NamespacedName
-
+    let AccessMode = _prefix "AccessMode"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#AlwaysSatisfiedRestriction"></see>
     /// </summary>
-    let AlwaysSatisfiedRestriction =
-        Namespaced_IRI.parse _namespace_name "AlwaysSatisfiedRestriction" |> NamespacedName
-
+    let AlwaysSatisfiedRestriction = _prefix "AlwaysSatisfiedRestriction"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#AuthenticatedAgent"></see>
     /// </summary>
-    let AuthenticatedAgent =
-        Namespaced_IRI.parse _namespace_name "AuthenticatedAgent" |> NamespacedName
-
+    let AuthenticatedAgent = _prefix "AuthenticatedAgent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
-
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#CreatorAgent"></see>
     /// </summary>
-    let CreatorAgent =
-        Namespaced_IRI.parse _namespace_name "CreatorAgent" |> NamespacedName
-
+    let CreatorAgent = _prefix "CreatorAgent"
     /// <summary>
     /// A Matcher MUST be satisfied if and only if: it defines at least one attribute; and, at least one value of each defined attribute matches the Context. ACP engines MUST match the context attributes defined by this specification according to IRI equality and literal term equality.
     ///
     /// ACP implementations supporting sub-properties of acp:attribute other than the ones defined by ACP SHOULD also define and implement corresponding matching algorithms.
     /// <see href="http://www.w3.org/ns/solid/acp#Matcher"></see></summary>
-    let Matcher = Namespaced_IRI.parse _namespace_name "Matcher" |> NamespacedName
+    let Matcher = _prefix "Matcher"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#OwnerAgent"></see>
     /// </summary>
-    let OwnerAgent = Namespaced_IRI.parse _namespace_name "OwnerAgent" |> NamespacedName
+    let OwnerAgent = _prefix "OwnerAgent"
     /// <summary>
     /// An ACP engine MUST grant exactly those Access Modes allowed by Effective Policies. Effective Policies are the Policies controlling access to a resource. A Policy MUST control access to a resource if: it is applied by an Access Control of an ACR of the resource; or, it is applied by a member Access Control of an ACR of an ancestor of the resource.
     ///
@@ -68,114 +57,100 @@ module acp =
     ///
     /// A Policy MUST be satisfied if and only if: it references at least one Matcher via an acp:allOf or acp:anyOf property; and, all of its acp:allOf Matchers are satisfied; and, at least one of its acp:anyOf Matchers is satisfied; and, none of its acp:noneOf Matchers are satisfied.
     /// <see href="http://www.w3.org/ns/solid/acp#Policy"></see></summary>
-    let Policy = Namespaced_IRI.parse _namespace_name "Policy" |> NamespacedName
-
+    let Policy = _prefix "Policy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#PublicAgent"></see>
     /// </summary>
-    let PublicAgent =
-        Namespaced_IRI.parse _namespace_name "PublicAgent" |> NamespacedName
-
+    let PublicAgent = _prefix "PublicAgent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#PublicClient"></see>
     /// </summary>
-    let PublicClient =
-        Namespaced_IRI.parse _namespace_name "PublicClient" |> NamespacedName
-
+    let PublicClient = _prefix "PublicClient"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#PublicIssuer"></see>
     /// </summary>
-    let PublicIssuer =
-        Namespaced_IRI.parse _namespace_name "PublicIssuer" |> NamespacedName
-
+    let PublicIssuer = _prefix "PublicIssuer"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#accessControl"></see>
     /// </summary>
-    let accessControl =
-        Namespaced_IRI.parse _namespace_name "accessControl" |> NamespacedName
-
+    let accessControl = _prefix "accessControl"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#accessControlResource"></see>
     /// </summary>
-    let accessControlResource =
-        Namespaced_IRI.parse _namespace_name "accessControlResource" |> NamespacedName
-
+    let accessControlResource = _prefix "accessControlResource"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#resource"></see>
     /// </summary>
-    let resource = Namespaced_IRI.parse _namespace_name "resource" |> NamespacedName
+    let resource = _prefix "resource"
     /// <summary>
     /// In a Matcher, agent attributes define a set of agents, at least one of which MUST match the Context for the Matcher to be satisfied.
     /// <see href="http://www.w3.org/ns/solid/acp#agent"></see></summary>
-    let agent = Namespaced_IRI.parse _namespace_name "agent" |> NamespacedName
+    let agent = _prefix "agent"
     /// <summary>
     /// Sub-properties of acp:attribute can be created to fit the specific access control requirements of applications.
     /// <see href="http://www.w3.org/ns/solid/acp#attribute"></see></summary>
-    let attribute = Namespaced_IRI.parse _namespace_name "attribute" |> NamespacedName
+    let attribute = _prefix "attribute"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#allOf"></see>
     /// </summary>
-    let allOf = Namespaced_IRI.parse _namespace_name "allOf" |> NamespacedName
+    let allOf = _prefix "allOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#allow"></see>
     /// </summary>
-    let allow = Namespaced_IRI.parse _namespace_name "allow" |> NamespacedName
+    let allow = _prefix "allow"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#anyOf"></see>
     /// </summary>
-    let anyOf = Namespaced_IRI.parse _namespace_name "anyOf" |> NamespacedName
+    let anyOf = _prefix "anyOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#apply"></see>
     /// </summary>
-    let apply = Namespaced_IRI.parse _namespace_name "apply" |> NamespacedName
+    let apply = _prefix "apply"
     /// <summary>
     /// In a Matcher, client attributes define a set of clients, at least one of which MUST match the Context for the Matcher to be satisfied.
     /// <see href="http://www.w3.org/ns/solid/acp#client"></see></summary>
-    let client = Namespaced_IRI.parse _namespace_name "client" |> NamespacedName
+    let client = _prefix "client"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#context"></see>
     /// </summary>
-    let context = Namespaced_IRI.parse _namespace_name "context" |> NamespacedName
+    let context = _prefix "context"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#creator"></see>
     /// </summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
+    let creator = _prefix "creator"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#deny"></see>
     /// </summary>
-    let deny = Namespaced_IRI.parse _namespace_name "deny" |> NamespacedName
+    let deny = _prefix "deny"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#grant"></see>
     /// </summary>
-    let grant = Namespaced_IRI.parse _namespace_name "grant" |> NamespacedName
+    let grant = _prefix "grant"
     /// <summary>
     /// In a Matcher, issuer attributes define a set of issuers, at least one of which MUST match the Context for the Matcher to be satisfied.
     /// <see href="http://www.w3.org/ns/solid/acp#issuer"></see></summary>
-    let issuer = Namespaced_IRI.parse _namespace_name "issuer" |> NamespacedName
-
+    let issuer = _prefix "issuer"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#memberAccessControl"></see>
     /// </summary>
-    let memberAccessControl =
-        Namespaced_IRI.parse _namespace_name "memberAccessControl" |> NamespacedName
-
+    let memberAccessControl = _prefix "memberAccessControl"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#mode"></see>
     /// </summary>
-    let mode = Namespaced_IRI.parse _namespace_name "mode" |> NamespacedName
+    let mode = _prefix "mode"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#noneOf"></see>
     /// </summary>
-    let noneOf = Namespaced_IRI.parse _namespace_name "noneOf" |> NamespacedName
+    let noneOf = _prefix "noneOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#owner"></see>
     /// </summary>
-    let owner = Namespaced_IRI.parse _namespace_name "owner" |> NamespacedName
+    let owner = _prefix "owner"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/solid/acp#target"></see>
     /// </summary>
-    let target = Namespaced_IRI.parse _namespace_name "target" |> NamespacedName
+    let target = _prefix "target"
     /// <summary>
     /// In a Matcher, vc attributes define a set of types of Verifiable Credentials (VC), at least one of which MUST match the Context for the Matcher to be satisfied. A VC type present in the Context MUST be a valid VC presented as part of the resource access request.
     /// <see href="http://www.w3.org/ns/solid/acp#vc"></see></summary>
-    let vc = Namespaced_IRI.parse _namespace_name "vc" |> NamespacedName
+    let vc = _prefix "vc"

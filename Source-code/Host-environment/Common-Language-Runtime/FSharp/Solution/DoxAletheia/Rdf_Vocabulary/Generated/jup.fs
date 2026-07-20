@@ -1,3388 +1,2421 @@
 namespace http.w3id.org.charta77.jup.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module jup =
     let _namespace_name = "http://w3id.org/charta77/jup/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AOB"></see>
     /// </summary>
-    let AOB = Namespaced_IRI.parse _namespace_name "AOB" |> NamespacedName
+    let AOB = _prefix "AOB"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hasForm"></see>
     /// </summary>
-    let hasForm = Namespaced_IRI.parse _namespace_name "hasForm" |> NamespacedName
-
+    let hasForm = _prefix "hasForm"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ElevatorMKPOForm"></see>
     /// </summary>
-    let ElevatorMKPOForm =
-        Namespaced_IRI.parse _namespace_name "ElevatorMKPOForm" |> NamespacedName
-
+    let ElevatorMKPOForm = _prefix "ElevatorMKPOForm"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObjectMKPOForm"></see>
     /// </summary>
-    let ObjectMKPOForm =
-        Namespaced_IRI.parse _namespace_name "ObjectMKPOForm" |> NamespacedName
-
+    let ObjectMKPOForm = _prefix "ObjectMKPOForm"
     /// <summary>
     /// Defined to complete the vocabulary
     /// <see href="http://w3id.org/charta77/jup/seeAlso"></see></summary>
-    let seeAlso = Namespaced_IRI.parse _namespace_name "seeAlso" |> NamespacedName
-
+    let seeAlso = _prefix "seeAlso"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PhysicalEntity"></see>
     /// </summary>
-    let PhysicalEntity =
-        Namespaced_IRI.parse _namespace_name "PhysicalEntity" |> NamespacedName
-
+    let PhysicalEntity = _prefix "PhysicalEntity"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MappableEntity"></see>
     /// </summary>
-    let MappableEntity =
-        Namespaced_IRI.parse _namespace_name "MappableEntity" |> NamespacedName
-
+    let MappableEntity = _prefix "MappableEntity"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/AOBAnnouncement"></see></summary>
-    let AOBAnnouncement =
-        Namespaced_IRI.parse _namespace_name "AOBAnnouncement" |> NamespacedName
-
+    let AOBAnnouncement = _prefix "AOBAnnouncement"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/AOBAnnouncementsScheme"></see></summary>
-    let AOBAnnouncementsScheme =
-        Namespaced_IRI.parse _namespace_name "AOBAnnouncementsScheme" |> NamespacedName
-
+    let AOBAnnouncementsScheme = _prefix "AOBAnnouncementsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AccessibleObjectMKPO"></see>
     /// </summary>
-    let AccessibleObjectMKPO =
-        Namespaced_IRI.parse _namespace_name "AccessibleObjectMKPO" |> NamespacedName
-
+    let AccessibleObjectMKPO = _prefix "AccessibleObjectMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObjectCategorizationMKPO"></see>
     /// </summary>
-    let ObjectCategorizationMKPO =
-        Namespaced_IRI.parse _namespace_name "ObjectCategorizationMKPO" |> NamespacedName
-
+    let ObjectCategorizationMKPO = _prefix "ObjectCategorizationMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObjectCategorizationsMKPOScheme"></see>
     /// </summary>
-    let ObjectCategorizationsMKPOScheme =
-        Namespaced_IRI.parse _namespace_name "ObjectCategorizationsMKPOScheme" |> NamespacedName
-
+    let ObjectCategorizationsMKPOScheme = _prefix "ObjectCategorizationsMKPOScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AccessibleWCMKPO"></see>
     /// </summary>
-    let AccessibleWCMKPO =
-        Namespaced_IRI.parse _namespace_name "AccessibleWCMKPO" |> NamespacedName
-
+    let AccessibleWCMKPO = _prefix "AccessibleWCMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WCCategorizationMKPO"></see>
     /// </summary>
-    let WCCategorizationMKPO =
-        Namespaced_IRI.parse _namespace_name "WCCategorizationMKPO" |> NamespacedName
-
+    let WCCategorizationMKPO = _prefix "WCCategorizationMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WCCategorizationsMKPOScheme"></see>
     /// </summary>
-    let WCCategorizationsMKPOScheme =
-        Namespaced_IRI.parse _namespace_name "WCCategorizationsMKPOScheme" |> NamespacedName
-
+    let WCCategorizationsMKPOScheme = _prefix "WCCategorizationsMKPOScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AddressableEntity"></see>
     /// </summary>
-    let AddressableEntity =
-        Namespaced_IRI.parse _namespace_name "AddressableEntity" |> NamespacedName
+    let AddressableEntity = _prefix "AddressableEntity"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AdministrativeOfficeObjectCategory"></see>
     /// </summary>
     let AdministrativeOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "AdministrativeOfficeObjectCategory" |> NamespacedName
+        _prefix "AdministrativeOfficeObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObjectCategory"></see>
     /// </summary>
-    let ObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ObjectCategory" |> NamespacedName
-
+    let ObjectCategory = _prefix "ObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObjectCategoriesScheme"></see>
     /// </summary>
-    let ObjectCategoriesScheme =
-        Namespaced_IRI.parse _namespace_name "ObjectCategoriesScheme" |> NamespacedName
-
+    let ObjectCategoriesScheme = _prefix "ObjectCategoriesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AirportObjectCategory"></see>
     /// </summary>
-    let AirportObjectCategory =
-        Namespaced_IRI.parse _namespace_name "AirportObjectCategory" |> NamespacedName
-
+    let AirportObjectCategory = _prefix "AirportObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ArtificialEntranceGuidingLine"></see>
     /// </summary>
-    let ArtificialEntranceGuidingLine =
-        Namespaced_IRI.parse _namespace_name "ArtificialEntranceGuidingLine" |> NamespacedName
-
+    let ArtificialEntranceGuidingLine = _prefix "ArtificialEntranceGuidingLine"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/EntranceGuidingLine"></see></summary>
-    let EntranceGuidingLine =
-        Namespaced_IRI.parse _namespace_name "EntranceGuidingLine" |> NamespacedName
-
+    let EntranceGuidingLine = _prefix "EntranceGuidingLine"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/EntranceGuidingLinesScheme"></see></summary>
-    let EntranceGuidingLinesScheme =
-        Namespaced_IRI.parse _namespace_name "EntranceGuidingLinesScheme" |> NamespacedName
-
+    let EntranceGuidingLinesScheme = _prefix "EntranceGuidingLinesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AssessableEntity"></see>
     /// </summary>
-    let AssessableEntity =
-        Namespaced_IRI.parse _namespace_name "AssessableEntity" |> NamespacedName
-
+    let AssessableEntity = _prefix "AssessableEntity"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AutomaticDoorOpening"></see>
     /// </summary>
-    let AutomaticDoorOpening =
-        Namespaced_IRI.parse _namespace_name "AutomaticDoorOpening" |> NamespacedName
-
+    let AutomaticDoorOpening = _prefix "AutomaticDoorOpening"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/DoorOpening"></see></summary>
-    let DoorOpening =
-        Namespaced_IRI.parse _namespace_name "DoorOpening" |> NamespacedName
-
+    let DoorOpening = _prefix "DoorOpening"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/DoorOpeningsScheme"></see></summary>
-    let DoorOpeningsScheme =
-        Namespaced_IRI.parse _namespace_name "DoorOpeningsScheme" |> NamespacedName
-
+    let DoorOpeningsScheme = _prefix "DoorOpeningsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AutomaticWCFlushing"></see>
     /// </summary>
-    let AutomaticWCFlushing =
-        Namespaced_IRI.parse _namespace_name "AutomaticWCFlushing" |> NamespacedName
-
+    let AutomaticWCFlushing = _prefix "AutomaticWCFlushing"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCFlushing"></see></summary>
-    let WCFlushing = Namespaced_IRI.parse _namespace_name "WCFlushing" |> NamespacedName
-
+    let WCFlushing = _prefix "WCFlushing"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCFlushingsScheme"></see></summary>
-    let WCFlushingsScheme =
-        Namespaced_IRI.parse _namespace_name "WCFlushingsScheme" |> NamespacedName
-
+    let WCFlushingsScheme = _prefix "WCFlushingsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/AutomaticWCSwitch"></see>
     /// </summary>
-    let AutomaticWCSwitch =
-        Namespaced_IRI.parse _namespace_name "AutomaticWCSwitch" |> NamespacedName
-
+    let AutomaticWCSwitch = _prefix "AutomaticWCSwitch"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCSwitch"></see></summary>
-    let WCSwitch = Namespaced_IRI.parse _namespace_name "WCSwitch" |> NamespacedName
-
+    let WCSwitch = _prefix "WCSwitch"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCSwitchesScheme"></see></summary>
-    let WCSwitchesScheme =
-        Namespaced_IRI.parse _namespace_name "WCSwitchesScheme" |> NamespacedName
-
+    let WCSwitchesScheme = _prefix "WCSwitchesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BankObjectCategory"></see>
     /// </summary>
-    let BankObjectCategory =
-        Namespaced_IRI.parse _namespace_name "BankObjectCategory" |> NamespacedName
-
+    let BankObjectCategory = _prefix "BankObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Bannister"></see>
     /// </summary>
-    let Bannister = Namespaced_IRI.parse _namespace_name "Bannister" |> NamespacedName
-
+    let Bannister = _prefix "Bannister"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BarObjectCategory"></see>
     /// </summary>
-    let BarObjectCategory =
-        Namespaced_IRI.parse _namespace_name "BarObjectCategory" |> NamespacedName
-
+    let BarObjectCategory = _prefix "BarObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BasilicaObjectCategory"></see>
     /// </summary>
-    let BasilicaObjectCategory =
-        Namespaced_IRI.parse _namespace_name "BasilicaObjectCategory" |> NamespacedName
-
+    let BasilicaObjectCategory = _prefix "BasilicaObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Bell"></see>
     /// </summary>
-    let Bell = Namespaced_IRI.parse _namespace_name "Bell" |> NamespacedName
-
+    let Bell = _prefix "Bell"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PlatformMKPOForm"></see>
     /// </summary>
-    let PlatformMKPOForm =
-        Namespaced_IRI.parse _namespace_name "PlatformMKPOForm" |> NamespacedName
-
+    let PlatformMKPOForm = _prefix "PlatformMKPOForm"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/BellType"></see></summary>
-    let BellType = Namespaced_IRI.parse _namespace_name "BellType" |> NamespacedName
-
+    let BellType = _prefix "BellType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/BellTypesScheme"></see></summary>
-    let BellTypesScheme =
-        Namespaced_IRI.parse _namespace_name "BellTypesScheme" |> NamespacedName
-
+    let BellTypesScheme = _prefix "BellTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BentRampType"></see>
     /// </summary>
-    let BentRampType =
-        Namespaced_IRI.parse _namespace_name "BentRampType" |> NamespacedName
-
+    let BentRampType = _prefix "BentRampType"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampType"></see></summary>
-    let RampType = Namespaced_IRI.parse _namespace_name "RampType" |> NamespacedName
-
+    let RampType = _prefix "RampType"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampTypesScheme"></see></summary>
-    let RampTypesScheme =
-        Namespaced_IRI.parse _namespace_name "RampTypesScheme" |> NamespacedName
-
+    let RampTypesScheme = _prefix "RampTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BlockedByFixedWCBasinSpace"></see>
     /// </summary>
-    let BlockedByFixedWCBasinSpace =
-        Namespaced_IRI.parse _namespace_name "BlockedByFixedWCBasinSpace" |> NamespacedName
-
+    let BlockedByFixedWCBasinSpace = _prefix "BlockedByFixedWCBasinSpace"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCBasinSpace"></see></summary>
-    let WCBasinSpace =
-        Namespaced_IRI.parse _namespace_name "WCBasinSpace" |> NamespacedName
-
+    let WCBasinSpace = _prefix "WCBasinSpace"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCBasinSpacesScheme"></see></summary>
-    let WCBasinSpacesScheme =
-        Namespaced_IRI.parse _namespace_name "WCBasinSpacesScheme" |> NamespacedName
-
+    let WCBasinSpacesScheme = _prefix "WCBasinSpacesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BlockedByMobileWCBasinSpace"></see>
     /// </summary>
-    let BlockedByMobileWCBasinSpace =
-        Namespaced_IRI.parse _namespace_name "BlockedByMobileWCBasinSpace" |> NamespacedName
-
+    let BlockedByMobileWCBasinSpace = _prefix "BlockedByMobileWCBasinSpace"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BotanicGardenObjectCategory"></see>
     /// </summary>
-    let BotanicGardenObjectCategory =
-        Namespaced_IRI.parse _namespace_name "BotanicGardenObjectCategory" |> NamespacedName
-
+    let BotanicGardenObjectCategory = _prefix "BotanicGardenObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BottomContrastMarkingLocalization"></see>
     /// </summary>
-    let BottomContrastMarkingLocalization =
-        Namespaced_IRI.parse _namespace_name "BottomContrastMarkingLocalization" |> NamespacedName
-
+    let BottomContrastMarkingLocalization = _prefix "BottomContrastMarkingLocalization"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ContrastMarkingLocalization"></see></summary>
-    let ContrastMarkingLocalization =
-        Namespaced_IRI.parse _namespace_name "ContrastMarkingLocalization" |> NamespacedName
+    let ContrastMarkingLocalization = _prefix "ContrastMarkingLocalization"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ContrastMarkingLocalizationsScheme"></see></summary>
     let ContrastMarkingLocalizationsScheme =
-        Namespaced_IRI.parse _namespace_name "ContrastMarkingLocalizationsScheme" |> NamespacedName
+        _prefix "ContrastMarkingLocalizationsScheme"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BottomEntryArea"></see>
     /// </summary>
-    let BottomEntryArea =
-        Namespaced_IRI.parse _namespace_name "BottomEntryArea" |> NamespacedName
-
+    let BottomEntryArea = _prefix "BottomEntryArea"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RampSkidsMKPOForm"></see>
     /// </summary>
-    let RampSkidsMKPOForm =
-        Namespaced_IRI.parse _namespace_name "RampSkidsMKPOForm" |> NamespacedName
-
+    let RampSkidsMKPOForm = _prefix "RampSkidsMKPOForm"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EntryArea"></see>
     /// </summary>
-    let EntryArea = Namespaced_IRI.parse _namespace_name "EntryArea" |> NamespacedName
-
+    let EntryArea = _prefix "EntryArea"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BottomLeftWCCabinDisposition"></see>
     /// </summary>
-    let BottomLeftWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "BottomLeftWCCabinDisposition" |> NamespacedName
-
+    let BottomLeftWCCabinDisposition = _prefix "BottomLeftWCCabinDisposition"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCCabinDisposition"></see></summary>
-    let WCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "WCCabinDisposition" |> NamespacedName
-
+    let WCCabinDisposition = _prefix "WCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WCCabinDispositionsScheme"></see>
     /// </summary>
-    let WCCabinDispositionsScheme =
-        Namespaced_IRI.parse _namespace_name "WCCabinDispositionsScheme" |> NamespacedName
-
+    let WCCabinDispositionsScheme = _prefix "WCCabinDispositionsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BottomRightWCCabinDisposition"></see>
     /// </summary>
-    let BottomRightWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "BottomRightWCCabinDisposition" |> NamespacedName
-
+    let BottomRightWCCabinDisposition = _prefix "BottomRightWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BreweryObjectCategory"></see>
     /// </summary>
-    let BreweryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "BreweryObjectCategory" |> NamespacedName
-
+    let BreweryObjectCategory = _prefix "BreweryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/BusStationObjectCategory"></see>
     /// </summary>
-    let BusStationObjectCategory =
-        Namespaced_IRI.parse _namespace_name "BusStationObjectCategory" |> NamespacedName
-
+    let BusStationObjectCategory = _prefix "BusStationObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CampObjectCategory"></see>
     /// </summary>
-    let CampObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CampObjectCategory" |> NamespacedName
-
+    let CampObjectCategory = _prefix "CampObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CarDealerObjectCategory"></see>
     /// </summary>
-    let CarDealerObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CarDealerObjectCategory" |> NamespacedName
-
+    let CarDealerObjectCategory = _prefix "CarDealerObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CargoElevatorType"></see>
     /// </summary>
-    let CargoElevatorType =
-        Namespaced_IRI.parse _namespace_name "CargoElevatorType" |> NamespacedName
-
+    let CargoElevatorType = _prefix "CargoElevatorType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorType"></see></summary>
-    let ElevatorType =
-        Namespaced_IRI.parse _namespace_name "ElevatorType" |> NamespacedName
-
+    let ElevatorType = _prefix "ElevatorType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorTypesScheme"></see></summary>
-    let ElevatorTypesScheme =
-        Namespaced_IRI.parse _namespace_name "ElevatorTypesScheme" |> NamespacedName
-
+    let ElevatorTypesScheme = _prefix "ElevatorTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CarouselDoorType"></see>
     /// </summary>
-    let CarouselDoorType =
-        Namespaced_IRI.parse _namespace_name "CarouselDoorType" |> NamespacedName
-
+    let CarouselDoorType = _prefix "CarouselDoorType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/DoorType"></see></summary>
-    let DoorType = Namespaced_IRI.parse _namespace_name "DoorType" |> NamespacedName
-
+    let DoorType = _prefix "DoorType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/DoorTypesScheme"></see></summary>
-    let DoorTypesScheme =
-        Namespaced_IRI.parse _namespace_name "DoorTypesScheme" |> NamespacedName
-
+    let DoorTypesScheme = _prefix "DoorTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CathedralObjectCategory"></see>
     /// </summary>
-    let CathedralObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CathedralObjectCategory" |> NamespacedName
-
+    let CathedralObjectCategory = _prefix "CathedralObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ChapelObjectCategory"></see>
     /// </summary>
-    let ChapelObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ChapelObjectCategory" |> NamespacedName
-
+    let ChapelObjectCategory = _prefix "ChapelObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ChurchObjectCategory"></see>
     /// </summary>
-    let ChurchObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ChurchObjectCategory" |> NamespacedName
-
+    let ChurchObjectCategory = _prefix "ChurchObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CinemaObjectCategory"></see>
     /// </summary>
-    let CinemaObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CinemaObjectCategory" |> NamespacedName
-
+    let CinemaObjectCategory = _prefix "CinemaObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CityHallObjectCategory"></see>
     /// </summary>
-    let CityHallObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CityHallObjectCategory" |> NamespacedName
-
+    let CityHallObjectCategory = _prefix "CityHallObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CollegeObjectCategory"></see>
     /// </summary>
-    let CollegeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CollegeObjectCategory" |> NamespacedName
-
+    let CollegeObjectCategory = _prefix "CollegeObjectCategory"
     /// <summary>
     /// e.g. Prague Castle
     /// <see href="http://w3id.org/charta77/jup/Complex"></see></summary>
-    let Complex = Namespaced_IRI.parse _namespace_name "Complex" |> NamespacedName
-
+    let Complex = _prefix "Complex"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ConcertHallObjectCategory"></see>
     /// </summary>
-    let ConcertHallObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ConcertHallObjectCategory" |> NamespacedName
+    let ConcertHallObjectCategory = _prefix "ConcertHallObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ContactSocialServiceObjectCategory"></see>
     /// </summary>
     let ContactSocialServiceObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ContactSocialServiceObjectCategory" |> NamespacedName
+        _prefix "ContactSocialServiceObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ContrastMarking"></see>
     /// </summary>
-    let ContrastMarking =
-        Namespaced_IRI.parse _namespace_name "ContrastMarking" |> NamespacedName
-
+    let ContrastMarking = _prefix "ContrastMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WCMKPOForm"></see>
     /// </summary>
-    let WCMKPOForm = Namespaced_IRI.parse _namespace_name "WCMKPOForm" |> NamespacedName
-
+    let WCMKPOForm = _prefix "WCMKPOForm"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/CourtObjectCategory"></see>
     /// </summary>
-    let CourtObjectCategory =
-        Namespaced_IRI.parse _namespace_name "CourtObjectCategory" |> NamespacedName
-
+    let CourtObjectCategory = _prefix "CourtObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DefensiveCastleObjectCategory"></see>
     /// </summary>
-    let DefensiveCastleObjectCategory =
-        Namespaced_IRI.parse _namespace_name "DefensiveCastleObjectCategory" |> NamespacedName
-
+    let DefensiveCastleObjectCategory = _prefix "DefensiveCastleObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DentalEmergencyObjectCategory"></see>
     /// </summary>
-    let DentalEmergencyObjectCategory =
-        Namespaced_IRI.parse _namespace_name "DentalEmergencyObjectCategory" |> NamespacedName
-
+    let DentalEmergencyObjectCategory = _prefix "DentalEmergencyObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DepartmentStoreObjectCategory"></see>
     /// </summary>
-    let DepartmentStoreObjectCategory =
-        Namespaced_IRI.parse _namespace_name "DepartmentStoreObjectCategory" |> NamespacedName
-
+    let DepartmentStoreObjectCategory = _prefix "DepartmentStoreObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DifficultWCFlushingDifficulty"></see>
     /// </summary>
-    let DifficultWCFlushingDifficulty =
-        Namespaced_IRI.parse _namespace_name "DifficultWCFlushingDifficulty" |> NamespacedName
-
+    let DifficultWCFlushingDifficulty = _prefix "DifficultWCFlushingDifficulty"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCFlushingDifficulty"></see></summary>
-    let WCFlushingDifficulty =
-        Namespaced_IRI.parse _namespace_name "WCFlushingDifficulty" |> NamespacedName
-
+    let WCFlushingDifficulty = _prefix "WCFlushingDifficulty"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCFlushingDifficultiesScheme"></see></summary>
-    let WCFlushingDifficultiesScheme =
-        Namespaced_IRI.parse _namespace_name "WCFlushingDifficultiesScheme" |> NamespacedName
-
+    let WCFlushingDifficultiesScheme = _prefix "WCFlushingDifficultiesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DigitalElevatorControlFlatMarking"></see>
     /// </summary>
-    let DigitalElevatorControlFlatMarking =
-        Namespaced_IRI.parse _namespace_name "DigitalElevatorControlFlatMarking" |> NamespacedName
-
+    let DigitalElevatorControlFlatMarking = _prefix "DigitalElevatorControlFlatMarking"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorControlFlatMarking"></see></summary>
-    let ElevatorControlFlatMarking =
-        Namespaced_IRI.parse _namespace_name "ElevatorControlFlatMarking" |> NamespacedName
-
+    let ElevatorControlFlatMarking = _prefix "ElevatorControlFlatMarking"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorControlFlatMarkingsScheme"></see></summary>
-    let ElevatorControlFlatMarkingsScheme =
-        Namespaced_IRI.parse _namespace_name "ElevatorControlFlatMarkingsScheme" |> NamespacedName
-
+    let ElevatorControlFlatMarkingsScheme = _prefix "ElevatorControlFlatMarkingsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DirectObjectStairsType"></see>
     /// </summary>
-    let DirectObjectStairsType =
-        Namespaced_IRI.parse _namespace_name "DirectObjectStairsType" |> NamespacedName
-
+    let DirectObjectStairsType = _prefix "DirectObjectStairsType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/StepsStairsType"></see></summary>
-    let StepsStairsType =
-        Namespaced_IRI.parse _namespace_name "StepsStairsType" |> NamespacedName
-
+    let StepsStairsType = _prefix "StepsStairsType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/StepsStairsTypesScheme"></see></summary>
-    let StepsStairsTypesScheme =
-        Namespaced_IRI.parse _namespace_name "StepsStairsTypesScheme" |> NamespacedName
-
+    let StepsStairsTypesScheme = _prefix "StepsStairsTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DirectRampType"></see>
     /// </summary>
-    let DirectRampType =
-        Namespaced_IRI.parse _namespace_name "DirectRampType" |> NamespacedName
-
+    let DirectRampType = _prefix "DirectRampType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DoctorObjectCategory"></see>
     /// </summary>
-    let DoctorObjectCategory =
-        Namespaced_IRI.parse _namespace_name "DoctorObjectCategory" |> NamespacedName
-
+    let DoctorObjectCategory = _prefix "DoctorObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Door"></see>
     /// </summary>
-    let Door = Namespaced_IRI.parse _namespace_name "Door" |> NamespacedName
-
+    let Door = _prefix "Door"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/DoorOpeningDirection"></see></summary>
-    let DoorOpeningDirection =
-        Namespaced_IRI.parse _namespace_name "DoorOpeningDirection" |> NamespacedName
-
+    let DoorOpeningDirection = _prefix "DoorOpeningDirection"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/DoorOpeningDirectionsScheme"></see></summary>
-    let DoorOpeningDirectionsScheme =
-        Namespaced_IRI.parse _namespace_name "DoorOpeningDirectionsScheme" |> NamespacedName
-
+    let DoorOpeningDirectionsScheme = _prefix "DoorOpeningDirectionsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/DoublePanelledDoorType"></see>
     /// </summary>
-    let DoublePanelledDoorType =
-        Namespaced_IRI.parse _namespace_name "DoublePanelledDoorType" |> NamespacedName
-
+    let DoublePanelledDoorType = _prefix "DoublePanelledDoorType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Elevator"></see>
     /// </summary>
-    let Elevator = Namespaced_IRI.parse _namespace_name "Elevator" |> NamespacedName
-
+    let Elevator = _prefix "Elevator"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ElevatorCageDoor"></see>
     /// </summary>
-    let ElevatorCageDoor =
-        Namespaced_IRI.parse _namespace_name "ElevatorCageDoor" |> NamespacedName
-
+    let ElevatorCageDoor = _prefix "ElevatorCageDoor"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ElevatorCageHandle"></see>
     /// </summary>
-    let ElevatorCageHandle =
-        Namespaced_IRI.parse _namespace_name "ElevatorCageHandle" |> NamespacedName
-
+    let ElevatorCageHandle = _prefix "ElevatorCageHandle"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Handle"></see>
     /// </summary>
-    let Handle = Namespaced_IRI.parse _namespace_name "Handle" |> NamespacedName
-
+    let Handle = _prefix "Handle"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorCageMirrorLocalization"></see></summary>
-    let ElevatorCageMirrorLocalization =
-        Namespaced_IRI.parse _namespace_name "ElevatorCageMirrorLocalization" |> NamespacedName
+    let ElevatorCageMirrorLocalization = _prefix "ElevatorCageMirrorLocalization"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorCageMirrorLocalizationsScheme"></see></summary>
     let ElevatorCageMirrorLocalizationsScheme =
-        Namespaced_IRI.parse _namespace_name "ElevatorCageMirrorLocalizationsScheme" |> NamespacedName
+        _prefix "ElevatorCageMirrorLocalizationsScheme"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorCageSecondDoorLocalization"></see></summary>
     let ElevatorCageSecondDoorLocalization =
-        Namespaced_IRI.parse _namespace_name "ElevatorCageSecondDoorLocalization" |> NamespacedName
+        _prefix "ElevatorCageSecondDoorLocalization"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorCageSecondDoorLocalizationsScheme"></see></summary>
     let ElevatorCageSecondDoorLocalizationsScheme =
-        Namespaced_IRI.parse _namespace_name "ElevatorCageSecondDoorLocalizationsScheme" |> NamespacedName
+        _prefix "ElevatorCageSecondDoorLocalizationsScheme"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorControlReliefMarking"></see></summary>
-    let ElevatorControlReliefMarking =
-        Namespaced_IRI.parse _namespace_name "ElevatorControlReliefMarking" |> NamespacedName
+    let ElevatorControlReliefMarking = _prefix "ElevatorControlReliefMarking"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorControlReliefMarkingsScheme"></see></summary>
     let ElevatorControlReliefMarkingsScheme =
-        Namespaced_IRI.parse _namespace_name "ElevatorControlReliefMarkingsScheme" |> NamespacedName
+        _prefix "ElevatorControlReliefMarkingsScheme"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorDriveOff"></see></summary>
-    let ElevatorDriveOff =
-        Namespaced_IRI.parse _namespace_name "ElevatorDriveOff" |> NamespacedName
-
+    let ElevatorDriveOff = _prefix "ElevatorDriveOff"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ElevatorDriveOffsScheme"></see></summary>
-    let ElevatorDriveOffsScheme =
-        Namespaced_IRI.parse _namespace_name "ElevatorDriveOffsScheme" |> NamespacedName
-
+    let ElevatorDriveOffsScheme = _prefix "ElevatorDriveOffsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MappableEntityForm"></see>
     /// </summary>
-    let MappableEntityForm =
-        Namespaced_IRI.parse _namespace_name "MappableEntityForm" |> NamespacedName
-
+    let MappableEntityForm = _prefix "MappableEntityForm"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MappableEntityMKPOFormsScheme"></see>
     /// </summary>
-    let MappableEntityMKPOFormsScheme =
-        Namespaced_IRI.parse _namespace_name "MappableEntityMKPOFormsScheme" |> NamespacedName
-
+    let MappableEntityMKPOFormsScheme = _prefix "MappableEntityMKPOFormsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ElevatorShaftDoor"></see>
     /// </summary>
-    let ElevatorShaftDoor =
-        Namespaced_IRI.parse _namespace_name "ElevatorShaftDoor" |> NamespacedName
-
+    let ElevatorShaftDoor = _prefix "ElevatorShaftDoor"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EmbassyObjectCategory"></see>
     /// </summary>
-    let EmbassyObjectCategory =
-        Namespaced_IRI.parse _namespace_name "EmbassyObjectCategory" |> NamespacedName
-
+    let EmbassyObjectCategory = _prefix "EmbassyObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EmploymentOfficeObjectCategory"></see>
     /// </summary>
-    let EmploymentOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "EmploymentOfficeObjectCategory" |> NamespacedName
+    let EmploymentOfficeObjectCategory = _prefix "EmploymentOfficeObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EngravedElevatorControlReliefMarking"></see>
     /// </summary>
     let EngravedElevatorControlReliefMarking =
-        Namespaced_IRI.parse _namespace_name "EngravedElevatorControlReliefMarking" |> NamespacedName
+        _prefix "EngravedElevatorControlReliefMarking"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EntireObjectInteriorAccessibility"></see>
     /// </summary>
-    let EntireObjectInteriorAccessibility =
-        Namespaced_IRI.parse _namespace_name "EntireObjectInteriorAccessibility" |> NamespacedName
-
+    let EntireObjectInteriorAccessibility = _prefix "EntireObjectInteriorAccessibility"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ObjectInteriorAccessibility"></see></summary>
-    let ObjectInteriorAccessibility =
-        Namespaced_IRI.parse _namespace_name "ObjectInteriorAccessibility" |> NamespacedName
+    let ObjectInteriorAccessibility = _prefix "ObjectInteriorAccessibility"
 
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/ObjectInteriorAccessibilitiesScheme"></see></summary>
     let ObjectInteriorAccessibilitiesScheme =
-        Namespaced_IRI.parse _namespace_name "ObjectInteriorAccessibilitiesScheme" |> NamespacedName
+        _prefix "ObjectInteriorAccessibilitiesScheme"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Entrance"></see>
     /// </summary>
-    let Entrance = Namespaced_IRI.parse _namespace_name "Entrance" |> NamespacedName
-
+    let Entrance = _prefix "Entrance"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/EntranceAccessibilitiesScheme"></see></summary>
-    let EntranceAccessibilitiesScheme =
-        Namespaced_IRI.parse _namespace_name "EntranceAccessibilitiesScheme" |> NamespacedName
-
+    let EntranceAccessibilitiesScheme = _prefix "EntranceAccessibilitiesScheme"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/EntranceAccessibility"></see></summary>
-    let EntranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "EntranceAccessibility" |> NamespacedName
-
+    let EntranceAccessibility = _prefix "EntranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EntranceRampSkidsLocalization"></see>
     /// </summary>
-    let EntranceRampSkidsLocalization =
-        Namespaced_IRI.parse _namespace_name "EntranceRampSkidsLocalization" |> NamespacedName
-
+    let EntranceRampSkidsLocalization = _prefix "EntranceRampSkidsLocalization"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampSkidsLocalization"></see></summary>
-    let RampSkidsLocalization =
-        Namespaced_IRI.parse _namespace_name "RampSkidsLocalization" |> NamespacedName
-
+    let RampSkidsLocalization = _prefix "RampSkidsLocalization"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampSkidsLocalizationsScheme"></see></summary>
-    let RampSkidsLocalizationsScheme =
-        Namespaced_IRI.parse _namespace_name "RampSkidsLocalizationsScheme" |> NamespacedName
-
+    let RampSkidsLocalizationsScheme = _prefix "RampSkidsLocalizationsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/EntranceSteps"></see>
     /// </summary>
-    let EntranceSteps =
-        Namespaced_IRI.parse _namespace_name "EntranceSteps" |> NamespacedName
-
+    let EntranceSteps = _prefix "EntranceSteps"
     /// <summary>
     /// Stairs is understood as connecting different floors
     /// <see href="http://w3id.org/charta77/jup/Steps"></see></summary>
-    let Steps = Namespaced_IRI.parse _namespace_name "Steps" |> NamespacedName
-
+    let Steps = _prefix "Steps"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/EntryAreaEntriesScheme"></see></summary>
-    let EntryAreaEntriesScheme =
-        Namespaced_IRI.parse _namespace_name "EntryAreaEntriesScheme" |> NamespacedName
-
+    let EntryAreaEntriesScheme = _prefix "EntryAreaEntriesScheme"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/EntryAreaEntry"></see></summary>
-    let EntryAreaEntry =
-        Namespaced_IRI.parse _namespace_name "EntryAreaEntry" |> NamespacedName
-
+    let EntryAreaEntry = _prefix "EntryAreaEntry"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FarmObjectCategory"></see>
     /// </summary>
-    let FarmObjectCategory =
-        Namespaced_IRI.parse _namespace_name "FarmObjectCategory" |> NamespacedName
-
+    let FarmObjectCategory = _prefix "FarmObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FastFoodObjectCategory"></see>
     /// </summary>
-    let FastFoodObjectCategory =
-        Namespaced_IRI.parse _namespace_name "FastFoodObjectCategory" |> NamespacedName
-
+    let FastFoodObjectCategory = _prefix "FastFoodObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FixedHandleType"></see>
     /// </summary>
-    let FixedHandleType =
-        Namespaced_IRI.parse _namespace_name "FixedHandleType" |> NamespacedName
-
+    let FixedHandleType = _prefix "FixedHandleType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandleType"></see></summary>
-    let HandleType = Namespaced_IRI.parse _namespace_name "HandleType" |> NamespacedName
-
+    let HandleType = _prefix "HandleType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandleTypesScheme"></see></summary>
-    let HandleTypesScheme =
-        Namespaced_IRI.parse _namespace_name "HandleTypesScheme" |> NamespacedName
-
+    let HandleTypesScheme = _prefix "HandleTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FixedRampSkidsMobility"></see>
     /// </summary>
-    let FixedRampSkidsMobility =
-        Namespaced_IRI.parse _namespace_name "FixedRampSkidsMobility" |> NamespacedName
-
+    let FixedRampSkidsMobility = _prefix "FixedRampSkidsMobility"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampSkidsMobility"></see></summary>
-    let RampSkidsMobility =
-        Namespaced_IRI.parse _namespace_name "RampSkidsMobility" |> NamespacedName
-
+    let RampSkidsMobility = _prefix "RampSkidsMobility"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampSkidsMobilitiesScheme"></see></summary>
-    let RampSkidsMobilitiesScheme =
-        Namespaced_IRI.parse _namespace_name "RampSkidsMobilitiesScheme" |> NamespacedName
-
+    let RampSkidsMobilitiesScheme = _prefix "RampSkidsMobilitiesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FoldingHandleType"></see>
     /// </summary>
-    let FoldingHandleType =
-        Namespaced_IRI.parse _namespace_name "FoldingHandleType" |> NamespacedName
-
+    let FoldingHandleType = _prefix "FoldingHandleType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FoldingWCChangingDesk"></see>
     /// </summary>
-    let FoldingWCChangingDesk =
-        Namespaced_IRI.parse _namespace_name "FoldingWCChangingDesk" |> NamespacedName
-
+    let FoldingWCChangingDesk = _prefix "FoldingWCChangingDesk"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCChangingDesk"></see></summary>
-    let WCChangingDesk =
-        Namespaced_IRI.parse _namespace_name "WCChangingDesk" |> NamespacedName
-
+    let WCChangingDesk = _prefix "WCChangingDesk"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCChangingDesksScheme"></see></summary>
-    let WCChangingDesksScheme =
-        Namespaced_IRI.parse _namespace_name "WCChangingDesksScheme" |> NamespacedName
-
+    let WCChangingDesksScheme = _prefix "WCChangingDesksScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FolkArchitectureObjectCategory"></see>
     /// </summary>
-    let FolkArchitectureObjectCategory =
-        Namespaced_IRI.parse _namespace_name "FolkArchitectureObjectCategory" |> NamespacedName
-
+    let FolkArchitectureObjectCategory = _prefix "FolkArchitectureObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Form"></see>
     /// </summary>
-    let Form = Namespaced_IRI.parse _namespace_name "Form" |> NamespacedName
-
+    let Form = _prefix "Form"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FortObjectCategory"></see>
     /// </summary>
-    let FortObjectCategory =
-        Namespaced_IRI.parse _namespace_name "FortObjectCategory" |> NamespacedName
-
+    let FortObjectCategory = _prefix "FortObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FortressObjectCategory"></see>
     /// </summary>
-    let FortressObjectCategory =
-        Namespaced_IRI.parse _namespace_name "FortressObjectCategory" |> NamespacedName
-
+    let FortressObjectCategory = _prefix "FortressObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FreeWCBasinSpace"></see>
     /// </summary>
-    let FreeWCBasinSpace =
-        Namespaced_IRI.parse _namespace_name "FreeWCBasinSpace" |> NamespacedName
+    let FreeWCBasinSpace = _prefix "FreeWCBasinSpace"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FreelyAccessibleMappableEntityAccess"></see>
     /// </summary>
     let FreelyAccessibleMappableEntityAccess =
-        Namespaced_IRI.parse _namespace_name "FreelyAccessibleMappableEntityAccess" |> NamespacedName
+        _prefix "FreelyAccessibleMappableEntityAccess"
 
     /// <summary>
     /// The list was copied based on forms compliant with Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/MappableEntityAccess"></see></summary>
-    let MappableEntityAccess =
-        Namespaced_IRI.parse _namespace_name "MappableEntityAccess" |> NamespacedName
-
+    let MappableEntityAccess = _prefix "MappableEntityAccess"
     /// <summary>
     /// The list was copied based on forms compliant with Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/MappableEntityAccessesScheme"></see></summary>
-    let MappableEntityAccessesScheme =
-        Namespaced_IRI.parse _namespace_name "MappableEntityAccessesScheme" |> NamespacedName
+    let MappableEntityAccessesScheme = _prefix "MappableEntityAccessesScheme"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FrontElevatorCageSecondDoorLocalization"></see>
     /// </summary>
     let FrontElevatorCageSecondDoorLocalization =
-        Namespaced_IRI.parse _namespace_name "FrontElevatorCageSecondDoorLocalization" |> NamespacedName
+        _prefix "FrontElevatorCageSecondDoorLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FrontEntryAreaEntry"></see>
     /// </summary>
-    let FrontEntryAreaEntry =
-        Namespaced_IRI.parse _namespace_name "FrontEntryAreaEntry" |> NamespacedName
+    let FrontEntryAreaEntry = _prefix "FrontEntryAreaEntry"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FrontWallElevatorCageMirrorLocalization"></see>
     /// </summary>
     let FrontWallElevatorCageMirrorLocalization =
-        Namespaced_IRI.parse _namespace_name "FrontWallElevatorCageMirrorLocalization" |> NamespacedName
+        _prefix "FrontWallElevatorCageMirrorLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FrontWallHandleLocalization"></see>
     /// </summary>
-    let FrontWallHandleLocalization =
-        Namespaced_IRI.parse _namespace_name "FrontWallHandleLocalization" |> NamespacedName
-
+    let FrontWallHandleLocalization = _prefix "FrontWallHandleLocalization"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandleLocalization"></see></summary>
-    let HandleLocalization =
-        Namespaced_IRI.parse _namespace_name "HandleLocalization" |> NamespacedName
-
+    let HandleLocalization = _prefix "HandleLocalization"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandleLocalizationsScheme"></see></summary>
-    let HandleLocalizationsScheme =
-        Namespaced_IRI.parse _namespace_name "HandleLocalizationsScheme" |> NamespacedName
-
+    let HandleLocalizationsScheme = _prefix "HandleLocalizationsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/FunerallHallObjectCategory"></see>
     /// </summary>
-    let FunerallHallObjectCategory =
-        Namespaced_IRI.parse _namespace_name "FunerallHallObjectCategory" |> NamespacedName
-
+    let FunerallHallObjectCategory = _prefix "FunerallHallObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/GalleryObjectCategory"></see>
     /// </summary>
-    let GalleryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "GalleryObjectCategory" |> NamespacedName
-
+    let GalleryObjectCategory = _prefix "GalleryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/GasStationObjectCategory"></see>
     /// </summary>
-    let GasStationObjectCategory =
-        Namespaced_IRI.parse _namespace_name "GasStationObjectCategory" |> NamespacedName
-
+    let GasStationObjectCategory = _prefix "GasStationObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/GentsWCCabinLocalization"></see>
     /// </summary>
-    let GentsWCCabinLocalization =
-        Namespaced_IRI.parse _namespace_name "GentsWCCabinLocalization" |> NamespacedName
-
+    let GentsWCCabinLocalization = _prefix "GentsWCCabinLocalization"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCCabinLocalization"></see></summary>
-    let WCCabinLocalization =
-        Namespaced_IRI.parse _namespace_name "WCCabinLocalization" |> NamespacedName
-
+    let WCCabinLocalization = _prefix "WCCabinLocalization"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WCCabinLocalizationsScheme"></see></summary>
-    let WCCabinLocalizationsScheme =
-        Namespaced_IRI.parse _namespace_name "WCCabinLocalizationsScheme" |> NamespacedName
-
+    let WCCabinLocalizationsScheme = _prefix "WCCabinLocalizationsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/GraphicElevatorControlFlatMarking"></see>
     /// </summary>
-    let GraphicElevatorControlFlatMarking =
-        Namespaced_IRI.parse _namespace_name "GraphicElevatorControlFlatMarking" |> NamespacedName
-
+    let GraphicElevatorControlFlatMarking = _prefix "GraphicElevatorControlFlatMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/GuestHouseObjectCategory"></see>
     /// </summary>
-    let GuestHouseObjectCategory =
-        Namespaced_IRI.parse _namespace_name "GuestHouseObjectCategory" |> NamespacedName
-
+    let GuestHouseObjectCategory = _prefix "GuestHouseObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Hallway"></see>
     /// </summary>
-    let Hallway = Namespaced_IRI.parse _namespace_name "Hallway" |> NamespacedName
-
+    let Hallway = _prefix "Hallway"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandleOrientation"></see></summary>
-    let HandleOrientation =
-        Namespaced_IRI.parse _namespace_name "HandleOrientation" |> NamespacedName
-
+    let HandleOrientation = _prefix "HandleOrientation"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandleOrientationsScheme"></see></summary>
-    let HandleOrientationsScheme =
-        Namespaced_IRI.parse _namespace_name "HandleOrientationsScheme" |> NamespacedName
-
+    let HandleOrientationsScheme = _prefix "HandleOrientationsScheme"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandlePosition"></see></summary>
-    let HandlePosition =
-        Namespaced_IRI.parse _namespace_name "HandlePosition" |> NamespacedName
-
+    let HandlePosition = _prefix "HandlePosition"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/HandlePositionsScheme"></see></summary>
-    let HandlePositionsScheme =
-        Namespaced_IRI.parse _namespace_name "HandlePositionsScheme" |> NamespacedName
-
+    let HandlePositionsScheme = _prefix "HandlePositionsScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HarborObjectCategory"></see>
     /// </summary>
-    let HarborObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HarborObjectCategory" |> NamespacedName
-
+    let HarborObjectCategory = _prefix "HarborObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HealthCenterObjectCategory"></see>
     /// </summary>
-    let HealthCenterObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HealthCenterObjectCategory" |> NamespacedName
+    let HealthCenterObjectCategory = _prefix "HealthCenterObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HealthInsuranceCompanyObjectCategory"></see>
     /// </summary>
     let HealthInsuranceCompanyObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HealthInsuranceCompanyObjectCategory" |> NamespacedName
+        _prefix "HealthInsuranceCompanyObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HighSchoolObjectCategory"></see>
     /// </summary>
-    let HighSchoolObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HighSchoolObjectCategory" |> NamespacedName
-
+    let HighSchoolObjectCategory = _prefix "HighSchoolObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HorizontalHandleOrientation"></see>
     /// </summary>
-    let HorizontalHandleOrientation =
-        Namespaced_IRI.parse _namespace_name "HorizontalHandleOrientation" |> NamespacedName
-
+    let HorizontalHandleOrientation = _prefix "HorizontalHandleOrientation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HospitalObjectCategory"></see>
     /// </summary>
-    let HospitalObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HospitalObjectCategory" |> NamespacedName
-
+    let HospitalObjectCategory = _prefix "HospitalObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HotelObjectCategory"></see>
     /// </summary>
-    let HotelObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HotelObjectCategory" |> NamespacedName
-
+    let HotelObjectCategory = _prefix "HotelObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/HypermarketObjectCategory"></see>
     /// </summary>
-    let HypermarketObjectCategory =
-        Namespaced_IRI.parse _namespace_name "HypermarketObjectCategory" |> NamespacedName
+    let HypermarketObjectCategory = _prefix "HypermarketObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InaccessibleObjectInteriorAccessibility"></see>
     /// </summary>
     let InaccessibleObjectInteriorAccessibility =
-        Namespaced_IRI.parse _namespace_name "InaccessibleObjectInteriorAccessibility" |> NamespacedName
+        _prefix "InaccessibleObjectInteriorAccessibility"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InaccessibleObjectMKPO"></see>
     /// </summary>
-    let InaccessibleObjectMKPO =
-        Namespaced_IRI.parse _namespace_name "InaccessibleObjectMKPO" |> NamespacedName
-
+    let InaccessibleObjectMKPO = _prefix "InaccessibleObjectMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InaccessibleWCMKPO"></see>
     /// </summary>
-    let InaccessibleWCMKPO =
-        Namespaced_IRI.parse _namespace_name "InaccessibleWCMKPO" |> NamespacedName
-
+    let InaccessibleWCMKPO = _prefix "InaccessibleWCMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InclinedPlatformType"></see>
     /// </summary>
-    let InclinedPlatformType =
-        Namespaced_IRI.parse _namespace_name "InclinedPlatformType" |> NamespacedName
-
+    let InclinedPlatformType = _prefix "InclinedPlatformType"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/PlatformType"></see></summary>
-    let PlatformType =
-        Namespaced_IRI.parse _namespace_name "PlatformType" |> NamespacedName
-
+    let PlatformType = _prefix "PlatformType"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/PlatformTypesScheme"></see></summary>
-    let PlatformTypesScheme =
-        Namespaced_IRI.parse _namespace_name "PlatformTypesScheme" |> NamespacedName
-
+    let PlatformTypesScheme = _prefix "PlatformTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/IndoorSwimmingPoolObjectCategory"></see>
     /// </summary>
-    let IndoorSwimmingPoolObjectCategory =
-        Namespaced_IRI.parse _namespace_name "IndoorSwimmingPoolObjectCategory" |> NamespacedName
-
+    let IndoorSwimmingPoolObjectCategory = _prefix "IndoorSwimmingPoolObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InformationCenterObjectCategory"></see>
     /// </summary>
-    let InformationCenterObjectCategory =
-        Namespaced_IRI.parse _namespace_name "InformationCenterObjectCategory" |> NamespacedName
-
+    let InformationCenterObjectCategory = _prefix "InformationCenterObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InsideHandlePosition"></see>
     /// </summary>
-    let InsideHandlePosition =
-        Namespaced_IRI.parse _namespace_name "InsideHandlePosition" |> NamespacedName
-
+    let InsideHandlePosition = _prefix "InsideHandlePosition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InsufficientWashBasinUnderpass"></see>
     /// </summary>
-    let InsufficientWashBasinUnderpass =
-        Namespaced_IRI.parse _namespace_name "InsufficientWashBasinUnderpass" |> NamespacedName
-
+    let InsufficientWashBasinUnderpass = _prefix "InsufficientWashBasinUnderpass"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WashBasinUnderpass"></see></summary>
-    let WashBasinUnderpass =
-        Namespaced_IRI.parse _namespace_name "WashBasinUnderpass" |> NamespacedName
-
+    let WashBasinUnderpass = _prefix "WashBasinUnderpass"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/WashBasinUnderpassesScheme"></see></summary>
-    let WashBasinUnderpassesScheme =
-        Namespaced_IRI.parse _namespace_name "WashBasinUnderpassesScheme" |> NamespacedName
-
+    let WashBasinUnderpassesScheme = _prefix "WashBasinUnderpassesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InsuranceOfficeObjectCategory"></see>
     /// </summary>
-    let InsuranceOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "InsuranceOfficeObjectCategory" |> NamespacedName
-
+    let InsuranceOfficeObjectCategory = _prefix "InsuranceOfficeObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/IntercomBellType"></see>
     /// </summary>
-    let IntercomBellType =
-        Namespaced_IRI.parse _namespace_name "IntercomBellType" |> NamespacedName
-
+    let IntercomBellType = _prefix "IntercomBellType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InteriorRampSkidsLocalization"></see>
     /// </summary>
-    let InteriorRampSkidsLocalization =
-        Namespaced_IRI.parse _namespace_name "InteriorRampSkidsLocalization" |> NamespacedName
-
+    let InteriorRampSkidsLocalization = _prefix "InteriorRampSkidsLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InteriorStairs"></see>
     /// </summary>
-    let InteriorStairs =
-        Namespaced_IRI.parse _namespace_name "InteriorStairs" |> NamespacedName
-
+    let InteriorStairs = _prefix "InteriorStairs"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/InteriorSteps"></see>
     /// </summary>
-    let InteriorSteps =
-        Namespaced_IRI.parse _namespace_name "InteriorSteps" |> NamespacedName
-
+    let InteriorSteps = _prefix "InteriorSteps"
     /// <summary>
     /// to the interior of the cabine
     /// <see href="http://w3id.org/charta77/jup/InwardsDoorOpeningDirection"></see></summary>
-    let InwardsDoorOpeningDirection =
-        Namespaced_IRI.parse _namespace_name "InwardsDoorOpeningDirection" |> NamespacedName
-
+    let InwardsDoorOpeningDirection = _prefix "InwardsDoorOpeningDirection"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/JingleAOBAnnouncement"></see>
     /// </summary>
-    let JingleAOBAnnouncement =
-        Namespaced_IRI.parse _namespace_name "JingleAOBAnnouncement" |> NamespacedName
-
+    let JingleAOBAnnouncement = _prefix "JingleAOBAnnouncement"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/KindergartenObjectCategory"></see>
     /// </summary>
-    let KindergartenObjectCategory =
-        Namespaced_IRI.parse _namespace_name "KindergartenObjectCategory" |> NamespacedName
-
+    let KindergartenObjectCategory = _prefix "KindergartenObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LadiesWCCabinLocalization"></see>
     /// </summary>
-    let LadiesWCCabinLocalization =
-        Namespaced_IRI.parse _namespace_name "LadiesWCCabinLocalization" |> NamespacedName
-
+    let LadiesWCCabinLocalization = _prefix "LadiesWCCabinLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LandingsElevatorDriveOff"></see>
     /// </summary>
-    let LandingsElevatorDriveOff =
-        Namespaced_IRI.parse _namespace_name "LandingsElevatorDriveOff" |> NamespacedName
-
+    let LandingsElevatorDriveOff = _prefix "LandingsElevatorDriveOff"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LandingsEntryArea"></see>
     /// </summary>
-    let LandingsEntryArea =
-        Namespaced_IRI.parse _namespace_name "LandingsEntryArea" |> NamespacedName
-
+    let LandingsEntryArea = _prefix "LandingsEntryArea"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LeftBottomWCCabinDisposition"></see>
     /// </summary>
-    let LeftBottomWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "LeftBottomWCCabinDisposition" |> NamespacedName
-
+    let LeftBottomWCCabinDisposition = _prefix "LeftBottomWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LeftTopWCCabinDisposition"></see>
     /// </summary>
-    let LeftTopWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "LeftTopWCCabinDisposition" |> NamespacedName
-
+    let LeftTopWCCabinDisposition = _prefix "LeftTopWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LevelTap"></see>
     /// </summary>
-    let LevelTap = Namespaced_IRI.parse _namespace_name "LevelTap" |> NamespacedName
+    let LevelTap = _prefix "LevelTap"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/TapType"></see></summary>
-    let TapType = Namespaced_IRI.parse _namespace_name "TapType" |> NamespacedName
-
+    let TapType = _prefix "TapType"
     /// <summary>
     /// The list copied from the form based on Object Accessibility Categorization Methodology
     /// <see href="http://w3id.org/charta77/jup/TapTypesScheme"></see></summary>
-    let TapTypesScheme =
-        Namespaced_IRI.parse _namespace_name "TapTypesScheme" |> NamespacedName
-
+    let TapTypesScheme = _prefix "TapTypesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LibraryObjectCategory"></see>
     /// </summary>
-    let LibraryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "LibraryObjectCategory" |> NamespacedName
-
+    let LibraryObjectCategory = _prefix "LibraryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LobbyDoor"></see>
     /// </summary>
-    let LobbyDoor = Namespaced_IRI.parse _namespace_name "LobbyDoor" |> NamespacedName
-
+    let LobbyDoor = _prefix "LobbyDoor"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LobbyRampSkidsLocalization"></see>
     /// </summary>
-    let LobbyRampSkidsLocalization =
-        Namespaced_IRI.parse _namespace_name "LobbyRampSkidsLocalization" |> NamespacedName
-
+    let LobbyRampSkidsLocalization = _prefix "LobbyRampSkidsLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LobbySteps"></see>
     /// </summary>
-    let LobbySteps = Namespaced_IRI.parse _namespace_name "LobbySteps" |> NamespacedName
-
+    let LobbySteps = _prefix "LobbySteps"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LockedMappableEntityAccess"></see>
     /// </summary>
-    let LockedMappableEntityAccess =
-        Namespaced_IRI.parse _namespace_name "LockedMappableEntityAccess" |> NamespacedName
-
+    let LockedMappableEntityAccess = _prefix "LockedMappableEntityAccess"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/LoretoObjectCategory"></see>
     /// </summary>
-    let LoretoObjectCategory =
-        Namespaced_IRI.parse _namespace_name "LoretoObjectCategory" |> NamespacedName
-
+    let LoretoObjectCategory = _prefix "LoretoObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MainEntrance"></see>
     /// </summary>
-    let MainEntrance =
-        Namespaced_IRI.parse _namespace_name "MainEntrance" |> NamespacedName
-
+    let MainEntrance = _prefix "MainEntrance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Mapper"></see>
     /// </summary>
-    let Mapper = Namespaced_IRI.parse _namespace_name "Mapper" |> NamespacedName
-
+    let Mapper = _prefix "Mapper"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MechanicalDoorOpening"></see>
     /// </summary>
-    let MechanicalDoorOpening =
-        Namespaced_IRI.parse _namespace_name "MechanicalDoorOpening" |> NamespacedName
-
+    let MechanicalDoorOpening = _prefix "MechanicalDoorOpening"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MechanicalWCFlushing"></see>
     /// </summary>
-    let MechanicalWCFlushing =
-        Namespaced_IRI.parse _namespace_name "MechanicalWCFlushing" |> NamespacedName
-
+    let MechanicalWCFlushing = _prefix "MechanicalWCFlushing"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MedicalEmergencyObjectCategory"></see>
     /// </summary>
-    let MedicalEmergencyObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MedicalEmergencyObjectCategory" |> NamespacedName
-
+    let MedicalEmergencyObjectCategory = _prefix "MedicalEmergencyObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MedicalSupplyObjectCategory"></see>
     /// </summary>
-    let MedicalSupplyObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MedicalSupplyObjectCategory" |> NamespacedName
-
+    let MedicalSupplyObjectCategory = _prefix "MedicalSupplyObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MetropolitanPoliceObjectCategory"></see>
     /// </summary>
-    let MetropolitanPoliceObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MetropolitanPoliceObjectCategory" |> NamespacedName
-
+    let MetropolitanPoliceObjectCategory = _prefix "MetropolitanPoliceObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MezzaninesElevatorDriveOff"></see>
     /// </summary>
-    let MezzaninesElevatorDriveOff =
-        Namespaced_IRI.parse _namespace_name "MezzaninesElevatorDriveOff" |> NamespacedName
-
+    let MezzaninesElevatorDriveOff = _prefix "MezzaninesElevatorDriveOff"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MissingBellType"></see>
     /// </summary>
-    let MissingBellType =
-        Namespaced_IRI.parse _namespace_name "MissingBellType" |> NamespacedName
+    let MissingBellType = _prefix "MissingBellType"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MissingContrastMarkingLocalization"></see>
     /// </summary>
     let MissingContrastMarkingLocalization =
-        Namespaced_IRI.parse _namespace_name "MissingContrastMarkingLocalization" |> NamespacedName
+        _prefix "MissingContrastMarkingLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MissingEntranceGuidingLine"></see>
     /// </summary>
-    let MissingEntranceGuidingLine =
-        Namespaced_IRI.parse _namespace_name "MissingEntranceGuidingLine" |> NamespacedName
-
+    let MissingEntranceGuidingLine = _prefix "MissingEntranceGuidingLine"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MissingHandlePosition"></see>
     /// </summary>
-    let MissingHandlePosition =
-        Namespaced_IRI.parse _namespace_name "MissingHandlePosition" |> NamespacedName
-
+    let MissingHandlePosition = _prefix "MissingHandlePosition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MissingWCSwitch"></see>
     /// </summary>
-    let MissingWCSwitch =
-        Namespaced_IRI.parse _namespace_name "MissingWCSwitch" |> NamespacedName
-
+    let MissingWCSwitch = _prefix "MissingWCSwitch"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MobileRampSkidsMobility"></see>
     /// </summary>
-    let MobileRampSkidsMobility =
-        Namespaced_IRI.parse _namespace_name "MobileRampSkidsMobility" |> NamespacedName
-
+    let MobileRampSkidsMobility = _prefix "MobileRampSkidsMobility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MobileWCChangingDesk"></see>
     /// </summary>
-    let MobileWCChangingDesk =
-        Namespaced_IRI.parse _namespace_name "MobileWCChangingDesk" |> NamespacedName
-
+    let MobileWCChangingDesk = _prefix "MobileWCChangingDesk"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MonasteryObjectCategory"></see>
     /// </summary>
-    let MonasteryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MonasteryObjectCategory" |> NamespacedName
-
+    let MonasteryObjectCategory = _prefix "MonasteryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MonumentObjectCategory"></see>
     /// </summary>
-    let MonumentObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MonumentObjectCategory" |> NamespacedName
-
+    let MonumentObjectCategory = _prefix "MonumentObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MoreStepsEntranceAccessibility"></see>
     /// </summary>
-    let MoreStepsEntranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "MoreStepsEntranceAccessibility" |> NamespacedName
-
+    let MoreStepsEntranceAccessibility = _prefix "MoreStepsEntranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MosqueObjectCategory"></see>
     /// </summary>
-    let MosqueObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MosqueObjectCategory" |> NamespacedName
-
+    let MosqueObjectCategory = _prefix "MosqueObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MunicipalOfficeObjectCategory"></see>
     /// </summary>
-    let MunicipalOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MunicipalOfficeObjectCategory" |> NamespacedName
-
+    let MunicipalOfficeObjectCategory = _prefix "MunicipalOfficeObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MunicipalityObjectCategory"></see>
     /// </summary>
-    let MunicipalityObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MunicipalityObjectCategory" |> NamespacedName
-
+    let MunicipalityObjectCategory = _prefix "MunicipalityObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/MuseumObjectCategory"></see>
     /// </summary>
-    let MuseumObjectCategory =
-        Namespaced_IRI.parse _namespace_name "MuseumObjectCategory" |> NamespacedName
-
+    let MuseumObjectCategory = _prefix "MuseumObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/NarrowedPassage"></see>
     /// </summary>
-    let NarrowedPassage =
-        Namespaced_IRI.parse _namespace_name "NarrowedPassage" |> NamespacedName
-
+    let NarrowedPassage = _prefix "NarrowedPassage"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/NaturalEntranceGuidingLine"></see>
     /// </summary>
-    let NaturalEntranceGuidingLine =
-        Namespaced_IRI.parse _namespace_name "NaturalEntranceGuidingLine" |> NamespacedName
-
+    let NaturalEntranceGuidingLine = _prefix "NaturalEntranceGuidingLine"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/NavigationSystem"></see>
     /// </summary>
-    let NavigationSystem =
-        Namespaced_IRI.parse _namespace_name "NavigationSystem" |> NamespacedName
-
+    let NavigationSystem = _prefix "NavigationSystem"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/NoElevationEntranceAccessibility"></see>
     /// </summary>
-    let NoElevationEntranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "NoElevationEntranceAccessibility" |> NamespacedName
-
+    let NoElevationEntranceAccessibility = _prefix "NoElevationEntranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/NonslipperyRampSurface"></see>
     /// </summary>
-    let NonslipperyRampSurface =
-        Namespaced_IRI.parse _namespace_name "NonslipperyRampSurface" |> NamespacedName
-
+    let NonslipperyRampSurface = _prefix "NonslipperyRampSurface"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampSurface"></see></summary>
-    let RampSurface =
-        Namespaced_IRI.parse _namespace_name "RampSurface" |> NamespacedName
-
+    let RampSurface = _prefix "RampSurface"
     /// <summary>
     /// Types of elevator cage mirror localizations
     /// <see href="http://w3id.org/charta77/jup/RampSurfacesScheme"></see></summary>
-    let RampSurfacesScheme =
-        Namespaced_IRI.parse _namespace_name "RampSurfacesScheme" |> NamespacedName
-
+    let RampSurfacesScheme = _prefix "RampSurfacesScheme"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/NotConnectingObjectStairsType"></see>
     /// </summary>
-    let NotConnectingObjectStairsType =
-        Namespaced_IRI.parse _namespace_name "NotConnectingObjectStairsType" |> NamespacedName
-
+    let NotConnectingObjectStairsType = _prefix "NotConnectingObjectStairsType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/OKWCFlushingDifficulty"></see>
     /// </summary>
-    let OKWCFlushingDifficulty =
-        Namespaced_IRI.parse _namespace_name "OKWCFlushingDifficulty" |> NamespacedName
-
+    let OKWCFlushingDifficulty = _prefix "OKWCFlushingDifficulty"
     /// <summary>
     /// An object may not be represented by an entire building, it can stand for its particular logic part (e.g. one department store in a multifunctional building). One address can thus comprise multiple objects.
     /// <see href="http://w3id.org/charta77/jup/Object"></see></summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
-
+    let Object = _prefix "Object"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObservatoryObjectCategory"></see>
     /// </summary>
-    let ObservatoryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ObservatoryObjectCategory" |> NamespacedName
-
+    let ObservatoryObjectCategory = _prefix "ObservatoryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/OneSideDoorOpeningDirection"></see>
     /// </summary>
-    let OneSideDoorOpeningDirection =
-        Namespaced_IRI.parse _namespace_name "OneSideDoorOpeningDirection" |> NamespacedName
-
+    let OneSideDoorOpeningDirection = _prefix "OneSideDoorOpeningDirection"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/OneStepEntranceAccessibility"></see>
     /// </summary>
-    let OneStepEntranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "OneStepEntranceAccessibility" |> NamespacedName
-
+    let OneStepEntranceAccessibility = _prefix "OneStepEntranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/OpticianShopObjectCategory"></see>
     /// </summary>
-    let OpticianShopObjectCategory =
-        Namespaced_IRI.parse _namespace_name "OpticianShopObjectCategory" |> NamespacedName
-
+    let OpticianShopObjectCategory = _prefix "OpticianShopObjectCategory"
     /// <summary>
     /// e.g. Prague Castle Administration
     /// <see href="http://w3id.org/charta77/jup/Organization"></see></summary>
-    let Organization =
-        Namespaced_IRI.parse _namespace_name "Organization" |> NamespacedName
-
+    let Organization = _prefix "Organization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/OtheroObjectCategory"></see>
     /// </summary>
-    let OtheroObjectCategory =
-        Namespaced_IRI.parse _namespace_name "OtheroObjectCategory" |> NamespacedName
-
+    let OtheroObjectCategory = _prefix "OtheroObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/OutsideHandlePosition"></see>
     /// </summary>
-    let OutsideHandlePosition =
-        Namespaced_IRI.parse _namespace_name "OutsideHandlePosition" |> NamespacedName
-
+    let OutsideHandlePosition = _prefix "OutsideHandlePosition"
     /// <summary>
     /// to the exterior of the cabine
     /// <see href="http://w3id.org/charta77/jup/OutwardsDoorOpeningDirection"></see></summary>
-    let OutwardsDoorOpeningDirection =
-        Namespaced_IRI.parse _namespace_name "OutwardsDoorOpeningDirection" |> NamespacedName
-
+    let OutwardsDoorOpeningDirection = _prefix "OutwardsDoorOpeningDirection"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PalaceObjectCategory"></see>
     /// </summary>
-    let PalaceObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PalaceObjectCategory" |> NamespacedName
-
+    let PalaceObjectCategory = _prefix "PalaceObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PartObjectInteriorAccessibility"></see>
     /// </summary>
-    let PartObjectInteriorAccessibility =
-        Namespaced_IRI.parse _namespace_name "PartObjectInteriorAccessibility" |> NamespacedName
-
+    let PartObjectInteriorAccessibility = _prefix "PartObjectInteriorAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PartlyAccessibleObjectMKPO"></see>
     /// </summary>
-    let PartlyAccessibleObjectMKPO =
-        Namespaced_IRI.parse _namespace_name "PartlyAccessibleObjectMKPO" |> NamespacedName
-
+    let PartlyAccessibleObjectMKPO = _prefix "PartlyAccessibleObjectMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PartlyAccessibleWCMKPO"></see>
     /// </summary>
-    let PartlyAccessibleWCMKPO =
-        Namespaced_IRI.parse _namespace_name "PartlyAccessibleWCMKPO" |> NamespacedName
-
+    let PartlyAccessibleWCMKPO = _prefix "PartlyAccessibleWCMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PastryObjectCategory"></see>
     /// </summary>
-    let PastryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PastryObjectCategory" |> NamespacedName
-
+    let PastryObjectCategory = _prefix "PastryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PersonalElevatorType"></see>
     /// </summary>
-    let PersonalElevatorType =
-        Namespaced_IRI.parse _namespace_name "PersonalElevatorType" |> NamespacedName
-
+    let PersonalElevatorType = _prefix "PersonalElevatorType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PharmacyObjectCategory"></see>
     /// </summary>
-    let PharmacyObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PharmacyObjectCategory" |> NamespacedName
-
+    let PharmacyObjectCategory = _prefix "PharmacyObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PhraseAOBAnnouncement"></see>
     /// </summary>
-    let PhraseAOBAnnouncement =
-        Namespaced_IRI.parse _namespace_name "PhraseAOBAnnouncement" |> NamespacedName
-
+    let PhraseAOBAnnouncement = _prefix "PhraseAOBAnnouncement"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Platform"></see>
     /// </summary>
-    let Platform = Namespaced_IRI.parse _namespace_name "Platform" |> NamespacedName
-
+    let Platform = _prefix "Platform"
     /// <summary>
     /// Appendix 2
     /// <see href="http://w3id.org/charta77/jup/PlatformEntranceAccessibility"></see></summary>
-    let PlatformEntranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "PlatformEntranceAccessibility" |> NamespacedName
-
+    let PlatformEntranceAccessibility = _prefix "PlatformEntranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PoliceObjectCategory"></see>
     /// </summary>
-    let PoliceObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PoliceObjectCategory" |> NamespacedName
-
+    let PoliceObjectCategory = _prefix "PoliceObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PostOfficeObjectCategory"></see>
     /// </summary>
-    let PostOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PostOfficeObjectCategory" |> NamespacedName
+    let PostOfficeObjectCategory = _prefix "PostOfficeObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ProtrudingElevatorControlReliefMarking"></see>
     /// </summary>
     let ProtrudingElevatorControlReliefMarking =
-        Namespaced_IRI.parse _namespace_name "ProtrudingElevatorControlReliefMarking" |> NamespacedName
+        _prefix "ProtrudingElevatorControlReliefMarking"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PubObjectCategory"></see>
     /// </summary>
-    let PubObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PubObjectCategory" |> NamespacedName
-
+    let PubObjectCategory = _prefix "PubObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PublicProsecutorObjectCategory"></see>
     /// </summary>
-    let PublicProsecutorObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PublicProsecutorObjectCategory" |> NamespacedName
-
+    let PublicProsecutorObjectCategory = _prefix "PublicProsecutorObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/PublicToiletObjectCategory"></see>
     /// </summary>
-    let PublicToiletObjectCategory =
-        Namespaced_IRI.parse _namespace_name "PublicToiletObjectCategory" |> NamespacedName
-
+    let PublicToiletObjectCategory = _prefix "PublicToiletObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Ramp"></see>
     /// </summary>
-    let Ramp = Namespaced_IRI.parse _namespace_name "Ramp" |> NamespacedName
+    let Ramp = _prefix "Ramp"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RampSkids"></see>
     /// </summary>
-    let RampSkids = Namespaced_IRI.parse _namespace_name "RampSkids" |> NamespacedName
-
+    let RampSkids = _prefix "RampSkids"
     /// <summary>
     /// Appendix 3
     /// <see href="http://w3id.org/charta77/jup/RampEntranceAccessibility"></see></summary>
-    let RampEntranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "RampEntranceAccessibility" |> NamespacedName
-
+    let RampEntranceAccessibility = _prefix "RampEntranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RampHandle"></see>
     /// </summary>
-    let RampHandle = Namespaced_IRI.parse _namespace_name "RampHandle" |> NamespacedName
+    let RampHandle = _prefix "RampHandle"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RampLeg"></see>
     /// </summary>
-    let RampLeg = Namespaced_IRI.parse _namespace_name "RampLeg" |> NamespacedName
+    let RampLeg = _prefix "RampLeg"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RecreationalFacilityObjectCategory"></see>
     /// </summary>
     let RecreationalFacilityObjectCategory =
-        Namespaced_IRI.parse _namespace_name "RecreationalFacilityObjectCategory" |> NamespacedName
+        _prefix "RecreationalFacilityObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ResidentialSocialServiceObjectCategory"></see>
     /// </summary>
     let ResidentialSocialServiceObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ResidentialSocialServiceObjectCategory" |> NamespacedName
+        _prefix "ResidentialSocialServiceObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RestaurantObjectCategory"></see>
     /// </summary>
-    let RestaurantObjectCategory =
-        Namespaced_IRI.parse _namespace_name "RestaurantObjectCategory" |> NamespacedName
-
+    let RestaurantObjectCategory = _prefix "RestaurantObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RightBottomWCCabinDisposition"></see>
     /// </summary>
-    let RightBottomWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "RightBottomWCCabinDisposition" |> NamespacedName
-
+    let RightBottomWCCabinDisposition = _prefix "RightBottomWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RightTopWCCabinDisposition"></see>
     /// </summary>
-    let RightTopWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "RightTopWCCabinDisposition" |> NamespacedName
-
+    let RightTopWCCabinDisposition = _prefix "RightTopWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/RingOnlyBellType"></see>
     /// </summary>
-    let RingOnlyBellType =
-        Namespaced_IRI.parse _namespace_name "RingOnlyBellType" |> NamespacedName
-
+    let RingOnlyBellType = _prefix "RingOnlyBellType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SchoolObjectCategory"></see>
     /// </summary>
-    let SchoolObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SchoolObjectCategory" |> NamespacedName
-
+    let SchoolObjectCategory = _prefix "SchoolObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SelfContainedWCCabinLocalization"></see>
     /// </summary>
-    let SelfContainedWCCabinLocalization =
-        Namespaced_IRI.parse _namespace_name "SelfContainedWCCabinLocalization" |> NamespacedName
-
+    let SelfContainedWCCabinLocalization = _prefix "SelfContainedWCCabinLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ServiceObjectCategory"></see>
     /// </summary>
-    let ServiceObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ServiceObjectCategory" |> NamespacedName
+    let ServiceObjectCategory = _prefix "ServiceObjectCategory"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideElevatorCageSecondDoorLocalization"></see>
     /// </summary>
     let SideElevatorCageSecondDoorLocalization =
-        Namespaced_IRI.parse _namespace_name "SideElevatorCageSecondDoorLocalization" |> NamespacedName
+        _prefix "SideElevatorCageSecondDoorLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideEntrance"></see>
     /// </summary>
-    let SideEntrance =
-        Namespaced_IRI.parse _namespace_name "SideEntrance" |> NamespacedName
-
+    let SideEntrance = _prefix "SideEntrance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideEntryAreaEntry"></see>
     /// </summary>
-    let SideEntryAreaEntry =
-        Namespaced_IRI.parse _namespace_name "SideEntryAreaEntry" |> NamespacedName
+    let SideEntryAreaEntry = _prefix "SideEntryAreaEntry"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideWallElevatorCageMirrorLocalization"></see>
     /// </summary>
     let SideWallElevatorCageMirrorLocalization =
-        Namespaced_IRI.parse _namespace_name "SideWallElevatorCageMirrorLocalization" |> NamespacedName
+        _prefix "SideWallElevatorCageMirrorLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideWallHandleLocalization"></see>
     /// </summary>
-    let SideWallHandleLocalization =
-        Namespaced_IRI.parse _namespace_name "SideWallHandleLocalization" |> NamespacedName
+    let SideWallHandleLocalization = _prefix "SideWallHandleLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideWallsElevatorCageMirrorLocalization"></see>
     /// </summary>
     let SideWallsElevatorCageMirrorLocalization =
-        Namespaced_IRI.parse _namespace_name "SideWallsElevatorCageMirrorLocalization" |> NamespacedName
+        _prefix "SideWallsElevatorCageMirrorLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SideWallsHandleLocalization"></see>
     /// </summary>
-    let SideWallsHandleLocalization =
-        Namespaced_IRI.parse _namespace_name "SideWallsHandleLocalization" |> NamespacedName
-
+    let SideWallsHandleLocalization = _prefix "SideWallsHandleLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SidesDoorOpeningDirection"></see>
     /// </summary>
-    let SidesDoorOpeningDirection =
-        Namespaced_IRI.parse _namespace_name "SidesDoorOpeningDirection" |> NamespacedName
-
+    let SidesDoorOpeningDirection = _prefix "SidesDoorOpeningDirection"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SinglePanelledDoorType"></see>
     /// </summary>
-    let SinglePanelledDoorType =
-        Namespaced_IRI.parse _namespace_name "SinglePanelledDoorType" |> NamespacedName
-
+    let SinglePanelledDoorType = _prefix "SinglePanelledDoorType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Skids"></see>
     /// </summary>
-    let Skids = Namespaced_IRI.parse _namespace_name "Skids" |> NamespacedName
-
+    let Skids = _prefix "Skids"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SlidingDoorOpening"></see>
     /// </summary>
-    let SlidingDoorOpening =
-        Namespaced_IRI.parse _namespace_name "SlidingDoorOpening" |> NamespacedName
-
+    let SlidingDoorOpening = _prefix "SlidingDoorOpening"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SlipperyRampSurface"></see>
     /// </summary>
-    let SlipperyRampSurface =
-        Namespaced_IRI.parse _namespace_name "SlipperyRampSurface" |> NamespacedName
-
+    let SlipperyRampSurface = _prefix "SlipperyRampSurface"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SocialOfficeObjectCategory"></see>
     /// </summary>
-    let SocialOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SocialOfficeObjectCategory" |> NamespacedName
-
+    let SocialOfficeObjectCategory = _prefix "SocialOfficeObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SpaHouseObjectCategory"></see>
     /// </summary>
-    let SpaHouseObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SpaHouseObjectCategory" |> NamespacedName
-
+    let SpaHouseObjectCategory = _prefix "SpaHouseObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SpiralObjectStairsType"></see>
     /// </summary>
-    let SpiralObjectStairsType =
-        Namespaced_IRI.parse _namespace_name "SpiralObjectStairsType" |> NamespacedName
-
+    let SpiralObjectStairsType = _prefix "SpiralObjectStairsType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SpiralRampType"></see>
     /// </summary>
-    let SpiralRampType =
-        Namespaced_IRI.parse _namespace_name "SpiralRampType" |> NamespacedName
-
+    let SpiralRampType = _prefix "SpiralRampType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SportsFacilityObjectCategory"></see>
     /// </summary>
-    let SportsFacilityObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SportsFacilityObjectCategory" |> NamespacedName
-
+    let SportsFacilityObjectCategory = _prefix "SportsFacilityObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/StadiumObjectCategory"></see>
     /// </summary>
-    let StadiumObjectCategory =
-        Namespaced_IRI.parse _namespace_name "StadiumObjectCategory" |> NamespacedName
-
+    let StadiumObjectCategory = _prefix "StadiumObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/StatelyHomeObjectCategory"></see>
     /// </summary>
-    let StatelyHomeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "StatelyHomeObjectCategory" |> NamespacedName
-
+    let StatelyHomeObjectCategory = _prefix "StatelyHomeObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/StoreObjectCategory"></see>
     /// </summary>
-    let StoreObjectCategory =
-        Namespaced_IRI.parse _namespace_name "StoreObjectCategory" |> NamespacedName
-
+    let StoreObjectCategory = _prefix "StoreObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SubwayStationObjectCategory"></see>
     /// </summary>
-    let SubwayStationObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SubwayStationObjectCategory" |> NamespacedName
-
+    let SubwayStationObjectCategory = _prefix "SubwayStationObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SufficientWashBasinUnderpass"></see>
     /// </summary>
-    let SufficientWashBasinUnderpass =
-        Namespaced_IRI.parse _namespace_name "SufficientWashBasinUnderpass" |> NamespacedName
-
+    let SufficientWashBasinUnderpass = _prefix "SufficientWashBasinUnderpass"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SupermarketObjectCategory"></see>
     /// </summary>
-    let SupermarketObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SupermarketObjectCategory" |> NamespacedName
-
+    let SupermarketObjectCategory = _prefix "SupermarketObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SwimmingObjectCategory"></see>
     /// </summary>
-    let SwimmingObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SwimmingObjectCategory" |> NamespacedName
-
+    let SwimmingObjectCategory = _prefix "SwimmingObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SwingingDoorOpening"></see>
     /// </summary>
-    let SwingingDoorOpening =
-        Namespaced_IRI.parse _namespace_name "SwingingDoorOpening" |> NamespacedName
-
+    let SwingingDoorOpening = _prefix "SwingingDoorOpening"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/SynagogueObjectCategory"></see>
     /// </summary>
-    let SynagogueObjectCategory =
-        Namespaced_IRI.parse _namespace_name "SynagogueObjectCategory" |> NamespacedName
-
+    let SynagogueObjectCategory = _prefix "SynagogueObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Tap"></see>
     /// </summary>
-    let Tap = Namespaced_IRI.parse _namespace_name "Tap" |> NamespacedName
-
+    let Tap = _prefix "Tap"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TaxOfficeObjectCategory"></see>
     /// </summary>
-    let TaxOfficeObjectCategory =
-        Namespaced_IRI.parse _namespace_name "TaxOfficeObjectCategory" |> NamespacedName
-
+    let TaxOfficeObjectCategory = _prefix "TaxOfficeObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TempleObjectCategory"></see>
     /// </summary>
-    let TempleObjectCategory =
-        Namespaced_IRI.parse _namespace_name "TempleObjectCategory" |> NamespacedName
-
+    let TempleObjectCategory = _prefix "TempleObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TheatreObjectCategory"></see>
     /// </summary>
-    let TheatreObjectCategory =
-        Namespaced_IRI.parse _namespace_name "TheatreObjectCategory" |> NamespacedName
-
+    let TheatreObjectCategory = _prefix "TheatreObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TopContrastMarkingLocalization"></see>
     /// </summary>
-    let TopContrastMarkingLocalization =
-        Namespaced_IRI.parse _namespace_name "TopContrastMarkingLocalization" |> NamespacedName
-
+    let TopContrastMarkingLocalization = _prefix "TopContrastMarkingLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TopEntryArea"></see>
     /// </summary>
-    let TopEntryArea =
-        Namespaced_IRI.parse _namespace_name "TopEntryArea" |> NamespacedName
-
+    let TopEntryArea = _prefix "TopEntryArea"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TopLeftWCCabinDisposition"></see>
     /// </summary>
-    let TopLeftWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "TopLeftWCCabinDisposition" |> NamespacedName
-
+    let TopLeftWCCabinDisposition = _prefix "TopLeftWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TopRightWCCabinDisposition"></see>
     /// </summary>
-    let TopRightWCCabinDisposition =
-        Namespaced_IRI.parse _namespace_name "TopRightWCCabinDisposition" |> NamespacedName
-
+    let TopRightWCCabinDisposition = _prefix "TopRightWCCabinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TouchFreeTap"></see>
     /// </summary>
-    let TouchFreeTap =
-        Namespaced_IRI.parse _namespace_name "TouchFreeTap" |> NamespacedName
-
+    let TouchFreeTap = _prefix "TouchFreeTap"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TouristGuide"></see>
     /// </summary>
-    let TouristGuide =
-        Namespaced_IRI.parse _namespace_name "TouristGuide" |> NamespacedName
-
+    let TouristGuide = _prefix "TouristGuide"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/Tourniquet"></see>
     /// </summary>
-    let Tourniquet = Namespaced_IRI.parse _namespace_name "Tourniquet" |> NamespacedName
-
+    let Tourniquet = _prefix "Tourniquet"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TowerObjectCategory"></see>
     /// </summary>
-    let TowerObjectCategory =
-        Namespaced_IRI.parse _namespace_name "TowerObjectCategory" |> NamespacedName
-
+    let TowerObjectCategory = _prefix "TowerObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TownhallObjectCategory"></see>
     /// </summary>
-    let TownhallObjectCategory =
-        Namespaced_IRI.parse _namespace_name "TownhallObjectCategory" |> NamespacedName
-
+    let TownhallObjectCategory = _prefix "TownhallObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/TrainStationObjectCategory"></see>
     /// </summary>
-    let TrainStationObjectCategory =
-        Namespaced_IRI.parse _namespace_name "TrainStationObjectCategory" |> NamespacedName
-
+    let TrainStationObjectCategory = _prefix "TrainStationObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ValveTap"></see>
     /// </summary>
-    let ValveTap = Namespaced_IRI.parse _namespace_name "ValveTap" |> NamespacedName
-
+    let ValveTap = _prefix "ValveTap"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/VerticalHandleOrientation"></see>
     /// </summary>
-    let VerticalHandleOrientation =
-        Namespaced_IRI.parse _namespace_name "VerticalHandleOrientation" |> NamespacedName
-
+    let VerticalHandleOrientation = _prefix "VerticalHandleOrientation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/VerticalPlatformType"></see>
     /// </summary>
-    let VerticalPlatformType =
-        Namespaced_IRI.parse _namespace_name "VerticalPlatformType" |> NamespacedName
-
+    let VerticalPlatformType = _prefix "VerticalPlatformType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/VeterinarySurgeryObjectCategory"></see>
     /// </summary>
-    let VeterinarySurgeryObjectCategory =
-        Namespaced_IRI.parse _namespace_name "VeterinarySurgeryObjectCategory" |> NamespacedName
-
+    let VeterinarySurgeryObjectCategory = _prefix "VeterinarySurgeryObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ViticultureObjectCategory"></see>
     /// </summary>
-    let ViticultureObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ViticultureObjectCategory" |> NamespacedName
-
+    let ViticultureObjectCategory = _prefix "ViticultureObjectCategory"
     /// <summary>
     /// Placement of equipment objects is viewed from the entrance into the room
     /// <see href="http://w3id.org/charta77/jup/WC"></see></summary>
-    let WC = Namespaced_IRI.parse _namespace_name "WC" |> NamespacedName
-
+    let WC = _prefix "WC"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WCBasinLeftHandle"></see>
     /// </summary>
-    let WCBasinLeftHandle =
-        Namespaced_IRI.parse _namespace_name "WCBasinLeftHandle" |> NamespacedName
-
+    let WCBasinLeftHandle = _prefix "WCBasinLeftHandle"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WCBasinRightHandle"></see>
     /// </summary>
-    let WCBasinRightHandle =
-        Namespaced_IRI.parse _namespace_name "WCBasinRightHandle" |> NamespacedName
-
+    let WCBasinRightHandle = _prefix "WCBasinRightHandle"
     /// <summary>
     /// In case that the WC is accessible through hallways
     /// <see href="http://w3id.org/charta77/jup/WCHallway"></see></summary>
-    let WCHallway = Namespaced_IRI.parse _namespace_name "WCHallway" |> NamespacedName
+    let WCHallway = _prefix "WCHallway"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WashBasin"></see>
     /// </summary>
-    let WashBasin = Namespaced_IRI.parse _namespace_name "WashBasin" |> NamespacedName
-
+    let WashBasin = _prefix "WashBasin"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WashBasinHandle"></see>
     /// </summary>
-    let WashBasinHandle =
-        Namespaced_IRI.parse _namespace_name "WashBasinHandle" |> NamespacedName
-
+    let WashBasinHandle = _prefix "WashBasinHandle"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WashBasinTap"></see>
     /// </summary>
-    let WashBasinTap =
-        Namespaced_IRI.parse _namespace_name "WashBasinTap" |> NamespacedName
-
+    let WashBasinTap = _prefix "WashBasinTap"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WaterParkObjectCategory"></see>
     /// </summary>
-    let WaterParkObjectCategory =
-        Namespaced_IRI.parse _namespace_name "WaterParkObjectCategory" |> NamespacedName
-
+    let WaterParkObjectCategory = _prefix "WaterParkObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WeddingHallObjectCategory"></see>
     /// </summary>
-    let WeddingHallObjectCategory =
-        Namespaced_IRI.parse _namespace_name "WeddingHallObjectCategory" |> NamespacedName
-
+    let WeddingHallObjectCategory = _prefix "WeddingHallObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WellnessObjectCategory"></see>
     /// </summary>
-    let WellnessObjectCategory =
-        Namespaced_IRI.parse _namespace_name "WellnessObjectCategory" |> NamespacedName
-
+    let WellnessObjectCategory = _prefix "WellnessObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/WinterStadiumObjectCategory"></see>
     /// </summary>
-    let WinterStadiumObjectCategory =
-        Namespaced_IRI.parse _namespace_name "WinterStadiumObjectCategory" |> NamespacedName
-
+    let WinterStadiumObjectCategory = _prefix "WinterStadiumObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/YesWCSwitch"></see>
     /// </summary>
-    let YesWCSwitch =
-        Namespaced_IRI.parse _namespace_name "YesWCSwitch" |> NamespacedName
-
+    let YesWCSwitch = _prefix "YesWCSwitch"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ZooObjectCategory"></see>
     /// </summary>
-    let ZooObjectCategory =
-        Namespaced_IRI.parse _namespace_name "ZooObjectCategory" |> NamespacedName
-
+    let ZooObjectCategory = _prefix "ZooObjectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/access"></see>
     /// </summary>
-    let access = Namespaced_IRI.parse _namespace_name "access" |> NamespacedName
-
+    let access = _prefix "access"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/accessProvidedBy"></see>
     /// </summary>
-    let accessProvidedBy =
-        Namespaced_IRI.parse _namespace_name "accessProvidedBy" |> NamespacedName
-
+    let accessProvidedBy = _prefix "accessProvidedBy"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/accessibility"></see>
     /// </summary>
-    let accessibility =
-        Namespaced_IRI.parse _namespace_name "accessibility" |> NamespacedName
-
+    let accessibility = _prefix "accessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/aobAboveDoor"></see>
     /// </summary>
-    let aobAboveDoor =
-        Namespaced_IRI.parse _namespace_name "aobAboveDoor" |> NamespacedName
-
+    let aobAboveDoor = _prefix "aobAboveDoor"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/aobAnnouncement"></see>
     /// </summary>
-    let aobAnnouncement =
-        Namespaced_IRI.parse _namespace_name "aobAnnouncement" |> NamespacedName
-
+    let aobAnnouncement = _prefix "aobAnnouncement"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/aobIsAboveDoor"></see>
     /// </summary>
-    let aobIsAboveDoor =
-        Namespaced_IRI.parse _namespace_name "aobIsAboveDoor" |> NamespacedName
-
+    let aobIsAboveDoor = _prefix "aobIsAboveDoor"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/aobLocalization"></see>
     /// </summary>
-    let aobLocalization =
-        Namespaced_IRI.parse _namespace_name "aobLocalization" |> NamespacedName
-
+    let aobLocalization = _prefix "aobLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/localization"></see>
     /// </summary>
-    let localization =
-        Namespaced_IRI.parse _namespace_name "localization" |> NamespacedName
-
+    let localization = _prefix "localization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/bellHeight"></see>
     /// </summary>
-    let bellHeight = Namespaced_IRI.parse _namespace_name "bellHeight" |> NamespacedName
-
+    let bellHeight = _prefix "bellHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/bellIndentation"></see>
     /// </summary>
-    let bellIndentation =
-        Namespaced_IRI.parse _namespace_name "bellIndentation" |> NamespacedName
-
+    let bellIndentation = _prefix "bellIndentation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/bellType"></see>
     /// </summary>
-    let bellType = Namespaced_IRI.parse _namespace_name "bellType" |> NamespacedName
+    let bellType = _prefix "bellType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/belongsTo"></see>
     /// </summary>
-    let belongsTo = Namespaced_IRI.parse _namespace_name "belongsTo" |> NamespacedName
-
+    let belongsTo = _prefix "belongsTo"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/brailleLabelled"></see>
     /// </summary>
-    let brailleLabelled =
-        Namespaced_IRI.parse _namespace_name "brailleLabelled" |> NamespacedName
-
+    let brailleLabelled = _prefix "brailleLabelled"
     /// <summary>
     /// A certified person enters professionally taken data. To become a certified person a special training, examination etc. is required.
     /// <see href="http://w3id.org/charta77/jup/certifiedRecord"></see></summary>
-    let certifiedRecord =
-        Namespaced_IRI.parse _namespace_name "certifiedRecord" |> NamespacedName
-
+    let certifiedRecord = _prefix "certifiedRecord"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/contrastMarked"></see>
     /// </summary>
-    let contrastMarked =
-        Namespaced_IRI.parse _namespace_name "contrastMarked" |> NamespacedName
+    let contrastMarked = _prefix "contrastMarked"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/contrastMarkingGlassSurfacesMarked"></see>
     /// </summary>
     let contrastMarkingGlassSurfacesMarked =
-        Namespaced_IRI.parse _namespace_name "contrastMarkingGlassSurfacesMarked" |> NamespacedName
+        _prefix "contrastMarkingGlassSurfacesMarked"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/contrastMarkingIsGlassSurfacesMarked"></see>
     /// </summary>
     let contrastMarkingIsGlassSurfacesMarked =
-        Namespaced_IRI.parse _namespace_name "contrastMarkingIsGlassSurfacesMarked" |> NamespacedName
+        _prefix "contrastMarkingIsGlassSurfacesMarked"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/contrastMarkingLocalization"></see>
     /// </summary>
-    let contrastMarkingLocalization =
-        Namespaced_IRI.parse _namespace_name "contrastMarkingLocalization" |> NamespacedName
-
+    let contrastMarkingLocalization = _prefix "contrastMarkingLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/controlHeight"></see>
     /// </summary>
-    let controlHeight =
-        Namespaced_IRI.parse _namespace_name "controlHeight" |> NamespacedName
-
+    let controlHeight = _prefix "controlHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/createdBy"></see>
     /// </summary>
-    let createdBy = Namespaced_IRI.parse _namespace_name "createdBy" |> NamespacedName
-
+    let createdBy = _prefix "createdBy"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/createdDate"></see>
     /// </summary>
-    let createdDate =
-        Namespaced_IRI.parse _namespace_name "createdDate" |> NamespacedName
-
+    let createdDate = _prefix "createdDate"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorBrailleLabelled"></see>
     /// </summary>
-    let doorBrailleLabelled =
-        Namespaced_IRI.parse _namespace_name "doorBrailleLabelled" |> NamespacedName
-
+    let doorBrailleLabelled = _prefix "doorBrailleLabelled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorIsBrailleLabelled"></see>
     /// </summary>
-    let doorIsBrailleLabelled =
-        Namespaced_IRI.parse _namespace_name "doorIsBrailleLabelled" |> NamespacedName
-
+    let doorIsBrailleLabelled = _prefix "doorIsBrailleLabelled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorIsMarked"></see>
     /// </summary>
-    let doorIsMarked =
-        Namespaced_IRI.parse _namespace_name "doorIsMarked" |> NamespacedName
-
+    let doorIsMarked = _prefix "doorIsMarked"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorMainPanelWidth"></see>
     /// </summary>
-    let doorMainPanelWidth =
-        Namespaced_IRI.parse _namespace_name "doorMainPanelWidth" |> NamespacedName
-
+    let doorMainPanelWidth = _prefix "doorMainPanelWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorMarked"></see>
     /// </summary>
-    let doorMarked = Namespaced_IRI.parse _namespace_name "doorMarked" |> NamespacedName
-
+    let doorMarked = _prefix "doorMarked"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorOpening"></see>
     /// </summary>
-    let doorOpening =
-        Namespaced_IRI.parse _namespace_name "doorOpening" |> NamespacedName
-
+    let doorOpening = _prefix "doorOpening"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorOpeningDirection"></see>
     /// </summary>
-    let doorOpeningDirection =
-        Namespaced_IRI.parse _namespace_name "doorOpeningDirection" |> NamespacedName
-
+    let doorOpeningDirection = _prefix "doorOpeningDirection"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorSidePanelWidth"></see>
     /// </summary>
-    let doorSidePanelWidth =
-        Namespaced_IRI.parse _namespace_name "doorSidePanelWidth" |> NamespacedName
-
+    let doorSidePanelWidth = _prefix "doorSidePanelWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorStepHeight"></see>
     /// </summary>
-    let doorStepHeight =
-        Namespaced_IRI.parse _namespace_name "doorStepHeight" |> NamespacedName
-
+    let doorStepHeight = _prefix "doorStepHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/thresholdHeight"></see>
     /// </summary>
-    let thresholdHeight =
-        Namespaced_IRI.parse _namespace_name "thresholdHeight" |> NamespacedName
-
+    let thresholdHeight = _prefix "thresholdHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorType"></see>
     /// </summary>
-    let doorType = Namespaced_IRI.parse _namespace_name "doorType" |> NamespacedName
+    let doorType = _prefix "doorType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/doorWidth"></see>
     /// </summary>
-    let doorWidth = Namespaced_IRI.parse _namespace_name "doorWidth" |> NamespacedName
-
+    let doorWidth = _prefix "doorWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorAccess"></see>
     /// </summary>
-    let elevatorAccess =
-        Namespaced_IRI.parse _namespace_name "elevatorAccess" |> NamespacedName
-
+    let elevatorAccess = _prefix "elevatorAccess"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorAccessProvidedBy"></see>
     /// </summary>
-    let elevatorAccessProvidedBy =
-        Namespaced_IRI.parse _namespace_name "elevatorAccessProvidedBy" |> NamespacedName
+    let elevatorAccessProvidedBy = _prefix "elevatorAccessProvidedBy"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlAnnouncementAcoustic"></see>
     /// </summary>
     let elevatorCageControlAnnouncementAcoustic =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlAnnouncementAcoustic" |> NamespacedName
+        _prefix "elevatorCageControlAnnouncementAcoustic"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlAnnouncementPhonetic"></see>
     /// </summary>
     let elevatorCageControlAnnouncementPhonetic =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlAnnouncementPhonetic" |> NamespacedName
+        _prefix "elevatorCageControlAnnouncementPhonetic"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlBrailleLabelled"></see>
     /// </summary>
     let elevatorCageControlBrailleLabelled =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlBrailleLabelled" |> NamespacedName
+        _prefix "elevatorCageControlBrailleLabelled"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlDistance"></see>
     /// </summary>
-    let elevatorCageControlDistance =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlDistance" |> NamespacedName
-
+    let elevatorCageControlDistance = _prefix "elevatorCageControlDistance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlFlatMarking"></see>
     /// </summary>
-    let elevatorCageControlFlatMarking =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlFlatMarking" |> NamespacedName
-
+    let elevatorCageControlFlatMarking = _prefix "elevatorCageControlFlatMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlHeight"></see>
     /// </summary>
-    let elevatorCageControlHeight =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlHeight" |> NamespacedName
-
+    let elevatorCageControlHeight = _prefix "elevatorCageControlHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageControlReliefMarking"></see>
     /// </summary>
-    let elevatorCageControlReliefMarking =
-        Namespaced_IRI.parse _namespace_name "elevatorCageControlReliefMarking" |> NamespacedName
-
+    let elevatorCageControlReliefMarking = _prefix "elevatorCageControlReliefMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageDepth"></see>
     /// </summary>
-    let elevatorCageDepth =
-        Namespaced_IRI.parse _namespace_name "elevatorCageDepth" |> NamespacedName
-
+    let elevatorCageDepth = _prefix "elevatorCageDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageMirrorHeight"></see>
     /// </summary>
-    let elevatorCageMirrorHeight =
-        Namespaced_IRI.parse _namespace_name "elevatorCageMirrorHeight" |> NamespacedName
-
+    let elevatorCageMirrorHeight = _prefix "elevatorCageMirrorHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mirrorHeight"></see>
     /// </summary>
-    let mirrorHeight =
-        Namespaced_IRI.parse _namespace_name "mirrorHeight" |> NamespacedName
-
+    let mirrorHeight = _prefix "mirrorHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageMirrorInstalled"></see>
     /// </summary>
-    let elevatorCageMirrorInstalled =
-        Namespaced_IRI.parse _namespace_name "elevatorCageMirrorInstalled" |> NamespacedName
-
+    let elevatorCageMirrorInstalled = _prefix "elevatorCageMirrorInstalled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageMirrorLocalization"></see>
     /// </summary>
-    let elevatorCageMirrorLocalization =
-        Namespaced_IRI.parse _namespace_name "elevatorCageMirrorLocalization" |> NamespacedName
-
+    let elevatorCageMirrorLocalization = _prefix "elevatorCageMirrorLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCagePassthrough"></see>
     /// </summary>
-    let elevatorCagePassthrough =
-        Namespaced_IRI.parse _namespace_name "elevatorCagePassthrough" |> NamespacedName
-
+    let elevatorCagePassthrough = _prefix "elevatorCagePassthrough"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageSeatFunctional"></see>
     /// </summary>
-    let elevatorCageSeatFunctional =
-        Namespaced_IRI.parse _namespace_name "elevatorCageSeatFunctional" |> NamespacedName
-
+    let elevatorCageSeatFunctional = _prefix "elevatorCageSeatFunctional"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageSeatInstalled"></see>
     /// </summary>
-    let elevatorCageSeatInstalled =
-        Namespaced_IRI.parse _namespace_name "elevatorCageSeatInstalled" |> NamespacedName
-
+    let elevatorCageSeatInstalled = _prefix "elevatorCageSeatInstalled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageSeatWithinReach"></see>
     /// </summary>
-    let elevatorCageSeatWithinReach =
-        Namespaced_IRI.parse _namespace_name "elevatorCageSeatWithinReach" |> NamespacedName
+    let elevatorCageSeatWithinReach = _prefix "elevatorCageSeatWithinReach"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageSecondDoorLocalization"></see>
     /// </summary>
     let elevatorCageSecondDoorLocalization =
-        Namespaced_IRI.parse _namespace_name "elevatorCageSecondDoorLocalization" |> NamespacedName
+        _prefix "elevatorCageSecondDoorLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorCageWidth"></see>
     /// </summary>
-    let elevatorCageWidth =
-        Namespaced_IRI.parse _namespace_name "elevatorCageWidth" |> NamespacedName
-
+    let elevatorCageWidth = _prefix "elevatorCageWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorConnectsFloors"></see>
     /// </summary>
-    let elevatorConnectsFloors =
-        Namespaced_IRI.parse _namespace_name "elevatorConnectsFloors" |> NamespacedName
-
+    let elevatorConnectsFloors = _prefix "elevatorConnectsFloors"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorControlBrailleLabelled"></see>
     /// </summary>
-    let elevatorControlBrailleLabelled =
-        Namespaced_IRI.parse _namespace_name "elevatorControlBrailleLabelled" |> NamespacedName
-
+    let elevatorControlBrailleLabelled = _prefix "elevatorControlBrailleLabelled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorControlFlatMarking"></see>
     /// </summary>
-    let elevatorControlFlatMarking =
-        Namespaced_IRI.parse _namespace_name "elevatorControlFlatMarking" |> NamespacedName
-
+    let elevatorControlFlatMarking = _prefix "elevatorControlFlatMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorControlMaxHeight"></see>
     /// </summary>
-    let elevatorControlMaxHeight =
-        Namespaced_IRI.parse _namespace_name "elevatorControlMaxHeight" |> NamespacedName
-
+    let elevatorControlMaxHeight = _prefix "elevatorControlMaxHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorControlReliefMarking"></see>
     /// </summary>
-    let elevatorControlReliefMarking =
-        Namespaced_IRI.parse _namespace_name "elevatorControlReliefMarking" |> NamespacedName
-
+    let elevatorControlReliefMarking = _prefix "elevatorControlReliefMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorDriveOff"></see>
     /// </summary>
-    let elevatorDriveOff =
-        Namespaced_IRI.parse _namespace_name "elevatorDriveOff" |> NamespacedName
+    let elevatorDriveOff = _prefix "elevatorDriveOff"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageControlAnnouncementAcoustic"></see>
     /// </summary>
     let elevatorIsCageControlAnnouncementAcoustic =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageControlAnnouncementAcoustic" |> NamespacedName
+        _prefix "elevatorIsCageControlAnnouncementAcoustic"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageControlAnnouncementPhonetic"></see>
     /// </summary>
     let elevatorIsCageControlAnnouncementPhonetic =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageControlAnnouncementPhonetic" |> NamespacedName
+        _prefix "elevatorIsCageControlAnnouncementPhonetic"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageControlBrailleMarking"></see>
     /// </summary>
     let elevatorIsCageControlBrailleMarking =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageControlBrailleMarking" |> NamespacedName
+        _prefix "elevatorIsCageControlBrailleMarking"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageMirror"></see>
     /// </summary>
-    let elevatorIsCageMirror =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageMirror" |> NamespacedName
-
+    let elevatorIsCageMirror = _prefix "elevatorIsCageMirror"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCagePassthrough"></see>
     /// </summary>
-    let elevatorIsCagePassthrough =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCagePassthrough" |> NamespacedName
-
+    let elevatorIsCagePassthrough = _prefix "elevatorIsCagePassthrough"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageSeat"></see>
     /// </summary>
-    let elevatorIsCageSeat =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageSeat" |> NamespacedName
-
+    let elevatorIsCageSeat = _prefix "elevatorIsCageSeat"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageSeatFunctional"></see>
     /// </summary>
-    let elevatorIsCageSeatFunctional =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageSeatFunctional" |> NamespacedName
-
+    let elevatorIsCageSeatFunctional = _prefix "elevatorIsCageSeatFunctional"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsCageSeatWithinReach"></see>
     /// </summary>
-    let elevatorIsCageSeatWithinReach =
-        Namespaced_IRI.parse _namespace_name "elevatorIsCageSeatWithinReach" |> NamespacedName
-
+    let elevatorIsCageSeatWithinReach = _prefix "elevatorIsCageSeatWithinReach"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorIsControlBrailleMarking"></see>
     /// </summary>
-    let elevatorIsControlBrailleMarking =
-        Namespaced_IRI.parse _namespace_name "elevatorIsControlBrailleMarking" |> NamespacedName
-
+    let elevatorIsControlBrailleMarking = _prefix "elevatorIsControlBrailleMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorLocalization"></see>
     /// </summary>
-    let elevatorLocalization =
-        Namespaced_IRI.parse _namespace_name "elevatorLocalization" |> NamespacedName
-
+    let elevatorLocalization = _prefix "elevatorLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/elevatorType"></see>
     /// </summary>
-    let elevatorType =
-        Namespaced_IRI.parse _namespace_name "elevatorType" |> NamespacedName
-
+    let elevatorType = _prefix "elevatorType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceAccess"></see>
     /// </summary>
-    let entranceAccess =
-        Namespaced_IRI.parse _namespace_name "entranceAccess" |> NamespacedName
-
+    let entranceAccess = _prefix "entranceAccess"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceAccessProvidedBy"></see>
     /// </summary>
-    let entranceAccessProvidedBy =
-        Namespaced_IRI.parse _namespace_name "entranceAccessProvidedBy" |> NamespacedName
-
+    let entranceAccessProvidedBy = _prefix "entranceAccessProvidedBy"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceAccessibility"></see>
     /// </summary>
-    let entranceAccessibility =
-        Namespaced_IRI.parse _namespace_name "entranceAccessibility" |> NamespacedName
-
+    let entranceAccessibility = _prefix "entranceAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceAreaBeforeDoorDepth"></see>
     /// </summary>
-    let entranceAreaBeforeDoorDepth =
-        Namespaced_IRI.parse _namespace_name "entranceAreaBeforeDoorDepth" |> NamespacedName
-
+    let entranceAreaBeforeDoorDepth = _prefix "entranceAreaBeforeDoorDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceAreaBeforeDoorWidth"></see>
     /// </summary>
-    let entranceAreaBeforeDoorWidth =
-        Namespaced_IRI.parse _namespace_name "entranceAreaBeforeDoorWidth" |> NamespacedName
+    let entranceAreaBeforeDoorWidth = _prefix "entranceAreaBeforeDoorWidth"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceDifficultSurfaceDescription"></see>
     /// </summary>
     let entranceDifficultSurfaceDescription =
-        Namespaced_IRI.parse _namespace_name "entranceDifficultSurfaceDescription" |> NamespacedName
+        _prefix "entranceDifficultSurfaceDescription"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceGuidingLine"></see>
     /// </summary>
-    let entranceGuidingLine =
-        Namespaced_IRI.parse _namespace_name "entranceGuidingLine" |> NamespacedName
-
+    let entranceGuidingLine = _prefix "entranceGuidingLine"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsDifficultSurface"></see>
     /// </summary>
-    let entranceIsDifficultSurface =
-        Namespaced_IRI.parse _namespace_name "entranceIsDifficultSurface" |> NamespacedName
-
+    let entranceIsDifficultSurface = _prefix "entranceIsDifficultSurface"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsLongitudinalInclination"></see>
     /// </summary>
-    let entranceIsLongitudinalInclination =
-        Namespaced_IRI.parse _namespace_name "entranceIsLongitudinalInclination" |> NamespacedName
-
+    let entranceIsLongitudinalInclination = _prefix "entranceIsLongitudinalInclination"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsReservedParking"></see>
     /// </summary>
-    let entranceIsReservedParking =
-        Namespaced_IRI.parse _namespace_name "entranceIsReservedParking" |> NamespacedName
-
+    let entranceIsReservedParking = _prefix "entranceIsReservedParking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsSideEntranceInformation"></see>
     /// </summary>
-    let entranceIsSideEntranceInformation =
-        Namespaced_IRI.parse _namespace_name "entranceIsSideEntranceInformation" |> NamespacedName
-
+    let entranceIsSideEntranceInformation = _prefix "entranceIsSideEntranceInformation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsSideEntranceMarked"></see>
     /// </summary>
-    let entranceIsSideEntranceMarked =
-        Namespaced_IRI.parse _namespace_name "entranceIsSideEntranceMarked" |> NamespacedName
-
+    let entranceIsSideEntranceMarked = _prefix "entranceIsSideEntranceMarked"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsStepContrastMarked"></see>
     /// </summary>
-    let entranceIsStepContrastMarked =
-        Namespaced_IRI.parse _namespace_name "entranceIsStepContrastMarked" |> NamespacedName
-
+    let entranceIsStepContrastMarked = _prefix "entranceIsStepContrastMarked"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceIsTransverseInclination"></see>
     /// </summary>
-    let entranceIsTransverseInclination =
-        Namespaced_IRI.parse _namespace_name "entranceIsTransverseInclination" |> NamespacedName
-
+    let entranceIsTransverseInclination = _prefix "entranceIsTransverseInclination"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceLobbyDepth"></see>
     /// </summary>
-    let entranceLobbyDepth =
-        Namespaced_IRI.parse _namespace_name "entranceLobbyDepth" |> NamespacedName
-
+    let entranceLobbyDepth = _prefix "entranceLobbyDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceLobbyWidth"></see>
     /// </summary>
-    let entranceLobbyWidth =
-        Namespaced_IRI.parse _namespace_name "entranceLobbyWidth" |> NamespacedName
-
+    let entranceLobbyWidth = _prefix "entranceLobbyWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceLocalization"></see>
     /// </summary>
-    let entranceLocalization =
-        Namespaced_IRI.parse _namespace_name "entranceLocalization" |> NamespacedName
-
+    let entranceLocalization = _prefix "entranceLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceLongitudinalInclination"></see>
     /// </summary>
-    let entranceLongitudinalInclination =
-        Namespaced_IRI.parse _namespace_name "entranceLongitudinalInclination" |> NamespacedName
+    let entranceLongitudinalInclination = _prefix "entranceLongitudinalInclination"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceLongitudinalInclinationLocalization"></see>
     /// </summary>
     let entranceLongitudinalInclinationLocalization =
-        Namespaced_IRI.parse _namespace_name "entranceLongitudinalInclinationLocalization" |> NamespacedName
+        _prefix "entranceLongitudinalInclinationLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceNumberOfReservedParking"></see>
     /// </summary>
-    let entranceNumberOfReservedParking =
-        Namespaced_IRI.parse _namespace_name "entranceNumberOfReservedParking" |> NamespacedName
+    let entranceNumberOfReservedParking = _prefix "entranceNumberOfReservedParking"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceReservedParkingAccessDescription"></see>
     /// </summary>
     let entranceReservedParkingAccessDescription =
-        Namespaced_IRI.parse _namespace_name "entranceReservedParkingAccessDescription" |> NamespacedName
+        _prefix "entranceReservedParkingAccessDescription"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceReservedParkingLocalization"></see>
     /// </summary>
     let entranceReservedParkingLocalization =
-        Namespaced_IRI.parse _namespace_name "entranceReservedParkingLocalization" |> NamespacedName
+        _prefix "entranceReservedParkingLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceSideEntranceDescribed"></see>
     /// </summary>
-    let entranceSideEntranceDescribed =
-        Namespaced_IRI.parse _namespace_name "entranceSideEntranceDescribed" |> NamespacedName
-
+    let entranceSideEntranceDescribed = _prefix "entranceSideEntranceDescribed"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceTransverseInclination"></see>
     /// </summary>
-    let entranceTransverseInclination =
-        Namespaced_IRI.parse _namespace_name "entranceTransverseInclination" |> NamespacedName
+    let entranceTransverseInclination = _prefix "entranceTransverseInclination"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entranceTransverseInclinationLocalization"></see>
     /// </summary>
     let entranceTransverseInclinationLocalization =
-        Namespaced_IRI.parse _namespace_name "entranceTransverseInclinationLocalization" |> NamespacedName
+        _prefix "entranceTransverseInclinationLocalization"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaDepth"></see>
     /// </summary>
-    let entryAreaDepth =
-        Namespaced_IRI.parse _namespace_name "entryAreaDepth" |> NamespacedName
-
+    let entryAreaDepth = _prefix "entryAreaDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaEntry"></see>
     /// </summary>
-    let entryAreaEntry =
-        Namespaced_IRI.parse _namespace_name "entryAreaEntry" |> NamespacedName
-
+    let entryAreaEntry = _prefix "entryAreaEntry"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaEntryClosing"></see>
     /// </summary>
-    let entryAreaEntryClosing =
-        Namespaced_IRI.parse _namespace_name "entryAreaEntryClosing" |> NamespacedName
-
+    let entryAreaEntryClosing = _prefix "entryAreaEntryClosing"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaEntryWidth"></see>
     /// </summary>
-    let entryAreaEntryWidth =
-        Namespaced_IRI.parse _namespace_name "entryAreaEntryWidth" |> NamespacedName
-
+    let entryAreaEntryWidth = _prefix "entryAreaEntryWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaHeightElevation"></see>
     /// </summary>
-    let entryAreaHeightElevation =
-        Namespaced_IRI.parse _namespace_name "entryAreaHeightElevation" |> NamespacedName
-
+    let entryAreaHeightElevation = _prefix "entryAreaHeightElevation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaIsEntryClosing"></see>
     /// </summary>
-    let entryAreaIsEntryClosing =
-        Namespaced_IRI.parse _namespace_name "entryAreaIsEntryClosing" |> NamespacedName
-
+    let entryAreaIsEntryClosing = _prefix "entryAreaIsEntryClosing"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/entryAreaWidth"></see>
     /// </summary>
-    let entryAreaWidth =
-        Namespaced_IRI.parse _namespace_name "entryAreaWidth" |> NamespacedName
-
+    let entryAreaWidth = _prefix "entryAreaWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/formMaps"></see>
     /// </summary>
-    let formMaps = Namespaced_IRI.parse _namespace_name "formMaps" |> NamespacedName
+    let formMaps = _prefix "formMaps"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/formType"></see>
     /// </summary>
-    let formType = Namespaced_IRI.parse _namespace_name "formType" |> NamespacedName
-
+    let formType = _prefix "formType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hallwayDepth"></see>
     /// </summary>
-    let hallwayDepth =
-        Namespaced_IRI.parse _namespace_name "hallwayDepth" |> NamespacedName
-
+    let hallwayDepth = _prefix "hallwayDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hallwayWidth"></see>
     /// </summary>
-    let hallwayWidth =
-        Namespaced_IRI.parse _namespace_name "hallwayWidth" |> NamespacedName
-
+    let hallwayWidth = _prefix "hallwayWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/handleHeight"></see>
     /// </summary>
-    let handleHeight =
-        Namespaced_IRI.parse _namespace_name "handleHeight" |> NamespacedName
-
+    let handleHeight = _prefix "handleHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/handleLength"></see>
     /// </summary>
-    let handleLength =
-        Namespaced_IRI.parse _namespace_name "handleLength" |> NamespacedName
-
+    let handleLength = _prefix "handleLength"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/handleLocalization"></see>
     /// </summary>
-    let handleLocalization =
-        Namespaced_IRI.parse _namespace_name "handleLocalization" |> NamespacedName
-
+    let handleLocalization = _prefix "handleLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/handleOrientation"></see>
     /// </summary>
-    let handleOrientation =
-        Namespaced_IRI.parse _namespace_name "handleOrientation" |> NamespacedName
-
+    let handleOrientation = _prefix "handleOrientation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/handlePosition"></see>
     /// </summary>
-    let handlePosition =
-        Namespaced_IRI.parse _namespace_name "handlePosition" |> NamespacedName
-
+    let handlePosition = _prefix "handlePosition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/handleType"></see>
     /// </summary>
-    let handleType = Namespaced_IRI.parse _namespace_name "handleType" |> NamespacedName
-
+    let handleType = _prefix "handleType"
     /// <summary>
     /// To complete the vocabulary
     /// <see href="http://w3id.org/charta77/jup/hasAttachment"></see></summary>
-    let hasAttachment =
-        Namespaced_IRI.parse _namespace_name "hasAttachment" |> NamespacedName
-
+    let hasAttachment = _prefix "hasAttachment"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hasDescription"></see>
     /// </summary>
-    let hasDescription =
-        Namespaced_IRI.parse _namespace_name "hasDescription" |> NamespacedName
-
+    let hasDescription = _prefix "hasDescription"
     /// <summary>
     /// e.g. for IC organizations
     /// <see href="http://w3id.org/charta77/jup/hasIdentifier"></see></summary>
-    let hasIdentifier =
-        Namespaced_IRI.parse _namespace_name "hasIdentifier" |> NamespacedName
-
+    let hasIdentifier = _prefix "hasIdentifier"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hasLatitude"></see>
     /// </summary>
-    let hasLatitude =
-        Namespaced_IRI.parse _namespace_name "hasLatitude" |> NamespacedName
-
+    let hasLatitude = _prefix "hasLatitude"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hasLongitude"></see>
     /// </summary>
-    let hasLongitude =
-        Namespaced_IRI.parse _namespace_name "hasLongitude" |> NamespacedName
-
+    let hasLongitude = _prefix "hasLongitude"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
+    let hasName = _prefix "hasName"
     /// <summary>
     /// Adapted WC: poor anchorage of handles, handle attached to side wall,...
     /// <see href="http://w3id.org/charta77/jup/hasNotes"></see></summary>
-    let hasNotes = Namespaced_IRI.parse _namespace_name "hasNotes" |> NamespacedName
+    let hasNotes = _prefix "hasNotes"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/hasPart"></see>
     /// </summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
+    let hasPart = _prefix "hasPart"
     /// <summary>
     /// http://ruian.linked.opendata.cz/
     /// <see href="http://w3id.org/charta77/jup/hasPlace"></see></summary>
-    let hasPlace = Namespaced_IRI.parse _namespace_name "hasPlace" |> NamespacedName
+    let hasPlace = _prefix "hasPlace"
     /// <summary>
     /// Short and formated description summarizing form data, understandable to the wide public
     /// <see href="http://w3id.org/charta77/jup/hasSummary"></see></summary>
-    let hasSummary = Namespaced_IRI.parse _namespace_name "hasSummary" |> NamespacedName
-
+    let hasSummary = _prefix "hasSummary"
     /// <summary>
     /// A certified person enters professionally taken data. To become a certified person a special training, examination etc. is required.
     /// <see href="http://w3id.org/charta77/jup/isCertifiedRecord"></see></summary>
-    let isCertifiedRecord =
-        Namespaced_IRI.parse _namespace_name "isCertifiedRecord" |> NamespacedName
-
+    let isCertifiedRecord = _prefix "isCertifiedRecord"
     /// <summary>
     /// Older entries describing the same mappable entity are assigned the false value.
     /// <see href="http://w3id.org/charta77/jup/isUpToDateRecord"></see></summary>
-    let isUpToDateRecord =
-        Namespaced_IRI.parse _namespace_name "isUpToDateRecord" |> NamespacedName
-
+    let isUpToDateRecord = _prefix "isUpToDateRecord"
     /// <summary>
     /// To complete the vocabulary
     /// <see href="http://w3id.org/charta77/jup/license"></see></summary>
-    let license = Namespaced_IRI.parse _namespace_name "license" |> NamespacedName
-
+    let license = _prefix "license"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityAccess"></see>
     /// </summary>
-    let mappableEntityAccess =
-        Namespaced_IRI.parse _namespace_name "mappableEntityAccess" |> NamespacedName
-
+    let mappableEntityAccess = _prefix "mappableEntityAccess"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityAccessProvidedBy"></see>
     /// </summary>
-    let mappableEntityAccessProvidedBy =
-        Namespaced_IRI.parse _namespace_name "mappableEntityAccessProvidedBy" |> NamespacedName
-
+    let mappableEntityAccessProvidedBy = _prefix "mappableEntityAccessProvidedBy"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityAccessibility"></see>
     /// </summary>
-    let mappableEntityAccessibility =
-        Namespaced_IRI.parse _namespace_name "mappableEntityAccessibility" |> NamespacedName
-
+    let mappableEntityAccessibility = _prefix "mappableEntityAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityControlHeight"></see>
     /// </summary>
-    let mappableEntityControlHeight =
-        Namespaced_IRI.parse _namespace_name "mappableEntityControlHeight" |> NamespacedName
-
+    let mappableEntityControlHeight = _prefix "mappableEntityControlHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityIsBrailleMarking"></see>
     /// </summary>
-    let mappableEntityIsBrailleMarking =
-        Namespaced_IRI.parse _namespace_name "mappableEntityIsBrailleMarking" |> NamespacedName
-
+    let mappableEntityIsBrailleMarking = _prefix "mappableEntityIsBrailleMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityIsContrastMarking"></see>
     /// </summary>
-    let mappableEntityIsContrastMarking =
-        Namespaced_IRI.parse _namespace_name "mappableEntityIsContrastMarking" |> NamespacedName
-
+    let mappableEntityIsContrastMarking = _prefix "mappableEntityIsContrastMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityLocalization"></see>
     /// </summary>
-    let mappableEntityLocalization =
-        Namespaced_IRI.parse _namespace_name "mappableEntityLocalization" |> NamespacedName
-
+    let mappableEntityLocalization = _prefix "mappableEntityLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityMirrorHeight"></see>
     /// </summary>
-    let mappableEntityMirrorHeight =
-        Namespaced_IRI.parse _namespace_name "mappableEntityMirrorHeight" |> NamespacedName
-
+    let mappableEntityMirrorHeight = _prefix "mappableEntityMirrorHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityPassageWidth"></see>
     /// </summary>
-    let mappableEntityPassageWidth =
-        Namespaced_IRI.parse _namespace_name "mappableEntityPassageWidth" |> NamespacedName
-
+    let mappableEntityPassageWidth = _prefix "mappableEntityPassageWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntitySeatHeight"></see>
     /// </summary>
-    let mappableEntitySeatHeight =
-        Namespaced_IRI.parse _namespace_name "mappableEntitySeatHeight" |> NamespacedName
-
+    let mappableEntitySeatHeight = _prefix "mappableEntitySeatHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntitySwitchHeight"></see>
     /// </summary>
-    let mappableEntitySwitchHeight =
-        Namespaced_IRI.parse _namespace_name "mappableEntitySwitchHeight" |> NamespacedName
-
+    let mappableEntitySwitchHeight = _prefix "mappableEntitySwitchHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mappableEntityThresholdHeight"></see>
     /// </summary>
-    let mappableEntityThresholdHeight =
-        Namespaced_IRI.parse _namespace_name "mappableEntityThresholdHeight" |> NamespacedName
-
+    let mappableEntityThresholdHeight = _prefix "mappableEntityThresholdHeight"
     /// <summary>
     /// A certified person enters professionally taken data. To become a certified person a special training, examination etc. is required.
     /// <see href="http://w3id.org/charta77/jup/mapperCertified"></see></summary>
-    let mapperCertified =
-        Namespaced_IRI.parse _namespace_name "mapperCertified" |> NamespacedName
-
+    let mapperCertified = _prefix "mapperCertified"
     /// <summary>
     /// A certified person enters professionally taken data. To become a certified person a special training, examination etc. is required.
     /// <see href="http://w3id.org/charta77/jup/mapperIsCertified"></see></summary>
-    let mapperIsCertified =
-        Namespaced_IRI.parse _namespace_name "mapperIsCertified" |> NamespacedName
-
+    let mapperIsCertified = _prefix "mapperIsCertified"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/mapperNick"></see>
     /// </summary>
-    let mapperNick = Namespaced_IRI.parse _namespace_name "mapperNick" |> NamespacedName
-
+    let mapperNick = _prefix "mapperNick"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/narrowedPassageWidth"></see>
     /// </summary>
-    let narrowedPassageWidth =
-        Namespaced_IRI.parse _namespace_name "narrowedPassageWidth" |> NamespacedName
-
+    let narrowedPassageWidth = _prefix "narrowedPassageWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/passageWidth"></see>
     /// </summary>
-    let passageWidth =
-        Namespaced_IRI.parse _namespace_name "passageWidth" |> NamespacedName
-
+    let passageWidth = _prefix "passageWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/navigationSystemDescription"></see>
     /// </summary>
-    let navigationSystemDescription =
-        Namespaced_IRI.parse _namespace_name "navigationSystemDescription" |> NamespacedName
-
+    let navigationSystemDescription = _prefix "navigationSystemDescription"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectAccessibilityMKPO"></see>
     /// </summary>
-    let objectAccessibilityMKPO =
-        Namespaced_IRI.parse _namespace_name "objectAccessibilityMKPO" |> NamespacedName
-
+    let objectAccessibilityMKPO = _prefix "objectAccessibilityMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectCategory"></see>
     /// </summary>
-    let objectCategory =
-        Namespaced_IRI.parse _namespace_name "objectCategory" |> NamespacedName
-
+    let objectCategory = _prefix "objectCategory"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectInteriorAccessibility"></see>
     /// </summary>
-    let objectInteriorAccessibility =
-        Namespaced_IRI.parse _namespace_name "objectInteriorAccessibility" |> NamespacedName
-
+    let objectInteriorAccessibility = _prefix "objectInteriorAccessibility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectIsNarrowedPassage"></see>
     /// </summary>
-    let objectIsNarrowedPassage =
-        Namespaced_IRI.parse _namespace_name "objectIsNarrowedPassage" |> NamespacedName
-
+    let objectIsNarrowedPassage = _prefix "objectIsNarrowedPassage"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectIsNavigationSystem"></see>
     /// </summary>
-    let objectIsNavigationSystem =
-        Namespaced_IRI.parse _namespace_name "objectIsNavigationSystem" |> NamespacedName
-
+    let objectIsNavigationSystem = _prefix "objectIsNavigationSystem"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectIsStairs"></see>
     /// </summary>
-    let objectIsStairs =
-        Namespaced_IRI.parse _namespace_name "objectIsStairs" |> NamespacedName
-
+    let objectIsStairs = _prefix "objectIsStairs"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectIsTourniquet"></see>
     /// </summary>
-    let objectIsTourniquet =
-        Namespaced_IRI.parse _namespace_name "objectIsTourniquet" |> NamespacedName
-
+    let objectIsTourniquet = _prefix "objectIsTourniquet"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectNarrowedPassageLocalization"></see>
     /// </summary>
-    let objectNarrowedPassageLocalization =
-        Namespaced_IRI.parse _namespace_name "objectNarrowedPassageLocalization" |> NamespacedName
-
+    let objectNarrowedPassageLocalization = _prefix "objectNarrowedPassageLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectNarrowedPassageWidth"></see>
     /// </summary>
-    let objectNarrowedPassageWidth =
-        Namespaced_IRI.parse _namespace_name "objectNarrowedPassageWidth" |> NamespacedName
-
+    let objectNarrowedPassageWidth = _prefix "objectNarrowedPassageWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectNavigationSystemDescription"></see>
     /// </summary>
-    let objectNavigationSystemDescription =
-        Namespaced_IRI.parse _namespace_name "objectNavigationSystemDescription" |> NamespacedName
-
+    let objectNavigationSystemDescription = _prefix "objectNavigationSystemDescription"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectStairsIsBannister"></see>
     /// </summary>
-    let objectStairsIsBannister =
-        Namespaced_IRI.parse _namespace_name "objectStairsIsBannister" |> NamespacedName
-
+    let objectStairsIsBannister = _prefix "objectStairsIsBannister"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectStairsType"></see>
     /// </summary>
-    let objectStairsType =
-        Namespaced_IRI.parse _namespace_name "objectStairsType" |> NamespacedName
-
+    let objectStairsType = _prefix "objectStairsType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/ObjectStairsType"></see>
     /// </summary>
-    let ObjectStairsType =
-        Namespaced_IRI.parse _namespace_name "ObjectStairsType" |> NamespacedName
-
+    let ObjectStairsType = _prefix "ObjectStairsType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectStairsWidth"></see>
     /// </summary>
-    let objectStairsWidth =
-        Namespaced_IRI.parse _namespace_name "objectStairsWidth" |> NamespacedName
-
+    let objectStairsWidth = _prefix "objectStairsWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/objectTourniquetLocalization"></see>
     /// </summary>
-    let objectTourniquetLocalization =
-        Namespaced_IRI.parse _namespace_name "objectTourniquetLocalization" |> NamespacedName
-
+    let objectTourniquetLocalization = _prefix "objectTourniquetLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/partOf"></see>
     /// </summary>
-    let partOf = Namespaced_IRI.parse _namespace_name "partOf" |> NamespacedName
-
+    let partOf = _prefix "partOf"
     /// <summary>
     /// Access enabled by attendants if the platform is locked
     /// <see href="http://w3id.org/charta77/jup/platformAccess"></see></summary>
-    let platformAccess =
-        Namespaced_IRI.parse _namespace_name "platformAccess" |> NamespacedName
-
+    let platformAccess = _prefix "platformAccess"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformDepth"></see>
     /// </summary>
-    let platformDepth =
-        Namespaced_IRI.parse _namespace_name "platformDepth" |> NamespacedName
-
+    let platformDepth = _prefix "platformDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformInsideControlHeight"></see>
     /// </summary>
-    let platformInsideControlHeight =
-        Namespaced_IRI.parse _namespace_name "platformInsideControlHeight" |> NamespacedName
-
+    let platformInsideControlHeight = _prefix "platformInsideControlHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformIsMinParameters"></see>
     /// </summary>
-    let platformIsMinParameters =
-        Namespaced_IRI.parse _namespace_name "platformIsMinParameters" |> NamespacedName
-
+    let platformIsMinParameters = _prefix "platformIsMinParameters"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformLocalization"></see>
     /// </summary>
-    let platformLocalization =
-        Namespaced_IRI.parse _namespace_name "platformLocalization" |> NamespacedName
-
+    let platformLocalization = _prefix "platformLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformMaxLoad"></see>
     /// </summary>
-    let platformMaxLoad =
-        Namespaced_IRI.parse _namespace_name "platformMaxLoad" |> NamespacedName
-
+    let platformMaxLoad = _prefix "platformMaxLoad"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformMinParameters"></see>
     /// </summary>
-    let platformMinParameters =
-        Namespaced_IRI.parse _namespace_name "platformMinParameters" |> NamespacedName
-
+    let platformMinParameters = _prefix "platformMinParameters"
     /// <summary>
     /// Elevation difference surmounted by platform
     /// <see href="http://w3id.org/charta77/jup/platformNumberOfFloors"></see></summary>
-    let platformNumberOfFloors =
-        Namespaced_IRI.parse _namespace_name "platformNumberOfFloors" |> NamespacedName
-
+    let platformNumberOfFloors = _prefix "platformNumberOfFloors"
     /// <summary>
     /// Elevation difference surmounted by platform
     /// <see href="http://w3id.org/charta77/jup/platformNumberOfSteps"></see></summary>
-    let platformNumberOfSteps =
-        Namespaced_IRI.parse _namespace_name "platformNumberOfSteps" |> NamespacedName
+    let platformNumberOfSteps = _prefix "platformNumberOfSteps"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformOutsideBottomControlHeight"></see>
     /// </summary>
     let platformOutsideBottomControlHeight =
-        Namespaced_IRI.parse _namespace_name "platformOutsideBottomControlHeight" |> NamespacedName
+        _prefix "platformOutsideBottomControlHeight"
 
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformOutsideTopControlHeight"></see>
     /// </summary>
-    let platformOutsideTopControlHeight =
-        Namespaced_IRI.parse _namespace_name "platformOutsideTopControlHeight" |> NamespacedName
-
+    let platformOutsideTopControlHeight = _prefix "platformOutsideTopControlHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformType"></see>
     /// </summary>
-    let platformType =
-        Namespaced_IRI.parse _namespace_name "platformType" |> NamespacedName
-
+    let platformType = _prefix "platformType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/platformWidth"></see>
     /// </summary>
-    let platformWidth =
-        Namespaced_IRI.parse _namespace_name "platformWidth" |> NamespacedName
-
+    let platformWidth = _prefix "platformWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampAccessProvidedBy"></see>
     /// </summary>
-    let rampAccessProvidedBy =
-        Namespaced_IRI.parse _namespace_name "rampAccessProvidedBy" |> NamespacedName
-
+    let rampAccessProvidedBy = _prefix "rampAccessProvidedBy"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampLegInclination"></see>
     /// </summary>
-    let rampLegInclination =
-        Namespaced_IRI.parse _namespace_name "rampLegInclination" |> NamespacedName
-
+    let rampLegInclination = _prefix "rampLegInclination"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampLegLength"></see>
     /// </summary>
-    let rampLegLength =
-        Namespaced_IRI.parse _namespace_name "rampLegLength" |> NamespacedName
-
+    let rampLegLength = _prefix "rampLegLength"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampLegWidth"></see>
     /// </summary>
-    let rampLegWidth =
-        Namespaced_IRI.parse _namespace_name "rampLegWidth" |> NamespacedName
-
+    let rampLegWidth = _prefix "rampLegWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampNumberOfLegs"></see>
     /// </summary>
-    let rampNumberOfLegs =
-        Namespaced_IRI.parse _namespace_name "rampNumberOfLegs" |> NamespacedName
-
+    let rampNumberOfLegs = _prefix "rampNumberOfLegs"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampSkidsInteriorLocalization"></see>
     /// </summary>
-    let rampSkidsInteriorLocalization =
-        Namespaced_IRI.parse _namespace_name "rampSkidsInteriorLocalization" |> NamespacedName
-
+    let rampSkidsInteriorLocalization = _prefix "rampSkidsInteriorLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampSkidsLocalization"></see>
     /// </summary>
-    let rampSkidsLocalization =
-        Namespaced_IRI.parse _namespace_name "rampSkidsLocalization" |> NamespacedName
-
+    let rampSkidsLocalization = _prefix "rampSkidsLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampSkidsMobility"></see>
     /// </summary>
-    let rampSkidsMobility =
-        Namespaced_IRI.parse _namespace_name "rampSkidsMobility" |> NamespacedName
-
+    let rampSkidsMobility = _prefix "rampSkidsMobility"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampSurface"></see>
     /// </summary>
-    let rampSurface =
-        Namespaced_IRI.parse _namespace_name "rampSurface" |> NamespacedName
-
+    let rampSurface = _prefix "rampSurface"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/rampType"></see>
     /// </summary>
-    let rampType = Namespaced_IRI.parse _namespace_name "rampType" |> NamespacedName
+    let rampType = _prefix "rampType"
     /// <summary>
     /// To complete the vocabulary
     /// <see href="http://w3id.org/charta77/jup/sameAs"></see></summary>
-    let sameAs = Namespaced_IRI.parse _namespace_name "sameAs" |> NamespacedName
+    let sameAs = _prefix "sameAs"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/seatHeight"></see>
     /// </summary>
-    let seatHeight = Namespaced_IRI.parse _namespace_name "seatHeight" |> NamespacedName
-
+    let seatHeight = _prefix "seatHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/skidsInclination"></see>
     /// </summary>
-    let skidsInclination =
-        Namespaced_IRI.parse _namespace_name "skidsInclination" |> NamespacedName
-
+    let skidsInclination = _prefix "skidsInclination"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/skidsLength"></see>
     /// </summary>
-    let skidsLength =
-        Namespaced_IRI.parse _namespace_name "skidsLength" |> NamespacedName
-
+    let skidsLength = _prefix "skidsLength"
     /// <summary>
     /// To complete the vocabulary
     /// <see href="http://w3id.org/charta77/jup/source"></see></summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
-
+    let source = _prefix "source"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsContrastMarked"></see>
     /// </summary>
-    let stepsContrastMarked =
-        Namespaced_IRI.parse _namespace_name "stepsContrastMarked" |> NamespacedName
-
+    let stepsContrastMarked = _prefix "stepsContrastMarked"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsDepth"></see>
     /// </summary>
-    let stepsDepth = Namespaced_IRI.parse _namespace_name "stepsDepth" |> NamespacedName
-
+    let stepsDepth = _prefix "stepsDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsHeight"></see>
     /// </summary>
-    let stepsHeight =
-        Namespaced_IRI.parse _namespace_name "stepsHeight" |> NamespacedName
-
+    let stepsHeight = _prefix "stepsHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsIsContrastMarked"></see>
     /// </summary>
-    let stepsIsContrastMarked =
-        Namespaced_IRI.parse _namespace_name "stepsIsContrastMarked" |> NamespacedName
-
+    let stepsIsContrastMarked = _prefix "stepsIsContrastMarked"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsLocalization"></see>
     /// </summary>
-    let stepsLocalization =
-        Namespaced_IRI.parse _namespace_name "stepsLocalization" |> NamespacedName
-
+    let stepsLocalization = _prefix "stepsLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsNumberOf"></see>
     /// </summary>
-    let stepsNumberOf =
-        Namespaced_IRI.parse _namespace_name "stepsNumberOf" |> NamespacedName
-
+    let stepsNumberOf = _prefix "stepsNumberOf"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsType"></see>
     /// </summary>
-    let stepsType = Namespaced_IRI.parse _namespace_name "stepsType" |> NamespacedName
+    let stepsType = _prefix "stepsType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/stepsWidth"></see>
     /// </summary>
-    let stepsWidth = Namespaced_IRI.parse _namespace_name "stepsWidth" |> NamespacedName
-
+    let stepsWidth = _prefix "stepsWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/switchHeight"></see>
     /// </summary>
-    let switchHeight =
-        Namespaced_IRI.parse _namespace_name "switchHeight" |> NamespacedName
-
+    let switchHeight = _prefix "switchHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/tapHeight"></see>
     /// </summary>
-    let tapHeight = Namespaced_IRI.parse _namespace_name "tapHeight" |> NamespacedName
+    let tapHeight = _prefix "tapHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/tapType"></see>
     /// </summary>
-    let tapType = Namespaced_IRI.parse _namespace_name "tapType" |> NamespacedName
-
+    let tapType = _prefix "tapType"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/tourniquetLocalization"></see>
     /// </summary>
-    let tourniquetLocalization =
-        Namespaced_IRI.parse _namespace_name "tourniquetLocalization" |> NamespacedName
-
+    let tourniquetLocalization = _prefix "tourniquetLocalization"
     /// <summary>
     /// Older entries describing the same mappable entity are assigned the false value.
     /// <see href="http://w3id.org/charta77/jup/upToDateRecord"></see></summary>
-    let upToDateRecord =
-        Namespaced_IRI.parse _namespace_name "upToDateRecord" |> NamespacedName
-
+    let upToDateRecord = _prefix "upToDateRecord"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/washBasinHeight"></see>
     /// </summary>
-    let washBasinHeight =
-        Namespaced_IRI.parse _namespace_name "washBasinHeight" |> NamespacedName
-
+    let washBasinHeight = _prefix "washBasinHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/washBasinUnderpass"></see>
     /// </summary>
-    let washBasinUnderpass =
-        Namespaced_IRI.parse _namespace_name "washBasinUnderpass" |> NamespacedName
-
+    let washBasinUnderpass = _prefix "washBasinUnderpass"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcAccessibilityMKPO"></see>
     /// </summary>
-    let wcAccessibilityMKPO =
-        Namespaced_IRI.parse _namespace_name "wcAccessibilityMKPO" |> NamespacedName
-
+    let wcAccessibilityMKPO = _prefix "wcAccessibilityMKPO"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcAlarmButtonBottomHeight"></see>
     /// </summary>
-    let wcAlarmButtonBottomHeight =
-        Namespaced_IRI.parse _namespace_name "wcAlarmButtonBottomHeight" |> NamespacedName
-
+    let wcAlarmButtonBottomHeight = _prefix "wcAlarmButtonBottomHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcAlarmButtonInstalled"></see>
     /// </summary>
-    let wcAlarmButtonInstalled =
-        Namespaced_IRI.parse _namespace_name "wcAlarmButtonInstalled" |> NamespacedName
-
+    let wcAlarmButtonInstalled = _prefix "wcAlarmButtonInstalled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcAlarmButtonTopHeight"></see>
     /// </summary>
-    let wcAlarmButtonTopHeight =
-        Namespaced_IRI.parse _namespace_name "wcAlarmButtonTopHeight" |> NamespacedName
-
+    let wcAlarmButtonTopHeight = _prefix "wcAlarmButtonTopHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinBackIndentation"></see>
     /// </summary>
-    let wcBasinBackIndentation =
-        Namespaced_IRI.parse _namespace_name "wcBasinBackIndentation" |> NamespacedName
-
+    let wcBasinBackIndentation = _prefix "wcBasinBackIndentation"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinIsPaperReach"></see>
     /// </summary>
-    let wcBasinIsPaperReach =
-        Namespaced_IRI.parse _namespace_name "wcBasinIsPaperReach" |> NamespacedName
-
+    let wcBasinIsPaperReach = _prefix "wcBasinIsPaperReach"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinLeftDistance"></see>
     /// </summary>
-    let wcBasinLeftDistance =
-        Namespaced_IRI.parse _namespace_name "wcBasinLeftDistance" |> NamespacedName
-
+    let wcBasinLeftDistance = _prefix "wcBasinLeftDistance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinPaperWithinReach"></see>
     /// </summary>
-    let wcBasinPaperWithinReach =
-        Namespaced_IRI.parse _namespace_name "wcBasinPaperWithinReach" |> NamespacedName
-
+    let wcBasinPaperWithinReach = _prefix "wcBasinPaperWithinReach"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinRightDistance"></see>
     /// </summary>
-    let wcBasinRightDistance =
-        Namespaced_IRI.parse _namespace_name "wcBasinRightDistance" |> NamespacedName
-
+    let wcBasinRightDistance = _prefix "wcBasinRightDistance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinSeatHeight"></see>
     /// </summary>
-    let wcBasinSeatHeight =
-        Namespaced_IRI.parse _namespace_name "wcBasinSeatHeight" |> NamespacedName
-
+    let wcBasinSeatHeight = _prefix "wcBasinSeatHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcBasinSpace"></see>
     /// </summary>
-    let wcBasinSpace =
-        Namespaced_IRI.parse _namespace_name "wcBasinSpace" |> NamespacedName
-
+    let wcBasinSpace = _prefix "wcBasinSpace"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinAccess"></see>
     /// </summary>
-    let wcCabinAccess =
-        Namespaced_IRI.parse _namespace_name "wcCabinAccess" |> NamespacedName
-
+    let wcCabinAccess = _prefix "wcCabinAccess"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinDepth"></see>
     /// </summary>
-    let wcCabinDepth =
-        Namespaced_IRI.parse _namespace_name "wcCabinDepth" |> NamespacedName
-
+    let wcCabinDepth = _prefix "wcCabinDepth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinDoorDisposition"></see>
     /// </summary>
-    let wcCabinDoorDisposition =
-        Namespaced_IRI.parse _namespace_name "wcCabinDoorDisposition" |> NamespacedName
-
+    let wcCabinDoorDisposition = _prefix "wcCabinDoorDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinLocalization"></see>
     /// </summary>
-    let wcCabinLocalization =
-        Namespaced_IRI.parse _namespace_name "wcCabinLocalization" |> NamespacedName
-
+    let wcCabinLocalization = _prefix "wcCabinLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinWCBasinDisposition"></see>
     /// </summary>
-    let wcCabinWCBasinDisposition =
-        Namespaced_IRI.parse _namespace_name "wcCabinWCBasinDisposition" |> NamespacedName
-
+    let wcCabinWCBasinDisposition = _prefix "wcCabinWCBasinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinWashBasinDisposition"></see>
     /// </summary>
-    let wcCabinWashBasinDisposition =
-        Namespaced_IRI.parse _namespace_name "wcCabinWashBasinDisposition" |> NamespacedName
-
+    let wcCabinWashBasinDisposition = _prefix "wcCabinWashBasinDisposition"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcCabinWidth"></see>
     /// </summary>
-    let wcCabinWidth =
-        Namespaced_IRI.parse _namespace_name "wcCabinWidth" |> NamespacedName
-
+    let wcCabinWidth = _prefix "wcCabinWidth"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcChangingDesk"></see>
     /// </summary>
-    let wcChangingDesk =
-        Namespaced_IRI.parse _namespace_name "wcChangingDesk" |> NamespacedName
-
+    let wcChangingDesk = _prefix "wcChangingDesk"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcChangingDeskInstalled"></see>
     /// </summary>
-    let wcChangingDeskInstalled =
-        Namespaced_IRI.parse _namespace_name "wcChangingDeskInstalled" |> NamespacedName
-
+    let wcChangingDeskInstalled = _prefix "wcChangingDeskInstalled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcChangingDeskObstructs"></see>
     /// </summary>
-    let wcChangingDeskObstructs =
-        Namespaced_IRI.parse _namespace_name "wcChangingDeskObstructs" |> NamespacedName
-
+    let wcChangingDeskObstructs = _prefix "wcChangingDeskObstructs"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcFlushing"></see>
     /// </summary>
-    let wcFlushing = Namespaced_IRI.parse _namespace_name "wcFlushing" |> NamespacedName
-
+    let wcFlushing = _prefix "wcFlushing"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcFlushingBackHeight"></see>
     /// </summary>
-    let wcFlushingBackHeight =
-        Namespaced_IRI.parse _namespace_name "wcFlushingBackHeight" |> NamespacedName
-
+    let wcFlushingBackHeight = _prefix "wcFlushingBackHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcFlushingDifficulty"></see>
     /// </summary>
-    let wcFlushingDifficulty =
-        Namespaced_IRI.parse _namespace_name "wcFlushingDifficulty" |> NamespacedName
-
+    let wcFlushingDifficulty = _prefix "wcFlushingDifficulty"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcFlushingSideDistance"></see>
     /// </summary>
-    let wcFlushingSideDistance =
-        Namespaced_IRI.parse _namespace_name "wcFlushingSideDistance" |> NamespacedName
-
+    let wcFlushingSideDistance = _prefix "wcFlushingSideDistance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcFlushingSideHeight"></see>
     /// </summary>
-    let wcFlushingSideHeight =
-        Namespaced_IRI.parse _namespace_name "wcFlushingSideHeight" |> NamespacedName
-
+    let wcFlushingSideHeight = _prefix "wcFlushingSideHeight"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcHandlesDistance"></see>
     /// </summary>
-    let wcHandlesDistance =
-        Namespaced_IRI.parse _namespace_name "wcHandlesDistance" |> NamespacedName
-
+    let wcHandlesDistance = _prefix "wcHandlesDistance"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcIsAlarmButton"></see>
     /// </summary>
-    let wcIsAlarmButton =
-        Namespaced_IRI.parse _namespace_name "wcIsAlarmButton" |> NamespacedName
-
+    let wcIsAlarmButton = _prefix "wcIsAlarmButton"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcIsChangingDesk"></see>
     /// </summary>
-    let wcIsChangingDesk =
-        Namespaced_IRI.parse _namespace_name "wcIsChangingDesk" |> NamespacedName
-
+    let wcIsChangingDesk = _prefix "wcIsChangingDesk"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcIsChangingDeskObstructs"></see>
     /// </summary>
-    let wcIsChangingDeskObstructs =
-        Namespaced_IRI.parse _namespace_name "wcIsChangingDeskObstructs" |> NamespacedName
-
+    let wcIsChangingDeskObstructs = _prefix "wcIsChangingDeskObstructs"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcIsRegularWC"></see>
     /// </summary>
-    let wcIsRegularWC =
-        Namespaced_IRI.parse _namespace_name "wcIsRegularWC" |> NamespacedName
-
+    let wcIsRegularWC = _prefix "wcIsRegularWC"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcIsRegularWCBrailleMarking"></see>
     /// </summary>
-    let wcIsRegularWCBrailleMarking =
-        Namespaced_IRI.parse _namespace_name "wcIsRegularWCBrailleMarking" |> NamespacedName
-
+    let wcIsRegularWCBrailleMarking = _prefix "wcIsRegularWCBrailleMarking"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcLocalization"></see>
     /// </summary>
-    let wcLocalization =
-        Namespaced_IRI.parse _namespace_name "wcLocalization" |> NamespacedName
-
+    let wcLocalization = _prefix "wcLocalization"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcRegularWC"></see>
     /// </summary>
-    let wcRegularWC =
-        Namespaced_IRI.parse _namespace_name "wcRegularWC" |> NamespacedName
-
+    let wcRegularWC = _prefix "wcRegularWC"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcRegularWCBrailleLabelled"></see>
     /// </summary>
-    let wcRegularWCBrailleLabelled =
-        Namespaced_IRI.parse _namespace_name "wcRegularWCBrailleLabelled" |> NamespacedName
-
+    let wcRegularWCBrailleLabelled = _prefix "wcRegularWCBrailleLabelled"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcSwitch"></see>
     /// </summary>
-    let wcSwitch = Namespaced_IRI.parse _namespace_name "wcSwitch" |> NamespacedName
-
+    let wcSwitch = _prefix "wcSwitch"
     /// <summary>
     ///   <see href="http://w3id.org/charta77/jup/wcSwitchHeight"></see>
     /// </summary>
-    let wcSwitchHeight =
-        Namespaced_IRI.parse _namespace_name "wcSwitchHeight" |> NamespacedName
+    let wcSwitchHeight = _prefix "wcSwitchHeight"

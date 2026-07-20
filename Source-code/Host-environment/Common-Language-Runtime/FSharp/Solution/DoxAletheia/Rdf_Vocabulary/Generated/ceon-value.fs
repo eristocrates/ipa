@@ -1,168 +1,122 @@
 namespace http.w3id.org.CEON.ontology.value.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ceon_value =
     let _namespace_name = "http://w3id.org/CEON/ontology/value/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/0.3/"></see>
     /// </summary>
-    let ``_0.3/`` = Namespaced_IRI.parse _namespace_name "0.3/" |> NamespacedName
-
+    let ``_0.3/`` = _prefix "0.3/"
     /// <summary>
     /// Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.
     /// <see href="http://w3id.org/CEON/ontology/value/EconomicValue"></see></summary>
-    let EconomicValue =
-        Namespaced_IRI.parse _namespace_name "EconomicValue" |> NamespacedName
-
+    let EconomicValue = _prefix "EconomicValue"
     /// <summary>
     /// Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.
     /// <see href="http://w3id.org/CEON/ontology/value/Value"></see></summary>
-    let Value = Namespaced_IRI.parse _namespace_name "Value" |> NamespacedName
+    let Value = _prefix "Value"
     /// <summary>
     /// Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.
     /// <see href="http://w3id.org/CEON/ontology/value/UseValue"></see></summary>
-    let UseValue = Namespaced_IRI.parse _namespace_name "UseValue" |> NamespacedName
-
+    let UseValue = _prefix "UseValue"
     /// <summary>
     /// Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances.
     /// <see href="http://w3id.org/CEON/ontology/value/EnvironmentalValue"></see></summary>
-    let EnvironmentalValue =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalValue" |> NamespacedName
-
+    let EnvironmentalValue = _prefix "EnvironmentalValue"
     /// <summary>
     /// Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.
     /// <see href="http://w3id.org/CEON/ontology/value/ExchangeValue"></see></summary>
-    let ExchangeValue =
-        Namespaced_IRI.parse _namespace_name "ExchangeValue" |> NamespacedName
-
+    let ExchangeValue = _prefix "ExchangeValue"
     /// <summary>
     /// Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances.
     /// <see href="http://w3id.org/CEON/ontology/value/SocialValue"></see></summary>
-    let SocialValue =
-        Namespaced_IRI.parse _namespace_name "SocialValue" |> NamespacedName
-
+    let SocialValue = _prefix "SocialValue"
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/ValueConsumer"></see>
     /// </summary>
-    let ValueConsumer =
-        Namespaced_IRI.parse _namespace_name "ValueConsumer" |> NamespacedName
-
+    let ValueConsumer = _prefix "ValueConsumer"
     /// <summary>
     /// A role that a value participant can take.
     /// <see href="http://w3id.org/CEON/ontology/value/ValueParticipationRole"></see></summary>
-    let ValueParticipationRole =
-        Namespaced_IRI.parse _namespace_name "ValueParticipationRole" |> NamespacedName
-
+    let ValueParticipationRole = _prefix "ValueParticipationRole"
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/ValueContributor"></see>
     /// </summary>
-    let ValueContributor =
-        Namespaced_IRI.parse _namespace_name "ValueContributor" |> NamespacedName
-
+    let ValueContributor = _prefix "ValueContributor"
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/ValueCreator"></see>
     /// </summary>
-    let ValueCreator =
-        Namespaced_IRI.parse _namespace_name "ValueCreator" |> NamespacedName
-
+    let ValueCreator = _prefix "ValueCreator"
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/ValueDestroyer"></see>
     /// </summary>
-    let ValueDestroyer =
-        Namespaced_IRI.parse _namespace_name "ValueDestroyer" |> NamespacedName
-
+    let ValueDestroyer = _prefix "ValueDestroyer"
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/ValueDistributor"></see>
     /// </summary>
-    let ValueDistributor =
-        Namespaced_IRI.parse _namespace_name "ValueDistributor" |> NamespacedName
-
+    let ValueDistributor = _prefix "ValueDistributor"
     /// <summary>
     ///   <see href="http://w3id.org/CEON/ontology/value/ValueEvaluator"></see>
     /// </summary>
-    let ValueEvaluator =
-        Namespaced_IRI.parse _namespace_name "ValueEvaluator" |> NamespacedName
-
+    let ValueEvaluator = _prefix "ValueEvaluator"
     /// <summary>
     /// A participation that may create/destory/miss value.
     /// <see href="http://w3id.org/CEON/ontology/value/ValueParticipation"></see></summary>
-    let ValueParticipation =
-        Namespaced_IRI.parse _namespace_name "ValueParticipation" |> NamespacedName
-
+    let ValueParticipation = _prefix "ValueParticipation"
     /// <summary>
     /// A value perception about creating/destoring/missing some value.
     /// <see href="http://w3id.org/CEON/ontology/value/hasAssociatedValue"></see></summary>
-    let hasAssociatedValue =
-        Namespaced_IRI.parse _namespace_name "hasAssociatedValue" |> NamespacedName
-
+    let hasAssociatedValue = _prefix "hasAssociatedValue"
     /// <summary>
     /// Value perception of an actor determines specifc values.
     /// <see href="http://w3id.org/CEON/ontology/value/ValuePerception"></see></summary>
-    let ValuePerception =
-        Namespaced_IRI.parse _namespace_name "ValuePerception" |> NamespacedName
-
+    let ValuePerception = _prefix "ValuePerception"
     /// <summary>
     /// Proposed or intended value outcome of some process, action or collaboration.
     /// <see href="http://w3id.org/CEON/ontology/value/ValueProposition"></see></summary>
-    let ValueProposition =
-        Namespaced_IRI.parse _namespace_name "ValueProposition" |> NamespacedName
-
+    let ValueProposition = _prefix "ValueProposition"
     /// <summary>
     /// A value proposition has specific aimed values.
     /// <see href="http://w3id.org/CEON/ontology/value/hasAimedValue"></see></summary>
-    let hasAimedValue =
-        Namespaced_IRI.parse _namespace_name "hasAimedValue" |> NamespacedName
-
+    let hasAimedValue = _prefix "hasAimedValue"
     /// <summary>
     /// A value proposition is about some actors.
     /// <see href="http://w3id.org/CEON/ontology/value/targettingActor"></see></summary>
-    let targettingActor =
-        Namespaced_IRI.parse _namespace_name "targettingActor" |> NamespacedName
-
+    let targettingActor = _prefix "targettingActor"
     /// <summary>
     /// A value proposition is about some participation.
     /// <see href="http://w3id.org/CEON/ontology/value/targettingValueParticipation"></see></summary>
-    let targettingValueParticipation =
-        Namespaced_IRI.parse _namespace_name "targettingValueParticipation" |> NamespacedName
-
+    let targettingValueParticipation = _prefix "targettingValueParticipation"
     /// <summary>
     /// An actor perceive specific values, or a value proposition is about specific values.
     /// <see href="http://w3id.org/CEON/ontology/value/hasPerception"></see></summary>
-    let hasPerception =
-        Namespaced_IRI.parse _namespace_name "hasPerception" |> NamespacedName
-
+    let hasPerception = _prefix "hasPerception"
     /// <summary>
     /// A value proposition is proposed about specific actors, participations or resources.
     /// <see href="http://w3id.org/CEON/ontology/value/hasVPTargets"></see></summary>
-    let hasVPTargets =
-        Namespaced_IRI.parse _namespace_name "hasVPTargets" |> NamespacedName
-
+    let hasVPTargets = _prefix "hasVPTargets"
     /// <summary>
     /// A value participation has participating resources.
     /// <see href="http://w3id.org/CEON/ontology/value/hasValuableResource"></see></summary>
-    let hasValuableResource =
-        Namespaced_IRI.parse _namespace_name "hasValuableResource" |> NamespacedName
-
+    let hasValuableResource = _prefix "hasValuableResource"
     /// <summary>
     /// Holds the value of the role of the value participant in this value participation relation.
     /// <see href="http://w3id.org/CEON/ontology/value/hasValueParticipantRole"></see></summary>
-    let hasValueParticipantRole =
-        Namespaced_IRI.parse _namespace_name "hasValueParticipantRole" |> NamespacedName
-
+    let hasValueParticipantRole = _prefix "hasValueParticipantRole"
     /// <summary>
     /// A perception is on specific value participations.
     /// <see href="http://w3id.org/CEON/ontology/value/onValueParticipation"></see></summary>
-    let onValueParticipation =
-        Namespaced_IRI.parse _namespace_name "onValueParticipation" |> NamespacedName
-
+    let onValueParticipation = _prefix "onValueParticipation"
     /// <summary>
     /// A value proposition is proposed by specific actors.
     /// <see href="http://w3id.org/CEON/ontology/value/proposedBy"></see></summary>
-    let proposedBy = Namespaced_IRI.parse _namespace_name "proposedBy" |> NamespacedName
-
+    let proposedBy = _prefix "proposedBy"
     /// <summary>
     /// A value proposition is about some resources.
     /// <see href="http://w3id.org/CEON/ontology/value/targettingResource"></see></summary>
-    let targettingResource =
-        Namespaced_IRI.parse _namespace_name "targettingResource" |> NamespacedName
+    let targettingResource = _prefix "targettingResource"

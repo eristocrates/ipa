@@ -1,100 +1,82 @@
 namespace http.purl.org.net.p_plan.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module p_plan =
     let _namespace_name = "http://purl.org/net/p-plan#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A p-plan:Activity represents the execution process planned in a p-plan:Step
     /// <see href="http://purl.org/net/p-plan#Activity"></see></summary>
-    let Activity = Namespaced_IRI.parse _namespace_name "Activity" |> NamespacedName
+    let Activity = _prefix "Activity"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#Bundle"></see>
     /// </summary>
-    let Bundle = Namespaced_IRI.parse _namespace_name "Bundle" |> NamespacedName
+    let Bundle = _prefix "Bundle"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#Entity"></see>
     /// </summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
+    let Entity = _prefix "Entity"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#MultiStep"></see>
     /// </summary>
-    let MultiStep = Namespaced_IRI.parse _namespace_name "MultiStep" |> NamespacedName
+    let MultiStep = _prefix "MultiStep"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#Step"></see>
     /// </summary>
-    let Step = Namespaced_IRI.parse _namespace_name "Step" |> NamespacedName
+    let Step = _prefix "Step"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#Plan"></see>
     /// </summary>
-    let Plan = Namespaced_IRI.parse _namespace_name "Plan" |> NamespacedName
+    let Plan = _prefix "Plan"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#Variable"></see>
     /// </summary>
-    let Variable = Namespaced_IRI.parse _namespace_name "Variable" |> NamespacedName
-
+    let Variable = _prefix "Variable"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#correspondsToStep"></see>
     /// </summary>
-    let correspondsToStep =
-        Namespaced_IRI.parse _namespace_name "correspondsToStep" |> NamespacedName
-
+    let correspondsToStep = _prefix "correspondsToStep"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#correspondsToVariable"></see>
     /// </summary>
-    let correspondsToVariable =
-        Namespaced_IRI.parse _namespace_name "correspondsToVariable" |> NamespacedName
-
+    let correspondsToVariable = _prefix "correspondsToVariable"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#hasInputVar"></see>
     /// </summary>
-    let hasInputVar =
-        Namespaced_IRI.parse _namespace_name "hasInputVar" |> NamespacedName
-
+    let hasInputVar = _prefix "hasInputVar"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#hasOutputVar"></see>
     /// </summary>
-    let hasOutputVar =
-        Namespaced_IRI.parse _namespace_name "hasOutputVar" |> NamespacedName
-
+    let hasOutputVar = _prefix "hasOutputVar"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isOutputVarOf"></see>
     /// </summary>
-    let isOutputVarOf =
-        Namespaced_IRI.parse _namespace_name "isOutputVarOf" |> NamespacedName
-
+    let isOutputVarOf = _prefix "isOutputVarOf"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isDecomposedAsPlan"></see>
     /// </summary>
-    let isDecomposedAsPlan =
-        Namespaced_IRI.parse _namespace_name "isDecomposedAsPlan" |> NamespacedName
-
+    let isDecomposedAsPlan = _prefix "isDecomposedAsPlan"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isInputVarOf"></see>
     /// </summary>
-    let isInputVarOf =
-        Namespaced_IRI.parse _namespace_name "isInputVarOf" |> NamespacedName
-
+    let isInputVarOf = _prefix "isInputVarOf"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isPreceededBy"></see>
     /// </summary>
-    let isPreceededBy =
-        Namespaced_IRI.parse _namespace_name "isPreceededBy" |> NamespacedName
-
+    let isPreceededBy = _prefix "isPreceededBy"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isStepOfPlan"></see>
     /// </summary>
-    let isStepOfPlan =
-        Namespaced_IRI.parse _namespace_name "isStepOfPlan" |> NamespacedName
-
+    let isStepOfPlan = _prefix "isStepOfPlan"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isSubPlanOfPlan"></see>
     /// </summary>
-    let isSubPlanOfPlan =
-        Namespaced_IRI.parse _namespace_name "isSubPlanOfPlan" |> NamespacedName
-
+    let isSubPlanOfPlan = _prefix "isSubPlanOfPlan"
     /// <summary>
     ///   <see href="http://purl.org/net/p-plan#isVariableOfPlan"></see>
     /// </summary>
-    let isVariableOfPlan =
-        Namespaced_IRI.parse _namespace_name "isVariableOfPlan" |> NamespacedName
+    let isVariableOfPlan = _prefix "isVariableOfPlan"

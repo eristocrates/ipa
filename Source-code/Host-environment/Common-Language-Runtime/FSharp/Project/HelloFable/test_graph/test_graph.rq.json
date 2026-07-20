@@ -1,0 +1,69 @@
+{
+  "head": {
+    "vars": [
+      "source",
+      "predicate",
+      "target"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/dbug/Alice"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/knows"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/dbug/Bob"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/dbug/Bob"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/knows"
+        },
+        "target": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/dbug/Alice"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/dbug/Bob"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/Person"
+        }
+      },
+      {
+        "source": {
+          "type": "uri",
+          "value": "https://eristocrates.dev/ontology/dbug/Alice"
+        },
+        "predicate": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "target": {
+          "type": "uri",
+          "value": "http://xmlns.com/foaf/0.1/Person"
+        }
+      }
+    ]
+  }
+}

@@ -1,347 +1,299 @@
 namespace http.purl.org.SemSur.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module semsur =
     let _namespace_name = "http://purl.org/SemSur/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SemSur#p"></see>
     /// </summary>
-    let ``SemSur#p`` = Namespaced_IRI.parse _namespace_name "SemSur#p" |> NamespacedName
+    let ``SemSur#p`` = _prefix "SemSur#p"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SemSur#x"></see>
     /// </summary>
-    let ``SemSur#x`` = Namespaced_IRI.parse _namespace_name "SemSur#x" |> NamespacedName
+    let ``SemSur#x`` = _prefix "SemSur#x"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SemSur#y"></see>
     /// </summary>
-    let ``SemSur#y`` = Namespaced_IRI.parse _namespace_name "SemSur#y" |> NamespacedName
+    let ``SemSur#y`` = _prefix "SemSur#y"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SemSur#z"></see>
     /// </summary>
-    let ``SemSur#z`` = Namespaced_IRI.parse _namespace_name "SemSur#z" |> NamespacedName
+    let ``SemSur#z`` = _prefix "SemSur#z"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SemSur#m"></see>
     /// </summary>
-    let ``SemSur#m`` = Namespaced_IRI.parse _namespace_name "SemSur#m" |> NamespacedName
+    let ``SemSur#m`` = _prefix "SemSur#m"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/2.0"></see>
     /// </summary>
-    let ``_2.0`` = Namespaced_IRI.parse _namespace_name "2.0" |> NamespacedName
+    let ``_2.0`` = _prefix "2.0"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/ANAPSID:_An_Adaptive_Query_Processing_Engine_for_SPARQL_Endpoints"></see>
     /// </summary>
     let ``ANAPSID:_An_Adaptive_Query_Processing_Engine_for_SPARQL_Endpoints`` =
-        Namespaced_IRI.parse _namespace_name "ANAPSID:_An_Adaptive_Query_Processing_Engine_for_SPARQL_Endpoints" |> NamespacedName
+        _prefix "ANAPSID:_An_Adaptive_Query_Processing_Engine_for_SPARQL_Endpoints"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasConclusion"></see>
     /// </summary>
-    let hasConclusion =
-        Namespaced_IRI.parse _namespace_name "hasConclusion" |> NamespacedName
-
+    let hasConclusion = _prefix "hasConclusion"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasFutureWork"></see>
     /// </summary>
-    let hasFutureWork =
-        Namespaced_IRI.parse _namespace_name "hasFutureWork" |> NamespacedName
-
+    let hasFutureWork = _prefix "hasFutureWork"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/proposeFramework"></see>
     /// </summary>
-    let proposeFramework =
-        Namespaced_IRI.parse _namespace_name "proposeFramework" |> NamespacedName
-
+    let proposeFramework = _prefix "proposeFramework"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
-
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/ANAPSID:_evaluation"></see>
     /// </summary>
-    let ``ANAPSID:_evaluation`` =
-        Namespaced_IRI.parse _namespace_name "ANAPSID:_evaluation" |> NamespacedName
-
+    let ``ANAPSID:_evaluation`` = _prefix "ANAPSID:_evaluation"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasExperimentSetup"></see>
     /// </summary>
-    let hasExperimentSetup =
-        Namespaced_IRI.parse _namespace_name "hasExperimentSetup" |> NamespacedName
-
+    let hasExperimentSetup = _prefix "hasExperimentSetup"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/usesInformationAsset"></see>
     /// </summary>
-    let usesInformationAsset =
-        Namespaced_IRI.parse _namespace_name "usesInformationAsset" |> NamespacedName
+    let usesInformationAsset = _prefix "usesInformationAsset"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/AgreementMaker:_Ecient_Matching_for_Large_Real-World_Schemas_and_Ontologies"></see>
     /// </summary>
     let ``AgreementMaker:_Ecient_Matching_for_Large_Real-World_Schemas_and_Ontologies`` =
-        Namespaced_IRI.parse _namespace_name "AgreementMaker:_Ecient_Matching_for_Large_Real-World_Schemas_and_Ontologies" |> NamespacedName
+        _prefix "AgreementMaker:_Ecient_Matching_for_Large_Real-World_Schemas_and_Ontologies"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Bringing_Relational_Databases_into_the_Semantic_Web:A_Survey"></see>
     /// </summary>
     let ``Bringing_Relational_Databases_into_the_Semantic_Web:A_Survey`` =
-        Namespaced_IRI.parse _namespace_name "Bringing_Relational_Databases_into_the_Semantic_Web:A_Survey" |> NamespacedName
+        _prefix "Bringing_Relational_Databases_into_the_Semantic_Web:A_Survey"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Bringing_Relational_Databases_into_the_Semantic_Web:_A_Survey"></see>
     /// </summary>
     let ``Bringing_Relational_Databases_into_the_Semantic_Web:_A_Survey`` =
-        Namespaced_IRI.parse _namespace_name "Bringing_Relational_Databases_into_the_Semantic_Web:_A_Survey" |> NamespacedName
+        _prefix "Bringing_Relational_Databases_into_the_Semantic_Web:_A_Survey"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Connor"></see>
     /// </summary>
-    let Connor = Namespaced_IRI.parse _namespace_name "Connor" |> NamespacedName
+    let Connor = _prefix "Connor"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Cross:_an_OWL_wrapper_for_teasoning_on_relational_databases"></see>
     /// </summary>
     let ``Cross:_an_OWL_wrapper_for_teasoning_on_relational_databases`` =
-        Namespaced_IRI.parse _namespace_name "Cross:_an_OWL_wrapper_for_teasoning_on_relational_databases" |> NamespacedName
+        _prefix "Cross:_an_OWL_wrapper_for_teasoning_on_relational_databases"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/D2RQ_%E2%80%93_Treating_Non-RDF_Databases_as_Virtual_RDF_Graphs"></see>
     /// </summary>
     let ``D2RQ_%E2%80%93_Treating_Non-RDF_Databases_as_Virtual_RDF_Graphs`` =
-        Namespaced_IRI.parse _namespace_name "D2RQ_%E2%80%93_Treating_Non-RDF_Databases_as_Virtual_RDF_Graphs" |> NamespacedName
+        _prefix "D2RQ_%E2%80%93_Treating_Non-RDF_Databases_as_Virtual_RDF_Graphs"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/ICDT_Workshops"></see>
     /// </summary>
-    let ICDT_Workshops =
-        Namespaced_IRI.parse _namespace_name "ICDT_Workshops" |> NamespacedName
+    let ICDT_Workshops = _prefix "ICDT_Workshops"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/FedX:_a_federation_layer_for_distributed_query_processing_on_linked_open_data"></see>
     /// </summary>
     let ``FedX:_a_federation_layer_for_distributed_query_processing_on_linked_open_data`` =
-        Namespaced_IRI.parse _namespace_name "FedX:_a_federation_layer_for_distributed_query_processing_on_linked_open_data" |> NamespacedName
+        _prefix "FedX:_a_federation_layer_for_distributed_query_processing_on_linked_open_data"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Updating_Relational_Data_via_SPARQL/Update"></see>
     /// </summary>
     let ``Updating_Relational_Data_via_SPARQL/Update`` =
-        Namespaced_IRI.parse _namespace_name "Updating_Relational_Data_via_SPARQL/Update" |> NamespacedName
+        _prefix "Updating_Relational_Data_via_SPARQL/Update"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/KnoFuss:_A_Comprehensive_Architecture_for_Knowledge_Fusion"></see>
     /// </summary>
     let ``KnoFuss:_A_Comprehensive_Architecture_for_Knowledge_Fusion`` =
-        Namespaced_IRI.parse _namespace_name "KnoFuss:_A_Comprehensive_Architecture_for_Knowledge_Fusion" |> NamespacedName
+        _prefix "KnoFuss:_A_Comprehensive_Architecture_for_Knowledge_Fusion"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Linked_hypernyms:_Enriching_DBpedia_with_Targeted_Hypernym_Discovery"></see>
     /// </summary>
     let ``Linked_hypernyms:_Enriching_DBpedia_with_Targeted_Hypernym_Discovery`` =
-        Namespaced_IRI.parse _namespace_name "Linked_hypernyms:_Enriching_DBpedia_with_Targeted_Hypernym_Discovery" |> NamespacedName
+        _prefix "Linked_hypernyms:_Enriching_DBpedia_with_Targeted_Hypernym_Discovery"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/LogMap:Logic-based_and_Scalable_Ontology_Matching"></see>
     /// </summary>
     let ``LogMap:Logic-based_and_Scalable_Ontology_Matching`` =
-        Namespaced_IRI.parse _namespace_name "LogMap:Logic-based_and_Scalable_Ontology_Matching" |> NamespacedName
+        _prefix "LogMap:Logic-based_and_Scalable_Ontology_Matching"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/OWLED_Workshop_on_OWL:_Experiences_and_Directions"></see>
     /// </summary>
     let ``OWLED_Workshop_on_OWL:_Experiences_and_Directions`` =
-        Namespaced_IRI.parse _namespace_name "OWLED_Workshop_on_OWL:_Experiences_and_Directions" |> NamespacedName
+        _prefix "OWLED_Workshop_on_OWL:_Experiences_and_Directions"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Querying_over_Federated_SPARQL_Endpoints_%E2%80%94A_State_of_the_Art_Survey"></see>
     /// </summary>
     let ``Querying_over_Federated_SPARQL_Endpoints_%E2%80%94A_State_of_the_Art_Survey`` =
-        Namespaced_IRI.parse _namespace_name "Querying_over_Federated_SPARQL_Endpoints_%E2%80%94A_State_of_the_Art_Survey" |> NamespacedName
+        _prefix "Querying_over_Federated_SPARQL_Endpoints_%E2%80%94A_State_of_the_Art_Survey"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/RDB2ONT:_A_Tool_for_Generating_OWL_Ontologies_From_Relational_Database_Systems"></see>
     /// </summary>
     let ``RDB2ONT:_A_Tool_for_Generating_OWL_Ontologies_From_Relational_Database_Systems`` =
-        Namespaced_IRI.parse _namespace_name "RDB2ONT:_A_Tool_for_Generating_OWL_Ontologies_From_Relational_Database_Systems" |> NamespacedName
+        _prefix "RDB2ONT:_A_Tool_for_Generating_OWL_Ontologies_From_Relational_Database_Systems"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Runtime_optimization/Blocking"></see>
     /// </summary>
-    let ``Runtime_optimization/Blocking`` =
-        Namespaced_IRI.parse _namespace_name "Runtime_optimization/Blocking" |> NamespacedName
-
+    let ``Runtime_optimization/Blocking`` = _prefix "Runtime_optimization/Blocking"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasSolution"></see>
     /// </summary>
-    let hasSolution =
-        Namespaced_IRI.parse _namespace_name "hasSolution" |> NamespacedName
-
+    let hasSolution = _prefix "hasSolution"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/isSubproblem"></see>
     /// </summary>
-    let isSubproblem =
-        Namespaced_IRI.parse _namespace_name "isSubproblem" |> NamespacedName
-
+    let isSubproblem = _prefix "isSubproblem"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Runtime_optimization/Filtering"></see>
     /// </summary>
-    let ``Runtime_optimization/Filtering`` =
-        Namespaced_IRI.parse _namespace_name "Runtime_optimization/Filtering" |> NamespacedName
+    let ``Runtime_optimization/Filtering`` = _prefix "Runtime_optimization/Filtering"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SERIMI_-_Resource_Description_Similarity,_RDF_Instance_Matching_and_Interlinking."></see>
     /// </summary>
     let ``SERIMI_-_Resource_Description_Similarity,_RDF_Instance_Matching_and_Interlinking.`` =
-        Namespaced_IRI.parse _namespace_name "SERIMI_-_Resource_Description_Similarity,_RDF_Instance_Matching_and_Interlinking." |> NamespacedName
+        _prefix "SERIMI_-_Resource_Description_Similarity,_RDF_Instance_Matching_and_Interlinking."
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/SPLENDID:_SPARQL_Endpoint_Federation_Exploiting_VOID_Descriptions"></see>
     /// </summary>
     let ``SPLENDID:_SPARQL_Endpoint_Federation_Exploiting_VOID_Descriptions`` =
-        Namespaced_IRI.parse _namespace_name "SPLENDID:_SPARQL_Endpoint_Federation_Exploiting_VOID_Descriptions" |> NamespacedName
+        _prefix "SPLENDID:_SPARQL_Endpoint_Federation_Exploiting_VOID_Descriptions"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/The_Semantic_Web:_Research_and_Applications"></see>
     /// </summary>
     let ``The_Semantic_Web:_Research_and_Applications`` =
-        Namespaced_IRI.parse _namespace_name "The_Semantic_Web:_Research_and_Applications" |> NamespacedName
+        _prefix "The_Semantic_Web:_Research_and_Applications"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Unveiling_the_hidden_bride:_deep_annotation_for_mapping_and_migrating_legacy_data_to_the_Semantic_Web"></see>
     /// </summary>
     let ``Unveiling_the_hidden_bride:_deep_annotation_for_mapping_and_migrating_legacy_data_to_the_Semantic_Web`` =
-        Namespaced_IRI.parse _namespace_name "Unveiling_the_hidden_bride:_deep_annotation_for_mapping_and_migrating_legacy_data_to_the_Semantic_Web" |> NamespacedName
+        _prefix "Unveiling_the_hidden_bride:_deep_annotation_for_mapping_and_migrating_legacy_data_to_the_Semantic_Web"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/_A_Schema-Independent_Linked_Data_Interlinking_System"></see>
     /// </summary>
     let ``_A_Schema-Independent_Linked_Data_Interlinking_System`` =
-        Namespaced_IRI.parse _namespace_name "_A_Schema-Independent_Linked_Data_Interlinking_System" |> NamespacedName
+        _prefix "_A_Schema-Independent_Linked_Data_Interlinking_System"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/_A_Survey_of_Approaches_and_Evaluation_Methods"></see>
     /// </summary>
     let _A_Survey_of_Approaches_and_Evaluation_Methods =
-        Namespaced_IRI.parse _namespace_name "_A_Survey_of_Approaches_and_Evaluation_Methods" |> NamespacedName
+        _prefix "_A_Survey_of_Approaches_and_Evaluation_Methods"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/_Putting_the_spirit_of_the_web_back_into_semantic_web_querying"></see>
     /// </summary>
     let _Putting_the_spirit_of_the_web_back_into_semantic_web_querying =
-        Namespaced_IRI.parse _namespace_name "_Putting_the_spirit_of_the_web_back_into_semantic_web_querying" |> NamespacedName
+        _prefix "_Putting_the_spirit_of_the_web_back_into_semantic_web_querying"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/_a_Plug-in_for_Importing_Schemas_and_Data_from_Relational_Databases_into_Prot%C3%A9g%C3%A9"></see>
     /// </summary>
     let ``_a_Plug-in_for_Importing_Schemas_and_Data_from_Relational_Databases_into_Prot%C3%A9g%C3%A9`` =
-        Namespaced_IRI.parse _namespace_name "_a_Plug-in_for_Importing_Schemas_and_Data_from_Relational_Databases_into_Prot%C3%A9g%C3%A9" |> NamespacedName
+        _prefix "_a_Plug-in_for_Importing_Schemas_and_Data_from_Relational_Databases_into_Prot%C3%A9g%C3%A9"
 
     /// <summary>
     ///   <see href="http://purl.org/SemSur/Martin_O%E2%80%99Connor"></see>
     /// </summary>
-    let ``Martin_O%E2%80%99Connor`` =
-        Namespaced_IRI.parse _namespace_name "Martin_O%E2%80%99Connor" |> NamespacedName
-
+    let ``Martin_O%E2%80%99Connor`` = _prefix "Martin_O%E2%80%99Connor"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/accessedAPI"></see>
     /// </summary>
-    let accessedAPI =
-        Namespaced_IRI.parse _namespace_name "accessedAPI" |> NamespacedName
-
+    let accessedAPI = _prefix "accessedAPI"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/addressProblem"></see>
     /// </summary>
-    let addressProblem =
-        Namespaced_IRI.parse _namespace_name "addressProblem" |> NamespacedName
-
+    let addressProblem = _prefix "addressProblem"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/followsEvaluationMethod"></see>
     /// </summary>
-    let followsEvaluationMethod =
-        Namespaced_IRI.parse _namespace_name "followsEvaluationMethod" |> NamespacedName
-
+    let followsEvaluationMethod = _prefix "followsEvaluationMethod"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasDescription"></see>
     /// </summary>
-    let hasDescription =
-        Namespaced_IRI.parse _namespace_name "hasDescription" |> NamespacedName
-
+    let hasDescription = _prefix "hasDescription"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasDimension"></see>
     /// </summary>
-    let hasDimension =
-        Namespaced_IRI.parse _namespace_name "hasDimension" |> NamespacedName
-
+    let hasDimension = _prefix "hasDimension"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasEvaluation"></see>
     /// </summary>
-    let hasEvaluation =
-        Namespaced_IRI.parse _namespace_name "hasEvaluation" |> NamespacedName
-
+    let hasEvaluation = _prefix "hasEvaluation"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasEvaluationDimension"></see>
     /// </summary>
-    let hasEvaluationDimension =
-        Namespaced_IRI.parse _namespace_name "hasEvaluationDimension" |> NamespacedName
-
+    let hasEvaluationDimension = _prefix "hasEvaluationDimension"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasGUI"></see>
     /// </summary>
-    let hasGUI = Namespaced_IRI.parse _namespace_name "hasGUI" |> NamespacedName
-
+    let hasGUI = _prefix "hasGUI"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasImplementation"></see>
     /// </summary>
-    let hasImplementation =
-        Namespaced_IRI.parse _namespace_name "hasImplementation" |> NamespacedName
-
+    let hasImplementation = _prefix "hasImplementation"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasMotivation"></see>
     /// </summary>
-    let hasMotivation =
-        Namespaced_IRI.parse _namespace_name "hasMotivation" |> NamespacedName
-
+    let hasMotivation = _prefix "hasMotivation"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/hasResult"></see>
     /// </summary>
-    let hasResult = Namespaced_IRI.parse _namespace_name "hasResult" |> NamespacedName
-
+    let hasResult = _prefix "hasResult"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/implementedIn"></see>
     /// </summary>
-    let implementedIn =
-        Namespaced_IRI.parse _namespace_name "implementedIn" |> NamespacedName
-
+    let implementedIn = _prefix "implementedIn"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/inputType"></see>
     /// </summary>
-    let inputType = Namespaced_IRI.parse _namespace_name "inputType" |> NamespacedName
+    let inputType = _prefix "inputType"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/isCoAuthor"></see>
     /// </summary>
-    let isCoAuthor = Namespaced_IRI.parse _namespace_name "isCoAuthor" |> NamespacedName
-
+    let isCoAuthor = _prefix "isCoAuthor"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/motivatesApproach"></see>
     /// </summary>
-    let motivatesApproach =
-        Namespaced_IRI.parse _namespace_name "motivatesApproach" |> NamespacedName
-
+    let motivatesApproach = _prefix "motivatesApproach"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/provideSolution"></see>
     /// </summary>
-    let provideSolution =
-        Namespaced_IRI.parse _namespace_name "provideSolution" |> NamespacedName
-
+    let provideSolution = _prefix "provideSolution"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/supportTechnology"></see>
     /// </summary>
-    let supportTechnology =
-        Namespaced_IRI.parse _namespace_name "supportTechnology" |> NamespacedName
-
+    let supportTechnology = _prefix "supportTechnology"
     /// <summary>
     ///   <see href="http://purl.org/SemSur/usesInfoAsset"></see>
     /// </summary>
-    let usesInfoAsset =
-        Namespaced_IRI.parse _namespace_name "usesInfoAsset" |> NamespacedName
+    let usesInfoAsset = _prefix "usesInfoAsset"

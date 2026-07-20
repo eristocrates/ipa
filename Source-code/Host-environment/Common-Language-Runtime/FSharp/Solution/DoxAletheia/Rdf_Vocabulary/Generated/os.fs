@@ -1,9 +1,13 @@
 namespace http.www.w3.org._2000._10.swap.os.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module os =
     let _namespace_name = "http://www.w3.org/2000/10/swap/os#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The object is looked up as the literal string which was given
     /// as the nth command line argument.
@@ -24,8 +28,7 @@ module os =
     ///
     ///
     /// <see href="http://www.w3.org/2000/10/swap/os#argv"></see></summary>
-    let argv = Namespaced_IRI.parse _namespace_name "argv" |> NamespacedName
-
+    let argv = _prefix "argv"
     /// <summary>
     /// The baseAbsolute property of a URI reference string is a string
     /// which is an (absolute) URI, generated assuming the
@@ -35,9 +38,7 @@ module os =
     /// unless the --base option is given)
     ///
     /// <see href="http://www.w3.org/2000/10/swap/os#baseAbsolute"></see></summary>
-    let baseAbsolute =
-        Namespaced_IRI.parse _namespace_name "baseAbsolute" |> NamespacedName
-
+    let baseAbsolute = _prefix "baseAbsolute"
     /// <summary>
     /// The baseRelative property of a URI string is a string
     /// which is a valid relative form of the URI, relative to the
@@ -49,9 +50,7 @@ module os =
     /// whose URI is the same (except for anything after the last slash).
     ///
     /// <see href="http://www.w3.org/2000/10/swap/os#baseRelative"></see></summary>
-    let baseRelative =
-        Namespaced_IRI.parse _namespace_name "baseRelative" |> NamespacedName
-
+    let baseRelative = _prefix "baseRelative"
     /// <summary>
     ///
     /// The os:environ property of a string is the value corresponding to
@@ -65,4 +64,4 @@ module os =
     /// to Python's os.environ[] .
     ///
     /// <see href="http://www.w3.org/2000/10/swap/os#environ"></see></summary>
-    let environ = Namespaced_IRI.parse _namespace_name "environ" |> NamespacedName
+    let environ = _prefix "environ"

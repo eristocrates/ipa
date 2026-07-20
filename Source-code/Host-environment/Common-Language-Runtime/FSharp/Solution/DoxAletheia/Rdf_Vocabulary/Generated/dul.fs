@@ -1,28 +1,32 @@
 namespace http.www.ontologydesignpatterns.org.ont.dul.DUL.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dul =
     let _namespace_name = "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Any Entity that cannot be located in space-time. E.g. mathematical entities: formal semantics elements, regions within dimensional spaces, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract"></see></summary>
-    let Abstract = Namespaced_IRI.parse _namespace_name "Abstract" |> NamespacedName
+    let Abstract = _prefix "Abstract"
     /// <summary>
     /// Anything: real, possible, or imaginary, which some modeller wants to talk about for some purpose.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"></see></summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
+    let Entity = _prefix "Entity"
     /// <summary>
     /// Any aspect of an Entity (but not a part of it), which cannot exist without that Entity. For example, the way the surface of a specific PhysicalObject looks like, or the specific light of a place at a certain time, are examples of Quality, while the encoding of a Quality into e.g. a PhysicalAttribute should be modeled as a Region.
     /// From the design viewpoint, the Quality-Region distinction is useful only when individual aspects of an Entity are considered in a domain of discourse.
     /// For example, in an automotive context, it would be irrelevant to consider the aspects of car windows for a specific car, unless the factory wants to check a specific window against design parameters (anomaly detection).
     /// On the other hand, in an antiques context, the individual aspects for a specific piece of furniture are a major focus of attention, and may constitute the actual added value, because the design parameters for old furniture are often not fixed, and may not be viewed as 'anomalies'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"></see></summary>
-    let Quality = Namespaced_IRI.parse _namespace_name "Quality" |> NamespacedName
+    let Quality = _prefix "Quality"
     /// <summary>
     /// Any physical, social, or mental object, or a substance. Following DOLCE Full, objects are always participating in some event (at least their own life), and are spatially located.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"></see></summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
+    let Object = _prefix "Object"
     /// <summary>
     /// Any physical, social, or mental process, event, or state.
     ///
@@ -58,262 +62,200 @@ module dul =
     /// Both positions are in principle valid, but, if taken too radically, they focus on issues that are only partly relevant to the aim of computational ontologies, which only attempt to assist domain experts in representing what they want to conceptualize a certain portion of reality according to their own ideas.
     /// For this reason, in this ontology both events and situations are allowed, together with descriptions, in order to encode the modelling needs, independently from the position (if any) chosen by the designer.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"></see></summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
+    let Event = _prefix "Event"
     /// <summary>
     /// An Event with at least one Agent that isParticipantIn it, and that executes a Task that typically isDefinedIn a Plan, Workflow, Project, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Action"></see></summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     /// A relation between an action and a task, e.g. 'putting some water in a pot and putting the pot on a fire until the water starts bubbling' executes the task 'boiling'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#executesTask"></see></summary>
-    let executesTask =
-        Namespaced_IRI.parse _namespace_name "executesTask" |> NamespacedName
-
+    let executesTask = _prefix "executesTask"
     /// <summary>
     /// Any agentive Object , either physical (e.g. a whale, a robot, an oak), or social (e.g. a corporation, an institution, a community).
     /// Additional comment: a computational agent can be considered as a PhysicalAgent that realizes a certain class of algorithms (that can be considered as instances of InformationObject) that allow to obtain some behaviors that are considered typical of agents in general. For an ontology of computational objects based on DOLCE see e.g. http://www.loa-cnr.it/COS/COS.owl, and http://www.loa-cnr.it/KCO/KCO.owl.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"></see></summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
-
+    let Agent = _prefix "Agent"
     /// <summary>
     /// A relation between an object and a process, e.g. 'John took part in the discussion', 'a large mass of snow fell during the avalanche', or 'a cook, some sugar, flour, etc. are all present in the cooking of a cake'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"></see></summary>
-    let hasParticipant =
-        Namespaced_IRI.parse _namespace_name "hasParticipant" |> NamespacedName
-
+    let hasParticipant = _prefix "hasParticipant"
     /// <summary>
     /// A PhysicalObject that is capable of self-representing (conceptualizing) a Description in order to plan an Action.
     /// A PhysicalAgent is a substrate for (actsFor) a Social Agent
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAgent"></see></summary>
-    let PhysicalAgent =
-        Namespaced_IRI.parse _namespace_name "PhysicalAgent" |> NamespacedName
-
+    let PhysicalAgent = _prefix "PhysicalAgent"
     /// <summary>
     /// Any individual whose existence is granted simply by its social communicability and capability of action (through some PhysicalAgent).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialAgent"></see></summary>
-    let SocialAgent =
-        Namespaced_IRI.parse _namespace_name "SocialAgent" |> NamespacedName
-
+    let SocialAgent = _prefix "SocialAgent"
     /// <summary>
     /// A quantity, independently from how it is measured, computed, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount"></see></summary>
-    let Amount = Namespaced_IRI.parse _namespace_name "Amount" |> NamespacedName
+    let Amount = _prefix "Amount"
     /// <summary>
     /// Any region in a dimensional space (a dimensional space is a maximal Region), which can be used as a value for a quality of an Entity . For example, TimeInterval, SpaceRegion, PhysicalAttribute, Amount, SocialAttribute are all subclasses of Region.
     /// Regions are not data values in the ordinary knowledge representation sense; in order to get patterns for modelling data, see the properties: representsDataValue and hasDataValue
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"></see></summary>
-    let Region = Namespaced_IRI.parse _namespace_name "Region" |> NamespacedName
-
+    let Region = _prefix "Region"
     /// <summary>
     /// Any Region in a dimensional space that aims at representing time.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval"></see></summary>
-    let TimeInterval =
-        Namespaced_IRI.parse _namespace_name "TimeInterval" |> NamespacedName
-
+    let TimeInterval = _prefix "TimeInterval"
     /// <summary>
     /// Any Region in a dimensional space that is used to localize an Entity ; i.e., it is not used to represent some characteristic (e.g. it excludes time intervals, colors, size values, judgment values, etc.). Differently from a Place , a space region has a specific dimensional space.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpaceRegion"></see></summary>
-    let SpaceRegion =
-        Namespaced_IRI.parse _namespace_name "SpaceRegion" |> NamespacedName
-
+    let SpaceRegion = _prefix "SpaceRegion"
     /// <summary>
     /// Physical value of a physical object, e.g. density, color, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalAttribute"></see></summary>
-    let PhysicalAttribute =
-        Namespaced_IRI.parse _namespace_name "PhysicalAttribute" |> NamespacedName
-
+    let PhysicalAttribute = _prefix "PhysicalAttribute"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#BiologicalObject"></see>
     /// </summary>
-    let BiologicalObject =
-        Namespaced_IRI.parse _namespace_name "BiologicalObject" |> NamespacedName
-
+    let BiologicalObject = _prefix "BiologicalObject"
     /// <summary>
     /// Physical bodies are PhysicalObject(s), for which we tend to neutralize any possible artifactual character. They can have several granularity levels: geological, chemical, physical, biological, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalBody"></see></summary>
-    let PhysicalBody =
-        Namespaced_IRI.parse _namespace_name "PhysicalBody" |> NamespacedName
-
+    let PhysicalBody = _prefix "PhysicalBody"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#ChemicalObject"></see>
     /// </summary>
-    let ChemicalObject =
-        Namespaced_IRI.parse _namespace_name "ChemicalObject" |> NamespacedName
-
+    let ChemicalObject = _prefix "ChemicalObject"
     /// <summary>
     /// A special kind of Situation that allows to include time indexing for the classifies relation in situations. For example, if a Situation s 'my old cradle is used in these days as a flower pot' isSettingFor the entity 'my old cradle' and the TimeIntervals '8June2007' and '10June2007', and we know that s satisfies a functional Description for aesthetic objects, which defines the Concepts 'flower pot' and 'flower', then we also need to know what concept classifies 'my old cradle' at what time.
     /// In order to solve this issue, we need to create a sub-situation s' for the classification time: 'my old cradle is a flower pot in 8June2007'. Such sub-situation s' isPartOf s.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Classification"></see></summary>
-    let Classification =
-        Namespaced_IRI.parse _namespace_name "Classification" |> NamespacedName
-
+    let Classification = _prefix "Classification"
     /// <summary>
     /// A relation between situations and entities, e.g. 'this morning I've prepared my coffee with a new fantastic Arabica', i.e.: the preparation of my coffee this morning is the setting for (an amount of) a new fantastic Arabica.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSettingFor"></see></summary>
-    let isSettingFor =
-        Namespaced_IRI.parse _namespace_name "isSettingFor" |> NamespacedName
-
+    let isSettingFor = _prefix "isSettingFor"
     /// <summary>
     /// A Concept is a SocialObject, and isDefinedIn some Description; once defined, a Concept can be used in other Description(s). If a Concept isDefinedIn exactly one Description, see the LocalConcept class.
     /// The classifies relation relates Concept(s) to Entity(s) at some TimeInterval
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept"></see></summary>
-    let Concept = Namespaced_IRI.parse _namespace_name "Concept" |> NamespacedName
+    let Concept = _prefix "Concept"
     /// <summary>
     /// A view, consistent with ('satisfying') a Description, on a set of entities.
     /// It can also be seen as a 'relational context' created by an observer on the basis of a 'frame' (i.e. a Description).
     /// For example, a PlanExecution is a context including some actions executed by agents according to certain parameters and expected tasks to be achieved from a Plan; a DiagnosedSituation is a context of observed entities that is interpreted on the basis of a Diagnosis, etc.
     /// Situation is also able to represent reified n-ary relations, where isSettingFor is the top-level relation for all binary projections of the n-ary relation. If used in a transformation pattern for n-ary relations, the designer should take care of creating only one subclass of Situation for each n-ary relation, otherwise the 'identification constraint' (Calvanese et al., IJCAI 2001) could be violated.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation"></see></summary>
-    let Situation = Namespaced_IRI.parse _namespace_name "Situation" |> NamespacedName
+    let Situation = _prefix "Situation"
     /// <summary>
     /// Any container for entities that share one or more common properties. E.g. "stone objects", "the nurses", "the Louvre Aegyptian collection", all the elections for the Italian President of the Republic.
     /// A collection is not a logical class: a collection is a first-order entity, while a class is second-order.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection"></see></summary>
-    let Collection = Namespaced_IRI.parse _namespace_name "Collection" |> NamespacedName
+    let Collection = _prefix "Collection"
     /// <summary>
     /// A schematic relation between any entities, e.g. 'the human body has a brain as part', '20th century contains year 1923', 'World War II includes the Pearl Harbour event'.
     /// Subproperties and restrictions can be used to specialize hasPart for objects, events, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"></see></summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
-
+    let hasPart = _prefix "hasPart"
     /// <summary>
     /// Any Object that exists only within some communication Event, in which at least one PhysicalObject participates in.
     /// In other words, all objects that have been or are created in the process of social communication: for the sake of communication (InformationObject), for incorporating new individuals (SocialAgent, Place), for contextualizing existing entities (Situation), for collecting existing entities (Collection), or for describing existing entities (Description, Concept).
     /// Being dependent on communication, all social objects need to be expressed by some information object (information object are self-expressing).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject"></see></summary>
-    let SocialObject =
-        Namespaced_IRI.parse _namespace_name "SocialObject" |> NamespacedName
-
+    let SocialObject = _prefix "SocialObject"
     /// <summary>
     /// A Collection whose members are agents, e.g. "the nurses", "the Italian rockabilly fans".
     /// Collectives, facon de parler, can act as agents, although they are not assumed here to be agents (they are even disjoint from the class SocialAgent). This is represented by admitting collectives in the range of the relations having Agent in their domain or range.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collective"></see></summary>
-    let Collective = Namespaced_IRI.parse _namespace_name "Collective" |> NamespacedName
+    let Collective = _prefix "Collective"
     /// <summary>
     /// A relation between collections and entities, e.g. 'my collection of saxophones includes an old Adolphe Sax original alto' (i.e. my collection has member an Adolphe Sax alto).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasMember"></see></summary>
-    let hasMember = Namespaced_IRI.parse _namespace_name "hasMember" |> NamespacedName
-
+    let hasMember = _prefix "hasMember"
     /// <summary>
     /// A SocialAgent that is actedBy agents that are (and act as) members of a Collective. A collective agent can have roles that are also roles of those agents.
     /// For example, in sociology, a 'group action' is the situation in which a number of people (that result to be members of a collective) in a given area behave in a coordinated way in order to achieve a (often common) goal. The Agent in such a Situation is not single, but a CollectiveAgent (a Group). This can be generalized to the notion of social movement, which assumes a large Community or even the entire Society as agents.
     /// The difference between a CollectiveAgent and an Organization is that a Description that introduces a CollectiveAgent is also one that unifies the corresponding Collective. In practice, this difference makes collective agents 'less stable' than organizations, because they have a dedicated, publicly recognizable Description that is conceived to introduce them.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#CollectiveAgent"></see></summary>
-    let CollectiveAgent =
-        Namespaced_IRI.parse _namespace_name "CollectiveAgent" |> NamespacedName
-
+    let CollectiveAgent = _prefix "CollectiveAgent"
     /// <summary>
     /// A Description is a SocialObject that represents a conceptualization.
     /// It can be thought also as a 'descriptive context' that uses or defines concepts in order to create a view on a 'relational context' (cf. Situation) out of a set of data or observations.
     /// For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters; a Diagnosis is a Description that provides an interpretation for a set of observed entities, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"></see></summary>
-    let Description =
-        Namespaced_IRI.parse _namespace_name "Description" |> NamespacedName
-
+    let Description = _prefix "Description"
     /// <summary>
     /// A Collection has a unification criterion, provided by a Description; for example, a community of practice can be unified by a shared theory or interest, e.g. the community that makes research on mirror neurons shares some core knowledge about mirror neurons, which can be represented as a Description MirrorNeuronTheory that unifies the community. There can be several unifying descriptions.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#unifies"></see></summary>
-    let unifies = Namespaced_IRI.parse _namespace_name "unifies" |> NamespacedName
-
+    let unifies = _prefix "unifies"
     /// <summary>
     /// A relation between a Description and a SocialAgent, e.g. a Constitutional Charter introduces the SocialAgent 'PresidentOfRepublic'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isIntroducedBy"></see></summary>
-    let isIntroducedBy =
-        Namespaced_IRI.parse _namespace_name "isIntroducedBy" |> NamespacedName
-
+    let isIntroducedBy = _prefix "isIntroducedBy"
     /// <summary>
     /// A relation between collections and entities, e.g. 'the Night Watch by Rembrandt is in the Rijksmuseum collection'; 'Davide is member of the Pen Club', 'Igor is one the subjects chosen for the experiment'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf"></see></summary>
-    let isMemberOf = Namespaced_IRI.parse _namespace_name "isMemberOf" |> NamespacedName
-
+    let isMemberOf = _prefix "isMemberOf"
     /// <summary>
     /// The relation holding between a PhysicalAgent and a SocialAgent. In principle, a SocialAgent requires at least one PhysicalAgent in order to act, but this dependency can be 'delegated', e.g. a university can be acted for by a department, which is acted for by physical agents. AKA isActedBy
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#actsThrough"></see></summary>
-    let actsThrough =
-        Namespaced_IRI.parse _namespace_name "actsThrough" |> NamespacedName
-
+    let actsThrough = _prefix "actsThrough"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Community"></see>
     /// </summary>
-    let Community = Namespaced_IRI.parse _namespace_name "Community" |> NamespacedName
-
+    let Community = _prefix "Community"
     /// <summary>
     /// A relation between a Description and a Concept, e.g. a Workflow for a governmental Organization defines the Role 'officer', or 'the Italian Traffic Law defines the role Vehicle'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDefinedIn"></see></summary>
-    let isDefinedIn =
-        Namespaced_IRI.parse _namespace_name "isDefinedIn" |> NamespacedName
-
+    let isDefinedIn = _prefix "isDefinedIn"
     /// <summary>
     /// A piece of information, such as a musical composition, a text, a word, a picture, independently from how it is concretely realized.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject"></see></summary>
-    let InformationObject =
-        Namespaced_IRI.parse _namespace_name "InformationObject" |> NamespacedName
-
+    let InformationObject = _prefix "InformationObject"
     /// <summary>
     /// A collection whose members are 'unified', i.e. organized according to a certain schema that can be represented by a Description.
     /// Typically, a configuration is the collection that emerges out of a composed entity: an industrial artifact, a plan, a discourse, etc.
     /// E.g. a physical book has a configuration provided by the part-whole schema that holds together its cover, pages, ink. That schema, based on the individual relations between the book and its parts, can be represented in a reified way by means of a (structural) description, which is said to 'unify' the book configuration.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration"></see></summary>
-    let Configuration =
-        Namespaced_IRI.parse _namespace_name "Configuration" |> NamespacedName
-
+    let Configuration = _prefix "Configuration"
     /// <summary>
     /// (The content of) an agreement between at least two agents that play a Party Role, about some contract object (a Task to be executed).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Contract"></see></summary>
-    let Contract = Namespaced_IRI.parse _namespace_name "Contract" |> NamespacedName
+    let Contract = _prefix "Contract"
     /// <summary>
     /// A Description of the Situation, in terms of structure and function, held by an Entity for some reason.
     /// A design is usually accompanied by the rationales behind the construction of the designed Entity (i.e. of the reasons why a design is claimed to be as such). For example, the actual design (a Situation) of a car or of a law is based on both the specification (a Description) of the structure, and the rationales used to construct cars or laws.
     /// While designs typically describe entities to be constructed, they can also be used to describe 'refunctionalized' entities, or to hypothesize unknown functions. For example, a cradle can be refunctionalized as a flowerpot based on a certain home design.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Design"></see></summary>
-    let Design = Namespaced_IRI.parse _namespace_name "Design" |> NamespacedName
-
+    let Design = _prefix "Design"
     /// <summary>
     /// A PhysicalArtifact that is also described by a Design. This excludes simple recycling or refunctionalization of natural objects. Most common sense 'artifacts' can be included in this class: cars, lamps, houses, chips, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"></see></summary>
-    let DesignedArtifact =
-        Namespaced_IRI.parse _namespace_name "DesignedArtifact" |> NamespacedName
-
+    let DesignedArtifact = _prefix "DesignedArtifact"
     /// <summary>
     /// The relation between an Entity and a Description: a Description gives a unity to a Collection of parts (the components), or constituents, by assigning a Role to each of them in the context of a whole Object (the system).
     /// A same Entity can be given different descriptions, for example, an old cradle can be given a unifying Description based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy"></see></summary>
-    let isDescribedBy =
-        Namespaced_IRI.parse _namespace_name "isDescribedBy" |> NamespacedName
-
+    let isDescribedBy = _prefix "isDescribedBy"
     /// <summary>
     /// Any PhysicalObject that isDescribedBy a Plan .
     /// This axiomatization is weak, but allows to talk of artifacts in a very general sense, i.e. including recycled objects, objects with an intentional functional change, natural objects that are given a certain function, even though they are not modified or structurally designed, etc. PhysicalArtifact(s) are not considered disjoint from PhysicalBody(s), in order to allow a dual classification when needed. E.g.,
     /// FunctionalSubstance(s) are included here as well.
     /// Immaterial (non-physical) artifacts (e.g. texts, ideas, cultural movements, corporations, communities, etc. can be modelled as social objects (see SocialObject), which are all 'artifactual' in the weak sense assumed here.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalArtifact"></see></summary>
-    let PhysicalArtifact =
-        Namespaced_IRI.parse _namespace_name "PhysicalArtifact" |> NamespacedName
-
+    let PhysicalArtifact = _prefix "PhysicalArtifact"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedSubstance"></see>
     /// </summary>
-    let DesignedSubstance =
-        Namespaced_IRI.parse _namespace_name "DesignedSubstance" |> NamespacedName
-
+    let DesignedSubstance = _prefix "DesignedSubstance"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FunctionalSubstance"></see>
     /// </summary>
-    let FunctionalSubstance =
-        Namespaced_IRI.parse _namespace_name "FunctionalSubstance" |> NamespacedName
-
+    let FunctionalSubstance = _prefix "FunctionalSubstance"
     /// <summary>
     /// A Description of the Situation of a system, usually applied in order to control a normal behaviour, or to explain a notable behavior (e.g. a functional breakdown).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Diagnosis"></see></summary>
-    let Diagnosis = Namespaced_IRI.parse _namespace_name "Diagnosis" |> NamespacedName
-
+    let Diagnosis = _prefix "Diagnosis"
     /// <summary>
     /// The generic relation between events and time intervals.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasTimeInterval"></see></summary>
-    let hasTimeInterval =
-        Namespaced_IRI.parse _namespace_name "hasTimeInterval" |> NamespacedName
-
+    let hasTimeInterval = _prefix "hasTimeInterval"
     /// <summary>
     /// 'Constituency' depends on some layering of  the world described by the ontology. For example, scientific granularities (e.g. body-organ-tissue-cell) or ontological 'strata' (e.g. social-mental-biological-physical) are  typical layerings.
     /// Intuitively, a constituent is a part belonging to a lower layer. Since layering is actually a partition of the world described by the ontology, constituents are not properly classified as parts, although this kinship can be intuitive for common sense.
@@ -321,26 +263,23 @@ module dul =
     /// Example of are the persons constituting a social system, the molecules constituting a person, the atoms constituting a river, etc.
     /// In all these examples, we notice a typical discontinuity between the constituted and the constituent object: e.g. a social system is conceptualized at a different layer from the persons that constitute it, a person is conceptualized at a different layer from the molecules that constitute them, and a river is conceptualized at a different layer from the atoms that constitute it.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstituent"></see></summary>
-    let hasConstituent =
-        Namespaced_IRI.parse _namespace_name "hasConstituent" |> NamespacedName
-
+    let hasConstituent = _prefix "hasConstituent"
     /// <summary>
     /// A Concept that classifies an Event . An event type describes how an Event should be interpreted, executed, expected, seen, etc., according to the Description that the EventType isDefinedIn (or used in)
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#EventType"></see></summary>
-    let EventType = Namespaced_IRI.parse _namespace_name "EventType" |> NamespacedName
+    let EventType = _prefix "EventType"
     /// <summary>
     /// A relation between a Concept and an Entity, e.g. the Role 'student' classifies a Person 'John'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies"></see></summary>
-    let classifies = Namespaced_IRI.parse _namespace_name "classifies" |> NamespacedName
+    let classifies = _prefix "classifies"
     /// <summary>
     /// A Concept that classifies an Object
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role"></see></summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
+    let Role = _prefix "Role"
     /// <summary>
     /// A Concept that classifies a Region; the difference between a Region and a Parameter is that regions represent sets of observable values, e.g. the height  of a given building, while parameters represent constraints or selections on observable values, e.g. 'VeryHigh'. Therefore, parameters can also be used to constrain regions, e.g. VeryHigh on a subset of values of the Region Height applied to buildings, or to add an external selection criterion , such as measurement units, to regions, e.g. Meter on a subset of values from the Region Length applied to the Region Length applied to roads.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parameter"></see></summary>
-    let Parameter = Namespaced_IRI.parse _namespace_name "Parameter" |> NamespacedName
-
+    let Parameter = _prefix "Parameter"
     /// <summary>
     /// Entities that are formally defined and are considered independent from the social context in which they are used. They cannot be localized in space or time. Also called 'Platonic entities'.
     /// Mathematical and logical entities are included in this class: sets, categories, tuples, costants, variables, etc.
@@ -352,54 +291,41 @@ module dul =
     /// These distinctions allow to represent two different notions of 'semantics': the first one is abstract and formal ('formal semantics'), and formallyInterprets symbols that are about entities whatsoever; for example, the term 'Quark' isAbout the Collection of all quarks, and that Collection isFormalGroundingFor the abstract class 'Quark' (in the extensional sense).
     /// The second notion is social, localized in space-time ('social semantics'), and can be used to interpret entities in the intensional sense. For example, the Collection of all quarks isCoveredBy the Concept 'Quark', which is also expressed by the term 'Quark'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#FormalEntity"></see></summary>
-    let FormalEntity =
-        Namespaced_IRI.parse _namespace_name "FormalEntity" |> NamespacedName
-
+    let FormalEntity = _prefix "FormalEntity"
     /// <summary>
     /// Any PhysicalBody that has not necessarily specified (designed) boundaries, e.g. a pile of trash, some sand, etc.
     /// In this sense, an artistic object made of trash or a dose of medicine in the form of a pill would be a FunctionalSubstance, and a DesignedArtifact, since its boundaries are specified by a Design; aleatoric objects that are outcomes of an artistic process might be still considered DesignedArtifact(s), and Substance(s).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Substance"></see></summary>
-    let Substance = Namespaced_IRI.parse _namespace_name "Substance" |> NamespacedName
+    let Substance = _prefix "Substance"
     /// <summary>
     /// The Description of a Situation that is desired by an Agent, and usually associated to a Plan that describes how to actually achieve it
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal"></see></summary>
-    let Goal = Namespaced_IRI.parse _namespace_name "Goal" |> NamespacedName
+    let Goal = _prefix "Goal"
     /// <summary>
     /// A CollectiveAgent whose acting agents conceptualize a same SocialRelation .
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Group"></see></summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
-
+    let Group = _prefix "Group"
     /// <summary>
     /// Any social relationship
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialRelation"></see></summary>
-    let SocialRelation =
-        Namespaced_IRI.parse _namespace_name "SocialRelation" |> NamespacedName
-
+    let SocialRelation = _prefix "SocialRelation"
     /// <summary>
     /// A relation stating that an Agent is internally representing a SocialObject: situations, descriptions, concepts, etc. E.g., 'John believes in the conspiracy theory'; 'Niels Bohr created the solar-system metaphor for the atomic theory'; 'Jacques assumes all swans are white'; 'the task force members share the attack plan'.
     /// Conceptualizations can be distinguished into different forms, primarily based on the type of SocialObject that is conceptualized. Descriptions and concepts can be 'assumed', situations can be 'believed' or 'known', plans can be 'adopted', etc. (see ontology: http://www.ontologydesignpatterns.org/ont/dul/Conceptualization.owl.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#conceptualizes"></see></summary>
-    let conceptualizes =
-        Namespaced_IRI.parse _namespace_name "conceptualizes" |> NamespacedName
-
+    let conceptualizes = _prefix "conceptualizes"
     /// <summary>
     /// A piece of information, be it concretely realized or not.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity"></see></summary>
-    let InformationEntity =
-        Namespaced_IRI.parse _namespace_name "InformationEntity" |> NamespacedName
-
+    let InformationEntity = _prefix "InformationEntity"
     /// <summary>
     /// A concrete realization of an InformationObject, e.g. the written document containing the text of a law.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization"></see></summary>
-    let InformationRealization =
-        Namespaced_IRI.parse _namespace_name "InformationRealization" |> NamespacedName
-
+    let InformationRealization = _prefix "InformationRealization"
     /// <summary>
     /// A relation between an information realization and an information object, e.g. the paper copy of the Italian Constitution realizes the text of the Constitution.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRealizedBy"></see></summary>
-    let isRealizedBy =
-        Namespaced_IRI.parse _namespace_name "isRealizedBy" |> NamespacedName
-
+    let isRealizedBy = _prefix "isRealizedBy"
     /// <summary>
     /// This is a large comment field for those who want to investigate the different uses of the 'expresses' relation for modeling different approaches to meaning characterization and modeling.
     /// For example, in all these cases, some aspect of meaning is involved:
@@ -445,463 +371,348 @@ module dul =
     /// A relation between an InformationObject and a 'meaning', generalized here as a 'SocialObject'. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
     /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses"></see></summary>
-    let expresses = Namespaced_IRI.parse _namespace_name "expresses" |> NamespacedName
-
+    let expresses = _prefix "expresses"
     /// <summary>
     /// A relation between an InformationRealization and a Description, e.g. 'the printout of the Italian Constitution concretelyExpresses the Italian Constitution'. It should be supplied also with a rule stating that the InformationRealization realizes an InformationObject that expresses the Description
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#concretelyExpresses"></see></summary>
-    let concretelyExpresses =
-        Namespaced_IRI.parse _namespace_name "concretelyExpresses" |> NamespacedName
-
+    let concretelyExpresses = _prefix "concretelyExpresses"
     /// <summary>
     /// A relation between an information realization and an information object, e.g. the paper copy of the Italian Constitution realizes the text of the Constitution.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#realizes"></see></summary>
-    let realizes = Namespaced_IRI.parse _namespace_name "realizes" |> NamespacedName
-
+    let realizes = _prefix "realizes"
     /// <summary>
     /// Any Object that has a proper space region. The prototypical physical object has also an associated mass, but the nature of its mass can greatly vary based on the epistemological status of the object (scientifically measured, subjectively possible, imaginary).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"></see></summary>
-    let PhysicalObject =
-        Namespaced_IRI.parse _namespace_name "PhysicalObject" |> NamespacedName
-
+    let PhysicalObject = _prefix "PhysicalObject"
     /// <summary>
     /// A Concept that isDefinedIn exactly 1 Description. For example, the Concept 'coffee' in a 'preparesCoffee' relation can be defined in that relation, and for all other Description(s) that use it, the isConceptUsedIn property should be applied. Notice therefore that not necessarily all Concept(s) isDefinedIn exactly 1 Description.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#LocalConcept"></see></summary>
-    let LocalConcept =
-        Namespaced_IRI.parse _namespace_name "LocalConcept" |> NamespacedName
-
+    let LocalConcept = _prefix "LocalConcept"
     /// <summary>
     /// A method is a Description that defines or uses concepts in order to guide carrying out actions aimed at a solution with respect to a problem.
     /// It is different from a Plan, because plans could be carried out in order to follow a method, but a method can be followed by executing alternative plans.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method"></see></summary>
-    let Method = Namespaced_IRI.parse _namespace_name "Method" |> NamespacedName
+    let Method = _prefix "Method"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Narrative"></see>
     /// </summary>
-    let Narrative = Namespaced_IRI.parse _namespace_name "Narrative" |> NamespacedName
-
+    let Narrative = _prefix "Narrative"
     /// <summary>
     /// A person in the physical commonsense intuition: 'have you seen that person walking down the street?'
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson"></see></summary>
-    let NaturalPerson =
-        Namespaced_IRI.parse _namespace_name "NaturalPerson" |> NamespacedName
-
+    let NaturalPerson = _prefix "NaturalPerson"
     /// <summary>
     /// Persons in commonsense intuition, which does not apparently distinguish between either natural or social persons.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person"></see></summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
+    let Person = _prefix "Person"
     /// <summary>
     /// A social norm.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Norm"></see></summary>
-    let Norm = Namespaced_IRI.parse _namespace_name "Norm" |> NamespacedName
-
+    let Norm = _prefix "Norm"
     /// <summary>
     /// A relation between an object and a process, e.g. 'John took part in the discussion', 'a large mass of snow fell during the avalanche', or 'a cook, some sugar, flour, etc. are all present in the cooking of a cake'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn"></see></summary>
-    let isParticipantIn =
-        Namespaced_IRI.parse _namespace_name "isParticipantIn" |> NamespacedName
-
+    let isParticipantIn = _prefix "isParticipantIn"
     /// <summary>
     /// A relation between a Concept and an Entity, e.g. 'John is considered a typical rude man'; your last concert constitutes the achievement of a lifetime; '20-year-old means she's mature enough'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isClassifiedBy"></see></summary>
-    let isClassifiedBy =
-        Namespaced_IRI.parse _namespace_name "isClassifiedBy" |> NamespacedName
-
+    let isClassifiedBy = _prefix "isClassifiedBy"
     /// <summary>
     /// A generic, relative spatial location, holding between any entities. E.g. 'the cat is on the mat', 'Omar is in Samarcanda', 'the wound is close to the femural artery'.
     /// For 'absolute' locations, see SpaceRegion
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasLocation"></see></summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     /// A physical objects with biological characteristics, typically that organisms can self-reproduce.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organism"></see></summary>
-    let Organism = Namespaced_IRI.parse _namespace_name "Organism" |> NamespacedName
-
+    let Organism = _prefix "Organism"
     /// <summary>
     /// An internally structured, conventionally created SocialAgent, needing a specific Role and Agent that plays it, in order to act.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Organization"></see></summary>
-    let Organization =
-        Namespaced_IRI.parse _namespace_name "Organization" |> NamespacedName
-
+    let Organization = _prefix "Organization"
     /// <summary>
     /// Any invariance detected from a dataset, or from observation; also, any invariance proposed based on top-down considerations.
     /// E.g. patterns detected and abstracted by an organism, by pattern recognition algorithms, by machine learning techniques, etc.
     /// An occurrence of a pattern is an 'observable', or detected Situation
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Pattern"></see></summary>
-    let Pattern = Namespaced_IRI.parse _namespace_name "Pattern" |> NamespacedName
+    let Pattern = _prefix "Pattern"
     /// <summary>
     /// Relations are descriptions that can be considered as the counterpart of formal relations (that are included in the FormalEntity class).
     /// For example, 'givingGrantToInstitution(x,y,z)' with three argument types: Provider(x),Grant(y),Recipient(z), can have a Relation counterpart: 'GivingGrantToInstitution', which defines three Concept instances: Provider,Grant,Recipient.
     /// Since social objects are not formal entities, Relation includes here any 'relation-like' entity in common sense, including social relations.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Relation"></see></summary>
-    let Relation = Namespaced_IRI.parse _namespace_name "Relation" |> NamespacedName
-
+    let Relation = _prefix "Relation"
     /// <summary>
     /// A SocialAgent that needs the existence of a specific NaturalPerson in order to act (but the lifetime of the NaturalPerson has only to overlap that of the SocialPerson).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialPerson"></see></summary>
-    let SocialPerson =
-        Namespaced_IRI.parse _namespace_name "SocialPerson" |> NamespacedName
-
+    let SocialPerson = _prefix "SocialPerson"
     /// <summary>
     /// A social entity with agentive features, but whose status is the result of a cultural transformation from e.g. a PhysicalObject, an Event, an Abstract, another SocialObject, etc. For example: the holy grail, deus ex machina, gods, magic wands, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Personification"></see></summary>
-    let Personification =
-        Namespaced_IRI.parse _namespace_name "Personification" |> NamespacedName
-
+    let Personification = _prefix "Personification"
     /// <summary>
     /// A Description having an explicit Goal, to be achieved by executing the plan
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"></see></summary>
-    let Plan = Namespaced_IRI.parse _namespace_name "Plan" |> NamespacedName
-
+    let Plan = _prefix "Plan"
     /// <summary>
     /// A relation between entities and regions, e.g. 'the color of my car is red'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRegionFor"></see></summary>
-    let isRegionFor =
-        Namespaced_IRI.parse _namespace_name "isRegionFor" |> NamespacedName
-
+    let isRegionFor = _prefix "isRegionFor"
     /// <summary>
     /// A physical object that is inherently located; for example, a water area.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalPlace"></see></summary>
-    let PhysicalPlace =
-        Namespaced_IRI.parse _namespace_name "PhysicalPlace" |> NamespacedName
-
+    let PhysicalPlace = _prefix "PhysicalPlace"
     /// <summary>
     /// A location, in a very generic sense: a political geographic entity (Roma, Lesotho), a non-material location determined by the presence of other entities ("the area close to Roma"), pivot events or signs ("the area where the helicopter fell"), complements of other entities ("the area under the table"), etc.
     /// In this generic sense, a Place is an "approximate" location. For an "absolute" location, see the class SpaceRegion
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Place"></see></summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
-
+    let Place = _prefix "Place"
     /// <summary>
     /// A generic, relative localization, holding between any entities. E.g. 'Rome is the seat of the Pope', 'the liver is the location of the tumor'.
     /// For 'absolute' locations, see SpaceRegion
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isLocationOf"></see></summary>
-    let isLocationOf =
-        Namespaced_IRI.parse _namespace_name "isLocationOf" |> NamespacedName
-
+    let isLocationOf = _prefix "isLocationOf"
     /// <summary>
     /// The hasPart relation without transitivity, holding between an Object (the system) and another (the component), and assuming a Design that structures the Object.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasComponent"></see></summary>
-    let hasComponent =
-        Namespaced_IRI.parse _namespace_name "hasComponent" |> NamespacedName
-
+    let hasComponent = _prefix "hasComponent"
     /// <summary>
     /// Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PlanExecution"></see></summary>
-    let PlanExecution =
-        Namespaced_IRI.parse _namespace_name "PlanExecution" |> NamespacedName
-
+    let PlanExecution = _prefix "PlanExecution"
     /// <summary>
     /// A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#satisfies"></see></summary>
-    let satisfies = Namespaced_IRI.parse _namespace_name "satisfies" |> NamespacedName
+    let satisfies = _prefix "satisfies"
     /// <summary>
     /// This is a placeholder for events that are considered in their evolution, or anyway not strictly dependent on agents, tasks, and plans.
     /// See Event class for some thoughts on classifying events. See also 'Transition'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Process"></see></summary>
-    let Process = Namespaced_IRI.parse _namespace_name "Process" |> NamespacedName
+    let Process = _prefix "Process"
     /// <summary>
     /// A Plan that defines Role(s), Task(s), and a specific structure for tasks to be executed in relation to goals to be achieved, in order to achieve the main goal of the project. In other words, a project is a plan with a subgoal structure and multiple roles and tasks.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Project"></see></summary>
-    let Project = Namespaced_IRI.parse _namespace_name "Project" |> NamespacedName
+    let Project = _prefix "Project"
     /// <summary>
     /// An EventType that classifies an Action to be executed.
     /// For example, reaching a destination is a task that can be executed by performing certain actions, e.g. driving a car, buying a train ticket, etc.
     /// The actions to execute a task can also be organized according to a Plan that is not the same as the one that defines the task (if any).
     /// For example, reaching a destination could be defined by a plan to get on holidays, while the plan to execute the task can consist of putting some travels into a sequence.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"></see></summary>
-    let Task = Namespaced_IRI.parse _namespace_name "Task" |> NamespacedName
+    let Task = _prefix "Task"
     /// <summary>
     /// A relation between a Description and a Concept, e.g. a Workflow for a governmental Organization defines the Role 'officer', or 'the Italian Traffic Law defines the role Vehicle'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#defines"></see></summary>
-    let defines = Namespaced_IRI.parse _namespace_name "defines" |> NamespacedName
-
+    let defines = _prefix "defines"
     /// <summary>
     /// A relation between entities and qualities, e.g. 'Dmitri's skin is yellowish'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf"></see></summary>
-    let isQualityOf =
-        Namespaced_IRI.parse _namespace_name "isQualityOf" |> NamespacedName
-
+    let isQualityOf = _prefix "isQualityOf"
     /// <summary>
     /// A relation between entities and regions, e.g. 'the number of wheels of that truck is 12', 'the time of the experiment is August 9th, 2004', 'the whale has been localized at 34 degrees E, 20 degrees S'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion"></see></summary>
-    let hasRegion = Namespaced_IRI.parse _namespace_name "hasRegion" |> NamespacedName
+    let hasRegion = _prefix "hasRegion"
     /// <summary>
     /// A schematic relation between any entities, e.g. 'the chest region overlaps with the abdomen region', 'my spoken words overlap with hers', 'the time of my leave overlaps with the time of your arrival', 'fibromyalgia overlaps with other conditions'.
     /// Subproperties and restrictions can be used to specialize overlaps for objects, events, time intervals, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#overlaps"></see></summary>
-    let overlaps = Namespaced_IRI.parse _namespace_name "overlaps" |> NamespacedName
+    let overlaps = _prefix "overlaps"
     /// <summary>
     /// A relation between entities, expressing a 'sequence' schema.
     /// E.g. 'year 1999 precedes 2000', 'deciding what coffee to use' precedes 'preparing coffee', 'World War II follows World War I', 'in the Milan to Rome autoroute, Bologna precedes Florence', etc.
     /// It can then be used between tasks, processes, time intervals, spatially locate objects, situations, etc.
     /// Subproperties can be defined in order to distinguish the different uses.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#precedes"></see></summary>
-    let precedes = Namespaced_IRI.parse _namespace_name "precedes" |> NamespacedName
+    let precedes = _prefix "precedes"
     /// <summary>
     /// A legal position by which an Agent is entitled to obtain something from another Agent , under specified circumstances, through an enforcement explicited either in a Law, Contract , etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Right"></see></summary>
-    let Right = Namespaced_IRI.parse _namespace_name "Right" |> NamespacedName
-
+    let Right = _prefix "Right"
     /// <summary>
     /// A relation between a description and a task, e.g. the recipe for a cake defines the task 'boil'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#definesTask"></see></summary>
-    let definesTask =
-        Namespaced_IRI.parse _namespace_name "definesTask" |> NamespacedName
-
+    let definesTask = _prefix "definesTask"
     /// <summary>
     /// A relation between a description and a role, e.g. the recipe for a cake defines the role 'ingredient'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#definesRole"></see></summary>
-    let definesRole =
-        Namespaced_IRI.parse _namespace_name "definesRole" |> NamespacedName
-
+    let definesRole = _prefix "definesRole"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Set"></see>
     /// </summary>
-    let Set = Namespaced_IRI.parse _namespace_name "Set" |> NamespacedName
-
+    let Set = _prefix "Set"
     /// <summary>
     /// A relation between a dul:SocialObject (the 'meaning') and a dul:InformationObject (the 'expression').
     /// For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
     /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included in the encoding of 'expresses', for those who want to investigate more on what kind of meaning can be represented in what form.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isExpressedBy"></see></summary>
-    let isExpressedBy =
-        Namespaced_IRI.parse _namespace_name "isExpressedBy" |> NamespacedName
-
+    let isExpressedBy = _prefix "isExpressedBy"
     /// <summary>
     /// Any Region in a dimensional space that is used to represent some characteristic of a SocialObject, e.g. judgment values, social scalars, statistical attributes over a collection of entities, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObjectAttribute"></see></summary>
-    let SocialObjectAttribute =
-        Namespaced_IRI.parse _namespace_name "SocialObjectAttribute" |> NamespacedName
-
+    let SocialObjectAttribute = _prefix "SocialObjectAttribute"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SpatioTemporalRegion"></see>
     /// </summary>
-    let SpatioTemporalRegion =
-        Namespaced_IRI.parse _namespace_name "SpatioTemporalRegion" |> NamespacedName
-
+    let SpatioTemporalRegion = _prefix "SpatioTemporalRegion"
     /// <summary>
     /// A relation between an action and a task, e.g. 'putting some water in a pot and putting the pot on a fire until the water starts bubbling' executes the task 'boiling'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isExecutedIn"></see></summary>
-    let isExecutedIn =
-        Namespaced_IRI.parse _namespace_name "isExecutedIn" |> NamespacedName
-
+    let isExecutedIn = _prefix "isExecutedIn"
     /// <summary>
     /// A relation between roles and tasks, e.g. 'students have the duty of giving exams' (i.e. the Role 'student' hasTask the Task 'giving exams').
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isTaskOf"></see></summary>
-    let isTaskOf = Namespaced_IRI.parse _namespace_name "isTaskOf" |> NamespacedName
-
+    let isTaskOf = _prefix "isTaskOf"
     /// <summary>
     /// A relation between a description and a task, e.g. the task 'boil' is defined in a recipe for a cake.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isTaskDefinedIn"></see></summary>
-    let isTaskDefinedIn =
-        Namespaced_IRI.parse _namespace_name "isTaskDefinedIn" |> NamespacedName
-
+    let isTaskDefinedIn = _prefix "isTaskDefinedIn"
     /// <summary>
     /// A Theory is a Description that represents a set of assumptions for describing something, usually general. Scientific, philosophical, and commonsense theories can be included here.
     /// This class can also be used to act as 'naturalized reifications' of logical theories (of course, they will be necessarily incomplete in this case, because second-order entities are represented as first-order ones).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Theory"></see></summary>
-    let Theory = Namespaced_IRI.parse _namespace_name "Theory" |> NamespacedName
-
+    let Theory = _prefix "Theory"
     /// <summary>
     /// The generic relation between time intervals and events.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isTimeIntervalOf"></see></summary>
-    let isTimeIntervalOf =
-        Namespaced_IRI.parse _namespace_name "isTimeIntervalOf" |> NamespacedName
-
+    let isTimeIntervalOf = _prefix "isTimeIntervalOf"
     /// <summary>
     /// A transition is a Situation that creates a context for three TimeInterval(s), two additional different Situation(s), one Event, one Process, and at least one Object: the Event is observed as the cause for the transition, one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions (including the one represented here), in which at least one Object is situated. Finally, the time intervals position the situations and the transitional event in time.
     /// This class of situations partly encodes the ontology underlying typical engineering algebras for processes, e.g. Petri Nets.
     /// A full representation of the transition ontology is outside the expressivity of OWL, because we would need qualified cardinality restrictions,  coreference, property equivalence, and property composition.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Transition"></see></summary>
-    let Transition = Namespaced_IRI.parse _namespace_name "Transition" |> NamespacedName
-
+    let Transition = _prefix "Transition"
     /// <summary>
     /// A relation between situations and objects, e.g. 'this morning I've prepared my coffee and had my fingers burnt' (i.e.: the preparation of my coffee this morning included me).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#includesObject"></see></summary>
-    let includesObject =
-        Namespaced_IRI.parse _namespace_name "includesObject" |> NamespacedName
-
+    let includesObject = _prefix "includesObject"
     /// <summary>
     /// A relation between situations and time intervals, e.g. 'this morning I've prepared my coffee and had my fingers burnt' (i.e.: preparing my coffee was held this morning). A data value attached to the time interval typically complements this modelling pattern.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#includesTime"></see></summary>
-    let includesTime =
-        Namespaced_IRI.parse _namespace_name "includesTime" |> NamespacedName
-
+    let includesTime = _prefix "includesTime"
     /// <summary>
     /// A relation between situations and events, e.g. 'this morning I've prepared my coffee and had my fingers burnt' (i.e.: the preparation of my coffee this morning included a burning of my fingers).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#includesEvent"></see></summary>
-    let includesEvent =
-        Namespaced_IRI.parse _namespace_name "includesEvent" |> NamespacedName
-
+    let includesEvent = _prefix "includesEvent"
     /// <summary>
     /// A Collection whose members are the maximal set of individuals that share the same (named) type, e.g. "the gem stones", "the Italians".
     /// This class is very useful to apply a variety of the so-called "ClassesAsValues" design pattern, when it is used to talk about the extensional aspect of a class. An alternative variety of the pattern applies to the intensional aspect of a class, and the class Concept should be used instead.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TypeCollection"></see></summary>
-    let TypeCollection =
-        Namespaced_IRI.parse _namespace_name "TypeCollection" |> NamespacedName
-
+    let TypeCollection = _prefix "TypeCollection"
     /// <summary>
     /// Units of measure are conceptualized here as parameters on regions, which can be valued as datatype values.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#UnitOfMeasure"></see></summary>
-    let UnitOfMeasure =
-        Namespaced_IRI.parse _namespace_name "UnitOfMeasure" |> NamespacedName
-
+    let UnitOfMeasure = _prefix "UnitOfMeasure"
     /// <summary>
     /// The relation between a Parameter, e.g. 'MajorAgeLimit', and a Region, e.g. '18_year'.
     /// For a more data-oriented relation, see hasDataValue
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#parametrizes"></see></summary>
-    let parametrizes =
-        Namespaced_IRI.parse _namespace_name "parametrizes" |> NamespacedName
-
+    let parametrizes = _prefix "parametrizes"
     /// <summary>
     /// A Plan that defines Role(s), Task(s), and a specific structure for tasks to be executed, usually supporting the work of an Organization
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Workflow"></see></summary>
-    let Workflow = Namespaced_IRI.parse _namespace_name "Workflow" |> NamespacedName
-
+    let Workflow = _prefix "Workflow"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#WorkflowExecution"></see>
     /// </summary>
-    let WorkflowExecution =
-        Namespaced_IRI.parse _namespace_name "WorkflowExecution" |> NamespacedName
-
+    let WorkflowExecution = _prefix "WorkflowExecution"
     /// <summary>
     /// The relation holding between any Agent, and a SocialAgent. In principle, a SocialAgent requires at least one PhysicalAgent in order to act, but this dependency can be 'delegated'; e.g. a university can be acted for by a department, which on its turm is acted for by physical agents.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#actsFor"></see></summary>
-    let actsFor = Namespaced_IRI.parse _namespace_name "actsFor" |> NamespacedName
-
+    let actsFor = _prefix "actsFor"
     /// <summary>
     /// A catch-all object property, useful for alignment and querying purposes.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"></see></summary>
-    let associatedWith =
-        Namespaced_IRI.parse _namespace_name "associatedWith" |> NamespacedName
-
+    let associatedWith = _prefix "associatedWith"
     /// <summary>
     /// A relation between concepts and collections, where a Concept is said to characterize a Collection; it corresponds to a link between the (reified) intensional and extensional interpretations of a _proper subset of_ a (reified) class. This is different from covers, because it refers to an interpretation the entire reified class.
     /// E.g. the collection of vintage saxophones is characterized by the Concept 'manufactured by hand', while it gets covered by the Concept 'Saxophone' with the Parameter 'Vintage'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#characterizes"></see></summary>
-    let characterizes =
-        Namespaced_IRI.parse _namespace_name "characterizes" |> NamespacedName
-
+    let characterizes = _prefix "characterizes"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isCharacterizedBy"></see>
     /// </summary>
-    let isCharacterizedBy =
-        Namespaced_IRI.parse _namespace_name "isCharacterizedBy" |> NamespacedName
-
+    let isCharacterizedBy = _prefix "isCharacterizedBy"
     /// <summary>
     /// A relation stating that an Agent is internally representing a Description . E.g., 'John believes in the conspiracy theory'; 'Niels Bohr created a solar-system metaphor for his atomic theory'; 'Jacques assumes all swans are white'; 'the task force shares the attack plan'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConceptualizedBy"></see></summary>
-    let isConceptualizedBy =
-        Namespaced_IRI.parse _namespace_name "isConceptualizedBy" |> NamespacedName
-
+    let isConceptualizedBy = _prefix "isConceptualizedBy"
     /// <summary>
     /// A relation between an InformationRealization and a Description, e.g. 'the printout of the Italian Constitution concretelyExpresses the Italian Constitution'. It should be supplied also with a rule stating that the InformationRealization realizes an InformationObject that expresses the Description
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConcretelyExpressedBy"></see></summary>
-    let isConcretelyExpressedBy =
-        Namespaced_IRI.parse _namespace_name "isConcretelyExpressedBy" |> NamespacedName
-
+    let isConcretelyExpressedBy = _prefix "isConcretelyExpressedBy"
     /// <summary>
     /// A relation between two objects participating in a same Event; e.g., 'Vitas and Jimmy are playing tennis'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#coparticipatesWith"></see></summary>
-    let coparticipatesWith =
-        Namespaced_IRI.parse _namespace_name "coparticipatesWith" |> NamespacedName
-
+    let coparticipatesWith = _prefix "coparticipatesWith"
     /// <summary>
     /// A relation between concepts and collections, where a Concept is said to cover a Collection; it corresponds to a link between the (reified) intensional and extensional interpretations of a (reified) class.
     /// E.g. the collection of vintage saxophones is covered by the Concept 'Saxophone' with the Parameter 'Vintage'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#covers"></see></summary>
-    let covers = Namespaced_IRI.parse _namespace_name "covers" |> NamespacedName
-
+    let covers = _prefix "covers"
     /// <summary>
     /// A relation between concepts and collections, where a Concept is said to cover a Collection; it corresponds to a link between the (reified) intensional and extensional interpretations of a (reified) class.
     /// E.g. the collection of vintage saxophones is covered by the Concept 'Saxophone' with the Parameter 'Vintage'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isCoveredBy"></see></summary>
-    let isCoveredBy =
-        Namespaced_IRI.parse _namespace_name "isCoveredBy" |> NamespacedName
-
+    let isCoveredBy = _prefix "isCoveredBy"
     /// <summary>
     /// A generic relation holding between a Description and a Concept. In order to be used, a Concept must be previously definedIn another Description. This last condition cannot be encoded for object properties in OWL.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#usesConcept"></see></summary>
-    let usesConcept =
-        Namespaced_IRI.parse _namespace_name "usesConcept" |> NamespacedName
-
+    let usesConcept = _prefix "usesConcept"
     /// <summary>
     /// A relation between a description and a role, e.g. the role 'Ingredient' is defined in the recipe for a cake.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleDefinedIn"></see></summary>
-    let isRoleDefinedIn =
-        Namespaced_IRI.parse _namespace_name "isRoleDefinedIn" |> NamespacedName
-
+    let isRoleDefinedIn = _prefix "isRoleDefinedIn"
     /// <summary>
     /// The relation between a Description and an Entity : a Description gives a unity to a Collection of parts (the components), or constituents, by assigning a Role to each of them in the context of a whole Object (the system).
     /// A same Entity can be given different descriptions, for example, an old cradle can be given a unifying Description based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#describes"></see></summary>
-    let describes = Namespaced_IRI.parse _namespace_name "describes" |> NamespacedName
-
+    let describes = _prefix "describes"
     /// <summary>
     /// The intransitive follows relation. For example, Wednesday directly precedes Thursday. Directness of precedence depends on the designer conceptualization.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyFollows"></see></summary>
-    let directlyFollows =
-        Namespaced_IRI.parse _namespace_name "directlyFollows" |> NamespacedName
-
+    let directlyFollows = _prefix "directlyFollows"
     /// <summary>
     /// A relation between entities, expressing a 'sequence' schema.
     /// E.g. 'year 2000 follows 1999', 'preparing coffee' follows 'deciding what coffee to use', 'II World War follows I World War', etc.
     /// It can be used between tasks, processes or time intervals, and subproperties would fit best in order to distinguish the different uses.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#follows"></see></summary>
-    let follows = Namespaced_IRI.parse _namespace_name "follows" |> NamespacedName
-
+    let follows = _prefix "follows"
     /// <summary>
     /// The intransitive precedes relation. For example, Monday directly precedes Tuesday. Directness of precedence depends on the designer conceptualization.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyPrecedes"></see></summary>
-    let directlyPrecedes =
-        Namespaced_IRI.parse _namespace_name "directlyPrecedes" |> NamespacedName
-
+    let directlyPrecedes = _prefix "directlyPrecedes"
     /// <summary>
     /// A partial order relation that holds between descriptions. It represents the proper part relation between a description and another description featuring the same properties as the former, with at least one additional one.
     /// Descriptions can be expanded either by adding other descriptions as parts, or by refining concepts that are used by them.
     /// An 'intention' to expand must be present (unless purely formal theories are considered, but even in this case a criterion of relevance is usually active).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expands"></see></summary>
-    let expands = Namespaced_IRI.parse _namespace_name "expands" |> NamespacedName
-
+    let expands = _prefix "expands"
     /// <summary>
     /// Any relation between descriptions.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRelatedToDescription"></see></summary>
-    let isRelatedToDescription =
-        Namespaced_IRI.parse _namespace_name "isRelatedToDescription" |> NamespacedName
-
+    let isRelatedToDescription = _prefix "isRelatedToDescription"
     /// <summary>
     /// A partial order relation that holds between descriptions. It represents the proper part relation between a description and another description featuring the same properties as the former, with at least one additional one.
     /// Descriptions can be expanded either by adding other descriptions as parts, or by refining concepts that are used by them.
     /// An 'intention' to expand must be present (unless purely formal theories are considered, but even in this case a criterion of relevance is usually active).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isExpandedIn"></see></summary>
-    let isExpandedIn =
-        Namespaced_IRI.parse _namespace_name "isExpandedIn" |> NamespacedName
-
+    let isExpandedIn = _prefix "isExpandedIn"
     /// <summary>
     /// A relation between an InformationObject and a Concept , e.g. the term "dog" expresses the Concept "dog". For expressing a relational meaning, see the more general object property: expresses
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expressesConcept"></see></summary>
-    let expressesConcept =
-        Namespaced_IRI.parse _namespace_name "expressesConcept" |> NamespacedName
-
+    let expressesConcept = _prefix "expressesConcept"
     /// <summary>
     /// A relation between an InformationObject and a Concept , e.g. the term "dog" expresses the Concept "dog". For expressing a relational meaning, see the more general object property: expresses
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConceptExpressedBy"></see></summary>
-    let isConceptExpressedBy =
-        Namespaced_IRI.parse _namespace_name "isConceptExpressedBy" |> NamespacedName
-
+    let isConceptExpressedBy = _prefix "isConceptExpressedBy"
     /// <summary>
     /// Generic distance relation between any Entity(s). E.g. Rome is far from Beijing, astronomy is far from necromancy.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#farFrom"></see></summary>
-    let farFrom = Namespaced_IRI.parse _namespace_name "farFrom" |> NamespacedName
-
+    let farFrom = _prefix "farFrom"
     /// <summary>
     /// A relation to encode either formal or informal characterizations of 'boundaries' common to two different entities: an Event that ends when another begins, two abstract regions that have a common topological boundary, two objects that are said to be 'in contact' from a commonsense perspective, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasCommonBoundary"></see></summary>
-    let hasCommonBoundary =
-        Namespaced_IRI.parse _namespace_name "hasCommonBoundary" |> NamespacedName
-
+    let hasCommonBoundary = _prefix "hasCommonBoundary"
     /// <summary>
     /// 'Constituency' depends on some layering of  the world described by the ontology. For example, scientific granularities (e.g. body-organ-tissue-cell) or ontological 'strata' (e.g. social-mental-biological-physical) are  typical layerings.
     /// Intuitively, a constituent is a part belonging to a lower layer. Since layering is actually a partition of the world described by the ontology, constituents are not properly classified as parts, although this kinship can be intuitive for common sense.
@@ -909,16 +720,12 @@ module dul =
     /// Example of are the persons constituting a social system, the molecules constituting a person, the atoms constituting a river, etc.
     /// In all these examples, we notice a typical discontinuity between the constituted and the constituent object: e.g. a social system is conceptualized at a different layer from the persons that constitute it, a person is conceptualized at a different layer from the molecules that constitute them, and a river is conceptualized at a different layer from the atoms that constitute it.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConstituentOf"></see></summary>
-    let isConstituentOf =
-        Namespaced_IRI.parse _namespace_name "isConstituentOf" |> NamespacedName
-
+    let isConstituentOf = _prefix "isConstituentOf"
     /// <summary>
     /// A relation between parameters and entities. It allows to assert generic constraints (encoded as parameters), e.g. MinimumAgeForDriving isConstraintFor John (where John is a legal subject under the TrafficLaw).
     /// The intended semantics (not expressible in OWL) is that a Parameter isParameterFor a Concept that classifies an Entity; moreover, it entails that a Parameter parametrizes a Region that isRegionFor that Entity.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasConstraint"></see></summary>
-    let hasConstraint =
-        Namespaced_IRI.parse _namespace_name "hasConstraint" |> NamespacedName
-
+    let hasConstraint = _prefix "hasConstraint"
     /// <summary>
     /// A datatype property that encodes values from a datatype for an Entity.
     /// There are several ways to encode values in DOLCE (Ultralite):
@@ -934,279 +741,203 @@ module dul =
     /// Furthermore, if one needs to distinguish the individual Quality of a value, e.g. the particular nature of the density of a substance, pattern (3) can be used.
     /// Patterns (4) and (5) should be used instead when a constraint or a selection is modeled, independently from the actual observation of values in the real world.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"></see></summary>
-    let hasDataValue =
-        Namespaced_IRI.parse _namespace_name "hasDataValue" |> NamespacedName
-
+    let hasDataValue = _prefix "hasDataValue"
     /// <summary>
     /// A datatype property that encodes values from xsd:date for an Event; a same Event can have more than one xsd:date value: begin date, end date, date at which the interval holds, as well as dates expressed in different formats: xsd:gYear, xsd:dateTime, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasEventDate"></see></summary>
-    let hasEventDate =
-        Namespaced_IRI.parse _namespace_name "hasEventDate" |> NamespacedName
-
+    let hasEventDate = _prefix "hasEventDate"
     /// <summary>
     /// A datatype property that encodes values from xsd:date for a TimeInterval; a same TimeInterval can have more than one xsd:date value: begin date, end date, date at which the interval holds, as well as dates expressed in different formats: xsd:gYear, xsd:dateTime, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasIntervalDate"></see></summary>
-    let hasIntervalDate =
-        Namespaced_IRI.parse _namespace_name "hasIntervalDate" |> NamespacedName
-
+    let hasIntervalDate = _prefix "hasIntervalDate"
     /// <summary>
     /// A datatype property that encodes values for a Region, e.g. a float for the Region Height.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegionDataValue"></see></summary>
-    let hasRegionDataValue =
-        Namespaced_IRI.parse _namespace_name "hasRegionDataValue" |> NamespacedName
-
+    let hasRegionDataValue = _prefix "hasRegionDataValue"
     /// <summary>
     /// A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParameter"></see></summary>
-    let hasParameter =
-        Namespaced_IRI.parse _namespace_name "hasParameter" |> NamespacedName
-
+    let hasParameter = _prefix "hasParameter"
     /// <summary>
     /// Any relation between concepts, e.g. superordinated, conceptual parthood, having a parameter, having a task, superordination, etc.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRelatedToConcept"></see></summary>
-    let isRelatedToConcept =
-        Namespaced_IRI.parse _namespace_name "isRelatedToConcept" |> NamespacedName
-
+    let isRelatedToConcept = _prefix "isRelatedToConcept"
     /// <summary>
     /// Parametrizes values from a datatype. For example, a Parameter MinimumAgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, MinimumAgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
     /// More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two 'sub-parameters': MinimumAgeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeForDrugUsage (that hasParameterDataValue 50), which are components of (cf. hasComponent) the main Parameter AgeRangeForDrugUsage.
     /// Ordering on subparameters can be created by using or specializing the object property 'precedes'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParameterDataValue"></see></summary>
-    let hasParameterDataValue =
-        Namespaced_IRI.parse _namespace_name "hasParameterDataValue" |> NamespacedName
-
+    let hasParameterDataValue = _prefix "hasParameterDataValue"
     /// <summary>
     /// Direct succession applied to situations.
     /// E.g., 'A postcondition of our Plan is to have things settled'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPostcondition"></see></summary>
-    let hasPostcondition =
-        Namespaced_IRI.parse _namespace_name "hasPostcondition" |> NamespacedName
-
+    let hasPostcondition = _prefix "hasPostcondition"
     /// <summary>
     /// Direct precedence applied to situations.
     /// E.g., 'A precondition to declare war against a foreign country is claiming to find nuclear weapons in it'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPrecondition"></see></summary>
-    let hasPrecondition =
-        Namespaced_IRI.parse _namespace_name "hasPrecondition" |> NamespacedName
-
+    let hasPrecondition = _prefix "hasPrecondition"
     /// <summary>
     /// A relation between entities and qualities, e.g. 'Dmitri's skin is yellowish'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"></see></summary>
-    let hasQuality = Namespaced_IRI.parse _namespace_name "hasQuality" |> NamespacedName
+    let hasQuality = _prefix "hasQuality"
     /// <summary>
     /// A relation between an object and a role, e.g. the person 'John' has role 'student'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRole"></see></summary>
-    let hasRole = Namespaced_IRI.parse _namespace_name "hasRole" |> NamespacedName
+    let hasRole = _prefix "hasRole"
     /// <summary>
     /// A relation between entities and situations, e.g. 'this morning I've prepared my coffee with a new fantastic Arabica', i.e.: (an amount of) a new fantastic Arabica hasSetting the preparation of my coffee this morning.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasSetting"></see></summary>
-    let hasSetting = Namespaced_IRI.parse _namespace_name "hasSetting" |> NamespacedName
+    let hasSetting = _prefix "hasSetting"
     /// <summary>
     /// A relation between roles and tasks, e.g. 'students have the duty of giving exams' (i.e. the Role 'student' hasTask the Task 'giving exams').
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasTask"></see></summary>
-    let hasTask = Namespaced_IRI.parse _namespace_name "hasTask" |> NamespacedName
-
+    let hasTask = _prefix "hasTask"
     /// <summary>
     /// A relation between situations and actions, e.g. 'this morning I've prepared my coffee and had my fingers burnt' (i.e.: the preparation of my coffee this morning included a burning of my fingers).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#includesAction"></see></summary>
-    let includesAction =
-        Namespaced_IRI.parse _namespace_name "includesAction" |> NamespacedName
-
+    let includesAction = _prefix "includesAction"
     /// <summary>
     /// A relation between situations and persons, e.g. 'this morning I've prepared my coffee and had my fingers burnt' (i.e.: the preparation of my coffee this morning included me).
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#includesAgent"></see></summary>
-    let includesAgent =
-        Namespaced_IRI.parse _namespace_name "includesAgent" |> NamespacedName
-
+    let includesAgent = _prefix "includesAgent"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isAgentIncludedIn"></see>
     /// </summary>
-    let isAgentIncludedIn =
-        Namespaced_IRI.parse _namespace_name "isAgentIncludedIn" |> NamespacedName
-
+    let isAgentIncludedIn = _prefix "isAgentIncludedIn"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isObjectIncludedIn"></see>
     /// </summary>
-    let isObjectIncludedIn =
-        Namespaced_IRI.parse _namespace_name "isObjectIncludedIn" |> NamespacedName
-
+    let isObjectIncludedIn = _prefix "isObjectIncludedIn"
     /// <summary>
     /// A relation between a Description and a SocialAgent, e.g. a Constitutional Charter introduces the SocialAgent 'PresidentOfRepublic'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#introduces"></see></summary>
-    let introduces = Namespaced_IRI.parse _namespace_name "introduces" |> NamespacedName
-
+    let introduces = _prefix "introduces"
     /// <summary>
     /// Agent participation.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#involvesAgent"></see></summary>
-    let involvesAgent =
-        Namespaced_IRI.parse _namespace_name "involvesAgent" |> NamespacedName
-
+    let involvesAgent = _prefix "involvesAgent"
     /// <summary>
     /// Agent participation.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isAgentInvolvedIn"></see></summary>
-    let isAgentInvolvedIn =
-        Namespaced_IRI.parse _namespace_name "isAgentInvolvedIn" |> NamespacedName
-
+    let isAgentInvolvedIn = _prefix "isAgentInvolvedIn"
     /// <summary>
     /// A relation between information objects and any Entity (including information objects). It can be used to talk about e.g. entities are references of proper nouns: the proper noun 'Leonardo da Vinci' isAbout the Person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' isAbout the set of all persons in a domain of discourse, which can be represented in DOLCE-Ultralite as an individual of the class: Collection .
     /// The isAbout relation is reflexive (not expressible in OWL1.0), because information objects are also about themselves.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isAbout"></see></summary>
-    let isAbout = Namespaced_IRI.parse _namespace_name "isAbout" |> NamespacedName
-
+    let isAbout = _prefix "isAbout"
     /// <summary>
     /// A relation between information objects and any Entity (including information objects). It can be used to talk about e.g. entities are references of proper nouns: the proper noun 'Leonardo da Vinci' isAbout the Person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' isAbout the set of all persons in a domain of discourse, which can be represented in DOLCE-Ultralite as an individual of the class: Collection .
     /// The isReferenceOf relation is irreflexive, differently from its inverse isAbout.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isReferenceOf"></see></summary>
-    let isReferenceOf =
-        Namespaced_IRI.parse _namespace_name "isReferenceOf" |> NamespacedName
-
+    let isReferenceOf = _prefix "isReferenceOf"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isActionIncludedIn"></see>
     /// </summary>
-    let isActionIncludedIn =
-        Namespaced_IRI.parse _namespace_name "isActionIncludedIn" |> NamespacedName
-
+    let isActionIncludedIn = _prefix "isActionIncludedIn"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isEventIncludedIn"></see>
     /// </summary>
-    let isEventIncludedIn =
-        Namespaced_IRI.parse _namespace_name "isEventIncludedIn" |> NamespacedName
-
+    let isEventIncludedIn = _prefix "isEventIncludedIn"
     /// <summary>
     /// The hasPart relation without transitivity, holding between an Object (the system) and another (the component), and assuming a Design that structures the Object.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isComponentOf"></see></summary>
-    let isComponentOf =
-        Namespaced_IRI.parse _namespace_name "isComponentOf" |> NamespacedName
-
+    let isComponentOf = _prefix "isComponentOf"
     /// <summary>
     /// A relation between any entities, e.g.'brain is a part of the human body'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf"></see></summary>
-    let isPartOf = Namespaced_IRI.parse _namespace_name "isPartOf" |> NamespacedName
-
+    let isPartOf = _prefix "isPartOf"
     /// <summary>
     /// A more generic relation holding between a Description and a Concept. In order to be used, a Concept must be previously definedIn another Description
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConceptUsedIn"></see></summary>
-    let isConceptUsedIn =
-        Namespaced_IRI.parse _namespace_name "isConceptUsedIn" |> NamespacedName
-
+    let isConceptUsedIn = _prefix "isConceptUsedIn"
     /// <summary>
     /// A relation between parameters and entities. It allows to assert generic constraints (encoded as parameters), e.g. MinimumAgeForDriving isConstraintFor John (where John is a legal subject under the TrafficLaw).
     /// The intended semantics (not expressible in OWL) is that a Parameter isConstraintFor and Entity if the Parameter isParameterFor a Concept that classifies that Entity; moreover, it entails that a Parameter parametrizes a Region that isRegionFor that Entity. The use in OWL is therefore a shortcut to annotate what Parameter constrains what Entity
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConstraintFor"></see></summary>
-    let isConstraintFor =
-        Namespaced_IRI.parse _namespace_name "isConstraintFor" |> NamespacedName
-
+    let isConstraintFor = _prefix "isConstraintFor"
     /// <summary>
     /// A relation to represent a (past, present or future) TimeInterval at which an Entity is observable.
     /// In order to encode a specific time, a data value should be related to the TimeInterval.
     /// An alternative way of representing time is the datatype property: hasIntervalDate
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isObservableAt"></see></summary>
-    let isObservableAt =
-        Namespaced_IRI.parse _namespace_name "isObservableAt" |> NamespacedName
-
+    let isObservableAt = _prefix "isObservableAt"
     /// <summary>
     /// A relation to represent a (past, present or future) TimeInterval at which an Entity is observable.
     /// In order to encode a specific time, a data value should be related to the TimeInterval.
     /// An alternative way of representing time is the datatype property: hasIntervalDate
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isTimeOfObservationOf"></see></summary>
-    let isTimeOfObservationOf =
-        Namespaced_IRI.parse _namespace_name "isTimeOfObservationOf" |> NamespacedName
-
+    let isTimeOfObservationOf = _prefix "isTimeOfObservationOf"
     /// <summary>
     /// A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParameterFor"></see></summary>
-    let isParameterFor =
-        Namespaced_IRI.parse _namespace_name "isParameterFor" |> NamespacedName
-
+    let isParameterFor = _prefix "isParameterFor"
     /// <summary>
     /// The relation between a Parameter, e.g. 'MajorAge', and a Region, e.g. '&gt;17 year'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParametrizedBy"></see></summary>
-    let isParametrizedBy =
-        Namespaced_IRI.parse _namespace_name "isParametrizedBy" |> NamespacedName
-
+    let isParametrizedBy = _prefix "isParametrizedBy"
     /// <summary>
     /// Direct succession applied to situations.
     /// E.g., 'Taking some rest is a postcondition of my search for a hotel'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPostconditionOf"></see></summary>
-    let isPostconditionOf =
-        Namespaced_IRI.parse _namespace_name "isPostconditionOf" |> NamespacedName
-
+    let isPostconditionOf = _prefix "isPostconditionOf"
     /// <summary>
     /// Direct precedence applied to situations.
     /// E.g., 'claiming to find nuclear weapons in a foreign country is a precondition to declare war against it'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPreconditionOf"></see></summary>
-    let isPreconditionOf =
-        Namespaced_IRI.parse _namespace_name "isPreconditionOf" |> NamespacedName
+    let isPreconditionOf = _prefix "isPreconditionOf"
 
     /// <summary>
     /// The relation between entities and information realizations, e.g. between Italy and a paper copy of the text of the Italian Constitution.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isReferenceOfInformationRealizedBy"></see></summary>
     let isReferenceOfInformationRealizedBy =
-        Namespaced_IRI.parse _namespace_name "isReferenceOfInformationRealizedBy" |> NamespacedName
+        _prefix "isReferenceOfInformationRealizedBy"
 
     /// <summary>
     /// A relation between an object and a role, e.g. 'student' is the role of 'John'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleOf"></see></summary>
-    let isRoleOf = Namespaced_IRI.parse _namespace_name "isRoleOf" |> NamespacedName
-
+    let isRoleOf = _prefix "isRoleOf"
     /// <summary>
     /// A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSatisfiedBy"></see></summary>
-    let isSatisfiedBy =
-        Namespaced_IRI.parse _namespace_name "isSatisfiedBy" |> NamespacedName
-
+    let isSatisfiedBy = _prefix "isSatisfiedBy"
     /// <summary>
     /// A partial order relation that holds between social objects. It represents the subsumption relation between e.g. a Concept and another Concept that is broader in extensional interpretation, but narrowe in intensional interpretation.
     /// E.g. PhDStudent Role specializes Student Role
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSpecializedBy"></see></summary>
-    let isSpecializedBy =
-        Namespaced_IRI.parse _namespace_name "isSpecializedBy" |> NamespacedName
-
+    let isSpecializedBy = _prefix "isSpecializedBy"
     /// <summary>
     /// A partial order relation that holds between social objects.
     /// It mainly represents the subsumption relation between e.g. a Concept or Description and another Concept (resp. Description) that is broader in extensional interpretation, but narrower in intensional interpretation. For example, the role PhDStudent specializes the role Student.
     /// Another possible use is between a Collection that isCoveredBy a Concept A, and another Collection that isCoveredBy a Concept B that on its turm specializes A. For example, the 70,000 series Selmer Mark VI saxophone Collection specializes the Selmer Mark VI saxophone Collection.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#specializes"></see></summary>
-    let specializes =
-        Namespaced_IRI.parse _namespace_name "specializes" |> NamespacedName
-
+    let specializes = _prefix "specializes"
     /// <summary>
     /// Direct succession applied to concepts. E.g. the role 'Officer' is subordinated to 'Director'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSubordinatedTo"></see></summary>
-    let isSubordinatedTo =
-        Namespaced_IRI.parse _namespace_name "isSubordinatedTo" |> NamespacedName
-
+    let isSubordinatedTo = _prefix "isSubordinatedTo"
     /// <summary>
     /// Direct precedence applied to concepts. E.g. the role 'Executive' is superordinated to 'DepartmentManager'.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSuperordinatedTo"></see></summary>
-    let isSuperordinatedTo =
-        Namespaced_IRI.parse _namespace_name "isSuperordinatedTo" |> NamespacedName
-
+    let isSuperordinatedTo = _prefix "isSuperordinatedTo"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isTimeIncludedIn"></see>
     /// </summary>
-    let isTimeIncludedIn =
-        Namespaced_IRI.parse _namespace_name "isTimeIncludedIn" |> NamespacedName
-
+    let isTimeIncludedIn = _prefix "isTimeIncludedIn"
     /// <summary>
     /// A Collection has a unification criterion, provided by a Description; for example, a community of practice can be unified by a shared theory or interest, e.g. the community that makes research on mirror neurons shares some core knowledge about mirror neurons, which can be represented as a Description MirrorNeuronTheory that unifies the community. There can be several unifying descriptions.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isUnifiedBy"></see></summary>
-    let isUnifiedBy =
-        Namespaced_IRI.parse _namespace_name "isUnifiedBy" |> NamespacedName
-
+    let isUnifiedBy = _prefix "isUnifiedBy"
     /// <summary>
     /// Generic distance relation between any Entity(s). E.g. Rome is near to Florence, astronomy is near to physics.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#nearTo"></see></summary>
-    let nearTo = Namespaced_IRI.parse _namespace_name "nearTo" |> NamespacedName
-
+    let nearTo = _prefix "nearTo"
     /// <summary>
     /// The relation between entities and information realizations, e.g. between Italy and a paper copy of the text of the Italian Constitution.
     /// <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#realizesInformationAbout"></see></summary>
-    let realizesInformationAbout =
-        Namespaced_IRI.parse _namespace_name "realizesInformationAbout" |> NamespacedName
-
+    let realizesInformationAbout = _prefix "realizesInformationAbout"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#sameSettingAs"></see>
     /// </summary>
-    let sameSettingAs =
-        Namespaced_IRI.parse _namespace_name "sameSettingAs" |> NamespacedName
+    let sameSettingAs = _prefix "sameSettingAs"

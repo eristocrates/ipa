@@ -1,2724 +1,2235 @@
 namespace http.rdaregistry.info.Elements.m.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rdam =
     let _namespace_name = "http://rdaregistry.info/Elements/m/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30001"></see>
     /// </summary>
-    let P30001 = Namespaced_IRI.parse _namespace_name "P30001" |> NamespacedName
-
+    let P30001 = _prefix "P30001"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/carrierType.en"></see>
     /// </summary>
-    let ``carrierType.en`` =
-        Namespaced_IRI.parse _namespace_name "carrierType.en" |> NamespacedName
-
+    let ``carrierType.en`` = _prefix "carrierType.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30002"></see>
     /// </summary>
-    let P30002 = Namespaced_IRI.parse _namespace_name "P30002" |> NamespacedName
-
+    let P30002 = _prefix "P30002"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/mediaType.en"></see>
     /// </summary>
-    let ``mediaType.en`` =
-        Namespaced_IRI.parse _namespace_name "mediaType.en" |> NamespacedName
-
+    let ``mediaType.en`` = _prefix "mediaType.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30003"></see>
     /// </summary>
-    let P30003 = Namespaced_IRI.parse _namespace_name "P30003" |> NamespacedName
-
+    let P30003 = _prefix "P30003"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/modeOfIssuance.en"></see>
     /// </summary>
-    let ``modeOfIssuance.en`` =
-        Namespaced_IRI.parse _namespace_name "modeOfIssuance.en" |> NamespacedName
-
+    let ``modeOfIssuance.en`` = _prefix "modeOfIssuance.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30004"></see>
     /// </summary>
-    let P30004 = Namespaced_IRI.parse _namespace_name "P30004" |> NamespacedName
+    let P30004 = _prefix "P30004"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30065"></see>
     /// </summary>
-    let P30065 = Namespaced_IRI.parse _namespace_name "P30065" |> NamespacedName
+    let P30065 = _prefix "P30065"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30066"></see>
     /// </summary>
-    let P30066 = Namespaced_IRI.parse _namespace_name "P30066" |> NamespacedName
+    let P30066 = _prefix "P30066"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/identifierForTheManifestation.en"></see>
     /// </summary>
     let ``identifierForTheManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "identifierForTheManifestation.en" |> NamespacedName
+        _prefix "identifierForTheManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30005"></see>
     /// </summary>
-    let P30005 = Namespaced_IRI.parse _namespace_name "P30005" |> NamespacedName
-
+    let P30005 = _prefix "P30005"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/preferredCitation.en"></see>
     /// </summary>
-    let ``preferredCitation.en`` =
-        Namespaced_IRI.parse _namespace_name "preferredCitation.en" |> NamespacedName
-
+    let ``preferredCitation.en`` = _prefix "preferredCitation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30006"></see>
     /// </summary>
-    let P30006 = Namespaced_IRI.parse _namespace_name "P30006" |> NamespacedName
-
+    let P30006 = _prefix "P30006"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/regionalEncoding.en"></see>
     /// </summary>
-    let ``regionalEncoding.en`` =
-        Namespaced_IRI.parse _namespace_name "regionalEncoding.en" |> NamespacedName
-
+    let ``regionalEncoding.en`` = _prefix "regionalEncoding.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30124"></see>
     /// </summary>
-    let P30124 = Namespaced_IRI.parse _namespace_name "P30124" |> NamespacedName
+    let P30124 = _prefix "P30124"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30007"></see>
     /// </summary>
-    let P30007 = Namespaced_IRI.parse _namespace_name "P30007" |> NamespacedName
-
+    let P30007 = _prefix "P30007"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/copyrightDate.en"></see>
     /// </summary>
-    let ``copyrightDate.en`` =
-        Namespaced_IRI.parse _namespace_name "copyrightDate.en" |> NamespacedName
-
+    let ``copyrightDate.en`` = _prefix "copyrightDate.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30008"></see>
     /// </summary>
-    let P30008 = Namespaced_IRI.parse _namespace_name "P30008" |> NamespacedName
-
+    let P30008 = _prefix "P30008"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dateOfDistribution.en"></see>
     /// </summary>
-    let ``dateOfDistribution.en`` =
-        Namespaced_IRI.parse _namespace_name "dateOfDistribution.en" |> NamespacedName
-
+    let ``dateOfDistribution.en`` = _prefix "dateOfDistribution.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30009"></see>
     /// </summary>
-    let P30009 = Namespaced_IRI.parse _namespace_name "P30009" |> NamespacedName
-
+    let P30009 = _prefix "P30009"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dateOfProduction.en"></see>
     /// </summary>
-    let ``dateOfProduction.en`` =
-        Namespaced_IRI.parse _namespace_name "dateOfProduction.en" |> NamespacedName
-
+    let ``dateOfProduction.en`` = _prefix "dateOfProduction.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30010"></see>
     /// </summary>
-    let P30010 = Namespaced_IRI.parse _namespace_name "P30010" |> NamespacedName
-
+    let P30010 = _prefix "P30010"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dateOfManufacture.en"></see>
     /// </summary>
-    let ``dateOfManufacture.en`` =
-        Namespaced_IRI.parse _namespace_name "dateOfManufacture.en" |> NamespacedName
-
+    let ``dateOfManufacture.en`` = _prefix "dateOfManufacture.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30011"></see>
     /// </summary>
-    let P30011 = Namespaced_IRI.parse _namespace_name "P30011" |> NamespacedName
-
+    let P30011 = _prefix "P30011"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dateOfPublication.en"></see>
     /// </summary>
-    let ``dateOfPublication.en`` =
-        Namespaced_IRI.parse _namespace_name "dateOfPublication.en" |> NamespacedName
-
+    let ``dateOfPublication.en`` = _prefix "dateOfPublication.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30012"></see>
     /// </summary>
-    let P30012 = Namespaced_IRI.parse _namespace_name "P30012" |> NamespacedName
+    let P30012 = _prefix "P30012"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelDesignationOfANamedRevisionOfAnEdition.en"></see>
     /// </summary>
     let ``parallelDesignationOfANamedRevisionOfAnEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelDesignationOfANamedRevisionOfAnEdition.en" |> NamespacedName
+        _prefix "parallelDesignationOfANamedRevisionOfAnEdition.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30013"></see>
     /// </summary>
-    let P30013 = Namespaced_IRI.parse _namespace_name "P30013" |> NamespacedName
-
+    let P30013 = _prefix "P30013"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelDesignationOfEdition.en"></see>
     /// </summary>
-    let ``parallelDesignationOfEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelDesignationOfEdition.en" |> NamespacedName
-
+    let ``parallelDesignationOfEdition.en`` = _prefix "parallelDesignationOfEdition.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30014"></see>
     /// </summary>
-    let P30014 = Namespaced_IRI.parse _namespace_name "P30014" |> NamespacedName
-
+    let P30014 = _prefix "P30014"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/numberingWithinSeries.en"></see>
     /// </summary>
-    let ``numberingWithinSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "numberingWithinSeries.en" |> NamespacedName
-
+    let ``numberingWithinSeries.en`` = _prefix "numberingWithinSeries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30015"></see>
     /// </summary>
-    let P30015 = Namespaced_IRI.parse _namespace_name "P30015" |> NamespacedName
-
+    let P30015 = _prefix "P30015"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/numberingWithinSubseries.en"></see>
     /// </summary>
-    let ``numberingWithinSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "numberingWithinSubseries.en" |> NamespacedName
-
+    let ``numberingWithinSubseries.en`` = _prefix "numberingWithinSubseries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30016"></see>
     /// </summary>
-    let P30016 = Namespaced_IRI.parse _namespace_name "P30016" |> NamespacedName
+    let P30016 = _prefix "P30016"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/electronicReproductionManifestation.en"></see>
     /// </summary>
     let ``electronicReproductionManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "electronicReproductionManifestation.en" |> NamespacedName
+        _prefix "electronicReproductionManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30039"></see>
     /// </summary>
-    let P30039 = Namespaced_IRI.parse _namespace_name "P30039" |> NamespacedName
+    let P30039 = _prefix "P30039"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30136"></see>
     /// </summary>
-    let P30136 = Namespaced_IRI.parse _namespace_name "P30136" |> NamespacedName
+    let P30136 = _prefix "P30136"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30017"></see>
     /// </summary>
-    let P30017 = Namespaced_IRI.parse _namespace_name "P30017" |> NamespacedName
-
+    let P30017 = _prefix "P30017"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelDistributorsName.en"></see>
     /// </summary>
-    let ``parallelDistributorsName.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelDistributorsName.en" |> NamespacedName
-
+    let ``parallelDistributorsName.en`` = _prefix "parallelDistributorsName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30018"></see>
     /// </summary>
-    let P30018 = Namespaced_IRI.parse _namespace_name "P30018" |> NamespacedName
-
+    let P30018 = _prefix "P30018"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/fileType.en"></see>
     /// </summary>
-    let ``fileType.en`` =
-        Namespaced_IRI.parse _namespace_name "fileType.en" |> NamespacedName
-
+    let ``fileType.en`` = _prefix "fileType.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30019"></see>
     /// </summary>
-    let P30019 = Namespaced_IRI.parse _namespace_name "P30019" |> NamespacedName
-
+    let P30019 = _prefix "P30019"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/facsimileContainedIn.en"></see>
     /// </summary>
-    let ``facsimileContainedIn.en`` =
-        Namespaced_IRI.parse _namespace_name "facsimileContainedIn.en" |> NamespacedName
-
+    let ``facsimileContainedIn.en`` = _prefix "facsimileContainedIn.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30020"></see>
     /// </summary>
-    let P30020 = Namespaced_IRI.parse _namespace_name "P30020" |> NamespacedName
+    let P30020 = _prefix "P30020"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30046"></see>
     /// </summary>
-    let P30046 = Namespaced_IRI.parse _namespace_name "P30046" |> NamespacedName
+    let P30046 = _prefix "P30046"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30101"></see>
     /// </summary>
-    let P30101 = Namespaced_IRI.parse _namespace_name "P30101" |> NamespacedName
+    let P30101 = _prefix "P30101"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30025"></see>
     /// </summary>
-    let P30025 = Namespaced_IRI.parse _namespace_name "P30025" |> NamespacedName
-
+    let P30025 = _prefix "P30025"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/containedInManifestation.en"></see>
     /// </summary>
-    let ``containedInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "containedInManifestation.en" |> NamespacedName
-
+    let ``containedInManifestation.en`` = _prefix "containedInManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30213"></see>
     /// </summary>
-    let P30213 = Namespaced_IRI.parse _namespace_name "P30213" |> NamespacedName
+    let P30213 = _prefix "P30213"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30033"></see>
     /// </summary>
-    let P30033 = Namespaced_IRI.parse _namespace_name "P30033" |> NamespacedName
+    let P30033 = _prefix "P30033"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30021"></see>
     /// </summary>
-    let P30021 = Namespaced_IRI.parse _namespace_name "P30021" |> NamespacedName
+    let P30021 = _prefix "P30021"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/preservationFacsimileManifestation.en"></see>
     /// </summary>
     let ``preservationFacsimileManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimileManifestation.en" |> NamespacedName
+        _prefix "preservationFacsimileManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30031"></see>
     /// </summary>
-    let P30031 = Namespaced_IRI.parse _namespace_name "P30031" |> NamespacedName
+    let P30031 = _prefix "P30031"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30045"></see>
     /// </summary>
-    let P30045 = Namespaced_IRI.parse _namespace_name "P30045" |> NamespacedName
+    let P30045 = _prefix "P30045"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30022"></see>
     /// </summary>
-    let P30022 = Namespaced_IRI.parse _namespace_name "P30022" |> NamespacedName
-
+    let P30022 = _prefix "P30022"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/insert.en"></see>
     /// </summary>
-    let ``insert.en`` =
-        Namespaced_IRI.parse _namespace_name "insert.en" |> NamespacedName
-
+    let ``insert.en`` = _prefix "insert.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30023"></see>
     /// </summary>
-    let P30023 = Namespaced_IRI.parse _namespace_name "P30023" |> NamespacedName
+    let P30023 = _prefix "P30023"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30024"></see>
     /// </summary>
-    let P30024 = Namespaced_IRI.parse _namespace_name "P30024" |> NamespacedName
+    let P30024 = _prefix "P30024"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30043"></see>
     /// </summary>
-    let P30043 = Namespaced_IRI.parse _namespace_name "P30043" |> NamespacedName
+    let P30043 = _prefix "P30043"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30028"></see>
     /// </summary>
-    let P30028 = Namespaced_IRI.parse _namespace_name "P30028" |> NamespacedName
+    let P30028 = _prefix "P30028"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30026"></see>
     /// </summary>
-    let P30026 = Namespaced_IRI.parse _namespace_name "P30026" |> NamespacedName
-
+    let P30026 = _prefix "P30026"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/equivalentManifestation.en"></see>
     /// </summary>
-    let ``equivalentManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "equivalentManifestation.en" |> NamespacedName
-
+    let ``equivalentManifestation.en`` = _prefix "equivalentManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30212"></see>
     /// </summary>
-    let P30212 = Namespaced_IRI.parse _namespace_name "P30212" |> NamespacedName
-
+    let P30212 = _prefix "P30212"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/insertedIn.en"></see>
     /// </summary>
-    let ``insertedIn.en`` =
-        Namespaced_IRI.parse _namespace_name "insertedIn.en" |> NamespacedName
-
+    let ``insertedIn.en`` = _prefix "insertedIn.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/alsoIssuedAs.en"></see>
     /// </summary>
-    let ``alsoIssuedAs.en`` =
-        Namespaced_IRI.parse _namespace_name "alsoIssuedAs.en" |> NamespacedName
-
+    let ``alsoIssuedAs.en`` = _prefix "alsoIssuedAs.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30027"></see>
     /// </summary>
-    let P30027 = Namespaced_IRI.parse _namespace_name "P30027" |> NamespacedName
+    let P30027 = _prefix "P30027"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30035"></see>
     /// </summary>
-    let P30035 = Namespaced_IRI.parse _namespace_name "P30035" |> NamespacedName
-
+    let P30035 = _prefix "P30035"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/accompaniedByManifestation.en"></see>
     /// </summary>
-    let ``accompaniedByManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "accompaniedByManifestation.en" |> NamespacedName
-
+    let ``accompaniedByManifestation.en`` = _prefix "accompaniedByManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30210"></see>
     /// </summary>
-    let P30210 = Namespaced_IRI.parse _namespace_name "P30210" |> NamespacedName
-
+    let P30210 = _prefix "P30210"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/mirrorSite.en"></see>
     /// </summary>
-    let ``mirrorSite.en`` =
-        Namespaced_IRI.parse _namespace_name "mirrorSite.en" |> NamespacedName
-
+    let ``mirrorSite.en`` = _prefix "mirrorSite.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30029"></see>
     /// </summary>
-    let P30029 = Namespaced_IRI.parse _namespace_name "P30029" |> NamespacedName
-
+    let P30029 = _prefix "P30029"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/digitalTransferManifestation.en"></see>
     /// </summary>
-    let ``digitalTransferManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "digitalTransferManifestation.en" |> NamespacedName
-
+    let ``digitalTransferManifestation.en`` = _prefix "digitalTransferManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30040"></see>
     /// </summary>
-    let P30040 = Namespaced_IRI.parse _namespace_name "P30040" |> NamespacedName
+    let P30040 = _prefix "P30040"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30030"></see>
     /// </summary>
-    let P30030 = Namespaced_IRI.parse _namespace_name "P30030" |> NamespacedName
-
+    let P30030 = _prefix "P30030"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/specialIssue.en"></see>
     /// </summary>
-    let ``specialIssue.en`` =
-        Namespaced_IRI.parse _namespace_name "specialIssue.en" |> NamespacedName
-
+    let ``specialIssue.en`` = _prefix "specialIssue.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/facsimileManifestation.en"></see>
     /// </summary>
-    let ``facsimileManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "facsimileManifestation.en" |> NamespacedName
-
+    let ``facsimileManifestation.en`` = _prefix "facsimileManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30047"></see>
     /// </summary>
-    let P30047 = Namespaced_IRI.parse _namespace_name "P30047" |> NamespacedName
+    let P30047 = _prefix "P30047"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30032"></see>
     /// </summary>
-    let P30032 = Namespaced_IRI.parse _namespace_name "P30032" |> NamespacedName
-
+    let P30032 = _prefix "P30032"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/containerOfManifestation.en"></see>
     /// </summary>
-    let ``containerOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "containerOfManifestation.en" |> NamespacedName
-
+    let ``containerOfManifestation.en`` = _prefix "containerOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30034"></see>
     /// </summary>
-    let P30034 = Namespaced_IRI.parse _namespace_name "P30034" |> NamespacedName
+    let P30034 = _prefix "P30034"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30036"></see>
     /// </summary>
-    let P30036 = Namespaced_IRI.parse _namespace_name "P30036" |> NamespacedName
+    let P30036 = _prefix "P30036"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30037"></see>
     /// </summary>
-    let P30037 = Namespaced_IRI.parse _namespace_name "P30037" |> NamespacedName
-
+    let P30037 = _prefix "P30037"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/issuedWith.en"></see>
     /// </summary>
-    let ``issuedWith.en`` =
-        Namespaced_IRI.parse _namespace_name "issuedWith.en" |> NamespacedName
-
+    let ``issuedWith.en`` = _prefix "issuedWith.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/onDiscWithManifestation.en"></see>
     /// </summary>
-    let ``onDiscWithManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "onDiscWithManifestation.en" |> NamespacedName
-
+    let ``onDiscWithManifestation.en`` = _prefix "onDiscWithManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/filmedWithManifestation.en"></see>
     /// </summary>
-    let ``filmedWithManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "filmedWithManifestation.en" |> NamespacedName
-
+    let ``filmedWithManifestation.en`` = _prefix "filmedWithManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30038"></see>
     /// </summary>
-    let P30038 = Namespaced_IRI.parse _namespace_name "P30038" |> NamespacedName
-
+    let P30038 = _prefix "P30038"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/reprintedAsManifestation.en"></see>
     /// </summary>
-    let ``reprintedAsManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "reprintedAsManifestation.en" |> NamespacedName
-
+    let ``reprintedAsManifestation.en`` = _prefix "reprintedAsManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30093"></see>
     /// </summary>
-    let P30093 = Namespaced_IRI.parse _namespace_name "P30093" |> NamespacedName
-
+    let P30093 = _prefix "P30093"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/reproducedAsManifestation.en"></see>
     /// </summary>
-    let ``reproducedAsManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "reproducedAsManifestation.en" |> NamespacedName
+    let ``reproducedAsManifestation.en`` = _prefix "reproducedAsManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/digitalTransferOfManifestation.en"></see>
     /// </summary>
     let ``digitalTransferOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "digitalTransferOfManifestation.en" |> NamespacedName
+        _prefix "digitalTransferOfManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30041"></see>
     /// </summary>
-    let P30041 = Namespaced_IRI.parse _namespace_name "P30041" |> NamespacedName
+    let P30041 = _prefix "P30041"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30042"></see>
     /// </summary>
-    let P30042 = Namespaced_IRI.parse _namespace_name "P30042" |> NamespacedName
-
+    let P30042 = _prefix "P30042"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/reproductionOfManifestation.en"></see>
     /// </summary>
-    let ``reproductionOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "reproductionOfManifestation.en" |> NamespacedName
-
+    let ``reproductionOfManifestation.en`` = _prefix "reproductionOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30044"></see>
     /// </summary>
-    let P30044 = Namespaced_IRI.parse _namespace_name "P30044" |> NamespacedName
+    let P30044 = _prefix "P30044"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/preservationFacsimileOfManifestation.en"></see>
     /// </summary>
     let ``preservationFacsimileOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimileOfManifestation.en" |> NamespacedName
+        _prefix "preservationFacsimileOfManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/facsimileContainerOf.en"></see>
     /// </summary>
-    let ``facsimileContainerOf.en`` =
-        Namespaced_IRI.parse _namespace_name "facsimileContainerOf.en" |> NamespacedName
-
+    let ``facsimileContainerOf.en`` = _prefix "facsimileContainerOf.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/facsimileOfManifestation.en"></see>
     /// </summary>
-    let ``facsimileOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "facsimileOfManifestation.en" |> NamespacedName
-
+    let ``facsimileOfManifestation.en`` = _prefix "facsimileOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30048"></see>
     /// </summary>
-    let P30048 = Namespaced_IRI.parse _namespace_name "P30048" |> NamespacedName
-
+    let P30048 = _prefix "P30048"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/relatedManifestation.en"></see>
     /// </summary>
-    let ``relatedManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "relatedManifestation.en" |> NamespacedName
-
+    let ``relatedManifestation.en`` = _prefix "relatedManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30049"></see>
     /// </summary>
-    let P30049 = Namespaced_IRI.parse _namespace_name "P30049" |> NamespacedName
-
+    let P30049 = _prefix "P30049"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelManufacturersName.en"></see>
     /// </summary>
-    let ``parallelManufacturersName.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelManufacturersName.en" |> NamespacedName
-
+    let ``parallelManufacturersName.en`` = _prefix "parallelManufacturersName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30050"></see>
     /// </summary>
-    let P30050 = Namespaced_IRI.parse _namespace_name "P30050" |> NamespacedName
+    let P30050 = _prefix "P30050"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnIssuePartOrIterationUsedAsTheBasisForIdentificationOfTheResource.en"></see>
     /// </summary>
     let ``noteOnIssuePartOrIterationUsedAsTheBasisForIdentificationOfTheResource.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnIssuePartOrIterationUsedAsTheBasisForIdentificationOfTheResource.en" |> NamespacedName
+        _prefix "noteOnIssuePartOrIterationUsedAsTheBasisForIdentificationOfTheResource.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30137"></see>
     /// </summary>
-    let P30137 = Namespaced_IRI.parse _namespace_name "P30137" |> NamespacedName
+    let P30137 = _prefix "P30137"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30051"></see>
     /// </summary>
-    let P30051 = Namespaced_IRI.parse _namespace_name "P30051" |> NamespacedName
+    let P30051 = _prefix "P30051"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnChangesInCarrierCharacteristics.en"></see>
     /// </summary>
     let ``noteOnChangesInCarrierCharacteristics.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnChangesInCarrierCharacteristics.en" |> NamespacedName
+        _prefix "noteOnChangesInCarrierCharacteristics.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30214"></see>
     /// </summary>
-    let P30214 = Namespaced_IRI.parse _namespace_name "P30214" |> NamespacedName
+    let P30214 = _prefix "P30214"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30052"></see>
     /// </summary>
-    let P30052 = Namespaced_IRI.parse _namespace_name "P30052" |> NamespacedName
-
+    let P30052 = _prefix "P30052"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnDistributionStatement.en"></see>
     /// </summary>
-    let ``noteOnDistributionStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnDistributionStatement.en" |> NamespacedName
-
+    let ``noteOnDistributionStatement.en`` = _prefix "noteOnDistributionStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30053"></see>
     /// </summary>
-    let P30053 = Namespaced_IRI.parse _namespace_name "P30053" |> NamespacedName
-
+    let P30053 = _prefix "P30053"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnManufactureStatement.en"></see>
     /// </summary>
-    let ``noteOnManufactureStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnManufactureStatement.en" |> NamespacedName
-
+    let ``noteOnManufactureStatement.en`` = _prefix "noteOnManufactureStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30054"></see>
     /// </summary>
-    let P30054 = Namespaced_IRI.parse _namespace_name "P30054" |> NamespacedName
-
+    let P30054 = _prefix "P30054"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnProductionStatement.en"></see>
     /// </summary>
-    let ``noteOnProductionStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnProductionStatement.en" |> NamespacedName
-
+    let ``noteOnProductionStatement.en`` = _prefix "noteOnProductionStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30055"></see>
     /// </summary>
-    let P30055 = Namespaced_IRI.parse _namespace_name "P30055" |> NamespacedName
-
+    let P30055 = _prefix "P30055"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnPublicationStatement.en"></see>
     /// </summary>
-    let ``noteOnPublicationStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnPublicationStatement.en" |> NamespacedName
-
+    let ``noteOnPublicationStatement.en`` = _prefix "noteOnPublicationStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30056"></see>
     /// </summary>
-    let P30056 = Namespaced_IRI.parse _namespace_name "P30056" |> NamespacedName
-
+    let P30056 = _prefix "P30056"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnFrequency.en"></see>
     /// </summary>
-    let ``noteOnFrequency.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnFrequency.en" |> NamespacedName
-
+    let ``noteOnFrequency.en`` = _prefix "noteOnFrequency.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30057"></see>
     /// </summary>
-    let P30057 = Namespaced_IRI.parse _namespace_name "P30057" |> NamespacedName
+    let P30057 = _prefix "P30057"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnStatementOfResponsibility.en"></see>
     /// </summary>
     let ``noteOnStatementOfResponsibility.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnStatementOfResponsibility.en" |> NamespacedName
+        _prefix "noteOnStatementOfResponsibility.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30058"></see>
     /// </summary>
-    let P30058 = Namespaced_IRI.parse _namespace_name "P30058" |> NamespacedName
-
+    let P30058 = _prefix "P30058"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnSeriesStatement.en"></see>
     /// </summary>
-    let ``noteOnSeriesStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnSeriesStatement.en" |> NamespacedName
-
+    let ``noteOnSeriesStatement.en`` = _prefix "noteOnSeriesStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30059"></see>
     /// </summary>
-    let P30059 = Namespaced_IRI.parse _namespace_name "P30059" |> NamespacedName
-
+    let P30059 = _prefix "P30059"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnCopyrightDate.en"></see>
     /// </summary>
-    let ``noteOnCopyrightDate.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnCopyrightDate.en" |> NamespacedName
-
+    let ``noteOnCopyrightDate.en`` = _prefix "noteOnCopyrightDate.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30060"></see>
     /// </summary>
-    let P30060 = Namespaced_IRI.parse _namespace_name "P30060" |> NamespacedName
+    let P30060 = _prefix "P30060"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnDimensionsOfManifestation.en"></see>
     /// </summary>
     let ``noteOnDimensionsOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnDimensionsOfManifestation.en" |> NamespacedName
+        _prefix "noteOnDimensionsOfManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30061"></see>
     /// </summary>
-    let P30061 = Namespaced_IRI.parse _namespace_name "P30061" |> NamespacedName
-
+    let P30061 = _prefix "P30061"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnExtentOfManifestation.en"></see>
     /// </summary>
-    let ``noteOnExtentOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnExtentOfManifestation.en" |> NamespacedName
-
+    let ``noteOnExtentOfManifestation.en`` = _prefix "noteOnExtentOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30062"></see>
     /// </summary>
-    let P30062 = Namespaced_IRI.parse _namespace_name "P30062" |> NamespacedName
-
+    let P30062 = _prefix "P30062"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnNumberingOfSerials.en"></see>
     /// </summary>
-    let ``noteOnNumberingOfSerials.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnNumberingOfSerials.en" |> NamespacedName
-
+    let ``noteOnNumberingOfSerials.en`` = _prefix "noteOnNumberingOfSerials.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30063"></see>
     /// </summary>
-    let P30063 = Namespaced_IRI.parse _namespace_name "P30063" |> NamespacedName
-
+    let P30063 = _prefix "P30063"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnTitle.en"></see>
     /// </summary>
-    let ``noteOnTitle.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnTitle.en" |> NamespacedName
-
+    let ``noteOnTitle.en`` = _prefix "noteOnTitle.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30064"></see>
     /// </summary>
-    let P30064 = Namespaced_IRI.parse _namespace_name "P30064" |> NamespacedName
-
+    let P30064 = _prefix "P30064"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnEditionStatement.en"></see>
     /// </summary>
-    let ``noteOnEditionStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnEditionStatement.en" |> NamespacedName
-
+    let ``noteOnEditionStatement.en`` = _prefix "noteOnEditionStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/publishersNumberForMusic.en"></see>
     /// </summary>
-    let ``publishersNumberForMusic.en`` =
-        Namespaced_IRI.parse _namespace_name "publishersNumberForMusic.en" |> NamespacedName
-
+    let ``publishersNumberForMusic.en`` = _prefix "publishersNumberForMusic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/plateNumberForMusic.en"></see>
     /// </summary>
-    let ``plateNumberForMusic.en`` =
-        Namespaced_IRI.parse _namespace_name "plateNumberForMusic.en" |> NamespacedName
-
+    let ``plateNumberForMusic.en`` = _prefix "plateNumberForMusic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30067"></see>
     /// </summary>
-    let P30067 = Namespaced_IRI.parse _namespace_name "P30067" |> NamespacedName
-
+    let P30067 = _prefix "P30067"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/broadcaster.en"></see>
     /// </summary>
-    let ``broadcaster.en`` =
-        Namespaced_IRI.parse _namespace_name "broadcaster.en" |> NamespacedName
-
+    let ``broadcaster.en`` = _prefix "broadcaster.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30083"></see>
     /// </summary>
-    let P30083 = Namespaced_IRI.parse _namespace_name "P30083" |> NamespacedName
+    let P30083 = _prefix "P30083"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30068"></see>
     /// </summary>
-    let P30068 = Namespaced_IRI.parse _namespace_name "P30068" |> NamespacedName
-
+    let P30068 = _prefix "P30068"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/filmDistributor.en"></see>
     /// </summary>
-    let ``filmDistributor.en`` =
-        Namespaced_IRI.parse _namespace_name "filmDistributor.en" |> NamespacedName
-
+    let ``filmDistributor.en`` = _prefix "filmDistributor.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30080"></see>
     /// </summary>
-    let P30080 = Namespaced_IRI.parse _namespace_name "P30080" |> NamespacedName
+    let P30080 = _prefix "P30080"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30069"></see>
     /// </summary>
-    let P30069 = Namespaced_IRI.parse _namespace_name "P30069" |> NamespacedName
-
+    let P30069 = _prefix "P30069"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/bookDesigner.en"></see>
     /// </summary>
-    let ``bookDesigner.en`` =
-        Namespaced_IRI.parse _namespace_name "bookDesigner.en" |> NamespacedName
-
+    let ``bookDesigner.en`` = _prefix "bookDesigner.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30082"></see>
     /// </summary>
-    let P30082 = Namespaced_IRI.parse _namespace_name "P30082" |> NamespacedName
+    let P30082 = _prefix "P30082"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30070"></see>
     /// </summary>
-    let P30070 = Namespaced_IRI.parse _namespace_name "P30070" |> NamespacedName
-
+    let P30070 = _prefix "P30070"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/engraver.en"></see>
     /// </summary>
-    let ``engraver.en`` =
-        Namespaced_IRI.parse _namespace_name "engraver.en" |> NamespacedName
-
+    let ``engraver.en`` = _prefix "engraver.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30071"></see>
     /// </summary>
-    let P30071 = Namespaced_IRI.parse _namespace_name "P30071" |> NamespacedName
-
+    let P30071 = _prefix "P30071"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/brailleEmbosser.en"></see>
     /// </summary>
-    let ``brailleEmbosser.en`` =
-        Namespaced_IRI.parse _namespace_name "brailleEmbosser.en" |> NamespacedName
-
+    let ``brailleEmbosser.en`` = _prefix "brailleEmbosser.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30072"></see>
     /// </summary>
-    let P30072 = Namespaced_IRI.parse _namespace_name "P30072" |> NamespacedName
-
+    let P30072 = _prefix "P30072"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/printmaker.en"></see>
     /// </summary>
-    let ``printmaker.en`` =
-        Namespaced_IRI.parse _namespace_name "printmaker.en" |> NamespacedName
-
+    let ``printmaker.en`` = _prefix "printmaker.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30073"></see>
     /// </summary>
-    let P30073 = Namespaced_IRI.parse _namespace_name "P30073" |> NamespacedName
-
+    let P30073 = _prefix "P30073"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/caster.en"></see>
     /// </summary>
-    let ``caster.en`` =
-        Namespaced_IRI.parse _namespace_name "caster.en" |> NamespacedName
-
+    let ``caster.en`` = _prefix "caster.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30074"></see>
     /// </summary>
-    let P30074 = Namespaced_IRI.parse _namespace_name "P30074" |> NamespacedName
-
+    let P30074 = _prefix "P30074"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/lithographer.en"></see>
     /// </summary>
-    let ``lithographer.en`` =
-        Namespaced_IRI.parse _namespace_name "lithographer.en" |> NamespacedName
-
+    let ``lithographer.en`` = _prefix "lithographer.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30075"></see>
     /// </summary>
-    let P30075 = Namespaced_IRI.parse _namespace_name "P30075" |> NamespacedName
-
+    let P30075 = _prefix "P30075"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/platemaker.en"></see>
     /// </summary>
-    let ``platemaker.en`` =
-        Namespaced_IRI.parse _namespace_name "platemaker.en" |> NamespacedName
-
+    let ``platemaker.en`` = _prefix "platemaker.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30076"></see>
     /// </summary>
-    let P30076 = Namespaced_IRI.parse _namespace_name "P30076" |> NamespacedName
-
+    let P30076 = _prefix "P30076"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/etcher.en"></see>
     /// </summary>
-    let ``etcher.en`` =
-        Namespaced_IRI.parse _namespace_name "etcher.en" |> NamespacedName
-
+    let ``etcher.en`` = _prefix "etcher.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30077"></see>
     /// </summary>
-    let P30077 = Namespaced_IRI.parse _namespace_name "P30077" |> NamespacedName
-
+    let P30077 = _prefix "P30077"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/collotyper.en"></see>
     /// </summary>
-    let ``collotyper.en`` =
-        Namespaced_IRI.parse _namespace_name "collotyper.en" |> NamespacedName
-
+    let ``collotyper.en`` = _prefix "collotyper.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30078"></see>
     /// </summary>
-    let P30078 = Namespaced_IRI.parse _namespace_name "P30078" |> NamespacedName
-
+    let P30078 = _prefix "P30078"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/printer.en"></see>
     /// </summary>
-    let ``printer.en`` =
-        Namespaced_IRI.parse _namespace_name "printer.en" |> NamespacedName
-
+    let ``printer.en`` = _prefix "printer.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30079"></see>
     /// </summary>
-    let P30079 = Namespaced_IRI.parse _namespace_name "P30079" |> NamespacedName
-
+    let P30079 = _prefix "P30079"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/otherPFCManifestation.en"></see>
     /// </summary>
-    let ``otherPFCManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "otherPFCManifestation.en" |> NamespacedName
-
+    let ``otherPFCManifestation.en`` = _prefix "otherPFCManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/distributor.en"></see>
     /// </summary>
-    let ``distributor.en`` =
-        Namespaced_IRI.parse _namespace_name "distributor.en" |> NamespacedName
-
+    let ``distributor.en`` = _prefix "distributor.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30081"></see>
     /// </summary>
-    let P30081 = Namespaced_IRI.parse _namespace_name "P30081" |> NamespacedName
+    let P30081 = _prefix "P30081"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/producerOfAnUnpublishedResource.en"></see>
     /// </summary>
     let ``producerOfAnUnpublishedResource.en`` =
-        Namespaced_IRI.parse _namespace_name "producerOfAnUnpublishedResource.en" |> NamespacedName
+        _prefix "producerOfAnUnpublishedResource.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30215"></see>
     /// </summary>
-    let P30215 = Namespaced_IRI.parse _namespace_name "P30215" |> NamespacedName
-
+    let P30215 = _prefix "P30215"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/manufacturer.en"></see>
     /// </summary>
-    let ``manufacturer.en`` =
-        Namespaced_IRI.parse _namespace_name "manufacturer.en" |> NamespacedName
-
+    let ``manufacturer.en`` = _prefix "manufacturer.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/publisher.en"></see>
     /// </summary>
-    let ``publisher.en`` =
-        Namespaced_IRI.parse _namespace_name "publisher.en" |> NamespacedName
-
+    let ``publisher.en`` = _prefix "publisher.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30084"></see>
     /// </summary>
-    let P30084 = Namespaced_IRI.parse _namespace_name "P30084" |> NamespacedName
+    let P30084 = _prefix "P30084"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30122"></see>
     /// </summary>
-    let P30122 = Namespaced_IRI.parse _namespace_name "P30122" |> NamespacedName
-
+    let P30122 = _prefix "P30122"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/appliedMaterial.en"></see>
     /// </summary>
-    let ``appliedMaterial.en`` =
-        Namespaced_IRI.parse _namespace_name "appliedMaterial.en" |> NamespacedName
-
+    let ``appliedMaterial.en`` = _prefix "appliedMaterial.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30085"></see>
     /// </summary>
-    let P30085 = Namespaced_IRI.parse _namespace_name "P30085" |> NamespacedName
-
+    let P30085 = _prefix "P30085"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/placeOfDistribution.en"></see>
     /// </summary>
-    let ``placeOfDistribution.en`` =
-        Namespaced_IRI.parse _namespace_name "placeOfDistribution.en" |> NamespacedName
-
+    let ``placeOfDistribution.en`` = _prefix "placeOfDistribution.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30086"></see>
     /// </summary>
-    let P30086 = Namespaced_IRI.parse _namespace_name "P30086" |> NamespacedName
-
+    let P30086 = _prefix "P30086"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/placeOfProduction.en"></see>
     /// </summary>
-    let ``placeOfProduction.en`` =
-        Namespaced_IRI.parse _namespace_name "placeOfProduction.en" |> NamespacedName
-
+    let ``placeOfProduction.en`` = _prefix "placeOfProduction.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30087"></see>
     /// </summary>
-    let P30087 = Namespaced_IRI.parse _namespace_name "P30087" |> NamespacedName
-
+    let P30087 = _prefix "P30087"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/placeOfManufacture.en"></see>
     /// </summary>
-    let ``placeOfManufacture.en`` =
-        Namespaced_IRI.parse _namespace_name "placeOfManufacture.en" |> NamespacedName
-
+    let ``placeOfManufacture.en`` = _prefix "placeOfManufacture.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30088"></see>
     /// </summary>
-    let P30088 = Namespaced_IRI.parse _namespace_name "P30088" |> NamespacedName
-
+    let P30088 = _prefix "P30088"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/placeOfPublication.en"></see>
     /// </summary>
-    let ``placeOfPublication.en`` =
-        Namespaced_IRI.parse _namespace_name "placeOfPublication.en" |> NamespacedName
-
+    let ``placeOfPublication.en`` = _prefix "placeOfPublication.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30089"></see>
     /// </summary>
-    let P30089 = Namespaced_IRI.parse _namespace_name "P30089" |> NamespacedName
-
+    let P30089 = _prefix "P30089"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelPlaceOfDistribution.en"></see>
     /// </summary>
-    let ``parallelPlaceOfDistribution.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelPlaceOfDistribution.en" |> NamespacedName
-
+    let ``parallelPlaceOfDistribution.en`` = _prefix "parallelPlaceOfDistribution.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30090"></see>
     /// </summary>
-    let P30090 = Namespaced_IRI.parse _namespace_name "P30090" |> NamespacedName
-
+    let P30090 = _prefix "P30090"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelPlaceOfManufacture.en"></see>
     /// </summary>
-    let ``parallelPlaceOfManufacture.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelPlaceOfManufacture.en" |> NamespacedName
-
+    let ``parallelPlaceOfManufacture.en`` = _prefix "parallelPlaceOfManufacture.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30091"></see>
     /// </summary>
-    let P30091 = Namespaced_IRI.parse _namespace_name "P30091" |> NamespacedName
-
+    let P30091 = _prefix "P30091"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelPlaceOfProduction.en"></see>
     /// </summary>
-    let ``parallelPlaceOfProduction.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelPlaceOfProduction.en" |> NamespacedName
-
+    let ``parallelPlaceOfProduction.en`` = _prefix "parallelPlaceOfProduction.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30092"></see>
     /// </summary>
-    let P30092 = Namespaced_IRI.parse _namespace_name "P30092" |> NamespacedName
-
+    let P30092 = _prefix "P30092"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelPlaceOfPublication.en"></see>
     /// </summary>
-    let ``parallelPlaceOfPublication.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelPlaceOfPublication.en" |> NamespacedName
-
+    let ``parallelPlaceOfPublication.en`` = _prefix "parallelPlaceOfPublication.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/reprintOfManifestation.en"></see>
     /// </summary>
-    let ``reprintOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "reprintOfManifestation.en" |> NamespacedName
-
+    let ``reprintOfManifestation.en`` = _prefix "reprintOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30094"></see>
     /// </summary>
-    let P30094 = Namespaced_IRI.parse _namespace_name "P30094" |> NamespacedName
-
+    let P30094 = _prefix "P30094"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelProducersName.en"></see>
     /// </summary>
-    let ``parallelProducersName.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelProducersName.en" |> NamespacedName
-
+    let ``parallelProducersName.en`` = _prefix "parallelProducersName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30095"></see>
     /// </summary>
-    let P30095 = Namespaced_IRI.parse _namespace_name "P30095" |> NamespacedName
-
+    let P30095 = _prefix "P30095"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelPublishersName.en"></see>
     /// </summary>
-    let ``parallelPublishersName.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelPublishersName.en" |> NamespacedName
-
+    let ``parallelPublishersName.en`` = _prefix "parallelPublishersName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30096"></see>
     /// </summary>
-    let P30096 = Namespaced_IRI.parse _namespace_name "P30096" |> NamespacedName
-
+    let P30096 = _prefix "P30096"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/encodingFormat.en"></see>
     /// </summary>
-    let ``encodingFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "encodingFormat.en" |> NamespacedName
-
+    let ``encodingFormat.en`` = _prefix "encodingFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30097"></see>
     /// </summary>
-    let P30097 = Namespaced_IRI.parse _namespace_name "P30097" |> NamespacedName
+    let P30097 = _prefix "P30097"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/alternativeNumericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``alternativeNumericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "alternativeNumericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "alternativeNumericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30165"></see>
     /// </summary>
-    let P30165 = Namespaced_IRI.parse _namespace_name "P30165" |> NamespacedName
+    let P30165 = _prefix "P30165"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30098"></see>
     /// </summary>
-    let P30098 = Namespaced_IRI.parse _namespace_name "P30098" |> NamespacedName
+    let P30098 = _prefix "P30098"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/alternativeNumericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``alternativeNumericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "alternativeNumericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "alternativeNumericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30099"></see>
     /// </summary>
-    let P30099 = Namespaced_IRI.parse _namespace_name "P30099" |> NamespacedName
+    let P30099 = _prefix "P30099"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/alternativeChronologicalDesignationOfFirstIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``alternativeChronologicalDesignationOfFirstIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "alternativeChronologicalDesignationOfFirstIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "alternativeChronologicalDesignationOfFirstIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30100"></see>
     /// </summary>
-    let P30100 = Namespaced_IRI.parse _namespace_name "P30100" |> NamespacedName
+    let P30100 = _prefix "P30100"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/alternativeChronologicalDesignationOfLastIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``alternativeChronologicalDesignationOfLastIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "alternativeChronologicalDesignationOfLastIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "alternativeChronologicalDesignationOfLastIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/specialIssueOf.en"></see>
     /// </summary>
-    let ``specialIssueOf.en`` =
-        Namespaced_IRI.parse _namespace_name "specialIssueOf.en" |> NamespacedName
-
+    let ``specialIssueOf.en`` = _prefix "specialIssueOf.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30102"></see>
     /// </summary>
-    let P30102 = Namespaced_IRI.parse _namespace_name "P30102" |> NamespacedName
+    let P30102 = _prefix "P30102"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/digitalRepresentationOfCartographicContent.en"></see>
     /// </summary>
     let ``digitalRepresentationOfCartographicContent.en`` =
-        Namespaced_IRI.parse _namespace_name "digitalRepresentationOfCartographicContent.en" |> NamespacedName
+        _prefix "digitalRepresentationOfCartographicContent.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30103"></see>
     /// </summary>
-    let P30103 = Namespaced_IRI.parse _namespace_name "P30103" |> NamespacedName
-
+    let P30103 = _prefix "P30103"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/exemplarOfManifestation.en"></see>
     /// </summary>
-    let ``exemplarOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "exemplarOfManifestation.en" |> NamespacedName
-
+    let ``exemplarOfManifestation.en`` = _prefix "exemplarOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30104"></see>
     /// </summary>
-    let P30104 = Namespaced_IRI.parse _namespace_name "P30104" |> NamespacedName
-
+    let P30104 = _prefix "P30104"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/videoFormat.en"></see>
     /// </summary>
-    let ``videoFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "videoFormat.en" |> NamespacedName
-
+    let ``videoFormat.en`` = _prefix "videoFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30126"></see>
     /// </summary>
-    let P30126 = Namespaced_IRI.parse _namespace_name "P30126" |> NamespacedName
+    let P30126 = _prefix "P30126"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30105"></see>
     /// </summary>
-    let P30105 = Namespaced_IRI.parse _namespace_name "P30105" |> NamespacedName
+    let P30105 = _prefix "P30105"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/statementOfResponsibilityRelatingToTitleProper.en"></see>
     /// </summary>
     let ``statementOfResponsibilityRelatingToTitleProper.en`` =
-        Namespaced_IRI.parse _namespace_name "statementOfResponsibilityRelatingToTitleProper.en" |> NamespacedName
+        _prefix "statementOfResponsibilityRelatingToTitleProper.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30117"></see>
     /// </summary>
-    let P30117 = Namespaced_IRI.parse _namespace_name "P30117" |> NamespacedName
+    let P30117 = _prefix "P30117"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30106"></see>
     /// </summary>
-    let P30106 = Namespaced_IRI.parse _namespace_name "P30106" |> NamespacedName
-
+    let P30106 = _prefix "P30106"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/seriesStatement.en"></see>
     /// </summary>
-    let ``seriesStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "seriesStatement.en" |> NamespacedName
-
+    let ``seriesStatement.en`` = _prefix "seriesStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30107"></see>
     /// </summary>
-    let P30107 = Namespaced_IRI.parse _namespace_name "P30107" |> NamespacedName
-
+    let P30107 = _prefix "P30107"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/editionStatement.en"></see>
     /// </summary>
-    let ``editionStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "editionStatement.en" |> NamespacedName
-
+    let ``editionStatement.en`` = _prefix "editionStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30108"></see>
     /// </summary>
-    let P30108 = Namespaced_IRI.parse _namespace_name "P30108" |> NamespacedName
-
+    let P30108 = _prefix "P30108"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/distributionStatement.en"></see>
     /// </summary>
-    let ``distributionStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "distributionStatement.en" |> NamespacedName
-
+    let ``distributionStatement.en`` = _prefix "distributionStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30109"></see>
     /// </summary>
-    let P30109 = Namespaced_IRI.parse _namespace_name "P30109" |> NamespacedName
-
+    let P30109 = _prefix "P30109"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/manufactureStatement.en"></see>
     /// </summary>
-    let ``manufactureStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "manufactureStatement.en" |> NamespacedName
-
+    let ``manufactureStatement.en`` = _prefix "manufactureStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30110"></see>
     /// </summary>
-    let P30110 = Namespaced_IRI.parse _namespace_name "P30110" |> NamespacedName
-
+    let P30110 = _prefix "P30110"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/productionStatement.en"></see>
     /// </summary>
-    let ``productionStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "productionStatement.en" |> NamespacedName
-
+    let ``productionStatement.en`` = _prefix "productionStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30111"></see>
     /// </summary>
-    let P30111 = Namespaced_IRI.parse _namespace_name "P30111" |> NamespacedName
-
+    let P30111 = _prefix "P30111"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/publicationStatement.en"></see>
     /// </summary>
-    let ``publicationStatement.en`` =
-        Namespaced_IRI.parse _namespace_name "publicationStatement.en" |> NamespacedName
-
+    let ``publicationStatement.en`` = _prefix "publicationStatement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30112"></see>
     /// </summary>
-    let P30112 = Namespaced_IRI.parse _namespace_name "P30112" |> NamespacedName
+    let P30112 = _prefix "P30112"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelStatementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en"></see>
     /// </summary>
     let ``parallelStatementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelStatementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en" |> NamespacedName
+        _prefix "parallelStatementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30113"></see>
     /// </summary>
-    let P30113 = Namespaced_IRI.parse _namespace_name "P30113" |> NamespacedName
+    let P30113 = _prefix "P30113"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelStatementOfResponsibilityRelatingToSeries.en"></see>
     /// </summary>
     let ``parallelStatementOfResponsibilityRelatingToSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelStatementOfResponsibilityRelatingToSeries.en" |> NamespacedName
+        _prefix "parallelStatementOfResponsibilityRelatingToSeries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30114"></see>
     /// </summary>
-    let P30114 = Namespaced_IRI.parse _namespace_name "P30114" |> NamespacedName
+    let P30114 = _prefix "P30114"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelStatementOfResponsibilityRelatingToSubseries.en"></see>
     /// </summary>
     let ``parallelStatementOfResponsibilityRelatingToSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelStatementOfResponsibilityRelatingToSubseries.en" |> NamespacedName
+        _prefix "parallelStatementOfResponsibilityRelatingToSubseries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30115"></see>
     /// </summary>
-    let P30115 = Namespaced_IRI.parse _namespace_name "P30115" |> NamespacedName
+    let P30115 = _prefix "P30115"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelStatementOfResponsibilityRelatingToTheEdition.en"></see>
     /// </summary>
     let ``parallelStatementOfResponsibilityRelatingToTheEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelStatementOfResponsibilityRelatingToTheEdition.en" |> NamespacedName
+        _prefix "parallelStatementOfResponsibilityRelatingToTheEdition.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30116"></see>
     /// </summary>
-    let P30116 = Namespaced_IRI.parse _namespace_name "P30116" |> NamespacedName
+    let P30116 = _prefix "P30116"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelStatementOfResponsibilityRelatingToTitleProper.en"></see>
     /// </summary>
     let ``parallelStatementOfResponsibilityRelatingToTitleProper.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelStatementOfResponsibilityRelatingToTitleProper.en" |> NamespacedName
+        _prefix "parallelStatementOfResponsibilityRelatingToTitleProper.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/statementOfResponsibility.en"></see>
     /// </summary>
-    let ``statementOfResponsibility.en`` =
-        Namespaced_IRI.parse _namespace_name "statementOfResponsibility.en" |> NamespacedName
-
+    let ``statementOfResponsibility.en`` = _prefix "statementOfResponsibility.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30118"></see>
     /// </summary>
-    let P30118 = Namespaced_IRI.parse _namespace_name "P30118" |> NamespacedName
+    let P30118 = _prefix "P30118"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/statementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en"></see>
     /// </summary>
     let ``statementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "statementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en" |> NamespacedName
+        _prefix "statementOfResponsibilityRelatingToANamedRevisionOfAnEdition.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30119"></see>
     /// </summary>
-    let P30119 = Namespaced_IRI.parse _namespace_name "P30119" |> NamespacedName
+    let P30119 = _prefix "P30119"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/statementOfResponsibilityRelatingToSeries.en"></see>
     /// </summary>
     let ``statementOfResponsibilityRelatingToSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "statementOfResponsibilityRelatingToSeries.en" |> NamespacedName
+        _prefix "statementOfResponsibilityRelatingToSeries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30120"></see>
     /// </summary>
-    let P30120 = Namespaced_IRI.parse _namespace_name "P30120" |> NamespacedName
+    let P30120 = _prefix "P30120"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/statementOfResponsibilityRelatingToSubseries.en"></see>
     /// </summary>
     let ``statementOfResponsibilityRelatingToSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "statementOfResponsibilityRelatingToSubseries.en" |> NamespacedName
+        _prefix "statementOfResponsibilityRelatingToSubseries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30121"></see>
     /// </summary>
-    let P30121 = Namespaced_IRI.parse _namespace_name "P30121" |> NamespacedName
+    let P30121 = _prefix "P30121"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/statementOfResponsibilityRelatingToTheEdition.en"></see>
     /// </summary>
     let ``statementOfResponsibilityRelatingToTheEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "statementOfResponsibilityRelatingToTheEdition.en" |> NamespacedName
+        _prefix "statementOfResponsibilityRelatingToTheEdition.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/emulsionOnMicrofilmAndMicrofiche.en"></see>
     /// </summary>
     let ``emulsionOnMicrofilmAndMicrofiche.en`` =
-        Namespaced_IRI.parse _namespace_name "emulsionOnMicrofilmAndMicrofiche.en" |> NamespacedName
+        _prefix "emulsionOnMicrofilmAndMicrofiche.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30123"></see>
     /// </summary>
-    let P30123 = Namespaced_IRI.parse _namespace_name "P30123" |> NamespacedName
-
+    let P30123 = _prefix "P30123"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/broadcastStandard.en"></see>
     /// </summary>
-    let ``broadcastStandard.en`` =
-        Namespaced_IRI.parse _namespace_name "broadcastStandard.en" |> NamespacedName
-
+    let ``broadcastStandard.en`` = _prefix "broadcastStandard.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30202"></see>
     /// </summary>
-    let P30202 = Namespaced_IRI.parse _namespace_name "P30202" |> NamespacedName
+    let P30202 = _prefix "P30202"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30159"></see>
     /// </summary>
-    let P30159 = Namespaced_IRI.parse _namespace_name "P30159" |> NamespacedName
+    let P30159 = _prefix "P30159"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30183"></see>
     /// </summary>
-    let P30183 = Namespaced_IRI.parse _namespace_name "P30183" |> NamespacedName
-
+    let P30183 = _prefix "P30183"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/digitalFileCharacteristic.en"></see>
     /// </summary>
-    let ``digitalFileCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "digitalFileCharacteristic.en" |> NamespacedName
-
+    let ``digitalFileCharacteristic.en`` = _prefix "digitalFileCharacteristic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30125"></see>
     /// </summary>
-    let P30125 = Namespaced_IRI.parse _namespace_name "P30125" |> NamespacedName
+    let P30125 = _prefix "P30125"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30185"></see>
     /// </summary>
-    let P30185 = Namespaced_IRI.parse _namespace_name "P30185" |> NamespacedName
+    let P30185 = _prefix "P30185"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30172"></see>
     /// </summary>
-    let P30172 = Namespaced_IRI.parse _namespace_name "P30172" |> NamespacedName
+    let P30172 = _prefix "P30172"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30184"></see>
     /// </summary>
-    let P30184 = Namespaced_IRI.parse _namespace_name "P30184" |> NamespacedName
+    let P30184 = _prefix "P30184"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30138"></see>
     /// </summary>
-    let P30138 = Namespaced_IRI.parse _namespace_name "P30138" |> NamespacedName
+    let P30138 = _prefix "P30138"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30164"></see>
     /// </summary>
-    let P30164 = Namespaced_IRI.parse _namespace_name "P30164" |> NamespacedName
+    let P30164 = _prefix "P30164"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30206"></see>
     /// </summary>
-    let P30206 = Namespaced_IRI.parse _namespace_name "P30206" |> NamespacedName
+    let P30206 = _prefix "P30206"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30201"></see>
     /// </summary>
-    let P30201 = Namespaced_IRI.parse _namespace_name "P30201" |> NamespacedName
+    let P30201 = _prefix "P30201"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30161"></see>
     /// </summary>
-    let P30161 = Namespaced_IRI.parse _namespace_name "P30161" |> NamespacedName
-
+    let P30161 = _prefix "P30161"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/soundCharacteristic.en"></see>
     /// </summary>
-    let ``soundCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "soundCharacteristic.en" |> NamespacedName
-
+    let ``soundCharacteristic.en`` = _prefix "soundCharacteristic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/videoCharacteristic.en"></see>
     /// </summary>
-    let ``videoCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "videoCharacteristic.en" |> NamespacedName
-
+    let ``videoCharacteristic.en`` = _prefix "videoCharacteristic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30127"></see>
     /// </summary>
-    let P30127 = Namespaced_IRI.parse _namespace_name "P30127" |> NamespacedName
+    let P30127 = _prefix "P30127"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30163"></see>
     /// </summary>
-    let P30163 = Namespaced_IRI.parse _namespace_name "P30163" |> NamespacedName
+    let P30163 = _prefix "P30163"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30200"></see>
     /// </summary>
-    let P30200 = Namespaced_IRI.parse _namespace_name "P30200" |> NamespacedName
+    let P30200 = _prefix "P30200"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/projectionCharacteristicOfMotionPictureFilm.en"></see>
     /// </summary>
     let ``projectionCharacteristicOfMotionPictureFilm.en`` =
-        Namespaced_IRI.parse _namespace_name "projectionCharacteristicOfMotionPictureFilm.en" |> NamespacedName
+        _prefix "projectionCharacteristicOfMotionPictureFilm.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30128"></see>
     /// </summary>
-    let P30128 = Namespaced_IRI.parse _namespace_name "P30128" |> NamespacedName
-
+    let P30128 = _prefix "P30128"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/variantTitle.en"></see>
     /// </summary>
-    let ``variantTitle.en`` =
-        Namespaced_IRI.parse _namespace_name "variantTitle.en" |> NamespacedName
-
+    let ``variantTitle.en`` = _prefix "variantTitle.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30134"></see>
     /// </summary>
-    let P30134 = Namespaced_IRI.parse _namespace_name "P30134" |> NamespacedName
+    let P30134 = _prefix "P30134"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30129"></see>
     /// </summary>
-    let P30129 = Namespaced_IRI.parse _namespace_name "P30129" |> NamespacedName
-
+    let P30129 = _prefix "P30129"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/laterTitleProper.en"></see>
     /// </summary>
-    let ``laterTitleProper.en`` =
-        Namespaced_IRI.parse _namespace_name "laterTitleProper.en" |> NamespacedName
-
+    let ``laterTitleProper.en`` = _prefix "laterTitleProper.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30130"></see>
     /// </summary>
-    let P30130 = Namespaced_IRI.parse _namespace_name "P30130" |> NamespacedName
-
+    let P30130 = _prefix "P30130"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/earlierTitleProper.en"></see>
     /// </summary>
-    let ``earlierTitleProper.en`` =
-        Namespaced_IRI.parse _namespace_name "earlierTitleProper.en" |> NamespacedName
-
+    let ``earlierTitleProper.en`` = _prefix "earlierTitleProper.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30131"></see>
     /// </summary>
-    let P30131 = Namespaced_IRI.parse _namespace_name "P30131" |> NamespacedName
-
+    let P30131 = _prefix "P30131"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/abbreviatedTitle.en"></see>
     /// </summary>
-    let ``abbreviatedTitle.en`` =
-        Namespaced_IRI.parse _namespace_name "abbreviatedTitle.en" |> NamespacedName
-
+    let ``abbreviatedTitle.en`` = _prefix "abbreviatedTitle.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30132"></see>
     /// </summary>
-    let P30132 = Namespaced_IRI.parse _namespace_name "P30132" |> NamespacedName
+    let P30132 = _prefix "P30132"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/designationOfANamedRevisionOfAnEdition.en"></see>
     /// </summary>
     let ``designationOfANamedRevisionOfAnEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "designationOfANamedRevisionOfAnEdition.en" |> NamespacedName
+        _prefix "designationOfANamedRevisionOfAnEdition.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30133"></see>
     /// </summary>
-    let P30133 = Namespaced_IRI.parse _namespace_name "P30133" |> NamespacedName
-
+    let P30133 = _prefix "P30133"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/designationOfEdition.en"></see>
     /// </summary>
-    let ``designationOfEdition.en`` =
-        Namespaced_IRI.parse _namespace_name "designationOfEdition.en" |> NamespacedName
-
+    let ``designationOfEdition.en`` = _prefix "designationOfEdition.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30203"></see>
     /// </summary>
-    let P30203 = Namespaced_IRI.parse _namespace_name "P30203" |> NamespacedName
+    let P30203 = _prefix "P30203"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30142"></see>
     /// </summary>
-    let P30142 = Namespaced_IRI.parse _namespace_name "P30142" |> NamespacedName
+    let P30142 = _prefix "P30142"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30156"></see>
     /// </summary>
-    let P30156 = Namespaced_IRI.parse _namespace_name "P30156" |> NamespacedName
+    let P30156 = _prefix "P30156"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30209"></see>
     /// </summary>
-    let P30209 = Namespaced_IRI.parse _namespace_name "P30209" |> NamespacedName
+    let P30209 = _prefix "P30209"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30151"></see>
     /// </summary>
-    let P30151 = Namespaced_IRI.parse _namespace_name "P30151" |> NamespacedName
+    let P30151 = _prefix "P30151"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/title.en"></see>
     /// </summary>
-    let ``title.en`` = Namespaced_IRI.parse _namespace_name "title.en" |> NamespacedName
+    let ``title.en`` = _prefix "title.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30135"></see>
     /// </summary>
-    let P30135 = Namespaced_IRI.parse _namespace_name "P30135" |> NamespacedName
-
+    let P30135 = _prefix "P30135"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/workManifested.en"></see>
     /// </summary>
-    let ``workManifested.en`` =
-        Namespaced_IRI.parse _namespace_name "workManifested.en" |> NamespacedName
+    let ``workManifested.en`` = _prefix "workManifested.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/electronicReproductionOfManifestation.en"></see>
     /// </summary>
     let ``electronicReproductionOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "electronicReproductionOfManifestation.en" |> NamespacedName
+        _prefix "electronicReproductionOfManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnManifestation.en"></see>
     /// </summary>
-    let ``noteOnManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnManifestation.en" |> NamespacedName
+    let ``noteOnManifestation.en`` = _prefix "noteOnManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/specialPlaybackCharacteristic.en"></see>
     /// </summary>
     let ``specialPlaybackCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "specialPlaybackCharacteristic.en" |> NamespacedName
+        _prefix "specialPlaybackCharacteristic.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30139"></see>
     /// </summary>
-    let P30139 = Namespaced_IRI.parse _namespace_name "P30139" |> NamespacedName
-
+    let P30139 = _prefix "P30139"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/expressionManifested.en"></see>
     /// </summary>
-    let ``expressionManifested.en`` =
-        Namespaced_IRI.parse _namespace_name "expressionManifested.en" |> NamespacedName
-
+    let ``expressionManifested.en`` = _prefix "expressionManifested.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30140"></see>
     /// </summary>
-    let P30140 = Namespaced_IRI.parse _namespace_name "P30140" |> NamespacedName
-
+    let P30140 = _prefix "P30140"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/relatedItem.en"></see>
     /// </summary>
-    let ``relatedItem.en`` =
-        Namespaced_IRI.parse _namespace_name "relatedItem.en" |> NamespacedName
-
+    let ``relatedItem.en`` = _prefix "relatedItem.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30141"></see>
     /// </summary>
-    let P30141 = Namespaced_IRI.parse _namespace_name "P30141" |> NamespacedName
-
+    let P30141 = _prefix "P30141"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/contactInformation.en"></see>
     /// </summary>
-    let ``contactInformation.en`` =
-        Namespaced_IRI.parse _namespace_name "contactInformation.en" |> NamespacedName
-
+    let ``contactInformation.en`` = _prefix "contactInformation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/otherTitleInformation.en"></see>
     /// </summary>
-    let ``otherTitleInformation.en`` =
-        Namespaced_IRI.parse _namespace_name "otherTitleInformation.en" |> NamespacedName
-
+    let ``otherTitleInformation.en`` = _prefix "otherTitleInformation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30143"></see>
     /// </summary>
-    let P30143 = Namespaced_IRI.parse _namespace_name "P30143" |> NamespacedName
+    let P30143 = _prefix "P30143"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/otherTitleInformationOfSeries.en"></see>
     /// </summary>
     let ``otherTitleInformationOfSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "otherTitleInformationOfSeries.en" |> NamespacedName
+        _prefix "otherTitleInformationOfSeries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30144"></see>
     /// </summary>
-    let P30144 = Namespaced_IRI.parse _namespace_name "P30144" |> NamespacedName
+    let P30144 = _prefix "P30144"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/otherTitleInformationOfSubseries.en"></see>
     /// </summary>
     let ``otherTitleInformationOfSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "otherTitleInformationOfSubseries.en" |> NamespacedName
+        _prefix "otherTitleInformationOfSubseries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30145"></see>
     /// </summary>
-    let P30145 = Namespaced_IRI.parse _namespace_name "P30145" |> NamespacedName
+    let P30145 = _prefix "P30145"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/restrictionsOnAccessToManifestation.en"></see>
     /// </summary>
     let ``restrictionsOnAccessToManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "restrictionsOnAccessToManifestation.en" |> NamespacedName
+        _prefix "restrictionsOnAccessToManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30146"></see>
     /// </summary>
-    let P30146 = Namespaced_IRI.parse _namespace_name "P30146" |> NamespacedName
+    let P30146 = _prefix "P30146"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/restrictionsOnUseOfManifestation.en"></see>
     /// </summary>
     let ``restrictionsOnUseOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "restrictionsOnUseOfManifestation.en" |> NamespacedName
+        _prefix "restrictionsOnUseOfManifestation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30147"></see>
     /// </summary>
-    let P30147 = Namespaced_IRI.parse _namespace_name "P30147" |> NamespacedName
+    let P30147 = _prefix "P30147"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/numericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``numericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "numericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "numericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30148"></see>
     /// </summary>
-    let P30148 = Namespaced_IRI.parse _namespace_name "P30148" |> NamespacedName
+    let P30148 = _prefix "P30148"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/numericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``numericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "numericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "numericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30149"></see>
     /// </summary>
-    let P30149 = Namespaced_IRI.parse _namespace_name "P30149" |> NamespacedName
+    let P30149 = _prefix "P30149"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/chronologicalDesignationOfFirstIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``chronologicalDesignationOfFirstIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "chronologicalDesignationOfFirstIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "chronologicalDesignationOfFirstIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30150"></see>
     /// </summary>
-    let P30150 = Namespaced_IRI.parse _namespace_name "P30150" |> NamespacedName
+    let P30150 = _prefix "P30150"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/chronologicalDesignationOfLastIssueOrPartOfSequence.en"></see>
     /// </summary>
     let ``chronologicalDesignationOfLastIssueOrPartOfSequence.en`` =
-        Namespaced_IRI.parse _namespace_name "chronologicalDesignationOfLastIssueOrPartOfSequence.en" |> NamespacedName
+        _prefix "chronologicalDesignationOfLastIssueOrPartOfSequence.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelOtherTitleInformation.en"></see>
     /// </summary>
     let ``parallelOtherTitleInformation.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelOtherTitleInformation.en" |> NamespacedName
+        _prefix "parallelOtherTitleInformation.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30152"></see>
     /// </summary>
-    let P30152 = Namespaced_IRI.parse _namespace_name "P30152" |> NamespacedName
+    let P30152 = _prefix "P30152"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelOtherTitleInformationOfSeries.en"></see>
     /// </summary>
     let ``parallelOtherTitleInformationOfSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelOtherTitleInformationOfSeries.en" |> NamespacedName
+        _prefix "parallelOtherTitleInformationOfSeries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30153"></see>
     /// </summary>
-    let P30153 = Namespaced_IRI.parse _namespace_name "P30153" |> NamespacedName
+    let P30153 = _prefix "P30153"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelOtherTitleInformationOfSubseries.en"></see>
     /// </summary>
     let ``parallelOtherTitleInformationOfSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelOtherTitleInformationOfSubseries.en" |> NamespacedName
+        _prefix "parallelOtherTitleInformationOfSubseries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30154"></see>
     /// </summary>
-    let P30154 = Namespaced_IRI.parse _namespace_name "P30154" |> NamespacedName
-
+    let P30154 = _prefix "P30154"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/uniformResourceLocator.en"></see>
     /// </summary>
-    let ``uniformResourceLocator.en`` =
-        Namespaced_IRI.parse _namespace_name "uniformResourceLocator.en" |> NamespacedName
-
+    let ``uniformResourceLocator.en`` = _prefix "uniformResourceLocator.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30155"></see>
     /// </summary>
-    let P30155 = Namespaced_IRI.parse _namespace_name "P30155" |> NamespacedName
-
+    let P30155 = _prefix "P30155"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/layout.en"></see>
     /// </summary>
-    let ``layout.en`` =
-        Namespaced_IRI.parse _namespace_name "layout.en" |> NamespacedName
-
+    let ``layout.en`` = _prefix "layout.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/titleProper.en"></see>
     /// </summary>
-    let ``titleProper.en`` =
-        Namespaced_IRI.parse _namespace_name "titleProper.en" |> NamespacedName
-
+    let ``titleProper.en`` = _prefix "titleProper.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30157"></see>
     /// </summary>
-    let P30157 = Namespaced_IRI.parse _namespace_name "P30157" |> NamespacedName
-
+    let P30157 = _prefix "P30157"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/titleProperOfSeries.en"></see>
     /// </summary>
-    let ``titleProperOfSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "titleProperOfSeries.en" |> NamespacedName
-
+    let ``titleProperOfSeries.en`` = _prefix "titleProperOfSeries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30158"></see>
     /// </summary>
-    let P30158 = Namespaced_IRI.parse _namespace_name "P30158" |> NamespacedName
-
+    let P30158 = _prefix "P30158"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/titleProperOfSubseries.en"></see>
     /// </summary>
-    let ``titleProperOfSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "titleProperOfSubseries.en" |> NamespacedName
-
+    let ``titleProperOfSubseries.en`` = _prefix "titleProperOfSubseries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/resolution.en"></see>
     /// </summary>
-    let ``resolution.en`` =
-        Namespaced_IRI.parse _namespace_name "resolution.en" |> NamespacedName
-
+    let ``resolution.en`` = _prefix "resolution.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30160"></see>
     /// </summary>
-    let P30160 = Namespaced_IRI.parse _namespace_name "P30160" |> NamespacedName
-
+    let P30160 = _prefix "P30160"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/termsOfAvailability.en"></see>
     /// </summary>
-    let ``termsOfAvailability.en`` =
-        Namespaced_IRI.parse _namespace_name "termsOfAvailability.en" |> NamespacedName
-
+    let ``termsOfAvailability.en`` = _prefix "termsOfAvailability.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/trackConfiguration.en"></see>
     /// </summary>
-    let ``trackConfiguration.en`` =
-        Namespaced_IRI.parse _namespace_name "trackConfiguration.en" |> NamespacedName
-
+    let ``trackConfiguration.en`` = _prefix "trackConfiguration.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30162"></see>
     /// </summary>
-    let P30162 = Namespaced_IRI.parse _namespace_name "P30162" |> NamespacedName
-
+    let P30162 = _prefix "P30162"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/equipmentOrSystemRequirement.en"></see>
     /// </summary>
-    let ``equipmentOrSystemRequirement.en`` =
-        Namespaced_IRI.parse _namespace_name "equipmentOrSystemRequirement.en" |> NamespacedName
-
+    let ``equipmentOrSystemRequirement.en`` = _prefix "equipmentOrSystemRequirement.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/presentationFormat.en"></see>
     /// </summary>
-    let ``presentationFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "presentationFormat.en" |> NamespacedName
-
+    let ``presentationFormat.en`` = _prefix "presentationFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/grooveCharacteristic.en"></see>
     /// </summary>
-    let ``grooveCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "grooveCharacteristic.en" |> NamespacedName
-
+    let ``grooveCharacteristic.en`` = _prefix "grooveCharacteristic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/numberingOfSerials.en"></see>
     /// </summary>
-    let ``numberingOfSerials.en`` =
-        Namespaced_IRI.parse _namespace_name "numberingOfSerials.en" |> NamespacedName
-
+    let ``numberingOfSerials.en`` = _prefix "numberingOfSerials.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30166"></see>
     /// </summary>
-    let P30166 = Namespaced_IRI.parse _namespace_name "P30166" |> NamespacedName
-
+    let P30166 = _prefix "P30166"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/issnOfSeries.en"></see>
     /// </summary>
-    let ``issnOfSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "issnOfSeries.en" |> NamespacedName
-
+    let ``issnOfSeries.en`` = _prefix "issnOfSeries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30167"></see>
     /// </summary>
-    let P30167 = Namespaced_IRI.parse _namespace_name "P30167" |> NamespacedName
-
+    let P30167 = _prefix "P30167"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/issnOfSubseries.en"></see>
     /// </summary>
-    let ``issnOfSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "issnOfSubseries.en" |> NamespacedName
-
+    let ``issnOfSubseries.en`` = _prefix "issnOfSubseries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30168"></see>
     /// </summary>
-    let P30168 = Namespaced_IRI.parse _namespace_name "P30168" |> NamespacedName
-
+    let P30168 = _prefix "P30168"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/frequency.en"></see>
     /// </summary>
-    let ``frequency.en`` =
-        Namespaced_IRI.parse _namespace_name "frequency.en" |> NamespacedName
-
+    let ``frequency.en`` = _prefix "frequency.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30169"></see>
     /// </summary>
-    let P30169 = Namespaced_IRI.parse _namespace_name "P30169" |> NamespacedName
+    let P30169 = _prefix "P30169"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30170"></see>
     /// </summary>
-    let P30170 = Namespaced_IRI.parse _namespace_name "P30170" |> NamespacedName
+    let P30170 = _prefix "P30170"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30171"></see>
     /// </summary>
-    let P30171 = Namespaced_IRI.parse _namespace_name "P30171" |> NamespacedName
-
+    let P30171 = _prefix "P30171"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dimensions.en"></see>
     /// </summary>
-    let ``dimensions.en`` =
-        Namespaced_IRI.parse _namespace_name "dimensions.en" |> NamespacedName
-
+    let ``dimensions.en`` = _prefix "dimensions.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dimensionsOfMapEtc.en"></see>
     /// </summary>
-    let ``dimensionsOfMapEtc.en`` =
-        Namespaced_IRI.parse _namespace_name "dimensionsOfMapEtc.en" |> NamespacedName
-
+    let ``dimensionsOfMapEtc.en`` = _prefix "dimensionsOfMapEtc.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/dimensionsOfStillImage.en"></see>
     /// </summary>
-    let ``dimensionsOfStillImage.en`` =
-        Namespaced_IRI.parse _namespace_name "dimensionsOfStillImage.en" |> NamespacedName
-
+    let ``dimensionsOfStillImage.en`` = _prefix "dimensionsOfStillImage.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/typeOfRecording.en"></see>
     /// </summary>
-    let ``typeOfRecording.en`` =
-        Namespaced_IRI.parse _namespace_name "typeOfRecording.en" |> NamespacedName
-
+    let ``typeOfRecording.en`` = _prefix "typeOfRecording.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30173"></see>
     /// </summary>
-    let P30173 = Namespaced_IRI.parse _namespace_name "P30173" |> NamespacedName
-
+    let P30173 = _prefix "P30173"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/distributorsName.en"></see>
     /// </summary>
-    let ``distributorsName.en`` =
-        Namespaced_IRI.parse _namespace_name "distributorsName.en" |> NamespacedName
-
+    let ``distributorsName.en`` = _prefix "distributorsName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30174"></see>
     /// </summary>
-    let P30174 = Namespaced_IRI.parse _namespace_name "P30174" |> NamespacedName
-
+    let P30174 = _prefix "P30174"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/producersName.en"></see>
     /// </summary>
-    let ``producersName.en`` =
-        Namespaced_IRI.parse _namespace_name "producersName.en" |> NamespacedName
-
+    let ``producersName.en`` = _prefix "producersName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30175"></see>
     /// </summary>
-    let P30175 = Namespaced_IRI.parse _namespace_name "P30175" |> NamespacedName
-
+    let P30175 = _prefix "P30175"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/manufacturersName.en"></see>
     /// </summary>
-    let ``manufacturersName.en`` =
-        Namespaced_IRI.parse _namespace_name "manufacturersName.en" |> NamespacedName
-
+    let ``manufacturersName.en`` = _prefix "manufacturersName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30176"></see>
     /// </summary>
-    let P30176 = Namespaced_IRI.parse _namespace_name "P30176" |> NamespacedName
-
+    let P30176 = _prefix "P30176"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/publishersName.en"></see>
     /// </summary>
-    let ``publishersName.en`` =
-        Namespaced_IRI.parse _namespace_name "publishersName.en" |> NamespacedName
-
+    let ``publishersName.en`` = _prefix "publishersName.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30177"></see>
     /// </summary>
-    let P30177 = Namespaced_IRI.parse _namespace_name "P30177" |> NamespacedName
-
+    let P30177 = _prefix "P30177"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/extentOfCartographicResource.en"></see>
     /// </summary>
-    let ``extentOfCartographicResource.en`` =
-        Namespaced_IRI.parse _namespace_name "extentOfCartographicResource.en" |> NamespacedName
-
+    let ``extentOfCartographicResource.en`` = _prefix "extentOfCartographicResource.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30182"></see>
     /// </summary>
-    let P30182 = Namespaced_IRI.parse _namespace_name "P30182" |> NamespacedName
+    let P30182 = _prefix "P30182"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30178"></see>
     /// </summary>
-    let P30178 = Namespaced_IRI.parse _namespace_name "P30178" |> NamespacedName
-
+    let P30178 = _prefix "P30178"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/extentOfNotatedMusic.en"></see>
     /// </summary>
-    let ``extentOfNotatedMusic.en`` =
-        Namespaced_IRI.parse _namespace_name "extentOfNotatedMusic.en" |> NamespacedName
-
+    let ``extentOfNotatedMusic.en`` = _prefix "extentOfNotatedMusic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30179"></see>
     /// </summary>
-    let P30179 = Namespaced_IRI.parse _namespace_name "P30179" |> NamespacedName
-
+    let P30179 = _prefix "P30179"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/extentOfStillImage.en"></see>
     /// </summary>
-    let ``extentOfStillImage.en`` =
-        Namespaced_IRI.parse _namespace_name "extentOfStillImage.en" |> NamespacedName
-
+    let ``extentOfStillImage.en`` = _prefix "extentOfStillImage.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30180"></see>
     /// </summary>
-    let P30180 = Namespaced_IRI.parse _namespace_name "P30180" |> NamespacedName
-
+    let P30180 = _prefix "P30180"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/extentOfThreeDimensionalForm.en"></see>
     /// </summary>
-    let ``extentOfThreeDimensionalForm.en`` =
-        Namespaced_IRI.parse _namespace_name "extentOfThreeDimensionalForm.en" |> NamespacedName
-
+    let ``extentOfThreeDimensionalForm.en`` = _prefix "extentOfThreeDimensionalForm.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30181"></see>
     /// </summary>
-    let P30181 = Namespaced_IRI.parse _namespace_name "P30181" |> NamespacedName
-
+    let P30181 = _prefix "P30181"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/extentOfText.en"></see>
     /// </summary>
-    let ``extentOfText.en`` =
-        Namespaced_IRI.parse _namespace_name "extentOfText.en" |> NamespacedName
-
+    let ``extentOfText.en`` = _prefix "extentOfText.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/extent.en"></see>
     /// </summary>
-    let ``extent.en`` =
-        Namespaced_IRI.parse _namespace_name "extent.en" |> NamespacedName
-
+    let ``extent.en`` = _prefix "extent.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/fileSize.en"></see>
     /// </summary>
-    let ``fileSize.en`` =
-        Namespaced_IRI.parse _namespace_name "fileSize.en" |> NamespacedName
+    let ``fileSize.en`` = _prefix "fileSize.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/configurationOfPlaybackChannels.en"></see>
     /// </summary>
     let ``configurationOfPlaybackChannels.en`` =
-        Namespaced_IRI.parse _namespace_name "configurationOfPlaybackChannels.en" |> NamespacedName
+        _prefix "configurationOfPlaybackChannels.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/tapeConfiguration.en"></see>
     /// </summary>
-    let ``tapeConfiguration.en`` =
-        Namespaced_IRI.parse _namespace_name "tapeConfiguration.en" |> NamespacedName
-
+    let ``tapeConfiguration.en`` = _prefix "tapeConfiguration.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30186"></see>
     /// </summary>
-    let P30186 = Namespaced_IRI.parse _namespace_name "P30186" |> NamespacedName
+    let P30186 = _prefix "P30186"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/mount.en"></see>
     /// </summary>
-    let ``mount.en`` = Namespaced_IRI.parse _namespace_name "mount.en" |> NamespacedName
+    let ``mount.en`` = _prefix "mount.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30187"></see>
     /// </summary>
-    let P30187 = Namespaced_IRI.parse _namespace_name "P30187" |> NamespacedName
+    let P30187 = _prefix "P30187"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30189"></see>
     /// </summary>
-    let P30189 = Namespaced_IRI.parse _namespace_name "P30189" |> NamespacedName
+    let P30189 = _prefix "P30189"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30188"></see>
     /// </summary>
-    let P30188 = Namespaced_IRI.parse _namespace_name "P30188" |> NamespacedName
-
+    let P30188 = _prefix "P30188"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/productionMethod.en"></see>
     /// </summary>
-    let ``productionMethod.en`` =
-        Namespaced_IRI.parse _namespace_name "productionMethod.en" |> NamespacedName
+    let ``productionMethod.en`` = _prefix "productionMethod.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/productionMethodForTactileResource.en"></see>
     /// </summary>
     let ``productionMethodForTactileResource.en`` =
-        Namespaced_IRI.parse _namespace_name "productionMethodForTactileResource.en" |> NamespacedName
+        _prefix "productionMethodForTactileResource.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/productionMethodForManuscript.en"></see>
     /// </summary>
     let ``productionMethodForManuscript.en`` =
-        Namespaced_IRI.parse _namespace_name "productionMethodForManuscript.en" |> NamespacedName
+        _prefix "productionMethodForManuscript.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30190"></see>
     /// </summary>
-    let P30190 = Namespaced_IRI.parse _namespace_name "P30190" |> NamespacedName
-
+    let P30190 = _prefix "P30190"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/generationOfAudioRecording.en"></see>
     /// </summary>
-    let ``generationOfAudioRecording.en`` =
-        Namespaced_IRI.parse _namespace_name "generationOfAudioRecording.en" |> NamespacedName
-
+    let ``generationOfAudioRecording.en`` = _prefix "generationOfAudioRecording.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30191"></see>
     /// </summary>
-    let P30191 = Namespaced_IRI.parse _namespace_name "P30191" |> NamespacedName
+    let P30191 = _prefix "P30191"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30193"></see>
     /// </summary>
-    let P30193 = Namespaced_IRI.parse _namespace_name "P30193" |> NamespacedName
+    let P30193 = _prefix "P30193"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30192"></see>
     /// </summary>
-    let P30192 = Namespaced_IRI.parse _namespace_name "P30192" |> NamespacedName
+    let P30192 = _prefix "P30192"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30195"></see>
     /// </summary>
-    let P30195 = Namespaced_IRI.parse _namespace_name "P30195" |> NamespacedName
+    let P30195 = _prefix "P30195"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30194"></see>
     /// </summary>
-    let P30194 = Namespaced_IRI.parse _namespace_name "P30194" |> NamespacedName
-
+    let P30194 = _prefix "P30194"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/generation.en"></see>
     /// </summary>
-    let ``generation.en`` =
-        Namespaced_IRI.parse _namespace_name "generation.en" |> NamespacedName
-
+    let ``generation.en`` = _prefix "generation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/generationOfDigitalResource.en"></see>
     /// </summary>
-    let ``generationOfDigitalResource.en`` =
-        Namespaced_IRI.parse _namespace_name "generationOfDigitalResource.en" |> NamespacedName
+    let ``generationOfDigitalResource.en`` = _prefix "generationOfDigitalResource.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/generationOfMotionPictureFilm.en"></see>
     /// </summary>
     let ``generationOfMotionPictureFilm.en`` =
-        Namespaced_IRI.parse _namespace_name "generationOfMotionPictureFilm.en" |> NamespacedName
+        _prefix "generationOfMotionPictureFilm.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/generationOfVideotape.en"></see>
     /// </summary>
-    let ``generationOfVideotape.en`` =
-        Namespaced_IRI.parse _namespace_name "generationOfVideotape.en" |> NamespacedName
-
+    let ``generationOfVideotape.en`` = _prefix "generationOfVideotape.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/generationOfMicroform.en"></see>
     /// </summary>
-    let ``generationOfMicroform.en`` =
-        Namespaced_IRI.parse _namespace_name "generationOfMicroform.en" |> NamespacedName
-
+    let ``generationOfMicroform.en`` = _prefix "generationOfMicroform.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30196"></see>
     /// </summary>
-    let P30196 = Namespaced_IRI.parse _namespace_name "P30196" |> NamespacedName
-
+    let P30196 = _prefix "P30196"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/polarity.en"></see>
     /// </summary>
-    let ``polarity.en`` =
-        Namespaced_IRI.parse _namespace_name "polarity.en" |> NamespacedName
-
+    let ``polarity.en`` = _prefix "polarity.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30197"></see>
     /// </summary>
-    let P30197 = Namespaced_IRI.parse _namespace_name "P30197" |> NamespacedName
-
+    let P30197 = _prefix "P30197"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/bookFormat.en"></see>
     /// </summary>
-    let ``bookFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "bookFormat.en" |> NamespacedName
-
+    let ``bookFormat.en`` = _prefix "bookFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30198"></see>
     /// </summary>
-    let P30198 = Namespaced_IRI.parse _namespace_name "P30198" |> NamespacedName
-
+    let P30198 = _prefix "P30198"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/reductionRatio.en"></see>
     /// </summary>
-    let ``reductionRatio.en`` =
-        Namespaced_IRI.parse _namespace_name "reductionRatio.en" |> NamespacedName
-
+    let ``reductionRatio.en`` = _prefix "reductionRatio.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30199"></see>
     /// </summary>
-    let P30199 = Namespaced_IRI.parse _namespace_name "P30199" |> NamespacedName
-
+    let P30199 = _prefix "P30199"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/fontSize.en"></see>
     /// </summary>
-    let ``fontSize.en`` =
-        Namespaced_IRI.parse _namespace_name "fontSize.en" |> NamespacedName
-
+    let ``fontSize.en`` = _prefix "fontSize.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/projectionSpeed.en"></see>
     /// </summary>
-    let ``projectionSpeed.en`` =
-        Namespaced_IRI.parse _namespace_name "projectionSpeed.en" |> NamespacedName
-
+    let ``projectionSpeed.en`` = _prefix "projectionSpeed.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/playingSpeed.en"></see>
     /// </summary>
-    let ``playingSpeed.en`` =
-        Namespaced_IRI.parse _namespace_name "playingSpeed.en" |> NamespacedName
-
+    let ``playingSpeed.en`` = _prefix "playingSpeed.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/encodedBitrate.en"></see>
     /// </summary>
-    let ``encodedBitrate.en`` =
-        Namespaced_IRI.parse _namespace_name "encodedBitrate.en" |> NamespacedName
-
+    let ``encodedBitrate.en`` = _prefix "encodedBitrate.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelTitleProper.en"></see>
     /// </summary>
-    let ``parallelTitleProper.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelTitleProper.en" |> NamespacedName
-
+    let ``parallelTitleProper.en`` = _prefix "parallelTitleProper.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30204"></see>
     /// </summary>
-    let P30204 = Namespaced_IRI.parse _namespace_name "P30204" |> NamespacedName
-
+    let P30204 = _prefix "P30204"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelTitleProperOfSeries.en"></see>
     /// </summary>
-    let ``parallelTitleProperOfSeries.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelTitleProperOfSeries.en" |> NamespacedName
-
+    let ``parallelTitleProperOfSeries.en`` = _prefix "parallelTitleProperOfSeries.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30205"></see>
     /// </summary>
-    let P30205 = Namespaced_IRI.parse _namespace_name "P30205" |> NamespacedName
+    let P30205 = _prefix "P30205"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/parallelTitleProperOfSubseries.en"></see>
     /// </summary>
     let ``parallelTitleProperOfSubseries.en`` =
-        Namespaced_IRI.parse _namespace_name "parallelTitleProperOfSubseries.en" |> NamespacedName
+        _prefix "parallelTitleProperOfSubseries.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/recordingMedium.en"></see>
     /// </summary>
-    let ``recordingMedium.en`` =
-        Namespaced_IRI.parse _namespace_name "recordingMedium.en" |> NamespacedName
-
+    let ``recordingMedium.en`` = _prefix "recordingMedium.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30207"></see>
     /// </summary>
-    let P30207 = Namespaced_IRI.parse _namespace_name "P30207" |> NamespacedName
+    let P30207 = _prefix "P30207"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30208"></see>
     /// </summary>
-    let P30208 = Namespaced_IRI.parse _namespace_name "P30208" |> NamespacedName
-
+    let P30208 = _prefix "P30208"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/baseMaterial.en"></see>
     /// </summary>
-    let ``baseMaterial.en`` =
-        Namespaced_IRI.parse _namespace_name "baseMaterial.en" |> NamespacedName
-
+    let ``baseMaterial.en`` = _prefix "baseMaterial.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/keyTitle.en"></see>
     /// </summary>
-    let ``keyTitle.en`` =
-        Namespaced_IRI.parse _namespace_name "keyTitle.en" |> NamespacedName
+    let ``keyTitle.en`` = _prefix "keyTitle.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/accompanyingManifestationRelationship.en"></see>
     /// </summary>
     let ``accompanyingManifestationRelationship.en`` =
-        Namespaced_IRI.parse _namespace_name "accompanyingManifestationRelationship.en" |> NamespacedName
+        _prefix "accompanyingManifestationRelationship.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30211"></see>
     /// </summary>
-    let P30211 = Namespaced_IRI.parse _namespace_name "P30211" |> NamespacedName
+    let P30211 = _prefix "P30211"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/equivalentManifestationRelationship.en"></see>
     /// </summary>
     let ``equivalentManifestationRelationship.en`` =
-        Namespaced_IRI.parse _namespace_name "equivalentManifestationRelationship.en" |> NamespacedName
+        _prefix "equivalentManifestationRelationship.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/wholePartManifestationRelationship.en"></see>
     /// </summary>
     let ``wholePartManifestationRelationship.en`` =
-        Namespaced_IRI.parse _namespace_name "wholePartManifestationRelationship.en" |> NamespacedName
+        _prefix "wholePartManifestationRelationship.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/noteOnCarrier.en"></see>
     /// </summary>
-    let ``noteOnCarrier.en`` =
-        Namespaced_IRI.parse _namespace_name "noteOnCarrier.en" |> NamespacedName
-
+    let ``noteOnCarrier.en`` = _prefix "noteOnCarrier.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/papermaker.en"></see>
     /// </summary>
-    let ``papermaker.en`` =
-        Namespaced_IRI.parse _namespace_name "papermaker.en" |> NamespacedName
-
+    let ``papermaker.en`` = _prefix "papermaker.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30216"></see>
     /// </summary>
-    let P30216 = Namespaced_IRI.parse _namespace_name "P30216" |> NamespacedName
+    let P30216 = _prefix "P30216"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30223"></see>
     /// </summary>
-    let P30223 = Namespaced_IRI.parse _namespace_name "P30223" |> NamespacedName
-
+    let P30223 = _prefix "P30223"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfAppliedMaterial.en"></see>
     /// </summary>
-    let ``detailsOfAppliedMaterial.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfAppliedMaterial.en" |> NamespacedName
-
+    let ``detailsOfAppliedMaterial.en`` = _prefix "detailsOfAppliedMaterial.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30217"></see>
     /// </summary>
-    let P30217 = Namespaced_IRI.parse _namespace_name "P30217" |> NamespacedName
-
+    let P30217 = _prefix "P30217"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfBaseMaterial.en"></see>
     /// </summary>
-    let ``detailsOfBaseMaterial.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfBaseMaterial.en" |> NamespacedName
-
+    let ``detailsOfBaseMaterial.en`` = _prefix "detailsOfBaseMaterial.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30218"></see>
     /// </summary>
-    let P30218 = Namespaced_IRI.parse _namespace_name "P30218" |> NamespacedName
-
+    let P30218 = _prefix "P30218"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfBookFormat.en"></see>
     /// </summary>
-    let ``detailsOfBookFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfBookFormat.en" |> NamespacedName
-
+    let ``detailsOfBookFormat.en`` = _prefix "detailsOfBookFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30219"></see>
     /// </summary>
-    let P30219 = Namespaced_IRI.parse _namespace_name "P30219" |> NamespacedName
-
+    let P30219 = _prefix "P30219"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfBroadcastStandard.en"></see>
     /// </summary>
-    let ``detailsOfBroadcastStandard.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfBroadcastStandard.en" |> NamespacedName
-
+    let ``detailsOfBroadcastStandard.en`` = _prefix "detailsOfBroadcastStandard.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30250"></see>
     /// </summary>
-    let P30250 = Namespaced_IRI.parse _namespace_name "P30250" |> NamespacedName
+    let P30250 = _prefix "P30250"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30220"></see>
     /// </summary>
-    let P30220 = Namespaced_IRI.parse _namespace_name "P30220" |> NamespacedName
+    let P30220 = _prefix "P30220"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfConfigurationOfPlaybackChannels.en"></see>
     /// </summary>
     let ``detailsOfConfigurationOfPlaybackChannels.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfConfigurationOfPlaybackChannels.en" |> NamespacedName
+        _prefix "detailsOfConfigurationOfPlaybackChannels.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30245"></see>
     /// </summary>
-    let P30245 = Namespaced_IRI.parse _namespace_name "P30245" |> NamespacedName
+    let P30245 = _prefix "P30245"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30221"></see>
     /// </summary>
-    let P30221 = Namespaced_IRI.parse _namespace_name "P30221" |> NamespacedName
+    let P30221 = _prefix "P30221"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30222"></see>
     /// </summary>
-    let P30222 = Namespaced_IRI.parse _namespace_name "P30222" |> NamespacedName
+    let P30222 = _prefix "P30222"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30224"></see>
     /// </summary>
-    let P30224 = Namespaced_IRI.parse _namespace_name "P30224" |> NamespacedName
+    let P30224 = _prefix "P30224"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30225"></see>
     /// </summary>
-    let P30225 = Namespaced_IRI.parse _namespace_name "P30225" |> NamespacedName
+    let P30225 = _prefix "P30225"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfDigitalFileCharacteristic.en"></see>
     /// </summary>
     let ``detailsOfDigitalFileCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfDigitalFileCharacteristic.en" |> NamespacedName
+        _prefix "detailsOfDigitalFileCharacteristic.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfDigitalRepresentationOfCartographicContent.en"></see>
     /// </summary>
     let ``detailsOfDigitalRepresentationOfCartographicContent.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfDigitalRepresentationOfCartographicContent.en" |> NamespacedName
+        _prefix "detailsOfDigitalRepresentationOfCartographicContent.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfEmulsionOnMicrofilmAndMicrofiche.en"></see>
     /// </summary>
     let ``detailsOfEmulsionOnMicrofilmAndMicrofiche.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfEmulsionOnMicrofilmAndMicrofiche.en" |> NamespacedName
+        _prefix "detailsOfEmulsionOnMicrofilmAndMicrofiche.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfEncodingFormat.en"></see>
     /// </summary>
-    let ``detailsOfEncodingFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfEncodingFormat.en" |> NamespacedName
-
+    let ``detailsOfEncodingFormat.en`` = _prefix "detailsOfEncodingFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfFileType.en"></see>
     /// </summary>
-    let ``detailsOfFileType.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfFileType.en" |> NamespacedName
-
+    let ``detailsOfFileType.en`` = _prefix "detailsOfFileType.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30226"></see>
     /// </summary>
-    let P30226 = Namespaced_IRI.parse _namespace_name "P30226" |> NamespacedName
-
+    let P30226 = _prefix "P30226"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfFontSize.en"></see>
     /// </summary>
-    let ``detailsOfFontSize.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfFontSize.en" |> NamespacedName
-
+    let ``detailsOfFontSize.en`` = _prefix "detailsOfFontSize.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30227"></see>
     /// </summary>
-    let P30227 = Namespaced_IRI.parse _namespace_name "P30227" |> NamespacedName
+    let P30227 = _prefix "P30227"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGenerationOfAudioRecording.en"></see>
     /// </summary>
     let ``detailsOfGenerationOfAudioRecording.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGenerationOfAudioRecording.en" |> NamespacedName
+        _prefix "detailsOfGenerationOfAudioRecording.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30252"></see>
     /// </summary>
-    let P30252 = Namespaced_IRI.parse _namespace_name "P30252" |> NamespacedName
+    let P30252 = _prefix "P30252"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30228"></see>
     /// </summary>
-    let P30228 = Namespaced_IRI.parse _namespace_name "P30228" |> NamespacedName
+    let P30228 = _prefix "P30228"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGenerationOfDigitalResource.en"></see>
     /// </summary>
     let ``detailsOfGenerationOfDigitalResource.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGenerationOfDigitalResource.en" |> NamespacedName
+        _prefix "detailsOfGenerationOfDigitalResource.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30229"></see>
     /// </summary>
-    let P30229 = Namespaced_IRI.parse _namespace_name "P30229" |> NamespacedName
+    let P30229 = _prefix "P30229"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGenerationOfMicroform.en"></see>
     /// </summary>
     let ``detailsOfGenerationOfMicroform.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGenerationOfMicroform.en" |> NamespacedName
+        _prefix "detailsOfGenerationOfMicroform.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30230"></see>
     /// </summary>
-    let P30230 = Namespaced_IRI.parse _namespace_name "P30230" |> NamespacedName
+    let P30230 = _prefix "P30230"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGenerationOfMotionPictureFilm.en"></see>
     /// </summary>
     let ``detailsOfGenerationOfMotionPictureFilm.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGenerationOfMotionPictureFilm.en" |> NamespacedName
+        _prefix "detailsOfGenerationOfMotionPictureFilm.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30231"></see>
     /// </summary>
-    let P30231 = Namespaced_IRI.parse _namespace_name "P30231" |> NamespacedName
+    let P30231 = _prefix "P30231"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGenerationOfVideotape.en"></see>
     /// </summary>
     let ``detailsOfGenerationOfVideotape.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGenerationOfVideotape.en" |> NamespacedName
+        _prefix "detailsOfGenerationOfVideotape.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30232"></see>
     /// </summary>
-    let P30232 = Namespaced_IRI.parse _namespace_name "P30232" |> NamespacedName
+    let P30232 = _prefix "P30232"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGrooveCharacteristic.en"></see>
     /// </summary>
     let ``detailsOfGrooveCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGrooveCharacteristic.en" |> NamespacedName
+        _prefix "detailsOfGrooveCharacteristic.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30233"></see>
     /// </summary>
-    let P30233 = Namespaced_IRI.parse _namespace_name "P30233" |> NamespacedName
-
+    let P30233 = _prefix "P30233"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfLayout.en"></see>
     /// </summary>
-    let ``detailsOfLayout.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfLayout.en" |> NamespacedName
-
+    let ``detailsOfLayout.en`` = _prefix "detailsOfLayout.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30234"></see>
     /// </summary>
-    let P30234 = Namespaced_IRI.parse _namespace_name "P30234" |> NamespacedName
-
+    let P30234 = _prefix "P30234"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfMount.en"></see>
     /// </summary>
-    let ``detailsOfMount.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfMount.en" |> NamespacedName
-
+    let ``detailsOfMount.en`` = _prefix "detailsOfMount.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30235"></see>
     /// </summary>
-    let P30235 = Namespaced_IRI.parse _namespace_name "P30235" |> NamespacedName
-
+    let P30235 = _prefix "P30235"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfPlayingSpeed.en"></see>
     /// </summary>
-    let ``detailsOfPlayingSpeed.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfPlayingSpeed.en" |> NamespacedName
-
+    let ``detailsOfPlayingSpeed.en`` = _prefix "detailsOfPlayingSpeed.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30236"></see>
     /// </summary>
-    let P30236 = Namespaced_IRI.parse _namespace_name "P30236" |> NamespacedName
-
+    let P30236 = _prefix "P30236"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfPolarity.en"></see>
     /// </summary>
-    let ``detailsOfPolarity.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfPolarity.en" |> NamespacedName
-
+    let ``detailsOfPolarity.en`` = _prefix "detailsOfPolarity.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30237"></see>
     /// </summary>
-    let P30237 = Namespaced_IRI.parse _namespace_name "P30237" |> NamespacedName
-
+    let P30237 = _prefix "P30237"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfPresentationFormat.en"></see>
     /// </summary>
-    let ``detailsOfPresentationFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfPresentationFormat.en" |> NamespacedName
-
+    let ``detailsOfPresentationFormat.en`` = _prefix "detailsOfPresentationFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30238"></see>
     /// </summary>
-    let P30238 = Namespaced_IRI.parse _namespace_name "P30238" |> NamespacedName
+    let P30238 = _prefix "P30238"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30240"></see>
     /// </summary>
-    let P30240 = Namespaced_IRI.parse _namespace_name "P30240" |> NamespacedName
+    let P30240 = _prefix "P30240"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30239"></see>
     /// </summary>
-    let P30239 = Namespaced_IRI.parse _namespace_name "P30239" |> NamespacedName
-
+    let P30239 = _prefix "P30239"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfProductionMethod.en"></see>
     /// </summary>
-    let ``detailsOfProductionMethod.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfProductionMethod.en" |> NamespacedName
+    let ``detailsOfProductionMethod.en`` = _prefix "detailsOfProductionMethod.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfProductionMethodForManuscript.en"></see>
     /// </summary>
     let ``detailsOfProductionMethodForManuscript.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfProductionMethodForManuscript.en" |> NamespacedName
+        _prefix "detailsOfProductionMethodForManuscript.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfProductionMethodForTactileResource.en"></see>
     /// </summary>
     let ``detailsOfProductionMethodForTactileResource.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfProductionMethodForTactileResource.en" |> NamespacedName
+        _prefix "detailsOfProductionMethodForTactileResource.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30241"></see>
     /// </summary>
-    let P30241 = Namespaced_IRI.parse _namespace_name "P30241" |> NamespacedName
+    let P30241 = _prefix "P30241"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30242"></see>
     /// </summary>
-    let P30242 = Namespaced_IRI.parse _namespace_name "P30242" |> NamespacedName
+    let P30242 = _prefix "P30242"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfProjectionCharacteristicOfMotionPictureFilm.en"></see>
     /// </summary>
     let ``detailsOfProjectionCharacteristicOfMotionPictureFilm.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfProjectionCharacteristicOfMotionPictureFilm.en" |> NamespacedName
+        _prefix "detailsOfProjectionCharacteristicOfMotionPictureFilm.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfProjectionSpeed.en"></see>
     /// </summary>
-    let ``detailsOfProjectionSpeed.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfProjectionSpeed.en" |> NamespacedName
-
+    let ``detailsOfProjectionSpeed.en`` = _prefix "detailsOfProjectionSpeed.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30243"></see>
     /// </summary>
-    let P30243 = Namespaced_IRI.parse _namespace_name "P30243" |> NamespacedName
-
+    let P30243 = _prefix "P30243"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfRecordingMedium.en"></see>
     /// </summary>
-    let ``detailsOfRecordingMedium.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfRecordingMedium.en" |> NamespacedName
-
+    let ``detailsOfRecordingMedium.en`` = _prefix "detailsOfRecordingMedium.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30244"></see>
     /// </summary>
-    let P30244 = Namespaced_IRI.parse _namespace_name "P30244" |> NamespacedName
-
+    let P30244 = _prefix "P30244"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfReductionRatio.en"></see>
     /// </summary>
-    let ``detailsOfReductionRatio.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfReductionRatio.en" |> NamespacedName
-
+    let ``detailsOfReductionRatio.en`` = _prefix "detailsOfReductionRatio.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30247"></see>
     /// </summary>
-    let P30247 = Namespaced_IRI.parse _namespace_name "P30247" |> NamespacedName
+    let P30247 = _prefix "P30247"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30249"></see>
     /// </summary>
-    let P30249 = Namespaced_IRI.parse _namespace_name "P30249" |> NamespacedName
+    let P30249 = _prefix "P30249"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30246"></see>
     /// </summary>
-    let P30246 = Namespaced_IRI.parse _namespace_name "P30246" |> NamespacedName
+    let P30246 = _prefix "P30246"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30248"></see>
     /// </summary>
-    let P30248 = Namespaced_IRI.parse _namespace_name "P30248" |> NamespacedName
-
+    let P30248 = _prefix "P30248"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfSoundCharacteristic.en"></see>
     /// </summary>
-    let ``detailsOfSoundCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfSoundCharacteristic.en" |> NamespacedName
+    let ``detailsOfSoundCharacteristic.en`` = _prefix "detailsOfSoundCharacteristic.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfSpecialPlaybackCharacteristic.en"></see>
     /// </summary>
     let ``detailsOfSpecialPlaybackCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfSpecialPlaybackCharacteristic.en" |> NamespacedName
+        _prefix "detailsOfSpecialPlaybackCharacteristic.en"
 
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfTapeConfiguration.en"></see>
     /// </summary>
-    let ``detailsOfTapeConfiguration.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfTapeConfiguration.en" |> NamespacedName
-
+    let ``detailsOfTapeConfiguration.en`` = _prefix "detailsOfTapeConfiguration.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfTrackConfiguration.en"></see>
     /// </summary>
-    let ``detailsOfTrackConfiguration.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfTrackConfiguration.en" |> NamespacedName
-
+    let ``detailsOfTrackConfiguration.en`` = _prefix "detailsOfTrackConfiguration.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfTypeOfRecording.en"></see>
     /// </summary>
-    let ``detailsOfTypeOfRecording.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfTypeOfRecording.en" |> NamespacedName
-
+    let ``detailsOfTypeOfRecording.en`` = _prefix "detailsOfTypeOfRecording.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30251"></see>
     /// </summary>
-    let P30251 = Namespaced_IRI.parse _namespace_name "P30251" |> NamespacedName
-
+    let P30251 = _prefix "P30251"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfVideoCharacteristic.en"></see>
     /// </summary>
-    let ``detailsOfVideoCharacteristic.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfVideoCharacteristic.en" |> NamespacedName
-
+    let ``detailsOfVideoCharacteristic.en`` = _prefix "detailsOfVideoCharacteristic.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfVideoFormat.en"></see>
     /// </summary>
-    let ``detailsOfVideoFormat.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfVideoFormat.en" |> NamespacedName
-
+    let ``detailsOfVideoFormat.en`` = _prefix "detailsOfVideoFormat.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/detailsOfGeneration.en"></see>
     /// </summary>
-    let ``detailsOfGeneration.en`` =
-        Namespaced_IRI.parse _namespace_name "detailsOfGeneration.en" |> NamespacedName
-
+    let ``detailsOfGeneration.en`` = _prefix "detailsOfGeneration.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30253"></see>
     /// </summary>
-    let P30253 = Namespaced_IRI.parse _namespace_name "P30253" |> NamespacedName
+    let P30253 = _prefix "P30253"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30254"></see>
     /// </summary>
-    let P30254 = Namespaced_IRI.parse _namespace_name "P30254" |> NamespacedName
-
+    let P30254 = _prefix "P30254"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/subjectOfManifestation.en"></see>
     /// </summary>
-    let ``subjectOfManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "subjectOfManifestation.en" |> NamespacedName
-
+    let ``subjectOfManifestation.en`` = _prefix "subjectOfManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30258"></see>
     /// </summary>
-    let P30258 = Namespaced_IRI.parse _namespace_name "P30258" |> NamespacedName
+    let P30258 = _prefix "P30258"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30259"></see>
     /// </summary>
-    let P30259 = Namespaced_IRI.parse _namespace_name "P30259" |> NamespacedName
+    let P30259 = _prefix "P30259"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30256"></see>
     /// </summary>
-    let P30256 = Namespaced_IRI.parse _namespace_name "P30256" |> NamespacedName
+    let P30256 = _prefix "P30256"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30257"></see>
     /// </summary>
-    let P30257 = Namespaced_IRI.parse _namespace_name "P30257" |> NamespacedName
+    let P30257 = _prefix "P30257"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/P30255"></see>
     /// </summary>
-    let P30255 = Namespaced_IRI.parse _namespace_name "P30255" |> NamespacedName
-
+    let P30255 = _prefix "P30255"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/describedInManifestation.en"></see>
     /// </summary>
-    let ``describedInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "describedInManifestation.en" |> NamespacedName
-
+    let ``describedInManifestation.en`` = _prefix "describedInManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/analysedInManifestation.en"></see>
     /// </summary>
-    let ``analysedInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "analysedInManifestation.en" |> NamespacedName
-
+    let ``analysedInManifestation.en`` = _prefix "analysedInManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/commentaryInManifestation.en"></see>
     /// </summary>
-    let ``commentaryInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "commentaryInManifestation.en" |> NamespacedName
-
+    let ``commentaryInManifestation.en`` = _prefix "commentaryInManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/critiquedInManifestation.en"></see>
     /// </summary>
-    let ``critiquedInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "critiquedInManifestation.en" |> NamespacedName
-
+    let ``critiquedInManifestation.en`` = _prefix "critiquedInManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/evaluatedInManifestation.en"></see>
     /// </summary>
-    let ``evaluatedInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "evaluatedInManifestation.en" |> NamespacedName
-
+    let ``evaluatedInManifestation.en`` = _prefix "evaluatedInManifestation.en"
     /// <summary>
     ///   <see href="http://rdaregistry.info/Elements/m/reviewedInManifestation.en"></see>
     /// </summary>
-    let ``reviewedInManifestation.en`` =
-        Namespaced_IRI.parse _namespace_name "reviewedInManifestation.en" |> NamespacedName
+    let ``reviewedInManifestation.en`` = _prefix "reviewedInManifestation.en"

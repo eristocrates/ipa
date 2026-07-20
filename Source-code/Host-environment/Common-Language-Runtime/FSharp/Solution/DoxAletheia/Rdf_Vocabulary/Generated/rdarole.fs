@@ -1,1413 +1,1022 @@
 namespace http.rdvocab.info.roles.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rdarole =
     let _namespace_name = "http://rdvocab.info/roles/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/Filmmaker"></see>
     /// </summary>
-    let Filmmaker = Namespaced_IRI.parse _namespace_name "Filmmaker" |> NamespacedName
+    let Filmmaker = _prefix "Filmmaker"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/abridger"></see>
     /// </summary>
-    let abridger = Namespaced_IRI.parse _namespace_name "abridger" |> NamespacedName
-
+    let abridger = _prefix "abridger"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/abridgerExpression"></see>
     /// </summary>
-    let abridgerExpression =
-        Namespaced_IRI.parse _namespace_name "abridgerExpression" |> NamespacedName
-
+    let abridgerExpression = _prefix "abridgerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/contributor"></see>
     /// </summary>
-    let contributor =
-        Namespaced_IRI.parse _namespace_name "contributor" |> NamespacedName
-
+    let contributor = _prefix "contributor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/actor"></see>
     /// </summary>
-    let actor = Namespaced_IRI.parse _namespace_name "actor" |> NamespacedName
+    let actor = _prefix "actor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/performer"></see>
     /// </summary>
-    let performer = Namespaced_IRI.parse _namespace_name "performer" |> NamespacedName
-
+    let performer = _prefix "performer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/actorExpression"></see>
     /// </summary>
-    let actorExpression =
-        Namespaced_IRI.parse _namespace_name "actorExpression" |> NamespacedName
-
+    let actorExpression = _prefix "actorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/performerExpression"></see>
     /// </summary>
-    let performerExpression =
-        Namespaced_IRI.parse _namespace_name "performerExpression" |> NamespacedName
-
+    let performerExpression = _prefix "performerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/addressee"></see>
     /// </summary>
-    let addressee = Namespaced_IRI.parse _namespace_name "addressee" |> NamespacedName
-
+    let addressee = _prefix "addressee"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/addresseeWork"></see>
     /// </summary>
-    let addresseeWork =
-        Namespaced_IRI.parse _namespace_name "addresseeWork" |> NamespacedName
-
+    let addresseeWork = _prefix "addresseeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/animator"></see>
     /// </summary>
-    let animator = Namespaced_IRI.parse _namespace_name "animator" |> NamespacedName
-
+    let animator = _prefix "animator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/animatorExpression"></see>
     /// </summary>
-    let animatorExpression =
-        Namespaced_IRI.parse _namespace_name "animatorExpression" |> NamespacedName
-
+    let animatorExpression = _prefix "animatorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/annotator"></see>
     /// </summary>
-    let annotator = Namespaced_IRI.parse _namespace_name "annotator" |> NamespacedName
-
+    let annotator = _prefix "annotator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/annotatorItem"></see>
     /// </summary>
-    let annotatorItem =
-        Namespaced_IRI.parse _namespace_name "annotatorItem" |> NamespacedName
-
+    let annotatorItem = _prefix "annotatorItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/appellant"></see>
     /// </summary>
-    let appellant = Namespaced_IRI.parse _namespace_name "appellant" |> NamespacedName
-
+    let appellant = _prefix "appellant"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/appellantWork"></see>
     /// </summary>
-    let appellantWork =
-        Namespaced_IRI.parse _namespace_name "appellantWork" |> NamespacedName
-
+    let appellantWork = _prefix "appellantWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/appellee"></see>
     /// </summary>
-    let appellee = Namespaced_IRI.parse _namespace_name "appellee" |> NamespacedName
-
+    let appellee = _prefix "appellee"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/appelleeWork"></see>
     /// </summary>
-    let appelleeWork =
-        Namespaced_IRI.parse _namespace_name "appelleeWork" |> NamespacedName
-
+    let appelleeWork = _prefix "appelleeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/architect"></see>
     /// </summary>
-    let architect = Namespaced_IRI.parse _namespace_name "architect" |> NamespacedName
-
+    let architect = _prefix "architect"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/landscapeArchitect"></see>
     /// </summary>
-    let landscapeArchitect =
-        Namespaced_IRI.parse _namespace_name "landscapeArchitect" |> NamespacedName
-
+    let landscapeArchitect = _prefix "landscapeArchitect"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/architectWork"></see>
     /// </summary>
-    let architectWork =
-        Namespaced_IRI.parse _namespace_name "architectWork" |> NamespacedName
-
+    let architectWork = _prefix "architectWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/creator"></see>
     /// </summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
-
+    let creator = _prefix "creator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/arrangerOfMusic"></see>
     /// </summary>
-    let arrangerOfMusic =
-        Namespaced_IRI.parse _namespace_name "arrangerOfMusic" |> NamespacedName
-
+    let arrangerOfMusic = _prefix "arrangerOfMusic"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/arrangerOfMusicExpression"></see>
     /// </summary>
-    let arrangerOfMusicExpression =
-        Namespaced_IRI.parse _namespace_name "arrangerOfMusicExpression" |> NamespacedName
-
+    let arrangerOfMusicExpression = _prefix "arrangerOfMusicExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/artDirector"></see>
     /// </summary>
-    let artDirector =
-        Namespaced_IRI.parse _namespace_name "artDirector" |> NamespacedName
-
+    let artDirector = _prefix "artDirector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/artDirectorExpression"></see>
     /// </summary>
-    let artDirectorExpression =
-        Namespaced_IRI.parse _namespace_name "artDirectorExpression" |> NamespacedName
-
+    let artDirectorExpression = _prefix "artDirectorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/artist"></see>
     /// </summary>
-    let artist = Namespaced_IRI.parse _namespace_name "artist" |> NamespacedName
+    let artist = _prefix "artist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/sculptor"></see>
     /// </summary>
-    let sculptor = Namespaced_IRI.parse _namespace_name "sculptor" |> NamespacedName
+    let sculptor = _prefix "sculptor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/artistWork"></see>
     /// </summary>
-    let artistWork = Namespaced_IRI.parse _namespace_name "artistWork" |> NamespacedName
+    let artistWork = _prefix "artistWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/author"></see>
     /// </summary>
-    let author = Namespaced_IRI.parse _namespace_name "author" |> NamespacedName
-
+    let author = _prefix "author"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/screenwriter"></see>
     /// </summary>
-    let screenwriter =
-        Namespaced_IRI.parse _namespace_name "screenwriter" |> NamespacedName
-
+    let screenwriter = _prefix "screenwriter"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/lyricist"></see>
     /// </summary>
-    let lyricist = Namespaced_IRI.parse _namespace_name "lyricist" |> NamespacedName
+    let lyricist = _prefix "lyricist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/librettist"></see>
     /// </summary>
-    let librettist = Namespaced_IRI.parse _namespace_name "librettist" |> NamespacedName
+    let librettist = _prefix "librettist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/authorWork"></see>
     /// </summary>
-    let authorWork = Namespaced_IRI.parse _namespace_name "authorWork" |> NamespacedName
-
+    let authorWork = _prefix "authorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/librettistWork"></see>
     /// </summary>
-    let librettistWork =
-        Namespaced_IRI.parse _namespace_name "librettistWork" |> NamespacedName
-
+    let librettistWork = _prefix "librettistWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/screenwriterWork"></see>
     /// </summary>
-    let screenwriterWork =
-        Namespaced_IRI.parse _namespace_name "screenwriterWork" |> NamespacedName
-
+    let screenwriterWork = _prefix "screenwriterWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/lyricistWork"></see>
     /// </summary>
-    let lyricistWork =
-        Namespaced_IRI.parse _namespace_name "lyricistWork" |> NamespacedName
-
+    let lyricistWork = _prefix "lyricistWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/autographer"></see>
     /// </summary>
-    let autographer =
-        Namespaced_IRI.parse _namespace_name "autographer" |> NamespacedName
-
+    let autographer = _prefix "autographer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/autographerItem"></see>
     /// </summary>
-    let autographerItem =
-        Namespaced_IRI.parse _namespace_name "autographerItem" |> NamespacedName
-
+    let autographerItem = _prefix "autographerItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/binder"></see>
     /// </summary>
-    let binder = Namespaced_IRI.parse _namespace_name "binder" |> NamespacedName
+    let binder = _prefix "binder"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/binderItem"></see>
     /// </summary>
-    let binderItem = Namespaced_IRI.parse _namespace_name "binderItem" |> NamespacedName
-
+    let binderItem = _prefix "binderItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/bookDesigner"></see>
     /// </summary>
-    let bookDesigner =
-        Namespaced_IRI.parse _namespace_name "bookDesigner" |> NamespacedName
-
+    let bookDesigner = _prefix "bookDesigner"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/manufacturer"></see>
     /// </summary>
-    let manufacturer =
-        Namespaced_IRI.parse _namespace_name "manufacturer" |> NamespacedName
-
+    let manufacturer = _prefix "manufacturer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/bookDesignerManifestation"></see>
     /// </summary>
-    let bookDesignerManifestation =
-        Namespaced_IRI.parse _namespace_name "bookDesignerManifestation" |> NamespacedName
-
+    let bookDesignerManifestation = _prefix "bookDesignerManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/manufacturerManifestation"></see>
     /// </summary>
-    let manufacturerManifestation =
-        Namespaced_IRI.parse _namespace_name "manufacturerManifestation" |> NamespacedName
-
+    let manufacturerManifestation = _prefix "manufacturerManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/brailleEmbosser"></see>
     /// </summary>
-    let brailleEmbosser =
-        Namespaced_IRI.parse _namespace_name "brailleEmbosser" |> NamespacedName
-
+    let brailleEmbosser = _prefix "brailleEmbosser"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/brailleEmbosserManifestation"></see>
     /// </summary>
-    let brailleEmbosserManifestation =
-        Namespaced_IRI.parse _namespace_name "brailleEmbosserManifestation" |> NamespacedName
-
+    let brailleEmbosserManifestation = _prefix "brailleEmbosserManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/broadcaster"></see>
     /// </summary>
-    let broadcaster =
-        Namespaced_IRI.parse _namespace_name "broadcaster" |> NamespacedName
-
+    let broadcaster = _prefix "broadcaster"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/publisher"></see>
     /// </summary>
-    let publisher = Namespaced_IRI.parse _namespace_name "publisher" |> NamespacedName
-
+    let publisher = _prefix "publisher"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/broadcasterManifestation"></see>
     /// </summary>
-    let broadcasterManifestation =
-        Namespaced_IRI.parse _namespace_name "broadcasterManifestation" |> NamespacedName
-
+    let broadcasterManifestation = _prefix "broadcasterManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/publisherManifestation"></see>
     /// </summary>
-    let publisherManifestation =
-        Namespaced_IRI.parse _namespace_name "publisherManifestation" |> NamespacedName
-
+    let publisherManifestation = _prefix "publisherManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/cartographer"></see>
     /// </summary>
-    let cartographer =
-        Namespaced_IRI.parse _namespace_name "cartographer" |> NamespacedName
-
+    let cartographer = _prefix "cartographer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/cartographerWork"></see>
     /// </summary>
-    let cartographerWork =
-        Namespaced_IRI.parse _namespace_name "cartographerWork" |> NamespacedName
-
+    let cartographerWork = _prefix "cartographerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/caster"></see>
     /// </summary>
-    let caster = Namespaced_IRI.parse _namespace_name "caster" |> NamespacedName
-
+    let caster = _prefix "caster"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/casterManifestation"></see>
     /// </summary>
-    let casterManifestation =
-        Namespaced_IRI.parse _namespace_name "casterManifestation" |> NamespacedName
-
+    let casterManifestation = _prefix "casterManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/choreographer"></see>
     /// </summary>
-    let choreographer =
-        Namespaced_IRI.parse _namespace_name "choreographer" |> NamespacedName
-
+    let choreographer = _prefix "choreographer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/choreographerExpression"></see>
     /// </summary>
-    let choreographerExpression =
-        Namespaced_IRI.parse _namespace_name "choreographerExpression" |> NamespacedName
-
+    let choreographerExpression = _prefix "choreographerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/choreographerWork"></see>
     /// </summary>
-    let choreographerWork =
-        Namespaced_IRI.parse _namespace_name "choreographerWork" |> NamespacedName
-
+    let choreographerWork = _prefix "choreographerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/cinematographer"></see>
     /// </summary>
-    let cinematographer =
-        Namespaced_IRI.parse _namespace_name "cinematographer" |> NamespacedName
-
+    let cinematographer = _prefix "cinematographer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/collectionRegistrar"></see>
     /// </summary>
-    let collectionRegistrar =
-        Namespaced_IRI.parse _namespace_name "collectionRegistrar" |> NamespacedName
-
+    let collectionRegistrar = _prefix "collectionRegistrar"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/curator"></see>
     /// </summary>
-    let curator = Namespaced_IRI.parse _namespace_name "curator" |> NamespacedName
-
+    let curator = _prefix "curator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/collectionRegistrarItem"></see>
     /// </summary>
-    let collectionRegistrarItem =
-        Namespaced_IRI.parse _namespace_name "collectionRegistrarItem" |> NamespacedName
-
+    let collectionRegistrarItem = _prefix "collectionRegistrarItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/collector"></see>
     /// </summary>
-    let collector = Namespaced_IRI.parse _namespace_name "collector" |> NamespacedName
-
+    let collector = _prefix "collector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/collectorItem"></see>
     /// </summary>
-    let collectorItem =
-        Namespaced_IRI.parse _namespace_name "collectorItem" |> NamespacedName
-
+    let collectorItem = _prefix "collectorItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/collotyper"></see>
     /// </summary>
-    let collotyper = Namespaced_IRI.parse _namespace_name "collotyper" |> NamespacedName
-
+    let collotyper = _prefix "collotyper"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/collotyperManifestation"></see>
     /// </summary>
-    let collotyperManifestation =
-        Namespaced_IRI.parse _namespace_name "collotyperManifestation" |> NamespacedName
-
+    let collotyperManifestation = _prefix "collotyperManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/commentator"></see>
     /// </summary>
-    let commentator =
-        Namespaced_IRI.parse _namespace_name "commentator" |> NamespacedName
-
+    let commentator = _prefix "commentator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/commentatorExpression"></see>
     /// </summary>
-    let commentatorExpression =
-        Namespaced_IRI.parse _namespace_name "commentatorExpression" |> NamespacedName
-
+    let commentatorExpression = _prefix "commentatorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/compiler"></see>
     /// </summary>
-    let compiler = Namespaced_IRI.parse _namespace_name "compiler" |> NamespacedName
-
+    let compiler = _prefix "compiler"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/compilerWork"></see>
     /// </summary>
-    let compilerWork =
-        Namespaced_IRI.parse _namespace_name "compilerWork" |> NamespacedName
-
+    let compilerWork = _prefix "compilerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composer"></see>
     /// </summary>
-    let composer = Namespaced_IRI.parse _namespace_name "composer" |> NamespacedName
-
+    let composer = _prefix "composer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerExpression"></see>
     /// </summary>
-    let composerExpression =
-        Namespaced_IRI.parse _namespace_name "composerExpression" |> NamespacedName
-
+    let composerExpression = _prefix "composerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfAdditionalMusic"></see>
     /// </summary>
-    let composerOfAdditionalMusic =
-        Namespaced_IRI.parse _namespace_name "composerOfAdditionalMusic" |> NamespacedName
+    let composerOfAdditionalMusic = _prefix "composerOfAdditionalMusic"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfAdditionalMusicExpression"></see>
     /// </summary>
     let composerOfAdditionalMusicExpression =
-        Namespaced_IRI.parse _namespace_name "composerOfAdditionalMusicExpression" |> NamespacedName
+        _prefix "composerOfAdditionalMusicExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfIncidentalMusic"></see>
     /// </summary>
-    let composerOfIncidentalMusic =
-        Namespaced_IRI.parse _namespace_name "composerOfIncidentalMusic" |> NamespacedName
+    let composerOfIncidentalMusic = _prefix "composerOfIncidentalMusic"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfIncidentalMusicExpression"></see>
     /// </summary>
     let composerOfIncidentalMusicExpression =
-        Namespaced_IRI.parse _namespace_name "composerOfIncidentalMusicExpression" |> NamespacedName
+        _prefix "composerOfIncidentalMusicExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfMusicForSilentFilm"></see>
     /// </summary>
-    let composerOfMusicForSilentFilm =
-        Namespaced_IRI.parse _namespace_name "composerOfMusicForSilentFilm" |> NamespacedName
+    let composerOfMusicForSilentFilm = _prefix "composerOfMusicForSilentFilm"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfMusicForSilentFilmExpression"></see>
     /// </summary>
     let composerOfMusicForSilentFilmExpression =
-        Namespaced_IRI.parse _namespace_name "composerOfMusicForSilentFilmExpression" |> NamespacedName
+        _prefix "composerOfMusicForSilentFilmExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfMusicForSoundFilm"></see>
     /// </summary>
-    let composerOfMusicForSoundFilm =
-        Namespaced_IRI.parse _namespace_name "composerOfMusicForSoundFilm" |> NamespacedName
+    let composerOfMusicForSoundFilm = _prefix "composerOfMusicForSoundFilm"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerOfMusicForSoundFilmExpression"></see>
     /// </summary>
     let composerOfMusicForSoundFilmExpression =
-        Namespaced_IRI.parse _namespace_name "composerOfMusicForSoundFilmExpression" |> NamespacedName
+        _prefix "composerOfMusicForSoundFilmExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/composerWork"></see>
     /// </summary>
-    let composerWork =
-        Namespaced_IRI.parse _namespace_name "composerWork" |> NamespacedName
-
+    let composerWork = _prefix "composerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/conductor"></see>
     /// </summary>
-    let conductor = Namespaced_IRI.parse _namespace_name "conductor" |> NamespacedName
-
+    let conductor = _prefix "conductor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/conductorExpression"></see>
     /// </summary>
-    let conductorExpression =
-        Namespaced_IRI.parse _namespace_name "conductorExpression" |> NamespacedName
-
+    let conductorExpression = _prefix "conductorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/editorOfMovingImageWorkExpression"></see>
     /// </summary>
-    let editorOfMovingImageWorkExpression =
-        Namespaced_IRI.parse _namespace_name "editorOfMovingImageWorkExpression" |> NamespacedName
-
+    let editorOfMovingImageWorkExpression = _prefix "editorOfMovingImageWorkExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/courtReporterExpression"></see>
     /// </summary>
-    let courtReporterExpression =
-        Namespaced_IRI.parse _namespace_name "courtReporterExpression" |> NamespacedName
-
+    let courtReporterExpression = _prefix "courtReporterExpression"
     /// <summary>
     /// If the work is primarily the artistic content created by this entity, see artist and photographer.
     /// <see href="http://rdvocab.info/roles/illustratorExpression"></see></summary>
-    let illustratorExpression =
-        Namespaced_IRI.parse _namespace_name "illustratorExpression" |> NamespacedName
-
+    let illustratorExpression = _prefix "illustratorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/recordingEngineerExpression"></see>
     /// </summary>
-    let recordingEngineerExpression =
-        Namespaced_IRI.parse _namespace_name "recordingEngineerExpression" |> NamespacedName
-
+    let recordingEngineerExpression = _prefix "recordingEngineerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/stageDirectorExpression"></see>
     /// </summary>
-    let stageDirectorExpression =
-        Namespaced_IRI.parse _namespace_name "stageDirectorExpression" |> NamespacedName
-
+    let stageDirectorExpression = _prefix "stageDirectorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/recordistExpression"></see>
     /// </summary>
-    let recordistExpression =
-        Namespaced_IRI.parse _namespace_name "recordistExpression" |> NamespacedName
-
+    let recordistExpression = _prefix "recordistExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/transcriberExpression"></see>
     /// </summary>
-    let transcriberExpression =
-        Namespaced_IRI.parse _namespace_name "transcriberExpression" |> NamespacedName
-
+    let transcriberExpression = _prefix "transcriberExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/intervieweeExpression"></see>
     /// </summary>
-    let intervieweeExpression =
-        Namespaced_IRI.parse _namespace_name "intervieweeExpression" |> NamespacedName
-
+    let intervieweeExpression = _prefix "intervieweeExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/presenterExpression"></see>
     /// </summary>
-    let presenterExpression =
-        Namespaced_IRI.parse _namespace_name "presenterExpression" |> NamespacedName
-
+    let presenterExpression = _prefix "presenterExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/writerOfAddedTextExpression"></see>
     /// </summary>
-    let writerOfAddedTextExpression =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedTextExpression" |> NamespacedName
-
+    let writerOfAddedTextExpression = _prefix "writerOfAddedTextExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/editorOfCompilationExpression"></see>
     /// </summary>
-    let editorOfCompilationExpression =
-        Namespaced_IRI.parse _namespace_name "editorOfCompilationExpression" |> NamespacedName
-
+    let editorOfCompilationExpression = _prefix "editorOfCompilationExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/productionDesignerExpression"></see>
     /// </summary>
-    let productionDesignerExpression =
-        Namespaced_IRI.parse _namespace_name "productionDesignerExpression" |> NamespacedName
-
+    let productionDesignerExpression = _prefix "productionDesignerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/translatorExpression"></see>
     /// </summary>
-    let translatorExpression =
-        Namespaced_IRI.parse _namespace_name "translatorExpression" |> NamespacedName
-
+    let translatorExpression = _prefix "translatorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/interviewerExpression"></see>
     /// </summary>
-    let interviewerExpression =
-        Namespaced_IRI.parse _namespace_name "interviewerExpression" |> NamespacedName
-
+    let interviewerExpression = _prefix "interviewerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/surveyorExpression"></see>
     /// </summary>
-    let surveyorExpression =
-        Namespaced_IRI.parse _namespace_name "surveyorExpression" |> NamespacedName
-
+    let surveyorExpression = _prefix "surveyorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/editorExpression"></see>
     /// </summary>
-    let editorExpression =
-        Namespaced_IRI.parse _namespace_name "editorExpression" |> NamespacedName
-
+    let editorExpression = _prefix "editorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/draftsmanExpression"></see>
     /// </summary>
-    let draftsmanExpression =
-        Namespaced_IRI.parse _namespace_name "draftsmanExpression" |> NamespacedName
-
+    let draftsmanExpression = _prefix "draftsmanExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/musicalDirectorExpression"></see>
     /// </summary>
-    let musicalDirectorExpression =
-        Namespaced_IRI.parse _namespace_name "musicalDirectorExpression" |> NamespacedName
-
+    let musicalDirectorExpression = _prefix "musicalDirectorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/writerOfAddedCommentaryExpression"></see>
     /// </summary>
-    let writerOfAddedCommentaryExpression =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedCommentaryExpression" |> NamespacedName
-
+    let writerOfAddedCommentaryExpression = _prefix "writerOfAddedCommentaryExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/costumeDesignerExpression"></see>
     /// </summary>
-    let costumeDesignerExpression =
-        Namespaced_IRI.parse _namespace_name "costumeDesignerExpression" |> NamespacedName
-
+    let costumeDesignerExpression = _prefix "costumeDesignerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/costumeDesigner"></see>
     /// </summary>
-    let costumeDesigner =
-        Namespaced_IRI.parse _namespace_name "costumeDesigner" |> NamespacedName
-
+    let costumeDesigner = _prefix "costumeDesigner"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/courtGoverned"></see>
     /// </summary>
-    let courtGoverned =
-        Namespaced_IRI.parse _namespace_name "courtGoverned" |> NamespacedName
-
+    let courtGoverned = _prefix "courtGoverned"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/courtGovernedWork"></see>
     /// </summary>
-    let courtGovernedWork =
-        Namespaced_IRI.parse _namespace_name "courtGovernedWork" |> NamespacedName
-
+    let courtGovernedWork = _prefix "courtGovernedWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/courtReporter"></see>
     /// </summary>
-    let courtReporter =
-        Namespaced_IRI.parse _namespace_name "courtReporter" |> NamespacedName
-
+    let courtReporter = _prefix "courtReporter"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/interviewerWork"></see>
     /// </summary>
-    let interviewerWork =
-        Namespaced_IRI.parse _namespace_name "interviewerWork" |> NamespacedName
-
+    let interviewerWork = _prefix "interviewerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/designerWork"></see>
     /// </summary>
-    let designerWork =
-        Namespaced_IRI.parse _namespace_name "designerWork" |> NamespacedName
-
+    let designerWork = _prefix "designerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmmakerWork"></see>
     /// </summary>
-    let filmmakerWork =
-        Namespaced_IRI.parse _namespace_name "filmmakerWork" |> NamespacedName
-
+    let filmmakerWork = _prefix "filmmakerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/inventorWork"></see>
     /// </summary>
-    let inventorWork =
-        Namespaced_IRI.parse _namespace_name "inventorWork" |> NamespacedName
-
+    let inventorWork = _prefix "inventorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/intervieweeWork"></see>
     /// </summary>
-    let intervieweeWork =
-        Namespaced_IRI.parse _namespace_name "intervieweeWork" |> NamespacedName
-
+    let intervieweeWork = _prefix "intervieweeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/photographerWork"></see>
     /// </summary>
-    let photographerWork =
-        Namespaced_IRI.parse _namespace_name "photographerWork" |> NamespacedName
-
+    let photographerWork = _prefix "photographerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/programmerWork"></see>
     /// </summary>
-    let programmerWork =
-        Namespaced_IRI.parse _namespace_name "programmerWork" |> NamespacedName
-
+    let programmerWork = _prefix "programmerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/enactingJurisdictionWork"></see>
     /// </summary>
-    let enactingJurisdictionWork =
-        Namespaced_IRI.parse _namespace_name "enactingJurisdictionWork" |> NamespacedName
-
+    let enactingJurisdictionWork = _prefix "enactingJurisdictionWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/praesesWork"></see>
     /// </summary>
-    let praesesWork =
-        Namespaced_IRI.parse _namespace_name "praesesWork" |> NamespacedName
-
+    let praesesWork = _prefix "praesesWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/respondentWork"></see>
     /// </summary>
-    let respondentWork =
-        Namespaced_IRI.parse _namespace_name "respondentWork" |> NamespacedName
-
+    let respondentWork = _prefix "respondentWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/curatorItem"></see>
     /// </summary>
-    let curatorItem =
-        Namespaced_IRI.parse _namespace_name "curatorItem" |> NamespacedName
-
+    let curatorItem = _prefix "curatorItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/currentOwner"></see>
     /// </summary>
-    let currentOwner =
-        Namespaced_IRI.parse _namespace_name "currentOwner" |> NamespacedName
-
+    let currentOwner = _prefix "currentOwner"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/depositor"></see>
     /// </summary>
-    let depositor = Namespaced_IRI.parse _namespace_name "depositor" |> NamespacedName
+    let depositor = _prefix "depositor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/owner"></see>
     /// </summary>
-    let owner = Namespaced_IRI.parse _namespace_name "owner" |> NamespacedName
-
+    let owner = _prefix "owner"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/currentOwnerItem"></see>
     /// </summary>
-    let currentOwnerItem =
-        Namespaced_IRI.parse _namespace_name "currentOwnerItem" |> NamespacedName
-
+    let currentOwnerItem = _prefix "currentOwnerItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/ownerItem"></see>
     /// </summary>
-    let ownerItem = Namespaced_IRI.parse _namespace_name "ownerItem" |> NamespacedName
+    let ownerItem = _prefix "ownerItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/custodian"></see>
     /// </summary>
-    let custodian = Namespaced_IRI.parse _namespace_name "custodian" |> NamespacedName
-
+    let custodian = _prefix "custodian"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/custodianItem"></see>
     /// </summary>
-    let custodianItem =
-        Namespaced_IRI.parse _namespace_name "custodianItem" |> NamespacedName
-
+    let custodianItem = _prefix "custodianItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/dancer"></see>
     /// </summary>
-    let dancer = Namespaced_IRI.parse _namespace_name "dancer" |> NamespacedName
-
+    let dancer = _prefix "dancer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/dancerExpression"></see>
     /// </summary>
-    let dancerExpression =
-        Namespaced_IRI.parse _namespace_name "dancerExpression" |> NamespacedName
-
+    let dancerExpression = _prefix "dancerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/dedicatee"></see>
     /// </summary>
-    let dedicatee = Namespaced_IRI.parse _namespace_name "dedicatee" |> NamespacedName
-
+    let dedicatee = _prefix "dedicatee"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/dedicateeWork"></see>
     /// </summary>
-    let dedicateeWork =
-        Namespaced_IRI.parse _namespace_name "dedicateeWork" |> NamespacedName
-
+    let dedicateeWork = _prefix "dedicateeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/dedicateeOfItem"></see>
     /// </summary>
-    let dedicateeOfItem =
-        Namespaced_IRI.parse _namespace_name "dedicateeOfItem" |> NamespacedName
-
+    let dedicateeOfItem = _prefix "dedicateeOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/defendant"></see>
     /// </summary>
-    let defendant = Namespaced_IRI.parse _namespace_name "defendant" |> NamespacedName
-
+    let defendant = _prefix "defendant"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/defendantWork"></see>
     /// </summary>
-    let defendantWork =
-        Namespaced_IRI.parse _namespace_name "defendantWork" |> NamespacedName
-
+    let defendantWork = _prefix "defendantWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/degreeGrantingInstitution"></see>
     /// </summary>
-    let degreeGrantingInstitution =
-        Namespaced_IRI.parse _namespace_name "degreeGrantingInstitution" |> NamespacedName
-
+    let degreeGrantingInstitution = _prefix "degreeGrantingInstitution"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/degreeGrantingInstitutionWork"></see>
     /// </summary>
-    let degreeGrantingInstitutionWork =
-        Namespaced_IRI.parse _namespace_name "degreeGrantingInstitutionWork" |> NamespacedName
-
+    let degreeGrantingInstitutionWork = _prefix "degreeGrantingInstitutionWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/depositorItem"></see>
     /// </summary>
-    let depositorItem =
-        Namespaced_IRI.parse _namespace_name "depositorItem" |> NamespacedName
-
+    let depositorItem = _prefix "depositorItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/designer"></see>
     /// </summary>
-    let designer = Namespaced_IRI.parse _namespace_name "designer" |> NamespacedName
+    let designer = _prefix "designer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/director"></see>
     /// </summary>
-    let director = Namespaced_IRI.parse _namespace_name "director" |> NamespacedName
-
+    let director = _prefix "director"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/radioDirector"></see>
     /// </summary>
-    let radioDirector =
-        Namespaced_IRI.parse _namespace_name "radioDirector" |> NamespacedName
-
+    let radioDirector = _prefix "radioDirector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmDirector"></see>
     /// </summary>
-    let filmDirector =
-        Namespaced_IRI.parse _namespace_name "filmDirector" |> NamespacedName
-
+    let filmDirector = _prefix "filmDirector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/televisionDirector"></see>
     /// </summary>
-    let televisionDirector =
-        Namespaced_IRI.parse _namespace_name "televisionDirector" |> NamespacedName
-
+    let televisionDirector = _prefix "televisionDirector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/directorWork"></see>
     /// </summary>
-    let directorWork =
-        Namespaced_IRI.parse _namespace_name "directorWork" |> NamespacedName
-
+    let directorWork = _prefix "directorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/directorOfPhotography"></see>
     /// </summary>
-    let directorOfPhotography =
-        Namespaced_IRI.parse _namespace_name "directorOfPhotography" |> NamespacedName
-
+    let directorOfPhotography = _prefix "directorOfPhotography"
     /// <summary>
     /// Use this designation also for videographers.
     /// <see href="http://rdvocab.info/roles/directorOfPhotographyWork"></see></summary>
-    let directorOfPhotographyWork =
-        Namespaced_IRI.parse _namespace_name "directorOfPhotographyWork" |> NamespacedName
-
+    let directorOfPhotographyWork = _prefix "directorOfPhotographyWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/televisionDirectorWork"></see>
     /// </summary>
-    let televisionDirectorWork =
-        Namespaced_IRI.parse _namespace_name "televisionDirectorWork" |> NamespacedName
-
+    let televisionDirectorWork = _prefix "televisionDirectorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/radioDirectorWork"></see>
     /// </summary>
-    let radioDirectorWork =
-        Namespaced_IRI.parse _namespace_name "radioDirectorWork" |> NamespacedName
-
+    let radioDirectorWork = _prefix "radioDirectorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmDirectorWork"></see>
     /// </summary>
-    let filmDirectorWork =
-        Namespaced_IRI.parse _namespace_name "filmDirectorWork" |> NamespacedName
-
+    let filmDirectorWork = _prefix "filmDirectorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/distributor"></see>
     /// </summary>
-    let distributor =
-        Namespaced_IRI.parse _namespace_name "distributor" |> NamespacedName
-
+    let distributor = _prefix "distributor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/distributorManifestation"></see>
     /// </summary>
-    let distributorManifestation =
-        Namespaced_IRI.parse _namespace_name "distributorManifestation" |> NamespacedName
-
+    let distributorManifestation = _prefix "distributorManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmDistributor"></see>
     /// </summary>
-    let filmDistributor =
-        Namespaced_IRI.parse _namespace_name "filmDistributor" |> NamespacedName
-
+    let filmDistributor = _prefix "filmDistributor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmDistributorManifestation"></see>
     /// </summary>
-    let filmDistributorManifestation =
-        Namespaced_IRI.parse _namespace_name "filmDistributorManifestation" |> NamespacedName
-
+    let filmDistributorManifestation = _prefix "filmDistributorManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/donor"></see>
     /// </summary>
-    let donor = Namespaced_IRI.parse _namespace_name "donor" |> NamespacedName
-
+    let donor = _prefix "donor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/formerOwner"></see>
     /// </summary>
-    let formerOwner =
-        Namespaced_IRI.parse _namespace_name "formerOwner" |> NamespacedName
-
+    let formerOwner = _prefix "formerOwner"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/donorItem"></see>
     /// </summary>
-    let donorItem = Namespaced_IRI.parse _namespace_name "donorItem" |> NamespacedName
-
+    let donorItem = _prefix "donorItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/formerOwnerItem"></see>
     /// </summary>
-    let formerOwnerItem =
-        Namespaced_IRI.parse _namespace_name "formerOwnerItem" |> NamespacedName
-
+    let formerOwnerItem = _prefix "formerOwnerItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/draftsman"></see>
     /// </summary>
-    let draftsman = Namespaced_IRI.parse _namespace_name "draftsman" |> NamespacedName
+    let draftsman = _prefix "draftsman"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/editor"></see>
     /// </summary>
-    let editor = Namespaced_IRI.parse _namespace_name "editor" |> NamespacedName
-
+    let editor = _prefix "editor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/editorOfCompilation"></see>
     /// </summary>
-    let editorOfCompilation =
-        Namespaced_IRI.parse _namespace_name "editorOfCompilation" |> NamespacedName
-
+    let editorOfCompilation = _prefix "editorOfCompilation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/editorOfMovingImageWork"></see>
     /// </summary>
-    let editorOfMovingImageWork =
-        Namespaced_IRI.parse _namespace_name "editorOfMovingImageWork" |> NamespacedName
-
+    let editorOfMovingImageWork = _prefix "editorOfMovingImageWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/enactingJurisdiction"></see>
     /// </summary>
-    let enactingJurisdiction =
-        Namespaced_IRI.parse _namespace_name "enactingJurisdiction" |> NamespacedName
-
+    let enactingJurisdiction = _prefix "enactingJurisdiction"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/engraver"></see>
     /// </summary>
-    let engraver = Namespaced_IRI.parse _namespace_name "engraver" |> NamespacedName
-
+    let engraver = _prefix "engraver"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/engraverManifestation"></see>
     /// </summary>
-    let engraverManifestation =
-        Namespaced_IRI.parse _namespace_name "engraverManifestation" |> NamespacedName
-
+    let engraverManifestation = _prefix "engraverManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/etcher"></see>
     /// </summary>
-    let etcher = Namespaced_IRI.parse _namespace_name "etcher" |> NamespacedName
-
+    let etcher = _prefix "etcher"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/etcherManifestation"></see>
     /// </summary>
-    let etcherManifestation =
-        Namespaced_IRI.parse _namespace_name "etcherManifestation" |> NamespacedName
-
+    let etcherManifestation = _prefix "etcherManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmProducer"></see>
     /// </summary>
-    let filmProducer =
-        Namespaced_IRI.parse _namespace_name "filmProducer" |> NamespacedName
-
+    let filmProducer = _prefix "filmProducer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/producer"></see>
     /// </summary>
-    let producer = Namespaced_IRI.parse _namespace_name "producer" |> NamespacedName
-
+    let producer = _prefix "producer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/filmProducerWork"></see>
     /// </summary>
-    let filmProducerWork =
-        Namespaced_IRI.parse _namespace_name "filmProducerWork" |> NamespacedName
-
+    let filmProducerWork = _prefix "filmProducerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/producerWork"></see>
     /// </summary>
-    let producerWork =
-        Namespaced_IRI.parse _namespace_name "producerWork" |> NamespacedName
-
+    let producerWork = _prefix "producerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/seller"></see>
     /// </summary>
-    let seller = Namespaced_IRI.parse _namespace_name "seller" |> NamespacedName
+    let seller = _prefix "seller"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/sellerItem"></see>
     /// </summary>
-    let sellerItem = Namespaced_IRI.parse _namespace_name "sellerItem" |> NamespacedName
+    let sellerItem = _prefix "sellerItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/honouree"></see>
     /// </summary>
-    let honouree = Namespaced_IRI.parse _namespace_name "honouree" |> NamespacedName
-
+    let honouree = _prefix "honouree"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/honoureeWork"></see>
     /// </summary>
-    let honoureeWork =
-        Namespaced_IRI.parse _namespace_name "honoureeWork" |> NamespacedName
-
+    let honoureeWork = _prefix "honoureeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/honoureeOfItem"></see>
     /// </summary>
-    let honoureeOfItem =
-        Namespaced_IRI.parse _namespace_name "honoureeOfItem" |> NamespacedName
-
+    let honoureeOfItem = _prefix "honoureeOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/host"></see>
     /// </summary>
-    let host = Namespaced_IRI.parse _namespace_name "host" |> NamespacedName
-
+    let host = _prefix "host"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/hostExpression"></see>
     /// </summary>
-    let hostExpression =
-        Namespaced_IRI.parse _namespace_name "hostExpression" |> NamespacedName
-
+    let hostExpression = _prefix "hostExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/hostInstitution"></see>
     /// </summary>
-    let hostInstitution =
-        Namespaced_IRI.parse _namespace_name "hostInstitution" |> NamespacedName
-
+    let hostInstitution = _prefix "hostInstitution"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/hostInstitutionWork"></see>
     /// </summary>
-    let hostInstitutionWork =
-        Namespaced_IRI.parse _namespace_name "hostInstitutionWork" |> NamespacedName
-
+    let hostInstitutionWork = _prefix "hostInstitutionWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/illuminator"></see>
     /// </summary>
-    let illuminator =
-        Namespaced_IRI.parse _namespace_name "illuminator" |> NamespacedName
-
+    let illuminator = _prefix "illuminator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/illuminatorItem"></see>
     /// </summary>
-    let illuminatorItem =
-        Namespaced_IRI.parse _namespace_name "illuminatorItem" |> NamespacedName
-
+    let illuminatorItem = _prefix "illuminatorItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/illustrator"></see>
     /// </summary>
-    let illustrator =
-        Namespaced_IRI.parse _namespace_name "illustrator" |> NamespacedName
-
+    let illustrator = _prefix "illustrator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/inscriber"></see>
     /// </summary>
-    let inscriber = Namespaced_IRI.parse _namespace_name "inscriber" |> NamespacedName
-
+    let inscriber = _prefix "inscriber"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/inscriberItem"></see>
     /// </summary>
-    let inscriberItem =
-        Namespaced_IRI.parse _namespace_name "inscriberItem" |> NamespacedName
-
+    let inscriberItem = _prefix "inscriberItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/instrumentalist"></see>
     /// </summary>
-    let instrumentalist =
-        Namespaced_IRI.parse _namespace_name "instrumentalist" |> NamespacedName
-
+    let instrumentalist = _prefix "instrumentalist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/instrumentalistExpression"></see>
     /// </summary>
-    let instrumentalistExpression =
-        Namespaced_IRI.parse _namespace_name "instrumentalistExpression" |> NamespacedName
-
+    let instrumentalistExpression = _prefix "instrumentalistExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/interviewee"></see>
     /// </summary>
-    let interviewee =
-        Namespaced_IRI.parse _namespace_name "interviewee" |> NamespacedName
-
+    let interviewee = _prefix "interviewee"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/interviewer"></see>
     /// </summary>
-    let interviewer =
-        Namespaced_IRI.parse _namespace_name "interviewer" |> NamespacedName
-
+    let interviewer = _prefix "interviewer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/inventor"></see>
     /// </summary>
-    let inventor = Namespaced_IRI.parse _namespace_name "inventor" |> NamespacedName
-
+    let inventor = _prefix "inventor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/issuingBody"></see>
     /// </summary>
-    let issuingBody =
-        Namespaced_IRI.parse _namespace_name "issuingBody" |> NamespacedName
-
+    let issuingBody = _prefix "issuingBody"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/issuingBodyWork"></see>
     /// </summary>
-    let issuingBodyWork =
-        Namespaced_IRI.parse _namespace_name "issuingBodyWork" |> NamespacedName
-
+    let issuingBodyWork = _prefix "issuingBodyWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/judge"></see>
     /// </summary>
-    let judge = Namespaced_IRI.parse _namespace_name "judge" |> NamespacedName
+    let judge = _prefix "judge"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/judgeWork"></see>
     /// </summary>
-    let judgeWork = Namespaced_IRI.parse _namespace_name "judgeWork" |> NamespacedName
-
+    let judgeWork = _prefix "judgeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/jurisdictionGoverned"></see>
     /// </summary>
-    let jurisdictionGoverned =
-        Namespaced_IRI.parse _namespace_name "jurisdictionGoverned" |> NamespacedName
-
+    let jurisdictionGoverned = _prefix "jurisdictionGoverned"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/jurisdictionGovernedWork"></see>
     /// </summary>
-    let jurisdictionGovernedWork =
-        Namespaced_IRI.parse _namespace_name "jurisdictionGovernedWork" |> NamespacedName
-
+    let jurisdictionGovernedWork = _prefix "jurisdictionGovernedWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/landscapeArchitectWork"></see>
     /// </summary>
-    let landscapeArchitectWork =
-        Namespaced_IRI.parse _namespace_name "landscapeArchitectWork" |> NamespacedName
-
+    let landscapeArchitectWork = _prefix "landscapeArchitectWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/lithographer"></see>
     /// </summary>
-    let lithographer =
-        Namespaced_IRI.parse _namespace_name "lithographer" |> NamespacedName
-
+    let lithographer = _prefix "lithographer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/lithographerManifestation"></see>
     /// </summary>
-    let lithographerManifestation =
-        Namespaced_IRI.parse _namespace_name "lithographerManifestation" |> NamespacedName
-
+    let lithographerManifestation = _prefix "lithographerManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/printer"></see>
     /// </summary>
-    let printer = Namespaced_IRI.parse _namespace_name "printer" |> NamespacedName
+    let printer = _prefix "printer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/printmaker"></see>
     /// </summary>
-    let printmaker = Namespaced_IRI.parse _namespace_name "printmaker" |> NamespacedName
+    let printmaker = _prefix "printmaker"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/platemaker"></see>
     /// </summary>
-    let platemaker = Namespaced_IRI.parse _namespace_name "platemaker" |> NamespacedName
-
+    let platemaker = _prefix "platemaker"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/platemakerManifestation"></see>
     /// </summary>
-    let platemakerManifestation =
-        Namespaced_IRI.parse _namespace_name "platemakerManifestation" |> NamespacedName
-
+    let platemakerManifestation = _prefix "platemakerManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/printerManifestation"></see>
     /// </summary>
-    let printerManifestation =
-        Namespaced_IRI.parse _namespace_name "printerManifestation" |> NamespacedName
-
+    let printerManifestation = _prefix "printerManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/printmakerManifestation"></see>
     /// </summary>
-    let printmakerManifestation =
-        Namespaced_IRI.parse _namespace_name "printmakerManifestation" |> NamespacedName
-
+    let printmakerManifestation = _prefix "printmakerManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/moderator"></see>
     /// </summary>
-    let moderator = Namespaced_IRI.parse _namespace_name "moderator" |> NamespacedName
-
+    let moderator = _prefix "moderator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/moderatorExpression"></see>
     /// </summary>
-    let moderatorExpression =
-        Namespaced_IRI.parse _namespace_name "moderatorExpression" |> NamespacedName
-
+    let moderatorExpression = _prefix "moderatorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/musicalDirector"></see>
     /// </summary>
-    let musicalDirector =
-        Namespaced_IRI.parse _namespace_name "musicalDirector" |> NamespacedName
-
+    let musicalDirector = _prefix "musicalDirector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/narrator"></see>
     /// </summary>
-    let narrator = Namespaced_IRI.parse _namespace_name "narrator" |> NamespacedName
-
+    let narrator = _prefix "narrator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/narratorExpression"></see>
     /// </summary>
-    let narratorExpression =
-        Namespaced_IRI.parse _namespace_name "narratorExpression" |> NamespacedName
-
+    let narratorExpression = _prefix "narratorExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/onScreenPresenter"></see>
     /// </summary>
-    let onScreenPresenter =
-        Namespaced_IRI.parse _namespace_name "onScreenPresenter" |> NamespacedName
-
+    let onScreenPresenter = _prefix "onScreenPresenter"
     /// <summary>
     /// Use when a more specific term (e.g., Narrator or Host) is either not applicable or not desired.
     /// <see href="http://rdvocab.info/roles/onScreenPresenterExpression"></see></summary>
-    let onScreenPresenterExpression =
-        Namespaced_IRI.parse _namespace_name "onScreenPresenterExpression" |> NamespacedName
-
+    let onScreenPresenterExpression = _prefix "onScreenPresenterExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/panelist"></see>
     /// </summary>
-    let panelist = Namespaced_IRI.parse _namespace_name "panelist" |> NamespacedName
-
+    let panelist = _prefix "panelist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/panelistExpression"></see>
     /// </summary>
-    let panelistExpression =
-        Namespaced_IRI.parse _namespace_name "panelistExpression" |> NamespacedName
-
+    let panelistExpression = _prefix "panelistExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/storyteller"></see>
     /// </summary>
-    let storyteller =
-        Namespaced_IRI.parse _namespace_name "storyteller" |> NamespacedName
-
+    let storyteller = _prefix "storyteller"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/singer"></see>
     /// </summary>
-    let singer = Namespaced_IRI.parse _namespace_name "singer" |> NamespacedName
+    let singer = _prefix "singer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/teacher"></see>
     /// </summary>
-    let teacher = Namespaced_IRI.parse _namespace_name "teacher" |> NamespacedName
+    let teacher = _prefix "teacher"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/puppeteer"></see>
     /// </summary>
-    let puppeteer = Namespaced_IRI.parse _namespace_name "puppeteer" |> NamespacedName
+    let puppeteer = _prefix "puppeteer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/speaker"></see>
     /// </summary>
-    let speaker = Namespaced_IRI.parse _namespace_name "speaker" |> NamespacedName
-
+    let speaker = _prefix "speaker"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/singerExpression"></see>
     /// </summary>
-    let singerExpression =
-        Namespaced_IRI.parse _namespace_name "singerExpression" |> NamespacedName
-
+    let singerExpression = _prefix "singerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/speakerExpression"></see>
     /// </summary>
-    let speakerExpression =
-        Namespaced_IRI.parse _namespace_name "speakerExpression" |> NamespacedName
-
+    let speakerExpression = _prefix "speakerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/storytellerExpression"></see>
     /// </summary>
-    let storytellerExpression =
-        Namespaced_IRI.parse _namespace_name "storytellerExpression" |> NamespacedName
-
+    let storytellerExpression = _prefix "storytellerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/photographer"></see>
     /// </summary>
-    let photographer =
-        Namespaced_IRI.parse _namespace_name "photographer" |> NamespacedName
-
+    let photographer = _prefix "photographer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/plaintiff"></see>
     /// </summary>
-    let plaintiff = Namespaced_IRI.parse _namespace_name "plaintiff" |> NamespacedName
-
+    let plaintiff = _prefix "plaintiff"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/plaintiffWork"></see>
     /// </summary>
-    let plaintiffWork =
-        Namespaced_IRI.parse _namespace_name "plaintiffWork" |> NamespacedName
-
+    let plaintiffWork = _prefix "plaintiffWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/praeses"></see>
     /// </summary>
-    let praeses = Namespaced_IRI.parse _namespace_name "praeses" |> NamespacedName
+    let praeses = _prefix "praeses"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/presenter"></see>
     /// </summary>
-    let presenter = Namespaced_IRI.parse _namespace_name "presenter" |> NamespacedName
-
+    let presenter = _prefix "presenter"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/televisionProducer"></see>
     /// </summary>
-    let televisionProducer =
-        Namespaced_IRI.parse _namespace_name "televisionProducer" |> NamespacedName
-
+    let televisionProducer = _prefix "televisionProducer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/radioProducer"></see>
     /// </summary>
-    let radioProducer =
-        Namespaced_IRI.parse _namespace_name "radioProducer" |> NamespacedName
-
+    let radioProducer = _prefix "radioProducer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/radioProducerWork"></see>
     /// </summary>
-    let radioProducerWork =
-        Namespaced_IRI.parse _namespace_name "radioProducerWork" |> NamespacedName
-
+    let radioProducerWork = _prefix "radioProducerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/televisionProducerWork"></see>
     /// </summary>
-    let televisionProducerWork =
-        Namespaced_IRI.parse _namespace_name "televisionProducerWork" |> NamespacedName
-
+    let televisionProducerWork = _prefix "televisionProducerWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/productionCompany"></see>
     /// </summary>
-    let productionCompany =
-        Namespaced_IRI.parse _namespace_name "productionCompany" |> NamespacedName
-
+    let productionCompany = _prefix "productionCompany"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/productionCompanyWork"></see>
     /// </summary>
-    let productionCompanyWork =
-        Namespaced_IRI.parse _namespace_name "productionCompanyWork" |> NamespacedName
-
+    let productionCompanyWork = _prefix "productionCompanyWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/productionDesigner"></see>
     /// </summary>
-    let productionDesigner =
-        Namespaced_IRI.parse _namespace_name "productionDesigner" |> NamespacedName
-
+    let productionDesigner = _prefix "productionDesigner"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/programmer"></see>
     /// </summary>
-    let programmer = Namespaced_IRI.parse _namespace_name "programmer" |> NamespacedName
-
+    let programmer = _prefix "programmer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/puppeteerExpression"></see>
     /// </summary>
-    let puppeteerExpression =
-        Namespaced_IRI.parse _namespace_name "puppeteerExpression" |> NamespacedName
-
+    let puppeteerExpression = _prefix "puppeteerExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/recordingEngineer"></see>
     /// </summary>
-    let recordingEngineer =
-        Namespaced_IRI.parse _namespace_name "recordingEngineer" |> NamespacedName
-
+    let recordingEngineer = _prefix "recordingEngineer"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/recordist"></see>
     /// </summary>
-    let recordist = Namespaced_IRI.parse _namespace_name "recordist" |> NamespacedName
+    let recordist = _prefix "recordist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/respondent"></see>
     /// </summary>
-    let respondent = Namespaced_IRI.parse _namespace_name "respondent" |> NamespacedName
-
+    let respondent = _prefix "respondent"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/restorationist"></see>
     /// </summary>
-    let restorationist =
-        Namespaced_IRI.parse _namespace_name "restorationist" |> NamespacedName
-
+    let restorationist = _prefix "restorationist"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/restorationistItem"></see>
     /// </summary>
-    let restorationistItem =
-        Namespaced_IRI.parse _namespace_name "restorationistItem" |> NamespacedName
-
+    let restorationistItem = _prefix "restorationistItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/sculptorWork"></see>
     /// </summary>
-    let sculptorWork =
-        Namespaced_IRI.parse _namespace_name "sculptorWork" |> NamespacedName
-
+    let sculptorWork = _prefix "sculptorWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/sponsoringBody"></see>
     /// </summary>
-    let sponsoringBody =
-        Namespaced_IRI.parse _namespace_name "sponsoringBody" |> NamespacedName
-
+    let sponsoringBody = _prefix "sponsoringBody"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/sponsoringBodyWork"></see>
     /// </summary>
-    let sponsoringBodyWork =
-        Namespaced_IRI.parse _namespace_name "sponsoringBodyWork" |> NamespacedName
-
+    let sponsoringBodyWork = _prefix "sponsoringBodyWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/stageDirector"></see>
     /// </summary>
-    let stageDirector =
-        Namespaced_IRI.parse _namespace_name "stageDirector" |> NamespacedName
-
+    let stageDirector = _prefix "stageDirector"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/surveyor"></see>
     /// </summary>
-    let surveyor = Namespaced_IRI.parse _namespace_name "surveyor" |> NamespacedName
-
+    let surveyor = _prefix "surveyor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/teacherExpression"></see>
     /// </summary>
-    let teacherExpression =
-        Namespaced_IRI.parse _namespace_name "teacherExpression" |> NamespacedName
-
+    let teacherExpression = _prefix "teacherExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/thesisAdvisor"></see>
     /// </summary>
-    let thesisAdvisor =
-        Namespaced_IRI.parse _namespace_name "thesisAdvisor" |> NamespacedName
-
+    let thesisAdvisor = _prefix "thesisAdvisor"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/transcriber"></see>
     /// </summary>
-    let transcriber =
-        Namespaced_IRI.parse _namespace_name "transcriber" |> NamespacedName
-
+    let transcriber = _prefix "transcriber"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/translator"></see>
     /// </summary>
-    let translator = Namespaced_IRI.parse _namespace_name "translator" |> NamespacedName
-
+    let translator = _prefix "translator"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/writerOfAddedCommentary"></see>
     /// </summary>
-    let writerOfAddedCommentary =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedCommentary" |> NamespacedName
-
+    let writerOfAddedCommentary = _prefix "writerOfAddedCommentary"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/writerOfAddedLyrics"></see>
     /// </summary>
-    let writerOfAddedLyrics =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedLyrics" |> NamespacedName
-
+    let writerOfAddedLyrics = _prefix "writerOfAddedLyrics"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/writerOfAddedText"></see>
     /// </summary>
-    let writerOfAddedText =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedText" |> NamespacedName
-
+    let writerOfAddedText = _prefix "writerOfAddedText"
     /// <summary>
     ///   <see href="http://rdvocab.info/roles/writerOfAddedLyricsExpression"></see>
     /// </summary>
-    let writerOfAddedLyricsExpression =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedLyricsExpression" |> NamespacedName
+    let writerOfAddedLyricsExpression = _prefix "writerOfAddedLyricsExpression"

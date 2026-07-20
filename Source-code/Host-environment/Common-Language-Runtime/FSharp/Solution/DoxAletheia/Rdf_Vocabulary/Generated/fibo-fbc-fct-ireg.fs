@@ -1,127 +1,119 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.InternationalRegistriesAndAuthorities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_ireg =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/GlobalLegalEntityIdentifierFoundation"></see>
     /// </summary>
     let GlobalLegalEntityIdentifierFoundation =
-        Namespaced_IRI.parse _namespace_name "GlobalLegalEntityIdentifierFoundation" |> NamespacedName
+        _prefix "GlobalLegalEntityIdentifierFoundation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/GlobalLEIIndex"></see>
     /// </summary>
-    let GlobalLEIIndex =
-        Namespaced_IRI.parse _namespace_name "GlobalLEIIndex" |> NamespacedName
+    let GlobalLEIIndex = _prefix "GlobalLEIIndex"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/SocietyForWorldwideInterbankFinancialTelecommunication"></see>
     /// </summary>
     let SocietyForWorldwideInterbankFinancialTelecommunication =
-        Namespaced_IRI.parse _namespace_name "SocietyForWorldwideInterbankFinancialTelecommunication" |> NamespacedName
+        _prefix "SocietyForWorldwideInterbankFinancialTelecommunication"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BankForInternationalSettlements"></see>
     /// </summary>
-    let BankForInternationalSettlements =
-        Namespaced_IRI.parse _namespace_name "BankForInternationalSettlements" |> NamespacedName
+    let BankForInternationalSettlements = _prefix "BankForInternationalSettlements"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BankForInternationalSettlementsAddress"></see>
     /// </summary>
     let BankForInternationalSettlementsAddress =
-        Namespaced_IRI.parse _namespace_name "BankForInternationalSettlementsAddress" |> NamespacedName
+        _prefix "BankForInternationalSettlementsAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BankForInternationalSettlementsAsBankingServicesProvider"></see>
     /// </summary>
     let BankForInternationalSettlementsAsBankingServicesProvider =
-        Namespaced_IRI.parse _namespace_name "BankForInternationalSettlementsAsBankingServicesProvider" |> NamespacedName
+        _prefix "BankForInternationalSettlementsAsBankingServicesProvider"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BankForInternationalSettlementsDateEstablished"></see>
     /// </summary>
     let BankForInternationalSettlementsDateEstablished =
-        Namespaced_IRI.parse _namespace_name "BankForInternationalSettlementsDateEstablished" |> NamespacedName
+        _prefix "BankForInternationalSettlementsDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BankForInternationalSettlementsLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let BankForInternationalSettlementsLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BankForInternationalSettlementsLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "BankForInternationalSettlementsLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BusinessIdentifierCodeDataRecord"></see>
     /// </summary>
-    let BusinessIdentifierCodeDataRecord =
-        Namespaced_IRI.parse _namespace_name "BusinessIdentifierCodeDataRecord" |> NamespacedName
-
+    let BusinessIdentifierCodeDataRecord = _prefix "BusinessIdentifierCodeDataRecord"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BusinessIdentifierCodeRegistry"></see>
     /// </summary>
-    let BusinessIdentifierCodeRegistry =
-        Namespaced_IRI.parse _namespace_name "BusinessIdentifierCodeRegistry" |> NamespacedName
+    let BusinessIdentifierCodeRegistry = _prefix "BusinessIdentifierCodeRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/BusinessIdentifierCodeRegistrationAuthority"></see>
     /// </summary>
     let BusinessIdentifierCodeRegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "BusinessIdentifierCodeRegistrationAuthority" |> NamespacedName
+        _prefix "BusinessIdentifierCodeRegistrationAuthority"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/GLEIFLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let GLEIFLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "GLEIFLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "GLEIFLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/GlobalLegalEntityIdentifierFoundationAddress"></see>
     /// </summary>
     let GlobalLegalEntityIdentifierFoundationAddress =
-        Namespaced_IRI.parse _namespace_name "GlobalLegalEntityIdentifierFoundationAddress" |> NamespacedName
+        _prefix "GlobalLegalEntityIdentifierFoundationAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/IBANRegistrationAuthority"></see>
     /// </summary>
-    let IBANRegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "IBANRegistrationAuthority" |> NamespacedName
+    let IBANRegistrationAuthority = _prefix "IBANRegistrationAuthority"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/LegalEntityIdentfierRegistrationAuthority"></see>
     /// </summary>
     let LegalEntityIdentfierRegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "LegalEntityIdentfierRegistrationAuthority" |> NamespacedName
+        _prefix "LegalEntityIdentfierRegistrationAuthority"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/MICRegistrationAuthority"></see>
     /// </summary>
-    let MICRegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "MICRegistrationAuthority" |> NamespacedName
-
+    let MICRegistrationAuthority = _prefix "MICRegistrationAuthority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/MarketIdentifierCodeRegistry"></see>
     /// </summary>
-    let MarketIdentifierCodeRegistry =
-        Namespaced_IRI.parse _namespace_name "MarketIdentifierCodeRegistry" |> NamespacedName
-
+    let MarketIdentifierCodeRegistry = _prefix "MarketIdentifierCodeRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/MarketIdentifierCodeRegistryEntry"></see>
     /// </summary>
-    let MarketIdentifierCodeRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "MarketIdentifierCodeRegistryEntry" |> NamespacedName
+    let MarketIdentifierCodeRegistryEntry = _prefix "MarketIdentifierCodeRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/SWIFTLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let SWIFTLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "SWIFTLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "SWIFTLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/InternationalRegistriesAndAuthorities/SocietyForWorldwideInterbankFinancialTelecommunicationAddress"></see>
     /// </summary>
     let SocietyForWorldwideInterbankFinancialTelecommunicationAddress =
-        Namespaced_IRI.parse _namespace_name "SocietyForWorldwideInterbankFinancialTelecommunicationAddress" |> NamespacedName
+        _prefix "SocietyForWorldwideInterbankFinancialTelecommunicationAddress"

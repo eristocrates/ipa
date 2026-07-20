@@ -1,259 +1,224 @@
 namespace http.gov.genealogy.net.ontology.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gov =
     let _namespace_name = "http://gov.genealogy.net/ontology.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#GovItem"></see>
     /// </summary>
-    let GovItem = Namespaced_IRI.parse _namespace_name "GovItem" |> NamespacedName
+    let GovItem = _prefix "GovItem"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#GovObject"></see>
     /// </summary>
-    let GovObject = Namespaced_IRI.parse _namespace_name "GovObject" |> NamespacedName
+    let GovObject = _prefix "GovObject"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Note"></see>
     /// </summary>
-    let Note = Namespaced_IRI.parse _namespace_name "Note" |> NamespacedName
+    let Note = _prefix "Note"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Position"></see>
     /// </summary>
-    let Position = Namespaced_IRI.parse _namespace_name "Position" |> NamespacedName
+    let Position = _prefix "Position"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Property"></see>
     /// </summary>
-    let Property = Namespaced_IRI.parse _namespace_name "Property" |> NamespacedName
-
+    let Property = _prefix "Property"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#PropertyForObject"></see>
     /// </summary>
-    let PropertyForObject =
-        Namespaced_IRI.parse _namespace_name "PropertyForObject" |> NamespacedName
-
+    let PropertyForObject = _prefix "PropertyForObject"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#PropertyForSource"></see>
     /// </summary>
-    let PropertyForSource =
-        Namespaced_IRI.parse _namespace_name "PropertyForSource" |> NamespacedName
-
+    let PropertyForSource = _prefix "PropertyForSource"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#PropertyName"></see>
     /// </summary>
-    let PropertyName =
-        Namespaced_IRI.parse _namespace_name "PropertyName" |> NamespacedName
-
+    let PropertyName = _prefix "PropertyName"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#PropertyType"></see>
     /// </summary>
-    let PropertyType =
-        Namespaced_IRI.parse _namespace_name "PropertyType" |> NamespacedName
-
+    let PropertyType = _prefix "PropertyType"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Relation"></see>
     /// </summary>
-    let Relation = Namespaced_IRI.parse _namespace_name "Relation" |> NamespacedName
+    let Relation = _prefix "Relation"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Source"></see>
     /// </summary>
-    let Source = Namespaced_IRI.parse _namespace_name "Source" |> NamespacedName
-
+    let Source = _prefix "Source"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#SourceReference"></see>
     /// </summary>
-    let SourceReference =
-        Namespaced_IRI.parse _namespace_name "SourceReference" |> NamespacedName
-
+    let SourceReference = _prefix "SourceReference"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Timespan"></see>
     /// </summary>
-    let Timespan = Namespaced_IRI.parse _namespace_name "Timespan" |> NamespacedName
+    let Timespan = _prefix "Timespan"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#Type"></see>
     /// </summary>
-    let Type = Namespaced_IRI.parse _namespace_name "Type" |> NamespacedName
+    let Type = _prefix "Type"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#begin"></see>
     /// </summary>
-    let begin_ = Namespaced_IRI.parse _namespace_name "begin" |> NamespacedName
-
+    let begin_ = _prefix "begin"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#containsInformationAbout"></see>
     /// </summary>
-    let containsInformationAbout =
-        Namespaced_IRI.parse _namespace_name "containsInformationAbout" |> NamespacedName
-
+    let containsInformationAbout = _prefix "containsInformationAbout"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#relation"></see>
     /// </summary>
-    let relation = Namespaced_IRI.parse _namespace_name "relation" |> NamespacedName
+    let relation = _prefix "relation"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#end"></see>
     /// </summary>
-    let end_ = Namespaced_IRI.parse _namespace_name "end" |> NamespacedName
+    let end_ = _prefix "end"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasArea"></see>
     /// </summary>
-    let hasArea = Namespaced_IRI.parse _namespace_name "hasArea" |> NamespacedName
+    let hasArea = _prefix "hasArea"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#property"></see>
     /// </summary>
-    let property = Namespaced_IRI.parse _namespace_name "property" |> NamespacedName
+    let property = _prefix "property"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasAuthor"></see>
     /// </summary>
-    let hasAuthor = Namespaced_IRI.parse _namespace_name "hasAuthor" |> NamespacedName
-
+    let hasAuthor = _prefix "hasAuthor"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasDenomination"></see>
     /// </summary>
-    let hasDenomination =
-        Namespaced_IRI.parse _namespace_name "hasDenomination" |> NamespacedName
-
+    let hasDenomination = _prefix "hasDenomination"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasHouseholds"></see>
     /// </summary>
-    let hasHouseholds =
-        Namespaced_IRI.parse _namespace_name "hasHouseholds" |> NamespacedName
-
+    let hasHouseholds = _prefix "hasHouseholds"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasISBN"></see>
     /// </summary>
-    let hasISBN = Namespaced_IRI.parse _namespace_name "hasISBN" |> NamespacedName
-
+    let hasISBN = _prefix "hasISBN"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasMunicipalityId"></see>
     /// </summary>
-    let hasMunicipalityId =
-        Namespaced_IRI.parse _namespace_name "hasMunicipalityId" |> NamespacedName
-
+    let hasMunicipalityId = _prefix "hasMunicipalityId"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasPopulation"></see>
     /// </summary>
-    let hasPopulation =
-        Namespaced_IRI.parse _namespace_name "hasPopulation" |> NamespacedName
-
+    let hasPopulation = _prefix "hasPopulation"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasPostalCode"></see>
     /// </summary>
-    let hasPostalCode =
-        Namespaced_IRI.parse _namespace_name "hasPostalCode" |> NamespacedName
-
+    let hasPostalCode = _prefix "hasPostalCode"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasSubtitle"></see>
     /// </summary>
-    let hasSubtitle =
-        Namespaced_IRI.parse _namespace_name "hasSubtitle" |> NamespacedName
-
+    let hasSubtitle = _prefix "hasSubtitle"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasTitle"></see>
     /// </summary>
-    let hasTitle = Namespaced_IRI.parse _namespace_name "hasTitle" |> NamespacedName
+    let hasTitle = _prefix "hasTitle"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasType"></see>
     /// </summary>
-    let hasType = Namespaced_IRI.parse _namespace_name "hasType" |> NamespacedName
+    let hasType = _prefix "hasType"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasURL"></see>
     /// </summary>
-    let hasURL = Namespaced_IRI.parse _namespace_name "hasURL" |> NamespacedName
+    let hasURL = _prefix "hasURL"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#hasWNumber"></see>
     /// </summary>
-    let hasWNumber = Namespaced_IRI.parse _namespace_name "hasWNumber" |> NamespacedName
+    let hasWNumber = _prefix "hasWNumber"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#height"></see>
     /// </summary>
-    let height = Namespaced_IRI.parse _namespace_name "height" |> NamespacedName
-
+    let height = _prefix "height"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#isLocatedIn"></see>
     /// </summary>
-    let isLocatedIn =
-        Namespaced_IRI.parse _namespace_name "isLocatedIn" |> NamespacedName
-
+    let isLocatedIn = _prefix "isLocatedIn"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#isPartOf"></see>
     /// </summary>
-    let isPartOf = Namespaced_IRI.parse _namespace_name "isPartOf" |> NamespacedName
-
+    let isPartOf = _prefix "isPartOf"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#isReplacedBy"></see>
     /// </summary>
-    let isReplacedBy =
-        Namespaced_IRI.parse _namespace_name "isReplacedBy" |> NamespacedName
-
+    let isReplacedBy = _prefix "isReplacedBy"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#language"></see>
     /// </summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
-
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#lastModification"></see>
     /// </summary>
-    let lastModification =
-        Namespaced_IRI.parse _namespace_name "lastModification" |> NamespacedName
-
+    let lastModification = _prefix "lastModification"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#latitude"></see>
     /// </summary>
-    let latitude = Namespaced_IRI.parse _namespace_name "latitude" |> NamespacedName
+    let latitude = _prefix "latitude"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#longitude"></see>
     /// </summary>
-    let longitude = Namespaced_IRI.parse _namespace_name "longitude" |> NamespacedName
+    let longitude = _prefix "longitude"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#note"></see>
     /// </summary>
-    let note = Namespaced_IRI.parse _namespace_name "note" |> NamespacedName
+    let note = _prefix "note"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#noteText"></see>
     /// </summary>
-    let noteText = Namespaced_IRI.parse _namespace_name "noteText" |> NamespacedName
+    let noteText = _prefix "noteText"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#position"></see>
     /// </summary>
-    let position = Namespaced_IRI.parse _namespace_name "position" |> NamespacedName
+    let position = _prefix "position"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#ref"></see>
     /// </summary>
-    let ref = Namespaced_IRI.parse _namespace_name "ref" |> NamespacedName
+    let ref = _prefix "ref"
     /// <summary>
     /// examples: 1) a church as a visible building represents a parish 2) a town represents a country
     ///     as its capital
     /// <see href="http://gov.genealogy.net/ontology.owl#represents"></see></summary>
-    let represents = Namespaced_IRI.parse _namespace_name "represents" |> NamespacedName
+    let represents = _prefix "represents"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#source"></see>
     /// </summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
+    let source = _prefix "source"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#sourceNote"></see>
     /// </summary>
-    let sourceNote = Namespaced_IRI.parse _namespace_name "sourceNote" |> NamespacedName
+    let sourceNote = _prefix "sourceNote"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#sourceRef"></see>
     /// </summary>
-    let sourceRef = Namespaced_IRI.parse _namespace_name "sourceRef" |> NamespacedName
+    let sourceRef = _prefix "sourceRef"
     /// <summary>
     /// time period in which the statement was correct or there was relation
     ///     relationship.
     /// <see href="http://gov.genealogy.net/ontology.owl#time"></see></summary>
-    let time = Namespaced_IRI.parse _namespace_name "time" |> NamespacedName
+    let time = _prefix "time"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#typeName"></see>
     /// </summary>
-    let typeName = Namespaced_IRI.parse _namespace_name "typeName" |> NamespacedName
+    let typeName = _prefix "typeName"
     /// <summary>
     ///   <see href="http://gov.genealogy.net/ontology.owl#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"

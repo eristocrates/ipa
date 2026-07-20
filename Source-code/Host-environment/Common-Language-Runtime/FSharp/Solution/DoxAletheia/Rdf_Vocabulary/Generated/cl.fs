@@ -1,223 +1,198 @@
 namespace http.advene.org.ns.cinelab.ld.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module cl =
     let _namespace_name = "http://advene.org/ns/cinelab/ld#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Annotation"></see>
     /// </summary>
-    let Annotation = Namespaced_IRI.parse _namespace_name "Annotation" |> NamespacedName
-
+    let Annotation = _prefix "Annotation"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasAnnotationContent"></see>
     /// </summary>
-    let hasAnnotationContent =
-        Namespaced_IRI.parse _namespace_name "hasAnnotationContent" |> NamespacedName
-
+    let hasAnnotationContent = _prefix "hasAnnotationContent"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Element"></see>
     /// </summary>
-    let Element = Namespaced_IRI.parse _namespace_name "Element" |> NamespacedName
-
+    let Element = _prefix "Element"
     /// <summary>
     /// Aspect of all elements supporting the :hasContent property
     /// <see href="http://advene.org/ns/cinelab/ld#WithContent"></see></summary>
-    let WithContent =
-        Namespaced_IRI.parse _namespace_name "WithContent" |> NamespacedName
-
+    let WithContent = _prefix "WithContent"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#AnnotationType"></see>
     /// </summary>
-    let AnnotationType =
-        Namespaced_IRI.parse _namespace_name "AnnotationType" |> NamespacedName
-
+    let AnnotationType = _prefix "AnnotationType"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Tag"></see>
     /// </summary>
-    let Tag = Namespaced_IRI.parse _namespace_name "Tag" |> NamespacedName
+    let Tag = _prefix "Tag"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Content"></see>
     /// </summary>
-    let Content = Namespaced_IRI.parse _namespace_name "Content" |> NamespacedName
-
+    let Content = _prefix "Content"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#FrameOfReference"></see>
     /// </summary>
-    let FrameOfReference =
-        Namespaced_IRI.parse _namespace_name "FrameOfReference" |> NamespacedName
-
+    let FrameOfReference = _prefix "FrameOfReference"
     /// <summary>
     /// Aspect of all elements acting as collections of other elements
     /// <see href="http://advene.org/ns/cinelab/ld#Group"></see></summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Import"></see>
     /// </summary>
-    let Import = Namespaced_IRI.parse _namespace_name "Import" |> NamespacedName
+    let Import = _prefix "Import"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#List"></see>
     /// </summary>
-    let List = Namespaced_IRI.parse _namespace_name "List" |> NamespacedName
+    let List = _prefix "List"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Media"></see>
     /// </summary>
-    let Media = Namespaced_IRI.parse _namespace_name "Media" |> NamespacedName
+    let Media = _prefix "Media"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Package"></see>
     /// </summary>
-    let Package = Namespaced_IRI.parse _namespace_name "Package" |> NamespacedName
+    let Package = _prefix "Package"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasElement"></see>
     /// </summary>
-    let hasElement = Namespaced_IRI.parse _namespace_name "hasElement" |> NamespacedName
+    let hasElement = _prefix "hasElement"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasAType"></see>
     /// </summary>
-    let hasAType = Namespaced_IRI.parse _namespace_name "hasAType" |> NamespacedName
+    let hasAType = _prefix "hasAType"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Relation"></see>
     /// </summary>
-    let Relation = Namespaced_IRI.parse _namespace_name "Relation" |> NamespacedName
+    let Relation = _prefix "Relation"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasRType"></see>
     /// </summary>
-    let hasRType = Namespaced_IRI.parse _namespace_name "hasRType" |> NamespacedName
+    let hasRType = _prefix "hasRType"
     /// <summary>
     /// Aspect of all elements able to transform other elements
     /// <see href="http://advene.org/ns/cinelab/ld#Pipe"></see></summary>
-    let Pipe = Namespaced_IRI.parse _namespace_name "Pipe" |> NamespacedName
+    let Pipe = _prefix "Pipe"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Query"></see>
     /// </summary>
-    let Query = Namespaced_IRI.parse _namespace_name "Query" |> NamespacedName
-
+    let Query = _prefix "Query"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#RelationType"></see>
     /// </summary>
-    let RelationType =
-        Namespaced_IRI.parse _namespace_name "RelationType" |> NamespacedName
-
+    let RelationType = _prefix "RelationType"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Resource"></see>
     /// </summary>
-    let Resource = Namespaced_IRI.parse _namespace_name "Resource" |> NamespacedName
+    let Resource = _prefix "Resource"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Schema"></see>
     /// </summary>
-    let Schema = Namespaced_IRI.parse _namespace_name "Schema" |> NamespacedName
+    let Schema = _prefix "Schema"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#Test"></see>
     /// </summary>
-    let Test = Namespaced_IRI.parse _namespace_name "Test" |> NamespacedName
+    let Test = _prefix "Test"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#View"></see>
     /// </summary>
-    let View = Namespaced_IRI.parse _namespace_name "View" |> NamespacedName
+    let View = _prefix "View"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#UserList"></see>
     /// </summary>
-    let UserList = Namespaced_IRI.parse _namespace_name "UserList" |> NamespacedName
+    let UserList = _prefix "UserList"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#UserTag"></see>
     /// </summary>
-    let UserTag = Namespaced_IRI.parse _namespace_name "UserTag" |> NamespacedName
+    let UserTag = _prefix "UserTag"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasContent"></see>
     /// </summary>
-    let hasContent = Namespaced_IRI.parse _namespace_name "hasContent" |> NamespacedName
+    let hasContent = _prefix "hasContent"
     /// <summary>
     /// A literal datatype to represent base64-encoded binary data.
     /// <see href="http://advene.org/ns/cinelab/ld#base64"></see></summary>
-    let base64 = Namespaced_IRI.parse _namespace_name "base64" |> NamespacedName
+    let base64 = _prefix "base64"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#data"></see>
     /// </summary>
-    let data = Namespaced_IRI.parse _namespace_name "data" |> NamespacedName
+    let data = _prefix "data"
     /// <summary>
     /// Start-time of the fragment, in milliseconds.
     /// <see href="http://advene.org/ns/cinelab/ld#begin"></see></summary>
-    let begin_ = Namespaced_IRI.parse _namespace_name "begin" |> NamespacedName
+    let begin_ = _prefix "begin"
     /// <summary>
     /// End-time of the fragment, in milliseconds.
     /// <see href="http://advene.org/ns/cinelab/ld#end"></see></summary>
-    let end_ = Namespaced_IRI.parse _namespace_name "end" |> NamespacedName
+    let end_ = _prefix "end"
     /// <summary>
     /// This metadata of an annotation encodes the 'id' dimension of its fragment.
     /// <see href="http://advene.org/ns/cinelab/ld#fragDimId"></see></summary>
-    let fragDimId = Namespaced_IRI.parse _namespace_name "fragDimId" |> NamespacedName
-
+    let fragDimId = _prefix "fragDimId"
     /// <summary>
     /// This metadata of an annotation encodes the 'track' dimension of its fragment.
     /// <see href="http://advene.org/ns/cinelab/ld#fragDimTrack"></see></summary>
-    let fragDimTrack =
-        Namespaced_IRI.parse _namespace_name "fragDimTrack" |> NamespacedName
-
+    let fragDimTrack = _prefix "fragDimTrack"
     /// <summary>
     /// This metadata of an annotation encodes the 'xywh' dimension of its fragment.
     /// <see href="http://advene.org/ns/cinelab/ld#fragDimXywh"></see></summary>
-    let fragDimXywh =
-        Namespaced_IRI.parse _namespace_name "fragDimXywh" |> NamespacedName
-
+    let fragDimXywh = _prefix "fragDimXywh"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#taggedWith"></see>
     /// </summary>
-    let taggedWith = Namespaced_IRI.parse _namespace_name "taggedWith" |> NamespacedName
-
+    let taggedWith = _prefix "taggedWith"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasFragment"></see>
     /// </summary>
-    let hasFragment =
-        Namespaced_IRI.parse _namespace_name "hasFragment" |> NamespacedName
-
+    let hasFragment = _prefix "hasFragment"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasFrameOfReference"></see>
     /// </summary>
-    let hasFrameOfReference =
-        Namespaced_IRI.parse _namespace_name "hasFrameOfReference" |> NamespacedName
-
+    let hasFrameOfReference = _prefix "hasFrameOfReference"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasImportedPackage"></see>
     /// </summary>
-    let hasImportedPackage =
-        Namespaced_IRI.parse _namespace_name "hasImportedPackage" |> NamespacedName
-
+    let hasImportedPackage = _prefix "hasImportedPackage"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasItems"></see>
     /// </summary>
-    let hasItems = Namespaced_IRI.parse _namespace_name "hasItems" |> NamespacedName
-
+    let hasItems = _prefix "hasItems"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasMediaElement"></see>
     /// </summary>
-    let hasMediaElement =
-        Namespaced_IRI.parse _namespace_name "hasMediaElement" |> NamespacedName
-
+    let hasMediaElement = _prefix "hasMediaElement"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasMembers"></see>
     /// </summary>
-    let hasMembers = Namespaced_IRI.parse _namespace_name "hasMembers" |> NamespacedName
+    let hasMembers = _prefix "hasMembers"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasModel"></see>
     /// </summary>
-    let hasModel = Namespaced_IRI.parse _namespace_name "hasModel" |> NamespacedName
+    let hasModel = _prefix "hasModel"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#hasPackage"></see>
     /// </summary>
-    let hasPackage = Namespaced_IRI.parse _namespace_name "hasPackage" |> NamespacedName
+    let hasPackage = _prefix "hasPackage"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#imports"></see>
     /// </summary>
-    let imports = Namespaced_IRI.parse _namespace_name "imports" |> NamespacedName
+    let imports = _prefix "imports"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#mimeType"></see>
     /// </summary>
-    let mimeType = Namespaced_IRI.parse _namespace_name "mimeType" |> NamespacedName
+    let mimeType = _prefix "mimeType"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#represents"></see>
     /// </summary>
-    let represents = Namespaced_IRI.parse _namespace_name "represents" |> NamespacedName
+    let represents = _prefix "represents"
     /// <summary>
     ///   <see href="http://advene.org/ns/cinelab/ld#url"></see>
     /// </summary>
-    let url = Namespaced_IRI.parse _namespace_name "url" |> NamespacedName
+    let url = _prefix "url"

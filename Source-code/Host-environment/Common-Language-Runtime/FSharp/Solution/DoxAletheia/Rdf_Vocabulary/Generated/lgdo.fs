@@ -1,13952 +1,12461 @@
 namespace http.linkedgeodata.org.ontology.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module lgdo =
     let _namespace_name = "http://linkedgeodata.org/ontology/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ATM"></see>
     /// </summary>
-    let ATM = Namespaced_IRI.parse _namespace_name "ATM" |> NamespacedName
-
+    let ATM = _prefix "ATM"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ATM/key/amenity/value/ATM"></see>
     /// </summary>
-    let ``ATM/key/amenity/value/ATM`` =
-        Namespaced_IRI.parse _namespace_name "ATM/key/amenity/value/ATM" |> NamespacedName
-
+    let ``ATM/key/amenity/value/ATM`` = _prefix "ATM/key/amenity/value/ATM"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Amenity"></see>
     /// </summary>
-    let Amenity = Namespaced_IRI.parse _namespace_name "Amenity" |> NamespacedName
-
+    let Amenity = _prefix "Amenity"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AbandonedRailway"></see>
     /// </summary>
-    let AbandonedRailway =
-        Namespaced_IRI.parse _namespace_name "AbandonedRailway" |> NamespacedName
+    let AbandonedRailway = _prefix "AbandonedRailway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AbandonedRailway/key/railway/value/abandoned"></see>
     /// </summary>
     let ``AbandonedRailway/key/railway/value/abandoned`` =
-        Namespaced_IRI.parse _namespace_name "AbandonedRailway/key/railway/value/abandoned" |> NamespacedName
+        _prefix "AbandonedRailway/key/railway/value/abandoned"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayThing"></see>
     /// </summary>
-    let RailwayThing =
-        Namespaced_IRI.parse _namespace_name "RailwayThing" |> NamespacedName
-
+    let RailwayThing = _prefix "RailwayThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AbandonedStation"></see>
     /// </summary>
-    let AbandonedStation =
-        Namespaced_IRI.parse _namespace_name "AbandonedStation" |> NamespacedName
+    let AbandonedStation = _prefix "AbandonedStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AbandonedStation/key/railway/value/abandoned_station"></see>
     /// </summary>
     let ``AbandonedStation/key/railway/value/abandoned_station`` =
-        Namespaced_IRI.parse _namespace_name "AbandonedStation/key/railway/value/abandoned_station" |> NamespacedName
+        _prefix "AbandonedStation/key/railway/value/abandoned_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Abbey"></see>
     /// </summary>
-    let Abbey = Namespaced_IRI.parse _namespace_name "Abbey" |> NamespacedName
-
+    let Abbey = _prefix "Abbey"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Abbey/key/historic/value/abbey"></see>
     /// </summary>
-    let ``Abbey/key/historic/value/abbey`` =
-        Namespaced_IRI.parse _namespace_name "Abbey/key/historic/value/abbey" |> NamespacedName
-
+    let ``Abbey/key/historic/value/abbey`` = _prefix "Abbey/key/historic/value/abbey"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricThing"></see>
     /// </summary>
-    let HistoricThing =
-        Namespaced_IRI.parse _namespace_name "HistoricThing" |> NamespacedName
-
+    let HistoricThing = _prefix "HistoricThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Abutters"></see>
     /// </summary>
-    let Abutters = Namespaced_IRI.parse _namespace_name "Abutters" |> NamespacedName
-
+    let Abutters = _prefix "Abutters"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AccountantOffice"></see>
     /// </summary>
-    let AccountantOffice =
-        Namespaced_IRI.parse _namespace_name "AccountantOffice" |> NamespacedName
+    let AccountantOffice = _prefix "AccountantOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AccountantOffice/key/office/value/accountant"></see>
     /// </summary>
     let ``AccountantOffice/key/office/value/accountant`` =
-        Namespaced_IRI.parse _namespace_name "AccountantOffice/key/office/value/accountant" |> NamespacedName
+        _prefix "AccountantOffice/key/office/value/accountant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Office"></see>
     /// </summary>
-    let Office = Namespaced_IRI.parse _namespace_name "Office" |> NamespacedName
+    let Office = _prefix "Office"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Adit"></see>
     /// </summary>
-    let Adit = Namespaced_IRI.parse _namespace_name "Adit" |> NamespacedName
-
+    let Adit = _prefix "Adit"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Adit/key/man_made/value/adit"></see>
     /// </summary>
-    let ``Adit/key/man_made/value/adit`` =
-        Namespaced_IRI.parse _namespace_name "Adit/key/man_made/value/adit" |> NamespacedName
-
+    let ``Adit/key/man_made/value/adit`` = _prefix "Adit/key/man_made/value/adit"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeThing"></see>
     /// </summary>
-    let ManMadeThing =
-        Namespaced_IRI.parse _namespace_name "ManMadeThing" |> NamespacedName
-
+    let ManMadeThing = _prefix "ManMadeThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AdministrativeBoundary"></see>
     /// </summary>
-    let AdministrativeBoundary =
-        Namespaced_IRI.parse _namespace_name "AdministrativeBoundary" |> NamespacedName
+    let AdministrativeBoundary = _prefix "AdministrativeBoundary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AdministrativeBoundary/key/boundary/value/administrative"></see>
     /// </summary>
     let ``AdministrativeBoundary/key/boundary/value/administrative`` =
-        Namespaced_IRI.parse _namespace_name "AdministrativeBoundary/key/boundary/value/administrative" |> NamespacedName
+        _prefix "AdministrativeBoundary/key/boundary/value/administrative"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boundary"></see>
     /// </summary>
-    let Boundary = Namespaced_IRI.parse _namespace_name "Boundary" |> NamespacedName
-
+    let Boundary = _prefix "Boundary"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AdministrativeOffice"></see>
     /// </summary>
-    let AdministrativeOffice =
-        Namespaced_IRI.parse _namespace_name "AdministrativeOffice" |> NamespacedName
+    let AdministrativeOffice = _prefix "AdministrativeOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AdministrativeOffice/key/office/value/administrative"></see>
     /// </summary>
     let ``AdministrativeOffice/key/office/value/administrative`` =
-        Namespaced_IRI.parse _namespace_name "AdministrativeOffice/key/office/value/administrative" |> NamespacedName
+        _prefix "AdministrativeOffice/key/office/value/administrative"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AdultShop"></see>
     /// </summary>
-    let AdultShop = Namespaced_IRI.parse _namespace_name "AdultShop" |> NamespacedName
-
+    let AdultShop = _prefix "AdultShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AdultShop/key/shop/value/adult"></see>
     /// </summary>
-    let ``AdultShop/key/shop/value/adult`` =
-        Namespaced_IRI.parse _namespace_name "AdultShop/key/shop/value/adult" |> NamespacedName
-
+    let ``AdultShop/key/shop/value/adult`` = _prefix "AdultShop/key/shop/value/adult"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shop"></see>
     /// </summary>
-    let Shop = Namespaced_IRI.parse _namespace_name "Shop" |> NamespacedName
-
+    let Shop = _prefix "Shop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Advertisement"></see>
     /// </summary>
-    let Advertisement =
-        Namespaced_IRI.parse _namespace_name "Advertisement" |> NamespacedName
+    let Advertisement = _prefix "Advertisement"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Advertisement/key/amenity/value/advertisement"></see>
     /// </summary>
     let ``Advertisement/key/amenity/value/advertisement`` =
-        Namespaced_IRI.parse _namespace_name "Advertisement/key/amenity/value/advertisement" |> NamespacedName
+        _prefix "Advertisement/key/amenity/value/advertisement"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Advertising"></see>
     /// </summary>
-    let Advertising =
-        Namespaced_IRI.parse _namespace_name "Advertising" |> NamespacedName
+    let Advertising = _prefix "Advertising"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Advertising/key/amenity/value/advertising"></see>
     /// </summary>
     let ``Advertising/key/amenity/value/advertising`` =
-        Namespaced_IRI.parse _namespace_name "Advertising/key/amenity/value/advertising" |> NamespacedName
+        _prefix "Advertising/key/amenity/value/advertising"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AerialwayGoods"></see>
     /// </summary>
-    let AerialwayGoods =
-        Namespaced_IRI.parse _namespace_name "AerialwayGoods" |> NamespacedName
+    let AerialwayGoods = _prefix "AerialwayGoods"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AerialwayGoods/key/aerialway/value/goods"></see>
     /// </summary>
     let ``AerialwayGoods/key/aerialway/value/goods`` =
-        Namespaced_IRI.parse _namespace_name "AerialwayGoods/key/aerialway/value/goods" |> NamespacedName
+        _prefix "AerialwayGoods/key/aerialway/value/goods"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AerialwayThing"></see>
     /// </summary>
-    let AerialwayThing =
-        Namespaced_IRI.parse _namespace_name "AerialwayThing" |> NamespacedName
-
+    let AerialwayThing = _prefix "AerialwayThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AerialwayStation"></see>
     /// </summary>
-    let AerialwayStation =
-        Namespaced_IRI.parse _namespace_name "AerialwayStation" |> NamespacedName
+    let AerialwayStation = _prefix "AerialwayStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AerialwayStation/key/aerialway/value/station"></see>
     /// </summary>
     let ``AerialwayStation/key/aerialway/value/station`` =
-        Namespaced_IRI.parse _namespace_name "AerialwayStation/key/aerialway/value/station" |> NamespacedName
+        _prefix "AerialwayStation/key/aerialway/value/station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AerowayThing"></see>
     /// </summary>
-    let AerowayThing =
-        Namespaced_IRI.parse _namespace_name "AerowayThing" |> NamespacedName
-
+    let AerowayThing = _prefix "AerowayThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Agrarian"></see>
     /// </summary>
-    let Agrarian = Namespaced_IRI.parse _namespace_name "Agrarian" |> NamespacedName
+    let Agrarian = _prefix "Agrarian"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Agrarian/key/shop/value/agrarian"></see>
     /// </summary>
     let ``Agrarian/key/shop/value/agrarian`` =
-        Namespaced_IRI.parse _namespace_name "Agrarian/key/shop/value/agrarian" |> NamespacedName
+        _prefix "Agrarian/key/shop/value/agrarian"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AgriculturalEnginesCraft"></see>
     /// </summary>
-    let AgriculturalEnginesCraft =
-        Namespaced_IRI.parse _namespace_name "AgriculturalEnginesCraft" |> NamespacedName
+    let AgriculturalEnginesCraft = _prefix "AgriculturalEnginesCraft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AgriculturalEnginesCraft/key/craft/value/agricultural_engines"></see>
     /// </summary>
     let ``AgriculturalEnginesCraft/key/craft/value/agricultural_engines`` =
-        Namespaced_IRI.parse _namespace_name "AgriculturalEnginesCraft/key/craft/value/agricultural_engines" |> NamespacedName
+        _prefix "AgriculturalEnginesCraft/key/craft/value/agricultural_engines"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Craft"></see>
     /// </summary>
-    let Craft = Namespaced_IRI.parse _namespace_name "Craft" |> NamespacedName
+    let Craft = _prefix "Craft"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirFill"></see>
     /// </summary>
-    let AirFill = Namespaced_IRI.parse _namespace_name "AirFill" |> NamespacedName
+    let AirFill = _prefix "AirFill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirFill/key/amenity/value/air_fill"></see>
     /// </summary>
     let ``AirFill/key/amenity/value/air_fill`` =
-        Namespaced_IRI.parse _namespace_name "AirFill/key/amenity/value/air_fill" |> NamespacedName
+        _prefix "AirFill/key/amenity/value/air_fill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Airplane"></see>
     /// </summary>
-    let Airplane = Namespaced_IRI.parse _namespace_name "Airplane" |> NamespacedName
+    let Airplane = _prefix "Airplane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Airplane/key/amenity/value/airplane"></see>
     /// </summary>
     let ``Airplane/key/amenity/value/airplane`` =
-        Namespaced_IRI.parse _namespace_name "Airplane/key/amenity/value/airplane" |> NamespacedName
+        _prefix "Airplane/key/amenity/value/airplane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Airport"></see>
     /// </summary>
-    let Airport = Namespaced_IRI.parse _namespace_name "Airport" |> NamespacedName
+    let Airport = _prefix "Airport"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Airport/key/aeroway/value/aerodrome"></see>
     /// </summary>
     let ``Airport/key/aeroway/value/aerodrome`` =
-        Namespaced_IRI.parse _namespace_name "Airport/key/aeroway/value/aerodrome" |> NamespacedName
+        _prefix "Airport/key/aeroway/value/aerodrome"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Airport/key/amenity/value/airport"></see>
     /// </summary>
     let ``Airport/key/amenity/value/airport`` =
-        Namespaced_IRI.parse _namespace_name "Airport/key/amenity/value/airport" |> NamespacedName
+        _prefix "Airport/key/amenity/value/airport"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportField"></see>
     /// </summary>
-    let AirportField =
-        Namespaced_IRI.parse _namespace_name "AirportField" |> NamespacedName
+    let AirportField = _prefix "AirportField"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportField/key/aeroway/value/airfield"></see>
     /// </summary>
     let ``AirportField/key/aeroway/value/airfield`` =
-        Namespaced_IRI.parse _namespace_name "AirportField/key/aeroway/value/airfield" |> NamespacedName
+        _prefix "AirportField/key/aeroway/value/airfield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportGate"></see>
     /// </summary>
-    let AirportGate =
-        Namespaced_IRI.parse _namespace_name "AirportGate" |> NamespacedName
+    let AirportGate = _prefix "AirportGate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportGate/key/aeroway/value/gate"></see>
     /// </summary>
     let ``AirportGate/key/aeroway/value/gate`` =
-        Namespaced_IRI.parse _namespace_name "AirportGate/key/aeroway/value/gate" |> NamespacedName
+        _prefix "AirportGate/key/aeroway/value/gate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportTaxiway"></see>
     /// </summary>
-    let AirportTaxiway =
-        Namespaced_IRI.parse _namespace_name "AirportTaxiway" |> NamespacedName
+    let AirportTaxiway = _prefix "AirportTaxiway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportTaxiway/key/aeroway/value/taxiway"></see>
     /// </summary>
     let ``AirportTaxiway/key/aeroway/value/taxiway`` =
-        Namespaced_IRI.parse _namespace_name "AirportTaxiway/key/aeroway/value/taxiway" |> NamespacedName
+        _prefix "AirportTaxiway/key/aeroway/value/taxiway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportTerminal"></see>
     /// </summary>
-    let AirportTerminal =
-        Namespaced_IRI.parse _namespace_name "AirportTerminal" |> NamespacedName
+    let AirportTerminal = _prefix "AirportTerminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportTerminal/key/aeroway/value/terminal"></see>
     /// </summary>
     let ``AirportTerminal/key/aeroway/value/terminal`` =
-        Namespaced_IRI.parse _namespace_name "AirportTerminal/key/aeroway/value/terminal" |> NamespacedName
+        _prefix "AirportTerminal/key/aeroway/value/terminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportTower"></see>
     /// </summary>
-    let AirportTower =
-        Namespaced_IRI.parse _namespace_name "AirportTower" |> NamespacedName
+    let AirportTower = _prefix "AirportTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AirportTower/key/aeroway/value/tower"></see>
     /// </summary>
     let ``AirportTower/key/aeroway/value/tower`` =
-        Namespaced_IRI.parse _namespace_name "AirportTower/key/aeroway/value/tower" |> NamespacedName
+        _prefix "AirportTower/key/aeroway/value/tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AlcoholShop"></see>
     /// </summary>
-    let AlcoholShop =
-        Namespaced_IRI.parse _namespace_name "AlcoholShop" |> NamespacedName
+    let AlcoholShop = _prefix "AlcoholShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AlcoholShop/key/shop/value/alcohol"></see>
     /// </summary>
     let ``AlcoholShop/key/shop/value/alcohol`` =
-        Namespaced_IRI.parse _namespace_name "AlcoholShop/key/shop/value/alcohol" |> NamespacedName
+        _prefix "AlcoholShop/key/shop/value/alcohol"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Alley"></see>
     /// </summary>
-    let Alley = Namespaced_IRI.parse _namespace_name "Alley" |> NamespacedName
-
+    let Alley = _prefix "Alley"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Alley/key/service/value/alley"></see>
     /// </summary>
-    let ``Alley/key/service/value/alley`` =
-        Namespaced_IRI.parse _namespace_name "Alley/key/service/value/alley" |> NamespacedName
-
+    let ``Alley/key/service/value/alley`` = _prefix "Alley/key/service/value/alley"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Allotments"></see>
     /// </summary>
-    let Allotments = Namespaced_IRI.parse _namespace_name "Allotments" |> NamespacedName
+    let Allotments = _prefix "Allotments"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Allotments/key/landuse/value/allotments"></see>
     /// </summary>
     let ``Allotments/key/landuse/value/allotments`` =
-        Namespaced_IRI.parse _namespace_name "Allotments/key/landuse/value/allotments" |> NamespacedName
+        _prefix "Allotments/key/landuse/value/allotments"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Landuse"></see>
     /// </summary>
-    let Landuse = Namespaced_IRI.parse _namespace_name "Landuse" |> NamespacedName
+    let Landuse = _prefix "Landuse"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Alm"></see>
     /// </summary>
-    let Alm = Namespaced_IRI.parse _namespace_name "Alm" |> NamespacedName
-
+    let Alm = _prefix "Alm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Alm/key/amenity/value/alm"></see>
     /// </summary>
-    let ``Alm/key/amenity/value/alm`` =
-        Namespaced_IRI.parse _namespace_name "Alm/key/amenity/value/alm" |> NamespacedName
-
+    let ``Alm/key/amenity/value/alm`` = _prefix "Alm/key/amenity/value/alm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AlpineHut"></see>
     /// </summary>
-    let AlpineHut = Namespaced_IRI.parse _namespace_name "AlpineHut" |> NamespacedName
+    let AlpineHut = _prefix "AlpineHut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AlpineHut/key/tourism/value/alpine_hut"></see>
     /// </summary>
     let ``AlpineHut/key/tourism/value/alpine_hut`` =
-        Namespaced_IRI.parse _namespace_name "AlpineHut/key/tourism/value/alpine_hut" |> NamespacedName
+        _prefix "AlpineHut/key/tourism/value/alpine_hut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TourismThing"></see>
     /// </summary>
-    let TourismThing =
-        Namespaced_IRI.parse _namespace_name "TourismThing" |> NamespacedName
-
+    let TourismThing = _prefix "TourismThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ambulance"></see>
     /// </summary>
-    let Ambulance = Namespaced_IRI.parse _namespace_name "Ambulance" |> NamespacedName
+    let Ambulance = _prefix "Ambulance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ambulance/key/amenity/value/ambulance"></see>
     /// </summary>
     let ``Ambulance/key/amenity/value/ambulance`` =
-        Namespaced_IRI.parse _namespace_name "Ambulance/key/amenity/value/ambulance" |> NamespacedName
+        _prefix "Ambulance/key/amenity/value/ambulance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AmbulanceStation"></see>
     /// </summary>
-    let AmbulanceStation =
-        Namespaced_IRI.parse _namespace_name "AmbulanceStation" |> NamespacedName
+    let AmbulanceStation = _prefix "AmbulanceStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AmbulanceStation/key/amenity/value/ambulance_station"></see>
     /// </summary>
     let ``AmbulanceStation/key/amenity/value/ambulance_station`` =
-        Namespaced_IRI.parse _namespace_name "AmbulanceStation/key/amenity/value/ambulance_station" |> NamespacedName
+        _prefix "AmbulanceStation/key/amenity/value/ambulance_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AmbulanceStation/key/emergency/value/ambulance_station"></see>
     /// </summary>
     let ``AmbulanceStation/key/emergency/value/ambulance_station`` =
-        Namespaced_IRI.parse _namespace_name "AmbulanceStation/key/emergency/value/ambulance_station" |> NamespacedName
+        _prefix "AmbulanceStation/key/emergency/value/ambulance_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyThing"></see>
     /// </summary>
-    let EmergencyThing =
-        Namespaced_IRI.parse _namespace_name "EmergencyThing" |> NamespacedName
+    let EmergencyThing = _prefix "EmergencyThing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Amenity/key/amenity/value/leisure"></see>
     /// </summary>
     let ``Amenity/key/amenity/value/leisure`` =
-        Namespaced_IRI.parse _namespace_name "Amenity/key/amenity/value/leisure" |> NamespacedName
+        _prefix "Amenity/key/amenity/value/leisure"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimalShelter"></see>
     /// </summary>
-    let AnimalShelter =
-        Namespaced_IRI.parse _namespace_name "AnimalShelter" |> NamespacedName
+    let AnimalShelter = _prefix "AnimalShelter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimalShelter/key/amenity/value/animal_shelter"></see>
     /// </summary>
     let ``AnimalShelter/key/amenity/value/animal_shelter`` =
-        Namespaced_IRI.parse _namespace_name "AnimalShelter/key/amenity/value/animal_shelter" |> NamespacedName
+        _prefix "AnimalShelter/key/amenity/value/animal_shelter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimalShop"></see>
     /// </summary>
-    let AnimalShop = Namespaced_IRI.parse _namespace_name "AnimalShop" |> NamespacedName
+    let AnimalShop = _prefix "AnimalShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimalShop/key/shop/value/animal"></see>
     /// </summary>
     let ``AnimalShop/key/shop/value/animal`` =
-        Namespaced_IRI.parse _namespace_name "AnimalShop/key/shop/value/animal" |> NamespacedName
+        _prefix "AnimalShop/key/shop/value/animal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimalsShop"></see>
     /// </summary>
-    let AnimalsShop =
-        Namespaced_IRI.parse _namespace_name "AnimalsShop" |> NamespacedName
+    let AnimalsShop = _prefix "AnimalsShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimalsShop/key/shop/value/animals"></see>
     /// </summary>
     let ``AnimalsShop/key/shop/value/animals`` =
-        Namespaced_IRI.parse _namespace_name "AnimalsShop/key/shop/value/animals" |> NamespacedName
+        _prefix "AnimalsShop/key/shop/value/animals"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimeShop"></see>
     /// </summary>
-    let AnimeShop = Namespaced_IRI.parse _namespace_name "AnimeShop" |> NamespacedName
-
+    let AnimeShop = _prefix "AnimeShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AnimeShop/key/shop/value/anime"></see>
     /// </summary>
-    let ``AnimeShop/key/shop/value/anime`` =
-        Namespaced_IRI.parse _namespace_name "AnimeShop/key/shop/value/anime" |> NamespacedName
-
+    let ``AnimeShop/key/shop/value/anime`` = _prefix "AnimeShop/key/shop/value/anime"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Antenna"></see>
     /// </summary>
-    let Antenna = Namespaced_IRI.parse _namespace_name "Antenna" |> NamespacedName
+    let Antenna = _prefix "Antenna"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Antenna/key/man_made/value/antenna"></see>
     /// </summary>
     let ``Antenna/key/man_made/value/antenna`` =
-        Namespaced_IRI.parse _namespace_name "Antenna/key/man_made/value/antenna" |> NamespacedName
+        _prefix "Antenna/key/man_made/value/antenna"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AntiqueShop"></see>
     /// </summary>
-    let AntiqueShop =
-        Namespaced_IRI.parse _namespace_name "AntiqueShop" |> NamespacedName
+    let AntiqueShop = _prefix "AntiqueShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AntiqueShop/key/shop/value/antique"></see>
     /// </summary>
     let ``AntiqueShop/key/shop/value/antique`` =
-        Namespaced_IRI.parse _namespace_name "AntiqueShop/key/shop/value/antique" |> NamespacedName
+        _prefix "AntiqueShop/key/shop/value/antique"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AntiquesShop"></see>
     /// </summary>
-    let AntiquesShop =
-        Namespaced_IRI.parse _namespace_name "AntiquesShop" |> NamespacedName
+    let AntiquesShop = _prefix "AntiquesShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AntiquesShop/key/shop/value/antiques"></see>
     /// </summary>
     let ``AntiquesShop/key/shop/value/antiques`` =
-        Namespaced_IRI.parse _namespace_name "AntiquesShop/key/shop/value/antiques" |> NamespacedName
+        _prefix "AntiquesShop/key/shop/value/antiques"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AntiquitiesShop"></see>
     /// </summary>
-    let AntiquitiesShop =
-        Namespaced_IRI.parse _namespace_name "AntiquitiesShop" |> NamespacedName
+    let AntiquitiesShop = _prefix "AntiquitiesShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AntiquitiesShop/key/shop/value/antiquities"></see>
     /// </summary>
     let ``AntiquitiesShop/key/shop/value/antiquities`` =
-        Namespaced_IRI.parse _namespace_name "AntiquitiesShop/key/shop/value/antiquities" |> NamespacedName
+        _prefix "AntiquitiesShop/key/shop/value/antiquities"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ApartmentBuilding"></see>
     /// </summary>
-    let ApartmentBuilding =
-        Namespaced_IRI.parse _namespace_name "ApartmentBuilding" |> NamespacedName
+    let ApartmentBuilding = _prefix "ApartmentBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ApartmentBuilding/key/building/value/apartments"></see>
     /// </summary>
     let ``ApartmentBuilding/key/building/value/apartments`` =
-        Namespaced_IRI.parse _namespace_name "ApartmentBuilding/key/building/value/apartments" |> NamespacedName
+        _prefix "ApartmentBuilding/key/building/value/apartments"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Building"></see>
     /// </summary>
-    let Building = Namespaced_IRI.parse _namespace_name "Building" |> NamespacedName
+    let Building = _prefix "Building"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Apparel"></see>
     /// </summary>
-    let Apparel = Namespaced_IRI.parse _namespace_name "Apparel" |> NamespacedName
-
+    let Apparel = _prefix "Apparel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Apparel/key/shop/value/apparel"></see>
     /// </summary>
-    let ``Apparel/key/shop/value/apparel`` =
-        Namespaced_IRI.parse _namespace_name "Apparel/key/shop/value/apparel" |> NamespacedName
-
+    let ``Apparel/key/shop/value/apparel`` = _prefix "Apparel/key/shop/value/apparel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Appliance"></see>
     /// </summary>
-    let Appliance = Namespaced_IRI.parse _namespace_name "Appliance" |> NamespacedName
+    let Appliance = _prefix "Appliance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Appliance/key/shop/value/appliance"></see>
     /// </summary>
     let ``Appliance/key/shop/value/appliance`` =
-        Namespaced_IRI.parse _namespace_name "Appliance/key/shop/value/appliance" |> NamespacedName
+        _prefix "Appliance/key/shop/value/appliance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Appliances"></see>
     /// </summary>
-    let Appliances = Namespaced_IRI.parse _namespace_name "Appliances" |> NamespacedName
+    let Appliances = _prefix "Appliances"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Appliances/key/shop/value/appliances"></see>
     /// </summary>
     let ``Appliances/key/shop/value/appliances`` =
-        Namespaced_IRI.parse _namespace_name "Appliances/key/shop/value/appliances" |> NamespacedName
+        _prefix "Appliances/key/shop/value/appliances"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Apron"></see>
     /// </summary>
-    let Apron = Namespaced_IRI.parse _namespace_name "Apron" |> NamespacedName
-
+    let Apron = _prefix "Apron"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Apron/key/aeroway/value/apron"></see>
     /// </summary>
-    let ``Apron/key/aeroway/value/apron`` =
-        Namespaced_IRI.parse _namespace_name "Apron/key/aeroway/value/apron" |> NamespacedName
-
+    let ``Apron/key/aeroway/value/apron`` = _prefix "Apron/key/aeroway/value/apron"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Aqueduct"></see>
     /// </summary>
-    let Aqueduct = Namespaced_IRI.parse _namespace_name "Aqueduct" |> NamespacedName
+    let Aqueduct = _prefix "Aqueduct"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Aqueduct/key/waterway/value/aqueduct"></see>
     /// </summary>
     let ``Aqueduct/key/waterway/value/aqueduct`` =
-        Namespaced_IRI.parse _namespace_name "Aqueduct/key/waterway/value/aqueduct" |> NamespacedName
+        _prefix "Aqueduct/key/waterway/value/aqueduct"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayThing"></see>
     /// </summary>
-    let WaterwayThing =
-        Namespaced_IRI.parse _namespace_name "WaterwayThing" |> NamespacedName
-
+    let WaterwayThing = _prefix "WaterwayThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArchaeologicalSite"></see>
     /// </summary>
-    let ArchaeologicalSite =
-        Namespaced_IRI.parse _namespace_name "ArchaeologicalSite" |> NamespacedName
+    let ArchaeologicalSite = _prefix "ArchaeologicalSite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArchaeologicalSite/key/historic/value/archaeological_site"></see>
     /// </summary>
     let ``ArchaeologicalSite/key/historic/value/archaeological_site`` =
-        Namespaced_IRI.parse _namespace_name "ArchaeologicalSite/key/historic/value/archaeological_site" |> NamespacedName
+        _prefix "ArchaeologicalSite/key/historic/value/archaeological_site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArchitectOffice"></see>
     /// </summary>
-    let ArchitectOffice =
-        Namespaced_IRI.parse _namespace_name "ArchitectOffice" |> NamespacedName
+    let ArchitectOffice = _prefix "ArchitectOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArchitectOffice/key/office/value/architect"></see>
     /// </summary>
     let ``ArchitectOffice/key/office/value/architect`` =
-        Namespaced_IRI.parse _namespace_name "ArchitectOffice/key/office/value/architect" |> NamespacedName
+        _prefix "ArchitectOffice/key/office/value/architect"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtGallery"></see>
     /// </summary>
-    let ArtGallery = Namespaced_IRI.parse _namespace_name "ArtGallery" |> NamespacedName
+    let ArtGallery = _prefix "ArtGallery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtGallery/key/amenity/value/art_gallery"></see>
     /// </summary>
     let ``ArtGallery/key/amenity/value/art_gallery`` =
-        Namespaced_IRI.parse _namespace_name "ArtGallery/key/amenity/value/art_gallery" |> NamespacedName
+        _prefix "ArtGallery/key/amenity/value/art_gallery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtGalleryShop"></see>
     /// </summary>
-    let ArtGalleryShop =
-        Namespaced_IRI.parse _namespace_name "ArtGalleryShop" |> NamespacedName
+    let ArtGalleryShop = _prefix "ArtGalleryShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtGalleryShop/key/shop/value/art_gallery"></see>
     /// </summary>
     let ``ArtGalleryShop/key/shop/value/art_gallery`` =
-        Namespaced_IRI.parse _namespace_name "ArtGalleryShop/key/shop/value/art_gallery" |> NamespacedName
+        _prefix "ArtGalleryShop/key/shop/value/art_gallery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtShop"></see>
     /// </summary>
-    let ArtShop = Namespaced_IRI.parse _namespace_name "ArtShop" |> NamespacedName
-
+    let ArtShop = _prefix "ArtShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtShop/key/shop/value/art"></see>
     /// </summary>
-    let ``ArtShop/key/shop/value/art`` =
-        Namespaced_IRI.parse _namespace_name "ArtShop/key/shop/value/art" |> NamespacedName
-
+    let ``ArtShop/key/shop/value/art`` = _prefix "ArtShop/key/shop/value/art"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtSupplies"></see>
     /// </summary>
-    let ArtSupplies =
-        Namespaced_IRI.parse _namespace_name "ArtSupplies" |> NamespacedName
+    let ArtSupplies = _prefix "ArtSupplies"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtSupplies/key/shop/value/art_supplies"></see>
     /// </summary>
     let ``ArtSupplies/key/shop/value/art_supplies`` =
-        Namespaced_IRI.parse _namespace_name "ArtSupplies/key/shop/value/art_supplies" |> NamespacedName
+        _prefix "ArtSupplies/key/shop/value/art_supplies"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtsCentre"></see>
     /// </summary>
-    let ArtsCentre = Namespaced_IRI.parse _namespace_name "ArtsCentre" |> NamespacedName
+    let ArtsCentre = _prefix "ArtsCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ArtsCentre/key/amenity/value/arts_centre"></see>
     /// </summary>
     let ``ArtsCentre/key/amenity/value/arts_centre`` =
-        Namespaced_IRI.parse _namespace_name "ArtsCentre/key/amenity/value/arts_centre" |> NamespacedName
+        _prefix "ArtsCentre/key/amenity/value/arts_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Artwork"></see>
     /// </summary>
-    let Artwork = Namespaced_IRI.parse _namespace_name "Artwork" |> NamespacedName
+    let Artwork = _prefix "Artwork"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Artwork/key/tourism/value/artwork"></see>
     /// </summary>
     let ``Artwork/key/tourism/value/artwork`` =
-        Namespaced_IRI.parse _namespace_name "Artwork/key/tourism/value/artwork" |> NamespacedName
+        _prefix "Artwork/key/tourism/value/artwork"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Artwork/key/amenity/value/artwork"></see>
     /// </summary>
     let ``Artwork/key/amenity/value/artwork`` =
-        Namespaced_IRI.parse _namespace_name "Artwork/key/amenity/value/artwork" |> NamespacedName
+        _prefix "Artwork/key/amenity/value/artwork"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Atm"></see>
     /// </summary>
-    let Atm = Namespaced_IRI.parse _namespace_name "Atm" |> NamespacedName
-
+    let Atm = _prefix "Atm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Atm/key/amenity/value/atm"></see>
     /// </summary>
-    let ``Atm/key/amenity/value/atm`` =
-        Namespaced_IRI.parse _namespace_name "Atm/key/amenity/value/atm" |> NamespacedName
-
+    let ``Atm/key/amenity/value/atm`` = _prefix "Atm/key/amenity/value/atm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Attraction"></see>
     /// </summary>
-    let Attraction = Namespaced_IRI.parse _namespace_name "Attraction" |> NamespacedName
+    let Attraction = _prefix "Attraction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Attraction/key/tourism/value/attraction"></see>
     /// </summary>
     let ``Attraction/key/tourism/value/attraction`` =
-        Namespaced_IRI.parse _namespace_name "Attraction/key/tourism/value/attraction" |> NamespacedName
+        _prefix "Attraction/key/tourism/value/attraction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AudioVideoShop"></see>
     /// </summary>
-    let AudioVideoShop =
-        Namespaced_IRI.parse _namespace_name "AudioVideoShop" |> NamespacedName
+    let AudioVideoShop = _prefix "AudioVideoShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AudioVideoShop/key/shop/value/audio_video"></see>
     /// </summary>
     let ``AudioVideoShop/key/shop/value/audio_video`` =
-        Namespaced_IRI.parse _namespace_name "AudioVideoShop/key/shop/value/audio_video" |> NamespacedName
+        _prefix "AudioVideoShop/key/shop/value/audio_video"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Audiologist"></see>
     /// </summary>
-    let Audiologist =
-        Namespaced_IRI.parse _namespace_name "Audiologist" |> NamespacedName
+    let Audiologist = _prefix "Audiologist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Audiologist/key/shop/value/audiologist"></see>
     /// </summary>
     let ``Audiologist/key/shop/value/audiologist`` =
-        Namespaced_IRI.parse _namespace_name "Audiologist/key/shop/value/audiologist" |> NamespacedName
+        _prefix "Audiologist/key/shop/value/audiologist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AutoPartsShop"></see>
     /// </summary>
-    let AutoPartsShop =
-        Namespaced_IRI.parse _namespace_name "AutoPartsShop" |> NamespacedName
+    let AutoPartsShop = _prefix "AutoPartsShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AutoPartsShop/key/shop/value/auto_parts"></see>
     /// </summary>
     let ``AutoPartsShop/key/shop/value/auto_parts`` =
-        Namespaced_IRI.parse _namespace_name "AutoPartsShop/key/shop/value/auto_parts" |> NamespacedName
+        _prefix "AutoPartsShop/key/shop/value/auto_parts"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AutoRepair"></see>
     /// </summary>
-    let AutoRepair = Namespaced_IRI.parse _namespace_name "AutoRepair" |> NamespacedName
+    let AutoRepair = _prefix "AutoRepair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AutoRepair/key/shop/value/auto_repair"></see>
     /// </summary>
     let ``AutoRepair/key/shop/value/auto_repair`` =
-        Namespaced_IRI.parse _namespace_name "AutoRepair/key/shop/value/auto_repair" |> NamespacedName
+        _prefix "AutoRepair/key/shop/value/auto_repair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AutomotiveShop"></see>
     /// </summary>
-    let AutomotiveShop =
-        Namespaced_IRI.parse _namespace_name "AutomotiveShop" |> NamespacedName
+    let AutomotiveShop = _prefix "AutomotiveShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/AutomotiveShop/key/shop/value/automotive"></see>
     /// </summary>
     let ``AutomotiveShop/key/shop/value/automotive`` =
-        Namespaced_IRI.parse _namespace_name "AutomotiveShop/key/shop/value/automotive" |> NamespacedName
+        _prefix "AutomotiveShop/key/shop/value/automotive"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BabyGoodsShop"></see>
     /// </summary>
-    let BabyGoodsShop =
-        Namespaced_IRI.parse _namespace_name "BabyGoodsShop" |> NamespacedName
+    let BabyGoodsShop = _prefix "BabyGoodsShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BabyGoodsShop/key/shop/value/baby_goods"></see>
     /// </summary>
     let ``BabyGoodsShop/key/shop/value/baby_goods`` =
-        Namespaced_IRI.parse _namespace_name "BabyGoodsShop/key/shop/value/baby_goods" |> NamespacedName
+        _prefix "BabyGoodsShop/key/shop/value/baby_goods"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BabyHatch"></see>
     /// </summary>
-    let BabyHatch = Namespaced_IRI.parse _namespace_name "BabyHatch" |> NamespacedName
+    let BabyHatch = _prefix "BabyHatch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BabyHatch/key/amenity/value/baby_hatch"></see>
     /// </summary>
     let ``BabyHatch/key/amenity/value/baby_hatch`` =
-        Namespaced_IRI.parse _namespace_name "BabyHatch/key/amenity/value/baby_hatch" |> NamespacedName
+        _prefix "BabyHatch/key/amenity/value/baby_hatch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BabyShop"></see>
     /// </summary>
-    let BabyShop = Namespaced_IRI.parse _namespace_name "BabyShop" |> NamespacedName
-
+    let BabyShop = _prefix "BabyShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BabyShop/key/shop/value/baby"></see>
     /// </summary>
-    let ``BabyShop/key/shop/value/baby`` =
-        Namespaced_IRI.parse _namespace_name "BabyShop/key/shop/value/baby" |> NamespacedName
-
+    let ``BabyShop/key/shop/value/baby`` = _prefix "BabyShop/key/shop/value/baby"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BagsShop"></see>
     /// </summary>
-    let BagsShop = Namespaced_IRI.parse _namespace_name "BagsShop" |> NamespacedName
-
+    let BagsShop = _prefix "BagsShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BagsShop/key/shop/value/bags"></see>
     /// </summary>
-    let ``BagsShop/key/shop/value/bags`` =
-        Namespaced_IRI.parse _namespace_name "BagsShop/key/shop/value/bags" |> NamespacedName
-
+    let ``BagsShop/key/shop/value/bags`` = _prefix "BagsShop/key/shop/value/bags"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Baisschool"></see>
     /// </summary>
-    let Baisschool = Namespaced_IRI.parse _namespace_name "Baisschool" |> NamespacedName
+    let Baisschool = _prefix "Baisschool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Baisschool/key/amenity/value/Baisschool"></see>
     /// </summary>
     let ``Baisschool/key/amenity/value/Baisschool`` =
-        Namespaced_IRI.parse _namespace_name "Baisschool/key/amenity/value/Baisschool" |> NamespacedName
+        _prefix "Baisschool/key/amenity/value/Baisschool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bakery"></see>
     /// </summary>
-    let Bakery = Namespaced_IRI.parse _namespace_name "Bakery" |> NamespacedName
-
+    let Bakery = _prefix "Bakery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bakery/key/shop/value/bakery"></see>
     /// </summary>
-    let ``Bakery/key/shop/value/bakery`` =
-        Namespaced_IRI.parse _namespace_name "Bakery/key/shop/value/bakery" |> NamespacedName
-
+    let ``Bakery/key/shop/value/bakery`` = _prefix "Bakery/key/shop/value/bakery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bakery/key/amenity/value/bakery"></see>
     /// </summary>
-    let ``Bakery/key/amenity/value/bakery`` =
-        Namespaced_IRI.parse _namespace_name "Bakery/key/amenity/value/bakery" |> NamespacedName
-
+    let ``Bakery/key/amenity/value/bakery`` = _prefix "Bakery/key/amenity/value/bakery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bandstand"></see>
     /// </summary>
-    let Bandstand = Namespaced_IRI.parse _namespace_name "Bandstand" |> NamespacedName
+    let Bandstand = _prefix "Bandstand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bandstand/key/amenity/value/bandstand"></see>
     /// </summary>
     let ``Bandstand/key/amenity/value/bandstand`` =
-        Namespaced_IRI.parse _namespace_name "Bandstand/key/amenity/value/bandstand" |> NamespacedName
+        _prefix "Bandstand/key/amenity/value/bandstand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bandstand/key/leisure/value/bandstand"></see>
     /// </summary>
     let ``Bandstand/key/leisure/value/bandstand`` =
-        Namespaced_IRI.parse _namespace_name "Bandstand/key/leisure/value/bandstand" |> NamespacedName
+        _prefix "Bandstand/key/leisure/value/bandstand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Leisure"></see>
     /// </summary>
-    let Leisure = Namespaced_IRI.parse _namespace_name "Leisure" |> NamespacedName
+    let Leisure = _prefix "Leisure"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank"></see>
     /// </summary>
-    let Bank = Namespaced_IRI.parse _namespace_name "Bank" |> NamespacedName
-
+    let Bank = _prefix "Bank"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank/key/amenity/value/Bank"></see>
     /// </summary>
-    let ``Bank/key/amenity/value/Bank`` =
-        Namespaced_IRI.parse _namespace_name "Bank/key/amenity/value/Bank" |> NamespacedName
-
+    let ``Bank/key/amenity/value/Bank`` = _prefix "Bank/key/amenity/value/Bank"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank/key/amenity/value/bank"></see>
     /// </summary>
-    let ``Bank/key/amenity/value/bank`` =
-        Namespaced_IRI.parse _namespace_name "Bank/key/amenity/value/bank" |> NamespacedName
-
+    let ``Bank/key/amenity/value/bank`` = _prefix "Bank/key/amenity/value/bank"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank%2Catm"></see>
     /// </summary>
-    let ``Bank%2Catm`` =
-        Namespaced_IRI.parse _namespace_name "Bank%2Catm" |> NamespacedName
+    let ``Bank%2Catm`` = _prefix "Bank%2Catm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank%2Catm/key/amenity/value/bank%2Catm"></see>
     /// </summary>
     let ``Bank%2Catm/key/amenity/value/bank%2Catm`` =
-        Namespaced_IRI.parse _namespace_name "Bank%2Catm/key/amenity/value/bank%2Catm" |> NamespacedName
+        _prefix "Bank%2Catm/key/amenity/value/bank%2Catm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank%3Batm"></see>
     /// </summary>
-    let ``Bank%3Batm`` =
-        Namespaced_IRI.parse _namespace_name "Bank%3Batm" |> NamespacedName
+    let ``Bank%3Batm`` = _prefix "Bank%3Batm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bank%3Batm/key/amenity/value/bank%3Batm"></see>
     /// </summary>
     let ``Bank%3Batm/key/amenity/value/bank%3Batm`` =
-        Namespaced_IRI.parse _namespace_name "Bank%3Batm/key/amenity/value/bank%3Batm" |> NamespacedName
+        _prefix "Bank%3Batm/key/amenity/value/bank%3Batm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bar"></see>
     /// </summary>
-    let Bar = Namespaced_IRI.parse _namespace_name "Bar" |> NamespacedName
-
+    let Bar = _prefix "Bar"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bar/key/amenity/value/bar"></see>
     /// </summary>
-    let ``Bar/key/amenity/value/bar`` =
-        Namespaced_IRI.parse _namespace_name "Bar/key/amenity/value/bar" |> NamespacedName
-
+    let ``Bar/key/amenity/value/bar`` = _prefix "Bar/key/amenity/value/bar"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barbeque"></see>
     /// </summary>
-    let Barbeque = Namespaced_IRI.parse _namespace_name "Barbeque" |> NamespacedName
+    let Barbeque = _prefix "Barbeque"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barbeque/key/amenity/value/barbeque"></see>
     /// </summary>
     let ``Barbeque/key/amenity/value/barbeque`` =
-        Namespaced_IRI.parse _namespace_name "Barbeque/key/amenity/value/barbeque" |> NamespacedName
+        _prefix "Barbeque/key/amenity/value/barbeque"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barber"></see>
     /// </summary>
-    let Barber = Namespaced_IRI.parse _namespace_name "Barber" |> NamespacedName
-
+    let Barber = _prefix "Barber"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barber/key/shop/value/barber"></see>
     /// </summary>
-    let ``Barber/key/shop/value/barber`` =
-        Namespaced_IRI.parse _namespace_name "Barber/key/shop/value/barber" |> NamespacedName
-
+    let ``Barber/key/shop/value/barber`` = _prefix "Barber/key/shop/value/barber"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barfusspfad"></see>
     /// </summary>
-    let Barfusspfad =
-        Namespaced_IRI.parse _namespace_name "Barfusspfad" |> NamespacedName
+    let Barfusspfad = _prefix "Barfusspfad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barfusspfad/key/amenity/value/Barfusspfad"></see>
     /// </summary>
     let ``Barfusspfad/key/amenity/value/Barfusspfad`` =
-        Namespaced_IRI.parse _namespace_name "Barfusspfad/key/amenity/value/Barfusspfad" |> NamespacedName
+        _prefix "Barfusspfad/key/amenity/value/Barfusspfad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barracks"></see>
     /// </summary>
-    let Barracks = Namespaced_IRI.parse _namespace_name "Barracks" |> NamespacedName
+    let Barracks = _prefix "Barracks"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Barracks/key/military/value/barracks"></see>
     /// </summary>
     let ``Barracks/key/military/value/barracks`` =
-        Namespaced_IRI.parse _namespace_name "Barracks/key/military/value/barracks" |> NamespacedName
+        _prefix "Barracks/key/military/value/barracks"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryThing"></see>
     /// </summary>
-    let MilitaryThing =
-        Namespaced_IRI.parse _namespace_name "MilitaryThing" |> NamespacedName
-
+    let MilitaryThing = _prefix "MilitaryThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BarrierThing"></see>
     /// </summary>
-    let BarrierThing =
-        Namespaced_IRI.parse _namespace_name "BarrierThing" |> NamespacedName
-
+    let BarrierThing = _prefix "BarrierThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Basin"></see>
     /// </summary>
-    let Basin = Namespaced_IRI.parse _namespace_name "Basin" |> NamespacedName
-
+    let Basin = _prefix "Basin"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Basin/key/landuse/value/basin"></see>
     /// </summary>
-    let ``Basin/key/landuse/value/basin`` =
-        Namespaced_IRI.parse _namespace_name "Basin/key/landuse/value/basin" |> NamespacedName
-
+    let ``Basin/key/landuse/value/basin`` = _prefix "Basin/key/landuse/value/basin"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BasketMaker"></see>
     /// </summary>
-    let BasketMaker =
-        Namespaced_IRI.parse _namespace_name "BasketMaker" |> NamespacedName
+    let BasketMaker = _prefix "BasketMaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BasketMaker/key/craft/value/basket_maker"></see>
     /// </summary>
     let ``BasketMaker/key/craft/value/basket_maker`` =
-        Namespaced_IRI.parse _namespace_name "BasketMaker/key/craft/value/basket_maker" |> NamespacedName
+        _prefix "BasketMaker/key/craft/value/basket_maker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bathroom"></see>
     /// </summary>
-    let Bathroom = Namespaced_IRI.parse _namespace_name "Bathroom" |> NamespacedName
+    let Bathroom = _prefix "Bathroom"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bathroom/key/shop/value/bathroom"></see>
     /// </summary>
     let ``Bathroom/key/shop/value/bathroom`` =
-        Namespaced_IRI.parse _namespace_name "Bathroom/key/shop/value/bathroom" |> NamespacedName
+        _prefix "Bathroom/key/shop/value/bathroom"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BathroomFurnishingShop"></see>
     /// </summary>
-    let BathroomFurnishingShop =
-        Namespaced_IRI.parse _namespace_name "BathroomFurnishingShop" |> NamespacedName
+    let BathroomFurnishingShop = _prefix "BathroomFurnishingShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BathroomFurnishingShop/key/shop/value/bathroom_furnishing"></see>
     /// </summary>
     let ``BathroomFurnishingShop/key/shop/value/bathroom_furnishing`` =
-        Namespaced_IRI.parse _namespace_name "BathroomFurnishingShop/key/shop/value/bathroom_furnishing" |> NamespacedName
+        _prefix "BathroomFurnishingShop/key/shop/value/bathroom_furnishing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Battlefield"></see>
     /// </summary>
-    let Battlefield =
-        Namespaced_IRI.parse _namespace_name "Battlefield" |> NamespacedName
+    let Battlefield = _prefix "Battlefield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Battlefield/key/historic/value/battlefield%20"></see>
     /// </summary>
     let ``Battlefield/key/historic/value/battlefield%20`` =
-        Namespaced_IRI.parse _namespace_name "Battlefield/key/historic/value/battlefield%20" |> NamespacedName
+        _prefix "Battlefield/key/historic/value/battlefield%20"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bay"></see>
     /// </summary>
-    let Bay = Namespaced_IRI.parse _namespace_name "Bay" |> NamespacedName
-
+    let Bay = _prefix "Bay"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bay/key/natural/value/bay"></see>
     /// </summary>
-    let ``Bay/key/natural/value/bay`` =
-        Namespaced_IRI.parse _namespace_name "Bay/key/natural/value/bay" |> NamespacedName
-
+    let ``Bay/key/natural/value/bay`` = _prefix "Bay/key/natural/value/bay"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalThing"></see>
     /// </summary>
-    let NaturalThing =
-        Namespaced_IRI.parse _namespace_name "NaturalThing" |> NamespacedName
-
+    let NaturalThing = _prefix "NaturalThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bbq"></see>
     /// </summary>
-    let Bbq = Namespaced_IRI.parse _namespace_name "Bbq" |> NamespacedName
-
+    let Bbq = _prefix "Bbq"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bbq/key/amenity/value/bbq"></see>
     /// </summary>
-    let ``Bbq/key/amenity/value/bbq`` =
-        Namespaced_IRI.parse _namespace_name "Bbq/key/amenity/value/bbq" |> NamespacedName
-
+    let ``Bbq/key/amenity/value/bbq`` = _prefix "Bbq/key/amenity/value/bbq"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beach"></see>
     /// </summary>
-    let Beach = Namespaced_IRI.parse _namespace_name "Beach" |> NamespacedName
-
+    let Beach = _prefix "Beach"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beach/key/leisure/value/beach"></see>
     /// </summary>
-    let ``Beach/key/leisure/value/beach`` =
-        Namespaced_IRI.parse _namespace_name "Beach/key/leisure/value/beach" |> NamespacedName
-
+    let ``Beach/key/leisure/value/beach`` = _prefix "Beach/key/leisure/value/beach"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beach/key/natural/value/beach"></see>
     /// </summary>
-    let ``Beach/key/natural/value/beach`` =
-        Namespaced_IRI.parse _namespace_name "Beach/key/natural/value/beach" |> NamespacedName
-
+    let ``Beach/key/natural/value/beach`` = _prefix "Beach/key/natural/value/beach"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeachResort"></see>
     /// </summary>
-    let BeachResort =
-        Namespaced_IRI.parse _namespace_name "BeachResort" |> NamespacedName
+    let BeachResort = _prefix "BeachResort"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeachResort/key/leisure/value/beach_resort"></see>
     /// </summary>
     let ``BeachResort/key/leisure/value/beach_resort`` =
-        Namespaced_IRI.parse _namespace_name "BeachResort/key/leisure/value/beach_resort" |> NamespacedName
+        _prefix "BeachResort/key/leisure/value/beach_resort"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beacon"></see>
     /// </summary>
-    let Beacon = Namespaced_IRI.parse _namespace_name "Beacon" |> NamespacedName
+    let Beacon = _prefix "Beacon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beacon/key/man_made/value/beacon"></see>
     /// </summary>
     let ``Beacon/key/man_made/value/beacon`` =
-        Namespaced_IRI.parse _namespace_name "Beacon/key/man_made/value/beacon" |> NamespacedName
+        _prefix "Beacon/key/man_made/value/beacon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beautician"></see>
     /// </summary>
-    let Beautician = Namespaced_IRI.parse _namespace_name "Beautician" |> NamespacedName
+    let Beautician = _prefix "Beautician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beautician/key/shop/value/beautician"></see>
     /// </summary>
     let ``Beautician/key/shop/value/beautician`` =
-        Namespaced_IRI.parse _namespace_name "Beautician/key/shop/value/beautician" |> NamespacedName
+        _prefix "Beautician/key/shop/value/beautician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeautySalon"></see>
     /// </summary>
-    let BeautySalon =
-        Namespaced_IRI.parse _namespace_name "BeautySalon" |> NamespacedName
+    let BeautySalon = _prefix "BeautySalon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeautySalon/key/shop/value/beauty_salon"></see>
     /// </summary>
     let ``BeautySalon/key/shop/value/beauty_salon`` =
-        Namespaced_IRI.parse _namespace_name "BeautySalon/key/shop/value/beauty_salon" |> NamespacedName
+        _prefix "BeautySalon/key/shop/value/beauty_salon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeautyShop"></see>
     /// </summary>
-    let BeautyShop = Namespaced_IRI.parse _namespace_name "BeautyShop" |> NamespacedName
+    let BeautyShop = _prefix "BeautyShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeautyShop/key/shop/value/beauty"></see>
     /// </summary>
     let ``BeautyShop/key/shop/value/beauty`` =
-        Namespaced_IRI.parse _namespace_name "BeautyShop/key/shop/value/beauty" |> NamespacedName
+        _prefix "BeautyShop/key/shop/value/beauty"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BedAndBreakfast"></see>
     /// </summary>
-    let BedAndBreakfast =
-        Namespaced_IRI.parse _namespace_name "BedAndBreakfast" |> NamespacedName
+    let BedAndBreakfast = _prefix "BedAndBreakfast"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BedAndBreakfast/key/tourism/value/bed_and_breakfast"></see>
     /// </summary>
     let ``BedAndBreakfast/key/tourism/value/bed_and_breakfast`` =
-        Namespaced_IRI.parse _namespace_name "BedAndBreakfast/key/tourism/value/bed_and_breakfast" |> NamespacedName
+        _prefix "BedAndBreakfast/key/tourism/value/bed_and_breakfast"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BedShop"></see>
     /// </summary>
-    let BedShop = Namespaced_IRI.parse _namespace_name "BedShop" |> NamespacedName
-
+    let BedShop = _prefix "BedShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BedShop/key/shop/value/bed"></see>
     /// </summary>
-    let ``BedShop/key/shop/value/bed`` =
-        Namespaced_IRI.parse _namespace_name "BedShop/key/shop/value/bed" |> NamespacedName
-
+    let ``BedShop/key/shop/value/bed`` = _prefix "BedShop/key/shop/value/bed"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bedrock"></see>
     /// </summary>
-    let Bedrock = Namespaced_IRI.parse _namespace_name "Bedrock" |> NamespacedName
+    let Bedrock = _prefix "Bedrock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bedrock/key/natural/value/bedrock"></see>
     /// </summary>
     let ``Bedrock/key/natural/value/bedrock`` =
-        Namespaced_IRI.parse _namespace_name "Bedrock/key/natural/value/bedrock" |> NamespacedName
+        _prefix "Bedrock/key/natural/value/bedrock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beekeeper"></see>
     /// </summary>
-    let Beekeeper = Namespaced_IRI.parse _namespace_name "Beekeeper" |> NamespacedName
+    let Beekeeper = _prefix "Beekeeper"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Beekeeper/key/craft/value/beekeeper"></see>
     /// </summary>
     let ``Beekeeper/key/craft/value/beekeeper`` =
-        Namespaced_IRI.parse _namespace_name "Beekeeper/key/craft/value/beekeeper" |> NamespacedName
+        _prefix "Beekeeper/key/craft/value/beekeeper"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bench"></see>
     /// </summary>
-    let Bench = Namespaced_IRI.parse _namespace_name "Bench" |> NamespacedName
-
+    let Bench = _prefix "Bench"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bench/key/amenity/value/bench"></see>
     /// </summary>
-    let ``Bench/key/amenity/value/bench`` =
-        Namespaced_IRI.parse _namespace_name "Bench/key/amenity/value/bench" |> NamespacedName
-
+    let ``Bench/key/amenity/value/bench`` = _prefix "Bench/key/amenity/value/bench"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Betting"></see>
     /// </summary>
-    let Betting = Namespaced_IRI.parse _namespace_name "Betting" |> NamespacedName
-
+    let Betting = _prefix "Betting"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Betting/key/shop/value/betting"></see>
     /// </summary>
-    let ``Betting/key/shop/value/betting`` =
-        Namespaced_IRI.parse _namespace_name "Betting/key/shop/value/betting" |> NamespacedName
-
+    let ``Betting/key/shop/value/betting`` = _prefix "Betting/key/shop/value/betting"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeverageMarket"></see>
     /// </summary>
-    let BeverageMarket =
-        Namespaced_IRI.parse _namespace_name "BeverageMarket" |> NamespacedName
+    let BeverageMarket = _prefix "BeverageMarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BeverageMarket/key/shop/value/beverages"></see>
     /// </summary>
     let ``BeverageMarket/key/shop/value/beverages`` =
-        Namespaced_IRI.parse _namespace_name "BeverageMarket/key/shop/value/beverages" |> NamespacedName
+        _prefix "BeverageMarket/key/shop/value/beverages"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleLockers"></see>
     /// </summary>
-    let BicycleLockers =
-        Namespaced_IRI.parse _namespace_name "BicycleLockers" |> NamespacedName
+    let BicycleLockers = _prefix "BicycleLockers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleLockers/key/amenity/value/bicycle_lockers"></see>
     /// </summary>
     let ``BicycleLockers/key/amenity/value/bicycle_lockers`` =
-        Namespaced_IRI.parse _namespace_name "BicycleLockers/key/amenity/value/bicycle_lockers" |> NamespacedName
+        _prefix "BicycleLockers/key/amenity/value/bicycle_lockers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleParking"></see>
     /// </summary>
-    let BicycleParking =
-        Namespaced_IRI.parse _namespace_name "BicycleParking" |> NamespacedName
+    let BicycleParking = _prefix "BicycleParking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleParking/key/amenity/value/bicycle_parking"></see>
     /// </summary>
     let ``BicycleParking/key/amenity/value/bicycle_parking`` =
-        Namespaced_IRI.parse _namespace_name "BicycleParking/key/amenity/value/bicycle_parking" |> NamespacedName
+        _prefix "BicycleParking/key/amenity/value/bicycle_parking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleRental"></see>
     /// </summary>
-    let BicycleRental =
-        Namespaced_IRI.parse _namespace_name "BicycleRental" |> NamespacedName
+    let BicycleRental = _prefix "BicycleRental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleRental/key/amenity/value/bicycle_rental"></see>
     /// </summary>
     let ``BicycleRental/key/amenity/value/bicycle_rental`` =
-        Namespaced_IRI.parse _namespace_name "BicycleRental/key/amenity/value/bicycle_rental" |> NamespacedName
+        _prefix "BicycleRental/key/amenity/value/bicycle_rental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleRoute"></see>
     /// </summary>
-    let BicycleRoute =
-        Namespaced_IRI.parse _namespace_name "BicycleRoute" |> NamespacedName
+    let BicycleRoute = _prefix "BicycleRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleRoute/key/route/value/bicycle"></see>
     /// </summary>
     let ``BicycleRoute/key/route/value/bicycle`` =
-        Namespaced_IRI.parse _namespace_name "BicycleRoute/key/route/value/bicycle" |> NamespacedName
+        _prefix "BicycleRoute/key/route/value/bicycle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RouteThing"></see>
     /// </summary>
-    let RouteThing = Namespaced_IRI.parse _namespace_name "RouteThing" |> NamespacedName
-
+    let RouteThing = _prefix "RouteThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleShop"></see>
     /// </summary>
-    let BicycleShop =
-        Namespaced_IRI.parse _namespace_name "BicycleShop" |> NamespacedName
+    let BicycleShop = _prefix "BicycleShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BicycleShop/key/shop/value/bicycle"></see>
     /// </summary>
     let ``BicycleShop/key/shop/value/bicycle`` =
-        Namespaced_IRI.parse _namespace_name "BicycleShop/key/shop/value/bicycle" |> NamespacedName
+        _prefix "BicycleShop/key/shop/value/bicycle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Biergarten"></see>
     /// </summary>
-    let Biergarten = Namespaced_IRI.parse _namespace_name "Biergarten" |> NamespacedName
+    let Biergarten = _prefix "Biergarten"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Biergarten/key/amenity/value/biergarten"></see>
     /// </summary>
     let ``Biergarten/key/amenity/value/biergarten`` =
-        Namespaced_IRI.parse _namespace_name "Biergarten/key/amenity/value/biergarten" |> NamespacedName
+        _prefix "Biergarten/key/amenity/value/biergarten"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Billboard"></see>
     /// </summary>
-    let Billboard = Namespaced_IRI.parse _namespace_name "Billboard" |> NamespacedName
+    let Billboard = _prefix "Billboard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Billboard/key/amenity/value/billboard"></see>
     /// </summary>
     let ``Billboard/key/amenity/value/billboard`` =
-        Namespaced_IRI.parse _namespace_name "Billboard/key/amenity/value/billboard" |> NamespacedName
+        _prefix "Billboard/key/amenity/value/billboard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bingo"></see>
     /// </summary>
-    let Bingo = Namespaced_IRI.parse _namespace_name "Bingo" |> NamespacedName
-
+    let Bingo = _prefix "Bingo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bingo/key/leisure/value/bingo"></see>
     /// </summary>
-    let ``Bingo/key/leisure/value/bingo`` =
-        Namespaced_IRI.parse _namespace_name "Bingo/key/leisure/value/bingo" |> NamespacedName
-
+    let ``Bingo/key/leisure/value/bingo`` = _prefix "Bingo/key/leisure/value/bingo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BirdHide"></see>
     /// </summary>
-    let BirdHide = Namespaced_IRI.parse _namespace_name "BirdHide" |> NamespacedName
+    let BirdHide = _prefix "BirdHide"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BirdHide/key/leisure/value/bird_hide"></see>
     /// </summary>
     let ``BirdHide/key/leisure/value/bird_hide`` =
-        Namespaced_IRI.parse _namespace_name "BirdHide/key/leisure/value/bird_hide" |> NamespacedName
+        _prefix "BirdHide/key/leisure/value/bird_hide"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Biwak"></see>
     /// </summary>
-    let Biwak = Namespaced_IRI.parse _namespace_name "Biwak" |> NamespacedName
-
+    let Biwak = _prefix "Biwak"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Biwak/key/waterway/value/biwak"></see>
     /// </summary>
-    let ``Biwak/key/waterway/value/biwak`` =
-        Namespaced_IRI.parse _namespace_name "Biwak/key/waterway/value/biwak" |> NamespacedName
-
+    let ``Biwak/key/waterway/value/biwak`` = _prefix "Biwak/key/waterway/value/biwak"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Blacksmith"></see>
     /// </summary>
-    let Blacksmith = Namespaced_IRI.parse _namespace_name "Blacksmith" |> NamespacedName
+    let Blacksmith = _prefix "Blacksmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Blacksmith/key/craft/value/blacksmith"></see>
     /// </summary>
     let ``Blacksmith/key/craft/value/blacksmith`` =
-        Namespaced_IRI.parse _namespace_name "Blacksmith/key/craft/value/blacksmith" |> NamespacedName
+        _prefix "Blacksmith/key/craft/value/blacksmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Block"></see>
     /// </summary>
-    let Block = Namespaced_IRI.parse _namespace_name "Block" |> NamespacedName
-
+    let Block = _prefix "Block"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Block/key/barrier/value/block"></see>
     /// </summary>
-    let ``Block/key/barrier/value/block`` =
-        Namespaced_IRI.parse _namespace_name "Block/key/barrier/value/block" |> NamespacedName
-
+    let ``Block/key/barrier/value/block`` = _prefix "Block/key/barrier/value/block"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoatRental"></see>
     /// </summary>
-    let BoatRental = Namespaced_IRI.parse _namespace_name "BoatRental" |> NamespacedName
+    let BoatRental = _prefix "BoatRental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoatRental/key/amenity/value/boat_rental"></see>
     /// </summary>
     let ``BoatRental/key/amenity/value/boat_rental`` =
-        Namespaced_IRI.parse _namespace_name "BoatRental/key/amenity/value/boat_rental" |> NamespacedName
+        _prefix "BoatRental/key/amenity/value/boat_rental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boatbuilder"></see>
     /// </summary>
-    let Boatbuilder =
-        Namespaced_IRI.parse _namespace_name "Boatbuilder" |> NamespacedName
+    let Boatbuilder = _prefix "Boatbuilder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boatbuilder/key/craft/value/boatbuilder"></see>
     /// </summary>
     let ``Boatbuilder/key/craft/value/boatbuilder`` =
-        Namespaced_IRI.parse _namespace_name "Boatbuilder/key/craft/value/boatbuilder" |> NamespacedName
+        _prefix "Boatbuilder/key/craft/value/boatbuilder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boatyard"></see>
     /// </summary>
-    let Boatyard = Namespaced_IRI.parse _namespace_name "Boatyard" |> NamespacedName
+    let Boatyard = _prefix "Boatyard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boatyard/key/waterway/value/boatyard"></see>
     /// </summary>
     let ``Boatyard/key/waterway/value/boatyard`` =
-        Namespaced_IRI.parse _namespace_name "Boatyard/key/waterway/value/boatyard" |> NamespacedName
+        _prefix "Boatyard/key/waterway/value/boatyard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bollard"></see>
     /// </summary>
-    let Bollard = Namespaced_IRI.parse _namespace_name "Bollard" |> NamespacedName
+    let Bollard = _prefix "Bollard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bollard/key/barrier/value/bollard"></see>
     /// </summary>
     let ``Bollard/key/barrier/value/bollard`` =
-        Namespaced_IRI.parse _namespace_name "Bollard/key/barrier/value/bollard" |> NamespacedName
+        _prefix "Bollard/key/barrier/value/bollard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BookShop"></see>
     /// </summary>
-    let BookShop = Namespaced_IRI.parse _namespace_name "BookShop" |> NamespacedName
-
+    let BookShop = _prefix "BookShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BookShop/key/shop/value/books"></see>
     /// </summary>
-    let ``BookShop/key/shop/value/books`` =
-        Namespaced_IRI.parse _namespace_name "BookShop/key/shop/value/books" |> NamespacedName
-
+    let ``BookShop/key/shop/value/books`` = _prefix "BookShop/key/shop/value/books"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bookbinder"></see>
     /// </summary>
-    let Bookbinder = Namespaced_IRI.parse _namespace_name "Bookbinder" |> NamespacedName
+    let Bookbinder = _prefix "Bookbinder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bookbinder/key/craft/value/bookbinder"></see>
     /// </summary>
     let ``Bookbinder/key/craft/value/bookbinder`` =
-        Namespaced_IRI.parse _namespace_name "Bookbinder/key/craft/value/bookbinder" |> NamespacedName
+        _prefix "Bookbinder/key/craft/value/bookbinder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BookmakerShop"></see>
     /// </summary>
-    let BookmakerShop =
-        Namespaced_IRI.parse _namespace_name "BookmakerShop" |> NamespacedName
+    let BookmakerShop = _prefix "BookmakerShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BookmakerShop/key/shop/value/bookmaker"></see>
     /// </summary>
     let ``BookmakerShop/key/shop/value/bookmaker`` =
-        Namespaced_IRI.parse _namespace_name "BookmakerShop/key/shop/value/bookmaker" |> NamespacedName
+        _prefix "BookmakerShop/key/shop/value/bookmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BookmakersShop"></see>
     /// </summary>
-    let BookmakersShop =
-        Namespaced_IRI.parse _namespace_name "BookmakersShop" |> NamespacedName
+    let BookmakersShop = _prefix "BookmakersShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BookmakersShop/key/shop/value/bookmakers"></see>
     /// </summary>
     let ``BookmakersShop/key/shop/value/bookmakers`` =
-        Namespaced_IRI.parse _namespace_name "BookmakersShop/key/shop/value/bookmakers" |> NamespacedName
+        _prefix "BookmakersShop/key/shop/value/bookmakers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BooksShop"></see>
     /// </summary>
-    let BooksShop = Namespaced_IRI.parse _namespace_name "BooksShop" |> NamespacedName
-
+    let BooksShop = _prefix "BooksShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BooksShop/key/shop/value/books"></see>
     /// </summary>
-    let ``BooksShop/key/shop/value/books`` =
-        Namespaced_IRI.parse _namespace_name "BooksShop/key/shop/value/books" |> NamespacedName
-
+    let ``BooksShop/key/shop/value/books`` = _prefix "BooksShop/key/shop/value/books"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BorderControl"></see>
     /// </summary>
-    let BorderControl =
-        Namespaced_IRI.parse _namespace_name "BorderControl" |> NamespacedName
+    let BorderControl = _prefix "BorderControl"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BorderControl/key/amenity/value/border_control"></see>
     /// </summary>
     let ``BorderControl/key/amenity/value/border_control`` =
-        Namespaced_IRI.parse _namespace_name "BorderControl/key/amenity/value/border_control" |> NamespacedName
+        _prefix "BorderControl/key/amenity/value/border_control"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BorderControl/key/barrier/value/border_control"></see>
     /// </summary>
     let ``BorderControl/key/barrier/value/border_control`` =
-        Namespaced_IRI.parse _namespace_name "BorderControl/key/barrier/value/border_control" |> NamespacedName
+        _prefix "BorderControl/key/barrier/value/border_control"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Borderstone"></see>
     /// </summary>
-    let Borderstone =
-        Namespaced_IRI.parse _namespace_name "Borderstone" |> NamespacedName
+    let Borderstone = _prefix "Borderstone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Borderstone/key/man_made/value/borderstone"></see>
     /// </summary>
     let ``Borderstone/key/man_made/value/borderstone`` =
-        Namespaced_IRI.parse _namespace_name "Borderstone/key/man_made/value/borderstone" |> NamespacedName
+        _prefix "Borderstone/key/man_made/value/borderstone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryForest"></see>
     /// </summary>
-    let BoundaryForest =
-        Namespaced_IRI.parse _namespace_name "BoundaryForest" |> NamespacedName
+    let BoundaryForest = _prefix "BoundaryForest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryForest/key/boundary/value/forest"></see>
     /// </summary>
     let ``BoundaryForest/key/boundary/value/forest`` =
-        Namespaced_IRI.parse _namespace_name "BoundaryForest/key/boundary/value/forest" |> NamespacedName
+        _prefix "BoundaryForest/key/boundary/value/forest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryMarker"></see>
     /// </summary>
-    let BoundaryMarker =
-        Namespaced_IRI.parse _namespace_name "BoundaryMarker" |> NamespacedName
+    let BoundaryMarker = _prefix "BoundaryMarker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryMarker/key/historic/value/boundary_marker"></see>
     /// </summary>
     let ``BoundaryMarker/key/historic/value/boundary_marker`` =
-        Namespaced_IRI.parse _namespace_name "BoundaryMarker/key/historic/value/boundary_marker" |> NamespacedName
+        _prefix "BoundaryMarker/key/historic/value/boundary_marker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryMarker/key/boundary/value/marker"></see>
     /// </summary>
     let ``BoundaryMarker/key/boundary/value/marker`` =
-        Namespaced_IRI.parse _namespace_name "BoundaryMarker/key/boundary/value/marker" |> NamespacedName
+        _prefix "BoundaryMarker/key/boundary/value/marker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryStone"></see>
     /// </summary>
-    let BoundaryStone =
-        Namespaced_IRI.parse _namespace_name "BoundaryStone" |> NamespacedName
+    let BoundaryStone = _prefix "BoundaryStone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BoundaryStone/key/historic/value/boundary_stone%20"></see>
     /// </summary>
     let ``BoundaryStone/key/historic/value/boundary_stone%20`` =
-        Namespaced_IRI.parse _namespace_name "BoundaryStone/key/historic/value/boundary_stone%20" |> NamespacedName
+        _prefix "BoundaryStone/key/historic/value/boundary_stone%20"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boutique"></see>
     /// </summary>
-    let Boutique = Namespaced_IRI.parse _namespace_name "Boutique" |> NamespacedName
+    let Boutique = _prefix "Boutique"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Boutique/key/shop/value/boutique"></see>
     /// </summary>
     let ``Boutique/key/shop/value/boutique`` =
-        Namespaced_IRI.parse _namespace_name "Boutique/key/shop/value/boutique" |> NamespacedName
+        _prefix "Boutique/key/shop/value/boutique"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brewery"></see>
     /// </summary>
-    let Brewery = Namespaced_IRI.parse _namespace_name "Brewery" |> NamespacedName
+    let Brewery = _prefix "Brewery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brewery/key/amenity/value/brewery"></see>
     /// </summary>
     let ``Brewery/key/amenity/value/brewery`` =
-        Namespaced_IRI.parse _namespace_name "Brewery/key/amenity/value/brewery" |> NamespacedName
+        _prefix "Brewery/key/amenity/value/brewery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brewery/key/craft/value/brewery"></see>
     /// </summary>
-    let ``Brewery/key/craft/value/brewery`` =
-        Namespaced_IRI.parse _namespace_name "Brewery/key/craft/value/brewery" |> NamespacedName
-
+    let ``Brewery/key/craft/value/brewery`` = _prefix "Brewery/key/craft/value/brewery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridge"></see>
     /// </summary>
-    let Bridge = Namespaced_IRI.parse _namespace_name "Bridge" |> NamespacedName
-
+    let Bridge = _prefix "Bridge"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridge/key/railway/value/bridge"></see>
     /// </summary>
-    let ``Bridge/key/railway/value/bridge`` =
-        Namespaced_IRI.parse _namespace_name "Bridge/key/railway/value/bridge" |> NamespacedName
-
+    let ``Bridge/key/railway/value/bridge`` = _prefix "Bridge/key/railway/value/bridge"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridge+pier"></see>
     /// </summary>
-    let ``Bridge+pier`` =
-        Namespaced_IRI.parse _namespace_name "Bridge+pier" |> NamespacedName
+    let ``Bridge+pier`` = _prefix "Bridge+pier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridge+pier/key/man_made/value/bridge%20pier"></see>
     /// </summary>
     let ``Bridge+pier/key/man_made/value/bridge%20pier`` =
-        Namespaced_IRI.parse _namespace_name "Bridge+pier/key/man_made/value/bridge%20pier" |> NamespacedName
+        _prefix "Bridge+pier/key/man_made/value/bridge%20pier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridge+site"></see>
     /// </summary>
-    let ``Bridge+site`` =
-        Namespaced_IRI.parse _namespace_name "Bridge+site" |> NamespacedName
+    let ``Bridge+site`` = _prefix "Bridge+site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridge+site/key/historic/value/bridge%20site"></see>
     /// </summary>
     let ``Bridge+site/key/historic/value/bridge%20site`` =
-        Namespaced_IRI.parse _namespace_name "Bridge+site/key/historic/value/bridge%20site" |> NamespacedName
+        _prefix "Bridge+site/key/historic/value/bridge%20site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridleway"></see>
     /// </summary>
-    let Bridleway = Namespaced_IRI.parse _namespace_name "Bridleway" |> NamespacedName
+    let Bridleway = _prefix "Bridleway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bridleway/key/highway/value/bridleway"></see>
     /// </summary>
     let ``Bridleway/key/highway/value/bridleway`` =
-        Namespaced_IRI.parse _namespace_name "Bridleway/key/highway/value/bridleway" |> NamespacedName
+        _prefix "Bridleway/key/highway/value/bridleway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayThing"></see>
     /// </summary>
-    let HighwayThing =
-        Namespaced_IRI.parse _namespace_name "HighwayThing" |> NamespacedName
-
+    let HighwayThing = _prefix "HighwayThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Briefkasten"></see>
     /// </summary>
-    let Briefkasten =
-        Namespaced_IRI.parse _namespace_name "Briefkasten" |> NamespacedName
+    let Briefkasten = _prefix "Briefkasten"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Briefkasten/key/amenity/value/Briefkasten"></see>
     /// </summary>
     let ``Briefkasten/key/amenity/value/Briefkasten`` =
-        Namespaced_IRI.parse _namespace_name "Briefkasten/key/amenity/value/Briefkasten" |> NamespacedName
+        _prefix "Briefkasten/key/amenity/value/Briefkasten"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brothel"></see>
     /// </summary>
-    let Brothel = Namespaced_IRI.parse _namespace_name "Brothel" |> NamespacedName
+    let Brothel = _prefix "Brothel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brothel/key/amenity/value/brothel"></see>
     /// </summary>
     let ``Brothel/key/amenity/value/brothel`` =
-        Namespaced_IRI.parse _namespace_name "Brothel/key/amenity/value/brothel" |> NamespacedName
+        _prefix "Brothel/key/amenity/value/brothel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brownfield"></see>
     /// </summary>
-    let Brownfield = Namespaced_IRI.parse _namespace_name "Brownfield" |> NamespacedName
+    let Brownfield = _prefix "Brownfield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Brownfield/key/landuse/value/brownfield"></see>
     /// </summary>
     let ``Brownfield/key/landuse/value/brownfield`` =
-        Namespaced_IRI.parse _namespace_name "Brownfield/key/landuse/value/brownfield" |> NamespacedName
+        _prefix "Brownfield/key/landuse/value/brownfield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bts"></see>
     /// </summary>
-    let Bts = Namespaced_IRI.parse _namespace_name "Bts" |> NamespacedName
-
+    let Bts = _prefix "Bts"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bts/key/amenity/value/bts"></see>
     /// </summary>
-    let ``Bts/key/amenity/value/bts`` =
-        Namespaced_IRI.parse _namespace_name "Bts/key/amenity/value/bts" |> NamespacedName
-
+    let ``Bts/key/amenity/value/bts`` = _prefix "Bts/key/amenity/value/bts"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BufferStop"></see>
     /// </summary>
-    let BufferStop = Namespaced_IRI.parse _namespace_name "BufferStop" |> NamespacedName
+    let BufferStop = _prefix "BufferStop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BufferStop/key/railway/value/buffer_stop"></see>
     /// </summary>
     let ``BufferStop/key/railway/value/buffer_stop`` =
-        Namespaced_IRI.parse _namespace_name "BufferStop/key/railway/value/buffer_stop" |> NamespacedName
+        _prefix "BufferStop/key/railway/value/buffer_stop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Building/key/building/value/yes"></see>
     /// </summary>
-    let ``Building/key/building/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "Building/key/building/value/yes" |> NamespacedName
-
+    let ``Building/key/building/value/yes`` = _prefix "Building/key/building/value/yes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Building/key/building/value/1"></see>
     /// </summary>
-    let ``Building/key/building/value/1`` =
-        Namespaced_IRI.parse _namespace_name "Building/key/building/value/1" |> NamespacedName
+    let ``Building/key/building/value/1`` = _prefix "Building/key/building/value/1"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Building/key/amenity/value/building"></see>
     /// </summary>
     let ``Building/key/amenity/value/building`` =
-        Namespaced_IRI.parse _namespace_name "Building/key/amenity/value/building" |> NamespacedName
+        _prefix "Building/key/amenity/value/building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingBarn"></see>
     /// </summary>
-    let BuildingBarn =
-        Namespaced_IRI.parse _namespace_name "BuildingBarn" |> NamespacedName
+    let BuildingBarn = _prefix "BuildingBarn"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingBarn/key/building/value/barn"></see>
     /// </summary>
     let ``BuildingBarn/key/building/value/barn`` =
-        Namespaced_IRI.parse _namespace_name "BuildingBarn/key/building/value/barn" |> NamespacedName
+        _prefix "BuildingBarn/key/building/value/barn"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingBuilding"></see>
     /// </summary>
-    let BuildingBuilding =
-        Namespaced_IRI.parse _namespace_name "BuildingBuilding" |> NamespacedName
+    let BuildingBuilding = _prefix "BuildingBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingBuilding/key/building/value/building"></see>
     /// </summary>
     let ``BuildingBuilding/key/building/value/building`` =
-        Namespaced_IRI.parse _namespace_name "BuildingBuilding/key/building/value/building" |> NamespacedName
+        _prefix "BuildingBuilding/key/building/value/building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingBunker"></see>
     /// </summary>
-    let BuildingBunker =
-        Namespaced_IRI.parse _namespace_name "BuildingBunker" |> NamespacedName
+    let BuildingBunker = _prefix "BuildingBunker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingBunker/key/building/value/bunker"></see>
     /// </summary>
     let ``BuildingBunker/key/building/value/bunker`` =
-        Namespaced_IRI.parse _namespace_name "BuildingBunker/key/building/value/bunker" |> NamespacedName
+        _prefix "BuildingBunker/key/building/value/bunker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingCabin"></see>
     /// </summary>
-    let BuildingCabin =
-        Namespaced_IRI.parse _namespace_name "BuildingCabin" |> NamespacedName
+    let BuildingCabin = _prefix "BuildingCabin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingCabin/key/building/value/cabin"></see>
     /// </summary>
     let ``BuildingCabin/key/building/value/cabin`` =
-        Namespaced_IRI.parse _namespace_name "BuildingCabin/key/building/value/cabin" |> NamespacedName
+        _prefix "BuildingCabin/key/building/value/cabin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingChapel"></see>
     /// </summary>
-    let BuildingChapel =
-        Namespaced_IRI.parse _namespace_name "BuildingChapel" |> NamespacedName
+    let BuildingChapel = _prefix "BuildingChapel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingChapel/key/building/value/chapel"></see>
     /// </summary>
     let ``BuildingChapel/key/building/value/chapel`` =
-        Namespaced_IRI.parse _namespace_name "BuildingChapel/key/building/value/chapel" |> NamespacedName
+        _prefix "BuildingChapel/key/building/value/chapel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingChurch"></see>
     /// </summary>
-    let BuildingChurch =
-        Namespaced_IRI.parse _namespace_name "BuildingChurch" |> NamespacedName
+    let BuildingChurch = _prefix "BuildingChurch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingChurch/key/building/value/church"></see>
     /// </summary>
     let ``BuildingChurch/key/building/value/church`` =
-        Namespaced_IRI.parse _namespace_name "BuildingChurch/key/building/value/church" |> NamespacedName
+        _prefix "BuildingChurch/key/building/value/church"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingCommercial"></see>
     /// </summary>
-    let BuildingCommercial =
-        Namespaced_IRI.parse _namespace_name "BuildingCommercial" |> NamespacedName
+    let BuildingCommercial = _prefix "BuildingCommercial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingCommercial/key/building/value/commercial"></see>
     /// </summary>
     let ``BuildingCommercial/key/building/value/commercial`` =
-        Namespaced_IRI.parse _namespace_name "BuildingCommercial/key/building/value/commercial" |> NamespacedName
+        _prefix "BuildingCommercial/key/building/value/commercial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingDormitory"></see>
     /// </summary>
-    let BuildingDormitory =
-        Namespaced_IRI.parse _namespace_name "BuildingDormitory" |> NamespacedName
+    let BuildingDormitory = _prefix "BuildingDormitory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingDormitory/key/building/value/dormitory"></see>
     /// </summary>
     let ``BuildingDormitory/key/building/value/dormitory`` =
-        Namespaced_IRI.parse _namespace_name "BuildingDormitory/key/building/value/dormitory" |> NamespacedName
+        _prefix "BuildingDormitory/key/building/value/dormitory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingEntrance"></see>
     /// </summary>
-    let BuildingEntrance =
-        Namespaced_IRI.parse _namespace_name "BuildingEntrance" |> NamespacedName
+    let BuildingEntrance = _prefix "BuildingEntrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingEntrance/key/building/value/entrance"></see>
     /// </summary>
     let ``BuildingEntrance/key/building/value/entrance`` =
-        Namespaced_IRI.parse _namespace_name "BuildingEntrance/key/building/value/entrance" |> NamespacedName
+        _prefix "BuildingEntrance/key/building/value/entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingEntrance/key/amenity/value/building_entrance"></see>
     /// </summary>
     let ``BuildingEntrance/key/amenity/value/building_entrance`` =
-        Namespaced_IRI.parse _namespace_name "BuildingEntrance/key/amenity/value/building_entrance" |> NamespacedName
+        _prefix "BuildingEntrance/key/amenity/value/building_entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingFarm"></see>
     /// </summary>
-    let BuildingFarm =
-        Namespaced_IRI.parse _namespace_name "BuildingFarm" |> NamespacedName
+    let BuildingFarm = _prefix "BuildingFarm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingFarm/key/building/value/farm"></see>
     /// </summary>
     let ``BuildingFarm/key/building/value/farm`` =
-        Namespaced_IRI.parse _namespace_name "BuildingFarm/key/building/value/farm" |> NamespacedName
+        _prefix "BuildingFarm/key/building/value/farm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingGarage"></see>
     /// </summary>
-    let BuildingGarage =
-        Namespaced_IRI.parse _namespace_name "BuildingGarage" |> NamespacedName
+    let BuildingGarage = _prefix "BuildingGarage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingGarage/key/building/value/garage"></see>
     /// </summary>
     let ``BuildingGarage/key/building/value/garage`` =
-        Namespaced_IRI.parse _namespace_name "BuildingGarage/key/building/value/garage" |> NamespacedName
+        _prefix "BuildingGarage/key/building/value/garage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHall"></see>
     /// </summary>
-    let BuildingHall =
-        Namespaced_IRI.parse _namespace_name "BuildingHall" |> NamespacedName
+    let BuildingHall = _prefix "BuildingHall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHall/key/building/value/hall"></see>
     /// </summary>
     let ``BuildingHall/key/building/value/hall`` =
-        Namespaced_IRI.parse _namespace_name "BuildingHall/key/building/value/hall" |> NamespacedName
+        _prefix "BuildingHall/key/building/value/hall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHospital"></see>
     /// </summary>
-    let BuildingHospital =
-        Namespaced_IRI.parse _namespace_name "BuildingHospital" |> NamespacedName
+    let BuildingHospital = _prefix "BuildingHospital"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHospital/key/building/value/hospital"></see>
     /// </summary>
     let ``BuildingHospital/key/building/value/hospital`` =
-        Namespaced_IRI.parse _namespace_name "BuildingHospital/key/building/value/hospital" |> NamespacedName
+        _prefix "BuildingHospital/key/building/value/hospital"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHouse"></see>
     /// </summary>
-    let BuildingHouse =
-        Namespaced_IRI.parse _namespace_name "BuildingHouse" |> NamespacedName
+    let BuildingHouse = _prefix "BuildingHouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHouse/key/building/value/house"></see>
     /// </summary>
     let ``BuildingHouse/key/building/value/house`` =
-        Namespaced_IRI.parse _namespace_name "BuildingHouse/key/building/value/house" |> NamespacedName
+        _prefix "BuildingHouse/key/building/value/house"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHut"></see>
     /// </summary>
-    let BuildingHut =
-        Namespaced_IRI.parse _namespace_name "BuildingHut" |> NamespacedName
+    let BuildingHut = _prefix "BuildingHut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingHut/key/building/value/hut"></see>
     /// </summary>
     let ``BuildingHut/key/building/value/hut`` =
-        Namespaced_IRI.parse _namespace_name "BuildingHut/key/building/value/hut" |> NamespacedName
+        _prefix "BuildingHut/key/building/value/hut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingKiosk"></see>
     /// </summary>
-    let BuildingKiosk =
-        Namespaced_IRI.parse _namespace_name "BuildingKiosk" |> NamespacedName
+    let BuildingKiosk = _prefix "BuildingKiosk"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingKiosk/key/building/value/kiosk"></see>
     /// </summary>
     let ``BuildingKiosk/key/building/value/kiosk`` =
-        Namespaced_IRI.parse _namespace_name "BuildingKiosk/key/building/value/kiosk" |> NamespacedName
+        _prefix "BuildingKiosk/key/building/value/kiosk"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingMonastery"></see>
     /// </summary>
-    let BuildingMonastery =
-        Namespaced_IRI.parse _namespace_name "BuildingMonastery" |> NamespacedName
+    let BuildingMonastery = _prefix "BuildingMonastery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingMonastery/key/building/value/monastery"></see>
     /// </summary>
     let ``BuildingMonastery/key/building/value/monastery`` =
-        Namespaced_IRI.parse _namespace_name "BuildingMonastery/key/building/value/monastery" |> NamespacedName
+        _prefix "BuildingMonastery/key/building/value/monastery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingNo"></see>
     /// </summary>
-    let BuildingNo = Namespaced_IRI.parse _namespace_name "BuildingNo" |> NamespacedName
+    let BuildingNo = _prefix "BuildingNo"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingNo/key/building/value/no"></see>
     /// </summary>
     let ``BuildingNo/key/building/value/no`` =
-        Namespaced_IRI.parse _namespace_name "BuildingNo/key/building/value/no" |> NamespacedName
+        _prefix "BuildingNo/key/building/value/no"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingOffice"></see>
     /// </summary>
-    let BuildingOffice =
-        Namespaced_IRI.parse _namespace_name "BuildingOffice" |> NamespacedName
+    let BuildingOffice = _prefix "BuildingOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingOffice/key/building/value/office"></see>
     /// </summary>
     let ``BuildingOffice/key/building/value/office`` =
-        Namespaced_IRI.parse _namespace_name "BuildingOffice/key/building/value/office" |> NamespacedName
+        _prefix "BuildingOffice/key/building/value/office"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingResidential"></see>
     /// </summary>
-    let BuildingResidential =
-        Namespaced_IRI.parse _namespace_name "BuildingResidential" |> NamespacedName
+    let BuildingResidential = _prefix "BuildingResidential"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingResidential/key/building/value/residential"></see>
     /// </summary>
     let ``BuildingResidential/key/building/value/residential`` =
-        Namespaced_IRI.parse _namespace_name "BuildingResidential/key/building/value/residential" |> NamespacedName
+        _prefix "BuildingResidential/key/building/value/residential"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingRetail"></see>
     /// </summary>
-    let BuildingRetail =
-        Namespaced_IRI.parse _namespace_name "BuildingRetail" |> NamespacedName
+    let BuildingRetail = _prefix "BuildingRetail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingRetail/key/building/value/retail"></see>
     /// </summary>
     let ``BuildingRetail/key/building/value/retail`` =
-        Namespaced_IRI.parse _namespace_name "BuildingRetail/key/building/value/retail" |> NamespacedName
+        _prefix "BuildingRetail/key/building/value/retail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingSchool"></see>
     /// </summary>
-    let BuildingSchool =
-        Namespaced_IRI.parse _namespace_name "BuildingSchool" |> NamespacedName
+    let BuildingSchool = _prefix "BuildingSchool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingSchool/key/building/value/school"></see>
     /// </summary>
     let ``BuildingSchool/key/building/value/school`` =
-        Namespaced_IRI.parse _namespace_name "BuildingSchool/key/building/value/school" |> NamespacedName
+        _prefix "BuildingSchool/key/building/value/school"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingTower"></see>
     /// </summary>
-    let BuildingTower =
-        Namespaced_IRI.parse _namespace_name "BuildingTower" |> NamespacedName
+    let BuildingTower = _prefix "BuildingTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingTower/key/building/value/tower"></see>
     /// </summary>
     let ``BuildingTower/key/building/value/tower`` =
-        Namespaced_IRI.parse _namespace_name "BuildingTower/key/building/value/tower" |> NamespacedName
+        _prefix "BuildingTower/key/building/value/tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingUniversity"></see>
     /// </summary>
-    let BuildingUniversity =
-        Namespaced_IRI.parse _namespace_name "BuildingUniversity" |> NamespacedName
+    let BuildingUniversity = _prefix "BuildingUniversity"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingUniversity/key/building/value/university"></see>
     /// </summary>
     let ``BuildingUniversity/key/building/value/university`` =
-        Namespaced_IRI.parse _namespace_name "BuildingUniversity/key/building/value/university" |> NamespacedName
+        _prefix "BuildingUniversity/key/building/value/university"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingUnknown"></see>
     /// </summary>
-    let BuildingUnknown =
-        Namespaced_IRI.parse _namespace_name "BuildingUnknown" |> NamespacedName
+    let BuildingUnknown = _prefix "BuildingUnknown"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BuildingUnknown/key/building/value/unknown"></see>
     /// </summary>
     let ``BuildingUnknown/key/building/value/unknown`` =
-        Namespaced_IRI.parse _namespace_name "BuildingUnknown/key/building/value/unknown" |> NamespacedName
+        _prefix "BuildingUnknown/key/building/value/unknown"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bump"></see>
     /// </summary>
-    let Bump = Namespaced_IRI.parse _namespace_name "Bump" |> NamespacedName
+    let Bump = _prefix "Bump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Bump/key/traffic_calming/value/bump"></see>
     /// </summary>
     let ``Bump/key/traffic_calming/value/bump`` =
-        Namespaced_IRI.parse _namespace_name "Bump/key/traffic_calming/value/bump" |> NamespacedName
+        _prefix "Bump/key/traffic_calming/value/bump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BureauDeChange"></see>
     /// </summary>
-    let BureauDeChange =
-        Namespaced_IRI.parse _namespace_name "BureauDeChange" |> NamespacedName
+    let BureauDeChange = _prefix "BureauDeChange"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BureauDeChange/key/amenity/value/bureau_de_change"></see>
     /// </summary>
     let ``BureauDeChange/key/amenity/value/bureau_de_change`` =
-        Namespaced_IRI.parse _namespace_name "BureauDeChange/key/amenity/value/bureau_de_change" |> NamespacedName
+        _prefix "BureauDeChange/key/amenity/value/bureau_de_change"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusGuideway"></see>
     /// </summary>
-    let BusGuideway =
-        Namespaced_IRI.parse _namespace_name "BusGuideway" |> NamespacedName
+    let BusGuideway = _prefix "BusGuideway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusGuideway/key/highway/value/bus_guideway"></see>
     /// </summary>
     let ``BusGuideway/key/highway/value/bus_guideway`` =
-        Namespaced_IRI.parse _namespace_name "BusGuideway/key/highway/value/bus_guideway" |> NamespacedName
+        _prefix "BusGuideway/key/highway/value/bus_guideway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusRoute"></see>
     /// </summary>
-    let BusRoute = Namespaced_IRI.parse _namespace_name "BusRoute" |> NamespacedName
-
+    let BusRoute = _prefix "BusRoute"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusRoute/key/route/value/bus"></see>
     /// </summary>
-    let ``BusRoute/key/route/value/bus`` =
-        Namespaced_IRI.parse _namespace_name "BusRoute/key/route/value/bus" |> NamespacedName
-
+    let ``BusRoute/key/route/value/bus`` = _prefix "BusRoute/key/route/value/bus"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusStation"></see>
     /// </summary>
-    let BusStation = Namespaced_IRI.parse _namespace_name "BusStation" |> NamespacedName
+    let BusStation = _prefix "BusStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusStation/key/amenity/value/bus_station"></see>
     /// </summary>
     let ``BusStation/key/amenity/value/bus_station`` =
-        Namespaced_IRI.parse _namespace_name "BusStation/key/amenity/value/bus_station" |> NamespacedName
+        _prefix "BusStation/key/amenity/value/bus_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusStop"></see>
     /// </summary>
-    let BusStop = Namespaced_IRI.parse _namespace_name "BusStop" |> NamespacedName
+    let BusStop = _prefix "BusStop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusStop/key/highway/value/bus_stop"></see>
     /// </summary>
     let ``BusStop/key/highway/value/bus_stop`` =
-        Namespaced_IRI.parse _namespace_name "BusStop/key/highway/value/bus_stop" |> NamespacedName
+        _prefix "BusStop/key/highway/value/bus_stop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/BusStop/key/amenity/value/bus_stop"></see>
     /// </summary>
     let ``BusStop/key/amenity/value/bus_stop`` =
-        Namespaced_IRI.parse _namespace_name "BusStop/key/amenity/value/bus_stop" |> NamespacedName
+        _prefix "BusStop/key/amenity/value/bus_stop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Butcher"></see>
     /// </summary>
-    let Butcher = Namespaced_IRI.parse _namespace_name "Butcher" |> NamespacedName
-
+    let Butcher = _prefix "Butcher"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Butcher/key/shop/value/butcher"></see>
     /// </summary>
-    let ``Butcher/key/shop/value/butcher`` =
-        Namespaced_IRI.parse _namespace_name "Butcher/key/shop/value/butcher" |> NamespacedName
-
+    let ``Butcher/key/shop/value/butcher`` = _prefix "Butcher/key/shop/value/butcher"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Butchers"></see>
     /// </summary>
-    let Butchers = Namespaced_IRI.parse _namespace_name "Butchers" |> NamespacedName
+    let Butchers = _prefix "Butchers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Butchers/key/shop/value/butchers"></see>
     /// </summary>
     let ``Butchers/key/shop/value/butchers`` =
-        Namespaced_IRI.parse _namespace_name "Butchers/key/shop/value/butchers" |> NamespacedName
+        _prefix "Butchers/key/shop/value/butchers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Byway"></see>
     /// </summary>
-    let Byway = Namespaced_IRI.parse _namespace_name "Byway" |> NamespacedName
-
+    let Byway = _prefix "Byway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Byway/key/highway/value/byway"></see>
     /// </summary>
-    let ``Byway/key/highway/value/byway`` =
-        Namespaced_IRI.parse _namespace_name "Byway/key/highway/value/byway" |> NamespacedName
-
+    let ``Byway/key/highway/value/byway`` = _prefix "Byway/key/highway/value/byway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CableCar"></see>
     /// </summary>
-    let CableCar = Namespaced_IRI.parse _namespace_name "CableCar" |> NamespacedName
+    let CableCar = _prefix "CableCar"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CableCar/key/aerialway/value/cable_car"></see>
     /// </summary>
     let ``CableCar/key/aerialway/value/cable_car`` =
-        Namespaced_IRI.parse _namespace_name "CableCar/key/aerialway/value/cable_car" |> NamespacedName
+        _prefix "CableCar/key/aerialway/value/cable_car"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CableDistributionCabinet"></see>
     /// </summary>
-    let CableDistributionCabinet =
-        Namespaced_IRI.parse _namespace_name "CableDistributionCabinet" |> NamespacedName
+    let CableDistributionCabinet = _prefix "CableDistributionCabinet"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CableDistributionCabinet/key/power/value/cable_distribution_cabinet"></see>
     /// </summary>
     let ``CableDistributionCabinet/key/power/value/cable_distribution_cabinet`` =
-        Namespaced_IRI.parse _namespace_name "CableDistributionCabinet/key/power/value/cable_distribution_cabinet" |> NamespacedName
+        _prefix "CableDistributionCabinet/key/power/value/cable_distribution_cabinet"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerThing"></see>
     /// </summary>
-    let PowerThing = Namespaced_IRI.parse _namespace_name "PowerThing" |> NamespacedName
+    let PowerThing = _prefix "PowerThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cafe"></see>
     /// </summary>
-    let Cafe = Namespaced_IRI.parse _namespace_name "Cafe" |> NamespacedName
-
+    let Cafe = _prefix "Cafe"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cafe/key/amenity/value/cafe"></see>
     /// </summary>
-    let ``Cafe/key/amenity/value/cafe`` =
-        Namespaced_IRI.parse _namespace_name "Cafe/key/amenity/value/cafe" |> NamespacedName
-
+    let ``Cafe/key/amenity/value/cafe`` = _prefix "Cafe/key/amenity/value/cafe"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cairn"></see>
     /// </summary>
-    let Cairn = Namespaced_IRI.parse _namespace_name "Cairn" |> NamespacedName
-
+    let Cairn = _prefix "Cairn"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cairn/key/man_made/value/cairn"></see>
     /// </summary>
-    let ``Cairn/key/man_made/value/cairn`` =
-        Namespaced_IRI.parse _namespace_name "Cairn/key/man_made/value/cairn" |> NamespacedName
-
+    let ``Cairn/key/man_made/value/cairn`` = _prefix "Cairn/key/man_made/value/cairn"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Camera"></see>
     /// </summary>
-    let Camera = Namespaced_IRI.parse _namespace_name "Camera" |> NamespacedName
-
+    let Camera = _prefix "Camera"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Camera/key/amenity/value/camera"></see>
     /// </summary>
-    let ``Camera/key/amenity/value/camera`` =
-        Namespaced_IRI.parse _namespace_name "Camera/key/amenity/value/camera" |> NamespacedName
-
+    let ``Camera/key/amenity/value/camera`` = _prefix "Camera/key/amenity/value/camera"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CameraShop"></see>
     /// </summary>
-    let CameraShop = Namespaced_IRI.parse _namespace_name "CameraShop" |> NamespacedName
+    let CameraShop = _prefix "CameraShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CameraShop/key/shop/value/camera"></see>
     /// </summary>
     let ``CameraShop/key/shop/value/camera`` =
-        Namespaced_IRI.parse _namespace_name "CameraShop/key/shop/value/camera" |> NamespacedName
+        _prefix "CameraShop/key/shop/value/camera"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CampSite"></see>
     /// </summary>
-    let CampSite = Namespaced_IRI.parse _namespace_name "CampSite" |> NamespacedName
+    let CampSite = _prefix "CampSite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CampSite/key/tourism/value/camp_site"></see>
     /// </summary>
     let ``CampSite/key/tourism/value/camp_site`` =
-        Namespaced_IRI.parse _namespace_name "CampSite/key/tourism/value/camp_site" |> NamespacedName
+        _prefix "CampSite/key/tourism/value/camp_site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CampingOffice"></see>
     /// </summary>
-    let CampingOffice =
-        Namespaced_IRI.parse _namespace_name "CampingOffice" |> NamespacedName
+    let CampingOffice = _prefix "CampingOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CampingOffice/key/office/value/camping"></see>
     /// </summary>
     let ``CampingOffice/key/office/value/camping`` =
-        Namespaced_IRI.parse _namespace_name "CampingOffice/key/office/value/camping" |> NamespacedName
+        _prefix "CampingOffice/key/office/value/camping"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Campsite"></see>
     /// </summary>
-    let Campsite = Namespaced_IRI.parse _namespace_name "Campsite" |> NamespacedName
+    let Campsite = _prefix "Campsite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Campsite/key/amenity/value/campsite"></see>
     /// </summary>
     let ``Campsite/key/amenity/value/campsite`` =
-        Namespaced_IRI.parse _namespace_name "Campsite/key/amenity/value/campsite" |> NamespacedName
+        _prefix "Campsite/key/amenity/value/campsite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Canal"></see>
     /// </summary>
-    let Canal = Namespaced_IRI.parse _namespace_name "Canal" |> NamespacedName
-
+    let Canal = _prefix "Canal"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Canal/key/waterway/value/canal"></see>
     /// </summary>
-    let ``Canal/key/waterway/value/canal`` =
-        Namespaced_IRI.parse _namespace_name "Canal/key/waterway/value/canal" |> NamespacedName
-
+    let ``Canal/key/waterway/value/canal`` = _prefix "Canal/key/waterway/value/canal"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CandyShop"></see>
     /// </summary>
-    let CandyShop = Namespaced_IRI.parse _namespace_name "CandyShop" |> NamespacedName
-
+    let CandyShop = _prefix "CandyShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CandyShop/key/shop/value/candy"></see>
     /// </summary>
-    let ``CandyShop/key/shop/value/candy`` =
-        Namespaced_IRI.parse _namespace_name "CandyShop/key/shop/value/candy" |> NamespacedName
-
+    let ``CandyShop/key/shop/value/candy`` = _prefix "CandyShop/key/shop/value/candy"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cape"></see>
     /// </summary>
-    let Cape = Namespaced_IRI.parse _namespace_name "Cape" |> NamespacedName
-
+    let Cape = _prefix "Cape"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cape/key/natural/value/cape"></see>
     /// </summary>
-    let ``Cape/key/natural/value/cape`` =
-        Namespaced_IRI.parse _namespace_name "Cape/key/natural/value/cape" |> NamespacedName
-
+    let ``Cape/key/natural/value/cape`` = _prefix "Cape/key/natural/value/cape"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Car%3BcarRepair"></see>
     /// </summary>
-    let ``Car%3BcarRepair`` =
-        Namespaced_IRI.parse _namespace_name "Car%3BcarRepair" |> NamespacedName
+    let ``Car%3BcarRepair`` = _prefix "Car%3BcarRepair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Car%3BcarRepair/key/shop/value/car%3Bcar_repair"></see>
     /// </summary>
     let ``Car%3BcarRepair/key/shop/value/car%3Bcar_repair`` =
-        Namespaced_IRI.parse _namespace_name "Car%3BcarRepair/key/shop/value/car%3Bcar_repair" |> NamespacedName
+        _prefix "Car%3BcarRepair/key/shop/value/car%3Bcar_repair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarDealer"></see>
     /// </summary>
-    let CarDealer = Namespaced_IRI.parse _namespace_name "CarDealer" |> NamespacedName
+    let CarDealer = _prefix "CarDealer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarDealer/key/shop/value/car_dealer"></see>
     /// </summary>
     let ``CarDealer/key/shop/value/car_dealer`` =
-        Namespaced_IRI.parse _namespace_name "CarDealer/key/shop/value/car_dealer" |> NamespacedName
+        _prefix "CarDealer/key/shop/value/car_dealer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarParts"></see>
     /// </summary>
-    let CarParts = Namespaced_IRI.parse _namespace_name "CarParts" |> NamespacedName
+    let CarParts = _prefix "CarParts"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarParts/key/shop/value/car_parts"></see>
     /// </summary>
     let ``CarParts/key/shop/value/car_parts`` =
-        Namespaced_IRI.parse _namespace_name "CarParts/key/shop/value/car_parts" |> NamespacedName
+        _prefix "CarParts/key/shop/value/car_parts"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarRental"></see>
     /// </summary>
-    let CarRental = Namespaced_IRI.parse _namespace_name "CarRental" |> NamespacedName
+    let CarRental = _prefix "CarRental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarRental/key/amenity/value/car_rental"></see>
     /// </summary>
     let ``CarRental/key/amenity/value/car_rental`` =
-        Namespaced_IRI.parse _namespace_name "CarRental/key/amenity/value/car_rental" |> NamespacedName
+        _prefix "CarRental/key/amenity/value/car_rental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarRepair"></see>
     /// </summary>
-    let CarRepair = Namespaced_IRI.parse _namespace_name "CarRepair" |> NamespacedName
+    let CarRepair = _prefix "CarRepair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarRepair/key/amenity/value/car_repair"></see>
     /// </summary>
     let ``CarRepair/key/amenity/value/car_repair`` =
-        Namespaced_IRI.parse _namespace_name "CarRepair/key/amenity/value/car_repair" |> NamespacedName
+        _prefix "CarRepair/key/amenity/value/car_repair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarRepairShop"></see>
     /// </summary>
-    let CarRepairShop =
-        Namespaced_IRI.parse _namespace_name "CarRepairShop" |> NamespacedName
+    let CarRepairShop = _prefix "CarRepairShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarRepairShop/key/shop/value/car_repair"></see>
     /// </summary>
     let ``CarRepairShop/key/shop/value/car_repair`` =
-        Namespaced_IRI.parse _namespace_name "CarRepairShop/key/shop/value/car_repair" |> NamespacedName
+        _prefix "CarRepairShop/key/shop/value/car_repair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarSharing"></see>
     /// </summary>
-    let CarSharing = Namespaced_IRI.parse _namespace_name "CarSharing" |> NamespacedName
+    let CarSharing = _prefix "CarSharing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarSharing/key/amenity/value/car_sharing"></see>
     /// </summary>
     let ``CarSharing/key/amenity/value/car_sharing`` =
-        Namespaced_IRI.parse _namespace_name "CarSharing/key/amenity/value/car_sharing" |> NamespacedName
+        _prefix "CarSharing/key/amenity/value/car_sharing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarShop"></see>
     /// </summary>
-    let CarShop = Namespaced_IRI.parse _namespace_name "CarShop" |> NamespacedName
-
+    let CarShop = _prefix "CarShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarShop/key/shop/value/car"></see>
     /// </summary>
-    let ``CarShop/key/shop/value/car`` =
-        Namespaced_IRI.parse _namespace_name "CarShop/key/shop/value/car" |> NamespacedName
-
+    let ``CarShop/key/shop/value/car`` = _prefix "CarShop/key/shop/value/car"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarWash"></see>
     /// </summary>
-    let CarWash = Namespaced_IRI.parse _namespace_name "CarWash" |> NamespacedName
+    let CarWash = _prefix "CarWash"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarWash/key/amenity/value/car_wash"></see>
     /// </summary>
     let ``CarWash/key/amenity/value/car_wash`` =
-        Namespaced_IRI.parse _namespace_name "CarWash/key/amenity/value/car_wash" |> NamespacedName
+        _prefix "CarWash/key/amenity/value/car_wash"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarWash/key/shop/value/car_wash"></see>
     /// </summary>
-    let ``CarWash/key/shop/value/car_wash`` =
-        Namespaced_IRI.parse _namespace_name "CarWash/key/shop/value/car_wash" |> NamespacedName
-
+    let ``CarWash/key/shop/value/car_wash`` = _prefix "CarWash/key/shop/value/car_wash"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CaravanSite"></see>
     /// </summary>
-    let CaravanSite =
-        Namespaced_IRI.parse _namespace_name "CaravanSite" |> NamespacedName
+    let CaravanSite = _prefix "CaravanSite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CaravanSite/key/tourism/value/caravan_site"></see>
     /// </summary>
     let ``CaravanSite/key/tourism/value/caravan_site`` =
-        Namespaced_IRI.parse _namespace_name "CaravanSite/key/tourism/value/caravan_site" |> NamespacedName
+        _prefix "CaravanSite/key/tourism/value/caravan_site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CardsShop"></see>
     /// </summary>
-    let CardsShop = Namespaced_IRI.parse _namespace_name "CardsShop" |> NamespacedName
-
+    let CardsShop = _prefix "CardsShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CardsShop/key/shop/value/cards"></see>
     /// </summary>
-    let ``CardsShop/key/shop/value/cards`` =
-        Namespaced_IRI.parse _namespace_name "CardsShop/key/shop/value/cards" |> NamespacedName
-
+    let ``CardsShop/key/shop/value/cards`` = _prefix "CardsShop/key/shop/value/cards"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CareHome"></see>
     /// </summary>
-    let CareHome = Namespaced_IRI.parse _namespace_name "CareHome" |> NamespacedName
+    let CareHome = _prefix "CareHome"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CareHome/key/amenity/value/care_home"></see>
     /// </summary>
     let ``CareHome/key/amenity/value/care_home`` =
-        Namespaced_IRI.parse _namespace_name "CareHome/key/amenity/value/care_home" |> NamespacedName
+        _prefix "CareHome/key/amenity/value/care_home"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpenter"></see>
     /// </summary>
-    let Carpenter = Namespaced_IRI.parse _namespace_name "Carpenter" |> NamespacedName
+    let Carpenter = _prefix "Carpenter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpenter/key/shop/value/carpenter"></see>
     /// </summary>
     let ``Carpenter/key/shop/value/carpenter`` =
-        Namespaced_IRI.parse _namespace_name "Carpenter/key/shop/value/carpenter" |> NamespacedName
+        _prefix "Carpenter/key/shop/value/carpenter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpenter/key/craft/value/carpenter"></see>
     /// </summary>
     let ``Carpenter/key/craft/value/carpenter`` =
-        Namespaced_IRI.parse _namespace_name "Carpenter/key/craft/value/carpenter" |> NamespacedName
+        _prefix "Carpenter/key/craft/value/carpenter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpet"></see>
     /// </summary>
-    let Carpet = Namespaced_IRI.parse _namespace_name "Carpet" |> NamespacedName
-
+    let Carpet = _prefix "Carpet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpet/key/shop/value/carpet"></see>
     /// </summary>
-    let ``Carpet/key/shop/value/carpet`` =
-        Namespaced_IRI.parse _namespace_name "Carpet/key/shop/value/carpet" |> NamespacedName
-
+    let ``Carpet/key/shop/value/carpet`` = _prefix "Carpet/key/shop/value/carpet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarpetLayer"></see>
     /// </summary>
-    let CarpetLayer =
-        Namespaced_IRI.parse _namespace_name "CarpetLayer" |> NamespacedName
+    let CarpetLayer = _prefix "CarpetLayer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CarpetLayer/key/craft/value/carpet_layer"></see>
     /// </summary>
     let ``CarpetLayer/key/craft/value/carpet_layer`` =
-        Namespaced_IRI.parse _namespace_name "CarpetLayer/key/craft/value/carpet_layer" |> NamespacedName
+        _prefix "CarpetLayer/key/craft/value/carpet_layer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpets"></see>
     /// </summary>
-    let Carpets = Namespaced_IRI.parse _namespace_name "Carpets" |> NamespacedName
-
+    let Carpets = _prefix "Carpets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Carpets/key/shop/value/carpets"></see>
     /// </summary>
-    let ``Carpets/key/shop/value/carpets`` =
-        Namespaced_IRI.parse _namespace_name "Carpets/key/shop/value/carpets" |> NamespacedName
-
+    let ``Carpets/key/shop/value/carpets`` = _prefix "Carpets/key/shop/value/carpets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Casino"></see>
     /// </summary>
-    let Casino = Namespaced_IRI.parse _namespace_name "Casino" |> NamespacedName
-
+    let Casino = _prefix "Casino"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Casino/key/leisure/value/casino"></see>
     /// </summary>
-    let ``Casino/key/leisure/value/casino`` =
-        Namespaced_IRI.parse _namespace_name "Casino/key/leisure/value/casino" |> NamespacedName
-
+    let ``Casino/key/leisure/value/casino`` = _prefix "Casino/key/leisure/value/casino"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Casino/key/amenity/value/casino"></see>
     /// </summary>
-    let ``Casino/key/amenity/value/casino`` =
-        Namespaced_IRI.parse _namespace_name "Casino/key/amenity/value/casino" |> NamespacedName
-
+    let ``Casino/key/amenity/value/casino`` = _prefix "Casino/key/amenity/value/casino"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Castle"></see>
     /// </summary>
-    let Castle = Namespaced_IRI.parse _namespace_name "Castle" |> NamespacedName
+    let Castle = _prefix "Castle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Castle/key/historic/value/castle"></see>
     /// </summary>
     let ``Castle/key/historic/value/castle`` =
-        Namespaced_IRI.parse _namespace_name "Castle/key/historic/value/castle" |> NamespacedName
+        _prefix "Castle/key/historic/value/castle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Catalogue"></see>
     /// </summary>
-    let Catalogue = Namespaced_IRI.parse _namespace_name "Catalogue" |> NamespacedName
+    let Catalogue = _prefix "Catalogue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Catalogue/key/shop/value/catalogue"></see>
     /// </summary>
     let ``Catalogue/key/shop/value/catalogue`` =
-        Namespaced_IRI.parse _namespace_name "Catalogue/key/shop/value/catalogue" |> NamespacedName
+        _prefix "Catalogue/key/shop/value/catalogue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Catere"></see>
     /// </summary>
-    let Catere = Namespaced_IRI.parse _namespace_name "Catere" |> NamespacedName
-
+    let Catere = _prefix "Catere"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Catere/key/craft/value/caterer"></see>
     /// </summary>
-    let ``Catere/key/craft/value/caterer`` =
-        Namespaced_IRI.parse _namespace_name "Catere/key/craft/value/caterer" |> NamespacedName
-
+    let ``Catere/key/craft/value/caterer`` = _prefix "Catere/key/craft/value/caterer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CattleGrid"></see>
     /// </summary>
-    let CattleGrid = Namespaced_IRI.parse _namespace_name "CattleGrid" |> NamespacedName
+    let CattleGrid = _prefix "CattleGrid"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CattleGrid/key/barrier/value/cattle_grid"></see>
     /// </summary>
     let ``CattleGrid/key/barrier/value/cattle_grid`` =
-        Namespaced_IRI.parse _namespace_name "CattleGrid/key/barrier/value/cattle_grid" |> NamespacedName
+        _prefix "CattleGrid/key/barrier/value/cattle_grid"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cave"></see>
     /// </summary>
-    let Cave = Namespaced_IRI.parse _namespace_name "Cave" |> NamespacedName
-
+    let Cave = _prefix "Cave"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cave/key/natural/value/cave"></see>
     /// </summary>
-    let ``Cave/key/natural/value/cave`` =
-        Namespaced_IRI.parse _namespace_name "Cave/key/natural/value/cave" |> NamespacedName
-
+    let ``Cave/key/natural/value/cave`` = _prefix "Cave/key/natural/value/cave"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CaveEntrance"></see>
     /// </summary>
-    let CaveEntrance =
-        Namespaced_IRI.parse _namespace_name "CaveEntrance" |> NamespacedName
+    let CaveEntrance = _prefix "CaveEntrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CaveEntrance/key/natural/value/cave_entrance"></see>
     /// </summary>
     let ``CaveEntrance/key/natural/value/cave_entrance`` =
-        Namespaced_IRI.parse _namespace_name "CaveEntrance/key/natural/value/cave_entrance" |> NamespacedName
+        _prefix "CaveEntrance/key/natural/value/cave_entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CellPhones"></see>
     /// </summary>
-    let CellPhones = Namespaced_IRI.parse _namespace_name "CellPhones" |> NamespacedName
+    let CellPhones = _prefix "CellPhones"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CellPhones/key/shop/value/cell_phones"></see>
     /// </summary>
     let ``CellPhones/key/shop/value/cell_phones`` =
-        Namespaced_IRI.parse _namespace_name "CellPhones/key/shop/value/cell_phones" |> NamespacedName
+        _prefix "CellPhones/key/shop/value/cell_phones"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cemetery"></see>
     /// </summary>
-    let Cemetery = Namespaced_IRI.parse _namespace_name "Cemetery" |> NamespacedName
+    let Cemetery = _prefix "Cemetery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cemetery/key/landuse/value/cemetery"></see>
     /// </summary>
     let ``Cemetery/key/landuse/value/cemetery`` =
-        Namespaced_IRI.parse _namespace_name "Cemetery/key/landuse/value/cemetery" |> NamespacedName
+        _prefix "Cemetery/key/landuse/value/cemetery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cemetery/key/amenity/value/cemetery"></see>
     /// </summary>
     let ``Cemetery/key/amenity/value/cemetery`` =
-        Namespaced_IRI.parse _namespace_name "Cemetery/key/amenity/value/cemetery" |> NamespacedName
+        _prefix "Cemetery/key/amenity/value/cemetery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Centre"></see>
     /// </summary>
-    let Centre = Namespaced_IRI.parse _namespace_name "Centre" |> NamespacedName
+    let Centre = _prefix "Centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Centre/key/amenity/value/leisure_centre"></see>
     /// </summary>
     let ``Centre/key/amenity/value/leisure_centre`` =
-        Namespaced_IRI.parse _namespace_name "Centre/key/amenity/value/leisure_centre" |> NamespacedName
+        _prefix "Centre/key/amenity/value/leisure_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ceramics"></see>
     /// </summary>
-    let Ceramics = Namespaced_IRI.parse _namespace_name "Ceramics" |> NamespacedName
+    let Ceramics = _prefix "Ceramics"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ceramics/key/shop/value/ceramics"></see>
     /// </summary>
     let ``Ceramics/key/shop/value/ceramics`` =
-        Namespaced_IRI.parse _namespace_name "Ceramics/key/shop/value/ceramics" |> NamespacedName
+        _prefix "Ceramics/key/shop/value/ceramics"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chain"></see>
     /// </summary>
-    let Chain = Namespaced_IRI.parse _namespace_name "Chain" |> NamespacedName
-
+    let Chain = _prefix "Chain"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chain/key/barrier/value/chain"></see>
     /// </summary>
-    let ``Chain/key/barrier/value/chain`` =
-        Namespaced_IRI.parse _namespace_name "Chain/key/barrier/value/chain" |> NamespacedName
-
+    let ``Chain/key/barrier/value/chain`` = _prefix "Chain/key/barrier/value/chain"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ChairLift"></see>
     /// </summary>
-    let ChairLift = Namespaced_IRI.parse _namespace_name "ChairLift" |> NamespacedName
+    let ChairLift = _prefix "ChairLift"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ChairLift/key/aerialway/value/chair_lift"></see>
     /// </summary>
     let ``ChairLift/key/aerialway/value/chair_lift`` =
-        Namespaced_IRI.parse _namespace_name "ChairLift/key/aerialway/value/chair_lift" |> NamespacedName
+        _prefix "ChairLift/key/aerialway/value/chair_lift"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chalet"></see>
     /// </summary>
-    let Chalet = Namespaced_IRI.parse _namespace_name "Chalet" |> NamespacedName
-
+    let Chalet = _prefix "Chalet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chalet/key/tourism/value/chalet"></see>
     /// </summary>
-    let ``Chalet/key/tourism/value/chalet`` =
-        Namespaced_IRI.parse _namespace_name "Chalet/key/tourism/value/chalet" |> NamespacedName
-
+    let ``Chalet/key/tourism/value/chalet`` = _prefix "Chalet/key/tourism/value/chalet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chandler"></see>
     /// </summary>
-    let Chandler = Namespaced_IRI.parse _namespace_name "Chandler" |> NamespacedName
+    let Chandler = _prefix "Chandler"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chandler/key/shop/value/chandler"></see>
     /// </summary>
     let ``Chandler/key/shop/value/chandler`` =
-        Namespaced_IRI.parse _namespace_name "Chandler/key/shop/value/chandler" |> NamespacedName
+        _prefix "Chandler/key/shop/value/chandler"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Channel"></see>
     /// </summary>
-    let Channel = Namespaced_IRI.parse _namespace_name "Channel" |> NamespacedName
+    let Channel = _prefix "Channel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Channel/key/natural/value/channel"></see>
     /// </summary>
     let ``Channel/key/natural/value/channel`` =
-        Namespaced_IRI.parse _namespace_name "Channel/key/natural/value/channel" |> NamespacedName
+        _prefix "Channel/key/natural/value/channel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chapel"></see>
     /// </summary>
-    let Chapel = Namespaced_IRI.parse _namespace_name "Chapel" |> NamespacedName
-
+    let Chapel = _prefix "Chapel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chapel/key/amenity/value/chapel"></see>
     /// </summary>
-    let ``Chapel/key/amenity/value/chapel`` =
-        Namespaced_IRI.parse _namespace_name "Chapel/key/amenity/value/chapel" |> NamespacedName
-
+    let ``Chapel/key/amenity/value/chapel`` = _prefix "Chapel/key/amenity/value/chapel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Charity"></see>
     /// </summary>
-    let Charity = Namespaced_IRI.parse _namespace_name "Charity" |> NamespacedName
+    let Charity = _prefix "Charity"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Charity/key/amenity/value/charity"></see>
     /// </summary>
     let ``Charity/key/amenity/value/charity`` =
-        Namespaced_IRI.parse _namespace_name "Charity/key/amenity/value/charity" |> NamespacedName
+        _prefix "Charity/key/amenity/value/charity"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CharityShop"></see>
     /// </summary>
-    let CharityShop =
-        Namespaced_IRI.parse _namespace_name "CharityShop" |> NamespacedName
+    let CharityShop = _prefix "CharityShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CharityShop/key/shop/value/charity"></see>
     /// </summary>
     let ``CharityShop/key/shop/value/charity`` =
-        Namespaced_IRI.parse _namespace_name "CharityShop/key/shop/value/charity" |> NamespacedName
+        _prefix "CharityShop/key/shop/value/charity"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cheese"></see>
     /// </summary>
-    let Cheese = Namespaced_IRI.parse _namespace_name "Cheese" |> NamespacedName
-
+    let Cheese = _prefix "Cheese"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cheese/key/shop/value/cheese"></see>
     /// </summary>
-    let ``Cheese/key/shop/value/cheese`` =
-        Namespaced_IRI.parse _namespace_name "Cheese/key/shop/value/cheese" |> NamespacedName
-
+    let ``Cheese/key/shop/value/cheese`` = _prefix "Cheese/key/shop/value/cheese"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chemist"></see>
     /// </summary>
-    let Chemist = Namespaced_IRI.parse _namespace_name "Chemist" |> NamespacedName
-
+    let Chemist = _prefix "Chemist"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chemist/key/shop/value/chemist"></see>
     /// </summary>
-    let ``Chemist/key/shop/value/chemist`` =
-        Namespaced_IRI.parse _namespace_name "Chemist/key/shop/value/chemist" |> NamespacedName
-
+    let ``Chemist/key/shop/value/chemist`` = _prefix "Chemist/key/shop/value/chemist"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chicane"></see>
     /// </summary>
-    let Chicane = Namespaced_IRI.parse _namespace_name "Chicane" |> NamespacedName
+    let Chicane = _prefix "Chicane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chicane/key/traffic_calming/value/chicane"></see>
     /// </summary>
     let ``Chicane/key/traffic_calming/value/chicane`` =
-        Namespaced_IRI.parse _namespace_name "Chicane/key/traffic_calming/value/chicane" |> NamespacedName
+        _prefix "Chicane/key/traffic_calming/value/chicane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ChildCare"></see>
     /// </summary>
-    let ChildCare = Namespaced_IRI.parse _namespace_name "ChildCare" |> NamespacedName
+    let ChildCare = _prefix "ChildCare"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ChildCare/key/amenity/value/child_care"></see>
     /// </summary>
     let ``ChildCare/key/amenity/value/child_care`` =
-        Namespaced_IRI.parse _namespace_name "ChildCare/key/amenity/value/child_care" |> NamespacedName
+        _prefix "ChildCare/key/amenity/value/child_care"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chimney"></see>
     /// </summary>
-    let Chimney = Namespaced_IRI.parse _namespace_name "Chimney" |> NamespacedName
+    let Chimney = _prefix "Chimney"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chimney/key/man_made/value/chimney"></see>
     /// </summary>
     let ``Chimney/key/man_made/value/chimney`` =
-        Namespaced_IRI.parse _namespace_name "Chimney/key/man_made/value/chimney" |> NamespacedName
+        _prefix "Chimney/key/man_made/value/chimney"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chiropractor"></see>
     /// </summary>
-    let Chiropractor =
-        Namespaced_IRI.parse _namespace_name "Chiropractor" |> NamespacedName
+    let Chiropractor = _prefix "Chiropractor"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chiropractor/key/amenity/value/chiropractor"></see>
     /// </summary>
     let ``Chiropractor/key/amenity/value/chiropractor`` =
-        Namespaced_IRI.parse _namespace_name "Chiropractor/key/amenity/value/chiropractor" |> NamespacedName
+        _prefix "Chiropractor/key/amenity/value/chiropractor"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chocolate"></see>
     /// </summary>
-    let Chocolate = Namespaced_IRI.parse _namespace_name "Chocolate" |> NamespacedName
+    let Chocolate = _prefix "Chocolate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Chocolate/key/shop/value/chocolate"></see>
     /// </summary>
     let ``Chocolate/key/shop/value/chocolate`` =
-        Namespaced_IRI.parse _namespace_name "Chocolate/key/shop/value/chocolate" |> NamespacedName
+        _prefix "Chocolate/key/shop/value/chocolate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Choker"></see>
     /// </summary>
-    let Choker = Namespaced_IRI.parse _namespace_name "Choker" |> NamespacedName
+    let Choker = _prefix "Choker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Choker/key/traffic_calming/value/choker"></see>
     /// </summary>
     let ``Choker/key/traffic_calming/value/choker`` =
-        Namespaced_IRI.parse _namespace_name "Choker/key/traffic_calming/value/choker" |> NamespacedName
+        _prefix "Choker/key/traffic_calming/value/choker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Church"></see>
     /// </summary>
-    let Church = Namespaced_IRI.parse _namespace_name "Church" |> NamespacedName
-
+    let Church = _prefix "Church"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Church/key/amenity/value/church"></see>
     /// </summary>
-    let ``Church/key/amenity/value/church`` =
-        Namespaced_IRI.parse _namespace_name "Church/key/amenity/value/church" |> NamespacedName
-
+    let ``Church/key/amenity/value/church`` = _prefix "Church/key/amenity/value/church"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ChurchHall"></see>
     /// </summary>
-    let ChurchHall = Namespaced_IRI.parse _namespace_name "ChurchHall" |> NamespacedName
+    let ChurchHall = _prefix "ChurchHall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ChurchHall/key/amenity/value/church_hall"></see>
     /// </summary>
     let ``ChurchHall/key/amenity/value/church_hall`` =
-        Namespaced_IRI.parse _namespace_name "ChurchHall/key/amenity/value/church_hall" |> NamespacedName
+        _prefix "ChurchHall/key/amenity/value/church_hall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cinema"></see>
     /// </summary>
-    let Cinema = Namespaced_IRI.parse _namespace_name "Cinema" |> NamespacedName
-
+    let Cinema = _prefix "Cinema"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cinema/key/amenity/value/cinema"></see>
     /// </summary>
-    let ``Cinema/key/amenity/value/cinema`` =
-        Namespaced_IRI.parse _namespace_name "Cinema/key/amenity/value/cinema" |> NamespacedName
-
+    let ``Cinema/key/amenity/value/cinema`` = _prefix "Cinema/key/amenity/value/cinema"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CircuitBreaker"></see>
     /// </summary>
-    let CircuitBreaker =
-        Namespaced_IRI.parse _namespace_name "CircuitBreaker" |> NamespacedName
+    let CircuitBreaker = _prefix "CircuitBreaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CircuitBreaker/key/power/value/circuit_breaker"></see>
     /// </summary>
     let ``CircuitBreaker/key/power/value/circuit_breaker`` =
-        Namespaced_IRI.parse _namespace_name "CircuitBreaker/key/power/value/circuit_breaker" |> NamespacedName
+        _prefix "CircuitBreaker/key/power/value/circuit_breaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/City"></see>
     /// </summary>
-    let City = Namespaced_IRI.parse _namespace_name "City" |> NamespacedName
-
+    let City = _prefix "City"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/City/key/place/value/city"></see>
     /// </summary>
-    let ``City/key/place/value/city`` =
-        Namespaced_IRI.parse _namespace_name "City/key/place/value/city" |> NamespacedName
-
+    let ``City/key/place/value/city`` = _prefix "City/key/place/value/city"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CityGate"></see>
     /// </summary>
-    let CityGate = Namespaced_IRI.parse _namespace_name "CityGate" |> NamespacedName
+    let CityGate = _prefix "CityGate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CityGate/key/historic/value/city_gate"></see>
     /// </summary>
     let ``CityGate/key/historic/value/city_gate`` =
-        Namespaced_IRI.parse _namespace_name "CityGate/key/historic/value/city_gate" |> NamespacedName
+        _prefix "CityGate/key/historic/value/city_gate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CityLimit"></see>
     /// </summary>
-    let CityLimit = Namespaced_IRI.parse _namespace_name "CityLimit" |> NamespacedName
+    let CityLimit = _prefix "CityLimit"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CityLimit/key/boundary/value/city_limit"></see>
     /// </summary>
     let ``CityLimit/key/boundary/value/city_limit`` =
-        Namespaced_IRI.parse _namespace_name "CityLimit/key/boundary/value/city_limit" |> NamespacedName
+        _prefix "CityLimit/key/boundary/value/city_limit"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CityWall"></see>
     /// </summary>
-    let CityWall = Namespaced_IRI.parse _namespace_name "CityWall" |> NamespacedName
+    let CityWall = _prefix "CityWall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CityWall/key/barrier/value/city_wall"></see>
     /// </summary>
     let ``CityWall/key/barrier/value/city_wall`` =
-        Namespaced_IRI.parse _namespace_name "CityWall/key/barrier/value/city_wall" |> NamespacedName
+        _prefix "CityWall/key/barrier/value/city_wall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CitymapPost"></see>
     /// </summary>
-    let CitymapPost =
-        Namespaced_IRI.parse _namespace_name "CitymapPost" |> NamespacedName
+    let CitymapPost = _prefix "CitymapPost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CitymapPost/key/amenity/value/citymap_post"></see>
     /// </summary>
     let ``CitymapPost/key/amenity/value/citymap_post`` =
-        Namespaced_IRI.parse _namespace_name "CitymapPost/key/amenity/value/citymap_post" |> NamespacedName
+        _prefix "CitymapPost/key/amenity/value/citymap_post"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CivilBoundary"></see>
     /// </summary>
-    let CivilBoundary =
-        Namespaced_IRI.parse _namespace_name "CivilBoundary" |> NamespacedName
+    let CivilBoundary = _prefix "CivilBoundary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CivilBoundary/key/boundary/value/civil"></see>
     /// </summary>
     let ``CivilBoundary/key/boundary/value/civil`` =
-        Namespaced_IRI.parse _namespace_name "CivilBoundary/key/boundary/value/civil" |> NamespacedName
+        _prefix "CivilBoundary/key/boundary/value/civil"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cliff"></see>
     /// </summary>
-    let Cliff = Namespaced_IRI.parse _namespace_name "Cliff" |> NamespacedName
-
+    let Cliff = _prefix "Cliff"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cliff/key/natural/value/cliff"></see>
     /// </summary>
-    let ``Cliff/key/natural/value/cliff`` =
-        Namespaced_IRI.parse _namespace_name "Cliff/key/natural/value/cliff" |> NamespacedName
-
+    let ``Cliff/key/natural/value/cliff`` = _prefix "Cliff/key/natural/value/cliff"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clinic"></see>
     /// </summary>
-    let Clinic = Namespaced_IRI.parse _namespace_name "Clinic" |> NamespacedName
-
+    let Clinic = _prefix "Clinic"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clinic/key/amenity/value/clinic"></see>
     /// </summary>
-    let ``Clinic/key/amenity/value/clinic`` =
-        Namespaced_IRI.parse _namespace_name "Clinic/key/amenity/value/clinic" |> NamespacedName
-
+    let ``Clinic/key/amenity/value/clinic`` = _prefix "Clinic/key/amenity/value/clinic"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clock"></see>
     /// </summary>
-    let Clock = Namespaced_IRI.parse _namespace_name "Clock" |> NamespacedName
-
+    let Clock = _prefix "Clock"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clock/key/amenity/value/clock"></see>
     /// </summary>
-    let ``Clock/key/amenity/value/clock`` =
-        Namespaced_IRI.parse _namespace_name "Clock/key/amenity/value/clock" |> NamespacedName
-
+    let ``Clock/key/amenity/value/clock`` = _prefix "Clock/key/amenity/value/clock"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clockmaker"></see>
     /// </summary>
-    let Clockmaker = Namespaced_IRI.parse _namespace_name "Clockmaker" |> NamespacedName
+    let Clockmaker = _prefix "Clockmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clockmaker/key/craft/value/clockmaker"></see>
     /// </summary>
     let ``Clockmaker/key/craft/value/clockmaker`` =
-        Namespaced_IRI.parse _namespace_name "Clockmaker/key/craft/value/clockmaker" |> NamespacedName
+        _prefix "Clockmaker/key/craft/value/clockmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Closed"></see>
     /// </summary>
-    let Closed = Namespaced_IRI.parse _namespace_name "Closed" |> NamespacedName
-
+    let Closed = _prefix "Closed"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Closed/key/shop/value/closed"></see>
     /// </summary>
-    let ``Closed/key/shop/value/closed`` =
-        Namespaced_IRI.parse _namespace_name "Closed/key/shop/value/closed" |> NamespacedName
-
+    let ``Closed/key/shop/value/closed`` = _prefix "Closed/key/shop/value/closed"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothes"></see>
     /// </summary>
-    let Clothes = Namespaced_IRI.parse _namespace_name "Clothes" |> NamespacedName
-
+    let Clothes = _prefix "Clothes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothes/key/shop/value/clothes"></see>
     /// </summary>
-    let ``Clothes/key/shop/value/clothes`` =
-        Namespaced_IRI.parse _namespace_name "Clothes/key/shop/value/clothes" |> NamespacedName
-
+    let ``Clothes/key/shop/value/clothes`` = _prefix "Clothes/key/shop/value/clothes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothes%3A+women"></see>
     /// </summary>
-    let ``Clothes%3A+women`` =
-        Namespaced_IRI.parse _namespace_name "Clothes%3A+women" |> NamespacedName
+    let ``Clothes%3A+women`` = _prefix "Clothes%3A+women"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothes%3A+women/key/shop/value/clothes%3A%20women"></see>
     /// </summary>
     let ``Clothes%3A+women/key/shop/value/clothes%3A%20women`` =
-        Namespaced_IRI.parse _namespace_name "Clothes%3A+women/key/shop/value/clothes%3A%20women" |> NamespacedName
+        _prefix "Clothes%3A+women/key/shop/value/clothes%3A%20women"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothes%3Awomen"></see>
     /// </summary>
-    let ``Clothes%3Awomen`` =
-        Namespaced_IRI.parse _namespace_name "Clothes%3Awomen" |> NamespacedName
+    let ``Clothes%3Awomen`` = _prefix "Clothes%3Awomen"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothes%3Awomen/key/shop/value/clothes%3Awomen"></see>
     /// </summary>
     let ``Clothes%3Awomen/key/shop/value/clothes%3Awomen`` =
-        Namespaced_IRI.parse _namespace_name "Clothes%3Awomen/key/shop/value/clothes%3Awomen" |> NamespacedName
+        _prefix "Clothes%3Awomen/key/shop/value/clothes%3Awomen"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothing"></see>
     /// </summary>
-    let Clothing = Namespaced_IRI.parse _namespace_name "Clothing" |> NamespacedName
+    let Clothing = _prefix "Clothing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clothing/key/shop/value/clothing"></see>
     /// </summary>
     let ``Clothing/key/shop/value/clothing`` =
-        Namespaced_IRI.parse _namespace_name "Clothing/key/shop/value/clothing" |> NamespacedName
+        _prefix "Clothing/key/shop/value/clothing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Club"></see>
     /// </summary>
-    let Club = Namespaced_IRI.parse _namespace_name "Club" |> NamespacedName
-
+    let Club = _prefix "Club"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Club/key/amenity/value/club"></see>
     /// </summary>
-    let ``Club/key/amenity/value/club`` =
-        Namespaced_IRI.parse _namespace_name "Club/key/amenity/value/club" |> NamespacedName
-
+    let ``Club/key/amenity/value/club`` = _prefix "Club/key/amenity/value/club"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Club/key/leisure/value/club"></see>
     /// </summary>
-    let ``Club/key/leisure/value/club`` =
-        Namespaced_IRI.parse _namespace_name "Club/key/leisure/value/club" |> NamespacedName
-
+    let ``Club/key/leisure/value/club`` = _prefix "Club/key/leisure/value/club"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ClubHouse"></see>
     /// </summary>
-    let ClubHouse = Namespaced_IRI.parse _namespace_name "ClubHouse" |> NamespacedName
+    let ClubHouse = _prefix "ClubHouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ClubHouse/key/amenity/value/club_house"></see>
     /// </summary>
     let ``ClubHouse/key/amenity/value/club_house`` =
-        Namespaced_IRI.parse _namespace_name "ClubHouse/key/amenity/value/club_house" |> NamespacedName
+        _prefix "ClubHouse/key/amenity/value/club_house"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clubhouse"></see>
     /// </summary>
-    let Clubhouse = Namespaced_IRI.parse _namespace_name "Clubhouse" |> NamespacedName
+    let Clubhouse = _prefix "Clubhouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Clubhouse/key/building/value/clubhouse"></see>
     /// </summary>
     let ``Clubhouse/key/building/value/clubhouse`` =
-        Namespaced_IRI.parse _namespace_name "Clubhouse/key/building/value/clubhouse" |> NamespacedName
+        _prefix "Clubhouse/key/building/value/clubhouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Coastline"></see>
     /// </summary>
-    let Coastline = Namespaced_IRI.parse _namespace_name "Coastline" |> NamespacedName
+    let Coastline = _prefix "Coastline"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Coastline/key/natural/value/coastline"></see>
     /// </summary>
     let ``Coastline/key/natural/value/coastline`` =
-        Namespaced_IRI.parse _namespace_name "Coastline/key/natural/value/coastline" |> NamespacedName
+        _prefix "Coastline/key/natural/value/coastline"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CoffeeShop"></see>
     /// </summary>
-    let CoffeeShop = Namespaced_IRI.parse _namespace_name "CoffeeShop" |> NamespacedName
+    let CoffeeShop = _prefix "CoffeeShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CoffeeShop/key/amenity/value/coffeeshop"></see>
     /// </summary>
     let ``CoffeeShop/key/amenity/value/coffeeshop`` =
-        Namespaced_IRI.parse _namespace_name "CoffeeShop/key/amenity/value/coffeeshop" |> NamespacedName
+        _prefix "CoffeeShop/key/amenity/value/coffeeshop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CoffeeShop/key/shop/value/coffee"></see>
     /// </summary>
     let ``CoffeeShop/key/shop/value/coffee`` =
-        Namespaced_IRI.parse _namespace_name "CoffeeShop/key/shop/value/coffee" |> NamespacedName
+        _prefix "CoffeeShop/key/shop/value/coffee"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CoffeeShop/key/shop/value/coffee_shop"></see>
     /// </summary>
     let ``CoffeeShop/key/shop/value/coffee_shop`` =
-        Namespaced_IRI.parse _namespace_name "CoffeeShop/key/shop/value/coffee_shop" |> NamespacedName
+        _prefix "CoffeeShop/key/shop/value/coffee_shop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Col"></see>
     /// </summary>
-    let Col = Namespaced_IRI.parse _namespace_name "Col" |> NamespacedName
-
+    let Col = _prefix "Col"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Col/key/natural/value/col"></see>
     /// </summary>
-    let ``Col/key/natural/value/col`` =
-        Namespaced_IRI.parse _namespace_name "Col/key/natural/value/col" |> NamespacedName
-
+    let ``Col/key/natural/value/col`` = _prefix "Col/key/natural/value/col"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Collapsed"></see>
     /// </summary>
-    let Collapsed = Namespaced_IRI.parse _namespace_name "Collapsed" |> NamespacedName
+    let Collapsed = _prefix "Collapsed"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Collapsed/key/building/value/collapsed"></see>
     /// </summary>
     let ``Collapsed/key/building/value/collapsed`` =
-        Namespaced_IRI.parse _namespace_name "Collapsed/key/building/value/collapsed" |> NamespacedName
+        _prefix "Collapsed/key/building/value/collapsed"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/College"></see>
     /// </summary>
-    let College = Namespaced_IRI.parse _namespace_name "College" |> NamespacedName
+    let College = _prefix "College"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/College/key/amenity/value/college"></see>
     /// </summary>
     let ``College/key/amenity/value/college`` =
-        Namespaced_IRI.parse _namespace_name "College/key/amenity/value/college" |> NamespacedName
+        _prefix "College/key/amenity/value/college"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Commercial"></see>
     /// </summary>
-    let Commercial = Namespaced_IRI.parse _namespace_name "Commercial" |> NamespacedName
+    let Commercial = _prefix "Commercial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Commercial/key/amenity/value/commercial"></see>
     /// </summary>
     let ``Commercial/key/amenity/value/commercial`` =
-        Namespaced_IRI.parse _namespace_name "Commercial/key/amenity/value/commercial" |> NamespacedName
+        _prefix "Commercial/key/amenity/value/commercial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommercialLanduse"></see>
     /// </summary>
-    let CommercialLanduse =
-        Namespaced_IRI.parse _namespace_name "CommercialLanduse" |> NamespacedName
+    let CommercialLanduse = _prefix "CommercialLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommercialLanduse/key/landuse/value/commercial"></see>
     /// </summary>
     let ``CommercialLanduse/key/landuse/value/commercial`` =
-        Namespaced_IRI.parse _namespace_name "CommercialLanduse/key/landuse/value/commercial" |> NamespacedName
+        _prefix "CommercialLanduse/key/landuse/value/commercial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Common"></see>
     /// </summary>
-    let Common = Namespaced_IRI.parse _namespace_name "Common" |> NamespacedName
-
+    let Common = _prefix "Common"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Common/key/leisure/value/common"></see>
     /// </summary>
-    let ``Common/key/leisure/value/common`` =
-        Namespaced_IRI.parse _namespace_name "Common/key/leisure/value/common" |> NamespacedName
-
+    let ``Common/key/leisure/value/common`` = _prefix "Common/key/leisure/value/common"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Communication"></see>
     /// </summary>
-    let Communication =
-        Namespaced_IRI.parse _namespace_name "Communication" |> NamespacedName
+    let Communication = _prefix "Communication"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Communication/key/shop/value/communication"></see>
     /// </summary>
     let ``Communication/key/shop/value/communication`` =
-        Namespaced_IRI.parse _namespace_name "Communication/key/shop/value/communication" |> NamespacedName
+        _prefix "Communication/key/shop/value/communication"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Communications"></see>
     /// </summary>
-    let Communications =
-        Namespaced_IRI.parse _namespace_name "Communications" |> NamespacedName
+    let Communications = _prefix "Communications"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Communications/key/shop/value/communications"></see>
     /// </summary>
     let ``Communications/key/shop/value/communications`` =
-        Namespaced_IRI.parse _namespace_name "Communications/key/shop/value/communications" |> NamespacedName
+        _prefix "Communications/key/shop/value/communications"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunicationsTower"></see>
     /// </summary>
-    let CommunicationsTower =
-        Namespaced_IRI.parse _namespace_name "CommunicationsTower" |> NamespacedName
+    let CommunicationsTower = _prefix "CommunicationsTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunicationsTower/key/man_made/value/communications_tower"></see>
     /// </summary>
     let ``CommunicationsTower/key/man_made/value/communications_tower`` =
-        Namespaced_IRI.parse _namespace_name "CommunicationsTower/key/man_made/value/communications_tower" |> NamespacedName
+        _prefix "CommunicationsTower/key/man_made/value/communications_tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunicationsTransponder"></see>
     /// </summary>
-    let CommunicationsTransponder =
-        Namespaced_IRI.parse _namespace_name "CommunicationsTransponder" |> NamespacedName
+    let CommunicationsTransponder = _prefix "CommunicationsTransponder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunicationsTransponder/key/man_made/value/communications_transponder"></see>
     /// </summary>
     let ``CommunicationsTransponder/key/man_made/value/communications_transponder`` =
-        Namespaced_IRI.parse _namespace_name "CommunicationsTransponder/key/man_made/value/communications_transponder" |> NamespacedName
+        _prefix "CommunicationsTransponder/key/man_made/value/communications_transponder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunityCentre"></see>
     /// </summary>
-    let CommunityCentre =
-        Namespaced_IRI.parse _namespace_name "CommunityCentre" |> NamespacedName
+    let CommunityCentre = _prefix "CommunityCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunityCentre/key/amenity/value/community_centre"></see>
     /// </summary>
     let ``CommunityCentre/key/amenity/value/community_centre`` =
-        Namespaced_IRI.parse _namespace_name "CommunityCentre/key/amenity/value/community_centre" |> NamespacedName
+        _prefix "CommunityCentre/key/amenity/value/community_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunityHall"></see>
     /// </summary>
-    let CommunityHall =
-        Namespaced_IRI.parse _namespace_name "CommunityHall" |> NamespacedName
+    let CommunityHall = _prefix "CommunityHall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CommunityHall/key/amenity/value/community_hall"></see>
     /// </summary>
     let ``CommunityHall/key/amenity/value/community_hall`` =
-        Namespaced_IRI.parse _namespace_name "CommunityHall/key/amenity/value/community_hall" |> NamespacedName
+        _prefix "CommunityHall/key/amenity/value/community_hall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Company"></see>
     /// </summary>
-    let Company = Namespaced_IRI.parse _namespace_name "Company" |> NamespacedName
+    let Company = _prefix "Company"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Company/key/amenity/value/company"></see>
     /// </summary>
     let ``Company/key/amenity/value/company`` =
-        Namespaced_IRI.parse _namespace_name "Company/key/amenity/value/company" |> NamespacedName
+        _prefix "Company/key/amenity/value/company"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CompanyOffice"></see>
     /// </summary>
-    let CompanyOffice =
-        Namespaced_IRI.parse _namespace_name "CompanyOffice" |> NamespacedName
+    let CompanyOffice = _prefix "CompanyOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CompanyOffice/key/office/value/company"></see>
     /// </summary>
     let ``CompanyOffice/key/office/value/company`` =
-        Namespaced_IRI.parse _namespace_name "CompanyOffice/key/office/value/company" |> NamespacedName
+        _prefix "CompanyOffice/key/office/value/company"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Computer"></see>
     /// </summary>
-    let Computer = Namespaced_IRI.parse _namespace_name "Computer" |> NamespacedName
+    let Computer = _prefix "Computer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Computer/key/shop/value/computer"></see>
     /// </summary>
     let ``Computer/key/shop/value/computer`` =
-        Namespaced_IRI.parse _namespace_name "Computer/key/shop/value/computer" |> NamespacedName
+        _prefix "Computer/key/shop/value/computer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConcertHall"></see>
     /// </summary>
-    let ConcertHall =
-        Namespaced_IRI.parse _namespace_name "ConcertHall" |> NamespacedName
+    let ConcertHall = _prefix "ConcertHall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConcertHall/key/amenity/value/concert_hall"></see>
     /// </summary>
     let ``ConcertHall/key/amenity/value/concert_hall`` =
-        Namespaced_IRI.parse _namespace_name "ConcertHall/key/amenity/value/concert_hall" |> NamespacedName
+        _prefix "ConcertHall/key/amenity/value/concert_hall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Condos"></see>
     /// </summary>
-    let Condos = Namespaced_IRI.parse _namespace_name "Condos" |> NamespacedName
-
+    let Condos = _prefix "Condos"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Condos/key/shop/value/condos"></see>
     /// </summary>
-    let ``Condos/key/shop/value/condos`` =
-        Namespaced_IRI.parse _namespace_name "Condos/key/shop/value/condos" |> NamespacedName
-
+    let ``Condos/key/shop/value/condos`` = _prefix "Condos/key/shop/value/condos"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Confectionery"></see>
     /// </summary>
-    let Confectionery =
-        Namespaced_IRI.parse _namespace_name "Confectionery" |> NamespacedName
+    let Confectionery = _prefix "Confectionery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Confectionery/key/craft/value/confectionery"></see>
     /// </summary>
     let ``Confectionery/key/craft/value/confectionery`` =
-        Namespaced_IRI.parse _namespace_name "Confectionery/key/craft/value/confectionery" |> NamespacedName
+        _prefix "Confectionery/key/craft/value/confectionery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Confectionery/key/shop/value/confectionery"></see>
     /// </summary>
     let ``Confectionery/key/shop/value/confectionery`` =
-        Namespaced_IRI.parse _namespace_name "Confectionery/key/shop/value/confectionery" |> NamespacedName
+        _prefix "Confectionery/key/shop/value/confectionery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConferenceCentre"></see>
     /// </summary>
-    let ConferenceCentre =
-        Namespaced_IRI.parse _namespace_name "ConferenceCentre" |> NamespacedName
+    let ConferenceCentre = _prefix "ConferenceCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConferenceCentre/key/amenity/value/conference_centre"></see>
     /// </summary>
     let ``ConferenceCentre/key/amenity/value/conference_centre`` =
-        Namespaced_IRI.parse _namespace_name "ConferenceCentre/key/amenity/value/conference_centre" |> NamespacedName
+        _prefix "ConferenceCentre/key/amenity/value/conference_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Construction"></see>
     /// </summary>
-    let Construction =
-        Namespaced_IRI.parse _namespace_name "Construction" |> NamespacedName
+    let Construction = _prefix "Construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Construction/key/amenity/value/construction"></see>
     /// </summary>
     let ``Construction/key/amenity/value/construction`` =
-        Namespaced_IRI.parse _namespace_name "Construction/key/amenity/value/construction" |> NamespacedName
+        _prefix "Construction/key/amenity/value/construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConstructionLanduse"></see>
     /// </summary>
-    let ConstructionLanduse =
-        Namespaced_IRI.parse _namespace_name "ConstructionLanduse" |> NamespacedName
+    let ConstructionLanduse = _prefix "ConstructionLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConstructionLanduse/key/landuse/value/construction"></see>
     /// </summary>
     let ``ConstructionLanduse/key/landuse/value/construction`` =
-        Namespaced_IRI.parse _namespace_name "ConstructionLanduse/key/landuse/value/construction" |> NamespacedName
+        _prefix "ConstructionLanduse/key/landuse/value/construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConstructionShop"></see>
     /// </summary>
-    let ConstructionShop =
-        Namespaced_IRI.parse _namespace_name "ConstructionShop" |> NamespacedName
+    let ConstructionShop = _prefix "ConstructionShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ConstructionShop/key/shop/value/construction"></see>
     /// </summary>
     let ``ConstructionShop/key/shop/value/construction`` =
-        Namespaced_IRI.parse _namespace_name "ConstructionShop/key/shop/value/construction" |> NamespacedName
+        _prefix "ConstructionShop/key/shop/value/construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Consulate"></see>
     /// </summary>
-    let Consulate = Namespaced_IRI.parse _namespace_name "Consulate" |> NamespacedName
+    let Consulate = _prefix "Consulate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Consulate/key/amenity/value/consulate"></see>
     /// </summary>
     let ``Consulate/key/amenity/value/consulate`` =
-        Namespaced_IRI.parse _namespace_name "Consulate/key/amenity/value/consulate" |> NamespacedName
+        _prefix "Consulate/key/amenity/value/consulate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Continent"></see>
     /// </summary>
-    let Continent = Namespaced_IRI.parse _namespace_name "Continent" |> NamespacedName
+    let Continent = _prefix "Continent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Continent/key/place/value/continent"></see>
     /// </summary>
     let ``Continent/key/place/value/continent`` =
-        Namespaced_IRI.parse _namespace_name "Continent/key/place/value/continent" |> NamespacedName
+        _prefix "Continent/key/place/value/continent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Convenience"></see>
     /// </summary>
-    let Convenience =
-        Namespaced_IRI.parse _namespace_name "Convenience" |> NamespacedName
+    let Convenience = _prefix "Convenience"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Convenience/key/shop/value/convenience"></see>
     /// </summary>
     let ``Convenience/key/shop/value/convenience`` =
-        Namespaced_IRI.parse _namespace_name "Convenience/key/shop/value/convenience" |> NamespacedName
+        _prefix "Convenience/key/shop/value/convenience"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Copyshop"></see>
     /// </summary>
-    let Copyshop = Namespaced_IRI.parse _namespace_name "Copyshop" |> NamespacedName
+    let Copyshop = _prefix "Copyshop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Copyshop/key/shop/value/copyshop"></see>
     /// </summary>
     let ``Copyshop/key/shop/value/copyshop`` =
-        Namespaced_IRI.parse _namespace_name "Copyshop/key/shop/value/copyshop" |> NamespacedName
+        _prefix "Copyshop/key/shop/value/copyshop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cosmetics"></see>
     /// </summary>
-    let Cosmetics = Namespaced_IRI.parse _namespace_name "Cosmetics" |> NamespacedName
+    let Cosmetics = _prefix "Cosmetics"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cosmetics/key/shop/value/cosmetics"></see>
     /// </summary>
     let ``Cosmetics/key/shop/value/cosmetics`` =
-        Namespaced_IRI.parse _namespace_name "Cosmetics/key/shop/value/cosmetics" |> NamespacedName
+        _prefix "Cosmetics/key/shop/value/cosmetics"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Country"></see>
     /// </summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
-
+    let Country = _prefix "Country"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Country/key/place/value/country"></see>
     /// </summary>
-    let ``Country/key/place/value/country`` =
-        Namespaced_IRI.parse _namespace_name "Country/key/place/value/country" |> NamespacedName
-
+    let ``Country/key/place/value/country`` = _prefix "Country/key/place/value/country"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/County"></see>
     /// </summary>
-    let County = Namespaced_IRI.parse _namespace_name "County" |> NamespacedName
-
+    let County = _prefix "County"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/County/key/place/value/county"></see>
     /// </summary>
-    let ``County/key/place/value/county`` =
-        Namespaced_IRI.parse _namespace_name "County/key/place/value/county" |> NamespacedName
-
+    let ``County/key/place/value/county`` = _prefix "County/key/place/value/county"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Courthouse"></see>
     /// </summary>
-    let Courthouse = Namespaced_IRI.parse _namespace_name "Courthouse" |> NamespacedName
+    let Courthouse = _prefix "Courthouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Courthouse/key/amenity/value/courthouse"></see>
     /// </summary>
     let ``Courthouse/key/amenity/value/courthouse`` =
-        Namespaced_IRI.parse _namespace_name "Courthouse/key/amenity/value/courthouse" |> NamespacedName
+        _prefix "Courthouse/key/amenity/value/courthouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CoveredReservoir"></see>
     /// </summary>
-    let CoveredReservoir =
-        Namespaced_IRI.parse _namespace_name "CoveredReservoir" |> NamespacedName
+    let CoveredReservoir = _prefix "CoveredReservoir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CoveredReservoir/key/man_made/value/reservoir_covered"></see>
     /// </summary>
     let ``CoveredReservoir/key/man_made/value/reservoir_covered`` =
-        Namespaced_IRI.parse _namespace_name "CoveredReservoir/key/man_made/value/reservoir_covered" |> NamespacedName
+        _prefix "CoveredReservoir/key/man_made/value/reservoir_covered"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Craft/key/shop/value/craft"></see>
     /// </summary>
-    let ``Craft/key/shop/value/craft`` =
-        Namespaced_IRI.parse _namespace_name "Craft/key/shop/value/craft" |> NamespacedName
-
+    let ``Craft/key/shop/value/craft`` = _prefix "Craft/key/shop/value/craft"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crafts"></see>
     /// </summary>
-    let Crafts = Namespaced_IRI.parse _namespace_name "Crafts" |> NamespacedName
-
+    let Crafts = _prefix "Crafts"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crafts/key/shop/value/crafts"></see>
     /// </summary>
-    let ``Crafts/key/shop/value/crafts`` =
-        Namespaced_IRI.parse _namespace_name "Crafts/key/shop/value/crafts" |> NamespacedName
-
+    let ``Crafts/key/shop/value/crafts`` = _prefix "Crafts/key/shop/value/crafts"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crane"></see>
     /// </summary>
-    let Crane = Namespaced_IRI.parse _namespace_name "Crane" |> NamespacedName
-
+    let Crane = _prefix "Crane"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crane/key/man_made/value/crane"></see>
     /// </summary>
-    let ``Crane/key/man_made/value/crane`` =
-        Namespaced_IRI.parse _namespace_name "Crane/key/man_made/value/crane" |> NamespacedName
-
+    let ``Crane/key/man_made/value/crane`` = _prefix "Crane/key/man_made/value/crane"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crater"></see>
     /// </summary>
-    let Crater = Namespaced_IRI.parse _namespace_name "Crater" |> NamespacedName
-
+    let Crater = _prefix "Crater"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crater/key/natural/value/crater"></see>
     /// </summary>
-    let ``Crater/key/natural/value/crater`` =
-        Namespaced_IRI.parse _namespace_name "Crater/key/natural/value/crater" |> NamespacedName
-
+    let ``Crater/key/natural/value/crater`` = _prefix "Crater/key/natural/value/crater"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crematorium"></see>
     /// </summary>
-    let Crematorium =
-        Namespaced_IRI.parse _namespace_name "Crematorium" |> NamespacedName
+    let Crematorium = _prefix "Crematorium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Crematorium/key/amenity/value/crematorium"></see>
     /// </summary>
     let ``Crematorium/key/amenity/value/crematorium`` =
-        Namespaced_IRI.parse _namespace_name "Crematorium/key/amenity/value/crematorium" |> NamespacedName
+        _prefix "Crematorium/key/amenity/value/crematorium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cross"></see>
     /// </summary>
-    let Cross = Namespaced_IRI.parse _namespace_name "Cross" |> NamespacedName
-
+    let Cross = _prefix "Cross"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cross/key/amenity/value/cross"></see>
     /// </summary>
-    let ``Cross/key/amenity/value/cross`` =
-        Namespaced_IRI.parse _namespace_name "Cross/key/amenity/value/cross" |> NamespacedName
-
+    let ``Cross/key/amenity/value/cross`` = _prefix "Cross/key/amenity/value/cross"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cushion"></see>
     /// </summary>
-    let Cushion = Namespaced_IRI.parse _namespace_name "Cushion" |> NamespacedName
+    let Cushion = _prefix "Cushion"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cushion/key/traffic_calming/value/cushion"></see>
     /// </summary>
     let ``Cushion/key/traffic_calming/value/cushion`` =
-        Namespaced_IRI.parse _namespace_name "Cushion/key/traffic_calming/value/cushion" |> NamespacedName
+        _prefix "Cushion/key/traffic_calming/value/cushion"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Customs"></see>
     /// </summary>
-    let Customs = Namespaced_IRI.parse _namespace_name "Customs" |> NamespacedName
+    let Customs = _prefix "Customs"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Customs/key/amenity/value/customs"></see>
     /// </summary>
     let ``Customs/key/amenity/value/customs`` =
-        Namespaced_IRI.parse _namespace_name "Customs/key/amenity/value/customs" |> NamespacedName
+        _prefix "Customs/key/amenity/value/customs"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cutline"></see>
     /// </summary>
-    let Cutline = Namespaced_IRI.parse _namespace_name "Cutline" |> NamespacedName
+    let Cutline = _prefix "Cutline"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cutline/key/man_made/value/cutline"></see>
     /// </summary>
     let ``Cutline/key/man_made/value/cutline`` =
-        Namespaced_IRI.parse _namespace_name "Cutline/key/man_made/value/cutline" |> NamespacedName
+        _prefix "Cutline/key/man_made/value/cutline"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CycleBarrier"></see>
     /// </summary>
-    let CycleBarrier =
-        Namespaced_IRI.parse _namespace_name "CycleBarrier" |> NamespacedName
+    let CycleBarrier = _prefix "CycleBarrier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CycleBarrier/key/barrier/value/cycle_barrier"></see>
     /// </summary>
     let ``CycleBarrier/key/barrier/value/cycle_barrier`` =
-        Namespaced_IRI.parse _namespace_name "CycleBarrier/key/barrier/value/cycle_barrier" |> NamespacedName
+        _prefix "CycleBarrier/key/barrier/value/cycle_barrier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cycleway"></see>
     /// </summary>
-    let Cycleway = Namespaced_IRI.parse _namespace_name "Cycleway" |> NamespacedName
+    let Cycleway = _prefix "Cycleway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Cycleway/key/highway/value/cycleway"></see>
     /// </summary>
     let ``Cycleway/key/highway/value/cycleway`` =
-        Namespaced_IRI.parse _namespace_name "Cycleway/key/highway/value/cycleway" |> NamespacedName
+        _prefix "Cycleway/key/highway/value/cycleway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayLane"></see>
     /// </summary>
-    let CyclewayLane =
-        Namespaced_IRI.parse _namespace_name "CyclewayLane" |> NamespacedName
+    let CyclewayLane = _prefix "CyclewayLane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayLane/key/cycleway/value/lane"></see>
     /// </summary>
     let ``CyclewayLane/key/cycleway/value/lane`` =
-        Namespaced_IRI.parse _namespace_name "CyclewayLane/key/cycleway/value/lane" |> NamespacedName
+        _prefix "CyclewayLane/key/cycleway/value/lane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayThing"></see>
     /// </summary>
-    let CyclewayThing =
-        Namespaced_IRI.parse _namespace_name "CyclewayThing" |> NamespacedName
-
+    let CyclewayThing = _prefix "CyclewayThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayOpposite"></see>
     /// </summary>
-    let CyclewayOpposite =
-        Namespaced_IRI.parse _namespace_name "CyclewayOpposite" |> NamespacedName
+    let CyclewayOpposite = _prefix "CyclewayOpposite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayOpposite/key/cycleway/value/opposite"></see>
     /// </summary>
     let ``CyclewayOpposite/key/cycleway/value/opposite`` =
-        Namespaced_IRI.parse _namespace_name "CyclewayOpposite/key/cycleway/value/opposite" |> NamespacedName
+        _prefix "CyclewayOpposite/key/cycleway/value/opposite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayOppositeLane"></see>
     /// </summary>
-    let CyclewayOppositeLane =
-        Namespaced_IRI.parse _namespace_name "CyclewayOppositeLane" |> NamespacedName
+    let CyclewayOppositeLane = _prefix "CyclewayOppositeLane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayOppositeLane/key/cycleway/value/opposite_lane"></see>
     /// </summary>
     let ``CyclewayOppositeLane/key/cycleway/value/opposite_lane`` =
-        Namespaced_IRI.parse _namespace_name "CyclewayOppositeLane/key/cycleway/value/opposite_lane" |> NamespacedName
+        _prefix "CyclewayOppositeLane/key/cycleway/value/opposite_lane"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayOppositeTrack"></see>
     /// </summary>
-    let CyclewayOppositeTrack =
-        Namespaced_IRI.parse _namespace_name "CyclewayOppositeTrack" |> NamespacedName
+    let CyclewayOppositeTrack = _prefix "CyclewayOppositeTrack"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayOppositeTrack/key/cycleway/value/opposite_track"></see>
     /// </summary>
     let ``CyclewayOppositeTrack/key/cycleway/value/opposite_track`` =
-        Namespaced_IRI.parse _namespace_name "CyclewayOppositeTrack/key/cycleway/value/opposite_track" |> NamespacedName
+        _prefix "CyclewayOppositeTrack/key/cycleway/value/opposite_track"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayTrack"></see>
     /// </summary>
-    let CyclewayTrack =
-        Namespaced_IRI.parse _namespace_name "CyclewayTrack" |> NamespacedName
+    let CyclewayTrack = _prefix "CyclewayTrack"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/CyclewayTrack/key/cycleway/value/track"></see>
     /// </summary>
     let ``CyclewayTrack/key/cycleway/value/track`` =
-        Namespaced_IRI.parse _namespace_name "CyclewayTrack/key/cycleway/value/track" |> NamespacedName
+        _prefix "CyclewayTrack/key/cycleway/value/track"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dairy"></see>
     /// </summary>
-    let Dairy = Namespaced_IRI.parse _namespace_name "Dairy" |> NamespacedName
-
+    let Dairy = _prefix "Dairy"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dairy/key/shop/value/dairy"></see>
     /// </summary>
-    let ``Dairy/key/shop/value/dairy`` =
-        Namespaced_IRI.parse _namespace_name "Dairy/key/shop/value/dairy" |> NamespacedName
-
+    let ``Dairy/key/shop/value/dairy`` = _prefix "Dairy/key/shop/value/dairy"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dam"></see>
     /// </summary>
-    let Dam = Namespaced_IRI.parse _namespace_name "Dam" |> NamespacedName
-
+    let Dam = _prefix "Dam"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dam/key/waterway/value/dam"></see>
     /// </summary>
-    let ``Dam/key/waterway/value/dam`` =
-        Namespaced_IRI.parse _namespace_name "Dam/key/waterway/value/dam" |> NamespacedName
-
+    let ``Dam/key/waterway/value/dam`` = _prefix "Dam/key/waterway/value/dam"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dance"></see>
     /// </summary>
-    let Dance = Namespaced_IRI.parse _namespace_name "Dance" |> NamespacedName
-
+    let Dance = _prefix "Dance"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dance/key/leisure/value/dance"></see>
     /// </summary>
-    let ``Dance/key/leisure/value/dance`` =
-        Namespaced_IRI.parse _namespace_name "Dance/key/leisure/value/dance" |> NamespacedName
-
+    let ``Dance/key/leisure/value/dance`` = _prefix "Dance/key/leisure/value/dance"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DangerArea"></see>
     /// </summary>
-    let DangerArea = Namespaced_IRI.parse _namespace_name "DangerArea" |> NamespacedName
+    let DangerArea = _prefix "DangerArea"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DangerArea/key/military/value/danger_area"></see>
     /// </summary>
     let ``DangerArea/key/military/value/danger_area`` =
-        Namespaced_IRI.parse _namespace_name "DangerArea/key/military/value/danger_area" |> NamespacedName
+        _prefix "DangerArea/key/military/value/danger_area"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Daycare"></see>
     /// </summary>
-    let Daycare = Namespaced_IRI.parse _namespace_name "Daycare" |> NamespacedName
+    let Daycare = _prefix "Daycare"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Daycare/key/amenity/value/daycare"></see>
     /// </summary>
     let ``Daycare/key/amenity/value/daycare`` =
-        Namespaced_IRI.parse _namespace_name "Daycare/key/amenity/value/daycare" |> NamespacedName
+        _prefix "Daycare/key/amenity/value/daycare"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DeadPub"></see>
     /// </summary>
-    let DeadPub = Namespaced_IRI.parse _namespace_name "DeadPub" |> NamespacedName
+    let DeadPub = _prefix "DeadPub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DeadPub/key/amenity/value/dead_pub"></see>
     /// </summary>
     let ``DeadPub/key/amenity/value/dead_pub`` =
-        Namespaced_IRI.parse _namespace_name "DeadPub/key/amenity/value/dead_pub" |> NamespacedName
+        _prefix "DeadPub/key/amenity/value/dead_pub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Decoration"></see>
     /// </summary>
-    let Decoration = Namespaced_IRI.parse _namespace_name "Decoration" |> NamespacedName
+    let Decoration = _prefix "Decoration"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Decoration/key/shop/value/decoration"></see>
     /// </summary>
     let ``Decoration/key/shop/value/decoration`` =
-        Namespaced_IRI.parse _namespace_name "Decoration/key/shop/value/decoration" |> NamespacedName
+        _prefix "Decoration/key/shop/value/decoration"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Deli"></see>
     /// </summary>
-    let Deli = Namespaced_IRI.parse _namespace_name "Deli" |> NamespacedName
-
+    let Deli = _prefix "Deli"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Deli/key/shop/value/deli"></see>
     /// </summary>
-    let ``Deli/key/shop/value/deli`` =
-        Namespaced_IRI.parse _namespace_name "Deli/key/shop/value/deli" |> NamespacedName
-
+    let ``Deli/key/shop/value/deli`` = _prefix "Deli/key/shop/value/deli"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Delicatessen"></see>
     /// </summary>
-    let Delicatessen =
-        Namespaced_IRI.parse _namespace_name "Delicatessen" |> NamespacedName
+    let Delicatessen = _prefix "Delicatessen"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Delicatessen/key/shop/value/delicatessen"></see>
     /// </summary>
     let ``Delicatessen/key/shop/value/delicatessen`` =
-        Namespaced_IRI.parse _namespace_name "Delicatessen/key/shop/value/delicatessen" |> NamespacedName
+        _prefix "Delicatessen/key/shop/value/delicatessen"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dentist"></see>
     /// </summary>
-    let Dentist = Namespaced_IRI.parse _namespace_name "Dentist" |> NamespacedName
+    let Dentist = _prefix "Dentist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dentist/key/amenity/value/dentist"></see>
     /// </summary>
     let ``Dentist/key/amenity/value/dentist`` =
-        Namespaced_IRI.parse _namespace_name "Dentist/key/amenity/value/dentist" |> NamespacedName
+        _prefix "Dentist/key/amenity/value/dentist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DepartmentStore"></see>
     /// </summary>
-    let DepartmentStore =
-        Namespaced_IRI.parse _namespace_name "DepartmentStore" |> NamespacedName
+    let DepartmentStore = _prefix "DepartmentStore"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DepartmentStore/key/shop/value/department_store"></see>
     /// </summary>
     let ``DepartmentStore/key/shop/value/department_store`` =
-        Namespaced_IRI.parse _namespace_name "DepartmentStore/key/shop/value/department_store" |> NamespacedName
+        _prefix "DepartmentStore/key/shop/value/department_store"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dept"></see>
     /// </summary>
-    let Dept = Namespaced_IRI.parse _namespace_name "Dept" |> NamespacedName
-
+    let Dept = _prefix "Dept"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dept/key/shop/value/dept"></see>
     /// </summary>
-    let ``Dept/key/shop/value/dept`` =
-        Namespaced_IRI.parse _namespace_name "Dept/key/shop/value/dept" |> NamespacedName
-
+    let ``Dept/key/shop/value/dept`` = _prefix "Dept/key/shop/value/dept"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Depth"></see>
     /// </summary>
-    let Depth = Namespaced_IRI.parse _namespace_name "Depth" |> NamespacedName
-
+    let Depth = _prefix "Depth"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Depth/key/waterway/value/depth"></see>
     /// </summary>
-    let ``Depth/key/waterway/value/depth`` =
-        Namespaced_IRI.parse _namespace_name "Depth/key/waterway/value/depth" |> NamespacedName
-
+    let ``Depth/key/waterway/value/depth`` = _prefix "Depth/key/waterway/value/depth"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Derestricted+speed+limit"></see>
     /// </summary>
-    let ``Derestricted+speed+limit`` =
-        Namespaced_IRI.parse _namespace_name "Derestricted+speed+limit" |> NamespacedName
+    let ``Derestricted+speed+limit`` = _prefix "Derestricted+speed+limit"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Derestricted+speed+limit/key/amenity/value/derestricted%20speed%20limit"></see>
     /// </summary>
     let ``Derestricted+speed+limit/key/amenity/value/derestricted%20speed%20limit`` =
-        Namespaced_IRI.parse _namespace_name "Derestricted+speed+limit/key/amenity/value/derestricted%20speed%20limit" |> NamespacedName
+        _prefix "Derestricted+speed+limit/key/amenity/value/derestricted%20speed%20limit"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Design"></see>
     /// </summary>
-    let Design = Namespaced_IRI.parse _namespace_name "Design" |> NamespacedName
-
+    let Design = _prefix "Design"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Design/key/shop/value/design"></see>
     /// </summary>
-    let ``Design/key/shop/value/design`` =
-        Namespaced_IRI.parse _namespace_name "Design/key/shop/value/design" |> NamespacedName
-
+    let ``Design/key/shop/value/design`` = _prefix "Design/key/shop/value/design"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Detached"></see>
     /// </summary>
-    let Detached = Namespaced_IRI.parse _namespace_name "Detached" |> NamespacedName
+    let Detached = _prefix "Detached"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Detached/key/building/value/detached"></see>
     /// </summary>
     let ``Detached/key/building/value/detached`` =
-        Namespaced_IRI.parse _namespace_name "Detached/key/building/value/detached" |> NamespacedName
+        _prefix "Detached/key/building/value/detached"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DetourRoute"></see>
     /// </summary>
-    let DetourRoute =
-        Namespaced_IRI.parse _namespace_name "DetourRoute" |> NamespacedName
+    let DetourRoute = _prefix "DetourRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DetourRoute/key/route/value/detour"></see>
     /// </summary>
     let ``DetourRoute/key/route/value/detour`` =
-        Namespaced_IRI.parse _namespace_name "DetourRoute/key/route/value/detour" |> NamespacedName
+        _prefix "DetourRoute/key/route/value/detour"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Discount"></see>
     /// </summary>
-    let Discount = Namespaced_IRI.parse _namespace_name "Discount" |> NamespacedName
+    let Discount = _prefix "Discount"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Discount/key/shop/value/discount"></see>
     /// </summary>
     let ``Discount/key/shop/value/discount`` =
-        Namespaced_IRI.parse _namespace_name "Discount/key/shop/value/discount" |> NamespacedName
+        _prefix "Discount/key/shop/value/discount"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DisusedPub"></see>
     /// </summary>
-    let DisusedPub = Namespaced_IRI.parse _namespace_name "DisusedPub" |> NamespacedName
+    let DisusedPub = _prefix "DisusedPub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DisusedPub/key/amenity/value/disused_pub"></see>
     /// </summary>
     let ``DisusedPub/key/amenity/value/disused_pub`` =
-        Namespaced_IRI.parse _namespace_name "DisusedPub/key/amenity/value/disused_pub" |> NamespacedName
+        _prefix "DisusedPub/key/amenity/value/disused_pub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DisusedRailway"></see>
     /// </summary>
-    let DisusedRailway =
-        Namespaced_IRI.parse _namespace_name "DisusedRailway" |> NamespacedName
+    let DisusedRailway = _prefix "DisusedRailway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DisusedRailway/key/railway/value/disused"></see>
     /// </summary>
     let ``DisusedRailway/key/railway/value/disused`` =
-        Namespaced_IRI.parse _namespace_name "DisusedRailway/key/railway/value/disused" |> NamespacedName
+        _prefix "DisusedRailway/key/railway/value/disused"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DisusedStation"></see>
     /// </summary>
-    let DisusedStation =
-        Namespaced_IRI.parse _namespace_name "DisusedStation" |> NamespacedName
+    let DisusedStation = _prefix "DisusedStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DisusedStation/key/railway/value/disused_station"></see>
     /// </summary>
     let ``DisusedStation/key/railway/value/disused_station`` =
-        Namespaced_IRI.parse _namespace_name "DisusedStation/key/railway/value/disused_station" |> NamespacedName
+        _prefix "DisusedStation/key/railway/value/disused_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ditch"></see>
     /// </summary>
-    let Ditch = Namespaced_IRI.parse _namespace_name "Ditch" |> NamespacedName
-
+    let Ditch = _prefix "Ditch"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ditch/key/waterway/value/ditch"></see>
     /// </summary>
-    let ``Ditch/key/waterway/value/ditch`` =
-        Namespaced_IRI.parse _namespace_name "Ditch/key/waterway/value/ditch" |> NamespacedName
-
+    let ``Ditch/key/waterway/value/ditch`` = _prefix "Ditch/key/waterway/value/ditch"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DitchBarrier"></see>
     /// </summary>
-    let DitchBarrier =
-        Namespaced_IRI.parse _namespace_name "DitchBarrier" |> NamespacedName
+    let DitchBarrier = _prefix "DitchBarrier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DitchBarrier/key/barrier/value/ditch"></see>
     /// </summary>
     let ``DitchBarrier/key/barrier/value/ditch`` =
-        Namespaced_IRI.parse _namespace_name "DitchBarrier/key/barrier/value/ditch" |> NamespacedName
+        _prefix "DitchBarrier/key/barrier/value/ditch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DiveCenter"></see>
     /// </summary>
-    let DiveCenter = Namespaced_IRI.parse _namespace_name "DiveCenter" |> NamespacedName
+    let DiveCenter = _prefix "DiveCenter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DiveCenter/key/amenity/value/dive_center"></see>
     /// </summary>
     let ``DiveCenter/key/amenity/value/dive_center`` =
-        Namespaced_IRI.parse _namespace_name "DiveCenter/key/amenity/value/dive_center" |> NamespacedName
+        _prefix "DiveCenter/key/amenity/value/dive_center"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DiveCentre"></see>
     /// </summary>
-    let DiveCentre = Namespaced_IRI.parse _namespace_name "DiveCentre" |> NamespacedName
+    let DiveCentre = _prefix "DiveCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DiveCentre/key/shop/value/dive_centre"></see>
     /// </summary>
     let ``DiveCentre/key/shop/value/dive_centre`` =
-        Namespaced_IRI.parse _namespace_name "DiveCentre/key/shop/value/dive_centre" |> NamespacedName
+        _prefix "DiveCentre/key/shop/value/dive_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Diy"></see>
     /// </summary>
-    let Diy = Namespaced_IRI.parse _namespace_name "Diy" |> NamespacedName
-
+    let Diy = _prefix "Diy"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Diy/key/shop/value/diy"></see>
     /// </summary>
-    let ``Diy/key/shop/value/diy`` =
-        Namespaced_IRI.parse _namespace_name "Diy/key/shop/value/diy" |> NamespacedName
-
+    let ``Diy/key/shop/value/diy`` = _prefix "Diy/key/shop/value/diy"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dock"></see>
     /// </summary>
-    let Dock = Namespaced_IRI.parse _namespace_name "Dock" |> NamespacedName
-
+    let Dock = _prefix "Dock"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dock/key/waterway/value/dock"></see>
     /// </summary>
-    let ``Dock/key/waterway/value/dock`` =
-        Namespaced_IRI.parse _namespace_name "Dock/key/waterway/value/dock" |> NamespacedName
-
+    let ``Dock/key/waterway/value/dock`` = _prefix "Dock/key/waterway/value/dock"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Doctor"></see>
     /// </summary>
-    let Doctor = Namespaced_IRI.parse _namespace_name "Doctor" |> NamespacedName
-
+    let Doctor = _prefix "Doctor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Doctor/key/amenity/value/doctor"></see>
     /// </summary>
-    let ``Doctor/key/amenity/value/doctor`` =
-        Namespaced_IRI.parse _namespace_name "Doctor/key/amenity/value/doctor" |> NamespacedName
-
+    let ``Doctor/key/amenity/value/doctor`` = _prefix "Doctor/key/amenity/value/doctor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Doctors"></see>
     /// </summary>
-    let Doctors = Namespaced_IRI.parse _namespace_name "Doctors" |> NamespacedName
+    let Doctors = _prefix "Doctors"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Doctors/key/amenity/value/doctors"></see>
     /// </summary>
     let ``Doctors/key/amenity/value/doctors`` =
-        Namespaced_IRI.parse _namespace_name "Doctors/key/amenity/value/doctors" |> NamespacedName
+        _prefix "Doctors/key/amenity/value/doctors"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DogBin"></see>
     /// </summary>
-    let DogBin = Namespaced_IRI.parse _namespace_name "DogBin" |> NamespacedName
+    let DogBin = _prefix "DogBin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DogBin/key/amenity/value/dog_bin"></see>
     /// </summary>
     let ``DogBin/key/amenity/value/dog_bin`` =
-        Namespaced_IRI.parse _namespace_name "DogBin/key/amenity/value/dog_bin" |> NamespacedName
+        _prefix "DogBin/key/amenity/value/dog_bin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DogPark"></see>
     /// </summary>
-    let DogPark = Namespaced_IRI.parse _namespace_name "DogPark" |> NamespacedName
+    let DogPark = _prefix "DogPark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DogPark/key/leisure/value/dog_park"></see>
     /// </summary>
     let ``DogPark/key/leisure/value/dog_park`` =
-        Namespaced_IRI.parse _namespace_name "DogPark/key/leisure/value/dog_park" |> NamespacedName
+        _prefix "DogPark/key/leisure/value/dog_park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DogWaste"></see>
     /// </summary>
-    let DogWaste = Namespaced_IRI.parse _namespace_name "DogWaste" |> NamespacedName
+    let DogWaste = _prefix "DogWaste"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DogWaste/key/amenity/value/dog_waste"></see>
     /// </summary>
     let ``DogWaste/key/amenity/value/dog_waste`` =
-        Namespaced_IRI.parse _namespace_name "DogWaste/key/amenity/value/dog_waste" |> NamespacedName
+        _prefix "DogWaste/key/amenity/value/dog_waste"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Doityourself"></see>
     /// </summary>
-    let Doityourself =
-        Namespaced_IRI.parse _namespace_name "Doityourself" |> NamespacedName
+    let Doityourself = _prefix "Doityourself"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Doityourself/key/shop/value/doityourself"></see>
     /// </summary>
     let ``Doityourself/key/shop/value/doityourself`` =
-        Namespaced_IRI.parse _namespace_name "Doityourself/key/shop/value/doityourself" |> NamespacedName
+        _prefix "Doityourself/key/shop/value/doityourself"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dollar"></see>
     /// </summary>
-    let Dollar = Namespaced_IRI.parse _namespace_name "Dollar" |> NamespacedName
-
+    let Dollar = _prefix "Dollar"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dollar/key/shop/value/dollar"></see>
     /// </summary>
-    let ``Dollar/key/shop/value/dollar`` =
-        Namespaced_IRI.parse _namespace_name "Dollar/key/shop/value/dollar" |> NamespacedName
-
+    let ``Dollar/key/shop/value/dollar`` = _prefix "Dollar/key/shop/value/dollar"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dormitory"></see>
     /// </summary>
-    let Dormitory = Namespaced_IRI.parse _namespace_name "Dormitory" |> NamespacedName
+    let Dormitory = _prefix "Dormitory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dormitory/key/amenity/value/dormitory"></see>
     /// </summary>
     let ``Dormitory/key/amenity/value/dormitory`` =
-        Namespaced_IRI.parse _namespace_name "Dormitory/key/amenity/value/dormitory" |> NamespacedName
+        _prefix "Dormitory/key/amenity/value/dormitory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Downhill+Terminal"></see>
     /// </summary>
-    let ``Downhill+Terminal`` =
-        Namespaced_IRI.parse _namespace_name "Downhill+Terminal" |> NamespacedName
+    let ``Downhill+Terminal`` = _prefix "Downhill+Terminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Downhill+Terminal/key/man_made/value/Downhill%20Terminal"></see>
     /// </summary>
     let ``Downhill+Terminal/key/man_made/value/Downhill%20Terminal`` =
-        Namespaced_IRI.parse _namespace_name "Downhill+Terminal/key/man_made/value/Downhill%20Terminal" |> NamespacedName
+        _prefix "Downhill+Terminal/key/man_made/value/Downhill%20Terminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DragLift"></see>
     /// </summary>
-    let DragLift = Namespaced_IRI.parse _namespace_name "DragLift" |> NamespacedName
+    let DragLift = _prefix "DragLift"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DragLift/key/aerialway/value/drag_lift"></see>
     /// </summary>
     let ``DragLift/key/aerialway/value/drag_lift`` =
-        Namespaced_IRI.parse _namespace_name "DragLift/key/aerialway/value/drag_lift" |> NamespacedName
+        _prefix "DragLift/key/aerialway/value/drag_lift"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Drain"></see>
     /// </summary>
-    let Drain = Namespaced_IRI.parse _namespace_name "Drain" |> NamespacedName
-
+    let Drain = _prefix "Drain"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Drain/key/waterway/value/drain"></see>
     /// </summary>
-    let ``Drain/key/waterway/value/drain`` =
-        Namespaced_IRI.parse _namespace_name "Drain/key/waterway/value/drain" |> NamespacedName
-
+    let ``Drain/key/waterway/value/drain`` = _prefix "Drain/key/waterway/value/drain"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dressmaker"></see>
     /// </summary>
-    let Dressmaker = Namespaced_IRI.parse _namespace_name "Dressmaker" |> NamespacedName
+    let Dressmaker = _prefix "Dressmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Dressmaker/key/craft/value/dressmaker"></see>
     /// </summary>
     let ``Dressmaker/key/craft/value/dressmaker`` =
-        Namespaced_IRI.parse _namespace_name "Dressmaker/key/craft/value/dressmaker" |> NamespacedName
+        _prefix "Dressmaker/key/craft/value/dressmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DrinkingWater"></see>
     /// </summary>
-    let DrinkingWater =
-        Namespaced_IRI.parse _namespace_name "DrinkingWater" |> NamespacedName
+    let DrinkingWater = _prefix "DrinkingWater"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DrinkingWater/key/amenity/value/drinking_water"></see>
     /// </summary>
     let ``DrinkingWater/key/amenity/value/drinking_water`` =
-        Namespaced_IRI.parse _namespace_name "DrinkingWater/key/amenity/value/drinking_water" |> NamespacedName
+        _prefix "DrinkingWater/key/amenity/value/drinking_water"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DriveWay"></see>
     /// </summary>
-    let DriveWay = Namespaced_IRI.parse _namespace_name "DriveWay" |> NamespacedName
+    let DriveWay = _prefix "DriveWay"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DriveWay/key/service/value/driveway"></see>
     /// </summary>
     let ``DriveWay/key/service/value/driveway`` =
-        Namespaced_IRI.parse _namespace_name "DriveWay/key/service/value/driveway" |> NamespacedName
+        _prefix "DriveWay/key/service/value/driveway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DrivingSchool"></see>
     /// </summary>
-    let DrivingSchool =
-        Namespaced_IRI.parse _namespace_name "DrivingSchool" |> NamespacedName
+    let DrivingSchool = _prefix "DrivingSchool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DrivingSchool/key/amenity/value/driving_school"></see>
     /// </summary>
     let ``DrivingSchool/key/amenity/value/driving_school`` =
-        Namespaced_IRI.parse _namespace_name "DrivingSchool/key/amenity/value/driving_school" |> NamespacedName
+        _prefix "DrivingSchool/key/amenity/value/driving_school"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DrivingSchoolShop"></see>
     /// </summary>
-    let DrivingSchoolShop =
-        Namespaced_IRI.parse _namespace_name "DrivingSchoolShop" |> NamespacedName
+    let DrivingSchoolShop = _prefix "DrivingSchoolShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DrivingSchoolShop/key/shop/value/driving_school"></see>
     /// </summary>
     let ``DrivingSchoolShop/key/shop/value/driving_school`` =
-        Namespaced_IRI.parse _namespace_name "DrivingSchoolShop/key/shop/value/driving_school" |> NamespacedName
+        _prefix "DrivingSchoolShop/key/shop/value/driving_school"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Drugstore"></see>
     /// </summary>
-    let Drugstore = Namespaced_IRI.parse _namespace_name "Drugstore" |> NamespacedName
+    let Drugstore = _prefix "Drugstore"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Drugstore/key/shop/value/drugstore"></see>
     /// </summary>
     let ``Drugstore/key/shop/value/drugstore`` =
-        Namespaced_IRI.parse _namespace_name "Drugstore/key/shop/value/drugstore" |> NamespacedName
+        _prefix "Drugstore/key/shop/value/drugstore"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DryCleaning"></see>
     /// </summary>
-    let DryCleaning =
-        Namespaced_IRI.parse _namespace_name "DryCleaning" |> NamespacedName
+    let DryCleaning = _prefix "DryCleaning"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/DryCleaning/key/shop/value/dry_cleaning"></see>
     /// </summary>
     let ``DryCleaning/key/shop/value/dry_cleaning`` =
-        Namespaced_IRI.parse _namespace_name "DryCleaning/key/shop/value/dry_cleaning" |> NamespacedName
+        _prefix "DryCleaning/key/shop/value/dry_cleaning"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EducationalInstitutionOffice"></see>
     /// </summary>
-    let EducationalInstitutionOffice =
-        Namespaced_IRI.parse _namespace_name "EducationalInstitutionOffice" |> NamespacedName
+    let EducationalInstitutionOffice = _prefix "EducationalInstitutionOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EducationalInstitutionOffice/key/office/value/educational_institution"></see>
     /// </summary>
     let ``EducationalInstitutionOffice/key/office/value/educational_institution`` =
-        Namespaced_IRI.parse _namespace_name "EducationalInstitutionOffice/key/office/value/educational_institution" |> NamespacedName
+        _prefix "EducationalInstitutionOffice/key/office/value/educational_institution"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Electrician"></see>
     /// </summary>
-    let Electrician =
-        Namespaced_IRI.parse _namespace_name "Electrician" |> NamespacedName
+    let Electrician = _prefix "Electrician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Electrician/key/shop/value/electrician"></see>
     /// </summary>
     let ``Electrician/key/shop/value/electrician`` =
-        Namespaced_IRI.parse _namespace_name "Electrician/key/shop/value/electrician" |> NamespacedName
+        _prefix "Electrician/key/shop/value/electrician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Electrician/key/craft/value/electrician"></see>
     /// </summary>
     let ``Electrician/key/craft/value/electrician`` =
-        Namespaced_IRI.parse _namespace_name "Electrician/key/craft/value/electrician" |> NamespacedName
+        _prefix "Electrician/key/craft/value/electrician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Electronics"></see>
     /// </summary>
-    let Electronics =
-        Namespaced_IRI.parse _namespace_name "Electronics" |> NamespacedName
+    let Electronics = _prefix "Electronics"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Electronics/key/shop/value/electronics"></see>
     /// </summary>
     let ``Electronics/key/shop/value/electronics`` =
-        Namespaced_IRI.parse _namespace_name "Electronics/key/shop/value/electronics" |> NamespacedName
+        _prefix "Electronics/key/shop/value/electronics"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Elevator"></see>
     /// </summary>
-    let Elevator = Namespaced_IRI.parse _namespace_name "Elevator" |> NamespacedName
+    let Elevator = _prefix "Elevator"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Elevator/key/amenity/value/elevator"></see>
     /// </summary>
     let ``Elevator/key/amenity/value/elevator`` =
-        Namespaced_IRI.parse _namespace_name "Elevator/key/amenity/value/elevator" |> NamespacedName
+        _prefix "Elevator/key/amenity/value/elevator"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Embassy"></see>
     /// </summary>
-    let Embassy = Namespaced_IRI.parse _namespace_name "Embassy" |> NamespacedName
+    let Embassy = _prefix "Embassy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Embassy/key/amenity/value/embassy"></see>
     /// </summary>
     let ``Embassy/key/amenity/value/embassy`` =
-        Namespaced_IRI.parse _namespace_name "Embassy/key/amenity/value/embassy" |> NamespacedName
+        _prefix "Embassy/key/amenity/value/embassy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyAccessPoint"></see>
     /// </summary>
-    let EmergencyAccessPoint =
-        Namespaced_IRI.parse _namespace_name "EmergencyAccessPoint" |> NamespacedName
+    let EmergencyAccessPoint = _prefix "EmergencyAccessPoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyAccessPoint/key/highway/value/emergency_access_point"></see>
     /// </summary>
     let ``EmergencyAccessPoint/key/highway/value/emergency_access_point`` =
-        Namespaced_IRI.parse _namespace_name "EmergencyAccessPoint/key/highway/value/emergency_access_point" |> NamespacedName
+        _prefix "EmergencyAccessPoint/key/highway/value/emergency_access_point"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyPhone"></see>
     /// </summary>
-    let EmergencyPhone =
-        Namespaced_IRI.parse _namespace_name "EmergencyPhone" |> NamespacedName
+    let EmergencyPhone = _prefix "EmergencyPhone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyPhone/key/emergency/value/phone"></see>
     /// </summary>
     let ``EmergencyPhone/key/emergency/value/phone`` =
-        Namespaced_IRI.parse _namespace_name "EmergencyPhone/key/emergency/value/phone" |> NamespacedName
+        _prefix "EmergencyPhone/key/emergency/value/phone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyPhone/key/amenity/value/emergency_phone"></see>
     /// </summary>
     let ``EmergencyPhone/key/amenity/value/emergency_phone`` =
-        Namespaced_IRI.parse _namespace_name "EmergencyPhone/key/amenity/value/emergency_phone" |> NamespacedName
+        _prefix "EmergencyPhone/key/amenity/value/emergency_phone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencySiren"></see>
     /// </summary>
-    let EmergencySiren =
-        Namespaced_IRI.parse _namespace_name "EmergencySiren" |> NamespacedName
+    let EmergencySiren = _prefix "EmergencySiren"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencySiren/key/emergency/value/siren"></see>
     /// </summary>
     let ``EmergencySiren/key/emergency/value/siren`` =
-        Namespaced_IRI.parse _namespace_name "EmergencySiren/key/emergency/value/siren" |> NamespacedName
+        _prefix "EmergencySiren/key/emergency/value/siren"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyTelephone"></see>
     /// </summary>
-    let EmergencyTelephone =
-        Namespaced_IRI.parse _namespace_name "EmergencyTelephone" |> NamespacedName
+    let EmergencyTelephone = _prefix "EmergencyTelephone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmergencyTelephone/key/amenity/value/emergency_telephone"></see>
     /// </summary>
     let ``EmergencyTelephone/key/amenity/value/emergency_telephone`` =
-        Namespaced_IRI.parse _namespace_name "EmergencyTelephone/key/amenity/value/emergency_telephone" |> NamespacedName
+        _prefix "EmergencyTelephone/key/amenity/value/emergency_telephone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmploymentAgencyOffice"></see>
     /// </summary>
-    let EmploymentAgencyOffice =
-        Namespaced_IRI.parse _namespace_name "EmploymentAgencyOffice" |> NamespacedName
+    let EmploymentAgencyOffice = _prefix "EmploymentAgencyOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EmploymentAgencyOffice/key/office/value/employment_agency"></see>
     /// </summary>
     let ``EmploymentAgencyOffice/key/office/value/employment_agency`` =
-        Namespaced_IRI.parse _namespace_name "EmploymentAgencyOffice/key/office/value/employment_agency" |> NamespacedName
+        _prefix "EmploymentAgencyOffice/key/office/value/employment_agency"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Empty"></see>
     /// </summary>
-    let Empty = Namespaced_IRI.parse _namespace_name "Empty" |> NamespacedName
-
+    let Empty = _prefix "Empty"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Empty/key/shop/value/empty"></see>
     /// </summary>
-    let ``Empty/key/shop/value/empty`` =
-        Namespaced_IRI.parse _namespace_name "Empty/key/shop/value/empty" |> NamespacedName
-
+    let ``Empty/key/shop/value/empty`` = _prefix "Empty/key/shop/value/empty"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Entrance"></see>
     /// </summary>
-    let Entrance = Namespaced_IRI.parse _namespace_name "Entrance" |> NamespacedName
+    let Entrance = _prefix "Entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Entrance/key/barrier/value/entrance"></see>
     /// </summary>
     let ``Entrance/key/barrier/value/entrance`` =
-        Namespaced_IRI.parse _namespace_name "Entrance/key/barrier/value/entrance" |> NamespacedName
+        _prefix "Entrance/key/barrier/value/entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Entrance/key/amenity/value/entrance"></see>
     /// </summary>
     let ``Entrance/key/amenity/value/entrance`` =
-        Namespaced_IRI.parse _namespace_name "Entrance/key/amenity/value/entrance" |> NamespacedName
+        _prefix "Entrance/key/amenity/value/entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Entry"></see>
     /// </summary>
-    let Entry = Namespaced_IRI.parse _namespace_name "Entry" |> NamespacedName
-
+    let Entry = _prefix "Entry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Entry/key/building/value/entry"></see>
     /// </summary>
-    let ``Entry/key/building/value/entry`` =
-        Namespaced_IRI.parse _namespace_name "Entry/key/building/value/entry" |> NamespacedName
-
+    let ``Entry/key/building/value/entry`` = _prefix "Entry/key/building/value/entry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EnvironmentalHazard"></see>
     /// </summary>
-    let EnvironmentalHazard =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalHazard" |> NamespacedName
+    let EnvironmentalHazard = _prefix "EnvironmentalHazard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EnvironmentalHazard/key/man_made/value/environmental_hazard"></see>
     /// </summary>
     let ``EnvironmentalHazard/key/man_made/value/environmental_hazard`` =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalHazard/key/man_made/value/environmental_hazard" |> NamespacedName
+        _prefix "EnvironmentalHazard/key/man_made/value/environmental_hazard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Estanco"></see>
     /// </summary>
-    let Estanco = Namespaced_IRI.parse _namespace_name "Estanco" |> NamespacedName
-
+    let Estanco = _prefix "Estanco"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Estanco/key/shop/value/estanco"></see>
     /// </summary>
-    let ``Estanco/key/shop/value/estanco`` =
-        Namespaced_IRI.parse _namespace_name "Estanco/key/shop/value/estanco" |> NamespacedName
-
+    let ``Estanco/key/shop/value/estanco`` = _prefix "Estanco/key/shop/value/estanco"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EstateAgent"></see>
     /// </summary>
-    let EstateAgent =
-        Namespaced_IRI.parse _namespace_name "EstateAgent" |> NamespacedName
+    let EstateAgent = _prefix "EstateAgent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EstateAgent/key/shop/value/estate_agent"></see>
     /// </summary>
     let ``EstateAgent/key/shop/value/estate_agent`` =
-        Namespaced_IRI.parse _namespace_name "EstateAgent/key/shop/value/estate_agent" |> NamespacedName
+        _prefix "EstateAgent/key/shop/value/estate_agent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EstateAgentOffice"></see>
     /// </summary>
-    let EstateAgentOffice =
-        Namespaced_IRI.parse _namespace_name "EstateAgentOffice" |> NamespacedName
+    let EstateAgentOffice = _prefix "EstateAgentOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EstateAgentOffice/key/office/value/estate_agent"></see>
     /// </summary>
     let ``EstateAgentOffice/key/office/value/estate_agent`` =
-        Namespaced_IRI.parse _namespace_name "EstateAgentOffice/key/office/value/estate_agent" |> NamespacedName
+        _prefix "EstateAgentOffice/key/office/value/estate_agent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EvCharging"></see>
     /// </summary>
-    let EvCharging = Namespaced_IRI.parse _namespace_name "EvCharging" |> NamespacedName
+    let EvCharging = _prefix "EvCharging"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/EvCharging/key/amenity/value/ev_charging"></see>
     /// </summary>
     let ``EvCharging/key/amenity/value/ev_charging`` =
-        Namespaced_IRI.parse _namespace_name "EvCharging/key/amenity/value/ev_charging" |> NamespacedName
+        _prefix "EvCharging/key/amenity/value/ev_charging"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fabric"></see>
     /// </summary>
-    let Fabric = Namespaced_IRI.parse _namespace_name "Fabric" |> NamespacedName
-
+    let Fabric = _prefix "Fabric"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fabric/key/shop/value/fabric"></see>
     /// </summary>
-    let ``Fabric/key/shop/value/fabric`` =
-        Namespaced_IRI.parse _namespace_name "Fabric/key/shop/value/fabric" |> NamespacedName
-
+    let ``Fabric/key/shop/value/fabric`` = _prefix "Fabric/key/shop/value/fabric"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fabrics"></see>
     /// </summary>
-    let Fabrics = Namespaced_IRI.parse _namespace_name "Fabrics" |> NamespacedName
-
+    let Fabrics = _prefix "Fabrics"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fabrics/key/shop/value/fabrics"></see>
     /// </summary>
-    let ``Fabrics/key/shop/value/fabrics`` =
-        Namespaced_IRI.parse _namespace_name "Fabrics/key/shop/value/fabrics" |> NamespacedName
-
+    let ``Fabrics/key/shop/value/fabrics`` = _prefix "Fabrics/key/shop/value/fabrics"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Factory"></see>
     /// </summary>
-    let Factory = Namespaced_IRI.parse _namespace_name "Factory" |> NamespacedName
+    let Factory = _prefix "Factory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Factory/key/amenity/value/factory"></see>
     /// </summary>
     let ``Factory/key/amenity/value/factory`` =
-        Namespaced_IRI.parse _namespace_name "Factory/key/amenity/value/factory" |> NamespacedName
+        _prefix "Factory/key/amenity/value/factory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fairtrade"></see>
     /// </summary>
-    let Fairtrade = Namespaced_IRI.parse _namespace_name "Fairtrade" |> NamespacedName
+    let Fairtrade = _prefix "Fairtrade"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fairtrade/key/shop/value/fairtrade"></see>
     /// </summary>
     let ``Fairtrade/key/shop/value/fairtrade`` =
-        Namespaced_IRI.parse _namespace_name "Fairtrade/key/shop/value/fairtrade" |> NamespacedName
+        _prefix "Fairtrade/key/shop/value/fairtrade"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farm"></see>
     /// </summary>
-    let Farm = Namespaced_IRI.parse _namespace_name "Farm" |> NamespacedName
-
+    let Farm = _prefix "Farm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farm/key/place/value/farm"></see>
     /// </summary>
-    let ``Farm/key/place/value/farm`` =
-        Namespaced_IRI.parse _namespace_name "Farm/key/place/value/farm" |> NamespacedName
-
+    let ``Farm/key/place/value/farm`` = _prefix "Farm/key/place/value/farm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farm/key/landuse/value/farm"></see>
     /// </summary>
-    let ``Farm/key/landuse/value/farm`` =
-        Namespaced_IRI.parse _namespace_name "Farm/key/landuse/value/farm" |> NamespacedName
-
+    let ``Farm/key/landuse/value/farm`` = _prefix "Farm/key/landuse/value/farm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farm/key/amenity/value/farm"></see>
     /// </summary>
-    let ``Farm/key/amenity/value/farm`` =
-        Namespaced_IRI.parse _namespace_name "Farm/key/amenity/value/farm" |> NamespacedName
-
+    let ``Farm/key/amenity/value/farm`` = _prefix "Farm/key/amenity/value/farm"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FarmShop"></see>
     /// </summary>
-    let FarmShop = Namespaced_IRI.parse _namespace_name "FarmShop" |> NamespacedName
-
+    let FarmShop = _prefix "FarmShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FarmShop/key/shop/value/farm"></see>
     /// </summary>
-    let ``FarmShop/key/shop/value/farm`` =
-        Namespaced_IRI.parse _namespace_name "FarmShop/key/shop/value/farm" |> NamespacedName
+    let ``FarmShop/key/shop/value/farm`` = _prefix "FarmShop/key/shop/value/farm"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FarmShop/key/shop/value/farm_shop"></see>
     /// </summary>
     let ``FarmShop/key/shop/value/farm_shop`` =
-        Namespaced_IRI.parse _namespace_name "FarmShop/key/shop/value/farm_shop" |> NamespacedName
+        _prefix "FarmShop/key/shop/value/farm_shop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farmland"></see>
     /// </summary>
-    let Farmland = Namespaced_IRI.parse _namespace_name "Farmland" |> NamespacedName
+    let Farmland = _prefix "Farmland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farmland/key/landuse/value/farmland"></see>
     /// </summary>
     let ``Farmland/key/landuse/value/farmland`` =
-        Namespaced_IRI.parse _namespace_name "Farmland/key/landuse/value/farmland" |> NamespacedName
+        _prefix "Farmland/key/landuse/value/farmland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farmyard"></see>
     /// </summary>
-    let Farmyard = Namespaced_IRI.parse _namespace_name "Farmyard" |> NamespacedName
+    let Farmyard = _prefix "Farmyard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Farmyard/key/landuse/value/farmyard"></see>
     /// </summary>
     let ``Farmyard/key/landuse/value/farmyard`` =
-        Namespaced_IRI.parse _namespace_name "Farmyard/key/landuse/value/farmyard" |> NamespacedName
+        _prefix "Farmyard/key/landuse/value/farmyard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fashion"></see>
     /// </summary>
-    let Fashion = Namespaced_IRI.parse _namespace_name "Fashion" |> NamespacedName
-
+    let Fashion = _prefix "Fashion"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fashion/key/shop/value/fashion"></see>
     /// </summary>
-    let ``Fashion/key/shop/value/fashion`` =
-        Namespaced_IRI.parse _namespace_name "Fashion/key/shop/value/fashion" |> NamespacedName
-
+    let ``Fashion/key/shop/value/fashion`` = _prefix "Fashion/key/shop/value/fashion"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FastFood"></see>
     /// </summary>
-    let FastFood = Namespaced_IRI.parse _namespace_name "FastFood" |> NamespacedName
+    let FastFood = _prefix "FastFood"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FastFood/key/amenity/value/fast_food"></see>
     /// </summary>
     let ``FastFood/key/amenity/value/fast_food`` =
-        Namespaced_IRI.parse _namespace_name "FastFood/key/amenity/value/fast_food" |> NamespacedName
+        _prefix "FastFood/key/amenity/value/fast_food"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Feature"></see>
     /// </summary>
-    let Feature = Namespaced_IRI.parse _namespace_name "Feature" |> NamespacedName
+    let Feature = _prefix "Feature"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Feature/key/natural/value/feature"></see>
     /// </summary>
     let ``Feature/key/natural/value/feature`` =
-        Namespaced_IRI.parse _namespace_name "Feature/key/natural/value/feature" |> NamespacedName
+        _prefix "Feature/key/natural/value/feature"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fell"></see>
     /// </summary>
-    let Fell = Namespaced_IRI.parse _namespace_name "Fell" |> NamespacedName
-
+    let Fell = _prefix "Fell"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fell/key/natural/value/fell"></see>
     /// </summary>
-    let ``Fell/key/natural/value/fell`` =
-        Namespaced_IRI.parse _namespace_name "Fell/key/natural/value/fell" |> NamespacedName
-
+    let ``Fell/key/natural/value/fell`` = _prefix "Fell/key/natural/value/fell"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fen"></see>
     /// </summary>
-    let Fen = Namespaced_IRI.parse _namespace_name "Fen" |> NamespacedName
-
+    let Fen = _prefix "Fen"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fen/key/natural/value/fen"></see>
     /// </summary>
-    let ``Fen/key/natural/value/fen`` =
-        Namespaced_IRI.parse _namespace_name "Fen/key/natural/value/fen" |> NamespacedName
-
+    let ``Fen/key/natural/value/fen`` = _prefix "Fen/key/natural/value/fen"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fence"></see>
     /// </summary>
-    let Fence = Namespaced_IRI.parse _namespace_name "Fence" |> NamespacedName
-
+    let Fence = _prefix "Fence"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fence/key/barrier/value/fence"></see>
     /// </summary>
-    let ``Fence/key/barrier/value/fence`` =
-        Namespaced_IRI.parse _namespace_name "Fence/key/barrier/value/fence" |> NamespacedName
-
+    let ``Fence/key/barrier/value/fence`` = _prefix "Fence/key/barrier/value/fence"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FerryRoute"></see>
     /// </summary>
-    let FerryRoute = Namespaced_IRI.parse _namespace_name "FerryRoute" |> NamespacedName
+    let FerryRoute = _prefix "FerryRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FerryRoute/key/route/value/ferry"></see>
     /// </summary>
     let ``FerryRoute/key/route/value/ferry`` =
-        Namespaced_IRI.parse _namespace_name "FerryRoute/key/route/value/ferry" |> NamespacedName
+        _prefix "FerryRoute/key/route/value/ferry"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FerryTerminal"></see>
     /// </summary>
-    let FerryTerminal =
-        Namespaced_IRI.parse _namespace_name "FerryTerminal" |> NamespacedName
+    let FerryTerminal = _prefix "FerryTerminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FerryTerminal/key/amenity/value/ferry_terminal"></see>
     /// </summary>
     let ``FerryTerminal/key/amenity/value/ferry_terminal`` =
-        Namespaced_IRI.parse _namespace_name "FerryTerminal/key/amenity/value/ferry_terminal" |> NamespacedName
+        _prefix "FerryTerminal/key/amenity/value/ferry_terminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Financial"></see>
     /// </summary>
-    let Financial = Namespaced_IRI.parse _namespace_name "Financial" |> NamespacedName
+    let Financial = _prefix "Financial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Financial/key/shop/value/financial"></see>
     /// </summary>
     let ``Financial/key/shop/value/financial`` =
-        Namespaced_IRI.parse _namespace_name "Financial/key/shop/value/financial" |> NamespacedName
+        _prefix "Financial/key/shop/value/financial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireBeater"></see>
     /// </summary>
-    let FireBeater = Namespaced_IRI.parse _namespace_name "FireBeater" |> NamespacedName
+    let FireBeater = _prefix "FireBeater"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireBeater/key/amenity/value/fire_beater"></see>
     /// </summary>
     let ``FireBeater/key/amenity/value/fire_beater`` =
-        Namespaced_IRI.parse _namespace_name "FireBeater/key/amenity/value/fire_beater" |> NamespacedName
+        _prefix "FireBeater/key/amenity/value/fire_beater"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireExtinguisher"></see>
     /// </summary>
-    let FireExtinguisher =
-        Namespaced_IRI.parse _namespace_name "FireExtinguisher" |> NamespacedName
+    let FireExtinguisher = _prefix "FireExtinguisher"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireExtinguisher/key/emergency/value/fire_extinguisher"></see>
     /// </summary>
     let ``FireExtinguisher/key/emergency/value/fire_extinguisher`` =
-        Namespaced_IRI.parse _namespace_name "FireExtinguisher/key/emergency/value/fire_extinguisher" |> NamespacedName
+        _prefix "FireExtinguisher/key/emergency/value/fire_extinguisher"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireFlapper"></see>
     /// </summary>
-    let FireFlapper =
-        Namespaced_IRI.parse _namespace_name "FireFlapper" |> NamespacedName
+    let FireFlapper = _prefix "FireFlapper"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireFlapper/key/emergency/value/fire_flapper"></see>
     /// </summary>
     let ``FireFlapper/key/emergency/value/fire_flapper`` =
-        Namespaced_IRI.parse _namespace_name "FireFlapper/key/emergency/value/fire_flapper" |> NamespacedName
+        _prefix "FireFlapper/key/emergency/value/fire_flapper"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireHose"></see>
     /// </summary>
-    let FireHose = Namespaced_IRI.parse _namespace_name "FireHose" |> NamespacedName
+    let FireHose = _prefix "FireHose"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireHose/key/emergency/value/fire_hose"></see>
     /// </summary>
     let ``FireHose/key/emergency/value/fire_hose`` =
-        Namespaced_IRI.parse _namespace_name "FireHose/key/emergency/value/fire_hose" |> NamespacedName
+        _prefix "FireHose/key/emergency/value/fire_hose"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireHydrant"></see>
     /// </summary>
-    let FireHydrant =
-        Namespaced_IRI.parse _namespace_name "FireHydrant" |> NamespacedName
+    let FireHydrant = _prefix "FireHydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireHydrant/key/amenity/value/fire_hydrant"></see>
     /// </summary>
     let ``FireHydrant/key/amenity/value/fire_hydrant`` =
-        Namespaced_IRI.parse _namespace_name "FireHydrant/key/amenity/value/fire_hydrant" |> NamespacedName
+        _prefix "FireHydrant/key/amenity/value/fire_hydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireHydrant/key/emergency/value/fire_hydrant"></see>
     /// </summary>
     let ``FireHydrant/key/emergency/value/fire_hydrant`` =
-        Namespaced_IRI.parse _namespace_name "FireHydrant/key/emergency/value/fire_hydrant" |> NamespacedName
+        _prefix "FireHydrant/key/emergency/value/fire_hydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireStation"></see>
     /// </summary>
-    let FireStation =
-        Namespaced_IRI.parse _namespace_name "FireStation" |> NamespacedName
+    let FireStation = _prefix "FireStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FireStation/key/amenity/value/fire_station"></see>
     /// </summary>
     let ``FireStation/key/amenity/value/fire_station`` =
-        Namespaced_IRI.parse _namespace_name "FireStation/key/amenity/value/fire_station" |> NamespacedName
+        _prefix "FireStation/key/amenity/value/fire_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fireplace"></see>
     /// </summary>
-    let Fireplace = Namespaced_IRI.parse _namespace_name "Fireplace" |> NamespacedName
+    let Fireplace = _prefix "Fireplace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fireplace/key/amenity/value/fireplace"></see>
     /// </summary>
     let ``Fireplace/key/amenity/value/fireplace`` =
-        Namespaced_IRI.parse _namespace_name "Fireplace/key/amenity/value/fireplace" |> NamespacedName
+        _prefix "Fireplace/key/amenity/value/fireplace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FirstAid"></see>
     /// </summary>
-    let FirstAid = Namespaced_IRI.parse _namespace_name "FirstAid" |> NamespacedName
+    let FirstAid = _prefix "FirstAid"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FirstAid/key/amenity/value/first_aid"></see>
     /// </summary>
     let ``FirstAid/key/amenity/value/first_aid`` =
-        Namespaced_IRI.parse _namespace_name "FirstAid/key/amenity/value/first_aid" |> NamespacedName
+        _prefix "FirstAid/key/amenity/value/first_aid"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fish"></see>
     /// </summary>
-    let Fish = Namespaced_IRI.parse _namespace_name "Fish" |> NamespacedName
-
+    let Fish = _prefix "Fish"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fish/key/shop/value/fish"></see>
     /// </summary>
-    let ``Fish/key/shop/value/fish`` =
-        Namespaced_IRI.parse _namespace_name "Fish/key/shop/value/fish" |> NamespacedName
-
+    let ``Fish/key/shop/value/fish`` = _prefix "Fish/key/shop/value/fish"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fishing"></see>
     /// </summary>
-    let Fishing = Namespaced_IRI.parse _namespace_name "Fishing" |> NamespacedName
+    let Fishing = _prefix "Fishing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fishing/key/leisure/value/fishing"></see>
     /// </summary>
     let ``Fishing/key/leisure/value/fishing`` =
-        Namespaced_IRI.parse _namespace_name "Fishing/key/leisure/value/fishing" |> NamespacedName
+        _prefix "Fishing/key/leisure/value/fishing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FishingShop"></see>
     /// </summary>
-    let FishingShop =
-        Namespaced_IRI.parse _namespace_name "FishingShop" |> NamespacedName
+    let FishingShop = _prefix "FishingShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FishingShop/key/shop/value/fishing"></see>
     /// </summary>
     let ``FishingShop/key/shop/value/fishing`` =
-        Namespaced_IRI.parse _namespace_name "FishingShop/key/shop/value/fishing" |> NamespacedName
+        _prefix "FishingShop/key/shop/value/fishing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fishmonger"></see>
     /// </summary>
-    let Fishmonger = Namespaced_IRI.parse _namespace_name "Fishmonger" |> NamespacedName
+    let Fishmonger = _prefix "Fishmonger"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fishmonger/key/shop/value/fishmonger"></see>
     /// </summary>
     let ``Fishmonger/key/shop/value/fishmonger`` =
-        Namespaced_IRI.parse _namespace_name "Fishmonger/key/shop/value/fishmonger" |> NamespacedName
+        _prefix "Fishmonger/key/shop/value/fishmonger"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fitness"></see>
     /// </summary>
-    let Fitness = Namespaced_IRI.parse _namespace_name "Fitness" |> NamespacedName
+    let Fitness = _prefix "Fitness"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fitness/key/leisure/value/fitness"></see>
     /// </summary>
     let ``Fitness/key/leisure/value/fitness`` =
-        Namespaced_IRI.parse _namespace_name "Fitness/key/leisure/value/fitness" |> NamespacedName
+        _prefix "Fitness/key/leisure/value/fitness"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fitness+trail"></see>
     /// </summary>
-    let ``Fitness+trail`` =
-        Namespaced_IRI.parse _namespace_name "Fitness+trail" |> NamespacedName
+    let ``Fitness+trail`` = _prefix "Fitness+trail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fitness+trail/key/leisure/value/fitness%20trail"></see>
     /// </summary>
     let ``Fitness+trail/key/leisure/value/fitness%20trail`` =
-        Namespaced_IRI.parse _namespace_name "Fitness+trail/key/leisure/value/fitness%20trail" |> NamespacedName
+        _prefix "Fitness+trail/key/leisure/value/fitness%20trail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FitnessCentre"></see>
     /// </summary>
-    let FitnessCentre =
-        Namespaced_IRI.parse _namespace_name "FitnessCentre" |> NamespacedName
+    let FitnessCentre = _prefix "FitnessCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FitnessCentre/key/leisure/value/fitness_centre"></see>
     /// </summary>
     let ``FitnessCentre/key/leisure/value/fitness_centre`` =
-        Namespaced_IRI.parse _namespace_name "FitnessCentre/key/leisure/value/fitness_centre" |> NamespacedName
+        _prefix "FitnessCentre/key/leisure/value/fitness_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FitnessShop"></see>
     /// </summary>
-    let FitnessShop =
-        Namespaced_IRI.parse _namespace_name "FitnessShop" |> NamespacedName
+    let FitnessShop = _prefix "FitnessShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FitnessShop/key/shop/value/fitness"></see>
     /// </summary>
     let ``FitnessShop/key/shop/value/fitness`` =
-        Namespaced_IRI.parse _namespace_name "FitnessShop/key/shop/value/fitness" |> NamespacedName
+        _prefix "FitnessShop/key/shop/value/fitness"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fjord"></see>
     /// </summary>
-    let Fjord = Namespaced_IRI.parse _namespace_name "Fjord" |> NamespacedName
-
+    let Fjord = _prefix "Fjord"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fjord/key/natural/value/fjord"></see>
     /// </summary>
-    let ``Fjord/key/natural/value/fjord`` =
-        Namespaced_IRI.parse _namespace_name "Fjord/key/natural/value/fjord" |> NamespacedName
-
+    let ``Fjord/key/natural/value/fjord`` = _prefix "Fjord/key/natural/value/fjord"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flagpole"></see>
     /// </summary>
-    let Flagpole = Namespaced_IRI.parse _namespace_name "Flagpole" |> NamespacedName
+    let Flagpole = _prefix "Flagpole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flagpole/key/man_made/value/flagpole"></see>
     /// </summary>
     let ``Flagpole/key/man_made/value/flagpole`` =
-        Namespaced_IRI.parse _namespace_name "Flagpole/key/man_made/value/flagpole" |> NamespacedName
+        _prefix "Flagpole/key/man_made/value/flagpole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flats"></see>
     /// </summary>
-    let Flats = Namespaced_IRI.parse _namespace_name "Flats" |> NamespacedName
-
+    let Flats = _prefix "Flats"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flats/key/building/value/flats"></see>
     /// </summary>
-    let ``Flats/key/building/value/flats`` =
-        Namespaced_IRI.parse _namespace_name "Flats/key/building/value/flats" |> NamespacedName
-
+    let ``Flats/key/building/value/flats`` = _prefix "Flats/key/building/value/flats"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flooring"></see>
     /// </summary>
-    let Flooring = Namespaced_IRI.parse _namespace_name "Flooring" |> NamespacedName
+    let Flooring = _prefix "Flooring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flooring/key/shop/value/flooring"></see>
     /// </summary>
     let ``Flooring/key/shop/value/flooring`` =
-        Namespaced_IRI.parse _namespace_name "Flooring/key/shop/value/flooring" |> NamespacedName
+        _prefix "Flooring/key/shop/value/flooring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Florist"></see>
     /// </summary>
-    let Florist = Namespaced_IRI.parse _namespace_name "Florist" |> NamespacedName
+    let Florist = _prefix "Florist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Florist/key/amenity/value/florist"></see>
     /// </summary>
     let ``Florist/key/amenity/value/florist`` =
-        Namespaced_IRI.parse _namespace_name "Florist/key/amenity/value/florist" |> NamespacedName
+        _prefix "Florist/key/amenity/value/florist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FloristShop"></see>
     /// </summary>
-    let FloristShop =
-        Namespaced_IRI.parse _namespace_name "FloristShop" |> NamespacedName
+    let FloristShop = _prefix "FloristShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FloristShop/key/shop/value/florist"></see>
     /// </summary>
     let ``FloristShop/key/shop/value/florist`` =
-        Namespaced_IRI.parse _namespace_name "FloristShop/key/shop/value/florist" |> NamespacedName
+        _prefix "FloristShop/key/shop/value/florist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flowers"></see>
     /// </summary>
-    let Flowers = Namespaced_IRI.parse _namespace_name "Flowers" |> NamespacedName
-
+    let Flowers = _prefix "Flowers"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Flowers/key/shop/value/flowers"></see>
     /// </summary>
-    let ``Flowers/key/shop/value/flowers`` =
-        Namespaced_IRI.parse _namespace_name "Flowers/key/shop/value/flowers" |> NamespacedName
-
+    let ``Flowers/key/shop/value/flowers`` = _prefix "Flowers/key/shop/value/flowers"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FolkArt"></see>
     /// </summary>
-    let FolkArt = Namespaced_IRI.parse _namespace_name "FolkArt" |> NamespacedName
-
+    let FolkArt = _prefix "FolkArt"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FolkArt/key/shop/value/folk_art"></see>
     /// </summary>
-    let ``FolkArt/key/shop/value/folk_art`` =
-        Namespaced_IRI.parse _namespace_name "FolkArt/key/shop/value/folk_art" |> NamespacedName
-
+    let ``FolkArt/key/shop/value/folk_art`` = _prefix "FolkArt/key/shop/value/folk_art"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Food"></see>
     /// </summary>
-    let Food = Namespaced_IRI.parse _namespace_name "Food" |> NamespacedName
-
+    let Food = _prefix "Food"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Food/key/shop/value/food"></see>
     /// </summary>
-    let ``Food/key/shop/value/food`` =
-        Namespaced_IRI.parse _namespace_name "Food/key/shop/value/food" |> NamespacedName
-
+    let ``Food/key/shop/value/food`` = _prefix "Food/key/shop/value/food"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FoodCourt"></see>
     /// </summary>
-    let FoodCourt = Namespaced_IRI.parse _namespace_name "FoodCourt" |> NamespacedName
+    let FoodCourt = _prefix "FoodCourt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FoodCourt/key/amenity/value/food_court"></see>
     /// </summary>
     let ``FoodCourt/key/amenity/value/food_court`` =
-        Namespaced_IRI.parse _namespace_name "FoodCourt/key/amenity/value/food_court" |> NamespacedName
+        _prefix "FoodCourt/key/amenity/value/food_court"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FootShower"></see>
     /// </summary>
-    let FootShower = Namespaced_IRI.parse _namespace_name "FootShower" |> NamespacedName
+    let FootShower = _prefix "FootShower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FootShower/key/amenity/value/foot_shower"></see>
     /// </summary>
     let ``FootShower/key/amenity/value/foot_shower`` =
-        Namespaced_IRI.parse _namespace_name "FootShower/key/amenity/value/foot_shower" |> NamespacedName
+        _prefix "FootShower/key/amenity/value/foot_shower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Footway"></see>
     /// </summary>
-    let Footway = Namespaced_IRI.parse _namespace_name "Footway" |> NamespacedName
+    let Footway = _prefix "Footway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Footway/key/highway/value/footway"></see>
     /// </summary>
     let ``Footway/key/highway/value/footway`` =
-        Namespaced_IRI.parse _namespace_name "Footway/key/highway/value/footway" |> NamespacedName
+        _prefix "Footway/key/highway/value/footway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Forest"></see>
     /// </summary>
-    let Forest = Namespaced_IRI.parse _namespace_name "Forest" |> NamespacedName
-
+    let Forest = _prefix "Forest"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Forest/key/landuse/value/forest"></see>
     /// </summary>
-    let ``Forest/key/landuse/value/forest`` =
-        Namespaced_IRI.parse _namespace_name "Forest/key/landuse/value/forest" |> NamespacedName
-
+    let ``Forest/key/landuse/value/forest`` = _prefix "Forest/key/landuse/value/forest"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Forester"></see>
     /// </summary>
-    let Forester = Namespaced_IRI.parse _namespace_name "Forester" |> NamespacedName
+    let Forester = _prefix "Forester"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Forester/key/amenity/value/forester"></see>
     /// </summary>
     let ``Forester/key/amenity/value/forester`` =
-        Namespaced_IRI.parse _namespace_name "Forester/key/amenity/value/forester" |> NamespacedName
+        _prefix "Forester/key/amenity/value/forester"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fort"></see>
     /// </summary>
-    let Fort = Namespaced_IRI.parse _namespace_name "Fort" |> NamespacedName
-
+    let Fort = _prefix "Fort"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fort/key/historic/value/fort"></see>
     /// </summary>
-    let ``Fort/key/historic/value/fort`` =
-        Namespaced_IRI.parse _namespace_name "Fort/key/historic/value/fort" |> NamespacedName
-
+    let ``Fort/key/historic/value/fort`` = _prefix "Fort/key/historic/value/fort"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fortress"></see>
     /// </summary>
-    let Fortress = Namespaced_IRI.parse _namespace_name "Fortress" |> NamespacedName
+    let Fortress = _prefix "Fortress"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fortress/key/building/value/fortress"></see>
     /// </summary>
     let ``Fortress/key/building/value/fortress`` =
-        Namespaced_IRI.parse _namespace_name "Fortress/key/building/value/fortress" |> NamespacedName
+        _prefix "Fortress/key/building/value/fortress"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Foto"></see>
     /// </summary>
-    let Foto = Namespaced_IRI.parse _namespace_name "Foto" |> NamespacedName
-
+    let Foto = _prefix "Foto"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Foto/key/shop/value/foto"></see>
     /// </summary>
-    let ``Foto/key/shop/value/foto`` =
-        Namespaced_IRI.parse _namespace_name "Foto/key/shop/value/foto" |> NamespacedName
-
+    let ``Foto/key/shop/value/foto`` = _prefix "Foto/key/shop/value/foto"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fountain"></see>
     /// </summary>
-    let Fountain = Namespaced_IRI.parse _namespace_name "Fountain" |> NamespacedName
+    let Fountain = _prefix "Fountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fountain/key/amenity/value/fountain"></see>
     /// </summary>
     let ``Fountain/key/amenity/value/fountain`` =
-        Namespaced_IRI.parse _namespace_name "Fountain/key/amenity/value/fountain" |> NamespacedName
+        _prefix "Fountain/key/amenity/value/fountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fraternity"></see>
     /// </summary>
-    let Fraternity = Namespaced_IRI.parse _namespace_name "Fraternity" |> NamespacedName
+    let Fraternity = _prefix "Fraternity"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fraternity/key/amenity/value/fraternity"></see>
     /// </summary>
     let ``Fraternity/key/amenity/value/fraternity`` =
-        Namespaced_IRI.parse _namespace_name "Fraternity/key/amenity/value/fraternity" |> NamespacedName
+        _prefix "Fraternity/key/amenity/value/fraternity"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FrozenFoodShop"></see>
     /// </summary>
-    let FrozenFoodShop =
-        Namespaced_IRI.parse _namespace_name "FrozenFoodShop" |> NamespacedName
+    let FrozenFoodShop = _prefix "FrozenFoodShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FrozenFoodShop/key/shop/value/frozen_food"></see>
     /// </summary>
     let ``FrozenFoodShop/key/shop/value/frozen_food`` =
-        Namespaced_IRI.parse _namespace_name "FrozenFoodShop/key/shop/value/frozen_food" |> NamespacedName
+        _prefix "FrozenFoodShop/key/shop/value/frozen_food"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fruit"></see>
     /// </summary>
-    let Fruit = Namespaced_IRI.parse _namespace_name "Fruit" |> NamespacedName
-
+    let Fruit = _prefix "Fruit"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fruit/key/shop/value/fruit"></see>
     /// </summary>
-    let ``Fruit/key/shop/value/fruit`` =
-        Namespaced_IRI.parse _namespace_name "Fruit/key/shop/value/fruit" |> NamespacedName
-
+    let ``Fruit/key/shop/value/fruit`` = _prefix "Fruit/key/shop/value/fruit"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fuel%3BcarWash"></see>
     /// </summary>
-    let ``Fuel%3BcarWash`` =
-        Namespaced_IRI.parse _namespace_name "Fuel%3BcarWash" |> NamespacedName
+    let ``Fuel%3BcarWash`` = _prefix "Fuel%3BcarWash"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Fuel%3BcarWash/key/amenity/value/fuel%3Bcar_wash"></see>
     /// </summary>
     let ``Fuel%3BcarWash/key/amenity/value/fuel%3Bcar_wash`` =
-        Namespaced_IRI.parse _namespace_name "Fuel%3BcarWash/key/amenity/value/fuel%3Bcar_wash" |> NamespacedName
+        _prefix "Fuel%3BcarWash/key/amenity/value/fuel%3Bcar_wash"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FuelStation"></see>
     /// </summary>
-    let FuelStation =
-        Namespaced_IRI.parse _namespace_name "FuelStation" |> NamespacedName
+    let FuelStation = _prefix "FuelStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FuelStation/key/amenity/value/fuel"></see>
     /// </summary>
     let ``FuelStation/key/amenity/value/fuel`` =
-        Namespaced_IRI.parse _namespace_name "FuelStation/key/amenity/value/fuel" |> NamespacedName
+        _prefix "FuelStation/key/amenity/value/fuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FuneralDirectors"></see>
     /// </summary>
-    let FuneralDirectors =
-        Namespaced_IRI.parse _namespace_name "FuneralDirectors" |> NamespacedName
+    let FuneralDirectors = _prefix "FuneralDirectors"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FuneralDirectors/key/shop/value/funeral_directors"></see>
     /// </summary>
     let ``FuneralDirectors/key/shop/value/funeral_directors`` =
-        Namespaced_IRI.parse _namespace_name "FuneralDirectors/key/shop/value/funeral_directors" |> NamespacedName
+        _prefix "FuneralDirectors/key/shop/value/funeral_directors"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FuneralHome"></see>
     /// </summary>
-    let FuneralHome =
-        Namespaced_IRI.parse _namespace_name "FuneralHome" |> NamespacedName
+    let FuneralHome = _prefix "FuneralHome"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FuneralHome/key/amenity/value/funeral_home"></see>
     /// </summary>
     let ``FuneralHome/key/amenity/value/funeral_home`` =
-        Namespaced_IRI.parse _namespace_name "FuneralHome/key/amenity/value/funeral_home" |> NamespacedName
+        _prefix "FuneralHome/key/amenity/value/funeral_home"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FunicularRailway"></see>
     /// </summary>
-    let FunicularRailway =
-        Namespaced_IRI.parse _namespace_name "FunicularRailway" |> NamespacedName
+    let FunicularRailway = _prefix "FunicularRailway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/FunicularRailway/key/railway/value/funicular"></see>
     /// </summary>
     let ``FunicularRailway/key/railway/value/funicular`` =
-        Namespaced_IRI.parse _namespace_name "FunicularRailway/key/railway/value/funicular" |> NamespacedName
+        _prefix "FunicularRailway/key/railway/value/funicular"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Furniture"></see>
     /// </summary>
-    let Furniture = Namespaced_IRI.parse _namespace_name "Furniture" |> NamespacedName
+    let Furniture = _prefix "Furniture"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Furniture/key/shop/value/furniture"></see>
     /// </summary>
     let ``Furniture/key/shop/value/furniture`` =
-        Namespaced_IRI.parse _namespace_name "Furniture/key/shop/value/furniture" |> NamespacedName
+        _prefix "Furniture/key/shop/value/furniture"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GagingStation"></see>
     /// </summary>
-    let GagingStation =
-        Namespaced_IRI.parse _namespace_name "GagingStation" |> NamespacedName
+    let GagingStation = _prefix "GagingStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GagingStation/key/man_made/value/gaging_station"></see>
     /// </summary>
     let ``GagingStation/key/man_made/value/gaging_station`` =
-        Namespaced_IRI.parse _namespace_name "GagingStation/key/man_made/value/gaging_station" |> NamespacedName
+        _prefix "GagingStation/key/man_made/value/gaging_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gallery"></see>
     /// </summary>
-    let Gallery = Namespaced_IRI.parse _namespace_name "Gallery" |> NamespacedName
+    let Gallery = _prefix "Gallery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gallery/key/amenity/value/gallery"></see>
     /// </summary>
     let ``Gallery/key/amenity/value/gallery`` =
-        Namespaced_IRI.parse _namespace_name "Gallery/key/amenity/value/gallery" |> NamespacedName
+        _prefix "Gallery/key/amenity/value/gallery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GalleryShop"></see>
     /// </summary>
-    let GalleryShop =
-        Namespaced_IRI.parse _namespace_name "GalleryShop" |> NamespacedName
+    let GalleryShop = _prefix "GalleryShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GalleryShop/key/shop/value/gallery"></see>
     /// </summary>
     let ``GalleryShop/key/shop/value/gallery`` =
-        Namespaced_IRI.parse _namespace_name "GalleryShop/key/shop/value/gallery" |> NamespacedName
+        _prefix "GalleryShop/key/shop/value/gallery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gambling"></see>
     /// </summary>
-    let Gambling = Namespaced_IRI.parse _namespace_name "Gambling" |> NamespacedName
+    let Gambling = _prefix "Gambling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gambling/key/amenity/value/gambling"></see>
     /// </summary>
     let ``Gambling/key/amenity/value/gambling`` =
-        Namespaced_IRI.parse _namespace_name "Gambling/key/amenity/value/gambling" |> NamespacedName
+        _prefix "Gambling/key/amenity/value/gambling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GamblingShop"></see>
     /// </summary>
-    let GamblingShop =
-        Namespaced_IRI.parse _namespace_name "GamblingShop" |> NamespacedName
+    let GamblingShop = _prefix "GamblingShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GamblingShop/key/shop/value/gambling"></see>
     /// </summary>
     let ``GamblingShop/key/shop/value/gambling`` =
-        Namespaced_IRI.parse _namespace_name "GamblingShop/key/shop/value/gambling" |> NamespacedName
+        _prefix "GamblingShop/key/shop/value/gambling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Games"></see>
     /// </summary>
-    let Games = Namespaced_IRI.parse _namespace_name "Games" |> NamespacedName
-
+    let Games = _prefix "Games"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Games/key/shop/value/games"></see>
     /// </summary>
-    let ``Games/key/shop/value/games`` =
-        Namespaced_IRI.parse _namespace_name "Games/key/shop/value/games" |> NamespacedName
-
+    let ``Games/key/shop/value/games`` = _prefix "Games/key/shop/value/games"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garage"></see>
     /// </summary>
-    let Garage = Namespaced_IRI.parse _namespace_name "Garage" |> NamespacedName
-
+    let Garage = _prefix "Garage"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garage/key/amenity/value/garage"></see>
     /// </summary>
-    let ``Garage/key/amenity/value/garage`` =
-        Namespaced_IRI.parse _namespace_name "Garage/key/amenity/value/garage" |> NamespacedName
-
+    let ``Garage/key/amenity/value/garage`` = _prefix "Garage/key/amenity/value/garage"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GarageShop"></see>
     /// </summary>
-    let GarageShop = Namespaced_IRI.parse _namespace_name "GarageShop" |> NamespacedName
+    let GarageShop = _prefix "GarageShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GarageShop/key/shop/value/garage"></see>
     /// </summary>
     let ``GarageShop/key/shop/value/garage`` =
-        Namespaced_IRI.parse _namespace_name "GarageShop/key/shop/value/garage" |> NamespacedName
+        _prefix "GarageShop/key/shop/value/garage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garages"></see>
     /// </summary>
-    let Garages = Namespaced_IRI.parse _namespace_name "Garages" |> NamespacedName
+    let Garages = _prefix "Garages"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garages/key/landuse/value/garages"></see>
     /// </summary>
     let ``Garages/key/landuse/value/garages`` =
-        Namespaced_IRI.parse _namespace_name "Garages/key/landuse/value/garages" |> NamespacedName
+        _prefix "Garages/key/landuse/value/garages"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garbage"></see>
     /// </summary>
-    let Garbage = Namespaced_IRI.parse _namespace_name "Garbage" |> NamespacedName
+    let Garbage = _prefix "Garbage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garbage/key/amenity/value/garbage"></see>
     /// </summary>
     let ``Garbage/key/amenity/value/garbage`` =
-        Namespaced_IRI.parse _namespace_name "Garbage/key/amenity/value/garbage" |> NamespacedName
+        _prefix "Garbage/key/amenity/value/garbage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garden"></see>
     /// </summary>
-    let Garden = Namespaced_IRI.parse _namespace_name "Garden" |> NamespacedName
-
+    let Garden = _prefix "Garden"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Garden/key/leisure/value/garden"></see>
     /// </summary>
-    let ``Garden/key/leisure/value/garden`` =
-        Namespaced_IRI.parse _namespace_name "Garden/key/leisure/value/garden" |> NamespacedName
-
+    let ``Garden/key/leisure/value/garden`` = _prefix "Garden/key/leisure/value/garden"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GardenCenter"></see>
     /// </summary>
-    let GardenCenter =
-        Namespaced_IRI.parse _namespace_name "GardenCenter" |> NamespacedName
+    let GardenCenter = _prefix "GardenCenter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GardenCenter/key/shop/value/garden_center"></see>
     /// </summary>
     let ``GardenCenter/key/shop/value/garden_center`` =
-        Namespaced_IRI.parse _namespace_name "GardenCenter/key/shop/value/garden_center" |> NamespacedName
+        _prefix "GardenCenter/key/shop/value/garden_center"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GardenCentre"></see>
     /// </summary>
-    let GardenCentre =
-        Namespaced_IRI.parse _namespace_name "GardenCentre" |> NamespacedName
+    let GardenCentre = _prefix "GardenCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GardenCentre/key/shop/value/garden_centre"></see>
     /// </summary>
     let ``GardenCentre/key/shop/value/garden_centre`` =
-        Namespaced_IRI.parse _namespace_name "GardenCentre/key/shop/value/garden_centre" |> NamespacedName
+        _prefix "GardenCentre/key/shop/value/garden_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GardenShop"></see>
     /// </summary>
-    let GardenShop = Namespaced_IRI.parse _namespace_name "GardenShop" |> NamespacedName
+    let GardenShop = _prefix "GardenShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GardenShop/key/shop/value/garden"></see>
     /// </summary>
     let ``GardenShop/key/shop/value/garden`` =
-        Namespaced_IRI.parse _namespace_name "GardenShop/key/shop/value/garden" |> NamespacedName
+        _prefix "GardenShop/key/shop/value/garden"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gardener"></see>
     /// </summary>
-    let Gardener = Namespaced_IRI.parse _namespace_name "Gardener" |> NamespacedName
+    let Gardener = _prefix "Gardener"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gardener/key/craft/value/gardener"></see>
     /// </summary>
     let ``Gardener/key/craft/value/gardener`` =
-        Namespaced_IRI.parse _namespace_name "Gardener/key/craft/value/gardener" |> NamespacedName
+        _prefix "Gardener/key/craft/value/gardener"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gasometer"></see>
     /// </summary>
-    let Gasometer = Namespaced_IRI.parse _namespace_name "Gasometer" |> NamespacedName
+    let Gasometer = _prefix "Gasometer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gasometer/key/man_made/value/gasometer"></see>
     /// </summary>
     let ``Gasometer/key/man_made/value/gasometer`` =
-        Namespaced_IRI.parse _namespace_name "Gasometer/key/man_made/value/gasometer" |> NamespacedName
+        _prefix "Gasometer/key/man_made/value/gasometer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gate"></see>
     /// </summary>
-    let Gate = Namespaced_IRI.parse _namespace_name "Gate" |> NamespacedName
-
+    let Gate = _prefix "Gate"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gate/key/barrier/value/gate"></see>
     /// </summary>
-    let ``Gate/key/barrier/value/gate`` =
-        Namespaced_IRI.parse _namespace_name "Gate/key/barrier/value/gate" |> NamespacedName
-
+    let ``Gate/key/barrier/value/gate`` = _prefix "Gate/key/barrier/value/gate"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gazometer"></see>
     /// </summary>
-    let Gazometer = Namespaced_IRI.parse _namespace_name "Gazometer" |> NamespacedName
+    let Gazometer = _prefix "Gazometer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gazometer/key/man_made/value/gazometer"></see>
     /// </summary>
     let ``Gazometer/key/man_made/value/gazometer`` =
-        Namespaced_IRI.parse _namespace_name "Gazometer/key/man_made/value/gazometer" |> NamespacedName
+        _prefix "Gazometer/key/man_made/value/gazometer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/General"></see>
     /// </summary>
-    let General = Namespaced_IRI.parse _namespace_name "General" |> NamespacedName
-
+    let General = _prefix "General"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/General/key/shop/value/general"></see>
     /// </summary>
-    let ``General/key/shop/value/general`` =
-        Namespaced_IRI.parse _namespace_name "General/key/shop/value/general" |> NamespacedName
-
+    let ``General/key/shop/value/general`` = _prefix "General/key/shop/value/general"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Geyser"></see>
     /// </summary>
-    let Geyser = Namespaced_IRI.parse _namespace_name "Geyser" |> NamespacedName
-
+    let Geyser = _prefix "Geyser"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Geyser/key/natural/value/geyser"></see>
     /// </summary>
-    let ``Geyser/key/natural/value/geyser`` =
-        Namespaced_IRI.parse _namespace_name "Geyser/key/natural/value/geyser" |> NamespacedName
-
+    let ``Geyser/key/natural/value/geyser`` = _prefix "Geyser/key/natural/value/geyser"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gift"></see>
     /// </summary>
-    let Gift = Namespaced_IRI.parse _namespace_name "Gift" |> NamespacedName
-
+    let Gift = _prefix "Gift"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gift/key/shop/value/gift"></see>
     /// </summary>
-    let ``Gift/key/shop/value/gift`` =
-        Namespaced_IRI.parse _namespace_name "Gift/key/shop/value/gift" |> NamespacedName
-
+    let ``Gift/key/shop/value/gift`` = _prefix "Gift/key/shop/value/gift"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gifts"></see>
     /// </summary>
-    let Gifts = Namespaced_IRI.parse _namespace_name "Gifts" |> NamespacedName
-
+    let Gifts = _prefix "Gifts"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gifts/key/shop/value/gifts"></see>
     /// </summary>
-    let ``Gifts/key/shop/value/gifts`` =
-        Namespaced_IRI.parse _namespace_name "Gifts/key/shop/value/gifts" |> NamespacedName
-
+    let ``Gifts/key/shop/value/gifts`` = _prefix "Gifts/key/shop/value/gifts"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GiveWaySign"></see>
     /// </summary>
-    let GiveWaySign =
-        Namespaced_IRI.parse _namespace_name "GiveWaySign" |> NamespacedName
+    let GiveWaySign = _prefix "GiveWaySign"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GiveWaySign/key/highway/value/give_way"></see>
     /// </summary>
     let ``GiveWaySign/key/highway/value/give_way`` =
-        Namespaced_IRI.parse _namespace_name "GiveWaySign/key/highway/value/give_way" |> NamespacedName
+        _prefix "GiveWaySign/key/highway/value/give_way"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glacier"></see>
     /// </summary>
-    let Glacier = Namespaced_IRI.parse _namespace_name "Glacier" |> NamespacedName
+    let Glacier = _prefix "Glacier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glacier/key/natural/value/glacier"></see>
     /// </summary>
     let ``Glacier/key/natural/value/glacier`` =
-        Namespaced_IRI.parse _namespace_name "Glacier/key/natural/value/glacier" |> NamespacedName
+        _prefix "Glacier/key/natural/value/glacier"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glass"></see>
     /// </summary>
-    let Glass = Namespaced_IRI.parse _namespace_name "Glass" |> NamespacedName
-
+    let Glass = _prefix "Glass"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glass/key/shop/value/glass"></see>
     /// </summary>
-    let ``Glass/key/shop/value/glass`` =
-        Namespaced_IRI.parse _namespace_name "Glass/key/shop/value/glass" |> NamespacedName
-
+    let ``Glass/key/shop/value/glass`` = _prefix "Glass/key/shop/value/glass"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glaziery"></see>
     /// </summary>
-    let Glaziery = Namespaced_IRI.parse _namespace_name "Glaziery" |> NamespacedName
+    let Glaziery = _prefix "Glaziery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glaziery/key/shop/value/glaziery"></see>
     /// </summary>
     let ``Glaziery/key/shop/value/glaziery`` =
-        Namespaced_IRI.parse _namespace_name "Glaziery/key/shop/value/glaziery" |> NamespacedName
+        _prefix "Glaziery/key/shop/value/glaziery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Glaziery/key/craft/value/glaziery"></see>
     /// </summary>
     let ``Glaziery/key/craft/value/glaziery`` =
-        Namespaced_IRI.parse _namespace_name "Glaziery/key/craft/value/glaziery" |> NamespacedName
+        _prefix "Glaziery/key/craft/value/glaziery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Goldsmith"></see>
     /// </summary>
-    let Goldsmith = Namespaced_IRI.parse _namespace_name "Goldsmith" |> NamespacedName
+    let Goldsmith = _prefix "Goldsmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Goldsmith/key/shop/value/goldsmith"></see>
     /// </summary>
     let ``Goldsmith/key/shop/value/goldsmith`` =
-        Namespaced_IRI.parse _namespace_name "Goldsmith/key/shop/value/goldsmith" |> NamespacedName
+        _prefix "Goldsmith/key/shop/value/goldsmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GolfCourse"></see>
     /// </summary>
-    let GolfCourse = Namespaced_IRI.parse _namespace_name "GolfCourse" |> NamespacedName
+    let GolfCourse = _prefix "GolfCourse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GolfCourse/key/leisure/value/golf_course"></see>
     /// </summary>
     let ``GolfCourse/key/leisure/value/golf_course`` =
-        Namespaced_IRI.parse _namespace_name "GolfCourse/key/leisure/value/golf_course" |> NamespacedName
+        _prefix "GolfCourse/key/leisure/value/golf_course"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gondola"></see>
     /// </summary>
-    let Gondola = Namespaced_IRI.parse _namespace_name "Gondola" |> NamespacedName
+    let Gondola = _prefix "Gondola"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gondola/key/aerialway/value/gondola"></see>
     /// </summary>
     let ``Gondola/key/aerialway/value/gondola`` =
-        Namespaced_IRI.parse _namespace_name "Gondola/key/aerialway/value/gondola" |> NamespacedName
+        _prefix "Gondola/key/aerialway/value/gondola"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GovermentBuilding"></see>
     /// </summary>
-    let GovermentBuilding =
-        Namespaced_IRI.parse _namespace_name "GovermentBuilding" |> NamespacedName
+    let GovermentBuilding = _prefix "GovermentBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GovermentBuilding/key/amenity/value/goverment_building"></see>
     /// </summary>
     let ``GovermentBuilding/key/amenity/value/goverment_building`` =
-        Namespaced_IRI.parse _namespace_name "GovermentBuilding/key/amenity/value/goverment_building" |> NamespacedName
+        _prefix "GovermentBuilding/key/amenity/value/goverment_building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GovernmentOffice"></see>
     /// </summary>
-    let GovernmentOffice =
-        Namespaced_IRI.parse _namespace_name "GovernmentOffice" |> NamespacedName
+    let GovernmentOffice = _prefix "GovernmentOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GovernmentOffice/key/office/value/government"></see>
     /// </summary>
     let ``GovernmentOffice/key/office/value/government`` =
-        Namespaced_IRI.parse _namespace_name "GovernmentOffice/key/office/value/government" |> NamespacedName
+        _prefix "GovernmentOffice/key/office/value/government"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Granattrichter"></see>
     /// </summary>
-    let Granattrichter =
-        Namespaced_IRI.parse _namespace_name "Granattrichter" |> NamespacedName
+    let Granattrichter = _prefix "Granattrichter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Granattrichter/key/historic/value/Granattrichter"></see>
     /// </summary>
     let ``Granattrichter/key/historic/value/Granattrichter`` =
-        Namespaced_IRI.parse _namespace_name "Granattrichter/key/historic/value/Granattrichter" |> NamespacedName
+        _prefix "Granattrichter/key/historic/value/Granattrichter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GrassLanduse"></see>
     /// </summary>
-    let GrassLanduse =
-        Namespaced_IRI.parse _namespace_name "GrassLanduse" |> NamespacedName
+    let GrassLanduse = _prefix "GrassLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GrassLanduse/key/landuse/value/grass"></see>
     /// </summary>
     let ``GrassLanduse/key/landuse/value/grass`` =
-        Namespaced_IRI.parse _namespace_name "GrassLanduse/key/landuse/value/grass" |> NamespacedName
+        _prefix "GrassLanduse/key/landuse/value/grass"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Grassland"></see>
     /// </summary>
-    let Grassland = Namespaced_IRI.parse _namespace_name "Grassland" |> NamespacedName
+    let Grassland = _prefix "Grassland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Grassland/key/natural/value/grassland"></see>
     /// </summary>
     let ``Grassland/key/natural/value/grassland`` =
-        Namespaced_IRI.parse _namespace_name "Grassland/key/natural/value/grassland" |> NamespacedName
+        _prefix "Grassland/key/natural/value/grassland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Grave"></see>
     /// </summary>
-    let Grave = Namespaced_IRI.parse _namespace_name "Grave" |> NamespacedName
-
+    let Grave = _prefix "Grave"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Grave/key/amenity/value/grave"></see>
     /// </summary>
-    let ``Grave/key/amenity/value/grave`` =
-        Namespaced_IRI.parse _namespace_name "Grave/key/amenity/value/grave" |> NamespacedName
-
+    let ``Grave/key/amenity/value/grave`` = _prefix "Grave/key/amenity/value/grave"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GraveYard"></see>
     /// </summary>
-    let GraveYard = Namespaced_IRI.parse _namespace_name "GraveYard" |> NamespacedName
+    let GraveYard = _prefix "GraveYard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GraveYard/key/amenity/value/grave_yard"></see>
     /// </summary>
     let ``GraveYard/key/amenity/value/grave_yard`` =
-        Namespaced_IRI.parse _namespace_name "GraveYard/key/amenity/value/grave_yard" |> NamespacedName
+        _prefix "GraveYard/key/amenity/value/grave_yard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Greenfield"></see>
     /// </summary>
-    let Greenfield = Namespaced_IRI.parse _namespace_name "Greenfield" |> NamespacedName
+    let Greenfield = _prefix "Greenfield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Greenfield/key/landuse/value/greenfield"></see>
     /// </summary>
     let ``Greenfield/key/landuse/value/greenfield`` =
-        Namespaced_IRI.parse _namespace_name "Greenfield/key/landuse/value/greenfield" |> NamespacedName
+        _prefix "Greenfield/key/landuse/value/greenfield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Greengrocer"></see>
     /// </summary>
-    let Greengrocer =
-        Namespaced_IRI.parse _namespace_name "Greengrocer" |> NamespacedName
+    let Greengrocer = _prefix "Greengrocer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Greengrocer/key/shop/value/greengrocer"></see>
     /// </summary>
     let ``Greengrocer/key/shop/value/greengrocer`` =
-        Namespaced_IRI.parse _namespace_name "Greengrocer/key/shop/value/greengrocer" |> NamespacedName
+        _prefix "Greengrocer/key/shop/value/greengrocer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GreenhouseHorticulture"></see>
     /// </summary>
-    let GreenhouseHorticulture =
-        Namespaced_IRI.parse _namespace_name "GreenhouseHorticulture" |> NamespacedName
+    let GreenhouseHorticulture = _prefix "GreenhouseHorticulture"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GreenhouseHorticulture/key/landuse/value/greenhouse_horticulture"></see>
     /// </summary>
     let ``GreenhouseHorticulture/key/landuse/value/greenhouse_horticulture`` =
-        Namespaced_IRI.parse _namespace_name "GreenhouseHorticulture/key/landuse/value/greenhouse_horticulture" |> NamespacedName
+        _prefix "GreenhouseHorticulture/key/landuse/value/greenhouse_horticulture"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GritBin"></see>
     /// </summary>
-    let GritBin = Namespaced_IRI.parse _namespace_name "GritBin" |> NamespacedName
+    let GritBin = _prefix "GritBin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GritBin/key/amenity/value/grit_bin"></see>
     /// </summary>
     let ``GritBin/key/amenity/value/grit_bin`` =
-        Namespaced_IRI.parse _namespace_name "GritBin/key/amenity/value/grit_bin" |> NamespacedName
+        _prefix "GritBin/key/amenity/value/grit_bin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Groceries"></see>
     /// </summary>
-    let Groceries = Namespaced_IRI.parse _namespace_name "Groceries" |> NamespacedName
+    let Groceries = _prefix "Groceries"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Groceries/key/shop/value/groceries"></see>
     /// </summary>
     let ``Groceries/key/shop/value/groceries`` =
-        Namespaced_IRI.parse _namespace_name "Groceries/key/shop/value/groceries" |> NamespacedName
+        _prefix "Groceries/key/shop/value/groceries"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Grocery"></see>
     /// </summary>
-    let Grocery = Namespaced_IRI.parse _namespace_name "Grocery" |> NamespacedName
-
+    let Grocery = _prefix "Grocery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Grocery/key/shop/value/grocery"></see>
     /// </summary>
-    let ``Grocery/key/shop/value/grocery`` =
-        Namespaced_IRI.parse _namespace_name "Grocery/key/shop/value/grocery" |> NamespacedName
-
+    let ``Grocery/key/shop/value/grocery`` = _prefix "Grocery/key/shop/value/grocery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GrouseButt"></see>
     /// </summary>
-    let GrouseButt = Namespaced_IRI.parse _namespace_name "GrouseButt" |> NamespacedName
+    let GrouseButt = _prefix "GrouseButt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GrouseButt/key/man_made/value/grouse_butt"></see>
     /// </summary>
     let ``GrouseButt/key/man_made/value/grouse_butt`` =
-        Namespaced_IRI.parse _namespace_name "GrouseButt/key/man_made/value/grouse_butt" |> NamespacedName
+        _prefix "GrouseButt/key/man_made/value/grouse_butt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Groyne"></see>
     /// </summary>
-    let Groyne = Namespaced_IRI.parse _namespace_name "Groyne" |> NamespacedName
+    let Groyne = _prefix "Groyne"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Groyne/key/man_made/value/groyne"></see>
     /// </summary>
     let ``Groyne/key/man_made/value/groyne`` =
-        Namespaced_IRI.parse _namespace_name "Groyne/key/man_made/value/groyne" |> NamespacedName
+        _prefix "Groyne/key/man_made/value/groyne"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GuestHouse"></see>
     /// </summary>
-    let GuestHouse = Namespaced_IRI.parse _namespace_name "GuestHouse" |> NamespacedName
+    let GuestHouse = _prefix "GuestHouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GuestHouse/key/tourism/value/guest_house"></see>
     /// </summary>
     let ``GuestHouse/key/tourism/value/guest_house`` =
-        Namespaced_IRI.parse _namespace_name "GuestHouse/key/tourism/value/guest_house" |> NamespacedName
+        _prefix "GuestHouse/key/tourism/value/guest_house"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Guidepost"></see>
     /// </summary>
-    let Guidepost = Namespaced_IRI.parse _namespace_name "Guidepost" |> NamespacedName
+    let Guidepost = _prefix "Guidepost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Guidepost/key/amenity/value/guidepost"></see>
     /// </summary>
     let ``Guidepost/key/amenity/value/guidepost`` =
-        Namespaced_IRI.parse _namespace_name "Guidepost/key/amenity/value/guidepost" |> NamespacedName
+        _prefix "Guidepost/key/amenity/value/guidepost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gym"></see>
     /// </summary>
-    let Gym = Namespaced_IRI.parse _namespace_name "Gym" |> NamespacedName
-
+    let Gym = _prefix "Gym"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gym/key/amenity/value/gym"></see>
     /// </summary>
-    let ``Gym/key/amenity/value/gym`` =
-        Namespaced_IRI.parse _namespace_name "Gym/key/amenity/value/gym" |> NamespacedName
-
+    let ``Gym/key/amenity/value/gym`` = _prefix "Gym/key/amenity/value/gym"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Gym/key/leisure/value/gym"></see>
     /// </summary>
-    let ``Gym/key/leisure/value/gym`` =
-        Namespaced_IRI.parse _namespace_name "Gym/key/leisure/value/gym" |> NamespacedName
-
+    let ``Gym/key/leisure/value/gym`` = _prefix "Gym/key/leisure/value/gym"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GymShop"></see>
     /// </summary>
-    let GymShop = Namespaced_IRI.parse _namespace_name "GymShop" |> NamespacedName
-
+    let GymShop = _prefix "GymShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/GymShop/key/shop/value/gym"></see>
     /// </summary>
-    let ``GymShop/key/shop/value/gym`` =
-        Namespaced_IRI.parse _namespace_name "GymShop/key/shop/value/gym" |> NamespacedName
-
+    let ``GymShop/key/shop/value/gym`` = _prefix "GymShop/key/shop/value/gym"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Haberdashery"></see>
     /// </summary>
-    let Haberdashery =
-        Namespaced_IRI.parse _namespace_name "Haberdashery" |> NamespacedName
+    let Haberdashery = _prefix "Haberdashery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Haberdashery/key/shop/value/haberdashery"></see>
     /// </summary>
     let ``Haberdashery/key/shop/value/haberdashery`` =
-        Namespaced_IRI.parse _namespace_name "Haberdashery/key/shop/value/haberdashery" |> NamespacedName
+        _prefix "Haberdashery/key/shop/value/haberdashery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hackerspace"></see>
     /// </summary>
-    let Hackerspace =
-        Namespaced_IRI.parse _namespace_name "Hackerspace" |> NamespacedName
+    let Hackerspace = _prefix "Hackerspace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hackerspace/key/leisure/value/hackerspace"></see>
     /// </summary>
     let ``Hackerspace/key/leisure/value/hackerspace`` =
-        Namespaced_IRI.parse _namespace_name "Hackerspace/key/leisure/value/hackerspace" |> NamespacedName
+        _prefix "Hackerspace/key/leisure/value/hackerspace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hairdresser"></see>
     /// </summary>
-    let Hairdresser =
-        Namespaced_IRI.parse _namespace_name "Hairdresser" |> NamespacedName
+    let Hairdresser = _prefix "Hairdresser"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hairdresser/key/amenity/value/hairdresser"></see>
     /// </summary>
     let ``Hairdresser/key/amenity/value/hairdresser`` =
-        Namespaced_IRI.parse _namespace_name "Hairdresser/key/amenity/value/hairdresser" |> NamespacedName
+        _prefix "Hairdresser/key/amenity/value/hairdresser"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HairdresserShop"></see>
     /// </summary>
-    let HairdresserShop =
-        Namespaced_IRI.parse _namespace_name "HairdresserShop" |> NamespacedName
+    let HairdresserShop = _prefix "HairdresserShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HairdresserShop/key/shop/value/hairdresser"></see>
     /// </summary>
     let ``HairdresserShop/key/shop/value/hairdresser`` =
-        Namespaced_IRI.parse _namespace_name "HairdresserShop/key/shop/value/hairdresser" |> NamespacedName
+        _prefix "HairdresserShop/key/shop/value/hairdresser"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hall"></see>
     /// </summary>
-    let Hall = Namespaced_IRI.parse _namespace_name "Hall" |> NamespacedName
-
+    let Hall = _prefix "Hall"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hall/key/amenity/value/hall"></see>
     /// </summary>
-    let ``Hall/key/amenity/value/hall`` =
-        Namespaced_IRI.parse _namespace_name "Hall/key/amenity/value/hall" |> NamespacedName
-
+    let ``Hall/key/amenity/value/hall`` = _prefix "Hall/key/amenity/value/hall"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hamlet"></see>
     /// </summary>
-    let Hamlet = Namespaced_IRI.parse _namespace_name "Hamlet" |> NamespacedName
-
+    let Hamlet = _prefix "Hamlet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hamlet/key/place/value/hamlet"></see>
     /// </summary>
-    let ``Hamlet/key/place/value/hamlet`` =
-        Namespaced_IRI.parse _namespace_name "Hamlet/key/place/value/hamlet" |> NamespacedName
-
+    let ``Hamlet/key/place/value/hamlet`` = _prefix "Hamlet/key/place/value/hamlet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hanami"></see>
     /// </summary>
-    let Hanami = Namespaced_IRI.parse _namespace_name "Hanami" |> NamespacedName
-
+    let Hanami = _prefix "Hanami"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hanami/key/tourism/value/hanami"></see>
     /// </summary>
-    let ``Hanami/key/tourism/value/hanami`` =
-        Namespaced_IRI.parse _namespace_name "Hanami/key/tourism/value/hanami" |> NamespacedName
-
+    let ``Hanami/key/tourism/value/hanami`` = _prefix "Hanami/key/tourism/value/hanami"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Handicraft"></see>
     /// </summary>
-    let Handicraft = Namespaced_IRI.parse _namespace_name "Handicraft" |> NamespacedName
+    let Handicraft = _prefix "Handicraft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Handicraft/key/craft/value/handicraft"></see>
     /// </summary>
     let ``Handicraft/key/craft/value/handicraft`` =
-        Namespaced_IRI.parse _namespace_name "Handicraft/key/craft/value/handicraft" |> NamespacedName
+        _prefix "Handicraft/key/craft/value/handicraft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Harbour"></see>
     /// </summary>
-    let Harbour = Namespaced_IRI.parse _namespace_name "Harbour" |> NamespacedName
+    let Harbour = _prefix "Harbour"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Harbour/key/waterway/value/harbour"></see>
     /// </summary>
     let ``Harbour/key/waterway/value/harbour`` =
-        Namespaced_IRI.parse _namespace_name "Harbour/key/waterway/value/harbour" |> NamespacedName
+        _prefix "Harbour/key/waterway/value/harbour"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hardware"></see>
     /// </summary>
-    let Hardware = Namespaced_IRI.parse _namespace_name "Hardware" |> NamespacedName
+    let Hardware = _prefix "Hardware"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hardware/key/shop/value/hardware"></see>
     /// </summary>
     let ``Hardware/key/shop/value/hardware`` =
-        Namespaced_IRI.parse _namespace_name "Hardware/key/shop/value/hardware" |> NamespacedName
+        _prefix "Hardware/key/shop/value/hardware"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Headland"></see>
     /// </summary>
-    let Headland = Namespaced_IRI.parse _namespace_name "Headland" |> NamespacedName
+    let Headland = _prefix "Headland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Headland/key/natural/value/headland"></see>
     /// </summary>
     let ``Headland/key/natural/value/headland`` =
-        Namespaced_IRI.parse _namespace_name "Headland/key/natural/value/headland" |> NamespacedName
+        _prefix "Headland/key/natural/value/headland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Health"></see>
     /// </summary>
-    let Health = Namespaced_IRI.parse _namespace_name "Health" |> NamespacedName
-
+    let Health = _prefix "Health"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Health/key/shop/value/health"></see>
     /// </summary>
-    let ``Health/key/shop/value/health`` =
-        Namespaced_IRI.parse _namespace_name "Health/key/shop/value/health" |> NamespacedName
-
+    let ``Health/key/shop/value/health`` = _prefix "Health/key/shop/value/health"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HealthAndBeauty"></see>
     /// </summary>
-    let HealthAndBeauty =
-        Namespaced_IRI.parse _namespace_name "HealthAndBeauty" |> NamespacedName
+    let HealthAndBeauty = _prefix "HealthAndBeauty"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HealthAndBeauty/key/shop/value/health_and_beauty"></see>
     /// </summary>
     let ``HealthAndBeauty/key/shop/value/health_and_beauty`` =
-        Namespaced_IRI.parse _namespace_name "HealthAndBeauty/key/shop/value/health_and_beauty" |> NamespacedName
+        _prefix "HealthAndBeauty/key/shop/value/health_and_beauty"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HealthCentre"></see>
     /// </summary>
-    let HealthCentre =
-        Namespaced_IRI.parse _namespace_name "HealthCentre" |> NamespacedName
+    let HealthCentre = _prefix "HealthCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HealthCentre/key/amenity/value/health_centre"></see>
     /// </summary>
     let ``HealthCentre/key/amenity/value/health_centre`` =
-        Namespaced_IRI.parse _namespace_name "HealthCentre/key/amenity/value/health_centre" |> NamespacedName
+        _prefix "HealthCentre/key/amenity/value/health_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HealthFood"></see>
     /// </summary>
-    let HealthFood = Namespaced_IRI.parse _namespace_name "HealthFood" |> NamespacedName
+    let HealthFood = _prefix "HealthFood"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HealthFood/key/shop/value/health_food"></see>
     /// </summary>
     let ``HealthFood/key/shop/value/health_food`` =
-        Namespaced_IRI.parse _namespace_name "HealthFood/key/shop/value/health_food" |> NamespacedName
+        _prefix "HealthFood/key/shop/value/health_food"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HearingAid"></see>
     /// </summary>
-    let HearingAid = Namespaced_IRI.parse _namespace_name "HearingAid" |> NamespacedName
+    let HearingAid = _prefix "HearingAid"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HearingAid/key/shop/value/hearing_aid"></see>
     /// </summary>
     let ``HearingAid/key/shop/value/hearing_aid`` =
-        Namespaced_IRI.parse _namespace_name "HearingAid/key/shop/value/hearing_aid" |> NamespacedName
+        _prefix "HearingAid/key/shop/value/hearing_aid"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HearingAids"></see>
     /// </summary>
-    let HearingAids =
-        Namespaced_IRI.parse _namespace_name "HearingAids" |> NamespacedName
+    let HearingAids = _prefix "HearingAids"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HearingAids/key/shop/value/hearing_aids"></see>
     /// </summary>
     let ``HearingAids/key/shop/value/hearing_aids`` =
-        Namespaced_IRI.parse _namespace_name "HearingAids/key/shop/value/hearing_aids" |> NamespacedName
+        _prefix "HearingAids/key/shop/value/hearing_aids"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heath"></see>
     /// </summary>
-    let Heath = Namespaced_IRI.parse _namespace_name "Heath" |> NamespacedName
-
+    let Heath = _prefix "Heath"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heath/key/natural/value/heath"></see>
     /// </summary>
-    let ``Heath/key/natural/value/heath`` =
-        Namespaced_IRI.parse _namespace_name "Heath/key/natural/value/heath" |> NamespacedName
-
+    let ``Heath/key/natural/value/heath`` = _prefix "Heath/key/natural/value/heath"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hedge"></see>
     /// </summary>
-    let Hedge = Namespaced_IRI.parse _namespace_name "Hedge" |> NamespacedName
-
+    let Hedge = _prefix "Hedge"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hedge/key/barrier/value/hedge"></see>
     /// </summary>
-    let ``Hedge/key/barrier/value/hedge`` =
-        Namespaced_IRI.parse _namespace_name "Hedge/key/barrier/value/hedge" |> NamespacedName
-
+    let ``Hedge/key/barrier/value/hedge`` = _prefix "Hedge/key/barrier/value/hedge"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Helipad"></see>
     /// </summary>
-    let Helipad = Namespaced_IRI.parse _namespace_name "Helipad" |> NamespacedName
+    let Helipad = _prefix "Helipad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Helipad/key/aeroway/value/helipad"></see>
     /// </summary>
     let ``Helipad/key/aeroway/value/helipad`` =
-        Namespaced_IRI.parse _namespace_name "Helipad/key/aeroway/value/helipad" |> NamespacedName
+        _prefix "Helipad/key/aeroway/value/helipad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heliport"></see>
     /// </summary>
-    let Heliport = Namespaced_IRI.parse _namespace_name "Heliport" |> NamespacedName
+    let Heliport = _prefix "Heliport"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heliport/key/aeroway/value/heliport"></see>
     /// </summary>
     let ``Heliport/key/aeroway/value/heliport`` =
-        Namespaced_IRI.parse _namespace_name "Heliport/key/aeroway/value/heliport" |> NamespacedName
+        _prefix "Heliport/key/aeroway/value/heliport"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heritage"></see>
     /// </summary>
-    let Heritage = Namespaced_IRI.parse _namespace_name "Heritage" |> NamespacedName
+    let Heritage = _prefix "Heritage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heritage/key/historic/value/heritage"></see>
     /// </summary>
     let ``Heritage/key/historic/value/heritage`` =
-        Namespaced_IRI.parse _namespace_name "Heritage/key/historic/value/heritage" |> NamespacedName
+        _prefix "Heritage/key/historic/value/heritage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heuriger"></see>
     /// </summary>
-    let Heuriger = Namespaced_IRI.parse _namespace_name "Heuriger" |> NamespacedName
+    let Heuriger = _prefix "Heuriger"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Heuriger/key/amenity/value/heuriger"></see>
     /// </summary>
     let ``Heuriger/key/amenity/value/heuriger`` =
-        Namespaced_IRI.parse _namespace_name "Heuriger/key/amenity/value/heuriger" |> NamespacedName
+        _prefix "Heuriger/key/amenity/value/heuriger"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hide"></see>
     /// </summary>
-    let Hide = Namespaced_IRI.parse _namespace_name "Hide" |> NamespacedName
-
+    let Hide = _prefix "Hide"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hide/key/amenity/value/hide"></see>
     /// </summary>
-    let ``Hide/key/amenity/value/hide`` =
-        Namespaced_IRI.parse _namespace_name "Hide/key/amenity/value/hide" |> NamespacedName
-
+    let ``Hide/key/amenity/value/hide`` = _prefix "Hide/key/amenity/value/hide"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hifi"></see>
     /// </summary>
-    let Hifi = Namespaced_IRI.parse _namespace_name "Hifi" |> NamespacedName
-
+    let Hifi = _prefix "Hifi"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hifi/key/shop/value/hifi"></see>
     /// </summary>
-    let ``Hifi/key/shop/value/hifi`` =
-        Namespaced_IRI.parse _namespace_name "Hifi/key/shop/value/hifi" |> NamespacedName
-
+    let ``Hifi/key/shop/value/hifi`` = _prefix "Hifi/key/shop/value/hifi"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayConstruction"></see>
     /// </summary>
-    let HighwayConstruction =
-        Namespaced_IRI.parse _namespace_name "HighwayConstruction" |> NamespacedName
+    let HighwayConstruction = _prefix "HighwayConstruction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayConstruction/key/highway/value/construction"></see>
     /// </summary>
     let ``HighwayConstruction/key/highway/value/construction`` =
-        Namespaced_IRI.parse _namespace_name "HighwayConstruction/key/highway/value/construction" |> NamespacedName
+        _prefix "HighwayConstruction/key/highway/value/construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayCrossing"></see>
     /// </summary>
-    let HighwayCrossing =
-        Namespaced_IRI.parse _namespace_name "HighwayCrossing" |> NamespacedName
+    let HighwayCrossing = _prefix "HighwayCrossing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayCrossing/key/highway/value/crossing"></see>
     /// </summary>
     let ``HighwayCrossing/key/highway/value/crossing`` =
-        Namespaced_IRI.parse _namespace_name "HighwayCrossing/key/highway/value/crossing" |> NamespacedName
+        _prefix "HighwayCrossing/key/highway/value/crossing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayFord"></see>
     /// </summary>
-    let HighwayFord =
-        Namespaced_IRI.parse _namespace_name "HighwayFord" |> NamespacedName
+    let HighwayFord = _prefix "HighwayFord"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayFord/key/highway/value/ford"></see>
     /// </summary>
     let ``HighwayFord/key/highway/value/ford`` =
-        Namespaced_IRI.parse _namespace_name "HighwayFord/key/highway/value/ford" |> NamespacedName
+        _prefix "HighwayFord/key/highway/value/ford"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayPrimaryLink"></see>
     /// </summary>
-    let HighwayPrimaryLink =
-        Namespaced_IRI.parse _namespace_name "HighwayPrimaryLink" |> NamespacedName
+    let HighwayPrimaryLink = _prefix "HighwayPrimaryLink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayPrimaryLink/key/highway/value/primary_link"></see>
     /// </summary>
     let ``HighwayPrimaryLink/key/highway/value/primary_link`` =
-        Namespaced_IRI.parse _namespace_name "HighwayPrimaryLink/key/highway/value/primary_link" |> NamespacedName
+        _prefix "HighwayPrimaryLink/key/highway/value/primary_link"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwaySecundaryLink"></see>
     /// </summary>
-    let HighwaySecundaryLink =
-        Namespaced_IRI.parse _namespace_name "HighwaySecundaryLink" |> NamespacedName
+    let HighwaySecundaryLink = _prefix "HighwaySecundaryLink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwaySecundaryLink/key/highway/value/secundary_link"></see>
     /// </summary>
     let ``HighwaySecundaryLink/key/highway/value/secundary_link`` =
-        Namespaced_IRI.parse _namespace_name "HighwaySecundaryLink/key/highway/value/secundary_link" |> NamespacedName
+        _prefix "HighwaySecundaryLink/key/highway/value/secundary_link"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayService"></see>
     /// </summary>
-    let HighwayService =
-        Namespaced_IRI.parse _namespace_name "HighwayService" |> NamespacedName
+    let HighwayService = _prefix "HighwayService"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayService/key/highway/value/service"></see>
     /// </summary>
     let ``HighwayService/key/highway/value/service`` =
-        Namespaced_IRI.parse _namespace_name "HighwayService/key/highway/value/service" |> NamespacedName
+        _prefix "HighwayService/key/highway/value/service"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayTertiaryLink"></see>
     /// </summary>
-    let HighwayTertiaryLink =
-        Namespaced_IRI.parse _namespace_name "HighwayTertiaryLink" |> NamespacedName
+    let HighwayTertiaryLink = _prefix "HighwayTertiaryLink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HighwayTertiaryLink/key/highway/value/tertiary_link"></see>
     /// </summary>
     let ``HighwayTertiaryLink/key/highway/value/tertiary_link`` =
-        Namespaced_IRI.parse _namespace_name "HighwayTertiaryLink/key/highway/value/tertiary_link" |> NamespacedName
+        _prefix "HighwayTertiaryLink/key/highway/value/tertiary_link"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HikingRoute"></see>
     /// </summary>
-    let HikingRoute =
-        Namespaced_IRI.parse _namespace_name "HikingRoute" |> NamespacedName
+    let HikingRoute = _prefix "HikingRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HikingRoute/key/route/value/hiking"></see>
     /// </summary>
     let ``HikingRoute/key/route/value/hiking`` =
-        Namespaced_IRI.parse _namespace_name "HikingRoute/key/route/value/hiking" |> NamespacedName
+        _prefix "HikingRoute/key/route/value/hiking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hill"></see>
     /// </summary>
-    let Hill = Namespaced_IRI.parse _namespace_name "Hill" |> NamespacedName
-
+    let Hill = _prefix "Hill"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hill/key/natural/value/hill"></see>
     /// </summary>
-    let ``Hill/key/natural/value/hill`` =
-        Namespaced_IRI.parse _namespace_name "Hill/key/natural/value/hill" |> NamespacedName
-
+    let ``Hill/key/natural/value/hill`` = _prefix "Hill/key/natural/value/hill"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricBuilding"></see>
     /// </summary>
-    let HistoricBuilding =
-        Namespaced_IRI.parse _namespace_name "HistoricBuilding" |> NamespacedName
+    let HistoricBuilding = _prefix "HistoricBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricBuilding/key/historic/value/building"></see>
     /// </summary>
     let ``HistoricBuilding/key/historic/value/building`` =
-        Namespaced_IRI.parse _namespace_name "HistoricBuilding/key/historic/value/building" |> NamespacedName
+        _prefix "HistoricBuilding/key/historic/value/building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricChapel"></see>
     /// </summary>
-    let HistoricChapel =
-        Namespaced_IRI.parse _namespace_name "HistoricChapel" |> NamespacedName
+    let HistoricChapel = _prefix "HistoricChapel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricChapel/key/historic/value/chapel"></see>
     /// </summary>
     let ``HistoricChapel/key/historic/value/chapel`` =
-        Namespaced_IRI.parse _namespace_name "HistoricChapel/key/historic/value/chapel" |> NamespacedName
+        _prefix "HistoricChapel/key/historic/value/chapel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricChurch"></see>
     /// </summary>
-    let HistoricChurch =
-        Namespaced_IRI.parse _namespace_name "HistoricChurch" |> NamespacedName
+    let HistoricChurch = _prefix "HistoricChurch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricChurch/key/historic/value/church"></see>
     /// </summary>
     let ``HistoricChurch/key/historic/value/church`` =
-        Namespaced_IRI.parse _namespace_name "HistoricChurch/key/historic/value/church" |> NamespacedName
+        _prefix "HistoricChurch/key/historic/value/church"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricFountain"></see>
     /// </summary>
-    let HistoricFountain =
-        Namespaced_IRI.parse _namespace_name "HistoricFountain" |> NamespacedName
+    let HistoricFountain = _prefix "HistoricFountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricFountain/key/historic/value/fountain"></see>
     /// </summary>
     let ``HistoricFountain/key/historic/value/fountain`` =
-        Namespaced_IRI.parse _namespace_name "HistoricFountain/key/historic/value/fountain" |> NamespacedName
+        _prefix "HistoricFountain/key/historic/value/fountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricHouse"></see>
     /// </summary>
-    let HistoricHouse =
-        Namespaced_IRI.parse _namespace_name "HistoricHouse" |> NamespacedName
+    let HistoricHouse = _prefix "HistoricHouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricHouse/key/historic/value/house"></see>
     /// </summary>
     let ``HistoricHouse/key/historic/value/house`` =
-        Namespaced_IRI.parse _namespace_name "HistoricHouse/key/historic/value/house" |> NamespacedName
+        _prefix "HistoricHouse/key/historic/value/house"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricIndustrial"></see>
     /// </summary>
-    let HistoricIndustrial =
-        Namespaced_IRI.parse _namespace_name "HistoricIndustrial" |> NamespacedName
+    let HistoricIndustrial = _prefix "HistoricIndustrial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricIndustrial/key/historic/value/industrial"></see>
     /// </summary>
     let ``HistoricIndustrial/key/historic/value/industrial`` =
-        Namespaced_IRI.parse _namespace_name "HistoricIndustrial/key/historic/value/industrial" |> NamespacedName
+        _prefix "HistoricIndustrial/key/historic/value/industrial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMarker"></see>
     /// </summary>
-    let HistoricMarker =
-        Namespaced_IRI.parse _namespace_name "HistoricMarker" |> NamespacedName
+    let HistoricMarker = _prefix "HistoricMarker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMarker/key/historic/value/marker"></see>
     /// </summary>
     let ``HistoricMarker/key/historic/value/marker`` =
-        Namespaced_IRI.parse _namespace_name "HistoricMarker/key/historic/value/marker" |> NamespacedName
+        _prefix "HistoricMarker/key/historic/value/marker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMilestone"></see>
     /// </summary>
-    let HistoricMilestone =
-        Namespaced_IRI.parse _namespace_name "HistoricMilestone" |> NamespacedName
+    let HistoricMilestone = _prefix "HistoricMilestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMilestone/key/historic/value/milestone"></see>
     /// </summary>
     let ``HistoricMilestone/key/historic/value/milestone`` =
-        Namespaced_IRI.parse _namespace_name "HistoricMilestone/key/historic/value/milestone" |> NamespacedName
+        _prefix "HistoricMilestone/key/historic/value/milestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMine"></see>
     /// </summary>
-    let HistoricMine =
-        Namespaced_IRI.parse _namespace_name "HistoricMine" |> NamespacedName
+    let HistoricMine = _prefix "HistoricMine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMine/key/historic/value/mine"></see>
     /// </summary>
     let ``HistoricMine/key/historic/value/mine`` =
-        Namespaced_IRI.parse _namespace_name "HistoricMine/key/historic/value/mine" |> NamespacedName
+        _prefix "HistoricMine/key/historic/value/mine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMonastery"></see>
     /// </summary>
-    let HistoricMonastery =
-        Namespaced_IRI.parse _namespace_name "HistoricMonastery" |> NamespacedName
+    let HistoricMonastery = _prefix "HistoricMonastery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMonastery/key/historic/value/monastery"></see>
     /// </summary>
     let ``HistoricMonastery/key/historic/value/monastery`` =
-        Namespaced_IRI.parse _namespace_name "HistoricMonastery/key/historic/value/monastery" |> NamespacedName
+        _prefix "HistoricMonastery/key/historic/value/monastery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMuseum"></see>
     /// </summary>
-    let HistoricMuseum =
-        Namespaced_IRI.parse _namespace_name "HistoricMuseum" |> NamespacedName
+    let HistoricMuseum = _prefix "HistoricMuseum"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricMuseum/key/historic/value/museum"></see>
     /// </summary>
     let ``HistoricMuseum/key/historic/value/museum`` =
-        Namespaced_IRI.parse _namespace_name "HistoricMuseum/key/historic/value/museum" |> NamespacedName
+        _prefix "HistoricMuseum/key/historic/value/museum"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricPointOfInterest"></see>
     /// </summary>
-    let HistoricPointOfInterest =
-        Namespaced_IRI.parse _namespace_name "HistoricPointOfInterest" |> NamespacedName
+    let HistoricPointOfInterest = _prefix "HistoricPointOfInterest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricPointOfInterest/key/historic/value/yes"></see>
     /// </summary>
     let ``HistoricPointOfInterest/key/historic/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "HistoricPointOfInterest/key/historic/value/yes" |> NamespacedName
+        _prefix "HistoricPointOfInterest/key/historic/value/yes"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricStation"></see>
     /// </summary>
-    let HistoricStation =
-        Namespaced_IRI.parse _namespace_name "HistoricStation" |> NamespacedName
+    let HistoricStation = _prefix "HistoricStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricStation/key/railway/value/historic_station"></see>
     /// </summary>
     let ``HistoricStation/key/railway/value/historic_station`` =
-        Namespaced_IRI.parse _namespace_name "HistoricStation/key/railway/value/historic_station" |> NamespacedName
+        _prefix "HistoricStation/key/railway/value/historic_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricStatue"></see>
     /// </summary>
-    let HistoricStatue =
-        Namespaced_IRI.parse _namespace_name "HistoricStatue" |> NamespacedName
+    let HistoricStatue = _prefix "HistoricStatue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricStatue/key/historic/value/statue"></see>
     /// </summary>
     let ``HistoricStatue/key/historic/value/statue`` =
-        Namespaced_IRI.parse _namespace_name "HistoricStatue/key/historic/value/statue" |> NamespacedName
+        _prefix "HistoricStatue/key/historic/value/statue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricTower"></see>
     /// </summary>
-    let HistoricTower =
-        Namespaced_IRI.parse _namespace_name "HistoricTower" |> NamespacedName
+    let HistoricTower = _prefix "HistoricTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricTower/key/historic/value/tower"></see>
     /// </summary>
     let ``HistoricTower/key/historic/value/tower`` =
-        Namespaced_IRI.parse _namespace_name "HistoricTower/key/historic/value/tower" |> NamespacedName
+        _prefix "HistoricTower/key/historic/value/tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricWell"></see>
     /// </summary>
-    let HistoricWell =
-        Namespaced_IRI.parse _namespace_name "HistoricWell" |> NamespacedName
+    let HistoricWell = _prefix "HistoricWell"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HistoricWell/key/historic/value/well"></see>
     /// </summary>
     let ``HistoricWell/key/historic/value/well`` =
-        Namespaced_IRI.parse _namespace_name "HistoricWell/key/historic/value/well" |> NamespacedName
+        _prefix "HistoricWell/key/historic/value/well"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hobby"></see>
     /// </summary>
-    let Hobby = Namespaced_IRI.parse _namespace_name "Hobby" |> NamespacedName
-
+    let Hobby = _prefix "Hobby"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hobby/key/shop/value/hobby"></see>
     /// </summary>
-    let ``Hobby/key/shop/value/hobby`` =
-        Namespaced_IRI.parse _namespace_name "Hobby/key/shop/value/hobby" |> NamespacedName
-
+    let ``Hobby/key/shop/value/hobby`` = _prefix "Hobby/key/shop/value/hobby"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HoldingPoint"></see>
     /// </summary>
-    let HoldingPoint =
-        Namespaced_IRI.parse _namespace_name "HoldingPoint" |> NamespacedName
+    let HoldingPoint = _prefix "HoldingPoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HoldingPoint/key/aeroway/value/holding_point"></see>
     /// </summary>
     let ``HoldingPoint/key/aeroway/value/holding_point`` =
-        Namespaced_IRI.parse _namespace_name "HoldingPoint/key/aeroway/value/holding_point" |> NamespacedName
+        _prefix "HoldingPoint/key/aeroway/value/holding_point"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hole"></see>
     /// </summary>
-    let Hole = Namespaced_IRI.parse _namespace_name "Hole" |> NamespacedName
-
+    let Hole = _prefix "Hole"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hole/key/leisure/value/hole"></see>
     /// </summary>
-    let ``Hole/key/leisure/value/hole`` =
-        Namespaced_IRI.parse _namespace_name "Hole/key/leisure/value/hole" |> NamespacedName
-
+    let ``Hole/key/leisure/value/hole`` = _prefix "Hole/key/leisure/value/hole"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Home"></see>
     /// </summary>
-    let Home = Namespaced_IRI.parse _namespace_name "Home" |> NamespacedName
-
+    let Home = _prefix "Home"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Home/key/shop/value/home"></see>
     /// </summary>
-    let ``Home/key/shop/value/home`` =
-        Namespaced_IRI.parse _namespace_name "Home/key/shop/value/home" |> NamespacedName
-
+    let ``Home/key/shop/value/home`` = _prefix "Home/key/shop/value/home"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HomeImprovement"></see>
     /// </summary>
-    let HomeImprovement =
-        Namespaced_IRI.parse _namespace_name "HomeImprovement" |> NamespacedName
+    let HomeImprovement = _prefix "HomeImprovement"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HomeImprovement/key/shop/value/home_improvement"></see>
     /// </summary>
     let ``HomeImprovement/key/shop/value/home_improvement`` =
-        Namespaced_IRI.parse _namespace_name "HomeImprovement/key/shop/value/home_improvement" |> NamespacedName
+        _prefix "HomeImprovement/key/shop/value/home_improvement"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HorseRiding"></see>
     /// </summary>
-    let HorseRiding =
-        Namespaced_IRI.parse _namespace_name "HorseRiding" |> NamespacedName
+    let HorseRiding = _prefix "HorseRiding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HorseRiding/key/leisure/value/horse_riding"></see>
     /// </summary>
     let ``HorseRiding/key/leisure/value/horse_riding`` =
-        Namespaced_IRI.parse _namespace_name "HorseRiding/key/leisure/value/horse_riding" |> NamespacedName
+        _prefix "HorseRiding/key/leisure/value/horse_riding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HorseStile"></see>
     /// </summary>
-    let HorseStile = Namespaced_IRI.parse _namespace_name "HorseStile" |> NamespacedName
+    let HorseStile = _prefix "HorseStile"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HorseStile/key/barrier/value/horse_stile"></see>
     /// </summary>
     let ``HorseStile/key/barrier/value/horse_stile`` =
-        Namespaced_IRI.parse _namespace_name "HorseStile/key/barrier/value/horse_stile" |> NamespacedName
+        _prefix "HorseStile/key/barrier/value/horse_stile"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hospice"></see>
     /// </summary>
-    let Hospice = Namespaced_IRI.parse _namespace_name "Hospice" |> NamespacedName
+    let Hospice = _prefix "Hospice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hospice/key/amenity/value/hospice"></see>
     /// </summary>
     let ``Hospice/key/amenity/value/hospice`` =
-        Namespaced_IRI.parse _namespace_name "Hospice/key/amenity/value/hospice" |> NamespacedName
+        _prefix "Hospice/key/amenity/value/hospice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hospital"></see>
     /// </summary>
-    let Hospital = Namespaced_IRI.parse _namespace_name "Hospital" |> NamespacedName
+    let Hospital = _prefix "Hospital"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hospital/key/amenity/value/hospital"></see>
     /// </summary>
     let ``Hospital/key/amenity/value/hospital`` =
-        Namespaced_IRI.parse _namespace_name "Hospital/key/amenity/value/hospital" |> NamespacedName
+        _prefix "Hospital/key/amenity/value/hospital"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hostel"></see>
     /// </summary>
-    let Hostel = Namespaced_IRI.parse _namespace_name "Hostel" |> NamespacedName
-
+    let Hostel = _prefix "Hostel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hostel/key/tourism/value/hostel"></see>
     /// </summary>
-    let ``Hostel/key/tourism/value/hostel`` =
-        Namespaced_IRI.parse _namespace_name "Hostel/key/tourism/value/hostel" |> NamespacedName
-
+    let ``Hostel/key/tourism/value/hostel`` = _prefix "Hostel/key/tourism/value/hostel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HotSpring"></see>
     /// </summary>
-    let HotSpring = Namespaced_IRI.parse _namespace_name "HotSpring" |> NamespacedName
+    let HotSpring = _prefix "HotSpring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HotSpring/key/leisure/value/hot_spring"></see>
     /// </summary>
     let ``HotSpring/key/leisure/value/hot_spring`` =
-        Namespaced_IRI.parse _namespace_name "HotSpring/key/leisure/value/hot_spring" |> NamespacedName
+        _prefix "HotSpring/key/leisure/value/hot_spring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hotel"></see>
     /// </summary>
-    let Hotel = Namespaced_IRI.parse _namespace_name "Hotel" |> NamespacedName
-
+    let Hotel = _prefix "Hotel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hotel/key/amenity/value/hotel"></see>
     /// </summary>
-    let ``Hotel/key/amenity/value/hotel`` =
-        Namespaced_IRI.parse _namespace_name "Hotel/key/amenity/value/hotel" |> NamespacedName
-
+    let ``Hotel/key/amenity/value/hotel`` = _prefix "Hotel/key/amenity/value/hotel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hotel/key/tourism/value/hotel"></see>
     /// </summary>
-    let ``Hotel/key/tourism/value/hotel`` =
-        Namespaced_IRI.parse _namespace_name "Hotel/key/tourism/value/hotel" |> NamespacedName
-
+    let ``Hotel/key/tourism/value/hotel`` = _prefix "Hotel/key/tourism/value/hotel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HouseConnectionBox"></see>
     /// </summary>
-    let HouseConnectionBox =
-        Namespaced_IRI.parse _namespace_name "HouseConnectionBox" |> NamespacedName
+    let HouseConnectionBox = _prefix "HouseConnectionBox"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HouseConnectionBox/key/power/value/house_connection_box"></see>
     /// </summary>
     let ``HouseConnectionBox/key/power/value/house_connection_box`` =
-        Namespaced_IRI.parse _namespace_name "HouseConnectionBox/key/power/value/house_connection_box" |> NamespacedName
+        _prefix "HouseConnectionBox/key/power/value/house_connection_box"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Household"></see>
     /// </summary>
-    let Household = Namespaced_IRI.parse _namespace_name "Household" |> NamespacedName
+    let Household = _prefix "Household"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Household/key/shop/value/household"></see>
     /// </summary>
     let ``Household/key/shop/value/household`` =
-        Namespaced_IRI.parse _namespace_name "Household/key/shop/value/household" |> NamespacedName
+        _prefix "Household/key/shop/value/household"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Housewares"></see>
     /// </summary>
-    let Housewares = Namespaced_IRI.parse _namespace_name "Housewares" |> NamespacedName
+    let Housewares = _prefix "Housewares"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Housewares/key/shop/value/housewares"></see>
     /// </summary>
     let ``Housewares/key/shop/value/housewares`` =
-        Namespaced_IRI.parse _namespace_name "Housewares/key/shop/value/housewares" |> NamespacedName
+        _prefix "Housewares/key/shop/value/housewares"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hump"></see>
     /// </summary>
-    let Hump = Namespaced_IRI.parse _namespace_name "Hump" |> NamespacedName
+    let Hump = _prefix "Hump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hump/key/traffic_calming/value/hump"></see>
     /// </summary>
     let ``Hump/key/traffic_calming/value/hump`` =
-        Namespaced_IRI.parse _namespace_name "Hump/key/traffic_calming/value/hump" |> NamespacedName
+        _prefix "Hump/key/traffic_calming/value/hump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HuntingBlind"></see>
     /// </summary>
-    let HuntingBlind =
-        Namespaced_IRI.parse _namespace_name "HuntingBlind" |> NamespacedName
+    let HuntingBlind = _prefix "HuntingBlind"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HuntingBlind/key/amenity/value/hunting_blind"></see>
     /// </summary>
     let ``HuntingBlind/key/amenity/value/hunting_blind`` =
-        Namespaced_IRI.parse _namespace_name "HuntingBlind/key/amenity/value/hunting_blind" |> NamespacedName
+        _prefix "HuntingBlind/key/amenity/value/hunting_blind"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HuntingStand"></see>
     /// </summary>
-    let HuntingStand =
-        Namespaced_IRI.parse _namespace_name "HuntingStand" |> NamespacedName
+    let HuntingStand = _prefix "HuntingStand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/HuntingStand/key/amenity/value/hunting_stand"></see>
     /// </summary>
     let ``HuntingStand/key/amenity/value/hunting_stand`` =
-        Namespaced_IRI.parse _namespace_name "HuntingStand/key/amenity/value/hunting_stand" |> NamespacedName
+        _prefix "HuntingStand/key/amenity/value/hunting_stand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hut"></see>
     /// </summary>
-    let Hut = Namespaced_IRI.parse _namespace_name "Hut" |> NamespacedName
-
+    let Hut = _prefix "Hut"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hut/key/amenity/value/hut"></see>
     /// </summary>
-    let ``Hut/key/amenity/value/hut`` =
-        Namespaced_IRI.parse _namespace_name "Hut/key/amenity/value/hut" |> NamespacedName
-
+    let ``Hut/key/amenity/value/hut`` = _prefix "Hut/key/amenity/value/hut"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hvac"></see>
     /// </summary>
-    let Hvac = Namespaced_IRI.parse _namespace_name "Hvac" |> NamespacedName
-
+    let Hvac = _prefix "Hvac"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hvac/key/craft/value/hvac"></see>
     /// </summary>
-    let ``Hvac/key/craft/value/hvac`` =
-        Namespaced_IRI.parse _namespace_name "Hvac/key/craft/value/hvac" |> NamespacedName
-
+    let ``Hvac/key/craft/value/hvac`` = _prefix "Hvac/key/craft/value/hvac"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hydrant"></see>
     /// </summary>
-    let Hydrant = Namespaced_IRI.parse _namespace_name "Hydrant" |> NamespacedName
+    let Hydrant = _prefix "Hydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Hydrant/key/amenity/value/hydrant"></see>
     /// </summary>
     let ``Hydrant/key/amenity/value/hydrant`` =
-        Namespaced_IRI.parse _namespace_name "Hydrant/key/amenity/value/hydrant" |> NamespacedName
+        _prefix "Hydrant/key/amenity/value/hydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceCream"></see>
     /// </summary>
-    let IceCream = Namespaced_IRI.parse _namespace_name "IceCream" |> NamespacedName
+    let IceCream = _prefix "IceCream"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceCream/key/amenity/value/ice_cream"></see>
     /// </summary>
     let ``IceCream/key/amenity/value/ice_cream`` =
-        Namespaced_IRI.parse _namespace_name "IceCream/key/amenity/value/ice_cream" |> NamespacedName
+        _prefix "IceCream/key/amenity/value/ice_cream"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceCreamShop"></see>
     /// </summary>
-    let IceCreamShop =
-        Namespaced_IRI.parse _namespace_name "IceCreamShop" |> NamespacedName
+    let IceCreamShop = _prefix "IceCreamShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceCreamShop/key/shop/value/ice_cream"></see>
     /// </summary>
     let ``IceCreamShop/key/shop/value/ice_cream`` =
-        Namespaced_IRI.parse _namespace_name "IceCreamShop/key/shop/value/ice_cream" |> NamespacedName
+        _prefix "IceCreamShop/key/shop/value/ice_cream"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceRink"></see>
     /// </summary>
-    let IceRink = Namespaced_IRI.parse _namespace_name "IceRink" |> NamespacedName
+    let IceRink = _prefix "IceRink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceRink/key/leisure/value/ice_rink"></see>
     /// </summary>
     let ``IceRink/key/leisure/value/ice_rink`` =
-        Namespaced_IRI.parse _namespace_name "IceRink/key/leisure/value/ice_rink" |> NamespacedName
+        _prefix "IceRink/key/leisure/value/ice_rink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceRoad"></see>
     /// </summary>
-    let IceRoad = Namespaced_IRI.parse _namespace_name "IceRoad" |> NamespacedName
-
+    let IceRoad = _prefix "IceRoad"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IceRoad/key/ice_road/value/yes"></see>
     /// </summary>
-    let ``IceRoad/key/ice_road/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "IceRoad/key/ice_road/value/yes" |> NamespacedName
-
+    let ``IceRoad/key/ice_road/value/yes`` = _prefix "IceRoad/key/ice_road/value/yes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Icon"></see>
     /// </summary>
-    let Icon = Namespaced_IRI.parse _namespace_name "Icon" |> NamespacedName
-
+    let Icon = _prefix "Icon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Icon/key/historic/value/icon"></see>
     /// </summary>
-    let ``Icon/key/historic/value/icon`` =
-        Namespaced_IRI.parse _namespace_name "Icon/key/historic/value/icon" |> NamespacedName
-
+    let ``Icon/key/historic/value/icon`` = _prefix "Icon/key/historic/value/icon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IndustrialLanduse"></see>
     /// </summary>
-    let IndustrialLanduse =
-        Namespaced_IRI.parse _namespace_name "IndustrialLanduse" |> NamespacedName
+    let IndustrialLanduse = _prefix "IndustrialLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IndustrialLanduse/key/landuse/value/industrial"></see>
     /// </summary>
     let ``IndustrialLanduse/key/landuse/value/industrial`` =
-        Namespaced_IRI.parse _namespace_name "IndustrialLanduse/key/landuse/value/industrial" |> NamespacedName
+        _prefix "IndustrialLanduse/key/landuse/value/industrial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IndustrialProductionBuilding"></see>
     /// </summary>
-    let IndustrialProductionBuilding =
-        Namespaced_IRI.parse _namespace_name "IndustrialProductionBuilding" |> NamespacedName
+    let IndustrialProductionBuilding = _prefix "IndustrialProductionBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IndustrialProductionBuilding/key/man_made/value/works"></see>
     /// </summary>
     let ``IndustrialProductionBuilding/key/man_made/value/works`` =
-        Namespaced_IRI.parse _namespace_name "IndustrialProductionBuilding/key/man_made/value/works" |> NamespacedName
+        _prefix "IndustrialProductionBuilding/key/man_made/value/works"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Information"></see>
     /// </summary>
-    let Information =
-        Namespaced_IRI.parse _namespace_name "Information" |> NamespacedName
+    let Information = _prefix "Information"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Information/key/amenity/value/information"></see>
     /// </summary>
     let ``Information/key/amenity/value/information`` =
-        Namespaced_IRI.parse _namespace_name "Information/key/amenity/value/information" |> NamespacedName
+        _prefix "Information/key/amenity/value/information"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Insulation"></see>
     /// </summary>
-    let Insulation = Namespaced_IRI.parse _namespace_name "Insulation" |> NamespacedName
+    let Insulation = _prefix "Insulation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Insulation/key/craft/value/insulation"></see>
     /// </summary>
     let ``Insulation/key/craft/value/insulation`` =
-        Namespaced_IRI.parse _namespace_name "Insulation/key/craft/value/insulation" |> NamespacedName
+        _prefix "Insulation/key/craft/value/insulation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Insurance"></see>
     /// </summary>
-    let Insurance = Namespaced_IRI.parse _namespace_name "Insurance" |> NamespacedName
+    let Insurance = _prefix "Insurance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Insurance/key/amenity/value/insurance"></see>
     /// </summary>
     let ``Insurance/key/amenity/value/insurance`` =
-        Namespaced_IRI.parse _namespace_name "Insurance/key/amenity/value/insurance" |> NamespacedName
+        _prefix "Insurance/key/amenity/value/insurance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Insurance/key/shop/value/insurance"></see>
     /// </summary>
     let ``Insurance/key/shop/value/insurance`` =
-        Namespaced_IRI.parse _namespace_name "Insurance/key/shop/value/insurance" |> NamespacedName
+        _prefix "Insurance/key/shop/value/insurance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InsuranceOffice"></see>
     /// </summary>
-    let InsuranceOffice =
-        Namespaced_IRI.parse _namespace_name "InsuranceOffice" |> NamespacedName
+    let InsuranceOffice = _prefix "InsuranceOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InsuranceOffice/key/office/value/insurance"></see>
     /// </summary>
     let ``InsuranceOffice/key/office/value/insurance`` =
-        Namespaced_IRI.parse _namespace_name "InsuranceOffice/key/office/value/insurance" |> NamespacedName
+        _prefix "InsuranceOffice/key/office/value/insurance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Interiors"></see>
     /// </summary>
-    let Interiors = Namespaced_IRI.parse _namespace_name "Interiors" |> NamespacedName
+    let Interiors = _prefix "Interiors"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Interiors/key/shop/value/interiors"></see>
     /// </summary>
     let ``Interiors/key/shop/value/interiors`` =
-        Namespaced_IRI.parse _namespace_name "Interiors/key/shop/value/interiors" |> NamespacedName
+        _prefix "Interiors/key/shop/value/interiors"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Intermittent"></see>
     /// </summary>
-    let Intermittent =
-        Namespaced_IRI.parse _namespace_name "Intermittent" |> NamespacedName
+    let Intermittent = _prefix "Intermittent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Intermittent/key/intermittent/value/yes"></see>
     /// </summary>
     let ``Intermittent/key/intermittent/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "Intermittent/key/intermittent/value/yes" |> NamespacedName
+        _prefix "Intermittent/key/intermittent/value/yes"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Internet"></see>
     /// </summary>
-    let Internet = Namespaced_IRI.parse _namespace_name "Internet" |> NamespacedName
+    let Internet = _prefix "Internet"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Internet/key/amenity/value/internet"></see>
     /// </summary>
     let ``Internet/key/amenity/value/internet`` =
-        Namespaced_IRI.parse _namespace_name "Internet/key/amenity/value/internet" |> NamespacedName
+        _prefix "Internet/key/amenity/value/internet"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InternetAccess"></see>
     /// </summary>
-    let InternetAccess =
-        Namespaced_IRI.parse _namespace_name "InternetAccess" |> NamespacedName
+    let InternetAccess = _prefix "InternetAccess"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InternetAccess/key/amenity/value/internet_access"></see>
     /// </summary>
     let ``InternetAccess/key/amenity/value/internet_access`` =
-        Namespaced_IRI.parse _namespace_name "InternetAccess/key/amenity/value/internet_access" |> NamespacedName
+        _prefix "InternetAccess/key/amenity/value/internet_access"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InternetCafe"></see>
     /// </summary>
-    let InternetCafe =
-        Namespaced_IRI.parse _namespace_name "InternetCafe" |> NamespacedName
+    let InternetCafe = _prefix "InternetCafe"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InternetCafe/key/amenity/value/internet_cafe"></see>
     /// </summary>
     let ``InternetCafe/key/amenity/value/internet_cafe`` =
-        Namespaced_IRI.parse _namespace_name "InternetCafe/key/amenity/value/internet_cafe" |> NamespacedName
+        _prefix "InternetCafe/key/amenity/value/internet_cafe"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/InternetCafe/key/shop/value/internet_cafe"></see>
     /// </summary>
     let ``InternetCafe/key/shop/value/internet_cafe`` =
-        Namespaced_IRI.parse _namespace_name "InternetCafe/key/shop/value/internet_cafe" |> NamespacedName
+        _prefix "InternetCafe/key/shop/value/internet_cafe"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Island"></see>
     /// </summary>
-    let Island = Namespaced_IRI.parse _namespace_name "Island" |> NamespacedName
-
+    let Island = _prefix "Island"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Island/key/place/value/island"></see>
     /// </summary>
-    let ``Island/key/place/value/island`` =
-        Namespaced_IRI.parse _namespace_name "Island/key/place/value/island" |> NamespacedName
-
+    let ``Island/key/place/value/island`` = _prefix "Island/key/place/value/island"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Island/key/natural/value/island"></see>
     /// </summary>
-    let ``Island/key/natural/value/island`` =
-        Namespaced_IRI.parse _namespace_name "Island/key/natural/value/island" |> NamespacedName
-
+    let ``Island/key/natural/value/island`` = _prefix "Island/key/natural/value/island"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Islet"></see>
     /// </summary>
-    let Islet = Namespaced_IRI.parse _namespace_name "Islet" |> NamespacedName
-
+    let Islet = _prefix "Islet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Islet/key/place/value/islet"></see>
     /// </summary>
-    let ``Islet/key/place/value/islet`` =
-        Namespaced_IRI.parse _namespace_name "Islet/key/place/value/islet" |> NamespacedName
-
+    let ``Islet/key/place/value/islet`` = _prefix "Islet/key/place/value/islet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IsolatedDwelling"></see>
     /// </summary>
-    let IsolatedDwelling =
-        Namespaced_IRI.parse _namespace_name "IsolatedDwelling" |> NamespacedName
+    let IsolatedDwelling = _prefix "IsolatedDwelling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/IsolatedDwelling/key/place/value/isolated_dwelling"></see>
     /// </summary>
     let ``IsolatedDwelling/key/place/value/isolated_dwelling`` =
-        Namespaced_IRI.parse _namespace_name "IsolatedDwelling/key/place/value/isolated_dwelling" |> NamespacedName
+        _prefix "IsolatedDwelling/key/place/value/isolated_dwelling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ItOffice"></see>
     /// </summary>
-    let ItOffice = Namespaced_IRI.parse _namespace_name "ItOffice" |> NamespacedName
-
+    let ItOffice = _prefix "ItOffice"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ItOffice/key/office/value/it"></see>
     /// </summary>
-    let ``ItOffice/key/office/value/it`` =
-        Namespaced_IRI.parse _namespace_name "ItOffice/key/office/value/it" |> NamespacedName
-
+    let ``ItOffice/key/office/value/it`` = _prefix "ItOffice/key/office/value/it"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Jewelers"></see>
     /// </summary>
-    let Jewelers = Namespaced_IRI.parse _namespace_name "Jewelers" |> NamespacedName
+    let Jewelers = _prefix "Jewelers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Jewelers/key/shop/value/jewelers"></see>
     /// </summary>
     let ``Jewelers/key/shop/value/jewelers`` =
-        Namespaced_IRI.parse _namespace_name "Jewelers/key/shop/value/jewelers" |> NamespacedName
+        _prefix "Jewelers/key/shop/value/jewelers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Jeweller"></see>
     /// </summary>
-    let Jeweller = Namespaced_IRI.parse _namespace_name "Jeweller" |> NamespacedName
+    let Jeweller = _prefix "Jeweller"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Jeweller/key/craft/value/jeweller"></see>
     /// </summary>
     let ``Jeweller/key/craft/value/jeweller`` =
-        Namespaced_IRI.parse _namespace_name "Jeweller/key/craft/value/jeweller" |> NamespacedName
+        _prefix "Jeweller/key/craft/value/jeweller"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Jewelry"></see>
     /// </summary>
-    let Jewelry = Namespaced_IRI.parse _namespace_name "Jewelry" |> NamespacedName
-
+    let Jewelry = _prefix "Jewelry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Jewelry/key/shop/value/jewelry"></see>
     /// </summary>
-    let ``Jewelry/key/shop/value/jewelry`` =
-        Namespaced_IRI.parse _namespace_name "Jewelry/key/shop/value/jewelry" |> NamespacedName
-
+    let ``Jewelry/key/shop/value/jewelry`` = _prefix "Jewelry/key/shop/value/jewelry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/JobCentre"></see>
     /// </summary>
-    let JobCentre = Namespaced_IRI.parse _namespace_name "JobCentre" |> NamespacedName
+    let JobCentre = _prefix "JobCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/JobCentre/key/amenity/value/job_centre"></see>
     /// </summary>
     let ``JobCentre/key/amenity/value/job_centre`` =
-        Namespaced_IRI.parse _namespace_name "JobCentre/key/amenity/value/job_centre" |> NamespacedName
+        _prefix "JobCentre/key/amenity/value/job_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KentCarriageGap"></see>
     /// </summary>
-    let KentCarriageGap =
-        Namespaced_IRI.parse _namespace_name "KentCarriageGap" |> NamespacedName
+    let KentCarriageGap = _prefix "KentCarriageGap"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KentCarriageGap/key/barrier/value/kent_carriage_gap"></see>
     /// </summary>
     let ``KentCarriageGap/key/barrier/value/kent_carriage_gap`` =
-        Namespaced_IRI.parse _namespace_name "KentCarriageGap/key/barrier/value/kent_carriage_gap" |> NamespacedName
+        _prefix "KentCarriageGap/key/barrier/value/kent_carriage_gap"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KeyCutter"></see>
     /// </summary>
-    let KeyCutter = Namespaced_IRI.parse _namespace_name "KeyCutter" |> NamespacedName
+    let KeyCutter = _prefix "KeyCutter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KeyCutter/key/craft/value/key_cutter"></see>
     /// </summary>
     let ``KeyCutter/key/craft/value/key_cutter`` =
-        Namespaced_IRI.parse _namespace_name "KeyCutter/key/craft/value/key_cutter" |> NamespacedName
+        _prefix "KeyCutter/key/craft/value/key_cutter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Keys"></see>
     /// </summary>
-    let Keys = Namespaced_IRI.parse _namespace_name "Keys" |> NamespacedName
-
+    let Keys = _prefix "Keys"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Keys/key/shop/value/keys"></see>
     /// </summary>
-    let ``Keys/key/shop/value/keys`` =
-        Namespaced_IRI.parse _namespace_name "Keys/key/shop/value/keys" |> NamespacedName
-
+    let ``Keys/key/shop/value/keys`` = _prefix "Keys/key/shop/value/keys"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Kindergarten"></see>
     /// </summary>
-    let Kindergarten =
-        Namespaced_IRI.parse _namespace_name "Kindergarten" |> NamespacedName
+    let Kindergarten = _prefix "Kindergarten"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Kindergarten/key/amenity/value/kindergarten"></see>
     /// </summary>
     let ``Kindergarten/key/amenity/value/kindergarten`` =
-        Namespaced_IRI.parse _namespace_name "Kindergarten/key/amenity/value/kindergarten" |> NamespacedName
+        _prefix "Kindergarten/key/amenity/value/kindergarten"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Kiosk"></see>
     /// </summary>
-    let Kiosk = Namespaced_IRI.parse _namespace_name "Kiosk" |> NamespacedName
-
+    let Kiosk = _prefix "Kiosk"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Kiosk/key/shop/value/kiosk"></see>
     /// </summary>
-    let ``Kiosk/key/shop/value/kiosk`` =
-        Namespaced_IRI.parse _namespace_name "Kiosk/key/shop/value/kiosk" |> NamespacedName
-
+    let ``Kiosk/key/shop/value/kiosk`` = _prefix "Kiosk/key/shop/value/kiosk"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Kiosk/key/shop/value/Kiosk"></see>
     /// </summary>
-    let ``Kiosk/key/shop/value/Kiosk`` =
-        Namespaced_IRI.parse _namespace_name "Kiosk/key/shop/value/Kiosk" |> NamespacedName
-
+    let ``Kiosk/key/shop/value/Kiosk`` = _prefix "Kiosk/key/shop/value/Kiosk"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KissingGate"></see>
     /// </summary>
-    let KissingGate =
-        Namespaced_IRI.parse _namespace_name "KissingGate" |> NamespacedName
+    let KissingGate = _prefix "KissingGate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KissingGate/key/barrier/value/kissing_gate"></see>
     /// </summary>
     let ``KissingGate/key/barrier/value/kissing_gate`` =
-        Namespaced_IRI.parse _namespace_name "KissingGate/key/barrier/value/kissing_gate" |> NamespacedName
+        _prefix "KissingGate/key/barrier/value/kissing_gate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KitchenShop"></see>
     /// </summary>
-    let KitchenShop =
-        Namespaced_IRI.parse _namespace_name "KitchenShop" |> NamespacedName
+    let KitchenShop = _prefix "KitchenShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KitchenShop/key/shop/value/kitchen"></see>
     /// </summary>
     let ``KitchenShop/key/shop/value/kitchen`` =
-        Namespaced_IRI.parse _namespace_name "KitchenShop/key/shop/value/kitchen" |> NamespacedName
+        _prefix "KitchenShop/key/shop/value/kitchen"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KneippWaterCure"></see>
     /// </summary>
-    let KneippWaterCure =
-        Namespaced_IRI.parse _namespace_name "KneippWaterCure" |> NamespacedName
+    let KneippWaterCure = _prefix "KneippWaterCure"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/KneippWaterCure/key/amenity/value/kneipp_water_cure"></see>
     /// </summary>
     let ``KneippWaterCure/key/amenity/value/kneipp_water_cure`` =
-        Namespaced_IRI.parse _namespace_name "KneippWaterCure/key/amenity/value/kneipp_water_cure" |> NamespacedName
+        _prefix "KneippWaterCure/key/amenity/value/kneipp_water_cure"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lamp"></see>
     /// </summary>
-    let Lamp = Namespaced_IRI.parse _namespace_name "Lamp" |> NamespacedName
-
+    let Lamp = _prefix "Lamp"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lamp/key/amenity/value/lamp"></see>
     /// </summary>
-    let ``Lamp/key/amenity/value/lamp`` =
-        Namespaced_IRI.parse _namespace_name "Lamp/key/amenity/value/lamp" |> NamespacedName
-
+    let ``Lamp/key/amenity/value/lamp`` = _prefix "Lamp/key/amenity/value/lamp"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LampPost"></see>
     /// </summary>
-    let LampPost = Namespaced_IRI.parse _namespace_name "LampPost" |> NamespacedName
+    let LampPost = _prefix "LampPost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LampPost/key/amenity/value/lamp_post"></see>
     /// </summary>
     let ``LampPost/key/amenity/value/lamp_post`` =
-        Namespaced_IRI.parse _namespace_name "LampPost/key/amenity/value/lamp_post" |> NamespacedName
+        _prefix "LampPost/key/amenity/value/lamp_post"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Land"></see>
     /// </summary>
-    let Land = Namespaced_IRI.parse _namespace_name "Land" |> NamespacedName
-
+    let Land = _prefix "Land"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Land/key/natural/value/land"></see>
     /// </summary>
-    let ``Land/key/natural/value/land`` =
-        Namespaced_IRI.parse _namespace_name "Land/key/natural/value/land" |> NamespacedName
-
+    let ``Land/key/natural/value/land`` = _prefix "Land/key/natural/value/land"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Landfill"></see>
     /// </summary>
-    let Landfill = Namespaced_IRI.parse _namespace_name "Landfill" |> NamespacedName
+    let Landfill = _prefix "Landfill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Landfill/key/landuse/value/landfill"></see>
     /// </summary>
     let ``Landfill/key/landuse/value/landfill`` =
-        Namespaced_IRI.parse _namespace_name "Landfill/key/landuse/value/landfill" |> NamespacedName
+        _prefix "Landfill/key/landuse/value/landfill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LandingLight"></see>
     /// </summary>
-    let LandingLight =
-        Namespaced_IRI.parse _namespace_name "LandingLight" |> NamespacedName
+    let LandingLight = _prefix "LandingLight"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LandingLight/key/aeroway/value/landing_light"></see>
     /// </summary>
     let ``LandingLight/key/aeroway/value/landing_light`` =
-        Namespaced_IRI.parse _namespace_name "LandingLight/key/aeroway/value/landing_light" |> NamespacedName
+        _prefix "LandingLight/key/aeroway/value/landing_light"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Landmark"></see>
     /// </summary>
-    let Landmark = Namespaced_IRI.parse _namespace_name "Landmark" |> NamespacedName
+    let Landmark = _prefix "Landmark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Landmark/key/man_made/value/landmark"></see>
     /// </summary>
     let ``Landmark/key/man_made/value/landmark`` =
-        Namespaced_IRI.parse _namespace_name "Landmark/key/man_made/value/landmark" |> NamespacedName
+        _prefix "Landmark/key/man_made/value/landmark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanduseMine"></see>
     /// </summary>
-    let LanduseMine =
-        Namespaced_IRI.parse _namespace_name "LanduseMine" |> NamespacedName
+    let LanduseMine = _prefix "LanduseMine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanduseMine/key/landuse/value/mine"></see>
     /// </summary>
     let ``LanduseMine/key/landuse/value/mine`` =
-        Namespaced_IRI.parse _namespace_name "LanduseMine/key/landuse/value/mine" |> NamespacedName
+        _prefix "LanduseMine/key/landuse/value/mine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LandusePark"></see>
     /// </summary>
-    let LandusePark =
-        Namespaced_IRI.parse _namespace_name "LandusePark" |> NamespacedName
+    let LandusePark = _prefix "LandusePark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LandusePark/key/landuse/value/park"></see>
     /// </summary>
     let ``LandusePark/key/landuse/value/park`` =
-        Namespaced_IRI.parse _namespace_name "LandusePark/key/landuse/value/park" |> NamespacedName
+        _prefix "LandusePark/key/landuse/value/park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanduseParking"></see>
     /// </summary>
-    let LanduseParking =
-        Namespaced_IRI.parse _namespace_name "LanduseParking" |> NamespacedName
+    let LanduseParking = _prefix "LanduseParking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanduseParking/key/landuse/value/parking"></see>
     /// </summary>
     let ``LanduseParking/key/landuse/value/parking`` =
-        Namespaced_IRI.parse _namespace_name "LanduseParking/key/landuse/value/parking" |> NamespacedName
+        _prefix "LanduseParking/key/landuse/value/parking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanduseWood"></see>
     /// </summary>
-    let LanduseWood =
-        Namespaced_IRI.parse _namespace_name "LanduseWood" |> NamespacedName
+    let LanduseWood = _prefix "LanduseWood"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanduseWood/key/landuse/value/wood"></see>
     /// </summary>
     let ``LanduseWood/key/landuse/value/wood`` =
-        Namespaced_IRI.parse _namespace_name "LanduseWood/key/landuse/value/wood" |> NamespacedName
+        _prefix "LanduseWood/key/landuse/value/wood"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanguageSchool"></see>
     /// </summary>
-    let LanguageSchool =
-        Namespaced_IRI.parse _namespace_name "LanguageSchool" |> NamespacedName
+    let LanguageSchool = _prefix "LanguageSchool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LanguageSchool/key/amenity/value/language_school"></see>
     /// </summary>
     let ``LanguageSchool/key/amenity/value/language_school`` =
-        Namespaced_IRI.parse _namespace_name "LanguageSchool/key/amenity/value/language_school" |> NamespacedName
+        _prefix "LanguageSchool/key/amenity/value/language_school"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LaunchPad"></see>
     /// </summary>
-    let LaunchPad = Namespaced_IRI.parse _namespace_name "LaunchPad" |> NamespacedName
+    let LaunchPad = _prefix "LaunchPad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LaunchPad/key/man_made/value/launch_pad"></see>
     /// </summary>
     let ``LaunchPad/key/man_made/value/launch_pad`` =
-        Namespaced_IRI.parse _namespace_name "LaunchPad/key/man_made/value/launch_pad" |> NamespacedName
+        _prefix "LaunchPad/key/man_made/value/launch_pad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Laundry"></see>
     /// </summary>
-    let Laundry = Namespaced_IRI.parse _namespace_name "Laundry" |> NamespacedName
-
+    let Laundry = _prefix "Laundry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Laundry/key/shop/value/laundry"></see>
     /// </summary>
-    let ``Laundry/key/shop/value/laundry`` =
-        Namespaced_IRI.parse _namespace_name "Laundry/key/shop/value/laundry" |> NamespacedName
-
+    let ``Laundry/key/shop/value/laundry`` = _prefix "Laundry/key/shop/value/laundry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lavoir"></see>
     /// </summary>
-    let Lavoir = Namespaced_IRI.parse _namespace_name "Lavoir" |> NamespacedName
+    let Lavoir = _prefix "Lavoir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lavoir/key/historic/value/lavoir"></see>
     /// </summary>
     let ``Lavoir/key/historic/value/lavoir`` =
-        Namespaced_IRI.parse _namespace_name "Lavoir/key/historic/value/lavoir" |> NamespacedName
+        _prefix "Lavoir/key/historic/value/lavoir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lawyer"></see>
     /// </summary>
-    let Lawyer = Namespaced_IRI.parse _namespace_name "Lawyer" |> NamespacedName
-
+    let Lawyer = _prefix "Lawyer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lawyer/key/amenity/value/lawyer"></see>
     /// </summary>
-    let ``Lawyer/key/amenity/value/lawyer`` =
-        Namespaced_IRI.parse _namespace_name "Lawyer/key/amenity/value/lawyer" |> NamespacedName
-
+    let ``Lawyer/key/amenity/value/lawyer`` = _prefix "Lawyer/key/amenity/value/lawyer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LawyerOffice"></see>
     /// </summary>
-    let LawyerOffice =
-        Namespaced_IRI.parse _namespace_name "LawyerOffice" |> NamespacedName
+    let LawyerOffice = _prefix "LawyerOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LawyerOffice/key/office/value/lawyer"></see>
     /// </summary>
     let ``LawyerOffice/key/office/value/lawyer`` =
-        Namespaced_IRI.parse _namespace_name "LawyerOffice/key/office/value/lawyer" |> NamespacedName
+        _prefix "LawyerOffice/key/office/value/lawyer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Layby"></see>
     /// </summary>
-    let Layby = Namespaced_IRI.parse _namespace_name "Layby" |> NamespacedName
-
+    let Layby = _prefix "Layby"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Layby/key/amenity/value/layby"></see>
     /// </summary>
-    let ``Layby/key/amenity/value/layby`` =
-        Namespaced_IRI.parse _namespace_name "Layby/key/amenity/value/layby" |> NamespacedName
-
+    let ``Layby/key/amenity/value/layby`` = _prefix "Layby/key/amenity/value/layby"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Leather"></see>
     /// </summary>
-    let Leather = Namespaced_IRI.parse _namespace_name "Leather" |> NamespacedName
-
+    let Leather = _prefix "Leather"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Leather/key/shop/value/leather"></see>
     /// </summary>
-    let ``Leather/key/shop/value/leather`` =
-        Namespaced_IRI.parse _namespace_name "Leather/key/shop/value/leather" |> NamespacedName
-
+    let ``Leather/key/shop/value/leather`` = _prefix "Leather/key/shop/value/leather"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LegalServices"></see>
     /// </summary>
-    let LegalServices =
-        Namespaced_IRI.parse _namespace_name "LegalServices" |> NamespacedName
+    let LegalServices = _prefix "LegalServices"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LegalServices/key/shop/value/legal_services"></see>
     /// </summary>
     let ``LegalServices/key/shop/value/legal_services`` =
-        Namespaced_IRI.parse _namespace_name "LegalServices/key/shop/value/legal_services" |> NamespacedName
+        _prefix "LegalServices/key/shop/value/legal_services"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lettering"></see>
     /// </summary>
-    let Lettering = Namespaced_IRI.parse _namespace_name "Lettering" |> NamespacedName
+    let Lettering = _prefix "Lettering"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lettering/key/man_made/value/lettering"></see>
     /// </summary>
     let ``Lettering/key/man_made/value/lettering`` =
-        Namespaced_IRI.parse _namespace_name "Lettering/key/man_made/value/lettering" |> NamespacedName
+        _prefix "Lettering/key/man_made/value/lettering"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LevelCrossing"></see>
     /// </summary>
-    let LevelCrossing =
-        Namespaced_IRI.parse _namespace_name "LevelCrossing" |> NamespacedName
+    let LevelCrossing = _prefix "LevelCrossing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LevelCrossing/key/railway/value/level_crossing"></see>
     /// </summary>
     let ``LevelCrossing/key/railway/value/level_crossing`` =
-        Namespaced_IRI.parse _namespace_name "LevelCrossing/key/railway/value/level_crossing" |> NamespacedName
+        _prefix "LevelCrossing/key/railway/value/level_crossing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Library"></see>
     /// </summary>
-    let Library = Namespaced_IRI.parse _namespace_name "Library" |> NamespacedName
+    let Library = _prefix "Library"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Library/key/amenity/value/library"></see>
     /// </summary>
     let ``Library/key/amenity/value/library`` =
-        Namespaced_IRI.parse _namespace_name "Library/key/amenity/value/library" |> NamespacedName
+        _prefix "Library/key/amenity/value/library"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LicensedClub"></see>
     /// </summary>
-    let LicensedClub =
-        Namespaced_IRI.parse _namespace_name "LicensedClub" |> NamespacedName
+    let LicensedClub = _prefix "LicensedClub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LicensedClub/key/amenity/value/licensed_club"></see>
     /// </summary>
     let ``LicensedClub/key/amenity/value/licensed_club`` =
-        Namespaced_IRI.parse _namespace_name "LicensedClub/key/amenity/value/licensed_club" |> NamespacedName
+        _prefix "LicensedClub/key/amenity/value/licensed_club"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Life-buoy"></see>
     /// </summary>
-    let ``Life-buoy`` =
-        Namespaced_IRI.parse _namespace_name "Life-buoy" |> NamespacedName
+    let ``Life-buoy`` = _prefix "Life-buoy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Life-buoy/key/amenity/value/life-buoy"></see>
     /// </summary>
     let ``Life-buoy/key/amenity/value/life-buoy`` =
-        Namespaced_IRI.parse _namespace_name "Life-buoy/key/amenity/value/life-buoy" |> NamespacedName
+        _prefix "Life-buoy/key/amenity/value/life-buoy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LifeRing"></see>
     /// </summary>
-    let LifeRing = Namespaced_IRI.parse _namespace_name "LifeRing" |> NamespacedName
+    let LifeRing = _prefix "LifeRing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LifeRing/key/amenity/value/life_ring"></see>
     /// </summary>
     let ``LifeRing/key/amenity/value/life_ring`` =
-        Namespaced_IRI.parse _namespace_name "LifeRing/key/amenity/value/life_ring" |> NamespacedName
+        _prefix "LifeRing/key/amenity/value/life_ring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LifeboatStation"></see>
     /// </summary>
-    let LifeboatStation =
-        Namespaced_IRI.parse _namespace_name "LifeboatStation" |> NamespacedName
+    let LifeboatStation = _prefix "LifeboatStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LifeboatStation/key/amenity/value/lifeboat_station"></see>
     /// </summary>
     let ``LifeboatStation/key/amenity/value/lifeboat_station`` =
-        Namespaced_IRI.parse _namespace_name "LifeboatStation/key/amenity/value/lifeboat_station" |> NamespacedName
+        _prefix "LifeboatStation/key/amenity/value/lifeboat_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LiftGate"></see>
     /// </summary>
-    let LiftGate = Namespaced_IRI.parse _namespace_name "LiftGate" |> NamespacedName
+    let LiftGate = _prefix "LiftGate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LiftGate/key/barrier/value/lift_gate"></see>
     /// </summary>
     let ``LiftGate/key/barrier/value/lift_gate`` =
-        Namespaced_IRI.parse _namespace_name "LiftGate/key/barrier/value/lift_gate" |> NamespacedName
+        _prefix "LiftGate/key/barrier/value/lift_gate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LightRail"></see>
     /// </summary>
-    let LightRail = Namespaced_IRI.parse _namespace_name "LightRail" |> NamespacedName
+    let LightRail = _prefix "LightRail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LightRail/key/railway/value/light_rail"></see>
     /// </summary>
     let ``LightRail/key/railway/value/light_rail`` =
-        Namespaced_IRI.parse _namespace_name "LightRail/key/railway/value/light_rail" |> NamespacedName
+        _prefix "LightRail/key/railway/value/light_rail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lighthouse"></see>
     /// </summary>
-    let Lighthouse = Namespaced_IRI.parse _namespace_name "Lighthouse" |> NamespacedName
+    let Lighthouse = _prefix "Lighthouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lighthouse/key/man_made/value/lighthouse"></see>
     /// </summary>
     let ``Lighthouse/key/man_made/value/lighthouse`` =
-        Namespaced_IRI.parse _namespace_name "Lighthouse/key/man_made/value/lighthouse" |> NamespacedName
+        _prefix "Lighthouse/key/man_made/value/lighthouse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lighting"></see>
     /// </summary>
-    let Lighting = Namespaced_IRI.parse _namespace_name "Lighting" |> NamespacedName
+    let Lighting = _prefix "Lighting"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lighting/key/shop/value/lighting"></see>
     /// </summary>
     let ``Lighting/key/shop/value/lighting`` =
-        Namespaced_IRI.parse _namespace_name "Lighting/key/shop/value/lighting" |> NamespacedName
+        _prefix "Lighting/key/shop/value/lighting"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LineConnection"></see>
     /// </summary>
-    let LineConnection =
-        Namespaced_IRI.parse _namespace_name "LineConnection" |> NamespacedName
+    let LineConnection = _prefix "LineConnection"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LineConnection/key/power/value/line_connection"></see>
     /// </summary>
     let ``LineConnection/key/power/value/line_connection`` =
-        Namespaced_IRI.parse _namespace_name "LineConnection/key/power/value/line_connection" |> NamespacedName
+        _prefix "LineConnection/key/power/value/line_connection"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lingerie"></see>
     /// </summary>
-    let Lingerie = Namespaced_IRI.parse _namespace_name "Lingerie" |> NamespacedName
+    let Lingerie = _prefix "Lingerie"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lingerie/key/shop/value/lingerie"></see>
     /// </summary>
     let ``Lingerie/key/shop/value/lingerie`` =
-        Namespaced_IRI.parse _namespace_name "Lingerie/key/shop/value/lingerie" |> NamespacedName
+        _prefix "Lingerie/key/shop/value/lingerie"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LitterBin"></see>
     /// </summary>
-    let LitterBin = Namespaced_IRI.parse _namespace_name "LitterBin" |> NamespacedName
+    let LitterBin = _prefix "LitterBin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LitterBin/key/amenity/value/litter_bin"></see>
     /// </summary>
     let ``LitterBin/key/amenity/value/litter_bin`` =
-        Namespaced_IRI.parse _namespace_name "LitterBin/key/amenity/value/litter_bin" |> NamespacedName
+        _prefix "LitterBin/key/amenity/value/litter_bin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LivingStreet"></see>
     /// </summary>
-    let LivingStreet =
-        Namespaced_IRI.parse _namespace_name "LivingStreet" |> NamespacedName
+    let LivingStreet = _prefix "LivingStreet"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LivingStreet/key/highway/value/living_street"></see>
     /// </summary>
     let ``LivingStreet/key/highway/value/living_street`` =
-        Namespaced_IRI.parse _namespace_name "LivingStreet/key/highway/value/living_street" |> NamespacedName
+        _prefix "LivingStreet/key/highway/value/living_street"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Locality"></see>
     /// </summary>
-    let Locality = Namespaced_IRI.parse _namespace_name "Locality" |> NamespacedName
+    let Locality = _prefix "Locality"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Locality/key/place/value/locality"></see>
     /// </summary>
     let ``Locality/key/place/value/locality`` =
-        Namespaced_IRI.parse _namespace_name "Locality/key/place/value/locality" |> NamespacedName
+        _prefix "Locality/key/place/value/locality"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lock"></see>
     /// </summary>
-    let Lock = Namespaced_IRI.parse _namespace_name "Lock" |> NamespacedName
-
+    let Lock = _prefix "Lock"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Lock/key/lock/value/yes"></see>
     /// </summary>
-    let ``Lock/key/lock/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "Lock/key/lock/value/yes" |> NamespacedName
-
+    let ``Lock/key/lock/value/yes`` = _prefix "Lock/key/lock/value/yes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LockThing"></see>
     /// </summary>
-    let LockThing = Namespaced_IRI.parse _namespace_name "LockThing" |> NamespacedName
+    let LockThing = _prefix "LockThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LockGate"></see>
     /// </summary>
-    let LockGate = Namespaced_IRI.parse _namespace_name "LockGate" |> NamespacedName
+    let LockGate = _prefix "LockGate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LockGate/key/waterway/value/lock_gate"></see>
     /// </summary>
     let ``LockGate/key/waterway/value/lock_gate`` =
-        Namespaced_IRI.parse _namespace_name "LockGate/key/waterway/value/lock_gate" |> NamespacedName
+        _prefix "LockGate/key/waterway/value/lock_gate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Locksmith"></see>
     /// </summary>
-    let Locksmith = Namespaced_IRI.parse _namespace_name "Locksmith" |> NamespacedName
+    let Locksmith = _prefix "Locksmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Locksmith/key/shop/value/locksmith"></see>
     /// </summary>
     let ``Locksmith/key/shop/value/locksmith`` =
-        Namespaced_IRI.parse _namespace_name "Locksmith/key/shop/value/locksmith" |> NamespacedName
+        _prefix "Locksmith/key/shop/value/locksmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Locksmith/key/craft/value/locksmith"></see>
     /// </summary>
     let ``Locksmith/key/craft/value/locksmith`` =
-        Namespaced_IRI.parse _namespace_name "Locksmith/key/craft/value/locksmith" |> NamespacedName
+        _prefix "Locksmith/key/craft/value/locksmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LookoutTower"></see>
     /// </summary>
-    let LookoutTower =
-        Namespaced_IRI.parse _namespace_name "LookoutTower" |> NamespacedName
+    let LookoutTower = _prefix "LookoutTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/LookoutTower/key/man_made/value/lookout_tower"></see>
     /// </summary>
     let ``LookoutTower/key/man_made/value/lookout_tower`` =
-        Namespaced_IRI.parse _namespace_name "LookoutTower/key/man_made/value/lookout_tower" |> NamespacedName
+        _prefix "LookoutTower/key/man_made/value/lookout_tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MDF"></see>
     /// </summary>
-    let MDF = Namespaced_IRI.parse _namespace_name "MDF" |> NamespacedName
-
+    let MDF = _prefix "MDF"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MDF/key/man_made/value/MDF"></see>
     /// </summary>
-    let ``MDF/key/man_made/value/MDF`` =
-        Namespaced_IRI.parse _namespace_name "MDF/key/man_made/value/MDF" |> NamespacedName
-
+    let ``MDF/key/man_made/value/MDF`` = _prefix "MDF/key/man_made/value/MDF"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mall"></see>
     /// </summary>
-    let Mall = Namespaced_IRI.parse _namespace_name "Mall" |> NamespacedName
-
+    let Mall = _prefix "Mall"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mall/key/shop/value/mall"></see>
     /// </summary>
-    let ``Mall/key/shop/value/mall`` =
-        Namespaced_IRI.parse _namespace_name "Mall/key/shop/value/mall" |> NamespacedName
-
+    let ``Mall/key/shop/value/mall`` = _prefix "Mall/key/shop/value/mall"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBarn"></see>
     /// </summary>
-    let ManMadeBarn =
-        Namespaced_IRI.parse _namespace_name "ManMadeBarn" |> NamespacedName
+    let ManMadeBarn = _prefix "ManMadeBarn"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBarn/key/man_made/value/barn"></see>
     /// </summary>
     let ``ManMadeBarn/key/man_made/value/barn`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeBarn/key/man_made/value/barn" |> NamespacedName
+        _prefix "ManMadeBarn/key/man_made/value/barn"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBillboard"></see>
     /// </summary>
-    let ManMadeBillboard =
-        Namespaced_IRI.parse _namespace_name "ManMadeBillboard" |> NamespacedName
+    let ManMadeBillboard = _prefix "ManMadeBillboard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBillboard/key/man_made/value/billboard"></see>
     /// </summary>
     let ``ManMadeBillboard/key/man_made/value/billboard`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeBillboard/key/man_made/value/billboard" |> NamespacedName
+        _prefix "ManMadeBillboard/key/man_made/value/billboard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBuilding"></see>
     /// </summary>
-    let ManMadeBuilding =
-        Namespaced_IRI.parse _namespace_name "ManMadeBuilding" |> NamespacedName
+    let ManMadeBuilding = _prefix "ManMadeBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBuilding/key/man_made/value/building"></see>
     /// </summary>
     let ``ManMadeBuilding/key/man_made/value/building`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeBuilding/key/man_made/value/building" |> NamespacedName
+        _prefix "ManMadeBuilding/key/man_made/value/building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBuoy"></see>
     /// </summary>
-    let ManMadeBuoy =
-        Namespaced_IRI.parse _namespace_name "ManMadeBuoy" |> NamespacedName
+    let ManMadeBuoy = _prefix "ManMadeBuoy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeBuoy/key/man_made/value/buoy"></see>
     /// </summary>
     let ``ManMadeBuoy/key/man_made/value/buoy`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeBuoy/key/man_made/value/buoy" |> NamespacedName
+        _prefix "ManMadeBuoy/key/man_made/value/buoy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeCross"></see>
     /// </summary>
-    let ManMadeCross =
-        Namespaced_IRI.parse _namespace_name "ManMadeCross" |> NamespacedName
+    let ManMadeCross = _prefix "ManMadeCross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeCross/key/man_made/value/cross"></see>
     /// </summary>
     let ``ManMadeCross/key/man_made/value/cross`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeCross/key/man_made/value/cross" |> NamespacedName
+        _prefix "ManMadeCross/key/man_made/value/cross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeFireHydrant"></see>
     /// </summary>
-    let ManMadeFireHydrant =
-        Namespaced_IRI.parse _namespace_name "ManMadeFireHydrant" |> NamespacedName
+    let ManMadeFireHydrant = _prefix "ManMadeFireHydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeFireHydrant/key/man_made/value/fire_hydrant"></see>
     /// </summary>
     let ``ManMadeFireHydrant/key/man_made/value/fire_hydrant`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeFireHydrant/key/man_made/value/fire_hydrant" |> NamespacedName
+        _prefix "ManMadeFireHydrant/key/man_made/value/fire_hydrant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeFixme"></see>
     /// </summary>
-    let ManMadeFixme =
-        Namespaced_IRI.parse _namespace_name "ManMadeFixme" |> NamespacedName
+    let ManMadeFixme = _prefix "ManMadeFixme"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeFixme/key/man_made/value/fixme"></see>
     /// </summary>
     let ``ManMadeFixme/key/man_made/value/fixme`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeFixme/key/man_made/value/fixme" |> NamespacedName
+        _prefix "ManMadeFixme/key/man_made/value/fixme"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeFountain"></see>
     /// </summary>
-    let ManMadeFountain =
-        Namespaced_IRI.parse _namespace_name "ManMadeFountain" |> NamespacedName
+    let ManMadeFountain = _prefix "ManMadeFountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeFountain/key/man_made/value/fountain"></see>
     /// </summary>
     let ``ManMadeFountain/key/man_made/value/fountain`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeFountain/key/man_made/value/fountain" |> NamespacedName
+        _prefix "ManMadeFountain/key/man_made/value/fountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeGate"></see>
     /// </summary>
-    let ManMadeGate =
-        Namespaced_IRI.parse _namespace_name "ManMadeGate" |> NamespacedName
+    let ManMadeGate = _prefix "ManMadeGate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeGate/key/man_made/value/gate"></see>
     /// </summary>
     let ``ManMadeGate/key/man_made/value/gate`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeGate/key/man_made/value/gate" |> NamespacedName
+        _prefix "ManMadeGate/key/man_made/value/gate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeHut"></see>
     /// </summary>
-    let ManMadeHut = Namespaced_IRI.parse _namespace_name "ManMadeHut" |> NamespacedName
+    let ManMadeHut = _prefix "ManMadeHut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeHut/key/man_made/value/hut"></see>
     /// </summary>
     let ``ManMadeHut/key/man_made/value/hut`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeHut/key/man_made/value/hut" |> NamespacedName
+        _prefix "ManMadeHut/key/man_made/value/hut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeLamp"></see>
     /// </summary>
-    let ManMadeLamp =
-        Namespaced_IRI.parse _namespace_name "ManMadeLamp" |> NamespacedName
+    let ManMadeLamp = _prefix "ManMadeLamp"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeLamp/key/man_made/value/lamp"></see>
     /// </summary>
     let ``ManMadeLamp/key/man_made/value/lamp`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeLamp/key/man_made/value/lamp" |> NamespacedName
+        _prefix "ManMadeLamp/key/man_made/value/lamp"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeLampPost"></see>
     /// </summary>
-    let ManMadeLampPost =
-        Namespaced_IRI.parse _namespace_name "ManMadeLampPost" |> NamespacedName
+    let ManMadeLampPost = _prefix "ManMadeLampPost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeLampPost/key/man_made/value/lamp_post"></see>
     /// </summary>
     let ``ManMadeLampPost/key/man_made/value/lamp_post`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeLampPost/key/man_made/value/lamp_post" |> NamespacedName
+        _prefix "ManMadeLampPost/key/man_made/value/lamp_post"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeMine"></see>
     /// </summary>
-    let ManMadeMine =
-        Namespaced_IRI.parse _namespace_name "ManMadeMine" |> NamespacedName
+    let ManMadeMine = _prefix "ManMadeMine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeMine/key/man_made/value/mine"></see>
     /// </summary>
     let ``ManMadeMine/key/man_made/value/mine`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeMine/key/man_made/value/mine" |> NamespacedName
+        _prefix "ManMadeMine/key/man_made/value/mine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeObservatory"></see>
     /// </summary>
-    let ManMadeObservatory =
-        Namespaced_IRI.parse _namespace_name "ManMadeObservatory" |> NamespacedName
+    let ManMadeObservatory = _prefix "ManMadeObservatory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeObservatory/key/man_made/value/observatory"></see>
     /// </summary>
     let ``ManMadeObservatory/key/man_made/value/observatory`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeObservatory/key/man_made/value/observatory" |> NamespacedName
+        _prefix "ManMadeObservatory/key/man_made/value/observatory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadePole"></see>
     /// </summary>
-    let ManMadePole =
-        Namespaced_IRI.parse _namespace_name "ManMadePole" |> NamespacedName
+    let ManMadePole = _prefix "ManMadePole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadePole/key/man_made/value/pole"></see>
     /// </summary>
     let ``ManMadePole/key/man_made/value/pole`` =
-        Namespaced_IRI.parse _namespace_name "ManMadePole/key/man_made/value/pole" |> NamespacedName
+        _prefix "ManMadePole/key/man_made/value/pole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadePumpingStation"></see>
     /// </summary>
-    let ManMadePumpingStation =
-        Namespaced_IRI.parse _namespace_name "ManMadePumpingStation" |> NamespacedName
+    let ManMadePumpingStation = _prefix "ManMadePumpingStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadePumpingStation/key/man_made/value/pumping_station"></see>
     /// </summary>
     let ``ManMadePumpingStation/key/man_made/value/pumping_station`` =
-        Namespaced_IRI.parse _namespace_name "ManMadePumpingStation/key/man_made/value/pumping_station" |> NamespacedName
+        _prefix "ManMadePumpingStation/key/man_made/value/pumping_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeSign"></see>
     /// </summary>
-    let ManMadeSign =
-        Namespaced_IRI.parse _namespace_name "ManMadeSign" |> NamespacedName
+    let ManMadeSign = _prefix "ManMadeSign"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeSign/key/man_made/value/sign"></see>
     /// </summary>
     let ``ManMadeSign/key/man_made/value/sign`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeSign/key/man_made/value/sign" |> NamespacedName
+        _prefix "ManMadeSign/key/man_made/value/sign"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeStatue"></see>
     /// </summary>
-    let ManMadeStatue =
-        Namespaced_IRI.parse _namespace_name "ManMadeStatue" |> NamespacedName
+    let ManMadeStatue = _prefix "ManMadeStatue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeStatue/key/man_made/value/statue"></see>
     /// </summary>
     let ``ManMadeStatue/key/man_made/value/statue`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeStatue/key/man_made/value/statue" |> NamespacedName
+        _prefix "ManMadeStatue/key/man_made/value/statue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeStorage"></see>
     /// </summary>
-    let ManMadeStorage =
-        Namespaced_IRI.parse _namespace_name "ManMadeStorage" |> NamespacedName
+    let ManMadeStorage = _prefix "ManMadeStorage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeStorage/key/man_made/value/storage"></see>
     /// </summary>
     let ``ManMadeStorage/key/man_made/value/storage`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeStorage/key/man_made/value/storage" |> NamespacedName
+        _prefix "ManMadeStorage/key/man_made/value/storage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeTank"></see>
     /// </summary>
-    let ManMadeTank =
-        Namespaced_IRI.parse _namespace_name "ManMadeTank" |> NamespacedName
+    let ManMadeTank = _prefix "ManMadeTank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeTank/key/man_made/value/tank"></see>
     /// </summary>
     let ``ManMadeTank/key/man_made/value/tank`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeTank/key/man_made/value/tank" |> NamespacedName
+        _prefix "ManMadeTank/key/man_made/value/tank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeWell"></see>
     /// </summary>
-    let ManMadeWell =
-        Namespaced_IRI.parse _namespace_name "ManMadeWell" |> NamespacedName
+    let ManMadeWell = _prefix "ManMadeWell"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ManMadeWell/key/man_made/value/well"></see>
     /// </summary>
     let ``ManMadeWell/key/man_made/value/well`` =
-        Namespaced_IRI.parse _namespace_name "ManMadeWell/key/man_made/value/well" |> NamespacedName
+        _prefix "ManMadeWell/key/man_made/value/well"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Manhole"></see>
     /// </summary>
-    let Manhole = Namespaced_IRI.parse _namespace_name "Manhole" |> NamespacedName
+    let Manhole = _prefix "Manhole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Manhole/key/man_made/value/manhole"></see>
     /// </summary>
     let ``Manhole/key/man_made/value/manhole`` =
-        Namespaced_IRI.parse _namespace_name "Manhole/key/man_made/value/manhole" |> NamespacedName
+        _prefix "Manhole/key/man_made/value/manhole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Manor"></see>
     /// </summary>
-    let Manor = Namespaced_IRI.parse _namespace_name "Manor" |> NamespacedName
-
+    let Manor = _prefix "Manor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Manor/key/historic/value/manor"></see>
     /// </summary>
-    let ``Manor/key/historic/value/manor`` =
-        Namespaced_IRI.parse _namespace_name "Manor/key/historic/value/manor" |> NamespacedName
-
+    let ``Manor/key/historic/value/manor`` = _prefix "Manor/key/historic/value/manor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Marina"></see>
     /// </summary>
-    let Marina = Namespaced_IRI.parse _namespace_name "Marina" |> NamespacedName
-
+    let Marina = _prefix "Marina"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Marina/key/leisure/value/marina"></see>
     /// </summary>
-    let ``Marina/key/leisure/value/marina`` =
-        Namespaced_IRI.parse _namespace_name "Marina/key/leisure/value/marina" |> NamespacedName
-
+    let ``Marina/key/leisure/value/marina`` = _prefix "Marina/key/leisure/value/marina"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MaritimeBoundary"></see>
     /// </summary>
-    let MaritimeBoundary =
-        Namespaced_IRI.parse _namespace_name "MaritimeBoundary" |> NamespacedName
+    let MaritimeBoundary = _prefix "MaritimeBoundary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MaritimeBoundary/key/boundary/value/maritime"></see>
     /// </summary>
     let ``MaritimeBoundary/key/boundary/value/maritime`` =
-        Namespaced_IRI.parse _namespace_name "MaritimeBoundary/key/boundary/value/maritime" |> NamespacedName
+        _prefix "MaritimeBoundary/key/boundary/value/maritime"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Market"></see>
     /// </summary>
-    let Market = Namespaced_IRI.parse _namespace_name "Market" |> NamespacedName
-
+    let Market = _prefix "Market"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Market/key/shop/value/market"></see>
     /// </summary>
-    let ``Market/key/shop/value/market`` =
-        Namespaced_IRI.parse _namespace_name "Market/key/shop/value/market" |> NamespacedName
-
+    let ``Market/key/shop/value/market`` = _prefix "Market/key/shop/value/market"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Market/key/amenity/value/market"></see>
     /// </summary>
-    let ``Market/key/amenity/value/market`` =
-        Namespaced_IRI.parse _namespace_name "Market/key/amenity/value/market" |> NamespacedName
-
+    let ``Market/key/amenity/value/market`` = _prefix "Market/key/amenity/value/market"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Marketplace"></see>
     /// </summary>
-    let Marketplace =
-        Namespaced_IRI.parse _namespace_name "Marketplace" |> NamespacedName
+    let Marketplace = _prefix "Marketplace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Marketplace/key/amenity/value/marketplace"></see>
     /// </summary>
     let ``Marketplace/key/amenity/value/marketplace`` =
-        Namespaced_IRI.parse _namespace_name "Marketplace/key/amenity/value/marketplace" |> NamespacedName
+        _prefix "Marketplace/key/amenity/value/marketplace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Marsh"></see>
     /// </summary>
-    let Marsh = Namespaced_IRI.parse _namespace_name "Marsh" |> NamespacedName
-
+    let Marsh = _prefix "Marsh"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Marsh/key/natural/value/marsh"></see>
     /// </summary>
-    let ``Marsh/key/natural/value/marsh`` =
-        Namespaced_IRI.parse _namespace_name "Marsh/key/natural/value/marsh" |> NamespacedName
-
+    let ``Marsh/key/natural/value/marsh`` = _prefix "Marsh/key/natural/value/marsh"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Massage"></see>
     /// </summary>
-    let Massage = Namespaced_IRI.parse _namespace_name "Massage" |> NamespacedName
+    let Massage = _prefix "Massage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Massage/key/amenity/value/massage"></see>
     /// </summary>
     let ``Massage/key/amenity/value/massage`` =
-        Namespaced_IRI.parse _namespace_name "Massage/key/amenity/value/massage" |> NamespacedName
+        _prefix "Massage/key/amenity/value/massage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MassageShop"></see>
     /// </summary>
-    let MassageShop =
-        Namespaced_IRI.parse _namespace_name "MassageShop" |> NamespacedName
+    let MassageShop = _prefix "MassageShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MassageShop/key/shop/value/massage"></see>
     /// </summary>
     let ``MassageShop/key/shop/value/massage`` =
-        Namespaced_IRI.parse _namespace_name "MassageShop/key/shop/value/massage" |> NamespacedName
+        _prefix "MassageShop/key/shop/value/massage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mast"></see>
     /// </summary>
-    let Mast = Namespaced_IRI.parse _namespace_name "Mast" |> NamespacedName
-
+    let Mast = _prefix "Mast"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mast/key/man_made/value/mast"></see>
     /// </summary>
-    let ``Mast/key/man_made/value/mast`` =
-        Namespaced_IRI.parse _namespace_name "Mast/key/man_made/value/mast" |> NamespacedName
-
+    let ``Mast/key/man_made/value/mast`` = _prefix "Mast/key/man_made/value/mast"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mattress"></see>
     /// </summary>
-    let Mattress = Namespaced_IRI.parse _namespace_name "Mattress" |> NamespacedName
+    let Mattress = _prefix "Mattress"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mattress/key/shop/value/mattress"></see>
     /// </summary>
     let ``Mattress/key/shop/value/mattress`` =
-        Namespaced_IRI.parse _namespace_name "Mattress/key/shop/value/mattress" |> NamespacedName
+        _prefix "Mattress/key/shop/value/mattress"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Meadow"></see>
     /// </summary>
-    let Meadow = Namespaced_IRI.parse _namespace_name "Meadow" |> NamespacedName
-
+    let Meadow = _prefix "Meadow"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Meadow/key/landuse/value/meadow"></see>
     /// </summary>
-    let ``Meadow/key/landuse/value/meadow`` =
-        Namespaced_IRI.parse _namespace_name "Meadow/key/landuse/value/meadow" |> NamespacedName
-
+    let ``Meadow/key/landuse/value/meadow`` = _prefix "Meadow/key/landuse/value/meadow"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Meat"></see>
     /// </summary>
-    let Meat = Namespaced_IRI.parse _namespace_name "Meat" |> NamespacedName
-
+    let Meat = _prefix "Meat"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Meat/key/shop/value/meat"></see>
     /// </summary>
-    let ``Meat/key/shop/value/meat`` =
-        Namespaced_IRI.parse _namespace_name "Meat/key/shop/value/meat" |> NamespacedName
-
+    let ``Meat/key/shop/value/meat`` = _prefix "Meat/key/shop/value/meat"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Medical"></see>
     /// </summary>
-    let Medical = Namespaced_IRI.parse _namespace_name "Medical" |> NamespacedName
+    let Medical = _prefix "Medical"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Medical/key/amenity/value/medical"></see>
     /// </summary>
     let ``Medical/key/amenity/value/medical`` =
-        Namespaced_IRI.parse _namespace_name "Medical/key/amenity/value/medical" |> NamespacedName
+        _prefix "Medical/key/amenity/value/medical"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MedicalCentre"></see>
     /// </summary>
-    let MedicalCentre =
-        Namespaced_IRI.parse _namespace_name "MedicalCentre" |> NamespacedName
+    let MedicalCentre = _prefix "MedicalCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MedicalCentre/key/amenity/value/medical_centre"></see>
     /// </summary>
     let ``MedicalCentre/key/amenity/value/medical_centre`` =
-        Namespaced_IRI.parse _namespace_name "MedicalCentre/key/amenity/value/medical_centre" |> NamespacedName
+        _prefix "MedicalCentre/key/amenity/value/medical_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Memorial"></see>
     /// </summary>
-    let Memorial = Namespaced_IRI.parse _namespace_name "Memorial" |> NamespacedName
+    let Memorial = _prefix "Memorial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Memorial/key/historic/value/memorial"></see>
     /// </summary>
     let ``Memorial/key/historic/value/memorial`` =
-        Namespaced_IRI.parse _namespace_name "Memorial/key/historic/value/memorial" |> NamespacedName
+        _prefix "Memorial/key/historic/value/memorial"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Menhir"></see>
     /// </summary>
-    let Menhir = Namespaced_IRI.parse _namespace_name "Menhir" |> NamespacedName
+    let Menhir = _prefix "Menhir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Menhir/key/historic/value/menhir"></see>
     /// </summary>
     let ``Menhir/key/historic/value/menhir`` =
-        Namespaced_IRI.parse _namespace_name "Menhir/key/historic/value/menhir" |> NamespacedName
+        _prefix "Menhir/key/historic/value/menhir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MetalConstructionCraft"></see>
     /// </summary>
-    let MetalConstructionCraft =
-        Namespaced_IRI.parse _namespace_name "MetalConstructionCraft" |> NamespacedName
+    let MetalConstructionCraft = _prefix "MetalConstructionCraft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MetalConstructionCraft/key/craft/value/metal_construction"></see>
     /// </summary>
     let ``MetalConstructionCraft/key/craft/value/metal_construction`` =
-        Namespaced_IRI.parse _namespace_name "MetalConstructionCraft/key/craft/value/metal_construction" |> NamespacedName
+        _prefix "MetalConstructionCraft/key/craft/value/metal_construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Milestone"></see>
     /// </summary>
-    let Milestone = Namespaced_IRI.parse _namespace_name "Milestone" |> NamespacedName
+    let Milestone = _prefix "Milestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Milestone/key/amenity/value/milestone"></see>
     /// </summary>
     let ``Milestone/key/amenity/value/milestone`` =
-        Namespaced_IRI.parse _namespace_name "Milestone/key/amenity/value/milestone" |> NamespacedName
+        _prefix "Milestone/key/amenity/value/milestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryAirport"></see>
     /// </summary>
-    let MilitaryAirport =
-        Namespaced_IRI.parse _namespace_name "MilitaryAirport" |> NamespacedName
+    let MilitaryAirport = _prefix "MilitaryAirport"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryAirport/key/military/value/airfield"></see>
     /// </summary>
     let ``MilitaryAirport/key/military/value/airfield`` =
-        Namespaced_IRI.parse _namespace_name "MilitaryAirport/key/military/value/airfield" |> NamespacedName
+        _prefix "MilitaryAirport/key/military/value/airfield"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryBunker"></see>
     /// </summary>
-    let MilitaryBunker =
-        Namespaced_IRI.parse _namespace_name "MilitaryBunker" |> NamespacedName
+    let MilitaryBunker = _prefix "MilitaryBunker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryBunker/key/military/value/bunker"></see>
     /// </summary>
     let ``MilitaryBunker/key/military/value/bunker`` =
-        Namespaced_IRI.parse _namespace_name "MilitaryBunker/key/military/value/bunker" |> NamespacedName
+        _prefix "MilitaryBunker/key/military/value/bunker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryLanduse"></see>
     /// </summary>
-    let MilitaryLanduse =
-        Namespaced_IRI.parse _namespace_name "MilitaryLanduse" |> NamespacedName
+    let MilitaryLanduse = _prefix "MilitaryLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryLanduse/key/landuse/value/military"></see>
     /// </summary>
     let ``MilitaryLanduse/key/landuse/value/military`` =
-        Namespaced_IRI.parse _namespace_name "MilitaryLanduse/key/landuse/value/military" |> NamespacedName
+        _prefix "MilitaryLanduse/key/landuse/value/military"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryRange"></see>
     /// </summary>
-    let MilitaryRange =
-        Namespaced_IRI.parse _namespace_name "MilitaryRange" |> NamespacedName
+    let MilitaryRange = _prefix "MilitaryRange"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilitaryRange/key/military/value/range"></see>
     /// </summary>
     let ``MilitaryRange/key/military/value/range`` =
-        Namespaced_IRI.parse _namespace_name "MilitaryRange/key/military/value/range" |> NamespacedName
+        _prefix "MilitaryRange/key/military/value/range"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilkDispenser"></see>
     /// </summary>
-    let MilkDispenser =
-        Namespaced_IRI.parse _namespace_name "MilkDispenser" |> NamespacedName
+    let MilkDispenser = _prefix "MilkDispenser"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MilkDispenser/key/amenity/value/milk_dispenser"></see>
     /// </summary>
     let ``MilkDispenser/key/amenity/value/milk_dispenser`` =
-        Namespaced_IRI.parse _namespace_name "MilkDispenser/key/amenity/value/milk_dispenser" |> NamespacedName
+        _prefix "MilkDispenser/key/amenity/value/milk_dispenser"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mill"></see>
     /// </summary>
-    let Mill = Namespaced_IRI.parse _namespace_name "Mill" |> NamespacedName
-
+    let Mill = _prefix "Mill"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mill/key/historic/value/mill"></see>
     /// </summary>
-    let ``Mill/key/historic/value/mill`` =
-        Namespaced_IRI.parse _namespace_name "Mill/key/historic/value/mill" |> NamespacedName
-
+    let ``Mill/key/historic/value/mill`` = _prefix "Mill/key/historic/value/mill"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mine"></see>
     /// </summary>
-    let Mine = Namespaced_IRI.parse _namespace_name "Mine" |> NamespacedName
-
+    let Mine = _prefix "Mine"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mine/key/amenity/value/mine"></see>
     /// </summary>
-    let ``Mine/key/amenity/value/mine`` =
-        Namespaced_IRI.parse _namespace_name "Mine/key/amenity/value/mine" |> NamespacedName
-
+    let ``Mine/key/amenity/value/mine`` = _prefix "Mine/key/amenity/value/mine"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MineShaft"></see>
     /// </summary>
-    let MineShaft = Namespaced_IRI.parse _namespace_name "MineShaft" |> NamespacedName
+    let MineShaft = _prefix "MineShaft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MineShaft/key/historic/value/mine_shaft"></see>
     /// </summary>
     let ``MineShaft/key/historic/value/mine_shaft`` =
-        Namespaced_IRI.parse _namespace_name "MineShaft/key/historic/value/mine_shaft" |> NamespacedName
+        _prefix "MineShaft/key/historic/value/mine_shaft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MineralSpring"></see>
     /// </summary>
-    let MineralSpring =
-        Namespaced_IRI.parse _namespace_name "MineralSpring" |> NamespacedName
+    let MineralSpring = _prefix "MineralSpring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MineralSpring/key/waterway/value/mineral_spring"></see>
     /// </summary>
     let ``MineralSpring/key/waterway/value/mineral_spring`` =
-        Namespaced_IRI.parse _namespace_name "MineralSpring/key/waterway/value/mineral_spring" |> NamespacedName
+        _prefix "MineralSpring/key/waterway/value/mineral_spring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mineshaft"></see>
     /// </summary>
-    let Mineshaft = Namespaced_IRI.parse _namespace_name "Mineshaft" |> NamespacedName
+    let Mineshaft = _prefix "Mineshaft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mineshaft/key/man_made/value/mineshaft"></see>
     /// </summary>
     let ``Mineshaft/key/man_made/value/mineshaft`` =
-        Namespaced_IRI.parse _namespace_name "Mineshaft/key/man_made/value/mineshaft" |> NamespacedName
+        _prefix "Mineshaft/key/man_made/value/mineshaft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MiniRoundabout"></see>
     /// </summary>
-    let MiniRoundabout =
-        Namespaced_IRI.parse _namespace_name "MiniRoundabout" |> NamespacedName
+    let MiniRoundabout = _prefix "MiniRoundabout"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MiniRoundabout/key/highway/value/mini_roundabout"></see>
     /// </summary>
     let ``MiniRoundabout/key/highway/value/mini_roundabout`` =
-        Namespaced_IRI.parse _namespace_name "MiniRoundabout/key/highway/value/mini_roundabout" |> NamespacedName
+        _prefix "MiniRoundabout/key/highway/value/mini_roundabout"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MiniatureGolf"></see>
     /// </summary>
-    let MiniatureGolf =
-        Namespaced_IRI.parse _namespace_name "MiniatureGolf" |> NamespacedName
+    let MiniatureGolf = _prefix "MiniatureGolf"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MiniatureGolf/key/leisure/value/miniature_golf"></see>
     /// </summary>
     let ``MiniatureGolf/key/leisure/value/miniature_golf`` =
-        Namespaced_IRI.parse _namespace_name "MiniatureGolf/key/leisure/value/miniature_golf" |> NamespacedName
+        _prefix "MiniatureGolf/key/leisure/value/miniature_golf"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MiniatureRailway"></see>
     /// </summary>
-    let MiniatureRailway =
-        Namespaced_IRI.parse _namespace_name "MiniatureRailway" |> NamespacedName
+    let MiniatureRailway = _prefix "MiniatureRailway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MiniatureRailway/key/railway/value/miniature"></see>
     /// </summary>
     let ``MiniatureRailway/key/railway/value/miniature`` =
-        Namespaced_IRI.parse _namespace_name "MiniatureRailway/key/railway/value/miniature" |> NamespacedName
+        _prefix "MiniatureRailway/key/railway/value/miniature"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Minimarket"></see>
     /// </summary>
-    let Minimarket = Namespaced_IRI.parse _namespace_name "Minimarket" |> NamespacedName
+    let Minimarket = _prefix "Minimarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Minimarket/key/shop/value/minimarket"></see>
     /// </summary>
     let ``Minimarket/key/shop/value/minimarket`` =
-        Namespaced_IRI.parse _namespace_name "Minimarket/key/shop/value/minimarket" |> NamespacedName
+        _prefix "Minimarket/key/shop/value/minimarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mining"></see>
     /// </summary>
-    let Mining = Namespaced_IRI.parse _namespace_name "Mining" |> NamespacedName
-
+    let Mining = _prefix "Mining"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mining/key/landuse/value/mining"></see>
     /// </summary>
-    let ``Mining/key/landuse/value/mining`` =
-        Namespaced_IRI.parse _namespace_name "Mining/key/landuse/value/mining" |> NamespacedName
-
+    let ``Mining/key/landuse/value/mining`` = _prefix "Mining/key/landuse/value/mining"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Misc"></see>
     /// </summary>
-    let Misc = Namespaced_IRI.parse _namespace_name "Misc" |> NamespacedName
-
+    let Misc = _prefix "Misc"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Misc/key/shop/value/misc"></see>
     /// </summary>
-    let ``Misc/key/shop/value/misc`` =
-        Namespaced_IRI.parse _namespace_name "Misc/key/shop/value/misc" |> NamespacedName
-
+    let ``Misc/key/shop/value/misc`` = _prefix "Misc/key/shop/value/misc"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MixedLift"></see>
     /// </summary>
-    let MixedLift = Namespaced_IRI.parse _namespace_name "MixedLift" |> NamespacedName
+    let MixedLift = _prefix "MixedLift"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MixedLift/key/aerialway/value/mixed_lift"></see>
     /// </summary>
     let ``MixedLift/key/aerialway/value/mixed_lift`` =
-        Namespaced_IRI.parse _namespace_name "MixedLift/key/aerialway/value/mixed_lift" |> NamespacedName
+        _prefix "MixedLift/key/aerialway/value/mixed_lift"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mobile"></see>
     /// </summary>
-    let Mobile = Namespaced_IRI.parse _namespace_name "Mobile" |> NamespacedName
-
+    let Mobile = _prefix "Mobile"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mobile/key/shop/value/mobile"></see>
     /// </summary>
-    let ``Mobile/key/shop/value/mobile`` =
-        Namespaced_IRI.parse _namespace_name "Mobile/key/shop/value/mobile" |> NamespacedName
-
+    let ``Mobile/key/shop/value/mobile`` = _prefix "Mobile/key/shop/value/mobile"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MobilePhone"></see>
     /// </summary>
-    let MobilePhone =
-        Namespaced_IRI.parse _namespace_name "MobilePhone" |> NamespacedName
+    let MobilePhone = _prefix "MobilePhone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MobilePhone/key/shop/value/mobile_phone"></see>
     /// </summary>
     let ``MobilePhone/key/shop/value/mobile_phone`` =
-        Namespaced_IRI.parse _namespace_name "MobilePhone/key/shop/value/mobile_phone" |> NamespacedName
+        _prefix "MobilePhone/key/shop/value/mobile_phone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MobileTelephony"></see>
     /// </summary>
-    let MobileTelephony =
-        Namespaced_IRI.parse _namespace_name "MobileTelephony" |> NamespacedName
+    let MobileTelephony = _prefix "MobileTelephony"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MobileTelephony/key/shop/value/mobile_telephony"></see>
     /// </summary>
     let ``MobileTelephony/key/shop/value/mobile_telephony`` =
-        Namespaced_IRI.parse _namespace_name "MobileTelephony/key/shop/value/mobile_telephony" |> NamespacedName
+        _prefix "MobileTelephony/key/shop/value/mobile_telephony"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Monastery"></see>
     /// </summary>
-    let Monastery = Namespaced_IRI.parse _namespace_name "Monastery" |> NamespacedName
+    let Monastery = _prefix "Monastery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Monastery/key/amenity/value/monastery"></see>
     /// </summary>
     let ``Monastery/key/amenity/value/monastery`` =
-        Namespaced_IRI.parse _namespace_name "Monastery/key/amenity/value/monastery" |> NamespacedName
+        _prefix "Monastery/key/amenity/value/monastery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MonitoringStation"></see>
     /// </summary>
-    let MonitoringStation =
-        Namespaced_IRI.parse _namespace_name "MonitoringStation" |> NamespacedName
+    let MonitoringStation = _prefix "MonitoringStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MonitoringStation/key/man_made/value/monitoring_station"></see>
     /// </summary>
     let ``MonitoringStation/key/man_made/value/monitoring_station`` =
-        Namespaced_IRI.parse _namespace_name "MonitoringStation/key/man_made/value/monitoring_station" |> NamespacedName
+        _prefix "MonitoringStation/key/man_made/value/monitoring_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Monorail"></see>
     /// </summary>
-    let Monorail = Namespaced_IRI.parse _namespace_name "Monorail" |> NamespacedName
+    let Monorail = _prefix "Monorail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Monorail/key/railway/value/monorail"></see>
     /// </summary>
     let ``Monorail/key/railway/value/monorail`` =
-        Namespaced_IRI.parse _namespace_name "Monorail/key/railway/value/monorail" |> NamespacedName
+        _prefix "Monorail/key/railway/value/monorail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Monument"></see>
     /// </summary>
-    let Monument = Namespaced_IRI.parse _namespace_name "Monument" |> NamespacedName
+    let Monument = _prefix "Monument"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Monument/key/historic/value/monument"></see>
     /// </summary>
     let ``Monument/key/historic/value/monument`` =
-        Namespaced_IRI.parse _namespace_name "Monument/key/historic/value/monument" |> NamespacedName
+        _prefix "Monument/key/historic/value/monument"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Moor"></see>
     /// </summary>
-    let Moor = Namespaced_IRI.parse _namespace_name "Moor" |> NamespacedName
-
+    let Moor = _prefix "Moor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Moor/key/natural/value/moor"></see>
     /// </summary>
-    let ``Moor/key/natural/value/moor`` =
-        Namespaced_IRI.parse _namespace_name "Moor/key/natural/value/moor" |> NamespacedName
-
+    let ``Moor/key/natural/value/moor`` = _prefix "Moor/key/natural/value/moor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mooring"></see>
     /// </summary>
-    let Mooring = Namespaced_IRI.parse _namespace_name "Mooring" |> NamespacedName
+    let Mooring = _prefix "Mooring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mooring/key/waterway/value/mooring"></see>
     /// </summary>
     let ``Mooring/key/waterway/value/mooring`` =
-        Namespaced_IRI.parse _namespace_name "Mooring/key/waterway/value/mooring" |> NamespacedName
+        _prefix "Mooring/key/waterway/value/mooring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mortuary"></see>
     /// </summary>
-    let Mortuary = Namespaced_IRI.parse _namespace_name "Mortuary" |> NamespacedName
+    let Mortuary = _prefix "Mortuary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mortuary/key/amenity/value/mortuary"></see>
     /// </summary>
     let ``Mortuary/key/amenity/value/mortuary`` =
-        Namespaced_IRI.parse _namespace_name "Mortuary/key/amenity/value/mortuary" |> NamespacedName
+        _prefix "Mortuary/key/amenity/value/mortuary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motel"></see>
     /// </summary>
-    let Motel = Namespaced_IRI.parse _namespace_name "Motel" |> NamespacedName
-
+    let Motel = _prefix "Motel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motel/key/tourism/value/motel"></see>
     /// </summary>
-    let ``Motel/key/tourism/value/motel`` =
-        Namespaced_IRI.parse _namespace_name "Motel/key/tourism/value/motel" |> NamespacedName
-
+    let ``Motel/key/tourism/value/motel`` = _prefix "Motel/key/tourism/value/motel"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motorbike"></see>
     /// </summary>
-    let Motorbike = Namespaced_IRI.parse _namespace_name "Motorbike" |> NamespacedName
+    let Motorbike = _prefix "Motorbike"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motorbike/key/shop/value/motorbike"></see>
     /// </summary>
     let ``Motorbike/key/shop/value/motorbike`` =
-        Namespaced_IRI.parse _namespace_name "Motorbike/key/shop/value/motorbike" |> NamespacedName
+        _prefix "Motorbike/key/shop/value/motorbike"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motorcycle"></see>
     /// </summary>
-    let Motorcycle = Namespaced_IRI.parse _namespace_name "Motorcycle" |> NamespacedName
+    let Motorcycle = _prefix "Motorcycle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motorcycle/key/shop/value/motorcycle"></see>
     /// </summary>
     let ``Motorcycle/key/shop/value/motorcycle`` =
-        Namespaced_IRI.parse _namespace_name "Motorcycle/key/shop/value/motorcycle" |> NamespacedName
+        _prefix "Motorcycle/key/shop/value/motorcycle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorcycleParking"></see>
     /// </summary>
-    let MotorcycleParking =
-        Namespaced_IRI.parse _namespace_name "MotorcycleParking" |> NamespacedName
+    let MotorcycleParking = _prefix "MotorcycleParking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorcycleParking/key/amenity/value/motorcycle_parking"></see>
     /// </summary>
     let ``MotorcycleParking/key/amenity/value/motorcycle_parking`` =
-        Namespaced_IRI.parse _namespace_name "MotorcycleParking/key/amenity/value/motorcycle_parking" |> NamespacedName
+        _prefix "MotorcycleParking/key/amenity/value/motorcycle_parking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorcycleRepair"></see>
     /// </summary>
-    let MotorcycleRepair =
-        Namespaced_IRI.parse _namespace_name "MotorcycleRepair" |> NamespacedName
+    let MotorcycleRepair = _prefix "MotorcycleRepair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorcycleRepair/key/shop/value/motorcycle_repair"></see>
     /// </summary>
     let ``MotorcycleRepair/key/shop/value/motorcycle_repair`` =
-        Namespaced_IRI.parse _namespace_name "MotorcycleRepair/key/shop/value/motorcycle_repair" |> NamespacedName
+        _prefix "MotorcycleRepair/key/shop/value/motorcycle_repair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motorway"></see>
     /// </summary>
-    let Motorway = Namespaced_IRI.parse _namespace_name "Motorway" |> NamespacedName
+    let Motorway = _prefix "Motorway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Motorway/key/highway/value/motorway"></see>
     /// </summary>
     let ``Motorway/key/highway/value/motorway`` =
-        Namespaced_IRI.parse _namespace_name "Motorway/key/highway/value/motorway" |> NamespacedName
+        _prefix "Motorway/key/highway/value/motorway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorwayJunction"></see>
     /// </summary>
-    let MotorwayJunction =
-        Namespaced_IRI.parse _namespace_name "MotorwayJunction" |> NamespacedName
+    let MotorwayJunction = _prefix "MotorwayJunction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorwayJunction/key/highway/value/motorway_junction"></see>
     /// </summary>
     let ``MotorwayJunction/key/highway/value/motorway_junction`` =
-        Namespaced_IRI.parse _namespace_name "MotorwayJunction/key/highway/value/motorway_junction" |> NamespacedName
+        _prefix "MotorwayJunction/key/highway/value/motorway_junction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorwayLink"></see>
     /// </summary>
-    let MotorwayLink =
-        Namespaced_IRI.parse _namespace_name "MotorwayLink" |> NamespacedName
+    let MotorwayLink = _prefix "MotorwayLink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MotorwayLink/key/highway/value/motorway_link"></see>
     /// </summary>
     let ``MotorwayLink/key/highway/value/motorway_link`` =
-        Namespaced_IRI.parse _namespace_name "MotorwayLink/key/highway/value/motorway_link" |> NamespacedName
+        _prefix "MotorwayLink/key/highway/value/motorway_link"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MountainPass"></see>
     /// </summary>
-    let MountainPass =
-        Namespaced_IRI.parse _namespace_name "MountainPass" |> NamespacedName
+    let MountainPass = _prefix "MountainPass"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MountainPass/key/natural/value/mountain_pass"></see>
     /// </summary>
     let ``MountainPass/key/natural/value/mountain_pass`` =
-        Namespaced_IRI.parse _namespace_name "MountainPass/key/natural/value/mountain_pass" |> NamespacedName
+        _prefix "MountainPass/key/natural/value/mountain_pass"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MountainRescue"></see>
     /// </summary>
-    let MountainRescue =
-        Namespaced_IRI.parse _namespace_name "MountainRescue" |> NamespacedName
+    let MountainRescue = _prefix "MountainRescue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MountainRescue/key/amenity/value/mountain_rescue"></see>
     /// </summary>
     let ``MountainRescue/key/amenity/value/mountain_rescue`` =
-        Namespaced_IRI.parse _namespace_name "MountainRescue/key/amenity/value/mountain_rescue" |> NamespacedName
+        _prefix "MountainRescue/key/amenity/value/mountain_rescue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MtbRoute"></see>
     /// </summary>
-    let MtbRoute = Namespaced_IRI.parse _namespace_name "MtbRoute" |> NamespacedName
-
+    let MtbRoute = _prefix "MtbRoute"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MtbRoute/key/route/value/mtb"></see>
     /// </summary>
-    let ``MtbRoute/key/route/value/mtb`` =
-        Namespaced_IRI.parse _namespace_name "MtbRoute/key/route/value/mtb" |> NamespacedName
-
+    let ``MtbRoute/key/route/value/mtb`` = _prefix "MtbRoute/key/route/value/mtb"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mud"></see>
     /// </summary>
-    let Mud = Namespaced_IRI.parse _namespace_name "Mud" |> NamespacedName
-
+    let Mud = _prefix "Mud"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mud/key/natural/value/mud"></see>
     /// </summary>
-    let ``Mud/key/natural/value/mud`` =
-        Namespaced_IRI.parse _namespace_name "Mud/key/natural/value/mud" |> NamespacedName
-
+    let ``Mud/key/natural/value/mud`` = _prefix "Mud/key/natural/value/mud"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MultiPolygon"></see>
     /// </summary>
-    let MultiPolygon =
-        Namespaced_IRI.parse _namespace_name "MultiPolygon" |> NamespacedName
+    let MultiPolygon = _prefix "MultiPolygon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MultiPolygon/key/type/value/multipolygon"></see>
     /// </summary>
     let ``MultiPolygon/key/type/value/multipolygon`` =
-        Namespaced_IRI.parse _namespace_name "MultiPolygon/key/type/value/multipolygon" |> NamespacedName
+        _prefix "MultiPolygon/key/type/value/multipolygon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Municipality"></see>
     /// </summary>
-    let Municipality =
-        Namespaced_IRI.parse _namespace_name "Municipality" |> NamespacedName
+    let Municipality = _prefix "Municipality"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Municipality/key/place/value/municipality"></see>
     /// </summary>
     let ``Municipality/key/place/value/municipality`` =
-        Namespaced_IRI.parse _namespace_name "Municipality/key/place/value/municipality" |> NamespacedName
+        _prefix "Municipality/key/place/value/municipality"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Museum"></see>
     /// </summary>
-    let Museum = Namespaced_IRI.parse _namespace_name "Museum" |> NamespacedName
-
+    let Museum = _prefix "Museum"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Museum/key/tourism/value/museum"></see>
     /// </summary>
-    let ``Museum/key/tourism/value/museum`` =
-        Namespaced_IRI.parse _namespace_name "Museum/key/tourism/value/museum" |> NamespacedName
-
+    let ``Museum/key/tourism/value/museum`` = _prefix "Museum/key/tourism/value/museum"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mushroom"></see>
     /// </summary>
-    let Mushroom = Namespaced_IRI.parse _namespace_name "Mushroom" |> NamespacedName
+    let Mushroom = _prefix "Mushroom"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Mushroom/key/natural/value/mushroom"></see>
     /// </summary>
     let ``Mushroom/key/natural/value/mushroom`` =
-        Namespaced_IRI.parse _namespace_name "Mushroom/key/natural/value/mushroom" |> NamespacedName
+        _prefix "Mushroom/key/natural/value/mushroom"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Music"></see>
     /// </summary>
-    let Music = Namespaced_IRI.parse _namespace_name "Music" |> NamespacedName
-
+    let Music = _prefix "Music"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Music/key/shop/value/music"></see>
     /// </summary>
-    let ``Music/key/shop/value/music`` =
-        Namespaced_IRI.parse _namespace_name "Music/key/shop/value/music" |> NamespacedName
-
+    let ``Music/key/shop/value/music`` = _prefix "Music/key/shop/value/music"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MusicVenue"></see>
     /// </summary>
-    let MusicVenue = Namespaced_IRI.parse _namespace_name "MusicVenue" |> NamespacedName
+    let MusicVenue = _prefix "MusicVenue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MusicVenue/key/leisure/value/music_venue"></see>
     /// </summary>
     let ``MusicVenue/key/leisure/value/music_venue`` =
-        Namespaced_IRI.parse _namespace_name "MusicVenue/key/leisure/value/music_venue" |> NamespacedName
+        _prefix "MusicVenue/key/leisure/value/music_venue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MusicVenue/key/amenity/value/music_venue"></see>
     /// </summary>
     let ``MusicVenue/key/amenity/value/music_venue`` =
-        Namespaced_IRI.parse _namespace_name "MusicVenue/key/amenity/value/music_venue" |> NamespacedName
+        _prefix "MusicVenue/key/amenity/value/music_venue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MusicalInstruments"></see>
     /// </summary>
-    let MusicalInstruments =
-        Namespaced_IRI.parse _namespace_name "MusicalInstruments" |> NamespacedName
+    let MusicalInstruments = _prefix "MusicalInstruments"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/MusicalInstruments/key/shop/value/musical_instruments"></see>
     /// </summary>
     let ``MusicalInstruments/key/shop/value/musical_instruments`` =
-        Namespaced_IRI.parse _namespace_name "MusicalInstruments/key/shop/value/musical_instruments" |> NamespacedName
+        _prefix "MusicalInstruments/key/shop/value/musical_instruments"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NailSalon"></see>
     /// </summary>
-    let NailSalon = Namespaced_IRI.parse _namespace_name "NailSalon" |> NamespacedName
+    let NailSalon = _prefix "NailSalon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NailSalon/key/shop/value/nail_salon"></see>
     /// </summary>
     let ``NailSalon/key/shop/value/nail_salon`` =
-        Namespaced_IRI.parse _namespace_name "NailSalon/key/shop/value/nail_salon" |> NamespacedName
+        _prefix "NailSalon/key/shop/value/nail_salon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Nails"></see>
     /// </summary>
-    let Nails = Namespaced_IRI.parse _namespace_name "Nails" |> NamespacedName
-
+    let Nails = _prefix "Nails"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Nails/key/shop/value/nails"></see>
     /// </summary>
-    let ``Nails/key/shop/value/nails`` =
-        Namespaced_IRI.parse _namespace_name "Nails/key/shop/value/nails" |> NamespacedName
-
+    let ``Nails/key/shop/value/nails`` = _prefix "Nails/key/shop/value/nails"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NarrowGauge"></see>
     /// </summary>
-    let NarrowGauge =
-        Namespaced_IRI.parse _namespace_name "NarrowGauge" |> NamespacedName
+    let NarrowGauge = _prefix "NarrowGauge"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NarrowGauge/key/railway/value/narrow_gauge"></see>
     /// </summary>
     let ``NarrowGauge/key/railway/value/narrow_gauge`` =
-        Namespaced_IRI.parse _namespace_name "NarrowGauge/key/railway/value/narrow_gauge" |> NamespacedName
+        _prefix "NarrowGauge/key/railway/value/narrow_gauge"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NationalForest"></see>
     /// </summary>
-    let NationalForest =
-        Namespaced_IRI.parse _namespace_name "NationalForest" |> NamespacedName
+    let NationalForest = _prefix "NationalForest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NationalForest/key/boundary/value/national_forest"></see>
     /// </summary>
     let ``NationalForest/key/boundary/value/national_forest`` =
-        Namespaced_IRI.parse _namespace_name "NationalForest/key/boundary/value/national_forest" |> NamespacedName
+        _prefix "NationalForest/key/boundary/value/national_forest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NationalPark"></see>
     /// </summary>
-    let NationalPark =
-        Namespaced_IRI.parse _namespace_name "NationalPark" |> NamespacedName
+    let NationalPark = _prefix "NationalPark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NationalPark/key/boundary/value/national_park"></see>
     /// </summary>
     let ``NationalPark/key/boundary/value/national_park`` =
-        Namespaced_IRI.parse _namespace_name "NationalPark/key/boundary/value/national_park" |> NamespacedName
+        _prefix "NationalPark/key/boundary/value/national_park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalBench"></see>
     /// </summary>
-    let NaturalBench =
-        Namespaced_IRI.parse _namespace_name "NaturalBench" |> NamespacedName
+    let NaturalBench = _prefix "NaturalBench"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalBench/key/natural/value/bench"></see>
     /// </summary>
     let ``NaturalBench/key/natural/value/bench`` =
-        Namespaced_IRI.parse _namespace_name "NaturalBench/key/natural/value/bench" |> NamespacedName
+        _prefix "NaturalBench/key/natural/value/bench"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalRiver"></see>
     /// </summary>
-    let NaturalRiver =
-        Namespaced_IRI.parse _namespace_name "NaturalRiver" |> NamespacedName
+    let NaturalRiver = _prefix "NaturalRiver"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalRiver/key/natural/value/river"></see>
     /// </summary>
     let ``NaturalRiver/key/natural/value/river`` =
-        Namespaced_IRI.parse _namespace_name "NaturalRiver/key/natural/value/river" |> NamespacedName
+        _prefix "NaturalRiver/key/natural/value/river"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalRock"></see>
     /// </summary>
-    let NaturalRock =
-        Namespaced_IRI.parse _namespace_name "NaturalRock" |> NamespacedName
+    let NaturalRock = _prefix "NaturalRock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalRock/key/natural/value/rock"></see>
     /// </summary>
     let ``NaturalRock/key/natural/value/rock`` =
-        Namespaced_IRI.parse _namespace_name "NaturalRock/key/natural/value/rock" |> NamespacedName
+        _prefix "NaturalRock/key/natural/value/rock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalShelter"></see>
     /// </summary>
-    let NaturalShelter =
-        Namespaced_IRI.parse _namespace_name "NaturalShelter" |> NamespacedName
+    let NaturalShelter = _prefix "NaturalShelter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalShelter/key/amenity/value/natural_shelter"></see>
     /// </summary>
     let ``NaturalShelter/key/amenity/value/natural_shelter`` =
-        Namespaced_IRI.parse _namespace_name "NaturalShelter/key/amenity/value/natural_shelter" |> NamespacedName
+        _prefix "NaturalShelter/key/amenity/value/natural_shelter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalValley"></see>
     /// </summary>
-    let NaturalValley =
-        Namespaced_IRI.parse _namespace_name "NaturalValley" |> NamespacedName
+    let NaturalValley = _prefix "NaturalValley"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalValley/key/natural/value/valley"></see>
     /// </summary>
     let ``NaturalValley/key/natural/value/valley`` =
-        Namespaced_IRI.parse _namespace_name "NaturalValley/key/natural/value/valley" |> NamespacedName
+        _prefix "NaturalValley/key/natural/value/valley"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalWaterfall"></see>
     /// </summary>
-    let NaturalWaterfall =
-        Namespaced_IRI.parse _namespace_name "NaturalWaterfall" |> NamespacedName
+    let NaturalWaterfall = _prefix "NaturalWaterfall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NaturalWaterfall/key/natural/value/waterfall"></see>
     /// </summary>
     let ``NaturalWaterfall/key/natural/value/waterfall`` =
-        Namespaced_IRI.parse _namespace_name "NaturalWaterfall/key/natural/value/waterfall" |> NamespacedName
+        _prefix "NaturalWaterfall/key/natural/value/waterfall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NatureReserve"></see>
     /// </summary>
-    let NatureReserve =
-        Namespaced_IRI.parse _namespace_name "NatureReserve" |> NamespacedName
+    let NatureReserve = _prefix "NatureReserve"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NatureReserve/key/leisure/value/nature_reserve"></see>
     /// </summary>
     let ``NatureReserve/key/leisure/value/nature_reserve`` =
-        Namespaced_IRI.parse _namespace_name "NatureReserve/key/leisure/value/nature_reserve" |> NamespacedName
+        _prefix "NatureReserve/key/leisure/value/nature_reserve"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NavalBase"></see>
     /// </summary>
-    let NavalBase = Namespaced_IRI.parse _namespace_name "NavalBase" |> NamespacedName
+    let NavalBase = _prefix "NavalBase"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NavalBase/key/military/value/naval_base"></see>
     /// </summary>
     let ``NavalBase/key/military/value/naval_base`` =
-        Namespaced_IRI.parse _namespace_name "NavalBase/key/military/value/naval_base" |> NamespacedName
+        _prefix "NavalBase/key/military/value/naval_base"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NestBox"></see>
     /// </summary>
-    let NestBox = Namespaced_IRI.parse _namespace_name "NestBox" |> NamespacedName
+    let NestBox = _prefix "NestBox"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NestBox/key/amenity/value/nest_box"></see>
     /// </summary>
     let ``NestBox/key/amenity/value/nest_box`` =
-        Namespaced_IRI.parse _namespace_name "NestBox/key/amenity/value/nest_box" |> NamespacedName
+        _prefix "NestBox/key/amenity/value/nest_box"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Newsagent"></see>
     /// </summary>
-    let Newsagent = Namespaced_IRI.parse _namespace_name "Newsagent" |> NamespacedName
+    let Newsagent = _prefix "Newsagent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Newsagent/key/shop/value/newsagent"></see>
     /// </summary>
     let ``Newsagent/key/shop/value/newsagent`` =
-        Namespaced_IRI.parse _namespace_name "Newsagent/key/shop/value/newsagent" |> NamespacedName
+        _prefix "Newsagent/key/shop/value/newsagent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NewspaperOffice"></see>
     /// </summary>
-    let NewspaperOffice =
-        Namespaced_IRI.parse _namespace_name "NewspaperOffice" |> NamespacedName
+    let NewspaperOffice = _prefix "NewspaperOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NewspaperOffice/key/office/value/newspaper"></see>
     /// </summary>
     let ``NewspaperOffice/key/office/value/newspaper`` =
-        Namespaced_IRI.parse _namespace_name "NewspaperOffice/key/office/value/newspaper" |> NamespacedName
+        _prefix "NewspaperOffice/key/office/value/newspaper"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Newsstand"></see>
     /// </summary>
-    let Newsstand = Namespaced_IRI.parse _namespace_name "Newsstand" |> NamespacedName
+    let Newsstand = _prefix "Newsstand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Newsstand/key/shop/value/newsstand"></see>
     /// </summary>
     let ``Newsstand/key/shop/value/newsstand`` =
-        Namespaced_IRI.parse _namespace_name "Newsstand/key/shop/value/newsstand" |> NamespacedName
+        _prefix "Newsstand/key/shop/value/newsstand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NgoOffice"></see>
     /// </summary>
-    let NgoOffice = Namespaced_IRI.parse _namespace_name "NgoOffice" |> NamespacedName
-
+    let NgoOffice = _prefix "NgoOffice"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NgoOffice/key/office/value/ngo"></see>
     /// </summary>
-    let ``NgoOffice/key/office/value/ngo`` =
-        Namespaced_IRI.parse _namespace_name "NgoOffice/key/office/value/ngo" |> NamespacedName
-
+    let ``NgoOffice/key/office/value/ngo`` = _prefix "NgoOffice/key/office/value/ngo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Nightclub"></see>
     /// </summary>
-    let Nightclub = Namespaced_IRI.parse _namespace_name "Nightclub" |> NamespacedName
+    let Nightclub = _prefix "Nightclub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Nightclub/key/amenity/value/nightclub"></see>
     /// </summary>
     let ``Nightclub/key/amenity/value/nightclub`` =
-        Namespaced_IRI.parse _namespace_name "Nightclub/key/amenity/value/nightclub" |> NamespacedName
+        _prefix "Nightclub/key/amenity/value/nightclub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NotAShop"></see>
     /// </summary>
-    let NotAShop = Namespaced_IRI.parse _namespace_name "NotAShop" |> NamespacedName
-
+    let NotAShop = _prefix "NotAShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NotAShop/key/shop/value/no"></see>
     /// </summary>
-    let ``NotAShop/key/shop/value/no`` =
-        Namespaced_IRI.parse _namespace_name "NotAShop/key/shop/value/no" |> NamespacedName
-
+    let ``NotAShop/key/shop/value/no`` = _prefix "NotAShop/key/shop/value/no"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Notice"></see>
     /// </summary>
-    let Notice = Namespaced_IRI.parse _namespace_name "Notice" |> NamespacedName
-
+    let Notice = _prefix "Notice"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Notice/key/amenity/value/notice"></see>
     /// </summary>
-    let ``Notice/key/amenity/value/notice`` =
-        Namespaced_IRI.parse _namespace_name "Notice/key/amenity/value/notice" |> NamespacedName
-
+    let ``Notice/key/amenity/value/notice`` = _prefix "Notice/key/amenity/value/notice"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Nursery"></see>
     /// </summary>
-    let Nursery = Namespaced_IRI.parse _namespace_name "Nursery" |> NamespacedName
+    let Nursery = _prefix "Nursery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Nursery/key/amenity/value/nursery"></see>
     /// </summary>
     let ``Nursery/key/amenity/value/nursery`` =
-        Namespaced_IRI.parse _namespace_name "Nursery/key/amenity/value/nursery" |> NamespacedName
+        _prefix "Nursery/key/amenity/value/nursery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NursingHome"></see>
     /// </summary>
-    let NursingHome =
-        Namespaced_IRI.parse _namespace_name "NursingHome" |> NamespacedName
+    let NursingHome = _prefix "NursingHome"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/NursingHome/key/amenity/value/nursing_home"></see>
     /// </summary>
     let ``NursingHome/key/amenity/value/nursing_home`` =
-        Namespaced_IRI.parse _namespace_name "NursingHome/key/amenity/value/nursing_home" |> NamespacedName
+        _prefix "NursingHome/key/amenity/value/nursing_home"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Observatory"></see>
     /// </summary>
-    let Observatory =
-        Namespaced_IRI.parse _namespace_name "Observatory" |> NamespacedName
+    let Observatory = _prefix "Observatory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Observatory/key/amenity/value/observatory"></see>
     /// </summary>
     let ``Observatory/key/amenity/value/observatory`` =
-        Namespaced_IRI.parse _namespace_name "Observatory/key/amenity/value/observatory" |> NamespacedName
+        _prefix "Observatory/key/amenity/value/observatory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Office/key/amenity/value/office"></see>
     /// </summary>
-    let ``Office/key/amenity/value/office`` =
-        Namespaced_IRI.parse _namespace_name "Office/key/amenity/value/office" |> NamespacedName
-
+    let ``Office/key/amenity/value/office`` = _prefix "Office/key/amenity/value/office"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OfficeShop"></see>
     /// </summary>
-    let OfficeShop = Namespaced_IRI.parse _namespace_name "OfficeShop" |> NamespacedName
+    let OfficeShop = _prefix "OfficeShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OfficeShop/key/shop/value/office"></see>
     /// </summary>
     let ``OfficeShop/key/shop/value/office`` =
-        Namespaced_IRI.parse _namespace_name "OfficeShop/key/shop/value/office" |> NamespacedName
+        _prefix "OfficeShop/key/shop/value/office"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OfficeSupplies"></see>
     /// </summary>
-    let OfficeSupplies =
-        Namespaced_IRI.parse _namespace_name "OfficeSupplies" |> NamespacedName
+    let OfficeSupplies = _prefix "OfficeSupplies"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OfficeSupplies/key/shop/value/office_supplies"></see>
     /// </summary>
     let ``OfficeSupplies/key/shop/value/office_supplies`` =
-        Namespaced_IRI.parse _namespace_name "OfficeSupplies/key/shop/value/office_supplies" |> NamespacedName
+        _prefix "OfficeSupplies/key/shop/value/office_supplies"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Offices"></see>
     /// </summary>
-    let Offices = Namespaced_IRI.parse _namespace_name "Offices" |> NamespacedName
+    let Offices = _prefix "Offices"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Offices/key/building/value/offices"></see>
     /// </summary>
     let ``Offices/key/building/value/offices`` =
-        Namespaced_IRI.parse _namespace_name "Offices/key/building/value/offices" |> NamespacedName
+        _prefix "Offices/key/building/value/offices"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OilPlatform"></see>
     /// </summary>
-    let OilPlatform =
-        Namespaced_IRI.parse _namespace_name "OilPlatform" |> NamespacedName
+    let OilPlatform = _prefix "OilPlatform"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OilPlatform/key/man_made/value/oil_platform"></see>
     /// </summary>
     let ``OilPlatform/key/man_made/value/oil_platform`` =
-        Namespaced_IRI.parse _namespace_name "OilPlatform/key/man_made/value/oil_platform" |> NamespacedName
+        _prefix "OilPlatform/key/man_made/value/oil_platform"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OpticianCraft"></see>
     /// </summary>
-    let OpticianCraft =
-        Namespaced_IRI.parse _namespace_name "OpticianCraft" |> NamespacedName
+    let OpticianCraft = _prefix "OpticianCraft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OpticianCraft/key/craft/value/optician"></see>
     /// </summary>
     let ``OpticianCraft/key/craft/value/optician`` =
-        Namespaced_IRI.parse _namespace_name "OpticianCraft/key/craft/value/optician" |> NamespacedName
+        _prefix "OpticianCraft/key/craft/value/optician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OpticianShop"></see>
     /// </summary>
-    let OpticianShop =
-        Namespaced_IRI.parse _namespace_name "OpticianShop" |> NamespacedName
+    let OpticianShop = _prefix "OpticianShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OpticianShop/key/shop/value/optician"></see>
     /// </summary>
     let ``OpticianShop/key/shop/value/optician`` =
-        Namespaced_IRI.parse _namespace_name "OpticianShop/key/shop/value/optician" |> NamespacedName
+        _prefix "OpticianShop/key/shop/value/optician"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Optometrist"></see>
     /// </summary>
-    let Optometrist =
-        Namespaced_IRI.parse _namespace_name "Optometrist" |> NamespacedName
+    let Optometrist = _prefix "Optometrist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Optometrist/key/amenity/value/optometrist"></see>
     /// </summary>
     let ``Optometrist/key/amenity/value/optometrist`` =
-        Namespaced_IRI.parse _namespace_name "Optometrist/key/amenity/value/optometrist" |> NamespacedName
+        _prefix "Optometrist/key/amenity/value/optometrist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Orchard"></see>
     /// </summary>
-    let Orchard = Namespaced_IRI.parse _namespace_name "Orchard" |> NamespacedName
+    let Orchard = _prefix "Orchard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Orchard/key/landuse/value/orchard"></see>
     /// </summary>
     let ``Orchard/key/landuse/value/orchard`` =
-        Namespaced_IRI.parse _namespace_name "Orchard/key/landuse/value/orchard" |> NamespacedName
+        _prefix "Orchard/key/landuse/value/orchard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Organic"></see>
     /// </summary>
-    let Organic = Namespaced_IRI.parse _namespace_name "Organic" |> NamespacedName
-
+    let Organic = _prefix "Organic"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Organic/key/shop/value/organic"></see>
     /// </summary>
-    let ``Organic/key/shop/value/organic`` =
-        Namespaced_IRI.parse _namespace_name "Organic/key/shop/value/organic" |> NamespacedName
-
+    let ``Organic/key/shop/value/organic`` = _prefix "Organic/key/shop/value/organic"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Other"></see>
     /// </summary>
-    let Other = Namespaced_IRI.parse _namespace_name "Other" |> NamespacedName
-
+    let Other = _prefix "Other"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Other/key/amenity/value/other"></see>
     /// </summary>
-    let ``Other/key/amenity/value/other`` =
-        Namespaced_IRI.parse _namespace_name "Other/key/amenity/value/other" |> NamespacedName
-
+    let ``Other/key/amenity/value/other`` = _prefix "Other/key/amenity/value/other"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OtherShop"></see>
     /// </summary>
-    let OtherShop = Namespaced_IRI.parse _namespace_name "OtherShop" |> NamespacedName
-
+    let OtherShop = _prefix "OtherShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/OtherShop/key/shop/value/other"></see>
     /// </summary>
-    let ``OtherShop/key/shop/value/other`` =
-        Namespaced_IRI.parse _namespace_name "OtherShop/key/shop/value/other" |> NamespacedName
-
+    let ``OtherShop/key/shop/value/other`` = _prefix "OtherShop/key/shop/value/other"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Outcrop"></see>
     /// </summary>
-    let Outcrop = Namespaced_IRI.parse _namespace_name "Outcrop" |> NamespacedName
+    let Outcrop = _prefix "Outcrop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Outcrop/key/geological/value/outcrop"></see>
     /// </summary>
     let ``Outcrop/key/geological/value/outcrop`` =
-        Namespaced_IRI.parse _namespace_name "Outcrop/key/geological/value/outcrop" |> NamespacedName
+        _prefix "Outcrop/key/geological/value/outcrop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Outdoor"></see>
     /// </summary>
-    let Outdoor = Namespaced_IRI.parse _namespace_name "Outdoor" |> NamespacedName
-
+    let Outdoor = _prefix "Outdoor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Outdoor/key/shop/value/outdoor"></see>
     /// </summary>
-    let ``Outdoor/key/shop/value/outdoor`` =
-        Namespaced_IRI.parse _namespace_name "Outdoor/key/shop/value/outdoor" |> NamespacedName
-
+    let ``Outdoor/key/shop/value/outdoor`` = _prefix "Outdoor/key/shop/value/outdoor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Outlet"></see>
     /// </summary>
-    let Outlet = Namespaced_IRI.parse _namespace_name "Outlet" |> NamespacedName
-
+    let Outlet = _prefix "Outlet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Outlet/key/shop/value/outlet"></see>
     /// </summary>
-    let ``Outlet/key/shop/value/outlet`` =
-        Namespaced_IRI.parse _namespace_name "Outlet/key/shop/value/outlet" |> NamespacedName
-
+    let ``Outlet/key/shop/value/outlet`` = _prefix "Outlet/key/shop/value/outlet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Oven"></see>
     /// </summary>
-    let Oven = Namespaced_IRI.parse _namespace_name "Oven" |> NamespacedName
-
+    let Oven = _prefix "Oven"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Oven/key/man_made/value/oven"></see>
     /// </summary>
-    let ``Oven/key/man_made/value/oven`` =
-        Namespaced_IRI.parse _namespace_name "Oven/key/man_made/value/oven" |> NamespacedName
-
+    let ``Oven/key/man_made/value/oven`` = _prefix "Oven/key/man_made/value/oven"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Paint"></see>
     /// </summary>
-    let Paint = Namespaced_IRI.parse _namespace_name "Paint" |> NamespacedName
-
+    let Paint = _prefix "Paint"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Paint/key/shop/value/paint"></see>
     /// </summary>
-    let ``Paint/key/shop/value/paint`` =
-        Namespaced_IRI.parse _namespace_name "Paint/key/shop/value/paint" |> NamespacedName
-
+    let ``Paint/key/shop/value/paint`` = _prefix "Paint/key/shop/value/paint"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Painter"></see>
     /// </summary>
-    let Painter = Namespaced_IRI.parse _namespace_name "Painter" |> NamespacedName
-
+    let Painter = _prefix "Painter"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Painter/key/shop/value/painter"></see>
     /// </summary>
-    let ``Painter/key/shop/value/painter`` =
-        Namespaced_IRI.parse _namespace_name "Painter/key/shop/value/painter" |> NamespacedName
-
+    let ``Painter/key/shop/value/painter`` = _prefix "Painter/key/shop/value/painter"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Painter/key/craft/value/painter"></see>
     /// </summary>
-    let ``Painter/key/craft/value/painter`` =
-        Namespaced_IRI.parse _namespace_name "Painter/key/craft/value/painter" |> NamespacedName
-
+    let ``Painter/key/craft/value/painter`` = _prefix "Painter/key/craft/value/painter"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Palace"></see>
     /// </summary>
-    let Palace = Namespaced_IRI.parse _namespace_name "Palace" |> NamespacedName
+    let Palace = _prefix "Palace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Palace/key/historic/value/palace"></see>
     /// </summary>
     let ``Palace/key/historic/value/palace`` =
-        Namespaced_IRI.parse _namespace_name "Palace/key/historic/value/palace" |> NamespacedName
+        _prefix "Palace/key/historic/value/palace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PalaeontologicalSite"></see>
     /// </summary>
-    let PalaeontologicalSite =
-        Namespaced_IRI.parse _namespace_name "PalaeontologicalSite" |> NamespacedName
+    let PalaeontologicalSite = _prefix "PalaeontologicalSite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PalaeontologicalSite/key/geological/value/palaeontological_site"></see>
     /// </summary>
     let ``PalaeontologicalSite/key/geological/value/palaeontological_site`` =
-        Namespaced_IRI.parse _namespace_name "PalaeontologicalSite/key/geological/value/palaeontological_site" |> NamespacedName
+        _prefix "PalaeontologicalSite/key/geological/value/palaeontological_site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParcelBox"></see>
     /// </summary>
-    let ParcelBox = Namespaced_IRI.parse _namespace_name "ParcelBox" |> NamespacedName
+    let ParcelBox = _prefix "ParcelBox"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParcelBox/key/amenity/value/parcel_box"></see>
     /// </summary>
     let ``ParcelBox/key/amenity/value/parcel_box`` =
-        Namespaced_IRI.parse _namespace_name "ParcelBox/key/amenity/value/parcel_box" |> NamespacedName
+        _prefix "ParcelBox/key/amenity/value/parcel_box"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Park"></see>
     /// </summary>
-    let Park = Namespaced_IRI.parse _namespace_name "Park" |> NamespacedName
-
+    let Park = _prefix "Park"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Park/key/amenity/value/park"></see>
     /// </summary>
-    let ``Park/key/amenity/value/park`` =
-        Namespaced_IRI.parse _namespace_name "Park/key/amenity/value/park" |> NamespacedName
-
+    let ``Park/key/amenity/value/park`` = _prefix "Park/key/amenity/value/park"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Park/key/leisure/value/park"></see>
     /// </summary>
-    let ``Park/key/leisure/value/park`` =
-        Namespaced_IRI.parse _namespace_name "Park/key/leisure/value/park" |> NamespacedName
-
+    let ``Park/key/leisure/value/park`` = _prefix "Park/key/leisure/value/park"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkBench"></see>
     /// </summary>
-    let ParkBench = Namespaced_IRI.parse _namespace_name "ParkBench" |> NamespacedName
+    let ParkBench = _prefix "ParkBench"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkBench/key/leisure/value/park_bench"></see>
     /// </summary>
     let ``ParkBench/key/leisure/value/park_bench`` =
-        Namespaced_IRI.parse _namespace_name "ParkBench/key/leisure/value/park_bench" |> NamespacedName
+        _prefix "ParkBench/key/leisure/value/park_bench"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkBench/key/amenity/value/park_bench"></see>
     /// </summary>
     let ``ParkBench/key/amenity/value/park_bench`` =
-        Namespaced_IRI.parse _namespace_name "ParkBench/key/amenity/value/park_bench" |> NamespacedName
+        _prefix "ParkBench/key/amenity/value/park_bench"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Parking"></see>
     /// </summary>
-    let Parking = Namespaced_IRI.parse _namespace_name "Parking" |> NamespacedName
+    let Parking = _prefix "Parking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Parking/key/amenity/value/parking"></see>
     /// </summary>
     let ``Parking/key/amenity/value/parking`` =
-        Namespaced_IRI.parse _namespace_name "Parking/key/amenity/value/parking" |> NamespacedName
+        _prefix "Parking/key/amenity/value/parking"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Parking%3Bfuel"></see>
     /// </summary>
-    let ``Parking%3Bfuel`` =
-        Namespaced_IRI.parse _namespace_name "Parking%3Bfuel" |> NamespacedName
+    let ``Parking%3Bfuel`` = _prefix "Parking%3Bfuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Parking%3Bfuel/key/amenity/value/parking%3Bfuel"></see>
     /// </summary>
     let ``Parking%3Bfuel/key/amenity/value/parking%3Bfuel`` =
-        Namespaced_IRI.parse _namespace_name "Parking%3Bfuel/key/amenity/value/parking%3Bfuel" |> NamespacedName
+        _prefix "Parking%3Bfuel/key/amenity/value/parking%3Bfuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Parking%3Brestaurant%3Bfuel"></see>
     /// </summary>
-    let ``Parking%3Brestaurant%3Bfuel`` =
-        Namespaced_IRI.parse _namespace_name "Parking%3Brestaurant%3Bfuel" |> NamespacedName
+    let ``Parking%3Brestaurant%3Bfuel`` = _prefix "Parking%3Brestaurant%3Bfuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Parking%3Brestaurant%3Bfuel/key/amenity/value/parking%3Brestaurant%3Bfuel"></see>
     /// </summary>
     let ``Parking%3Brestaurant%3Bfuel/key/amenity/value/parking%3Brestaurant%3Bfuel`` =
-        Namespaced_IRI.parse _namespace_name "Parking%3Brestaurant%3Bfuel/key/amenity/value/parking%3Brestaurant%3Bfuel" |> NamespacedName
+        _prefix "Parking%3Brestaurant%3Bfuel/key/amenity/value/parking%3Brestaurant%3Bfuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingAisle"></see>
     /// </summary>
-    let ParkingAisle =
-        Namespaced_IRI.parse _namespace_name "ParkingAisle" |> NamespacedName
+    let ParkingAisle = _prefix "ParkingAisle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingAisle/key/service/value/parking_aisle"></see>
     /// </summary>
     let ``ParkingAisle/key/service/value/parking_aisle`` =
-        Namespaced_IRI.parse _namespace_name "ParkingAisle/key/service/value/parking_aisle" |> NamespacedName
+        _prefix "ParkingAisle/key/service/value/parking_aisle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingEntrance"></see>
     /// </summary>
-    let ParkingEntrance =
-        Namespaced_IRI.parse _namespace_name "ParkingEntrance" |> NamespacedName
+    let ParkingEntrance = _prefix "ParkingEntrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingEntrance/key/amenity/value/parking_entrance"></see>
     /// </summary>
     let ``ParkingEntrance/key/amenity/value/parking_entrance`` =
-        Namespaced_IRI.parse _namespace_name "ParkingEntrance/key/amenity/value/parking_entrance" |> NamespacedName
+        _prefix "ParkingEntrance/key/amenity/value/parking_entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingMeter"></see>
     /// </summary>
-    let ParkingMeter =
-        Namespaced_IRI.parse _namespace_name "ParkingMeter" |> NamespacedName
+    let ParkingMeter = _prefix "ParkingMeter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingMeter/key/amenity/value/parking_meter"></see>
     /// </summary>
     let ``ParkingMeter/key/amenity/value/parking_meter`` =
-        Namespaced_IRI.parse _namespace_name "ParkingMeter/key/amenity/value/parking_meter" |> NamespacedName
+        _prefix "ParkingMeter/key/amenity/value/parking_meter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingPosition"></see>
     /// </summary>
-    let ParkingPosition =
-        Namespaced_IRI.parse _namespace_name "ParkingPosition" |> NamespacedName
+    let ParkingPosition = _prefix "ParkingPosition"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingPosition/key/aeroway/value/parking_position"></see>
     /// </summary>
     let ``ParkingPosition/key/aeroway/value/parking_position`` =
-        Namespaced_IRI.parse _namespace_name "ParkingPosition/key/aeroway/value/parking_position" |> NamespacedName
+        _prefix "ParkingPosition/key/aeroway/value/parking_position"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingSpace"></see>
     /// </summary>
-    let ParkingSpace =
-        Namespaced_IRI.parse _namespace_name "ParkingSpace" |> NamespacedName
+    let ParkingSpace = _prefix "ParkingSpace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParkingSpace/key/amenity/value/parking_space"></see>
     /// </summary>
     let ``ParkingSpace/key/amenity/value/parking_space`` =
-        Namespaced_IRI.parse _namespace_name "ParkingSpace/key/amenity/value/parking_space" |> NamespacedName
+        _prefix "ParkingSpace/key/amenity/value/parking_space"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParquetLayer"></see>
     /// </summary>
-    let ParquetLayer =
-        Namespaced_IRI.parse _namespace_name "ParquetLayer" |> NamespacedName
+    let ParquetLayer = _prefix "ParquetLayer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ParquetLayer/key/craft/value/parquet_layer"></see>
     /// </summary>
     let ``ParquetLayer/key/craft/value/parquet_layer`` =
-        Namespaced_IRI.parse _namespace_name "ParquetLayer/key/craft/value/parquet_layer" |> NamespacedName
+        _prefix "ParquetLayer/key/craft/value/parquet_layer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PassingPlace"></see>
     /// </summary>
-    let PassingPlace =
-        Namespaced_IRI.parse _namespace_name "PassingPlace" |> NamespacedName
+    let PassingPlace = _prefix "PassingPlace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PassingPlace/key/highway/value/passing_place"></see>
     /// </summary>
     let ``PassingPlace/key/highway/value/passing_place`` =
-        Namespaced_IRI.parse _namespace_name "PassingPlace/key/highway/value/passing_place" |> NamespacedName
+        _prefix "PassingPlace/key/highway/value/passing_place"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PassingPlaces"></see>
     /// </summary>
-    let PassingPlaces =
-        Namespaced_IRI.parse _namespace_name "PassingPlaces" |> NamespacedName
+    let PassingPlaces = _prefix "PassingPlaces"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PassingPlaces/key/highway/value/passing_places"></see>
     /// </summary>
     let ``PassingPlaces/key/highway/value/passing_places`` =
-        Namespaced_IRI.parse _namespace_name "PassingPlaces/key/highway/value/passing_places" |> NamespacedName
+        _prefix "PassingPlaces/key/highway/value/passing_places"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pastry"></see>
     /// </summary>
-    let Pastry = Namespaced_IRI.parse _namespace_name "Pastry" |> NamespacedName
-
+    let Pastry = _prefix "Pastry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pastry/key/shop/value/pastry"></see>
     /// </summary>
-    let ``Pastry/key/shop/value/pastry`` =
-        Namespaced_IRI.parse _namespace_name "Pastry/key/shop/value/pastry" |> NamespacedName
-
+    let ``Pastry/key/shop/value/pastry`` = _prefix "Pastry/key/shop/value/pastry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Path"></see>
     /// </summary>
-    let Path = Namespaced_IRI.parse _namespace_name "Path" |> NamespacedName
-
+    let Path = _prefix "Path"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Path/key/highway/value/path"></see>
     /// </summary>
-    let ``Path/key/highway/value/path`` =
-        Namespaced_IRI.parse _namespace_name "Path/key/highway/value/path" |> NamespacedName
-
+    let ``Path/key/highway/value/path`` = _prefix "Path/key/highway/value/path"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Patisserie"></see>
     /// </summary>
-    let Patisserie = Namespaced_IRI.parse _namespace_name "Patisserie" |> NamespacedName
+    let Patisserie = _prefix "Patisserie"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Patisserie/key/shop/value/patisserie"></see>
     /// </summary>
     let ``Patisserie/key/shop/value/patisserie`` =
-        Namespaced_IRI.parse _namespace_name "Patisserie/key/shop/value/patisserie" |> NamespacedName
+        _prefix "Patisserie/key/shop/value/patisserie"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pavilion"></see>
     /// </summary>
-    let Pavilion = Namespaced_IRI.parse _namespace_name "Pavilion" |> NamespacedName
+    let Pavilion = _prefix "Pavilion"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pavilion/key/building/value/pavilion"></see>
     /// </summary>
     let ``Pavilion/key/building/value/pavilion`` =
-        Namespaced_IRI.parse _namespace_name "Pavilion/key/building/value/pavilion" |> NamespacedName
+        _prefix "Pavilion/key/building/value/pavilion"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pawnshop"></see>
     /// </summary>
-    let Pawnshop = Namespaced_IRI.parse _namespace_name "Pawnshop" |> NamespacedName
+    let Pawnshop = _prefix "Pawnshop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pawnshop/key/shop/value/pawnshop"></see>
     /// </summary>
     let ``Pawnshop/key/shop/value/pawnshop`` =
-        Namespaced_IRI.parse _namespace_name "Pawnshop/key/shop/value/pawnshop" |> NamespacedName
+        _prefix "Pawnshop/key/shop/value/pawnshop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PaydayLoans"></see>
     /// </summary>
-    let PaydayLoans =
-        Namespaced_IRI.parse _namespace_name "PaydayLoans" |> NamespacedName
+    let PaydayLoans = _prefix "PaydayLoans"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PaydayLoans/key/shop/value/payday_loans"></see>
     /// </summary>
     let ``PaydayLoans/key/shop/value/payday_loans`` =
-        Namespaced_IRI.parse _namespace_name "PaydayLoans/key/shop/value/payday_loans" |> NamespacedName
+        _prefix "PaydayLoans/key/shop/value/payday_loans"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Peak"></see>
     /// </summary>
-    let Peak = Namespaced_IRI.parse _namespace_name "Peak" |> NamespacedName
-
+    let Peak = _prefix "Peak"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Peak/key/natural/value/peak"></see>
     /// </summary>
-    let ``Peak/key/natural/value/peak`` =
-        Namespaced_IRI.parse _namespace_name "Peak/key/natural/value/peak" |> NamespacedName
-
+    let ``Peak/key/natural/value/peak`` = _prefix "Peak/key/natural/value/peak"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PedestrianUse"></see>
     /// </summary>
-    let PedestrianUse =
-        Namespaced_IRI.parse _namespace_name "PedestrianUse" |> NamespacedName
+    let PedestrianUse = _prefix "PedestrianUse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PedestrianUse/key/highway/value/pedestrian"></see>
     /// </summary>
     let ``PedestrianUse/key/highway/value/pedestrian`` =
-        Namespaced_IRI.parse _namespace_name "PedestrianUse/key/highway/value/pedestrian" |> NamespacedName
+        _prefix "PedestrianUse/key/highway/value/pedestrian"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Peninsula"></see>
     /// </summary>
-    let Peninsula = Namespaced_IRI.parse _namespace_name "Peninsula" |> NamespacedName
+    let Peninsula = _prefix "Peninsula"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Peninsula/key/natural/value/peninsula"></see>
     /// </summary>
     let ``Peninsula/key/natural/value/peninsula`` =
-        Namespaced_IRI.parse _namespace_name "Peninsula/key/natural/value/peninsula" |> NamespacedName
+        _prefix "Peninsula/key/natural/value/peninsula"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Perfume"></see>
     /// </summary>
-    let Perfume = Namespaced_IRI.parse _namespace_name "Perfume" |> NamespacedName
-
+    let Perfume = _prefix "Perfume"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Perfume/key/shop/value/perfume"></see>
     /// </summary>
-    let ``Perfume/key/shop/value/perfume`` =
-        Namespaced_IRI.parse _namespace_name "Perfume/key/shop/value/perfume" |> NamespacedName
-
+    let ``Perfume/key/shop/value/perfume`` = _prefix "Perfume/key/shop/value/perfume"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Perfumery"></see>
     /// </summary>
-    let Perfumery = Namespaced_IRI.parse _namespace_name "Perfumery" |> NamespacedName
+    let Perfumery = _prefix "Perfumery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Perfumery/key/shop/value/perfumery"></see>
     /// </summary>
     let ``Perfumery/key/shop/value/perfumery`` =
-        Namespaced_IRI.parse _namespace_name "Perfumery/key/shop/value/perfumery" |> NamespacedName
+        _prefix "Perfumery/key/shop/value/perfumery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pet"></see>
     /// </summary>
-    let Pet = Namespaced_IRI.parse _namespace_name "Pet" |> NamespacedName
-
+    let Pet = _prefix "Pet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pet/key/shop/value/pet"></see>
     /// </summary>
-    let ``Pet/key/shop/value/pet`` =
-        Namespaced_IRI.parse _namespace_name "Pet/key/shop/value/pet" |> NamespacedName
-
+    let ``Pet/key/shop/value/pet`` = _prefix "Pet/key/shop/value/pet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetFood"></see>
     /// </summary>
-    let PetFood = Namespaced_IRI.parse _namespace_name "PetFood" |> NamespacedName
-
+    let PetFood = _prefix "PetFood"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetFood/key/shop/value/pet_food"></see>
     /// </summary>
-    let ``PetFood/key/shop/value/pet_food`` =
-        Namespaced_IRI.parse _namespace_name "PetFood/key/shop/value/pet_food" |> NamespacedName
-
+    let ``PetFood/key/shop/value/pet_food`` = _prefix "PetFood/key/shop/value/pet_food"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetShop"></see>
     /// </summary>
-    let PetShop = Namespaced_IRI.parse _namespace_name "PetShop" |> NamespacedName
-
+    let PetShop = _prefix "PetShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetShop/key/shop/value/pet_shop"></see>
     /// </summary>
-    let ``PetShop/key/shop/value/pet_shop`` =
-        Namespaced_IRI.parse _namespace_name "PetShop/key/shop/value/pet_shop" |> NamespacedName
-
+    let ``PetShop/key/shop/value/pet_shop`` = _prefix "PetShop/key/shop/value/pet_shop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetSupplies"></see>
     /// </summary>
-    let PetSupplies =
-        Namespaced_IRI.parse _namespace_name "PetSupplies" |> NamespacedName
+    let PetSupplies = _prefix "PetSupplies"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetSupplies/key/shop/value/pet_supplies"></see>
     /// </summary>
     let ``PetSupplies/key/shop/value/pet_supplies`` =
-        Namespaced_IRI.parse _namespace_name "PetSupplies/key/shop/value/pet_supplies" |> NamespacedName
+        _prefix "PetSupplies/key/shop/value/pet_supplies"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetSupply"></see>
     /// </summary>
-    let PetSupply = Namespaced_IRI.parse _namespace_name "PetSupply" |> NamespacedName
+    let PetSupply = _prefix "PetSupply"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetSupply/key/shop/value/pet_supply"></see>
     /// </summary>
     let ``PetSupply/key/shop/value/pet_supply`` =
-        Namespaced_IRI.parse _namespace_name "PetSupply/key/shop/value/pet_supply" |> NamespacedName
+        _prefix "PetSupply/key/shop/value/pet_supply"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetroleumWell"></see>
     /// </summary>
-    let PetroleumWell =
-        Namespaced_IRI.parse _namespace_name "PetroleumWell" |> NamespacedName
+    let PetroleumWell = _prefix "PetroleumWell"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PetroleumWell/key/man_made/value/petroleum_well"></see>
     /// </summary>
     let ``PetroleumWell/key/man_made/value/petroleum_well`` =
-        Namespaced_IRI.parse _namespace_name "PetroleumWell/key/man_made/value/petroleum_well" |> NamespacedName
+        _prefix "PetroleumWell/key/man_made/value/petroleum_well"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pets"></see>
     /// </summary>
-    let Pets = Namespaced_IRI.parse _namespace_name "Pets" |> NamespacedName
-
+    let Pets = _prefix "Pets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pets/key/shop/value/pets"></see>
     /// </summary>
-    let ``Pets/key/shop/value/pets`` =
-        Namespaced_IRI.parse _namespace_name "Pets/key/shop/value/pets" |> NamespacedName
-
+    let ``Pets/key/shop/value/pets`` = _prefix "Pets/key/shop/value/pets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pharmacy"></see>
     /// </summary>
-    let Pharmacy = Namespaced_IRI.parse _namespace_name "Pharmacy" |> NamespacedName
+    let Pharmacy = _prefix "Pharmacy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pharmacy/key/shop/value/pharmacy"></see>
     /// </summary>
     let ``Pharmacy/key/shop/value/pharmacy`` =
-        Namespaced_IRI.parse _namespace_name "Pharmacy/key/shop/value/pharmacy" |> NamespacedName
+        _prefix "Pharmacy/key/shop/value/pharmacy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pharmacy/key/amenity/value/pharmacy"></see>
     /// </summary>
     let ``Pharmacy/key/amenity/value/pharmacy`` =
-        Namespaced_IRI.parse _namespace_name "Pharmacy/key/amenity/value/pharmacy" |> NamespacedName
+        _prefix "Pharmacy/key/amenity/value/pharmacy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Phone"></see>
     /// </summary>
-    let Phone = Namespaced_IRI.parse _namespace_name "Phone" |> NamespacedName
-
+    let Phone = _prefix "Phone"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Phone/key/amenity/value/phone"></see>
     /// </summary>
-    let ``Phone/key/amenity/value/phone`` =
-        Namespaced_IRI.parse _namespace_name "Phone/key/amenity/value/phone" |> NamespacedName
-
+    let ``Phone/key/amenity/value/phone`` = _prefix "Phone/key/amenity/value/phone"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PhoneMast"></see>
     /// </summary>
-    let PhoneMast = Namespaced_IRI.parse _namespace_name "PhoneMast" |> NamespacedName
+    let PhoneMast = _prefix "PhoneMast"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PhoneMast/key/man_made/value/phone_mast"></see>
     /// </summary>
     let ``PhoneMast/key/man_made/value/phone_mast`` =
-        Namespaced_IRI.parse _namespace_name "PhoneMast/key/man_made/value/phone_mast" |> NamespacedName
+        _prefix "PhoneMast/key/man_made/value/phone_mast"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PhoneShop"></see>
     /// </summary>
-    let PhoneShop = Namespaced_IRI.parse _namespace_name "PhoneShop" |> NamespacedName
-
+    let PhoneShop = _prefix "PhoneShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PhoneShop/key/shop/value/phone"></see>
     /// </summary>
-    let ``PhoneShop/key/shop/value/phone`` =
-        Namespaced_IRI.parse _namespace_name "PhoneShop/key/shop/value/phone" |> NamespacedName
-
+    let ``PhoneShop/key/shop/value/phone`` = _prefix "PhoneShop/key/shop/value/phone"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Photo"></see>
     /// </summary>
-    let Photo = Namespaced_IRI.parse _namespace_name "Photo" |> NamespacedName
-
+    let Photo = _prefix "Photo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Photo/key/shop/value/photo"></see>
     /// </summary>
-    let ``Photo/key/shop/value/photo`` =
-        Namespaced_IRI.parse _namespace_name "Photo/key/shop/value/photo" |> NamespacedName
-
+    let ``Photo/key/shop/value/photo`` = _prefix "Photo/key/shop/value/photo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Photocopying"></see>
     /// </summary>
-    let Photocopying =
-        Namespaced_IRI.parse _namespace_name "Photocopying" |> NamespacedName
+    let Photocopying = _prefix "Photocopying"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Photocopying/key/shop/value/photocopying"></see>
     /// </summary>
     let ``Photocopying/key/shop/value/photocopying`` =
-        Namespaced_IRI.parse _namespace_name "Photocopying/key/shop/value/photocopying" |> NamespacedName
+        _prefix "Photocopying/key/shop/value/photocopying"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Photographer"></see>
     /// </summary>
-    let Photographer =
-        Namespaced_IRI.parse _namespace_name "Photographer" |> NamespacedName
+    let Photographer = _prefix "Photographer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Photographer/key/craft/value/photographer"></see>
     /// </summary>
     let ``Photographer/key/craft/value/photographer`` =
-        Namespaced_IRI.parse _namespace_name "Photographer/key/craft/value/photographer" |> NamespacedName
+        _prefix "Photographer/key/craft/value/photographer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PhotographicLaboratory"></see>
     /// </summary>
-    let PhotographicLaboratory =
-        Namespaced_IRI.parse _namespace_name "PhotographicLaboratory" |> NamespacedName
+    let PhotographicLaboratory = _prefix "PhotographicLaboratory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PhotographicLaboratory/key/craft/value/photographic_laboratory"></see>
     /// </summary>
     let ``PhotographicLaboratory/key/craft/value/photographic_laboratory`` =
-        Namespaced_IRI.parse _namespace_name "PhotographicLaboratory/key/craft/value/photographic_laboratory" |> NamespacedName
+        _prefix "PhotographicLaboratory/key/craft/value/photographic_laboratory"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Physiotherapy"></see>
     /// </summary>
-    let Physiotherapy =
-        Namespaced_IRI.parse _namespace_name "Physiotherapy" |> NamespacedName
+    let Physiotherapy = _prefix "Physiotherapy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Physiotherapy/key/amenity/value/physiotherapy"></see>
     /// </summary>
     let ``Physiotherapy/key/amenity/value/physiotherapy`` =
-        Namespaced_IRI.parse _namespace_name "Physiotherapy/key/amenity/value/physiotherapy" |> NamespacedName
+        _prefix "Physiotherapy/key/amenity/value/physiotherapy"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Picknick"></see>
     /// </summary>
-    let Picknick = Namespaced_IRI.parse _namespace_name "Picknick" |> NamespacedName
+    let Picknick = _prefix "Picknick"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Picknick/key/amenity/value/picknick"></see>
     /// </summary>
     let ``Picknick/key/amenity/value/picknick`` =
-        Namespaced_IRI.parse _namespace_name "Picknick/key/amenity/value/picknick" |> NamespacedName
+        _prefix "Picknick/key/amenity/value/picknick"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Picnic+table"></see>
     /// </summary>
-    let ``Picnic+table`` =
-        Namespaced_IRI.parse _namespace_name "Picnic+table" |> NamespacedName
+    let ``Picnic+table`` = _prefix "Picnic+table"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Picnic+table/key/amenity/value/picnic%20table"></see>
     /// </summary>
     let ``Picnic+table/key/amenity/value/picnic%20table`` =
-        Namespaced_IRI.parse _namespace_name "Picnic+table/key/amenity/value/picnic%20table" |> NamespacedName
+        _prefix "Picnic+table/key/amenity/value/picnic%20table"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PicnicSite"></see>
     /// </summary>
-    let PicnicSite = Namespaced_IRI.parse _namespace_name "PicnicSite" |> NamespacedName
+    let PicnicSite = _prefix "PicnicSite"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PicnicSite/key/tourism/value/picnic_site"></see>
     /// </summary>
     let ``PicnicSite/key/tourism/value/picnic_site`` =
-        Namespaced_IRI.parse _namespace_name "PicnicSite/key/tourism/value/picnic_site" |> NamespacedName
+        _prefix "PicnicSite/key/tourism/value/picnic_site"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PicnicTable"></see>
     /// </summary>
-    let PicnicTable =
-        Namespaced_IRI.parse _namespace_name "PicnicTable" |> NamespacedName
+    let PicnicTable = _prefix "PicnicTable"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PicnicTable/key/amenity/value/picnic_table"></see>
     /// </summary>
     let ``PicnicTable/key/amenity/value/picnic_table`` =
-        Namespaced_IRI.parse _namespace_name "PicnicTable/key/amenity/value/picnic_table" |> NamespacedName
+        _prefix "PicnicTable/key/amenity/value/picnic_table"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pier"></see>
     /// </summary>
-    let Pier = Namespaced_IRI.parse _namespace_name "Pier" |> NamespacedName
-
+    let Pier = _prefix "Pier"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pier/key/man_made/value/pier"></see>
     /// </summary>
-    let ``Pier/key/man_made/value/pier`` =
-        Namespaced_IRI.parse _namespace_name "Pier/key/man_made/value/pier" |> NamespacedName
-
+    let ``Pier/key/man_made/value/pier`` = _prefix "Pier/key/man_made/value/pier"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pietra+miliare+FD"></see>
     /// </summary>
-    let ``Pietra+miliare+FD`` =
-        Namespaced_IRI.parse _namespace_name "Pietra+miliare+FD" |> NamespacedName
+    let ``Pietra+miliare+FD`` = _prefix "Pietra+miliare+FD"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pietra+miliare+FD/key/amenity/value/pietra%20miliare%20FD"></see>
     /// </summary>
     let ``Pietra+miliare+FD/key/amenity/value/pietra%20miliare%20FD`` =
-        Namespaced_IRI.parse _namespace_name "Pietra+miliare+FD/key/amenity/value/pietra%20miliare%20FD" |> NamespacedName
+        _prefix "Pietra+miliare+FD/key/amenity/value/pietra%20miliare%20FD"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pipeline"></see>
     /// </summary>
-    let Pipeline = Namespaced_IRI.parse _namespace_name "Pipeline" |> NamespacedName
+    let Pipeline = _prefix "Pipeline"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pipeline/key/man_made/value/pipeline"></see>
     /// </summary>
     let ``Pipeline/key/man_made/value/pipeline`` =
-        Namespaced_IRI.parse _namespace_name "Pipeline/key/man_made/value/pipeline" |> NamespacedName
+        _prefix "Pipeline/key/man_made/value/pipeline"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PipelineMarker"></see>
     /// </summary>
-    let PipelineMarker =
-        Namespaced_IRI.parse _namespace_name "PipelineMarker" |> NamespacedName
+    let PipelineMarker = _prefix "PipelineMarker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PipelineMarker/key/man_made/value/pipeline_marker"></see>
     /// </summary>
     let ``PipelineMarker/key/man_made/value/pipeline_marker`` =
-        Namespaced_IRI.parse _namespace_name "PipelineMarker/key/man_made/value/pipeline_marker" |> NamespacedName
+        _prefix "PipelineMarker/key/man_made/value/pipeline_marker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pipelinemarker"></see>
     /// </summary>
-    let Pipelinemarker =
-        Namespaced_IRI.parse _namespace_name "Pipelinemarker" |> NamespacedName
+    let Pipelinemarker = _prefix "Pipelinemarker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pipelinemarker/key/man_made/value/pipelinemarker"></see>
     /// </summary>
     let ``Pipelinemarker/key/man_made/value/pipelinemarker`` =
-        Namespaced_IRI.parse _namespace_name "Pipelinemarker/key/man_made/value/pipelinemarker" |> NamespacedName
+        _prefix "Pipelinemarker/key/man_made/value/pipelinemarker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PisteRoute"></see>
     /// </summary>
-    let PisteRoute = Namespaced_IRI.parse _namespace_name "PisteRoute" |> NamespacedName
+    let PisteRoute = _prefix "PisteRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PisteRoute/key/route/value/piste"></see>
     /// </summary>
     let ``PisteRoute/key/route/value/piste`` =
-        Namespaced_IRI.parse _namespace_name "PisteRoute/key/route/value/piste" |> NamespacedName
+        _prefix "PisteRoute/key/route/value/piste"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pitch"></see>
     /// </summary>
-    let Pitch = Namespaced_IRI.parse _namespace_name "Pitch" |> NamespacedName
-
+    let Pitch = _prefix "Pitch"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pitch/key/leisure/value/pitch"></see>
     /// </summary>
-    let ``Pitch/key/leisure/value/pitch`` =
-        Namespaced_IRI.parse _namespace_name "Pitch/key/leisure/value/pitch" |> NamespacedName
-
+    let ``Pitch/key/leisure/value/pitch`` = _prefix "Pitch/key/leisure/value/pitch"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PlaceOfWorship"></see>
     /// </summary>
-    let PlaceOfWorship =
-        Namespaced_IRI.parse _namespace_name "PlaceOfWorship" |> NamespacedName
+    let PlaceOfWorship = _prefix "PlaceOfWorship"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PlaceOfWorship/key/amenity/value/place_of_worship"></see>
     /// </summary>
     let ``PlaceOfWorship/key/amenity/value/place_of_worship`` =
-        Namespaced_IRI.parse _namespace_name "PlaceOfWorship/key/amenity/value/place_of_worship" |> NamespacedName
+        _prefix "PlaceOfWorship/key/amenity/value/place_of_worship"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plain"></see>
     /// </summary>
-    let Plain = Namespaced_IRI.parse _namespace_name "Plain" |> NamespacedName
-
+    let Plain = _prefix "Plain"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plain/key/natural/value/plain"></see>
     /// </summary>
-    let ``Plain/key/natural/value/plain`` =
-        Namespaced_IRI.parse _namespace_name "Plain/key/natural/value/plain" |> NamespacedName
-
+    let ``Plain/key/natural/value/plain`` = _prefix "Plain/key/natural/value/plain"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PlantNursery"></see>
     /// </summary>
-    let PlantNursery =
-        Namespaced_IRI.parse _namespace_name "PlantNursery" |> NamespacedName
+    let PlantNursery = _prefix "PlantNursery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PlantNursery/key/landuse/value/plant_nursery"></see>
     /// </summary>
     let ``PlantNursery/key/landuse/value/plant_nursery`` =
-        Namespaced_IRI.parse _namespace_name "PlantNursery/key/landuse/value/plant_nursery" |> NamespacedName
+        _prefix "PlantNursery/key/landuse/value/plant_nursery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plasterer"></see>
     /// </summary>
-    let Plasterer = Namespaced_IRI.parse _namespace_name "Plasterer" |> NamespacedName
+    let Plasterer = _prefix "Plasterer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plasterer/key/craft/value/plasterer"></see>
     /// </summary>
     let ``Plasterer/key/craft/value/plasterer`` =
-        Namespaced_IRI.parse _namespace_name "Plasterer/key/craft/value/plasterer" |> NamespacedName
+        _prefix "Plasterer/key/craft/value/plasterer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plateau"></see>
     /// </summary>
-    let Plateau = Namespaced_IRI.parse _namespace_name "Plateau" |> NamespacedName
+    let Plateau = _prefix "Plateau"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plateau/key/natural/value/plateau"></see>
     /// </summary>
     let ``Plateau/key/natural/value/plateau`` =
-        Namespaced_IRI.parse _namespace_name "Plateau/key/natural/value/plateau" |> NamespacedName
+        _prefix "Plateau/key/natural/value/plateau"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Platform"></see>
     /// </summary>
-    let Platform = Namespaced_IRI.parse _namespace_name "Platform" |> NamespacedName
+    let Platform = _prefix "Platform"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Platform/key/public_transport/value/platform"></see>
     /// </summary>
     let ``Platform/key/public_transport/value/platform`` =
-        Namespaced_IRI.parse _namespace_name "Platform/key/public_transport/value/platform" |> NamespacedName
+        _prefix "Platform/key/public_transport/value/platform"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PublicTransportThing"></see>
     /// </summary>
-    let PublicTransportThing =
-        Namespaced_IRI.parse _namespace_name "PublicTransportThing" |> NamespacedName
-
+    let PublicTransportThing = _prefix "PublicTransportThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Playground"></see>
     /// </summary>
-    let Playground = Namespaced_IRI.parse _namespace_name "Playground" |> NamespacedName
+    let Playground = _prefix "Playground"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Playground/key/amenity/value/playground"></see>
     /// </summary>
     let ``Playground/key/amenity/value/playground`` =
-        Namespaced_IRI.parse _namespace_name "Playground/key/amenity/value/playground" |> NamespacedName
+        _prefix "Playground/key/amenity/value/playground"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Playground/key/leisure/value/playground"></see>
     /// </summary>
     let ``Playground/key/leisure/value/playground`` =
-        Namespaced_IRI.parse _namespace_name "Playground/key/leisure/value/playground" |> NamespacedName
+        _prefix "Playground/key/leisure/value/playground"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plumber"></see>
     /// </summary>
-    let Plumber = Namespaced_IRI.parse _namespace_name "Plumber" |> NamespacedName
+    let Plumber = _prefix "Plumber"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plumber/key/amenity/value/plumber"></see>
     /// </summary>
     let ``Plumber/key/amenity/value/plumber`` =
-        Namespaced_IRI.parse _namespace_name "Plumber/key/amenity/value/plumber" |> NamespacedName
+        _prefix "Plumber/key/amenity/value/plumber"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plumber/key/shop/value/plumber"></see>
     /// </summary>
-    let ``Plumber/key/shop/value/plumber`` =
-        Namespaced_IRI.parse _namespace_name "Plumber/key/shop/value/plumber" |> NamespacedName
-
+    let ``Plumber/key/shop/value/plumber`` = _prefix "Plumber/key/shop/value/plumber"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Plumber/key/craft/value/plumber"></see>
     /// </summary>
-    let ``Plumber/key/craft/value/plumber`` =
-        Namespaced_IRI.parse _namespace_name "Plumber/key/craft/value/plumber" |> NamespacedName
-
+    let ``Plumber/key/craft/value/plumber`` = _prefix "Plumber/key/craft/value/plumber"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Point"></see>
     /// </summary>
-    let Point = Namespaced_IRI.parse _namespace_name "Point" |> NamespacedName
-
+    let Point = _prefix "Point"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Point/key/natural/value/point"></see>
     /// </summary>
-    let ``Point/key/natural/value/point`` =
-        Namespaced_IRI.parse _namespace_name "Point/key/natural/value/point" |> NamespacedName
-
+    let ``Point/key/natural/value/point`` = _prefix "Point/key/natural/value/point"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PointOfInterest"></see>
     /// </summary>
-    let PointOfInterest =
-        Namespaced_IRI.parse _namespace_name "PointOfInterest" |> NamespacedName
+    let PointOfInterest = _prefix "PointOfInterest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PointOfInterest/key/leisure/value/point_of_interest"></see>
     /// </summary>
     let ``PointOfInterest/key/leisure/value/point_of_interest`` =
-        Namespaced_IRI.parse _namespace_name "PointOfInterest/key/leisure/value/point_of_interest" |> NamespacedName
+        _prefix "PointOfInterest/key/leisure/value/point_of_interest"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PointOfInterest/key/tourism/value/yes"></see>
     /// </summary>
     let ``PointOfInterest/key/tourism/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "PointOfInterest/key/tourism/value/yes" |> NamespacedName
+        _prefix "PointOfInterest/key/tourism/value/yes"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Police"></see>
     /// </summary>
-    let Police = Namespaced_IRI.parse _namespace_name "Police" |> NamespacedName
-
+    let Police = _prefix "Police"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Police/key/amenity/value/police"></see>
     /// </summary>
-    let ``Police/key/amenity/value/police`` =
-        Namespaced_IRI.parse _namespace_name "Police/key/amenity/value/police" |> NamespacedName
-
+    let ``Police/key/amenity/value/police`` = _prefix "Police/key/amenity/value/police"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PoliticalBoundary"></see>
     /// </summary>
-    let PoliticalBoundary =
-        Namespaced_IRI.parse _namespace_name "PoliticalBoundary" |> NamespacedName
+    let PoliticalBoundary = _prefix "PoliticalBoundary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PoliticalBoundary/key/boundary/value/political"></see>
     /// </summary>
     let ``PoliticalBoundary/key/boundary/value/political`` =
-        Namespaced_IRI.parse _namespace_name "PoliticalBoundary/key/boundary/value/political" |> NamespacedName
+        _prefix "PoliticalBoundary/key/boundary/value/political"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PostBox"></see>
     /// </summary>
-    let PostBox = Namespaced_IRI.parse _namespace_name "PostBox" |> NamespacedName
+    let PostBox = _prefix "PostBox"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PostBox/key/amenity/value/post_box"></see>
     /// </summary>
     let ``PostBox/key/amenity/value/post_box`` =
-        Namespaced_IRI.parse _namespace_name "PostBox/key/amenity/value/post_box" |> NamespacedName
+        _prefix "PostBox/key/amenity/value/post_box"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PostOffice"></see>
     /// </summary>
-    let PostOffice = Namespaced_IRI.parse _namespace_name "PostOffice" |> NamespacedName
+    let PostOffice = _prefix "PostOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PostOffice/key/amenity/value/post_office"></see>
     /// </summary>
     let ``PostOffice/key/amenity/value/post_office`` =
-        Namespaced_IRI.parse _namespace_name "PostOffice/key/amenity/value/post_office" |> NamespacedName
+        _prefix "PostOffice/key/amenity/value/post_office"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pottery"></see>
     /// </summary>
-    let Pottery = Namespaced_IRI.parse _namespace_name "Pottery" |> NamespacedName
-
+    let Pottery = _prefix "Pottery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pottery/key/shop/value/pottery"></see>
     /// </summary>
-    let ``Pottery/key/shop/value/pottery`` =
-        Namespaced_IRI.parse _namespace_name "Pottery/key/shop/value/pottery" |> NamespacedName
-
+    let ``Pottery/key/shop/value/pottery`` = _prefix "Pottery/key/shop/value/pottery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pottery/key/craft/value/pottery"></see>
     /// </summary>
-    let ``Pottery/key/craft/value/pottery`` =
-        Namespaced_IRI.parse _namespace_name "Pottery/key/craft/value/pottery" |> NamespacedName
-
+    let ``Pottery/key/craft/value/pottery`` = _prefix "Pottery/key/craft/value/pottery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerBox"></see>
     /// </summary>
-    let PowerBox = Namespaced_IRI.parse _namespace_name "PowerBox" |> NamespacedName
-
+    let PowerBox = _prefix "PowerBox"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerBox/key/power/value/box"></see>
     /// </summary>
-    let ``PowerBox/key/power/value/box`` =
-        Namespaced_IRI.parse _namespace_name "PowerBox/key/power/value/box" |> NamespacedName
-
+    let ``PowerBox/key/power/value/box`` = _prefix "PowerBox/key/power/value/box"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerConstruction"></see>
     /// </summary>
-    let PowerConstruction =
-        Namespaced_IRI.parse _namespace_name "PowerConstruction" |> NamespacedName
+    let PowerConstruction = _prefix "PowerConstruction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerConstruction/key/power/value/construction"></see>
     /// </summary>
     let ``PowerConstruction/key/power/value/construction`` =
-        Namespaced_IRI.parse _namespace_name "PowerConstruction/key/power/value/construction" |> NamespacedName
+        _prefix "PowerConstruction/key/power/value/construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerDismantled"></see>
     /// </summary>
-    let PowerDismantled =
-        Namespaced_IRI.parse _namespace_name "PowerDismantled" |> NamespacedName
+    let PowerDismantled = _prefix "PowerDismantled"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerDismantled/key/power/value/dismantled"></see>
     /// </summary>
     let ``PowerDismantled/key/power/value/dismantled`` =
-        Namespaced_IRI.parse _namespace_name "PowerDismantled/key/power/value/dismantled" |> NamespacedName
+        _prefix "PowerDismantled/key/power/value/dismantled"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerGenerator"></see>
     /// </summary>
-    let PowerGenerator =
-        Namespaced_IRI.parse _namespace_name "PowerGenerator" |> NamespacedName
+    let PowerGenerator = _prefix "PowerGenerator"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerGenerator/key/power/value/generator"></see>
     /// </summary>
     let ``PowerGenerator/key/power/value/generator`` =
-        Namespaced_IRI.parse _namespace_name "PowerGenerator/key/power/value/generator" |> NamespacedName
+        _prefix "PowerGenerator/key/power/value/generator"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerLine"></see>
     /// </summary>
-    let PowerLine = Namespaced_IRI.parse _namespace_name "PowerLine" |> NamespacedName
-
+    let PowerLine = _prefix "PowerLine"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerLine/key/power/value/line"></see>
     /// </summary>
-    let ``PowerLine/key/power/value/line`` =
-        Namespaced_IRI.parse _namespace_name "PowerLine/key/power/value/line" |> NamespacedName
-
+    let ``PowerLine/key/power/value/line`` = _prefix "PowerLine/key/power/value/line"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerMinorLine"></see>
     /// </summary>
-    let PowerMinorLine =
-        Namespaced_IRI.parse _namespace_name "PowerMinorLine" |> NamespacedName
+    let PowerMinorLine = _prefix "PowerMinorLine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerMinorLine/key/power/value/minor_line"></see>
     /// </summary>
     let ``PowerMinorLine/key/power/value/minor_line`` =
-        Namespaced_IRI.parse _namespace_name "PowerMinorLine/key/power/value/minor_line" |> NamespacedName
+        _prefix "PowerMinorLine/key/power/value/minor_line"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerPole"></see>
     /// </summary>
-    let PowerPole = Namespaced_IRI.parse _namespace_name "PowerPole" |> NamespacedName
-
+    let PowerPole = _prefix "PowerPole"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerPole/key/power/value/pole"></see>
     /// </summary>
-    let ``PowerPole/key/power/value/pole`` =
-        Namespaced_IRI.parse _namespace_name "PowerPole/key/power/value/pole" |> NamespacedName
-
+    let ``PowerPole/key/power/value/pole`` = _prefix "PowerPole/key/power/value/pole"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerPylon"></see>
     /// </summary>
-    let PowerPylon = Namespaced_IRI.parse _namespace_name "PowerPylon" |> NamespacedName
+    let PowerPylon = _prefix "PowerPylon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerPylon/key/power/value/pylon"></see>
     /// </summary>
     let ``PowerPylon/key/power/value/pylon`` =
-        Namespaced_IRI.parse _namespace_name "PowerPylon/key/power/value/pylon" |> NamespacedName
+        _prefix "PowerPylon/key/power/value/pylon"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerStation"></see>
     /// </summary>
-    let PowerStation =
-        Namespaced_IRI.parse _namespace_name "PowerStation" |> NamespacedName
+    let PowerStation = _prefix "PowerStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerStation/key/power/value/station"></see>
     /// </summary>
     let ``PowerStation/key/power/value/station`` =
-        Namespaced_IRI.parse _namespace_name "PowerStation/key/power/value/station" |> NamespacedName
+        _prefix "PowerStation/key/power/value/station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerSubStation"></see>
     /// </summary>
-    let PowerSubStation =
-        Namespaced_IRI.parse _namespace_name "PowerSubStation" |> NamespacedName
+    let PowerSubStation = _prefix "PowerSubStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerSubStation/key/power/value/sub_station"></see>
     /// </summary>
     let ``PowerSubStation/key/power/value/sub_station`` =
-        Namespaced_IRI.parse _namespace_name "PowerSubStation/key/power/value/sub_station" |> NamespacedName
+        _prefix "PowerSubStation/key/power/value/sub_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerSwitch"></see>
     /// </summary>
-    let PowerSwitch =
-        Namespaced_IRI.parse _namespace_name "PowerSwitch" |> NamespacedName
+    let PowerSwitch = _prefix "PowerSwitch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerSwitch/key/power/value/switch"></see>
     /// </summary>
     let ``PowerSwitch/key/power/value/switch`` =
-        Namespaced_IRI.parse _namespace_name "PowerSwitch/key/power/value/switch" |> NamespacedName
+        _prefix "PowerSwitch/key/power/value/switch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerTower"></see>
     /// </summary>
-    let PowerTower = Namespaced_IRI.parse _namespace_name "PowerTower" |> NamespacedName
+    let PowerTower = _prefix "PowerTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PowerTower/key/power/value/tower"></see>
     /// </summary>
     let ``PowerTower/key/power/value/tower`` =
-        Namespaced_IRI.parse _namespace_name "PowerTower/key/power/value/tower" |> NamespacedName
+        _prefix "PowerTower/key/power/value/tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Preschool"></see>
     /// </summary>
-    let Preschool = Namespaced_IRI.parse _namespace_name "Preschool" |> NamespacedName
+    let Preschool = _prefix "Preschool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Preschool/key/amenity/value/preschool"></see>
     /// </summary>
     let ``Preschool/key/amenity/value/preschool`` =
-        Namespaced_IRI.parse _namespace_name "Preschool/key/amenity/value/preschool" |> NamespacedName
+        _prefix "Preschool/key/amenity/value/preschool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PreservedRailway"></see>
     /// </summary>
-    let PreservedRailway =
-        Namespaced_IRI.parse _namespace_name "PreservedRailway" |> NamespacedName
+    let PreservedRailway = _prefix "PreservedRailway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PreservedRailway/key/railway/value/preserved"></see>
     /// </summary>
     let ``PreservedRailway/key/railway/value/preserved`` =
-        Namespaced_IRI.parse _namespace_name "PreservedRailway/key/railway/value/preserved" |> NamespacedName
+        _prefix "PreservedRailway/key/railway/value/preserved"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PrimaryHighway"></see>
     /// </summary>
-    let PrimaryHighway =
-        Namespaced_IRI.parse _namespace_name "PrimaryHighway" |> NamespacedName
+    let PrimaryHighway = _prefix "PrimaryHighway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PrimaryHighway/key/highway/value/primary"></see>
     /// </summary>
     let ``PrimaryHighway/key/highway/value/primary`` =
-        Namespaced_IRI.parse _namespace_name "PrimaryHighway/key/highway/value/primary" |> NamespacedName
+        _prefix "PrimaryHighway/key/highway/value/primary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Printer"></see>
     /// </summary>
-    let Printer = Namespaced_IRI.parse _namespace_name "Printer" |> NamespacedName
-
+    let Printer = _prefix "Printer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Printer/key/shop/value/printer"></see>
     /// </summary>
-    let ``Printer/key/shop/value/printer`` =
-        Namespaced_IRI.parse _namespace_name "Printer/key/shop/value/printer" |> NamespacedName
-
+    let ``Printer/key/shop/value/printer`` = _prefix "Printer/key/shop/value/printer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Printing"></see>
     /// </summary>
-    let Printing = Namespaced_IRI.parse _namespace_name "Printing" |> NamespacedName
+    let Printing = _prefix "Printing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Printing/key/shop/value/printing"></see>
     /// </summary>
     let ``Printing/key/shop/value/printing`` =
-        Namespaced_IRI.parse _namespace_name "Printing/key/shop/value/printing" |> NamespacedName
+        _prefix "Printing/key/shop/value/printing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Prison"></see>
     /// </summary>
-    let Prison = Namespaced_IRI.parse _namespace_name "Prison" |> NamespacedName
-
+    let Prison = _prefix "Prison"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Prison/key/amenity/value/prison"></see>
     /// </summary>
-    let ``Prison/key/amenity/value/prison`` =
-        Namespaced_IRI.parse _namespace_name "Prison/key/amenity/value/prison" |> NamespacedName
-
+    let ``Prison/key/amenity/value/prison`` = _prefix "Prison/key/amenity/value/prison"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ProposedHighway"></see>
     /// </summary>
-    let ProposedHighway =
-        Namespaced_IRI.parse _namespace_name "ProposedHighway" |> NamespacedName
+    let ProposedHighway = _prefix "ProposedHighway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ProposedHighway/key/highway/value/proposed"></see>
     /// </summary>
     let ``ProposedHighway/key/highway/value/proposed`` =
-        Namespaced_IRI.parse _namespace_name "ProposedHighway/key/highway/value/proposed" |> NamespacedName
+        _prefix "ProposedHighway/key/highway/value/proposed"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ProtectedArea"></see>
     /// </summary>
-    let ProtectedArea =
-        Namespaced_IRI.parse _namespace_name "ProtectedArea" |> NamespacedName
+    let ProtectedArea = _prefix "ProtectedArea"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ProtectedArea/key/boundary/value/protected_area"></see>
     /// </summary>
     let ``ProtectedArea/key/boundary/value/protected_area`` =
-        Namespaced_IRI.parse _namespace_name "ProtectedArea/key/boundary/value/protected_area" |> NamespacedName
+        _prefix "ProtectedArea/key/boundary/value/protected_area"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ProtectedBuilding"></see>
     /// </summary>
-    let ProtectedBuilding =
-        Namespaced_IRI.parse _namespace_name "ProtectedBuilding" |> NamespacedName
+    let ProtectedBuilding = _prefix "ProtectedBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ProtectedBuilding/key/historic/value/protected_building"></see>
     /// </summary>
     let ``ProtectedBuilding/key/historic/value/protected_building`` =
-        Namespaced_IRI.parse _namespace_name "ProtectedBuilding/key/historic/value/protected_building" |> NamespacedName
+        _prefix "ProtectedBuilding/key/historic/value/protected_building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pub"></see>
     /// </summary>
-    let Pub = Namespaced_IRI.parse _namespace_name "Pub" |> NamespacedName
-
+    let Pub = _prefix "Pub"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pub/key/amenity/value/pub"></see>
     /// </summary>
-    let ``Pub/key/amenity/value/pub`` =
-        Namespaced_IRI.parse _namespace_name "Pub/key/amenity/value/pub" |> NamespacedName
-
+    let ``Pub/key/amenity/value/pub`` = _prefix "Pub/key/amenity/value/pub"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PublicBuilding"></see>
     /// </summary>
-    let PublicBuilding =
-        Namespaced_IRI.parse _namespace_name "PublicBuilding" |> NamespacedName
+    let PublicBuilding = _prefix "PublicBuilding"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PublicBuilding/key/amenity/value/public_building"></see>
     /// </summary>
     let ``PublicBuilding/key/amenity/value/public_building`` =
-        Namespaced_IRI.parse _namespace_name "PublicBuilding/key/amenity/value/public_building" |> NamespacedName
+        _prefix "PublicBuilding/key/amenity/value/public_building"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PublicMarket"></see>
     /// </summary>
-    let PublicMarket =
-        Namespaced_IRI.parse _namespace_name "PublicMarket" |> NamespacedName
+    let PublicMarket = _prefix "PublicMarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PublicMarket/key/amenity/value/public_market"></see>
     /// </summary>
     let ``PublicMarket/key/amenity/value/public_market`` =
-        Namespaced_IRI.parse _namespace_name "PublicMarket/key/amenity/value/public_market" |> NamespacedName
+        _prefix "PublicMarket/key/amenity/value/public_market"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pump"></see>
     /// </summary>
-    let Pump = Namespaced_IRI.parse _namespace_name "Pump" |> NamespacedName
-
+    let Pump = _prefix "Pump"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pump/key/man_made/value/pump"></see>
     /// </summary>
-    let ``Pump/key/man_made/value/pump`` =
-        Namespaced_IRI.parse _namespace_name "Pump/key/man_made/value/pump" |> NamespacedName
-
+    let ``Pump/key/man_made/value/pump`` = _prefix "Pump/key/man_made/value/pump"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PumpingRig"></see>
     /// </summary>
-    let PumpingRig = Namespaced_IRI.parse _namespace_name "PumpingRig" |> NamespacedName
+    let PumpingRig = _prefix "PumpingRig"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/PumpingRig/key/man_made/value/pumping_rig"></see>
     /// </summary>
     let ``PumpingRig/key/man_made/value/pumping_rig`` =
-        Namespaced_IRI.parse _namespace_name "PumpingRig/key/man_made/value/pumping_rig" |> NamespacedName
+        _prefix "PumpingRig/key/man_made/value/pumping_rig"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pumpjack"></see>
     /// </summary>
-    let Pumpjack = Namespaced_IRI.parse _namespace_name "Pumpjack" |> NamespacedName
+    let Pumpjack = _prefix "Pumpjack"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pumpjack/key/man_made/value/pumpjack"></see>
     /// </summary>
     let ``Pumpjack/key/man_made/value/pumpjack`` =
-        Namespaced_IRI.parse _namespace_name "Pumpjack/key/man_made/value/pumpjack" |> NamespacedName
+        _prefix "Pumpjack/key/man_made/value/pumpjack"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pylon"></see>
     /// </summary>
-    let Pylon = Namespaced_IRI.parse _namespace_name "Pylon" |> NamespacedName
-
+    let Pylon = _prefix "Pylon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Pylon/key/aerialway/value/pylon"></see>
     /// </summary>
-    let ``Pylon/key/aerialway/value/pylon`` =
-        Namespaced_IRI.parse _namespace_name "Pylon/key/aerialway/value/pylon" |> NamespacedName
-
+    let ``Pylon/key/aerialway/value/pylon`` = _prefix "Pylon/key/aerialway/value/pylon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/QuangoOffice"></see>
     /// </summary>
-    let QuangoOffice =
-        Namespaced_IRI.parse _namespace_name "QuangoOffice" |> NamespacedName
+    let QuangoOffice = _prefix "QuangoOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/QuangoOffice/key/office/value/quango"></see>
     /// </summary>
     let ``QuangoOffice/key/office/value/quango`` =
-        Namespaced_IRI.parse _namespace_name "QuangoOffice/key/office/value/quango" |> NamespacedName
+        _prefix "QuangoOffice/key/office/value/quango"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Quarry"></see>
     /// </summary>
-    let Quarry = Namespaced_IRI.parse _namespace_name "Quarry" |> NamespacedName
-
+    let Quarry = _prefix "Quarry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Quarry/key/landuse/value/quarry"></see>
     /// </summary>
-    let ``Quarry/key/landuse/value/quarry`` =
-        Namespaced_IRI.parse _namespace_name "Quarry/key/landuse/value/quarry" |> NamespacedName
-
+    let ``Quarry/key/landuse/value/quarry`` = _prefix "Quarry/key/landuse/value/quarry"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Raceway"></see>
     /// </summary>
-    let Raceway = Namespaced_IRI.parse _namespace_name "Raceway" |> NamespacedName
+    let Raceway = _prefix "Raceway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Raceway/key/highway/value/raceway"></see>
     /// </summary>
     let ``Raceway/key/highway/value/raceway`` =
-        Namespaced_IRI.parse _namespace_name "Raceway/key/highway/value/raceway" |> NamespacedName
+        _prefix "Raceway/key/highway/value/raceway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rail"></see>
     /// </summary>
-    let Rail = Namespaced_IRI.parse _namespace_name "Rail" |> NamespacedName
-
+    let Rail = _prefix "Rail"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rail/key/railway/value/rail"></see>
     /// </summary>
-    let ``Rail/key/railway/value/rail`` =
-        Namespaced_IRI.parse _namespace_name "Rail/key/railway/value/rail" |> NamespacedName
-
+    let ``Rail/key/railway/value/rail`` = _prefix "Rail/key/railway/value/rail"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayConstruction"></see>
     /// </summary>
-    let RailwayConstruction =
-        Namespaced_IRI.parse _namespace_name "RailwayConstruction" |> NamespacedName
+    let RailwayConstruction = _prefix "RailwayConstruction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayConstruction/key/railway/value/construction"></see>
     /// </summary>
     let ``RailwayConstruction/key/railway/value/construction`` =
-        Namespaced_IRI.parse _namespace_name "RailwayConstruction/key/railway/value/construction" |> NamespacedName
+        _prefix "RailwayConstruction/key/railway/value/construction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayCrossing"></see>
     /// </summary>
-    let RailwayCrossing =
-        Namespaced_IRI.parse _namespace_name "RailwayCrossing" |> NamespacedName
+    let RailwayCrossing = _prefix "RailwayCrossing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayCrossing/key/railway/value/crossing"></see>
     /// </summary>
     let ``RailwayCrossing/key/railway/value/crossing`` =
-        Namespaced_IRI.parse _namespace_name "RailwayCrossing/key/railway/value/crossing" |> NamespacedName
+        _prefix "RailwayCrossing/key/railway/value/crossing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayHalt"></see>
     /// </summary>
-    let RailwayHalt =
-        Namespaced_IRI.parse _namespace_name "RailwayHalt" |> NamespacedName
+    let RailwayHalt = _prefix "RailwayHalt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayHalt/key/railway/value/halt"></see>
     /// </summary>
     let ``RailwayHalt/key/railway/value/halt`` =
-        Namespaced_IRI.parse _namespace_name "RailwayHalt/key/railway/value/halt" |> NamespacedName
+        _prefix "RailwayHalt/key/railway/value/halt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayJunction"></see>
     /// </summary>
-    let RailwayJunction =
-        Namespaced_IRI.parse _namespace_name "RailwayJunction" |> NamespacedName
+    let RailwayJunction = _prefix "RailwayJunction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayJunction/key/railway/value/junction"></see>
     /// </summary>
     let ``RailwayJunction/key/railway/value/junction`` =
-        Namespaced_IRI.parse _namespace_name "RailwayJunction/key/railway/value/junction" |> NamespacedName
+        _prefix "RailwayJunction/key/railway/value/junction"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayLanduse"></see>
     /// </summary>
-    let RailwayLanduse =
-        Namespaced_IRI.parse _namespace_name "RailwayLanduse" |> NamespacedName
+    let RailwayLanduse = _prefix "RailwayLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayLanduse/key/landuse/value/railway"></see>
     /// </summary>
     let ``RailwayLanduse/key/landuse/value/railway`` =
-        Namespaced_IRI.parse _namespace_name "RailwayLanduse/key/landuse/value/railway" |> NamespacedName
+        _prefix "RailwayLanduse/key/landuse/value/railway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayMilestone"></see>
     /// </summary>
-    let RailwayMilestone =
-        Namespaced_IRI.parse _namespace_name "RailwayMilestone" |> NamespacedName
+    let RailwayMilestone = _prefix "RailwayMilestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayMilestone/key/railway/value/milestone"></see>
     /// </summary>
     let ``RailwayMilestone/key/railway/value/milestone`` =
-        Namespaced_IRI.parse _namespace_name "RailwayMilestone/key/railway/value/milestone" |> NamespacedName
+        _prefix "RailwayMilestone/key/railway/value/milestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayPhone"></see>
     /// </summary>
-    let RailwayPhone =
-        Namespaced_IRI.parse _namespace_name "RailwayPhone" |> NamespacedName
+    let RailwayPhone = _prefix "RailwayPhone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayPhone/key/railway/value/phone"></see>
     /// </summary>
     let ``RailwayPhone/key/railway/value/phone`` =
-        Namespaced_IRI.parse _namespace_name "RailwayPhone/key/railway/value/phone" |> NamespacedName
+        _prefix "RailwayPhone/key/railway/value/phone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayPlatform"></see>
     /// </summary>
-    let RailwayPlatform =
-        Namespaced_IRI.parse _namespace_name "RailwayPlatform" |> NamespacedName
+    let RailwayPlatform = _prefix "RailwayPlatform"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayPlatform/key/railway/value/platform"></see>
     /// </summary>
     let ``RailwayPlatform/key/railway/value/platform`` =
-        Namespaced_IRI.parse _namespace_name "RailwayPlatform/key/railway/value/platform" |> NamespacedName
+        _prefix "RailwayPlatform/key/railway/value/platform"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayRoute"></see>
     /// </summary>
-    let RailwayRoute =
-        Namespaced_IRI.parse _namespace_name "RailwayRoute" |> NamespacedName
+    let RailwayRoute = _prefix "RailwayRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayRoute/key/route/value/railway"></see>
     /// </summary>
     let ``RailwayRoute/key/route/value/railway`` =
-        Namespaced_IRI.parse _namespace_name "RailwayRoute/key/route/value/railway" |> NamespacedName
+        _prefix "RailwayRoute/key/route/value/railway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayStation"></see>
     /// </summary>
-    let RailwayStation =
-        Namespaced_IRI.parse _namespace_name "RailwayStation" |> NamespacedName
+    let RailwayStation = _prefix "RailwayStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayStation/key/railway/value/station"></see>
     /// </summary>
     let ``RailwayStation/key/railway/value/station`` =
-        Namespaced_IRI.parse _namespace_name "RailwayStation/key/railway/value/station" |> NamespacedName
+        _prefix "RailwayStation/key/railway/value/station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayStop"></see>
     /// </summary>
-    let RailwayStop =
-        Namespaced_IRI.parse _namespace_name "RailwayStop" |> NamespacedName
+    let RailwayStop = _prefix "RailwayStop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwayStop/key/railway/value/stop"></see>
     /// </summary>
     let ``RailwayStop/key/railway/value/stop`` =
-        Namespaced_IRI.parse _namespace_name "RailwayStop/key/railway/value/stop" |> NamespacedName
+        _prefix "RailwayStop/key/railway/value/stop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwaySwitch"></see>
     /// </summary>
-    let RailwaySwitch =
-        Namespaced_IRI.parse _namespace_name "RailwaySwitch" |> NamespacedName
+    let RailwaySwitch = _prefix "RailwaySwitch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RailwaySwitch/key/railway/value/switch"></see>
     /// </summary>
     let ``RailwaySwitch/key/railway/value/switch`` =
-        Namespaced_IRI.parse _namespace_name "RailwaySwitch/key/railway/value/switch" |> NamespacedName
+        _prefix "RailwaySwitch/key/railway/value/switch"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rapids"></see>
     /// </summary>
-    let Rapids = Namespaced_IRI.parse _namespace_name "Rapids" |> NamespacedName
+    let Rapids = _prefix "Rapids"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rapids/key/waterway/value/rapids"></see>
     /// </summary>
     let ``Rapids/key/waterway/value/rapids`` =
-        Namespaced_IRI.parse _namespace_name "Rapids/key/waterway/value/rapids" |> NamespacedName
+        _prefix "Rapids/key/waterway/value/rapids"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RealEstate"></see>
     /// </summary>
-    let RealEstate = Namespaced_IRI.parse _namespace_name "RealEstate" |> NamespacedName
+    let RealEstate = _prefix "RealEstate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RealEstate/key/shop/value/real_estate"></see>
     /// </summary>
     let ``RealEstate/key/shop/value/real_estate`` =
-        Namespaced_IRI.parse _namespace_name "RealEstate/key/shop/value/real_estate" |> NamespacedName
+        _prefix "RealEstate/key/shop/value/real_estate"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ReceptionArea"></see>
     /// </summary>
-    let ReceptionArea =
-        Namespaced_IRI.parse _namespace_name "ReceptionArea" |> NamespacedName
+    let ReceptionArea = _prefix "ReceptionArea"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ReceptionArea/key/amenity/value/reception_area"></see>
     /// </summary>
     let ``ReceptionArea/key/amenity/value/reception_area`` =
-        Namespaced_IRI.parse _namespace_name "ReceptionArea/key/amenity/value/reception_area" |> NamespacedName
+        _prefix "ReceptionArea/key/amenity/value/reception_area"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Records"></see>
     /// </summary>
-    let Records = Namespaced_IRI.parse _namespace_name "Records" |> NamespacedName
-
+    let Records = _prefix "Records"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Records/key/shop/value/records"></see>
     /// </summary>
-    let ``Records/key/shop/value/records`` =
-        Namespaced_IRI.parse _namespace_name "Records/key/shop/value/records" |> NamespacedName
-
+    let ``Records/key/shop/value/records`` = _prefix "Records/key/shop/value/records"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RecreationGround"></see>
     /// </summary>
-    let RecreationGround =
-        Namespaced_IRI.parse _namespace_name "RecreationGround" |> NamespacedName
+    let RecreationGround = _prefix "RecreationGround"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RecreationGround/key/landuse/value/recreation_ground"></see>
     /// </summary>
     let ``RecreationGround/key/landuse/value/recreation_ground`` =
-        Namespaced_IRI.parse _namespace_name "RecreationGround/key/landuse/value/recreation_ground" |> NamespacedName
+        _prefix "RecreationGround/key/landuse/value/recreation_ground"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RecyclingFacility"></see>
     /// </summary>
-    let RecyclingFacility =
-        Namespaced_IRI.parse _namespace_name "RecyclingFacility" |> NamespacedName
+    let RecyclingFacility = _prefix "RecyclingFacility"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RecyclingFacility/key/amenity/value/recycling"></see>
     /// </summary>
     let ``RecyclingFacility/key/amenity/value/recycling`` =
-        Namespaced_IRI.parse _namespace_name "RecyclingFacility/key/amenity/value/recycling" |> NamespacedName
+        _prefix "RecyclingFacility/key/amenity/value/recycling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RedCross"></see>
     /// </summary>
-    let RedCross = Namespaced_IRI.parse _namespace_name "RedCross" |> NamespacedName
+    let RedCross = _prefix "RedCross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RedCross/key/amenity/value/red_cross"></see>
     /// </summary>
     let ``RedCross/key/amenity/value/red_cross`` =
-        Namespaced_IRI.parse _namespace_name "RedCross/key/amenity/value/red_cross" |> NamespacedName
+        _prefix "RedCross/key/amenity/value/red_cross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reef"></see>
     /// </summary>
-    let Reef = Namespaced_IRI.parse _namespace_name "Reef" |> NamespacedName
-
+    let Reef = _prefix "Reef"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reef/key/natural/value/reef"></see>
     /// </summary>
-    let ``Reef/key/natural/value/reef`` =
-        Namespaced_IRI.parse _namespace_name "Reef/key/natural/value/reef" |> NamespacedName
-
+    let ``Reef/key/natural/value/reef`` = _prefix "Reef/key/natural/value/reef"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Region"></see>
     /// </summary>
-    let Region = Namespaced_IRI.parse _namespace_name "Region" |> NamespacedName
-
+    let Region = _prefix "Region"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Region/key/place/value/region"></see>
     /// </summary>
-    let ``Region/key/place/value/region`` =
-        Namespaced_IRI.parse _namespace_name "Region/key/place/value/region" |> NamespacedName
-
+    let ``Region/key/place/value/region`` = _prefix "Region/key/place/value/region"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RegisterOffice"></see>
     /// </summary>
-    let RegisterOffice =
-        Namespaced_IRI.parse _namespace_name "RegisterOffice" |> NamespacedName
+    let RegisterOffice = _prefix "RegisterOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RegisterOffice/key/amenity/value/register_office"></see>
     /// </summary>
     let ``RegisterOffice/key/amenity/value/register_office`` =
-        Namespaced_IRI.parse _namespace_name "RegisterOffice/key/amenity/value/register_office" |> NamespacedName
+        _prefix "RegisterOffice/key/amenity/value/register_office"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RelayBox"></see>
     /// </summary>
-    let RelayBox = Namespaced_IRI.parse _namespace_name "RelayBox" |> NamespacedName
+    let RelayBox = _prefix "RelayBox"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RelayBox/key/amenity/value/relay_box"></see>
     /// </summary>
     let ``RelayBox/key/amenity/value/relay_box`` =
-        Namespaced_IRI.parse _namespace_name "RelayBox/key/amenity/value/relay_box" |> NamespacedName
+        _prefix "RelayBox/key/amenity/value/relay_box"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reportingpoint"></see>
     /// </summary>
-    let Reportingpoint =
-        Namespaced_IRI.parse _namespace_name "Reportingpoint" |> NamespacedName
+    let Reportingpoint = _prefix "Reportingpoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reportingpoint/key/aeroway/value/reportingpoint"></see>
     /// </summary>
     let ``Reportingpoint/key/aeroway/value/reportingpoint`` =
-        Namespaced_IRI.parse _namespace_name "Reportingpoint/key/aeroway/value/reportingpoint" |> NamespacedName
+        _prefix "Reportingpoint/key/aeroway/value/reportingpoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rescue"></see>
     /// </summary>
-    let Rescue = Namespaced_IRI.parse _namespace_name "Rescue" |> NamespacedName
-
+    let Rescue = _prefix "Rescue"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rescue/key/amenity/value/rescue"></see>
     /// </summary>
-    let ``Rescue/key/amenity/value/rescue`` =
-        Namespaced_IRI.parse _namespace_name "Rescue/key/amenity/value/rescue" |> NamespacedName
-
+    let ``Rescue/key/amenity/value/rescue`` = _prefix "Rescue/key/amenity/value/rescue"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RescueBox"></see>
     /// </summary>
-    let RescueBox = Namespaced_IRI.parse _namespace_name "RescueBox" |> NamespacedName
+    let RescueBox = _prefix "RescueBox"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RescueBox/key/amenity/value/rescue_box"></see>
     /// </summary>
     let ``RescueBox/key/amenity/value/rescue_box`` =
-        Namespaced_IRI.parse _namespace_name "RescueBox/key/amenity/value/rescue_box" |> NamespacedName
+        _prefix "RescueBox/key/amenity/value/rescue_box"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RescueService"></see>
     /// </summary>
-    let RescueService =
-        Namespaced_IRI.parse _namespace_name "RescueService" |> NamespacedName
+    let RescueService = _prefix "RescueService"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RescueService/key/amenity/value/rescue_service"></see>
     /// </summary>
     let ``RescueService/key/amenity/value/rescue_service`` =
-        Namespaced_IRI.parse _namespace_name "RescueService/key/amenity/value/rescue_service" |> NamespacedName
+        _prefix "RescueService/key/amenity/value/rescue_service"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResearchOffice"></see>
     /// </summary>
-    let ResearchOffice =
-        Namespaced_IRI.parse _namespace_name "ResearchOffice" |> NamespacedName
+    let ResearchOffice = _prefix "ResearchOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResearchOffice/key/office/value/research"></see>
     /// </summary>
     let ``ResearchOffice/key/office/value/research`` =
-        Namespaced_IRI.parse _namespace_name "ResearchOffice/key/office/value/research" |> NamespacedName
+        _prefix "ResearchOffice/key/office/value/research"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reservoir"></see>
     /// </summary>
-    let Reservoir = Namespaced_IRI.parse _namespace_name "Reservoir" |> NamespacedName
+    let Reservoir = _prefix "Reservoir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reservoir/key/man_made/value/reservoir"></see>
     /// </summary>
     let ``Reservoir/key/man_made/value/reservoir`` =
-        Namespaced_IRI.parse _namespace_name "Reservoir/key/man_made/value/reservoir" |> NamespacedName
+        _prefix "Reservoir/key/man_made/value/reservoir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Reservoir/key/landuse/value/reservoir"></see>
     /// </summary>
     let ``Reservoir/key/landuse/value/reservoir`` =
-        Namespaced_IRI.parse _namespace_name "Reservoir/key/landuse/value/reservoir" |> NamespacedName
+        _prefix "Reservoir/key/landuse/value/reservoir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Residential"></see>
     /// </summary>
-    let Residential =
-        Namespaced_IRI.parse _namespace_name "Residential" |> NamespacedName
+    let Residential = _prefix "Residential"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Residential/key/amenity/value/residential"></see>
     /// </summary>
     let ``Residential/key/amenity/value/residential`` =
-        Namespaced_IRI.parse _namespace_name "Residential/key/amenity/value/residential" |> NamespacedName
+        _prefix "Residential/key/amenity/value/residential"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResidentialHighway"></see>
     /// </summary>
-    let ResidentialHighway =
-        Namespaced_IRI.parse _namespace_name "ResidentialHighway" |> NamespacedName
+    let ResidentialHighway = _prefix "ResidentialHighway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResidentialHighway/key/highway/value/residential"></see>
     /// </summary>
     let ``ResidentialHighway/key/highway/value/residential`` =
-        Namespaced_IRI.parse _namespace_name "ResidentialHighway/key/highway/value/residential" |> NamespacedName
+        _prefix "ResidentialHighway/key/highway/value/residential"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResidentialHome"></see>
     /// </summary>
-    let ResidentialHome =
-        Namespaced_IRI.parse _namespace_name "ResidentialHome" |> NamespacedName
+    let ResidentialHome = _prefix "ResidentialHome"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResidentialHome/key/amenity/value/residential_home"></see>
     /// </summary>
     let ``ResidentialHome/key/amenity/value/residential_home`` =
-        Namespaced_IRI.parse _namespace_name "ResidentialHome/key/amenity/value/residential_home" |> NamespacedName
+        _prefix "ResidentialHome/key/amenity/value/residential_home"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResidentialLanduse"></see>
     /// </summary>
-    let ResidentialLanduse =
-        Namespaced_IRI.parse _namespace_name "ResidentialLanduse" |> NamespacedName
+    let ResidentialLanduse = _prefix "ResidentialLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ResidentialLanduse/key/landuse/value/residential"></see>
     /// </summary>
     let ``ResidentialLanduse/key/landuse/value/residential`` =
-        Namespaced_IRI.parse _namespace_name "ResidentialLanduse/key/landuse/value/residential" |> NamespacedName
+        _prefix "ResidentialLanduse/key/landuse/value/residential"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Resis"></see>
     /// </summary>
-    let Resis = Namespaced_IRI.parse _namespace_name "Resis" |> NamespacedName
-
+    let Resis = _prefix "Resis"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Resis/key/landuse/value/resis"></see>
     /// </summary>
-    let ``Resis/key/landuse/value/resis`` =
-        Namespaced_IRI.parse _namespace_name "Resis/key/landuse/value/resis" |> NamespacedName
-
+    let ``Resis/key/landuse/value/resis`` = _prefix "Resis/key/landuse/value/resis"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RestArea"></see>
     /// </summary>
-    let RestArea = Namespaced_IRI.parse _namespace_name "RestArea" |> NamespacedName
+    let RestArea = _prefix "RestArea"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RestArea/key/highway/value/rest_area"></see>
     /// </summary>
     let ``RestArea/key/highway/value/rest_area`` =
-        Namespaced_IRI.parse _namespace_name "RestArea/key/highway/value/rest_area" |> NamespacedName
+        _prefix "RestArea/key/highway/value/rest_area"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Restaurant"></see>
     /// </summary>
-    let Restaurant = Namespaced_IRI.parse _namespace_name "Restaurant" |> NamespacedName
+    let Restaurant = _prefix "Restaurant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Restaurant/key/amenity/value/restaurant"></see>
     /// </summary>
     let ``Restaurant/key/amenity/value/restaurant`` =
-        Namespaced_IRI.parse _namespace_name "Restaurant/key/amenity/value/restaurant" |> NamespacedName
+        _prefix "Restaurant/key/amenity/value/restaurant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Restaurant%3Bpub"></see>
     /// </summary>
-    let ``Restaurant%3Bpub`` =
-        Namespaced_IRI.parse _namespace_name "Restaurant%3Bpub" |> NamespacedName
+    let ``Restaurant%3Bpub`` = _prefix "Restaurant%3Bpub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Restaurant%3Bpub/key/amenity/value/restaurant%3Bpub"></see>
     /// </summary>
     let ``Restaurant%3Bpub/key/amenity/value/restaurant%3Bpub`` =
-        Namespaced_IRI.parse _namespace_name "Restaurant%3Bpub/key/amenity/value/restaurant%3Bpub" |> NamespacedName
+        _prefix "Restaurant%3Bpub/key/amenity/value/restaurant%3Bpub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Retail"></see>
     /// </summary>
-    let Retail = Namespaced_IRI.parse _namespace_name "Retail" |> NamespacedName
-
+    let Retail = _prefix "Retail"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Retail/key/amenity/value/retail"></see>
     /// </summary>
-    let ``Retail/key/amenity/value/retail`` =
-        Namespaced_IRI.parse _namespace_name "Retail/key/amenity/value/retail" |> NamespacedName
-
+    let ``Retail/key/amenity/value/retail`` = _prefix "Retail/key/amenity/value/retail"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RetailLanduse"></see>
     /// </summary>
-    let RetailLanduse =
-        Namespaced_IRI.parse _namespace_name "RetailLanduse" |> NamespacedName
+    let RetailLanduse = _prefix "RetailLanduse"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RetailLanduse/key/landuse/value/retail"></see>
     /// </summary>
     let ``RetailLanduse/key/landuse/value/retail`` =
-        Namespaced_IRI.parse _namespace_name "RetailLanduse/key/landuse/value/retail" |> NamespacedName
+        _prefix "RetailLanduse/key/landuse/value/retail"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RetainingWall"></see>
     /// </summary>
-    let RetainingWall =
-        Namespaced_IRI.parse _namespace_name "RetainingWall" |> NamespacedName
+    let RetainingWall = _prefix "RetainingWall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RetainingWall/key/barrier/value/retaining_wall"></see>
     /// </summary>
     let ``RetainingWall/key/barrier/value/retaining_wall`` =
-        Namespaced_IRI.parse _namespace_name "RetainingWall/key/barrier/value/retaining_wall" |> NamespacedName
+        _prefix "RetainingWall/key/barrier/value/retaining_wall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RetirementHome"></see>
     /// </summary>
-    let RetirementHome =
-        Namespaced_IRI.parse _namespace_name "RetirementHome" |> NamespacedName
+    let RetirementHome = _prefix "RetirementHome"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RetirementHome/key/amenity/value/retirement_home"></see>
     /// </summary>
     let ``RetirementHome/key/amenity/value/retirement_home`` =
-        Namespaced_IRI.parse _namespace_name "RetirementHome/key/amenity/value/retirement_home" |> NamespacedName
+        _prefix "RetirementHome/key/amenity/value/retirement_home"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ridge"></see>
     /// </summary>
-    let Ridge = Namespaced_IRI.parse _namespace_name "Ridge" |> NamespacedName
-
+    let Ridge = _prefix "Ridge"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ridge/key/natural/value/ridge"></see>
     /// </summary>
-    let ``Ridge/key/natural/value/ridge`` =
-        Namespaced_IRI.parse _namespace_name "Ridge/key/natural/value/ridge" |> NamespacedName
-
+    let ``Ridge/key/natural/value/ridge`` = _prefix "Ridge/key/natural/value/ridge"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rig"></see>
     /// </summary>
-    let Rig = Namespaced_IRI.parse _namespace_name "Rig" |> NamespacedName
-
+    let Rig = _prefix "Rig"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rig/key/man_made/value/rig"></see>
     /// </summary>
-    let ``Rig/key/man_made/value/rig`` =
-        Namespaced_IRI.parse _namespace_name "Rig/key/man_made/value/rig" |> NamespacedName
-
+    let ``Rig/key/man_made/value/rig`` = _prefix "Rig/key/man_made/value/rig"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rigger"></see>
     /// </summary>
-    let Rigger = Namespaced_IRI.parse _namespace_name "Rigger" |> NamespacedName
-
+    let Rigger = _prefix "Rigger"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rigger/key/craft/value/rigger"></see>
     /// </summary>
-    let ``Rigger/key/craft/value/rigger`` =
-        Namespaced_IRI.parse _namespace_name "Rigger/key/craft/value/rigger" |> NamespacedName
-
+    let ``Rigger/key/craft/value/rigger`` = _prefix "Rigger/key/craft/value/rigger"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/River"></see>
     /// </summary>
-    let River = Namespaced_IRI.parse _namespace_name "River" |> NamespacedName
-
+    let River = _prefix "River"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/River/key/waterway/value/river"></see>
     /// </summary>
-    let ``River/key/waterway/value/river`` =
-        Namespaced_IRI.parse _namespace_name "River/key/waterway/value/river" |> NamespacedName
-
+    let ``River/key/waterway/value/river`` = _prefix "River/key/waterway/value/river"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Riverbank"></see>
     /// </summary>
-    let Riverbank = Namespaced_IRI.parse _namespace_name "Riverbank" |> NamespacedName
+    let Riverbank = _prefix "Riverbank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Riverbank/key/waterway/value/riverbank"></see>
     /// </summary>
     let ``Riverbank/key/waterway/value/riverbank`` =
-        Namespaced_IRI.parse _namespace_name "Riverbank/key/waterway/value/riverbank" |> NamespacedName
+        _prefix "Riverbank/key/waterway/value/riverbank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Road"></see>
     /// </summary>
-    let Road = Namespaced_IRI.parse _namespace_name "Road" |> NamespacedName
-
+    let Road = _prefix "Road"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Road/key/highway/value/road"></see>
     /// </summary>
-    let ``Road/key/highway/value/road`` =
-        Namespaced_IRI.parse _namespace_name "Road/key/highway/value/road" |> NamespacedName
-
+    let ``Road/key/highway/value/road`` = _prefix "Road/key/highway/value/road"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RoadRoute"></see>
     /// </summary>
-    let RoadRoute = Namespaced_IRI.parse _namespace_name "RoadRoute" |> NamespacedName
-
+    let RoadRoute = _prefix "RoadRoute"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RoadRoute/key/route/value/road"></see>
     /// </summary>
-    let ``RoadRoute/key/route/value/road`` =
-        Namespaced_IRI.parse _namespace_name "RoadRoute/key/route/value/road" |> NamespacedName
-
+    let ``RoadRoute/key/route/value/road`` = _prefix "RoadRoute/key/route/value/road"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rocks"></see>
     /// </summary>
-    let Rocks = Namespaced_IRI.parse _namespace_name "Rocks" |> NamespacedName
-
+    let Rocks = _prefix "Rocks"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Rocks/key/natural/value/rocks"></see>
     /// </summary>
-    let ``Rocks/key/natural/value/rocks`` =
-        Namespaced_IRI.parse _namespace_name "Rocks/key/natural/value/rocks" |> NamespacedName
-
+    let ``Rocks/key/natural/value/rocks`` = _prefix "Rocks/key/natural/value/rocks"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Roofer"></see>
     /// </summary>
-    let Roofer = Namespaced_IRI.parse _namespace_name "Roofer" |> NamespacedName
-
+    let Roofer = _prefix "Roofer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Roofer/key/craft/value/roofer"></see>
     /// </summary>
-    let ``Roofer/key/craft/value/roofer`` =
-        Namespaced_IRI.parse _namespace_name "Roofer/key/craft/value/roofer" |> NamespacedName
-
+    let ``Roofer/key/craft/value/roofer`` = _prefix "Roofer/key/craft/value/roofer"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Roundabout"></see>
     /// </summary>
-    let Roundabout = Namespaced_IRI.parse _namespace_name "Roundabout" |> NamespacedName
+    let Roundabout = _prefix "Roundabout"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Roundabout/key/junction/value/roundabout"></see>
     /// </summary>
     let ``Roundabout/key/junction/value/roundabout`` =
-        Namespaced_IRI.parse _namespace_name "Roundabout/key/junction/value/roundabout" |> NamespacedName
+        _prefix "Roundabout/key/junction/value/roundabout"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Route"></see>
     /// </summary>
-    let Route = Namespaced_IRI.parse _namespace_name "Route" |> NamespacedName
-
+    let Route = _prefix "Route"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Route/key/type/value/route"></see>
     /// </summary>
-    let ``Route/key/type/value/route`` =
-        Namespaced_IRI.parse _namespace_name "Route/key/type/value/route" |> NamespacedName
-
+    let ``Route/key/type/value/route`` = _prefix "Route/key/type/value/route"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ruins"></see>
     /// </summary>
-    let Ruins = Namespaced_IRI.parse _namespace_name "Ruins" |> NamespacedName
-
+    let Ruins = _prefix "Ruins"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ruins/key/historic/value/ruins"></see>
     /// </summary>
-    let ``Ruins/key/historic/value/ruins`` =
-        Namespaced_IRI.parse _namespace_name "Ruins/key/historic/value/ruins" |> NamespacedName
-
+    let ``Ruins/key/historic/value/ruins`` = _prefix "Ruins/key/historic/value/ruins"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RumbleStrip"></see>
     /// </summary>
-    let RumbleStrip =
-        Namespaced_IRI.parse _namespace_name "RumbleStrip" |> NamespacedName
+    let RumbleStrip = _prefix "RumbleStrip"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RumbleStrip/key/traffic_calming/value/rumble_strip"></see>
     /// </summary>
     let ``RumbleStrip/key/traffic_calming/value/rumble_strip`` =
-        Namespaced_IRI.parse _namespace_name "RumbleStrip/key/traffic_calming/value/rumble_strip" |> NamespacedName
+        _prefix "RumbleStrip/key/traffic_calming/value/rumble_strip"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RuneStone"></see>
     /// </summary>
-    let RuneStone = Namespaced_IRI.parse _namespace_name "RuneStone" |> NamespacedName
+    let RuneStone = _prefix "RuneStone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/RuneStone/key/historic/value/rune_stone%20"></see>
     /// </summary>
     let ``RuneStone/key/historic/value/rune_stone%20`` =
-        Namespaced_IRI.parse _namespace_name "RuneStone/key/historic/value/rune_stone%20" |> NamespacedName
+        _prefix "RuneStone/key/historic/value/rune_stone%20"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Runway"></see>
     /// </summary>
-    let Runway = Namespaced_IRI.parse _namespace_name "Runway" |> NamespacedName
-
+    let Runway = _prefix "Runway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Runway/key/aeroway/value/runway"></see>
     /// </summary>
-    let ``Runway/key/aeroway/value/runway`` =
-        Namespaced_IRI.parse _namespace_name "Runway/key/aeroway/value/runway" |> NamespacedName
-
+    let ``Runway/key/aeroway/value/runway`` = _prefix "Runway/key/aeroway/value/runway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sa"></see>
     /// </summary>
-    let Sa = Namespaced_IRI.parse _namespace_name "Sa" |> NamespacedName
-
+    let Sa = _prefix "Sa"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sa/key/natural/value/sa"></see>
     /// </summary>
-    let ``Sa/key/natural/value/sa`` =
-        Namespaced_IRI.parse _namespace_name "Sa/key/natural/value/sa" |> NamespacedName
-
+    let ``Sa/key/natural/value/sa`` = _prefix "Sa/key/natural/value/sa"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Saddler"></see>
     /// </summary>
-    let Saddler = Namespaced_IRI.parse _namespace_name "Saddler" |> NamespacedName
-
+    let Saddler = _prefix "Saddler"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Saddler/key/craft/value/saddler"></see>
     /// </summary>
-    let ``Saddler/key/craft/value/saddler`` =
-        Namespaced_IRI.parse _namespace_name "Saddler/key/craft/value/saddler" |> NamespacedName
-
+    let ``Saddler/key/craft/value/saddler`` = _prefix "Saddler/key/craft/value/saddler"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SailingClub"></see>
     /// </summary>
-    let SailingClub =
-        Namespaced_IRI.parse _namespace_name "SailingClub" |> NamespacedName
+    let SailingClub = _prefix "SailingClub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SailingClub/key/leisure/value/sailing_club"></see>
     /// </summary>
     let ``SailingClub/key/leisure/value/sailing_club`` =
-        Namespaced_IRI.parse _namespace_name "SailingClub/key/leisure/value/sailing_club" |> NamespacedName
+        _prefix "SailingClub/key/leisure/value/sailing_club"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sailmaker"></see>
     /// </summary>
-    let Sailmaker = Namespaced_IRI.parse _namespace_name "Sailmaker" |> NamespacedName
+    let Sailmaker = _prefix "Sailmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sailmaker/key/craft/value/sailmaker"></see>
     /// </summary>
     let ``Sailmaker/key/craft/value/sailmaker`` =
-        Namespaced_IRI.parse _namespace_name "Sailmaker/key/craft/value/sailmaker" |> NamespacedName
+        _prefix "Sailmaker/key/craft/value/sailmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SaintsCross"></see>
     /// </summary>
-    let SaintsCross =
-        Namespaced_IRI.parse _namespace_name "SaintsCross" |> NamespacedName
+    let SaintsCross = _prefix "SaintsCross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SaintsCross/key/historic/value/saints_cross"></see>
     /// </summary>
     let ``SaintsCross/key/historic/value/saints_cross`` =
-        Namespaced_IRI.parse _namespace_name "SaintsCross/key/historic/value/saints_cross" |> NamespacedName
+        _prefix "SaintsCross/key/historic/value/saints_cross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SallyPort"></see>
     /// </summary>
-    let SallyPort = Namespaced_IRI.parse _namespace_name "SallyPort" |> NamespacedName
+    let SallyPort = _prefix "SallyPort"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SallyPort/key/barrier/value/sally_port"></see>
     /// </summary>
     let ``SallyPort/key/barrier/value/sally_port`` =
-        Namespaced_IRI.parse _namespace_name "SallyPort/key/barrier/value/sally_port" |> NamespacedName
+        _prefix "SallyPort/key/barrier/value/sally_port"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Salon"></see>
     /// </summary>
-    let Salon = Namespaced_IRI.parse _namespace_name "Salon" |> NamespacedName
-
+    let Salon = _prefix "Salon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Salon/key/shop/value/salon"></see>
     /// </summary>
-    let ``Salon/key/shop/value/salon`` =
-        Namespaced_IRI.parse _namespace_name "Salon/key/shop/value/salon" |> NamespacedName
-
+    let ``Salon/key/shop/value/salon`` = _prefix "Salon/key/shop/value/salon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Salon/key/amenity/value/salon"></see>
     /// </summary>
-    let ``Salon/key/amenity/value/salon`` =
-        Namespaced_IRI.parse _namespace_name "Salon/key/amenity/value/salon" |> NamespacedName
-
+    let ``Salon/key/amenity/value/salon`` = _prefix "Salon/key/amenity/value/salon"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SaltPond"></see>
     /// </summary>
-    let SaltPond = Namespaced_IRI.parse _namespace_name "SaltPond" |> NamespacedName
+    let SaltPond = _prefix "SaltPond"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SaltPond/key/landuse/value/salt_pond"></see>
     /// </summary>
     let ``SaltPond/key/landuse/value/salt_pond`` =
-        Namespaced_IRI.parse _namespace_name "SaltPond/key/landuse/value/salt_pond" |> NamespacedName
+        _prefix "SaltPond/key/landuse/value/salt_pond"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sand"></see>
     /// </summary>
-    let Sand = Namespaced_IRI.parse _namespace_name "Sand" |> NamespacedName
-
+    let Sand = _prefix "Sand"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sand/key/natural/value/sand"></see>
     /// </summary>
-    let ``Sand/key/natural/value/sand`` =
-        Namespaced_IRI.parse _namespace_name "Sand/key/natural/value/sand" |> NamespacedName
-
+    let ``Sand/key/natural/value/sand`` = _prefix "Sand/key/natural/value/sand"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sauna"></see>
     /// </summary>
-    let Sauna = Namespaced_IRI.parse _namespace_name "Sauna" |> NamespacedName
-
+    let Sauna = _prefix "Sauna"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sauna/key/leisure/value/sauna"></see>
     /// </summary>
-    let ``Sauna/key/leisure/value/sauna`` =
-        Namespaced_IRI.parse _namespace_name "Sauna/key/leisure/value/sauna" |> NamespacedName
-
+    let ``Sauna/key/leisure/value/sauna`` = _prefix "Sauna/key/leisure/value/sauna"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sauna/key/amenity/value/sauna"></see>
     /// </summary>
-    let ``Sauna/key/amenity/value/sauna`` =
-        Namespaced_IRI.parse _namespace_name "Sauna/key/amenity/value/sauna" |> NamespacedName
-
+    let ``Sauna/key/amenity/value/sauna`` = _prefix "Sauna/key/amenity/value/sauna"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sawmill"></see>
     /// </summary>
-    let Sawmill = Namespaced_IRI.parse _namespace_name "Sawmill" |> NamespacedName
-
+    let Sawmill = _prefix "Sawmill"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sawmill/key/craft/value/sawmill"></see>
     /// </summary>
-    let ``Sawmill/key/craft/value/sawmill`` =
-        Namespaced_IRI.parse _namespace_name "Sawmill/key/craft/value/sawmill" |> NamespacedName
-
+    let ``Sawmill/key/craft/value/sawmill`` = _prefix "Sawmill/key/craft/value/sawmill"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Scaffolder"></see>
     /// </summary>
-    let Scaffolder = Namespaced_IRI.parse _namespace_name "Scaffolder" |> NamespacedName
+    let Scaffolder = _prefix "Scaffolder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Scaffolder/key/craft/value/scaffolder"></see>
     /// </summary>
     let ``Scaffolder/key/craft/value/scaffolder`` =
-        Namespaced_IRI.parse _namespace_name "Scaffolder/key/craft/value/scaffolder" |> NamespacedName
+        _prefix "Scaffolder/key/craft/value/scaffolder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/School"></see>
     /// </summary>
-    let School = Namespaced_IRI.parse _namespace_name "School" |> NamespacedName
-
+    let School = _prefix "School"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/School/key/amenity/value/school"></see>
     /// </summary>
-    let ``School/key/amenity/value/school`` =
-        Namespaced_IRI.parse _namespace_name "School/key/amenity/value/school" |> NamespacedName
-
+    let ``School/key/amenity/value/school`` = _prefix "School/key/amenity/value/school"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ScoutHall"></see>
     /// </summary>
-    let ScoutHall = Namespaced_IRI.parse _namespace_name "ScoutHall" |> NamespacedName
+    let ScoutHall = _prefix "ScoutHall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ScoutHall/key/amenity/value/scout_hall"></see>
     /// </summary>
     let ``ScoutHall/key/amenity/value/scout_hall`` =
-        Namespaced_IRI.parse _namespace_name "ScoutHall/key/amenity/value/scout_hall" |> NamespacedName
+        _prefix "ScoutHall/key/amenity/value/scout_hall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ScoutHut"></see>
     /// </summary>
-    let ScoutHut = Namespaced_IRI.parse _namespace_name "ScoutHut" |> NamespacedName
+    let ScoutHut = _prefix "ScoutHut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ScoutHut/key/amenity/value/scout_hut"></see>
     /// </summary>
     let ``ScoutHut/key/amenity/value/scout_hut`` =
-        Namespaced_IRI.parse _namespace_name "ScoutHut/key/amenity/value/scout_hut" |> NamespacedName
+        _prefix "ScoutHut/key/amenity/value/scout_hut"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Scree"></see>
     /// </summary>
-    let Scree = Namespaced_IRI.parse _namespace_name "Scree" |> NamespacedName
-
+    let Scree = _prefix "Scree"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Scree/key/natural/value/scree"></see>
     /// </summary>
-    let ``Scree/key/natural/value/scree`` =
-        Namespaced_IRI.parse _namespace_name "Scree/key/natural/value/scree" |> NamespacedName
-
+    let ``Scree/key/natural/value/scree`` = _prefix "Scree/key/natural/value/scree"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Scrub"></see>
     /// </summary>
-    let Scrub = Namespaced_IRI.parse _namespace_name "Scrub" |> NamespacedName
-
+    let Scrub = _prefix "Scrub"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Scrub/key/natural/value/scrub"></see>
     /// </summary>
-    let ``Scrub/key/natural/value/scrub`` =
-        Namespaced_IRI.parse _namespace_name "Scrub/key/natural/value/scrub" |> NamespacedName
-
+    let ``Scrub/key/natural/value/scrub`` = _prefix "Scrub/key/natural/value/scrub"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ScubaDivingShop"></see>
     /// </summary>
-    let ScubaDivingShop =
-        Namespaced_IRI.parse _namespace_name "ScubaDivingShop" |> NamespacedName
+    let ScubaDivingShop = _prefix "ScubaDivingShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ScubaDivingShop/key/shop/value/scuba_diving"></see>
     /// </summary>
     let ``ScubaDivingShop/key/shop/value/scuba_diving`` =
-        Namespaced_IRI.parse _namespace_name "ScubaDivingShop/key/shop/value/scuba_diving" |> NamespacedName
+        _prefix "ScubaDivingShop/key/shop/value/scuba_diving"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sculptor"></see>
     /// </summary>
-    let Sculptor = Namespaced_IRI.parse _namespace_name "Sculptor" |> NamespacedName
+    let Sculptor = _prefix "Sculptor"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sculptor/key/craft/value/sculptor"></see>
     /// </summary>
     let ``Sculptor/key/craft/value/sculptor`` =
-        Namespaced_IRI.parse _namespace_name "Sculptor/key/craft/value/sculptor" |> NamespacedName
+        _prefix "Sculptor/key/craft/value/sculptor"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sea"></see>
     /// </summary>
-    let Sea = Namespaced_IRI.parse _namespace_name "Sea" |> NamespacedName
-
+    let Sea = _prefix "Sea"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sea/key/natural/value/sea"></see>
     /// </summary>
-    let ``Sea/key/natural/value/sea`` =
-        Namespaced_IRI.parse _namespace_name "Sea/key/natural/value/sea" |> NamespacedName
-
+    let ``Sea/key/natural/value/sea`` = _prefix "Sea/key/natural/value/sea"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Seat"></see>
     /// </summary>
-    let Seat = Namespaced_IRI.parse _namespace_name "Seat" |> NamespacedName
-
+    let Seat = _prefix "Seat"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Seat/key/amenity/value/seat"></see>
     /// </summary>
-    let ``Seat/key/amenity/value/seat`` =
-        Namespaced_IRI.parse _namespace_name "Seat/key/amenity/value/seat" |> NamespacedName
-
+    let ``Seat/key/amenity/value/seat`` = _prefix "Seat/key/amenity/value/seat"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Seating%2Cornamental"></see>
     /// </summary>
-    let ``Seating%2Cornamental`` =
-        Namespaced_IRI.parse _namespace_name "Seating%2Cornamental" |> NamespacedName
+    let ``Seating%2Cornamental`` = _prefix "Seating%2Cornamental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Seating%2Cornamental/key/amenity/value/seating%2Cornamental"></see>
     /// </summary>
     let ``Seating%2Cornamental/key/amenity/value/seating%2Cornamental`` =
-        Namespaced_IRI.parse _namespace_name "Seating%2Cornamental/key/amenity/value/seating%2Cornamental" |> NamespacedName
+        _prefix "Seating%2Cornamental/key/amenity/value/seating%2Cornamental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SecondHand"></see>
     /// </summary>
-    let SecondHand = Namespaced_IRI.parse _namespace_name "SecondHand" |> NamespacedName
+    let SecondHand = _prefix "SecondHand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SecondHand/key/shop/value/second_hand"></see>
     /// </summary>
     let ``SecondHand/key/shop/value/second_hand`` =
-        Namespaced_IRI.parse _namespace_name "SecondHand/key/shop/value/second_hand" |> NamespacedName
+        _prefix "SecondHand/key/shop/value/second_hand"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SecundaryHighway"></see>
     /// </summary>
-    let SecundaryHighway =
-        Namespaced_IRI.parse _namespace_name "SecundaryHighway" |> NamespacedName
+    let SecundaryHighway = _prefix "SecundaryHighway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SecundaryHighway/key/highway/value/secundary"></see>
     /// </summary>
     let ``SecundaryHighway/key/highway/value/secundary`` =
-        Namespaced_IRI.parse _namespace_name "SecundaryHighway/key/highway/value/secundary" |> NamespacedName
+        _prefix "SecundaryHighway/key/highway/value/secundary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sento"></see>
     /// </summary>
-    let Sento = Namespaced_IRI.parse _namespace_name "Sento" |> NamespacedName
-
+    let Sento = _prefix "Sento"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sento/key/amenity/value/sento"></see>
     /// </summary>
-    let ``Sento/key/amenity/value/sento`` =
-        Namespaced_IRI.parse _namespace_name "Sento/key/amenity/value/sento" |> NamespacedName
-
+    let ``Sento/key/amenity/value/sento`` = _prefix "Sento/key/amenity/value/sento"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
+    let Service = _prefix "Service"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Service/key/amenity/value/service"></see>
     /// </summary>
     let ``Service/key/amenity/value/service`` =
-        Namespaced_IRI.parse _namespace_name "Service/key/amenity/value/service" |> NamespacedName
+        _prefix "Service/key/amenity/value/service"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ServiceAreaInterface"></see>
     /// </summary>
-    let ServiceAreaInterface =
-        Namespaced_IRI.parse _namespace_name "ServiceAreaInterface" |> NamespacedName
+    let ServiceAreaInterface = _prefix "ServiceAreaInterface"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ServiceAreaInterface/key/man_made/value/service_area_interface"></see>
     /// </summary>
     let ``ServiceAreaInterface/key/man_made/value/service_area_interface`` =
-        Namespaced_IRI.parse _namespace_name "ServiceAreaInterface/key/man_made/value/service_area_interface" |> NamespacedName
+        _prefix "ServiceAreaInterface/key/man_made/value/service_area_interface"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ServiceStation"></see>
     /// </summary>
-    let ServiceStation =
-        Namespaced_IRI.parse _namespace_name "ServiceStation" |> NamespacedName
+    let ServiceStation = _prefix "ServiceStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ServiceStation/key/highway/value/services"></see>
     /// </summary>
     let ``ServiceStation/key/highway/value/services`` =
-        Namespaced_IRI.parse _namespace_name "ServiceStation/key/highway/value/services" |> NamespacedName
+        _prefix "ServiceStation/key/highway/value/services"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Services"></see>
     /// </summary>
-    let Services = Namespaced_IRI.parse _namespace_name "Services" |> NamespacedName
+    let Services = _prefix "Services"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Services/key/amenity/value/services"></see>
     /// </summary>
     let ``Services/key/amenity/value/services`` =
-        Namespaced_IRI.parse _namespace_name "Services/key/amenity/value/services" |> NamespacedName
+        _prefix "Services/key/amenity/value/services"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ServingAreaInterface"></see>
     /// </summary>
-    let ServingAreaInterface =
-        Namespaced_IRI.parse _namespace_name "ServingAreaInterface" |> NamespacedName
+    let ServingAreaInterface = _prefix "ServingAreaInterface"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ServingAreaInterface/key/man_made/value/serving_area_interface"></see>
     /// </summary>
     let ``ServingAreaInterface/key/man_made/value/serving_area_interface`` =
-        Namespaced_IRI.parse _namespace_name "ServingAreaInterface/key/man_made/value/serving_area_interface" |> NamespacedName
+        _prefix "ServingAreaInterface/key/man_made/value/serving_area_interface"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SesStation"></see>
     /// </summary>
-    let SesStation = Namespaced_IRI.parse _namespace_name "SesStation" |> NamespacedName
+    let SesStation = _prefix "SesStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SesStation/key/emergency/value/ses_station"></see>
     /// </summary>
     let ``SesStation/key/emergency/value/ses_station`` =
-        Namespaced_IRI.parse _namespace_name "SesStation/key/emergency/value/ses_station" |> NamespacedName
+        _prefix "SesStation/key/emergency/value/ses_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shed"></see>
     /// </summary>
-    let Shed = Namespaced_IRI.parse _namespace_name "Shed" |> NamespacedName
-
+    let Shed = _prefix "Shed"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shed/key/building/value/shed"></see>
     /// </summary>
-    let ``Shed/key/building/value/shed`` =
-        Namespaced_IRI.parse _namespace_name "Shed/key/building/value/shed" |> NamespacedName
-
+    let ``Shed/key/building/value/shed`` = _prefix "Shed/key/building/value/shed"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sheepfold"></see>
     /// </summary>
-    let Sheepfold = Namespaced_IRI.parse _namespace_name "Sheepfold" |> NamespacedName
+    let Sheepfold = _prefix "Sheepfold"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sheepfold/key/man_made/value/sheepfold"></see>
     /// </summary>
     let ``Sheepfold/key/man_made/value/sheepfold`` =
-        Namespaced_IRI.parse _namespace_name "Sheepfold/key/man_made/value/sheepfold" |> NamespacedName
+        _prefix "Sheepfold/key/man_made/value/sheepfold"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shelter"></see>
     /// </summary>
-    let Shelter = Namespaced_IRI.parse _namespace_name "Shelter" |> NamespacedName
+    let Shelter = _prefix "Shelter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shelter/key/amenity/value/shelter"></see>
     /// </summary>
     let ``Shelter/key/amenity/value/shelter`` =
-        Namespaced_IRI.parse _namespace_name "Shelter/key/amenity/value/shelter" |> NamespacedName
+        _prefix "Shelter/key/amenity/value/shelter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShelteredHousing"></see>
     /// </summary>
-    let ShelteredHousing =
-        Namespaced_IRI.parse _namespace_name "ShelteredHousing" |> NamespacedName
+    let ShelteredHousing = _prefix "ShelteredHousing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShelteredHousing/key/amenity/value/sheltered_housing"></see>
     /// </summary>
     let ``ShelteredHousing/key/amenity/value/sheltered_housing`` =
-        Namespaced_IRI.parse _namespace_name "ShelteredHousing/key/amenity/value/sheltered_housing" |> NamespacedName
+        _prefix "ShelteredHousing/key/amenity/value/sheltered_housing"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shipping"></see>
     /// </summary>
-    let Shipping = Namespaced_IRI.parse _namespace_name "Shipping" |> NamespacedName
+    let Shipping = _prefix "Shipping"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shipping/key/shop/value/shipping"></see>
     /// </summary>
     let ``Shipping/key/shop/value/shipping`` =
-        Namespaced_IRI.parse _namespace_name "Shipping/key/shop/value/shipping" |> NamespacedName
+        _prefix "Shipping/key/shop/value/shipping"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoal"></see>
     /// </summary>
-    let Shoal = Namespaced_IRI.parse _namespace_name "Shoal" |> NamespacedName
-
+    let Shoal = _prefix "Shoal"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoal/key/natural/value/shoal"></see>
     /// </summary>
-    let ``Shoal/key/natural/value/shoal`` =
-        Namespaced_IRI.parse _namespace_name "Shoal/key/natural/value/shoal" |> NamespacedName
-
+    let ``Shoal/key/natural/value/shoal`` = _prefix "Shoal/key/natural/value/shoal"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShoeRepair"></see>
     /// </summary>
-    let ShoeRepair = Namespaced_IRI.parse _namespace_name "ShoeRepair" |> NamespacedName
+    let ShoeRepair = _prefix "ShoeRepair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShoeRepair/key/shop/value/shoe_repair"></see>
     /// </summary>
     let ``ShoeRepair/key/shop/value/shoe_repair`` =
-        Namespaced_IRI.parse _namespace_name "ShoeRepair/key/shop/value/shoe_repair" |> NamespacedName
+        _prefix "ShoeRepair/key/shop/value/shoe_repair"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoemaker"></see>
     /// </summary>
-    let Shoemaker = Namespaced_IRI.parse _namespace_name "Shoemaker" |> NamespacedName
+    let Shoemaker = _prefix "Shoemaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoemaker/key/shop/value/shoemaker"></see>
     /// </summary>
     let ``Shoemaker/key/shop/value/shoemaker`` =
-        Namespaced_IRI.parse _namespace_name "Shoemaker/key/shop/value/shoemaker" |> NamespacedName
+        _prefix "Shoemaker/key/shop/value/shoemaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoemaker/key/craft/value/shoemaker"></see>
     /// </summary>
     let ``Shoemaker/key/craft/value/shoemaker`` =
-        Namespaced_IRI.parse _namespace_name "Shoemaker/key/craft/value/shoemaker" |> NamespacedName
+        _prefix "Shoemaker/key/craft/value/shoemaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoes"></see>
     /// </summary>
-    let Shoes = Namespaced_IRI.parse _namespace_name "Shoes" |> NamespacedName
-
+    let Shoes = _prefix "Shoes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shoes/key/shop/value/shoes"></see>
     /// </summary>
-    let ``Shoes/key/shop/value/shoes`` =
-        Namespaced_IRI.parse _namespace_name "Shoes/key/shop/value/shoes" |> NamespacedName
-
+    let ``Shoes/key/shop/value/shoes`` = _prefix "Shoes/key/shop/value/shoes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shop/key/amenity/value/shop"></see>
     /// </summary>
-    let ``Shop/key/amenity/value/shop`` =
-        Namespaced_IRI.parse _namespace_name "Shop/key/amenity/value/shop" |> NamespacedName
-
+    let ``Shop/key/amenity/value/shop`` = _prefix "Shop/key/amenity/value/shop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shop/key/shop/value/yes"></see>
     /// </summary>
-    let ``Shop/key/shop/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "Shop/key/shop/value/yes" |> NamespacedName
-
+    let ``Shop/key/shop/value/yes`` = _prefix "Shop/key/shop/value/yes"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shop/key/shop/value/shop"></see>
     /// </summary>
-    let ``Shop/key/shop/value/shop`` =
-        Namespaced_IRI.parse _namespace_name "Shop/key/shop/value/shop" |> NamespacedName
-
+    let ``Shop/key/shop/value/shop`` = _prefix "Shop/key/shop/value/shop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShopFIXME"></see>
     /// </summary>
-    let ShopFIXME = Namespaced_IRI.parse _namespace_name "ShopFIXME" |> NamespacedName
-
+    let ShopFIXME = _prefix "ShopFIXME"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShopFIXME/key/shop/value/FIXME"></see>
     /// </summary>
-    let ``ShopFIXME/key/shop/value/FIXME`` =
-        Namespaced_IRI.parse _namespace_name "ShopFIXME/key/shop/value/FIXME" |> NamespacedName
-
+    let ``ShopFIXME/key/shop/value/FIXME`` = _prefix "ShopFIXME/key/shop/value/FIXME"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShopFixme"></see>
     /// </summary>
-    let ShopFixme = Namespaced_IRI.parse _namespace_name "ShopFixme" |> NamespacedName
-
+    let ShopFixme = _prefix "ShopFixme"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShopFixme/key/shop/value/fixme"></see>
     /// </summary>
-    let ``ShopFixme/key/shop/value/fixme`` =
-        Namespaced_IRI.parse _namespace_name "ShopFixme/key/shop/value/fixme" |> NamespacedName
-
+    let ``ShopFixme/key/shop/value/fixme`` = _prefix "ShopFixme/key/shop/value/fixme"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shopping"></see>
     /// </summary>
-    let Shopping = Namespaced_IRI.parse _namespace_name "Shopping" |> NamespacedName
+    let Shopping = _prefix "Shopping"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shopping/key/amenity/value/shopping"></see>
     /// </summary>
     let ``Shopping/key/amenity/value/shopping`` =
-        Namespaced_IRI.parse _namespace_name "Shopping/key/amenity/value/shopping" |> NamespacedName
+        _prefix "Shopping/key/amenity/value/shopping"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShoppingCenter"></see>
     /// </summary>
-    let ShoppingCenter =
-        Namespaced_IRI.parse _namespace_name "ShoppingCenter" |> NamespacedName
+    let ShoppingCenter = _prefix "ShoppingCenter"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShoppingCenter/key/shop/value/shopping_center"></see>
     /// </summary>
     let ``ShoppingCenter/key/shop/value/shopping_center`` =
-        Namespaced_IRI.parse _namespace_name "ShoppingCenter/key/shop/value/shopping_center" |> NamespacedName
+        _prefix "ShoppingCenter/key/shop/value/shopping_center"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShoppingCentre"></see>
     /// </summary>
-    let ShoppingCentre =
-        Namespaced_IRI.parse _namespace_name "ShoppingCentre" |> NamespacedName
+    let ShoppingCentre = _prefix "ShoppingCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ShoppingCentre/key/shop/value/shopping_centre"></see>
     /// </summary>
     let ``ShoppingCentre/key/shop/value/shopping_centre`` =
-        Namespaced_IRI.parse _namespace_name "ShoppingCentre/key/shop/value/shopping_centre" |> NamespacedName
+        _prefix "ShoppingCentre/key/shop/value/shopping_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shops"></see>
     /// </summary>
-    let Shops = Namespaced_IRI.parse _namespace_name "Shops" |> NamespacedName
-
+    let Shops = _prefix "Shops"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shops/key/amenity/value/shops"></see>
     /// </summary>
-    let ``Shops/key/amenity/value/shops`` =
-        Namespaced_IRI.parse _namespace_name "Shops/key/amenity/value/shops" |> NamespacedName
-
+    let ``Shops/key/amenity/value/shops`` = _prefix "Shops/key/amenity/value/shops"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shower"></see>
     /// </summary>
-    let Shower = Namespaced_IRI.parse _namespace_name "Shower" |> NamespacedName
-
+    let Shower = _prefix "Shower"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Shower/key/amenity/value/shower"></see>
     /// </summary>
-    let ``Shower/key/amenity/value/shower`` =
-        Namespaced_IRI.parse _namespace_name "Shower/key/amenity/value/shower" |> NamespacedName
-
+    let ``Shower/key/amenity/value/shower`` = _prefix "Shower/key/amenity/value/shower"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Showers"></see>
     /// </summary>
-    let Showers = Namespaced_IRI.parse _namespace_name "Showers" |> NamespacedName
+    let Showers = _prefix "Showers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Showers/key/amenity/value/showers"></see>
     /// </summary>
     let ``Showers/key/amenity/value/showers`` =
-        Namespaced_IRI.parse _namespace_name "Showers/key/amenity/value/showers" |> NamespacedName
+        _prefix "Showers/key/amenity/value/showers"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Signal"></see>
     /// </summary>
-    let Signal = Namespaced_IRI.parse _namespace_name "Signal" |> NamespacedName
-
+    let Signal = _prefix "Signal"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Signal/key/railway/value/signal"></see>
     /// </summary>
-    let ``Signal/key/railway/value/signal`` =
-        Namespaced_IRI.parse _namespace_name "Signal/key/railway/value/signal" |> NamespacedName
-
+    let ``Signal/key/railway/value/signal`` = _prefix "Signal/key/railway/value/signal"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Signpost"></see>
     /// </summary>
-    let Signpost = Namespaced_IRI.parse _namespace_name "Signpost" |> NamespacedName
+    let Signpost = _prefix "Signpost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Signpost/key/amenity/value/signpost"></see>
     /// </summary>
     let ``Signpost/key/amenity/value/signpost`` =
-        Namespaced_IRI.parse _namespace_name "Signpost/key/amenity/value/signpost" |> NamespacedName
+        _prefix "Signpost/key/amenity/value/signpost"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Silo"></see>
     /// </summary>
-    let Silo = Namespaced_IRI.parse _namespace_name "Silo" |> NamespacedName
-
+    let Silo = _prefix "Silo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Silo/key/man_made/value/silo"></see>
     /// </summary>
-    let ``Silo/key/man_made/value/silo`` =
-        Namespaced_IRI.parse _namespace_name "Silo/key/man_made/value/silo" |> NamespacedName
-
+    let ``Silo/key/man_made/value/silo`` = _prefix "Silo/key/man_made/value/silo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkatePark"></see>
     /// </summary>
-    let SkatePark = Namespaced_IRI.parse _namespace_name "SkatePark" |> NamespacedName
+    let SkatePark = _prefix "SkatePark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkatePark/key/leisure/value/skate_park"></see>
     /// </summary>
     let ``SkatePark/key/leisure/value/skate_park`` =
-        Namespaced_IRI.parse _namespace_name "SkatePark/key/leisure/value/skate_park" |> NamespacedName
+        _prefix "SkatePark/key/leisure/value/skate_park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkiRental"></see>
     /// </summary>
-    let SkiRental = Namespaced_IRI.parse _namespace_name "SkiRental" |> NamespacedName
+    let SkiRental = _prefix "SkiRental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkiRental/key/amenity/value/ski_rental"></see>
     /// </summary>
     let ``SkiRental/key/amenity/value/ski_rental`` =
-        Namespaced_IRI.parse _namespace_name "SkiRental/key/amenity/value/ski_rental" |> NamespacedName
+        _prefix "SkiRental/key/amenity/value/ski_rental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkiRoute"></see>
     /// </summary>
-    let SkiRoute = Namespaced_IRI.parse _namespace_name "SkiRoute" |> NamespacedName
-
+    let SkiRoute = _prefix "SkiRoute"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkiRoute/key/route/value/ski"></see>
     /// </summary>
-    let ``SkiRoute/key/route/value/ski`` =
-        Namespaced_IRI.parse _namespace_name "SkiRoute/key/route/value/ski" |> NamespacedName
-
+    let ``SkiRoute/key/route/value/ski`` = _prefix "SkiRoute/key/route/value/ski"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkiSchool"></see>
     /// </summary>
-    let SkiSchool = Namespaced_IRI.parse _namespace_name "SkiSchool" |> NamespacedName
+    let SkiSchool = _prefix "SkiSchool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SkiSchool/key/amenity/value/ski_school"></see>
     /// </summary>
     let ``SkiSchool/key/amenity/value/ski_school`` =
-        Namespaced_IRI.parse _namespace_name "SkiSchool/key/amenity/value/ski_school" |> NamespacedName
+        _prefix "SkiSchool/key/amenity/value/ski_school"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Slipway"></see>
     /// </summary>
-    let Slipway = Namespaced_IRI.parse _namespace_name "Slipway" |> NamespacedName
+    let Slipway = _prefix "Slipway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Slipway/key/leisure/value/slipway"></see>
     /// </summary>
     let ``Slipway/key/leisure/value/slipway`` =
-        Namespaced_IRI.parse _namespace_name "Slipway/key/leisure/value/slipway" |> NamespacedName
+        _prefix "Slipway/key/leisure/value/slipway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sluice"></see>
     /// </summary>
-    let Sluice = Namespaced_IRI.parse _namespace_name "Sluice" |> NamespacedName
+    let Sluice = _prefix "Sluice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sluice/key/waterway/value/sluice"></see>
     /// </summary>
     let ``Sluice/key/waterway/value/sluice`` =
-        Namespaced_IRI.parse _namespace_name "Sluice/key/waterway/value/sluice" |> NamespacedName
+        _prefix "Sluice/key/waterway/value/sluice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Snacks"></see>
     /// </summary>
-    let Snacks = Namespaced_IRI.parse _namespace_name "Snacks" |> NamespacedName
-
+    let Snacks = _prefix "Snacks"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Snacks/key/shop/value/snacks"></see>
     /// </summary>
-    let ``Snacks/key/shop/value/snacks`` =
-        Namespaced_IRI.parse _namespace_name "Snacks/key/shop/value/snacks" |> NamespacedName
-
+    let ``Snacks/key/shop/value/snacks`` = _prefix "Snacks/key/shop/value/snacks"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SnowPark"></see>
     /// </summary>
-    let SnowPark = Namespaced_IRI.parse _namespace_name "SnowPark" |> NamespacedName
+    let SnowPark = _prefix "SnowPark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SnowPark/key/amenity/value/snow_park"></see>
     /// </summary>
     let ``SnowPark/key/amenity/value/snow_park`` =
-        Namespaced_IRI.parse _namespace_name "SnowPark/key/amenity/value/snow_park" |> NamespacedName
+        _prefix "SnowPark/key/amenity/value/snow_park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialCentre"></see>
     /// </summary>
-    let SocialCentre =
-        Namespaced_IRI.parse _namespace_name "SocialCentre" |> NamespacedName
+    let SocialCentre = _prefix "SocialCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialCentre/key/amenity/value/social_centre"></see>
     /// </summary>
     let ``SocialCentre/key/amenity/value/social_centre`` =
-        Namespaced_IRI.parse _namespace_name "SocialCentre/key/amenity/value/social_centre" |> NamespacedName
+        _prefix "SocialCentre/key/amenity/value/social_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialClub"></see>
     /// </summary>
-    let SocialClub = Namespaced_IRI.parse _namespace_name "SocialClub" |> NamespacedName
+    let SocialClub = _prefix "SocialClub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialClub/key/amenity/value/social_club"></see>
     /// </summary>
     let ``SocialClub/key/amenity/value/social_club`` =
-        Namespaced_IRI.parse _namespace_name "SocialClub/key/amenity/value/social_club" |> NamespacedName
+        _prefix "SocialClub/key/amenity/value/social_club"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialClub/key/leisure/value/social_club"></see>
     /// </summary>
     let ``SocialClub/key/leisure/value/social_club`` =
-        Namespaced_IRI.parse _namespace_name "SocialClub/key/leisure/value/social_club" |> NamespacedName
+        _prefix "SocialClub/key/leisure/value/social_club"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialFacility"></see>
     /// </summary>
-    let SocialFacility =
-        Namespaced_IRI.parse _namespace_name "SocialFacility" |> NamespacedName
+    let SocialFacility = _prefix "SocialFacility"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialFacility/key/amenity/value/social_facility"></see>
     /// </summary>
     let ``SocialFacility/key/amenity/value/social_facility`` =
-        Namespaced_IRI.parse _namespace_name "SocialFacility/key/amenity/value/social_facility" |> NamespacedName
+        _prefix "SocialFacility/key/amenity/value/social_facility"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialServices"></see>
     /// </summary>
-    let SocialServices =
-        Namespaced_IRI.parse _namespace_name "SocialServices" |> NamespacedName
+    let SocialServices = _prefix "SocialServices"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SocialServices/key/amenity/value/social_services"></see>
     /// </summary>
     let ``SocialServices/key/amenity/value/social_services`` =
-        Namespaced_IRI.parse _namespace_name "SocialServices/key/amenity/value/social_services" |> NamespacedName
+        _prefix "SocialServices/key/amenity/value/social_services"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Solarium"></see>
     /// </summary>
-    let Solarium = Namespaced_IRI.parse _namespace_name "Solarium" |> NamespacedName
+    let Solarium = _prefix "Solarium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Solarium/key/amenity/value/solarium"></see>
     /// </summary>
     let ``Solarium/key/amenity/value/solarium`` =
-        Namespaced_IRI.parse _namespace_name "Solarium/key/amenity/value/solarium" |> NamespacedName
+        _prefix "Solarium/key/amenity/value/solarium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Solarium/key/shop/value/solarium"></see>
     /// </summary>
     let ``Solarium/key/shop/value/solarium`` =
-        Namespaced_IRI.parse _namespace_name "Solarium/key/shop/value/solarium" |> NamespacedName
+        _prefix "Solarium/key/shop/value/solarium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Souvenir"></see>
     /// </summary>
-    let Souvenir = Namespaced_IRI.parse _namespace_name "Souvenir" |> NamespacedName
+    let Souvenir = _prefix "Souvenir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Souvenir/key/shop/value/souvenir"></see>
     /// </summary>
     let ``Souvenir/key/shop/value/souvenir`` =
-        Namespaced_IRI.parse _namespace_name "Souvenir/key/shop/value/souvenir" |> NamespacedName
+        _prefix "Souvenir/key/shop/value/souvenir"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Souvenirs"></see>
     /// </summary>
-    let Souvenirs = Namespaced_IRI.parse _namespace_name "Souvenirs" |> NamespacedName
+    let Souvenirs = _prefix "Souvenirs"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Souvenirs/key/shop/value/souvenirs"></see>
     /// </summary>
     let ``Souvenirs/key/shop/value/souvenirs`` =
-        Namespaced_IRI.parse _namespace_name "Souvenirs/key/shop/value/souvenirs" |> NamespacedName
+        _prefix "Souvenirs/key/shop/value/souvenirs"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Spa"></see>
     /// </summary>
-    let Spa = Namespaced_IRI.parse _namespace_name "Spa" |> NamespacedName
-
+    let Spa = _prefix "Spa"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Spa/key/amenity/value/spa"></see>
     /// </summary>
-    let ``Spa/key/amenity/value/spa`` =
-        Namespaced_IRI.parse _namespace_name "Spa/key/amenity/value/spa" |> NamespacedName
-
+    let ``Spa/key/amenity/value/spa`` = _prefix "Spa/key/amenity/value/spa"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SpeedCamera"></see>
     /// </summary>
-    let SpeedCamera =
-        Namespaced_IRI.parse _namespace_name "SpeedCamera" |> NamespacedName
+    let SpeedCamera = _prefix "SpeedCamera"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SpeedCamera/key/highway/value/speed_camera"></see>
     /// </summary>
     let ``SpeedCamera/key/highway/value/speed_camera`` =
-        Namespaced_IRI.parse _namespace_name "SpeedCamera/key/highway/value/speed_camera" |> NamespacedName
+        _prefix "SpeedCamera/key/highway/value/speed_camera"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SpeedEnforcement"></see>
     /// </summary>
-    let SpeedEnforcement =
-        Namespaced_IRI.parse _namespace_name "SpeedEnforcement" |> NamespacedName
+    let SpeedEnforcement = _prefix "SpeedEnforcement"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SpeedEnforcement/key/amenity/value/speed_enforcement"></see>
     /// </summary>
     let ``SpeedEnforcement/key/amenity/value/speed_enforcement`` =
-        Namespaced_IRI.parse _namespace_name "SpeedEnforcement/key/amenity/value/speed_enforcement" |> NamespacedName
+        _prefix "SpeedEnforcement/key/amenity/value/speed_enforcement"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SpeedTrap"></see>
     /// </summary>
-    let SpeedTrap = Namespaced_IRI.parse _namespace_name "SpeedTrap" |> NamespacedName
+    let SpeedTrap = _prefix "SpeedTrap"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SpeedTrap/key/amenity/value/speed_trap"></see>
     /// </summary>
     let ``SpeedTrap/key/amenity/value/speed_trap`` =
-        Namespaced_IRI.parse _namespace_name "SpeedTrap/key/amenity/value/speed_trap" |> NamespacedName
+        _prefix "SpeedTrap/key/amenity/value/speed_trap"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sport"></see>
     /// </summary>
-    let Sport = Namespaced_IRI.parse _namespace_name "Sport" |> NamespacedName
-
+    let Sport = _prefix "Sport"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sport/key/leisure/value/sport"></see>
     /// </summary>
-    let ``Sport/key/leisure/value/sport`` =
-        Namespaced_IRI.parse _namespace_name "Sport/key/leisure/value/sport" |> NamespacedName
-
+    let ``Sport/key/leisure/value/sport`` = _prefix "Sport/key/leisure/value/sport"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sport/key/amenity/value/sport"></see>
     /// </summary>
-    let ``Sport/key/amenity/value/sport`` =
-        Namespaced_IRI.parse _namespace_name "Sport/key/amenity/value/sport" |> NamespacedName
-
+    let ``Sport/key/amenity/value/sport`` = _prefix "Sport/key/amenity/value/sport"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SportShop"></see>
     /// </summary>
-    let SportShop = Namespaced_IRI.parse _namespace_name "SportShop" |> NamespacedName
-
+    let SportShop = _prefix "SportShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SportShop/key/shop/value/sport"></see>
     /// </summary>
-    let ``SportShop/key/shop/value/sport`` =
-        Namespaced_IRI.parse _namespace_name "SportShop/key/shop/value/sport" |> NamespacedName
-
+    let ``SportShop/key/shop/value/sport`` = _prefix "SportShop/key/shop/value/sport"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SportThing"></see>
     /// </summary>
-    let SportThing = Namespaced_IRI.parse _namespace_name "SportThing" |> NamespacedName
+    let SportThing = _prefix "SportThing"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sports"></see>
     /// </summary>
-    let Sports = Namespaced_IRI.parse _namespace_name "Sports" |> NamespacedName
-
+    let Sports = _prefix "Sports"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sports/key/shop/value/sports"></see>
     /// </summary>
-    let ``Sports/key/shop/value/sports`` =
-        Namespaced_IRI.parse _namespace_name "Sports/key/shop/value/sports" |> NamespacedName
-
+    let ``Sports/key/shop/value/sports`` = _prefix "Sports/key/shop/value/sports"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SportsCentre"></see>
     /// </summary>
-    let SportsCentre =
-        Namespaced_IRI.parse _namespace_name "SportsCentre" |> NamespacedName
+    let SportsCentre = _prefix "SportsCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SportsCentre/key/leisure/value/sports_centre"></see>
     /// </summary>
     let ``SportsCentre/key/leisure/value/sports_centre`` =
-        Namespaced_IRI.parse _namespace_name "SportsCentre/key/leisure/value/sports_centre" |> NamespacedName
+        _prefix "SportsCentre/key/leisure/value/sports_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SportsCentre/key/amenity/value/sports_centre"></see>
     /// </summary>
     let ``SportsCentre/key/amenity/value/sports_centre`` =
-        Namespaced_IRI.parse _namespace_name "SportsCentre/key/amenity/value/sports_centre" |> NamespacedName
+        _prefix "SportsCentre/key/amenity/value/sports_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Spring"></see>
     /// </summary>
-    let Spring = Namespaced_IRI.parse _namespace_name "Spring" |> NamespacedName
-
+    let Spring = _prefix "Spring"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Spring/key/natural/value/spring"></see>
     /// </summary>
-    let ``Spring/key/natural/value/spring`` =
-        Namespaced_IRI.parse _namespace_name "Spring/key/natural/value/spring" |> NamespacedName
-
+    let ``Spring/key/natural/value/spring`` = _prefix "Spring/key/natural/value/spring"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stadium"></see>
     /// </summary>
-    let Stadium = Namespaced_IRI.parse _namespace_name "Stadium" |> NamespacedName
+    let Stadium = _prefix "Stadium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stadium/key/leisure/value/stadium"></see>
     /// </summary>
     let ``Stadium/key/leisure/value/stadium`` =
-        Namespaced_IRI.parse _namespace_name "Stadium/key/leisure/value/stadium" |> NamespacedName
+        _prefix "Stadium/key/leisure/value/stadium"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StandBuilder"></see>
     /// </summary>
-    let StandBuilder =
-        Namespaced_IRI.parse _namespace_name "StandBuilder" |> NamespacedName
+    let StandBuilder = _prefix "StandBuilder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StandBuilder/key/craft/value/stand_builder"></see>
     /// </summary>
     let ``StandBuilder/key/craft/value/stand_builder`` =
-        Namespaced_IRI.parse _namespace_name "StandBuilder/key/craft/value/stand_builder" |> NamespacedName
+        _prefix "StandBuilder/key/craft/value/stand_builder"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/State"></see>
     /// </summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
-
+    let State = _prefix "State"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/State/key/place/value/state"></see>
     /// </summary>
-    let ``State/key/place/value/state`` =
-        Namespaced_IRI.parse _namespace_name "State/key/place/value/state" |> NamespacedName
-
+    let ``State/key/place/value/state`` = _prefix "State/key/place/value/state"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Station"></see>
     /// </summary>
-    let Station = Namespaced_IRI.parse _namespace_name "Station" |> NamespacedName
+    let Station = _prefix "Station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Station/key/public_transport/value/station"></see>
     /// </summary>
     let ``Station/key/public_transport/value/station`` =
-        Namespaced_IRI.parse _namespace_name "Station/key/public_transport/value/station" |> NamespacedName
+        _prefix "Station/key/public_transport/value/station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StationEntrance"></see>
     /// </summary>
-    let StationEntrance =
-        Namespaced_IRI.parse _namespace_name "StationEntrance" |> NamespacedName
+    let StationEntrance = _prefix "StationEntrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StationEntrance/key/railway/value/station_entrance"></see>
     /// </summary>
     let ``StationEntrance/key/railway/value/station_entrance`` =
-        Namespaced_IRI.parse _namespace_name "StationEntrance/key/railway/value/station_entrance" |> NamespacedName
+        _prefix "StationEntrance/key/railway/value/station_entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stationary"></see>
     /// </summary>
-    let Stationary = Namespaced_IRI.parse _namespace_name "Stationary" |> NamespacedName
+    let Stationary = _prefix "Stationary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stationary/key/shop/value/stationary"></see>
     /// </summary>
     let ``Stationary/key/shop/value/stationary`` =
-        Namespaced_IRI.parse _namespace_name "Stationary/key/shop/value/stationary" |> NamespacedName
+        _prefix "Stationary/key/shop/value/stationary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stationery"></see>
     /// </summary>
-    let Stationery = Namespaced_IRI.parse _namespace_name "Stationery" |> NamespacedName
+    let Stationery = _prefix "Stationery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stationery/key/shop/value/stationery"></see>
     /// </summary>
     let ``Stationery/key/shop/value/stationery`` =
-        Namespaced_IRI.parse _namespace_name "Stationery/key/shop/value/stationery" |> NamespacedName
+        _prefix "Stationery/key/shop/value/stationery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Statue"></see>
     /// </summary>
-    let Statue = Namespaced_IRI.parse _namespace_name "Statue" |> NamespacedName
-
+    let Statue = _prefix "Statue"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Statue/key/amenity/value/statue"></see>
     /// </summary>
-    let ``Statue/key/amenity/value/statue`` =
-        Namespaced_IRI.parse _namespace_name "Statue/key/amenity/value/statue" |> NamespacedName
-
+    let ``Statue/key/amenity/value/statue`` = _prefix "Statue/key/amenity/value/statue"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Steps"></see>
     /// </summary>
-    let Steps = Namespaced_IRI.parse _namespace_name "Steps" |> NamespacedName
-
+    let Steps = _prefix "Steps"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Steps/key/highway/value/steps"></see>
     /// </summary>
-    let ``Steps/key/highway/value/steps`` =
-        Namespaced_IRI.parse _namespace_name "Steps/key/highway/value/steps" |> NamespacedName
-
+    let ``Steps/key/highway/value/steps`` = _prefix "Steps/key/highway/value/steps"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stile"></see>
     /// </summary>
-    let Stile = Namespaced_IRI.parse _namespace_name "Stile" |> NamespacedName
-
+    let Stile = _prefix "Stile"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stile/key/barrier/value/stile"></see>
     /// </summary>
-    let ``Stile/key/barrier/value/stile`` =
-        Namespaced_IRI.parse _namespace_name "Stile/key/barrier/value/stile" |> NamespacedName
-
+    let ``Stile/key/barrier/value/stile`` = _prefix "Stile/key/barrier/value/stile"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stone"></see>
     /// </summary>
-    let Stone = Namespaced_IRI.parse _namespace_name "Stone" |> NamespacedName
-
+    let Stone = _prefix "Stone"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stone/key/natural/value/stone"></see>
     /// </summary>
-    let ``Stone/key/natural/value/stone`` =
-        Namespaced_IRI.parse _namespace_name "Stone/key/natural/value/stone" |> NamespacedName
-
+    let ``Stone/key/natural/value/stone`` = _prefix "Stone/key/natural/value/stone"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StoneCircle"></see>
     /// </summary>
-    let StoneCircle =
-        Namespaced_IRI.parse _namespace_name "StoneCircle" |> NamespacedName
+    let StoneCircle = _prefix "StoneCircle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StoneCircle/key/historic/value/stone_circle"></see>
     /// </summary>
     let ``StoneCircle/key/historic/value/stone_circle`` =
-        Namespaced_IRI.parse _namespace_name "StoneCircle/key/historic/value/stone_circle" |> NamespacedName
+        _prefix "StoneCircle/key/historic/value/stone_circle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stonemason"></see>
     /// </summary>
-    let Stonemason = Namespaced_IRI.parse _namespace_name "Stonemason" |> NamespacedName
+    let Stonemason = _prefix "Stonemason"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stonemason/key/craft/value/stonemason"></see>
     /// </summary>
     let ``Stonemason/key/craft/value/stonemason`` =
-        Namespaced_IRI.parse _namespace_name "Stonemason/key/craft/value/stonemason" |> NamespacedName
+        _prefix "Stonemason/key/craft/value/stonemason"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StopPosition"></see>
     /// </summary>
-    let StopPosition =
-        Namespaced_IRI.parse _namespace_name "StopPosition" |> NamespacedName
+    let StopPosition = _prefix "StopPosition"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StopPosition/key/public_transport/value/stop_position"></see>
     /// </summary>
     let ``StopPosition/key/public_transport/value/stop_position`` =
-        Namespaced_IRI.parse _namespace_name "StopPosition/key/public_transport/value/stop_position" |> NamespacedName
+        _prefix "StopPosition/key/public_transport/value/stop_position"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StopSign"></see>
     /// </summary>
-    let StopSign = Namespaced_IRI.parse _namespace_name "StopSign" |> NamespacedName
-
+    let StopSign = _prefix "StopSign"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StopSign/key/highway/value/stop"></see>
     /// </summary>
-    let ``StopSign/key/highway/value/stop`` =
-        Namespaced_IRI.parse _namespace_name "StopSign/key/highway/value/stop" |> NamespacedName
-
+    let ``StopSign/key/highway/value/stop`` = _prefix "StopSign/key/highway/value/stop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Storage"></see>
     /// </summary>
-    let Storage = Namespaced_IRI.parse _namespace_name "Storage" |> NamespacedName
+    let Storage = _prefix "Storage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Storage/key/amenity/value/storage"></see>
     /// </summary>
     let ``Storage/key/amenity/value/storage`` =
-        Namespaced_IRI.parse _namespace_name "Storage/key/amenity/value/storage" |> NamespacedName
+        _prefix "Storage/key/amenity/value/storage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StorageTank"></see>
     /// </summary>
-    let StorageTank =
-        Namespaced_IRI.parse _namespace_name "StorageTank" |> NamespacedName
+    let StorageTank = _prefix "StorageTank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StorageTank/key/man_made/value/storage_tank"></see>
     /// </summary>
     let ``StorageTank/key/man_made/value/storage_tank`` =
-        Namespaced_IRI.parse _namespace_name "StorageTank/key/man_made/value/storage_tank" |> NamespacedName
+        _prefix "StorageTank/key/man_made/value/storage_tank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Strait"></see>
     /// </summary>
-    let Strait = Namespaced_IRI.parse _namespace_name "Strait" |> NamespacedName
-
+    let Strait = _prefix "Strait"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Strait/key/natural/value/strait"></see>
     /// </summary>
-    let ``Strait/key/natural/value/strait`` =
-        Namespaced_IRI.parse _namespace_name "Strait/key/natural/value/strait" |> NamespacedName
-
+    let ``Strait/key/natural/value/strait`` = _prefix "Strait/key/natural/value/strait"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stream"></see>
     /// </summary>
-    let Stream = Namespaced_IRI.parse _namespace_name "Stream" |> NamespacedName
+    let Stream = _prefix "Stream"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stream/key/waterway/value/stream"></see>
     /// </summary>
     let ``Stream/key/waterway/value/stream`` =
-        Namespaced_IRI.parse _namespace_name "Stream/key/waterway/value/stream" |> NamespacedName
+        _prefix "Stream/key/waterway/value/stream"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StreetLamp"></see>
     /// </summary>
-    let StreetLamp = Namespaced_IRI.parse _namespace_name "StreetLamp" |> NamespacedName
+    let StreetLamp = _prefix "StreetLamp"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StreetLamp/key/highway/value/street_lamp"></see>
     /// </summary>
     let ``StreetLamp/key/highway/value/street_lamp`` =
-        Namespaced_IRI.parse _namespace_name "StreetLamp/key/highway/value/street_lamp" |> NamespacedName
+        _prefix "StreetLamp/key/highway/value/street_lamp"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StreetLamp/key/amenity/value/street_lamp"></see>
     /// </summary>
     let ``StreetLamp/key/amenity/value/street_lamp`` =
-        Namespaced_IRI.parse _namespace_name "StreetLamp/key/amenity/value/street_lamp" |> NamespacedName
+        _prefix "StreetLamp/key/amenity/value/street_lamp"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StreetLight"></see>
     /// </summary>
-    let StreetLight =
-        Namespaced_IRI.parse _namespace_name "StreetLight" |> NamespacedName
+    let StreetLight = _prefix "StreetLight"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/StreetLight/key/amenity/value/street_light"></see>
     /// </summary>
     let ``StreetLight/key/amenity/value/street_light`` =
-        Namespaced_IRI.parse _namespace_name "StreetLight/key/amenity/value/street_light" |> NamespacedName
+        _prefix "StreetLight/key/amenity/value/street_light"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stripclub"></see>
     /// </summary>
-    let Stripclub = Namespaced_IRI.parse _namespace_name "Stripclub" |> NamespacedName
+    let Stripclub = _prefix "Stripclub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Stripclub/key/amenity/value/stripclub"></see>
     /// </summary>
     let ``Stripclub/key/amenity/value/stripclub`` =
-        Namespaced_IRI.parse _namespace_name "Stripclub/key/amenity/value/stripclub" |> NamespacedName
+        _prefix "Stripclub/key/amenity/value/stripclub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Studio"></see>
     /// </summary>
-    let Studio = Namespaced_IRI.parse _namespace_name "Studio" |> NamespacedName
-
+    let Studio = _prefix "Studio"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Studio/key/amenity/value/studio"></see>
     /// </summary>
-    let ``Studio/key/amenity/value/studio`` =
-        Namespaced_IRI.parse _namespace_name "Studio/key/amenity/value/studio" |> NamespacedName
-
+    let ``Studio/key/amenity/value/studio`` = _prefix "Studio/key/amenity/value/studio"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Subdivision"></see>
     /// </summary>
-    let Subdivision =
-        Namespaced_IRI.parse _namespace_name "Subdivision" |> NamespacedName
+    let Subdivision = _prefix "Subdivision"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Subdivision/key/place/value/subdivision"></see>
     /// </summary>
     let ``Subdivision/key/place/value/subdivision`` =
-        Namespaced_IRI.parse _namespace_name "Subdivision/key/place/value/subdivision" |> NamespacedName
+        _prefix "Subdivision/key/place/value/subdivision"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Suburb"></see>
     /// </summary>
-    let Suburb = Namespaced_IRI.parse _namespace_name "Suburb" |> NamespacedName
-
+    let Suburb = _prefix "Suburb"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Suburb/key/place/value/suburb"></see>
     /// </summary>
-    let ``Suburb/key/place/value/suburb`` =
-        Namespaced_IRI.parse _namespace_name "Suburb/key/place/value/suburb" |> NamespacedName
-
+    let ``Suburb/key/place/value/suburb`` = _prefix "Suburb/key/place/value/suburb"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Subway"></see>
     /// </summary>
-    let Subway = Namespaced_IRI.parse _namespace_name "Subway" |> NamespacedName
-
+    let Subway = _prefix "Subway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Subway/key/railway/value/subway"></see>
     /// </summary>
-    let ``Subway/key/railway/value/subway`` =
-        Namespaced_IRI.parse _namespace_name "Subway/key/railway/value/subway" |> NamespacedName
-
+    let ``Subway/key/railway/value/subway`` = _prefix "Subway/key/railway/value/subway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SubwayEntrance"></see>
     /// </summary>
-    let SubwayEntrance =
-        Namespaced_IRI.parse _namespace_name "SubwayEntrance" |> NamespacedName
+    let SubwayEntrance = _prefix "SubwayEntrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SubwayEntrance/key/railway/value/subway_entrance"></see>
     /// </summary>
     let ``SubwayEntrance/key/railway/value/subway_entrance`` =
-        Namespaced_IRI.parse _namespace_name "SubwayEntrance/key/railway/value/subway_entrance" |> NamespacedName
+        _prefix "SubwayEntrance/key/railway/value/subway_entrance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SummitCross"></see>
     /// </summary>
-    let SummitCross =
-        Namespaced_IRI.parse _namespace_name "SummitCross" |> NamespacedName
+    let SummitCross = _prefix "SummitCross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SummitCross/key/man_made/value/summit_cross"></see>
     /// </summary>
     let ``SummitCross/key/man_made/value/summit_cross`` =
-        Namespaced_IRI.parse _namespace_name "SummitCross/key/man_made/value/summit_cross" |> NamespacedName
+        _prefix "SummitCross/key/man_made/value/summit_cross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SunProtection"></see>
     /// </summary>
-    let SunProtection =
-        Namespaced_IRI.parse _namespace_name "SunProtection" |> NamespacedName
+    let SunProtection = _prefix "SunProtection"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SunProtection/key/craft/value/sun_protection"></see>
     /// </summary>
     let ``SunProtection/key/craft/value/sun_protection`` =
-        Namespaced_IRI.parse _namespace_name "SunProtection/key/craft/value/sun_protection" |> NamespacedName
+        _prefix "SunProtection/key/craft/value/sun_protection"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Supermarket"></see>
     /// </summary>
-    let Supermarket =
-        Namespaced_IRI.parse _namespace_name "Supermarket" |> NamespacedName
+    let Supermarket = _prefix "Supermarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Supermarket/key/shop/value/supermarket"></see>
     /// </summary>
     let ``Supermarket/key/shop/value/supermarket`` =
-        Namespaced_IRI.parse _namespace_name "Supermarket/key/shop/value/supermarket" |> NamespacedName
+        _prefix "Supermarket/key/shop/value/supermarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Supermarket/key/amenity/value/supermarket"></see>
     /// </summary>
     let ``Supermarket/key/amenity/value/supermarket`` =
-        Namespaced_IRI.parse _namespace_name "Supermarket/key/amenity/value/supermarket" |> NamespacedName
+        _prefix "Supermarket/key/amenity/value/supermarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Supermarket/key/shop/value/Supermarket"></see>
     /// </summary>
     let ``Supermarket/key/shop/value/Supermarket`` =
-        Namespaced_IRI.parse _namespace_name "Supermarket/key/shop/value/Supermarket" |> NamespacedName
+        _prefix "Supermarket/key/shop/value/Supermarket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Surgery"></see>
     /// </summary>
-    let Surgery = Namespaced_IRI.parse _namespace_name "Surgery" |> NamespacedName
+    let Surgery = _prefix "Surgery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Surgery/key/amenity/value/surgery"></see>
     /// </summary>
     let ``Surgery/key/amenity/value/surgery`` =
-        Namespaced_IRI.parse _namespace_name "Surgery/key/amenity/value/surgery" |> NamespacedName
+        _prefix "Surgery/key/amenity/value/surgery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Surveillance"></see>
     /// </summary>
-    let Surveillance =
-        Namespaced_IRI.parse _namespace_name "Surveillance" |> NamespacedName
+    let Surveillance = _prefix "Surveillance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Surveillance/key/man_made/value/surveillance"></see>
     /// </summary>
     let ``Surveillance/key/man_made/value/surveillance`` =
-        Namespaced_IRI.parse _namespace_name "Surveillance/key/man_made/value/surveillance" |> NamespacedName
+        _prefix "Surveillance/key/man_made/value/surveillance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Survey"></see>
     /// </summary>
-    let Survey = Namespaced_IRI.parse _namespace_name "Survey" |> NamespacedName
-
+    let Survey = _prefix "Survey"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Survey/key/amenity/value/survey"></see>
     /// </summary>
-    let ``Survey/key/amenity/value/survey`` =
-        Namespaced_IRI.parse _namespace_name "Survey/key/amenity/value/survey" |> NamespacedName
-
+    let ``Survey/key/amenity/value/survey`` = _prefix "Survey/key/amenity/value/survey"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SurveyPoint"></see>
     /// </summary>
-    let SurveyPoint =
-        Namespaced_IRI.parse _namespace_name "SurveyPoint" |> NamespacedName
+    let SurveyPoint = _prefix "SurveyPoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SurveyPoint/key/man_made/value/survey_point"></see>
     /// </summary>
     let ``SurveyPoint/key/man_made/value/survey_point`` =
-        Namespaced_IRI.parse _namespace_name "SurveyPoint/key/man_made/value/survey_point" |> NamespacedName
+        _prefix "SurveyPoint/key/man_made/value/survey_point"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sweep"></see>
     /// </summary>
-    let Sweep = Namespaced_IRI.parse _namespace_name "Sweep" |> NamespacedName
-
+    let Sweep = _prefix "Sweep"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sweep/key/craft/value/sweep"></see>
     /// </summary>
-    let ``Sweep/key/craft/value/sweep`` =
-        Namespaced_IRI.parse _namespace_name "Sweep/key/craft/value/sweep" |> NamespacedName
-
+    let ``Sweep/key/craft/value/sweep`` = _prefix "Sweep/key/craft/value/sweep"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sweets"></see>
     /// </summary>
-    let Sweets = Namespaced_IRI.parse _namespace_name "Sweets" |> NamespacedName
-
+    let Sweets = _prefix "Sweets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Sweets/key/shop/value/sweets"></see>
     /// </summary>
-    let ``Sweets/key/shop/value/sweets`` =
-        Namespaced_IRI.parse _namespace_name "Sweets/key/shop/value/sweets" |> NamespacedName
-
+    let ``Sweets/key/shop/value/sweets`` = _prefix "Sweets/key/shop/value/sweets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SwimmingPool"></see>
     /// </summary>
-    let SwimmingPool =
-        Namespaced_IRI.parse _namespace_name "SwimmingPool" |> NamespacedName
+    let SwimmingPool = _prefix "SwimmingPool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SwimmingPool/key/amenity/value/swimming_pool"></see>
     /// </summary>
     let ``SwimmingPool/key/amenity/value/swimming_pool`` =
-        Namespaced_IRI.parse _namespace_name "SwimmingPool/key/amenity/value/swimming_pool" |> NamespacedName
+        _prefix "SwimmingPool/key/amenity/value/swimming_pool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/SwimmingPool/key/leisure/value/swimming_pool"></see>
     /// </summary>
     let ``SwimmingPool/key/leisure/value/swimming_pool`` =
-        Namespaced_IRI.parse _namespace_name "SwimmingPool/key/leisure/value/swimming_pool" |> NamespacedName
+        _prefix "SwimmingPool/key/leisure/value/swimming_pool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Table"></see>
     /// </summary>
-    let Table = Namespaced_IRI.parse _namespace_name "Table" |> NamespacedName
-
+    let Table = _prefix "Table"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Table/key/amenity/value/table"></see>
     /// </summary>
-    let ``Table/key/amenity/value/table`` =
-        Namespaced_IRI.parse _namespace_name "Table/key/amenity/value/table" |> NamespacedName
-
+    let ``Table/key/amenity/value/table`` = _prefix "Table/key/amenity/value/table"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TableBump"></see>
     /// </summary>
-    let TableBump = Namespaced_IRI.parse _namespace_name "TableBump" |> NamespacedName
+    let TableBump = _prefix "TableBump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TableBump/key/traffic_calming/value/table"></see>
     /// </summary>
     let ``TableBump/key/traffic_calming/value/table`` =
-        Namespaced_IRI.parse _namespace_name "TableBump/key/traffic_calming/value/table" |> NamespacedName
+        _prefix "TableBump/key/traffic_calming/value/table"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tailor"></see>
     /// </summary>
-    let Tailor = Namespaced_IRI.parse _namespace_name "Tailor" |> NamespacedName
-
+    let Tailor = _prefix "Tailor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tailor/key/shop/value/tailor"></see>
     /// </summary>
-    let ``Tailor/key/shop/value/tailor`` =
-        Namespaced_IRI.parse _namespace_name "Tailor/key/shop/value/tailor" |> NamespacedName
-
+    let ``Tailor/key/shop/value/tailor`` = _prefix "Tailor/key/shop/value/tailor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tailor/key/craft/value/tailor"></see>
     /// </summary>
-    let ``Tailor/key/craft/value/tailor`` =
-        Namespaced_IRI.parse _namespace_name "Tailor/key/craft/value/tailor" |> NamespacedName
-
+    let ``Tailor/key/craft/value/tailor`` = _prefix "Tailor/key/craft/value/tailor"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TakeAway"></see>
     /// </summary>
-    let TakeAway = Namespaced_IRI.parse _namespace_name "TakeAway" |> NamespacedName
+    let TakeAway = _prefix "TakeAway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TakeAway/key/amenity/value/take_away"></see>
     /// </summary>
     let ``TakeAway/key/amenity/value/take_away`` =
-        Namespaced_IRI.parse _namespace_name "TakeAway/key/amenity/value/take_away" |> NamespacedName
+        _prefix "TakeAway/key/amenity/value/take_away"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TakeAway/key/shop/value/take_away"></see>
     /// </summary>
     let ``TakeAway/key/shop/value/take_away`` =
-        Namespaced_IRI.parse _namespace_name "TakeAway/key/shop/value/take_away" |> NamespacedName
+        _prefix "TakeAway/key/shop/value/take_away"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tanning"></see>
     /// </summary>
-    let Tanning = Namespaced_IRI.parse _namespace_name "Tanning" |> NamespacedName
-
+    let Tanning = _prefix "Tanning"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tanning/key/shop/value/tanning"></see>
     /// </summary>
-    let ``Tanning/key/shop/value/tanning`` =
-        Namespaced_IRI.parse _namespace_name "Tanning/key/shop/value/tanning" |> NamespacedName
-
+    let ``Tanning/key/shop/value/tanning`` = _prefix "Tanning/key/shop/value/tanning"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tattoo"></see>
     /// </summary>
-    let Tattoo = Namespaced_IRI.parse _namespace_name "Tattoo" |> NamespacedName
-
+    let Tattoo = _prefix "Tattoo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tattoo/key/shop/value/tattoo"></see>
     /// </summary>
-    let ``Tattoo/key/shop/value/tattoo`` =
-        Namespaced_IRI.parse _namespace_name "Tattoo/key/shop/value/tattoo" |> NamespacedName
-
+    let ``Tattoo/key/shop/value/tattoo`` = _prefix "Tattoo/key/shop/value/tattoo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tax"></see>
     /// </summary>
-    let Tax = Namespaced_IRI.parse _namespace_name "Tax" |> NamespacedName
-
+    let Tax = _prefix "Tax"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tax/key/shop/value/tax"></see>
     /// </summary>
-    let ``Tax/key/shop/value/tax`` =
-        Namespaced_IRI.parse _namespace_name "Tax/key/shop/value/tax" |> NamespacedName
-
+    let ``Tax/key/shop/value/tax`` = _prefix "Tax/key/shop/value/tax"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Taxi"></see>
     /// </summary>
-    let Taxi = Namespaced_IRI.parse _namespace_name "Taxi" |> NamespacedName
-
+    let Taxi = _prefix "Taxi"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Taxi/key/amenity/value/taxi"></see>
     /// </summary>
-    let ``Taxi/key/amenity/value/taxi`` =
-        Namespaced_IRI.parse _namespace_name "Taxi/key/amenity/value/taxi" |> NamespacedName
-
+    let ``Taxi/key/amenity/value/taxi`` = _prefix "Taxi/key/amenity/value/taxi"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tea"></see>
     /// </summary>
-    let Tea = Namespaced_IRI.parse _namespace_name "Tea" |> NamespacedName
-
+    let Tea = _prefix "Tea"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tea/key/shop/value/tea"></see>
     /// </summary>
-    let ``Tea/key/shop/value/tea`` =
-        Namespaced_IRI.parse _namespace_name "Tea/key/shop/value/tea" |> NamespacedName
-
+    let ``Tea/key/shop/value/tea`` = _prefix "Tea/key/shop/value/tea"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Technology"></see>
     /// </summary>
-    let Technology = Namespaced_IRI.parse _namespace_name "Technology" |> NamespacedName
+    let Technology = _prefix "Technology"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Technology/key/shop/value/technology"></see>
     /// </summary>
     let ``Technology/key/shop/value/technology`` =
-        Namespaced_IRI.parse _namespace_name "Technology/key/shop/value/technology" |> NamespacedName
+        _prefix "Technology/key/shop/value/technology"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telecom"></see>
     /// </summary>
-    let Telecom = Namespaced_IRI.parse _namespace_name "Telecom" |> NamespacedName
-
+    let Telecom = _prefix "Telecom"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telecom/key/shop/value/telecom"></see>
     /// </summary>
-    let ``Telecom/key/shop/value/telecom`` =
-        Namespaced_IRI.parse _namespace_name "Telecom/key/shop/value/telecom" |> NamespacedName
-
+    let ``Telecom/key/shop/value/telecom`` = _prefix "Telecom/key/shop/value/telecom"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telecommunication"></see>
     /// </summary>
-    let Telecommunication =
-        Namespaced_IRI.parse _namespace_name "Telecommunication" |> NamespacedName
+    let Telecommunication = _prefix "Telecommunication"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telecommunication/key/shop/value/telecommunication"></see>
     /// </summary>
     let ``Telecommunication/key/shop/value/telecommunication`` =
-        Namespaced_IRI.parse _namespace_name "Telecommunication/key/shop/value/telecommunication" |> NamespacedName
+        _prefix "Telecommunication/key/shop/value/telecommunication"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TelecommunicationOffice"></see>
     /// </summary>
-    let TelecommunicationOffice =
-        Namespaced_IRI.parse _namespace_name "TelecommunicationOffice" |> NamespacedName
+    let TelecommunicationOffice = _prefix "TelecommunicationOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TelecommunicationOffice/key/office/value/telecommunication"></see>
     /// </summary>
     let ``TelecommunicationOffice/key/office/value/telecommunication`` =
-        Namespaced_IRI.parse _namespace_name "TelecommunicationOffice/key/office/value/telecommunication" |> NamespacedName
+        _prefix "TelecommunicationOffice/key/office/value/telecommunication"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telephone"></see>
     /// </summary>
-    let Telephone = Namespaced_IRI.parse _namespace_name "Telephone" |> NamespacedName
+    let Telephone = _prefix "Telephone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telephone/key/amenity/value/telephone"></see>
     /// </summary>
     let ``Telephone/key/amenity/value/telephone`` =
-        Namespaced_IRI.parse _namespace_name "Telephone/key/amenity/value/telephone" |> NamespacedName
+        _prefix "Telephone/key/amenity/value/telephone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TelephoneExchange"></see>
     /// </summary>
-    let TelephoneExchange =
-        Namespaced_IRI.parse _namespace_name "TelephoneExchange" |> NamespacedName
+    let TelephoneExchange = _prefix "TelephoneExchange"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TelephoneExchange/key/man_made/value/telephone_exchange"></see>
     /// </summary>
     let ``TelephoneExchange/key/man_made/value/telephone_exchange`` =
-        Namespaced_IRI.parse _namespace_name "TelephoneExchange/key/man_made/value/telephone_exchange" |> NamespacedName
+        _prefix "TelephoneExchange/key/man_made/value/telephone_exchange"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TelephoneShop"></see>
     /// </summary>
-    let TelephoneShop =
-        Namespaced_IRI.parse _namespace_name "TelephoneShop" |> NamespacedName
+    let TelephoneShop = _prefix "TelephoneShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TelephoneShop/key/shop/value/telephone"></see>
     /// </summary>
     let ``TelephoneShop/key/shop/value/telephone`` =
-        Namespaced_IRI.parse _namespace_name "TelephoneShop/key/shop/value/telephone" |> NamespacedName
+        _prefix "TelephoneShop/key/shop/value/telephone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telescope"></see>
     /// </summary>
-    let Telescope = Namespaced_IRI.parse _namespace_name "Telescope" |> NamespacedName
+    let Telescope = _prefix "Telescope"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Telescope/key/man_made/value/telescope"></see>
     /// </summary>
     let ``Telescope/key/man_made/value/telescope`` =
-        Namespaced_IRI.parse _namespace_name "Telescope/key/man_made/value/telescope" |> NamespacedName
+        _prefix "Telescope/key/man_made/value/telescope"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Terrace"></see>
     /// </summary>
-    let Terrace = Namespaced_IRI.parse _namespace_name "Terrace" |> NamespacedName
+    let Terrace = _prefix "Terrace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Terrace/key/building/value/terrace"></see>
     /// </summary>
     let ``Terrace/key/building/value/terrace`` =
-        Namespaced_IRI.parse _namespace_name "Terrace/key/building/value/terrace" |> NamespacedName
+        _prefix "Terrace/key/building/value/terrace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TertiaryHighway"></see>
     /// </summary>
-    let TertiaryHighway =
-        Namespaced_IRI.parse _namespace_name "TertiaryHighway" |> NamespacedName
+    let TertiaryHighway = _prefix "TertiaryHighway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TertiaryHighway/key/highway/value/tertiary"></see>
     /// </summary>
     let ``TertiaryHighway/key/highway/value/tertiary`` =
-        Namespaced_IRI.parse _namespace_name "TertiaryHighway/key/highway/value/tertiary" |> NamespacedName
+        _prefix "TertiaryHighway/key/highway/value/tertiary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Textiles"></see>
     /// </summary>
-    let Textiles = Namespaced_IRI.parse _namespace_name "Textiles" |> NamespacedName
+    let Textiles = _prefix "Textiles"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Textiles/key/shop/value/textiles"></see>
     /// </summary>
     let ``Textiles/key/shop/value/textiles`` =
-        Namespaced_IRI.parse _namespace_name "Textiles/key/shop/value/textiles" |> NamespacedName
+        _prefix "Textiles/key/shop/value/textiles"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Theatre"></see>
     /// </summary>
-    let Theatre = Namespaced_IRI.parse _namespace_name "Theatre" |> NamespacedName
+    let Theatre = _prefix "Theatre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Theatre/key/amenity/value/theatre"></see>
     /// </summary>
     let ``Theatre/key/amenity/value/theatre`` =
-        Namespaced_IRI.parse _namespace_name "Theatre/key/amenity/value/theatre" |> NamespacedName
+        _prefix "Theatre/key/amenity/value/theatre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ThemePark"></see>
     /// </summary>
-    let ThemePark = Namespaced_IRI.parse _namespace_name "ThemePark" |> NamespacedName
+    let ThemePark = _prefix "ThemePark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ThemePark/key/tourism/value/theme_park"></see>
     /// </summary>
     let ``ThemePark/key/tourism/value/theme_park`` =
-        Namespaced_IRI.parse _namespace_name "ThemePark/key/tourism/value/theme_park" |> NamespacedName
+        _prefix "ThemePark/key/tourism/value/theme_park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ThresingFloor"></see>
     /// </summary>
-    let ThresingFloor =
-        Namespaced_IRI.parse _namespace_name "ThresingFloor" |> NamespacedName
+    let ThresingFloor = _prefix "ThresingFloor"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ThresingFloor/key/landuse/value/thresing_floor"></see>
     /// </summary>
     let ``ThresingFloor/key/landuse/value/thresing_floor`` =
-        Namespaced_IRI.parse _namespace_name "ThresingFloor/key/landuse/value/thresing_floor" |> NamespacedName
+        _prefix "ThresingFloor/key/landuse/value/thresing_floor"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Thrift"></see>
     /// </summary>
-    let Thrift = Namespaced_IRI.parse _namespace_name "Thrift" |> NamespacedName
-
+    let Thrift = _prefix "Thrift"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Thrift/key/shop/value/thrift"></see>
     /// </summary>
-    let ``Thrift/key/shop/value/thrift`` =
-        Namespaced_IRI.parse _namespace_name "Thrift/key/shop/value/thrift" |> NamespacedName
-
+    let ``Thrift/key/shop/value/thrift`` = _prefix "Thrift/key/shop/value/thrift"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ticket"></see>
     /// </summary>
-    let Ticket = Namespaced_IRI.parse _namespace_name "Ticket" |> NamespacedName
-
+    let Ticket = _prefix "Ticket"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Ticket/key/shop/value/ticket"></see>
     /// </summary>
-    let ``Ticket/key/shop/value/ticket`` =
-        Namespaced_IRI.parse _namespace_name "Ticket/key/shop/value/ticket" |> NamespacedName
-
+    let ``Ticket/key/shop/value/ticket`` = _prefix "Ticket/key/shop/value/ticket"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tickets"></see>
     /// </summary>
-    let Tickets = Namespaced_IRI.parse _namespace_name "Tickets" |> NamespacedName
-
+    let Tickets = _prefix "Tickets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tickets/key/shop/value/tickets"></see>
     /// </summary>
-    let ``Tickets/key/shop/value/tickets`` =
-        Namespaced_IRI.parse _namespace_name "Tickets/key/shop/value/tickets" |> NamespacedName
-
+    let ``Tickets/key/shop/value/tickets`` = _prefix "Tickets/key/shop/value/tickets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tiler"></see>
     /// </summary>
-    let Tiler = Namespaced_IRI.parse _namespace_name "Tiler" |> NamespacedName
-
+    let Tiler = _prefix "Tiler"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tiler/key/craft/value/tiler"></see>
     /// </summary>
-    let ``Tiler/key/craft/value/tiler`` =
-        Namespaced_IRI.parse _namespace_name "Tiler/key/craft/value/tiler" |> NamespacedName
-
+    let ``Tiler/key/craft/value/tiler`` = _prefix "Tiler/key/craft/value/tiler"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tinsmith"></see>
     /// </summary>
-    let Tinsmith = Namespaced_IRI.parse _namespace_name "Tinsmith" |> NamespacedName
+    let Tinsmith = _prefix "Tinsmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tinsmith/key/craft/value/tinsmith"></see>
     /// </summary>
     let ``Tinsmith/key/craft/value/tinsmith`` =
-        Namespaced_IRI.parse _namespace_name "Tinsmith/key/craft/value/tinsmith" |> NamespacedName
+        _prefix "Tinsmith/key/craft/value/tinsmith"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tobacco"></see>
     /// </summary>
-    let Tobacco = Namespaced_IRI.parse _namespace_name "Tobacco" |> NamespacedName
-
+    let Tobacco = _prefix "Tobacco"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tobacco/key/shop/value/tobacco"></see>
     /// </summary>
-    let ``Tobacco/key/shop/value/tobacco`` =
-        Namespaced_IRI.parse _namespace_name "Tobacco/key/shop/value/tobacco" |> NamespacedName
-
+    let ``Tobacco/key/shop/value/tobacco`` = _prefix "Tobacco/key/shop/value/tobacco"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tobacconist"></see>
     /// </summary>
-    let Tobacconist =
-        Namespaced_IRI.parse _namespace_name "Tobacconist" |> NamespacedName
+    let Tobacconist = _prefix "Tobacconist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tobacconist/key/shop/value/tobacconist"></see>
     /// </summary>
     let ``Tobacconist/key/shop/value/tobacconist`` =
-        Namespaced_IRI.parse _namespace_name "Tobacconist/key/shop/value/tobacconist" |> NamespacedName
+        _prefix "Tobacconist/key/shop/value/tobacconist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Toilets"></see>
     /// </summary>
-    let Toilets = Namespaced_IRI.parse _namespace_name "Toilets" |> NamespacedName
+    let Toilets = _prefix "Toilets"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Toilets/key/amenity/value/toilets"></see>
     /// </summary>
     let ``Toilets/key/amenity/value/toilets`` =
-        Namespaced_IRI.parse _namespace_name "Toilets/key/amenity/value/toilets" |> NamespacedName
+        _prefix "Toilets/key/amenity/value/toilets"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TollBooth"></see>
     /// </summary>
-    let TollBooth = Namespaced_IRI.parse _namespace_name "TollBooth" |> NamespacedName
+    let TollBooth = _prefix "TollBooth"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TollBooth/key/barrier/value/toll_booth"></see>
     /// </summary>
     let ``TollBooth/key/barrier/value/toll_booth`` =
-        Namespaced_IRI.parse _namespace_name "TollBooth/key/barrier/value/toll_booth" |> NamespacedName
+        _prefix "TollBooth/key/barrier/value/toll_booth"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tombstone"></see>
     /// </summary>
-    let Tombstone = Namespaced_IRI.parse _namespace_name "Tombstone" |> NamespacedName
+    let Tombstone = _prefix "Tombstone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tombstone/key/historic/value/tombstone"></see>
     /// </summary>
     let ``Tombstone/key/historic/value/tombstone`` =
-        Namespaced_IRI.parse _namespace_name "Tombstone/key/historic/value/tombstone" |> NamespacedName
+        _prefix "Tombstone/key/historic/value/tombstone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TourismInformation"></see>
     /// </summary>
-    let TourismInformation =
-        Namespaced_IRI.parse _namespace_name "TourismInformation" |> NamespacedName
+    let TourismInformation = _prefix "TourismInformation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TourismInformation/key/tourism/value/information"></see>
     /// </summary>
     let ``TourismInformation/key/tourism/value/information`` =
-        Namespaced_IRI.parse _namespace_name "TourismInformation/key/tourism/value/information" |> NamespacedName
+        _prefix "TourismInformation/key/tourism/value/information"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tourist"></see>
     /// </summary>
-    let Tourist = Namespaced_IRI.parse _namespace_name "Tourist" |> NamespacedName
+    let Tourist = _prefix "Tourist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tourist/key/amenity/value/tourist"></see>
     /// </summary>
     let ``Tourist/key/amenity/value/tourist`` =
-        Namespaced_IRI.parse _namespace_name "Tourist/key/amenity/value/tourist" |> NamespacedName
+        _prefix "Tourist/key/amenity/value/tourist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TouristShop"></see>
     /// </summary>
-    let TouristShop =
-        Namespaced_IRI.parse _namespace_name "TouristShop" |> NamespacedName
+    let TouristShop = _prefix "TouristShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TouristShop/key/shop/value/tourist"></see>
     /// </summary>
     let ``TouristShop/key/shop/value/tourist`` =
-        Namespaced_IRI.parse _namespace_name "TouristShop/key/shop/value/tourist" |> NamespacedName
+        _prefix "TouristShop/key/shop/value/tourist"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tower"></see>
     /// </summary>
-    let Tower = Namespaced_IRI.parse _namespace_name "Tower" |> NamespacedName
-
+    let Tower = _prefix "Tower"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tower/key/man_made/value/tower"></see>
     /// </summary>
-    let ``Tower/key/man_made/value/tower`` =
-        Namespaced_IRI.parse _namespace_name "Tower/key/man_made/value/tower" |> NamespacedName
-
+    let ``Tower/key/man_made/value/tower`` = _prefix "Tower/key/man_made/value/tower"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Town"></see>
     /// </summary>
-    let Town = Namespaced_IRI.parse _namespace_name "Town" |> NamespacedName
-
+    let Town = _prefix "Town"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Town/key/place/value/town"></see>
     /// </summary>
-    let ``Town/key/place/value/town`` =
-        Namespaced_IRI.parse _namespace_name "Town/key/place/value/town" |> NamespacedName
-
+    let ``Town/key/place/value/town`` = _prefix "Town/key/place/value/town"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Townhall"></see>
     /// </summary>
-    let Townhall = Namespaced_IRI.parse _namespace_name "Townhall" |> NamespacedName
+    let Townhall = _prefix "Townhall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Townhall/key/amenity/value/townhall"></see>
     /// </summary>
     let ``Townhall/key/amenity/value/townhall`` =
-        Namespaced_IRI.parse _namespace_name "Townhall/key/amenity/value/townhall" |> NamespacedName
+        _prefix "Townhall/key/amenity/value/townhall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Toys"></see>
     /// </summary>
-    let Toys = Namespaced_IRI.parse _namespace_name "Toys" |> NamespacedName
-
+    let Toys = _prefix "Toys"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Toys/key/shop/value/toys"></see>
     /// </summary>
-    let ``Toys/key/shop/value/toys`` =
-        Namespaced_IRI.parse _namespace_name "Toys/key/shop/value/toys" |> NamespacedName
-
+    let ``Toys/key/shop/value/toys`` = _prefix "Toys/key/shop/value/toys"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Track"></see>
     /// </summary>
-    let Track = Namespaced_IRI.parse _namespace_name "Track" |> NamespacedName
-
+    let Track = _prefix "Track"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Track/key/leisure/value/track"></see>
     /// </summary>
-    let ``Track/key/leisure/value/track`` =
-        Namespaced_IRI.parse _namespace_name "Track/key/leisure/value/track" |> NamespacedName
-
+    let ``Track/key/leisure/value/track`` = _prefix "Track/key/leisure/value/track"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Track/key/highway/value/track"></see>
     /// </summary>
-    let ``Track/key/highway/value/track`` =
-        Namespaced_IRI.parse _namespace_name "Track/key/highway/value/track" |> NamespacedName
-
+    let ``Track/key/highway/value/track`` = _prefix "Track/key/highway/value/track"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackHalt"></see>
     /// </summary>
-    let TrackHalt = Namespaced_IRI.parse _namespace_name "TrackHalt" |> NamespacedName
+    let TrackHalt = _prefix "TrackHalt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackHalt/key/railway/value/track_halt"></see>
     /// </summary>
     let ``TrackHalt/key/railway/value/track_halt`` =
-        Namespaced_IRI.parse _namespace_name "TrackHalt/key/railway/value/track_halt" |> NamespacedName
+        _prefix "TrackHalt/key/railway/value/track_halt"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType1"></see>
     /// </summary>
-    let TrackType1 = Namespaced_IRI.parse _namespace_name "TrackType1" |> NamespacedName
+    let TrackType1 = _prefix "TrackType1"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType1/key/tracktype/value/grade1"></see>
     /// </summary>
     let ``TrackType1/key/tracktype/value/grade1`` =
-        Namespaced_IRI.parse _namespace_name "TrackType1/key/tracktype/value/grade1" |> NamespacedName
+        _prefix "TrackType1/key/tracktype/value/grade1"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType2"></see>
     /// </summary>
-    let TrackType2 = Namespaced_IRI.parse _namespace_name "TrackType2" |> NamespacedName
+    let TrackType2 = _prefix "TrackType2"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType2/key/tracktype/value/grade2"></see>
     /// </summary>
     let ``TrackType2/key/tracktype/value/grade2`` =
-        Namespaced_IRI.parse _namespace_name "TrackType2/key/tracktype/value/grade2" |> NamespacedName
+        _prefix "TrackType2/key/tracktype/value/grade2"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType3"></see>
     /// </summary>
-    let TrackType3 = Namespaced_IRI.parse _namespace_name "TrackType3" |> NamespacedName
+    let TrackType3 = _prefix "TrackType3"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType3/key/tracktype/value/grade3"></see>
     /// </summary>
     let ``TrackType3/key/tracktype/value/grade3`` =
-        Namespaced_IRI.parse _namespace_name "TrackType3/key/tracktype/value/grade3" |> NamespacedName
+        _prefix "TrackType3/key/tracktype/value/grade3"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType4"></see>
     /// </summary>
-    let TrackType4 = Namespaced_IRI.parse _namespace_name "TrackType4" |> NamespacedName
+    let TrackType4 = _prefix "TrackType4"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType4/key/tracktype/value/grade4"></see>
     /// </summary>
     let ``TrackType4/key/tracktype/value/grade4`` =
-        Namespaced_IRI.parse _namespace_name "TrackType4/key/tracktype/value/grade4" |> NamespacedName
+        _prefix "TrackType4/key/tracktype/value/grade4"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType5"></see>
     /// </summary>
-    let TrackType5 = Namespaced_IRI.parse _namespace_name "TrackType5" |> NamespacedName
+    let TrackType5 = _prefix "TrackType5"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrackType5/key/tracktype/value/grade5"></see>
     /// </summary>
     let ``TrackType5/key/tracktype/value/grade5`` =
-        Namespaced_IRI.parse _namespace_name "TrackType5/key/tracktype/value/grade5" |> NamespacedName
+        _prefix "TrackType5/key/tracktype/value/grade5"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Trade"></see>
     /// </summary>
-    let Trade = Namespaced_IRI.parse _namespace_name "Trade" |> NamespacedName
-
+    let Trade = _prefix "Trade"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Trade/key/amenity/value/trade"></see>
     /// </summary>
-    let ``Trade/key/amenity/value/trade`` =
-        Namespaced_IRI.parse _namespace_name "Trade/key/amenity/value/trade" |> NamespacedName
-
+    let ``Trade/key/amenity/value/trade`` = _prefix "Trade/key/amenity/value/trade"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrafficCalming"></see>
     /// </summary>
-    let TrafficCalming =
-        Namespaced_IRI.parse _namespace_name "TrafficCalming" |> NamespacedName
+    let TrafficCalming = _prefix "TrafficCalming"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrafficCalming/key/traffic_calming/value/yes"></see>
     /// </summary>
     let ``TrafficCalming/key/traffic_calming/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "TrafficCalming/key/traffic_calming/value/yes" |> NamespacedName
+        _prefix "TrafficCalming/key/traffic_calming/value/yes"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrafficLight"></see>
     /// </summary>
-    let TrafficLight =
-        Namespaced_IRI.parse _namespace_name "TrafficLight" |> NamespacedName
+    let TrafficLight = _prefix "TrafficLight"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrafficLight/key/amenity/value/traffic_light"></see>
     /// </summary>
     let ``TrafficLight/key/amenity/value/traffic_light`` =
-        Namespaced_IRI.parse _namespace_name "TrafficLight/key/amenity/value/traffic_light" |> NamespacedName
+        _prefix "TrafficLight/key/amenity/value/traffic_light"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrafficSignals"></see>
     /// </summary>
-    let TrafficSignals =
-        Namespaced_IRI.parse _namespace_name "TrafficSignals" |> NamespacedName
+    let TrafficSignals = _prefix "TrafficSignals"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrafficSignals/key/highway/value/traffic_signals"></see>
     /// </summary>
     let ``TrafficSignals/key/highway/value/traffic_signals`` =
-        Namespaced_IRI.parse _namespace_name "TrafficSignals/key/highway/value/traffic_signals" |> NamespacedName
+        _prefix "TrafficSignals/key/highway/value/traffic_signals"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrainRoute"></see>
     /// </summary>
-    let TrainRoute = Namespaced_IRI.parse _namespace_name "TrainRoute" |> NamespacedName
+    let TrainRoute = _prefix "TrainRoute"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrainRoute/key/route/value/train"></see>
     /// </summary>
     let ``TrainRoute/key/route/value/train`` =
-        Namespaced_IRI.parse _namespace_name "TrainRoute/key/route/value/train" |> NamespacedName
+        _prefix "TrainRoute/key/route/value/train"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrainStation"></see>
     /// </summary>
-    let TrainStation =
-        Namespaced_IRI.parse _namespace_name "TrainStation" |> NamespacedName
+    let TrainStation = _prefix "TrainStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrainStation/key/building/value/train_station"></see>
     /// </summary>
     let ``TrainStation/key/building/value/train_station`` =
-        Namespaced_IRI.parse _namespace_name "TrainStation/key/building/value/train_station" |> NamespacedName
+        _prefix "TrainStation/key/building/value/train_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TramRoute"></see>
     /// </summary>
-    let TramRoute = Namespaced_IRI.parse _namespace_name "TramRoute" |> NamespacedName
-
+    let TramRoute = _prefix "TramRoute"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TramRoute/key/route/value/tram"></see>
     /// </summary>
-    let ``TramRoute/key/route/value/tram`` =
-        Namespaced_IRI.parse _namespace_name "TramRoute/key/route/value/tram" |> NamespacedName
-
+    let ``TramRoute/key/route/value/tram`` = _prefix "TramRoute/key/route/value/tram"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TramStation"></see>
     /// </summary>
-    let TramStation =
-        Namespaced_IRI.parse _namespace_name "TramStation" |> NamespacedName
+    let TramStation = _prefix "TramStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TramStation/key/railway/value/tram_station"></see>
     /// </summary>
     let ``TramStation/key/railway/value/tram_station`` =
-        Namespaced_IRI.parse _namespace_name "TramStation/key/railway/value/tram_station" |> NamespacedName
+        _prefix "TramStation/key/railway/value/tram_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TramStop"></see>
     /// </summary>
-    let TramStop = Namespaced_IRI.parse _namespace_name "TramStop" |> NamespacedName
+    let TramStop = _prefix "TramStop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TramStop/key/railway/value/tram_stop"></see>
     /// </summary>
     let ``TramStop/key/railway/value/tram_stop`` =
-        Namespaced_IRI.parse _namespace_name "TramStop/key/railway/value/tram_stop" |> NamespacedName
+        _prefix "TramStop/key/railway/value/tram_stop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tramway"></see>
     /// </summary>
-    let Tramway = Namespaced_IRI.parse _namespace_name "Tramway" |> NamespacedName
-
+    let Tramway = _prefix "Tramway"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tramway/key/railway/value/tram"></see>
     /// </summary>
-    let ``Tramway/key/railway/value/tram`` =
-        Namespaced_IRI.parse _namespace_name "Tramway/key/railway/value/tram" |> NamespacedName
-
+    let ``Tramway/key/railway/value/tram`` = _prefix "Tramway/key/railway/value/tram"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Transformer"></see>
     /// </summary>
-    let Transformer =
-        Namespaced_IRI.parse _namespace_name "Transformer" |> NamespacedName
+    let Transformer = _prefix "Transformer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Transformer/key/power/value/transformer"></see>
     /// </summary>
     let ``Transformer/key/power/value/transformer`` =
-        Namespaced_IRI.parse _namespace_name "Transformer/key/power/value/transformer" |> NamespacedName
+        _prefix "Transformer/key/power/value/transformer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrashBin"></see>
     /// </summary>
-    let TrashBin = Namespaced_IRI.parse _namespace_name "TrashBin" |> NamespacedName
+    let TrashBin = _prefix "TrashBin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrashBin/key/amenity/value/trash_bin"></see>
     /// </summary>
     let ``TrashBin/key/amenity/value/trash_bin`` =
-        Namespaced_IRI.parse _namespace_name "TrashBin/key/amenity/value/trash_bin" |> NamespacedName
+        _prefix "TrashBin/key/amenity/value/trash_bin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrashCan"></see>
     /// </summary>
-    let TrashCan = Namespaced_IRI.parse _namespace_name "TrashCan" |> NamespacedName
+    let TrashCan = _prefix "TrashCan"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrashCan/key/amenity/value/trash_can"></see>
     /// </summary>
     let ``TrashCan/key/amenity/value/trash_can`` =
-        Namespaced_IRI.parse _namespace_name "TrashCan/key/amenity/value/trash_can" |> NamespacedName
+        _prefix "TrashCan/key/amenity/value/trash_can"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TravelAgency"></see>
     /// </summary>
-    let TravelAgency =
-        Namespaced_IRI.parse _namespace_name "TravelAgency" |> NamespacedName
+    let TravelAgency = _prefix "TravelAgency"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TravelAgency/key/shop/value/travel_agency"></see>
     /// </summary>
     let ``TravelAgency/key/shop/value/travel_agency`` =
-        Namespaced_IRI.parse _namespace_name "TravelAgency/key/shop/value/travel_agency" |> NamespacedName
+        _prefix "TravelAgency/key/shop/value/travel_agency"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TravelAgency/key/shop/value/travel%20agency"></see>
     /// </summary>
     let ``TravelAgency/key/shop/value/travel%20agency`` =
-        Namespaced_IRI.parse _namespace_name "TravelAgency/key/shop/value/travel%20agency" |> NamespacedName
+        _prefix "TravelAgency/key/shop/value/travel%20agency"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TravelAgentOffice"></see>
     /// </summary>
-    let TravelAgentOffice =
-        Namespaced_IRI.parse _namespace_name "TravelAgentOffice" |> NamespacedName
+    let TravelAgentOffice = _prefix "TravelAgentOffice"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TravelAgentOffice/key/office/value/travel_agent"></see>
     /// </summary>
     let ``TravelAgentOffice/key/office/value/travel_agent`` =
-        Namespaced_IRI.parse _namespace_name "TravelAgentOffice/key/office/value/travel_agent" |> NamespacedName
+        _prefix "TravelAgentOffice/key/office/value/travel_agent"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tree"></see>
     /// </summary>
-    let Tree = Namespaced_IRI.parse _namespace_name "Tree" |> NamespacedName
-
+    let Tree = _prefix "Tree"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tree/key/natural/value/tree"></see>
     /// </summary>
-    let ``Tree/key/natural/value/tree`` =
-        Namespaced_IRI.parse _namespace_name "Tree/key/natural/value/tree" |> NamespacedName
-
+    let ``Tree/key/natural/value/tree`` = _prefix "Tree/key/natural/value/tree"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Treerow"></see>
     /// </summary>
-    let Treerow = Namespaced_IRI.parse _namespace_name "Treerow" |> NamespacedName
+    let Treerow = _prefix "Treerow"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Treerow/key/landuse/value/treerow"></see>
     /// </summary>
     let ``Treerow/key/landuse/value/treerow`` =
-        Namespaced_IRI.parse _namespace_name "Treerow/key/landuse/value/treerow" |> NamespacedName
+        _prefix "Treerow/key/landuse/value/treerow"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TricycleStation"></see>
     /// </summary>
-    let TricycleStation =
-        Namespaced_IRI.parse _namespace_name "TricycleStation" |> NamespacedName
+    let TricycleStation = _prefix "TricycleStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TricycleStation/key/amenity/value/tricycle_station"></see>
     /// </summary>
     let ``TricycleStation/key/amenity/value/tricycle_station`` =
-        Namespaced_IRI.parse _namespace_name "TricycleStation/key/amenity/value/tricycle_station" |> NamespacedName
+        _prefix "TricycleStation/key/amenity/value/tricycle_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Trumpet"></see>
     /// </summary>
-    let Trumpet = Namespaced_IRI.parse _namespace_name "Trumpet" |> NamespacedName
-
+    let Trumpet = _prefix "Trumpet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Trumpet/key/shop/value/trumpet"></see>
     /// </summary>
-    let ``Trumpet/key/shop/value/trumpet`` =
-        Namespaced_IRI.parse _namespace_name "Trumpet/key/shop/value/trumpet" |> NamespacedName
-
+    let ``Trumpet/key/shop/value/trumpet`` = _prefix "Trumpet/key/shop/value/trumpet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Trunk"></see>
     /// </summary>
-    let Trunk = Namespaced_IRI.parse _namespace_name "Trunk" |> NamespacedName
-
+    let Trunk = _prefix "Trunk"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Trunk/key/highway/value/trunk"></see>
     /// </summary>
-    let ``Trunk/key/highway/value/trunk`` =
-        Namespaced_IRI.parse _namespace_name "Trunk/key/highway/value/trunk" |> NamespacedName
-
+    let ``Trunk/key/highway/value/trunk`` = _prefix "Trunk/key/highway/value/trunk"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrunkLink"></see>
     /// </summary>
-    let TrunkLink = Namespaced_IRI.parse _namespace_name "TrunkLink" |> NamespacedName
+    let TrunkLink = _prefix "TrunkLink"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TrunkLink/key/highway/value/trunk_link"></see>
     /// </summary>
     let ``TrunkLink/key/highway/value/trunk_link`` =
-        Namespaced_IRI.parse _namespace_name "TrunkLink/key/highway/value/trunk_link" |> NamespacedName
+        _prefix "TrunkLink/key/highway/value/trunk_link"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tumulus"></see>
     /// </summary>
-    let Tumulus = Namespaced_IRI.parse _namespace_name "Tumulus" |> NamespacedName
+    let Tumulus = _prefix "Tumulus"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tumulus/key/historic/value/tumulus"></see>
     /// </summary>
     let ``Tumulus/key/historic/value/tumulus`` =
-        Namespaced_IRI.parse _namespace_name "Tumulus/key/historic/value/tumulus" |> NamespacedName
+        _prefix "Tumulus/key/historic/value/tumulus"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TunnelCulvert"></see>
     /// </summary>
-    let TunnelCulvert =
-        Namespaced_IRI.parse _namespace_name "TunnelCulvert" |> NamespacedName
+    let TunnelCulvert = _prefix "TunnelCulvert"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TunnelCulvert/key/tunnel/value/culvert"></see>
     /// </summary>
     let ``TunnelCulvert/key/tunnel/value/culvert`` =
-        Namespaced_IRI.parse _namespace_name "TunnelCulvert/key/tunnel/value/culvert" |> NamespacedName
+        _prefix "TunnelCulvert/key/tunnel/value/culvert"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TurningCircle"></see>
     /// </summary>
-    let TurningCircle =
-        Namespaced_IRI.parse _namespace_name "TurningCircle" |> NamespacedName
+    let TurningCircle = _prefix "TurningCircle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TurningCircle/key/highway/value/turning_circle"></see>
     /// </summary>
     let ``TurningCircle/key/highway/value/turning_circle`` =
-        Namespaced_IRI.parse _namespace_name "TurningCircle/key/highway/value/turning_circle" |> NamespacedName
+        _prefix "TurningCircle/key/highway/value/turning_circle"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TurningPoint"></see>
     /// </summary>
-    let TurningPoint =
-        Namespaced_IRI.parse _namespace_name "TurningPoint" |> NamespacedName
+    let TurningPoint = _prefix "TurningPoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/TurningPoint/key/waterway/value/turning_point"></see>
     /// </summary>
     let ``TurningPoint/key/waterway/value/turning_point`` =
-        Namespaced_IRI.parse _namespace_name "TurningPoint/key/waterway/value/turning_point" |> NamespacedName
+        _prefix "TurningPoint/key/waterway/value/turning_point"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Turnstile"></see>
     /// </summary>
-    let Turnstile = Namespaced_IRI.parse _namespace_name "Turnstile" |> NamespacedName
+    let Turnstile = _prefix "Turnstile"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Turnstile/key/barrier/value/turnstile"></see>
     /// </summary>
     let ``Turnstile/key/barrier/value/turnstile`` =
-        Namespaced_IRI.parse _namespace_name "Turnstile/key/barrier/value/turnstile" |> NamespacedName
+        _prefix "Turnstile/key/barrier/value/turnstile"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Turntable"></see>
     /// </summary>
-    let Turntable = Namespaced_IRI.parse _namespace_name "Turntable" |> NamespacedName
+    let Turntable = _prefix "Turntable"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Turntable/key/railway/value/turntable"></see>
     /// </summary>
     let ``Turntable/key/railway/value/turntable`` =
-        Namespaced_IRI.parse _namespace_name "Turntable/key/railway/value/turntable" |> NamespacedName
+        _prefix "Turntable/key/railway/value/turntable"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tyres"></see>
     /// </summary>
-    let Tyres = Namespaced_IRI.parse _namespace_name "Tyres" |> NamespacedName
-
+    let Tyres = _prefix "Tyres"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Tyres/key/shop/value/tyres"></see>
     /// </summary>
-    let ``Tyres/key/shop/value/tyres`` =
-        Namespaced_IRI.parse _namespace_name "Tyres/key/shop/value/tyres" |> NamespacedName
-
+    let ``Tyres/key/shop/value/tyres`` = _prefix "Tyres/key/shop/value/tyres"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UNESCOWorldHeritage"></see>
     /// </summary>
-    let UNESCOWorldHeritage =
-        Namespaced_IRI.parse _namespace_name "UNESCOWorldHeritage" |> NamespacedName
+    let UNESCOWorldHeritage = _prefix "UNESCOWorldHeritage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UNESCOWorldHeritage/key/historic/value/UNESCO_world_heritage"></see>
     /// </summary>
     let ``UNESCOWorldHeritage/key/historic/value/UNESCO_world_heritage`` =
-        Namespaced_IRI.parse _namespace_name "UNESCOWorldHeritage/key/historic/value/UNESCO_world_heritage" |> NamespacedName
+        _prefix "UNESCOWorldHeritage/key/historic/value/UNESCO_world_heritage"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UnclassifiedHighway"></see>
     /// </summary>
-    let UnclassifiedHighway =
-        Namespaced_IRI.parse _namespace_name "UnclassifiedHighway" |> NamespacedName
+    let UnclassifiedHighway = _prefix "UnclassifiedHighway"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UnclassifiedHighway/key/highway/value/unclassified"></see>
     /// </summary>
     let ``UnclassifiedHighway/key/highway/value/unclassified`` =
-        Namespaced_IRI.parse _namespace_name "UnclassifiedHighway/key/highway/value/unclassified" |> NamespacedName
+        _prefix "UnclassifiedHighway/key/highway/value/unclassified"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UndefinedShop"></see>
     /// </summary>
-    let UndefinedShop =
-        Namespaced_IRI.parse _namespace_name "UndefinedShop" |> NamespacedName
+    let UndefinedShop = _prefix "UndefinedShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UndefinedShop/key/shop/value/undefined"></see>
     /// </summary>
     let ``UndefinedShop/key/shop/value/undefined`` =
-        Namespaced_IRI.parse _namespace_name "UndefinedShop/key/shop/value/undefined" |> NamespacedName
+        _prefix "UndefinedShop/key/shop/value/undefined"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/University"></see>
     /// </summary>
-    let University = Namespaced_IRI.parse _namespace_name "University" |> NamespacedName
+    let University = _prefix "University"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/University/key/amenity/value/university"></see>
     /// </summary>
     let ``University/key/amenity/value/university`` =
-        Namespaced_IRI.parse _namespace_name "University/key/amenity/value/university" |> NamespacedName
+        _prefix "University/key/amenity/value/university"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UnknownShop"></see>
     /// </summary>
-    let UnknownShop =
-        Namespaced_IRI.parse _namespace_name "UnknownShop" |> NamespacedName
+    let UnknownShop = _prefix "UnknownShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/UnknownShop/key/shop/value/unknown"></see>
     /// </summary>
     let ``UnknownShop/key/shop/value/unknown`` =
-        Namespaced_IRI.parse _namespace_name "UnknownShop/key/shop/value/unknown" |> NamespacedName
+        _prefix "UnknownShop/key/shop/value/unknown"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Uphill+Terminal"></see>
     /// </summary>
-    let ``Uphill+Terminal`` =
-        Namespaced_IRI.parse _namespace_name "Uphill+Terminal" |> NamespacedName
+    let ``Uphill+Terminal`` = _prefix "Uphill+Terminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Uphill+Terminal/key/man_made/value/Uphill%20Terminal"></see>
     /// </summary>
     let ``Uphill+Terminal/key/man_made/value/Uphill%20Terminal`` =
-        Namespaced_IRI.parse _namespace_name "Uphill+Terminal/key/man_made/value/Uphill%20Terminal" |> NamespacedName
+        _prefix "Uphill+Terminal/key/man_made/value/Uphill%20Terminal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Upholsterer"></see>
     /// </summary>
-    let Upholsterer =
-        Namespaced_IRI.parse _namespace_name "Upholsterer" |> NamespacedName
+    let Upholsterer = _prefix "Upholsterer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Upholsterer/key/craft/value/upholsterer"></see>
     /// </summary>
     let ``Upholsterer/key/craft/value/upholsterer`` =
-        Namespaced_IRI.parse _namespace_name "Upholsterer/key/craft/value/upholsterer" |> NamespacedName
+        _prefix "Upholsterer/key/craft/value/upholsterer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vacant"></see>
     /// </summary>
-    let Vacant = Namespaced_IRI.parse _namespace_name "Vacant" |> NamespacedName
-
+    let Vacant = _prefix "Vacant"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vacant/key/shop/value/vacant"></see>
     /// </summary>
-    let ``Vacant/key/shop/value/vacant`` =
-        Namespaced_IRI.parse _namespace_name "Vacant/key/shop/value/vacant" |> NamespacedName
-
+    let ``Vacant/key/shop/value/vacant`` = _prefix "Vacant/key/shop/value/vacant"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Variety"></see>
     /// </summary>
-    let Variety = Namespaced_IRI.parse _namespace_name "Variety" |> NamespacedName
-
+    let Variety = _prefix "Variety"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Variety/key/shop/value/variety"></see>
     /// </summary>
-    let ``Variety/key/shop/value/variety`` =
-        Namespaced_IRI.parse _namespace_name "Variety/key/shop/value/variety" |> NamespacedName
-
+    let ``Variety/key/shop/value/variety`` = _prefix "Variety/key/shop/value/variety"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vdsl-aru"></see>
     /// </summary>
-    let ``Vdsl-aru`` = Namespaced_IRI.parse _namespace_name "Vdsl-aru" |> NamespacedName
+    let ``Vdsl-aru`` = _prefix "Vdsl-aru"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vdsl-aru/key/amenity/value/vdsl-aru"></see>
     /// </summary>
     let ``Vdsl-aru/key/amenity/value/vdsl-aru`` =
-        Namespaced_IRI.parse _namespace_name "Vdsl-aru/key/amenity/value/vdsl-aru" |> NamespacedName
+        _prefix "Vdsl-aru/key/amenity/value/vdsl-aru"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VehicleInspection"></see>
     /// </summary>
-    let VehicleInspection =
-        Namespaced_IRI.parse _namespace_name "VehicleInspection" |> NamespacedName
+    let VehicleInspection = _prefix "VehicleInspection"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VehicleInspection/key/amenity/value/vehicle_inspection"></see>
     /// </summary>
     let ``VehicleInspection/key/amenity/value/vehicle_inspection`` =
-        Namespaced_IRI.parse _namespace_name "VehicleInspection/key/amenity/value/vehicle_inspection" |> NamespacedName
+        _prefix "VehicleInspection/key/amenity/value/vehicle_inspection"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vending"></see>
     /// </summary>
-    let Vending = Namespaced_IRI.parse _namespace_name "Vending" |> NamespacedName
+    let Vending = _prefix "Vending"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vending/key/amenity/value/vending"></see>
     /// </summary>
     let ``Vending/key/amenity/value/vending`` =
-        Namespaced_IRI.parse _namespace_name "Vending/key/amenity/value/vending" |> NamespacedName
+        _prefix "Vending/key/amenity/value/vending"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vending+machine"></see>
     /// </summary>
-    let ``Vending+machine`` =
-        Namespaced_IRI.parse _namespace_name "Vending+machine" |> NamespacedName
+    let ``Vending+machine`` = _prefix "Vending+machine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vending+machine/key/amenity/value/vending%20machine"></see>
     /// </summary>
     let ``Vending+machine/key/amenity/value/vending%20machine`` =
-        Namespaced_IRI.parse _namespace_name "Vending+machine/key/amenity/value/vending%20machine" |> NamespacedName
+        _prefix "Vending+machine/key/amenity/value/vending%20machine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VendingMachine"></see>
     /// </summary>
-    let VendingMachine =
-        Namespaced_IRI.parse _namespace_name "VendingMachine" |> NamespacedName
+    let VendingMachine = _prefix "VendingMachine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VendingMachine/key/amenity/value/vending_machine"></see>
     /// </summary>
     let ``VendingMachine/key/amenity/value/vending_machine`` =
-        Namespaced_IRI.parse _namespace_name "VendingMachine/key/amenity/value/vending_machine" |> NamespacedName
+        _prefix "VendingMachine/key/amenity/value/vending_machine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VendingMaschine"></see>
     /// </summary>
-    let VendingMaschine =
-        Namespaced_IRI.parse _namespace_name "VendingMaschine" |> NamespacedName
+    let VendingMaschine = _prefix "VendingMaschine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VendingMaschine/key/amenity/value/vending_maschine"></see>
     /// </summary>
     let ``VendingMaschine/key/amenity/value/vending_maschine`` =
-        Namespaced_IRI.parse _namespace_name "VendingMaschine/key/amenity/value/vending_maschine" |> NamespacedName
+        _prefix "VendingMaschine/key/amenity/value/vending_maschine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VentilationShaft"></see>
     /// </summary>
-    let VentilationShaft =
-        Namespaced_IRI.parse _namespace_name "VentilationShaft" |> NamespacedName
+    let VentilationShaft = _prefix "VentilationShaft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VentilationShaft/key/railway/value/ventilation_shaft"></see>
     /// </summary>
     let ``VentilationShaft/key/railway/value/ventilation_shaft`` =
-        Namespaced_IRI.parse _namespace_name "VentilationShaft/key/railway/value/ventilation_shaft" |> NamespacedName
+        _prefix "VentilationShaft/key/railway/value/ventilation_shaft"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vet"></see>
     /// </summary>
-    let Vet = Namespaced_IRI.parse _namespace_name "Vet" |> NamespacedName
-
+    let Vet = _prefix "Vet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vet/key/amenity/value/vet"></see>
     /// </summary>
-    let ``Vet/key/amenity/value/vet`` =
-        Namespaced_IRI.parse _namespace_name "Vet/key/amenity/value/vet" |> NamespacedName
-
+    let ``Vet/key/amenity/value/vet`` = _prefix "Vet/key/amenity/value/vet"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Veterinary"></see>
     /// </summary>
-    let Veterinary = Namespaced_IRI.parse _namespace_name "Veterinary" |> NamespacedName
+    let Veterinary = _prefix "Veterinary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Veterinary/key/amenity/value/veterinary"></see>
     /// </summary>
     let ``Veterinary/key/amenity/value/veterinary`` =
-        Namespaced_IRI.parse _namespace_name "Veterinary/key/amenity/value/veterinary" |> NamespacedName
+        _prefix "Veterinary/key/amenity/value/veterinary"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vets"></see>
     /// </summary>
-    let Vets = Namespaced_IRI.parse _namespace_name "Vets" |> NamespacedName
-
+    let Vets = _prefix "Vets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vets/key/amenity/value/vets"></see>
     /// </summary>
-    let ``Vets/key/amenity/value/vets`` =
-        Namespaced_IRI.parse _namespace_name "Vets/key/amenity/value/vets" |> NamespacedName
-
+    let ``Vets/key/amenity/value/vets`` = _prefix "Vets/key/amenity/value/vets"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Viaduct"></see>
     /// </summary>
-    let Viaduct = Namespaced_IRI.parse _namespace_name "Viaduct" |> NamespacedName
+    let Viaduct = _prefix "Viaduct"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Viaduct/key/railway/value/viaduct"></see>
     /// </summary>
     let ``Viaduct/key/railway/value/viaduct`` =
-        Namespaced_IRI.parse _namespace_name "Viaduct/key/railway/value/viaduct" |> NamespacedName
+        _prefix "Viaduct/key/railway/value/viaduct"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Video"></see>
     /// </summary>
-    let Video = Namespaced_IRI.parse _namespace_name "Video" |> NamespacedName
-
+    let Video = _prefix "Video"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Video/key/shop/value/video"></see>
     /// </summary>
-    let ``Video/key/shop/value/video`` =
-        Namespaced_IRI.parse _namespace_name "Video/key/shop/value/video" |> NamespacedName
-
+    let ``Video/key/shop/value/video`` = _prefix "Video/key/shop/value/video"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VideoGames"></see>
     /// </summary>
-    let VideoGames = Namespaced_IRI.parse _namespace_name "VideoGames" |> NamespacedName
+    let VideoGames = _prefix "VideoGames"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VideoGames/key/shop/value/video_games"></see>
     /// </summary>
     let ``VideoGames/key/shop/value/video_games`` =
-        Namespaced_IRI.parse _namespace_name "VideoGames/key/shop/value/video_games" |> NamespacedName
+        _prefix "VideoGames/key/shop/value/video_games"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VideoRental"></see>
     /// </summary>
-    let VideoRental =
-        Namespaced_IRI.parse _namespace_name "VideoRental" |> NamespacedName
+    let VideoRental = _prefix "VideoRental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VideoRental/key/amenity/value/video_rental"></see>
     /// </summary>
     let ``VideoRental/key/amenity/value/video_rental`` =
-        Namespaced_IRI.parse _namespace_name "VideoRental/key/amenity/value/video_rental" |> NamespacedName
+        _prefix "VideoRental/key/amenity/value/video_rental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VideoRental/key/shop/value/video_rental"></see>
     /// </summary>
     let ``VideoRental/key/shop/value/video_rental`` =
-        Namespaced_IRI.parse _namespace_name "VideoRental/key/shop/value/video_rental" |> NamespacedName
+        _prefix "VideoRental/key/shop/value/video_rental"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Videosurveillance"></see>
     /// </summary>
-    let Videosurveillance =
-        Namespaced_IRI.parse _namespace_name "Videosurveillance" |> NamespacedName
+    let Videosurveillance = _prefix "Videosurveillance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Videosurveillance/key/man_made/value/videosurveillance"></see>
     /// </summary>
     let ``Videosurveillance/key/man_made/value/videosurveillance`` =
-        Namespaced_IRI.parse _namespace_name "Videosurveillance/key/man_made/value/videosurveillance" |> NamespacedName
+        _prefix "Videosurveillance/key/man_made/value/videosurveillance"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Viewpoint"></see>
     /// </summary>
-    let Viewpoint = Namespaced_IRI.parse _namespace_name "Viewpoint" |> NamespacedName
+    let Viewpoint = _prefix "Viewpoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Viewpoint/key/tourism/value/viewpoint"></see>
     /// </summary>
     let ``Viewpoint/key/tourism/value/viewpoint`` =
-        Namespaced_IRI.parse _namespace_name "Viewpoint/key/tourism/value/viewpoint" |> NamespacedName
+        _prefix "Viewpoint/key/tourism/value/viewpoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Village"></see>
     /// </summary>
-    let Village = Namespaced_IRI.parse _namespace_name "Village" |> NamespacedName
-
+    let Village = _prefix "Village"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Village/key/place/value/village"></see>
     /// </summary>
-    let ``Village/key/place/value/village`` =
-        Namespaced_IRI.parse _namespace_name "Village/key/place/value/village" |> NamespacedName
-
+    let ``Village/key/place/value/village`` = _prefix "Village/key/place/value/village"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VillageGreen"></see>
     /// </summary>
-    let VillageGreen =
-        Namespaced_IRI.parse _namespace_name "VillageGreen" |> NamespacedName
+    let VillageGreen = _prefix "VillageGreen"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VillageGreen/key/landuse/value/village_green"></see>
     /// </summary>
     let ``VillageGreen/key/landuse/value/village_green`` =
-        Namespaced_IRI.parse _namespace_name "VillageGreen/key/landuse/value/village_green" |> NamespacedName
+        _prefix "VillageGreen/key/landuse/value/village_green"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VillageHall"></see>
     /// </summary>
-    let VillageHall =
-        Namespaced_IRI.parse _namespace_name "VillageHall" |> NamespacedName
+    let VillageHall = _prefix "VillageHall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VillageHall/key/amenity/value/village_hall"></see>
     /// </summary>
     let ``VillageHall/key/amenity/value/village_hall`` =
-        Namespaced_IRI.parse _namespace_name "VillageHall/key/amenity/value/village_hall" |> NamespacedName
+        _prefix "VillageHall/key/amenity/value/village_hall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VillagePump"></see>
     /// </summary>
-    let VillagePump =
-        Namespaced_IRI.parse _namespace_name "VillagePump" |> NamespacedName
+    let VillagePump = _prefix "VillagePump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/VillagePump/key/man_made/value/village_pump"></see>
     /// </summary>
     let ``VillagePump/key/man_made/value/village_pump`` =
-        Namespaced_IRI.parse _namespace_name "VillagePump/key/man_made/value/village_pump" |> NamespacedName
+        _prefix "VillagePump/key/man_made/value/village_pump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vineyard"></see>
     /// </summary>
-    let Vineyard = Namespaced_IRI.parse _namespace_name "Vineyard" |> NamespacedName
+    let Vineyard = _prefix "Vineyard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Vineyard/key/landuse/value/vineyard"></see>
     /// </summary>
     let ``Vineyard/key/landuse/value/vineyard`` =
-        Namespaced_IRI.parse _namespace_name "Vineyard/key/landuse/value/vineyard" |> NamespacedName
+        _prefix "Vineyard/key/landuse/value/vineyard"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Viva+Blue"></see>
     /// </summary>
-    let ``Viva+Blue`` =
-        Namespaced_IRI.parse _namespace_name "Viva+Blue" |> NamespacedName
+    let ``Viva+Blue`` = _prefix "Viva+Blue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Viva+Blue/key/railway/value/Viva%20Blue"></see>
     /// </summary>
     let ``Viva+Blue/key/railway/value/Viva%20Blue`` =
-        Namespaced_IRI.parse _namespace_name "Viva+Blue/key/railway/value/Viva%20Blue" |> NamespacedName
+        _prefix "Viva+Blue/key/railway/value/Viva%20Blue"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Volcano"></see>
     /// </summary>
-    let Volcano = Namespaced_IRI.parse _namespace_name "Volcano" |> NamespacedName
+    let Volcano = _prefix "Volcano"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Volcano/key/natural/value/volcano"></see>
     /// </summary>
     let ``Volcano/key/natural/value/volcano`` =
-        Namespaced_IRI.parse _namespace_name "Volcano/key/natural/value/volcano" |> NamespacedName
+        _prefix "Volcano/key/natural/value/volcano"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WLAN"></see>
     /// </summary>
-    let WLAN = Namespaced_IRI.parse _namespace_name "WLAN" |> NamespacedName
-
+    let WLAN = _prefix "WLAN"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WLAN/key/amenity/value/WLAN"></see>
     /// </summary>
-    let ``WLAN/key/amenity/value/WLAN`` =
-        Namespaced_IRI.parse _namespace_name "WLAN/key/amenity/value/WLAN" |> NamespacedName
-
+    let ``WLAN/key/amenity/value/WLAN`` = _prefix "WLAN/key/amenity/value/WLAN"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WalkingBus"></see>
     /// </summary>
-    let WalkingBus = Namespaced_IRI.parse _namespace_name "WalkingBus" |> NamespacedName
+    let WalkingBus = _prefix "WalkingBus"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WalkingBus/key/amenity/value/walking_bus"></see>
     /// </summary>
     let ``WalkingBus/key/amenity/value/walking_bus`` =
-        Namespaced_IRI.parse _namespace_name "WalkingBus/key/amenity/value/walking_bus" |> NamespacedName
+        _prefix "WalkingBus/key/amenity/value/walking_bus"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wall"></see>
     /// </summary>
-    let Wall = Namespaced_IRI.parse _namespace_name "Wall" |> NamespacedName
-
+    let Wall = _prefix "Wall"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wall/key/barrier/value/wall"></see>
     /// </summary>
-    let ``Wall/key/barrier/value/wall`` =
-        Namespaced_IRI.parse _namespace_name "Wall/key/barrier/value/wall" |> NamespacedName
-
+    let ``Wall/key/barrier/value/wall`` = _prefix "Wall/key/barrier/value/wall"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Waste"></see>
     /// </summary>
-    let Waste = Namespaced_IRI.parse _namespace_name "Waste" |> NamespacedName
-
+    let Waste = _prefix "Waste"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Waste/key/amenity/value/waste"></see>
     /// </summary>
-    let ``Waste/key/amenity/value/waste`` =
-        Namespaced_IRI.parse _namespace_name "Waste/key/amenity/value/waste" |> NamespacedName
-
+    let ``Waste/key/amenity/value/waste`` = _prefix "Waste/key/amenity/value/waste"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBasket"></see>
     /// </summary>
-    let WasteBasket =
-        Namespaced_IRI.parse _namespace_name "WasteBasket" |> NamespacedName
+    let WasteBasket = _prefix "WasteBasket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBasket/key/amenity/value/waste_basket"></see>
     /// </summary>
     let ``WasteBasket/key/amenity/value/waste_basket`` =
-        Namespaced_IRI.parse _namespace_name "WasteBasket/key/amenity/value/waste_basket" |> NamespacedName
+        _prefix "WasteBasket/key/amenity/value/waste_basket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBasket%3Brecycling"></see>
     /// </summary>
-    let ``WasteBasket%3Brecycling`` =
-        Namespaced_IRI.parse _namespace_name "WasteBasket%3Brecycling" |> NamespacedName
+    let ``WasteBasket%3Brecycling`` = _prefix "WasteBasket%3Brecycling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBasket%3Brecycling/key/amenity/value/waste_basket%3Brecycling"></see>
     /// </summary>
     let ``WasteBasket%3Brecycling/key/amenity/value/waste_basket%3Brecycling`` =
-        Namespaced_IRI.parse _namespace_name "WasteBasket%3Brecycling/key/amenity/value/waste_basket%3Brecycling" |> NamespacedName
+        _prefix "WasteBasket%3Brecycling/key/amenity/value/waste_basket%3Brecycling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBin"></see>
     /// </summary>
-    let WasteBin = Namespaced_IRI.parse _namespace_name "WasteBin" |> NamespacedName
+    let WasteBin = _prefix "WasteBin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBin/key/amenity/value/waste_bin"></see>
     /// </summary>
     let ``WasteBin/key/amenity/value/waste_bin`` =
-        Namespaced_IRI.parse _namespace_name "WasteBin/key/amenity/value/waste_bin" |> NamespacedName
+        _prefix "WasteBin/key/amenity/value/waste_bin"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBucket"></see>
     /// </summary>
-    let WasteBucket =
-        Namespaced_IRI.parse _namespace_name "WasteBucket" |> NamespacedName
+    let WasteBucket = _prefix "WasteBucket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteBucket/key/amenity/value/waste_bucket"></see>
     /// </summary>
     let ``WasteBucket/key/amenity/value/waste_bucket`` =
-        Namespaced_IRI.parse _namespace_name "WasteBucket/key/amenity/value/waste_bucket" |> NamespacedName
+        _prefix "WasteBucket/key/amenity/value/waste_bucket"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteContainer"></see>
     /// </summary>
-    let WasteContainer =
-        Namespaced_IRI.parse _namespace_name "WasteContainer" |> NamespacedName
+    let WasteContainer = _prefix "WasteContainer"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteContainer/key/amenity/value/waste_container"></see>
     /// </summary>
     let ``WasteContainer/key/amenity/value/waste_container`` =
-        Namespaced_IRI.parse _namespace_name "WasteContainer/key/amenity/value/waste_container" |> NamespacedName
+        _prefix "WasteContainer/key/amenity/value/waste_container"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteDisposal"></see>
     /// </summary>
-    let WasteDisposal =
-        Namespaced_IRI.parse _namespace_name "WasteDisposal" |> NamespacedName
+    let WasteDisposal = _prefix "WasteDisposal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WasteDisposal/key/amenity/value/waste_disposal"></see>
     /// </summary>
     let ``WasteDisposal/key/amenity/value/waste_disposal`` =
-        Namespaced_IRI.parse _namespace_name "WasteDisposal/key/amenity/value/waste_disposal" |> NamespacedName
+        _prefix "WasteDisposal/key/amenity/value/waste_disposal"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WastewaterPlant"></see>
     /// </summary>
-    let WastewaterPlant =
-        Namespaced_IRI.parse _namespace_name "WastewaterPlant" |> NamespacedName
+    let WastewaterPlant = _prefix "WastewaterPlant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WastewaterPlant/key/man_made/value/wastewater_plant"></see>
     /// </summary>
     let ``WastewaterPlant/key/man_made/value/wastewater_plant`` =
-        Namespaced_IRI.parse _namespace_name "WastewaterPlant/key/man_made/value/wastewater_plant" |> NamespacedName
+        _prefix "WastewaterPlant/key/man_made/value/wastewater_plant"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Watches"></see>
     /// </summary>
-    let Watches = Namespaced_IRI.parse _namespace_name "Watches" |> NamespacedName
-
+    let Watches = _prefix "Watches"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Watches/key/shop/value/watches"></see>
     /// </summary>
-    let ``Watches/key/shop/value/watches`` =
-        Namespaced_IRI.parse _namespace_name "Watches/key/shop/value/watches" |> NamespacedName
-
+    let ``Watches/key/shop/value/watches`` = _prefix "Watches/key/shop/value/watches"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Watchmaker"></see>
     /// </summary>
-    let Watchmaker = Namespaced_IRI.parse _namespace_name "Watchmaker" |> NamespacedName
+    let Watchmaker = _prefix "Watchmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Watchmaker/key/craft/value/watchmaker"></see>
     /// </summary>
     let ``Watchmaker/key/craft/value/watchmaker`` =
-        Namespaced_IRI.parse _namespace_name "Watchmaker/key/craft/value/watchmaker" |> NamespacedName
+        _prefix "Watchmaker/key/craft/value/watchmaker"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Water"></see>
     /// </summary>
-    let Water = Namespaced_IRI.parse _namespace_name "Water" |> NamespacedName
-
+    let Water = _prefix "Water"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Water/key/natural/value/water"></see>
     /// </summary>
-    let ``Water/key/natural/value/water`` =
-        Namespaced_IRI.parse _namespace_name "Water/key/natural/value/water" |> NamespacedName
-
+    let ``Water/key/natural/value/water`` = _prefix "Water/key/natural/value/water"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Water/key/amenity/value/water"></see>
     /// </summary>
-    let ``Water/key/amenity/value/water`` =
-        Namespaced_IRI.parse _namespace_name "Water/key/amenity/value/water" |> NamespacedName
-
+    let ``Water/key/amenity/value/water`` = _prefix "Water/key/amenity/value/water"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterFountain"></see>
     /// </summary>
-    let WaterFountain =
-        Namespaced_IRI.parse _namespace_name "WaterFountain" |> NamespacedName
+    let WaterFountain = _prefix "WaterFountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterFountain/key/amenity/value/water_fountain"></see>
     /// </summary>
     let ``WaterFountain/key/amenity/value/water_fountain`` =
-        Namespaced_IRI.parse _namespace_name "WaterFountain/key/amenity/value/water_fountain" |> NamespacedName
+        _prefix "WaterFountain/key/amenity/value/water_fountain"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterPark"></see>
     /// </summary>
-    let WaterPark = Namespaced_IRI.parse _namespace_name "WaterPark" |> NamespacedName
+    let WaterPark = _prefix "WaterPark"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterPark/key/leisure/value/water_park"></see>
     /// </summary>
     let ``WaterPark/key/leisure/value/water_park`` =
-        Namespaced_IRI.parse _namespace_name "WaterPark/key/leisure/value/water_park" |> NamespacedName
+        _prefix "WaterPark/key/leisure/value/water_park"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterPoint"></see>
     /// </summary>
-    let WaterPoint = Namespaced_IRI.parse _namespace_name "WaterPoint" |> NamespacedName
+    let WaterPoint = _prefix "WaterPoint"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterPoint/key/waterway/value/water_point"></see>
     /// </summary>
     let ``WaterPoint/key/waterway/value/water_point`` =
-        Namespaced_IRI.parse _namespace_name "WaterPoint/key/waterway/value/water_point" |> NamespacedName
+        _prefix "WaterPoint/key/waterway/value/water_point"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterRefilling"></see>
     /// </summary>
-    let WaterRefilling =
-        Namespaced_IRI.parse _namespace_name "WaterRefilling" |> NamespacedName
+    let WaterRefilling = _prefix "WaterRefilling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterRefilling/key/shop/value/water_refilling"></see>
     /// </summary>
     let ``WaterRefilling/key/shop/value/water_refilling`` =
-        Namespaced_IRI.parse _namespace_name "WaterRefilling/key/shop/value/water_refilling" |> NamespacedName
+        _prefix "WaterRefilling/key/shop/value/water_refilling"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterTank"></see>
     /// </summary>
-    let WaterTank = Namespaced_IRI.parse _namespace_name "WaterTank" |> NamespacedName
+    let WaterTank = _prefix "WaterTank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterTank/key/man_made/value/water_tank"></see>
     /// </summary>
     let ``WaterTank/key/man_made/value/water_tank`` =
-        Namespaced_IRI.parse _namespace_name "WaterTank/key/man_made/value/water_tank" |> NamespacedName
+        _prefix "WaterTank/key/man_made/value/water_tank"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterTower"></see>
     /// </summary>
-    let WaterTower = Namespaced_IRI.parse _namespace_name "WaterTower" |> NamespacedName
+    let WaterTower = _prefix "WaterTower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterTower/key/man_made/value/water_tower"></see>
     /// </summary>
     let ``WaterTower/key/man_made/value/water_tower`` =
-        Namespaced_IRI.parse _namespace_name "WaterTower/key/man_made/value/water_tower" |> NamespacedName
+        _prefix "WaterTower/key/man_made/value/water_tower"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterWell"></see>
     /// </summary>
-    let WaterWell = Namespaced_IRI.parse _namespace_name "WaterWell" |> NamespacedName
+    let WaterWell = _prefix "WaterWell"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterWell/key/man_made/value/water_well"></see>
     /// </summary>
     let ``WaterWell/key/man_made/value/water_well`` =
-        Namespaced_IRI.parse _namespace_name "WaterWell/key/man_made/value/water_well" |> NamespacedName
+        _prefix "WaterWell/key/man_made/value/water_well"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterWell/key/amenity/value/water_well"></see>
     /// </summary>
     let ``WaterWell/key/amenity/value/water_well`` =
-        Namespaced_IRI.parse _namespace_name "WaterWell/key/amenity/value/water_well" |> NamespacedName
+        _prefix "WaterWell/key/amenity/value/water_well"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterWorks"></see>
     /// </summary>
-    let WaterWorks = Namespaced_IRI.parse _namespace_name "WaterWorks" |> NamespacedName
+    let WaterWorks = _prefix "WaterWorks"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterWorks/key/man_made/value/water_works"></see>
     /// </summary>
     let ``WaterWorks/key/man_made/value/water_works`` =
-        Namespaced_IRI.parse _namespace_name "WaterWorks/key/man_made/value/water_works" |> NamespacedName
+        _prefix "WaterWorks/key/man_made/value/water_works"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Waterfall"></see>
     /// </summary>
-    let Waterfall = Namespaced_IRI.parse _namespace_name "Waterfall" |> NamespacedName
+    let Waterfall = _prefix "Waterfall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Waterfall/key/waterway/value/waterfall"></see>
     /// </summary>
     let ``Waterfall/key/waterway/value/waterfall`` =
-        Namespaced_IRI.parse _namespace_name "Waterfall/key/waterway/value/waterfall" |> NamespacedName
+        _prefix "Waterfall/key/waterway/value/waterfall"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Waterhole"></see>
     /// </summary>
-    let Waterhole = Namespaced_IRI.parse _namespace_name "Waterhole" |> NamespacedName
+    let Waterhole = _prefix "Waterhole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Waterhole/key/natural/value/waterhole"></see>
     /// </summary>
     let ``Waterhole/key/natural/value/waterhole`` =
-        Namespaced_IRI.parse _namespace_name "Waterhole/key/natural/value/waterhole" |> NamespacedName
+        _prefix "Waterhole/key/natural/value/waterhole"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WateringPlace"></see>
     /// </summary>
-    let WateringPlace =
-        Namespaced_IRI.parse _namespace_name "WateringPlace" |> NamespacedName
+    let WateringPlace = _prefix "WateringPlace"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WateringPlace/key/amenity/value/watering_place"></see>
     /// </summary>
     let ``WateringPlace/key/amenity/value/watering_place`` =
-        Namespaced_IRI.parse _namespace_name "WateringPlace/key/amenity/value/watering_place" |> NamespacedName
+        _prefix "WateringPlace/key/amenity/value/watering_place"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Watermill"></see>
     /// </summary>
-    let Watermill = Namespaced_IRI.parse _namespace_name "Watermill" |> NamespacedName
+    let Watermill = _prefix "Watermill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Watermill/key/man_made/value/watermill"></see>
     /// </summary>
     let ``Watermill/key/man_made/value/watermill`` =
-        Namespaced_IRI.parse _namespace_name "Watermill/key/man_made/value/watermill" |> NamespacedName
+        _prefix "Watermill/key/man_made/value/watermill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayDrawbridge"></see>
     /// </summary>
-    let WaterwayDrawbridge =
-        Namespaced_IRI.parse _namespace_name "WaterwayDrawbridge" |> NamespacedName
+    let WaterwayDrawbridge = _prefix "WaterwayDrawbridge"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayDrawbridge/key/waterway/value/drawbridge"></see>
     /// </summary>
     let ``WaterwayDrawbridge/key/waterway/value/drawbridge`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayDrawbridge/key/waterway/value/drawbridge" |> NamespacedName
+        _prefix "WaterwayDrawbridge/key/waterway/value/drawbridge"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayFord"></see>
     /// </summary>
-    let WaterwayFord =
-        Namespaced_IRI.parse _namespace_name "WaterwayFord" |> NamespacedName
+    let WaterwayFord = _prefix "WaterwayFord"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayFord/key/waterway/value/ford"></see>
     /// </summary>
     let ``WaterwayFord/key/waterway/value/ford`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayFord/key/waterway/value/ford" |> NamespacedName
+        _prefix "WaterwayFord/key/waterway/value/ford"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayFuel"></see>
     /// </summary>
-    let WaterwayFuel =
-        Namespaced_IRI.parse _namespace_name "WaterwayFuel" |> NamespacedName
+    let WaterwayFuel = _prefix "WaterwayFuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayFuel/key/waterway/value/fuel"></see>
     /// </summary>
     let ``WaterwayFuel/key/waterway/value/fuel`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayFuel/key/waterway/value/fuel" |> NamespacedName
+        _prefix "WaterwayFuel/key/waterway/value/fuel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayLock"></see>
     /// </summary>
-    let WaterwayLock =
-        Namespaced_IRI.parse _namespace_name "WaterwayLock" |> NamespacedName
+    let WaterwayLock = _prefix "WaterwayLock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayLock/key/waterway/value/lock"></see>
     /// </summary>
     let ``WaterwayLock/key/waterway/value/lock`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayLock/key/waterway/value/lock" |> NamespacedName
+        _prefix "WaterwayLock/key/waterway/value/lock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayMilestone"></see>
     /// </summary>
-    let WaterwayMilestone =
-        Namespaced_IRI.parse _namespace_name "WaterwayMilestone" |> NamespacedName
+    let WaterwayMilestone = _prefix "WaterwayMilestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayMilestone/key/waterway/value/milestone"></see>
     /// </summary>
     let ``WaterwayMilestone/key/waterway/value/milestone`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayMilestone/key/waterway/value/milestone" |> NamespacedName
+        _prefix "WaterwayMilestone/key/waterway/value/milestone"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayPumpingStation"></see>
     /// </summary>
-    let WaterwayPumpingStation =
-        Namespaced_IRI.parse _namespace_name "WaterwayPumpingStation" |> NamespacedName
+    let WaterwayPumpingStation = _prefix "WaterwayPumpingStation"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayPumpingStation/key/waterway/value/pumping_station"></see>
     /// </summary>
     let ``WaterwayPumpingStation/key/waterway/value/pumping_station`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayPumpingStation/key/waterway/value/pumping_station" |> NamespacedName
+        _prefix "WaterwayPumpingStation/key/waterway/value/pumping_station"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayRock"></see>
     /// </summary>
-    let WaterwayRock =
-        Namespaced_IRI.parse _namespace_name "WaterwayRock" |> NamespacedName
+    let WaterwayRock = _prefix "WaterwayRock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayRock/key/waterway/value/rock"></see>
     /// </summary>
     let ``WaterwayRock/key/waterway/value/rock`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayRock/key/waterway/value/rock" |> NamespacedName
+        _prefix "WaterwayRock/key/waterway/value/rock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwaySpring"></see>
     /// </summary>
-    let WaterwaySpring =
-        Namespaced_IRI.parse _namespace_name "WaterwaySpring" |> NamespacedName
+    let WaterwaySpring = _prefix "WaterwaySpring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwaySpring/key/waterway/value/spring"></see>
     /// </summary>
     let ``WaterwaySpring/key/waterway/value/spring`` =
-        Namespaced_IRI.parse _namespace_name "WaterwaySpring/key/waterway/value/spring" |> NamespacedName
+        _prefix "WaterwaySpring/key/waterway/value/spring"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayWreck"></see>
     /// </summary>
-    let WaterwayWreck =
-        Namespaced_IRI.parse _namespace_name "WaterwayWreck" |> NamespacedName
+    let WaterwayWreck = _prefix "WaterwayWreck"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaterwayWreck/key/waterway/value/wreck"></see>
     /// </summary>
     let ``WaterwayWreck/key/waterway/value/wreck`` =
-        Namespaced_IRI.parse _namespace_name "WaterwayWreck/key/waterway/value/wreck" |> NamespacedName
+        _prefix "WaterwayWreck/key/waterway/value/wreck"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaysideChapel"></see>
     /// </summary>
-    let WaysideChapel =
-        Namespaced_IRI.parse _namespace_name "WaysideChapel" |> NamespacedName
+    let WaysideChapel = _prefix "WaysideChapel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaysideChapel/key/historic/value/wayside_chapel"></see>
     /// </summary>
     let ``WaysideChapel/key/historic/value/wayside_chapel`` =
-        Namespaced_IRI.parse _namespace_name "WaysideChapel/key/historic/value/wayside_chapel" |> NamespacedName
+        _prefix "WaysideChapel/key/historic/value/wayside_chapel"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaysideCross"></see>
     /// </summary>
-    let WaysideCross =
-        Namespaced_IRI.parse _namespace_name "WaysideCross" |> NamespacedName
+    let WaysideCross = _prefix "WaysideCross"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaysideCross/key/historic/value/wayside_cross%20"></see>
     /// </summary>
     let ``WaysideCross/key/historic/value/wayside_cross%20`` =
-        Namespaced_IRI.parse _namespace_name "WaysideCross/key/historic/value/wayside_cross%20" |> NamespacedName
+        _prefix "WaysideCross/key/historic/value/wayside_cross%20"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaysideShrine"></see>
     /// </summary>
-    let WaysideShrine =
-        Namespaced_IRI.parse _namespace_name "WaysideShrine" |> NamespacedName
+    let WaysideShrine = _prefix "WaysideShrine"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WaysideShrine/key/historic/value/wayside_shrine%20"></see>
     /// </summary>
     let ``WaysideShrine/key/historic/value/wayside_shrine%20`` =
-        Namespaced_IRI.parse _namespace_name "WaysideShrine/key/historic/value/wayside_shrine%20" |> NamespacedName
+        _prefix "WaysideShrine/key/historic/value/wayside_shrine%20"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Weir"></see>
     /// </summary>
-    let Weir = Namespaced_IRI.parse _namespace_name "Weir" |> NamespacedName
-
+    let Weir = _prefix "Weir"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Weir/key/waterway/value/weir"></see>
     /// </summary>
-    let ``Weir/key/waterway/value/weir`` =
-        Namespaced_IRI.parse _namespace_name "Weir/key/waterway/value/weir" |> NamespacedName
-
+    let ``Weir/key/waterway/value/weir`` = _prefix "Weir/key/waterway/value/weir"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Well"></see>
     /// </summary>
-    let Well = Namespaced_IRI.parse _namespace_name "Well" |> NamespacedName
-
+    let Well = _prefix "Well"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Well/key/amenity/value/well"></see>
     /// </summary>
-    let ``Well/key/amenity/value/well`` =
-        Namespaced_IRI.parse _namespace_name "Well/key/amenity/value/well" |> NamespacedName
-
+    let ``Well/key/amenity/value/well`` = _prefix "Well/key/amenity/value/well"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WellWater"></see>
     /// </summary>
-    let WellWater = Namespaced_IRI.parse _namespace_name "WellWater" |> NamespacedName
+    let WellWater = _prefix "WellWater"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WellWater/key/man_made/value/well_water"></see>
     /// </summary>
     let ``WellWater/key/man_made/value/well_water`` =
-        Namespaced_IRI.parse _namespace_name "WellWater/key/man_made/value/well_water" |> NamespacedName
+        _prefix "WellWater/key/man_made/value/well_water"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wetland"></see>
     /// </summary>
-    let Wetland = Namespaced_IRI.parse _namespace_name "Wetland" |> NamespacedName
+    let Wetland = _prefix "Wetland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wetland/key/natural/value/wetland"></see>
     /// </summary>
     let ``Wetland/key/natural/value/wetland`` =
-        Namespaced_IRI.parse _namespace_name "Wetland/key/natural/value/wetland" |> NamespacedName
+        _prefix "Wetland/key/natural/value/wetland"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Whatever"></see>
     /// </summary>
-    let Whatever = Namespaced_IRI.parse _namespace_name "Whatever" |> NamespacedName
+    let Whatever = _prefix "Whatever"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Whatever/key/shop/value/whatever"></see>
     /// </summary>
     let ``Whatever/key/shop/value/whatever`` =
-        Namespaced_IRI.parse _namespace_name "Whatever/key/shop/value/whatever" |> NamespacedName
+        _prefix "Whatever/key/shop/value/whatever"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Whirlpool"></see>
     /// </summary>
-    let Whirlpool = Namespaced_IRI.parse _namespace_name "Whirlpool" |> NamespacedName
+    let Whirlpool = _prefix "Whirlpool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Whirlpool/key/amenity/value/whirlpool"></see>
     /// </summary>
     let ``Whirlpool/key/amenity/value/whirlpool`` =
-        Namespaced_IRI.parse _namespace_name "Whirlpool/key/amenity/value/whirlpool" |> NamespacedName
+        _prefix "Whirlpool/key/amenity/value/whirlpool"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wholesale"></see>
     /// </summary>
-    let Wholesale = Namespaced_IRI.parse _namespace_name "Wholesale" |> NamespacedName
+    let Wholesale = _prefix "Wholesale"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wholesale/key/shop/value/wholesale"></see>
     /// </summary>
     let ``Wholesale/key/shop/value/wholesale`` =
-        Namespaced_IRI.parse _namespace_name "Wholesale/key/shop/value/wholesale" |> NamespacedName
+        _prefix "Wholesale/key/shop/value/wholesale"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wifi"></see>
     /// </summary>
-    let Wifi = Namespaced_IRI.parse _namespace_name "Wifi" |> NamespacedName
-
+    let Wifi = _prefix "Wifi"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wifi/key/amenity/value/wifi"></see>
     /// </summary>
-    let ``Wifi/key/amenity/value/wifi`` =
-        Namespaced_IRI.parse _namespace_name "Wifi/key/amenity/value/wifi" |> NamespacedName
-
+    let ``Wifi/key/amenity/value/wifi`` = _prefix "Wifi/key/amenity/value/wifi"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WildlifeHide"></see>
     /// </summary>
-    let WildlifeHide =
-        Namespaced_IRI.parse _namespace_name "WildlifeHide" |> NamespacedName
+    let WildlifeHide = _prefix "WildlifeHide"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WildlifeHide/key/man_made/value/wildlife_hide"></see>
     /// </summary>
     let ``WildlifeHide/key/man_made/value/wildlife_hide`` =
-        Namespaced_IRI.parse _namespace_name "WildlifeHide/key/man_made/value/wildlife_hide" |> NamespacedName
+        _prefix "WildlifeHide/key/man_made/value/wildlife_hide"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windmill"></see>
     /// </summary>
-    let Windmill = Namespaced_IRI.parse _namespace_name "Windmill" |> NamespacedName
+    let Windmill = _prefix "Windmill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windmill/key/man_made/value/windmill"></see>
     /// </summary>
     let ``Windmill/key/man_made/value/windmill`` =
-        Namespaced_IRI.parse _namespace_name "Windmill/key/man_made/value/windmill" |> NamespacedName
+        _prefix "Windmill/key/man_made/value/windmill"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windows"></see>
     /// </summary>
-    let Windows = Namespaced_IRI.parse _namespace_name "Windows" |> NamespacedName
-
+    let Windows = _prefix "Windows"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windows/key/shop/value/windows"></see>
     /// </summary>
-    let ``Windows/key/shop/value/windows`` =
-        Namespaced_IRI.parse _namespace_name "Windows/key/shop/value/windows" |> NamespacedName
-
+    let ``Windows/key/shop/value/windows`` = _prefix "Windows/key/shop/value/windows"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windpump"></see>
     /// </summary>
-    let Windpump = Namespaced_IRI.parse _namespace_name "Windpump" |> NamespacedName
+    let Windpump = _prefix "Windpump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windpump/key/man_made/value/windpump"></see>
     /// </summary>
     let ``Windpump/key/man_made/value/windpump`` =
-        Namespaced_IRI.parse _namespace_name "Windpump/key/man_made/value/windpump" |> NamespacedName
+        _prefix "Windpump/key/man_made/value/windpump"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windsock"></see>
     /// </summary>
-    let Windsock = Namespaced_IRI.parse _namespace_name "Windsock" |> NamespacedName
+    let Windsock = _prefix "Windsock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Windsock/key/aeroway/value/windsock"></see>
     /// </summary>
     let ``Windsock/key/aeroway/value/windsock`` =
-        Namespaced_IRI.parse _namespace_name "Windsock/key/aeroway/value/windsock" |> NamespacedName
+        _prefix "Windsock/key/aeroway/value/windsock"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wine"></see>
     /// </summary>
-    let Wine = Namespaced_IRI.parse _namespace_name "Wine" |> NamespacedName
-
+    let Wine = _prefix "Wine"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wine/key/shop/value/wine"></see>
     /// </summary>
-    let ``Wine/key/shop/value/wine`` =
-        Namespaced_IRI.parse _namespace_name "Wine/key/shop/value/wine" |> NamespacedName
-
+    let ``Wine/key/shop/value/wine`` = _prefix "Wine/key/shop/value/wine"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Winery"></see>
     /// </summary>
-    let Winery = Namespaced_IRI.parse _namespace_name "Winery" |> NamespacedName
-
+    let Winery = _prefix "Winery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Winery/key/amenity/value/winery"></see>
     /// </summary>
-    let ``Winery/key/amenity/value/winery`` =
-        Namespaced_IRI.parse _namespace_name "Winery/key/amenity/value/winery" |> NamespacedName
-
+    let ``Winery/key/amenity/value/winery`` = _prefix "Winery/key/amenity/value/winery"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WineryShop"></see>
     /// </summary>
-    let WineryShop = Namespaced_IRI.parse _namespace_name "WineryShop" |> NamespacedName
+    let WineryShop = _prefix "WineryShop"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WineryShop/key/shop/value/winery"></see>
     /// </summary>
     let ``WineryShop/key/shop/value/winery`` =
-        Namespaced_IRI.parse _namespace_name "WineryShop/key/shop/value/winery" |> NamespacedName
+        _prefix "WineryShop/key/shop/value/winery"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WinterRoad"></see>
     /// </summary>
-    let WinterRoad = Namespaced_IRI.parse _namespace_name "WinterRoad" |> NamespacedName
+    let WinterRoad = _prefix "WinterRoad"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WinterRoad/key/winter_road/value/yes"></see>
     /// </summary>
     let ``WinterRoad/key/winter_road/value/yes`` =
-        Namespaced_IRI.parse _namespace_name "WinterRoad/key/winter_road/value/yes" |> NamespacedName
+        _prefix "WinterRoad/key/winter_road/value/yes"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wlan"></see>
     /// </summary>
-    let Wlan = Namespaced_IRI.parse _namespace_name "Wlan" |> NamespacedName
-
+    let Wlan = _prefix "Wlan"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wlan/key/amenity/value/wlan"></see>
     /// </summary>
-    let ``Wlan/key/amenity/value/wlan`` =
-        Namespaced_IRI.parse _namespace_name "Wlan/key/amenity/value/wlan" |> NamespacedName
-
+    let ``Wlan/key/amenity/value/wlan`` = _prefix "Wlan/key/amenity/value/wlan"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WolfPit"></see>
     /// </summary>
-    let WolfPit = Namespaced_IRI.parse _namespace_name "WolfPit" |> NamespacedName
+    let WolfPit = _prefix "WolfPit"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WolfPit/key/man_made/value/wolf_pit"></see>
     /// </summary>
     let ``WolfPit/key/man_made/value/wolf_pit`` =
-        Namespaced_IRI.parse _namespace_name "WolfPit/key/man_made/value/wolf_pit" |> NamespacedName
+        _prefix "WolfPit/key/man_made/value/wolf_pit"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wood"></see>
     /// </summary>
-    let Wood = Namespaced_IRI.parse _namespace_name "Wood" |> NamespacedName
-
+    let Wood = _prefix "Wood"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wood/key/natural/value/wood"></see>
     /// </summary>
-    let ``Wood/key/natural/value/wood`` =
-        Namespaced_IRI.parse _namespace_name "Wood/key/natural/value/wood" |> NamespacedName
-
+    let ``Wood/key/natural/value/wood`` = _prefix "Wood/key/natural/value/wood"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WoodShop"></see>
     /// </summary>
-    let WoodShop = Namespaced_IRI.parse _namespace_name "WoodShop" |> NamespacedName
-
+    let WoodShop = _prefix "WoodShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/WoodShop/key/shop/value/wood"></see>
     /// </summary>
-    let ``WoodShop/key/shop/value/wood`` =
-        Namespaced_IRI.parse _namespace_name "WoodShop/key/shop/value/wood" |> NamespacedName
-
+    let ``WoodShop/key/shop/value/wood`` = _prefix "WoodShop/key/shop/value/wood"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wreck"></see>
     /// </summary>
-    let Wreck = Namespaced_IRI.parse _namespace_name "Wreck" |> NamespacedName
+    let Wreck = _prefix "Wreck"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Wreck/key/historic/value/wreck%20"></see>
     /// </summary>
     let ``Wreck/key/historic/value/wreck%20`` =
-        Namespaced_IRI.parse _namespace_name "Wreck/key/historic/value/wreck%20" |> NamespacedName
+        _prefix "Wreck/key/historic/value/wreck%20"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/YouthCentre"></see>
     /// </summary>
-    let YouthCentre =
-        Namespaced_IRI.parse _namespace_name "YouthCentre" |> NamespacedName
+    let YouthCentre = _prefix "YouthCentre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/YouthCentre/key/amenity/value/youth_centre"></see>
     /// </summary>
     let ``YouthCentre/key/amenity/value/youth_centre`` =
-        Namespaced_IRI.parse _namespace_name "YouthCentre/key/amenity/value/youth_centre" |> NamespacedName
+        _prefix "YouthCentre/key/amenity/value/youth_centre"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/YouthClub"></see>
     /// </summary>
-    let YouthClub = Namespaced_IRI.parse _namespace_name "YouthClub" |> NamespacedName
+    let YouthClub = _prefix "YouthClub"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/YouthClub/key/amenity/value/youth_club"></see>
     /// </summary>
     let ``YouthClub/key/amenity/value/youth_club`` =
-        Namespaced_IRI.parse _namespace_name "YouthClub/key/amenity/value/youth_club" |> NamespacedName
+        _prefix "YouthClub/key/amenity/value/youth_club"
 
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Zoo"></see>
     /// </summary>
-    let Zoo = Namespaced_IRI.parse _namespace_name "Zoo" |> NamespacedName
-
+    let Zoo = _prefix "Zoo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/Zoo/key/tourism/value/zoo"></see>
     /// </summary>
-    let ``Zoo/key/tourism/value/zoo`` =
-        Namespaced_IRI.parse _namespace_name "Zoo/key/tourism/value/zoo" |> NamespacedName
-
+    let ``Zoo/key/tourism/value/zoo`` = _prefix "Zoo/key/tourism/value/zoo"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ZooShop"></see>
     /// </summary>
-    let ZooShop = Namespaced_IRI.parse _namespace_name "ZooShop" |> NamespacedName
-
+    let ZooShop = _prefix "ZooShop"
     /// <summary>
     ///   <see href="http://linkedgeodata.org/ontology/ZooShop/key/shop/value/zoo"></see>
     /// </summary>
-    let ``ZooShop/key/shop/value/zoo`` =
-        Namespaced_IRI.parse _namespace_name "ZooShop/key/shop/value/zoo" |> NamespacedName
+    let ``ZooShop/key/shop/value/zoo`` = _prefix "ZooShop/key/shop/value/zoo"

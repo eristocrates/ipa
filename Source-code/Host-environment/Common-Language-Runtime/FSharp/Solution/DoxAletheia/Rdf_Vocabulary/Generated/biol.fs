@@ -1,94 +1,86 @@
 namespace http.purl.org.NET.biol.ns.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module biol =
     let _namespace_name = "http://purl.org/NET/biol/ns#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#order"></see>
     /// </summary>
-    let order = Namespaced_IRI.parse _namespace_name "order" |> NamespacedName
+    let order = _prefix "order"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#seeAlso"></see>
     /// </summary>
-    let seeAlso = Namespaced_IRI.parse _namespace_name "seeAlso" |> NamespacedName
+    let seeAlso = _prefix "seeAlso"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#authority"></see>
     /// </summary>
-    let authority = Namespaced_IRI.parse _namespace_name "authority" |> NamespacedName
+    let authority = _prefix "authority"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#species"></see>
     /// </summary>
-    let species = Namespaced_IRI.parse _namespace_name "species" |> NamespacedName
+    let species = _prefix "species"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#family"></see>
     /// </summary>
-    let family = Namespaced_IRI.parse _namespace_name "family" |> NamespacedName
+    let family = _prefix "family"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#class"></see>
     /// </summary>
-    let class_ = Namespaced_IRI.parse _namespace_name "class" |> NamespacedName
+    let class_ = _prefix "class"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#kingdom"></see>
     /// </summary>
-    let kingdom = Namespaced_IRI.parse _namespace_name "kingdom" |> NamespacedName
+    let kingdom = _prefix "kingdom"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#phylum"></see>
     /// </summary>
-    let phylum = Namespaced_IRI.parse _namespace_name "phylum" |> NamespacedName
+    let phylum = _prefix "phylum"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#genus"></see>
     /// </summary>
-    let genus = Namespaced_IRI.parse _namespace_name "genus" |> NamespacedName
-
+    let genus = _prefix "genus"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#hasTaxonomy"></see>
     /// </summary>
-    let hasTaxonomy =
-        Namespaced_IRI.parse _namespace_name "hasTaxonomy" |> NamespacedName
-
+    let hasTaxonomy = _prefix "hasTaxonomy"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#BotTaxonomy"></see>
     /// </summary>
-    let BotTaxonomy =
-        Namespaced_IRI.parse _namespace_name "BotTaxonomy" |> NamespacedName
-
+    let BotTaxonomy = _prefix "BotTaxonomy"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#Taxonomy"></see>
     /// </summary>
-    let Taxonomy = Namespaced_IRI.parse _namespace_name "Taxonomy" |> NamespacedName
-
+    let Taxonomy = _prefix "Taxonomy"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#ZooTaxonomy"></see>
     /// </summary>
-    let ZooTaxonomy =
-        Namespaced_IRI.parse _namespace_name "ZooTaxonomy" |> NamespacedName
-
+    let ZooTaxonomy = _prefix "ZooTaxonomy"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#rank"></see>
     /// </summary>
-    let rank = Namespaced_IRI.parse _namespace_name "rank" |> NamespacedName
+    let rank = _prefix "rank"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#commonName"></see>
     /// </summary>
-    let commonName = Namespaced_IRI.parse _namespace_name "commonName" |> NamespacedName
+    let commonName = _prefix "commonName"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#division"></see>
     /// </summary>
-    let division = Namespaced_IRI.parse _namespace_name "division" |> NamespacedName
-
+    let division = _prefix "division"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#secondLevelClassification"></see>
     /// </summary>
-    let secondLevelClassification =
-        Namespaced_IRI.parse _namespace_name "secondLevelClassification" |> NamespacedName
-
+    let secondLevelClassification = _prefix "secondLevelClassification"
     /// <summary>
     ///   <see href="http://purl.org/NET/biol/ns#morePrecise"></see>
     /// </summary>
-    let morePrecise =
-        Namespaced_IRI.parse _namespace_name "morePrecise" |> NamespacedName
+    let morePrecise = _prefix "morePrecise"

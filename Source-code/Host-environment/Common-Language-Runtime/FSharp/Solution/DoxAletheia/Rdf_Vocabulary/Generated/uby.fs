@@ -1,94 +1,73 @@
 namespace http.purl.org.olia.ubyCat.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module uby =
     let _namespace_name = "http://purl.org/olia/ubyCat.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Case"></see>
     /// </summary>
-    let Case = Namespaced_IRI.parse _namespace_name "Case" |> NamespacedName
-
+    let Case = _prefix "Case"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#WordFormAttribute"></see>
     /// </summary>
-    let WordFormAttribute =
-        Namespaced_IRI.parse _namespace_name "WordFormAttribute" |> NamespacedName
-
+    let WordFormAttribute = _prefix "WordFormAttribute"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Complementizer"></see>
     /// </summary>
-    let Complementizer =
-        Namespaced_IRI.parse _namespace_name "Complementizer" |> NamespacedName
-
+    let Complementizer = _prefix "Complementizer"
     /// <summary>
     /// SyntacticFeature groups attributes of UBY-LMF classes from the ISO LMF Syntax extension package.
     /// <see href="http://purl.org/olia/ubyCat.owl#SyntacticFeature"></see></summary>
-    let SyntacticFeature =
-        Namespaced_IRI.parse _namespace_name "SyntacticFeature" |> NamespacedName
-
+    let SyntacticFeature = _prefix "SyntacticFeature"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
-
+    let Context = _prefix "Context"
     /// <summary>
     /// LexicalFeatureStructure is a complex lexical Feature Structure (with features and feature values) and corresponds to a class in LMF.
     /// <see href="http://purl.org/olia/ubyCat.owl#LexicalFeatureStructure"></see></summary>
-    let LexicalFeatureStructure =
-        Namespaced_IRI.parse _namespace_name "LexicalFeatureStructure" |> NamespacedName
-
+    let LexicalFeatureStructure = _prefix "LexicalFeatureStructure"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#CoreType"></see>
     /// </summary>
-    let CoreType = Namespaced_IRI.parse _namespace_name "CoreType" |> NamespacedName
-
+    let CoreType = _prefix "CoreType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SemanticFeature"></see>
     /// </summary>
-    let SemanticFeature =
-        Namespaced_IRI.parse _namespace_name "SemanticFeature" |> NamespacedName
-
+    let SemanticFeature = _prefix "SemanticFeature"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Definition"></see>
     /// </summary>
-    let Definition = Namespaced_IRI.parse _namespace_name "Definition" |> NamespacedName
-
+    let Definition = _prefix "Definition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#DefinitionType"></see>
     /// </summary>
-    let DefinitionType =
-        Namespaced_IRI.parse _namespace_name "DefinitionType" |> NamespacedName
-
+    let DefinitionType = _prefix "DefinitionType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#DictionaryFeature"></see>
     /// </summary>
-    let DictionaryFeature =
-        Namespaced_IRI.parse _namespace_name "DictionaryFeature" |> NamespacedName
-
+    let DictionaryFeature = _prefix "DictionaryFeature"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Degree"></see>
     /// </summary>
-    let Degree = Namespaced_IRI.parse _namespace_name "Degree" |> NamespacedName
-
+    let Degree = _prefix "Degree"
     /// <summary>
     /// In UBY-LMF, relType is an attribute of the RelatedForm class which encodes links to derivationally related lexical entries or senses.
     /// <see href="http://purl.org/olia/ubyCat.owl#DerivationType"></see></summary>
-    let DerivationType =
-        Namespaced_IRI.parse _namespace_name "DerivationType" |> NamespacedName
-
+    let DerivationType = _prefix "DerivationType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#DerivationalMorphology"></see>
     /// </summary>
-    let DerivationalMorphology =
-        Namespaced_IRI.parse _namespace_name "DerivationalMorphology" |> NamespacedName
-
+    let DerivationalMorphology = _prefix "DerivationalMorphology"
     /// <summary>
     /// LexicalFeature groups different kinds of lexical feaures, which correspond to attributes of UBY-LMF classes.
     /// <see href="http://purl.org/olia/ubyCat.owl#LexicalFeature"></see></summary>
-    let LexicalFeature =
-        Namespaced_IRI.parse _namespace_name "LexicalFeature" |> NamespacedName
-
+    let LexicalFeature = _prefix "LexicalFeature"
     /// <summary>
     /// In UBY-LMF, determiner is an attribute of the LMF class SyntacticArgument. For noun phrase arguments, this attribute encodes specific constraints on the determiner to be used (possessive or indefinite).
     ///
@@ -96,1264 +75,932 @@ module uby =
     /// Example from VerbNet (indefinite): an indefinite determiner is required for the noun phrase complement of "echo" as in
     /// There echoed voices through the hall. (verb class sound_existence-47.4)
     /// <see href="http://purl.org/olia/ubyCat.owl#Determiner"></see></summary>
-    let Determiner = Namespaced_IRI.parse _namespace_name "Determiner" |> NamespacedName
-
+    let Determiner = _prefix "Determiner"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#ExampleType"></see>
     /// </summary>
-    let ExampleType =
-        Namespaced_IRI.parse _namespace_name "ExampleType" |> NamespacedName
-
+    let ExampleType = _prefix "ExampleType"
     /// <summary>
     /// This owl:Class corresponds to the LMF-class Frequency which has been introduced in UBY-LMF as an extension of ISO-LMF.
     /// <see href="http://purl.org/olia/ubyCat.owl#Frequency"></see></summary>
-    let Frequency = Namespaced_IRI.parse _namespace_name "Frequency" |> NamespacedName
-
+    let Frequency = _prefix "Frequency"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#GrammaticalFunction"></see>
     /// </summary>
-    let GrammaticalFunction =
-        Namespaced_IRI.parse _namespace_name "GrammaticalFunction" |> NamespacedName
-
+    let GrammaticalFunction = _prefix "GrammaticalFunction"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#GrammaticalGender"></see>
     /// </summary>
-    let GrammaticalGender =
-        Namespaced_IRI.parse _namespace_name "GrammaticalGender" |> NamespacedName
-
+    let GrammaticalGender = _prefix "GrammaticalGender"
     /// <summary>
     /// In UBY-LMF, number is also an attribute of the UBY-LMF class SyntacticArgument and specifies the grammatical number of an argument.
     /// Example: These types of fish mix well together.
     /// <see href="http://purl.org/olia/ubyCat.owl#GrammaticalNumber"></see></summary>
-    let GrammaticalNumber =
-        Namespaced_IRI.parse _namespace_name "GrammaticalNumber" |> NamespacedName
-
+    let GrammaticalNumber = _prefix "GrammaticalNumber"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Lemma"></see>
     /// </summary>
-    let Lemma = Namespaced_IRI.parse _namespace_name "Lemma" |> NamespacedName
-
+    let Lemma = _prefix "Lemma"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#LexicalAnnotation"></see>
     /// </summary>
-    let LexicalAnnotation =
-        Namespaced_IRI.parse _namespace_name "LexicalAnnotation" |> NamespacedName
-
+    let LexicalAnnotation = _prefix "LexicalAnnotation"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#LexicalEntry"></see>
     /// </summary>
-    let LexicalEntry =
-        Namespaced_IRI.parse _namespace_name "LexicalEntry" |> NamespacedName
-
+    let LexicalEntry = _prefix "LexicalEntry"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Lexicon"></see>
     /// </summary>
-    let Lexicon = Namespaced_IRI.parse _namespace_name "Lexicon" |> NamespacedName
-
+    let Lexicon = _prefix "Lexicon"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#LinkingFeature"></see>
     /// </summary>
-    let LinkingFeature =
-        Namespaced_IRI.parse _namespace_name "LinkingFeature" |> NamespacedName
-
+    let LinkingFeature = _prefix "LinkingFeature"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#MetaFeature"></see>
     /// </summary>
-    let MetaFeature =
-        Namespaced_IRI.parse _namespace_name "MetaFeature" |> NamespacedName
-
+    let MetaFeature = _prefix "MetaFeature"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#MonolingualExternalRef"></see>
     /// </summary>
-    let MonolingualExternalRef =
-        Namespaced_IRI.parse _namespace_name "MonolingualExternalRef" |> NamespacedName
-
+    let MonolingualExternalRef = _prefix "MonolingualExternalRef"
     /// <summary>
     /// As a convention, the relation is called has_partOfSpeech, partOfSpeech is the top-level *class* of parts of speech
     /// <see href="http://purl.org/olia/ubyCat.owl#PartOfSpeech"></see></summary>
-    let PartOfSpeech =
-        Namespaced_IRI.parse _namespace_name "PartOfSpeech" |> NamespacedName
-
+    let PartOfSpeech = _prefix "PartOfSpeech"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Position"></see>
     /// </summary>
-    let Position = Namespaced_IRI.parse _namespace_name "Position" |> NamespacedName
-
+    let Position = _prefix "Position"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#multiwordFeature"></see>
     /// </summary>
-    let multiwordFeature =
-        Namespaced_IRI.parse _namespace_name "multiwordFeature" |> NamespacedName
-
+    let multiwordFeature = _prefix "multiwordFeature"
     /// <summary>
     /// In UBY-LMF, quantification is an attribute of the class SemanticLabel. It can be used, if the value of the semantic label is annotated with a score, e.g. type=sentiment, label=positive, quantification=strong.
     ///
     /// <see href="http://purl.org/olia/ubyCat.owl#Quantification"></see></summary>
-    let Quantification =
-        Namespaced_IRI.parse _namespace_name "Quantification" |> NamespacedName
-
+    let Quantification = _prefix "Quantification"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#RelType"></see>
     /// </summary>
-    let RelType = Namespaced_IRI.parse _namespace_name "RelType" |> NamespacedName
-
+    let RelType = _prefix "RelType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SemanticArgument"></see>
     /// </summary>
-    let SemanticArgument =
-        Namespaced_IRI.parse _namespace_name "SemanticArgument" |> NamespacedName
-
+    let SemanticArgument = _prefix "SemanticArgument"
     /// <summary>
     /// This owl:Class corresponds to the LMF-class SemanticLabel which has been introduced in UBY-LMF as an extension of ISO-LMF.
     /// <see href="http://purl.org/olia/ubyCat.owl#SemanticLabel"></see></summary>
-    let SemanticLabel =
-        Namespaced_IRI.parse _namespace_name "SemanticLabel" |> NamespacedName
-
+    let SemanticLabel = _prefix "SemanticLabel"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SemanticPredicate"></see>
     /// </summary>
-    let SemanticPredicate =
-        Namespaced_IRI.parse _namespace_name "SemanticPredicate" |> NamespacedName
-
+    let SemanticPredicate = _prefix "SemanticPredicate"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Sense"></see>
     /// </summary>
-    let Sense = Namespaced_IRI.parse _namespace_name "Sense" |> NamespacedName
-
+    let Sense = _prefix "Sense"
     /// <summary>
     /// In Uby-LMF, the attribute senseAxisType of the SenseAxis class indicates, whether the type of linking between to senses or between two synsets. Example values are monolingualSenseAlignment and crosslingualSenseAlignment
     /// <see href="http://purl.org/olia/ubyCat.owl#SenseAxisType"></see></summary>
-    let SenseAxisType =
-        Namespaced_IRI.parse _namespace_name "SenseAxisType" |> NamespacedName
-
+    let SenseAxisType = _prefix "SenseAxisType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SenseExample"></see>
     /// </summary>
-    let SenseExample =
-        Namespaced_IRI.parse _namespace_name "SenseExample" |> NamespacedName
-
+    let SenseExample = _prefix "SenseExample"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SubcategorizationFrame"></see>
     /// </summary>
-    let SubcategorizationFrame =
-        Namespaced_IRI.parse _namespace_name "SubcategorizationFrame" |> NamespacedName
-
+    let SubcategorizationFrame = _prefix "SubcategorizationFrame"
     /// <summary>
     /// This owl:Class corresponds to the ISO LMF-class Synset.
     /// <see href="http://purl.org/olia/ubyCat.owl#Synset"></see></summary>
-    let Synset = Namespaced_IRI.parse _namespace_name "Synset" |> NamespacedName
-
+    let Synset = _prefix "Synset"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SyntacticArgument"></see>
     /// </summary>
-    let SyntacticArgument =
-        Namespaced_IRI.parse _namespace_name "SyntacticArgument" |> NamespacedName
-
+    let SyntacticArgument = _prefix "SyntacticArgument"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#SyntacticCategory"></see>
     /// </summary>
-    let SyntacticCategory =
-        Namespaced_IRI.parse _namespace_name "SyntacticCategory" |> NamespacedName
-
+    let SyntacticCategory = _prefix "SyntacticCategory"
     /// <summary>
     /// Attribute of the UBY-LMF class SubcategorizationFrame.
     /// <see href="http://purl.org/olia/ubyCat.owl#SyntacticProperty"></see></summary>
-    let SyntacticProperty =
-        Namespaced_IRI.parse _namespace_name "SyntacticProperty" |> NamespacedName
-
+    let SyntacticProperty = _prefix "SyntacticProperty"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#Tense"></see>
     /// </summary>
-    let Tense = Namespaced_IRI.parse _namespace_name "Tense" |> NamespacedName
+    let Tense = _prefix "Tense"
     /// <summary>
     /// Type is an attribute of the UBY-LMF class SemanticLabel. It encodes the name of a SemanticLabel type, e.g.
     /// type=semanticField (from WordNet or GermaNet).
     /// The label attribute of SemanticLabel holds the corresponding value of the SemanticLabel, e.g.
     /// label=animate (for type=semanticField).
     /// <see href="http://purl.org/olia/ubyCat.owl#Type"></see></summary>
-    let Type = Namespaced_IRI.parse _namespace_name "Type" |> NamespacedName
+    let Type = _prefix "Type"
     /// <summary>
     /// Specifies the verb form to be used in a verb phrase complement.
     /// <see href="http://purl.org/olia/ubyCat.owl#VerbForm"></see></summary>
-    let VerbForm = Namespaced_IRI.parse _namespace_name "VerbForm" |> NamespacedName
-
+    let VerbForm = _prefix "VerbForm"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#VerbFormMood"></see>
     /// </summary>
-    let VerbFormMood =
-        Namespaced_IRI.parse _namespace_name "VerbFormMood" |> NamespacedName
-
+    let VerbFormMood = _prefix "VerbFormMood"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#WordForm"></see>
     /// </summary>
-    let WordForm = Namespaced_IRI.parse _namespace_name "WordForm" |> NamespacedName
-
+    let WordForm = _prefix "WordForm"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#abbreviation"></see>
     /// </summary>
-    let abbreviation =
-        Namespaced_IRI.parse _namespace_name "abbreviation" |> NamespacedName
-
+    let abbreviation = _prefix "abbreviation"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#abbreviationAcronym"></see>
     /// </summary>
-    let abbreviationAcronym =
-        Namespaced_IRI.parse _namespace_name "abbreviationAcronym" |> NamespacedName
-
+    let abbreviationAcronym = _prefix "abbreviationAcronym"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#abbreviationInitialism"></see>
     /// </summary>
-    let abbreviationInitialism =
-        Namespaced_IRI.parse _namespace_name "abbreviationInitialism" |> NamespacedName
-
+    let abbreviationInitialism = _prefix "abbreviationInitialism"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#accusative"></see>
     /// </summary>
-    let accusative = Namespaced_IRI.parse _namespace_name "accusative" |> NamespacedName
+    let accusative = _prefix "accusative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adjective"></see>
     /// </summary>
-    let adjective = Namespaced_IRI.parse _namespace_name "adjective" |> NamespacedName
-
+    let adjective = _prefix "adjective"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adjectivePhrase"></see>
     /// </summary>
-    let adjectivePhrase =
-        Namespaced_IRI.parse _namespace_name "adjectivePhrase" |> NamespacedName
-
+    let adjectivePhrase = _prefix "adjectivePhrase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adjectivePhrase_nounPhrase"></see>
     /// </summary>
-    let adjectivePhrase_nounPhrase =
-        Namespaced_IRI.parse _namespace_name "adjectivePhrase_nounPhrase" |> NamespacedName
-
+    let adjectivePhrase_nounPhrase = _prefix "adjectivePhrase_nounPhrase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adposition"></see>
     /// </summary>
-    let adposition = Namespaced_IRI.parse _namespace_name "adposition" |> NamespacedName
-
+    let adposition = _prefix "adposition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adpositionCircumposition"></see>
     /// </summary>
-    let adpositionCircumposition =
-        Namespaced_IRI.parse _namespace_name "adpositionCircumposition" |> NamespacedName
-
+    let adpositionCircumposition = _prefix "adpositionCircumposition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adpositionPostposition"></see>
     /// </summary>
-    let adpositionPostposition =
-        Namespaced_IRI.parse _namespace_name "adpositionPostposition" |> NamespacedName
-
+    let adpositionPostposition = _prefix "adpositionPostposition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adpositionPreposition"></see>
     /// </summary>
-    let adpositionPreposition =
-        Namespaced_IRI.parse _namespace_name "adpositionPreposition" |> NamespacedName
-
+    let adpositionPreposition = _prefix "adpositionPreposition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adverb"></see>
     /// </summary>
-    let adverb = Namespaced_IRI.parse _namespace_name "adverb" |> NamespacedName
-
+    let adverb = _prefix "adverb"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adverbPhrase"></see>
     /// </summary>
-    let adverbPhrase =
-        Namespaced_IRI.parse _namespace_name "adverbPhrase" |> NamespacedName
-
+    let adverbPhrase = _prefix "adverbPhrase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adverbPronominal"></see>
     /// </summary>
-    let adverbPronominal =
-        Namespaced_IRI.parse _namespace_name "adverbPronominal" |> NamespacedName
-
+    let adverbPronominal = _prefix "adverbPronominal"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#adverbialComplement"></see>
     /// </summary>
-    let adverbialComplement =
-        Namespaced_IRI.parse _namespace_name "adverbialComplement" |> NamespacedName
-
+    let adverbialComplement = _prefix "adverbialComplement"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#affix"></see>
     /// </summary>
-    let affix = Namespaced_IRI.parse _namespace_name "affix" |> NamespacedName
-
+    let affix = _prefix "affix"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#affixPrefix"></see>
     /// </summary>
-    let affixPrefix =
-        Namespaced_IRI.parse _namespace_name "affixPrefix" |> NamespacedName
-
+    let affixPrefix = _prefix "affixPrefix"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#affixSuffix"></see>
     /// </summary>
-    let affixSuffix =
-        Namespaced_IRI.parse _namespace_name "affixSuffix" |> NamespacedName
-
+    let affixSuffix = _prefix "affixSuffix"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#association"></see>
     /// </summary>
-    let association =
-        Namespaced_IRI.parse _namespace_name "association" |> NamespacedName
-
+    let association = _prefix "association"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#bareInfinitive"></see>
     /// </summary>
-    let bareInfinitive =
-        Namespaced_IRI.parse _namespace_name "bareInfinitive" |> NamespacedName
-
+    let bareInfinitive = _prefix "bareInfinitive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#comparative"></see>
     /// </summary>
-    let comparative =
-        Namespaced_IRI.parse _namespace_name "comparative" |> NamespacedName
-
+    let comparative = _prefix "comparative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#complement"></see>
     /// </summary>
-    let complement = Namespaced_IRI.parse _namespace_name "complement" |> NamespacedName
-
+    let complement = _prefix "complement"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#complementary"></see>
     /// </summary>
-    let complementary =
-        Namespaced_IRI.parse _namespace_name "complementary" |> NamespacedName
-
+    let complementary = _prefix "complementary"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#compound"></see>
     /// </summary>
-    let compound = Namespaced_IRI.parse _namespace_name "compound" |> NamespacedName
-
+    let compound = _prefix "compound"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#compoundRoot"></see>
     /// </summary>
-    let compoundRoot =
-        Namespaced_IRI.parse _namespace_name "compoundRoot" |> NamespacedName
-
+    let compoundRoot = _prefix "compoundRoot"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#conjunction"></see>
     /// </summary>
-    let conjunction =
-        Namespaced_IRI.parse _namespace_name "conjunction" |> NamespacedName
-
+    let conjunction = _prefix "conjunction"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#conjunctionCoordinating"></see>
     /// </summary>
-    let conjunctionCoordinating =
-        Namespaced_IRI.parse _namespace_name "conjunctionCoordinating" |> NamespacedName
-
+    let conjunctionCoordinating = _prefix "conjunctionCoordinating"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#conjunctionSubordinating"></see>
     /// </summary>
-    let conjunctionSubordinating =
-        Namespaced_IRI.parse _namespace_name "conjunctionSubordinating" |> NamespacedName
-
+    let conjunctionSubordinating = _prefix "conjunctionSubordinating"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#contraction"></see>
     /// </summary>
-    let contraction =
-        Namespaced_IRI.parse _namespace_name "contraction" |> NamespacedName
-
+    let contraction = _prefix "contraction"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#core"></see>
     /// </summary>
-    let core = Namespaced_IRI.parse _namespace_name "core" |> NamespacedName
-
+    let core = _prefix "core"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#coreUnexpressed"></see>
     /// </summary>
-    let coreUnexpressed =
-        Namespaced_IRI.parse _namespace_name "coreUnexpressed" |> NamespacedName
-
+    let coreUnexpressed = _prefix "coreUnexpressed"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#corpus"></see>
     /// </summary>
-    let corpus = Namespaced_IRI.parse _namespace_name "corpus" |> NamespacedName
-
+    let corpus = _prefix "corpus"
     /// <summary>
     /// This DatatypeProperty could also be named "hasSimpleLexicalFeature".
     /// The current name "hasUbyDatatypeProperty" indicates that it groups Data Properties used in UBY-LMF.
     /// <see href="http://purl.org/olia/ubyCat.owl#hasUbyDatatypeProperty"></see></summary>
-    let hasUbyDatatypeProperty =
-        Namespaced_IRI.parse _namespace_name "hasUbyDatatypeProperty" |> NamespacedName
-
+    let hasUbyDatatypeProperty = _prefix "hasUbyDatatypeProperty"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#crosslingualSenseAlignment"></see>
     /// </summary>
-    let crosslingualSenseAlignment =
-        Namespaced_IRI.parse _namespace_name "crosslingualSenseAlignment" |> NamespacedName
-
+    let crosslingualSenseAlignment = _prefix "crosslingualSenseAlignment"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#dative"></see>
     /// </summary>
-    let dative = Namespaced_IRI.parse _namespace_name "dative" |> NamespacedName
-
+    let dative = _prefix "dative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#declarativeClause"></see>
     /// </summary>
-    let declarativeClause =
-        Namespaced_IRI.parse _namespace_name "declarativeClause" |> NamespacedName
-
+    let declarativeClause = _prefix "declarativeClause"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#derivationBase"></see>
     /// </summary>
-    let derivationBase =
-        Namespaced_IRI.parse _namespace_name "derivationBase" |> NamespacedName
-
+    let derivationBase = _prefix "derivationBase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#derivationBaseAdj"></see>
     /// </summary>
-    let derivationBaseAdj =
-        Namespaced_IRI.parse _namespace_name "derivationBaseAdj" |> NamespacedName
-
+    let derivationBaseAdj = _prefix "derivationBaseAdj"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#derivationBaseNoun"></see>
     /// </summary>
-    let derivationBaseNoun =
-        Namespaced_IRI.parse _namespace_name "derivationBaseNoun" |> NamespacedName
-
+    let derivationBaseNoun = _prefix "derivationBaseNoun"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#derivationBaseVerb"></see>
     /// </summary>
-    let derivationBaseVerb =
-        Namespaced_IRI.parse _namespace_name "derivationBaseVerb" |> NamespacedName
-
+    let derivationBaseVerb = _prefix "derivationBaseVerb"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#derivative"></see>
     /// </summary>
-    let derivative = Namespaced_IRI.parse _namespace_name "derivative" |> NamespacedName
+    let derivative = _prefix "derivative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#determiner"></see>
     /// </summary>
-    let determiner = Namespaced_IRI.parse _namespace_name "determiner" |> NamespacedName
-
+    let determiner = _prefix "determiner"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#determinerDefinite"></see>
     /// </summary>
-    let determinerDefinite =
-        Namespaced_IRI.parse _namespace_name "determinerDefinite" |> NamespacedName
-
+    let determinerDefinite = _prefix "determinerDefinite"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#determinerDemonstrative"></see>
     /// </summary>
-    let determinerDemonstrative =
-        Namespaced_IRI.parse _namespace_name "determinerDemonstrative" |> NamespacedName
-
+    let determinerDemonstrative = _prefix "determinerDemonstrative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#determinerIndefinite"></see>
     /// </summary>
-    let determinerIndefinite =
-        Namespaced_IRI.parse _namespace_name "determinerIndefinite" |> NamespacedName
-
+    let determinerIndefinite = _prefix "determinerIndefinite"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#determinerInterrogative"></see>
     /// </summary>
-    let determinerInterrogative =
-        Namespaced_IRI.parse _namespace_name "determinerInterrogative" |> NamespacedName
-
+    let determinerInterrogative = _prefix "determinerInterrogative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#determinerPossessive"></see>
     /// </summary>
-    let determinerPossessive =
-        Namespaced_IRI.parse _namespace_name "determinerPossessive" |> NamespacedName
-
+    let determinerPossessive = _prefix "determinerPossessive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#directObject"></see>
     /// </summary>
-    let directObject =
-        Namespaced_IRI.parse _namespace_name "directObject" |> NamespacedName
-
+    let directObject = _prefix "directObject"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#etymology"></see>
     /// </summary>
-    let etymology = Namespaced_IRI.parse _namespace_name "etymology" |> NamespacedName
+    let etymology = _prefix "etymology"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#expletive"></see>
     /// </summary>
-    let expletive = Namespaced_IRI.parse _namespace_name "expletive" |> NamespacedName
-
+    let expletive = _prefix "expletive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#extensionalDefinition"></see>
     /// </summary>
-    let extensionalDefinition =
-        Namespaced_IRI.parse _namespace_name "extensionalDefinition" |> NamespacedName
-
+    let extensionalDefinition = _prefix "extensionalDefinition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#externalReference"></see>
     /// </summary>
-    let externalReference =
-        Namespaced_IRI.parse _namespace_name "externalReference" |> NamespacedName
-
+    let externalReference = _prefix "externalReference"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#externalSystem"></see>
     /// </summary>
-    let externalSystem =
-        Namespaced_IRI.parse _namespace_name "externalSystem" |> NamespacedName
-
+    let externalSystem = _prefix "externalSystem"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#extraThematic"></see>
     /// </summary>
-    let extraThematic =
-        Namespaced_IRI.parse _namespace_name "extraThematic" |> NamespacedName
-
+    let extraThematic = _prefix "extraThematic"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#feminine"></see>
     /// </summary>
-    let feminine = Namespaced_IRI.parse _namespace_name "feminine" |> NamespacedName
+    let feminine = _prefix "feminine"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#first"></see>
     /// </summary>
-    let first = Namespaced_IRI.parse _namespace_name "first" |> NamespacedName
+    let first = _prefix "first"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#generator"></see>
     /// </summary>
-    let generator = Namespaced_IRI.parse _namespace_name "generator" |> NamespacedName
+    let generator = _prefix "generator"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#genitive"></see>
     /// </summary>
-    let genitive = Namespaced_IRI.parse _namespace_name "genitive" |> NamespacedName
-
+    let genitive = _prefix "genitive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#geographicalVariant"></see>
     /// </summary>
-    let geographicalVariant =
-        Namespaced_IRI.parse _namespace_name "geographicalVariant" |> NamespacedName
-
+    let geographicalVariant = _prefix "geographicalVariant"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasComplementizer"></see>
     /// </summary>
-    let hasComplementizer =
-        Namespaced_IRI.parse _namespace_name "hasComplementizer" |> NamespacedName
-
+    let hasComplementizer = _prefix "hasComplementizer"
     /// <summary>
     /// This ObjectProperty could also be named "hasTypedLexicalFeature".
     /// The current name "hasUbyObjectProperty" indicates that it groups Object Properties used in UBY-LMF.
     /// <see href="http://purl.org/olia/ubyCat.owl#hasUbyObjectProperty"></see></summary>
-    let hasUbyObjectProperty =
-        Namespaced_IRI.parse _namespace_name "hasUbyObjectProperty" |> NamespacedName
-
+    let hasUbyObjectProperty = _prefix "hasUbyObjectProperty"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasCoreType"></see>
     /// </summary>
-    let hasCoreType =
-        Namespaced_IRI.parse _namespace_name "hasCoreType" |> NamespacedName
-
+    let hasCoreType = _prefix "hasCoreType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasDefinitionType"></see>
     /// </summary>
-    let hasDefinitionType =
-        Namespaced_IRI.parse _namespace_name "hasDefinitionType" |> NamespacedName
-
+    let hasDefinitionType = _prefix "hasDefinitionType"
     /// <summary>
     /// In UBY-LMF, relType is an attribute of the RelatedForm class which encodes links to derivationally related lexical entries or senses.
     /// <see href="http://purl.org/olia/ubyCat.owl#hasDerivationType"></see></summary>
-    let hasDerivationType =
-        Namespaced_IRI.parse _namespace_name "hasDerivationType" |> NamespacedName
-
+    let hasDerivationType = _prefix "hasDerivationType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasDeterminer"></see>
     /// </summary>
-    let hasDeterminer =
-        Namespaced_IRI.parse _namespace_name "hasDeterminer" |> NamespacedName
-
+    let hasDeterminer = _prefix "hasDeterminer"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasExampleType"></see>
     /// </summary>
-    let hasExampleType =
-        Namespaced_IRI.parse _namespace_name "hasExampleType" |> NamespacedName
-
+    let hasExampleType = _prefix "hasExampleType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasGrammaticalFunction"></see>
     /// </summary>
-    let hasGrammaticalFunction =
-        Namespaced_IRI.parse _namespace_name "hasGrammaticalFunction" |> NamespacedName
-
+    let hasGrammaticalFunction = _prefix "hasGrammaticalFunction"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasPosition"></see>
     /// </summary>
-    let hasPosition =
-        Namespaced_IRI.parse _namespace_name "hasPosition" |> NamespacedName
-
+    let hasPosition = _prefix "hasPosition"
     /// <summary>
     /// In UBY-LMF, quantification is an attribute of the class SemanticLabel. It can be used, if the value of the semantic label is annotated with a score, e.g. type=sentiment, label=positive, quantification=strong.
     ///
     /// <see href="http://purl.org/olia/ubyCat.owl#hasQuantification"></see></summary>
-    let hasQuantification =
-        Namespaced_IRI.parse _namespace_name "hasQuantification" |> NamespacedName
-
+    let hasQuantification = _prefix "hasQuantification"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasRelType"></see>
     /// </summary>
-    let hasRelType = Namespaced_IRI.parse _namespace_name "hasRelType" |> NamespacedName
-
+    let hasRelType = _prefix "hasRelType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasSenseAxisType"></see>
     /// </summary>
-    let hasSenseAxisType =
-        Namespaced_IRI.parse _namespace_name "hasSenseAxisType" |> NamespacedName
-
+    let hasSenseAxisType = _prefix "hasSenseAxisType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasSyntacticCategory"></see>
     /// </summary>
-    let hasSyntacticCategory =
-        Namespaced_IRI.parse _namespace_name "hasSyntacticCategory" |> NamespacedName
-
+    let hasSyntacticCategory = _prefix "hasSyntacticCategory"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasSyntacticProperty"></see>
     /// </summary>
-    let hasSyntacticProperty =
-        Namespaced_IRI.parse _namespace_name "hasSyntacticProperty" |> NamespacedName
-
+    let hasSyntacticProperty = _prefix "hasSyntacticProperty"
     /// <summary>
     /// Type is an attribute of the UBY-LMF class SemanticLabel. It encodes the name of a SemanticLabel type, e.g.
     /// type=semanticField (from WordNet or GermaNet).
     /// The label attribute of SemanticLabel holds the corresponding value of the SemanticLabel, e.g.
     /// label=animate (for type=semanticField).
     /// <see href="http://purl.org/olia/ubyCat.owl#hasType"></see></summary>
-    let hasType = Namespaced_IRI.parse _namespace_name "hasType" |> NamespacedName
-
+    let hasType = _prefix "hasType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hasVerbForm"></see>
     /// </summary>
-    let hasVerbForm =
-        Namespaced_IRI.parse _namespace_name "hasVerbForm" |> NamespacedName
-
+    let hasVerbForm = _prefix "hasVerbForm"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_WordFormAttribute"></see>
     /// </summary>
-    let has_WordFormAttribute =
-        Namespaced_IRI.parse _namespace_name "has_WordFormAttribute" |> NamespacedName
-
+    let has_WordFormAttribute = _prefix "has_WordFormAttribute"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_case"></see>
     /// </summary>
-    let has_case = Namespaced_IRI.parse _namespace_name "has_case" |> NamespacedName
+    let has_case = _prefix "has_case"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_degree"></see>
     /// </summary>
-    let has_degree = Namespaced_IRI.parse _namespace_name "has_degree" |> NamespacedName
-
+    let has_degree = _prefix "has_degree"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_grammaticalGender"></see>
     /// </summary>
-    let has_grammaticalGender =
-        Namespaced_IRI.parse _namespace_name "has_grammaticalGender" |> NamespacedName
-
+    let has_grammaticalGender = _prefix "has_grammaticalGender"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_grammaticalNumber"></see>
     /// </summary>
-    let has_grammaticalNumber =
-        Namespaced_IRI.parse _namespace_name "has_grammaticalNumber" |> NamespacedName
-
+    let has_grammaticalNumber = _prefix "has_grammaticalNumber"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_partOfSpeech"></see>
     /// </summary>
-    let has_partOfSpeech =
-        Namespaced_IRI.parse _namespace_name "has_partOfSpeech" |> NamespacedName
-
+    let has_partOfSpeech = _prefix "has_partOfSpeech"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_person"></see>
     /// </summary>
-    let has_person = Namespaced_IRI.parse _namespace_name "has_person" |> NamespacedName
+    let has_person = _prefix "has_person"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_tense"></see>
     /// </summary>
-    let has_tense = Namespaced_IRI.parse _namespace_name "has_tense" |> NamespacedName
-
+    let has_tense = _prefix "has_tense"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#has_verbFormMood"></see>
     /// </summary>
-    let has_verbFormMood =
-        Namespaced_IRI.parse _namespace_name "has_verbFormMood" |> NamespacedName
-
+    let has_verbFormMood = _prefix "has_verbFormMood"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#hyphenation"></see>
     /// </summary>
-    let hyphenation =
-        Namespaced_IRI.parse _namespace_name "hyphenation" |> NamespacedName
-
+    let hyphenation = _prefix "hyphenation"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#idiomaticExpression"></see>
     /// </summary>
-    let idiomaticExpression =
-        Namespaced_IRI.parse _namespace_name "idiomaticExpression" |> NamespacedName
-
+    let idiomaticExpression = _prefix "idiomaticExpression"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#imperative"></see>
     /// </summary>
-    let imperative = Namespaced_IRI.parse _namespace_name "imperative" |> NamespacedName
-
+    let imperative = _prefix "imperative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#incorporatedSemArg"></see>
     /// </summary>
-    let incorporatedSemArg =
-        Namespaced_IRI.parse _namespace_name "incorporatedSemArg" |> NamespacedName
-
+    let incorporatedSemArg = _prefix "incorporatedSemArg"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#indefinite"></see>
     /// </summary>
-    let indefinite = Namespaced_IRI.parse _namespace_name "indefinite" |> NamespacedName
+    let indefinite = _prefix "indefinite"
     /// <summary>
     /// Index is an attribute of the UBY-LMF class Sense.
     /// It encodes a ranking of the senses according to their frequency which is provided, e.g., by WordNet.
     /// <see href="http://purl.org/olia/ubyCat.owl#index"></see></summary>
-    let index = Namespaced_IRI.parse _namespace_name "index" |> NamespacedName
+    let index = _prefix "index"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#indicative"></see>
     /// </summary>
-    let indicative = Namespaced_IRI.parse _namespace_name "indicative" |> NamespacedName
+    let indicative = _prefix "indicative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#infinitive"></see>
     /// </summary>
-    let infinitive = Namespaced_IRI.parse _namespace_name "infinitive" |> NamespacedName
-
+    let infinitive = _prefix "infinitive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#infinitiveZu"></see>
     /// </summary>
-    let infinitiveZu =
-        Namespaced_IRI.parse _namespace_name "infinitiveZu" |> NamespacedName
-
+    let infinitiveZu = _prefix "infinitiveZu"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#ingForm"></see>
     /// </summary>
-    let ingForm = Namespaced_IRI.parse _namespace_name "ingForm" |> NamespacedName
-
+    let ingForm = _prefix "ingForm"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#intensionalDefinition"></see>
     /// </summary>
-    let intensionalDefinition =
-        Namespaced_IRI.parse _namespace_name "intensionalDefinition" |> NamespacedName
-
+    let intensionalDefinition = _prefix "intensionalDefinition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#interjection"></see>
     /// </summary>
-    let interjection =
-        Namespaced_IRI.parse _namespace_name "interjection" |> NamespacedName
-
+    let interjection = _prefix "interjection"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#isBreakBefore"></see>
     /// </summary>
-    let isBreakBefore =
-        Namespaced_IRI.parse _namespace_name "isBreakBefore" |> NamespacedName
-
+    let isBreakBefore = _prefix "isBreakBefore"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#isHead"></see>
     /// </summary>
-    let isHead = Namespaced_IRI.parse _namespace_name "isHead" |> NamespacedName
-
+    let isHead = _prefix "isHead"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#isIncorporated"></see>
     /// </summary>
-    let isIncorporated =
-        Namespaced_IRI.parse _namespace_name "isIncorporated" |> NamespacedName
-
+    let isIncorporated = _prefix "isIncorporated"
     /// <summary>
     /// Label encodes a name (short - like a tag) and is an attribute of the UBY-LMF class SemanticLabel, SemanticPredicate,
     /// <see href="http://purl.org/olia/ubyCat.owl#label"></see></summary>
-    let label = Namespaced_IRI.parse _namespace_name "label" |> NamespacedName
-
+    let label = _prefix "label"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#languageIdentifier"></see>
     /// </summary>
-    let languageIdentifier =
-        Namespaced_IRI.parse _namespace_name "languageIdentifier" |> NamespacedName
-
+    let languageIdentifier = _prefix "languageIdentifier"
     /// <summary>
     /// Lexeme is an attribute of the UBY-LMF class SyntacticArgument and specifies a particular lexeme to be used in realizations of particular complements.
     /// Example (lexeme = es, ObjectComplement realized as zu-infinitive): Er schafft es, den Termin einzuhalten.
     /// * Er schafft, den Termin einzuhalten.
     /// <see href="http://purl.org/olia/ubyCat.owl#lexeme"></see></summary>
-    let lexeme = Namespaced_IRI.parse _namespace_name "lexeme" |> NamespacedName
-
+    let lexeme = _prefix "lexeme"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#lexicalized"></see>
     /// </summary>
-    let lexicalized =
-        Namespaced_IRI.parse _namespace_name "lexicalized" |> NamespacedName
-
+    let lexicalized = _prefix "lexicalized"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#loanWord"></see>
     /// </summary>
-    let loanWord = Namespaced_IRI.parse _namespace_name "loanWord" |> NamespacedName
+    let loanWord = _prefix "loanWord"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#masculine"></see>
     /// </summary>
-    let masculine = Namespaced_IRI.parse _namespace_name "masculine" |> NamespacedName
-
+    let masculine = _prefix "masculine"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#monolingualExternalRef"></see>
     /// </summary>
-    let monolingualExternalRef =
-        Namespaced_IRI.parse _namespace_name "monolingualExternalRef" |> NamespacedName
-
+    let monolingualExternalRef = _prefix "monolingualExternalRef"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#monolingualSenseAlignment"></see>
     /// </summary>
-    let monolingualSenseAlignment =
-        Namespaced_IRI.parse _namespace_name "monolingualSenseAlignment" |> NamespacedName
-
+    let monolingualSenseAlignment = _prefix "monolingualSenseAlignment"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#neuter"></see>
     /// </summary>
-    let neuter = Namespaced_IRI.parse _namespace_name "neuter" |> NamespacedName
+    let neuter = _prefix "neuter"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nominative"></see>
     /// </summary>
-    let nominative = Namespaced_IRI.parse _namespace_name "nominative" |> NamespacedName
-
+    let nominative = _prefix "nominative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nonPredicativeAdjective"></see>
     /// </summary>
-    let nonPredicativeAdjective =
-        Namespaced_IRI.parse _namespace_name "nonPredicativeAdjective" |> NamespacedName
-
+    let nonPredicativeAdjective = _prefix "nonPredicativeAdjective"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#noun"></see>
     /// </summary>
-    let noun = Namespaced_IRI.parse _namespace_name "noun" |> NamespacedName
+    let noun = _prefix "noun"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nounCommon"></see>
     /// </summary>
-    let nounCommon = Namespaced_IRI.parse _namespace_name "nounCommon" |> NamespacedName
+    let nounCommon = _prefix "nounCommon"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nounPhrase"></see>
     /// </summary>
-    let nounPhrase = Namespaced_IRI.parse _namespace_name "nounPhrase" |> NamespacedName
+    let nounPhrase = _prefix "nounPhrase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nounProper"></see>
     /// </summary>
-    let nounProper = Namespaced_IRI.parse _namespace_name "nounProper" |> NamespacedName
-
+    let nounProper = _prefix "nounProper"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nounProperFamilyName"></see>
     /// </summary>
-    let nounProperFamilyName =
-        Namespaced_IRI.parse _namespace_name "nounProperFamilyName" |> NamespacedName
-
+    let nounProperFamilyName = _prefix "nounProperFamilyName"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#nounProperGivenName"></see>
     /// </summary>
-    let nounProperGivenName =
-        Namespaced_IRI.parse _namespace_name "nounProperGivenName" |> NamespacedName
-
+    let nounProperGivenName = _prefix "nounProperGivenName"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#numeral"></see>
     /// </summary>
-    let numeral = Namespaced_IRI.parse _namespace_name "numeral" |> NamespacedName
-
+    let numeral = _prefix "numeral"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#objectComplement"></see>
     /// </summary>
-    let objectComplement =
-        Namespaced_IRI.parse _namespace_name "objectComplement" |> NamespacedName
-
+    let objectComplement = _prefix "objectComplement"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#objectControl"></see>
     /// </summary>
-    let objectControl =
-        Namespaced_IRI.parse _namespace_name "objectControl" |> NamespacedName
-
+    let objectControl = _prefix "objectControl"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#objectRaising"></see>
     /// </summary>
-    let objectRaising =
-        Namespaced_IRI.parse _namespace_name "objectRaising" |> NamespacedName
-
+    let objectRaising = _prefix "objectRaising"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#optionalArgument"></see>
     /// </summary>
-    let optionalArgument =
-        Namespaced_IRI.parse _namespace_name "optionalArgument" |> NamespacedName
-
+    let optionalArgument = _prefix "optionalArgument"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#orthographyName"></see>
     /// </summary>
-    let orthographyName =
-        Namespaced_IRI.parse _namespace_name "orthographyName" |> NamespacedName
-
+    let orthographyName = _prefix "orthographyName"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#other"></see>
     /// </summary>
-    let other = Namespaced_IRI.parse _namespace_name "other" |> NamespacedName
+    let other = _prefix "other"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#partWhole"></see>
     /// </summary>
-    let partWhole = Namespaced_IRI.parse _namespace_name "partWhole" |> NamespacedName
+    let partWhole = _prefix "partWhole"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#participle"></see>
     /// </summary>
-    let participle = Namespaced_IRI.parse _namespace_name "participle" |> NamespacedName
+    let participle = _prefix "participle"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#particle"></see>
     /// </summary>
-    let particle = Namespaced_IRI.parse _namespace_name "particle" |> NamespacedName
-
+    let particle = _prefix "particle"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#particleAnswer"></see>
     /// </summary>
-    let particleAnswer =
-        Namespaced_IRI.parse _namespace_name "particleAnswer" |> NamespacedName
-
+    let particleAnswer = _prefix "particleAnswer"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#particleComparative"></see>
     /// </summary>
-    let particleComparative =
-        Namespaced_IRI.parse _namespace_name "particleComparative" |> NamespacedName
-
+    let particleComparative = _prefix "particleComparative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#particleInfinitive"></see>
     /// </summary>
-    let particleInfinitive =
-        Namespaced_IRI.parse _namespace_name "particleInfinitive" |> NamespacedName
-
+    let particleInfinitive = _prefix "particleInfinitive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#particleNegative"></see>
     /// </summary>
-    let particleNegative =
-        Namespaced_IRI.parse _namespace_name "particleNegative" |> NamespacedName
-
+    let particleNegative = _prefix "particleNegative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#partitiveDefinition"></see>
     /// </summary>
-    let partitiveDefinition =
-        Namespaced_IRI.parse _namespace_name "partitiveDefinition" |> NamespacedName
-
+    let partitiveDefinition = _prefix "partitiveDefinition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#past"></see>
     /// </summary>
-    let past = Namespaced_IRI.parse _namespace_name "past" |> NamespacedName
+    let past = _prefix "past"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#peripheral"></see>
     /// </summary>
-    let peripheral = Namespaced_IRI.parse _namespace_name "peripheral" |> NamespacedName
-
+    let peripheral = _prefix "peripheral"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#perspectivalized"></see>
     /// </summary>
-    let perspectivalized =
-        Namespaced_IRI.parse _namespace_name "perspectivalized" |> NamespacedName
-
+    let perspectivalized = _prefix "perspectivalized"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#phoneticForm"></see>
     /// </summary>
-    let phoneticForm =
-        Namespaced_IRI.parse _namespace_name "phoneticForm" |> NamespacedName
-
+    let phoneticForm = _prefix "phoneticForm"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#phraseme"></see>
     /// </summary>
-    let phraseme = Namespaced_IRI.parse _namespace_name "phraseme" |> NamespacedName
+    let phraseme = _prefix "phraseme"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#plural"></see>
     /// </summary>
-    let plural = Namespaced_IRI.parse _namespace_name "plural" |> NamespacedName
+    let plural = _prefix "plural"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#positive"></see>
     /// </summary>
-    let positive = Namespaced_IRI.parse _namespace_name "positive" |> NamespacedName
+    let positive = _prefix "positive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#possessive"></see>
     /// </summary>
-    let possessive = Namespaced_IRI.parse _namespace_name "possessive" |> NamespacedName
-
+    let possessive = _prefix "possessive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#postpositiveAdjective"></see>
     /// </summary>
-    let postpositiveAdjective =
-        Namespaced_IRI.parse _namespace_name "postpositiveAdjective" |> NamespacedName
-
+    let postpositiveAdjective = _prefix "postpositiveAdjective"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#predicativeAdjective"></see>
     /// </summary>
-    let predicativeAdjective =
-        Namespaced_IRI.parse _namespace_name "predicativeAdjective" |> NamespacedName
-
+    let predicativeAdjective = _prefix "predicativeAdjective"
     /// <summary>
     /// Preposition is an attribute of the UBY-LMF class SyntacticArgument and specifies the particular preposition to be used in prepositional complements that can either be realized as PP or as preposition and subordinate clause.
     /// Example: That depends on who did it.
     /// <see href="http://purl.org/olia/ubyCat.owl#preposition"></see></summary>
-    let preposition =
-        Namespaced_IRI.parse _namespace_name "preposition" |> NamespacedName
-
+    let preposition = _prefix "preposition"
     /// <summary>
     /// PrepositionType is an attribute of the UBY-LMF class SyntacticArgument and specifies the particular preposition type (e.g. locative, directional) to be used in prepositional complements.
     /// The preposition type is specified in VerbNet.
     /// <see href="http://purl.org/olia/ubyCat.owl#prepositionType"></see></summary>
-    let prepositionType =
-        Namespaced_IRI.parse _namespace_name "prepositionType" |> NamespacedName
-
+    let prepositionType = _prefix "prepositionType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#prepositionalComplement"></see>
     /// </summary>
-    let prepositionalComplement =
-        Namespaced_IRI.parse _namespace_name "prepositionalComplement" |> NamespacedName
-
+    let prepositionalComplement = _prefix "prepositionalComplement"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#prepositionalPhrase"></see>
     /// </summary>
-    let prepositionalPhrase =
-        Namespaced_IRI.parse _namespace_name "prepositionalPhrase" |> NamespacedName
-
+    let prepositionalPhrase = _prefix "prepositionalPhrase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#present"></see>
     /// </summary>
-    let present = Namespaced_IRI.parse _namespace_name "present" |> NamespacedName
+    let present = _prefix "present"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronoun"></see>
     /// </summary>
-    let pronoun = Namespaced_IRI.parse _namespace_name "pronoun" |> NamespacedName
-
+    let pronoun = _prefix "pronoun"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounDemonstrative"></see>
     /// </summary>
-    let pronounDemonstrative =
-        Namespaced_IRI.parse _namespace_name "pronounDemonstrative" |> NamespacedName
-
+    let pronounDemonstrative = _prefix "pronounDemonstrative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounIndefinite"></see>
     /// </summary>
-    let pronounIndefinite =
-        Namespaced_IRI.parse _namespace_name "pronounIndefinite" |> NamespacedName
-
+    let pronounIndefinite = _prefix "pronounIndefinite"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounInterrogative"></see>
     /// </summary>
-    let pronounInterrogative =
-        Namespaced_IRI.parse _namespace_name "pronounInterrogative" |> NamespacedName
-
+    let pronounInterrogative = _prefix "pronounInterrogative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounPersonal"></see>
     /// </summary>
-    let pronounPersonal =
-        Namespaced_IRI.parse _namespace_name "pronounPersonal" |> NamespacedName
-
+    let pronounPersonal = _prefix "pronounPersonal"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounPersonalIrreflexive"></see>
     /// </summary>
-    let pronounPersonalIrreflexive =
-        Namespaced_IRI.parse _namespace_name "pronounPersonalIrreflexive" |> NamespacedName
-
+    let pronounPersonalIrreflexive = _prefix "pronounPersonalIrreflexive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounPersonalReflexive"></see>
     /// </summary>
-    let pronounPersonalReflexive =
-        Namespaced_IRI.parse _namespace_name "pronounPersonalReflexive" |> NamespacedName
-
+    let pronounPersonalReflexive = _prefix "pronounPersonalReflexive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounPossessive"></see>
     /// </summary>
-    let pronounPossessive =
-        Namespaced_IRI.parse _namespace_name "pronounPossessive" |> NamespacedName
-
+    let pronounPossessive = _prefix "pronounPossessive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#pronounRelative"></see>
     /// </summary>
-    let pronounRelative =
-        Namespaced_IRI.parse _namespace_name "pronounRelative" |> NamespacedName
-
+    let pronounRelative = _prefix "pronounRelative"
     /// <summary>
     /// In UBY-LMF, quantification is an attribute of the class SemanticLabel. It can be used, if the value of the semantic label is annotated with a score, e.g. type=sentiment, label=positive, quantification=strong.
     ///
     /// <see href="http://purl.org/olia/ubyCat.owl#quantification"></see></summary>
-    let quantification =
-        Namespaced_IRI.parse _namespace_name "quantification" |> NamespacedName
-
+    let quantification = _prefix "quantification"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#reflexive"></see>
     /// </summary>
-    let reflexive = Namespaced_IRI.parse _namespace_name "reflexive" |> NamespacedName
+    let reflexive = _prefix "reflexive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#second"></see>
     /// </summary>
-    let second = Namespaced_IRI.parse _namespace_name "second" |> NamespacedName
-
+    let second = _prefix "second"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#semanticRole"></see>
     /// </summary>
-    let semanticRole =
-        Namespaced_IRI.parse _namespace_name "semanticRole" |> NamespacedName
-
+    let semanticRole = _prefix "semanticRole"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#sense"></see>
     /// </summary>
-    let sense = Namespaced_IRI.parse _namespace_name "sense" |> NamespacedName
-
+    let sense = _prefix "sense"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#senseInstance"></see>
     /// </summary>
-    let senseInstance =
-        Namespaced_IRI.parse _namespace_name "senseInstance" |> NamespacedName
-
+    let senseInstance = _prefix "senseInstance"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#senseRelation"></see>
     /// </summary>
-    let senseRelation =
-        Namespaced_IRI.parse _namespace_name "senseRelation" |> NamespacedName
-
+    let senseRelation = _prefix "senseRelation"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#separableParticle"></see>
     /// </summary>
-    let separableParticle =
-        Namespaced_IRI.parse _namespace_name "separableParticle" |> NamespacedName
-
+    let separableParticle = _prefix "separableParticle"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#singular"></see>
     /// </summary>
-    let singular = Namespaced_IRI.parse _namespace_name "singular" |> NamespacedName
+    let singular = _prefix "singular"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#sound"></see>
     /// </summary>
-    let sound = Namespaced_IRI.parse _namespace_name "sound" |> NamespacedName
-
+    let sound = _prefix "sound"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subcatFrame"></see>
     /// </summary>
-    let subcatFrame =
-        Namespaced_IRI.parse _namespace_name "subcatFrame" |> NamespacedName
-
+    let subcatFrame = _prefix "subcatFrame"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
-
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subjectComplement"></see>
     /// </summary>
-    let subjectComplement =
-        Namespaced_IRI.parse _namespace_name "subjectComplement" |> NamespacedName
-
+    let subjectComplement = _prefix "subjectComplement"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subjectControl"></see>
     /// </summary>
-    let subjectControl =
-        Namespaced_IRI.parse _namespace_name "subjectControl" |> NamespacedName
-
+    let subjectControl = _prefix "subjectControl"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subjectRaising"></see>
     /// </summary>
-    let subjectRaising =
-        Namespaced_IRI.parse _namespace_name "subjectRaising" |> NamespacedName
-
+    let subjectRaising = _prefix "subjectRaising"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subjunctive"></see>
     /// </summary>
-    let subjunctive =
-        Namespaced_IRI.parse _namespace_name "subjunctive" |> NamespacedName
-
+    let subjunctive = _prefix "subjunctive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#subordinateClause"></see>
     /// </summary>
-    let subordinateClause =
-        Namespaced_IRI.parse _namespace_name "subordinateClause" |> NamespacedName
-
+    let subordinateClause = _prefix "subordinateClause"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#superlative"></see>
     /// </summary>
-    let superlative =
-        Namespaced_IRI.parse _namespace_name "superlative" |> NamespacedName
-
+    let superlative = _prefix "superlative"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#supports"></see>
     /// </summary>
-    let supports = Namespaced_IRI.parse _namespace_name "supports" |> NamespacedName
+    let supports = _prefix "supports"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#symbol"></see>
     /// </summary>
-    let symbol = Namespaced_IRI.parse _namespace_name "symbol" |> NamespacedName
-
+    let symbol = _prefix "symbol"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#syntacticUsage"></see>
     /// </summary>
-    let syntacticUsage =
-        Namespaced_IRI.parse _namespace_name "syntacticUsage" |> NamespacedName
-
+    let syntacticUsage = _prefix "syntacticUsage"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#taxonomic"></see>
     /// </summary>
-    let taxonomic = Namespaced_IRI.parse _namespace_name "taxonomic" |> NamespacedName
+    let taxonomic = _prefix "taxonomic"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#thatType"></see>
     /// </summary>
-    let thatType = Namespaced_IRI.parse _namespace_name "thatType" |> NamespacedName
+    let thatType = _prefix "thatType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#third"></see>
     /// </summary>
-    let third = Namespaced_IRI.parse _namespace_name "third" |> NamespacedName
-
+    let third = _prefix "third"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#toInfinitive"></see>
     /// </summary>
-    let toInfinitive =
-        Namespaced_IRI.parse _namespace_name "toInfinitive" |> NamespacedName
-
+    let toInfinitive = _prefix "toInfinitive"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#translatedDefinition"></see>
     /// </summary>
-    let translatedDefinition =
-        Namespaced_IRI.parse _namespace_name "translatedDefinition" |> NamespacedName
-
+    let translatedDefinition = _prefix "translatedDefinition"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#transliteration"></see>
     /// </summary>
-    let transliteration =
-        Namespaced_IRI.parse _namespace_name "transliteration" |> NamespacedName
-
+    let transliteration = _prefix "transliteration"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#transparentMeaning"></see>
     /// </summary>
-    let transparentMeaning =
-        Namespaced_IRI.parse _namespace_name "transparentMeaning" |> NamespacedName
-
+    let transparentMeaning = _prefix "transparentMeaning"
     /// <summary>
     /// Type is an attribute of the UBY-LMF class SemanticLabel. It encodes the name of a SemanticLabel type, e.g.
     /// type=semanticField (from WordNet or GermaNet).
     /// The label attribute of SemanticLabel holds the corresponding value of the SemanticLabel, e.g.
     /// label=animate (for type=semanticField).
     /// <see href="http://purl.org/olia/ubyCat.owl#type"></see></summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#usage"></see>
     /// </summary>
-    let usage = Namespaced_IRI.parse _namespace_name "usage" |> NamespacedName
+    let usage = _prefix "usage"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#verb"></see>
     /// </summary>
-    let verb = Namespaced_IRI.parse _namespace_name "verb" |> NamespacedName
-
+    let verb = _prefix "verb"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#verbAuxiliary"></see>
     /// </summary>
-    let verbAuxiliary =
-        Namespaced_IRI.parse _namespace_name "verbAuxiliary" |> NamespacedName
-
+    let verbAuxiliary = _prefix "verbAuxiliary"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#verbMain"></see>
     /// </summary>
-    let verbMain = Namespaced_IRI.parse _namespace_name "verbMain" |> NamespacedName
+    let verbMain = _prefix "verbMain"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#verbModal"></see>
     /// </summary>
-    let verbModal = Namespaced_IRI.parse _namespace_name "verbModal" |> NamespacedName
+    let verbModal = _prefix "verbModal"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#verbPhrase"></see>
     /// </summary>
-    let verbPhrase = Namespaced_IRI.parse _namespace_name "verbPhrase" |> NamespacedName
+    let verbPhrase = _prefix "verbPhrase"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#whType"></see>
     /// </summary>
-    let whType = Namespaced_IRI.parse _namespace_name "whType" |> NamespacedName
-
+    let whType = _prefix "whType"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#writtenForm"></see>
     /// </summary>
-    let writtenForm =
-        Namespaced_IRI.parse _namespace_name "writtenForm" |> NamespacedName
-
+    let writtenForm = _prefix "writtenForm"
     /// <summary>
     ///   <see href="http://purl.org/olia/ubyCat.owl#yesNoType"></see>
     /// </summary>
-    let yesNoType = Namespaced_IRI.parse _namespace_name "yesNoType" |> NamespacedName
+    let yesNoType = _prefix "yesNoType"

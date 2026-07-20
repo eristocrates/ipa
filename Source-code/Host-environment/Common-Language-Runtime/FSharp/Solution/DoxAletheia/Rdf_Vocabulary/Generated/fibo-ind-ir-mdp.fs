@@ -1,88 +1,79 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.IND.InterestRates.MarketDataProviders.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_ind_ir_mdp =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/BGCPartnersInc-US-DE"></see>
     /// </summary>
-    let ``BGCPartnersInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "BGCPartnersInc-US-DE" |> NamespacedName
-
+    let ``BGCPartnersInc-US-DE`` = _prefix "BGCPartnersInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/BGCPartnersIncHeadquartersAddress"></see>
     /// </summary>
-    let BGCPartnersIncHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "BGCPartnersIncHeadquartersAddress" |> NamespacedName
-
+    let BGCPartnersIncHeadquartersAddress = _prefix "BGCPartnersIncHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/BGCPartnersIncDateEstablished"></see>
     /// </summary>
-    let BGCPartnersIncDateEstablished =
-        Namespaced_IRI.parse _namespace_name "BGCPartnersIncDateEstablished" |> NamespacedName
+    let BGCPartnersIncDateEstablished = _prefix "BGCPartnersIncDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/BGCPartnersIncBusinessEntityIdentifier"></see>
     /// </summary>
     let BGCPartnersIncBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "BGCPartnersIncBusinessEntityIdentifier" |> NamespacedName
+        _prefix "BGCPartnersIncBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/BGCPartnersIncLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let BGCPartnersIncLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BGCPartnersIncLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "BGCPartnersIncLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/EuropeanMoneyMarketsInstituteBenchmarkPublisher"></see>
     /// </summary>
     let EuropeanMoneyMarketsInstituteBenchmarkPublisher =
-        Namespaced_IRI.parse _namespace_name "EuropeanMoneyMarketsInstituteBenchmarkPublisher" |> NamespacedName
+        _prefix "EuropeanMoneyMarketsInstituteBenchmarkPublisher"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/FederalReserveBoardH.15RateResetTimeOfDay"></see>
     /// </summary>
     let ``FederalReserveBoardH.15RateResetTimeOfDay`` =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBoardH.15RateResetTimeOfDay" |> NamespacedName
+        _prefix "FederalReserveBoardH.15RateResetTimeOfDay"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/FenicsMarketData"></see>
     /// </summary>
-    let FenicsMarketData =
-        Namespaced_IRI.parse _namespace_name "FenicsMarketData" |> NamespacedName
-
+    let FenicsMarketData = _prefix "FenicsMarketData"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/ICEBenchmarkPublisher"></see>
     /// </summary>
-    let ICEBenchmarkPublisher =
-        Namespaced_IRI.parse _namespace_name "ICEBenchmarkPublisher" |> NamespacedName
+    let ICEBenchmarkPublisher = _prefix "ICEBenchmarkPublisher"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/LSEGFinancialSolutionsAsMarketDataProvider"></see>
     /// </summary>
     let LSEGFinancialSolutionsAsMarketDataProvider =
-        Namespaced_IRI.parse _namespace_name "LSEGFinancialSolutionsAsMarketDataProvider" |> NamespacedName
+        _prefix "LSEGFinancialSolutionsAsMarketDataProvider"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/ReferenceBanks"></see>
     /// </summary>
-    let ReferenceBanks =
-        Namespaced_IRI.parse _namespace_name "ReferenceBanks" |> NamespacedName
-
+    let ReferenceBanks = _prefix "ReferenceBanks"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/ReferenceDealers"></see>
     /// </summary>
-    let ReferenceDealers =
-        Namespaced_IRI.parse _namespace_name "ReferenceDealers" |> NamespacedName
-
+    let ReferenceDealers = _prefix "ReferenceDealers"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/SwapMarker"></see>
     /// </summary>
-    let SwapMarker = Namespaced_IRI.parse _namespace_name "SwapMarker" |> NamespacedName
+    let SwapMarker = _prefix "SwapMarker"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/Tradition"></see>
     /// </summary>
-    let Tradition = Namespaced_IRI.parse _namespace_name "Tradition" |> NamespacedName
+    let Tradition = _prefix "Tradition"

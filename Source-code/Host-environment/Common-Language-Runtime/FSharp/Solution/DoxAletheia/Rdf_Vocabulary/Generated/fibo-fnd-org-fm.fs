@@ -1,73 +1,59 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Organizations.FormalOrganizations.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_org_fm =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/Employee"></see>
     /// </summary>
-    let Employee = Namespaced_IRI.parse _namespace_name "Employee" |> NamespacedName
-
+    let Employee = _prefix "Employee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/isEmployedIn"></see>
     /// </summary>
-    let isEmployedIn =
-        Namespaced_IRI.parse _namespace_name "isEmployedIn" |> NamespacedName
-
+    let isEmployedIn = _prefix "isEmployedIn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/Employment"></see>
     /// </summary>
-    let Employment = Namespaced_IRI.parse _namespace_name "Employment" |> NamespacedName
-
+    let Employment = _prefix "Employment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/isEmployeeOf"></see>
     /// </summary>
-    let isEmployeeOf =
-        Namespaced_IRI.parse _namespace_name "isEmployeeOf" |> NamespacedName
-
+    let isEmployeeOf = _prefix "isEmployeeOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/Employer"></see>
     /// </summary>
-    let Employer = Namespaced_IRI.parse _namespace_name "Employer" |> NamespacedName
-
+    let Employer = _prefix "Employer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/hasEmployee"></see>
     /// </summary>
-    let hasEmployee =
-        Namespaced_IRI.parse _namespace_name "hasEmployee" |> NamespacedName
-
+    let hasEmployee = _prefix "hasEmployee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/isEmployingParty"></see>
     /// </summary>
-    let isEmployingParty =
-        Namespaced_IRI.parse _namespace_name "isEmployingParty" |> NamespacedName
-
+    let isEmployingParty = _prefix "isEmployingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/hasEmployedParty"></see>
     /// </summary>
-    let hasEmployedParty =
-        Namespaced_IRI.parse _namespace_name "hasEmployedParty" |> NamespacedName
-
+    let hasEmployedParty = _prefix "hasEmployedParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/hasEmployingParty"></see>
     /// </summary>
-    let hasEmployingParty =
-        Namespaced_IRI.parse _namespace_name "hasEmployingParty" |> NamespacedName
-
+    let hasEmployingParty = _prefix "hasEmployingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/Group"></see>
     /// </summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/employs"></see>
     /// </summary>
-    let employs = Namespaced_IRI.parse _namespace_name "employs" |> NamespacedName
-
+    let employs = _prefix "employs"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/isEmployedBy"></see>
     /// </summary>
-    let isEmployedBy =
-        Namespaced_IRI.parse _namespace_name "isEmployedBy" |> NamespacedName
+    let isEmployedBy = _prefix "isEmployedBy"

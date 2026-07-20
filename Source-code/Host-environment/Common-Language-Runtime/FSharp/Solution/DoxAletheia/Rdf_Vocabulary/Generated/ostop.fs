@@ -1,134 +1,115 @@
 namespace http.www.ordnancesurvey.co.uk.ontology.Topography.v0._1.Topography.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ostop =
     let _namespace_name =
         "http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Secondary concept
     /// <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#EconomicActivity"></see></summary>
-    let EconomicActivity =
-        Namespaced_IRI.parse _namespace_name "EconomicActivity" |> NamespacedName
-
+    let EconomicActivity = _prefix "EconomicActivity"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Purpose"></see>
     /// </summary>
-    let Purpose = Namespaced_IRI.parse _namespace_name "Purpose" |> NamespacedName
-
+    let Purpose = _prefix "Purpose"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#English_County"></see>
     /// </summary>
-    let English_County =
-        Namespaced_IRI.parse _namespace_name "English_County" |> NamespacedName
-
+    let English_County = _prefix "English_County"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#england"></see>
     /// </summary>
-    let england = Namespaced_IRI.parse _namespace_name "england" |> NamespacedName
-
+    let england = _prefix "england"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Traditional_County"></see>
     /// </summary>
-    let Traditional_County =
-        Namespaced_IRI.parse _namespace_name "Traditional_County" |> NamespacedName
-
+    let Traditional_County = _prefix "Traditional_County"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Footprint"></see>
     /// </summary>
-    let Footprint = Namespaced_IRI.parse _namespace_name "Footprint" |> NamespacedName
+    let Footprint = _prefix "Footprint"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Holding"></see>
     /// </summary>
-    let Holding = Namespaced_IRI.parse _namespace_name "Holding" |> NamespacedName
+    let Holding = _prefix "Holding"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Industry"></see>
     /// </summary>
-    let Industry = Namespaced_IRI.parse _namespace_name "Industry" |> NamespacedName
+    let Industry = _prefix "Industry"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Storage"></see>
     /// </summary>
-    let Storage = Namespaced_IRI.parse _namespace_name "Storage" |> NamespacedName
+    let Storage = _prefix "Storage"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Structure"></see>
     /// </summary>
-    let Structure = Namespaced_IRI.parse _namespace_name "Structure" |> NamespacedName
-
+    let Structure = _prefix "Structure"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#TopographicObject"></see>
     /// </summary>
-    let TopographicObject =
-        Namespaced_IRI.parse _namespace_name "TopographicObject" |> NamespacedName
-
+    let TopographicObject = _prefix "TopographicObject"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Surface"></see>
     /// </summary>
-    let Surface = Namespaced_IRI.parse _namespace_name "Surface" |> NamespacedName
+    let Surface = _prefix "Surface"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#Transport"></see>
     /// </summary>
-    let Transport = Namespaced_IRI.parse _namespace_name "Transport" |> NamespacedName
+    let Transport = _prefix "Transport"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#UK_Country"></see>
     /// </summary>
-    let UK_Country = Namespaced_IRI.parse _namespace_name "UK_Country" |> NamespacedName
+    let UK_Country = _prefix "UK_Country"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#uk"></see>
     /// </summary>
-    let uk = Namespaced_IRI.parse _namespace_name "uk" |> NamespacedName
+    let uk = _prefix "uk"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#contains"></see>
     /// </summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#isContainedIn"></see>
     /// </summary>
-    let isContainedIn =
-        Namespaced_IRI.parse _namespace_name "isContainedIn" |> NamespacedName
-
+    let isContainedIn = _prefix "isContainedIn"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#earths_surface"></see>
     /// </summary>
-    let earths_surface =
-        Namespaced_IRI.parse _namespace_name "earths_surface" |> NamespacedName
-
+    let earths_surface = _prefix "earths_surface"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#enables"></see>
     /// </summary>
-    let enables = Namespaced_IRI.parse _namespace_name "enables" |> NamespacedName
-
+    let enables = _prefix "enables"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#hasFootprint"></see>
     /// </summary>
-    let hasFootprint =
-        Namespaced_IRI.parse _namespace_name "hasFootprint" |> NamespacedName
-
+    let hasFootprint = _prefix "hasFootprint"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#hasPurpose"></see>
     /// </summary>
-    let hasPurpose = Namespaced_IRI.parse _namespace_name "hasPurpose" |> NamespacedName
+    let hasPurpose = _prefix "hasPurpose"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#scotland"></see>
     /// </summary>
-    let scotland = Namespaced_IRI.parse _namespace_name "scotland" |> NamespacedName
+    let scotland = _prefix "scotland"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#somerset"></see>
     /// </summary>
-    let somerset = Namespaced_IRI.parse _namespace_name "somerset" |> NamespacedName
-
+    let somerset = _prefix "somerset"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#united_kingdom"></see>
     /// </summary>
-    let united_kingdom =
-        Namespaced_IRI.parse _namespace_name "united_kingdom" |> NamespacedName
-
+    let united_kingdom = _prefix "united_kingdom"
     /// <summary>
     ///   <see href="http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#wales"></see>
     /// </summary>
-    let wales = Namespaced_IRI.parse _namespace_name "wales" |> NamespacedName
+    let wales = _prefix "wales"

@@ -1,1362 +1,1014 @@
 namespace http.www.w3.org.TR._2003.PR_owl_guide_20031209.wine.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module vin =
     let _namespace_name = "http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Red"></see>
     /// </summary>
-    let Red = Namespaced_IRI.parse _namespace_name "Red" |> NamespacedName
+    let Red = _prefix "Red"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#White"></see>
     /// </summary>
-    let White = Namespaced_IRI.parse _namespace_name "White" |> NamespacedName
+    let White = _prefix "White"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Rose"></see>
     /// </summary>
-    let Rose = Namespaced_IRI.parse _namespace_name "Rose" |> NamespacedName
+    let Rose = _prefix "Rose"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Light"></see>
     /// </summary>
-    let Light = Namespaced_IRI.parse _namespace_name "Light" |> NamespacedName
+    let Light = _prefix "Light"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medium"></see>
     /// </summary>
-    let Medium = Namespaced_IRI.parse _namespace_name "Medium" |> NamespacedName
+    let Medium = _prefix "Medium"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Full"></see>
     /// </summary>
-    let Full = Namespaced_IRI.parse _namespace_name "Full" |> NamespacedName
+    let Full = _prefix "Full"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bancroft"></see>
     /// </summary>
-    let Bancroft = Namespaced_IRI.parse _namespace_name "Bancroft" |> NamespacedName
-
+    let Bancroft = _prefix "Bancroft"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauChevalBlanc"></see>
     /// </summary>
-    let ChateauChevalBlanc =
-        Namespaced_IRI.parse _namespace_name "ChateauChevalBlanc" |> NamespacedName
-
+    let ChateauChevalBlanc = _prefix "ChateauChevalBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDYchem"></see>
     /// </summary>
-    let ChateauDYchem =
-        Namespaced_IRI.parse _namespace_name "ChateauDYchem" |> NamespacedName
-
+    let ChateauDYchem = _prefix "ChateauDYchem"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDeMeursault"></see>
     /// </summary>
-    let ChateauDeMeursault =
-        Namespaced_IRI.parse _namespace_name "ChateauDeMeursault" |> NamespacedName
-
+    let ChateauDeMeursault = _prefix "ChateauDeMeursault"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauLafiteRothschild"></see>
     /// </summary>
-    let ChateauLafiteRothschild =
-        Namespaced_IRI.parse _namespace_name "ChateauLafiteRothschild" |> NamespacedName
-
+    let ChateauLafiteRothschild = _prefix "ChateauLafiteRothschild"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMargauxWinery"></see>
     /// </summary>
-    let ChateauMargauxWinery =
-        Namespaced_IRI.parse _namespace_name "ChateauMargauxWinery" |> NamespacedName
-
+    let ChateauMargauxWinery = _prefix "ChateauMargauxWinery"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMorgon"></see>
     /// </summary>
-    let ChateauMorgon =
-        Namespaced_IRI.parse _namespace_name "ChateauMorgon" |> NamespacedName
-
+    let ChateauMorgon = _prefix "ChateauMorgon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeLaPoussie"></see>
     /// </summary>
-    let ClosDeLaPoussie =
-        Namespaced_IRI.parse _namespace_name "ClosDeLaPoussie" |> NamespacedName
-
+    let ClosDeLaPoussie = _prefix "ClosDeLaPoussie"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeVougeot"></see>
     /// </summary>
-    let ClosDeVougeot =
-        Namespaced_IRI.parse _namespace_name "ClosDeVougeot" |> NamespacedName
-
+    let ClosDeVougeot = _prefix "ClosDeVougeot"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CongressSprings"></see>
     /// </summary>
-    let CongressSprings =
-        Namespaced_IRI.parse _namespace_name "CongressSprings" |> NamespacedName
-
+    let CongressSprings = _prefix "CongressSprings"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Corbans"></see>
     /// </summary>
-    let Corbans = Namespaced_IRI.parse _namespace_name "Corbans" |> NamespacedName
-
+    let Corbans = _prefix "Corbans"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CortonMontrachet"></see>
     /// </summary>
-    let CortonMontrachet =
-        Namespaced_IRI.parse _namespace_name "CortonMontrachet" |> NamespacedName
-
+    let CortonMontrachet = _prefix "CortonMontrachet"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Cotturi"></see>
     /// </summary>
-    let Cotturi = Namespaced_IRI.parse _namespace_name "Cotturi" |> NamespacedName
+    let Cotturi = _prefix "Cotturi"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DAnjou"></see>
     /// </summary>
-    let DAnjou = Namespaced_IRI.parse _namespace_name "DAnjou" |> NamespacedName
+    let DAnjou = _prefix "DAnjou"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Elyse"></see>
     /// </summary>
-    let Elyse = Namespaced_IRI.parse _namespace_name "Elyse" |> NamespacedName
+    let Elyse = _prefix "Elyse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Forman"></see>
     /// </summary>
-    let Forman = Namespaced_IRI.parse _namespace_name "Forman" |> NamespacedName
+    let Forman = _prefix "Forman"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Foxen"></see>
     /// </summary>
-    let Foxen = Namespaced_IRI.parse _namespace_name "Foxen" |> NamespacedName
-
+    let Foxen = _prefix "Foxen"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GaryFarrell"></see>
     /// </summary>
-    let GaryFarrell =
-        Namespaced_IRI.parse _namespace_name "GaryFarrell" |> NamespacedName
-
+    let GaryFarrell = _prefix "GaryFarrell"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KalinCellars"></see>
     /// </summary>
-    let KalinCellars =
-        Namespaced_IRI.parse _namespace_name "KalinCellars" |> NamespacedName
-
+    let KalinCellars = _prefix "KalinCellars"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KathrynKennedy"></see>
     /// </summary>
-    let KathrynKennedy =
-        Namespaced_IRI.parse _namespace_name "KathrynKennedy" |> NamespacedName
-
+    let KathrynKennedy = _prefix "KathrynKennedy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LaneTanner"></see>
     /// </summary>
-    let LaneTanner = Namespaced_IRI.parse _namespace_name "LaneTanner" |> NamespacedName
+    let LaneTanner = _prefix "LaneTanner"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Longridge"></see>
     /// </summary>
-    let Longridge = Namespaced_IRI.parse _namespace_name "Longridge" |> NamespacedName
+    let Longridge = _prefix "Longridge"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Marietta"></see>
     /// </summary>
-    let Marietta = Namespaced_IRI.parse _namespace_name "Marietta" |> NamespacedName
-
+    let Marietta = _prefix "Marietta"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#McGuinnesso"></see>
     /// </summary>
-    let McGuinnesso =
-        Namespaced_IRI.parse _namespace_name "McGuinnesso" |> NamespacedName
-
+    let McGuinnesso = _prefix "McGuinnesso"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyard"></see>
     /// </summary>
-    let MountEdenVineyard =
-        Namespaced_IRI.parse _namespace_name "MountEdenVineyard" |> NamespacedName
-
+    let MountEdenVineyard = _prefix "MountEdenVineyard"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Mountadam"></see>
     /// </summary>
-    let Mountadam = Namespaced_IRI.parse _namespace_name "Mountadam" |> NamespacedName
-
+    let Mountadam = _prefix "Mountadam"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PageMillWinery"></see>
     /// </summary>
-    let PageMillWinery =
-        Namespaced_IRI.parse _namespace_name "PageMillWinery" |> NamespacedName
-
+    let PageMillWinery = _prefix "PageMillWinery"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PeterMccoy"></see>
     /// </summary>
-    let PeterMccoy = Namespaced_IRI.parse _namespace_name "PeterMccoy" |> NamespacedName
-
+    let PeterMccoy = _prefix "PeterMccoy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PulignyMontrachet"></see>
     /// </summary>
-    let PulignyMontrachet =
-        Namespaced_IRI.parse _namespace_name "PulignyMontrachet" |> NamespacedName
-
+    let PulignyMontrachet = _prefix "PulignyMontrachet"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainVineyard"></see>
     /// </summary>
-    let SantaCruzMountainVineyard =
-        Namespaced_IRI.parse _namespace_name "SantaCruzMountainVineyard" |> NamespacedName
-
+    let SantaCruzMountainVineyard = _prefix "SantaCruzMountainVineyard"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyon"></see>
     /// </summary>
-    let SaucelitoCanyon =
-        Namespaced_IRI.parse _namespace_name "SaucelitoCanyon" |> NamespacedName
-
+    let SaucelitoCanyon = _prefix "SaucelitoCanyon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossRothermel"></see>
     /// </summary>
-    let SchlossRothermel =
-        Namespaced_IRI.parse _namespace_name "SchlossRothermel" |> NamespacedName
-
+    let SchlossRothermel = _prefix "SchlossRothermel"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossVolrad"></see>
     /// </summary>
-    let SchlossVolrad =
-        Namespaced_IRI.parse _namespace_name "SchlossVolrad" |> NamespacedName
-
+    let SchlossVolrad = _prefix "SchlossVolrad"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SeanThackrey"></see>
     /// </summary>
-    let SeanThackrey =
-        Namespaced_IRI.parse _namespace_name "SeanThackrey" |> NamespacedName
-
+    let SeanThackrey = _prefix "SeanThackrey"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Selaks"></see>
     /// </summary>
-    let Selaks = Namespaced_IRI.parse _namespace_name "Selaks" |> NamespacedName
-
+    let Selaks = _prefix "Selaks"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SevreEtMaine"></see>
     /// </summary>
-    let SevreEtMaine =
-        Namespaced_IRI.parse _namespace_name "SevreEtMaine" |> NamespacedName
-
+    let SevreEtMaine = _prefix "SevreEtMaine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StGenevieve"></see>
     /// </summary>
-    let StGenevieve =
-        Namespaced_IRI.parse _namespace_name "StGenevieve" |> NamespacedName
-
+    let StGenevieve = _prefix "StGenevieve"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Stonleigh"></see>
     /// </summary>
-    let Stonleigh = Namespaced_IRI.parse _namespace_name "Stonleigh" |> NamespacedName
+    let Stonleigh = _prefix "Stonleigh"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Taylor"></see>
     /// </summary>
-    let Taylor = Namespaced_IRI.parse _namespace_name "Taylor" |> NamespacedName
+    let Taylor = _prefix "Taylor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ventana"></see>
     /// </summary>
-    let Ventana = Namespaced_IRI.parse _namespace_name "Ventana" |> NamespacedName
-
+    let Ventana = _prefix "Ventana"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLane"></see>
     /// </summary>
-    let WhitehallLane =
-        Namespaced_IRI.parse _namespace_name "WhitehallLane" |> NamespacedName
-
+    let WhitehallLane = _prefix "WhitehallLane"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Delicate"></see>
     /// </summary>
-    let Delicate = Namespaced_IRI.parse _namespace_name "Delicate" |> NamespacedName
+    let Delicate = _prefix "Delicate"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Moderate"></see>
     /// </summary>
-    let Moderate = Namespaced_IRI.parse _namespace_name "Moderate" |> NamespacedName
+    let Moderate = _prefix "Moderate"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Strong"></see>
     /// </summary>
-    let Strong = Namespaced_IRI.parse _namespace_name "Strong" |> NamespacedName
+    let Strong = _prefix "Strong"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sweet"></see>
     /// </summary>
-    let Sweet = Namespaced_IRI.parse _namespace_name "Sweet" |> NamespacedName
+    let Sweet = _prefix "Sweet"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#OffDry"></see>
     /// </summary>
-    let OffDry = Namespaced_IRI.parse _namespace_name "OffDry" |> NamespacedName
+    let OffDry = _prefix "OffDry"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Dry"></see>
     /// </summary>
-    let Dry = Namespaced_IRI.parse _namespace_name "Dry" |> NamespacedName
-
+    let Dry = _prefix "Dry"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsaceRegion"></see>
     /// </summary>
-    let AlsaceRegion =
-        Namespaced_IRI.parse _namespace_name "AlsaceRegion" |> NamespacedName
-
+    let AlsaceRegion = _prefix "AlsaceRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Region"></see>
     /// </summary>
-    let Region = Namespaced_IRI.parse _namespace_name "Region" |> NamespacedName
+    let Region = _prefix "Region"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn"></see>
     /// </summary>
-    let locatedIn = Namespaced_IRI.parse _namespace_name "locatedIn" |> NamespacedName
-
+    let locatedIn = _prefix "locatedIn"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchRegion"></see>
     /// </summary>
-    let FrenchRegion =
-        Namespaced_IRI.parse _namespace_name "FrenchRegion" |> NamespacedName
-
+    let FrenchRegion = _prefix "FrenchRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsatianWine"></see>
     /// </summary>
-    let AlsatianWine =
-        Namespaced_IRI.parse _namespace_name "AlsatianWine" |> NamespacedName
-
+    let AlsatianWine = _prefix "AlsatianWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine"></see>
     /// </summary>
-    let Wine = Namespaced_IRI.parse _namespace_name "Wine" |> NamespacedName
-
+    let Wine = _prefix "Wine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AmericanWine"></see>
     /// </summary>
-    let AmericanWine =
-        Namespaced_IRI.parse _namespace_name "AmericanWine" |> NamespacedName
-
+    let AmericanWine = _prefix "AmericanWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#USRegion"></see>
     /// </summary>
-    let USRegion = Namespaced_IRI.parse _namespace_name "USRegion" |> NamespacedName
+    let USRegion = _prefix "USRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Anjou"></see>
     /// </summary>
-    let Anjou = Namespaced_IRI.parse _namespace_name "Anjou" |> NamespacedName
+    let Anjou = _prefix "Anjou"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor"></see>
     /// </summary>
-    let hasColor = Namespaced_IRI.parse _namespace_name "hasColor" |> NamespacedName
+    let hasColor = _prefix "hasColor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody"></see>
     /// </summary>
-    let hasBody = Namespaced_IRI.parse _namespace_name "hasBody" |> NamespacedName
+    let hasBody = _prefix "hasBody"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor"></see>
     /// </summary>
-    let hasFlavor = Namespaced_IRI.parse _namespace_name "hasFlavor" |> NamespacedName
+    let hasFlavor = _prefix "hasFlavor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar"></see>
     /// </summary>
-    let hasSugar = Namespaced_IRI.parse _namespace_name "hasSugar" |> NamespacedName
+    let hasSugar = _prefix "hasSugar"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Loire"></see>
     /// </summary>
-    let Loire = Namespaced_IRI.parse _namespace_name "Loire" |> NamespacedName
-
+    let Loire = _prefix "Loire"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AnjouRegion"></see>
     /// </summary>
-    let AnjouRegion =
-        Namespaced_IRI.parse _namespace_name "AnjouRegion" |> NamespacedName
-
+    let AnjouRegion = _prefix "AnjouRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LoireRegion"></see>
     /// </summary>
-    let LoireRegion =
-        Namespaced_IRI.parse _namespace_name "LoireRegion" |> NamespacedName
-
+    let LoireRegion = _prefix "LoireRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ArroyoGrandeRegion"></see>
     /// </summary>
-    let ArroyoGrandeRegion =
-        Namespaced_IRI.parse _namespace_name "ArroyoGrandeRegion" |> NamespacedName
-
+    let ArroyoGrandeRegion = _prefix "ArroyoGrandeRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaRegion"></see>
     /// </summary>
-    let CaliforniaRegion =
-        Namespaced_IRI.parse _namespace_name "CaliforniaRegion" |> NamespacedName
-
+    let CaliforniaRegion = _prefix "CaliforniaRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AustralianRegion"></see>
     /// </summary>
-    let AustralianRegion =
-        Namespaced_IRI.parse _namespace_name "AustralianRegion" |> NamespacedName
-
+    let AustralianRegion = _prefix "AustralianRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Winery"></see>
     /// </summary>
-    let Winery = Namespaced_IRI.parse _namespace_name "Winery" |> NamespacedName
-
+    let Winery = _prefix "Winery"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BancroftChardonnay"></see>
     /// </summary>
-    let BancroftChardonnay =
-        Namespaced_IRI.parse _namespace_name "BancroftChardonnay" |> NamespacedName
-
+    let BancroftChardonnay = _prefix "BancroftChardonnay"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chardonnay"></see>
     /// </summary>
-    let Chardonnay = Namespaced_IRI.parse _namespace_name "Chardonnay" |> NamespacedName
+    let Chardonnay = _prefix "Chardonnay"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasMaker"></see>
     /// </summary>
-    let hasMaker = Namespaced_IRI.parse _namespace_name "hasMaker" |> NamespacedName
+    let hasMaker = _prefix "hasMaker"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#NapaRegion"></see>
     /// </summary>
-    let NapaRegion = Namespaced_IRI.parse _namespace_name "NapaRegion" |> NamespacedName
+    let NapaRegion = _prefix "NapaRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beaujolais"></see>
     /// </summary>
-    let Beaujolais = Namespaced_IRI.parse _namespace_name "Beaujolais" |> NamespacedName
-
+    let Beaujolais = _prefix "Beaujolais"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeFromGrape"></see>
     /// </summary>
-    let madeFromGrape =
-        Namespaced_IRI.parse _namespace_name "madeFromGrape" |> NamespacedName
-
+    let madeFromGrape = _prefix "madeFromGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GamayGrape"></see>
     /// </summary>
-    let GamayGrape = Namespaced_IRI.parse _namespace_name "GamayGrape" |> NamespacedName
-
+    let GamayGrape = _prefix "GamayGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BeaujolaisRegion"></see>
     /// </summary>
-    let BeaujolaisRegion =
-        Namespaced_IRI.parse _namespace_name "BeaujolaisRegion" |> NamespacedName
-
+    let BeaujolaisRegion = _prefix "BeaujolaisRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beringer"></see>
     /// </summary>
-    let Beringer = Namespaced_IRI.parse _namespace_name "Beringer" |> NamespacedName
+    let Beringer = _prefix "Beringer"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bordeaux"></see>
     /// </summary>
-    let Bordeaux = Namespaced_IRI.parse _namespace_name "Bordeaux" |> NamespacedName
-
+    let Bordeaux = _prefix "Bordeaux"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BordeauxRegion"></see>
     /// </summary>
-    let BordeauxRegion =
-        Namespaced_IRI.parse _namespace_name "BordeauxRegion" |> NamespacedName
-
+    let BordeauxRegion = _prefix "BordeauxRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BourgogneRegion"></see>
     /// </summary>
-    let BourgogneRegion =
-        Namespaced_IRI.parse _namespace_name "BourgogneRegion" |> NamespacedName
-
+    let BourgogneRegion = _prefix "BourgogneRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Burgundy"></see>
     /// </summary>
-    let Burgundy = Namespaced_IRI.parse _namespace_name "Burgundy" |> NamespacedName
-
+    let Burgundy = _prefix "Burgundy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFranc"></see>
     /// </summary>
-    let CabernetFranc =
-        Namespaced_IRI.parse _namespace_name "CabernetFranc" |> NamespacedName
-
+    let CabernetFranc = _prefix "CabernetFranc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFrancGrape"></see>
     /// </summary>
-    let CabernetFrancGrape =
-        Namespaced_IRI.parse _namespace_name "CabernetFrancGrape" |> NamespacedName
-
+    let CabernetFrancGrape = _prefix "CabernetFrancGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineGrape"></see>
     /// </summary>
-    let WineGrape = Namespaced_IRI.parse _namespace_name "WineGrape" |> NamespacedName
-
+    let WineGrape = _prefix "WineGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignon"></see>
     /// </summary>
-    let CabernetSauvignon =
-        Namespaced_IRI.parse _namespace_name "CabernetSauvignon" |> NamespacedName
-
+    let CabernetSauvignon = _prefix "CabernetSauvignon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignonGrape"></see>
     /// </summary>
-    let CabernetSauvignonGrape =
-        Namespaced_IRI.parse _namespace_name "CabernetSauvignonGrape" |> NamespacedName
-
+    let CabernetSauvignonGrape = _prefix "CabernetSauvignonGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaWine"></see>
     /// </summary>
-    let CaliforniaWine =
-        Namespaced_IRI.parse _namespace_name "CaliforniaWine" |> NamespacedName
-
+    let CaliforniaWine = _prefix "CaliforniaWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CentralCoastRegion"></see>
     /// </summary>
-    let CentralCoastRegion =
-        Namespaced_IRI.parse _namespace_name "CentralCoastRegion" |> NamespacedName
-
+    let CentralCoastRegion = _prefix "CentralCoastRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CentralTexasRegion"></see>
     /// </summary>
-    let CentralTexasRegion =
-        Namespaced_IRI.parse _namespace_name "CentralTexasRegion" |> NamespacedName
-
+    let CentralTexasRegion = _prefix "CentralTexasRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasRegion"></see>
     /// </summary>
-    let TexasRegion =
-        Namespaced_IRI.parse _namespace_name "TexasRegion" |> NamespacedName
-
+    let TexasRegion = _prefix "TexasRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChardonnayGrape"></see>
     /// </summary>
-    let ChardonnayGrape =
-        Namespaced_IRI.parse _namespace_name "ChardonnayGrape" |> NamespacedName
-
+    let ChardonnayGrape = _prefix "ChardonnayGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauChevalBlancStEmilion"></see>
     /// </summary>
-    let ChateauChevalBlancStEmilion =
-        Namespaced_IRI.parse _namespace_name "ChateauChevalBlancStEmilion" |> NamespacedName
-
+    let ChateauChevalBlancStEmilion = _prefix "ChateauChevalBlancStEmilion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilion"></see>
     /// </summary>
-    let StEmilion = Namespaced_IRI.parse _namespace_name "StEmilion" |> NamespacedName
-
+    let StEmilion = _prefix "StEmilion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDYchemSauterne"></see>
     /// </summary>
-    let ChateauDYchemSauterne =
-        Namespaced_IRI.parse _namespace_name "ChateauDYchemSauterne" |> NamespacedName
-
+    let ChateauDYchemSauterne = _prefix "ChateauDYchemSauterne"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sauternes"></see>
     /// </summary>
-    let Sauternes = Namespaced_IRI.parse _namespace_name "Sauternes" |> NamespacedName
-
+    let Sauternes = _prefix "Sauternes"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlancGrape"></see>
     /// </summary>
-    let SauvignonBlancGrape =
-        Namespaced_IRI.parse _namespace_name "SauvignonBlancGrape" |> NamespacedName
-
+    let SauvignonBlancGrape = _prefix "SauvignonBlancGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonGrape"></see>
     /// </summary>
-    let SemillonGrape =
-        Namespaced_IRI.parse _namespace_name "SemillonGrape" |> NamespacedName
-
+    let SemillonGrape = _prefix "SemillonGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDeMeursaultMeursault"></see>
     /// </summary>
-    let ChateauDeMeursaultMeursault =
-        Namespaced_IRI.parse _namespace_name "ChateauDeMeursaultMeursault" |> NamespacedName
-
+    let ChateauDeMeursaultMeursault = _prefix "ChateauDeMeursaultMeursault"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meursault"></see>
     /// </summary>
-    let Meursault = Namespaced_IRI.parse _namespace_name "Meursault" |> NamespacedName
-
+    let Meursault = _prefix "Meursault"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauLafiteRothschildPauillac"></see>
     /// </summary>
-    let ChateauLafiteRothschildPauillac =
-        Namespaced_IRI.parse _namespace_name "ChateauLafiteRothschildPauillac" |> NamespacedName
-
+    let ChateauLafiteRothschildPauillac = _prefix "ChateauLafiteRothschildPauillac"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Pauillac"></see>
     /// </summary>
-    let Pauillac = Namespaced_IRI.parse _namespace_name "Pauillac" |> NamespacedName
-
+    let Pauillac = _prefix "Pauillac"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMargaux"></see>
     /// </summary>
-    let ChateauMargaux =
-        Namespaced_IRI.parse _namespace_name "ChateauMargaux" |> NamespacedName
-
+    let ChateauMargaux = _prefix "ChateauMargaux"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Margaux"></see>
     /// </summary>
-    let Margaux = Namespaced_IRI.parse _namespace_name "Margaux" |> NamespacedName
-
+    let Margaux = _prefix "Margaux"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMorgonBeaujolais"></see>
     /// </summary>
-    let ChateauMorgonBeaujolais =
-        Namespaced_IRI.parse _namespace_name "ChateauMorgonBeaujolais" |> NamespacedName
-
+    let ChateauMorgonBeaujolais = _prefix "ChateauMorgonBeaujolais"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlanc"></see>
     /// </summary>
-    let CheninBlanc =
-        Namespaced_IRI.parse _namespace_name "CheninBlanc" |> NamespacedName
-
+    let CheninBlanc = _prefix "CheninBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlancGrape"></see>
     /// </summary>
-    let CheninBlancGrape =
-        Namespaced_IRI.parse _namespace_name "CheninBlancGrape" |> NamespacedName
-
+    let CheninBlancGrape = _prefix "CheninBlancGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chianti"></see>
     /// </summary>
-    let Chianti = Namespaced_IRI.parse _namespace_name "Chianti" |> NamespacedName
-
+    let Chianti = _prefix "Chianti"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChiantiRegion"></see>
     /// </summary>
-    let ChiantiRegion =
-        Namespaced_IRI.parse _namespace_name "ChiantiRegion" |> NamespacedName
-
+    let ChiantiRegion = _prefix "ChiantiRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SangioveseGrape"></see>
     /// </summary>
-    let SangioveseGrape =
-        Namespaced_IRI.parse _namespace_name "SangioveseGrape" |> NamespacedName
-
+    let SangioveseGrape = _prefix "SangioveseGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianWine"></see>
     /// </summary>
-    let ItalianWine =
-        Namespaced_IRI.parse _namespace_name "ItalianWine" |> NamespacedName
-
+    let ItalianWine = _prefix "ItalianWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChiantiClassico"></see>
     /// </summary>
-    let ChiantiClassico =
-        Namespaced_IRI.parse _namespace_name "ChiantiClassico" |> NamespacedName
-
+    let ChiantiClassico = _prefix "ChiantiClassico"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianRegion"></see>
     /// </summary>
-    let ItalianRegion =
-        Namespaced_IRI.parse _namespace_name "ItalianRegion" |> NamespacedName
-
+    let ItalianRegion = _prefix "ItalianRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeLaPoussieSancerre"></see>
     /// </summary>
-    let ClosDeLaPoussieSancerre =
-        Namespaced_IRI.parse _namespace_name "ClosDeLaPoussieSancerre" |> NamespacedName
-
+    let ClosDeLaPoussieSancerre = _prefix "ClosDeLaPoussieSancerre"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sancerre"></see>
     /// </summary>
-    let Sancerre = Namespaced_IRI.parse _namespace_name "Sancerre" |> NamespacedName
-
+    let Sancerre = _prefix "Sancerre"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeVougeotCotesDOr"></see>
     /// </summary>
-    let ClosDeVougeotCotesDOr =
-        Namespaced_IRI.parse _namespace_name "ClosDeVougeotCotesDOr" |> NamespacedName
-
+    let ClosDeVougeotCotesDOr = _prefix "ClosDeVougeotCotesDOr"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOr"></see>
     /// </summary>
-    let CotesDOr = Namespaced_IRI.parse _namespace_name "CotesDOr" |> NamespacedName
-
+    let CotesDOr = _prefix "CotesDOr"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CongressSpringsSemillon"></see>
     /// </summary>
-    let CongressSpringsSemillon =
-        Namespaced_IRI.parse _namespace_name "CongressSpringsSemillon" |> NamespacedName
-
+    let CongressSpringsSemillon = _prefix "CongressSpringsSemillon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Semillon"></see>
     /// </summary>
-    let Semillon = Namespaced_IRI.parse _namespace_name "Semillon" |> NamespacedName
-
+    let Semillon = _prefix "Semillon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansDryWhiteRiesling"></see>
     /// </summary>
-    let CorbansDryWhiteRiesling =
-        Namespaced_IRI.parse _namespace_name "CorbansDryWhiteRiesling" |> NamespacedName
-
+    let CorbansDryWhiteRiesling = _prefix "CorbansDryWhiteRiesling"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Riesling"></see>
     /// </summary>
-    let Riesling = Namespaced_IRI.parse _namespace_name "Riesling" |> NamespacedName
-
+    let Riesling = _prefix "Riesling"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#NewZealandRegion"></see>
     /// </summary>
-    let NewZealandRegion =
-        Namespaced_IRI.parse _namespace_name "NewZealandRegion" |> NamespacedName
-
+    let NewZealandRegion = _prefix "NewZealandRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansPrivateBinSauvignonBlanc"></see>
     /// </summary>
-    let CorbansPrivateBinSauvignonBlanc =
-        Namespaced_IRI.parse _namespace_name "CorbansPrivateBinSauvignonBlanc" |> NamespacedName
-
+    let CorbansPrivateBinSauvignonBlanc = _prefix "CorbansPrivateBinSauvignonBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlanc"></see>
     /// </summary>
-    let SauvignonBlanc =
-        Namespaced_IRI.parse _namespace_name "SauvignonBlanc" |> NamespacedName
-
+    let SauvignonBlanc = _prefix "SauvignonBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansSauvignonBlanc"></see>
     /// </summary>
-    let CorbansSauvignonBlanc =
-        Namespaced_IRI.parse _namespace_name "CorbansSauvignonBlanc" |> NamespacedName
-
+    let CorbansSauvignonBlanc = _prefix "CorbansSauvignonBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CortonMontrachetWhiteBurgundy"></see>
     /// </summary>
-    let CortonMontrachetWhiteBurgundy =
-        Namespaced_IRI.parse _namespace_name "CortonMontrachetWhiteBurgundy" |> NamespacedName
-
+    let CortonMontrachetWhiteBurgundy = _prefix "CortonMontrachetWhiteBurgundy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBurgundy"></see>
     /// </summary>
-    let WhiteBurgundy =
-        Namespaced_IRI.parse _namespace_name "WhiteBurgundy" |> NamespacedName
-
+    let WhiteBurgundy = _prefix "WhiteBurgundy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBurgundy"></see>
     /// </summary>
-    let RedBurgundy =
-        Namespaced_IRI.parse _namespace_name "RedBurgundy" |> NamespacedName
-
+    let RedBurgundy = _prefix "RedBurgundy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOrRegion"></see>
     /// </summary>
-    let CotesDOrRegion =
-        Namespaced_IRI.parse _namespace_name "CotesDOrRegion" |> NamespacedName
-
+    let CotesDOrRegion = _prefix "CotesDOrRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotturiZinfandel"></see>
     /// </summary>
-    let CotturiZinfandel =
-        Namespaced_IRI.parse _namespace_name "CotturiZinfandel" |> NamespacedName
-
+    let CotturiZinfandel = _prefix "CotturiZinfandel"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Zinfandel"></see>
     /// </summary>
-    let Zinfandel = Namespaced_IRI.parse _namespace_name "Zinfandel" |> NamespacedName
-
+    let Zinfandel = _prefix "Zinfandel"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SonomaRegion"></see>
     /// </summary>
-    let SonomaRegion =
-        Namespaced_IRI.parse _namespace_name "SonomaRegion" |> NamespacedName
-
+    let SonomaRegion = _prefix "SonomaRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineFlavor"></see>
     /// </summary>
-    let WineFlavor = Namespaced_IRI.parse _namespace_name "WineFlavor" |> NamespacedName
-
+    let WineFlavor = _prefix "WineFlavor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DessertWine"></see>
     /// </summary>
-    let DessertWine =
-        Namespaced_IRI.parse _namespace_name "DessertWine" |> NamespacedName
-
+    let DessertWine = _prefix "DessertWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineSugar"></see>
     /// </summary>
-    let WineSugar = Namespaced_IRI.parse _namespace_name "WineSugar" |> NamespacedName
+    let WineSugar = _prefix "WineSugar"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine"></see>
     /// </summary>
-    let DryRedWine = Namespaced_IRI.parse _namespace_name "DryRedWine" |> NamespacedName
+    let DryRedWine = _prefix "DryRedWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine"></see>
     /// </summary>
-    let DryWine = Namespaced_IRI.parse _namespace_name "DryWine" |> NamespacedName
+    let DryWine = _prefix "DryWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine"></see>
     /// </summary>
-    let RedWine = Namespaced_IRI.parse _namespace_name "RedWine" |> NamespacedName
-
+    let RedWine = _prefix "RedWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRiesling"></see>
     /// </summary>
-    let DryRiesling =
-        Namespaced_IRI.parse _namespace_name "DryRiesling" |> NamespacedName
-
+    let DryRiesling = _prefix "DryRiesling"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine"></see>
     /// </summary>
-    let DryWhiteWine =
-        Namespaced_IRI.parse _namespace_name "DryWhiteWine" |> NamespacedName
-
+    let DryWhiteWine = _prefix "DryWhiteWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine"></see>
     /// </summary>
-    let WhiteWine = Namespaced_IRI.parse _namespace_name "WhiteWine" |> NamespacedName
-
+    let WhiteWine = _prefix "WhiteWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EarlyHarvest"></see>
     /// </summary>
-    let EarlyHarvest =
-        Namespaced_IRI.parse _namespace_name "EarlyHarvest" |> NamespacedName
-
+    let EarlyHarvest = _prefix "EarlyHarvest"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EdnaValleyRegion"></see>
     /// </summary>
-    let EdnaValleyRegion =
-        Namespaced_IRI.parse _namespace_name "EdnaValleyRegion" |> NamespacedName
-
+    let EdnaValleyRegion = _prefix "EdnaValleyRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ElyseZinfandel"></see>
     /// </summary>
-    let ElyseZinfandel =
-        Namespaced_IRI.parse _namespace_name "ElyseZinfandel" |> NamespacedName
-
+    let ElyseZinfandel = _prefix "ElyseZinfandel"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanCabernetSauvignon"></see>
     /// </summary>
-    let FormanCabernetSauvignon =
-        Namespaced_IRI.parse _namespace_name "FormanCabernetSauvignon" |> NamespacedName
-
+    let FormanCabernetSauvignon = _prefix "FormanCabernetSauvignon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay"></see>
     /// </summary>
-    let FormanChardonnay =
-        Namespaced_IRI.parse _namespace_name "FormanChardonnay" |> NamespacedName
-
+    let FormanChardonnay = _prefix "FormanChardonnay"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FoxenCheninBlanc"></see>
     /// </summary>
-    let FoxenCheninBlanc =
-        Namespaced_IRI.parse _namespace_name "FoxenCheninBlanc" |> NamespacedName
-
+    let FoxenCheninBlanc = _prefix "FoxenCheninBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaBarbaraRegion"></see>
     /// </summary>
-    let SantaBarbaraRegion =
-        Namespaced_IRI.parse _namespace_name "SantaBarbaraRegion" |> NamespacedName
-
+    let SantaBarbaraRegion = _prefix "SantaBarbaraRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine"></see>
     /// </summary>
-    let FrenchWine = Namespaced_IRI.parse _namespace_name "FrenchWine" |> NamespacedName
+    let FrenchWine = _prefix "FrenchWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineBody"></see>
     /// </summary>
-    let WineBody = Namespaced_IRI.parse _namespace_name "WineBody" |> NamespacedName
-
+    let WineBody = _prefix "WineBody"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine"></see>
     /// </summary>
-    let FullBodiedWine =
-        Namespaced_IRI.parse _namespace_name "FullBodiedWine" |> NamespacedName
-
+    let FullBodiedWine = _prefix "FullBodiedWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Gamay"></see>
     /// </summary>
-    let Gamay = Namespaced_IRI.parse _namespace_name "Gamay" |> NamespacedName
-
+    let Gamay = _prefix "Gamay"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GaryFarrellMerlot"></see>
     /// </summary>
-    let GaryFarrellMerlot =
-        Namespaced_IRI.parse _namespace_name "GaryFarrellMerlot" |> NamespacedName
-
+    let GaryFarrellMerlot = _prefix "GaryFarrellMerlot"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Merlot"></see>
     /// </summary>
-    let Merlot = Namespaced_IRI.parse _namespace_name "Merlot" |> NamespacedName
+    let Merlot = _prefix "Merlot"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanWine"></see>
     /// </summary>
-    let GermanWine = Namespaced_IRI.parse _namespace_name "GermanWine" |> NamespacedName
-
+    let GermanWine = _prefix "GermanWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanyRegion"></see>
     /// </summary>
-    let GermanyRegion =
-        Namespaced_IRI.parse _namespace_name "GermanyRegion" |> NamespacedName
-
+    let GermanyRegion = _prefix "GermanyRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Handley"></see>
     /// </summary>
-    let Handley = Namespaced_IRI.parse _namespace_name "Handley" |> NamespacedName
+    let Handley = _prefix "Handley"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#IceWine"></see>
     /// </summary>
-    let IceWine = Namespaced_IRI.parse _namespace_name "IceWine" |> NamespacedName
-
+    let IceWine = _prefix "IceWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LateHarvest"></see>
     /// </summary>
-    let LateHarvest =
-        Namespaced_IRI.parse _namespace_name "LateHarvest" |> NamespacedName
-
+    let LateHarvest = _prefix "LateHarvest"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KalinCellarsSemillon"></see>
     /// </summary>
-    let KalinCellarsSemillon =
-        Namespaced_IRI.parse _namespace_name "KalinCellarsSemillon" |> NamespacedName
-
+    let KalinCellarsSemillon = _prefix "KalinCellarsSemillon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KathrynKennedyLateral"></see>
     /// </summary>
-    let KathrynKennedyLateral =
-        Namespaced_IRI.parse _namespace_name "KathrynKennedyLateral" |> NamespacedName
-
+    let KathrynKennedyLateral = _prefix "KathrynKennedyLateral"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meritage"></see>
     /// </summary>
-    let Meritage = Namespaced_IRI.parse _namespace_name "Meritage" |> NamespacedName
-
+    let Meritage = _prefix "Meritage"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LaneTannerPinotNoir"></see>
     /// </summary>
-    let LaneTannerPinotNoir =
-        Namespaced_IRI.parse _namespace_name "LaneTannerPinotNoir" |> NamespacedName
-
+    let LaneTannerPinotNoir = _prefix "LaneTannerPinotNoir"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoir"></see>
     /// </summary>
-    let PinotNoir = Namespaced_IRI.parse _namespace_name "PinotNoir" |> NamespacedName
-
+    let PinotNoir = _prefix "PinotNoir"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LongridgeMerlot"></see>
     /// </summary>
-    let LongridgeMerlot =
-        Namespaced_IRI.parse _namespace_name "LongridgeMerlot" |> NamespacedName
-
+    let LongridgeMerlot = _prefix "LongridgeMerlot"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MalbecGrape"></see>
     /// </summary>
-    let MalbecGrape =
-        Namespaced_IRI.parse _namespace_name "MalbecGrape" |> NamespacedName
-
+    let MalbecGrape = _prefix "MalbecGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MerlotGrape"></see>
     /// </summary>
-    let MerlotGrape =
-        Namespaced_IRI.parse _namespace_name "MerlotGrape" |> NamespacedName
-
+    let MerlotGrape = _prefix "MerlotGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medoc"></see>
     /// </summary>
-    let Medoc = Namespaced_IRI.parse _namespace_name "Medoc" |> NamespacedName
-
+    let Medoc = _prefix "Medoc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MargauxRegion"></see>
     /// </summary>
-    let MargauxRegion =
-        Namespaced_IRI.parse _namespace_name "MargauxRegion" |> NamespacedName
-
+    let MargauxRegion = _prefix "MargauxRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MedocRegion"></see>
     /// </summary>
-    let MedocRegion =
-        Namespaced_IRI.parse _namespace_name "MedocRegion" |> NamespacedName
-
+    let MedocRegion = _prefix "MedocRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaCabernetSauvignon"></see>
     /// </summary>
-    let MariettaCabernetSauvignon =
-        Namespaced_IRI.parse _namespace_name "MariettaCabernetSauvignon" |> NamespacedName
-
+    let MariettaCabernetSauvignon = _prefix "MariettaCabernetSauvignon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaOldVinesRed"></see>
     /// </summary>
-    let MariettaOldVinesRed =
-        Namespaced_IRI.parse _namespace_name "MariettaOldVinesRed" |> NamespacedName
-
+    let MariettaOldVinesRed = _prefix "MariettaOldVinesRed"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine"></see>
     /// </summary>
-    let RedTableWine =
-        Namespaced_IRI.parse _namespace_name "RedTableWine" |> NamespacedName
-
+    let RedTableWine = _prefix "RedTableWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaPetiteSyrah"></see>
     /// </summary>
-    let MariettaPetiteSyrah =
-        Namespaced_IRI.parse _namespace_name "MariettaPetiteSyrah" |> NamespacedName
-
+    let MariettaPetiteSyrah = _prefix "MariettaPetiteSyrah"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrah"></see>
     /// </summary>
-    let PetiteSyrah =
-        Namespaced_IRI.parse _namespace_name "PetiteSyrah" |> NamespacedName
-
+    let PetiteSyrah = _prefix "PetiteSyrah"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaZinfandel"></see>
     /// </summary>
-    let MariettaZinfandel =
-        Namespaced_IRI.parse _namespace_name "MariettaZinfandel" |> NamespacedName
-
+    let MariettaZinfandel = _prefix "MariettaZinfandel"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MendocinoRegion"></see>
     /// </summary>
-    let MendocinoRegion =
-        Namespaced_IRI.parse _namespace_name "MendocinoRegion" |> NamespacedName
-
+    let MendocinoRegion = _prefix "MendocinoRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#adjacentRegion"></see>
     /// </summary>
-    let adjacentRegion =
-        Namespaced_IRI.parse _namespace_name "adjacentRegion" |> NamespacedName
-
+    let adjacentRegion = _prefix "adjacentRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteVerdotGrape"></see>
     /// </summary>
-    let PetiteVerdotGrape =
-        Namespaced_IRI.parse _namespace_name "PetiteVerdotGrape" |> NamespacedName
-
+    let PetiteVerdotGrape = _prefix "PetiteVerdotGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MeursaultRegion"></see>
     /// </summary>
-    let MeursaultRegion =
-        Namespaced_IRI.parse _namespace_name "MeursaultRegion" |> NamespacedName
+    let MeursaultRegion = _prefix "MeursaultRegion"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyardEdnaValleyChardonnay"></see>
     /// </summary>
     let MountEdenVineyardEdnaValleyChardonnay =
-        Namespaced_IRI.parse _namespace_name "MountEdenVineyardEdnaValleyChardonnay" |> NamespacedName
+        _prefix "MountEdenVineyardEdnaValleyChardonnay"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyardEstatePinotNoir"></see>
     /// </summary>
-    let MountEdenVineyardEstatePinotNoir =
-        Namespaced_IRI.parse _namespace_name "MountEdenVineyardEstatePinotNoir" |> NamespacedName
-
+    let MountEdenVineyardEstatePinotNoir = _prefix "MountEdenVineyardEstatePinotNoir"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamChardonnay"></see>
     /// </summary>
-    let MountadamChardonnay =
-        Namespaced_IRI.parse _namespace_name "MountadamChardonnay" |> NamespacedName
-
+    let MountadamChardonnay = _prefix "MountadamChardonnay"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SouthAustraliaRegion"></see>
     /// </summary>
-    let SouthAustraliaRegion =
-        Namespaced_IRI.parse _namespace_name "SouthAustraliaRegion" |> NamespacedName
-
+    let SouthAustraliaRegion = _prefix "SouthAustraliaRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamPinotNoir"></see>
     /// </summary>
-    let MountadamPinotNoir =
-        Namespaced_IRI.parse _namespace_name "MountadamPinotNoir" |> NamespacedName
-
+    let MountadamPinotNoir = _prefix "MountadamPinotNoir"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamRiesling"></see>
     /// </summary>
-    let MountadamRiesling =
-        Namespaced_IRI.parse _namespace_name "MountadamRiesling" |> NamespacedName
-
+    let MountadamRiesling = _prefix "MountadamRiesling"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Muscadet"></see>
     /// </summary>
-    let Muscadet = Namespaced_IRI.parse _namespace_name "Muscadet" |> NamespacedName
-
+    let Muscadet = _prefix "Muscadet"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlancGrape"></see>
     /// </summary>
-    let PinotBlancGrape =
-        Namespaced_IRI.parse _namespace_name "PinotBlancGrape" |> NamespacedName
-
+    let PinotBlancGrape = _prefix "PinotBlancGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MuscadetRegion"></see>
     /// </summary>
-    let MuscadetRegion =
-        Namespaced_IRI.parse _namespace_name "MuscadetRegion" |> NamespacedName
-
+    let MuscadetRegion = _prefix "MuscadetRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PageMillWineryCabernetSauvignon"></see>
     /// </summary>
-    let PageMillWineryCabernetSauvignon =
-        Namespaced_IRI.parse _namespace_name "PageMillWineryCabernetSauvignon" |> NamespacedName
-
+    let PageMillWineryCabernetSauvignon = _prefix "PageMillWineryCabernetSauvignon"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PauillacRegion"></see>
     /// </summary>
-    let PauillacRegion =
-        Namespaced_IRI.parse _namespace_name "PauillacRegion" |> NamespacedName
-
+    let PauillacRegion = _prefix "PauillacRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PeterMccoyChardonnay"></see>
     /// </summary>
-    let PeterMccoyChardonnay =
-        Namespaced_IRI.parse _namespace_name "PeterMccoyChardonnay" |> NamespacedName
-
+    let PeterMccoyChardonnay = _prefix "PeterMccoyChardonnay"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrahGrape"></see>
     /// </summary>
-    let PetiteSyrahGrape =
-        Namespaced_IRI.parse _namespace_name "PetiteSyrahGrape" |> NamespacedName
-
+    let PetiteSyrahGrape = _prefix "PetiteSyrahGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlanc"></see>
     /// </summary>
-    let PinotBlanc = Namespaced_IRI.parse _namespace_name "PinotBlanc" |> NamespacedName
-
+    let PinotBlanc = _prefix "PinotBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoirGrape"></see>
     /// </summary>
-    let PinotNoirGrape =
-        Namespaced_IRI.parse _namespace_name "PinotNoirGrape" |> NamespacedName
-
+    let PinotNoirGrape = _prefix "PinotNoirGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Port"></see>
     /// </summary>
-    let Port = Namespaced_IRI.parse _namespace_name "Port" |> NamespacedName
-
+    let Port = _prefix "Port"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PortugalRegion"></see>
     /// </summary>
-    let PortugalRegion =
-        Namespaced_IRI.parse _namespace_name "PortugalRegion" |> NamespacedName
-
+    let PortugalRegion = _prefix "PortugalRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PulignyMontrachetWhiteBurgundy"></see>
     /// </summary>
-    let PulignyMontrachetWhiteBurgundy =
-        Namespaced_IRI.parse _namespace_name "PulignyMontrachetWhiteBurgundy" |> NamespacedName
-
+    let PulignyMontrachetWhiteBurgundy = _prefix "PulignyMontrachetWhiteBurgundy"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineColor"></see>
     /// </summary>
-    let WineColor = Namespaced_IRI.parse _namespace_name "WineColor" |> NamespacedName
-
+    let WineColor = _prefix "WineColor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBordeaux"></see>
     /// </summary>
-    let RedBordeaux =
-        Namespaced_IRI.parse _namespace_name "RedBordeaux" |> NamespacedName
-
+    let RedBordeaux = _prefix "RedBordeaux"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine"></see>
     /// </summary>
-    let TableWine = Namespaced_IRI.parse _namespace_name "TableWine" |> NamespacedName
-
+    let TableWine = _prefix "TableWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RieslingGrape"></see>
     /// </summary>
-    let RieslingGrape =
-        Namespaced_IRI.parse _namespace_name "RieslingGrape" |> NamespacedName
-
+    let RieslingGrape = _prefix "RieslingGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseDAnjou"></see>
     /// </summary>
-    let RoseDAnjou = Namespaced_IRI.parse _namespace_name "RoseDAnjou" |> NamespacedName
+    let RoseDAnjou = _prefix "RoseDAnjou"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseWine"></see>
     /// </summary>
-    let RoseWine = Namespaced_IRI.parse _namespace_name "RoseWine" |> NamespacedName
-
+    let RoseWine = _prefix "RoseWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SancerreRegion"></see>
     /// </summary>
-    let SancerreRegion =
-        Namespaced_IRI.parse _namespace_name "SancerreRegion" |> NamespacedName
+    let SancerreRegion = _prefix "SancerreRegion"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainVineyardCabernetSauvignon"></see>
     /// </summary>
     let SantaCruzMountainVineyardCabernetSauvignon =
-        Namespaced_IRI.parse _namespace_name "SantaCruzMountainVineyardCabernetSauvignon" |> NamespacedName
+        _prefix "SantaCruzMountainVineyardCabernetSauvignon"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainsRegion"></see>
     /// </summary>
-    let SantaCruzMountainsRegion =
-        Namespaced_IRI.parse _namespace_name "SantaCruzMountainsRegion" |> NamespacedName
-
+    let SantaCruzMountainsRegion = _prefix "SantaCruzMountainsRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyonZinfandel"></see>
     /// </summary>
-    let SaucelitoCanyonZinfandel =
-        Namespaced_IRI.parse _namespace_name "SaucelitoCanyonZinfandel" |> NamespacedName
-
+    let SaucelitoCanyonZinfandel = _prefix "SaucelitoCanyonZinfandel"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyonZinfandel1998"></see>
     /// </summary>
-    let SaucelitoCanyonZinfandel1998 =
-        Namespaced_IRI.parse _namespace_name "SaucelitoCanyonZinfandel1998" |> NamespacedName
-
+    let SaucelitoCanyonZinfandel1998 = _prefix "SaucelitoCanyonZinfandel1998"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasVintageYear"></see>
     /// </summary>
-    let hasVintageYear =
-        Namespaced_IRI.parse _namespace_name "hasVintageYear" |> NamespacedName
-
+    let hasVintageYear = _prefix "hasVintageYear"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Year1998"></see>
     /// </summary>
-    let Year1998 = Namespaced_IRI.parse _namespace_name "Year1998" |> NamespacedName
-
+    let Year1998 = _prefix "Year1998"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauterneRegion"></see>
     /// </summary>
-    let SauterneRegion =
-        Namespaced_IRI.parse _namespace_name "SauterneRegion" |> NamespacedName
-
+    let SauterneRegion = _prefix "SauterneRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc"></see>
     /// </summary>
-    let SemillonOrSauvignonBlanc =
-        Namespaced_IRI.parse _namespace_name "SemillonOrSauvignonBlanc" |> NamespacedName
+    let SemillonOrSauvignonBlanc = _prefix "SemillonOrSauvignonBlanc"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossRothermelTrochenbierenausleseRiesling"></see>
     /// </summary>
     let SchlossRothermelTrochenbierenausleseRiesling =
-        Namespaced_IRI.parse _namespace_name "SchlossRothermelTrochenbierenausleseRiesling" |> NamespacedName
+        _prefix "SchlossRothermelTrochenbierenausleseRiesling"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetRiesling"></see>
     /// </summary>
-    let SweetRiesling =
-        Namespaced_IRI.parse _namespace_name "SweetRiesling" |> NamespacedName
+    let SweetRiesling = _prefix "SweetRiesling"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossVolradTrochenbierenausleseRiesling"></see>
     /// </summary>
     let SchlossVolradTrochenbierenausleseRiesling =
-        Namespaced_IRI.parse _namespace_name "SchlossVolradTrochenbierenausleseRiesling" |> NamespacedName
+        _prefix "SchlossVolradTrochenbierenausleseRiesling"
 
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SeanThackreySiriusPetiteSyrah"></see>
     /// </summary>
-    let SeanThackreySiriusPetiteSyrah =
-        Namespaced_IRI.parse _namespace_name "SeanThackreySiriusPetiteSyrah" |> NamespacedName
-
+    let SeanThackreySiriusPetiteSyrah = _prefix "SeanThackreySiriusPetiteSyrah"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SelaksIceWine"></see>
     /// </summary>
-    let SelaksIceWine =
-        Namespaced_IRI.parse _namespace_name "SelaksIceWine" |> NamespacedName
-
+    let SelaksIceWine = _prefix "SelaksIceWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SelaksSauvignonBlanc"></see>
     /// </summary>
-    let SelaksSauvignonBlanc =
-        Namespaced_IRI.parse _namespace_name "SelaksSauvignonBlanc" |> NamespacedName
-
+    let SelaksSauvignonBlanc = _prefix "SelaksSauvignonBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SevreEtMaineMuscadet"></see>
     /// </summary>
-    let SevreEtMaineMuscadet =
-        Namespaced_IRI.parse _namespace_name "SevreEtMaineMuscadet" |> NamespacedName
-
+    let SevreEtMaineMuscadet = _prefix "SevreEtMaineMuscadet"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilionRegion"></see>
     /// </summary>
-    let StEmilionRegion =
-        Namespaced_IRI.parse _namespace_name "StEmilionRegion" |> NamespacedName
-
+    let StEmilionRegion = _prefix "StEmilionRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StGenevieveTexasWhite"></see>
     /// </summary>
-    let StGenevieveTexasWhite =
-        Namespaced_IRI.parse _namespace_name "StGenevieveTexasWhite" |> NamespacedName
-
+    let StGenevieveTexasWhite = _prefix "StGenevieveTexasWhite"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StonleighSauvignonBlanc"></see>
     /// </summary>
-    let StonleighSauvignonBlanc =
-        Namespaced_IRI.parse _namespace_name "StonleighSauvignonBlanc" |> NamespacedName
-
+    let StonleighSauvignonBlanc = _prefix "StonleighSauvignonBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine"></see>
     /// </summary>
-    let SweetWine = Namespaced_IRI.parse _namespace_name "SweetWine" |> NamespacedName
+    let SweetWine = _prefix "SweetWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TaylorPort"></see>
     /// </summary>
-    let TaylorPort = Namespaced_IRI.parse _namespace_name "TaylorPort" |> NamespacedName
+    let TaylorPort = _prefix "TaylorPort"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasWine"></see>
     /// </summary>
-    let TexasWine = Namespaced_IRI.parse _namespace_name "TexasWine" |> NamespacedName
+    let TexasWine = _prefix "TexasWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Tours"></see>
     /// </summary>
-    let Tours = Namespaced_IRI.parse _namespace_name "Tours" |> NamespacedName
-
+    let Tours = _prefix "Tours"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ToursRegion"></see>
     /// </summary>
-    let ToursRegion =
-        Namespaced_IRI.parse _namespace_name "ToursRegion" |> NamespacedName
-
+    let ToursRegion = _prefix "ToursRegion"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#VentanaCheninBlanc"></see>
     /// </summary>
-    let VentanaCheninBlanc =
-        Namespaced_IRI.parse _namespace_name "VentanaCheninBlanc" |> NamespacedName
-
+    let VentanaCheninBlanc = _prefix "VentanaCheninBlanc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Vintage"></see>
     /// </summary>
-    let Vintage = Namespaced_IRI.parse _namespace_name "Vintage" |> NamespacedName
-
+    let Vintage = _prefix "Vintage"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#VintageYear"></see>
     /// </summary>
-    let VintageYear =
-        Namespaced_IRI.parse _namespace_name "VintageYear" |> NamespacedName
-
+    let VintageYear = _prefix "VintageYear"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBordeaux"></see>
     /// </summary>
-    let WhiteBordeaux =
-        Namespaced_IRI.parse _namespace_name "WhiteBordeaux" |> NamespacedName
-
+    let WhiteBordeaux = _prefix "WhiteBordeaux"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire"></see>
     /// </summary>
-    let WhiteLoire = Namespaced_IRI.parse _namespace_name "WhiteLoire" |> NamespacedName
-
+    let WhiteLoire = _prefix "WhiteLoire"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine"></see>
     /// </summary>
-    let WhiteNonSweetWine =
-        Namespaced_IRI.parse _namespace_name "WhiteNonSweetWine" |> NamespacedName
-
+    let WhiteNonSweetWine = _prefix "WhiteNonSweetWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine"></see>
     /// </summary>
-    let WhiteTableWine =
-        Namespaced_IRI.parse _namespace_name "WhiteTableWine" |> NamespacedName
-
+    let WhiteTableWine = _prefix "WhiteTableWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLaneCabernetFranc"></see>
     /// </summary>
-    let WhitehallLaneCabernetFranc =
-        Namespaced_IRI.parse _namespace_name "WhitehallLaneCabernetFranc" |> NamespacedName
-
+    let WhitehallLaneCabernetFranc = _prefix "WhitehallLaneCabernetFranc"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLanePrimavera"></see>
     /// </summary>
-    let WhitehallLanePrimavera =
-        Namespaced_IRI.parse _namespace_name "WhitehallLanePrimavera" |> NamespacedName
-
+    let WhitehallLanePrimavera = _prefix "WhitehallLanePrimavera"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste"></see>
     /// </summary>
-    let WineTaste = Namespaced_IRI.parse _namespace_name "WineTaste" |> NamespacedName
-
+    let WineTaste = _prefix "WineTaste"
     /// <summary>
     /// Made WineDescriptor unionType of tastes and color
     /// <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineDescriptor"></see></summary>
-    let WineDescriptor =
-        Namespaced_IRI.parse _namespace_name "WineDescriptor" |> NamespacedName
-
+    let WineDescriptor = _prefix "WineDescriptor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#yearValue"></see>
     /// </summary>
-    let yearValue = Namespaced_IRI.parse _namespace_name "yearValue" |> NamespacedName
-
+    let yearValue = _prefix "yearValue"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ZinfandelGrape"></see>
     /// </summary>
-    let ZinfandelGrape =
-        Namespaced_IRI.parse _namespace_name "ZinfandelGrape" |> NamespacedName
-
+    let ZinfandelGrape = _prefix "ZinfandelGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor"></see>
     /// </summary>
-    let hasWineDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasWineDescriptor" |> NamespacedName
-
+    let hasWineDescriptor = _prefix "hasWineDescriptor"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeIntoWine"></see>
     /// </summary>
-    let madeIntoWine =
-        Namespaced_IRI.parse _namespace_name "madeIntoWine" |> NamespacedName
-
+    let madeIntoWine = _prefix "madeIntoWine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#producesWine"></see>
     /// </summary>
-    let producesWine =
-        Namespaced_IRI.parse _namespace_name "producesWine" |> NamespacedName
+    let producesWine = _prefix "producesWine"

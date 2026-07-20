@@ -1,237 +1,167 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.LOAN.LoansGeneral.Loans.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_loan_ln_ln =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasFirstRateChangeTerm"></see>
     /// </summary>
-    let hasFirstRateChangeTerm =
-        Namespaced_IRI.parse _namespace_name "hasFirstRateChangeTerm" |> NamespacedName
-
+    let hasFirstRateChangeTerm = _prefix "hasFirstRateChangeTerm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasBalloonPayment"></see>
     /// </summary>
-    let hasBalloonPayment =
-        Namespaced_IRI.parse _namespace_name "hasBalloonPayment" |> NamespacedName
-
+    let hasBalloonPayment = _prefix "hasBalloonPayment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isInitiallyPayable"></see>
     /// </summary>
-    let isInitiallyPayable =
-        Namespaced_IRI.parse _namespace_name "isInitiallyPayable" |> NamespacedName
-
+    let isInitiallyPayable = _prefix "isInitiallyPayable"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LenderLienPosition"></see>
     /// </summary>
-    let LenderLienPosition =
-        Namespaced_IRI.parse _namespace_name "LenderLienPosition" |> NamespacedName
-
+    let LenderLienPosition = _prefix "LenderLienPosition"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/OwnershipInterest"></see>
     /// </summary>
-    let OwnershipInterest =
-        Namespaced_IRI.parse _namespace_name "OwnershipInterest" |> NamespacedName
-
+    let OwnershipInterest = _prefix "OwnershipInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/ClosedEndCredit"></see>
     /// </summary>
-    let ClosedEndCredit =
-        Namespaced_IRI.parse _namespace_name "ClosedEndCredit" |> NamespacedName
-
+    let ClosedEndCredit = _prefix "ClosedEndCredit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/CollateralizedLoan"></see>
     /// </summary>
-    let CollateralizedLoan =
-        Namespaced_IRI.parse _namespace_name "CollateralizedLoan" |> NamespacedName
-
+    let CollateralizedLoan = _prefix "CollateralizedLoan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/SecuredLoan"></see>
     /// </summary>
-    let SecuredLoan =
-        Namespaced_IRI.parse _namespace_name "SecuredLoan" |> NamespacedName
-
+    let SecuredLoan = _prefix "SecuredLoan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Comaker"></see>
     /// </summary>
-    let Comaker = Namespaced_IRI.parse _namespace_name "Comaker" |> NamespacedName
-
+    let Comaker = _prefix "Comaker"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/CombinedLoanToValueRatio"></see>
     /// </summary>
-    let CombinedLoanToValueRatio =
-        Namespaced_IRI.parse _namespace_name "CombinedLoanToValueRatio" |> NamespacedName
-
+    let CombinedLoanToValueRatio = _prefix "CombinedLoanToValueRatio"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/TotalOutstandingPrincipal"></see>
     /// </summary>
-    let TotalOutstandingPrincipal =
-        Namespaced_IRI.parse _namespace_name "TotalOutstandingPrincipal" |> NamespacedName
-
+    let TotalOutstandingPrincipal = _prefix "TotalOutstandingPrincipal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/FeeSimpleOwnershipInterest"></see>
     /// </summary>
-    let FeeSimpleOwnershipInterest =
-        Namespaced_IRI.parse _namespace_name "FeeSimpleOwnershipInterest" |> NamespacedName
-
+    let FeeSimpleOwnershipInterest = _prefix "FeeSimpleOwnershipInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/FractionalOwnershipInterest"></see>
     /// </summary>
-    let FractionalOwnershipInterest =
-        Namespaced_IRI.parse _namespace_name "FractionalOwnershipInterest" |> NamespacedName
-
+    let FractionalOwnershipInterest = _prefix "FractionalOwnershipInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/GuaranteedLoan"></see>
     /// </summary>
-    let GuaranteedLoan =
-        Namespaced_IRI.parse _namespace_name "GuaranteedLoan" |> NamespacedName
-
+    let GuaranteedLoan = _prefix "GuaranteedLoan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/IndividualPaymentTransaction"></see>
     /// </summary>
-    let IndividualPaymentTransaction =
-        Namespaced_IRI.parse _namespace_name "IndividualPaymentTransaction" |> NamespacedName
-
+    let IndividualPaymentTransaction = _prefix "IndividualPaymentTransaction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan"></see>
     /// </summary>
-    let Loan = Namespaced_IRI.parse _namespace_name "Loan" |> NamespacedName
-
+    let Loan = _prefix "Loan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasTotalClosingCosts"></see>
     /// </summary>
-    let hasTotalClosingCosts =
-        Namespaced_IRI.parse _namespace_name "hasTotalClosingCosts" |> NamespacedName
-
+    let hasTotalClosingCosts = _prefix "hasTotalClosingCosts"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasTotalPointsAndFees"></see>
     /// </summary>
-    let hasTotalPointsAndFees =
-        Namespaced_IRI.parse _namespace_name "hasTotalPointsAndFees" |> NamespacedName
-
+    let hasTotalPointsAndFees = _prefix "hasTotalPointsAndFees"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount"></see>
     /// </summary>
-    let LoanSpecificCustomerAccount =
-        Namespaced_IRI.parse _namespace_name "LoanSpecificCustomerAccount" |> NamespacedName
-
+    let LoanSpecificCustomerAccount = _prefix "LoanSpecificCustomerAccount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isServicedBy"></see>
     /// </summary>
-    let isServicedBy =
-        Namespaced_IRI.parse _namespace_name "isServicedBy" |> NamespacedName
-
+    let isServicedBy = _prefix "isServicedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Servicer"></see>
     /// </summary>
-    let Servicer = Namespaced_IRI.parse _namespace_name "Servicer" |> NamespacedName
-
+    let Servicer = _prefix "Servicer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasNegativeAmortization"></see>
     /// </summary>
-    let hasNegativeAmortization =
-        Namespaced_IRI.parse _namespace_name "hasNegativeAmortization" |> NamespacedName
-
+    let hasNegativeAmortization = _prefix "hasNegativeAmortization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isInterestOnly"></see>
     /// </summary>
-    let isInterestOnly =
-        Namespaced_IRI.parse _namespace_name "isInterestOnly" |> NamespacedName
-
+    let isInterestOnly = _prefix "isInterestOnly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPrincipalAmount"></see>
     /// </summary>
-    let hasPrincipalAmount =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalAmount" |> NamespacedName
-
+    let hasPrincipalAmount = _prefix "hasPrincipalAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanPaymentSchedule"></see>
     /// </summary>
-    let LoanPaymentSchedule =
-        Namespaced_IRI.parse _namespace_name "LoanPaymentSchedule" |> NamespacedName
-
+    let LoanPaymentSchedule = _prefix "LoanPaymentSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasLoanBalance"></see>
     /// </summary>
-    let hasLoanBalance =
-        Namespaced_IRI.parse _namespace_name "hasLoanBalance" |> NamespacedName
-
+    let hasLoanBalance = _prefix "hasLoanBalance"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPaymentHistory"></see>
     /// </summary>
-    let hasPaymentHistory =
-        Namespaced_IRI.parse _namespace_name "hasPaymentHistory" |> NamespacedName
-
+    let hasPaymentHistory = _prefix "hasPaymentHistory"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/PaymentHistory"></see>
     /// </summary>
-    let PaymentHistory =
-        Namespaced_IRI.parse _namespace_name "PaymentHistory" |> NamespacedName
-
+    let PaymentHistory = _prefix "PaymentHistory"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanToValueRatio"></see>
     /// </summary>
-    let LoanToValueRatio =
-        Namespaced_IRI.parse _namespace_name "LoanToValueRatio" |> NamespacedName
-
+    let LoanToValueRatio = _prefix "LoanToValueRatio"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/OpenEndCredit"></see>
     /// </summary>
-    let OpenEndCredit =
-        Namespaced_IRI.parse _namespace_name "OpenEndCredit" |> NamespacedName
-
+    let OpenEndCredit = _prefix "OpenEndCredit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasIndividualPayment"></see>
     /// </summary>
-    let hasIndividualPayment =
-        Namespaced_IRI.parse _namespace_name "hasIndividualPayment" |> NamespacedName
-
+    let hasIndividualPayment = _prefix "hasIndividualPayment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/PrepaymentTerms"></see>
     /// </summary>
-    let PrepaymentTerms =
-        Namespaced_IRI.parse _namespace_name "PrepaymentTerms" |> NamespacedName
-
+    let PrepaymentTerms = _prefix "PrepaymentTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPrePaymentPenaltyTerm"></see>
     /// </summary>
-    let hasPrePaymentPenaltyTerm =
-        Namespaced_IRI.parse _namespace_name "hasPrePaymentPenaltyTerm" |> NamespacedName
-
+    let hasPrePaymentPenaltyTerm = _prefix "hasPrePaymentPenaltyTerm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/PrimaryLienPosition"></see>
     /// </summary>
-    let PrimaryLienPosition =
-        Namespaced_IRI.parse _namespace_name "PrimaryLienPosition" |> NamespacedName
-
+    let PrimaryLienPosition = _prefix "PrimaryLienPosition"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/SubordinateLienPosition"></see>
     /// </summary>
-    let SubordinateLienPosition =
-        Namespaced_IRI.parse _namespace_name "SubordinateLienPosition" |> NamespacedName
-
+    let SubordinateLienPosition = _prefix "SubordinateLienPosition"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/UnsecuredLoan"></see>
     /// </summary>
-    let UnsecuredLoan =
-        Namespaced_IRI.parse _namespace_name "UnsecuredLoan" |> NamespacedName
-
+    let UnsecuredLoan = _prefix "UnsecuredLoan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasCost"></see>
     /// </summary>
-    let hasCost = Namespaced_IRI.parse _namespace_name "hasCost" |> NamespacedName
-
+    let hasCost = _prefix "hasCost"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasScheduledUnpaidBalance"></see>
     /// </summary>
-    let hasScheduledUnpaidBalance =
-        Namespaced_IRI.parse _namespace_name "hasScheduledUnpaidBalance" |> NamespacedName
-
+    let hasScheduledUnpaidBalance = _prefix "hasScheduledUnpaidBalance"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isAssumable"></see>
     /// </summary>
-    let isAssumable =
-        Namespaced_IRI.parse _namespace_name "isAssumable" |> NamespacedName
+    let isAssumable = _prefix "isAssumable"

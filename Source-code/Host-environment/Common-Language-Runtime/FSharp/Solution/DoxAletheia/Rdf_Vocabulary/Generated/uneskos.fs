@@ -1,33 +1,30 @@
 namespace http.purl.org.umu.uneskos.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module uneskos =
     let _namespace_name = "http://purl.org/umu/uneskos#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/umu/uneskos#contains"></see>
     /// </summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="http://purl.org/umu/uneskos#hasMainConcept"></see>
     /// </summary>
-    let hasMainConcept =
-        Namespaced_IRI.parse _namespace_name "hasMainConcept" |> NamespacedName
-
+    let hasMainConcept = _prefix "hasMainConcept"
     /// <summary>
     ///   <see href="http://purl.org/umu/uneskos#hasMicroThesaurus"></see>
     /// </summary>
-    let hasMicroThesaurus =
-        Namespaced_IRI.parse _namespace_name "hasMicroThesaurus" |> NamespacedName
-
+    let hasMicroThesaurus = _prefix "hasMicroThesaurus"
     /// <summary>
     ///   <see href="http://purl.org/umu/uneskos#mainConceptOf"></see>
     /// </summary>
-    let mainConceptOf =
-        Namespaced_IRI.parse _namespace_name "mainConceptOf" |> NamespacedName
-
+    let mainConceptOf = _prefix "mainConceptOf"
     /// <summary>
     ///   <see href="http://purl.org/umu/uneskos#memberOf"></see>
     /// </summary>
-    let memberOf = Namespaced_IRI.parse _namespace_name "memberOf" |> NamespacedName
+    let memberOf = _prefix "memberOf"

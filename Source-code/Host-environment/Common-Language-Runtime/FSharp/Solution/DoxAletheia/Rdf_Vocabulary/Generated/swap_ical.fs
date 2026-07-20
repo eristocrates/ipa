@@ -1,203 +1,198 @@
 namespace http.www.w3.org._2000._10.swap.pim.ical.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module swap_ical =
     let _namespace_name = "http://www.w3.org/2000/10/swap/pim/ical#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#Vcalendar"></see>
     /// </summary>
-    let Vcalendar = Namespaced_IRI.parse _namespace_name "Vcalendar" |> NamespacedName
+    let Vcalendar = _prefix "Vcalendar"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#Vevent"></see>
     /// </summary>
-    let Vevent = Namespaced_IRI.parse _namespace_name "Vevent" |> NamespacedName
+    let Vevent = _prefix "Vevent"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#Vtimezone"></see>
     /// </summary>
-    let Vtimezone = Namespaced_IRI.parse _namespace_name "Vtimezone" |> NamespacedName
+    let Vtimezone = _prefix "Vtimezone"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#Vtodo"></see>
     /// </summary>
-    let Vtodo = Namespaced_IRI.parse _namespace_name "Vtodo" |> NamespacedName
+    let Vtodo = _prefix "Vtodo"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#calscale"></see>
     /// </summary>
-    let calscale = Namespaced_IRI.parse _namespace_name "calscale" |> NamespacedName
+    let calscale = _prefix "calscale"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#prodid"></see>
     /// </summary>
-    let prodid = Namespaced_IRI.parse _namespace_name "prodid" |> NamespacedName
+    let prodid = _prefix "prodid"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#attendee"></see>
     /// </summary>
-    let attendee = Namespaced_IRI.parse _namespace_name "attendee" |> NamespacedName
+    let attendee = _prefix "attendee"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#categories"></see>
     /// </summary>
-    let categories = Namespaced_IRI.parse _namespace_name "categories" |> NamespacedName
+    let categories = _prefix "categories"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#class"></see>
     /// </summary>
-    let class_ = Namespaced_IRI.parse _namespace_name "class" |> NamespacedName
-
+    let class_ = _prefix "class"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#dtend"></see>
     /// </summary>
-    let dtend = Namespaced_IRI.parse _namespace_name "dtend" |> NamespacedName
+    let dtend = _prefix "dtend"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#dtstamp"></see>
     /// </summary>
-    let dtstamp = Namespaced_IRI.parse _namespace_name "dtstamp" |> NamespacedName
+    let dtstamp = _prefix "dtstamp"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#dtstart"></see>
     /// </summary>
-    let dtstart = Namespaced_IRI.parse _namespace_name "dtstart" |> NamespacedName
+    let dtstart = _prefix "dtstart"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#location"></see>
     /// </summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
+    let location = _prefix "location"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#organizer"></see>
     /// </summary>
-    let organizer = Namespaced_IRI.parse _namespace_name "organizer" |> NamespacedName
+    let organizer = _prefix "organizer"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#rrule"></see>
     /// </summary>
-    let rrule = Namespaced_IRI.parse _namespace_name "rrule" |> NamespacedName
+    let rrule = _prefix "rrule"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#sequence"></see>
     /// </summary>
-    let sequence = Namespaced_IRI.parse _namespace_name "sequence" |> NamespacedName
+    let sequence = _prefix "sequence"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#summary"></see>
     /// </summary>
-    let summary = Namespaced_IRI.parse _namespace_name "summary" |> NamespacedName
+    let summary = _prefix "summary"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#transp"></see>
     /// </summary>
-    let transp = Namespaced_IRI.parse _namespace_name "transp" |> NamespacedName
+    let transp = _prefix "transp"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#uid"></see>
     /// </summary>
-    let uid = Namespaced_IRI.parse _namespace_name "uid" |> NamespacedName
+    let uid = _prefix "uid"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#valarm"></see>
     /// </summary>
-    let valarm = Namespaced_IRI.parse _namespace_name "valarm" |> NamespacedName
+    let valarm = _prefix "valarm"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#daylight"></see>
     /// </summary>
-    let daylight = Namespaced_IRI.parse _namespace_name "daylight" |> NamespacedName
+    let daylight = _prefix "daylight"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#standard"></see>
     /// </summary>
-    let standard = Namespaced_IRI.parse _namespace_name "standard" |> NamespacedName
+    let standard = _prefix "standard"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#tzid"></see>
     /// </summary>
-    let tzid = Namespaced_IRI.parse _namespace_name "tzid" |> NamespacedName
-
+    let tzid = _prefix "tzid"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#percentComplete"></see>
     /// </summary>
-    let percentComplete =
-        Namespaced_IRI.parse _namespace_name "percentComplete" |> NamespacedName
-
+    let percentComplete = _prefix "percentComplete"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#priority"></see>
     /// </summary>
-    let priority = Namespaced_IRI.parse _namespace_name "priority" |> NamespacedName
+    let priority = _prefix "priority"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#action"></see>
     /// </summary>
-    let action = Namespaced_IRI.parse _namespace_name "action" |> NamespacedName
+    let action = _prefix "action"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#byday"></see>
     /// </summary>
-    let byday = Namespaced_IRI.parse _namespace_name "byday" |> NamespacedName
+    let byday = _prefix "byday"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#bymonth"></see>
     /// </summary>
-    let bymonth = Namespaced_IRI.parse _namespace_name "bymonth" |> NamespacedName
+    let bymonth = _prefix "bymonth"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#cn"></see>
     /// </summary>
-    let cn = Namespaced_IRI.parse _namespace_name "cn" |> NamespacedName
+    let cn = _prefix "cn"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#cutype"></see>
     /// </summary>
-    let cutype = Namespaced_IRI.parse _namespace_name "cutype" |> NamespacedName
+    let cutype = _prefix "cutype"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#date"></see>
     /// </summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#duration"></see>
     /// </summary>
-    let duration = Namespaced_IRI.parse _namespace_name "duration" |> NamespacedName
+    let duration = _prefix "duration"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#freq"></see>
     /// </summary>
-    let freq = Namespaced_IRI.parse _namespace_name "freq" |> NamespacedName
+    let freq = _prefix "freq"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#interval"></see>
     /// </summary>
-    let interval = Namespaced_IRI.parse _namespace_name "interval" |> NamespacedName
+    let interval = _prefix "interval"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#language"></see>
     /// </summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#partstat"></see>
     /// </summary>
-    let partstat = Namespaced_IRI.parse _namespace_name "partstat" |> NamespacedName
+    let partstat = _prefix "partstat"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#related"></see>
     /// </summary>
-    let related = Namespaced_IRI.parse _namespace_name "related" |> NamespacedName
+    let related = _prefix "related"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#role"></see>
     /// </summary>
-    let role = Namespaced_IRI.parse _namespace_name "role" |> NamespacedName
+    let role = _prefix "role"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#rsvp"></see>
     /// </summary>
-    let rsvp = Namespaced_IRI.parse _namespace_name "rsvp" |> NamespacedName
+    let rsvp = _prefix "rsvp"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#trigger"></see>
     /// </summary>
-    let trigger = Namespaced_IRI.parse _namespace_name "trigger" |> NamespacedName
+    let trigger = _prefix "trigger"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#tzname"></see>
     /// </summary>
-    let tzname = Namespaced_IRI.parse _namespace_name "tzname" |> NamespacedName
-
+    let tzname = _prefix "tzname"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#tzoffsetfrom"></see>
     /// </summary>
-    let tzoffsetfrom =
-        Namespaced_IRI.parse _namespace_name "tzoffsetfrom" |> NamespacedName
-
+    let tzoffsetfrom = _prefix "tzoffsetfrom"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#tzoffsetto"></see>
     /// </summary>
-    let tzoffsetto = Namespaced_IRI.parse _namespace_name "tzoffsetto" |> NamespacedName
+    let tzoffsetto = _prefix "tzoffsetto"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/ical#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"

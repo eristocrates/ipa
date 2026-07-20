@@ -1,277 +1,216 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.NorthAmericanJurisdiction.CaribbeanGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_cbj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/AntiguaAndBarbudaEntity"></see>
     /// </summary>
-    let AntiguaAndBarbudaEntity =
-        Namespaced_IRI.parse _namespace_name "AntiguaAndBarbudaEntity" |> NamespacedName
-
+    let AntiguaAndBarbudaEntity = _prefix "AntiguaAndBarbudaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfAntiguaAndBarbuda"></see>
     /// </summary>
-    let GovernmentOfAntiguaAndBarbuda =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfAntiguaAndBarbuda" |> NamespacedName
-
+    let GovernmentOfAntiguaAndBarbuda = _prefix "GovernmentOfAntiguaAndBarbuda"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/BahamianEntity"></see>
     /// </summary>
-    let BahamianEntity =
-        Namespaced_IRI.parse _namespace_name "BahamianEntity" |> NamespacedName
+    let BahamianEntity = _prefix "BahamianEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheCommonwealthOfTheBahamas"></see>
     /// </summary>
     let GovernmentOfTheCommonwealthOfTheBahamas =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheCommonwealthOfTheBahamas" |> NamespacedName
+        _prefix "GovernmentOfTheCommonwealthOfTheBahamas"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/BarbadianEntity"></see>
     /// </summary>
-    let BarbadianEntity =
-        Namespaced_IRI.parse _namespace_name "BarbadianEntity" |> NamespacedName
-
+    let BarbadianEntity = _prefix "BarbadianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfBarbados"></see>
     /// </summary>
-    let GovernmentOfBarbados =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfBarbados" |> NamespacedName
-
+    let GovernmentOfBarbados = _prefix "GovernmentOfBarbados"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/BermudanEntity"></see>
     /// </summary>
-    let BermudanEntity =
-        Namespaced_IRI.parse _namespace_name "BermudanEntity" |> NamespacedName
-
+    let BermudanEntity = _prefix "BermudanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfBermuda"></see>
     /// </summary>
-    let GovernmentOfBermuda =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfBermuda" |> NamespacedName
-
+    let GovernmentOfBermuda = _prefix "GovernmentOfBermuda"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/CaymanIslandsEntity"></see>
     /// </summary>
-    let CaymanIslandsEntity =
-        Namespaced_IRI.parse _namespace_name "CaymanIslandsEntity" |> NamespacedName
-
+    let CaymanIslandsEntity = _prefix "CaymanIslandsEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheCaymanIslands"></see>
     /// </summary>
-    let GovernmentOfTheCaymanIslands =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheCaymanIslands" |> NamespacedName
-
+    let GovernmentOfTheCaymanIslands = _prefix "GovernmentOfTheCaymanIslands"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/CubanEntity"></see>
     /// </summary>
-    let CubanEntity =
-        Namespaced_IRI.parse _namespace_name "CubanEntity" |> NamespacedName
-
+    let CubanEntity = _prefix "CubanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfCuba"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfCuba =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfCuba" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfCuba = _prefix "GovernmentOfTheRepublicOfCuba"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/DominicaEntity"></see>
     /// </summary>
-    let DominicaEntity =
-        Namespaced_IRI.parse _namespace_name "DominicaEntity" |> NamespacedName
+    let DominicaEntity = _prefix "DominicaEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheCommonwealthOfDominica"></see>
     /// </summary>
     let GovernmentOfTheCommonwealthOfDominica =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheCommonwealthOfDominica" |> NamespacedName
+        _prefix "GovernmentOfTheCommonwealthOfDominica"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/DominicanRepublicEntity"></see>
     /// </summary>
-    let DominicanRepublicEntity =
-        Namespaced_IRI.parse _namespace_name "DominicanRepublicEntity" |> NamespacedName
-
+    let DominicanRepublicEntity = _prefix "DominicanRepublicEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheDominicanRepublic"></see>
     /// </summary>
-    let GovernmentOfTheDominicanRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheDominicanRepublic" |> NamespacedName
-
+    let GovernmentOfTheDominicanRepublic = _prefix "GovernmentOfTheDominicanRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfAntiguaAndBarbuda"></see>
     /// </summary>
-    let JurisdictionOfAntiguaAndBarbuda =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfAntiguaAndBarbuda" |> NamespacedName
-
+    let JurisdictionOfAntiguaAndBarbuda = _prefix "JurisdictionOfAntiguaAndBarbuda"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfBarbados"></see>
     /// </summary>
-    let JurisdictionOfBarbados =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfBarbados" |> NamespacedName
-
+    let JurisdictionOfBarbados = _prefix "JurisdictionOfBarbados"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfBermuda"></see>
     /// </summary>
-    let JurisdictionOfBermuda =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfBermuda" |> NamespacedName
-
+    let JurisdictionOfBermuda = _prefix "JurisdictionOfBermuda"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfGrenada"></see>
     /// </summary>
-    let GovernmentOfGrenada =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfGrenada" |> NamespacedName
-
+    let GovernmentOfGrenada = _prefix "GovernmentOfGrenada"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfGrenada"></see>
     /// </summary>
-    let JurisdictionOfGrenada =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfGrenada" |> NamespacedName
-
+    let JurisdictionOfGrenada = _prefix "JurisdictionOfGrenada"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfJamaica"></see>
     /// </summary>
-    let GovernmentOfJamaica =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfJamaica" |> NamespacedName
-
+    let GovernmentOfJamaica = _prefix "GovernmentOfJamaica"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfJamaica"></see>
     /// </summary>
-    let JurisdictionOfJamaica =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfJamaica" |> NamespacedName
-
+    let JurisdictionOfJamaica = _prefix "JurisdictionOfJamaica"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfSaintLucia"></see>
     /// </summary>
-    let GovernmentOfSaintLucia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfSaintLucia" |> NamespacedName
-
+    let GovernmentOfSaintLucia = _prefix "GovernmentOfSaintLucia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfSaintLucia"></see>
     /// </summary>
-    let JurisdictionOfSaintLucia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSaintLucia" |> NamespacedName
+    let JurisdictionOfSaintLucia = _prefix "JurisdictionOfSaintLucia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfSaintVincentAndTheGrenadines"></see>
     /// </summary>
     let GovernmentOfSaintVincentAndTheGrenadines =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfSaintVincentAndTheGrenadines" |> NamespacedName
+        _prefix "GovernmentOfSaintVincentAndTheGrenadines"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfSaintVincentAndTheGrenadines"></see>
     /// </summary>
     let JurisdictionOfSaintVincentAndTheGrenadines =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSaintVincentAndTheGrenadines" |> NamespacedName
+        _prefix "JurisdictionOfSaintVincentAndTheGrenadines"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfTheCaymanIslands"></see>
     /// </summary>
-    let JurisdictionOfTheCaymanIslands =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheCaymanIslands" |> NamespacedName
-
+    let JurisdictionOfTheCaymanIslands = _prefix "JurisdictionOfTheCaymanIslands"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfDominica"></see>
     /// </summary>
-    let JurisdictionOfDominica =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfDominica" |> NamespacedName
+    let JurisdictionOfDominica = _prefix "JurisdictionOfDominica"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfTheCommonwealthOfTheBahamas"></see>
     /// </summary>
     let JurisdictionOfTheCommonwealthOfTheBahamas =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheCommonwealthOfTheBahamas" |> NamespacedName
+        _prefix "JurisdictionOfTheCommonwealthOfTheBahamas"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfTheDominicanRepublic"></see>
     /// </summary>
     let JurisdictionOfTheDominicanRepublic =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheDominicanRepublic" |> NamespacedName
+        _prefix "JurisdictionOfTheDominicanRepublic"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheFederationOfSaintChristopherAndNevis"></see>
     /// </summary>
     let GovernmentOfTheFederationOfSaintChristopherAndNevis =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheFederationOfSaintChristopherAndNevis" |> NamespacedName
+        _prefix "GovernmentOfTheFederationOfSaintChristopherAndNevis"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfTheFederationOfSaintChristopherAndNevis"></see>
     /// </summary>
     let JurisdictionOfTheFederationOfSaintChristopherAndNevis =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheFederationOfSaintChristopherAndNevis" |> NamespacedName
+        _prefix "JurisdictionOfTheFederationOfSaintChristopherAndNevis"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfCuba"></see>
     /// </summary>
-    let JurisdictionOfCuba =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfCuba" |> NamespacedName
-
+    let JurisdictionOfCuba = _prefix "JurisdictionOfCuba"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfHaiti"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfHaiti =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfHaiti" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfHaiti = _prefix "GovernmentOfTheRepublicOfHaiti"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfHaiti"></see>
     /// </summary>
-    let JurisdictionOfHaiti =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfHaiti" |> NamespacedName
+    let JurisdictionOfHaiti = _prefix "JurisdictionOfHaiti"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfTrinidadAndTobago"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfTrinidadAndTobago =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfTrinidadAndTobago" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfTrinidadAndTobago"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfTrinidadAndTobago"></see>
     /// </summary>
     let JurisdictionOfTheRepublicOfTrinidadAndTobago =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfTrinidadAndTobago" |> NamespacedName
+        _prefix "JurisdictionOfTheRepublicOfTrinidadAndTobago"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/GrenadianEntity"></see>
     /// </summary>
-    let GrenadianEntity =
-        Namespaced_IRI.parse _namespace_name "GrenadianEntity" |> NamespacedName
-
+    let GrenadianEntity = _prefix "GrenadianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/HaitianEntity"></see>
     /// </summary>
-    let HaitianEntity =
-        Namespaced_IRI.parse _namespace_name "HaitianEntity" |> NamespacedName
-
+    let HaitianEntity = _prefix "HaitianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/JamaicanEntity"></see>
     /// </summary>
-    let JamaicanEntity =
-        Namespaced_IRI.parse _namespace_name "JamaicanEntity" |> NamespacedName
-
+    let JamaicanEntity = _prefix "JamaicanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/SaintKittsAndNevisEntity"></see>
     /// </summary>
-    let SaintKittsAndNevisEntity =
-        Namespaced_IRI.parse _namespace_name "SaintKittsAndNevisEntity" |> NamespacedName
-
+    let SaintKittsAndNevisEntity = _prefix "SaintKittsAndNevisEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/SaintLucianEntity"></see>
     /// </summary>
-    let SaintLucianEntity =
-        Namespaced_IRI.parse _namespace_name "SaintLucianEntity" |> NamespacedName
-
+    let SaintLucianEntity = _prefix "SaintLucianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/SaintVincentianEntity"></see>
     /// </summary>
-    let SaintVincentianEntity =
-        Namespaced_IRI.parse _namespace_name "SaintVincentianEntity" |> NamespacedName
-
+    let SaintVincentianEntity = _prefix "SaintVincentianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/TrinidadianAndTobagonianEntity"></see>
     /// </summary>
-    let TrinidadianAndTobagonianEntity =
-        Namespaced_IRI.parse _namespace_name "TrinidadianAndTobagonianEntity" |> NamespacedName
+    let TrinidadianAndTobagonianEntity = _prefix "TrinidadianAndTobagonianEntity"

@@ -1,0 +1,36 @@
+http://id.loc.gov/ontologies/bflc/ https://id.loc.gov/ontologies/bflc.rdf failed with error StringParser failed to parse the RDF string correctly, StringParser auto-detection guessed 'NTriples' but this failed to parse.  RDF string may be malformed or StringParser may have guessed incorrectly
+No http response for https://www.omg.org/spec/Commons/Identifiers/ distribution https://www.omg.org/spec/Commons/Identifiers.ttl
+No http response for https://www.omg.org/spec/Commons/Classifiers/ distribution https://www.omg.org/spec/Commons/Classifiers.ttl
+No http response for https://www.omg.org/spec/Commons/BusinessAuthorizations/ distribution https://www.omg.org/spec/Commons/BusinessAuthorizations.ttl
+No http response for https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA/ distribution https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA.ttl
+No http response for https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/ distribution https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes.ttl
+No http response for https://www.omg.org/spec/Commons/AnnotationVocabulary/ distribution https://www.omg.org/spec/Commons/AnnotationVocabulary.ttl
+No http response for https://www.omg.org/spec/Commons/CodesAndCodeSets/ distribution https://www.omg.org/spec/Commons/CodesAndCodeSets.ttl
+No http response for https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/ distribution https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB.ttl
+No http response for https://www.omg.org/spec/Commons/Locations/ distribution https://www.omg.org/spec/Commons/Locations.ttl
+No http response for https://www.omg.org/spec/Commons/Organizations/ distribution https://www.omg.org/spec/Commons/Organizations.ttl
+No http response for https://www.omg.org/spec/Commons/Collections/ distribution https://www.omg.org/spec/Commons/Collections.ttl
+No http response for https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX/ distribution https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX.ttl
+No http response for https://www.omg.org/spec/Commons/PartiesAndSituations/ distribution https://www.omg.org/spec/Commons/PartiesAndSituations.ttl
+No http response for https://www.omg.org/spec/Commons/ContextualDesignators/ distribution https://www.omg.org/spec/Commons/ContextualDesignators.ttl
+No http response for https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/ distribution https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US.ttl
+No http response for https://www.omg.org/spec/Commons/ContextualIdentifiers/ distribution https://www.omg.org/spec/Commons/ContextualIdentifiers.ttl
+No http response for https://www.omg.org/spec/Commons/QuantitiesAndUnits/ distribution https://www.omg.org/spec/Commons/QuantitiesAndUnits.ttl
+No http response for https://www.omg.org/spec/Commons/RegistrationAuthorities/ distribution https://www.omg.org/spec/Commons/RegistrationAuthorities.ttl
+No http response for http://www.w3.org/2011/http-headers# distribution https://www.w3.org/2011/http-headers.rdf
+No http response for https://www.omg.org/spec/Commons/DatesAndTimes/ distribution https://www.omg.org/spec/Commons/DatesAndTimes.ttl
+No http response for https://www.omg.org/spec/Commons/RegulatoryAgencies/ distribution https://www.omg.org/spec/Commons/RegulatoryAgencies.ttl
+No http response for https://www.omg.org/spec/Commons/RolesAndCompositions/ distribution https://www.omg.org/spec/Commons/RolesAndCompositions.ttl
+No http response for https://www.omg.org/spec/Commons/SitesAndFacilities/ distribution https://www.omg.org/spec/Commons/SitesAndFacilities.ttl
+No http response for https://www.omg.org/spec/Commons/Documents/ distribution https://www.omg.org/spec/Commons/Documents.ttl
+No http response for https://www.omg.org/spec/Commons/TextDatatype/ distribution https://www.omg.org/spec/Commons/TextDatatype.ttl
+No http response for https://www.omg.org/spec/LCC/Countries/CountryRepresentation/ distribution https://www.omg.org/spec/LCC/Countries/CountryRepresentation.ttl
+namespace http://purl.org/holy/ns# sources C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\holy\ns\hash\holy.ttl errored with namespace name http://purl.org/holy/ns#
+	rdf sources C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\holy\ns\hash\holy.ttl
+ failed with error '"' is an unexpected token. The expected token is ';'. Line 3, position 77.
+namespace http://qudt.org/schema/qudt/ sources C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\qudt.org\schema\qudt\slash\qudt.ttl errored with namespace name http://qudt.org/schema/qudt/
+	rdf sources C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\qudt.org\schema\qudt\slash\qudt.ttl
+ failed with error '', hexadecimal value 0x08, is an invalid character. Line 2, position 503.
+namespace https://w3id.org/amv# sources C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\amv\hash\amv.ttl errored with namespace name https://w3id.org/amv#
+	rdf sources C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\amv\hash\amv.ttl
+ failed with error '"' is an unexpected token. The expected token is ';'. Line 3, position 53.

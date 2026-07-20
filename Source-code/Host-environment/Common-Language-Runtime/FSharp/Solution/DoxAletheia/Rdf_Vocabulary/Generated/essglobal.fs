@@ -1,235 +1,186 @@
 namespace http.purl.org.essglobal.vocab.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module essglobal =
     let _namespace_name = "http://purl.org/essglobal/vocab/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Activities"></see>
     /// </summary>
-    let Activities = Namespaced_IRI.parse _namespace_name "Activities" |> NamespacedName
+    let Activities = _prefix "Activities"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Address"></see>
     /// </summary>
-    let Address = Namespaced_IRI.parse _namespace_name "Address" |> NamespacedName
+    let Address = _prefix "Address"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Cost"></see>
     /// </summary>
-    let Cost = Namespaced_IRI.parse _namespace_name "Cost" |> NamespacedName
-
+    let Cost = _prefix "Cost"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/CostComposition"></see>
     /// </summary>
-    let CostComposition =
-        Namespaced_IRI.parse _namespace_name "CostComposition" |> NamespacedName
-
+    let CostComposition = _prefix "CostComposition"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Input"></see>
     /// </summary>
-    let Input = Namespaced_IRI.parse _namespace_name "Input" |> NamespacedName
+    let Input = _prefix "Input"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Labour"></see>
     /// </summary>
-    let Labour = Namespaced_IRI.parse _namespace_name "Labour" |> NamespacedName
+    let Labour = _prefix "Labour"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/LegalForm"></see>
     /// </summary>
-    let LegalForm = Namespaced_IRI.parse _namespace_name "LegalForm" |> NamespacedName
-
+    let LegalForm = _prefix "LegalForm"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/LocationOfSale"></see>
     /// </summary>
-    let LocationOfSale =
-        Namespaced_IRI.parse _namespace_name "LocationOfSale" |> NamespacedName
-
+    let LocationOfSale = _prefix "LocationOfSale"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Network"></see>
     /// </summary>
-    let Network = Namespaced_IRI.parse _namespace_name "Network" |> NamespacedName
+    let Network = _prefix "Network"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/OtherCosts"></see>
     /// </summary>
-    let OtherCosts = Namespaced_IRI.parse _namespace_name "OtherCosts" |> NamespacedName
-
+    let OtherCosts = _prefix "OtherCosts"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/ProductOrService"></see>
     /// </summary>
-    let ProductOrService =
-        Namespaced_IRI.parse _namespace_name "ProductOrService" |> NamespacedName
-
+    let ProductOrService = _prefix "ProductOrService"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/Qualifiers"></see>
     /// </summary>
-    let Qualifiers = Namespaced_IRI.parse _namespace_name "Qualifiers" |> NamespacedName
-
+    let Qualifiers = _prefix "Qualifiers"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/SSEInitiative"></see>
     /// </summary>
-    let SSEInitiative =
-        Namespaced_IRI.parse _namespace_name "SSEInitiative" |> NamespacedName
-
+    let SSEInitiative = _prefix "SSEInitiative"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/SaleOption"></see>
     /// </summary>
-    let SaleOption = Namespaced_IRI.parse _namespace_name "SaleOption" |> NamespacedName
-
+    let SaleOption = _prefix "SaleOption"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/TypeOfLabour"></see>
     /// </summary>
-    let TypeOfLabour =
-        Namespaced_IRI.parse _namespace_name "TypeOfLabour" |> NamespacedName
-
+    let TypeOfLabour = _prefix "TypeOfLabour"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/costPerUnit"></see>
     /// </summary>
-    let costPerUnit =
-        Namespaced_IRI.parse _namespace_name "costPerUnit" |> NamespacedName
-
+    let costPerUnit = _prefix "costPerUnit"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/deliveryRangeDistance"></see>
     /// </summary>
-    let deliveryRangeDistance =
-        Namespaced_IRI.parse _namespace_name "deliveryRangeDistance" |> NamespacedName
-
+    let deliveryRangeDistance = _prefix "deliveryRangeDistance"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/economicSector"></see>
     /// </summary>
-    let economicSector =
-        Namespaced_IRI.parse _namespace_name "economicSector" |> NamespacedName
-
+    let economicSector = _prefix "economicSector"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasAddress"></see>
     /// </summary>
-    let hasAddress = Namespaced_IRI.parse _namespace_name "hasAddress" |> NamespacedName
+    let hasAddress = _prefix "hasAddress"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasCost"></see>
     /// </summary>
-    let hasCost = Namespaced_IRI.parse _namespace_name "hasCost" |> NamespacedName
-
+    let hasCost = _prefix "hasCost"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasImpactOnCost"></see>
     /// </summary>
-    let hasImpactOnCost =
-        Namespaced_IRI.parse _namespace_name "hasImpactOnCost" |> NamespacedName
-
+    let hasImpactOnCost = _prefix "hasImpactOnCost"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasInputCost"></see>
     /// </summary>
-    let hasInputCost =
-        Namespaced_IRI.parse _namespace_name "hasInputCost" |> NamespacedName
-
+    let hasInputCost = _prefix "hasInputCost"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasLabourCost"></see>
     /// </summary>
-    let hasLabourCost =
-        Namespaced_IRI.parse _namespace_name "hasLabourCost" |> NamespacedName
-
+    let hasLabourCost = _prefix "hasLabourCost"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasOtherCosts"></see>
     /// </summary>
-    let hasOtherCosts =
-        Namespaced_IRI.parse _namespace_name "hasOtherCosts" |> NamespacedName
-
+    let hasOtherCosts = _prefix "hasOtherCosts"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasProductOrService"></see>
     /// </summary>
-    let hasProductOrService =
-        Namespaced_IRI.parse _namespace_name "hasProductOrService" |> NamespacedName
-
+    let hasProductOrService = _prefix "hasProductOrService"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/hasSaleOption"></see>
     /// </summary>
-    let hasSaleOption =
-        Namespaced_IRI.parse _namespace_name "hasSaleOption" |> NamespacedName
-
+    let hasSaleOption = _prefix "hasSaleOption"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/isAvailable"></see>
     /// </summary>
-    let isAvailable =
-        Namespaced_IRI.parse _namespace_name "isAvailable" |> NamespacedName
-
+    let isAvailable = _prefix "isAvailable"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/isAvailableAt"></see>
     /// </summary>
-    let isAvailableAt =
-        Namespaced_IRI.parse _namespace_name "isAvailableAt" |> NamespacedName
-
+    let isAvailableAt = _prefix "isAvailableAt"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/isComposedBy"></see>
     /// </summary>
-    let isComposedBy =
-        Namespaced_IRI.parse _namespace_name "isComposedBy" |> NamespacedName
-
+    let isComposedBy = _prefix "isComposedBy"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/isMain"></see>
     /// </summary>
-    let isMain = Namespaced_IRI.parse _namespace_name "isMain" |> NamespacedName
+    let isMain = _prefix "isMain"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/isSSE"></see>
     /// </summary>
-    let isSSE = Namespaced_IRI.parse _namespace_name "isSSE" |> NamespacedName
+    let isSSE = _prefix "isSSE"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/legalForm"></see>
     /// </summary>
-    let legalForm = Namespaced_IRI.parse _namespace_name "legalForm" |> NamespacedName
+    let legalForm = _prefix "legalForm"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/mission"></see>
     /// </summary>
-    let mission = Namespaced_IRI.parse _namespace_name "mission" |> NamespacedName
+    let mission = _prefix "mission"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/objective"></see>
     /// </summary>
-    let objective = Namespaced_IRI.parse _namespace_name "objective" |> NamespacedName
+    let objective = _prefix "objective"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/qualifier"></see>
     /// </summary>
-    let qualifier = Namespaced_IRI.parse _namespace_name "qualifier" |> NamespacedName
-
+    let qualifier = _prefix "qualifier"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/quantityPerProductOrServiceUnit"></see>
     /// </summary>
-    let quantityPerProductOrServiceUnit =
-        Namespaced_IRI.parse _namespace_name "quantityPerProductOrServiceUnit" |> NamespacedName
-
+    let quantityPerProductOrServiceUnit = _prefix "quantityPerProductOrServiceUnit"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/salesMarginPercentage"></see>
     /// </summary>
-    let salesMarginPercentage =
-        Namespaced_IRI.parse _namespace_name "salesMarginPercentage" |> NamespacedName
-
+    let salesMarginPercentage = _prefix "salesMarginPercentage"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/salesMarginValue"></see>
     /// </summary>
-    let salesMarginValue =
-        Namespaced_IRI.parse _namespace_name "salesMarginValue" |> NamespacedName
-
+    let salesMarginValue = _prefix "salesMarginValue"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/state"></see>
     /// </summary>
-    let state = Namespaced_IRI.parse _namespace_name "state" |> NamespacedName
+    let state = _prefix "state"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/totalMen"></see>
     /// </summary>
-    let totalMen = Namespaced_IRI.parse _namespace_name "totalMen" |> NamespacedName
-
+    let totalMen = _prefix "totalMen"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/totalOfMembers"></see>
     /// </summary>
-    let totalOfMembers =
-        Namespaced_IRI.parse _namespace_name "totalOfMembers" |> NamespacedName
-
+    let totalOfMembers = _prefix "totalOfMembers"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/totalWomen"></see>
     /// </summary>
-    let totalWomen = Namespaced_IRI.parse _namespace_name "totalWomen" |> NamespacedName
-
+    let totalWomen = _prefix "totalWomen"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/typeOfLabour"></see>
     /// </summary>
-    let typeOfLabour =
-        Namespaced_IRI.parse _namespace_name "typeOfLabour" |> NamespacedName
-
+    let typeOfLabour = _prefix "typeOfLabour"
     /// <summary>
     ///   <see href="http://purl.org/essglobal/vocab/unit"></see>
     /// </summary>
-    let unit = Namespaced_IRI.parse _namespace_name "unit" |> NamespacedName
+    let unit = _prefix "unit"

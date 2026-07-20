@@ -1,283 +1,222 @@
 namespace http.www.opengis.net.ont.gml.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gml =
     let _namespace_name = "http://www.opengis.net/ont/gml#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#AbstractCurveSegment"></see>
     /// </summary>
-    let AbstractCurveSegment =
-        Namespaced_IRI.parse _namespace_name "AbstractCurveSegment" |> NamespacedName
-
+    let AbstractCurveSegment = _prefix "AbstractCurveSegment"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#AbstractGeometricPrimitive"></see>
     /// </summary>
-    let AbstractGeometricPrimitive =
-        Namespaced_IRI.parse _namespace_name "AbstractGeometricPrimitive" |> NamespacedName
-
+    let AbstractGeometricPrimitive = _prefix "AbstractGeometricPrimitive"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#AbstractGeometry"></see>
     /// </summary>
-    let AbstractGeometry =
-        Namespaced_IRI.parse _namespace_name "AbstractGeometry" |> NamespacedName
-
+    let AbstractGeometry = _prefix "AbstractGeometry"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#AbstractGriddedSurface"></see>
     /// </summary>
-    let AbstractGriddedSurface =
-        Namespaced_IRI.parse _namespace_name "AbstractGriddedSurface" |> NamespacedName
-
+    let AbstractGriddedSurface = _prefix "AbstractGriddedSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#AbstractParametricCurveSurface"></see>
     /// </summary>
-    let AbstractParametricCurveSurface =
-        Namespaced_IRI.parse _namespace_name "AbstractParametricCurveSurface" |> NamespacedName
-
+    let AbstractParametricCurveSurface = _prefix "AbstractParametricCurveSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#AbstractSurfacePatch"></see>
     /// </summary>
-    let AbstractSurfacePatch =
-        Namespaced_IRI.parse _namespace_name "AbstractSurfacePatch" |> NamespacedName
-
+    let AbstractSurfacePatch = _prefix "AbstractSurfacePatch"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Arc"></see>
     /// </summary>
-    let Arc = Namespaced_IRI.parse _namespace_name "Arc" |> NamespacedName
+    let Arc = _prefix "Arc"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#ArcString"></see>
     /// </summary>
-    let ArcString = Namespaced_IRI.parse _namespace_name "ArcString" |> NamespacedName
+    let ArcString = _prefix "ArcString"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#ArcByBulge"></see>
     /// </summary>
-    let ArcByBulge = Namespaced_IRI.parse _namespace_name "ArcByBulge" |> NamespacedName
-
+    let ArcByBulge = _prefix "ArcByBulge"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#ArcStringByBulge"></see>
     /// </summary>
-    let ArcStringByBulge =
-        Namespaced_IRI.parse _namespace_name "ArcStringByBulge" |> NamespacedName
-
+    let ArcStringByBulge = _prefix "ArcStringByBulge"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#ArcByCenterPoint"></see>
     /// </summary>
-    let ArcByCenterPoint =
-        Namespaced_IRI.parse _namespace_name "ArcByCenterPoint" |> NamespacedName
-
+    let ArcByCenterPoint = _prefix "ArcByCenterPoint"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#BSpline"></see>
     /// </summary>
-    let BSpline = Namespaced_IRI.parse _namespace_name "BSpline" |> NamespacedName
-
+    let BSpline = _prefix "BSpline"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#SplineCurve"></see>
     /// </summary>
-    let SplineCurve =
-        Namespaced_IRI.parse _namespace_name "SplineCurve" |> NamespacedName
-
+    let SplineCurve = _prefix "SplineCurve"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Bezier"></see>
     /// </summary>
-    let Bezier = Namespaced_IRI.parse _namespace_name "Bezier" |> NamespacedName
+    let Bezier = _prefix "Bezier"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Circle"></see>
     /// </summary>
-    let Circle = Namespaced_IRI.parse _namespace_name "Circle" |> NamespacedName
-
+    let Circle = _prefix "Circle"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#CircleByCenterPoint"></see>
     /// </summary>
-    let CircleByCenterPoint =
-        Namespaced_IRI.parse _namespace_name "CircleByCenterPoint" |> NamespacedName
-
+    let CircleByCenterPoint = _prefix "CircleByCenterPoint"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Clothoid"></see>
     /// </summary>
-    let Clothoid = Namespaced_IRI.parse _namespace_name "Clothoid" |> NamespacedName
+    let Clothoid = _prefix "Clothoid"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Composite"></see>
     /// </summary>
-    let Composite = Namespaced_IRI.parse _namespace_name "Composite" |> NamespacedName
-
+    let Composite = _prefix "Composite"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#GeometricComplex"></see>
     /// </summary>
-    let GeometricComplex =
-        Namespaced_IRI.parse _namespace_name "GeometricComplex" |> NamespacedName
-
+    let GeometricComplex = _prefix "GeometricComplex"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#CompositeCurve"></see>
     /// </summary>
-    let CompositeCurve =
-        Namespaced_IRI.parse _namespace_name "CompositeCurve" |> NamespacedName
-
+    let CompositeCurve = _prefix "CompositeCurve"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#OrientableCurve"></see>
     /// </summary>
-    let OrientableCurve =
-        Namespaced_IRI.parse _namespace_name "OrientableCurve" |> NamespacedName
-
+    let OrientableCurve = _prefix "OrientableCurve"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#CompositeSolid"></see>
     /// </summary>
-    let CompositeSolid =
-        Namespaced_IRI.parse _namespace_name "CompositeSolid" |> NamespacedName
-
+    let CompositeSolid = _prefix "CompositeSolid"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Solid"></see>
     /// </summary>
-    let Solid = Namespaced_IRI.parse _namespace_name "Solid" |> NamespacedName
-
+    let Solid = _prefix "Solid"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#CompositeSurface"></see>
     /// </summary>
-    let CompositeSurface =
-        Namespaced_IRI.parse _namespace_name "CompositeSurface" |> NamespacedName
-
+    let CompositeSurface = _prefix "CompositeSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#OrientableSurface"></see>
     /// </summary>
-    let OrientableSurface =
-        Namespaced_IRI.parse _namespace_name "OrientableSurface" |> NamespacedName
-
+    let OrientableSurface = _prefix "OrientableSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Cone"></see>
     /// </summary>
-    let Cone = Namespaced_IRI.parse _namespace_name "Cone" |> NamespacedName
-
+    let Cone = _prefix "Cone"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#CubicSpline"></see>
     /// </summary>
-    let CubicSpline =
-        Namespaced_IRI.parse _namespace_name "CubicSpline" |> NamespacedName
-
+    let CubicSpline = _prefix "CubicSpline"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#PolynomialSpline"></see>
     /// </summary>
-    let PolynomialSpline =
-        Namespaced_IRI.parse _namespace_name "PolynomialSpline" |> NamespacedName
-
+    let PolynomialSpline = _prefix "PolynomialSpline"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Curve"></see>
     /// </summary>
-    let Curve = Namespaced_IRI.parse _namespace_name "Curve" |> NamespacedName
+    let Curve = _prefix "Curve"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Cylinder"></see>
     /// </summary>
-    let Cylinder = Namespaced_IRI.parse _namespace_name "Cylinder" |> NamespacedName
+    let Cylinder = _prefix "Cylinder"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Geodesic"></see>
     /// </summary>
-    let Geodesic = Namespaced_IRI.parse _namespace_name "Geodesic" |> NamespacedName
-
+    let Geodesic = _prefix "Geodesic"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#GeodesicString"></see>
     /// </summary>
-    let GeodesicString =
-        Namespaced_IRI.parse _namespace_name "GeodesicString" |> NamespacedName
-
+    let GeodesicString = _prefix "GeodesicString"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#LineString"></see>
     /// </summary>
-    let LineString = Namespaced_IRI.parse _namespace_name "LineString" |> NamespacedName
-
+    let LineString = _prefix "LineString"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#LineStringSegment"></see>
     /// </summary>
-    let LineStringSegment =
-        Namespaced_IRI.parse _namespace_name "LineStringSegment" |> NamespacedName
-
+    let LineStringSegment = _prefix "LineStringSegment"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#LinearRing"></see>
     /// </summary>
-    let LinearRing = Namespaced_IRI.parse _namespace_name "LinearRing" |> NamespacedName
+    let LinearRing = _prefix "LinearRing"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Ring"></see>
     /// </summary>
-    let Ring = Namespaced_IRI.parse _namespace_name "Ring" |> NamespacedName
+    let Ring = _prefix "Ring"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#MultiCurve"></see>
     /// </summary>
-    let MultiCurve = Namespaced_IRI.parse _namespace_name "MultiCurve" |> NamespacedName
-
+    let MultiCurve = _prefix "MultiCurve"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#MultiGeometry"></see>
     /// </summary>
-    let MultiGeometry =
-        Namespaced_IRI.parse _namespace_name "MultiGeometry" |> NamespacedName
-
+    let MultiGeometry = _prefix "MultiGeometry"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#MultiPoint"></see>
     /// </summary>
-    let MultiPoint = Namespaced_IRI.parse _namespace_name "MultiPoint" |> NamespacedName
+    let MultiPoint = _prefix "MultiPoint"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#MultiSolid"></see>
     /// </summary>
-    let MultiSolid = Namespaced_IRI.parse _namespace_name "MultiSolid" |> NamespacedName
-
+    let MultiSolid = _prefix "MultiSolid"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#MultiSurface"></see>
     /// </summary>
-    let MultiSurface =
-        Namespaced_IRI.parse _namespace_name "MultiSurface" |> NamespacedName
-
+    let MultiSurface = _prefix "MultiSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#OffsetCurve"></see>
     /// </summary>
-    let OffsetCurve =
-        Namespaced_IRI.parse _namespace_name "OffsetCurve" |> NamespacedName
-
+    let OffsetCurve = _prefix "OffsetCurve"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Point"></see>
     /// </summary>
-    let Point = Namespaced_IRI.parse _namespace_name "Point" |> NamespacedName
+    let Point = _prefix "Point"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Polygon"></see>
     /// </summary>
-    let Polygon = Namespaced_IRI.parse _namespace_name "Polygon" |> NamespacedName
+    let Polygon = _prefix "Polygon"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Surface"></see>
     /// </summary>
-    let Surface = Namespaced_IRI.parse _namespace_name "Surface" |> NamespacedName
-
+    let Surface = _prefix "Surface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#PolygonPatch"></see>
     /// </summary>
-    let PolygonPatch =
-        Namespaced_IRI.parse _namespace_name "PolygonPatch" |> NamespacedName
-
+    let PolygonPatch = _prefix "PolygonPatch"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#PolyhedralSurface"></see>
     /// </summary>
-    let PolyhedralSurface =
-        Namespaced_IRI.parse _namespace_name "PolyhedralSurface" |> NamespacedName
-
+    let PolyhedralSurface = _prefix "PolyhedralSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Rectangle"></see>
     /// </summary>
-    let Rectangle = Namespaced_IRI.parse _namespace_name "Rectangle" |> NamespacedName
+    let Rectangle = _prefix "Rectangle"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Shell"></see>
     /// </summary>
-    let Shell = Namespaced_IRI.parse _namespace_name "Shell" |> NamespacedName
+    let Shell = _prefix "Shell"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Sphere"></see>
     /// </summary>
-    let Sphere = Namespaced_IRI.parse _namespace_name "Sphere" |> NamespacedName
+    let Sphere = _prefix "Sphere"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Tin"></see>
     /// </summary>
-    let Tin = Namespaced_IRI.parse _namespace_name "Tin" |> NamespacedName
-
+    let Tin = _prefix "Tin"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#TriangulatedSurface"></see>
     /// </summary>
-    let TriangulatedSurface =
-        Namespaced_IRI.parse _namespace_name "TriangulatedSurface" |> NamespacedName
-
+    let TriangulatedSurface = _prefix "TriangulatedSurface"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/gml#Triangle"></see>
     /// </summary>
-    let Triangle = Namespaced_IRI.parse _namespace_name "Triangle" |> NamespacedName
+    let Triangle = _prefix "Triangle"

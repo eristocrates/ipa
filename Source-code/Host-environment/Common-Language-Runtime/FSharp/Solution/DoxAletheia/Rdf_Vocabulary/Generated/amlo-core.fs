@@ -1,225 +1,170 @@
 namespace http.w3id.org.amlo.core.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module amlo_core =
     let _namespace_name = "http://w3id.org/amlo/core#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#Accountable"></see>
     /// </summary>
-    let Accountable =
-        Namespaced_IRI.parse _namespace_name "Accountable" |> NamespacedName
-
+    let Accountable = _prefix "Accountable"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#Analyst"></see>
     /// </summary>
-    let Analyst = Namespaced_IRI.parse _namespace_name "Analyst" |> NamespacedName
+    let Analyst = _prefix "Analyst"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#Book"></see>
     /// </summary>
-    let Book = Namespaced_IRI.parse _namespace_name "Book" |> NamespacedName
+    let Book = _prefix "Book"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#Cash"></see>
     /// </summary>
-    let Cash = Namespaced_IRI.parse _namespace_name "Cash" |> NamespacedName
+    let Cash = _prefix "Cash"
     /// <summary>
     /// A person Gender
     /// <see href="http://w3id.org/amlo/core#Gender"></see></summary>
-    let Gender = Namespaced_IRI.parse _namespace_name "Gender" |> NamespacedName
-
+    let Gender = _prefix "Gender"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#IntangibleAsset"></see>
     /// </summary>
-    let IntangibleAsset =
-        Namespaced_IRI.parse _namespace_name "IntangibleAsset" |> NamespacedName
-
+    let IntangibleAsset = _prefix "IntangibleAsset"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#OriginatorBook"></see>
     /// </summary>
-    let OriginatorBook =
-        Namespaced_IRI.parse _namespace_name "OriginatorBook" |> NamespacedName
-
+    let OriginatorBook = _prefix "OriginatorBook"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#OriginatorParty"></see>
     /// </summary>
-    let OriginatorParty =
-        Namespaced_IRI.parse _namespace_name "OriginatorParty" |> NamespacedName
-
+    let OriginatorParty = _prefix "OriginatorParty"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#Reasoner"></see>
     /// </summary>
-    let Reasoner = Namespaced_IRI.parse _namespace_name "Reasoner" |> NamespacedName
-
+    let Reasoner = _prefix "Reasoner"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#RecipientBook"></see>
     /// </summary>
-    let RecipientBook =
-        Namespaced_IRI.parse _namespace_name "RecipientBook" |> NamespacedName
-
+    let RecipientBook = _prefix "RecipientBook"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#RecipientParty"></see>
     /// </summary>
-    let RecipientParty =
-        Namespaced_IRI.parse _namespace_name "RecipientParty" |> NamespacedName
-
+    let RecipientParty = _prefix "RecipientParty"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#RiskEstimator"></see>
     /// </summary>
-    let RiskEstimator =
-        Namespaced_IRI.parse _namespace_name "RiskEstimator" |> NamespacedName
-
+    let RiskEstimator = _prefix "RiskEstimator"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#RiskEvaluation"></see>
     /// </summary>
-    let RiskEvaluation =
-        Namespaced_IRI.parse _namespace_name "RiskEvaluation" |> NamespacedName
-
+    let RiskEvaluation = _prefix "RiskEvaluation"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#assessedOn"></see>
     /// </summary>
-    let assessedOn = Namespaced_IRI.parse _namespace_name "assessedOn" |> NamespacedName
-
+    let assessedOn = _prefix "assessedOn"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#onRiskFactor"></see>
     /// </summary>
-    let onRiskFactor =
-        Namespaced_IRI.parse _namespace_name "onRiskFactor" |> NamespacedName
-
+    let onRiskFactor = _prefix "onRiskFactor"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#RiskRating"></see>
     /// </summary>
-    let RiskRating = Namespaced_IRI.parse _namespace_name "RiskRating" |> NamespacedName
-
+    let RiskRating = _prefix "RiskRating"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#hasRiskEstimator"></see>
     /// </summary>
-    let hasRiskEstimator =
-        Namespaced_IRI.parse _namespace_name "hasRiskEstimator" |> NamespacedName
-
+    let hasRiskEstimator = _prefix "hasRiskEstimator"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#RiskSizing"></see>
     /// </summary>
-    let RiskSizing = Namespaced_IRI.parse _namespace_name "RiskSizing" |> NamespacedName
-
+    let RiskSizing = _prefix "RiskSizing"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#SuspectRating"></see>
     /// </summary>
-    let SuspectRating =
-        Namespaced_IRI.parse _namespace_name "SuspectRating" |> NamespacedName
-
+    let SuspectRating = _prefix "SuspectRating"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#hasSuspectRatingScore"></see>
     /// </summary>
-    let hasSuspectRatingScore =
-        Namespaced_IRI.parse _namespace_name "hasSuspectRatingScore" |> NamespacedName
-
+    let hasSuspectRatingScore = _prefix "hasSuspectRatingScore"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#SuspectRatingScore"></see>
     /// </summary>
-    let SuspectRatingScore =
-        Namespaced_IRI.parse _namespace_name "SuspectRatingScore" |> NamespacedName
-
+    let SuspectRatingScore = _prefix "SuspectRatingScore"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#Transfer"></see>
     /// </summary>
-    let Transfer = Namespaced_IRI.parse _namespace_name "Transfer" |> NamespacedName
+    let Transfer = _prefix "Transfer"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#transfers"></see>
     /// </summary>
-    let transfers = Namespaced_IRI.parse _namespace_name "transfers" |> NamespacedName
-
+    let transfers = _prefix "transfers"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#UnexpectedActivity"></see>
     /// </summary>
-    let UnexpectedActivity =
-        Namespaced_IRI.parse _namespace_name "UnexpectedActivity" |> NamespacedName
-
+    let UnexpectedActivity = _prefix "UnexpectedActivity"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#UnexpectedActivityReport"></see>
     /// </summary>
-    let UnexpectedActivityReport =
-        Namespaced_IRI.parse _namespace_name "UnexpectedActivityReport" |> NamespacedName
-
+    let UnexpectedActivityReport = _prefix "UnexpectedActivityReport"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#hasEvaluation"></see>
     /// </summary>
-    let hasEvaluation =
-        Namespaced_IRI.parse _namespace_name "hasEvaluation" |> NamespacedName
-
+    let hasEvaluation = _prefix "hasEvaluation"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#detects"></see>
     /// </summary>
-    let detects = Namespaced_IRI.parse _namespace_name "detects" |> NamespacedName
-
+    let detects = _prefix "detects"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#isDetectedBy"></see>
     /// </summary>
-    let isDetectedBy =
-        Namespaced_IRI.parse _namespace_name "isDetectedBy" |> NamespacedName
-
+    let isDetectedBy = _prefix "isDetectedBy"
     /// <summary>
     /// a female person
     /// <see href="http://w3id.org/amlo/core#female"></see></summary>
-    let female = Namespaced_IRI.parse _namespace_name "female" |> NamespacedName
+    let female = _prefix "female"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#hasGender"></see>
     /// </summary>
-    let hasGender = Namespaced_IRI.parse _namespace_name "hasGender" |> NamespacedName
-
+    let hasGender = _prefix "hasGender"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#hasSizeEstimator"></see>
     /// </summary>
-    let hasSizeEstimator =
-        Namespaced_IRI.parse _namespace_name "hasSizeEstimator" |> NamespacedName
-
+    let hasSizeEstimator = _prefix "hasSizeEstimator"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#isRecordedIn"></see>
     /// </summary>
-    let isRecordedIn =
-        Namespaced_IRI.parse _namespace_name "isRecordedIn" |> NamespacedName
-
+    let isRecordedIn = _prefix "isRecordedIn"
     /// <summary>
     /// a male person
     /// <see href="http://w3id.org/amlo/core#male"></see></summary>
-    let male = Namespaced_IRI.parse _namespace_name "male" |> NamespacedName
-
+    let male = _prefix "male"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#not-enough-data"></see>
     /// </summary>
-    let ``not-enough-data`` =
-        Namespaced_IRI.parse _namespace_name "not-enough-data" |> NamespacedName
-
+    let ``not-enough-data`` = _prefix "not-enough-data"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#not-suspicious"></see>
     /// </summary>
-    let ``not-suspicious`` =
-        Namespaced_IRI.parse _namespace_name "not-suspicious" |> NamespacedName
-
+    let ``not-suspicious`` = _prefix "not-suspicious"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#suspect-codes"></see>
     /// </summary>
-    let ``suspect-codes`` =
-        Namespaced_IRI.parse _namespace_name "suspect-codes" |> NamespacedName
-
+    let ``suspect-codes`` = _prefix "suspect-codes"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#suspect-rating-scale"></see>
     /// </summary>
-    let ``suspect-rating-scale`` =
-        Namespaced_IRI.parse _namespace_name "suspect-rating-scale" |> NamespacedName
-
+    let ``suspect-rating-scale`` = _prefix "suspect-rating-scale"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#suspicious"></see>
     /// </summary>
-    let suspicious = Namespaced_IRI.parse _namespace_name "suspicious" |> NamespacedName
-
+    let suspicious = _prefix "suspicious"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#to-be-ignored"></see>
     /// </summary>
-    let ``to-be-ignored`` =
-        Namespaced_IRI.parse _namespace_name "to-be-ignored" |> NamespacedName
-
+    let ``to-be-ignored`` = _prefix "to-be-ignored"
     /// <summary>
     ///   <see href="http://w3id.org/amlo/core#unexpected"></see>
     /// </summary>
-    let unexpected = Namespaced_IRI.parse _namespace_name "unexpected" |> NamespacedName
+    let unexpected = _prefix "unexpected"

@@ -1,772 +1,550 @@
 namespace http.cef.uv.es.lodroadtran18.def.transporte.dtx_srti.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dtx_srti =
     let _namespace_name = "http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// An air crash adjacent to the roadway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#airCrash"></see></summary>
-    let airCrash = Namespaced_IRI.parse _namespace_name "airCrash" |> NamespacedName
-
+    let airCrash = _prefix "airCrash"
     /// <summary>
     /// Children on the roadway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#childrenOnRoadway"></see></summary>
-    let childrenOnRoadway =
-        Namespaced_IRI.parse _namespace_name "childrenOnRoadway" |> NamespacedName
-
+    let childrenOnRoadway = _prefix "childrenOnRoadway"
     /// <summary>
     /// Clearance work associated with an earlier traffic problem which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#clearanceWork"></see></summary>
-    let clearanceWork =
-        Namespaced_IRI.parse _namespace_name "clearanceWork" |> NamespacedName
-
+    let clearanceWork = _prefix "clearanceWork"
     /// <summary>
     /// Cyclists on the roadway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cyclistsOnRoadway"></see></summary>
-    let cyclistsOnRoadway =
-        Namespaced_IRI.parse _namespace_name "cyclistsOnRoadway" |> NamespacedName
-
+    let cyclistsOnRoadway = _prefix "cyclistsOnRoadway"
     /// <summary>
     /// Incidents are chance occurrences involving vehicles from the traffic stream, which could present potential hazards to road users.  This item excludes accidents.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#incident"></see></summary>
-    let incident = Namespaced_IRI.parse _namespace_name "incident" |> NamespacedName
-
+    let incident = _prefix "incident"
     /// <summary>
     /// The road may be obstructed or traffic hindered due to objects laying on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#objectOnTheRoad"></see></summary>
-    let objectOnTheRoad =
-        Namespaced_IRI.parse _namespace_name "objectOnTheRoad" |> NamespacedName
-
+    let objectOnTheRoad = _prefix "objectOnTheRoad"
     /// <summary>
     /// Other. Other than as defined in this enumeration.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#other"></see></summary>
-    let other = Namespaced_IRI.parse _namespace_name "other" |> NamespacedName
-
+    let other = _prefix "other"
     /// <summary>
     /// People on the roadway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#peopleOnRoadway"></see></summary>
-    let peopleOnRoadway =
-        Namespaced_IRI.parse _namespace_name "peopleOnRoadway" |> NamespacedName
-
+    let peopleOnRoadway = _prefix "peopleOnRoadway"
     /// <summary>
     /// A rail crash adjacent to the roadway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#railCrash"></see></summary>
-    let railCrash = Namespaced_IRI.parse _namespace_name "railCrash" |> NamespacedName
-
+    let railCrash = _prefix "railCrash"
     /// <summary>
     /// Work is being undertaken by emergency services which may present a hazard to road users.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rescueAndRecoveryWork"></see></summary>
-    let rescueAndRecoveryWork =
-        Namespaced_IRI.parse _namespace_name "rescueAndRecoveryWork" |> NamespacedName
-
+    let rescueAndRecoveryWork = _prefix "rescueAndRecoveryWork"
     /// <summary>
     /// Spillage of transported goods on the roadway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#shedLoad"></see></summary>
-    let shedLoad = Namespaced_IRI.parse _namespace_name "shedLoad" |> NamespacedName
-
+    let shedLoad = _prefix "shedLoad"
     /// <summary>
     /// Includes all situations where a spillage has occurred on the roadway due to an earlier incident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#spillageOnTheRoad"></see></summary>
-    let spillageOnTheRoad =
-        Namespaced_IRI.parse _namespace_name "spillageOnTheRoad" |> NamespacedName
-
+    let spillageOnTheRoad = _prefix "spillageOnTheRoad"
     /// <summary>
     /// An accident area which has not been protected and may present a hazard to road users.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#unprotectedAccidentArea"></see></summary>
-    let unprotectedAccidentArea =
-        Namespaced_IRI.parse _namespace_name "unprotectedAccidentArea" |> NamespacedName
-
+    let unprotectedAccidentArea = _prefix "unprotectedAccidentArea"
     /// <summary>
     /// Maintenance of road, associated infrastructure or equipments.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#maintenanceWork"></see></summary>
-    let maintenanceWork =
-        Namespaced_IRI.parse _namespace_name "maintenanceWork" |> NamespacedName
-
+    let maintenanceWork = _prefix "maintenanceWork"
     /// <summary>
     /// Repair work to road, associated infrastructure or equipments.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#repairWork"></see></summary>
-    let repairWork = Namespaced_IRI.parse _namespace_name "repairWork" |> NamespacedName
-
+    let repairWork = _prefix "repairWork"
     /// <summary>
     /// Work associated with relaying or renewal of worn-out road surface (pavement).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#resurfacingWork"></see></summary>
-    let resurfacingWork =
-        Namespaced_IRI.parse _namespace_name "resurfacingWork" |> NamespacedName
-
+    let resurfacingWork = _prefix "resurfacingWork"
     /// <summary>
     /// Striping and repainting of road markings, plus placement or replacement of reflecting studs (cats' eyes).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadMarkingWork"></see></summary>
-    let roadMarkingWork =
-        Namespaced_IRI.parse _namespace_name "roadMarkingWork" |> NamespacedName
-
+    let roadMarkingWork = _prefix "roadMarkingWork"
     /// <summary>
     /// Snowploughs or other similar mechanical devices in use to clear snow from the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#snowploughsInUse"></see></summary>
-    let snowploughsInUse =
-        Namespaced_IRI.parse _namespace_name "snowploughsInUse" |> NamespacedName
-
+    let snowploughsInUse = _prefix "snowploughsInUse"
     /// <summary>
     /// Value measured vertically above the reference ellipsoid
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ellipsoidalHeight"></see></summary>
-    let ellipsoidalHeight =
-        Namespaced_IRI.parse _namespace_name "ellipsoidalHeight" |> NamespacedName
-
+    let ellipsoidalHeight = _prefix "ellipsoidalHeight"
     /// <summary>
     /// Height type corresponding a value measured along direction of gravity above the reference geoid i.e. equipotential surface of the Earth's gravity field which globally approximates mean sea level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gravityRelatedHeight"></see></summary>
-    let gravityRelatedHeight =
-        Namespaced_IRI.parse _namespace_name "gravityRelatedHeight" |> NamespacedName
-
+    let gravityRelatedHeight = _prefix "gravityRelatedHeight"
     /// <summary>
     /// Height type corresponding to value masured vertically above the ground level at this point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#relativeHeight"></see></summary>
-    let relativeHeight =
-        Namespaced_IRI.parse _namespace_name "relativeHeight" |> NamespacedName
-
+    let relativeHeight = _prefix "relativeHeight"
     /// <summary>
     /// Dissemination of the information is extremely urgent.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#extremelyUrgent"></see></summary>
-    let extremelyUrgent =
-        Namespaced_IRI.parse _namespace_name "extremelyUrgent" |> NamespacedName
-
+    let extremelyUrgent = _prefix "extremelyUrgent"
     /// <summary>
     /// Dissemination of the information is of normal urgency.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#normalUrgency"></see></summary>
-    let normalUrgency =
-        Namespaced_IRI.parse _namespace_name "normalUrgency" |> NamespacedName
-
+    let normalUrgency = _prefix "normalUrgency"
     /// <summary>
     /// Dissemination of the information is urgent.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#urgent"></see></summary>
-    let urgent = Namespaced_IRI.parse _namespace_name "urgent" |> NamespacedName
-
+    let urgent = _prefix "urgent"
     /// <summary>
     /// A patrol of an automobile club.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#automobileClubPatrol"></see></summary>
-    let automobileClubPatrol =
-        Namespaced_IRI.parse _namespace_name "automobileClubPatrol" |> NamespacedName
-
+    let automobileClubPatrol = _prefix "automobileClubPatrol"
     /// <summary>
     /// A camera observation (either still or video camera).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cameraObservation"></see></summary>
-    let cameraObservation =
-        Namespaced_IRI.parse _namespace_name "cameraObservation" |> NamespacedName
-
+    let cameraObservation = _prefix "cameraObservation"
     /// <summary>
     /// An operator of freight vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#freightVehicleOperator"></see></summary>
-    let freightVehicleOperator =
-        Namespaced_IRI.parse _namespace_name "freightVehicleOperator" |> NamespacedName
-
+    let freightVehicleOperator = _prefix "freightVehicleOperator"
     /// <summary>
     /// A station dedicated to the monitoring of the road network by processing inductive loop information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inductionLoopMonitoringStation"></see></summary>
-    let inductionLoopMonitoringStation =
-        Namespaced_IRI.parse _namespace_name "inductionLoopMonitoringStation" |> NamespacedName
-
+    let inductionLoopMonitoringStation = _prefix "inductionLoopMonitoringStation"
     /// <summary>
     /// A station dedicated to the monitoring of the road network by processing infrared image information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#infraredMonitoringStation"></see></summary>
-    let infraredMonitoringStation =
-        Namespaced_IRI.parse _namespace_name "infraredMonitoringStation" |> NamespacedName
-
+    let infraredMonitoringStation = _prefix "infraredMonitoringStation"
     /// <summary>
     /// A station dedicated to the monitoring of the road network by processing microwave information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#microwaveMonitoringStation"></see></summary>
-    let microwaveMonitoringStation =
-        Namespaced_IRI.parse _namespace_name "microwaveMonitoringStation" |> NamespacedName
-
+    let microwaveMonitoringStation = _prefix "microwaveMonitoringStation"
     /// <summary>
     /// A caller using a mobile telephone (who may or may not be on the road network).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#mobileTelephoneCaller"></see></summary>
-    let mobileTelephoneCaller =
-        Namespaced_IRI.parse _namespace_name "mobileTelephoneCaller" |> NamespacedName
-
+    let mobileTelephoneCaller = _prefix "mobileTelephoneCaller"
     /// <summary>
     /// Emergency service patrols other than police.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nonPoliceEmergencyServicePatrol"></see></summary>
-    let nonPoliceEmergencyServicePatrol =
-        Namespaced_IRI.parse _namespace_name "nonPoliceEmergencyServicePatrol" |> NamespacedName
-
+    let nonPoliceEmergencyServicePatrol = _prefix "nonPoliceEmergencyServicePatrol"
     /// <summary>
     /// Personnel from a vehicle belonging to the road operator or authority or any emergency service, including authorised breakdown service organisations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#otherOfficialVehicle"></see></summary>
-    let otherOfficialVehicle =
-        Namespaced_IRI.parse _namespace_name "otherOfficialVehicle" |> NamespacedName
-
+    let otherOfficialVehicle = _prefix "otherOfficialVehicle"
     /// <summary>
     /// A police patrol.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#policePatrol"></see></summary>
-    let policePatrol =
-        Namespaced_IRI.parse _namespace_name "policePatrol" |> NamespacedName
-
+    let policePatrol = _prefix "policePatrol"
     /// <summary>
     /// A private breakdown service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#privateBreakdownService"></see></summary>
-    let privateBreakdownService =
-        Namespaced_IRI.parse _namespace_name "privateBreakdownService" |> NamespacedName
-
+    let privateBreakdownService = _prefix "privateBreakdownService"
     /// <summary>
     /// A utility organisation, either public or private.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#publicAndPrivateUtilities"></see></summary>
-    let publicAndPrivateUtilities =
-        Namespaced_IRI.parse _namespace_name "publicAndPrivateUtilities" |> NamespacedName
-
+    let publicAndPrivateUtilities = _prefix "publicAndPrivateUtilities"
     /// <summary>
     /// A motorist who is an officially registered observer.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#registeredMotoristObserver"></see></summary>
-    let registeredMotoristObserver =
-        Namespaced_IRI.parse _namespace_name "registeredMotoristObserver" |> NamespacedName
-
+    let registeredMotoristObserver = _prefix "registeredMotoristObserver"
     /// <summary>
     /// A road authority.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadAuthorities"></see></summary>
-    let roadAuthorities =
-        Namespaced_IRI.parse _namespace_name "roadAuthorities" |> NamespacedName
-
+    let roadAuthorities = _prefix "roadAuthorities"
     /// <summary>
     /// A patrol of the road operator or authority.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadOperatorPatrol"></see></summary>
-    let roadOperatorPatrol =
-        Namespaced_IRI.parse _namespace_name "roadOperatorPatrol" |> NamespacedName
-
+    let roadOperatorPatrol = _prefix "roadOperatorPatrol"
     /// <summary>
     /// A caller who is using an emergency roadside telephone.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadsideTelephoneCaller"></see></summary>
-    let roadsideTelephoneCaller =
-        Namespaced_IRI.parse _namespace_name "roadsideTelephoneCaller" |> NamespacedName
-
+    let roadsideTelephoneCaller = _prefix "roadsideTelephoneCaller"
     /// <summary>
     /// A spotter aircraft of an organisation specifically assigned to the monitoring of the traffic network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#spotterAircraft"></see></summary>
-    let spotterAircraft =
-        Namespaced_IRI.parse _namespace_name "spotterAircraft" |> NamespacedName
-
+    let spotterAircraft = _prefix "spotterAircraft"
     /// <summary>
     /// A station, usually automatic, dedicated to the monitoring of the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficMonitoringStation"></see></summary>
-    let trafficMonitoringStation =
-        Namespaced_IRI.parse _namespace_name "trafficMonitoringStation" |> NamespacedName
-
+    let trafficMonitoringStation = _prefix "trafficMonitoringStation"
     /// <summary>
     /// An operator of a transit service, e.g. bus link operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#transitOperator"></see></summary>
-    let transitOperator =
-        Namespaced_IRI.parse _namespace_name "transitOperator" |> NamespacedName
-
+    let transitOperator = _prefix "transitOperator"
     /// <summary>
     /// A specially equipped vehicle used to provide measurements.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleProbeMeasurement"></see></summary>
-    let vehicleProbeMeasurement =
-        Namespaced_IRI.parse _namespace_name "vehicleProbeMeasurement" |> NamespacedName
-
+    let vehicleProbeMeasurement = _prefix "vehicleProbeMeasurement"
     /// <summary>
     /// A station dedicated to the monitoring of the road network by processing video image information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#videoProcessingMonitoringStation"></see></summary>
-    let videoProcessingMonitoringStation =
-        Namespaced_IRI.parse _namespace_name "videoProcessingMonitoringStation" |> NamespacedName
-
+    let videoProcessingMonitoringStation = _prefix "videoProcessingMonitoringStation"
     /// <summary>
     /// Against line direction
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#againstLineDirection"></see></summary>
-    let againstLineDirection =
-        Namespaced_IRI.parse _namespace_name "againstLineDirection" |> NamespacedName
-
+    let againstLineDirection = _prefix "againstLineDirection"
     /// <summary>
     /// Both directions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bothDirections"></see></summary>
-    let bothDirections =
-        Namespaced_IRI.parse _namespace_name "bothDirections" |> NamespacedName
-
+    let bothDirections = _prefix "bothDirections"
     /// <summary>
     /// No orientation or unknown
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noOrientationOrUnknown"></see></summary>
-    let noOrientationOrUnknown =
-        Namespaced_IRI.parse _namespace_name "noOrientationOrUnknown" |> NamespacedName
-
+    let noOrientationOrUnknown = _prefix "noOrientationOrUnknown"
     /// <summary>
     /// With line direction
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#withLineDirection"></see></summary>
-    let withLineDirection =
-        Namespaced_IRI.parse _namespace_name "withLineDirection" |> NamespacedName
-
+    let withLineDirection = _prefix "withLineDirection"
     /// <summary>
     /// Allow emergency vehicles to pass
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#allowEmergencyVehiclesToPass"></see></summary>
-    let allowEmergencyVehiclesToPass =
-        Namespaced_IRI.parse _namespace_name "allowEmergencyVehiclesToPass" |> NamespacedName
-
+    let allowEmergencyVehiclesToPass = _prefix "allowEmergencyVehiclesToPass"
     /// <summary>
     /// Approach with care
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#approachWithCare"></see></summary>
-    let approachWithCare =
-        Namespaced_IRI.parse _namespace_name "approachWithCare" |> NamespacedName
-
+    let approachWithCare = _prefix "approachWithCare"
     /// <summary>
     /// Avoid the area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#avoidTheArea"></see></summary>
-    let avoidTheArea =
-        Namespaced_IRI.parse _namespace_name "avoidTheArea" |> NamespacedName
+    let avoidTheArea = _prefix "avoidTheArea"
 
     /// <summary>
     /// Close all windows turn off heater and vents
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#closeAllWindowsTurnOffHeaterAndVents"></see></summary>
     let closeAllWindowsTurnOffHeaterAndVents =
-        Namespaced_IRI.parse _namespace_name "closeAllWindowsTurnOffHeaterAndVents" |> NamespacedName
+        _prefix "closeAllWindowsTurnOffHeaterAndVents"
 
     /// <summary>
     /// Cross junction with care
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#crossJunctionWithCare"></see></summary>
-    let crossJunctionWithCare =
-        Namespaced_IRI.parse _namespace_name "crossJunctionWithCare" |> NamespacedName
-
+    let crossJunctionWithCare = _prefix "crossJunctionWithCare"
     /// <summary>
     /// Do not allow unnecessary gaps
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotAllowUnnecessaryGaps"></see></summary>
-    let doNotAllowUnnecessaryGaps =
-        Namespaced_IRI.parse _namespace_name "doNotAllowUnnecessaryGaps" |> NamespacedName
-
+    let doNotAllowUnnecessaryGaps = _prefix "doNotAllowUnnecessaryGaps"
     /// <summary>
     /// Do not leave your vehicle
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotLeaveYourVehicle"></see></summary>
-    let doNotLeaveYourVehicle =
-        Namespaced_IRI.parse _namespace_name "doNotLeaveYourVehicle" |> NamespacedName
-
+    let doNotLeaveYourVehicle = _prefix "doNotLeaveYourVehicle"
     /// <summary>
     /// Do not throw out any burning objects
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotThrowOutAnyBurningObjects"></see></summary>
-    let doNotThrowOutAnyBurningObjects =
-        Namespaced_IRI.parse _namespace_name "doNotThrowOutAnyBurningObjects" |> NamespacedName
-
+    let doNotThrowOutAnyBurningObjects = _prefix "doNotThrowOutAnyBurningObjects"
     /// <summary>
     /// Do not use navigation systems
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotUseNavigationSystems"></see></summary>
-    let doNotUseNavigationSystems =
-        Namespaced_IRI.parse _namespace_name "doNotUseNavigationSystems" |> NamespacedName
-
+    let doNotUseNavigationSystems = _prefix "doNotUseNavigationSystems"
     /// <summary>
     /// Drive carefully.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#driveCarefully"></see></summary>
-    let driveCarefully =
-        Namespaced_IRI.parse _namespace_name "driveCarefully" |> NamespacedName
-
+    let driveCarefully = _prefix "driveCarefully"
     /// <summary>
     /// Drive with extreme caution
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#driveWithExtremeCaution"></see></summary>
-    let driveWithExtremeCaution =
-        Namespaced_IRI.parse _namespace_name "driveWithExtremeCaution" |> NamespacedName
-
+    let driveWithExtremeCaution = _prefix "driveWithExtremeCaution"
     /// <summary>
     /// Flash your lights
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#flashYourLights"></see></summary>
-    let flashYourLights =
-        Namespaced_IRI.parse _namespace_name "flashYourLights" |> NamespacedName
-
+    let flashYourLights = _prefix "flashYourLights"
     /// <summary>
     /// Follow the vehicle in front smoothly
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#followTheVehicleInFrontSmoothly"></see></summary>
-    let followTheVehicleInFrontSmoothly =
-        Namespaced_IRI.parse _namespace_name "followTheVehicleInFrontSmoothly" |> NamespacedName
-
+    let followTheVehicleInFrontSmoothly = _prefix "followTheVehicleInFrontSmoothly"
     /// <summary>
     /// In emergency wait for patrol service
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inEmergencyWaitForPatrolService"></see></summary>
-    let inEmergencyWaitForPatrolService =
-        Namespaced_IRI.parse _namespace_name "inEmergencyWaitForPatrolService" |> NamespacedName
-
+    let inEmergencyWaitForPatrolService = _prefix "inEmergencyWaitForPatrolService"
     /// <summary>
     /// Increase normal following distance
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#increaseNormalFollowingDistance"></see></summary>
-    let increaseNormalFollowingDistance =
-        Namespaced_IRI.parse _namespace_name "increaseNormalFollowingDistance" |> NamespacedName
-
+    let increaseNormalFollowingDistance = _prefix "increaseNormalFollowingDistance"
     /// <summary>
     /// Keep your distance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#keepYourDistance"></see></summary>
-    let keepYourDistance =
-        Namespaced_IRI.parse _namespace_name "keepYourDistance" |> NamespacedName
+    let keepYourDistance = _prefix "keepYourDistance"
 
     /// <summary>
     /// Leave your vehicle proceed to next safe place
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#leaveYourVehicleProceedToNextSafePlace"></see></summary>
     let leaveYourVehicleProceedToNextSafePlace =
-        Namespaced_IRI.parse _namespace_name "leaveYourVehicleProceedToNextSafePlace" |> NamespacedName
+        _prefix "leaveYourVehicleProceedToNextSafePlace"
 
     /// <summary>
     /// No naked flames.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noNakedFlames"></see></summary>
-    let noNakedFlames =
-        Namespaced_IRI.parse _namespace_name "noNakedFlames" |> NamespacedName
-
+    let noNakedFlames = _prefix "noNakedFlames"
     /// <summary>
     /// No overtaking on the specified section of road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noOvertaking"></see></summary>
-    let noOvertaking =
-        Namespaced_IRI.parse _namespace_name "noOvertaking" |> NamespacedName
-
+    let noOvertaking = _prefix "noOvertaking"
     /// <summary>
     /// No smoking.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noSmoking"></see></summary>
-    let noSmoking = Namespaced_IRI.parse _namespace_name "noSmoking" |> NamespacedName
+    let noSmoking = _prefix "noSmoking"
     /// <summary>
     /// No stopping.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noStopping"></see></summary>
-    let noStopping = Namespaced_IRI.parse _namespace_name "noStopping" |> NamespacedName
+    let noStopping = _prefix "noStopping"
     /// <summary>
     /// No U-turns.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noUturns"></see></summary>
-    let noUturns = Namespaced_IRI.parse _namespace_name "noUturns" |> NamespacedName
-
+    let noUturns = _prefix "noUturns"
     /// <summary>
     /// Observe current amber alert (an emergency alert issued for a missing or abducted child).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#observeAmberAlert"></see></summary>
-    let observeAmberAlert =
-        Namespaced_IRI.parse _namespace_name "observeAmberAlert" |> NamespacedName
-
+    let observeAmberAlert = _prefix "observeAmberAlert"
     /// <summary>
     /// Observe signals.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#observeSignals"></see></summary>
-    let observeSignals =
-        Namespaced_IRI.parse _namespace_name "observeSignals" |> NamespacedName
-
+    let observeSignals = _prefix "observeSignals"
     /// <summary>
     /// Observe signs.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#observeSigns"></see></summary>
-    let observeSigns =
-        Namespaced_IRI.parse _namespace_name "observeSigns" |> NamespacedName
-
+    let observeSigns = _prefix "observeSigns"
     /// <summary>
     /// Only travel if absolutely necessary.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onlyTravelIfAbsolutelyNecessary"></see></summary>
-    let onlyTravelIfAbsolutelyNecessary =
-        Namespaced_IRI.parse _namespace_name "onlyTravelIfAbsolutelyNecessary" |> NamespacedName
-
+    let onlyTravelIfAbsolutelyNecessary = _prefix "onlyTravelIfAbsolutelyNecessary"
     /// <summary>
     /// Overtake with care.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overtakeWithCare"></see></summary>
-    let overtakeWithCare =
-        Namespaced_IRI.parse _namespace_name "overtakeWithCare" |> NamespacedName
-
+    let overtakeWithCare = _prefix "overtakeWithCare"
     /// <summary>
     /// Pull over to the edge of the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#pullOverToTheEdgeOfTheRoadway"></see></summary>
-    let pullOverToTheEdgeOfTheRoadway =
-        Namespaced_IRI.parse _namespace_name "pullOverToTheEdgeOfTheRoadway" |> NamespacedName
-
+    let pullOverToTheEdgeOfTheRoadway = _prefix "pullOverToTheEdgeOfTheRoadway"
     /// <summary>
     /// Stop at next safe place.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stopAtNextSafePlace"></see></summary>
-    let stopAtNextSafePlace =
-        Namespaced_IRI.parse _namespace_name "stopAtNextSafePlace" |> NamespacedName
-
+    let stopAtNextSafePlace = _prefix "stopAtNextSafePlace"
     /// <summary>
     /// Stop at next rest service area or car park.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stopAtNextServiceArea"></see></summary>
-    let stopAtNextServiceArea =
-        Namespaced_IRI.parse _namespace_name "stopAtNextServiceArea" |> NamespacedName
-
+    let stopAtNextServiceArea = _prefix "stopAtNextServiceArea"
     /// <summary>
     /// Switch off engine.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#switchOffEngine"></see></summary>
-    let switchOffEngine =
-        Namespaced_IRI.parse _namespace_name "switchOffEngine" |> NamespacedName
+    let switchOffEngine = _prefix "switchOffEngine"
 
     /// <summary>
     /// Switch off mobile phones and two-way radios.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#switchOffMobilePhonesAndTwoWayRadios"></see></summary>
     let switchOffMobilePhonesAndTwoWayRadios =
-        Namespaced_IRI.parse _namespace_name "switchOffMobilePhonesAndTwoWayRadios" |> NamespacedName
+        _prefix "switchOffMobilePhonesAndTwoWayRadios"
 
     /// <summary>
     /// Test your brakes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#testYourBrakes"></see></summary>
-    let testYourBrakes =
-        Namespaced_IRI.parse _namespace_name "testYourBrakes" |> NamespacedName
-
+    let testYourBrakes = _prefix "testYourBrakes"
     /// <summary>
     /// Use bus service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useBusService"></see></summary>
-    let useBusService =
-        Namespaced_IRI.parse _namespace_name "useBusService" |> NamespacedName
-
+    let useBusService = _prefix "useBusService"
     /// <summary>
     /// Use fog lights.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useFogLights"></see></summary>
-    let useFogLights =
-        Namespaced_IRI.parse _namespace_name "useFogLights" |> NamespacedName
-
+    let useFogLights = _prefix "useFogLights"
     /// <summary>
     /// Use hazard warning lights.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useHazardWarningLights"></see></summary>
-    let useHazardWarningLights =
-        Namespaced_IRI.parse _namespace_name "useHazardWarningLights" |> NamespacedName
-
+    let useHazardWarningLights = _prefix "useHazardWarningLights"
     /// <summary>
     /// Use headlights.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useHeadlights"></see></summary>
-    let useHeadlights =
-        Namespaced_IRI.parse _namespace_name "useHeadlights" |> NamespacedName
-
+    let useHeadlights = _prefix "useHeadlights"
     /// <summary>
     /// Use rail service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useRailService"></see></summary>
-    let useRailService =
-        Namespaced_IRI.parse _namespace_name "useRailService" |> NamespacedName
-
+    let useRailService = _prefix "useRailService"
     /// <summary>
     /// Use tram service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useTramService"></see></summary>
-    let useTramService =
-        Namespaced_IRI.parse _namespace_name "useTramService" |> NamespacedName
-
+    let useTramService = _prefix "useTramService"
     /// <summary>
     /// Use underground service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useUndergroundService"></see></summary>
-    let useUndergroundService =
-        Namespaced_IRI.parse _namespace_name "useUndergroundService" |> NamespacedName
-
+    let useUndergroundService = _prefix "useUndergroundService"
     /// <summary>
     /// Wait for escort vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#waitForEscortVehicle"></see></summary>
-    let waitForEscortVehicle =
-        Namespaced_IRI.parse _namespace_name "waitForEscortVehicle" |> NamespacedName
-
+    let waitForEscortVehicle = _prefix "waitForEscortVehicle"
     /// <summary>
     /// At national borders
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atBorders"></see></summary>
-    let atBorders = Namespaced_IRI.parse _namespace_name "atBorders" |> NamespacedName
-
+    let atBorders = _prefix "atBorders"
     /// <summary>
     /// At high altitudes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atHighAltitudes"></see></summary>
-    let atHighAltitudes =
-        Namespaced_IRI.parse _namespace_name "atHighAltitudes" |> NamespacedName
-
+    let atHighAltitudes = _prefix "atHighAltitudes"
     /// <summary>
     /// In built up areas, i.e. villages, towns and cities
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inBuiltUpAreas"></see></summary>
-    let inBuiltUpAreas =
-        Namespaced_IRI.parse _namespace_name "inBuiltUpAreas" |> NamespacedName
-
+    let inBuiltUpAreas = _prefix "inBuiltUpAreas"
     /// <summary>
     /// On sections of the road where it runs through or adjacent to forested areas
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inForestedAreas"></see></summary>
-    let inForestedAreas =
-        Namespaced_IRI.parse _namespace_name "inForestedAreas" |> NamespacedName
-
+    let inForestedAreas = _prefix "inForestedAreas"
     /// <summary>
     /// In galleries
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inGalleries"></see></summary>
-    let inGalleries =
-        Namespaced_IRI.parse _namespace_name "inGalleries" |> NamespacedName
-
+    let inGalleries = _prefix "inGalleries"
     /// <summary>
     /// In low-lying areas
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inLowLyingAreas"></see></summary>
-    let inLowLyingAreas =
-        Namespaced_IRI.parse _namespace_name "inLowLyingAreas" |> NamespacedName
-
+    let inLowLyingAreas = _prefix "inLowLyingAreas"
     /// <summary>
     /// In rural areas, i.e. outside villages, towns and cities
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inRuralAreas"></see></summary>
-    let inRuralAreas =
-        Namespaced_IRI.parse _namespace_name "inRuralAreas" |> NamespacedName
-
+    let inRuralAreas = _prefix "inRuralAreas"
     /// <summary>
     /// In shaded areas
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inShadedAreas"></see></summary>
-    let inShadedAreas =
-        Namespaced_IRI.parse _namespace_name "inShadedAreas" |> NamespacedName
-
+    let inShadedAreas = _prefix "inShadedAreas"
     /// <summary>
     /// In the city centre areas
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inTheInnerCityAreas"></see></summary>
-    let inTheInnerCityAreas =
-        Namespaced_IRI.parse _namespace_name "inTheInnerCityAreas" |> NamespacedName
-
+    let inTheInnerCityAreas = _prefix "inTheInnerCityAreas"
     /// <summary>
     /// In tunnels
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inTunnels"></see></summary>
-    let inTunnels = Namespaced_IRI.parse _namespace_name "inTunnels" |> NamespacedName
+    let inTunnels = _prefix "inTunnels"
     /// <summary>
     /// On bridges
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onBridges"></see></summary>
-    let onBridges = Namespaced_IRI.parse _namespace_name "onBridges" |> NamespacedName
-
+    let onBridges = _prefix "onBridges"
     /// <summary>
     /// On downhill sections of the road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onDownhillSections"></see></summary>
-    let onDownhillSections =
-        Namespaced_IRI.parse _namespace_name "onDownhillSections" |> NamespacedName
-
+    let onDownhillSections = _prefix "onDownhillSections"
     /// <summary>
     /// On elevated sections of the road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onElevatedSections"></see></summary>
-    let onElevatedSections =
-        Namespaced_IRI.parse _namespace_name "onElevatedSections" |> NamespacedName
-
+    let onElevatedSections = _prefix "onElevatedSections"
     /// <summary>
     /// On entering or leaving tunnels
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onEnteringOrLeavingTunnels"></see></summary>
-    let onEnteringOrLeavingTunnels =
-        Namespaced_IRI.parse _namespace_name "onEnteringOrLeavingTunnels" |> NamespacedName
-
+    let onEnteringOrLeavingTunnels = _prefix "onEnteringOrLeavingTunnels"
     /// <summary>
     /// On flyover sections of the road, i.e. sections of the road which pass over another road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onFlyovers"></see></summary>
-    let onFlyovers = Namespaced_IRI.parse _namespace_name "onFlyovers" |> NamespacedName
+    let onFlyovers = _prefix "onFlyovers"
     /// <summary>
     /// On mountain passes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onPasses"></see></summary>
-    let onPasses = Namespaced_IRI.parse _namespace_name "onPasses" |> NamespacedName
-
+    let onPasses = _prefix "onPasses"
     /// <summary>
     /// On underground sections of the road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onUndergroundSections"></see></summary>
-    let onUndergroundSections =
-        Namespaced_IRI.parse _namespace_name "onUndergroundSections" |> NamespacedName
-
+    let onUndergroundSections = _prefix "onUndergroundSections"
     /// <summary>
     /// On underpasses, i.e. sections of the road which pass under another road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onUnderpasses"></see></summary>
-    let onUnderpasses =
-        Namespaced_IRI.parse _namespace_name "onUnderpasses" |> NamespacedName
-
+    let onUnderpasses = _prefix "onUnderpasses"
     /// <summary>
     /// The information is real. It is not a test or exercise.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#real"></see></summary>
-    let real = Namespaced_IRI.parse _namespace_name "real" |> NamespacedName
-
+    let real = _prefix "real"
     /// <summary>
     /// The information is part of an exercise which is for testing security.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#securityExercise"></see></summary>
-    let securityExercise =
-        Namespaced_IRI.parse _namespace_name "securityExercise" |> NamespacedName
-
+    let securityExercise = _prefix "securityExercise"
     /// <summary>
     /// The information is part of an exercise which includes tests of associated technical subsystems.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#technicalExercise"></see></summary>
-    let technicalExercise =
-        Namespaced_IRI.parse _namespace_name "technicalExercise" |> NamespacedName
-
+    let technicalExercise = _prefix "technicalExercise"
     /// <summary>
     /// The information is part of a test for checking the exchange of this type of information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#test"></see></summary>
-    let test = Namespaced_IRI.parse _namespace_name "test" |> NamespacedName
+    let test = _prefix "test"
     /// <summary>
     /// Motorway
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#motorway"></see></summary>
-    let motorway = Namespaced_IRI.parse _namespace_name "motorway" |> NamespacedName
-
+    let motorway = _prefix "motorway"
     /// <summary>
     /// Multiple carriageway
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#multipleCarriageway"></see></summary>
-    let multipleCarriageway =
-        Namespaced_IRI.parse _namespace_name "multipleCarriageway" |> NamespacedName
-
+    let multipleCarriageway = _prefix "multipleCarriageway"
     /// <summary>
     /// Roundabout
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roundabout"></see></summary>
-    let roundabout = Namespaced_IRI.parse _namespace_name "roundabout" |> NamespacedName
-
+    let roundabout = _prefix "roundabout"
     /// <summary>
     /// Single carriageway
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#singleCarriageway"></see></summary>
-    let singleCarriageway =
-        Namespaced_IRI.parse _namespace_name "singleCarriageway" |> NamespacedName
-
+    let singleCarriageway = _prefix "singleCarriageway"
     /// <summary>
     /// Slip Road. The nature of the linear element is a slip road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slipRoad"></see></summary>
-    let slipRoad = Namespaced_IRI.parse _namespace_name "slipRoad" |> NamespacedName
-
+    let slipRoad = _prefix "slipRoad"
     /// <summary>
     /// Traffic square
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficSquare"></see></summary>
-    let trafficSquare =
-        Namespaced_IRI.parse _namespace_name "trafficSquare" |> NamespacedName
-
+    let trafficSquare = _prefix "trafficSquare"
     /// <summary>
     /// Undefined
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#undefined"></see></summary>
-    let undefined = Namespaced_IRI.parse _namespace_name "undefined" |> NamespacedName
+    let undefined = _prefix "undefined"
     /// <summary>
     /// A major gathering of people that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#crowd"></see></summary>
-    let crowd = Namespaced_IRI.parse _namespace_name "crowd" |> NamespacedName
-
+    let crowd = _prefix "crowd"
     /// <summary>
     /// A public protest with the potential to disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#demonstration"></see></summary>
-    let demonstration =
-        Namespaced_IRI.parse _namespace_name "demonstration" |> NamespacedName
-
+    let demonstration = _prefix "demonstration"
     /// <summary>
     /// A situation where a definite area is being cleared due to dangerous conditions or for security reasons.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#evacuation"></see></summary>
-    let evacuation = Namespaced_IRI.parse _namespace_name "evacuation" |> NamespacedName
-
+    let evacuation = _prefix "evacuation"
     /// <summary>
     /// Height above mean sea high water level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#aboveSeaLevelTPEGHeight"></see></summary>
-    let aboveSeaLevelTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "aboveSeaLevelTPEGHeight" |> NamespacedName
-
+    let aboveSeaLevelTPEGHeight = _prefix "aboveSeaLevelTPEGHeight"
     /// <summary>
     /// Above street level
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#aboveStreetLevelTPEGHeight"></see></summary>
-    let aboveStreetLevelTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "aboveStreetLevelTPEGHeight" |> NamespacedName
-
+    let aboveStreetLevelTPEGHeight = _prefix "aboveStreetLevelTPEGHeight"
     /// <summary>
     /// Above
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#aboveTPEGHeight"></see></summary>
-    let aboveTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "aboveTPEGHeight" |> NamespacedName
-
+    let aboveTPEGHeight = _prefix "aboveTPEGHeight"
     /// <summary>
     /// At service area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atSeaLevelTPEGHeight"></see></summary>
-    let atSeaLevelTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "atSeaLevelTPEGHeight" |> NamespacedName
-
+    let atSeaLevelTPEGHeight = _prefix "atSeaLevelTPEGHeight"
     /// <summary>
     /// At street level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atStreetLevelTPEGHeight"></see></summary>
-    let atStreetLevelTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "atStreetLevelTPEGHeight" |> NamespacedName
-
+    let atStreetLevelTPEGHeight = _prefix "atStreetLevelTPEGHeight"
     /// <summary>
     /// At height of specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atTPEGHeight"></see></summary>
-    let atTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "atTPEGHeight" |> NamespacedName
-
+    let atTPEGHeight = _prefix "atTPEGHeight"
     /// <summary>
     /// Height below mean sea high water level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#belowSeaLevelTPEGHeight"></see></summary>
-    let belowSeaLevelTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "belowSeaLevelTPEGHeight" |> NamespacedName
-
+    let belowSeaLevelTPEGHeight = _prefix "belowSeaLevelTPEGHeight"
     /// <summary>
     /// Height below street level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#belowStreetLevelTPEGHeight"></see></summary>
-    let belowStreetLevelTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "belowStreetLevelTPEGHeight" |> NamespacedName
-
+    let belowStreetLevelTPEGHeight = _prefix "belowStreetLevelTPEGHeight"
     /// <summary>
     /// Height below specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#belowTPEGHeight"></see></summary>
-    let belowTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "belowTPEGHeight" |> NamespacedName
-
+    let belowTPEGHeight = _prefix "belowTPEGHeight"
     /// <summary>
     /// Undefined height reference.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#undefinedTPEGHeight"></see></summary>
-    let undefinedTPEGHeight =
-        Namespaced_IRI.parse _namespace_name "undefinedTPEGHeight" |> NamespacedName
-
+    let undefinedTPEGHeight = _prefix "undefinedTPEGHeight"
     /// <summary>
     /// Perceived by supplier as being of an unknown level.
     /// Unknow mobility of the describe element of a situation.
@@ -776,3803 +554,2820 @@ module dtx_srti =
     /// The trend of traffic conditions is currently unknown.
     /// Unknown height reference.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#unknown"></see></summary>
-    let unknown = Namespaced_IRI.parse _namespace_name "unknown" |> NamespacedName
-
+    let unknown = _prefix "unknown"
     /// <summary>
     /// Do not use stud tyres.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNoUseStudTyres"></see></summary>
-    let doNoUseStudTyres =
-        Namespaced_IRI.parse _namespace_name "doNoUseStudTyres" |> NamespacedName
-
+    let doNoUseStudTyres = _prefix "doNoUseStudTyres"
     /// <summary>
     /// Use snow chains.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useSnowChains"></see></summary>
-    let useSnowChains =
-        Namespaced_IRI.parse _namespace_name "useSnowChains" |> NamespacedName
-
+    let useSnowChains = _prefix "useSnowChains"
     /// <summary>
     /// Use snow chains or snow tyres.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useSnowChainsOrTyres"></see></summary>
-    let useSnowChainsOrTyres =
-        Namespaced_IRI.parse _namespace_name "useSnowChainsOrTyres" |> NamespacedName
-
+    let useSnowChainsOrTyres = _prefix "useSnowChainsOrTyres"
     /// <summary>
     /// Use snow tyres.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useSnowTyres"></see></summary>
-    let useSnowTyres =
-        Namespaced_IRI.parse _namespace_name "useSnowTyres" |> NamespacedName
-
+    let useSnowTyres = _prefix "useSnowTyres"
     /// <summary>
     /// The carrying of winter equipment (snow chains and/or snow tyres) is required.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#winterEquipmentOnBoardRequired"></see></summary>
-    let winterEquipmentOnBoardRequired =
-        Namespaced_IRI.parse _namespace_name "winterEquipmentOnBoardRequired" |> NamespacedName
-
+    let winterEquipmentOnBoardRequired = _prefix "winterEquipmentOnBoardRequired"
     /// <summary>
     /// Indicates that both directions of traffic flow are affected by the situation or relate to the traffic data.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#both"></see></summary>
-    let both = Namespaced_IRI.parse _namespace_name "both" |> NamespacedName
+    let both = _prefix "both"
     /// <summary>
     /// On the left side of the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#left"></see></summary>
-    let left = Namespaced_IRI.parse _namespace_name "left" |> NamespacedName
-
+    let left = _prefix "left"
     /// <summary>
     /// On road or unknown
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onRoadOrUnknown"></see></summary>
-    let onRoadOrUnknown =
-        Namespaced_IRI.parse _namespace_name "onRoadOrUnknown" |> NamespacedName
-
+    let onRoadOrUnknown = _prefix "onRoadOrUnknown"
     /// <summary>
     /// On the right side of the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#right"></see></summary>
-    let right = Namespaced_IRI.parse _namespace_name "right" |> NamespacedName
+    let right = _prefix "right"
     /// <summary>
     /// Ferry service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ferry"></see></summary>
-    let ferry = Namespaced_IRI.parse _namespace_name "ferry" |> NamespacedName
-
+    let ferry = _prefix "ferry"
     /// <summary>
     /// Name of a road network junction where two or more roads join.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#junctionName"></see></summary>
-    let junctionName =
-        Namespaced_IRI.parse _namespace_name "junctionName" |> NamespacedName
-
+    let junctionName = _prefix "junctionName"
     /// <summary>
     /// The described event, action or item is currently active regardless of the definition of the validity time specification.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#active"></see></summary>
-    let active = Namespaced_IRI.parse _namespace_name "active" |> NamespacedName
-
+    let active = _prefix "active"
     /// <summary>
     /// The validity status of the described event, action or item is in accordance with the definition of the validity time specification.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#definedByValidityTimeSpec"></see></summary>
-    let definedByValidityTimeSpec =
-        Namespaced_IRI.parse _namespace_name "definedByValidityTimeSpec" |> NamespacedName
-
+    let definedByValidityTimeSpec = _prefix "definedByValidityTimeSpec"
     /// <summary>
     /// The described event, action or item is currently planned regardless of the definition of the validity time specification.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#planned"></see></summary>
-    let planned = Namespaced_IRI.parse _namespace_name "planned" |> NamespacedName
+    let planned = _prefix "planned"
     /// <summary>
     /// The described event, action or item is currently suspended, that is inactive, regardless of the definition of the validity time specification.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#suspended"></see></summary>
-    let suspended = Namespaced_IRI.parse _namespace_name "suspended" |> NamespacedName
-
+    let suspended = _prefix "suspended"
     /// <summary>
     /// Abnormal traffic information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#abnormalLoad"></see></summary>
-    let abnormalLoad =
-        Namespaced_IRI.parse _namespace_name "abnormalLoad" |> NamespacedName
-
+    let abnormalLoad = _prefix "abnormalLoad"
     /// <summary>
     /// Broken down heavy lorry/lorries on the carriageway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#brokenDownHeavyLorry"></see></summary>
-    let brokenDownHeavyLorry =
-        Namespaced_IRI.parse _namespace_name "brokenDownHeavyLorry" |> NamespacedName
-
+    let brokenDownHeavyLorry = _prefix "brokenDownHeavyLorry"
     /// <summary>
     /// Broken down vehicle(s) on the carriageway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#brokenDownVehicle"></see></summary>
-    let brokenDownVehicle =
-        Namespaced_IRI.parse _namespace_name "brokenDownVehicle" |> NamespacedName
-
+    let brokenDownVehicle = _prefix "brokenDownVehicle"
     /// <summary>
     /// A group of vehicles moving together in formation which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#convoy"></see></summary>
-    let convoy = Namespaced_IRI.parse _namespace_name "convoy" |> NamespacedName
-
+    let convoy = _prefix "convoy"
     /// <summary>
     /// Damaged vehicle(s) on the carriageway which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedVehicle"></see></summary>
-    let damagedVehicle =
-        Namespaced_IRI.parse _namespace_name "damagedVehicle" |> NamespacedName
-
+    let damagedVehicle = _prefix "damagedVehicle"
     /// <summary>
     /// A vehicle of length greater than that normally allowed which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#longLoad"></see></summary>
-    let longLoad = Namespaced_IRI.parse _namespace_name "longLoad" |> NamespacedName
-
+    let longLoad = _prefix "longLoad"
     /// <summary>
     /// A group of military vehicles moving together in formation which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#militaryConvoy"></see></summary>
-    let militaryConvoy =
-        Namespaced_IRI.parse _namespace_name "militaryConvoy" |> NamespacedName
-
+    let militaryConvoy = _prefix "militaryConvoy"
     /// <summary>
     /// A vehicle travelling at well below normal highway speeds which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slowVehicle"></see></summary>
-    let slowVehicle =
-        Namespaced_IRI.parse _namespace_name "slowVehicle" |> NamespacedName
-
+    let slowVehicle = _prefix "slowVehicle"
     /// <summary>
     /// A vehicle is or has been on fire and may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleOnFire"></see></summary>
-    let vehicleOnFire =
-        Namespaced_IRI.parse _namespace_name "vehicleOnFire" |> NamespacedName
-
+    let vehicleOnFire = _prefix "vehicleOnFire"
     /// <summary>
     /// A vehicle is travelling the wrong way along a divided highway (i.e. on the wrong side).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleOnWrongCarriageway"></see></summary>
-    let vehicleOnWrongCarriageway =
-        Namespaced_IRI.parse _namespace_name "vehicleOnWrongCarriageway" |> NamespacedName
-
+    let vehicleOnWrongCarriageway = _prefix "vehicleOnWrongCarriageway"
     /// <summary>
     /// One or more vehicles are stuck (i.e. unable to move) due to environmental conditions such as a snow drift or severe icy road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleStuck"></see></summary>
-    let vehicleStuck =
-        Namespaced_IRI.parse _namespace_name "vehicleStuck" |> NamespacedName
-
+    let vehicleStuck = _prefix "vehicleStuck"
     /// <summary>
     /// A vehicle of width greater than that normally allowed which may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleWithOverwideLoad"></see></summary>
-    let vehicleWithOverwideLoad =
-        Namespaced_IRI.parse _namespace_name "vehicleWithOverwideLoad" |> NamespacedName
-
+    let vehicleWithOverwideLoad = _prefix "vehicleWithOverwideLoad"
     /// <summary>
     /// The carriageway is totally obstructed in the specified direction due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carriagewayBlocked"></see></summary>
-    let carriagewayBlocked =
-        Namespaced_IRI.parse _namespace_name "carriagewayBlocked" |> NamespacedName
-
+    let carriagewayBlocked = _prefix "carriagewayBlocked"
     /// <summary>
     /// The carriageway is partially obstructed in the specified direction due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carriagewayPartiallyObstructed"></see></summary>
-    let carriagewayPartiallyObstructed =
-        Namespaced_IRI.parse _namespace_name "carriagewayPartiallyObstructed" |> NamespacedName
-
+    let carriagewayPartiallyObstructed = _prefix "carriagewayPartiallyObstructed"
     /// <summary>
     /// One or more lanes is totally obstructed in the specified direction due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lanesBlocked"></see></summary>
-    let lanesBlocked =
-        Namespaced_IRI.parse _namespace_name "lanesBlocked" |> NamespacedName
-
+    let lanesBlocked = _prefix "lanesBlocked"
     /// <summary>
     /// One or more lanes is partially obstructed in the specified direction due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lanesPartiallyObstructed"></see></summary>
-    let lanesPartiallyObstructed =
-        Namespaced_IRI.parse _namespace_name "lanesPartiallyObstructed" |> NamespacedName
-
+    let lanesPartiallyObstructed = _prefix "lanesPartiallyObstructed"
     /// <summary>
     /// The road is totally obstructed, for all vehicles in both directions, due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadBlocked"></see></summary>
-    let roadBlocked =
-        Namespaced_IRI.parse _namespace_name "roadBlocked" |> NamespacedName
-
+    let roadBlocked = _prefix "roadBlocked"
     /// <summary>
     /// The road is partially obstructed in both directions due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadPartiallyObstructed"></see></summary>
-    let roadPartiallyObstructed =
-        Namespaced_IRI.parse _namespace_name "roadPartiallyObstructed" |> NamespacedName
+    let roadPartiallyObstructed = _prefix "roadPartiallyObstructed"
 
     /// <summary>
     /// Arithmetic average of sample values based on a fixed number of samples.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#arithmeticAverageOfSamplesBasedOnAFixedNumberOfSamples"></see></summary>
     let arithmeticAverageOfSamplesBasedOnAFixedNumberOfSamples =
-        Namespaced_IRI.parse _namespace_name "arithmeticAverageOfSamplesBasedOnAFixedNumberOfSamples" |> NamespacedName
+        _prefix "arithmeticAverageOfSamplesBasedOnAFixedNumberOfSamples"
 
     /// <summary>
     /// Arithmetic average of sample values in a time period.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#arithmeticAverageOfSamplesInATimePeriod"></see></summary>
     let arithmeticAverageOfSamplesInATimePeriod =
-        Namespaced_IRI.parse _namespace_name "arithmeticAverageOfSamplesInATimePeriod" |> NamespacedName
+        _prefix "arithmeticAverageOfSamplesInATimePeriod"
 
     /// <summary>
     /// Harmonic average of sample values in a time period.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#harmonicAverageOfSamplesInATimePeriod"></see></summary>
     let harmonicAverageOfSamplesInATimePeriod =
-        Namespaced_IRI.parse _namespace_name "harmonicAverageOfSamplesInATimePeriod" |> NamespacedName
+        _prefix "harmonicAverageOfSamplesInATimePeriod"
 
     /// <summary>
     /// Median of sample values taken over a time period.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#medianOfSamplesInATimePeriod"></see></summary>
-    let medianOfSamplesInATimePeriod =
-        Namespaced_IRI.parse _namespace_name "medianOfSamplesInATimePeriod" |> NamespacedName
-
+    let medianOfSamplesInATimePeriod = _prefix "medianOfSamplesInATimePeriod"
     /// <summary>
     /// Moving average of sample values.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#movingAverageOfSamples"></see></summary>
-    let movingAverageOfSamples =
-        Namespaced_IRI.parse _namespace_name "movingAverageOfSamples" |> NamespacedName
-
+    let movingAverageOfSamples = _prefix "movingAverageOfSamples"
     /// <summary>
     /// Broken down vehicle (i.e. it is immobile due to mechanical breakdown).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#brokenDown"></see></summary>
-    let brokenDown = Namespaced_IRI.parse _namespace_name "brokenDown" |> NamespacedName
+    let brokenDown = _prefix "brokenDown"
     /// <summary>
     /// Burnt out vehicle, but fire is extinguished.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#burntOut"></see></summary>
-    let burntOut = Namespaced_IRI.parse _namespace_name "burntOut" |> NamespacedName
+    let burntOut = _prefix "burntOut"
     /// <summary>
     /// Vehicle is damaged following an incident or collision. It may be able or not to move by itself.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damaged"></see></summary>
-    let damaged = Namespaced_IRI.parse _namespace_name "damaged" |> NamespacedName
-
+    let damaged = _prefix "damaged"
     /// <summary>
     /// Vehicle is damaged following an incident or collision. It is immobilized and therefore needs assistance to be moved.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedAndImmobililized"></see></summary>
-    let damagedAndImmobililized =
-        Namespaced_IRI.parse _namespace_name "damagedAndImmobililized" |> NamespacedName
-
+    let damagedAndImmobililized = _prefix "damagedAndImmobililized"
     /// <summary>
     /// The pulling vehicle is in a jackknifed position with its trailer
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#jacknifed"></see></summary>
-    let jacknifed = Namespaced_IRI.parse _namespace_name "jacknifed" |> NamespacedName
+    let jacknifed = _prefix "jacknifed"
     /// <summary>
     /// Vehicle is on fire.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onFire"></see></summary>
-    let onFire = Namespaced_IRI.parse _namespace_name "onFire" |> NamespacedName
+    let onFire = _prefix "onFire"
     /// <summary>
     /// Vehicle is on its side or upside down
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overturned"></see></summary>
-    let overturned = Namespaced_IRI.parse _namespace_name "overturned" |> NamespacedName
+    let overturned = _prefix "overturned"
     /// <summary>
     /// Vehicle has come to rest not facing its intended line of travel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#spunAround"></see></summary>
-    let spunAround = Namespaced_IRI.parse _namespace_name "spunAround" |> NamespacedName
+    let spunAround = _prefix "spunAround"
     /// <summary>
     /// The road surface has sunken or collapsed in places due to burst pipes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#burstPipe"></see></summary>
-    let burstPipe = Namespaced_IRI.parse _namespace_name "burstPipe" |> NamespacedName
-
+    let burstPipe = _prefix "burstPipe"
     /// <summary>
     /// Traffic may be disrupted due to local flooding and/or subsidence because of a broken water main.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#burstWaterMain"></see></summary>
-    let burstWaterMain =
-        Namespaced_IRI.parse _namespace_name "burstWaterMain" |> NamespacedName
-
+    let burstWaterMain = _prefix "burstWaterMain"
     /// <summary>
     /// The road surface has sunken or collapsed in places due to sewer failure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#collapsedSewer"></see></summary>
-    let collapsedSewer =
-        Namespaced_IRI.parse _namespace_name "collapsedSewer" |> NamespacedName
-
+    let collapsedSewer = _prefix "collapsedSewer"
     /// <summary>
     /// Damage to a bridge that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedBridge"></see></summary>
-    let damagedBridge =
-        Namespaced_IRI.parse _namespace_name "damagedBridge" |> NamespacedName
-
+    let damagedBridge = _prefix "damagedBridge"
     /// <summary>
     /// Damage to a crash barrier that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedCrashBarrier"></see></summary>
-    let damagedCrashBarrier =
-        Namespaced_IRI.parse _namespace_name "damagedCrashBarrier" |> NamespacedName
-
+    let damagedCrashBarrier = _prefix "damagedCrashBarrier"
     /// <summary>
     /// Damage to an elevated section of the carriageway over another carriageway that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedFlyover"></see></summary>
-    let damagedFlyover =
-        Namespaced_IRI.parse _namespace_name "damagedFlyover" |> NamespacedName
-
+    let damagedFlyover = _prefix "damagedFlyover"
     /// <summary>
     /// Damage to a gallery that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedGallery"></see></summary>
-    let damagedGallery =
-        Namespaced_IRI.parse _namespace_name "damagedGallery" |> NamespacedName
-
+    let damagedGallery = _prefix "damagedGallery"
     /// <summary>
     /// Damage to a gantry above the roadway that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedGantry"></see></summary>
-    let damagedGantry =
-        Namespaced_IRI.parse _namespace_name "damagedGantry" |> NamespacedName
-
+    let damagedGantry = _prefix "damagedGantry"
     /// <summary>
     /// Damage to the road surface that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedRoadSurface"></see></summary>
-    let damagedRoadSurface =
-        Namespaced_IRI.parse _namespace_name "damagedRoadSurface" |> NamespacedName
-
+    let damagedRoadSurface = _prefix "damagedRoadSurface"
     /// <summary>
     /// Damage to a tunnel that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedTunnel"></see></summary>
-    let damagedTunnel =
-        Namespaced_IRI.parse _namespace_name "damagedTunnel" |> NamespacedName
-
+    let damagedTunnel = _prefix "damagedTunnel"
     /// <summary>
     /// Damage to a viaduct that may cause traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#damagedViaduct"></see></summary>
-    let damagedViaduct =
-        Namespaced_IRI.parse _namespace_name "damagedViaduct" |> NamespacedName
-
+    let damagedViaduct = _prefix "damagedViaduct"
     /// <summary>
     /// The road is obstructed or partially obstructed by one or more fallen power cables.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fallenPowerCables"></see></summary>
-    let fallenPowerCables =
-        Namespaced_IRI.parse _namespace_name "fallenPowerCables" |> NamespacedName
-
+    let fallenPowerCables = _prefix "fallenPowerCables"
     /// <summary>
     /// Traffic may be disrupted due to an explosion hazard from gas escaping in or near the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gasLeak"></see></summary>
-    let gasLeak = Namespaced_IRI.parse _namespace_name "gasLeak" |> NamespacedName
+    let gasLeak = _prefix "gasLeak"
     /// <summary>
     /// Weak bridge capable of carrying a reduced load, typically with a reduced weight limit restriction imposed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#weakBridge"></see></summary>
-    let weakBridge = Namespaced_IRI.parse _namespace_name "weakBridge" |> NamespacedName
+    let weakBridge = _prefix "weakBridge"
     /// <summary>
     /// Main road, highest importanceMain road, highest importance
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc0"></see></summary>
-    let frc0 = Namespaced_IRI.parse _namespace_name "frc0" |> NamespacedName
+    let frc0 = _prefix "frc0"
     /// <summary>
     /// First class road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc1"></see></summary>
-    let frc1 = Namespaced_IRI.parse _namespace_name "frc1" |> NamespacedName
+    let frc1 = _prefix "frc1"
     /// <summary>
     /// Second class road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc2"></see></summary>
-    let frc2 = Namespaced_IRI.parse _namespace_name "frc2" |> NamespacedName
+    let frc2 = _prefix "frc2"
     /// <summary>
     /// Third class road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc3"></see></summary>
-    let frc3 = Namespaced_IRI.parse _namespace_name "frc3" |> NamespacedName
+    let frc3 = _prefix "frc3"
     /// <summary>
     /// Fourth class road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc4"></see></summary>
-    let frc4 = Namespaced_IRI.parse _namespace_name "frc4" |> NamespacedName
+    let frc4 = _prefix "frc4"
     /// <summary>
     /// Fifth class road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc5"></see></summary>
-    let frc5 = Namespaced_IRI.parse _namespace_name "frc5" |> NamespacedName
+    let frc5 = _prefix "frc5"
     /// <summary>
     /// Sixth class road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc6"></see></summary>
-    let frc6 = Namespaced_IRI.parse _namespace_name "frc6" |> NamespacedName
+    let frc6 = _prefix "frc6"
     /// <summary>
     /// Other class road, lowest importance
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frc7"></see></summary>
-    let frc7 = Namespaced_IRI.parse _namespace_name "frc7" |> NamespacedName
+    let frc7 = _prefix "frc7"
     /// <summary>
     /// The roadworks are likely to cause major traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#major"></see></summary>
-    let major = Namespaced_IRI.parse _namespace_name "major" |> NamespacedName
-
+    let major = _prefix "major"
     /// <summary>
     /// The roadworks are likely to cause a medium level of traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#mediumRoadworksScale"></see></summary>
-    let mediumRoadworksScale =
-        Namespaced_IRI.parse _namespace_name "mediumRoadworksScale" |> NamespacedName
-
+    let mediumRoadworksScale = _prefix "mediumRoadworksScale"
     /// <summary>
     /// The roadworks are likely to cause minor traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#minor"></see></summary>
-    let minor = Namespaced_IRI.parse _namespace_name "minor" |> NamespacedName
+    let minor = _prefix "minor"
     /// <summary>
     /// Perceived by supplier as being of a high level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#high"></see></summary>
-    let high = Namespaced_IRI.parse _namespace_name "high" |> NamespacedName
+    let high = _prefix "high"
     /// <summary>
     /// Perceived by supplier as being of the highest level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#highest"></see></summary>
-    let highest = Namespaced_IRI.parse _namespace_name "highest" |> NamespacedName
+    let highest = _prefix "highest"
     /// <summary>
     /// Perceived by supplier as being of a low level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#low"></see></summary>
-    let low = Namespaced_IRI.parse _namespace_name "low" |> NamespacedName
+    let low = _prefix "low"
     /// <summary>
     /// Perceived by supplier as being of the lowest discernible level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lowest"></see></summary>
-    let lowest = Namespaced_IRI.parse _namespace_name "lowest" |> NamespacedName
+    let lowest = _prefix "lowest"
     /// <summary>
     /// Perceived by supplier as being of a medium level.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#medium"></see></summary>
-    let medium = Namespaced_IRI.parse _namespace_name "medium" |> NamespacedName
+    let medium = _prefix "medium"
     /// <summary>
     /// Perceived by supplier as having a severity rating of none.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#none"></see></summary>
-    let none = Namespaced_IRI.parse _namespace_name "none" |> NamespacedName
-
+    let none = _prefix "none"
     /// <summary>
     /// Administrative atoll
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#administrativeAtoll"></see></summary>
-    let administrativeAtoll =
-        Namespaced_IRI.parse _namespace_name "administrativeAtoll" |> NamespacedName
-
+    let administrativeAtoll = _prefix "administrativeAtoll"
     /// <summary>
     /// Administrative region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#administrativeRegion"></see></summary>
-    let administrativeRegion =
-        Namespaced_IRI.parse _namespace_name "administrativeRegion" |> NamespacedName
-
+    let administrativeRegion = _prefix "administrativeRegion"
     /// <summary>
     /// Administrative territory
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#administrativeTerritory"></see></summary>
-    let administrativeTerritory =
-        Namespaced_IRI.parse _namespace_name "administrativeTerritory" |> NamespacedName
-
+    let administrativeTerritory = _prefix "administrativeTerritory"
     /// <summary>
     /// Arctic region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#arcticRegion"></see></summary>
-    let arcticRegion =
-        Namespaced_IRI.parse _namespace_name "arcticRegion" |> NamespacedName
-
+    let arcticRegion = _prefix "arcticRegion"
     /// <summary>
     /// Autonomous city
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#autonomousCity"></see></summary>
-    let autonomousCity =
-        Namespaced_IRI.parse _namespace_name "autonomousCity" |> NamespacedName
-
+    let autonomousCity = _prefix "autonomousCity"
     /// <summary>
     /// Autonomous city in North Africa
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#autonomousCityInNorthAfrica"></see></summary>
-    let autonomousCityInNorthAfrica =
-        Namespaced_IRI.parse _namespace_name "autonomousCityInNorthAfrica" |> NamespacedName
-
+    let autonomousCityInNorthAfrica = _prefix "autonomousCityInNorthAfrica"
     /// <summary>
     /// Autonomous community
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#autonomousCommunity"></see></summary>
-    let autonomousCommunity =
-        Namespaced_IRI.parse _namespace_name "autonomousCommunity" |> NamespacedName
-
+    let autonomousCommunity = _prefix "autonomousCommunity"
     /// <summary>
     /// Autonomous district
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#autonomousDistrict"></see></summary>
-    let autonomousDistrict =
-        Namespaced_IRI.parse _namespace_name "autonomousDistrict" |> NamespacedName
-
+    let autonomousDistrict = _prefix "autonomousDistrict"
     /// <summary>
     /// Autonomous province
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#autonomousProvince"></see></summary>
-    let autonomousProvince =
-        Namespaced_IRI.parse _namespace_name "autonomousProvince" |> NamespacedName
-
+    let autonomousProvince = _prefix "autonomousProvince"
     /// <summary>
     /// Autonomous region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#autonomousRegion"></see></summary>
-    let autonomousRegion =
-        Namespaced_IRI.parse _namespace_name "autonomousRegion" |> NamespacedName
-
+    let autonomousRegion = _prefix "autonomousRegion"
     /// <summary>
     /// Canton
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#canton"></see></summary>
-    let canton = Namespaced_IRI.parse _namespace_name "canton" |> NamespacedName
-
+    let canton = _prefix "canton"
     /// <summary>
     /// Capital city
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#capitalCity"></see></summary>
-    let capitalCity =
-        Namespaced_IRI.parse _namespace_name "capitalCity" |> NamespacedName
-
+    let capitalCity = _prefix "capitalCity"
     /// <summary>
     /// City
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#city"></see></summary>
-    let city = Namespaced_IRI.parse _namespace_name "city" |> NamespacedName
-
+    let city = _prefix "city"
     /// <summary>
     /// City municipality
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cityMunicipality"></see></summary>
-    let cityMunicipality =
-        Namespaced_IRI.parse _namespace_name "cityMunicipality" |> NamespacedName
-
+    let cityMunicipality = _prefix "cityMunicipality"
     /// <summary>
     /// City of county right
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cityOfCountyRight"></see></summary>
-    let cityOfCountyRight =
-        Namespaced_IRI.parse _namespace_name "cityOfCountyRight" |> NamespacedName
-
+    let cityOfCountyRight = _prefix "cityOfCountyRight"
     /// <summary>
     /// Commune
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#commune"></see></summary>
-    let commune = Namespaced_IRI.parse _namespace_name "commune" |> NamespacedName
-
+    let commune = _prefix "commune"
     /// <summary>
     /// Council area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#councilArea"></see></summary>
-    let councilArea =
-        Namespaced_IRI.parse _namespace_name "councilArea" |> NamespacedName
-
+    let councilArea = _prefix "councilArea"
     /// <summary>
     /// EN ISO 3166-1 two-character country code.
     /// Country
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#country"></see></summary>
-    let country = Namespaced_IRI.parse _namespace_name "country" |> NamespacedName
+    let country = _prefix "country"
     /// <summary>
     /// County
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#county"></see></summary>
-    let county = Namespaced_IRI.parse _namespace_name "county" |> NamespacedName
+    let county = _prefix "county"
     /// <summary>
     /// Department
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#department"></see></summary>
-    let department = Namespaced_IRI.parse _namespace_name "department" |> NamespacedName
+    let department = _prefix "department"
     /// <summary>
     /// Dependency
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#dependency"></see></summary>
-    let dependency = Namespaced_IRI.parse _namespace_name "dependency" |> NamespacedName
+    let dependency = _prefix "dependency"
     /// <summary>
     /// District
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#district"></see></summary>
-    let district = Namespaced_IRI.parse _namespace_name "district" |> NamespacedName
-
+    let district = _prefix "district"
     /// <summary>
     /// District municipality
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#districtMunicipality"></see></summary>
-    let districtMunicipality =
-        Namespaced_IRI.parse _namespace_name "districtMunicipality" |> NamespacedName
-
+    let districtMunicipality = _prefix "districtMunicipality"
     /// <summary>
     /// District with special status
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#districtWithSpecialStatus"></see></summary>
-    let districtWithSpecialStatus =
-        Namespaced_IRI.parse _namespace_name "districtWithSpecialStatus" |> NamespacedName
-
+    let districtWithSpecialStatus = _prefix "districtWithSpecialStatus"
     /// <summary>
     /// Entity
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#entity"></see></summary>
-    let entity = Namespaced_IRI.parse _namespace_name "entity" |> NamespacedName
-
+    let entity = _prefix "entity"
     /// <summary>
     /// Geographical entity
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#geographicalEntity"></see></summary>
-    let geographicalEntity =
-        Namespaced_IRI.parse _namespace_name "geographicalEntity" |> NamespacedName
-
+    let geographicalEntity = _prefix "geographicalEntity"
     /// <summary>
     /// Governorate
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#governorate"></see></summary>
-    let governorate =
-        Namespaced_IRI.parse _namespace_name "governorate" |> NamespacedName
-
+    let governorate = _prefix "governorate"
     /// <summary>
     /// Länder
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#laender"></see></summary>
-    let laender = Namespaced_IRI.parse _namespace_name "laender" |> NamespacedName
-
+    let laender = _prefix "laender"
     /// <summary>
     /// Local Council
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#localCouncil"></see></summary>
-    let localCouncil =
-        Namespaced_IRI.parse _namespace_name "localCouncil" |> NamespacedName
-
+    let localCouncil = _prefix "localCouncil"
     /// <summary>
     /// London borough
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#londonBorough"></see></summary>
-    let londonBorough =
-        Namespaced_IRI.parse _namespace_name "londonBorough" |> NamespacedName
-
+    let londonBorough = _prefix "londonBorough"
     /// <summary>
     /// Metropolitan area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#metropolitanArea"></see></summary>
-    let metropolitanArea =
-        Namespaced_IRI.parse _namespace_name "metropolitanArea" |> NamespacedName
-
+    let metropolitanArea = _prefix "metropolitanArea"
     /// <summary>
     /// Metropolitan department
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#metropolitanDepartment"></see></summary>
-    let metropolitanDepartment =
-        Namespaced_IRI.parse _namespace_name "metropolitanDepartment" |> NamespacedName
-
+    let metropolitanDepartment = _prefix "metropolitanDepartment"
     /// <summary>
     /// Metropolitan district
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#metropolitanDistrict"></see></summary>
-    let metropolitanDistrict =
-        Namespaced_IRI.parse _namespace_name "metropolitanDistrict" |> NamespacedName
-
+    let metropolitanDistrict = _prefix "metropolitanDistrict"
     /// <summary>
     /// Metropolitan region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#metropolitanRegion"></see></summary>
-    let metropolitanRegion =
-        Namespaced_IRI.parse _namespace_name "metropolitanRegion" |> NamespacedName
-
+    let metropolitanRegion = _prefix "metropolitanRegion"
     /// <summary>
     /// Municipality
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#municipality"></see></summary>
-    let municipality =
-        Namespaced_IRI.parse _namespace_name "municipality" |> NamespacedName
-
+    let municipality = _prefix "municipality"
     /// <summary>
     /// Overseas department
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overseasDepartment"></see></summary>
-    let overseasDepartment =
-        Namespaced_IRI.parse _namespace_name "overseasDepartment" |> NamespacedName
-
+    let overseasDepartment = _prefix "overseasDepartment"
     /// <summary>
     /// Overseas region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overseasRegion"></see></summary>
-    let overseasRegion =
-        Namespaced_IRI.parse _namespace_name "overseasRegion" |> NamespacedName
-
+    let overseasRegion = _prefix "overseasRegion"
     /// <summary>
     /// Overseas territorial collectivity
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overseasTerritorialCollectivity"></see></summary>
-    let overseasTerritorialCollectivity =
-        Namespaced_IRI.parse _namespace_name "overseasTerritorialCollectivity" |> NamespacedName
-
+    let overseasTerritorialCollectivity = _prefix "overseasTerritorialCollectivity"
     /// <summary>
     /// Parish
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#parish"></see></summary>
-    let parish = Namespaced_IRI.parse _namespace_name "parish" |> NamespacedName
+    let parish = _prefix "parish"
     /// <summary>
     /// Province
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#province"></see></summary>
-    let province = Namespaced_IRI.parse _namespace_name "province" |> NamespacedName
+    let province = _prefix "province"
     /// <summary>
     /// Quarter
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#quarter"></see></summary>
-    let quarter = Namespaced_IRI.parse _namespace_name "quarter" |> NamespacedName
+    let quarter = _prefix "quarter"
     /// <summary>
     /// Region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#region"></see></summary>
-    let region = Namespaced_IRI.parse _namespace_name "region" |> NamespacedName
+    let region = _prefix "region"
     /// <summary>
     /// Republic
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#republic"></see></summary>
-    let republic = Namespaced_IRI.parse _namespace_name "republic" |> NamespacedName
-
+    let republic = _prefix "republic"
     /// <summary>
     /// Republic city
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#republicanCity"></see></summary>
-    let republicanCity =
-        Namespaced_IRI.parse _namespace_name "republicanCity" |> NamespacedName
-
+    let republicanCity = _prefix "republicanCity"
     /// <summary>
     /// Self-governed part
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#selfGovernedPart"></see></summary>
-    let selfGovernedPart =
-        Namespaced_IRI.parse _namespace_name "selfGovernedPart" |> NamespacedName
-
+    let selfGovernedPart = _prefix "selfGovernedPart"
     /// <summary>
     /// Special Municipality
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#specialMunicipality"></see></summary>
-    let specialMunicipality =
-        Namespaced_IRI.parse _namespace_name "specialMunicipality" |> NamespacedName
-
+    let specialMunicipality = _prefix "specialMunicipality"
     /// <summary>
     /// State
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#state"></see></summary>
-    let state = Namespaced_IRI.parse _namespace_name "state" |> NamespacedName
-
+    let state = _prefix "state"
     /// <summary>
     /// Territorial unit
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#territorialUnit"></see></summary>
-    let territorialUnit =
-        Namespaced_IRI.parse _namespace_name "territorialUnit" |> NamespacedName
-
+    let territorialUnit = _prefix "territorialUnit"
     /// <summary>
     /// Territory
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#territory"></see></summary>
-    let territory = Namespaced_IRI.parse _namespace_name "territory" |> NamespacedName
-
+    let territory = _prefix "territory"
     /// <summary>
     /// Two tier country
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#twoTierCounty"></see></summary>
-    let twoTierCounty =
-        Namespaced_IRI.parse _namespace_name "twoTierCounty" |> NamespacedName
-
+    let twoTierCounty = _prefix "twoTierCounty"
     /// <summary>
     /// Unitary Authority
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#unitaryAuthority"></see></summary>
-    let unitaryAuthority =
-        Namespaced_IRI.parse _namespace_name "unitaryAuthority" |> NamespacedName
-
+    let unitaryAuthority = _prefix "unitaryAuthority"
     /// <summary>
     /// Ward
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ward"></see></summary>
-    let ward = Namespaced_IRI.parse _namespace_name "ward" |> NamespacedName
-
+    let ward = _prefix "ward"
     /// <summary>
     /// Around a bend in the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#aroundABendInRoad"></see></summary>
-    let aroundABendInRoad =
-        Namespaced_IRI.parse _namespace_name "aroundABendInRoad" |> NamespacedName
-
+    let aroundABendInRoad = _prefix "aroundABendInRoad"
     /// <summary>
     /// On border crossing.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onBorder"></see></summary>
-    let onBorder = Namespaced_IRI.parse _namespace_name "onBorder" |> NamespacedName
+    let onBorder = _prefix "onBorder"
     /// <summary>
     /// On mountain pass.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onPass"></see></summary>
-    let onPass = Namespaced_IRI.parse _namespace_name "onPass" |> NamespacedName
-
+    let onPass = _prefix "onPass"
     /// <summary>
     /// Over the crest of a hill.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overCrestOfHill"></see></summary>
-    let overCrestOfHill =
-        Namespaced_IRI.parse _namespace_name "overCrestOfHill" |> NamespacedName
-
+    let overCrestOfHill = _prefix "overCrestOfHill"
     /// <summary>
     /// Agricultural show or event which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#agriculturalShow"></see></summary>
-    let agriculturalShow =
-        Namespaced_IRI.parse _namespace_name "agriculturalShow" |> NamespacedName
-
+    let agriculturalShow = _prefix "agriculturalShow"
     /// <summary>
     /// Air show or other aeronautical event which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#airShow"></see></summary>
-    let airShow = Namespaced_IRI.parse _namespace_name "airShow" |> NamespacedName
-
+    let airShow = _prefix "airShow"
     /// <summary>
     /// Athletics event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#athleticsMeeting"></see></summary>
-    let athleticsMeeting =
-        Namespaced_IRI.parse _namespace_name "athleticsMeeting" |> NamespacedName
-
+    let athleticsMeeting = _prefix "athleticsMeeting"
     /// <summary>
     /// Ball game event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ballGame"></see></summary>
-    let ballGame = Namespaced_IRI.parse _namespace_name "ballGame" |> NamespacedName
-
+    let ballGame = _prefix "ballGame"
     /// <summary>
     /// Baseball game event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#baseballGame"></see></summary>
-    let baseballGame =
-        Namespaced_IRI.parse _namespace_name "baseballGame" |> NamespacedName
-
+    let baseballGame = _prefix "baseballGame"
     /// <summary>
     /// Basketball game event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#basketballGame"></see></summary>
-    let basketballGame =
-        Namespaced_IRI.parse _namespace_name "basketballGame" |> NamespacedName
-
+    let basketballGame = _prefix "basketballGame"
     /// <summary>
     /// Bicycle race that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bicycleRace"></see></summary>
-    let bicycleRace =
-        Namespaced_IRI.parse _namespace_name "bicycleRace" |> NamespacedName
-
+    let bicycleRace = _prefix "bicycleRace"
     /// <summary>
     /// Regatta (boat race event of sailing, powerboat or rowing) that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#boatRace"></see></summary>
-    let boatRace = Namespaced_IRI.parse _namespace_name "boatRace" |> NamespacedName
+    let boatRace = _prefix "boatRace"
     /// <summary>
     /// Boat show which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#boatShow"></see></summary>
-    let boatShow = Namespaced_IRI.parse _namespace_name "boatShow" |> NamespacedName
-
+    let boatShow = _prefix "boatShow"
     /// <summary>
     /// Boxing event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#boxingTournament"></see></summary>
-    let boxingTournament =
-        Namespaced_IRI.parse _namespace_name "boxingTournament" |> NamespacedName
-
+    let boxingTournament = _prefix "boxingTournament"
     /// <summary>
     /// Bull fighting event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bullFight"></see></summary>
-    let bullFight = Namespaced_IRI.parse _namespace_name "bullFight" |> NamespacedName
-
+    let bullFight = _prefix "bullFight"
     /// <summary>
     /// Formal or religious act, rite or ceremony that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ceremonialEvent"></see></summary>
-    let ceremonialEvent =
-        Namespaced_IRI.parse _namespace_name "ceremonialEvent" |> NamespacedName
-
+    let ceremonialEvent = _prefix "ceremonialEvent"
     /// <summary>
     /// Commercial event which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#commercialEvent"></see></summary>
-    let commercialEvent =
-        Namespaced_IRI.parse _namespace_name "commercialEvent" |> NamespacedName
-
+    let commercialEvent = _prefix "commercialEvent"
     /// <summary>
     /// Concert event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#concert"></see></summary>
-    let concert = Namespaced_IRI.parse _namespace_name "concert" |> NamespacedName
-
+    let concert = _prefix "concert"
     /// <summary>
     /// Cricket match that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cricketMatch"></see></summary>
-    let cricketMatch =
-        Namespaced_IRI.parse _namespace_name "cricketMatch" |> NamespacedName
-
+    let cricketMatch = _prefix "cricketMatch"
     /// <summary>
     /// Cultural event which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#culturalEvent"></see></summary>
-    let culturalEvent =
-        Namespaced_IRI.parse _namespace_name "culturalEvent" |> NamespacedName
-
+    let culturalEvent = _prefix "culturalEvent"
     /// <summary>
     /// Major display or trade show which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#exhibition"></see></summary>
-    let exhibition = Namespaced_IRI.parse _namespace_name "exhibition" |> NamespacedName
+    let exhibition = _prefix "exhibition"
     /// <summary>
     /// Periodic (e.g. annual), often traditional, gathering for entertainment or trade promotion, which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fair"></see></summary>
-    let fair = Namespaced_IRI.parse _namespace_name "fair" |> NamespacedName
+    let fair = _prefix "fair"
     /// <summary>
     /// Celebratory event or series of events which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#festival"></see></summary>
-    let festival = Namespaced_IRI.parse _namespace_name "festival" |> NamespacedName
-
+    let festival = _prefix "festival"
     /// <summary>
     /// Film or TV making event which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#filmTVMaking"></see></summary>
-    let filmTVMaking =
-        Namespaced_IRI.parse _namespace_name "filmTVMaking" |> NamespacedName
-
+    let filmTVMaking = _prefix "filmTVMaking"
     /// <summary>
     /// Football match that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#footballMatch"></see></summary>
-    let footballMatch =
-        Namespaced_IRI.parse _namespace_name "footballMatch" |> NamespacedName
-
+    let footballMatch = _prefix "footballMatch"
     /// <summary>
     /// Periodic (e.g. annual), often traditional, gathering for entertainment, which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#funfair"></see></summary>
-    let funfair = Namespaced_IRI.parse _namespace_name "funfair" |> NamespacedName
-
+    let funfair = _prefix "funfair"
     /// <summary>
     /// Gardening and/or flower show or event which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gardeningOrFlowerShow"></see></summary>
-    let gardeningOrFlowerShow =
-        Namespaced_IRI.parse _namespace_name "gardeningOrFlowerShow" |> NamespacedName
-
+    let gardeningOrFlowerShow = _prefix "gardeningOrFlowerShow"
     /// <summary>
     /// Golf tournament event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#golfTournament"></see></summary>
-    let golfTournament =
-        Namespaced_IRI.parse _namespace_name "golfTournament" |> NamespacedName
-
+    let golfTournament = _prefix "golfTournament"
     /// <summary>
     /// Hockey game event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hockeyGame"></see></summary>
-    let hockeyGame = Namespaced_IRI.parse _namespace_name "hockeyGame" |> NamespacedName
-
+    let hockeyGame = _prefix "hockeyGame"
     /// <summary>
     /// Horse race meeting that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#horseRaceMeeting"></see></summary>
-    let horseRaceMeeting =
-        Namespaced_IRI.parse _namespace_name "horseRaceMeeting" |> NamespacedName
-
+    let horseRaceMeeting = _prefix "horseRaceMeeting"
     /// <summary>
     /// Large sporting event of an international nature that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#internationalSportsMeeting"></see></summary>
-    let internationalSportsMeeting =
-        Namespaced_IRI.parse _namespace_name "internationalSportsMeeting" |> NamespacedName
-
+    let internationalSportsMeeting = _prefix "internationalSportsMeeting"
     /// <summary>
     /// Significant organised event either on or near the roadway which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#majorEvent"></see></summary>
-    let majorEvent = Namespaced_IRI.parse _namespace_name "majorEvent" |> NamespacedName
+    let majorEvent = _prefix "majorEvent"
     /// <summary>
     /// Marathon, cross-country or road running event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#marathon"></see></summary>
-    let marathon = Namespaced_IRI.parse _namespace_name "marathon" |> NamespacedName
+    let marathon = _prefix "marathon"
     /// <summary>
     /// Periodic (e.g. weekly) gathering for buying and selling, which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#market"></see></summary>
-    let market = Namespaced_IRI.parse _namespace_name "market" |> NamespacedName
+    let market = _prefix "market"
     /// <summary>
     /// Sports match of unspecified type that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#match"></see></summary>
-    let match_ = Namespaced_IRI.parse _namespace_name "match" |> NamespacedName
+    let match_ = _prefix "match"
     /// <summary>
     /// Motor show which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#motorShow"></see></summary>
-    let motorShow = Namespaced_IRI.parse _namespace_name "motorShow" |> NamespacedName
-
+    let motorShow = _prefix "motorShow"
     /// <summary>
     /// Motor sport race meeting that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#motorSportRaceMeeting"></see></summary>
-    let motorSportRaceMeeting =
-        Namespaced_IRI.parse _namespace_name "motorSportRaceMeeting" |> NamespacedName
-
+    let motorSportRaceMeeting = _prefix "motorSportRaceMeeting"
     /// <summary>
     /// Formal display or organized procession which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#parade"></see></summary>
-    let parade = Namespaced_IRI.parse _namespace_name "parade" |> NamespacedName
+    let parade = _prefix "parade"
     /// <summary>
     /// An organised procession which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#procession"></see></summary>
-    let procession = Namespaced_IRI.parse _namespace_name "procession" |> NamespacedName
-
+    let procession = _prefix "procession"
     /// <summary>
     /// Race meeting (other than horse or motor sport) that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#raceMeeting"></see></summary>
-    let raceMeeting =
-        Namespaced_IRI.parse _namespace_name "raceMeeting" |> NamespacedName
-
+    let raceMeeting = _prefix "raceMeeting"
     /// <summary>
     /// Rugby match that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rugbyMatch"></see></summary>
-    let rugbyMatch = Namespaced_IRI.parse _namespace_name "rugbyMatch" |> NamespacedName
-
+    let rugbyMatch = _prefix "rugbyMatch"
     /// <summary>
     /// A series of significant organised events either on or near the roadway which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#severalMajorEvents"></see></summary>
-    let severalMajorEvents =
-        Namespaced_IRI.parse _namespace_name "severalMajorEvents" |> NamespacedName
-
+    let severalMajorEvents = _prefix "severalMajorEvents"
     /// <summary>
     /// Entertainment event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#show"></see></summary>
-    let show = Namespaced_IRI.parse _namespace_name "show" |> NamespacedName
-
+    let show = _prefix "show"
     /// <summary>
     /// Horse showing jumping and tournament event that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#showJumping"></see></summary>
-    let showJumping =
-        Namespaced_IRI.parse _namespace_name "showJumping" |> NamespacedName
-
+    let showJumping = _prefix "showJumping"
     /// <summary>
     /// Sports event of unspecified type that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sportsMeeting"></see></summary>
-    let sportsMeeting =
-        Namespaced_IRI.parse _namespace_name "sportsMeeting" |> NamespacedName
-
+    let sportsMeeting = _prefix "sportsMeeting"
     /// <summary>
     /// Public ceremony or visit of national or international significance which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stateOccasion"></see></summary>
-    let stateOccasion =
-        Namespaced_IRI.parse _namespace_name "stateOccasion" |> NamespacedName
-
+    let stateOccasion = _prefix "stateOccasion"
     /// <summary>
     /// Tennis tournament that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tennisTournament"></see></summary>
-    let tennisTournament =
-        Namespaced_IRI.parse _namespace_name "tennisTournament" |> NamespacedName
-
+    let tennisTournament = _prefix "tennisTournament"
     /// <summary>
     /// Sporting event or series of events of unspecified type lasting more than one day which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tournament"></see></summary>
-    let tournament = Namespaced_IRI.parse _namespace_name "tournament" |> NamespacedName
+    let tournament = _prefix "tournament"
     /// <summary>
     /// A periodic (e.g. annual), often traditional, gathering for trade promotion, which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tradeFair"></see></summary>
-    let tradeFair = Namespaced_IRI.parse _namespace_name "tradeFair" |> NamespacedName
-
+    let tradeFair = _prefix "tradeFair"
     /// <summary>
     /// Water sports meeting that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#waterSportsMeeting"></see></summary>
-    let waterSportsMeeting =
-        Namespaced_IRI.parse _namespace_name "waterSportsMeeting" |> NamespacedName
-
+    let waterSportsMeeting = _prefix "waterSportsMeeting"
     /// <summary>
     /// Winter sports meeting or event (e.g. skiing, ski jumping, skating) that could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#winterSportsMeeting"></see></summary>
-    let winterSportsMeeting =
-        Namespaced_IRI.parse _namespace_name "winterSportsMeeting" |> NamespacedName
-
+    let winterSportsMeeting = _prefix "winterSportsMeeting"
     /// <summary>
     /// Driving conditions are hazardous due to environmental conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hazardous"></see></summary>
-    let hazardous = Namespaced_IRI.parse _namespace_name "hazardous" |> NamespacedName
+    let hazardous = _prefix "hazardous"
     /// <summary>
     /// Current conditions are making driving impossible.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#impossible"></see></summary>
-    let impossible = Namespaced_IRI.parse _namespace_name "impossible" |> NamespacedName
+    let impossible = _prefix "impossible"
     /// <summary>
     /// Driving conditions are normal.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#normal"></see></summary>
-    let normal = Namespaced_IRI.parse _namespace_name "normal" |> NamespacedName
-
+    let normal = _prefix "normal"
     /// <summary>
     /// The roadway is passable to vehicles with driver care.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#passableWithCare"></see></summary>
-    let passableWithCare =
-        Namespaced_IRI.parse _namespace_name "passableWithCare" |> NamespacedName
-
+    let passableWithCare = _prefix "passableWithCare"
     /// <summary>
     /// Driving conditions are very hazardous due to environmental conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#veryHazardous"></see></summary>
-    let veryHazardous =
-        Namespaced_IRI.parse _namespace_name "veryHazardous" |> NamespacedName
-
+    let veryHazardous = _prefix "veryHazardous"
     /// <summary>
     /// Driving conditions are consistent with those expected in winter.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#winterConditions"></see></summary>
-    let winterConditions =
-        Namespaced_IRI.parse _namespace_name "winterConditions" |> NamespacedName
-
+    let winterConditions = _prefix "winterConditions"
     /// <summary>
     /// Traffic is heavy at the specified location (i.e. average speed is between 75% and 90% of its free-flow level).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#heavyTraffic"></see></summary>
-    let heavyTraffic =
-        Namespaced_IRI.parse _namespace_name "heavyTraffic" |> NamespacedName
-
+    let heavyTraffic = _prefix "heavyTraffic"
     /// <summary>
     /// Traffic is queuing at the specified location, although there is still some traffic movement (i.e. average speed is between 10% and 25% of its free-flow level).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#queuingTraffic"></see></summary>
-    let queuingTraffic =
-        Namespaced_IRI.parse _namespace_name "queuingTraffic" |> NamespacedName
-
+    let queuingTraffic = _prefix "queuingTraffic"
     /// <summary>
     /// Traffic is slow moving at the specified location, but not yet forming queues (i.e. average speed is between 25% and 75% of its free-flow level).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slowTraffic"></see></summary>
-    let slowTraffic =
-        Namespaced_IRI.parse _namespace_name "slowTraffic" |> NamespacedName
-
+    let slowTraffic = _prefix "slowTraffic"
     /// <summary>
     /// Traffic is stationary, or very near stationary, at the specified location (i.e. average speed is less than 10% of its free-flow level).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stationaryTraffic"></see></summary>
-    let stationaryTraffic =
-        Namespaced_IRI.parse _namespace_name "stationaryTraffic" |> NamespacedName
-
+    let stationaryTraffic = _prefix "stationaryTraffic"
     /// <summary>
     /// There are abnormal traffic conditions of an unspecified nature at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#unspecifiedAbnormalTraffic"></see></summary>
-    let unspecifiedAbnormalTraffic =
-        Namespaced_IRI.parse _namespace_name "unspecifiedAbnormalTraffic" |> NamespacedName
-
+    let unspecifiedAbnormalTraffic = _prefix "unspecifiedAbnormalTraffic"
     /// <summary>
     /// Blasting or quarrying work at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#blastingWork"></see></summary>
-    let blastingWork =
-        Namespaced_IRI.parse _namespace_name "blastingWork" |> NamespacedName
-
+    let blastingWork = _prefix "blastingWork"
     /// <summary>
     /// Construction work of a general nature at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#constructionWork"></see></summary>
-    let constructionWork =
-        Namespaced_IRI.parse _namespace_name "constructionWork" |> NamespacedName
-
+    let constructionWork = _prefix "constructionWork"
     /// <summary>
     /// The described element of a situation is moving.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#mobile"></see></summary>
-    let mobile = Namespaced_IRI.parse _namespace_name "mobile" |> NamespacedName
+    let mobile = _prefix "mobile"
     /// <summary>
     /// The described element of a situation is stationary.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stationary"></see></summary>
-    let stationary = Namespaced_IRI.parse _namespace_name "stationary" |> NamespacedName
-
+    let stationary = _prefix "stationary"
     /// <summary>
     /// Avoidance of obstacles on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#avoidanceOfObstacles"></see></summary>
-    let avoidanceOfObstacles =
-        Namespaced_IRI.parse _namespace_name "avoidanceOfObstacles" |> NamespacedName
-
+    let avoidanceOfObstacles = _prefix "avoidanceOfObstacles"
     /// <summary>
     /// Driver distraction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#driverDistraction"></see></summary>
-    let driverDistraction =
-        Namespaced_IRI.parse _namespace_name "driverDistraction" |> NamespacedName
-
+    let driverDistraction = _prefix "driverDistraction"
     /// <summary>
     /// Driver under the influence of drugs.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#driverDrugAbuse"></see></summary>
-    let driverDrugAbuse =
-        Namespaced_IRI.parse _namespace_name "driverDrugAbuse" |> NamespacedName
-
+    let driverDrugAbuse = _prefix "driverDrugAbuse"
     /// <summary>
     /// Driver illness.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#driverIllness"></see></summary>
-    let driverIllness =
-        Namespaced_IRI.parse _namespace_name "driverIllness" |> NamespacedName
-
+    let driverIllness = _prefix "driverIllness"
     /// <summary>
     /// Loss of vehicle control due to excessive vehicle speed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#exceedingSpeedsLimits"></see></summary>
-    let exceedingSpeedsLimits =
-        Namespaced_IRI.parse _namespace_name "exceedingSpeedsLimits" |> NamespacedName
-
+    let exceedingSpeedsLimits = _prefix "exceedingSpeedsLimits"
     /// <summary>
     /// Driver abilities reduced due to driving under the influence of alcohol. Alcohol levels above nationally accepted limit.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#excessAlcohol"></see></summary>
-    let excessAlcohol =
-        Namespaced_IRI.parse _namespace_name "excessAlcohol" |> NamespacedName
-
+    let excessAlcohol = _prefix "excessAlcohol"
     /// <summary>
     /// Excessive tiredness of the driver.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#excessiveDriverTiredness"></see></summary>
-    let excessiveDriverTiredness =
-        Namespaced_IRI.parse _namespace_name "excessiveDriverTiredness" |> NamespacedName
-
+    let excessiveDriverTiredness = _prefix "excessiveDriverTiredness"
     /// <summary>
     /// A driving manoeuvre which was not permitted.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#impermissibleManoeuvre"></see></summary>
-    let impermissibleManoeuvre =
-        Namespaced_IRI.parse _namespace_name "impermissibleManoeuvre" |> NamespacedName
-
+    let impermissibleManoeuvre = _prefix "impermissibleManoeuvre"
     /// <summary>
     /// Limited or impaired visibility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#limitedVisibility"></see></summary>
-    let limitedVisibility =
-        Namespaced_IRI.parse _namespace_name "limitedVisibility" |> NamespacedName
-
+    let limitedVisibility = _prefix "limitedVisibility"
     /// <summary>
     /// Not keeping a safe distance from the vehicle in front.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#notKeepingASafeDistance"></see></summary>
-    let notKeepingASafeDistance =
-        Namespaced_IRI.parse _namespace_name "notKeepingASafeDistance" |> NamespacedName
-
+    let notKeepingASafeDistance = _prefix "notKeepingASafeDistance"
     /// <summary>
     /// Driving on the wrong side of the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onTheWrongSideOfTheRoad"></see></summary>
-    let onTheWrongSideOfTheRoad =
-        Namespaced_IRI.parse _namespace_name "onTheWrongSideOfTheRoad" |> NamespacedName
-
+    let onTheWrongSideOfTheRoad = _prefix "onTheWrongSideOfTheRoad"
     /// <summary>
     /// Pedestrian in the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#pedestrianInRoad"></see></summary>
-    let pedestrianInRoad =
-        Namespaced_IRI.parse _namespace_name "pedestrianInRoad" |> NamespacedName
-
+    let pedestrianInRoad = _prefix "pedestrianInRoad"
     /// <summary>
     /// Not keeping to lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#poorLaneAdherence"></see></summary>
-    let poorLaneAdherence =
-        Namespaced_IRI.parse _namespace_name "poorLaneAdherence" |> NamespacedName
-
+    let poorLaneAdherence = _prefix "poorLaneAdherence"
     /// <summary>
     /// Poor judgement when merging at an entry or exit point of a carriageway or junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#poorMergeEntryOrExitJudgement"></see></summary>
-    let poorMergeEntryOrExitJudgement =
-        Namespaced_IRI.parse _namespace_name "poorMergeEntryOrExitJudgement" |> NamespacedName
-
+    let poorMergeEntryOrExitJudgement = _prefix "poorMergeEntryOrExitJudgement"
     /// <summary>
     /// Poor road surface condition.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#poorRoadSurfaceCondition"></see></summary>
-    let poorRoadSurfaceCondition =
-        Namespaced_IRI.parse _namespace_name "poorRoadSurfaceCondition" |> NamespacedName
-
+    let poorRoadSurfaceCondition = _prefix "poorRoadSurfaceCondition"
     /// <summary>
     /// Poor road surface adherence.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#poorSurfaceAdherence"></see></summary>
-    let poorSurfaceAdherence =
-        Namespaced_IRI.parse _namespace_name "poorSurfaceAdherence" |> NamespacedName
-
+    let poorSurfaceAdherence = _prefix "poorSurfaceAdherence"
     /// <summary>
     /// Undisclosed cause.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#undisclosed"></see></summary>
-    let undisclosed =
-        Namespaced_IRI.parse _namespace_name "undisclosed" |> NamespacedName
-
+    let undisclosed = _prefix "undisclosed"
     /// <summary>
     /// Malfunction or failure of vehicle function.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleFailure"></see></summary>
-    let vehicleFailure =
-        Namespaced_IRI.parse _namespace_name "vehicleFailure" |> NamespacedName
-
+    let vehicleFailure = _prefix "vehicleFailure"
     /// <summary>
     /// Adult.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#adult"></see></summary>
-    let adult = Namespaced_IRI.parse _namespace_name "adult" |> NamespacedName
+    let adult = _prefix "adult"
     /// <summary>
     /// Child (age 4 to 17).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#child"></see></summary>
-    let child = Namespaced_IRI.parse _namespace_name "child" |> NamespacedName
-
+    let child = _prefix "child"
     /// <summary>
     /// A member of the emergency services, other than the police.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#emergencyServicesPerson"></see></summary>
-    let emergencyServicesPerson =
-        Namespaced_IRI.parse _namespace_name "emergencyServicesPerson" |> NamespacedName
-
+    let emergencyServicesPerson = _prefix "emergencyServicesPerson"
     /// <summary>
     /// A member of the fire service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fireman"></see></summary>
-    let fireman = Namespaced_IRI.parse _namespace_name "fireman" |> NamespacedName
+    let fireman = _prefix "fireman"
     /// <summary>
     /// Infant (age 0 to 3).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#infant"></see></summary>
-    let infant = Namespaced_IRI.parse _namespace_name "infant" |> NamespacedName
-
+    let infant = _prefix "infant"
     /// <summary>
     /// A member of the medical service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#medicalStaff"></see></summary>
-    let medicalStaff =
-        Namespaced_IRI.parse _namespace_name "medicalStaff" |> NamespacedName
-
+    let medicalStaff = _prefix "medicalStaff"
     /// <summary>
     /// A member of the general public.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#memberOfThePublic"></see></summary>
-    let memberOfThePublic =
-        Namespaced_IRI.parse _namespace_name "memberOfThePublic" |> NamespacedName
-
+    let memberOfThePublic = _prefix "memberOfThePublic"
     /// <summary>
     /// A member of the police force.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#policeman"></see></summary>
-    let policeman = Namespaced_IRI.parse _namespace_name "policeman" |> NamespacedName
+    let policeman = _prefix "policeman"
     /// <summary>
     /// A politician.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#politician"></see></summary>
-    let politician = Namespaced_IRI.parse _namespace_name "politician" |> NamespacedName
-
+    let politician = _prefix "politician"
     /// <summary>
     /// A passenger on or from a public transport vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#publicTransportPassenger"></see></summary>
-    let publicTransportPassenger =
-        Namespaced_IRI.parse _namespace_name "publicTransportPassenger" |> NamespacedName
-
+    let publicTransportPassenger = _prefix "publicTransportPassenger"
     /// <summary>
     /// A sick person.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sickPerson"></see></summary>
-    let sickPerson = Namespaced_IRI.parse _namespace_name "sickPerson" |> NamespacedName
-
+    let sickPerson = _prefix "sickPerson"
     /// <summary>
     /// A traffic patrol officer of the road authority.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficOfficer"></see></summary>
-    let trafficOfficer =
-        Namespaced_IRI.parse _namespace_name "trafficOfficer" |> NamespacedName
-
+    let trafficOfficer = _prefix "trafficOfficer"
     /// <summary>
     /// A member of the local traffic warden service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficWarden"></see></summary>
-    let trafficWarden =
-        Namespaced_IRI.parse _namespace_name "trafficWarden" |> NamespacedName
-
+    let trafficWarden = _prefix "trafficWarden"
     /// <summary>
     /// A very important person.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#veryImportantPerson"></see></summary>
-    let veryImportantPerson =
-        Namespaced_IRI.parse _namespace_name "veryImportantPerson" |> NamespacedName
-
+    let veryImportantPerson = _prefix "veryImportantPerson"
     /// <summary>
     /// A segment (or link) of the road network corresponding to the way in which the road operator has segmented the network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#segment"></see></summary>
-    let segment = Namespaced_IRI.parse _namespace_name "segment" |> NamespacedName
+    let segment = _prefix "segment"
     /// <summary>
     /// Severe skid risk due to black ice (i.e. clear ice, which is impossible or very difficult to see).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#blackIce"></see></summary>
-    let blackIce = Namespaced_IRI.parse _namespace_name "blackIce" |> NamespacedName
+    let blackIce = _prefix "blackIce"
     /// <summary>
     /// Increased skid risk due to ice (of any kind).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ice"></see></summary>
-    let ice = Namespaced_IRI.parse _namespace_name "ice" |> NamespacedName
+    let ice = _prefix "ice"
     /// <summary>
     /// Severe skid risk due to icy patches (i.e. intermittent ice on roadway).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#icyPatches"></see></summary>
-    let icyPatches = Namespaced_IRI.parse _namespace_name "icyPatches" |> NamespacedName
+    let icyPatches = _prefix "icyPatches"
     /// <summary>
     /// Snow drifting is in progress or patches of deep snow are present due to earlier drifting.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#snowDrifts"></see></summary>
-    let snowDrifts = Namespaced_IRI.parse _namespace_name "snowDrifts" |> NamespacedName
-
+    let snowDrifts = _prefix "snowDrifts"
     /// <summary>
     /// Water is resting on the roadway which provides an increased hazard to vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#surfaceWater"></see></summary>
-    let surfaceWater =
-        Namespaced_IRI.parse _namespace_name "surfaceWater" |> NamespacedName
-
+    let surfaceWater = _prefix "surfaceWater"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 100 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan100Metres"></see></summary>
-    let equalToOrLessThan100Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan100Metres" |> NamespacedName
-
+    let equalToOrLessThan100Metres = _prefix "equalToOrLessThan100Metres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 10 centimetres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan10Centimetres"></see></summary>
-    let equalToOrLessThan10Centimetres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan10Centimetres" |> NamespacedName
-
+    let equalToOrLessThan10Centimetres = _prefix "equalToOrLessThan10Centimetres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 10 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan10Metres"></see></summary>
-    let equalToOrLessThan10Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan10Metres" |> NamespacedName
-
+    let equalToOrLessThan10Metres = _prefix "equalToOrLessThan10Metres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 1 centimetre
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan1Centimetre"></see></summary>
-    let equalToOrLessThan1Centimetre =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan1Centimetre" |> NamespacedName
-
+    let equalToOrLessThan1Centimetre = _prefix "equalToOrLessThan1Centimetre"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 1 metre
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan1Metre"></see></summary>
-    let equalToOrLessThan1Metre =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan1Metre" |> NamespacedName
-
+    let equalToOrLessThan1Metre = _prefix "equalToOrLessThan1Metre"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 200 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan200Metres"></see></summary>
-    let equalToOrLessThan200Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan200Metres" |> NamespacedName
-
+    let equalToOrLessThan200Metres = _prefix "equalToOrLessThan200Metres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 20 centimetres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan20Centimetres"></see></summary>
-    let equalToOrLessThan20Centimetres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan20Centimetres" |> NamespacedName
-
+    let equalToOrLessThan20Centimetres = _prefix "equalToOrLessThan20Centimetres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 20 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan20Metres"></see></summary>
-    let equalToOrLessThan20Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan20Metres" |> NamespacedName
-
+    let equalToOrLessThan20Metres = _prefix "equalToOrLessThan20Metres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 2 centimetres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan2Centimetres"></see></summary>
-    let equalToOrLessThan2Centimetres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan2Centimetres" |> NamespacedName
-
+    let equalToOrLessThan2Centimetres = _prefix "equalToOrLessThan2Centimetres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 2 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan2Metres"></see></summary>
-    let equalToOrLessThan2Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan2Metres" |> NamespacedName
-
+    let equalToOrLessThan2Metres = _prefix "equalToOrLessThan2Metres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 50 centimetres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan50Centimetres"></see></summary>
-    let equalToOrLessThan50Centimetres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan50Centimetres" |> NamespacedName
-
+    let equalToOrLessThan50Centimetres = _prefix "equalToOrLessThan50Centimetres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 50 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan50Metres"></see></summary>
-    let equalToOrLessThan50Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan50Metres" |> NamespacedName
-
+    let equalToOrLessThan50Metres = _prefix "equalToOrLessThan50Metres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 5 centimetres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan5Centimetres"></see></summary>
-    let equalToOrLessThan5Centimetres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan5Centimetres" |> NamespacedName
-
+    let equalToOrLessThan5Centimetres = _prefix "equalToOrLessThan5Centimetres"
     /// <summary>
     /// Indicates if the altitude accuracy is equal to or less than 5 metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equalToOrLessThan5Metres"></see></summary>
-    let equalToOrLessThan5Metres =
-        Namespaced_IRI.parse _namespace_name "equalToOrLessThan5Metres" |> NamespacedName
-
+    let equalToOrLessThan5Metres = _prefix "equalToOrLessThan5Metres"
     /// <summary>
     /// In the centre of the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inTheCentre"></see></summary>
-    let inTheCentre =
-        Namespaced_IRI.parse _namespace_name "inTheCentre" |> NamespacedName
-
+    let inTheCentre = _prefix "inTheCentre"
     /// <summary>
     /// On the left of the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onTheLeft"></see></summary>
-    let onTheLeft = Namespaced_IRI.parse _namespace_name "onTheLeft" |> NamespacedName
+    let onTheLeft = _prefix "onTheLeft"
     /// <summary>
     /// On the right of the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onTheRight"></see></summary>
-    let onTheRight = Namespaced_IRI.parse _namespace_name "onTheRight" |> NamespacedName
-
+    let onTheRight = _prefix "onTheRight"
     /// <summary>
     /// The bridge at the specified location has swung or lifted and is therefore temporarily closed to traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bridgeSwingInOperation"></see></summary>
-    let bridgeSwingInOperation =
-        Namespaced_IRI.parse _namespace_name "bridgeSwingInOperation" |> NamespacedName
-
+    let bridgeSwingInOperation = _prefix "bridgeSwingInOperation"
     /// <summary>
     /// A convoy service is in operation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#convoyService"></see></summary>
-    let convoyService =
-        Namespaced_IRI.parse _namespace_name "convoyService" |> NamespacedName
-
+    let convoyService = _prefix "convoyService"
     /// <summary>
     /// Signs are being put out before or around an obstacle to protect drivers.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#obstacleSignalling"></see></summary>
-    let obstacleSignalling =
-        Namespaced_IRI.parse _namespace_name "obstacleSignalling" |> NamespacedName
-
+    let obstacleSignalling = _prefix "obstacleSignalling"
     /// <summary>
     /// Ramp metering is now active at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rampMeteringInOperation"></see></summary>
-    let rampMeteringInOperation =
-        Namespaced_IRI.parse _namespace_name "rampMeteringInOperation" |> NamespacedName
-
+    let rampMeteringInOperation = _prefix "rampMeteringInOperation"
     /// <summary>
     /// Traffic is being controlled by temporary traffic lights (red-yellow-green or red-green).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#temporaryTrafficLights"></see></summary>
-    let temporaryTrafficLights =
-        Namespaced_IRI.parse _namespace_name "temporaryTrafficLights" |> NamespacedName
-
+    let temporaryTrafficLights = _prefix "temporaryTrafficLights"
     /// <summary>
     /// Toll gates are open with no fee collection at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tollGatesOpen"></see></summary>
-    let tollGatesOpen =
-        Namespaced_IRI.parse _namespace_name "tollGatesOpen" |> NamespacedName
-
+    let tollGatesOpen = _prefix "tollGatesOpen"
     /// <summary>
     /// Traffic is being manually directed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficBeingManuallyDirected"></see></summary>
-    let trafficBeingManuallyDirected =
-        Namespaced_IRI.parse _namespace_name "trafficBeingManuallyDirected" |> NamespacedName
-
+    let trafficBeingManuallyDirected = _prefix "trafficBeingManuallyDirected"
     /// <summary>
     /// Traffic in the specified direction is temporarily held up due to an unplanned event (e.g. for clearance of wreckage following an accident).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficHeld"></see></summary>
-    let trafficHeld =
-        Namespaced_IRI.parse _namespace_name "trafficHeld" |> NamespacedName
-
+    let trafficHeld = _prefix "trafficHeld"
     /// <summary>
     /// Name of an administrative area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#administrativeAreaName"></see></summary>
-    let administrativeAreaName =
-        Namespaced_IRI.parse _namespace_name "administrativeAreaName" |> NamespacedName
-
+    let administrativeAreaName = _prefix "administrativeAreaName"
     /// <summary>
     /// Reference name by which administrative area is known.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#administrativeReferenceName"></see></summary>
-    let administrativeReferenceName =
-        Namespaced_IRI.parse _namespace_name "administrativeReferenceName" |> NamespacedName
-
+    let administrativeReferenceName = _prefix "administrativeReferenceName"
     /// <summary>
     /// Name of an airport.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#airportName"></see></summary>
-    let airportName =
-        Namespaced_IRI.parse _namespace_name "airportName" |> NamespacedName
-
+    let airportName = _prefix "airportName"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#areaName"></see>
     /// </summary>
-    let areaName = Namespaced_IRI.parse _namespace_name "areaName" |> NamespacedName
-
+    let areaName = _prefix "areaName"
     /// <summary>
     /// Name of a building.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#buildingName"></see></summary>
-    let buildingName =
-        Namespaced_IRI.parse _namespace_name "buildingName" |> NamespacedName
-
+    let buildingName = _prefix "buildingName"
     /// <summary>
     /// Identifier of a bus stop on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#busStopIdentifier"></see></summary>
-    let busStopIdentifier =
-        Namespaced_IRI.parse _namespace_name "busStopIdentifier" |> NamespacedName
-
+    let busStopIdentifier = _prefix "busStopIdentifier"
     /// <summary>
     /// Name of a bus stop on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#busStopName"></see></summary>
-    let busStopName =
-        Namespaced_IRI.parse _namespace_name "busStopName" |> NamespacedName
-
+    let busStopName = _prefix "busStopName"
     /// <summary>
     /// Name of a canal.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#canalName"></see></summary>
-    let canalName = Namespaced_IRI.parse _namespace_name "canalName" |> NamespacedName
+    let canalName = _prefix "canalName"
     /// <summary>
     /// Name of a county (administrative sub-division).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#countyName"></see></summary>
-    let countyName = Namespaced_IRI.parse _namespace_name "countyName" |> NamespacedName
-
+    let countyName = _prefix "countyName"
     /// <summary>
     /// Name of a ferry port.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ferryPortName"></see></summary>
-    let ferryPortName =
-        Namespaced_IRI.parse _namespace_name "ferryPortName" |> NamespacedName
-
+    let ferryPortName = _prefix "ferryPortName"
     /// <summary>
     /// Name of a road network intersection.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#intersectionName"></see></summary>
-    let intersectionName =
-        Namespaced_IRI.parse _namespace_name "intersectionName" |> NamespacedName
-
+    let intersectionName = _prefix "intersectionName"
     /// <summary>
     /// Name of a lake.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lakeName"></see></summary>
-    let lakeName = Namespaced_IRI.parse _namespace_name "lakeName" |> NamespacedName
+    let lakeName = _prefix "lakeName"
     /// <summary>
     /// Name of a road link.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#linkName"></see></summary>
-    let linkName = Namespaced_IRI.parse _namespace_name "linkName" |> NamespacedName
-
+    let linkName = _prefix "linkName"
     /// <summary>
     /// Local name of a road link.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#localLinkName"></see></summary>
-    let localLinkName =
-        Namespaced_IRI.parse _namespace_name "localLinkName" |> NamespacedName
-
+    let localLinkName = _prefix "localLinkName"
     /// <summary>
     /// Name of a metro/underground station.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#metroStationName"></see></summary>
-    let metroStationName =
-        Namespaced_IRI.parse _namespace_name "metroStationName" |> NamespacedName
-
+    let metroStationName = _prefix "metroStationName"
     /// <summary>
     /// Name of a nation (e.g. Wales) which is a sub-division of a ISO recognised country.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nationName"></see></summary>
-    let nationName = Namespaced_IRI.parse _namespace_name "nationName" |> NamespacedName
-
+    let nationName = _prefix "nationName"
     /// <summary>
     /// Name of a point on the road network which is not at a junction or intersection.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nonLinkedPointName"></see></summary>
-    let nonLinkedPointName =
-        Namespaced_IRI.parse _namespace_name "nonLinkedPointName" |> NamespacedName
-
+    let nonLinkedPointName = _prefix "nonLinkedPointName"
     /// <summary>
     /// Name of a parking facility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#parkingFacilityName"></see></summary>
-    let parkingFacilityName =
-        Namespaced_IRI.parse _namespace_name "parkingFacilityName" |> NamespacedName
-
+    let parkingFacilityName = _prefix "parkingFacilityName"
     /// <summary>
     /// Name of a specific point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#pointName"></see></summary>
-    let pointName = Namespaced_IRI.parse _namespace_name "pointName" |> NamespacedName
-
+    let pointName = _prefix "pointName"
     /// <summary>
     /// Name of a general point of interest.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#pointOfInterestName"></see></summary>
-    let pointOfInterestName =
-        Namespaced_IRI.parse _namespace_name "pointOfInterestName" |> NamespacedName
-
+    let pointOfInterestName = _prefix "pointOfInterestName"
     /// <summary>
     /// Name of a railway station.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#railwayStation"></see></summary>
-    let railwayStation =
-        Namespaced_IRI.parse _namespace_name "railwayStation" |> NamespacedName
-
+    let railwayStation = _prefix "railwayStation"
     /// <summary>
     /// Name of a geographic region.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#regionName"></see></summary>
-    let regionName = Namespaced_IRI.parse _namespace_name "regionName" |> NamespacedName
+    let regionName = _prefix "regionName"
     /// <summary>
     /// Name of a river.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#riverName"></see></summary>
-    let riverName = Namespaced_IRI.parse _namespace_name "riverName" |> NamespacedName
+    let riverName = _prefix "riverName"
     /// <summary>
     /// Name of a sea.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#seaName"></see></summary>
-    let seaName = Namespaced_IRI.parse _namespace_name "seaName" |> NamespacedName
-
+    let seaName = _prefix "seaName"
     /// <summary>
     /// Name of a service area on a road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#serviceAreaName"></see></summary>
-    let serviceAreaName =
-        Namespaced_IRI.parse _namespace_name "serviceAreaName" |> NamespacedName
-
+    let serviceAreaName = _prefix "serviceAreaName"
     /// <summary>
     /// Name of a river which is of a tidal nature.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tidalRiverName"></see></summary>
-    let tidalRiverName =
-        Namespaced_IRI.parse _namespace_name "tidalRiverName" |> NamespacedName
-
+    let tidalRiverName = _prefix "tidalRiverName"
     /// <summary>
     /// Name of a town.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#townName"></see></summary>
-    let townName = Namespaced_IRI.parse _namespace_name "townName" |> NamespacedName
+    let townName = _prefix "townName"
     /// <summary>
     /// A boundary between two jurisdictional or administrative areas. These may be legal boundaries such as between counties or countries, maintenance responsibility boundaries or control boundaries.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#boundary"></see></summary>
-    let boundary = Namespaced_IRI.parse _namespace_name "boundary" |> NamespacedName
-
+    let boundary = _prefix "boundary"
     /// <summary>
     /// A crossing of two or more roads where the precise point of intersection is defined according to specific business rules.
     ///
     /// An point on the road network at which one or more roads intersect.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#intersection"></see></summary>
-    let intersection =
-        Namespaced_IRI.parse _namespace_name "intersection" |> NamespacedName
-
+    let intersection = _prefix "intersection"
     /// <summary>
     /// A visible identifiable physical landmark either alongside or close to the linear object.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#landmark"></see></summary>
-    let landmark = Namespaced_IRI.parse _namespace_name "landmark" |> NamespacedName
-
+    let landmark = _prefix "landmark"
     /// <summary>
     /// A marker which is usually but not necessarily physical that is one of a sequence which are spaced out along the linear object (road) to provide a location reference. The spacing of markers is not necessarily even.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#referenceMarker"></see></summary>
-    let referenceMarker =
-        Namespaced_IRI.parse _namespace_name "referenceMarker" |> NamespacedName
-
+    let referenceMarker = _prefix "referenceMarker"
     /// <summary>
     /// A topological node defined on a road network. Such nodes may delineate the segmentation of the road network according to defined business rules or may constitute a purely topological representation of a road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadNode"></see></summary>
-    let roadNode = Namespaced_IRI.parse _namespace_name "roadNode" |> NamespacedName
-
+    let roadNode = _prefix "roadNode"
     /// <summary>
     /// A point on the road network which is not at a junction or intersection.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nonLinkedPoint"></see></summary>
-    let nonLinkedPoint =
-        Namespaced_IRI.parse _namespace_name "nonLinkedPoint" |> NamespacedName
-
+    let nonLinkedPoint = _prefix "nonLinkedPoint"
     /// <summary>
     /// Observe speed limit.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#observeSpeedLimits"></see></summary>
-    let observeSpeedLimits =
-        Namespaced_IRI.parse _namespace_name "observeSpeedLimits" |> NamespacedName
-
+    let observeSpeedLimits = _prefix "observeSpeedLimits"
     /// <summary>
     /// Police speed checks are in operation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#policeSpeedChecksInOperation"></see></summary>
-    let policeSpeedChecksInOperation =
-        Namespaced_IRI.parse _namespace_name "policeSpeedChecksInOperation" |> NamespacedName
-
+    let policeSpeedChecksInOperation = _prefix "policeSpeedChecksInOperation"
     /// <summary>
     /// Reduce your speed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#reduceYourSpeed"></see></summary>
-    let reduceYourSpeed =
-        Namespaced_IRI.parse _namespace_name "reduceYourSpeed" |> NamespacedName
-
+    let reduceYourSpeed = _prefix "reduceYourSpeed"
     /// <summary>
     /// Same direction as the normal direction of flow at this point on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#aligned"></see></summary>
-    let aligned = Namespaced_IRI.parse _namespace_name "aligned" |> NamespacedName
-
+    let aligned = _prefix "aligned"
     /// <summary>
     /// All directions (where more than two are applicable) at this point on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#allDirections"></see></summary>
-    let allDirections =
-        Namespaced_IRI.parse _namespace_name "allDirections" |> NamespacedName
-
+    let allDirections = _prefix "allDirections"
     /// <summary>
     /// Anti-clockwise.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#anticlockwise"></see></summary>
-    let anticlockwise =
-        Namespaced_IRI.parse _namespace_name "anticlockwise" |> NamespacedName
-
+    let anticlockwise = _prefix "anticlockwise"
     /// <summary>
     /// Both directions that are applicable at this point on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bothWays"></see></summary>
-    let bothWays = Namespaced_IRI.parse _namespace_name "bothWays" |> NamespacedName
+    let bothWays = _prefix "bothWays"
     /// <summary>
     /// Clockwise.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#clockwise"></see></summary>
-    let clockwise = Namespaced_IRI.parse _namespace_name "clockwise" |> NamespacedName
+    let clockwise = _prefix "clockwise"
     /// <summary>
     /// East bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#eastBound"></see></summary>
-    let eastBound = Namespaced_IRI.parse _namespace_name "eastBound" |> NamespacedName
-
+    let eastBound = _prefix "eastBound"
     /// <summary>
     /// Heading towards town centre direction of travel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inboundTowardsTown"></see></summary>
-    let inboundTowardsTown =
-        Namespaced_IRI.parse _namespace_name "inboundTowardsTown" |> NamespacedName
-
+    let inboundTowardsTown = _prefix "inboundTowardsTown"
     /// <summary>
     /// Inner ring direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#innerRing"></see></summary>
-    let innerRing = Namespaced_IRI.parse _namespace_name "innerRing" |> NamespacedName
+    let innerRing = _prefix "innerRing"
     /// <summary>
     /// North bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#northBound"></see></summary>
-    let northBound = Namespaced_IRI.parse _namespace_name "northBound" |> NamespacedName
-
+    let northBound = _prefix "northBound"
     /// <summary>
     /// North east bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#northEastBound"></see></summary>
-    let northEastBound =
-        Namespaced_IRI.parse _namespace_name "northEastBound" |> NamespacedName
-
+    let northEastBound = _prefix "northEastBound"
     /// <summary>
     /// North west bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#northWestBound"></see></summary>
-    let northWestBound =
-        Namespaced_IRI.parse _namespace_name "northWestBound" |> NamespacedName
-
+    let northWestBound = _prefix "northWestBound"
     /// <summary>
     /// Indicates that the direction of traffic flow affected by the situation or related to the traffic data is in the opposite sense to the direction in which the linear element is defined.
     /// Opposite direction to the normal direction of flow at this point on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#opposite"></see></summary>
-    let opposite = Namespaced_IRI.parse _namespace_name "opposite" |> NamespacedName
-
+    let opposite = _prefix "opposite"
     /// <summary>
     /// Heading out of or away from the town centre direction of travel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#outboundFromTown"></see></summary>
-    let outboundFromTown =
-        Namespaced_IRI.parse _namespace_name "outboundFromTown" |> NamespacedName
-
+    let outboundFromTown = _prefix "outboundFromTown"
     /// <summary>
     /// Outer ring direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#outerRing"></see></summary>
-    let outerRing = Namespaced_IRI.parse _namespace_name "outerRing" |> NamespacedName
+    let outerRing = _prefix "outerRing"
     /// <summary>
     /// South bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#southBound"></see></summary>
-    let southBound = Namespaced_IRI.parse _namespace_name "southBound" |> NamespacedName
-
+    let southBound = _prefix "southBound"
     /// <summary>
     /// South east bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#southEastBound"></see></summary>
-    let southEastBound =
-        Namespaced_IRI.parse _namespace_name "southEastBound" |> NamespacedName
-
+    let southEastBound = _prefix "southEastBound"
     /// <summary>
     /// South west bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#southWestBound"></see></summary>
-    let southWestBound =
-        Namespaced_IRI.parse _namespace_name "southWestBound" |> NamespacedName
-
+    let southWestBound = _prefix "southWestBound"
     /// <summary>
     /// West bound general direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#westBound"></see></summary>
-    let westBound = Namespaced_IRI.parse _namespace_name "westBound" |> NamespacedName
+    let westBound = _prefix "westBound"
 
     /// <summary>
     /// Maintenance vehicles are merging into the traffic flow creating a potential hazard for road users.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#maintenanceVehiclesMergingIntoTrafficFlow"></see></summary>
     let maintenanceVehiclesMergingIntoTrafficFlow =
-        Namespaced_IRI.parse _namespace_name "maintenanceVehiclesMergingIntoTrafficFlow" |> NamespacedName
+        _prefix "maintenanceVehiclesMergingIntoTrafficFlow"
 
     /// <summary>
     /// Maintenance vehicle(s) are spreading salt and/or grit.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#saltAndGritSpreading"></see></summary>
-    let saltAndGritSpreading =
-        Namespaced_IRI.parse _namespace_name "saltAndGritSpreading" |> NamespacedName
-
+    let saltAndGritSpreading = _prefix "saltAndGritSpreading"
     /// <summary>
     /// Maintenance vehicles are slow moving.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slowMoving"></see></summary>
-    let slowMoving = Namespaced_IRI.parse _namespace_name "slowMoving" |> NamespacedName
-
+    let slowMoving = _prefix "slowMoving"
     /// <summary>
     /// Maintenance vehicle(s) are involved in the clearance of snow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#snowClearing"></see></summary>
-    let snowClearing =
-        Namespaced_IRI.parse _namespace_name "snowClearing" |> NamespacedName
-
+    let snowClearing = _prefix "snowClearing"
     /// <summary>
     /// Maintenance vehicles are stopping to service equipments on or next to the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stoppingToServiceEquipments"></see></summary>
-    let stoppingToServiceEquipments =
-        Namespaced_IRI.parse _namespace_name "stoppingToServiceEquipments" |> NamespacedName
-
+    let stoppingToServiceEquipments = _prefix "stoppingToServiceEquipments"
     /// <summary>
     /// The direction of navigation in an ALERT-C table that corresponds to the negative offset usage to go from the secondary location to the primary location within the ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#negative"></see></summary>
-    let negative = Namespaced_IRI.parse _namespace_name "negative" |> NamespacedName
+    let negative = _prefix "negative"
     /// <summary>
     /// The direction of navigation in an ALERT-C table that corresponds to the negative offset usage to go from the secondary location to the primary location within the ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#positive"></see></summary>
-    let positive = Namespaced_IRI.parse _namespace_name "positive" |> NamespacedName
+    let positive = _prefix "positive"
     /// <summary>
     /// Accidents are situations in which one or more vehicles lose control and do not recover.  They include collisions between vehicle(s) or other road user(s), between vehicle(s) and fixed obstacle(s), or they result from a vehicle running off the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accident"></see></summary>
-    let accident = Namespaced_IRI.parse _namespace_name "accident" |> NamespacedName
+    let accident = _prefix "accident"
 
     /// <summary>
     /// Includes all accidents involving at least one vehicle believed to be carrying materials, which could present an additional hazard to road users.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accidentInvolvingHazardousMaterials"></see></summary>
     let accidentInvolvingHazardousMaterials =
-        Namespaced_IRI.parse _namespace_name "accidentInvolvingHazardousMaterials" |> NamespacedName
+        _prefix "accidentInvolvingHazardousMaterials"
 
     /// <summary>
     /// Includes all accidents involving at least one heavy goods vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accidentInvolvingHeavyLorries"></see></summary>
-    let accidentInvolvingHeavyLorries =
-        Namespaced_IRI.parse _namespace_name "accidentInvolvingHeavyLorries" |> NamespacedName
-
+    let accidentInvolvingHeavyLorries = _prefix "accidentInvolvingHeavyLorries"
     /// <summary>
     /// Collision of vehicle with another object of unspecified type.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#collision"></see></summary>
-    let collision = Namespaced_IRI.parse _namespace_name "collision" |> NamespacedName
-
+    let collision = _prefix "collision"
     /// <summary>
     /// Includes all accidents involving three or more vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#multipleVehicleAccident"></see></summary>
-    let multipleVehicleAccident =
-        Namespaced_IRI.parse _namespace_name "multipleVehicleAccident" |> NamespacedName
-
+    let multipleVehicleAccident = _prefix "multipleVehicleAccident"
     /// <summary>
     /// A descriptor indicating the most significant factor causing an accident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accidentCause"></see></summary>
-    let accidentCause =
-        Namespaced_IRI.parse _namespace_name "accidentCause" |> NamespacedName
-
+    let accidentCause = _prefix "accidentCause"
     /// <summary>
     /// Traffic congestion.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#congestion"></see></summary>
-    let congestion = Namespaced_IRI.parse _namespace_name "congestion" |> NamespacedName
-
+    let congestion = _prefix "congestion"
     /// <summary>
     /// Equipment  which is faulty, malfunctioning or not in a fully operational state that may be of interest or concern to road operators and road users.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#equipmentFailure"></see></summary>
-    let equipmentFailure =
-        Namespaced_IRI.parse _namespace_name "equipmentFailure" |> NamespacedName
-
+    let equipmentFailure = _prefix "equipmentFailure"
     /// <summary>
     /// Failure of road infrastructure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#infrastructureFailure"></see></summary>
-    let infrastructureFailure =
-        Namespaced_IRI.parse _namespace_name "infrastructureFailure" |> NamespacedName
-
+    let infrastructureFailure = _prefix "infrastructureFailure"
     /// <summary>
     /// Obstruction (of unspecified type) on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#obstruction"></see></summary>
-    let obstruction =
-        Namespaced_IRI.parse _namespace_name "obstruction" |> NamespacedName
-
+    let obstruction = _prefix "obstruction"
     /// <summary>
     /// Poor weather conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#poorWeather"></see></summary>
-    let poorWeather =
-        Namespaced_IRI.parse _namespace_name "poorWeather" |> NamespacedName
-
+    let poorWeather = _prefix "poorWeather"
     /// <summary>
     /// Problems at the border crossing.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#problemsAtBorderPost"></see></summary>
-    let problemsAtBorderPost =
-        Namespaced_IRI.parse _namespace_name "problemsAtBorderPost" |> NamespacedName
-
+    let problemsAtBorderPost = _prefix "problemsAtBorderPost"
     /// <summary>
     /// Problems at the customs post on the border.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#problemsAtCustomPost"></see></summary>
-    let problemsAtCustomPost =
-        Namespaced_IRI.parse _namespace_name "problemsAtCustomPost" |> NamespacedName
-
+    let problemsAtCustomPost = _prefix "problemsAtCustomPost"
     /// <summary>
     /// Problems (of an unspecified nature) on the local roads.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#problemsOnLocalRoads"></see></summary>
-    let problemsOnLocalRoads =
-        Namespaced_IRI.parse _namespace_name "problemsOnLocalRoads" |> NamespacedName
-
+    let problemsOnLocalRoads = _prefix "problemsOnLocalRoads"
     /// <summary>
     /// A roadside event (of unspecified nature) whether planned or not.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadsideEvent"></see></summary>
-    let roadsideEvent =
-        Namespaced_IRI.parse _namespace_name "roadsideEvent" |> NamespacedName
-
+    let roadsideEvent = _prefix "roadsideEvent"
     /// <summary>
     /// A security incident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#securityIncident"></see></summary>
-    let securityIncident =
-        Namespaced_IRI.parse _namespace_name "securityIncident" |> NamespacedName
-
+    let securityIncident = _prefix "securityIncident"
     /// <summary>
     /// A terrorist incident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#terrorism"></see></summary>
-    let terrorism = Namespaced_IRI.parse _namespace_name "terrorism" |> NamespacedName
+    let terrorism = _prefix "terrorism"
     /// <summary>
     /// A vandalism incident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vandalism"></see></summary>
-    let vandalism = Namespaced_IRI.parse _namespace_name "vandalism" |> NamespacedName
+    let vandalism = _prefix "vandalism"
     /// <summary>
     /// Bridge on, over or under the highway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bridge"></see></summary>
-    let bridge = Namespaced_IRI.parse _namespace_name "bridge" |> NamespacedName
-
+    let bridge = _prefix "bridge"
     /// <summary>
     /// Buried cables under or along the highway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#buriedCables"></see></summary>
-    let buriedCables =
-        Namespaced_IRI.parse _namespace_name "buriedCables" |> NamespacedName
-
+    let buriedCables = _prefix "buriedCables"
     /// <summary>
     /// Unspecified buried services on, under or along the highway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#buriedServices"></see></summary>
-    let buriedServices =
-        Namespaced_IRI.parse _namespace_name "buriedServices" |> NamespacedName
-
+    let buriedServices = _prefix "buriedServices"
     /// <summary>
     /// Crash barrier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#crashBarrier"></see></summary>
-    let crashBarrier =
-        Namespaced_IRI.parse _namespace_name "crashBarrier" |> NamespacedName
-
+    let crashBarrier = _prefix "crashBarrier"
     /// <summary>
     /// Gallery.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gallery"></see></summary>
-    let gallery = Namespaced_IRI.parse _namespace_name "gallery" |> NamespacedName
+    let gallery = _prefix "gallery"
     /// <summary>
     /// Gantry over or above the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gantry"></see></summary>
-    let gantry = Namespaced_IRI.parse _namespace_name "gantry" |> NamespacedName
-
+    let gantry = _prefix "gantry"
     /// <summary>
     /// Gas mains.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gasMainWork"></see></summary>
-    let gasMainWork =
-        Namespaced_IRI.parse _namespace_name "gasMainWork" |> NamespacedName
-
+    let gasMainWork = _prefix "gasMainWork"
     /// <summary>
     /// Motorway or major road interchange.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#interchange"></see></summary>
-    let interchange =
-        Namespaced_IRI.parse _namespace_name "interchange" |> NamespacedName
-
+    let interchange = _prefix "interchange"
     /// <summary>
     /// Motorway or major road junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#junction"></see></summary>
-    let junction = Namespaced_IRI.parse _namespace_name "junction" |> NamespacedName
-
+    let junction = _prefix "junction"
     /// <summary>
     /// Level-crossing or associated equipment.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#levelCrossing"></see></summary>
-    let levelCrossing =
-        Namespaced_IRI.parse _namespace_name "levelCrossing" |> NamespacedName
-
+    let levelCrossing = _prefix "levelCrossing"
     /// <summary>
     /// Road lighting system.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lightingSystem"></see></summary>
-    let lightingSystem =
-        Namespaced_IRI.parse _namespace_name "lightingSystem" |> NamespacedName
-
+    let lightingSystem = _prefix "lightingSystem"
     /// <summary>
     /// Equipment used for determining traffic measurements.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#measurementEquipment"></see></summary>
-    let measurementEquipment =
-        Namespaced_IRI.parse _namespace_name "measurementEquipment" |> NamespacedName
-
+    let measurementEquipment = _prefix "measurementEquipment"
     /// <summary>
     /// Installations along the roadway designed to reduce road noise in the surrounding environment.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noiseProtection"></see></summary>
-    let noiseProtection =
-        Namespaced_IRI.parse _namespace_name "noiseProtection" |> NamespacedName
-
+    let noiseProtection = _prefix "noiseProtection"
     /// <summary>
     /// road
     /// The nature of the linear element is a road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#road"></see></summary>
-    let road = Namespaced_IRI.parse _namespace_name "road" |> NamespacedName
+    let road = _prefix "road"
     /// <summary>
     /// Road signs.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadSigns"></see></summary>
-    let roadSigns = Namespaced_IRI.parse _namespace_name "roadSigns" |> NamespacedName
-
+    let roadSigns = _prefix "roadSigns"
     /// <summary>
     /// Roadside drains.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadsideDrains"></see></summary>
-    let roadsideDrains =
-        Namespaced_IRI.parse _namespace_name "roadsideDrains" |> NamespacedName
-
+    let roadsideDrains = _prefix "roadsideDrains"
     /// <summary>
     /// Roadside embankment.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadsideEmbankment"></see></summary>
-    let roadsideEmbankment =
-        Namespaced_IRI.parse _namespace_name "roadsideEmbankment" |> NamespacedName
-
+    let roadsideEmbankment = _prefix "roadsideEmbankment"
     /// <summary>
     /// Roadside equipment.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadsideEquipment"></see></summary>
-    let roadsideEquipment =
-        Namespaced_IRI.parse _namespace_name "roadsideEquipment" |> NamespacedName
-
+    let roadsideEquipment = _prefix "roadsideEquipment"
     /// <summary>
     /// Toll gate.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tollGate"></see></summary>
-    let tollGate = Namespaced_IRI.parse _namespace_name "tollGate" |> NamespacedName
+    let tollGate = _prefix "tollGate"
     /// <summary>
     /// Road tunnel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tunnel"></see></summary>
-    let tunnel = Namespaced_IRI.parse _namespace_name "tunnel" |> NamespacedName
+    let tunnel = _prefix "tunnel"
     /// <summary>
     /// Water main under or along the highway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#waterMain"></see></summary>
-    let waterMain = Namespaced_IRI.parse _namespace_name "waterMain" |> NamespacedName
+    let waterMain = _prefix "waterMain"
     /// <summary>
     /// On the both sides of the roads.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bothSides"></see></summary>
-    let bothSides = Namespaced_IRI.parse _namespace_name "bothSides" |> NamespacedName
-
+    let bothSides = _prefix "bothSides"
     /// <summary>
     /// For internal use only of the recipient organisation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#internalUse"></see></summary>
-    let internalUse =
-        Namespaced_IRI.parse _namespace_name "internalUse" |> NamespacedName
-
+    let internalUse = _prefix "internalUse"
     /// <summary>
     /// No restriction on usage.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#noRestriction"></see></summary>
-    let noRestriction =
-        Namespaced_IRI.parse _namespace_name "noRestriction" |> NamespacedName
-
+    let noRestriction = _prefix "noRestriction"
     /// <summary>
     /// Restricted for use only by authorities.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#restrictedToAuthorities"></see></summary>
-    let restrictedToAuthorities =
-        Namespaced_IRI.parse _namespace_name "restrictedToAuthorities" |> NamespacedName
+    let restrictedToAuthorities = _prefix "restrictedToAuthorities"
 
     /// <summary>
     /// Restricted for use only by authorities and traffic operators.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#restrictedToAuthoritiesAndTrafficOperators"></see></summary>
     let restrictedToAuthoritiesAndTrafficOperators =
-        Namespaced_IRI.parse _namespace_name "restrictedToAuthoritiesAndTrafficOperators" |> NamespacedName
+        _prefix "restrictedToAuthoritiesAndTrafficOperators"
 
     /// <summary>
     /// Restricted for use only by authorities, traffic operators and publishers (service providers).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#restrictedToAuthoritiesTrafficOperatorsAndPublishers"></see></summary>
     let restrictedToAuthoritiesTrafficOperatorsAndPublishers =
-        Namespaced_IRI.parse _namespace_name "restrictedToAuthoritiesTrafficOperatorsAndPublishers" |> NamespacedName
+        _prefix "restrictedToAuthoritiesTrafficOperatorsAndPublishers"
 
     /// <summary>
     /// Restricted for use only by authorities, traffic operators, publishers (service providers) and variable message signs.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#restrictedToAuthoritiesTrafficOperatorsAndVms"></see></summary>
     let restrictedToAuthoritiesTrafficOperatorsAndVms =
-        Namespaced_IRI.parse _namespace_name "restrictedToAuthoritiesTrafficOperatorsAndVms" |> NamespacedName
+        _prefix "restrictedToAuthoritiesTrafficOperatorsAndVms"
 
     /// <summary>
     /// On the connecting carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#connectingCarriageway"></see></summary>
-    let connectingCarriageway =
-        Namespaced_IRI.parse _namespace_name "connectingCarriageway" |> NamespacedName
-
+    let connectingCarriageway = _prefix "connectingCarriageway"
     /// <summary>
     /// Independent road or part of a road designated for cycles, signposted as such. A cycle track is separated from other roads or other parts of the same road by structural means.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cycleTrack"></see></summary>
-    let cycleTrack = Namespaced_IRI.parse _namespace_name "cycleTrack" |> NamespacedName
-
+    let cycleTrack = _prefix "cycleTrack"
     /// <summary>
     /// On the entry slip road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#entrySlipRoad"></see></summary>
-    let entrySlipRoad =
-        Namespaced_IRI.parse _namespace_name "entrySlipRoad" |> NamespacedName
-
+    let entrySlipRoad = _prefix "entrySlipRoad"
     /// <summary>
     /// On the exit slip road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#exitSlipRoad"></see></summary>
-    let exitSlipRoad =
-        Namespaced_IRI.parse _namespace_name "exitSlipRoad" |> NamespacedName
-
+    let exitSlipRoad = _prefix "exitSlipRoad"
     /// <summary>
     /// On the flyover, i.e. the section of road passing over another.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#flyover"></see></summary>
-    let flyover = Namespaced_IRI.parse _namespace_name "flyover" |> NamespacedName
+    let flyover = _prefix "flyover"
     /// <summary>
     /// On the footpath
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#footpath"></see></summary>
-    let footpath = Namespaced_IRI.parse _namespace_name "footpath" |> NamespacedName
-
+    let footpath = _prefix "footpath"
     /// <summary>
     /// On the left hand feeder road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#leftHandFeederRoad"></see></summary>
-    let leftHandFeederRoad =
-        Namespaced_IRI.parse _namespace_name "leftHandFeederRoad" |> NamespacedName
-
+    let leftHandFeederRoad = _prefix "leftHandFeederRoad"
     /// <summary>
     /// On the left hand parallel carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#leftHandParallelCarriageway"></see></summary>
-    let leftHandParallelCarriageway =
-        Namespaced_IRI.parse _namespace_name "leftHandParallelCarriageway" |> NamespacedName
-
+    let leftHandParallelCarriageway = _prefix "leftHandParallelCarriageway"
     /// <summary>
     /// On the main carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#mainCarriageway"></see></summary>
-    let mainCarriageway =
-        Namespaced_IRI.parse _namespace_name "mainCarriageway" |> NamespacedName
-
+    let mainCarriageway = _prefix "mainCarriageway"
     /// <summary>
     /// On the opposite carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#oppositeCarriageway"></see></summary>
-    let oppositeCarriageway =
-        Namespaced_IRI.parse _namespace_name "oppositeCarriageway" |> NamespacedName
-
+    let oppositeCarriageway = _prefix "oppositeCarriageway"
     /// <summary>
     /// On the adjacent external parallel carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#parallelCarriageway"></see></summary>
-    let parallelCarriageway =
-        Namespaced_IRI.parse _namespace_name "parallelCarriageway" |> NamespacedName
-
+    let parallelCarriageway = _prefix "parallelCarriageway"
     /// <summary>
     /// On the right hand feeder road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rightHandFeederRoad"></see></summary>
-    let rightHandFeederRoad =
-        Namespaced_IRI.parse _namespace_name "rightHandFeederRoad" |> NamespacedName
-
+    let rightHandFeederRoad = _prefix "rightHandFeederRoad"
     /// <summary>
     /// On the right hand parallel carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rightHandParallelCarriageway"></see></summary>
-    let rightHandParallelCarriageway =
-        Namespaced_IRI.parse _namespace_name "rightHandParallelCarriageway" |> NamespacedName
-
+    let rightHandParallelCarriageway = _prefix "rightHandParallelCarriageway"
     /// <summary>
     /// On the adjacent service road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#serviceRoad"></see></summary>
-    let serviceRoad =
-        Namespaced_IRI.parse _namespace_name "serviceRoad" |> NamespacedName
-
+    let serviceRoad = _prefix "serviceRoad"
     /// <summary>
     /// On the slip roads.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slipRoads"></see></summary>
-    let slipRoads = Namespaced_IRI.parse _namespace_name "slipRoads" |> NamespacedName
+    let slipRoads = _prefix "slipRoads"
     /// <summary>
     /// On the underpass, i.e. the section of road passing under another.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#underpass"></see></summary>
-    let underpass = Namespaced_IRI.parse _namespace_name "underpass" |> NamespacedName
-
+    let underpass = _prefix "underpass"
     /// <summary>
     /// On an unspecified carriageway
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#unspecifiedCarriageway"></see></summary>
-    let unspecifiedCarriageway =
-        Namespaced_IRI.parse _namespace_name "unspecifiedCarriageway" |> NamespacedName
-
+    let unspecifiedCarriageway = _prefix "unspecifiedCarriageway"
     /// <summary>
     /// Vehicle normally used for agricultural purposes, e.g. tractor, combined harvester etc.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#agriculturalVehicle"></see></summary>
-    let agriculturalVehicle =
-        Namespaced_IRI.parse _namespace_name "agriculturalVehicle" |> NamespacedName
-
+    let agriculturalVehicle = _prefix "agriculturalVehicle"
     /// <summary>
     /// Vehicle of any type.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#anyVehicle"></see></summary>
-    let anyVehicle = Namespaced_IRI.parse _namespace_name "anyVehicle" |> NamespacedName
-
+    let anyVehicle = _prefix "anyVehicle"
     /// <summary>
     /// Articulated vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#articulatedVehicle"></see></summary>
-    let articulatedVehicle =
-        Namespaced_IRI.parse _namespace_name "articulatedVehicle" |> NamespacedName
-
+    let articulatedVehicle = _prefix "articulatedVehicle"
     /// <summary>
     /// Bicycle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bicycle"></see></summary>
-    let bicycle = Namespaced_IRI.parse _namespace_name "bicycle" |> NamespacedName
+    let bicycle = _prefix "bicycle"
     /// <summary>
     /// Bus.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bus"></see></summary>
-    let bus = Namespaced_IRI.parse _namespace_name "bus" |> NamespacedName
+    let bus = _prefix "bus"
     /// <summary>
     /// Car.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#car"></see></summary>
-    let car = Namespaced_IRI.parse _namespace_name "car" |> NamespacedName
-
+    let car = _prefix "car"
     /// <summary>
     /// Car or light vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carOrLightVehicle"></see></summary>
-    let carOrLightVehicle =
-        Namespaced_IRI.parse _namespace_name "carOrLightVehicle" |> NamespacedName
-
+    let carOrLightVehicle = _prefix "carOrLightVehicle"
     /// <summary>
     /// Car towing a caravan.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carWithCaravan"></see></summary>
-    let carWithCaravan =
-        Namespaced_IRI.parse _namespace_name "carWithCaravan" |> NamespacedName
-
+    let carWithCaravan = _prefix "carWithCaravan"
     /// <summary>
     /// Car towing a trailer.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carWithTrailer"></see></summary>
-    let carWithTrailer =
-        Namespaced_IRI.parse _namespace_name "carWithTrailer" |> NamespacedName
-
+    let carWithTrailer = _prefix "carWithTrailer"
     /// <summary>
     /// Caravan.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#caravan"></see></summary>
-    let caravan = Namespaced_IRI.parse _namespace_name "caravan" |> NamespacedName
-
+    let caravan = _prefix "caravan"
     /// <summary>
     /// Vehicle normally used for construction or maintenance purposes, e.g. digger, excavator, bulldozer, lorry mounted crane etc.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#constructionOrMaintenanceVehicle"></see></summary>
-    let constructionOrMaintenanceVehicle =
-        Namespaced_IRI.parse _namespace_name "constructionOrMaintenanceVehicle" |> NamespacedName
-
+    let constructionOrMaintenanceVehicle = _prefix "constructionOrMaintenanceVehicle"
     /// <summary>
     /// Four wheel drive vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fourWheelDrive"></see></summary>
-    let fourWheelDrive =
-        Namespaced_IRI.parse _namespace_name "fourWheelDrive" |> NamespacedName
-
+    let fourWheelDrive = _prefix "fourWheelDrive"
     /// <summary>
     /// High sided vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#highSidedVehicle"></see></summary>
-    let highSidedVehicle =
-        Namespaced_IRI.parse _namespace_name "highSidedVehicle" |> NamespacedName
-
+    let highSidedVehicle = _prefix "highSidedVehicle"
     /// <summary>
     /// A heavy lorry that is longer than normal.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#longHeavyLorry"></see></summary>
-    let longHeavyLorry =
-        Namespaced_IRI.parse _namespace_name "longHeavyLorry" |> NamespacedName
-
+    let longHeavyLorry = _prefix "longHeavyLorry"
     /// <summary>
     /// Lorry of any type.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lorry"></see></summary>
-    let lorry = Namespaced_IRI.parse _namespace_name "lorry" |> NamespacedName
+    let lorry = _prefix "lorry"
     /// <summary>
     /// Moped (a two wheeled motor vehicle characterized by a small engine typically less than 50cc and by normally having pedals).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#moped"></see></summary>
-    let moped = Namespaced_IRI.parse _namespace_name "moped" |> NamespacedName
+    let moped = _prefix "moped"
     /// <summary>
     /// Motorcycle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#motorcycle"></see></summary>
-    let motorcycle = Namespaced_IRI.parse _namespace_name "motorcycle" |> NamespacedName
-
+    let motorcycle = _prefix "motorcycle"
     /// <summary>
     /// Three wheeled vehicle comprising a motorcycle with an attached side car.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#motorcycleWithSideCar"></see></summary>
-    let motorcycleWithSideCar =
-        Namespaced_IRI.parse _namespace_name "motorcycleWithSideCar" |> NamespacedName
-
+    let motorcycleWithSideCar = _prefix "motorcycleWithSideCar"
     /// <summary>
     /// Motorscooter (a two wheeled motor vehicle characterized by a step-through frame and small diameter wheels).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#motorscooter"></see></summary>
-    let motorscooter =
-        Namespaced_IRI.parse _namespace_name "motorscooter" |> NamespacedName
-
+    let motorscooter = _prefix "motorscooter"
     /// <summary>
     /// Vehicle with large tank for carrying bulk liquids.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tanker"></see></summary>
-    let tanker = Namespaced_IRI.parse _namespace_name "tanker" |> NamespacedName
-
+    let tanker = _prefix "tanker"
     /// <summary>
     /// Three wheeled vehicle of unspecified type.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#threeWheeledVehicle"></see></summary>
-    let threeWheeledVehicle =
-        Namespaced_IRI.parse _namespace_name "threeWheeledVehicle" |> NamespacedName
-
+    let threeWheeledVehicle = _prefix "threeWheeledVehicle"
     /// <summary>
     /// Trailer.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trailer"></see></summary>
-    let trailer = Namespaced_IRI.parse _namespace_name "trailer" |> NamespacedName
+    let trailer = _prefix "trailer"
     /// <summary>
     /// Tram.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tram"></see></summary>
-    let tram = Namespaced_IRI.parse _namespace_name "tram" |> NamespacedName
-
+    let tram = _prefix "tram"
     /// <summary>
     /// Two wheeled vehicle of unspecified type.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#twoWheeledVehicle"></see></summary>
-    let twoWheeledVehicle =
-        Namespaced_IRI.parse _namespace_name "twoWheeledVehicle" |> NamespacedName
-
+    let twoWheeledVehicle = _prefix "twoWheeledVehicle"
     /// <summary>
     /// Van.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#van"></see></summary>
-    let van = Namespaced_IRI.parse _namespace_name "van" |> NamespacedName
-
+    let van = _prefix "van"
     /// <summary>
     /// Vehicle (of unspecified type) towing a caravan.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleWithCaravan"></see></summary>
-    let vehicleWithCaravan =
-        Namespaced_IRI.parse _namespace_name "vehicleWithCaravan" |> NamespacedName
-
+    let vehicleWithCaravan = _prefix "vehicleWithCaravan"
     /// <summary>
     /// Vehicle with catalytic converter.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleWithCatalyticConverter"></see></summary>
-    let vehicleWithCatalyticConverter =
-        Namespaced_IRI.parse _namespace_name "vehicleWithCatalyticConverter" |> NamespacedName
-
+    let vehicleWithCatalyticConverter = _prefix "vehicleWithCatalyticConverter"
     /// <summary>
     /// Vehicle (of unspecified type) towing a trailer.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleWithTrailer"></see></summary>
-    let vehicleWithTrailer =
-        Namespaced_IRI.parse _namespace_name "vehicleWithTrailer" |> NamespacedName
-
+    let vehicleWithTrailer = _prefix "vehicleWithTrailer"
     /// <summary>
     /// Vehicle without catalytic converter.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleWithoutCatalyticConverter"></see></summary>
-    let vehicleWithoutCatalyticConverter =
-        Namespaced_IRI.parse _namespace_name "vehicleWithoutCatalyticConverter" |> NamespacedName
+    let vehicleWithoutCatalyticConverter = _prefix "vehicleWithoutCatalyticConverter"
 
     /// <summary>
     /// Vehicle with even numbered registration plate.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#withEvenNumberedRegistrationPlates"></see></summary>
     let withEvenNumberedRegistrationPlates =
-        Namespaced_IRI.parse _namespace_name "withEvenNumberedRegistrationPlates" |> NamespacedName
+        _prefix "withEvenNumberedRegistrationPlates"
 
     /// <summary>
     /// Vehicle with odd numbered registration plate.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#withOddNumberedRegistrationPlates"></see></summary>
-    let withOddNumberedRegistrationPlates =
-        Namespaced_IRI.parse _namespace_name "withOddNumberedRegistrationPlates" |> NamespacedName
-
+    let withOddNumberedRegistrationPlates = _prefix "withOddNumberedRegistrationPlates"
     /// <summary>
     /// LAU 1 code
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lau1Code"></see></summary>
-    let lau1Code = Namespaced_IRI.parse _namespace_name "lau1Code" |> NamespacedName
+    let lau1Code = _prefix "lau1Code"
     /// <summary>
     /// LAU 2 code
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lau2Code"></see></summary>
-    let lau2Code = Namespaced_IRI.parse _namespace_name "lau2Code" |> NamespacedName
+    let lau2Code = _prefix "lau2Code"
     /// <summary>
     /// NUTS 1 code
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nuts1Code"></see></summary>
-    let nuts1Code = Namespaced_IRI.parse _namespace_name "nuts1Code" |> NamespacedName
+    let nuts1Code = _prefix "nuts1Code"
     /// <summary>
     /// NUTS 2 code
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nuts2Code"></see></summary>
-    let nuts2Code = Namespaced_IRI.parse _namespace_name "nuts2Code" |> NamespacedName
+    let nuts2Code = _prefix "nuts2Code"
     /// <summary>
     /// NUTS 3 code
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nuts3Code"></see></summary>
-    let nuts3Code = Namespaced_IRI.parse _namespace_name "nuts3Code" |> NamespacedName
-
+    let nuts3Code = _prefix "nuts3Code"
     /// <summary>
     /// The nature of the linear element is a section of a road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadSection"></see></summary>
-    let roadSection =
-        Namespaced_IRI.parse _namespace_name "roadSection" |> NamespacedName
-
+    let roadSection = _prefix "roadSection"
     /// <summary>
     /// Air ambulance assistance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#airAmbulance"></see></summary>
-    let airAmbulance =
-        Namespaced_IRI.parse _namespace_name "airAmbulance" |> NamespacedName
-
+    let airAmbulance = _prefix "airAmbulance"
     /// <summary>
     /// Bus passenger assistance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#busPassengerAssistance"></see></summary>
-    let busPassengerAssistance =
-        Namespaced_IRI.parse _namespace_name "busPassengerAssistance" |> NamespacedName
-
+    let busPassengerAssistance = _prefix "busPassengerAssistance"
     /// <summary>
     /// Emergency services assistance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#emergencyServices"></see></summary>
-    let emergencyServices =
-        Namespaced_IRI.parse _namespace_name "emergencyServices" |> NamespacedName
-
+    let emergencyServices = _prefix "emergencyServices"
     /// <summary>
     /// First aid assistance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#firstAid"></see></summary>
-    let firstAid = Namespaced_IRI.parse _namespace_name "firstAid" |> NamespacedName
-
+    let firstAid = _prefix "firstAid"
     /// <summary>
     /// Food delivery.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#foodDelivery"></see></summary>
-    let foodDelivery =
-        Namespaced_IRI.parse _namespace_name "foodDelivery" |> NamespacedName
-
+    let foodDelivery = _prefix "foodDelivery"
     /// <summary>
     /// Helicopter rescue.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#helicopterRescue"></see></summary>
-    let helicopterRescue =
-        Namespaced_IRI.parse _namespace_name "helicopterRescue" |> NamespacedName
-
+    let helicopterRescue = _prefix "helicopterRescue"
     /// <summary>
     /// Vehicle recovery.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleRecovery"></see></summary>
-    let vehicleRecovery =
-        Namespaced_IRI.parse _namespace_name "vehicleRecovery" |> NamespacedName
-
+    let vehicleRecovery = _prefix "vehicleRecovery"
     /// <summary>
     /// Vehicle repair assistance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleRepair"></see></summary>
-    let vehicleRepair =
-        Namespaced_IRI.parse _namespace_name "vehicleRepair" |> NamespacedName
-
+    let vehicleRepair = _prefix "vehicleRepair"
     /// <summary>
     /// At a motorway interchange.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atMotorwayInterchange"></see></summary>
-    let atMotorwayInterchange =
-        Namespaced_IRI.parse _namespace_name "atMotorwayInterchange" |> NamespacedName
-
+    let atMotorwayInterchange = _prefix "atMotorwayInterchange"
     /// <summary>
     /// At rest area off the carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atRestArea"></see></summary>
-    let atRestArea = Namespaced_IRI.parse _namespace_name "atRestArea" |> NamespacedName
-
+    let atRestArea = _prefix "atRestArea"
     /// <summary>
     /// At service area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atServiceArea"></see></summary>
-    let atServiceArea =
-        Namespaced_IRI.parse _namespace_name "atServiceArea" |> NamespacedName
-
+    let atServiceArea = _prefix "atServiceArea"
     /// <summary>
     /// At toll plaza.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atTollPlaza"></see></summary>
-    let atTollPlaza =
-        Namespaced_IRI.parse _namespace_name "atTollPlaza" |> NamespacedName
-
+    let atTollPlaza = _prefix "atTollPlaza"
     /// <summary>
     /// At entry or exit of tunnel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atTunnelEntryOrExit"></see></summary>
-    let atTunnelEntryOrExit =
-        Namespaced_IRI.parse _namespace_name "atTunnelEntryOrExit" |> NamespacedName
-
+    let atTunnelEntryOrExit = _prefix "atTunnelEntryOrExit"
     /// <summary>
     /// In gallery.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inGallery"></see></summary>
-    let inGallery = Namespaced_IRI.parse _namespace_name "inGallery" |> NamespacedName
+    let inGallery = _prefix "inGallery"
     /// <summary>
     /// In tunnel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inTunnel"></see></summary>
-    let inTunnel = Namespaced_IRI.parse _namespace_name "inTunnel" |> NamespacedName
+    let inTunnel = _prefix "inTunnel"
     /// <summary>
     /// On bridge
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onBridge"></see></summary>
-    let onBridge = Namespaced_IRI.parse _namespace_name "onBridge" |> NamespacedName
-
+    let onBridge = _prefix "onBridge"
     /// <summary>
     /// On connecting carriageway between two different roads or road sections.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onConnector"></see></summary>
-    let onConnector =
-        Namespaced_IRI.parse _namespace_name "onConnector" |> NamespacedName
-
+    let onConnector = _prefix "onConnector"
     /// <summary>
     /// On elevated section of road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onElevatedSection"></see></summary>
-    let onElevatedSection =
-        Namespaced_IRI.parse _namespace_name "onElevatedSection" |> NamespacedName
-
+    let onElevatedSection = _prefix "onElevatedSection"
     /// <summary>
     /// On flyover, i.e. on section of road over another road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onFlyover"></see></summary>
-    let onFlyover = Namespaced_IRI.parse _namespace_name "onFlyover" |> NamespacedName
+    let onFlyover = _prefix "onFlyover"
     /// <summary>
     /// On ice road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onIceRoad"></see></summary>
-    let onIceRoad = Namespaced_IRI.parse _namespace_name "onIceRoad" |> NamespacedName
-
+    let onIceRoad = _prefix "onIceRoad"
     /// <summary>
     /// On level-crossing.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onLevelCrossing"></see></summary>
-    let onLevelCrossing =
-        Namespaced_IRI.parse _namespace_name "onLevelCrossing" |> NamespacedName
-
+    let onLevelCrossing = _prefix "onLevelCrossing"
     /// <summary>
     /// On road section linking two different roads.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onLinkRoad"></see></summary>
-    let onLinkRoad = Namespaced_IRI.parse _namespace_name "onLinkRoad" |> NamespacedName
-
+    let onLinkRoad = _prefix "onLinkRoad"
     /// <summary>
     /// On roundabout.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onRoundabout"></see></summary>
-    let onRoundabout =
-        Namespaced_IRI.parse _namespace_name "onRoundabout" |> NamespacedName
-
+    let onRoundabout = _prefix "onRoundabout"
     /// <summary>
     /// On the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onTheRoadway"></see></summary>
-    let onTheRoadway =
-        Namespaced_IRI.parse _namespace_name "onTheRoadway" |> NamespacedName
-
+    let onTheRoadway = _prefix "onTheRoadway"
     /// <summary>
     /// On underground section of road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onUndergroundSection"></see></summary>
-    let onUndergroundSection =
-        Namespaced_IRI.parse _namespace_name "onUndergroundSection" |> NamespacedName
-
+    let onUndergroundSection = _prefix "onUndergroundSection"
     /// <summary>
     /// On underpass, i.e. section of road which passes under another road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#onUnderpass"></see></summary>
-    let onUnderpass =
-        Namespaced_IRI.parse _namespace_name "onUnderpass" |> NamespacedName
-
+    let onUnderpass = _prefix "onUnderpass"
     /// <summary>
     /// On the main carriageway within a junction between exit slip road and entry slip road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#withinJunction"></see></summary>
-    let withinJunction =
-        Namespaced_IRI.parse _namespace_name "withinJunction" |> NamespacedName
-
+    let withinJunction = _prefix "withinJunction"
     /// <summary>
     /// Indicates the accuracy is out of range, i.e. greater than 4 093 cm for horizontal position.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#outOfRange"></see></summary>
-    let outOfRange = Namespaced_IRI.parse _namespace_name "outOfRange" |> NamespacedName
-
+    let outOfRange = _prefix "outOfRange"
     /// <summary>
     /// Indicates the accuracy information is unavailable.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#unavailable"></see></summary>
-    let unavailable =
-        Namespaced_IRI.parse _namespace_name "unavailable" |> NamespacedName
-
+    let unavailable = _prefix "unavailable"
     /// <summary>
     /// Delays on the road network as a result of any situation which causes hold-ups.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#delays"></see></summary>
-    let delays = Namespaced_IRI.parse _namespace_name "delays" |> NamespacedName
-
+    let delays = _prefix "delays"
     /// <summary>
     /// Delays on the road network whose predicted duration cannot be estimated.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#delaysOfUncertainDuration"></see></summary>
-    let delaysOfUncertainDuration =
-        Namespaced_IRI.parse _namespace_name "delaysOfUncertainDuration" |> NamespacedName
-
+    let delaysOfUncertainDuration = _prefix "delaysOfUncertainDuration"
     /// <summary>
     /// Delays on the road network of unusual severity.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#longDelays"></see></summary>
-    let longDelays = Namespaced_IRI.parse _namespace_name "longDelays" |> NamespacedName
-
+    let longDelays = _prefix "longDelays"
     /// <summary>
     /// Delays on the road network of abnormally unusual severity.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#veryLongDelays"></see></summary>
-    let veryLongDelays =
-        Namespaced_IRI.parse _namespace_name "veryLongDelays" |> NamespacedName
-
+    let veryLongDelays = _prefix "veryLongDelays"
     /// <summary>
     /// The road may be obstructed or partially obstructed due to snow slides.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#avalanches"></see></summary>
-    let avalanches = Namespaced_IRI.parse _namespace_name "avalanches" |> NamespacedName
-
+    let avalanches = _prefix "avalanches"
     /// <summary>
     /// The road is obstructed or partially obstructed by one or more fallen trees.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fallenTrees"></see></summary>
-    let fallenTrees =
-        Namespaced_IRI.parse _namespace_name "fallenTrees" |> NamespacedName
-
+    let fallenTrees = _prefix "fallenTrees"
     /// <summary>
     /// The road is obstructed or partially obstructed by flood water.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#flooding"></see></summary>
-    let flooding = Namespaced_IRI.parse _namespace_name "flooding" |> NamespacedName
+    let flooding = _prefix "flooding"
     /// <summary>
     /// The road may be obstructed or partially obstructed due to landslides.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#landslips"></see></summary>
-    let landslips = Namespaced_IRI.parse _namespace_name "landslips" |> NamespacedName
+    let landslips = _prefix "landslips"
     /// <summary>
     /// The road may be obstructed or partially obstructed due to fallen rocks.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rockfalls"></see></summary>
-    let rockfalls = Namespaced_IRI.parse _namespace_name "rockfalls" |> NamespacedName
+    let rockfalls = _prefix "rockfalls"
     /// <summary>
     /// The road surface has sunken or collapsed in places.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#subsidence"></see></summary>
-    let subsidence = Namespaced_IRI.parse _namespace_name "subsidence" |> NamespacedName
-
+    let subsidence = _prefix "subsidence"
     /// <summary>
     /// A point on the road network framed by two other points on the same road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#framedPoint"></see></summary>
-    let framedPoint =
-        Namespaced_IRI.parse _namespace_name "framedPoint" |> NamespacedName
-
+    let framedPoint = _prefix "framedPoint"
     /// <summary>
     /// Dedicated car pool lane(s) are in operation for vehicles carrying at least the specified number of occupants.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carPoolLaneInOperation"></see></summary>
-    let carPoolLaneInOperation =
-        Namespaced_IRI.parse _namespace_name "carPoolLaneInOperation" |> NamespacedName
-
+    let carPoolLaneInOperation = _prefix "carPoolLaneInOperation"
     /// <summary>
     /// Carriageway closures are in operation at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carriagewayClosures"></see></summary>
-    let carriagewayClosures =
-        Namespaced_IRI.parse _namespace_name "carriagewayClosures" |> NamespacedName
-
+    let carriagewayClosures = _prefix "carriagewayClosures"
     /// <summary>
     /// Clear a lane for emergency vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#clearALaneForEmergencyVehicles"></see></summary>
-    let clearALaneForEmergencyVehicles =
-        Namespaced_IRI.parse _namespace_name "clearALaneForEmergencyVehicles" |> NamespacedName
+    let clearALaneForEmergencyVehicles = _prefix "clearALaneForEmergencyVehicles"
 
     /// <summary>
     /// Clear a lane for snow ploughs and gritting vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#clearALaneForSnowploughsAndGrittingVehicles"></see></summary>
     let clearALaneForSnowploughsAndGrittingVehicles =
-        Namespaced_IRI.parse _namespace_name "clearALaneForSnowploughsAndGrittingVehicles" |> NamespacedName
+        _prefix "clearALaneForSnowploughsAndGrittingVehicles"
 
     /// <summary>
     /// The road is closed to vehicles with the specified characteristics or all, if none defined, for the duration of the winter.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#closedPermanentlyForTheWinter"></see></summary>
-    let closedPermanentlyForTheWinter =
-        Namespaced_IRI.parse _namespace_name "closedPermanentlyForTheWinter" |> NamespacedName
-
+    let closedPermanentlyForTheWinter = _prefix "closedPermanentlyForTheWinter"
     /// <summary>
     /// Two-way traffic is temporarily sharing a single carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#contraflow"></see></summary>
-    let contraflow = Namespaced_IRI.parse _namespace_name "contraflow" |> NamespacedName
+    let contraflow = _prefix "contraflow"
 
     /// <summary>
     /// Do not use the specified lane(s) or carriageway(s).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotUseSpecifiedLanesOrCarriageways"></see></summary>
     let doNotUseSpecifiedLanesOrCarriageways =
-        Namespaced_IRI.parse _namespace_name "doNotUseSpecifiedLanesOrCarriageways" |> NamespacedName
+        _prefix "doNotUseSpecifiedLanesOrCarriageways"
 
     /// <summary>
     /// The hard shoulder is open as an operational lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hardShoulderRunningInOperation"></see></summary>
-    let hardShoulderRunningInOperation =
-        Namespaced_IRI.parse _namespace_name "hardShoulderRunningInOperation" |> NamespacedName
-
+    let hardShoulderRunningInOperation = _prefix "hardShoulderRunningInOperation"
     /// <summary>
     /// A height restriction is in operation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#heightRestrictionInOperation"></see></summary>
-    let heightRestrictionInOperation =
-        Namespaced_IRI.parse _namespace_name "heightRestrictionInOperation" |> NamespacedName
-
+    let heightRestrictionInOperation = _prefix "heightRestrictionInOperation"
     /// <summary>
     /// Road closures occur intermittently on the specified road in the specified direction for short durations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#intermittentShortTermClosures"></see></summary>
-    let intermittentShortTermClosures =
-        Namespaced_IRI.parse _namespace_name "intermittentShortTermClosures" |> NamespacedName
-
+    let intermittentShortTermClosures = _prefix "intermittentShortTermClosures"
     /// <summary>
     /// Keep to the left.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#keepToTheLeft"></see></summary>
-    let keepToTheLeft =
-        Namespaced_IRI.parse _namespace_name "keepToTheLeft" |> NamespacedName
-
+    let keepToTheLeft = _prefix "keepToTheLeft"
     /// <summary>
     /// Keep to the right.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#keepToTheRight"></see></summary>
-    let keepToTheRight =
-        Namespaced_IRI.parse _namespace_name "keepToTheRight" |> NamespacedName
-
+    let keepToTheRight = _prefix "keepToTheRight"
     /// <summary>
     /// Lane closures are in operation at the specified location for vehicles with the specified characteristics or all, if none defined, in the specified direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#laneClosures"></see></summary>
-    let laneClosures =
-        Namespaced_IRI.parse _namespace_name "laneClosures" |> NamespacedName
-
+    let laneClosures = _prefix "laneClosures"
     /// <summary>
     /// Lane closures are in operation at the specified location for vehicles with the specified characteristics or all, if none defined, in the specified direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lanesDeviated"></see></summary>
-    let lanesDeviated =
-        Namespaced_IRI.parse _namespace_name "lanesDeviated" |> NamespacedName
-
+    let lanesDeviated = _prefix "lanesDeviated"
     /// <summary>
     /// Normal lane widths are temporarily reduced.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#narrowLanes"></see></summary>
-    let narrowLanes =
-        Namespaced_IRI.parse _namespace_name "narrowLanes" |> NamespacedName
-
+    let narrowLanes = _prefix "narrowLanes"
     /// <summary>
     /// A new layout of lanes/carriageway has been implemented associated with roadworks.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#newRoadworksLayout"></see></summary>
-    let newRoadworksLayout =
-        Namespaced_IRI.parse _namespace_name "newRoadworksLayout" |> NamespacedName
-
+    let newRoadworksLayout = _prefix "newRoadworksLayout"
     /// <summary>
     /// Every night the road is closed to vehicles with the specified characteristics or all, if none defined, in the specified direction by decision of the appropriate authorities.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overnightClosures"></see></summary>
-    let overnightClosures =
-        Namespaced_IRI.parse _namespace_name "overnightClosures" |> NamespacedName
-
+    let overnightClosures = _prefix "overnightClosures"
     /// <summary>
     /// The road has been cleared of earlier reported problems.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadCleared"></see></summary>
-    let roadCleared =
-        Namespaced_IRI.parse _namespace_name "roadCleared" |> NamespacedName
-
+    let roadCleared = _prefix "roadCleared"
     /// <summary>
     /// The road is closed to vehicles with the specified characteristics or all, if none defined, in the specified direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadClosed"></see></summary>
-    let roadClosed = Namespaced_IRI.parse _namespace_name "roadClosed" |> NamespacedName
-
+    let roadClosed = _prefix "roadClosed"
     /// <summary>
     /// Traffic officers or police are driving slowly in front of a queue of traffic to create a gap in the traffic to allow for clearance activities to take place in safety on the road ahead.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rollingRoadBlock"></see></summary>
-    let rollingRoadBlock =
-        Namespaced_IRI.parse _namespace_name "rollingRoadBlock" |> NamespacedName
-
+    let rollingRoadBlock = _prefix "rollingRoadBlock"
     /// <summary>
     /// Dedicated rush (peak) hour lane(s) are in operation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rushHourLaneInOperation"></see></summary>
-    let rushHourLaneInOperation =
-        Namespaced_IRI.parse _namespace_name "rushHourLaneInOperation" |> NamespacedName
-
+    let rushHourLaneInOperation = _prefix "rushHourLaneInOperation"
     /// <summary>
     /// Traffic is being controlled to move in alternate single lines. This control may be undertaken by traffic lights or flagman.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#singleAlternateLineTraffic"></see></summary>
-    let singleAlternateLineTraffic =
-        Namespaced_IRI.parse _namespace_name "singleAlternateLineTraffic" |> NamespacedName
-
+    let singleAlternateLineTraffic = _prefix "singleAlternateLineTraffic"
     /// <summary>
     /// Dedicated tidal flow lane(s) are in operation in the specified direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tidalFlowLaneInOperation"></see></summary>
-    let tidalFlowLaneInOperation =
-        Namespaced_IRI.parse _namespace_name "tidalFlowLaneInOperation" |> NamespacedName
-
+    let tidalFlowLaneInOperation = _prefix "tidalFlowLaneInOperation"
     /// <summary>
     /// Traffic is being directed back down the opposite carriageway, possibly requiring the temporary removal of the central crash barrier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#turnAroundInOperation"></see></summary>
-    let turnAroundInOperation =
-        Namespaced_IRI.parse _namespace_name "turnAroundInOperation" |> NamespacedName
+    let turnAroundInOperation = _prefix "turnAroundInOperation"
 
     /// <summary>
     /// The specified lane(s) or carriageway(s) may be used. The normal lane(s) or carriageway(s) restrictions are not currently in force.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useOfSpecifiedLanesOrCarriagewaysAllowed"></see></summary>
     let useOfSpecifiedLanesOrCarriagewaysAllowed =
-        Namespaced_IRI.parse _namespace_name "useOfSpecifiedLanesOrCarriagewaysAllowed" |> NamespacedName
+        _prefix "useOfSpecifiedLanesOrCarriagewaysAllowed"
 
     /// <summary>
     /// Use the specified lane(s) or carriageway(s).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useSpecifiedLanesOrCarriageways"></see></summary>
-    let useSpecifiedLanesOrCarriageways =
-        Namespaced_IRI.parse _namespace_name "useSpecifiedLanesOrCarriageways" |> NamespacedName
-
+    let useSpecifiedLanesOrCarriageways = _prefix "useSpecifiedLanesOrCarriageways"
     /// <summary>
     /// Vehicles are being stored on the roadway and/or at a rest area or service area at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleStorageInOperation"></see></summary>
-    let vehicleStorageInOperation =
-        Namespaced_IRI.parse _namespace_name "vehicleStorageInOperation" |> NamespacedName
-
+    let vehicleStorageInOperation = _prefix "vehicleStorageInOperation"
     /// <summary>
     /// A weight restriction is in operation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#weightRestrictionInOperation"></see></summary>
-    let weightRestrictionInOperation =
-        Namespaced_IRI.parse _namespace_name "weightRestrictionInOperation" |> NamespacedName
-
+    let weightRestrictionInOperation = _prefix "weightRestrictionInOperation"
     /// <summary>
     /// Traffic conditions are changing from free-flow to heavy or slow service levels.  Queues may also be expected.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficBuildingUp"></see></summary>
-    let trafficBuildingUp =
-        Namespaced_IRI.parse _namespace_name "trafficBuildingUp" |> NamespacedName
-
+    let trafficBuildingUp = _prefix "trafficBuildingUp"
     /// <summary>
     /// Traffic conditions are changing from heavy or slow service levels to free-flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficEasing"></see></summary>
-    let trafficEasing =
-        Namespaced_IRI.parse _namespace_name "trafficEasing" |> NamespacedName
-
+    let trafficEasing = _prefix "trafficEasing"
     /// <summary>
     /// Traffic conditions are currently stable.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficStable"></see></summary>
-    let trafficStable =
-        Namespaced_IRI.parse _namespace_name "trafficStable" |> NamespacedName
-
+    let trafficStable = _prefix "trafficStable"
     /// <summary>
     /// The roadworks are expected to last for a long term ( duration &gt; 6 months)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#longTerm"></see></summary>
-    let longTerm = Namespaced_IRI.parse _namespace_name "longTerm" |> NamespacedName
+    let longTerm = _prefix "longTerm"
     /// <summary>
     /// The roadworks are expected to last for a medium term (1 month &lt; duration &lt; = 6 months).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#mediumTerm"></see></summary>
-    let mediumTerm = Namespaced_IRI.parse _namespace_name "mediumTerm" |> NamespacedName
+    let mediumTerm = _prefix "mediumTerm"
     /// <summary>
     /// The roadworks are expected to last for a short term ( duration &lt; = 1 month)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#shortTerm"></see></summary>
-    let shortTerm = Namespaced_IRI.parse _namespace_name "shortTerm" |> NamespacedName
+    let shortTerm = _prefix "shortTerm"
     /// <summary>
     /// The source is completely certain of the occurrence of the situation record version content.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#certain"></see></summary>
-    let certain = Namespaced_IRI.parse _namespace_name "certain" |> NamespacedName
+    let certain = _prefix "certain"
     /// <summary>
     /// The source has a reasonably low level of confidence of the occurrence of the situation record version content.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#improbable"></see></summary>
-    let improbable = Namespaced_IRI.parse _namespace_name "improbable" |> NamespacedName
+    let improbable = _prefix "improbable"
     /// <summary>
     /// The source has a reasonably high level of confidence of the occurrence of the situation record version content.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#probable"></see></summary>
-    let probable = Namespaced_IRI.parse _namespace_name "probable" |> NamespacedName
+    let probable = _prefix "probable"
     /// <summary>
     /// The source has a moderate level of confidence of the occurrence of the situation record version content.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#riskOf"></see></summary>
-    let riskOf = Namespaced_IRI.parse _namespace_name "riskOf" |> NamespacedName
-
+    let riskOf = _prefix "riskOf"
     /// <summary>
     /// Increased skid risk due to leaves on road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#leavesOnRoad"></see></summary>
-    let leavesOnRoad =
-        Namespaced_IRI.parse _namespace_name "leavesOnRoad" |> NamespacedName
-
+    let leavesOnRoad = _prefix "leavesOnRoad"
     /// <summary>
     /// Increased skid risk and injury risk due to loose chippings on road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#looseChippings"></see></summary>
-    let looseChippings =
-        Namespaced_IRI.parse _namespace_name "looseChippings" |> NamespacedName
-
+    let looseChippings = _prefix "looseChippings"
     /// <summary>
     /// Increased skid risk due to loose sand on road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#looseSandOnRoad"></see></summary>
-    let looseSandOnRoad =
-        Namespaced_IRI.parse _namespace_name "looseSandOnRoad" |> NamespacedName
-
+    let looseSandOnRoad = _prefix "looseSandOnRoad"
     /// <summary>
     /// Increased skid risk due to mud on road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#mudOnRoad"></see></summary>
-    let mudOnRoad = Namespaced_IRI.parse _namespace_name "mudOnRoad" |> NamespacedName
+    let mudOnRoad = _prefix "mudOnRoad"
     /// <summary>
     /// Increased skid risk due to oil on road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#oilOnRoad"></see></summary>
-    let oilOnRoad = Namespaced_IRI.parse _namespace_name "oilOnRoad" |> NamespacedName
-
+    let oilOnRoad = _prefix "oilOnRoad"
     /// <summary>
     /// Increased skid risk due to petrol on road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#petrolOnRoad"></see></summary>
-    let petrolOnRoad =
-        Namespaced_IRI.parse _namespace_name "petrolOnRoad" |> NamespacedName
-
+    let petrolOnRoad = _prefix "petrolOnRoad"
     /// <summary>
     /// The road surface is damaged, severely rutted or potholed (i.e. it is in a poor state of repair).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadSurfaceInPoorCondition"></see></summary>
-    let roadSurfaceInPoorCondition =
-        Namespaced_IRI.parse _namespace_name "roadSurfaceInPoorCondition" |> NamespacedName
-
+    let roadSurfaceInPoorCondition = _prefix "roadSurfaceInPoorCondition"
     /// <summary>
     /// The road surface is slippery due to an unspecified non-weather related cause.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slipperyRoad"></see></summary>
-    let slipperyRoad =
-        Namespaced_IRI.parse _namespace_name "slipperyRoad" |> NamespacedName
-
+    let slipperyRoad = _prefix "slipperyRoad"
     /// <summary>
     /// Traffic may be disrupted due to animals on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#animalsOnTheRoad"></see></summary>
-    let animalsOnTheRoad =
-        Namespaced_IRI.parse _namespace_name "animalsOnTheRoad" |> NamespacedName
-
+    let animalsOnTheRoad = _prefix "animalsOnTheRoad"
     /// <summary>
     /// Traffic may be disrupted due to a herd of animals on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#herdOfAnimalsOnTheRoad"></see></summary>
-    let herdOfAnimalsOnTheRoad =
-        Namespaced_IRI.parse _namespace_name "herdOfAnimalsOnTheRoad" |> NamespacedName
-
+    let herdOfAnimalsOnTheRoad = _prefix "herdOfAnimalsOnTheRoad"
     /// <summary>
     /// Traffic may be disrupted due to large animals on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#largeAnimalsOnTheRoad"></see></summary>
-    let largeAnimalsOnTheRoad =
-        Namespaced_IRI.parse _namespace_name "largeAnimalsOnTheRoad" |> NamespacedName
-
+    let largeAnimalsOnTheRoad = _prefix "largeAnimalsOnTheRoad"
     /// <summary>
     /// Name of a police force control area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#policeForceControlAreaName"></see></summary>
-    let policeForceControlAreaName =
-        Namespaced_IRI.parse _namespace_name "policeForceControlAreaName" |> NamespacedName
-
+    let policeForceControlAreaName = _prefix "policeForceControlAreaName"
     /// <summary>
     /// Traffic flow is of an irregular nature, subject to sudden changes in rates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#erraticFlow"></see></summary>
-    let erraticFlow =
-        Namespaced_IRI.parse _namespace_name "erraticFlow" |> NamespacedName
-
+    let erraticFlow = _prefix "erraticFlow"
     /// <summary>
     /// Traffic flow is smooth.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#smoothFlow"></see></summary>
-    let smoothFlow = Namespaced_IRI.parse _namespace_name "smoothFlow" |> NamespacedName
+    let smoothFlow = _prefix "smoothFlow"
     /// <summary>
     /// Traffic flow is of a stop and go nature with queues forming and ending continuously on the specified section of road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stopAndGo"></see></summary>
-    let stopAndGo = Namespaced_IRI.parse _namespace_name "stopAndGo" |> NamespacedName
-
+    let stopAndGo = _prefix "stopAndGo"
     /// <summary>
     /// Traffic is blocked at the specified location and in the specified direction due to an unplanned event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficBlocked"></see></summary>
-    let trafficBlocked =
-        Namespaced_IRI.parse _namespace_name "trafficBlocked" |> NamespacedName
-
+    let trafficBlocked = _prefix "trafficBlocked"
     /// <summary>
     /// Includes any general delivery channel such as broadcast channels (e.g. radio, tv, RDS-TMC, TPEG services, etc.) or web publishing available to public or to specific users, depending on Service Provider policies.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#anyGeneralDeliveryService"></see></summary>
-    let anyGeneralDeliveryService =
-        Namespaced_IRI.parse _namespace_name "anyGeneralDeliveryService" |> NamespacedName
-
+    let anyGeneralDeliveryService = _prefix "anyGeneralDeliveryService"
     /// <summary>
     /// Specific services which deliver warning alerts to end users to enhance safety via any specific application available to drivers, including C-ITS services.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#safetyServices"></see></summary>
-    let safetyServices =
-        Namespaced_IRI.parse _namespace_name "safetyServices" |> NamespacedName
-
+    let safetyServices = _prefix "safetyServices"
     /// <summary>
     /// Variable Message Signs or any other visual roadside devices which information are accessible to drivers which aim to affect driving style improving safety and road network LoS.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vms"></see></summary>
-    let vms = Namespaced_IRI.parse _namespace_name "vms" |> NamespacedName
-
+    let vms = _prefix "vms"
     /// <summary>
     /// The name of the road on which the junction point is located.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegIlcName1"></see></summary>
-    let tpegIlcName1 =
-        Namespaced_IRI.parse _namespace_name "tpegIlcName1" |> NamespacedName
-
+    let tpegIlcName1 = _prefix "tpegIlcName1"
     /// <summary>
     /// The name of the first intersecting road at the junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegIlcName2"></see></summary>
-    let tpegIlcName2 =
-        Namespaced_IRI.parse _namespace_name "tpegIlcName2" |> NamespacedName
-
+    let tpegIlcName2 = _prefix "tpegIlcName2"
     /// <summary>
     /// The name of the second intersecting road (if one exists) at the junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegIlcName3"></see></summary>
-    let tpegIlcName3 =
-        Namespaced_IRI.parse _namespace_name "tpegIlcName3" |> NamespacedName
-
+    let tpegIlcName3 = _prefix "tpegIlcName3"
     /// <summary>
     /// Delay between one hour and three hours.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#betweenOneHourAndThreeHours"></see></summary>
-    let betweenOneHourAndThreeHours =
-        Namespaced_IRI.parse _namespace_name "betweenOneHourAndThreeHours" |> NamespacedName
-
+    let betweenOneHourAndThreeHours = _prefix "betweenOneHourAndThreeHours"
     /// <summary>
     /// Delay between ten minutes and thirty minutes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#betweenTenMinutesAndThirtyMinutes"></see></summary>
-    let betweenTenMinutesAndThirtyMinutes =
-        Namespaced_IRI.parse _namespace_name "betweenTenMinutesAndThirtyMinutes" |> NamespacedName
-
+    let betweenTenMinutesAndThirtyMinutes = _prefix "betweenTenMinutesAndThirtyMinutes"
     /// <summary>
     /// Delay between thirty minutes and one hour.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#betweenThirtyMinutesAndOneHour"></see></summary>
-    let betweenThirtyMinutesAndOneHour =
-        Namespaced_IRI.parse _namespace_name "betweenThirtyMinutesAndOneHour" |> NamespacedName
-
+    let betweenThirtyMinutesAndOneHour = _prefix "betweenThirtyMinutesAndOneHour"
     /// <summary>
     /// Delay between three hours and six hours.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#betweenThreeHoursAndSixHours"></see></summary>
-    let betweenThreeHoursAndSixHours =
-        Namespaced_IRI.parse _namespace_name "betweenThreeHoursAndSixHours" |> NamespacedName
-
+    let betweenThreeHoursAndSixHours = _prefix "betweenThreeHoursAndSixHours"
     /// <summary>
     /// Delay longer than six hours.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#longerThanSixHours"></see></summary>
-    let longerThanSixHours =
-        Namespaced_IRI.parse _namespace_name "longerThanSixHours" |> NamespacedName
-
+    let longerThanSixHours = _prefix "longerThanSixHours"
     /// <summary>
     /// Negligible delay.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#negligible"></see></summary>
-    let negligible = Namespaced_IRI.parse _namespace_name "negligible" |> NamespacedName
-
+    let negligible = _prefix "negligible"
     /// <summary>
     /// Delay up to ten minutes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#upToTenMinutes"></see></summary>
-    let upToTenMinutes =
-        Namespaced_IRI.parse _namespace_name "upToTenMinutes" |> NamespacedName
-
+    let upToTenMinutes = _prefix "upToTenMinutes"
     /// <summary>
     /// A geographic or geometric large area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#largeArea"></see></summary>
-    let largeArea = Namespaced_IRI.parse _namespace_name "largeArea" |> NamespacedName
+    let largeArea = _prefix "largeArea"
     /// <summary>
     /// Above or over the normal road grade elevation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#aboveGrade"></see></summary>
-    let aboveGrade = Namespaced_IRI.parse _namespace_name "aboveGrade" |> NamespacedName
+    let aboveGrade = _prefix "aboveGrade"
     /// <summary>
     /// At the normal road grade elevation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#atGrade"></see></summary>
-    let atGrade = Namespaced_IRI.parse _namespace_name "atGrade" |> NamespacedName
+    let atGrade = _prefix "atGrade"
     /// <summary>
     /// Below or under the normal road grade elevation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#belowGrade"></see></summary>
-    let belowGrade = Namespaced_IRI.parse _namespace_name "belowGrade" |> NamespacedName
+    let belowGrade = _prefix "belowGrade"
     /// <summary>
     /// On the carriageway or lane which is inbound towards the centre of the town or city.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#inbound"></see></summary>
-    let inbound = Namespaced_IRI.parse _namespace_name "inbound" |> NamespacedName
+    let inbound = _prefix "inbound"
     /// <summary>
     /// On the carriageway or lane which is outbound from the centre of the town or city.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#outbound"></see></summary>
-    let outbound = Namespaced_IRI.parse _namespace_name "outbound" |> NamespacedName
-
+    let outbound = _prefix "outbound"
     /// <summary>
     /// Do not follow diversion signs.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotFollowDiversionSigns"></see></summary>
-    let doNotFollowDiversionSigns =
-        Namespaced_IRI.parse _namespace_name "doNotFollowDiversionSigns" |> NamespacedName
-
+    let doNotFollowDiversionSigns = _prefix "doNotFollowDiversionSigns"
     /// <summary>
     /// Rerouted traffic is not to use the specified entry onto the identified road to commence the alternative route.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotUseEntry"></see></summary>
-    let doNotUseEntry =
-        Namespaced_IRI.parse _namespace_name "doNotUseEntry" |> NamespacedName
-
+    let doNotUseEntry = _prefix "doNotUseEntry"
     /// <summary>
     /// Rerouted traffic is not to use the specified exit from the identified road to commence the alternative route.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotUseExit"></see></summary>
-    let doNotUseExit =
-        Namespaced_IRI.parse _namespace_name "doNotUseExit" |> NamespacedName
-
+    let doNotUseExit = _prefix "doNotUseExit"
     /// <summary>
     /// Rerouted traffic is not to use the specified intersection or junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#doNotUseIntersectionOrJunction"></see></summary>
-    let doNotUseIntersectionOrJunction =
-        Namespaced_IRI.parse _namespace_name "doNotUseIntersectionOrJunction" |> NamespacedName
-
+    let doNotUseIntersectionOrJunction = _prefix "doNotUseIntersectionOrJunction"
     /// <summary>
     /// Rerouted traffic is to follow the diversion signs.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#followDiversionSigns"></see></summary>
-    let followDiversionSigns =
-        Namespaced_IRI.parse _namespace_name "followDiversionSigns" |> NamespacedName
-
+    let followDiversionSigns = _prefix "followDiversionSigns"
     /// <summary>
     /// Rerouted traffic is to follow local diversion.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#followLocalDiversion"></see></summary>
-    let followLocalDiversion =
-        Namespaced_IRI.parse _namespace_name "followLocalDiversion" |> NamespacedName
-
+    let followLocalDiversion = _prefix "followLocalDiversion"
     /// <summary>
     /// Rerouted traffic is to follow the special diversion markers.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#followSpecialMarkers"></see></summary>
-    let followSpecialMarkers =
-        Namespaced_IRI.parse _namespace_name "followSpecialMarkers" |> NamespacedName
-
+    let followSpecialMarkers = _prefix "followSpecialMarkers"
     /// <summary>
     /// Rerouted traffic is to use the specified entry onto the identified road to commence the alternative route.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useEntry"></see></summary>
-    let useEntry = Namespaced_IRI.parse _namespace_name "useEntry" |> NamespacedName
+    let useEntry = _prefix "useEntry"
     /// <summary>
     /// Rerouted traffic is to use the specified exit from the identified road to commence the alternative route.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useExit"></see></summary>
-    let useExit = Namespaced_IRI.parse _namespace_name "useExit" |> NamespacedName
-
+    let useExit = _prefix "useExit"
     /// <summary>
     /// Rerouted traffic is to use the specified intersection or junction to commence the alternative route.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#useIntersectionOrJunction"></see></summary>
-    let useIntersectionOrJunction =
-        Namespaced_IRI.parse _namespace_name "useIntersectionOrJunction" |> NamespacedName
-
+    let useIntersectionOrJunction = _prefix "useIntersectionOrJunction"
     /// <summary>
     /// Traffic flow normal
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficFlowNormal"></see></summary>
-    let trafficFlowNormal =
-        Namespaced_IRI.parse _namespace_name "trafficFlowNormal" |> NamespacedName
-
+    let trafficFlowNormal = _prefix "trafficFlowNormal"
     /// <summary>
     /// Traffic heavier than normal
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficHeavierThanNormal"></see></summary>
-    let trafficHeavierThanNormal =
-        Namespaced_IRI.parse _namespace_name "trafficHeavierThanNormal" |> NamespacedName
-
+    let trafficHeavierThanNormal = _prefix "trafficHeavierThanNormal"
     /// <summary>
     /// Traffic lighter than normal
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficLighterThanNormal"></see></summary>
-    let trafficLighterThanNormal =
-        Namespaced_IRI.parse _namespace_name "trafficLighterThanNormal" |> NamespacedName
-
+    let trafficLighterThanNormal = _prefix "trafficLighterThanNormal"
     /// <summary>
     /// Traffic very much heavier than normal
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficVeryMuchHeavierThanNormal"></see></summary>
-    let trafficVeryMuchHeavierThanNormal =
-        Namespaced_IRI.parse _namespace_name "trafficVeryMuchHeavierThanNormal" |> NamespacedName
-
+    let trafficVeryMuchHeavierThanNormal = _prefix "trafficVeryMuchHeavierThanNormal"
     /// <summary>
     /// Traffic very much lighter than normal
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficVeryMuchLighterThanNormal"></see></summary>
-    let trafficVeryMuchLighterThanNormal =
-        Namespaced_IRI.parse _namespace_name "trafficVeryMuchLighterThanNormal" |> NamespacedName
-
+    let trafficVeryMuchLighterThanNormal = _prefix "trafficVeryMuchLighterThanNormal"
     /// <summary>
     /// In all lanes of the carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#allLanesCompleteCarriageway"></see></summary>
-    let allLanesCompleteCarriageway =
-        Namespaced_IRI.parse _namespace_name "allLanesCompleteCarriageway" |> NamespacedName
-
+    let allLanesCompleteCarriageway = _prefix "allLanesCompleteCarriageway"
     /// <summary>
     /// In the bus lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#busLane"></see></summary>
-    let busLane = Namespaced_IRI.parse _namespace_name "busLane" |> NamespacedName
+    let busLane = _prefix "busLane"
     /// <summary>
     /// In the bus stop lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#busStop"></see></summary>
-    let busStop = Namespaced_IRI.parse _namespace_name "busStop" |> NamespacedName
-
+    let busStop = _prefix "busStop"
     /// <summary>
     /// In the carpool lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carPoolLane"></see></summary>
-    let carPoolLane =
-        Namespaced_IRI.parse _namespace_name "carPoolLane" |> NamespacedName
-
+    let carPoolLane = _prefix "carPoolLane"
     /// <summary>
     /// On the central reservation separating the two directional carriageways of the highway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#centralReservation"></see></summary>
-    let centralReservation =
-        Namespaced_IRI.parse _namespace_name "centralReservation" |> NamespacedName
-
+    let centralReservation = _prefix "centralReservation"
     /// <summary>
     /// In the crawler lane - a lane that should be used by slower vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#crawlerLane"></see></summary>
-    let crawlerLane =
-        Namespaced_IRI.parse _namespace_name "crawlerLane" |> NamespacedName
-
+    let crawlerLane = _prefix "crawlerLane"
     /// <summary>
     /// Part of a carriageway designated for cycles. A cycle lane is distinguished from the rest of the carriageway by longitudinal road markings.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#cycleLane"></see></summary>
-    let cycleLane = Namespaced_IRI.parse _namespace_name "cycleLane" |> NamespacedName
-
+    let cycleLane = _prefix "cycleLane"
     /// <summary>
     /// In the emergency lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#emergencyLane"></see></summary>
-    let emergencyLane =
-        Namespaced_IRI.parse _namespace_name "emergencyLane" |> NamespacedName
-
+    let emergencyLane = _prefix "emergencyLane"
     /// <summary>
     /// In the escape lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#escapeLane"></see></summary>
-    let escapeLane = Namespaced_IRI.parse _namespace_name "escapeLane" |> NamespacedName
-
+    let escapeLane = _prefix "escapeLane"
     /// <summary>
     /// In the express lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#expressLane"></see></summary>
-    let expressLane =
-        Namespaced_IRI.parse _namespace_name "expressLane" |> NamespacedName
-
+    let expressLane = _prefix "expressLane"
     /// <summary>
     /// On the hard shoulder.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hardShoulder"></see></summary>
-    let hardShoulder =
-        Namespaced_IRI.parse _namespace_name "hardShoulder" |> NamespacedName
-
+    let hardShoulder = _prefix "hardShoulder"
     /// <summary>
     /// In the heavy vehicle lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#heavyVehicleLane"></see></summary>
-    let heavyVehicleLane =
-        Namespaced_IRI.parse _namespace_name "heavyVehicleLane" |> NamespacedName
-
+    let heavyVehicleLane = _prefix "heavyVehicleLane"
     /// <summary>
     /// In a lay-by.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#layBy"></see></summary>
-    let layBy = Namespaced_IRI.parse _namespace_name "layBy" |> NamespacedName
-
+    let layBy = _prefix "layBy"
     /// <summary>
     /// In the left hand turning lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#leftHandTurningLane"></see></summary>
-    let leftHandTurningLane =
-        Namespaced_IRI.parse _namespace_name "leftHandTurningLane" |> NamespacedName
-
+    let leftHandTurningLane = _prefix "leftHandTurningLane"
     /// <summary>
     /// In the left lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#leftLane"></see></summary>
-    let leftLane = Namespaced_IRI.parse _namespace_name "leftLane" |> NamespacedName
-
+    let leftLane = _prefix "leftLane"
     /// <summary>
     /// In the local traffic lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#localTrafficLane"></see></summary>
-    let localTrafficLane =
-        Namespaced_IRI.parse _namespace_name "localTrafficLane" |> NamespacedName
-
+    let localTrafficLane = _prefix "localTrafficLane"
     /// <summary>
     /// In the middle lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#middleLane"></see></summary>
-    let middleLane = Namespaced_IRI.parse _namespace_name "middleLane" |> NamespacedName
-
+    let middleLane = _prefix "middleLane"
     /// <summary>
     /// In the overtaking lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#overtakingLane"></see></summary>
-    let overtakingLane =
-        Namespaced_IRI.parse _namespace_name "overtakingLane" |> NamespacedName
-
+    let overtakingLane = _prefix "overtakingLane"
     /// <summary>
     /// In the right hand turning lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rightHandTurningLane"></see></summary>
-    let rightHandTurningLane =
-        Namespaced_IRI.parse _namespace_name "rightHandTurningLane" |> NamespacedName
-
+    let rightHandTurningLane = _prefix "rightHandTurningLane"
     /// <summary>
     /// In the right lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rightLane"></see></summary>
-    let rightLane = Namespaced_IRI.parse _namespace_name "rightLane" |> NamespacedName
-
+    let rightLane = _prefix "rightLane"
     /// <summary>
     /// In the lane dedicated for use during the rush (peak) hour.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rushHourLane"></see></summary>
-    let rushHourLane =
-        Namespaced_IRI.parse _namespace_name "rushHourLane" |> NamespacedName
-
+    let rushHourLane = _prefix "rushHourLane"
     /// <summary>
     /// In the area/lane reserved for passenger pick-up or set-down.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#setDownArea"></see></summary>
-    let setDownArea =
-        Namespaced_IRI.parse _namespace_name "setDownArea" |> NamespacedName
-
+    let setDownArea = _prefix "setDownArea"
     /// <summary>
     /// In a lane dedicated to vehicles that are not permitted to exceed a fixed slow speed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#slowVehicleLane"></see></summary>
-    let slowVehicleLane =
-        Namespaced_IRI.parse _namespace_name "slowVehicleLane" |> NamespacedName
-
+    let slowVehicleLane = _prefix "slowVehicleLane"
     /// <summary>
     /// In the through traffic lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#throughTrafficLane"></see></summary>
-    let throughTrafficLane =
-        Namespaced_IRI.parse _namespace_name "throughTrafficLane" |> NamespacedName
-
+    let throughTrafficLane = _prefix "throughTrafficLane"
     /// <summary>
     /// In the lane dedicated for use as a tidal flow lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tidalFlowLane"></see></summary>
-    let tidalFlowLane =
-        Namespaced_IRI.parse _namespace_name "tidalFlowLane" |> NamespacedName
-
+    let tidalFlowLane = _prefix "tidalFlowLane"
     /// <summary>
     /// In the turning lane.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#turningLane"></see></summary>
-    let turningLane =
-        Namespaced_IRI.parse _namespace_name "turningLane" |> NamespacedName
-
+    let turningLane = _prefix "turningLane"
     /// <summary>
     /// On the verge.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#verge"></see></summary>
-    let verge = Namespaced_IRI.parse _namespace_name "verge" |> NamespacedName
+    let verge = _prefix "verge"
 
     /// <summary>
     /// Accident involving radioactive material.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accidentInvolvingRadioactiveMaterial"></see></summary>
     let accidentInvolvingRadioactiveMaterial =
-        Namespaced_IRI.parse _namespace_name "accidentInvolvingRadioactiveMaterial" |> NamespacedName
+        _prefix "accidentInvolvingRadioactiveMaterial"
 
     /// <summary>
     /// Application region
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#applicationRegion"></see></summary>
-    let applicationRegion =
-        Namespaced_IRI.parse _namespace_name "applicationRegion" |> NamespacedName
-
+    let applicationRegion = _prefix "applicationRegion"
     /// <summary>
     /// Car park area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carParkArea"></see></summary>
-    let carParkArea =
-        Namespaced_IRI.parse _namespace_name "carParkArea" |> NamespacedName
-
+    let carParkArea = _prefix "carParkArea"
     /// <summary>
     /// Carpool area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#carpoolArea"></see></summary>
-    let carpoolArea =
-        Namespaced_IRI.parse _namespace_name "carpoolArea" |> NamespacedName
-
+    let carpoolArea = _prefix "carpoolArea"
     /// <summary>
     /// Continent
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#continent"></see></summary>
-    let continent = Namespaced_IRI.parse _namespace_name "continent" |> NamespacedName
-
+    let continent = _prefix "continent"
     /// <summary>
     /// Group of countries.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#countryGroup"></see></summary>
-    let countryGroup =
-        Namespaced_IRI.parse _namespace_name "countryGroup" |> NamespacedName
-
+    let countryGroup = _prefix "countryGroup"
     /// <summary>
     /// Fuzzy area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fuzzyArea"></see></summary>
-    let fuzzyArea = Namespaced_IRI.parse _namespace_name "fuzzyArea" |> NamespacedName
-
+    let fuzzyArea = _prefix "fuzzyArea"
     /// <summary>
     /// Industrial area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#industrialArea"></see></summary>
-    let industrialArea =
-        Namespaced_IRI.parse _namespace_name "industrialArea" |> NamespacedName
-
+    let industrialArea = _prefix "industrialArea"
     /// <summary>
     /// Lake
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lake"></see></summary>
-    let lake = Namespaced_IRI.parse _namespace_name "lake" |> NamespacedName
-
+    let lake = _prefix "lake"
     /// <summary>
     /// Meteorological area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#meteorologicalArea"></see></summary>
-    let meteorologicalArea =
-        Namespaced_IRI.parse _namespace_name "meteorologicalArea" |> NamespacedName
-
+    let meteorologicalArea = _prefix "meteorologicalArea"
     /// <summary>
     /// Order 1 administrative area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#order1AdministrativeArea"></see></summary>
-    let order1AdministrativeArea =
-        Namespaced_IRI.parse _namespace_name "order1AdministrativeArea" |> NamespacedName
-
+    let order1AdministrativeArea = _prefix "order1AdministrativeArea"
     /// <summary>
     /// Order 2 administrative area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#order2AdministrativeArea"></see></summary>
-    let order2AdministrativeArea =
-        Namespaced_IRI.parse _namespace_name "order2AdministrativeArea" |> NamespacedName
-
+    let order2AdministrativeArea = _prefix "order2AdministrativeArea"
     /// <summary>
     /// Order 3 administrative area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#order3AdministrativeArea"></see></summary>
-    let order3AdministrativeArea =
-        Namespaced_IRI.parse _namespace_name "order3AdministrativeArea" |> NamespacedName
-
+    let order3AdministrativeArea = _prefix "order3AdministrativeArea"
     /// <summary>
     /// Order 4 administrative area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#order4AdministrativeArea"></see></summary>
-    let order4AdministrativeArea =
-        Namespaced_IRI.parse _namespace_name "order4AdministrativeArea" |> NamespacedName
-
+    let order4AdministrativeArea = _prefix "order4AdministrativeArea"
     /// <summary>
     /// Order 5 administrative area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#order5AdministrativeArea"></see></summary>
-    let order5AdministrativeArea =
-        Namespaced_IRI.parse _namespace_name "order5AdministrativeArea" |> NamespacedName
-
+    let order5AdministrativeArea = _prefix "order5AdministrativeArea"
     /// <summary>
     /// A park and ride site
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#parkAndRideSite"></see></summary>
-    let parkAndRideSite =
-        Namespaced_IRI.parse _namespace_name "parkAndRideSite" |> NamespacedName
-
+    let parkAndRideSite = _prefix "parkAndRideSite"
     /// <summary>
     /// Police force control area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#policeForceControlArea"></see></summary>
-    let policeForceControlArea =
-        Namespaced_IRI.parse _namespace_name "policeForceControlArea" |> NamespacedName
-
+    let policeForceControlArea = _prefix "policeForceControlArea"
     /// <summary>
     /// Road operator control area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadOperatorControlArea"></see></summary>
-    let roadOperatorControlArea =
-        Namespaced_IRI.parse _namespace_name "roadOperatorControlArea" |> NamespacedName
-
+    let roadOperatorControlArea = _prefix "roadOperatorControlArea"
     /// <summary>
     /// Rural county
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ruralCounty"></see></summary>
-    let ruralCounty =
-        Namespaced_IRI.parse _namespace_name "ruralCounty" |> NamespacedName
-
+    let ruralCounty = _prefix "ruralCounty"
     /// <summary>
     /// Sea
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sea"></see></summary>
-    let sea = Namespaced_IRI.parse _namespace_name "sea" |> NamespacedName
-
+    let sea = _prefix "sea"
     /// <summary>
     /// Tourist area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#touristArea"></see></summary>
-    let touristArea =
-        Namespaced_IRI.parse _namespace_name "touristArea" |> NamespacedName
-
+    let touristArea = _prefix "touristArea"
     /// <summary>
     /// Traffic area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficArea"></see></summary>
-    let trafficArea =
-        Namespaced_IRI.parse _namespace_name "trafficArea" |> NamespacedName
-
+    let trafficArea = _prefix "trafficArea"
     /// <summary>
     /// Urban county
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#urbanCounty"></see></summary>
-    let urbanCounty =
-        Namespaced_IRI.parse _namespace_name "urbanCounty" |> NamespacedName
-
+    let urbanCounty = _prefix "urbanCounty"
     /// <summary>
     /// Water area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#waterArea"></see></summary>
-    let waterArea = Namespaced_IRI.parse _namespace_name "waterArea" |> NamespacedName
+    let waterArea = _prefix "waterArea"
     /// <summary>
     /// Adverse weather conditions are affecting driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#badWeather"></see></summary>
-    let badWeather = Namespaced_IRI.parse _namespace_name "badWeather" |> NamespacedName
-
+    let badWeather = _prefix "badWeather"
     /// <summary>
     /// Dust blowing across the roadway causing significantly reduced visibility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#blowingDust"></see></summary>
-    let blowingDust =
-        Namespaced_IRI.parse _namespace_name "blowingDust" |> NamespacedName
-
+    let blowingDust = _prefix "blowingDust"
     /// <summary>
     /// Fallen snow moving due to the forces of wind.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#blowingSnow"></see></summary>
-    let blowingSnow =
-        Namespaced_IRI.parse _namespace_name "blowingSnow" |> NamespacedName
-
+    let blowingSnow = _prefix "blowingSnow"
     /// <summary>
     /// Strong cross winds across the direction of the roadway (e.g. on a ridge or bridge).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#crosswinds"></see></summary>
-    let crosswinds = Namespaced_IRI.parse _namespace_name "crosswinds" |> NamespacedName
-
+    let crosswinds = _prefix "crosswinds"
     /// <summary>
     /// Abnormally low temperatures.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#extremeCold"></see></summary>
-    let extremeCold =
-        Namespaced_IRI.parse _namespace_name "extremeCold" |> NamespacedName
-
+    let extremeCold = _prefix "extremeCold"
     /// <summary>
     /// Abnormally high expected maximum temperature.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#extremeHeat"></see></summary>
-    let extremeHeat =
-        Namespaced_IRI.parse _namespace_name "extremeHeat" |> NamespacedName
-
+    let extremeHeat = _prefix "extremeHeat"
     /// <summary>
     /// Fog, visibility more than 50m.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#fog"></see></summary>
-    let fog = Namespaced_IRI.parse _namespace_name "fog" |> NamespacedName
+    let fog = _prefix "fog"
     /// <summary>
     /// Frost can be expected.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#frost"></see></summary>
-    let frost = Namespaced_IRI.parse _namespace_name "frost" |> NamespacedName
+    let frost = _prefix "frost"
     /// <summary>
     /// Small balls of ice and compacted snow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hail"></see></summary>
-    let hail = Namespaced_IRI.parse _namespace_name "hail" |> NamespacedName
+    let hail = _prefix "hail"
     /// <summary>
     /// Rain, visibility more than 50m.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#rain"></see></summary>
-    let rain = Namespaced_IRI.parse _namespace_name "rain" |> NamespacedName
+    let rain = _prefix "rain"
     /// <summary>
     /// Sand blowing across the roadway causing significantly reduced visibility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sandStorms"></see></summary>
-    let sandStorms = Namespaced_IRI.parse _namespace_name "sandStorms" |> NamespacedName
-
+    let sandStorms = _prefix "sandStorms"
     /// <summary>
     /// Smoke drifting across the roadway causing significantly reduced visibility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#smokeHazard"></see></summary>
-    let smokeHazard =
-        Namespaced_IRI.parse _namespace_name "smokeHazard" |> NamespacedName
-
+    let smokeHazard = _prefix "smokeHazard"
     /// <summary>
     /// Falling snow, visibility more than 50m.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#snowFall"></see></summary>
-    let snowFall = Namespaced_IRI.parse _namespace_name "snowFall" |> NamespacedName
-
+    let snowFall = _prefix "snowFall"
     /// <summary>
     /// Winds between 90 km/h and 120 km/h.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#stormForceWinds"></see></summary>
-    let stormForceWinds =
-        Namespaced_IRI.parse _namespace_name "stormForceWinds" |> NamespacedName
-
+    let stormForceWinds = _prefix "stormForceWinds"
     /// <summary>
     /// Constantly varying winds, strong at times.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#strongGustsOfWinds"></see></summary>
-    let strongGustsOfWinds =
-        Namespaced_IRI.parse _namespace_name "strongGustsOfWinds" |> NamespacedName
-
+    let strongGustsOfWinds = _prefix "strongGustsOfWinds"
     /// <summary>
     /// Winds between 40 km/h and 60 km/h.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#strongWinds"></see></summary>
-    let strongWinds =
-        Namespaced_IRI.parse _namespace_name "strongWinds" |> NamespacedName
-
+    let strongWinds = _prefix "strongWinds"
     /// <summary>
     /// Large numbers of insects which create a hazard for road users through reduced visibility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#swarmOfInsects"></see></summary>
-    let swarmOfInsects =
-        Namespaced_IRI.parse _namespace_name "swarmOfInsects" |> NamespacedName
-
+    let swarmOfInsects = _prefix "swarmOfInsects"
     /// <summary>
     /// Environmental conditions causing reduced visibility.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#visibilityReduced"></see></summary>
-    let visibilityReduced =
-        Namespaced_IRI.parse _namespace_name "visibilityReduced" |> NamespacedName
-
+    let visibilityReduced = _prefix "visibilityReduced"
     /// <summary>
     /// A traffic condition which is not normal.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AbnormalTraffic"></see></summary>
-    let AbnormalTraffic =
-        Namespaced_IRI.parse _namespace_name "AbnormalTraffic" |> NamespacedName
-
+    let AbnormalTraffic = _prefix "AbnormalTraffic"
     /// <summary>
     /// The number of vehicles waiting in a queue.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfVehiclesWaiting"></see></summary>
-    let numberOfVehiclesWaiting =
-        Namespaced_IRI.parse _namespace_name "numberOfVehiclesWaiting" |> NamespacedName
-
+    let numberOfVehiclesWaiting = _prefix "numberOfVehiclesWaiting"
     /// <summary>
     /// A measure of distance defined in metres in a non negative integer format.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#MetresAsNonNegativeIntegerValue"></see></summary>
-    let MetresAsNonNegativeIntegerValue =
-        Namespaced_IRI.parse _namespace_name "MetresAsNonNegativeIntegerValue" |> NamespacedName
-
+    let MetresAsNonNegativeIntegerValue = _prefix "MetresAsNonNegativeIntegerValue"
     /// <summary>
     /// The length of a queue or the average length of queues in separate lanes due to a situation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#queueLength"></see></summary>
-    let queueLength =
-        Namespaced_IRI.parse _namespace_name "queueLength" |> NamespacedName
-
+    let queueLength = _prefix "queueLength"
     /// <summary>
     /// A characterization of the trend in the traffic conditions at the specified location and direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TrafficTrendTypeEnum"></see></summary>
-    let TrafficTrendTypeEnum =
-        Namespaced_IRI.parse _namespace_name "TrafficTrendTypeEnum" |> NamespacedName
-
+    let TrafficTrendTypeEnum = _prefix "TrafficTrendTypeEnum"
     /// <summary>
     /// A characterization of the trend in the traffic conditions at the specified location and direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTrafficTrendTypeEnum"></see></summary>
-    let hasTrafficTrendTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasTrafficTrendTypeEnum" |> NamespacedName
-
+    let hasTrafficTrendTypeEnum = _prefix "hasTrafficTrendTypeEnum"
     /// <summary>
     /// The consistency (steadiness) of the traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TrafficFlowCharateristicsEnum"></see></summary>
-    let TrafficFlowCharateristicsEnum =
-        Namespaced_IRI.parse _namespace_name "TrafficFlowCharateristicsEnum" |> NamespacedName
-
+    let TrafficFlowCharateristicsEnum = _prefix "TrafficFlowCharateristicsEnum"
     /// <summary>
     /// The consistency (steadiness) of the traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTrafficFlowCharacteristicsEnum"></see></summary>
-    let hasTrafficFlowCharacteristicsEnum =
-        Namespaced_IRI.parse _namespace_name "hasTrafficFlowCharacteristicsEnum" |> NamespacedName
-
+    let hasTrafficFlowCharacteristicsEnum = _prefix "hasTrafficFlowCharacteristicsEnum"
     /// <summary>
     /// Assessment of the traffic flow conditions relative to normally expected conditions at this date/time.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RelativeTrafficFlowEnum"></see></summary>
-    let RelativeTrafficFlowEnum =
-        Namespaced_IRI.parse _namespace_name "RelativeTrafficFlowEnum" |> NamespacedName
-
+    let RelativeTrafficFlowEnum = _prefix "RelativeTrafficFlowEnum"
     /// <summary>
     /// Assessment of the traffic flow conditions relative to normally expected conditions at this date/time.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRelativeTrafficFlowEnum"></see></summary>
-    let hasRelativeTrafficFlowEnum =
-        Namespaced_IRI.parse _namespace_name "hasRelativeTrafficFlowEnum" |> NamespacedName
-
+    let hasRelativeTrafficFlowEnum = _prefix "hasRelativeTrafficFlowEnum"
     /// <summary>
     /// Descriptive terms for abnormal traffic conditions specifically relating to the nature of the traffic movement, implying levels of service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AbnormalTrafficTypeEnum"></see></summary>
-    let AbnormalTrafficTypeEnum =
-        Namespaced_IRI.parse _namespace_name "AbnormalTrafficTypeEnum" |> NamespacedName
-
+    let AbnormalTrafficTypeEnum = _prefix "AbnormalTrafficTypeEnum"
     /// <summary>
     /// A characterization of the nature of abnormal traffic flow, i.e. specifically relating to the nature of the traffic movement, implying a level of service.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAbnormalTrafficType"></see></summary>
-    let hasAbnormalTrafficType =
-        Namespaced_IRI.parse _namespace_name "hasAbnormalTrafficType" |> NamespacedName
-
+    let hasAbnormalTrafficType = _prefix "hasAbnormalTrafficType"
     /// <summary>
     /// An event which is not planned by the traffic operator, which is affecting, or has the potential to affect traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TrafficElement"></see></summary>
-    let TrafficElement =
-        Namespaced_IRI.parse _namespace_name "TrafficElement" |> NamespacedName
-
+    let TrafficElement = _prefix "TrafficElement"
     /// <summary>
     /// Collects the added non-SRTI enumerations. Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Non-SRTI_Enum"></see></summary>
-    let ``Non-SRTI_Enum`` =
-        Namespaced_IRI.parse _namespace_name "Non-SRTI_Enum" |> NamespacedName
-
+    let ``Non-SRTI_Enum`` = _prefix "Non-SRTI_Enum"
     /// <summary>
     /// Accidents are events where one or more vehicles are involved in collisions or in leaving the roadway. These include collisions between vehicles or with other road users or obstacles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Accident"></see></summary>
-    let Accident = Namespaced_IRI.parse _namespace_name "Accident" |> NamespacedName
-
+    let Accident = _prefix "Accident"
     /// <summary>
     /// Collection of descriptive terms for types of accidents.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AccidentTypeEnum"></see></summary>
-    let AccidentTypeEnum =
-        Namespaced_IRI.parse _namespace_name "AccidentTypeEnum" |> NamespacedName
-
+    let AccidentTypeEnum = _prefix "AccidentTypeEnum"
     /// <summary>
     /// A characterization of the nature of the accident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAccidentType"></see></summary>
-    let hasAccidentType =
-        Namespaced_IRI.parse _namespace_name "hasAccidentType" |> NamespacedName
-
+    let hasAccidentType = _prefix "hasAccidentType"
     /// <summary>
     /// Any stationary or moving obstacle of a physical nature (e.g. obstacles or vehicles from an earlier accident, shed loads on carriageway, rock fall, abnormal or dangerous loads, or animals etc.) which could disrupt or endanger traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Obstruction"></see></summary>
-    let Obstruction =
-        Namespaced_IRI.parse _namespace_name "Obstruction" |> NamespacedName
-
+    let Obstruction = _prefix "Obstruction"
     /// <summary>
     /// Any conditions which have the potential to degrade normal driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Conditions"></see></summary>
-    let Conditions = Namespaced_IRI.parse _namespace_name "Conditions" |> NamespacedName
-
+    let Conditions = _prefix "Conditions"
     /// <summary>
     /// Collection of descriptive terms for causes of accidents.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AccidentCauseEnum"></see></summary>
-    let AccidentCauseEnum =
-        Namespaced_IRI.parse _namespace_name "AccidentCauseEnum" |> NamespacedName
-
+    let AccidentCauseEnum = _prefix "AccidentCauseEnum"
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SituationEnumerations"></see></summary>
-    let SituationEnumerations =
-        Namespaced_IRI.parse _namespace_name "SituationEnumerations" |> NamespacedName
-
+    let SituationEnumerations = _prefix "SituationEnumerations"
     /// <summary>
     /// A collection of information relating to human activities external to the traffic stream or roadway which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Activity"></see></summary>
-    let Activity = Namespaced_IRI.parse _namespace_name "Activity" |> NamespacedName
+    let Activity = _prefix "Activity"
     /// <summary>
     /// An indication of whether the associated instance of a SituationRecord is mobile (e.g. a march or parade moving along a road) or stationary.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Mobility"></see></summary>
-    let Mobility = Namespaced_IRI.parse _namespace_name "Mobility" |> NamespacedName
-
+    let Mobility = _prefix "Mobility"
     /// <summary>
     /// Specifies the mobility of activity
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasMobilityOfActivity"></see></summary>
-    let hasMobilityOfActivity =
-        Namespaced_IRI.parse _namespace_name "hasMobilityOfActivity" |> NamespacedName
-
+    let hasMobilityOfActivity = _prefix "hasMobilityOfActivity"
     /// <summary>
     /// Alert C location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertC"></see></summary>
-    let AlertC = Namespaced_IRI.parse _namespace_name "AlertC" |> NamespacedName
-
+    let AlertC = _prefix "AlertC"
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LocationObjects"></see></summary>
-    let LocationObjects =
-        Namespaced_IRI.parse _namespace_name "LocationObjects" |> NamespacedName
-
+    let LocationObjects = _prefix "LocationObjects"
     /// <summary>
     /// An area defined by reference to a predefined ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCArea"></see></summary>
-    let AlertCArea = Namespaced_IRI.parse _namespace_name "AlertCArea" |> NamespacedName
-
+    let AlertCArea = _prefix "AlertCArea"
     /// <summary>
     /// Version number associated with an ALERT-C table reference.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#alertCLocationTableVersion"></see></summary>
-    let alertCLocationTableVersion =
-        Namespaced_IRI.parse _namespace_name "alertCLocationTableVersion" |> NamespacedName
-
+    let alertCLocationTableVersion = _prefix "alertCLocationTableVersion"
     /// <summary>
     /// Number allocated to an ALERT-C table in a country. Ref. EN ISO 14819-3 for the allocation of a location table number.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#alertCLocationTableNumber"></see></summary>
-    let alertCLocationTableNumber =
-        Namespaced_IRI.parse _namespace_name "alertCLocationTableNumber" |> NamespacedName
-
+    let alertCLocationTableNumber = _prefix "alertCLocationTableNumber"
     /// <summary>
     /// ALERT-C country code as defined in IEC 62106.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#alertCLocationCountryCode"></see></summary>
-    let alertCLocationCountryCode =
-        Namespaced_IRI.parse _namespace_name "alertCLocationCountryCode" |> NamespacedName
-
+    let alertCLocationCountryCode = _prefix "alertCLocationCountryCode"
     /// <summary>
     /// Identification of a specific point, linear or area location in an ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCLocation"></see></summary>
-    let AlertCLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCLocation" |> NamespacedName
-
+    let AlertCLocation = _prefix "AlertCLocation"
     /// <summary>
     /// Identification of a specific point, linear or area location in an ALERT-C location table.
     /// ALERT-C location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCLocation"></see></summary>
-    let hasAlertCLocation =
-        Namespaced_IRI.parse _namespace_name "hasAlertCLocation" |> NamespacedName
-
+    let hasAlertCLocation = _prefix "hasAlertCLocation"
     /// <summary>
     /// The direction of traffic flow along the road to which the information relates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCDirection"></see></summary>
-    let AlertCDirection =
-        Namespaced_IRI.parse _namespace_name "AlertCDirection" |> NamespacedName
-
+    let AlertCDirection = _prefix "AlertCDirection"
     /// <summary>
     /// Direction used to reach the primary location from the secondary location in ALERT-C location table, as defined in CEN ISO 14819-1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCDirectionEnum"></see></summary>
-    let AlertCDirectionEnum =
-        Namespaced_IRI.parse _namespace_name "AlertCDirectionEnum" |> NamespacedName
-
+    let AlertCDirectionEnum = _prefix "AlertCDirectionEnum"
     /// <summary>
     /// Direction of navigation with respect to secondary to primary location (RDS direction)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCDirectionCoded"></see></summary>
-    let hasAlertCDirectionCoded =
-        Namespaced_IRI.parse _namespace_name "hasAlertCDirectionCoded" |> NamespacedName
-
+    let hasAlertCDirectionCoded = _prefix "hasAlertCDirectionCoded"
     /// <summary>
     /// Directions of traffic flow relative to the direction in which the linear element is defined.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearDirectionEnum"></see></summary>
-    let LinearDirectionEnum =
-        Namespaced_IRI.parse _namespace_name "LinearDirectionEnum" |> NamespacedName
-
+    let LinearDirectionEnum = _prefix "LinearDirectionEnum"
     /// <summary>
     /// The direction(s) of traffic flow to which the situation, traffic data or information is related.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCAffectedDirection"></see></summary>
-    let hasAlertCAffectedDirection =
-        Namespaced_IRI.parse _namespace_name "hasAlertCAffectedDirection" |> NamespacedName
-
+    let hasAlertCAffectedDirection = _prefix "hasAlertCAffectedDirection"
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LocationReferencingEnumerations"></see></summary>
-    let LocationReferencingEnumerations =
-        Namespaced_IRI.parse _namespace_name "LocationReferencingEnumerations" |> NamespacedName
-
+    let LocationReferencingEnumerations = _prefix "LocationReferencingEnumerations"
     /// <summary>
     /// A linear section along a road defined between two points on the road by reference to a pre-defined ALERT-C location table. When there are multiple instances of AlertCLinear they should represent the same location using different location tables.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCLinear"></see></summary>
-    let AlertCLinear =
-        Namespaced_IRI.parse _namespace_name "AlertCLinear" |> NamespacedName
-
+    let AlertCLinear = _prefix "AlertCLinear"
     /// <summary>
     /// A linear section along a road defined by reference to a linear section in a pre-defined ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCLinearByCode"></see></summary>
-    let AlertCLinearByCode =
-        Namespaced_IRI.parse _namespace_name "AlertCLinearByCode" |> NamespacedName
-
+    let AlertCLinearByCode = _prefix "AlertCLinearByCode"
     /// <summary>
     /// Specific location. Unique code within the ALERT-C location table which identifies the specific point, linear or area location.Unique code within the ALERT-C location table which identifies the specific point, linear or area location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLocationCodeForLinearLocation"></see></summary>
-    let hasLocationCodeForLinearLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocationCodeForLinearLocation" |> NamespacedName
-
+    let hasLocationCodeForLinearLocation = _prefix "hasLocationCodeForLinearLocation"
     /// <summary>
     /// The direction of traffic flow along the road to which the information relates.
     /// ALERT-C direction
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCDirection"></see></summary>
-    let hasAlertCDirection =
-        Namespaced_IRI.parse _namespace_name "hasAlertCDirection" |> NamespacedName
-
+    let hasAlertCDirection = _prefix "hasAlertCDirection"
     /// <summary>
     /// A linear section along a road between two points, primary and secondary, which are pre-defined in an ALERT-C location table. Direction is FROM the secondary point TO the primary point, i.e. the primary point is downstream of the secondary point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod2Linear"></see></summary>
-    let AlertCMethod2Linear =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2Linear" |> NamespacedName
+    let AlertCMethod2Linear = _prefix "AlertCMethod2Linear"
 
     /// <summary>
     /// The point (called Secondary point) which is at the upstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod2SecondaryPointLocation"></see></summary>
     let AlertCMethod2SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2SecondaryPointLocation" |> NamespacedName
+        _prefix "AlertCMethod2SecondaryPointLocation"
 
     /// <summary>
     /// The point (called Secondary point) which is at the upstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.
     /// ALERT-C method2 secondary point location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCMethod2SecondaryPointLocation"></see></summary>
     let hasAlertCMethod2SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "hasAlertCMethod2SecondaryPointLocation" |> NamespacedName
+        _prefix "hasAlertCMethod2SecondaryPointLocation"
 
     /// <summary>
     /// The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod2PrimaryPointLocation"></see></summary>
-    let AlertCMethod2PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2PrimaryPointLocation" |> NamespacedName
+    let AlertCMethod2PrimaryPointLocation = _prefix "AlertCMethod2PrimaryPointLocation"
 
     /// <summary>
     /// The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.
     /// ALERT-C method2 primary point location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCMethod2PrimaryPointLocation"></see></summary>
     let hasAlertCMethod2PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "hasAlertCMethod2PrimaryPointLocation" |> NamespacedName
+        _prefix "hasAlertCMethod2PrimaryPointLocation"
 
     /// <summary>
     /// A single point on the road network defined by reference to a point in a pre-defined ALERT-C location table and which has an associated direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod2Point"></see></summary>
-    let AlertCMethod2Point =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2Point" |> NamespacedName
-
+    let AlertCMethod2Point = _prefix "AlertCMethod2Point"
     /// <summary>
     /// A single point on the road network defined by reference to a pre-defined ALERT-C location table and which has an associated direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCPoint"></see></summary>
-    let AlertCPoint =
-        Namespaced_IRI.parse _namespace_name "AlertCPoint" |> NamespacedName
-
+    let AlertCPoint = _prefix "AlertCPoint"
     /// <summary>
     /// A linear section along a road between two points, primary and secondary, which are pre-defined ALERT-C locations plus offset distance. Direction is FROM the secondary point TO the primary point, i.e. the primary point is downstream of the secondary point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod4Linear"></see></summary>
-    let AlertCMethod4Linear =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4Linear" |> NamespacedName
+    let AlertCMethod4Linear = _prefix "AlertCMethod4Linear"
 
     /// <summary>
     /// The point (called Secondary point) which is at the upstream end of a linear road section. The point is specified by a reference to a point in a pre-defined Alert-C location table plus a non-negative offset distance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod4SecondaryPointLocation"></see></summary>
     let AlertCMethod4SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4SecondaryPointLocation" |> NamespacedName
+        _prefix "AlertCMethod4SecondaryPointLocation"
 
     /// <summary>
     /// The point (called Secondary point) which is at the upstream end of a linear road section. The point is specified by a reference to a point in a pre-defined Alert-C location table plus a non-negative offset distance.
     /// ALERT-C method4 secondary point location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCMethod4SecondaryPointLocation"></see></summary>
     let hasAlertCMethod4SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "hasAlertCMethod4SecondaryPointLocation" |> NamespacedName
+        _prefix "hasAlertCMethod4SecondaryPointLocation"
 
     /// <summary>
     /// The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table plus a non-negative offset distance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod4PrimaryPointLocation"></see></summary>
-    let AlertCMethod4PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4PrimaryPointLocation" |> NamespacedName
+    let AlertCMethod4PrimaryPointLocation = _prefix "AlertCMethod4PrimaryPointLocation"
 
     /// <summary>
     /// The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table plus a non-negative offset distance.
     /// ALERT-C method4 primary point location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCMethod4PrimaryPointLocation"></see></summary>
     let hasAlertCMethod4PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "hasAlertCMethod4PrimaryPointLocation" |> NamespacedName
+        _prefix "hasAlertCMethod4PrimaryPointLocation"
 
     /// <summary>
     /// A single point on the road network defined by reference to a point in a pre-defined ALERT-C location table plus an offset distance and which has an associated direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AlertCMethod4Point"></see></summary>
-    let AlertCMethod4Point =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4Point" |> NamespacedName
-
+    let AlertCMethod4Point = _prefix "AlertCMethod4Point"
     /// <summary>
     /// The non-negative offset distance from the ALERT-C referenced point to the actual point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OffsetDistance"></see></summary>
-    let OffsetDistance =
-        Namespaced_IRI.parse _namespace_name "OffsetDistance" |> NamespacedName
-
+    let OffsetDistance = _prefix "OffsetDistance"
     /// <summary>
     /// The non-negative offset distance from the ALERT-C referenced point to the actual point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOffsetDistance"></see></summary>
-    let hasOffsetDistance =
-        Namespaced_IRI.parse _namespace_name "hasOffsetDistance" |> NamespacedName
-
+    let hasOffsetDistance = _prefix "hasOffsetDistance"
     /// <summary>
     /// A point on the road network which is either a junction point or a non junction point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegPoint"></see></summary>
-    let TpegPoint = Namespaced_IRI.parse _namespace_name "TpegPoint" |> NamespacedName
-
+    let TpegPoint = _prefix "TpegPoint"
     /// <summary>
     /// Coded level of vertical accuracy
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AltitudeAccuracyEnum"></see></summary>
-    let AltitudeAccuracyEnum =
-        Namespaced_IRI.parse _namespace_name "AltitudeAccuracyEnum" |> NamespacedName
-
+    let AltitudeAccuracyEnum = _prefix "AltitudeAccuracyEnum"
     /// <summary>
     /// Evaluation of the altitude confidence assessed according to ETSI ISO 102894-2
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AltitudeConfidence"></see></summary>
-    let AltitudeConfidence =
-        Namespaced_IRI.parse _namespace_name "AltitudeConfidence" |> NamespacedName
-
+    let AltitudeConfidence = _prefix "AltitudeConfidence"
     /// <summary>
     /// Error code for horizontal or vertical position confidence
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PositionConfidenceCodedErrorEnum"></see></summary>
-    let PositionConfidenceCodedErrorEnum =
-        Namespaced_IRI.parse _namespace_name "PositionConfidenceCodedErrorEnum" |> NamespacedName
+    let PositionConfidenceCodedErrorEnum = _prefix "PositionConfidenceCodedErrorEnum"
 
     /// <summary>
     /// Error code in case the altitude confidence is out of range or cannot be determined
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPositionConfidenceCodedErrorEnum"></see></summary>
     let hasPositionConfidenceCodedErrorEnum =
-        Namespaced_IRI.parse _namespace_name "hasPositionConfidenceCodedErrorEnum" |> NamespacedName
+        _prefix "hasPositionConfidenceCodedErrorEnum"
 
     /// <summary>
     /// Absolute accuracy of reported value of a geographical point for a confidence level expressed by a coded scale.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAltitudeAccuracyCodedValue"></see></summary>
-    let hasAltitudeAccuracyCodedValue =
-        Namespaced_IRI.parse _namespace_name "hasAltitudeAccuracyCodedValue" |> NamespacedName
-
+    let hasAltitudeAccuracyCodedValue = _prefix "hasAltitudeAccuracyCodedValue"
     /// <summary>
     /// Third coordinate for points defined geodetically
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#HeightCoordinateAssociationFrom"></see></summary>
-    let HeightCoordinateAssociationFrom =
-        Namespaced_IRI.parse _namespace_name "HeightCoordinateAssociationFrom" |> NamespacedName
-
+    let HeightCoordinateAssociationFrom = _prefix "HeightCoordinateAssociationFrom"
     /// <summary>
     /// A measured or  value of Angles. An integer number representing an angle in whole degrees between 0 and 359.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AngleInDegreesValue"></see></summary>
-    let AngleInDegreesValue =
-        Namespaced_IRI.parse _namespace_name "AngleInDegreesValue" |> NamespacedName
-
+    let AngleInDegreesValue = _prefix "AngleInDegreesValue"
     /// <summary>
     /// An obstruction on the road resulting from the presence of animals.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AnimalPresenceObstruction"></see></summary>
-    let AnimalPresenceObstruction =
-        Namespaced_IRI.parse _namespace_name "AnimalPresenceObstruction" |> NamespacedName
-
+    let AnimalPresenceObstruction = _prefix "AnimalPresenceObstruction"
     /// <summary>
     /// Types of animal presence.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AnimalPresenceTypeEmum"></see></summary>
-    let AnimalPresenceTypeEmum =
-        Namespaced_IRI.parse _namespace_name "AnimalPresenceTypeEmum" |> NamespacedName
-
+    let AnimalPresenceTypeEmum = _prefix "AnimalPresenceTypeEmum"
     /// <summary>
     /// Indicates the nature of animals present on or near the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAnimalPresenceTypeEnum"></see></summary>
-    let hasAnimalPresenceTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasAnimalPresenceTypeEnum" |> NamespacedName
-
+    let hasAnimalPresenceTypeEnum = _prefix "hasAnimalPresenceTypeEnum"
     /// <summary>
     /// An obstruction on the road caused by one or more vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#VehicleObstruction"></see></summary>
-    let VehicleObstruction =
-        Namespaced_IRI.parse _namespace_name "VehicleObstruction" |> NamespacedName
-
+    let VehicleObstruction = _prefix "VehicleObstruction"
     /// <summary>
     /// Any stationary or moving obstacle of a physical nature, other than of an animal, vehicle, environmental, or damaged equipment nature.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeneralObstruction"></see></summary>
-    let GeneralObstruction =
-        Namespaced_IRI.parse _namespace_name "GeneralObstruction" |> NamespacedName
-
+    let GeneralObstruction = _prefix "GeneralObstruction"
     /// <summary>
     /// An obstruction on the road resulting from an environmental cause.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#EnvironmentalObstruction"></see></summary>
-    let EnvironmentalObstruction =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalObstruction" |> NamespacedName
-
+    let EnvironmentalObstruction = _prefix "EnvironmentalObstruction"
     /// <summary>
     /// Location representing a geographic or geometric defined area which may be qualified by height information to provide additional geospatial discrimination (e.g. for snow in an area but only above a certain altitude). Associations:
     /// 0..*	AlertCArea
@@ -4581,831 +3376,592 @@ module dtx_srti =
     /// 0..1	GmlMultiPolygon
     /// 0..1	OpenlrAreaLocationReference
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AreaLocation"></see></summary>
-    let AreaLocation =
-        Namespaced_IRI.parse _namespace_name "AreaLocation" |> NamespacedName
-
+    let AreaLocation = _prefix "AreaLocation"
     /// <summary>
     /// A geographic or geometric area defined by a TPEG-Loc structure which may include height information for additional geospatial discrimination
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegAreaLocation"></see></summary>
-    let TpegAreaLocation =
-        Namespaced_IRI.parse _namespace_name "TpegAreaLocation" |> NamespacedName
-
+    let TpegAreaLocation = _prefix "TpegAreaLocation"
     /// <summary>
     /// A geographic or geometric area defined by a TPEG-Loc structure which may include height information for additional geospatial discrimination.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegAreaLocation"></see></summary>
-    let hasTpegAreaLocation =
-        Namespaced_IRI.parse _namespace_name "hasTpegAreaLocation" |> NamespacedName
-
+    let hasTpegAreaLocation = _prefix "hasTpegAreaLocation"
     /// <summary>
     /// A two-dimensional part of the surface of the earth which is bounded by a closed curve. An area location may cover parts of the road network but does not necessarily need to. It is represented according to the OpenLR standard for Area Locations
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrAreaLocationReference"></see></summary>
-    let OpenlrAreaLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrAreaLocationReference" |> NamespacedName
-
+    let OpenlrAreaLocationReference = _prefix "OpenlrAreaLocationReference"
     /// <summary>
     /// A two-dimensional part of the surface of the earth which is bounded by a closed curve. An area location may cover parts of the road network but does not necessarily need to. It is represented according to the OpenLR standard for Area Locations
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrAreaLocationReference"></see></summary>
-    let hasOpenlrAreaLocationReference =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrAreaLocationReference" |> NamespacedName
-
+    let hasOpenlrAreaLocationReference = _prefix "hasOpenlrAreaLocationReference"
     /// <summary>
     /// An area defined by a name and/or in terms of known boundaries, such as country or county boundaries or allocated control area of particular authority. The attributes do not form a union; instead, the smallest intersection forms the resulting area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NamedArea"></see></summary>
-    let NamedArea = Namespaced_IRI.parse _namespace_name "NamedArea" |> NamespacedName
-
+    let NamedArea = _prefix "NamedArea"
     /// <summary>
     /// An area defined by a name and/or in terms of known boundaries, such as country or county boundaries or allocated control area of particular authority. The attributes do not form a union; instead, the smallest intersection forms the resulting area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasNamedArea"></see></summary>
-    let hasNamedArea =
-        Namespaced_IRI.parse _namespace_name "hasNamedArea" |> NamespacedName
-
+    let hasNamedArea = _prefix "hasNamedArea"
     /// <summary>
     /// An area defined by a set of polygons acording to GML (EN ISO 19136).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GmlMultiPolygon"></see></summary>
-    let GmlMultiPolygon =
-        Namespaced_IRI.parse _namespace_name "GmlMultiPolygon" |> NamespacedName
-
+    let GmlMultiPolygon = _prefix "GmlMultiPolygon"
     /// <summary>
     /// An area defined by a set of polygons acording to GML (EN ISO 19136).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGmlMultiPolygon"></see></summary>
-    let hasGmlMultiPolygon =
-        Namespaced_IRI.parse _namespace_name "hasGmlMultiPolygon" |> NamespacedName
-
+    let hasGmlMultiPolygon = _prefix "hasGmlMultiPolygon"
     /// <summary>
     /// Type of area place(s)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#AreaPlacesEnum"></see></summary>
-    let AreaPlacesEnum =
-        Namespaced_IRI.parse _namespace_name "AreaPlacesEnum" |> NamespacedName
-
+    let AreaPlacesEnum = _prefix "AreaPlacesEnum"
     /// <summary>
     /// Places, in generic terms, at which the corresponding information applies.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAreaPlacesEnum"></see></summary>
-    let hasAreaPlacesEnum =
-        Namespaced_IRI.parse _namespace_name "hasAreaPlacesEnum" |> NamespacedName
-
+    let hasAreaPlacesEnum = _prefix "hasAreaPlacesEnum"
     /// <summary>
     /// The specification of a location either on a network (as a point or a linear location) or as an area. This may be provided in one or more referencing systems. Association: 0..1PointCoordinates. In SRTI is not included LocationByReference.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Location"></see></summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
-
+    let Location = _prefix "Location"
     /// <summary>
     /// Supplementary positional information which details carriageway and lane locations. Several instances may exist where the element being described extends over more than one carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Carriageway"></see></summary>
-    let Carriageway =
-        Namespaced_IRI.parse _namespace_name "Carriageway" |> NamespacedName
-
+    let Carriageway = _prefix "Carriageway"
     /// <summary>
     /// Normal number of lanes, potentially available for moving traffic, before reduction due to situations. Hard shoulder should not be counted unless it is sometimes used operationally for moving traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#originalNumberOfLanes"></see></summary>
-    let originalNumberOfLanes =
-        Namespaced_IRI.parse _namespace_name "originalNumberOfLanes" |> NamespacedName
-
+    let originalNumberOfLanes = _prefix "originalNumberOfLanes"
     /// <summary>
     /// List of descriptors identifying specific carriageway details.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#CarriagewayEnum"></see></summary>
-    let CarriagewayEnum =
-        Namespaced_IRI.parse _namespace_name "CarriagewayEnum" |> NamespacedName
-
+    let CarriagewayEnum = _prefix "CarriagewayEnum"
     /// <summary>
     /// Indicates the section of carriageway to which the location relates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasCarriagewayEnum"></see></summary>
-    let hasCarriagewayEnum =
-        Namespaced_IRI.parse _namespace_name "hasCarriagewayEnum" |> NamespacedName
-
+    let hasCarriagewayEnum = _prefix "hasCarriagewayEnum"
     /// <summary>
     /// Supplementary positional information
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SupplementaryPositionalPack"></see></summary>
-    let SupplementaryPositionalPack =
-        Namespaced_IRI.parse _namespace_name "SupplementaryPositionalPack" |> NamespacedName
-
+    let SupplementaryPositionalPack = _prefix "SupplementaryPositionalPack"
     /// <summary>
     /// Types of causes of situations which are not managed or are off network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#CauseTypeEnum"></see></summary>
-    let CauseTypeEnum =
-        Namespaced_IRI.parse _namespace_name "CauseTypeEnum" |> NamespacedName
-
+    let CauseTypeEnum = _prefix "CauseTypeEnum"
     /// <summary>
     /// Common classes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#CommonClasses"></see></summary>
-    let CommonClasses =
-        Namespaced_IRI.parse _namespace_name "CommonClasses" |> NamespacedName
-
+    let CommonClasses = _prefix "CommonClasses"
     /// <summary>
     /// Types of computational methods used in deriving data values for data sets.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ComputationMethodEnum"></see></summary>
-    let ComputationMethodEnum =
-        Namespaced_IRI.parse _namespace_name "ComputationMethodEnum" |> NamespacedName
-
+    let ComputationMethodEnum = _prefix "ComputationMethodEnum"
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PayLoadEnumerations"></see></summary>
-    let PayLoadEnumerations =
-        Namespaced_IRI.parse _namespace_name "PayLoadEnumerations" |> NamespacedName
-
+    let PayLoadEnumerations = _prefix "PayLoadEnumerations"
     /// <summary>
     /// Types of the perceived driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DrivingConditionTypeEnum"></see></summary>
-    let DrivingConditionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "DrivingConditionTypeEnum" |> NamespacedName
-
+    let DrivingConditionTypeEnum = _prefix "DrivingConditionTypeEnum"
     /// <summary>
     /// Types of the perceived driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDrivingConditionTypeEnum"></see></summary>
-    let hasDrivingConditionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasDrivingConditionTypeEnum" |> NamespacedName
-
+    let hasDrivingConditionTypeEnum = _prefix "hasDrivingConditionTypeEnum"
     /// <summary>
     /// &lt;&lt;enumeration&gt;&gt; Values of confidentiality.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ConfidentialityValueEnum"></see></summary>
-    let ConfidentialityValueEnum =
-        Namespaced_IRI.parse _namespace_name "ConfidentialityValueEnum" |> NamespacedName
-
+    let ConfidentialityValueEnum = _prefix "ConfidentialityValueEnum"
     /// <summary>
     /// Types of works relating to construction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ConstructionWorkTypeEnum"></see></summary>
-    let ConstructionWorkTypeEnum =
-        Namespaced_IRI.parse _namespace_name "ConstructionWorkTypeEnum" |> NamespacedName
-
+    let ConstructionWorkTypeEnum = _prefix "ConstructionWorkTypeEnum"
     /// <summary>
     /// Roadworks involving the construction of new infrastructure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ConstructionWorks"></see></summary>
-    let ConstructionWorks =
-        Namespaced_IRI.parse _namespace_name "ConstructionWorks" |> NamespacedName
-
+    let ConstructionWorks = _prefix "ConstructionWorks"
     /// <summary>
     /// The type of construction work being performed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasConstructionWorkType"></see></summary>
-    let hasConstructionWorkType =
-        Namespaced_IRI.parse _namespace_name "hasConstructionWorkType" |> NamespacedName
-
+    let hasConstructionWorkType = _prefix "hasConstructionWorkType"
     /// <summary>
     /// Highway maintenance, installation and construction activities that may potentially affect traffic operations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadWorks"></see></summary>
-    let RoadWorks = Namespaced_IRI.parse _namespace_name "RoadWorks" |> NamespacedName
+    let RoadWorks = _prefix "RoadWorks"
     /// <summary>
     /// A data value of something that can be measured or calculated. Any provided meta-data values specified in the attributes override any specified generic characteristics such as defined for a specific measurement in the MeasurementSiteTable.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DataValue"></see></summary>
-    let DataValue = Namespaced_IRI.parse _namespace_name "DataValue" |> NamespacedName
-
+    let DataValue = _prefix "DataValue"
     /// <summary>
     /// The number of input values used in the sampling or measurement period to determine the data value.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfInputValuesUsed"></see></summary>
-    let numberOfInputValuesUsed =
-        Namespaced_IRI.parse _namespace_name "numberOfInputValuesUsed" |> NamespacedName
-
+    let numberOfInputValuesUsed = _prefix "numberOfInputValuesUsed"
     /// <summary>
     /// The reason why the value is deemed to be erroneous by the supplier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#reasonForDataError"></see></summary>
-    let reasonForDataError =
-        Namespaced_IRI.parse _namespace_name "reasonForDataError" |> NamespacedName
-
+    let reasonForDataError = _prefix "reasonForDataError"
     /// <summary>
     /// The number of inputs detected but not completed during the sampling or measurement period; e.g. vehicles detected entering but not exiting the detection zone.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfIncompleteInputs"></see></summary>
-    let numberOfIncompleteInputs =
-        Namespaced_IRI.parse _namespace_name "numberOfIncompleteInputs" |> NamespacedName
-
+    let numberOfIncompleteInputs = _prefix "numberOfIncompleteInputs"
     /// <summary>
     /// The standard deviation of the sample of input values from which this value was derived, measured in the units of the data value.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#standardDeviation"></see></summary>
-    let standardDeviation =
-        Namespaced_IRI.parse _namespace_name "standardDeviation" |> NamespacedName
-
+    let standardDeviation = _prefix "standardDeviation"
     /// <summary>
     /// Indication of whether the value is deemed to be erroneous by the supplier (true = erroneous). If not present, the data value is assumed to be ok. This may be used when automatic fault detection information relating to sensors is available.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#dataError"></see></summary>
-    let dataError = Namespaced_IRI.parse _namespace_name "dataError" |> NamespacedName
-
+    let dataError = _prefix "dataError"
     /// <summary>
     /// A measure of data quality assigned to the value by the supplier. 100% equates to ideal/perfect quality. The method of calculation is supplier specific and needs to be agreed between supplier and client.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#supplierCalculatedDataQuality"></see></summary>
-    let supplierCalculatedDataQuality =
-        Namespaced_IRI.parse _namespace_name "supplierCalculatedDataQuality" |> NamespacedName
-
+    let supplierCalculatedDataQuality = _prefix "supplierCalculatedDataQuality"
     /// <summary>
     /// Method of computation which has been used to compute this data value.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasComputationMethodEnum"></see></summary>
-    let hasComputationMethodEnum =
-        Namespaced_IRI.parse _namespace_name "hasComputationMethodEnum" |> NamespacedName
-
+    let hasComputationMethodEnum = _prefix "hasComputationMethodEnum"
     /// <summary>
     /// The extent to which the value is expected to be free from error, measured as a percentage of the data value. 100% means fully accurate.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accuracy"></see></summary>
-    let accuracy = Namespaced_IRI.parse _namespace_name "accuracy" |> NamespacedName
-
+    let accuracy = _prefix "accuracy"
     /// <summary>
     /// Coefficient required when a moving average is computed to give specific weights to the former average and the new data. A typical formula is, F being the smoothing factor: New average = (old average) F + (new data) (1 - F).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#smoothingFactor"></see></summary>
-    let smoothingFactor =
-        Namespaced_IRI.parse _namespace_name "smoothingFactor" |> NamespacedName
-
+    let smoothingFactor = _prefix "smoothingFactor"
     /// <summary>
     /// The time band within which the additional travel time due to adverse travel conditions of any kind falls, when compared to "normal conditions".
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DelayBandEnum"></see></summary>
-    let DelayBandEnum =
-        Namespaced_IRI.parse _namespace_name "DelayBandEnum" |> NamespacedName
-
+    let DelayBandEnum = _prefix "DelayBandEnum"
     /// <summary>
     /// The details of the delays being caused by the situation element defined in the situation record. It is recommended to only use one of the optional attributes to avoid confusion.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Delays"></see></summary>
-    let Delays = Namespaced_IRI.parse _namespace_name "Delays" |> NamespacedName
-
+    let Delays = _prefix "Delays"
     /// <summary>
     /// The value of the additional travel time due to adverse travel conditions of any kind, when compared to "normal conditions", given in seconds.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#delayTimeValue"></see></summary>
-    let delayTimeValue =
-        Namespaced_IRI.parse _namespace_name "delayTimeValue" |> NamespacedName
-
+    let delayTimeValue = _prefix "delayTimeValue"
     /// <summary>
     /// Coarse classification of the delay.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DelaysTypeEnum"></see></summary>
-    let DelaysTypeEnum =
-        Namespaced_IRI.parse _namespace_name "DelaysTypeEnum" |> NamespacedName
-
+    let DelaysTypeEnum = _prefix "DelaysTypeEnum"
     /// <summary>
     /// Coarse classification of the delay.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#delaysType"></see></summary>
-    let delaysType = Namespaced_IRI.parse _namespace_name "delaysType" |> NamespacedName
+    let delaysType = _prefix "delaysType"
     /// <summary>
     /// The time band within which the additional travel time due to adverse travel conditions of any kind falls, when compared to "normal conditions".
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#delayBand"></see></summary>
-    let delayBand = Namespaced_IRI.parse _namespace_name "delayBand" |> NamespacedName
-
+    let delayBand = _prefix "delayBand"
     /// <summary>
     /// List of directions of travel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DirectionEnum"></see></summary>
-    let DirectionEnum =
-        Namespaced_IRI.parse _namespace_name "DirectionEnum" |> NamespacedName
-
+    let DirectionEnum = _prefix "DirectionEnum"
     /// <summary>
     /// Main purpose of a direction of a road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DirectionPurposeEnum"></see></summary>
-    let DirectionPurposeEnum =
-        Namespaced_IRI.parse _namespace_name "DirectionPurposeEnum" |> NamespacedName
-
+    let DirectionPurposeEnum = _prefix "DirectionPurposeEnum"
     /// <summary>
     /// Distance of a point along a linear element either measured from the start node or a defined referent on that linear element, where the start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DistanceAlongLinearElement"></see></summary>
-    let DistanceAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "DistanceAlongLinearElement" |> NamespacedName
-
+    let DistanceAlongLinearElement = _prefix "DistanceAlongLinearElement"
     /// <summary>
     /// Only for organizational purposes.Package LinearReferencing
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearReferencing"></see></summary>
-    let LinearReferencing =
-        Namespaced_IRI.parse _namespace_name "LinearReferencing" |> NamespacedName
-
+    let LinearReferencing = _prefix "LinearReferencing"
     /// <summary>
     /// Distance of a point along a linear element measured from a "from referent" on the linear element, in the sense relative to the linear element definition rather than the direction of traffic flow or optionally towards a "towards referent".
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DistanceFromLinearElementReferent"></see></summary>
-    let DistanceFromLinearElementReferent =
-        Namespaced_IRI.parse _namespace_name "DistanceFromLinearElementReferent" |> NamespacedName
-
+    let DistanceFromLinearElementReferent = _prefix "DistanceFromLinearElementReferent"
     /// <summary>
     /// A referent on a linear object that has a known location such as a node, a reference marker (e.g. a marker-post), an intersection etc.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Referent"></see></summary>
-    let Referent = Namespaced_IRI.parse _namespace_name "Referent" |> NamespacedName
-
+    let Referent = _prefix "Referent"
     /// <summary>
     /// A known location along the linear element towards which the distanceAlong is measured, termed the "towardsReferent" in EN ISO 19148.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferentTowards"></see></summary>
-    let hasReferentTowards =
-        Namespaced_IRI.parse _namespace_name "hasReferentTowards" |> NamespacedName
-
+    let hasReferentTowards = _prefix "hasReferentTowards"
     /// <summary>
     /// A known location along the linear element from which the distanceAlong is measured, termed the "fromReferent" in EN ISO 19148.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferentFrom"></see></summary>
-    let hasReferentFrom =
-        Namespaced_IRI.parse _namespace_name "hasReferentFrom" |> NamespacedName
-
+    let hasReferentFrom = _prefix "hasReferentFrom"
     /// <summary>
     /// A measure of distance defined in metres in a floating point format.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#MetresAsFloatValue"></see></summary>
-    let MetresAsFloatValue =
-        Namespaced_IRI.parse _namespace_name "MetresAsFloatValue" |> NamespacedName
-
+    let MetresAsFloatValue = _prefix "MetresAsFloatValue"
     /// <summary>
     /// A measure of distance along a linear element.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#distanceAlong"></see></summary>
-    let distanceAlong =
-        Namespaced_IRI.parse _namespace_name "distanceAlong" |> NamespacedName
-
+    let distanceAlong = _prefix "distanceAlong"
     /// <summary>
     /// Distance of a point along a linear element measured from the start node of the linear element, where start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DistanceFromLinearElementStart"></see></summary>
-    let DistanceFromLinearElementStart =
-        Namespaced_IRI.parse _namespace_name "DistanceFromLinearElementStart" |> NamespacedName
-
+    let DistanceFromLinearElementStart = _prefix "DistanceFromLinearElementStart"
     /// <summary>
     /// Deliberate human action of either a public disorder nature or of a situation alert type which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DisturbanceActivity"></see></summary>
-    let DisturbanceActivity =
-        Namespaced_IRI.parse _namespace_name "DisturbanceActivity" |> NamespacedName
-
+    let DisturbanceActivity = _prefix "DisturbanceActivity"
     /// <summary>
     /// Types of disturbance activities.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#DisturbanceActivityTypeEnum"></see></summary>
-    let DisturbanceActivityTypeEnum =
-        Namespaced_IRI.parse _namespace_name "DisturbanceActivityTypeEnum" |> NamespacedName
-
+    let DisturbanceActivityTypeEnum = _prefix "DisturbanceActivityTypeEnum"
     /// <summary>
     /// Data Dictionary.This clause contains the definitions of all enumerations which are used.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Enums"></see></summary>
-    let Enums = Namespaced_IRI.parse _namespace_name "Enums" |> NamespacedName
-
+    let Enums = _prefix "Enums"
     /// <summary>
     /// Types of environmental obstructions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#EnvironmentalObstructionTypeEnum"></see></summary>
-    let EnvironmentalObstructionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalObstructionTypeEnum" |> NamespacedName
+    let EnvironmentalObstructionTypeEnum = _prefix "EnvironmentalObstructionTypeEnum"
 
     /// <summary>
     /// Characterization of an obstruction on the road resulting from an environmental cause.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasEnvironmentalObstructionTypeEnum"></see></summary>
     let hasEnvironmentalObstructionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasEnvironmentalObstructionTypeEnum" |> NamespacedName
+        _prefix "hasEnvironmentalObstructionTypeEnum"
 
     /// <summary>
     /// General instruction and/or message that is issued by the network/road operator which is applicable to drivers and sometimes passengers.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeneralInstructionOrMessageToRoadUsers"></see></summary>
     let GeneralInstructionOrMessageToRoadUsers =
-        Namespaced_IRI.parse _namespace_name "GeneralInstructionOrMessageToRoadUsers" |> NamespacedName
+        _prefix "GeneralInstructionOrMessageToRoadUsers"
 
     /// <summary>
     /// General message that is issued by the network/road operator which is applicable to drivers and sometimes passengers, e.g. details about an amber alert (missing or abducted child alert).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#generalMessageToRoadUsers"></see></summary>
-    let generalMessageToRoadUsers =
-        Namespaced_IRI.parse _namespace_name "generalMessageToRoadUsers" |> NamespacedName
+    let generalMessageToRoadUsers = _prefix "generalMessageToRoadUsers"
 
     /// <summary>
     /// General instructions that may be issued to road users (specifically drivers and sometimes passengers) by an operator or operational system in support of network management activities or emergency situations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeneralInstructionOrMessageToRoadUsersTypeEnum"></see></summary>
     let GeneralInstructionOrMessageToRoadUsersTypeEnum =
-        Namespaced_IRI.parse _namespace_name "GeneralInstructionOrMessageToRoadUsersTypeEnum" |> NamespacedName
+        _prefix "GeneralInstructionOrMessageToRoadUsersTypeEnum"
 
     /// <summary>
     /// General instruction that is issued by the network/road operator which is applicable to drivers and sometimes passengers.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGeneralInstructionOrMessageToRoadUsersType"></see></summary>
     let hasGeneralInstructionOrMessageToRoadUsersType =
-        Namespaced_IRI.parse _namespace_name "hasGeneralInstructionOrMessageToRoadUsersType" |> NamespacedName
+        _prefix "hasGeneralInstructionOrMessageToRoadUsersType"
 
     /// <summary>
     /// Restrictions on road usage, whether by legal order or by operational decisions. It includes road and lane closures, weight and dimensional limits, banned turns, contraflows and alternate traffic operations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NetworkManagement"></see></summary>
-    let NetworkManagement =
-        Namespaced_IRI.parse _namespace_name "NetworkManagement" |> NamespacedName
-
+    let NetworkManagement = _prefix "NetworkManagement"
     /// <summary>
     /// Network management action which is applicable to the road network and its users. "trafficManuallyDirectedBy" is only valid if "hasGeneralNetworkManagementTypeEnum" is set to "trafficBeingManuallyDirected".
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeneralNetworkManagement"></see></summary>
-    let GeneralNetworkManagement =
-        Namespaced_IRI.parse _namespace_name "GeneralNetworkManagement" |> NamespacedName
-
+    let GeneralNetworkManagement = _prefix "GeneralNetworkManagement"
     /// <summary>
     /// Categories of person.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PersonCategoryEnum"></see></summary>
-    let PersonCategoryEnum =
-        Namespaced_IRI.parse _namespace_name "PersonCategoryEnum" |> NamespacedName
-
+    let PersonCategoryEnum = _prefix "PersonCategoryEnum"
     /// <summary>
     /// Type of person that is manually directing traffic (applicable if generalNetworkManagementType is set to "trafficBeingManuallyDirected").
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#trafficManuallyDirectedBy"></see></summary>
-    let trafficManuallyDirectedBy =
-        Namespaced_IRI.parse _namespace_name "trafficManuallyDirectedBy" |> NamespacedName
-
+    let trafficManuallyDirectedBy = _prefix "trafficManuallyDirectedBy"
     /// <summary>
     /// Types of network management actions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeneralNetworkManagementTypeEnum"></see></summary>
-    let GeneralNetworkManagementTypeEnum =
-        Namespaced_IRI.parse _namespace_name "GeneralNetworkManagementTypeEnum" |> NamespacedName
-
+    let GeneralNetworkManagementTypeEnum = _prefix "GeneralNetworkManagementTypeEnum"
     /// <summary>
     /// The type of traffic management action instigated by the network/road operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGeneralNetworkManagementType"></see></summary>
-    let hasGeneralNetworkManagementType =
-        Namespaced_IRI.parse _namespace_name "hasGeneralNetworkManagementType" |> NamespacedName
-
+    let hasGeneralNetworkManagementType = _prefix "hasGeneralNetworkManagementType"
     /// <summary>
     /// Types of obstructions on the roadway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ObstructionTypeEnum"></see></summary>
-    let ObstructionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "ObstructionTypeEnum" |> NamespacedName
-
+    let ObstructionTypeEnum = _prefix "ObstructionTypeEnum"
     /// <summary>
     /// Characterization of the type of general obstruction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasObstructionTypeEnum"></see></summary>
-    let hasObstructionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasObstructionTypeEnum" |> NamespacedName
-
+    let hasObstructionTypeEnum = _prefix "hasObstructionTypeEnum"
     /// <summary>
     /// The OGC GeoSPARQL standard supports representing and querying geospatial data on the Semantic Web. GeoSPARQL defines a vocabulary for representing geospatial data in RDF, and it defines an extension to the SPARQL query language for processing geospatial data.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeoSparqlClasses"></see></summary>
-    let GeoSparqlClasses =
-        Namespaced_IRI.parse _namespace_name "GeoSparqlClasses" |> NamespacedName
-
+    let GeoSparqlClasses = _prefix "GeoSparqlClasses"
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ImportedClasses"></see></summary>
-    let ImportedClasses =
-        Namespaced_IRI.parse _namespace_name "ImportedClasses" |> NamespacedName
-
+    let ImportedClasses = _prefix "ImportedClasses"
     /// <summary>
     /// Geo WGS84 vocabulary
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Geo_WGS84"></see></summary>
-    let Geo_WGS84 = Namespaced_IRI.parse _namespace_name "Geo_WGS84" |> NamespacedName
-
+    let Geo_WGS84 = _prefix "Geo_WGS84"
     /// <summary>
     /// Descriptor to help to identify a specific location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GeographicCharacteristicEnum"></see></summary>
-    let GeographicCharacteristicEnum =
-        Namespaced_IRI.parse _namespace_name "GeographicCharacteristicEnum" |> NamespacedName
-
+    let GeographicCharacteristicEnum = _prefix "GeographicCharacteristicEnum"
     /// <summary>
     /// GML location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Gml"></see></summary>
-    let Gml = Namespaced_IRI.parse _namespace_name "Gml" |> NamespacedName
-
+    let Gml = _prefix "Gml"
     /// <summary>
     /// Line string based on GML (EN ISO 19136) definition: a curve defined by a series of two or more coordinate tuples. Unlike GML may be self-intersecting. If srsName attribute is not present, posList is assumed to use "ETRS89-LatLonh" reference system.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GmlLineString"></see></summary>
-    let GmlLineString =
-        Namespaced_IRI.parse _namespace_name "GmlLineString" |> NamespacedName
-
+    let GmlLineString = _prefix "GmlLineString"
     /// <summary>
     /// Specifies the Coordinate Reference System (CRS) used to interpret the coordinates in this GmlLineString
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#srsName"></see></summary>
-    let srsName = Namespaced_IRI.parse _namespace_name "srsName" |> NamespacedName
-
+    let srsName = _prefix "srsName"
     /// <summary>
     /// Provides the size of the tuple of coordinates of each point. This number is 2 or 3. By default when omitted the dimension shall be interpreted as 2.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#srsDimension"></see></summary>
-    let srsDimension =
-        Namespaced_IRI.parse _namespace_name "srsDimension" |> NamespacedName
-
+    let srsDimension = _prefix "srsDimension"
     /// <summary>
     /// List of coordinate Tuples define the geometry of this GmlLineString. There must be at least 2 Tuples of coordinates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gmlPosList"></see></summary>
-    let gmlPosList = Namespaced_IRI.parse _namespace_name "gmlPosList" |> NamespacedName
-
+    let gmlPosList = _prefix "gmlPosList"
     /// <summary>
     /// Closed line string not self-intersecting (i.e. having as last point the first point)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GmlLinearRing"></see></summary>
-    let GmlLinearRing =
-        Namespaced_IRI.parse _namespace_name "GmlLinearRing" |> NamespacedName
-
+    let GmlLinearRing = _prefix "GmlLinearRing"
     /// <summary>
     /// Name of the multi-polygon area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#gmlAreaName"></see></summary>
-    let gmlAreaName =
-        Namespaced_IRI.parse _namespace_name "gmlAreaName" |> NamespacedName
-
+    let gmlAreaName = _prefix "gmlAreaName"
     /// <summary>
     /// Planar surface defined by 1 exterior boundary and 0 or more interior boundaries
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#GmlPolygon"></see></summary>
-    let GmlPolygon = Namespaced_IRI.parse _namespace_name "GmlPolygon" |> NamespacedName
-
+    let GmlPolygon = _prefix "GmlPolygon"
     /// <summary>
     /// Planar surface defined by 1 exterior boundary and 0 or more interior boundaries
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGmlPolygon"></see></summary>
-    let hasGmlPolygon =
-        Namespaced_IRI.parse _namespace_name "hasGmlPolygon" |> NamespacedName
-
+    let hasGmlPolygon = _prefix "hasGmlPolygon"
     /// <summary>
     /// A boundary of a polygonal surface consisting of a ring i.e. in the normal 2D case, a closed polygonal line distinguished as exterior. Such a polygonal line has at least 4 pairs of coordinates
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGmlExteriorLinearRing"></see></summary>
-    let hasGmlExteriorLinearRing =
-        Namespaced_IRI.parse _namespace_name "hasGmlExteriorLinearRing" |> NamespacedName
-
+    let hasGmlExteriorLinearRing = _prefix "hasGmlExteriorLinearRing"
     /// <summary>
     /// Management information relating to the data contained within a publication.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#HeaderInformation"></see></summary>
-    let HeaderInformation =
-        Namespaced_IRI.parse _namespace_name "HeaderInformation" |> NamespacedName
-
+    let HeaderInformation = _prefix "HeaderInformation"
     /// <summary>
     /// Status of the related information (i.e. real, test or exercise).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#InformationStatusEnum"></see></summary>
-    let InformationStatusEnum =
-        Namespaced_IRI.parse _namespace_name "InformationStatusEnum" |> NamespacedName
-
+    let InformationStatusEnum = _prefix "InformationStatusEnum"
     /// <summary>
     /// The status of the related information (real, test, exercise ....).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasInformationStatus"></see></summary>
-    let hasInformationStatus =
-        Namespaced_IRI.parse _namespace_name "hasInformationStatus" |> NamespacedName
-
+    let hasInformationStatus = _prefix "hasInformationStatus"
     /// <summary>
     /// The extent to which the related information may be circulated, according to the recipient type. Recipients must comply with this confidentiality statement.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasConfidentiality"></see></summary>
-    let hasConfidentiality =
-        Namespaced_IRI.parse _namespace_name "hasConfidentiality" |> NamespacedName
-
+    let hasConfidentiality = _prefix "hasConfidentiality"
     /// <summary>
     /// Third coordinate for points defined geodetically
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#HeightCoordinate"></see></summary>
-    let HeightCoordinate =
-        Namespaced_IRI.parse _namespace_name "HeightCoordinate" |> NamespacedName
-
+    let HeightCoordinate = _prefix "HeightCoordinate"
     /// <summary>
     /// Value in metres for the height measured vertically at to the planar coordinates the point corresponding.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#heightValue"></see></summary>
-    let heightValue =
-        Namespaced_IRI.parse _namespace_name "heightValue" |> NamespacedName
-
+    let heightValue = _prefix "heightValue"
     /// <summary>
     /// Horizontal position accuracy parameters defined according to EN 16803-1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PositionAccuracy"></see></summary>
-    let PositionAccuracy =
-        Namespaced_IRI.parse _namespace_name "PositionAccuracy" |> NamespacedName
-
+    let PositionAccuracy = _prefix "PositionAccuracy"
     /// <summary>
     /// Defines the horizontal position accuracy according EN 16803-1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasVerticalPositionAccuracy"></see></summary>
-    let hasVerticalPositionAccuracy =
-        Namespaced_IRI.parse _namespace_name "hasVerticalPositionAccuracy" |> NamespacedName
-
+    let hasVerticalPositionAccuracy = _prefix "hasVerticalPositionAccuracy"
     /// <summary>
     /// Coded value for type of height
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#HeightTypeEnum"></see></summary>
-    let HeightTypeEnum =
-        Namespaced_IRI.parse _namespace_name "HeightTypeEnum" |> NamespacedName
-
+    let HeightTypeEnum = _prefix "HeightTypeEnum"
     /// <summary>
     /// Type of measured height.When it is omitted it is supposed to be the ellipsoidal height.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasHeightTypeEnum"></see></summary>
-    let hasHeightTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasHeightTypeEnum" |> NamespacedName
-
+    let hasHeightTypeEnum = _prefix "hasHeightTypeEnum"
     /// <summary>
     /// Evaluation of the altitude confidence assessed according to ETSI ISO 102894-2
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAltitudeConfidence"></see></summary>
-    let hasAltitudeConfidence =
-        Namespaced_IRI.parse _namespace_name "hasAltitudeConfidence" |> NamespacedName
-
+    let hasAltitudeConfidence = _prefix "hasAltitudeConfidence"
     /// <summary>
     /// Only for organizational purposes.Package PointCoordinates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PointCoordinatesAssociationsFrom"></see></summary>
-    let PointCoordinatesAssociationsFrom =
-        Namespaced_IRI.parse _namespace_name "PointCoordinatesAssociationsFrom" |> NamespacedName
-
+    let PointCoordinatesAssociationsFrom = _prefix "PointCoordinatesAssociationsFrom"
     /// <summary>
     /// Only for organizational purposes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LocationReferencing"></see></summary>
-    let LocationReferencing =
-        Namespaced_IRI.parse _namespace_name "LocationReferencing" |> NamespacedName
-
+    let LocationReferencing = _prefix "LocationReferencing"
     /// <summary>
     /// List of height or vertical gradings of road sections.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#HeightGradeEnum"></see></summary>
-    let HeightGradeEnum =
-        Namespaced_IRI.parse _namespace_name "HeightGradeEnum" |> NamespacedName
-
+    let HeightGradeEnum = _prefix "HeightGradeEnum"
     /// <summary>
     /// An assessment of the impact that an event or operator action defined by the situation record has on the driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Impact"></see></summary>
-    let Impact = Namespaced_IRI.parse _namespace_name "Impact" |> NamespacedName
-
+    let Impact = _prefix "Impact"
     /// <summary>
     /// The number of usable lanes in the specified direction which remain fully operational (this may include the hard shoulder if it is being used as an operational lane).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfOperationalLanes"></see></summary>
-    let numberOfOperationalLanes =
-        Namespaced_IRI.parse _namespace_name "numberOfOperationalLanes" |> NamespacedName
-
+    let numberOfOperationalLanes = _prefix "numberOfOperationalLanes"
     /// <summary>
     /// The number of normally usable lanes on the carriageway which are now restricted either fully or partially (this may include the hard shoulder if it is normally available for operational use, e.g. in hard shoulder running schemes).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfLanesRestricted"></see></summary>
-    let numberOfLanesRestricted =
-        Namespaced_IRI.parse _namespace_name "numberOfLanesRestricted" |> NamespacedName
-
+    let numberOfLanesRestricted = _prefix "numberOfLanesRestricted"
     /// <summary>
     /// The ratio of current capacity to the normal (free flow) road capacity in the defined direction, expressed as a percentage. Capacity is the maximum number of vehicles that can pass a specified point on the road, in unit time given the specified conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#capacityRemaining"></see></summary>
-    let capacityRemaining =
-        Namespaced_IRI.parse _namespace_name "capacityRemaining" |> NamespacedName
-
+    let capacityRemaining = _prefix "capacityRemaining"
     /// <summary>
     /// The total width of the combined operational lanes in the specified direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#residualRoadWidth"></see></summary>
-    let residualRoadWidth =
-        Namespaced_IRI.parse _namespace_name "residualRoadWidth" |> NamespacedName
-
+    let residualRoadWidth = _prefix "residualRoadWidth"
     /// <summary>
     /// The width of lanes after any lane narrowing
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#residualLaneWidth"></see></summary>
-    let residualLaneWidth =
-        Namespaced_IRI.parse _namespace_name "residualLaneWidth" |> NamespacedName
-
+    let residualLaneWidth = _prefix "residualLaneWidth"
     /// <summary>
     /// The details of the delays being caused by the situation element defined in the situation record. It is recommended to only use one of the optional attributes to avoid confusion.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDelays"></see></summary>
-    let hasDelays = Namespaced_IRI.parse _namespace_name "hasDelays" |> NamespacedName
-
+    let hasDelays = _prefix "hasDelays"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#InformationDeliveryServicesEnum"></see>
     /// </summary>
-    let InformationDeliveryServicesEnum =
-        Namespaced_IRI.parse _namespace_name "InformationDeliveryServicesEnum" |> NamespacedName
-
+    let InformationDeliveryServicesEnum = _prefix "InformationDeliveryServicesEnum"
     /// <summary>
     /// An obstruction on the road caused by one Infrastructure Damage
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#InfrastructureDamageObstruction"></see></summary>
-    let InfrastructureDamageObstruction =
-        Namespaced_IRI.parse _namespace_name "InfrastructureDamageObstruction" |> NamespacedName
-
+    let InfrastructureDamageObstruction = _prefix "InfrastructureDamageObstruction"
     /// <summary>
     /// Types of infrastructure damage which may have an effect on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#InfrastructureDamageTypeEnum"></see></summary>
-    let InfrastructureDamageTypeEnum =
-        Namespaced_IRI.parse _namespace_name "InfrastructureDamageTypeEnum" |> NamespacedName
-
+    let InfrastructureDamageTypeEnum = _prefix "InfrastructureDamageTypeEnum"
     /// <summary>
     /// Types of infrastructure damage which may have an effect on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasInfrastructureDamageType"></see></summary>
-    let hasInfrastructureDamageType =
-        Namespaced_IRI.parse _namespace_name "hasInfrastructureDamageType" |> NamespacedName
-
+    let hasInfrastructureDamageType = _prefix "hasInfrastructureDamageType"
     /// <summary>
     /// Descriptor identifying infrastructure to help to identify a specific location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#InfrastructureDescriptorEnum"></see></summary>
-    let InfrastructureDescriptorEnum =
-        Namespaced_IRI.parse _namespace_name "InfrastructureDescriptorEnum" |> NamespacedName
-
+    let InfrastructureDescriptorEnum = _prefix "InfrastructureDescriptorEnum"
     /// <summary>
     /// An identifier/name whose range is specific to the particular country.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#InternationalIdentifier"></see></summary>
-    let InternationalIdentifier =
-        Namespaced_IRI.parse _namespace_name "InternationalIdentifier" |> NamespacedName
-
+    let InternationalIdentifier = _prefix "InternationalIdentifier"
     /// <summary>
     /// Identifier or name unique within the specified country.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nationalIdentifier"></see></summary>
-    let nationalIdentifier =
-        Namespaced_IRI.parse _namespace_name "nationalIdentifier" |> NamespacedName
-
+    let nationalIdentifier = _prefix "nationalIdentifier"
     /// <summary>
     /// Iso named area	The ISO 3166-2 representation for the named area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#IsoNamedArea"></see></summary>
-    let IsoNamedArea =
-        Namespaced_IRI.parse _namespace_name "IsoNamedArea" |> NamespacedName
-
+    let IsoNamedArea = _prefix "IsoNamedArea"
     /// <summary>
     /// ISO 3166-2 subdivison types.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SubdivisionTypeEnum"></see></summary>
-    let SubdivisionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "SubdivisionTypeEnum" |> NamespacedName
-
+    let SubdivisionTypeEnum = _prefix "SubdivisionTypeEnum"
     /// <summary>
     /// The ISO 3166-2 subdivison type for the named area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSubdivisionTypeEnum"></see></summary>
-    let hasSubdivisionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasSubdivisionTypeEnum" |> NamespacedName
-
+    let hasSubdivisionTypeEnum = _prefix "hasSubdivisionTypeEnum"
     /// <summary>
     /// The ISO 3166-2 subdivision code for the named area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasCountrySubdivision"></see></summary>
-    let hasCountrySubdivision =
-        Namespaced_IRI.parse _namespace_name "hasCountrySubdivision" |> NamespacedName
-
+    let hasCountrySubdivision = _prefix "hasCountrySubdivision"
     /// <summary>
     /// Multiple (i.e. more than one) physically separate locations arranged as an ordered set that defines an itinerary or route. In SRTI is not included ItineraryByReference
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Itinerary"></see></summary>
-    let Itinerary = Namespaced_IRI.parse _namespace_name "Itinerary" |> NamespacedName
-
+    let Itinerary = _prefix "Itinerary"
     /// <summary>
     /// Represents one or more physically separate locations. Multiple locations may be related, as in an itinerary or route, or may be unrelated. One LocationReference should not use multiple Location objects to represent the same physical location. In SRTI is not included LocationGroup
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LocationReference"></see></summary>
-    let LocationReference =
-        Namespaced_IRI.parse _namespace_name "LocationReference" |> NamespacedName
-
+    let LocationReference = _prefix "LocationReference"
     /// <summary>
     /// Multiple physically separate locations arranged as an ordered set that defines an itinerary or route. The index qualifier indicates the order.
     /// Association: 1..1 Location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ItineraryByIndexedLocations"></see></summary>
-    let ItineraryByIndexedLocations =
-        Namespaced_IRI.parse _namespace_name "ItineraryByIndexedLocations" |> NamespacedName
-
+    let ItineraryByIndexedLocations = _prefix "ItineraryByIndexedLocations"
     /// <summary>
     /// A location contained in an itinerary (i.e. an ordered set of locations defining a route or itinerary).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLocationContainedInItinerary"></see></summary>
-    let hasLocationContainedInItinerary =
-        Namespaced_IRI.parse _namespace_name "hasLocationContainedInItinerary" |> NamespacedName
-
+    let hasLocationContainedInItinerary = _prefix "hasLocationContainedInItinerary"
     /// <summary>
     /// Country Representation ontology provides a reference model to support the first two parts of ISO 3166, along with the other coding systems:
     ///  - ISO 3166-1 (Country codes) establishes codes that represent the current names of countries, dependencies, and other areas of particular geopolitical interest, on the basis of lists of country names obtained from the United Nations.
     ///  - ISO 3166-2 (Country subdivision code) establishes a code that represents the names of the principal administrative divisions, or similar areas, of the countries, etc. included in the ISO 3166-1.
     ///  - ISO 3166-3 (Code for formerly used names of countries) establishes a code that represents non-current country names, i.e., the country names deleted from ISO 3166 since its first publication in 1974.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LCC_CountryRepresentation"></see></summary>
-    let LCC_CountryRepresentation =
-        Namespaced_IRI.parse _namespace_name "LCC_CountryRepresentation" |> NamespacedName
-
+    let LCC_CountryRepresentation = _prefix "LCC_CountryRepresentation"
     /// <summary>
     /// Indicates a specific lane or group of lanes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Lane"></see></summary>
-    let Lane = Namespaced_IRI.parse _namespace_name "Lane" |> NamespacedName
+    let Lane = _prefix "Lane"
     /// <summary>
     /// The number of the lane, where 1 is nearest the hard shoulder/verge and the numbers increase towards the central reservation/road axis.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#laneNumber"></see></summary>
-    let laneNumber = Namespaced_IRI.parse _namespace_name "laneNumber" |> NamespacedName
+    let laneNumber = _prefix "laneNumber"
     /// <summary>
     /// List of descriptors identifying specific lanes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LaneEnum"></see></summary>
-    let LaneEnum = Namespaced_IRI.parse _namespace_name "LaneEnum" |> NamespacedName
-
+    let LaneEnum = _prefix "LaneEnum"
     /// <summary>
     /// Indicates the specific lane to which the location relates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLaneEnum"></see></summary>
-    let hasLaneEnum =
-        Namespaced_IRI.parse _namespace_name "hasLaneEnum" |> NamespacedName
-
+    let hasLaneEnum = _prefix "hasLaneEnum"
     /// <summary>
     /// A linear element along a single linear object, consistent with EN ISO 19148 definitions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearElement"></see></summary>
-    let LinearElement =
-        Namespaced_IRI.parse _namespace_name "LinearElement" |> NamespacedName
-
+    let LinearElement = _prefix "LinearElement"
     /// <summary>
     /// Name of the road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadName"></see></summary>
-    let roadName = Namespaced_IRI.parse _namespace_name "roadName" |> NamespacedName
+    let roadName = _prefix "roadName"
 
     /// <summary>
     /// The version of the identified road network reference model.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#linearElementReferenceModelVersion"></see></summary>
     let linearElementReferenceModelVersion =
-        Namespaced_IRI.parse _namespace_name "linearElementReferenceModelVersion" |> NamespacedName
+        _prefix "linearElementReferenceModelVersion"
 
     /// <summary>
     /// The identifier of a road network reference model which segments the road network according to specific business rules.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#linearElementReferenceModel"></see></summary>
-    let linearElementReferenceModel =
-        Namespaced_IRI.parse _namespace_name "linearElementReferenceModel" |> NamespacedName
-
+    let linearElementReferenceModel = _prefix "linearElementReferenceModel"
     /// <summary>
     /// Identifier/number of the road. The road number designated by the road authority
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadNumber"></see></summary>
-    let hasRoadNumber =
-        Namespaced_IRI.parse _namespace_name "hasRoadNumber" |> NamespacedName
-
+    let hasRoadNumber = _prefix "hasRoadNumber"
     /// <summary>
     /// List of indicative natures of linear elements.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearElementNatureEnum"></see></summary>
-    let LinearElementNatureEnum =
-        Namespaced_IRI.parse _namespace_name "LinearElementNatureEnum" |> NamespacedName
-
+    let LinearElementNatureEnum = _prefix "LinearElementNatureEnum"
     /// <summary>
     /// An indication of the nature of the linear element.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLinearElementNature"></see></summary>
-    let hasLinearElementNature =
-        Namespaced_IRI.parse _namespace_name "hasLinearElementNature" |> NamespacedName
-
+    let hasLinearElementNature = _prefix "hasLinearElementNature"
     /// <summary>
     /// A linear element along a single linear object defined by its identifier or code in a road network reference model (specified in LinearElement class) which segments the road network according to specific business rules.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearElementByCode"></see></summary>
-    let LinearElementByCode =
-        Namespaced_IRI.parse _namespace_name "LinearElementByCode" |> NamespacedName
-
+    let LinearElementByCode = _prefix "LinearElementByCode"
     /// <summary>
     /// An identifier or code of a linear element (or link) in the road network reference model that is specified in the LinearElement class.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#linearElementIdentifier"></see></summary>
-    let linearElementIdentifier =
-        Namespaced_IRI.parse _namespace_name "linearElementIdentifier" |> NamespacedName
-
+    let linearElementIdentifier = _prefix "linearElementIdentifier"
     /// <summary>
     /// A linear element defined by a line string (class GmlLineString).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearElementByLineString"></see></summary>
-    let LinearElementByLineString =
-        Namespaced_IRI.parse _namespace_name "LinearElementByLineString" |> NamespacedName
-
+    let LinearElementByLineString = _prefix "LinearElementByLineString"
     /// <summary>
     /// Line string based on GML (EN ISO 19136) definition: a curve defined by a series of two or more coordinate tuples. Unlike GML may be self-intersecting. If srsName attribute is not present, posList is assumed to use "ETRS89-LatLonh" reference system.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGmlLineString"></see></summary>
-    let hasGmlLineString =
-        Namespaced_IRI.parse _namespace_name "hasGmlLineString" |> NamespacedName
-
+    let hasGmlLineString = _prefix "hasGmlLineString"
     /// <summary>
     /// A linear element along a single linear object defined by its start and end points.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearElementByPoints"></see></summary>
-    let LinearElementByPoints =
-        Namespaced_IRI.parse _namespace_name "LinearElementByPoints" |> NamespacedName
-
+    let LinearElementByPoints = _prefix "LinearElementByPoints"
     /// <summary>
     /// The referent at a known location on the linear object which defines the end of the linear element.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferentEndPointLinearElement"></see></summary>
-    let hasReferentEndPointLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasReferentEndPointLinearElement" |> NamespacedName
+    let hasReferentEndPointLinearElement = _prefix "hasReferentEndPointLinearElement"
 
     /// <summary>
     /// A referent at a known location on the linear object which is neither the start or end of the linear element.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferentIntermediatePointLinearElement"></see></summary>
     let hasReferentIntermediatePointLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasReferentIntermediatePointLinearElement" |> NamespacedName
+        _prefix "hasReferentIntermediatePointLinearElement"
 
     /// <summary>
     /// The referent at a known location on the linear object which defines the start of the linear element.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferentStartPointLinearElement"></see></summary>
     let hasReferentStartPointLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasReferentStartPointLinearElement" |> NamespacedName
+        _prefix "hasReferentStartPointLinearElement"
 
     /// <summary>
     /// Location representing a linear section with optional directionality defined between two points. Any LinearLocation must have an instance of at least one of these classes. If using multiple instances, producers must take care to ensure they represent the same location.
@@ -5414,703 +3970,500 @@ module dtx_srti =
     /// 0..1	GmlLineString
     /// 0..1	SupplementaryPositionalDescription
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearLocation"></see></summary>
-    let LinearLocation =
-        Namespaced_IRI.parse _namespace_name "LinearLocation" |> NamespacedName
+    let LinearLocation = _prefix "LinearLocation"
 
     /// <summary>
     /// A collection of supplementary positional information which improves the precision of the location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SupplementaryPositionalDescription"></see></summary>
     let SupplementaryPositionalDescription =
-        Namespaced_IRI.parse _namespace_name "SupplementaryPositionalDescription" |> NamespacedName
+        _prefix "SupplementaryPositionalDescription"
 
     /// <summary>
     /// Supplementary description that applies to the secondary end of the linear location. Use when properties change along the Linear. For a one-way linear the secondary end should be the destination end.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSecondarySupplementaryDescription"></see></summary>
     let hasSecondarySupplementaryDescription =
-        Namespaced_IRI.parse _namespace_name "hasSecondarySupplementaryDescription" |> NamespacedName
+        _prefix "hasSecondarySupplementaryDescription"
 
     /// <summary>
     /// OpenLR line location reference
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrLinear"></see></summary>
-    let OpenlrLinear =
-        Namespaced_IRI.parse _namespace_name "OpenlrLinear" |> NamespacedName
-
+    let OpenlrLinear = _prefix "OpenlrLinear"
     /// <summary>
     /// OpenLR line location reference
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrLinear"></see></summary>
-    let hasOpenlrLinear =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrLinear" |> NamespacedName
-
+    let hasOpenlrLinear = _prefix "hasOpenlrLinear"
     /// <summary>
     /// The specification of a location on a network (as a point or a linear location).Association: 0..1 SupplementaryPositionalDescription
     ///
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NetworkLocation"></see></summary>
-    let NetworkLocation =
-        Namespaced_IRI.parse _namespace_name "NetworkLocation" |> NamespacedName
-
+    let NetworkLocation = _prefix "NetworkLocation"
     /// <summary>
     /// A linear section along a linear element where the linear element is either a part of or the whole of a linear object (i.e. a road), consistent with ISO 19148 definitions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#LinearWithinLinearElement"></see></summary>
-    let LinearWithinLinearElement =
-        Namespaced_IRI.parse _namespace_name "LinearWithinLinearElement" |> NamespacedName
-
+    let LinearWithinLinearElement = _prefix "LinearWithinLinearElement"
     /// <summary>
     /// The direction of traffic flow on the linear section in terms of general destination direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#directionOnLinearSection"></see></summary>
-    let directionOnLinearSection =
-        Namespaced_IRI.parse _namespace_name "directionOnLinearSection" |> NamespacedName
-
+    let directionOnLinearSection = _prefix "directionOnLinearSection"
     /// <summary>
     /// Specifies a linear element along a single linear object, consistent with EN ISO 19148 definitions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLinearElement"></see></summary>
-    let hasLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasLinearElement" |> NamespacedName
-
+    let hasLinearElement = _prefix "hasLinearElement"
     /// <summary>
     /// A point on the linear element that defines the end node of the linear section.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDistanceAlongLinearElementTo"></see></summary>
-    let hasDistanceAlongLinearElementTo =
-        Namespaced_IRI.parse _namespace_name "hasDistanceAlongLinearElementTo" |> NamespacedName
-
+    let hasDistanceAlongLinearElementTo = _prefix "hasDistanceAlongLinearElementTo"
     /// <summary>
     /// A point on the linear element that defines the start node of the linear section.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDistanceAlongLinearElementFrom"></see></summary>
-    let hasDistanceAlongLinearElementFrom =
-        Namespaced_IRI.parse _namespace_name "hasDistanceAlongLinearElementFrom" |> NamespacedName
-
+    let hasDistanceAlongLinearElementFrom = _prefix "hasDistanceAlongLinearElementFrom"
     /// <summary>
     /// Identification of whether the linear section that is part of the linear element is at, above or below the normal elevation of a linear element of that type (e.g. road or road section) at that location, typically used to indicate "grade" separation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasHeightGradeOfLinearSection"></see></summary>
-    let hasHeightGradeOfLinearSection =
-        Namespaced_IRI.parse _namespace_name "hasHeightGradeOfLinearSection" |> NamespacedName
+    let hasHeightGradeOfLinearSection = _prefix "hasHeightGradeOfLinearSection"
 
     /// <summary>
     /// Identification of the road administration area which contains the specified linear section.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAdministrativeAreaOfLinearSection"></see></summary>
     let hasAdministrativeAreaOfLinearSection =
-        Namespaced_IRI.parse _namespace_name "hasAdministrativeAreaOfLinearSection" |> NamespacedName
+        _prefix "hasAdministrativeAreaOfLinearSection"
 
     /// <summary>
     /// The direction of traffic flow on the linear section relative to the direction in which the linear element is defined.
     ///
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#directionRelativeOnLinearSection"></see></summary>
-    let directionRelativeOnLinearSection =
-        Namespaced_IRI.parse _namespace_name "directionRelativeOnLinearSection" |> NamespacedName
-
+    let directionRelativeOnLinearSection = _prefix "directionRelativeOnLinearSection"
     /// <summary>
     /// In Datex II definition, a pair of planar coordinates defining the geodetic position of a single point using the European Terrestrial Reference System 1989 (ETRS89).
     ///
     /// Note: At the moment, in Spain it is used the WGS84 and so, the 2 references are possible ( geo/wgs84_pos (lat, long) / geo_core (xETRS89,yETRS89) ).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PointCoordinates"></see></summary>
-    let PointCoordinates =
-        Namespaced_IRI.parse _namespace_name "PointCoordinates" |> NamespacedName
-
+    let PointCoordinates = _prefix "PointCoordinates"
     /// <summary>
     /// Coordinates that may be used by clients for visual display on user interfaces.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPointCoordinates"></see></summary>
-    let hasPointCoordinates =
-        Namespaced_IRI.parse _namespace_name "hasPointCoordinates" |> NamespacedName
-
+    let hasPointCoordinates = _prefix "hasPointCoordinates"
     /// <summary>
     /// Only for organizational purposes. Package PayloadPublication
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PayLoadPublishing"></see></summary>
-    let PayLoadPublishing =
-        Namespaced_IRI.parse _namespace_name "PayLoadPublishing" |> NamespacedName
-
+    let PayLoadPublishing = _prefix "PayLoadPublishing"
     /// <summary>
     /// Types of maintenance vehicle actions associated with roadworks.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#MaintenanceVehicleActionsEnum"></see></summary>
-    let MaintenanceVehicleActionsEnum =
-        Namespaced_IRI.parse _namespace_name "MaintenanceVehicleActionsEnum" |> NamespacedName
-
+    let MaintenanceVehicleActionsEnum = _prefix "MaintenanceVehicleActionsEnum"
     /// <summary>
     /// Details of the maintenance vehicles involved in the roadworks activity.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#MaintenanceVehicles"></see></summary>
-    let MaintenanceVehicles =
-        Namespaced_IRI.parse _namespace_name "MaintenanceVehicles" |> NamespacedName
-
+    let MaintenanceVehicles = _prefix "MaintenanceVehicles"
     /// <summary>
     /// The number of maintenance vehicles associated with the roadworks activities at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfMaintenanceVehicles"></see></summary>
-    let numberOfMaintenanceVehicles =
-        Namespaced_IRI.parse _namespace_name "numberOfMaintenanceVehicles" |> NamespacedName
-
+    let numberOfMaintenanceVehicles = _prefix "numberOfMaintenanceVehicles"
     /// <summary>
     /// Roadworks involving the maintenance or installation of infrastructure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#MaintenanceWorks"></see></summary>
-    let MaintenanceWorks =
-        Namespaced_IRI.parse _namespace_name "MaintenanceWorks" |> NamespacedName
-
+    let MaintenanceWorks = _prefix "MaintenanceWorks"
     /// <summary>
     /// Types of road maintenance.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadMaintenanceTypeEnum"></see></summary>
-    let RoadMaintenanceTypeEnum =
-        Namespaced_IRI.parse _namespace_name "RoadMaintenanceTypeEnum" |> NamespacedName
-
+    let RoadMaintenanceTypeEnum = _prefix "RoadMaintenanceTypeEnum"
     /// <summary>
     /// The type of road maintenance or installation work at the specified location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadMaintenanceType"></see></summary>
-    let hasRoadMaintenanceType =
-        Namespaced_IRI.parse _namespace_name "hasRoadMaintenanceType" |> NamespacedName
-
+    let hasRoadMaintenanceType = _prefix "hasRoadMaintenanceType"
     /// <summary>
     /// A measured or calculated value of speed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SpeedValue"></see></summary>
-    let SpeedValue = Namespaced_IRI.parse _namespace_name "SpeedValue" |> NamespacedName
+    let SpeedValue = _prefix "SpeedValue"
     /// <summary>
     /// Speed of the mobile entity.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#speed"></see></summary>
-    let speed = Namespaced_IRI.parse _namespace_name "speed" |> NamespacedName
-
+    let speed = _prefix "speed"
     /// <summary>
     /// An indication of whether the associated instance of a SituationRecord is mobile (e.g. a march or parade moving along a road) or stationary.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#MobilityTypeEnum"></see></summary>
-    let MobilityTypeEnum =
-        Namespaced_IRI.parse _namespace_name "MobilityTypeEnum" |> NamespacedName
-
+    let MobilityTypeEnum = _prefix "MobilityTypeEnum"
     /// <summary>
     /// Types of mobility relating to a situation element defined by a SituationReord.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasMobilityType"></see></summary>
-    let hasMobilityType =
-        Namespaced_IRI.parse _namespace_name "hasMobilityType" |> NamespacedName
-
+    let hasMobilityType = _prefix "hasMobilityType"
     /// <summary>
     /// The name of the area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#areaNameProperty"></see></summary>
-    let areaNameProperty =
-        Namespaced_IRI.parse _namespace_name "areaNameProperty" |> NamespacedName
-
+    let areaNameProperty = _prefix "areaNameProperty"
     /// <summary>
     /// Types of areas.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NamedAreaTypeEnum"></see></summary>
-    let NamedAreaTypeEnum =
-        Namespaced_IRI.parse _namespace_name "NamedAreaTypeEnum" |> NamespacedName
-
+    let NamedAreaTypeEnum = _prefix "NamedAreaTypeEnum"
     /// <summary>
     /// The type of the area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasNamedAreaTypeEnum"></see></summary>
-    let hasNamedAreaTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasNamedAreaTypeEnum" |> NamespacedName
+    let hasNamedAreaTypeEnum = _prefix "hasNamedAreaTypeEnum"
 
     /// <summary>
     /// A collection of supplementary positional information which improves the precision of the location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSupplementaryPositionalDescription"></see></summary>
     let hasSupplementaryPositionalDescription =
-        Namespaced_IRI.parse _namespace_name "hasSupplementaryPositionalDescription" |> NamespacedName
+        _prefix "hasSupplementaryPositionalDescription"
 
     /// <summary>
     /// Actions that a traffic operator can decide to implement to prevent or help correct dangerous or poor driving conditions, including maintenance of the road infrastructure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OperatorAction"></see></summary>
-    let OperatorAction =
-        Namespaced_IRI.parse _namespace_name "OperatorAction" |> NamespacedName
+    let OperatorAction = _prefix "OperatorAction"
 
     /// <summary>
     /// Types of road surface conditions which are not related to the weather.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NonWeatherRelatedRoadConditionTypeEnum"></see></summary>
     let NonWeatherRelatedRoadConditionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "NonWeatherRelatedRoadConditionTypeEnum" |> NamespacedName
+        _prefix "NonWeatherRelatedRoadConditionTypeEnum"
 
     /// <summary>
     /// Road surface conditions that are not related to the weather but which may affect driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NonWeatherRelatedRoadConditions"></see></summary>
-    let NonWeatherRelatedRoadConditions =
-        Namespaced_IRI.parse _namespace_name "NonWeatherRelatedRoadConditions" |> NamespacedName
+    let NonWeatherRelatedRoadConditions = _prefix "NonWeatherRelatedRoadConditions"
 
     /// <summary>
     /// The type of road conditions which are not related to the weather.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasNonWeatherRelatedRoadConditionTypeEnum"></see></summary>
     let hasNonWeatherRelatedRoadConditionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasNonWeatherRelatedRoadConditionTypeEnum" |> NamespacedName
+        _prefix "hasNonWeatherRelatedRoadConditionTypeEnum"
 
     /// <summary>
     /// Road surface conditions that are related to the weather which may affect the driving conditions, such as ice, snow or water.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#WeatherRelatedRoadConditions"></see></summary>
-    let WeatherRelatedRoadConditions =
-        Namespaced_IRI.parse _namespace_name "WeatherRelatedRoadConditions" |> NamespacedName
-
+    let WeatherRelatedRoadConditions = _prefix "WeatherRelatedRoadConditions"
     /// <summary>
     /// Conditions of the road surface which may affect driving conditions. These may be related to the weather (e.g. ice, snow etc.) or to other conditions (e.g. oil, mud, leaves etc. on the road)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadSurfaceConditions"></see></summary>
-    let RoadSurfaceConditions =
-        Namespaced_IRI.parse _namespace_name "RoadSurfaceConditions" |> NamespacedName
-
+    let RoadSurfaceConditions = _prefix "RoadSurfaceConditions"
     /// <summary>
     /// Types of NUTS codes (Nomenclature of territorial units for statistics) including LAU codes (Local Administrative Units).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NutsCodeTypeEnum"></see></summary>
-    let NutsCodeTypeEnum =
-        Namespaced_IRI.parse _namespace_name "NutsCodeTypeEnum" |> NamespacedName
-
+    let NutsCodeTypeEnum = _prefix "NutsCodeTypeEnum"
     /// <summary>
     /// The NUTS-Code representation for the named area (Nomenclature of territorial units for statistics) or its LAU code representation (Local Administrative Unit).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#NutsNamedArea"></see></summary>
-    let NutsNamedArea =
-        Namespaced_IRI.parse _namespace_name "NutsNamedArea" |> NamespacedName
-
+    let NutsNamedArea = _prefix "NutsNamedArea"
     /// <summary>
     /// The NUTS code for the named area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#nutsCode"></see></summary>
-    let nutsCode = Namespaced_IRI.parse _namespace_name "nutsCode" |> NamespacedName
-
+    let nutsCode = _prefix "nutsCode"
     /// <summary>
     /// The NUTS code type for the named area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasNutsCodeTypeEnum"></see></summary>
-    let hasNutsCodeTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasNutsCodeTypeEnum" |> NamespacedName
-
+    let hasNutsCodeTypeEnum = _prefix "hasNutsCodeTypeEnum"
     /// <summary>
     /// Number of Obstructions. Not in SRTI profile
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfObstructions"></see></summary>
-    let numberOfObstructions =
-        Namespaced_IRI.parse _namespace_name "numberOfObstructions" |> NamespacedName
-
+    let numberOfObstructions = _prefix "numberOfObstructions"
     /// <summary>
     /// Specifies the mobility of a obstruction
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasMobilityOfObstruction"></see></summary>
-    let hasMobilityOfObstruction =
-        Namespaced_IRI.parse _namespace_name "hasMobilityOfObstruction" |> NamespacedName
-
+    let hasMobilityOfObstruction = _prefix "hasMobilityOfObstruction"
     /// <summary>
     /// The non-negative offset distance from the ALERT-C referenced point to the actual point. The ALERT-C locations in the primary and secondary locations must always encompass the linear section being specified, thus offset distance is towards the other point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#offsetDistance"></see></summary>
-    let offsetDistance =
-        Namespaced_IRI.parse _namespace_name "offsetDistance" |> NamespacedName
-
+    let offsetDistance = _prefix "offsetDistance"
     /// <summary>
     /// OpenLR location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenLR"></see></summary>
-    let OpenLR = Namespaced_IRI.parse _namespace_name "OpenLR" |> NamespacedName
-
+    let OpenLR = _prefix "OpenLR"
     /// <summary>
     /// Holds common data that are used both in OpenlrPointAccessPoint and OpenlrPointAlongLine.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrBasePointLocation"></see></summary>
-    let OpenlrBasePointLocation =
-        Namespaced_IRI.parse _namespace_name "OpenlrBasePointLocation" |> NamespacedName
-
+    let OpenlrBasePointLocation = _prefix "OpenlrBasePointLocation"
     /// <summary>
     /// Offsets are used to locate the start and end of a location more precisely than bounding to the nodes in a network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrOffsets"></see></summary>
-    let OpenlrOffsets =
-        Namespaced_IRI.parse _namespace_name "OpenlrOffsets" |> NamespacedName
-
+    let OpenlrOffsets = _prefix "OpenlrOffsets"
     /// <summary>
     /// Allows for adding offsets to the line location path defined by nodes when the starting (respectively ending) point does not coincide with a node.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrOffsets"></see></summary>
-    let hasOpenlrOffsets =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrOffsets" |> NamespacedName
-
+    let hasOpenlrOffsets = _prefix "hasOpenlrOffsets"
     /// <summary>
     /// Enumeration of side of road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrSideOfRoadEnum"></see></summary>
-    let OpenlrSideOfRoadEnum =
-        Namespaced_IRI.parse _namespace_name "OpenlrSideOfRoadEnum" |> NamespacedName
-
+    let OpenlrSideOfRoadEnum = _prefix "OpenlrSideOfRoadEnum"
     /// <summary>
     /// Provides the of road where the corresponding point lies.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrSideOfRoad"></see></summary>
-    let hasOpenlrSideOfRoad =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrSideOfRoad" |> NamespacedName
-
+    let hasOpenlrSideOfRoad = _prefix "hasOpenlrSideOfRoad"
     /// <summary>
     /// Enumeration of side of road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrOrientationEnum"></see></summary>
-    let OpenlrOrientationEnum =
-        Namespaced_IRI.parse _namespace_name "OpenlrOrientationEnum" |> NamespacedName
-
+    let OpenlrOrientationEnum = _prefix "OpenlrOrientationEnum"
     /// <summary>
     /// Orientation of the driving direction in relation with the direction of the underlying linear
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrOrientation"></see></summary>
-    let hasOpenlrOrientation =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrOrientation" |> NamespacedName
-
+    let hasOpenlrOrientation = _prefix "hasOpenlrOrientation"
     /// <summary>
     /// The basis of a location reference is a sequence of location reference points (LRPs).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrLocationReferencePoint"></see></summary>
-    let OpenlrLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrLocationReferencePoint" |> NamespacedName
-
+    let OpenlrLocationReferencePoint = _prefix "OpenlrLocationReferencePoint"
     /// <summary>
     /// Allows defining the first point of the OpenLR path
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrLocationReferencePoint"></see></summary>
-    let hasOpenlrLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrLocationReferencePoint" |> NamespacedName
-
+    let hasOpenlrLocationReferencePoint = _prefix "hasOpenlrLocationReferencePoint"
     /// <summary>
     /// The sequence of location reference points is terminated by a last location reference point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrLastLocationReferencePoint"></see></summary>
-    let OpenlrLastLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrLastLocationReferencePoint" |> NamespacedName
+    let OpenlrLastLocationReferencePoint = _prefix "OpenlrLastLocationReferencePoint"
 
     /// <summary>
     /// Allows defining the last point of the OpenLR path
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrLastLocationReferencePoint"></see></summary>
     let hasOpenlrLastLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrLastLocationReferencePoint" |> NamespacedName
+        _prefix "hasOpenlrLastLocationReferencePoint"
 
     /// <summary>
     /// A point location is a zero-dimensional element in a map that specifies a geometric location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrPointLocationReference"></see></summary>
-    let OpenlrPointLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrPointLocationReference" |> NamespacedName
-
+    let OpenlrPointLocationReference = _prefix "OpenlrPointLocationReference"
     /// <summary>
     /// Base class used to hold data about a reference point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrBaseReferencePoint"></see></summary>
-    let OpenlrBaseReferencePoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrBaseReferencePoint" |> NamespacedName
-
+    let OpenlrBaseReferencePoint = _prefix "OpenlrBaseReferencePoint"
     /// <summary>
     /// Line attributes are part of a location reference point and consists of functional road class (FRC),form of way (FOW) and bearing (BEAR) data.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrLineAttributes"></see></summary>
-    let OpenlrLineAttributes =
-        Namespaced_IRI.parse _namespace_name "OpenlrLineAttributes" |> NamespacedName
-
+    let OpenlrLineAttributes = _prefix "OpenlrLineAttributes"
     /// <summary>
     /// Properties of the line towards the topologically adjacent OpenLR location referencing point, on the shortest path to that point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrLineAttributes"></see></summary>
-    let hasOpenlrLineAttributes =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrLineAttributes" |> NamespacedName
-
+    let hasOpenlrLineAttributes = _prefix "hasOpenlrLineAttributes"
     /// <summary>
     /// The OpenLR method of area definition by providing a center position and a radius
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrCircleLocationReference"></see></summary>
-    let OpenlrCircleLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrCircleLocationReference" |> NamespacedName
-
+    let OpenlrCircleLocationReference = _prefix "OpenlrCircleLocationReference"
     /// <summary>
     /// The radius of the corresponding circular area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrRadius"></see></summary>
-    let openlrRadius =
-        Namespaced_IRI.parse _namespace_name "openlrRadius" |> NamespacedName
-
+    let openlrRadius = _prefix "openlrRadius"
     /// <summary>
     /// A geo-coordinate pair is a position in a map defined by its longitude and latitude coordinate values.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrGeoCoordinate"></see></summary>
-    let OpenlrGeoCoordinate =
-        Namespaced_IRI.parse _namespace_name "OpenlrGeoCoordinate" |> NamespacedName
-
+    let OpenlrGeoCoordinate = _prefix "OpenlrGeoCoordinate"
     /// <summary>
     /// A geo-coordinate pair is a position in a map defined by its longitude and latitude coordinate values.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrGeoCoordinate"></see></summary>
-    let hasOpenlrGeoCoordinate =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrGeoCoordinate" |> NamespacedName
-
+    let hasOpenlrGeoCoordinate = _prefix "hasOpenlrGeoCoordinate"
     /// <summary>
     /// The OpenLR method of area definition by providing a closed path (i.e. a circuit) in the road network.
     /// The boundary always consists of road segments
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrClosedLineLocationReference"></see></summary>
-    let OpenlrClosedLineLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrClosedLineLocationReference" |> NamespacedName
-
+    let OpenlrClosedLineLocationReference = _prefix "OpenlrClosedLineLocationReference"
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrEnumerations"></see></summary>
-    let OpenlrEnumerations =
-        Namespaced_IRI.parse _namespace_name "OpenlrEnumerations" |> NamespacedName
-
+    let OpenlrEnumerations = _prefix "OpenlrEnumerations"
     /// <summary>
     /// Enumeration of form of way
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrFormOfWayEnum"></see></summary>
-    let OpenlrFormOfWayEnum =
-        Namespaced_IRI.parse _namespace_name "OpenlrFormOfWayEnum" |> NamespacedName
-
+    let OpenlrFormOfWayEnum = _prefix "OpenlrFormOfWayEnum"
     /// <summary>
     /// Enumuration of functional road class
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrFunctionalRoadClassEnum"></see></summary>
-    let OpenlrFunctionalRoadClassEnum =
-        Namespaced_IRI.parse _namespace_name "OpenlrFunctionalRoadClassEnum" |> NamespacedName
-
+    let OpenlrFunctionalRoadClassEnum = _prefix "OpenlrFunctionalRoadClassEnum"
     /// <summary>
     /// Corresponding coordinates of an OpenLR point defined by its only coordinates.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrCoordinates"></see></summary>
-    let hasOpenlrCoordinates =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrCoordinates" |> NamespacedName
-
+    let hasOpenlrCoordinates = _prefix "hasOpenlrCoordinates"
     /// <summary>
     /// Area defined using an OpenLR™ method consisting in defining it by a tessellation of rectangles
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrGridLocationReference"></see></summary>
-    let OpenlrGridLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrGridLocationReference" |> NamespacedName
-
+    let OpenlrGridLocationReference = _prefix "OpenlrGridLocationReference"
     /// <summary>
     /// The number that the base rectangle should be multiplied in the north direction
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrNumRows"></see></summary>
-    let openlrNumRows =
-        Namespaced_IRI.parse _namespace_name "openlrNumRows" |> NamespacedName
-
+    let openlrNumRows = _prefix "openlrNumRows"
     /// <summary>
     /// The number that the base rectangle should be multiplied in the east direction
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrNumColumns"></see></summary>
-    let openlrNumColumns =
-        Namespaced_IRI.parse _namespace_name "openlrNumColumns" |> NamespacedName
-
+    let openlrNumColumns = _prefix "openlrNumColumns"
     /// <summary>
     /// Area delimited by a rectangle defined by the geodetic co-ordinates of the two ends of its diagonal from south-west to north-east (the rectangle having two sides that are parallel to lines of latitude)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrRectangle"></see></summary>
-    let OpenlrRectangle =
-        Namespaced_IRI.parse _namespace_name "OpenlrRectangle" |> NamespacedName
-
+    let OpenlrRectangle = _prefix "OpenlrRectangle"
     /// <summary>
     /// Area delimited by a rectangle defined by the geodetic co-ordinates of the two ends of its diagonal from south-west to north-east (the rectangle having two sides that are parallel to lines of latitude)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrRectangle"></see></summary>
-    let hasOpenlrRectangle =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrRectangle" |> NamespacedName
-
+    let hasOpenlrRectangle = _prefix "hasOpenlrRectangle"
     /// <summary>
     /// Only for organizational purposes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrLine"></see></summary>
-    let OpenlrLine = Namespaced_IRI.parse _namespace_name "OpenlrLine" |> NamespacedName
-
+    let OpenlrLine = _prefix "OpenlrLine"
     /// <summary>
     /// Defines the bearing field as an integer value between 0 and 359
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrBearing"></see></summary>
-    let openlrBearing =
-        Namespaced_IRI.parse _namespace_name "openlrBearing" |> NamespacedName
-
+    let openlrBearing = _prefix "openlrBearing"
     /// <summary>
     /// The lowest FRC to the next point indicates the lowest functional road class used in the location reference path to the next LR-point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrLowestFrcToNextLRPoint"></see></summary>
-    let hasOpenlrLowestFrcToNextLRPoint =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrLowestFrcToNextLRPoint" |> NamespacedName
-
+    let hasOpenlrLowestFrcToNextLRPoint = _prefix "hasOpenlrLowestFrcToNextLRPoint"
     /// <summary>
     /// A classification based on the importance of the role that the Road Element (or Ferry Connection) performs in the connectivity of the total road network. (EN ISO 14825 § 7.2.88)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrFormOfWayEnum"></see></summary>
-    let hasOpenlrFormOfWayEnum =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrFormOfWayEnum" |> NamespacedName
-
+    let hasOpenlrFormOfWayEnum = _prefix "hasOpenlrFormOfWayEnum"
     /// <summary>
     /// A line location reference is defined by an ordered sequence of location reference points and a terminating last location reference point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrLineLocationReference"></see></summary>
-    let OpenlrLineLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrLineLocationReference" |> NamespacedName
-
+    let OpenlrLineLocationReference = _prefix "OpenlrLineLocationReference"
     /// <summary>
     /// If both direction, this is the reference in the opposite direction against firstDirection.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrOppositeDirection"></see></summary>
-    let hasOpenlrOppositeDirection =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrOppositeDirection" |> NamespacedName
-
+    let hasOpenlrOppositeDirection = _prefix "hasOpenlrOppositeDirection"
     /// <summary>
     /// First OpenLR reference in first/main direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrFirstDirection"></see></summary>
-    let hasOpenlrFirstDirection =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrFirstDirection" |> NamespacedName
-
+    let hasOpenlrFirstDirection = _prefix "hasOpenlrFirstDirection"
     /// <summary>
     /// Properties of the path from the associated location reference point to the next location reference point, which are specified to assist correct identification of the point in an external map data source.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrPathAttributes"></see></summary>
-    let OpenlrPathAttributes =
-        Namespaced_IRI.parse _namespace_name "OpenlrPathAttributes" |> NamespacedName
-
+    let OpenlrPathAttributes = _prefix "OpenlrPathAttributes"
     /// <summary>
     /// Properties of the path from the associated location reference point to the next location reference point, which are specified to assist correct identification of the point in an external map data source.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrPathAttributes"></see></summary>
-    let hasOpenlrPathAttributes =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrPathAttributes" |> NamespacedName
-
+    let hasOpenlrPathAttributes = _prefix "hasOpenlrPathAttributes"
     /// <summary>
     /// The positive offset along the line of the location measured along the line reference path between the start point of the location reference and the starting node of the line reference path.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrPositiveOffset"></see></summary>
-    let openlrPositiveOffset =
-        Namespaced_IRI.parse _namespace_name "openlrPositiveOffset" |> NamespacedName
-
+    let openlrPositiveOffset = _prefix "openlrPositiveOffset"
     /// <summary>
     /// The negative offset along the line of the location measured along the line reference path between the end point of the location reference and the ending node of the line reference path.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrNegativeOffset"></see></summary>
-    let openlrNegativeOffset =
-        Namespaced_IRI.parse _namespace_name "openlrNegativeOffset" |> NamespacedName
-
+    let openlrNegativeOffset = _prefix "openlrNegativeOffset"
     /// <summary>
     /// The DNP attribute measures the distance in meters between two consecutive location reference-points along the location reference path described in the corresponding enumeration
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#openlrDistanceToNextLRPoint"></see></summary>
-    let openlrDistanceToNextLRPoint =
-        Namespaced_IRI.parse _namespace_name "openlrDistanceToNextLRPoint" |> NamespacedName
-
+    let openlrDistanceToNextLRPoint = _prefix "openlrDistanceToNextLRPoint"
     /// <summary>
     /// A point of interest (POI) along a line with access is a point location which is defined by a linear reference path, an offset value (defining the access point) from the starting node of this path and a coordinate pair that defines the POI itself.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrPoiWithAccessPoint"></see></summary>
-    let OpenlrPoiWithAccessPoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrPoiWithAccessPoint" |> NamespacedName
-
+    let OpenlrPoiWithAccessPoint = _prefix "OpenlrPoiWithAccessPoint"
     /// <summary>
     /// Point along a line
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrPointAlongLine"></see></summary>
-    let OpenlrPointAlongLine =
-        Namespaced_IRI.parse _namespace_name "OpenlrPointAlongLine" |> NamespacedName
-
+    let OpenlrPointAlongLine = _prefix "OpenlrPointAlongLine"
     /// <summary>
     /// A geodetic coordinate Tuple that defines the vertices of the underlying geometrical polygon.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrPolygonCorners"></see></summary>
-    let OpenlrPolygonCorners =
-        Namespaced_IRI.parse _namespace_name "OpenlrPolygonCorners" |> NamespacedName
-
+    let OpenlrPolygonCorners = _prefix "OpenlrPolygonCorners"
     /// <summary>
     /// The OpenLR method of area definition by providing points that bound the area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrPolygonLocationReference"></see></summary>
-    let OpenlrPolygonLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrPolygonLocationReference" |> NamespacedName
-
+    let OpenlrPolygonLocationReference = _prefix "OpenlrPolygonLocationReference"
     /// <summary>
     /// A geodetic coordinate Tuple that defines the vertices of the underlying geometrical polygon.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrPolygonCorners"></see></summary>
-    let hasOpenlrPolygonCorners =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrPolygonCorners" |> NamespacedName
-
+    let hasOpenlrPolygonCorners = _prefix "hasOpenlrPolygonCorners"
     /// <summary>
     /// The upper right corner of the rectangle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrUpperRight"></see></summary>
-    let hasOpenlrUpperRight =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrUpperRight" |> NamespacedName
-
+    let hasOpenlrUpperRight = _prefix "hasOpenlrUpperRight"
     /// <summary>
     /// The lower left corner of the rectangle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrLowerLeft"></see></summary>
-    let hasOpenlrLowerLeft =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrLowerLeft" |> NamespacedName
-
+    let hasOpenlrLowerLeft = _prefix "hasOpenlrLowerLeft"
     /// <summary>
     /// The openLR method of area definition by providing a rectangular shape defined by two geo-coordinate pairs
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OpenlrRectangleLocationReference"></see></summary>
-    let OpenlrRectangleLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrRectangleLocationReference" |> NamespacedName
-
+    let OpenlrRectangleLocationReference = _prefix "OpenlrRectangleLocationReference"
     /// <summary>
     /// Any situation record. An identifiable versioned instance of a single record/element within a situation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SituationRecord"></see></summary>
-    let SituationRecord =
-        Namespaced_IRI.parse _namespace_name "SituationRecord" |> NamespacedName
-
+    let SituationRecord = _prefix "SituationRecord"
     /// <summary>
     /// A continuous or discontinuous period of validity defined by overall bounding start and end times and the possible intersection of valid periods (potentially recurring) with the complement of exception periods (also potentially recurring).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#OverallPeriod"></see></summary>
-    let OverallPeriod =
-        Namespaced_IRI.parse _namespace_name "OverallPeriod" |> NamespacedName
-
+    let OverallPeriod = _prefix "OverallPeriod"
     /// <summary>
     /// A payload publication of traffic related information or associated management information created at a specific point in time that can be exchanged via a DATEX II interface.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PayloadPublication"></see></summary>
-    let PayloadPublication =
-        Namespaced_IRI.parse _namespace_name "PayloadPublication" |> NamespacedName
-
+    let PayloadPublication = _prefix "PayloadPublication"
     /// <summary>
     /// A classification of the information which is to be found in the publications originating from the particular feed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#feedType"></see></summary>
-    let feedType = Namespaced_IRI.parse _namespace_name "feedType" |> NamespacedName
-
+    let feedType = _prefix "feedType"
     /// <summary>
     /// A description of the information which is to be found in the publications originating from the particular feed (URL).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#feedDescription"></see></summary>
-    let feedDescription =
-        Namespaced_IRI.parse _namespace_name "feedDescription" |> NamespacedName
-
+    let feedDescription = _prefix "feedDescription"
     /// <summary>
     /// Date/time at which the payload publication was created.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#publicationTime"></see></summary>
-    let publicationTime =
-        Namespaced_IRI.parse _namespace_name "publicationTime" |> NamespacedName
-
+    let publicationTime = _prefix "publicationTime"
     /// <summary>
     /// Specifies the publication creator using an international identifier
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#publicationCreator"></see></summary>
-    let publicationCreator =
-        Namespaced_IRI.parse _namespace_name "publicationCreator" |> NamespacedName
-
+    let publicationCreator = _prefix "publicationCreator"
     /// <summary>
     /// The default language used throughout the payload publication
     /// Specifies the language by an ISO 639-1 2-alpha code
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#defaultLanguage"></see></summary>
-    let defaultLanguage =
-        Namespaced_IRI.parse _namespace_name "defaultLanguage" |> NamespacedName
+    let defaultLanguage = _prefix "defaultLanguage"
 
     /// <summary>
     /// Distance of a point along a linear element measured from the start node expressed as a percentage of the whole length of the linear element, where start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PercentageDistanceAlongLinearElement"></see></summary>
     let PercentageDistanceAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "PercentageDistanceAlongLinearElement" |> NamespacedName
+        _prefix "PercentageDistanceAlongLinearElement"
 
     /// <summary>
     /// A measure of distance along a linear element from the start of the element expressed as a percentage of the total length of the linear object.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#percentageDistanceAlong"></see></summary>
-    let percentageDistanceAlong =
-        Namespaced_IRI.parse _namespace_name "percentageDistanceAlong" |> NamespacedName
-
+    let percentageDistanceAlong = _prefix "percentageDistanceAlong"
     /// <summary>
     /// A point on a linear element where the linear element is either a part of or the whole of a linear object (i.e. a road), consistent with EN ISO 19148 definitions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PointAlongLinearElement"></see></summary>
-    let PointAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "PointAlongLinearElement" |> NamespacedName
-
+    let PointAlongLinearElement = _prefix "PointAlongLinearElement"
     /// <summary>
     /// Identification of whether the point on the linear element is at, above or below the normal elevation of a linear element of that type (e.g. road or road section) at that location, typically used to indicate "grade" separation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasHeightGradeOfPoint"></see></summary>
-    let hasHeightGradeOfPoint =
-        Namespaced_IRI.parse _namespace_name "hasHeightGradeOfPoint" |> NamespacedName
-
+    let hasHeightGradeOfPoint = _prefix "hasHeightGradeOfPoint"
     /// <summary>
     /// Identification of the road administration area which contains the specified point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAdministrativeAreaOfPoint"></see></summary>
-    let hasAdministrativeAreaOfPoint =
-        Namespaced_IRI.parse _namespace_name "hasAdministrativeAreaOfPoint" |> NamespacedName
-
+    let hasAdministrativeAreaOfPoint = _prefix "hasAdministrativeAreaOfPoint"
     /// <summary>
     /// The direction of traffic flow at the specified point relative to the direction in which the linear element is defined.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#directionRelativeAtPoint"></see></summary>
-    let directionRelativeAtPoint =
-        Namespaced_IRI.parse _namespace_name "directionRelativeAtPoint" |> NamespacedName
-
+    let directionRelativeAtPoint = _prefix "directionRelativeAtPoint"
     /// <summary>
     /// The direction of traffic flow at the specified point in terms of general destination direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#directionAtPoint"></see></summary>
-    let directionAtPoint =
-        Namespaced_IRI.parse _namespace_name "directionAtPoint" |> NamespacedName
-
+    let directionAtPoint = _prefix "directionAtPoint"
     /// <summary>
     /// Distance of a point along a linear element either measured from the start node or a defined referent on that linear element, where the start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDistanceAlongLinearElement"></see></summary>
-    let hasDistanceAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasDistanceAlongLinearElement" |> NamespacedName
-
+    let hasDistanceAlongLinearElement = _prefix "hasDistanceAlongLinearElement"
     /// <summary>
     /// A single point defined only by a coordinate set with an optional bearing direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PointByCoordinates"></see></summary>
-    let PointByCoordinates =
-        Namespaced_IRI.parse _namespace_name "PointByCoordinates" |> NamespacedName
-
+    let PointByCoordinates = _prefix "PointByCoordinates"
     /// <summary>
     /// Accuracy defined by the 95th percentile of the cumulative distribution of position errors
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#bearing"></see></summary>
-    let bearing = Namespaced_IRI.parse _namespace_name "bearing" |> NamespacedName
-
+    let bearing = _prefix "bearing"
     /// <summary>
     /// A pair of planar coordinates defining the geodetic position of a single point using the European Terrestrial Reference System 1989 (ETRS89).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PointCoordinatesAssociationsTo"></see></summary>
-    let PointCoordinatesAssociationsTo =
-        Namespaced_IRI.parse _namespace_name "PointCoordinatesAssociationsTo" |> NamespacedName
-
+    let PointCoordinatesAssociationsTo = _prefix "PointCoordinatesAssociationsTo"
     /// <summary>
     /// Defines the horizontal position accuracy according EN 16803-1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasHorizontalPositionAccuracy"></see></summary>
-    let hasHorizontalPositionAccuracy =
-        Namespaced_IRI.parse _namespace_name "hasHorizontalPositionAccuracy" |> NamespacedName
-
+    let hasHorizontalPositionAccuracy = _prefix "hasHorizontalPositionAccuracy"
     /// <summary>
     /// Confidence ellipse position defined in a shape of ellipse with a predefined confidence level (e.g. 95 %). The centre of the ellipse shape corresponds to the reference position point for which the position accuracy is evaluated.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PositionConfidenceEllipse"></see></summary>
-    let PositionConfidenceEllipse =
-        Namespaced_IRI.parse _namespace_name "PositionConfidenceEllipse" |> NamespacedName
-
+    let PositionConfidenceEllipse = _prefix "PositionConfidenceEllipse"
     /// <summary>
     /// Confidence ellipse position defined in a shape of ellipse with a predefined confidence level (e.g. 95 %). The centre of the ellipse shape corresponds to the reference position point for which the position accuracy is evaluated.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPositionConfidenceEllipse"></see></summary>
-    let hasPositionConfidenceEllipse =
-        Namespaced_IRI.parse _namespace_name "hasPositionConfidenceEllipse" |> NamespacedName
-
+    let hasPositionConfidenceEllipse = _prefix "hasPositionConfidenceEllipse"
     /// <summary>
     /// Third coordinate for points defined geodetically
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasHeightCoordinate"></see></summary>
-    let hasHeightCoordinate =
-        Namespaced_IRI.parse _namespace_name "hasHeightCoordinate" |> NamespacedName
-
+    let hasHeightCoordinate = _prefix "hasHeightCoordinate"
     /// <summary>
     /// Location representing a single geospatial point.
     /// At least one of these aggregated classes must be present. If using multiple instances of the agregated classes, producers must take care to ensure they present the same location.
@@ -6122,1199 +4475,849 @@ module dtx_srti =
     /// 0..1	TpegPointLocation
     /// 0..1	OpenlrPointLocationReference
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PointLocation"></see></summary>
-    let PointLocation =
-        Namespaced_IRI.parse _namespace_name "PointLocation" |> NamespacedName
-
+    let PointLocation = _prefix "PointLocation"
     /// <summary>
     /// A single point on the road network defined by a TPEG-Loc structure and which has an associated direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegPointLocation"></see></summary>
-    let TpegPointLocation =
-        Namespaced_IRI.parse _namespace_name "TpegPointLocation" |> NamespacedName
-
+    let TpegPointLocation = _prefix "TpegPointLocation"
     /// <summary>
     /// PointLocation is associated to TpegPointLocation with cardinality 0..1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegPointLocation"></see></summary>
-    let hasTpegPointLocation =
-        Namespaced_IRI.parse _namespace_name "hasTpegPointLocation" |> NamespacedName
-
+    let hasTpegPointLocation = _prefix "hasTpegPointLocation"
     /// <summary>
     /// PointLocation is associated to PointByCoordinates with cardinality 0..1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPointByCoordinates"></see></summary>
-    let hasPointByCoordinates =
-        Namespaced_IRI.parse _namespace_name "hasPointByCoordinates" |> NamespacedName
-
+    let hasPointByCoordinates = _prefix "hasPointByCoordinates"
     /// <summary>
     /// PointLocation is associated to OpenlrPointLocationReference with cardinality 0..1
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOpenlrPointLocationReference"></see></summary>
-    let hasOpenlrPointLocationReference =
-        Namespaced_IRI.parse _namespace_name "hasOpenlrPointLocationReference" |> NamespacedName
-
+    let hasOpenlrPointLocationReference = _prefix "hasOpenlrPointLocationReference"
     /// <summary>
     /// Any environmental conditions which may be affecting the driving conditions on the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PoorEnvironmentConditions"></see></summary>
-    let PoorEnvironmentConditions =
-        Namespaced_IRI.parse _namespace_name "PoorEnvironmentConditions" |> NamespacedName
-
+    let PoorEnvironmentConditions = _prefix "PoorEnvironmentConditions"
     /// <summary>
     /// Types of poor environmental conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PoorEnvironmentTypeEnum"></see></summary>
-    let PoorEnvironmentTypeEnum =
-        Namespaced_IRI.parse _namespace_name "PoorEnvironmentTypeEnum" |> NamespacedName
-
+    let PoorEnvironmentTypeEnum = _prefix "PoorEnvironmentTypeEnum"
     /// <summary>
     /// Any environmental conditions which may be affecting the driving conditions on the road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPoorEnvironmentTypeEnum"></see></summary>
-    let hasPoorEnvironmentTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasPoorEnvironmentTypeEnum" |> NamespacedName
-
+    let hasPoorEnvironmentTypeEnum = _prefix "hasPoorEnvironmentTypeEnum"
     /// <summary>
     /// Accuracy defined by the 95th percentile of the cumulative distribution of position errors
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accuracyPercentile95"></see></summary>
-    let accuracyPercentile95 =
-        Namespaced_IRI.parse _namespace_name "accuracyPercentile95" |> NamespacedName
-
+    let accuracyPercentile95 = _prefix "accuracyPercentile95"
     /// <summary>
     /// Accuracy defined by the 75th percentile of the cumulative distribution of position errors
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accuracyPercentile75"></see></summary>
-    let accuracyPercentile75 =
-        Namespaced_IRI.parse _namespace_name "accuracyPercentile75" |> NamespacedName
-
+    let accuracyPercentile75 = _prefix "accuracyPercentile75"
     /// <summary>
     /// Accuracy defined by the 50th percentile of the cumulative distribution of position errors.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#accuracyPercentile50"></see></summary>
-    let accuracyPercentile50 =
-        Namespaced_IRI.parse _namespace_name "accuracyPercentile50" |> NamespacedName
-
+    let accuracyPercentile50 = _prefix "accuracyPercentile50"
     /// <summary>
     /// Indicates whether the ellipse orientation is unavailable (True) or not (False)
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#semiMajorAxisOrientationError"></see></summary>
-    let semiMajorAxisOrientationError =
-        Namespaced_IRI.parse _namespace_name "semiMajorAxisOrientationError" |> NamespacedName
-
+    let semiMajorAxisOrientationError = _prefix "semiMajorAxisOrientationError"
     /// <summary>
     /// Half of length of the minor axis, i.e. distance between the centre point and minor axis point of the position accuracy ellipse
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#semiMinorAxisLength"></see></summary>
-    let semiMinorAxisLength =
-        Namespaced_IRI.parse _namespace_name "semiMinorAxisLength" |> NamespacedName
-
+    let semiMinorAxisLength = _prefix "semiMinorAxisLength"
     /// <summary>
     /// Orientation direction of the ellipse major axis of the position accuracy ellipse with regards to the geographic north.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#semiMajorAxisOrientation"></see></summary>
-    let semiMajorAxisOrientation =
-        Namespaced_IRI.parse _namespace_name "semiMajorAxisOrientation" |> NamespacedName
-
+    let semiMajorAxisOrientation = _prefix "semiMajorAxisOrientation"
     /// <summary>
     /// Half of length of the major axis, i.e. distance between the centre point and major axis point of the position accuracy ellipse.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#semiMajorAxisLength"></see></summary>
-    let semiMajorAxisLength =
-        Namespaced_IRI.parse _namespace_name "semiMajorAxisLength" |> NamespacedName
-
+    let semiMajorAxisLength = _prefix "semiMajorAxisLength"
     /// <summary>
     /// Provides a coded error in case the semi-minor axis length is not defined
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSemiMinorAxisLengthCodedError"></see></summary>
-    let hasSemiMinorAxisLengthCodedError =
-        Namespaced_IRI.parse _namespace_name "hasSemiMinorAxisLengthCodedError" |> NamespacedName
-
+    let hasSemiMinorAxisLengthCodedError = _prefix "hasSemiMinorAxisLengthCodedError"
     /// <summary>
     /// Provides a coded error in case the semi-major axis length is not defined
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSemiMajorAxisLengthCodedError"></see></summary>
-    let hasSemiMajorAxisLengthCodedError =
-        Namespaced_IRI.parse _namespace_name "hasSemiMajorAxisLengthCodedError" |> NamespacedName
-
+    let hasSemiMajorAxisLengthCodedError = _prefix "hasSemiMajorAxisLengthCodedError"
     /// <summary>
     /// Levels of confidence that the sender has in the information, ordered {certain, probable, risk of}.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ProbabilityOfOccurrenceEnum"></see></summary>
-    let ProbabilityOfOccurrenceEnum =
-        Namespaced_IRI.parse _namespace_name "ProbabilityOfOccurrenceEnum" |> NamespacedName
-
+    let ProbabilityOfOccurrenceEnum = _prefix "ProbabilityOfOccurrenceEnum"
     /// <summary>
     /// Public event
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PublicEvent"></see></summary>
-    let PublicEvent =
-        Namespaced_IRI.parse _namespace_name "PublicEvent" |> NamespacedName
-
+    let PublicEvent = _prefix "PublicEvent"
     /// <summary>
     /// Name of the venue at which the public event is being held
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#venueName"></see></summary>
-    let venueName = Namespaced_IRI.parse _namespace_name "venueName" |> NamespacedName
-
+    let venueName = _prefix "venueName"
     /// <summary>
     /// Types of public events.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#PublicEventTypeEnum"></see></summary>
-    let PublicEventTypeEnum =
-        Namespaced_IRI.parse _namespace_name "PublicEventTypeEnum" |> NamespacedName
-
+    let PublicEventTypeEnum = _prefix "PublicEventTypeEnum"
     /// <summary>
     /// RAMON geographic ontology describes countries, NUTS, and Local Administrative Units (LAU) related concepts and properties
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Ramon_geoClasses"></see></summary>
-    let Ramon_geoClasses =
-        Namespaced_IRI.parse _namespace_name "Ramon_geoClasses" |> NamespacedName
-
+    let Ramon_geoClasses = _prefix "Ramon_geoClasses"
     /// <summary>
     /// The name of the referent, e.g. a junction or intersection name.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#referentName"></see></summary>
-    let referentName =
-        Namespaced_IRI.parse _namespace_name "referentName" |> NamespacedName
-
+    let referentName = _prefix "referentName"
     /// <summary>
     /// Description of the referent.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#referentDescription"></see></summary>
-    let referentDescription =
-        Namespaced_IRI.parse _namespace_name "referentDescription" |> NamespacedName
-
+    let referentDescription = _prefix "referentDescription"
     /// <summary>
     /// The identifier of the referent, unique on the specified linear element (i.e. road or part of).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#referentIdentifier"></see></summary>
-    let referentIdentifier =
-        Namespaced_IRI.parse _namespace_name "referentIdentifier" |> NamespacedName
-
+    let referentIdentifier = _prefix "referentIdentifier"
     /// <summary>
     /// A set of types of known points along a linear object such as a road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ReferentTypeEnum"></see></summary>
-    let ReferentTypeEnum =
-        Namespaced_IRI.parse _namespace_name "ReferentTypeEnum" |> NamespacedName
-
+    let ReferentTypeEnum = _prefix "ReferentTypeEnum"
     /// <summary>
     /// The type of the referent.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferentTypeEnum"></see></summary>
-    let hasReferentTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasReferentTypeEnum" |> NamespacedName
-
+    let hasReferentTypeEnum = _prefix "hasReferentTypeEnum"
     /// <summary>
     /// Identifies a relative position across a carriageway
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RelativePositionOnCarriagewayEnum"></see></summary>
-    let RelativePositionOnCarriagewayEnum =
-        Namespaced_IRI.parse _namespace_name "RelativePositionOnCarriagewayEnum" |> NamespacedName
-
+    let RelativePositionOnCarriagewayEnum = _prefix "RelativePositionOnCarriagewayEnum"
     /// <summary>
     /// Rerouting management action that is issued by the network/road operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ReroutingManagement"></see></summary>
-    let ReroutingManagement =
-        Namespaced_IRI.parse _namespace_name "ReroutingManagement" |> NamespacedName
-
+    let ReroutingManagement = _prefix "ReroutingManagement"
     /// <summary>
     /// Management actions relating to rerouting.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ReroutingManagementTypeEnum"></see></summary>
-    let ReroutingManagementTypeEnum =
-        Namespaced_IRI.parse _namespace_name "ReroutingManagementTypeEnum" |> NamespacedName
-
+    let ReroutingManagementTypeEnum = _prefix "ReroutingManagementTypeEnum"
     /// <summary>
     /// Management actions relating to rerouting.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReroutingManagementType"></see></summary>
-    let hasReroutingManagementType =
-        Namespaced_IRI.parse _namespace_name "hasReroutingManagementType" |> NamespacedName
-
+    let hasReroutingManagementType = _prefix "hasReroutingManagementType"
     /// <summary>
     /// Information on a road
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadInformation"></see></summary>
-    let RoadInformation =
-        Namespaced_IRI.parse _namespace_name "RoadInformation" |> NamespacedName
-
+    let RoadInformation = _prefix "RoadInformation"
     /// <summary>
     /// A destination associated with this road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadDestination"></see></summary>
-    let roadDestination =
-        Namespaced_IRI.parse _namespace_name "roadDestination" |> NamespacedName
-
+    let roadDestination = _prefix "roadDestination"
     /// <summary>
     /// Road, carriageway or lane management action that is instigated by the network/road operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadOrCarriagewayOrLaneManagement"></see></summary>
-    let RoadOrCarriagewayOrLaneManagement =
-        Namespaced_IRI.parse _namespace_name "RoadOrCarriagewayOrLaneManagement" |> NamespacedName
-
+    let RoadOrCarriagewayOrLaneManagement = _prefix "RoadOrCarriagewayOrLaneManagement"
     /// <summary>
     /// The minimum number of persons required in a vehicle in order for it to be allowed to transit the specified road section.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#minimumCarOccupancy"></see></summary>
-    let minimumCarOccupancy =
-        Namespaced_IRI.parse _namespace_name "minimumCarOccupancy" |> NamespacedName
+    let minimumCarOccupancy = _prefix "minimumCarOccupancy"
 
     /// <summary>
     /// Management actions relating to road, carriageway or lane usage.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadOrCarriagewayOrLaneManagementTypeEnum"></see></summary>
     let RoadOrCarriagewayOrLaneManagementTypeEnum =
-        Namespaced_IRI.parse _namespace_name "RoadOrCarriagewayOrLaneManagementTypeEnum" |> NamespacedName
+        _prefix "RoadOrCarriagewayOrLaneManagementTypeEnum"
 
     /// <summary>
     /// Indicates that the road section where the roadworks are located is under traffic or not under traffic. 'True' indicates the road is under traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#underTraffic"></see></summary>
-    let underTraffic =
-        Namespaced_IRI.parse _namespace_name "underTraffic" |> NamespacedName
-
+    let underTraffic = _prefix "underTraffic"
     /// <summary>
     /// Grade of complexity of the roadworks according to the responsible road operator. For example determined by size, duration and/or traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadworksScaleEnum"></see></summary>
-    let RoadworksScaleEnum =
-        Namespaced_IRI.parse _namespace_name "RoadworksScaleEnum" |> NamespacedName
-
+    let RoadworksScaleEnum = _prefix "RoadworksScaleEnum"
     /// <summary>
     /// Grade of complexity of the roadworks according to the responsible road operator. For example determined by size, duration and/or traffic disruption.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadworksScaleEnum"></see></summary>
-    let hasRoadworksScaleEnum =
-        Namespaced_IRI.parse _namespace_name "hasRoadworksScaleEnum" |> NamespacedName
-
+    let hasRoadworksScaleEnum = _prefix "hasRoadworksScaleEnum"
     /// <summary>
     /// An external identifier for the roadworks
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#roadworksIdentifier"></see></summary>
-    let roadworksIdentifier =
-        Namespaced_IRI.parse _namespace_name "roadworksIdentifier" |> NamespacedName
-
+    let roadworksIdentifier = _prefix "roadworksIdentifier"
     /// <summary>
     /// Details of the maintenance vehicles involved in the roadworks activity.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasMaintenanceVehicles"></see></summary>
-    let hasMaintenanceVehicles =
-        Namespaced_IRI.parse _namespace_name "hasMaintenanceVehicles" |> NamespacedName
-
+    let hasMaintenanceVehicles = _prefix "hasMaintenanceVehicles"
     /// <summary>
     /// The subjects with which the roadworks are associated.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Subjects"></see></summary>
-    let Subjects = Namespaced_IRI.parse _namespace_name "Subjects" |> NamespacedName
+    let Subjects = _prefix "Subjects"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSubject"></see>
     /// </summary>
-    let hasSubject = Namespaced_IRI.parse _namespace_name "hasSubject" |> NamespacedName
-
+    let hasSubject = _prefix "hasSubject"
     /// <summary>
     /// An indication of whether the associated instance of a SituationRecord is mobile (e.g. a march or parade moving along a road) or stationary.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasMobility"></see></summary>
-    let hasMobility =
-        Namespaced_IRI.parse _namespace_name "hasMobility" |> NamespacedName
-
+    let hasMobility = _prefix "hasMobility"
     /// <summary>
     /// Expected durations of roadworks in general terms.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadworksDurationEnum"></see></summary>
-    let RoadworksDurationEnum =
-        Namespaced_IRI.parse _namespace_name "RoadworksDurationEnum" |> NamespacedName
-
+    let RoadworksDurationEnum = _prefix "RoadworksDurationEnum"
     /// <summary>
     /// Indicates in general terms the expected duration of the roadworks.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadworksDuration"></see></summary>
-    let hasRoadworksDuration =
-        Namespaced_IRI.parse _namespace_name "hasRoadworksDuration" |> NamespacedName
-
+    let hasRoadworksDuration = _prefix "hasRoadworksDuration"
     /// <summary>
     /// Indication of whether the roadworks are considered to be urgent whereby emergency work is being, or needs to be, undertaken to mitigate safety concerns. 'True' indicates they are urgent.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#urgentRoadworks"></see></summary>
-    let urgentRoadworks =
-        Namespaced_IRI.parse _namespace_name "urgentRoadworks" |> NamespacedName
-
+    let urgentRoadworks = _prefix "urgentRoadworks"
     /// <summary>
     /// Describes an available public transport alternative to the normal route
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#publicTransportAlternative"></see></summary>
-    let publicTransportAlternative =
-        Namespaced_IRI.parse _namespace_name "publicTransportAlternative" |> NamespacedName
-
+    let publicTransportAlternative = _prefix "publicTransportAlternative"
     /// <summary>
     /// Details of road side assistance required or being given.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadsideAssistance"></see></summary>
-    let RoadsideAssistance =
-        Namespaced_IRI.parse _namespace_name "RoadsideAssistance" |> NamespacedName
-
+    let RoadsideAssistance = _prefix "RoadsideAssistance"
     /// <summary>
     /// Indicates the nature of the road side assistance that will be, is or has been provided.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#RoadsideAssistanceTypeEnum"></see></summary>
-    let RoadsideAssistanceTypeEnum =
-        Namespaced_IRI.parse _namespace_name "RoadsideAssistanceTypeEnum" |> NamespacedName
-
+    let RoadsideAssistanceTypeEnum = _prefix "RoadsideAssistanceTypeEnum"
     /// <summary>
     /// Indicates the nature of the road side assistance that will be, is or has been provided.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadsideAssistenceTypeEnum"></see></summary>
-    let hasRoadsideAssistenceTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasRoadsideAssistenceTypeEnum" |> NamespacedName
-
+    let hasRoadsideAssistenceTypeEnum = _prefix "hasRoadsideAssistenceTypeEnum"
     /// <summary>
     /// Levels of severity of a situation as whole assessed by the impact that the situation may have on traffic flow as perceived by the supplier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SeverityEnum"></see></summary>
-    let SeverityEnum =
-        Namespaced_IRI.parse _namespace_name "SeverityEnum" |> NamespacedName
-
+    let SeverityEnum = _prefix "SeverityEnum"
     /// <summary>
     /// Location representing a linear section along a single road with optional directionality defined between two points on the same road. No matter the kind of linear reference it uses, the constraint of using only a single road must be preserved. Associations:
     /// 0..1	TpegLinearLocation
     /// 0..*	AlertCLinear
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SingleRoadLinearLocation"></see></summary>
-    let SingleRoadLinearLocation =
-        Namespaced_IRI.parse _namespace_name "SingleRoadLinearLocation" |> NamespacedName
-
+    let SingleRoadLinearLocation = _prefix "SingleRoadLinearLocation"
     /// <summary>
     /// A linear section along a single road defined between two points on the same road by a TPEG-Loc structure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLinearLocation"></see></summary>
-    let TpegLinearLocation =
-        Namespaced_IRI.parse _namespace_name "TpegLinearLocation" |> NamespacedName
-
+    let TpegLinearLocation = _prefix "TpegLinearLocation"
     /// <summary>
     /// A linear section along a single road defined between two points on the same road by a TPEG-Loc structure.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegLinearLocation"></see></summary>
-    let hasTpegLinearLocation =
-        Namespaced_IRI.parse _namespace_name "hasTpegLinearLocation" |> NamespacedName
-
+    let hasTpegLinearLocation = _prefix "hasTpegLinearLocation"
     /// <summary>
     /// An identifiable instance of a traffic/travel situation comprising one or more traffic/travel circumstances which are linked by one or more causal relationships. Each traffic/travel circumstance is represented by a Situation Record.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Situation"></see></summary>
-    let Situation = Namespaced_IRI.parse _namespace_name "Situation" |> NamespacedName
-
+    let Situation = _prefix "Situation"
     /// <summary>
     /// Management information relating to the data contained within a publication.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasHeaderInformation"></see></summary>
-    let hasHeaderInformation =
-        Namespaced_IRI.parse _namespace_name "hasHeaderInformation" |> NamespacedName
-
+    let hasHeaderInformation = _prefix "hasHeaderInformation"
     /// <summary>
     /// Details of the Situation
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSituationRecord"></see></summary>
-    let hasSituationRecord =
-        Namespaced_IRI.parse _namespace_name "hasSituationRecord" |> NamespacedName
-
+    let hasSituationRecord = _prefix "hasSituationRecord"
     /// <summary>
     /// A publication containing zero or more traffic/travel situations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SituationPublication"></see></summary>
-    let SituationPublication =
-        Namespaced_IRI.parse _namespace_name "SituationPublication" |> NamespacedName
-
+    let SituationPublication = _prefix "SituationPublication"
     /// <summary>
     /// Version of Situation Record
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#situationRecordVersion"></see></summary>
-    let situationRecordVersion =
-        Namespaced_IRI.parse _namespace_name "situationRecordVersion" |> NamespacedName
-
+    let situationRecordVersion = _prefix "situationRecordVersion"
     /// <summary>
     /// Specification of validity, either explicitly or by a validity time period specification which may be discontinuous.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Validity"></see></summary>
-    let Validity = Namespaced_IRI.parse _namespace_name "Validity" |> NamespacedName
-
+    let Validity = _prefix "Validity"
     /// <summary>
     /// Specification of validity, either explicitly or by a validity time period specification which may be discontinuous.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasValidity"></see></summary>
-    let hasValidity =
-        Namespaced_IRI.parse _namespace_name "hasValidity" |> NamespacedName
-
+    let hasValidity = _prefix "hasValidity"
     /// <summary>
     /// An assessment of the impact that an event or operator action defined by the situation record has on the driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasImpact"></see></summary>
-    let hasImpact = Namespaced_IRI.parse _namespace_name "hasImpact" |> NamespacedName
-
+    let hasImpact = _prefix "hasImpact"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#situationRecordObservationTime"></see>
     /// </summary>
-    let situationRecordObservationTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordObservationTime" |> NamespacedName
-
+    let situationRecordObservationTime = _prefix "situationRecordObservationTime"
     /// <summary>
     /// The extent to which the related information may be circulated, according to the recipient type. Recipients must comply with this confidentiality statement. This overrides any confidentiality defined for the situation as a whole in the header information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#confidentialityOverride"></see></summary>
-    let confidentialityOverride =
-        Namespaced_IRI.parse _namespace_name "confidentialityOverride" |> NamespacedName
-
+    let confidentialityOverride = _prefix "confidentialityOverride"
     /// <summary>
     /// An assessment of the degree of likelihood that the reported event will occur.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasProbabilityOfOccurrence"></see></summary>
-    let hasProbabilityOfOccurrence =
-        Namespaced_IRI.parse _namespace_name "hasProbabilityOfOccurrence" |> NamespacedName
-
+    let hasProbabilityOfOccurrence = _prefix "hasProbabilityOfOccurrence"
     /// <summary>
     /// The date/time that the SituationRecord object (the first version of the record) was created by the original supplier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#situationRecordCreationTime"></see></summary>
-    let situationRecordCreationTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordCreationTime" |> NamespacedName
-
+    let situationRecordCreationTime = _prefix "situationRecordCreationTime"
     /// <summary>
     /// Details of the source from which the information was obtained.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Source"></see></summary>
-    let Source = Namespaced_IRI.parse _namespace_name "Source" |> NamespacedName
+    let Source = _prefix "Source"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSource"></see>
     /// </summary>
-    let hasSource = Namespaced_IRI.parse _namespace_name "hasSource" |> NamespacedName
-
+    let hasSource = _prefix "hasSource"
     /// <summary>
     /// Indicates, whether this SituationRecord specifies a safety related message according to Commission Delegated Regulation (EU) No 886/2013.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#safetyRelatedMessage"></see></summary>
-    let safetyRelatedMessage =
-        Namespaced_IRI.parse _namespace_name "safetyRelatedMessage" |> NamespacedName
-
+    let safetyRelatedMessage = _prefix "safetyRelatedMessage"
     /// <summary>
     /// A unique alphanumeric reference (e.g. an external reference or a UUID) of the SituationRecord object (the first version of the record) that was created by the original supplier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#situationRecordCreationReference"></see></summary>
-    let situationRecordCreationReference =
-        Namespaced_IRI.parse _namespace_name "situationRecordCreationReference" |> NamespacedName
+    let situationRecordCreationReference = _prefix "situationRecordCreationReference"
 
     /// <summary>
     /// The date/time that the current version of the Situation Record was written into the database of the original supplier in the supply chain.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#situationRecordFirstSupplierVersionTime"></see></summary>
     let situationRecordFirstSupplierVersionTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordFirstSupplierVersionTime" |> NamespacedName
+        _prefix "situationRecordFirstSupplierVersionTime"
 
     /// <summary>
     /// Has a location reference
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLocationReference"></see></summary>
-    let hasLocationReference =
-        Namespaced_IRI.parse _namespace_name "hasLocationReference" |> NamespacedName
-
+    let hasLocationReference = _prefix "hasLocationReference"
     /// <summary>
     /// Levels of severity of a situation as whole assessed by the impact that the situation may have on traffic flow as perceived by the supplier.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSeverityEnum"></see></summary>
-    let hasSeverityEnum =
-        Namespaced_IRI.parse _namespace_name "hasSeverityEnum" |> NamespacedName
-
+    let hasSeverityEnum = _prefix "hasSeverityEnum"
     /// <summary>
     /// An assessment of the impact that an event or operator action defined by the situation record has on the driving conditions, but on opposite direction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasImpactOnOppositeDirection"></see></summary>
-    let hasImpactOnOppositeDirection =
-        Namespaced_IRI.parse _namespace_name "hasImpactOnOppositeDirection" |> NamespacedName
-
+    let hasImpactOnOppositeDirection = _prefix "hasImpactOnOppositeDirection"
     /// <summary>
     /// The date/time that this current version of the SituationRecord within the situation was written into the database of the supplier which is involved in the data exchange. Identity and version of record are defined by the class stereotype implementation.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#situationRecordVersionTime"></see></summary>
-    let situationRecordVersionTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordVersionTime" |> NamespacedName
-
+    let situationRecordVersionTime = _prefix "situationRecordVersionTime"
     /// <summary>
     /// Skos Vocabulary
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SkosClasses"></see></summary>
-    let SkosClasses =
-        Namespaced_IRI.parse _namespace_name "SkosClasses" |> NamespacedName
-
+    let SkosClasses = _prefix "SkosClasses"
     /// <summary>
     /// The name of the organisation which has produced the information relating to this version of the information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sourceName"></see></summary>
-    let sourceName = Namespaced_IRI.parse _namespace_name "sourceName" |> NamespacedName
-
+    let sourceName = _prefix "sourceName"
     /// <summary>
     /// Language independent textual code or identifier for the organisation or the equipment that has produced the information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sourceIdentification"></see></summary>
-    let sourceIdentification =
-        Namespaced_IRI.parse _namespace_name "sourceIdentification" |> NamespacedName
-
+    let sourceIdentification = _prefix "sourceIdentification"
     /// <summary>
     /// An indication as to whether the source deems the associated information to be reliable/correct. "True" indicates it is deemed reliable.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#reliable"></see></summary>
-    let reliable = Namespaced_IRI.parse _namespace_name "reliable" |> NamespacedName
-
+    let reliable = _prefix "reliable"
     /// <summary>
     /// Information about the technology used for measuring the data or the method used for obtaining qualitative descriptions relating to this version of the information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SourceTypeEnum"></see></summary>
-    let SourceTypeEnum =
-        Namespaced_IRI.parse _namespace_name "SourceTypeEnum" |> NamespacedName
-
+    let SourceTypeEnum = _prefix "SourceTypeEnum"
     /// <summary>
     /// Information about the technology used for measuring the data or the method used for obtaining qualitative descriptions relating to this version of the information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sourceType"></see></summary>
-    let sourceType = Namespaced_IRI.parse _namespace_name "sourceType" |> NamespacedName
-
+    let sourceType = _prefix "sourceType"
     /// <summary>
     /// EN ISO 3166-1 two-character country code of the source of the information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sourceCountry"></see></summary>
-    let sourceCountry =
-        Namespaced_IRI.parse _namespace_name "sourceCountry" |> NamespacedName
-
+    let sourceCountry = _prefix "sourceCountry"
     /// <summary>
     /// Speed management action that is instigated by the network/road operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SpeedManagement"></see></summary>
-    let SpeedManagement =
-        Namespaced_IRI.parse _namespace_name "SpeedManagement" |> NamespacedName
-
+    let SpeedManagement = _prefix "SpeedManagement"
     /// <summary>
     /// Temporary limit defining the maximum advisory or mandatory speed of vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#temporarySpeedLimit"></see></summary>
-    let temporarySpeedLimit =
-        Namespaced_IRI.parse _namespace_name "temporarySpeedLimit" |> NamespacedName
-
+    let temporarySpeedLimit = _prefix "temporarySpeedLimit"
     /// <summary>
     /// Management actions relating to speed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SpeedManagementTypeEnum"></see></summary>
-    let SpeedManagementTypeEnum =
-        Namespaced_IRI.parse _namespace_name "SpeedManagementTypeEnum" |> NamespacedName
-
+    let SpeedManagementTypeEnum = _prefix "SpeedManagementTypeEnum"
     /// <summary>
     /// Type of speed management action instigated by operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSpeedManagementType"></see></summary>
-    let hasSpeedManagementType =
-        Namespaced_IRI.parse _namespace_name "hasSpeedManagementType" |> NamespacedName
-
+    let hasSpeedManagementType = _prefix "hasSpeedManagementType"
     /// <summary>
     /// The subjects with which the roadworks are associated.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#SubjectTypeOfWorksEnum"></see></summary>
-    let SubjectTypeOfWorksEnum =
-        Namespaced_IRI.parse _namespace_name "SubjectTypeOfWorksEnum" |> NamespacedName
-
+    let SubjectTypeOfWorksEnum = _prefix "SubjectTypeOfWorksEnum"
     /// <summary>
     /// The number of subjects on which the roadworks (construction or maintenance) are being performed.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#numberOfSubjects"></see></summary>
-    let numberOfSubjects =
-        Namespaced_IRI.parse _namespace_name "numberOfSubjects" |> NamespacedName
-
+    let numberOfSubjects = _prefix "numberOfSubjects"
     /// <summary>
     /// The subject type of the roadworks (i.e. on what the construction or maintenance work is being performed).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSubjectTypeOfWorks"></see></summary>
-    let hasSubjectTypeOfWorks =
-        Namespaced_IRI.parse _namespace_name "hasSubjectTypeOfWorks" |> NamespacedName
-
+    let hasSubjectTypeOfWorks = _prefix "hasSubjectTypeOfWorks"
     /// <summary>
     /// Indicates that the location is given with a precision which is better than the stated value in metres.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#locationPrecision"></see></summary>
-    let locationPrecision =
-        Namespaced_IRI.parse _namespace_name "locationPrecision" |> NamespacedName
-
+    let locationPrecision = _prefix "locationPrecision"
     /// <summary>
     /// Descriptor which identifies infrastructure to help identify the specific location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasInfrastructureDescriptor"></see></summary>
-    let hasInfrastructureDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasInfrastructureDescriptor" |> NamespacedName
-
+    let hasInfrastructureDescriptor = _prefix "hasInfrastructureDescriptor"
     /// <summary>
     /// The sequential number of an exit/entrance ramp from a given location in a given direction (normally used to indicate a specific exit/entrance in a complex junction/intersection).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#sequentialRampNumber"></see></summary>
-    let sequentialRampNumber =
-        Namespaced_IRI.parse _namespace_name "sequentialRampNumber" |> NamespacedName
-
+    let sequentialRampNumber = _prefix "sequentialRampNumber"
     /// <summary>
     /// Supplementary human-readable description of the location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#locationDescription"></see></summary>
-    let locationDescription =
-        Namespaced_IRI.parse _namespace_name "locationDescription" |> NamespacedName
-
+    let locationDescription = _prefix "locationDescription"
     /// <summary>
     /// Identifies the main purpose of the road at the location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDirectionPurpose"></see></summary>
-    let hasDirectionPurpose =
-        Namespaced_IRI.parse _namespace_name "hasDirectionPurpose" |> NamespacedName
-
+    let hasDirectionPurpose = _prefix "hasDirectionPurpose"
     /// <summary>
     /// Descriptor which identifies a geographic characteristic to help identify the specific location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGeographicDescriptor"></see></summary>
-    let hasGeographicDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasGeographicDescriptor" |> NamespacedName
-
+    let hasGeographicDescriptor = _prefix "hasGeographicDescriptor"
     /// <summary>
     /// This indicates the length (measured in metres) of carriageway (and lanes) affected by the associated traffic element.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#lengthAffected"></see></summary>
-    let lengthAffected =
-        Namespaced_IRI.parse _namespace_name "lengthAffected" |> NamespacedName
-
+    let lengthAffected = _prefix "lengthAffected"
     /// <summary>
     /// Relative position across carriageway
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPositionOnCarriageway"></see></summary>
-    let hasPositionOnCarriageway =
-        Namespaced_IRI.parse _namespace_name "hasPositionOnCarriageway" |> NamespacedName
+    let hasPositionOnCarriageway = _prefix "hasPositionOnCarriageway"
 
     /// <summary>
     /// Types of linear location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TPEGLoc01LinearLocationSubtypeEnum"></see></summary>
     let TPEGLoc01LinearLocationSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TPEGLoc01LinearLocationSubtypeEnum" |> NamespacedName
+        _prefix "TPEGLoc01LinearLocationSubtypeEnum"
 
     /// <summary>
     /// Only for organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegEnumerations"></see></summary>
-    let TpegEnumerations =
-        Namespaced_IRI.parse _namespace_name "TpegEnumerations" |> NamespacedName
-
+    let TpegEnumerations = _prefix "TpegEnumerations"
     /// <summary>
     /// OWL-Time is an ontology of temporal concepts, for describing the temporal properties of resources. The vocabulary provided expresses facts about relations among instants and intervals, as well as durations. Time positions and durations may be expressed using either the conventional (Gregorian) calendar and clock, or using another temporal reference system such as Unix-time, geologic time, or different calendars.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TimeClasses"></see></summary>
-    let TimeClasses =
-        Namespaced_IRI.parse _namespace_name "TimeClasses" |> NamespacedName
-
+    let TimeClasses = _prefix "TimeClasses"
     /// <summary>
     /// A descriptor for describing an area location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegAreaDescriptor"></see></summary>
-    let TpegAreaDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegAreaDescriptor" |> NamespacedName
+    let TpegAreaDescriptor = _prefix "TpegAreaDescriptor"
 
     /// <summary>
     /// Descriptors for describing area locations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc03AreaDescriptorSubtypeEnum"></see></summary>
     let TpegLoc03AreaDescriptorSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc03AreaDescriptorSubtypeEnum" |> NamespacedName
+        _prefix "TpegLoc03AreaDescriptorSubtypeEnum"
 
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegAreaDescriptorType"></see></summary>
-    let tpegAreaDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegAreaDescriptorType" |> NamespacedName
-
+    let tpegAreaDescriptorType = _prefix "tpegAreaDescriptorType"
     /// <summary>
     /// A collection of information providing descriptive references to locations using the TPEG-Loc location referencing approach.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegDescriptor"></see></summary>
-    let TpegDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegDescriptor" |> NamespacedName
-
+    let TpegDescriptor = _prefix "TpegDescriptor"
     /// <summary>
     /// Height information which provides additional discrimination for the applicable area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegHeight"></see></summary>
-    let TpegHeight = Namespaced_IRI.parse _namespace_name "TpegHeight" |> NamespacedName
-
+    let TpegHeight = _prefix "TpegHeight"
     /// <summary>
     /// Height information which provides additional discrimination for the applicable area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegHeight"></see></summary>
-    let hasTpegHeight =
-        Namespaced_IRI.parse _namespace_name "hasTpegHeight" |> NamespacedName
-
+    let hasTpegHeight = _prefix "hasTpegHeight"
     /// <summary>
     /// Types of area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc01AreaLocationSubtypeEnum"></see></summary>
-    let TpegLoc01AreaLocationSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc01AreaLocationSubtypeEnum" |> NamespacedName
-
+    let TpegLoc01AreaLocationSubtypeEnum = _prefix "TpegLoc01AreaLocationSubtypeEnum"
     /// <summary>
     /// The type of TPEG location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegAreaLocationType"></see></summary>
-    let tpegAreaLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegAreaLocationType" |> NamespacedName
-
+    let tpegAreaLocationType = _prefix "tpegAreaLocationType"
     /// <summary>
     /// Tpeg location
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc"></see></summary>
-    let TpegLoc = Namespaced_IRI.parse _namespace_name "TpegLoc" |> NamespacedName
-
+    let TpegLoc = _prefix "TpegLoc"
     /// <summary>
     /// A text string which describes or elaborates the location. Here is used for values distinct to RoadNumbers or AdministrativeUnit.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#descriptorString"></see></summary>
-    let descriptorString =
-        Namespaced_IRI.parse _namespace_name "descriptorString" |> NamespacedName
-
+    let descriptorString = _prefix "descriptorString"
     /// <summary>
     /// Describes or elaborates the location. Here is used for values from RoadNumber or AdministrativeUnit.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#descriptor"></see></summary>
-    let descriptor = Namespaced_IRI.parse _namespace_name "descriptor" |> NamespacedName
-
+    let descriptor = _prefix "descriptor"
     /// <summary>
     /// A point on the road network which is framed between two other points on the same road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegFramedPoint"></see></summary>
-    let TpegFramedPoint =
-        Namespaced_IRI.parse _namespace_name "TpegFramedPoint" |> NamespacedName
+    let TpegFramedPoint = _prefix "TpegFramedPoint"
 
     /// <summary>
     /// Types of points on the road network framed by two other points on the same road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc01FramedPointLocationSubtypeEnum"></see></summary>
     let TpegLoc01FramedPointLocationSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc01FramedPointLocationSubtypeEnum" |> NamespacedName
+        _prefix "TpegLoc01FramedPointLocationSubtypeEnum"
 
     /// <summary>
     /// The type of TPEG location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegFramedPointLocationType"></see></summary>
-    let tpegFramedPointLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegFramedPointLocationType" |> NamespacedName
-
+    let tpegFramedPointLocationType = _prefix "tpegFramedPointLocationType"
     /// <summary>
     /// The location at the down stream end of the linear section of road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegPointTo"></see></summary>
-    let hasTpegPointTo =
-        Namespaced_IRI.parse _namespace_name "hasTpegPointTo" |> NamespacedName
-
+    let hasTpegPointTo = _prefix "hasTpegPointTo"
     /// <summary>
     /// The location at the up stream end of the linear section of road.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegPointFrom"></see></summary>
-    let hasTpegPointFrom =
-        Namespaced_IRI.parse _namespace_name "hasTpegPointFrom" |> NamespacedName
-
+    let hasTpegPointFrom = _prefix "hasTpegPointFrom"
     /// <summary>
     /// A point on the road network which is not a road junction point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegNonJunctionPoint"></see></summary>
-    let TpegNonJunctionPoint =
-        Namespaced_IRI.parse _namespace_name "TpegNonJunctionPoint" |> NamespacedName
-
+    let TpegNonJunctionPoint = _prefix "TpegNonJunctionPoint"
     /// <summary>
     /// A single non-junction point on the road network which is framed between two other specified points on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegFramedPoint"></see></summary>
-    let hasTpegFramedPoint =
-        Namespaced_IRI.parse _namespace_name "hasTpegFramedPoint" |> NamespacedName
-
+    let hasTpegFramedPoint = _prefix "hasTpegFramedPoint"
     /// <summary>
     /// A geometric area defined by a centre point and a radius.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegGeometricArea"></see></summary>
-    let TpegGeometricArea =
-        Namespaced_IRI.parse _namespace_name "TpegGeometricArea" |> NamespacedName
-
+    let TpegGeometricArea = _prefix "TpegGeometricArea"
     /// <summary>
     /// Name of area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegAreaDescriptor"></see></summary>
-    let hasTpegAreaDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasTpegAreaDescriptor" |> NamespacedName
-
+    let hasTpegAreaDescriptor = _prefix "hasTpegAreaDescriptor"
     /// <summary>
     /// The radius of the corresponding circular area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#radius"></see></summary>
-    let radius = Namespaced_IRI.parse _namespace_name "radius" |> NamespacedName
-
+    let radius = _prefix "radius"
     /// <summary>
     /// Centre point of a circular geometric area.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasCentrePoint"></see></summary>
-    let hasCentrePoint =
-        Namespaced_IRI.parse _namespace_name "hasCentrePoint" |> NamespacedName
-
+    let hasCentrePoint = _prefix "hasCentrePoint"
     /// <summary>
     /// A measurement of height in metres
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#height"></see></summary>
-    let height = Namespaced_IRI.parse _namespace_name "height" |> NamespacedName
-
+    let height = _prefix "height"
     /// <summary>
     /// Types of height.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc04HeightTypeEnum"></see></summary>
-    let TpegLoc04HeightTypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc04HeightTypeEnum" |> NamespacedName
-
+    let TpegLoc04HeightTypeEnum = _prefix "TpegLoc04HeightTypeEnum"
     /// <summary>
     /// A descriptive identification of relative height using TPEG-Loc location referencing.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegHeightType"></see></summary>
-    let tpegHeightType =
-        Namespaced_IRI.parse _namespace_name "tpegHeightType" |> NamespacedName
-
+    let tpegHeightType = _prefix "tpegHeightType"
     /// <summary>
     /// A descriptor for describing a junction by defining the intersecting roads.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegIlcPointDescriptor"></see></summary>
-    let TpegIlcPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegIlcPointDescriptor" |> NamespacedName
+    let TpegIlcPointDescriptor = _prefix "TpegIlcPointDescriptor"
 
     /// <summary>
     /// Descriptors for describing a junction by identifying the intersecting roads at a road junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc03IlcPointDescriptorSubtypeEnum"></see></summary>
     let TpegLoc03IlcPointDescriptorSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc03IlcPointDescriptorSubtypeEnum" |> NamespacedName
+        _prefix "TpegLoc03IlcPointDescriptorSubtypeEnum"
 
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegIlcPointDescriptorType"></see></summary>
-    let tpegIlcPointDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegIlcPointDescriptorType" |> NamespacedName
-
+    let tpegIlcPointDescriptorType = _prefix "tpegIlcPointDescriptorType"
     /// <summary>
     /// A descriptor for describing a point location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegPointDescriptor"></see></summary>
-    let TpegPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegPointDescriptor" |> NamespacedName
-
+    let TpegPointDescriptor = _prefix "TpegPointDescriptor"
     /// <summary>
     /// A point on the road network which is a road junction point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegJunction"></see></summary>
-    let TpegJunction =
-        Namespaced_IRI.parse _namespace_name "TpegJunction" |> NamespacedName
-
+    let TpegJunction = _prefix "TpegJunction"
     /// <summary>
     /// A descriptor for describing a point at a junction on a road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegJunctionPointDescriptor"></see></summary>
-    let TpegJunctionPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegJunctionPointDescriptor" |> NamespacedName
-
+    let TpegJunctionPointDescriptor = _prefix "TpegJunctionPointDescriptor"
     /// <summary>
     /// A name which identifies a junction point on the road network
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegJunctionPointDescriptor"></see></summary>
-    let hasTpegJunctionPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasTpegJunctionPointDescriptor" |> NamespacedName
-
+    let hasTpegJunctionPointDescriptor = _prefix "hasTpegJunctionPointDescriptor"
     /// <summary>
     /// A descriptor for describing a junction by identifying the intersecting roads at a road junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegIlcPointDescriptor"></see></summary>
-    let hasTpegIlcPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasTpegIlcPointDescriptor" |> NamespacedName
+    let hasTpegIlcPointDescriptor = _prefix "hasTpegIlcPointDescriptor"
 
     /// <summary>
     /// Descriptors for describing a point at a road junction.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc03JunctionPointDescriptorSubtypeEnum"></see></summary>
     let TpegLoc03JunctionPointDescriptorSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc03JunctionPointDescriptorSubtypeEnum" |> NamespacedName
+        _prefix "TpegLoc03JunctionPointDescriptorSubtypeEnum"
 
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegJunctionPointDescriptorType"></see></summary>
-    let tpegJunctionPointDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegJunctionPointDescriptorType" |> NamespacedName
-
+    let tpegJunctionPointDescriptorType = _prefix "tpegJunctionPointDescriptorType"
     /// <summary>
     /// The type of TPEG location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegLinearLocationType"></see></summary>
-    let tpegLinearLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegLinearLocationType" |> NamespacedName
-
+    let tpegLinearLocationType = _prefix "tpegLinearLocationType"
     /// <summary>
     /// The direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegDirection"></see></summary>
-    let tpegDirection =
-        Namespaced_IRI.parse _namespace_name "tpegDirection" |> NamespacedName
+    let tpegDirection = _prefix "tpegDirection"
 
     /// <summary>
     /// Types of simple point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc01SimplePointLocationSubtypeEnum"></see></summary>
     let TpegLoc01SimplePointLocationSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc01SimplePointLocationSubtypeEnum" |> NamespacedName
+        _prefix "TpegLoc01SimplePointLocationSubtypeEnum"
 
     /// <summary>
     /// Descriptors other than junction names and road descriptors which can help to identify the location of points on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegLoc03OtherPointDescriptorSubtypeEnum"></see></summary>
     let TpegLoc03OtherPointDescriptorSubtypeEnum =
-        Namespaced_IRI.parse _namespace_name "TpegLoc03OtherPointDescriptorSubtypeEnum" |> NamespacedName
+        _prefix "TpegLoc03OtherPointDescriptorSubtypeEnum"
 
     /// <summary>
     /// An area defined by a well-known name.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegNamedOnlyArea"></see></summary>
-    let TpegNamedOnlyArea =
-        Namespaced_IRI.parse _namespace_name "TpegNamedOnlyArea" |> NamespacedName
-
+    let TpegNamedOnlyArea = _prefix "TpegNamedOnlyArea"
     /// <summary>
     /// General descriptor for describing a point.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegOtherPointDescriptor"></see></summary>
-    let TpegOtherPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegOtherPointDescriptor" |> NamespacedName
-
+    let TpegOtherPointDescriptor = _prefix "TpegOtherPointDescriptor"
     /// <summary>
     /// A descriptive name which helps to identify the non-junction point. At least one descriptor must identify the road on which the point is located, i.e. must be of type 'linkName' or 'localLinkName'.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegOtherPointDescriptor"></see></summary>
-    let hasTpegOtherPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasTpegOtherPointDescriptor" |> NamespacedName
-
+    let hasTpegOtherPointDescriptor = _prefix "hasTpegOtherPointDescriptor"
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegOtherPointDescriptorType"></see></summary>
-    let tpegOtherPointDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegOtherPointDescriptorType" |> NamespacedName
-
+    let tpegOtherPointDescriptorType = _prefix "tpegOtherPointDescriptorType"
     /// <summary>
     /// A point on the road network which is not bounded by any other points on the road network.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TpegSimplePoint"></see></summary>
-    let TpegSimplePoint =
-        Namespaced_IRI.parse _namespace_name "TpegSimplePoint" |> NamespacedName
-
+    let TpegSimplePoint = _prefix "TpegSimplePoint"
     /// <summary>
     /// The type of TPEG location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#tpegSimplePointLocationType"></see></summary>
-    let tpegSimplePointLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegSimplePointLocationType" |> NamespacedName
-
+    let tpegSimplePointLocationType = _prefix "tpegSimplePointLocationType"
     /// <summary>
     /// A single point defined by a coordinate set and TPEG descriptors.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTpegPoint"></see></summary>
-    let hasTpegPoint =
-        Namespaced_IRI.parse _namespace_name "hasTpegPoint" |> NamespacedName
-
+    let hasTpegPoint = _prefix "hasTpegPoint"
     /// <summary>
     /// Types of constriction to which traffic is subjected as a result of an event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TrafficConstrictionTypeEnum"></see></summary>
-    let TrafficConstrictionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "TrafficConstrictionTypeEnum" |> NamespacedName
-
+    let TrafficConstrictionTypeEnum = _prefix "TrafficConstrictionTypeEnum"
     /// <summary>
     /// Types of the constriction to which traffic is subjected as a result of an event.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasTrafficConstrictionTypeEnum"></see></summary>
-    let hasTrafficConstrictionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasTrafficConstrictionTypeEnum" |> NamespacedName
-
+    let hasTrafficConstrictionTypeEnum = _prefix "hasTrafficConstrictionTypeEnum"
     /// <summary>
     /// Types of public transport information.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#TransitServiceInformationEnum"></see></summary>
-    let TransitServiceInformationEnum =
-        Namespaced_IRI.parse _namespace_name "TransitServiceInformationEnum" |> NamespacedName
-
+    let TransitServiceInformationEnum = _prefix "TransitServiceInformationEnum"
     /// <summary>
     /// A specification of periods of validity defined by overall bounding start and end times and the possible intersection of valid periods with exception periods (exception periods overriding valid periods).
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#validityTimeSpecification"></see></summary>
-    let validityTimeSpecification =
-        Namespaced_IRI.parse _namespace_name "validityTimeSpecification" |> NamespacedName
-
+    let validityTimeSpecification = _prefix "validityTimeSpecification"
     /// <summary>
     /// Values of validity status that can be assigned to a described event, action or item
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#ValidityStatusEnum"></see></summary>
-    let ValidityStatusEnum =
-        Namespaced_IRI.parse _namespace_name "ValidityStatusEnum" |> NamespacedName
-
+    let ValidityStatusEnum = _prefix "ValidityStatusEnum"
     /// <summary>
     /// Specification of validity, either explicitly overriding the validity time specification or confirming it.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasValidityStatus"></see></summary>
-    let hasValidityStatus =
-        Namespaced_IRI.parse _namespace_name "hasValidityStatus" |> NamespacedName
-
+    let hasValidityStatus = _prefix "hasValidityStatus"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#Vehicle"></see>
     /// </summary>
-    let Vehicle = Namespaced_IRI.parse _namespace_name "Vehicle" |> NamespacedName
-
+    let Vehicle = _prefix "Vehicle"
     /// <summary>
     /// The status of a vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#VehicleStatusEnum"></see></summary>
-    let VehicleStatusEnum =
-        Namespaced_IRI.parse _namespace_name "VehicleStatusEnum" |> NamespacedName
-
+    let VehicleStatusEnum = _prefix "VehicleStatusEnum"
     /// <summary>
     /// Vehicle status.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasVehicleStatus"></see></summary>
-    let hasVehicleStatus =
-        Namespaced_IRI.parse _namespace_name "hasVehicleStatus" |> NamespacedName
-
+    let hasVehicleStatus = _prefix "hasVehicleStatus"
     /// <summary>
     /// The characteristics of a vehicle, e.g. lorry of gross weight greater than 30 tonnes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#VehicleCharacteristics"></see></summary>
-    let VehicleCharacteristics =
-        Namespaced_IRI.parse _namespace_name "VehicleCharacteristics" |> NamespacedName
-
+    let VehicleCharacteristics = _prefix "VehicleCharacteristics"
     /// <summary>
     /// The characteristics of a vehicle, e.g. lorry of gross weight greater than 30 tonnes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasVehicleCharacteristics"></see></summary>
-    let hasVehicleCharacteristics =
-        Namespaced_IRI.parse _namespace_name "hasVehicleCharacteristics" |> NamespacedName
-
+    let hasVehicleCharacteristics = _prefix "hasVehicleCharacteristics"
     /// <summary>
     /// A measured or calculated value of the flow rate of vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#VehicleFlowValue"></see></summary>
-    let VehicleFlowValue =
-        Namespaced_IRI.parse _namespace_name "VehicleFlowValue" |> NamespacedName
-
+    let VehicleFlowValue = _prefix "VehicleFlowValue"
     /// <summary>
     /// A value of vehicle flow rate expressed in vehicles per hour.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#vehicleFlowRate"></see></summary>
-    let vehicleFlowRate =
-        Namespaced_IRI.parse _namespace_name "vehicleFlowRate" |> NamespacedName
-
+    let vehicleFlowRate = _prefix "vehicleFlowRate"
     /// <summary>
     /// Types of vehicle.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#VehicleTypeEnum"></see></summary>
-    let VehicleTypeEnum =
-        Namespaced_IRI.parse _namespace_name "VehicleTypeEnum" |> NamespacedName
-
+    let VehicleTypeEnum = _prefix "VehicleTypeEnum"
     /// <summary>
     /// Vehicle type.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasVehicleTypeEnum"></see></summary>
-    let hasVehicleTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasVehicleTypeEnum" |> NamespacedName
-
+    let hasVehicleTypeEnum = _prefix "hasVehicleTypeEnum"
     /// <summary>
     /// Types of obstructions involving vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#VehicleObstructionTypeEnum"></see></summary>
-    let VehicleObstructionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "VehicleObstructionTypeEnum" |> NamespacedName
-
+    let VehicleObstructionTypeEnum = _prefix "VehicleObstructionTypeEnum"
     /// <summary>
     /// Characterization of an obstruction on the road caused by one or more vehicles.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasVehicleObstructionTypeEnum"></see></summary>
-    let hasVehicleObstructionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasVehicleObstructionTypeEnum" |> NamespacedName
-
+    let hasVehicleObstructionTypeEnum = _prefix "hasVehicleObstructionTypeEnum"
     /// <summary>
     /// Types of road surface conditions which are related to the weather.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#WeatherRelatedRoadConditionType"></see></summary>
-    let WeatherRelatedRoadConditionType =
-        Namespaced_IRI.parse _namespace_name "WeatherRelatedRoadConditionType" |> NamespacedName
+    let WeatherRelatedRoadConditionType = _prefix "WeatherRelatedRoadConditionType"
 
     /// <summary>
     /// The type of road surface condition that is related to the weather which is affecting the driving conditions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasWeatherRelatedRoadConditionTypeEnum"></see></summary>
     let hasWeatherRelatedRoadConditionTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasWeatherRelatedRoadConditionTypeEnum" |> NamespacedName
+        _prefix "hasWeatherRelatedRoadConditionTypeEnum"
 
     /// <summary>
     /// Winter driving management action that is instigated by the network/road operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#WinterDrivingManagement"></see></summary>
-    let WinterDrivingManagement =
-        Namespaced_IRI.parse _namespace_name "WinterDrivingManagement" |> NamespacedName
-
+    let WinterDrivingManagement = _prefix "WinterDrivingManagement"
     /// <summary>
     /// Type of winter equipment management action instigated by operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#WinterEquipmentManagementTypeEnum"></see></summary>
-    let WinterEquipmentManagementTypeEnum =
-        Namespaced_IRI.parse _namespace_name "WinterEquipmentManagementTypeEnum" |> NamespacedName
-
+    let WinterEquipmentManagementTypeEnum = _prefix "WinterEquipmentManagementTypeEnum"
     /// <summary>
     /// ALERT-C name of a direction e.g. Brussels -&gt; Lille.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#alertCDirectionNamed"></see></summary>
-    let alertCDirectionNamed =
-        Namespaced_IRI.parse _namespace_name "alertCDirectionNamed" |> NamespacedName
-
+    let alertCDirectionNamed = _prefix "alertCDirectionNamed"
     /// <summary>
     /// Name of ALERT-C location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#alertCLocationName"></see></summary>
-    let alertCLocationName =
-        Namespaced_IRI.parse _namespace_name "alertCLocationName" |> NamespacedName
-
+    let alertCLocationName = _prefix "alertCLocationName"
     /// <summary>
     /// The allowed delivery channel.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#allowedDeliveryChannel"></see></summary>
-    let allowedDeliveryChannel =
-        Namespaced_IRI.parse _namespace_name "allowedDeliveryChannel" |> NamespacedName
-
+    let allowedDeliveryChannel = _prefix "allowedDeliveryChannel"
     /// <summary>
     /// For organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#geoSparqlDataProperties"></see></summary>
-    let geoSparqlDataProperties =
-        Namespaced_IRI.parse _namespace_name "geoSparqlDataProperties" |> NamespacedName
-
+    let geoSparqlDataProperties = _prefix "geoSparqlDataProperties"
     /// <summary>
     /// For organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#importedDataProperties"></see></summary>
-    let importedDataProperties =
-        Namespaced_IRI.parse _namespace_name "importedDataProperties" |> NamespacedName
-
+    let importedDataProperties = _prefix "importedDataProperties"
     /// <summary>
     /// Only for organizational purposes. GeoSparql object properties
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#geoSparqlObjectProperties"></see></summary>
-    let geoSparqlObjectProperties =
-        Namespaced_IRI.parse _namespace_name "geoSparqlObjectProperties" |> NamespacedName
-
+    let geoSparqlObjectProperties = _prefix "geoSparqlObjectProperties"
     /// <summary>
     /// Only for organizational purposes. Imported object properties
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#importedObjectProperties"></see></summary>
-    let importedObjectProperties =
-        Namespaced_IRI.parse _namespace_name "importedObjectProperties" |> NamespacedName
-
+    let importedObjectProperties = _prefix "importedObjectProperties"
     /// <summary>
     /// For organizational purposes. Properties of the WGS84 Geo Positioning by World Wide Web Consortium (W3C). A vocabulary for representing latitude, longitude and altitude information in the WGS84 geodetic reference datum. WGS stands for the World Geodetic Survey.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#geo_WGS84"></see></summary>
-    let geo_WGS84 = Namespaced_IRI.parse _namespace_name "geo_WGS84" |> NamespacedName
+    let geo_WGS84 = _prefix "geo_WGS84"
     /// <summary>
     /// For organizational purposes. Properties of the ontology for the representation of Geographical Objects https://datos.ign.es/def/geo_core
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#geo_core"></see></summary>
-    let geo_core = Namespaced_IRI.parse _namespace_name "geo_core" |> NamespacedName
-
+    let geo_core = _prefix "geo_core"
     /// <summary>
     /// ALERT-C Area
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCArea"></see></summary>
-    let hasAlertCArea =
-        Namespaced_IRI.parse _namespace_name "hasAlertCArea" |> NamespacedName
-
+    let hasAlertCArea = _prefix "hasAlertCArea"
     /// <summary>
     /// The linear location expressed using AlertC. Multiple instances of AlertCLinear shall represent the same real-world geographic feature.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCLinear"></see></summary>
-    let hasAlertCLinear =
-        Namespaced_IRI.parse _namespace_name "hasAlertCLinear" |> NamespacedName
-
+    let hasAlertCLinear = _prefix "hasAlertCLinear"
     /// <summary>
     /// The point location expressed using AlertC. Multiple instances of AlertCPoint shall represent the same real-world geographic feature.They should represent the same point using different location tables.
     /// PointLocation is associated to AlertCPoint with cardinality 0..*
     /// ALERT-C point
     /// A single point on the road network defined by reference to a pre-defined ALERT-C location table and which has an associated direction of traffic flow.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasAlertCPoint"></see></summary>
-    let hasAlertCPoint =
-        Namespaced_IRI.parse _namespace_name "hasAlertCPoint" |> NamespacedName
-
+    let hasAlertCPoint = _prefix "hasAlertCPoint"
     /// <summary>
     /// Supplementary positional information which details carriageway and lane locations. Several instances may exist where the element being described extends over more than one carriageway.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasCarriageway"></see></summary>
-    let hasCarriageway =
-        Namespaced_IRI.parse _namespace_name "hasCarriageway" |> NamespacedName
-
+    let hasCarriageway = _prefix "hasCarriageway"
     /// <summary>
     /// Deliberate human action of either a public disorder nature or of a situation alert type which could disrupt traffic.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasDisturbanceActivityTypeEnum"></see></summary>
-    let hasDisturbanceActivityTypeEnum =
-        Namespaced_IRI.parse _namespace_name "hasDisturbanceActivityTypeEnum" |> NamespacedName
-
+    let hasDisturbanceActivityTypeEnum = _prefix "hasDisturbanceActivityTypeEnum"
     /// <summary>
     /// A boundary of internal patches of a polygonal surface consisting of a ring feature
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasGmlInteriorLinearRing"></see></summary>
-    let hasGmlInteriorLinearRing =
-        Namespaced_IRI.parse _namespace_name "hasGmlInteriorLinearRing" |> NamespacedName
-
+    let hasGmlInteriorLinearRing = _prefix "hasGmlInteriorLinearRing"
     /// <summary>
     /// Indicates a specific lane or group of lanes.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLane"></see></summary>
-    let hasLane = Namespaced_IRI.parse _namespace_name "hasLane" |> NamespacedName
-
+    let hasLane = _prefix "hasLane"
     /// <summary>
     /// Specifies a linear section along a linear element where the linear element is either a part of or the whole of a linear object (i.e. a road), consistent with ISO 19148 definitions.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasLinearWithinLinearElement"></see></summary>
-    let hasLinearWithinLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasLinearWithinLinearElement" |> NamespacedName
-
+    let hasLinearWithinLinearElement = _prefix "hasLinearWithinLinearElement"
     /// <summary>
     /// It is location reference of ...
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#isLocationReferenceOf"></see></summary>
-    let isLocationReferenceOf =
-        Namespaced_IRI.parse _namespace_name "isLocationReferenceOf" |> NamespacedName
-
+    let isLocationReferenceOf = _prefix "isLocationReferenceOf"
     /// <summary>
     /// The actions of the maintenance vehicles associated with the roadworks activities.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasMaintenanceVehicleActions"></see></summary>
-    let hasMaintenanceVehicleActions =
-        Namespaced_IRI.parse _namespace_name "hasMaintenanceVehicleActions" |> NamespacedName
-
+    let hasMaintenanceVehicleActions = _prefix "hasMaintenanceVehicleActions"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOverallEndTime"></see>
     /// </summary>
-    let hasOverallEndTime =
-        Namespaced_IRI.parse _namespace_name "hasOverallEndTime" |> NamespacedName
-
+    let hasOverallEndTime = _prefix "hasOverallEndTime"
     /// <summary>
     ///   <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasOverallStartTime"></see>
     /// </summary>
-    let hasOverallStartTime =
-        Namespaced_IRI.parse _namespace_name "hasOverallStartTime" |> NamespacedName
-
+    let hasOverallStartTime = _prefix "hasOverallStartTime"
     /// <summary>
     /// PointLocation is associated to PointAlongLinearElement with cardinality 0..*
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPointAlongLinearElement"></see></summary>
-    let hasPointAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "hasPointAlongLinearElement" |> NamespacedName
-
+    let hasPointAlongLinearElement = _prefix "hasPointAlongLinearElement"
     /// <summary>
     /// Specifies types of public events.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasPublicEventType"></see></summary>
-    let hasPublicEventType =
-        Namespaced_IRI.parse _namespace_name "hasPublicEventType" |> NamespacedName
-
+    let hasPublicEventType = _prefix "hasPublicEventType"
     /// <summary>
     /// Specifies a referent on a linear object that has a known location such as a node, a reference marker (e.g. a marker-post), an intersection etc.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasReferent"></see></summary>
-    let hasReferent =
-        Namespaced_IRI.parse _namespace_name "hasReferent" |> NamespacedName
-
+    let hasReferent = _prefix "hasReferent"
     /// <summary>
     /// Information on a set of one or more roads. The location could correspond to a part of the road identified, the whole stretch of road identified, or a combination of multiple road sections.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadInformation"></see></summary>
-    let hasRoadInformation =
-        Namespaced_IRI.parse _namespace_name "hasRoadInformation" |> NamespacedName
+    let hasRoadInformation = _prefix "hasRoadInformation"
 
     /// <summary>
     /// Management actions relating to road, carriageway or lane usage.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasRoadOrCarriagewayOrLaneManagementType"></see></summary>
     let hasRoadOrCarriagewayOrLaneManagementType =
-        Namespaced_IRI.parse _namespace_name "hasRoadOrCarriagewayOrLaneManagementType" |> NamespacedName
+        _prefix "hasRoadOrCarriagewayOrLaneManagementType"
 
     /// <summary>
     /// traffic/travel situations.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasSituation"></see></summary>
-    let hasSituation =
-        Namespaced_IRI.parse _namespace_name "hasSituation" |> NamespacedName
-
+    let hasSituation = _prefix "hasSituation"
     /// <summary>
     /// The vehicle involved in the accident.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasVehiclesInvolved"></see></summary>
-    let hasVehiclesInvolved =
-        Namespaced_IRI.parse _namespace_name "hasVehiclesInvolved" |> NamespacedName
-
+    let hasVehiclesInvolved = _prefix "hasVehiclesInvolved"
     /// <summary>
     /// Type of winter equipment management action instigated by operator.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#hasWinterEquipmentManagementType"></see></summary>
-    let hasWinterEquipmentManagementType =
-        Namespaced_IRI.parse _namespace_name "hasWinterEquipmentManagementType" |> NamespacedName
-
+    let hasWinterEquipmentManagementType = _prefix "hasWinterEquipmentManagementType"
     /// <summary>
     /// Only for organizational purposes. Qudt object properties
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#qudtObjectProperties"></see></summary>
-    let qudtObjectProperties =
-        Namespaced_IRI.parse _namespace_name "qudtObjectProperties" |> NamespacedName
-
+    let qudtObjectProperties = _prefix "qudtObjectProperties"
     /// <summary>
     /// For organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#skosDataProperties"></see></summary>
-    let skosDataProperties =
-        Namespaced_IRI.parse _namespace_name "skosDataProperties" |> NamespacedName
-
+    let skosDataProperties = _prefix "skosDataProperties"
     /// <summary>
     /// Only for organizational purposes. Skos object properties
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#skosObjectProperties"></see></summary>
-    let skosObjectProperties =
-        Namespaced_IRI.parse _namespace_name "skosObjectProperties" |> NamespacedName
-
+    let skosObjectProperties = _prefix "skosObjectProperties"
     /// <summary>
     /// Unique code within the ALERT-C location table which identifies the specific point, linear or area location.
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#specificLocation"></see></summary>
-    let specificLocation =
-        Namespaced_IRI.parse _namespace_name "specificLocation" |> NamespacedName
-
+    let specificLocation = _prefix "specificLocation"
     /// <summary>
     /// For organizational purposes
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#timeDataProperties"></see></summary>
-    let timeDataProperties =
-        Namespaced_IRI.parse _namespace_name "timeDataProperties" |> NamespacedName
-
+    let timeDataProperties = _prefix "timeDataProperties"
     /// <summary>
     /// Only for organizational purposes. Time object properties
     /// <see href="http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#timeObjectProperties"></see></summary>
-    let timeObjectProperties =
-        Namespaced_IRI.parse _namespace_name "timeObjectProperties" |> NamespacedName
+    let timeObjectProperties = _prefix "timeObjectProperties"

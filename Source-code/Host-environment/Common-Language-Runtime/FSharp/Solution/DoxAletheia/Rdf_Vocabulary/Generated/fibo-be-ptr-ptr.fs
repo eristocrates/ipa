@@ -1,84 +1,66 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.Partnerships.Partnerships.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ptr_ptr =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/GeneralPartner"></see>
     /// </summary>
-    let GeneralPartner =
-        Namespaced_IRI.parse _namespace_name "GeneralPartner" |> NamespacedName
-
+    let GeneralPartner = _prefix "GeneralPartner"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/Partner"></see>
     /// </summary>
-    let Partner = Namespaced_IRI.parse _namespace_name "Partner" |> NamespacedName
-
+    let Partner = _prefix "Partner"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/GeneralPartnership"></see>
     /// </summary>
-    let GeneralPartnership =
-        Namespaced_IRI.parse _namespace_name "GeneralPartnership" |> NamespacedName
-
+    let GeneralPartnership = _prefix "GeneralPartnership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/Partnership"></see>
     /// </summary>
-    let Partnership =
-        Namespaced_IRI.parse _namespace_name "Partnership" |> NamespacedName
-
+    let Partnership = _prefix "Partnership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/hasGeneralPartner"></see>
     /// </summary>
-    let hasGeneralPartner =
-        Namespaced_IRI.parse _namespace_name "hasGeneralPartner" |> NamespacedName
+    let hasGeneralPartner = _prefix "hasGeneralPartner"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/LimitedLiabilityLimitedPartnership"></see>
     /// </summary>
     let LimitedLiabilityLimitedPartnership =
-        Namespaced_IRI.parse _namespace_name "LimitedLiabilityLimitedPartnership" |> NamespacedName
+        _prefix "LimitedLiabilityLimitedPartnership"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/LimitedPartnership"></see>
     /// </summary>
-    let LimitedPartnership =
-        Namespaced_IRI.parse _namespace_name "LimitedPartnership" |> NamespacedName
-
+    let LimitedPartnership = _prefix "LimitedPartnership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/LimitedLiabilityPartnership"></see>
     /// </summary>
-    let LimitedLiabilityPartnership =
-        Namespaced_IRI.parse _namespace_name "LimitedLiabilityPartnership" |> NamespacedName
-
+    let LimitedLiabilityPartnership = _prefix "LimitedLiabilityPartnership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/LimitedPartner"></see>
     /// </summary>
-    let LimitedPartner =
-        Namespaced_IRI.parse _namespace_name "LimitedPartner" |> NamespacedName
-
+    let LimitedPartner = _prefix "LimitedPartner"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/hasLimitedPartner"></see>
     /// </summary>
-    let hasLimitedPartner =
-        Namespaced_IRI.parse _namespace_name "hasLimitedPartner" |> NamespacedName
-
+    let hasLimitedPartner = _prefix "hasLimitedPartner"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/PartnershipAgreement"></see>
     /// </summary>
-    let PartnershipAgreement =
-        Namespaced_IRI.parse _namespace_name "PartnershipAgreement" |> NamespacedName
-
+    let PartnershipAgreement = _prefix "PartnershipAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/isGeneralPartnerOf"></see>
     /// </summary>
-    let isGeneralPartnerOf =
-        Namespaced_IRI.parse _namespace_name "isGeneralPartnerOf" |> NamespacedName
-
+    let isGeneralPartnerOf = _prefix "isGeneralPartnerOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/isLimitedPartnerOf"></see>
     /// </summary>
-    let isLimitedPartnerOf =
-        Namespaced_IRI.parse _namespace_name "isLimitedPartnerOf" |> NamespacedName
+    let isLimitedPartnerOf = _prefix "isLimitedPartnerOf"

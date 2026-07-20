@@ -1,6 +1,6 @@
 namespace https.www.w3.org._2001.XMLSchema_instance.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 /// https://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions
 module xsi =

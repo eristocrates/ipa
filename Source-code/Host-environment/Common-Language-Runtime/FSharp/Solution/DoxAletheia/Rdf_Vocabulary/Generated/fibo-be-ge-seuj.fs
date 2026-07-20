@@ -1,277 +1,206 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.EuropeanJurisdiction.SouthernEuropeGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_seuj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/AlbanianEntity"></see>
     /// </summary>
-    let AlbanianEntity =
-        Namespaced_IRI.parse _namespace_name "AlbanianEntity" |> NamespacedName
-
+    let AlbanianEntity = _prefix "AlbanianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfAlbania"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfAlbania =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfAlbania" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfAlbania = _prefix "GovernmentOfTheRepublicOfAlbania"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/AndorranEntity"></see>
     /// </summary>
-    let AndorranEntity =
-        Namespaced_IRI.parse _namespace_name "AndorranEntity" |> NamespacedName
+    let AndorranEntity = _prefix "AndorranEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfThePrincipalityOfAndorra"></see>
     /// </summary>
     let GovernmentOfThePrincipalityOfAndorra =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfThePrincipalityOfAndorra" |> NamespacedName
+        _prefix "GovernmentOfThePrincipalityOfAndorra"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/BosnianAndHerzegovinianEntity"></see>
     /// </summary>
-    let BosnianAndHerzegovinianEntity =
-        Namespaced_IRI.parse _namespace_name "BosnianAndHerzegovinianEntity" |> NamespacedName
+    let BosnianAndHerzegovinianEntity = _prefix "BosnianAndHerzegovinianEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheFederationOfBosniaAndHerzegovina"></see>
     /// </summary>
     let GovernmentOfTheFederationOfBosniaAndHerzegovina =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheFederationOfBosniaAndHerzegovina" |> NamespacedName
+        _prefix "GovernmentOfTheFederationOfBosniaAndHerzegovina"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/CroatianEntity"></see>
     /// </summary>
-    let CroatianEntity =
-        Namespaced_IRI.parse _namespace_name "CroatianEntity" |> NamespacedName
-
+    let CroatianEntity = _prefix "CroatianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfCroatia"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfCroatia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfCroatia" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfCroatia = _prefix "GovernmentOfTheRepublicOfCroatia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfMontenegro"></see>
     /// </summary>
-    let GovernmentOfMontenegro =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfMontenegro" |> NamespacedName
-
+    let GovernmentOfMontenegro = _prefix "GovernmentOfMontenegro"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfMontenegro"></see>
     /// </summary>
-    let JurisdictionOfMontenegro =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfMontenegro" |> NamespacedName
+    let JurisdictionOfMontenegro = _prefix "JurisdictionOfMontenegro"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfBosniaAndHerzegovina"></see>
     /// </summary>
     let JurisdictionOfBosniaAndHerzegovina =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfBosniaAndHerzegovina" |> NamespacedName
+        _prefix "JurisdictionOfBosniaAndHerzegovina"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheHellenicRepublic"></see>
     /// </summary>
-    let GovernmentOfTheHellenicRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheHellenicRepublic" |> NamespacedName
-
+    let GovernmentOfTheHellenicRepublic = _prefix "GovernmentOfTheHellenicRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfGreece"></see>
     /// </summary>
-    let JurisdictionOfGreece =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfGreece" |> NamespacedName
-
+    let JurisdictionOfGreece = _prefix "JurisdictionOfGreece"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheHolySee"></see>
     /// </summary>
-    let GovernmentOfTheHolySee =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheHolySee" |> NamespacedName
-
+    let GovernmentOfTheHolySee = _prefix "GovernmentOfTheHolySee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfTheHolySee"></see>
     /// </summary>
-    let JurisdictionOfTheHolySee =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheHolySee" |> NamespacedName
-
+    let JurisdictionOfTheHolySee = _prefix "JurisdictionOfTheHolySee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfSpain"></see>
     /// </summary>
-    let GovernmentOfTheKingdomOfSpain =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfSpain" |> NamespacedName
-
+    let GovernmentOfTheKingdomOfSpain = _prefix "GovernmentOfTheKingdomOfSpain"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfSpain"></see>
     /// </summary>
-    let JurisdictionOfSpain =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSpain" |> NamespacedName
-
+    let JurisdictionOfSpain = _prefix "JurisdictionOfSpain"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfThePortugueseRepublic"></see>
     /// </summary>
-    let GovernmentOfThePortugueseRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfThePortugueseRepublic" |> NamespacedName
-
+    let GovernmentOfThePortugueseRepublic = _prefix "GovernmentOfThePortugueseRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfPortugal"></see>
     /// </summary>
-    let JurisdictionOfPortugal =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfPortugal" |> NamespacedName
-
+    let JurisdictionOfPortugal = _prefix "JurisdictionOfPortugal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfAndorra"></see>
     /// </summary>
-    let JurisdictionOfAndorra =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfAndorra" |> NamespacedName
-
+    let JurisdictionOfAndorra = _prefix "JurisdictionOfAndorra"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfAlbania"></see>
     /// </summary>
-    let JurisdictionOfAlbania =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfAlbania" |> NamespacedName
-
+    let JurisdictionOfAlbania = _prefix "JurisdictionOfAlbania"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfCroatia"></see>
     /// </summary>
-    let JurisdictionOfCroatia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfCroatia" |> NamespacedName
-
+    let JurisdictionOfCroatia = _prefix "JurisdictionOfCroatia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfItaly"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfItaly =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfItaly" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfItaly = _prefix "GovernmentOfTheRepublicOfItaly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfItaly"></see>
     /// </summary>
-    let JurisdictionOfItaly =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfItaly" |> NamespacedName
-
+    let JurisdictionOfItaly = _prefix "JurisdictionOfItaly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfMalta"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfMalta =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfMalta" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfMalta = _prefix "GovernmentOfTheRepublicOfMalta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfMalta"></see>
     /// </summary>
-    let JurisdictionOfMalta =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfMalta" |> NamespacedName
+    let JurisdictionOfMalta = _prefix "JurisdictionOfMalta"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfNorthMacedonia"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfNorthMacedonia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfNorthMacedonia" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfNorthMacedonia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfNorthMacedonia"></see>
     /// </summary>
-    let JurisdictionOfNorthMacedonia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfNorthMacedonia" |> NamespacedName
+    let JurisdictionOfNorthMacedonia = _prefix "JurisdictionOfNorthMacedonia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfSanMarino"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfSanMarino =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfSanMarino" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfSanMarino"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfSanMarino"></see>
     /// </summary>
-    let JurisdictionOfSanMarino =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSanMarino" |> NamespacedName
-
+    let JurisdictionOfSanMarino = _prefix "JurisdictionOfSanMarino"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfSerbia"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfSerbia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfSerbia" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfSerbia = _prefix "GovernmentOfTheRepublicOfSerbia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfSerbia"></see>
     /// </summary>
-    let JurisdictionOfSerbia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSerbia" |> NamespacedName
-
+    let JurisdictionOfSerbia = _prefix "JurisdictionOfSerbia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfSlovenia"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfSlovenia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfSlovenia" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfSlovenia = _prefix "GovernmentOfTheRepublicOfSlovenia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfSlovenia"></see>
     /// </summary>
-    let JurisdictionOfSlovenia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSlovenia" |> NamespacedName
-
+    let JurisdictionOfSlovenia = _prefix "JurisdictionOfSlovenia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/GreekEntity"></see>
     /// </summary>
-    let GreekEntity =
-        Namespaced_IRI.parse _namespace_name "GreekEntity" |> NamespacedName
-
+    let GreekEntity = _prefix "GreekEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/HolySeeEntity"></see>
     /// </summary>
-    let HolySeeEntity =
-        Namespaced_IRI.parse _namespace_name "HolySeeEntity" |> NamespacedName
-
+    let HolySeeEntity = _prefix "HolySeeEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/ItalianEntity"></see>
     /// </summary>
-    let ItalianEntity =
-        Namespaced_IRI.parse _namespace_name "ItalianEntity" |> NamespacedName
-
+    let ItalianEntity = _prefix "ItalianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/MalteseEntity"></see>
     /// </summary>
-    let MalteseEntity =
-        Namespaced_IRI.parse _namespace_name "MalteseEntity" |> NamespacedName
-
+    let MalteseEntity = _prefix "MalteseEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/MontenegrinEntity"></see>
     /// </summary>
-    let MontenegrinEntity =
-        Namespaced_IRI.parse _namespace_name "MontenegrinEntity" |> NamespacedName
-
+    let MontenegrinEntity = _prefix "MontenegrinEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/NorthMacedonianEntity"></see>
     /// </summary>
-    let NorthMacedonianEntity =
-        Namespaced_IRI.parse _namespace_name "NorthMacedonianEntity" |> NamespacedName
-
+    let NorthMacedonianEntity = _prefix "NorthMacedonianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/PortugueseEntity"></see>
     /// </summary>
-    let PortugueseEntity =
-        Namespaced_IRI.parse _namespace_name "PortugueseEntity" |> NamespacedName
-
+    let PortugueseEntity = _prefix "PortugueseEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/SammarineseEntity"></see>
     /// </summary>
-    let SammarineseEntity =
-        Namespaced_IRI.parse _namespace_name "SammarineseEntity" |> NamespacedName
-
+    let SammarineseEntity = _prefix "SammarineseEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/SerbianEntity"></see>
     /// </summary>
-    let SerbianEntity =
-        Namespaced_IRI.parse _namespace_name "SerbianEntity" |> NamespacedName
-
+    let SerbianEntity = _prefix "SerbianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/SloveneEntity"></see>
     /// </summary>
-    let SloveneEntity =
-        Namespaced_IRI.parse _namespace_name "SloveneEntity" |> NamespacedName
-
+    let SloveneEntity = _prefix "SloveneEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/SpanishEntity"></see>
     /// </summary>
-    let SpanishEntity =
-        Namespaced_IRI.parse _namespace_name "SpanishEntity" |> NamespacedName
+    let SpanishEntity = _prefix "SpanishEntity"

@@ -1,9 +1,13 @@
 namespace http.www.w3.org._2003._01.geo.wgs84_pos.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module wgspos =
     let _namespace_name = "http://www.w3.org/2003/01/geo/wgs84_pos#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A point, typically described using a coordinate system relative to Earth, such as WGS84.
     ///
@@ -16,29 +20,26 @@ module wgspos =
     /// sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
     ///
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#Point"></see></summary>
-    let Point = Namespaced_IRI.parse _namespace_name "Point" |> NamespacedName
-
+    let Point = _prefix "Point"
     /// <summary>
     /// Anything with spatial extent, i.e. size, shape, or position.
     ///  e.g. people, places, bowling balls, as well as abstract areas like cubes.
     ///
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"></see></summary>
-    let SpatialThing =
-        Namespaced_IRI.parse _namespace_name "SpatialThing" |> NamespacedName
-
+    let SpatialThing = _prefix "SpatialThing"
     /// <summary>
     /// The WGS84 altitude of a SpatialThing (decimal meters
     /// above the local reference ellipsoid).
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#alt"></see></summary>
-    let alt = Namespaced_IRI.parse _namespace_name "alt" |> NamespacedName
+    let alt = _prefix "alt"
     /// <summary>
     /// The WGS84 latitude of a SpatialThing (decimal degrees).
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#lat"></see></summary>
-    let lat = Namespaced_IRI.parse _namespace_name "lat" |> NamespacedName
+    let lat = _prefix "lat"
     /// <summary>
     /// A comma-separated representation of a latitude, longitude coordinate.
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#lat_long"></see></summary>
-    let lat_long = Namespaced_IRI.parse _namespace_name "lat_long" |> NamespacedName
+    let lat_long = _prefix "lat_long"
     /// <summary>
     /// The relation between something and the point,
     ///  or other geometrical thing in space, where it is.  For example, the realtionship between
@@ -49,8 +50,8 @@ module wgspos =
     ///  an accuracy appropriate for the size of the object and uses such as mapping .
     ///
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#location"></see></summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
+    let location = _prefix "location"
     /// <summary>
     /// The WGS84 longitude of a SpatialThing (decimal degrees).
     /// <see href="http://www.w3.org/2003/01/geo/wgs84_pos#long"></see></summary>
-    let long = Namespaced_IRI.parse _namespace_name "long" |> NamespacedName
+    let long = _prefix "long"

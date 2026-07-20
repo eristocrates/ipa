@@ -1,36 +1,33 @@
 namespace http.www.ontologydesignpatterns.org.cp.owl.semiotics.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module semiotics =
     let _namespace_name = "http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Any information that either dul:expresses a Meaning or denotes a Reference
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Expression"></see></summary>
-    let Expression = Namespaced_IRI.parse _namespace_name "Expression" |> NamespacedName
-
+    let Expression = _prefix "Expression"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Manifestation"></see>
     /// </summary>
-    let Manifestation =
-        Namespaced_IRI.parse _namespace_name "Manifestation" |> NamespacedName
-
+    let Manifestation = _prefix "Manifestation"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasManifestation"></see>
     /// </summary>
-    let hasManifestation =
-        Namespaced_IRI.parse _namespace_name "hasManifestation" |> NamespacedName
-
+    let hasManifestation = _prefix "hasManifestation"
     /// <summary>
     /// Either an information object (expression) or its realization (manifestation).
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#InformationEntity"></see></summary>
-    let InformationEntity =
-        Namespaced_IRI.parse _namespace_name "InformationEntity" |> NamespacedName
-
+    let InformationEntity = _prefix "InformationEntity"
     /// <summary>
     /// Any conceptualization that isExpressedBy an Expression, or isInterpretationOf a Reference
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Meaning"></see></summary>
-    let Meaning = Namespaced_IRI.parse _namespace_name "Meaning" |> NamespacedName
+    let Meaning = _prefix "Meaning"
     /// <summary>
     /// A relation between an Expression and a Meaning. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
     /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form.
@@ -75,77 +72,59 @@ module semiotics =
     ///
     /// This is only a first step to provide a framework, in which one can model different aspects of Meaning. A more developed ontology should approach the problem of integrating the different uses of 'expresses', so that different theories, resources, and methods can interoperate.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#expresses"></see></summary>
-    let expresses = Namespaced_IRI.parse _namespace_name "expresses" |> NamespacedName
+    let expresses = _prefix "expresses"
     /// <summary>
     /// Anything that isDenotedBy an Expression, or that hasInterpretation some Meaning
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#Reference"></see></summary>
-    let Reference = Namespaced_IRI.parse _namespace_name "Reference" |> NamespacedName
+    let Reference = _prefix "Reference"
     /// <summary>
     /// A relation between expressions and anything (including expressions).
     /// It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse. In OWL2, punning can be used to represent denotation of concept names with owl class extensions, e.g. 'mouse' denotes owl:Class:Mouse.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes"></see></summary>
-    let denotes = Namespaced_IRI.parse _namespace_name "denotes" |> NamespacedName
-
+    let denotes = _prefix "denotes"
     /// <summary>
     /// The Peircean interpretant relation, widely adopted in semiotics: an Expression isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog.
     /// Synonymy, translation, associativity, and topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); cane isInterpretantFor dog (translation); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
     /// Semantic mechanisms such as metonymy depend on the interpretant relation.
     /// The interpretant relation is here taken as very broad, also accepting Manifestation(s) as interpretants.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasInterpretant"></see></summary>
-    let hasInterpretant =
-        Namespaced_IRI.parse _namespace_name "hasInterpretant" |> NamespacedName
-
+    let hasInterpretant = _prefix "hasInterpretant"
     /// <summary>
     /// A communicative situation including expressions, agents, and the semiotic elements: physical (manifestations), conceptual (meanings), and referential (references).
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#LinguisticAct"></see></summary>
-    let LinguisticAct =
-        Namespaced_IRI.parse _namespace_name "LinguisticAct" |> NamespacedName
-
+    let LinguisticAct = _prefix "LinguisticAct"
     /// <summary>
     ///   <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isManifestationOf"></see>
     /// </summary>
-    let isManifestationOf =
-        Namespaced_IRI.parse _namespace_name "isManifestationOf" |> NamespacedName
-
+    let isManifestationOf = _prefix "isManifestationOf"
     /// <summary>
     /// The relation between a Meaning and a Reference : a Meaning conceptualizes an entity or a collection of entities.
     /// A same Reference can be given different conceptualizations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot. Example: myoldcradle hasConceptualization FlowerPot. In OWL2, punning can be used to use the intension of an OWL class as a meaning, e.g. myoldcradle hasConceptualization owl:Class:FlowerPot.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isConceptualizationOf"></see></summary>
-    let isConceptualizationOf =
-        Namespaced_IRI.parse _namespace_name "isConceptualizationOf" |> NamespacedName
-
+    let isConceptualizationOf = _prefix "isConceptualizationOf"
     /// <summary>
     /// The Peircean interpretant relation, widely adopted in semiotics: an Expression isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog.
     /// Synonymy, translation, associativity, and topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); cane isInterpretantFor dog (translation); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
     /// Semantic mechanisms such as metonymy depend on the interpretant relation.
     /// The interpretant relation is here taken as very broad, also accepting Manifestation(s) as interpretants.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isInterpretantFor"></see></summary>
-    let isInterpretantFor =
-        Namespaced_IRI.parse _namespace_name "isInterpretantFor" |> NamespacedName
-
+    let isInterpretantFor = _prefix "isInterpretantFor"
     /// <summary>
     /// The relation between a Meaning and a Reference : a Meaning conceptualizes an entity or a collection of entities.
     /// A same Reference can be given different conceptualizations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot. Example: myoldcradle hasConceptualization FlowerPot. In OWL2, punning can be used to use the intension of an OWL class as a meaning, e.g. myoldcradle hasConceptualization owl:Class:FlowerPot.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#hasConceptualization"></see></summary>
-    let hasConceptualization =
-        Namespaced_IRI.parse _namespace_name "hasConceptualization" |> NamespacedName
-
+    let hasConceptualization = _prefix "hasConceptualization"
     /// <summary>
     /// A relation between expressions and anything (including expressions).
     /// It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse. In OWL2, punning can be used to represent denotation of concept names with owl class extensions, e.g. 'mouse' denotes owl:Class:Mouse.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isDenotedBy"></see></summary>
-    let isDenotedBy =
-        Namespaced_IRI.parse _namespace_name "isDenotedBy" |> NamespacedName
-
+    let isDenotedBy = _prefix "isDenotedBy"
     /// <summary>
     /// A relation between an Expression and a Meaning. For example: 'A Beehive is a structure in which bees are kept, typically in the form of a dome or box.' (Oxford dictionary)'; 'the term Beehive expresses the concept Beehive in my apiculture ontology'.
     /// The intuition for 'meaning' is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form.
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#isExpressedBy"></see></summary>
-    let isExpressedBy =
-        Namespaced_IRI.parse _namespace_name "isExpressedBy" |> NamespacedName
-
+    let isExpressedBy = _prefix "isExpressedBy"
     /// <summary>
     /// A relation between any two Meaning(s).
     /// <see href="http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#relatedMeaning"></see></summary>
-    let relatedMeaning =
-        Namespaced_IRI.parse _namespace_name "relatedMeaning" |> NamespacedName
+    let relatedMeaning = _prefix "relatedMeaning"

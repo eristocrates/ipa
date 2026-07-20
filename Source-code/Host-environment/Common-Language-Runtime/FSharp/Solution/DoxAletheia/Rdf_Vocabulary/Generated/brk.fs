@@ -1,74 +1,58 @@
 namespace http.brk.basisregistraties.overheid.nl.def.brk.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module brk =
     let _namespace_name = "http://brk.basisregistraties.overheid.nl/def/brk#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#KadastraleGrens"></see>
     /// </summary>
-    let KadastraleGrens =
-        Namespaced_IRI.parse _namespace_name "KadastraleGrens" |> NamespacedName
-
+    let KadastraleGrens = _prefix "KadastraleGrens"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#Perceel"></see>
     /// </summary>
-    let Perceel = Namespaced_IRI.parse _namespace_name "Perceel" |> NamespacedName
-
+    let Perceel = _prefix "Perceel"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#begrenzingPerceel"></see>
     /// </summary>
-    let begrenzingPerceel =
-        Namespaced_IRI.parse _namespace_name "begrenzingPerceel" |> NamespacedName
-
+    let begrenzingPerceel = _prefix "begrenzingPerceel"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#grenslijn"></see>
     /// </summary>
-    let grenslijn = Namespaced_IRI.parse _namespace_name "grenslijn" |> NamespacedName
-
+    let grenslijn = _prefix "grenslijn"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#kadastraleGemeente"></see>
     /// </summary>
-    let kadastraleGemeente =
-        Namespaced_IRI.parse _namespace_name "kadastraleGemeente" |> NamespacedName
-
+    let kadastraleGemeente = _prefix "kadastraleGemeente"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#kadastraleGrootte"></see>
     /// </summary>
-    let kadastraleGrootte =
-        Namespaced_IRI.parse _namespace_name "kadastraleGrootte" |> NamespacedName
-
+    let kadastraleGrootte = _prefix "kadastraleGrootte"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#perceelnummer"></see>
     /// </summary>
-    let perceelnummer =
-        Namespaced_IRI.parse _namespace_name "perceelnummer" |> NamespacedName
-
+    let perceelnummer = _prefix "perceelnummer"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#perceelnummerRotatie"></see>
     /// </summary>
-    let perceelnummerRotatie =
-        Namespaced_IRI.parse _namespace_name "perceelnummerRotatie" |> NamespacedName
-
+    let perceelnummerRotatie = _prefix "perceelnummerRotatie"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#plaatscoordinaten"></see>
     /// </summary>
-    let plaatscoordinaten =
-        Namespaced_IRI.parse _namespace_name "plaatscoordinaten" |> NamespacedName
-
+    let plaatscoordinaten = _prefix "plaatscoordinaten"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#sectie"></see>
     /// </summary>
-    let sectie = Namespaced_IRI.parse _namespace_name "sectie" |> NamespacedName
-
+    let sectie = _prefix "sectie"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#soortGrootte"></see>
     /// </summary>
-    let soortGrootte =
-        Namespaced_IRI.parse _namespace_name "soortGrootte" |> NamespacedName
-
+    let soortGrootte = _prefix "soortGrootte"
     /// <summary>
     ///   <see href="http://brk.basisregistraties.overheid.nl/def/brk#typeGrens"></see>
     /// </summary>
-    let typeGrens = Namespaced_IRI.parse _namespace_name "typeGrens" |> NamespacedName
+    let typeGrens = _prefix "typeGrens"

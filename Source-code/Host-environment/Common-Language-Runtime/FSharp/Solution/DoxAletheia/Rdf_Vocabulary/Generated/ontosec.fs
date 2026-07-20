@@ -1,2077 +1,1597 @@
 namespace http.www.semanticweb.org.ontologies._2008._11.OntologySecurity.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ontosec =
     let _namespace_name =
         "http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A set of sensitive functions under a named group that can get authorization.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#FunctionGroups"></see></summary>
-    let FunctionGroups =
-        Namespaced_IRI.parse _namespace_name "FunctionGroups" |> NamespacedName
-
+    let FunctionGroups = _prefix "FunctionGroups"
     /// <summary>
     /// Contains permissions related to network data connections.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NetAccessFunctionGroup"></see></summary>
-    let NetAccessFunctionGroup =
-        Namespaced_IRI.parse _namespace_name "NetAccessFunctionGroup" |> NamespacedName
-
+    let NetAccessFunctionGroup = _prefix "NetAccessFunctionGroup"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Offline"></see>
     /// </summary>
-    let Offline = Namespaced_IRI.parse _namespace_name "Offline" |> NamespacedName
+    let Offline = _prefix "Offline"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Parallel"></see>
     /// </summary>
-    let Parallel = Namespaced_IRI.parse _namespace_name "Parallel" |> NamespacedName
-
+    let Parallel = _prefix "Parallel"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CertificateInstallation"></see>
     /// </summary>
-    let CertificateInstallation =
-        Namespaced_IRI.parse _namespace_name "CertificateInstallation" |> NamespacedName
+    let CertificateInstallation = _prefix "CertificateInstallation"
 
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CertificateInstallationApplication"></see>
     /// </summary>
     let CertificateInstallationApplication =
-        Namespaced_IRI.parse _namespace_name "CertificateInstallationApplication" |> NamespacedName
+        _prefix "CertificateInstallationApplication"
 
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CardMemory"></see>
     /// </summary>
-    let CardMemory = Namespaced_IRI.parse _namespace_name "CardMemory" |> NamespacedName
+    let CardMemory = _prefix "CardMemory"
     /// <summary>
     /// Multi Media Card
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SD"></see></summary>
-    let SD = Namespaced_IRI.parse _namespace_name "SD" |> NamespacedName
+    let SD = _prefix "SD"
     /// <summary>
     /// The software device platform layer
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Platform"></see></summary>
-    let Platform = Namespaced_IRI.parse _namespace_name "Platform" |> NamespacedName
+    let Platform = _prefix "Platform"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#2.5G"></see>
     /// </summary>
-    let ``_2.5G`` = Namespaced_IRI.parse _namespace_name "2.5G" |> NamespacedName
+    let ``_2.5G`` = _prefix "2.5G"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#WANetwork"></see>
     /// </summary>
-    let WANetwork = Namespaced_IRI.parse _namespace_name "WANetwork" |> NamespacedName
+    let WANetwork = _prefix "WANetwork"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#2G"></see>
     /// </summary>
-    let _2G = Namespaced_IRI.parse _namespace_name "2G" |> NamespacedName
+    let _2G = _prefix "2G"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#3DES"></see>
     /// </summary>
-    let _3DES = Namespaced_IRI.parse _namespace_name "3DES" |> NamespacedName
-
+    let _3DES = _prefix "3DES"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#BlockCipherAlgorithm"></see>
     /// </summary>
-    let BlockCipherAlgorithm =
-        Namespaced_IRI.parse _namespace_name "BlockCipherAlgorithm" |> NamespacedName
-
+    let BlockCipherAlgorithm = _prefix "BlockCipherAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#3G"></see>
     /// </summary>
-    let _3G = Namespaced_IRI.parse _namespace_name "3G" |> NamespacedName
+    let _3G = _prefix "3G"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#3GPP"></see>
     /// </summary>
-    let _3GPP = Namespaced_IRI.parse _namespace_name "3GPP" |> NamespacedName
-
+    let _3GPP = _prefix "3GPP"
     /// <summary>
     /// Organizations and associations providing standards in the mobile field arena.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#OrganizationsAndStandards"></see></summary>
-    let OrganizationsAndStandards =
-        Namespaced_IRI.parse _namespace_name "OrganizationsAndStandards" |> NamespacedName
-
+    let OrganizationsAndStandards = _prefix "OrganizationsAndStandards"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AES"></see>
     /// </summary>
-    let AES = Namespaced_IRI.parse _namespace_name "AES" |> NamespacedName
-
+    let AES = _prefix "AES"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AES_FIPS197"></see>
     /// </summary>
-    let AES_FIPS197 =
-        Namespaced_IRI.parse _namespace_name "AES_FIPS197" |> NamespacedName
-
+    let AES_FIPS197 = _prefix "AES_FIPS197"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AccessControl"></see>
     /// </summary>
-    let AccessControl =
-        Namespaced_IRI.parse _namespace_name "AccessControl" |> NamespacedName
-
+    let AccessControl = _prefix "AccessControl"
     /// <summary>
     /// List of permissions attached to an object.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AccessControlList"></see></summary>
-    let AccessControlList =
-        Namespaced_IRI.parse _namespace_name "AccessControlList" |> NamespacedName
-
+    let AccessControlList = _prefix "AccessControlList"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AccessControlMethods"></see>
     /// </summary>
-    let AccessControlMethods =
-        Namespaced_IRI.parse _namespace_name "AccessControlMethods" |> NamespacedName
-
+    let AccessControlMethods = _prefix "AccessControlMethods"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Satisfice"></see>
     /// </summary>
-    let Satisfice = Namespaced_IRI.parse _namespace_name "Satisfice" |> NamespacedName
+    let Satisfice = _prefix "Satisfice"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Integrity"></see>
     /// </summary>
-    let Integrity = Namespaced_IRI.parse _namespace_name "Integrity" |> NamespacedName
-
+    let Integrity = _prefix "Integrity"
     /// <summary>
     /// The confidentiality service
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Confidentiality"></see></summary>
-    let Confidentiality =
-        Namespaced_IRI.parse _namespace_name "Confidentiality" |> NamespacedName
-
+    let Confidentiality = _prefix "Confidentiality"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CoreCounterMeasure"></see>
     /// </summary>
-    let CoreCounterMeasure =
-        Namespaced_IRI.parse _namespace_name "CoreCounterMeasure" |> NamespacedName
-
+    let CoreCounterMeasure = _prefix "CoreCounterMeasure"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ActiveThreat"></see>
     /// </summary>
-    let ActiveThreat =
-        Namespaced_IRI.parse _namespace_name "ActiveThreat" |> NamespacedName
-
+    let ActiveThreat = _prefix "ActiveThreat"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ThreatType"></see>
     /// </summary>
-    let ThreatType = Namespaced_IRI.parse _namespace_name "ThreatType" |> NamespacedName
+    let ThreatType = _prefix "ThreatType"
     /// <summary>
     /// Actors participating in the realisation and implementation of security services
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Actor"></see></summary>
-    let Actor = Namespaced_IRI.parse _namespace_name "Actor" |> NamespacedName
-
+    let Actor = _prefix "Actor"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Add-OnMemory"></see>
     /// </summary>
-    let ``Add-OnMemory`` =
-        Namespaced_IRI.parse _namespace_name "Add-OnMemory" |> NamespacedName
-
+    let ``Add-OnMemory`` = _prefix "Add-OnMemory"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Memory"></see>
     /// </summary>
-    let Memory = Namespaced_IRI.parse _namespace_name "Memory" |> NamespacedName
-
+    let Memory = _prefix "Memory"
     /// <summary>
     /// New tools that should be used for the projection or the application.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AdditionalTools"></see></summary>
-    let AdditionalTools =
-        Namespaced_IRI.parse _namespace_name "AdditionalTools" |> NamespacedName
-
+    let AdditionalTools = _prefix "AdditionalTools"
     /// <summary>
     /// Time, skills, additional equipments are considered as cost constraints
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Cost"></see></summary>
-    let Cost = Namespaced_IRI.parse _namespace_name "Cost" |> NamespacedName
-
+    let Cost = _prefix "Cost"
     /// <summary>
     /// Tasks to be performed and which are out of the scope of the technical field.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AdministrativeProcedure"></see></summary>
-    let AdministrativeProcedure =
-        Namespaced_IRI.parse _namespace_name "AdministrativeProcedure" |> NamespacedName
-
+    let AdministrativeProcedure = _prefix "AdministrativeProcedure"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Algorithm"></see>
     /// </summary>
-    let Algorithm = Namespaced_IRI.parse _namespace_name "Algorithm" |> NamespacedName
+    let Algorithm = _prefix "Algorithm"
     /// <summary>
     /// Security mechanisms used for security services
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Mechanism"></see></summary>
-    let Mechanism = Namespaced_IRI.parse _namespace_name "Mechanism" |> NamespacedName
-
+    let Mechanism = _prefix "Mechanism"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AnalysisPhase"></see>
     /// </summary>
-    let AnalysisPhase =
-        Namespaced_IRI.parse _namespace_name "AnalysisPhase" |> NamespacedName
-
+    let AnalysisPhase = _prefix "AnalysisPhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ApplicationLifeCyclePhase"></see>
     /// </summary>
-    let ApplicationLifeCyclePhase =
-        Namespaced_IRI.parse _namespace_name "ApplicationLifeCyclePhase" |> NamespacedName
-
+    let ApplicationLifeCyclePhase = _prefix "ApplicationLifeCyclePhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Android"></see>
     /// </summary>
-    let Android = Namespaced_IRI.parse _namespace_name "Android" |> NamespacedName
-
+    let Android = _prefix "Android"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Application"></see>
     /// </summary>
-    let Application =
-        Namespaced_IRI.parse _namespace_name "Application" |> NamespacedName
-
+    let Application = _prefix "Application"
     /// <summary>
     /// All the applications and data provided with or installed on the device.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Software"></see></summary>
-    let Software = Namespaced_IRI.parse _namespace_name "Software" |> NamespacedName
-
+    let Software = _prefix "Software"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ApplicationData"></see>
     /// </summary>
-    let ApplicationData =
-        Namespaced_IRI.parse _namespace_name "ApplicationData" |> NamespacedName
-
+    let ApplicationData = _prefix "ApplicationData"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Data"></see>
     /// </summary>
-    let Data = Namespaced_IRI.parse _namespace_name "Data" |> NamespacedName
+    let Data = _prefix "Data"
     /// <summary>
     /// Additional and required types for the ontology
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ValueTypes"></see></summary>
-    let ValueTypes = Namespaced_IRI.parse _namespace_name "ValueTypes" |> NamespacedName
-
+    let ValueTypes = _prefix "ValueTypes"
     /// <summary>
     /// The application server side may be a web server or a data base back end that the device connects to.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ApplicationServerSide"></see></summary>
-    let ApplicationServerSide =
-        Namespaced_IRI.parse _namespace_name "ApplicationServerSide" |> NamespacedName
-
+    let ApplicationServerSide = _prefix "ApplicationServerSide"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Backup"></see>
     /// </summary>
-    let Backup = Namespaced_IRI.parse _namespace_name "Backup" |> NamespacedName
-
+    let Backup = _prefix "Backup"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ImplementMechanism"></see>
     /// </summary>
-    let ImplementMechanism =
-        Namespaced_IRI.parse _namespace_name "ImplementMechanism" |> NamespacedName
-
+    let ImplementMechanism = _prefix "ImplementMechanism"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Journaling"></see>
     /// </summary>
-    let Journaling = Namespaced_IRI.parse _namespace_name "Journaling" |> NamespacedName
+    let Journaling = _prefix "Journaling"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AppliedTo"></see>
     /// </summary>
-    let AppliedTo = Namespaced_IRI.parse _namespace_name "AppliedTo" |> NamespacedName
-
+    let AppliedTo = _prefix "AppliedTo"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Relationship"></see>
     /// </summary>
-    let Relationship =
-        Namespaced_IRI.parse _namespace_name "Relationship" |> NamespacedName
-
+    let Relationship = _prefix "Relationship"
     /// <summary>
     /// The set of assets that should be protected
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Asset"></see></summary>
-    let Asset = Namespaced_IRI.parse _namespace_name "Asset" |> NamespacedName
-
+    let Asset = _prefix "Asset"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AssociatedOriented"></see>
     /// </summary>
-    let AssociatedOriented =
-        Namespaced_IRI.parse _namespace_name "AssociatedOriented" |> NamespacedName
-
+    let AssociatedOriented = _prefix "AssociatedOriented"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NonRepudiationType"></see>
     /// </summary>
-    let NonRepudiationType =
-        Namespaced_IRI.parse _namespace_name "NonRepudiationType" |> NamespacedName
-
+    let NonRepudiationType = _prefix "NonRepudiationType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AsymmetricAlgorithm"></see>
     /// </summary>
-    let AsymmetricAlgorithm =
-        Namespaced_IRI.parse _namespace_name "AsymmetricAlgorithm" |> NamespacedName
-
+    let AsymmetricAlgorithm = _prefix "AsymmetricAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PrivateKey"></see>
     /// </summary>
-    let PrivateKey = Namespaced_IRI.parse _namespace_name "PrivateKey" |> NamespacedName
+    let PrivateKey = _prefix "PrivateKey"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PublicKey"></see>
     /// </summary>
-    let PublicKey = Namespaced_IRI.parse _namespace_name "PublicKey" |> NamespacedName
+    let PublicKey = _prefix "PublicKey"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Use"></see>
     /// </summary>
-    let Use = Namespaced_IRI.parse _namespace_name "Use" |> NamespacedName
+    let Use = _prefix "Use"
     /// <summary>
     /// Best use of the available resources.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Efficiency"></see></summary>
-    let Efficiency = Namespaced_IRI.parse _namespace_name "Efficiency" |> NamespacedName
+    let Efficiency = _prefix "Efficiency"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Hurt"></see>
     /// </summary>
-    let Hurt = Namespaced_IRI.parse _namespace_name "Hurt" |> NamespacedName
-
+    let Hurt = _prefix "Hurt"
     /// <summary>
     /// Type of encryption in which an encryption key (the public key) is used to encrypt a message, and another encryption key (the private key) is used to decrypt the message.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AsymmetricEncryption"></see></summary>
-    let AsymmetricEncryption =
-        Namespaced_IRI.parse _namespace_name "AsymmetricEncryption" |> NamespacedName
-
+    let AsymmetricEncryption = _prefix "AsymmetricEncryption"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#KeyExchangeProtocol"></see>
     /// </summary>
-    let KeyExchangeProtocol =
-        Namespaced_IRI.parse _namespace_name "KeyExchangeProtocol" |> NamespacedName
-
+    let KeyExchangeProtocol = _prefix "KeyExchangeProtocol"
     /// <summary>
     /// Discipline which embodies principles, means, and methods for the transformation of data in order to hide its information content, prevent its undetected modification and/or prevent its unauthorised use. (CCITT)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Encryption"></see></summary>
-    let Encryption = Namespaced_IRI.parse _namespace_name "Encryption" |> NamespacedName
-
+    let Encryption = _prefix "Encryption"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Authentication"></see>
     /// </summary>
-    let Authentication =
-        Namespaced_IRI.parse _namespace_name "Authentication" |> NamespacedName
-
+    let Authentication = _prefix "Authentication"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DomainEntities"></see>
     /// </summary>
-    let DomainEntities =
-        Namespaced_IRI.parse _namespace_name "DomainEntities" |> NamespacedName
-
+    let DomainEntities = _prefix "DomainEntities"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AuthenticationLevel"></see>
     /// </summary>
-    let AuthenticationLevel =
-        Namespaced_IRI.parse _namespace_name "AuthenticationLevel" |> NamespacedName
-
+    let AuthenticationLevel = _prefix "AuthenticationLevel"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasLevel"></see>
     /// </summary>
-    let hasLevel = Namespaced_IRI.parse _namespace_name "hasLevel" |> NamespacedName
-
+    let hasLevel = _prefix "hasLevel"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AuthenticationProtocol"></see>
     /// </summary>
-    let AuthenticationProtocol =
-        Namespaced_IRI.parse _namespace_name "AuthenticationProtocol" |> NamespacedName
-
+    let AuthenticationProtocol = _prefix "AuthenticationProtocol"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AuthenticationProtocolType"></see>
     /// </summary>
-    let AuthenticationProtocolType =
-        Namespaced_IRI.parse _namespace_name "AuthenticationProtocolType" |> NamespacedName
-
+    let AuthenticationProtocolType = _prefix "AuthenticationProtocolType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasAuthenticationProtocolType"></see>
     /// </summary>
-    let hasAuthenticationProtocolType =
-        Namespaced_IRI.parse _namespace_name "hasAuthenticationProtocolType" |> NamespacedName
-
+    let hasAuthenticationProtocolType = _prefix "hasAuthenticationProtocolType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IndustrialProtocol"></see>
     /// </summary>
-    let IndustrialProtocol =
-        Namespaced_IRI.parse _namespace_name "IndustrialProtocol" |> NamespacedName
-
+    let IndustrialProtocol = _prefix "IndustrialProtocol"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AuthenticationToken"></see>
     /// </summary>
-    let AuthenticationToken =
-        Namespaced_IRI.parse _namespace_name "AuthenticationToken" |> NamespacedName
-
+    let AuthenticationToken = _prefix "AuthenticationToken"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AuthenticationWay"></see>
     /// </summary>
-    let AuthenticationWay =
-        Namespaced_IRI.parse _namespace_name "AuthenticationWay" |> NamespacedName
-
+    let AuthenticationWay = _prefix "AuthenticationWay"
     /// <summary>
     /// Permissions related to automatically starting a MIDlet, for example by Push Registration.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#AutoInvocationFunctionGroup"></see></summary>
-    let AutoInvocationFunctionGroup =
-        Namespaced_IRI.parse _namespace_name "AutoInvocationFunctionGroup" |> NamespacedName
-
+    let AutoInvocationFunctionGroup = _prefix "AutoInvocationFunctionGroup"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Availability"></see>
     /// </summary>
-    let Availability =
-        Namespaced_IRI.parse _namespace_name "Availability" |> NamespacedName
-
+    let Availability = _prefix "Availability"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Duration"></see>
     /// </summary>
-    let Duration = Namespaced_IRI.parse _namespace_name "Duration" |> NamespacedName
-
+    let Duration = _prefix "Duration"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasDuration"></see>
     /// </summary>
-    let hasDuration =
-        Namespaced_IRI.parse _namespace_name "hasDuration" |> NamespacedName
-
+    let hasDuration = _prefix "hasDuration"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Techniques"></see>
     /// </summary>
-    let Techniques = Namespaced_IRI.parse _namespace_name "Techniques" |> NamespacedName
-
+    let Techniques = _prefix "Techniques"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#BatteryMonitor"></see>
     /// </summary>
-    let BatteryMonitor =
-        Namespaced_IRI.parse _namespace_name "BatteryMonitor" |> NamespacedName
-
+    let BatteryMonitor = _prefix "BatteryMonitor"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ResourceMonitoring"></see>
     /// </summary>
-    let ResourceMonitoring =
-        Namespaced_IRI.parse _namespace_name "ResourceMonitoring" |> NamespacedName
-
+    let ResourceMonitoring = _prefix "ResourceMonitoring"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#BestPractises"></see>
     /// </summary>
-    let BestPractises =
-        Namespaced_IRI.parse _namespace_name "BestPractises" |> NamespacedName
-
+    let BestPractises = _prefix "BestPractises"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Standards"></see>
     /// </summary>
-    let Standards = Namespaced_IRI.parse _namespace_name "Standards" |> NamespacedName
-
+    let Standards = _prefix "Standards"
     /// <summary>
     /// Biometric identifier is one of the most secure and more reliable ways to authenticate a person’s identity is to verify that person’s innate biological characteristics, which are referred to as biometrics. Each person’s fingerprints, DNA, iris and retinal cell patterns, facial geometry, and heat signature are near unique to that person. These biometric measures, if properly recorded, validated, and embedded in identity credentials that are logically bound to a single person’s identity, can provide the highest degree of identity authentication (From NIST information security Report)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#BiometricIdentifier"></see></summary>
-    let BiometricIdentifier =
-        Namespaced_IRI.parse _namespace_name "BiometricIdentifier" |> NamespacedName
-
+    let BiometricIdentifier = _prefix "BiometricIdentifier"
     /// <summary>
     /// ability of Application running on several devices or/and platforms.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Portability"></see></summary>
-    let Portability =
-        Namespaced_IRI.parse _namespace_name "Portability" |> NamespacedName
-
+    let Portability = _prefix "Portability"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Resource"></see>
     /// </summary>
-    let Resource = Namespaced_IRI.parse _namespace_name "Resource" |> NamespacedName
+    let Resource = _prefix "Resource"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasPadding"></see>
     /// </summary>
-    let hasPadding = Namespaced_IRI.parse _namespace_name "hasPadding" |> NamespacedName
-
+    let hasPadding = _prefix "hasPadding"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ChainingMode"></see>
     /// </summary>
-    let ChainingMode =
-        Namespaced_IRI.parse _namespace_name "ChainingMode" |> NamespacedName
-
+    let ChainingMode = _prefix "ChainingMode"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasChainingMode"></see>
     /// </summary>
-    let hasChainingMode =
-        Namespaced_IRI.parse _namespace_name "hasChainingMode" |> NamespacedName
-
+    let hasChainingMode = _prefix "hasChainingMode"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasInitialisationVector"></see>
     /// </summary>
-    let hasInitialisationVector =
-        Namespaced_IRI.parse _namespace_name "hasInitialisationVector" |> NamespacedName
-
+    let hasInitialisationVector = _prefix "hasInitialisationVector"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HasBlockSize"></see>
     /// </summary>
-    let HasBlockSize =
-        Namespaced_IRI.parse _namespace_name "HasBlockSize" |> NamespacedName
-
+    let HasBlockSize = _prefix "HasBlockSize"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SymmetricAlgorithm"></see>
     /// </summary>
-    let SymmetricAlgorithm =
-        Namespaced_IRI.parse _namespace_name "SymmetricAlgorithm" |> NamespacedName
-
+    let SymmetricAlgorithm = _prefix "SymmetricAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Blowfish"></see>
     /// </summary>
-    let Blowfish = Namespaced_IRI.parse _namespace_name "Blowfish" |> NamespacedName
+    let Blowfish = _prefix "Blowfish"
     /// <summary>
     /// Bluetooth is a Personal Area Network (PAN) standard that enables wireless connections between electronic devices in the 2.4 GHz range over short distances, as an alternative to cables. Designed to be power efficient, Bluetooth has become a common feature in cell phones. Since wireless communications are inherently insecure, a number of basic security provisions have been defined for this standard to mitigate the risks involved. NIST
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Bluetooth"></see></summary>
-    let Bluetooth = Namespaced_IRI.parse _namespace_name "Bluetooth" |> NamespacedName
+    let Bluetooth = _prefix "Bluetooth"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PANetwork"></see>
     /// </summary>
-    let PANetwork = Namespaced_IRI.parse _namespace_name "PANetwork" |> NamespacedName
+    let PANetwork = _prefix "PANetwork"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Break"></see>
     /// </summary>
-    let Break = Namespaced_IRI.parse _namespace_name "Break" |> NamespacedName
-
+    let Break = _prefix "Break"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#QualitySatisfaction"></see>
     /// </summary>
-    let QualitySatisfaction =
-        Namespaced_IRI.parse _namespace_name "QualitySatisfaction" |> NamespacedName
-
+    let QualitySatisfaction = _prefix "QualitySatisfaction"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ByPassingTrialCounter"></see>
     /// </summary>
-    let ByPassingTrialCounter =
-        Namespaced_IRI.parse _namespace_name "ByPassingTrialCounter" |> NamespacedName
-
+    let ByPassingTrialCounter = _prefix "ByPassingTrialCounter"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CBC"></see>
     /// </summary>
-    let CBC = Namespaced_IRI.parse _namespace_name "CBC" |> NamespacedName
+    let CBC = _prefix "CBC"
     /// <summary>
     /// The simplest way to make a key-dependent one-way hash function is to encrypt a message with a block algorithm in CBC or CFB modes . The hash is the last encrypted block, encrypted once more in CBC or CFB modes.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CBC-MAC"></see></summary>
-    let ``CBC-MAC`` = Namespaced_IRI.parse _namespace_name "CBC-MAC" |> NamespacedName
-
+    let ``CBC-MAC`` = _prefix "CBC-MAC"
     /// <summary>
     /// Message authentication code that include a key for authentication
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MACAlgorithm"></see></summary>
-    let MACAlgorithm =
-        Namespaced_IRI.parse _namespace_name "MACAlgorithm" |> NamespacedName
-
+    let MACAlgorithm = _prefix "MACAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CFB"></see>
     /// </summary>
-    let CFB = Namespaced_IRI.parse _namespace_name "CFB" |> NamespacedName
+    let CFB = _prefix "CFB"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#COMSET"></see>
     /// </summary>
-    let COMSET = Namespaced_IRI.parse _namespace_name "COMSET" |> NamespacedName
+    let COMSET = _prefix "COMSET"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CardType"></see>
     /// </summary>
-    let CardType = Namespaced_IRI.parse _namespace_name "CardType" |> NamespacedName
-
+    let CardType = _prefix "CardType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Certificate"></see>
     /// </summary>
-    let Certificate =
-        Namespaced_IRI.parse _namespace_name "Certificate" |> NamespacedName
-
+    let Certificate = _prefix "Certificate"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasValidity"></see>
     /// </summary>
-    let hasValidity =
-        Namespaced_IRI.parse _namespace_name "hasValidity" |> NamespacedName
-
+    let hasValidity = _prefix "hasValidity"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DigitalSignatureAlgorithm"></see>
     /// </summary>
-    let DigitalSignatureAlgorithm =
-        Namespaced_IRI.parse _namespace_name "DigitalSignatureAlgorithm" |> NamespacedName
-
+    let DigitalSignatureAlgorithm = _prefix "DigitalSignatureAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasSignatureAlgorithm"></see>
     /// </summary>
-    let hasSignatureAlgorithm =
-        Namespaced_IRI.parse _namespace_name "hasSignatureAlgorithm" |> NamespacedName
-
+    let hasSignatureAlgorithm = _prefix "hasSignatureAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasSubjectName"></see>
     /// </summary>
-    let hasSubjectName =
-        Namespaced_IRI.parse _namespace_name "hasSubjectName" |> NamespacedName
-
+    let hasSubjectName = _prefix "hasSubjectName"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasDigitalSignatureData"></see>
     /// </summary>
-    let hasDigitalSignatureData =
-        Namespaced_IRI.parse _namespace_name "hasDigitalSignatureData" |> NamespacedName
-
+    let hasDigitalSignatureData = _prefix "hasDigitalSignatureData"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CertificateFormat"></see>
     /// </summary>
-    let CertificateFormat =
-        Namespaced_IRI.parse _namespace_name "CertificateFormat" |> NamespacedName
-
+    let CertificateFormat = _prefix "CertificateFormat"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasFormat"></see>
     /// </summary>
-    let hasFormat = Namespaced_IRI.parse _namespace_name "hasFormat" |> NamespacedName
-
+    let hasFormat = _prefix "hasFormat"
     /// <summary>
     /// The certification authority provides certificates to bind a set of informations (name, serial number, ...) to a public key.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CertificationAuthority"></see></summary>
-    let CertificationAuthority =
-        Namespaced_IRI.parse _namespace_name "CertificationAuthority" |> NamespacedName
-
+    let CertificationAuthority = _prefix "CertificationAuthority"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasIssuer"></see>
     /// </summary>
-    let hasIssuer = Namespaced_IRI.parse _namespace_name "hasIssuer" |> NamespacedName
-
+    let hasIssuer = _prefix "hasIssuer"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DeviceCapabilities"></see>
     /// </summary>
-    let DeviceCapabilities =
-        Namespaced_IRI.parse _namespace_name "DeviceCapabilities" |> NamespacedName
-
+    let DeviceCapabilities = _prefix "DeviceCapabilities"
     /// <summary>
     /// security authority or its agent, trusted by other entities with respect to security-related activities. In the context of ISO/IEC 9798, a trusted third party is trusted by a claimant and/or a verifier for the purposes of authentication.  ISO/IEC 9798
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TrustedThirdParty"></see></summary>
-    let TrustedThirdParty =
-        Namespaced_IRI.parse _namespace_name "TrustedThirdParty" |> NamespacedName
-
+    let TrustedThirdParty = _prefix "TrustedThirdParty"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ChallengeReplyPassword"></see>
     /// </summary>
-    let ChallengeReplyPassword =
-        Namespaced_IRI.parse _namespace_name "ChallengeReplyPassword" |> NamespacedName
-
+    let ChallengeReplyPassword = _prefix "ChallengeReplyPassword"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Checksum"></see>
     /// </summary>
-    let Checksum = Namespaced_IRI.parse _namespace_name "Checksum" |> NamespacedName
-
+    let Checksum = _prefix "Checksum"
     /// <summary>
     /// Locate and isolate critical code from from general code.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CodeSeparation"></see></summary>
-    let CodeSeparation =
-        Namespaced_IRI.parse _namespace_name "CodeSeparation" |> NamespacedName
-
+    let CodeSeparation = _prefix "CodeSeparation"
     /// <summary>
     /// Deploy development regimes such as coding standards and documentation methodologies to lead to best practises
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CodingStandards"></see></summary>
-    let CodingStandards =
-        Namespaced_IRI.parse _namespace_name "CodingStandards" |> NamespacedName
-
+    let CodingStandards = _prefix "CodingStandards"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CombinedDelivery-DRM"></see>
     /// </summary>
-    let ``CombinedDelivery-DRM`` =
-        Namespaced_IRI.parse _namespace_name "CombinedDelivery-DRM" |> NamespacedName
-
+    let ``CombinedDelivery-DRM`` = _prefix "CombinedDelivery-DRM"
     /// <summary>
     /// A general framework for downloading Rights to Devices and sharing Rights in a domain. DRM is invented by the Open Mobile Alliance whose members are mobile phone manufacturers, mobile system manufacturers, operators , and sofware editors.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DigitalRightsManagement"></see></summary>
-    let DigitalRightsManagement =
-        Namespaced_IRI.parse _namespace_name "DigitalRightsManagement" |> NamespacedName
-
+    let DigitalRightsManagement = _prefix "DigitalRightsManagement"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CommChannel"></see>
     /// </summary>
-    let CommChannel =
-        Namespaced_IRI.parse _namespace_name "CommChannel" |> NamespacedName
-
+    let CommChannel = _prefix "CommChannel"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CompactFlash"></see>
     /// </summary>
-    let CompactFlash =
-        Namespaced_IRI.parse _namespace_name "CompactFlash" |> NamespacedName
-
+    let CompactFlash = _prefix "CompactFlash"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ConfidentialityLevel"></see>
     /// </summary>
-    let ConfidentialityLevel =
-        Namespaced_IRI.parse _namespace_name "ConfidentialityLevel" |> NamespacedName
-
+    let ConfidentialityLevel = _prefix "ConfidentialityLevel"
     /// <summary>
     /// Several configuration data are stored in the device or sent by the mobile operator.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ConfigurationData"></see></summary>
-    let ConfigurationData =
-        Namespaced_IRI.parse _namespace_name "ConfigurationData" |> NamespacedName
-
+    let ConfigurationData = _prefix "ConfigurationData"
     /// <summary>
     /// Technical, quality constraints and others
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Constraints"></see></summary>
-    let Constraints =
-        Namespaced_IRI.parse _namespace_name "Constraints" |> NamespacedName
-
+    let Constraints = _prefix "Constraints"
     /// <summary>
     /// The entity who is responsable of providing content like ringing tones or multimedia files or any other software.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ContentProvider"></see></summary>
-    let ContentProvider =
-        Namespaced_IRI.parse _namespace_name "ContentProvider" |> NamespacedName
-
+    let ContentProvider = _prefix "ContentProvider"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Provide"></see>
     /// </summary>
-    let Provide = Namespaced_IRI.parse _namespace_name "Provide" |> NamespacedName
+    let Provide = _prefix "Provide"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Correction"></see>
     /// </summary>
-    let Correction = Namespaced_IRI.parse _namespace_name "Correction" |> NamespacedName
-
+    let Correction = _prefix "Correction"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MechanismType"></see>
     /// </summary>
-    let MechanismType =
-        Namespaced_IRI.parse _namespace_name "MechanismType" |> NamespacedName
-
+    let MechanismType = _prefix "MechanismType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Critical"></see>
     /// </summary>
-    let Critical = Namespaced_IRI.parse _namespace_name "Critical" |> NamespacedName
-
+    let Critical = _prefix "Critical"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#CryptographicHashFunction"></see>
     /// </summary>
-    let CryptographicHashFunction =
-        Namespaced_IRI.parse _namespace_name "CryptographicHashFunction" |> NamespacedName
-
+    let CryptographicHashFunction = _prefix "CryptographicHashFunction"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HasOutputLength"></see>
     /// </summary>
-    let HasOutputLength =
-        Namespaced_IRI.parse _namespace_name "HasOutputLength" |> NamespacedName
-
+    let HasOutputLength = _prefix "HasOutputLength"
     /// <summary>
     /// A function that takes a string (or message) of any length as input and produces a fixed-length string as output,it is used for authentication and message integrity.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MessageDigest"></see></summary>
-    let MessageDigest =
-        Namespaced_IRI.parse _namespace_name "MessageDigest" |> NamespacedName
-
+    let MessageDigest = _prefix "MessageDigest"
     /// <summary>
     /// Distributed denial of service.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DDos"></see></summary>
-    let DDos = Namespaced_IRI.parse _namespace_name "DDos" |> NamespacedName
+    let DDos = _prefix "DDos"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DES"></see>
     /// </summary>
-    let DES = Namespaced_IRI.parse _namespace_name "DES" |> NamespacedName
-
+    let DES = _prefix "DES"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DES_FIPS46-1-2"></see>
     /// </summary>
-    let ``DES_FIPS46-1-2`` =
-        Namespaced_IRI.parse _namespace_name "DES_FIPS46-1-2" |> NamespacedName
-
+    let ``DES_FIPS46-1-2`` = _prefix "DES_FIPS46-1-2"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DIFFIE-HELLMAN"></see>
     /// </summary>
-    let ``DIFFIE-HELLMAN`` =
-        Namespaced_IRI.parse _namespace_name "DIFFIE-HELLMAN" |> NamespacedName
-
+    let ``DIFFIE-HELLMAN`` = _prefix "DIFFIE-HELLMAN"
     /// <summary>
     /// Digital Signature Algorithm specified by FIPS 186-2
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DSA"></see></summary>
-    let DSA = Namespaced_IRI.parse _namespace_name "DSA" |> NamespacedName
-
+    let DSA = _prefix "DSA"
     /// <summary>
     /// Some applications use records files to store data.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DataRecords"></see></summary>
-    let DataRecords =
-        Namespaced_IRI.parse _namespace_name "DataRecords" |> NamespacedName
-
+    let DataRecords = _prefix "DataRecords"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LocalFiles"></see>
     /// </summary>
-    let LocalFiles = Namespaced_IRI.parse _namespace_name "LocalFiles" |> NamespacedName
-
+    let LocalFiles = _prefix "LocalFiles"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DeploymentPhase"></see>
     /// </summary>
-    let DeploymentPhase =
-        Namespaced_IRI.parse _namespace_name "DeploymentPhase" |> NamespacedName
-
+    let DeploymentPhase = _prefix "DeploymentPhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DesignPhase"></see>
     /// </summary>
-    let DesignPhase =
-        Namespaced_IRI.parse _namespace_name "DesignPhase" |> NamespacedName
-
+    let DesignPhase = _prefix "DesignPhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Detection"></see>
     /// </summary>
-    let Detection = Namespaced_IRI.parse _namespace_name "Detection" |> NamespacedName
-
+    let Detection = _prefix "Detection"
     /// <summary>
     /// Addiotional development time required for the application or the project.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DevelopmentTime"></see></summary>
-    let DevelopmentTime =
-        Namespaced_IRI.parse _namespace_name "DevelopmentTime" |> NamespacedName
-
+    let DevelopmentTime = _prefix "DevelopmentTime"
     /// <summary>
     /// Mobile terminal equiped with processing capabilities offering  connection to wireless networks.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Device"></see></summary>
-    let Device = Namespaced_IRI.parse _namespace_name "Device" |> NamespacedName
+    let Device = _prefix "Device"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasMemory"></see>
     /// </summary>
-    let hasMemory = Namespaced_IRI.parse _namespace_name "hasMemory" |> NamespacedName
+    let hasMemory = _prefix "hasMemory"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Network"></see>
     /// </summary>
-    let Network = Namespaced_IRI.parse _namespace_name "Network" |> NamespacedName
+    let Network = _prefix "Network"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasNetwork"></see>
     /// </summary>
-    let hasNetwork = Namespaced_IRI.parse _namespace_name "hasNetwork" |> NamespacedName
+    let hasNetwork = _prefix "hasNetwork"
     /// <summary>
     /// Keypad or any input tool
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Input"></see></summary>
-    let Input = Namespaced_IRI.parse _namespace_name "Input" |> NamespacedName
+    let Input = _prefix "Input"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasInput"></see>
     /// </summary>
-    let hasInput = Namespaced_IRI.parse _namespace_name "hasInput" |> NamespacedName
+    let hasInput = _prefix "hasInput"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DeviceLock"></see>
     /// </summary>
-    let DeviceLock = Namespaced_IRI.parse _namespace_name "DeviceLock" |> NamespacedName
-
+    let DeviceLock = _prefix "DeviceLock"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LogInSystem"></see>
     /// </summary>
-    let LogInSystem =
-        Namespaced_IRI.parse _namespace_name "LogInSystem" |> NamespacedName
-
+    let LogInSystem = _prefix "LogInSystem"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasIMEI"></see>
     /// </summary>
-    let hasIMEI = Namespaced_IRI.parse _namespace_name "hasIMEI" |> NamespacedName
+    let hasIMEI = _prefix "hasIMEI"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Processing"></see>
     /// </summary>
-    let Processing = Namespaced_IRI.parse _namespace_name "Processing" |> NamespacedName
-
+    let Processing = _prefix "Processing"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasProcessing"></see>
     /// </summary>
-    let hasProcessing =
-        Namespaced_IRI.parse _namespace_name "hasProcessing" |> NamespacedName
-
+    let hasProcessing = _prefix "hasProcessing"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Output"></see>
     /// </summary>
-    let Output = Namespaced_IRI.parse _namespace_name "Output" |> NamespacedName
+    let Output = _prefix "Output"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasOutput"></see>
     /// </summary>
-    let hasOutput = Namespaced_IRI.parse _namespace_name "hasOutput" |> NamespacedName
-
+    let hasOutput = _prefix "hasOutput"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DeviceCloning"></see>
     /// </summary>
-    let DeviceCloning =
-        Namespaced_IRI.parse _namespace_name "DeviceCloning" |> NamespacedName
-
+    let DeviceCloning = _prefix "DeviceCloning"
     /// <summary>
     /// One problem in this area is that drivers are typically written by third parties and drivers are upgraded at different times to the main OS. This causes problems when implementing any validation scheme, or even isolated checking of specific software updates
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DeviceDriverUpgrade"></see></summary>
-    let DeviceDriverUpgrade =
-        Namespaced_IRI.parse _namespace_name "DeviceDriverUpgrade" |> NamespacedName
-
+    let DeviceDriverUpgrade = _prefix "DeviceDriverUpgrade"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LockingMechanism"></see>
     /// </summary>
-    let LockingMechanism =
-        Namespaced_IRI.parse _namespace_name "LockingMechanism" |> NamespacedName
-
+    let LockingMechanism = _prefix "LockingMechanism"
     /// <summary>
     /// A digital signature is represented in a computer as a string of binary
     /// digits. A digital signature is computed using a set of rules and a set of parameters such that the identity of the signatory and integrity of the data can be verified. An algorithm provides the capability to generate and verify signatures. Signature generation makes use of a private key to generate a digital signature. Signature verification makes use of a public key which corresponds to, but is not the same as, the private key. (http://csrc.nist.gov/publications/fips/fips186-2/fips186-2-change1.pdf)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DigitalSignature"></see></summary>
-    let DigitalSignature =
-        Namespaced_IRI.parse _namespace_name "DigitalSignature" |> NamespacedName
-
+    let DigitalSignature = _prefix "DigitalSignature"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NonRepudiation"></see>
     /// </summary>
-    let NonRepudiation =
-        Namespaced_IRI.parse _namespace_name "NonRepudiation" |> NamespacedName
-
+    let NonRepudiation = _prefix "NonRepudiation"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DisplayScreen"></see>
     /// </summary>
-    let DisplayScreen =
-        Namespaced_IRI.parse _namespace_name "DisplayScreen" |> NamespacedName
-
+    let DisplayScreen = _prefix "DisplayScreen"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasScreenSize"></see>
     /// </summary>
-    let hasScreenSize =
-        Namespaced_IRI.parse _namespace_name "hasScreenSize" |> NamespacedName
-
+    let hasScreenSize = _prefix "hasScreenSize"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#DotNet"></see>
     /// </summary>
-    let DotNet = Namespaced_IRI.parse _namespace_name "DotNet" |> NamespacedName
+    let DotNet = _prefix "DotNet"
     /// <summary>
     /// Electronic code book
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ECB"></see></summary>
-    let ECB = Namespaced_IRI.parse _namespace_name "ECB" |> NamespacedName
+    let ECB = _prefix "ECB"
     /// <summary>
     /// Elliptic Curve Digital Signature Algorithm (ECDSA) (ANSI X9-62)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ECDSA"></see></summary>
-    let ECDSA = Namespaced_IRI.parse _namespace_name "ECDSA" |> NamespacedName
+    let ECDSA = _prefix "ECDSA"
     /// <summary>
     /// Enhanced Data rates for GSM Evolution
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#EDGE"></see></summary>
-    let EDGE = Namespaced_IRI.parse _namespace_name "EDGE" |> NamespacedName
+    let EDGE = _prefix "EDGE"
     /// <summary>
     /// Enhanced Messaging Service - An improved message system for GSM mobile phones allowing picture, sound, animation and text elements to be conveyed through one or more concatenated SMS messages. NIST
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#EMS"></see></summary>
-    let EMS = Namespaced_IRI.parse _namespace_name "EMS" |> NamespacedName
+    let EMS = _prefix "EMS"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Messaging"></see>
     /// </summary>
-    let Messaging = Namespaced_IRI.parse _namespace_name "Messaging" |> NamespacedName
+    let Messaging = _prefix "Messaging"
     /// <summary>
     /// A good response time of the application.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Usability"></see></summary>
-    let Usability = Namespaced_IRI.parse _namespace_name "Usability" |> NamespacedName
-
+    let Usability = _prefix "Usability"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ElGammelAlgorithm"></see>
     /// </summary>
-    let ElGammelAlgorithm =
-        Namespaced_IRI.parse _namespace_name "ElGammelAlgorithm" |> NamespacedName
-
+    let ElGammelAlgorithm = _prefix "ElGammelAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Email"></see>
     /// </summary>
-    let Email = Namespaced_IRI.parse _namespace_name "Email" |> NamespacedName
+    let Email = _prefix "Email"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Internet"></see>
     /// </summary>
-    let Internet = Namespaced_IRI.parse _namespace_name "Internet" |> NamespacedName
-
+    let Internet = _prefix "Internet"
     /// <summary>
     /// Pseudo Random Number Generation algorithm
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PRNGAlgorithm"></see></summary>
-    let PRNGAlgorithm =
-        Namespaced_IRI.parse _namespace_name "PRNGAlgorithm" |> NamespacedName
-
+    let PRNGAlgorithm = _prefix "PRNGAlgorithm"
     /// <summary>
     /// The encryption keys are digital bitstrings that are stored in non-volatile memory, and verification of the identity proceeds by a challenge-response protocol.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#EncryptionKeys"></see></summary>
-    let EncryptionKeys =
-        Namespaced_IRI.parse _namespace_name "EncryptionKeys" |> NamespacedName
-
+    let EncryptionKeys = _prefix "EncryptionKeys"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Keys"></see>
     /// </summary>
-    let Keys = Namespaced_IRI.parse _namespace_name "Keys" |> NamespacedName
+    let Keys = _prefix "Keys"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#EndToEnd"></see>
     /// </summary>
-    let EndToEnd = Namespaced_IRI.parse _namespace_name "EndToEnd" |> NamespacedName
+    let EndToEnd = _prefix "EndToEnd"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Excellent"></see>
     /// </summary>
-    let Excellent = Namespaced_IRI.parse _namespace_name "Excellent" |> NamespacedName
-
+    let Excellent = _prefix "Excellent"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RNGEfficiency"></see>
     /// </summary>
-    let RNGEfficiency =
-        Namespaced_IRI.parse _namespace_name "RNGEfficiency" |> NamespacedName
-
+    let RNGEfficiency = _prefix "RNGEfficiency"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#FTP"></see>
     /// </summary>
-    let FTP = Namespaced_IRI.parse _namespace_name "FTP" |> NamespacedName
-
+    let FTP = _prefix "FTP"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#FixedMemory"></see>
     /// </summary>
-    let FixedMemory =
-        Namespaced_IRI.parse _namespace_name "FixedMemory" |> NamespacedName
-
+    let FixedMemory = _prefix "FixedMemory"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ForwardLock-DRM"></see>
     /// </summary>
-    let ``ForwardLock-DRM`` =
-        Namespaced_IRI.parse _namespace_name "ForwardLock-DRM" |> NamespacedName
-
+    let ``ForwardLock-DRM`` = _prefix "ForwardLock-DRM"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#FullIntegrity"></see>
     /// </summary>
-    let FullIntegrity =
-        Namespaced_IRI.parse _namespace_name "FullIntegrity" |> NamespacedName
-
+    let FullIntegrity = _prefix "FullIntegrity"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IntegrityType"></see>
     /// </summary>
-    let IntegrityType =
-        Namespaced_IRI.parse _namespace_name "IntegrityType" |> NamespacedName
-
+    let IntegrityType = _prefix "IntegrityType"
     /// <summary>
     /// General Packet Radio Service
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GPRS"></see></summary>
-    let GPRS = Namespaced_IRI.parse _namespace_name "GPRS" |> NamespacedName
+    let GPRS = _prefix "GPRS"
     /// <summary>
     /// A system for determining position by comparing radio signals from several satellites. NIST
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GPSNetwork"></see></summary>
-    let GPSNetwork = Namespaced_IRI.parse _namespace_name "GPSNetwork" |> NamespacedName
+    let GPSNetwork = _prefix "GPSNetwork"
     /// <summary>
     /// Global positioning system coordinates used by some applications.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GPSvalues"></see></summary>
-    let GPSvalues = Namespaced_IRI.parse _namespace_name "GPSvalues" |> NamespacedName
-
+    let GPSvalues = _prefix "GPSvalues"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LocalisationData"></see>
     /// </summary>
-    let LocalisationData =
-        Namespaced_IRI.parse _namespace_name "LocalisationData" |> NamespacedName
-
+    let LocalisationData = _prefix "LocalisationData"
     /// <summary>
     /// Global System for Mobile communications
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GSM"></see></summary>
-    let GSM = Namespaced_IRI.parse _namespace_name "GSM" |> NamespacedName
+    let GSM = _prefix "GSM"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GSMA"></see>
     /// </summary>
-    let GSMA = Namespaced_IRI.parse _namespace_name "GSMA" |> NamespacedName
+    let GSMA = _prefix "GSMA"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GSMWorld"></see>
     /// </summary>
-    let GSMWorld = Namespaced_IRI.parse _namespace_name "GSMWorld" |> NamespacedName
-
+    let GSMWorld = _prefix "GSMWorld"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#GuessingAttack"></see>
     /// </summary>
-    let GuessingAttack =
-        Namespaced_IRI.parse _namespace_name "GuessingAttack" |> NamespacedName
-
+    let GuessingAttack = _prefix "GuessingAttack"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HMAC"></see>
     /// </summary>
-    let HMAC = Namespaced_IRI.parse _namespace_name "HMAC" |> NamespacedName
+    let HMAC = _prefix "HMAC"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HTTP"></see>
     /// </summary>
-    let HTTP = Namespaced_IRI.parse _namespace_name "HTTP" |> NamespacedName
+    let HTTP = _prefix "HTTP"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HTTPS"></see>
     /// </summary>
-    let HTTPS = Namespaced_IRI.parse _namespace_name "HTTPS" |> NamespacedName
-
+    let HTTPS = _prefix "HTTPS"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SecureNetworkCommunication"></see>
     /// </summary>
-    let SecureNetworkCommunication =
-        Namespaced_IRI.parse _namespace_name "SecureNetworkCommunication" |> NamespacedName
-
+    let SecureNetworkCommunication = _prefix "SecureNetworkCommunication"
     /// <summary>
     /// Mainly the physical device with the embedded memory and processing units.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Hardware"></see></summary>
-    let Hardware = Namespaced_IRI.parse _namespace_name "Hardware" |> NamespacedName
-
+    let Hardware = _prefix "Hardware"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HardwareLocking"></see>
     /// </summary>
-    let HardwareLocking =
-        Namespaced_IRI.parse _namespace_name "HardwareLocking" |> NamespacedName
-
+    let HardwareLocking = _prefix "HardwareLocking"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HasBandwidth"></see>
     /// </summary>
-    let HasBandwidth =
-        Namespaced_IRI.parse _namespace_name "HasBandwidth" |> NamespacedName
-
+    let HasBandwidth = _prefix "HasBandwidth"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HasIterationNumber"></see>
     /// </summary>
-    let HasIterationNumber =
-        Namespaced_IRI.parse _namespace_name "HasIterationNumber" |> NamespacedName
-
+    let HasIterationNumber = _prefix "HasIterationNumber"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HasKeySize"></see>
     /// </summary>
-    let HasKeySize = Namespaced_IRI.parse _namespace_name "HasKeySize" |> NamespacedName
-
+    let HasKeySize = _prefix "HasKeySize"
     /// <summary>
     /// A server side list of hashed tokens is stored and each consumed token is removed from the list.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#HashBasedOTP"></see></summary>
-    let HashBasedOTP =
-        Namespaced_IRI.parse _namespace_name "HashBasedOTP" |> NamespacedName
-
+    let HashBasedOTP = _prefix "HashBasedOTP"
     /// <summary>
     /// Password used for once and generated from time, counter and/or key. May be a displayed from a hardware device.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#O.T.P"></see></summary>
-    let ``O.T.P`` = Namespaced_IRI.parse _namespace_name "O.T.P" |> NamespacedName
+    let ``O.T.P`` = _prefix "O.T.P"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Help"></see>
     /// </summary>
-    let Help = Namespaced_IRI.parse _namespace_name "Help" |> NamespacedName
+    let Help = _prefix "Help"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IEEE"></see>
     /// </summary>
-    let IEEE = Namespaced_IRI.parse _namespace_name "IEEE" |> NamespacedName
+    let IEEE = _prefix "IEEE"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IETF"></see>
     /// </summary>
-    let IETF = Namespaced_IRI.parse _namespace_name "IETF" |> NamespacedName
+    let IETF = _prefix "IETF"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IM"></see>
     /// </summary>
-    let IM = Namespaced_IRI.parse _namespace_name "IM" |> NamespacedName
+    let IM = _prefix "IM"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IPSec"></see>
     /// </summary>
-    let IPSec = Namespaced_IRI.parse _namespace_name "IPSec" |> NamespacedName
+    let IPSec = _prefix "IPSec"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ITU"></see>
     /// </summary>
-    let ITU = Namespaced_IRI.parse _namespace_name "ITU" |> NamespacedName
+    let ITU = _prefix "ITU"
     /// <summary>
     /// All supported image files for mobile devices.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Images"></see></summary>
-    let Images = Namespaced_IRI.parse _namespace_name "Images" |> NamespacedName
-
+    let Images = _prefix "Images"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ImplementAPI"></see>
     /// </summary>
-    let ImplementAPI =
-        Namespaced_IRI.parse _namespace_name "ImplementAPI" |> NamespacedName
-
+    let ImplementAPI = _prefix "ImplementAPI"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ImplementationPhase"></see>
     /// </summary>
-    let ImplementationPhase =
-        Namespaced_IRI.parse _namespace_name "ImplementationPhase" |> NamespacedName
-
+    let ImplementationPhase = _prefix "ImplementationPhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IntensifyCriticalCodeReview"></see>
     /// </summary>
-    let IntensifyCriticalCodeReview =
-        Namespaced_IRI.parse _namespace_name "IntensifyCriticalCodeReview" |> NamespacedName
-
+    let IntensifyCriticalCodeReview = _prefix "IntensifyCriticalCodeReview"
     /// <summary>
     /// User interaction to confirm the execution of some senstive actions like sending a sms or opening a network connection/
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#InteractionModes"></see></summary>
-    let InteractionModes =
-        Namespaced_IRI.parse _namespace_name "InteractionModes" |> NamespacedName
-
+    let InteractionModes = _prefix "InteractionModes"
     /// <summary>
     /// A standard for line-of-sight infrared communication between devices over short distances. NIST
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#IrDA"></see></summary>
-    let IrDA = Namespaced_IRI.parse _namespace_name "IrDA" |> NamespacedName
+    let IrDA = _prefix "IrDA"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Issue"></see>
     /// </summary>
-    let Issue = Namespaced_IRI.parse _namespace_name "Issue" |> NamespacedName
+    let Issue = _prefix "Issue"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#J2ME"></see>
     /// </summary>
-    let J2ME = Namespaced_IRI.parse _namespace_name "J2ME" |> NamespacedName
+    let J2ME = _prefix "J2ME"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#JME"></see>
     /// </summary>
-    let JME = Namespaced_IRI.parse _namespace_name "JME" |> NamespacedName
-
+    let JME = _prefix "JME"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#JMEPermissionDomains"></see>
     /// </summary>
-    let JMEPermissionDomains =
-        Namespaced_IRI.parse _namespace_name "JMEPermissionDomains" |> NamespacedName
-
+    let JMEPermissionDomains = _prefix "JMEPermissionDomains"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#JavaCard"></see>
     /// </summary>
-    let JavaCard = Namespaced_IRI.parse _namespace_name "JavaCard" |> NamespacedName
+    let JavaCard = _prefix "JavaCard"
     /// <summary>
     /// Subscriber Identity Module; A smart card for GSM networks access.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SIM"></see></summary>
-    let SIM = Namespaced_IRI.parse _namespace_name "SIM" |> NamespacedName
-
+    let SIM = _prefix "SIM"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#JavaVerifiedSigningProcess"></see>
     /// </summary>
-    let JavaVerifiedSigningProcess =
-        Namespaced_IRI.parse _namespace_name "JavaVerifiedSigningProcess" |> NamespacedName
-
+    let JavaVerifiedSigningProcess = _prefix "JavaVerifiedSigningProcess"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SourceCodeVerification"></see>
     /// </summary>
-    let SourceCodeVerification =
-        Namespaced_IRI.parse _namespace_name "SourceCodeVerification" |> NamespacedName
-
+    let SourceCodeVerification = _prefix "SourceCodeVerification"
     /// <summary>
     /// Kerberos is an authentication process that proceeds as follows: A client sends a request to the authentication server (AS) requesting "credentials" for a given server.  The AS responds with these credentials,  encrypted in the client's key.  The credentials consist of 1) a "ticket" for the server and 2) a temporary encryption key ( a "session key").  The client transmits the ticket (which contains the client's identity and a copy of the session key, all encrypted in the server's key) to the server.  The session key (now shared by the client and server) is used to authenticate the client, and may optionally be used to authenticate the server.  It may also be used to encrypt further communication between the two parties or to exchange a separate sub-session key to be used to encrypt further communication. RFC 1510
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Kerberos"></see></summary>
-    let Kerberos = Namespaced_IRI.parse _namespace_name "Kerberos" |> NamespacedName
-
+    let Kerberos = _prefix "Kerberos"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#KeyExchange"></see>
     /// </summary>
-    let KeyExchange =
-        Namespaced_IRI.parse _namespace_name "KeyExchange" |> NamespacedName
-
+    let KeyExchange = _prefix "KeyExchange"
     /// <summary>
     /// The process and procedure for safely storing and distributing accurate cryptographic keys; the overall process of generating and distributing cryptographic key to authorized recipients in a secure manner.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#KeyManagement"></see></summary>
-    let KeyManagement =
-        Namespaced_IRI.parse _namespace_name "KeyManagement" |> NamespacedName
-
+    let KeyManagement = _prefix "KeyManagement"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#KeyGeneration"></see>
     /// </summary>
-    let KeyGeneration =
-        Namespaced_IRI.parse _namespace_name "KeyGeneration" |> NamespacedName
-
+    let KeyGeneration = _prefix "KeyGeneration"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasRNGEfficiency"></see>
     /// </summary>
-    let hasRNGEfficiency =
-        Namespaced_IRI.parse _namespace_name "hasRNGEfficiency" |> NamespacedName
-
+    let hasRNGEfficiency = _prefix "hasRNGEfficiency"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasRNGDeterminism"></see>
     /// </summary>
-    let hasRNGDeterminism =
-        Namespaced_IRI.parse _namespace_name "hasRNGDeterminism" |> NamespacedName
-
+    let hasRNGDeterminism = _prefix "hasRNGDeterminism"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#KeyPad"></see>
     /// </summary>
-    let KeyPad = Namespaced_IRI.parse _namespace_name "KeyPad" |> NamespacedName
+    let KeyPad = _prefix "KeyPad"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#KeyStore"></see>
     /// </summary>
-    let KeyStore = Namespaced_IRI.parse _namespace_name "KeyStore" |> NamespacedName
+    let KeyStore = _prefix "KeyStore"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Store"></see>
     /// </summary>
-    let Store = Namespaced_IRI.parse _namespace_name "Store" |> NamespacedName
-
+    let Store = _prefix "Store"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasKeyLifeTime"></see>
     /// </summary>
-    let hasKeyLifeTime =
-        Namespaced_IRI.parse _namespace_name "hasKeyLifeTime" |> NamespacedName
-
+    let hasKeyLifeTime = _prefix "hasKeyLifeTime"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LANetwork"></see>
     /// </summary>
-    let LANetwork = Namespaced_IRI.parse _namespace_name "LANetwork" |> NamespacedName
-
+    let LANetwork = _prefix "LANetwork"
     /// <summary>
     /// Easy to learn how to use the application.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Learnability"></see></summary>
-    let Learnability =
-        Namespaced_IRI.parse _namespace_name "Learnability" |> NamespacedName
-
+    let Learnability = _prefix "Learnability"
     /// <summary>
     /// Special database management systems for embedded applications.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LocalDataBase"></see></summary>
-    let LocalDataBase =
-        Namespaced_IRI.parse _namespace_name "LocalDataBase" |> NamespacedName
-
+    let LocalDataBase = _prefix "LocalDataBase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LocalDeviceLock"></see>
     /// </summary>
-    let LocalDeviceLock =
-        Namespaced_IRI.parse _namespace_name "LocalDeviceLock" |> NamespacedName
-
+    let LocalDeviceLock = _prefix "LocalDeviceLock"
     /// <summary>
     /// In some situations it is useful to lock the screen display until a task is terminated. This is technique is used to avoid the screen modification until a answer is received.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#LockingScreen"></see></summary>
-    let LockingScreen =
-        Namespaced_IRI.parse _namespace_name "LockingScreen" |> NamespacedName
-
+    let LockingScreen = _prefix "LockingScreen"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SecretKey"></see>
     /// </summary>
-    let SecretKey = Namespaced_IRI.parse _namespace_name "SecretKey" |> NamespacedName
+    let SecretKey = _prefix "SecretKey"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MD2"></see>
     /// </summary>
-    let MD2 = Namespaced_IRI.parse _namespace_name "MD2" |> NamespacedName
+    let MD2 = _prefix "MD2"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MD4"></see>
     /// </summary>
-    let MD4 = Namespaced_IRI.parse _namespace_name "MD4" |> NamespacedName
+    let MD4 = _prefix "MD4"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MD5"></see>
     /// </summary>
-    let MD5 = Namespaced_IRI.parse _namespace_name "MD5" |> NamespacedName
+    let MD5 = _prefix "MD5"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MMC"></see>
     /// </summary>
-    let MMC = Namespaced_IRI.parse _namespace_name "MMC" |> NamespacedName
+    let MMC = _prefix "MMC"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MMS"></see>
     /// </summary>
-    let MMS = Namespaced_IRI.parse _namespace_name "MMS" |> NamespacedName
+    let MMS = _prefix "MMS"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MULTOS"></see>
     /// </summary>
-    let MULTOS = Namespaced_IRI.parse _namespace_name "MULTOS" |> NamespacedName
+    let MULTOS = _prefix "MULTOS"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Mail"></see>
     /// </summary>
-    let Mail = Namespaced_IRI.parse _namespace_name "Mail" |> NamespacedName
+    let Mail = _prefix "Mail"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Manual"></see>
     /// </summary>
-    let Manual = Namespaced_IRI.parse _namespace_name "Manual" |> NamespacedName
-
+    let Manual = _prefix "Manual"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MaintenancePhase"></see>
     /// </summary>
-    let MaintenancePhase =
-        Namespaced_IRI.parse _namespace_name "MaintenancePhase" |> NamespacedName
-
+    let MaintenancePhase = _prefix "MaintenancePhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Make"></see>
     /// </summary>
-    let Make = Namespaced_IRI.parse _namespace_name "Make" |> NamespacedName
-
+    let Make = _prefix "Make"
     /// <summary>
     /// Mobile device manufacturer which may implement some security features in the device
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Manufacturer"></see></summary>
-    let Manufacturer =
-        Namespaced_IRI.parse _namespace_name "Manufacturer" |> NamespacedName
-
+    let Manufacturer = _prefix "Manufacturer"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasTrustIn"></see>
     /// </summary>
-    let hasTrustIn = Namespaced_IRI.parse _namespace_name "hasTrustIn" |> NamespacedName
-
+    let hasTrustIn = _prefix "hasTrustIn"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ManufacturerCertificate"></see>
     /// </summary>
-    let ManufacturerCertificate =
-        Namespaced_IRI.parse _namespace_name "ManufacturerCertificate" |> NamespacedName
-
+    let ManufacturerCertificate = _prefix "ManufacturerCertificate"
     /// <summary>
     /// A limited period of time during which the use of the application will be memorised.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Memorability"></see></summary>
-    let Memorability =
-        Namespaced_IRI.parse _namespace_name "Memorability" |> NamespacedName
-
+    let Memorability = _prefix "Memorability"
     /// <summary>
     /// Memory card can be protected with a password each time someone tries to access the card
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MemoryCardLock"></see></summary>
-    let MemoryCardLock =
-        Namespaced_IRI.parse _namespace_name "MemoryCardLock" |> NamespacedName
-
+    let MemoryCardLock = _prefix "MemoryCardLock"
     /// <summary>
     /// Set of permissions related to sending or receiving messages like SMS
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MessagingFunctionsGroup"></see></summary>
-    let MessagingFunctionsGroup =
-        Namespaced_IRI.parse _namespace_name "MessagingFunctionsGroup" |> NamespacedName
-
+    let MessagingFunctionsGroup = _prefix "MessagingFunctionsGroup"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MisUseAttack"></see>
     /// </summary>
-    let MisUseAttack =
-        Namespaced_IRI.parse _namespace_name "MisUseAttack" |> NamespacedName
-
+    let MisUseAttack = _prefix "MisUseAttack"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#UnTrustedAPIAttack"></see>
     /// </summary>
-    let UnTrustedAPIAttack =
-        Namespaced_IRI.parse _namespace_name "UnTrustedAPIAttack" |> NamespacedName
-
+    let UnTrustedAPIAttack = _prefix "UnTrustedAPIAttack"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MobeyForum"></see>
     /// </summary>
-    let MobeyForum = Namespaced_IRI.parse _namespace_name "MobeyForum" |> NamespacedName
-
+    let MobeyForum = _prefix "MobeyForum"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Mobile2Market"></see>
     /// </summary>
-    let Mobile2Market =
-        Namespaced_IRI.parse _namespace_name "Mobile2Market" |> NamespacedName
-
+    let Mobile2Market = _prefix "Mobile2Market"
     /// <summary>
     /// Mobile network Cell ID to which the device is attached.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MobileNetworkProvidervalues"></see></summary>
-    let MobileNetworkProvidervalues =
-        Namespaced_IRI.parse _namespace_name "MobileNetworkProvidervalues" |> NamespacedName
-
+    let MobileNetworkProvidervalues = _prefix "MobileNetworkProvidervalues"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MobileVPN"></see>
     /// </summary>
-    let MobileVPN = Namespaced_IRI.parse _namespace_name "MobileVPN" |> NamespacedName
+    let MobileVPN = _prefix "MobileVPN"
     /// <summary>
     /// Virtula private network. FIPS 140-2
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#VPN"></see></summary>
-    let VPN = Namespaced_IRI.parse _namespace_name "VPN" |> NamespacedName
-
+    let VPN = _prefix "VPN"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MotorollaMobileVPN"></see>
     /// </summary>
-    let MotorollaMobileVPN =
-        Namespaced_IRI.parse _namespace_name "MotorollaMobileVPN" |> NamespacedName
-
+    let MotorollaMobileVPN = _prefix "MotorollaMobileVPN"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Mutual"></see>
     /// </summary>
-    let Mutual = Namespaced_IRI.parse _namespace_name "Mutual" |> NamespacedName
-
+    let Mutual = _prefix "Mutual"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#MutualReliableChannel"></see>
     /// </summary>
-    let MutualReliableChannel =
-        Namespaced_IRI.parse _namespace_name "MutualReliableChannel" |> NamespacedName
-
+    let MutualReliableChannel = _prefix "MutualReliableChannel"
     /// <summary>
     /// A short-range point-to-point wireless communication technology. The technology is a simple extension of the ISO/IEC 14443 proximity-card standard (contactless card, RFID) that combines the interface of a smartcard and a reader into a single device. An NFC device can communicate with both existing ISO/IEC 14443 smartcards and readers, as well as with other NFC devices, and is thereby compatible with existing contactless infrastructure already in use for public transportation and payment.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NFC"></see></summary>
-    let NFC = Namespaced_IRI.parse _namespace_name "NFC" |> NamespacedName
+    let NFC = _prefix "NFC"
     /// <summary>
     /// The device may be or not equiped with Near Field Communication Ship (NFC).
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NFCEnabled"></see></summary>
-    let NFCEnabled = Namespaced_IRI.parse _namespace_name "NFCEnabled" |> NamespacedName
+    let NFCEnabled = _prefix "NFCEnabled"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NIST"></see>
     /// </summary>
-    let NIST = Namespaced_IRI.parse _namespace_name "NIST" |> NamespacedName
-
+    let NIST = _prefix "NIST"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NeedhamShroeder"></see>
     /// </summary>
-    let NeedhamShroeder =
-        Namespaced_IRI.parse _namespace_name "NeedhamShroeder" |> NamespacedName
-
+    let NeedhamShroeder = _prefix "NeedhamShroeder"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasNetworkLatency"></see>
     /// </summary>
-    let hasNetworkLatency =
-        Namespaced_IRI.parse _namespace_name "hasNetworkLatency" |> NamespacedName
-
+    let hasNetworkLatency = _prefix "hasNetworkLatency"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NetworkLayer"></see>
     /// </summary>
-    let NetworkLayer =
-        Namespaced_IRI.parse _namespace_name "NetworkLayer" |> NamespacedName
-
+    let NetworkLayer = _prefix "NetworkLayer"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SecurityLayer"></see>
     /// </summary>
-    let SecurityLayer =
-        Namespaced_IRI.parse _namespace_name "SecurityLayer" |> NamespacedName
-
+    let SecurityLayer = _prefix "SecurityLayer"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NoAuthentication"></see>
     /// </summary>
-    let NoAuthentication =
-        Namespaced_IRI.parse _namespace_name "NoAuthentication" |> NamespacedName
-
+    let NoAuthentication = _prefix "NoAuthentication"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NoSensitiveInfoOnExternalMemory"></see>
     /// </summary>
-    let NoSensitiveInfoOnExternalMemory =
-        Namespaced_IRI.parse _namespace_name "NoSensitiveInfoOnExternalMemory" |> NamespacedName
-
+    let NoSensitiveInfoOnExternalMemory = _prefix "NoSensitiveInfoOnExternalMemory"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Nokia_Mobile_VPN"></see>
     /// </summary>
-    let Nokia_Mobile_VPN =
-        Namespaced_IRI.parse _namespace_name "Nokia_Mobile_VPN" |> NamespacedName
-
+    let Nokia_Mobile_VPN = _prefix "Nokia_Mobile_VPN"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasType"></see>
     /// </summary>
-    let hasType = Namespaced_IRI.parse _namespace_name "hasType" |> NamespacedName
-
+    let hasType = _prefix "hasType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#NonVolatile"></see>
     /// </summary>
-    let NonVolatile =
-        Namespaced_IRI.parse _namespace_name "NonVolatile" |> NamespacedName
-
+    let NonVolatile = _prefix "NonVolatile"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Password"></see>
     /// </summary>
-    let Password = Namespaced_IRI.parse _namespace_name "Password" |> NamespacedName
-
+    let Password = _prefix "Password"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#OperationMode"></see>
     /// </summary>
-    let OperationMode =
-        Namespaced_IRI.parse _namespace_name "OperationMode" |> NamespacedName
-
+    let OperationMode = _prefix "OperationMode"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#OneSideVerification"></see>
     /// </summary>
-    let OneSideVerification =
-        Namespaced_IRI.parse _namespace_name "OneSideVerification" |> NamespacedName
-
+    let OneSideVerification = _prefix "OneSideVerification"
     /// <summary>
     /// Telecom Network Operator knowing as MNO
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Operator"></see></summary>
-    let Operator = Namespaced_IRI.parse _namespace_name "Operator" |> NamespacedName
-
+    let Operator = _prefix "Operator"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#OperatorCertificate"></see>
     /// </summary>
-    let OperatorCertificate =
-        Namespaced_IRI.parse _namespace_name "OperatorCertificate" |> NamespacedName
-
+    let OperatorCertificate = _prefix "OperatorCertificate"
     /// <summary>
     /// A smart card is any limited-sized card with embedded integrated circuits. The smart card may integrate or not processing capabilities.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SmartCard"></see></summary>
-    let SmartCard = Namespaced_IRI.parse _namespace_name "SmartCard" |> NamespacedName
+    let SmartCard = _prefix "SmartCard"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#storedOn"></see>
     /// </summary>
-    let storedOn = Namespaced_IRI.parse _namespace_name "storedOn" |> NamespacedName
-
+    let storedOn = _prefix "storedOn"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PGPCertificate"></see>
     /// </summary>
-    let PGPCertificate =
-        Namespaced_IRI.parse _namespace_name "PGPCertificate" |> NamespacedName
-
+    let PGPCertificate = _prefix "PGPCertificate"
     /// <summary>
     /// Personal Identification Number
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PIN"></see></summary>
-    let PIN = Namespaced_IRI.parse _namespace_name "PIN" |> NamespacedName
-
+    let PIN = _prefix "PIN"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SmartCardLock"></see>
     /// </summary>
-    let SmartCardLock =
-        Namespaced_IRI.parse _namespace_name "SmartCardLock" |> NamespacedName
-
+    let SmartCardLock = _prefix "SmartCardLock"
     /// <summary>
     /// Public-key infrastructure (PKI) consists of protocols, services, and standards supporting applications of public-key cryptography. PKI sometimes refers simply to a trust hierarchy based on public-key certificates, and in other contexts embraces encryption and digital signature services provided to end-user applications as well. RSA (http://www.rsa.com/rsalabs/node.asp?id=2268)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PKI"></see></summary>
-    let PKI = Namespaced_IRI.parse _namespace_name "PKI" |> NamespacedName
-
+    let PKI = _prefix "PKI"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SecurityInfrastructure"></see>
     /// </summary>
-    let SecurityInfrastructure =
-        Namespaced_IRI.parse _namespace_name "SecurityInfrastructure" |> NamespacedName
-
+    let SecurityInfrastructure = _prefix "SecurityInfrastructure"
     /// <summary>
     /// Pseudo Random Number Generation
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PRNG"></see></summary>
-    let PRNG = Namespaced_IRI.parse _namespace_name "PRNG" |> NamespacedName
+    let PRNG = _prefix "PRNG"
     /// <summary>
     /// Personal Unblocking Keys
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PUK"></see></summary>
-    let PUK = Namespaced_IRI.parse _namespace_name "PUK" |> NamespacedName
-
+    let PUK = _prefix "PUK"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PassiveThreat"></see>
     /// </summary>
-    let PassiveThreat =
-        Namespaced_IRI.parse _namespace_name "PassiveThreat" |> NamespacedName
-
+    let PassiveThreat = _prefix "PassiveThreat"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Performance"></see>
     /// </summary>
-    let Performance =
-        Namespaced_IRI.parse _namespace_name "Performance" |> NamespacedName
-
+    let Performance = _prefix "Performance"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Phishing"></see>
     /// </summary>
-    let Phishing = Namespaced_IRI.parse _namespace_name "Phishing" |> NamespacedName
-
+    let Phishing = _prefix "Phishing"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PhysicalLayer"></see>
     /// </summary>
-    let PhysicalLayer =
-        Namespaced_IRI.parse _namespace_name "PhysicalLayer" |> NamespacedName
-
+    let PhysicalLayer = _prefix "PhysicalLayer"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Poor"></see>
     /// </summary>
-    let Poor = Namespaced_IRI.parse _namespace_name "Poor" |> NamespacedName
+    let Poor = _prefix "Poor"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Quality"></see>
     /// </summary>
-    let Quality = Namespaced_IRI.parse _namespace_name "Quality" |> NamespacedName
-
+    let Quality = _prefix "Quality"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PreemptDisplay"></see>
     /// </summary>
-    let PreemptDisplay =
-        Namespaced_IRI.parse _namespace_name "PreemptDisplay" |> NamespacedName
-
+    let PreemptDisplay = _prefix "PreemptDisplay"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Prevention"></see>
     /// </summary>
-    let Prevention = Namespaced_IRI.parse _namespace_name "Prevention" |> NamespacedName
-
+    let Prevention = _prefix "Prevention"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#PrivateKeyPoP"></see>
     /// </summary>
-    let PrivateKeyPoP =
-        Namespaced_IRI.parse _namespace_name "PrivateKeyPoP" |> NamespacedName
-
+    let PrivateKeyPoP = _prefix "PrivateKeyPoP"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Public"></see>
     /// </summary>
-    let Public = Namespaced_IRI.parse _namespace_name "Public" |> NamespacedName
+    let Public = _prefix "Public"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RAM"></see>
     /// </summary>
-    let RAM = Namespaced_IRI.parse _namespace_name "RAM" |> NamespacedName
+    let RAM = _prefix "RAM"
     /// <summary>
     /// A free algorithm provided by  RSA security, implemented since 1970.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RC4"></see></summary>
-    let RC4 = Namespaced_IRI.parse _namespace_name "RC4" |> NamespacedName
-
+    let RC4 = _prefix "RC4"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#StreamCipherAlgorithm"></see>
     /// </summary>
-    let StreamCipherAlgorithm =
-        Namespaced_IRI.parse _namespace_name "StreamCipherAlgorithm" |> NamespacedName
-
+    let StreamCipherAlgorithm = _prefix "StreamCipherAlgorithm"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RF"></see>
     /// </summary>
-    let RF = Namespaced_IRI.parse _namespace_name "RF" |> NamespacedName
+    let RF = _prefix "RF"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RIPE-MAC"></see>
     /// </summary>
-    let ``RIPE-MAC`` = Namespaced_IRI.parse _namespace_name "RIPE-MAC" |> NamespacedName
+    let ``RIPE-MAC`` = _prefix "RIPE-MAC"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RIPE-MD"></see>
     /// </summary>
-    let ``RIPE-MD`` = Namespaced_IRI.parse _namespace_name "RIPE-MD" |> NamespacedName
+    let ``RIPE-MD`` = _prefix "RIPE-MD"
     /// <summary>
     /// Record Management Store are data structure used to store JME data
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RMS"></see></summary>
-    let RMS = Namespaced_IRI.parse _namespace_name "RMS" |> NamespacedName
+    let RMS = _prefix "RMS"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ROM"></see>
     /// </summary>
-    let ROM = Namespaced_IRI.parse _namespace_name "ROM" |> NamespacedName
+    let ROM = _prefix "ROM"
     /// <summary>
     /// RSA signature algorithm (American National Standard ANSI X9-31)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RSA"></see></summary>
-    let RSA = Namespaced_IRI.parse _namespace_name "RSA" |> NamespacedName
-
+    let RSA = _prefix "RSA"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RSAAlgorithm"></see>
     /// </summary>
-    let RSAAlgorithm =
-        Namespaced_IRI.parse _namespace_name "RSAAlgorithm" |> NamespacedName
-
+    let RSAAlgorithm = _prefix "RSAAlgorithm"
     /// <summary>
     /// Read User Data: Set of permissions to read user’s data like phone book or calendar entries
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ReadUserDataFunctionGroup"></see></summary>
-    let ReadUserDataFunctionGroup =
-        Namespaced_IRI.parse _namespace_name "ReadUserDataFunctionGroup" |> NamespacedName
-
+    let ReadUserDataFunctionGroup = _prefix "ReadUserDataFunctionGroup"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Recovery"></see>
     /// </summary>
-    let Recovery = Namespaced_IRI.parse _namespace_name "Recovery" |> NamespacedName
-
+    let Recovery = _prefix "Recovery"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ReduceCodeSize"></see>
     /// </summary>
-    let ReduceCodeSize =
-        Namespaced_IRI.parse _namespace_name "ReduceCodeSize" |> NamespacedName
-
+    let ReduceCodeSize = _prefix "ReduceCodeSize"
     /// <summary>
     /// Registration authority is an administrative entity which is responsable of verifying the identity of the claimer of a certificate
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RegistrationAuthority"></see></summary>
-    let RegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "RegistrationAuthority" |> NamespacedName
-
+    let RegistrationAuthority = _prefix "RegistrationAuthority"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Reliability"></see>
     /// </summary>
-    let Reliability =
-        Namespaced_IRI.parse _namespace_name "Reliability" |> NamespacedName
-
+    let Reliability = _prefix "Reliability"
     /// <summary>
     /// Sending a Short message to lock the device
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RemoteDeviceLock"></see></summary>
-    let RemoteDeviceLock =
-        Namespaced_IRI.parse _namespace_name "RemoteDeviceLock" |> NamespacedName
-
+    let RemoteDeviceLock = _prefix "RemoteDeviceLock"
     /// <summary>
     /// Audio files used as rings in mobile devices.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#RingTones"></see></summary>
-    let RingTones = Namespaced_IRI.parse _namespace_name "RingTones" |> NamespacedName
-
+    let RingTones = _prefix "RingTones"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#StandardFiles"></see>
     /// </summary>
-    let StandardFiles =
-        Namespaced_IRI.parse _namespace_name "StandardFiles" |> NamespacedName
-
+    let StandardFiles = _prefix "StandardFiles"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SANS_Institute"></see>
     /// </summary>
-    let SANS_Institute =
-        Namespaced_IRI.parse _namespace_name "SANS_Institute" |> NamespacedName
-
+    let SANS_Institute = _prefix "SANS_Institute"
     /// <summary>
     /// Secure Electronic Transaction
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SET"></see></summary>
-    let SET = Namespaced_IRI.parse _namespace_name "SET" |> NamespacedName
+    let SET = _prefix "SET"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SHA1"></see>
     /// </summary>
-    let SHA1 = Namespaced_IRI.parse _namespace_name "SHA1" |> NamespacedName
-
+    let SHA1 = _prefix "SHA1"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SHAMIR3Pass"></see>
     /// </summary>
-    let SHAMIR3Pass =
-        Namespaced_IRI.parse _namespace_name "SHAMIR3Pass" |> NamespacedName
-
+    let SHAMIR3Pass = _prefix "SHAMIR3Pass"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SKID"></see>
     /// </summary>
-    let SKID = Namespaced_IRI.parse _namespace_name "SKID" |> NamespacedName
+    let SKID = _prefix "SKID"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SMS"></see>
     /// </summary>
-    let SMS = Namespaced_IRI.parse _namespace_name "SMS" |> NamespacedName
+    let SMS = _prefix "SMS"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SNOW"></see>
     /// </summary>
-    let SNOW = Namespaced_IRI.parse _namespace_name "SNOW" |> NamespacedName
+    let SNOW = _prefix "SNOW"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SSL"></see>
     /// </summary>
-    let SSL = Namespaced_IRI.parse _namespace_name "SSL" |> NamespacedName
+    let SSL = _prefix "SSL"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#STRANDOM"></see>
     /// </summary>
-    let STRANDOM = Namespaced_IRI.parse _namespace_name "STRANDOM" |> NamespacedName
+    let STRANDOM = _prefix "STRANDOM"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Secret"></see>
     /// </summary>
-    let Secret = Namespaced_IRI.parse _namespace_name "Secret" |> NamespacedName
-
+    let Secret = _prefix "Secret"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SecurityTools"></see>
     /// </summary>
-    let SecurityTools =
-        Namespaced_IRI.parse _namespace_name "SecurityTools" |> NamespacedName
-
+    let SecurityTools = _prefix "SecurityTools"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SemanticIntegrity"></see>
     /// </summary>
-    let SemanticIntegrity =
-        Namespaced_IRI.parse _namespace_name "SemanticIntegrity" |> NamespacedName
-
+    let SemanticIntegrity = _prefix "SemanticIntegrity"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SeparateDelivery-DRM"></see>
     /// </summary>
-    let ``SeparateDelivery-DRM`` =
-        Namespaced_IRI.parse _namespace_name "SeparateDelivery-DRM" |> NamespacedName
-
+    let ``SeparateDelivery-DRM`` = _prefix "SeparateDelivery-DRM"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Session"></see>
     /// </summary>
-    let Session = Namespaced_IRI.parse _namespace_name "Session" |> NamespacedName
+    let Session = _prefix "Session"
     /// <summary>
     /// Additional skills that should be acquired to achieve some tasks or goals.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Skills"></see></summary>
-    let Skills = Namespaced_IRI.parse _namespace_name "Skills" |> NamespacedName
-
+    let Skills = _prefix "Skills"
     /// <summary>
     /// Also known as conventional, secret-key, and single-key algorithms; the encryption and decryption key are either the same or can be calculated from one another. Block ciphers and stream ciphers are both used for symmetric encryption.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SymmetricEncryption"></see></summary>
-    let SymmetricEncryption =
-        Namespaced_IRI.parse _namespace_name "SymmetricEncryption" |> NamespacedName
-
+    let SymmetricEncryption = _prefix "SymmetricEncryption"
     /// <summary>
     /// Memory available on smart card like SIM, USIM or others;
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SmartCardMemory"></see></summary>
-    let SmartCardMemory =
-        Namespaced_IRI.parse _namespace_name "SmartCardMemory" |> NamespacedName
-
+    let SmartCardMemory = _prefix "SmartCardMemory"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasIMSI"></see>
     /// </summary>
-    let hasIMSI = Namespaced_IRI.parse _namespace_name "hasIMSI" |> NamespacedName
-
+    let hasIMSI = _prefix "hasIMSI"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SmartCardCloning"></see>
     /// </summary>
-    let SmartCardCloning =
-        Namespaced_IRI.parse _namespace_name "SmartCardCloning" |> NamespacedName
-
+    let SmartCardCloning = _prefix "SmartCardCloning"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Socket"></see>
     /// </summary>
-    let Socket = Namespaced_IRI.parse _namespace_name "Socket" |> NamespacedName
-
+    let Socket = _prefix "Socket"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SoftwareLayer"></see>
     /// </summary>
-    let SoftwareLayer =
-        Namespaced_IRI.parse _namespace_name "SoftwareLayer" |> NamespacedName
-
+    let SoftwareLayer = _prefix "SoftwareLayer"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Speaker"></see>
     /// </summary>
-    let Speaker = Namespaced_IRI.parse _namespace_name "Speaker" |> NamespacedName
-
+    let Speaker = _prefix "Speaker"
     /// <summary>
     /// The standard couple of login and password authentication
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Static_password"></see></summary>
-    let Static_password =
-        Namespaced_IRI.parse _namespace_name "Static_password" |> NamespacedName
-
+    let Static_password = _prefix "Static_password"
     /// <summary>
     /// Steganography is the art and science of writing hidden messages in such a way that no-one, apart from the sender and intended recipient, suspects the existence of the message, a form of security through obscurity. Wikipedia
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Steganography"></see></summary>
-    let Steganography =
-        Namespaced_IRI.parse _namespace_name "Steganography" |> NamespacedName
-
+    let Steganography = _prefix "Steganography"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SteganographyAlgorithm"></see>
     /// </summary>
-    let SteganographyAlgorithm =
-        Namespaced_IRI.parse _namespace_name "SteganographyAlgorithm" |> NamespacedName
-
+    let SteganographyAlgorithm = _prefix "SteganographyAlgorithm"
     /// <summary>
     /// Data stored either in the device or on the memory card.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#StoredData"></see></summary>
-    let StoredData = Namespaced_IRI.parse _namespace_name "StoredData" |> NamespacedName
-
+    let StoredData = _prefix "StoredData"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasDataStructure"></see>
     /// </summary>
-    let hasDataStructure =
-        Namespaced_IRI.parse _namespace_name "hasDataStructure" |> NamespacedName
-
+    let hasDataStructure = _prefix "hasDataStructure"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SymbianSigned"></see>
     /// </summary>
-    let SymbianSigned =
-        Namespaced_IRI.parse _namespace_name "SymbianSigned" |> NamespacedName
-
+    let SymbianSigned = _prefix "SymbianSigned"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasKey"></see>
     /// </summary>
-    let hasKey = Namespaced_IRI.parse _namespace_name "hasKey" |> NamespacedName
-
+    let hasKey = _prefix "hasKey"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#SymmetricKeyPoP"></see>
     /// </summary>
-    let SymmetricKeyPoP =
-        Namespaced_IRI.parse _namespace_name "SymmetricKeyPoP" |> NamespacedName
-
+    let SymmetricKeyPoP = _prefix "SymmetricKeyPoP"
     /// <summary>
     /// Transport Layer Security is an IETF standard that is intended to replace the SSL protocol. (IETF Working Group)
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TLS"></see></summary>
-    let TLS = Namespaced_IRI.parse _namespace_name "TLS" |> NamespacedName
+    let TLS = _prefix "TLS"
     /// <summary>
     /// True Random Number Generation : extract randomness from physical phenomena and introduce it into computing device.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TRNG"></see></summary>
-    let TRNG = Namespaced_IRI.parse _namespace_name "TRNG" |> NamespacedName
+    let TRNG = _prefix "TRNG"
     /// <summary>
     /// All limitations related to technologies like the network bandwidth or processor capabilities.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Technical"></see></summary>
-    let Technical = Namespaced_IRI.parse _namespace_name "Technical" |> NamespacedName
-
+    let Technical = _prefix "Technical"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TestOnRealDevices"></see>
     /// </summary>
-    let TestOnRealDevices =
-        Namespaced_IRI.parse _namespace_name "TestOnRealDevices" |> NamespacedName
-
+    let TestOnRealDevices = _prefix "TestOnRealDevices"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TestPhase"></see>
     /// </summary>
-    let TestPhase = Namespaced_IRI.parse _namespace_name "TestPhase" |> NamespacedName
+    let TestPhase = _prefix "TestPhase"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Time"></see>
     /// </summary>
-    let Time = Namespaced_IRI.parse _namespace_name "Time" |> NamespacedName
-
+    let Time = _prefix "Time"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TimeAnalysis"></see>
     /// </summary>
-    let TimeAnalysis =
-        Namespaced_IRI.parse _namespace_name "TimeAnalysis" |> NamespacedName
-
+    let TimeAnalysis = _prefix "TimeAnalysis"
     /// <summary>
     /// A client and server time synchronization is required for the authentication token verification.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TimeBasedOTP"></see></summary>
-    let TimeBasedOTP =
-        Namespaced_IRI.parse _namespace_name "TimeBasedOTP" |> NamespacedName
-
+    let TimeBasedOTP = _prefix "TimeBasedOTP"
     /// <summary>
     /// A digital signature that makes possible the verification of the sending time of a message.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TimeStampToken"></see></summary>
-    let TimeStampToken =
-        Namespaced_IRI.parse _namespace_name "TimeStampToken" |> NamespacedName
-
+    let TimeStampToken = _prefix "TimeStampToken"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Timeliness"></see>
     /// </summary>
-    let Timeliness = Namespaced_IRI.parse _namespace_name "Timeliness" |> NamespacedName
+    let Timeliness = _prefix "Timeliness"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TopSecret"></see>
     /// </summary>
-    let TopSecret = Namespaced_IRI.parse _namespace_name "TopSecret" |> NamespacedName
-
+    let TopSecret = _prefix "TopSecret"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TouchScreen"></see>
     /// </summary>
-    let TouchScreen =
-        Namespaced_IRI.parse _namespace_name "TouchScreen" |> NamespacedName
-
+    let TouchScreen = _prefix "TouchScreen"
     /// <summary>
     /// Requirement for additional training to use some tools or to do some technalical or management tasks.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Training"></see></summary>
-    let Training = Namespaced_IRI.parse _namespace_name "Training" |> NamespacedName
-
+    let Training = _prefix "Training"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Transaction"></see>
     /// </summary>
-    let Transaction =
-        Namespaced_IRI.parse _namespace_name "Transaction" |> NamespacedName
-
+    let Transaction = _prefix "Transaction"
     /// <summary>
     /// Messaging data or data transferred through Internet connection
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TransmittedData"></see></summary>
-    let TransmittedData =
-        Namespaced_IRI.parse _namespace_name "TransmittedData" |> NamespacedName
-
+    let TransmittedData = _prefix "TransmittedData"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TrustedAPIAttack"></see>
     /// </summary>
-    let TrustedAPIAttack =
-        Namespaced_IRI.parse _namespace_name "TrustedAPIAttack" |> NamespacedName
-
+    let TrustedAPIAttack = _prefix "TrustedAPIAttack"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TrustedThirdPartyCertificate"></see>
     /// </summary>
-    let TrustedThirdPartyCertificate =
-        Namespaced_IRI.parse _namespace_name "TrustedThirdPartyCertificate" |> NamespacedName
-
+    let TrustedThirdPartyCertificate = _prefix "TrustedThirdPartyCertificate"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TunneledPassword"></see>
     /// </summary>
-    let TunneledPassword =
-        Namespaced_IRI.parse _namespace_name "TunneledPassword" |> NamespacedName
-
+    let TunneledPassword = _prefix "TunneledPassword"
     /// <summary>
     /// Don't mix type safe and type-unsafe API
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TypeSafe-Unsafe"></see></summary>
-    let ``TypeSafe-Unsafe`` =
-        Namespaced_IRI.parse _namespace_name "TypeSafe-Unsafe" |> NamespacedName
-
+    let ``TypeSafe-Unsafe`` = _prefix "TypeSafe-Unsafe"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#TypeSafeAPIUse"></see>
     /// </summary>
-    let TypeSafeAPIUse =
-        Namespaced_IRI.parse _namespace_name "TypeSafeAPIUse" |> NamespacedName
-
+    let TypeSafeAPIUse = _prefix "TypeSafeAPIUse"
     /// <summary>
     /// The UICC is a generic platform for smart card applications. It has been standardised by ETSI EP SCP (ETSI Project Smart Card Platform) with the aim of defining a physical and logical platform for all smart card applications and to develop advanced security methods for financial transactions, to take an example. Mobey forum
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#UICC"></see></summary>
-    let UICC = Namespaced_IRI.parse _namespace_name "UICC" |> NamespacedName
+    let UICC = _prefix "UICC"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#UMTS"></see>
     /// </summary>
-    let UMTS = Namespaced_IRI.parse _namespace_name "UMTS" |> NamespacedName
+    let UMTS = _prefix "UMTS"
     /// <summary>
     /// A (U)SIM is a special type of smart card that typically contains a processor and between 16 to 128 KB of persistent Electronically Erasable, Programmable ROM (EEPROM). It also includes RAM for program execution and ROM for the operating system, user authentication and data encryption algorithms, and other applications.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#USIM"></see></summary>
-    let USIM = Namespaced_IRI.parse _namespace_name "USIM" |> NamespacedName
+    let USIM = _prefix "USIM"
 
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#UnifiedTestingInitiativeRootCertificate"></see>
     /// </summary>
     let UnifiedTestingInitiativeRootCertificate =
-        Namespaced_IRI.parse _namespace_name "UnifiedTestingInitiativeRootCertificate" |> NamespacedName
+        _prefix "UnifiedTestingInitiativeRootCertificate"
 
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#UnsafeDataTypeAttack"></see>
     /// </summary>
-    let UnsafeDataTypeAttack =
-        Namespaced_IRI.parse _namespace_name "UnsafeDataTypeAttack" |> NamespacedName
-
+    let UnsafeDataTypeAttack = _prefix "UnsafeDataTypeAttack"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#UsePhase"></see>
     /// </summary>
-    let UsePhase = Namespaced_IRI.parse _namespace_name "UsePhase" |> NamespacedName
+    let UsePhase = _prefix "UsePhase"
 
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#VeriSignTesting-BasedACSRootSymbian"></see>
     /// </summary>
     let ``VeriSignTesting-BasedACSRootSymbian`` =
-        Namespaced_IRI.parse _namespace_name "VeriSignTesting-BasedACSRootSymbian" |> NamespacedName
+        _prefix "VeriSignTesting-BasedACSRootSymbian"
 
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#X509Certificate"></see>
     /// </summary>
-    let X509Certificate =
-        Namespaced_IRI.parse _namespace_name "X509Certificate" |> NamespacedName
-
+    let X509Certificate = _prefix "X509Certificate"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Verisign"></see>
     /// </summary>
-    let Verisign = Namespaced_IRI.parse _namespace_name "Verisign" |> NamespacedName
-
+    let Verisign = _prefix "Verisign"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#VibrationKit"></see>
     /// </summary>
-    let VibrationKit =
-        Namespaced_IRI.parse _namespace_name "VibrationKit" |> NamespacedName
-
+    let VibrationKit = _prefix "VibrationKit"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#VideoInput"></see>
     /// </summary>
-    let VideoInput = Namespaced_IRI.parse _namespace_name "VideoInput" |> NamespacedName
+    let VideoInput = _prefix "VideoInput"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Videos"></see>
     /// </summary>
-    let Videos = Namespaced_IRI.parse _namespace_name "Videos" |> NamespacedName
+    let Videos = _prefix "Videos"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Voice"></see>
     /// </summary>
-    let Voice = Namespaced_IRI.parse _namespace_name "Voice" |> NamespacedName
+    let Voice = _prefix "Voice"
     /// <summary>
     /// Wireless Public Key Infrastructure.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#WPKI"></see></summary>
-    let WPKI = Namespaced_IRI.parse _namespace_name "WPKI" |> NamespacedName
+    let WPKI = _prefix "WPKI"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#WiFi"></see>
     /// </summary>
-    let WiFi = Namespaced_IRI.parse _namespace_name "WiFi" |> NamespacedName
-
+    let WiFi = _prefix "WiFi"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#WithoutVerification"></see>
     /// </summary>
-    let WithoutVerification =
-        Namespaced_IRI.parse _namespace_name "WithoutVerification" |> NamespacedName
-
+    let WithoutVerification = _prefix "WithoutVerification"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Yahalom"></see>
     /// </summary>
-    let Yahalom = Namespaced_IRI.parse _namespace_name "Yahalom" |> NamespacedName
+    let Yahalom = _prefix "Yahalom"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#Yarrow"></see>
     /// </summary>
-    let Yarrow = Namespaced_IRI.parse _namespace_name "Yarrow" |> NamespacedName
-
+    let Yarrow = _prefix "Yarrow"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#ZeroKnowledgePassword"></see>
     /// </summary>
-    let ZeroKnowledgePassword =
-        Namespaced_IRI.parse _namespace_name "ZeroKnowledgePassword" |> NamespacedName
-
+    let ZeroKnowledgePassword = _prefix "ZeroKnowledgePassword"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasCardType"></see>
     /// </summary>
-    let hasCardType =
-        Namespaced_IRI.parse _namespace_name "hasCardType" |> NamespacedName
-
+    let hasCardType = _prefix "hasCardType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasNetworkBandwidth"></see>
     /// </summary>
-    let hasNetworkBandwidth =
-        Namespaced_IRI.parse _namespace_name "hasNetworkBandwidth" |> NamespacedName
-
+    let hasNetworkBandwidth = _prefix "hasNetworkBandwidth"
     /// <summary>
     /// A Threat type may be a passive or an active threat.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#hasThreatType"></see></summary>
-    let hasThreatType =
-        Namespaced_IRI.parse _namespace_name "hasThreatType" |> NamespacedName
-
+    let hasThreatType = _prefix "hasThreatType"
     /// <summary>
     ///   <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#isUsedAt"></see>
     /// </summary>
-    let isUsedAt = Namespaced_IRI.parse _namespace_name "isUsedAt" |> NamespacedName
+    let isUsedAt = _prefix "isUsedAt"
     /// <summary>
     /// vCard is a virtual electronic business card format.
     /// <see href="http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#vCard"></see></summary>
-    let vCard = Namespaced_IRI.parse _namespace_name "vCard" |> NamespacedName
+    let vCard = _prefix "vCard"

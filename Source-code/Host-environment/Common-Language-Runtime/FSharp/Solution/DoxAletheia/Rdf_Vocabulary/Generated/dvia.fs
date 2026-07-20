@@ -1,104 +1,90 @@
 namespace http.purl.org.ontology.dvia.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dvia =
     let _namespace_name = "http://purl.org/ontology/dvia#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The aplication or the mashup developed for demo-ing or consuming data in LD fashion
     /// <see href="http://purl.org/ontology/dvia#Application"></see></summary>
-    let Application =
-        Namespaced_IRI.parse _namespace_name "Application" |> NamespacedName
-
+    let Application = _prefix "Application"
     /// <summary>
     /// The platform where to host or use the application, could be on the web (firefox, chrome, IE, etc..) or mobile (android, etc..) or event desktop
     /// <see href="http://purl.org/ontology/dvia#Platform"></see></summary>
-    let Platform = Namespaced_IRI.parse _namespace_name "Platform" |> NamespacedName
+    let Platform = _prefix "Platform"
     /// <summary>
     /// The tool or library used to build the application
     /// <see href="http://purl.org/ontology/dvia#VisualTool"></see></summary>
-    let VisualTool = Namespaced_IRI.parse _namespace_name "VisualTool" |> NamespacedName
-
+    let VisualTool = _prefix "VisualTool"
     /// <summary>
     /// The name of the alternate navigator if applicable
     /// <see href="http://purl.org/ontology/dvia#alternativeNavigator"></see></summary>
-    let alternativeNavigator =
-        Namespaced_IRI.parse _namespace_name "alternativeNavigator" |> NamespacedName
-
+    let alternativeNavigator = _prefix "alternativeNavigator"
     /// <summary>
     /// This property links the application to a platform to actually use the application.
     /// <see href="http://purl.org/ontology/dvia#platform"></see></summary>
-    let platform = Namespaced_IRI.parse _namespace_name "platform" |> NamespacedName
+    let platform = _prefix "platform"
     /// <summary>
     /// links to the authors of the application or the tools, libraries
     /// <see href="http://purl.org/ontology/dvia#author"></see></summary>
-    let author = Namespaced_IRI.parse _namespace_name "author" |> NamespacedName
-
+    let author = _prefix "author"
     /// <summary>
     /// The business value of the application; generally could be commercial of free. Also depending on the license
     /// <see href="http://purl.org/ontology/dvia#businessValue"></see></summary>
-    let businessValue =
-        Namespaced_IRI.parse _namespace_name "businessValue" |> NamespacedName
-
+    let businessValue = _prefix "businessValue"
     /// <summary>
     /// links to the dataset used to make the application, and could be of different types or formats
     /// <see href="http://purl.org/ontology/dvia#consumes"></see></summary>
-    let consumes = Namespaced_IRI.parse _namespace_name "consumes" |> NamespacedName
-
+    let consumes = _prefix "consumes"
     /// <summary>
     /// Property for a given descriptive informations of the datasets used for making the application. It could be used when no more details are given on the datasets like URL, formats, etc.
     /// <see href="http://purl.org/ontology/dvia#datasetDescription"></see></summary>
-    let datasetDescription =
-        Namespaced_IRI.parse _namespace_name "datasetDescription" |> NamespacedName
-
+    let datasetDescription = _prefix "datasetDescription"
     /// <summary>
     /// links to the organization which builds the application
     /// <see href="http://purl.org/ontology/dvia#designBy"></see></summary>
-    let designBy = Namespaced_IRI.parse _namespace_name "designBy" |> NamespacedName
-
+    let designBy = _prefix "designBy"
     /// <summary>
     /// The download url of the tool for visualization.
     /// <see href="http://purl.org/ontology/dvia#downloadUrl"></see></summary>
-    let downloadUrl =
-        Namespaced_IRI.parse _namespace_name "downloadUrl" |> NamespacedName
-
+    let downloadUrl = _prefix "downloadUrl"
     /// <summary>
     /// This property links to the license of the application
     /// <see href="http://purl.org/ontology/dvia#hasLicense"></see></summary>
-    let hasLicense = Namespaced_IRI.parse _namespace_name "hasLicense" |> NamespacedName
+    let hasLicense = _prefix "hasLicense"
     /// <summary>
     /// keywords used for the application.
     /// <see href="http://purl.org/ontology/dvia#keyword"></see></summary>
-    let keyword = Namespaced_IRI.parse _namespace_name "keyword" |> NamespacedName
+    let keyword = _prefix "keyword"
     /// <summary>
     /// The url to the page describing the library or the tool for visualization.
     /// <see href="http://purl.org/ontology/dvia#libUrl"></see></summary>
-    let libUrl = Namespaced_IRI.parse _namespace_name "libUrl" |> NamespacedName
-
+    let libUrl = _prefix "libUrl"
     /// <summary>
     /// The name of the preferred navigator to be usd by the application
     /// <see href="http://purl.org/ontology/dvia#preferredNavigator"></see></summary>
-    let preferredNavigator =
-        Namespaced_IRI.parse _namespace_name "preferredNavigator" |> NamespacedName
-
+    let preferredNavigator = _prefix "preferredNavigator"
     /// <summary>
     /// The scope or domain of the application.
     /// <see href="http://purl.org/ontology/dvia#scope"></see></summary>
-    let scope = Namespaced_IRI.parse _namespace_name "scope" |> NamespacedName
+    let scope = _prefix "scope"
     /// <summary>
     /// The operating system where the application runs.
     /// <see href="http://purl.org/ontology/dvia#system"></see></summary>
-    let system = Namespaced_IRI.parse _namespace_name "system" |> NamespacedName
+    let system = _prefix "system"
     /// <summary>
     /// the url of the application.
     /// <see href="http://purl.org/ontology/dvia#url"></see></summary>
-    let url = Namespaced_IRI.parse _namespace_name "url" |> NamespacedName
+    let url = _prefix "url"
     /// <summary>
     /// This property links to the tools or libraries used for the application
     /// <see href="http://purl.org/ontology/dvia#usesTool"></see></summary>
-    let usesTool = Namespaced_IRI.parse _namespace_name "usesTool" |> NamespacedName
+    let usesTool = _prefix "usesTool"
     /// <summary>
     /// The types of view available in the application, such as maps, charts, graphs, etc.
     /// <see href="http://purl.org/ontology/dvia#view"></see></summary>
-    let view = Namespaced_IRI.parse _namespace_name "view" |> NamespacedName
+    let view = _prefix "view"

@@ -1,54 +1,50 @@
 namespace http.www.ics.forth.gr.isl.oae.core.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module oae =
     let _namespace_name = "http://www.ics.forth.gr/isl/oae/core#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#Entity"></see>
     /// </summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
+    let Entity = _prefix "Entity"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#NEE"></see>
     /// </summary>
-    let NEE = Namespaced_IRI.parse _namespace_name "NEE" |> NamespacedName
+    let NEE = _prefix "NEE"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#belongsTo"></see>
     /// </summary>
-    let belongsTo = Namespaced_IRI.parse _namespace_name "belongsTo" |> NamespacedName
+    let belongsTo = _prefix "belongsTo"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#confidence"></see>
     /// </summary>
-    let confidence = Namespaced_IRI.parse _namespace_name "confidence" |> NamespacedName
+    let confidence = _prefix "confidence"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#detectedAs"></see>
     /// </summary>
-    let detectedAs = Namespaced_IRI.parse _namespace_name "detectedAs" |> NamespacedName
-
+    let detectedAs = _prefix "detectedAs"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#hasMatchedURI"></see>
     /// </summary>
-    let hasMatchedURI =
-        Namespaced_IRI.parse _namespace_name "hasMatchedURI" |> NamespacedName
-
+    let hasMatchedURI = _prefix "hasMatchedURI"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#position"></see>
     /// </summary>
-    let position = Namespaced_IRI.parse _namespace_name "position" |> NamespacedName
-
+    let position = _prefix "position"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#regardsEntityName"></see>
     /// </summary>
-    let regardsEntityName =
-        Namespaced_IRI.parse _namespace_name "regardsEntityName" |> NamespacedName
-
+    let regardsEntityName = _prefix "regardsEntityName"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#score"></see>
     /// </summary>
-    let score = Namespaced_IRI.parse _namespace_name "score" |> NamespacedName
-
+    let score = _prefix "score"
     /// <summary>
     ///   <see href="http://www.ics.forth.gr/isl/oae/core#usingConfiguration"></see>
     /// </summary>
-    let usingConfiguration =
-        Namespaced_IRI.parse _namespace_name "usingConfiguration" |> NamespacedName
+    let usingConfiguration = _prefix "usingConfiguration"

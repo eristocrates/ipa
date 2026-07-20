@@ -1,133 +1,107 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.LatinAmericanJurisdiction.CentralAmericanGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_ctlaj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/BelizeanEntity"></see>
     /// </summary>
-    let BelizeanEntity =
-        Namespaced_IRI.parse _namespace_name "BelizeanEntity" |> NamespacedName
-
+    let BelizeanEntity = _prefix "BelizeanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfBelize"></see>
     /// </summary>
-    let GovernmentOfBelize =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfBelize" |> NamespacedName
-
+    let GovernmentOfBelize = _prefix "GovernmentOfBelize"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/CostaRicanEntity"></see>
     /// </summary>
-    let CostaRicanEntity =
-        Namespaced_IRI.parse _namespace_name "CostaRicanEntity" |> NamespacedName
+    let CostaRicanEntity = _prefix "CostaRicanEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfCostaRica"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfCostaRica =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfCostaRica" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfCostaRica"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfBelize"></see>
     /// </summary>
-    let JurisdictionOfBelize =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfBelize" |> NamespacedName
-
+    let JurisdictionOfBelize = _prefix "JurisdictionOfBelize"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfCostaRica"></see>
     /// </summary>
-    let JurisdictionOfCostaRica =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfCostaRica" |> NamespacedName
+    let JurisdictionOfCostaRica = _prefix "JurisdictionOfCostaRica"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfElSalvador"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfElSalvador =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfElSalvador" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfElSalvador"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfElSalvador"></see>
     /// </summary>
-    let JurisdictionOfElSalvador =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfElSalvador" |> NamespacedName
+    let JurisdictionOfElSalvador = _prefix "JurisdictionOfElSalvador"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfGuatemala"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfGuatemala =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfGuatemala" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfGuatemala"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfGuatemala"></see>
     /// </summary>
-    let JurisdictionOfGuatemala =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfGuatemala" |> NamespacedName
-
+    let JurisdictionOfGuatemala = _prefix "JurisdictionOfGuatemala"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfHonduras"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfHonduras =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfHonduras" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfHonduras = _prefix "GovernmentOfTheRepublicOfHonduras"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfHonduras"></see>
     /// </summary>
-    let JurisdictionOfHonduras =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfHonduras" |> NamespacedName
+    let JurisdictionOfHonduras = _prefix "JurisdictionOfHonduras"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfNicaragua"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfNicaragua =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfNicaragua" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfNicaragua"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfNicaragua"></see>
     /// </summary>
-    let JurisdictionOfNicaragua =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfNicaragua" |> NamespacedName
-
+    let JurisdictionOfNicaragua = _prefix "JurisdictionOfNicaragua"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfPanama"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfPanama =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfPanama" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfPanama = _prefix "GovernmentOfTheRepublicOfPanama"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/JurisdictionOfPanama"></see>
     /// </summary>
-    let JurisdictionOfPanama =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfPanama" |> NamespacedName
-
+    let JurisdictionOfPanama = _prefix "JurisdictionOfPanama"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/GuatemalanEntity"></see>
     /// </summary>
-    let GuatemalanEntity =
-        Namespaced_IRI.parse _namespace_name "GuatemalanEntity" |> NamespacedName
-
+    let GuatemalanEntity = _prefix "GuatemalanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/HonduranEntity"></see>
     /// </summary>
-    let HonduranEntity =
-        Namespaced_IRI.parse _namespace_name "HonduranEntity" |> NamespacedName
-
+    let HonduranEntity = _prefix "HonduranEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/NicaraguanEntity"></see>
     /// </summary>
-    let NicaraguanEntity =
-        Namespaced_IRI.parse _namespace_name "NicaraguanEntity" |> NamespacedName
-
+    let NicaraguanEntity = _prefix "NicaraguanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/PanamanianEntity"></see>
     /// </summary>
-    let PanamanianEntity =
-        Namespaced_IRI.parse _namespace_name "PanamanianEntity" |> NamespacedName
-
+    let PanamanianEntity = _prefix "PanamanianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/SalvadorianEntity"></see>
     /// </summary>
-    let SalvadorianEntity =
-        Namespaced_IRI.parse _namespace_name "SalvadorianEntity" |> NamespacedName
+    let SalvadorianEntity = _prefix "SalvadorianEntity"

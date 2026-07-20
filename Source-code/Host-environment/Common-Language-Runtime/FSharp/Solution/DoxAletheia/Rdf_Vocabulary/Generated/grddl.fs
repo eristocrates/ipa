@@ -1,79 +1,66 @@
 namespace http.www.w3.org._2003.g.data_view.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module grddl =
     let _namespace_name = "http://www.w3.org/2003/g/data-view#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/2003/g/data-view#grddl-wg"></see>
     /// </summary>
-    let ``grddl-wg`` = Namespaced_IRI.parse _namespace_name "grddl-wg" |> NamespacedName
-
+    let ``grddl-wg`` = _prefix "grddl-wg"
     /// <summary>
     /// A resource which has the property that all of its essential characteristics can be conveyed in a message
     /// <see href="http://www.w3.org/2003/g/data-view#InformationResource"></see></summary>
-    let InformationResource =
-        Namespaced_IRI.parse _namespace_name "InformationResource" |> NamespacedName
-
+    let InformationResource = _prefix "InformationResource"
     /// <summary>
     /// a
     ///     set of RDF triples
     /// <see href="http://www.w3.org/2003/g/data-view#RDFGraph"></see></summary>
-    let RDFGraph = Namespaced_IRI.parse _namespace_name "RDFGraph" |> NamespacedName
+    let RDFGraph = _prefix "RDFGraph"
     /// <summary>
     /// the root of the tree in the XPath data
     ///     model
     /// <see href="http://www.w3.org/2003/g/data-view#RootNode"></see></summary>
-    let RootNode = Namespaced_IRI.parse _namespace_name "RootNode" |> NamespacedName
-
+    let RootNode = _prefix "RootNode"
     /// <summary>
     /// an InformationResource that specifies
     ///     a transformation from a set of XML documents to RDF graphs
     /// <see href="http://www.w3.org/2003/g/data-view#Transformation"></see></summary>
-    let Transformation =
-        Namespaced_IRI.parse _namespace_name "Transformation" |> NamespacedName
-
+    let Transformation = _prefix "Transformation"
     /// <summary>
     /// relates a transformation to the algorithm
     ///     specified by the property that computes an RDF graph from an XML
     ///     document node
     /// <see href="http://www.w3.org/2003/g/data-view#transformationProperty"></see></summary>
-    let transformationProperty =
-        Namespaced_IRI.parse _namespace_name "transformationProperty" |> NamespacedName
-
+    let transformationProperty = _prefix "transformationProperty"
     /// <summary>
     /// a FunctionalProperty that relates
     ///     XML document root nodes to
     ///     RDF graphs
     /// <see href="http://www.w3.org/2003/g/data-view#TransformationProperty"></see></summary>
-    let TransformationProperty =
-        Namespaced_IRI.parse _namespace_name "TransformationProperty" |> NamespacedName
-
+    let TransformationProperty = _prefix "TransformationProperty"
     /// <summary>
     ///   <see href="http://www.w3.org/2003/g/data-view#danc"></see>
     /// </summary>
-    let danc = Namespaced_IRI.parse _namespace_name "danc" |> NamespacedName
-
+    let danc = _prefix "danc"
     /// <summary>
     ///   <see href="http://www.w3.org/2003/g/data-view#grddlProject"></see>
     /// </summary>
-    let grddlProject =
-        Namespaced_IRI.parse _namespace_name "grddlProject" |> NamespacedName
-
+    let grddlProject = _prefix "grddlProject"
     /// <summary>
     /// relates a namespace to a transformation for
     ///     all documents in that namespace
     /// <see href="http://www.w3.org/2003/g/data-view#namespaceTransformation"></see></summary>
-    let namespaceTransformation =
-        Namespaced_IRI.parse _namespace_name "namespaceTransformation" |> NamespacedName
-
+    let namespaceTransformation = _prefix "namespaceTransformation"
     /// <summary>
     /// relates a profile document to a
     ///     transformation for all documents bearing that profile
     /// <see href="http://www.w3.org/2003/g/data-view#profileTransformation"></see></summary>
-    let profileTransformation =
-        Namespaced_IRI.parse _namespace_name "profileTransformation" |> NamespacedName
-
+    let profileTransformation = _prefix "profileTransformation"
     /// <summary>
     /// an
     ///     RDF graph obtained from an information resource by directly
@@ -81,12 +68,10 @@ module grddl =
     ///     indirectly by parsing some other dialect using a transformation
     ///     nominated by the document
     /// <see href="http://www.w3.org/2003/g/data-view#result"></see></summary>
-    let result = Namespaced_IRI.parse _namespace_name "result" |> NamespacedName
-
+    let result = _prefix "result"
     /// <summary>
     /// relates a source document to a
     ///     transformation, usually represented in XSLT, that relates the source document syntax
     ///     to the RDF graph syntax
     /// <see href="http://www.w3.org/2003/g/data-view#transformation"></see></summary>
-    let transformation =
-        Namespaced_IRI.parse _namespace_name "transformation" |> NamespacedName
+    let transformation = _prefix "transformation"

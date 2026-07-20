@@ -1,37 +1,34 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.sparqlAnalysisTemplate.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module swap_sparqlAnalysisTemplate =
     let _namespace_name =
         "http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#AnalysisResultBinding"></see>
     /// </summary>
-    let AnalysisResultBinding =
-        Namespaced_IRI.parse _namespace_name "AnalysisResultBinding" |> NamespacedName
-
+    let AnalysisResultBinding = _prefix "AnalysisResultBinding"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisQueryTemplate"></see>
     /// </summary>
-    let ClinicalAnalysisQueryTemplate =
-        Namespaced_IRI.parse _namespace_name "ClinicalAnalysisQueryTemplate" |> NamespacedName
+    let ClinicalAnalysisQueryTemplate = _prefix "ClinicalAnalysisQueryTemplate"
 
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisQueryTemplateBinding"></see>
     /// </summary>
     let ClinicalAnalysisQueryTemplateBinding =
-        Namespaced_IRI.parse _namespace_name "ClinicalAnalysisQueryTemplateBinding" |> NamespacedName
+        _prefix "ClinicalAnalysisQueryTemplateBinding"
 
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisResultBinding"></see>
     /// </summary>
-    let ClinicalAnalysisResultBinding =
-        Namespaced_IRI.parse _namespace_name "ClinicalAnalysisResultBinding" |> NamespacedName
-
+    let ClinicalAnalysisResultBinding = _prefix "ClinicalAnalysisResultBinding"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#resultBindingOf"></see>
     /// </summary>
-    let resultBindingOf =
-        Namespaced_IRI.parse _namespace_name "resultBindingOf" |> NamespacedName
+    let resultBindingOf = _prefix "resultBindingOf"

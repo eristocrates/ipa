@@ -1,6 +1,7 @@
 namespace DoxAletheia
-open Rdf_Vocabulary
+
 module Mime_Types =
+    open DoxAletheia
     let all: Mime_Type array =
         [| { registry = "application"
              name = "1d-interleaved-parityfec" }

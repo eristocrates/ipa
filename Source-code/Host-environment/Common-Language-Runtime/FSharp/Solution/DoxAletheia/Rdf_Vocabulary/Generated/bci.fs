@@ -1,1657 +1,1171 @@
 namespace https.w3id.org.BCI_ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module bci =
     let _namespace_name = "https://w3id.org/BCI-ontology#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod"></see>
     /// </summary>
-    let AccessMethod =
-        Namespaced_IRI.parse _namespace_name "AccessMethod" |> NamespacedName
-
+    let AccessMethod = _prefix "AccessMethod"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasLocator"></see>
     /// </summary>
-    let hasLocator = Namespaced_IRI.parse _namespace_name "hasLocator" |> NamespacedName
+    let hasLocator = _prefix "hasLocator"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasType"></see>
     /// </summary>
-    let hasType = Namespaced_IRI.parse _namespace_name "hasType" |> NamespacedName
-
+    let hasType = _prefix "hasType"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.POWDER"></see>
     /// </summary>
-    let ``AccessMethod.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.POWDER" |> NamespacedName
-
+    let ``AccessMethod.POWDER`` = _prefix "AccessMethod.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.CoAP"></see>
     /// </summary>
-    let ``AccessMethod.CoAP`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.CoAP" |> NamespacedName
-
+    let ``AccessMethod.CoAP`` = _prefix "AccessMethod.CoAP"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.CoAP.POWDER"></see>
     /// </summary>
-    let ``AccessMethod.CoAP.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.CoAP.POWDER" |> NamespacedName
-
+    let ``AccessMethod.CoAP.POWDER`` = _prefix "AccessMethod.CoAP.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.MQTT"></see>
     /// </summary>
-    let ``AccessMethod.MQTT`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.MQTT" |> NamespacedName
-
+    let ``AccessMethod.MQTT`` = _prefix "AccessMethod.MQTT"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMQTT.Broker"></see>
     /// </summary>
-    let ``hasMQTT.Broker`` =
-        Namespaced_IRI.parse _namespace_name "hasMQTT.Broker" |> NamespacedName
-
+    let ``hasMQTT.Broker`` = _prefix "hasMQTT.Broker"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMQTT.ID"></see>
     /// </summary>
-    let ``hasMQTT.ID`` =
-        Namespaced_IRI.parse _namespace_name "hasMQTT.ID" |> NamespacedName
-
+    let ``hasMQTT.ID`` = _prefix "hasMQTT.ID"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMQTT.Topic"></see>
     /// </summary>
-    let ``hasMQTT.Topic`` =
-        Namespaced_IRI.parse _namespace_name "hasMQTT.Topic" |> NamespacedName
-
+    let ``hasMQTT.Topic`` = _prefix "hasMQTT.Topic"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.MQTT.POWDER"></see>
     /// </summary>
-    let ``AccessMethod.MQTT.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.MQTT.POWDER" |> NamespacedName
-
+    let ``AccessMethod.MQTT.POWDER`` = _prefix "AccessMethod.MQTT.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.RESTful-JSON"></see>
     /// </summary>
-    let ``AccessMethod.RESTful-JSON`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.RESTful-JSON" |> NamespacedName
+    let ``AccessMethod.RESTful-JSON`` = _prefix "AccessMethod.RESTful-JSON"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#AccessMethod.RESTful-JSON.POWDER"></see>
     /// </summary>
     let ``AccessMethod.RESTful-JSON.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "AccessMethod.RESTful-JSON.POWDER" |> NamespacedName
+        _prefix "AccessMethod.RESTful-JSON.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasPlayoutInstant"></see>
     /// </summary>
-    let hasPlayoutInstant =
-        Namespaced_IRI.parse _namespace_name "hasPlayoutInstant" |> NamespacedName
-
+    let hasPlayoutInstant = _prefix "hasPlayoutInstant"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#PlayoutInstant.SubjectAction"></see>
     /// </summary>
-    let ``PlayoutInstant.SubjectAction`` =
-        Namespaced_IRI.parse _namespace_name "PlayoutInstant.SubjectAction" |> NamespacedName
-
+    let ``PlayoutInstant.SubjectAction`` = _prefix "PlayoutInstant.SubjectAction"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Action.POWDER"></see>
     /// </summary>
-    let ``Action.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Action.POWDER" |> NamespacedName
-
+    let ``Action.POWDER`` = _prefix "Action.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Activity"></see>
     /// </summary>
-    let Activity = Namespaced_IRI.parse _namespace_name "Activity" |> NamespacedName
-
+    let Activity = _prefix "Activity"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDescriptor"></see>
     /// </summary>
-    let hasDescriptor =
-        Namespaced_IRI.parse _namespace_name "hasDescriptor" |> NamespacedName
-
+    let hasDescriptor = _prefix "hasDescriptor"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Descriptor"></see>
     /// </summary>
-    let Descriptor = Namespaced_IRI.parse _namespace_name "Descriptor" |> NamespacedName
+    let Descriptor = _prefix "Descriptor"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasAction"></see>
     /// </summary>
-    let hasAction = Namespaced_IRI.parse _namespace_name "hasAction" |> NamespacedName
-
+    let hasAction = _prefix "hasAction"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Activity.POWDER"></see>
     /// </summary>
-    let ``Activity.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Activity.POWDER" |> NamespacedName
-
+    let ``Activity.POWDER`` = _prefix "Activity.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Aspect"></see>
     /// </summary>
-    let Aspect = Namespaced_IRI.parse _namespace_name "Aspect" |> NamespacedName
+    let Aspect = _prefix "Aspect"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Modality"></see>
     /// </summary>
-    let Modality = Namespaced_IRI.parse _namespace_name "Modality" |> NamespacedName
-
+    let Modality = _prefix "Modality"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasModality"></see>
     /// </summary>
-    let hasModality =
-        Namespaced_IRI.parse _namespace_name "hasModality" |> NamespacedName
-
+    let hasModality = _prefix "hasModality"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasIntensityLevel"></see>
     /// </summary>
-    let hasIntensityLevel =
-        Namespaced_IRI.parse _namespace_name "hasIntensityLevel" |> NamespacedName
-
+    let hasIntensityLevel = _prefix "hasIntensityLevel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Aspect.POWDER"></see>
     /// </summary>
-    let ``Aspect.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Aspect.POWDER" |> NamespacedName
-
+    let ``Aspect.POWDER`` = _prefix "Aspect.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Channel"></see>
     /// </summary>
-    let Channel = Namespaced_IRI.parse _namespace_name "Channel" |> NamespacedName
+    let Channel = _prefix "Channel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasLabel"></see>
     /// </summary>
-    let hasLabel = Namespaced_IRI.parse _namespace_name "hasLabel" |> NamespacedName
-
+    let hasLabel = _prefix "hasLabel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#forModality"></see>
     /// </summary>
-    let forModality =
-        Namespaced_IRI.parse _namespace_name "forModality" |> NamespacedName
-
+    let forModality = _prefix "forModality"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ofAspect"></see>
     /// </summary>
-    let ofAspect = Namespaced_IRI.parse _namespace_name "ofAspect" |> NamespacedName
-
+    let ofAspect = _prefix "ofAspect"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DeviceChannelingSpec"></see>
     /// </summary>
-    let DeviceChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "DeviceChannelingSpec" |> NamespacedName
-
+    let DeviceChannelingSpec = _prefix "DeviceChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isChannelDataOf"></see>
     /// </summary>
-    let isChannelDataOf =
-        Namespaced_IRI.parse _namespace_name "isChannelDataOf" |> NamespacedName
-
+    let isChannelDataOf = _prefix "isChannelDataOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Channel.POWDER"></see>
     /// </summary>
-    let ``Channel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Channel.POWDER" |> NamespacedName
-
+    let ``Channel.POWDER`` = _prefix "Channel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ChannelingSpec"></see>
     /// </summary>
-    let ChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "ChannelingSpec" |> NamespacedName
-
+    let ChannelingSpec = _prefix "ChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``ChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "ChannelingSpec.POWDER" |> NamespacedName
-
+    let ``ChannelingSpec.POWDER`` = _prefix "ChannelingSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#CognitiveAspect"></see>
     /// </summary>
-    let CognitiveAspect =
-        Namespaced_IRI.parse _namespace_name "CognitiveAspect" |> NamespacedName
-
+    let CognitiveAspect = _prefix "CognitiveAspect"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#CognitiveAspect.POWDER"></see>
     /// </summary>
-    let ``CognitiveAspect.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "CognitiveAspect.POWDER" |> NamespacedName
-
+    let ``CognitiveAspect.POWDER`` = _prefix "CognitiveAspect.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Collection"></see>
     /// </summary>
-    let Collection = Namespaced_IRI.parse _namespace_name "Collection" |> NamespacedName
-
+    let Collection = _prefix "Collection"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSituation"></see>
     /// </summary>
-    let hasSituation =
-        Namespaced_IRI.parse _namespace_name "hasSituation" |> NamespacedName
-
+    let hasSituation = _prefix "hasSituation"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Interaction"></see>
     /// </summary>
-    let Interaction =
-        Namespaced_IRI.parse _namespace_name "Interaction" |> NamespacedName
-
+    let Interaction = _prefix "Interaction"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasTitle"></see>
     /// </summary>
-    let hasTitle = Namespaced_IRI.parse _namespace_name "hasTitle" |> NamespacedName
+    let hasTitle = _prefix "hasTitle"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Session"></see>
     /// </summary>
-    let Session = Namespaced_IRI.parse _namespace_name "Session" |> NamespacedName
-
+    let Session = _prefix "Session"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Collection.POWDER"></see>
     /// </summary>
-    let ``Collection.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Collection.POWDER" |> NamespacedName
-
+    let ``Collection.POWDER`` = _prefix "Collection.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSession"></see>
     /// </summary>
-    let hasSession = Namespaced_IRI.parse _namespace_name "hasSession" |> NamespacedName
+    let hasSession = _prefix "hasSession"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasScene"></see>
     /// </summary>
-    let hasScene = Namespaced_IRI.parse _namespace_name "hasScene" |> NamespacedName
-
+    let hasScene = _prefix "hasScene"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.Scene"></see>
     /// </summary>
-    let ``Context.Scene`` =
-        Namespaced_IRI.parse _namespace_name "Context.Scene" |> NamespacedName
-
+    let ``Context.Scene`` = _prefix "Context.Scene"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasPlayout"></see>
     /// </summary>
-    let hasPlayout = Namespaced_IRI.parse _namespace_name "hasPlayout" |> NamespacedName
+    let hasPlayout = _prefix "hasPlayout"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Playout"></see>
     /// </summary>
-    let Playout = Namespaced_IRI.parse _namespace_name "Playout" |> NamespacedName
-
+    let Playout = _prefix "Playout"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasLocation"></see>
     /// </summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.POWDER"></see>
     /// </summary>
-    let ``Context.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Context.POWDER" |> NamespacedName
-
+    let ``Context.POWDER`` = _prefix "Context.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.Object"></see>
     /// </summary>
-    let ``Context.Object`` =
-        Namespaced_IRI.parse _namespace_name "Context.Object" |> NamespacedName
-
+    let ``Context.Object`` = _prefix "Context.Object"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasObject"></see>
     /// </summary>
-    let hasObject = Namespaced_IRI.parse _namespace_name "hasObject" |> NamespacedName
-
+    let hasObject = _prefix "hasObject"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasObjectComponent"></see>
     /// </summary>
-    let hasObjectComponent =
-        Namespaced_IRI.parse _namespace_name "hasObjectComponent" |> NamespacedName
-
+    let hasObjectComponent = _prefix "hasObjectComponent"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.ObjectComponent"></see>
     /// </summary>
-    let ``Context.ObjectComponent`` =
-        Namespaced_IRI.parse _namespace_name "Context.ObjectComponent" |> NamespacedName
-
+    let ``Context.ObjectComponent`` = _prefix "Context.ObjectComponent"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRole"></see>
     /// </summary>
-    let hasRole = Namespaced_IRI.parse _namespace_name "hasRole" |> NamespacedName
-
+    let hasRole = _prefix "hasRole"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.Role"></see>
     /// </summary>
-    let ``Context.Role`` =
-        Namespaced_IRI.parse _namespace_name "Context.Role" |> NamespacedName
-
+    let ``Context.Role`` = _prefix "Context.Role"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.Object.POWDER"></see>
     /// </summary>
-    let ``Context.Object.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Context.Object.POWDER" |> NamespacedName
-
+    let ``Context.Object.POWDER`` = _prefix "Context.Object.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.ObjectComponent.POWDER"></see>
     /// </summary>
-    let ``Context.ObjectComponent.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Context.ObjectComponent.POWDER" |> NamespacedName
-
+    let ``Context.ObjectComponent.POWDER`` = _prefix "Context.ObjectComponent.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.ObjectComponent.Event"></see>
     /// </summary>
-    let ``Context.ObjectComponent.Event`` =
-        Namespaced_IRI.parse _namespace_name "Context.ObjectComponent.Event" |> NamespacedName
-
+    let ``Context.ObjectComponent.Event`` = _prefix "Context.ObjectComponent.Event"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#causes"></see>
     /// </summary>
-    let causes = Namespaced_IRI.parse _namespace_name "causes" |> NamespacedName
-
+    let causes = _prefix "causes"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#PlayoutInstant.ContextEvent"></see>
     /// </summary>
-    let ``PlayoutInstant.ContextEvent`` =
-        Namespaced_IRI.parse _namespace_name "PlayoutInstant.ContextEvent" |> NamespacedName
+    let ``PlayoutInstant.ContextEvent`` = _prefix "PlayoutInstant.ContextEvent"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.ObjectComponent.Event.POWDER"></see>
     /// </summary>
     let ``Context.ObjectComponent.Event.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Context.ObjectComponent.Event.POWDER" |> NamespacedName
+        _prefix "Context.ObjectComponent.Event.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.Role.POWDER"></see>
     /// </summary>
-    let ``Context.Role.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Context.Role.POWDER" |> NamespacedName
-
+    let ``Context.Role.POWDER`` = _prefix "Context.Role.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasPrevious"></see>
     /// </summary>
-    let hasPrevious =
-        Namespaced_IRI.parse _namespace_name "hasPrevious" |> NamespacedName
-
+    let hasPrevious = _prefix "hasPrevious"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasNext"></see>
     /// </summary>
-    let hasNext = Namespaced_IRI.parse _namespace_name "hasNext" |> NamespacedName
-
+    let hasNext = _prefix "hasNext"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Context.Scene.POWDER"></see>
     /// </summary>
-    let ``Context.Scene.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Context.Scene.POWDER" |> NamespacedName
-
+    let ``Context.Scene.POWDER`` = _prefix "Context.Scene.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DataBlock"></see>
     /// </summary>
-    let DataBlock = Namespaced_IRI.parse _namespace_name "DataBlock" |> NamespacedName
-
+    let DataBlock = _prefix "DataBlock"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasTimeStamp"></see>
     /// </summary>
-    let hasTimeStamp =
-        Namespaced_IRI.parse _namespace_name "hasTimeStamp" |> NamespacedName
-
+    let hasTimeStamp = _prefix "hasTimeStamp"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasOrdinalPosition"></see>
     /// </summary>
-    let hasOrdinalPosition =
-        Namespaced_IRI.parse _namespace_name "hasOrdinalPosition" |> NamespacedName
-
+    let hasOrdinalPosition = _prefix "hasOrdinalPosition"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isValueOf"></see>
     /// </summary>
-    let isValueOf = Namespaced_IRI.parse _namespace_name "isValueOf" |> NamespacedName
-
+    let isValueOf = _prefix "isValueOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#RecordedData"></see>
     /// </summary>
-    let RecordedData =
-        Namespaced_IRI.parse _namespace_name "RecordedData" |> NamespacedName
-
+    let RecordedData = _prefix "RecordedData"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasOffset"></see>
     /// </summary>
-    let hasOffset = Namespaced_IRI.parse _namespace_name "hasOffset" |> NamespacedName
-
+    let hasOffset = _prefix "hasOffset"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DataBlock.POWDER"></see>
     /// </summary>
-    let ``DataBlock.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "DataBlock.POWDER" |> NamespacedName
-
+    let ``DataBlock.POWDER`` = _prefix "DataBlock.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DataFormat"></see>
     /// </summary>
-    let DataFormat = Namespaced_IRI.parse _namespace_name "DataFormat" |> NamespacedName
-
+    let DataFormat = _prefix "DataFormat"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DataFormat.POWDER"></see>
     /// </summary>
-    let ``DataFormat.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "DataFormat.POWDER" |> NamespacedName
-
+    let ``DataFormat.POWDER`` = _prefix "DataFormat.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DataSegment"></see>
     /// </summary>
-    let DataSegment =
-        Namespaced_IRI.parse _namespace_name "DataSegment" |> NamespacedName
-
+    let DataSegment = _prefix "DataSegment"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDataBlock"></see>
     /// </summary>
-    let hasDataBlock =
-        Namespaced_IRI.parse _namespace_name "hasDataBlock" |> NamespacedName
-
+    let hasDataBlock = _prefix "hasDataBlock"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isReferencedBy"></see>
     /// </summary>
-    let isReferencedBy =
-        Namespaced_IRI.parse _namespace_name "isReferencedBy" |> NamespacedName
-
+    let isReferencedBy = _prefix "isReferencedBy"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Marker"></see>
     /// </summary>
-    let Marker = Namespaced_IRI.parse _namespace_name "Marker" |> NamespacedName
-
+    let Marker = _prefix "Marker"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DataSegment.POWDER"></see>
     /// </summary>
-    let ``DataSegment.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "DataSegment.POWDER" |> NamespacedName
-
+    let ``DataSegment.POWDER`` = _prefix "DataSegment.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDateTime"></see>
     /// </summary>
-    let hasDateTime =
-        Namespaced_IRI.parse _namespace_name "hasDateTime" |> NamespacedName
-
+    let hasDateTime = _prefix "hasDateTime"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Descriptor.POWDER"></see>
     /// </summary>
-    let ``Descriptor.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Descriptor.POWDER" |> NamespacedName
-
+    let ``Descriptor.POWDER`` = _prefix "Descriptor.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Device"></see>
     /// </summary>
-    let Device = Namespaced_IRI.parse _namespace_name "Device" |> NamespacedName
+    let Device = _prefix "Device"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#madeRecord"></see>
     /// </summary>
-    let madeRecord = Namespaced_IRI.parse _namespace_name "madeRecord" |> NamespacedName
+    let madeRecord = _prefix "madeRecord"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Record"></see>
     /// </summary>
-    let Record = Namespaced_IRI.parse _namespace_name "Record" |> NamespacedName
-
+    let Record = _prefix "Record"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDeviceSpec"></see>
     /// </summary>
-    let hasDeviceSpec =
-        Namespaced_IRI.parse _namespace_name "hasDeviceSpec" |> NamespacedName
-
+    let hasDeviceSpec = _prefix "hasDeviceSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DeviceSpec"></see>
     /// </summary>
-    let DeviceSpec = Namespaced_IRI.parse _namespace_name "DeviceSpec" |> NamespacedName
-
+    let DeviceSpec = _prefix "DeviceSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDeviceChannelingSpec"></see>
     /// </summary>
-    let hasDeviceChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "hasDeviceChannelingSpec" |> NamespacedName
-
+    let hasDeviceChannelingSpec = _prefix "hasDeviceChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observes"></see>
     /// </summary>
-    let observes = Namespaced_IRI.parse _namespace_name "observes" |> NamespacedName
-
+    let observes = _prefix "observes"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasNonChannelData"></see>
     /// </summary>
-    let hasNonChannelData =
-        Namespaced_IRI.parse _namespace_name "hasNonChannelData" |> NamespacedName
-
+    let hasNonChannelData = _prefix "hasNonChannelData"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#NonChannel"></see>
     /// </summary>
-    let NonChannel = Namespaced_IRI.parse _namespace_name "NonChannel" |> NamespacedName
-
+    let NonChannel = _prefix "NonChannel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#StimulusEvent"></see>
     /// </summary>
-    let StimulusEvent =
-        Namespaced_IRI.parse _namespace_name "StimulusEvent" |> NamespacedName
-
+    let StimulusEvent = _prefix "StimulusEvent"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#detects"></see>
     /// </summary>
-    let detects = Namespaced_IRI.parse _namespace_name "detects" |> NamespacedName
-
+    let detects = _prefix "detects"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Device.POWDER"></see>
     /// </summary>
-    let ``Device.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Device.POWDER" |> NamespacedName
-
+    let ``Device.POWDER`` = _prefix "Device.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#extendsChannelingSpec"></see>
     /// </summary>
-    let extendsChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "extendsChannelingSpec" |> NamespacedName
-
+    let extendsChannelingSpec = _prefix "extendsChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasNumberOfChannels"></see>
     /// </summary>
-    let hasNumberOfChannels =
-        Namespaced_IRI.parse _namespace_name "hasNumberOfChannels" |> NamespacedName
-
+    let hasNumberOfChannels = _prefix "hasNumberOfChannels"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasChannelData"></see>
     /// </summary>
-    let hasChannelData =
-        Namespaced_IRI.parse _namespace_name "hasChannelData" |> NamespacedName
-
+    let hasChannelData = _prefix "hasChannelData"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DeviceChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``DeviceChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "DeviceChannelingSpec.POWDER" |> NamespacedName
-
+    let ``DeviceChannelingSpec.POWDER`` = _prefix "DeviceChannelingSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#DeviceSpec.POWDER"></see>
     /// </summary>
-    let ``DeviceSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "DeviceSpec.POWDER" |> NamespacedName
-
+    let ``DeviceSpec.POWDER`` = _prefix "DeviceSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegChannel"></see>
     /// </summary>
-    let EegChannel = Namespaced_IRI.parse _namespace_name "EegChannel" |> NamespacedName
-
+    let EegChannel = _prefix "EegChannel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegChannel.POWDER"></see>
     /// </summary>
-    let ``EegChannel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "EegChannel.POWDER" |> NamespacedName
-
+    let ``EegChannel.POWDER`` = _prefix "EegChannel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegDevice"></see>
     /// </summary>
-    let EegDevice = Namespaced_IRI.parse _namespace_name "EegDevice" |> NamespacedName
-
+    let EegDevice = _prefix "EegDevice"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEegNonChannelData"></see>
     /// </summary>
-    let hasEegNonChannelData =
-        Namespaced_IRI.parse _namespace_name "hasEegNonChannelData" |> NamespacedName
-
+    let hasEegNonChannelData = _prefix "hasEegNonChannelData"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegNonChannel"></see>
     /// </summary>
-    let EegNonChannel =
-        Namespaced_IRI.parse _namespace_name "EegNonChannel" |> NamespacedName
-
+    let EegNonChannel = _prefix "EegNonChannel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#madeEegRecord"></see>
     /// </summary>
-    let madeEegRecord =
-        Namespaced_IRI.parse _namespace_name "madeEegRecord" |> NamespacedName
-
+    let madeEegRecord = _prefix "madeEegRecord"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegRecord"></see>
     /// </summary>
-    let EegRecord = Namespaced_IRI.parse _namespace_name "EegRecord" |> NamespacedName
-
+    let EegRecord = _prefix "EegRecord"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegDevice.POWDER"></see>
     /// </summary>
-    let ``EegDevice.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "EegDevice.POWDER" |> NamespacedName
-
+    let ``EegDevice.POWDER`` = _prefix "EegDevice.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegModality"></see>
     /// </summary>
-    let EegModality =
-        Namespaced_IRI.parse _namespace_name "EegModality" |> NamespacedName
-
+    let EegModality = _prefix "EegModality"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegModality.POWDER"></see>
     /// </summary>
-    let ``EegModality.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "EegModality.POWDER" |> NamespacedName
-
+    let ``EegModality.POWDER`` = _prefix "EegModality.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegNonChannel.POWDER"></see>
     /// </summary>
-    let ``EegNonChannel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "EegNonChannel.POWDER" |> NamespacedName
-
+    let ``EegNonChannel.POWDER`` = _prefix "EegNonChannel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observedByEegDevice"></see>
     /// </summary>
-    let observedByEegDevice =
-        Namespaced_IRI.parse _namespace_name "observedByEegDevice" |> NamespacedName
-
+    let observedByEegDevice = _prefix "observedByEegDevice"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EegRecord.POWDER"></see>
     /// </summary>
-    let ``EegRecord.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "EegRecord.POWDER" |> NamespacedName
-
+    let ``EegRecord.POWDER`` = _prefix "EegRecord.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EmotionalAspect"></see>
     /// </summary>
-    let EmotionalAspect =
-        Namespaced_IRI.parse _namespace_name "EmotionalAspect" |> NamespacedName
-
+    let EmotionalAspect = _prefix "EmotionalAspect"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#EmotionalAspect.POWDER"></see>
     /// </summary>
-    let ``EmotionalAspect.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "EmotionalAspect.POWDER" |> NamespacedName
-
+    let ``EmotionalAspect.POWDER`` = _prefix "EmotionalAspect.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isSituationOf"></see>
     /// </summary>
-    let isSituationOf =
-        Namespaced_IRI.parse _namespace_name "isSituationOf" |> NamespacedName
-
+    let isSituationOf = _prefix "isSituationOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSubject"></see>
     /// </summary>
-    let hasSubject = Namespaced_IRI.parse _namespace_name "hasSubject" |> NamespacedName
+    let hasSubject = _prefix "hasSubject"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Subject"></see>
     /// </summary>
-    let Subject = Namespaced_IRI.parse _namespace_name "Subject" |> NamespacedName
-
+    let Subject = _prefix "Subject"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Interaction.POWDER"></see>
     /// </summary>
-    let ``Interaction.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Interaction.POWDER" |> NamespacedName
-
+    let ``Interaction.POWDER`` = _prefix "Interaction.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#pointsTo"></see>
     /// </summary>
-    let pointsTo = Namespaced_IRI.parse _namespace_name "pointsTo" |> NamespacedName
-
+    let pointsTo = _prefix "pointsTo"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Marker.POWDER"></see>
     /// </summary>
-    let ``Marker.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Marker.POWDER" |> NamespacedName
-
+    let ``Marker.POWDER`` = _prefix "Marker.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isModalityOf"></see>
     /// </summary>
-    let isModalityOf =
-        Namespaced_IRI.parse _namespace_name "isModalityOf" |> NamespacedName
-
+    let isModalityOf = _prefix "isModalityOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasChannelingSpec"></see>
     /// </summary>
-    let hasChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "hasChannelingSpec" |> NamespacedName
-
+    let hasChannelingSpec = _prefix "hasChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Modality.POWDER"></see>
     /// </summary>
-    let ``Modality.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Modality.POWDER" |> NamespacedName
-
+    let ``Modality.POWDER`` = _prefix "Modality.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Model"></see>
     /// </summary>
-    let Model = Namespaced_IRI.parse _namespace_name "Model" |> NamespacedName
-
+    let Model = _prefix "Model"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasModelIRI"></see>
     /// </summary>
-    let hasModelIRI =
-        Namespaced_IRI.parse _namespace_name "hasModelIRI" |> NamespacedName
-
+    let hasModelIRI = _prefix "hasModelIRI"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isModelOf"></see>
     /// </summary>
-    let isModelOf = Namespaced_IRI.parse _namespace_name "isModelOf" |> NamespacedName
-
+    let isModelOf = _prefix "isModelOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ResponseTag"></see>
     /// </summary>
-    let ResponseTag =
-        Namespaced_IRI.parse _namespace_name "ResponseTag" |> NamespacedName
-
+    let ResponseTag = _prefix "ResponseTag"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#analizes"></see>
     /// </summary>
-    let analizes = Namespaced_IRI.parse _namespace_name "analizes" |> NamespacedName
-
+    let analizes = _prefix "analizes"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Model.POWDER"></see>
     /// </summary>
-    let ``Model.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Model.POWDER" |> NamespacedName
-
+    let ``Model.POWDER`` = _prefix "Model.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#NeurologicalAspect"></see>
     /// </summary>
-    let NeurologicalAspect =
-        Namespaced_IRI.parse _namespace_name "NeurologicalAspect" |> NamespacedName
-
+    let NeurologicalAspect = _prefix "NeurologicalAspect"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#NeurologicalAspect.POWDER"></see>
     /// </summary>
-    let ``NeurologicalAspect.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "NeurologicalAspect.POWDER" |> NamespacedName
-
+    let ``NeurologicalAspect.POWDER`` = _prefix "NeurologicalAspect.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#NonChannel.POWDER"></see>
     /// </summary>
-    let ``NonChannel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "NonChannel.POWDER" |> NamespacedName
-
+    let ``NonChannel.POWDER`` = _prefix "NonChannel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasStartTime"></see>
     /// </summary>
-    let hasStartTime =
-        Namespaced_IRI.parse _namespace_name "hasStartTime" |> NamespacedName
-
+    let hasStartTime = _prefix "hasStartTime"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#PlayoutInstant"></see>
     /// </summary>
-    let PlayoutInstant =
-        Namespaced_IRI.parse _namespace_name "PlayoutInstant" |> NamespacedName
-
+    let PlayoutInstant = _prefix "PlayoutInstant"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEndTime"></see>
     /// </summary>
-    let hasEndTime = Namespaced_IRI.parse _namespace_name "hasEndTime" |> NamespacedName
-
+    let hasEndTime = _prefix "hasEndTime"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isPlayoutOf"></see>
     /// </summary>
-    let isPlayoutOf =
-        Namespaced_IRI.parse _namespace_name "isPlayoutOf" |> NamespacedName
-
+    let isPlayoutOf = _prefix "isPlayoutOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Playout.POWDER"></see>
     /// </summary>
-    let ``Playout.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Playout.POWDER" |> NamespacedName
-
+    let ``Playout.POWDER`` = _prefix "Playout.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#PlayoutInstant.POWDER"></see>
     /// </summary>
-    let ``PlayoutInstant.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "PlayoutInstant.POWDER" |> NamespacedName
+    let ``PlayoutInstant.POWDER`` = _prefix "PlayoutInstant.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#PlayoutInstant.ContextEvent.POWDER"></see>
     /// </summary>
     let ``PlayoutInstant.ContextEvent.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "PlayoutInstant.ContextEvent.POWDER" |> NamespacedName
+        _prefix "PlayoutInstant.ContextEvent.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#PlayoutInstant.SubjectAction.POWDER"></see>
     /// </summary>
     let ``PlayoutInstant.SubjectAction.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "PlayoutInstant.SubjectAction.POWDER" |> NamespacedName
+        _prefix "PlayoutInstant.SubjectAction.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ProtocolBuffersDataFormat"></see>
     /// </summary>
-    let ProtocolBuffersDataFormat =
-        Namespaced_IRI.parse _namespace_name "ProtocolBuffersDataFormat" |> NamespacedName
+    let ProtocolBuffersDataFormat = _prefix "ProtocolBuffersDataFormat"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ProtocolBuffersDataFormat.POWDER"></see>
     /// </summary>
     let ``ProtocolBuffersDataFormat.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "ProtocolBuffersDataFormat.POWDER" |> NamespacedName
+        _prefix "ProtocolBuffersDataFormat.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isRecordOf"></see>
     /// </summary>
-    let isRecordOf = Namespaced_IRI.parse _namespace_name "isRecordOf" |> NamespacedName
-
+    let isRecordOf = _prefix "isRecordOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSampleCount"></see>
     /// </summary>
-    let hasSampleCount =
-        Namespaced_IRI.parse _namespace_name "hasSampleCount" |> NamespacedName
-
+    let hasSampleCount = _prefix "hasSampleCount"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRecordChannelingSpec"></see>
     /// </summary>
-    let hasRecordChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "hasRecordChannelingSpec" |> NamespacedName
-
+    let hasRecordChannelingSpec = _prefix "hasRecordChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#RecordChannelingSpec"></see>
     /// </summary>
-    let RecordChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "RecordChannelingSpec" |> NamespacedName
-
+    let RecordChannelingSpec = _prefix "RecordChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observedModality"></see>
     /// </summary>
-    let observedModality =
-        Namespaced_IRI.parse _namespace_name "observedModality" |> NamespacedName
-
+    let observedModality = _prefix "observedModality"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSamplingRate"></see>
     /// </summary>
-    let hasSamplingRate =
-        Namespaced_IRI.parse _namespace_name "hasSamplingRate" |> NamespacedName
-
+    let hasSamplingRate = _prefix "hasSamplingRate"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRecordSpec"></see>
     /// </summary>
-    let hasRecordSpec =
-        Namespaced_IRI.parse _namespace_name "hasRecordSpec" |> NamespacedName
-
+    let hasRecordSpec = _prefix "hasRecordSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#RecordSpec"></see>
     /// </summary>
-    let RecordSpec = Namespaced_IRI.parse _namespace_name "RecordSpec" |> NamespacedName
-
+    let RecordSpec = _prefix "RecordSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#aspectOfInterest"></see>
     /// </summary>
-    let aspectOfInterest =
-        Namespaced_IRI.parse _namespace_name "aspectOfInterest" |> NamespacedName
-
+    let aspectOfInterest = _prefix "aspectOfInterest"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observationResult"></see>
     /// </summary>
-    let observationResult =
-        Namespaced_IRI.parse _namespace_name "observationResult" |> NamespacedName
-
+    let observationResult = _prefix "observationResult"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMeasurementProperty"></see>
     /// </summary>
-    let hasMeasurementProperty =
-        Namespaced_IRI.parse _namespace_name "hasMeasurementProperty" |> NamespacedName
-
+    let hasMeasurementProperty = _prefix "hasMeasurementProperty"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observedByDevice"></see>
     /// </summary>
-    let observedByDevice =
-        Namespaced_IRI.parse _namespace_name "observedByDevice" |> NamespacedName
-
+    let observedByDevice = _prefix "observedByDevice"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#includesEvent"></see>
     /// </summary>
-    let includesEvent =
-        Namespaced_IRI.parse _namespace_name "includesEvent" |> NamespacedName
-
+    let includesEvent = _prefix "includesEvent"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Record.POWDER"></see>
     /// </summary>
-    let ``Record.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Record.POWDER" |> NamespacedName
-
+    let ``Record.POWDER`` = _prefix "Record.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#extendsDeviceChannelingSpec"></see>
     /// </summary>
-    let extendsDeviceChannelingSpec =
-        Namespaced_IRI.parse _namespace_name "extendsDeviceChannelingSpec" |> NamespacedName
-
+    let extendsDeviceChannelingSpec = _prefix "extendsDeviceChannelingSpec"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEndChannel"></see>
     /// </summary>
-    let hasEndChannel =
-        Namespaced_IRI.parse _namespace_name "hasEndChannel" |> NamespacedName
-
+    let hasEndChannel = _prefix "hasEndChannel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasStartChannel"></see>
     /// </summary>
-    let hasStartChannel =
-        Namespaced_IRI.parse _namespace_name "hasStartChannel" |> NamespacedName
-
+    let hasStartChannel = _prefix "hasStartChannel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#extends"></see>
     /// </summary>
-    let extends = Namespaced_IRI.parse _namespace_name "extends" |> NamespacedName
-
+    let extends = _prefix "extends"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#RecordChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``RecordChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "RecordChannelingSpec.POWDER" |> NamespacedName
-
+    let ``RecordChannelingSpec.POWDER`` = _prefix "RecordChannelingSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#RecordSpec.POWDER"></see>
     /// </summary>
-    let ``RecordSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "RecordSpec.POWDER" |> NamespacedName
-
+    let ``RecordSpec.POWDER`` = _prefix "RecordSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasValue"></see>
     /// </summary>
-    let hasValue = Namespaced_IRI.parse _namespace_name "hasValue" |> NamespacedName
-
+    let hasValue = _prefix "hasValue"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isObservationResultOf"></see>
     /// </summary>
-    let isObservationResultOf =
-        Namespaced_IRI.parse _namespace_name "isObservationResultOf" |> NamespacedName
-
+    let isObservationResultOf = _prefix "isObservationResultOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isProducedByDevice"></see>
     /// </summary>
-    let isProducedByDevice =
-        Namespaced_IRI.parse _namespace_name "isProducedByDevice" |> NamespacedName
-
+    let isProducedByDevice = _prefix "isProducedByDevice"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDataFormat"></see>
     /// </summary>
-    let hasDataFormat =
-        Namespaced_IRI.parse _namespace_name "hasDataFormat" |> NamespacedName
-
+    let hasDataFormat = _prefix "hasDataFormat"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasAccessMethod"></see>
     /// </summary>
-    let hasAccessMethod =
-        Namespaced_IRI.parse _namespace_name "hasAccessMethod" |> NamespacedName
-
+    let hasAccessMethod = _prefix "hasAccessMethod"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#RecordedData.POWDER"></see>
     /// </summary>
-    let ``RecordedData.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "RecordedData.POWDER" |> NamespacedName
-
+    let ``RecordedData.POWDER`` = _prefix "RecordedData.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasConfidence"></see>
     /// </summary>
-    let hasConfidence =
-        Namespaced_IRI.parse _namespace_name "hasConfidence" |> NamespacedName
-
+    let hasConfidence = _prefix "hasConfidence"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasModel"></see>
     /// </summary>
-    let hasModel = Namespaced_IRI.parse _namespace_name "hasModel" |> NamespacedName
+    let hasModel = _prefix "hasModel"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasState"></see>
     /// </summary>
-    let hasState = Namespaced_IRI.parse _namespace_name "hasState" |> NamespacedName
-
+    let hasState = _prefix "hasState"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ResponseTag.POWDER"></see>
     /// </summary>
-    let ``ResponseTag.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "ResponseTag.POWDER" |> NamespacedName
-
+    let ``ResponseTag.POWDER`` = _prefix "ResponseTag.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#SamplingRate"></see>
     /// </summary>
-    let SamplingRate =
-        Namespaced_IRI.parse _namespace_name "SamplingRate" |> NamespacedName
-
+    let SamplingRate = _prefix "SamplingRate"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#SamplingRate.POWDER"></see>
     /// </summary>
-    let ``SamplingRate.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "SamplingRate.POWDER" |> NamespacedName
-
+    let ``SamplingRate.POWDER`` = _prefix "SamplingRate.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isSessionOf"></see>
     /// </summary>
-    let isSessionOf =
-        Namespaced_IRI.parse _namespace_name "isSessionOf" |> NamespacedName
-
+    let isSessionOf = _prefix "isSessionOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRecord"></see>
     /// </summary>
-    let hasRecord = Namespaced_IRI.parse _namespace_name "hasRecord" |> NamespacedName
-
+    let hasRecord = _prefix "hasRecord"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSubjectState"></see>
     /// </summary>
-    let hasSubjectState =
-        Namespaced_IRI.parse _namespace_name "hasSubjectState" |> NamespacedName
-
+    let hasSubjectState = _prefix "hasSubjectState"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#SubjectState"></see>
     /// </summary>
-    let SubjectState =
-        Namespaced_IRI.parse _namespace_name "SubjectState" |> NamespacedName
-
+    let SubjectState = _prefix "SubjectState"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasActivity"></see>
     /// </summary>
-    let hasActivity =
-        Namespaced_IRI.parse _namespace_name "hasActivity" |> NamespacedName
-
+    let hasActivity = _prefix "hasActivity"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Session.POWDER"></see>
     /// </summary>
-    let ``Session.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Session.POWDER" |> NamespacedName
-
+    let ``Session.POWDER`` = _prefix "Session.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isStimulusEventOf"></see>
     /// </summary>
-    let isStimulusEventOf =
-        Namespaced_IRI.parse _namespace_name "isStimulusEventOf" |> NamespacedName
-
+    let isStimulusEventOf = _prefix "isStimulusEventOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#StimulusTag"></see>
     /// </summary>
-    let StimulusTag =
-        Namespaced_IRI.parse _namespace_name "StimulusTag" |> NamespacedName
-
+    let StimulusTag = _prefix "StimulusTag"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isProxyFor"></see>
     /// </summary>
-    let isProxyFor = Namespaced_IRI.parse _namespace_name "isProxyFor" |> NamespacedName
-
+    let isProxyFor = _prefix "isProxyFor"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#StimulusEvent.POWDER"></see>
     /// </summary>
-    let ``StimulusEvent.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "StimulusEvent.POWDER" |> NamespacedName
-
+    let ``StimulusEvent.POWDER`` = _prefix "StimulusEvent.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasStimulusEvent"></see>
     /// </summary>
-    let hasStimulusEvent =
-        Namespaced_IRI.parse _namespace_name "hasStimulusEvent" |> NamespacedName
-
+    let hasStimulusEvent = _prefix "hasStimulusEvent"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#StimulusTag.POWDER"></see>
     /// </summary>
-    let ``StimulusTag.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "StimulusTag.POWDER" |> NamespacedName
-
+    let ``StimulusTag.POWDER`` = _prefix "StimulusTag.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isSubjectOf"></see>
     /// </summary>
-    let isSubjectOf =
-        Namespaced_IRI.parse _namespace_name "isSubjectOf" |> NamespacedName
-
+    let isSubjectOf = _prefix "isSubjectOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#Subject.POWDER"></see>
     /// </summary>
-    let ``Subject.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "Subject.POWDER" |> NamespacedName
-
+    let ``Subject.POWDER`` = _prefix "Subject.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#SubjectState.POWDER"></see>
     /// </summary>
-    let ``SubjectState.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "SubjectState.POWDER" |> NamespacedName
-
+    let ``SubjectState.POWDER`` = _prefix "SubjectState.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#XdfDataFormat"></see>
     /// </summary>
-    let XdfDataFormat =
-        Namespaced_IRI.parse _namespace_name "XdfDataFormat" |> NamespacedName
-
+    let XdfDataFormat = _prefix "XdfDataFormat"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#XdfDataFormat.POWDER"></see>
     /// </summary>
-    let ``XdfDataFormat.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "XdfDataFormat.POWDER" |> NamespacedName
-
+    let ``XdfDataFormat.POWDER`` = _prefix "XdfDataFormat.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#analizes.POWDER"></see>
     /// </summary>
-    let ``analizes.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "analizes.POWDER" |> NamespacedName
-
+    let ``analizes.POWDER`` = _prefix "analizes.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#aspectOfInterest.POWDER"></see>
     /// </summary>
-    let ``aspectOfInterest.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "aspectOfInterest.POWDER" |> NamespacedName
-
+    let ``aspectOfInterest.POWDER`` = _prefix "aspectOfInterest.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#causes.POWDER"></see>
     /// </summary>
-    let ``causes.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "causes.POWDER" |> NamespacedName
-
+    let ``causes.POWDER`` = _prefix "causes.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#detects.POWDER"></see>
     /// </summary>
-    let ``detects.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "detects.POWDER" |> NamespacedName
-
+    let ``detects.POWDER`` = _prefix "detects.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#extends.POWDER"></see>
     /// </summary>
-    let ``extends.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "extends.POWDER" |> NamespacedName
-
+    let ``extends.POWDER`` = _prefix "extends.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#extendsChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``extendsChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "extendsChannelingSpec.POWDER" |> NamespacedName
+    let ``extendsChannelingSpec.POWDER`` = _prefix "extendsChannelingSpec.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#extendsDeviceChannelingSpec.POWDER"></see>
     /// </summary>
     let ``extendsDeviceChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "extendsDeviceChannelingSpec.POWDER" |> NamespacedName
+        _prefix "extendsDeviceChannelingSpec.POWDER"
 
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#forModality.POWDER"></see>
     /// </summary>
-    let ``forModality.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "forModality.POWDER" |> NamespacedName
-
+    let ``forModality.POWDER`` = _prefix "forModality.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasAccessMethod.POWDER"></see>
     /// </summary>
-    let ``hasAccessMethod.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasAccessMethod.POWDER" |> NamespacedName
-
+    let ``hasAccessMethod.POWDER`` = _prefix "hasAccessMethod.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasAction.POWDER"></see>
     /// </summary>
-    let ``hasAction.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasAction.POWDER" |> NamespacedName
-
+    let ``hasAction.POWDER`` = _prefix "hasAction.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasActivity.POWDER"></see>
     /// </summary>
-    let ``hasActivity.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasActivity.POWDER" |> NamespacedName
-
+    let ``hasActivity.POWDER`` = _prefix "hasActivity.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasChannelData.POWDER"></see>
     /// </summary>
-    let ``hasChannelData.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasChannelData.POWDER" |> NamespacedName
-
+    let ``hasChannelData.POWDER`` = _prefix "hasChannelData.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``hasChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasChannelingSpec.POWDER" |> NamespacedName
-
+    let ``hasChannelingSpec.POWDER`` = _prefix "hasChannelingSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasConfidence.POWDER"></see>
     /// </summary>
-    let ``hasConfidence.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasConfidence.POWDER" |> NamespacedName
-
+    let ``hasConfidence.POWDER`` = _prefix "hasConfidence.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDataBlock.POWDER"></see>
     /// </summary>
-    let ``hasDataBlock.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasDataBlock.POWDER" |> NamespacedName
-
+    let ``hasDataBlock.POWDER`` = _prefix "hasDataBlock.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDataFormat.POWDER"></see>
     /// </summary>
-    let ``hasDataFormat.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasDataFormat.POWDER" |> NamespacedName
-
+    let ``hasDataFormat.POWDER`` = _prefix "hasDataFormat.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDateTime.POWDER"></see>
     /// </summary>
-    let ``hasDateTime.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasDateTime.POWDER" |> NamespacedName
-
+    let ``hasDateTime.POWDER`` = _prefix "hasDateTime.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDescriptor.POWDER"></see>
     /// </summary>
-    let ``hasDescriptor.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasDescriptor.POWDER" |> NamespacedName
-
+    let ``hasDescriptor.POWDER`` = _prefix "hasDescriptor.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDeviceChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``hasDeviceChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasDeviceChannelingSpec.POWDER" |> NamespacedName
-
+    let ``hasDeviceChannelingSpec.POWDER`` = _prefix "hasDeviceChannelingSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasDeviceSpec.POWDER"></see>
     /// </summary>
-    let ``hasDeviceSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasDeviceSpec.POWDER" |> NamespacedName
-
+    let ``hasDeviceSpec.POWDER`` = _prefix "hasDeviceSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEegChannelData"></see>
     /// </summary>
-    let hasEegChannelData =
-        Namespaced_IRI.parse _namespace_name "hasEegChannelData" |> NamespacedName
-
+    let hasEegChannelData = _prefix "hasEegChannelData"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEegChannelData.POWDER"></see>
     /// </summary>
-    let ``hasEegChannelData.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasEegChannelData.POWDER" |> NamespacedName
-
+    let ``hasEegChannelData.POWDER`` = _prefix "hasEegChannelData.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEegNonChannelData.POWDER"></see>
     /// </summary>
-    let ``hasEegNonChannelData.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasEegNonChannelData.POWDER" |> NamespacedName
-
+    let ``hasEegNonChannelData.POWDER`` = _prefix "hasEegNonChannelData.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEndChannel.POWDER"></see>
     /// </summary>
-    let ``hasEndChannel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasEndChannel.POWDER" |> NamespacedName
-
+    let ``hasEndChannel.POWDER`` = _prefix "hasEndChannel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasEndTime.POWDER"></see>
     /// </summary>
-    let ``hasEndTime.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasEndTime.POWDER" |> NamespacedName
-
+    let ``hasEndTime.POWDER`` = _prefix "hasEndTime.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasIntensityLevel.POWDER"></see>
     /// </summary>
-    let ``hasIntensityLevel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasIntensityLevel.POWDER" |> NamespacedName
-
+    let ``hasIntensityLevel.POWDER`` = _prefix "hasIntensityLevel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasLabel.POWDER"></see>
     /// </summary>
-    let ``hasLabel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasLabel.POWDER" |> NamespacedName
-
+    let ``hasLabel.POWDER`` = _prefix "hasLabel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasLocation.POWDER"></see>
     /// </summary>
-    let ``hasLocation.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasLocation.POWDER" |> NamespacedName
-
+    let ``hasLocation.POWDER`` = _prefix "hasLocation.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasLocator.POWDER"></see>
     /// </summary>
-    let ``hasLocator.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasLocator.POWDER" |> NamespacedName
-
+    let ``hasLocator.POWDER`` = _prefix "hasLocator.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMQTT.Broker.POWDER"></see>
     /// </summary>
-    let ``hasMQTT.Broker.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasMQTT.Broker.POWDER" |> NamespacedName
-
+    let ``hasMQTT.Broker.POWDER`` = _prefix "hasMQTT.Broker.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMQTT.ID.POWDER"></see>
     /// </summary>
-    let ``hasMQTT.ID.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasMQTT.ID.POWDER" |> NamespacedName
-
+    let ``hasMQTT.ID.POWDER`` = _prefix "hasMQTT.ID.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMQTT.Topic.POWDER"></see>
     /// </summary>
-    let ``hasMQTT.Topic.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasMQTT.Topic.POWDER" |> NamespacedName
-
+    let ``hasMQTT.Topic.POWDER`` = _prefix "hasMQTT.Topic.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasMeasurementProperty.POWDER"></see>
     /// </summary>
-    let ``hasMeasurementProperty.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasMeasurementProperty.POWDER" |> NamespacedName
-
+    let ``hasMeasurementProperty.POWDER`` = _prefix "hasMeasurementProperty.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasModality.POWDER"></see>
     /// </summary>
-    let ``hasModality.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasModality.POWDER" |> NamespacedName
-
+    let ``hasModality.POWDER`` = _prefix "hasModality.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasModel.POWDER"></see>
     /// </summary>
-    let ``hasModel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasModel.POWDER" |> NamespacedName
-
+    let ``hasModel.POWDER`` = _prefix "hasModel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasModelIRI.POWDER"></see>
     /// </summary>
-    let ``hasModelIRI.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasModelIRI.POWDER" |> NamespacedName
-
+    let ``hasModelIRI.POWDER`` = _prefix "hasModelIRI.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasNext.POWDER"></see>
     /// </summary>
-    let ``hasNext.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasNext.POWDER" |> NamespacedName
-
+    let ``hasNext.POWDER`` = _prefix "hasNext.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasNonChannelData.POWDER"></see>
     /// </summary>
-    let ``hasNonChannelData.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasNonChannelData.POWDER" |> NamespacedName
-
+    let ``hasNonChannelData.POWDER`` = _prefix "hasNonChannelData.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasNumberOfChannels.POWDER"></see>
     /// </summary>
-    let ``hasNumberOfChannels.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasNumberOfChannels.POWDER" |> NamespacedName
-
+    let ``hasNumberOfChannels.POWDER`` = _prefix "hasNumberOfChannels.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasObject.POWDER"></see>
     /// </summary>
-    let ``hasObject.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasObject.POWDER" |> NamespacedName
-
+    let ``hasObject.POWDER`` = _prefix "hasObject.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasObjectComponent.POWDER"></see>
     /// </summary>
-    let ``hasObjectComponent.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasObjectComponent.POWDER" |> NamespacedName
-
+    let ``hasObjectComponent.POWDER`` = _prefix "hasObjectComponent.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasOffset.POWDER"></see>
     /// </summary>
-    let ``hasOffset.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasOffset.POWDER" |> NamespacedName
-
+    let ``hasOffset.POWDER`` = _prefix "hasOffset.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasOrdinalPosition.POWDER"></see>
     /// </summary>
-    let ``hasOrdinalPosition.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasOrdinalPosition.POWDER" |> NamespacedName
-
+    let ``hasOrdinalPosition.POWDER`` = _prefix "hasOrdinalPosition.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasPlayout.POWDER"></see>
     /// </summary>
-    let ``hasPlayout.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasPlayout.POWDER" |> NamespacedName
-
+    let ``hasPlayout.POWDER`` = _prefix "hasPlayout.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasPlayoutInstant.POWDER"></see>
     /// </summary>
-    let ``hasPlayoutInstant.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasPlayoutInstant.POWDER" |> NamespacedName
-
+    let ``hasPlayoutInstant.POWDER`` = _prefix "hasPlayoutInstant.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasPrevious.POWDER"></see>
     /// </summary>
-    let ``hasPrevious.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasPrevious.POWDER" |> NamespacedName
-
+    let ``hasPrevious.POWDER`` = _prefix "hasPrevious.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRecord.POWDER"></see>
     /// </summary>
-    let ``hasRecord.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasRecord.POWDER" |> NamespacedName
-
+    let ``hasRecord.POWDER`` = _prefix "hasRecord.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRecordChannelingSpec.POWDER"></see>
     /// </summary>
-    let ``hasRecordChannelingSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasRecordChannelingSpec.POWDER" |> NamespacedName
-
+    let ``hasRecordChannelingSpec.POWDER`` = _prefix "hasRecordChannelingSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRecordSpec.POWDER"></see>
     /// </summary>
-    let ``hasRecordSpec.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasRecordSpec.POWDER" |> NamespacedName
-
+    let ``hasRecordSpec.POWDER`` = _prefix "hasRecordSpec.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasRole.POWDER"></see>
     /// </summary>
-    let ``hasRole.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasRole.POWDER" |> NamespacedName
-
+    let ``hasRole.POWDER`` = _prefix "hasRole.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSampleCount.POWDER"></see>
     /// </summary>
-    let ``hasSampleCount.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasSampleCount.POWDER" |> NamespacedName
-
+    let ``hasSampleCount.POWDER`` = _prefix "hasSampleCount.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSamplingRate.POWDER"></see>
     /// </summary>
-    let ``hasSamplingRate.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasSamplingRate.POWDER" |> NamespacedName
-
+    let ``hasSamplingRate.POWDER`` = _prefix "hasSamplingRate.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasScene.POWDER"></see>
     /// </summary>
-    let ``hasScene.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasScene.POWDER" |> NamespacedName
-
+    let ``hasScene.POWDER`` = _prefix "hasScene.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSession.POWDER"></see>
     /// </summary>
-    let ``hasSession.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasSession.POWDER" |> NamespacedName
-
+    let ``hasSession.POWDER`` = _prefix "hasSession.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSituation.POWDER"></see>
     /// </summary>
-    let ``hasSituation.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasSituation.POWDER" |> NamespacedName
-
+    let ``hasSituation.POWDER`` = _prefix "hasSituation.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasStartChannel.POWDER"></see>
     /// </summary>
-    let ``hasStartChannel.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasStartChannel.POWDER" |> NamespacedName
-
+    let ``hasStartChannel.POWDER`` = _prefix "hasStartChannel.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasStartTime.POWDER"></see>
     /// </summary>
-    let ``hasStartTime.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasStartTime.POWDER" |> NamespacedName
-
+    let ``hasStartTime.POWDER`` = _prefix "hasStartTime.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasState.POWDER"></see>
     /// </summary>
-    let ``hasState.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasState.POWDER" |> NamespacedName
-
+    let ``hasState.POWDER`` = _prefix "hasState.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasStimulusEvent.POWDER"></see>
     /// </summary>
-    let ``hasStimulusEvent.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasStimulusEvent.POWDER" |> NamespacedName
-
+    let ``hasStimulusEvent.POWDER`` = _prefix "hasStimulusEvent.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSubject.POWDER"></see>
     /// </summary>
-    let ``hasSubject.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasSubject.POWDER" |> NamespacedName
-
+    let ``hasSubject.POWDER`` = _prefix "hasSubject.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasSubjectState.POWDER"></see>
     /// </summary>
-    let ``hasSubjectState.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasSubjectState.POWDER" |> NamespacedName
-
+    let ``hasSubjectState.POWDER`` = _prefix "hasSubjectState.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasTimeStamp.POWDER"></see>
     /// </summary>
-    let ``hasTimeStamp.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasTimeStamp.POWDER" |> NamespacedName
-
+    let ``hasTimeStamp.POWDER`` = _prefix "hasTimeStamp.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasTitle.POWDER"></see>
     /// </summary>
-    let ``hasTitle.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasTitle.POWDER" |> NamespacedName
-
+    let ``hasTitle.POWDER`` = _prefix "hasTitle.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasType.POWDER"></see>
     /// </summary>
-    let ``hasType.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasType.POWDER" |> NamespacedName
-
+    let ``hasType.POWDER`` = _prefix "hasType.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#hasValue.POWDER"></see>
     /// </summary>
-    let ``hasValue.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "hasValue.POWDER" |> NamespacedName
-
+    let ``hasValue.POWDER`` = _prefix "hasValue.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#includesEvent.POWDER"></see>
     /// </summary>
-    let ``includesEvent.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "includesEvent.POWDER" |> NamespacedName
-
+    let ``includesEvent.POWDER`` = _prefix "includesEvent.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isChannelDataOf.POWDER"></see>
     /// </summary>
-    let ``isChannelDataOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isChannelDataOf.POWDER" |> NamespacedName
-
+    let ``isChannelDataOf.POWDER`` = _prefix "isChannelDataOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isEegChannelDataOf"></see>
     /// </summary>
-    let isEegChannelDataOf =
-        Namespaced_IRI.parse _namespace_name "isEegChannelDataOf" |> NamespacedName
-
+    let isEegChannelDataOf = _prefix "isEegChannelDataOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isEegChannelDataOf.POWDER"></see>
     /// </summary>
-    let ``isEegChannelDataOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isEegChannelDataOf.POWDER" |> NamespacedName
-
+    let ``isEegChannelDataOf.POWDER`` = _prefix "isEegChannelDataOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isModalityOf.POWDER"></see>
     /// </summary>
-    let ``isModalityOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isModalityOf.POWDER" |> NamespacedName
-
+    let ``isModalityOf.POWDER`` = _prefix "isModalityOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isModelOf.POWDER"></see>
     /// </summary>
-    let ``isModelOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isModelOf.POWDER" |> NamespacedName
-
+    let ``isModelOf.POWDER`` = _prefix "isModelOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isObservationResultOf.POWDER"></see>
     /// </summary>
-    let ``isObservationResultOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isObservationResultOf.POWDER" |> NamespacedName
-
+    let ``isObservationResultOf.POWDER`` = _prefix "isObservationResultOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isPlayoutInstantOf"></see>
     /// </summary>
-    let isPlayoutInstantOf =
-        Namespaced_IRI.parse _namespace_name "isPlayoutInstantOf" |> NamespacedName
-
+    let isPlayoutInstantOf = _prefix "isPlayoutInstantOf"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isPlayoutInstantOf.POWDER"></see>
     /// </summary>
-    let ``isPlayoutInstantOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isPlayoutInstantOf.POWDER" |> NamespacedName
-
+    let ``isPlayoutInstantOf.POWDER`` = _prefix "isPlayoutInstantOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isPlayoutOf.POWDER"></see>
     /// </summary>
-    let ``isPlayoutOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isPlayoutOf.POWDER" |> NamespacedName
-
+    let ``isPlayoutOf.POWDER`` = _prefix "isPlayoutOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isProducedByDevice.POWDER"></see>
     /// </summary>
-    let ``isProducedByDevice.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isProducedByDevice.POWDER" |> NamespacedName
-
+    let ``isProducedByDevice.POWDER`` = _prefix "isProducedByDevice.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isProxyFor.POWDER"></see>
     /// </summary>
-    let ``isProxyFor.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isProxyFor.POWDER" |> NamespacedName
-
+    let ``isProxyFor.POWDER`` = _prefix "isProxyFor.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isRecordOf.POWDER"></see>
     /// </summary>
-    let ``isRecordOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isRecordOf.POWDER" |> NamespacedName
-
+    let ``isRecordOf.POWDER`` = _prefix "isRecordOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isReferencedBy.POWDER"></see>
     /// </summary>
-    let ``isReferencedBy.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isReferencedBy.POWDER" |> NamespacedName
-
+    let ``isReferencedBy.POWDER`` = _prefix "isReferencedBy.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isSessionOf.POWDER"></see>
     /// </summary>
-    let ``isSessionOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isSessionOf.POWDER" |> NamespacedName
-
+    let ``isSessionOf.POWDER`` = _prefix "isSessionOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isSituationOf.POWDER"></see>
     /// </summary>
-    let ``isSituationOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isSituationOf.POWDER" |> NamespacedName
-
+    let ``isSituationOf.POWDER`` = _prefix "isSituationOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isStimulusEventOf.POWDER"></see>
     /// </summary>
-    let ``isStimulusEventOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isStimulusEventOf.POWDER" |> NamespacedName
-
+    let ``isStimulusEventOf.POWDER`` = _prefix "isStimulusEventOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isSubjectOf.POWDER"></see>
     /// </summary>
-    let ``isSubjectOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isSubjectOf.POWDER" |> NamespacedName
-
+    let ``isSubjectOf.POWDER`` = _prefix "isSubjectOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#isValueOf.POWDER"></see>
     /// </summary>
-    let ``isValueOf.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "isValueOf.POWDER" |> NamespacedName
-
+    let ``isValueOf.POWDER`` = _prefix "isValueOf.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#madeEegRecord.POWDER"></see>
     /// </summary>
-    let ``madeEegRecord.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "madeEegRecord.POWDER" |> NamespacedName
-
+    let ``madeEegRecord.POWDER`` = _prefix "madeEegRecord.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#madeRecord.POWDER"></see>
     /// </summary>
-    let ``madeRecord.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "madeRecord.POWDER" |> NamespacedName
-
+    let ``madeRecord.POWDER`` = _prefix "madeRecord.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observationResult.POWDER"></see>
     /// </summary>
-    let ``observationResult.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "observationResult.POWDER" |> NamespacedName
-
+    let ``observationResult.POWDER`` = _prefix "observationResult.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observedByDevice.POWDER"></see>
     /// </summary>
-    let ``observedByDevice.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "observedByDevice.POWDER" |> NamespacedName
-
+    let ``observedByDevice.POWDER`` = _prefix "observedByDevice.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observedByEegDevice.POWDER"></see>
     /// </summary>
-    let ``observedByEegDevice.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "observedByEegDevice.POWDER" |> NamespacedName
-
+    let ``observedByEegDevice.POWDER`` = _prefix "observedByEegDevice.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observedModality.POWDER"></see>
     /// </summary>
-    let ``observedModality.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "observedModality.POWDER" |> NamespacedName
-
+    let ``observedModality.POWDER`` = _prefix "observedModality.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#observes.POWDER"></see>
     /// </summary>
-    let ``observes.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "observes.POWDER" |> NamespacedName
-
+    let ``observes.POWDER`` = _prefix "observes.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#ofAspect.POWDER"></see>
     /// </summary>
-    let ``ofAspect.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "ofAspect.POWDER" |> NamespacedName
-
+    let ``ofAspect.POWDER`` = _prefix "ofAspect.POWDER"
     /// <summary>
     ///   <see href="https://w3id.org/BCI-ontology#pointsTo.POWDER"></see>
     /// </summary>
-    let ``pointsTo.POWDER`` =
-        Namespaced_IRI.parse _namespace_name "pointsTo.POWDER" |> NamespacedName
+    let ``pointsTo.POWDER`` = _prefix "pointsTo.POWDER"

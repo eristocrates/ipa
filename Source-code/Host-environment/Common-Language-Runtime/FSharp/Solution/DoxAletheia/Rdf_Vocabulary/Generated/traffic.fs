@@ -1,253 +1,203 @@
 namespace http.www.sensormeasurement.appspot.com.ont.transport.traffic.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module traffic =
     let _namespace_name =
         "http://www.sensormeasurement.appspot.com/ont/transport/traffic#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#MaintainSpeed"></see>
     /// </summary>
-    let MaintainSpeed =
-        Namespaced_IRI.parse _namespace_name "MaintainSpeed" |> NamespacedName
-
+    let MaintainSpeed = _prefix "MaintainSpeed"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#c"></see>
     /// </summary>
-    let c = Namespaced_IRI.parse _namespace_name "c" |> NamespacedName
+    let c = _prefix "c"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Behind"></see>
     /// </summary>
-    let Behind = Namespaced_IRI.parse _namespace_name "Behind" |> NamespacedName
+    let Behind = _prefix "Behind"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Overtaker"></see>
     /// </summary>
-    let Overtaker = Namespaced_IRI.parse _namespace_name "Overtaker" |> NamespacedName
-
+    let Overtaker = _prefix "Overtaker"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#bigSpeedDifference"></see>
     /// </summary>
-    let bigSpeedDifference =
-        Namespaced_IRI.parse _namespace_name "bigSpeedDifference" |> NamespacedName
-
+    let bigSpeedDifference = _prefix "bigSpeedDifference"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#speedWithAheadCar"></see>
     /// </summary>
-    let speedWithAheadCar =
-        Namespaced_IRI.parse _namespace_name "speedWithAheadCar" |> NamespacedName
-
+    let speedWithAheadCar = _prefix "speedWithAheadCar"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#speedWithBehindCar"></see>
     /// </summary>
-    let speedWithBehindCar =
-        Namespaced_IRI.parse _namespace_name "speedWithBehindCar" |> NamespacedName
-
+    let speedWithBehindCar = _prefix "speedWithBehindCar"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#SoftDecelerate"></see>
     /// </summary>
-    let SoftDecelerate =
-        Namespaced_IRI.parse _namespace_name "SoftDecelerate" |> NamespacedName
-
+    let SoftDecelerate = _prefix "SoftDecelerate"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#LastBeforeGap"></see>
     /// </summary>
-    let LastBeforeGap =
-        Namespaced_IRI.parse _namespace_name "LastBeforeGap" |> NamespacedName
-
+    let LastBeforeGap = _prefix "LastBeforeGap"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#NotOvertaker"></see>
     /// </summary>
-    let NotOvertaker =
-        Namespaced_IRI.parse _namespace_name "NotOvertaker" |> NamespacedName
-
+    let NotOvertaker = _prefix "NotOvertaker"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#speedWithOvertaker"></see>
     /// </summary>
-    let speedWithOvertaker =
-        Namespaced_IRI.parse _namespace_name "speedWithOvertaker" |> NamespacedName
-
+    let speedWithOvertaker = _prefix "speedWithOvertaker"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#AfterGap"></see>
     /// </summary>
-    let AfterGap = Namespaced_IRI.parse _namespace_name "AfterGap" |> NamespacedName
-
+    let AfterGap = _prefix "AfterGap"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#isInFrontOfOvertaker"></see>
     /// </summary>
-    let isInFrontOfOvertaker =
-        Namespaced_IRI.parse _namespace_name "isInFrontOfOvertaker" |> NamespacedName
-
+    let isInFrontOfOvertaker = _prefix "isInFrontOfOvertaker"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Accelerate"></see>
     /// </summary>
-    let Accelerate = Namespaced_IRI.parse _namespace_name "Accelerate" |> NamespacedName
+    let Accelerate = _prefix "Accelerate"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#BeforeGap"></see>
     /// </summary>
-    let BeforeGap = Namespaced_IRI.parse _namespace_name "BeforeGap" |> NamespacedName
+    let BeforeGap = _prefix "BeforeGap"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#NoSpace"></see>
     /// </summary>
-    let NoSpace = Namespaced_IRI.parse _namespace_name "NoSpace" |> NamespacedName
-
+    let NoSpace = _prefix "NoSpace"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#FirstAfterGap"></see>
     /// </summary>
-    let FirstAfterGap =
-        Namespaced_IRI.parse _namespace_name "FirstAfterGap" |> NamespacedName
-
+    let FirstAfterGap = _prefix "FirstAfterGap"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Lateral"></see>
     /// </summary>
-    let Lateral = Namespaced_IRI.parse _namespace_name "Lateral" |> NamespacedName
-
+    let Lateral = _prefix "Lateral"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#speedWithBeforeTheGapCar"></see>
     /// </summary>
-    let speedWithBeforeTheGapCar =
-        Namespaced_IRI.parse _namespace_name "speedWithBeforeTheGapCar" |> NamespacedName
-
+    let speedWithBeforeTheGapCar = _prefix "speedWithBeforeTheGapCar"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#SoftAccelerate"></see>
     /// </summary>
-    let SoftAccelerate =
-        Namespaced_IRI.parse _namespace_name "SoftAccelerate" |> NamespacedName
-
+    let SoftAccelerate = _prefix "SoftAccelerate"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Vehicle"></see>
     /// </summary>
-    let Vehicle = Namespaced_IRI.parse _namespace_name "Vehicle" |> NamespacedName
-
+    let Vehicle = _prefix "Vehicle"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#isOvertaking"></see>
     /// </summary>
-    let isOvertaking =
-        Namespaced_IRI.parse _namespace_name "isOvertaking" |> NamespacedName
-
+    let isOvertaking = _prefix "isOvertaking"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#MaintainDistanceWithCarInFront"></see>
     /// </summary>
-    let MaintainDistanceWithCarInFront =
-        Namespaced_IRI.parse _namespace_name "MaintainDistanceWithCarInFront" |> NamespacedName
-
+    let MaintainDistanceWithCarInFront = _prefix "MaintainDistanceWithCarInFront"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasSpaceAhead"></see>
     /// </summary>
-    let hasSpaceAhead =
-        Namespaced_IRI.parse _namespace_name "hasSpaceAhead" |> NamespacedName
-
+    let hasSpaceAhead = _prefix "hasSpaceAhead"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasSpaceLateral"></see>
     /// </summary>
-    let hasSpaceLateral =
-        Namespaced_IRI.parse _namespace_name "hasSpaceLateral" |> NamespacedName
-
+    let hasSpaceLateral = _prefix "hasSpaceLateral"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Ahead"></see>
     /// </summary>
-    let Ahead = Namespaced_IRI.parse _namespace_name "Ahead" |> NamespacedName
-
+    let Ahead = _prefix "Ahead"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#beforeTheGap"></see>
     /// </summary>
-    let beforeTheGap =
-        Namespaced_IRI.parse _namespace_name "beforeTheGap" |> NamespacedName
-
+    let beforeTheGap = _prefix "beforeTheGap"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#lastFirstBeforeAfter-TheGap"></see>
     /// </summary>
-    let ``lastFirstBeforeAfter-TheGap`` =
-        Namespaced_IRI.parse _namespace_name "lastFirstBeforeAfter-TheGap" |> NamespacedName
-
+    let ``lastFirstBeforeAfter-TheGap`` = _prefix "lastFirstBeforeAfter-TheGap"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasSpaceBehind"></see>
     /// </summary>
-    let hasSpaceBehind =
-        Namespaced_IRI.parse _namespace_name "hasSpaceBehind" |> NamespacedName
-
+    let hasSpaceBehind = _prefix "hasSpaceBehind"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Decelerate"></see>
     /// </summary>
-    let Decelerate = Namespaced_IRI.parse _namespace_name "Decelerate" |> NamespacedName
+    let Decelerate = _prefix "Decelerate"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#ChangeLine"></see>
     /// </summary>
-    let ChangeLine = Namespaced_IRI.parse _namespace_name "ChangeLine" |> NamespacedName
+    let ChangeLine = _prefix "ChangeLine"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#isActionDoneBy"></see>
     /// </summary>
-    let isActionDoneBy =
-        Namespaced_IRI.parse _namespace_name "isActionDoneBy" |> NamespacedName
-
+    let isActionDoneBy = _prefix "isActionDoneBy"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Position"></see>
     /// </summary>
-    let Position = Namespaced_IRI.parse _namespace_name "Position" |> NamespacedName
+    let Position = _prefix "Position"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Space"></see>
     /// </summary>
-    let Space = Namespaced_IRI.parse _namespace_name "Space" |> NamespacedName
+    let Space = _prefix "Space"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Car1"></see>
     /// </summary>
-    let Car1 = Namespaced_IRI.parse _namespace_name "Car1" |> NamespacedName
+    let Car1 = _prefix "Car1"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Car2"></see>
     /// </summary>
-    let Car2 = Namespaced_IRI.parse _namespace_name "Car2" |> NamespacedName
+    let Car2 = _prefix "Car2"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Car3"></see>
     /// </summary>
-    let Car3 = Namespaced_IRI.parse _namespace_name "Car3" |> NamespacedName
+    let Car3 = _prefix "Car3"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#Car4"></see>
     /// </summary>
-    let Car4 = Namespaced_IRI.parse _namespace_name "Car4" |> NamespacedName
+    let Car4 = _prefix "Car4"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#doesAction"></see>
     /// </summary>
-    let doesAction = Namespaced_IRI.parse _namespace_name "doesAction" |> NamespacedName
+    let doesAction = _prefix "doesAction"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#position"></see>
     /// </summary>
-    let position = Namespaced_IRI.parse _namespace_name "position" |> NamespacedName
+    let position = _prefix "position"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#speedWith"></see>
     /// </summary>
-    let speedWith = Namespaced_IRI.parse _namespace_name "speedWith" |> NamespacedName
-
+    let speedWith = _prefix "speedWith"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasDirectionValue"></see>
     /// </summary>
-    let hasDirectionValue =
-        Namespaced_IRI.parse _namespace_name "hasDirectionValue" |> NamespacedName
-
+    let hasDirectionValue = _prefix "hasDirectionValue"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#movement"></see>
     /// </summary>
-    let movement = Namespaced_IRI.parse _namespace_name "movement" |> NamespacedName
+    let movement = _prefix "movement"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasSpace"></see>
     /// </summary>
-    let hasSpace = Namespaced_IRI.parse _namespace_name "hasSpace" |> NamespacedName
-
+    let hasSpace = _prefix "hasSpace"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasSpeedValue"></see>
     /// </summary>
-    let hasSpeedValue =
-        Namespaced_IRI.parse _namespace_name "hasSpeedValue" |> NamespacedName
-
+    let hasSpeedValue = _prefix "hasSpeedValue"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasXValue"></see>
     /// </summary>
-    let hasXValue = Namespaced_IRI.parse _namespace_name "hasXValue" |> NamespacedName
+    let hasXValue = _prefix "hasXValue"
     /// <summary>
     ///   <see href="http://www.sensormeasurement.appspot.com/ont/transport/traffic#hasYValue"></see>
     /// </summary>
-    let hasYValue = Namespaced_IRI.parse _namespace_name "hasYValue" |> NamespacedName
+    let hasYValue = _prefix "hasYValue"

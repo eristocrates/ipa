@@ -1,42 +1,38 @@
 namespace http.www.wsmo.org.ns.wsmo_lite.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module wsl =
     let _namespace_name = "http://www.wsmo.org/ns/wsmo-lite#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#Condition"></see>
     /// </summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#Effect"></see>
     /// </summary>
-    let Effect = Namespaced_IRI.parse _namespace_name "Effect" |> NamespacedName
-
+    let Effect = _prefix "Effect"
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#FunctionalClassificationRoot"></see>
     /// </summary>
-    let FunctionalClassificationRoot =
-        Namespaced_IRI.parse _namespace_name "FunctionalClassificationRoot" |> NamespacedName
-
+    let FunctionalClassificationRoot = _prefix "FunctionalClassificationRoot"
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#NonfunctionalParameter"></see>
     /// </summary>
-    let NonfunctionalParameter =
-        Namespaced_IRI.parse _namespace_name "NonfunctionalParameter" |> NamespacedName
-
+    let NonfunctionalParameter = _prefix "NonfunctionalParameter"
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#Ontology"></see>
     /// </summary>
-    let Ontology = Namespaced_IRI.parse _namespace_name "Ontology" |> NamespacedName
-
+    let Ontology = _prefix "Ontology"
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#usesOntology"></see>
     /// </summary>
-    let usesOntology =
-        Namespaced_IRI.parse _namespace_name "usesOntology" |> NamespacedName
-
+    let usesOntology = _prefix "usesOntology"
     /// <summary>
     ///   <see href="http://www.wsmo.org/ns/wsmo-lite#Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
+    let Service = _prefix "Service"

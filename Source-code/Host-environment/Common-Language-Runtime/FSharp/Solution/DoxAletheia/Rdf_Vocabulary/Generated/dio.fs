@@ -1,263 +1,202 @@
 namespace https.w3id.org.dio.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dio =
     let _namespace_name = "https://w3id.org/dio#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/dio#Active"></see>
     /// </summary>
-    let Active = Namespaced_IRI.parse _namespace_name "Active" |> NamespacedName
+    let Active = _prefix "Active"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Status"></see>
     /// </summary>
-    let Status = Namespaced_IRI.parse _namespace_name "Status" |> NamespacedName
-
+    let Status = _prefix "Status"
     /// <summary>
     ///   <see href="https://w3id.org/dio#AlternativeSolution"></see>
     /// </summary>
-    let AlternativeSolution =
-        Namespaced_IRI.parse _namespace_name "AlternativeSolution" |> NamespacedName
-
+    let AlternativeSolution = _prefix "AlternativeSolution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Solution"></see>
     /// </summary>
-    let Solution = Namespaced_IRI.parse _namespace_name "Solution" |> NamespacedName
+    let Solution = _prefix "Solution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Argument"></see>
     /// </summary>
-    let Argument = Namespaced_IRI.parse _namespace_name "Argument" |> NamespacedName
-
+    let Argument = _prefix "Argument"
     /// <summary>
     ///   <see href="https://w3id.org/dio#DesignIntentArtifact"></see>
     /// </summary>
-    let DesignIntentArtifact =
-        Namespaced_IRI.parse _namespace_name "DesignIntentArtifact" |> NamespacedName
-
+    let DesignIntentArtifact = _prefix "DesignIntentArtifact"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Assumption"></see>
     /// </summary>
-    let Assumption = Namespaced_IRI.parse _namespace_name "Assumption" |> NamespacedName
+    let Assumption = _prefix "Assumption"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Comment"></see>
     /// </summary>
-    let Comment = Namespaced_IRI.parse _namespace_name "Comment" |> NamespacedName
+    let Comment = _prefix "Comment"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Constraint"></see>
     /// </summary>
-    let Constraint = Namespaced_IRI.parse _namespace_name "Constraint" |> NamespacedName
+    let Constraint = _prefix "Constraint"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Design"></see>
     /// </summary>
-    let Design = Namespaced_IRI.parse _namespace_name "Design" |> NamespacedName
-
+    let Design = _prefix "Design"
     /// <summary>
     ///   <see href="https://w3id.org/dio#DesignDecision"></see>
     /// </summary>
-    let DesignDecision =
-        Namespaced_IRI.parse _namespace_name "DesignDecision" |> NamespacedName
-
+    let DesignDecision = _prefix "DesignDecision"
     /// <summary>
     ///   <see href="https://w3id.org/dio#DesignGoal"></see>
     /// </summary>
-    let DesignGoal = Namespaced_IRI.parse _namespace_name "DesignGoal" |> NamespacedName
-
+    let DesignGoal = _prefix "DesignGoal"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasAlternativeSolution"></see>
     /// </summary>
-    let hasAlternativeSolution =
-        Namespaced_IRI.parse _namespace_name "hasAlternativeSolution" |> NamespacedName
-
+    let hasAlternativeSolution = _prefix "hasAlternativeSolution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#MandatedSolution"></see>
     /// </summary>
-    let MandatedSolution =
-        Namespaced_IRI.parse _namespace_name "MandatedSolution" |> NamespacedName
-
+    let MandatedSolution = _prefix "MandatedSolution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasMandatedSolution"></see>
     /// </summary>
-    let hasMandatedSolution =
-        Namespaced_IRI.parse _namespace_name "hasMandatedSolution" |> NamespacedName
-
+    let hasMandatedSolution = _prefix "hasMandatedSolution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#DesignIssue"></see>
     /// </summary>
-    let DesignIssue =
-        Namespaced_IRI.parse _namespace_name "DesignIssue" |> NamespacedName
-
+    let DesignIssue = _prefix "DesignIssue"
     /// <summary>
     ///   <see href="https://w3id.org/dio#DesignIntent"></see>
     /// </summary>
-    let DesignIntent =
-        Namespaced_IRI.parse _namespace_name "DesignIntent" |> NamespacedName
-
+    let DesignIntent = _prefix "DesignIntent"
     /// <summary>
     ///   <see href="https://w3id.org/dio#version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
-
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="https://w3id.org/dio#DesignRequirement"></see>
     /// </summary>
-    let DesignRequirement =
-        Namespaced_IRI.parse _namespace_name "DesignRequirement" |> NamespacedName
-
+    let DesignRequirement = _prefix "DesignRequirement"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Evaluation"></see>
     /// </summary>
-    let Evaluation = Namespaced_IRI.parse _namespace_name "Evaluation" |> NamespacedName
+    let Evaluation = _prefix "Evaluation"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Evidence"></see>
     /// </summary>
-    let Evidence = Namespaced_IRI.parse _namespace_name "Evidence" |> NamespacedName
+    let Evidence = _prefix "Evidence"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Heuristic"></see>
     /// </summary>
-    let Heuristic = Namespaced_IRI.parse _namespace_name "Heuristic" |> NamespacedName
-
+    let Heuristic = _prefix "Heuristic"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Justification"></see>
     /// </summary>
-    let Justification =
-        Namespaced_IRI.parse _namespace_name "Justification" |> NamespacedName
-
+    let Justification = _prefix "Justification"
     /// <summary>
     ///   <see href="https://w3id.org/dio#OnHold"></see>
     /// </summary>
-    let OnHold = Namespaced_IRI.parse _namespace_name "OnHold" |> NamespacedName
-
+    let OnHold = _prefix "OnHold"
     /// <summary>
     ///   <see href="https://w3id.org/dio#RationaleCaptureMethod"></see>
     /// </summary>
-    let RationaleCaptureMethod =
-        Namespaced_IRI.parse _namespace_name "RationaleCaptureMethod" |> NamespacedName
-
+    let RationaleCaptureMethod = _prefix "RationaleCaptureMethod"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Resolved"></see>
     /// </summary>
-    let Resolved = Namespaced_IRI.parse _namespace_name "Resolved" |> NamespacedName
+    let Resolved = _prefix "Resolved"
     /// <summary>
     ///   <see href="https://w3id.org/dio#Terminated"></see>
     /// </summary>
-    let Terminated = Namespaced_IRI.parse _namespace_name "Terminated" |> NamespacedName
-
+    let Terminated = _prefix "Terminated"
     /// <summary>
     ///   <see href="https://w3id.org/dio#addressedBy"></see>
     /// </summary>
-    let addressedBy =
-        Namespaced_IRI.parse _namespace_name "addressedBy" |> NamespacedName
-
+    let addressedBy = _prefix "addressedBy"
     /// <summary>
     ///   <see href="https://w3id.org/dio#captureMethodology"></see>
     /// </summary>
-    let captureMethodology =
-        Namespaced_IRI.parse _namespace_name "captureMethodology" |> NamespacedName
-
+    let captureMethodology = _prefix "captureMethodology"
     /// <summary>
     ///   <see href="https://w3id.org/dio#contradicts"></see>
     /// </summary>
-    let contradicts =
-        Namespaced_IRI.parse _namespace_name "contradicts" |> NamespacedName
-
+    let contradicts = _prefix "contradicts"
     /// <summary>
     ///   <see href="https://w3id.org/dio#fulfillsRequirement"></see>
     /// </summary>
-    let fulfillsRequirement =
-        Namespaced_IRI.parse _namespace_name "fulfillsRequirement" |> NamespacedName
-
+    let fulfillsRequirement = _prefix "fulfillsRequirement"
     /// <summary>
     ///   <see href="https://w3id.org/dio#requirementFulfilledBy"></see>
     /// </summary>
-    let requirementFulfilledBy =
-        Namespaced_IRI.parse _namespace_name "requirementFulfilledBy" |> NamespacedName
-
+    let requirementFulfilledBy = _prefix "requirementFulfilledBy"
     /// <summary>
     ///   <see href="https://w3id.org/dio#governsDesign"></see>
     /// </summary>
-    let governsDesign =
-        Namespaced_IRI.parse _namespace_name "governsDesign" |> NamespacedName
-
+    let governsDesign = _prefix "governsDesign"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasArgument"></see>
     /// </summary>
-    let hasArgument =
-        Namespaced_IRI.parse _namespace_name "hasArgument" |> NamespacedName
-
+    let hasArgument = _prefix "hasArgument"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasComment"></see>
     /// </summary>
-    let hasComment = Namespaced_IRI.parse _namespace_name "hasComment" |> NamespacedName
-
+    let hasComment = _prefix "hasComment"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasConstraint"></see>
     /// </summary>
-    let hasConstraint =
-        Namespaced_IRI.parse _namespace_name "hasConstraint" |> NamespacedName
-
+    let hasConstraint = _prefix "hasConstraint"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasEvidence"></see>
     /// </summary>
-    let hasEvidence =
-        Namespaced_IRI.parse _namespace_name "hasEvidence" |> NamespacedName
-
+    let hasEvidence = _prefix "hasEvidence"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasJustification"></see>
     /// </summary>
-    let hasJustification =
-        Namespaced_IRI.parse _namespace_name "hasJustification" |> NamespacedName
-
+    let hasJustification = _prefix "hasJustification"
     /// <summary>
     ///   <see href="https://w3id.org/dio#hasStatus"></see>
     /// </summary>
-    let hasStatus = Namespaced_IRI.parse _namespace_name "hasStatus" |> NamespacedName
-
+    let hasStatus = _prefix "hasStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dio#intentAddresses"></see>
     /// </summary>
-    let intentAddresses =
-        Namespaced_IRI.parse _namespace_name "intentAddresses" |> NamespacedName
-
+    let intentAddresses = _prefix "intentAddresses"
     /// <summary>
     ///   <see href="https://w3id.org/dio#leadsTo"></see>
     /// </summary>
-    let leadsTo = Namespaced_IRI.parse _namespace_name "leadsTo" |> NamespacedName
-
+    let leadsTo = _prefix "leadsTo"
     /// <summary>
     ///   <see href="https://w3id.org/dio#providesAlternativeSolution"></see>
     /// </summary>
-    let providesAlternativeSolution =
-        Namespaced_IRI.parse _namespace_name "providesAlternativeSolution" |> NamespacedName
-
+    let providesAlternativeSolution = _prefix "providesAlternativeSolution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#providesMandatedSolution"></see>
     /// </summary>
-    let providesMandatedSolution =
-        Namespaced_IRI.parse _namespace_name "providesMandatedSolution" |> NamespacedName
-
+    let providesMandatedSolution = _prefix "providesMandatedSolution"
     /// <summary>
     ///   <see href="https://w3id.org/dio#rationaleCapturedUsing"></see>
     /// </summary>
-    let rationaleCapturedUsing =
-        Namespaced_IRI.parse _namespace_name "rationaleCapturedUsing" |> NamespacedName
-
+    let rationaleCapturedUsing = _prefix "rationaleCapturedUsing"
     /// <summary>
     ///   <see href="https://w3id.org/dio#refines"></see>
     /// </summary>
-    let refines = Namespaced_IRI.parse _namespace_name "refines" |> NamespacedName
+    let refines = _prefix "refines"
     /// <summary>
     ///   <see href="https://w3id.org/dio#supports"></see>
     /// </summary>
-    let supports = Namespaced_IRI.parse _namespace_name "supports" |> NamespacedName
-
+    let supports = _prefix "supports"
     /// <summary>
     ///   <see href="https://w3id.org/dio#usesAssumption"></see>
     /// </summary>
-    let usesAssumption =
-        Namespaced_IRI.parse _namespace_name "usesAssumption" |> NamespacedName
-
+    let usesAssumption = _prefix "usesAssumption"
     /// <summary>
     ///   <see href="https://w3id.org/dio#usesHeuristic"></see>
     /// </summary>
-    let usesHeuristic =
-        Namespaced_IRI.parse _namespace_name "usesHeuristic" |> NamespacedName
+    let usesHeuristic = _prefix "usesHeuristic"

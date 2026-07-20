@@ -1,154 +1,119 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.GoalsAndObjectives.Objectives.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_gao_obj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Aim"></see>
     /// </summary>
-    let Aim = Namespaced_IRI.parse _namespace_name "Aim" |> NamespacedName
-
+    let Aim = _prefix "Aim"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/isAddressedBy"></see>
     /// </summary>
-    let isAddressedBy =
-        Namespaced_IRI.parse _namespace_name "isAddressedBy" |> NamespacedName
-
+    let isAddressedBy = _prefix "isAddressedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Approach"></see>
     /// </summary>
-    let Approach = Namespaced_IRI.parse _namespace_name "Approach" |> NamespacedName
+    let Approach = _prefix "Approach"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/addresses"></see>
     /// </summary>
-    let addresses = Namespaced_IRI.parse _namespace_name "addresses" |> NamespacedName
-
+    let addresses = _prefix "addresses"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/hasObjective"></see>
     /// </summary>
-    let hasObjective =
-        Namespaced_IRI.parse _namespace_name "hasObjective" |> NamespacedName
-
+    let hasObjective = _prefix "hasObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Objective"></see>
     /// </summary>
-    let Objective = Namespaced_IRI.parse _namespace_name "Objective" |> NamespacedName
-
+    let Objective = _prefix "Objective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/BusinessObjective"></see>
     /// </summary>
-    let BusinessObjective =
-        Namespaced_IRI.parse _namespace_name "BusinessObjective" |> NamespacedName
-
+    let BusinessObjective = _prefix "BusinessObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/BusinessStrategy"></see>
     /// </summary>
-    let BusinessStrategy =
-        Namespaced_IRI.parse _namespace_name "BusinessStrategy" |> NamespacedName
-
+    let BusinessStrategy = _prefix "BusinessStrategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Strategy"></see>
     /// </summary>
-    let Strategy = Namespaced_IRI.parse _namespace_name "Strategy" |> NamespacedName
-
+    let Strategy = _prefix "Strategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/DistributionStrategy"></see>
     /// </summary>
-    let DistributionStrategy =
-        Namespaced_IRI.parse _namespace_name "DistributionStrategy" |> NamespacedName
-
+    let DistributionStrategy = _prefix "DistributionStrategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/FinancialObjective"></see>
     /// </summary>
-    let FinancialObjective =
-        Namespaced_IRI.parse _namespace_name "FinancialObjective" |> NamespacedName
-
+    let FinancialObjective = _prefix "FinancialObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Goal"></see>
     /// </summary>
-    let Goal = Namespaced_IRI.parse _namespace_name "Goal" |> NamespacedName
-
+    let Goal = _prefix "Goal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/InvestmentObjective"></see>
     /// </summary>
-    let InvestmentObjective =
-        Namespaced_IRI.parse _namespace_name "InvestmentObjective" |> NamespacedName
-
+    let InvestmentObjective = _prefix "InvestmentObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/LocalInvestmentObjective"></see>
     /// </summary>
-    let LocalInvestmentObjective =
-        Namespaced_IRI.parse _namespace_name "LocalInvestmentObjective" |> NamespacedName
-
+    let LocalInvestmentObjective = _prefix "LocalInvestmentObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Method"></see>
     /// </summary>
-    let Method = Namespaced_IRI.parse _namespace_name "Method" |> NamespacedName
+    let Method = _prefix "Method"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Program"></see>
     /// </summary>
-    let Program = Namespaced_IRI.parse _namespace_name "Program" |> NamespacedName
+    let Program = _prefix "Program"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/hasGoal"></see>
     /// </summary>
-    let hasGoal = Namespaced_IRI.parse _namespace_name "hasGoal" |> NamespacedName
-
+    let hasGoal = _prefix "hasGoal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/ProgramIdentifier"></see>
     /// </summary>
-    let ProgramIdentifier =
-        Namespaced_IRI.parse _namespace_name "ProgramIdentifier" |> NamespacedName
-
+    let ProgramIdentifier = _prefix "ProgramIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/ProgramName"></see>
     /// </summary>
-    let ProgramName =
-        Namespaced_IRI.parse _namespace_name "ProgramName" |> NamespacedName
-
+    let ProgramName = _prefix "ProgramName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Project"></see>
     /// </summary>
-    let Project = Namespaced_IRI.parse _namespace_name "Project" |> NamespacedName
-
+    let Project = _prefix "Project"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/ProjectIdentifier"></see>
     /// </summary>
-    let ProjectIdentifier =
-        Namespaced_IRI.parse _namespace_name "ProjectIdentifier" |> NamespacedName
-
+    let ProjectIdentifier = _prefix "ProjectIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/ProjectName"></see>
     /// </summary>
-    let ProjectName =
-        Namespaced_IRI.parse _namespace_name "ProjectName" |> NamespacedName
-
+    let ProjectName = _prefix "ProjectName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/SalesStrategy"></see>
     /// </summary>
-    let SalesStrategy =
-        Namespaced_IRI.parse _namespace_name "SalesStrategy" |> NamespacedName
-
+    let SalesStrategy = _prefix "SalesStrategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/Study"></see>
     /// </summary>
-    let Study = Namespaced_IRI.parse _namespace_name "Study" |> NamespacedName
-
+    let Study = _prefix "Study"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/TripleBottomLineObjective"></see>
     /// </summary>
-    let TripleBottomLineObjective =
-        Namespaced_IRI.parse _namespace_name "TripleBottomLineObjective" |> NamespacedName
-
+    let TripleBottomLineObjective = _prefix "TripleBottomLineObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/hasStrategy"></see>
     /// </summary>
-    let hasStrategy =
-        Namespaced_IRI.parse _namespace_name "hasStrategy" |> NamespacedName
-
+    let hasStrategy = _prefix "hasStrategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/usesMethod"></see>
     /// </summary>
-    let usesMethod = Namespaced_IRI.parse _namespace_name "usesMethod" |> NamespacedName
+    let usesMethod = _prefix "usesMethod"

@@ -1,253 +1,185 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.DerivativesBasics.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_bsc =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/CalculationAgent"></see>
     /// </summary>
-    let CalculationAgent =
-        Namespaced_IRI.parse _namespace_name "CalculationAgent" |> NamespacedName
-
+    let CalculationAgent = _prefix "CalculationAgent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/CashflowExpression"></see>
     /// </summary>
-    let CashflowExpression =
-        Namespaced_IRI.parse _namespace_name "CashflowExpression" |> NamespacedName
-
+    let CashflowExpression = _prefix "CashflowExpression"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/CashflowFormula"></see>
     /// </summary>
-    let CashflowFormula =
-        Namespaced_IRI.parse _namespace_name "CashflowFormula" |> NamespacedName
-
+    let CashflowFormula = _prefix "CashflowFormula"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/CashflowTerms"></see>
     /// </summary>
-    let CashflowTerms =
-        Namespaced_IRI.parse _namespace_name "CashflowTerms" |> NamespacedName
-
+    let CashflowTerms = _prefix "CashflowTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/DerivativeTerms"></see>
     /// </summary>
-    let DerivativeTerms =
-        Namespaced_IRI.parse _namespace_name "DerivativeTerms" |> NamespacedName
-
+    let DerivativeTerms = _prefix "DerivativeTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/ContractForDifference"></see>
     /// </summary>
-    let ContractForDifference =
-        Namespaced_IRI.parse _namespace_name "ContractForDifference" |> NamespacedName
-
+    let ContractForDifference = _prefix "ContractForDifference"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/CreditDerivative"></see>
     /// </summary>
-    let CreditDerivative =
-        Namespaced_IRI.parse _namespace_name "CreditDerivative" |> NamespacedName
-
+    let CreditDerivative = _prefix "CreditDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/DerivativeSettlementTerms"></see>
     /// </summary>
-    let DerivativeSettlementTerms =
-        Namespaced_IRI.parse _namespace_name "DerivativeSettlementTerms" |> NamespacedName
-
+    let DerivativeSettlementTerms = _prefix "DerivativeSettlementTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasAdditionalCosts"></see>
     /// </summary>
-    let hasAdditionalCosts =
-        Namespaced_IRI.parse _namespace_name "hasAdditionalCosts" |> NamespacedName
-
+    let hasAdditionalCosts = _prefix "hasAdditionalCosts"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasUnderlyingAssetPrice"></see>
     /// </summary>
-    let hasUnderlyingAssetPrice =
-        Namespaced_IRI.parse _namespace_name "hasUnderlyingAssetPrice" |> NamespacedName
-
+    let hasUnderlyingAssetPrice = _prefix "hasUnderlyingAssetPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/DerivativesClearingOrganization"></see>
     /// </summary>
-    let DerivativesClearingOrganization =
-        Namespaced_IRI.parse _namespace_name "DerivativesClearingOrganization" |> NamespacedName
-
+    let DerivativesClearingOrganization = _prefix "DerivativesClearingOrganization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/EconomicRateBasedDerivative"></see>
     /// </summary>
-    let EconomicRateBasedDerivative =
-        Namespaced_IRI.parse _namespace_name "EconomicRateBasedDerivative" |> NamespacedName
-
+    let EconomicRateBasedDerivative = _prefix "EconomicRateBasedDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/RateBasedDerivative"></see>
     /// </summary>
-    let RateBasedDerivative =
-        Namespaced_IRI.parse _namespace_name "RateBasedDerivative" |> NamespacedName
-
+    let RateBasedDerivative = _prefix "RateBasedDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/ForwardRateAgreement"></see>
     /// </summary>
-    let ForwardRateAgreement =
-        Namespaced_IRI.parse _namespace_name "ForwardRateAgreement" |> NamespacedName
-
+    let ForwardRateAgreement = _prefix "ForwardRateAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/InterestRateDerivative"></see>
     /// </summary>
-    let InterestRateDerivative =
-        Namespaced_IRI.parse _namespace_name "InterestRateDerivative" |> NamespacedName
-
+    let InterestRateDerivative = _prefix "InterestRateDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/IntroducingBroker"></see>
     /// </summary>
-    let IntroducingBroker =
-        Namespaced_IRI.parse _namespace_name "IntroducingBroker" |> NamespacedName
-
+    let IntroducingBroker = _prefix "IntroducingBroker"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/ObservableValue"></see>
     /// </summary>
-    let ObservableValue =
-        Namespaced_IRI.parse _namespace_name "ObservableValue" |> NamespacedName
-
+    let ObservableValue = _prefix "ObservableValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/specifiesValueOf"></see>
     /// </summary>
-    let specifiesValueOf =
-        Namespaced_IRI.parse _namespace_name "specifiesValueOf" |> NamespacedName
+    let specifiesValueOf = _prefix "specifiesValueOf"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/OverTheCounterDerivativeInstrument"></see>
     /// </summary>
     let OverTheCounterDerivativeInstrument =
-        Namespaced_IRI.parse _namespace_name "OverTheCounterDerivativeInstrument" |> NamespacedName
+        _prefix "OverTheCounterDerivativeInstrument"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/OverTheCounterInstrument"></see>
     /// </summary>
-    let OverTheCounterInstrument =
-        Namespaced_IRI.parse _namespace_name "OverTheCounterInstrument" |> NamespacedName
-
+    let OverTheCounterInstrument = _prefix "OverTheCounterInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/ParametricCashflowTerms"></see>
     /// </summary>
-    let ParametricCashflowTerms =
-        Namespaced_IRI.parse _namespace_name "ParametricCashflowTerms" |> NamespacedName
-
+    let ParametricCashflowTerms = _prefix "ParametricCashflowTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/PayingParty"></see>
     /// </summary>
-    let PayingParty =
-        Namespaced_IRI.parse _namespace_name "PayingParty" |> NamespacedName
-
+    let PayingParty = _prefix "PayingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/ReceivingParty"></see>
     /// </summary>
-    let ReceivingParty =
-        Namespaced_IRI.parse _namespace_name "ReceivingParty" |> NamespacedName
-
+    let ReceivingParty = _prefix "ReceivingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/UnderlyingAssetValuation"></see>
     /// </summary>
-    let UnderlyingAssetValuation =
-        Namespaced_IRI.parse _namespace_name "UnderlyingAssetValuation" |> NamespacedName
-
+    let UnderlyingAssetValuation = _prefix "UnderlyingAssetValuation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/UniqueProductIdentifier"></see>
     /// </summary>
-    let UniqueProductIdentifier =
-        Namespaced_IRI.parse _namespace_name "UniqueProductIdentifier" |> NamespacedName
+    let UniqueProductIdentifier = _prefix "UniqueProductIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/UniqueProductIdentifierServiceProvider"></see>
     /// </summary>
     let UniqueProductIdentifierServiceProvider =
-        Namespaced_IRI.parse _namespace_name "UniqueProductIdentifierServiceProvider" |> NamespacedName
+        _prefix "UniqueProductIdentifierServiceProvider"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/UniqueProductIdentifierReferenceDataLibrary"></see>
     /// </summary>
     let UniqueProductIdentifierReferenceDataLibrary =
-        Namespaced_IRI.parse _namespace_name "UniqueProductIdentifierReferenceDataLibrary" |> NamespacedName
+        _prefix "UniqueProductIdentifierReferenceDataLibrary"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/UniqueProductIdentifierRegistryEntry"></see>
     /// </summary>
     let UniqueProductIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "UniqueProductIdentifierRegistryEntry" |> NamespacedName
+        _prefix "UniqueProductIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/ValuationTerms"></see>
     /// </summary>
-    let ValuationTerms =
-        Namespaced_IRI.parse _namespace_name "ValuationTerms" |> NamespacedName
-
+    let ValuationTerms = _prefix "ValuationTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasAccretingNotionalAmount"></see>
     /// </summary>
-    let hasAccretingNotionalAmount =
-        Namespaced_IRI.parse _namespace_name "hasAccretingNotionalAmount" |> NamespacedName
-
+    let hasAccretingNotionalAmount = _prefix "hasAccretingNotionalAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasAmortizingNotionalAmount"></see>
     /// </summary>
-    let hasAmortizingNotionalAmount =
-        Namespaced_IRI.parse _namespace_name "hasAmortizingNotionalAmount" |> NamespacedName
-
+    let hasAmortizingNotionalAmount = _prefix "hasAmortizingNotionalAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasCalculationAgent"></see>
     /// </summary>
-    let hasCalculationAgent =
-        Namespaced_IRI.parse _namespace_name "hasCalculationAgent" |> NamespacedName
-
+    let hasCalculationAgent = _prefix "hasCalculationAgent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasConstantNotionalAmount"></see>
     /// </summary>
-    let hasConstantNotionalAmount =
-        Namespaced_IRI.parse _namespace_name "hasConstantNotionalAmount" |> NamespacedName
-
+    let hasConstantNotionalAmount = _prefix "hasConstantNotionalAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasCustomNotionalAmount"></see>
     /// </summary>
-    let hasCustomNotionalAmount =
-        Namespaced_IRI.parse _namespace_name "hasCustomNotionalAmount" |> NamespacedName
-
+    let hasCustomNotionalAmount = _prefix "hasCustomNotionalAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasFirstDeliveryDate"></see>
     /// </summary>
-    let hasFirstDeliveryDate =
-        Namespaced_IRI.parse _namespace_name "hasFirstDeliveryDate" |> NamespacedName
-
+    let hasFirstDeliveryDate = _prefix "hasFirstDeliveryDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasFirstNoticeDate"></see>
     /// </summary>
-    let hasFirstNoticeDate =
-        Namespaced_IRI.parse _namespace_name "hasFirstNoticeDate" |> NamespacedName
-
+    let hasFirstNoticeDate = _prefix "hasFirstNoticeDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasLastDeliveryDate"></see>
     /// </summary>
-    let hasLastDeliveryDate =
-        Namespaced_IRI.parse _namespace_name "hasLastDeliveryDate" |> NamespacedName
-
+    let hasLastDeliveryDate = _prefix "hasLastDeliveryDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasLastNoticeDate"></see>
     /// </summary>
-    let hasLastNoticeDate =
-        Namespaced_IRI.parse _namespace_name "hasLastNoticeDate" |> NamespacedName
-
+    let hasLastNoticeDate = _prefix "hasLastNoticeDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasSettlementTerms"></see>
     /// </summary>
-    let hasSettlementTerms =
-        Namespaced_IRI.parse _namespace_name "hasSettlementTerms" |> NamespacedName
-
+    let hasSettlementTerms = _prefix "hasSettlementTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasTickValue"></see>
     /// </summary>
-    let hasTickValue =
-        Namespaced_IRI.parse _namespace_name "hasTickValue" |> NamespacedName
-
+    let hasTickValue = _prefix "hasTickValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/hasValuationTerms"></see>
     /// </summary>
-    let hasValuationTerms =
-        Namespaced_IRI.parse _namespace_name "hasValuationTerms" |> NamespacedName
+    let hasValuationTerms = _prefix "hasValuationTerms"

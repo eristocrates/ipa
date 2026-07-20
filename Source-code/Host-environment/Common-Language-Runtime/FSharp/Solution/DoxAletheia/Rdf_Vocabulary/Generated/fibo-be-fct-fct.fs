@@ -1,77 +1,59 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.FunctionalEntities.FunctionalEntities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_fct_fct =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/Association"></see>
     /// </summary>
-    let Association =
-        Namespaced_IRI.parse _namespace_name "Association" |> NamespacedName
-
+    let Association = _prefix "Association"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/CooperativeSociety"></see>
     /// </summary>
-    let CooperativeSociety =
-        Namespaced_IRI.parse _namespace_name "CooperativeSociety" |> NamespacedName
-
+    let CooperativeSociety = _prefix "CooperativeSociety"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/FunctionalBusinessEntity"></see>
     /// </summary>
-    let FunctionalBusinessEntity =
-        Namespaced_IRI.parse _namespace_name "FunctionalBusinessEntity" |> NamespacedName
-
+    let FunctionalBusinessEntity = _prefix "FunctionalBusinessEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/FamilyOffice"></see>
     /// </summary>
-    let FamilyOffice =
-        Namespaced_IRI.parse _namespace_name "FamilyOffice" |> NamespacedName
-
+    let FamilyOffice = _prefix "FamilyOffice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/FunctionalEntity"></see>
     /// </summary>
-    let FunctionalEntity =
-        Namespaced_IRI.parse _namespace_name "FunctionalEntity" |> NamespacedName
-
+    let FunctionalEntity = _prefix "FunctionalEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/Merchant"></see>
     /// </summary>
-    let Merchant = Namespaced_IRI.parse _namespace_name "Merchant" |> NamespacedName
-
+    let Merchant = _prefix "Merchant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/MerchantCategoryCode"></see>
     /// </summary>
-    let MerchantCategoryCode =
-        Namespaced_IRI.parse _namespace_name "MerchantCategoryCode" |> NamespacedName
-
+    let MerchantCategoryCode = _prefix "MerchantCategoryCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/MerchantIdentifier"></see>
     /// </summary>
-    let MerchantIdentifier =
-        Namespaced_IRI.parse _namespace_name "MerchantIdentifier" |> NamespacedName
-
+    let MerchantIdentifier = _prefix "MerchantIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/MerchantCategoryCodeScheme"></see>
     /// </summary>
-    let MerchantCategoryCodeScheme =
-        Namespaced_IRI.parse _namespace_name "MerchantCategoryCodeScheme" |> NamespacedName
-
+    let MerchantCategoryCodeScheme = _prefix "MerchantCategoryCodeScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/hasMerchantCategoryDescription"></see>
     /// </summary>
-    let hasMerchantCategoryDescription =
-        Namespaced_IRI.parse _namespace_name "hasMerchantCategoryDescription" |> NamespacedName
-
+    let hasMerchantCategoryDescription = _prefix "hasMerchantCategoryDescription"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/Syndicate"></see>
     /// </summary>
-    let Syndicate = Namespaced_IRI.parse _namespace_name "Syndicate" |> NamespacedName
-
+    let Syndicate = _prefix "Syndicate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/SyndicateMember"></see>
     /// </summary>
-    let SyndicateMember =
-        Namespaced_IRI.parse _namespace_name "SyndicateMember" |> NamespacedName
+    let SyndicateMember = _prefix "SyndicateMember"

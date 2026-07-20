@@ -1,331 +1,250 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.AsianJurisdiction.WesternAsiaGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_wasj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfGeorgia"></see>
     /// </summary>
-    let GovernmentOfGeorgia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfGeorgia" |> NamespacedName
-
+    let GovernmentOfGeorgia = _prefix "GovernmentOfGeorgia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfGeorgia"></see>
     /// </summary>
-    let JurisdictionOfGeorgia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfGeorgia" |> NamespacedName
+    let JurisdictionOfGeorgia = _prefix "JurisdictionOfGeorgia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheHashemiteKingdomOfJordan"></see>
     /// </summary>
     let GovernmentOfTheHashemiteKingdomOfJordan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheHashemiteKingdomOfJordan" |> NamespacedName
+        _prefix "GovernmentOfTheHashemiteKingdomOfJordan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheHashemiteKingdomOfJordan"></see>
     /// </summary>
     let JurisdictionOfTheHashemiteKingdomOfJordan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheHashemiteKingdomOfJordan" |> NamespacedName
+        _prefix "JurisdictionOfTheHashemiteKingdomOfJordan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfBahrain"></see>
     /// </summary>
-    let GovernmentOfTheKingdomOfBahrain =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfBahrain" |> NamespacedName
-
+    let GovernmentOfTheKingdomOfBahrain = _prefix "GovernmentOfTheKingdomOfBahrain"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheKingdomOfBahrain"></see>
     /// </summary>
-    let JurisdictionOfTheKingdomOfBahrain =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheKingdomOfBahrain" |> NamespacedName
+    let JurisdictionOfTheKingdomOfBahrain = _prefix "JurisdictionOfTheKingdomOfBahrain"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfSaudiArabia"></see>
     /// </summary>
     let GovernmentOfTheKingdomOfSaudiArabia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfSaudiArabia" |> NamespacedName
+        _prefix "GovernmentOfTheKingdomOfSaudiArabia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheKingdomOfSaudiArabia"></see>
     /// </summary>
     let JurisdictionOfTheKingdomOfSaudiArabia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheKingdomOfSaudiArabia" |> NamespacedName
+        _prefix "JurisdictionOfTheKingdomOfSaudiArabia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheLebaneseRepublic"></see>
     /// </summary>
-    let GovernmentOfTheLebaneseRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheLebaneseRepublic" |> NamespacedName
-
+    let GovernmentOfTheLebaneseRepublic = _prefix "GovernmentOfTheLebaneseRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheLebaneseRepublic"></see>
     /// </summary>
-    let JurisdictionOfTheLebaneseRepublic =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheLebaneseRepublic" |> NamespacedName
-
+    let JurisdictionOfTheLebaneseRepublic = _prefix "JurisdictionOfTheLebaneseRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfArmenia"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfArmenia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfArmenia" |> NamespacedName
+    let GovernmentOfTheRepublicOfArmenia = _prefix "GovernmentOfTheRepublicOfArmenia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfArmenia"></see>
     /// </summary>
     let JurisdictionOfTheRepublicOfArmenia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfArmenia" |> NamespacedName
+        _prefix "JurisdictionOfTheRepublicOfArmenia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfAzerbaijan"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfAzerbaijan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfAzerbaijan" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfAzerbaijan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfAzerbaijan"></see>
     /// </summary>
     let JurisdictionOfTheRepublicOfAzerbaijan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfAzerbaijan" |> NamespacedName
+        _prefix "JurisdictionOfTheRepublicOfAzerbaijan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfCyprus"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfCyprus =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfCyprus" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfCyprus = _prefix "GovernmentOfTheRepublicOfCyprus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfCyprus"></see>
     /// </summary>
-    let JurisdictionOfTheRepublicOfCyprus =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfCyprus" |> NamespacedName
-
+    let JurisdictionOfTheRepublicOfCyprus = _prefix "JurisdictionOfTheRepublicOfCyprus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfIraq"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfIraq =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfIraq" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfIraq = _prefix "GovernmentOfTheRepublicOfIraq"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfIraq"></see>
     /// </summary>
-    let JurisdictionOfTheRepublicOfIraq =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfIraq" |> NamespacedName
-
+    let JurisdictionOfTheRepublicOfIraq = _prefix "JurisdictionOfTheRepublicOfIraq"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfTurkey"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfTurkey =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfTurkey" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfTurkey = _prefix "GovernmentOfTheRepublicOfTurkey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfTurkey"></see>
     /// </summary>
-    let JurisdictionOfTheRepublicOfTurkey =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfTurkey" |> NamespacedName
-
+    let JurisdictionOfTheRepublicOfTurkey = _prefix "JurisdictionOfTheRepublicOfTurkey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfYemen"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfYemen =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfYemen" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfYemen = _prefix "GovernmentOfTheRepublicOfYemen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfYemen"></see>
     /// </summary>
-    let JurisdictionOfTheRepublicOfYemen =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfYemen" |> NamespacedName
-
+    let JurisdictionOfTheRepublicOfYemen = _prefix "JurisdictionOfTheRepublicOfYemen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheStateOfIsrael"></see>
     /// </summary>
-    let GovernmentOfTheStateOfIsrael =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheStateOfIsrael" |> NamespacedName
-
+    let GovernmentOfTheStateOfIsrael = _prefix "GovernmentOfTheStateOfIsrael"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheStateOfIsrael"></see>
     /// </summary>
-    let JurisdictionOfTheStateOfIsrael =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheStateOfIsrael" |> NamespacedName
-
+    let JurisdictionOfTheStateOfIsrael = _prefix "JurisdictionOfTheStateOfIsrael"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheStateOfKuwait"></see>
     /// </summary>
-    let GovernmentOfTheStateOfKuwait =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheStateOfKuwait" |> NamespacedName
-
+    let GovernmentOfTheStateOfKuwait = _prefix "GovernmentOfTheStateOfKuwait"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheStateOfKuwait"></see>
     /// </summary>
-    let JurisdictionOfTheStateOfKuwait =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheStateOfKuwait" |> NamespacedName
-
+    let JurisdictionOfTheStateOfKuwait = _prefix "JurisdictionOfTheStateOfKuwait"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheStateOfPalestine"></see>
     /// </summary>
-    let GovernmentOfTheStateOfPalestine =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheStateOfPalestine" |> NamespacedName
-
+    let GovernmentOfTheStateOfPalestine = _prefix "GovernmentOfTheStateOfPalestine"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheStateOfPalestine"></see>
     /// </summary>
-    let JurisdictionOfTheStateOfPalestine =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheStateOfPalestine" |> NamespacedName
-
+    let JurisdictionOfTheStateOfPalestine = _prefix "JurisdictionOfTheStateOfPalestine"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheStateOfQatar"></see>
     /// </summary>
-    let GovernmentOfTheStateOfQatar =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheStateOfQatar" |> NamespacedName
-
+    let GovernmentOfTheStateOfQatar = _prefix "GovernmentOfTheStateOfQatar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheStateOfQatar"></see>
     /// </summary>
-    let JurisdictionOfTheStateOfQatar =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheStateOfQatar" |> NamespacedName
-
+    let JurisdictionOfTheStateOfQatar = _prefix "JurisdictionOfTheStateOfQatar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheSultanateOfOman"></see>
     /// </summary>
-    let GovernmentOfTheSultanateOfOman =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheSultanateOfOman" |> NamespacedName
-
+    let GovernmentOfTheSultanateOfOman = _prefix "GovernmentOfTheSultanateOfOman"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheSultanateOfOman"></see>
     /// </summary>
-    let JurisdictionOfTheSultanateOfOman =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheSultanateOfOman" |> NamespacedName
-
+    let JurisdictionOfTheSultanateOfOman = _prefix "JurisdictionOfTheSultanateOfOman"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheSyrianArabRepublic"></see>
     /// </summary>
-    let GovernmentOfTheSyrianArabRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheSyrianArabRepublic" |> NamespacedName
+    let GovernmentOfTheSyrianArabRepublic = _prefix "GovernmentOfTheSyrianArabRepublic"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheSyrianArabRepublic"></see>
     /// </summary>
     let JurisdictionOfTheSyrianArabRepublic =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheSyrianArabRepublic" |> NamespacedName
+        _prefix "JurisdictionOfTheSyrianArabRepublic"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheUnitedArabEmirates"></see>
     /// </summary>
-    let GovernmentOfTheUnitedArabEmirates =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheUnitedArabEmirates" |> NamespacedName
+    let GovernmentOfTheUnitedArabEmirates = _prefix "GovernmentOfTheUnitedArabEmirates"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheUnitedArabEmirates"></see>
     /// </summary>
     let JurisdictionOfTheUnitedArabEmirates =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheUnitedArabEmirates" |> NamespacedName
+        _prefix "JurisdictionOfTheUnitedArabEmirates"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/SovereignStateOfGeorgia"></see>
     /// </summary>
-    let SovereignStateOfGeorgia =
-        Namespaced_IRI.parse _namespace_name "SovereignStateOfGeorgia" |> NamespacedName
-
+    let SovereignStateOfGeorgia = _prefix "SovereignStateOfGeorgia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfArmenia"></see>
     /// </summary>
-    let StateOfArmenia =
-        Namespaced_IRI.parse _namespace_name "StateOfArmenia" |> NamespacedName
-
+    let StateOfArmenia = _prefix "StateOfArmenia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfAzerbaijan"></see>
     /// </summary>
-    let StateOfAzerbaijan =
-        Namespaced_IRI.parse _namespace_name "StateOfAzerbaijan" |> NamespacedName
-
+    let StateOfAzerbaijan = _prefix "StateOfAzerbaijan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfBahrain"></see>
     /// </summary>
-    let StateOfBahrain =
-        Namespaced_IRI.parse _namespace_name "StateOfBahrain" |> NamespacedName
-
+    let StateOfBahrain = _prefix "StateOfBahrain"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfCyprus"></see>
     /// </summary>
-    let StateOfCyprus =
-        Namespaced_IRI.parse _namespace_name "StateOfCyprus" |> NamespacedName
-
+    let StateOfCyprus = _prefix "StateOfCyprus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfIraq"></see>
     /// </summary>
-    let StateOfIraq =
-        Namespaced_IRI.parse _namespace_name "StateOfIraq" |> NamespacedName
-
+    let StateOfIraq = _prefix "StateOfIraq"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfIsrael"></see>
     /// </summary>
-    let StateOfIsrael =
-        Namespaced_IRI.parse _namespace_name "StateOfIsrael" |> NamespacedName
-
+    let StateOfIsrael = _prefix "StateOfIsrael"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfJordan"></see>
     /// </summary>
-    let StateOfJordan =
-        Namespaced_IRI.parse _namespace_name "StateOfJordan" |> NamespacedName
-
+    let StateOfJordan = _prefix "StateOfJordan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfKuwait"></see>
     /// </summary>
-    let StateOfKuwait =
-        Namespaced_IRI.parse _namespace_name "StateOfKuwait" |> NamespacedName
-
+    let StateOfKuwait = _prefix "StateOfKuwait"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfLebanon"></see>
     /// </summary>
-    let StateOfLebanon =
-        Namespaced_IRI.parse _namespace_name "StateOfLebanon" |> NamespacedName
-
+    let StateOfLebanon = _prefix "StateOfLebanon"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfOman"></see>
     /// </summary>
-    let StateOfOman =
-        Namespaced_IRI.parse _namespace_name "StateOfOman" |> NamespacedName
-
+    let StateOfOman = _prefix "StateOfOman"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfPalestine"></see>
     /// </summary>
-    let StateOfPalestine =
-        Namespaced_IRI.parse _namespace_name "StateOfPalestine" |> NamespacedName
-
+    let StateOfPalestine = _prefix "StateOfPalestine"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfQatar"></see>
     /// </summary>
-    let StateOfQatar =
-        Namespaced_IRI.parse _namespace_name "StateOfQatar" |> NamespacedName
-
+    let StateOfQatar = _prefix "StateOfQatar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfSaudiArabia"></see>
     /// </summary>
-    let StateOfSaudiArabia =
-        Namespaced_IRI.parse _namespace_name "StateOfSaudiArabia" |> NamespacedName
-
+    let StateOfSaudiArabia = _prefix "StateOfSaudiArabia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfSyria"></see>
     /// </summary>
-    let StateOfSyria =
-        Namespaced_IRI.parse _namespace_name "StateOfSyria" |> NamespacedName
-
+    let StateOfSyria = _prefix "StateOfSyria"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfTurkey"></see>
     /// </summary>
-    let StateOfTurkey =
-        Namespaced_IRI.parse _namespace_name "StateOfTurkey" |> NamespacedName
-
+    let StateOfTurkey = _prefix "StateOfTurkey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfUnitedArabEmirates"></see>
     /// </summary>
-    let StateOfUnitedArabEmirates =
-        Namespaced_IRI.parse _namespace_name "StateOfUnitedArabEmirates" |> NamespacedName
-
+    let StateOfUnitedArabEmirates = _prefix "StateOfUnitedArabEmirates"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/StateOfYemen"></see>
     /// </summary>
-    let StateOfYemen =
-        Namespaced_IRI.parse _namespace_name "StateOfYemen" |> NamespacedName
+    let StateOfYemen = _prefix "StateOfYemen"

@@ -1,91 +1,74 @@
 namespace http.iserve.kmi._open.ac.uk.ns.msm.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module msm =
     let _namespace_name = "http://iserve.kmi.open.ac.uk/ns/msm#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#MessageContent"></see>
     /// </summary>
-    let MessageContent =
-        Namespaced_IRI.parse _namespace_name "MessageContent" |> NamespacedName
-
+    let MessageContent = _prefix "MessageContent"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#MessagePart"></see>
     /// </summary>
-    let MessagePart =
-        Namespaced_IRI.parse _namespace_name "MessagePart" |> NamespacedName
-
+    let MessagePart = _prefix "MessagePart"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#Operation"></see>
     /// </summary>
-    let Operation = Namespaced_IRI.parse _namespace_name "Operation" |> NamespacedName
+    let Operation = _prefix "Operation"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
+    let Service = _prefix "Service"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasFault"></see>
     /// </summary>
-    let hasFault = Namespaced_IRI.parse _namespace_name "hasFault" |> NamespacedName
+    let hasFault = _prefix "hasFault"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasInput"></see>
     /// </summary>
-    let hasInput = Namespaced_IRI.parse _namespace_name "hasInput" |> NamespacedName
-
+    let hasInput = _prefix "hasInput"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasInputFault"></see>
     /// </summary>
-    let hasInputFault =
-        Namespaced_IRI.parse _namespace_name "hasInputFault" |> NamespacedName
-
+    let hasInputFault = _prefix "hasInputFault"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasMandatoryPart"></see>
     /// </summary>
-    let hasMandatoryPart =
-        Namespaced_IRI.parse _namespace_name "hasMandatoryPart" |> NamespacedName
-
+    let hasMandatoryPart = _prefix "hasMandatoryPart"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasPart"></see>
     /// </summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
+    let hasPart = _prefix "hasPart"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasOperation"></see>
     /// </summary>
-    let hasOperation =
-        Namespaced_IRI.parse _namespace_name "hasOperation" |> NamespacedName
-
+    let hasOperation = _prefix "hasOperation"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasOptionalPart"></see>
     /// </summary>
-    let hasOptionalPart =
-        Namespaced_IRI.parse _namespace_name "hasOptionalPart" |> NamespacedName
-
+    let hasOptionalPart = _prefix "hasOptionalPart"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasOutput"></see>
     /// </summary>
-    let hasOutput = Namespaced_IRI.parse _namespace_name "hasOutput" |> NamespacedName
-
+    let hasOutput = _prefix "hasOutput"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasOutputFault"></see>
     /// </summary>
-    let hasOutputFault =
-        Namespaced_IRI.parse _namespace_name "hasOutputFault" |> NamespacedName
-
+    let hasOutputFault = _prefix "hasOutputFault"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#hasPartTransitive"></see>
     /// </summary>
-    let hasPartTransitive =
-        Namespaced_IRI.parse _namespace_name "hasPartTransitive" |> NamespacedName
-
+    let hasPartTransitive = _prefix "hasPartTransitive"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/msm#isGroundedIn"></see>
     /// </summary>
-    let isGroundedIn =
-        Namespaced_IRI.parse _namespace_name "isGroundedIn" |> NamespacedName
+    let isGroundedIn = _prefix "isGroundedIn"

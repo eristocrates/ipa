@@ -1,594 +1,490 @@
 namespace http.ns.nature.com.terms.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module npg =
     let _namespace_name = "http://ns.nature.com/terms/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/webpage"></see>
     /// </summary>
-    let webpage = Namespaced_IRI.parse _namespace_name "webpage" |> NamespacedName
+    let webpage = _prefix "webpage"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Abstract"></see>
     /// </summary>
-    let Abstract = Namespaced_IRI.parse _namespace_name "Abstract" |> NamespacedName
+    let Abstract = _prefix "Abstract"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Component"></see>
     /// </summary>
-    let Component = Namespaced_IRI.parse _namespace_name "Component" |> NamespacedName
+    let Component = _prefix "Component"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Agent"></see>
     /// </summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Thing"></see>
     /// </summary>
-    let Thing = Namespaced_IRI.parse _namespace_name "Thing" |> NamespacedName
-
+    let Thing = _prefix "Thing"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/AggregationEvent"></see>
     /// </summary>
-    let AggregationEvent =
-        Namespaced_IRI.parse _namespace_name "AggregationEvent" |> NamespacedName
-
+    let AggregationEvent = _prefix "AggregationEvent"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Article"></see>
     /// </summary>
-    let Article = Namespaced_IRI.parse _namespace_name "Article" |> NamespacedName
+    let Article = _prefix "Article"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Document"></see>
     /// </summary>
-    let Document = Namespaced_IRI.parse _namespace_name "Document" |> NamespacedName
-
+    let Document = _prefix "Document"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/ArticleType"></see>
     /// </summary>
-    let ArticleType =
-        Namespaced_IRI.parse _namespace_name "ArticleType" |> NamespacedName
-
+    let ArticleType = _prefix "ArticleType"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Type"></see>
     /// </summary>
-    let Type = Namespaced_IRI.parse _namespace_name "Type" |> NamespacedName
+    let Type = _prefix "Type"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Asset"></see>
     /// </summary>
-    let Asset = Namespaced_IRI.parse _namespace_name "Asset" |> NamespacedName
-
+    let Asset = _prefix "Asset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/BinaryAsset"></see>
     /// </summary>
-    let BinaryAsset =
-        Namespaced_IRI.parse _namespace_name "BinaryAsset" |> NamespacedName
-
+    let BinaryAsset = _prefix "BinaryAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/BlobAsset"></see>
     /// </summary>
-    let BlobAsset = Namespaced_IRI.parse _namespace_name "BlobAsset" |> NamespacedName
+    let BlobAsset = _prefix "BlobAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Blog"></see>
     /// </summary>
-    let Blog = Namespaced_IRI.parse _namespace_name "Blog" |> NamespacedName
+    let Blog = _prefix "Blog"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Serial"></see>
     /// </summary>
-    let Serial = Namespaced_IRI.parse _namespace_name "Serial" |> NamespacedName
+    let Serial = _prefix "Serial"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Journal"></see>
     /// </summary>
-    let Journal = Namespaced_IRI.parse _namespace_name "Journal" |> NamespacedName
+    let Journal = _prefix "Journal"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Collection"></see>
     /// </summary>
-    let Collection = Namespaced_IRI.parse _namespace_name "Collection" |> NamespacedName
-
+    let Collection = _prefix "Collection"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Publication"></see>
     /// </summary>
-    let Publication =
-        Namespaced_IRI.parse _namespace_name "Publication" |> NamespacedName
-
+    let Publication = _prefix "Publication"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Dataset"></see>
     /// </summary>
-    let Dataset = Namespaced_IRI.parse _namespace_name "Dataset" |> NamespacedName
+    let Dataset = _prefix "Dataset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Concept"></see>
     /// </summary>
-    let Concept = Namespaced_IRI.parse _namespace_name "Concept" |> NamespacedName
-
+    let Concept = _prefix "Concept"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Contributor"></see>
     /// </summary>
-    let Contributor =
-        Namespaced_IRI.parse _namespace_name "Contributor" |> NamespacedName
-
+    let Contributor = _prefix "Contributor"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Figure"></see>
     /// </summary>
-    let Figure = Namespaced_IRI.parse _namespace_name "Figure" |> NamespacedName
+    let Figure = _prefix "Figure"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Image"></see>
     /// </summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
-
+    let Image = _prefix "Image"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Illustration"></see>
     /// </summary>
-    let Illustration =
-        Namespaced_IRI.parse _namespace_name "Illustration" |> NamespacedName
-
+    let Illustration = _prefix "Illustration"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Graph"></see>
     /// </summary>
-    let Graph = Namespaced_IRI.parse _namespace_name "Graph" |> NamespacedName
-
+    let Graph = _prefix "Graph"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/KnowledgeBase"></see>
     /// </summary>
-    let KnowledgeBase =
-        Namespaced_IRI.parse _namespace_name "KnowledgeBase" |> NamespacedName
-
+    let KnowledgeBase = _prefix "KnowledgeBase"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/ImageAsset"></see>
     /// </summary>
-    let ImageAsset = Namespaced_IRI.parse _namespace_name "ImageAsset" |> NamespacedName
+    let ImageAsset = _prefix "ImageAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Issue"></see>
     /// </summary>
-    let Issue = Namespaced_IRI.parse _namespace_name "Issue" |> NamespacedName
+    let Issue = _prefix "Issue"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Item"></see>
     /// </summary>
-    let Item = Namespaced_IRI.parse _namespace_name "Item" |> NamespacedName
-
+    let Item = _prefix "Item"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Organization"></see>
     /// </summary>
-    let Organization =
-        Namespaced_IRI.parse _namespace_name "Organization" |> NamespacedName
-
+    let Organization = _prefix "Organization"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/PdfAsset"></see>
     /// </summary>
-    let PdfAsset = Namespaced_IRI.parse _namespace_name "PdfAsset" |> NamespacedName
+    let PdfAsset = _prefix "PdfAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
-
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/PublicationEvent"></see>
     /// </summary>
-    let PublicationEvent =
-        Namespaced_IRI.parse _namespace_name "PublicationEvent" |> NamespacedName
-
+    let PublicationEvent = _prefix "PublicationEvent"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/PublishEvent"></see>
     /// </summary>
-    let PublishEvent =
-        Namespaced_IRI.parse _namespace_name "PublishEvent" |> NamespacedName
-
+    let PublishEvent = _prefix "PublishEvent"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/PublishState"></see>
     /// </summary>
-    let PublishState =
-        Namespaced_IRI.parse _namespace_name "PublishState" |> NamespacedName
-
+    let PublishState = _prefix "PublishState"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Publisher"></see>
     /// </summary>
-    let Publisher = Namespaced_IRI.parse _namespace_name "Publisher" |> NamespacedName
-
+    let Publisher = _prefix "Publisher"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/ReviewEvent"></see>
     /// </summary>
-    let ReviewEvent =
-        Namespaced_IRI.parse _namespace_name "ReviewEvent" |> NamespacedName
-
+    let ReviewEvent = _prefix "ReviewEvent"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/ReviewState"></see>
     /// </summary>
-    let ReviewState =
-        Namespaced_IRI.parse _namespace_name "ReviewState" |> NamespacedName
-
+    let ReviewState = _prefix "ReviewState"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Section"></see>
     /// </summary>
-    let Section = Namespaced_IRI.parse _namespace_name "Section" |> NamespacedName
-
+    let Section = _prefix "Section"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/SeverityLevel"></see>
     /// </summary>
-    let SeverityLevel =
-        Namespaced_IRI.parse _namespace_name "SeverityLevel" |> NamespacedName
-
+    let SeverityLevel = _prefix "SeverityLevel"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Subject"></see>
     /// </summary>
-    let Subject = Namespaced_IRI.parse _namespace_name "Subject" |> NamespacedName
+    let Subject = _prefix "Subject"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Summary"></see>
     /// </summary>
-    let Summary = Namespaced_IRI.parse _namespace_name "Summary" |> NamespacedName
-
+    let Summary = _prefix "Summary"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/SummaryType"></see>
     /// </summary>
-    let SummaryType =
-        Namespaced_IRI.parse _namespace_name "SummaryType" |> NamespacedName
-
+    let SummaryType = _prefix "SummaryType"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/Technique"></see>
     /// </summary>
-    let Technique = Namespaced_IRI.parse _namespace_name "Technique" |> NamespacedName
+    let Technique = _prefix "Technique"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/XmlAsset"></see>
     /// </summary>
-    let XmlAsset = Namespaced_IRI.parse _namespace_name "XmlAsset" |> NamespacedName
-
+    let XmlAsset = _prefix "XmlAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/assetVersion"></see>
     /// </summary>
-    let assetVersion =
-        Namespaced_IRI.parse _namespace_name "assetVersion" |> NamespacedName
-
+    let assetVersion = _prefix "assetVersion"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/body"></see>
     /// </summary>
-    let body = Namespaced_IRI.parse _namespace_name "body" |> NamespacedName
+    let body = _prefix "body"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/bodyXml"></see>
     /// </summary>
-    let bodyXml = Namespaced_IRI.parse _namespace_name "bodyXml" |> NamespacedName
+    let bodyXml = _prefix "bodyXml"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/caption"></see>
     /// </summary>
-    let caption = Namespaced_IRI.parse _namespace_name "caption" |> NamespacedName
+    let caption = _prefix "caption"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/captionXml"></see>
     /// </summary>
-    let captionXml = Namespaced_IRI.parse _namespace_name "captionXml" |> NamespacedName
+    let captionXml = _prefix "captionXml"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/coverDate"></see>
     /// </summary>
-    let coverDate = Namespaced_IRI.parse _namespace_name "coverDate" |> NamespacedName
+    let coverDate = _prefix "coverDate"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/coverYear"></see>
     /// </summary>
-    let coverYear = Namespaced_IRI.parse _namespace_name "coverYear" |> NamespacedName
-
+    let coverYear = _prefix "coverYear"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/coverYearMonth"></see>
     /// </summary>
-    let coverYearMonth =
-        Namespaced_IRI.parse _namespace_name "coverYearMonth" |> NamespacedName
-
+    let coverYearMonth = _prefix "coverYearMonth"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/credit"></see>
     /// </summary>
-    let credit = Namespaced_IRI.parse _namespace_name "credit" |> NamespacedName
+    let credit = _prefix "credit"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/date"></see>
     /// </summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/dateTime"></see>
     /// </summary>
-    let dateTime = Namespaced_IRI.parse _namespace_name "dateTime" |> NamespacedName
+    let dateTime = _prefix "dateTime"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/doi"></see>
     /// </summary>
-    let doi = Namespaced_IRI.parse _namespace_name "doi" |> NamespacedName
+    let doi = _prefix "doi"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/eissn"></see>
     /// </summary>
-    let eissn = Namespaced_IRI.parse _namespace_name "eissn" |> NamespacedName
+    let eissn = _prefix "eissn"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/familyName"></see>
     /// </summary>
-    let familyName = Namespaced_IRI.parse _namespace_name "familyName" |> NamespacedName
-
+    let familyName = _prefix "familyName"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/fileExtension"></see>
     /// </summary>
-    let fileExtension =
-        Namespaced_IRI.parse _namespace_name "fileExtension" |> NamespacedName
-
+    let fileExtension = _prefix "fileExtension"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/filename"></see>
     /// </summary>
-    let filename = Namespaced_IRI.parse _namespace_name "filename" |> NamespacedName
+    let filename = _prefix "filename"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/filesize"></see>
     /// </summary>
-    let filesize = Namespaced_IRI.parse _namespace_name "filesize" |> NamespacedName
+    let filesize = _prefix "filesize"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/givenName"></see>
     /// </summary>
-    let givenName = Namespaced_IRI.parse _namespace_name "givenName" |> NamespacedName
-
+    let givenName = _prefix "givenName"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasAbstract"></see>
     /// </summary>
-    let hasAbstract =
-        Namespaced_IRI.parse _namespace_name "hasAbstract" |> NamespacedName
-
+    let hasAbstract = _prefix "hasAbstract"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasArticle"></see>
     /// </summary>
-    let hasArticle = Namespaced_IRI.parse _namespace_name "hasArticle" |> NamespacedName
-
+    let hasArticle = _prefix "hasArticle"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasArticleType"></see>
     /// </summary>
-    let hasArticleType =
-        Namespaced_IRI.parse _namespace_name "hasArticleType" |> NamespacedName
-
+    let hasArticleType = _prefix "hasArticleType"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasBroaderSubject"></see>
     /// </summary>
-    let hasBroaderSubject =
-        Namespaced_IRI.parse _namespace_name "hasBroaderSubject" |> NamespacedName
-
+    let hasBroaderSubject = _prefix "hasBroaderSubject"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasSubject"></see>
     /// </summary>
-    let hasSubject = Namespaced_IRI.parse _namespace_name "hasSubject" |> NamespacedName
-
+    let hasSubject = _prefix "hasSubject"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasCollection"></see>
     /// </summary>
-    let hasCollection =
-        Namespaced_IRI.parse _namespace_name "hasCollection" |> NamespacedName
-
+    let hasCollection = _prefix "hasCollection"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasContributor"></see>
     /// </summary>
-    let hasContributor =
-        Namespaced_IRI.parse _namespace_name "hasContributor" |> NamespacedName
-
+    let hasContributor = _prefix "hasContributor"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasFigure"></see>
     /// </summary>
-    let hasFigure = Namespaced_IRI.parse _namespace_name "hasFigure" |> NamespacedName
-
+    let hasFigure = _prefix "hasFigure"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasIllustration"></see>
     /// </summary>
-    let hasIllustration =
-        Namespaced_IRI.parse _namespace_name "hasIllustration" |> NamespacedName
-
+    let hasIllustration = _prefix "hasIllustration"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasImage"></see>
     /// </summary>
-    let hasImage = Namespaced_IRI.parse _namespace_name "hasImage" |> NamespacedName
-
+    let hasImage = _prefix "hasImage"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasImageAsset"></see>
     /// </summary>
-    let hasImageAsset =
-        Namespaced_IRI.parse _namespace_name "hasImageAsset" |> NamespacedName
-
+    let hasImageAsset = _prefix "hasImageAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasIssue"></see>
     /// </summary>
-    let hasIssue = Namespaced_IRI.parse _namespace_name "hasIssue" |> NamespacedName
+    let hasIssue = _prefix "hasIssue"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasItem"></see>
     /// </summary>
-    let hasItem = Namespaced_IRI.parse _namespace_name "hasItem" |> NamespacedName
-
+    let hasItem = _prefix "hasItem"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasPdfAsset"></see>
     /// </summary>
-    let hasPdfAsset =
-        Namespaced_IRI.parse _namespace_name "hasPdfAsset" |> NamespacedName
-
+    let hasPdfAsset = _prefix "hasPdfAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasPrimaryArticleType"></see>
     /// </summary>
-    let hasPrimaryArticleType =
-        Namespaced_IRI.parse _namespace_name "hasPrimaryArticleType" |> NamespacedName
-
+    let hasPrimaryArticleType = _prefix "hasPrimaryArticleType"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasPublication"></see>
     /// </summary>
-    let hasPublication =
-        Namespaced_IRI.parse _namespace_name "hasPublication" |> NamespacedName
-
+    let hasPublication = _prefix "hasPublication"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasPublishEvent"></see>
     /// </summary>
-    let hasPublishEvent =
-        Namespaced_IRI.parse _namespace_name "hasPublishEvent" |> NamespacedName
-
+    let hasPublishEvent = _prefix "hasPublishEvent"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasPublishState"></see>
     /// </summary>
-    let hasPublishState =
-        Namespaced_IRI.parse _namespace_name "hasPublishState" |> NamespacedName
-
+    let hasPublishState = _prefix "hasPublishState"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasPublisher"></see>
     /// </summary>
-    let hasPublisher =
-        Namespaced_IRI.parse _namespace_name "hasPublisher" |> NamespacedName
-
+    let hasPublisher = _prefix "hasPublisher"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasRoot"></see>
     /// </summary>
-    let hasRoot = Namespaced_IRI.parse _namespace_name "hasRoot" |> NamespacedName
+    let hasRoot = _prefix "hasRoot"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasSection"></see>
     /// </summary>
-    let hasSection = Namespaced_IRI.parse _namespace_name "hasSection" |> NamespacedName
+    let hasSection = _prefix "hasSection"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasSummary"></see>
     /// </summary>
-    let hasSummary = Namespaced_IRI.parse _namespace_name "hasSummary" |> NamespacedName
-
+    let hasSummary = _prefix "hasSummary"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasSummaryType"></see>
     /// </summary>
-    let hasSummaryType =
-        Namespaced_IRI.parse _namespace_name "hasSummaryType" |> NamespacedName
-
+    let hasSummaryType = _prefix "hasSummaryType"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasTechnique"></see>
     /// </summary>
-    let hasTechnique =
-        Namespaced_IRI.parse _namespace_name "hasTechnique" |> NamespacedName
-
+    let hasTechnique = _prefix "hasTechnique"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasXmlAsset"></see>
     /// </summary>
-    let hasXmlAsset =
-        Namespaced_IRI.parse _namespace_name "hasXmlAsset" |> NamespacedName
-
+    let hasXmlAsset = _prefix "hasXmlAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/isAssetOf"></see>
     /// </summary>
-    let isAssetOf = Namespaced_IRI.parse _namespace_name "isAssetOf" |> NamespacedName
+    let isAssetOf = _prefix "isAssetOf"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/hasAsset"></see>
     /// </summary>
-    let hasAsset = Namespaced_IRI.parse _namespace_name "hasAsset" |> NamespacedName
-
+    let hasAsset = _prefix "hasAsset"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/isCorresponding"></see>
     /// </summary>
-    let isCorresponding =
-        Namespaced_IRI.parse _namespace_name "isCorresponding" |> NamespacedName
-
+    let isCorresponding = _prefix "isCorresponding"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/isCurated"></see>
     /// </summary>
-    let isCurated = Namespaced_IRI.parse _namespace_name "isCurated" |> NamespacedName
+    let isCurated = _prefix "isCurated"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/isLeaf"></see>
     /// </summary>
-    let isLeaf = Namespaced_IRI.parse _namespace_name "isLeaf" |> NamespacedName
-
+    let isLeaf = _prefix "isLeaf"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/isPrimaryArticleType"></see>
     /// </summary>
-    let isPrimaryArticleType =
-        Namespaced_IRI.parse _namespace_name "isPrimaryArticleType" |> NamespacedName
-
+    let isPrimaryArticleType = _prefix "isPrimaryArticleType"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/isRoot"></see>
     /// </summary>
-    let isRoot = Namespaced_IRI.parse _namespace_name "isRoot" |> NamespacedName
+    let isRoot = _prefix "isRoot"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/issn"></see>
     /// </summary>
-    let issn = Namespaced_IRI.parse _namespace_name "issn" |> NamespacedName
+    let issn = _prefix "issn"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/issue"></see>
     /// </summary>
-    let issue = Namespaced_IRI.parse _namespace_name "issue" |> NamespacedName
+    let issue = _prefix "issue"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/namespace"></see>
     /// </summary>
-    let namespace_ = Namespaced_IRI.parse _namespace_name "namespace" |> NamespacedName
+    let namespace_ = _prefix "namespace"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/number"></see>
     /// </summary>
-    let number = Namespaced_IRI.parse _namespace_name "number" |> NamespacedName
+    let number = _prefix "number"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/pageEnd"></see>
     /// </summary>
-    let pageEnd = Namespaced_IRI.parse _namespace_name "pageEnd" |> NamespacedName
+    let pageEnd = _prefix "pageEnd"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/pageStart"></see>
     /// </summary>
-    let pageStart = Namespaced_IRI.parse _namespace_name "pageStart" |> NamespacedName
+    let pageStart = _prefix "pageStart"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/pages"></see>
     /// </summary>
-    let pages = Namespaced_IRI.parse _namespace_name "pages" |> NamespacedName
-
+    let pages = _prefix "pages"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/publicationDate"></see>
     /// </summary>
-    let publicationDate =
-        Namespaced_IRI.parse _namespace_name "publicationDate" |> NamespacedName
-
+    let publicationDate = _prefix "publicationDate"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/publicationDateTime"></see>
     /// </summary>
-    let publicationDateTime =
-        Namespaced_IRI.parse _namespace_name "publicationDateTime" |> NamespacedName
-
+    let publicationDateTime = _prefix "publicationDateTime"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/publicationYear"></see>
     /// </summary>
-    let publicationYear =
-        Namespaced_IRI.parse _namespace_name "publicationYear" |> NamespacedName
-
+    let publicationYear = _prefix "publicationYear"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/publicationYearMonth"></see>
     /// </summary>
-    let publicationYearMonth =
-        Namespaced_IRI.parse _namespace_name "publicationYearMonth" |> NamespacedName
-
+    let publicationYearMonth = _prefix "publicationYearMonth"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/replacedBy"></see>
     /// </summary>
-    let replacedBy = Namespaced_IRI.parse _namespace_name "replacedBy" |> NamespacedName
+    let replacedBy = _prefix "replacedBy"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/replaces"></see>
     /// </summary>
-    let replaces = Namespaced_IRI.parse _namespace_name "replaces" |> NamespacedName
+    let replaces = _prefix "replaces"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/repository"></see>
     /// </summary>
-    let repository = Namespaced_IRI.parse _namespace_name "repository" |> NamespacedName
-
+    let repository = _prefix "repository"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/repositoryId"></see>
     /// </summary>
-    let repositoryId =
-        Namespaced_IRI.parse _namespace_name "repositoryId" |> NamespacedName
-
+    let repositoryId = _prefix "repositoryId"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/shortTitle"></see>
     /// </summary>
-    let shortTitle = Namespaced_IRI.parse _namespace_name "shortTitle" |> NamespacedName
+    let shortTitle = _prefix "shortTitle"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/titleXml"></see>
     /// </summary>
-    let titleXml = Namespaced_IRI.parse _namespace_name "titleXml" |> NamespacedName
+    let titleXml = _prefix "titleXml"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/treeDepth"></see>
     /// </summary>
-    let treeDepth = Namespaced_IRI.parse _namespace_name "treeDepth" |> NamespacedName
+    let treeDepth = _prefix "treeDepth"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/volume"></see>
     /// </summary>
-    let volume = Namespaced_IRI.parse _namespace_name "volume" |> NamespacedName
+    let volume = _prefix "volume"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/year"></see>
     /// </summary>
-    let year = Namespaced_IRI.parse _namespace_name "year" |> NamespacedName
+    let year = _prefix "year"
     /// <summary>
     ///   <see href="http://ns.nature.com/terms/yearMonth"></see>
     /// </summary>
-    let yearMonth = Namespaced_IRI.parse _namespace_name "yearMonth" |> NamespacedName
+    let yearMonth = _prefix "yearMonth"

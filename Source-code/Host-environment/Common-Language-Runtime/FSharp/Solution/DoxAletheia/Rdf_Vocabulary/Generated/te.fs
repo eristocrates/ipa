@@ -1,366 +1,297 @@
 namespace http.www.w3.org._2006.time_entry.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module te =
     let _namespace_name = "http://www.w3.org/2006/time-entry#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#CalendarClockDescription"></see>
     /// </summary>
-    let CalendarClockDescription =
-        Namespaced_IRI.parse _namespace_name "CalendarClockDescription" |> NamespacedName
-
+    let CalendarClockDescription = _prefix "CalendarClockDescription"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#dayOfYearField"></see>
     /// </summary>
-    let dayOfYearField =
-        Namespaced_IRI.parse _namespace_name "dayOfYearField" |> NamespacedName
-
+    let dayOfYearField = _prefix "dayOfYearField"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#month"></see>
     /// </summary>
-    let month = Namespaced_IRI.parse _namespace_name "month" |> NamespacedName
+    let month = _prefix "month"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#week"></see>
     /// </summary>
-    let week = Namespaced_IRI.parse _namespace_name "week" |> NamespacedName
+    let week = _prefix "week"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#day"></see>
     /// </summary>
-    let day = Namespaced_IRI.parse _namespace_name "day" |> NamespacedName
+    let day = _prefix "day"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#second"></see>
     /// </summary>
-    let second = Namespaced_IRI.parse _namespace_name "second" |> NamespacedName
+    let second = _prefix "second"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#hour"></see>
     /// </summary>
-    let hour = Namespaced_IRI.parse _namespace_name "hour" |> NamespacedName
+    let hour = _prefix "hour"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#minute"></see>
     /// </summary>
-    let minute = Namespaced_IRI.parse _namespace_name "minute" |> NamespacedName
+    let minute = _prefix "minute"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitType"></see>
     /// </summary>
-    let unitType = Namespaced_IRI.parse _namespace_name "unitType" |> NamespacedName
+    let unitType = _prefix "unitType"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#timeZone"></see>
     /// </summary>
-    let timeZone = Namespaced_IRI.parse _namespace_name "timeZone" |> NamespacedName
+    let timeZone = _prefix "timeZone"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#year"></see>
     /// </summary>
-    let year = Namespaced_IRI.parse _namespace_name "year" |> NamespacedName
-
+    let year = _prefix "year"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#dayOfWeekField"></see>
     /// </summary>
-    let dayOfWeekField =
-        Namespaced_IRI.parse _namespace_name "dayOfWeekField" |> NamespacedName
-
+    let dayOfWeekField = _prefix "dayOfWeekField"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#CalendarClockInterval"></see>
     /// </summary>
-    let CalendarClockInterval =
-        Namespaced_IRI.parse _namespace_name "CalendarClockInterval" |> NamespacedName
-
+    let CalendarClockInterval = _prefix "CalendarClockInterval"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#ProperInterval"></see>
     /// </summary>
-    let ProperInterval =
-        Namespaced_IRI.parse _namespace_name "ProperInterval" |> NamespacedName
-
+    let ProperInterval = _prefix "ProperInterval"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#DurationDescription"></see>
     /// </summary>
-    let DurationDescription =
-        Namespaced_IRI.parse _namespace_name "DurationDescription" |> NamespacedName
-
+    let DurationDescription = _prefix "DurationDescription"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#hours"></see>
     /// </summary>
-    let hours = Namespaced_IRI.parse _namespace_name "hours" |> NamespacedName
+    let hours = _prefix "hours"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#years"></see>
     /// </summary>
-    let years = Namespaced_IRI.parse _namespace_name "years" |> NamespacedName
+    let years = _prefix "years"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#months"></see>
     /// </summary>
-    let months = Namespaced_IRI.parse _namespace_name "months" |> NamespacedName
+    let months = _prefix "months"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#days"></see>
     /// </summary>
-    let days = Namespaced_IRI.parse _namespace_name "days" |> NamespacedName
+    let days = _prefix "days"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#weeks"></see>
     /// </summary>
-    let weeks = Namespaced_IRI.parse _namespace_name "weeks" |> NamespacedName
+    let weeks = _prefix "weeks"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#minutes"></see>
     /// </summary>
-    let minutes = Namespaced_IRI.parse _namespace_name "minutes" |> NamespacedName
+    let minutes = _prefix "minutes"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#seconds"></see>
     /// </summary>
-    let seconds = Namespaced_IRI.parse _namespace_name "seconds" |> NamespacedName
+    let seconds = _prefix "seconds"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#TemporalThing"></see>
     /// </summary>
-    let TemporalThing =
-        Namespaced_IRI.parse _namespace_name "TemporalThing" |> NamespacedName
-
+    let TemporalThing = _prefix "TemporalThing"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#InstantEvent"></see>
     /// </summary>
-    let InstantEvent =
-        Namespaced_IRI.parse _namespace_name "InstantEvent" |> NamespacedName
-
+    let InstantEvent = _prefix "InstantEvent"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#IntervalEvent"></see>
     /// </summary>
-    let IntervalEvent =
-        Namespaced_IRI.parse _namespace_name "IntervalEvent" |> NamespacedName
-
+    let IntervalEvent = _prefix "IntervalEvent"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#Instant"></see>
     /// </summary>
-    let Instant = Namespaced_IRI.parse _namespace_name "Instant" |> NamespacedName
-
+    let Instant = _prefix "Instant"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#InstantThing"></see>
     /// </summary>
-    let InstantThing =
-        Namespaced_IRI.parse _namespace_name "InstantThing" |> NamespacedName
-
+    let InstantThing = _prefix "InstantThing"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#TemporalEntity"></see>
     /// </summary>
-    let TemporalEntity =
-        Namespaced_IRI.parse _namespace_name "TemporalEntity" |> NamespacedName
-
+    let TemporalEntity = _prefix "TemporalEntity"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#InstantThingPair"></see>
     /// </summary>
-    let InstantThingPair =
-        Namespaced_IRI.parse _namespace_name "InstantThingPair" |> NamespacedName
-
+    let InstantThingPair = _prefix "InstantThingPair"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#secondInstantThing"></see>
     /// </summary>
-    let secondInstantThing =
-        Namespaced_IRI.parse _namespace_name "secondInstantThing" |> NamespacedName
-
+    let secondInstantThing = _prefix "secondInstantThing"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#firstInstantThing"></see>
     /// </summary>
-    let firstInstantThing =
-        Namespaced_IRI.parse _namespace_name "firstInstantThing" |> NamespacedName
-
+    let firstInstantThing = _prefix "firstInstantThing"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#Interval"></see>
     /// </summary>
-    let Interval = Namespaced_IRI.parse _namespace_name "Interval" |> NamespacedName
-
+    let Interval = _prefix "Interval"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#IntervalThing"></see>
     /// </summary>
-    let IntervalThing =
-        Namespaced_IRI.parse _namespace_name "IntervalThing" |> NamespacedName
-
+    let IntervalThing = _prefix "IntervalThing"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#ProperIntervalThing"></see>
     /// </summary>
-    let ProperIntervalThing =
-        Namespaced_IRI.parse _namespace_name "ProperIntervalThing" |> NamespacedName
-
+    let ProperIntervalThing = _prefix "ProperIntervalThing"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#TemporalUnit"></see>
     /// </summary>
-    let TemporalUnit =
-        Namespaced_IRI.parse _namespace_name "TemporalUnit" |> NamespacedName
-
+    let TemporalUnit = _prefix "TemporalUnit"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitSecond"></see>
     /// </summary>
-    let unitSecond = Namespaced_IRI.parse _namespace_name "unitSecond" |> NamespacedName
+    let unitSecond = _prefix "unitSecond"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitMinute"></see>
     /// </summary>
-    let unitMinute = Namespaced_IRI.parse _namespace_name "unitMinute" |> NamespacedName
+    let unitMinute = _prefix "unitMinute"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitHour"></see>
     /// </summary>
-    let unitHour = Namespaced_IRI.parse _namespace_name "unitHour" |> NamespacedName
+    let unitHour = _prefix "unitHour"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitDay"></see>
     /// </summary>
-    let unitDay = Namespaced_IRI.parse _namespace_name "unitDay" |> NamespacedName
+    let unitDay = _prefix "unitDay"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitWeek"></see>
     /// </summary>
-    let unitWeek = Namespaced_IRI.parse _namespace_name "unitWeek" |> NamespacedName
+    let unitWeek = _prefix "unitWeek"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitMonth"></see>
     /// </summary>
-    let unitMonth = Namespaced_IRI.parse _namespace_name "unitMonth" |> NamespacedName
+    let unitMonth = _prefix "unitMonth"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#unitYear"></see>
     /// </summary>
-    let unitYear = Namespaced_IRI.parse _namespace_name "unitYear" |> NamespacedName
+    let unitYear = _prefix "unitYear"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#after"></see>
     /// </summary>
-    let after = Namespaced_IRI.parse _namespace_name "after" |> NamespacedName
+    let after = _prefix "after"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#before"></see>
     /// </summary>
-    let before = Namespaced_IRI.parse _namespace_name "before" |> NamespacedName
+    let before = _prefix "before"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#begins"></see>
     /// </summary>
-    let begins = Namespaced_IRI.parse _namespace_name "begins" |> NamespacedName
-
+    let begins = _prefix "begins"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#calendarClockDescriptionDataType"></see>
     /// </summary>
-    let calendarClockDescriptionDataType =
-        Namespaced_IRI.parse _namespace_name "calendarClockDescriptionDataType" |> NamespacedName
-
+    let calendarClockDescriptionDataType = _prefix "calendarClockDescriptionDataType"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#calendarClockDescriptionOf"></see>
     /// </summary>
-    let calendarClockDescriptionOf =
-        Namespaced_IRI.parse _namespace_name "calendarClockDescriptionOf" |> NamespacedName
-
+    let calendarClockDescriptionOf = _prefix "calendarClockDescriptionOf"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#durationDescriptionDataType"></see>
     /// </summary>
-    let durationDescriptionDataType =
-        Namespaced_IRI.parse _namespace_name "durationDescriptionDataType" |> NamespacedName
-
+    let durationDescriptionDataType = _prefix "durationDescriptionDataType"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#durationDescriptionOf"></see>
     /// </summary>
-    let durationDescriptionOf =
-        Namespaced_IRI.parse _namespace_name "durationDescriptionOf" |> NamespacedName
-
+    let durationDescriptionOf = _prefix "durationDescriptionOf"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#ends"></see>
     /// </summary>
-    let ends = Namespaced_IRI.parse _namespace_name "ends" |> NamespacedName
-
+    let ends = _prefix "ends"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#inCalendarClock"></see>
     /// </summary>
-    let inCalendarClock =
-        Namespaced_IRI.parse _namespace_name "inCalendarClock" |> NamespacedName
-
+    let inCalendarClock = _prefix "inCalendarClock"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#inCalendarClockDataType"></see>
     /// </summary>
-    let inCalendarClockDataType =
-        Namespaced_IRI.parse _namespace_name "inCalendarClockDataType" |> NamespacedName
-
+    let inCalendarClockDataType = _prefix "inCalendarClockDataType"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#inside"></see>
     /// </summary>
-    let inside = Namespaced_IRI.parse _namespace_name "inside" |> NamespacedName
+    let inside = _prefix "inside"
 
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#instantPairDurationDescriptionDataType"></see>
     /// </summary>
     let instantPairDurationDescriptionDataType =
-        Namespaced_IRI.parse _namespace_name "instantPairDurationDescriptionDataType" |> NamespacedName
+        _prefix "instantPairDurationDescriptionDataType"
 
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#instantPairDurationDescriptionOf"></see>
     /// </summary>
-    let instantPairDurationDescriptionOf =
-        Namespaced_IRI.parse _namespace_name "instantPairDurationDescriptionOf" |> NamespacedName
-
+    let instantPairDurationDescriptionOf = _prefix "instantPairDurationDescriptionOf"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intAfter"></see>
     /// </summary>
-    let intAfter = Namespaced_IRI.parse _namespace_name "intAfter" |> NamespacedName
+    let intAfter = _prefix "intAfter"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#nonoverlap"></see>
     /// </summary>
-    let nonoverlap = Namespaced_IRI.parse _namespace_name "nonoverlap" |> NamespacedName
+    let nonoverlap = _prefix "nonoverlap"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intBefore"></see>
     /// </summary>
-    let intBefore = Namespaced_IRI.parse _namespace_name "intBefore" |> NamespacedName
-
+    let intBefore = _prefix "intBefore"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intContains"></see>
     /// </summary>
-    let intContains =
-        Namespaced_IRI.parse _namespace_name "intContains" |> NamespacedName
-
+    let intContains = _prefix "intContains"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intDuring"></see>
     /// </summary>
-    let intDuring = Namespaced_IRI.parse _namespace_name "intDuring" |> NamespacedName
-
+    let intDuring = _prefix "intDuring"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#startsOrDuring"></see>
     /// </summary>
-    let startsOrDuring =
-        Namespaced_IRI.parse _namespace_name "startsOrDuring" |> NamespacedName
-
+    let startsOrDuring = _prefix "startsOrDuring"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intEquals"></see>
     /// </summary>
-    let intEquals = Namespaced_IRI.parse _namespace_name "intEquals" |> NamespacedName
-
+    let intEquals = _prefix "intEquals"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intFinishedBy"></see>
     /// </summary>
-    let intFinishedBy =
-        Namespaced_IRI.parse _namespace_name "intFinishedBy" |> NamespacedName
-
+    let intFinishedBy = _prefix "intFinishedBy"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intFinishes"></see>
     /// </summary>
-    let intFinishes =
-        Namespaced_IRI.parse _namespace_name "intFinishes" |> NamespacedName
-
+    let intFinishes = _prefix "intFinishes"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intMeets"></see>
     /// </summary>
-    let intMeets = Namespaced_IRI.parse _namespace_name "intMeets" |> NamespacedName
+    let intMeets = _prefix "intMeets"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intMetBy"></see>
     /// </summary>
-    let intMetBy = Namespaced_IRI.parse _namespace_name "intMetBy" |> NamespacedName
-
+    let intMetBy = _prefix "intMetBy"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intOverlappedBy"></see>
     /// </summary>
-    let intOverlappedBy =
-        Namespaced_IRI.parse _namespace_name "intOverlappedBy" |> NamespacedName
-
+    let intOverlappedBy = _prefix "intOverlappedBy"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intOverlaps"></see>
     /// </summary>
-    let intOverlaps =
-        Namespaced_IRI.parse _namespace_name "intOverlaps" |> NamespacedName
-
+    let intOverlaps = _prefix "intOverlaps"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intStartedBy"></see>
     /// </summary>
-    let intStartedBy =
-        Namespaced_IRI.parse _namespace_name "intStartedBy" |> NamespacedName
-
+    let intStartedBy = _prefix "intStartedBy"
     /// <summary>
     ///   <see href="http://www.w3.org/2006/time-entry#intStarts"></see>
     /// </summary>
-    let intStarts = Namespaced_IRI.parse _namespace_name "intStarts" |> NamespacedName
+    let intStarts = _prefix "intStarts"

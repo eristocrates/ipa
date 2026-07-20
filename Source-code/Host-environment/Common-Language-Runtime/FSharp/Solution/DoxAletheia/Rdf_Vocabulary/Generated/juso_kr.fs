@@ -1,9 +1,13 @@
 namespace http.rdfs.co.juso.kr.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module juso_kr =
     let _namespace_name = "http://rdfs.co/juso/kr/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///
     ///     &lt;div&gt;
@@ -17,192 +21,148 @@ module juso_kr =
     ///     ontologies and vocabularies.
     ///
     /// <see href="http://rdfs.co/juso/kr/0.1"></see></summary>
-    let ``_0.1`` = Namespaced_IRI.parse _namespace_name "0.1" |> NamespacedName
-
+    let ``_0.1`` = _prefix "0.1"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/0.1/html"></see>
     /// </summary>
-    let ``_0.1/html`` =
-        Namespaced_IRI.parse _namespace_name "0.1/html" |> NamespacedName
-
+    let ``_0.1/html`` = _prefix "0.1/html"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/0.1/rdf"></see>
     /// </summary>
-    let ``_0.1/rdf`` = Namespaced_IRI.parse _namespace_name "0.1/rdf" |> NamespacedName
+    let ``_0.1/rdf`` = _prefix "0.1/rdf"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/0.1/ttl"></see>
     /// </summary>
-    let ``_0.1/ttl`` = Namespaced_IRI.parse _namespace_name "0.1/ttl" |> NamespacedName
-
+    let ``_0.1/ttl`` = _prefix "0.1/ttl"
     /// <summary>
     ///
     ///      These classes and properties are used to describe addresses in South Korea.
     ///
     /// <see href="http://rdfs.co/juso/kr/AddressGroup"></see></summary>
-    let AddressGroup =
-        Namespaced_IRI.parse _namespace_name "AddressGroup" |> NamespacedName
-
+    let AddressGroup = _prefix "AddressGroup"
     /// <summary>
     ///
     ///     These classes and properties are used to describe administrative divisions
     ///     in South Korea.
     ///
     /// <see href="http://rdfs.co/juso/kr/AdministrativeDivisionGroup"></see></summary>
-    let AdministrativeDivisionGroup =
-        Namespaced_IRI.parse _namespace_name "AdministrativeDivisionGroup" |> NamespacedName
-
+    let AdministrativeDivisionGroup = _prefix "AdministrativeDivisionGroup"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/EastAsianAddress"></see>
     /// </summary>
-    let EastAsianAddress =
-        Namespaced_IRI.parse _namespace_name "EastAsianAddress" |> NamespacedName
-
+    let EastAsianAddress = _prefix "EastAsianAddress"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/Street"></see>
     /// </summary>
-    let Street = Namespaced_IRI.parse _namespace_name "Street" |> NamespacedName
+    let Street = _prefix "Street"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/Road"></see>
     /// </summary>
-    let Road = Namespaced_IRI.parse _namespace_name "Road" |> NamespacedName
-
+    let Road = _prefix "Road"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/road_name_number"></see>
     /// </summary>
-    let road_name_number =
-        Namespaced_IRI.parse _namespace_name "road_name_number" |> NamespacedName
-
+    let road_name_number = _prefix "road_name_number"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/parent_road"></see>
     /// </summary>
-    let parent_road =
-        Namespaced_IRI.parse _namespace_name "parent_road" |> NamespacedName
-
+    let parent_road = _prefix "parent_road"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/Building"></see>
     /// </summary>
-    let Building = Namespaced_IRI.parse _namespace_name "Building" |> NamespacedName
-
+    let Building = _prefix "Building"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/administrative_building_number"></see>
     /// </summary>
-    let administrative_building_number =
-        Namespaced_IRI.parse _namespace_name "administrative_building_number" |> NamespacedName
-
+    let administrative_building_number = _prefix "administrative_building_number"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/MultiFamilyResidentialBuilding"></see>
     /// </summary>
-    let MultiFamilyResidentialBuilding =
-        Namespaced_IRI.parse _namespace_name "MultiFamilyResidentialBuilding" |> NamespacedName
-
+    let MultiFamilyResidentialBuilding = _prefix "MultiFamilyResidentialBuilding"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/PostalCode1970"></see>
     /// </summary>
-    let PostalCode1970 =
-        Namespaced_IRI.parse _namespace_name "PostalCode1970" |> NamespacedName
-
+    let PostalCode1970 = _prefix "PostalCode1970"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/PostalCode1988"></see>
     /// </summary>
-    let PostalCode1988 =
-        Namespaced_IRI.parse _namespace_name "PostalCode1988" |> NamespacedName
-
+    let PostalCode1988 = _prefix "PostalCode1988"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/PostalCode2015"></see>
     /// </summary>
-    let PostalCode2015 =
-        Namespaced_IRI.parse _namespace_name "PostalCode2015" |> NamespacedName
-
+    let PostalCode2015 = _prefix "PostalCode2015"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/RoadNameAddress"></see>
     /// </summary>
-    let RoadNameAddress =
-        Namespaced_IRI.parse _namespace_name "RoadNameAddress" |> NamespacedName
-
+    let RoadNameAddress = _prefix "RoadNameAddress"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/landform"></see>
     /// </summary>
-    let landform = Namespaced_IRI.parse _namespace_name "landform" |> NamespacedName
+    let landform = _prefix "landform"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/floor"></see>
     /// </summary>
-    let floor = Namespaced_IRI.parse _namespace_name "floor" |> NamespacedName
-
+    let floor = _prefix "floor"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/building_number"></see>
     /// </summary>
-    let building_number =
-        Namespaced_IRI.parse _namespace_name "building_number" |> NamespacedName
-
+    let building_number = _prefix "building_number"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/building_extra_number"></see>
     /// </summary>
-    let building_extra_number =
-        Namespaced_IRI.parse _namespace_name "building_extra_number" |> NamespacedName
-
+    let building_extra_number = _prefix "building_extra_number"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/eup_myeon_dong_serial_number"></see>
     /// </summary>
-    let eup_myeon_dong_serial_number =
-        Namespaced_IRI.parse _namespace_name "eup_myeon_dong_serial_number" |> NamespacedName
-
+    let eup_myeon_dong_serial_number = _prefix "eup_myeon_dong_serial_number"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/si_do"></see>
     /// </summary>
-    let si_do = Namespaced_IRI.parse _namespace_name "si_do" |> NamespacedName
+    let si_do = _prefix "si_do"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/si_gun_gu"></see>
     /// </summary>
-    let si_gun_gu = Namespaced_IRI.parse _namespace_name "si_gun_gu" |> NamespacedName
-
+    let si_gun_gu = _prefix "si_gun_gu"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/eup_myeon_dong"></see>
     /// </summary>
-    let eup_myeon_dong =
-        Namespaced_IRI.parse _namespace_name "eup_myeon_dong" |> NamespacedName
-
+    let eup_myeon_dong = _prefix "eup_myeon_dong"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/ri"></see>
     /// </summary>
-    let ri = Namespaced_IRI.parse _namespace_name "ri" |> NamespacedName
+    let ri = _prefix "ri"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/beonji"></see>
     /// </summary>
-    let beonji = Namespaced_IRI.parse _namespace_name "beonji" |> NamespacedName
+    let beonji = _prefix "beonji"
     /// <summary>
     ///
     ///     Usually, the words "번지" and "호" are not included in the written address;
     ///     instead, only their numbers, separated by a hyphen, are written.
     ///
     /// <see href="http://rdfs.co/juso/kr/ho"></see></summary>
-    let ho = Namespaced_IRI.parse _namespace_name "ho" |> NamespacedName
+    let ho = _prefix "ho"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/Boulevard"></see>
     /// </summary>
-    let Boulevard = Namespaced_IRI.parse _namespace_name "Boulevard" |> NamespacedName
-
+    let Boulevard = _prefix "Boulevard"
     /// <summary>
     ///
     ///     Since Jeju was given more autonomy, cities in Jeju could not be defined by
     ///     the Local Autonomy Law so this new class of city was created for Jeju.
     ///
     /// <see href="http://rdfs.co/juso/kr/AdministrativeCity"></see></summary>
-    let AdministrativeCity =
-        Namespaced_IRI.parse _namespace_name "AdministrativeCity" |> NamespacedName
-
+    let AdministrativeCity = _prefix "AdministrativeCity"
     /// <summary>
     ///
     ///     Cities are ranked on the same level as county and autonomous district.
     ///
     /// <see href="http://rdfs.co/juso/kr/City"></see></summary>
-    let City = Namespaced_IRI.parse _namespace_name "City" |> NamespacedName
-
+    let City = _prefix "City"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/RegionalLocalGovernment"></see>
     /// </summary>
-    let RegionalLocalGovernment =
-        Namespaced_IRI.parse _namespace_name "RegionalLocalGovernment" |> NamespacedName
-
+    let RegionalLocalGovernment = _prefix "RegionalLocalGovernment"
     /// <summary>
     ///
     ///     In South Korea, a county has a population of less than 150,000 (more than
@@ -210,26 +170,19 @@ module juso_kr =
     ///     is more rural in character than either of the other 2 divisions.
     ///
     /// <see href="http://rdfs.co/juso/kr/County"></see></summary>
-    let County = Namespaced_IRI.parse _namespace_name "County" |> NamespacedName
-
+    let County = _prefix "County"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/AutonomousDistrict"></see>
     /// </summary>
-    let AutonomousDistrict =
-        Namespaced_IRI.parse _namespace_name "AutonomousDistrict" |> NamespacedName
-
+    let AutonomousDistrict = _prefix "AutonomousDistrict"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/NonAutonomousDistrict"></see>
     /// </summary>
-    let NonAutonomousDistrict =
-        Namespaced_IRI.parse _namespace_name "NonAutonomousDistrict" |> NamespacedName
-
+    let NonAutonomousDistrict = _prefix "NonAutonomousDistrict"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/si_gun_gu_code"></see>
     /// </summary>
-    let si_gun_gu_code =
-        Namespaced_IRI.parse _namespace_name "si_gun_gu_code" |> NamespacedName
-
+    let si_gun_gu_code = _prefix "si_gun_gu_code"
     /// <summary>
     ///
     ///     Along with "township", a town is one of the divisions of a county, and of
@@ -237,7 +190,7 @@ module juso_kr =
     ///     into villages.
     ///
     /// <see href="http://rdfs.co/juso/kr/Town"></see></summary>
-    let Town = Namespaced_IRI.parse _namespace_name "Town" |> NamespacedName
+    let Town = _prefix "Town"
     /// <summary>
     ///
     ///     Along with town, township is of a county and some cities of fewer than
@@ -246,20 +199,15 @@ module juso_kr =
     ///     into villages.
     ///
     /// <see href="http://rdfs.co/juso/kr/Township"></see></summary>
-    let Township = Namespaced_IRI.parse _namespace_name "Township" |> NamespacedName
-
+    let Township = _prefix "Township"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/LegalStatusNeighborhood"></see>
     /// </summary>
-    let LegalStatusNeighborhood =
-        Namespaced_IRI.parse _namespace_name "LegalStatusNeighborhood" |> NamespacedName
-
+    let LegalStatusNeighborhood = _prefix "LegalStatusNeighborhood"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/legal_status_neighborhood_code"></see>
     /// </summary>
-    let legal_status_neighborhood_code =
-        Namespaced_IRI.parse _namespace_name "legal_status_neighborhood_code" |> NamespacedName
-
+    let legal_status_neighborhood_code = _prefix "legal_status_neighborhood_code"
     /// <summary>
     ///
     ///     In some cases, a single legal-status neighborhood is divided into several
@@ -267,82 +215,61 @@ module juso_kr =
     ///     its own office and staff.
     ///
     /// <see href="http://rdfs.co/juso/kr/AdministrativeNeighborhood"></see></summary>
-    let AdministrativeNeighborhood =
-        Namespaced_IRI.parse _namespace_name "AdministrativeNeighborhood" |> NamespacedName
-
+    let AdministrativeNeighborhood = _prefix "AdministrativeNeighborhood"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/Province"></see>
     /// </summary>
-    let Province = Namespaced_IRI.parse _namespace_name "Province" |> NamespacedName
-
+    let Province = _prefix "Province"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/administrative_neighborhood_code"></see>
     /// </summary>
-    let administrative_neighborhood_code =
-        Namespaced_IRI.parse _namespace_name "administrative_neighborhood_code" |> NamespacedName
-
+    let administrative_neighborhood_code = _prefix "administrative_neighborhood_code"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/eup_myeon_dong_code"></see>
     /// </summary>
-    let eup_myeon_dong_code =
-        Namespaced_IRI.parse _namespace_name "eup_myeon_dong_code" |> NamespacedName
-
+    let eup_myeon_dong_code = _prefix "eup_myeon_dong_code"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/LegalStatusVillage"></see>
     /// </summary>
-    let LegalStatusVillage =
-        Namespaced_IRI.parse _namespace_name "LegalStatusVillage" |> NamespacedName
-
+    let LegalStatusVillage = _prefix "LegalStatusVillage"
     /// <summary>
     ///
     ///     A legal-status village can be subdivided into one or more administrative
     ///     villages.
     ///
     /// <see href="http://rdfs.co/juso/kr/AdministrativeVillage"></see></summary>
-    let AdministrativeVillage =
-        Namespaced_IRI.parse _namespace_name "AdministrativeVillage" |> NamespacedName
-
+    let AdministrativeVillage = _prefix "AdministrativeVillage"
     /// <summary>
     ///
     ///     Jeju is the only special autonomous province in South Korea.
     ///
     /// <see href="http://rdfs.co/juso/kr/SpecialAutonomousProvince"></see></summary>
-    let SpecialAutonomousProvince =
-        Namespaced_IRI.parse _namespace_name "SpecialAutonomousProvince" |> NamespacedName
-
+    let SpecialAutonomousProvince = _prefix "SpecialAutonomousProvince"
     /// <summary>
     ///   <see href="http://rdfs.co/juso/kr/SpecialCity"></see>
     /// </summary>
-    let SpecialCity =
-        Namespaced_IRI.parse _namespace_name "SpecialCity" |> NamespacedName
-
+    let SpecialCity = _prefix "SpecialCity"
     /// <summary>
     ///
     ///     They were called "directly-administered city" before 1995. These cities
     ///     have equal status to the provinces.
     ///
     /// <see href="http://rdfs.co/juso/kr/MetropolitanCity"></see></summary>
-    let MetropolitanCity =
-        Namespaced_IRI.parse _namespace_name "MetropolitanCity" |> NamespacedName
-
+    let MetropolitanCity = _prefix "MetropolitanCity"
     /// <summary>
     ///
     ///     The only metropolitan autonomous city in South Korea called Sejong opened 2
     ///     July 2012.
     ///
     /// <see href="http://rdfs.co/juso/kr/MetropolitanAutonomousCity"></see></summary>
-    let MetropolitanAutonomousCity =
-        Namespaced_IRI.parse _namespace_name "MetropolitanAutonomousCity" |> NamespacedName
-
+    let MetropolitanAutonomousCity = _prefix "MetropolitanAutonomousCity"
     /// <summary>
     ///
     ///     Non-autonomous districts of municipal cities and administrative cities in
     ///     Jeju are not basic local governments.
     ///
     /// <see href="http://rdfs.co/juso/kr/BasicLocalGovernment"></see></summary>
-    let BasicLocalGovernment =
-        Namespaced_IRI.parse _namespace_name "BasicLocalGovernment" |> NamespacedName
-
+    let BasicLocalGovernment = _prefix "BasicLocalGovernment"
     /// <summary>
     ///
     ///     Specific city are given powers to subdivide themselves into non-autonomous
@@ -350,5 +277,4 @@ module juso_kr =
     ///     districts.
     ///
     /// <see href="http://rdfs.co/juso/kr/SpecificCity"></see></summary>
-    let SpecificCity =
-        Namespaced_IRI.parse _namespace_name "SpecificCity" |> NamespacedName
+    let SpecificCity = _prefix "SpecificCity"

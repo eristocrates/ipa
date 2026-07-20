@@ -1,80 +1,65 @@
 namespace http.creativecommons.org.ns.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ccrel =
     let _namespace_name = "http://creativecommons.org/ns#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// credit be given to
     /// 		    copyright holder and/or author
     /// <see href="http://creativecommons.org/ns#Attribution"></see></summary>
-    let Attribution =
-        Namespaced_IRI.parse _namespace_name "Attribution" |> NamespacedName
-
+    let Attribution = _prefix "Attribution"
     /// <summary>
     /// an action that may or
     /// 		    may not be requested of you
     /// <see href="http://creativecommons.org/ns#Requirement"></see></summary>
-    let Requirement =
-        Namespaced_IRI.parse _namespace_name "Requirement" |> NamespacedName
-
+    let Requirement = _prefix "Requirement"
     /// <summary>
     /// exercising rights for
     /// 		    commercial purposes
     /// <see href="http://creativecommons.org/ns#CommercialUse"></see></summary>
-    let CommercialUse =
-        Namespaced_IRI.parse _namespace_name "CommercialUse" |> NamespacedName
-
+    let CommercialUse = _prefix "CommercialUse"
     /// <summary>
     /// something you may be
     /// 		    asked not to do
     /// <see href="http://creativecommons.org/ns#Prohibition"></see></summary>
-    let Prohibition =
-        Namespaced_IRI.parse _namespace_name "Prohibition" |> NamespacedName
-
+    let Prohibition = _prefix "Prohibition"
     /// <summary>
     /// derivative and
     /// 		    combined works must be licensed under specified
     /// 		    terms, similar to those on the original
     /// 		    work
     /// <see href="http://creativecommons.org/ns#Copyleft"></see></summary>
-    let Copyleft = Namespaced_IRI.parse _namespace_name "Copyleft" |> NamespacedName
-
+    let Copyleft = _prefix "Copyleft"
     /// <summary>
     /// distribution of
     /// 		    derivative works
     /// <see href="http://creativecommons.org/ns#DerivativeWorks"></see></summary>
-    let DerivativeWorks =
-        Namespaced_IRI.parse _namespace_name "DerivativeWorks" |> NamespacedName
-
+    let DerivativeWorks = _prefix "DerivativeWorks"
     /// <summary>
     /// an action that may or
     /// 		    may not be allowed or desired
     /// <see href="http://creativecommons.org/ns#Permission"></see></summary>
-    let Permission = Namespaced_IRI.parse _namespace_name "Permission" |> NamespacedName
-
+    let Permission = _prefix "Permission"
     /// <summary>
     /// distribution, public
     /// 		    display, and publicly performance
     /// <see href="http://creativecommons.org/ns#Distribution"></see></summary>
-    let Distribution =
-        Namespaced_IRI.parse _namespace_name "Distribution" |> NamespacedName
-
+    let Distribution = _prefix "Distribution"
     /// <summary>
     /// use in a
     /// 		    non-developing country
     /// <see href="http://creativecommons.org/ns#HighIncomeNationUse"></see></summary>
-    let HighIncomeNationUse =
-        Namespaced_IRI.parse _namespace_name "HighIncomeNationUse" |> NamespacedName
-
+    let HighIncomeNationUse = _prefix "HighIncomeNationUse"
     /// <summary>
     /// the legal jurisdiction
     /// 		    of a license
     /// <see href="http://creativecommons.org/ns#Jurisdiction"></see></summary>
-    let Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Jurisdiction" |> NamespacedName
-
+    let Jurisdiction = _prefix "Jurisdiction"
     /// <summary>
     /// derivative works must
     /// 		    be licensed under specified terms, with at least
@@ -82,108 +67,89 @@ module ccrel =
     /// 		    combinations with the work may be licensed under
     /// 		    different terms
     /// <see href="http://creativecommons.org/ns#LesserCopyleft"></see></summary>
-    let LesserCopyleft =
-        Namespaced_IRI.parse _namespace_name "LesserCopyleft" |> NamespacedName
-
+    let LesserCopyleft = _prefix "LesserCopyleft"
     /// <summary>
     /// a set of
     /// 		    requests/permissions to users of a Work, e.g. a
     /// 		    copyright license, the public domain, information
     /// 		    for distributors
     /// <see href="http://creativecommons.org/ns#License"></see></summary>
-    let License = Namespaced_IRI.parse _namespace_name "License" |> NamespacedName
+    let License = _prefix "License"
     /// <summary>
     /// copyright and license
     /// 		    notices be kept intact
     /// <see href="http://creativecommons.org/ns#Notice"></see></summary>
-    let Notice = Namespaced_IRI.parse _namespace_name "Notice" |> NamespacedName
-
+    let Notice = _prefix "Notice"
     /// <summary>
     /// making multiple
     /// 		    copies
     /// <see href="http://creativecommons.org/ns#Reproduction"></see></summary>
-    let Reproduction =
-        Namespaced_IRI.parse _namespace_name "Reproduction" |> NamespacedName
-
+    let Reproduction = _prefix "Reproduction"
     /// <summary>
     /// derivative works be
     /// 		    licensed under the same terms or compatible terms
     /// 		    as the original work
     /// <see href="http://creativecommons.org/ns#ShareAlike"></see></summary>
-    let ShareAlike = Namespaced_IRI.parse _namespace_name "ShareAlike" |> NamespacedName
+    let ShareAlike = _prefix "ShareAlike"
     /// <summary>
     /// permits commercial
     /// 		    derivatives, but only non-commercial
     /// 		    distribution
     /// <see href="http://creativecommons.org/ns#Sharing"></see></summary>
-    let Sharing = Namespaced_IRI.parse _namespace_name "Sharing" |> NamespacedName
+    let Sharing = _prefix "Sharing"
     /// <summary>
     /// source code (the
     /// 		    preferred form for making modifications) must be
     /// 		    provided when exercising some rights granted by
     /// 		    the license.
     /// <see href="http://creativecommons.org/ns#SourceCode"></see></summary>
-    let SourceCode = Namespaced_IRI.parse _namespace_name "SourceCode" |> NamespacedName
+    let SourceCode = _prefix "SourceCode"
     /// <summary>
     /// a potentially
     /// 		    copyrightable work
     /// <see href="http://creativecommons.org/ns#Work"></see></summary>
-    let Work = Namespaced_IRI.parse _namespace_name "Work" |> NamespacedName
-
+    let Work = _prefix "Work"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#attributionName"></see>
     /// </summary>
-    let attributionName =
-        Namespaced_IRI.parse _namespace_name "attributionName" |> NamespacedName
-
+    let attributionName = _prefix "attributionName"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#attributionURL"></see>
     /// </summary>
-    let attributionURL =
-        Namespaced_IRI.parse _namespace_name "attributionURL" |> NamespacedName
-
+    let attributionURL = _prefix "attributionURL"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#deprecatedOn"></see>
     /// </summary>
-    let deprecatedOn =
-        Namespaced_IRI.parse _namespace_name "deprecatedOn" |> NamespacedName
-
+    let deprecatedOn = _prefix "deprecatedOn"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#jurisdiction"></see>
     /// </summary>
-    let jurisdiction =
-        Namespaced_IRI.parse _namespace_name "jurisdiction" |> NamespacedName
-
+    let jurisdiction = _prefix "jurisdiction"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#legalcode"></see>
     /// </summary>
-    let legalcode = Namespaced_IRI.parse _namespace_name "legalcode" |> NamespacedName
+    let legalcode = _prefix "legalcode"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#license"></see>
     /// </summary>
-    let license = Namespaced_IRI.parse _namespace_name "license" |> NamespacedName
-
+    let license = _prefix "license"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#morePermissions"></see>
     /// </summary>
-    let morePermissions =
-        Namespaced_IRI.parse _namespace_name "morePermissions" |> NamespacedName
-
+    let morePermissions = _prefix "morePermissions"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#permits"></see>
     /// </summary>
-    let permits = Namespaced_IRI.parse _namespace_name "permits" |> NamespacedName
+    let permits = _prefix "permits"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#prohibits"></see>
     /// </summary>
-    let prohibits = Namespaced_IRI.parse _namespace_name "prohibits" |> NamespacedName
+    let prohibits = _prefix "prohibits"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#requires"></see>
     /// </summary>
-    let requires = Namespaced_IRI.parse _namespace_name "requires" |> NamespacedName
-
+    let requires = _prefix "requires"
     /// <summary>
     ///   <see href="http://creativecommons.org/ns#useGuidelines"></see>
     /// </summary>
-    let useGuidelines =
-        Namespaced_IRI.parse _namespace_name "useGuidelines" |> NamespacedName
+    let useGuidelines = _prefix "useGuidelines"

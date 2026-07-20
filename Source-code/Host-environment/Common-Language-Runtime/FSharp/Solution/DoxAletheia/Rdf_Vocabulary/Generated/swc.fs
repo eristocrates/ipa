@@ -1,9 +1,12 @@
 namespace http.data.semanticweb.org.ns.swc.ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module swc =
     let _namespace_name = "http://data.semanticweb.org/ns/swc/ontology#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     ///
@@ -20,9 +23,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#license_doc"></see></summary>
-    let license_doc =
-        Namespaced_IRI.parse _namespace_name "license_doc" |> NamespacedName
-
+    let license_doc = _prefix "license_doc"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -48,9 +49,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#01_introduction"></see></summary>
-    let _01_introduction =
-        Namespaced_IRI.parse _namespace_name "01_introduction" |> NamespacedName
-
+    let _01_introduction = _prefix "01_introduction"
     /// <summary>
     ///
     /// 			&lt;p&gt;For the basic use case of describing papers, the figure below shows how the main kinds of resources are connected: the paper itself, the authors and their affiliations, and the talk where the paper was presented.
@@ -67,9 +66,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#02_describing_papers"></see></summary>
-    let _02_describing_papers =
-        Namespaced_IRI.parse _namespace_name "02_describing_papers" |> NamespacedName
-
+    let _02_describing_papers = _prefix "02_describing_papers"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -84,8 +81,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#03_roles"></see></summary>
-    let _03_roles = Namespaced_IRI.parse _namespace_name "03_roles" |> NamespacedName
-
+    let _03_roles = _prefix "03_roles"
     /// <summary>
     ///
     ///
@@ -93,9 +89,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#AcademicEvent"></see></summary>
-    let AcademicEvent =
-        Namespaced_IRI.parse _namespace_name "AcademicEvent" |> NamespacedName
-
+    let AcademicEvent = _prefix "AcademicEvent"
     /// <summary>
     ///
     ///
@@ -103,9 +97,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#OrganisedEvent"></see></summary>
-    let OrganisedEvent =
-        Namespaced_IRI.parse _namespace_name "OrganisedEvent" |> NamespacedName
-
+    let OrganisedEvent = _prefix "OrganisedEvent"
     /// <summary>
     ///
     ///
@@ -115,15 +107,11 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#AccommodationPlace"></see></summary>
-    let AccommodationPlace =
-        Namespaced_IRI.parse _namespace_name "AccommodationPlace" |> NamespacedName
-
+    let AccommodationPlace = _prefix "AccommodationPlace"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#AdditionalReviewer"></see>
     /// </summary>
-    let AdditionalReviewer =
-        Namespaced_IRI.parse _namespace_name "AdditionalReviewer" |> NamespacedName
-
+    let AdditionalReviewer = _prefix "AdditionalReviewer"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -135,14 +123,11 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Role"></see></summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
-
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#Administrator"></see>
     /// </summary>
-    let Administrator =
-        Namespaced_IRI.parse _namespace_name "Administrator" |> NamespacedName
-
+    let Administrator = _prefix "Administrator"
     /// <summary>
     ///
     /// 			&lt;p&gt;An argumentative document is a document which uses analytical reasoning and evidence in order to argue for a point of view. Typical examples are scientific papers or political pamphlets. Negative examples are novels or plays (even though a novel might also try to sway the reader to a certain point of view).&lt;/p&gt;
@@ -150,16 +135,14 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ArgumentativeDocument"></see></summary>
-    let ArgumentativeDocument =
-        Namespaced_IRI.parse _namespace_name "ArgumentativeDocument" |> NamespacedName
-
+    let ArgumentativeDocument = _prefix "ArgumentativeDocument"
     /// <summary>
     ///
     /// 			&lt;p&gt;&lt;emph&gt;Artefact&lt;/emph&gt; here means a document which can have a physical manifestation, like a paper or the proceedings of a conference.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Artefact"></see></summary>
-    let Artefact = Namespaced_IRI.parse _namespace_name "Artefact" |> NamespacedName
+    let Artefact = _prefix "Artefact"
     /// <summary>
     ///
     ///
@@ -169,8 +152,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#BreakEvent"></see></summary>
-    let BreakEvent = Namespaced_IRI.parse _namespace_name "BreakEvent" |> NamespacedName
-
+    let BreakEvent = _prefix "BreakEvent"
     /// <summary>
     ///
     ///
@@ -180,9 +162,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#NonAcademicEvent"></see></summary>
-    let NonAcademicEvent =
-        Namespaced_IRI.parse _namespace_name "NonAcademicEvent" |> NamespacedName
-
+    let NonAcademicEvent = _prefix "NonAcademicEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
@@ -190,53 +170,42 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Call"></see></summary>
-    let Call = Namespaced_IRI.parse _namespace_name "Call" |> NamespacedName
-
+    let Call = _prefix "Call"
     /// <summary>
     ///
     /// 			&lt;p&gt;A call for demonstrations of software at a conference or workshop. Submissions are usually in the form of extended abstracts (~2 page) discussing the research questions addressed by the software and outlining the content of the demonstration.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CallForDemos"></see></summary>
-    let CallForDemos =
-        Namespaced_IRI.parse _namespace_name "CallForDemos" |> NamespacedName
-
+    let CallForDemos = _prefix "CallForDemos"
     /// <summary>
     ///
     /// 			&lt;p&gt;A &lt;emph&gt;call for papers&lt;/emph&gt; or &lt;emph&gt;CfP&lt;/emph&gt; encourages authors to submit papers for peer-review for a conference or workshop, or a journal or book.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CallForPapers"></see></summary>
-    let CallForPapers =
-        Namespaced_IRI.parse _namespace_name "CallForPapers" |> NamespacedName
-
+    let CallForPapers = _prefix "CallForPapers"
     /// <summary>
     ///
     /// 			&lt;p&gt;This kind of call usually calls for potential delegates to attend an event such as a conference or a workshop.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CallForParticipation"></see></summary>
-    let CallForParticipation =
-        Namespaced_IRI.parse _namespace_name "CallForParticipation" |> NamespacedName
-
+    let CallForParticipation = _prefix "CallForParticipation"
     /// <summary>
     ///
     /// 			&lt;p&gt;A call for scientific posters at a conference or workshop. Submissions are usually in the form of extended abstracts (~2 page) discussing the research presented on the poster.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CallForPosters"></see></summary>
-    let CallForPosters =
-        Namespaced_IRI.parse _namespace_name "CallForPosters" |> NamespacedName
-
+    let CallForPosters = _prefix "CallForPosters"
     /// <summary>
     ///
     /// 			&lt;p&gt;A call which asks for contributions in the form of e.g. workshop or tutorial proposals.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CallForProposals"></see></summary>
-    let CallForProposals =
-        Namespaced_IRI.parse _namespace_name "CallForProposals" |> NamespacedName
-
+    let CallForProposals = _prefix "CallForProposals"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -245,8 +214,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Chair"></see></summary>
-    let Chair = Namespaced_IRI.parse _namespace_name "Chair" |> NamespacedName
-
+    let Chair = _prefix "Chair"
     /// <summary>
     ///
     ///
@@ -254,9 +222,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CoffeeBreak"></see></summary>
-    let CoffeeBreak =
-        Namespaced_IRI.parse _namespace_name "CoffeeBreak" |> NamespacedName
-
+    let CoffeeBreak = _prefix "CoffeeBreak"
     /// <summary>
     ///
     ///
@@ -266,15 +232,11 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#CommunalPlace"></see></summary>
-    let CommunalPlace =
-        Namespaced_IRI.parse _namespace_name "CommunalPlace" |> NamespacedName
-
+    let CommunalPlace = _prefix "CommunalPlace"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#ConferenceChair"></see>
     /// </summary>
-    let ConferenceChair =
-        Namespaced_IRI.parse _namespace_name "ConferenceChair" |> NamespacedName
-
+    let ConferenceChair = _prefix "ConferenceChair"
     /// <summary>
     ///
     ///
@@ -282,9 +244,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ConferenceClosingEvent"></see></summary>
-    let ConferenceClosingEvent =
-        Namespaced_IRI.parse _namespace_name "ConferenceClosingEvent" |> NamespacedName
-
+    let ConferenceClosingEvent = _prefix "ConferenceClosingEvent"
     /// <summary>
     ///
     ///
@@ -292,9 +252,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ConferenceDinner"></see></summary>
-    let ConferenceDinner =
-        Namespaced_IRI.parse _namespace_name "ConferenceDinner" |> NamespacedName
-
+    let ConferenceDinner = _prefix "ConferenceDinner"
     /// <summary>
     ///
     ///
@@ -304,8 +262,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#MealEvent"></see></summary>
-    let MealEvent = Namespaced_IRI.parse _namespace_name "MealEvent" |> NamespacedName
-
+    let MealEvent = _prefix "MealEvent"
     /// <summary>
     ///
     ///
@@ -315,9 +272,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#SocialEvent"></see></summary>
-    let SocialEvent =
-        Namespaced_IRI.parse _namespace_name "SocialEvent" |> NamespacedName
-
+    let SocialEvent = _prefix "SocialEvent"
     /// <summary>
     ///
     ///
@@ -330,9 +285,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ConferenceEvent"></see></summary>
-    let ConferenceEvent =
-        Namespaced_IRI.parse _namespace_name "ConferenceEvent" |> NamespacedName
-
+    let ConferenceEvent = _prefix "ConferenceEvent"
     /// <summary>
     ///
     ///
@@ -340,9 +293,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ConferenceOpeningEvent"></see></summary>
-    let ConferenceOpeningEvent =
-        Namespaced_IRI.parse _namespace_name "ConferenceOpeningEvent" |> NamespacedName
-
+    let ConferenceOpeningEvent = _prefix "ConferenceOpeningEvent"
     /// <summary>
     ///
     ///
@@ -352,9 +303,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ConferenceVenuePlace"></see></summary>
-    let ConferenceVenuePlace =
-        Namespaced_IRI.parse _namespace_name "ConferenceVenuePlace" |> NamespacedName
-
+    let ConferenceVenuePlace = _prefix "ConferenceVenuePlace"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -363,8 +312,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Delegate"></see></summary>
-    let Delegate = Namespaced_IRI.parse _namespace_name "Delegate" |> NamespacedName
-
+    let Delegate = _prefix "Delegate"
     /// <summary>
     ///
     ///
@@ -372,9 +320,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#DemoPresentation"></see></summary>
-    let DemoPresentation =
-        Namespaced_IRI.parse _namespace_name "DemoPresentation" |> NamespacedName
-
+    let DemoPresentation = _prefix "DemoPresentation"
     /// <summary>
     ///
     ///
@@ -384,8 +330,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#TalkEvent"></see></summary>
-    let TalkEvent = Namespaced_IRI.parse _namespace_name "TalkEvent" |> NamespacedName
-
+    let TalkEvent = _prefix "TalkEvent"
     /// <summary>
     ///
     ///
@@ -393,9 +338,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#DemoSession"></see></summary>
-    let DemoSession =
-        Namespaced_IRI.parse _namespace_name "DemoSession" |> NamespacedName
-
+    let DemoSession = _prefix "DemoSession"
     /// <summary>
     ///
     ///
@@ -405,9 +348,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#SessionEvent"></see></summary>
-    let SessionEvent =
-        Namespaced_IRI.parse _namespace_name "SessionEvent" |> NamespacedName
-
+    let SessionEvent = _prefix "SessionEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -416,25 +357,20 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#DemosChair"></see></summary>
-    let DemosChair = Namespaced_IRI.parse _namespace_name "DemosChair" |> NamespacedName
-
+    let DemosChair = _prefix "DemosChair"
     /// <summary>
     /// A role that is only relevant in relation to the topic of the conference e.g. Semantic
     /// 			Web Technologies Coordinator at a Semantic Web Conference.
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#DogfoodTsar"></see></summary>
-    let DogfoodTsar =
-        Namespaced_IRI.parse _namespace_name "DogfoodTsar" |> NamespacedName
-
+    let DogfoodTsar = _prefix "DogfoodTsar"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated to reduce inflation of terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#DrinkingPlace"></see></summary>
-    let DrinkingPlace =
-        Namespaced_IRI.parse _namespace_name "DrinkingPlace" |> NamespacedName
-
+    let DrinkingPlace = _prefix "DrinkingPlace"
     /// <summary>
     ///
     ///
@@ -444,17 +380,14 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Place"></see></summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
-
+    let Place = _prefix "Place"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated to reduce inflation of terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#EatingPlace"></see></summary>
-    let EatingPlace =
-        Namespaced_IRI.parse _namespace_name "EatingPlace" |> NamespacedName
-
+    let EatingPlace = _prefix "EatingPlace"
     /// <summary>
     ///
     ///
@@ -462,8 +395,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Excursion"></see></summary>
-    let Excursion = Namespaced_IRI.parse _namespace_name "Excursion" |> NamespacedName
-
+    let Excursion = _prefix "Excursion"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -472,9 +404,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ExhibitionChair"></see></summary>
-    let ExhibitionChair =
-        Namespaced_IRI.parse _namespace_name "ExhibitionChair" |> NamespacedName
-
+    let ExhibitionChair = _prefix "ExhibitionChair"
     /// <summary>
     ///
     ///
@@ -482,9 +412,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#FreeTimeBreak"></see></summary>
-    let FreeTimeBreak =
-        Namespaced_IRI.parse _namespace_name "FreeTimeBreak" |> NamespacedName
-
+    let FreeTimeBreak = _prefix "FreeTimeBreak"
     /// <summary>
     ///
     ///
@@ -492,9 +420,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#IndustrialTalk"></see></summary>
-    let IndustrialTalk =
-        Namespaced_IRI.parse _namespace_name "IndustrialTalk" |> NamespacedName
-
+    let IndustrialTalk = _prefix "IndustrialTalk"
     /// <summary>
     ///
     ///
@@ -502,9 +428,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#IndustrialTrack"></see></summary>
-    let IndustrialTrack =
-        Namespaced_IRI.parse _namespace_name "IndustrialTrack" |> NamespacedName
-
+    let IndustrialTrack = _prefix "IndustrialTrack"
     /// <summary>
     ///
     ///
@@ -515,8 +439,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#TrackEvent"></see></summary>
-    let TrackEvent = Namespaced_IRI.parse _namespace_name "TrackEvent" |> NamespacedName
-
+    let TrackEvent = _prefix "TrackEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -525,18 +448,14 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#IndustryChair"></see></summary>
-    let IndustryChair =
-        Namespaced_IRI.parse _namespace_name "IndustryChair" |> NamespacedName
-
+    let IndustryChair = _prefix "IndustryChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;As opposed to a peer-reviewed paper. This class has been deprecated in order to reduce the inflation of classes.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#InvitedPaper"></see></summary>
-    let InvitedPaper =
-        Namespaced_IRI.parse _namespace_name "InvitedPaper" |> NamespacedName
-
+    let InvitedPaper = _prefix "InvitedPaper"
     /// <summary>
     ///
     ///
@@ -544,15 +463,11 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#KeynoteTalk"></see></summary>
-    let KeynoteTalk =
-        Namespaced_IRI.parse _namespace_name "KeynoteTalk" |> NamespacedName
-
+    let KeynoteTalk = _prefix "KeynoteTalk"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#LocalOrganiser"></see>
     /// </summary>
-    let LocalOrganiser =
-        Namespaced_IRI.parse _namespace_name "LocalOrganiser" |> NamespacedName
-
+    let LocalOrganiser = _prefix "LocalOrganiser"
     /// <summary>
     ///
     ///
@@ -560,8 +475,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#MealBreak"></see></summary>
-    let MealBreak = Namespaced_IRI.parse _namespace_name "MealBreak" |> NamespacedName
-
+    let MealBreak = _prefix "MealBreak"
     /// <summary>
     ///
     ///
@@ -571,15 +485,11 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#MeetingRoomPlace"></see></summary>
-    let MeetingRoomPlace =
-        Namespaced_IRI.parse _namespace_name "MeetingRoomPlace" |> NamespacedName
-
+    let MeetingRoomPlace = _prefix "MeetingRoomPlace"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#OrganisingCommitteeMember"></see>
     /// </summary>
-    let OrganisingCommitteeMember =
-        Namespaced_IRI.parse _namespace_name "OrganisingCommitteeMember" |> NamespacedName
-
+    let OrganisingCommitteeMember = _prefix "OrganisingCommitteeMember"
     /// <summary>
     ///
     ///
@@ -587,15 +497,14 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PanelEvent"></see></summary>
-    let PanelEvent = Namespaced_IRI.parse _namespace_name "PanelEvent" |> NamespacedName
+    let PanelEvent = _prefix "PanelEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;A scientific/scholarly paper, e.g., an article in a scientific journal, or a paper at a conference or workshop. A paper could also be unpublished formally, as long as it has the form of a scientific paper (introduction, conclusion, related work, etc.).&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Paper"></see></summary>
-    let Paper = Namespaced_IRI.parse _namespace_name "Paper" |> NamespacedName
-
+    let Paper = _prefix "Paper"
     /// <summary>
     ///
     ///
@@ -603,9 +512,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PaperPresentation"></see></summary>
-    let PaperPresentation =
-        Namespaced_IRI.parse _namespace_name "PaperPresentation" |> NamespacedName
-
+    let PaperPresentation = _prefix "PaperPresentation"
     /// <summary>
     ///
     ///
@@ -613,9 +520,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PaperSession"></see></summary>
-    let PaperSession =
-        Namespaced_IRI.parse _namespace_name "PaperSession" |> NamespacedName
-
+    let PaperSession = _prefix "PaperSession"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -624,17 +529,14 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PhDSymposiumChair"></see></summary>
-    let PhDSymposiumChair =
-        Namespaced_IRI.parse _namespace_name "PhDSymposiumChair" |> NamespacedName
-
+    let PhDSymposiumChair = _prefix "PhDSymposiumChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;A scientific poster at a conference or workshop.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Poster"></see></summary>
-    let Poster = Namespaced_IRI.parse _namespace_name "Poster" |> NamespacedName
-
+    let Poster = _prefix "Poster"
     /// <summary>
     ///
     ///
@@ -642,9 +544,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PosterPresentation"></see></summary>
-    let PosterPresentation =
-        Namespaced_IRI.parse _namespace_name "PosterPresentation" |> NamespacedName
-
+    let PosterPresentation = _prefix "PosterPresentation"
     /// <summary>
     ///
     ///
@@ -652,9 +552,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PosterSession"></see></summary>
-    let PosterSession =
-        Namespaced_IRI.parse _namespace_name "PosterSession" |> NamespacedName
-
+    let PosterSession = _prefix "PosterSession"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -663,9 +561,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#PostersChair"></see></summary>
-    let PostersChair =
-        Namespaced_IRI.parse _namespace_name "PostersChair" |> NamespacedName
-
+    let PostersChair = _prefix "PostersChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -674,37 +570,29 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Presenter"></see></summary>
-    let Presenter = Namespaced_IRI.parse _namespace_name "Presenter" |> NamespacedName
-
+    let Presenter = _prefix "Presenter"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#PrintedProceedingsChair"></see>
     /// </summary>
-    let PrintedProceedingsChair =
-        Namespaced_IRI.parse _namespace_name "PrintedProceedingsChair" |> NamespacedName
-
+    let PrintedProceedingsChair = _prefix "PrintedProceedingsChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;The proceedings of a conference or workshop, which contain the papers presented there.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Proceedings"></see></summary>
-    let Proceedings =
-        Namespaced_IRI.parse _namespace_name "Proceedings" |> NamespacedName
-
+    let Proceedings = _prefix "Proceedings"
     /// <summary>
     ///
     /// 			&lt;p&gt;A document containing the programme of an event such as a conference or workshop. Typically, the programme would list the times and dates for the individual sub-events, e.g., talks, dinners, panel discussions, etc.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Programme"></see></summary>
-    let Programme = Namespaced_IRI.parse _namespace_name "Programme" |> NamespacedName
-
+    let Programme = _prefix "Programme"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#ProgrammeChair"></see>
     /// </summary>
-    let ProgrammeChair =
-        Namespaced_IRI.parse _namespace_name "ProgrammeChair" |> NamespacedName
-
+    let ProgrammeChair = _prefix "ProgrammeChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -713,15 +601,11 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ProgrammeCommitteeMember"></see></summary>
-    let ProgrammeCommitteeMember =
-        Namespaced_IRI.parse _namespace_name "ProgrammeCommitteeMember" |> NamespacedName
-
+    let ProgrammeCommitteeMember = _prefix "ProgrammeCommitteeMember"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#PublicityChair"></see>
     /// </summary>
-    let PublicityChair =
-        Namespaced_IRI.parse _namespace_name "PublicityChair" |> NamespacedName
-
+    let PublicityChair = _prefix "PublicityChair"
     /// <summary>
     ///
     ///
@@ -729,8 +613,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Reception"></see></summary>
-    let Reception = Namespaced_IRI.parse _namespace_name "Reception" |> NamespacedName
-
+    let Reception = _prefix "Reception"
     /// <summary>
     ///
     ///
@@ -738,9 +621,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#ResearchTrack"></see></summary>
-    let ResearchTrack =
-        Namespaced_IRI.parse _namespace_name "ResearchTrack" |> NamespacedName
-
+    let ResearchTrack = _prefix "ResearchTrack"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -749,8 +630,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Reviewer"></see></summary>
-    let Reviewer = Namespaced_IRI.parse _namespace_name "Reviewer" |> NamespacedName
-
+    let Reviewer = _prefix "Reviewer"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -759,53 +639,40 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#SWChallengeChair"></see></summary>
-    let SWChallengeChair =
-        Namespaced_IRI.parse _namespace_name "SWChallengeChair" |> NamespacedName
-
+    let SWChallengeChair = _prefix "SWChallengeChair"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#SessionChair"></see>
     /// </summary>
-    let SessionChair =
-        Namespaced_IRI.parse _namespace_name "SessionChair" |> NamespacedName
-
+    let SessionChair = _prefix "SessionChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;A set of slides used for a presentation of e.g. a paper at a conference.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#SlideSet"></see></summary>
-    let SlideSet = Namespaced_IRI.parse _namespace_name "SlideSet" |> NamespacedName
-
+    let SlideSet = _prefix "SlideSet"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#Sponsorship"></see></summary>
-    let Sponsorship =
-        Namespaced_IRI.parse _namespace_name "Sponsorship" |> NamespacedName
-
+    let Sponsorship = _prefix "Sponsorship"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#SponsorshipChair"></see>
     /// </summary>
-    let SponsorshipChair =
-        Namespaced_IRI.parse _namespace_name "SponsorshipChair" |> NamespacedName
-
+    let SponsorshipChair = _prefix "SponsorshipChair"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#SubmissionsChair"></see>
     /// </summary>
-    let SubmissionsChair =
-        Namespaced_IRI.parse _namespace_name "SubmissionsChair" |> NamespacedName
-
+    let SubmissionsChair = _prefix "SubmissionsChair"
     /// <summary>
     ///
     /// 			&lt;p&gt;A type of paper which accompanies the demonstration of software, also known as an extended abstract or demo description. This class has been deprecated in order to reduce the inflation of classes; it is too specific for CS conferences.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#SystemDemonstration"></see></summary>
-    let SystemDemonstration =
-        Namespaced_IRI.parse _namespace_name "SystemDemonstration" |> NamespacedName
-
+    let SystemDemonstration = _prefix "SystemDemonstration"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -816,9 +683,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#SystemDescription"></see></summary>
-    let SystemDescription =
-        Namespaced_IRI.parse _namespace_name "SystemDescription" |> NamespacedName
-
+    let SystemDescription = _prefix "SystemDescription"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -827,16 +692,15 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#TrackChair"></see></summary>
-    let TrackChair = Namespaced_IRI.parse _namespace_name "TrackChair" |> NamespacedName
+    let TrackChair = _prefix "TrackChair"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#Treasurer"></see>
     /// </summary>
-    let Treasurer = Namespaced_IRI.parse _namespace_name "Treasurer" |> NamespacedName
+    let Treasurer = _prefix "Treasurer"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#Tutor"></see>
     /// </summary>
-    let Tutor = Namespaced_IRI.parse _namespace_name "Tutor" |> NamespacedName
-
+    let Tutor = _prefix "Tutor"
     /// <summary>
     ///
     ///
@@ -846,9 +710,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#TutorialEvent"></see></summary>
-    let TutorialEvent =
-        Namespaced_IRI.parse _namespace_name "TutorialEvent" |> NamespacedName
-
+    let TutorialEvent = _prefix "TutorialEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -857,20 +719,15 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#TutorialPresenter"></see></summary>
-    let TutorialPresenter =
-        Namespaced_IRI.parse _namespace_name "TutorialPresenter" |> NamespacedName
-
+    let TutorialPresenter = _prefix "TutorialPresenter"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#TutorialsChair"></see>
     /// </summary>
-    let TutorialsChair =
-        Namespaced_IRI.parse _namespace_name "TutorialsChair" |> NamespacedName
-
+    let TutorialsChair = _prefix "TutorialsChair"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#Webmaster"></see>
     /// </summary>
-    let Webmaster = Namespaced_IRI.parse _namespace_name "Webmaster" |> NamespacedName
-
+    let Webmaster = _prefix "Webmaster"
     /// <summary>
     ///
     ///
@@ -878,9 +735,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#WelcomeTalk"></see></summary>
-    let WelcomeTalk =
-        Namespaced_IRI.parse _namespace_name "WelcomeTalk" |> NamespacedName
-
+    let WelcomeTalk = _prefix "WelcomeTalk"
     /// <summary>
     ///
     ///
@@ -890,95 +745,75 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"></see></summary>
-    let WorkshopEvent =
-        Namespaced_IRI.parse _namespace_name "WorkshopEvent" |> NamespacedName
-
+    let WorkshopEvent = _prefix "WorkshopEvent"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#WorkshopOrganiser"></see>
     /// </summary>
-    let WorkshopOrganiser =
-        Namespaced_IRI.parse _namespace_name "WorkshopOrganiser" |> NamespacedName
-
+    let WorkshopOrganiser = _prefix "WorkshopOrganiser"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#WorkshopsChair"></see>
     /// </summary>
-    let WorkshopsChair =
-        Namespaced_IRI.parse _namespace_name "WorkshopsChair" |> NamespacedName
-
+    let WorkshopsChair = _prefix "WorkshopsChair"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#affiliation"></see>
     /// </summary>
-    let affiliation =
-        Namespaced_IRI.parse _namespace_name "affiliation" |> NamespacedName
-
+    let affiliation = _prefix "affiliation"
     /// <summary>
     ///
     /// 			&lt;p&gt;Instead of this property, use the &lt;a href="#Delegate"&gt;Delegate&lt;/a&gt; role.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#attendeeAt"></see></summary>
-    let attendeeAt = Namespaced_IRI.parse _namespace_name "attendeeAt" |> NamespacedName
-
+    let attendeeAt = _prefix "attendeeAt"
     /// <summary>
     ///
     /// 			&lt;p&gt;Instead of this property, use the &lt;a href="#Delegate"&gt;Delegate&lt;/a&gt; role.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasAttendee"></see></summary>
-    let hasAttendee =
-        Namespaced_IRI.parse _namespace_name "hasAttendee" |> NamespacedName
-
+    let hasAttendee = _prefix "hasAttendee"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#biblioReference"></see></summary>
-    let biblioReference =
-        Namespaced_IRI.parse _namespace_name "biblioReference" |> NamespacedName
-
+    let biblioReference = _prefix "biblioReference"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#forEvent"></see></summary>
-    let forEvent = Namespaced_IRI.parse _namespace_name "forEvent" |> NamespacedName
+    let forEvent = _prefix "forEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasCall"></see></summary>
-    let hasCall = Namespaced_IRI.parse _namespace_name "hasCall" |> NamespacedName
-
+    let hasCall = _prefix "hasCall"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasCameraReadyDeadline"></see></summary>
-    let hasCameraReadyDeadline =
-        Namespaced_IRI.parse _namespace_name "hasCameraReadyDeadline" |> NamespacedName
-
+    let hasCameraReadyDeadline = _prefix "hasCameraReadyDeadline"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasCostAmount"></see></summary>
-    let hasCostAmount =
-        Namespaced_IRI.parse _namespace_name "hasCostAmount" |> NamespacedName
-
+    let hasCostAmount = _prefix "hasCostAmount"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasCostCurrency"></see></summary>
-    let hasCostCurrency =
-        Namespaced_IRI.parse _namespace_name "hasCostCurrency" |> NamespacedName
-
+    let hasCostCurrency = _prefix "hasCostCurrency"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -987,26 +822,21 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasLocation"></see></summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasMenu"></see></summary>
-    let hasMenu = Namespaced_IRI.parse _namespace_name "hasMenu" |> NamespacedName
-
+    let hasMenu = _prefix "hasMenu"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasNotificationDeadline"></see></summary>
-    let hasNotificationDeadline =
-        Namespaced_IRI.parse _namespace_name "hasNotificationDeadline" |> NamespacedName
-
+    let hasNotificationDeadline = _prefix "hasNotificationDeadline"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1015,8 +845,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasPart"></see></summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
-
+    let hasPart = _prefix "hasPart"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1025,9 +854,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasProgramme"></see></summary>
-    let hasProgramme =
-        Namespaced_IRI.parse _namespace_name "hasProgramme" |> NamespacedName
-
+    let hasProgramme = _prefix "hasProgramme"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1036,9 +863,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasRelatedArtefact"></see></summary>
-    let hasRelatedArtefact =
-        Namespaced_IRI.parse _namespace_name "hasRelatedArtefact" |> NamespacedName
-
+    let hasRelatedArtefact = _prefix "hasRelatedArtefact"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1047,9 +872,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasRelatedDocument"></see></summary>
-    let hasRelatedDocument =
-        Namespaced_IRI.parse _namespace_name "hasRelatedDocument" |> NamespacedName
-
+    let hasRelatedDocument = _prefix "hasRelatedDocument"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1058,9 +881,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#relatedToEvent"></see></summary>
-    let relatedToEvent =
-        Namespaced_IRI.parse _namespace_name "relatedToEvent" |> NamespacedName
-
+    let relatedToEvent = _prefix "relatedToEvent"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1069,7 +890,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasRole"></see></summary>
-    let hasRole = Namespaced_IRI.parse _namespace_name "hasRole" |> NamespacedName
+    let hasRole = _prefix "hasRole"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1078,42 +899,35 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isRoleAt"></see></summary>
-    let isRoleAt = Namespaced_IRI.parse _namespace_name "isRoleAt" |> NamespacedName
-
+    let isRoleAt = _prefix "isRoleAt"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasSponsorship"></see></summary>
-    let hasSponsorship =
-        Namespaced_IRI.parse _namespace_name "hasSponsorship" |> NamespacedName
-
+    let hasSponsorship = _prefix "hasSponsorship"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasSubmissionDeadline"></see></summary>
-    let hasSubmissionDeadline =
-        Namespaced_IRI.parse _namespace_name "hasSubmissionDeadline" |> NamespacedName
-
+    let hasSubmissionDeadline = _prefix "hasSubmissionDeadline"
     /// <summary>
     ///
     /// 			&lt;p&gt;The call classes have been deprecated in SWC. Instead, we suggest to use the &lt;a href="http://sw.deri.org/2005/08/conf/cfp"&gt;CfP ontology&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasSubmissionInstructions"></see></summary>
-    let hasSubmissionInstructions =
-        Namespaced_IRI.parse _namespace_name "hasSubmissionInstructions" |> NamespacedName
-
+    let hasSubmissionInstructions = _prefix "hasSubmissionInstructions"
     /// <summary>
     ///
     /// 			&lt;p&gt;Instead of this property, use &lt;a href="http://xmlns.com/foaf/0.1/topic"&gt;foaf:topic&lt;/a&gt;.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#hasTopic"></see></summary>
-    let hasTopic = Namespaced_IRI.parse _namespace_name "hasTopic" |> NamespacedName
+    let hasTopic = _prefix "hasTopic"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1122,7 +936,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#heldBy"></see></summary>
-    let heldBy = Namespaced_IRI.parse _namespace_name "heldBy" |> NamespacedName
+    let heldBy = _prefix "heldBy"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1131,8 +945,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#holdsRole"></see></summary>
-    let holdsRole = Namespaced_IRI.parse _namespace_name "holdsRole" |> NamespacedName
-
+    let holdsRole = _prefix "holdsRole"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1141,9 +954,7 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isLocationFor"></see></summary>
-    let isLocationFor =
-        Namespaced_IRI.parse _namespace_name "isLocationFor" |> NamespacedName
-
+    let isLocationFor = _prefix "isLocationFor"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1152,53 +963,43 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isPartOf"></see></summary>
-    let isPartOf = Namespaced_IRI.parse _namespace_name "isPartOf" |> NamespacedName
-
+    let isPartOf = _prefix "isPartOf"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isProvidedBy"></see></summary>
-    let isProvidedBy =
-        Namespaced_IRI.parse _namespace_name "isProvidedBy" |> NamespacedName
-
+    let isProvidedBy = _prefix "isProvidedBy"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated because it has never been used and in order to reduce the inflation of ontology terms.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isProviderOf"></see></summary>
-    let isProviderOf =
-        Namespaced_IRI.parse _namespace_name "isProviderOf" |> NamespacedName
-
+    let isProviderOf = _prefix "isProviderOf"
     /// <summary>
     /// Events can be sub-events of other events. E.g., a talk can be a sub-event of a session, which in turn can be a sub-event of a conference. The relation is transitive - the talk is also a sub-event of the conference.
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isSubEventOf"></see></summary>
-    let isSubEventOf =
-        Namespaced_IRI.parse _namespace_name "isSubEventOf" |> NamespacedName
-
+    let isSubEventOf = _prefix "isSubEventOf"
     /// <summary>
     /// Events can be super-events of other events. E.g., a conference can be the super-event of a session, which in turn can be the super-event of a talk. The relation is transitive - the conference is also the super-event of the talk.
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isSuperEventOf"></see></summary>
-    let isSuperEventOf =
-        Namespaced_IRI.parse _namespace_name "isSuperEventOf" |> NamespacedName
-
+    let isSuperEventOf = _prefix "isSuperEventOf"
     /// <summary>
     ///
     /// 			&lt;p&gt;Deprecated, instead using terms from FOAF.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#isTopicOf"></see></summary>
-    let isTopicOf = Namespaced_IRI.parse _namespace_name "isTopicOf" |> NamespacedName
+    let isTopicOf = _prefix "isTopicOf"
     /// <summary>
     ///
     /// 			&lt;p&gt;FOAF does not define an inverse of &lt;code&gt;foaf:member&lt;/code&gt;, so SWC does it.&lt;/p&gt;
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#memberOf"></see></summary>
-    let memberOf = Namespaced_IRI.parse _namespace_name "memberOf" |> NamespacedName
-
+    let memberOf = _prefix "memberOf"
     /// <summary>
     ///
     /// 			&lt;p&gt;
@@ -1207,10 +1008,8 @@ module swc =
     ///
     ///
     /// <see href="http://data.semanticweb.org/ns/swc/ontology#plansToAttend"></see></summary>
-    let plansToAttend =
-        Namespaced_IRI.parse _namespace_name "plansToAttend" |> NamespacedName
-
+    let plansToAttend = _prefix "plansToAttend"
     /// <summary>
     ///   <see href="http://data.semanticweb.org/ns/swc/ontology#uuid"></see>
     /// </summary>
-    let uuid = Namespaced_IRI.parse _namespace_name "uuid" |> NamespacedName
+    let uuid = _prefix "uuid"

@@ -1,6 +1,6 @@
-module DoxAletheia.Rdf_Literal
+module DoxAletheia.Literal
 
-open Rdf_Vocabulary
+open DoxAletheia
 open System
 open System.Globalization
 open System.Xml
@@ -12,13 +12,14 @@ open https.www.w3.org._2001.XMLSchema_instance.hash
 open https.www.w3.org.XML._1998.namespace_.hash
 open http.www.w3.org._2001.XMLSchema.hash
 open http.www.w3.org._2006.time.hash
+open https.www.w3.org._2001.XMLSchema_instance.hash
 
 let simple lexical_form = SimpleLiteral lexical_form
 
 let en lexical_form =
     LanguageString(lexical_form, Language_Tag.en)
 
-let en_us lexical_form =
+let US lexical_form =
     RegionString(lexical_form, Language_Tag.en, Region_Subtag.US)
 
 let datatyped lexical_form datatype =

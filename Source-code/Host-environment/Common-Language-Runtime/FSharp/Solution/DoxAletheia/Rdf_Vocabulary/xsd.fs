@@ -1,9 +1,13 @@
 namespace http.www.w3.org._2001.XMLSchema.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module xsd =
     let _namespace_name = "http://www.w3.org/2001/XMLSchema#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///
     ///     `ENTITIES` represents the `ENTITIES` attribute type from [XML]. The _value
@@ -17,8 +21,7 @@ module xsd =
     ///     which restricts its value space to lists with at least one item.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#ENTITIES"></see></summary>
-    let ENTITIES = Namespaced_IRI.parse _namespace_name "ENTITIES" |> NamespacedName
-
+    let ENTITIES = _prefix "ENTITIES"
     /// <summary>
     ///
     ///     The definition of `anySimpleType` is a special _restriction_ of `anyType`. The
@@ -27,9 +30,7 @@ module xsd =
     ///     finite-length lists of zero or more _atomic values_.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#anySimpleType"></see></summary>
-    let anySimpleType =
-        Namespaced_IRI.parse _namespace_name "anySimpleType" |> NamespacedName
-
+    let anySimpleType = _prefix "anySimpleType"
     /// <summary>
     ///
     ///      `ENTITY` represents the `ENTITY` attribute type from [XML]. The _value space_
@@ -40,7 +41,7 @@ module xsd =
     ///      _base type_ of ENTITY is NCName.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#ENTITY"></see></summary>
-    let ENTITY = Namespaced_IRI.parse _namespace_name "ENTITY" |> NamespacedName
+    let ENTITY = _prefix "ENTITY"
     /// <summary>
     ///
     ///      `NCName` represents XML "non-colonized" Names. The _value space_ of `NCName`
@@ -50,7 +51,7 @@ module xsd =
     ///      _base type_ of `NCName` is `Name`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#NCName"></see></summary>
-    let NCName = Namespaced_IRI.parse _namespace_name "NCName" |> NamespacedName
+    let NCName = _prefix "NCName"
     /// <summary>
     ///
     ///      `ID` represents the `ID` attribute type from [XML]. The _value space_ of `ID` is
@@ -60,7 +61,7 @@ module xsd =
     ///      `NCName`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#ID"></see></summary>
-    let ID = Namespaced_IRI.parse _namespace_name "ID" |> NamespacedName
+    let ID = _prefix "ID"
     /// <summary>
     ///
     ///     `IDREF` represents the `IDREF` attribute type from [XML]. The _value space_ of
@@ -70,7 +71,7 @@ module xsd =
     ///     of `IDREF` is `NCName`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#IDREF"></see></summary>
-    let IDREF = Namespaced_IRI.parse _namespace_name "IDREF" |> NamespacedName
+    let IDREF = _prefix "IDREF"
     /// <summary>
     ///
     ///     `IDREFS` represents the `IDREFS` attribute type from [XML]. The _value space_
@@ -83,7 +84,7 @@ module xsd =
     ///     least one item.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#IDREFS"></see></summary>
-    let IDREFS = Namespaced_IRI.parse _namespace_name "IDREFS" |> NamespacedName
+    let IDREFS = _prefix "IDREFS"
     /// <summary>
     ///
     ///     `Name` represents XML Names. The _value space_ of `Name` is the set of all
@@ -92,7 +93,7 @@ module xsd =
     ///     The _base type_ of `Name` is `token`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#Name"></see></summary>
-    let Name = Namespaced_IRI.parse _namespace_name "Name" |> NamespacedName
+    let Name = _prefix "Name"
     /// <summary>
     ///
     ///      `NMTOKEN` represents the `NMTOKEN` attribute type from [XML]. The _value
@@ -102,7 +103,7 @@ module xsd =
     ///      `token`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#NMTOKEN"></see></summary>
-    let NMTOKEN = Namespaced_IRI.parse _namespace_name "NMTOKEN" |> NamespacedName
+    let NMTOKEN = _prefix "NMTOKEN"
     /// <summary>
     ///
     ///      `token` represents tokenized strings. The _value space_ of `token` is the set
@@ -115,7 +116,7 @@ module xsd =
     ///      two or more spaces. The _base type_ of `token` is `normalizedString`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#token"></see></summary>
-    let token = Namespaced_IRI.parse _namespace_name "token" |> NamespacedName
+    let token = _prefix "token"
     /// <summary>
     ///
     ///     `NMTOKENS` represents the `NMTOKENS` attribute type from [XML]. The _value
@@ -128,7 +129,7 @@ module xsd =
     ///     restricts its value space to lists with at least one item.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#NMTOKENS"></see></summary>
-    let NMTOKENS = Namespaced_IRI.parse _namespace_name "NMTOKENS" |> NamespacedName
+    let NMTOKENS = _prefix "NMTOKENS"
     /// <summary>
     ///
     ///     `NOTATION` represents the `NOTATION` attribute type from [XML]. The _value
@@ -137,8 +138,7 @@ module xsd =
     ///     notations declared in the current schema (in the form of `QNames`).
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#NOTATION"></see></summary>
-    let NOTATION = Namespaced_IRI.parse _namespace_name "NOTATION" |> NamespacedName
-
+    let NOTATION = _prefix "NOTATION"
     /// <summary>
     ///
     ///     `anyAtomicType` is a special _restriction_ of `anySimpleType`. The _value_ and
@@ -147,9 +147,7 @@ module xsd =
     ///     their _base type_.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#anyAtomicType"></see></summary>
-    let anyAtomicType =
-        Namespaced_IRI.parse _namespace_name "anyAtomicType" |> NamespacedName
-
+    let anyAtomicType = _prefix "anyAtomicType"
     /// <summary>
     ///
     ///     `QName` represents XML qualified names. The _value space_ of `QName` is the set
@@ -158,13 +156,13 @@ module xsd =
     ///     strings that match the `QName` production of [Namespaces in XML].
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#QName"></see></summary>
-    let QName = Namespaced_IRI.parse _namespace_name "QName" |> NamespacedName
+    let QName = _prefix "QName"
     /// <summary>
     ///
     ///     The root of the [XML Schema 1.1] datatype heirarchy.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#anyType"></see></summary>
-    let anyType = Namespaced_IRI.parse _namespace_name "anyType" |> NamespacedName
+    let anyType = _prefix "anyType"
     /// <summary>
     ///
     ///     `anyURI` represents an Internationalized Resource Identifier Reference
@@ -174,8 +172,7 @@ module xsd =
     ///     defined in [RFC 3987] or its successor(s) in the IETF Standards Track.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#anyURI"></see></summary>
-    let anyURI = Namespaced_IRI.parse _namespace_name "anyURI" |> NamespacedName
-
+    let anyURI = _prefix "anyURI"
     /// <summary>
     ///
     ///     `base64Binary` represents arbitrary Base64-encoded binary data. For
@@ -184,29 +181,27 @@ module xsd =
     ///     described in [RFC 2045].
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#base64Binary"></see></summary>
-    let base64Binary =
-        Namespaced_IRI.parse _namespace_name "base64Binary" |> NamespacedName
-
+    let base64Binary = _prefix "base64Binary"
     /// <summary>
     ///
     ///     `boolean` represents the values of two-valued logic.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#boolean"></see></summary>
-    let boolean = Namespaced_IRI.parse _namespace_name "boolean" |> NamespacedName
+    let boolean = _prefix "boolean"
     /// <summary>
     ///
     ///     `byte` is _derived_ from `short` by setting the value of `maxInclusive` to be
     ///     `127` and `minInclusive` to be `-128`. The _base type_ of `byte` is `short`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#byte"></see></summary>
-    let byte = Namespaced_IRI.parse _namespace_name "byte" |> NamespacedName
+    let byte = _prefix "byte"
     /// <summary>
     ///
     ///     `short` is _derived_ from `int` by setting the value of `maxInclusive` to be
     ///     `32767` and `minInclusive` to be `-32768`. The _base type_ of `short` is `int`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#short"></see></summary>
-    let short = Namespaced_IRI.parse _namespace_name "short" |> NamespacedName
+    let short = _prefix "short"
     /// <summary>
     ///
     ///     `date` represents top-open intervals of exactly one day in length on the
@@ -217,7 +212,7 @@ module xsd =
     ///     therefore overlap.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#date"></see></summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     ///
     ///     `dateTime` represents instants of time, optionally marked with a particular
@@ -225,8 +220,7 @@ module xsd =
     ///     time zone offsets are equal but not identical.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#dateTime"></see></summary>
-    let dateTime = Namespaced_IRI.parse _namespace_name "dateTime" |> NamespacedName
-
+    let dateTime = _prefix "dateTime"
     /// <summary>
     ///
     ///     The `dateTimeStamp` datatype is _derived_ from `dateTime` by giving the value
@@ -235,9 +229,7 @@ module xsd =
     ///     datatype is totally ordered.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#dateTimeStamp"></see></summary>
-    let dateTimeStamp =
-        Namespaced_IRI.parse _namespace_name "dateTimeStamp" |> NamespacedName
-
+    let dateTimeStamp = _prefix "dateTimeStamp"
     /// <summary>
     ///
     ///      `dayTimeDuration` is a datatype _derived_ from `duration` by restricting its
@@ -247,9 +239,7 @@ module xsd =
     ///      which is totally ordered.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#dayTimeDuration"></see></summary>
-    let dayTimeDuration =
-        Namespaced_IRI.parse _namespace_name "dayTimeDuration" |> NamespacedName
-
+    let dayTimeDuration = _prefix "dayTimeDuration"
     /// <summary>
     ///
     ///     `duration` is a datatype that represents durations of time. The concept of
@@ -264,7 +254,7 @@ module xsd =
     ///     function `dateTimePlusDuration`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#duration"></see></summary>
-    let duration = Namespaced_IRI.parse _namespace_name "duration" |> NamespacedName
+    let duration = _prefix "duration"
     /// <summary>
     ///
     ///     `decimal` represents a subset of the real numbers, which can be represented
@@ -276,7 +266,7 @@ module xsd =
     ///     relation on real numbers, restricted to this subset.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#decimal"></see></summary>
-    let decimal = Namespaced_IRI.parse _namespace_name "decimal" |> NamespacedName
+    let decimal = _prefix "decimal"
     /// <summary>
     ///
     ///     The `double` datatype is patterned after the IEEE double-precision 64-bit
@@ -285,7 +275,7 @@ module xsd =
     ///     numbers are often used to approximate arbitrary real numbers.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#double"></see></summary>
-    let double = Namespaced_IRI.parse _namespace_name "double" |> NamespacedName
+    let double = _prefix "double"
     /// <summary>
     ///
     ///     The `float` datatype is patterned after the IEEE single-precision 32-bit
@@ -294,7 +284,7 @@ module xsd =
     ///     arbitrary real numbers.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#float"></see></summary>
-    let float = Namespaced_IRI.parse _namespace_name "float" |> NamespacedName
+    let float = _prefix "float"
     /// <summary>
     ///
     ///     `gDay` represents whole days within an arbitrary month—days that recur at the
@@ -304,7 +294,7 @@ module xsd =
     ///     occur in all months; they are nonetheless permitted, up to 31.)
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#gDay"></see></summary>
-    let gDay = Namespaced_IRI.parse _namespace_name "gDay" |> NamespacedName
+    let gDay = _prefix "gDay"
     /// <summary>
     ///
     ///     `gMonth` represents whole (Gregorian) months within an arbitrary year—months
@@ -314,7 +304,7 @@ module xsd =
     ///     months in other countries).
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#gMonth"></see></summary>
-    let gMonth = Namespaced_IRI.parse _namespace_name "gMonth" |> NamespacedName
+    let gMonth = _prefix "gMonth"
     /// <summary>
     ///
     ///     `gMonthDay` represents whole calendar days that recur at the same point in
@@ -323,25 +313,25 @@ module xsd =
     ///     nonetheless permitted.)
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#gMonthDay"></see></summary>
-    let gMonthDay = Namespaced_IRI.parse _namespace_name "gMonthDay" |> NamespacedName
+    let gMonthDay = _prefix "gMonthDay"
     /// <summary>
     ///
     ///     `gYear` represents Gregorian calendar years.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#gYear"></see></summary>
-    let gYear = Namespaced_IRI.parse _namespace_name "gYear" |> NamespacedName
+    let gYear = _prefix "gYear"
     /// <summary>
     ///
     ///     `gYearMonth` represents specific whole Gregorian months in specific Gregorian years.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#gYearMonth"></see></summary>
-    let gYearMonth = Namespaced_IRI.parse _namespace_name "gYearMonth" |> NamespacedName
+    let gYearMonth = _prefix "gYearMonth"
     /// <summary>
     ///
     ///     hexBinary` represents arbitrary hex-encoded binary data.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#hexBinary"></see></summary>
-    let hexBinary = Namespaced_IRI.parse _namespace_name "hexBinary" |> NamespacedName
+    let hexBinary = _prefix "hexBinary"
     /// <summary>
     ///
     ///       `int` is _derived_ from `long` by setting the value of `maxInclusive` to be
@@ -349,7 +339,7 @@ module xsd =
     ///       is `long`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#int"></see></summary>
-    let int = Namespaced_IRI.parse _namespace_name "int" |> NamespacedName
+    let int = _prefix "int"
     /// <summary>
     ///
     ///      `long` is _derived_ from `integer` by setting the value of `maxInclusive` to
@@ -357,7 +347,7 @@ module xsd =
     ///      _base type_ of `long` is `integer`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#long"></see></summary>
-    let long = Namespaced_IRI.parse _namespace_name "long" |> NamespacedName
+    let long = _prefix "long"
     /// <summary>
     ///
     ///      `integer` is _derived_ from `decimal` by fixing the value of `fractionDigits`
@@ -367,7 +357,7 @@ module xsd =
     ///      `integer` is `decimal`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#integer"></see></summary>
-    let integer = Namespaced_IRI.parse _namespace_name "integer" |> NamespacedName
+    let integer = _prefix "integer"
     /// <summary>
     ///
     ///     `language` represents formal natural language identifiers, as defined by [BCP
@@ -376,8 +366,7 @@ module xsd =
     ///     of all strings that conform to the pattern `[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#language"></see></summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
-
+    let language = _prefix "language"
     /// <summary>
     ///
     ///      `negativeInteger` is _derived_ from `nonPositiveInteger` by setting the value
@@ -387,9 +376,7 @@ module xsd =
     ///      `nonPositiveInteger`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#negativeInteger"></see></summary>
-    let negativeInteger =
-        Namespaced_IRI.parse _namespace_name "negativeInteger" |> NamespacedName
-
+    let negativeInteger = _prefix "negativeInteger"
     /// <summary>
     ///
     ///     `nonPositiveInteger` is _derived_ from `integer` by setting the value of
@@ -399,9 +386,7 @@ module xsd =
     ///     `integer`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#nonPositiveInteger"></see></summary>
-    let nonPositiveInteger =
-        Namespaced_IRI.parse _namespace_name "nonPositiveInteger" |> NamespacedName
-
+    let nonPositiveInteger = _prefix "nonPositiveInteger"
     /// <summary>
     ///
     ///      `nonNegativeInteger` is _derived_ from `integer` by setting the value of
@@ -411,9 +396,7 @@ module xsd =
     ///      `integer`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"></see></summary>
-    let nonNegativeInteger =
-        Namespaced_IRI.parse _namespace_name "nonNegativeInteger" |> NamespacedName
-
+    let nonNegativeInteger = _prefix "nonNegativeInteger"
     /// <summary>
     ///
     ///     `normalizedString` represents white space normalized strings. The _value
@@ -424,16 +407,13 @@ module xsd =
     ///     characters. The _base type_ of `normalizedString` is `string`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#normalizedString"></see></summary>
-    let normalizedString =
-        Namespaced_IRI.parse _namespace_name "normalizedString" |> NamespacedName
-
+    let normalizedString = _prefix "normalizedString"
     /// <summary>
     ///
     ///     The `string` datatype represents character strings in XML.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#string"></see></summary>
-    let string = Namespaced_IRI.parse _namespace_name "string" |> NamespacedName
-
+    let string = _prefix "string"
     /// <summary>
     ///
     ///      `positiveInteger` is _derived_ from `nonNegativeInteger` by setting the value
@@ -443,17 +423,14 @@ module xsd =
     ///      `positiveInteger` is `nonNegativeInteger`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#positiveInteger"></see></summary>
-    let positiveInteger =
-        Namespaced_IRI.parse _namespace_name "positiveInteger" |> NamespacedName
-
+    let positiveInteger = _prefix "positiveInteger"
     /// <summary>
     ///
     ///     `time` represents instants of time that recur at the same point in each
     ///     calendar day, or that occur in some arbitrary calendar day.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#time"></see></summary>
-    let time = Namespaced_IRI.parse _namespace_name "time" |> NamespacedName
-
+    let time = _prefix "time"
     /// <summary>
     ///
     ///       `unsignedByte` is _derived_ from `unsignedShort` by setting the value of
@@ -461,9 +438,7 @@ module xsd =
     ///       `unsignedShort`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#unsignedByte"></see></summary>
-    let unsignedByte =
-        Namespaced_IRI.parse _namespace_name "unsignedByte" |> NamespacedName
-
+    let unsignedByte = _prefix "unsignedByte"
     /// <summary>
     ///
     ///        `unsignedShort` is _derived_ from `unsignedInt` by setting the value of
@@ -471,9 +446,7 @@ module xsd =
     ///        `unsignedInt`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#unsignedShort"></see></summary>
-    let unsignedShort =
-        Namespaced_IRI.parse _namespace_name "unsignedShort" |> NamespacedName
-
+    let unsignedShort = _prefix "unsignedShort"
     /// <summary>
     ///
     ///     `unsignedInt` is _derived_ from `unsignedLong` by setting the value of
@@ -481,9 +454,7 @@ module xsd =
     ///     `unsignedLong`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#unsignedInt"></see></summary>
-    let unsignedInt =
-        Namespaced_IRI.parse _namespace_name "unsignedInt" |> NamespacedName
-
+    let unsignedInt = _prefix "unsignedInt"
     /// <summary>
     ///
     ///      `unsignedLong` is _derived_ from `nonNegativeInteger` by setting the value of
@@ -491,9 +462,7 @@ module xsd =
     ///      is `nonNegativeInteger`.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#unsignedLong"></see></summary>
-    let unsignedLong =
-        Namespaced_IRI.parse _namespace_name "unsignedLong" |> NamespacedName
-
+    let unsignedLong = _prefix "unsignedLong"
     /// <summary>
     ///
     ///      `yearMonthDuration` is a datatype _derived_ from `duration` by restricting its
@@ -503,5 +472,4 @@ module xsd =
     ///      `duration` datatype which is totally ordered.
     ///
     /// <see href="http://www.w3.org/2001/XMLSchema#yearMonthDuration"></see></summary>
-    let yearMonthDuration =
-        Namespaced_IRI.parse _namespace_name "yearMonthDuration" |> NamespacedName
+    let yearMonthDuration = _prefix "yearMonthDuration"

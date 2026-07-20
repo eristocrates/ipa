@@ -1,229 +1,169 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FinancialInstruments.FinancialInstruments.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fi_fi =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/PromissoryNote"></see>
     /// </summary>
-    let PromissoryNote =
-        Namespaced_IRI.parse _namespace_name "PromissoryNote" |> NamespacedName
-
+    let PromissoryNote = _prefix "PromissoryNote"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/CalculationAgent"></see>
     /// </summary>
-    let CalculationAgent =
-        Namespaced_IRI.parse _namespace_name "CalculationAgent" |> NamespacedName
-
+    let CalculationAgent = _prefix "CalculationAgent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/CashInstrument"></see>
     /// </summary>
-    let CashInstrument =
-        Namespaced_IRI.parse _namespace_name "CashInstrument" |> NamespacedName
-
+    let CashInstrument = _prefix "CashInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/FinancialInstrument"></see>
     /// </summary>
-    let FinancialInstrument =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrument" |> NamespacedName
-
+    let FinancialInstrument = _prefix "FinancialInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/CommodityInstrument"></see>
     /// </summary>
-    let CommodityInstrument =
-        Namespaced_IRI.parse _namespace_name "CommodityInstrument" |> NamespacedName
+    let CommodityInstrument = _prefix "CommodityInstrument"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasCommodityValueAsOfExecutionDate"></see>
     /// </summary>
     let hasCommodityValueAsOfExecutionDate =
-        Namespaced_IRI.parse _namespace_name "hasCommodityValueAsOfExecutionDate" |> NamespacedName
+        _prefix "hasCommodityValueAsOfExecutionDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/CurrencyInstrument"></see>
     /// </summary>
-    let CurrencyInstrument =
-        Namespaced_IRI.parse _namespace_name "CurrencyInstrument" |> NamespacedName
-
+    let CurrencyInstrument = _prefix "CurrencyInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasBuyingCurrency"></see>
     /// </summary>
-    let hasBuyingCurrency =
-        Namespaced_IRI.parse _namespace_name "hasBuyingCurrency" |> NamespacedName
-
+    let hasBuyingCurrency = _prefix "hasBuyingCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasSellingCurrency"></see>
     /// </summary>
-    let hasSellingCurrency =
-        Namespaced_IRI.parse _namespace_name "hasSellingCurrency" |> NamespacedName
-
+    let hasSellingCurrency = _prefix "hasSellingCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/DebtInstrument"></see>
     /// </summary>
-    let DebtInstrument =
-        Namespaced_IRI.parse _namespace_name "DebtInstrument" |> NamespacedName
-
+    let DebtInstrument = _prefix "DebtInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/DerivativeInstrument"></see>
     /// </summary>
-    let DerivativeInstrument =
-        Namespaced_IRI.parse _namespace_name "DerivativeInstrument" |> NamespacedName
-
+    let DerivativeInstrument = _prefix "DerivativeInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Entitlement"></see>
     /// </summary>
-    let Entitlement =
-        Namespaced_IRI.parse _namespace_name "Entitlement" |> NamespacedName
-
+    let Entitlement = _prefix "Entitlement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/EquityInstrument"></see>
     /// </summary>
-    let EquityInstrument =
-        Namespaced_IRI.parse _namespace_name "EquityInstrument" |> NamespacedName
-
+    let EquityInstrument = _prefix "EquityInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Security"></see>
     /// </summary>
-    let Security = Namespaced_IRI.parse _namespace_name "Security" |> NamespacedName
-
+    let Security = _prefix "Security"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/ExemptSecurity"></see>
     /// </summary>
-    let ExemptSecurity =
-        Namespaced_IRI.parse _namespace_name "ExemptSecurity" |> NamespacedName
-
+    let ExemptSecurity = _prefix "ExemptSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/FinancialInstrumentIdentifier"></see>
     /// </summary>
-    let FinancialInstrumentIdentifier =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrumentIdentifier" |> NamespacedName
-
+    let FinancialInstrumentIdentifier = _prefix "FinancialInstrumentIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasNominalValue"></see>
     /// </summary>
-    let hasNominalValue =
-        Namespaced_IRI.parse _namespace_name "hasNominalValue" |> NamespacedName
-
+    let hasNominalValue = _prefix "hasNominalValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isLegallyRecordedIn"></see>
     /// </summary>
-    let isLegallyRecordedIn =
-        Namespaced_IRI.parse _namespace_name "isLegallyRecordedIn" |> NamespacedName
-
+    let isLegallyRecordedIn = _prefix "isLegallyRecordedIn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isNegotiable"></see>
     /// </summary>
-    let isNegotiable =
-        Namespaced_IRI.parse _namespace_name "isNegotiable" |> NamespacedName
-
+    let isNegotiable = _prefix "isNegotiable"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/isDenominatedIn"></see>
     /// </summary>
-    let isDenominatedIn =
-        Namespaced_IRI.parse _namespace_name "isDenominatedIn" |> NamespacedName
-
+    let isDenominatedIn = _prefix "isDenominatedIn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Issuer"></see>
     /// </summary>
-    let Issuer = Namespaced_IRI.parse _namespace_name "Issuer" |> NamespacedName
+    let Issuer = _prefix "Issuer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Future"></see>
     /// </summary>
-    let Future = Namespaced_IRI.parse _namespace_name "Future" |> NamespacedName
-
+    let Future = _prefix "Future"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/NegotiableSecurity"></see>
     /// </summary>
-    let NegotiableSecurity =
-        Namespaced_IRI.parse _namespace_name "NegotiableSecurity" |> NamespacedName
-
+    let NegotiableSecurity = _prefix "NegotiableSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/NonNegotiableSecurity"></see>
     /// </summary>
-    let NonNegotiableSecurity =
-        Namespaced_IRI.parse _namespace_name "NonNegotiableSecurity" |> NamespacedName
-
+    let NonNegotiableSecurity = _prefix "NonNegotiableSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Option"></see>
     /// </summary>
-    let Option = Namespaced_IRI.parse _namespace_name "Option" |> NamespacedName
-
+    let Option = _prefix "Option"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/PackagedFinancialProduct"></see>
     /// </summary>
-    let PackagedFinancialProduct =
-        Namespaced_IRI.parse _namespace_name "PackagedFinancialProduct" |> NamespacedName
-
+    let PackagedFinancialProduct = _prefix "PackagedFinancialProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/RedemptionProvision"></see>
     /// </summary>
-    let RedemptionProvision =
-        Namespaced_IRI.parse _namespace_name "RedemptionProvision" |> NamespacedName
-
+    let RedemptionProvision = _prefix "RedemptionProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/SecuritiesTransaction"></see>
     /// </summary>
-    let SecuritiesTransaction =
-        Namespaced_IRI.parse _namespace_name "SecuritiesTransaction" |> NamespacedName
-
+    let SecuritiesTransaction = _prefix "SecuritiesTransaction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/SpotContract"></see>
     /// </summary>
-    let SpotContract =
-        Namespaced_IRI.parse _namespace_name "SpotContract" |> NamespacedName
-
+    let SpotContract = _prefix "SpotContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/StandardizedTerms"></see>
     /// </summary>
-    let StandardizedTerms =
-        Namespaced_IRI.parse _namespace_name "StandardizedTerms" |> NamespacedName
-
+    let StandardizedTerms = _prefix "StandardizedTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Underlier"></see>
     /// </summary>
-    let Underlier = Namespaced_IRI.parse _namespace_name "Underlier" |> NamespacedName
-
+    let Underlier = _prefix "Underlier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasCalculationAgent"></see>
     /// </summary>
-    let hasCalculationAgent =
-        Namespaced_IRI.parse _namespace_name "hasCalculationAgent" |> NamespacedName
+    let hasCalculationAgent = _prefix "hasCalculationAgent"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasPrincipalExecutiveOfficeAddress"></see>
     /// </summary>
     let hasPrincipalExecutiveOfficeAddress =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalExecutiveOfficeAddress" |> NamespacedName
+        _prefix "hasPrincipalExecutiveOfficeAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasRedemptionProvision"></see>
     /// </summary>
-    let hasRedemptionProvision =
-        Namespaced_IRI.parse _namespace_name "hasRedemptionProvision" |> NamespacedName
-
+    let hasRedemptionProvision = _prefix "hasRedemptionProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasShareholder"></see>
     /// </summary>
-    let hasShareholder =
-        Namespaced_IRI.parse _namespace_name "hasShareholder" |> NamespacedName
-
+    let hasShareholder = _prefix "hasShareholder"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasUnderlier"></see>
     /// </summary>
-    let hasUnderlier =
-        Namespaced_IRI.parse _namespace_name "hasUnderlier" |> NamespacedName
-
+    let hasUnderlier = _prefix "hasUnderlier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/hasValueExpressedIn"></see>
     /// </summary>
-    let hasValueExpressedIn =
-        Namespaced_IRI.parse _namespace_name "hasValueExpressedIn" |> NamespacedName
-
+    let hasValueExpressedIn = _prefix "hasValueExpressedIn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/holdsSharesIn"></see>
     /// </summary>
-    let holdsSharesIn =
-        Namespaced_IRI.parse _namespace_name "holdsSharesIn" |> NamespacedName
+    let holdsSharesIn = _prefix "holdsSharesIn"

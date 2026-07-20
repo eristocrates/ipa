@@ -1,236 +1,170 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.LOAN.LoansSpecific.CardAccounts.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_loan_spc_crd =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/AmericanExpressNetwork"></see>
     /// </summary>
-    let AmericanExpressNetwork =
-        Namespaced_IRI.parse _namespace_name "AmericanExpressNetwork" |> NamespacedName
-
+    let AmericanExpressNetwork = _prefix "AmericanExpressNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardNetwork"></see>
     /// </summary>
-    let CreditCardNetwork =
-        Namespaced_IRI.parse _namespace_name "CreditCardNetwork" |> NamespacedName
-
+    let CreditCardNetwork = _prefix "CreditCardNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardAccount"></see>
     /// </summary>
-    let CardAccount =
-        Namespaced_IRI.parse _namespace_name "CardAccount" |> NamespacedName
-
+    let CardAccount = _prefix "CardAccount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/Cardholder"></see>
     /// </summary>
-    let Cardholder = Namespaced_IRI.parse _namespace_name "Cardholder" |> NamespacedName
-
+    let Cardholder = _prefix "Cardholder"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardProduct"></see>
     /// </summary>
-    let CardProduct =
-        Namespaced_IRI.parse _namespace_name "CardProduct" |> NamespacedName
-
+    let CardProduct = _prefix "CardProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/PaymentCardAgreement"></see>
     /// </summary>
-    let PaymentCardAgreement =
-        Namespaced_IRI.parse _namespace_name "PaymentCardAgreement" |> NamespacedName
-
+    let PaymentCardAgreement = _prefix "PaymentCardAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/PaymentCard"></see>
     /// </summary>
-    let PaymentCard =
-        Namespaced_IRI.parse _namespace_name "PaymentCard" |> NamespacedName
-
+    let PaymentCard = _prefix "PaymentCard"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/PrimaryCardAccountNumber"></see>
     /// </summary>
-    let PrimaryCardAccountNumber =
-        Namespaced_IRI.parse _namespace_name "PrimaryCardAccountNumber" |> NamespacedName
-
+    let PrimaryCardAccountNumber = _prefix "PrimaryCardAccountNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardAuthenticationValue"></see>
     /// </summary>
-    let CardAuthenticationValue =
-        Namespaced_IRI.parse _namespace_name "CardAuthenticationValue" |> NamespacedName
+    let CardAuthenticationValue = _prefix "CardAuthenticationValue"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/MagneticStripeVerificationCodeValue"></see>
     /// </summary>
     let MagneticStripeVerificationCodeValue =
-        Namespaced_IRI.parse _namespace_name "MagneticStripeVerificationCodeValue" |> NamespacedName
+        _prefix "MagneticStripeVerificationCodeValue"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardAuthenticationValue2"></see>
     /// </summary>
-    let CardAuthenticationValue2 =
-        Namespaced_IRI.parse _namespace_name "CardAuthenticationValue2" |> NamespacedName
-
+    let CardAuthenticationValue2 = _prefix "CardAuthenticationValue2"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/ThreeDigitVerificationCodeValue"></see>
     /// </summary>
-    let ThreeDigitVerificationCodeValue =
-        Namespaced_IRI.parse _namespace_name "ThreeDigitVerificationCodeValue" |> NamespacedName
-
+    let ThreeDigitVerificationCodeValue = _prefix "ThreeDigitVerificationCodeValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardExpirationDate"></see>
     /// </summary>
-    let CardExpirationDate =
-        Namespaced_IRI.parse _namespace_name "CardExpirationDate" |> NamespacedName
-
+    let CardExpirationDate = _prefix "CardExpirationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardIdentificationNumber"></see>
     /// </summary>
-    let CardIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "CardIdentificationNumber" |> NamespacedName
-
+    let CardIdentificationNumber = _prefix "CardIdentificationNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/hasCreditCardNetwork"></see>
     /// </summary>
-    let hasCreditCardNetwork =
-        Namespaced_IRI.parse _namespace_name "hasCreditCardNetwork" |> NamespacedName
-
+    let hasCreditCardNetwork = _prefix "hasCreditCardNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/usesCurrency"></see>
     /// </summary>
-    let usesCurrency =
-        Namespaced_IRI.parse _namespace_name "usesCurrency" |> NamespacedName
-
+    let usesCurrency = _prefix "usesCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardSecurityCode"></see>
     /// </summary>
-    let CardSecurityCode =
-        Namespaced_IRI.parse _namespace_name "CardSecurityCode" |> NamespacedName
-
+    let CardSecurityCode = _prefix "CardSecurityCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardValidationCode"></see>
     /// </summary>
-    let CardValidationCode =
-        Namespaced_IRI.parse _namespace_name "CardValidationCode" |> NamespacedName
-
+    let CardValidationCode = _prefix "CardValidationCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardValidationCode2"></see>
     /// </summary>
-    let CardValidationCode2 =
-        Namespaced_IRI.parse _namespace_name "CardValidationCode2" |> NamespacedName
-
+    let CardValidationCode2 = _prefix "CardValidationCode2"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardVerificationCodeValue"></see>
     /// </summary>
-    let CardVerificationCodeValue =
-        Namespaced_IRI.parse _namespace_name "CardVerificationCodeValue" |> NamespacedName
-
+    let CardVerificationCodeValue = _prefix "CardVerificationCodeValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardVerificationValue"></see>
     /// </summary>
-    let CardVerificationValue =
-        Namespaced_IRI.parse _namespace_name "CardVerificationValue" |> NamespacedName
-
+    let CardVerificationValue = _prefix "CardVerificationValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardVerificationValue2"></see>
     /// </summary>
-    let CardVerificationValue2 =
-        Namespaced_IRI.parse _namespace_name "CardVerificationValue2" |> NamespacedName
-
+    let CardVerificationValue2 = _prefix "CardVerificationValue2"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CommercialCreditCardAgreement"></see>
     /// </summary>
-    let CommercialCreditCardAgreement =
-        Namespaced_IRI.parse _namespace_name "CommercialCreditCardAgreement" |> NamespacedName
-
+    let CommercialCreditCardAgreement = _prefix "CommercialCreditCardAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAgreement"></see>
     /// </summary>
-    let CreditCardAgreement =
-        Namespaced_IRI.parse _namespace_name "CreditCardAgreement" |> NamespacedName
-
+    let CreditCardAgreement = _prefix "CreditCardAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/ConsumerCreditCardAgreement"></see>
     /// </summary>
-    let ConsumerCreditCardAgreement =
-        Namespaced_IRI.parse _namespace_name "ConsumerCreditCardAgreement" |> NamespacedName
-
+    let ConsumerCreditCardAgreement = _prefix "ConsumerCreditCardAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCard"></see>
     /// </summary>
-    let CreditCard = Namespaced_IRI.parse _namespace_name "CreditCard" |> NamespacedName
-
+    let CreditCard = _prefix "CreditCard"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount"></see>
     /// </summary>
-    let CreditCardAccount =
-        Namespaced_IRI.parse _namespace_name "CreditCardAccount" |> NamespacedName
-
+    let CreditCardAccount = _prefix "CreditCardAccount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardProduct"></see>
     /// </summary>
-    let CreditCardProduct =
-        Namespaced_IRI.parse _namespace_name "CreditCardProduct" |> NamespacedName
-
+    let CreditCardProduct = _prefix "CreditCardProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/IssuingFinancialInstitution"></see>
     /// </summary>
-    let IssuingFinancialInstitution =
-        Namespaced_IRI.parse _namespace_name "IssuingFinancialInstitution" |> NamespacedName
-
+    let IssuingFinancialInstitution = _prefix "IssuingFinancialInstitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCard"></see>
     /// </summary>
-    let DebitCard = Namespaced_IRI.parse _namespace_name "DebitCard" |> NamespacedName
-
+    let DebitCard = _prefix "DebitCard"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount"></see>
     /// </summary>
-    let DebitCardAccount =
-        Namespaced_IRI.parse _namespace_name "DebitCardAccount" |> NamespacedName
-
+    let DebitCardAccount = _prefix "DebitCardAccount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardProduct"></see>
     /// </summary>
-    let DebitCardProduct =
-        Namespaced_IRI.parse _namespace_name "DebitCardProduct" |> NamespacedName
-
+    let DebitCardProduct = _prefix "DebitCardProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DiscoverNetwork"></see>
     /// </summary>
-    let DiscoverNetwork =
-        Namespaced_IRI.parse _namespace_name "DiscoverNetwork" |> NamespacedName
-
+    let DiscoverNetwork = _prefix "DiscoverNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/JCBNetwork"></see>
     /// </summary>
-    let JCBNetwork = Namespaced_IRI.parse _namespace_name "JCBNetwork" |> NamespacedName
-
+    let JCBNetwork = _prefix "JCBNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/MastercardNetwork"></see>
     /// </summary>
-    let MastercardNetwork =
-        Namespaced_IRI.parse _namespace_name "MastercardNetwork" |> NamespacedName
-
+    let MastercardNetwork = _prefix "MastercardNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/hasCardVerificationCode"></see>
     /// </summary>
-    let hasCardVerificationCode =
-        Namespaced_IRI.parse _namespace_name "hasCardVerificationCode" |> NamespacedName
-
+    let hasCardVerificationCode = _prefix "hasCardVerificationCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/hasPrimaryAccountNumber"></see>
     /// </summary>
-    let hasPrimaryAccountNumber =
-        Namespaced_IRI.parse _namespace_name "hasPrimaryAccountNumber" |> NamespacedName
-
+    let hasPrimaryAccountNumber = _prefix "hasPrimaryAccountNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/SmartCard"></see>
     /// </summary>
-    let SmartCard = Namespaced_IRI.parse _namespace_name "SmartCard" |> NamespacedName
-
+    let SmartCard = _prefix "SmartCard"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/VisaNetwork"></see>
     /// </summary>
-    let VisaNetwork =
-        Namespaced_IRI.parse _namespace_name "VisaNetwork" |> NamespacedName
+    let VisaNetwork = _prefix "VisaNetwork"

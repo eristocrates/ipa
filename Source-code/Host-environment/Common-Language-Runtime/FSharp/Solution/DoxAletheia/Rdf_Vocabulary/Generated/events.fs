@@ -1,1663 +1,1286 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap._event.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module events =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/event#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#AbsoluteContraindication"></see>
     /// </summary>
-    let AbsoluteContraindication =
-        Namespaced_IRI.parse _namespace_name "AbsoluteContraindication" |> NamespacedName
-
+    let AbsoluteContraindication = _prefix "AbsoluteContraindication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Contraindication"></see>
     /// </summary>
-    let Contraindication =
-        Namespaced_IRI.parse _namespace_name "Contraindication" |> NamespacedName
-
+    let Contraindication = _prefix "Contraindication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#AbsoluteIndication"></see>
     /// </summary>
-    let AbsoluteIndication =
-        Namespaced_IRI.parse _namespace_name "AbsoluteIndication" |> NamespacedName
-
+    let AbsoluteIndication = _prefix "AbsoluteIndication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Indication"></see>
     /// </summary>
-    let Indication = Namespaced_IRI.parse _namespace_name "Indication" |> NamespacedName
+    let Indication = _prefix "Indication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Process"></see>
     /// </summary>
-    let Process = Namespaced_IRI.parse _namespace_name "Process" |> NamespacedName
-
+    let Process = _prefix "Process"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#AdverseOutput"></see>
     /// </summary>
-    let AdverseOutput =
-        Namespaced_IRI.parse _namespace_name "AdverseOutput" |> NamespacedName
-
+    let AdverseOutput = _prefix "AdverseOutput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Output"></see>
     /// </summary>
-    let Output = Namespaced_IRI.parse _namespace_name "Output" |> NamespacedName
-
+    let Output = _prefix "Output"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDemandState"></see>
     /// </summary>
-    let hasDemandState =
-        Namespaced_IRI.parse _namespace_name "hasDemandState" |> NamespacedName
-
+    let hasDemandState = _prefix "hasDemandState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Undemanded"></see>
     /// </summary>
-    let Undemanded = Namespaced_IRI.parse _namespace_name "Undemanded" |> NamespacedName
-
+    let Undemanded = _prefix "Undemanded"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#AdverseProcess"></see>
     /// </summary>
-    let AdverseProcess =
-        Namespaced_IRI.parse _namespace_name "AdverseProcess" |> NamespacedName
-
+    let AdverseProcess = _prefix "AdverseProcess"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Authenticating"></see>
     /// </summary>
-    let Authenticating =
-        Namespaced_IRI.parse _namespace_name "Authenticating" |> NamespacedName
-
+    let Authenticating = _prefix "Authenticating"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOutput"></see>
     /// </summary>
-    let hasOutput = Namespaced_IRI.parse _namespace_name "hasOutput" |> NamespacedName
-
+    let hasOutput = _prefix "hasOutput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Authentication"></see>
     /// </summary>
-    let Authentication =
-        Namespaced_IRI.parse _namespace_name "Authentication" |> NamespacedName
-
+    let Authentication = _prefix "Authentication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Availability"></see>
     /// </summary>
-    let Availability =
-        Namespaced_IRI.parse _namespace_name "Availability" |> NamespacedName
-
+    let Availability = _prefix "Availability"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasAvailabilityState"></see>
     /// </summary>
-    let hasAvailabilityState =
-        Namespaced_IRI.parse _namespace_name "hasAvailabilityState" |> NamespacedName
-
+    let hasAvailabilityState = _prefix "hasAvailabilityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Available"></see>
     /// </summary>
-    let Available = Namespaced_IRI.parse _namespace_name "Available" |> NamespacedName
-
+    let Available = _prefix "Available"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#AvailabilityState"></see>
     /// </summary>
-    let AvailabilityState =
-        Namespaced_IRI.parse _namespace_name "AvailabilityState" |> NamespacedName
-
+    let AvailabilityState = _prefix "AvailabilityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#State"></see>
     /// </summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
-
+    let State = _prefix "State"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Unavailable"></see>
     /// </summary>
-    let Unavailable =
-        Namespaced_IRI.parse _namespace_name "Unavailable" |> NamespacedName
-
+    let Unavailable = _prefix "Unavailable"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Biphasic"></see>
     /// </summary>
-    let Biphasic = Namespaced_IRI.parse _namespace_name "Biphasic" |> NamespacedName
+    let Biphasic = _prefix "Biphasic"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#CourseMode"></see>
     /// </summary>
-    let CourseMode = Namespaced_IRI.parse _namespace_name "CourseMode" |> NamespacedName
+    let CourseMode = _prefix "CourseMode"
     /// <summary>
     /// Human prenatal existence comprising embryonic and foetal phase.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Phasic"></see></summary>
-    let Phasic = Namespaced_IRI.parse _namespace_name "Phasic" |> NamespacedName
+    let Phasic = _prefix "Phasic"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Cause"></see>
     /// </summary>
-    let Cause = Namespaced_IRI.parse _namespace_name "Cause" |> NamespacedName
+    let Cause = _prefix "Cause"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Causing"></see>
     /// </summary>
-    let Causing = Namespaced_IRI.parse _namespace_name "Causing" |> NamespacedName
+    let Causing = _prefix "Causing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasInput"></see>
     /// </summary>
-    let hasInput = Namespaced_IRI.parse _namespace_name "hasInput" |> NamespacedName
+    let hasInput = _prefix "hasInput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Effect"></see>
     /// </summary>
-    let Effect = Namespaced_IRI.parse _namespace_name "Effect" |> NamespacedName
+    let Effect = _prefix "Effect"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Certain"></see>
     /// </summary>
-    let Certain = Namespaced_IRI.parse _namespace_name "Certain" |> NamespacedName
-
+    let Certain = _prefix "Certain"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#OutputLikelihood"></see>
     /// </summary>
-    let OutputLikelihood =
-        Namespaced_IRI.parse _namespace_name "OutputLikelihood" |> NamespacedName
-
+    let OutputLikelihood = _prefix "OutputLikelihood"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Completed"></see>
     /// </summary>
-    let Completed = Namespaced_IRI.parse _namespace_name "Completed" |> NamespacedName
-
+    let Completed = _prefix "Completed"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#CompletionState"></see>
     /// </summary>
-    let CompletionState =
-        Namespaced_IRI.parse _namespace_name "CompletionState" |> NamespacedName
-
+    let CompletionState = _prefix "CompletionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Completing"></see>
     /// </summary>
-    let Completing = Namespaced_IRI.parse _namespace_name "Completing" |> NamespacedName
+    let Completing = _prefix "Completing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Completion"></see>
     /// </summary>
-    let Completion = Namespaced_IRI.parse _namespace_name "Completion" |> NamespacedName
+    let Completion = _prefix "Completion"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#outputOf"></see>
     /// </summary>
-    let outputOf = Namespaced_IRI.parse _namespace_name "outputOf" |> NamespacedName
-
+    let outputOf = _prefix "outputOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#UnCompleted"></see>
     /// </summary>
-    let UnCompleted =
-        Namespaced_IRI.parse _namespace_name "UnCompleted" |> NamespacedName
-
+    let UnCompleted = _prefix "UnCompleted"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Condition"></see>
     /// </summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Reason"></see>
     /// </summary>
-    let Reason = Namespaced_IRI.parse _namespace_name "Reason" |> NamespacedName
+    let Reason = _prefix "Reason"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Created"></see>
     /// </summary>
-    let Created = Namespaced_IRI.parse _namespace_name "Created" |> NamespacedName
+    let Created = _prefix "Created"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Creating"></see>
     /// </summary>
-    let Creating = Namespaced_IRI.parse _namespace_name "Creating" |> NamespacedName
+    let Creating = _prefix "Creating"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Creation"></see>
     /// </summary>
-    let Creation = Namespaced_IRI.parse _namespace_name "Creation" |> NamespacedName
+    let Creation = _prefix "Creation"
     /// <summary>
     /// E.g. a clinical finding, e.g. fever, as object of a clinical evaluation of a body temperature measurement; a disease as object of a diagnosis; a drug product as object of a prescription.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasObject"></see></summary>
-    let hasObject = Namespaced_IRI.parse _namespace_name "hasObject" |> NamespacedName
+    let hasObject = _prefix "hasObject"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasState"></see>
     /// </summary>
-    let hasState = Namespaced_IRI.parse _namespace_name "hasState" |> NamespacedName
+    let hasState = _prefix "hasState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Cyclic"></see>
     /// </summary>
-    let Cyclic = Namespaced_IRI.parse _namespace_name "Cyclic" |> NamespacedName
+    let Cyclic = _prefix "Cyclic"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Day"></see>
     /// </summary>
-    let Day = Namespaced_IRI.parse _namespace_name "Day" |> NamespacedName
-
+    let Day = _prefix "Day"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDuration"></see>
     /// </summary>
-    let hasDuration =
-        Namespaced_IRI.parse _namespace_name "hasDuration" |> NamespacedName
-
+    let hasDuration = _prefix "hasDuration"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Delivering"></see>
     /// </summary>
-    let Delivering = Namespaced_IRI.parse _namespace_name "Delivering" |> NamespacedName
+    let Delivering = _prefix "Delivering"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Delivery"></see>
     /// </summary>
-    let Delivery = Namespaced_IRI.parse _namespace_name "Delivery" |> NamespacedName
-
+    let Delivery = _prefix "Delivery"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#DemandState"></see>
     /// </summary>
-    let DemandState =
-        Namespaced_IRI.parse _namespace_name "DemandState" |> NamespacedName
-
+    let DemandState = _prefix "DemandState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Demanded"></see>
     /// </summary>
-    let Demanded = Namespaced_IRI.parse _namespace_name "Demanded" |> NamespacedName
+    let Demanded = _prefix "Demanded"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Diagnosing"></see>
     /// </summary>
-    let Diagnosing = Namespaced_IRI.parse _namespace_name "Diagnosing" |> NamespacedName
+    let Diagnosing = _prefix "Diagnosing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Diagnosis"></see>
     /// </summary>
-    let Diagnosis = Namespaced_IRI.parse _namespace_name "Diagnosis" |> NamespacedName
-
+    let Diagnosis = _prefix "Diagnosis"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#DiagnosisState"></see>
     /// </summary>
-    let DiagnosisState =
-        Namespaced_IRI.parse _namespace_name "DiagnosisState" |> NamespacedName
-
+    let DiagnosisState = _prefix "DiagnosisState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Suspected"></see>
     /// </summary>
-    let Suspected = Namespaced_IRI.parse _namespace_name "Suspected" |> NamespacedName
-
+    let Suspected = _prefix "Suspected"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#UnSuspected"></see>
     /// </summary>
-    let UnSuspected =
-        Namespaced_IRI.parse _namespace_name "UnSuspected" |> NamespacedName
-
+    let UnSuspected = _prefix "UnSuspected"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Verified"></see>
     /// </summary>
-    let Verified = Namespaced_IRI.parse _namespace_name "Verified" |> NamespacedName
+    let Verified = _prefix "Verified"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#UnVerified"></see>
     /// </summary>
-    let UnVerified = Namespaced_IRI.parse _namespace_name "UnVerified" |> NamespacedName
+    let UnVerified = _prefix "UnVerified"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Educating"></see>
     /// </summary>
-    let Educating = Namespaced_IRI.parse _namespace_name "Educating" |> NamespacedName
+    let Educating = _prefix "Educating"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Procedure"></see>
     /// </summary>
-    let Procedure = Namespaced_IRI.parse _namespace_name "Procedure" |> NamespacedName
+    let Procedure = _prefix "Procedure"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Education"></see>
     /// </summary>
-    let Education = Namespaced_IRI.parse _namespace_name "Education" |> NamespacedName
+    let Education = _prefix "Education"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#EndingMode"></see>
     /// </summary>
-    let EndingMode = Namespaced_IRI.parse _namespace_name "EndingMode" |> NamespacedName
+    let EndingMode = _prefix "EndingMode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Evaluated"></see>
     /// </summary>
-    let Evaluated = Namespaced_IRI.parse _namespace_name "Evaluated" |> NamespacedName
+    let Evaluated = _prefix "Evaluated"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Evaluating"></see>
     /// </summary>
-    let Evaluating = Namespaced_IRI.parse _namespace_name "Evaluating" |> NamespacedName
+    let Evaluating = _prefix "Evaluating"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Evaluation"></see>
     /// </summary>
-    let Evaluation = Namespaced_IRI.parse _namespace_name "Evaluation" |> NamespacedName
-
+    let Evaluation = _prefix "Evaluation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Examination"></see>
     /// </summary>
-    let Examination =
-        Namespaced_IRI.parse _namespace_name "Examination" |> NamespacedName
-
+    let Examination = _prefix "Examination"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Examining"></see>
     /// </summary>
-    let Examining = Namespaced_IRI.parse _namespace_name "Examining" |> NamespacedName
+    let Examining = _prefix "Examining"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Examined"></see>
     /// </summary>
-    let Examined = Namespaced_IRI.parse _namespace_name "Examined" |> NamespacedName
+    let Examined = _prefix "Examined"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Existence"></see>
     /// </summary>
-    let Existence = Namespaced_IRI.parse _namespace_name "Existence" |> NamespacedName
-
+    let Existence = _prefix "Existence"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Experimental"></see>
     /// </summary>
-    let Experimental =
-        Namespaced_IRI.parse _namespace_name "Experimental" |> NamespacedName
-
+    let Experimental = _prefix "Experimental"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Fast"></see>
     /// </summary>
-    let Fast = Namespaced_IRI.parse _namespace_name "Fast" |> NamespacedName
-
+    let Fast = _prefix "Fast"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#FinalOutput"></see>
     /// </summary>
-    let FinalOutput =
-        Namespaced_IRI.parse _namespace_name "FinalOutput" |> NamespacedName
-
+    let FinalOutput = _prefix "FinalOutput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Finding"></see>
     /// </summary>
-    let Finding = Namespaced_IRI.parse _namespace_name "Finding" |> NamespacedName
+    let Finding = _prefix "Finding"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Friday"></see>
     /// </summary>
-    let Friday = Namespaced_IRI.parse _namespace_name "Friday" |> NamespacedName
+    let Friday = _prefix "Friday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Weekday"></see>
     /// </summary>
-    let Weekday = Namespaced_IRI.parse _namespace_name "Weekday" |> NamespacedName
+    let Weekday = _prefix "Weekday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Future"></see>
     /// </summary>
-    let Future = Namespaced_IRI.parse _namespace_name "Future" |> NamespacedName
+    let Future = _prefix "Future"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Gradual"></see>
     /// </summary>
-    let Gradual = Namespaced_IRI.parse _namespace_name "Gradual" |> NamespacedName
+    let Gradual = _prefix "Gradual"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#OnsetMode"></see>
     /// </summary>
-    let OnsetMode = Namespaced_IRI.parse _namespace_name "OnsetMode" |> NamespacedName
+    let OnsetMode = _prefix "OnsetMode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Guideline"></see>
     /// </summary>
-    let Guideline = Namespaced_IRI.parse _namespace_name "Guideline" |> NamespacedName
-
+    let Guideline = _prefix "Guideline"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#HighPriority"></see>
     /// </summary>
-    let HighPriority =
-        Namespaced_IRI.parse _namespace_name "HighPriority" |> NamespacedName
-
+    let HighPriority = _prefix "HighPriority"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#PriorityState"></see>
     /// </summary>
-    let PriorityState =
-        Namespaced_IRI.parse _namespace_name "PriorityState" |> NamespacedName
-
+    let PriorityState = _prefix "PriorityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Input"></see>
     /// </summary>
-    let Input = Namespaced_IRI.parse _namespace_name "Input" |> NamespacedName
+    let Input = _prefix "Input"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Intent"></see>
     /// </summary>
-    let Intent = Namespaced_IRI.parse _namespace_name "Intent" |> NamespacedName
-
+    let Intent = _prefix "Intent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#IntentionState"></see>
     /// </summary>
-    let IntentionState =
-        Namespaced_IRI.parse _namespace_name "IntentionState" |> NamespacedName
-
+    let IntentionState = _prefix "IntentionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Intentional"></see>
     /// </summary>
-    let Intentional =
-        Namespaced_IRI.parse _namespace_name "Intentional" |> NamespacedName
-
+    let Intentional = _prefix "Intentional"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Unintentional"></see>
     /// </summary>
-    let Unintentional =
-        Namespaced_IRI.parse _namespace_name "Unintentional" |> NamespacedName
-
+    let Unintentional = _prefix "Unintentional"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Interacting"></see>
     /// </summary>
-    let Interacting =
-        Namespaced_IRI.parse _namespace_name "Interacting" |> NamespacedName
-
+    let Interacting = _prefix "Interacting"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Interaction"></see>
     /// </summary>
-    let Interaction =
-        Namespaced_IRI.parse _namespace_name "Interaction" |> NamespacedName
-
+    let Interaction = _prefix "Interaction"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#IntermediateOutput"></see>
     /// </summary>
-    let IntermediateOutput =
-        Namespaced_IRI.parse _namespace_name "IntermediateOutput" |> NamespacedName
-
+    let IntermediateOutput = _prefix "IntermediateOutput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#IntermediatelySusceptible"></see>
     /// </summary>
-    let IntermediatelySusceptible =
-        Namespaced_IRI.parse _namespace_name "IntermediatelySusceptible" |> NamespacedName
-
+    let IntermediatelySusceptible = _prefix "IntermediatelySusceptible"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#SusceptibilityState"></see>
     /// </summary>
-    let SusceptibilityState =
-        Namespaced_IRI.parse _namespace_name "SusceptibilityState" |> NamespacedName
-
+    let SusceptibilityState = _prefix "SusceptibilityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Intermittent"></see>
     /// </summary>
-    let Intermittent =
-        Namespaced_IRI.parse _namespace_name "Intermittent" |> NamespacedName
-
+    let Intermittent = _prefix "Intermittent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Invalid"></see>
     /// </summary>
-    let Invalid = Namespaced_IRI.parse _namespace_name "Invalid" |> NamespacedName
-
+    let Invalid = _prefix "Invalid"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#ValidityState"></see>
     /// </summary>
-    let ValidityState =
-        Namespaced_IRI.parse _namespace_name "ValidityState" |> NamespacedName
-
+    let ValidityState = _prefix "ValidityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#LegalAuthenticating"></see>
     /// </summary>
-    let LegalAuthenticating =
-        Namespaced_IRI.parse _namespace_name "LegalAuthenticating" |> NamespacedName
-
+    let LegalAuthenticating = _prefix "LegalAuthenticating"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#LegalAuthentication"></see>
     /// </summary>
-    let LegalAuthentication =
-        Namespaced_IRI.parse _namespace_name "LegalAuthentication" |> NamespacedName
-
+    let LegalAuthentication = _prefix "LegalAuthentication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Likelihood"></see>
     /// </summary>
-    let Likelihood = Namespaced_IRI.parse _namespace_name "Likelihood" |> NamespacedName
+    let Likelihood = _prefix "Likelihood"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Likely"></see>
     /// </summary>
-    let Likely = Namespaced_IRI.parse _namespace_name "Likely" |> NamespacedName
-
+    let Likely = _prefix "Likely"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#LowPriority"></see>
     /// </summary>
-    let LowPriority =
-        Namespaced_IRI.parse _namespace_name "LowPriority" |> NamespacedName
-
+    let LowPriority = _prefix "LowPriority"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Method"></see>
     /// </summary>
-    let Method = Namespaced_IRI.parse _namespace_name "Method" |> NamespacedName
-
+    let Method = _prefix "Method"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Modification"></see>
     /// </summary>
-    let Modification =
-        Namespaced_IRI.parse _namespace_name "Modification" |> NamespacedName
-
+    let Modification = _prefix "Modification"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Modifying"></see>
     /// </summary>
-    let Modifying = Namespaced_IRI.parse _namespace_name "Modifying" |> NamespacedName
+    let Modifying = _prefix "Modifying"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Modified"></see>
     /// </summary>
-    let Modified = Namespaced_IRI.parse _namespace_name "Modified" |> NamespacedName
+    let Modified = _prefix "Modified"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Monday"></see>
     /// </summary>
-    let Monday = Namespaced_IRI.parse _namespace_name "Monday" |> NamespacedName
+    let Monday = _prefix "Monday"
     /// <summary>
     /// Near sure.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#MostLikely"></see></summary>
-    let MostLikely = Namespaced_IRI.parse _namespace_name "MostLikely" |> NamespacedName
-
+    let MostLikely = _prefix "MostLikely"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#MostUnlikely"></see>
     /// </summary>
-    let MostUnlikely =
-        Namespaced_IRI.parse _namespace_name "MostUnlikely" |> NamespacedName
-
+    let MostUnlikely = _prefix "MostUnlikely"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Observable"></see>
     /// </summary>
-    let Observable = Namespaced_IRI.parse _namespace_name "Observable" |> NamespacedName
+    let Observable = _prefix "Observable"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Order"></see>
     /// </summary>
-    let Order = Namespaced_IRI.parse _namespace_name "Order" |> NamespacedName
+    let Order = _prefix "Order"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Ordering"></see>
     /// </summary>
-    let Ordering = Namespaced_IRI.parse _namespace_name "Ordering" |> NamespacedName
+    let Ordering = _prefix "Ordering"
     /// <summary>
     /// E.g. past 3 months: before now.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Past"></see></summary>
-    let Past = Namespaced_IRI.parse _namespace_name "Past" |> NamespacedName
+    let Past = _prefix "Past"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Pathway"></see>
     /// </summary>
-    let Pathway = Namespaced_IRI.parse _namespace_name "Pathway" |> NamespacedName
+    let Pathway = _prefix "Pathway"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Persistent"></see>
     /// </summary>
-    let Persistent = Namespaced_IRI.parse _namespace_name "Persistent" |> NamespacedName
+    let Persistent = _prefix "Persistent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Plan"></see>
     /// </summary>
-    let Plan = Namespaced_IRI.parse _namespace_name "Plan" |> NamespacedName
+    let Plan = _prefix "Plan"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Planning"></see>
     /// </summary>
-    let Planning = Namespaced_IRI.parse _namespace_name "Planning" |> NamespacedName
+    let Planning = _prefix "Planning"
     /// <summary>
     /// E.g. previous 3 months: before current month.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Previous"></see></summary>
-    let Previous = Namespaced_IRI.parse _namespace_name "Previous" |> NamespacedName
-
+    let Previous = _prefix "Previous"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#RelativeContraindication"></see>
     /// </summary>
-    let RelativeContraindication =
-        Namespaced_IRI.parse _namespace_name "RelativeContraindication" |> NamespacedName
-
+    let RelativeContraindication = _prefix "RelativeContraindication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#RelativeIndication"></see>
     /// </summary>
-    let RelativeIndication =
-        Namespaced_IRI.parse _namespace_name "RelativeIndication" |> NamespacedName
-
+    let RelativeIndication = _prefix "RelativeIndication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Request"></see>
     /// </summary>
-    let Request = Namespaced_IRI.parse _namespace_name "Request" |> NamespacedName
+    let Request = _prefix "Request"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Requesting"></see>
     /// </summary>
-    let Requesting = Namespaced_IRI.parse _namespace_name "Requesting" |> NamespacedName
+    let Requesting = _prefix "Requesting"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Resistant"></see>
     /// </summary>
-    let Resistant = Namespaced_IRI.parse _namespace_name "Resistant" |> NamespacedName
+    let Resistant = _prefix "Resistant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Risk"></see>
     /// </summary>
-    let Risk = Namespaced_IRI.parse _namespace_name "Risk" |> NamespacedName
+    let Risk = _prefix "Risk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#RiskFactor"></see>
     /// </summary>
-    let RiskFactor = Namespaced_IRI.parse _namespace_name "RiskFactor" |> NamespacedName
+    let RiskFactor = _prefix "RiskFactor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Routine"></see>
     /// </summary>
-    let Routine = Namespaced_IRI.parse _namespace_name "Routine" |> NamespacedName
+    let Routine = _prefix "Routine"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Saturday"></see>
     /// </summary>
-    let Saturday = Namespaced_IRI.parse _namespace_name "Saturday" |> NamespacedName
+    let Saturday = _prefix "Saturday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Slow"></see>
     /// </summary>
-    let Slow = Namespaced_IRI.parse _namespace_name "Slow" |> NamespacedName
+    let Slow = _prefix "Slow"
     /// <summary>
     /// E.g. a business enterprise paying for radio or television programming in return for advertising time.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Sponsoring"></see></summary>
-    let Sponsoring = Namespaced_IRI.parse _namespace_name "Sponsoring" |> NamespacedName
+    let Sponsoring = _prefix "Sponsoring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Stage"></see>
     /// </summary>
-    let Stage = Namespaced_IRI.parse _namespace_name "Stage" |> NamespacedName
+    let Stage = _prefix "Stage"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Staging"></see>
     /// </summary>
-    let Staging = Namespaced_IRI.parse _namespace_name "Staging" |> NamespacedName
+    let Staging = _prefix "Staging"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Strategy"></see>
     /// </summary>
-    let Strategy = Namespaced_IRI.parse _namespace_name "Strategy" |> NamespacedName
+    let Strategy = _prefix "Strategy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Subacute"></see>
     /// </summary>
-    let Subacute = Namespaced_IRI.parse _namespace_name "Subacute" |> NamespacedName
+    let Subacute = _prefix "Subacute"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Submission"></see>
     /// </summary>
-    let Submission = Namespaced_IRI.parse _namespace_name "Submission" |> NamespacedName
+    let Submission = _prefix "Submission"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Submitting"></see>
     /// </summary>
-    let Submitting = Namespaced_IRI.parse _namespace_name "Submitting" |> NamespacedName
-
+    let Submitting = _prefix "Submitting"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#SubmissionState"></see>
     /// </summary>
-    let SubmissionState =
-        Namespaced_IRI.parse _namespace_name "SubmissionState" |> NamespacedName
-
+    let SubmissionState = _prefix "SubmissionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Submitted"></see>
     /// </summary>
-    let Submitted = Namespaced_IRI.parse _namespace_name "Submitted" |> NamespacedName
-
+    let Submitted = _prefix "Submitted"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#UnSubmitted"></see>
     /// </summary>
-    let UnSubmitted =
-        Namespaced_IRI.parse _namespace_name "UnSubmitted" |> NamespacedName
-
+    let UnSubmitted = _prefix "UnSubmitted"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Sudden"></see>
     /// </summary>
-    let Sudden = Namespaced_IRI.parse _namespace_name "Sudden" |> NamespacedName
+    let Sudden = _prefix "Sudden"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Sunday"></see>
     /// </summary>
-    let Sunday = Namespaced_IRI.parse _namespace_name "Sunday" |> NamespacedName
-
+    let Sunday = _prefix "Sunday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Susceptible"></see>
     /// </summary>
-    let Susceptible =
-        Namespaced_IRI.parse _namespace_name "Susceptible" |> NamespacedName
-
+    let Susceptible = _prefix "Susceptible"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Thursday"></see>
     /// </summary>
-    let Thursday = Namespaced_IRI.parse _namespace_name "Thursday" |> NamespacedName
+    let Thursday = _prefix "Thursday"
     /// <summary>
     /// Moved to &lt;http://eulersharp.sourceforge.net/2003/03swap/space#&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Transfer"></see></summary>
-    let Transfer = Namespaced_IRI.parse _namespace_name "Transfer" |> NamespacedName
-
+    let Transfer = _prefix "Transfer"
     /// <summary>
     /// Moved to &lt;http://eulersharp.sourceforge.net/2003/03swap/space#&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Transferring"></see></summary>
-    let Transferring =
-        Namespaced_IRI.parse _namespace_name "Transferring" |> NamespacedName
-
+    let Transferring = _prefix "Transferring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Tuesday"></see>
     /// </summary>
-    let Tuesday = Namespaced_IRI.parse _namespace_name "Tuesday" |> NamespacedName
-
+    let Tuesday = _prefix "Tuesday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Unavailability"></see>
     /// </summary>
-    let Unavailability =
-        Namespaced_IRI.parse _namespace_name "Unavailability" |> NamespacedName
-
+    let Unavailability = _prefix "Unavailability"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Unlikely"></see>
     /// </summary>
-    let Unlikely = Namespaced_IRI.parse _namespace_name "Unlikely" |> NamespacedName
+    let Unlikely = _prefix "Unlikely"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Urgent"></see>
     /// </summary>
-    let Urgent = Namespaced_IRI.parse _namespace_name "Urgent" |> NamespacedName
+    let Urgent = _prefix "Urgent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Valid"></see>
     /// </summary>
-    let Valid = Namespaced_IRI.parse _namespace_name "Valid" |> NamespacedName
+    let Valid = _prefix "Valid"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Validating"></see>
     /// </summary>
-    let Validating = Namespaced_IRI.parse _namespace_name "Validating" |> NamespacedName
+    let Validating = _prefix "Validating"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Validation"></see>
     /// </summary>
-    let Validation = Namespaced_IRI.parse _namespace_name "Validation" |> NamespacedName
+    let Validation = _prefix "Validation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Wednesday"></see>
     /// </summary>
-    let Wednesday = Namespaced_IRI.parse _namespace_name "Wednesday" |> NamespacedName
+    let Wednesday = _prefix "Wednesday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#Week"></see>
     /// </summary>
-    let Week = Namespaced_IRI.parse _namespace_name "Week" |> NamespacedName
+    let Week = _prefix "Week"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#after"></see>
     /// </summary>
-    let after = Namespaced_IRI.parse _namespace_name "after" |> NamespacedName
-
+    let after = _prefix "after"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#timeRelatedTo"></see>
     /// </summary>
-    let timeRelatedTo =
-        Namespaced_IRI.parse _namespace_name "timeRelatedTo" |> NamespacedName
-
+    let timeRelatedTo = _prefix "timeRelatedTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#before"></see>
     /// </summary>
-    let before = Namespaced_IRI.parse _namespace_name "before" |> NamespacedName
+    let before = _prefix "before"
     /// <summary>
     /// E.g. a diagnosis, e.g. infection, based on an evaluation, e.g. fever, in turn based on an examination, e.g. body temperature measurement.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#basedOn"></see></summary>
-    let basedOn = Namespaced_IRI.parse _namespace_name "basedOn" |> NamespacedName
+    let basedOn = _prefix "basedOn"
     /// <summary>
     /// E.g. an examination, e.g. body temperature measurement, as basis for an evaluation, e.g. fever, in turn basis for a diagnosis, e.g. infection.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#basisFor"></see></summary>
-    let basisFor = Namespaced_IRI.parse _namespace_name "basisFor" |> NamespacedName
+    let basisFor = _prefix "basisFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#beginDate"></see>
     /// </summary>
-    let beginDate = Namespaced_IRI.parse _namespace_name "beginDate" |> NamespacedName
+    let beginDate = _prefix "beginDate"
     /// <summary>
     /// Using the Unix Epoch time.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#begins"></see></summary>
-    let begins = Namespaced_IRI.parse _namespace_name "begins" |> NamespacedName
-
+    let begins = _prefix "begins"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#beginsAfter"></see>
     /// </summary>
-    let beginsAfter =
-        Namespaced_IRI.parse _namespace_name "beginsAfter" |> NamespacedName
-
+    let beginsAfter = _prefix "beginsAfter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#beginsBefore"></see>
     /// </summary>
-    let beginsBefore =
-        Namespaced_IRI.parse _namespace_name "beginsBefore" |> NamespacedName
-
+    let beginsBefore = _prefix "beginsBefore"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#beginsDuring"></see>
     /// </summary>
-    let beginsDuring =
-        Namespaced_IRI.parse _namespace_name "beginsDuring" |> NamespacedName
-
+    let beginsDuring = _prefix "beginsDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#causedBy"></see>
     /// </summary>
-    let causedBy = Namespaced_IRI.parse _namespace_name "causedBy" |> NamespacedName
+    let causedBy = _prefix "causedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#causes"></see>
     /// </summary>
-    let causes = Namespaced_IRI.parse _namespace_name "causes" |> NamespacedName
-
+    let causes = _prefix "causes"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#compliesWith"></see>
     /// </summary>
-    let compliesWith =
-        Namespaced_IRI.parse _namespace_name "compliesWith" |> NamespacedName
-
+    let compliesWith = _prefix "compliesWith"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#confirmedBy"></see>
     /// </summary>
-    let confirmedBy =
-        Namespaced_IRI.parse _namespace_name "confirmedBy" |> NamespacedName
-
+    let confirmedBy = _prefix "confirmedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#confirms"></see>
     /// </summary>
-    let confirms = Namespaced_IRI.parse _namespace_name "confirms" |> NamespacedName
-
+    let confirms = _prefix "confirms"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#contraindicatedBy"></see>
     /// </summary>
-    let contraindicatedBy =
-        Namespaced_IRI.parse _namespace_name "contraindicatedBy" |> NamespacedName
-
+    let contraindicatedBy = _prefix "contraindicatedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#contraindicates"></see>
     /// </summary>
-    let contraindicates =
-        Namespaced_IRI.parse _namespace_name "contraindicates" |> NamespacedName
-
+    let contraindicates = _prefix "contraindicates"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#createdBy"></see>
     /// </summary>
-    let createdBy = Namespaced_IRI.parse _namespace_name "createdBy" |> NamespacedName
+    let createdBy = _prefix "createdBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCreated"></see>
     /// </summary>
-    let hasCreated = Namespaced_IRI.parse _namespace_name "hasCreated" |> NamespacedName
+    let hasCreated = _prefix "hasCreated"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#objectOf"></see>
     /// </summary>
-    let objectOf = Namespaced_IRI.parse _namespace_name "objectOf" |> NamespacedName
+    let objectOf = _prefix "objectOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#createdIn"></see>
     /// </summary>
-    let createdIn = Namespaced_IRI.parse _namespace_name "createdIn" |> NamespacedName
-
+    let createdIn = _prefix "createdIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#outputObjectOf"></see>
     /// </summary>
-    let outputObjectOf =
-        Namespaced_IRI.parse _namespace_name "outputObjectOf" |> NamespacedName
-
+    let outputObjectOf = _prefix "outputObjectOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#whereinCreated"></see>
     /// </summary>
-    let whereinCreated =
-        Namespaced_IRI.parse _namespace_name "whereinCreated" |> NamespacedName
-
+    let whereinCreated = _prefix "whereinCreated"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#creationOf"></see>
     /// </summary>
-    let creationOf = Namespaced_IRI.parse _namespace_name "creationOf" |> NamespacedName
-
+    let creationOf = _prefix "creationOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#deliveredIn"></see>
     /// </summary>
-    let deliveredIn =
-        Namespaced_IRI.parse _namespace_name "deliveredIn" |> NamespacedName
-
+    let deliveredIn = _prefix "deliveredIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#whereinDelivered"></see>
     /// </summary>
-    let whereinDelivered =
-        Namespaced_IRI.parse _namespace_name "whereinDelivered" |> NamespacedName
-
+    let whereinDelivered = _prefix "whereinDelivered"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#deliveredTo"></see>
     /// </summary>
-    let deliveredTo =
-        Namespaced_IRI.parse _namespace_name "deliveredTo" |> NamespacedName
-
+    let deliveredTo = _prefix "deliveredTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#deliveryOf"></see>
     /// </summary>
-    let deliveryOf = Namespaced_IRI.parse _namespace_name "deliveryOf" |> NamespacedName
-
+    let deliveryOf = _prefix "deliveryOf"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. diagnosed in 1986: formally stating a period from "1985-12-31T23:00:00.000000Z"^^xsd:dateTime to "1986-12-31T22:59:59.999998Z"^^xsd:dateTime for time zone offset +01:00; diagnosed in 2008 in May: stating a period from "2008-04-30T23:00:00.000000Z"^^xsd:dateTime to "2008-05-31T22:59:59.999998Z"^^xsd:dateTime; diagnosed last month the 5 th: stating a period from "2011-12-04T23:00:00.000000Z"^^xsd:dateTime to "2011-12-05T22:59:59.999998Z"^^xsd:dateTime; diagnosed Monday last week at 11AM: stating a moment "2012-01-30T10:00:00.000000Z"^^xsd:dateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#diagnosedDuring"></see></summary>
-    let diagnosedDuring =
-        Namespaced_IRI.parse _namespace_name "diagnosedDuring" |> NamespacedName
-
+    let diagnosedDuring = _prefix "diagnosedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#diagnosedIn"></see>
     /// </summary>
-    let diagnosedIn =
-        Namespaced_IRI.parse _namespace_name "diagnosedIn" |> NamespacedName
-
+    let diagnosedIn = _prefix "diagnosedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#during"></see>
     /// </summary>
-    let during = Namespaced_IRI.parse _namespace_name "during" |> NamespacedName
-
+    let during = _prefix "during"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#diagnosisOf"></see>
     /// </summary>
-    let diagnosisOf =
-        Namespaced_IRI.parse _namespace_name "diagnosisOf" |> NamespacedName
-
+    let diagnosisOf = _prefix "diagnosisOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#endDate"></see>
     /// </summary>
-    let endDate = Namespaced_IRI.parse _namespace_name "endDate" |> NamespacedName
-
+    let endDate = _prefix "endDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#endProcedureOf"></see>
     /// </summary>
-    let endProcedureOf =
-        Namespaced_IRI.parse _namespace_name "endProcedureOf" |> NamespacedName
-
+    let endProcedureOf = _prefix "endProcedureOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#subProcedureOf"></see>
     /// </summary>
-    let subProcedureOf =
-        Namespaced_IRI.parse _namespace_name "subProcedureOf" |> NamespacedName
-
+    let subProcedureOf = _prefix "subProcedureOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasEndProcedure"></see>
     /// </summary>
-    let hasEndProcedure =
-        Namespaced_IRI.parse _namespace_name "hasEndProcedure" |> NamespacedName
-
+    let hasEndProcedure = _prefix "hasEndProcedure"
     /// <summary>
     /// Using the Unix Epoch time; related to event:hasDateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#ends"></see></summary>
-    let ends = Namespaced_IRI.parse _namespace_name "ends" |> NamespacedName
+    let ends = _prefix "ends"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#endsAfter"></see>
     /// </summary>
-    let endsAfter = Namespaced_IRI.parse _namespace_name "endsAfter" |> NamespacedName
+    let endsAfter = _prefix "endsAfter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#endsBefore"></see>
     /// </summary>
-    let endsBefore = Namespaced_IRI.parse _namespace_name "endsBefore" |> NamespacedName
+    let endsBefore = _prefix "endsBefore"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#endsDuring"></see>
     /// </summary>
-    let endsDuring = Namespaced_IRI.parse _namespace_name "endsDuring" |> NamespacedName
-
+    let endsDuring = _prefix "endsDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#evaluatedBy"></see>
     /// </summary>
-    let evaluatedBy =
-        Namespaced_IRI.parse _namespace_name "evaluatedBy" |> NamespacedName
-
+    let evaluatedBy = _prefix "evaluatedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasEvaluated"></see>
     /// </summary>
-    let hasEvaluated =
-        Namespaced_IRI.parse _namespace_name "hasEvaluated" |> NamespacedName
-
+    let hasEvaluated = _prefix "hasEvaluated"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. evaluated in 1986: formally stating a period from "1985-12-31T23:00:00.000000Z"^^xsd:dateTime to "1986-12-31T22:59:59.999998Z"^^xsd:dateTime for time zone offset +01:00; evaluated in 2008 in May: stating a period from "2008-04-30T23:00:00.000000Z"^^xsd:dateTime to "2008-05-31T22:59:59.999998Z"^^xsd:dateTime; evaluated last month the 5 th: stating a period from "2011-12-04T23:00:00.000000Z"^^xsd:dateTime to "2011-12-05T22:59:59.999998Z"^^xsd:dateTime; evaluated Monday last week at 11AM: stating a moment "2012-01-30T10:00:00.000000Z"^^xsd:dateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#evaluatedDuring"></see></summary>
-    let evaluatedDuring =
-        Namespaced_IRI.parse _namespace_name "evaluatedDuring" |> NamespacedName
-
+    let evaluatedDuring = _prefix "evaluatedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#evaluatedIn"></see>
     /// </summary>
-    let evaluatedIn =
-        Namespaced_IRI.parse _namespace_name "evaluatedIn" |> NamespacedName
-
+    let evaluatedIn = _prefix "evaluatedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#inputOf"></see>
     /// </summary>
-    let inputOf = Namespaced_IRI.parse _namespace_name "inputOf" |> NamespacedName
-
+    let inputOf = _prefix "inputOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#evaluationOf"></see>
     /// </summary>
-    let evaluationOf =
-        Namespaced_IRI.parse _namespace_name "evaluationOf" |> NamespacedName
-
+    let evaluationOf = _prefix "evaluationOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#examinationOf"></see>
     /// </summary>
-    let examinationOf =
-        Namespaced_IRI.parse _namespace_name "examinationOf" |> NamespacedName
-
+    let examinationOf = _prefix "examinationOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#examinedBy"></see>
     /// </summary>
-    let examinedBy = Namespaced_IRI.parse _namespace_name "examinedBy" |> NamespacedName
-
+    let examinedBy = _prefix "examinedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasExamining"></see>
     /// </summary>
-    let hasExamining =
-        Namespaced_IRI.parse _namespace_name "hasExamining" |> NamespacedName
-
+    let hasExamining = _prefix "hasExamining"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasExamined"></see>
     /// </summary>
-    let hasExamined =
-        Namespaced_IRI.parse _namespace_name "hasExamined" |> NamespacedName
-
+    let hasExamined = _prefix "hasExamined"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. examined in 1986: formally stating a period from "1985-12-31T23:00:00.000000Z"^^xsd:dateTime to "1986-12-31T22:59:59.999998Z"^^xsd:dateTime for time zone offset +01:00; examined in 2008 in May: stating a period from "2008-04-30T23:00:00.000000Z"^^xsd:dateTime to "2008-05-31T22:59:59.999998Z"^^xsd:dateTime; examined last month the 5 th: stating a period from "2011-12-04T23:00:00.000000Z"^^xsd:dateTime to "2011-12-05T22:59:59.999998Z"^^xsd:dateTime; examined Monday last week at 11AM: stating a moment "2012-01-30T10:00:00.000000Z"^^xsd:dateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#examinedDuring"></see></summary>
-    let examinedDuring =
-        Namespaced_IRI.parse _namespace_name "examinedDuring" |> NamespacedName
-
+    let examinedDuring = _prefix "examinedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#examiningOf"></see>
     /// </summary>
-    let examiningOf =
-        Namespaced_IRI.parse _namespace_name "examiningOf" |> NamespacedName
-
+    let examiningOf = _prefix "examiningOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#exists"></see>
     /// </summary>
-    let exists = Namespaced_IRI.parse _namespace_name "exists" |> NamespacedName
+    let exists = _prefix "exists"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#existsOn"></see>
     /// </summary>
-    let existsOn = Namespaced_IRI.parse _namespace_name "existsOn" |> NamespacedName
+    let existsOn = _prefix "existsOn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#expires"></see>
     /// </summary>
-    let expires = Namespaced_IRI.parse _namespace_name "expires" |> NamespacedName
-
+    let expires = _prefix "expires"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#gotDelivered"></see>
     /// </summary>
-    let gotDelivered =
-        Namespaced_IRI.parse _namespace_name "gotDelivered" |> NamespacedName
-
+    let gotDelivered = _prefix "gotDelivered"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#gotExamined"></see>
     /// </summary>
-    let gotExamined =
-        Namespaced_IRI.parse _namespace_name "gotExamined" |> NamespacedName
-
+    let gotExamined = _prefix "gotExamined"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#gotOrdered"></see>
     /// </summary>
-    let gotOrdered = Namespaced_IRI.parse _namespace_name "gotOrdered" |> NamespacedName
+    let gotOrdered = _prefix "gotOrdered"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#orderedFor"></see>
     /// </summary>
-    let orderedFor = Namespaced_IRI.parse _namespace_name "orderedFor" |> NamespacedName
-
+    let orderedFor = _prefix "orderedFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasAdverseOutput"></see>
     /// </summary>
-    let hasAdverseOutput =
-        Namespaced_IRI.parse _namespace_name "hasAdverseOutput" |> NamespacedName
-
+    let hasAdverseOutput = _prefix "hasAdverseOutput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasAge"></see>
     /// </summary>
-    let hasAge = Namespaced_IRI.parse _namespace_name "hasAge" |> NamespacedName
-
+    let hasAge = _prefix "hasAge"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCompletionDateTime"></see>
     /// </summary>
-    let hasCompletionDateTime =
-        Namespaced_IRI.parse _namespace_name "hasCompletionDateTime" |> NamespacedName
-
+    let hasCompletionDateTime = _prefix "hasCompletionDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCompletionState"></see>
     /// </summary>
-    let hasCompletionState =
-        Namespaced_IRI.parse _namespace_name "hasCompletionState" |> NamespacedName
-
+    let hasCompletionState = _prefix "hasCompletionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasContraindicationDateTime"></see>
     /// </summary>
-    let hasContraindicationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasContraindicationDateTime" |> NamespacedName
-
+    let hasContraindicationDateTime = _prefix "hasContraindicationDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDateTime"></see>
     /// </summary>
-    let hasDateTime =
-        Namespaced_IRI.parse _namespace_name "hasDateTime" |> NamespacedName
-
+    let hasDateTime = _prefix "hasDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCourseMode"></see>
     /// </summary>
-    let hasCourseMode =
-        Namespaced_IRI.parse _namespace_name "hasCourseMode" |> NamespacedName
-
+    let hasCourseMode = _prefix "hasCourseMode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCreation"></see>
     /// </summary>
-    let hasCreation =
-        Namespaced_IRI.parse _namespace_name "hasCreation" |> NamespacedName
-
+    let hasCreation = _prefix "hasCreation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCreationDate"></see>
     /// </summary>
-    let hasCreationDate =
-        Namespaced_IRI.parse _namespace_name "hasCreationDate" |> NamespacedName
-
+    let hasCreationDate = _prefix "hasCreationDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCreationDateTime"></see>
     /// </summary>
-    let hasCreationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasCreationDateTime" |> NamespacedName
-
+    let hasCreationDateTime = _prefix "hasCreationDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasCreator"></see>
     /// </summary>
-    let hasCreator = Namespaced_IRI.parse _namespace_name "hasCreator" |> NamespacedName
+    let hasCreator = _prefix "hasCreator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDate"></see>
     /// </summary>
-    let hasDate = Namespaced_IRI.parse _namespace_name "hasDate" |> NamespacedName
-
+    let hasDate = _prefix "hasDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDeliveryDateTime"></see>
     /// </summary>
-    let hasDeliveryDateTime =
-        Namespaced_IRI.parse _namespace_name "hasDeliveryDateTime" |> NamespacedName
-
+    let hasDeliveryDateTime = _prefix "hasDeliveryDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDeliveryDelay"></see>
     /// </summary>
-    let hasDeliveryDelay =
-        Namespaced_IRI.parse _namespace_name "hasDeliveryDelay" |> NamespacedName
-
+    let hasDeliveryDelay = _prefix "hasDeliveryDelay"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDiagnosis"></see>
     /// </summary>
-    let hasDiagnosis =
-        Namespaced_IRI.parse _namespace_name "hasDiagnosis" |> NamespacedName
-
+    let hasDiagnosis = _prefix "hasDiagnosis"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDiagnosisDateTime"></see>
     /// </summary>
-    let hasDiagnosisDateTime =
-        Namespaced_IRI.parse _namespace_name "hasDiagnosisDateTime" |> NamespacedName
-
+    let hasDiagnosisDateTime = _prefix "hasDiagnosisDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDiagnosisState"></see>
     /// </summary>
-    let hasDiagnosisState =
-        Namespaced_IRI.parse _namespace_name "hasDiagnosisState" |> NamespacedName
-
+    let hasDiagnosisState = _prefix "hasDiagnosisState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasDonor"></see>
     /// </summary>
-    let hasDonor = Namespaced_IRI.parse _namespace_name "hasDonor" |> NamespacedName
-
+    let hasDonor = _prefix "hasDonor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSubProcedure"></see>
     /// </summary>
-    let hasSubProcedure =
-        Namespaced_IRI.parse _namespace_name "hasSubProcedure" |> NamespacedName
-
+    let hasSubProcedure = _prefix "hasSubProcedure"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasEndingMode"></see>
     /// </summary>
-    let hasEndingMode =
-        Namespaced_IRI.parse _namespace_name "hasEndingMode" |> NamespacedName
-
+    let hasEndingMode = _prefix "hasEndingMode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasEvaluation"></see>
     /// </summary>
-    let hasEvaluation =
-        Namespaced_IRI.parse _namespace_name "hasEvaluation" |> NamespacedName
-
+    let hasEvaluation = _prefix "hasEvaluation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasEvaluationDateTime"></see>
     /// </summary>
-    let hasEvaluationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasEvaluationDateTime" |> NamespacedName
-
+    let hasEvaluationDateTime = _prefix "hasEvaluationDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasEvent"></see>
     /// </summary>
-    let hasEvent = Namespaced_IRI.parse _namespace_name "hasEvent" |> NamespacedName
-
+    let hasEvent = _prefix "hasEvent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasFindingDateTime"></see>
     /// </summary>
-    let hasFindingDateTime =
-        Namespaced_IRI.parse _namespace_name "hasFindingDateTime" |> NamespacedName
-
+    let hasFindingDateTime = _prefix "hasFindingDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasIndicationDateTime"></see>
     /// </summary>
-    let hasIndicationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasIndicationDateTime" |> NamespacedName
-
+    let hasIndicationDateTime = _prefix "hasIndicationDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#indicatedBy"></see>
     /// </summary>
-    let indicatedBy =
-        Namespaced_IRI.parse _namespace_name "indicatedBy" |> NamespacedName
-
+    let indicatedBy = _prefix "indicatedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasIntent"></see>
     /// </summary>
-    let hasIntent = Namespaced_IRI.parse _namespace_name "hasIntent" |> NamespacedName
-
+    let hasIntent = _prefix "hasIntent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasIntentionState"></see>
     /// </summary>
-    let hasIntentionState =
-        Namespaced_IRI.parse _namespace_name "hasIntentionState" |> NamespacedName
-
+    let hasIntentionState = _prefix "hasIntentionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasLastUpdateDateTime"></see>
     /// </summary>
-    let hasLastUpdateDateTime =
-        Namespaced_IRI.parse _namespace_name "hasLastUpdateDateTime" |> NamespacedName
-
+    let hasLastUpdateDateTime = _prefix "hasLastUpdateDateTime"
     /// <summary>
     /// As used in an N3 rule.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasLatestSubmissionDateTime"></see></summary>
-    let hasLatestSubmissionDateTime =
-        Namespaced_IRI.parse _namespace_name "hasLatestSubmissionDateTime" |> NamespacedName
-
+    let hasLatestSubmissionDateTime = _prefix "hasLatestSubmissionDateTime"
     /// <summary>
     /// As used in an N3 rule.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasLatestSubmissionState"></see></summary>
-    let hasLatestSubmissionState =
-        Namespaced_IRI.parse _namespace_name "hasLatestSubmissionState" |> NamespacedName
-
+    let hasLatestSubmissionState = _prefix "hasLatestSubmissionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSubmissionState"></see>
     /// </summary>
-    let hasSubmissionState =
-        Namespaced_IRI.parse _namespace_name "hasSubmissionState" |> NamespacedName
-
+    let hasSubmissionState = _prefix "hasSubmissionState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasModification"></see>
     /// </summary>
-    let hasModification =
-        Namespaced_IRI.parse _namespace_name "hasModification" |> NamespacedName
-
+    let hasModification = _prefix "hasModification"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasModificationDateTime"></see>
     /// </summary>
-    let hasModificationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasModificationDateTime" |> NamespacedName
-
+    let hasModificationDateTime = _prefix "hasModificationDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasModified"></see>
     /// </summary>
-    let hasModified =
-        Namespaced_IRI.parse _namespace_name "hasModified" |> NamespacedName
-
+    let hasModified = _prefix "hasModified"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasModifier"></see>
     /// </summary>
-    let hasModifier =
-        Namespaced_IRI.parse _namespace_name "hasModifier" |> NamespacedName
-
+    let hasModifier = _prefix "hasModifier"
     /// <summary>
     /// Using the Unix Epoch time.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasNow"></see></summary>
-    let hasNow = Namespaced_IRI.parse _namespace_name "hasNow" |> NamespacedName
-
+    let hasNow = _prefix "hasNow"
     /// <summary>
     /// A snapshot is an event with coinciding beginning and end.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSnapshotDateTime"></see></summary>
-    let hasSnapshotDateTime =
-        Namespaced_IRI.parse _namespace_name "hasSnapshotDateTime" |> NamespacedName
-
+    let hasSnapshotDateTime = _prefix "hasSnapshotDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasNowDate"></see>
     /// </summary>
-    let hasNowDate = Namespaced_IRI.parse _namespace_name "hasNowDate" |> NamespacedName
-
+    let hasNowDate = _prefix "hasNowDate"
     /// <summary>
     /// A snapshot is an event with coinciding beginning and end.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSnapshotDate"></see></summary>
-    let hasSnapshotDate =
-        Namespaced_IRI.parse _namespace_name "hasSnapshotDate" |> NamespacedName
-
+    let hasSnapshotDate = _prefix "hasSnapshotDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOnsetMode"></see>
     /// </summary>
-    let hasOnsetMode =
-        Namespaced_IRI.parse _namespace_name "hasOnsetMode" |> NamespacedName
-
+    let hasOnsetMode = _prefix "hasOnsetMode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOrderDateTime"></see>
     /// </summary>
-    let hasOrderDateTime =
-        Namespaced_IRI.parse _namespace_name "hasOrderDateTime" |> NamespacedName
-
+    let hasOrderDateTime = _prefix "hasOrderDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOriginationDate"></see>
     /// </summary>
-    let hasOriginationDate =
-        Namespaced_IRI.parse _namespace_name "hasOriginationDate" |> NamespacedName
-
+    let hasOriginationDate = _prefix "hasOriginationDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOriginationDateTime"></see>
     /// </summary>
-    let hasOriginationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasOriginationDateTime" |> NamespacedName
-
+    let hasOriginationDateTime = _prefix "hasOriginationDateTime"
     /// <summary>
     /// Related to event:ends
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOutputDateTime"></see></summary>
-    let hasOutputDateTime =
-        Namespaced_IRI.parse _namespace_name "hasOutputDateTime" |> NamespacedName
-
+    let hasOutputDateTime = _prefix "hasOutputDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOutputLikelihood"></see>
     /// </summary>
-    let hasOutputLikelihood =
-        Namespaced_IRI.parse _namespace_name "hasOutputLikelihood" |> NamespacedName
-
+    let hasOutputLikelihood = _prefix "hasOutputLikelihood"
     /// <summary>
     /// E.g. a clinical finding, e.g. fever, as object of output of clinical evaluating of a body temperature measurement; a disease as object of a diagnosing; a drug product as object of a prescribing.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasOutputObject"></see></summary>
-    let hasOutputObject =
-        Namespaced_IRI.parse _namespace_name "hasOutputObject" |> NamespacedName
-
+    let hasOutputObject = _prefix "hasOutputObject"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasPathway"></see>
     /// </summary>
-    let hasPathway = Namespaced_IRI.parse _namespace_name "hasPathway" |> NamespacedName
-
+    let hasPathway = _prefix "hasPathway"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasPriorityState"></see>
     /// </summary>
-    let hasPriorityState =
-        Namespaced_IRI.parse _namespace_name "hasPriorityState" |> NamespacedName
-
+    let hasPriorityState = _prefix "hasPriorityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasReason"></see>
     /// </summary>
-    let hasReason = Namespaced_IRI.parse _namespace_name "hasReason" |> NamespacedName
-
+    let hasReason = _prefix "hasReason"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasRecipient"></see>
     /// </summary>
-    let hasRecipient =
-        Namespaced_IRI.parse _namespace_name "hasRecipient" |> NamespacedName
-
+    let hasRecipient = _prefix "hasRecipient"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasRiskFactor"></see>
     /// </summary>
-    let hasRiskFactor =
-        Namespaced_IRI.parse _namespace_name "hasRiskFactor" |> NamespacedName
-
+    let hasRiskFactor = _prefix "hasRiskFactor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSameBeginningAs"></see>
     /// </summary>
-    let hasSameBeginningAs =
-        Namespaced_IRI.parse _namespace_name "hasSameBeginningAs" |> NamespacedName
-
+    let hasSameBeginningAs = _prefix "hasSameBeginningAs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSameDurationAs"></see>
     /// </summary>
-    let hasSameDurationAs =
-        Namespaced_IRI.parse _namespace_name "hasSameDurationAs" |> NamespacedName
-
+    let hasSameDurationAs = _prefix "hasSameDurationAs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSameEndAs"></see>
     /// </summary>
-    let hasSameEndAs =
-        Namespaced_IRI.parse _namespace_name "hasSameEndAs" |> NamespacedName
-
+    let hasSameEndAs = _prefix "hasSameEndAs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSameTimeAs"></see>
     /// </summary>
-    let hasSameTimeAs =
-        Namespaced_IRI.parse _namespace_name "hasSameTimeAs" |> NamespacedName
-
+    let hasSameTimeAs = _prefix "hasSameTimeAs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSponsor"></see>
     /// </summary>
-    let hasSponsor = Namespaced_IRI.parse _namespace_name "hasSponsor" |> NamespacedName
+    let hasSponsor = _prefix "hasSponsor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasStage"></see>
     /// </summary>
-    let hasStage = Namespaced_IRI.parse _namespace_name "hasStage" |> NamespacedName
-
+    let hasStage = _prefix "hasStage"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasStartProcedure"></see>
     /// </summary>
-    let hasStartProcedure =
-        Namespaced_IRI.parse _namespace_name "hasStartProcedure" |> NamespacedName
-
+    let hasStartProcedure = _prefix "hasStartProcedure"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSubAction"></see>
     /// </summary>
-    let hasSubAction =
-        Namespaced_IRI.parse _namespace_name "hasSubAction" |> NamespacedName
-
+    let hasSubAction = _prefix "hasSubAction"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#includes"></see>
     /// </summary>
-    let includes = Namespaced_IRI.parse _namespace_name "includes" |> NamespacedName
-
+    let includes = _prefix "includes"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSubOutput"></see>
     /// </summary>
-    let hasSubOutput =
-        Namespaced_IRI.parse _namespace_name "hasSubOutput" |> NamespacedName
-
+    let hasSubOutput = _prefix "hasSubOutput"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSubmissionDateTime"></see>
     /// </summary>
-    let hasSubmissionDateTime =
-        Namespaced_IRI.parse _namespace_name "hasSubmissionDateTime" |> NamespacedName
-
+    let hasSubmissionDateTime = _prefix "hasSubmissionDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSusceptibilityState"></see>
     /// </summary>
-    let hasSusceptibilityState =
-        Namespaced_IRI.parse _namespace_name "hasSusceptibilityState" |> NamespacedName
-
+    let hasSusceptibilityState = _prefix "hasSusceptibilityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasSusceptibilityStateFor"></see>
     /// </summary>
-    let hasSusceptibilityStateFor =
-        Namespaced_IRI.parse _namespace_name "hasSusceptibilityStateFor" |> NamespacedName
-
+    let hasSusceptibilityStateFor = _prefix "hasSusceptibilityStateFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#susceptibilityStateFor"></see>
     /// </summary>
-    let susceptibilityStateFor =
-        Namespaced_IRI.parse _namespace_name "susceptibilityStateFor" |> NamespacedName
-
+    let susceptibilityStateFor = _prefix "susceptibilityStateFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasValidationDateTime"></see>
     /// </summary>
-    let hasValidationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasValidationDateTime" |> NamespacedName
-
+    let hasValidationDateTime = _prefix "hasValidationDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasValidityState"></see>
     /// </summary>
-    let hasValidityState =
-        Namespaced_IRI.parse _namespace_name "hasValidityState" |> NamespacedName
-
+    let hasValidityState = _prefix "hasValidityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasVanishingDateTime"></see>
     /// </summary>
-    let hasVanishingDateTime =
-        Namespaced_IRI.parse _namespace_name "hasVanishingDateTime" |> NamespacedName
-
+    let hasVanishingDateTime = _prefix "hasVanishingDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasWarning"></see>
     /// </summary>
-    let hasWarning = Namespaced_IRI.parse _namespace_name "hasWarning" |> NamespacedName
+    let hasWarning = _prefix "hasWarning"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#hasWeekday"></see>
     /// </summary>
-    let hasWeekday = Namespaced_IRI.parse _namespace_name "hasWeekday" |> NamespacedName
+    let hasWeekday = _prefix "hasWeekday"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#indicates"></see>
     /// </summary>
-    let indicates = Namespaced_IRI.parse _namespace_name "indicates" |> NamespacedName
-
+    let indicates = _prefix "indicates"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#intermediatelySusceptibleTo"></see>
     /// </summary>
-    let intermediatelySusceptibleTo =
-        Namespaced_IRI.parse _namespace_name "intermediatelySusceptibleTo" |> NamespacedName
-
+    let intermediatelySusceptibleTo = _prefix "intermediatelySusceptibleTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#wheretoSusceptibilityState"></see>
     /// </summary>
-    let wheretoSusceptibilityState =
-        Namespaced_IRI.parse _namespace_name "wheretoSusceptibilityState" |> NamespacedName
-
+    let wheretoSusceptibilityState = _prefix "wheretoSusceptibilityState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#isAssociatedWith"></see>
     /// </summary>
-    let isAssociatedWith =
-        Namespaced_IRI.parse _namespace_name "isAssociatedWith" |> NamespacedName
-
+    let isAssociatedWith = _prefix "isAssociatedWith"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#isReasonFor"></see>
     /// </summary>
-    let isReasonFor =
-        Namespaced_IRI.parse _namespace_name "isReasonFor" |> NamespacedName
-
+    let isReasonFor = _prefix "isReasonFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#modificationOf"></see>
     /// </summary>
-    let modificationOf =
-        Namespaced_IRI.parse _namespace_name "modificationOf" |> NamespacedName
-
+    let modificationOf = _prefix "modificationOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#modifiedBy"></see>
     /// </summary>
-    let modifiedBy = Namespaced_IRI.parse _namespace_name "modifiedBy" |> NamespacedName
+    let modifiedBy = _prefix "modifiedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#modifiedIn"></see>
     /// </summary>
-    let modifiedIn = Namespaced_IRI.parse _namespace_name "modifiedIn" |> NamespacedName
-
+    let modifiedIn = _prefix "modifiedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#whereinModified"></see>
     /// </summary>
-    let whereinModified =
-        Namespaced_IRI.parse _namespace_name "whereinModified" |> NamespacedName
-
+    let whereinModified = _prefix "whereinModified"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#nonCompliantWith"></see>
     /// </summary>
-    let nonCompliantWith =
-        Namespaced_IRI.parse _namespace_name "nonCompliantWith" |> NamespacedName
-
+    let nonCompliantWith = _prefix "nonCompliantWith"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#notPerformedDuring"></see>
     /// </summary>
-    let notPerformedDuring =
-        Namespaced_IRI.parse _namespace_name "notPerformedDuring" |> NamespacedName
-
+    let notPerformedDuring = _prefix "notPerformedDuring"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. observed in 1986: formally stating a period from "1985-12-31T23:00:00.000000Z"^^xsd:dateTime to "1986-12-31T22:59:59.999998Z"^^xsd:dateTime for time zone offset +01:00; observed in 2008 in May: stating a period from "2008-04-30T23:00:00.000000Z"^^xsd:dateTime to "2008-05-31T22:59:59.999998Z"^^xsd:dateTime; observed last month the 5 th: stating a period from "2011-12-04T23:00:00.000000Z"^^xsd:dateTime to "2011-12-05T22:59:59.999998Z"^^xsd:dateTime; observed Monday last week at 11AM: stating a moment "2012-01-30T10:00:00.000000Z"^^xsd:dateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#observedDuring"></see></summary>
-    let observedDuring =
-        Namespaced_IRI.parse _namespace_name "observedDuring" |> NamespacedName
-
+    let observedDuring = _prefix "observedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#obtainedBy"></see>
     /// </summary>
-    let obtainedBy = Namespaced_IRI.parse _namespace_name "obtainedBy" |> NamespacedName
-
+    let obtainedBy = _prefix "obtainedBy"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. obtained in 1986: formally stating a period from "1985-12-31T23:00:00.000000Z"^^xsd:dateTime to "1986-12-31T22:59:59.999998Z"^^xsd:dateTime for time zone offset +01:00; obtained in 2008 in May: stating a period from "2008-04-30T23:00:00.000000Z"^^xsd:dateTime to "2008-05-31T22:59:59.999998Z"^^xsd:dateTime; obtained last month the 5 th: stating a period from "2011-12-04T23:00:00.000000Z"^^xsd:dateTime to "2011-12-05T22:59:59.999998Z"^^xsd:dateTime; obtained Monday last week at 11AM: stating a moment "2012-01-30T10:00:00.000000Z"^^xsd:dateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#obtainedDuring"></see></summary>
-    let obtainedDuring =
-        Namespaced_IRI.parse _namespace_name "obtainedDuring" |> NamespacedName
-
+    let obtainedDuring = _prefix "obtainedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#openFrom"></see>
     /// </summary>
-    let openFrom = Namespaced_IRI.parse _namespace_name "openFrom" |> NamespacedName
+    let openFrom = _prefix "openFrom"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#openUntil"></see>
     /// </summary>
-    let openUntil = Namespaced_IRI.parse _namespace_name "openUntil" |> NamespacedName
+    let openUntil = _prefix "openUntil"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#orderOf"></see>
     /// </summary>
-    let orderOf = Namespaced_IRI.parse _namespace_name "orderOf" |> NamespacedName
+    let orderOf = _prefix "orderOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#orderedTo"></see>
     /// </summary>
-    let orderedTo = Namespaced_IRI.parse _namespace_name "orderedTo" |> NamespacedName
-
+    let orderedTo = _prefix "orderedTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#originatedIn"></see>
     /// </summary>
-    let originatedIn =
-        Namespaced_IRI.parse _namespace_name "originatedIn" |> NamespacedName
-
+    let originatedIn = _prefix "originatedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#overlaps"></see>
     /// </summary>
-    let overlaps = Namespaced_IRI.parse _namespace_name "overlaps" |> NamespacedName
-
+    let overlaps = _prefix "overlaps"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. performed in 1986: formally stating a period from "1985-12-31T23:00:00.000000Z"^^xsd:dateTime to "1986-12-31T22:59:59.999998Z"^^xsd:dateTime for time zone offset +01:00; performed in 2008 in May: stating a period from "2008-04-30T23:00:00.000000Z"^^xsd:dateTime to "2008-05-31T22:59:59.999998Z"^^xsd:dateTime; performed last month the 5 th: stating a period from "2011-12-04T23:00:00.000000Z"^^xsd:dateTime to "2011-12-05T22:59:59.999998Z"^^xsd:dateTime; performed Monday last week at 11AM: stating a moment "2012-01-30T10:00:00.000000Z"^^xsd:dateTime.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#performedDuring"></see></summary>
-    let performedDuring =
-        Namespaced_IRI.parse _namespace_name "performedDuring" |> NamespacedName
-
+    let performedDuring = _prefix "performedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#performedIn"></see>
     /// </summary>
-    let performedIn =
-        Namespaced_IRI.parse _namespace_name "performedIn" |> NamespacedName
-
+    let performedIn = _prefix "performedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#planOf"></see>
     /// </summary>
-    let planOf = Namespaced_IRI.parse _namespace_name "planOf" |> NamespacedName
+    let planOf = _prefix "planOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#plannedIn"></see>
     /// </summary>
-    let plannedIn = Namespaced_IRI.parse _namespace_name "plannedIn" |> NamespacedName
-
+    let plannedIn = _prefix "plannedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#resistantTo"></see>
     /// </summary>
-    let resistantTo =
-        Namespaced_IRI.parse _namespace_name "resistantTo" |> NamespacedName
-
+    let resistantTo = _prefix "resistantTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#riskFactorOf"></see>
     /// </summary>
-    let riskFactorOf =
-        Namespaced_IRI.parse _namespace_name "riskFactorOf" |> NamespacedName
-
+    let riskFactorOf = _prefix "riskFactorOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#stageOf"></see>
     /// </summary>
-    let stageOf = Namespaced_IRI.parse _namespace_name "stageOf" |> NamespacedName
-
+    let stageOf = _prefix "stageOf"
     /// <summary>
     /// The longer ago, the broader a timescope; e.g. staged in 1986: formally stating a period 01/01/1986-31/12/1986; staged last year in May: stating a period 01/05/2010-31/05/2010; staged last week: stating a day 01/01/2012; staged yesterday: stating a moment 20/01/2012, 02PM.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#stagedDuring"></see></summary>
-    let stagedDuring =
-        Namespaced_IRI.parse _namespace_name "stagedDuring" |> NamespacedName
-
+    let stagedDuring = _prefix "stagedDuring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#startProcedureOf"></see>
     /// </summary>
-    let startProcedureOf =
-        Namespaced_IRI.parse _namespace_name "startProcedureOf" |> NamespacedName
-
+    let startProcedureOf = _prefix "startProcedureOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#stateOf"></see>
     /// </summary>
-    let stateOf = Namespaced_IRI.parse _namespace_name "stateOf" |> NamespacedName
-
+    let stateOf = _prefix "stateOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#subActionOf"></see>
     /// </summary>
-    let subActionOf =
-        Namespaced_IRI.parse _namespace_name "subActionOf" |> NamespacedName
-
+    let subActionOf = _prefix "subActionOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#subOutputOf"></see>
     /// </summary>
-    let subOutputOf =
-        Namespaced_IRI.parse _namespace_name "subOutputOf" |> NamespacedName
-
+    let subOutputOf = _prefix "subOutputOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#susceptibleTo"></see>
     /// </summary>
-    let susceptibleTo =
-        Namespaced_IRI.parse _namespace_name "susceptibleTo" |> NamespacedName
-
+    let susceptibleTo = _prefix "susceptibleTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#takesLessLongThan"></see>
     /// </summary>
-    let takesLessLongThan =
-        Namespaced_IRI.parse _namespace_name "takesLessLongThan" |> NamespacedName
-
+    let takesLessLongThan = _prefix "takesLessLongThan"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#takesLongerThan"></see>
     /// </summary>
-    let takesLongerThan =
-        Namespaced_IRI.parse _namespace_name "takesLongerThan" |> NamespacedName
-
+    let takesLongerThan = _prefix "takesLongerThan"
     /// <summary>
     /// Moved to &lt;http://eulersharp.sourceforge.net/2003/03swap/space#&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#transferOf"></see></summary>
-    let transferOf = Namespaced_IRI.parse _namespace_name "transferOf" |> NamespacedName
-
+    let transferOf = _prefix "transferOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#validationOf"></see>
     /// </summary>
-    let validationOf =
-        Namespaced_IRI.parse _namespace_name "validationOf" |> NamespacedName
-
+    let validationOf = _prefix "validationOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#whereinDiagnosed"></see>
     /// </summary>
-    let whereinDiagnosed =
-        Namespaced_IRI.parse _namespace_name "whereinDiagnosed" |> NamespacedName
-
+    let whereinDiagnosed = _prefix "whereinDiagnosed"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/event#whereinEvaluated"></see>
     /// </summary>
-    let whereinEvaluated =
-        Namespaced_IRI.parse _namespace_name "whereinEvaluated" |> NamespacedName
-
+    let whereinEvaluated = _prefix "whereinEvaluated"
     /// <summary>
     /// Moved to &lt;http://eulersharp.sourceforge.net/2003/03swap/space#&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/event#whereinTransferred"></see></summary>
-    let whereinTransferred =
-        Namespaced_IRI.parse _namespace_name "whereinTransferred" |> NamespacedName
+    let whereinTransferred = _prefix "whereinTransferred"

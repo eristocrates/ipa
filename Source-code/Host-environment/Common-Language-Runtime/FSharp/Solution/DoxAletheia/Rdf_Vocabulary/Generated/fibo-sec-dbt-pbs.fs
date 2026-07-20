@@ -1,138 +1,105 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Debt.PoolBackedSecurities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_dbt_pbs =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/AbsolutePrepaymentRate"></see>
     /// </summary>
-    let AbsolutePrepaymentRate =
-        Namespaced_IRI.parse _namespace_name "AbsolutePrepaymentRate" |> NamespacedName
-
+    let AbsolutePrepaymentRate = _prefix "AbsolutePrepaymentRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/DebtPoolStatisticalMeasure"></see>
     /// </summary>
-    let DebtPoolStatisticalMeasure =
-        Namespaced_IRI.parse _namespace_name "DebtPoolStatisticalMeasure" |> NamespacedName
-
+    let DebtPoolStatisticalMeasure = _prefix "DebtPoolStatisticalMeasure"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/AssetBackedSecurity"></see>
     /// </summary>
-    let AssetBackedSecurity =
-        Namespaced_IRI.parse _namespace_name "AssetBackedSecurity" |> NamespacedName
-
+    let AssetBackedSecurity = _prefix "AssetBackedSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/PoolBackedSecurity"></see>
     /// </summary>
-    let PoolBackedSecurity =
-        Namespaced_IRI.parse _namespace_name "PoolBackedSecurity" |> NamespacedName
-
+    let PoolBackedSecurity = _prefix "PoolBackedSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/AttachmentPoint"></see>
     /// </summary>
-    let AttachmentPoint =
-        Namespaced_IRI.parse _namespace_name "AttachmentPoint" |> NamespacedName
-
+    let AttachmentPoint = _prefix "AttachmentPoint"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/DefaultRate"></see>
     /// </summary>
-    let DefaultRate =
-        Namespaced_IRI.parse _namespace_name "DefaultRate" |> NamespacedName
-
+    let DefaultRate = _prefix "DefaultRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/DetachmentPoint"></see>
     /// </summary>
-    let DetachmentPoint =
-        Namespaced_IRI.parse _namespace_name "DetachmentPoint" |> NamespacedName
+    let DetachmentPoint = _prefix "DetachmentPoint"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/hasEstimatedTotalCollateralValueAtIssuance"></see>
     /// </summary>
     let hasEstimatedTotalCollateralValueAtIssuance =
-        Namespaced_IRI.parse _namespace_name "hasEstimatedTotalCollateralValueAtIssuance" |> NamespacedName
+        _prefix "hasEstimatedTotalCollateralValueAtIssuance"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/isPassThrough"></see>
     /// </summary>
-    let isPassThrough =
-        Namespaced_IRI.parse _namespace_name "isPassThrough" |> NamespacedName
-
+    let isPassThrough = _prefix "isPassThrough"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/PrepaymentSpeed"></see>
     /// </summary>
-    let PrepaymentSpeed =
-        Namespaced_IRI.parse _namespace_name "PrepaymentSpeed" |> NamespacedName
-
+    let PrepaymentSpeed = _prefix "PrepaymentSpeed"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/PrincipalProtectedNote"></see>
     /// </summary>
-    let PrincipalProtectedNote =
-        Namespaced_IRI.parse _namespace_name "PrincipalProtectedNote" |> NamespacedName
-
+    let PrincipalProtectedNote = _prefix "PrincipalProtectedNote"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/StructuredFinanceInstrument"></see>
     /// </summary>
-    let StructuredFinanceInstrument =
-        Namespaced_IRI.parse _namespace_name "StructuredFinanceInstrument" |> NamespacedName
-
+    let StructuredFinanceInstrument = _prefix "StructuredFinanceInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/SingleMonthlyMortality"></see>
     /// </summary>
-    let SingleMonthlyMortality =
-        Namespaced_IRI.parse _namespace_name "SingleMonthlyMortality" |> NamespacedName
+    let SingleMonthlyMortality = _prefix "SingleMonthlyMortality"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/StructuredFinanceWithoutPrincipalProtection"></see>
     /// </summary>
     let StructuredFinanceWithoutPrincipalProtection =
-        Namespaced_IRI.parse _namespace_name "StructuredFinanceWithoutPrincipalProtection" |> NamespacedName
+        _prefix "StructuredFinanceWithoutPrincipalProtection"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/Tranche"></see>
     /// </summary>
-    let Tranche = Namespaced_IRI.parse _namespace_name "Tranche" |> NamespacedName
-
+    let Tranche = _prefix "Tranche"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/hasAttachmentPoint"></see>
     /// </summary>
-    let hasAttachmentPoint =
-        Namespaced_IRI.parse _namespace_name "hasAttachmentPoint" |> NamespacedName
-
+    let hasAttachmentPoint = _prefix "hasAttachmentPoint"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/hasDetachmentPoint"></see>
     /// </summary>
-    let hasDetachmentPoint =
-        Namespaced_IRI.parse _namespace_name "hasDetachmentPoint" |> NamespacedName
-
+    let hasDetachmentPoint = _prefix "hasDetachmentPoint"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/WeightedAverageCoupon"></see>
     /// </summary>
-    let WeightedAverageCoupon =
-        Namespaced_IRI.parse _namespace_name "WeightedAverageCoupon" |> NamespacedName
-
+    let WeightedAverageCoupon = _prefix "WeightedAverageCoupon"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/WeightedAverageLife"></see>
     /// </summary>
-    let WeightedAverageLife =
-        Namespaced_IRI.parse _namespace_name "WeightedAverageLife" |> NamespacedName
-
+    let WeightedAverageLife = _prefix "WeightedAverageLife"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/WeightedAverageLoanAge"></see>
     /// </summary>
-    let WeightedAverageLoanAge =
-        Namespaced_IRI.parse _namespace_name "WeightedAverageLoanAge" |> NamespacedName
-
+    let WeightedAverageLoanAge = _prefix "WeightedAverageLoanAge"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/WeightedAverageMaturity"></see>
     /// </summary>
-    let WeightedAverageMaturity =
-        Namespaced_IRI.parse _namespace_name "WeightedAverageMaturity" |> NamespacedName
-
+    let WeightedAverageMaturity = _prefix "WeightedAverageMaturity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/WeightedAverageRemainingTerm"></see>
     /// </summary>
-    let WeightedAverageRemainingTerm =
-        Namespaced_IRI.parse _namespace_name "WeightedAverageRemainingTerm" |> NamespacedName
+    let WeightedAverageRemainingTerm = _prefix "WeightedAverageRemainingTerm"

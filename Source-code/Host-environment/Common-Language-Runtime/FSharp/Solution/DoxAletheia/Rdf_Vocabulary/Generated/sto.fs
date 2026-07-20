@@ -1,102 +1,86 @@
 namespace https.w3id.org.i40.sto.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module sto =
     let _namespace_name = "https://w3id.org/i40/sto#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#IndustryDomain"></see>
     /// </summary>
-    let IndustryDomain =
-        Namespaced_IRI.parse _namespace_name "IndustryDomain" |> NamespacedName
-
+    let IndustryDomain = _prefix "IndustryDomain"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#SDO"></see>
     /// </summary>
-    let SDO = Namespaced_IRI.parse _namespace_name "SDO" |> NamespacedName
+    let SDO = _prefix "SDO"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#Standard"></see>
     /// </summary>
-    let Standard = Namespaced_IRI.parse _namespace_name "Standard" |> NamespacedName
-
+    let Standard = _prefix "Standard"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#abbreviation"></see>
     /// </summary>
-    let abbreviation =
-        Namespaced_IRI.parse _namespace_name "abbreviation" |> NamespacedName
-
+    let abbreviation = _prefix "abbreviation"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#formationDate"></see>
     /// </summary>
-    let formationDate =
-        Namespaced_IRI.parse _namespace_name "formationDate" |> NamespacedName
-
+    let formationDate = _prefix "formationDate"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#hasDBpediaResource"></see>
     /// </summary>
-    let hasDBpediaResource =
-        Namespaced_IRI.parse _namespace_name "hasDBpediaResource" |> NamespacedName
-
+    let hasDBpediaResource = _prefix "hasDBpediaResource"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#hasOfficialWebsite"></see>
     /// </summary>
-    let hasOfficialWebsite =
-        Namespaced_IRI.parse _namespace_name "hasOfficialWebsite" |> NamespacedName
-
+    let hasOfficialWebsite = _prefix "hasOfficialWebsite"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#hasTag"></see>
     /// </summary>
-    let hasTag = Namespaced_IRI.parse _namespace_name "hasTag" |> NamespacedName
-
+    let hasTag = _prefix "hasTag"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#hasWikidataEntity"></see>
     /// </summary>
-    let hasWikidataEntity =
-        Namespaced_IRI.parse _namespace_name "hasWikidataEntity" |> NamespacedName
-
+    let hasWikidataEntity = _prefix "hasWikidataEntity"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#hasWikipediaArticle"></see>
     /// </summary>
-    let hasWikipediaArticle =
-        Namespaced_IRI.parse _namespace_name "hasWikipediaArticle" |> NamespacedName
-
+    let hasWikipediaArticle = _prefix "hasWikipediaArticle"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#license"></see>
     /// </summary>
-    let license = Namespaced_IRI.parse _namespace_name "license" |> NamespacedName
+    let license = _prefix "license"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#motivation"></see>
     /// </summary>
-    let motivation = Namespaced_IRI.parse _namespace_name "motivation" |> NamespacedName
+    let motivation = _prefix "motivation"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#norm"></see>
     /// </summary>
-    let norm = Namespaced_IRI.parse _namespace_name "norm" |> NamespacedName
+    let norm = _prefix "norm"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#published"></see>
     /// </summary>
-    let published = Namespaced_IRI.parse _namespace_name "published" |> NamespacedName
+    let published = _prefix "published"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#publisher"></see>
     /// </summary>
-    let publisher = Namespaced_IRI.parse _namespace_name "publisher" |> NamespacedName
-
+    let publisher = _prefix "publisher"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#ramiHierarchyLevel"></see>
     /// </summary>
-    let ramiHierarchyLevel =
-        Namespaced_IRI.parse _namespace_name "ramiHierarchyLevel" |> NamespacedName
-
+    let ramiHierarchyLevel = _prefix "ramiHierarchyLevel"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#relatedTo"></see>
     /// </summary>
-    let relatedTo = Namespaced_IRI.parse _namespace_name "relatedTo" |> NamespacedName
+    let relatedTo = _prefix "relatedTo"
     /// <summary>
     ///   <see href="https://w3id.org/i40/sto#scope"></see>
     /// </summary>
-    let scope = Namespaced_IRI.parse _namespace_name "scope" |> NamespacedName
+    let scope = _prefix "scope"

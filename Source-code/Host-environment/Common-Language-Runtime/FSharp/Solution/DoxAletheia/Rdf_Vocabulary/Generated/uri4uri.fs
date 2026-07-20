@@ -1,310 +1,257 @@
 namespace http.uri4uri.net.vocab.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module uri4uri =
     let _namespace_name = "http://uri4uri.net/vocab#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Domain"></see>
     /// </summary>
-    let Domain = Namespaced_IRI.parse _namespace_name "Domain" |> NamespacedName
-
+    let Domain = _prefix "Domain"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Domain-Invalid"></see>
     /// </summary>
-    let ``Domain-Invalid`` =
-        Namespaced_IRI.parse _namespace_name "Domain-Invalid" |> NamespacedName
-
+    let ``Domain-Invalid`` = _prefix "Domain-Invalid"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Domain-Valid"></see>
     /// </summary>
-    let ``Domain-Valid`` =
-        Namespaced_IRI.parse _namespace_name "Domain-Valid" |> NamespacedName
-
+    let ``Domain-Valid`` = _prefix "Domain-Valid"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#DomainDatatype"></see>
     /// </summary>
-    let DomainDatatype =
-        Namespaced_IRI.parse _namespace_name "DomainDatatype" |> NamespacedName
-
+    let DomainDatatype = _prefix "DomainDatatype"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Format"></see>
     /// </summary>
-    let Format = Namespaced_IRI.parse _namespace_name "Format" |> NamespacedName
-
+    let Format = _prefix "Format"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#FragmentURI"></see>
     /// </summary>
-    let FragmentURI =
-        Namespaced_IRI.parse _namespace_name "FragmentURI" |> NamespacedName
-
+    let FragmentURI = _prefix "FragmentURI"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#HostPort"></see>
     /// </summary>
-    let HostPort = Namespaced_IRI.parse _namespace_name "HostPort" |> NamespacedName
+    let HostPort = _prefix "HostPort"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#IANAPage"></see>
     /// </summary>
-    let IANAPage = Namespaced_IRI.parse _namespace_name "IANAPage" |> NamespacedName
+    let IANAPage = _prefix "IANAPage"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#IANARef"></see>
     /// </summary>
-    let IANARef = Namespaced_IRI.parse _namespace_name "IANARef" |> NamespacedName
+    let IANARef = _prefix "IANARef"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Mimetype"></see>
     /// </summary>
-    let Mimetype = Namespaced_IRI.parse _namespace_name "Mimetype" |> NamespacedName
-
+    let Mimetype = _prefix "Mimetype"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#MimetypeDatatype"></see>
     /// </summary>
-    let MimetypeDatatype =
-        Namespaced_IRI.parse _namespace_name "MimetypeDatatype" |> NamespacedName
-
+    let MimetypeDatatype = _prefix "MimetypeDatatype"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Query"></see>
     /// </summary>
-    let Query = Namespaced_IRI.parse _namespace_name "Query" |> NamespacedName
+    let Query = _prefix "Query"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#QueryKVP"></see>
     /// </summary>
-    let QueryKVP = Namespaced_IRI.parse _namespace_name "QueryKVP" |> NamespacedName
+    let QueryKVP = _prefix "QueryKVP"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#QueryKey"></see>
     /// </summary>
-    let QueryKey = Namespaced_IRI.parse _namespace_name "QueryKey" |> NamespacedName
+    let QueryKey = _prefix "QueryKey"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#QueryValue"></see>
     /// </summary>
-    let QueryValue = Namespaced_IRI.parse _namespace_name "QueryValue" |> NamespacedName
+    let QueryValue = _prefix "QueryValue"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Statement"></see>
     /// </summary>
-    let Statement = Namespaced_IRI.parse _namespace_name "Statement" |> NamespacedName
+    let Statement = _prefix "Statement"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#Suffix"></see>
     /// </summary>
-    let Suffix = Namespaced_IRI.parse _namespace_name "Suffix" |> NamespacedName
-
+    let Suffix = _prefix "Suffix"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#SuffixDatatype"></see>
     /// </summary>
-    let SuffixDatatype =
-        Namespaced_IRI.parse _namespace_name "SuffixDatatype" |> NamespacedName
-
+    let SuffixDatatype = _prefix "SuffixDatatype"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain"></see>
     /// </summary>
-    let TopLevelDomain =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain" |> NamespacedName
-
+    let TopLevelDomain = _prefix "TopLevelDomain"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain-CountryCode"></see>
     /// </summary>
-    let ``TopLevelDomain-CountryCode`` =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain-CountryCode" |> NamespacedName
-
+    let ``TopLevelDomain-CountryCode`` = _prefix "TopLevelDomain-CountryCode"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain-Generic"></see>
     /// </summary>
-    let ``TopLevelDomain-Generic`` =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain-Generic" |> NamespacedName
+    let ``TopLevelDomain-Generic`` = _prefix "TopLevelDomain-Generic"
 
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain-GenericRestricted"></see>
     /// </summary>
     let ``TopLevelDomain-GenericRestricted`` =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain-GenericRestricted" |> NamespacedName
+        _prefix "TopLevelDomain-GenericRestricted"
 
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain-Infrastructure"></see>
     /// </summary>
-    let ``TopLevelDomain-Infrastructure`` =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain-Infrastructure" |> NamespacedName
-
+    let ``TopLevelDomain-Infrastructure`` = _prefix "TopLevelDomain-Infrastructure"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain-Sponsored"></see>
     /// </summary>
-    let ``TopLevelDomain-Sponsored`` =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain-Sponsored" |> NamespacedName
-
+    let ``TopLevelDomain-Sponsored`` = _prefix "TopLevelDomain-Sponsored"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#TopLevelDomain-Test"></see>
     /// </summary>
-    let ``TopLevelDomain-Test`` =
-        Namespaced_IRI.parse _namespace_name "TopLevelDomain-Test" |> NamespacedName
-
+    let ``TopLevelDomain-Test`` = _prefix "TopLevelDomain-Test"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#URI"></see>
     /// </summary>
-    let URI = Namespaced_IRI.parse _namespace_name "URI" |> NamespacedName
-
+    let URI = _prefix "URI"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#URIDatatype"></see>
     /// </summary>
-    let URIDatatype =
-        Namespaced_IRI.parse _namespace_name "URIDatatype" |> NamespacedName
-
+    let URIDatatype = _prefix "URIDatatype"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#URIScheme"></see>
     /// </summary>
-    let URIScheme = Namespaced_IRI.parse _namespace_name "URIScheme" |> NamespacedName
-
+    let URIScheme = _prefix "URIScheme"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#URISchemeDatatype"></see>
     /// </summary>
-    let URISchemeDatatype =
-        Namespaced_IRI.parse _namespace_name "URISchemeDatatype" |> NamespacedName
-
+    let URISchemeDatatype = _prefix "URISchemeDatatype"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#WhoisServer"></see>
     /// </summary>
-    let WhoisServer =
-        Namespaced_IRI.parse _namespace_name "WhoisServer" |> NamespacedName
-
+    let WhoisServer = _prefix "WhoisServer"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#account"></see>
     /// </summary>
-    let account = Namespaced_IRI.parse _namespace_name "account" |> NamespacedName
+    let account = _prefix "account"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#connectsTo"></see>
     /// </summary>
-    let connectsTo = Namespaced_IRI.parse _namespace_name "connectsTo" |> NamespacedName
-
+    let connectsTo = _prefix "connectsTo"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#delegationRecordPage"></see>
     /// </summary>
-    let delegationRecordPage =
-        Namespaced_IRI.parse _namespace_name "delegationRecordPage" |> NamespacedName
-
+    let delegationRecordPage = _prefix "delegationRecordPage"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#filename"></see>
     /// </summary>
-    let filename = Namespaced_IRI.parse _namespace_name "filename" |> NamespacedName
+    let filename = _prefix "filename"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#fragment"></see>
     /// </summary>
-    let fragment = Namespaced_IRI.parse _namespace_name "fragment" |> NamespacedName
+    let fragment = _prefix "fragment"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#fragmentOf"></see>
     /// </summary>
-    let fragmentOf = Namespaced_IRI.parse _namespace_name "fragmentOf" |> NamespacedName
-
+    let fragmentOf = _prefix "fragmentOf"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#hasWhoIsServer"></see>
     /// </summary>
-    let hasWhoIsServer =
-        Namespaced_IRI.parse _namespace_name "hasWhoIsServer" |> NamespacedName
-
+    let hasWhoIsServer = _prefix "hasWhoIsServer"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#host"></see>
     /// </summary>
-    let host = Namespaced_IRI.parse _namespace_name "host" |> NamespacedName
-
+    let host = _prefix "host"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#identifiedBy"></see>
     /// </summary>
-    let identifiedBy =
-        Namespaced_IRI.parse _namespace_name "identifiedBy" |> NamespacedName
-
+    let identifiedBy = _prefix "identifiedBy"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#key"></see>
     /// </summary>
-    let key = Namespaced_IRI.parse _namespace_name "key" |> NamespacedName
+    let key = _prefix "key"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#length"></see>
     /// </summary>
-    let length = Namespaced_IRI.parse _namespace_name "length" |> NamespacedName
+    let length = _prefix "length"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#md5"></see>
     /// </summary>
-    let md5 = Namespaced_IRI.parse _namespace_name "md5" |> NamespacedName
-
+    let md5 = _prefix "md5"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#noPortSpecified"></see>
     /// </summary>
-    let noPortSpecified =
-        Namespaced_IRI.parse _namespace_name "noPortSpecified" |> NamespacedName
-
+    let noPortSpecified = _prefix "noPortSpecified"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#object"></see>
     /// </summary>
-    let object = Namespaced_IRI.parse _namespace_name "object" |> NamespacedName
+    let object = _prefix "object"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#pass"></see>
     /// </summary>
-    let pass = Namespaced_IRI.parse _namespace_name "pass" |> NamespacedName
+    let pass = _prefix "pass"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#path"></see>
     /// </summary>
-    let path = Namespaced_IRI.parse _namespace_name "path" |> NamespacedName
+    let path = _prefix "path"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#port"></see>
     /// </summary>
-    let port = Namespaced_IRI.parse _namespace_name "port" |> NamespacedName
+    let port = _prefix "port"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#predicate"></see>
     /// </summary>
-    let predicate = Namespaced_IRI.parse _namespace_name "predicate" |> NamespacedName
+    let predicate = _prefix "predicate"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#query"></see>
     /// </summary>
-    let query = Namespaced_IRI.parse _namespace_name "query" |> NamespacedName
-
+    let query = _prefix "query"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#queryString"></see>
     /// </summary>
-    let queryString =
-        Namespaced_IRI.parse _namespace_name "queryString" |> NamespacedName
-
+    let queryString = _prefix "queryString"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#scheme"></see>
     /// </summary>
-    let scheme = Namespaced_IRI.parse _namespace_name "scheme" |> NamespacedName
+    let scheme = _prefix "scheme"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#sponsor"></see>
     /// </summary>
-    let sponsor = Namespaced_IRI.parse _namespace_name "sponsor" |> NamespacedName
+    let sponsor = _prefix "sponsor"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#subDom"></see>
     /// </summary>
-    let subDom = Namespaced_IRI.parse _namespace_name "subDom" |> NamespacedName
+    let subDom = _prefix "subDom"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#suffix"></see>
     /// </summary>
-    let suffix = Namespaced_IRI.parse _namespace_name "suffix" |> NamespacedName
+    let suffix = _prefix "suffix"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#trueAt"></see>
     /// </summary>
-    let trueAt = Namespaced_IRI.parse _namespace_name "trueAt" |> NamespacedName
-
+    let trueAt = _prefix "trueAt"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#usedForFormat"></see>
     /// </summary>
-    let usedForFormat =
-        Namespaced_IRI.parse _namespace_name "usedForFormat" |> NamespacedName
-
+    let usedForFormat = _prefix "usedForFormat"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#usedForSuffix"></see>
     /// </summary>
-    let usedForSuffix =
-        Namespaced_IRI.parse _namespace_name "usedForSuffix" |> NamespacedName
-
+    let usedForSuffix = _prefix "usedForSuffix"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#user"></see>
     /// </summary>
-    let user = Namespaced_IRI.parse _namespace_name "user" |> NamespacedName
+    let user = _prefix "user"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
-
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="http://uri4uri.net/vocab#whoIsRecord"></see>
     /// </summary>
-    let whoIsRecord =
-        Namespaced_IRI.parse _namespace_name "whoIsRecord" |> NamespacedName
+    let whoIsRecord = _prefix "whoIsRecord"

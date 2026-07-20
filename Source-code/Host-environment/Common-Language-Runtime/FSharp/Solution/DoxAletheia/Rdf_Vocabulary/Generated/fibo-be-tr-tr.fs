@@ -1,85 +1,66 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.Trusts.Trusts.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_tr_tr =
     let _namespace_name = "https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/IrrevocableTrust"></see>
     /// </summary>
-    let IrrevocableTrust =
-        Namespaced_IRI.parse _namespace_name "IrrevocableTrust" |> NamespacedName
-
+    let IrrevocableTrust = _prefix "IrrevocableTrust"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/Trust"></see>
     /// </summary>
-    let Trust = Namespaced_IRI.parse _namespace_name "Trust" |> NamespacedName
-
+    let Trust = _prefix "Trust"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/LivingTrust"></see>
     /// </summary>
-    let LivingTrust =
-        Namespaced_IRI.parse _namespace_name "LivingTrust" |> NamespacedName
-
+    let LivingTrust = _prefix "LivingTrust"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/RevocableTrust"></see>
     /// </summary>
-    let RevocableTrust =
-        Namespaced_IRI.parse _namespace_name "RevocableTrust" |> NamespacedName
-
+    let RevocableTrust = _prefix "RevocableTrust"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/TestamentaryTrust"></see>
     /// </summary>
-    let TestamentaryTrust =
-        Namespaced_IRI.parse _namespace_name "TestamentaryTrust" |> NamespacedName
-
+    let TestamentaryTrust = _prefix "TestamentaryTrust"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/TrustAgreement"></see>
     /// </summary>
-    let TrustAgreement =
-        Namespaced_IRI.parse _namespace_name "TrustAgreement" |> NamespacedName
-
+    let TrustAgreement = _prefix "TrustAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/TrustBeneficiary"></see>
     /// </summary>
-    let TrustBeneficiary =
-        Namespaced_IRI.parse _namespace_name "TrustBeneficiary" |> NamespacedName
-
+    let TrustBeneficiary = _prefix "TrustBeneficiary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/Trustee"></see>
     /// </summary>
-    let Trustee = Namespaced_IRI.parse _namespace_name "Trustee" |> NamespacedName
+    let Trustee = _prefix "Trustee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/Trustor"></see>
     /// </summary>
-    let Trustor = Namespaced_IRI.parse _namespace_name "Trustor" |> NamespacedName
-
+    let Trustor = _prefix "Trustor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/TrustFundManager"></see>
     /// </summary>
-    let TrustFundManager =
-        Namespaced_IRI.parse _namespace_name "TrustFundManager" |> NamespacedName
-
+    let TrustFundManager = _prefix "TrustFundManager"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/hasBeneficiary"></see>
     /// </summary>
-    let hasBeneficiary =
-        Namespaced_IRI.parse _namespace_name "hasBeneficiary" |> NamespacedName
-
+    let hasBeneficiary = _prefix "hasBeneficiary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/hasTrustee"></see>
     /// </summary>
-    let hasTrustee = Namespaced_IRI.parse _namespace_name "hasTrustee" |> NamespacedName
-
+    let hasTrustee = _prefix "hasTrustee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/isTrusteeOf"></see>
     /// </summary>
-    let isTrusteeOf =
-        Namespaced_IRI.parse _namespace_name "isTrusteeOf" |> NamespacedName
-
+    let isTrusteeOf = _prefix "isTrusteeOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/isBeneficiaryOf"></see>
     /// </summary>
-    let isBeneficiaryOf =
-        Namespaced_IRI.parse _namespace_name "isBeneficiaryOf" |> NamespacedName
+    let isBeneficiaryOf = _prefix "isBeneficiaryOf"

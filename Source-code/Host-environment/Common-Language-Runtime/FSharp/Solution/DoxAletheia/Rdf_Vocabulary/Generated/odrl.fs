@@ -1,1148 +1,934 @@
 namespace http.www.w3.org.ns.odrl._2.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module odrl =
     let _namespace_name = "http://www.w3.org/ns/odrl/2/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/includedIn"></see>
     /// </summary>
-    let includedIn = Namespaced_IRI.parse _namespace_name "includedIn" |> NamespacedName
+    let includedIn = _prefix "includedIn"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/use"></see>
     /// </summary>
-    let use_ = Namespaced_IRI.parse _namespace_name "use" |> NamespacedName
-
+    let use_ = _prefix "use"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#actionConcepts"></see>
     /// </summary>
-    let ``_#actionConcepts`` =
-        Namespaced_IRI.parse _namespace_name "#actionConcepts" |> NamespacedName
-
+    let ``_#actionConcepts`` = _prefix "#actionConcepts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/implies"></see>
     /// </summary>
-    let implies = Namespaced_IRI.parse _namespace_name "implies" |> NamespacedName
+    let implies = _prefix "implies"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/action"></see>
     /// </summary>
-    let action = Namespaced_IRI.parse _namespace_name "action" |> NamespacedName
-
+    let action = _prefix "action"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#actions"></see>
     /// </summary>
-    let ``_#actions`` =
-        Namespaced_IRI.parse _namespace_name "#actions" |> NamespacedName
-
+    let ``_#actions`` = _prefix "#actions"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/transfer"></see>
     /// </summary>
-    let transfer = Namespaced_IRI.parse _namespace_name "transfer" |> NamespacedName
-
+    let transfer = _prefix "transfer"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#actionsCommon"></see>
     /// </summary>
-    let ``_#actionsCommon`` =
-        Namespaced_IRI.parse _namespace_name "#actionsCommon" |> NamespacedName
-
+    let ``_#actionsCommon`` = _prefix "#actionsCommon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/extract"></see>
     /// </summary>
-    let extract = Namespaced_IRI.parse _namespace_name "extract" |> NamespacedName
+    let extract = _prefix "extract"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/watermark"></see>
     /// </summary>
-    let watermark = Namespaced_IRI.parse _namespace_name "watermark" |> NamespacedName
+    let watermark = _prefix "watermark"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/move"></see>
     /// </summary>
-    let move = Namespaced_IRI.parse _namespace_name "move" |> NamespacedName
+    let move = _prefix "move"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/print"></see>
     /// </summary>
-    let print = Namespaced_IRI.parse _namespace_name "print" |> NamespacedName
+    let print = _prefix "print"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/uninstall"></see>
     /// </summary>
-    let uninstall = Namespaced_IRI.parse _namespace_name "uninstall" |> NamespacedName
+    let uninstall = _prefix "uninstall"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/install"></see>
     /// </summary>
-    let install = Namespaced_IRI.parse _namespace_name "install" |> NamespacedName
+    let install = _prefix "install"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/transform"></see>
     /// </summary>
-    let transform = Namespaced_IRI.parse _namespace_name "transform" |> NamespacedName
+    let transform = _prefix "transform"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/compensate"></see>
     /// </summary>
-    let compensate = Namespaced_IRI.parse _namespace_name "compensate" |> NamespacedName
+    let compensate = _prefix "compensate"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/attribute"></see>
     /// </summary>
-    let attribute = Namespaced_IRI.parse _namespace_name "attribute" |> NamespacedName
+    let attribute = _prefix "attribute"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/read"></see>
     /// </summary>
-    let read = Namespaced_IRI.parse _namespace_name "read" |> NamespacedName
+    let read = _prefix "read"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/digitize"></see>
     /// </summary>
-    let digitize = Namespaced_IRI.parse _namespace_name "digitize" |> NamespacedName
+    let digitize = _prefix "digitize"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/distribute"></see>
     /// </summary>
-    let distribute = Namespaced_IRI.parse _namespace_name "distribute" |> NamespacedName
+    let distribute = _prefix "distribute"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/include"></see>
     /// </summary>
-    let include_ = Namespaced_IRI.parse _namespace_name "include" |> NamespacedName
+    let include_ = _prefix "include"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/sell"></see>
     /// </summary>
-    let sell = Namespaced_IRI.parse _namespace_name "sell" |> NamespacedName
+    let sell = _prefix "sell"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/anonymize"></see>
     /// </summary>
-    let anonymize = Namespaced_IRI.parse _namespace_name "anonymize" |> NamespacedName
-
+    let anonymize = _prefix "anonymize"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/textToSpeech"></see>
     /// </summary>
-    let textToSpeech =
-        Namespaced_IRI.parse _namespace_name "textToSpeech" |> NamespacedName
-
+    let textToSpeech = _prefix "textToSpeech"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/synchronize"></see>
     /// </summary>
-    let synchronize =
-        Namespaced_IRI.parse _namespace_name "synchronize" |> NamespacedName
-
+    let synchronize = _prefix "synchronize"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/obtainConsent"></see>
     /// </summary>
-    let obtainConsent =
-        Namespaced_IRI.parse _namespace_name "obtainConsent" |> NamespacedName
-
+    let obtainConsent = _prefix "obtainConsent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/concurrentUse"></see>
     /// </summary>
-    let concurrentUse =
-        Namespaced_IRI.parse _namespace_name "concurrentUse" |> NamespacedName
-
+    let concurrentUse = _prefix "concurrentUse"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/ensureExclusivity"></see>
     /// </summary>
-    let ensureExclusivity =
-        Namespaced_IRI.parse _namespace_name "ensureExclusivity" |> NamespacedName
-
+    let ensureExclusivity = _prefix "ensureExclusivity"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/play"></see>
     /// </summary>
-    let play = Namespaced_IRI.parse _namespace_name "play" |> NamespacedName
+    let play = _prefix "play"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/index"></see>
     /// </summary>
-    let index = Namespaced_IRI.parse _namespace_name "index" |> NamespacedName
+    let index = _prefix "index"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/give"></see>
     /// </summary>
-    let give = Namespaced_IRI.parse _namespace_name "give" |> NamespacedName
+    let give = _prefix "give"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/present"></see>
     /// </summary>
-    let present = Namespaced_IRI.parse _namespace_name "present" |> NamespacedName
+    let present = _prefix "present"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/nextPolicy"></see>
     /// </summary>
-    let nextPolicy = Namespaced_IRI.parse _namespace_name "nextPolicy" |> NamespacedName
+    let nextPolicy = _prefix "nextPolicy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/delete"></see>
     /// </summary>
-    let delete = Namespaced_IRI.parse _namespace_name "delete" |> NamespacedName
+    let delete = _prefix "delete"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/modify"></see>
     /// </summary>
-    let modify = Namespaced_IRI.parse _namespace_name "modify" |> NamespacedName
+    let modify = _prefix "modify"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/derive"></see>
     /// </summary>
-    let derive = Namespaced_IRI.parse _namespace_name "derive" |> NamespacedName
+    let derive = _prefix "derive"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/translate"></see>
     /// </summary>
-    let translate = Namespaced_IRI.parse _namespace_name "translate" |> NamespacedName
+    let translate = _prefix "translate"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/display"></see>
     /// </summary>
-    let display = Namespaced_IRI.parse _namespace_name "display" |> NamespacedName
-
+    let display = _prefix "display"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/acceptTracking"></see>
     /// </summary>
-    let acceptTracking =
-        Namespaced_IRI.parse _namespace_name "acceptTracking" |> NamespacedName
-
+    let acceptTracking = _prefix "acceptTracking"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/reviewPolicy"></see>
     /// </summary>
-    let reviewPolicy =
-        Namespaced_IRI.parse _namespace_name "reviewPolicy" |> NamespacedName
-
+    let reviewPolicy = _prefix "reviewPolicy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/archive"></see>
     /// </summary>
-    let archive = Namespaced_IRI.parse _namespace_name "archive" |> NamespacedName
+    let archive = _prefix "archive"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/inform"></see>
     /// </summary>
-    let inform = Namespaced_IRI.parse _namespace_name "inform" |> NamespacedName
+    let inform = _prefix "inform"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/execute"></see>
     /// </summary>
-    let execute = Namespaced_IRI.parse _namespace_name "execute" |> NamespacedName
+    let execute = _prefix "execute"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/reproduce"></see>
     /// </summary>
-    let reproduce = Namespaced_IRI.parse _namespace_name "reproduce" |> NamespacedName
+    let reproduce = _prefix "reproduce"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/aggregate"></see>
     /// </summary>
-    let aggregate = Namespaced_IRI.parse _namespace_name "aggregate" |> NamespacedName
+    let aggregate = _prefix "aggregate"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/grantUse"></see>
     /// </summary>
-    let grantUse = Namespaced_IRI.parse _namespace_name "grantUse" |> NamespacedName
+    let grantUse = _prefix "grantUse"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/annotate"></see>
     /// </summary>
-    let annotate = Namespaced_IRI.parse _namespace_name "annotate" |> NamespacedName
+    let annotate = _prefix "annotate"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/stream"></see>
     /// </summary>
-    let stream = Namespaced_IRI.parse _namespace_name "stream" |> NamespacedName
-
+    let stream = _prefix "stream"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#assetConcepts"></see>
     /// </summary>
-    let ``_#assetConcepts`` =
-        Namespaced_IRI.parse _namespace_name "#assetConcepts" |> NamespacedName
-
+    let ``_#assetConcepts`` = _prefix "#assetConcepts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/AssetCollection"></see>
     /// </summary>
-    let AssetCollection =
-        Namespaced_IRI.parse _namespace_name "AssetCollection" |> NamespacedName
-
+    let AssetCollection = _prefix "AssetCollection"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Asset"></see>
     /// </summary>
-    let Asset = Namespaced_IRI.parse _namespace_name "Asset" |> NamespacedName
-
+    let Asset = _prefix "Asset"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#assetParty"></see>
     /// </summary>
-    let ``_#assetParty`` =
-        Namespaced_IRI.parse _namespace_name "#assetParty" |> NamespacedName
-
+    let ``_#assetParty`` = _prefix "#assetParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/source"></see>
     /// </summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
+    let source = _prefix "source"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/partOf"></see>
     /// </summary>
-    let partOf = Namespaced_IRI.parse _namespace_name "partOf" |> NamespacedName
-
+    let partOf = _prefix "partOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#assetRelations"></see>
     /// </summary>
-    let ``_#assetRelations`` =
-        Namespaced_IRI.parse _namespace_name "#assetRelations" |> NamespacedName
-
+    let ``_#assetRelations`` = _prefix "#assetRelations"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/hasPolicy"></see>
     /// </summary>
-    let hasPolicy = Namespaced_IRI.parse _namespace_name "hasPolicy" |> NamespacedName
+    let hasPolicy = _prefix "hasPolicy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/target"></see>
     /// </summary>
-    let target = Namespaced_IRI.parse _namespace_name "target" |> NamespacedName
-
+    let target = _prefix "target"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#assetRelationsCommon"></see>
     /// </summary>
-    let ``_#assetRelationsCommon`` =
-        Namespaced_IRI.parse _namespace_name "#assetRelationsCommon" |> NamespacedName
-
+    let ``_#assetRelationsCommon`` = _prefix "#assetRelationsCommon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/output"></see>
     /// </summary>
-    let output = Namespaced_IRI.parse _namespace_name "output" |> NamespacedName
-
+    let output = _prefix "output"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#conflictConcepts"></see>
     /// </summary>
-    let ``_#conflictConcepts`` =
-        Namespaced_IRI.parse _namespace_name "#conflictConcepts" |> NamespacedName
-
+    let ``_#conflictConcepts`` = _prefix "#conflictConcepts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/invalid"></see>
     /// </summary>
-    let invalid = Namespaced_IRI.parse _namespace_name "invalid" |> NamespacedName
+    let invalid = _prefix "invalid"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/prohibit"></see>
     /// </summary>
-    let prohibit = Namespaced_IRI.parse _namespace_name "prohibit" |> NamespacedName
+    let prohibit = _prefix "prohibit"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/perm"></see>
     /// </summary>
-    let perm = Namespaced_IRI.parse _namespace_name "perm" |> NamespacedName
+    let perm = _prefix "perm"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/conflict"></see>
     /// </summary>
-    let conflict = Namespaced_IRI.parse _namespace_name "conflict" |> NamespacedName
-
+    let conflict = _prefix "conflict"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/ConflictTerm"></see>
     /// </summary>
-    let ConflictTerm =
-        Namespaced_IRI.parse _namespace_name "ConflictTerm" |> NamespacedName
-
+    let ConflictTerm = _prefix "ConflictTerm"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#constraintLeftOperandCommon"></see>
     /// </summary>
-    let ``_#constraintLeftOperandCommon`` =
-        Namespaced_IRI.parse _namespace_name "#constraintLeftOperandCommon" |> NamespacedName
-
+    let ``_#constraintLeftOperandCommon`` = _prefix "#constraintLeftOperandCommon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/resolution"></see>
     /// </summary>
-    let resolution = Namespaced_IRI.parse _namespace_name "resolution" |> NamespacedName
+    let resolution = _prefix "resolution"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/purpose"></see>
     /// </summary>
-    let purpose = Namespaced_IRI.parse _namespace_name "purpose" |> NamespacedName
-
+    let purpose = _prefix "purpose"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/relativeTemporalPosition"></see>
     /// </summary>
-    let relativeTemporalPosition =
-        Namespaced_IRI.parse _namespace_name "relativeTemporalPosition" |> NamespacedName
-
+    let relativeTemporalPosition = _prefix "relativeTemporalPosition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/timeInterval"></see>
     /// </summary>
-    let timeInterval =
-        Namespaced_IRI.parse _namespace_name "timeInterval" |> NamespacedName
-
+    let timeInterval = _prefix "timeInterval"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/elapsedTime"></see>
     /// </summary>
-    let elapsedTime =
-        Namespaced_IRI.parse _namespace_name "elapsedTime" |> NamespacedName
-
+    let elapsedTime = _prefix "elapsedTime"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/spatialCoordinates"></see>
     /// </summary>
-    let spatialCoordinates =
-        Namespaced_IRI.parse _namespace_name "spatialCoordinates" |> NamespacedName
-
+    let spatialCoordinates = _prefix "spatialCoordinates"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/fileFormat"></see>
     /// </summary>
-    let fileFormat = Namespaced_IRI.parse _namespace_name "fileFormat" |> NamespacedName
+    let fileFormat = _prefix "fileFormat"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/dateTime"></see>
     /// </summary>
-    let dateTime = Namespaced_IRI.parse _namespace_name "dateTime" |> NamespacedName
+    let dateTime = _prefix "dateTime"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/event"></see>
     /// </summary>
-    let event_ = Namespaced_IRI.parse _namespace_name "event" |> NamespacedName
-
+    let event_ = _prefix "event"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/systemDevice"></see>
     /// </summary>
-    let systemDevice =
-        Namespaced_IRI.parse _namespace_name "systemDevice" |> NamespacedName
-
+    let systemDevice = _prefix "systemDevice"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/absoluteSpatialPosition"></see>
     /// </summary>
-    let absoluteSpatialPosition =
-        Namespaced_IRI.parse _namespace_name "absoluteSpatialPosition" |> NamespacedName
-
+    let absoluteSpatialPosition = _prefix "absoluteSpatialPosition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/payAmount"></see>
     /// </summary>
-    let payAmount = Namespaced_IRI.parse _namespace_name "payAmount" |> NamespacedName
-
+    let payAmount = _prefix "payAmount"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/absoluteSize"></see>
     /// </summary>
-    let absoluteSize =
-        Namespaced_IRI.parse _namespace_name "absoluteSize" |> NamespacedName
-
+    let absoluteSize = _prefix "absoluteSize"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/spatial"></see>
     /// </summary>
-    let spatial = Namespaced_IRI.parse _namespace_name "spatial" |> NamespacedName
-
+    let spatial = _prefix "spatial"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/deliveryChannel"></see>
     /// </summary>
-    let deliveryChannel =
-        Namespaced_IRI.parse _namespace_name "deliveryChannel" |> NamespacedName
-
+    let deliveryChannel = _prefix "deliveryChannel"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/absolutePosition"></see>
     /// </summary>
-    let absolutePosition =
-        Namespaced_IRI.parse _namespace_name "absolutePosition" |> NamespacedName
-
+    let absolutePosition = _prefix "absolutePosition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/virtualLocation"></see>
     /// </summary>
-    let virtualLocation =
-        Namespaced_IRI.parse _namespace_name "virtualLocation" |> NamespacedName
-
+    let virtualLocation = _prefix "virtualLocation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/percentage"></see>
     /// </summary>
-    let percentage = Namespaced_IRI.parse _namespace_name "percentage" |> NamespacedName
-
+    let percentage = _prefix "percentage"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/relativePosition"></see>
     /// </summary>
-    let relativePosition =
-        Namespaced_IRI.parse _namespace_name "relativePosition" |> NamespacedName
-
+    let relativePosition = _prefix "relativePosition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/product"></see>
     /// </summary>
-    let product = Namespaced_IRI.parse _namespace_name "product" |> NamespacedName
-
+    let product = _prefix "product"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/relativeSize"></see>
     /// </summary>
-    let relativeSize =
-        Namespaced_IRI.parse _namespace_name "relativeSize" |> NamespacedName
-
+    let relativeSize = _prefix "relativeSize"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/relativeSpatialPosition"></see>
     /// </summary>
-    let relativeSpatialPosition =
-        Namespaced_IRI.parse _namespace_name "relativeSpatialPosition" |> NamespacedName
-
+    let relativeSpatialPosition = _prefix "relativeSpatialPosition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/count"></see>
     /// </summary>
-    let count = Namespaced_IRI.parse _namespace_name "count" |> NamespacedName
+    let count = _prefix "count"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/media"></see>
     /// </summary>
-    let media = Namespaced_IRI.parse _namespace_name "media" |> NamespacedName
+    let media = _prefix "media"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/language"></see>
     /// </summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/industry"></see>
     /// </summary>
-    let industry = Namespaced_IRI.parse _namespace_name "industry" |> NamespacedName
-
+    let industry = _prefix "industry"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/unitOfCount"></see>
     /// </summary>
-    let unitOfCount =
-        Namespaced_IRI.parse _namespace_name "unitOfCount" |> NamespacedName
-
+    let unitOfCount = _prefix "unitOfCount"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/delayPeriod"></see>
     /// </summary>
-    let delayPeriod =
-        Namespaced_IRI.parse _namespace_name "delayPeriod" |> NamespacedName
-
+    let delayPeriod = _prefix "delayPeriod"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
-
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/meteredTime"></see>
     /// </summary>
-    let meteredTime =
-        Namespaced_IRI.parse _namespace_name "meteredTime" |> NamespacedName
-
+    let meteredTime = _prefix "meteredTime"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/recipient"></see>
     /// </summary>
-    let recipient = Namespaced_IRI.parse _namespace_name "recipient" |> NamespacedName
-
+    let recipient = _prefix "recipient"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/absoluteTemporalPosition"></see>
     /// </summary>
-    let absoluteTemporalPosition =
-        Namespaced_IRI.parse _namespace_name "absoluteTemporalPosition" |> NamespacedName
-
+    let absoluteTemporalPosition = _prefix "absoluteTemporalPosition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#constraintLogicalOperands"></see>
     /// </summary>
-    let ``_#constraintLogicalOperands`` =
-        Namespaced_IRI.parse _namespace_name "#constraintLogicalOperands" |> NamespacedName
-
+    let ``_#constraintLogicalOperands`` = _prefix "#constraintLogicalOperands"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/andSequence"></see>
     /// </summary>
-    let andSequence =
-        Namespaced_IRI.parse _namespace_name "andSequence" |> NamespacedName
-
+    let andSequence = _prefix "andSequence"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/and"></see>
     /// </summary>
-    let and_ = Namespaced_IRI.parse _namespace_name "and" |> NamespacedName
+    let and_ = _prefix "and"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/xone"></see>
     /// </summary>
-    let xone = Namespaced_IRI.parse _namespace_name "xone" |> NamespacedName
+    let xone = _prefix "xone"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/or"></see>
     /// </summary>
-    let or_ = Namespaced_IRI.parse _namespace_name "or" |> NamespacedName
-
+    let or_ = _prefix "or"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#constraintRelationalOperators"></see>
     /// </summary>
-    let ``_#constraintRelationalOperators`` =
-        Namespaced_IRI.parse _namespace_name "#constraintRelationalOperators" |> NamespacedName
-
+    let ``_#constraintRelationalOperators`` = _prefix "#constraintRelationalOperators"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/gteq"></see>
     /// </summary>
-    let gteq = Namespaced_IRI.parse _namespace_name "gteq" |> NamespacedName
+    let gteq = _prefix "gteq"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/isA"></see>
     /// </summary>
-    let isA = Namespaced_IRI.parse _namespace_name "isA" |> NamespacedName
+    let isA = _prefix "isA"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/lt"></see>
     /// </summary>
-    let lt = Namespaced_IRI.parse _namespace_name "lt" |> NamespacedName
+    let lt = _prefix "lt"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/hasPart"></see>
     /// </summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
+    let hasPart = _prefix "hasPart"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/eq"></see>
     /// </summary>
-    let eq = Namespaced_IRI.parse _namespace_name "eq" |> NamespacedName
+    let eq = _prefix "eq"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/lteq"></see>
     /// </summary>
-    let lteq = Namespaced_IRI.parse _namespace_name "lteq" |> NamespacedName
+    let lteq = _prefix "lteq"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/isAllOf"></see>
     /// </summary>
-    let isAllOf = Namespaced_IRI.parse _namespace_name "isAllOf" |> NamespacedName
+    let isAllOf = _prefix "isAllOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/isNoneOf"></see>
     /// </summary>
-    let isNoneOf = Namespaced_IRI.parse _namespace_name "isNoneOf" |> NamespacedName
+    let isNoneOf = _prefix "isNoneOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/neq"></see>
     /// </summary>
-    let neq = Namespaced_IRI.parse _namespace_name "neq" |> NamespacedName
+    let neq = _prefix "neq"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/isPartOf"></see>
     /// </summary>
-    let isPartOf = Namespaced_IRI.parse _namespace_name "isPartOf" |> NamespacedName
+    let isPartOf = _prefix "isPartOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/gt"></see>
     /// </summary>
-    let gt = Namespaced_IRI.parse _namespace_name "gt" |> NamespacedName
+    let gt = _prefix "gt"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/isAnyOf"></see>
     /// </summary>
-    let isAnyOf = Namespaced_IRI.parse _namespace_name "isAnyOf" |> NamespacedName
-
+    let isAnyOf = _prefix "isAnyOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#constraintRightOpCommon"></see>
     /// </summary>
-    let ``_#constraintRightOpCommon`` =
-        Namespaced_IRI.parse _namespace_name "#constraintRightOpCommon" |> NamespacedName
-
+    let ``_#constraintRightOpCommon`` = _prefix "#constraintRightOpCommon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/policyUsage"></see>
     /// </summary>
-    let policyUsage =
-        Namespaced_IRI.parse _namespace_name "policyUsage" |> NamespacedName
-
+    let policyUsage = _prefix "policyUsage"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#constraints"></see>
     /// </summary>
-    let ``_#constraints`` =
-        Namespaced_IRI.parse _namespace_name "#constraints" |> NamespacedName
-
+    let ``_#constraints`` = _prefix "#constraints"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/constraint"></see>
     /// </summary>
-    let constraint_ =
-        Namespaced_IRI.parse _namespace_name "constraint" |> NamespacedName
-
+    let constraint_ = _prefix "constraint"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/rightOperand"></see>
     /// </summary>
-    let rightOperand =
-        Namespaced_IRI.parse _namespace_name "rightOperand" |> NamespacedName
-
+    let rightOperand = _prefix "rightOperand"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/unit"></see>
     /// </summary>
-    let unit = Namespaced_IRI.parse _namespace_name "unit" |> NamespacedName
-
+    let unit = _prefix "unit"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/LeftOperand"></see>
     /// </summary>
-    let LeftOperand =
-        Namespaced_IRI.parse _namespace_name "LeftOperand" |> NamespacedName
-
+    let LeftOperand = _prefix "LeftOperand"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/leftOperand"></see>
     /// </summary>
-    let leftOperand =
-        Namespaced_IRI.parse _namespace_name "leftOperand" |> NamespacedName
-
+    let leftOperand = _prefix "leftOperand"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/rightOperandReference"></see>
     /// </summary>
-    let rightOperandReference =
-        Namespaced_IRI.parse _namespace_name "rightOperandReference" |> NamespacedName
-
+    let rightOperandReference = _prefix "rightOperandReference"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/RightOperand"></see>
     /// </summary>
-    let RightOperand =
-        Namespaced_IRI.parse _namespace_name "RightOperand" |> NamespacedName
-
+    let RightOperand = _prefix "RightOperand"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/operator"></see>
     /// </summary>
-    let operator = Namespaced_IRI.parse _namespace_name "operator" |> NamespacedName
+    let operator = _prefix "operator"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Operator"></see>
     /// </summary>
-    let Operator = Namespaced_IRI.parse _namespace_name "Operator" |> NamespacedName
+    let Operator = _prefix "Operator"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/refinement"></see>
     /// </summary>
-    let refinement = Namespaced_IRI.parse _namespace_name "refinement" |> NamespacedName
+    let refinement = _prefix "refinement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Constraint"></see>
     /// </summary>
-    let Constraint = Namespaced_IRI.parse _namespace_name "Constraint" |> NamespacedName
+    let Constraint = _prefix "Constraint"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/dataType"></see>
     /// </summary>
-    let dataType = Namespaced_IRI.parse _namespace_name "dataType" |> NamespacedName
-
+    let dataType = _prefix "dataType"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#deprecatedTerms"></see>
     /// </summary>
-    let ``_#deprecatedTerms`` =
-        Namespaced_IRI.parse _namespace_name "#deprecatedTerms" |> NamespacedName
-
+    let ``_#deprecatedTerms`` = _prefix "#deprecatedTerms"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/shareAlike"></see>
     /// </summary>
-    let shareAlike = Namespaced_IRI.parse _namespace_name "shareAlike" |> NamespacedName
+    let shareAlike = _prefix "shareAlike"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/All"></see>
     /// </summary>
-    let All = Namespaced_IRI.parse _namespace_name "All" |> NamespacedName
-
+    let All = _prefix "All"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/All2ndConnections"></see>
     /// </summary>
-    let All2ndConnections =
-        Namespaced_IRI.parse _namespace_name "All2ndConnections" |> NamespacedName
-
+    let All2ndConnections = _prefix "All2ndConnections"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/PartyScope"></see>
     /// </summary>
-    let PartyScope = Namespaced_IRI.parse _namespace_name "PartyScope" |> NamespacedName
+    let PartyScope = _prefix "PartyScope"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/scope"></see>
     /// </summary>
-    let scope = Namespaced_IRI.parse _namespace_name "scope" |> NamespacedName
+    let scope = _prefix "scope"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/device"></see>
     /// </summary>
-    let device = Namespaced_IRI.parse _namespace_name "device" |> NamespacedName
+    let device = _prefix "device"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/write"></see>
     /// </summary>
-    let write = Namespaced_IRI.parse _namespace_name "write" |> NamespacedName
+    let write = _prefix "write"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/pay"></see>
     /// </summary>
-    let pay = Namespaced_IRI.parse _namespace_name "pay" |> NamespacedName
+    let pay = _prefix "pay"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/payeeParty"></see>
     /// </summary>
-    let payeeParty = Namespaced_IRI.parse _namespace_name "payeeParty" |> NamespacedName
+    let payeeParty = _prefix "payeeParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/copy"></see>
     /// </summary>
-    let copy = Namespaced_IRI.parse _namespace_name "copy" |> NamespacedName
-
+    let copy = _prefix "copy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/inheritRelation"></see>
     /// </summary>
-    let inheritRelation =
-        Namespaced_IRI.parse _namespace_name "inheritRelation" |> NamespacedName
-
+    let inheritRelation = _prefix "inheritRelation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/lend"></see>
     /// </summary>
-    let lend = Namespaced_IRI.parse _namespace_name "lend" |> NamespacedName
+    let lend = _prefix "lend"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/timedCount"></see>
     /// </summary>
-    let timedCount = Namespaced_IRI.parse _namespace_name "timedCount" |> NamespacedName
+    let timedCount = _prefix "timedCount"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/lease"></see>
     /// </summary>
-    let lease = Namespaced_IRI.parse _namespace_name "lease" |> NamespacedName
+    let lease = _prefix "lease"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Group"></see>
     /// </summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/writeTo"></see>
     /// </summary>
-    let writeTo = Namespaced_IRI.parse _namespace_name "writeTo" |> NamespacedName
+    let writeTo = _prefix "writeTo"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/system"></see>
     /// </summary>
-    let system = Namespaced_IRI.parse _namespace_name "system" |> NamespacedName
+    let system = _prefix "system"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/AssetScope"></see>
     /// </summary>
-    let AssetScope = Namespaced_IRI.parse _namespace_name "AssetScope" |> NamespacedName
-
+    let AssetScope = _prefix "AssetScope"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/inheritAllowed"></see>
     /// </summary>
-    let inheritAllowed =
-        Namespaced_IRI.parse _namespace_name "inheritAllowed" |> NamespacedName
-
+    let inheritAllowed = _prefix "inheritAllowed"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/proximity"></see>
     /// </summary>
-    let proximity = Namespaced_IRI.parse _namespace_name "proximity" |> NamespacedName
-
+    let proximity = _prefix "proximity"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/commercialize"></see>
     /// </summary>
-    let commercialize =
-        Namespaced_IRI.parse _namespace_name "commercialize" |> NamespacedName
-
+    let commercialize = _prefix "commercialize"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Individual"></see>
     /// </summary>
-    let Individual = Namespaced_IRI.parse _namespace_name "Individual" |> NamespacedName
+    let Individual = _prefix "Individual"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/ignore"></see>
     /// </summary>
-    let ignore = Namespaced_IRI.parse _namespace_name "ignore" |> NamespacedName
+    let ignore = _prefix "ignore"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/preview"></see>
     /// </summary>
-    let preview = Namespaced_IRI.parse _namespace_name "preview" |> NamespacedName
+    let preview = _prefix "preview"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/appendTo"></see>
     /// </summary>
-    let appendTo = Namespaced_IRI.parse _namespace_name "appendTo" |> NamespacedName
-
+    let appendTo = _prefix "appendTo"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/attachSource"></see>
     /// </summary>
-    let attachSource =
-        Namespaced_IRI.parse _namespace_name "attachSource" |> NamespacedName
-
+    let attachSource = _prefix "attachSource"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/export"></see>
     /// </summary>
-    let export = Namespaced_IRI.parse _namespace_name "export" |> NamespacedName
-
+    let export = _prefix "export"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/attachPolicy"></see>
     /// </summary>
-    let attachPolicy =
-        Namespaced_IRI.parse _namespace_name "attachPolicy" |> NamespacedName
-
+    let attachPolicy = _prefix "attachPolicy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/extractChar"></see>
     /// </summary>
-    let extractChar =
-        Namespaced_IRI.parse _namespace_name "extractChar" |> NamespacedName
-
+    let extractChar = _prefix "extractChar"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/share"></see>
     /// </summary>
-    let share = Namespaced_IRI.parse _namespace_name "share" |> NamespacedName
-
+    let share = _prefix "share"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/extractPage"></see>
     /// </summary>
-    let extractPage =
-        Namespaced_IRI.parse _namespace_name "extractPage" |> NamespacedName
-
+    let extractPage = _prefix "extractPage"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/secondaryUse"></see>
     /// </summary>
-    let secondaryUse =
-        Namespaced_IRI.parse _namespace_name "secondaryUse" |> NamespacedName
-
+    let secondaryUse = _prefix "secondaryUse"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/adHocShare"></see>
     /// </summary>
-    let adHocShare = Namespaced_IRI.parse _namespace_name "adHocShare" |> NamespacedName
-
+    let adHocShare = _prefix "adHocShare"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/AllConnections"></see>
     /// </summary>
-    let AllConnections =
-        Namespaced_IRI.parse _namespace_name "AllConnections" |> NamespacedName
-
+    let AllConnections = _prefix "AllConnections"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/support"></see>
     /// </summary>
-    let support = Namespaced_IRI.parse _namespace_name "support" |> NamespacedName
+    let support = _prefix "support"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/AllGroups"></see>
     /// </summary>
-    let AllGroups = Namespaced_IRI.parse _namespace_name "AllGroups" |> NamespacedName
-
+    let AllGroups = _prefix "AllGroups"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/UndefinedTerm"></see>
     /// </summary>
-    let UndefinedTerm =
-        Namespaced_IRI.parse _namespace_name "UndefinedTerm" |> NamespacedName
-
+    let UndefinedTerm = _prefix "UndefinedTerm"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/extractWord"></see>
     /// </summary>
-    let extractWord =
-        Namespaced_IRI.parse _namespace_name "extractWord" |> NamespacedName
-
+    let extractWord = _prefix "extractWord"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/undefined"></see>
     /// </summary>
-    let undefined = Namespaced_IRI.parse _namespace_name "undefined" |> NamespacedName
+    let undefined = _prefix "undefined"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/append"></see>
     /// </summary>
-    let append = Namespaced_IRI.parse _namespace_name "append" |> NamespacedName
+    let append = _prefix "append"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/license"></see>
     /// </summary>
-    let license = Namespaced_IRI.parse _namespace_name "license" |> NamespacedName
+    let license = _prefix "license"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#duties"></see>
     /// </summary>
-    let ``_#duties`` = Namespaced_IRI.parse _namespace_name "#duties" |> NamespacedName
+    let ``_#duties`` = _prefix "#duties"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/remedy"></see>
     /// </summary>
-    let remedy = Namespaced_IRI.parse _namespace_name "remedy" |> NamespacedName
-
+    let remedy = _prefix "remedy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/consequence"></see>
     /// </summary>
-    let consequence =
-        Namespaced_IRI.parse _namespace_name "consequence" |> NamespacedName
-
+    let consequence = _prefix "consequence"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/duty"></see>
     /// </summary>
-    let duty = Namespaced_IRI.parse _namespace_name "duty" |> NamespacedName
+    let duty = _prefix "duty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/obligation"></see>
     /// </summary>
-    let obligation = Namespaced_IRI.parse _namespace_name "obligation" |> NamespacedName
+    let obligation = _prefix "obligation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Duty"></see>
     /// </summary>
-    let Duty = Namespaced_IRI.parse _namespace_name "Duty" |> NamespacedName
-
+    let Duty = _prefix "Duty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#logicalConstraints"></see>
     /// </summary>
-    let ``_#logicalConstraints`` =
-        Namespaced_IRI.parse _namespace_name "#logicalConstraints" |> NamespacedName
-
+    let ``_#logicalConstraints`` = _prefix "#logicalConstraints"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/operand"></see>
     /// </summary>
-    let operand = Namespaced_IRI.parse _namespace_name "operand" |> NamespacedName
-
+    let operand = _prefix "operand"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/LogicalConstraint"></see>
     /// </summary>
-    let LogicalConstraint =
-        Namespaced_IRI.parse _namespace_name "LogicalConstraint" |> NamespacedName
-
+    let LogicalConstraint = _prefix "LogicalConstraint"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#partyConcepts"></see>
     /// </summary>
-    let ``_#partyConcepts`` =
-        Namespaced_IRI.parse _namespace_name "#partyConcepts" |> NamespacedName
-
+    let ``_#partyConcepts`` = _prefix "#partyConcepts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/PartyCollection"></see>
     /// </summary>
-    let PartyCollection =
-        Namespaced_IRI.parse _namespace_name "PartyCollection" |> NamespacedName
-
+    let PartyCollection = _prefix "PartyCollection"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Party"></see>
     /// </summary>
-    let Party = Namespaced_IRI.parse _namespace_name "Party" |> NamespacedName
-
+    let Party = _prefix "Party"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#partyRoles"></see>
     /// </summary>
-    let ``_#partyRoles`` =
-        Namespaced_IRI.parse _namespace_name "#partyRoles" |> NamespacedName
-
+    let ``_#partyRoles`` = _prefix "#partyRoles"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/assignerOf"></see>
     /// </summary>
-    let assignerOf = Namespaced_IRI.parse _namespace_name "assignerOf" |> NamespacedName
+    let assignerOf = _prefix "assignerOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/assigneeOf"></see>
     /// </summary>
-    let assigneeOf = Namespaced_IRI.parse _namespace_name "assigneeOf" |> NamespacedName
+    let assigneeOf = _prefix "assigneeOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/assigner"></see>
     /// </summary>
-    let assigner = Namespaced_IRI.parse _namespace_name "assigner" |> NamespacedName
+    let assigner = _prefix "assigner"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/assignee"></see>
     /// </summary>
-    let assignee = Namespaced_IRI.parse _namespace_name "assignee" |> NamespacedName
-
+    let assignee = _prefix "assignee"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#partyRolesCommon"></see>
     /// </summary>
-    let ``_#partyRolesCommon`` =
-        Namespaced_IRI.parse _namespace_name "#partyRolesCommon" |> NamespacedName
-
+    let ``_#partyRolesCommon`` = _prefix "#partyRolesCommon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/consentingParty"></see>
     /// </summary>
-    let consentingParty =
-        Namespaced_IRI.parse _namespace_name "consentingParty" |> NamespacedName
-
+    let consentingParty = _prefix "consentingParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/contractingParty"></see>
     /// </summary>
-    let contractingParty =
-        Namespaced_IRI.parse _namespace_name "contractingParty" |> NamespacedName
-
+    let contractingParty = _prefix "contractingParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/attributedParty"></see>
     /// </summary>
-    let attributedParty =
-        Namespaced_IRI.parse _namespace_name "attributedParty" |> NamespacedName
-
+    let attributedParty = _prefix "attributedParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/compensatedParty"></see>
     /// </summary>
-    let compensatedParty =
-        Namespaced_IRI.parse _namespace_name "compensatedParty" |> NamespacedName
-
+    let compensatedParty = _prefix "compensatedParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/informedParty"></see>
     /// </summary>
-    let informedParty =
-        Namespaced_IRI.parse _namespace_name "informedParty" |> NamespacedName
-
+    let informedParty = _prefix "informedParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/trackingParty"></see>
     /// </summary>
-    let trackingParty =
-        Namespaced_IRI.parse _namespace_name "trackingParty" |> NamespacedName
-
+    let trackingParty = _prefix "trackingParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/informingParty"></see>
     /// </summary>
-    let informingParty =
-        Namespaced_IRI.parse _namespace_name "informingParty" |> NamespacedName
-
+    let informingParty = _prefix "informingParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/compensatingParty"></see>
     /// </summary>
-    let compensatingParty =
-        Namespaced_IRI.parse _namespace_name "compensatingParty" |> NamespacedName
-
+    let compensatingParty = _prefix "compensatingParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/trackedParty"></see>
     /// </summary>
-    let trackedParty =
-        Namespaced_IRI.parse _namespace_name "trackedParty" |> NamespacedName
-
+    let trackedParty = _prefix "trackedParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/contractedParty"></see>
     /// </summary>
-    let contractedParty =
-        Namespaced_IRI.parse _namespace_name "contractedParty" |> NamespacedName
-
+    let contractedParty = _prefix "contractedParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/attributingParty"></see>
     /// </summary>
-    let attributingParty =
-        Namespaced_IRI.parse _namespace_name "attributingParty" |> NamespacedName
-
+    let attributingParty = _prefix "attributingParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/consentedParty"></see>
     /// </summary>
-    let consentedParty =
-        Namespaced_IRI.parse _namespace_name "consentedParty" |> NamespacedName
-
+    let consentedParty = _prefix "consentedParty"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#permissions"></see>
     /// </summary>
-    let ``_#permissions`` =
-        Namespaced_IRI.parse _namespace_name "#permissions" |> NamespacedName
-
+    let ``_#permissions`` = _prefix "#permissions"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/permission"></see>
     /// </summary>
-    let permission = Namespaced_IRI.parse _namespace_name "permission" |> NamespacedName
+    let permission = _prefix "permission"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Permission"></see>
     /// </summary>
-    let Permission = Namespaced_IRI.parse _namespace_name "Permission" |> NamespacedName
-
+    let Permission = _prefix "Permission"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#policyConcepts"></see>
     /// </summary>
-    let ``_#policyConcepts`` =
-        Namespaced_IRI.parse _namespace_name "#policyConcepts" |> NamespacedName
-
+    let ``_#policyConcepts`` = _prefix "#policyConcepts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/inheritFrom"></see>
     /// </summary>
-    let inheritFrom =
-        Namespaced_IRI.parse _namespace_name "inheritFrom" |> NamespacedName
-
+    let inheritFrom = _prefix "inheritFrom"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/profile"></see>
     /// </summary>
-    let profile = Namespaced_IRI.parse _namespace_name "profile" |> NamespacedName
+    let profile = _prefix "profile"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/uid"></see>
     /// </summary>
-    let uid = Namespaced_IRI.parse _namespace_name "uid" |> NamespacedName
+    let uid = _prefix "uid"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Policy"></see>
     /// </summary>
-    let Policy = Namespaced_IRI.parse _namespace_name "Policy" |> NamespacedName
-
+    let Policy = _prefix "Policy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#policySubClasses"></see>
     /// </summary>
-    let ``_#policySubClasses`` =
-        Namespaced_IRI.parse _namespace_name "#policySubClasses" |> NamespacedName
-
+    let ``_#policySubClasses`` = _prefix "#policySubClasses"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Set"></see>
     /// </summary>
-    let Set = Namespaced_IRI.parse _namespace_name "Set" |> NamespacedName
+    let Set = _prefix "Set"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Offer"></see>
     /// </summary>
-    let Offer = Namespaced_IRI.parse _namespace_name "Offer" |> NamespacedName
+    let Offer = _prefix "Offer"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Agreement"></see>
     /// </summary>
-    let Agreement = Namespaced_IRI.parse _namespace_name "Agreement" |> NamespacedName
-
+    let Agreement = _prefix "Agreement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#policySubClassesCommon"></see>
     /// </summary>
-    let ``_#policySubClassesCommon`` =
-        Namespaced_IRI.parse _namespace_name "#policySubClassesCommon" |> NamespacedName
-
+    let ``_#policySubClassesCommon`` = _prefix "#policySubClassesCommon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Ticket"></see>
     /// </summary>
-    let Ticket = Namespaced_IRI.parse _namespace_name "Ticket" |> NamespacedName
+    let Ticket = _prefix "Ticket"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Request"></see>
     /// </summary>
-    let Request = Namespaced_IRI.parse _namespace_name "Request" |> NamespacedName
+    let Request = _prefix "Request"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Privacy"></see>
     /// </summary>
-    let Privacy = Namespaced_IRI.parse _namespace_name "Privacy" |> NamespacedName
+    let Privacy = _prefix "Privacy"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Assertion"></see>
     /// </summary>
-    let Assertion = Namespaced_IRI.parse _namespace_name "Assertion" |> NamespacedName
-
+    let Assertion = _prefix "Assertion"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#prohibitions"></see>
     /// </summary>
-    let ``_#prohibitions`` =
-        Namespaced_IRI.parse _namespace_name "#prohibitions" |> NamespacedName
-
+    let ``_#prohibitions`` = _prefix "#prohibitions"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/prohibition"></see>
     /// </summary>
-    let prohibition =
-        Namespaced_IRI.parse _namespace_name "prohibition" |> NamespacedName
-
+    let prohibition = _prefix "prohibition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Prohibition"></see>
     /// </summary>
-    let Prohibition =
-        Namespaced_IRI.parse _namespace_name "Prohibition" |> NamespacedName
-
+    let Prohibition = _prefix "Prohibition"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/#ruleConcepts"></see>
     /// </summary>
-    let ``_#ruleConcepts`` =
-        Namespaced_IRI.parse _namespace_name "#ruleConcepts" |> NamespacedName
-
+    let ``_#ruleConcepts`` = _prefix "#ruleConcepts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/failure"></see>
     /// </summary>
-    let failure = Namespaced_IRI.parse _namespace_name "failure" |> NamespacedName
+    let failure = _prefix "failure"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/function"></see>
     /// </summary>
-    let function_ = Namespaced_IRI.parse _namespace_name "function" |> NamespacedName
+    let function_ = _prefix "function"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/relation"></see>
     /// </summary>
-    let relation = Namespaced_IRI.parse _namespace_name "relation" |> NamespacedName
+    let relation = _prefix "relation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/Rule"></see>
     /// </summary>
-    let Rule = Namespaced_IRI.parse _namespace_name "Rule" |> NamespacedName
+    let Rule = _prefix "Rule"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/odrl/2/core"></see>
     /// </summary>
-    let core = Namespaced_IRI.parse _namespace_name "core" |> NamespacedName
+    let core = _prefix "core"

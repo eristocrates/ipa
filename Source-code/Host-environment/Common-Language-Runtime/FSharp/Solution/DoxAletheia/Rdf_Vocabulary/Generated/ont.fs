@@ -1,44 +1,42 @@
 namespace http.purl.org.net.ns.ontology_annot.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ont =
     let _namespace_name = "http://purl.org/net/ns/ontology-annot#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#created"></see>
     /// </summary>
-    let created = Namespaced_IRI.parse _namespace_name "created" |> NamespacedName
+    let created = _prefix "created"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#creator"></see>
     /// </summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
+    let creator = _prefix "creator"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#modified"></see>
     /// </summary>
-    let modified = Namespaced_IRI.parse _namespace_name "modified" |> NamespacedName
-
+    let modified = _prefix "modified"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#deprecatedBy"></see>
     /// </summary>
-    let deprecatedBy =
-        Namespaced_IRI.parse _namespace_name "deprecatedBy" |> NamespacedName
-
+    let deprecatedBy = _prefix "deprecatedBy"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#seeOther"></see>
     /// </summary>
-    let seeOther = Namespaced_IRI.parse _namespace_name "seeOther" |> NamespacedName
-
+    let seeOther = _prefix "seeOther"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#relation"></see>
     /// </summary>
-    let relation = Namespaced_IRI.parse _namespace_name "relation" |> NamespacedName
+    let relation = _prefix "relation"
     /// <summary>
     ///   <see href="http://purl.org/net/ns/ontology-annot#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"

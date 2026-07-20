@@ -1,548 +1,413 @@
 namespace http.d_nb.info.standards.elementset.gnd.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gndo =
     let _namespace_name = "http://d-nb.info/standards/elementset/gnd#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#listMembers"></see>
     /// </summary>
-    let listMembers =
-        Namespaced_IRI.parse _namespace_name "listMembers" |> NamespacedName
-
+    let listMembers = _prefix "listMembers"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#dnbStaff"></see>
     /// </summary>
-    let dnbStaff = Namespaced_IRI.parse _namespace_name "dnbStaff" |> NamespacedName
-
+    let dnbStaff = _prefix "dnbStaff"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#alexanderHaffner"></see>
     /// </summary>
-    let alexanderHaffner =
-        Namespaced_IRI.parse _namespace_name "alexanderHaffner" |> NamespacedName
-
+    let alexanderHaffner = _prefix "alexanderHaffner"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#AdministrativeUnit"></see>
     /// </summary>
-    let AdministrativeUnit =
-        Namespaced_IRI.parse _namespace_name "AdministrativeUnit" |> NamespacedName
-
+    let AdministrativeUnit = _prefix "AdministrativeUnit"
     /// <summary>
     /// Expresses the MARC 21 equivalent for this element in the GND MARC
     ///       format.
     /// <see href="http://d-nb.info/standards/elementset/gnd#marc21equivalent"></see></summary>
-    let marc21equivalent =
-        Namespaced_IRI.parse _namespace_name "marc21equivalent" |> NamespacedName
-
+    let marc21equivalent = _prefix "marc21equivalent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#PlaceOrGeographicName"></see>
     /// </summary>
-    let PlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "PlaceOrGeographicName" |> NamespacedName
-
+    let PlaceOrGeographicName = _prefix "PlaceOrGeographicName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#AuthorityResource"></see>
     /// </summary>
-    let AuthorityResource =
-        Namespaced_IRI.parse _namespace_name "AuthorityResource" |> NamespacedName
-
+    let AuthorityResource = _prefix "AuthorityResource"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#BuildingOrMemorial"></see>
     /// </summary>
-    let BuildingOrMemorial =
-        Namespaced_IRI.parse _namespace_name "BuildingOrMemorial" |> NamespacedName
-
+    let BuildingOrMemorial = _prefix "BuildingOrMemorial"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#CharactersOrMorphemes"></see>
     /// </summary>
-    let CharactersOrMorphemes =
-        Namespaced_IRI.parse _namespace_name "CharactersOrMorphemes" |> NamespacedName
-
+    let CharactersOrMorphemes = _prefix "CharactersOrMorphemes"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#SubjectHeading"></see>
     /// </summary>
-    let SubjectHeading =
-        Namespaced_IRI.parse _namespace_name "SubjectHeading" |> NamespacedName
-
+    let SubjectHeading = _prefix "SubjectHeading"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Collection"></see>
     /// </summary>
-    let Collection = Namespaced_IRI.parse _namespace_name "Collection" |> NamespacedName
+    let Collection = _prefix "Collection"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Work"></see>
     /// </summary>
-    let Work = Namespaced_IRI.parse _namespace_name "Work" |> NamespacedName
-
+    let Work = _prefix "Work"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#CollectiveManuscript"></see>
     /// </summary>
-    let CollectiveManuscript =
-        Namespaced_IRI.parse _namespace_name "CollectiveManuscript" |> NamespacedName
-
+    let CollectiveManuscript = _prefix "CollectiveManuscript"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#CollectivePseudonym"></see>
     /// </summary>
-    let CollectivePseudonym =
-        Namespaced_IRI.parse _namespace_name "CollectivePseudonym" |> NamespacedName
-
+    let CollectivePseudonym = _prefix "CollectivePseudonym"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson"></see>
     /// </summary>
-    let DifferentiatedPerson =
-        Namespaced_IRI.parse _namespace_name "DifferentiatedPerson" |> NamespacedName
-
+    let DifferentiatedPerson = _prefix "DifferentiatedPerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Company"></see>
     /// </summary>
-    let Company = Namespaced_IRI.parse _namespace_name "Company" |> NamespacedName
-
+    let Company = _prefix "Company"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#CorporateBody"></see>
     /// </summary>
-    let CorporateBody =
-        Namespaced_IRI.parse _namespace_name "CorporateBody" |> NamespacedName
-
+    let CorporateBody = _prefix "CorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ConferenceOrEvent"></see>
     /// </summary>
-    let ConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "ConferenceOrEvent" |> NamespacedName
-
+    let ConferenceOrEvent = _prefix "ConferenceOrEvent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Country"></see>
     /// </summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
+    let Country = _prefix "Country"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
-
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#UndifferentiatedPerson"></see>
     /// </summary>
-    let UndifferentiatedPerson =
-        Namespaced_IRI.parse _namespace_name "UndifferentiatedPerson" |> NamespacedName
-
+    let UndifferentiatedPerson = _prefix "UndifferentiatedPerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#EarlierNameOfThePerson"></see>
     /// </summary>
-    let EarlierNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "EarlierNameOfThePerson" |> NamespacedName
-
+    let EarlierNameOfThePerson = _prefix "EarlierNameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#VariantNameOfThePerson"></see>
     /// </summary>
-    let VariantNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "VariantNameOfThePerson" |> NamespacedName
-
+    let VariantNameOfThePerson = _prefix "VariantNameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#EthnographicName"></see>
     /// </summary>
-    let EthnographicName =
-        Namespaced_IRI.parse _namespace_name "EthnographicName" |> NamespacedName
-
+    let EthnographicName = _prefix "EthnographicName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Expression"></see>
     /// </summary>
-    let Expression = Namespaced_IRI.parse _namespace_name "Expression" |> NamespacedName
-
+    let Expression = _prefix "Expression"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ExtraterrestrialTerritory"></see>
     /// </summary>
-    let ExtraterrestrialTerritory =
-        Namespaced_IRI.parse _namespace_name "ExtraterrestrialTerritory" |> NamespacedName
-
+    let ExtraterrestrialTerritory = _prefix "ExtraterrestrialTerritory"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Family"></see>
     /// </summary>
-    let Family = Namespaced_IRI.parse _namespace_name "Family" |> NamespacedName
-
+    let Family = _prefix "Family"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#FictiveCorporateBody"></see>
     /// </summary>
-    let FictiveCorporateBody =
-        Namespaced_IRI.parse _namespace_name "FictiveCorporateBody" |> NamespacedName
-
+    let FictiveCorporateBody = _prefix "FictiveCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#FictivePlace"></see>
     /// </summary>
-    let FictivePlace =
-        Namespaced_IRI.parse _namespace_name "FictivePlace" |> NamespacedName
-
+    let FictivePlace = _prefix "FictivePlace"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#FictiveTerm"></see>
     /// </summary>
-    let FictiveTerm =
-        Namespaced_IRI.parse _namespace_name "FictiveTerm" |> NamespacedName
-
+    let FictiveTerm = _prefix "FictiveTerm"
     /// <summary>
     /// Use FictiveTerm instead
     /// <see href="http://d-nb.info/standards/elementset/gnd#Fictive_term"></see></summary>
-    let Fictive_term =
-        Namespaced_IRI.parse _namespace_name "Fictive_term" |> NamespacedName
-
+    let Fictive_term = _prefix "Fictive_term"
     /// <summary>
     /// The complete or a fuller form of name of a person, family or corporate body
     /// <see href="http://d-nb.info/standards/elementset/gnd#FullerFormOfNameOfThePerson"></see></summary>
-    let FullerFormOfNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "FullerFormOfNameOfThePerson" |> NamespacedName
-
+    let FullerFormOfNameOfThePerson = _prefix "FullerFormOfNameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Gods"></see>
     /// </summary>
-    let Gods = Namespaced_IRI.parse _namespace_name "Gods" |> NamespacedName
-
+    let Gods = _prefix "Gods"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#GroupOfPersons"></see>
     /// </summary>
-    let GroupOfPersons =
-        Namespaced_IRI.parse _namespace_name "GroupOfPersons" |> NamespacedName
-
+    let GroupOfPersons = _prefix "GroupOfPersons"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#HistoricSingleEventOrEra"></see>
     /// </summary>
-    let HistoricSingleEventOrEra =
-        Namespaced_IRI.parse _namespace_name "HistoricSingleEventOrEra" |> NamespacedName
-
+    let HistoricSingleEventOrEra = _prefix "HistoricSingleEventOrEra"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Language"></see>
     /// </summary>
-    let Language = Namespaced_IRI.parse _namespace_name "Language" |> NamespacedName
-
+    let Language = _prefix "Language"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#LaterNameOfThePerson"></see>
     /// </summary>
-    let LaterNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "LaterNameOfThePerson" |> NamespacedName
-
+    let LaterNameOfThePerson = _prefix "LaterNameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#LiteraryOrLegendaryCharacter"></see>
     /// </summary>
-    let LiteraryOrLegendaryCharacter =
-        Namespaced_IRI.parse _namespace_name "LiteraryOrLegendaryCharacter" |> NamespacedName
-
+    let LiteraryOrLegendaryCharacter = _prefix "LiteraryOrLegendaryCharacter"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Manuscript"></see>
     /// </summary>
-    let Manuscript = Namespaced_IRI.parse _namespace_name "Manuscript" |> NamespacedName
+    let Manuscript = _prefix "Manuscript"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#MeansOfTransportWithIndividualName"></see>
     /// </summary>
     let MeansOfTransportWithIndividualName =
-        Namespaced_IRI.parse _namespace_name "MeansOfTransportWithIndividualName" |> NamespacedName
+        _prefix "MeansOfTransportWithIndividualName"
 
     /// <summary>
     /// Use gndo:MeansOfTransportWithIndividualName
     /// <see href="http://d-nb.info/standards/elementset/gnd#MeansOfTransportWithIndividual_name"></see></summary>
     let MeansOfTransportWithIndividual_name =
-        Namespaced_IRI.parse _namespace_name "MeansOfTransportWithIndividual_name" |> NamespacedName
+        _prefix "MeansOfTransportWithIndividual_name"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#MemberState"></see>
     /// </summary>
-    let MemberState =
-        Namespaced_IRI.parse _namespace_name "MemberState" |> NamespacedName
-
+    let MemberState = _prefix "MemberState"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#MusicalCorporateBody"></see>
     /// </summary>
-    let MusicalCorporateBody =
-        Namespaced_IRI.parse _namespace_name "MusicalCorporateBody" |> NamespacedName
-
+    let MusicalCorporateBody = _prefix "MusicalCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#MusicalWork"></see>
     /// </summary>
-    let MusicalWork =
-        Namespaced_IRI.parse _namespace_name "MusicalWork" |> NamespacedName
+    let MusicalWork = _prefix "MusicalWork"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#NameOfSmallGeographicUnitLyingWithinAnotherGeographicUnit"></see>
     /// </summary>
     let NameOfSmallGeographicUnitLyingWithinAnotherGeographicUnit =
-        Namespaced_IRI.parse _namespace_name "NameOfSmallGeographicUnitLyingWithinAnotherGeographicUnit" |> NamespacedName
+        _prefix "NameOfSmallGeographicUnitLyingWithinAnotherGeographicUnit"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#NameOfThePerson"></see>
     /// </summary>
-    let NameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "NameOfThePerson" |> NamespacedName
-
+    let NameOfThePerson = _prefix "NameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#NaturalGeographicUnit"></see>
     /// </summary>
-    let NaturalGeographicUnit =
-        Namespaced_IRI.parse _namespace_name "NaturalGeographicUnit" |> NamespacedName
-
+    let NaturalGeographicUnit = _prefix "NaturalGeographicUnit"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#NomenclatureInBiologyOrChemistry"></see>
     /// </summary>
-    let NomenclatureInBiologyOrChemistry =
-        Namespaced_IRI.parse _namespace_name "NomenclatureInBiologyOrChemistry" |> NamespacedName
-
+    let NomenclatureInBiologyOrChemistry = _prefix "NomenclatureInBiologyOrChemistry"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#OrganOfCorporateBody"></see>
     /// </summary>
-    let OrganOfCorporateBody =
-        Namespaced_IRI.parse _namespace_name "OrganOfCorporateBody" |> NamespacedName
-
+    let OrganOfCorporateBody = _prefix "OrganOfCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#PreferredNameOfThePerson"></see>
     /// </summary>
-    let PreferredNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "PreferredNameOfThePerson" |> NamespacedName
-
+    let PreferredNameOfThePerson = _prefix "PreferredNameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ProductNameOrBrandName"></see>
     /// </summary>
-    let ProductNameOrBrandName =
-        Namespaced_IRI.parse _namespace_name "ProductNameOrBrandName" |> NamespacedName
-
+    let ProductNameOrBrandName = _prefix "ProductNameOrBrandName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ProjectOrProgram"></see>
     /// </summary>
-    let ProjectOrProgram =
-        Namespaced_IRI.parse _namespace_name "ProjectOrProgram" |> NamespacedName
-
+    let ProjectOrProgram = _prefix "ProjectOrProgram"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ProvenanceCharacteristic"></see>
     /// </summary>
-    let ProvenanceCharacteristic =
-        Namespaced_IRI.parse _namespace_name "ProvenanceCharacteristic" |> NamespacedName
-
+    let ProvenanceCharacteristic = _prefix "ProvenanceCharacteristic"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Pseudonym"></see>
     /// </summary>
-    let Pseudonym = Namespaced_IRI.parse _namespace_name "Pseudonym" |> NamespacedName
-
+    let Pseudonym = _prefix "Pseudonym"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#PseudonymNameOfThePerson"></see>
     /// </summary>
-    let PseudonymNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "PseudonymNameOfThePerson" |> NamespacedName
-
+    let PseudonymNameOfThePerson = _prefix "PseudonymNameOfThePerson"
     /// <summary>
     /// The person’s real name
     /// <see href="http://d-nb.info/standards/elementset/gnd#RealNameOfThePerson"></see></summary>
-    let RealNameOfThePerson =
-        Namespaced_IRI.parse _namespace_name "RealNameOfThePerson" |> NamespacedName
-
+    let RealNameOfThePerson = _prefix "RealNameOfThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ReligiousAdministrativeUnit"></see>
     /// </summary>
-    let ReligiousAdministrativeUnit =
-        Namespaced_IRI.parse _namespace_name "ReligiousAdministrativeUnit" |> NamespacedName
-
+    let ReligiousAdministrativeUnit = _prefix "ReligiousAdministrativeUnit"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ReligiousCorporateBody"></see>
     /// </summary>
-    let ReligiousCorporateBody =
-        Namespaced_IRI.parse _namespace_name "ReligiousCorporateBody" |> NamespacedName
-
+    let ReligiousCorporateBody = _prefix "ReligiousCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#ReligiousTerritory"></see>
     /// </summary>
-    let ReligiousTerritory =
-        Namespaced_IRI.parse _namespace_name "ReligiousTerritory" |> NamespacedName
-
+    let ReligiousTerritory = _prefix "ReligiousTerritory"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#RoyalOrMemberOfARoyalHouse"></see>
     /// </summary>
-    let RoyalOrMemberOfARoyalHouse =
-        Namespaced_IRI.parse _namespace_name "RoyalOrMemberOfARoyalHouse" |> NamespacedName
-
+    let RoyalOrMemberOfARoyalHouse = _prefix "RoyalOrMemberOfARoyalHouse"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#SeriesOfConferenceOrEvent"></see>
     /// </summary>
-    let SeriesOfConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "SeriesOfConferenceOrEvent" |> NamespacedName
-
+    let SeriesOfConferenceOrEvent = _prefix "SeriesOfConferenceOrEvent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#SoftwareProduct"></see>
     /// </summary>
-    let SoftwareProduct =
-        Namespaced_IRI.parse _namespace_name "SoftwareProduct" |> NamespacedName
-
+    let SoftwareProduct = _prefix "SoftwareProduct"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#Spirits"></see>
     /// </summary>
-    let Spirits = Namespaced_IRI.parse _namespace_name "Spirits" |> NamespacedName
-
+    let Spirits = _prefix "Spirits"
     /// <summary>
     /// Use startingOrFinalPointOfADistance (with a minor s) instead
     /// <see href="http://d-nb.info/standards/elementset/gnd#StartingOrFinalPointOfADistance"></see></summary>
-    let StartingOrFinalPointOfADistance =
-        Namespaced_IRI.parse _namespace_name "StartingOrFinalPointOfADistance" |> NamespacedName
-
+    let StartingOrFinalPointOfADistance = _prefix "StartingOrFinalPointOfADistance"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#startingOrFinalPointOfADistance"></see>
     /// </summary>
-    let startingOrFinalPointOfADistance =
-        Namespaced_IRI.parse _namespace_name "startingOrFinalPointOfADistance" |> NamespacedName
-
+    let startingOrFinalPointOfADistance = _prefix "startingOrFinalPointOfADistance"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#SubjectHeadingSensoStricto"></see>
     /// </summary>
-    let SubjectHeadingSensoStricto =
-        Namespaced_IRI.parse _namespace_name "SubjectHeadingSensoStricto" |> NamespacedName
+    let SubjectHeadingSensoStricto = _prefix "SubjectHeadingSensoStricto"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#TerritorialCorporateBodyOrAdministrativeUnit"></see>
     /// </summary>
     let TerritorialCorporateBodyOrAdministrativeUnit =
-        Namespaced_IRI.parse _namespace_name "TerritorialCorporateBodyOrAdministrativeUnit" |> NamespacedName
+        _prefix "TerritorialCorporateBodyOrAdministrativeUnit"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#VersionOfAMusicalWork"></see>
     /// </summary>
-    let VersionOfAMusicalWork =
-        Namespaced_IRI.parse _namespace_name "VersionOfAMusicalWork" |> NamespacedName
-
+    let VersionOfAMusicalWork = _prefix "VersionOfAMusicalWork"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#WayBorderOrLine"></see>
     /// </summary>
-    let WayBorderOrLine =
-        Namespaced_IRI.parse _namespace_name "WayBorderOrLine" |> NamespacedName
+    let WayBorderOrLine = _prefix "WayBorderOrLine"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#abbreviatedNameForTheConferenceOrEvent"></see>
     /// </summary>
     let abbreviatedNameForTheConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "abbreviatedNameForTheConferenceOrEvent" |> NamespacedName
+        _prefix "abbreviatedNameForTheConferenceOrEvent"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForTheConferenceOrEvent"></see>
     /// </summary>
     let variantNameForTheConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheConferenceOrEvent" |> NamespacedName
+        _prefix "variantNameForTheConferenceOrEvent"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#abbreviatedNameForTheCorporateBody"></see>
     /// </summary>
     let abbreviatedNameForTheCorporateBody =
-        Namespaced_IRI.parse _namespace_name "abbreviatedNameForTheCorporateBody" |> NamespacedName
+        _prefix "abbreviatedNameForTheCorporateBody"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForTheCorporateBody"></see>
     /// </summary>
-    let variantNameForTheCorporateBody =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheCorporateBody" |> NamespacedName
+    let variantNameForTheCorporateBody = _prefix "variantNameForTheCorporateBody"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#abbreviatedNameForThePlaceOrGeographicName"></see>
     /// </summary>
     let abbreviatedNameForThePlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "abbreviatedNameForThePlaceOrGeographicName" |> NamespacedName
+        _prefix "abbreviatedNameForThePlaceOrGeographicName"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForThePlaceOrGeographicName"></see>
     /// </summary>
     let variantNameForThePlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "variantNameForThePlaceOrGeographicName" |> NamespacedName
+        _prefix "variantNameForThePlaceOrGeographicName"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#abbreviatedNameForTheWork"></see>
     /// </summary>
-    let abbreviatedNameForTheWork =
-        Namespaced_IRI.parse _namespace_name "abbreviatedNameForTheWork" |> NamespacedName
-
+    let abbreviatedNameForTheWork = _prefix "abbreviatedNameForTheWork"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForTheWork"></see>
     /// </summary>
-    let variantNameForTheWork =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheWork" |> NamespacedName
-
+    let variantNameForTheWork = _prefix "variantNameForTheWork"
     /// <summary>
     /// An academic degree.
     /// <see href="http://d-nb.info/standards/elementset/gnd#academicDegree"></see></summary>
-    let academicDegree =
-        Namespaced_IRI.parse _namespace_name "academicDegree" |> NamespacedName
-
+    let academicDegree = _prefix "academicDegree"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#accordingWork"></see>
     /// </summary>
-    let accordingWork =
-        Namespaced_IRI.parse _namespace_name "accordingWork" |> NamespacedName
-
+    let accordingWork = _prefix "accordingWork"
     /// <summary>
     /// An author, artist, etc., relating him/her to a resource for which there is or once was substantial authority for designating that person as author, creator, etc. of the work
     /// <see href="http://d-nb.info/standards/elementset/gnd#accreditedArtist"></see></summary>
-    let accreditedArtist =
-        Namespaced_IRI.parse _namespace_name "accreditedArtist" |> NamespacedName
-
+    let accreditedArtist = _prefix "accreditedArtist"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#artist"></see>
     /// </summary>
-    let artist = Namespaced_IRI.parse _namespace_name "artist" |> NamespacedName
-
+    let artist = _prefix "artist"
     /// <summary>
     /// An author, artist, etc., relating him/her to a resource for which there is or once was substantial authority for designating that person as author, creator, etc. of the work
     /// <see href="http://d-nb.info/standards/elementset/gnd#accreditedAuthor"></see></summary>
-    let accreditedAuthor =
-        Namespaced_IRI.parse _namespace_name "accreditedAuthor" |> NamespacedName
-
+    let accreditedAuthor = _prefix "accreditedAuthor"
     /// <summary>
     /// A person, family, or organization responsible for creating a work that is primarily textual in content, regardless of media type (e.g., printed text, spoken word, electronic text, tactile text) or genre (e.g., poems, novels, screenplays, blogs). Use also for persons, etc., creating a new work by paraphrasing, rewriting, or adapting works by another creator such that the modification has substantially changed the nature and content of the original or changed the medium of expression
     /// <see href="http://d-nb.info/standards/elementset/gnd#author"></see></summary>
-    let author = Namespaced_IRI.parse _namespace_name "author" |> NamespacedName
-
+    let author = _prefix "author"
     /// <summary>
     /// An author, artist, etc., relating him/her to a resource for which there is or once was substantial authority for designating that person as author, creator, etc. of the work
     /// <see href="http://d-nb.info/standards/elementset/gnd#accreditedComposer"></see></summary>
-    let accreditedComposer =
-        Namespaced_IRI.parse _namespace_name "accreditedComposer" |> NamespacedName
-
+    let accreditedComposer = _prefix "accreditedComposer"
     /// <summary>
     /// A person, family, or organization responsible for creating or contributing to a musical resource by adding music to a work that originally lacked it or supplements it
     /// <see href="http://d-nb.info/standards/elementset/gnd#composer"></see></summary>
-    let composer = Namespaced_IRI.parse _namespace_name "composer" |> NamespacedName
-
+    let composer = _prefix "composer"
     /// <summary>
     /// Relationship between a person, family, or corporate body and another person, family, or corporate body which cannot be specified more closely
     /// <see href="http://d-nb.info/standards/elementset/gnd#acquaintanceshipOrFriendship"></see></summary>
-    let acquaintanceshipOrFriendship =
-        Namespaced_IRI.parse _namespace_name "acquaintanceshipOrFriendship" |> NamespacedName
-
+    let acquaintanceshipOrFriendship = _prefix "acquaintanceshipOrFriendship"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#memberOfTheFamily"></see>
     /// </summary>
-    let memberOfTheFamily =
-        Namespaced_IRI.parse _namespace_name "memberOfTheFamily" |> NamespacedName
-
+    let memberOfTheFamily = _prefix "memberOfTheFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#addition"></see>
     /// </summary>
-    let addition = Namespaced_IRI.parse _namespace_name "addition" |> NamespacedName
+    let addition = _prefix "addition"
     /// <summary>
     /// A person, family, or organization to whom the correspondence in a work is addressed.
     /// <see href="http://d-nb.info/standards/elementset/gnd#addressee"></see></summary>
-    let addressee = Namespaced_IRI.parse _namespace_name "addressee" |> NamespacedName
-
+    let addressee = _prefix "addressee"
     /// <summary>
     /// A corporate body associated with a person or group of persons.
     /// <see href="http://d-nb.info/standards/elementset/gnd#affiliation"></see></summary>
-    let affiliation =
-        Namespaced_IRI.parse _namespace_name "affiliation" |> NamespacedName
-
+    let affiliation = _prefix "affiliation"
     /// <summary>
     /// A corporate body associated with a person or group of persons.
     /// 		This property is equivalent to gndo:affiliation but gives a literal instead of
     /// 		a URI.
     /// <see href="http://d-nb.info/standards/elementset/gnd#affiliationAsLiteral"></see></summary>
-    let affiliationAsLiteral =
-        Namespaced_IRI.parse _namespace_name "affiliationAsLiteral" |> NamespacedName
-
+    let affiliationAsLiteral = _prefix "affiliationAsLiteral"
     /// <summary>
     /// A person who makes manuscript annotations on an item.
     /// <see href="http://d-nb.info/standards/elementset/gnd#annotator"></see></summary>
-    let annotator = Namespaced_IRI.parse _namespace_name "annotator" |> NamespacedName
+    let annotator = _prefix "annotator"
     /// <summary>
     /// A person, family, or organization responsible for creating an
     /// 		architectural design, including a pictorial representation intended to show how a building,
     /// 		etc., will look when completed. It also oversees the construction of structures.
     /// <see href="http://d-nb.info/standards/elementset/gnd#architect"></see></summary>
-    let architect = Namespaced_IRI.parse _namespace_name "architect" |> NamespacedName
+    let architect = _prefix "architect"
     /// <summary>
     /// A person, family, or organization contributing to a musical
     /// 		work by rewriting the composition for a medium of performance different from that
@@ -551,975 +416,716 @@ module gndo =
     /// 		composition remains essentially unchanged. For extensive modification that effectively
     /// 		results in the creation of a new musical work, see composer.
     /// <see href="http://d-nb.info/standards/elementset/gnd#arranger"></see></summary>
-    let arranger = Namespaced_IRI.parse _namespace_name "arranger" |> NamespacedName
-
+    let arranger = _prefix "arranger"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#associatedDate"></see>
     /// </summary>
-    let associatedDate =
-        Namespaced_IRI.parse _namespace_name "associatedDate" |> NamespacedName
-
+    let associatedDate = _prefix "associatedDate"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#associatedPlace"></see>
     /// </summary>
-    let associatedPlace =
-        Namespaced_IRI.parse _namespace_name "associatedPlace" |> NamespacedName
-
+    let associatedPlace = _prefix "associatedPlace"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#beginningOfPeriod"></see>
     /// </summary>
-    let beginningOfPeriod =
-        Namespaced_IRI.parse _namespace_name "beginningOfPeriod" |> NamespacedName
-
+    let beginningOfPeriod = _prefix "beginningOfPeriod"
     /// <summary>
     /// A person, family, or corporate body being the benefactor of a work, a thing, or a corporate body
     /// <see href="http://d-nb.info/standards/elementset/gnd#benefactor"></see></summary>
-    let benefactor = Namespaced_IRI.parse _namespace_name "benefactor" |> NamespacedName
+    let benefactor = _prefix "benefactor"
 
     /// <summary>
     /// Summary of the essential biographical, historical, or other
     ///       information about the described entity.
     /// <see href="http://d-nb.info/standards/elementset/gnd#biographicalOrHistoricalInformation"></see></summary>
     let biographicalOrHistoricalInformation =
-        Namespaced_IRI.parse _namespace_name "biographicalOrHistoricalInformation" |> NamespacedName
+        _prefix "biographicalOrHistoricalInformation"
 
     /// <summary>
     /// P1 gnd:superPropertyOf P2 states that P2 is a subproperty of P1. The
     ///       gndo:superPropertyOf property is transitive.
     /// <see href="http://d-nb.info/standards/elementset/gnd#superPropertyOf"></see></summary>
-    let superPropertyOf =
-        Namespaced_IRI.parse _namespace_name "superPropertyOf" |> NamespacedName
-
+    let superPropertyOf = _prefix "superPropertyOf"
     /// <summary>
     /// A person who binds an item
     /// <see href="http://d-nb.info/standards/elementset/gnd#bookbinder"></see></summary>
-    let bookbinder = Namespaced_IRI.parse _namespace_name "bookbinder" |> NamespacedName
-
+    let bookbinder = _prefix "bookbinder"
     /// <summary>
     /// A person or organization involved in manufacturing a manifestation by being responsible for the entire graphic design of a book, including arrangement of type and illustration, choice of materials, and process used
     /// <see href="http://d-nb.info/standards/elementset/gnd#bookdesigner"></see></summary>
-    let bookdesigner =
-        Namespaced_IRI.parse _namespace_name "bookdesigner" |> NamespacedName
-
+    let bookdesigner = _prefix "bookdesigner"
     /// <summary>
     /// Use broader term general instead
     /// <see href="http://d-nb.info/standards/elementset/gnd#broaderTerm"></see></summary>
-    let broaderTerm =
-        Namespaced_IRI.parse _namespace_name "broaderTerm" |> NamespacedName
-
+    let broaderTerm = _prefix "broaderTerm"
     /// <summary>
     /// Broader term
     /// <see href="http://d-nb.info/standards/elementset/gnd#broaderTermGeneral"></see></summary>
-    let broaderTermGeneral =
-        Namespaced_IRI.parse _namespace_name "broaderTermGeneral" |> NamespacedName
-
+    let broaderTermGeneral = _prefix "broaderTermGeneral"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#narrowerTermGeneral"></see>
     /// </summary>
-    let narrowerTermGeneral =
-        Namespaced_IRI.parse _namespace_name "narrowerTermGeneral" |> NamespacedName
-
+    let narrowerTermGeneral = _prefix "narrowerTermGeneral"
     /// <summary>
     /// The generic relation is a semantic relation between two concepts
     ///       where the intension of one of the concepts includes that of the other concepts and at least
     ///       one additional delimiting characteristic is added.
     /// <see href="http://d-nb.info/standards/elementset/gnd#broaderTermGeneric"></see></summary>
-    let broaderTermGeneric =
-        Namespaced_IRI.parse _namespace_name "broaderTermGeneric" |> NamespacedName
-
+    let broaderTermGeneric = _prefix "broaderTermGeneric"
     /// <summary>
     /// The generic relation is a semantic relation between two concepts
     ///       where the intension of one of the concepts includes that of the other concepts and at least
     ///       one additional delimiting characteristic is added.
     /// <see href="http://d-nb.info/standards/elementset/gnd#narrowerTermGeneric"></see></summary>
-    let narrowerTermGeneric =
-        Namespaced_IRI.parse _namespace_name "narrowerTermGeneric" |> NamespacedName
-
+    let narrowerTermGeneric = _prefix "narrowerTermGeneric"
     /// <summary>
     /// The instance relationship links a general concept such as a class of
     ///       things or events, and an individual instance oft hat class, which is often represented by a
     ///       proper name.
     /// <see href="http://d-nb.info/standards/elementset/gnd#broaderTermInstantial"></see></summary>
-    let broaderTermInstantial =
-        Namespaced_IRI.parse _namespace_name "broaderTermInstantial" |> NamespacedName
-
+    let broaderTermInstantial = _prefix "broaderTermInstantial"
     /// <summary>
     /// The instance relationship links a general concept such as a class of
     ///       things or events, and an individual instance oft hat class, which is often represented by a
     ///       proper name.
     /// <see href="http://d-nb.info/standards/elementset/gnd#narrowerTermInstantial"></see></summary>
-    let narrowerTermInstantial =
-        Namespaced_IRI.parse _namespace_name "narrowerTermInstantial" |> NamespacedName
-
+    let narrowerTermInstantial = _prefix "narrowerTermInstantial"
     /// <summary>
     /// The hierarchical whole-part relationship covers a limited range of
     ///       situations in which a part of an entity or system belongs uniquely to a particular possessing
     ///       whole. When applied to persons, this is the relation between a single person (particularly gods)
     /// 	  and hierarchically broader groups of gods and mythologic entities.
     /// <see href="http://d-nb.info/standards/elementset/gnd#broaderTermPartitive"></see></summary>
-    let broaderTermPartitive =
-        Namespaced_IRI.parse _namespace_name "broaderTermPartitive" |> NamespacedName
-
+    let broaderTermPartitive = _prefix "broaderTermPartitive"
     /// <summary>
     /// The hierarchical whole-part relationship covers a limited range of
     ///       situations in which a part of an entity or system belongs uniquely to a particular possessing
     ///       whole. When applied to persons, this is the relation between a single person (particularly gods)
     /// 	  and hierarchically superior groups of gods and mythologic entities.
     /// <see href="http://d-nb.info/standards/elementset/gnd#narrowerTermPartitive"></see></summary>
-    let narrowerTermPartitive =
-        Namespaced_IRI.parse _namespace_name "narrowerTermPartitive" |> NamespacedName
-
+    let narrowerTermPartitive = _prefix "narrowerTermPartitive"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#broaderTermWithMoreThanOneElement"></see>
     /// </summary>
-    let broaderTermWithMoreThanOneElement =
-        Namespaced_IRI.parse _namespace_name "broaderTermWithMoreThanOneElement" |> NamespacedName
-
+    let broaderTermWithMoreThanOneElement = _prefix "broaderTermWithMoreThanOneElement"
     /// <summary>
     /// Use gndo:broaderTermGeneral instead
     /// <see href="http://d-nb.info/standards/elementset/gnd#broderTermGeneral"></see></summary>
-    let broderTermGeneral =
-        Namespaced_IRI.parse _namespace_name "broderTermGeneral" |> NamespacedName
-
+    let broderTermGeneral = _prefix "broderTermGeneral"
     /// <summary>
     /// A person, family, or corporate body in charge of financing and constructing a building
     /// <see href="http://d-nb.info/standards/elementset/gnd#buildingOwner"></see></summary>
-    let buildingOwner =
-        Namespaced_IRI.parse _namespace_name "buildingOwner" |> NamespacedName
-
+    let buildingOwner = _prefix "buildingOwner"
     /// <summary>
     /// A person, family, or organization responsible for creating a map, atlas, globe, or other cartographic work
     /// <see href="http://d-nb.info/standards/elementset/gnd#cartographer"></see></summary>
-    let cartographer =
-        Namespaced_IRI.parse _namespace_name "cartographer" |> NamespacedName
-
+    let cartographer = _prefix "cartographer"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#celebratedCorporateBody"></see>
     /// </summary>
-    let celebratedCorporateBody =
-        Namespaced_IRI.parse _namespace_name "celebratedCorporateBody" |> NamespacedName
-
+    let celebratedCorporateBody = _prefix "celebratedCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#celebratedFamily"></see>
     /// </summary>
-    let celebratedFamily =
-        Namespaced_IRI.parse _namespace_name "celebratedFamily" |> NamespacedName
-
+    let celebratedFamily = _prefix "celebratedFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#celebratedPerson"></see>
     /// </summary>
-    let celebratedPerson =
-        Namespaced_IRI.parse _namespace_name "celebratedPerson" |> NamespacedName
-
+    let celebratedPerson = _prefix "celebratedPerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#celebratedTopic"></see>
     /// </summary>
-    let celebratedTopic =
-        Namespaced_IRI.parse _namespace_name "celebratedTopic" |> NamespacedName
-
+    let celebratedTopic = _prefix "celebratedTopic"
     /// <summary>
     /// A significant place for a person or family
     /// <see href="http://d-nb.info/standards/elementset/gnd#characteristicPlace"></see></summary>
-    let characteristicPlace =
-        Namespaced_IRI.parse _namespace_name "characteristicPlace" |> NamespacedName
-
+    let characteristicPlace = _prefix "characteristicPlace"
     /// <summary>
     /// A person responsible for creating or contributing to a work of movement
     /// <see href="http://d-nb.info/standards/elementset/gnd#choreographer"></see></summary>
-    let choreographer =
-        Namespaced_IRI.parse _namespace_name "choreographer" |> NamespacedName
-
+    let choreographer = _prefix "choreographer"
     /// <summary>
     /// A person or organization whose work is largely quoted or extracted in works to which he or she did not contribute directly. Such quotations are found particularly in exhibition catalogs, collections of photographs, etc.
     /// <see href="http://d-nb.info/standards/elementset/gnd#citedArtist"></see></summary>
-    let citedArtist =
-        Namespaced_IRI.parse _namespace_name "citedArtist" |> NamespacedName
-
+    let citedArtist = _prefix "citedArtist"
     /// <summary>
     /// A person or organization whose work is largely quoted or extracted in works to which he or she did not contribute directly. Such quotations are found particularly in exhibition catalogs, collections of photographs, etc.
     /// <see href="http://d-nb.info/standards/elementset/gnd#citedAuthor"></see></summary>
-    let citedAuthor =
-        Namespaced_IRI.parse _namespace_name "citedAuthor" |> NamespacedName
-
+    let citedAuthor = _prefix "citedAuthor"
     /// <summary>
     /// A person or organization whose work is largely quoted or extracted in works to which he or she did not contribute directly. Such quotations are found particularly in exhibition catalogs, collections of photographs, etc.
     /// <see href="http://d-nb.info/standards/elementset/gnd#citedComposer"></see></summary>
-    let citedComposer =
-        Namespaced_IRI.parse _namespace_name "citedComposer" |> NamespacedName
-
+    let citedComposer = _prefix "citedComposer"
     /// <summary>
     /// A curator who brings together items from various sources that are then arranged, described, and cataloged as a collection. A collector is neither the creator of the material nor a person to whom manuscripts in the collection may have been addressed
     /// <see href="http://d-nb.info/standards/elementset/gnd#collector"></see></summary>
-    let collector = Namespaced_IRI.parse _namespace_name "collector" |> NamespacedName
+    let collector = _prefix "collector"
     /// <summary>
     /// A person, family, or organization responsible for creating a new work (e.g., a bibliography, a directory) through the act of compilation, e.g., selecting, arranging, aggregating, and editing data, information, etc
     /// <see href="http://d-nb.info/standards/elementset/gnd#compiler"></see></summary>
-    let compiler = Namespaced_IRI.parse _namespace_name "compiler" |> NamespacedName
-
+    let compiler = _prefix "compiler"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#complexSeeReferenceSubject"></see>
     /// </summary>
-    let complexSeeReferenceSubject =
-        Namespaced_IRI.parse _namespace_name "complexSeeReferenceSubject" |> NamespacedName
-
+    let complexSeeReferenceSubject = _prefix "complexSeeReferenceSubject"
     /// <summary>
     /// A person or organization permitting the temporary use of a book, manuscript, etc., such as for photocopying or microfilming
     /// <see href="http://d-nb.info/standards/elementset/gnd#conferrer"></see></summary>
-    let conferrer = Namespaced_IRI.parse _namespace_name "conferrer" |> NamespacedName
-
+    let conferrer = _prefix "conferrer"
     /// <summary>
     /// Use contributingFamily instead.
     /// <see href="http://d-nb.info/standards/elementset/gnd#contributinFamily"></see></summary>
-    let contributinFamily =
-        Namespaced_IRI.parse _namespace_name "contributinFamily" |> NamespacedName
-
+    let contributinFamily = _prefix "contributinFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#contributingFamily"></see>
     /// </summary>
-    let contributingFamily =
-        Namespaced_IRI.parse _namespace_name "contributingFamily" |> NamespacedName
-
+    let contributingFamily = _prefix "contributingFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#contributingCorporateBody"></see>
     /// </summary>
-    let contributingCorporateBody =
-        Namespaced_IRI.parse _namespace_name "contributingCorporateBody" |> NamespacedName
-
+    let contributingCorporateBody = _prefix "contributingCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#contributingPerson"></see>
     /// </summary>
-    let contributingPerson =
-        Namespaced_IRI.parse _namespace_name "contributingPerson" |> NamespacedName
-
+    let contributingPerson = _prefix "contributingPerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#contributingPlaceOrGeographicName"></see>
     /// </summary>
-    let contributingPlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "contributingPlaceOrGeographicName" |> NamespacedName
-
+    let contributingPlaceOrGeographicName = _prefix "contributingPlaceOrGeographicName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#coordinates"></see>
     /// </summary>
-    let coordinates =
-        Namespaced_IRI.parse _namespace_name "coordinates" |> NamespacedName
-
+    let coordinates = _prefix "coordinates"
     /// <summary>
     /// A person or family who is known as scribe or copyist.
     /// <see href="http://d-nb.info/standards/elementset/gnd#copist"></see></summary>
-    let copist = Namespaced_IRI.parse _namespace_name "copist" |> NamespacedName
-
+    let copist = _prefix "copist"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#corporateBodyIsMember"></see>
     /// </summary>
-    let corporateBodyIsMember =
-        Namespaced_IRI.parse _namespace_name "corporateBodyIsMember" |> NamespacedName
-
+    let corporateBodyIsMember = _prefix "corporateBodyIsMember"
     /// <summary>
     /// A person or family being a member of (another) family
     /// <see href="http://d-nb.info/standards/elementset/gnd#member"></see></summary>
-    let member_ = Namespaced_IRI.parse _namespace_name "member" |> NamespacedName
-
+    let member_ = _prefix "member"
     /// <summary>
     /// A person or organization who was either the writer or recipient of a letter or other communication
     /// <see href="http://d-nb.info/standards/elementset/gnd#correspondent"></see></summary>
-    let correspondent =
-        Namespaced_IRI.parse _namespace_name "correspondent" |> NamespacedName
-
+    let correspondent = _prefix "correspondent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#counting"></see>
     /// </summary>
-    let counting = Namespaced_IRI.parse _namespace_name "counting" |> NamespacedName
+    let counting = _prefix "counting"
     /// <summary>
     /// A person or organization performing the work, i.e., the name of a person or organization associated with the intellectual content of the work. This category does not include the publisher or personal affiliation, or sponsor except where it is also the corporate author
     /// <see href="http://d-nb.info/standards/elementset/gnd#creator"></see></summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
+    let creator = _prefix "creator"
     /// <summary>
     /// A person, family, or organization conceiving, aggregating, and/or organizing an exhibition, collection, or other item
     /// <see href="http://d-nb.info/standards/elementset/gnd#curator"></see></summary>
-    let curator = Namespaced_IRI.parse _namespace_name "curator" |> NamespacedName
-
+    let curator = _prefix "curator"
     /// <summary>
     /// Date of birth and death of a person, years in which a family has been known to exist
     /// <see href="http://d-nb.info/standards/elementset/gnd#dateOfBirth"></see></summary>
-    let dateOfBirth =
-        Namespaced_IRI.parse _namespace_name "dateOfBirth" |> NamespacedName
-
+    let dateOfBirth = _prefix "dateOfBirth"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#dateOfBirthAndDeath"></see>
     /// </summary>
-    let dateOfBirthAndDeath =
-        Namespaced_IRI.parse _namespace_name "dateOfBirthAndDeath" |> NamespacedName
-
+    let dateOfBirthAndDeath = _prefix "dateOfBirthAndDeath"
     /// <summary>
     /// Date of a conference
     /// <see href="http://d-nb.info/standards/elementset/gnd#dateOfConferenceOrEvent"></see></summary>
-    let dateOfConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "dateOfConferenceOrEvent" |> NamespacedName
-
+    let dateOfConferenceOrEvent = _prefix "dateOfConferenceOrEvent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#dateOfDeath"></see>
     /// </summary>
-    let dateOfDeath =
-        Namespaced_IRI.parse _namespace_name "dateOfDeath" |> NamespacedName
-
+    let dateOfDeath = _prefix "dateOfDeath"
     /// <summary>
     /// Date or year in which an object was found (not to be used in connection with persons, families and corporate bodies)
     /// <see href="http://d-nb.info/standards/elementset/gnd#dateOfDiscovery"></see></summary>
-    let dateOfDiscovery =
-        Namespaced_IRI.parse _namespace_name "dateOfDiscovery" |> NamespacedName
-
+    let dateOfDiscovery = _prefix "dateOfDiscovery"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#dateOfEstablishment"></see>
     /// </summary>
-    let dateOfEstablishment =
-        Namespaced_IRI.parse _namespace_name "dateOfEstablishment" |> NamespacedName
-
+    let dateOfEstablishment = _prefix "dateOfEstablishment"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#dateOfEstablishmentAndTermination"></see>
     /// </summary>
-    let dateOfEstablishmentAndTermination =
-        Namespaced_IRI.parse _namespace_name "dateOfEstablishmentAndTermination" |> NamespacedName
-
+    let dateOfEstablishmentAndTermination = _prefix "dateOfEstablishmentAndTermination"
     /// <summary>
     /// Date (year) in which a written historical document was created or a building constructed
     /// <see href="http://d-nb.info/standards/elementset/gnd#dateOfProduction"></see></summary>
-    let dateOfProduction =
-        Namespaced_IRI.parse _namespace_name "dateOfProduction" |> NamespacedName
-
+    let dateOfProduction = _prefix "dateOfProduction"
     /// <summary>
     /// Date of publication of the first expression of a work
     /// <see href="http://d-nb.info/standards/elementset/gnd#dateOfPublication"></see></summary>
-    let dateOfPublication =
-        Namespaced_IRI.parse _namespace_name "dateOfPublication" |> NamespacedName
-
+    let dateOfPublication = _prefix "dateOfPublication"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#dateOfTermination"></see>
     /// </summary>
-    let dateOfTermination =
-        Namespaced_IRI.parse _namespace_name "dateOfTermination" |> NamespacedName
-
+    let dateOfTermination = _prefix "dateOfTermination"
     /// <summary>
     /// A person, family, or organization to whom a resource is dedicated
     /// <see href="http://d-nb.info/standards/elementset/gnd#dedicatee"></see></summary>
-    let dedicatee = Namespaced_IRI.parse _namespace_name "dedicatee" |> NamespacedName
+    let dedicatee = _prefix "dedicatee"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#definition"></see>
     /// </summary>
-    let definition = Namespaced_IRI.parse _namespace_name "definition" |> NamespacedName
+    let definition = _prefix "definition"
     /// <summary>
     /// A person, family, or organization responsible for creating a design for an object
     /// <see href="http://d-nb.info/standards/elementset/gnd#designer"></see></summary>
-    let designer = Namespaced_IRI.parse _namespace_name "designer" |> NamespacedName
+    let designer = _prefix "designer"
     /// <summary>
     /// A person responsible for the general management and supervision of a filmed performance, a radio or television program, etc.
     /// <see href="http://d-nb.info/standards/elementset/gnd#director"></see></summary>
-    let director = Namespaced_IRI.parse _namespace_name "director" |> NamespacedName
-
+    let director = _prefix "director"
     /// <summary>
     /// A person in charge of photographing a motion picture, who plans the technical aspets of lighting and photographing of scenes, and often assists the director in the choice of angles, camera setups, and lighting moods. He or she may also supervise the further processing of filmed material up to the completion of the work print. Cinematographer is also referred to as director of photography. Do not confuse with videographer
     /// <see href="http://d-nb.info/standards/elementset/gnd#directorOfPhotography"></see></summary>
-    let directorOfPhotography =
-        Namespaced_IRI.parse _namespace_name "directorOfPhotography" |> NamespacedName
-
+    let directorOfPhotography = _prefix "directorOfPhotography"
     /// <summary>
     /// A person or organization to which authorship has been dubiously or incorrectly ascribed
     /// <see href="http://d-nb.info/standards/elementset/gnd#doubtfulArtist"></see></summary>
-    let doubtfulArtist =
-        Namespaced_IRI.parse _namespace_name "doubtfulArtist" |> NamespacedName
-
+    let doubtfulArtist = _prefix "doubtfulArtist"
     /// <summary>
     /// A person or organization to which authorship has been dubiously or incorrectly ascribed
     /// <see href="http://d-nb.info/standards/elementset/gnd#doubtfulAuthor"></see></summary>
-    let doubtfulAuthor =
-        Namespaced_IRI.parse _namespace_name "doubtfulAuthor" |> NamespacedName
-
+    let doubtfulAuthor = _prefix "doubtfulAuthor"
     /// <summary>
     /// A person or organization to which authorship has been dubiously or incorrectly ascribed
     /// <see href="http://d-nb.info/standards/elementset/gnd#doubtfulComposer"></see></summary>
-    let doubtfulComposer =
-        Namespaced_IRI.parse _namespace_name "doubtfulComposer" |> NamespacedName
-
+    let doubtfulComposer = _prefix "doubtfulComposer"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#easternmostLongitude"></see>
     /// </summary>
-    let easternmostLongitude =
-        Namespaced_IRI.parse _namespace_name "easternmostLongitude" |> NamespacedName
-
+    let easternmostLongitude = _prefix "easternmostLongitude"
     /// <summary>
     /// A person, family, or organization contributing to a resource by revising or elucidating the content, e.g., adding an introduction, notes, or other critical matter. An editor may also prepare a resource for production, publication, or distribution. For major revisions, adaptations, etc., that substantially change the nature and content of the original work, resulting in a new work, see author
     /// <see href="http://d-nb.info/standards/elementset/gnd#editor"></see></summary>
-    let editor = Namespaced_IRI.parse _namespace_name "editor" |> NamespacedName
-
+    let editor = _prefix "editor"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#endOfPeriod"></see>
     /// </summary>
-    let endOfPeriod =
-        Namespaced_IRI.parse _namespace_name "endOfPeriod" |> NamespacedName
-
+    let endOfPeriod = _prefix "endOfPeriod"
     /// <summary>
     /// A person or organization who cuts letters, figures, etc. on a surface, such as a wooden or metal plate used for printing
     /// <see href="http://d-nb.info/standards/elementset/gnd#engraver"></see></summary>
-    let engraver = Namespaced_IRI.parse _namespace_name "engraver" |> NamespacedName
+    let engraver = _prefix "engraver"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#epithetGenericNameTitleOrTerritory"></see>
     /// </summary>
     let epithetGenericNameTitleOrTerritory =
-        Namespaced_IRI.parse _namespace_name "epithetGenericNameTitleOrTerritory" |> NamespacedName
+        _prefix "epithetGenericNameTitleOrTerritory"
 
     /// <summary>
     /// A person or organization who produces text or images for printing by subjecting metal, glass, or some other surface to acid or the corrosive action of some other substance
     /// <see href="http://d-nb.info/standards/elementset/gnd#etcher"></see></summary>
-    let etcher = Namespaced_IRI.parse _namespace_name "etcher" |> NamespacedName
+    let etcher = _prefix "etcher"
     /// <summary>
     /// A person, family, or corporate body in charge of an exhibition.
     /// <see href="http://d-nb.info/standards/elementset/gnd#exhibitor"></see></summary>
-    let exhibitor = Namespaced_IRI.parse _namespace_name "exhibitor" |> NamespacedName
-
+    let exhibitor = _prefix "exhibitor"
     /// <summary>
     /// A family relationship between a person or family and another person or family
     /// <see href="http://d-nb.info/standards/elementset/gnd#familialRelationship"></see></summary>
-    let familialRelationship =
-        Namespaced_IRI.parse _namespace_name "familialRelationship" |> NamespacedName
-
+    let familialRelationship = _prefix "familialRelationship"
     /// <summary>
     /// A fictitious person, family, or corporate body ascertained to be the author
     /// <see href="http://d-nb.info/standards/elementset/gnd#fictitiousAuthor"></see></summary>
-    let fictitiousAuthor =
-        Namespaced_IRI.parse _namespace_name "fictitiousAuthor" |> NamespacedName
-
+    let fictitiousAuthor = _prefix "fictitiousAuthor"
     /// <summary>
     /// Field of activity of a person, corporate body, conference or event.
     /// <see href="http://d-nb.info/standards/elementset/gnd#fieldOfActivity"></see></summary>
-    let fieldOfActivity =
-        Namespaced_IRI.parse _namespace_name "fieldOfActivity" |> NamespacedName
-
+    let fieldOfActivity = _prefix "fieldOfActivity"
     /// <summary>
     /// A person’s field of study
     /// <see href="http://d-nb.info/standards/elementset/gnd#fieldOfStudy"></see></summary>
-    let fieldOfStudy =
-        Namespaced_IRI.parse _namespace_name "fieldOfStudy" |> NamespacedName
-
+    let fieldOfStudy = _prefix "fieldOfStudy"
     /// <summary>
     /// A person or organization that takes primary responsibility for a particular activity or endeavor. May be combined with another relator term or code to show the greater importance this person or organization has regarding that particular role. If more than one relator is assigned to a heading, use the Lead relator only if it applies to all the relators
     /// <see href="http://d-nb.info/standards/elementset/gnd#firstArtist"></see></summary>
-    let firstArtist =
-        Namespaced_IRI.parse _namespace_name "firstArtist" |> NamespacedName
-
+    let firstArtist = _prefix "firstArtist"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#firstAuthor"></see>
     /// </summary>
-    let firstAuthor =
-        Namespaced_IRI.parse _namespace_name "firstAuthor" |> NamespacedName
-
+    let firstAuthor = _prefix "firstAuthor"
     /// <summary>
     /// A person or organization that takes primary responsibility for a particular activity or endeavor. May be combined with another relator term or code to show the greater importance this person or organization has regarding that particular role. If more than one relator is assigned to a heading, use the Lead relator only if it applies to all the relators
     /// <see href="http://d-nb.info/standards/elementset/gnd#firstComposer"></see></summary>
-    let firstComposer =
-        Namespaced_IRI.parse _namespace_name "firstComposer" |> NamespacedName
-
+    let firstComposer = _prefix "firstComposer"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#forename"></see>
     /// </summary>
-    let forename = Namespaced_IRI.parse _namespace_name "forename" |> NamespacedName
-
+    let forename = _prefix "forename"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#formOfWorkAndExpression"></see>
     /// </summary>
-    let formOfWorkAndExpression =
-        Namespaced_IRI.parse _namespace_name "formOfWorkAndExpression" |> NamespacedName
-
+    let formOfWorkAndExpression = _prefix "formOfWorkAndExpression"
     /// <summary>
     /// A person, family, or organization formerly having legal possession of an item
     /// <see href="http://d-nb.info/standards/elementset/gnd#formerOwner"></see></summary>
-    let formerOwner =
-        Namespaced_IRI.parse _namespace_name "formerOwner" |> NamespacedName
-
+    let formerOwner = _prefix "formerOwner"
     /// <summary>
     /// A person, family, or organization that currently owns an item or collection, i.e. has legal possession of a resource
     /// <see href="http://d-nb.info/standards/elementset/gnd#owner"></see></summary>
-    let owner = Namespaced_IRI.parse _namespace_name "owner" |> NamespacedName
+    let owner = _prefix "owner"
     /// <summary>
     /// A person, family, or corporate body being a founder of an enterprise, an event, or an ensemble of buildings
     /// <see href="http://d-nb.info/standards/elementset/gnd#founder"></see></summary>
-    let founder = Namespaced_IRI.parse _namespace_name "founder" |> NamespacedName
-
+    let founder = _prefix "founder"
     /// <summary>
     /// This property is equivalent to gndo:functionOrRoleAsLiteral but points to a subject heading instead of giving a literal value.
     /// <see href="http://d-nb.info/standards/elementset/gnd#functionOrRole"></see></summary>
-    let functionOrRole =
-        Namespaced_IRI.parse _namespace_name "functionOrRole" |> NamespacedName
-
+    let functionOrRole = _prefix "functionOrRole"
     /// <summary>
     /// This property is equivalent to gndo:functionOrRole but gives a literal instead of a URI
     /// <see href="http://d-nb.info/standards/elementset/gnd#functionOrRoleAsLiteral"></see></summary>
-    let functionOrRoleAsLiteral =
-        Namespaced_IRI.parse _namespace_name "functionOrRoleAsLiteral" |> NamespacedName
-
+    let functionOrRoleAsLiteral = _prefix "functionOrRoleAsLiteral"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#gender"></see>
     /// </summary>
-    let gender = Namespaced_IRI.parse _namespace_name "gender" |> NamespacedName
-
+    let gender = _prefix "gender"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#geographicAreaCode"></see>
     /// </summary>
-    let geographicAreaCode =
-        Namespaced_IRI.parse _namespace_name "geographicAreaCode" |> NamespacedName
-
+    let geographicAreaCode = _prefix "geographicAreaCode"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#gndIdentifier"></see>
     /// </summary>
-    let gndIdentifier =
-        Namespaced_IRI.parse _namespace_name "gndIdentifier" |> NamespacedName
-
+    let gndIdentifier = _prefix "gndIdentifier"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#gndSubjectCategory"></see>
     /// </summary>
-    let gndSubjectCategory =
-        Namespaced_IRI.parse _namespace_name "gndSubjectCategory" |> NamespacedName
-
+    let gndSubjectCategory = _prefix "gndSubjectCategory"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#hierarchicalSuperior"></see>
     /// </summary>
-    let hierarchicalSuperior =
-        Namespaced_IRI.parse _namespace_name "hierarchicalSuperior" |> NamespacedName
+    let hierarchicalSuperior = _prefix "hierarchicalSuperior"
 
     /// <summary>
     /// A hierarchically superordinate unit (corporate body, conference, jurisdiction) of the described unit (corporate body, conference, jurisdiction).
     /// <see href="http://d-nb.info/standards/elementset/gnd#hierarchicalSuperiorOfPlaceOrGeographicName"></see></summary>
     let hierarchicalSuperiorOfPlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "hierarchicalSuperiorOfPlaceOrGeographicName" |> NamespacedName
+        _prefix "hierarchicalSuperiorOfPlaceOrGeographicName"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#hierarchicalSuperiorOfTheConferenceOrEvent"></see>
     /// </summary>
     let hierarchicalSuperiorOfTheConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "hierarchicalSuperiorOfTheConferenceOrEvent" |> NamespacedName
+        _prefix "hierarchicalSuperiorOfTheConferenceOrEvent"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#hierarchicalSuperiorOfTheCorporateBody"></see>
     /// </summary>
     let hierarchicalSuperiorOfTheCorporateBody =
-        Namespaced_IRI.parse _namespace_name "hierarchicalSuperiorOfTheCorporateBody" |> NamespacedName
+        _prefix "hierarchicalSuperiorOfTheCorporateBody"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#homepage"></see>
     /// </summary>
-    let homepage = Namespaced_IRI.parse _namespace_name "homepage" |> NamespacedName
-
+    let homepage = _prefix "homepage"
     /// <summary>
     /// A person, family, or organization contributing to a resource by supplementing the primary content with drawings, diagrams, photographs, etc. If the work is primarily the artistic content created by this entity, use artist or photographer
     /// <see href="http://d-nb.info/standards/elementset/gnd#illustratorOrIlluminator"></see></summary>
-    let illustratorOrIlluminator =
-        Namespaced_IRI.parse _namespace_name "illustratorOrIlluminator" |> NamespacedName
-
+    let illustratorOrIlluminator = _prefix "illustratorOrIlluminator"
     /// <summary>
     /// A person, family, or corporate body who initiated a work
     /// <see href="http://d-nb.info/standards/elementset/gnd#initiator"></see></summary>
-    let initiator = Namespaced_IRI.parse _namespace_name "initiator" |> NamespacedName
+    let initiator = _prefix "initiator"
     /// <summary>
     /// A musical instrument, a device to perform music with
     /// <see href="http://d-nb.info/standards/elementset/gnd#instrument"></see></summary>
-    let instrument = Namespaced_IRI.parse _namespace_name "instrument" |> NamespacedName
-
+    let instrument = _prefix "instrument"
     /// <summary>
     /// A performer contributing to a resource by playing a musical instrument
     /// <see href="http://d-nb.info/standards/elementset/gnd#instrumentalist"></see></summary>
-    let instrumentalist =
-        Namespaced_IRI.parse _namespace_name "instrumentalist" |> NamespacedName
-
+    let instrumentalist = _prefix "instrumentalist"
     /// <summary>
     /// A person, family, or organization responsible for creating a new device or process
     /// <see href="http://d-nb.info/standards/elementset/gnd#inventor"></see></summary>
-    let inventor = Namespaced_IRI.parse _namespace_name "inventor" |> NamespacedName
-
+    let inventor = _prefix "inventor"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#keyOfTheVersion"></see>
     /// </summary>
-    let keyOfTheVersion =
-        Namespaced_IRI.parse _namespace_name "keyOfTheVersion" |> NamespacedName
-
+    let keyOfTheVersion = _prefix "keyOfTheVersion"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#keyOfTheWork"></see>
     /// </summary>
-    let keyOfTheWork =
-        Namespaced_IRI.parse _namespace_name "keyOfTheWork" |> NamespacedName
-
+    let keyOfTheWork = _prefix "keyOfTheWork"
     /// <summary>
     /// A language used by a person or family or in which a work was written
     /// <see href="http://d-nb.info/standards/elementset/gnd#language"></see></summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
-
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#languageCode"></see>
     /// </summary>
-    let languageCode =
-        Namespaced_IRI.parse _namespace_name "languageCode" |> NamespacedName
-
+    let languageCode = _prefix "languageCode"
     /// <summary>
     /// An author of a libretto of an opera or other stage work, or an oratorio
     /// <see href="http://d-nb.info/standards/elementset/gnd#librettist"></see></summary>
-    let librettist = Namespaced_IRI.parse _namespace_name "librettist" |> NamespacedName
-
+    let librettist = _prefix "librettist"
     /// <summary>
     /// The described entity is a realization of the related work
     /// <see href="http://d-nb.info/standards/elementset/gnd#literarySource"></see></summary>
-    let literarySource =
-        Namespaced_IRI.parse _namespace_name "literarySource" |> NamespacedName
-
+    let literarySource = _prefix "literarySource"
     /// <summary>
     /// A person or organization who prepares the stone or plate for lithographic printing, including a graphic artist creating a design directly on the surface from which printing will be done.
     /// <see href="http://d-nb.info/standards/elementset/gnd#lithographer"></see></summary>
-    let lithographer =
-        Namespaced_IRI.parse _namespace_name "lithographer" |> NamespacedName
-
+    let lithographer = _prefix "lithographer"
     /// <summary>
     /// A person or organization responsible for printing, duplicating, casting, etc. a resource
     /// <see href="http://d-nb.info/standards/elementset/gnd#manufacturer"></see></summary>
-    let manufacturer =
-        Namespaced_IRI.parse _namespace_name "manufacturer" |> NamespacedName
-
+    let manufacturer = _prefix "manufacturer"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#mediumOfPerformance"></see>
     /// </summary>
-    let mediumOfPerformance =
-        Namespaced_IRI.parse _namespace_name "mediumOfPerformance" |> NamespacedName
-
+    let mediumOfPerformance = _prefix "mediumOfPerformance"
     /// <summary>
     /// A person or organization who performs music or contributes to the musical content of a work when it is not possible or desirable to identify the function more precisely
     /// <see href="http://d-nb.info/standards/elementset/gnd#musician"></see></summary>
-    let musician = Namespaced_IRI.parse _namespace_name "musician" |> NamespacedName
-
+    let musician = _prefix "musician"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#nameAddition"></see>
     /// </summary>
-    let nameAddition =
-        Namespaced_IRI.parse _namespace_name "nameAddition" |> NamespacedName
-
+    let nameAddition = _prefix "nameAddition"
     /// <summary>
     /// A performer contributing to a resource by reading or speaking in order to give an account of an act, occurrence, course of events, etc
     /// <see href="http://d-nb.info/standards/elementset/gnd#narrator"></see></summary>
-    let narrator = Namespaced_IRI.parse _namespace_name "narrator" |> NamespacedName
-
+    let narrator = _prefix "narrator"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#northernmostLatitude"></see>
     /// </summary>
-    let northernmostLatitude =
-        Namespaced_IRI.parse _namespace_name "northernmostLatitude" |> NamespacedName
-
+    let northernmostLatitude = _prefix "northernmostLatitude"
     /// <summary>
     /// Reason of the entity, e.g. a work or a historic event
     /// 		is the reason of a conference, or a conference is the reason of a work.
     /// <see href="http://d-nb.info/standards/elementset/gnd#occasion"></see></summary>
-    let occasion = Namespaced_IRI.parse _namespace_name "occasion" |> NamespacedName
-
+    let occasion = _prefix "occasion"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#occasionOfTheSubjectHeading"></see>
     /// </summary>
-    let occasionOfTheSubjectHeading =
-        Namespaced_IRI.parse _namespace_name "occasionOfTheSubjectHeading" |> NamespacedName
-
+    let occasionOfTheSubjectHeading = _prefix "occasionOfTheSubjectHeading"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#occasionOfTheWork"></see>
     /// </summary>
-    let occasionOfTheWork =
-        Namespaced_IRI.parse _namespace_name "occasionOfTheWork" |> NamespacedName
-
+    let occasionOfTheWork = _prefix "occasionOfTheWork"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#oldAuthorityNumber"></see>
     /// </summary>
-    let oldAuthorityNumber =
-        Namespaced_IRI.parse _namespace_name "oldAuthorityNumber" |> NamespacedName
+    let oldAuthorityNumber = _prefix "oldAuthorityNumber"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#opusNumericDesignationOfMusicalWork"></see>
     /// </summary>
     let opusNumericDesignationOfMusicalWork =
-        Namespaced_IRI.parse _namespace_name "opusNumericDesignationOfMusicalWork" |> NamespacedName
+        _prefix "opusNumericDesignationOfMusicalWork"
 
     /// <summary>
     /// A person, family, or organization organizing the exhibit, event, conference, etc., which gave rise to a resource
     /// <see href="http://d-nb.info/standards/elementset/gnd#organizerOrHost"></see></summary>
-    let organizerOrHost =
-        Namespaced_IRI.parse _namespace_name "organizerOrHost" |> NamespacedName
-
+    let organizerOrHost = _prefix "organizerOrHost"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#otherPlace"></see>
     /// </summary>
-    let otherPlace = Namespaced_IRI.parse _namespace_name "otherPlace" |> NamespacedName
+    let otherPlace = _prefix "otherPlace"
     /// <summary>
     /// A person or family who paints
     /// <see href="http://d-nb.info/standards/elementset/gnd#painter"></see></summary>
-    let painter = Namespaced_IRI.parse _namespace_name "painter" |> NamespacedName
-
+    let painter = _prefix "painter"
     /// <summary>
     /// A person’s known period of activity
     /// <see href="http://d-nb.info/standards/elementset/gnd#periodOfActivity"></see></summary>
-    let periodOfActivity =
-        Namespaced_IRI.parse _namespace_name "periodOfActivity" |> NamespacedName
-
+    let periodOfActivity = _prefix "periodOfActivity"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#personalName"></see>
     /// </summary>
-    let personalName =
-        Namespaced_IRI.parse _namespace_name "personalName" |> NamespacedName
-
+    let personalName = _prefix "personalName"
     /// <summary>
     /// A person, family, or organization responsible for creating a photographic work
     /// <see href="http://d-nb.info/standards/elementset/gnd#photographer"></see></summary>
-    let photographer =
-        Namespaced_IRI.parse _namespace_name "photographer" |> NamespacedName
-
+    let photographer = _prefix "photographer"
     /// <summary>
     /// A country, state, province, etc., or place where an organization has its headquarters
     /// <see href="http://d-nb.info/standards/elementset/gnd#place"></see></summary>
-    let place = Namespaced_IRI.parse _namespace_name "place" |> NamespacedName
-
+    let place = _prefix "place"
     /// <summary>
     /// A person’s or family’s place of activity
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfActivity"></see></summary>
-    let placeOfActivity =
-        Namespaced_IRI.parse _namespace_name "placeOfActivity" |> NamespacedName
-
+    let placeOfActivity = _prefix "placeOfActivity"
     /// <summary>
     /// A person’s place of birth
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfBirth"></see></summary>
-    let placeOfBirth =
-        Namespaced_IRI.parse _namespace_name "placeOfBirth" |> NamespacedName
-
+    let placeOfBirth = _prefix "placeOfBirth"
     /// <summary>
     /// This property is equivalent to gndo:placeOfBirth but gives a literal instead of
     /// 		a reference to a geographic entity
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfBirthAsLiteral"></see></summary>
-    let placeOfBirthAsLiteral =
-        Namespaced_IRI.parse _namespace_name "placeOfBirthAsLiteral" |> NamespacedName
-
+    let placeOfBirthAsLiteral = _prefix "placeOfBirthAsLiteral"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#placeOfBusiness"></see>
     /// </summary>
-    let placeOfBusiness =
-        Namespaced_IRI.parse _namespace_name "placeOfBusiness" |> NamespacedName
-
+    let placeOfBusiness = _prefix "placeOfBusiness"
     /// <summary>
     /// A place where an event such as a conference or a concert took place
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent"></see></summary>
-    let placeOfConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "placeOfConferenceOrEvent" |> NamespacedName
-
+    let placeOfConferenceOrEvent = _prefix "placeOfConferenceOrEvent"
     /// <summary>
     /// A place where something is kept
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfCustody"></see></summary>
-    let placeOfCustody =
-        Namespaced_IRI.parse _namespace_name "placeOfCustody" |> NamespacedName
-
+    let placeOfCustody = _prefix "placeOfCustody"
     /// <summary>
     /// A person’s place of death
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfDeath"></see></summary>
-    let placeOfDeath =
-        Namespaced_IRI.parse _namespace_name "placeOfDeath" |> NamespacedName
-
+    let placeOfDeath = _prefix "placeOfDeath"
     /// <summary>
     /// This property is equivalent to gndo:placeOfDeath but gives a literal instead of
     /// 		a reference to a geographic entity
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfDeathAsLiteral"></see></summary>
-    let placeOfDeathAsLiteral =
-        Namespaced_IRI.parse _namespace_name "placeOfDeathAsLiteral" |> NamespacedName
-
+    let placeOfDeathAsLiteral = _prefix "placeOfDeathAsLiteral"
     /// <summary>
     /// A place where a work or thing was found
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfDiscovery"></see></summary>
-    let placeOfDiscovery =
-        Namespaced_IRI.parse _namespace_name "placeOfDiscovery" |> NamespacedName
-
+    let placeOfDiscovery = _prefix "placeOfDiscovery"
     /// <summary>
     /// A place where a person or family dwelt in exile (lived in exile)
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfExile"></see></summary>
-    let placeOfExile =
-        Namespaced_IRI.parse _namespace_name "placeOfExile" |> NamespacedName
-
+    let placeOfExile = _prefix "placeOfExile"
     /// <summary>
     /// A place where a work or thing was manufactured
     /// <see href="http://d-nb.info/standards/elementset/gnd#placeOfManufacture"></see></summary>
-    let placeOfManufacture =
-        Namespaced_IRI.parse _namespace_name "placeOfManufacture" |> NamespacedName
-
+    let placeOfManufacture = _prefix "placeOfManufacture"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#placeOrGeographicNameIsMember"></see>
     /// </summary>
-    let placeOrGeographicNameIsMember =
-        Namespaced_IRI.parse _namespace_name "placeOrGeographicNameIsMember" |> NamespacedName
-
+    let placeOrGeographicNameIsMember = _prefix "placeOrGeographicNameIsMember"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#playedInstrument"></see>
     /// </summary>
-    let playedInstrument =
-        Namespaced_IRI.parse _namespace_name "playedInstrument" |> NamespacedName
-
+    let playedInstrument = _prefix "playedInstrument"
     /// <summary>
     /// An author of the words of a non-dramatic musical work (e.g. the text of a song), except for oratorios
     /// <see href="http://d-nb.info/standards/elementset/gnd#poet"></see></summary>
-    let poet = Namespaced_IRI.parse _namespace_name "poet" |> NamespacedName
-
+    let poet = _prefix "poet"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#precedingConferenceOrEvent"></see>
     /// </summary>
-    let precedingConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "precedingConferenceOrEvent" |> NamespacedName
-
+    let precedingConferenceOrEvent = _prefix "precedingConferenceOrEvent"
     /// <summary>
     /// A corporate body or a work being the predecessor of another corporate body or work
     /// <see href="http://d-nb.info/standards/elementset/gnd#predecessor"></see></summary>
-    let predecessor =
-        Namespaced_IRI.parse _namespace_name "predecessor" |> NamespacedName
-
+    let predecessor = _prefix "predecessor"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#precedingCorporateBody"></see>
     /// </summary>
-    let precedingCorporateBody =
-        Namespaced_IRI.parse _namespace_name "precedingCorporateBody" |> NamespacedName
-
+    let precedingCorporateBody = _prefix "precedingCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#precedingPlaceOrGeographicName"></see>
     /// </summary>
-    let precedingPlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "precedingPlaceOrGeographicName" |> NamespacedName
-
+    let precedingPlaceOrGeographicName = _prefix "precedingPlaceOrGeographicName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#precedingSubject"></see>
     /// </summary>
-    let precedingSubject =
-        Namespaced_IRI.parse _namespace_name "precedingSubject" |> NamespacedName
-
+    let precedingSubject = _prefix "precedingSubject"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#precedingWork"></see>
     /// </summary>
-    let precedingWork =
-        Namespaced_IRI.parse _namespace_name "precedingWork" |> NamespacedName
-
+    let precedingWork = _prefix "precedingWork"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredName"></see>
     /// </summary>
-    let preferredName =
-        Namespaced_IRI.parse _namespace_name "preferredName" |> NamespacedName
-
+    let preferredName = _prefix "preferredName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson"></see>
     /// </summary>
-    let preferredNameEntityForThePerson =
-        Namespaced_IRI.parse _namespace_name "preferredNameEntityForThePerson" |> NamespacedName
+    let preferredNameEntityForThePerson = _prefix "preferredNameEntityForThePerson"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForTheConferenceOrEvent"></see>
     /// </summary>
     let preferredNameForTheConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheConferenceOrEvent" |> NamespacedName
+        _prefix "preferredNameForTheConferenceOrEvent"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForTheCorporateBody"></see>
     /// </summary>
-    let preferredNameForTheCorporateBody =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheCorporateBody" |> NamespacedName
-
+    let preferredNameForTheCorporateBody = _prefix "preferredNameForTheCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily"></see>
     /// </summary>
-    let preferredNameForTheFamily =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheFamily" |> NamespacedName
-
+    let preferredNameForTheFamily = _prefix "preferredNameForTheFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson"></see>
     /// </summary>
-    let preferredNameForThePerson =
-        Namespaced_IRI.parse _namespace_name "preferredNameForThePerson" |> NamespacedName
+    let preferredNameForThePerson = _prefix "preferredNameForThePerson"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName"></see>
     /// </summary>
     let preferredNameForThePlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "preferredNameForThePlaceOrGeographicName" |> NamespacedName
+        _prefix "preferredNameForThePlaceOrGeographicName"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading"></see>
     /// </summary>
-    let preferredNameForTheSubjectHeading =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheSubjectHeading" |> NamespacedName
-
+    let preferredNameForTheSubjectHeading = _prefix "preferredNameForTheSubjectHeading"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork"></see>
     /// </summary>
-    let preferredNameForTheWork =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheWork" |> NamespacedName
-
+    let preferredNameForTheWork = _prefix "preferredNameForTheWork"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#prefix"></see>
     /// </summary>
-    let prefix = Namespaced_IRI.parse _namespace_name "prefix" |> NamespacedName
+    let prefix = _prefix "prefix"
     /// <summary>
     /// A person, family, or organization involved in manufacturing a manifestation of printed text, notated music, etc., from type or plates, such as a book, newspaper, magazine, broadside, score, etc
     /// <see href="http://d-nb.info/standards/elementset/gnd#printer"></see></summary>
-    let printer = Namespaced_IRI.parse _namespace_name "printer" |> NamespacedName
-
+    let printer = _prefix "printer"
     /// <summary>
     /// A profession or occupation practiced by a person or family
     /// <see href="http://d-nb.info/standards/elementset/gnd#professionOrOccupation"></see></summary>
-    let professionOrOccupation =
-        Namespaced_IRI.parse _namespace_name "professionOrOccupation" |> NamespacedName
-
+    let professionOrOccupation = _prefix "professionOrOccupation"
     /// <summary>
     /// This property is equivalent to gndo:professionOrOccupation but gives a literal instead of
     /// 		a reference to a subject heading
     /// <see href="http://d-nb.info/standards/elementset/gnd#professionOrOccupationAsLiteral"></see></summary>
-    let professionOrOccupationAsLiteral =
-        Namespaced_IRI.parse _namespace_name "professionOrOccupationAsLiteral" |> NamespacedName
-
+    let professionOrOccupationAsLiteral = _prefix "professionOrOccupationAsLiteral"
     /// <summary>
     /// An occupational relationship between a person or family and another person or family
     /// <see href="http://d-nb.info/standards/elementset/gnd#professionalRelationship"></see></summary>
-    let professionalRelationship =
-        Namespaced_IRI.parse _namespace_name "professionalRelationship" |> NamespacedName
-
+    let professionalRelationship = _prefix "professionalRelationship"
     /// <summary>
     /// Links a person's real identity to an identity under which one or more persons act, e. g. write, compose or create art, but that is not the person's real name (i. e. a pseudonym).
     /// <see href="http://d-nb.info/standards/elementset/gnd#pseudonym"></see></summary>
-    let pseudonym = Namespaced_IRI.parse _namespace_name "pseudonym" |> NamespacedName
-
+    let pseudonym = _prefix "pseudonym"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedPerson"></see>
     /// </summary>
-    let relatedPerson =
-        Namespaced_IRI.parse _namespace_name "relatedPerson" |> NamespacedName
-
+    let relatedPerson = _prefix "relatedPerson"
     /// <summary>
     /// Links an identity under which one or more persons act, e. g. write, compose or create art, but that is not their real name (i. e. a pseudonym) to their real identity.
     /// <see href="http://d-nb.info/standards/elementset/gnd#realIdentity"></see></summary>
-    let realIdentity =
-        Namespaced_IRI.parse _namespace_name "realIdentity" |> NamespacedName
-
+    let realIdentity = _prefix "realIdentity"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#publication"></see>
     /// </summary>
-    let publication =
-        Namespaced_IRI.parse _namespace_name "publication" |> NamespacedName
-
+    let publication = _prefix "publication"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedConferenceOrEvent"></see>
     /// </summary>
-    let relatedConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "relatedConferenceOrEvent" |> NamespacedName
-
+    let relatedConferenceOrEvent = _prefix "relatedConferenceOrEvent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedCorporateBody"></see>
     /// </summary>
-    let relatedCorporateBody =
-        Namespaced_IRI.parse _namespace_name "relatedCorporateBody" |> NamespacedName
+    let relatedCorporateBody = _prefix "relatedCorporateBody"
 
     /// <summary>
     /// The connotation scope of the GND entity corresponds to a small part
     ///       to the connotation scope of the assigned DDC class.
     /// <see href="http://d-nb.info/standards/elementset/gnd#relatedDdcWithDegreeOfDeterminacy1"></see></summary>
     let relatedDdcWithDegreeOfDeterminacy1 =
-        Namespaced_IRI.parse _namespace_name "relatedDdcWithDegreeOfDeterminacy1" |> NamespacedName
+        _prefix "relatedDdcWithDegreeOfDeterminacy1"
 
     /// <summary>
     /// The connotation scope of the GND entity is identical or nearly
@@ -1527,7 +1133,7 @@ module gndo =
     ///       extensive in scope than the concept represented by the class number.
     /// <see href="http://d-nb.info/standards/elementset/gnd#relatedDdcWithDegreeOfDeterminacy2"></see></summary>
     let relatedDdcWithDegreeOfDeterminacy2 =
-        Namespaced_IRI.parse _namespace_name "relatedDdcWithDegreeOfDeterminacy2" |> NamespacedName
+        _prefix "relatedDdcWithDegreeOfDeterminacy2"
 
     /// <summary>
     /// The connotation scope of the GND entity is identical or nearly
@@ -1537,255 +1143,195 @@ module gndo =
     ///       class.
     /// <see href="http://d-nb.info/standards/elementset/gnd#relatedDdcWithDegreeOfDeterminacy3"></see></summary>
     let relatedDdcWithDegreeOfDeterminacy3 =
-        Namespaced_IRI.parse _namespace_name "relatedDdcWithDegreeOfDeterminacy3" |> NamespacedName
+        _prefix "relatedDdcWithDegreeOfDeterminacy3"
 
     /// <summary>
     /// The connotation scope of the GND entity is identical to the
     ///       connotation scope of the topic emphasized in the DDC class heading.
     /// <see href="http://d-nb.info/standards/elementset/gnd#relatedDdcWithDegreeOfDeterminacy4"></see></summary>
     let relatedDdcWithDegreeOfDeterminacy4 =
-        Namespaced_IRI.parse _namespace_name "relatedDdcWithDegreeOfDeterminacy4" |> NamespacedName
+        _prefix "relatedDdcWithDegreeOfDeterminacy4"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedFamily"></see>
     /// </summary>
-    let relatedFamily =
-        Namespaced_IRI.parse _namespace_name "relatedFamily" |> NamespacedName
-
+    let relatedFamily = _prefix "relatedFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedPlaceOrGeographicName"></see>
     /// </summary>
-    let relatedPlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "relatedPlaceOrGeographicName" |> NamespacedName
-
+    let relatedPlaceOrGeographicName = _prefix "relatedPlaceOrGeographicName"
     /// <summary>
     /// Use relatedSubjectHeading ('subject', not 'subjec') instead
     /// <see href="http://d-nb.info/standards/elementset/gnd#relatedSubjecHeading"></see></summary>
-    let relatedSubjecHeading =
-        Namespaced_IRI.parse _namespace_name "relatedSubjecHeading" |> NamespacedName
-
+    let relatedSubjecHeading = _prefix "relatedSubjecHeading"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedSubjectHeading"></see>
     /// </summary>
-    let relatedSubjectHeading =
-        Namespaced_IRI.parse _namespace_name "relatedSubjectHeading" |> NamespacedName
-
+    let relatedSubjectHeading = _prefix "relatedSubjectHeading"
     /// <summary>
     /// The associative relationship covers associations between pairs of
     ///       concepts that are not related hierarchically, but are semantically or concetually associated
     ///       to such an extent that the link between them needs to be made explicit in the thesaurus.
     /// <see href="http://d-nb.info/standards/elementset/gnd#relatedTerm"></see></summary>
-    let relatedTerm =
-        Namespaced_IRI.parse _namespace_name "relatedTerm" |> NamespacedName
-
+    let relatedTerm = _prefix "relatedTerm"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#relatedWork"></see>
     /// </summary>
-    let relatedWork =
-        Namespaced_IRI.parse _namespace_name "relatedWork" |> NamespacedName
-
+    let relatedWork = _prefix "relatedWork"
     /// <summary>
     /// A person, family, or organization responsible for the set of technical, editorial, and intellectual procedures aimed at compensating for the degradation of an item by bringing it back to a state as close as possible to its original condition
     /// <see href="http://d-nb.info/standards/elementset/gnd#restorer"></see></summary>
-    let restorer = Namespaced_IRI.parse _namespace_name "restorer" |> NamespacedName
+    let restorer = _prefix "restorer"
     /// <summary>
     /// A person or organization who 1) reworks a musical composition, usually for a different medium, or 2) rewrites novels or stories for motion pictures or other audiovisual medium.
     /// <see href="http://d-nb.info/standards/elementset/gnd#revisor"></see></summary>
-    let revisor = Namespaced_IRI.parse _namespace_name "revisor" |> NamespacedName
-
+    let revisor = _prefix "revisor"
     /// <summary>
     /// An author of a screenplay, script, or scene
     /// <see href="http://d-nb.info/standards/elementset/gnd#screenwriter"></see></summary>
-    let screenwriter =
-        Namespaced_IRI.parse _namespace_name "screenwriter" |> NamespacedName
-
+    let screenwriter = _prefix "screenwriter"
     /// <summary>
     /// A scriptorium in a monastery
     /// <see href="http://d-nb.info/standards/elementset/gnd#scriptorium"></see></summary>
-    let scriptorium =
-        Namespaced_IRI.parse _namespace_name "scriptorium" |> NamespacedName
-
+    let scriptorium = _prefix "scriptorium"
     /// <summary>
     /// An artist responsible for creating a three-dimensional work by modeling, carving, or similar technique
     /// <see href="http://d-nb.info/standards/elementset/gnd#sculptor"></see></summary>
-    let sculptor = Namespaced_IRI.parse _namespace_name "sculptor" |> NamespacedName
+    let sculptor = _prefix "sculptor"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#serialNumericDesignationOfMusicalWork"></see>
     /// </summary>
     let serialNumericDesignationOfMusicalWork =
-        Namespaced_IRI.parse _namespace_name "serialNumericDesignationOfMusicalWork" |> NamespacedName
+        _prefix "serialNumericDesignationOfMusicalWork"
 
     /// <summary>
     /// A performer contributing to a resource by using his/her/their voice, with or without instrumental accompaniment, to produce music. A singer's performance may or may not include actual words
     /// <see href="http://d-nb.info/standards/elementset/gnd#singer"></see></summary>
-    let singer = Namespaced_IRI.parse _namespace_name "singer" |> NamespacedName
-
+    let singer = _prefix "singer"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#southernmostLatitude"></see>
     /// </summary>
-    let southernmostLatitude =
-        Namespaced_IRI.parse _namespace_name "southernmostLatitude" |> NamespacedName
-
+    let southernmostLatitude = _prefix "southernmostLatitude"
     /// <summary>
     /// Geographic field of activity
     /// <see href="http://d-nb.info/standards/elementset/gnd#spatialAreaOfActivity"></see></summary>
-    let spatialAreaOfActivity =
-        Namespaced_IRI.parse _namespace_name "spatialAreaOfActivity" |> NamespacedName
-
+    let spatialAreaOfActivity = _prefix "spatialAreaOfActivity"
     /// <summary>
     /// A person, family, or organization sponsoring some aspect of a resource, e.g., funding research, sponsoring an event
     /// <see href="http://d-nb.info/standards/elementset/gnd#sponsorOrPatron"></see></summary>
-    let sponsorOrPatron =
-        Namespaced_IRI.parse _namespace_name "sponsorOrPatron" |> NamespacedName
-
+    let sponsorOrPatron = _prefix "sponsorOrPatron"
     /// <summary>
     /// A person or organization who writes or develops the framework for an item without being intellectually responsible for its content
     /// <see href="http://d-nb.info/standards/elementset/gnd#subeditor"></see></summary>
-    let subeditor = Namespaced_IRI.parse _namespace_name "subeditor" |> NamespacedName
-
+    let subeditor = _prefix "subeditor"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#succeedingConferenceOrEvent"></see>
     /// </summary>
-    let succeedingConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "succeedingConferenceOrEvent" |> NamespacedName
-
+    let succeedingConferenceOrEvent = _prefix "succeedingConferenceOrEvent"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#successor"></see>
     /// </summary>
-    let successor = Namespaced_IRI.parse _namespace_name "successor" |> NamespacedName
-
+    let successor = _prefix "successor"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#succeedingCorporateBody"></see>
     /// </summary>
-    let succeedingCorporateBody =
-        Namespaced_IRI.parse _namespace_name "succeedingCorporateBody" |> NamespacedName
-
+    let succeedingCorporateBody = _prefix "succeedingCorporateBody"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#succeedingPlaceOrGeographicName"></see>
     /// </summary>
-    let succeedingPlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "succeedingPlaceOrGeographicName" |> NamespacedName
-
+    let succeedingPlaceOrGeographicName = _prefix "succeedingPlaceOrGeographicName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#succeedingSubjectHeading"></see>
     /// </summary>
-    let succeedingSubjectHeading =
-        Namespaced_IRI.parse _namespace_name "succeedingSubjectHeading" |> NamespacedName
-
+    let succeedingSubjectHeading = _prefix "succeedingSubjectHeading"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#succeedingWork"></see>
     /// </summary>
-    let succeedingWork =
-        Namespaced_IRI.parse _namespace_name "succeedingWork" |> NamespacedName
-
+    let succeedingWork = _prefix "succeedingWork"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#surname"></see>
     /// </summary>
-    let surname = Namespaced_IRI.parse _namespace_name "surname" |> NamespacedName
-
+    let surname = _prefix "surname"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#temporaryName"></see>
     /// </summary>
-    let temporaryName =
-        Namespaced_IRI.parse _namespace_name "temporaryName" |> NamespacedName
+    let temporaryName = _prefix "temporaryName"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#temporaryNameOfTheConferenceOrEvent"></see>
     /// </summary>
     let temporaryNameOfTheConferenceOrEvent =
-        Namespaced_IRI.parse _namespace_name "temporaryNameOfTheConferenceOrEvent" |> NamespacedName
+        _prefix "temporaryNameOfTheConferenceOrEvent"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#temporaryNameOfTheCorporateBody"></see>
     /// </summary>
-    let temporaryNameOfTheCorporateBody =
-        Namespaced_IRI.parse _namespace_name "temporaryNameOfTheCorporateBody" |> NamespacedName
+    let temporaryNameOfTheCorporateBody = _prefix "temporaryNameOfTheCorporateBody"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#temporaryNameOfThePlaceOrGeographicName"></see>
     /// </summary>
     let temporaryNameOfThePlaceOrGeographicName =
-        Namespaced_IRI.parse _namespace_name "temporaryNameOfThePlaceOrGeographicName" |> NamespacedName
+        _prefix "temporaryNameOfThePlaceOrGeographicName"
 
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#thematicIndexNumericDesignationOfMusicalWork"></see>
     /// </summary>
     let thematicIndexNumericDesignationOfMusicalWork =
-        Namespaced_IRI.parse _namespace_name "thematicIndexNumericDesignationOfMusicalWork" |> NamespacedName
+        _prefix "thematicIndexNumericDesignationOfMusicalWork"
 
     /// <summary>
     /// A title of nobility held by a person or family.
     /// <see href="http://d-nb.info/standards/elementset/gnd#titleOfNobility"></see></summary>
-    let titleOfNobility =
-        Namespaced_IRI.parse _namespace_name "titleOfNobility" |> NamespacedName
-
+    let titleOfNobility = _prefix "titleOfNobility"
     /// <summary>
     /// A title of nobility held by a person or family.
     /// 		This property is equivalent to gndo:titleOfNobility
     /// 		but gives a literal instead of a reference to a subject heading.
     /// <see href="http://d-nb.info/standards/elementset/gnd#titleOfNobilityAsLiteral"></see></summary>
-    let titleOfNobilityAsLiteral =
-        Namespaced_IRI.parse _namespace_name "titleOfNobilityAsLiteral" |> NamespacedName
-
+    let titleOfNobilityAsLiteral = _prefix "titleOfNobilityAsLiteral"
     /// <summary>
     /// Topic that is related to a corporate body, conference, person, family, subject heading or work.
     /// <see href="http://d-nb.info/standards/elementset/gnd#topic"></see></summary>
-    let topic = Namespaced_IRI.parse _namespace_name "topic" |> NamespacedName
+    let topic = _prefix "topic"
     /// <summary>
     /// A person or organization who renders a text from one language into another, or from an older form of a language into the modern form
     /// <see href="http://d-nb.info/standards/elementset/gnd#translator"></see></summary>
-    let translator = Namespaced_IRI.parse _namespace_name "translator" |> NamespacedName
-
+    let translator = _prefix "translator"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#typeOfCoordinates"></see>
     /// </summary>
-    let typeOfCoordinates =
-        Namespaced_IRI.parse _namespace_name "typeOfCoordinates" |> NamespacedName
-
+    let typeOfCoordinates = _prefix "typeOfCoordinates"
     /// <summary>
     /// Date, expressed as UDK code
     /// <see href="http://d-nb.info/standards/elementset/gnd#udkCode"></see></summary>
-    let udkCode = Namespaced_IRI.parse _namespace_name "udkCode" |> NamespacedName
-
+    let udkCode = _prefix "udkCode"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantName"></see>
     /// </summary>
-    let variantName =
-        Namespaced_IRI.parse _namespace_name "variantName" |> NamespacedName
-
+    let variantName = _prefix "variantName"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameEntityForThePerson"></see>
     /// </summary>
-    let variantNameEntityForThePerson =
-        Namespaced_IRI.parse _namespace_name "variantNameEntityForThePerson" |> NamespacedName
-
+    let variantNameEntityForThePerson = _prefix "variantNameEntityForThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForTheFamily"></see>
     /// </summary>
-    let variantNameForTheFamily =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheFamily" |> NamespacedName
-
+    let variantNameForTheFamily = _prefix "variantNameForTheFamily"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForThePerson"></see>
     /// </summary>
-    let variantNameForThePerson =
-        Namespaced_IRI.parse _namespace_name "variantNameForThePerson" |> NamespacedName
-
+    let variantNameForThePerson = _prefix "variantNameForThePerson"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#variantNameForTheSubjectHeading"></see>
     /// </summary>
-    let variantNameForTheSubjectHeading =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheSubjectHeading" |> NamespacedName
-
+    let variantNameForTheSubjectHeading = _prefix "variantNameForTheSubjectHeading"
     /// <summary>
     ///   <see href="http://d-nb.info/standards/elementset/gnd#westernmostLongitude"></see>
     /// </summary>
-    let westernmostLongitude =
-        Namespaced_IRI.parse _namespace_name "westernmostLongitude" |> NamespacedName
-
+    let westernmostLongitude = _prefix "westernmostLongitude"
     /// <summary>
     /// A person or organization responsible for the commentary or explanatory notes about a text. For the writer of manuscript annotations in a printed book, use Annotator
     /// <see href="http://d-nb.info/standards/elementset/gnd#writerOfAddedCommentary"></see></summary>
-    let writerOfAddedCommentary =
-        Namespaced_IRI.parse _namespace_name "writerOfAddedCommentary" |> NamespacedName
+    let writerOfAddedCommentary = _prefix "writerOfAddedCommentary"

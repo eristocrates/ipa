@@ -1,444 +1,326 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.human.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module human =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/human#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#AdministrativeFemale"></see>
     /// </summary>
-    let AdministrativeFemale =
-        Namespaced_IRI.parse _namespace_name "AdministrativeFemale" |> NamespacedName
-
+    let AdministrativeFemale = _prefix "AdministrativeFemale"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#AdministrativeGender"></see>
     /// </summary>
-    let AdministrativeGender =
-        Namespaced_IRI.parse _namespace_name "AdministrativeGender" |> NamespacedName
-
+    let AdministrativeGender = _prefix "AdministrativeGender"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#AdministrativeMale"></see>
     /// </summary>
-    let AdministrativeMale =
-        Namespaced_IRI.parse _namespace_name "AdministrativeMale" |> NamespacedName
-
+    let AdministrativeMale = _prefix "AdministrativeMale"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#AdvanceDirectivesReport"></see>
     /// </summary>
-    let AdvanceDirectivesReport =
-        Namespaced_IRI.parse _namespace_name "AdvanceDirectivesReport" |> NamespacedName
-
+    let AdvanceDirectivesReport = _prefix "AdvanceDirectivesReport"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#AverageLinguisticSkill"></see>
     /// </summary>
-    let AverageLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "AverageLinguisticSkill" |> NamespacedName
-
+    let AverageLinguisticSkill = _prefix "AverageLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LinguisticSkillLevel"></see>
     /// </summary>
-    let LinguisticSkillLevel =
-        Namespaced_IRI.parse _namespace_name "LinguisticSkillLevel" |> NamespacedName
-
+    let LinguisticSkillLevel = _prefix "LinguisticSkillLevel"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#BiologicalAdult"></see>
     /// </summary>
-    let BiologicalAdult =
-        Namespaced_IRI.parse _namespace_name "BiologicalAdult" |> NamespacedName
-
+    let BiologicalAdult = _prefix "BiologicalAdult"
     /// <summary>
     /// human:Human members live and are not necessarily born; foaf:Person members are dead or alive, but born. External conflict: foaf:Person rdfs:subClassOf wordnet:person and wordnet:person wordnet:hyponymOf wordnet:organism, and wordnet:organism wordnet:hyponymOf wordnet:livingThing, but not 'hard coded' since wordnet:hyponymOf used instead of rdfs:subClassOf.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Person"></see></summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
-
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#BiologicalFather"></see>
     /// </summary>
-    let BiologicalFather =
-        Namespaced_IRI.parse _namespace_name "BiologicalFather" |> NamespacedName
-
+    let BiologicalFather = _prefix "BiologicalFather"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#BiologicalParent"></see>
     /// </summary>
-    let BiologicalParent =
-        Namespaced_IRI.parse _namespace_name "BiologicalParent" |> NamespacedName
-
+    let BiologicalParent = _prefix "BiologicalParent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Man"></see>
     /// </summary>
-    let Man = Namespaced_IRI.parse _namespace_name "Man" |> NamespacedName
-
+    let Man = _prefix "Man"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#BiologicalGender"></see>
     /// </summary>
-    let BiologicalGender =
-        Namespaced_IRI.parse _namespace_name "BiologicalGender" |> NamespacedName
-
+    let BiologicalGender = _prefix "BiologicalGender"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#male"></see>
     /// </summary>
-    let male = Namespaced_IRI.parse _namespace_name "male" |> NamespacedName
+    let male = _prefix "male"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#female"></see>
     /// </summary>
-    let female = Namespaced_IRI.parse _namespace_name "female" |> NamespacedName
-
+    let female = _prefix "female"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#intersexual"></see>
     /// </summary>
-    let intersexual =
-        Namespaced_IRI.parse _namespace_name "intersexual" |> NamespacedName
-
+    let intersexual = _prefix "intersexual"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#BiologicalMother"></see>
     /// </summary>
-    let BiologicalMother =
-        Namespaced_IRI.parse _namespace_name "BiologicalMother" |> NamespacedName
-
+    let BiologicalMother = _prefix "BiologicalMother"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Woman"></see>
     /// </summary>
-    let Woman = Namespaced_IRI.parse _namespace_name "Woman" |> NamespacedName
-
+    let Woman = _prefix "Woman"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#ContactPerson"></see>
     /// </summary>
-    let ContactPerson =
-        Namespaced_IRI.parse _namespace_name "ContactPerson" |> NamespacedName
-
+    let ContactPerson = _prefix "ContactPerson"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#PersonRole"></see>
     /// </summary>
-    let PersonRole = Namespaced_IRI.parse _namespace_name "PersonRole" |> NamespacedName
+    let PersonRole = _prefix "PersonRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Female"></see>
     /// </summary>
-    let Female = Namespaced_IRI.parse _namespace_name "Female" |> NamespacedName
+    let Female = _prefix "Female"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Human"></see>
     /// </summary>
-    let Human = Namespaced_IRI.parse _namespace_name "Human" |> NamespacedName
-
+    let Human = _prefix "Human"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasBiologicalGender"></see>
     /// </summary>
-    let hasBiologicalGender =
-        Namespaced_IRI.parse _namespace_name "hasBiologicalGender" |> NamespacedName
-
+    let hasBiologicalGender = _prefix "hasBiologicalGender"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Fetus"></see>
     /// </summary>
-    let Fetus = Namespaced_IRI.parse _namespace_name "Fetus" |> NamespacedName
-
+    let Fetus = _prefix "Fetus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#FluentLinguisticSkill"></see>
     /// </summary>
-    let FluentLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "FluentLinguisticSkill" |> NamespacedName
-
+    let FluentLinguisticSkill = _prefix "FluentLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#GoodLinguisticSkill"></see>
     /// </summary>
-    let GoodLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "GoodLinguisticSkill" |> NamespacedName
-
+    let GoodLinguisticSkill = _prefix "GoodLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#SubspeciesHomoSapiensSapiens"></see>
     /// </summary>
-    let SubspeciesHomoSapiensSapiens =
-        Namespaced_IRI.parse _namespace_name "SubspeciesHomoSapiensSapiens" |> NamespacedName
-
+    let SubspeciesHomoSapiensSapiens = _prefix "SubspeciesHomoSapiensSapiens"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Husband"></see>
     /// </summary>
-    let Husband = Namespaced_IRI.parse _namespace_name "Husband" |> NamespacedName
-
+    let Husband = _prefix "Husband"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#ImmatureHuman"></see>
     /// </summary>
-    let ImmatureHuman =
-        Namespaced_IRI.parse _namespace_name "ImmatureHuman" |> NamespacedName
-
+    let ImmatureHuman = _prefix "ImmatureHuman"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#InformedConsent"></see>
     /// </summary>
-    let InformedConsent =
-        Namespaced_IRI.parse _namespace_name "InformedConsent" |> NamespacedName
-
+    let InformedConsent = _prefix "InformedConsent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Intersexual"></see>
     /// </summary>
-    let Intersexual =
-        Namespaced_IRI.parse _namespace_name "Intersexual" |> NamespacedName
-
+    let Intersexual = _prefix "Intersexual"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageExpressing"></see>
     /// </summary>
-    let LanguageExpressing =
-        Namespaced_IRI.parse _namespace_name "LanguageExpressing" |> NamespacedName
-
+    let LanguageExpressing = _prefix "LanguageExpressing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageExpression"></see>
     /// </summary>
-    let LanguageExpression =
-        Namespaced_IRI.parse _namespace_name "LanguageExpression" |> NamespacedName
-
+    let LanguageExpression = _prefix "LanguageExpression"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageExpressionSkill"></see>
     /// </summary>
-    let LanguageExpressionSkill =
-        Namespaced_IRI.parse _namespace_name "LanguageExpressionSkill" |> NamespacedName
-
+    let LanguageExpressionSkill = _prefix "LanguageExpressionSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LinguisticSkill"></see>
     /// </summary>
-    let LinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "LinguisticSkill" |> NamespacedName
-
+    let LinguisticSkill = _prefix "LinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageSigningSkill"></see>
     /// </summary>
-    let LanguageSigningSkill =
-        Namespaced_IRI.parse _namespace_name "LanguageSigningSkill" |> NamespacedName
-
+    let LanguageSigningSkill = _prefix "LanguageSigningSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageSpeakingSkill"></see>
     /// </summary>
-    let LanguageSpeakingSkill =
-        Namespaced_IRI.parse _namespace_name "LanguageSpeakingSkill" |> NamespacedName
-
+    let LanguageSpeakingSkill = _prefix "LanguageSpeakingSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageUnderstandingSkill"></see>
     /// </summary>
-    let LanguageUnderstandingSkill =
-        Namespaced_IRI.parse _namespace_name "LanguageUnderstandingSkill" |> NamespacedName
-
+    let LanguageUnderstandingSkill = _prefix "LanguageUnderstandingSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LanguageWritingSkill"></see>
     /// </summary>
-    let LanguageWritingSkill =
-        Namespaced_IRI.parse _namespace_name "LanguageWritingSkill" |> NamespacedName
-
+    let LanguageWritingSkill = _prefix "LanguageWritingSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LegalAdult"></see>
     /// </summary>
-    let LegalAdult = Namespaced_IRI.parse _namespace_name "LegalAdult" |> NamespacedName
-
+    let LegalAdult = _prefix "LegalAdult"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LegalFather"></see>
     /// </summary>
-    let LegalFather =
-        Namespaced_IRI.parse _namespace_name "LegalFather" |> NamespacedName
-
+    let LegalFather = _prefix "LegalFather"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LegalMother"></see>
     /// </summary>
-    let LegalMother =
-        Namespaced_IRI.parse _namespace_name "LegalMother" |> NamespacedName
-
+    let LegalMother = _prefix "LegalMother"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#LegalParent"></see>
     /// </summary>
-    let LegalParent =
-        Namespaced_IRI.parse _namespace_name "LegalParent" |> NamespacedName
-
+    let LegalParent = _prefix "LegalParent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Life"></see>
     /// </summary>
-    let Life = Namespaced_IRI.parse _namespace_name "Life" |> NamespacedName
-
+    let Life = _prefix "Life"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#NativeLinguisticSkill"></see>
     /// </summary>
-    let NativeLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "NativeLinguisticSkill" |> NamespacedName
-
+    let NativeLinguisticSkill = _prefix "NativeLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#PoorLinguisticSkill"></see>
     /// </summary>
-    let PoorLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "PoorLinguisticSkill" |> NamespacedName
-
+    let PoorLinguisticSkill = _prefix "PoorLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#NoticesLinguisticSkill"></see>
     /// </summary>
-    let NoticesLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "NoticesLinguisticSkill" |> NamespacedName
-
+    let NoticesLinguisticSkill = _prefix "NoticesLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#NoLinguisticSkill"></see>
     /// </summary>
-    let NoLinguisticSkill =
-        Namespaced_IRI.parse _namespace_name "NoLinguisticSkill" |> NamespacedName
-
+    let NoLinguisticSkill = _prefix "NoLinguisticSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Male"></see>
     /// </summary>
-    let Male = Namespaced_IRI.parse _namespace_name "Male" |> NamespacedName
+    let Male = _prefix "Male"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Men"></see>
     /// </summary>
-    let Men = Namespaced_IRI.parse _namespace_name "Men" |> NamespacedName
+    let Men = _prefix "Men"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Newborn"></see>
     /// </summary>
-    let Newborn = Namespaced_IRI.parse _namespace_name "Newborn" |> NamespacedName
+    let Newborn = _prefix "Newborn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#weighs"></see>
     /// </summary>
-    let weighs = Namespaced_IRI.parse _namespace_name "weighs" |> NamespacedName
+    let weighs = _prefix "weighs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Occupation"></see>
     /// </summary>
-    let Occupation = Namespaced_IRI.parse _namespace_name "Occupation" |> NamespacedName
-
+    let Occupation = _prefix "Occupation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#OccupationRole"></see>
     /// </summary>
-    let OccupationRole =
-        Namespaced_IRI.parse _namespace_name "OccupationRole" |> NamespacedName
-
+    let OccupationRole = _prefix "OccupationRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#OccupationalStatus"></see>
     /// </summary>
-    let OccupationalStatus =
-        Namespaced_IRI.parse _namespace_name "OccupationalStatus" |> NamespacedName
-
+    let OccupationalStatus = _prefix "OccupationalStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#OnSickLeave"></see>
     /// </summary>
-    let OnSickLeave =
-        Namespaced_IRI.parse _namespace_name "OnSickLeave" |> NamespacedName
-
+    let OnSickLeave = _prefix "OnSickLeave"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Partner"></see>
     /// </summary>
-    let Partner = Namespaced_IRI.parse _namespace_name "Partner" |> NamespacedName
+    let Partner = _prefix "Partner"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#PersonLife"></see>
     /// </summary>
-    let PersonLife = Namespaced_IRI.parse _namespace_name "PersonLife" |> NamespacedName
+    let PersonLife = _prefix "PersonLife"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Role"></see>
     /// </summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
-
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#PregnantWoman"></see>
     /// </summary>
-    let PregnantWoman =
-        Namespaced_IRI.parse _namespace_name "PregnantWoman" |> NamespacedName
-
+    let PregnantWoman = _prefix "PregnantWoman"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Retired"></see>
     /// </summary>
-    let Retired = Namespaced_IRI.parse _namespace_name "Retired" |> NamespacedName
-
+    let Retired = _prefix "Retired"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#SignedLanguageUnderstandingSkill"></see>
     /// </summary>
-    let SignedLanguageUnderstandingSkill =
-        Namespaced_IRI.parse _namespace_name "SignedLanguageUnderstandingSkill" |> NamespacedName
-
+    let SignedLanguageUnderstandingSkill = _prefix "SignedLanguageUnderstandingSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#SpokenLanguageUnderstandingSkill"></see>
     /// </summary>
-    let SpokenLanguageUnderstandingSkill =
-        Namespaced_IRI.parse _namespace_name "SpokenLanguageUnderstandingSkill" |> NamespacedName
-
+    let SpokenLanguageUnderstandingSkill = _prefix "SpokenLanguageUnderstandingSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Spouse"></see>
     /// </summary>
-    let Spouse = Namespaced_IRI.parse _namespace_name "Spouse" |> NamespacedName
+    let Spouse = _prefix "Spouse"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Women"></see>
     /// </summary>
-    let Women = Namespaced_IRI.parse _namespace_name "Women" |> NamespacedName
+    let Women = _prefix "Women"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#Working"></see>
     /// </summary>
-    let Working = Namespaced_IRI.parse _namespace_name "Working" |> NamespacedName
-
+    let Working = _prefix "Working"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#WrittenLanguageUnderstandingSkill"></see>
     /// </summary>
-    let WrittenLanguageUnderstandingSkill =
-        Namespaced_IRI.parse _namespace_name "WrittenLanguageUnderstandingSkill" |> NamespacedName
-
+    let WrittenLanguageUnderstandingSkill = _prefix "WrittenLanguageUnderstandingSkill"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#contactPersonFor"></see>
     /// </summary>
-    let contactPersonFor =
-        Namespaced_IRI.parse _namespace_name "contactPersonFor" |> NamespacedName
-
+    let contactPersonFor = _prefix "contactPersonFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#contactPersonOf"></see>
     /// </summary>
-    let contactPersonOf =
-        Namespaced_IRI.parse _namespace_name "contactPersonOf" |> NamespacedName
-
+    let contactPersonOf = _prefix "contactPersonOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#forWhichIsContactPerson"></see>
     /// </summary>
-    let forWhichIsContactPerson =
-        Namespaced_IRI.parse _namespace_name "forWhichIsContactPerson" |> NamespacedName
-
+    let forWhichIsContactPerson = _prefix "forWhichIsContactPerson"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasAdministrativeGender"></see>
     /// </summary>
-    let hasAdministrativeGender =
-        Namespaced_IRI.parse _namespace_name "hasAdministrativeGender" |> NamespacedName
-
+    let hasAdministrativeGender = _prefix "hasAdministrativeGender"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasBodyMassIndex"></see>
     /// </summary>
-    let hasBodyMassIndex =
-        Namespaced_IRI.parse _namespace_name "hasBodyMassIndex" |> NamespacedName
-
+    let hasBodyMassIndex = _prefix "hasBodyMassIndex"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasContactPerson"></see>
     /// </summary>
-    let hasContactPerson =
-        Namespaced_IRI.parse _namespace_name "hasContactPerson" |> NamespacedName
-
+    let hasContactPerson = _prefix "hasContactPerson"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasInformedConsent"></see>
     /// </summary>
-    let hasInformedConsent =
-        Namespaced_IRI.parse _namespace_name "hasInformedConsent" |> NamespacedName
-
+    let hasInformedConsent = _prefix "hasInformedConsent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasLength"></see>
     /// </summary>
-    let hasLength = Namespaced_IRI.parse _namespace_name "hasLength" |> NamespacedName
-
+    let hasLength = _prefix "hasLength"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasOccupationalStatus"></see>
     /// </summary>
-    let hasOccupationalStatus =
-        Namespaced_IRI.parse _namespace_name "hasOccupationalStatus" |> NamespacedName
-
+    let hasOccupationalStatus = _prefix "hasOccupationalStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasSurfaceArea"></see>
     /// </summary>
-    let hasSurfaceArea =
-        Namespaced_IRI.parse _namespace_name "hasSurfaceArea" |> NamespacedName
-
+    let hasSurfaceArea = _prefix "hasSurfaceArea"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#hasWeightStatus"></see>
     /// </summary>
-    let hasWeightStatus =
-        Namespaced_IRI.parse _namespace_name "hasWeightStatus" |> NamespacedName
-
+    let hasWeightStatus = _prefix "hasWeightStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#informedlyConsentsTo"></see>
     /// </summary>
-    let informedlyConsentsTo =
-        Namespaced_IRI.parse _namespace_name "informedlyConsentsTo" |> NamespacedName
-
+    let informedlyConsentsTo = _prefix "informedlyConsentsTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/human#weighsAtBirth"></see>
     /// </summary>
-    let weighsAtBirth =
-        Namespaced_IRI.parse _namespace_name "weighsAtBirth" |> NamespacedName
+    let weighsAtBirth = _prefix "weighsAtBirth"

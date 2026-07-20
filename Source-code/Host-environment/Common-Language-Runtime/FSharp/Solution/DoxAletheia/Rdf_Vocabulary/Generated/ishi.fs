@@ -1,401 +1,313 @@
 namespace https.w3id.org.ishikawa_diagram_ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ishi =
     let _namespace_name = "https://w3id.org/ishikawa-diagram-ontology#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Categories are "surroundings", "suppliers", "skills", and  "systems"
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#4S"></see></summary>
-    let _4S = Namespaced_IRI.parse _namespace_name "4S" |> NamespacedName
-
+    let _4S = _prefix "4S"
     /// <summary>
     /// The class is used to record the design pattern which was applied in the course of the Ishikawa diagram creation. Instances of the class refer to best practices.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#DesignPattern"></see></summary>
-    let DesignPattern =
-        Namespaced_IRI.parse _namespace_name "DesignPattern" |> NamespacedName
-
+    let DesignPattern = _prefix "DesignPattern"
     /// <summary>
     /// The categories are "measurement", "materials", "methods", "manpower", and "environment"
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#5MandE"></see></summary>
-    let _5MandE = Namespaced_IRI.parse _namespace_name "5MandE" |> NamespacedName
+    let _5MandE = _prefix "5MandE"
     /// <summary>
     /// The categories are "price", "people", "place", "procedure", "promotion", "processes", "products", and "policies"
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#8P"></see></summary>
-    let _8P = Namespaced_IRI.parse _namespace_name "8P" |> NamespacedName
-
+    let _8P = _prefix "8P"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#Accountable"></see>
     /// </summary>
-    let Accountable =
-        Namespaced_IRI.parse _namespace_name "Accountable" |> NamespacedName
-
+    let Accountable = _prefix "Accountable"
     /// <summary>
     /// A role is the function of an agent with respect to a factor. The ontology incorporates role instances adhering to the RASCI model.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Role"></see></summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
+    let Role = _prefix "Role"
     /// <summary>
     /// A cause is a factor where its characteristics has direct influence on the characteristics of another factor.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Cause"></see></summary>
-    let Cause = Namespaced_IRI.parse _namespace_name "Cause" |> NamespacedName
+    let Cause = _prefix "Cause"
     /// <summary>
     /// A factor is any activity or entity with identified cause-effect relationships in the context of root-cause analysis
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Factor"></see></summary>
-    let Factor = Namespaced_IRI.parse _namespace_name "Factor" |> NamespacedName
-
+    let Factor = _prefix "Factor"
     /// <summary>
     /// CauseEffect is the capacity of a factor to have an effect on the character of another. The class is used to record qualified cause-effect relationships.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#CauseEffect"></see></summary>
-    let CauseEffect =
-        Namespaced_IRI.parse _namespace_name "CauseEffect" |> NamespacedName
-
+    let CauseEffect = _prefix "CauseEffect"
     /// <summary>
     /// The class is used to record the type of cause-effect relationship that exists between at least one cause and at least one effect.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#CauseEffectType"></see></summary>
-    let CauseEffectType =
-        Namespaced_IRI.parse _namespace_name "CauseEffectType" |> NamespacedName
-
+    let CauseEffectType = _prefix "CauseEffectType"
     /// <summary>
     /// A WeightScale where the numerical weight refers to the certainty.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#CertaintyScale"></see></summary>
-    let CertaintyScale =
-        Namespaced_IRI.parse _namespace_name "CertaintyScale" |> NamespacedName
-
+    let CertaintyScale = _prefix "CertaintyScale"
     /// <summary>
     /// A class that specifies the min and max range of values for the weight of a cause-effect relationship.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#WeightScale"></see></summary>
-    let WeightScale =
-        Namespaced_IRI.parse _namespace_name "WeightScale" |> NamespacedName
-
+    let WeightScale = _prefix "WeightScale"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#Consulted"></see>
     /// </summary>
-    let Consulted = Namespaced_IRI.parse _namespace_name "Consulted" |> NamespacedName
+    let Consulted = _prefix "Consulted"
     /// <summary>
     /// A visual representation of an Ishikawa diagram model or of a portion of it.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Diagram"></see></summary>
-    let Diagram = Namespaced_IRI.parse _namespace_name "Diagram" |> NamespacedName
-
+    let Diagram = _prefix "Diagram"
     /// <summary>
     /// The class is used to record the type of the Ishikawa diagram
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#DiagramType"></see></summary>
-    let DiagramType =
-        Namespaced_IRI.parse _namespace_name "DiagramType" |> NamespacedName
-
+    let DiagramType = _prefix "DiagramType"
     /// <summary>
     /// The categories are "uncontrollable factors", "controllable factors", "blockable nuisance factors", and "held-constant factors"
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#DoE"></see></summary>
-    let DoE = Namespaced_IRI.parse _namespace_name "DoE" |> NamespacedName
+    let DoE = _prefix "DoE"
     /// <summary>
     /// An effect is a factor where its characteristics are directly influenced by the characteristics of another factor.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Effect"></see></summary>
-    let Effect = Namespaced_IRI.parse _namespace_name "Effect" |> NamespacedName
+    let Effect = _prefix "Effect"
     /// <summary>
     /// Evidence refers to all resources that (partially) validate a cause-effeect relationship.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Evidence"></see></summary>
-    let Evidence = Namespaced_IRI.parse _namespace_name "Evidence" |> NamespacedName
-
+    let Evidence = _prefix "Evidence"
     /// <summary>
     /// The class is used to specify Evidence resources.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#EvidenceType"></see></summary>
-    let EvidenceType =
-        Namespaced_IRI.parse _namespace_name "EvidenceType" |> NamespacedName
-
+    let EvidenceType = _prefix "EvidenceType"
     /// <summary>
     /// A WeightScale where the numerical weight refers to an imact value. Impact describes the estimated and quantified effect an occurence of a cause-effect relationship might have.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#ImpactScale"></see></summary>
-    let ImpactScale =
-        Namespaced_IRI.parse _namespace_name "ImpactScale" |> NamespacedName
-
+    let ImpactScale = _prefix "ImpactScale"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#Informed"></see>
     /// </summary>
-    let Informed = Namespaced_IRI.parse _namespace_name "Informed" |> NamespacedName
+    let Informed = _prefix "Informed"
     /// <summary>
     /// A major cause has a direct cause-effect relationship with the root cause in the context of an Ishikawa diagram. When design patterns are used, major causes are abstract causes which are commonly referred to as categories.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#MajorCause"></see></summary>
-    let MajorCause = Namespaced_IRI.parse _namespace_name "MajorCause" |> NamespacedName
+    let MajorCause = _prefix "MajorCause"
     /// <summary>
     /// The Model class is used to record factors and their cause-effect relationships. It can be seen as the data model of an Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Model"></see></summary>
-    let Model = Namespaced_IRI.parse _namespace_name "Model" |> NamespacedName
-
+    let Model = _prefix "Model"
     /// <summary>
     /// A WeightScale where the numerical weight refers to a probability value. Probability describes the likelihood of occurence of a cause-effect relationship.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#ProbabilityScale"></see></summary>
-    let ProbabilityScale =
-        Namespaced_IRI.parse _namespace_name "ProbabilityScale" |> NamespacedName
-
+    let ProbabilityScale = _prefix "ProbabilityScale"
     /// <summary>
     /// A problem is a factor which does not influence any known factor in the context of an Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Problem"></see></summary>
-    let Problem = Namespaced_IRI.parse _namespace_name "Problem" |> NamespacedName
-
+    let Problem = _prefix "Problem"
     /// <summary>
     /// A WeightScale where the numerical weight refers to a relevance value. Relevance describes the importance a cause-effect relationship has in the context of a root-cause analysis.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#RelevanceScale"></see></summary>
-    let RelevanceScale =
-        Namespaced_IRI.parse _namespace_name "RelevanceScale" |> NamespacedName
-
+    let RelevanceScale = _prefix "RelevanceScale"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#Responsible"></see>
     /// </summary>
-    let Responsible =
-        Namespaced_IRI.parse _namespace_name "Responsible" |> NamespacedName
-
+    let Responsible = _prefix "Responsible"
     /// <summary>
     /// A WeightScale where the numerical weight refers to a risk value. Risk describes the estimated potential damage the occurence of a cause-effect relationship might have. Risk is often calculated as the product of probability and impact.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#RiskScale"></see></summary>
-    let RiskScale = Namespaced_IRI.parse _namespace_name "RiskScale" |> NamespacedName
+    let RiskScale = _prefix "RiskScale"
     /// <summary>
     /// A root cause is a factor which is not influenced by any known factor in the context of an Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#RootCause"></see></summary>
-    let RootCause = Namespaced_IRI.parse _namespace_name "RootCause" |> NamespacedName
+    let RootCause = _prefix "RootCause"
     /// <summary>
     /// The categories are "site", "task", "equipment", "people", and "control"
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#STEPC"></see></summary>
-    let STEPC = Namespaced_IRI.parse _namespace_name "STEPC" |> NamespacedName
+    let STEPC = _prefix "STEPC"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#Supporting"></see>
     /// </summary>
-    let Supporting = Namespaced_IRI.parse _namespace_name "Supporting" |> NamespacedName
+    let Supporting = _prefix "Supporting"
     /// <summary>
     /// An established activity with the goal of peperapring or creating an Ishikawa diagram
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Technique"></see></summary>
-    let Technique = Namespaced_IRI.parse _namespace_name "Technique" |> NamespacedName
+    let Technique = _prefix "Technique"
     /// <summary>
     /// The weight class is used to assign values to a cause-effect relationship for priorization. The intended meaning of the weight depends on the referenced WeightScale
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Weight"></see></summary>
-    let Weight = Namespaced_IRI.parse _namespace_name "Weight" |> NamespacedName
-
+    let Weight = _prefix "Weight"
     /// <summary>
     /// The WeightRange class is used to specify and name subranges.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#WeightRange"></see></summary>
-    let WeightRange =
-        Namespaced_IRI.parse _namespace_name "WeightRange" |> NamespacedName
-
+    let WeightRange = _prefix "WeightRange"
     /// <summary>
     /// A structured or guided activity to create an Ishikawa diagram
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#Workshop"></see></summary>
-    let Workshop = Namespaced_IRI.parse _namespace_name "Workshop" |> NamespacedName
-
+    let Workshop = _prefix "Workshop"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#aggravating"></see>
     /// </summary>
-    let aggravating =
-        Namespaced_IRI.parse _namespace_name "aggravating" |> NamespacedName
-
+    let aggravating = _prefix "aggravating"
     /// <summary>
     /// This property is used to link a Cause to CauseEffect .
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#cause"></see></summary>
-    let cause = Namespaced_IRI.parse _namespace_name "cause" |> NamespacedName
-
+    let cause = _prefix "cause"
     /// <summary>
     /// Property links CauseEffects to their Model.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#causeEffect"></see></summary>
-    let causeEffect =
-        Namespaced_IRI.parse _namespace_name "causeEffect" |> NamespacedName
-
+    let causeEffect = _prefix "causeEffect"
     /// <summary>
     /// inverse property to causeEffect
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#isCauseEffectOf"></see></summary>
-    let isCauseEffectOf =
-        Namespaced_IRI.parse _namespace_name "isCauseEffectOf" |> NamespacedName
-
+    let isCauseEffectOf = _prefix "isCauseEffectOf"
     /// <summary>
     /// This property is used to link the CauseEffectType to a CauseEffect
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#causeEffectType"></see></summary>
-    let causeEffectType =
-        Namespaced_IRI.parse _namespace_name "causeEffectType" |> NamespacedName
-
+    let causeEffectType = _prefix "causeEffectType"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#causeEnumerationDiagram"></see>
     /// </summary>
-    let causeEnumerationDiagram =
-        Namespaced_IRI.parse _namespace_name "causeEnumerationDiagram" |> NamespacedName
-
+    let causeEnumerationDiagram = _prefix "causeEnumerationDiagram"
     /// <summary>
     /// This property is used to directly link a Cause to an Effect without further qualification. For qualified cause-effect relationships the CauseEffect class is used.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#caused"></see></summary>
-    let caused = Namespaced_IRI.parse _namespace_name "caused" |> NamespacedName
-
+    let caused = _prefix "caused"
     /// <summary>
     /// This property is used to directly link an Effect to a Cause without further qualification. For qualified cause-effect relationships the CauseEffect class is used.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#wasCausedBy"></see></summary>
-    let wasCausedBy =
-        Namespaced_IRI.parse _namespace_name "wasCausedBy" |> NamespacedName
-
+    let wasCausedBy = _prefix "wasCausedBy"
     /// <summary>
     /// This property is used to indicate the maximal depth of the visual representation of an Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#depth"></see></summary>
-    let depth = Namespaced_IRI.parse _namespace_name "depth" |> NamespacedName
-
+    let depth = _prefix "depth"
     /// <summary>
     /// Property specifies which DesignPattern was used in an Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#designPattern"></see></summary>
-    let designPattern =
-        Namespaced_IRI.parse _namespace_name "designPattern" |> NamespacedName
-
+    let designPattern = _prefix "designPattern"
     /// <summary>
     /// This property is used to link the (data) model of an Ishikawa diagram to its visual representation.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#diagram"></see></summary>
-    let diagram = Namespaced_IRI.parse _namespace_name "diagram" |> NamespacedName
+    let diagram = _prefix "diagram"
     /// <summary>
     /// This property is used to link the visual representation of an Ishikawa diagram to its data model.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#model"></see></summary>
-    let model = Namespaced_IRI.parse _namespace_name "model" |> NamespacedName
-
+    let model = _prefix "model"
     /// <summary>
     /// This property is used to linke the DiagramType to Diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#diagramType"></see></summary>
-    let diagramType =
-        Namespaced_IRI.parse _namespace_name "diagramType" |> NamespacedName
-
+    let diagramType = _prefix "diagramType"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#dispersionAnalysisDiagram"></see>
     /// </summary>
-    let dispersionAnalysisDiagram =
-        Namespaced_IRI.parse _namespace_name "dispersionAnalysisDiagram" |> NamespacedName
-
+    let dispersionAnalysisDiagram = _prefix "dispersionAnalysisDiagram"
     /// <summary>
     /// This property is used to link an Effect to CauseEffect .
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#effect"></see></summary>
-    let effect = Namespaced_IRI.parse _namespace_name "effect" |> NamespacedName
+    let effect = _prefix "effect"
     /// <summary>
     /// This property is used to indicate, if factors were enumerated in the visual representation of the Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#enumerated"></see></summary>
-    let enumerated = Namespaced_IRI.parse _namespace_name "enumerated" |> NamespacedName
-
+    let enumerated = _prefix "enumerated"
     /// <summary>
     /// This property is used to link the EvidenceType to an Evidence
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#evidenceType"></see></summary>
-    let evidenceType =
-        Namespaced_IRI.parse _namespace_name "evidenceType" |> NamespacedName
-
+    let evidenceType = _prefix "evidenceType"
     /// <summary>
     /// Property links Factors to their Model.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#factor"></see></summary>
-    let factor = Namespaced_IRI.parse _namespace_name "factor" |> NamespacedName
+    let factor = _prefix "factor"
     /// <summary>
     /// inverse property to factor
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#isFactorOf"></see></summary>
-    let isFactorOf = Namespaced_IRI.parse _namespace_name "isFactorOf" |> NamespacedName
+    let isFactorOf = _prefix "isFactorOf"
     /// <summary>
     /// In the context of the Ishikawa ontology, this property is used to assign roles according to the RASCI model.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#hadRole"></see></summary>
-    let hadRole = Namespaced_IRI.parse _namespace_name "hadRole" |> NamespacedName
-
+    let hadRole = _prefix "hadRole"
     /// <summary>
     /// This property is used to link a CauseEffect to any Evidence.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#hasEvidence"></see></summary>
-    let hasEvidence =
-        Namespaced_IRI.parse _namespace_name "hasEvidence" |> NamespacedName
-
+    let hasEvidence = _prefix "hasEvidence"
     /// <summary>
     /// This property is used to link a WeightRange to a WeightScale.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#hasNamedRange"></see></summary>
-    let hasNamedRange =
-        Namespaced_IRI.parse _namespace_name "hasNamedRange" |> NamespacedName
-
+    let hasNamedRange = _prefix "hasNamedRange"
     /// <summary>
     /// This property is used to link a CauseEffect to any Evidence with the assumption that the evidence is qualitative..
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#hasQualitativeEvidence"></see></summary>
-    let hasQualitativeEvidence =
-        Namespaced_IRI.parse _namespace_name "hasQualitativeEvidence" |> NamespacedName
-
+    let hasQualitativeEvidence = _prefix "hasQualitativeEvidence"
     /// <summary>
     /// This property is used to link a CauseEffect to any Evidence with the assumption that the evidence is quantitative
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#hasQuantitativeEvidence"></see></summary>
-    let hasQuantitativeEvidence =
-        Namespaced_IRI.parse _namespace_name "hasQuantitativeEvidence" |> NamespacedName
-
+    let hasQuantitativeEvidence = _prefix "hasQuantitativeEvidence"
     /// <summary>
     /// This property is used to link a WeightScale to the WeightRange which defines its total range.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#hasWeightRange"></see></summary>
-    let hasWeightRange =
-        Namespaced_IRI.parse _namespace_name "hasWeightRange" |> NamespacedName
-
+    let hasWeightRange = _prefix "hasWeightRange"
     /// <summary>
     /// This property is used to indicate, if the evidence basis was emphasized in the visual representation of the Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#illustratedEvidence"></see></summary>
-    let illustratedEvidence =
-        Namespaced_IRI.parse _namespace_name "illustratedEvidence" |> NamespacedName
-
+    let illustratedEvidence = _prefix "illustratedEvidence"
     /// <summary>
     /// This property is used to indicate, if the factors' influence on the problem were emphasized in the visual representation of the Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#illustratedFactorInfluence"></see></summary>
-    let illustratedFactorInfluence =
-        Namespaced_IRI.parse _namespace_name "illustratedFactorInfluence" |> NamespacedName
-
+    let illustratedFactorInfluence = _prefix "illustratedFactorInfluence"
     /// <summary>
     /// This property is used to indicate, if responsibilities or roles towards factors were included in the visual representation of the Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#illustratedRoles"></see></summary>
-    let illustratedRoles =
-        Namespaced_IRI.parse _namespace_name "illustratedRoles" |> NamespacedName
-
+    let illustratedRoles = _prefix "illustratedRoles"
     /// <summary>
     /// This property is used to indicate, if weight differences were emphasized in the visual representation of the Ishikawa diagram.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#illustratedWeight"></see></summary>
-    let illustratedWeight =
-        Namespaced_IRI.parse _namespace_name "illustratedWeight" |> NamespacedName
-
+    let illustratedWeight = _prefix "illustratedWeight"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#neutralizing"></see>
     /// </summary>
-    let neutralizing =
-        Namespaced_IRI.parse _namespace_name "neutralizing" |> NamespacedName
-
+    let neutralizing = _prefix "neutralizing"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#noEvidence"></see>
     /// </summary>
-    let noEvidence = Namespaced_IRI.parse _namespace_name "noEvidence" |> NamespacedName
+    let noEvidence = _prefix "noEvidence"
 
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#productProcessClassificationDiagram"></see>
     /// </summary>
     let productProcessClassificationDiagram =
-        Namespaced_IRI.parse _namespace_name "productProcessClassificationDiagram" |> NamespacedName
+        _prefix "productProcessClassificationDiagram"
 
     /// <summary>
     /// This property is used to link a qualified CauseEffect to a Factor.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#qualifiedCauseEffect"></see></summary>
-    let qualifiedCauseEffect =
-        Namespaced_IRI.parse _namespace_name "qualifiedCauseEffect" |> NamespacedName
-
+    let qualifiedCauseEffect = _prefix "qualifiedCauseEffect"
     /// <summary>
     /// This property is used to link a qualified CauseEffect to a Factor.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#qualifiedCauseEffectOf"></see></summary>
-    let qualifiedCauseEffectOf =
-        Namespaced_IRI.parse _namespace_name "qualifiedCauseEffectOf" |> NamespacedName
-
+    let qualifiedCauseEffectOf = _prefix "qualifiedCauseEffectOf"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#qualitativeEvidence"></see>
     /// </summary>
-    let qualitativeEvidence =
-        Namespaced_IRI.parse _namespace_name "qualitativeEvidence" |> NamespacedName
-
+    let qualitativeEvidence = _prefix "qualitativeEvidence"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#quantitativeEvidence"></see>
     /// </summary>
-    let quantitativeEvidence =
-        Namespaced_IRI.parse _namespace_name "quantitativeEvidence" |> NamespacedName
-
+    let quantitativeEvidence = _prefix "quantitativeEvidence"
     /// <summary>
     /// The property is used to link the WeigthScale to a Weight.
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#scale"></see></summary>
-    let scale = Namespaced_IRI.parse _namespace_name "scale" |> NamespacedName
+    let scale = _prefix "scale"
     /// <summary>
     ///   <see href="https://w3id.org/ishikawa-diagram-ontology#undecided"></see>
     /// </summary>
-    let undecided = Namespaced_IRI.parse _namespace_name "undecided" |> NamespacedName
-
+    let undecided = _prefix "undecided"
     /// <summary>
     /// Property to indicate which Technique was used in the Workshop
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#usedTechnique"></see></summary>
-    let usedTechnique =
-        Namespaced_IRI.parse _namespace_name "usedTechnique" |> NamespacedName
-
+    let usedTechnique = _prefix "usedTechnique"
     /// <summary>
     /// This property is used to link a Weight to a CauseEffect
     /// <see href="https://w3id.org/ishikawa-diagram-ontology#weight"></see></summary>
-    let weight = Namespaced_IRI.parse _namespace_name "weight" |> NamespacedName
+    let weight = _prefix "weight"

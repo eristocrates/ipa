@@ -1,815 +1,662 @@
 namespace http.www.identity.org.ontologies.identity.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module identity =
     let _namespace_name = "http://www.identity.org/ontologies/identity.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#DateYmd"></see>
     /// </summary>
-    let DateYmd = Namespaced_IRI.parse _namespace_name "DateYmd" |> NamespacedName
+    let DateYmd = _prefix "DateYmd"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ymdDay"></see>
     /// </summary>
-    let ymdDay = Namespaced_IRI.parse _namespace_name "ymdDay" |> NamespacedName
-
+    let ymdDay = _prefix "ymdDay"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#FaceRecognition"></see>
     /// </summary>
-    let FaceRecognition =
-        Namespaced_IRI.parse _namespace_name "FaceRecognition" |> NamespacedName
-
+    let FaceRecognition = _prefix "FaceRecognition"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#FingerprintRecognition"></see>
     /// </summary>
-    let FingerprintRecognition =
-        Namespaced_IRI.parse _namespace_name "FingerprintRecognition" |> NamespacedName
-
+    let FingerprintRecognition = _prefix "FingerprintRecognition"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#IrisRecognition"></see>
     /// </summary>
-    let IrisRecognition =
-        Namespaced_IRI.parse _namespace_name "IrisRecognition" |> NamespacedName
-
+    let IrisRecognition = _prefix "IrisRecognition"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#KeystokeDynamicRecognition"></see>
     /// </summary>
-    let KeystokeDynamicRecognition =
-        Namespaced_IRI.parse _namespace_name "KeystokeDynamicRecognition" |> NamespacedName
-
+    let KeystokeDynamicRecognition = _prefix "KeystokeDynamicRecognition"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#VoiceRecognition"></see>
     /// </summary>
-    let VoiceRecognition =
-        Namespaced_IRI.parse _namespace_name "VoiceRecognition" |> NamespacedName
-
+    let VoiceRecognition = _prefix "VoiceRecognition"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ymdMonth"></see>
     /// </summary>
-    let ymdMonth = Namespaced_IRI.parse _namespace_name "ymdMonth" |> NamespacedName
+    let ymdMonth = _prefix "ymdMonth"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#DateHms"></see>
     /// </summary>
-    let DateHms = Namespaced_IRI.parse _namespace_name "DateHms" |> NamespacedName
+    let DateHms = _prefix "DateHms"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hmsSecond"></see>
     /// </summary>
-    let hmsSecond = Namespaced_IRI.parse _namespace_name "hmsSecond" |> NamespacedName
-
+    let hmsSecond = _prefix "hmsSecond"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ymdMonthYear"></see>
     /// </summary>
-    let ymdMonthYear =
-        Namespaced_IRI.parse _namespace_name "ymdMonthYear" |> NamespacedName
-
+    let ymdMonthYear = _prefix "ymdMonthYear"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ymdYearMonth"></see>
     /// </summary>
-    let ymdYearMonth =
-        Namespaced_IRI.parse _namespace_name "ymdYearMonth" |> NamespacedName
-
+    let ymdYearMonth = _prefix "ymdYearMonth"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hmsHour"></see>
     /// </summary>
-    let hmsHour = Namespaced_IRI.parse _namespace_name "hmsHour" |> NamespacedName
+    let hmsHour = _prefix "hmsHour"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hmsMinute"></see>
     /// </summary>
-    let hmsMinute = Namespaced_IRI.parse _namespace_name "hmsMinute" |> NamespacedName
+    let hmsMinute = _prefix "hmsMinute"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ymdYear"></see>
     /// </summary>
-    let ymdYear = Namespaced_IRI.parse _namespace_name "ymdYear" |> NamespacedName
-
+    let ymdYear = _prefix "ymdYear"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#AlarmClockProvider"></see>
     /// </summary>
-    let AlarmClockProvider =
-        Namespaced_IRI.parse _namespace_name "AlarmClockProvider" |> NamespacedName
-
+    let AlarmClockProvider = _prefix "AlarmClockProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#BrowserProvider"></see>
     /// </summary>
-    let BrowserProvider =
-        Namespaced_IRI.parse _namespace_name "BrowserProvider" |> NamespacedName
-
+    let BrowserProvider = _prefix "BrowserProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#CallLogProvider"></see>
     /// </summary>
-    let CallLogProvider =
-        Namespaced_IRI.parse _namespace_name "CallLogProvider" |> NamespacedName
-
+    let CallLogProvider = _prefix "CallLogProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ContactsContractProvider"></see>
     /// </summary>
-    let ContactsContractProvider =
-        Namespaced_IRI.parse _namespace_name "ContactsContractProvider" |> NamespacedName
-
+    let ContactsContractProvider = _prefix "ContactsContractProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#LiveFoldersProvider"></see>
     /// </summary>
-    let LiveFoldersProvider =
-        Namespaced_IRI.parse _namespace_name "LiveFoldersProvider" |> NamespacedName
-
+    let LiveFoldersProvider = _prefix "LiveFoldersProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#MediaStoreProvider"></see>
     /// </summary>
-    let MediaStoreProvider =
-        Namespaced_IRI.parse _namespace_name "MediaStoreProvider" |> NamespacedName
-
+    let MediaStoreProvider = _prefix "MediaStoreProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#SearchRecentSuggestionsProvider"></see>
     /// </summary>
-    let SearchRecentSuggestionsProvider =
-        Namespaced_IRI.parse _namespace_name "SearchRecentSuggestionsProvider" |> NamespacedName
-
+    let SearchRecentSuggestionsProvider = _prefix "SearchRecentSuggestionsProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#SettingsProvider"></see>
     /// </summary>
-    let SettingsProvider =
-        Namespaced_IRI.parse _namespace_name "SettingsProvider" |> NamespacedName
-
+    let SettingsProvider = _prefix "SettingsProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#SyncStateContractProvider"></see>
     /// </summary>
-    let SyncStateContractProvider =
-        Namespaced_IRI.parse _namespace_name "SyncStateContractProvider" |> NamespacedName
-
+    let SyncStateContractProvider = _prefix "SyncStateContractProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#UserDictionaryProvider"></see>
     /// </summary>
-    let UserDictionaryProvider =
-        Namespaced_IRI.parse _namespace_name "UserDictionaryProvider" |> NamespacedName
-
+    let UserDictionaryProvider = _prefix "UserDictionaryProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Agent"></see>
     /// </summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
-
+    let Agent = _prefix "Agent"
     /// <summary>
     /// Identity information of a legal or natural entity.
     /// <see href="http://www.identity.org/ontologies/identity.owl#IdentityInformation"></see></summary>
-    let IdentityInformation =
-        Namespaced_IRI.parse _namespace_name "IdentityInformation" |> NamespacedName
-
+    let IdentityInformation = _prefix "IdentityInformation"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasIdentity"></see>
     /// </summary>
-    let hasIdentity =
-        Namespaced_IRI.parse _namespace_name "hasIdentity" |> NamespacedName
-
+    let hasIdentity = _prefix "hasIdentity"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Data"></see>
     /// </summary>
-    let Data = Namespaced_IRI.parse _namespace_name "Data" |> NamespacedName
+    let Data = _prefix "Data"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasData"></see>
     /// </summary>
-    let hasData = Namespaced_IRI.parse _namespace_name "hasData" |> NamespacedName
-
+    let hasData = _prefix "hasData"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ContentProvider"></see>
     /// </summary>
-    let ContentProvider =
-        Namespaced_IRI.parse _namespace_name "ContentProvider" |> NamespacedName
-
+    let ContentProvider = _prefix "ContentProvider"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#BiometricData"></see>
     /// </summary>
-    let BiometricData =
-        Namespaced_IRI.parse _namespace_name "BiometricData" |> NamespacedName
-
+    let BiometricData = _prefix "BiometricData"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#bimetricFile"></see>
     /// </summary>
-    let bimetricFile =
-        Namespaced_IRI.parse _namespace_name "bimetricFile" |> NamespacedName
-
+    let bimetricFile = _prefix "bimetricFile"
     /// <summary>
     /// A business is a legal entity which is permitted to enter into a contract with another entity.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Business"></see></summary>
-    let Business = Namespaced_IRI.parse _namespace_name "Business" |> NamespacedName
-
+    let Business = _prefix "Business"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#BusinessInformation"></see>
     /// </summary>
-    let BusinessInformation =
-        Namespaced_IRI.parse _namespace_name "BusinessInformation" |> NamespacedName
-
+    let BusinessInformation = _prefix "BusinessInformation"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#businessName"></see>
     /// </summary>
-    let businessName =
-        Namespaced_IRI.parse _namespace_name "businessName" |> NamespacedName
-
+    let businessName = _prefix "businessName"
     /// <summary>
     /// Required information to contact an agent.
     /// <see href="http://www.identity.org/ontologies/identity.owl#ContactInformation"></see></summary>
-    let ContactInformation =
-        Namespaced_IRI.parse _namespace_name "ContactInformation" |> NamespacedName
-
+    let ContactInformation = _prefix "ContactInformation"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasContactInfo"></see>
     /// </summary>
-    let hasContactInfo =
-        Namespaced_IRI.parse _namespace_name "hasContactInfo" |> NamespacedName
-
+    let hasContactInfo = _prefix "hasContactInfo"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#logo"></see>
     /// </summary>
-    let logo = Namespaced_IRI.parse _namespace_name "logo" |> NamespacedName
-
+    let logo = _prefix "logo"
     /// <summary>
     /// Department or Division of Organization and eventually where user is employed.
     /// <see href="http://www.identity.org/ontologies/identity.owl#businessUnit"></see></summary>
-    let businessUnit =
-        Namespaced_IRI.parse _namespace_name "businessUnit" |> NamespacedName
-
+    let businessUnit = _prefix "businessUnit"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#CellPhoneData"></see>
     /// </summary>
-    let CellPhoneData =
-        Namespaced_IRI.parse _namespace_name "CellPhoneData" |> NamespacedName
-
+    let CellPhoneData = _prefix "CellPhoneData"
     /// <summary>
     /// International Mobile Equipment Identity.
     /// <see href="http://www.identity.org/ontologies/identity.owl#imei"></see></summary>
-    let imei = Namespaced_IRI.parse _namespace_name "imei" |> NamespacedName
+    let imei = _prefix "imei"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#cellID"></see>
     /// </summary>
-    let cellID = Namespaced_IRI.parse _namespace_name "cellID" |> NamespacedName
-
+    let cellID = _prefix "cellID"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#languageCode"></see>
     /// </summary>
-    let languageCode =
-        Namespaced_IRI.parse _namespace_name "languageCode" |> NamespacedName
-
+    let languageCode = _prefix "languageCode"
     /// <summary>
     /// This structure is used to specify identity certificates.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Certificate"></see></summary>
-    let Certificate =
-        Namespaced_IRI.parse _namespace_name "Certificate" |> NamespacedName
-
+    let Certificate = _prefix "Certificate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#key"></see>
     /// </summary>
-    let key = Namespaced_IRI.parse _namespace_name "key" |> NamespacedName
+    let key = _prefix "key"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#format"></see>
     /// </summary>
-    let format = Namespaced_IRI.parse _namespace_name "format" |> NamespacedName
+    let format = _prefix "format"
     /// <summary>
     /// The date structure specifies a date. Date information can be used in different ways, depending on the context.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Date"></see></summary>
-    let Date = Namespaced_IRI.parse _namespace_name "Date" |> NamespacedName
-
+    let Date = _prefix "Date"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasExpirationDate"></see>
     /// </summary>
-    let hasExpirationDate =
-        Namespaced_IRI.parse _namespace_name "hasExpirationDate" |> NamespacedName
-
+    let hasExpirationDate = _prefix "hasExpirationDate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ChatAccount"></see>
     /// </summary>
-    let ChatAccount =
-        Namespaced_IRI.parse _namespace_name "ChatAccount" |> NamespacedName
-
+    let ChatAccount = _prefix "ChatAccount"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#OnlineAccount"></see>
     /// </summary>
-    let OnlineAccount =
-        Namespaced_IRI.parse _namespace_name "OnlineAccount" |> NamespacedName
-
+    let OnlineAccount = _prefix "OnlineAccount"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Condition"></see>
     /// </summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#timeZone"></see>
     /// </summary>
-    let timeZone = Namespaced_IRI.parse _namespace_name "timeZone" |> NamespacedName
-
+    let timeZone = _prefix "timeZone"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#fractionSecond"></see>
     /// </summary>
-    let fractionSecond =
-        Namespaced_IRI.parse _namespace_name "fractionSecond" |> NamespacedName
-
+    let fractionSecond = _prefix "fractionSecond"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hmsDate"></see>
     /// </summary>
-    let hmsDate = Namespaced_IRI.parse _namespace_name "hmsDate" |> NamespacedName
+    let hmsDate = _prefix "hmsDate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#dateYmd"></see>
     /// </summary>
-    let dateYmd = Namespaced_IRI.parse _namespace_name "dateYmd" |> NamespacedName
-
+    let dateYmd = _prefix "dateYmd"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#EcommerceAccount"></see>
     /// </summary>
-    let EcommerceAccount =
-        Namespaced_IRI.parse _namespace_name "EcommerceAccount" |> NamespacedName
-
+    let EcommerceAccount = _prefix "EcommerceAccount"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#EncryptAlgo"></see>
     /// </summary>
-    let EncryptAlgo =
-        Namespaced_IRI.parse _namespace_name "EncryptAlgo" |> NamespacedName
-
+    let EncryptAlgo = _prefix "EncryptAlgo"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#algo"></see>
     /// </summary>
-    let algo = Namespaced_IRI.parse _namespace_name "algo" |> NamespacedName
+    let algo = _prefix "algo"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Fax"></see>
     /// </summary>
-    let Fax = Namespaced_IRI.parse _namespace_name "Fax" |> NamespacedName
-
+    let Fax = _prefix "Fax"
     /// <summary>
     /// Telecommunication information about an agnet.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Telecommunication"></see></summary>
-    let Telecommunication =
-        Namespaced_IRI.parse _namespace_name "Telecommunication" |> NamespacedName
-
+    let Telecommunication = _prefix "Telecommunication"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ForbiddenAction"></see>
     /// </summary>
-    let ForbiddenAction =
-        Namespaced_IRI.parse _namespace_name "ForbiddenAction" |> NamespacedName
-
+    let ForbiddenAction = _prefix "ForbiddenAction"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#GamingAccount"></see>
     /// </summary>
-    let GamingAccount =
-        Namespaced_IRI.parse _namespace_name "GamingAccount" |> NamespacedName
-
+    let GamingAccount = _prefix "GamingAccount"
     /// <summary>
     /// A group of persons that figure in the contact list of an individual.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Group"></see></summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     /// A person is an individual who has a social identity and a technical one.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Person"></see></summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasMember"></see>
     /// </summary>
-    let hasMember = Namespaced_IRI.parse _namespace_name "hasMember" |> NamespacedName
+    let hasMember = _prefix "hasMember"
     /// <summary>
     /// Indivuals or natural entities.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Individual"></see></summary>
-    let Individual = Namespaced_IRI.parse _namespace_name "Individual" |> NamespacedName
+    let Individual = _prefix "Individual"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#History"></see>
     /// </summary>
-    let History = Namespaced_IRI.parse _namespace_name "History" |> NamespacedName
-
+    let History = _prefix "History"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasCertificate"></see>
     /// </summary>
-    let hasCertificate =
-        Namespaced_IRI.parse _namespace_name "hasCertificate" |> NamespacedName
-
+    let hasCertificate = _prefix "hasCertificate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#IndividualInformation"></see>
     /// </summary>
-    let IndividualInformation =
-        Namespaced_IRI.parse _namespace_name "IndividualInformation" |> NamespacedName
-
+    let IndividualInformation = _prefix "IndividualInformation"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#jobTitle"></see>
     /// </summary>
-    let jobTitle = Namespaced_IRI.parse _namespace_name "jobTitle" |> NamespacedName
+    let jobTitle = _prefix "jobTitle"
     /// <summary>
     /// The person name specifies information about the naming of a person.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Name"></see></summary>
-    let Name = Namespaced_IRI.parse _namespace_name "Name" |> NamespacedName
+    let Name = _prefix "Name"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#gender"></see>
     /// </summary>
-    let gender = Namespaced_IRI.parse _namespace_name "gender" |> NamespacedName
-
+    let gender = _prefix "gender"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasHomeInfo"></see>
     /// </summary>
-    let hasHomeInfo =
-        Namespaced_IRI.parse _namespace_name "hasHomeInfo" |> NamespacedName
-
+    let hasHomeInfo = _prefix "hasHomeInfo"
     /// <summary>
     /// IDs ans Passwords for web services which require authentification.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Login"></see></summary>
-    let Login = Namespaced_IRI.parse _namespace_name "Login" |> NamespacedName
+    let Login = _prefix "Login"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasLogin"></see>
     /// </summary>
-    let hasLogin = Namespaced_IRI.parse _namespace_name "hasLogin" |> NamespacedName
-
+    let hasLogin = _prefix "hasLogin"
     /// <summary>
     /// User's Birthday
     /// <see href="http://www.identity.org/ontologies/identity.owl#hasBirthDate"></see></summary>
-    let hasBirthDate =
-        Namespaced_IRI.parse _namespace_name "hasBirthDate" |> NamespacedName
-
+    let hasBirthDate = _prefix "hasBirthDate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#employer"></see>
     /// </summary>
-    let employer = Namespaced_IRI.parse _namespace_name "employer" |> NamespacedName
-
+    let employer = _prefix "employer"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#InvalidCertificate"></see>
     /// </summary>
-    let InvalidCertificate =
-        Namespaced_IRI.parse _namespace_name "InvalidCertificate" |> NamespacedName
-
+    let InvalidCertificate = _prefix "InvalidCertificate"
     /// <summary>
     /// This legal entity is the issuer of an individual digital identity.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Issuer"></see></summary>
-    let Issuer = Namespaced_IRI.parse _namespace_name "Issuer" |> NamespacedName
+    let Issuer = _prefix "Issuer"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#isIssuerOf"></see>
     /// </summary>
-    let isIssuerOf = Namespaced_IRI.parse _namespace_name "isIssuerOf" |> NamespacedName
-
+    let isIssuerOf = _prefix "isIssuerOf"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#LocationData"></see>
     /// </summary>
-    let LocationData =
-        Namespaced_IRI.parse _namespace_name "LocationData" |> NamespacedName
-
+    let LocationData = _prefix "LocationData"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#wifi"></see>
     /// </summary>
-    let wifi = Namespaced_IRI.parse _namespace_name "wifi" |> NamespacedName
+    let wifi = _prefix "wifi"
     /// <summary>
     /// Global Positioning System
     /// <see href="http://www.identity.org/ontologies/identity.owl#gps"></see></summary>
-    let gps = Namespaced_IRI.parse _namespace_name "gps" |> NamespacedName
+    let gps = _prefix "gps"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ip"></see>
     /// </summary>
-    let ip = Namespaced_IRI.parse _namespace_name "ip" |> NamespacedName
+    let ip = _prefix "ip"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#latitude"></see>
     /// </summary>
-    let latitude = Namespaced_IRI.parse _namespace_name "latitude" |> NamespacedName
+    let latitude = _prefix "latitude"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#longitude"></see>
     /// </summary>
-    let longitude = Namespaced_IRI.parse _namespace_name "longitude" |> NamespacedName
+    let longitude = _prefix "longitude"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#LogData"></see>
     /// </summary>
-    let LogData = Namespaced_IRI.parse _namespace_name "LogData" |> NamespacedName
+    let LogData = _prefix "LogData"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#timestamp"></see>
     /// </summary>
-    let timestamp = Namespaced_IRI.parse _namespace_name "timestamp" |> NamespacedName
+    let timestamp = _prefix "timestamp"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#uri"></see>
     /// </summary>
-    let uri = Namespaced_IRI.parse _namespace_name "uri" |> NamespacedName
+    let uri = _prefix "uri"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#callLog"></see>
     /// </summary>
-    let callLog = Namespaced_IRI.parse _namespace_name "callLog" |> NamespacedName
+    let callLog = _prefix "callLog"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#password"></see>
     /// </summary>
-    let password = Namespaced_IRI.parse _namespace_name "password" |> NamespacedName
+    let password = _prefix "password"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#MiscData"></see>
     /// </summary>
-    let MiscData = Namespaced_IRI.parse _namespace_name "MiscData" |> NamespacedName
+    let MiscData = _prefix "MiscData"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#cookie"></see>
     /// </summary>
-    let cookie = Namespaced_IRI.parse _namespace_name "cookie" |> NamespacedName
+    let cookie = _prefix "cookie"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#photo"></see>
     /// </summary>
-    let photo = Namespaced_IRI.parse _namespace_name "photo" |> NamespacedName
+    let photo = _prefix "photo"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#video"></see>
     /// </summary>
-    let video = Namespaced_IRI.parse _namespace_name "video" |> NamespacedName
+    let video = _prefix "video"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#document"></see>
     /// </summary>
-    let document = Namespaced_IRI.parse _namespace_name "document" |> NamespacedName
+    let document = _prefix "document"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Mobile"></see>
     /// </summary>
-    let Mobile = Namespaced_IRI.parse _namespace_name "Mobile" |> NamespacedName
+    let Mobile = _prefix "Mobile"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Mode"></see>
     /// </summary>
-    let Mode = Namespaced_IRI.parse _namespace_name "Mode" |> NamespacedName
+    let Mode = _prefix "Mode"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#nickName"></see>
     /// </summary>
-    let nickName = Namespaced_IRI.parse _namespace_name "nickName" |> NamespacedName
+    let nickName = _prefix "nickName"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#familyName"></see>
     /// </summary>
-    let familyName = Namespaced_IRI.parse _namespace_name "familyName" |> NamespacedName
+    let familyName = _prefix "familyName"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#givenName"></see>
     /// </summary>
-    let givenName = Namespaced_IRI.parse _namespace_name "givenName" |> NamespacedName
+    let givenName = _prefix "givenName"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#middleName"></see>
     /// </summary>
-    let middleName = Namespaced_IRI.parse _namespace_name "middleName" |> NamespacedName
+    let middleName = _prefix "middleName"
     /// <summary>
     /// Online information about an agent.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Online"></see></summary>
-    let Online = Namespaced_IRI.parse _namespace_name "Online" |> NamespacedName
+    let Online = _prefix "Online"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#email"></see>
     /// </summary>
-    let email = Namespaced_IRI.parse _namespace_name "email" |> NamespacedName
+    let email = _prefix "email"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Pager"></see>
     /// </summary>
-    let Pager = Namespaced_IRI.parse _namespace_name "Pager" |> NamespacedName
-
+    let Pager = _prefix "Pager"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#PermittedAction"></see>
     /// </summary>
-    let PermittedAction =
-        Namespaced_IRI.parse _namespace_name "PermittedAction" |> NamespacedName
-
+    let PermittedAction = _prefix "PermittedAction"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#knows"></see>
     /// </summary>
-    let knows = Namespaced_IRI.parse _namespace_name "knows" |> NamespacedName
+    let knows = _prefix "knows"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Policy"></see>
     /// </summary>
-    let Policy = Namespaced_IRI.parse _namespace_name "Policy" |> NamespacedName
+    let Policy = _prefix "Policy"
     /// <summary>
     /// Postal mailing address.
     /// <see href="http://www.identity.org/ontologies/identity.owl#Postal"></see></summary>
-    let Postal = Namespaced_IRI.parse _namespace_name "Postal" |> NamespacedName
+    let Postal = _prefix "Postal"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#number"></see>
     /// </summary>
-    let number = Namespaced_IRI.parse _namespace_name "number" |> NamespacedName
+    let number = _prefix "number"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#postalCode"></see>
     /// </summary>
-    let postalCode = Namespaced_IRI.parse _namespace_name "postalCode" |> NamespacedName
+    let postalCode = _prefix "postalCode"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#city"></see>
     /// </summary>
-    let city = Namespaced_IRI.parse _namespace_name "city" |> NamespacedName
+    let city = _prefix "city"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#country"></see>
     /// </summary>
-    let country = Namespaced_IRI.parse _namespace_name "country" |> NamespacedName
+    let country = _prefix "country"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#region"></see>
     /// </summary>
-    let region = Namespaced_IRI.parse _namespace_name "region" |> NamespacedName
-
+    let region = _prefix "region"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#departmentName"></see>
     /// </summary>
-    let departmentName =
-        Namespaced_IRI.parse _namespace_name "departmentName" |> NamespacedName
-
+    let departmentName = _prefix "departmentName"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#street"></see>
     /// </summary>
-    let street = Namespaced_IRI.parse _namespace_name "street" |> NamespacedName
-
+    let street = _prefix "street"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#departmentCode"></see>
     /// </summary>
-    let departmentCode =
-        Namespaced_IRI.parse _namespace_name "departmentCode" |> NamespacedName
-
+    let departmentCode = _prefix "departmentCode"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#SecretData"></see>
     /// </summary>
-    let SecretData = Namespaced_IRI.parse _namespace_name "SecretData" |> NamespacedName
+    let SecretData = _prefix "SecretData"
     /// <summary>
     /// A secret code to identify the identity holder.
     /// <see href="http://www.identity.org/ontologies/identity.owl#pin"></see></summary>
-    let pin = Namespaced_IRI.parse _namespace_name "pin" |> NamespacedName
-
+    let pin = _prefix "pin"
     /// <summary>
     /// Provider of mobile phone services.
     /// <see href="http://www.identity.org/ontologies/identity.owl#ServiceProvider"></see></summary>
-    let ServiceProvider =
-        Namespaced_IRI.parse _namespace_name "ServiceProvider" |> NamespacedName
-
+    let ServiceProvider = _prefix "ServiceProvider"
     /// <summary>
     /// The characteristics of a telephone number.
     /// <see href="http://www.identity.org/ontologies/identity.owl#TelephoneNumber"></see></summary>
-    let TelephoneNumber =
-        Namespaced_IRI.parse _namespace_name "TelephoneNumber" |> NamespacedName
-
+    let TelephoneNumber = _prefix "TelephoneNumber"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasTelephoneNumber"></see>
     /// </summary>
-    let hasTelephoneNumber =
-        Namespaced_IRI.parse _namespace_name "hasTelephoneNumber" |> NamespacedName
-
+    let hasTelephoneNumber = _prefix "hasTelephoneNumber"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#Telephone"></see>
     /// </summary>
-    let Telephone = Namespaced_IRI.parse _namespace_name "Telephone" |> NamespacedName
-
+    let Telephone = _prefix "Telephone"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#phoneNumber"></see>
     /// </summary>
-    let phoneNumber =
-        Namespaced_IRI.parse _namespace_name "phoneNumber" |> NamespacedName
-
+    let phoneNumber = _prefix "phoneNumber"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#phoneExtension"></see>
     /// </summary>
-    let phoneExtension =
-        Namespaced_IRI.parse _namespace_name "phoneExtension" |> NamespacedName
-
+    let phoneExtension = _prefix "phoneExtension"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#localCode"></see>
     /// </summary>
-    let localCode = Namespaced_IRI.parse _namespace_name "localCode" |> NamespacedName
+    let localCode = _prefix "localCode"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#intCode"></see>
     /// </summary>
-    let intCode = Namespaced_IRI.parse _namespace_name "intCode" |> NamespacedName
+    let intCode = _prefix "intCode"
     /// <summary>
     /// L'identifiant unique d'une entité qui possède une identité (agent).
     /// <see href="http://www.identity.org/ontologies/identity.owl#UID"></see></summary>
-    let UID = Namespaced_IRI.parse _namespace_name "UID" |> NamespacedName
+    let UID = _prefix "UID"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#uid"></see>
     /// </summary>
-    let uid = Namespaced_IRI.parse _namespace_name "uid" |> NamespacedName
-
+    let uid = _prefix "uid"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#ValidCertificate"></see>
     /// </summary>
-    let ValidCertificate =
-        Namespaced_IRI.parse _namespace_name "ValidCertificate" |> NamespacedName
-
+    let ValidCertificate = _prefix "ValidCertificate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#age"></see>
     /// </summary>
-    let age = Namespaced_IRI.parse _namespace_name "age" |> NamespacedName
+    let age = _prefix "age"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#data"></see>
     /// </summary>
-    let data = Namespaced_IRI.parse _namespace_name "data" |> NamespacedName
-
+    let data = _prefix "data"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#postalAddress"></see>
     /// </summary>
-    let postalAddress =
-        Namespaced_IRI.parse _namespace_name "postalAddress" |> NamespacedName
-
+    let postalAddress = _prefix "postalAddress"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#conservative"></see>
     /// </summary>
-    let conservative =
-        Namespaced_IRI.parse _namespace_name "conservative" |> NamespacedName
-
+    let conservative = _prefix "conservative"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#controls"></see>
     /// </summary>
-    let controls = Namespaced_IRI.parse _namespace_name "controls" |> NamespacedName
+    let controls = _prefix "controls"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#createdOn"></see>
     /// </summary>
-    let createdOn = Namespaced_IRI.parse _namespace_name "createdOn" |> NamespacedName
+    let createdOn = _prefix "createdOn"
     /// <summary>
     /// Time date information is described in the time standard ISO8601.
     /// <see href="http://www.identity.org/ontologies/identity.owl#timeDate"></see></summary>
-    let timeDate = Namespaced_IRI.parse _namespace_name "timeDate" |> NamespacedName
-
+    let timeDate = _prefix "timeDate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#extendedAddress"></see>
     /// </summary>
-    let extendedAddress =
-        Namespaced_IRI.parse _namespace_name "extendedAddress" |> NamespacedName
-
+    let extendedAddress = _prefix "extendedAddress"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#indivName"></see>
     /// </summary>
-    let indivName = Namespaced_IRI.parse _namespace_name "indivName" |> NamespacedName
+    let indivName = _prefix "indivName"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#forbids"></see>
     /// </summary>
-    let forbids = Namespaced_IRI.parse _namespace_name "forbids" |> NamespacedName
+    let forbids = _prefix "forbids"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasAction"></see>
     /// </summary>
-    let hasAction = Namespaced_IRI.parse _namespace_name "hasAction" |> NamespacedName
-
+    let hasAction = _prefix "hasAction"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasActionDate"></see>
     /// </summary>
-    let hasActionDate =
-        Namespaced_IRI.parse _namespace_name "hasActionDate" |> NamespacedName
-
+    let hasActionDate = _prefix "hasActionDate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasActor"></see>
     /// </summary>
-    let hasActor = Namespaced_IRI.parse _namespace_name "hasActor" |> NamespacedName
+    let hasActor = _prefix "hasActor"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasDate"></see>
     /// </summary>
-    let hasDate = Namespaced_IRI.parse _namespace_name "hasDate" |> NamespacedName
+    let hasDate = _prefix "hasDate"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasContext"></see>
     /// </summary>
-    let hasContext = Namespaced_IRI.parse _namespace_name "hasContext" |> NamespacedName
+    let hasContext = _prefix "hasContext"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasCreator"></see>
     /// </summary>
-    let hasCreator = Namespaced_IRI.parse _namespace_name "hasCreator" |> NamespacedName
-
+    let hasCreator = _prefix "hasCreator"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasDefaultPolicyMode"></see>
     /// </summary>
-    let hasDefaultPolicyMode =
-        Namespaced_IRI.parse _namespace_name "hasDefaultPolicyMode" |> NamespacedName
-
+    let hasDefaultPolicyMode = _prefix "hasDefaultPolicyMode"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasHistoricTarget"></see>
     /// </summary>
-    let hasHistoricTarget =
-        Namespaced_IRI.parse _namespace_name "hasHistoricTarget" |> NamespacedName
-
+    let hasHistoricTarget = _prefix "hasHistoricTarget"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasLocation"></see>
     /// </summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasTarget"></see>
     /// </summary>
-    let hasTarget = Namespaced_IRI.parse _namespace_name "hasTarget" |> NamespacedName
-
+    let hasTarget = _prefix "hasTarget"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#hasWorkInfo"></see>
     /// </summary>
-    let hasWorkInfo =
-        Namespaced_IRI.parse _namespace_name "hasWorkInfo" |> NamespacedName
-
+    let hasWorkInfo = _prefix "hasWorkInfo"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#telephoneNum"></see>
     /// </summary>
-    let telephoneNum =
-        Namespaced_IRI.parse _namespace_name "telephoneNum" |> NamespacedName
-
+    let telephoneNum = _prefix "telephoneNum"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#liberal"></see>
     /// </summary>
-    let liberal = Namespaced_IRI.parse _namespace_name "liberal" |> NamespacedName
+    let liberal = _prefix "liberal"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#metaPolicy"></see>
     /// </summary>
-    let metaPolicy = Namespaced_IRI.parse _namespace_name "metaPolicy" |> NamespacedName
+    let metaPolicy = _prefix "metaPolicy"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#permits"></see>
     /// </summary>
-    let permits = Namespaced_IRI.parse _namespace_name "permits" |> NamespacedName
-
+    let permits = _prefix "permits"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#postOfficeBox"></see>
     /// </summary>
-    let postOfficeBox =
-        Namespaced_IRI.parse _namespace_name "postOfficeBox" |> NamespacedName
-
+    let postOfficeBox = _prefix "postOfficeBox"
     /// <summary>
     ///   <see href="http://www.identity.org/ontologies/identity.owl#requires"></see>
     /// </summary>
-    let requires = Namespaced_IRI.parse _namespace_name "requires" |> NamespacedName
+    let requires = _prefix "requires"

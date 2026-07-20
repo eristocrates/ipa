@@ -1,6 +1,6 @@
 namespace https.www.w3.org.XML._1998.namespace_.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 /// https://www.w3.org/XML/1998/namespace
 module xml =

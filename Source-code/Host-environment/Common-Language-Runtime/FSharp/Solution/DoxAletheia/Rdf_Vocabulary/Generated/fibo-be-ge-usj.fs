@@ -1,1032 +1,703 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.NorthAmericanJurisdiction.USGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_usj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/AmericanSamoaEntity"></see>
     /// </summary>
-    let AmericanSamoaEntity =
-        Namespaced_IRI.parse _namespace_name "AmericanSamoaEntity" |> NamespacedName
-
+    let AmericanSamoaEntity = _prefix "AmericanSamoaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GovernmentOfAmericanSamoa"></see>
     /// </summary>
-    let GovernmentOfAmericanSamoa =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfAmericanSamoa" |> NamespacedName
-
+    let GovernmentOfAmericanSamoa = _prefix "GovernmentOfAmericanSamoa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/AmericanSamoaJurisdiction"></see>
     /// </summary>
-    let AmericanSamoaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "AmericanSamoaJurisdiction" |> NamespacedName
-
+    let AmericanSamoaJurisdiction = _prefix "AmericanSamoaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/CommonwealthOfPuertoRicoEntity"></see>
     /// </summary>
-    let CommonwealthOfPuertoRicoEntity =
-        Namespaced_IRI.parse _namespace_name "CommonwealthOfPuertoRicoEntity" |> NamespacedName
-
+    let CommonwealthOfPuertoRicoEntity = _prefix "CommonwealthOfPuertoRicoEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GovernmentOfPuertoRico"></see>
     /// </summary>
-    let GovernmentOfPuertoRico =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfPuertoRico" |> NamespacedName
+    let GovernmentOfPuertoRico = _prefix "GovernmentOfPuertoRico"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/CommonwealthOfTheNorthernMarianaIslandsEntity"></see>
     /// </summary>
     let CommonwealthOfTheNorthernMarianaIslandsEntity =
-        Namespaced_IRI.parse _namespace_name "CommonwealthOfTheNorthernMarianaIslandsEntity" |> NamespacedName
+        _prefix "CommonwealthOfTheNorthernMarianaIslandsEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GovernmentOfNorthernMarianaIslands"></see>
     /// </summary>
     let GovernmentOfNorthernMarianaIslands =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfNorthernMarianaIslands" |> NamespacedName
+        _prefix "GovernmentOfNorthernMarianaIslands"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/DistrictOfColumbiaEntity"></see>
     /// </summary>
-    let DistrictOfColumbiaEntity =
-        Namespaced_IRI.parse _namespace_name "DistrictOfColumbiaEntity" |> NamespacedName
-
+    let DistrictOfColumbiaEntity = _prefix "DistrictOfColumbiaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/DistrictOfColumbiaGovernment"></see>
     /// </summary>
-    let DistrictOfColumbiaGovernment =
-        Namespaced_IRI.parse _namespace_name "DistrictOfColumbiaGovernment" |> NamespacedName
-
+    let DistrictOfColumbiaGovernment = _prefix "DistrictOfColumbiaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/DistrictOfColumbiaJurisdiction"></see>
     /// </summary>
-    let DistrictOfColumbiaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "DistrictOfColumbiaJurisdiction" |> NamespacedName
-
+    let DistrictOfColumbiaJurisdiction = _prefix "DistrictOfColumbiaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GovernmentOfGuam"></see>
     /// </summary>
-    let GovernmentOfGuam =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfGuam" |> NamespacedName
-
+    let GovernmentOfGuam = _prefix "GovernmentOfGuam"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GuamJurisdiction"></see>
     /// </summary>
-    let GuamJurisdiction =
-        Namespaced_IRI.parse _namespace_name "GuamJurisdiction" |> NamespacedName
+    let GuamJurisdiction = _prefix "GuamJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/NorthernMarianaIslandsJurisdiction"></see>
     /// </summary>
     let NorthernMarianaIslandsJurisdiction =
-        Namespaced_IRI.parse _namespace_name "NorthernMarianaIslandsJurisdiction" |> NamespacedName
+        _prefix "NorthernMarianaIslandsJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/PuertoRicoJurisdiction"></see>
     /// </summary>
-    let PuertoRicoJurisdiction =
-        Namespaced_IRI.parse _namespace_name "PuertoRicoJurisdiction" |> NamespacedName
-
+    let PuertoRicoJurisdiction = _prefix "PuertoRicoJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GovernmentOfVirginIslands"></see>
     /// </summary>
-    let GovernmentOfVirginIslands =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfVirginIslands" |> NamespacedName
-
+    let GovernmentOfVirginIslands = _prefix "GovernmentOfVirginIslands"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/VirginIslandsJurisdiction"></see>
     /// </summary>
-    let VirginIslandsJurisdiction =
-        Namespaced_IRI.parse _namespace_name "VirginIslandsJurisdiction" |> NamespacedName
-
+    let VirginIslandsJurisdiction = _prefix "VirginIslandsJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/GuamEntity"></see>
     /// </summary>
-    let GuamEntity = Namespaced_IRI.parse _namespace_name "GuamEntity" |> NamespacedName
-
+    let GuamEntity = _prefix "GuamEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfAlabamaEntity"></see>
     /// </summary>
-    let StateOfAlabamaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfAlabamaEntity" |> NamespacedName
-
+    let StateOfAlabamaEntity = _prefix "StateOfAlabamaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfAlabamaGovernment"></see>
     /// </summary>
-    let StateOfAlabamaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfAlabamaGovernment" |> NamespacedName
-
+    let StateOfAlabamaGovernment = _prefix "StateOfAlabamaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfAlabamaJurisdiction"></see>
     /// </summary>
-    let StateOfAlabamaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfAlabamaJurisdiction" |> NamespacedName
-
+    let StateOfAlabamaJurisdiction = _prefix "StateOfAlabamaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfAlaskaEntity"></see>
     /// </summary>
-    let StateOfAlaskaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfAlaskaEntity" |> NamespacedName
-
+    let StateOfAlaskaEntity = _prefix "StateOfAlaskaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfAlaskaGovernment"></see>
     /// </summary>
-    let StateOfAlaskaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfAlaskaGovernment" |> NamespacedName
-
+    let StateOfAlaskaGovernment = _prefix "StateOfAlaskaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfAlaskaJurisdiction"></see>
     /// </summary>
-    let StateOfAlaskaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfAlaskaJurisdiction" |> NamespacedName
-
+    let StateOfAlaskaJurisdiction = _prefix "StateOfAlaskaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfArizonaEntity"></see>
     /// </summary>
-    let StateOfArizonaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfArizonaEntity" |> NamespacedName
-
+    let StateOfArizonaEntity = _prefix "StateOfArizonaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfArizonaGovernment"></see>
     /// </summary>
-    let StateOfArizonaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfArizonaGovernment" |> NamespacedName
-
+    let StateOfArizonaGovernment = _prefix "StateOfArizonaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfArizonaJurisdiction"></see>
     /// </summary>
-    let StateOfArizonaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfArizonaJurisdiction" |> NamespacedName
-
+    let StateOfArizonaJurisdiction = _prefix "StateOfArizonaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfArkansasEntity"></see>
     /// </summary>
-    let StateOfArkansasEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfArkansasEntity" |> NamespacedName
-
+    let StateOfArkansasEntity = _prefix "StateOfArkansasEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfArkansasGovernment"></see>
     /// </summary>
-    let StateOfArkansasGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfArkansasGovernment" |> NamespacedName
-
+    let StateOfArkansasGovernment = _prefix "StateOfArkansasGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfArkansasJurisdiction"></see>
     /// </summary>
-    let StateOfArkansasJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfArkansasJurisdiction" |> NamespacedName
-
+    let StateOfArkansasJurisdiction = _prefix "StateOfArkansasJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfCaliforniaEntity"></see>
     /// </summary>
-    let StateOfCaliforniaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfCaliforniaEntity" |> NamespacedName
-
+    let StateOfCaliforniaEntity = _prefix "StateOfCaliforniaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfCaliforniaGovernment"></see>
     /// </summary>
-    let StateOfCaliforniaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfCaliforniaGovernment" |> NamespacedName
-
+    let StateOfCaliforniaGovernment = _prefix "StateOfCaliforniaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfCaliforniaJurisdiction"></see>
     /// </summary>
-    let StateOfCaliforniaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfCaliforniaJurisdiction" |> NamespacedName
-
+    let StateOfCaliforniaJurisdiction = _prefix "StateOfCaliforniaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfColoradoEntity"></see>
     /// </summary>
-    let StateOfColoradoEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfColoradoEntity" |> NamespacedName
-
+    let StateOfColoradoEntity = _prefix "StateOfColoradoEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfColoradoGovernment"></see>
     /// </summary>
-    let StateOfColoradoGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfColoradoGovernment" |> NamespacedName
-
+    let StateOfColoradoGovernment = _prefix "StateOfColoradoGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfColoradoJurisdiction"></see>
     /// </summary>
-    let StateOfColoradoJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfColoradoJurisdiction" |> NamespacedName
-
+    let StateOfColoradoJurisdiction = _prefix "StateOfColoradoJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfConnecticutEntity"></see>
     /// </summary>
-    let StateOfConnecticutEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfConnecticutEntity" |> NamespacedName
-
+    let StateOfConnecticutEntity = _prefix "StateOfConnecticutEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfConnecticutGovernment"></see>
     /// </summary>
-    let StateOfConnecticutGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfConnecticutGovernment" |> NamespacedName
-
+    let StateOfConnecticutGovernment = _prefix "StateOfConnecticutGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfConnecticutJurisdiction"></see>
     /// </summary>
-    let StateOfConnecticutJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfConnecticutJurisdiction" |> NamespacedName
-
+    let StateOfConnecticutJurisdiction = _prefix "StateOfConnecticutJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfDelawareEntity"></see>
     /// </summary>
-    let StateOfDelawareEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfDelawareEntity" |> NamespacedName
-
+    let StateOfDelawareEntity = _prefix "StateOfDelawareEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfDelawareGovernment"></see>
     /// </summary>
-    let StateOfDelawareGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfDelawareGovernment" |> NamespacedName
-
+    let StateOfDelawareGovernment = _prefix "StateOfDelawareGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfDelawareJurisdiction"></see>
     /// </summary>
-    let StateOfDelawareJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfDelawareJurisdiction" |> NamespacedName
-
+    let StateOfDelawareJurisdiction = _prefix "StateOfDelawareJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfFloridaEntity"></see>
     /// </summary>
-    let StateOfFloridaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfFloridaEntity" |> NamespacedName
-
+    let StateOfFloridaEntity = _prefix "StateOfFloridaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfFloridaGovernment"></see>
     /// </summary>
-    let StateOfFloridaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfFloridaGovernment" |> NamespacedName
-
+    let StateOfFloridaGovernment = _prefix "StateOfFloridaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfFloridaJurisdiction"></see>
     /// </summary>
-    let StateOfFloridaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfFloridaJurisdiction" |> NamespacedName
-
+    let StateOfFloridaJurisdiction = _prefix "StateOfFloridaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfGeorgiaEntity"></see>
     /// </summary>
-    let StateOfGeorgiaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfGeorgiaEntity" |> NamespacedName
-
+    let StateOfGeorgiaEntity = _prefix "StateOfGeorgiaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfGeorgiaGovernment"></see>
     /// </summary>
-    let StateOfGeorgiaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfGeorgiaGovernment" |> NamespacedName
-
+    let StateOfGeorgiaGovernment = _prefix "StateOfGeorgiaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfGeorgiaJurisdiction"></see>
     /// </summary>
-    let StateOfGeorgiaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfGeorgiaJurisdiction" |> NamespacedName
-
+    let StateOfGeorgiaJurisdiction = _prefix "StateOfGeorgiaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfHawaiiEntity"></see>
     /// </summary>
-    let StateOfHawaiiEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfHawaiiEntity" |> NamespacedName
-
+    let StateOfHawaiiEntity = _prefix "StateOfHawaiiEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfHawaiiGovernment"></see>
     /// </summary>
-    let StateOfHawaiiGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfHawaiiGovernment" |> NamespacedName
-
+    let StateOfHawaiiGovernment = _prefix "StateOfHawaiiGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfHawaiiJurisdiction"></see>
     /// </summary>
-    let StateOfHawaiiJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfHawaiiJurisdiction" |> NamespacedName
-
+    let StateOfHawaiiJurisdiction = _prefix "StateOfHawaiiJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIdahoEntity"></see>
     /// </summary>
-    let StateOfIdahoEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfIdahoEntity" |> NamespacedName
-
+    let StateOfIdahoEntity = _prefix "StateOfIdahoEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIdahoGovernment"></see>
     /// </summary>
-    let StateOfIdahoGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfIdahoGovernment" |> NamespacedName
-
+    let StateOfIdahoGovernment = _prefix "StateOfIdahoGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIdahoJurisdiction"></see>
     /// </summary>
-    let StateOfIdahoJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfIdahoJurisdiction" |> NamespacedName
-
+    let StateOfIdahoJurisdiction = _prefix "StateOfIdahoJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIllinoisEntity"></see>
     /// </summary>
-    let StateOfIllinoisEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfIllinoisEntity" |> NamespacedName
-
+    let StateOfIllinoisEntity = _prefix "StateOfIllinoisEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIllinoisGovernment"></see>
     /// </summary>
-    let StateOfIllinoisGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfIllinoisGovernment" |> NamespacedName
-
+    let StateOfIllinoisGovernment = _prefix "StateOfIllinoisGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIllinoisJurisdiction"></see>
     /// </summary>
-    let StateOfIllinoisJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfIllinoisJurisdiction" |> NamespacedName
-
+    let StateOfIllinoisJurisdiction = _prefix "StateOfIllinoisJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIndianaEntity"></see>
     /// </summary>
-    let StateOfIndianaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfIndianaEntity" |> NamespacedName
-
+    let StateOfIndianaEntity = _prefix "StateOfIndianaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIndianaGovernment"></see>
     /// </summary>
-    let StateOfIndianaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfIndianaGovernment" |> NamespacedName
-
+    let StateOfIndianaGovernment = _prefix "StateOfIndianaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIndianaJurisdiction"></see>
     /// </summary>
-    let StateOfIndianaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfIndianaJurisdiction" |> NamespacedName
-
+    let StateOfIndianaJurisdiction = _prefix "StateOfIndianaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIowaEntity"></see>
     /// </summary>
-    let StateOfIowaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfIowaEntity" |> NamespacedName
-
+    let StateOfIowaEntity = _prefix "StateOfIowaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIowaGovernment"></see>
     /// </summary>
-    let StateOfIowaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfIowaGovernment" |> NamespacedName
-
+    let StateOfIowaGovernment = _prefix "StateOfIowaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfIowaJurisdiction"></see>
     /// </summary>
-    let StateOfIowaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfIowaJurisdiction" |> NamespacedName
-
+    let StateOfIowaJurisdiction = _prefix "StateOfIowaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfKansasEntity"></see>
     /// </summary>
-    let StateOfKansasEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfKansasEntity" |> NamespacedName
-
+    let StateOfKansasEntity = _prefix "StateOfKansasEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfKansasGovernment"></see>
     /// </summary>
-    let StateOfKansasGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfKansasGovernment" |> NamespacedName
-
+    let StateOfKansasGovernment = _prefix "StateOfKansasGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfKansasJurisdiction"></see>
     /// </summary>
-    let StateOfKansasJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfKansasJurisdiction" |> NamespacedName
-
+    let StateOfKansasJurisdiction = _prefix "StateOfKansasJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfKentuckyEntity"></see>
     /// </summary>
-    let StateOfKentuckyEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfKentuckyEntity" |> NamespacedName
-
+    let StateOfKentuckyEntity = _prefix "StateOfKentuckyEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfKentuckyGovernment"></see>
     /// </summary>
-    let StateOfKentuckyGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfKentuckyGovernment" |> NamespacedName
-
+    let StateOfKentuckyGovernment = _prefix "StateOfKentuckyGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfKentuckyJurisdiction"></see>
     /// </summary>
-    let StateOfKentuckyJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfKentuckyJurisdiction" |> NamespacedName
-
+    let StateOfKentuckyJurisdiction = _prefix "StateOfKentuckyJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfLouisianaEntity"></see>
     /// </summary>
-    let StateOfLouisianaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfLouisianaEntity" |> NamespacedName
-
+    let StateOfLouisianaEntity = _prefix "StateOfLouisianaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfLouisianaGovernment"></see>
     /// </summary>
-    let StateOfLouisianaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfLouisianaGovernment" |> NamespacedName
-
+    let StateOfLouisianaGovernment = _prefix "StateOfLouisianaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfLouisianaJurisdiction"></see>
     /// </summary>
-    let StateOfLouisianaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfLouisianaJurisdiction" |> NamespacedName
-
+    let StateOfLouisianaJurisdiction = _prefix "StateOfLouisianaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMaineEntity"></see>
     /// </summary>
-    let StateOfMaineEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMaineEntity" |> NamespacedName
-
+    let StateOfMaineEntity = _prefix "StateOfMaineEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMaineGovernment"></see>
     /// </summary>
-    let StateOfMaineGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMaineGovernment" |> NamespacedName
-
+    let StateOfMaineGovernment = _prefix "StateOfMaineGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMaineJurisdiction"></see>
     /// </summary>
-    let StateOfMaineJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMaineJurisdiction" |> NamespacedName
-
+    let StateOfMaineJurisdiction = _prefix "StateOfMaineJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMarylandEntity"></see>
     /// </summary>
-    let StateOfMarylandEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMarylandEntity" |> NamespacedName
-
+    let StateOfMarylandEntity = _prefix "StateOfMarylandEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMarylandGovernment"></see>
     /// </summary>
-    let StateOfMarylandGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMarylandGovernment" |> NamespacedName
-
+    let StateOfMarylandGovernment = _prefix "StateOfMarylandGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMarylandJurisdiction"></see>
     /// </summary>
-    let StateOfMarylandJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMarylandJurisdiction" |> NamespacedName
-
+    let StateOfMarylandJurisdiction = _prefix "StateOfMarylandJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMassachusettsEntity"></see>
     /// </summary>
-    let StateOfMassachusettsEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMassachusettsEntity" |> NamespacedName
-
+    let StateOfMassachusettsEntity = _prefix "StateOfMassachusettsEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMassachusettsGovernment"></see>
     /// </summary>
-    let StateOfMassachusettsGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMassachusettsGovernment" |> NamespacedName
-
+    let StateOfMassachusettsGovernment = _prefix "StateOfMassachusettsGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMassachusettsJurisdiction"></see>
     /// </summary>
-    let StateOfMassachusettsJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMassachusettsJurisdiction" |> NamespacedName
-
+    let StateOfMassachusettsJurisdiction = _prefix "StateOfMassachusettsJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMichiganEntity"></see>
     /// </summary>
-    let StateOfMichiganEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMichiganEntity" |> NamespacedName
-
+    let StateOfMichiganEntity = _prefix "StateOfMichiganEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMichiganGovernment"></see>
     /// </summary>
-    let StateOfMichiganGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMichiganGovernment" |> NamespacedName
-
+    let StateOfMichiganGovernment = _prefix "StateOfMichiganGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMichiganJurisdiction"></see>
     /// </summary>
-    let StateOfMichiganJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMichiganJurisdiction" |> NamespacedName
-
+    let StateOfMichiganJurisdiction = _prefix "StateOfMichiganJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMinnesotaEntity"></see>
     /// </summary>
-    let StateOfMinnesotaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMinnesotaEntity" |> NamespacedName
-
+    let StateOfMinnesotaEntity = _prefix "StateOfMinnesotaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMinnesotaGovernment"></see>
     /// </summary>
-    let StateOfMinnesotaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMinnesotaGovernment" |> NamespacedName
-
+    let StateOfMinnesotaGovernment = _prefix "StateOfMinnesotaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMinnesotaJurisdiction"></see>
     /// </summary>
-    let StateOfMinnesotaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMinnesotaJurisdiction" |> NamespacedName
-
+    let StateOfMinnesotaJurisdiction = _prefix "StateOfMinnesotaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMississippiEntity"></see>
     /// </summary>
-    let StateOfMississippiEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMississippiEntity" |> NamespacedName
-
+    let StateOfMississippiEntity = _prefix "StateOfMississippiEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMississippiGovernment"></see>
     /// </summary>
-    let StateOfMississippiGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMississippiGovernment" |> NamespacedName
-
+    let StateOfMississippiGovernment = _prefix "StateOfMississippiGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMississippiJurisdiction"></see>
     /// </summary>
-    let StateOfMississippiJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMississippiJurisdiction" |> NamespacedName
-
+    let StateOfMississippiJurisdiction = _prefix "StateOfMississippiJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMissouriEntity"></see>
     /// </summary>
-    let StateOfMissouriEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMissouriEntity" |> NamespacedName
-
+    let StateOfMissouriEntity = _prefix "StateOfMissouriEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMissouriGovernment"></see>
     /// </summary>
-    let StateOfMissouriGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMissouriGovernment" |> NamespacedName
-
+    let StateOfMissouriGovernment = _prefix "StateOfMissouriGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMissouriJurisdiction"></see>
     /// </summary>
-    let StateOfMissouriJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMissouriJurisdiction" |> NamespacedName
-
+    let StateOfMissouriJurisdiction = _prefix "StateOfMissouriJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMontanaEntity"></see>
     /// </summary>
-    let StateOfMontanaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfMontanaEntity" |> NamespacedName
-
+    let StateOfMontanaEntity = _prefix "StateOfMontanaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMontanaGovernment"></see>
     /// </summary>
-    let StateOfMontanaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfMontanaGovernment" |> NamespacedName
-
+    let StateOfMontanaGovernment = _prefix "StateOfMontanaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfMontanaJurisdiction"></see>
     /// </summary>
-    let StateOfMontanaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfMontanaJurisdiction" |> NamespacedName
-
+    let StateOfMontanaJurisdiction = _prefix "StateOfMontanaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNebraskaEntity"></see>
     /// </summary>
-    let StateOfNebraskaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNebraskaEntity" |> NamespacedName
-
+    let StateOfNebraskaEntity = _prefix "StateOfNebraskaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNebraskaGovernment"></see>
     /// </summary>
-    let StateOfNebraskaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNebraskaGovernment" |> NamespacedName
-
+    let StateOfNebraskaGovernment = _prefix "StateOfNebraskaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNebraskaJurisdiction"></see>
     /// </summary>
-    let StateOfNebraskaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNebraskaJurisdiction" |> NamespacedName
-
+    let StateOfNebraskaJurisdiction = _prefix "StateOfNebraskaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNevadaEntity"></see>
     /// </summary>
-    let StateOfNevadaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNevadaEntity" |> NamespacedName
-
+    let StateOfNevadaEntity = _prefix "StateOfNevadaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNevadaGovernment"></see>
     /// </summary>
-    let StateOfNevadaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNevadaGovernment" |> NamespacedName
-
+    let StateOfNevadaGovernment = _prefix "StateOfNevadaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNevadaJurisdiction"></see>
     /// </summary>
-    let StateOfNevadaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNevadaJurisdiction" |> NamespacedName
-
+    let StateOfNevadaJurisdiction = _prefix "StateOfNevadaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewHampshireEntity"></see>
     /// </summary>
-    let StateOfNewHampshireEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNewHampshireEntity" |> NamespacedName
-
+    let StateOfNewHampshireEntity = _prefix "StateOfNewHampshireEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewHampshireGovernment"></see>
     /// </summary>
-    let StateOfNewHampshireGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNewHampshireGovernment" |> NamespacedName
-
+    let StateOfNewHampshireGovernment = _prefix "StateOfNewHampshireGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewHampshireJurisdiction"></see>
     /// </summary>
-    let StateOfNewHampshireJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNewHampshireJurisdiction" |> NamespacedName
-
+    let StateOfNewHampshireJurisdiction = _prefix "StateOfNewHampshireJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewJerseyEntity"></see>
     /// </summary>
-    let StateOfNewJerseyEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNewJerseyEntity" |> NamespacedName
-
+    let StateOfNewJerseyEntity = _prefix "StateOfNewJerseyEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewJerseyGovernment"></see>
     /// </summary>
-    let StateOfNewJerseyGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNewJerseyGovernment" |> NamespacedName
-
+    let StateOfNewJerseyGovernment = _prefix "StateOfNewJerseyGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewJerseyJurisdiction"></see>
     /// </summary>
-    let StateOfNewJerseyJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNewJerseyJurisdiction" |> NamespacedName
-
+    let StateOfNewJerseyJurisdiction = _prefix "StateOfNewJerseyJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewMexicoEntity"></see>
     /// </summary>
-    let StateOfNewMexicoEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNewMexicoEntity" |> NamespacedName
-
+    let StateOfNewMexicoEntity = _prefix "StateOfNewMexicoEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewMexicoGovernment"></see>
     /// </summary>
-    let StateOfNewMexicoGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNewMexicoGovernment" |> NamespacedName
-
+    let StateOfNewMexicoGovernment = _prefix "StateOfNewMexicoGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewMexicoJurisdiction"></see>
     /// </summary>
-    let StateOfNewMexicoJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNewMexicoJurisdiction" |> NamespacedName
-
+    let StateOfNewMexicoJurisdiction = _prefix "StateOfNewMexicoJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewYorkEntity"></see>
     /// </summary>
-    let StateOfNewYorkEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNewYorkEntity" |> NamespacedName
-
+    let StateOfNewYorkEntity = _prefix "StateOfNewYorkEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewYorkGovernment"></see>
     /// </summary>
-    let StateOfNewYorkGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNewYorkGovernment" |> NamespacedName
-
+    let StateOfNewYorkGovernment = _prefix "StateOfNewYorkGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNewYorkJurisdiction"></see>
     /// </summary>
-    let StateOfNewYorkJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNewYorkJurisdiction" |> NamespacedName
-
+    let StateOfNewYorkJurisdiction = _prefix "StateOfNewYorkJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNorthCarolinaEntity"></see>
     /// </summary>
-    let StateOfNorthCarolinaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNorthCarolinaEntity" |> NamespacedName
-
+    let StateOfNorthCarolinaEntity = _prefix "StateOfNorthCarolinaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNorthCarolinaGovernment"></see>
     /// </summary>
-    let StateOfNorthCarolinaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNorthCarolinaGovernment" |> NamespacedName
-
+    let StateOfNorthCarolinaGovernment = _prefix "StateOfNorthCarolinaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNorthCarolinaJurisdiction"></see>
     /// </summary>
-    let StateOfNorthCarolinaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNorthCarolinaJurisdiction" |> NamespacedName
-
+    let StateOfNorthCarolinaJurisdiction = _prefix "StateOfNorthCarolinaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNorthDakotaEntity"></see>
     /// </summary>
-    let StateOfNorthDakotaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfNorthDakotaEntity" |> NamespacedName
-
+    let StateOfNorthDakotaEntity = _prefix "StateOfNorthDakotaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNorthDakotaGovernment"></see>
     /// </summary>
-    let StateOfNorthDakotaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfNorthDakotaGovernment" |> NamespacedName
-
+    let StateOfNorthDakotaGovernment = _prefix "StateOfNorthDakotaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfNorthDakotaJurisdiction"></see>
     /// </summary>
-    let StateOfNorthDakotaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfNorthDakotaJurisdiction" |> NamespacedName
-
+    let StateOfNorthDakotaJurisdiction = _prefix "StateOfNorthDakotaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOhioEntity"></see>
     /// </summary>
-    let StateOfOhioEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfOhioEntity" |> NamespacedName
-
+    let StateOfOhioEntity = _prefix "StateOfOhioEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOhioGovernment"></see>
     /// </summary>
-    let StateOfOhioGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfOhioGovernment" |> NamespacedName
-
+    let StateOfOhioGovernment = _prefix "StateOfOhioGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOhioJurisdiction"></see>
     /// </summary>
-    let StateOfOhioJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfOhioJurisdiction" |> NamespacedName
-
+    let StateOfOhioJurisdiction = _prefix "StateOfOhioJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOklahomaEntity"></see>
     /// </summary>
-    let StateOfOklahomaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfOklahomaEntity" |> NamespacedName
-
+    let StateOfOklahomaEntity = _prefix "StateOfOklahomaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOklahomaGovernment"></see>
     /// </summary>
-    let StateOfOklahomaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfOklahomaGovernment" |> NamespacedName
-
+    let StateOfOklahomaGovernment = _prefix "StateOfOklahomaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOklahomaJurisdiction"></see>
     /// </summary>
-    let StateOfOklahomaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfOklahomaJurisdiction" |> NamespacedName
-
+    let StateOfOklahomaJurisdiction = _prefix "StateOfOklahomaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOregonEntity"></see>
     /// </summary>
-    let StateOfOregonEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfOregonEntity" |> NamespacedName
-
+    let StateOfOregonEntity = _prefix "StateOfOregonEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOregonGovernment"></see>
     /// </summary>
-    let StateOfOregonGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfOregonGovernment" |> NamespacedName
-
+    let StateOfOregonGovernment = _prefix "StateOfOregonGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfOregonJurisdiction"></see>
     /// </summary>
-    let StateOfOregonJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfOregonJurisdiction" |> NamespacedName
-
+    let StateOfOregonJurisdiction = _prefix "StateOfOregonJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfPennsylvaniaEntity"></see>
     /// </summary>
-    let StateOfPennsylvaniaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfPennsylvaniaEntity" |> NamespacedName
-
+    let StateOfPennsylvaniaEntity = _prefix "StateOfPennsylvaniaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfPennsylvaniaGovernment"></see>
     /// </summary>
-    let StateOfPennsylvaniaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfPennsylvaniaGovernment" |> NamespacedName
-
+    let StateOfPennsylvaniaGovernment = _prefix "StateOfPennsylvaniaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfPennsylvaniaJurisdiction"></see>
     /// </summary>
-    let StateOfPennsylvaniaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfPennsylvaniaJurisdiction" |> NamespacedName
-
+    let StateOfPennsylvaniaJurisdiction = _prefix "StateOfPennsylvaniaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfRhodeIslandEntity"></see>
     /// </summary>
-    let StateOfRhodeIslandEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfRhodeIslandEntity" |> NamespacedName
-
+    let StateOfRhodeIslandEntity = _prefix "StateOfRhodeIslandEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfRhodeIslandGovernment"></see>
     /// </summary>
-    let StateOfRhodeIslandGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfRhodeIslandGovernment" |> NamespacedName
-
+    let StateOfRhodeIslandGovernment = _prefix "StateOfRhodeIslandGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfRhodeIslandJurisdiction"></see>
     /// </summary>
-    let StateOfRhodeIslandJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfRhodeIslandJurisdiction" |> NamespacedName
-
+    let StateOfRhodeIslandJurisdiction = _prefix "StateOfRhodeIslandJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfSouthCarolinaEntity"></see>
     /// </summary>
-    let StateOfSouthCarolinaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfSouthCarolinaEntity" |> NamespacedName
-
+    let StateOfSouthCarolinaEntity = _prefix "StateOfSouthCarolinaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfSouthCarolinaGovernment"></see>
     /// </summary>
-    let StateOfSouthCarolinaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfSouthCarolinaGovernment" |> NamespacedName
-
+    let StateOfSouthCarolinaGovernment = _prefix "StateOfSouthCarolinaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfSouthCarolinaJurisdiction"></see>
     /// </summary>
-    let StateOfSouthCarolinaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfSouthCarolinaJurisdiction" |> NamespacedName
-
+    let StateOfSouthCarolinaJurisdiction = _prefix "StateOfSouthCarolinaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfSouthDakotaEntity"></see>
     /// </summary>
-    let StateOfSouthDakotaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfSouthDakotaEntity" |> NamespacedName
-
+    let StateOfSouthDakotaEntity = _prefix "StateOfSouthDakotaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfSouthDakotaGovernment"></see>
     /// </summary>
-    let StateOfSouthDakotaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfSouthDakotaGovernment" |> NamespacedName
-
+    let StateOfSouthDakotaGovernment = _prefix "StateOfSouthDakotaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfSouthDakotaJurisdiction"></see>
     /// </summary>
-    let StateOfSouthDakotaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfSouthDakotaJurisdiction" |> NamespacedName
-
+    let StateOfSouthDakotaJurisdiction = _prefix "StateOfSouthDakotaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfTennesseeEntity"></see>
     /// </summary>
-    let StateOfTennesseeEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfTennesseeEntity" |> NamespacedName
-
+    let StateOfTennesseeEntity = _prefix "StateOfTennesseeEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfTennesseeGovernment"></see>
     /// </summary>
-    let StateOfTennesseeGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfTennesseeGovernment" |> NamespacedName
-
+    let StateOfTennesseeGovernment = _prefix "StateOfTennesseeGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfTennesseeJurisdiction"></see>
     /// </summary>
-    let StateOfTennesseeJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfTennesseeJurisdiction" |> NamespacedName
-
+    let StateOfTennesseeJurisdiction = _prefix "StateOfTennesseeJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfTexasEntity"></see>
     /// </summary>
-    let StateOfTexasEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfTexasEntity" |> NamespacedName
-
+    let StateOfTexasEntity = _prefix "StateOfTexasEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfTexasGovernment"></see>
     /// </summary>
-    let StateOfTexasGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfTexasGovernment" |> NamespacedName
-
+    let StateOfTexasGovernment = _prefix "StateOfTexasGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfTexasJurisdiction"></see>
     /// </summary>
-    let StateOfTexasJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfTexasJurisdiction" |> NamespacedName
-
+    let StateOfTexasJurisdiction = _prefix "StateOfTexasJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfUtahEntity"></see>
     /// </summary>
-    let StateOfUtahEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfUtahEntity" |> NamespacedName
-
+    let StateOfUtahEntity = _prefix "StateOfUtahEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfUtahGovernment"></see>
     /// </summary>
-    let StateOfUtahGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfUtahGovernment" |> NamespacedName
-
+    let StateOfUtahGovernment = _prefix "StateOfUtahGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfUtahJurisdiction"></see>
     /// </summary>
-    let StateOfUtahJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfUtahJurisdiction" |> NamespacedName
-
+    let StateOfUtahJurisdiction = _prefix "StateOfUtahJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfVermontEntity"></see>
     /// </summary>
-    let StateOfVermontEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfVermontEntity" |> NamespacedName
-
+    let StateOfVermontEntity = _prefix "StateOfVermontEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfVermontGovernment"></see>
     /// </summary>
-    let StateOfVermontGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfVermontGovernment" |> NamespacedName
-
+    let StateOfVermontGovernment = _prefix "StateOfVermontGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfVermontJurisdiction"></see>
     /// </summary>
-    let StateOfVermontJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfVermontJurisdiction" |> NamespacedName
-
+    let StateOfVermontJurisdiction = _prefix "StateOfVermontJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfVirginiaEntity"></see>
     /// </summary>
-    let StateOfVirginiaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfVirginiaEntity" |> NamespacedName
-
+    let StateOfVirginiaEntity = _prefix "StateOfVirginiaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfVirginiaGovernment"></see>
     /// </summary>
-    let StateOfVirginiaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfVirginiaGovernment" |> NamespacedName
-
+    let StateOfVirginiaGovernment = _prefix "StateOfVirginiaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfVirginiaJurisdiction"></see>
     /// </summary>
-    let StateOfVirginiaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfVirginiaJurisdiction" |> NamespacedName
-
+    let StateOfVirginiaJurisdiction = _prefix "StateOfVirginiaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWashingtonEntity"></see>
     /// </summary>
-    let StateOfWashingtonEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfWashingtonEntity" |> NamespacedName
-
+    let StateOfWashingtonEntity = _prefix "StateOfWashingtonEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWashingtonGovernment"></see>
     /// </summary>
-    let StateOfWashingtonGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfWashingtonGovernment" |> NamespacedName
-
+    let StateOfWashingtonGovernment = _prefix "StateOfWashingtonGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWashingtonJurisdiction"></see>
     /// </summary>
-    let StateOfWashingtonJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfWashingtonJurisdiction" |> NamespacedName
-
+    let StateOfWashingtonJurisdiction = _prefix "StateOfWashingtonJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWestVirginiaEntity"></see>
     /// </summary>
-    let StateOfWestVirginiaEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfWestVirginiaEntity" |> NamespacedName
-
+    let StateOfWestVirginiaEntity = _prefix "StateOfWestVirginiaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWestVirginiaGovernment"></see>
     /// </summary>
-    let StateOfWestVirginiaGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfWestVirginiaGovernment" |> NamespacedName
-
+    let StateOfWestVirginiaGovernment = _prefix "StateOfWestVirginiaGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWestVirginiaJurisdiction"></see>
     /// </summary>
-    let StateOfWestVirginiaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfWestVirginiaJurisdiction" |> NamespacedName
-
+    let StateOfWestVirginiaJurisdiction = _prefix "StateOfWestVirginiaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWisconsinEntity"></see>
     /// </summary>
-    let StateOfWisconsinEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfWisconsinEntity" |> NamespacedName
-
+    let StateOfWisconsinEntity = _prefix "StateOfWisconsinEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWisconsinGovernment"></see>
     /// </summary>
-    let StateOfWisconsinGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfWisconsinGovernment" |> NamespacedName
-
+    let StateOfWisconsinGovernment = _prefix "StateOfWisconsinGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWisconsinJurisdiction"></see>
     /// </summary>
-    let StateOfWisconsinJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfWisconsinJurisdiction" |> NamespacedName
-
+    let StateOfWisconsinJurisdiction = _prefix "StateOfWisconsinJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWyomingEntity"></see>
     /// </summary>
-    let StateOfWyomingEntity =
-        Namespaced_IRI.parse _namespace_name "StateOfWyomingEntity" |> NamespacedName
-
+    let StateOfWyomingEntity = _prefix "StateOfWyomingEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWyomingGovernment"></see>
     /// </summary>
-    let StateOfWyomingGovernment =
-        Namespaced_IRI.parse _namespace_name "StateOfWyomingGovernment" |> NamespacedName
-
+    let StateOfWyomingGovernment = _prefix "StateOfWyomingGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/StateOfWyomingJurisdiction"></see>
     /// </summary>
-    let StateOfWyomingJurisdiction =
-        Namespaced_IRI.parse _namespace_name "StateOfWyomingJurisdiction" |> NamespacedName
-
+    let StateOfWyomingJurisdiction = _prefix "StateOfWyomingJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/UnitedStatesEntity"></see>
     /// </summary>
-    let UnitedStatesEntity =
-        Namespaced_IRI.parse _namespace_name "UnitedStatesEntity" |> NamespacedName
-
+    let UnitedStatesEntity = _prefix "UnitedStatesEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/UnitedStatesGovernment"></see>
     /// </summary>
-    let UnitedStatesGovernment =
-        Namespaced_IRI.parse _namespace_name "UnitedStatesGovernment" |> NamespacedName
-
+    let UnitedStatesGovernment = _prefix "UnitedStatesGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/UnitedStatesJurisdiction"></see>
     /// </summary>
-    let UnitedStatesJurisdiction =
-        Namespaced_IRI.parse _namespace_name "UnitedStatesJurisdiction" |> NamespacedName
-
+    let UnitedStatesJurisdiction = _prefix "UnitedStatesJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/VirginIslandsEntity"></see>
     /// </summary>
-    let VirginIslandsEntity =
-        Namespaced_IRI.parse _namespace_name "VirginIslandsEntity" |> NamespacedName
+    let VirginIslandsEntity = _prefix "VirginIslandsEntity"

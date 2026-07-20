@@ -1,223 +1,175 @@
 namespace http.archivi.ibc.regione.emilia_romagna.it.ontology.eac_cpf.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module eac_cpf =
     let _namespace_name =
         "http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/biogHist"></see>
     /// </summary>
-    let biogHist = Namespaced_IRI.parse _namespace_name "biogHist" |> NamespacedName
+    let biogHist = _prefix "biogHist"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/entity"></see>
     /// </summary>
-    let entity = Namespaced_IRI.parse _namespace_name "entity" |> NamespacedName
+    let entity = _prefix "entity"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/control"></see>
     /// </summary>
-    let control = Namespaced_IRI.parse _namespace_name "control" |> NamespacedName
-
+    let control = _prefix "control"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/controlArea"></see>
     /// </summary>
-    let controlArea =
-        Namespaced_IRI.parse _namespace_name "controlArea" |> NamespacedName
-
+    let controlArea = _prefix "controlArea"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceHistory"></see>
     /// </summary>
-    let maintenanceHistory =
-        Namespaced_IRI.parse _namespace_name "maintenanceHistory" |> NamespacedName
-
+    let maintenanceHistory = _prefix "maintenanceHistory"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/publicationStatus"></see>
     /// </summary>
-    let publicationStatus =
-        Namespaced_IRI.parse _namespace_name "publicationStatus" |> NamespacedName
-
+    let publicationStatus = _prefix "publicationStatus"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/source"></see>
     /// </summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
-
+    let source = _prefix "source"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/conventionDeclaration"></see>
     /// </summary>
-    let conventionDeclaration =
-        Namespaced_IRI.parse _namespace_name "conventionDeclaration" |> NamespacedName
-
+    let conventionDeclaration = _prefix "conventionDeclaration"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/recordID"></see>
     /// </summary>
-    let recordID = Namespaced_IRI.parse _namespace_name "recordID" |> NamespacedName
-
+    let recordID = _prefix "recordID"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localTypeDeclaration"></see>
     /// </summary>
-    let localTypeDeclaration =
-        Namespaced_IRI.parse _namespace_name "localTypeDeclaration" |> NamespacedName
-
+    let localTypeDeclaration = _prefix "localTypeDeclaration"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceStatus"></see>
     /// </summary>
-    let maintenanceStatus =
-        Namespaced_IRI.parse _namespace_name "maintenanceStatus" |> NamespacedName
-
+    let maintenanceStatus = _prefix "maintenanceStatus"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/maintenanceAgency"></see>
     /// </summary>
-    let maintenanceAgency =
-        Namespaced_IRI.parse _namespace_name "maintenanceAgency" |> NamespacedName
-
+    let maintenanceAgency = _prefix "maintenanceAgency"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/corporateBody"></see>
     /// </summary>
-    let corporateBody =
-        Namespaced_IRI.parse _namespace_name "corporateBody" |> NamespacedName
-
+    let corporateBody = _prefix "corporateBody"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelation"></see>
     /// </summary>
-    let cpfRelation =
-        Namespaced_IRI.parse _namespace_name "cpfRelation" |> NamespacedName
-
+    let cpfRelation = _prefix "cpfRelation"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/relation"></see>
     /// </summary>
-    let relation = Namespaced_IRI.parse _namespace_name "relation" |> NamespacedName
-
+    let relation = _prefix "relation"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/cpfRelationType"></see>
     /// </summary>
-    let cpfRelationType =
-        Namespaced_IRI.parse _namespace_name "cpfRelationType" |> NamespacedName
-
+    let cpfRelationType = _prefix "cpfRelationType"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/descriptionArea"></see>
     /// </summary>
-    let descriptionArea =
-        Namespaced_IRI.parse _namespace_name "descriptionArea" |> NamespacedName
-
+    let descriptionArea = _prefix "descriptionArea"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/existDates"></see>
     /// </summary>
-    let existDates = Namespaced_IRI.parse _namespace_name "existDates" |> NamespacedName
+    let existDates = _prefix "existDates"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameEntry"></see>
     /// </summary>
-    let nameEntry = Namespaced_IRI.parse _namespace_name "nameEntry" |> NamespacedName
-
+    let nameEntry = _prefix "nameEntry"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelation"></see>
     /// </summary>
-    let resourceRelation =
-        Namespaced_IRI.parse _namespace_name "resourceRelation" |> NamespacedName
-
+    let resourceRelation = _prefix "resourceRelation"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/eac-cpf.rdf"></see>
     /// </summary>
-    let ``eac-cpf.rdf`` =
-        Namespaced_IRI.parse _namespace_name "eac-cpf.rdf" |> NamespacedName
-
+    let ``eac-cpf.rdf`` = _prefix "eac-cpf.rdf"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/family"></see>
     /// </summary>
-    let family = Namespaced_IRI.parse _namespace_name "family" |> NamespacedName
+    let family = _prefix "family"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/function"></see>
     /// </summary>
-    let function_ = Namespaced_IRI.parse _namespace_name "function" |> NamespacedName
-
+    let function_ = _prefix "function"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/generalContext"></see>
     /// </summary>
-    let generalContext =
-        Namespaced_IRI.parse _namespace_name "generalContext" |> NamespacedName
-
+    let generalContext = _prefix "generalContext"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasMultipleIdentities"></see>
     /// </summary>
-    let hasMultipleIdentities =
-        Namespaced_IRI.parse _namespace_name "hasMultipleIdentities" |> NamespacedName
-
+    let hasMultipleIdentities = _prefix "hasMultipleIdentities"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/hasPlace"></see>
     /// </summary>
-    let hasPlace = Namespaced_IRI.parse _namespace_name "hasPlace" |> NamespacedName
+    let hasPlace = _prefix "hasPlace"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/place"></see>
     /// </summary>
-    let place = Namespaced_IRI.parse _namespace_name "place" |> NamespacedName
+    let place = _prefix "place"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/language"></see>
     /// </summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
-
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageDeclaration"></see>
     /// </summary>
-    let languageDeclaration =
-        Namespaced_IRI.parse _namespace_name "languageDeclaration" |> NamespacedName
-
+    let languageDeclaration = _prefix "languageDeclaration"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/languageUsed"></see>
     /// </summary>
-    let languageUsed =
-        Namespaced_IRI.parse _namespace_name "languageUsed" |> NamespacedName
-
+    let languageUsed = _prefix "languageUsed"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/legalStatus"></see>
     /// </summary>
-    let legalStatus =
-        Namespaced_IRI.parse _namespace_name "legalStatus" |> NamespacedName
-
+    let legalStatus = _prefix "legalStatus"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/localControl"></see>
     /// </summary>
-    let localControl =
-        Namespaced_IRI.parse _namespace_name "localControl" |> NamespacedName
-
+    let localControl = _prefix "localControl"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/mandate"></see>
     /// </summary>
-    let mandate = Namespaced_IRI.parse _namespace_name "mandate" |> NamespacedName
+    let mandate = _prefix "mandate"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/nameArea"></see>
     /// </summary>
-    let nameArea = Namespaced_IRI.parse _namespace_name "nameArea" |> NamespacedName
+    let nameArea = _prefix "nameArea"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/dainserire"></see>
     /// </summary>
-    let dainserire = Namespaced_IRI.parse _namespace_name "dainserire" |> NamespacedName
+    let dainserire = _prefix "dainserire"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/occupation"></see>
     /// </summary>
-    let occupation = Namespaced_IRI.parse _namespace_name "occupation" |> NamespacedName
+    let occupation = _prefix "occupation"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/person"></see>
     /// </summary>
-    let person = Namespaced_IRI.parse _namespace_name "person" |> NamespacedName
+    let person = _prefix "person"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/placeRole"></see>
     /// </summary>
-    let placeRole = Namespaced_IRI.parse _namespace_name "placeRole" |> NamespacedName
-
+    let placeRole = _prefix "placeRole"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/resourceRelationType"></see>
     /// </summary>
-    let resourceRelationType =
-        Namespaced_IRI.parse _namespace_name "resourceRelationType" |> NamespacedName
-
+    let resourceRelationType = _prefix "resourceRelationType"
     /// <summary>
     ///   <see href="http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf/structureOrGenealogy"></see>
     /// </summary>
-    let structureOrGenealogy =
-        Namespaced_IRI.parse _namespace_name "structureOrGenealogy" |> NamespacedName
+    let structureOrGenealogy = _prefix "structureOrGenealogy"

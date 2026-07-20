@@ -1,37 +1,31 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Securities.Baskets.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_sec_bsk =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/BasketOfIndices"></see>
     /// </summary>
-    let BasketOfIndices =
-        Namespaced_IRI.parse _namespace_name "BasketOfIndices" |> NamespacedName
-
+    let BasketOfIndices = _prefix "BasketOfIndices"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/BasketOfIndicesConstituent"></see>
     /// </summary>
-    let BasketOfIndicesConstituent =
-        Namespaced_IRI.parse _namespace_name "BasketOfIndicesConstituent" |> NamespacedName
-
+    let BasketOfIndicesConstituent = _prefix "BasketOfIndicesConstituent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/BasketOfSecurities"></see>
     /// </summary>
-    let BasketOfSecurities =
-        Namespaced_IRI.parse _namespace_name "BasketOfSecurities" |> NamespacedName
-
+    let BasketOfSecurities = _prefix "BasketOfSecurities"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/SecuritiesBasketConstituent"></see>
     /// </summary>
-    let SecuritiesBasketConstituent =
-        Namespaced_IRI.parse _namespace_name "SecuritiesBasketConstituent" |> NamespacedName
-
+    let SecuritiesBasketConstituent = _prefix "SecuritiesBasketConstituent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/MixedBasket"></see>
     /// </summary>
-    let MixedBasket =
-        Namespaced_IRI.parse _namespace_name "MixedBasket" |> NamespacedName
+    let MixedBasket = _prefix "MixedBasket"

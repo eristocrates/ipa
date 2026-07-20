@@ -1,146 +1,126 @@
 namespace http.vocab.deri.ie.br.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module br =
     let _namespace_name = "http://vocab.deri.ie/br#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#lorlor"></see>
     /// </summary>
-    let lorlor = Namespaced_IRI.parse _namespace_name "lorlor" |> NamespacedName
+    let lorlor = _prefix "lorlor"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#BrTopic"></see>
     /// </summary>
-    let BrTopic = Namespaced_IRI.parse _namespace_name "BrTopic" |> NamespacedName
+    let BrTopic = _prefix "BrTopic"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#Brainstorm"></see>
     /// </summary>
-    let Brainstorm = Namespaced_IRI.parse _namespace_name "Brainstorm" |> NamespacedName
-
+    let Brainstorm = _prefix "Brainstorm"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#DERI%2C%20NUI%20Galway"></see>
     /// </summary>
-    let ``DERI%2C%20NUI%20Galway`` =
-        Namespaced_IRI.parse _namespace_name "DERI%2C%20NUI%20Galway" |> NamespacedName
-
+    let ``DERI%2C%20NUI%20Galway`` = _prefix "DERI%2C%20NUI%20Galway"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#Idea"></see>
     /// </summary>
-    let Idea = Namespaced_IRI.parse _namespace_name "Idea" |> NamespacedName
+    let Idea = _prefix "Idea"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#Label"></see>
     /// </summary>
-    let Label = Namespaced_IRI.parse _namespace_name "Label" |> NamespacedName
-
+    let Label = _prefix "Label"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#ObjDescription"></see>
     /// </summary>
-    let ObjDescription =
-        Namespaced_IRI.parse _namespace_name "ObjDescription" |> NamespacedName
-
+    let ObjDescription = _prefix "ObjDescription"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#ObjTitle"></see>
     /// </summary>
-    let ObjTitle = Namespaced_IRI.parse _namespace_name "ObjTitle" |> NamespacedName
+    let ObjTitle = _prefix "ObjTitle"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#Objective"></see>
     /// </summary>
-    let Objective = Namespaced_IRI.parse _namespace_name "Objective" |> NamespacedName
-
+    let Objective = _prefix "Objective"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#Participant"></see>
     /// </summary>
-    let Participant =
-        Namespaced_IRI.parse _namespace_name "Participant" |> NamespacedName
-
+    let Participant = _prefix "Participant"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#Site"></see>
     /// </summary>
-    let Site = Namespaced_IRI.parse _namespace_name "Site" |> NamespacedName
+    let Site = _prefix "Site"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#creator"></see>
     /// </summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
-
+    let creator = _prefix "creator"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasEvent"></see>
     /// </summary>
-    let hasEvent = Namespaced_IRI.parse _namespace_name "hasEvent" |> NamespacedName
-
+    let hasEvent = _prefix "hasEvent"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasExpectation"></see>
     /// </summary>
-    let hasExpectation =
-        Namespaced_IRI.parse _namespace_name "hasExpectation" |> NamespacedName
-
+    let hasExpectation = _prefix "hasExpectation"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasIdea"></see>
     /// </summary>
-    let hasIdea = Namespaced_IRI.parse _namespace_name "hasIdea" |> NamespacedName
-
+    let hasIdea = _prefix "hasIdea"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasParticipant"></see>
     /// </summary>
-    let hasParticipant =
-        Namespaced_IRI.parse _namespace_name "hasParticipant" |> NamespacedName
-
+    let hasParticipant = _prefix "hasParticipant"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasReview"></see>
     /// </summary>
-    let hasReview = Namespaced_IRI.parse _namespace_name "hasReview" |> NamespacedName
+    let hasReview = _prefix "hasReview"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasSpace"></see>
     /// </summary>
-    let hasSpace = Namespaced_IRI.parse _namespace_name "hasSpace" |> NamespacedName
+    let hasSpace = _prefix "hasSpace"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#hasTopic"></see>
     /// </summary>
-    let hasTopic = Namespaced_IRI.parse _namespace_name "hasTopic" |> NamespacedName
-
+    let hasTopic = _prefix "hasTopic"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#holdsAccount"></see>
     /// </summary>
-    let holdsAccount =
-        Namespaced_IRI.parse _namespace_name "holdsAccount" |> NamespacedName
-
+    let holdsAccount = _prefix "holdsAccount"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#member"></see>
     /// </summary>
-    let member_ = Namespaced_IRI.parse _namespace_name "member" |> NamespacedName
+    let member_ = _prefix "member"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#prefLabel"></see>
     /// </summary>
-    let prefLabel = Namespaced_IRI.parse _namespace_name "prefLabel" |> NamespacedName
+    let prefLabel = _prefix "prefLabel"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#rdf"></see>
     /// </summary>
-    let rdf = Namespaced_IRI.parse _namespace_name "rdf" |> NamespacedName
-
+    let rdf = _prefix "rdf"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#semanticRelation"></see>
     /// </summary>
-    let semanticRelation =
-        Namespaced_IRI.parse _namespace_name "semanticRelation" |> NamespacedName
-
+    let semanticRelation = _prefix "semanticRelation"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#taggedBy"></see>
     /// </summary>
-    let taggedBy = Namespaced_IRI.parse _namespace_name "taggedBy" |> NamespacedName
+    let taggedBy = _prefix "taggedBy"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#ttl"></see>
     /// </summary>
-    let ttl = Namespaced_IRI.parse _namespace_name "ttl" |> NamespacedName
+    let ttl = _prefix "ttl"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/br#type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"

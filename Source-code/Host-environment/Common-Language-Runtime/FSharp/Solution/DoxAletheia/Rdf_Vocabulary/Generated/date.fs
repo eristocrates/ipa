@@ -1,114 +1,94 @@
 namespace http.contextus.net.ontology.ontomedia.misc.date.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module date =
     let _namespace_name = "http://contextus.net/ontology/ontomedia/misc/date#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// This class represents a system of representing time
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Calendar"></see></summary>
-    let Calendar = Namespaced_IRI.parse _namespace_name "Calendar" |> NamespacedName
-
+    let Calendar = _prefix "Calendar"
     /// <summary>
     /// This class represents a reference point which a calendar measures other dates relative to
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#CalendarReferencePoint"></see></summary>
-    let CalendarReferencePoint =
-        Namespaced_IRI.parse _namespace_name "CalendarReferencePoint" |> NamespacedName
-
+    let CalendarReferencePoint = _prefix "CalendarReferencePoint"
     /// <summary>
     /// This class represents a value representing time
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Date"></see></summary>
-    let Date = Namespaced_IRI.parse _namespace_name "Date" |> NamespacedName
-
+    let Date = _prefix "Date"
     /// <summary>
     /// This class represents the parts of a date
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Date-Component"></see></summary>
-    let ``Date-Component`` =
-        Namespaced_IRI.parse _namespace_name "Date-Component" |> NamespacedName
-
+    let ``Date-Component`` = _prefix "Date-Component"
     /// <summary>
     /// This class represents the order in which components describing a date should be displayed
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Date-Ordering"></see></summary>
-    let ``Date-Ordering`` =
-        Namespaced_IRI.parse _namespace_name "Date-Ordering" |> NamespacedName
-
+    let ``Date-Ordering`` = _prefix "Date-Ordering"
     /// <summary>
     /// This class represents the part of a date which is the day designaition
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Day"></see></summary>
-    let Day = Namespaced_IRI.parse _namespace_name "Day" |> NamespacedName
+    let Day = _prefix "Day"
     /// <summary>
     /// This class represents the part of a date which is the hour designaition
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Hour"></see></summary>
-    let Hour = Namespaced_IRI.parse _namespace_name "Hour" |> NamespacedName
+    let Hour = _prefix "Hour"
     /// <summary>
     /// This class represents the part of a date which is the minute designaition
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Minute"></see></summary>
-    let Minute = Namespaced_IRI.parse _namespace_name "Minute" |> NamespacedName
+    let Minute = _prefix "Minute"
     /// <summary>
     /// This class represents the part of a date which is the month designaition
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Month"></see></summary>
-    let Month = Namespaced_IRI.parse _namespace_name "Month" |> NamespacedName
+    let Month = _prefix "Month"
     /// <summary>
     /// This class represents the textual qualifier that may be part of the data i.e. AD, BCE etc
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Qualifier"></see></summary>
-    let Qualifier = Namespaced_IRI.parse _namespace_name "Qualifier" |> NamespacedName
+    let Qualifier = _prefix "Qualifier"
     /// <summary>
     /// This class represents the part of a date which is the second designaition
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Second"></see></summary>
-    let Second = Namespaced_IRI.parse _namespace_name "Second" |> NamespacedName
+    let Second = _prefix "Second"
     /// <summary>
     /// This class represents the International Standard form of the date
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Standard"></see></summary>
-    let Standard = Namespaced_IRI.parse _namespace_name "Standard" |> NamespacedName
+    let Standard = _prefix "Standard"
     /// <summary>
     /// This class represents the part of a date which is the year designaition
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#Year"></see></summary>
-    let Year = Namespaced_IRI.parse _namespace_name "Year" |> NamespacedName
-
+    let Year = _prefix "Year"
     /// <summary>
     /// The occurrance of an event from which the reference point was abstracted
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#abstracted-from-occurrence"></see></summary>
-    let ``abstracted-from-occurrence`` =
-        Namespaced_IRI.parse _namespace_name "abstracted-from-occurrence" |> NamespacedName
-
+    let ``abstracted-from-occurrence`` = _prefix "abstracted-from-occurrence"
     /// <summary>
     /// The relative reference point after which the desired point of time occurs
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#after-reference-point"></see></summary>
-    let ``after-reference-point`` =
-        Namespaced_IRI.parse _namespace_name "after-reference-point" |> NamespacedName
-
+    let ``after-reference-point`` = _prefix "after-reference-point"
     /// <summary>
     /// The relative reference point before which the desired point of time occurs
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#before-reference-point"></see></summary>
-    let ``before-reference-point`` =
-        Namespaced_IRI.parse _namespace_name "before-reference-point" |> NamespacedName
-
+    let ``before-reference-point`` = _prefix "before-reference-point"
     /// <summary>
     /// This property specifies the name represented by the component
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#has-date-component"></see></summary>
-    let ``has-date-component`` =
-        Namespaced_IRI.parse _namespace_name "has-date-component" |> NamespacedName
-
+    let ``has-date-component`` = _prefix "has-date-component"
     /// <summary>
     /// This property specifies a point of reference in a Calendar
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#has-reference-point"></see></summary>
-    let ``has-reference-point`` =
-        Namespaced_IRI.parse _namespace_name "has-reference-point" |> NamespacedName
-
+    let ``has-reference-point`` = _prefix "has-reference-point"
     /// <summary>
     /// The Year Preceeding the Reference Point Year
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#reference-point-minus-one"></see></summary>
-    let ``reference-point-minus-one`` =
-        Namespaced_IRI.parse _namespace_name "reference-point-minus-one" |> NamespacedName
-
+    let ``reference-point-minus-one`` = _prefix "reference-point-minus-one"
     /// <summary>
     /// The Year Following the Reference Point Year
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#reference-point-plus-one"></see></summary>
-    let ``reference-point-plus-one`` =
-        Namespaced_IRI.parse _namespace_name "reference-point-plus-one" |> NamespacedName
-
+    let ``reference-point-plus-one`` = _prefix "reference-point-plus-one"
     /// <summary>
     /// The calandar which the date uses
     /// <see href="http://contextus.net/ontology/ontomedia/misc/date#uses-calendar"></see></summary>
-    let ``uses-calendar`` =
-        Namespaced_IRI.parse _namespace_name "uses-calendar" |> NamespacedName
+    let ``uses-calendar`` = _prefix "uses-calendar"

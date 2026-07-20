@@ -1,75 +1,59 @@
 namespace http.www.samos.gr.ontologies.helpdeskOnto.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module hdo =
     let _namespace_name = "http://www.samos.gr/ontologies/helpdeskOnto.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// This individual is defined for demonstration purposes only and is linked to existing definitions in other LOGD sets
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#NARA"></see></summary>
-    let NARA = Namespaced_IRI.parse _namespace_name "NARA" |> NamespacedName
-
+    let NARA = _prefix "NARA"
     /// <summary>
     /// A department in the organization that is responsible for the Information Technology (IT) of the organization.
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ItDepartment"></see></summary>
-    let ItDepartment =
-        Namespaced_IRI.parse _namespace_name "ItDepartment" |> NamespacedName
-
+    let ItDepartment = _prefix "ItDepartment"
     /// <summary>
     /// A task is an action associated with tickets during an effort to solve an issue/problem in IT.
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ItSupportTask"></see></summary>
-    let ItSupportTask =
-        Namespaced_IRI.parse _namespace_name "ItSupportTask" |> NamespacedName
-
+    let ItSupportTask = _prefix "ItSupportTask"
     /// <summary>
     /// Helpdesk support ticket to record some issue with IT to be diagnosed and resolved.
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ItSupportTicket"></see></summary>
-    let ItSupportTicket =
-        Namespaced_IRI.parse _namespace_name "ItSupportTicket" |> NamespacedName
-
+    let ItSupportTicket = _prefix "ItSupportTicket"
     /// <summary>
     /// IT depertment at Samos regional unit of NARA
     /// This individual is defined for demonstration purposes only
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#Samos_IT_department_at_NARA"></see></summary>
-    let Samos_IT_department_at_NARA =
-        Namespaced_IRI.parse _namespace_name "Samos_IT_department_at_NARA" |> NamespacedName
-
+    let Samos_IT_department_at_NARA = _prefix "Samos_IT_department_at_NARA"
     /// <summary>
     /// a task(ation) description
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#taskDescription"></see></summary>
-    let taskDescription =
-        Namespaced_IRI.parse _namespace_name "taskDescription" |> NamespacedName
-
+    let taskDescription = _prefix "taskDescription"
     /// <summary>
     ///   <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#taskId"></see>
     /// </summary>
-    let taskId = Namespaced_IRI.parse _namespace_name "taskId" |> NamespacedName
-
+    let taskId = _prefix "taskId"
     /// <summary>
     /// id number to link task to ticket
     /// <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#taskTicketId"></see></summary>
-    let taskTicketId =
-        Namespaced_IRI.parse _namespace_name "taskTicketId" |> NamespacedName
-
+    let taskTicketId = _prefix "taskTicketId"
     /// <summary>
     ///   <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ticketDescription"></see>
     /// </summary>
-    let ticketDescription =
-        Namespaced_IRI.parse _namespace_name "ticketDescription" |> NamespacedName
-
+    let ticketDescription = _prefix "ticketDescription"
     /// <summary>
     ///   <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ticketId"></see>
     /// </summary>
-    let ticketId = Namespaced_IRI.parse _namespace_name "ticketId" |> NamespacedName
-
+    let ticketId = _prefix "ticketId"
     /// <summary>
     ///   <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ticketSolution"></see>
     /// </summary>
-    let ticketSolution =
-        Namespaced_IRI.parse _namespace_name "ticketSolution" |> NamespacedName
-
+    let ticketSolution = _prefix "ticketSolution"
     /// <summary>
     ///   <see href="http://www.samos.gr/ontologies/helpdeskOnto.owl#ticketTitle"></see>
     /// </summary>
-    let ticketTitle =
-        Namespaced_IRI.parse _namespace_name "ticketTitle" |> NamespacedName
+    let ticketTitle = _prefix "ticketTitle"

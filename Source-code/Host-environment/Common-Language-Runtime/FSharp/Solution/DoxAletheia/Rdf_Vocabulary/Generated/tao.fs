@@ -1,145 +1,110 @@
 namespace http.vocab.deri.ie.tao.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module tao =
     let _namespace_name = "http://vocab.deri.ie/tao#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#owesac"></see>
     /// </summary>
-    let owesac = Namespaced_IRI.parse _namespace_name "owesac" |> NamespacedName
-
+    let owesac = _prefix "owesac"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#DERI%2C%20NUI%20Galway"></see>
     /// </summary>
-    let ``DERI%2C%20NUI%20Galway`` =
-        Namespaced_IRI.parse _namespace_name "DERI%2C%20NUI%20Galway" |> NamespacedName
-
+    let ``DERI%2C%20NUI%20Galway`` = _prefix "DERI%2C%20NUI%20Galway"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#TrustAssertion"></see>
     /// </summary>
-    let TrustAssertion =
-        Namespaced_IRI.parse _namespace_name "TrustAssertion" |> NamespacedName
-
+    let TrustAssertion = _prefix "TrustAssertion"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#TrustScale"></see>
     /// </summary>
-    let TrustScale = Namespaced_IRI.parse _namespace_name "TrustScale" |> NamespacedName
+    let TrustScale = _prefix "TrustScale"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#TrustValue"></see>
     /// </summary>
-    let TrustValue = Namespaced_IRI.parse _namespace_name "TrustValue" |> NamespacedName
-
+    let TrustValue = _prefix "TrustValue"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#appliesToAgent"></see>
     /// </summary>
-    let appliesToAgent =
-        Namespaced_IRI.parse _namespace_name "appliesToAgent" |> NamespacedName
-
+    let appliesToAgent = _prefix "appliesToAgent"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#appliesToContent"></see>
     /// </summary>
-    let appliesToContent =
-        Namespaced_IRI.parse _namespace_name "appliesToContent" |> NamespacedName
-
+    let appliesToContent = _prefix "appliesToContent"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#appliesToSource"></see>
     /// </summary>
-    let appliesToSource =
-        Namespaced_IRI.parse _namespace_name "appliesToSource" |> NamespacedName
-
+    let appliesToSource = _prefix "appliesToSource"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#assertedBy"></see>
     /// </summary>
-    let assertedBy = Namespaced_IRI.parse _namespace_name "assertedBy" |> NamespacedName
-
+    let assertedBy = _prefix "assertedBy"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasCommentsTrust"></see>
     /// </summary>
-    let hasCommentsTrust =
-        Namespaced_IRI.parse _namespace_name "hasCommentsTrust" |> NamespacedName
-
+    let hasCommentsTrust = _prefix "hasCommentsTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasIdentityTrust"></see>
     /// </summary>
-    let hasIdentityTrust =
-        Namespaced_IRI.parse _namespace_name "hasIdentityTrust" |> NamespacedName
-
+    let hasIdentityTrust = _prefix "hasIdentityTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasInteractionsTrust"></see>
     /// </summary>
-    let hasInteractionsTrust =
-        Namespaced_IRI.parse _namespace_name "hasInteractionsTrust" |> NamespacedName
-
+    let hasInteractionsTrust = _prefix "hasInteractionsTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasLikesTrust"></see>
     /// </summary>
-    let hasLikesTrust =
-        Namespaced_IRI.parse _namespace_name "hasLikesTrust" |> NamespacedName
-
+    let hasLikesTrust = _prefix "hasLikesTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasMaxValue"></see>
     /// </summary>
-    let hasMaxValue =
-        Namespaced_IRI.parse _namespace_name "hasMaxValue" |> NamespacedName
-
+    let hasMaxValue = _prefix "hasMaxValue"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasMinValue"></see>
     /// </summary>
-    let hasMinValue =
-        Namespaced_IRI.parse _namespace_name "hasMinValue" |> NamespacedName
-
+    let hasMinValue = _prefix "hasMinValue"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasProfileSimilarityTrust"></see>
     /// </summary>
-    let hasProfileSimilarityTrust =
-        Namespaced_IRI.parse _namespace_name "hasProfileSimilarityTrust" |> NamespacedName
-
+    let hasProfileSimilarityTrust = _prefix "hasProfileSimilarityTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasRelationshipTrust"></see>
     /// </summary>
-    let hasRelationshipTrust =
-        Namespaced_IRI.parse _namespace_name "hasRelationshipTrust" |> NamespacedName
-
+    let hasRelationshipTrust = _prefix "hasRelationshipTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasReputationTrust"></see>
     /// </summary>
-    let hasReputationTrust =
-        Namespaced_IRI.parse _namespace_name "hasReputationTrust" |> NamespacedName
-
+    let hasReputationTrust = _prefix "hasReputationTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasResharesTrust"></see>
     /// </summary>
-    let hasResharesTrust =
-        Namespaced_IRI.parse _namespace_name "hasResharesTrust" |> NamespacedName
-
+    let hasResharesTrust = _prefix "hasResharesTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasSharesTrust"></see>
     /// </summary>
-    let hasSharesTrust =
-        Namespaced_IRI.parse _namespace_name "hasSharesTrust" |> NamespacedName
-
+    let hasSharesTrust = _prefix "hasSharesTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasTaggingTrust"></see>
     /// </summary>
-    let hasTaggingTrust =
-        Namespaced_IRI.parse _namespace_name "hasTaggingTrust" |> NamespacedName
-
+    let hasTaggingTrust = _prefix "hasTaggingTrust"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasTrustScale"></see>
     /// </summary>
-    let hasTrustScale =
-        Namespaced_IRI.parse _namespace_name "hasTrustScale" |> NamespacedName
-
+    let hasTrustScale = _prefix "hasTrustScale"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#hasValue"></see>
     /// </summary>
-    let hasValue = Namespaced_IRI.parse _namespace_name "hasValue" |> NamespacedName
+    let hasValue = _prefix "hasValue"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#rdf"></see>
     /// </summary>
-    let rdf = Namespaced_IRI.parse _namespace_name "rdf" |> NamespacedName
+    let rdf = _prefix "rdf"
     /// <summary>
     ///   <see href="http://vocab.deri.ie/tao#ttl"></see>
     /// </summary>
-    let ttl = Namespaced_IRI.parse _namespace_name "ttl" |> NamespacedName
+    let ttl = _prefix "ttl"

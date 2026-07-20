@@ -1,30 +1,31 @@
 namespace http.zbw.eu.namespaces.zbw_extensions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module zbwext =
     let _namespace_name = "http://zbw.eu/namespaces/zbw-extensions/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Among themselves, the Descriptor entries are
     ///     linked in multiple skos:broader/skos:narrower hierarchies and skos:related
     ///     connections. To Thsys entries, only skos:broader connections are
     ///     allowed.
     /// <see href="http://zbw.eu/namespaces/zbw-extensions/Descriptor"></see></summary>
-    let Descriptor = Namespaced_IRI.parse _namespace_name "Descriptor" |> NamespacedName
-
+    let Descriptor = _prefix "Descriptor"
     /// <summary>
     ///   <see href="http://zbw.eu/namespaces/zbw-extensions/zbw-extensions.rdf"></see>
     /// </summary>
-    let ``zbw-extensions.rdf`` =
-        Namespaced_IRI.parse _namespace_name "zbw-extensions.rdf" |> NamespacedName
-
+    let ``zbw-extensions.rdf`` = _prefix "zbw-extensions.rdf"
     /// <summary>
     /// Class to mark concepts which were
     ///     matched by a search query, as opposed to other (e.g., skos:narrower or
     ///     skos:related) concepts returned in the same result set. (Experimental)
     ///
     /// <see href="http://zbw.eu/namespaces/zbw-extensions/Found"></see></summary>
-    let Found = Namespaced_IRI.parse _namespace_name "Found" |> NamespacedName
+    let Found = _prefix "Found"
     /// <summary>
     /// Each entry has a rdfs:label property for each
     ///     supported language and one skos:notation property. skos:prefLabel
@@ -34,31 +35,23 @@ module zbwext =
     ///     "Subthesaurus" Thsys concept. To Descriptor entities, only skos:narrower
     ///     connections are allowed.
     /// <see href="http://zbw.eu/namespaces/zbw-extensions/Thsys"></see></summary>
-    let Thsys = Namespaced_IRI.parse _namespace_name "Thsys" |> NamespacedName
-
+    let Thsys = _prefix "Thsys"
     /// <summary>
     ///   <see href="http://zbw.eu/namespaces/zbw-extensions/altLabelNarrower"></see>
     /// </summary>
-    let altLabelNarrower =
-        Namespaced_IRI.parse _namespace_name "altLabelNarrower" |> NamespacedName
-
+    let altLabelNarrower = _prefix "altLabelNarrower"
     /// <summary>
     ///   <see href="http://zbw.eu/namespaces/zbw-extensions/econbizCount"></see>
     /// </summary>
-    let econbizCount =
-        Namespaced_IRI.parse _namespace_name "econbizCount" |> NamespacedName
-
+    let econbizCount = _prefix "econbizCount"
     /// <summary>
     /// A substitute for the vanished skos:isSubjectOf.
     ///     May be used with collections of resources also.
     /// <see href="http://zbw.eu/namespaces/zbw-extensions/indexedItem"></see></summary>
-    let indexedItem =
-        Namespaced_IRI.parse _namespace_name "indexedItem" |> NamespacedName
-
+    let indexedItem = _prefix "indexedItem"
     /// <summary>
     /// The note consists of a blank node. It contains
     ///     a rdfs:value literal which designates the aspect and a rdfs:seeAlso link to
     ///     the concept which should be used instead.
     /// <see href="http://zbw.eu/namespaces/zbw-extensions/useInsteadNote"></see></summary>
-    let useInsteadNote =
-        Namespaced_IRI.parse _namespace_name "useInsteadNote" |> NamespacedName
+    let useInsteadNote = _prefix "useInsteadNote"

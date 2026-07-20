@@ -1,12 +1,15 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Law.MetadataFNDLaw.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_law_mod =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Law/MetadataFNDLaw/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/MetadataFNDLaw/LawModule"></see>
     /// </summary>
-    let LawModule = Namespaced_IRI.parse _namespace_name "LawModule" |> NamespacedName
+    let LawModule = _prefix "LawModule"

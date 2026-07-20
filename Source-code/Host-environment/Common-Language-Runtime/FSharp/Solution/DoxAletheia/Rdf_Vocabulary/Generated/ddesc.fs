@@ -1,1612 +1,1147 @@
 namespace https.w3id.org.arco.ontology.denotative_description.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ddesc =
     let _namespace_name = "https://w3id.org/arco/ontology/denotative-description/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// This class represents the type (i.e. civil, religious) of an inscription, emblem, postmark, crest, etc.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/AffixedElementType"></see></summary>
-    let AffixedElementType =
-        Namespaced_IRI.parse _namespace_name "AffixedElementType" |> NamespacedName
-
+    let AffixedElementType = _prefix "AffixedElementType"
     /// <summary>
     /// This class represents the type of communication medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CommunicationMediumType"></see></summary>
-    let CommunicationMediumType =
-        Namespaced_IRI.parse _namespace_name "CommunicationMediumType" |> NamespacedName
-
+    let CommunicationMediumType = _prefix "CommunicationMediumType"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/ConservationStatusType"></see>
     /// </summary>
-    let ConservationStatusType =
-        Namespaced_IRI.parse _namespace_name "ConservationStatusType" |> NamespacedName
-
+    let ConservationStatusType = _prefix "ConservationStatusType"
     /// <summary>
     /// This class represents a cultural property's type, that is the term or expression which specifies the cultural propery that is being catalogued and additional information on the cultural property's definition.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalPropertyType"></see></summary>
-    let CulturalPropertyType =
-        Namespaced_IRI.parse _namespace_name "CulturalPropertyType" |> NamespacedName
-
+    let CulturalPropertyType = _prefix "CulturalPropertyType"
     /// <summary>
     /// This class represents a cultural property's denomination or dedication type, or its title (i.e. other language, current, attributed, dialectal).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/DesignationType"></see></summary>
-    let DesignationType =
-        Namespaced_IRI.parse _namespace_name "DesignationType" |> NamespacedName
+    let DesignationType = _prefix "DesignationType"
 
     /// <summary>
     /// This class represents the iconographic or decorative apparatus' type (iconographic, decorative, iconographic-decorative) of a cultual property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/IconographicOrDecorativeApparatusType"></see></summary>
     let IconographicOrDecorativeApparatusType =
-        Namespaced_IRI.parse _namespace_name "IconographicOrDecorativeApparatusType" |> NamespacedName
+        _prefix "IconographicOrDecorativeApparatusType"
 
     /// <summary>
     /// This class represents the observed measurement type (width, height, diameter, etc).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/MeasurementType"></see></summary>
-    let MeasurementType =
-        Namespaced_IRI.parse _namespace_name "MeasurementType" |> NamespacedName
-
+    let MeasurementType = _prefix "MeasurementType"
     /// <summary>
     /// This class represents the sample type collected from an archaeologiacal property (i.e. coal, pottery, grout)
     /// <see href="https://w3id.org/arco/ontology/denotative-description/SampleCollectedType"></see></summary>
-    let SampleCollectedType =
-        Namespaced_IRI.parse _namespace_name "SampleCollectedType" |> NamespacedName
-
+    let SampleCollectedType = _prefix "SampleCollectedType"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Accessible"></see>
     /// </summary>
-    let Accessible = Namespaced_IRI.parse _namespace_name "Accessible" |> NamespacedName
-
+    let Accessible = _prefix "Accessible"
     /// <summary>
     /// This class represents the cultural property accessibility, that is the possibility to reach or enter that cultural property, for example for cataloguing activities (e.g.: an immovable cultural property located in a walled area, a movable cultural property located on the top shelf, a totally accessible cultural property, etc.)
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalPropertyAccessibility"></see></summary>
-    let CulturalPropertyAccessibility =
-        Namespaced_IRI.parse _namespace_name "CulturalPropertyAccessibility" |> NamespacedName
-
+    let CulturalPropertyAccessibility = _prefix "CulturalPropertyAccessibility"
     /// <summary>
     /// This class represents an accessory of a musical property, both if it is functional to the sound production, or if it is the sound's production or conservation medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Accessory"></see></summary>
-    let Accessory = Namespaced_IRI.parse _namespace_name "Accessory" |> NamespacedName
-
+    let Accessory = _prefix "Accessory"
     /// <summary>
     /// This property represents the date of construction of a musical instrument's accessory.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/creationDate"></see></summary>
-    let creationDate =
-        Namespaced_IRI.parse _namespace_name "creationDate" |> NamespacedName
-
+    let creationDate = _prefix "creationDate"
     /// <summary>
     /// This is the inverse property of "has accessory".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isAccessoryOf"></see></summary>
-    let isAccessoryOf =
-        Namespaced_IRI.parse _namespace_name "isAccessoryOf" |> NamespacedName
-
+    let isAccessoryOf = _prefix "isAccessoryOf"
     /// <summary>
     /// This class represents an element (i.e. crest, trademark, postmark, inscription) which is affixed on a cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/AffixedElement"></see></summary>
-    let AffixedElement =
-        Namespaced_IRI.parse _namespace_name "AffixedElement" |> NamespacedName
-
+    let AffixedElement = _prefix "AffixedElement"
     /// <summary>
     /// This property connects an inscription, emblem etc., to the text's transcription, using scientifically accepted integrations.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/transcript"></see></summary>
-    let transcript = Namespaced_IRI.parse _namespace_name "transcript" |> NamespacedName
-
+    let transcript = _prefix "transcript"
     /// <summary>
     /// This property represents the italian translation of a text transcription contained in an inscription, emblem etc.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/italianTranslation"></see></summary>
-    let italianTranslation =
-        Namespaced_IRI.parse _namespace_name "italianTranslation" |> NamespacedName
-
+    let italianTranslation = _prefix "italianTranslation"
     /// <summary>
     /// This property connects an inscription, stamp, emblem etc., represented on a cultural entity to the support on which the entity is located.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasSupport"></see></summary>
-    let hasSupport = Namespaced_IRI.parse _namespace_name "hasSupport" |> NamespacedName
+    let hasSupport = _prefix "hasSupport"
     /// <summary>
     /// This class represents the support on which an element can be located, for instance an inscription, emblem, postmark represented on a cultural property (i.e. "paper label").
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Support"></see></summary>
-    let Support = Namespaced_IRI.parse _namespace_name "Support" |> NamespacedName
-
+    let Support = _prefix "Support"
     /// <summary>
     /// This property realtes an object (e.g. cultural entity, iconographic/decorative apparatus, affixed element like an inscription) to its functional purpose, intended as the function the object has to perform (decorative, religious, symbolic, magic-offensive etc.).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasFunctionalPurpose"></see></summary>
-    let hasFunctionalPurpose =
-        Namespaced_IRI.parse _namespace_name "hasFunctionalPurpose" |> NamespacedName
-
+    let hasFunctionalPurpose = _prefix "hasFunctionalPurpose"
     /// <summary>
     /// This class represents the functional purpose (i.e. decorative, religious, symbolic, magic-offensive) of an object (i.e. culural property or iconographic/decorative apparatus or affixed element on a cultural property like an inscription). The functional purpose is intended as the function that an object has to perform.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/FunctionalPurpose"></see></summary>
-    let FunctionalPurpose =
-        Namespaced_IRI.parse _namespace_name "FunctionalPurpose" |> NamespacedName
-
+    let FunctionalPurpose = _prefix "FunctionalPurpose"
     /// <summary>
     /// This property connects an inscription, stamp, crest etc., to the adopted writing system or alphabet.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasWritingSystem"></see></summary>
-    let hasWritingSystem =
-        Namespaced_IRI.parse _namespace_name "hasWritingSystem" |> NamespacedName
-
+    let hasWritingSystem = _prefix "hasWritingSystem"
     /// <summary>
     /// This class represents the writing system or alphabet of an inscription, postmark, crest etc.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/WritingSystem"></see></summary>
-    let WritingSystem =
-        Namespaced_IRI.parse _namespace_name "WritingSystem" |> NamespacedName
-
+    let WritingSystem = _prefix "WritingSystem"
     /// <summary>
     /// This property connects an inscription or emblem, postmark, crest, etc. to the font style which has been adopted (e.g.: italic, bold, gothic etc).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasFontStyle"></see></summary>
-    let hasFontStyle =
-        Namespaced_IRI.parse _namespace_name "hasFontStyle" |> NamespacedName
-
+    let hasFontStyle = _prefix "hasFontStyle"
     /// <summary>
     /// This class represents the font style used in a text (i.e. italic, bold, gothic)
     /// <see href="https://w3id.org/arco/ontology/denotative-description/FontStyle"></see></summary>
-    let FontStyle = Namespaced_IRI.parse _namespace_name "FontStyle" |> NamespacedName
-
+    let FontStyle = _prefix "FontStyle"
     /// <summary>
     /// This is the inverse property of "has affixed element".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isElementAffixedOn"></see></summary>
-    let isElementAffixedOn =
-        Namespaced_IRI.parse _namespace_name "isElementAffixedOn" |> NamespacedName
-
+    let isElementAffixedOn = _prefix "isElementAffixedOn"
     /// <summary>
     /// This property connects a cultural entity to its technical status, valid until a specific moment, that is represented by the technical characteristics that a cultural entity has in that moment.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasTechnicalStatus"></see></summary>
-    let hasTechnicalStatus =
-        Namespaced_IRI.parse _namespace_name "hasTechnicalStatus" |> NamespacedName
-
+    let hasTechnicalStatus = _prefix "hasTechnicalStatus"
     /// <summary>
     /// This class represents the technical status of a cultural entity, that is a situation in which the cultural entity is associated to technical characteristics. The technical status has a temporal validity, related to the moment when the characteristics were observed. For instance, a cultural property techncal status is: "the cultural property X realized with pottery material and cylindrical in shape".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalEntityTechnicalStatus"></see></summary>
-    let CulturalEntityTechnicalStatus =
-        Namespaced_IRI.parse _namespace_name "CulturalEntityTechnicalStatus" |> NamespacedName
-
+    let CulturalEntityTechnicalStatus = _prefix "CulturalEntityTechnicalStatus"
     /// <summary>
     /// This is the inverse property of "has affixed element type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isAffixedElementTypeOf"></see></summary>
-    let isAffixedElementTypeOf =
-        Namespaced_IRI.parse _namespace_name "isAffixedElementTypeOf" |> NamespacedName
-
+    let isAffixedElementTypeOf = _prefix "isAffixedElementTypeOf"
     /// <summary>
     /// This class represents the age range (child, teenager, adult, old person) of a person.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/AgeRange"></see></summary>
-    let AgeRange = Namespaced_IRI.parse _namespace_name "AgeRange" |> NamespacedName
-
+    let AgeRange = _prefix "AgeRange"
     /// <summary>
     /// This class represents the communication medium of an object, defined by the communication medium type (e.g.: verbal, written, instrumental), the implementation method, the number of voices or instruments involved, etc.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CommunicationMedium"></see></summary>
-    let CommunicationMedium =
-        Namespaced_IRI.parse _namespace_name "CommunicationMedium" |> NamespacedName
-
+    let CommunicationMedium = _prefix "CommunicationMedium"
     /// <summary>
     /// This is the inverse property of "involves age range".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isAgeRangeInvolvedIn"></see></summary>
-    let isAgeRangeInvolvedIn =
-        Namespaced_IRI.parse _namespace_name "isAgeRangeInvolvedIn" |> NamespacedName
-
+    let isAgeRangeInvolvedIn = _prefix "isAgeRangeInvolvedIn"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Area"></see>
     /// </summary>
-    let Area = Namespaced_IRI.parse _namespace_name "Area" |> NamespacedName
-
+    let Area = _prefix "Area"
     /// <summary>
     /// This individual represents an attributed denomination.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/AssignedDesignation"></see></summary>
-    let AssignedDesignation =
-        Namespaced_IRI.parse _namespace_name "AssignedDesignation" |> NamespacedName
-
+    let AssignedDesignation = _prefix "AssignedDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Available"></see>
     /// </summary>
-    let Available = Namespaced_IRI.parse _namespace_name "Available" |> NamespacedName
-
+    let Available = _prefix "Available"
     /// <summary>
     /// This class represents the availability of a cultural property, wheter the cultural property is available or not (e.g.: theft, destruction) for example for cataloguing activities.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalPropertyAvailability"></see></summary>
-    let CulturalPropertyAvailability =
-        Namespaced_IRI.parse _namespace_name "CulturalPropertyAvailability" |> NamespacedName
-
+    let CulturalPropertyAvailability = _prefix "CulturalPropertyAvailability"
     /// <summary>
     /// This individual represents playable notes by a musical instrument, from low to high.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/AvailableNotes"></see></summary>
-    let AvailableNotes =
-        Namespaced_IRI.parse _namespace_name "AvailableNotes" |> NamespacedName
-
+    let AvailableNotes = _prefix "AvailableNotes"
     /// <summary>
     /// This class represents a technical concept, a particular type of concept that classifies a technical characteristic of an entity, e.g. cultural property. For instance, "material" is a techincal concept that classifies the technical characteristic "pottery" related to a cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/TechnicalConcept"></see></summary>
-    let TechnicalConcept =
-        Namespaced_IRI.parse _namespace_name "TechnicalConcept" |> NamespacedName
-
+    let TechnicalConcept = _prefix "TechnicalConcept"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/BackTotalLength"></see>
     /// </summary>
-    let BackTotalLength =
-        Namespaced_IRI.parse _namespace_name "BackTotalLength" |> NamespacedName
-
+    let BackTotalLength = _prefix "BackTotalLength"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/BackWidth"></see>
     /// </summary>
-    let BackWidth = Namespaced_IRI.parse _namespace_name "BackWidth" |> NamespacedName
-
+    let BackWidth = _prefix "BackWidth"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/BadConservationStatus"></see>
     /// </summary>
-    let BadConservationStatus =
-        Namespaced_IRI.parse _namespace_name "BadConservationStatus" |> NamespacedName
-
+    let BadConservationStatus = _prefix "BadConservationStatus"
     /// <summary>
     /// This class represents a brand, that is a sign, an image, a symbol affixed on an object for identification.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Brand"></see></summary>
-    let Brand = Namespaced_IRI.parse _namespace_name "Brand" |> NamespacedName
+    let Brand = _prefix "Brand"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Capacity"></see>
     /// </summary>
-    let Capacity = Namespaced_IRI.parse _namespace_name "Capacity" |> NamespacedName
-
+    let Capacity = _prefix "Capacity"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/ChestCircumference"></see>
     /// </summary>
-    let ChestCircumference =
-        Namespaced_IRI.parse _namespace_name "ChestCircumference" |> NamespacedName
-
+    let ChestCircumference = _prefix "ChestCircumference"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Circumference"></see>
     /// </summary>
-    let Circumference =
-        Namespaced_IRI.parse _namespace_name "Circumference" |> NamespacedName
-
+    let Circumference = _prefix "Circumference"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/CoatOfArms"></see>
     /// </summary>
-    let CoatOfArms = Namespaced_IRI.parse _namespace_name "CoatOfArms" |> NamespacedName
+    let CoatOfArms = _prefix "CoatOfArms"
     /// <summary>
     /// This class represents the design on the reverse or the obverse of a numismatic property, as the graphical part of what is represented on a side of a coin, together with the legend (lettering and wording).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CoinDesign"></see></summary>
-    let CoinDesign = Namespaced_IRI.parse _namespace_name "CoinDesign" |> NamespacedName
+    let CoinDesign = _prefix "CoinDesign"
     /// <summary>
     /// This class represents the lettering and wording on the reverse or the obverse of a numismatic property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CoinLegend"></see></summary>
-    let CoinLegend = Namespaced_IRI.parse _namespace_name "CoinLegend" |> NamespacedName
-
+    let CoinLegend = _prefix "CoinLegend"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Inscription"></see>
     /// </summary>
-    let Inscription =
-        Namespaced_IRI.parse _namespace_name "Inscription" |> NamespacedName
-
+    let Inscription = _prefix "Inscription"
     /// <summary>
     /// This is the inverse property of "has communication medium".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCommunicationMediumOf"></see></summary>
-    let isCommunicationMediumOf =
-        Namespaced_IRI.parse _namespace_name "isCommunicationMediumOf" |> NamespacedName
-
+    let isCommunicationMediumOf = _prefix "isCommunicationMediumOf"
     /// <summary>
     /// This property relates a communication medium (proxemics, kinesic) to the age range of the participants to the communication.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/involvesAgeRange"></see></summary>
-    let involvesAgeRange =
-        Namespaced_IRI.parse _namespace_name "involvesAgeRange" |> NamespacedName
-
+    let involvesAgeRange = _prefix "involvesAgeRange"
     /// <summary>
     /// This property represents the number of the child participants to a communication (verbal, singing, kinesic).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/numberOfChildParticipants"></see></summary>
-    let numberOfChildParticipants =
-        Namespaced_IRI.parse _namespace_name "numberOfChildParticipants" |> NamespacedName
-
+    let numberOfChildParticipants = _prefix "numberOfChildParticipants"
     /// <summary>
     /// This property relates a verbal or singing or instrumental communication medium to its implementation method (e.g.: polyphonic) associated to it.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasImplementationMethod"></see></summary>
-    let hasImplementationMethod =
-        Namespaced_IRI.parse _namespace_name "hasImplementationMethod" |> NamespacedName
-
+    let hasImplementationMethod = _prefix "hasImplementationMethod"
     /// <summary>
     /// This class represents the implementation method (e.g.: polyphonic) associated to a verbale or singing or instrumental communication medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/ImplementationMethod"></see></summary>
-    let ImplementationMethod =
-        Namespaced_IRI.parse _namespace_name "ImplementationMethod" |> NamespacedName
-
+    let ImplementationMethod = _prefix "ImplementationMethod"
     /// <summary>
     /// This property represents the number of the male participants to a communication (verbal, singing, kinesic).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/numberOfMaleParticipants"></see></summary>
-    let numberOfMaleParticipants =
-        Namespaced_IRI.parse _namespace_name "numberOfMaleParticipants" |> NamespacedName
-
+    let numberOfMaleParticipants = _prefix "numberOfMaleParticipants"
     /// <summary>
     /// This property represents the number of the male participants to a communication (verbal, singing, kinesic).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/numberOfFemaleParticipants"></see></summary>
-    let numberOfFemaleParticipants =
-        Namespaced_IRI.parse _namespace_name "numberOfFemaleParticipants" |> NamespacedName
-
+    let numberOfFemaleParticipants = _prefix "numberOfFemaleParticipants"
     /// <summary>
     /// This property relates a communication medium to its type (e.g.: verbal, singing, etc.)
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCommunicationMediumType"></see></summary>
-    let hasCommunicationMediumType =
-        Namespaced_IRI.parse _namespace_name "hasCommunicationMediumType" |> NamespacedName
-
+    let hasCommunicationMediumType = _prefix "hasCommunicationMediumType"
     /// <summary>
     /// This is the inverse property of "has communication medium type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCommunicationMediumTypeOf"></see></summary>
-    let isCommunicationMediumTypeOf =
-        Namespaced_IRI.parse _namespace_name "isCommunicationMediumTypeOf" |> NamespacedName
-
+    let isCommunicationMediumTypeOf = _prefix "isCommunicationMediumTypeOf"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/CompleteLegibility"></see>
     /// </summary>
-    let CompleteLegibility =
-        Namespaced_IRI.parse _namespace_name "CompleteLegibility" |> NamespacedName
-
+    let CompleteLegibility = _prefix "CompleteLegibility"
     /// <summary>
     /// This class represents the legibility status (complete, decent, good, lowered, impossible) of a numinsmatic property. It is related to the property's conservation status.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Legibility"></see></summary>
-    let Legibility = Namespaced_IRI.parse _namespace_name "Legibility" |> NamespacedName
-
+    let Legibility = _prefix "Legibility"
     /// <summary>
     /// This class represents the conservation status of the cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/ConservationStatus"></see></summary>
-    let ConservationStatus =
-        Namespaced_IRI.parse _namespace_name "ConservationStatus" |> NamespacedName
-
+    let ConservationStatus = _prefix "ConservationStatus"
     /// <summary>
     /// This property relates a conservation status to one of its type's values.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasConservationStatusType"></see></summary>
-    let hasConservationStatusType =
-        Namespaced_IRI.parse _namespace_name "hasConservationStatusType" |> NamespacedName
-
+    let hasConservationStatusType = _prefix "hasConservationStatusType"
     /// <summary>
     /// This property relates a conservation status of a cultural property to that cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isConservationStatusOf"></see></summary>
-    let isConservationStatusOf =
-        Namespaced_IRI.parse _namespace_name "isConservationStatusOf" |> NamespacedName
-
+    let isConservationStatusOf = _prefix "isConservationStatusOf"
     /// <summary>
     /// This property relates a numismatic entity's conservation status to its legibility status.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasLegibility"></see></summary>
-    let hasLegibility =
-        Namespaced_IRI.parse _namespace_name "hasLegibility" |> NamespacedName
-
+    let hasLegibility = _prefix "hasLegibility"
     /// <summary>
     /// This is the inverse property of "has conservation status type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isConservationStatusTypeOf"></see></summary>
-    let isConservationStatusTypeOf =
-        Namespaced_IRI.parse _namespace_name "isConservationStatusTypeOf" |> NamespacedName
-
+    let isConservationStatusTypeOf = _prefix "isConservationStatusTypeOf"
     /// <summary>
     /// This class represent a counterstamp (or countermark), that is a partial or complete over-stamping of a coin, generally affixed in order to change its value or issuing authority.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Counterstamp"></see></summary>
-    let Counterstamp =
-        Namespaced_IRI.parse _namespace_name "Counterstamp" |> NamespacedName
-
+    let Counterstamp = _prefix "Counterstamp"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/CoveredArea"></see>
     /// </summary>
-    let CoveredArea =
-        Namespaced_IRI.parse _namespace_name "CoveredArea" |> NamespacedName
+    let CoveredArea = _prefix "CoveredArea"
 
     /// <summary>
     /// This class represents the technical description of a cultural entity, which uses all the technical concepts classifying the technical characteristics that a cultural entity can have. This class is a particular type of the class Description, which is the class for socially constructed objects (i.e. texts, values, categories, relations, contexts) used to describe other objects in a structured manner.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalEntityTechnicalDescription"></see></summary>
     let CulturalEntityTechnicalDescription =
-        Namespaced_IRI.parse _namespace_name "CulturalEntityTechnicalDescription" |> NamespacedName
+        _prefix "CulturalEntityTechnicalDescription"
 
     /// <summary>
     /// This property relates a technical description of a cultural property to one of the concepts used in that description.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/usesTechnicalConcept"></see></summary>
-    let usesTechnicalConcept =
-        Namespaced_IRI.parse _namespace_name "usesTechnicalConcept" |> NamespacedName
-
+    let usesTechnicalConcept = _prefix "usesTechnicalConcept"
     /// <summary>
     /// This property relates a technical description of a cultural entity to a situation that satisfies that description.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTechnicalDescriptionSatisfiedBy"></see></summary>
-    let isTechnicalDescriptionSatisfiedBy =
-        Namespaced_IRI.parse _namespace_name "isTechnicalDescriptionSatisfiedBy" |> NamespacedName
-
+    let isTechnicalDescriptionSatisfiedBy = _prefix "isTechnicalDescriptionSatisfiedBy"
     /// <summary>
     /// This class represents a characteristic of a cultural property. For example it can represent a cultural property's particular costituent material or the technique with which it was made or its shape or color. Each technical characteristic is classified by a concept (i.e. "clay" is a techical characteristic classified by the technical concept "material" related to a cultural property). For each cultural property typology can be registered some specific technical characteristics.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/TechnicalCharacteristic"></see></summary>
-    let TechnicalCharacteristic =
-        Namespaced_IRI.parse _namespace_name "TechnicalCharacteristic" |> NamespacedName
-
+    let TechnicalCharacteristic = _prefix "TechnicalCharacteristic"
     /// <summary>
     /// This property connects a technical status, with respect to a specific entity (as a cultural entity) to one of the technical characteristics related to that status.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/includesTechnicalCharacteristic"></see></summary>
-    let includesTechnicalCharacteristic =
-        Namespaced_IRI.parse _namespace_name "includesTechnicalCharacteristic" |> NamespacedName
-
+    let includesTechnicalCharacteristic = _prefix "includesTechnicalCharacteristic"
     /// <summary>
     /// This property connects a technical status to a cultural entity. This status is valid until a specific moment and is represented by the technical characteristics that a cultural entity has in that moment.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTechnicalStatusOf"></see></summary>
-    let isTechnicalStatusOf =
-        Namespaced_IRI.parse _namespace_name "isTechnicalStatusOf" |> NamespacedName
-
+    let isTechnicalStatusOf = _prefix "isTechnicalStatusOf"
     /// <summary>
     /// This is the inverse property of "has cultural property accessibility".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCulturalPropertyAccessibilityOf"></see></summary>
-    let isCulturalPropertyAccessibilityOf =
-        Namespaced_IRI.parse _namespace_name "isCulturalPropertyAccessibilityOf" |> NamespacedName
-
+    let isCulturalPropertyAccessibilityOf = _prefix "isCulturalPropertyAccessibilityOf"
     /// <summary>
     /// This is the inverse property of "has cultural property availability".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCulturalPropertyAvailabilityOf"></see></summary>
-    let isCulturalPropertyAvailabilityOf =
-        Namespaced_IRI.parse _namespace_name "isCulturalPropertyAvailabilityOf" |> NamespacedName
-
+    let isCulturalPropertyAvailabilityOf = _prefix "isCulturalPropertyAvailabilityOf"
     /// <summary>
     /// This class represents the definition of a cultural property. It is the term or expression which identifies the property that is being catalogued.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalPropertyDefinition"></see></summary>
-    let CulturalPropertyDefinition =
-        Namespaced_IRI.parse _namespace_name "CulturalPropertyDefinition" |> NamespacedName
-
+    let CulturalPropertyDefinition = _prefix "CulturalPropertyDefinition"
     /// <summary>
     /// This is the inverse property of "has cultural property definition".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCulturalPropertyDefinitionOf"></see></summary>
-    let isCulturalPropertyDefinitionOf =
-        Namespaced_IRI.parse _namespace_name "isCulturalPropertyDefinitionOf" |> NamespacedName
-
+    let isCulturalPropertyDefinitionOf = _prefix "isCulturalPropertyDefinitionOf"
     /// <summary>
     /// This class represents the morphological or functional specification, which are useful to define a cultural property for a more precise individuation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CulturalPropertySpecification"></see></summary>
-    let CulturalPropertySpecification =
-        Namespaced_IRI.parse _namespace_name "CulturalPropertySpecification" |> NamespacedName
-
+    let CulturalPropertySpecification = _prefix "CulturalPropertySpecification"
     /// <summary>
     /// This is the inverse property of "has cultural property specification".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCulturalPropertySpecificationOf"></see></summary>
-    let isCulturalPropertySpecificationOf =
-        Namespaced_IRI.parse _namespace_name "isCulturalPropertySpecificationOf" |> NamespacedName
-
+    let isCulturalPropertySpecificationOf = _prefix "isCulturalPropertySpecificationOf"
     /// <summary>
     /// This is the inverse property of "has cultural property type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCulturalPropertyTypeOf"></see></summary>
-    let isCulturalPropertyTypeOf =
-        Namespaced_IRI.parse _namespace_name "isCulturalPropertyTypeOf" |> NamespacedName
-
+    let isCulturalPropertyTypeOf = _prefix "isCulturalPropertyTypeOf"
     /// <summary>
     /// This property relates a cultural entity's typology to one of its components, i.e.  its definition.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCulturalPropertyDefinition"></see></summary>
-    let hasCulturalPropertyDefinition =
-        Namespaced_IRI.parse _namespace_name "hasCulturalPropertyDefinition" |> NamespacedName
-
+    let hasCulturalPropertyDefinition = _prefix "hasCulturalPropertyDefinition"
     /// <summary>
     /// This property relates a cultural entity's typology to its components, i.e. morphological and functional specifications.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCulturalPropertySpecification"></see></summary>
-    let hasCulturalPropertySpecification =
-        Namespaced_IRI.parse _namespace_name "hasCulturalPropertySpecification" |> NamespacedName
-
+    let hasCulturalPropertySpecification = _prefix "hasCulturalPropertySpecification"
     /// <summary>
     /// This individual represents the current designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CurrentDesignation"></see></summary>
-    let CurrentDesignation =
-        Namespaced_IRI.parse _namespace_name "CurrentDesignation" |> NamespacedName
-
+    let CurrentDesignation = _prefix "CurrentDesignation"
     /// <summary>
     /// This individual represents the usual designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/CustomaryDesignation"></see></summary>
-    let CustomaryDesignation =
-        Namespaced_IRI.parse _namespace_name "CustomaryDesignation" |> NamespacedName
-
+    let CustomaryDesignation = _prefix "CustomaryDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/DecentConservationStatus"></see>
     /// </summary>
-    let DecentConservationStatus =
-        Namespaced_IRI.parse _namespace_name "DecentConservationStatus" |> NamespacedName
-
+    let DecentConservationStatus = _prefix "DecentConservationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/DecentLegibility"></see>
     /// </summary>
-    let DecentLegibility =
-        Namespaced_IRI.parse _namespace_name "DecentLegibility" |> NamespacedName
-
+    let DecentLegibility = _prefix "DecentLegibility"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/DecorativeApparatus"></see>
     /// </summary>
-    let DecorativeApparatus =
-        Namespaced_IRI.parse _namespace_name "DecorativeApparatus" |> NamespacedName
-
+    let DecorativeApparatus = _prefix "DecorativeApparatus"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Dedication"></see>
     /// </summary>
-    let Dedication = Namespaced_IRI.parse _namespace_name "Dedication" |> NamespacedName
+    let Dedication = _prefix "Dedication"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Depth"></see>
     /// </summary>
-    let Depth = Namespaced_IRI.parse _namespace_name "Depth" |> NamespacedName
-
+    let Depth = _prefix "Depth"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/DepthOrHeight"></see>
     /// </summary>
-    let DepthOrHeight =
-        Namespaced_IRI.parse _namespace_name "DepthOrHeight" |> NamespacedName
-
+    let DepthOrHeight = _prefix "DepthOrHeight"
     /// <summary>
     /// This class represents a certain cultural property's designation/denomination attested over time.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/DesignationInTime"></see></summary>
-    let DesignationInTime =
-        Namespaced_IRI.parse _namespace_name "DesignationInTime" |> NamespacedName
-
+    let DesignationInTime = _prefix "DesignationInTime"
     /// <summary>
     /// This property relates a cultural entity designation to its type.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasDesignationType"></see></summary>
-    let hasDesignationType =
-        Namespaced_IRI.parse _namespace_name "hasDesignationType" |> NamespacedName
-
+    let hasDesignationType = _prefix "hasDesignationType"
     /// <summary>
     /// This is the inverse property of "has designation in time".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isDesignationInTimeOf"></see></summary>
-    let isDesignationInTimeOf =
-        Namespaced_IRI.parse _namespace_name "isDesignationInTimeOf" |> NamespacedName
-
+    let isDesignationInTimeOf = _prefix "isDesignationInTimeOf"
     /// <summary>
     /// This is the inverse property of "has designation type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isDesignationTypeOf"></see></summary>
-    let isDesignationTypeOf =
-        Namespaced_IRI.parse _namespace_name "isDesignationTypeOf" |> NamespacedName
-
+    let isDesignationTypeOf = _prefix "isDesignationTypeOf"
     /// <summary>
     /// This individual represents the dialect designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/DialectalDesignation"></see></summary>
-    let DialectalDesignation =
-        Namespaced_IRI.parse _namespace_name "DialectalDesignation" |> NamespacedName
-
+    let DialectalDesignation = _prefix "DialectalDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Diameter"></see>
     /// </summary>
-    let Diameter = Namespaced_IRI.parse _namespace_name "Diameter" |> NamespacedName
+    let Diameter = _prefix "Diameter"
     /// <summary>
     /// This individual represents the identified diapason (note, temperature and eventually humidity during the detection).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Diapason"></see></summary>
-    let Diapason = Namespaced_IRI.parse _namespace_name "Diapason" |> NamespacedName
+    let Diapason = _prefix "Diapason"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Duration"></see>
     /// </summary>
-    let Duration = Namespaced_IRI.parse _namespace_name "Duration" |> NamespacedName
-
+    let Duration = _prefix "Duration"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/EdgeCircumference"></see>
     /// </summary>
-    let EdgeCircumference =
-        Namespaced_IRI.parse _namespace_name "EdgeCircumference" |> NamespacedName
-
+    let EdgeCircumference = _prefix "EdgeCircumference"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Emblem"></see>
     /// </summary>
-    let Emblem = Namespaced_IRI.parse _namespace_name "Emblem" |> NamespacedName
+    let Emblem = _prefix "Emblem"
     /// <summary>
     /// This individual represents a musical instrument's musical extension.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Extension"></see></summary>
-    let Extension = Namespaced_IRI.parse _namespace_name "Extension" |> NamespacedName
-
+    let Extension = _prefix "Extension"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/ExternalInternalLength"></see>
     /// </summary>
-    let ExternalInternalLength =
-        Namespaced_IRI.parse _namespace_name "ExternalInternalLength" |> NamespacedName
-
+    let ExternalInternalLength = _prefix "ExternalInternalLength"
     /// <summary>
     /// This individual represents the format used to write a digital resource on a data medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/FileFormat"></see></summary>
-    let FileFormat = Namespaced_IRI.parse _namespace_name "FileFormat" |> NamespacedName
+    let FileFormat = _prefix "FileFormat"
     /// <summary>
     /// This individual represents the filigree of an artwork, painting, photography, print.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Filigree"></see></summary>
-    let Filigree = Namespaced_IRI.parse _namespace_name "Filigree" |> NamespacedName
-
+    let Filigree = _prefix "Filigree"
     /// <summary>
     /// This is the inverse property of "has font style".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isFontStyleOf"></see></summary>
-    let isFontStyleOf =
-        Namespaced_IRI.parse _namespace_name "isFontStyleOf" |> NamespacedName
-
+    let isFontStyleOf = _prefix "isFontStyleOf"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/FrontTotalLength"></see>
     /// </summary>
-    let FrontTotalLength =
-        Namespaced_IRI.parse _namespace_name "FrontTotalLength" |> NamespacedName
-
+    let FrontTotalLength = _prefix "FrontTotalLength"
     /// <summary>
     /// This is the inverse property of "has functional purpose".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isFunctionalPurposeOf"></see></summary>
-    let isFunctionalPurposeOf =
-        Namespaced_IRI.parse _namespace_name "isFunctionalPurposeOf" |> NamespacedName
-
+    let isFunctionalPurposeOf = _prefix "isFunctionalPurposeOf"
     /// <summary>
     /// This individual represents the techincal definition of textured fabrics of an ancient or contemporary garment, according to the standard provided by C.I.E.T.A., or laces. It can also represent the dinstrinction between plain fabric and textured fabric.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/GarmentAnalysis"></see></summary>
-    let GarmentAnalysis =
-        Namespaced_IRI.parse _namespace_name "GarmentAnalysis" |> NamespacedName
-
+    let GarmentAnalysis = _prefix "GarmentAnalysis"
     /// <summary>
     /// This individual represents the dominant color of a ancient and contemporary garment, usually it is base fabric's color, or the interlaced decoration's color.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/GarmentColour"></see></summary>
-    let GarmentColour =
-        Namespaced_IRI.parse _namespace_name "GarmentColour" |> NamespacedName
-
+    let GarmentColour = _prefix "GarmentColour"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/GoodConservationStatus"></see>
     /// </summary>
-    let GoodConservationStatus =
-        Namespaced_IRI.parse _namespace_name "GoodConservationStatus" |> NamespacedName
-
+    let GoodConservationStatus = _prefix "GoodConservationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/GoodLegibility"></see>
     /// </summary>
-    let GoodLegibility =
-        Namespaced_IRI.parse _namespace_name "GoodLegibility" |> NamespacedName
-
+    let GoodLegibility = _prefix "GoodLegibility"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Height"></see>
     /// </summary>
-    let Height = Namespaced_IRI.parse _namespace_name "Height" |> NamespacedName
-
+    let Height = _prefix "Height"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/HeightLength"></see>
     /// </summary>
-    let HeightLength =
-        Namespaced_IRI.parse _namespace_name "HeightLength" |> NamespacedName
-
+    let HeightLength = _prefix "HeightLength"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/HeightLengthWidth"></see>
     /// </summary>
-    let HeightLengthWidth =
-        Namespaced_IRI.parse _namespace_name "HeightLengthWidth" |> NamespacedName
-
+    let HeightLengthWidth = _prefix "HeightLengthWidth"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/HeightWidthThickness"></see>
     /// </summary>
-    let HeightWidthThickness =
-        Namespaced_IRI.parse _namespace_name "HeightWidthThickness" |> NamespacedName
-
+    let HeightWidthThickness = _prefix "HeightWidthThickness"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/HipCircumference"></see>
     /// </summary>
-    let HipCircumference =
-        Namespaced_IRI.parse _namespace_name "HipCircumference" |> NamespacedName
-
+    let HipCircumference = _prefix "HipCircumference"
     /// <summary>
     /// This individual represents a historical designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/HistoricalDesignation"></see></summary>
-    let HistoricalDesignation =
-        Namespaced_IRI.parse _namespace_name "HistoricalDesignation" |> NamespacedName
-
+    let HistoricalDesignation = _prefix "HistoricalDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/HistoricalPlaque"></see>
     /// </summary>
-    let HistoricalPlaque =
-        Namespaced_IRI.parse _namespace_name "HistoricalPlaque" |> NamespacedName
+    let HistoricalPlaque = _prefix "HistoricalPlaque"
 
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/IconographicAndDecorativeApparatus"></see>
     /// </summary>
     let IconographicAndDecorativeApparatus =
-        Namespaced_IRI.parse _namespace_name "IconographicAndDecorativeApparatus" |> NamespacedName
+        _prefix "IconographicAndDecorativeApparatus"
 
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/IconographicApparatus"></see>
     /// </summary>
-    let IconographicApparatus =
-        Namespaced_IRI.parse _namespace_name "IconographicApparatus" |> NamespacedName
-
+    let IconographicApparatus = _prefix "IconographicApparatus"
     /// <summary>
     /// This class represents the iconographic or decorative apparaturs of a cultural property. It is intended as the more or less complex set of iconographic or decorative representations on the cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/IconographicOrDecorativeApparatus"></see></summary>
-    let IconographicOrDecorativeApparatus =
-        Namespaced_IRI.parse _namespace_name "IconographicOrDecorativeApparatus" |> NamespacedName
+    let IconographicOrDecorativeApparatus = _prefix "IconographicOrDecorativeApparatus"
 
     /// <summary>
     /// This is the inverse property of "has iconographic or decorative apparatus".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isIconographicOrDecorativeApparatusOf"></see></summary>
     let isIconographicOrDecorativeApparatusOf =
-        Namespaced_IRI.parse _namespace_name "isIconographicOrDecorativeApparatusOf" |> NamespacedName
+        _prefix "isIconographicOrDecorativeApparatusOf"
 
     /// <summary>
     /// This property relates a iconographic or decorative apparatus to its type.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasIconographicOrDecorativeApparatusType"></see></summary>
     let hasIconographicOrDecorativeApparatusType =
-        Namespaced_IRI.parse _namespace_name "hasIconographicOrDecorativeApparatusType" |> NamespacedName
+        _prefix "hasIconographicOrDecorativeApparatusType"
 
     /// <summary>
     /// This property connects a cultural entity's iconographic or decorative apparatus to its ornamental motif (anthropomorphic, zoomorphic, geometric).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasOrnamentalMotif"></see></summary>
-    let hasOrnamentalMotif =
-        Namespaced_IRI.parse _namespace_name "hasOrnamentalMotif" |> NamespacedName
-
+    let hasOrnamentalMotif = _prefix "hasOrnamentalMotif"
     /// <summary>
     /// This class represents the ornamental motif (anthropomorphous, zoomorphic, geometric) represented by a cultural property's iconographic and decorative apparatus.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/OrnamentalMotif"></see></summary>
-    let OrnamentalMotif =
-        Namespaced_IRI.parse _namespace_name "OrnamentalMotif" |> NamespacedName
+    let OrnamentalMotif = _prefix "OrnamentalMotif"
 
     /// <summary>
     /// This is the inverse property of "has iconographic or decorative apparatus type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isIconographicOrDecorativeApparatusTypeOf"></see></summary>
     let isIconographicOrDecorativeApparatusTypeOf =
-        Namespaced_IRI.parse _namespace_name "isIconographicOrDecorativeApparatusTypeOf" |> NamespacedName
+        _prefix "isIconographicOrDecorativeApparatusTypeOf"
 
     /// <summary>
     /// This individual represents an idiomatic designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/IdiomaticDesignation"></see></summary>
-    let IdiomaticDesignation =
-        Namespaced_IRI.parse _namespace_name "IdiomaticDesignation" |> NamespacedName
-
+    let IdiomaticDesignation = _prefix "IdiomaticDesignation"
     /// <summary>
     /// This is the inverse property of "has implementation method".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isImplementationMethodOf"></see></summary>
-    let isImplementationMethodOf =
-        Namespaced_IRI.parse _namespace_name "isImplementationMethodOf" |> NamespacedName
-
+    let isImplementationMethodOf = _prefix "isImplementationMethodOf"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/ImpossibleLegibility"></see>
     /// </summary>
-    let ImpossibleLegibility =
-        Namespaced_IRI.parse _namespace_name "ImpossibleLegibility" |> NamespacedName
-
+    let ImpossibleLegibility = _prefix "ImpossibleLegibility"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Inaccessible"></see>
     /// </summary>
-    let Inaccessible =
-        Namespaced_IRI.parse _namespace_name "Inaccessible" |> NamespacedName
-
+    let Inaccessible = _prefix "Inaccessible"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/InstrumentalCommunication"></see>
     /// </summary>
-    let InstrumentalCommunication =
-        Namespaced_IRI.parse _namespace_name "InstrumentalCommunication" |> NamespacedName
-
+    let InstrumentalCommunication = _prefix "InstrumentalCommunication"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/KinesicCommunication"></see>
     /// </summary>
-    let KinesicCommunication =
-        Namespaced_IRI.parse _namespace_name "KinesicCommunication" |> NamespacedName
-
+    let KinesicCommunication = _prefix "KinesicCommunication"
     /// <summary>
     /// This is the inverse property of "has legibility".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isLegibilityOf"></see></summary>
-    let isLegibilityOf =
-        Namespaced_IRI.parse _namespace_name "isLegibilityOf" |> NamespacedName
-
+    let isLegibilityOf = _prefix "isLegibilityOf"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Length"></see>
     /// </summary>
-    let Length = Namespaced_IRI.parse _namespace_name "Length" |> NamespacedName
-
+    let Length = _prefix "Length"
     /// <summary>
     /// This individual represents an local designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/LocalDesignation"></see></summary>
-    let LocalDesignation =
-        Namespaced_IRI.parse _namespace_name "LocalDesignation" |> NamespacedName
-
+    let LocalDesignation = _prefix "LocalDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Logo"></see>
     /// </summary>
-    let Logo = Namespaced_IRI.parse _namespace_name "Logo" |> NamespacedName
-
+    let Logo = _prefix "Logo"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/LoweredLegibility"></see>
     /// </summary>
-    let LoweredLegibility =
-        Namespaced_IRI.parse _namespace_name "LoweredLegibility" |> NamespacedName
-
+    let LoweredLegibility = _prefix "LoweredLegibility"
     /// <summary>
     /// This individual represents the mass storage where a digital photograph is stored.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/MassStorage"></see></summary>
-    let MassStorage =
-        Namespaced_IRI.parse _namespace_name "MassStorage" |> NamespacedName
-
+    let MassStorage = _prefix "MassStorage"
     /// <summary>
     /// This individual represents the material through which an object has been realized, e.g. a cultural entity.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Material"></see></summary>
-    let Material = Namespaced_IRI.parse _namespace_name "Material" |> NamespacedName
-
+    let Material = _prefix "Material"
     /// <summary>
     /// This individual represents the material or technique through which an object has been realized, e.g. a cultural entity. In ICCD standard for cataloguing cultural entities, this label is necessary when material and techinque are registered in the same field.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/MaterialOrTechnique"></see></summary>
-    let MaterialOrTechnique =
-        Namespaced_IRI.parse _namespace_name "MaterialOrTechnique" |> NamespacedName
-
+    let MaterialOrTechnique = _prefix "MaterialOrTechnique"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/MaximumMinimumWidth"></see>
     /// </summary>
-    let MaximumMinimumWidth =
-        Namespaced_IRI.parse _namespace_name "MaximumMinimumWidth" |> NamespacedName
-
+    let MaximumMinimumWidth = _prefix "MaximumMinimumWidth"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/MaximumTotalLength"></see>
     /// </summary>
-    let MaximumTotalLength =
-        Namespaced_IRI.parse _namespace_name "MaximumTotalLength" |> NamespacedName
-
+    let MaximumTotalLength = _prefix "MaximumTotalLength"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/MaximumTotalWidth"></see>
     /// </summary>
-    let MaximumTotalWidth =
-        Namespaced_IRI.parse _namespace_name "MaximumTotalWidth" |> NamespacedName
-
+    let MaximumTotalWidth = _prefix "MaximumTotalWidth"
     /// <summary>
     /// This class represents a measurement of an object. Measurements realte to the cultural property's dimensions.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Measurement"></see></summary>
-    let Measurement =
-        Namespaced_IRI.parse _namespace_name "Measurement" |> NamespacedName
-
+    let Measurement = _prefix "Measurement"
     /// <summary>
     /// This property relates a measurement to its type.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasMeasurementType"></see></summary>
-    let hasMeasurementType =
-        Namespaced_IRI.parse _namespace_name "hasMeasurementType" |> NamespacedName
-
+    let hasMeasurementType = _prefix "hasMeasurementType"
     /// <summary>
     /// This property relates a measurement to its value.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasValue"></see></summary>
-    let hasValue = Namespaced_IRI.parse _namespace_name "hasValue" |> NamespacedName
-
+    let hasValue = _prefix "hasValue"
     /// <summary>
     /// This class represents the set of measurments observed for an object.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/MeasurementCollection"></see></summary>
-    let MeasurementCollection =
-        Namespaced_IRI.parse _namespace_name "MeasurementCollection" |> NamespacedName
-
+    let MeasurementCollection = _prefix "MeasurementCollection"
     /// <summary>
     /// This property connects an object's measure to the observed measures' collection of that object. It is the inverse property of hasMeasurement.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isMeasurementIn"></see></summary>
-    let isMeasurementIn =
-        Namespaced_IRI.parse _namespace_name "isMeasurementIn" |> NamespacedName
-
+    let isMeasurementIn = _prefix "isMeasurementIn"
     /// <summary>
     /// This is the inverse property of "has measurement collection".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isMeasurementCollectionOf"></see></summary>
-    let isMeasurementCollectionOf =
-        Namespaced_IRI.parse _namespace_name "isMeasurementCollectionOf" |> NamespacedName
-
+    let isMeasurementCollectionOf = _prefix "isMeasurementCollectionOf"
     /// <summary>
     /// This property connects a set of observed measures on an object to one of those measures.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasMeasurement"></see></summary>
-    let hasMeasurement =
-        Namespaced_IRI.parse _namespace_name "hasMeasurement" |> NamespacedName
-
+    let hasMeasurement = _prefix "hasMeasurement"
     /// <summary>
     /// This is the inverse property of "has measurement type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isMeasurementTypeOf"></see></summary>
-    let isMeasurementTypeOf =
-        Namespaced_IRI.parse _namespace_name "isMeasurementTypeOf" |> NamespacedName
-
+    let isMeasurementTypeOf = _prefix "isMeasurementTypeOf"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/MediocreConservationStatus"></see>
     /// </summary>
-    let MediocreConservationStatus =
-        Namespaced_IRI.parse _namespace_name "MediocreConservationStatus" |> NamespacedName
-
+    let MediocreConservationStatus = _prefix "MediocreConservationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/NoLongerAvailable"></see>
     /// </summary>
-    let NoLongerAvailable =
-        Namespaced_IRI.parse _namespace_name "NoLongerAvailable" |> NamespacedName
-
+    let NoLongerAvailable = _prefix "NoLongerAvailable"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/OccupiedStorageSpace"></see>
     /// </summary>
-    let OccupiedStorageSpace =
-        Namespaced_IRI.parse _namespace_name "OccupiedStorageSpace" |> NamespacedName
-
+    let OccupiedStorageSpace = _prefix "OccupiedStorageSpace"
     /// <summary>
     /// This class represents the orientation of an object (i.e. N.W., S.E.), considering the main axis.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Orientation"></see></summary>
-    let Orientation =
-        Namespaced_IRI.parse _namespace_name "Orientation" |> NamespacedName
-
+    let Orientation = _prefix "Orientation"
     /// <summary>
     /// This is the inverse property of "has orientation".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isOrientationOf"></see></summary>
-    let isOrientationOf =
-        Namespaced_IRI.parse _namespace_name "isOrientationOf" |> NamespacedName
-
+    let isOrientationOf = _prefix "isOrientationOf"
     /// <summary>
     /// This individual represents original designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/OriginalDesignation"></see></summary>
-    let OriginalDesignation =
-        Namespaced_IRI.parse _namespace_name "OriginalDesignation" |> NamespacedName
-
+    let OriginalDesignation = _prefix "OriginalDesignation"
     /// <summary>
     /// This is the inverse property of "has ornamental motif".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isOrnamentalMotifOf"></see></summary>
-    let isOrnamentalMotifOf =
-        Namespaced_IRI.parse _namespace_name "isOrnamentalMotifOf" |> NamespacedName
-
+    let isOrnamentalMotifOf = _prefix "isOrnamentalMotifOf"
     /// <summary>
     /// This individual represents a designation in other language.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/OtherLanguageDesignation"></see></summary>
-    let OtherLanguageDesignation =
-        Namespaced_IRI.parse _namespace_name "OtherLanguageDesignation" |> NamespacedName
-
+    let OtherLanguageDesignation = _prefix "OtherLanguageDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/PartiallyAccessible"></see>
     /// </summary>
-    let PartiallyAccessible =
-        Namespaced_IRI.parse _namespace_name "PartiallyAccessible" |> NamespacedName
-
+    let PartiallyAccessible = _prefix "PartiallyAccessible"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Perimeter"></see>
     /// </summary>
-    let Perimeter = Namespaced_IRI.parse _namespace_name "Perimeter" |> NamespacedName
-
+    let Perimeter = _prefix "Perimeter"
     /// <summary>
     /// This individual represents a digital photograph's colour, i.e. black and white or colours.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/PhotoColour"></see></summary>
-    let PhotoColour =
-        Namespaced_IRI.parse _namespace_name "PhotoColour" |> NamespacedName
-
+    let PhotoColour = _prefix "PhotoColour"
     /// <summary>
     /// This individual represents the visualization, storage and processing program used for a digital photograph.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/PhotoProgram"></see></summary>
-    let PhotoProgram =
-        Namespaced_IRI.parse _namespace_name "PhotoProgram" |> NamespacedName
-
+    let PhotoProgram = _prefix "PhotoProgram"
     /// <summary>
     /// This individual represents a digital photograph format, intended as the photogrphic material's standardised size (e.g. negative, positives).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/PhotoSize"></see></summary>
-    let PhotoSize = Namespaced_IRI.parse _namespace_name "PhotoSize" |> NamespacedName
-
+    let PhotoSize = _prefix "PhotoSize"
     /// <summary>
     /// This individual represents a digital photograph size in pixels.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/PixelDimension"></see></summary>
-    let PixelDimension =
-        Namespaced_IRI.parse _namespace_name "PixelDimension" |> NamespacedName
-
+    let PixelDimension = _prefix "PixelDimension"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Power"></see>
     /// </summary>
-    let Power = Namespaced_IRI.parse _namespace_name "Power" |> NamespacedName
-
+    let Power = _prefix "Power"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/ProxemicsCommunication"></see>
     /// </summary>
-    let ProxemicsCommunication =
-        Namespaced_IRI.parse _namespace_name "ProxemicsCommunication" |> NamespacedName
-
+    let ProxemicsCommunication = _prefix "ProxemicsCommunication"
     /// <summary>
     /// This individual represents a digital resource's quality level, e.g. high-resolution, low-resolution, preview.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/QualityLevel"></see></summary>
-    let QualityLevel =
-        Namespaced_IRI.parse _namespace_name "QualityLevel" |> NamespacedName
-
+    let QualityLevel = _prefix "QualityLevel"
     /// <summary>
     /// This individual represents the specific value and resolution used for storing a digital photograph.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Resolution"></see></summary>
-    let Resolution = Namespaced_IRI.parse _namespace_name "Resolution" |> NamespacedName
-
+    let Resolution = _prefix "Resolution"
     /// <summary>
     /// This class represents a sample collected from an archeological property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/SampleCollected"></see></summary>
-    let SampleCollected =
-        Namespaced_IRI.parse _namespace_name "SampleCollected" |> NamespacedName
-
+    let SampleCollected = _prefix "SampleCollected"
     /// <summary>
     /// This property represents a cultural entity's postion (e.g. elements like crests, emblems, stamps or the depicted subjects), with respect to the whole entity or to its specific part.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/positionOnCulturalProperty"></see></summary>
-    let positionOnCulturalProperty =
-        Namespaced_IRI.parse _namespace_name "positionOnCulturalProperty" |> NamespacedName
-
+    let positionOnCulturalProperty = _prefix "positionOnCulturalProperty"
     /// <summary>
     /// This property represents the seample collected identifier.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/sampleCollectedIdentifier"></see></summary>
-    let sampleCollectedIdentifier =
-        Namespaced_IRI.parse _namespace_name "sampleCollectedIdentifier" |> NamespacedName
-
+    let sampleCollectedIdentifier = _prefix "sampleCollectedIdentifier"
     /// <summary>
     /// This property relates a sample collected to its type.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasSampleCollectedType"></see></summary>
-    let hasSampleCollectedType =
-        Namespaced_IRI.parse _namespace_name "hasSampleCollectedType" |> NamespacedName
-
+    let hasSampleCollectedType = _prefix "hasSampleCollectedType"
     /// <summary>
     /// This is the inverse property of "has sample collected".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isSampleCollectedFrom"></see></summary>
-    let isSampleCollectedFrom =
-        Namespaced_IRI.parse _namespace_name "isSampleCollectedFrom" |> NamespacedName
-
+    let isSampleCollectedFrom = _prefix "isSampleCollectedFrom"
     /// <summary>
     /// This is the inverse property of "has sample collected type".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isSampleCollectedTypeOf"></see></summary>
-    let isSampleCollectedTypeOf =
-        Namespaced_IRI.parse _namespace_name "isSampleCollectedTypeOf" |> NamespacedName
-
+    let isSampleCollectedTypeOf = _prefix "isSampleCollectedTypeOf"
     /// <summary>
     /// This individual represents an object's shape. It is used for bidimensional objects, e.g. octagonal or round shape.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Shape"></see></summary>
-    let Shape = Namespaced_IRI.parse _namespace_name "Shape" |> NamespacedName
-
+    let Shape = _prefix "Shape"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/SingingCommunication"></see>
     /// </summary>
-    let SingingCommunication =
-        Namespaced_IRI.parse _namespace_name "SingingCommunication" |> NamespacedName
-
+    let SingingCommunication = _prefix "SingingCommunication"
     /// <summary>
     /// This individual represents a slang designation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/SlangDesignation"></see></summary>
-    let SlangDesignation =
-        Namespaced_IRI.parse _namespace_name "SlangDesignation" |> NamespacedName
-
+    let SlangDesignation = _prefix "SlangDesignation"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Stamp"></see>
     /// </summary>
-    let Stamp = Namespaced_IRI.parse _namespace_name "Stamp" |> NamespacedName
-
+    let Stamp = _prefix "Stamp"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/StorageCapacity"></see>
     /// </summary>
-    let StorageCapacity =
-        Namespaced_IRI.parse _namespace_name "StorageCapacity" |> NamespacedName
-
+    let StorageCapacity = _prefix "StorageCapacity"
     /// <summary>
     /// This individual represents the method and color depth through which a digital photograph has been stored.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/StorageMethodColourDepth"></see></summary>
-    let StorageMethodColourDepth =
-        Namespaced_IRI.parse _namespace_name "StorageMethodColourDepth" |> NamespacedName
-
+    let StorageMethodColourDepth = _prefix "StorageMethodColourDepth"
     /// <summary>
     /// This property connects a support (e.g. "paper label") to an element (stamp, embelem, inscription, mark) which has been represented on it. It is the inverse property of hasSupport.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isSupportOf"></see></summary>
-    let isSupportOf =
-        Namespaced_IRI.parse _namespace_name "isSupportOf" |> NamespacedName
-
+    let isSupportOf = _prefix "isSupportOf"
     /// <summary>
     /// This property connects an entity's techincal characteristic to a technical concept, which classifies that characteristic.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isCharacteristicClassifiedBy"></see></summary>
-    let isCharacteristicClassifiedBy =
-        Namespaced_IRI.parse _namespace_name "isCharacteristicClassifiedBy" |> NamespacedName
-
+    let isCharacteristicClassifiedBy = _prefix "isCharacteristicClassifiedBy"
     /// <summary>
     /// This property relates a technical characteristic (e.g. marble) to the status of a cultural entity that includes that characteristic.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isIncludedInTechnicalStatus"></see></summary>
-    let isIncludedInTechnicalStatus =
-        Namespaced_IRI.parse _namespace_name "isIncludedInTechnicalStatus" |> NamespacedName
-
+    let isIncludedInTechnicalStatus = _prefix "isIncludedInTechnicalStatus"
     /// <summary>
     /// This individual represents an object's execution technique.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Technique"></see></summary>
-    let Technique = Namespaced_IRI.parse _namespace_name "Technique" |> NamespacedName
-
+    let Technique = _prefix "Technique"
     /// <summary>
     /// This individual represents a musical instrument adopted temperament, especially in relation to an object in its original conditions, or after its restoration. For idiophones with fixed keys (e.g. xylophone, litophone, metallophone) the temperament represents the succession of intervals.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Temperament"></see></summary>
-    let Temperament =
-        Namespaced_IRI.parse _namespace_name "Temperament" |> NamespacedName
-
+    let Temperament = _prefix "Temperament"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Thickness"></see>
     /// </summary>
-    let Thickness = Namespaced_IRI.parse _namespace_name "Thickness" |> NamespacedName
+    let Thickness = _prefix "Thickness"
     /// <summary>
     /// This individual represents a musical instrument tuning.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/Tuning"></see></summary>
-    let Tuning = Namespaced_IRI.parse _namespace_name "Tuning" |> NamespacedName
-
+    let Tuning = _prefix "Tuning"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/UnavailableConservationStatus"></see>
     /// </summary>
-    let UnavailableConservationStatus =
-        Namespaced_IRI.parse _namespace_name "UnavailableConservationStatus" |> NamespacedName
-
+    let UnavailableConservationStatus = _prefix "UnavailableConservationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/UndetectedMeasurements"></see>
     /// </summary>
-    let UndetectedMeasurements =
-        Namespaced_IRI.parse _namespace_name "UndetectedMeasurements" |> NamespacedName
-
+    let UndetectedMeasurements = _prefix "UndetectedMeasurements"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/VariousMeasurements"></see>
     /// </summary>
-    let VariousMeasurements =
-        Namespaced_IRI.parse _namespace_name "VariousMeasurements" |> NamespacedName
-
+    let VariousMeasurements = _prefix "VariousMeasurements"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/VerbalCommunication"></see>
     /// </summary>
-    let VerbalCommunication =
-        Namespaced_IRI.parse _namespace_name "VerbalCommunication" |> NamespacedName
-
+    let VerbalCommunication = _prefix "VerbalCommunication"
     /// <summary>
     /// This individual represents a musical instrument vibrating length, in particular a chordophone.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/VibratingLenght"></see></summary>
-    let VibratingLenght =
-        Namespaced_IRI.parse _namespace_name "VibratingLenght" |> NamespacedName
-
+    let VibratingLenght = _prefix "VibratingLenght"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Volume"></see>
     /// </summary>
-    let Volume = Namespaced_IRI.parse _namespace_name "Volume" |> NamespacedName
-
+    let Volume = _prefix "Volume"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/VolumetricDiamensions"></see>
     /// </summary>
-    let VolumetricDiamensions =
-        Namespaced_IRI.parse _namespace_name "VolumetricDiamensions" |> NamespacedName
-
+    let VolumetricDiamensions = _prefix "VolumetricDiamensions"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/WaistCircumference"></see>
     /// </summary>
-    let WaistCircumference =
-        Namespaced_IRI.parse _namespace_name "WaistCircumference" |> NamespacedName
-
+    let WaistCircumference = _prefix "WaistCircumference"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Weight"></see>
     /// </summary>
-    let Weight = Namespaced_IRI.parse _namespace_name "Weight" |> NamespacedName
+    let Weight = _prefix "Weight"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/Width"></see>
     /// </summary>
-    let Width = Namespaced_IRI.parse _namespace_name "Width" |> NamespacedName
-
+    let Width = _prefix "Width"
     /// <summary>
     /// This is the inverse property of "has writing system".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isWritingSystemOf"></see></summary>
-    let isWritingSystemOf =
-        Namespaced_IRI.parse _namespace_name "isWritingSystemOf" |> NamespacedName
-
+    let isWritingSystemOf = _prefix "isWritingSystemOf"
     /// <summary>
     ///   <see href="https://w3id.org/arco/ontology/denotative-description/WrittenCommunication"></see>
     /// </summary>
-    let WrittenCommunication =
-        Namespaced_IRI.parse _namespace_name "WrittenCommunication" |> NamespacedName
-
+    let WrittenCommunication = _prefix "WrittenCommunication"
     /// <summary>
     /// This property represents the morphology of an anthropological material.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/anthropologicalMaterialMorphology"></see></summary>
-    let anthropologicalMaterialMorphology =
-        Namespaced_IRI.parse _namespace_name "anthropologicalMaterialMorphology" |> NamespacedName
-
+    let anthropologicalMaterialMorphology = _prefix "anthropologicalMaterialMorphology"
     /// <summary>
     /// This is the inverse property of "has available notes".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/areAvailableNotesOf"></see></summary>
-    let areAvailableNotesOf =
-        Namespaced_IRI.parse _namespace_name "areAvailableNotesOf" |> NamespacedName
-
+    let areAvailableNotesOf = _prefix "areAvailableNotesOf"
     /// <summary>
     /// This property relates a technical characteristic to an entity.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTechnicalCharacteristicOf"></see></summary>
-    let isTechnicalCharacteristicOf =
-        Namespaced_IRI.parse _namespace_name "isTechnicalCharacteristicOf" |> NamespacedName
-
+    let isTechnicalCharacteristicOf = _prefix "isTechnicalCharacteristicOf"
     /// <summary>
     /// This property relates a musical instrument to the playable notes by it, from low to high.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasAvailableNotes"></see></summary>
-    let hasAvailableNotes =
-        Namespaced_IRI.parse _namespace_name "hasAvailableNotes" |> NamespacedName
-
+    let hasAvailableNotes = _prefix "hasAvailableNotes"
     /// <summary>
     /// This property connects a techical concept to an entity's technical characteristic. It is the inverse property of isCharacteristicClassifiedBy.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/classifiesCharacteristic"></see></summary>
-    let classifiesCharacteristic =
-        Namespaced_IRI.parse _namespace_name "classifiesCharacteristic" |> NamespacedName
-
+    let classifiesCharacteristic = _prefix "classifiesCharacteristic"
     /// <summary>
     /// This property relates a musical good to one of its accessories. In other words, it is an object linkable to a musical object, whether it is functional to the sound production, or if it is the sound's production or conservation medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasAccessory"></see></summary>
-    let hasAccessory =
-        Namespaced_IRI.parse _namespace_name "hasAccessory" |> NamespacedName
-
+    let hasAccessory = _prefix "hasAccessory"
     /// <summary>
     /// This property relates a cultural property to an element affixed on it (e.g. inscription, stamp, etc.)
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasAffixedElement"></see></summary>
-    let hasAffixedElement =
-        Namespaced_IRI.parse _namespace_name "hasAffixedElement" |> NamespacedName
-
+    let hasAffixedElement = _prefix "hasAffixedElement"
     /// <summary>
     /// This property relatesan inscription (or an emblem, a mark, etc.) to its type.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasAffixedElementType"></see></summary>
-    let hasAffixedElementType =
-        Namespaced_IRI.parse _namespace_name "hasAffixedElementType" |> NamespacedName
-
+    let hasAffixedElementType = _prefix "hasAffixedElementType"
     /// <summary>
     /// This property relates an entity to a technical characteristic (e.g. material, technique, colour, quality level).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasTechnicalCharacteristic"></see></summary>
-    let hasTechnicalCharacteristic =
-        Namespaced_IRI.parse _namespace_name "hasTechnicalCharacteristic" |> NamespacedName
-
+    let hasTechnicalCharacteristic = _prefix "hasTechnicalCharacteristic"
     /// <summary>
     /// This property relates an intangible cultural property to a communication medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCommunicationMedium"></see></summary>
-    let hasCommunicationMedium =
-        Namespaced_IRI.parse _namespace_name "hasCommunicationMedium" |> NamespacedName
-
+    let hasCommunicationMedium = _prefix "hasCommunicationMedium"
     /// <summary>
     /// This property relates the cultural property with its conservation status.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasConservationStatus"></see></summary>
-    let hasConservationStatus =
-        Namespaced_IRI.parse _namespace_name "hasConservationStatus" |> NamespacedName
-
+    let hasConservationStatus = _prefix "hasConservationStatus"
     /// <summary>
     /// This property relates the cultural property to its accessibility, that is the possibility to reach or enter that cultural property, for example for cataloguing activities (e.g.: an immovable cultural property located in a walled area, a movable cultural property located on the top shelf, a totally accessible cultural property, etc.)
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCulturalPropertyAccessibility"></see></summary>
-    let hasCulturalPropertyAccessibility =
-        Namespaced_IRI.parse _namespace_name "hasCulturalPropertyAccessibility" |> NamespacedName
-
+    let hasCulturalPropertyAccessibility = _prefix "hasCulturalPropertyAccessibility"
     /// <summary>
     /// This class relates the cultural property to its availability, that is wheter the cultural property is available or not (e.g.: theft, destruction) for example for cataloguing activities.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCulturalPropertyAvailability"></see></summary>
-    let hasCulturalPropertyAvailability =
-        Namespaced_IRI.parse _namespace_name "hasCulturalPropertyAvailability" |> NamespacedName
-
+    let hasCulturalPropertyAvailability = _prefix "hasCulturalPropertyAvailability"
     /// <summary>
     /// This property relates a cultural property to its type.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasCulturalPropertyType"></see></summary>
-    let hasCulturalPropertyType =
-        Namespaced_IRI.parse _namespace_name "hasCulturalPropertyType" |> NamespacedName
-
+    let hasCulturalPropertyType = _prefix "hasCulturalPropertyType"
     /// <summary>
     /// This property connects a dedication to its dedicaatee, which is the person or institution to whom the dedication is addressed.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasDedicatee"></see></summary>
-    let hasDedicatee =
-        Namespaced_IRI.parse _namespace_name "hasDedicatee" |> NamespacedName
-
+    let hasDedicatee = _prefix "hasDedicatee"
     /// <summary>
     /// This is the inverse property of "has dedicatee".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isDedicateeOf"></see></summary>
-    let isDedicateeOf =
-        Namespaced_IRI.parse _namespace_name "isDedicateeOf" |> NamespacedName
-
+    let isDedicateeOf = _prefix "isDedicateeOf"
     /// <summary>
     /// This property connects a cultural entity to its denomination and/or dedication, or title (for FF legislation) over time.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasDesignationInTime"></see></summary>
-    let hasDesignationInTime =
-        Namespaced_IRI.parse _namespace_name "hasDesignationInTime" |> NamespacedName
-
+    let hasDesignationInTime = _prefix "hasDesignationInTime"
     /// <summary>
     /// This property relates a musical instrument to the identified diapason (note, temperature and eventually humidity during the detection).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasDiapason"></see></summary>
-    let hasDiapason =
-        Namespaced_IRI.parse _namespace_name "hasDiapason" |> NamespacedName
-
+    let hasDiapason = _prefix "hasDiapason"
     /// <summary>
     /// This is the inverse property of "has diapason".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isDiapasonOf"></see></summary>
-    let isDiapasonOf =
-        Namespaced_IRI.parse _namespace_name "isDiapasonOf" |> NamespacedName
-
+    let isDiapasonOf = _prefix "isDiapasonOf"
     /// <summary>
     /// This property relates a musical instrument to its extension.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasExtension"></see></summary>
-    let hasExtension =
-        Namespaced_IRI.parse _namespace_name "hasExtension" |> NamespacedName
-
+    let hasExtension = _prefix "hasExtension"
     /// <summary>
     /// This is the inverse property of "has extension".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isExtensionOf"></see></summary>
-    let isExtensionOf =
-        Namespaced_IRI.parse _namespace_name "isExtensionOf" |> NamespacedName
-
+    let isExtensionOf = _prefix "isExtensionOf"
     /// <summary>
     /// This property relates a digital resource to the format used to write it on a data medium.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasFileFormat"></see></summary>
-    let hasFileFormat =
-        Namespaced_IRI.parse _namespace_name "hasFileFormat" |> NamespacedName
-
+    let hasFileFormat = _prefix "hasFileFormat"
     /// <summary>
     /// This is the inverse property of "has file format"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isFileFormatOf"></see></summary>
-    let isFileFormatOf =
-        Namespaced_IRI.parse _namespace_name "isFileFormatOf" |> NamespacedName
-
+    let isFileFormatOf = _prefix "isFileFormatOf"
     /// <summary>
     /// This property relates an artwork, painting, photography, print to its filigree.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasFiligree"></see></summary>
-    let hasFiligree =
-        Namespaced_IRI.parse _namespace_name "hasFiligree" |> NamespacedName
-
+    let hasFiligree = _prefix "hasFiligree"
     /// <summary>
     /// This is the inverse property of "has filigree".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isFiligreeOf"></see></summary>
-    let isFiligreeOf =
-        Namespaced_IRI.parse _namespace_name "isFiligreeOf" |> NamespacedName
-
+    let isFiligreeOf = _prefix "isFiligreeOf"
     /// <summary>
     /// This property relates an ancient or contemporary garment to the technical definition of textured fabrics, according to the standard provided by C.I.E.T.A., or laces. It can represent the dinstinction between plain fabric and textured fabric.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasGarmentAnalysis"></see></summary>
-    let hasGarmentAnalysis =
-        Namespaced_IRI.parse _namespace_name "hasGarmentAnalysis" |> NamespacedName
-
+    let hasGarmentAnalysis = _prefix "hasGarmentAnalysis"
     /// <summary>
     /// This is the inverse property of "has garment analysis".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isGarmentAnalysisOf"></see></summary>
-    let isGarmentAnalysisOf =
-        Namespaced_IRI.parse _namespace_name "isGarmentAnalysisOf" |> NamespacedName
-
+    let isGarmentAnalysisOf = _prefix "isGarmentAnalysisOf"
     /// <summary>
     /// This property relates an ancient and contemporary garment to its dominant color, usually it is base fabric's color, or the interlaced decoration's color.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasGarmentColour"></see></summary>
-    let hasGarmentColour =
-        Namespaced_IRI.parse _namespace_name "hasGarmentColour" |> NamespacedName
-
+    let hasGarmentColour = _prefix "hasGarmentColour"
     /// <summary>
     /// This is the inverse property of "has garment colour".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isGarmentColourOf"></see></summary>
-    let isGarmentColourOf =
-        Namespaced_IRI.parse _namespace_name "isGarmentColourOf" |> NamespacedName
+    let isGarmentColourOf = _prefix "isGarmentColourOf"
 
     /// <summary>
     /// This property relates a cultural enitity to its iconographic or decorative apparatus.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasIconographicOrDecorativeApparatus"></see></summary>
     let hasIconographicOrDecorativeApparatus =
-        Namespaced_IRI.parse _namespace_name "hasIconographicOrDecorativeApparatus" |> NamespacedName
+        _prefix "hasIconographicOrDecorativeApparatus"
 
     /// <summary>
     /// This property represent the location as a subject of a cultural entity.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasLocationSubject"></see></summary>
-    let hasLocationSubject =
-        Namespaced_IRI.parse _namespace_name "hasLocationSubject" |> NamespacedName
-
+    let hasLocationSubject = _prefix "hasLocationSubject"
     /// <summary>
     /// This is the inverse property of "has location subject".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isLocationSubjectOf"></see></summary>
-    let isLocationSubjectOf =
-        Namespaced_IRI.parse _namespace_name "isLocationSubjectOf" |> NamespacedName
-
+    let isLocationSubjectOf = _prefix "isLocationSubjectOf"
     /// <summary>
     /// This property relates a digital photograph to the mass storage where a digital photograph is stored.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasMassStorage"></see></summary>
-    let hasMassStorage =
-        Namespaced_IRI.parse _namespace_name "hasMassStorage" |> NamespacedName
-
+    let hasMassStorage = _prefix "hasMassStorage"
     /// <summary>
     /// This is the inverse property of "has mass storage".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isMassStorageOf"></see></summary>
-    let isMassStorageOf =
-        Namespaced_IRI.parse _namespace_name "isMassStorageOf" |> NamespacedName
-
+    let isMassStorageOf = _prefix "isMassStorageOf"
     /// <summary>
     /// This property relates an object to its material.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasMaterial"></see></summary>
-    let hasMaterial =
-        Namespaced_IRI.parse _namespace_name "hasMaterial" |> NamespacedName
-
+    let hasMaterial = _prefix "hasMaterial"
     /// <summary>
     /// This property relates an object to the material or technique through which an object has been realized, e.g. a cultural entity. In ICCD standards for cataloguing cultural entities, this label is necessary when material and technique are registered in the same field.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasMaterialOrTechnique"></see></summary>
-    let hasMaterialOrTechnique =
-        Namespaced_IRI.parse _namespace_name "hasMaterialOrTechnique" |> NamespacedName
-
+    let hasMaterialOrTechnique = _prefix "hasMaterialOrTechnique"
     /// <summary>
     /// This is the inverse property of "has material"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isMaterialOf"></see></summary>
-    let isMaterialOf =
-        Namespaced_IRI.parse _namespace_name "isMaterialOf" |> NamespacedName
-
+    let isMaterialOf = _prefix "isMaterialOf"
     /// <summary>
     /// This is the inverse property of "has material or technique"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isMaterialOrTechniqueOf"></see></summary>
-    let isMaterialOrTechniqueOf =
-        Namespaced_IRI.parse _namespace_name "isMaterialOrTechniqueOf" |> NamespacedName
-
+    let isMaterialOrTechniqueOf = _prefix "isMaterialOrTechniqueOf"
     /// <summary>
     /// This property connects an object to the collection of observed measures on it.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasMeasurementCollection"></see></summary>
-    let hasMeasurementCollection =
-        Namespaced_IRI.parse _namespace_name "hasMeasurementCollection" |> NamespacedName
-
+    let hasMeasurementCollection = _prefix "hasMeasurementCollection"
     /// <summary>
     /// This property connects an object to its orientation, considering its major axis.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasOrientation"></see></summary>
-    let hasOrientation =
-        Namespaced_IRI.parse _namespace_name "hasOrientation" |> NamespacedName
-
+    let hasOrientation = _prefix "hasOrientation"
     /// <summary>
     /// This property relates a digital photograph to its colour, i.e. black and white or colours.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasPhotoColour"></see></summary>
-    let hasPhotoColour =
-        Namespaced_IRI.parse _namespace_name "hasPhotoColour" |> NamespacedName
-
+    let hasPhotoColour = _prefix "hasPhotoColour"
     /// <summary>
     /// This is the inverse property of "has photo colour"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isPhotoColourOf"></see></summary>
-    let isPhotoColourOf =
-        Namespaced_IRI.parse _namespace_name "isPhotoColourOf" |> NamespacedName
-
+    let isPhotoColourOf = _prefix "isPhotoColourOf"
     /// <summary>
     /// This property relates a digital photograph to the visualization, storage and processing program used for the digital photograph.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasPhotoProgram"></see></summary>
-    let hasPhotoProgram =
-        Namespaced_IRI.parse _namespace_name "hasPhotoProgram" |> NamespacedName
-
+    let hasPhotoProgram = _prefix "hasPhotoProgram"
     /// <summary>
     /// This is the inverse property of "has photo program".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isPhotoProgramOf"></see></summary>
-    let isPhotoProgramOf =
-        Namespaced_IRI.parse _namespace_name "isPhotoProgramOf" |> NamespacedName
-
+    let isPhotoProgramOf = _prefix "isPhotoProgramOf"
     /// <summary>
     /// This property relates a digital photograph to its format, intended as the photographic material's standardised size (e.g. negative, positives).
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasPhotoSize"></see></summary>
-    let hasPhotoSize =
-        Namespaced_IRI.parse _namespace_name "hasPhotoSize" |> NamespacedName
-
+    let hasPhotoSize = _prefix "hasPhotoSize"
     /// <summary>
     /// This is the inverse property of "has photo size"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isPhotoSizeOf"></see></summary>
-    let isPhotoSizeOf =
-        Namespaced_IRI.parse _namespace_name "isPhotoSizeOf" |> NamespacedName
-
+    let isPhotoSizeOf = _prefix "isPhotoSizeOf"
     /// <summary>
     /// This property relates a digital resource to its size in pixels.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasPixelDimension"></see></summary>
-    let hasPixelDimension =
-        Namespaced_IRI.parse _namespace_name "hasPixelDimension" |> NamespacedName
-
+    let hasPixelDimension = _prefix "hasPixelDimension"
     /// <summary>
     /// This is the inverse property of "has pixel dimension"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isPixelDimensionOf"></see></summary>
-    let isPixelDimensionOf =
-        Namespaced_IRI.parse _namespace_name "isPixelDimensionOf" |> NamespacedName
-
+    let isPixelDimensionOf = _prefix "isPixelDimensionOf"
     /// <summary>
     /// This property relates a digital resource to its quality level, e.g. high-resolution, low-resolution, preview.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasQualityLevel"></see></summary>
-    let hasQualityLevel =
-        Namespaced_IRI.parse _namespace_name "hasQualityLevel" |> NamespacedName
-
+    let hasQualityLevel = _prefix "hasQualityLevel"
     /// <summary>
     /// This is the inverse property of "has quality level"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isQualityLevelOf"></see></summary>
-    let isQualityLevelOf =
-        Namespaced_IRI.parse _namespace_name "isQualityLevelOf" |> NamespacedName
-
+    let isQualityLevelOf = _prefix "isQualityLevelOf"
     /// <summary>
     /// This property relates a digital resource to theresolution used for storing it.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasResolution"></see></summary>
-    let hasResolution =
-        Namespaced_IRI.parse _namespace_name "hasResolution" |> NamespacedName
-
+    let hasResolution = _prefix "hasResolution"
     /// <summary>
     /// This is the inverse property of "has resolution"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isResolutionOf"></see></summary>
-    let isResolutionOf =
-        Namespaced_IRI.parse _namespace_name "isResolutionOf" |> NamespacedName
-
+    let isResolutionOf = _prefix "isResolutionOf"
     /// <summary>
     /// This property connects a archaeological entity to a sample collected from it.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasSampleCollected"></see></summary>
-    let hasSampleCollected =
-        Namespaced_IRI.parse _namespace_name "hasSampleCollected" |> NamespacedName
-
+    let hasSampleCollected = _prefix "hasSampleCollected"
     /// <summary>
     /// This property relates an object to its shape. It is used for bidimensional objects, e.g. octagonal or round shape.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasShape"></see></summary>
-    let hasShape = Namespaced_IRI.parse _namespace_name "hasShape" |> NamespacedName
+    let hasShape = _prefix "hasShape"
     /// <summary>
     /// This is the inverse property of "has shape"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isShapeOf"></see></summary>
-    let isShapeOf = Namespaced_IRI.parse _namespace_name "isShapeOf" |> NamespacedName
-
+    let isShapeOf = _prefix "isShapeOf"
     /// <summary>
     /// This property relates a digital photograph to the method and color depth through which a digital photograph has been stored.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasStorageMethodOrColourDepth"></see></summary>
-    let hasStorageMethodOrColourDepth =
-        Namespaced_IRI.parse _namespace_name "hasStorageMethodOrColourDepth" |> NamespacedName
-
+    let hasStorageMethodOrColourDepth = _prefix "hasStorageMethodOrColourDepth"
     /// <summary>
     /// This is the inverse property of "has storage method or colour depth".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isStorageMethodOrColourDepthOf"></see></summary>
-    let isStorageMethodOrColourDepthOf =
-        Namespaced_IRI.parse _namespace_name "isStorageMethodOrColourDepthOf" |> NamespacedName
-
+    let isStorageMethodOrColourDepthOf = _prefix "isStorageMethodOrColourDepthOf"
     /// <summary>
     /// This property relates an object to its execution technique.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasTechnique"></see></summary>
-    let hasTechnique =
-        Namespaced_IRI.parse _namespace_name "hasTechnique" |> NamespacedName
-
+    let hasTechnique = _prefix "hasTechnique"
     /// <summary>
     /// This is the inverse property of "has technique"
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTechniqueOf"></see></summary>
-    let isTechniqueOf =
-        Namespaced_IRI.parse _namespace_name "isTechniqueOf" |> NamespacedName
-
+    let isTechniqueOf = _prefix "isTechniqueOf"
     /// <summary>
     /// This property relates a musical instrument to the adopted temperament, especially in relation to an object in its original conditions, or after its restoration. For idiophones with fixed keys (e.g. xylophone, litophone, metallophone) the temperament represents the succession of intervals.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasTemperament"></see></summary>
-    let hasTemperament =
-        Namespaced_IRI.parse _namespace_name "hasTemperament" |> NamespacedName
-
+    let hasTemperament = _prefix "hasTemperament"
     /// <summary>
     /// This is the inverse property of "has temperament".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTemperamentOf"></see></summary>
-    let isTemperamentOf =
-        Namespaced_IRI.parse _namespace_name "isTemperamentOf" |> NamespacedName
-
+    let isTemperamentOf = _prefix "isTemperamentOf"
     /// <summary>
     /// This property relates a musical instrument to its tuning.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasTuning"></see></summary>
-    let hasTuning = Namespaced_IRI.parse _namespace_name "hasTuning" |> NamespacedName
+    let hasTuning = _prefix "hasTuning"
     /// <summary>
     /// This is the inverse property of "has tuning".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTuningOf"></see></summary>
-    let isTuningOf = Namespaced_IRI.parse _namespace_name "isTuningOf" |> NamespacedName
+    let isTuningOf = _prefix "isTuningOf"
     /// <summary>
     /// This is the inverse property of "has value".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isValueOf"></see></summary>
-    let isValueOf = Namespaced_IRI.parse _namespace_name "isValueOf" |> NamespacedName
-
+    let isValueOf = _prefix "isValueOf"
     /// <summary>
     /// This property relates a musical instrument to its vibrating length, in particular a chordophone.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasVibratingLenght"></see></summary>
-    let hasVibratingLenght =
-        Namespaced_IRI.parse _namespace_name "hasVibratingLenght" |> NamespacedName
-
+    let hasVibratingLenght = _prefix "hasVibratingLenght"
     /// <summary>
     /// This is the inverse property of "has vibrating lenght".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isVibratingLenghtOf"></see></summary>
-    let isVibratingLenghtOf =
-        Namespaced_IRI.parse _namespace_name "isVibratingLenghtOf" |> NamespacedName
+    let isVibratingLenghtOf = _prefix "isVibratingLenghtOf"
 
     /// <summary>
     /// This property connects a collection of observed measures on an object to one of these measures, when the latter is relative to an ancient or contemporary apparel's size. The volumetric dimensions measurements determine the size for storage and can be considered as the object's orthogonal coordinates.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/hasVolumetricDimensionsMeasurement"></see></summary>
     let hasVolumetricDimensionsMeasurement =
-        Namespaced_IRI.parse _namespace_name "hasVolumetricDimensionsMeasurement" |> NamespacedName
+        _prefix "hasVolumetricDimensionsMeasurement"
 
     /// <summary>
     /// This is the inverse property of "has volumetric dimensions measurement".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isVolumetricDimensionsMeasurementIn"></see></summary>
     let isVolumetricDimensionsMeasurementIn =
-        Namespaced_IRI.parse _namespace_name "isVolumetricDimensionsMeasurementIn" |> NamespacedName
+        _prefix "isVolumetricDimensionsMeasurementIn"
 
     /// <summary>
     /// This is the inverse property of "refers to agent".
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isAgentReferredToBy"></see></summary>
-    let isAgentReferredToBy =
-        Namespaced_IRI.parse _namespace_name "isAgentReferredToBy" |> NamespacedName
-
+    let isAgentReferredToBy = _prefix "isAgentReferredToBy"
     /// <summary>
     /// This property connects a crest, emblem, postmark etc., located on a cultural entity to the agent (e.g. family, factory, cave, silversmith) to which it refers.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/refersToAgent"></see></summary>
-    let refersToAgent =
-        Namespaced_IRI.parse _namespace_name "refersToAgent" |> NamespacedName
-
+    let refersToAgent = _prefix "refersToAgent"
     /// <summary>
     /// This property relates a technical concept (e.g. material) used in the technical description of a cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTechnicalConceptUsedIn"></see></summary>
-    let isTechnicalConceptUsedIn =
-        Namespaced_IRI.parse _namespace_name "isTechnicalConceptUsedIn" |> NamespacedName
-
+    let isTechnicalConceptUsedIn = _prefix "isTechnicalConceptUsedIn"
     /// <summary>
     /// This property relates a technical status (intended as a situaiton) of a cultural entity to the technical description satisfied by that situation.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/satisfiesTechnicalDescription"></see></summary>
-    let satisfiesTechnicalDescription =
-        Namespaced_IRI.parse _namespace_name "satisfiesTechnicalDescription" |> NamespacedName
-
+    let satisfiesTechnicalDescription = _prefix "satisfiesTechnicalDescription"
     /// <summary>
     /// This property relates a cultural entity technical status to the time interval until which that status is valid, with regard to the moment in which the characteristics are observed.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTechnicalStatusValidAt"></see></summary>
-    let isTechnicalStatusValidAt =
-        Namespaced_IRI.parse _namespace_name "isTechnicalStatusValidAt" |> NamespacedName
-
+    let isTechnicalStatusValidAt = _prefix "isTechnicalStatusValidAt"
     /// <summary>
     /// This property relates the time interval, at which a cultural entity technical status is valid, to that technical status, with regard to the moment in which the characteristics are observed.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/isTimeIntervalValidFor"></see></summary>
-    let isTimeIntervalValidFor =
-        Namespaced_IRI.parse _namespace_name "isTimeIntervalValidFor" |> NamespacedName
-
+    let isTimeIntervalValidFor = _prefix "isTimeIntervalValidFor"
     /// <summary>
     /// This property represents the occurrences of an affixed element on a cultular entity, that is how many times the outlined element appears on the cultual entity.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/occurrences"></see></summary>
-    let occurrences =
-        Namespaced_IRI.parse _namespace_name "occurrences" |> NamespacedName
-
+    let occurrences = _prefix "occurrences"
     /// <summary>
     /// This property represents a cultural entity's position with respect to a complex entity to which it belongs.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/positionInComplexCulturalProperty"></see></summary>
-    let positionInComplexCulturalProperty =
-        Namespaced_IRI.parse _namespace_name "positionInComplexCulturalProperty" |> NamespacedName
-
+    let positionInComplexCulturalProperty = _prefix "positionInComplexCulturalProperty"
     /// <summary>
     /// This property represents potential proposals for conservative interventions after evaluating the cultual entity's conditions at time of its cataloguing.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/proposedIntervention"></see></summary>
-    let proposedIntervention =
-        Namespaced_IRI.parse _namespace_name "proposedIntervention" |> NamespacedName
-
+    let proposedIntervention = _prefix "proposedIntervention"
     /// <summary>
     /// This property represents informations about the storage conditions of a cultural property.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/storageConditions"></see></summary>
-    let storageConditions =
-        Namespaced_IRI.parse _namespace_name "storageConditions" |> NamespacedName
-
+    let storageConditions = _prefix "storageConditions"
     /// <summary>
     /// This property represents the validity, intended as accurancy level, of an observed measure for an object.
     /// <see href="https://w3id.org/arco/ontology/denotative-description/validity"></see></summary>
-    let validity = Namespaced_IRI.parse _namespace_name "validity" |> NamespacedName
+    let validity = _prefix "validity"

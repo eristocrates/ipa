@@ -1,229 +1,166 @@
 namespace http.data.businessgraph.io.ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ebg =
     let _namespace_name = "http://data.businessgraph.io/ontology#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#IdentifierSystem"></see>
     /// </summary>
-    let IdentifierSystem =
-        Namespaced_IRI.parse _namespace_name "IdentifierSystem" |> NamespacedName
-
+    let IdentifierSystem = _prefix "IdentifierSystem"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#IdentifierWebResource"></see>
     /// </summary>
-    let IdentifierWebResource =
-        Namespaced_IRI.parse _namespace_name "IdentifierWebResource" |> NamespacedName
-
+    let IdentifierWebResource = _prefix "IdentifierWebResource"
     /// <summary>
     /// Local Administrative Unit
     /// <see href="http://data.businessgraph.io/ontology#LAURegion"></see></summary>
-    let LAURegion = Namespaced_IRI.parse _namespace_name "LAURegion" |> NamespacedName
-
+    let LAURegion = _prefix "LAURegion"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#WebResource"></see>
     /// </summary>
-    let WebResource =
-        Namespaced_IRI.parse _namespace_name "WebResource" |> NamespacedName
-
+    let WebResource = _prefix "WebResource"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#adminUnit"></see>
     /// </summary>
-    let adminUnit = Namespaced_IRI.parse _namespace_name "adminUnit" |> NamespacedName
+    let adminUnit = _prefix "adminUnit"
     /// <summary>
     /// Global order of a thesaurus concept respecting the hierarchical structure (depth-first traversal)
     /// <see href="http://data.businessgraph.io/ontology#order"></see></summary>
-    let order = Namespaced_IRI.parse _namespace_name "order" |> NamespacedName
-
+    let order = _prefix "order"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#adminUnitL3"></see>
     /// </summary>
-    let adminUnitL3 =
-        Namespaced_IRI.parse _namespace_name "adminUnitL3" |> NamespacedName
-
+    let adminUnitL3 = _prefix "adminUnitL3"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#adminUnitL4"></see>
     /// </summary>
-    let adminUnitL4 =
-        Namespaced_IRI.parse _namespace_name "adminUnitL4" |> NamespacedName
-
+    let adminUnitL4 = _prefix "adminUnitL4"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#adminUnitL5"></see>
     /// </summary>
-    let adminUnitL5 =
-        Namespaced_IRI.parse _namespace_name "adminUnitL5" |> NamespacedName
-
+    let adminUnitL5 = _prefix "adminUnitL5"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#adminUnitL6"></see>
     /// </summary>
-    let adminUnitL6 =
-        Namespaced_IRI.parse _namespace_name "adminUnitL6" |> NamespacedName
-
+    let adminUnitL6 = _prefix "adminUnitL6"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#dissolutionYear"></see>
     /// </summary>
-    let dissolutionYear =
-        Namespaced_IRI.parse _namespace_name "dissolutionYear" |> NamespacedName
-
+    let dissolutionYear = _prefix "dissolutionYear"
     /// <summary>
     /// Exclusion note of a NACE classification concept
     /// <see href="http://data.businessgraph.io/ontology#exclusionNote"></see></summary>
-    let exclusionNote =
-        Namespaced_IRI.parse _namespace_name "exclusionNote" |> NamespacedName
-
+    let exclusionNote = _prefix "exclusionNote"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#foundingYear"></see>
     /// </summary>
-    let foundingYear =
-        Namespaced_IRI.parse _namespace_name "foundingYear" |> NamespacedName
-
+    let foundingYear = _prefix "foundingYear"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#geoResolution"></see>
     /// </summary>
-    let geoResolution =
-        Namespaced_IRI.parse _namespace_name "geoResolution" |> NamespacedName
-
+    let geoResolution = _prefix "geoResolution"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#identifierWebResource"></see>
     /// </summary>
-    let identifierWebResource =
-        Namespaced_IRI.parse _namespace_name "identifierWebResource" |> NamespacedName
-
+    let identifierWebResource = _prefix "identifierWebResource"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isEnumerated"></see>
     /// </summary>
-    let isEnumerated =
-        Namespaced_IRI.parse _namespace_name "isEnumerated" |> NamespacedName
-
+    let isEnumerated = _prefix "isEnumerated"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isImmutable"></see>
     /// </summary>
-    let isImmutable =
-        Namespaced_IRI.parse _namespace_name "isImmutable" |> NamespacedName
-
+    let isImmutable = _prefix "isImmutable"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isOfficial"></see>
     /// </summary>
-    let isOfficial = Namespaced_IRI.parse _namespace_name "isOfficial" |> NamespacedName
-
+    let isOfficial = _prefix "isOfficial"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isPersistent"></see>
     /// </summary>
-    let isPersistent =
-        Namespaced_IRI.parse _namespace_name "isPersistent" |> NamespacedName
-
+    let isPersistent = _prefix "isPersistent"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isPublic"></see>
     /// </summary>
-    let isPublic = Namespaced_IRI.parse _namespace_name "isPublic" |> NamespacedName
-
+    let isPublic = _prefix "isPublic"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isPubliclyTraded"></see>
     /// </summary>
-    let isPubliclyTraded =
-        Namespaced_IRI.parse _namespace_name "isPubliclyTraded" |> NamespacedName
-
+    let isPubliclyTraded = _prefix "isPubliclyTraded"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isSingleValued"></see>
     /// </summary>
-    let isSingleValued =
-        Namespaced_IRI.parse _namespace_name "isSingleValued" |> NamespacedName
-
+    let isSingleValued = _prefix "isSingleValued"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isStartup"></see>
     /// </summary>
-    let isStartup = Namespaced_IRI.parse _namespace_name "isStartup" |> NamespacedName
-
+    let isStartup = _prefix "isStartup"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isStateOwned"></see>
     /// </summary>
-    let isStateOwned =
-        Namespaced_IRI.parse _namespace_name "isStateOwned" |> NamespacedName
-
+    let isStateOwned = _prefix "isStateOwned"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#isUnique"></see>
     /// </summary>
-    let isUnique = Namespaced_IRI.parse _namespace_name "isUnique" |> NamespacedName
+    let isUnique = _prefix "isUnique"
     /// <summary>
     /// Hierarchical level of a thesaurus concept
     /// <see href="http://data.businessgraph.io/ontology#level"></see></summary>
-    let level = Namespaced_IRI.parse _namespace_name "level" |> NamespacedName
-
+    let level = _prefix "level"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#numberOfEmployees"></see>
     /// </summary>
-    let numberOfEmployees =
-        Namespaced_IRI.parse _namespace_name "numberOfEmployees" |> NamespacedName
-
+    let numberOfEmployees = _prefix "numberOfEmployees"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#orgActivityText"></see>
     /// </summary>
-    let orgActivityText =
-        Namespaced_IRI.parse _namespace_name "orgActivityText" |> NamespacedName
-
+    let orgActivityText = _prefix "orgActivityText"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#orgActivityTransitive"></see>
     /// </summary>
-    let orgActivityTransitive =
-        Namespaced_IRI.parse _namespace_name "orgActivityTransitive" |> NamespacedName
-
+    let orgActivityTransitive = _prefix "orgActivityTransitive"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#orgStatusText"></see>
     /// </summary>
-    let orgStatusText =
-        Namespaced_IRI.parse _namespace_name "orgStatusText" |> NamespacedName
-
+    let orgStatusText = _prefix "orgStatusText"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#orgTypeText"></see>
     /// </summary>
-    let orgTypeText =
-        Namespaced_IRI.parse _namespace_name "orgTypeText" |> NamespacedName
-
+    let orgTypeText = _prefix "orgTypeText"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#probabilityOfDefault"></see>
     /// </summary>
-    let probabilityOfDefault =
-        Namespaced_IRI.parse _namespace_name "probabilityOfDefault" |> NamespacedName
-
+    let probabilityOfDefault = _prefix "probabilityOfDefault"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#ralCode"></see>
     /// </summary>
-    let ralCode = Namespaced_IRI.parse _namespace_name "ralCode" |> NamespacedName
-
+    let ralCode = _prefix "ralCode"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#replacementPattern"></see>
     /// </summary>
-    let replacementPattern =
-        Namespaced_IRI.parse _namespace_name "replacementPattern" |> NamespacedName
-
+    let replacementPattern = _prefix "replacementPattern"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#rolePositionText"></see>
     /// </summary>
-    let rolePositionText =
-        Namespaced_IRI.parse _namespace_name "rolePositionText" |> NamespacedName
-
+    let rolePositionText = _prefix "rolePositionText"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#urlTemplate"></see>
     /// </summary>
-    let urlTemplate =
-        Namespaced_IRI.parse _namespace_name "urlTemplate" |> NamespacedName
-
+    let urlTemplate = _prefix "urlTemplate"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#validationRegex"></see>
     /// </summary>
-    let validationRegex =
-        Namespaced_IRI.parse _namespace_name "validationRegex" |> NamespacedName
-
+    let validationRegex = _prefix "validationRegex"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#validationRule"></see>
     /// </summary>
-    let validationRule =
-        Namespaced_IRI.parse _namespace_name "validationRule" |> NamespacedName
-
+    let validationRule = _prefix "validationRule"
     /// <summary>
     ///   <see href="http://data.businessgraph.io/ontology#webResource"></see>
     /// </summary>
-    let webResource =
-        Namespaced_IRI.parse _namespace_name "webResource" |> NamespacedName
+    let webResource = _prefix "webResource"

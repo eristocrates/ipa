@@ -1,69 +1,55 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.LegalEntities.FormalBusinessOrganizations.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_le_fbo =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/Branch"></see>
     /// </summary>
-    let Branch = Namespaced_IRI.parse _namespace_name "Branch" |> NamespacedName
+    let Branch = _prefix "Branch"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/Division"></see>
     /// </summary>
-    let Division = Namespaced_IRI.parse _namespace_name "Division" |> NamespacedName
-
+    let Division = _prefix "Division"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/JointVenture"></see>
     /// </summary>
-    let JointVenture =
-        Namespaced_IRI.parse _namespace_name "JointVenture" |> NamespacedName
-
+    let JointVenture = _prefix "JointVenture"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/NonGovernmentalOrganization"></see>
     /// </summary>
-    let NonGovernmentalOrganization =
-        Namespaced_IRI.parse _namespace_name "NonGovernmentalOrganization" |> NamespacedName
-
+    let NonGovernmentalOrganization = _prefix "NonGovernmentalOrganization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/NotForProfitOrganization"></see>
     /// </summary>
-    let NotForProfitOrganization =
-        Namespaced_IRI.parse _namespace_name "NotForProfitOrganization" |> NamespacedName
-
+    let NotForProfitOrganization = _prefix "NotForProfitOrganization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/OrganizationCoveringAgreement"></see>
     /// </summary>
-    let OrganizationCoveringAgreement =
-        Namespaced_IRI.parse _namespace_name "OrganizationCoveringAgreement" |> NamespacedName
-
+    let OrganizationCoveringAgreement = _prefix "OrganizationCoveringAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/ValueAddedTaxIdentificationNumber"></see>
     /// </summary>
-    let ValueAddedTaxIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "ValueAddedTaxIdentificationNumber" |> NamespacedName
-
+    let ValueAddedTaxIdentificationNumber = _prefix "ValueAddedTaxIdentificationNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/hasEquity"></see>
     /// </summary>
-    let hasEquity = Namespaced_IRI.parse _namespace_name "hasEquity" |> NamespacedName
-
+    let hasEquity = _prefix "hasEquity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/hasHeadquartersAddress"></see>
     /// </summary>
-    let hasHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "hasHeadquartersAddress" |> NamespacedName
-
+    let hasHeadquartersAddress = _prefix "hasHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/hasOperatingAddress"></see>
     /// </summary>
-    let hasOperatingAddress =
-        Namespaced_IRI.parse _namespace_name "hasOperatingAddress" |> NamespacedName
-
+    let hasOperatingAddress = _prefix "hasOperatingAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/hasRegisteredAddress"></see>
     /// </summary>
-    let hasRegisteredAddress =
-        Namespaced_IRI.parse _namespace_name "hasRegisteredAddress" |> NamespacedName
+    let hasRegisteredAddress = _prefix "hasRegisteredAddress"

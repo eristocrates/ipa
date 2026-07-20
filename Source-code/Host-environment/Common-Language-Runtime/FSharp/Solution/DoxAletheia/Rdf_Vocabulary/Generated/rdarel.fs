@@ -1,3003 +1,2136 @@
 namespace http.rdvocab.info.RDARelationshipsWEMI.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rdarel =
     let _namespace_name = "http://rdvocab.info/RDARelationshipsWEMI/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/BasisForLibrettoWork"></see>
     /// </summary>
-    let BasisForLibrettoWork =
-        Namespaced_IRI.parse _namespace_name "BasisForLibrettoWork" |> NamespacedName
-
+    let BasisForLibrettoWork = _prefix "BasisForLibrettoWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/derivativeWork"></see>
     /// </summary>
-    let derivativeWork =
-        Namespaced_IRI.parse _namespace_name "derivativeWork" |> NamespacedName
-
+    let derivativeWork = _prefix "derivativeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/basisForLibretto"></see>
     /// </summary>
-    let basisForLibretto =
-        Namespaced_IRI.parse _namespace_name "basisForLibretto" |> NamespacedName
-
+    let basisForLibretto = _prefix "basisForLibretto"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abridgedAs"></see>
     /// </summary>
-    let abridgedAs = Namespaced_IRI.parse _namespace_name "abridgedAs" |> NamespacedName
-
+    let abridgedAs = _prefix "abridgedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abridgedAsExpression"></see>
     /// </summary>
-    let abridgedAsExpression =
-        Namespaced_IRI.parse _namespace_name "abridgedAsExpression" |> NamespacedName
-
+    let abridgedAsExpression = _prefix "abridgedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abridgedAsWork"></see>
     /// </summary>
-    let abridgedAsWork =
-        Namespaced_IRI.parse _namespace_name "abridgedAsWork" |> NamespacedName
-
+    let abridgedAsWork = _prefix "abridgedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/derivativeExpression"></see>
     /// </summary>
-    let derivativeExpression =
-        Namespaced_IRI.parse _namespace_name "derivativeExpression" |> NamespacedName
-
+    let derivativeExpression = _prefix "derivativeExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abridgementOf"></see>
     /// </summary>
-    let abridgementOf =
-        Namespaced_IRI.parse _namespace_name "abridgementOf" |> NamespacedName
-
+    let abridgementOf = _prefix "abridgementOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abridgementOfExpression"></see>
     /// </summary>
-    let abridgementOfExpression =
-        Namespaced_IRI.parse _namespace_name "abridgementOfExpression" |> NamespacedName
-
+    let abridgementOfExpression = _prefix "abridgementOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abridgementOfWork"></see>
     /// </summary>
-    let abridgementOfWork =
-        Namespaced_IRI.parse _namespace_name "abridgementOfWork" |> NamespacedName
-
+    let abridgementOfWork = _prefix "abridgementOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/basedOn"></see>
     /// </summary>
-    let basedOn = Namespaced_IRI.parse _namespace_name "basedOn" |> NamespacedName
-
+    let basedOn = _prefix "basedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/basedOnExpression"></see>
     /// </summary>
-    let basedOnExpression =
-        Namespaced_IRI.parse _namespace_name "basedOnExpression" |> NamespacedName
-
+    let basedOnExpression = _prefix "basedOnExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/basedOnWork"></see>
     /// </summary>
-    let basedOnWork =
-        Namespaced_IRI.parse _namespace_name "basedOnWork" |> NamespacedName
-
+    let basedOnWork = _prefix "basedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbed"></see>
     /// </summary>
-    let absorbed = Namespaced_IRI.parse _namespace_name "absorbed" |> NamespacedName
-
+    let absorbed = _prefix "absorbed"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedExpression"></see>
     /// </summary>
-    let absorbedExpression =
-        Namespaced_IRI.parse _namespace_name "absorbedExpression" |> NamespacedName
-
+    let absorbedExpression = _prefix "absorbedExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedWork"></see>
     /// </summary>
-    let absorbedWork =
-        Namespaced_IRI.parse _namespace_name "absorbedWork" |> NamespacedName
-
+    let absorbedWork = _prefix "absorbedWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/precededBy"></see>
     /// </summary>
-    let precededBy = Namespaced_IRI.parse _namespace_name "precededBy" |> NamespacedName
+    let precededBy = _prefix "precededBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedBy"></see>
     /// </summary>
-    let absorbedBy = Namespaced_IRI.parse _namespace_name "absorbedBy" |> NamespacedName
-
+    let absorbedBy = _prefix "absorbedBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedByExpression"></see>
     /// </summary>
-    let absorbedByExpression =
-        Namespaced_IRI.parse _namespace_name "absorbedByExpression" |> NamespacedName
-
+    let absorbedByExpression = _prefix "absorbedByExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedByWork"></see>
     /// </summary>
-    let absorbedByWork =
-        Namespaced_IRI.parse _namespace_name "absorbedByWork" |> NamespacedName
-
+    let absorbedByWork = _prefix "absorbedByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/succeededBy"></see>
     /// </summary>
-    let succeededBy =
-        Namespaced_IRI.parse _namespace_name "succeededBy" |> NamespacedName
-
+    let succeededBy = _prefix "succeededBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/succeededByExpression"></see>
     /// </summary>
-    let succeededByExpression =
-        Namespaced_IRI.parse _namespace_name "succeededByExpression" |> NamespacedName
-
+    let succeededByExpression = _prefix "succeededByExpression"
     /// <summary>
     /// For sequentially numbered works with revised content.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/succeededByWork"></see></summary>
-    let succeededByWork =
-        Namespaced_IRI.parse _namespace_name "succeededByWork" |> NamespacedName
-
+    let succeededByWork = _prefix "succeededByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/precededByExpression"></see>
     /// </summary>
-    let precededByExpression =
-        Namespaced_IRI.parse _namespace_name "precededByExpression" |> NamespacedName
-
+    let precededByExpression = _prefix "precededByExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedInPart"></see>
     /// </summary>
-    let absorbedInPart =
-        Namespaced_IRI.parse _namespace_name "absorbedInPart" |> NamespacedName
-
+    let absorbedInPart = _prefix "absorbedInPart"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedInPartExpression"></see>
     /// </summary>
-    let absorbedInPartExpression =
-        Namespaced_IRI.parse _namespace_name "absorbedInPartExpression" |> NamespacedName
-
+    let absorbedInPartExpression = _prefix "absorbedInPartExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedInPartWork"></see>
     /// </summary>
-    let absorbedInPartWork =
-        Namespaced_IRI.parse _namespace_name "absorbedInPartWork" |> NamespacedName
-
+    let absorbedInPartWork = _prefix "absorbedInPartWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedInPartBy"></see>
     /// </summary>
-    let absorbedInPartBy =
-        Namespaced_IRI.parse _namespace_name "absorbedInPartBy" |> NamespacedName
-
+    let absorbedInPartBy = _prefix "absorbedInPartBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedInPartByExpression"></see>
     /// </summary>
-    let absorbedInPartByExpression =
-        Namespaced_IRI.parse _namespace_name "absorbedInPartByExpression" |> NamespacedName
-
+    let absorbedInPartByExpression = _prefix "absorbedInPartByExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/absorbedInPartByWork"></see>
     /// </summary>
-    let absorbedInPartByWork =
-        Namespaced_IRI.parse _namespace_name "absorbedInPartByWork" |> NamespacedName
-
+    let absorbedInPartByWork = _prefix "absorbedInPartByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/precededByWork"></see>
     /// </summary>
-    let precededByWork =
-        Namespaced_IRI.parse _namespace_name "precededByWork" |> NamespacedName
-
+    let precededByWork = _prefix "precededByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstract"></see>
     /// </summary>
-    let abstract_ = Namespaced_IRI.parse _namespace_name "abstract" |> NamespacedName
-
+    let abstract_ = _prefix "abstract"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractExpression"></see>
     /// </summary>
-    let abstractExpression =
-        Namespaced_IRI.parse _namespace_name "abstractExpression" |> NamespacedName
-
+    let abstractExpression = _prefix "abstractExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractWork"></see>
     /// </summary>
-    let abstractWork =
-        Namespaced_IRI.parse _namespace_name "abstractWork" |> NamespacedName
-
+    let abstractWork = _prefix "abstractWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractOf"></see>
     /// </summary>
-    let abstractOf = Namespaced_IRI.parse _namespace_name "abstractOf" |> NamespacedName
-
+    let abstractOf = _prefix "abstractOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractOfExpression"></see>
     /// </summary>
-    let abstractOfExpression =
-        Namespaced_IRI.parse _namespace_name "abstractOfExpression" |> NamespacedName
-
+    let abstractOfExpression = _prefix "abstractOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractOfWork"></see>
     /// </summary>
-    let abstractOfWork =
-        Namespaced_IRI.parse _namespace_name "abstractOfWork" |> NamespacedName
-
+    let abstractOfWork = _prefix "abstractOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractedIn"></see>
     /// </summary>
-    let abstractedIn =
-        Namespaced_IRI.parse _namespace_name "abstractedIn" |> NamespacedName
-
+    let abstractedIn = _prefix "abstractedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractedInExpression"></see>
     /// </summary>
-    let abstractedInExpression =
-        Namespaced_IRI.parse _namespace_name "abstractedInExpression" |> NamespacedName
-
+    let abstractedInExpression = _prefix "abstractedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractedInWork"></see>
     /// </summary>
-    let abstractedInWork =
-        Namespaced_IRI.parse _namespace_name "abstractedInWork" |> NamespacedName
-
+    let abstractedInWork = _prefix "abstractedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractsFor"></see>
     /// </summary>
-    let abstractsFor =
-        Namespaced_IRI.parse _namespace_name "abstractsFor" |> NamespacedName
-
+    let abstractsFor = _prefix "abstractsFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractsForExpression"></see>
     /// </summary>
-    let abstractsForExpression =
-        Namespaced_IRI.parse _namespace_name "abstractsForExpression" |> NamespacedName
-
+    let abstractsForExpression = _prefix "abstractsForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/abstractsForWork"></see>
     /// </summary>
-    let abstractsForWork =
-        Namespaced_IRI.parse _namespace_name "abstractsForWork" |> NamespacedName
-
+    let abstractsForWork = _prefix "abstractsForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/accompaniedBy"></see>
     /// </summary>
-    let accompaniedBy =
-        Namespaced_IRI.parse _namespace_name "accompaniedBy" |> NamespacedName
-
+    let accompaniedBy = _prefix "accompaniedBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/accompaniedByManifestation"></see>
     /// </summary>
-    let accompaniedByManifestation =
-        Namespaced_IRI.parse _namespace_name "accompaniedByManifestation" |> NamespacedName
-
+    let accompaniedByManifestation = _prefix "accompaniedByManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/boundWith"></see>
     /// </summary>
-    let boundWith = Namespaced_IRI.parse _namespace_name "boundWith" |> NamespacedName
+    let boundWith = _prefix "boundWith"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/onDiscWith"></see>
     /// </summary>
-    let onDiscWith = Namespaced_IRI.parse _namespace_name "onDiscWith" |> NamespacedName
+    let onDiscWith = _prefix "onDiscWith"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/issuedWith"></see>
     /// </summary>
-    let issuedWith = Namespaced_IRI.parse _namespace_name "issuedWith" |> NamespacedName
-
+    let issuedWith = _prefix "issuedWith"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/accompaniedByItem"></see>
     /// </summary>
-    let accompaniedByItem =
-        Namespaced_IRI.parse _namespace_name "accompaniedByItem" |> NamespacedName
-
+    let accompaniedByItem = _prefix "accompaniedByItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/filmedWith"></see>
     /// </summary>
-    let filmedWith = Namespaced_IRI.parse _namespace_name "filmedWith" |> NamespacedName
-
+    let filmedWith = _prefix "filmedWith"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/boundWithItem"></see>
     /// </summary>
-    let boundWithItem =
-        Namespaced_IRI.parse _namespace_name "boundWithItem" |> NamespacedName
-
+    let boundWithItem = _prefix "boundWithItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/onDiscWithItem"></see>
     /// </summary>
-    let onDiscWithItem =
-        Namespaced_IRI.parse _namespace_name "onDiscWithItem" |> NamespacedName
-
+    let onDiscWithItem = _prefix "onDiscWithItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/filmedWithItem"></see>
     /// </summary>
-    let filmedWithItem =
-        Namespaced_IRI.parse _namespace_name "filmedWithItem" |> NamespacedName
-
+    let filmedWithItem = _prefix "filmedWithItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/issuedWithManifestation"></see>
     /// </summary>
-    let issuedWithManifestation =
-        Namespaced_IRI.parse _namespace_name "issuedWithManifestation" |> NamespacedName
-
+    let issuedWithManifestation = _prefix "issuedWithManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/accompanyingExpression"></see>
     /// </summary>
-    let accompanyingExpression =
-        Namespaced_IRI.parse _namespace_name "accompanyingExpression" |> NamespacedName
-
+    let accompanyingExpression = _prefix "accompanyingExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/augmentationOfExpression"></see>
     /// </summary>
-    let augmentationOfExpression =
-        Namespaced_IRI.parse _namespace_name "augmentationOfExpression" |> NamespacedName
-
+    let augmentationOfExpression = _prefix "augmentationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/augmentedByExpression"></see>
     /// </summary>
-    let augmentedByExpression =
-        Namespaced_IRI.parse _namespace_name "augmentedByExpression" |> NamespacedName
-
+    let augmentedByExpression = _prefix "augmentedByExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/complementedByExpression"></see>
     /// </summary>
-    let complementedByExpression =
-        Namespaced_IRI.parse _namespace_name "complementedByExpression" |> NamespacedName
-
+    let complementedByExpression = _prefix "complementedByExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/accompanyingWork"></see>
     /// </summary>
-    let accompanyingWork =
-        Namespaced_IRI.parse _namespace_name "accompanyingWork" |> NamespacedName
-
+    let accompanyingWork = _prefix "accompanyingWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/augmentedByWork"></see>
     /// </summary>
-    let augmentedByWork =
-        Namespaced_IRI.parse _namespace_name "augmentedByWork" |> NamespacedName
-
+    let augmentedByWork = _prefix "augmentedByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/complementedByWork"></see>
     /// </summary>
-    let complementedByWork =
-        Namespaced_IRI.parse _namespace_name "complementedByWork" |> NamespacedName
-
+    let complementedByWork = _prefix "complementedByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptationOf"></see>
     /// </summary>
-    let adaptationOf =
-        Namespaced_IRI.parse _namespace_name "adaptationOf" |> NamespacedName
-
+    let adaptationOf = _prefix "adaptationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureAdaptationOf"></see>
     /// </summary>
-    let motionPictureAdaptationOf =
-        Namespaced_IRI.parse _namespace_name "motionPictureAdaptationOf" |> NamespacedName
-
+    let motionPictureAdaptationOf = _prefix "motionPictureAdaptationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioAdaptationOf"></see>
     /// </summary>
-    let radioAdaptationOf =
-        Namespaced_IRI.parse _namespace_name "radioAdaptationOf" |> NamespacedName
-
+    let radioAdaptationOf = _prefix "radioAdaptationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioScriptBasedOn"></see>
     /// </summary>
-    let radioScriptBasedOn =
-        Namespaced_IRI.parse _namespace_name "radioScriptBasedOn" |> NamespacedName
-
+    let radioScriptBasedOn = _prefix "radioScriptBasedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionAdaptationOf"></see>
     /// </summary>
-    let televisionAdaptationOf =
-        Namespaced_IRI.parse _namespace_name "televisionAdaptationOf" |> NamespacedName
-
+    let televisionAdaptationOf = _prefix "televisionAdaptationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoAdaptationOf"></see>
     /// </summary>
-    let videoAdaptationOf =
-        Namespaced_IRI.parse _namespace_name "videoAdaptationOf" |> NamespacedName
-
+    let videoAdaptationOf = _prefix "videoAdaptationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayBasedOn"></see>
     /// </summary>
-    let screenplayBasedOn =
-        Namespaced_IRI.parse _namespace_name "screenplayBasedOn" |> NamespacedName
-
+    let screenplayBasedOn = _prefix "screenplayBasedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/novelizationOf"></see>
     /// </summary>
-    let novelizationOf =
-        Namespaced_IRI.parse _namespace_name "novelizationOf" |> NamespacedName
-
+    let novelizationOf = _prefix "novelizationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptationOfExpression"></see>
     /// </summary>
-    let adaptationOfExpression =
-        Namespaced_IRI.parse _namespace_name "adaptationOfExpression" |> NamespacedName
-
+    let adaptationOfExpression = _prefix "adaptationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/dramatizationOf"></see>
     /// </summary>
-    let dramatizationOf =
-        Namespaced_IRI.parse _namespace_name "dramatizationOf" |> NamespacedName
-
+    let dramatizationOf = _prefix "dramatizationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/verseAdaptationOf"></see>
     /// </summary>
-    let verseAdaptationOf =
-        Namespaced_IRI.parse _namespace_name "verseAdaptationOf" |> NamespacedName
-
+    let verseAdaptationOf = _prefix "verseAdaptationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptationOfWork"></see>
     /// </summary>
-    let adaptationOfWork =
-        Namespaced_IRI.parse _namespace_name "adaptationOfWork" |> NamespacedName
-
+    let adaptationOfWork = _prefix "adaptationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayBasedOnExpression"></see>
     /// </summary>
-    let screenplayBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "screenplayBasedOnExpression" |> NamespacedName
-
+    let screenplayBasedOnExpression = _prefix "screenplayBasedOnExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoAdaptationOfExpression"></see>
     /// </summary>
-    let videoAdaptationOfExpression =
-        Namespaced_IRI.parse _namespace_name "videoAdaptationOfExpression" |> NamespacedName
-
+    let videoAdaptationOfExpression = _prefix "videoAdaptationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioScriptBasedOnExpression"></see>
     /// </summary>
-    let radioScriptBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "radioScriptBasedOnExpression" |> NamespacedName
-
+    let radioScriptBasedOnExpression = _prefix "radioScriptBasedOnExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioAdaptationOfExpression"></see>
     /// </summary>
-    let radioAdaptationOfExpression =
-        Namespaced_IRI.parse _namespace_name "radioAdaptationOfExpression" |> NamespacedName
-
+    let radioAdaptationOfExpression = _prefix "radioAdaptationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/dramatizationOfWork"></see>
     /// </summary>
-    let dramatizationOfWork =
-        Namespaced_IRI.parse _namespace_name "dramatizationOfWork" |> NamespacedName
-
+    let dramatizationOfWork = _prefix "dramatizationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoAdaptationOfWork"></see>
     /// </summary>
-    let videoAdaptationOfWork =
-        Namespaced_IRI.parse _namespace_name "videoAdaptationOfWork" |> NamespacedName
-
+    let videoAdaptationOfWork = _prefix "videoAdaptationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionAdaptationOfWork"></see>
     /// </summary>
-    let televisionAdaptationOfWork =
-        Namespaced_IRI.parse _namespace_name "televisionAdaptationOfWork" |> NamespacedName
-
+    let televisionAdaptationOfWork = _prefix "televisionAdaptationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/novelizationOfWork"></see>
     /// </summary>
-    let novelizationOfWork =
-        Namespaced_IRI.parse _namespace_name "novelizationOfWork" |> NamespacedName
-
+    let novelizationOfWork = _prefix "novelizationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayBasedOnWork"></see>
     /// </summary>
-    let screenplayBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "screenplayBasedOnWork" |> NamespacedName
-
+    let screenplayBasedOnWork = _prefix "screenplayBasedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioAdaptationOfWork"></see>
     /// </summary>
-    let radioAdaptationOfWork =
-        Namespaced_IRI.parse _namespace_name "radioAdaptationOfWork" |> NamespacedName
-
+    let radioAdaptationOfWork = _prefix "radioAdaptationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioScriptBasedOnWork"></see>
     /// </summary>
-    let radioScriptBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "radioScriptBasedOnWork" |> NamespacedName
-
+    let radioScriptBasedOnWork = _prefix "radioScriptBasedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/verseAdaptationOfWork"></see>
     /// </summary>
-    let verseAdaptationOfWork =
-        Namespaced_IRI.parse _namespace_name "verseAdaptationOfWork" |> NamespacedName
-
+    let verseAdaptationOfWork = _prefix "verseAdaptationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureAdaptationOfWork"></see>
     /// </summary>
-    let motionPictureAdaptationOfWork =
-        Namespaced_IRI.parse _namespace_name "motionPictureAdaptationOfWork" |> NamespacedName
-
+    let motionPictureAdaptationOfWork = _prefix "motionPictureAdaptationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAs"></see>
     /// </summary>
-    let adaptedAs = Namespaced_IRI.parse _namespace_name "adaptedAs" |> NamespacedName
-
+    let adaptedAs = _prefix "adaptedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/verseAdaptation"></see>
     /// </summary>
-    let verseAdaptation =
-        Namespaced_IRI.parse _namespace_name "verseAdaptation" |> NamespacedName
-
+    let verseAdaptation = _prefix "verseAdaptation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsWork"></see>
     /// </summary>
-    let adaptedAsWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsWork" |> NamespacedName
-
+    let adaptedAsWork = _prefix "adaptedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAMotionPicture"></see>
     /// </summary>
-    let adaptedAsAMotionPicture =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAMotionPicture" |> NamespacedName
-
+    let adaptedAsAMotionPicture = _prefix "adaptedAsAMotionPicture"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/novelization"></see>
     /// </summary>
-    let novelization =
-        Namespaced_IRI.parse _namespace_name "novelization" |> NamespacedName
-
+    let novelization = _prefix "novelization"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAVideo"></see>
     /// </summary>
-    let adaptedAsAVideo =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAVideo" |> NamespacedName
-
+    let adaptedAsAVideo = _prefix "adaptedAsAVideo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAScreenplay"></see>
     /// </summary>
-    let adaptedAsAScreenplay =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAScreenplay" |> NamespacedName
-
+    let adaptedAsAScreenplay = _prefix "adaptedAsAScreenplay"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsATelevisionProgramme"></see>
     /// </summary>
-    let adaptedAsATelevisionProgramme =
-        Namespaced_IRI.parse _namespace_name "adaptedAsATelevisionProgramme" |> NamespacedName
-
+    let adaptedAsATelevisionProgramme = _prefix "adaptedAsATelevisionProgramme"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsARadioScript"></see>
     /// </summary>
-    let adaptedAsARadioScript =
-        Namespaced_IRI.parse _namespace_name "adaptedAsARadioScript" |> NamespacedName
-
+    let adaptedAsARadioScript = _prefix "adaptedAsARadioScript"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsARadioProgramme"></see>
     /// </summary>
-    let adaptedAsARadioProgramme =
-        Namespaced_IRI.parse _namespace_name "adaptedAsARadioProgramme" |> NamespacedName
-
+    let adaptedAsARadioProgramme = _prefix "adaptedAsARadioProgramme"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/dramatizedAs"></see>
     /// </summary>
-    let dramatizedAs =
-        Namespaced_IRI.parse _namespace_name "dramatizedAs" |> NamespacedName
-
+    let dramatizedAs = _prefix "dramatizedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsExpression"></see>
     /// </summary>
-    let adaptedAsExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsExpression" |> NamespacedName
-
+    let adaptedAsExpression = _prefix "adaptedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAMotionPictureExpression"></see>
     /// </summary>
-    let adaptedAsAMotionPictureExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAMotionPictureExpression" |> NamespacedName
-
+    let adaptedAsAMotionPictureExpression = _prefix "adaptedAsAMotionPictureExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAMotionPictureWork"></see>
     /// </summary>
-    let adaptedAsAMotionPictureWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAMotionPictureWork" |> NamespacedName
-
+    let adaptedAsAMotionPictureWork = _prefix "adaptedAsAMotionPictureWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAMotionPictureScreenplay"></see>
     /// </summary>
-    let adaptedAsAMotionPictureScreenplay =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAMotionPictureScreenplay" |> NamespacedName
+    let adaptedAsAMotionPictureScreenplay = _prefix "adaptedAsAMotionPictureScreenplay"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAMotionPictureScreenplayExpression"></see>
     /// </summary>
     let adaptedAsAMotionPictureScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAMotionPictureScreenplayExpression" |> NamespacedName
+        _prefix "adaptedAsAMotionPictureScreenplayExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAMotionPictureScreenplayWork"></see>
     /// </summary>
     let adaptedAsAMotionPictureScreenplayWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAMotionPictureScreenplayWork" |> NamespacedName
+        _prefix "adaptedAsAMotionPictureScreenplayWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAScreenplayExpression"></see>
     /// </summary>
-    let adaptedAsAScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAScreenplayExpression" |> NamespacedName
-
+    let adaptedAsAScreenplayExpression = _prefix "adaptedAsAScreenplayExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAScreenplayWork"></see>
     /// </summary>
-    let adaptedAsAScreenplayWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAScreenplayWork" |> NamespacedName
+    let adaptedAsAScreenplayWork = _prefix "adaptedAsAScreenplayWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsARadioProgrammeExpression"></see>
     /// </summary>
     let adaptedAsARadioProgrammeExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsARadioProgrammeExpression" |> NamespacedName
+        _prefix "adaptedAsARadioProgrammeExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsARadioProgrammeWork"></see>
     /// </summary>
-    let adaptedAsARadioProgrammeWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsARadioProgrammeWork" |> NamespacedName
-
+    let adaptedAsARadioProgrammeWork = _prefix "adaptedAsARadioProgrammeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsARadioScriptExpression"></see>
     /// </summary>
-    let adaptedAsARadioScriptExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsARadioScriptExpression" |> NamespacedName
-
+    let adaptedAsARadioScriptExpression = _prefix "adaptedAsARadioScriptExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsARadioScriptWork"></see>
     /// </summary>
-    let adaptedAsARadioScriptWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsARadioScriptWork" |> NamespacedName
-
+    let adaptedAsARadioScriptWork = _prefix "adaptedAsARadioScriptWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsATelevisionScreenplay"></see>
     /// </summary>
-    let adaptedAsATelevisionScreenplay =
-        Namespaced_IRI.parse _namespace_name "adaptedAsATelevisionScreenplay" |> NamespacedName
-
+    let adaptedAsATelevisionScreenplay = _prefix "adaptedAsATelevisionScreenplay"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAVideoScreenplay"></see>
     /// </summary>
-    let adaptedAsAVideoScreenplay =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAVideoScreenplay" |> NamespacedName
+    let adaptedAsAVideoScreenplay = _prefix "adaptedAsAVideoScreenplay"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAVideoScreenplayExpression"></see>
     /// </summary>
     let adaptedAsAVideoScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAVideoScreenplayExpression" |> NamespacedName
+        _prefix "adaptedAsAVideoScreenplayExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsATelevisionScreenplayExpression"></see>
     /// </summary>
     let adaptedAsATelevisionScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsATelevisionScreenplayExpression" |> NamespacedName
+        _prefix "adaptedAsATelevisionScreenplayExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAVideoScreenplayWork"></see>
     /// </summary>
-    let adaptedAsAVideoScreenplayWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAVideoScreenplayWork" |> NamespacedName
+    let adaptedAsAVideoScreenplayWork = _prefix "adaptedAsAVideoScreenplayWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsATelevisionScreenplayWork"></see>
     /// </summary>
     let adaptedAsATelevisionScreenplayWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsATelevisionScreenplayWork" |> NamespacedName
+        _prefix "adaptedAsATelevisionScreenplayWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsATelevisionProgrammeExpression"></see>
     /// </summary>
     let adaptedAsATelevisionProgrammeExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsATelevisionProgrammeExpression" |> NamespacedName
+        _prefix "adaptedAsATelevisionProgrammeExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsATelevisionProgrammeWork"></see>
     /// </summary>
-    let adaptedAsATelevisionProgrammeWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsATelevisionProgrammeWork" |> NamespacedName
-
+    let adaptedAsATelevisionProgrammeWork = _prefix "adaptedAsATelevisionProgrammeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAVideoExpression"></see>
     /// </summary>
-    let adaptedAsAVideoExpression =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAVideoExpression" |> NamespacedName
-
+    let adaptedAsAVideoExpression = _prefix "adaptedAsAVideoExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/adaptedAsAVideoWork"></see>
     /// </summary>
-    let adaptedAsAVideoWork =
-        Namespaced_IRI.parse _namespace_name "adaptedAsAVideoWork" |> NamespacedName
-
+    let adaptedAsAVideoWork = _prefix "adaptedAsAVideoWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/novelizationExpression"></see>
     /// </summary>
-    let novelizationExpression =
-        Namespaced_IRI.parse _namespace_name "novelizationExpression" |> NamespacedName
-
+    let novelizationExpression = _prefix "novelizationExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/dramatizedAsExpression"></see>
     /// </summary>
-    let dramatizedAsExpression =
-        Namespaced_IRI.parse _namespace_name "dramatizedAsExpression" |> NamespacedName
-
+    let dramatizedAsExpression = _prefix "dramatizedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/verseAdaptationExpression"></see>
     /// </summary>
-    let verseAdaptationExpression =
-        Namespaced_IRI.parse _namespace_name "verseAdaptationExpression" |> NamespacedName
-
+    let verseAdaptationExpression = _prefix "verseAdaptationExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheVideoWork"></see>
     /// </summary>
-    let screenplayForTheVideoWork =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheVideoWork" |> NamespacedName
-
+    let screenplayForTheVideoWork = _prefix "screenplayForTheVideoWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/dramatizedAsWork"></see>
     /// </summary>
-    let dramatizedAsWork =
-        Namespaced_IRI.parse _namespace_name "dramatizedAsWork" |> NamespacedName
+    let dramatizedAsWork = _prefix "dramatizedAsWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheTelevisionProgrammeWork"></see>
     /// </summary>
     let screenplayForTheTelevisionProgrammeWork =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheTelevisionProgrammeWork" |> NamespacedName
+        _prefix "screenplayForTheTelevisionProgrammeWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheMotionPictureWork"></see>
     /// </summary>
-    let screenplayForTheMotionPictureWork =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheMotionPictureWork" |> NamespacedName
-
+    let screenplayForTheMotionPictureWork = _prefix "screenplayForTheMotionPictureWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/scriptForTheRadioProgrammeWork"></see>
     /// </summary>
-    let scriptForTheRadioProgrammeWork =
-        Namespaced_IRI.parse _namespace_name "scriptForTheRadioProgrammeWork" |> NamespacedName
-
+    let scriptForTheRadioProgrammeWork = _prefix "scriptForTheRadioProgrammeWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/novelizationWork"></see>
     /// </summary>
-    let novelizationWork =
-        Namespaced_IRI.parse _namespace_name "novelizationWork" |> NamespacedName
-
+    let novelizationWork = _prefix "novelizationWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/verseAdaptationWork"></see>
     /// </summary>
-    let verseAdaptationWork =
-        Namespaced_IRI.parse _namespace_name "verseAdaptationWork" |> NamespacedName
-
+    let verseAdaptationWork = _prefix "verseAdaptationWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/addenda"></see>
     /// </summary>
-    let addenda = Namespaced_IRI.parse _namespace_name "addenda" |> NamespacedName
-
+    let addenda = _prefix "addenda"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/augmentedBy"></see>
     /// </summary>
-    let augmentedBy =
-        Namespaced_IRI.parse _namespace_name "augmentedBy" |> NamespacedName
-
+    let augmentedBy = _prefix "augmentedBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/addendaExpression"></see>
     /// </summary>
-    let addendaExpression =
-        Namespaced_IRI.parse _namespace_name "addendaExpression" |> NamespacedName
-
+    let addendaExpression = _prefix "addendaExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/addendaTo"></see>
     /// </summary>
-    let addendaTo = Namespaced_IRI.parse _namespace_name "addendaTo" |> NamespacedName
-
+    let addendaTo = _prefix "addendaTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/addendaToExpression"></see>
     /// </summary>
-    let addendaToExpression =
-        Namespaced_IRI.parse _namespace_name "addendaToExpression" |> NamespacedName
-
+    let addendaToExpression = _prefix "addendaToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/addendaToWork"></see>
     /// </summary>
-    let addendaToWork =
-        Namespaced_IRI.parse _namespace_name "addendaToWork" |> NamespacedName
-
+    let addendaToWork = _prefix "addendaToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/augmentationOf"></see>
     /// </summary>
-    let augmentationOf =
-        Namespaced_IRI.parse _namespace_name "augmentationOf" |> NamespacedName
-
+    let augmentationOf = _prefix "augmentationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/augmentationOfWork"></see>
     /// </summary>
-    let augmentationOfWork =
-        Namespaced_IRI.parse _namespace_name "augmentationOfWork" |> NamespacedName
-
+    let augmentationOfWork = _prefix "augmentationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/addendaWork"></see>
     /// </summary>
-    let addendaWork =
-        Namespaced_IRI.parse _namespace_name "addendaWork" |> NamespacedName
-
+    let addendaWork = _prefix "addendaWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/alsoIssuedAs"></see>
     /// </summary>
-    let alsoIssuedAs =
-        Namespaced_IRI.parse _namespace_name "alsoIssuedAs" |> NamespacedName
-
+    let alsoIssuedAs = _prefix "alsoIssuedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/alsoIssuedAsManifestation"></see>
     /// </summary>
-    let alsoIssuedAsManifestation =
-        Namespaced_IRI.parse _namespace_name "alsoIssuedAsManifestation" |> NamespacedName
-
+    let alsoIssuedAsManifestation = _prefix "alsoIssuedAsManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/equivalentManifestation"></see>
     /// </summary>
-    let equivalentManifestation =
-        Namespaced_IRI.parse _namespace_name "equivalentManifestation" |> NamespacedName
-
+    let equivalentManifestation = _prefix "equivalentManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysedIn"></see>
     /// </summary>
-    let analysedIn = Namespaced_IRI.parse _namespace_name "analysedIn" |> NamespacedName
-
+    let analysedIn = _prefix "analysedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysedInExpression"></see>
     /// </summary>
-    let analysedInExpression =
-        Namespaced_IRI.parse _namespace_name "analysedInExpression" |> NamespacedName
-
+    let analysedInExpression = _prefix "analysedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysedInWork"></see>
     /// </summary>
-    let analysedInWork =
-        Namespaced_IRI.parse _namespace_name "analysedInWork" |> NamespacedName
-
+    let analysedInWork = _prefix "analysedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/describedIn"></see>
     /// </summary>
-    let describedIn =
-        Namespaced_IRI.parse _namespace_name "describedIn" |> NamespacedName
-
+    let describedIn = _prefix "describedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/describedInExpression"></see>
     /// </summary>
-    let describedInExpression =
-        Namespaced_IRI.parse _namespace_name "describedInExpression" |> NamespacedName
-
+    let describedInExpression = _prefix "describedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/describedInWork"></see>
     /// </summary>
-    let describedInWork =
-        Namespaced_IRI.parse _namespace_name "describedInWork" |> NamespacedName
-
+    let describedInWork = _prefix "describedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysisOf"></see>
     /// </summary>
-    let analysisOf = Namespaced_IRI.parse _namespace_name "analysisOf" |> NamespacedName
-
+    let analysisOf = _prefix "analysisOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysisOfExpression"></see>
     /// </summary>
-    let analysisOfExpression =
-        Namespaced_IRI.parse _namespace_name "analysisOfExpression" |> NamespacedName
-
+    let analysisOfExpression = _prefix "analysisOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysisOfItem"></see>
     /// </summary>
-    let analysisOfItem =
-        Namespaced_IRI.parse _namespace_name "analysisOfItem" |> NamespacedName
-
+    let analysisOfItem = _prefix "analysisOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysisOfManifestation"></see>
     /// </summary>
-    let analysisOfManifestation =
-        Namespaced_IRI.parse _namespace_name "analysisOfManifestation" |> NamespacedName
-
+    let analysisOfManifestation = _prefix "analysisOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/analysisOfWork"></see>
     /// </summary>
-    let analysisOfWork =
-        Namespaced_IRI.parse _namespace_name "analysisOfWork" |> NamespacedName
-
+    let analysisOfWork = _prefix "analysisOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptionOf"></see>
     /// </summary>
-    let descriptionOf =
-        Namespaced_IRI.parse _namespace_name "descriptionOf" |> NamespacedName
-
+    let descriptionOf = _prefix "descriptionOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptionOfExpression"></see>
     /// </summary>
-    let descriptionOfExpression =
-        Namespaced_IRI.parse _namespace_name "descriptionOfExpression" |> NamespacedName
-
+    let descriptionOfExpression = _prefix "descriptionOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptionOfItem"></see>
     /// </summary>
-    let descriptionOfItem =
-        Namespaced_IRI.parse _namespace_name "descriptionOfItem" |> NamespacedName
-
+    let descriptionOfItem = _prefix "descriptionOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptionOfManifestation"></see>
     /// </summary>
-    let descriptionOfManifestation =
-        Namespaced_IRI.parse _namespace_name "descriptionOfManifestation" |> NamespacedName
-
+    let descriptionOfManifestation = _prefix "descriptionOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptionOfWork"></see>
     /// </summary>
-    let descriptionOfWork =
-        Namespaced_IRI.parse _namespace_name "descriptionOfWork" |> NamespacedName
-
+    let descriptionOfWork = _prefix "descriptionOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/appendix"></see>
     /// </summary>
-    let appendix = Namespaced_IRI.parse _namespace_name "appendix" |> NamespacedName
-
+    let appendix = _prefix "appendix"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/appendixExpression"></see>
     /// </summary>
-    let appendixExpression =
-        Namespaced_IRI.parse _namespace_name "appendixExpression" |> NamespacedName
-
+    let appendixExpression = _prefix "appendixExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/appendixWork"></see>
     /// </summary>
-    let appendixWork =
-        Namespaced_IRI.parse _namespace_name "appendixWork" |> NamespacedName
-
+    let appendixWork = _prefix "appendixWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/appendixTo"></see>
     /// </summary>
-    let appendixTo = Namespaced_IRI.parse _namespace_name "appendixTo" |> NamespacedName
-
+    let appendixTo = _prefix "appendixTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/appendixToExpression"></see>
     /// </summary>
-    let appendixToExpression =
-        Namespaced_IRI.parse _namespace_name "appendixToExpression" |> NamespacedName
-
+    let appendixToExpression = _prefix "appendixToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/appendixToWork"></see>
     /// </summary>
-    let appendixToWork =
-        Namespaced_IRI.parse _namespace_name "appendixToWork" |> NamespacedName
-
+    let appendixToWork = _prefix "appendixToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/catalogueOf"></see>
     /// </summary>
-    let catalogueOf =
-        Namespaced_IRI.parse _namespace_name "catalogueOf" |> NamespacedName
-
+    let catalogueOf = _prefix "catalogueOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supplementTo"></see>
     /// </summary>
-    let supplementTo =
-        Namespaced_IRI.parse _namespace_name "supplementTo" |> NamespacedName
-
+    let supplementTo = _prefix "supplementTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/concordanceTo"></see>
     /// </summary>
-    let concordanceTo =
-        Namespaced_IRI.parse _namespace_name "concordanceTo" |> NamespacedName
-
+    let concordanceTo = _prefix "concordanceTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/findingAidFor"></see>
     /// </summary>
-    let findingAidFor =
-        Namespaced_IRI.parse _namespace_name "findingAidFor" |> NamespacedName
-
+    let findingAidFor = _prefix "findingAidFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/errataTo"></see>
     /// </summary>
-    let errataTo = Namespaced_IRI.parse _namespace_name "errataTo" |> NamespacedName
-
+    let errataTo = _prefix "errataTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/illustrationsFor"></see>
     /// </summary>
-    let illustrationsFor =
-        Namespaced_IRI.parse _namespace_name "illustrationsFor" |> NamespacedName
-
+    let illustrationsFor = _prefix "illustrationsFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexTo"></see>
     /// </summary>
-    let indexTo = Namespaced_IRI.parse _namespace_name "indexTo" |> NamespacedName
+    let indexTo = _prefix "indexTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/guideTo"></see>
     /// </summary>
-    let guideTo = Namespaced_IRI.parse _namespace_name "guideTo" |> NamespacedName
-
+    let guideTo = _prefix "guideTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/catalogueOfExpression"></see>
     /// </summary>
-    let catalogueOfExpression =
-        Namespaced_IRI.parse _namespace_name "catalogueOfExpression" |> NamespacedName
-
+    let catalogueOfExpression = _prefix "catalogueOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/illustrationsForExpression"></see>
     /// </summary>
-    let illustrationsForExpression =
-        Namespaced_IRI.parse _namespace_name "illustrationsForExpression" |> NamespacedName
-
+    let illustrationsForExpression = _prefix "illustrationsForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/guideToExpression"></see>
     /// </summary>
-    let guideToExpression =
-        Namespaced_IRI.parse _namespace_name "guideToExpression" |> NamespacedName
-
+    let guideToExpression = _prefix "guideToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexToExpression"></see>
     /// </summary>
-    let indexToExpression =
-        Namespaced_IRI.parse _namespace_name "indexToExpression" |> NamespacedName
-
+    let indexToExpression = _prefix "indexToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supplementToExpression"></see>
     /// </summary>
-    let supplementToExpression =
-        Namespaced_IRI.parse _namespace_name "supplementToExpression" |> NamespacedName
-
+    let supplementToExpression = _prefix "supplementToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/errataToExpression"></see>
     /// </summary>
-    let errataToExpression =
-        Namespaced_IRI.parse _namespace_name "errataToExpression" |> NamespacedName
-
+    let errataToExpression = _prefix "errataToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/concordanceToExpression"></see>
     /// </summary>
-    let concordanceToExpression =
-        Namespaced_IRI.parse _namespace_name "concordanceToExpression" |> NamespacedName
-
+    let concordanceToExpression = _prefix "concordanceToExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/findingAidForExpression"></see>
     /// </summary>
-    let findingAidForExpression =
-        Namespaced_IRI.parse _namespace_name "findingAidForExpression" |> NamespacedName
-
+    let findingAidForExpression = _prefix "findingAidForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/findingAidForWork"></see>
     /// </summary>
-    let findingAidForWork =
-        Namespaced_IRI.parse _namespace_name "findingAidForWork" |> NamespacedName
-
+    let findingAidForWork = _prefix "findingAidForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/concordanceToWork"></see>
     /// </summary>
-    let concordanceToWork =
-        Namespaced_IRI.parse _namespace_name "concordanceToWork" |> NamespacedName
-
+    let concordanceToWork = _prefix "concordanceToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/illustrationsForWork"></see>
     /// </summary>
-    let illustrationsForWork =
-        Namespaced_IRI.parse _namespace_name "illustrationsForWork" |> NamespacedName
-
+    let illustrationsForWork = _prefix "illustrationsForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexToWork"></see>
     /// </summary>
-    let indexToWork =
-        Namespaced_IRI.parse _namespace_name "indexToWork" |> NamespacedName
-
+    let indexToWork = _prefix "indexToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/errataToWork"></see>
     /// </summary>
-    let errataToWork =
-        Namespaced_IRI.parse _namespace_name "errataToWork" |> NamespacedName
-
+    let errataToWork = _prefix "errataToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/catalogueOfWork"></see>
     /// </summary>
-    let catalogueOfWork =
-        Namespaced_IRI.parse _namespace_name "catalogueOfWork" |> NamespacedName
-
+    let catalogueOfWork = _prefix "catalogueOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supplementToWork"></see>
     /// </summary>
-    let supplementToWork =
-        Namespaced_IRI.parse _namespace_name "supplementToWork" |> NamespacedName
-
+    let supplementToWork = _prefix "supplementToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/guideToWork"></see>
     /// </summary>
-    let guideToWork =
-        Namespaced_IRI.parse _namespace_name "guideToWork" |> NamespacedName
-
+    let guideToWork = _prefix "guideToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supplement"></see>
     /// </summary>
-    let supplement = Namespaced_IRI.parse _namespace_name "supplement" |> NamespacedName
+    let supplement = _prefix "supplement"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/guide"></see>
     /// </summary>
-    let guide = Namespaced_IRI.parse _namespace_name "guide" |> NamespacedName
+    let guide = _prefix "guide"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/errata"></see>
     /// </summary>
-    let errata = Namespaced_IRI.parse _namespace_name "errata" |> NamespacedName
+    let errata = _prefix "errata"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/index"></see>
     /// </summary>
-    let index = Namespaced_IRI.parse _namespace_name "index" |> NamespacedName
-
+    let index = _prefix "index"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/concordance"></see>
     /// </summary>
-    let concordance =
-        Namespaced_IRI.parse _namespace_name "concordance" |> NamespacedName
-
+    let concordance = _prefix "concordance"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/catalogue"></see>
     /// </summary>
-    let catalogue = Namespaced_IRI.parse _namespace_name "catalogue" |> NamespacedName
+    let catalogue = _prefix "catalogue"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/findingAid"></see>
     /// </summary>
-    let findingAid = Namespaced_IRI.parse _namespace_name "findingAid" |> NamespacedName
-
+    let findingAid = _prefix "findingAid"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/illustrations"></see>
     /// </summary>
-    let illustrations =
-        Namespaced_IRI.parse _namespace_name "illustrations" |> NamespacedName
-
+    let illustrations = _prefix "illustrations"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supplementExpression"></see>
     /// </summary>
-    let supplementExpression =
-        Namespaced_IRI.parse _namespace_name "supplementExpression" |> NamespacedName
-
+    let supplementExpression = _prefix "supplementExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/findingAidExpression"></see>
     /// </summary>
-    let findingAidExpression =
-        Namespaced_IRI.parse _namespace_name "findingAidExpression" |> NamespacedName
-
+    let findingAidExpression = _prefix "findingAidExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexExpression"></see>
     /// </summary>
-    let indexExpression =
-        Namespaced_IRI.parse _namespace_name "indexExpression" |> NamespacedName
-
+    let indexExpression = _prefix "indexExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/errataExpression"></see>
     /// </summary>
-    let errataExpression =
-        Namespaced_IRI.parse _namespace_name "errataExpression" |> NamespacedName
-
+    let errataExpression = _prefix "errataExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/guideExpression"></see>
     /// </summary>
-    let guideExpression =
-        Namespaced_IRI.parse _namespace_name "guideExpression" |> NamespacedName
-
+    let guideExpression = _prefix "guideExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/illustrationsExpression"></see>
     /// </summary>
-    let illustrationsExpression =
-        Namespaced_IRI.parse _namespace_name "illustrationsExpression" |> NamespacedName
-
+    let illustrationsExpression = _prefix "illustrationsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/concordanceExpression"></see>
     /// </summary>
-    let concordanceExpression =
-        Namespaced_IRI.parse _namespace_name "concordanceExpression" |> NamespacedName
-
+    let concordanceExpression = _prefix "concordanceExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/catalogueExpression"></see>
     /// </summary>
-    let catalogueExpression =
-        Namespaced_IRI.parse _namespace_name "catalogueExpression" |> NamespacedName
-
+    let catalogueExpression = _prefix "catalogueExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/findingAidWork"></see>
     /// </summary>
-    let findingAidWork =
-        Namespaced_IRI.parse _namespace_name "findingAidWork" |> NamespacedName
-
+    let findingAidWork = _prefix "findingAidWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/catalogueWork"></see>
     /// </summary>
-    let catalogueWork =
-        Namespaced_IRI.parse _namespace_name "catalogueWork" |> NamespacedName
-
+    let catalogueWork = _prefix "catalogueWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/illustrationsWork"></see>
     /// </summary>
-    let illustrationsWork =
-        Namespaced_IRI.parse _namespace_name "illustrationsWork" |> NamespacedName
-
+    let illustrationsWork = _prefix "illustrationsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/guideWork"></see>
     /// </summary>
-    let guideWork = Namespaced_IRI.parse _namespace_name "guideWork" |> NamespacedName
-
+    let guideWork = _prefix "guideWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/concordanceWork"></see>
     /// </summary>
-    let concordanceWork =
-        Namespaced_IRI.parse _namespace_name "concordanceWork" |> NamespacedName
-
+    let concordanceWork = _prefix "concordanceWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexWork"></see>
     /// </summary>
-    let indexWork = Namespaced_IRI.parse _namespace_name "indexWork" |> NamespacedName
+    let indexWork = _prefix "indexWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/errataWork"></see>
     /// </summary>
-    let errataWork = Namespaced_IRI.parse _namespace_name "errataWork" |> NamespacedName
-
+    let errataWork = _prefix "errataWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supplementWork"></see>
     /// </summary>
-    let supplementWork =
-        Namespaced_IRI.parse _namespace_name "supplementWork" |> NamespacedName
-
+    let supplementWork = _prefix "supplementWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoBasedOn"></see>
     /// </summary>
-    let librettoBasedOn =
-        Namespaced_IRI.parse _namespace_name "librettoBasedOn" |> NamespacedName
-
+    let librettoBasedOn = _prefix "librettoBasedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/summaryOf"></see>
     /// </summary>
-    let summaryOf = Namespaced_IRI.parse _namespace_name "summaryOf" |> NamespacedName
-
+    let summaryOf = _prefix "summaryOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/freeTranslationOf"></see>
     /// </summary>
-    let freeTranslationOf =
-        Namespaced_IRI.parse _namespace_name "freeTranslationOf" |> NamespacedName
-
+    let freeTranslationOf = _prefix "freeTranslationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expandedVersionOf"></see>
     /// </summary>
-    let expandedVersionOf =
-        Namespaced_IRI.parse _namespace_name "expandedVersionOf" |> NamespacedName
-
+    let expandedVersionOf = _prefix "expandedVersionOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/remakeOf"></see>
     /// </summary>
-    let remakeOf = Namespaced_IRI.parse _namespace_name "remakeOf" |> NamespacedName
-
+    let remakeOf = _prefix "remakeOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imitationOf"></see>
     /// </summary>
-    let imitationOf =
-        Namespaced_IRI.parse _namespace_name "imitationOf" |> NamespacedName
-
+    let imitationOf = _prefix "imitationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexingFor"></see>
     /// </summary>
-    let indexingFor =
-        Namespaced_IRI.parse _namespace_name "indexingFor" |> NamespacedName
-
+    let indexingFor = _prefix "indexingFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digestOf"></see>
     /// </summary>
-    let digestOf = Namespaced_IRI.parse _namespace_name "digestOf" |> NamespacedName
-
+    let digestOf = _prefix "digestOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/paraphraseOf"></see>
     /// </summary>
-    let paraphraseOf =
-        Namespaced_IRI.parse _namespace_name "paraphraseOf" |> NamespacedName
-
+    let paraphraseOf = _prefix "paraphraseOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/choreographyFor"></see>
     /// </summary>
-    let choreographyFor =
-        Namespaced_IRI.parse _namespace_name "choreographyFor" |> NamespacedName
-
+    let choreographyFor = _prefix "choreographyFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalVariationsBasedOn"></see>
     /// </summary>
-    let musicalVariationsBasedOn =
-        Namespaced_IRI.parse _namespace_name "musicalVariationsBasedOn" |> NamespacedName
-
+    let musicalVariationsBasedOn = _prefix "musicalVariationsBasedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalSettingOf"></see>
     /// </summary>
-    let musicalSettingOf =
-        Namespaced_IRI.parse _namespace_name "musicalSettingOf" |> NamespacedName
-
+    let musicalSettingOf = _prefix "musicalSettingOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/translationOf"></see>
     /// </summary>
-    let translationOf =
-        Namespaced_IRI.parse _namespace_name "translationOf" |> NamespacedName
-
+    let translationOf = _prefix "translationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/revisionOf"></see>
     /// </summary>
-    let revisionOf = Namespaced_IRI.parse _namespace_name "revisionOf" |> NamespacedName
-
+    let revisionOf = _prefix "revisionOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalArrangementOf"></see>
     /// </summary>
-    let musicalArrangementOf =
-        Namespaced_IRI.parse _namespace_name "musicalArrangementOf" |> NamespacedName
-
+    let musicalArrangementOf = _prefix "musicalArrangementOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/translationOfExpression"></see>
     /// </summary>
-    let translationOfExpression =
-        Namespaced_IRI.parse _namespace_name "translationOfExpression" |> NamespacedName
-
+    let translationOfExpression = _prefix "translationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalArrangementOfExpression"></see>
     /// </summary>
-    let musicalArrangementOfExpression =
-        Namespaced_IRI.parse _namespace_name "musicalArrangementOfExpression" |> NamespacedName
-
+    let musicalArrangementOfExpression = _prefix "musicalArrangementOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digestOfExpression"></see>
     /// </summary>
-    let digestOfExpression =
-        Namespaced_IRI.parse _namespace_name "digestOfExpression" |> NamespacedName
-
+    let digestOfExpression = _prefix "digestOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/freeTranslationOfExpression"></see>
     /// </summary>
-    let freeTranslationOfExpression =
-        Namespaced_IRI.parse _namespace_name "freeTranslationOfExpression" |> NamespacedName
-
+    let freeTranslationOfExpression = _prefix "freeTranslationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/revisionOfExpression"></see>
     /// </summary>
-    let revisionOfExpression =
-        Namespaced_IRI.parse _namespace_name "revisionOfExpression" |> NamespacedName
-
+    let revisionOfExpression = _prefix "revisionOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoBasedOnExpression"></see>
     /// </summary>
-    let librettoBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "librettoBasedOnExpression" |> NamespacedName
-
+    let librettoBasedOnExpression = _prefix "librettoBasedOnExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imitationOfExpression"></see>
     /// </summary>
-    let imitationOfExpression =
-        Namespaced_IRI.parse _namespace_name "imitationOfExpression" |> NamespacedName
-
+    let imitationOfExpression = _prefix "imitationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalSettingOfExpression"></see>
     /// </summary>
-    let musicalSettingOfExpression =
-        Namespaced_IRI.parse _namespace_name "musicalSettingOfExpression" |> NamespacedName
-
+    let musicalSettingOfExpression = _prefix "musicalSettingOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/summaryOfExpression"></see>
     /// </summary>
-    let summaryOfExpression =
-        Namespaced_IRI.parse _namespace_name "summaryOfExpression" |> NamespacedName
-
+    let summaryOfExpression = _prefix "summaryOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/choreographyForExpression"></see>
     /// </summary>
-    let choreographyForExpression =
-        Namespaced_IRI.parse _namespace_name "choreographyForExpression" |> NamespacedName
-
+    let choreographyForExpression = _prefix "choreographyForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/paraphraseOfExpression"></see>
     /// </summary>
-    let paraphraseOfExpression =
-        Namespaced_IRI.parse _namespace_name "paraphraseOfExpression" |> NamespacedName
-
+    let paraphraseOfExpression = _prefix "paraphraseOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexingForExpression"></see>
     /// </summary>
-    let indexingForExpression =
-        Namespaced_IRI.parse _namespace_name "indexingForExpression" |> NamespacedName
+    let indexingForExpression = _prefix "indexingForExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalVariationsBasedOnExpression"></see>
     /// </summary>
     let musicalVariationsBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "musicalVariationsBasedOnExpression" |> NamespacedName
+        _prefix "musicalVariationsBasedOnExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/remakeOfExpression"></see>
     /// </summary>
-    let remakeOfExpression =
-        Namespaced_IRI.parse _namespace_name "remakeOfExpression" |> NamespacedName
-
+    let remakeOfExpression = _prefix "remakeOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expandedVersionOfExpression"></see>
     /// </summary>
-    let expandedVersionOfExpression =
-        Namespaced_IRI.parse _namespace_name "expandedVersionOfExpression" |> NamespacedName
-
+    let expandedVersionOfExpression = _prefix "expandedVersionOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imitationOfWork"></see>
     /// </summary>
-    let imitationOfWork =
-        Namespaced_IRI.parse _namespace_name "imitationOfWork" |> NamespacedName
-
+    let imitationOfWork = _prefix "imitationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalVariationsBasedOnWork"></see>
     /// </summary>
-    let musicalVariationsBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "musicalVariationsBasedOnWork" |> NamespacedName
-
+    let musicalVariationsBasedOnWork = _prefix "musicalVariationsBasedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/paraphraseOfWork"></see>
     /// </summary>
-    let paraphraseOfWork =
-        Namespaced_IRI.parse _namespace_name "paraphraseOfWork" |> NamespacedName
-
+    let paraphraseOfWork = _prefix "paraphraseOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionScreenplayBasedOnWork"></see>
     /// </summary>
-    let televisionScreenplayBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "televisionScreenplayBasedOnWork" |> NamespacedName
-
+    let televisionScreenplayBasedOnWork = _prefix "televisionScreenplayBasedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/remakeOfWork"></see>
     /// </summary>
-    let remakeOfWork =
-        Namespaced_IRI.parse _namespace_name "remakeOfWork" |> NamespacedName
-
+    let remakeOfWork = _prefix "remakeOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expandedVersionOfWork"></see>
     /// </summary>
-    let expandedVersionOfWork =
-        Namespaced_IRI.parse _namespace_name "expandedVersionOfWork" |> NamespacedName
-
+    let expandedVersionOfWork = _prefix "expandedVersionOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/freeTranslationOfWork"></see>
     /// </summary>
-    let freeTranslationOfWork =
-        Namespaced_IRI.parse _namespace_name "freeTranslationOfWork" |> NamespacedName
-
+    let freeTranslationOfWork = _prefix "freeTranslationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digestOfWork"></see>
     /// </summary>
-    let digestOfWork =
-        Namespaced_IRI.parse _namespace_name "digestOfWork" |> NamespacedName
-
+    let digestOfWork = _prefix "digestOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoBasedOnWork"></see>
     /// </summary>
-    let librettoBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "librettoBasedOnWork" |> NamespacedName
-
+    let librettoBasedOnWork = _prefix "librettoBasedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexingForWork"></see>
     /// </summary>
-    let indexingForWork =
-        Namespaced_IRI.parse _namespace_name "indexingForWork" |> NamespacedName
-
+    let indexingForWork = _prefix "indexingForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalSettingOfWork"></see>
     /// </summary>
-    let musicalSettingOfWork =
-        Namespaced_IRI.parse _namespace_name "musicalSettingOfWork" |> NamespacedName
-
+    let musicalSettingOfWork = _prefix "musicalSettingOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/summaryOfWork"></see>
     /// </summary>
-    let summaryOfWork =
-        Namespaced_IRI.parse _namespace_name "summaryOfWork" |> NamespacedName
-
+    let summaryOfWork = _prefix "summaryOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/choreographyForWork"></see>
     /// </summary>
-    let choreographyForWork =
-        Namespaced_IRI.parse _namespace_name "choreographyForWork" |> NamespacedName
-
+    let choreographyForWork = _prefix "choreographyForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/derivativeRelationshipWork"></see>
     /// </summary>
-    let derivativeRelationshipWork =
-        Namespaced_IRI.parse _namespace_name "derivativeRelationshipWork" |> NamespacedName
-
+    let derivativeRelationshipWork = _prefix "derivativeRelationshipWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/basisForLibrettoExpression"></see>
     /// </summary>
-    let basisForLibrettoExpression =
-        Namespaced_IRI.parse _namespace_name "basisForLibrettoExpression" |> NamespacedName
-
+    let basisForLibrettoExpression = _prefix "basisForLibrettoExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/cadenza"></see>
     /// </summary>
-    let cadenza = Namespaced_IRI.parse _namespace_name "cadenza" |> NamespacedName
-
+    let cadenza = _prefix "cadenza"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/cadenzaExpression"></see>
     /// </summary>
-    let cadenzaExpression =
-        Namespaced_IRI.parse _namespace_name "cadenzaExpression" |> NamespacedName
-
+    let cadenzaExpression = _prefix "cadenzaExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/cadenzaWork"></see>
     /// </summary>
-    let cadenzaWork =
-        Namespaced_IRI.parse _namespace_name "cadenzaWork" |> NamespacedName
-
+    let cadenzaWork = _prefix "cadenzaWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/complementedBy"></see>
     /// </summary>
-    let complementedBy =
-        Namespaced_IRI.parse _namespace_name "complementedBy" |> NamespacedName
-
+    let complementedBy = _prefix "complementedBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/cadenzaComposedFor"></see>
     /// </summary>
-    let cadenzaComposedFor =
-        Namespaced_IRI.parse _namespace_name "cadenzaComposedFor" |> NamespacedName
-
+    let cadenzaComposedFor = _prefix "cadenzaComposedFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/cadenzaComposedForExpression"></see>
     /// </summary>
-    let cadenzaComposedForExpression =
-        Namespaced_IRI.parse _namespace_name "cadenzaComposedForExpression" |> NamespacedName
-
+    let cadenzaComposedForExpression = _prefix "cadenzaComposedForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/cadenzaComposedForWork"></see>
     /// </summary>
-    let cadenzaComposedForWork =
-        Namespaced_IRI.parse _namespace_name "cadenzaComposedForWork" |> NamespacedName
-
+    let cadenzaComposedForWork = _prefix "cadenzaComposedForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/choreography"></see>
     /// </summary>
-    let choreography =
-        Namespaced_IRI.parse _namespace_name "choreography" |> NamespacedName
-
+    let choreography = _prefix "choreography"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/choreographyExpression"></see>
     /// </summary>
-    let choreographyExpression =
-        Namespaced_IRI.parse _namespace_name "choreographyExpression" |> NamespacedName
-
+    let choreographyExpression = _prefix "choreographyExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/choreographyWork"></see>
     /// </summary>
-    let choreographyWork =
-        Namespaced_IRI.parse _namespace_name "choreographyWork" |> NamespacedName
-
+    let choreographyWork = _prefix "choreographyWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryIn"></see>
     /// </summary>
-    let commentaryIn =
-        Namespaced_IRI.parse _namespace_name "commentaryIn" |> NamespacedName
-
+    let commentaryIn = _prefix "commentaryIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryInExpression"></see>
     /// </summary>
-    let commentaryInExpression =
-        Namespaced_IRI.parse _namespace_name "commentaryInExpression" |> NamespacedName
-
+    let commentaryInExpression = _prefix "commentaryInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryInWork"></see>
     /// </summary>
-    let commentaryInWork =
-        Namespaced_IRI.parse _namespace_name "commentaryInWork" |> NamespacedName
-
+    let commentaryInWork = _prefix "commentaryInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryOn"></see>
     /// </summary>
-    let commentaryOn =
-        Namespaced_IRI.parse _namespace_name "commentaryOn" |> NamespacedName
-
+    let commentaryOn = _prefix "commentaryOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryOnWork"></see>
     /// </summary>
-    let commentaryOnWork =
-        Namespaced_IRI.parse _namespace_name "commentaryOnWork" |> NamespacedName
-
+    let commentaryOnWork = _prefix "commentaryOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryOnExpression"></see>
     /// </summary>
-    let commentaryOnExpression =
-        Namespaced_IRI.parse _namespace_name "commentaryOnExpression" |> NamespacedName
-
+    let commentaryOnExpression = _prefix "commentaryOnExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryOnItem"></see>
     /// </summary>
-    let commentaryOnItem =
-        Namespaced_IRI.parse _namespace_name "commentaryOnItem" |> NamespacedName
-
+    let commentaryOnItem = _prefix "commentaryOnItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/commentaryOnManifestation"></see>
     /// </summary>
-    let commentaryOnManifestation =
-        Namespaced_IRI.parse _namespace_name "commentaryOnManifestation" |> NamespacedName
-
+    let commentaryOnManifestation = _prefix "commentaryOnManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/scriptForTheRadioProgramme"></see>
     /// </summary>
-    let scriptForTheRadioProgramme =
-        Namespaced_IRI.parse _namespace_name "scriptForTheRadioProgramme" |> NamespacedName
-
+    let scriptForTheRadioProgramme = _prefix "scriptForTheRadioProgramme"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureScreenplay"></see>
     /// </summary>
-    let motionPictureScreenplay =
-        Namespaced_IRI.parse _namespace_name "motionPictureScreenplay" |> NamespacedName
-
+    let motionPictureScreenplay = _prefix "motionPictureScreenplay"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayFor"></see>
     /// </summary>
-    let screenplayFor =
-        Namespaced_IRI.parse _namespace_name "screenplayFor" |> NamespacedName
-
+    let screenplayFor = _prefix "screenplayFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoFor"></see>
     /// </summary>
-    let librettoFor =
-        Namespaced_IRI.parse _namespace_name "librettoFor" |> NamespacedName
-
+    let librettoFor = _prefix "librettoFor"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplay"></see>
     /// </summary>
-    let screenplay = Namespaced_IRI.parse _namespace_name "screenplay" |> NamespacedName
-
+    let screenplay = _prefix "screenplay"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioScript"></see>
     /// </summary>
-    let radioScript =
-        Namespaced_IRI.parse _namespace_name "radioScript" |> NamespacedName
-
+    let radioScript = _prefix "radioScript"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/libretto"></see>
     /// </summary>
-    let libretto = Namespaced_IRI.parse _namespace_name "libretto" |> NamespacedName
-
+    let libretto = _prefix "libretto"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForExpression"></see>
     /// </summary>
-    let screenplayForExpression =
-        Namespaced_IRI.parse _namespace_name "screenplayForExpression" |> NamespacedName
-
+    let screenplayForExpression = _prefix "screenplayForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoExpression"></see>
     /// </summary>
-    let librettoExpression =
-        Namespaced_IRI.parse _namespace_name "librettoExpression" |> NamespacedName
+    let librettoExpression = _prefix "librettoExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/scriptForTheRadioProgrammeExpression"></see>
     /// </summary>
     let scriptForTheRadioProgrammeExpression =
-        Namespaced_IRI.parse _namespace_name "scriptForTheRadioProgrammeExpression" |> NamespacedName
+        _prefix "scriptForTheRadioProgrammeExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureScreenplayExpression"></see>
     /// </summary>
-    let motionPictureScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "motionPictureScreenplayExpression" |> NamespacedName
-
+    let motionPictureScreenplayExpression = _prefix "motionPictureScreenplayExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/radioScriptExpression"></see>
     /// </summary>
-    let radioScriptExpression =
-        Namespaced_IRI.parse _namespace_name "radioScriptExpression" |> NamespacedName
-
+    let radioScriptExpression = _prefix "radioScriptExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayExpression"></see>
     /// </summary>
-    let screenplayExpression =
-        Namespaced_IRI.parse _namespace_name "screenplayExpression" |> NamespacedName
-
+    let screenplayExpression = _prefix "screenplayExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForWork"></see>
     /// </summary>
-    let screenplayForWork =
-        Namespaced_IRI.parse _namespace_name "screenplayForWork" |> NamespacedName
-
+    let screenplayForWork = _prefix "screenplayForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containedIn"></see>
     /// </summary>
-    let containedIn =
-        Namespaced_IRI.parse _namespace_name "containedIn" |> NamespacedName
-
+    let containedIn = _prefix "containedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containedInManifestation"></see>
     /// </summary>
-    let containedInManifestation =
-        Namespaced_IRI.parse _namespace_name "containedInManifestation" |> NamespacedName
-
+    let containedInManifestation = _prefix "containedInManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containedInItem"></see>
     /// </summary>
-    let containedInItem =
-        Namespaced_IRI.parse _namespace_name "containedInItem" |> NamespacedName
-
+    let containedInItem = _prefix "containedInItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/insertedIn"></see>
     /// </summary>
-    let insertedIn = Namespaced_IRI.parse _namespace_name "insertedIn" |> NamespacedName
+    let insertedIn = _prefix "insertedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/inSeries"></see>
     /// </summary>
-    let inSeries = Namespaced_IRI.parse _namespace_name "inSeries" |> NamespacedName
-
+    let inSeries = _prefix "inSeries"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containedInWork"></see>
     /// </summary>
-    let containedInWork =
-        Namespaced_IRI.parse _namespace_name "containedInWork" |> NamespacedName
-
+    let containedInWork = _prefix "containedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/subseriesOf"></see>
     /// </summary>
-    let subseriesOf =
-        Namespaced_IRI.parse _namespace_name "subseriesOf" |> NamespacedName
-
+    let subseriesOf = _prefix "subseriesOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containedInExpression"></see>
     /// </summary>
-    let containedInExpression =
-        Namespaced_IRI.parse _namespace_name "containedInExpression" |> NamespacedName
-
+    let containedInExpression = _prefix "containedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/specialIssueOf"></see>
     /// </summary>
-    let specialIssueOf =
-        Namespaced_IRI.parse _namespace_name "specialIssueOf" |> NamespacedName
-
+    let specialIssueOf = _prefix "specialIssueOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/wholePartRelationship"></see>
     /// </summary>
-    let wholePartRelationship =
-        Namespaced_IRI.parse _namespace_name "wholePartRelationship" |> NamespacedName
-
+    let wholePartRelationship = _prefix "wholePartRelationship"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/wholePartRelationshipExpression"></see>
     /// </summary>
-    let wholePartRelationshipExpression =
-        Namespaced_IRI.parse _namespace_name "wholePartRelationshipExpression" |> NamespacedName
-
+    let wholePartRelationshipExpression = _prefix "wholePartRelationshipExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/wholePartRelationshipItem"></see>
     /// </summary>
-    let wholePartRelationshipItem =
-        Namespaced_IRI.parse _namespace_name "wholePartRelationshipItem" |> NamespacedName
-
+    let wholePartRelationshipItem = _prefix "wholePartRelationshipItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/insertedInManifestation"></see>
     /// </summary>
-    let insertedInManifestation =
-        Namespaced_IRI.parse _namespace_name "insertedInManifestation" |> NamespacedName
-
+    let insertedInManifestation = _prefix "insertedInManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/specialIssueOfManifestation"></see>
     /// </summary>
-    let specialIssueOfManifestation =
-        Namespaced_IRI.parse _namespace_name "specialIssueOfManifestation" |> NamespacedName
+    let specialIssueOfManifestation = _prefix "specialIssueOfManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/wholePartRelationshipManifestation"></see>
     /// </summary>
     let wholePartRelationshipManifestation =
-        Namespaced_IRI.parse _namespace_name "wholePartRelationshipManifestation" |> NamespacedName
+        _prefix "wholePartRelationshipManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/inSeriesWork"></see>
     /// </summary>
-    let inSeriesWork =
-        Namespaced_IRI.parse _namespace_name "inSeriesWork" |> NamespacedName
-
+    let inSeriesWork = _prefix "inSeriesWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/subseriesOfWork"></see>
     /// </summary>
-    let subseriesOfWork =
-        Namespaced_IRI.parse _namespace_name "subseriesOfWork" |> NamespacedName
-
+    let subseriesOfWork = _prefix "subseriesOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoForWork"></see>
     /// </summary>
-    let librettoForWork =
-        Namespaced_IRI.parse _namespace_name "librettoForWork" |> NamespacedName
-
+    let librettoForWork = _prefix "librettoForWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/wholePartRelationshipWork"></see>
     /// </summary>
-    let wholePartRelationshipWork =
-        Namespaced_IRI.parse _namespace_name "wholePartRelationshipWork" |> NamespacedName
-
+    let wholePartRelationshipWork = _prefix "wholePartRelationshipWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/contains"></see>
     /// </summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/seriesContains"></see>
     /// </summary>
-    let seriesContains =
-        Namespaced_IRI.parse _namespace_name "seriesContains" |> NamespacedName
-
+    let seriesContains = _prefix "seriesContains"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containsExpression"></see>
     /// </summary>
-    let containsExpression =
-        Namespaced_IRI.parse _namespace_name "containsExpression" |> NamespacedName
-
+    let containsExpression = _prefix "containsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/subseries"></see>
     /// </summary>
-    let subseries = Namespaced_IRI.parse _namespace_name "subseries" |> NamespacedName
-
+    let subseries = _prefix "subseries"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containsManifestation"></see>
     /// </summary>
-    let containsManifestation =
-        Namespaced_IRI.parse _namespace_name "containsManifestation" |> NamespacedName
-
+    let containsManifestation = _prefix "containsManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/insert"></see>
     /// </summary>
-    let insert = Namespaced_IRI.parse _namespace_name "insert" |> NamespacedName
-
+    let insert = _prefix "insert"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/specialIssue"></see>
     /// </summary>
-    let specialIssue =
-        Namespaced_IRI.parse _namespace_name "specialIssue" |> NamespacedName
-
+    let specialIssue = _prefix "specialIssue"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containsItem"></see>
     /// </summary>
-    let containsItem =
-        Namespaced_IRI.parse _namespace_name "containsItem" |> NamespacedName
-
+    let containsItem = _prefix "containsItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/containsWork"></see>
     /// </summary>
-    let containsWork =
-        Namespaced_IRI.parse _namespace_name "containsWork" |> NamespacedName
-
+    let containsWork = _prefix "containsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/specialIssueManifestation"></see>
     /// </summary>
-    let specialIssueManifestation =
-        Namespaced_IRI.parse _namespace_name "specialIssueManifestation" |> NamespacedName
-
+    let specialIssueManifestation = _prefix "specialIssueManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/insertManifestation"></see>
     /// </summary>
-    let insertManifestation =
-        Namespaced_IRI.parse _namespace_name "insertManifestation" |> NamespacedName
-
+    let insertManifestation = _prefix "insertManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/subseriesWork"></see>
     /// </summary>
-    let subseriesWork =
-        Namespaced_IRI.parse _namespace_name "subseriesWork" |> NamespacedName
-
+    let subseriesWork = _prefix "subseriesWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/seriesContainsWork"></see>
     /// </summary>
-    let seriesContainsWork =
-        Namespaced_IRI.parse _namespace_name "seriesContainsWork" |> NamespacedName
-
+    let seriesContainsWork = _prefix "seriesContainsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoWork"></see>
     /// </summary>
-    let librettoWork =
-        Namespaced_IRI.parse _namespace_name "librettoWork" |> NamespacedName
-
+    let librettoWork = _prefix "librettoWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/continuedBy"></see>
     /// </summary>
-    let continuedBy =
-        Namespaced_IRI.parse _namespace_name "continuedBy" |> NamespacedName
-
+    let continuedBy = _prefix "continuedBy"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuedByExpression"></see></summary>
-    let continuedByExpression =
-        Namespaced_IRI.parse _namespace_name "continuedByExpression" |> NamespacedName
-
+    let continuedByExpression = _prefix "continuedByExpression"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuedByWork"></see></summary>
-    let continuedByWork =
-        Namespaced_IRI.parse _namespace_name "continuedByWork" |> NamespacedName
-
+    let continuedByWork = _prefix "continuedByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/continuedInPartBy"></see>
     /// </summary>
-    let continuedInPartBy =
-        Namespaced_IRI.parse _namespace_name "continuedInPartBy" |> NamespacedName
-
+    let continuedInPartBy = _prefix "continuedInPartBy"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuedInPartByExpression"></see></summary>
-    let continuedInPartByExpression =
-        Namespaced_IRI.parse _namespace_name "continuedInPartByExpression" |> NamespacedName
-
+    let continuedInPartByExpression = _prefix "continuedInPartByExpression"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuedInPartByWork"></see></summary>
-    let continuedInPartByWork =
-        Namespaced_IRI.parse _namespace_name "continuedInPartByWork" |> NamespacedName
-
+    let continuedInPartByWork = _prefix "continuedInPartByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/continues"></see>
     /// </summary>
-    let continues = Namespaced_IRI.parse _namespace_name "continues" |> NamespacedName
-
+    let continues = _prefix "continues"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuesExpression"></see></summary>
-    let continuesExpression =
-        Namespaced_IRI.parse _namespace_name "continuesExpression" |> NamespacedName
-
+    let continuesExpression = _prefix "continuesExpression"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuesWork"></see></summary>
-    let continuesWork =
-        Namespaced_IRI.parse _namespace_name "continuesWork" |> NamespacedName
-
+    let continuesWork = _prefix "continuesWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/continuesInPart"></see>
     /// </summary>
-    let continuesInPart =
-        Namespaced_IRI.parse _namespace_name "continuesInPart" |> NamespacedName
-
+    let continuesInPart = _prefix "continuesInPart"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuesInPartExpression"></see></summary>
-    let continuesInPartExpression =
-        Namespaced_IRI.parse _namespace_name "continuesInPartExpression" |> NamespacedName
-
+    let continuesInPartExpression = _prefix "continuesInPartExpression"
     /// <summary>
     /// Apply generally to serials.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/continuesInPartWork"></see></summary>
-    let continuesInPartWork =
-        Namespaced_IRI.parse _namespace_name "continuesInPartWork" |> NamespacedName
-
+    let continuesInPartWork = _prefix "continuesInPartWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiqueOf"></see>
     /// </summary>
-    let critiqueOf = Namespaced_IRI.parse _namespace_name "critiqueOf" |> NamespacedName
-
+    let critiqueOf = _prefix "critiqueOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiqueOfItem"></see>
     /// </summary>
-    let critiqueOfItem =
-        Namespaced_IRI.parse _namespace_name "critiqueOfItem" |> NamespacedName
-
+    let critiqueOfItem = _prefix "critiqueOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiqueOfExpression"></see>
     /// </summary>
-    let critiqueOfExpression =
-        Namespaced_IRI.parse _namespace_name "critiqueOfExpression" |> NamespacedName
-
+    let critiqueOfExpression = _prefix "critiqueOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiqueOfWork"></see>
     /// </summary>
-    let critiqueOfWork =
-        Namespaced_IRI.parse _namespace_name "critiqueOfWork" |> NamespacedName
-
+    let critiqueOfWork = _prefix "critiqueOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiqueOfManifestation"></see>
     /// </summary>
-    let critiqueOfManifestation =
-        Namespaced_IRI.parse _namespace_name "critiqueOfManifestation" |> NamespacedName
-
+    let critiqueOfManifestation = _prefix "critiqueOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiquedIn"></see>
     /// </summary>
-    let critiquedIn =
-        Namespaced_IRI.parse _namespace_name "critiquedIn" |> NamespacedName
-
+    let critiquedIn = _prefix "critiquedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiquedInExpression"></see>
     /// </summary>
-    let critiquedInExpression =
-        Namespaced_IRI.parse _namespace_name "critiquedInExpression" |> NamespacedName
-
+    let critiquedInExpression = _prefix "critiquedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/critiquedInWork"></see>
     /// </summary>
-    let critiquedInWork =
-        Namespaced_IRI.parse _namespace_name "critiquedInWork" |> NamespacedName
-
+    let critiquedInWork = _prefix "critiquedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/derivativeRelationship"></see>
     /// </summary>
-    let derivativeRelationship =
-        Namespaced_IRI.parse _namespace_name "derivativeRelationship" |> NamespacedName
-
+    let derivativeRelationship = _prefix "derivativeRelationship"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexedIn"></see>
     /// </summary>
-    let indexedIn = Namespaced_IRI.parse _namespace_name "indexedIn" |> NamespacedName
+    let indexedIn = _prefix "indexedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/remadeAs"></see>
     /// </summary>
-    let remadeAs = Namespaced_IRI.parse _namespace_name "remadeAs" |> NamespacedName
+    let remadeAs = _prefix "remadeAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digest"></see>
     /// </summary>
-    let digest = Namespaced_IRI.parse _namespace_name "digest" |> NamespacedName
-
+    let digest = _prefix "digest"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/derivativeRelationshipExpression"></see>
     /// </summary>
-    let derivativeRelationshipExpression =
-        Namespaced_IRI.parse _namespace_name "derivativeRelationshipExpression" |> NamespacedName
-
+    let derivativeRelationshipExpression = _prefix "derivativeRelationshipExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/paraphrasedAs"></see>
     /// </summary>
-    let paraphrasedAs =
-        Namespaced_IRI.parse _namespace_name "paraphrasedAs" |> NamespacedName
-
+    let paraphrasedAs = _prefix "paraphrasedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/freelyTranslatedAs"></see>
     /// </summary>
-    let freelyTranslatedAs =
-        Namespaced_IRI.parse _namespace_name "freelyTranslatedAs" |> NamespacedName
-
+    let freelyTranslatedAs = _prefix "freelyTranslatedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/translatedAs"></see>
     /// </summary>
-    let translatedAs =
-        Namespaced_IRI.parse _namespace_name "translatedAs" |> NamespacedName
-
+    let translatedAs = _prefix "translatedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/summary"></see>
     /// </summary>
-    let summary = Namespaced_IRI.parse _namespace_name "summary" |> NamespacedName
+    let summary = _prefix "summary"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imitatedAs"></see>
     /// </summary>
-    let imitatedAs = Namespaced_IRI.parse _namespace_name "imitatedAs" |> NamespacedName
-
+    let imitatedAs = _prefix "imitatedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalArrangement"></see>
     /// </summary>
-    let musicalArrangement =
-        Namespaced_IRI.parse _namespace_name "musicalArrangement" |> NamespacedName
-
+    let musicalArrangement = _prefix "musicalArrangement"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalSetting"></see>
     /// </summary>
-    let musicalSetting =
-        Namespaced_IRI.parse _namespace_name "musicalSetting" |> NamespacedName
-
+    let musicalSetting = _prefix "musicalSetting"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imusicalVariations"></see>
     /// </summary>
-    let imusicalVariations =
-        Namespaced_IRI.parse _namespace_name "imusicalVariations" |> NamespacedName
-
+    let imusicalVariations = _prefix "imusicalVariations"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalArrangementExpression"></see>
     /// </summary>
-    let musicalArrangementExpression =
-        Namespaced_IRI.parse _namespace_name "musicalArrangementExpression" |> NamespacedName
-
+    let musicalArrangementExpression = _prefix "musicalArrangementExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalSettingExpression"></see>
     /// </summary>
-    let musicalSettingExpression =
-        Namespaced_IRI.parse _namespace_name "musicalSettingExpression" |> NamespacedName
-
+    let musicalSettingExpression = _prefix "musicalSettingExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imitatedAsExpression"></see>
     /// </summary>
-    let imitatedAsExpression =
-        Namespaced_IRI.parse _namespace_name "imitatedAsExpression" |> NamespacedName
-
+    let imitatedAsExpression = _prefix "imitatedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexedInExpression"></see>
     /// </summary>
-    let indexedInExpression =
-        Namespaced_IRI.parse _namespace_name "indexedInExpression" |> NamespacedName
-
+    let indexedInExpression = _prefix "indexedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/translatedAsExpression"></see>
     /// </summary>
-    let translatedAsExpression =
-        Namespaced_IRI.parse _namespace_name "translatedAsExpression" |> NamespacedName
-
+    let translatedAsExpression = _prefix "translatedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/remadeAsExpression"></see>
     /// </summary>
-    let remadeAsExpression =
-        Namespaced_IRI.parse _namespace_name "remadeAsExpression" |> NamespacedName
-
+    let remadeAsExpression = _prefix "remadeAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expandedAsExpression"></see>
     /// </summary>
-    let expandedAsExpression =
-        Namespaced_IRI.parse _namespace_name "expandedAsExpression" |> NamespacedName
-
+    let expandedAsExpression = _prefix "expandedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digestExpression"></see>
     /// </summary>
-    let digestExpression =
-        Namespaced_IRI.parse _namespace_name "digestExpression" |> NamespacedName
-
+    let digestExpression = _prefix "digestExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/paraphrasedAsExpression"></see>
     /// </summary>
-    let paraphrasedAsExpression =
-        Namespaced_IRI.parse _namespace_name "paraphrasedAsExpression" |> NamespacedName
-
+    let paraphrasedAsExpression = _prefix "paraphrasedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalVariationsExpression"></see>
     /// </summary>
-    let musicalVariationsExpression =
-        Namespaced_IRI.parse _namespace_name "musicalVariationsExpression" |> NamespacedName
-
+    let musicalVariationsExpression = _prefix "musicalVariationsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/freelyTranslatedAsExpression"></see>
     /// </summary>
-    let freelyTranslatedAsExpression =
-        Namespaced_IRI.parse _namespace_name "freelyTranslatedAsExpression" |> NamespacedName
-
+    let freelyTranslatedAsExpression = _prefix "freelyTranslatedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/summaryExpression"></see>
     /// </summary>
-    let summaryExpression =
-        Namespaced_IRI.parse _namespace_name "summaryExpression" |> NamespacedName
-
+    let summaryExpression = _prefix "summaryExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/summaryWork"></see>
     /// </summary>
-    let summaryWork =
-        Namespaced_IRI.parse _namespace_name "summaryWork" |> NamespacedName
-
+    let summaryWork = _prefix "summaryWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/imitatedAsWork"></see>
     /// </summary>
-    let imitatedAsWork =
-        Namespaced_IRI.parse _namespace_name "imitatedAsWork" |> NamespacedName
-
+    let imitatedAsWork = _prefix "imitatedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalVariationsWork"></see>
     /// </summary>
-    let musicalVariationsWork =
-        Namespaced_IRI.parse _namespace_name "musicalVariationsWork" |> NamespacedName
-
+    let musicalVariationsWork = _prefix "musicalVariationsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/paraphrasedAsWork"></see>
     /// </summary>
-    let paraphrasedAsWork =
-        Namespaced_IRI.parse _namespace_name "paraphrasedAsWork" |> NamespacedName
-
+    let paraphrasedAsWork = _prefix "paraphrasedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digestWork"></see>
     /// </summary>
-    let digestWork = Namespaced_IRI.parse _namespace_name "digestWork" |> NamespacedName
-
+    let digestWork = _prefix "digestWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/indexedInWork"></see>
     /// </summary>
-    let indexedInWork =
-        Namespaced_IRI.parse _namespace_name "indexedInWork" |> NamespacedName
-
+    let indexedInWork = _prefix "indexedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/remadeAsWork"></see>
     /// </summary>
-    let remadeAsWork =
-        Namespaced_IRI.parse _namespace_name "remadeAsWork" |> NamespacedName
-
+    let remadeAsWork = _prefix "remadeAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/freelyTranslatedAsWork"></see>
     /// </summary>
-    let freelyTranslatedAsWork =
-        Namespaced_IRI.parse _namespace_name "freelyTranslatedAsWork" |> NamespacedName
-
+    let freelyTranslatedAsWork = _prefix "freelyTranslatedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expandedAsWork"></see>
     /// </summary>
-    let expandedAsWork =
-        Namespaced_IRI.parse _namespace_name "expandedAsWork" |> NamespacedName
-
+    let expandedAsWork = _prefix "expandedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/musicalSettingWork"></see>
     /// </summary>
-    let musicalSettingWork =
-        Namespaced_IRI.parse _namespace_name "musicalSettingWork" |> NamespacedName
-
+    let musicalSettingWork = _prefix "musicalSettingWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewedIn"></see>
     /// </summary>
-    let reviewedIn = Namespaced_IRI.parse _namespace_name "reviewedIn" |> NamespacedName
-
+    let reviewedIn = _prefix "reviewedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluatedIn"></see>
     /// </summary>
-    let evaluatedIn =
-        Namespaced_IRI.parse _namespace_name "evaluatedIn" |> NamespacedName
-
+    let evaluatedIn = _prefix "evaluatedIn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptiveRelationships"></see>
     /// </summary>
-    let descriptiveRelationships =
-        Namespaced_IRI.parse _namespace_name "descriptiveRelationships" |> NamespacedName
-
+    let descriptiveRelationships = _prefix "descriptiveRelationships"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluatedInExpression"></see>
     /// </summary>
-    let evaluatedInExpression =
-        Namespaced_IRI.parse _namespace_name "evaluatedInExpression" |> NamespacedName
-
+    let evaluatedInExpression = _prefix "evaluatedInExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewedInExpression"></see>
     /// </summary>
-    let reviewedInExpression =
-        Namespaced_IRI.parse _namespace_name "reviewedInExpression" |> NamespacedName
+    let reviewedInExpression = _prefix "reviewedInExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptiveRelationshipsExpression"></see>
     /// </summary>
     let descriptiveRelationshipsExpression =
-        Namespaced_IRI.parse _namespace_name "descriptiveRelationshipsExpression" |> NamespacedName
+        _prefix "descriptiveRelationshipsExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewedInWork"></see>
     /// </summary>
-    let reviewedInWork =
-        Namespaced_IRI.parse _namespace_name "reviewedInWork" |> NamespacedName
-
+    let reviewedInWork = _prefix "reviewedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluatedInWork"></see>
     /// </summary>
-    let evaluatedInWork =
-        Namespaced_IRI.parse _namespace_name "evaluatedInWork" |> NamespacedName
-
+    let evaluatedInWork = _prefix "evaluatedInWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptiveRelationshipsWork"></see>
     /// </summary>
-    let descriptiveRelationshipsWork =
-        Namespaced_IRI.parse _namespace_name "descriptiveRelationshipsWork" |> NamespacedName
-
+    let descriptiveRelationshipsWork = _prefix "descriptiveRelationshipsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluationOf"></see>
     /// </summary>
-    let evaluationOf =
-        Namespaced_IRI.parse _namespace_name "evaluationOf" |> NamespacedName
-
+    let evaluationOf = _prefix "evaluationOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewOf"></see>
     /// </summary>
-    let reviewOf = Namespaced_IRI.parse _namespace_name "reviewOf" |> NamespacedName
-
+    let reviewOf = _prefix "reviewOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewOfExpression"></see>
     /// </summary>
-    let reviewOfExpression =
-        Namespaced_IRI.parse _namespace_name "reviewOfExpression" |> NamespacedName
-
+    let reviewOfExpression = _prefix "reviewOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluationOfExpression"></see>
     /// </summary>
-    let evaluationOfExpression =
-        Namespaced_IRI.parse _namespace_name "evaluationOfExpression" |> NamespacedName
-
+    let evaluationOfExpression = _prefix "evaluationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluationOfItem"></see>
     /// </summary>
-    let evaluationOfItem =
-        Namespaced_IRI.parse _namespace_name "evaluationOfItem" |> NamespacedName
-
+    let evaluationOfItem = _prefix "evaluationOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewOfItem"></see>
     /// </summary>
-    let reviewOfItem =
-        Namespaced_IRI.parse _namespace_name "reviewOfItem" |> NamespacedName
-
+    let reviewOfItem = _prefix "reviewOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptiveRelationshipsItem"></see>
     /// </summary>
-    let descriptiveRelationshipsItem =
-        Namespaced_IRI.parse _namespace_name "descriptiveRelationshipsItem" |> NamespacedName
-
+    let descriptiveRelationshipsItem = _prefix "descriptiveRelationshipsItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluationOfManifestation"></see>
     /// </summary>
-    let evaluationOfManifestation =
-        Namespaced_IRI.parse _namespace_name "evaluationOfManifestation" |> NamespacedName
-
+    let evaluationOfManifestation = _prefix "evaluationOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewOfManifestation"></see>
     /// </summary>
-    let reviewOfManifestation =
-        Namespaced_IRI.parse _namespace_name "reviewOfManifestation" |> NamespacedName
+    let reviewOfManifestation = _prefix "reviewOfManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/descriptiveRelationshipsManifestation"></see>
     /// </summary>
     let descriptiveRelationshipsManifestation =
-        Namespaced_IRI.parse _namespace_name "descriptiveRelationshipsManifestation" |> NamespacedName
+        _prefix "descriptiveRelationshipsManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reviewOfWork"></see>
     /// </summary>
-    let reviewOfWork =
-        Namespaced_IRI.parse _namespace_name "reviewOfWork" |> NamespacedName
-
+    let reviewOfWork = _prefix "reviewOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/evaluationOfWork"></see>
     /// </summary>
-    let evaluationOfWork =
-        Namespaced_IRI.parse _namespace_name "evaluationOfWork" |> NamespacedName
-
+    let evaluationOfWork = _prefix "evaluationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/derivativeRelationships"></see>
     /// </summary>
-    let derivativeRelationships =
-        Namespaced_IRI.parse _namespace_name "derivativeRelationships" |> NamespacedName
-
+    let derivativeRelationships = _prefix "derivativeRelationships"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digitalTransfer"></see>
     /// </summary>
-    let digitalTransfer =
-        Namespaced_IRI.parse _namespace_name "digitalTransfer" |> NamespacedName
-
+    let digitalTransfer = _prefix "digitalTransfer"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digitalTransferManifestation"></see>
     /// </summary>
-    let digitalTransferManifestation =
-        Namespaced_IRI.parse _namespace_name "digitalTransferManifestation" |> NamespacedName
-
+    let digitalTransferManifestation = _prefix "digitalTransferManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reproducedAs"></see>
     /// </summary>
-    let reproducedAs =
-        Namespaced_IRI.parse _namespace_name "reproducedAs" |> NamespacedName
-
+    let reproducedAs = _prefix "reproducedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reproducedAsManifestation"></see>
     /// </summary>
-    let reproducedAsManifestation =
-        Namespaced_IRI.parse _namespace_name "reproducedAsManifestation" |> NamespacedName
-
+    let reproducedAsManifestation = _prefix "reproducedAsManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digitalTransferOf"></see>
     /// </summary>
-    let digitalTransferOf =
-        Namespaced_IRI.parse _namespace_name "digitalTransferOf" |> NamespacedName
-
+    let digitalTransferOf = _prefix "digitalTransferOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digitalTransferOfItem"></see>
     /// </summary>
-    let digitalTransferOfItem =
-        Namespaced_IRI.parse _namespace_name "digitalTransferOfItem" |> NamespacedName
-
+    let digitalTransferOfItem = _prefix "digitalTransferOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/digitalTransferOfManifestation"></see>
     /// </summary>
-    let digitalTransferOfManifestation =
-        Namespaced_IRI.parse _namespace_name "digitalTransferOfManifestation" |> NamespacedName
-
+    let digitalTransferOfManifestation = _prefix "digitalTransferOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reproductionOf"></see>
     /// </summary>
-    let reproductionOf =
-        Namespaced_IRI.parse _namespace_name "reproductionOf" |> NamespacedName
-
+    let reproductionOf = _prefix "reproductionOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reproductionOfItem"></see>
     /// </summary>
-    let reproductionOfItem =
-        Namespaced_IRI.parse _namespace_name "reproductionOfItem" |> NamespacedName
-
+    let reproductionOfItem = _prefix "reproductionOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reproductionOfManifestation"></see>
     /// </summary>
-    let reproductionOfManifestation =
-        Namespaced_IRI.parse _namespace_name "reproductionOfManifestation" |> NamespacedName
-
+    let reproductionOfManifestation = _prefix "reproductionOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/dramatizationOfExpression"></see>
     /// </summary>
-    let dramatizationOfExpression =
-        Namespaced_IRI.parse _namespace_name "dramatizationOfExpression" |> NamespacedName
-
+    let dramatizationOfExpression = _prefix "dramatizationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/electronicReproduction"></see>
     /// </summary>
-    let electronicReproduction =
-        Namespaced_IRI.parse _namespace_name "electronicReproduction" |> NamespacedName
+    let electronicReproduction = _prefix "electronicReproduction"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/electronicReproductionManifestation"></see>
     /// </summary>
     let electronicReproductionManifestation =
-        Namespaced_IRI.parse _namespace_name "electronicReproductionManifestation" |> NamespacedName
+        _prefix "electronicReproductionManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/electronicReproductionOf"></see>
     /// </summary>
-    let electronicReproductionOf =
-        Namespaced_IRI.parse _namespace_name "electronicReproductionOf" |> NamespacedName
-
+    let electronicReproductionOf = _prefix "electronicReproductionOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/electronicReproductionOfItem"></see>
     /// </summary>
-    let electronicReproductionOfItem =
-        Namespaced_IRI.parse _namespace_name "electronicReproductionOfItem" |> NamespacedName
+    let electronicReproductionOfItem = _prefix "electronicReproductionOfItem"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/electronicReproductionOfManifestation"></see>
     /// </summary>
     let electronicReproductionOfManifestation =
-        Namespaced_IRI.parse _namespace_name "electronicReproductionOfManifestation" |> NamespacedName
+        _prefix "electronicReproductionOfManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/equivalenceRelationships"></see>
     /// </summary>
-    let equivalenceRelationships =
-        Namespaced_IRI.parse _namespace_name "equivalenceRelationships" |> NamespacedName
+    let equivalenceRelationships = _prefix "equivalenceRelationships"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/equivalenceRelationshipsManifestation"></see>
     /// </summary>
     let equivalenceRelationshipsManifestation =
-        Namespaced_IRI.parse _namespace_name "equivalenceRelationshipsManifestation" |> NamespacedName
+        _prefix "equivalenceRelationshipsManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mirrorSite"></see>
     /// </summary>
-    let mirrorSite = Namespaced_IRI.parse _namespace_name "mirrorSite" |> NamespacedName
-
+    let mirrorSite = _prefix "mirrorSite"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/equivalenceRelationshipsItem"></see>
     /// </summary>
-    let equivalenceRelationshipsItem =
-        Namespaced_IRI.parse _namespace_name "equivalenceRelationshipsItem" |> NamespacedName
-
+    let equivalenceRelationshipsItem = _prefix "equivalenceRelationshipsItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mirrorSiteManifestation"></see>
     /// </summary>
-    let mirrorSiteManifestation =
-        Namespaced_IRI.parse _namespace_name "mirrorSiteManifestation" |> NamespacedName
-
+    let mirrorSiteManifestation = _prefix "mirrorSiteManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/exemplarOfManifestation"></see>
     /// </summary>
-    let exemplarOfManifestation =
-        Namespaced_IRI.parse _namespace_name "exemplarOfManifestation" |> NamespacedName
-
+    let exemplarOfManifestation = _prefix "exemplarOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expandedAs"></see>
     /// </summary>
-    let expandedAs = Namespaced_IRI.parse _namespace_name "expandedAs" |> NamespacedName
-
+    let expandedAs = _prefix "expandedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expressionManifested"></see>
     /// </summary>
-    let expressionManifested =
-        Namespaced_IRI.parse _namespace_name "expressionManifested" |> NamespacedName
-
+    let expressionManifested = _prefix "expressionManifested"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/expressionOfWork"></see>
     /// </summary>
-    let expressionOfWork =
-        Namespaced_IRI.parse _namespace_name "expressionOfWork" |> NamespacedName
-
+    let expressionOfWork = _prefix "expressionOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/facsimile"></see>
     /// </summary>
-    let facsimile = Namespaced_IRI.parse _namespace_name "facsimile" |> NamespacedName
-
+    let facsimile = _prefix "facsimile"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/preservationFacsimile"></see>
     /// </summary>
-    let preservationFacsimile =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimile" |> NamespacedName
-
+    let preservationFacsimile = _prefix "preservationFacsimile"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/facsimileManifestation"></see>
     /// </summary>
-    let facsimileManifestation =
-        Namespaced_IRI.parse _namespace_name "facsimileManifestation" |> NamespacedName
+    let facsimileManifestation = _prefix "facsimileManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/preservationFacsimileManifestation"></see>
     /// </summary>
     let preservationFacsimileManifestation =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimileManifestation" |> NamespacedName
+        _prefix "preservationFacsimileManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/facsimileOf"></see>
     /// </summary>
-    let facsimileOf =
-        Namespaced_IRI.parse _namespace_name "facsimileOf" |> NamespacedName
-
+    let facsimileOf = _prefix "facsimileOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/preservationFacsimileOf"></see>
     /// </summary>
-    let preservationFacsimileOf =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimileOf" |> NamespacedName
-
+    let preservationFacsimileOf = _prefix "preservationFacsimileOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/facsimileOfItem"></see>
     /// </summary>
-    let facsimileOfItem =
-        Namespaced_IRI.parse _namespace_name "facsimileOfItem" |> NamespacedName
-
+    let facsimileOfItem = _prefix "facsimileOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/facsimileOfManifestation"></see>
     /// </summary>
-    let facsimileOfManifestation =
-        Namespaced_IRI.parse _namespace_name "facsimileOfManifestation" |> NamespacedName
-
+    let facsimileOfManifestation = _prefix "facsimileOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/preservationFacsimileOfItem"></see>
     /// </summary>
-    let preservationFacsimileOfItem =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimileOfItem" |> NamespacedName
+    let preservationFacsimileOfItem = _prefix "preservationFacsimileOfItem"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/preservationFacsimileOfManifestation"></see>
     /// </summary>
     let preservationFacsimileOfManifestation =
-        Namespaced_IRI.parse _namespace_name "preservationFacsimileOfManifestation" |> NamespacedName
+        _prefix "preservationFacsimileOfManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/filmedWithManifestation"></see>
     /// </summary>
-    let filmedWithManifestation =
-        Namespaced_IRI.parse _namespace_name "filmedWithManifestation" |> NamespacedName
-
+    let filmedWithManifestation = _prefix "filmedWithManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/parodiedAs"></see>
     /// </summary>
-    let parodiedAs = Namespaced_IRI.parse _namespace_name "parodiedAs" |> NamespacedName
-
+    let parodiedAs = _prefix "parodiedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/parodiedAsExpression"></see>
     /// </summary>
-    let parodiedAsExpression =
-        Namespaced_IRI.parse _namespace_name "parodiedAsExpression" |> NamespacedName
-
+    let parodiedAsExpression = _prefix "parodiedAsExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/parodiedAsWork"></see>
     /// </summary>
-    let parodiedAsWork =
-        Namespaced_IRI.parse _namespace_name "parodiedAsWork" |> NamespacedName
-
+    let parodiedAsWork = _prefix "parodiedAsWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/parodyOf"></see>
     /// </summary>
-    let parodyOf = Namespaced_IRI.parse _namespace_name "parodyOf" |> NamespacedName
-
+    let parodyOf = _prefix "parodyOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/parodyOfExpression"></see>
     /// </summary>
-    let parodyOfExpression =
-        Namespaced_IRI.parse _namespace_name "parodyOfExpression" |> NamespacedName
-
+    let parodyOfExpression = _prefix "parodyOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/parodyOfWork"></see>
     /// </summary>
-    let parodyOfWork =
-        Namespaced_IRI.parse _namespace_name "parodyOfWork" |> NamespacedName
-
+    let parodyOfWork = _prefix "parodyOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/onDiscWithManifestation"></see>
     /// </summary>
-    let onDiscWithManifestation =
-        Namespaced_IRI.parse _namespace_name "onDiscWithManifestation" |> NamespacedName
-
+    let onDiscWithManifestation = _prefix "onDiscWithManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/librettoForExpression"></see>
     /// </summary>
-    let librettoForExpression =
-        Namespaced_IRI.parse _namespace_name "librettoForExpression" |> NamespacedName
-
+    let librettoForExpression = _prefix "librettoForExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/manifestationExemplified"></see>
     /// </summary>
-    let manifestationExemplified =
-        Namespaced_IRI.parse _namespace_name "manifestationExemplified" |> NamespacedName
-
+    let manifestationExemplified = _prefix "manifestationExemplified"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/manifestationOfWork"></see>
     /// </summary>
-    let manifestationOfWork =
-        Namespaced_IRI.parse _namespace_name "manifestationOfWork" |> NamespacedName
-
+    let manifestationOfWork = _prefix "manifestationOfWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mergedWithToForm"></see>
     /// </summary>
-    let mergedWithToForm =
-        Namespaced_IRI.parse _namespace_name "mergedWithToForm" |> NamespacedName
-
+    let mergedWithToForm = _prefix "mergedWithToForm"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mergedWithToFormExpression"></see>
     /// </summary>
-    let mergedWithToFormExpression =
-        Namespaced_IRI.parse _namespace_name "mergedWithToFormExpression" |> NamespacedName
-
+    let mergedWithToFormExpression = _prefix "mergedWithToFormExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mergedWithToFormWork"></see>
     /// </summary>
-    let mergedWithToFormWork =
-        Namespaced_IRI.parse _namespace_name "mergedWithToFormWork" |> NamespacedName
-
+    let mergedWithToFormWork = _prefix "mergedWithToFormWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mergerOf"></see>
     /// </summary>
-    let mergerOf = Namespaced_IRI.parse _namespace_name "mergerOf" |> NamespacedName
-
+    let mergerOf = _prefix "mergerOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mergerOfExpression"></see>
     /// </summary>
-    let mergerOfExpression =
-        Namespaced_IRI.parse _namespace_name "mergerOfExpression" |> NamespacedName
-
+    let mergerOfExpression = _prefix "mergerOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/mergerOfWork"></see>
     /// </summary>
-    let mergerOfWork =
-        Namespaced_IRI.parse _namespace_name "mergerOfWork" |> NamespacedName
+    let mergerOfWork = _prefix "mergerOfWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureAdaptationOfExpression"></see>
     /// </summary>
     let motionPictureAdaptationOfExpression =
-        Namespaced_IRI.parse _namespace_name "motionPictureAdaptationOfExpression" |> NamespacedName
+        _prefix "motionPictureAdaptationOfExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureScreenplayBasedOn"></see>
     /// </summary>
-    let motionPictureScreenplayBasedOn =
-        Namespaced_IRI.parse _namespace_name "motionPictureScreenplayBasedOn" |> NamespacedName
+    let motionPictureScreenplayBasedOn = _prefix "motionPictureScreenplayBasedOn"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureScreenplayBasedOnExpression"></see>
     /// </summary>
     let motionPictureScreenplayBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "motionPictureScreenplayBasedOnExpression" |> NamespacedName
+        _prefix "motionPictureScreenplayBasedOnExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/motionPictureScreenplayBasedOnWork"></see>
     /// </summary>
     let motionPictureScreenplayBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "motionPictureScreenplayBasedOnWork" |> NamespacedName
+        _prefix "motionPictureScreenplayBasedOnWork"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/novelizationOfExpression"></see>
     /// </summary>
-    let novelizationOfExpression =
-        Namespaced_IRI.parse _namespace_name "novelizationOfExpression" |> NamespacedName
-
+    let novelizationOfExpression = _prefix "novelizationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/numberingOfPart"></see>
     /// </summary>
-    let numberingOfPart =
-        Namespaced_IRI.parse _namespace_name "numberingOfPart" |> NamespacedName
-
+    let numberingOfPart = _prefix "numberingOfPart"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/numberingOfPartWork"></see>
     /// </summary>
-    let numberingOfPartWork =
-        Namespaced_IRI.parse _namespace_name "numberingOfPartWork" |> NamespacedName
-
+    let numberingOfPartWork = _prefix "numberingOfPartWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/relatedWork"></see>
     /// </summary>
-    let relatedWork =
-        Namespaced_IRI.parse _namespace_name "relatedWork" |> NamespacedName
-
+    let relatedWork = _prefix "relatedWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supersedes"></see>
     /// </summary>
-    let supersedes = Namespaced_IRI.parse _namespace_name "supersedes" |> NamespacedName
-
+    let supersedes = _prefix "supersedes"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/separatedFrom"></see>
     /// </summary>
-    let separatedFrom =
-        Namespaced_IRI.parse _namespace_name "separatedFrom" |> NamespacedName
-
+    let separatedFrom = _prefix "separatedFrom"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequelTo"></see>
     /// </summary>
-    let sequelTo = Namespaced_IRI.parse _namespace_name "sequelTo" |> NamespacedName
+    let sequelTo = _prefix "sequelTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/prequel"></see>
     /// </summary>
-    let prequel = Namespaced_IRI.parse _namespace_name "prequel" |> NamespacedName
-
+    let prequel = _prefix "prequel"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supersedesInPart"></see>
     /// </summary>
-    let supersedesInPart =
-        Namespaced_IRI.parse _namespace_name "supersedesInPart" |> NamespacedName
-
+    let supersedesInPart = _prefix "supersedesInPart"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequentialRelationship"></see>
     /// </summary>
-    let sequentialRelationship =
-        Namespaced_IRI.parse _namespace_name "sequentialRelationship" |> NamespacedName
-
+    let sequentialRelationship = _prefix "sequentialRelationship"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersedesInPartExpression"></see></summary>
-    let supersedesInPartExpression =
-        Namespaced_IRI.parse _namespace_name "supersedesInPartExpression" |> NamespacedName
-
+    let supersedesInPartExpression = _prefix "supersedesInPartExpression"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersedesExpression"></see></summary>
-    let supersedesExpression =
-        Namespaced_IRI.parse _namespace_name "supersedesExpression" |> NamespacedName
-
+    let supersedesExpression = _prefix "supersedesExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/separatedFromExpression"></see>
     /// </summary>
-    let separatedFromExpression =
-        Namespaced_IRI.parse _namespace_name "separatedFromExpression" |> NamespacedName
-
+    let separatedFromExpression = _prefix "separatedFromExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequentialRelationshipExpression"></see>
     /// </summary>
-    let sequentialRelationshipExpression =
-        Namespaced_IRI.parse _namespace_name "sequentialRelationshipExpression" |> NamespacedName
-
+    let sequentialRelationshipExpression = _prefix "sequentialRelationshipExpression"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersedesInPartWork"></see></summary>
-    let supersedesInPartWork =
-        Namespaced_IRI.parse _namespace_name "supersedesInPartWork" |> NamespacedName
-
+    let supersedesInPartWork = _prefix "supersedesInPartWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/prequelWork"></see>
     /// </summary>
-    let prequelWork =
-        Namespaced_IRI.parse _namespace_name "prequelWork" |> NamespacedName
-
+    let prequelWork = _prefix "prequelWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/separatedFromWork"></see>
     /// </summary>
-    let separatedFromWork =
-        Namespaced_IRI.parse _namespace_name "separatedFromWork" |> NamespacedName
-
+    let separatedFromWork = _prefix "separatedFromWork"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersedesWork"></see></summary>
-    let supersedesWork =
-        Namespaced_IRI.parse _namespace_name "supersedesWork" |> NamespacedName
-
+    let supersedesWork = _prefix "supersedesWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequelToWork"></see>
     /// </summary>
-    let sequelToWork =
-        Namespaced_IRI.parse _namespace_name "sequelToWork" |> NamespacedName
-
+    let sequelToWork = _prefix "sequelToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequentialRelationshipWork"></see>
     /// </summary>
-    let sequentialRelationshipWork =
-        Namespaced_IRI.parse _namespace_name "sequentialRelationshipWork" |> NamespacedName
-
+    let sequentialRelationshipWork = _prefix "sequentialRelationshipWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/prequelTo"></see>
     /// </summary>
-    let prequelTo = Namespaced_IRI.parse _namespace_name "prequelTo" |> NamespacedName
-
+    let prequelTo = _prefix "prequelTo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/prequelToWork"></see>
     /// </summary>
-    let prequelToWork =
-        Namespaced_IRI.parse _namespace_name "prequelToWork" |> NamespacedName
-
+    let prequelToWork = _prefix "prequelToWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reprintOf"></see>
     /// </summary>
-    let reprintOf = Namespaced_IRI.parse _namespace_name "reprintOf" |> NamespacedName
-
+    let reprintOf = _prefix "reprintOf"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reprintOfItem"></see>
     /// </summary>
-    let reprintOfItem =
-        Namespaced_IRI.parse _namespace_name "reprintOfItem" |> NamespacedName
-
+    let reprintOfItem = _prefix "reprintOfItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reprintOfManifestation"></see>
     /// </summary>
-    let reprintOfManifestation =
-        Namespaced_IRI.parse _namespace_name "reprintOfManifestation" |> NamespacedName
-
+    let reprintOfManifestation = _prefix "reprintOfManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reprintedAs"></see>
     /// </summary>
-    let reprintedAs =
-        Namespaced_IRI.parse _namespace_name "reprintedAs" |> NamespacedName
-
+    let reprintedAs = _prefix "reprintedAs"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/reprintedAsManifestation"></see>
     /// </summary>
-    let reprintedAsManifestation =
-        Namespaced_IRI.parse _namespace_name "reprintedAsManifestation" |> NamespacedName
-
+    let reprintedAsManifestation = _prefix "reprintedAsManifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/equivalentItem"></see>
     /// </summary>
-    let equivalentItem =
-        Namespaced_IRI.parse _namespace_name "equivalentItem" |> NamespacedName
-
+    let equivalentItem = _prefix "equivalentItem"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionScreenplay"></see>
     /// </summary>
-    let televisionScreenplay =
-        Namespaced_IRI.parse _namespace_name "televisionScreenplay" |> NamespacedName
-
+    let televisionScreenplay = _prefix "televisionScreenplay"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoScreenplay"></see>
     /// </summary>
-    let videoScreenplay =
-        Namespaced_IRI.parse _namespace_name "videoScreenplay" |> NamespacedName
-
+    let videoScreenplay = _prefix "videoScreenplay"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoScreenplayBasedOn"></see>
     /// </summary>
-    let videoScreenplayBasedOn =
-        Namespaced_IRI.parse _namespace_name "videoScreenplayBasedOn" |> NamespacedName
-
+    let videoScreenplayBasedOn = _prefix "videoScreenplayBasedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionScreenplayBasedOn"></see>
     /// </summary>
-    let televisionScreenplayBasedOn =
-        Namespaced_IRI.parse _namespace_name "televisionScreenplayBasedOn" |> NamespacedName
-
+    let televisionScreenplayBasedOn = _prefix "televisionScreenplayBasedOn"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoScreenplayBasedOnExpression"></see>
     /// </summary>
-    let videoScreenplayBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "videoScreenplayBasedOnExpression" |> NamespacedName
+    let videoScreenplayBasedOnExpression = _prefix "videoScreenplayBasedOnExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionScreenplayBasedOnExpression"></see>
     /// </summary>
     let televisionScreenplayBasedOnExpression =
-        Namespaced_IRI.parse _namespace_name "televisionScreenplayBasedOnExpression" |> NamespacedName
+        _prefix "televisionScreenplayBasedOnExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoScreenplayBasedOnWork"></see>
     /// </summary>
-    let videoScreenplayBasedOnWork =
-        Namespaced_IRI.parse _namespace_name "videoScreenplayBasedOnWork" |> NamespacedName
-
+    let videoScreenplayBasedOnWork = _prefix "videoScreenplayBasedOnWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionScreenplayExpression"></see>
     /// </summary>
-    let televisionScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "televisionScreenplayExpression" |> NamespacedName
-
+    let televisionScreenplayExpression = _prefix "televisionScreenplayExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/videoScreenplayExpression"></see>
     /// </summary>
-    let videoScreenplayExpression =
-        Namespaced_IRI.parse _namespace_name "videoScreenplayExpression" |> NamespacedName
+    let videoScreenplayExpression = _prefix "videoScreenplayExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheTelevisionProgramme"></see>
     /// </summary>
     let screenplayForTheTelevisionProgramme =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheTelevisionProgramme" |> NamespacedName
+        _prefix "screenplayForTheTelevisionProgramme"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheVideo"></see>
     /// </summary>
-    let screenplayForTheVideo =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheVideo" |> NamespacedName
-
+    let screenplayForTheVideo = _prefix "screenplayForTheVideo"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheMotionPicture"></see>
     /// </summary>
-    let screenplayForTheMotionPicture =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheMotionPicture" |> NamespacedName
+    let screenplayForTheMotionPicture = _prefix "screenplayForTheMotionPicture"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheTelevisionProgrammeExpression"></see>
     /// </summary>
     let screenplayForTheTelevisionProgrammeExpression =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheTelevisionProgrammeExpression" |> NamespacedName
+        _prefix "screenplayForTheTelevisionProgrammeExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheVideoExpression"></see>
     /// </summary>
-    let screenplayForTheVideoExpression =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheVideoExpression" |> NamespacedName
+    let screenplayForTheVideoExpression = _prefix "screenplayForTheVideoExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/screenplayForTheMotionPictureExpression"></see>
     /// </summary>
     let screenplayForTheMotionPictureExpression =
-        Namespaced_IRI.parse _namespace_name "screenplayForTheMotionPictureExpression" |> NamespacedName
+        _prefix "screenplayForTheMotionPictureExpression"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequel"></see>
     /// </summary>
-    let sequel = Namespaced_IRI.parse _namespace_name "sequel" |> NamespacedName
+    let sequel = _prefix "sequel"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequelWork"></see>
     /// </summary>
-    let sequelWork = Namespaced_IRI.parse _namespace_name "sequelWork" |> NamespacedName
-
+    let sequelWork = _prefix "sequelWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequentialRelationshipItem"></see>
     /// </summary>
-    let sequentialRelationshipItem =
-        Namespaced_IRI.parse _namespace_name "sequentialRelationshipItem" |> NamespacedName
+    let sequentialRelationshipItem = _prefix "sequentialRelationshipItem"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/sequentialRelationshipManifestation"></see>
     /// </summary>
     let sequentialRelationshipManifestation =
-        Namespaced_IRI.parse _namespace_name "sequentialRelationshipManifestation" |> NamespacedName
+        _prefix "sequentialRelationshipManifestation"
 
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/splitInto"></see>
     /// </summary>
-    let splitInto = Namespaced_IRI.parse _namespace_name "splitInto" |> NamespacedName
-
+    let splitInto = _prefix "splitInto"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/splitIntoExpression"></see>
     /// </summary>
-    let splitIntoExpression =
-        Namespaced_IRI.parse _namespace_name "splitIntoExpression" |> NamespacedName
-
+    let splitIntoExpression = _prefix "splitIntoExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/splitIntoWork"></see>
     /// </summary>
-    let splitIntoWork =
-        Namespaced_IRI.parse _namespace_name "splitIntoWork" |> NamespacedName
-
+    let splitIntoWork = _prefix "splitIntoWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supersededBy"></see>
     /// </summary>
-    let supersededBy =
-        Namespaced_IRI.parse _namespace_name "supersededBy" |> NamespacedName
-
+    let supersededBy = _prefix "supersededBy"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/supersededInPartBy"></see>
     /// </summary>
-    let supersededInPartBy =
-        Namespaced_IRI.parse _namespace_name "supersededInPartBy" |> NamespacedName
-
+    let supersededInPartBy = _prefix "supersededInPartBy"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersededInPartByExpression"></see></summary>
-    let supersededInPartByExpression =
-        Namespaced_IRI.parse _namespace_name "supersededInPartByExpression" |> NamespacedName
-
+    let supersededInPartByExpression = _prefix "supersededInPartByExpression"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersededByExpression"></see></summary>
-    let supersededByExpression =
-        Namespaced_IRI.parse _namespace_name "supersededByExpression" |> NamespacedName
-
+    let supersededByExpression = _prefix "supersededByExpression"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersededInPartByWork"></see></summary>
-    let supersededInPartByWork =
-        Namespaced_IRI.parse _namespace_name "supersededInPartByWork" |> NamespacedName
-
+    let supersededInPartByWork = _prefix "supersededInPartByWork"
     /// <summary>
     /// Apply generally to single-part units, multipart monographs, and integrating resources.
     /// <see href="http://rdvocab.info/RDARelationshipsWEMI/supersededByWork"></see></summary>
-    let supersededByWork =
-        Namespaced_IRI.parse _namespace_name "supersededByWork" |> NamespacedName
-
+    let supersededByWork = _prefix "supersededByWork"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/televisionAdaptationOfExpression"></see>
     /// </summary>
-    let televisionAdaptationOfExpression =
-        Namespaced_IRI.parse _namespace_name "televisionAdaptationOfExpression" |> NamespacedName
-
+    let televisionAdaptationOfExpression = _prefix "televisionAdaptationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/verseAdaptationOfExpression"></see>
     /// </summary>
-    let verseAdaptationOfExpression =
-        Namespaced_IRI.parse _namespace_name "verseAdaptationOfExpression" |> NamespacedName
-
+    let verseAdaptationOfExpression = _prefix "verseAdaptationOfExpression"
     /// <summary>
     ///   <see href="http://rdvocab.info/RDARelationshipsWEMI/workManifested"></see>
     /// </summary>
-    let workManifested =
-        Namespaced_IRI.parse _namespace_name "workManifested" |> NamespacedName
+    let workManifested = _prefix "workManifested"

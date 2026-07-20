@@ -1,265 +1,194 @@
 namespace http.reegle.info.schema.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module reegle =
     let _namespace_name = "http://reegle.info/schema#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://reegle.info/schema#CountryProfile"></see>
     /// </summary>
-    let CountryProfile =
-        Namespaced_IRI.parse _namespace_name "CountryProfile" |> NamespacedName
-
+    let CountryProfile = _prefix "CountryProfile"
     /// <summary>
     /// output summary of a renewable energy &amp; energy efficiency project.
     /// <see href="http://reegle.info/schema#ProjectOutput"></see></summary>
-    let ProjectOutput =
-        Namespaced_IRI.parse _namespace_name "ProjectOutput" |> NamespacedName
-
+    let ProjectOutput = _prefix "ProjectOutput"
     /// <summary>
     /// A sector in the field of renewable energy and energy efficiency.
     /// <see href="http://reegle.info/schema#Sector"></see></summary>
-    let Sector = Namespaced_IRI.parse _namespace_name "Sector" |> NamespacedName
-
+    let Sector = _prefix "Sector"
     /// <summary>
     ///   <see href="http://reegle.info/schema#Specialisation"></see>
     /// </summary>
-    let Specialisation =
-        Namespaced_IRI.parse _namespace_name "Specialisation" |> NamespacedName
-
+    let Specialisation = _prefix "Specialisation"
     /// <summary>
     ///   <see href="http://reegle.info/schema#Technology"></see>
     /// </summary>
-    let Technology = Namespaced_IRI.parse _namespace_name "Technology" |> NamespacedName
+    let Technology = _prefix "Technology"
     /// <summary>
     /// defines the countries an organisation is active in
     /// <see href="http://reegle.info/schema#activeIn"></see></summary>
-    let activeIn = Namespaced_IRI.parse _namespace_name "activeIn" |> NamespacedName
+    let activeIn = _prefix "activeIn"
     /// <summary>
     /// activities of the organisation in the renewable energy &amp; energy efficiency sector.
     /// <see href="http://reegle.info/schema#activities"></see></summary>
-    let activities = Namespaced_IRI.parse _namespace_name "activities" |> NamespacedName
-
+    let activities = _prefix "activities"
     /// <summary>
     ///   <see href="http://reegle.info/schema#capacityConcerns"></see>
     /// </summary>
-    let capacityConcerns =
-        Namespaced_IRI.parse _namespace_name "capacityConcerns" |> NamespacedName
-
+    let capacityConcerns = _prefix "capacityConcerns"
     /// <summary>
     ///   <see href="http://reegle.info/schema#competition"></see>
     /// </summary>
-    let competition =
-        Namespaced_IRI.parse _namespace_name "competition" |> NamespacedName
-
+    let competition = _prefix "competition"
     /// <summary>
     ///   <see href="http://reegle.info/schema#degreeIndependence"></see>
     /// </summary>
-    let degreeIndependence =
-        Namespaced_IRI.parse _namespace_name "degreeIndependence" |> NamespacedName
-
+    let degreeIndependence = _prefix "degreeIndependence"
     /// <summary>
     ///   <see href="http://reegle.info/schema#desirability"></see>
     /// </summary>
-    let desirability =
-        Namespaced_IRI.parse _namespace_name "desirability" |> NamespacedName
-
+    let desirability = _prefix "desirability"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyDebates"></see>
     /// </summary>
-    let energyDebates =
-        Namespaced_IRI.parse _namespace_name "energyDebates" |> NamespacedName
-
+    let energyDebates = _prefix "energyDebates"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyEfficiency"></see>
     /// </summary>
-    let energyEfficiency =
-        Namespaced_IRI.parse _namespace_name "energyEfficiency" |> NamespacedName
-
+    let energyEfficiency = _prefix "energyEfficiency"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyEfficiencyIndustry"></see>
     /// </summary>
-    let energyEfficiencyIndustry =
-        Namespaced_IRI.parse _namespace_name "energyEfficiencyIndustry" |> NamespacedName
-
+    let energyEfficiencyIndustry = _prefix "energyEfficiencyIndustry"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyEfficiencyPublic"></see>
     /// </summary>
-    let energyEfficiencyPublic =
-        Namespaced_IRI.parse _namespace_name "energyEfficiencyPublic" |> NamespacedName
-
+    let energyEfficiencyPublic = _prefix "energyEfficiencyPublic"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyEfficiencyResidantial"></see>
     /// </summary>
-    let energyEfficiencyResidantial =
-        Namespaced_IRI.parse _namespace_name "energyEfficiencyResidantial" |> NamespacedName
-
+    let energyEfficiencyResidantial = _prefix "energyEfficiencyResidantial"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyEfficiencyTransport"></see>
     /// </summary>
-    let energyEfficiencyTransport =
-        Namespaced_IRI.parse _namespace_name "energyEfficiencyTransport" |> NamespacedName
-
+    let energyEfficiencyTransport = _prefix "energyEfficiencyTransport"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyEfficiencyUtilities"></see>
     /// </summary>
-    let energyEfficiencyUtilities =
-        Namespaced_IRI.parse _namespace_name "energyEfficiencyUtilities" |> NamespacedName
-
+    let energyEfficiencyUtilities = _prefix "energyEfficiencyUtilities"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyFramework"></see>
     /// </summary>
-    let energyFramework =
-        Namespaced_IRI.parse _namespace_name "energyFramework" |> NamespacedName
-
+    let energyFramework = _prefix "energyFramework"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyProcedure"></see>
     /// </summary>
-    let energyProcedure =
-        Namespaced_IRI.parse _namespace_name "energyProcedure" |> NamespacedName
-
+    let energyProcedure = _prefix "energyProcedure"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyRegulationRole"></see>
     /// </summary>
-    let energyRegulationRole =
-        Namespaced_IRI.parse _namespace_name "energyRegulationRole" |> NamespacedName
-
+    let energyRegulationRole = _prefix "energyRegulationRole"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyRegulator"></see>
     /// </summary>
-    let energyRegulator =
-        Namespaced_IRI.parse _namespace_name "energyRegulator" |> NamespacedName
-
+    let energyRegulator = _prefix "energyRegulator"
     /// <summary>
     ///   <see href="http://reegle.info/schema#energyStudies"></see>
     /// </summary>
-    let energyStudies =
-        Namespaced_IRI.parse _namespace_name "energyStudies" |> NamespacedName
-
+    let energyStudies = _prefix "energyStudies"
     /// <summary>
     ///   <see href="http://reegle.info/schema#extendNetwork"></see>
     /// </summary>
-    let extendNetwork =
-        Namespaced_IRI.parse _namespace_name "extendNetwork" |> NamespacedName
-
+    let extendNetwork = _prefix "extendNetwork"
     /// <summary>
     ///   <see href="http://reegle.info/schema#funded"></see>
     /// </summary>
-    let funded = Namespaced_IRI.parse _namespace_name "funded" |> NamespacedName
-
+    let funded = _prefix "funded"
     /// <summary>
     ///   <see href="http://reegle.info/schema#governmentAgencies"></see>
     /// </summary>
-    let governmentAgencies =
-        Namespaced_IRI.parse _namespace_name "governmentAgencies" |> NamespacedName
-
+    let governmentAgencies = _prefix "governmentAgencies"
     /// <summary>
     ///   <see href="http://reegle.info/schema#governmentRole"></see>
     /// </summary>
-    let governmentRole =
-        Namespaced_IRI.parse _namespace_name "governmentRole" |> NamespacedName
-
+    let governmentRole = _prefix "governmentRole"
     /// <summary>
     /// the declared mission of the organisation.
     /// <see href="http://reegle.info/schema#mission"></see></summary>
-    let mission = Namespaced_IRI.parse _namespace_name "mission" |> NamespacedName
-
+    let mission = _prefix "mission"
     /// <summary>
     ///   <see href="http://reegle.info/schema#organisationType"></see>
     /// </summary>
-    let organisationType =
-        Namespaced_IRI.parse _namespace_name "organisationType" |> NamespacedName
-
+    let organisationType = _prefix "organisationType"
     /// <summary>
     ///   <see href="http://reegle.info/schema#ownership"></see>
     /// </summary>
-    let ownership = Namespaced_IRI.parse _namespace_name "ownership" |> NamespacedName
+    let ownership = _prefix "ownership"
     /// <summary>
     ///   <see href="http://reegle.info/schema#profile"></see>
     /// </summary>
-    let profile = Namespaced_IRI.parse _namespace_name "profile" |> NamespacedName
-
+    let profile = _prefix "profile"
     /// <summary>
     ///   <see href="http://reegle.info/schema#projectDescription"></see>
     /// </summary>
-    let projectDescription =
-        Namespaced_IRI.parse _namespace_name "projectDescription" |> NamespacedName
-
+    let projectDescription = _prefix "projectDescription"
     /// <summary>
     ///   <see href="http://reegle.info/schema#projectExpertise"></see>
     /// </summary>
-    let projectExpertise =
-        Namespaced_IRI.parse _namespace_name "projectExpertise" |> NamespacedName
-
+    let projectExpertise = _prefix "projectExpertise"
     /// <summary>
     ///   <see href="http://reegle.info/schema#projectTitle"></see>
     /// </summary>
-    let projectTitle =
-        Namespaced_IRI.parse _namespace_name "projectTitle" |> NamespacedName
-
+    let projectTitle = _prefix "projectTitle"
     /// <summary>
     ///   <see href="http://reegle.info/schema#referenceNumber"></see>
     /// </summary>
-    let referenceNumber =
-        Namespaced_IRI.parse _namespace_name "referenceNumber" |> NamespacedName
-
+    let referenceNumber = _prefix "referenceNumber"
     /// <summary>
     ///   <see href="http://reegle.info/schema#references"></see>
     /// </summary>
-    let references = Namespaced_IRI.parse _namespace_name "references" |> NamespacedName
-
+    let references = _prefix "references"
     /// <summary>
     ///   <see href="http://reegle.info/schema#regulatoryBarriers"></see>
     /// </summary>
-    let regulatoryBarriers =
-        Namespaced_IRI.parse _namespace_name "regulatoryBarriers" |> NamespacedName
-
+    let regulatoryBarriers = _prefix "regulatoryBarriers"
     /// <summary>
     ///   <see href="http://reegle.info/schema#regulatoryFramework"></see>
     /// </summary>
-    let regulatoryFramework =
-        Namespaced_IRI.parse _namespace_name "regulatoryFramework" |> NamespacedName
-
+    let regulatoryFramework = _prefix "regulatoryFramework"
     /// <summary>
     ///   <see href="http://reegle.info/schema#regulatoryRoles"></see>
     /// </summary>
-    let regulatoryRoles =
-        Namespaced_IRI.parse _namespace_name "regulatoryRoles" |> NamespacedName
-
+    let regulatoryRoles = _prefix "regulatoryRoles"
     /// <summary>
     ///   <see href="http://reegle.info/schema#reliance"></see>
     /// </summary>
-    let reliance = Namespaced_IRI.parse _namespace_name "reliance" |> NamespacedName
-
+    let reliance = _prefix "reliance"
     /// <summary>
     ///   <see href="http://reegle.info/schema#renewableEnergy"></see>
     /// </summary>
-    let renewableEnergy =
-        Namespaced_IRI.parse _namespace_name "renewableEnergy" |> NamespacedName
-
+    let renewableEnergy = _prefix "renewableEnergy"
     /// <summary>
     /// The sector an organisation is active in.
     /// <see href="http://reegle.info/schema#sector"></see></summary>
-    let sector = Namespaced_IRI.parse _namespace_name "sector" |> NamespacedName
+    let sector = _prefix "sector"
     /// <summary>
     ///   <see href="http://reegle.info/schema#sources"></see>
     /// </summary>
-    let sources = Namespaced_IRI.parse _namespace_name "sources" |> NamespacedName
-
+    let sources = _prefix "sources"
     /// <summary>
     ///   <see href="http://reegle.info/schema#specialisation"></see>
     /// </summary>
-    let specialisation =
-        Namespaced_IRI.parse _namespace_name "specialisation" |> NamespacedName
-
+    let specialisation = _prefix "specialisation"
     /// <summary>
     ///   <see href="http://reegle.info/schema#targetAudience"></see>
     /// </summary>
-    let targetAudience =
-        Namespaced_IRI.parse _namespace_name "targetAudience" |> NamespacedName
-
+    let targetAudience = _prefix "targetAudience"
     /// <summary>
     /// the technologies that are related to a project
     /// <see href="http://reegle.info/schema#technology"></see></summary>
-    let technology = Namespaced_IRI.parse _namespace_name "technology" |> NamespacedName
+    let technology = _prefix "technology"

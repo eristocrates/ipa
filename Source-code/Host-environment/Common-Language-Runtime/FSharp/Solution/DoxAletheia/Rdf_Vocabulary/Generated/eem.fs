@@ -1,372 +1,267 @@
 namespace http.purl.org.eem.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module eem =
     let _namespace_name = "http://purl.org/eem#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/eem#EPCISEvent"></see>
     /// </summary>
-    let EPCISEvent = Namespaced_IRI.parse _namespace_name "EPCISEvent" |> NamespacedName
-
+    let EPCISEvent = _prefix "EPCISEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasBusinessLocation"></see>
     /// </summary>
-    let hasBusinessLocation =
-        Namespaced_IRI.parse _namespace_name "hasBusinessLocation" |> NamespacedName
-
+    let hasBusinessLocation = _prefix "hasBusinessLocation"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasReadPointLocation"></see>
     /// </summary>
-    let hasReadPointLocation =
-        Namespaced_IRI.parse _namespace_name "hasReadPointLocation" |> NamespacedName
-
+    let hasReadPointLocation = _prefix "hasReadPointLocation"
     /// <summary>
     /// An ObjectEvent captures information about an event pertaining to one or more
     /// physical objects identified by EPCs.
     /// <see href="http://purl.org/eem#ObjectEvent"></see></summary>
-    let ObjectEvent =
-        Namespaced_IRI.parse _namespace_name "ObjectEvent" |> NamespacedName
-
+    let ObjectEvent = _prefix "ObjectEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#action"></see>
     /// </summary>
-    let action = Namespaced_IRI.parse _namespace_name "action" |> NamespacedName
+    let action = _prefix "action"
     /// <summary>
     /// The entity in question has been created or added to
     /// <see href="http://purl.org/eem#ADD"></see></summary>
-    let ADD = Namespaced_IRI.parse _namespace_name "ADD" |> NamespacedName
-
+    let ADD = _prefix "ADD"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithEPCList"></see>
     /// </summary>
-    let associatedWithEPCList =
-        Namespaced_IRI.parse _namespace_name "associatedWithEPCList" |> NamespacedName
-
+    let associatedWithEPCList = _prefix "associatedWithEPCList"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasBusinessStepType"></see>
     /// </summary>
-    let hasBusinessStepType =
-        Namespaced_IRI.parse _namespace_name "hasBusinessStepType" |> NamespacedName
-
+    let hasBusinessStepType = _prefix "hasBusinessStepType"
     /// <summary>
     ///   <see href="http://purl.org/eem#commissioned"></see>
     /// </summary>
-    let commissioned =
-        Namespaced_IRI.parse _namespace_name "commissioned" |> NamespacedName
-
+    let commissioned = _prefix "commissioned"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithItem"></see>
     /// </summary>
-    let associatedWithItem =
-        Namespaced_IRI.parse _namespace_name "associatedWithItem" |> NamespacedName
-
+    let associatedWithItem = _prefix "associatedWithItem"
     /// <summary>
     /// represents an event in which one or more entities
     /// denoted by EPCs become associated
     /// or disassociated with one or more
     /// identified business transactions.
     /// <see href="http://purl.org/eem#TransactionEvent"></see></summary>
-    let TransactionEvent =
-        Namespaced_IRI.parse _namespace_name "TransactionEvent" |> NamespacedName
-
+    let TransactionEvent = _prefix "TransactionEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithTransactionList"></see>
     /// </summary>
-    let associatedWithTransactionList =
-        Namespaced_IRI.parse _namespace_name "associatedWithTransactionList" |> NamespacedName
-
+    let associatedWithTransactionList = _prefix "associatedWithTransactionList"
     /// <summary>
     ///   <see href="http://purl.org/eem#disassociatedWithAggregationID"></see>
     /// </summary>
-    let disassociatedWithAggregationID =
-        Namespaced_IRI.parse _namespace_name "disassociatedWithAggregationID" |> NamespacedName
-
+    let disassociatedWithAggregationID = _prefix "disassociatedWithAggregationID"
     /// <summary>
     /// The entity in question has been removed from or destroyed
     /// altogether.
     /// <see href="http://purl.org/eem#DELETE"></see></summary>
-    let DELETE = Namespaced_IRI.parse _namespace_name "DELETE" |> NamespacedName
-
+    let DELETE = _prefix "DELETE"
     /// <summary>
     /// The EPC(s) named in the event have been decommissioned as part of this event; that is, the EPC(s) do not exist subsequent to the event and should not be observed again
     /// <see href="http://purl.org/eem#decommissioned"></see></summary>
-    let decommissioned =
-        Namespaced_IRI.parse _namespace_name "decommissioned" |> NamespacedName
-
+    let decommissioned = _prefix "decommissioned"
     /// <summary>
     /// Represents an event that happened to one or more entities denoted by EPCs that are phys
     /// ically aggregated together (physically constrained to be in the same place at the same time, as when cases are aggregated to a pallet).
     /// <see href="http://purl.org/eem#AggregationEvent"></see></summary>
-    let AggregationEvent =
-        Namespaced_IRI.parse _namespace_name "AggregationEvent" |> NamespacedName
-
+    let AggregationEvent = _prefix "AggregationEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#aggregationID"></see>
     /// </summary>
-    let aggregationID =
-        Namespaced_IRI.parse _namespace_name "aggregationID" |> NamespacedName
-
+    let aggregationID = _prefix "aggregationID"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedEPCAndTransaction"></see>
     /// </summary>
-    let associatedEPCAndTransaction =
-        Namespaced_IRI.parse _namespace_name "associatedEPCAndTransaction" |> NamespacedName
-
+    let associatedEPCAndTransaction = _prefix "associatedEPCAndTransaction"
     /// <summary>
     /// represents an event concerned with a specific
     /// quantity of entities sharing a common EPC class
     /// <see href="http://purl.org/eem#QuantityEvent"></see></summary>
-    let QuantityEvent =
-        Namespaced_IRI.parse _namespace_name "QuantityEvent" |> NamespacedName
-
+    let QuantityEvent = _prefix "QuantityEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithAggregationID"></see>
     /// </summary>
-    let associatedWithAggregationID =
-        Namespaced_IRI.parse _namespace_name "associatedWithAggregationID" |> NamespacedName
-
+    let associatedWithAggregationID = _prefix "associatedWithAggregationID"
     /// <summary>
     /// The Action type says how an event relates to the lifecycle of the entity being described.
     /// <see href="http://purl.org/eem#Action"></see></summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://purl.org/eem#SetofEPCs"></see>
     /// </summary>
-    let SetofEPCs = Namespaced_IRI.parse _namespace_name "SetofEPCs" |> NamespacedName
-
+    let SetofEPCs = _prefix "SetofEPCs"
     /// <summary>
     /// A concept represent the aggregation identifier of a packagaing unit
     /// <see href="http://purl.org/eem#AggregationID"></see></summary>
-    let AggregationID =
-        Namespaced_IRI.parse _namespace_name "AggregationID" |> NamespacedName
-
+    let AggregationID = _prefix "AggregationID"
     /// <summary>
     /// A class for encapsulating the EPC for a physical thing through the datatype property
     /// hasEPCValue.
     /// <see href="http://purl.org/eem#EPC"></see></summary>
-    let EPC = Namespaced_IRI.parse _namespace_name "EPC" |> NamespacedName
-
+    let EPC = _prefix "EPC"
     /// <summary>
     ///   <see href="http://purl.org/eem#BusinessLocation"></see>
     /// </summary>
-    let BusinessLocation =
-        Namespaced_IRI.parse _namespace_name "BusinessLocation" |> NamespacedName
-
+    let BusinessLocation = _prefix "BusinessLocation"
     /// <summary>
     /// Added in version 1.1
     /// <see href="http://purl.org/eem#DestinationLocation"></see></summary>
-    let DestinationLocation =
-        Namespaced_IRI.parse _namespace_name "DestinationLocation" |> NamespacedName
-
+    let DestinationLocation = _prefix "DestinationLocation"
     /// <summary>
     /// A class-level identifier for the class to which the specified quantity of objects belongs.
     /// <see href="http://purl.org/eem#EPCClass"></see></summary>
-    let EPCClass = Namespaced_IRI.parse _namespace_name "EPCClass" |> NamespacedName
-
+    let EPCClass = _prefix "EPCClass"
     /// <summary>
     ///   <see href="http://purl.org/eem#eventOccurredAt"></see>
     /// </summary>
-    let eventOccurredAt =
-        Namespaced_IRI.parse _namespace_name "eventOccurredAt" |> NamespacedName
-
+    let eventOccurredAt = _prefix "eventOccurredAt"
     /// <summary>
     ///   <see href="http://purl.org/eem#eventTimeZoneOffset"></see>
     /// </summary>
-    let eventTimeZoneOffset =
-        Namespaced_IRI.parse _namespace_name "eventTimeZoneOffset" |> NamespacedName
-
+    let eventTimeZoneOffset = _prefix "eventTimeZoneOffset"
     /// <summary>
     ///   <see href="http://purl.org/eem#eventRecordedAt"></see>
     /// </summary>
-    let eventRecordedAt =
-        Namespaced_IRI.parse _namespace_name "eventRecordedAt" |> NamespacedName
-
+    let eventRecordedAt = _prefix "eventRecordedAt"
     /// <summary>
     ///   <see href="http://purl.org/eem#EPCReader"></see>
     /// </summary>
-    let EPCReader = Namespaced_IRI.parse _namespace_name "EPCReader" |> NamespacedName
-
+    let EPCReader = _prefix "EPCReader"
     /// <summary>
     ///   <see href="http://purl.org/eem#logicalReaderID"></see>
     /// </summary>
-    let logicalReaderID =
-        Namespaced_IRI.parse _namespace_name "logicalReaderID" |> NamespacedName
-
+    let logicalReaderID = _prefix "logicalReaderID"
     /// <summary>
     ///   <see href="http://purl.org/eem#physicalReaderID"></see>
     /// </summary>
-    let physicalReaderID =
-        Namespaced_IRI.parse _namespace_name "physicalReaderID" |> NamespacedName
-
+    let physicalReaderID = _prefix "physicalReaderID"
     /// <summary>
     /// Added in version 1.1
     /// <see href="http://purl.org/eem#InputQuantityList"></see></summary>
-    let InputQuantityList =
-        Namespaced_IRI.parse _namespace_name "InputQuantityList" |> NamespacedName
-
+    let InputQuantityList = _prefix "InputQuantityList"
     /// <summary>
     /// Added in version 1.1
     /// <see href="http://purl.org/eem#QuantityElement"></see></summary>
-    let QuantityElement =
-        Namespaced_IRI.parse _namespace_name "QuantityElement" |> NamespacedName
-
+    let QuantityElement = _prefix "QuantityElement"
     /// <summary>
     /// The entity in question has not been changed: it has neither been created, added to, destroyed, or removed from.
     /// <see href="http://purl.org/eem#OBSERVE"></see></summary>
-    let OBSERVE = Namespaced_IRI.parse _namespace_name "OBSERVE" |> NamespacedName
-
+    let OBSERVE = _prefix "OBSERVE"
     /// <summary>
     /// Added in version 1.1
     /// <see href="http://purl.org/eem#OutputQuantityList"></see></summary>
-    let OutputQuantityList =
-        Namespaced_IRI.parse _namespace_name "OutputQuantityList" |> NamespacedName
-
+    let OutputQuantityList = _prefix "OutputQuantityList"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasEPCClass"></see>
     /// </summary>
-    let hasEPCClass =
-        Namespaced_IRI.parse _namespace_name "hasEPCClass" |> NamespacedName
-
+    let hasEPCClass = _prefix "hasEPCClass"
     /// <summary>
     ///   <see href="http://purl.org/eem#quantity"></see>
     /// </summary>
-    let quantity = Namespaced_IRI.parse _namespace_name "quantity" |> NamespacedName
-
+    let quantity = _prefix "quantity"
     /// <summary>
     ///   <see href="http://purl.org/eem#ReadPointLocation"></see>
     /// </summary>
-    let ReadPointLocation =
-        Namespaced_IRI.parse _namespace_name "ReadPointLocation" |> NamespacedName
-
+    let ReadPointLocation = _prefix "ReadPointLocation"
     /// <summary>
     ///   <see href="http://purl.org/eem#SetOfEvents"></see>
     /// </summary>
-    let SetOfEvents =
-        Namespaced_IRI.parse _namespace_name "SetOfEvents" |> NamespacedName
-
+    let SetOfEvents = _prefix "SetOfEvents"
     /// <summary>
     ///   <see href="http://purl.org/eem#SetOfTransactions"></see>
     /// </summary>
-    let SetOfTransactions =
-        Namespaced_IRI.parse _namespace_name "SetOfTransactions" |> NamespacedName
-
+    let SetOfTransactions = _prefix "SetOfTransactions"
     /// <summary>
     ///   <see href="http://purl.org/eem#Transaction"></see>
     /// </summary>
-    let Transaction =
-        Namespaced_IRI.parse _namespace_name "Transaction" |> NamespacedName
-
+    let Transaction = _prefix "Transaction"
     /// <summary>
     /// Added in version 1.1
     /// <see href="http://purl.org/eem#SourceLocation"></see></summary>
-    let SourceLocation =
-        Namespaced_IRI.parse _namespace_name "SourceLocation" |> NamespacedName
-
+    let SourceLocation = _prefix "SourceLocation"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasTransactionType"></see>
     /// </summary>
-    let hasTransactionType =
-        Namespaced_IRI.parse _namespace_name "hasTransactionType" |> NamespacedName
-
+    let hasTransactionType = _prefix "hasTransactionType"
     /// <summary>
     ///   <see href="http://purl.org/eem#transactionID"></see>
     /// </summary>
-    let transactionID =
-        Namespaced_IRI.parse _namespace_name "transactionID" |> NamespacedName
-
+    let transactionID = _prefix "transactionID"
     /// <summary>
     /// Added in version 1.1. Represents an event in which input
     /// objects are fully or partially consumed and output objects are produced, such that any of the input objects may have contributed to all of the output objects.
     /// <see href="http://purl.org/eem#TransformationEvent"></see></summary>
-    let TransformationEvent =
-        Namespaced_IRI.parse _namespace_name "TransformationEvent" |> NamespacedName
-
+    let TransformationEvent = _prefix "TransformationEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithInputEPCList"></see>
     /// </summary>
-    let associatedWithInputEPCList =
-        Namespaced_IRI.parse _namespace_name "associatedWithInputEPCList" |> NamespacedName
-
+    let associatedWithInputEPCList = _prefix "associatedWithInputEPCList"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasInputQuantityList"></see>
     /// </summary>
-    let hasInputQuantityList =
-        Namespaced_IRI.parse _namespace_name "hasInputQuantityList" |> NamespacedName
-
+    let hasInputQuantityList = _prefix "hasInputQuantityList"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithOutputEPCList"></see>
     /// </summary>
-    let associatedWithOutputEPCList =
-        Namespaced_IRI.parse _namespace_name "associatedWithOutputEPCList" |> NamespacedName
-
+    let associatedWithOutputEPCList = _prefix "associatedWithOutputEPCList"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasOutputQuantityList"></see>
     /// </summary>
-    let hasOutputQuantityList =
-        Namespaced_IRI.parse _namespace_name "hasOutputQuantityList" |> NamespacedName
-
+    let hasOutputQuantityList = _prefix "hasOutputQuantityList"
     /// <summary>
     ///   <see href="http://purl.org/eem#associatedWithTransformationEvent"></see>
     /// </summary>
-    let associatedWithTransformationEvent =
-        Namespaced_IRI.parse _namespace_name "associatedWithTransformationEvent" |> NamespacedName
-
+    let associatedWithTransformationEvent = _prefix "associatedWithTransformationEvent"
     /// <summary>
     /// A product is associated with an EPC
     /// <see href="http://purl.org/eem#associatedWithEPC"></see></summary>
-    let associatedWithEPC =
-        Namespaced_IRI.parse _namespace_name "associatedWithEPC" |> NamespacedName
-
+    let associatedWithEPC = _prefix "associatedWithEPC"
     /// <summary>
     ///   <see href="http://purl.org/eem#directlyFollowsEvent"></see>
     /// </summary>
-    let directlyFollowsEvent =
-        Namespaced_IRI.parse _namespace_name "directlyFollowsEvent" |> NamespacedName
-
+    let directlyFollowsEvent = _prefix "directlyFollowsEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#directlyPrecedesEvent"></see>
     /// </summary>
-    let directlyPrecedesEvent =
-        Namespaced_IRI.parse _namespace_name "directlyPrecedesEvent" |> NamespacedName
-
+    let directlyPrecedesEvent = _prefix "directlyPrecedesEvent"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasChildAddress"></see>
     /// </summary>
-    let hasChildAddress =
-        Namespaced_IRI.parse _namespace_name "hasChildAddress" |> NamespacedName
-
+    let hasChildAddress = _prefix "hasChildAddress"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasClassLevelMasterData"></see>
     /// </summary>
-    let hasClassLevelMasterData =
-        Namespaced_IRI.parse _namespace_name "hasClassLevelMasterData" |> NamespacedName
-
+    let hasClassLevelMasterData = _prefix "hasClassLevelMasterData"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasDispositionType"></see>
     /// </summary>
-    let hasDispositionType =
-        Namespaced_IRI.parse _namespace_name "hasDispositionType" |> NamespacedName
-
+    let hasDispositionType = _prefix "hasDispositionType"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasEPCID"></see>
     /// </summary>
-    let hasEPCID = Namespaced_IRI.parse _namespace_name "hasEPCID" |> NamespacedName
-
+    let hasEPCID = _prefix "hasEPCID"
     /// <summary>
     ///   <see href="http://purl.org/eem#hasTransactionReference"></see>
     /// </summary>
-    let hasTransactionReference =
-        Namespaced_IRI.parse _namespace_name "hasTransactionReference" |> NamespacedName
-
+    let hasTransactionReference = _prefix "hasTransactionReference"
     /// <summary>
     ///   <see href="http://purl.org/eem#locationType"></see>
     /// </summary>
-    let locationType =
-        Namespaced_IRI.parse _namespace_name "locationType" |> NamespacedName
-
+    let locationType = _prefix "locationType"
     /// <summary>
     ///   <see href="http://purl.org/eem#recordedByReader"></see>
     /// </summary>
-    let recordedByReader =
-        Namespaced_IRI.parse _namespace_name "recordedByReader" |> NamespacedName
+    let recordedByReader = _prefix "recordedByReader"

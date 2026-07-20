@@ -1,338 +1,274 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.agent.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module agents =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/agent#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Ability"></see>
     /// </summary>
-    let Ability = Namespaced_IRI.parse _namespace_name "Ability" |> NamespacedName
+    let Ability = _prefix "Ability"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Ancestry"></see>
     /// </summary>
-    let Ancestry = Namespaced_IRI.parse _namespace_name "Ancestry" |> NamespacedName
+    let Ancestry = _prefix "Ancestry"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Group"></see>
     /// </summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Ascendant"></see>
     /// </summary>
-    let Ascendant = Namespaced_IRI.parse _namespace_name "Ascendant" |> NamespacedName
-
+    let Ascendant = _prefix "Ascendant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasDescendant"></see>
     /// </summary>
-    let hasDescendant =
-        Namespaced_IRI.parse _namespace_name "hasDescendant" |> NamespacedName
-
+    let hasDescendant = _prefix "hasDescendant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Authenticator"></see>
     /// </summary>
-    let Authenticator =
-        Namespaced_IRI.parse _namespace_name "Authenticator" |> NamespacedName
-
+    let Authenticator = _prefix "Authenticator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Role"></see>
     /// </summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
-
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#rolePlayedIn"></see>
     /// </summary>
-    let rolePlayedIn =
-        Namespaced_IRI.parse _namespace_name "rolePlayedIn" |> NamespacedName
-
+    let rolePlayedIn = _prefix "rolePlayedIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Child"></see>
     /// </summary>
-    let Child = Namespaced_IRI.parse _namespace_name "Child" |> NamespacedName
+    let Child = _prefix "Child"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Descendant"></see>
     /// </summary>
-    let Descendant = Namespaced_IRI.parse _namespace_name "Descendant" |> NamespacedName
+    let Descendant = _prefix "Descendant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasParent"></see>
     /// </summary>
-    let hasParent = Namespaced_IRI.parse _namespace_name "hasParent" |> NamespacedName
+    let hasParent = _prefix "hasParent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Community"></see>
     /// </summary>
-    let Community = Namespaced_IRI.parse _namespace_name "Community" |> NamespacedName
+    let Community = _prefix "Community"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Completor"></see>
     /// </summary>
-    let Completor = Namespaced_IRI.parse _namespace_name "Completor" |> NamespacedName
+    let Completor = _prefix "Completor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Creator"></see>
     /// </summary>
-    let Creator = Namespaced_IRI.parse _namespace_name "Creator" |> NamespacedName
+    let Creator = _prefix "Creator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Deprecator"></see>
     /// </summary>
-    let Deprecator = Namespaced_IRI.parse _namespace_name "Deprecator" |> NamespacedName
-
+    let Deprecator = _prefix "Deprecator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasAscendant"></see>
     /// </summary>
-    let hasAscendant =
-        Namespaced_IRI.parse _namespace_name "hasAscendant" |> NamespacedName
-
+    let hasAscendant = _prefix "hasAscendant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Donor"></see>
     /// </summary>
-    let Donor = Namespaced_IRI.parse _namespace_name "Donor" |> NamespacedName
-
+    let Donor = _prefix "Donor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#DrugSubstance"></see>
     /// </summary>
-    let DrugSubstance =
-        Namespaced_IRI.parse _namespace_name "DrugSubstance" |> NamespacedName
-
+    let DrugSubstance = _prefix "DrugSubstance"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Evaluator"></see>
     /// </summary>
-    let Evaluator = Namespaced_IRI.parse _namespace_name "Evaluator" |> NamespacedName
+    let Evaluator = _prefix "Evaluator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Examinator"></see>
     /// </summary>
-    let Examinator = Namespaced_IRI.parse _namespace_name "Examinator" |> NamespacedName
-
+    let Examinator = _prefix "Examinator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#rolePlayedBy"></see>
     /// </summary>
-    let rolePlayedBy =
-        Namespaced_IRI.parse _namespace_name "rolePlayedBy" |> NamespacedName
-
+    let rolePlayedBy = _prefix "rolePlayedBy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#actsIn"></see>
     /// </summary>
-    let actsIn = Namespaced_IRI.parse _namespace_name "actsIn" |> NamespacedName
+    let actsIn = _prefix "actsIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#GroupRole"></see>
     /// </summary>
-    let GroupRole = Namespaced_IRI.parse _namespace_name "GroupRole" |> NamespacedName
-
+    let GroupRole = _prefix "GroupRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#LegalAuthenticator"></see>
     /// </summary>
-    let LegalAuthenticator =
-        Namespaced_IRI.parse _namespace_name "LegalAuthenticator" |> NamespacedName
-
+    let LegalAuthenticator = _prefix "LegalAuthenticator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Machine"></see>
     /// </summary>
-    let Machine = Namespaced_IRI.parse _namespace_name "Machine" |> NamespacedName
-
+    let Machine = _prefix "Machine"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#MachineRole"></see>
     /// </summary>
-    let MachineRole =
-        Namespaced_IRI.parse _namespace_name "MachineRole" |> NamespacedName
-
+    let MachineRole = _prefix "MachineRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#MaritalStatus"></see>
     /// </summary>
-    let MaritalStatus =
-        Namespaced_IRI.parse _namespace_name "MaritalStatus" |> NamespacedName
-
+    let MaritalStatus = _prefix "MaritalStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Messenger"></see>
     /// </summary>
-    let Messenger = Namespaced_IRI.parse _namespace_name "Messenger" |> NamespacedName
+    let Messenger = _prefix "Messenger"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Sender"></see>
     /// </summary>
-    let Sender = Namespaced_IRI.parse _namespace_name "Sender" |> NamespacedName
+    let Sender = _prefix "Sender"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Modifier"></see>
     /// </summary>
-    let Modifier = Namespaced_IRI.parse _namespace_name "Modifier" |> NamespacedName
+    let Modifier = _prefix "Modifier"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Monitor"></see>
     /// </summary>
-    let Monitor = Namespaced_IRI.parse _namespace_name "Monitor" |> NamespacedName
+    let Monitor = _prefix "Monitor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Offspring"></see>
     /// </summary>
-    let Offspring = Namespaced_IRI.parse _namespace_name "Offspring" |> NamespacedName
-
+    let Offspring = _prefix "Offspring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#OrganizationRole"></see>
     /// </summary>
-    let OrganizationRole =
-        Namespaced_IRI.parse _namespace_name "OrganizationRole" |> NamespacedName
-
+    let OrganizationRole = _prefix "OrganizationRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Parent"></see>
     /// </summary>
-    let Parent = Namespaced_IRI.parse _namespace_name "Parent" |> NamespacedName
+    let Parent = _prefix "Parent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasChild"></see>
     /// </summary>
-    let hasChild = Namespaced_IRI.parse _namespace_name "hasChild" |> NamespacedName
-
+    let hasChild = _prefix "hasChild"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#PurposiveAgent"></see>
     /// </summary>
-    let PurposiveAgent =
-        Namespaced_IRI.parse _namespace_name "PurposiveAgent" |> NamespacedName
-
+    let PurposiveAgent = _prefix "PurposiveAgent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Recipient"></see>
     /// </summary>
-    let Recipient = Namespaced_IRI.parse _namespace_name "Recipient" |> NamespacedName
+    let Recipient = _prefix "Recipient"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Sponsor"></see>
     /// </summary>
-    let Sponsor = Namespaced_IRI.parse _namespace_name "Sponsor" |> NamespacedName
+    let Sponsor = _prefix "Sponsor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Submittor"></see>
     /// </summary>
-    let Submittor = Namespaced_IRI.parse _namespace_name "Submittor" |> NamespacedName
+    let Submittor = _prefix "Submittor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#User"></see>
     /// </summary>
-    let User = Namespaced_IRI.parse _namespace_name "User" |> NamespacedName
-
+    let User = _prefix "User"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#UserCredential"></see>
     /// </summary>
-    let UserCredential =
-        Namespaced_IRI.parse _namespace_name "UserCredential" |> NamespacedName
-
+    let UserCredential = _prefix "UserCredential"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#Validator"></see>
     /// </summary>
-    let Validator = Namespaced_IRI.parse _namespace_name "Validator" |> NamespacedName
-
+    let Validator = _prefix "Validator"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#WeighingDevice"></see>
     /// </summary>
-    let WeighingDevice =
-        Namespaced_IRI.parse _namespace_name "WeighingDevice" |> NamespacedName
-
+    let WeighingDevice = _prefix "WeighingDevice"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#abilityOf"></see>
     /// </summary>
-    let abilityOf = Namespaced_IRI.parse _namespace_name "abilityOf" |> NamespacedName
+    let abilityOf = _prefix "abilityOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasAbility"></see>
     /// </summary>
-    let hasAbility = Namespaced_IRI.parse _namespace_name "hasAbility" |> NamespacedName
+    let hasAbility = _prefix "hasAbility"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#actsAfter"></see>
     /// </summary>
-    let actsAfter = Namespaced_IRI.parse _namespace_name "actsAfter" |> NamespacedName
+    let actsAfter = _prefix "actsAfter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasAgent"></see>
     /// </summary>
-    let hasAgent = Namespaced_IRI.parse _namespace_name "hasAgent" |> NamespacedName
+    let hasAgent = _prefix "hasAgent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#actsBefore"></see>
     /// </summary>
-    let actsBefore = Namespaced_IRI.parse _namespace_name "actsBefore" |> NamespacedName
-
+    let actsBefore = _prefix "actsBefore"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#authenticatesWith"></see>
     /// </summary>
-    let authenticatesWith =
-        Namespaced_IRI.parse _namespace_name "authenticatesWith" |> NamespacedName
-
+    let authenticatesWith = _prefix "authenticatesWith"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#playsRole"></see>
     /// </summary>
-    let playsRole = Namespaced_IRI.parse _namespace_name "playsRole" |> NamespacedName
-
+    let playsRole = _prefix "playsRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasAncestry"></see>
     /// </summary>
-    let hasAncestry =
-        Namespaced_IRI.parse _namespace_name "hasAncestry" |> NamespacedName
-
+    let hasAncestry = _prefix "hasAncestry"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasDonor"></see>
     /// </summary>
-    let hasDonor = Namespaced_IRI.parse _namespace_name "hasDonor" |> NamespacedName
-
+    let hasDonor = _prefix "hasDonor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasMaritalStatus"></see>
     /// </summary>
-    let hasMaritalStatus =
-        Namespaced_IRI.parse _namespace_name "hasMaritalStatus" |> NamespacedName
-
+    let hasMaritalStatus = _prefix "hasMaritalStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasOffspring"></see>
     /// </summary>
-    let hasOffspring =
-        Namespaced_IRI.parse _namespace_name "hasOffspring" |> NamespacedName
-
+    let hasOffspring = _prefix "hasOffspring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasPassword"></see>
     /// </summary>
-    let hasPassword =
-        Namespaced_IRI.parse _namespace_name "hasPassword" |> NamespacedName
-
+    let hasPassword = _prefix "hasPassword"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasPlayedRole"></see>
     /// </summary>
-    let hasPlayedRole =
-        Namespaced_IRI.parse _namespace_name "hasPlayedRole" |> NamespacedName
-
+    let hasPlayedRole = _prefix "hasPlayedRole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasRecipient"></see>
     /// </summary>
-    let hasRecipient =
-        Namespaced_IRI.parse _namespace_name "hasRecipient" |> NamespacedName
-
+    let hasRecipient = _prefix "hasRecipient"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasResidence"></see>
     /// </summary>
-    let hasResidence =
-        Namespaced_IRI.parse _namespace_name "hasResidence" |> NamespacedName
-
+    let hasResidence = _prefix "hasResidence"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasSpouse"></see>
     /// </summary>
-    let hasSpouse = Namespaced_IRI.parse _namespace_name "hasSpouse" |> NamespacedName
-
+    let hasSpouse = _prefix "hasSpouse"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasUserCredential"></see>
     /// </summary>
-    let hasUserCredential =
-        Namespaced_IRI.parse _namespace_name "hasUserCredential" |> NamespacedName
-
+    let hasUserCredential = _prefix "hasUserCredential"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#hasUsername"></see>
     /// </summary>
-    let hasUsername =
-        Namespaced_IRI.parse _namespace_name "hasUsername" |> NamespacedName
-
+    let hasUsername = _prefix "hasUsername"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#interactsWith"></see>
     /// </summary>
-    let interactsWith =
-        Namespaced_IRI.parse _namespace_name "interactsWith" |> NamespacedName
-
+    let interactsWith = _prefix "interactsWith"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#isAuthenticationObjectFor"></see>
     /// </summary>
-    let isAuthenticationObjectFor =
-        Namespaced_IRI.parse _namespace_name "isAuthenticationObjectFor" |> NamespacedName
-
+    let isAuthenticationObjectFor = _prefix "isAuthenticationObjectFor"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#memberOf"></see>
     /// </summary>
-    let memberOf = Namespaced_IRI.parse _namespace_name "memberOf" |> NamespacedName
-
+    let memberOf = _prefix "memberOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#recipientIn"></see>
     /// </summary>
-    let recipientIn =
-        Namespaced_IRI.parse _namespace_name "recipientIn" |> NamespacedName
-
+    let recipientIn = _prefix "recipientIn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/agent#weighs"></see>
     /// </summary>
-    let weighs = Namespaced_IRI.parse _namespace_name "weighs" |> NamespacedName
+    let weighs = _prefix "weighs"

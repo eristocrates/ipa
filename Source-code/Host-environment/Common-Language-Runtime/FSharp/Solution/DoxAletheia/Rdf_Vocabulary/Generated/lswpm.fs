@@ -1,617 +1,474 @@
 namespace http.ontology.cybershare.utep.edu.ELSEWeb.elseweb_lifemapper_parameters.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module lswpm =
     let _namespace_name =
         "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ANN"></see>
     /// </summary>
-    let ANN = Namespaced_IRI.parse _namespace_name "ANN" |> NamespacedName
+    let ANN = _prefix "ANN"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ATT_MAXENT"></see>
     /// </summary>
-    let ATT_MAXENT = Namespaced_IRI.parse _namespace_name "ATT_MAXENT" |> NamespacedName
+    let ATT_MAXENT = _prefix "ATT_MAXENT"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Artificial-Neural-Network_parameters"></see>
     /// </summary>
     let ``Artificial-Neural-Network_parameters`` =
-        Namespaced_IRI.parse _namespace_name "Artificial-Neural-Network_parameters" |> NamespacedName
+        _prefix "Artificial-Neural-Network_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Choice"></see>
     /// </summary>
-    let Choice = Namespaced_IRI.parse _namespace_name "Choice" |> NamespacedName
+    let Choice = _prefix "Choice"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Epoch"></see>
     /// </summary>
-    let Epoch = Namespaced_IRI.parse _namespace_name "Epoch" |> NamespacedName
-
+    let Epoch = _prefix "Epoch"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#HiddenLayerNeurons"></see>
     /// </summary>
-    let HiddenLayerNeurons =
-        Namespaced_IRI.parse _namespace_name "HiddenLayerNeurons" |> NamespacedName
-
+    let HiddenLayerNeurons = _prefix "HiddenLayerNeurons"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#LearningRate"></see>
     /// </summary>
-    let LearningRate =
-        Namespaced_IRI.parse _namespace_name "LearningRate" |> NamespacedName
-
+    let LearningRate = _prefix "LearningRate"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MinimumError"></see>
     /// </summary>
-    let MinimumError =
-        Namespaced_IRI.parse _namespace_name "MinimumError" |> NamespacedName
-
+    let MinimumError = _prefix "MinimumError"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Momentum"></see>
     /// </summary>
-    let Momentum = Namespaced_IRI.parse _namespace_name "Momentum" |> NamespacedName
-
+    let Momentum = _prefix "Momentum"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#AutoFeatures"></see>
     /// </summary>
-    let AutoFeatures =
-        Namespaced_IRI.parse _namespace_name "AutoFeatures" |> NamespacedName
-
+    let AutoFeatures = _prefix "AutoFeatures"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#BIOCLIM"></see>
     /// </summary>
-    let BIOCLIM = Namespaced_IRI.parse _namespace_name "BIOCLIM" |> NamespacedName
-
+    let BIOCLIM = _prefix "BIOCLIM"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Bioclim_parameters"></see>
     /// </summary>
-    let Bioclim_parameters =
-        Namespaced_IRI.parse _namespace_name "Bioclim_parameters" |> NamespacedName
-
+    let Bioclim_parameters = _prefix "Bioclim_parameters"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#StandardDeviationCutoff"></see>
     /// </summary>
-    let StandardDeviationCutoff =
-        Namespaced_IRI.parse _namespace_name "StandardDeviationCutoff" |> NamespacedName
-
+    let StandardDeviationCutoff = _prefix "StandardDeviationCutoff"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#C"></see>
     /// </summary>
-    let C = Namespaced_IRI.parse _namespace_name "C" |> NamespacedName
+    let C = _prefix "C"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#CSMBS"></see>
     /// </summary>
-    let CSMBS = Namespaced_IRI.parse _namespace_name "CSMBS" |> NamespacedName
-
+    let CSMBS = _prefix "CSMBS"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Climate-Space-Model_parameters"></see>
     /// </summary>
-    let ``Climate-Space-Model_parameters`` =
-        Namespaced_IRI.parse _namespace_name "Climate-Space-Model_parameters" |> NamespacedName
-
+    let ``Climate-Space-Model_parameters`` = _prefix "Climate-Space-Model_parameters"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MinComponents"></see>
     /// </summary>
-    let MinComponents =
-        Namespaced_IRI.parse _namespace_name "MinComponents" |> NamespacedName
-
+    let MinComponents = _prefix "MinComponents"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Randomisations"></see>
     /// </summary>
-    let Randomisations =
-        Namespaced_IRI.parse _namespace_name "Randomisations" |> NamespacedName
-
+    let Randomisations = _prefix "Randomisations"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#StandardDeviations"></see>
     /// </summary>
-    let StandardDeviations =
-        Namespaced_IRI.parse _namespace_name "StandardDeviations" |> NamespacedName
-
+    let StandardDeviations = _prefix "StandardDeviations"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#VerboseDebugging"></see>
     /// </summary>
-    let VerboseDebugging =
-        Namespaced_IRI.parse _namespace_name "VerboseDebugging" |> NamespacedName
-
+    let VerboseDebugging = _prefix "VerboseDebugging"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Coef0"></see>
     /// </summary>
-    let Coef0 = Namespaced_IRI.parse _namespace_name "Coef0" |> NamespacedName
-
+    let Coef0 = _prefix "Coef0"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#CommissionSampleSize"></see>
     /// </summary>
-    let CommissionSampleSize =
-        Namespaced_IRI.parse _namespace_name "CommissionSampleSize" |> NamespacedName
-
+    let CommissionSampleSize = _prefix "CommissionSampleSize"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#CommissionThreshold"></see>
     /// </summary>
-    let CommissionThreshold =
-        Namespaced_IRI.parse _namespace_name "CommissionThreshold" |> NamespacedName
-
+    let CommissionThreshold = _prefix "CommissionThreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ConvergenceLimit"></see>
     /// </summary>
-    let ConvergenceLimit =
-        Namespaced_IRI.parse _namespace_name "ConvergenceLimit" |> NamespacedName
-
+    let ConvergenceLimit = _prefix "ConvergenceLimit"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#DG_GARP"></see>
     /// </summary>
-    let DG_GARP = Namespaced_IRI.parse _namespace_name "DG_GARP" |> NamespacedName
+    let DG_GARP = _prefix "DG_GARP"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#DG_GARP_BS"></see>
     /// </summary>
-    let DG_GARP_BS = Namespaced_IRI.parse _namespace_name "DG_GARP_BS" |> NamespacedName
+    let DG_GARP_BS = _prefix "DG_GARP_BS"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Degree"></see>
     /// </summary>
-    let Degree = Namespaced_IRI.parse _namespace_name "Degree" |> NamespacedName
-
+    let Degree = _prefix "Degree"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#DistanceType"></see>
     /// </summary>
-    let DistanceType =
-        Namespaced_IRI.parse _namespace_name "DistanceType" |> NamespacedName
-
+    let DistanceType = _prefix "DistanceType"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ENVDIST"></see>
     /// </summary>
-    let ENVDIST = Namespaced_IRI.parse _namespace_name "ENVDIST" |> NamespacedName
+    let ENVDIST = _prefix "ENVDIST"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Environmental-Distance_parameters"></see>
     /// </summary>
     let ``Environmental-Distance_parameters`` =
-        Namespaced_IRI.parse _namespace_name "Environmental-Distance_parameters" |> NamespacedName
+        _prefix "Environmental-Distance_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MaxDistance"></see>
     /// </summary>
-    let MaxDistance =
-        Namespaced_IRI.parse _namespace_name "MaxDistance" |> NamespacedName
-
+    let MaxDistance = _prefix "MaxDistance"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#NearestPoints"></see>
     /// </summary>
-    let NearestPoints =
-        Namespaced_IRI.parse _namespace_name "NearestPoints" |> NamespacedName
-
+    let NearestPoints = _prefix "NearestPoints"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#GARP"></see>
     /// </summary>
-    let GARP = Namespaced_IRI.parse _namespace_name "GARP" |> NamespacedName
+    let GARP = _prefix "GARP"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#GARP---DesktopGARP-implementation_parameters"></see>
     /// </summary>
     let ``GARP---DesktopGARP-implementation_parameters`` =
-        Namespaced_IRI.parse _namespace_name "GARP---DesktopGARP-implementation_parameters" |> NamespacedName
+        _prefix "GARP---DesktopGARP-implementation_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MaxGenerations"></see>
     /// </summary>
-    let MaxGenerations =
-        Namespaced_IRI.parse _namespace_name "MaxGenerations" |> NamespacedName
-
+    let MaxGenerations = _prefix "MaxGenerations"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#PopulationSize"></see>
     /// </summary>
-    let PopulationSize =
-        Namespaced_IRI.parse _namespace_name "PopulationSize" |> NamespacedName
-
+    let PopulationSize = _prefix "PopulationSize"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Resamples"></see>
     /// </summary>
-    let Resamples = Namespaced_IRI.parse _namespace_name "Resamples" |> NamespacedName
+    let Resamples = _prefix "Resamples"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#GARP-with-Best-Subsets---DesktopGARP-implementation_parameters"></see>
     /// </summary>
     let ``GARP-with-Best-Subsets---DesktopGARP-implementation_parameters`` =
-        Namespaced_IRI.parse _namespace_name "GARP-with-Best-Subsets---DesktopGARP-implementation_parameters" |> NamespacedName
+        _prefix "GARP-with-Best-Subsets---DesktopGARP-implementation_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#HardOmissionThreshold"></see>
     /// </summary>
-    let HardOmissionThreshold =
-        Namespaced_IRI.parse _namespace_name "HardOmissionThreshold" |> NamespacedName
-
+    let HardOmissionThreshold = _prefix "HardOmissionThreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MaxThreads"></see>
     /// </summary>
-    let MaxThreads = Namespaced_IRI.parse _namespace_name "MaxThreads" |> NamespacedName
-
+    let MaxThreads = _prefix "MaxThreads"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ModelsUnderOmissionThreshold"></see>
     /// </summary>
-    let ModelsUnderOmissionThreshold =
-        Namespaced_IRI.parse _namespace_name "ModelsUnderOmissionThreshold" |> NamespacedName
-
+    let ModelsUnderOmissionThreshold = _prefix "ModelsUnderOmissionThreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#TotalRuns"></see>
     /// </summary>
-    let TotalRuns = Namespaced_IRI.parse _namespace_name "TotalRuns" |> NamespacedName
-
+    let TotalRuns = _prefix "TotalRuns"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#TrainingProportion"></see>
     /// </summary>
-    let TrainingProportion =
-        Namespaced_IRI.parse _namespace_name "TrainingProportion" |> NamespacedName
+    let TrainingProportion = _prefix "TrainingProportion"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#GARP-with-Best-Subsets_parameters"></see>
     /// </summary>
     let ``GARP-with-Best-Subsets_parameters`` =
-        Namespaced_IRI.parse _namespace_name "GARP-with-Best-Subsets_parameters" |> NamespacedName
+        _prefix "GARP-with-Best-Subsets_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#GARP_BS"></see>
     /// </summary>
-    let GARP_BS = Namespaced_IRI.parse _namespace_name "GARP_BS" |> NamespacedName
-
+    let GARP_BS = _prefix "GARP_BS"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#GARP_parameters"></see>
     /// </summary>
-    let GARP_parameters =
-        Namespaced_IRI.parse _namespace_name "GARP_parameters" |> NamespacedName
-
+    let GARP_parameters = _prefix "GARP_parameters"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Gamma"></see>
     /// </summary>
-    let Gamma = Namespaced_IRI.parse _namespace_name "Gamma" |> NamespacedName
-
+    let Gamma = _prefix "Gamma"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#HingeFeatures"></see>
     /// </summary>
-    let HingeFeatures =
-        Namespaced_IRI.parse _namespace_name "HingeFeatures" |> NamespacedName
-
+    let HingeFeatures = _prefix "HingeFeatures"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#IncludePresencePointsInBackground"></see>
     /// </summary>
-    let IncludePresencePointsInBackground =
-        Namespaced_IRI.parse _namespace_name "IncludePresencePointsInBackground" |> NamespacedName
-
+    let IncludePresencePointsInBackground = _prefix "IncludePresencePointsInBackground"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#KernelType"></see>
     /// </summary>
-    let KernelType = Namespaced_IRI.parse _namespace_name "KernelType" |> NamespacedName
+    let KernelType = _prefix "KernelType"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Maximum-Entropy---ATT-Implementation_parameters"></see>
     /// </summary>
     let ``Maximum-Entropy---ATT-Implementation_parameters`` =
-        Namespaced_IRI.parse _namespace_name "Maximum-Entropy---ATT-Implementation_parameters" |> NamespacedName
+        _prefix "Maximum-Entropy---ATT-Implementation_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Maximum-Entropy---openModeller-Implementation_parameters"></see>
     /// </summary>
     let ``Maximum-Entropy---openModeller-Implementation_parameters`` =
-        Namespaced_IRI.parse _namespace_name "Maximum-Entropy---openModeller-Implementation_parameters" |> NamespacedName
+        _prefix "Maximum-Entropy---openModeller-Implementation_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MinSamplesForHinge"></see>
     /// </summary>
-    let MinSamplesForHinge =
-        Namespaced_IRI.parse _namespace_name "MinSamplesForHinge" |> NamespacedName
-
+    let MinSamplesForHinge = _prefix "MinSamplesForHinge"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MinSamplesForProductThreshold"></see>
     /// </summary>
-    let MinSamplesForProductThreshold =
-        Namespaced_IRI.parse _namespace_name "MinSamplesForProductThreshold" |> NamespacedName
-
+    let MinSamplesForProductThreshold = _prefix "MinSamplesForProductThreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#MinSamplesForQuadratic"></see>
     /// </summary>
-    let MinSamplesForQuadratic =
-        Namespaced_IRI.parse _namespace_name "MinSamplesForQuadratic" |> NamespacedName
-
+    let MinSamplesForQuadratic = _prefix "MinSamplesForQuadratic"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#NumberOfBackgroundPoints"></see>
     /// </summary>
-    let NumberOfBackgroundPoints =
-        Namespaced_IRI.parse _namespace_name "NumberOfBackgroundPoints" |> NamespacedName
-
+    let NumberOfBackgroundPoints = _prefix "NumberOfBackgroundPoints"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#NumberOfIterations"></see>
     /// </summary>
-    let NumberOfIterations =
-        Namespaced_IRI.parse _namespace_name "NumberOfIterations" |> NamespacedName
-
+    let NumberOfIterations = _prefix "NumberOfIterations"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#OutputFormat"></see>
     /// </summary>
-    let OutputFormat =
-        Namespaced_IRI.parse _namespace_name "OutputFormat" |> NamespacedName
-
+    let OutputFormat = _prefix "OutputFormat"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ProductFeatures"></see>
     /// </summary>
-    let ProductFeatures =
-        Namespaced_IRI.parse _namespace_name "ProductFeatures" |> NamespacedName
-
+    let ProductFeatures = _prefix "ProductFeatures"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#QuadraticFeatures"></see>
     /// </summary>
-    let QuadraticFeatures =
-        Namespaced_IRI.parse _namespace_name "QuadraticFeatures" |> NamespacedName
-
+    let QuadraticFeatures = _prefix "QuadraticFeatures"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#TerminateTolerance"></see>
     /// </summary>
-    let TerminateTolerance =
-        Namespaced_IRI.parse _namespace_name "TerminateTolerance" |> NamespacedName
-
+    let TerminateTolerance = _prefix "TerminateTolerance"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ThresholdFeatures"></see>
     /// </summary>
-    let ThresholdFeatures =
-        Namespaced_IRI.parse _namespace_name "ThresholdFeatures" |> NamespacedName
-
+    let ThresholdFeatures = _prefix "ThresholdFeatures"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#UseAbsencesAsBackground"></see>
     /// </summary>
-    let UseAbsencesAsBackground =
-        Namespaced_IRI.parse _namespace_name "UseAbsencesAsBackground" |> NamespacedName
-
+    let UseAbsencesAsBackground = _prefix "UseAbsencesAsBackground"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Nu"></see>
     /// </summary>
-    let Nu = Namespaced_IRI.parse _namespace_name "Nu" |> NamespacedName
-
+    let Nu = _prefix "Nu"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#NumberOfPseudoAbsences"></see>
     /// </summary>
-    let NumberOfPseudoAbsences =
-        Namespaced_IRI.parse _namespace_name "NumberOfPseudoAbsences" |> NamespacedName
-
+    let NumberOfPseudoAbsences = _prefix "NumberOfPseudoAbsences"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#OM_MAXENT"></see>
     /// </summary>
-    let OM_MAXENT = Namespaced_IRI.parse _namespace_name "OM_MAXENT" |> NamespacedName
-
+    let OM_MAXENT = _prefix "OM_MAXENT"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#ProbabilisticOutput"></see>
     /// </summary>
-    let ProbabilisticOutput =
-        Namespaced_IRI.parse _namespace_name "ProbabilisticOutput" |> NamespacedName
-
+    let ProbabilisticOutput = _prefix "ProbabilisticOutput"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#SVM"></see>
     /// </summary>
-    let SVM = Namespaced_IRI.parse _namespace_name "SVM" |> NamespacedName
+    let SVM = _prefix "SVM"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#Support-Vector-Machines_parameters"></see>
     /// </summary>
     let ``Support-Vector-Machines_parameters`` =
-        Namespaced_IRI.parse _namespace_name "Support-Vector-Machines_parameters" |> NamespacedName
+        _prefix "Support-Vector-Machines_parameters"
 
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#SvmType"></see>
     /// </summary>
-    let SvmType = Namespaced_IRI.parse _namespace_name "SvmType" |> NamespacedName
-
+    let SvmType = _prefix "SvmType"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#adjustsampleradius"></see>
     /// </summary>
-    let adjustsampleradius =
-        Namespaced_IRI.parse _namespace_name "adjustsampleradius" |> NamespacedName
-
+    let adjustsampleradius = _prefix "adjustsampleradius"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#appendtoresultsfile"></see>
     /// </summary>
-    let appendtoresultsfile =
-        Namespaced_IRI.parse _namespace_name "appendtoresultsfile" |> NamespacedName
-
+    let appendtoresultsfile = _prefix "appendtoresultsfile"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#autofeature"></see>
     /// </summary>
-    let autofeature =
-        Namespaced_IRI.parse _namespace_name "autofeature" |> NamespacedName
-
+    let autofeature = _prefix "autofeature"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#beta_categorical"></see>
     /// </summary>
-    let beta_categorical =
-        Namespaced_IRI.parse _namespace_name "beta_categorical" |> NamespacedName
-
+    let beta_categorical = _prefix "beta_categorical"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#beta_hinge"></see>
     /// </summary>
-    let beta_hinge = Namespaced_IRI.parse _namespace_name "beta_hinge" |> NamespacedName
+    let beta_hinge = _prefix "beta_hinge"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#beta_lqp"></see>
     /// </summary>
-    let beta_lqp = Namespaced_IRI.parse _namespace_name "beta_lqp" |> NamespacedName
-
+    let beta_lqp = _prefix "beta_lqp"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#beta_threshold"></see>
     /// </summary>
-    let beta_threshold =
-        Namespaced_IRI.parse _namespace_name "beta_threshold" |> NamespacedName
-
+    let beta_threshold = _prefix "beta_threshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#betamultiplier"></see>
     /// </summary>
-    let betamultiplier =
-        Namespaced_IRI.parse _namespace_name "betamultiplier" |> NamespacedName
-
+    let betamultiplier = _prefix "betamultiplier"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#convergencethreshold"></see>
     /// </summary>
-    let convergencethreshold =
-        Namespaced_IRI.parse _namespace_name "convergencethreshold" |> NamespacedName
-
+    let convergencethreshold = _prefix "convergencethreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#defaultprevalence"></see>
     /// </summary>
-    let defaultprevalence =
-        Namespaced_IRI.parse _namespace_name "defaultprevalence" |> NamespacedName
-
+    let defaultprevalence = _prefix "defaultprevalence"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#doclamp"></see>
     /// </summary>
-    let doclamp = Namespaced_IRI.parse _namespace_name "doclamp" |> NamespacedName
-
+    let doclamp = _prefix "doclamp"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#extrapolate"></see>
     /// </summary>
-    let extrapolate =
-        Namespaced_IRI.parse _namespace_name "extrapolate" |> NamespacedName
-
+    let extrapolate = _prefix "extrapolate"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#fadebyclamping"></see>
     /// </summary>
-    let fadebyclamping =
-        Namespaced_IRI.parse _namespace_name "fadebyclamping" |> NamespacedName
-
+    let fadebyclamping = _prefix "fadebyclamping"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#hinge"></see>
     /// </summary>
-    let hinge = Namespaced_IRI.parse _namespace_name "hinge" |> NamespacedName
-
+    let hinge = _prefix "hinge"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#hingethreshold"></see>
     /// </summary>
-    let hingethreshold =
-        Namespaced_IRI.parse _namespace_name "hingethreshold" |> NamespacedName
-
+    let hingethreshold = _prefix "hingethreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#jackknife"></see>
     /// </summary>
-    let jackknife = Namespaced_IRI.parse _namespace_name "jackknife" |> NamespacedName
-
+    let jackknife = _prefix "jackknife"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#l2lqthreshold"></see>
     /// </summary>
-    let l2lqthreshold =
-        Namespaced_IRI.parse _namespace_name "l2lqthreshold" |> NamespacedName
-
+    let l2lqthreshold = _prefix "l2lqthreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#linear"></see>
     /// </summary>
-    let linear = Namespaced_IRI.parse _namespace_name "linear" |> NamespacedName
+    let linear = _prefix "linear"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#logscale"></see>
     /// </summary>
-    let logscale = Namespaced_IRI.parse _namespace_name "logscale" |> NamespacedName
-
+    let logscale = _prefix "logscale"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#lq2lqptthreshold"></see>
     /// </summary>
-    let lq2lqptthreshold =
-        Namespaced_IRI.parse _namespace_name "lq2lqptthreshold" |> NamespacedName
-
+    let lq2lqptthreshold = _prefix "lq2lqptthreshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#maximumbackground"></see>
     /// </summary>
-    let maximumbackground =
-        Namespaced_IRI.parse _namespace_name "maximumbackground" |> NamespacedName
-
+    let maximumbackground = _prefix "maximumbackground"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#maximumiterations"></see>
     /// </summary>
-    let maximumiterations =
-        Namespaced_IRI.parse _namespace_name "maximumiterations" |> NamespacedName
-
+    let maximumiterations = _prefix "maximumiterations"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#outputgrids"></see>
     /// </summary>
-    let outputgrids =
-        Namespaced_IRI.parse _namespace_name "outputgrids" |> NamespacedName
-
+    let outputgrids = _prefix "outputgrids"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#perspeciesresults"></see>
     /// </summary>
-    let perspeciesresults =
-        Namespaced_IRI.parse _namespace_name "perspeciesresults" |> NamespacedName
-
+    let perspeciesresults = _prefix "perspeciesresults"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#pictures"></see>
     /// </summary>
-    let pictures = Namespaced_IRI.parse _namespace_name "pictures" |> NamespacedName
+    let pictures = _prefix "pictures"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#plots"></see>
     /// </summary>
-    let plots = Namespaced_IRI.parse _namespace_name "plots" |> NamespacedName
+    let plots = _prefix "plots"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#product"></see>
     /// </summary>
-    let product = Namespaced_IRI.parse _namespace_name "product" |> NamespacedName
+    let product = _prefix "product"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#quadratic"></see>
     /// </summary>
-    let quadratic = Namespaced_IRI.parse _namespace_name "quadratic" |> NamespacedName
+    let quadratic = _prefix "quadratic"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#randomseed"></see>
     /// </summary>
-    let randomseed = Namespaced_IRI.parse _namespace_name "randomseed" |> NamespacedName
-
+    let randomseed = _prefix "randomseed"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#randomtestpoints"></see>
     /// </summary>
-    let randomtestpoints =
-        Namespaced_IRI.parse _namespace_name "randomtestpoints" |> NamespacedName
-
+    let randomtestpoints = _prefix "randomtestpoints"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#removeduplicates"></see>
     /// </summary>
-    let removeduplicates =
-        Namespaced_IRI.parse _namespace_name "removeduplicates" |> NamespacedName
-
+    let removeduplicates = _prefix "removeduplicates"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#replicates"></see>
     /// </summary>
-    let replicates = Namespaced_IRI.parse _namespace_name "replicates" |> NamespacedName
-
+    let replicates = _prefix "replicates"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#replicatetype"></see>
     /// </summary>
-    let replicatetype =
-        Namespaced_IRI.parse _namespace_name "replicatetype" |> NamespacedName
-
+    let replicatetype = _prefix "replicatetype"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#responsecurves"></see>
     /// </summary>
-    let responsecurves =
-        Namespaced_IRI.parse _namespace_name "responsecurves" |> NamespacedName
-
+    let responsecurves = _prefix "responsecurves"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#responsecurvesexponent"></see>
     /// </summary>
-    let responsecurvesexponent =
-        Namespaced_IRI.parse _namespace_name "responsecurvesexponent" |> NamespacedName
-
+    let responsecurvesexponent = _prefix "responsecurvesexponent"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#threshold"></see>
     /// </summary>
-    let threshold = Namespaced_IRI.parse _namespace_name "threshold" |> NamespacedName
-
+    let threshold = _prefix "threshold"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#writebackgroundpredictions"></see>
     /// </summary>
-    let writebackgroundpredictions =
-        Namespaced_IRI.parse _namespace_name "writebackgroundpredictions" |> NamespacedName
-
+    let writebackgroundpredictions = _prefix "writebackgroundpredictions"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#writeclampgrid"></see>
     /// </summary>
-    let writeclampgrid =
-        Namespaced_IRI.parse _namespace_name "writeclampgrid" |> NamespacedName
-
+    let writeclampgrid = _prefix "writeclampgrid"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#writemess"></see>
     /// </summary>
-    let writemess = Namespaced_IRI.parse _namespace_name "writemess" |> NamespacedName
-
+    let writemess = _prefix "writemess"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#writeplotdata"></see>
     /// </summary>
-    let writeplotdata =
-        Namespaced_IRI.parse _namespace_name "writeplotdata" |> NamespacedName
+    let writeplotdata = _prefix "writeplotdata"

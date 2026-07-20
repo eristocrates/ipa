@@ -1,101 +1,75 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.IND.Indicators.Indicators.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_ind_ind_ind =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/DailyAverageMarketRate"></see>
     /// </summary>
-    let DailyAverageMarketRate =
-        Namespaced_IRI.parse _namespace_name "DailyAverageMarketRate" |> NamespacedName
-
+    let DailyAverageMarketRate = _prefix "DailyAverageMarketRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/MarketRate"></see>
     /// </summary>
-    let MarketRate = Namespaced_IRI.parse _namespace_name "MarketRate" |> NamespacedName
-
+    let MarketRate = _prefix "MarketRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/hasQuotationDateTime"></see>
     /// </summary>
-    let hasQuotationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasQuotationDateTime" |> NamespacedName
-
+    let hasQuotationDateTime = _prefix "hasQuotationDateTime"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/EndOfDayMarketRate"></see>
     /// </summary>
-    let EndOfDayMarketRate =
-        Namespaced_IRI.parse _namespace_name "EndOfDayMarketRate" |> NamespacedName
-
+    let EndOfDayMarketRate = _prefix "EndOfDayMarketRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/HistoricalPriceVolatility"></see>
     /// </summary>
-    let HistoricalPriceVolatility =
-        Namespaced_IRI.parse _namespace_name "HistoricalPriceVolatility" |> NamespacedName
-
+    let HistoricalPriceVolatility = _prefix "HistoricalPriceVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/HistoricalVolatility"></see>
     /// </summary>
-    let HistoricalVolatility =
-        Namespaced_IRI.parse _namespace_name "HistoricalVolatility" |> NamespacedName
-
+    let HistoricalVolatility = _prefix "HistoricalVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/PriceVolatility"></see>
     /// </summary>
-    let PriceVolatility =
-        Namespaced_IRI.parse _namespace_name "PriceVolatility" |> NamespacedName
-
+    let PriceVolatility = _prefix "PriceVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/Volatility"></see>
     /// </summary>
-    let Volatility = Namespaced_IRI.parse _namespace_name "Volatility" |> NamespacedName
-
+    let Volatility = _prefix "Volatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/ImpliedPriceVolatility"></see>
     /// </summary>
-    let ImpliedPriceVolatility =
-        Namespaced_IRI.parse _namespace_name "ImpliedPriceVolatility" |> NamespacedName
-
+    let ImpliedPriceVolatility = _prefix "ImpliedPriceVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/ImpliedVolatility"></see>
     /// </summary>
-    let ImpliedVolatility =
-        Namespaced_IRI.parse _namespace_name "ImpliedVolatility" |> NamespacedName
-
+    let ImpliedVolatility = _prefix "ImpliedVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/MarketSpread"></see>
     /// </summary>
-    let MarketSpread =
-        Namespaced_IRI.parse _namespace_name "MarketSpread" |> NamespacedName
-
+    let MarketSpread = _prefix "MarketSpread"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/PriceStructure"></see>
     /// </summary>
-    let PriceStructure =
-        Namespaced_IRI.parse _namespace_name "PriceStructure" |> NamespacedName
-
+    let PriceStructure = _prefix "PriceStructure"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/QuotedPrice"></see>
     /// </summary>
-    let QuotedPrice =
-        Namespaced_IRI.parse _namespace_name "QuotedPrice" |> NamespacedName
-
+    let QuotedPrice = _prefix "QuotedPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/TermStructure"></see>
     /// </summary>
-    let TermStructure =
-        Namespaced_IRI.parse _namespace_name "TermStructure" |> NamespacedName
-
+    let TermStructure = _prefix "TermStructure"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/hasQuotationDate"></see>
     /// </summary>
-    let hasQuotationDate =
-        Namespaced_IRI.parse _namespace_name "hasQuotationDate" |> NamespacedName
-
+    let hasQuotationDate = _prefix "hasQuotationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/isVolatilityOf"></see>
     /// </summary>
-    let isVolatilityOf =
-        Namespaced_IRI.parse _namespace_name "isVolatilityOf" |> NamespacedName
+    let isVolatilityOf = _prefix "isVolatilityOf"

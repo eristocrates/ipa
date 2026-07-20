@@ -1,47 +1,46 @@
 namespace http.www.linklion.org.ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module llont =
     let _namespace_name = "http://www.linklion.org/ontology#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#Algorithm"></see>
     /// </summary>
-    let Algorithm = Namespaced_IRI.parse _namespace_name "Algorithm" |> NamespacedName
+    let Algorithm = _prefix "Algorithm"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#parameters"></see>
     /// </summary>
-    let parameters = Namespaced_IRI.parse _namespace_name "parameters" |> NamespacedName
-
+    let parameters = _prefix "parameters"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#LDFrameworkVersion"></see>
     /// </summary>
-    let LDFrameworkVersion =
-        Namespaced_IRI.parse _namespace_name "LDFrameworkVersion" |> NamespacedName
-
+    let LDFrameworkVersion = _prefix "LDFrameworkVersion"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#LDFramework"></see>
     /// </summary>
-    let LDFramework =
-        Namespaced_IRI.parse _namespace_name "LDFramework" |> NamespacedName
-
+    let LDFramework = _prefix "LDFramework"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#Link"></see>
     /// </summary>
-    let Link = Namespaced_IRI.parse _namespace_name "Link" |> NamespacedName
+    let Link = _prefix "Link"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#Mapping"></see>
     /// </summary>
-    let Mapping = Namespaced_IRI.parse _namespace_name "Mapping" |> NamespacedName
+    let Mapping = _prefix "Mapping"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#storedAt"></see>
     /// </summary>
-    let storedAt = Namespaced_IRI.parse _namespace_name "storedAt" |> NamespacedName
+    let storedAt = _prefix "storedAt"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#hasSource"></see>
     /// </summary>
-    let hasSource = Namespaced_IRI.parse _namespace_name "hasSource" |> NamespacedName
+    let hasSource = _prefix "hasSource"
     /// <summary>
     ///   <see href="http://www.linklion.org/ontology#hasTarget"></see>
     /// </summary>
-    let hasTarget = Namespaced_IRI.parse _namespace_name "hasTarget" |> NamespacedName
+    let hasTarget = _prefix "hasTarget"

@@ -1,127 +1,112 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.SwapsIndividuals.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_swpind =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/BSDRLLC-US-DE"></see>
     /// </summary>
-    let ``BSDRLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "BSDRLLC-US-DE" |> NamespacedName
-
+    let ``BSDRLLC-US-DE`` = _prefix "BSDRLLC-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/DTCCDataRepositoryLLC-US-NY"></see>
     /// </summary>
-    let ``DTCCDataRepositoryLLC-US-NY`` =
-        Namespaced_IRI.parse _namespace_name "DTCCDataRepositoryLLC-US-NY" |> NamespacedName
-
+    let ``DTCCDataRepositoryLLC-US-NY`` = _prefix "DTCCDataRepositoryLLC-US-NY"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ICETradeVaultLLC-US-DE"></see>
     /// </summary>
-    let ``ICETradeVaultLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "ICETradeVaultLLC-US-DE" |> NamespacedName
+    let ``ICETradeVaultLLC-US-DE`` = _prefix "ICETradeVaultLLC-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ChicagoMercantileExchangeInc-US-DE"></see>
     /// </summary>
     let ``ChicagoMercantileExchangeInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "ChicagoMercantileExchangeInc-US-DE" |> NamespacedName
+        _prefix "ChicagoMercantileExchangeInc-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/BSDRBusinessEntityIdentifier"></see>
     /// </summary>
-    let BSDRBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "BSDRBusinessEntityIdentifier" |> NamespacedName
-
+    let BSDRBusinessEntityIdentifier = _prefix "BSDRBusinessEntityIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/BSDRDateEstablished"></see>
     /// </summary>
-    let BSDRDateEstablished =
-        Namespaced_IRI.parse _namespace_name "BSDRDateEstablished" |> NamespacedName
-
+    let BSDRDateEstablished = _prefix "BSDRDateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/BSDRHeadquartersAddress"></see>
     /// </summary>
-    let BSDRHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "BSDRHeadquartersAddress" |> NamespacedName
-
+    let BSDRHeadquartersAddress = _prefix "BSDRHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/BloombergSDR"></see>
     /// </summary>
-    let BloombergSDR =
-        Namespaced_IRI.parse _namespace_name "BloombergSDR" |> NamespacedName
-
+    let BloombergSDR = _prefix "BloombergSDR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ChicagoMercantileExchange"></see>
     /// </summary>
-    let ChicagoMercantileExchange =
-        Namespaced_IRI.parse _namespace_name "ChicagoMercantileExchange" |> NamespacedName
+    let ChicagoMercantileExchange = _prefix "ChicagoMercantileExchange"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ChicagoMercantileExchangeBusinessEntityIdentifier"></see>
     /// </summary>
     let ChicagoMercantileExchangeBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "ChicagoMercantileExchangeBusinessEntityIdentifier" |> NamespacedName
+        _prefix "ChicagoMercantileExchangeBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ChicagoMercantileExchangeDateEstablished"></see>
     /// </summary>
     let ChicagoMercantileExchangeDateEstablished =
-        Namespaced_IRI.parse _namespace_name "ChicagoMercantileExchangeDateEstablished" |> NamespacedName
+        _prefix "ChicagoMercantileExchangeDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ChicagoMercantileExchangeHeadquartersAddress"></see>
     /// </summary>
     let ChicagoMercantileExchangeHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "ChicagoMercantileExchangeHeadquartersAddress" |> NamespacedName
+        _prefix "ChicagoMercantileExchangeHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/DTCCDataRepository"></see>
     /// </summary>
-    let DTCCDataRepository =
-        Namespaced_IRI.parse _namespace_name "DTCCDataRepository" |> NamespacedName
+    let DTCCDataRepository = _prefix "DTCCDataRepository"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/DTCCDataRepositoryBusinessEntityIdentifier"></see>
     /// </summary>
     let DTCCDataRepositoryBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "DTCCDataRepositoryBusinessEntityIdentifier" |> NamespacedName
+        _prefix "DTCCDataRepositoryBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/DTCCDataRepositoryDateEstablished"></see>
     /// </summary>
-    let DTCCDataRepositoryDateEstablished =
-        Namespaced_IRI.parse _namespace_name "DTCCDataRepositoryDateEstablished" |> NamespacedName
+    let DTCCDataRepositoryDateEstablished = _prefix "DTCCDataRepositoryDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/DTCCDataRepositoryHeadquartersAddress"></see>
     /// </summary>
     let DTCCDataRepositoryHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "DTCCDataRepositoryHeadquartersAddress" |> NamespacedName
+        _prefix "DTCCDataRepositoryHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ICETradeVault"></see>
     /// </summary>
-    let ICETradeVault =
-        Namespaced_IRI.parse _namespace_name "ICETradeVault" |> NamespacedName
+    let ICETradeVault = _prefix "ICETradeVault"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ICETradeVaultLLCHeadquartersAddress"></see>
     /// </summary>
     let ICETradeVaultLLCHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "ICETradeVaultLLCHeadquartersAddress" |> NamespacedName
+        _prefix "ICETradeVaultLLCHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ICETradeVaultLLCDateEstablished"></see>
     /// </summary>
-    let ICETradeVaultLLCDateEstablished =
-        Namespaced_IRI.parse _namespace_name "ICETradeVaultLLCDateEstablished" |> NamespacedName
+    let ICETradeVaultLLCDateEstablished = _prefix "ICETradeVaultLLCDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/ICETradeVaultLLCBusinessEntityIdentifier"></see>
     /// </summary>
     let ICETradeVaultLLCBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "ICETradeVaultLLCBusinessEntityIdentifier" |> NamespacedName
+        _prefix "ICETradeVaultLLCBusinessEntityIdentifier"

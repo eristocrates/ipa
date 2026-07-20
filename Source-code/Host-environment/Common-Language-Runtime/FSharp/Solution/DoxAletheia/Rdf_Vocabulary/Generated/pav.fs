@@ -1,60 +1,53 @@
 namespace http.purl.org.pav.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module pav =
     let _namespace_name = "http://purl.org/pav/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/pav/doc"></see>
     /// </summary>
-    let doc = Namespaced_IRI.parse _namespace_name "doc" |> NamespacedName
+    let doc = _prefix "doc"
     /// <summary>
     ///   <see href="http://purl.org/pav/2.1"></see>
     /// </summary>
-    let ``_2.1`` = Namespaced_IRI.parse _namespace_name "2.1" |> NamespacedName
-
+    let ``_2.1`` = _prefix "2.1"
     /// <summary>
     ///   <see href="http://purl.org/pav/authoring/2.0/"></see>
     /// </summary>
-    let ``authoring/2.0/`` =
-        Namespaced_IRI.parse _namespace_name "authoring/2.0/" |> NamespacedName
-
+    let ``authoring/2.0/`` = _prefix "authoring/2.0/"
     /// <summary>
     ///   <see href="http://purl.org/pav/2.0/"></see>
     /// </summary>
-    let ``_2.0/`` = Namespaced_IRI.parse _namespace_name "2.0/" |> NamespacedName
-
+    let ``_2.0/`` = _prefix "2.0/"
     /// <summary>
     ///   <see href="http://purl.org/pav/versioning/2.0/"></see>
     /// </summary>
-    let ``versioning/2.0/`` =
-        Namespaced_IRI.parse _namespace_name "versioning/2.0/" |> NamespacedName
-
+    let ``versioning/2.0/`` = _prefix "versioning/2.0/"
     /// <summary>
     ///   <see href="http://purl.org/pav/provenance/2.0/"></see>
     /// </summary>
-    let ``provenance/2.0/`` =
-        Namespaced_IRI.parse _namespace_name "provenance/2.0/" |> NamespacedName
-
+    let ``provenance/2.0/`` = _prefix "provenance/2.0/"
     /// <summary>
     ///   <see href="http://purl.org/pav/2.2"></see>
     /// </summary>
-    let ``_2.2`` = Namespaced_IRI.parse _namespace_name "2.2" |> NamespacedName
+    let ``_2.2`` = _prefix "2.2"
     /// <summary>
     ///   <see href="http://purl.org/pav/2.3"></see>
     /// </summary>
-    let ``_2.3`` = Namespaced_IRI.parse _namespace_name "2.3" |> NamespacedName
-
+    let ``_2.3`` = _prefix "2.3"
     /// <summary>
     ///   <see href="http://purl.org/pav/provenance.ttl"></see>
     /// </summary>
-    let ``provenance.ttl`` =
-        Namespaced_IRI.parse _namespace_name "provenance.ttl" |> NamespacedName
-
+    let ``provenance.ttl`` = _prefix "provenance.ttl"
     /// <summary>
     ///   <see href="http://purl.org/pav/home"></see>
     /// </summary>
-    let home = Namespaced_IRI.parse _namespace_name "home" |> NamespacedName
+    let home = _prefix "home"
     /// <summary>
     /// An agent that originated or gave existence to the work that is expressed by the digital resource.
     ///
@@ -66,7 +59,7 @@ module pav =
     ///
     /// The date of authoring can be expressed using pav:authoredOn - note however in the case of multiple authors that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.
     /// <see href="http://purl.org/pav/authoredBy"></see></summary>
-    let authoredBy = Namespaced_IRI.parse _namespace_name "authoredBy" |> NamespacedName
+    let authoredBy = _prefix "authoredBy"
     /// <summary>
     /// The date this resource was authored.
     ///
@@ -78,7 +71,7 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/authoredOn"></see></summary>
-    let authoredOn = Namespaced_IRI.parse _namespace_name "authoredOn" |> NamespacedName
+    let authoredOn = _prefix "authoredOn"
     /// <summary>
     /// An agent primary responsible for making the digital artifact or resource representation.
     ///
@@ -96,8 +89,7 @@ module pav =
     ///
     /// The location the agent was at when creating the digital resource can be made using pav:createdAt.
     /// <see href="http://purl.org/pav/createdBy"></see></summary>
-    let createdBy = Namespaced_IRI.parse _namespace_name "createdBy" |> NamespacedName
-
+    let createdBy = _prefix "createdBy"
     /// <summary>
     /// The resource was contributed to by the given agent.
     ///
@@ -112,9 +104,7 @@ module pav =
     ///
     /// The date of contribution can be expressed using pav:contributedOn - note however in the case of multiple contributors that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.
     /// <see href="http://purl.org/pav/contributedBy"></see></summary>
-    let contributedBy =
-        Namespaced_IRI.parse _namespace_name "contributedBy" |> NamespacedName
-
+    let contributedBy = _prefix "contributedBy"
     /// <summary>
     /// The date of creation of the resource representation.
     ///
@@ -124,8 +114,7 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/createdOn"></see></summary>
-    let createdOn = Namespaced_IRI.parse _namespace_name "createdOn" |> NamespacedName
-
+    let createdOn = _prefix "createdOn"
     /// <summary>
     /// The date this resource was contributed to.
     ///
@@ -133,13 +122,11 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/contributedOn"></see></summary>
-    let contributedOn =
-        Namespaced_IRI.parse _namespace_name "contributedOn" |> NamespacedName
-
+    let contributedOn = _prefix "contributedOn"
     /// <summary>
     /// The geo-location of the agents when creating the resource (pav:createdBy). For instance  a photographer takes a picture of the Eiffel Tower while standing in front of it.
     /// <see href="http://purl.org/pav/createdAt"></see></summary>
-    let createdAt = Namespaced_IRI.parse _namespace_name "createdAt" |> NamespacedName
+    let createdAt = _prefix "createdAt"
     /// <summary>
     /// Specifies an agent specialist responsible for shaping the expression in an appropriate format. Often the primary agent responsible for ensuring the quality of the representation.
     ///
@@ -149,15 +136,12 @@ module pav =
     ///
     /// The date of curating can be expressed using pav:curatedOn - note however in the case of multiple curators that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.
     /// <see href="http://purl.org/pav/curatedBy"></see></summary>
-    let curatedBy = Namespaced_IRI.parse _namespace_name "curatedBy" |> NamespacedName
-
+    let curatedBy = _prefix "curatedBy"
     /// <summary>
     /// The software/tool used by the creator (pav:createdBy) when making the digital resource, for instance a word processor or an annotation tool. A more independent software agent that creates the resource without direct interaction by a human creator should instead should instead by indicated using pav:createdBy.
     ///
     /// <see href="http://purl.org/pav/createdWith"></see></summary>
-    let createdWith =
-        Namespaced_IRI.parse _namespace_name "createdWith" |> NamespacedName
-
+    let createdWith = _prefix "createdWith"
     /// <summary>
     /// The date this resource was curated.
     ///
@@ -167,12 +151,11 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/curatedOn"></see></summary>
-    let curatedOn = Namespaced_IRI.parse _namespace_name "curatedOn" |> NamespacedName
+    let curatedOn = _prefix "curatedOn"
     /// <summary>
     /// Provided for backwards compatibility. Use instead the inverse pav:curatedBy.
     /// <see href="http://purl.org/pav/curates"></see></summary>
-    let curates = Namespaced_IRI.parse _namespace_name "curates" |> NamespacedName
-
+    let curates = _prefix "curates"
     /// <summary>
     /// Derived from a different resource.
     ///
@@ -181,9 +164,7 @@ module pav =
     /// Details about who performed the derivation (e.g. who did the refining or modifications) may be indicated with pav:contributedBy and its subproperties.
     ///
     /// <see href="http://purl.org/pav/derivedFrom"></see></summary>
-    let derivedFrom =
-        Namespaced_IRI.parse _namespace_name "derivedFrom" |> NamespacedName
-
+    let derivedFrom = _prefix "derivedFrom"
     /// <summary>
     /// The original source of imported information.
     ///
@@ -197,9 +178,7 @@ module pav =
     ///
     /// To indicate which agent(s) performed the import, use pav:importedBy. Use pav:importedOn to indicate when it happened.
     /// <see href="http://purl.org/pav/importedFrom"></see></summary>
-    let importedFrom =
-        Namespaced_IRI.parse _namespace_name "importedFrom" |> NamespacedName
-
+    let importedFrom = _prefix "importedFrom"
     /// <summary>
     /// The previous version of a resource in a lineage. For instance a news article updated to correct factual information would point to the previous version of the article with pav:previousVersion. If however the content has significantly changed so that the two resources no longer share lineage (say a new article that talks about the same facts), they can instead be related using pav:derivedFrom.
     ///
@@ -211,9 +190,7 @@ module pav =
     ///
     /// Note that it might be confusing to indicate pav:previousVersion from a resource that also has pav:hasVersion or pav:hasCurrentVersion relations, as such resources are intended to be a long-living and "unversioned", while pav:previousVersion is intended for use between permalink-like "snapshots" arranged in a linear history.
     /// <see href="http://purl.org/pav/previousVersion"></see></summary>
-    let previousVersion =
-        Namespaced_IRI.parse _namespace_name "previousVersion" |> NamespacedName
-
+    let previousVersion = _prefix "previousVersion"
     /// <summary>
     /// This resource has a more specific, versioned resource with equivalent content.
     ///
@@ -236,9 +213,7 @@ module pav =
     ///
     /// This property is normally used in a functional way, although PAV does not formally restrict this.
     /// <see href="http://purl.org/pav/hasCurrentVersion"></see></summary>
-    let hasCurrentVersion =
-        Namespaced_IRI.parse _namespace_name "hasCurrentVersion" |> NamespacedName
-
+    let hasCurrentVersion = _prefix "hasCurrentVersion"
     /// <summary>
     /// This resource has a more specific, versioned resource.
     ///
@@ -262,8 +237,7 @@ module pav =
     ///
     /// To indicate the existence of other, non-hierarchical kind of editions and adaptations of this resource that are not versioned snapshots (e.g. Powerpoint slides has a video recording version), use instead dcterms:hasVersion or prov:alternateOf.
     /// <see href="http://purl.org/pav/hasVersion"></see></summary>
-    let hasVersion = Namespaced_IRI.parse _namespace_name "hasVersion" |> NamespacedName
-
+    let hasVersion = _prefix "hasVersion"
     /// <summary>
     /// This versioned resource has an earlier version.
     ///
@@ -283,9 +257,7 @@ module pav =
     ///
     /// To indicate that this version is a snapshot of a more general, non-versioned resource, e.g. "Weather Today" vs. "Weather Today on 2013-12-07", see pav:hasVersion.
     /// <see href="http://purl.org/pav/hasEarlierVersion"></see></summary>
-    let hasEarlierVersion =
-        Namespaced_IRI.parse _namespace_name "hasEarlierVersion" |> NamespacedName
-
+    let hasEarlierVersion = _prefix "hasEarlierVersion"
     /// <summary>
     /// An entity responsible for importing the data.
     ///
@@ -297,7 +269,7 @@ module pav =
     ///
     /// See pav:importedFrom for a discussion of import vs. retrieve vs. derived.
     /// <see href="http://purl.org/pav/importedBy"></see></summary>
-    let importedBy = Namespaced_IRI.parse _namespace_name "importedBy" |> NamespacedName
+    let importedBy = _prefix "importedBy"
     /// <summary>
     /// The date this resource was imported from a source (pav:importedFrom).
     ///
@@ -311,8 +283,7 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/importedOn"></see></summary>
-    let importedOn = Namespaced_IRI.parse _namespace_name "importedOn" |> NamespacedName
-
+    let importedOn = _prefix "importedOn"
     /// <summary>
     /// The URI where a resource has been retrieved from.
     ///
@@ -322,9 +293,7 @@ module pav =
     ///
     /// The time of the retrieval should be indicated using pav:retrievedOn. The agent may be indicated with pav:retrievedBy.
     /// <see href="http://purl.org/pav/retrievedFrom"></see></summary>
-    let retrievedFrom =
-        Namespaced_IRI.parse _namespace_name "retrievedFrom" |> NamespacedName
-
+    let retrievedFrom = _prefix "retrievedFrom"
     /// <summary>
     /// The date of the last re-import of the resource. This property is used in addition to pav:importedOn if this version has been updated due to a re-import. If the re-import created a new resource rather than refreshing an existing resource, then instead use pav:importedOn together with pav:previousVersion.
     ///
@@ -332,9 +301,7 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/lastRefreshedOn"></see></summary>
-    let lastRefreshedOn =
-        Namespaced_IRI.parse _namespace_name "lastRefreshedOn" |> NamespacedName
-
+    let lastRefreshedOn = _prefix "lastRefreshedOn"
     /// <summary>
     /// The date of the last update of the resource. An update is a change which did not warrant making a new resource related using pav:previousVersion, for instance correcting a spelling mistake.
     ///
@@ -342,22 +309,19 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/lastUpdateOn"></see></summary>
-    let lastUpdateOn =
-        Namespaced_IRI.parse _namespace_name "lastUpdateOn" |> NamespacedName
-
+    let lastUpdateOn = _prefix "lastUpdateOn"
     /// <summary>
     /// The version number of a resource. This is a freetext string, typical values are "1.5" or "21". The URI identifying the previous version can be provided using prov:previousVersion.
     ///
     /// This property is normally used in a functional way, although PAV does not formally restrict this.
     /// <see href="http://purl.org/pav/version"></see></summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
+    let version = _prefix "version"
     /// <summary>
     /// The original provider of the encoded information (e.g. PubMed, UniProt, Science Commons).
     ///
     /// The provider might not coincide with the dct:publisher, which would describe the current publisher of the resource. For instance if the resource was retrieved, imported or derived from a source, that source was published by the original provider. pav:providedBy provides a shortcut to indicate that original provider on the new resource.
     /// <see href="http://purl.org/pav/providedBy"></see></summary>
-    let providedBy = Namespaced_IRI.parse _namespace_name "providedBy" |> NamespacedName
-
+    let providedBy = _prefix "providedBy"
     /// <summary>
     /// An entity responsible for retrieving the data from an external source.
     ///
@@ -367,9 +331,7 @@ module pav =
     ///
     /// See pav:importedFrom for a discussion of import vs. retrieve vs. derived.
     /// <see href="http://purl.org/pav/retrievedBy"></see></summary>
-    let retrievedBy =
-        Namespaced_IRI.parse _namespace_name "retrievedBy" |> NamespacedName
-
+    let retrievedBy = _prefix "retrievedBy"
     /// <summary>
     /// The date the source for this resource was retrieved.
     ///
@@ -379,9 +341,7 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/retrievedOn"></see></summary>
-    let retrievedOn =
-        Namespaced_IRI.parse _namespace_name "retrievedOn" |> NamespacedName
-
+    let retrievedOn = _prefix "retrievedOn"
     /// <summary>
     /// The resource is related to a given source which was accessed or consulted (but not retrieved, imported or derived from). This access can be detailed with pav:sourceAccessedBy and pav:sourceAccessedOn.
     ///
@@ -389,9 +349,7 @@ module pav =
     ///
     /// Another example: I can access the page for tomorrow weather in Boston (http://www.weather.com/weather/tomorrow/Boston+MA+02143)  and I can blog ‘tomorrow is going to be nice’. The source does not make any claims about the nice weather, that is my interpretation; therefore the blog post has pav:sourceAccessedAt the weather page.
     /// <see href="http://purl.org/pav/sourceAccessedAt"></see></summary>
-    let sourceAccessedAt =
-        Namespaced_IRI.parse _namespace_name "sourceAccessedAt" |> NamespacedName
-
+    let sourceAccessedAt = _prefix "sourceAccessedAt"
     /// <summary>
     /// The resource is related to a source which was last accessed or consulted on the given date. The source(s) should be specified using pav:sourceAccessedAt. Usage of this property indicates that the source has been checked previously, which the initial time should be indicated with pav:sourceAccessedOn.
     ///
@@ -401,18 +359,14 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/sourceLastAccessedOn"></see></summary>
-    let sourceLastAccessedOn =
-        Namespaced_IRI.parse _namespace_name "sourceLastAccessedOn" |> NamespacedName
-
+    let sourceLastAccessedOn = _prefix "sourceLastAccessedOn"
     /// <summary>
     /// The resource is related to a source which was accessed or consulted
     /// by the given agent. The source(s) should be specified using pav:sourceAccessedAt, and the time with pav:sourceAccessedOn.
     ///
     /// For instance, the given agent could be a curator (also pav:curatedBy) which consulted figures in a published paper to confirm that a dataset was correctly pav:importedFrom the paper's supplementary CSV file.
     /// <see href="http://purl.org/pav/sourceAccessedBy"></see></summary>
-    let sourceAccessedBy =
-        Namespaced_IRI.parse _namespace_name "sourceAccessedBy" |> NamespacedName
-
+    let sourceAccessedBy = _prefix "sourceAccessedBy"
     /// <summary>
     /// The resource is related to a source which was originally accessed or consulted on the given date as part of creating or authoring the resource. The source(s) should be specified using pav:sourceAccessedAt.
     ///
@@ -424,5 +378,4 @@ module pav =
     ///
     /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.
     /// <see href="http://purl.org/pav/sourceAccessedOn"></see></summary>
-    let sourceAccessedOn =
-        Namespaced_IRI.parse _namespace_name "sourceAccessedOn" |> NamespacedName
+    let sourceAccessedOn = _prefix "sourceAccessedOn"

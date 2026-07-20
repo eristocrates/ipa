@@ -1,395 +1,302 @@
 namespace http.iais.fraunhofer.de.vocabs.rami.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rami =
     let _namespace_name = "http://iais.fraunhofer.de/vocabs/rami#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#AdminShell"></see>
     /// </summary>
-    let AdminShell = Namespaced_IRI.parse _namespace_name "AdminShell" |> NamespacedName
-
+    let AdminShell = _prefix "AdminShell"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#ApplicationData"></see>
     /// </summary>
-    let ApplicationData =
-        Namespaced_IRI.parse _namespace_name "ApplicationData" |> NamespacedName
-
+    let ApplicationData = _prefix "ApplicationData"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#BasicData"></see>
     /// </summary>
-    let BasicData = Namespaced_IRI.parse _namespace_name "BasicData" |> NamespacedName
+    let BasicData = _prefix "BasicData"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#CADFormat"></see>
     /// </summary>
-    let CADFormat = Namespaced_IRI.parse _namespace_name "CADFormat" |> NamespacedName
+    let CADFormat = _prefix "CADFormat"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#MCAD"></see>
     /// </summary>
-    let MCAD = Namespaced_IRI.parse _namespace_name "MCAD" |> NamespacedName
+    let MCAD = _prefix "MCAD"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#CADSystem"></see>
     /// </summary>
-    let CADSystem = Namespaced_IRI.parse _namespace_name "CADSystem" |> NamespacedName
+    let CADSystem = _prefix "CADSystem"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#CADarchive"></see>
     /// </summary>
-    let CADarchive = Namespaced_IRI.parse _namespace_name "CADarchive" |> NamespacedName
-
+    let CADarchive = _prefix "CADarchive"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#ConnectedWorld"></see>
     /// </summary>
-    let ConnectedWorld =
-        Namespaced_IRI.parse _namespace_name "ConnectedWorld" |> NamespacedName
-
+    let ConnectedWorld = _prefix "ConnectedWorld"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel"></see>
     /// </summary>
-    let RAMIHierarchyLevel =
-        Namespaced_IRI.parse _namespace_name "RAMIHierarchyLevel" |> NamespacedName
-
+    let RAMIHierarchyLevel = _prefix "RAMIHierarchyLevel"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#ControlDevice"></see>
     /// </summary>
-    let ControlDevice =
-        Namespaced_IRI.parse _namespace_name "ControlDevice" |> NamespacedName
-
+    let ControlDevice = _prefix "ControlDevice"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#CumulativeEnergyConsumption"></see>
     /// </summary>
-    let CumulativeEnergyConsumption =
-        Namespaced_IRI.parse _namespace_name "CumulativeEnergyConsumption" |> NamespacedName
-
+    let CumulativeEnergyConsumption = _prefix "CumulativeEnergyConsumption"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#ElectricalData"></see>
     /// </summary>
-    let ElectricalData =
-        Namespaced_IRI.parse _namespace_name "ElectricalData" |> NamespacedName
-
+    let ElectricalData = _prefix "ElectricalData"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#EngineeringData"></see>
     /// </summary>
-    let EngineeringData =
-        Namespaced_IRI.parse _namespace_name "EngineeringData" |> NamespacedName
-
+    let EngineeringData = _prefix "EngineeringData"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Enterprise"></see>
     /// </summary>
-    let Enterprise = Namespaced_IRI.parse _namespace_name "Enterprise" |> NamespacedName
-
+    let Enterprise = _prefix "Enterprise"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#FieldDevice"></see>
     /// </summary>
-    let FieldDevice =
-        Namespaced_IRI.parse _namespace_name "FieldDevice" |> NamespacedName
-
+    let FieldDevice = _prefix "FieldDevice"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Firmware"></see>
     /// </summary>
-    let Firmware = Namespaced_IRI.parse _namespace_name "Firmware" |> NamespacedName
+    let Firmware = _prefix "Firmware"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Instance"></see>
     /// </summary>
-    let Instance = Namespaced_IRI.parse _namespace_name "Instance" |> NamespacedName
+    let Instance = _prefix "Instance"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Machine"></see>
     /// </summary>
-    let Machine = Namespaced_IRI.parse _namespace_name "Machine" |> NamespacedName
+    let Machine = _prefix "Machine"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Object"></see>
     /// </summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
+    let Object = _prefix "Object"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Type"></see>
     /// </summary>
-    let Type = Namespaced_IRI.parse _namespace_name "Type" |> NamespacedName
+    let Type = _prefix "Type"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Order"></see>
     /// </summary>
-    let Order = Namespaced_IRI.parse _namespace_name "Order" |> NamespacedName
+    let Order = _prefix "Order"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Product"></see>
     /// </summary>
-    let Product = Namespaced_IRI.parse _namespace_name "Product" |> NamespacedName
+    let Product = _prefix "Product"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Station"></see>
     /// </summary>
-    let Station = Namespaced_IRI.parse _namespace_name "Station" |> NamespacedName
+    let Station = _prefix "Station"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#WorkCenter"></see>
     /// </summary>
-    let WorkCenter = Namespaced_IRI.parse _namespace_name "WorkCenter" |> NamespacedName
-
+    let WorkCenter = _prefix "WorkCenter"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#SafetyConfiguration"></see>
     /// </summary>
-    let SafetyConfiguration =
-        Namespaced_IRI.parse _namespace_name "SafetyConfiguration" |> NamespacedName
-
+    let SafetyConfiguration = _prefix "SafetyConfiguration"
     /// <summary>
     /// Data measured by a sensor
     /// <see href="http://iais.fraunhofer.de/vocabs/rami#SensorMeasurementData"></see></summary>
-    let SensorMeasurementData =
-        Namespaced_IRI.parse _namespace_name "SensorMeasurementData" |> NamespacedName
-
+    let SensorMeasurementData = _prefix "SensorMeasurementData"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#Standard"></see>
     /// </summary>
-    let Standard = Namespaced_IRI.parse _namespace_name "Standard" |> NamespacedName
-
+    let Standard = _prefix "Standard"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#TechnicalFunctionality"></see>
     /// </summary>
-    let TechnicalFunctionality =
-        Namespaced_IRI.parse _namespace_name "TechnicalFunctionality" |> NamespacedName
-
+    let TechnicalFunctionality = _prefix "TechnicalFunctionality"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#TraceRecordings"></see>
     /// </summary>
-    let TraceRecordings =
-        Namespaced_IRI.parse _namespace_name "TraceRecordings" |> NamespacedName
-
+    let TraceRecordings = _prefix "TraceRecordings"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#VideoRecording"></see>
     /// </summary>
-    let VideoRecording =
-        Namespaced_IRI.parse _namespace_name "VideoRecording" |> NamespacedName
-
+    let VideoRecording = _prefix "VideoRecording"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#VideoRecordings"></see>
     /// </summary>
-    let VideoRecordings =
-        Namespaced_IRI.parse _namespace_name "VideoRecordings" |> NamespacedName
-
+    let VideoRecordings = _prefix "VideoRecordings"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#blockUrl"></see>
     /// </summary>
-    let blockUrl = Namespaced_IRI.parse _namespace_name "blockUrl" |> NamespacedName
-
+    let blockUrl = _prefix "blockUrl"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#brakingResistance"></see>
     /// </summary>
-    let brakingResistance =
-        Namespaced_IRI.parse _namespace_name "brakingResistance" |> NamespacedName
-
+    let brakingResistance = _prefix "brakingResistance"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#certificateName"></see>
     /// </summary>
-    let certificateName =
-        Namespaced_IRI.parse _namespace_name "certificateName" |> NamespacedName
-
+    let certificateName = _prefix "certificateName"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#certificateUrl"></see>
     /// </summary>
-    let certificateUrl =
-        Namespaced_IRI.parse _namespace_name "certificateUrl" |> NamespacedName
-
+    let certificateUrl = _prefix "certificateUrl"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#contributes"></see>
     /// </summary>
-    let contributes =
-        Namespaced_IRI.parse _namespace_name "contributes" |> NamespacedName
-
+    let contributes = _prefix "contributes"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#contributionDate"></see>
     /// </summary>
-    let contributionDate =
-        Namespaced_IRI.parse _namespace_name "contributionDate" |> NamespacedName
-
+    let contributionDate = _prefix "contributionDate"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#createdBy"></see>
     /// </summary>
-    let createdBy = Namespaced_IRI.parse _namespace_name "createdBy" |> NamespacedName
-
+    let createdBy = _prefix "createdBy"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#creationDate"></see>
     /// </summary>
-    let creationDate =
-        Namespaced_IRI.parse _namespace_name "creationDate" |> NamespacedName
-
+    let creationDate = _prefix "creationDate"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#eClass"></see>
     /// </summary>
-    let eClass = Namespaced_IRI.parse _namespace_name "eClass" |> NamespacedName
-
+    let eClass = _prefix "eClass"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#eClassClassification"></see>
     /// </summary>
-    let eClassClassification =
-        Namespaced_IRI.parse _namespace_name "eClassClassification" |> NamespacedName
-
+    let eClassClassification = _prefix "eClassClassification"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#eClassIRDI"></see>
     /// </summary>
-    let eClassIRDI = Namespaced_IRI.parse _namespace_name "eClassIRDI" |> NamespacedName
-
+    let eClassIRDI = _prefix "eClassIRDI"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#firmwareDate"></see>
     /// </summary>
-    let firmwareDate =
-        Namespaced_IRI.parse _namespace_name "firmwareDate" |> NamespacedName
-
+    let firmwareDate = _prefix "firmwareDate"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#hasData"></see>
     /// </summary>
-    let hasData = Namespaced_IRI.parse _namespace_name "hasData" |> NamespacedName
-
+    let hasData = _prefix "hasData"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#hasEnergyValue"></see>
     /// </summary>
-    let hasEnergyValue =
-        Namespaced_IRI.parse _namespace_name "hasEnergyValue" |> NamespacedName
-
+    let hasEnergyValue = _prefix "hasEnergyValue"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#hasRAMIHierarchyLevel"></see>
     /// </summary>
-    let hasRAMIHierarchyLevel =
-        Namespaced_IRI.parse _namespace_name "hasRAMIHierarchyLevel" |> NamespacedName
-
+    let hasRAMIHierarchyLevel = _prefix "hasRAMIHierarchyLevel"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#hasSensorId"></see>
     /// </summary>
-    let hasSensorId =
-        Namespaced_IRI.parse _namespace_name "hasSensorId" |> NamespacedName
-
+    let hasSensorId = _prefix "hasSensorId"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#hasTechnicalFuncionality"></see>
     /// </summary>
-    let hasTechnicalFuncionality =
-        Namespaced_IRI.parse _namespace_name "hasTechnicalFuncionality" |> NamespacedName
-
+    let hasTechnicalFuncionality = _prefix "hasTechnicalFuncionality"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#identification"></see>
     /// </summary>
-    let identification =
-        Namespaced_IRI.parse _namespace_name "identification" |> NamespacedName
-
+    let identification = _prefix "identification"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#inputVoltage"></see>
     /// </summary>
-    let inputVoltage =
-        Namespaced_IRI.parse _namespace_name "inputVoltage" |> NamespacedName
-
+    let inputVoltage = _prefix "inputVoltage"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#inventoryNumber"></see>
     /// </summary>
-    let inventoryNumber =
-        Namespaced_IRI.parse _namespace_name "inventoryNumber" |> NamespacedName
-
+    let inventoryNumber = _prefix "inventoryNumber"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#isDescribedWith"></see>
     /// </summary>
-    let isDescribedWith =
-        Namespaced_IRI.parse _namespace_name "isDescribedWith" |> NamespacedName
-
+    let isDescribedWith = _prefix "isDescribedWith"
     /// <summary>
     /// The Object can be part of of other Objects
     /// <see href="http://iais.fraunhofer.de/vocabs/rami#isPartOf"></see></summary>
-    let isPartOf = Namespaced_IRI.parse _namespace_name "isPartOf" |> NamespacedName
-
+    let isPartOf = _prefix "isPartOf"
     /// <summary>
     /// Points to an Image for the Object/Entity
     /// <see href="http://iais.fraunhofer.de/vocabs/rami#livePicture"></see></summary>
-    let livePicture =
-        Namespaced_IRI.parse _namespace_name "livePicture" |> NamespacedName
-
+    let livePicture = _prefix "livePicture"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#logs"></see>
     /// </summary>
-    let logs = Namespaced_IRI.parse _namespace_name "logs" |> NamespacedName
+    let logs = _prefix "logs"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#manual"></see>
     /// </summary>
-    let manual = Namespaced_IRI.parse _namespace_name "manual" |> NamespacedName
+    let manual = _prefix "manual"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#objectId"></see>
     /// </summary>
-    let objectId = Namespaced_IRI.parse _namespace_name "objectId" |> NamespacedName
-
+    let objectId = _prefix "objectId"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#outputFrequency"></see>
     /// </summary>
-    let outputFrequency =
-        Namespaced_IRI.parse _namespace_name "outputFrequency" |> NamespacedName
-
+    let outputFrequency = _prefix "outputFrequency"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#phasesNumber"></see>
     /// </summary>
-    let phasesNumber =
-        Namespaced_IRI.parse _namespace_name "phasesNumber" |> NamespacedName
-
+    let phasesNumber = _prefix "phasesNumber"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#publishedURL"></see>
     /// </summary>
-    let publishedURL =
-        Namespaced_IRI.parse _namespace_name "publishedURL" |> NamespacedName
-
+    let publishedURL = _prefix "publishedURL"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#releaseDate"></see>
     /// </summary>
-    let releaseDate =
-        Namespaced_IRI.parse _namespace_name "releaseDate" |> NamespacedName
-
+    let releaseDate = _prefix "releaseDate"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#safetyName"></see>
     /// </summary>
-    let safetyName = Namespaced_IRI.parse _namespace_name "safetyName" |> NamespacedName
-
+    let safetyName = _prefix "safetyName"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#standardName"></see>
     /// </summary>
-    let standardName =
-        Namespaced_IRI.parse _namespace_name "standardName" |> NamespacedName
-
+    let standardName = _prefix "standardName"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#standardURL"></see>
     /// </summary>
-    let standardURL =
-        Namespaced_IRI.parse _namespace_name "standardURL" |> NamespacedName
-
+    let standardURL = _prefix "standardURL"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#standardVersion"></see>
     /// </summary>
-    let standardVersion =
-        Namespaced_IRI.parse _namespace_name "standardVersion" |> NamespacedName
-
+    let standardVersion = _prefix "standardVersion"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#stdName"></see>
     /// </summary>
-    let stdName = Namespaced_IRI.parse _namespace_name "stdName" |> NamespacedName
-
+    let stdName = _prefix "stdName"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#typeDescription"></see>
     /// </summary>
-    let typeDescription =
-        Namespaced_IRI.parse _namespace_name "typeDescription" |> NamespacedName
-
+    let typeDescription = _prefix "typeDescription"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
-
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#videoRecordingUrl"></see>
     /// </summary>
-    let videoRecordingUrl =
-        Namespaced_IRI.parse _namespace_name "videoRecordingUrl" |> NamespacedName
-
+    let videoRecordingUrl = _prefix "videoRecordingUrl"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#videoUrl"></see>
     /// </summary>
-    let videoUrl = Namespaced_IRI.parse _namespace_name "videoUrl" |> NamespacedName
+    let videoUrl = _prefix "videoUrl"
     /// <summary>
     ///   <see href="http://iais.fraunhofer.de/vocabs/rami#wraps"></see>
     /// </summary>
-    let wraps = Namespaced_IRI.parse _namespace_name "wraps" |> NamespacedName
+    let wraps = _prefix "wraps"

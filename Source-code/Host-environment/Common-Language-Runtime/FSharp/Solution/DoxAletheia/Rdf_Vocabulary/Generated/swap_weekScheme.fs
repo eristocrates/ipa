@@ -1,35 +1,34 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.weekScheme.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module swap_weekScheme =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/weekScheme#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#Day"></see>
     /// </summary>
-    let Day = Namespaced_IRI.parse _namespace_name "Day" |> NamespacedName
+    let Day = _prefix "Day"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#Duty"></see>
     /// </summary>
-    let Duty = Namespaced_IRI.parse _namespace_name "Duty" |> NamespacedName
+    let Duty = _prefix "Duty"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayEnd"></see>
     /// </summary>
-    let hasDayEnd = Namespaced_IRI.parse _namespace_name "hasDayEnd" |> NamespacedName
-
+    let hasDayEnd = _prefix "hasDayEnd"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayStart"></see>
     /// </summary>
-    let hasDayStart =
-        Namespaced_IRI.parse _namespace_name "hasDayStart" |> NamespacedName
-
+    let hasDayStart = _prefix "hasDayStart"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDutyEnd"></see>
     /// </summary>
-    let hasDutyEnd = Namespaced_IRI.parse _namespace_name "hasDutyEnd" |> NamespacedName
-
+    let hasDutyEnd = _prefix "hasDutyEnd"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDutyStart"></see>
     /// </summary>
-    let hasDutyStart =
-        Namespaced_IRI.parse _namespace_name "hasDutyStart" |> NamespacedName
+    let hasDutyStart = _prefix "hasDutyStart"

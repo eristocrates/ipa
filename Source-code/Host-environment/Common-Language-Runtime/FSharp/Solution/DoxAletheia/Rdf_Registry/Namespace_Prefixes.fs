@@ -4147,3 +4147,4 @@ let global_prefix_declarations = [|
     "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/", "lcc-3166-2-us" 
     "https://www.w3.org/ns/posix/stat#", "posix" 
 |]
+let global_prefix_map = global_prefix_declarations |> Map.ofArray

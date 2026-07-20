@@ -1,371 +1,294 @@
 namespace http.purl.org.vocab.frbr.core.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module frbrcore =
     let _namespace_name = "http://purl.org/vocab/frbr/core#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#ClassicalWork"></see>
     /// </summary>
-    let ClassicalWork =
-        Namespaced_IRI.parse _namespace_name "ClassicalWork" |> NamespacedName
-
+    let ClassicalWork = _prefix "ClassicalWork"
     /// <summary>
     /// This class corresponds to the FRBR group one entity 'Work'.
     /// <see href="http://purl.org/vocab/frbr/core#Work"></see></summary>
-    let Work = Namespaced_IRI.parse _namespace_name "Work" |> NamespacedName
+    let Work = _prefix "Work"
     /// <summary>
     /// This class corresponds to the FRBR group three entity 'Concept'.
     /// <see href="http://purl.org/vocab/frbr/core#Concept"></see></summary>
-    let Concept = Namespaced_IRI.parse _namespace_name "Concept" |> NamespacedName
+    let Concept = _prefix "Concept"
     /// <summary>
     /// This class represents any of the FRBR group three entities.
     /// <see href="http://purl.org/vocab/frbr/core#Subject"></see></summary>
-    let Subject = Namespaced_IRI.parse _namespace_name "Subject" |> NamespacedName
+    let Subject = _prefix "Subject"
     /// <summary>
     /// This class corresponds to the FRBR group three entity 'Place'.
     /// <see href="http://purl.org/vocab/frbr/core#Place"></see></summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     /// This class corresponds to the FRBR group three entity 'Object'.
     /// <see href="http://purl.org/vocab/frbr/core#Object"></see></summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
+    let Object = _prefix "Object"
     /// <summary>
     /// This class corresponds to the FRBR group three entity 'Event'.
     /// <see href="http://purl.org/vocab/frbr/core#Event"></see></summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     /// This class corresponds to the FRBR group two entity 'Corporate Body'.
     /// <see href="http://purl.org/vocab/frbr/core#CorporateBody"></see></summary>
-    let CorporateBody =
-        Namespaced_IRI.parse _namespace_name "CorporateBody" |> NamespacedName
-
+    let CorporateBody = _prefix "CorporateBody"
     /// <summary>
     /// This class represents any of the FRBR group two entities.
     /// <see href="http://purl.org/vocab/frbr/core#ResponsibleEntity"></see></summary>
-    let ResponsibleEntity =
-        Namespaced_IRI.parse _namespace_name "ResponsibleEntity" |> NamespacedName
-
+    let ResponsibleEntity = _prefix "ResponsibleEntity"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#Data"></see>
     /// </summary>
-    let Data = Namespaced_IRI.parse _namespace_name "Data" |> NamespacedName
+    let Data = _prefix "Data"
     /// <summary>
     /// This class corresponds to the FRBR group one entity 'Expression'.
     /// <see href="http://purl.org/vocab/frbr/core#Expression"></see></summary>
-    let Expression = Namespaced_IRI.parse _namespace_name "Expression" |> NamespacedName
+    let Expression = _prefix "Expression"
     /// <summary>
     /// This class represents any one of the FRBR group one entities.
     /// <see href="http://purl.org/vocab/frbr/core#Endeavour"></see></summary>
-    let Endeavour = Namespaced_IRI.parse _namespace_name "Endeavour" |> NamespacedName
+    let Endeavour = _prefix "Endeavour"
     /// <summary>
     /// This class corresponds to the FRBR group one entity 'Item'.
     /// <see href="http://purl.org/vocab/frbr/core#Item"></see></summary>
-    let Item = Namespaced_IRI.parse _namespace_name "Item" |> NamespacedName
-
+    let Item = _prefix "Item"
     /// <summary>
     /// This class corresponds to the FRBR group one entity 'Manifestation'.
     /// <see href="http://purl.org/vocab/frbr/core#Manifestation"></see></summary>
-    let Manifestation =
-        Namespaced_IRI.parse _namespace_name "Manifestation" |> NamespacedName
-
+    let Manifestation = _prefix "Manifestation"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#Image"></see>
     /// </summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
+    let Image = _prefix "Image"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#LegalWork"></see>
     /// </summary>
-    let LegalWork = Namespaced_IRI.parse _namespace_name "LegalWork" |> NamespacedName
-
+    let LegalWork = _prefix "LegalWork"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#LiteraryWork"></see>
     /// </summary>
-    let LiteraryWork =
-        Namespaced_IRI.parse _namespace_name "LiteraryWork" |> NamespacedName
-
+    let LiteraryWork = _prefix "LiteraryWork"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#MovingImage"></see>
     /// </summary>
-    let MovingImage =
-        Namespaced_IRI.parse _namespace_name "MovingImage" |> NamespacedName
-
+    let MovingImage = _prefix "MovingImage"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#Performance"></see>
     /// </summary>
-    let Performance =
-        Namespaced_IRI.parse _namespace_name "Performance" |> NamespacedName
-
+    let Performance = _prefix "Performance"
     /// <summary>
     /// This class corresponds to the FRBR group two entity 'Person'.
     /// <see href="http://purl.org/vocab/frbr/core#Person"></see></summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
-
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#ScholarlyWork"></see>
     /// </summary>
-    let ScholarlyWork =
-        Namespaced_IRI.parse _namespace_name "ScholarlyWork" |> NamespacedName
-
+    let ScholarlyWork = _prefix "ScholarlyWork"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#Sound"></see>
     /// </summary>
-    let Sound = Namespaced_IRI.parse _namespace_name "Sound" |> NamespacedName
+    let Sound = _prefix "Sound"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#Text"></see>
     /// </summary>
-    let Text = Namespaced_IRI.parse _namespace_name "Text" |> NamespacedName
-
+    let Text = _prefix "Text"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#abridgement"></see>
     /// </summary>
-    let abridgement =
-        Namespaced_IRI.parse _namespace_name "abridgement" |> NamespacedName
-
+    let abridgement = _prefix "abridgement"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#relatedEndeavour"></see>
     /// </summary>
-    let relatedEndeavour =
-        Namespaced_IRI.parse _namespace_name "relatedEndeavour" |> NamespacedName
-
+    let relatedEndeavour = _prefix "relatedEndeavour"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#abridgementOf"></see>
     /// </summary>
-    let abridgementOf =
-        Namespaced_IRI.parse _namespace_name "abridgementOf" |> NamespacedName
-
+    let abridgementOf = _prefix "abridgementOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#adaption"></see>
     /// </summary>
-    let adaption = Namespaced_IRI.parse _namespace_name "adaption" |> NamespacedName
+    let adaption = _prefix "adaption"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#adaptionOf"></see>
     /// </summary>
-    let adaptionOf = Namespaced_IRI.parse _namespace_name "adaptionOf" |> NamespacedName
+    let adaptionOf = _prefix "adaptionOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#alternate"></see>
     /// </summary>
-    let alternate = Namespaced_IRI.parse _namespace_name "alternate" |> NamespacedName
-
+    let alternate = _prefix "alternate"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#alternateOf"></see>
     /// </summary>
-    let alternateOf =
-        Namespaced_IRI.parse _namespace_name "alternateOf" |> NamespacedName
-
+    let alternateOf = _prefix "alternateOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#arrangement"></see>
     /// </summary>
-    let arrangement =
-        Namespaced_IRI.parse _namespace_name "arrangement" |> NamespacedName
-
+    let arrangement = _prefix "arrangement"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#arrangementOf"></see>
     /// </summary>
-    let arrangementOf =
-        Namespaced_IRI.parse _namespace_name "arrangementOf" |> NamespacedName
-
+    let arrangementOf = _prefix "arrangementOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#complement"></see>
     /// </summary>
-    let complement = Namespaced_IRI.parse _namespace_name "complement" |> NamespacedName
-
+    let complement = _prefix "complement"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#complementOf"></see>
     /// </summary>
-    let complementOf =
-        Namespaced_IRI.parse _namespace_name "complementOf" |> NamespacedName
-
+    let complementOf = _prefix "complementOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#creator"></see>
     /// </summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
-
+    let creator = _prefix "creator"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#responsibleEntity"></see>
     /// </summary>
-    let responsibleEntity =
-        Namespaced_IRI.parse _namespace_name "responsibleEntity" |> NamespacedName
-
+    let responsibleEntity = _prefix "responsibleEntity"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#creatorOf"></see>
     /// </summary>
-    let creatorOf = Namespaced_IRI.parse _namespace_name "creatorOf" |> NamespacedName
-
+    let creatorOf = _prefix "creatorOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#responsibleEntityOf"></see>
     /// </summary>
-    let responsibleEntityOf =
-        Namespaced_IRI.parse _namespace_name "responsibleEntityOf" |> NamespacedName
-
+    let responsibleEntityOf = _prefix "responsibleEntityOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#embodiment"></see>
     /// </summary>
-    let embodiment = Namespaced_IRI.parse _namespace_name "embodiment" |> NamespacedName
-
+    let embodiment = _prefix "embodiment"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#embodimentOf"></see>
     /// </summary>
-    let embodimentOf =
-        Namespaced_IRI.parse _namespace_name "embodimentOf" |> NamespacedName
-
+    let embodimentOf = _prefix "embodimentOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#exemplar"></see>
     /// </summary>
-    let exemplar = Namespaced_IRI.parse _namespace_name "exemplar" |> NamespacedName
+    let exemplar = _prefix "exemplar"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#exemplarOf"></see>
     /// </summary>
-    let exemplarOf = Namespaced_IRI.parse _namespace_name "exemplarOf" |> NamespacedName
+    let exemplarOf = _prefix "exemplarOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#imitation"></see>
     /// </summary>
-    let imitation = Namespaced_IRI.parse _namespace_name "imitation" |> NamespacedName
-
+    let imitation = _prefix "imitation"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#imitationOf"></see>
     /// </summary>
-    let imitationOf =
-        Namespaced_IRI.parse _namespace_name "imitationOf" |> NamespacedName
-
+    let imitationOf = _prefix "imitationOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#owner"></see>
     /// </summary>
-    let owner = Namespaced_IRI.parse _namespace_name "owner" |> NamespacedName
+    let owner = _prefix "owner"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#ownerOf"></see>
     /// </summary>
-    let ownerOf = Namespaced_IRI.parse _namespace_name "ownerOf" |> NamespacedName
+    let ownerOf = _prefix "ownerOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#part"></see>
     /// </summary>
-    let part = Namespaced_IRI.parse _namespace_name "part" |> NamespacedName
+    let part = _prefix "part"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#partOf"></see>
     /// </summary>
-    let partOf = Namespaced_IRI.parse _namespace_name "partOf" |> NamespacedName
+    let partOf = _prefix "partOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#producer"></see>
     /// </summary>
-    let producer = Namespaced_IRI.parse _namespace_name "producer" |> NamespacedName
+    let producer = _prefix "producer"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#producerOf"></see>
     /// </summary>
-    let producerOf = Namespaced_IRI.parse _namespace_name "producerOf" |> NamespacedName
-
+    let producerOf = _prefix "producerOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#realization"></see>
     /// </summary>
-    let realization =
-        Namespaced_IRI.parse _namespace_name "realization" |> NamespacedName
-
+    let realization = _prefix "realization"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#realizationOf"></see>
     /// </summary>
-    let realizationOf =
-        Namespaced_IRI.parse _namespace_name "realizationOf" |> NamespacedName
-
+    let realizationOf = _prefix "realizationOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#realizer"></see>
     /// </summary>
-    let realizer = Namespaced_IRI.parse _namespace_name "realizer" |> NamespacedName
+    let realizer = _prefix "realizer"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#realizerOf"></see>
     /// </summary>
-    let realizerOf = Namespaced_IRI.parse _namespace_name "realizerOf" |> NamespacedName
-
+    let realizerOf = _prefix "realizerOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#reconfiguration"></see>
     /// </summary>
-    let reconfiguration =
-        Namespaced_IRI.parse _namespace_name "reconfiguration" |> NamespacedName
-
+    let reconfiguration = _prefix "reconfiguration"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#reconfigurationOf"></see>
     /// </summary>
-    let reconfigurationOf =
-        Namespaced_IRI.parse _namespace_name "reconfigurationOf" |> NamespacedName
-
+    let reconfigurationOf = _prefix "reconfigurationOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#reproduction"></see>
     /// </summary>
-    let reproduction =
-        Namespaced_IRI.parse _namespace_name "reproduction" |> NamespacedName
-
+    let reproduction = _prefix "reproduction"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#reproductionOf"></see>
     /// </summary>
-    let reproductionOf =
-        Namespaced_IRI.parse _namespace_name "reproductionOf" |> NamespacedName
-
+    let reproductionOf = _prefix "reproductionOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#revision"></see>
     /// </summary>
-    let revision = Namespaced_IRI.parse _namespace_name "revision" |> NamespacedName
+    let revision = _prefix "revision"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#revisionOf"></see>
     /// </summary>
-    let revisionOf = Namespaced_IRI.parse _namespace_name "revisionOf" |> NamespacedName
+    let revisionOf = _prefix "revisionOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#successor"></see>
     /// </summary>
-    let successor = Namespaced_IRI.parse _namespace_name "successor" |> NamespacedName
-
+    let successor = _prefix "successor"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#successorOf"></see>
     /// </summary>
-    let successorOf =
-        Namespaced_IRI.parse _namespace_name "successorOf" |> NamespacedName
-
+    let successorOf = _prefix "successorOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#summarization"></see>
     /// </summary>
-    let summarization =
-        Namespaced_IRI.parse _namespace_name "summarization" |> NamespacedName
-
+    let summarization = _prefix "summarization"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#summarizationOf"></see>
     /// </summary>
-    let summarizationOf =
-        Namespaced_IRI.parse _namespace_name "summarizationOf" |> NamespacedName
-
+    let summarizationOf = _prefix "summarizationOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#supplement"></see>
     /// </summary>
-    let supplement = Namespaced_IRI.parse _namespace_name "supplement" |> NamespacedName
-
+    let supplement = _prefix "supplement"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#supplementOf"></see>
     /// </summary>
-    let supplementOf =
-        Namespaced_IRI.parse _namespace_name "supplementOf" |> NamespacedName
-
+    let supplementOf = _prefix "supplementOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#transformation"></see>
     /// </summary>
-    let transformation =
-        Namespaced_IRI.parse _namespace_name "transformation" |> NamespacedName
-
+    let transformation = _prefix "transformation"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#transformationOf"></see>
     /// </summary>
-    let transformationOf =
-        Namespaced_IRI.parse _namespace_name "transformationOf" |> NamespacedName
-
+    let transformationOf = _prefix "transformationOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#translation"></see>
     /// </summary>
-    let translation =
-        Namespaced_IRI.parse _namespace_name "translation" |> NamespacedName
-
+    let translation = _prefix "translation"
     /// <summary>
     ///   <see href="http://purl.org/vocab/frbr/core#translationOf"></see>
     /// </summary>
-    let translationOf =
-        Namespaced_IRI.parse _namespace_name "translationOf" |> NamespacedName
+    let translationOf = _prefix "translationOf"

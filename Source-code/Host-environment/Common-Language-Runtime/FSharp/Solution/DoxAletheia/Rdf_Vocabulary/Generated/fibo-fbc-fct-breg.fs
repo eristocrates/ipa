@@ -1,343 +1,264 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.BusinessRegistries.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_breg =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/ActiveStatus"></see>
     /// </summary>
-    let ActiveStatus =
-        Namespaced_IRI.parse _namespace_name "ActiveStatus" |> NamespacedName
-
+    let ActiveStatus = _prefix "ActiveStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityStatus"></see>
     /// </summary>
-    let EntityStatus =
-        Namespaced_IRI.parse _namespace_name "EntityStatus" |> NamespacedName
-
+    let EntityStatus = _prefix "EntityStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/AnnulledStatus"></see>
     /// </summary>
-    let AnnulledStatus =
-        Namespaced_IRI.parse _namespace_name "AnnulledStatus" |> NamespacedName
-
+    let AnnulledStatus = _prefix "AnnulledStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/RegistrationStatus"></see>
     /// </summary>
-    let RegistrationStatus =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatus" |> NamespacedName
-
+    let RegistrationStatus = _prefix "RegistrationStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/BusinessRegisterIdentifier"></see>
     /// </summary>
-    let BusinessRegisterIdentifier =
-        Namespaced_IRI.parse _namespace_name "BusinessRegisterIdentifier" |> NamespacedName
-
+    let BusinessRegisterIdentifier = _prefix "BusinessRegisterIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/BusinessRegistry"></see>
     /// </summary>
-    let BusinessRegistry =
-        Namespaced_IRI.parse _namespace_name "BusinessRegistry" |> NamespacedName
-
+    let BusinessRegistry = _prefix "BusinessRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/BusinessRegistrationAuthority"></see>
     /// </summary>
-    let BusinessRegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "BusinessRegistrationAuthority" |> NamespacedName
-
+    let BusinessRegistrationAuthority = _prefix "BusinessRegistrationAuthority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRegistryName"></see>
     /// </summary>
-    let hasRegistryName =
-        Namespaced_IRI.parse _namespace_name "hasRegistryName" |> NamespacedName
-
+    let hasRegistryName = _prefix "hasRegistryName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/BusinessRegistryEntry"></see>
     /// </summary>
-    let BusinessRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BusinessRegistryEntry" |> NamespacedName
-
+    let BusinessRegistryEntry = _prefix "BusinessRegistryEntry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRegistrationStatus"></see>
     /// </summary>
-    let hasRegistrationStatus =
-        Namespaced_IRI.parse _namespace_name "hasRegistrationStatus" |> NamespacedName
-
+    let hasRegistrationStatus = _prefix "hasRegistrationStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/CancelledStatus"></see>
     /// </summary>
-    let CancelledStatus =
-        Namespaced_IRI.parse _namespace_name "CancelledStatus" |> NamespacedName
-
+    let CancelledStatus = _prefix "CancelledStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/DuplicateStatus"></see>
     /// </summary>
-    let DuplicateStatus =
-        Namespaced_IRI.parse _namespace_name "DuplicateStatus" |> NamespacedName
-
+    let DuplicateStatus = _prefix "DuplicateStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityExpirationReason"></see>
     /// </summary>
-    let EntityExpirationReason =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReason" |> NamespacedName
+    let EntityExpirationReason = _prefix "EntityExpirationReason"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityExpirationReasonCorporateAction"></see>
     /// </summary>
     let EntityExpirationReasonCorporateAction =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReasonCorporateAction" |> NamespacedName
+        _prefix "EntityExpirationReasonCorporateAction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityExpirationReasonDissolved"></see>
     /// </summary>
-    let EntityExpirationReasonDissolved =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReasonDissolved" |> NamespacedName
-
+    let EntityExpirationReasonDissolved = _prefix "EntityExpirationReasonDissolved"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityExpirationReasonOther"></see>
     /// </summary>
-    let EntityExpirationReasonOther =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReasonOther" |> NamespacedName
-
+    let EntityExpirationReasonOther = _prefix "EntityExpirationReasonOther"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityLegalFormRegistry"></see>
     /// </summary>
-    let EntityLegalFormRegistry =
-        Namespaced_IRI.parse _namespace_name "EntityLegalFormRegistry" |> NamespacedName
-
+    let EntityLegalFormRegistry = _prefix "EntityLegalFormRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityLegalFormRegistryEntry"></see>
     /// </summary>
-    let EntityLegalFormRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "EntityLegalFormRegistryEntry" |> NamespacedName
-
+    let EntityLegalFormRegistryEntry = _prefix "EntityLegalFormRegistryEntry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityValidationLevel"></see>
     /// </summary>
-    let EntityValidationLevel =
-        Namespaced_IRI.parse _namespace_name "EntityValidationLevel" |> NamespacedName
+    let EntityValidationLevel = _prefix "EntityValidationLevel"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityValidationLevelEntitySuppliedOnly"></see>
     /// </summary>
     let EntityValidationLevelEntitySuppliedOnly =
-        Namespaced_IRI.parse _namespace_name "EntityValidationLevelEntitySuppliedOnly" |> NamespacedName
+        _prefix "EntityValidationLevelEntitySuppliedOnly"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityValidationLevelFullyCorroborated"></see>
     /// </summary>
     let EntityValidationLevelFullyCorroborated =
-        Namespaced_IRI.parse _namespace_name "EntityValidationLevelFullyCorroborated" |> NamespacedName
+        _prefix "EntityValidationLevelFullyCorroborated"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/EntityValidationLevelPartiallyCorroborated"></see>
     /// </summary>
     let EntityValidationLevelPartiallyCorroborated =
-        Namespaced_IRI.parse _namespace_name "EntityValidationLevelPartiallyCorroborated" |> NamespacedName
+        _prefix "EntityValidationLevelPartiallyCorroborated"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/InactiveStatus"></see>
     /// </summary>
-    let InactiveStatus =
-        Namespaced_IRI.parse _namespace_name "InactiveStatus" |> NamespacedName
-
+    let InactiveStatus = _prefix "InactiveStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/IssuedStatus"></see>
     /// </summary>
-    let IssuedStatus =
-        Namespaced_IRI.parse _namespace_name "IssuedStatus" |> NamespacedName
-
+    let IssuedStatus = _prefix "IssuedStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/LapsedStatus"></see>
     /// </summary>
-    let LapsedStatus =
-        Namespaced_IRI.parse _namespace_name "LapsedStatus" |> NamespacedName
-
+    let LapsedStatus = _prefix "LapsedStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/LegalEntityIdentifierRegistry"></see>
     /// </summary>
-    let LegalEntityIdentifierRegistry =
-        Namespaced_IRI.parse _namespace_name "LegalEntityIdentifierRegistry" |> NamespacedName
+    let LegalEntityIdentifierRegistry = _prefix "LegalEntityIdentifierRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/LegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let LegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "LegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "LegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasValidationAuthority"></see>
     /// </summary>
-    let hasValidationAuthority =
-        Namespaced_IRI.parse _namespace_name "hasValidationAuthority" |> NamespacedName
-
+    let hasValidationAuthority = _prefix "hasValidationAuthority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasValidationLevel"></see>
     /// </summary>
-    let hasValidationLevel =
-        Namespaced_IRI.parse _namespace_name "hasValidationLevel" |> NamespacedName
-
+    let hasValidationLevel = _prefix "hasValidationLevel"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/LocalOperatingUnit"></see>
     /// </summary>
-    let LocalOperatingUnit =
-        Namespaced_IRI.parse _namespace_name "LocalOperatingUnit" |> NamespacedName
-
+    let LocalOperatingUnit = _prefix "LocalOperatingUnit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/MergedStatus"></see>
     /// </summary>
-    let MergedStatus =
-        Namespaced_IRI.parse _namespace_name "MergedStatus" |> NamespacedName
+    let MergedStatus = _prefix "MergedStatus"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/NorthAmericanIndustryClassificationSystemCode"></see>
     /// </summary>
     let NorthAmericanIndustryClassificationSystemCode =
-        Namespaced_IRI.parse _namespace_name "NorthAmericanIndustryClassificationSystemCode" |> NamespacedName
+        _prefix "NorthAmericanIndustryClassificationSystemCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/NorthAmericanIndustryClassificationSystemScheme"></see>
     /// </summary>
     let NorthAmericanIndustryClassificationSystemScheme =
-        Namespaced_IRI.parse _namespace_name "NorthAmericanIndustryClassificationSystemScheme" |> NamespacedName
+        _prefix "NorthAmericanIndustryClassificationSystemScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/PendingArchivalStatus"></see>
     /// </summary>
-    let PendingArchivalStatus =
-        Namespaced_IRI.parse _namespace_name "PendingArchivalStatus" |> NamespacedName
-
+    let PendingArchivalStatus = _prefix "PendingArchivalStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/PendingTransferStatus"></see>
     /// </summary>
-    let PendingTransferStatus =
-        Namespaced_IRI.parse _namespace_name "PendingTransferStatus" |> NamespacedName
-
+    let PendingTransferStatus = _prefix "PendingTransferStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/PendingValidationStatus"></see>
     /// </summary>
-    let PendingValidationStatus =
-        Namespaced_IRI.parse _namespace_name "PendingValidationStatus" |> NamespacedName
-
+    let PendingValidationStatus = _prefix "PendingValidationStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/RegistrationAuthorityCode"></see>
     /// </summary>
-    let RegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "RegistrationAuthorityCode" |> NamespacedName
-
+    let RegistrationAuthorityCode = _prefix "RegistrationAuthorityCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/RetiredStatus"></see>
     /// </summary>
-    let RetiredStatus =
-        Namespaced_IRI.parse _namespace_name "RetiredStatus" |> NamespacedName
+    let RetiredStatus = _prefix "RetiredStatus"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/StandardIndustrialClassificationCode"></see>
     /// </summary>
     let StandardIndustrialClassificationCode =
-        Namespaced_IRI.parse _namespace_name "StandardIndustrialClassificationCode" |> NamespacedName
+        _prefix "StandardIndustrialClassificationCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/StandardIndustrialClassificationScheme"></see>
     /// </summary>
     let StandardIndustrialClassificationScheme =
-        Namespaced_IRI.parse _namespace_name "StandardIndustrialClassificationScheme" |> NamespacedName
+        _prefix "StandardIndustrialClassificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/TransferredStatus"></see>
     /// </summary>
-    let TransferredStatus =
-        Namespaced_IRI.parse _namespace_name "TransferredStatus" |> NamespacedName
-
+    let TransferredStatus = _prefix "TransferredStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasAlternativeLanguageLegalName"></see>
     /// </summary>
-    let hasAlternativeLanguageLegalName =
-        Namespaced_IRI.parse _namespace_name "hasAlternativeLanguageLegalName" |> NamespacedName
+    let hasAlternativeLanguageLegalName = _prefix "hasAlternativeLanguageLegalName"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasAutomaticallyTransliteratedLegalName"></see>
     /// </summary>
     let hasAutomaticallyTransliteratedLegalName =
-        Namespaced_IRI.parse _namespace_name "hasAutomaticallyTransliteratedLegalName" |> NamespacedName
+        _prefix "hasAutomaticallyTransliteratedLegalName"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasTransliteratedLegalName"></see>
     /// </summary>
-    let hasTransliteratedLegalName =
-        Namespaced_IRI.parse _namespace_name "hasTransliteratedLegalName" |> NamespacedName
-
+    let hasTransliteratedLegalName = _prefix "hasTransliteratedLegalName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasEntityExpirationDate"></see>
     /// </summary>
-    let hasEntityExpirationDate =
-        Namespaced_IRI.parse _namespace_name "hasEntityExpirationDate" |> NamespacedName
-
+    let hasEntityExpirationDate = _prefix "hasEntityExpirationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasExpiryDate"></see>
     /// </summary>
-    let hasExpiryDate =
-        Namespaced_IRI.parse _namespace_name "hasExpiryDate" |> NamespacedName
-
+    let hasExpiryDate = _prefix "hasExpiryDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasEntityExpirationReason"></see>
     /// </summary>
-    let hasEntityExpirationReason =
-        Namespaced_IRI.parse _namespace_name "hasEntityExpirationReason" |> NamespacedName
-
+    let hasEntityExpirationReason = _prefix "hasEntityExpirationReason"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasEntityStatus"></see>
     /// </summary>
-    let hasEntityStatus =
-        Namespaced_IRI.parse _namespace_name "hasEntityStatus" |> NamespacedName
-
+    let hasEntityStatus = _prefix "hasEntityStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasInitialRegistrationDate"></see>
     /// </summary>
-    let hasInitialRegistrationDate =
-        Namespaced_IRI.parse _namespace_name "hasInitialRegistrationDate" |> NamespacedName
+    let hasInitialRegistrationDate = _prefix "hasInitialRegistrationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasPreferredTransliteratedLegalName"></see>
     /// </summary>
     let hasPreferredTransliteratedLegalName =
-        Namespaced_IRI.parse _namespace_name "hasPreferredTransliteratedLegalName" |> NamespacedName
+        _prefix "hasPreferredTransliteratedLegalName"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasPriorLegalName"></see>
     /// </summary>
-    let hasPriorLegalName =
-        Namespaced_IRI.parse _namespace_name "hasPriorLegalName" |> NamespacedName
-
+    let hasPriorLegalName = _prefix "hasPriorLegalName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRegistrationRevisionDate"></see>
     /// </summary>
-    let hasRegistrationRevisionDate =
-        Namespaced_IRI.parse _namespace_name "hasRegistrationRevisionDate" |> NamespacedName
-
+    let hasRegistrationRevisionDate = _prefix "hasRegistrationRevisionDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasRenewalDate"></see>
     /// </summary>
-    let hasRenewalDate =
-        Namespaced_IRI.parse _namespace_name "hasRenewalDate" |> NamespacedName
-
+    let hasRenewalDate = _prefix "hasRenewalDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasTradingOrOperationalName"></see>
     /// </summary>
-    let hasTradingOrOperationalName =
-        Namespaced_IRI.parse _namespace_name "hasTradingOrOperationalName" |> NamespacedName
-
+    let hasTradingOrOperationalName = _prefix "hasTradingOrOperationalName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/hasValidationDate"></see>
     /// </summary>
-    let hasValidationDate =
-        Namespaced_IRI.parse _namespace_name "hasValidationDate" |> NamespacedName
-
+    let hasValidationDate = _prefix "hasValidationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/isSelfMaintained"></see>
     /// </summary>
-    let isSelfMaintained =
-        Namespaced_IRI.parse _namespace_name "isSelfMaintained" |> NamespacedName
+    let isSelfMaintained = _prefix "isSelfMaintained"

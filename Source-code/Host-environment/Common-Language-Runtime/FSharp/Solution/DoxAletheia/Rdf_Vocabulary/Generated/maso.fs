@@ -1,854 +1,662 @@
 namespace http.securitytoolbox.appspot.com.MASO.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module maso =
     let _namespace_name = "http://securitytoolbox.appspot.com/MASO#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#AES"></see>
     /// </summary>
-    let AES = Namespaced_IRI.parse _namespace_name "AES" |> NamespacedName
-
+    let AES = _prefix "AES"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cryptage-symetrique"></see>
     /// </summary>
-    let ``Cryptage-symetrique`` =
-        Namespaced_IRI.parse _namespace_name "Cryptage-symetrique" |> NamespacedName
-
+    let ``Cryptage-symetrique`` = _prefix "Cryptage-symetrique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#AVG"></see>
     /// </summary>
-    let AVG = Namespaced_IRI.parse _namespace_name "AVG" |> NamespacedName
+    let AVG = _prefix "AVG"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Antivirus"></see>
     /// </summary>
-    let Antivirus = Namespaced_IRI.parse _namespace_name "Antivirus" |> NamespacedName
+    let Antivirus = _prefix "Antivirus"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Adresse"></see>
     /// </summary>
-    let Adresse = Namespaced_IRI.parse _namespace_name "Adresse" |> NamespacedName
-
+    let Adresse = _prefix "Adresse"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Token-electronique"></see>
     /// </summary>
-    let ``Token-electronique`` =
-        Namespaced_IRI.parse _namespace_name "Token-electronique" |> NamespacedName
-
+    let ``Token-electronique`` = _prefix "Token-electronique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Adresse-iP"></see>
     /// </summary>
-    let ``Adresse-iP`` =
-        Namespaced_IRI.parse _namespace_name "Adresse-iP" |> NamespacedName
-
+    let ``Adresse-iP`` = _prefix "Adresse-iP"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Agent"></see>
     /// </summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Hote"></see>
     /// </summary>
-    let Hote = Namespaced_IRI.parse _namespace_name "Hote" |> NamespacedName
-
+    let Hote = _prefix "Hote"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estPropriete"></see>
     /// </summary>
-    let estPropriete =
-        Namespaced_IRI.parse _namespace_name "estPropriete" |> NamespacedName
-
+    let estPropriete = _prefix "estPropriete"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#s_execute"></see>
     /// </summary>
-    let s_execute = Namespaced_IRI.parse _namespace_name "s_execute" |> NamespacedName
+    let s_execute = _prefix "s_execute"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Entite"></see>
     /// </summary>
-    let Entite = Namespaced_IRI.parse _namespace_name "Entite" |> NamespacedName
-
+    let Entite = _prefix "Entite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#H%C3%B4te"></see>
     /// </summary>
-    let ``H%C3%B4te`` =
-        Namespaced_IRI.parse _namespace_name "H%C3%B4te" |> NamespacedName
-
+    let ``H%C3%B4te`` = _prefix "H%C3%B4te"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Algorithme"></see>
     /// </summary>
-    let Algorithme = Namespaced_IRI.parse _namespace_name "Algorithme" |> NamespacedName
-
+    let Algorithme = _prefix "Algorithme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Algorithme-checksum"></see>
     /// </summary>
-    let ``Algorithme-checksum`` =
-        Namespaced_IRI.parse _namespace_name "Algorithme-checksum" |> NamespacedName
-
+    let ``Algorithme-checksum`` = _prefix "Algorithme-checksum"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Algorithme-cryptage"></see>
     /// </summary>
-    let ``Algorithme-cryptage`` =
-        Namespaced_IRI.parse _namespace_name "Algorithme-cryptage" |> NamespacedName
-
+    let ``Algorithme-cryptage`` = _prefix "Algorithme-cryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Algorithme-gestion-cles"></see>
     /// </summary>
-    let ``Algorithme-gestion-cles`` =
-        Namespaced_IRI.parse _namespace_name "Algorithme-gestion-cles" |> NamespacedName
-
+    let ``Algorithme-gestion-cles`` = _prefix "Algorithme-gestion-cles"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Algorithme-signature"></see>
     /// </summary>
-    let ``Algorithme-signature`` =
-        Namespaced_IRI.parse _namespace_name "Algorithme-signature" |> NamespacedName
-
+    let ``Algorithme-signature`` = _prefix "Algorithme-signature"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Contremesure"></see>
     /// </summary>
-    let Contremesure =
-        Namespaced_IRI.parse _namespace_name "Contremesure" |> NamespacedName
-
+    let Contremesure = _prefix "Contremesure"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Asset"></see>
     /// </summary>
-    let Asset = Namespaced_IRI.parse _namespace_name "Asset" |> NamespacedName
+    let Asset = _prefix "Asset"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Attaque"></see>
     /// </summary>
-    let Attaque = Namespaced_IRI.parse _namespace_name "Attaque" |> NamespacedName
+    let Attaque = _prefix "Attaque"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Menace"></see>
     /// </summary>
-    let Menace = Namespaced_IRI.parse _namespace_name "Menace" |> NamespacedName
-
+    let Menace = _prefix "Menace"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Authentification"></see>
     /// </summary>
-    let Authentification =
-        Namespaced_IRI.parse _namespace_name "Authentification" |> NamespacedName
-
+    let Authentification = _prefix "Authentification"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Objectif"></see>
     /// </summary>
-    let Objectif = Namespaced_IRI.parse _namespace_name "Objectif" |> NamespacedName
-
+    let Objectif = _prefix "Objectif"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Confidentialite"></see>
     /// </summary>
-    let Confidentialite =
-        Namespaced_IRI.parse _namespace_name "Confidentialite" |> NamespacedName
-
+    let Confidentialite = _prefix "Confidentialite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Mecanisme"></see>
     /// </summary>
-    let Mecanisme = Namespaced_IRI.parse _namespace_name "Mecanisme" |> NamespacedName
-
+    let Mecanisme = _prefix "Mecanisme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Autorisation"></see>
     /// </summary>
-    let Autorisation =
-        Namespaced_IRI.parse _namespace_name "Autorisation" |> NamespacedName
-
+    let Autorisation = _prefix "Autorisation"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#BlowFish"></see>
     /// </summary>
-    let BlowFish = Namespaced_IRI.parse _namespace_name "BlowFish" |> NamespacedName
+    let BlowFish = _prefix "BlowFish"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#CAST"></see>
     /// </summary>
-    let CAST = Namespaced_IRI.parse _namespace_name "CAST" |> NamespacedName
-
+    let CAST = _prefix "CAST"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Carte-credit"></see>
     /// </summary>
-    let ``Carte-credit`` =
-        Namespaced_IRI.parse _namespace_name "Carte-credit" |> NamespacedName
-
+    let ``Carte-credit`` = _prefix "Carte-credit"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Token-physique"></see>
     /// </summary>
-    let ``Token-physique`` =
-        Namespaced_IRI.parse _namespace_name "Token-physique" |> NamespacedName
-
+    let ``Token-physique`` = _prefix "Token-physique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Certificat"></see>
     /// </summary>
-    let Certificat = Namespaced_IRI.parse _namespace_name "Certificat" |> NamespacedName
-
+    let Certificat = _prefix "Certificat"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cle-de-Cryptage"></see>
     /// </summary>
-    let ``Cle-de-Cryptage`` =
-        Namespaced_IRI.parse _namespace_name "Cle-de-Cryptage" |> NamespacedName
-
+    let ``Cle-de-Cryptage`` = _prefix "Cle-de-Cryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cle-privee"></see>
     /// </summary>
-    let ``Cle-privee`` =
-        Namespaced_IRI.parse _namespace_name "Cle-privee" |> NamespacedName
-
+    let ``Cle-privee`` = _prefix "Cle-privee"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cle-de-cryptage"></see>
     /// </summary>
-    let ``Cle-de-cryptage`` =
-        Namespaced_IRI.parse _namespace_name "Cle-de-cryptage" |> NamespacedName
-
+    let ``Cle-de-cryptage`` = _prefix "Cle-de-cryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cle-publique"></see>
     /// </summary>
-    let ``Cle-publique`` =
-        Namespaced_IRI.parse _namespace_name "Cle-publique" |> NamespacedName
-
+    let ``Cle-publique`` = _prefix "Cle-publique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cle-secrete"></see>
     /// </summary>
-    let ``Cle-secrete`` =
-        Namespaced_IRI.parse _namespace_name "Cle-secrete" |> NamespacedName
-
+    let ``Cle-secrete`` = _prefix "Cle-secrete"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Composant"></see>
     /// </summary>
-    let Composant = Namespaced_IRI.parse _namespace_name "Composant" |> NamespacedName
+    let Composant = _prefix "Composant"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Software"></see>
     /// </summary>
-    let Software = Namespaced_IRI.parse _namespace_name "Software" |> NamespacedName
+    let Software = _prefix "Software"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Confiance"></see>
     /// </summary>
-    let Confiance = Namespaced_IRI.parse _namespace_name "Confiance" |> NamespacedName
-
+    let Confiance = _prefix "Confiance"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estMecanisme"></see>
     /// </summary>
-    let estMecanisme =
-        Namespaced_IRI.parse _namespace_name "estMecanisme" |> NamespacedName
-
+    let estMecanisme = _prefix "estMecanisme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Identification"></see>
     /// </summary>
-    let Identification =
-        Namespaced_IRI.parse _namespace_name "Identification" |> NamespacedName
-
+    let Identification = _prefix "Identification"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Contremesure-reseau"></see>
     /// </summary>
-    let ``Contremesure-reseau`` =
-        Namespaced_IRI.parse _namespace_name "Contremesure-reseau" |> NamespacedName
-
+    let ``Contremesure-reseau`` = _prefix "Contremesure-reseau"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Controle-dacces"></see>
     /// </summary>
-    let ``Controle-dacces`` =
-        Namespaced_IRI.parse _namespace_name "Controle-dacces" |> NamespacedName
-
+    let ``Controle-dacces`` = _prefix "Controle-dacces"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Disponibilite"></see>
     /// </summary>
-    let Disponibilite =
-        Namespaced_IRI.parse _namespace_name "Disponibilite" |> NamespacedName
-
+    let Disponibilite = _prefix "Disponibilite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cookie"></see>
     /// </summary>
-    let Cookie = Namespaced_IRI.parse _namespace_name "Cookie" |> NamespacedName
-
+    let Cookie = _prefix "Cookie"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Cryptage-asymetrique"></see>
     /// </summary>
-    let ``Cryptage-asymetrique`` =
-        Namespaced_IRI.parse _namespace_name "Cryptage-asymetrique" |> NamespacedName
-
+    let ``Cryptage-asymetrique`` = _prefix "Cryptage-asymetrique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Algorithme-Cryptage"></see>
     /// </summary>
-    let ``Algorithme-Cryptage`` =
-        Namespaced_IRI.parse _namespace_name "Algorithme-Cryptage" |> NamespacedName
-
+    let ``Algorithme-Cryptage`` = _prefix "Algorithme-Cryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#DES"></see>
     /// </summary>
-    let DES = Namespaced_IRI.parse _namespace_name "DES" |> NamespacedName
+    let DES = _prefix "DES"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Data"></see>
     /// </summary>
-    let Data = Namespaced_IRI.parse _namespace_name "Data" |> NamespacedName
+    let Data = _prefix "Data"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Defaut"></see>
     /// </summary>
-    let Defaut = Namespaced_IRI.parse _namespace_name "Defaut" |> NamespacedName
-
+    let Defaut = _prefix "Defaut"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Defaut-interaction"></see>
     /// </summary>
-    let ``Defaut-interaction`` =
-        Namespaced_IRI.parse _namespace_name "Defaut-interaction" |> NamespacedName
-
+    let ``Defaut-interaction`` = _prefix "Defaut-interaction"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Defaut-physique"></see>
     /// </summary>
-    let ``Defaut-physique`` =
-        Namespaced_IRI.parse _namespace_name "Defaut-physique" |> NamespacedName
-
+    let ``Defaut-physique`` = _prefix "Defaut-physique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Deni_de_service"></see>
     /// </summary>
-    let Deni_de_service =
-        Namespaced_IRI.parse _namespace_name "Deni_de_service" |> NamespacedName
-
+    let Deni_de_service = _prefix "Deni_de_service"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Description-logiciel"></see>
     /// </summary>
-    let ``Description-logiciel`` =
-        Namespaced_IRI.parse _namespace_name "Description-logiciel" |> NamespacedName
-
+    let ``Description-logiciel`` = _prefix "Description-logiciel"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Domaine"></see>
     /// </summary>
-    let Domaine = Namespaced_IRI.parse _namespace_name "Domaine" |> NamespacedName
-
+    let Domaine = _prefix "Domaine"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Echec-technique"></see>
     /// </summary>
-    let ``Echec-technique`` =
-        Namespaced_IRI.parse _namespace_name "Echec-technique" |> NamespacedName
-
+    let ``Echec-technique`` = _prefix "Echec-technique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#ElGamal"></see>
     /// </summary>
-    let ElGamal = Namespaced_IRI.parse _namespace_name "ElGamal" |> NamespacedName
-
+    let ElGamal = _prefix "ElGamal"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Elliptic_curve"></see>
     /// </summary>
-    let Elliptic_curve =
-        Namespaced_IRI.parse _namespace_name "Elliptic_curve" |> NamespacedName
-
+    let Elliptic_curve = _prefix "Elliptic_curve"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Erreur"></see>
     /// </summary>
-    let Erreur = Namespaced_IRI.parse _namespace_name "Erreur" |> NamespacedName
+    let Erreur = _prefix "Erreur"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Firewall"></see>
     /// </summary>
-    let Firewall = Namespaced_IRI.parse _namespace_name "Firewall" |> NamespacedName
-
+    let Firewall = _prefix "Firewall"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Gestion-cles"></see>
     /// </summary>
-    let ``Gestion-cles`` =
-        Namespaced_IRI.parse _namespace_name "Gestion-cles" |> NamespacedName
-
+    let ``Gestion-cles`` = _prefix "Gestion-cles"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#HMAC"></see>
     /// </summary>
-    let HMAC = Namespaced_IRI.parse _namespace_name "HMAC" |> NamespacedName
+    let HMAC = _prefix "HMAC"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#MAC"></see>
     /// </summary>
-    let MAC = Namespaced_IRI.parse _namespace_name "MAC" |> NamespacedName
+    let MAC = _prefix "MAC"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Hardware"></see>
     /// </summary>
-    let Hardware = Namespaced_IRI.parse _namespace_name "Hardware" |> NamespacedName
+    let Hardware = _prefix "Hardware"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Hash"></see>
     /// </summary>
-    let Hash = Namespaced_IRI.parse _namespace_name "Hash" |> NamespacedName
+    let Hash = _prefix "Hash"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#IDEA"></see>
     /// </summary>
-    let IDEA = Namespaced_IRI.parse _namespace_name "IDEA" |> NamespacedName
-
+    let IDEA = _prefix "IDEA"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Imputabilite"></see>
     /// </summary>
-    let Imputabilite =
-        Namespaced_IRI.parse _namespace_name "Imputabilite" |> NamespacedName
-
+    let Imputabilite = _prefix "Imputabilite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Integrite"></see>
     /// </summary>
-    let Integrite = Namespaced_IRI.parse _namespace_name "Integrite" |> NamespacedName
+    let Integrite = _prefix "Integrite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#KEA"></see>
     /// </summary>
-    let KEA = Namespaced_IRI.parse _namespace_name "KEA" |> NamespacedName
+    let KEA = _prefix "KEA"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#MD4"></see>
     /// </summary>
-    let MD4 = Namespaced_IRI.parse _namespace_name "MD4" |> NamespacedName
+    let MD4 = _prefix "MD4"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#MD5"></see>
     /// </summary>
-    let MD5 = Namespaced_IRI.parse _namespace_name "MD5" |> NamespacedName
-
+    let MD5 = _prefix "MD5"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Gestion-cle"></see>
     /// </summary>
-    let ``Gestion-cle`` =
-        Namespaced_IRI.parse _namespace_name "Gestion-cle" |> NamespacedName
-
+    let ``Gestion-cle`` = _prefix "Gestion-cle"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Memoire"></see>
     /// </summary>
-    let Memoire = Namespaced_IRI.parse _namespace_name "Memoire" |> NamespacedName
-
+    let Memoire = _prefix "Memoire"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Microprocesseur"></see>
     /// </summary>
-    let Microprocesseur =
-        Namespaced_IRI.parse _namespace_name "Microprocesseur" |> NamespacedName
-
+    let Microprocesseur = _prefix "Microprocesseur"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Mot-de-passe"></see>
     /// </summary>
-    let ``Mot-de-passe`` =
-        Namespaced_IRI.parse _namespace_name "Mot-de-passe" |> NamespacedName
-
+    let ``Mot-de-passe`` = _prefix "Mot-de-passe"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Non-repudiation"></see>
     /// </summary>
-    let ``Non-repudiation`` =
-        Namespaced_IRI.parse _namespace_name "Non-repudiation" |> NamespacedName
-
+    let ``Non-repudiation`` = _prefix "Non-repudiation"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Norton"></see>
     /// </summary>
-    let Norton = Namespaced_IRI.parse _namespace_name "Norton" |> NamespacedName
+    let Norton = _prefix "Norton"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Passeport"></see>
     /// </summary>
-    let Passeport = Namespaced_IRI.parse _namespace_name "Passeport" |> NamespacedName
+    let Passeport = _prefix "Passeport"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Personne"></see>
     /// </summary>
-    let Personne = Namespaced_IRI.parse _namespace_name "Personne" |> NamespacedName
-
+    let Personne = _prefix "Personne"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Proprietaire"></see>
     /// </summary>
-    let Proprietaire =
-        Namespaced_IRI.parse _namespace_name "Proprietaire" |> NamespacedName
-
+    let Proprietaire = _prefix "Proprietaire"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Societe"></see>
     /// </summary>
-    let Societe = Namespaced_IRI.parse _namespace_name "Societe" |> NamespacedName
-
+    let Societe = _prefix "Societe"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protection-physique"></see>
     /// </summary>
-    let ``Protection-physique`` =
-        Namespaced_IRI.parse _namespace_name "Protection-physique" |> NamespacedName
-
+    let ``Protection-physique`` = _prefix "Protection-physique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole"></see>
     /// </summary>
-    let Protocole = Namespaced_IRI.parse _namespace_name "Protocole" |> NamespacedName
-
+    let Protocole = _prefix "Protocole"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole-authentification"></see>
     /// </summary>
-    let ``Protocole-authentification`` =
-        Namespaced_IRI.parse _namespace_name "Protocole-authentification" |> NamespacedName
-
+    let ``Protocole-authentification`` = _prefix "Protocole-authentification"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole-cryptage"></see>
     /// </summary>
-    let ``Protocole-cryptage`` =
-        Namespaced_IRI.parse _namespace_name "Protocole-cryptage" |> NamespacedName
-
+    let ``Protocole-cryptage`` = _prefix "Protocole-cryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole-gestion-cles"></see>
     /// </summary>
-    let ``Protocole-gestion-cles`` =
-        Namespaced_IRI.parse _namespace_name "Protocole-gestion-cles" |> NamespacedName
-
+    let ``Protocole-gestion-cles`` = _prefix "Protocole-gestion-cles"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole-gestion-reseau"></see>
     /// </summary>
-    let ``Protocole-gestion-reseau`` =
-        Namespaced_IRI.parse _namespace_name "Protocole-gestion-reseau" |> NamespacedName
-
+    let ``Protocole-gestion-reseau`` = _prefix "Protocole-gestion-reseau"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole-signature"></see>
     /// </summary>
-    let ``Protocole-signature`` =
-        Namespaced_IRI.parse _namespace_name "Protocole-signature" |> NamespacedName
-
+    let ``Protocole-signature`` = _prefix "Protocole-signature"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#RBAC"></see>
     /// </summary>
-    let RBAC = Namespaced_IRI.parse _namespace_name "RBAC" |> NamespacedName
+    let RBAC = _prefix "RBAC"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#RC2"></see>
     /// </summary>
-    let RC2 = Namespaced_IRI.parse _namespace_name "RC2" |> NamespacedName
+    let RC2 = _prefix "RC2"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Rivest"></see>
     /// </summary>
-    let Rivest = Namespaced_IRI.parse _namespace_name "Rivest" |> NamespacedName
+    let Rivest = _prefix "Rivest"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#RC4"></see>
     /// </summary>
-    let RC4 = Namespaced_IRI.parse _namespace_name "RC4" |> NamespacedName
+    let RC4 = _prefix "RC4"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#RC5"></see>
     /// </summary>
-    let RC5 = Namespaced_IRI.parse _namespace_name "RC5" |> NamespacedName
+    let RC5 = _prefix "RC5"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#RC6"></see>
     /// </summary>
-    let RC6 = Namespaced_IRI.parse _namespace_name "RC6" |> NamespacedName
+    let RC6 = _prefix "RC6"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#RSA"></see>
     /// </summary>
-    let RSA = Namespaced_IRI.parse _namespace_name "RSA" |> NamespacedName
+    let RSA = _prefix "RSA"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#SSH"></see>
     /// </summary>
-    let SSH = Namespaced_IRI.parse _namespace_name "SSH" |> NamespacedName
+    let SSH = _prefix "SSH"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#SSL"></see>
     /// </summary>
-    let SSL = Namespaced_IRI.parse _namespace_name "SSL" |> NamespacedName
+    let SSL = _prefix "SSL"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
-
+    let Service = _prefix "Service"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Signature-numerique"></see>
     /// </summary>
-    let ``Signature-numerique`` =
-        Namespaced_IRI.parse _namespace_name "Signature-numerique" |> NamespacedName
-
+    let ``Signature-numerique`` = _prefix "Signature-numerique"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Storage"></see>
     /// </summary>
-    let Storage = Namespaced_IRI.parse _namespace_name "Storage" |> NamespacedName
+    let Storage = _prefix "Storage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#TPE"></see>
     /// </summary>
-    let TPE = Namespaced_IRI.parse _namespace_name "TPE" |> NamespacedName
-
+    let TPE = _prefix "TPE"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Trojan-horse"></see>
     /// </summary>
-    let ``Trojan-horse`` =
-        Namespaced_IRI.parse _namespace_name "Trojan-horse" |> NamespacedName
-
+    let ``Trojan-horse`` = _prefix "Trojan-horse"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#TwoFish"></see>
     /// </summary>
-    let TwoFish = Namespaced_IRI.parse _namespace_name "TwoFish" |> NamespacedName
+    let TwoFish = _prefix "TwoFish"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Virus"></see>
     /// </summary>
-    let Virus = Namespaced_IRI.parse _namespace_name "Virus" |> NamespacedName
-
+    let Virus = _prefix "Virus"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Vulnerabilite"></see>
     /// </summary>
-    let Vulnerabilite =
-        Namespaced_IRI.parse _namespace_name "Vulnerabilite" |> NamespacedName
-
+    let Vulnerabilite = _prefix "Vulnerabilite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Worm"></see>
     /// </summary>
-    let Worm = Namespaced_IRI.parse _namespace_name "Worm" |> NamespacedName
+    let Worm = _prefix "Worm"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#X.509"></see>
     /// </summary>
-    let ``X.509`` = Namespaced_IRI.parse _namespace_name "X.509" |> NamespacedName
+    let ``X.509`` = _prefix "X.509"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#_3DES"></see>
     /// </summary>
-    let _3DES = Namespaced_IRI.parse _namespace_name "_3DES" |> NamespacedName
-
+    let _3DES = _prefix "_3DES"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#assureAuthentification"></see>
     /// </summary>
-    let assureAuthentification =
-        Namespaced_IRI.parse _namespace_name "assureAuthentification" |> NamespacedName
-
+    let assureAuthentification = _prefix "assureAuthentification"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#assureObjectif"></see>
     /// </summary>
-    let assureObjectif =
-        Namespaced_IRI.parse _namespace_name "assureObjectif" |> NamespacedName
-
+    let assureObjectif = _prefix "assureObjectif"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#capableMecanisme"></see>
     /// </summary>
-    let capableMecanisme =
-        Namespaced_IRI.parse _namespace_name "capableMecanisme" |> NamespacedName
-
+    let capableMecanisme = _prefix "capableMecanisme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#capableObjectif"></see>
     /// </summary>
-    let capableObjectif =
-        Namespaced_IRI.parse _namespace_name "capableObjectif" |> NamespacedName
-
+    let capableObjectif = _prefix "capableObjectif"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#capacite"></see>
     /// </summary>
-    let capacite = Namespaced_IRI.parse _namespace_name "capacite" |> NamespacedName
+    let capacite = _prefix "capacite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#chemin"></see>
     /// </summary>
-    let chemin = Namespaced_IRI.parse _namespace_name "chemin" |> NamespacedName
+    let chemin = _prefix "chemin"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#cible"></see>
     /// </summary>
-    let cible = Namespaced_IRI.parse _namespace_name "cible" |> NamespacedName
-
+    let cible = _prefix "cible"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#date-expiration"></see>
     /// </summary>
-    let ``date-expiration`` =
-        Namespaced_IRI.parse _namespace_name "date-expiration" |> NamespacedName
-
+    let ``date-expiration`` = _prefix "date-expiration"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#dispose"></see>
     /// </summary>
-    let dispose = Namespaced_IRI.parse _namespace_name "dispose" |> NamespacedName
+    let dispose = _prefix "dispose"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#email"></see>
     /// </summary>
-    let email = Namespaced_IRI.parse _namespace_name "email" |> NamespacedName
-
+    let email = _prefix "email"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#eninteractionAvec"></see>
     /// </summary>
-    let eninteractionAvec =
-        Namespaced_IRI.parse _namespace_name "eninteractionAvec" |> NamespacedName
-
+    let eninteractionAvec = _prefix "eninteractionAvec"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estAssureMecanisme"></see>
     /// </summary>
-    let estAssureMecanisme =
-        Namespaced_IRI.parse _namespace_name "estAssureMecanisme" |> NamespacedName
-
+    let estAssureMecanisme = _prefix "estAssureMecanisme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estAssureProtocole"></see>
     /// </summary>
-    let estAssureProtocole =
-        Namespaced_IRI.parse _namespace_name "estAssureProtocole" |> NamespacedName
-
+    let estAssureProtocole = _prefix "estAssureProtocole"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#proprietaireDe"></see>
     /// </summary>
-    let proprietaireDe =
-        Namespaced_IRI.parse _namespace_name "proprietaireDe" |> NamespacedName
-
+    let proprietaireDe = _prefix "proprietaireDe"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estProtegePar"></see>
     /// </summary>
-    let estProtegePar =
-        Namespaced_IRI.parse _namespace_name "estProtegePar" |> NamespacedName
-
+    let estProtegePar = _prefix "estProtegePar"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#protege"></see>
     /// </summary>
-    let protege = Namespaced_IRI.parse _namespace_name "protege" |> NamespacedName
-
+    let protege = _prefix "protege"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estUtiliseProtocole"></see>
     /// </summary>
-    let estUtiliseProtocole =
-        Namespaced_IRI.parse _namespace_name "estUtiliseProtocole" |> NamespacedName
-
+    let estUtiliseProtocole = _prefix "estUtiliseProtocole"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estUtiliseProtocoleCryptage"></see>
     /// </summary>
-    let estUtiliseProtocoleCryptage =
-        Namespaced_IRI.parse _namespace_name "estUtiliseProtocoleCryptage" |> NamespacedName
-
+    let estUtiliseProtocoleCryptage = _prefix "estUtiliseProtocoleCryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#Protocole-Cryptage"></see>
     /// </summary>
-    let ``Protocole-Cryptage`` =
-        Namespaced_IRI.parse _namespace_name "Protocole-Cryptage" |> NamespacedName
-
+    let ``Protocole-Cryptage`` = _prefix "Protocole-Cryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#utilisecryptage"></see>
     /// </summary>
-    let utilisecryptage =
-        Namespaced_IRI.parse _namespace_name "utilisecryptage" |> NamespacedName
-
+    let utilisecryptage = _prefix "utilisecryptage"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estUtiliseProtocoleSignature"></see>
     /// </summary>
-    let estUtiliseProtocoleSignature =
-        Namespaced_IRI.parse _namespace_name "estUtiliseProtocoleSignature" |> NamespacedName
-
+    let estUtiliseProtocoleSignature = _prefix "estUtiliseProtocoleSignature"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#utiliseSignature"></see>
     /// </summary>
-    let utiliseSignature =
-        Namespaced_IRI.parse _namespace_name "utiliseSignature" |> NamespacedName
-
+    let utiliseSignature = _prefix "utiliseSignature"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estexigeProtocole"></see>
     /// </summary>
-    let estexigeProtocole =
-        Namespaced_IRI.parse _namespace_name "estexigeProtocole" |> NamespacedName
-
+    let estexigeProtocole = _prefix "estexigeProtocole"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#exigePasseport"></see>
     /// </summary>
-    let exigePasseport =
-        Namespaced_IRI.parse _namespace_name "exigePasseport" |> NamespacedName
-
+    let exigePasseport = _prefix "exigePasseport"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estexploitePar"></see>
     /// </summary>
-    let estexploitePar =
-        Namespaced_IRI.parse _namespace_name "estexploitePar" |> NamespacedName
-
+    let estexploitePar = _prefix "estexploitePar"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#exploite"></see>
     /// </summary>
-    let exploite = Namespaced_IRI.parse _namespace_name "exploite" |> NamespacedName
+    let exploite = _prefix "exploite"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#execute"></see>
     /// </summary>
-    let execute = Namespaced_IRI.parse _namespace_name "execute" |> NamespacedName
-
+    let execute = _prefix "execute"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#exigeMecanisme"></see>
     /// </summary>
-    let exigeMecanisme =
-        Namespaced_IRI.parse _namespace_name "exigeMecanisme" |> NamespacedName
-
+    let exigeMecanisme = _prefix "exigeMecanisme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#exigeObjectif"></see>
     /// </summary>
-    let exigeObjectif =
-        Namespaced_IRI.parse _namespace_name "exigeObjectif" |> NamespacedName
-
+    let exigeObjectif = _prefix "exigeObjectif"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estExigeProtocole"></see>
     /// </summary>
-    let estExigeProtocole =
-        Namespaced_IRI.parse _namespace_name "estExigeProtocole" |> NamespacedName
-
+    let estExigeProtocole = _prefix "estExigeProtocole"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#estExploitePar"></see>
     /// </summary>
-    let estExploitePar =
-        Namespaced_IRI.parse _namespace_name "estExploitePar" |> NamespacedName
-
+    let estExploitePar = _prefix "estExploitePar"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#fax"></see>
     /// </summary>
-    let fax = Namespaced_IRI.parse _namespace_name "fax" |> NamespacedName
-
+    let fax = _prefix "fax"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#identification"></see>
     /// </summary>
-    let identification =
-        Namespaced_IRI.parse _namespace_name "identification" |> NamespacedName
-
+    let identification = _prefix "identification"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#initialise"></see>
     /// </summary>
-    let initialise = Namespaced_IRI.parse _namespace_name "initialise" |> NamespacedName
+    let initialise = _prefix "initialise"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#intrusion"></see>
     /// </summary>
-    let intrusion = Namespaced_IRI.parse _namespace_name "intrusion" |> NamespacedName
+    let intrusion = _prefix "intrusion"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#issuer"></see>
     /// </summary>
-    let issuer = Namespaced_IRI.parse _namespace_name "issuer" |> NamespacedName
-
+    let issuer = _prefix "issuer"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#longueur-cle"></see>
     /// </summary>
-    let ``longueur-cle`` =
-        Namespaced_IRI.parse _namespace_name "longueur-cle" |> NamespacedName
-
+    let ``longueur-cle`` = _prefix "longueur-cle"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#longueur-minimum"></see>
     /// </summary>
-    let ``longueur-minimum`` =
-        Namespaced_IRI.parse _namespace_name "longueur-minimum" |> NamespacedName
-
+    let ``longueur-minimum`` = _prefix "longueur-minimum"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#marque"></see>
     /// </summary>
-    let marque = Namespaced_IRI.parse _namespace_name "marque" |> NamespacedName
+    let marque = _prefix "marque"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#modele"></see>
     /// </summary>
-    let modele = Namespaced_IRI.parse _namespace_name "modele" |> NamespacedName
+    let modele = _prefix "modele"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#nom"></see>
     /// </summary>
-    let nom = Namespaced_IRI.parse _namespace_name "nom" |> NamespacedName
+    let nom = _prefix "nom"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#notAfter"></see>
     /// </summary>
-    let notAfter = Namespaced_IRI.parse _namespace_name "notAfter" |> NamespacedName
+    let notAfter = _prefix "notAfter"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#notBefore"></see>
     /// </summary>
-    let notBefore = Namespaced_IRI.parse _namespace_name "notBefore" |> NamespacedName
-
+    let notBefore = _prefix "notBefore"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#numero-de-serie"></see>
     /// </summary>
-    let ``numero-de-serie`` =
-        Namespaced_IRI.parse _namespace_name "numero-de-serie" |> NamespacedName
-
+    let ``numero-de-serie`` = _prefix "numero-de-serie"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#prenom"></see>
     /// </summary>
-    let prenom = Namespaced_IRI.parse _namespace_name "prenom" |> NamespacedName
+    let prenom = _prefix "prenom"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#reduit"></see>
     /// </summary>
-    let reduit = Namespaced_IRI.parse _namespace_name "reduit" |> NamespacedName
+    let reduit = _prefix "reduit"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#telephone"></see>
     /// </summary>
-    let telephone = Namespaced_IRI.parse _namespace_name "telephone" |> NamespacedName
-
+    let telephone = _prefix "telephone"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#utiliseAlgorithme"></see>
     /// </summary>
-    let utiliseAlgorithme =
-        Namespaced_IRI.parse _namespace_name "utiliseAlgorithme" |> NamespacedName
-
+    let utiliseAlgorithme = _prefix "utiliseAlgorithme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#utiliseMecanisme"></see>
     /// </summary>
-    let utiliseMecanisme =
-        Namespaced_IRI.parse _namespace_name "utiliseMecanisme" |> NamespacedName
-
+    let utiliseMecanisme = _prefix "utiliseMecanisme"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#utiliseProtocole"></see>
     /// </summary>
-    let utiliseProtocole =
-        Namespaced_IRI.parse _namespace_name "utiliseProtocole" |> NamespacedName
-
+    let utiliseProtocole = _prefix "utiliseProtocole"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#utilisePasseport"></see>
     /// </summary>
-    let utilisePasseport =
-        Namespaced_IRI.parse _namespace_name "utilisePasseport" |> NamespacedName
-
+    let utilisePasseport = _prefix "utilisePasseport"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#valeur-cookie"></see>
     /// </summary>
-    let ``valeur-cookie`` =
-        Namespaced_IRI.parse _namespace_name "valeur-cookie" |> NamespacedName
-
+    let ``valeur-cookie`` = _prefix "valeur-cookie"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="http://securitytoolbox.appspot.com/MASO#vitesse"></see>
     /// </summary>
-    let vitesse = Namespaced_IRI.parse _namespace_name "vitesse" |> NamespacedName
+    let vitesse = _prefix "vitesse"

@@ -1,614 +1,441 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.DebtAndEquities.Debt.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_dae_dbt =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Accrual"></see>
     /// </summary>
-    let Accrual = Namespaced_IRI.parse _namespace_name "Accrual" |> NamespacedName
+    let Accrual = _prefix "Accrual"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Interest"></see>
     /// </summary>
-    let Interest = Namespaced_IRI.parse _namespace_name "Interest" |> NamespacedName
-
+    let Interest = _prefix "Interest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/AccruedInterest"></see>
     /// </summary>
-    let AccruedInterest =
-        Namespaced_IRI.parse _namespace_name "AccruedInterest" |> NamespacedName
-
+    let AccruedInterest = _prefix "AccruedInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Amortization"></see>
     /// </summary>
-    let Amortization =
-        Namespaced_IRI.parse _namespace_name "Amortization" |> NamespacedName
-
+    let Amortization = _prefix "Amortization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isAmortizationOf"></see>
     /// </summary>
-    let isAmortizationOf =
-        Namespaced_IRI.parse _namespace_name "isAmortizationOf" |> NamespacedName
-
+    let isAmortizationOf = _prefix "isAmortizationOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Debt"></see>
     /// </summary>
-    let Debt = Namespaced_IRI.parse _namespace_name "Debt" |> NamespacedName
-
+    let Debt = _prefix "Debt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/AmortizationSchedule"></see>
     /// </summary>
-    let AmortizationSchedule =
-        Namespaced_IRI.parse _namespace_name "AmortizationSchedule" |> NamespacedName
-
+    let AmortizationSchedule = _prefix "AmortizationSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/ProjectedContractEventSchedule"></see>
     /// </summary>
-    let ProjectedContractEventSchedule =
-        Namespaced_IRI.parse _namespace_name "ProjectedContractEventSchedule" |> NamespacedName
-
+    let ProjectedContractEventSchedule = _prefix "ProjectedContractEventSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestPaymentSchedule"></see>
     /// </summary>
-    let InterestPaymentSchedule =
-        Namespaced_IRI.parse _namespace_name "InterestPaymentSchedule" |> NamespacedName
-
+    let InterestPaymentSchedule = _prefix "InterestPaymentSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PrincipalPaymentSchedule"></see>
     /// </summary>
-    let PrincipalPaymentSchedule =
-        Namespaced_IRI.parse _namespace_name "PrincipalPaymentSchedule" |> NamespacedName
-
+    let PrincipalPaymentSchedule = _prefix "PrincipalPaymentSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Borrower"></see>
     /// </summary>
-    let Borrower = Namespaced_IRI.parse _namespace_name "Borrower" |> NamespacedName
+    let Borrower = _prefix "Borrower"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Debtor"></see>
     /// </summary>
-    let Debtor = Namespaced_IRI.parse _namespace_name "Debtor" |> NamespacedName
+    let Debtor = _prefix "Debtor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/owes"></see>
     /// </summary>
-    let owes = Namespaced_IRI.parse _namespace_name "owes" |> NamespacedName
-
+    let owes = _prefix "owes"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditAgreement"></see>
     /// </summary>
-    let CreditAgreement =
-        Namespaced_IRI.parse _namespace_name "CreditAgreement" |> NamespacedName
-
+    let CreditAgreement = _prefix "CreditAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/BorrowerIdentificationScheme"></see>
     /// </summary>
-    let BorrowerIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "BorrowerIdentificationScheme" |> NamespacedName
-
+    let BorrowerIdentificationScheme = _prefix "BorrowerIdentificationScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/BorrowerIdentifier"></see>
     /// </summary>
-    let BorrowerIdentifier =
-        Namespaced_IRI.parse _namespace_name "BorrowerIdentifier" |> NamespacedName
-
+    let BorrowerIdentifier = _prefix "BorrowerIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/BorrowingCapacity"></see>
     /// </summary>
-    let BorrowingCapacity =
-        Namespaced_IRI.parse _namespace_name "BorrowingCapacity" |> NamespacedName
-
+    let BorrowingCapacity = _prefix "BorrowingCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CapitalLease"></see>
     /// </summary>
-    let CapitalLease =
-        Namespaced_IRI.parse _namespace_name "CapitalLease" |> NamespacedName
-
+    let CapitalLease = _prefix "CapitalLease"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Lease"></see>
     /// </summary>
-    let Lease = Namespaced_IRI.parse _namespace_name "Lease" |> NamespacedName
+    let Lease = _prefix "Lease"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Collateral"></see>
     /// </summary>
-    let Collateral = Namespaced_IRI.parse _namespace_name "Collateral" |> NamespacedName
-
+    let Collateral = _prefix "Collateral"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isCollateralizationOf"></see>
     /// </summary>
-    let isCollateralizationOf =
-        Namespaced_IRI.parse _namespace_name "isCollateralizationOf" |> NamespacedName
-
+    let isCollateralizationOf = _prefix "isCollateralizationOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CollateralValueAsOfDate"></see>
     /// </summary>
-    let CollateralValueAsOfDate =
-        Namespaced_IRI.parse _namespace_name "CollateralValueAsOfDate" |> NamespacedName
-
+    let CollateralValueAsOfDate = _prefix "CollateralValueAsOfDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CommittedCreditFacility"></see>
     /// </summary>
-    let CommittedCreditFacility =
-        Namespaced_IRI.parse _namespace_name "CommittedCreditFacility" |> NamespacedName
-
+    let CommittedCreditFacility = _prefix "CommittedCreditFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditFacility"></see>
     /// </summary>
-    let CreditFacility =
-        Namespaced_IRI.parse _namespace_name "CreditFacility" |> NamespacedName
-
+    let CreditFacility = _prefix "CreditFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CommittedSubFacility"></see>
     /// </summary>
-    let CommittedSubFacility =
-        Namespaced_IRI.parse _namespace_name "CommittedSubFacility" |> NamespacedName
-
+    let CommittedSubFacility = _prefix "CommittedSubFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/UncommittedCreditFacility"></see>
     /// </summary>
-    let UncommittedCreditFacility =
-        Namespaced_IRI.parse _namespace_name "UncommittedCreditFacility" |> NamespacedName
-
+    let UncommittedCreditFacility = _prefix "UncommittedCreditFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/SubFacility"></see>
     /// </summary>
-    let SubFacility =
-        Namespaced_IRI.parse _namespace_name "SubFacility" |> NamespacedName
-
+    let SubFacility = _prefix "SubFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/UncommittedSubFacility"></see>
     /// </summary>
-    let UncommittedSubFacility =
-        Namespaced_IRI.parse _namespace_name "UncommittedSubFacility" |> NamespacedName
-
+    let UncommittedSubFacility = _prefix "UncommittedSubFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isCollateralizedBy"></see>
     /// </summary>
-    let isCollateralizedBy =
-        Namespaced_IRI.parse _namespace_name "isCollateralizedBy" |> NamespacedName
-
+    let isCollateralizedBy = _prefix "isCollateralizedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialExchangeDate"></see>
     /// </summary>
-    let hasInitialExchangeDate =
-        Namespaced_IRI.parse _namespace_name "hasInitialExchangeDate" |> NamespacedName
-
+    let hasInitialExchangeDate = _prefix "hasInitialExchangeDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasMaturityDate"></see>
     /// </summary>
-    let hasMaturityDate =
-        Namespaced_IRI.parse _namespace_name "hasMaturityDate" |> NamespacedName
-
+    let hasMaturityDate = _prefix "hasMaturityDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Creditor"></see>
     /// </summary>
-    let Creditor = Namespaced_IRI.parse _namespace_name "Creditor" |> NamespacedName
+    let Creditor = _prefix "Creditor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DebtTerms"></see>
     /// </summary>
-    let DebtTerms = Namespaced_IRI.parse _namespace_name "DebtTerms" |> NamespacedName
-
+    let DebtTerms = _prefix "DebtTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditAgreementRepaidAtMaturity"></see>
     /// </summary>
-    let CreditAgreementRepaidAtMaturity =
-        Namespaced_IRI.parse _namespace_name "CreditAgreementRepaidAtMaturity" |> NamespacedName
-
+    let CreditAgreementRepaidAtMaturity = _prefix "CreditAgreementRepaidAtMaturity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditAgreementRepaidPeriodically"></see>
     /// </summary>
-    let CreditAgreementRepaidPeriodically =
-        Namespaced_IRI.parse _namespace_name "CreditAgreementRepaidPeriodically" |> NamespacedName
-
+    let CreditAgreementRepaidPeriodically = _prefix "CreditAgreementRepaidPeriodically"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditEnhancementAgreement"></see>
     /// </summary>
-    let CreditEnhancementAgreement =
-        Namespaced_IRI.parse _namespace_name "CreditEnhancementAgreement" |> NamespacedName
-
+    let CreditEnhancementAgreement = _prefix "CreditEnhancementAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditEnhancementBeneficiary"></see>
     /// </summary>
-    let CreditEnhancementBeneficiary =
-        Namespaced_IRI.parse _namespace_name "CreditEnhancementBeneficiary" |> NamespacedName
-
+    let CreditEnhancementBeneficiary = _prefix "CreditEnhancementBeneficiary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isOwed"></see>
     /// </summary>
-    let isOwed = Namespaced_IRI.parse _namespace_name "isOwed" |> NamespacedName
-
+    let isOwed = _prefix "isOwed"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention"></see>
     /// </summary>
-    let DayCountConvention =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention" |> NamespacedName
+    let DayCountConvention = _prefix "DayCountConvention"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-30360BondBasis"></see>
     /// </summary>
     let ``DayCountConvention-30360BondBasis`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-30360BondBasis" |> NamespacedName
+        _prefix "DayCountConvention-30360BondBasis"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-30360US"></see>
     /// </summary>
-    let ``DayCountConvention-30360US`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-30360US" |> NamespacedName
-
+    let ``DayCountConvention-30360US`` = _prefix "DayCountConvention-30360US"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-30365"></see>
     /// </summary>
-    let ``DayCountConvention-30365`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-30365" |> NamespacedName
-
+    let ``DayCountConvention-30365`` = _prefix "DayCountConvention-30365"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-30E360"></see>
     /// </summary>
-    let ``DayCountConvention-30E360`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-30E360" |> NamespacedName
-
+    let ``DayCountConvention-30E360`` = _prefix "DayCountConvention-30E360"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-30E360ISDA"></see>
     /// </summary>
-    let ``DayCountConvention-30E360ISDA`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-30E360ISDA" |> NamespacedName
-
+    let ``DayCountConvention-30E360ISDA`` = _prefix "DayCountConvention-30E360ISDA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-Actual360"></see>
     /// </summary>
-    let ``DayCountConvention-Actual360`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-Actual360" |> NamespacedName
+    let ``DayCountConvention-Actual360`` = _prefix "DayCountConvention-Actual360"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-Actual365Fixed"></see>
     /// </summary>
     let ``DayCountConvention-Actual365Fixed`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-Actual365Fixed" |> NamespacedName
+        _prefix "DayCountConvention-Actual365Fixed"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-ActualActualICMA"></see>
     /// </summary>
     let ``DayCountConvention-ActualActualICMA`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-ActualActualICMA" |> NamespacedName
+        _prefix "DayCountConvention-ActualActualICMA"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/DayCountConvention-ActualActualISDA"></see>
     /// </summary>
     let ``DayCountConvention-ActualActualISDA`` =
-        Namespaced_IRI.parse _namespace_name "DayCountConvention-ActualActualISDA" |> NamespacedName
+        _prefix "DayCountConvention-ActualActualISDA"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isOwedBy"></see>
     /// </summary>
-    let isOwedBy = Namespaced_IRI.parse _namespace_name "isOwedBy" |> NamespacedName
+    let isOwedBy = _prefix "isOwedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isOwedTo"></see>
     /// </summary>
-    let isOwedTo = Namespaced_IRI.parse _namespace_name "isOwedTo" |> NamespacedName
-
+    let isOwedTo = _prefix "isOwedTo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/ExplicitContractEventSchedule"></see>
     /// </summary>
-    let ExplicitContractEventSchedule =
-        Namespaced_IRI.parse _namespace_name "ExplicitContractEventSchedule" |> NamespacedName
-
+    let ExplicitContractEventSchedule = _prefix "ExplicitContractEventSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/FixedInterestRate"></see>
     /// </summary>
-    let FixedInterestRate =
-        Namespaced_IRI.parse _namespace_name "FixedInterestRate" |> NamespacedName
-
+    let FixedInterestRate = _prefix "FixedInterestRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/FloatingInterestRate"></see>
     /// </summary>
-    let FloatingInterestRate =
-        Namespaced_IRI.parse _namespace_name "FloatingInterestRate" |> NamespacedName
-
+    let FloatingInterestRate = _prefix "FloatingInterestRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/VariableInterestRate"></see>
     /// </summary>
-    let VariableInterestRate =
-        Namespaced_IRI.parse _namespace_name "VariableInterestRate" |> NamespacedName
-
+    let VariableInterestRate = _prefix "VariableInterestRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/FullAmortization"></see>
     /// </summary>
-    let FullAmortization =
-        Namespaced_IRI.parse _namespace_name "FullAmortization" |> NamespacedName
-
+    let FullAmortization = _prefix "FullAmortization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestRate"></see>
     /// </summary>
-    let hasInterestRate =
-        Namespaced_IRI.parse _namespace_name "hasInterestRate" |> NamespacedName
-
+    let hasInterestRate = _prefix "hasInterestRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isInterestOn"></see>
     /// </summary>
-    let isInterestOn =
-        Namespaced_IRI.parse _namespace_name "isInterestOn" |> NamespacedName
-
+    let isInterestOn = _prefix "isInterestOn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestCalculation"></see>
     /// </summary>
-    let InterestCalculation =
-        Namespaced_IRI.parse _namespace_name "InterestCalculation" |> NamespacedName
-
+    let InterestCalculation = _prefix "InterestCalculation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestCalculationSchedule"></see>
     /// </summary>
-    let InterestCalculationSchedule =
-        Namespaced_IRI.parse _namespace_name "InterestCalculationSchedule" |> NamespacedName
-
+    let InterestCalculationSchedule = _prefix "InterestCalculationSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestPayment"></see>
     /// </summary>
-    let InterestPayment =
-        Namespaced_IRI.parse _namespace_name "InterestPayment" |> NamespacedName
-
+    let InterestPayment = _prefix "InterestPayment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestPaymentTerms"></see>
     /// </summary>
-    let InterestPaymentTerms =
-        Namespaced_IRI.parse _namespace_name "InterestPaymentTerms" |> NamespacedName
-
+    let InterestPaymentTerms = _prefix "InterestPaymentTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasAccrualBasis"></see>
     /// </summary>
-    let hasAccrualBasis =
-        Namespaced_IRI.parse _namespace_name "hasAccrualBasis" |> NamespacedName
-
+    let hasAccrualBasis = _prefix "hasAccrualBasis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestRateCap"></see>
     /// </summary>
-    let hasInterestRateCap =
-        Namespaced_IRI.parse _namespace_name "hasInterestRateCap" |> NamespacedName
-
+    let hasInterestRateCap = _prefix "hasInterestRateCap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestPaymentDay"></see>
     /// </summary>
-    let hasInterestPaymentDay =
-        Namespaced_IRI.parse _namespace_name "hasInterestPaymentDay" |> NamespacedName
-
+    let hasInterestPaymentDay = _prefix "hasInterestPaymentDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasCompoundingFrequency"></see>
     /// </summary>
-    let hasCompoundingFrequency =
-        Namespaced_IRI.parse _namespace_name "hasCompoundingFrequency" |> NamespacedName
-
+    let hasCompoundingFrequency = _prefix "hasCompoundingFrequency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInterestPaymentFrequency"></see>
     /// </summary>
-    let hasInterestPaymentFrequency =
-        Namespaced_IRI.parse _namespace_name "hasInterestPaymentFrequency" |> NamespacedName
-
+    let hasInterestPaymentFrequency = _prefix "hasInterestPaymentFrequency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialInterestAccrualDate"></see>
     /// </summary>
-    let hasInitialInterestAccrualDate =
-        Namespaced_IRI.parse _namespace_name "hasInitialInterestAccrualDate" |> NamespacedName
-
+    let hasInitialInterestAccrualDate = _prefix "hasInitialInterestAccrualDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialInterestPaymentDate"></see>
     /// </summary>
-    let hasInitialInterestPaymentDate =
-        Namespaced_IRI.parse _namespace_name "hasInitialInterestPaymentDate" |> NamespacedName
-
+    let hasInitialInterestPaymentDate = _prefix "hasInitialInterestPaymentDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/governsPaymentOf"></see>
     /// </summary>
-    let governsPaymentOf =
-        Namespaced_IRI.parse _namespace_name "governsPaymentOf" |> NamespacedName
-
+    let governsPaymentOf = _prefix "governsPaymentOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestRateReset"></see>
     /// </summary>
-    let InterestRateReset =
-        Namespaced_IRI.parse _namespace_name "InterestRateReset" |> NamespacedName
-
+    let InterestRateReset = _prefix "InterestRateReset"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestRateResetSchedule"></see>
     /// </summary>
-    let InterestRateResetSchedule =
-        Namespaced_IRI.parse _namespace_name "InterestRateResetSchedule" |> NamespacedName
-
+    let InterestRateResetSchedule = _prefix "InterestRateResetSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestRateSettingEvent"></see>
     /// </summary>
-    let InterestRateSettingEvent =
-        Namespaced_IRI.parse _namespace_name "InterestRateSettingEvent" |> NamespacedName
-
+    let InterestRateSettingEvent = _prefix "InterestRateSettingEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Lender"></see>
     /// </summary>
-    let Lender = Namespaced_IRI.parse _namespace_name "Lender" |> NamespacedName
-
+    let Lender = _prefix "Lender"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/ManagedInterestRate"></see>
     /// </summary>
-    let ManagedInterestRate =
-        Namespaced_IRI.parse _namespace_name "ManagedInterestRate" |> NamespacedName
-
+    let ManagedInterestRate = _prefix "ManagedInterestRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/MotorVehicleLease"></see>
     /// </summary>
-    let MotorVehicleLease =
-        Namespaced_IRI.parse _namespace_name "MotorVehicleLease" |> NamespacedName
-
+    let MotorVehicleLease = _prefix "MotorVehicleLease"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/NegativeAmortization"></see>
     /// </summary>
-    let NegativeAmortization =
-        Namespaced_IRI.parse _namespace_name "NegativeAmortization" |> NamespacedName
-
+    let NegativeAmortization = _prefix "NegativeAmortization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/NonPhysicalCollateral"></see>
     /// </summary>
-    let NonPhysicalCollateral =
-        Namespaced_IRI.parse _namespace_name "NonPhysicalCollateral" |> NamespacedName
-
+    let NonPhysicalCollateral = _prefix "NonPhysicalCollateral"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PhysicalCollateral"></see>
     /// </summary>
-    let PhysicalCollateral =
-        Namespaced_IRI.parse _namespace_name "PhysicalCollateral" |> NamespacedName
-
+    let PhysicalCollateral = _prefix "PhysicalCollateral"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PartialAmortization"></see>
     /// </summary>
-    let PartialAmortization =
-        Namespaced_IRI.parse _namespace_name "PartialAmortization" |> NamespacedName
-
+    let PartialAmortization = _prefix "PartialAmortization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Principal"></see>
     /// </summary>
-    let Principal = Namespaced_IRI.parse _namespace_name "Principal" |> NamespacedName
-
+    let Principal = _prefix "Principal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isPrincipalOf"></see>
     /// </summary>
-    let isPrincipalOf =
-        Namespaced_IRI.parse _namespace_name "isPrincipalOf" |> NamespacedName
-
+    let isPrincipalOf = _prefix "isPrincipalOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PrincipalPayment"></see>
     /// </summary>
-    let PrincipalPayment =
-        Namespaced_IRI.parse _namespace_name "PrincipalPayment" |> NamespacedName
-
+    let PrincipalPayment = _prefix "PrincipalPayment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PrincipalRepaymentTerms"></see>
     /// </summary>
-    let PrincipalRepaymentTerms =
-        Namespaced_IRI.parse _namespace_name "PrincipalRepaymentTerms" |> NamespacedName
-
+    let PrincipalRepaymentTerms = _prefix "PrincipalRepaymentTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipalPaymentDay"></see>
     /// </summary>
-    let hasPrincipalPaymentDay =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalPaymentDay" |> NamespacedName
-
+    let hasPrincipalPaymentDay = _prefix "hasPrincipalPaymentDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipalPaymentFrequency"></see>
     /// </summary>
-    let hasPrincipalPaymentFrequency =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalPaymentFrequency" |> NamespacedName
-
+    let hasPrincipalPaymentFrequency = _prefix "hasPrincipalPaymentFrequency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasInitialPrincipalPaymentDate"></see>
     /// </summary>
-    let hasInitialPrincipalPaymentDate =
-        Namespaced_IRI.parse _namespace_name "hasInitialPrincipalPaymentDate" |> NamespacedName
-
+    let hasInitialPrincipalPaymentDate = _prefix "hasInitialPrincipalPaymentDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipalRepaymentDate"></see>
     /// </summary>
-    let hasPrincipalRepaymentDate =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalRepaymentDate" |> NamespacedName
-
+    let hasPrincipalRepaymentDate = _prefix "hasPrincipalRepaymentDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasAnticipatedNumberOfPayments"></see>
     /// </summary>
-    let hasAnticipatedNumberOfPayments =
-        Namespaced_IRI.parse _namespace_name "hasAnticipatedNumberOfPayments" |> NamespacedName
-
+    let hasAnticipatedNumberOfPayments = _prefix "hasAnticipatedNumberOfPayments"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/RateResetTimeOfDay"></see>
     /// </summary>
-    let RateResetTimeOfDay =
-        Namespaced_IRI.parse _namespace_name "RateResetTimeOfDay" |> NamespacedName
-
+    let RateResetTimeOfDay = _prefix "RateResetTimeOfDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/RetailCreditFacility"></see>
     /// </summary>
-    let RetailCreditFacility =
-        Namespaced_IRI.parse _namespace_name "RetailCreditFacility" |> NamespacedName
-
+    let RetailCreditFacility = _prefix "RetailCreditFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/RevolvingLineOfCredit"></see>
     /// </summary>
-    let RevolvingLineOfCredit =
-        Namespaced_IRI.parse _namespace_name "RevolvingLineOfCredit" |> NamespacedName
-
+    let RevolvingLineOfCredit = _prefix "RevolvingLineOfCredit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/SecurityAgreement"></see>
     /// </summary>
-    let SecurityAgreement =
-        Namespaced_IRI.parse _namespace_name "SecurityAgreement" |> NamespacedName
-
+    let SecurityAgreement = _prefix "SecurityAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasAmountOfCreditExtended"></see>
     /// </summary>
-    let hasAmountOfCreditExtended =
-        Namespaced_IRI.parse _namespace_name "hasAmountOfCreditExtended" |> NamespacedName
-
+    let hasAmountOfCreditExtended = _prefix "hasAmountOfCreditExtended"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasAvailableAmount"></see>
     /// </summary>
-    let hasAvailableAmount =
-        Namespaced_IRI.parse _namespace_name "hasAvailableAmount" |> NamespacedName
-
+    let hasAvailableAmount = _prefix "hasAvailableAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasBorrower"></see>
     /// </summary>
-    let hasBorrower =
-        Namespaced_IRI.parse _namespace_name "hasBorrower" |> NamespacedName
-
+    let hasBorrower = _prefix "hasBorrower"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasCreditLimit"></see>
     /// </summary>
-    let hasCreditLimit =
-        Namespaced_IRI.parse _namespace_name "hasCreditLimit" |> NamespacedName
-
+    let hasCreditLimit = _prefix "hasCreditLimit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasDebtAmount"></see>
     /// </summary>
-    let hasDebtAmount =
-        Namespaced_IRI.parse _namespace_name "hasDebtAmount" |> NamespacedName
-
+    let hasDebtAmount = _prefix "hasDebtAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasDenomination"></see>
     /// </summary>
-    let hasDenomination =
-        Namespaced_IRI.parse _namespace_name "hasDenomination" |> NamespacedName
-
+    let hasDenomination = _prefix "hasDenomination"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasFinalInterestPaymentDate"></see>
     /// </summary>
-    let hasFinalInterestPaymentDate =
-        Namespaced_IRI.parse _namespace_name "hasFinalInterestPaymentDate" |> NamespacedName
-
+    let hasFinalInterestPaymentDate = _prefix "hasFinalInterestPaymentDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasLender"></see>
     /// </summary>
-    let hasLender = Namespaced_IRI.parse _namespace_name "hasLender" |> NamespacedName
-
+    let hasLender = _prefix "hasLender"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasMaximumAdvanceAmount"></see>
     /// </summary>
-    let hasMaximumAdvanceAmount =
-        Namespaced_IRI.parse _namespace_name "hasMaximumAdvanceAmount" |> NamespacedName
-
+    let hasMaximumAdvanceAmount = _prefix "hasMaximumAdvanceAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasOriginalTimeToMaturity"></see>
     /// </summary>
-    let hasOriginalTimeToMaturity =
-        Namespaced_IRI.parse _namespace_name "hasOriginalTimeToMaturity" |> NamespacedName
-
+    let hasOriginalTimeToMaturity = _prefix "hasOriginalTimeToMaturity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasOutstandingAmount"></see>
     /// </summary>
-    let hasOutstandingAmount =
-        Namespaced_IRI.parse _namespace_name "hasOutstandingAmount" |> NamespacedName
-
+    let hasOutstandingAmount = _prefix "hasOutstandingAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasPrincipal"></see>
     /// </summary>
-    let hasPrincipal =
-        Namespaced_IRI.parse _namespace_name "hasPrincipal" |> NamespacedName
-
+    let hasPrincipal = _prefix "hasPrincipal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/isBasedOn"></see>
     /// </summary>
-    let isBasedOn = Namespaced_IRI.parse _namespace_name "isBasedOn" |> NamespacedName
+    let isBasedOn = _prefix "isBasedOn"

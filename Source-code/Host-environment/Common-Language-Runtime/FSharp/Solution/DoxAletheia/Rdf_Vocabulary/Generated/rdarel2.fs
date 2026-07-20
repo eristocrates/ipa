@@ -1,212 +1,154 @@
 namespace http.metadataregistry.org.uri.schema.RDARelationshipsGR2.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rdarel2 =
     let _namespace_name = "http://metadataregistry.org/uri/schema/RDARelationshipsGR2/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/alternateIdentity"></see>
     /// </summary>
-    let alternateIdentity =
-        Namespaced_IRI.parse _namespace_name "alternateIdentity" |> NamespacedName
-
+    let alternateIdentity = _prefix "alternateIdentity"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedPersonPerson"></see>
     /// </summary>
-    let relatedPersonPerson =
-        Namespaced_IRI.parse _namespace_name "relatedPersonPerson" |> NamespacedName
-
+    let relatedPersonPerson = _prefix "relatedPersonPerson"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/descendantFamily"></see>
     /// </summary>
-    let descendantFamily =
-        Namespaced_IRI.parse _namespace_name "descendantFamily" |> NamespacedName
-
+    let descendantFamily = _prefix "descendantFamily"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedFamily"></see>
     /// </summary>
-    let relatedFamily =
-        Namespaced_IRI.parse _namespace_name "relatedFamily" |> NamespacedName
-
+    let relatedFamily = _prefix "relatedFamily"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/descendants"></see>
     /// </summary>
-    let descendants =
-        Namespaced_IRI.parse _namespace_name "descendants" |> NamespacedName
-
+    let descendants = _prefix "descendants"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedPerson"></see>
     /// </summary>
-    let relatedPerson =
-        Namespaced_IRI.parse _namespace_name "relatedPerson" |> NamespacedName
-
+    let relatedPerson = _prefix "relatedPerson"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/employee"></see>
     /// </summary>
-    let employee = Namespaced_IRI.parse _namespace_name "employee" |> NamespacedName
-
+    let employee = _prefix "employee"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedCorporateBodyPerson"></see>
     /// </summary>
-    let relatedCorporateBodyPerson =
-        Namespaced_IRI.parse _namespace_name "relatedCorporateBodyPerson" |> NamespacedName
-
+    let relatedCorporateBodyPerson = _prefix "relatedCorporateBodyPerson"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/employer"></see>
     /// </summary>
-    let employer = Namespaced_IRI.parse _namespace_name "employer" |> NamespacedName
-
+    let employer = _prefix "employer"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedPersonCorporateBody"></see>
     /// </summary>
-    let relatedPersonCorporateBody =
-        Namespaced_IRI.parse _namespace_name "relatedPersonCorporateBody" |> NamespacedName
-
+    let relatedPersonCorporateBody = _prefix "relatedPersonCorporateBody"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/explanationOfRelationship"></see>
     /// </summary>
-    let explanationOfRelationship =
-        Namespaced_IRI.parse _namespace_name "explanationOfRelationship" |> NamespacedName
-
+    let explanationOfRelationship = _prefix "explanationOfRelationship"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/familyMember"></see>
     /// </summary>
-    let familyMember =
-        Namespaced_IRI.parse _namespace_name "familyMember" |> NamespacedName
-
+    let familyMember = _prefix "familyMember"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/progenitor"></see>
     /// </summary>
-    let progenitor = Namespaced_IRI.parse _namespace_name "progenitor" |> NamespacedName
-
+    let progenitor = _prefix "progenitor"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedFamilyPerson"></see>
     /// </summary>
-    let relatedFamilyPerson =
-        Namespaced_IRI.parse _namespace_name "relatedFamilyPerson" |> NamespacedName
-
+    let relatedFamilyPerson = _prefix "relatedFamilyPerson"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/foundedOrganization"></see>
     /// </summary>
-    let foundedOrganization =
-        Namespaced_IRI.parse _namespace_name "foundedOrganization" |> NamespacedName
-
+    let foundedOrganization = _prefix "foundedOrganization"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedFamilyCorporateBody"></see>
     /// </summary>
-    let relatedFamilyCorporateBody =
-        Namespaced_IRI.parse _namespace_name "relatedFamilyCorporateBody" |> NamespacedName
-
+    let relatedFamilyCorporateBody = _prefix "relatedFamilyCorporateBody"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/founder"></see>
     /// </summary>
-    let founder = Namespaced_IRI.parse _namespace_name "founder" |> NamespacedName
-
+    let founder = _prefix "founder"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/foundingFamily"></see>
     /// </summary>
-    let foundingFamily =
-        Namespaced_IRI.parse _namespace_name "foundingFamily" |> NamespacedName
-
+    let foundingFamily = _prefix "foundingFamily"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedCorporateBody"></see>
     /// </summary>
-    let relatedCorporateBody =
-        Namespaced_IRI.parse _namespace_name "relatedCorporateBody" |> NamespacedName
-
+    let relatedCorporateBody = _prefix "relatedCorporateBody"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/groupMember"></see>
     /// </summary>
-    let groupMember =
-        Namespaced_IRI.parse _namespace_name "groupMember" |> NamespacedName
-
+    let groupMember = _prefix "groupMember"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/hierarchicalSubordinate"></see>
     /// </summary>
-    let hierarchicalSubordinate =
-        Namespaced_IRI.parse _namespace_name "hierarchicalSubordinate" |> NamespacedName
-
+    let hierarchicalSubordinate = _prefix "hierarchicalSubordinate"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/hierarchicalSuperior"></see>
     /// </summary>
-    let hierarchicalSuperior =
-        Namespaced_IRI.parse _namespace_name "hierarchicalSuperior" |> NamespacedName
-
+    let hierarchicalSuperior = _prefix "hierarchicalSuperior"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedCorporateBodyCorporateBody"></see>
     /// </summary>
-    let relatedCorporateBodyCorporateBody =
-        Namespaced_IRI.parse _namespace_name "relatedCorporateBodyCorporateBody" |> NamespacedName
-
+    let relatedCorporateBodyCorporateBody = _prefix "relatedCorporateBodyCorporateBody"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/incumbent"></see>
     /// </summary>
-    let incumbent = Namespaced_IRI.parse _namespace_name "incumbent" |> NamespacedName
+    let incumbent = _prefix "incumbent"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/mergee"></see>
     /// </summary>
-    let mergee = Namespaced_IRI.parse _namespace_name "mergee" |> NamespacedName
-
+    let mergee = _prefix "mergee"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/predecessor"></see>
     /// </summary>
-    let predecessor =
-        Namespaced_IRI.parse _namespace_name "predecessor" |> NamespacedName
-
+    let predecessor = _prefix "predecessor"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/productOfAMerger"></see>
     /// </summary>
-    let productOfAMerger =
-        Namespaced_IRI.parse _namespace_name "productOfAMerger" |> NamespacedName
-
+    let productOfAMerger = _prefix "productOfAMerger"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/productOfASplit"></see>
     /// </summary>
-    let productOfASplit =
-        Namespaced_IRI.parse _namespace_name "productOfASplit" |> NamespacedName
-
+    let productOfASplit = _prefix "productOfASplit"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/realIdentity"></see>
     /// </summary>
-    let realIdentity =
-        Namespaced_IRI.parse _namespace_name "realIdentity" |> NamespacedName
-
+    let realIdentity = _prefix "realIdentity"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedCorporateBodyFamily"></see>
     /// </summary>
-    let relatedCorporateBodyFamily =
-        Namespaced_IRI.parse _namespace_name "relatedCorporateBodyFamily" |> NamespacedName
-
+    let relatedCorporateBodyFamily = _prefix "relatedCorporateBodyFamily"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/sponsoringFamily"></see>
     /// </summary>
-    let sponsoringFamily =
-        Namespaced_IRI.parse _namespace_name "sponsoringFamily" |> NamespacedName
-
+    let sponsoringFamily = _prefix "sponsoringFamily"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/successor"></see>
     /// </summary>
-    let successor = Namespaced_IRI.parse _namespace_name "successor" |> NamespacedName
+    let successor = _prefix "successor"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/sponsor"></see>
     /// </summary>
-    let sponsor = Namespaced_IRI.parse _namespace_name "sponsor" |> NamespacedName
-
+    let sponsor = _prefix "sponsor"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedFamilyFamily"></see>
     /// </summary>
-    let relatedFamilyFamily =
-        Namespaced_IRI.parse _namespace_name "relatedFamilyFamily" |> NamespacedName
-
+    let relatedFamilyFamily = _prefix "relatedFamilyFamily"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/sponsoredOrganization"></see>
     /// </summary>
-    let sponsoredOrganization =
-        Namespaced_IRI.parse _namespace_name "sponsoredOrganization" |> NamespacedName
-
+    let sponsoredOrganization = _prefix "sponsoredOrganization"
     /// <summary>
     ///   <see href="http://metadataregistry.org/uri/schema/RDARelationshipsGR2/relatedPersonFamily"></see>
     /// </summary>
-    let relatedPersonFamily =
-        Namespaced_IRI.parse _namespace_name "relatedPersonFamily" |> NamespacedName
+    let relatedPersonFamily = _prefix "relatedPersonFamily"

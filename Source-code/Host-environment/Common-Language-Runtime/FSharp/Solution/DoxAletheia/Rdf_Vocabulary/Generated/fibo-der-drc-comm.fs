@@ -1,204 +1,147 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.CommoditiesContracts.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_comm =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/AgriculturalResource"></see>
     /// </summary>
-    let AgriculturalResource =
-        Namespaced_IRI.parse _namespace_name "AgriculturalResource" |> NamespacedName
-
+    let AgriculturalResource = _prefix "AgriculturalResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/BaseMetal"></see>
     /// </summary>
-    let BaseMetal = Namespaced_IRI.parse _namespace_name "BaseMetal" |> NamespacedName
+    let BaseMetal = _prefix "BaseMetal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/Metal"></see>
     /// </summary>
-    let Metal = Namespaced_IRI.parse _namespace_name "Metal" |> NamespacedName
-
+    let Metal = _prefix "Metal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/BasketOfCommodities"></see>
     /// </summary>
-    let BasketOfCommodities =
-        Namespaced_IRI.parse _namespace_name "BasketOfCommodities" |> NamespacedName
-
+    let BasketOfCommodities = _prefix "BasketOfCommodities"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityBasketConstituent"></see>
     /// </summary>
-    let CommodityBasketConstituent =
-        Namespaced_IRI.parse _namespace_name "CommodityBasketConstituent" |> NamespacedName
-
+    let CommodityBasketConstituent = _prefix "CommodityBasketConstituent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/Bullion"></see>
     /// </summary>
-    let Bullion = Namespaced_IRI.parse _namespace_name "Bullion" |> NamespacedName
-
+    let Bullion = _prefix "Bullion"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/hasCommodityValueAsOfDate"></see>
     /// </summary>
-    let hasCommodityValueAsOfDate =
-        Namespaced_IRI.parse _namespace_name "hasCommodityValueAsOfDate" |> NamespacedName
-
+    let hasCommodityValueAsOfDate = _prefix "hasCommodityValueAsOfDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityDerivative"></see>
     /// </summary>
-    let CommodityDerivative =
-        Namespaced_IRI.parse _namespace_name "CommodityDerivative" |> NamespacedName
-
+    let CommodityDerivative = _prefix "CommodityDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityDerivativeUnderlier"></see>
     /// </summary>
-    let CommodityDerivativeUnderlier =
-        Namespaced_IRI.parse _namespace_name "CommodityDerivativeUnderlier" |> NamespacedName
-
+    let CommodityDerivativeUnderlier = _prefix "CommodityDerivativeUnderlier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityForward"></see>
     /// </summary>
-    let CommodityForward =
-        Namespaced_IRI.parse _namespace_name "CommodityForward" |> NamespacedName
-
+    let CommodityForward = _prefix "CommodityForward"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityFuture"></see>
     /// </summary>
-    let CommodityFuture =
-        Namespaced_IRI.parse _namespace_name "CommodityFuture" |> NamespacedName
-
+    let CommodityFuture = _prefix "CommodityFuture"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityIndex"></see>
     /// </summary>
-    let CommodityIndex =
-        Namespaced_IRI.parse _namespace_name "CommodityIndex" |> NamespacedName
-
+    let CommodityIndex = _prefix "CommodityIndex"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityOption"></see>
     /// </summary>
-    let CommodityOption =
-        Namespaced_IRI.parse _namespace_name "CommodityOption" |> NamespacedName
-
+    let CommodityOption = _prefix "CommodityOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommodityReturnLeg"></see>
     /// </summary>
-    let CommodityReturnLeg =
-        Namespaced_IRI.parse _namespace_name "CommodityReturnLeg" |> NamespacedName
-
+    let CommodityReturnLeg = _prefix "CommodityReturnLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommoditySpotContract"></see>
     /// </summary>
-    let CommoditySpotContract =
-        Namespaced_IRI.parse _namespace_name "CommoditySpotContract" |> NamespacedName
-
+    let CommoditySpotContract = _prefix "CommoditySpotContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/CommoditySwap"></see>
     /// </summary>
-    let CommoditySwap =
-        Namespaced_IRI.parse _namespace_name "CommoditySwap" |> NamespacedName
-
+    let CommoditySwap = _prefix "CommoditySwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/EnergyResource"></see>
     /// </summary>
-    let EnergyResource =
-        Namespaced_IRI.parse _namespace_name "EnergyResource" |> NamespacedName
-
+    let EnergyResource = _prefix "EnergyResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/EnergyTransmissionRights"></see>
     /// </summary>
-    let EnergyTransmissionRights =
-        Namespaced_IRI.parse _namespace_name "EnergyTransmissionRights" |> NamespacedName
-
+    let EnergyTransmissionRights = _prefix "EnergyTransmissionRights"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/EnvironmentalResource"></see>
     /// </summary>
-    let EnvironmentalResource =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalResource" |> NamespacedName
-
+    let EnvironmentalResource = _prefix "EnvironmentalResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/ExtractionResource"></see>
     /// </summary>
-    let ExtractionResource =
-        Namespaced_IRI.parse _namespace_name "ExtractionResource" |> NamespacedName
-
+    let ExtractionResource = _prefix "ExtractionResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/FertilizerResource"></see>
     /// </summary>
-    let FertilizerResource =
-        Namespaced_IRI.parse _namespace_name "FertilizerResource" |> NamespacedName
-
+    let FertilizerResource = _prefix "FertilizerResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/FreightResource"></see>
     /// </summary>
-    let FreightResource =
-        Namespaced_IRI.parse _namespace_name "FreightResource" |> NamespacedName
-
+    let FreightResource = _prefix "FreightResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/GasCommodity"></see>
     /// </summary>
-    let GasCommodity =
-        Namespaced_IRI.parse _namespace_name "GasCommodity" |> NamespacedName
-
+    let GasCommodity = _prefix "GasCommodity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/GeneratedResource"></see>
     /// </summary>
-    let GeneratedResource =
-        Namespaced_IRI.parse _namespace_name "GeneratedResource" |> NamespacedName
-
+    let GeneratedResource = _prefix "GeneratedResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/GrainCommodity"></see>
     /// </summary>
-    let GrainCommodity =
-        Namespaced_IRI.parse _namespace_name "GrainCommodity" |> NamespacedName
-
+    let GrainCommodity = _prefix "GrainCommodity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/IndustrialResource"></see>
     /// </summary>
-    let IndustrialResource =
-        Namespaced_IRI.parse _namespace_name "IndustrialResource" |> NamespacedName
-
+    let IndustrialResource = _prefix "IndustrialResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/MeatCommodity"></see>
     /// </summary>
-    let MeatCommodity =
-        Namespaced_IRI.parse _namespace_name "MeatCommodity" |> NamespacedName
-
+    let MeatCommodity = _prefix "MeatCommodity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/OilCommodity"></see>
     /// </summary>
-    let OilCommodity =
-        Namespaced_IRI.parse _namespace_name "OilCommodity" |> NamespacedName
-
+    let OilCommodity = _prefix "OilCommodity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/hasGrade"></see>
     /// </summary>
-    let hasGrade = Namespaced_IRI.parse _namespace_name "hasGrade" |> NamespacedName
+    let hasGrade = _prefix "hasGrade"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/OilGrade"></see>
     /// </summary>
-    let OilGrade = Namespaced_IRI.parse _namespace_name "OilGrade" |> NamespacedName
-
+    let OilGrade = _prefix "OilGrade"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/PaperResource"></see>
     /// </summary>
-    let PaperResource =
-        Namespaced_IRI.parse _namespace_name "PaperResource" |> NamespacedName
-
+    let PaperResource = _prefix "PaperResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/PolypropyleneResource"></see>
     /// </summary>
-    let PolypropyleneResource =
-        Namespaced_IRI.parse _namespace_name "PolypropyleneResource" |> NamespacedName
-
+    let PolypropyleneResource = _prefix "PolypropyleneResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/ServiceResource"></see>
     /// </summary>
-    let ServiceResource =
-        Namespaced_IRI.parse _namespace_name "ServiceResource" |> NamespacedName
-
+    let ServiceResource = _prefix "ServiceResource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/WeatherDerivative"></see>
     /// </summary>
-    let WeatherDerivative =
-        Namespaced_IRI.parse _namespace_name "WeatherDerivative" |> NamespacedName
+    let WeatherDerivative = _prefix "WeatherDerivative"

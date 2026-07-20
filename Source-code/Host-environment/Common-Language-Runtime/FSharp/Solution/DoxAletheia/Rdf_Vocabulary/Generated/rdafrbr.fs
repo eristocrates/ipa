@@ -1,68 +1,66 @@
 namespace http.rdvocab.info.uri.schema.FRBRentitiesRDA.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rdafrbr =
     let _namespace_name = "http://rdvocab.info/uri/schema/FRBRentitiesRDA/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Agent"></see>
     /// </summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
-
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/CorporateBody"></see>
     /// </summary>
-    let CorporateBody =
-        Namespaced_IRI.parse _namespace_name "CorporateBody" |> NamespacedName
-
+    let CorporateBody = _prefix "CorporateBody"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Family"></see>
     /// </summary>
-    let Family = Namespaced_IRI.parse _namespace_name "Family" |> NamespacedName
+    let Family = _prefix "Family"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Concept"></see>
     /// </summary>
-    let Concept = Namespaced_IRI.parse _namespace_name "Concept" |> NamespacedName
+    let Concept = _prefix "Concept"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Subject"></see>
     /// </summary>
-    let Subject = Namespaced_IRI.parse _namespace_name "Subject" |> NamespacedName
+    let Subject = _prefix "Subject"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Expression"></see>
     /// </summary>
-    let Expression = Namespaced_IRI.parse _namespace_name "Expression" |> NamespacedName
+    let Expression = _prefix "Expression"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Item"></see>
     /// </summary>
-    let Item = Namespaced_IRI.parse _namespace_name "Item" |> NamespacedName
-
+    let Item = _prefix "Item"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Manifestation"></see>
     /// </summary>
-    let Manifestation =
-        Namespaced_IRI.parse _namespace_name "Manifestation" |> NamespacedName
-
+    let Manifestation = _prefix "Manifestation"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Name"></see>
     /// </summary>
-    let Name = Namespaced_IRI.parse _namespace_name "Name" |> NamespacedName
+    let Name = _prefix "Name"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Object"></see>
     /// </summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
+    let Object = _prefix "Object"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Work"></see>
     /// </summary>
-    let Work = Namespaced_IRI.parse _namespace_name "Work" |> NamespacedName
+    let Work = _prefix "Work"

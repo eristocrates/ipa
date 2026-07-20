@@ -1,5816 +1,4569 @@
 namespace http.elite.polito.it.ontologies.dogont.bare
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dogont =
     let _namespace_name = "http://elite.polito.it/ontologies/dogont"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#BTicinoProperty"></see>
     /// </summary>
-    let ``_.owl#BTicinoProperty`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BTicinoProperty" |> NamespacedName
-
+    let ``_.owl#BTicinoProperty`` = _prefix ".owl#BTicinoProperty"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EchelonProperty"></see>
     /// </summary>
-    let ``_.owl#EchelonProperty`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EchelonProperty" |> NamespacedName
-
+    let ``_.owl#EchelonProperty`` = _prefix ".owl#EchelonProperty"
     /// <summary>
     /// The IP address of the gateway
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#IPAddress"></see></summary>
-    let ``_.owl#IPAddress`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IPAddress" |> NamespacedName
-
+    let ``_.owl#IPAddress`` = _prefix ".owl#IPAddress"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#KonnexProperty"></see>
     /// </summary>
-    let ``_.owl#KonnexProperty`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KonnexProperty" |> NamespacedName
-
+    let ``_.owl#KonnexProperty`` = _prefix ".owl#KonnexProperty"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ModBusProperty"></see>
     /// </summary>
-    let ``_.owl#ModBusProperty`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ModBusProperty" |> NamespacedName
-
+    let ``_.owl#ModBusProperty`` = _prefix ".owl#ModBusProperty"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZWaveProperty"></see>
     /// </summary>
-    let ``_.owl#ZWaveProperty`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZWaveProperty" |> NamespacedName
-
+    let ``_.owl#ZWaveProperty`` = _prefix ".owl#ZWaveProperty"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#commandParamName"></see>
     /// </summary>
-    let ``_.owl#commandParamName`` =
-        Namespaced_IRI.parse _namespace_name ".owl#commandParamName" |> NamespacedName
-
+    let ``_.owl#commandParamName`` = _prefix ".owl#commandParamName"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#commandParamValue"></see>
     /// </summary>
-    let ``_.owl#commandParamValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#commandParamValue" |> NamespacedName
-
+    let ``_.owl#commandParamValue`` = _prefix ".owl#commandParamValue"
     /// <summary>
     /// The time before the connection expires
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#connectionTimeOut"></see></summary>
-    let ``_.owl#connectionTimeOut`` =
-        Namespaced_IRI.parse _namespace_name ".owl#connectionTimeOut" |> NamespacedName
-
+    let ``_.owl#connectionTimeOut`` = _prefix ".owl#connectionTimeOut"
     /// <summary>
     /// Number of connection trials before failure
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#connectionTrials"></see></summary>
-    let ``_.owl#connectionTrials`` =
-        Namespaced_IRI.parse _namespace_name ".owl#connectionTrials" |> NamespacedName
-
+    let ``_.owl#connectionTrials`` = _prefix ".owl#connectionTrials"
     /// <summary>
     /// The flashing period duration in seconds
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#flashingTime"></see></summary>
-    let ``_.owl#flashingTime`` =
-        Namespaced_IRI.parse _namespace_name ".owl#flashingTime" |> NamespacedName
-
+    let ``_.owl#flashingTime`` = _prefix ".owl#flashingTime"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#levelFromGround"></see>
     /// </summary>
-    let ``_.owl#levelFromGround`` =
-        Namespaced_IRI.parse _namespace_name ".owl#levelFromGround" |> NamespacedName
-
+    let ``_.owl#levelFromGround`` = _prefix ".owl#levelFromGround"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#nParams"></see>
     /// </summary>
-    let ``_.owl#nParams`` =
-        Namespaced_IRI.parse _namespace_name ".owl#nParams" |> NamespacedName
-
+    let ``_.owl#nParams`` = _prefix ".owl#nParams"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#notificationName"></see>
     /// </summary>
-    let ``_.owl#notificationName`` =
-        Namespaced_IRI.parse _namespace_name ".owl#notificationName" |> NamespacedName
-
+    let ``_.owl#notificationName`` = _prefix ".owl#notificationName"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#notificationParamName"></see>
     /// </summary>
-    let ``_.owl#notificationParamName`` =
-        Namespaced_IRI.parse _namespace_name ".owl#notificationParamName" |> NamespacedName
-
+    let ``_.owl#notificationParamName`` = _prefix ".owl#notificationParamName"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#phaseID"></see>
     /// </summary>
-    let ``_.owl#phaseID`` =
-        Namespaced_IRI.parse _namespace_name ".owl#phaseID" |> NamespacedName
-
+    let ``_.owl#phaseID`` = _prefix ".owl#phaseID"
     /// <summary>
     /// The interval between subsequent polls
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#pollingInterval"></see></summary>
-    let ``_.owl#pollingInterval`` =
-        Namespaced_IRI.parse _namespace_name ".owl#pollingInterval" |> NamespacedName
-
+    let ``_.owl#pollingInterval`` = _prefix ".owl#pollingInterval"
     /// <summary>
     /// The port of the gateway
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#port"></see></summary>
-    let ``_.owl#port`` =
-        Namespaced_IRI.parse _namespace_name ".owl#port" |> NamespacedName
-
+    let ``_.owl#port`` = _prefix ".owl#port"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#probeID"></see>
     /// </summary>
-    let ``_.owl#probeID`` =
-        Namespaced_IRI.parse _namespace_name ".owl#probeID" |> NamespacedName
-
+    let ``_.owl#probeID`` = _prefix ".owl#probeID"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#realCommandName"></see>
     /// </summary>
-    let ``_.owl#realCommandName`` =
-        Namespaced_IRI.parse _namespace_name ".owl#realCommandName" |> NamespacedName
-
+    let ``_.owl#realCommandName`` = _prefix ".owl#realCommandName"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#realStateValue"></see>
     /// </summary>
-    let ``_.owl#realStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#realStateValue" |> NamespacedName
-
+    let ``_.owl#realStateValue`` = _prefix ".owl#realStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#returnType"></see>
     /// </summary>
-    let ``_.owl#returnType`` =
-        Namespaced_IRI.parse _namespace_name ".owl#returnType" |> NamespacedName
-
+    let ``_.owl#returnType`` = _prefix ".owl#returnType"
     /// <summary>
     /// The time between connection trials
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#sleepTime"></see></summary>
-    let ``_.owl#sleepTime`` =
-        Namespaced_IRI.parse _namespace_name ".owl#sleepTime" |> NamespacedName
-
+    let ``_.owl#sleepTime`` = _prefix ".owl#sleepTime"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#stepValue"></see>
     /// </summary>
-    let ``_.owl#stepValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#stepValue" |> NamespacedName
-
+    let ``_.owl#stepValue`` = _prefix ".owl#stepValue"
     /// <summary>
     /// A property holding the svg footprint for the given building environment object
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#svgFootprint"></see></summary>
-    let ``_.owl#svgFootprint`` =
-        Namespaced_IRI.parse _namespace_name ".owl#svgFootprint" |> NamespacedName
-
+    let ``_.owl#svgFootprint`` = _prefix ".owl#svgFootprint"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#tariffID"></see>
     /// </summary>
-    let ``_.owl#tariffID`` =
-        Namespaced_IRI.parse _namespace_name ".owl#tariffID" |> NamespacedName
-
+    let ``_.owl#tariffID`` = _prefix ".owl#tariffID"
     /// <summary>
     /// The time in seconds during which the object is turned on
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#timeToOff"></see></summary>
-    let ``_.owl#timeToOff`` =
-        Namespaced_IRI.parse _namespace_name ".owl#timeToOff" |> NamespacedName
-
+    let ``_.owl#timeToOff`` = _prefix ".owl#timeToOff"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#weekDay"></see>
     /// </summary>
-    let ``_.owl#weekDay`` =
-        Namespaced_IRI.parse _namespace_name ".owl#weekDay" |> NamespacedName
-
+    let ``_.owl#weekDay`` = _prefix ".owl#weekDay"
     /// <summary>
     /// A room containing a bath or shower and usually a washbasin and toilet
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Bathroom"></see></summary>
-    let ``_.owl#Bathroom`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Bathroom" |> NamespacedName
-
+    let ``_.owl#Bathroom`` = _prefix ".owl#Bathroom"
     /// <summary>
     /// A room used primarily for sleeping
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Bedroom"></see></summary>
-    let ``_.owl#Bedroom`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Bedroom" |> NamespacedName
-
+    let ``_.owl#Bedroom`` = _prefix ".owl#Bedroom"
     /// <summary>
     /// A room used for dining
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DiningRoom"></see></summary>
-    let ``_.owl#DiningRoom`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiningRoom" |> NamespacedName
-
+    let ``_.owl#DiningRoom`` = _prefix ".owl#DiningRoom"
     /// <summary>
     /// A room equipped for preparing meals
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Kitchen"></see></summary>
-    let ``_.owl#Kitchen`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Kitchen" |> NamespacedName
-
+    let ``_.owl#Kitchen`` = _prefix ".owl#Kitchen"
     /// <summary>
     /// A room where people can sit and talk and relax
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LivingRoom"></see></summary>
-    let ``_.owl#LivingRoom`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LivingRoom" |> NamespacedName
-
+    let ``_.owl#LivingRoom`` = _prefix ".owl#LivingRoom"
     /// <summary>
     /// A large entrance
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Lobby"></see></summary>
-    let ``_.owl#Lobby`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Lobby" |> NamespacedName
-
+    let ``_.owl#Lobby`` = _prefix ".owl#Lobby"
     /// <summary>
     /// Little Room for storage of things in the house
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#StorageRoom"></see></summary>
-    let ``_.owl#StorageRoom`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StorageRoom" |> NamespacedName
-
+    let ``_.owl#StorageRoom`` = _prefix ".owl#StorageRoom"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApplianceRunNotification"></see>
     /// </summary>
-    let ``_.owl#ApplianceRunNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApplianceRunNotification" |> NamespacedName
-
+    let ``_.owl#ApplianceRunNotification`` = _prefix ".owl#ApplianceRunNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CloseNotification"></see>
     /// </summary>
-    let ``_.owl#CloseNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CloseNotification" |> NamespacedName
-
+    let ``_.owl#CloseNotification`` = _prefix ".owl#CloseNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CoolNotification"></see>
     /// </summary>
-    let ``_.owl#CoolNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CoolNotification" |> NamespacedName
-
+    let ``_.owl#CoolNotification`` = _prefix ".owl#CoolNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DetectedNotification"></see>
     /// </summary>
-    let ``_.owl#DetectedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DetectedNotification" |> NamespacedName
+    let ``_.owl#DetectedNotification`` = _prefix ".owl#DetectedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EmittingMicrowavesNotification"></see>
     /// </summary>
     let ``_.owl#EmittingMicrowavesNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EmittingMicrowavesNotification" |> NamespacedName
+        _prefix ".owl#EmittingMicrowavesNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FiringUpNotification"></see>
     /// </summary>
-    let ``_.owl#FiringUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FiringUpNotification" |> NamespacedName
-
+    let ``_.owl#FiringUpNotification`` = _prefix ".owl#FiringUpNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatNotification"></see>
     /// </summary>
-    let ``_.owl#HeatNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatNotification" |> NamespacedName
-
+    let ``_.owl#HeatNotification`` = _prefix ".owl#HeatNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IdentifyNotification"></see>
     /// </summary>
-    let ``_.owl#IdentifyNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IdentifyNotification" |> NamespacedName
-
+    let ``_.owl#IdentifyNotification`` = _prefix ".owl#IdentifyNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IsPresentNotification"></see>
     /// </summary>
-    let ``_.owl#IsPresentNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IsPresentNotification" |> NamespacedName
-
+    let ``_.owl#IsPresentNotification`` = _prefix ".owl#IsPresentNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovementNotification"></see>
     /// </summary>
-    let ``_.owl#MovementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovementNotification" |> NamespacedName
-
+    let ``_.owl#MovementNotification`` = _prefix ".owl#MovementNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NoMovementNotification"></see>
     /// </summary>
-    let ``_.owl#NoMovementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NoMovementNotification" |> NamespacedName
+    let ``_.owl#NoMovementNotification`` = _prefix ".owl#NoMovementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NonParametricLevelNotification"></see>
     /// </summary>
     let ``_.owl#NonParametricLevelNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NonParametricLevelNotification" |> NamespacedName
+        _prefix ".owl#NonParametricLevelNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotDetectedNotification"></see>
     /// </summary>
-    let ``_.owl#NotDetectedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotDetectedNotification" |> NamespacedName
+    let ``_.owl#NotDetectedNotification`` = _prefix ".owl#NotDetectedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotEmittingMicrowavesNotification"></see>
     /// </summary>
     let ``_.owl#NotEmittingMicrowavesNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotEmittingMicrowavesNotification" |> NamespacedName
+        _prefix ".owl#NotEmittingMicrowavesNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotPresentNotification"></see>
     /// </summary>
-    let ``_.owl#NotPresentNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotPresentNotification" |> NamespacedName
-
+    let ``_.owl#NotPresentNotification`` = _prefix ".owl#NotPresentNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OffNotification"></see>
     /// </summary>
-    let ``_.owl#OffNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OffNotification" |> NamespacedName
-
+    let ``_.owl#OffNotification`` = _prefix ".owl#OffNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OnNotification"></see>
     /// </summary>
-    let ``_.owl#OnNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnNotification" |> NamespacedName
-
+    let ``_.owl#OnNotification`` = _prefix ".owl#OnNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OpenNotification"></see>
     /// </summary>
-    let ``_.owl#OpenNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenNotification" |> NamespacedName
-
+    let ``_.owl#OpenNotification`` = _prefix ".owl#OpenNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlaybackNotification"></see>
     /// </summary>
-    let ``_.owl#PlaybackNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlaybackNotification" |> NamespacedName
-
+    let ``_.owl#PlaybackNotification`` = _prefix ".owl#PlaybackNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressedDownNotification"></see>
     /// </summary>
-    let ``_.owl#PressedDownNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressedDownNotification" |> NamespacedName
-
+    let ``_.owl#PressedDownNotification`` = _prefix ".owl#PressedDownNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressedNotification"></see>
     /// </summary>
-    let ``_.owl#PressedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressedNotification" |> NamespacedName
-
+    let ``_.owl#PressedNotification`` = _prefix ".owl#PressedNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressedUpNotification"></see>
     /// </summary>
-    let ``_.owl#PressedUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressedUpNotification" |> NamespacedName
-
+    let ``_.owl#PressedUpNotification`` = _prefix ".owl#PressedUpNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReleasedNotification"></see>
     /// </summary>
-    let ``_.owl#ReleasedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReleasedNotification" |> NamespacedName
-
+    let ``_.owl#ReleasedNotification`` = _prefix ".owl#ReleasedNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StandByNotification"></see>
     /// </summary>
-    let ``_.owl#StandByNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StandByNotification" |> NamespacedName
+    let ``_.owl#StandByNotification`` = _prefix ".owl#StandByNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopHeatingCoolingNotification"></see>
     /// </summary>
     let ``_.owl#StopHeatingCoolingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopHeatingCoolingNotification" |> NamespacedName
+        _prefix ".owl#StopHeatingCoolingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperCoolingNotification"></see>
     /// </summary>
-    let ``_.owl#SuperCoolingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperCoolingNotification" |> NamespacedName
-
+    let ``_.owl#SuperCoolingNotification`` = _prefix ".owl#SuperCoolingNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperFreezingNotification"></see>
     /// </summary>
-    let ``_.owl#SuperFreezingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperFreezingNotification" |> NamespacedName
-
+    let ``_.owl#SuperFreezingNotification`` = _prefix ".owl#SuperFreezingNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperHeatingNotification"></see>
     /// </summary>
-    let ``_.owl#SuperHeatingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperHeatingNotification" |> NamespacedName
-
+    let ``_.owl#SuperHeatingNotification`` = _prefix ".owl#SuperHeatingNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WashingNotification"></see>
     /// </summary>
-    let ``_.owl#WashingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WashingNotification" |> NamespacedName
-
+    let ``_.owl#WashingNotification`` = _prefix ".owl#WashingNotification"
     /// <summary>
     /// The address of the group of the component
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#groupAddress"></see></summary>
-    let ``_.owl#groupAddress`` =
-        Namespaced_IRI.parse _namespace_name ".owl#groupAddress" |> NamespacedName
-
+    let ``_.owl#groupAddress`` = _prefix ".owl#groupAddress"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hexValue"></see>
     /// </summary>
-    let ``_.owl#hexValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hexValue" |> NamespacedName
-
+    let ``_.owl#hexValue`` = _prefix ".owl#hexValue"
     /// <summary>
     /// The individual address of the component
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#individualAddress"></see></summary>
-    let ``_.owl#individualAddress`` =
-        Namespaced_IRI.parse _namespace_name ".owl#individualAddress" |> NamespacedName
-
+    let ``_.owl#individualAddress`` = _prefix ".owl#individualAddress"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#registerAddress"></see>
     /// </summary>
-    let ``_.owl#registerAddress`` =
-        Namespaced_IRI.parse _namespace_name ".owl#registerAddress" |> NamespacedName
-
+    let ``_.owl#registerAddress`` = _prefix ".owl#registerAddress"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#registerType"></see>
     /// </summary>
-    let ``_.owl#registerType`` =
-        Namespaced_IRI.parse _namespace_name ".owl#registerType" |> NamespacedName
-
+    let ``_.owl#registerType`` = _prefix ".owl#registerType"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#scaleFactor"></see>
     /// </summary>
-    let ``_.owl#scaleFactor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#scaleFactor" |> NamespacedName
-
+    let ``_.owl#scaleFactor`` = _prefix ".owl#scaleFactor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#slaveId"></see>
     /// </summary>
-    let ``_.owl#slaveId`` =
-        Namespaced_IRI.parse _namespace_name ".owl#slaveId" |> NamespacedName
-
+    let ``_.owl#slaveId`` = _prefix ".owl#slaveId"
     /// <summary>
     /// The ILON id of a given datapoint associated to the command or notification of a given echelon-managed device
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#datapoinId"></see></summary>
-    let ``_.owl#datapoinId`` =
-        Namespaced_IRI.parse _namespace_name ".owl#datapoinId" |> NamespacedName
-
+    let ``_.owl#datapoinId`` = _prefix ".owl#datapoinId"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#datapointAlias"></see>
     /// </summary>
-    let ``_.owl#datapointAlias`` =
-        Namespaced_IRI.parse _namespace_name ".owl#datapointAlias" |> NamespacedName
-
+    let ``_.owl#datapointAlias`` = _prefix ".owl#datapointAlias"
     /// <summary>
     /// The address (URL) of the web service endpoint at which the ILON100 server having this property offers data reading and writing services
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#endpointAddress"></see></summary>
-    let ``_.owl#endpointAddress`` =
-        Namespaced_IRI.parse _namespace_name ".owl#endpointAddress" |> NamespacedName
-
+    let ``_.owl#endpointAddress`` = _prefix ".owl#endpointAddress"
     /// <summary>
     /// The multicast address of the gateway
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#multicastIP"></see></summary>
-    let ``_.owl#multicastIP`` =
-        Namespaced_IRI.parse _namespace_name ".owl#multicastIP" |> NamespacedName
-
+    let ``_.owl#multicastIP`` = _prefix ".owl#multicastIP"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActiveDiscoveryStateValue"></see>
     /// </summary>
-    let ``_.owl#ActiveDiscoveryStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActiveDiscoveryStateValue" |> NamespacedName
+    let ``_.owl#ActiveDiscoveryStateValue`` = _prefix ".owl#ActiveDiscoveryStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActivePushLinkAuthenticationStateValue"></see>
     /// </summary>
     let ``_.owl#ActivePushLinkAuthenticationStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActivePushLinkAuthenticationStateValue" |> NamespacedName
+        _prefix ".owl#ActivePushLinkAuthenticationStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AssociatingStateValue"></see>
     /// </summary>
-    let ``_.owl#AssociatingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AssociatingStateValue" |> NamespacedName
-
+    let ``_.owl#AssociatingStateValue`` = _prefix ".owl#AssociatingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AuthenticatedStateValue"></see>
     /// </summary>
-    let ``_.owl#AuthenticatedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AuthenticatedStateValue" |> NamespacedName
-
+    let ``_.owl#AuthenticatedStateValue`` = _prefix ".owl#AuthenticatedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AutoRegulationStateValue"></see>
     /// </summary>
-    let ``_.owl#AutoRegulationStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AutoRegulationStateValue" |> NamespacedName
-
+    let ``_.owl#AutoRegulationStateValue`` = _prefix ".owl#AutoRegulationStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AuxStateValue"></see>
     /// </summary>
-    let ``_.owl#AuxStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AuxStateValue" |> NamespacedName
-
+    let ``_.owl#AuxStateValue`` = _prefix ".owl#AuxStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CDStateValue"></see>
     /// </summary>
-    let ``_.owl#CDStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CDStateValue" |> NamespacedName
-
+    let ``_.owl#CDStateValue`` = _prefix ".owl#CDStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ClimateScheduleStateValue"></see>
     /// </summary>
-    let ``_.owl#ClimateScheduleStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ClimateScheduleStateValue" |> NamespacedName
-
+    let ``_.owl#ClimateScheduleStateValue`` = _prefix ".owl#ClimateScheduleStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CloseStateValue"></see>
     /// </summary>
-    let ``_.owl#CloseStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CloseStateValue" |> NamespacedName
-
+    let ``_.owl#CloseStateValue`` = _prefix ".owl#CloseStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ConnectedStateValue"></see>
     /// </summary>
-    let ``_.owl#ConnectedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ConnectedStateValue" |> NamespacedName
-
+    let ``_.owl#ConnectedStateValue`` = _prefix ".owl#ConnectedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CoolingStateValue"></see>
     /// </summary>
-    let ``_.owl#CoolingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CoolingStateValue" |> NamespacedName
-
+    let ``_.owl#CoolingStateValue`` = _prefix ".owl#CoolingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DetectedStateValue"></see>
     /// </summary>
-    let ``_.owl#DetectedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DetectedStateValue" |> NamespacedName
-
+    let ``_.owl#DetectedStateValue`` = _prefix ".owl#DetectedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisassociatingStateValue"></see>
     /// </summary>
-    let ``_.owl#DisassociatingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisassociatingStateValue" |> NamespacedName
-
+    let ``_.owl#DisassociatingStateValue`` = _prefix ".owl#DisassociatingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisconnectedStateValue"></see>
     /// </summary>
-    let ``_.owl#DisconnectedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisconnectedStateValue" |> NamespacedName
-
+    let ``_.owl#DisconnectedStateValue`` = _prefix ".owl#DisconnectedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DownTripleStateValue"></see>
     /// </summary>
-    let ``_.owl#DownTripleStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DownTripleStateValue" |> NamespacedName
+    let ``_.owl#DownTripleStateValue`` = _prefix ".owl#DownTripleStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EmittingMicrowavesStateValue"></see>
     /// </summary>
     let ``_.owl#EmittingMicrowavesStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EmittingMicrowavesStateValue" |> NamespacedName
+        _prefix ".owl#EmittingMicrowavesStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EndProgrammedStateValue"></see>
     /// </summary>
-    let ``_.owl#EndProgrammedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EndProgrammedStateValue" |> NamespacedName
-
+    let ``_.owl#EndProgrammedStateValue`` = _prefix ".owl#EndProgrammedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FailureStateValue"></see>
     /// </summary>
-    let ``_.owl#FailureStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FailureStateValue" |> NamespacedName
-
+    let ``_.owl#FailureStateValue`` = _prefix ".owl#FailureStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FireUpStateValue"></see>
     /// </summary>
-    let ``_.owl#FireUpStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FireUpStateValue" |> NamespacedName
-
+    let ``_.owl#FireUpStateValue`` = _prefix ".owl#FireUpStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ForwardStateValue"></see>
     /// </summary>
-    let ``_.owl#ForwardStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ForwardStateValue" |> NamespacedName
-
+    let ``_.owl#ForwardStateValue`` = _prefix ".owl#ForwardStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FreeStateValue"></see>
     /// </summary>
-    let ``_.owl#FreeStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FreeStateValue" |> NamespacedName
-
+    let ``_.owl#FreeStateValue`` = _prefix ".owl#FreeStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingStateValue"></see>
     /// </summary>
-    let ``_.owl#HeatingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingStateValue" |> NamespacedName
-
+    let ``_.owl#HeatingStateValue`` = _prefix ".owl#HeatingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IdleStateValue"></see>
     /// </summary>
-    let ``_.owl#IdleStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IdleStateValue" |> NamespacedName
-
+    let ``_.owl#IdleStateValue`` = _prefix ".owl#IdleStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovingStateValue"></see>
     /// </summary>
-    let ``_.owl#MovingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovingStateValue" |> NamespacedName
+    let ``_.owl#MovingStateValue`` = _prefix ".owl#MovingStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NeedingAuthenticationStateValue"></see>
     /// </summary>
     let ``_.owl#NeedingAuthenticationStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NeedingAuthenticationStateValue" |> NamespacedName
+        _prefix ".owl#NeedingAuthenticationStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NoFailureStateValue"></see>
     /// </summary>
-    let ``_.owl#NoFailureStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NoFailureStateValue" |> NamespacedName
-
+    let ``_.owl#NoFailureStateValue`` = _prefix ".owl#NoFailureStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotDetectedStateValue"></see>
     /// </summary>
-    let ``_.owl#NotDetectedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotDetectedStateValue" |> NamespacedName
+    let ``_.owl#NotDetectedStateValue`` = _prefix ".owl#NotDetectedStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotEmittingMicrowavesStateValue"></see>
     /// </summary>
     let ``_.owl#NotEmittingMicrowavesStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotEmittingMicrowavesStateValue" |> NamespacedName
+        _prefix ".owl#NotEmittingMicrowavesStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotMovingStateValue"></see>
     /// </summary>
-    let ``_.owl#NotMovingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotMovingStateValue" |> NamespacedName
-
+    let ``_.owl#NotMovingStateValue`` = _prefix ".owl#NotMovingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotPresentState"></see>
     /// </summary>
-    let ``_.owl#NotPresentState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotPresentState" |> NamespacedName
-
+    let ``_.owl#NotPresentState`` = _prefix ".owl#NotPresentState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NotProgrammedStateValue"></see>
     /// </summary>
-    let ``_.owl#NotProgrammedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotProgrammedStateValue" |> NamespacedName
-
+    let ``_.owl#NotProgrammedStateValue`` = _prefix ".owl#NotProgrammedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OccupiedStateValue"></see>
     /// </summary>
-    let ``_.owl#OccupiedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OccupiedStateValue" |> NamespacedName
-
+    let ``_.owl#OccupiedStateValue`` = _prefix ".owl#OccupiedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OffStateValue"></see>
     /// </summary>
-    let ``_.owl#OffStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OffStateValue" |> NamespacedName
-
+    let ``_.owl#OffStateValue`` = _prefix ".owl#OffStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OnStateValue"></see>
     /// </summary>
-    let ``_.owl#OnStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnStateValue" |> NamespacedName
-
+    let ``_.owl#OnStateValue`` = _prefix ".owl#OnStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OpenStateValue"></see>
     /// </summary>
-    let ``_.owl#OpenStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenStateValue" |> NamespacedName
-
+    let ``_.owl#OpenStateValue`` = _prefix ".owl#OpenStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PauseStateValue"></see>
     /// </summary>
-    let ``_.owl#PauseStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PauseStateValue" |> NamespacedName
-
+    let ``_.owl#PauseStateValue`` = _prefix ".owl#PauseStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PhonoStateValue"></see>
     /// </summary>
-    let ``_.owl#PhonoStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PhonoStateValue" |> NamespacedName
-
+    let ``_.owl#PhonoStateValue`` = _prefix ".owl#PhonoStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlayStateValue"></see>
     /// </summary>
-    let ``_.owl#PlayStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlayStateValue" |> NamespacedName
-
+    let ``_.owl#PlayStateValue`` = _prefix ".owl#PlayStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PresentStateValue"></see>
     /// </summary>
-    let ``_.owl#PresentStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PresentStateValue" |> NamespacedName
+    let ``_.owl#PresentStateValue`` = _prefix ".owl#PresentStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ProgramInterruptedStateValue"></see>
     /// </summary>
     let ``_.owl#ProgramInterruptedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ProgramInterruptedStateValue" |> NamespacedName
+        _prefix ".owl#ProgramInterruptedStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ProgrammedAndWaitingToStartStateValue"></see>
     /// </summary>
     let ``_.owl#ProgrammedAndWaitingToStartStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ProgrammedAndWaitingToStartStateValue" |> NamespacedName
+        _prefix ".owl#ProgrammedAndWaitingToStartStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ProgrammedStateValue"></see>
     /// </summary>
-    let ``_.owl#ProgrammedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ProgrammedStateValue" |> NamespacedName
-
+    let ``_.owl#ProgrammedStateValue`` = _prefix ".owl#ProgrammedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RestTripleStateValue"></see>
     /// </summary>
-    let ``_.owl#RestTripleStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RestTripleStateValue" |> NamespacedName
-
+    let ``_.owl#RestTripleStateValue`` = _prefix ".owl#RestTripleStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RewindStateValue"></see>
     /// </summary>
-    let ``_.owl#RewindStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RewindStateValue" |> NamespacedName
-
+    let ``_.owl#RewindStateValue`` = _prefix ".owl#RewindStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RinseHoldStateValue"></see>
     /// </summary>
-    let ``_.owl#RinseHoldStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RinseHoldStateValue" |> NamespacedName
-
+    let ``_.owl#RinseHoldStateValue`` = _prefix ".owl#RinseHoldStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RunningStateValue"></see>
     /// </summary>
-    let ``_.owl#RunningStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RunningStateValue" |> NamespacedName
-
+    let ``_.owl#RunningStateValue`` = _prefix ".owl#RunningStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StandByStateValue"></see>
     /// </summary>
-    let ``_.owl#StandByStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StandByStateValue" |> NamespacedName
-
+    let ``_.owl#StandByStateValue`` = _prefix ".owl#StandByStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopStateValue"></see>
     /// </summary>
-    let ``_.owl#StopStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopStateValue" |> NamespacedName
-
+    let ``_.owl#StopStateValue`` = _prefix ".owl#StopStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperCoolingStateValue"></see>
     /// </summary>
-    let ``_.owl#SuperCoolingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperCoolingStateValue" |> NamespacedName
-
+    let ``_.owl#SuperCoolingStateValue`` = _prefix ".owl#SuperCoolingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperFreezingStateValue"></see>
     /// </summary>
-    let ``_.owl#SuperFreezingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperFreezingStateValue" |> NamespacedName
-
+    let ``_.owl#SuperFreezingStateValue`` = _prefix ".owl#SuperFreezingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperHeatingStateValue"></see>
     /// </summary>
-    let ``_.owl#SuperHeatingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperHeatingStateValue" |> NamespacedName
-
+    let ``_.owl#SuperHeatingStateValue`` = _prefix ".owl#SuperHeatingStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Tape1StateValue"></see>
     /// </summary>
-    let ``_.owl#Tape1StateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Tape1StateValue" |> NamespacedName
-
+    let ``_.owl#Tape1StateValue`` = _prefix ".owl#Tape1StateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Tape2StateValue"></see>
     /// </summary>
-    let ``_.owl#Tape2StateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Tape2StateValue" |> NamespacedName
-
+    let ``_.owl#Tape2StateValue`` = _prefix ".owl#Tape2StateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TunerStateValue"></see>
     /// </summary>
-    let ``_.owl#TunerStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TunerStateValue" |> NamespacedName
-
+    let ``_.owl#TunerStateValue`` = _prefix ".owl#TunerStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#UpTripleStateValue"></see>
     /// </summary>
-    let ``_.owl#UpTripleStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UpTripleStateValue" |> NamespacedName
-
+    let ``_.owl#UpTripleStateValue`` = _prefix ".owl#UpTripleStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl"></see>
     /// </summary>
-    let ``_.owl`` = Namespaced_IRI.parse _namespace_name ".owl" |> NamespacedName
-
+    let ``_.owl`` = _prefix ".owl"
     /// <summary>
     /// System that provides security about access
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#AccessControlSystem"></see></summary>
-    let ``_.owl#AccessControlSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AccessControlSystem" |> NamespacedName
-
+    let ``_.owl#AccessControlSystem`` = _prefix ".owl#AccessControlSystem"
     /// <summary>
     /// Security system for detecting dangerous situation and intrusion
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SecuritySystem"></see></summary>
-    let ``_.owl#SecuritySystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SecuritySystem" |> NamespacedName
-
+    let ``_.owl#SecuritySystem`` = _prefix ".owl#SecuritySystem"
     /// <summary>
     /// System that detects the presence of fire
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#FireSystem"></see></summary>
-    let ``_.owl#FireSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FireSystem" |> NamespacedName
-
+    let ``_.owl#FireSystem`` = _prefix ".owl#FireSystem"
     /// <summary>
     /// System that detects the presence of flood
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#FloodSystem"></see></summary>
-    let ``_.owl#FloodSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FloodSystem" |> NamespacedName
-
+    let ``_.owl#FloodSystem`` = _prefix ".owl#FloodSystem"
     /// <summary>
     /// System that detects the presence of gas
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GasSystem"></see></summary>
-    let ``_.owl#GasSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasSystem" |> NamespacedName
-
+    let ``_.owl#GasSystem`` = _prefix ".owl#GasSystem"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Acoustic"></see>
     /// </summary>
-    let ``_.owl#Acoustic`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Acoustic" |> NamespacedName
-
+    let ``_.owl#Acoustic`` = _prefix ".owl#Acoustic"
     /// <summary>
     /// Indicates in which building environment is contained an object, e.g. the lamp5 isIn Kitchen
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#isIn"></see></summary>
-    let ``_.owl#isIn`` =
-        Namespaced_IRI.parse _namespace_name ".owl#isIn" |> NamespacedName
-
+    let ``_.owl#isIn`` = _prefix ".owl#isIn"
     /// <summary>
     /// Utility that provides electricity
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ElectricalSystem"></see></summary>
-    let ``_.owl#ElectricalSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ElectricalSystem" |> NamespacedName
-
+    let ``_.owl#ElectricalSystem`` = _prefix ".owl#ElectricalSystem"
     /// <summary>
     /// A mechanism that puts something into automatic action
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Actuator"></see></summary>
-    let ``_.owl#Actuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Actuator" |> NamespacedName
-
+    let ``_.owl#Actuator`` = _prefix ".owl#Actuator"
     /// <summary>
     /// A mechanism that controls the interaction with the electrical system
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Control"></see></summary>
-    let ``_.owl#Control`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Control" |> NamespacedName
-
+    let ``_.owl#Control`` = _prefix ".owl#Control"
     /// <summary>
     /// System that provides artificial light
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Lighting"></see></summary>
-    let ``_.owl#Lighting`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Lighting" |> NamespacedName
-
+    let ``_.owl#Lighting`` = _prefix ".owl#Lighting"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerDelivery"></see>
     /// </summary>
-    let ``_.owl#PowerDelivery`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerDelivery" |> NamespacedName
-
+    let ``_.owl#PowerDelivery`` = _prefix ".owl#PowerDelivery"
     /// <summary>
     /// Class for grouping all electrically powered sensors
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Sensor"></see></summary>
-    let ``_.owl#Sensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Sensor" |> NamespacedName
-
+    let ``_.owl#Sensor`` = _prefix ".owl#Sensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscreteValue"></see>
     /// </summary>
-    let ``_.owl#DiscreteValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscreteValue" |> NamespacedName
+    let ``_.owl#DiscreteValue`` = _prefix ".owl#DiscreteValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ActiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ActiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#EnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#EnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ActiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ActiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#EnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#EnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActiveEnergyStateValue"></see>
     /// </summary>
-    let ``_.owl#ActiveEnergyStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActiveEnergyStateValue" |> NamespacedName
-
+    let ``_.owl#ActiveEnergyStateValue`` = _prefix ".owl#ActiveEnergyStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ContinuousValue"></see>
     /// </summary>
-    let ``_.owl#ContinuousValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ContinuousValue" |> NamespacedName
-
+    let ``_.owl#ContinuousValue`` = _prefix ".owl#ContinuousValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ChannelStateValue"></see>
     /// </summary>
-    let ``_.owl#ChannelStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ChannelStateValue" |> NamespacedName
-
+    let ``_.owl#ChannelStateValue`` = _prefix ".owl#ChannelStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressureStateValue"></see>
     /// </summary>
-    let ``_.owl#PressureStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureStateValue" |> NamespacedName
-
+    let ``_.owl#PressureStateValue`` = _prefix ".owl#PressureStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureStateValue"></see>
     /// </summary>
-    let ``_.owl#TemperatureStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureStateValue" |> NamespacedName
-
+    let ``_.owl#TemperatureStateValue`` = _prefix ".owl#TemperatureStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowRateStateValue"></see>
     /// </summary>
-    let ``_.owl#FlowRateStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowRateStateValue" |> NamespacedName
-
+    let ``_.owl#FlowRateStateValue`` = _prefix ".owl#FlowRateStateValue"
     /// <summary>
     /// Value for the Shade position state, the shade position can be expressed as position=closedLimitx(255-level)/255, where with level 0 the shade is closed and with level 255 the shade is completely open. Derives from ZigBee HA specifications.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ShadeStateValue"></see></summary>
-    let ``_.owl#ShadeStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShadeStateValue" |> NamespacedName
-
+    let ``_.owl#ShadeStateValue`` = _prefix ".owl#ShadeStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HumidityStateValue"></see>
     /// </summary>
-    let ``_.owl#HumidityStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumidityStateValue" |> NamespacedName
-
+    let ``_.owl#HumidityStateValue`` = _prefix ".owl#HumidityStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CurrentStateValue"></see>
     /// </summary>
-    let ``_.owl#CurrentStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CurrentStateValue" |> NamespacedName
-
+    let ``_.owl#CurrentStateValue`` = _prefix ".owl#CurrentStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelStateValue"></see>
     /// </summary>
-    let ``_.owl#LevelStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelStateValue" |> NamespacedName
-
+    let ``_.owl#LevelStateValue`` = _prefix ".owl#LevelStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactiveEnergyStateValue"></see>
     /// </summary>
-    let ``_.owl#ReactiveEnergyStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactiveEnergyStateValue" |> NamespacedName
+    let ``_.owl#ReactiveEnergyStateValue`` = _prefix ".owl#ReactiveEnergyStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActivePowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ActivePowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActivePowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ActivePowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#PowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#PowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActivePowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ActivePowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActivePowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ActivePowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ElectricPowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ElectricPowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ElectricPowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ElectricPowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActivePowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ActivePowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActivePowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ActivePowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ElectricPowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ElectricPowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ElectricPowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ElectricPowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActivePowerMeter"></see>
     /// </summary>
-    let ``_.owl#ActivePowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActivePowerMeter" |> NamespacedName
-
+    let ``_.owl#ActivePowerMeter`` = _prefix ".owl#ActivePowerMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerMeter"></see>
     /// </summary>
-    let ``_.owl#PowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerMeter" |> NamespacedName
-
+    let ``_.owl#PowerMeter`` = _prefix ".owl#PowerMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ActivePowerStateValue"></see>
     /// </summary>
-    let ``_.owl#ActivePowerStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ActivePowerStateValue" |> NamespacedName
-
+    let ``_.owl#ActivePowerStateValue`` = _prefix ".owl#ActivePowerStateValue"
     /// <summary>
     /// A system that keeps air cool and dry
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#AirConditioningSystem"></see></summary>
-    let ``_.owl#AirConditioningSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AirConditioningSystem" |> NamespacedName
+    let ``_.owl#AirConditioningSystem`` = _prefix ".owl#AirConditioningSystem"
 
     /// <summary>
     /// The thermostat request notification, requires a device having the thermostat control functionality to increase, set or decrease the current temperature. Derives from ZigBee HA (slightly modified...)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ThermostatNotificationFunctionality"></see></summary>
     let ``_.owl#ThermostatNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThermostatNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThermostatNotificationFunctionality"
 
     /// <summary>
     /// Provide functionalities to controllable things
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasFunctionality"></see></summary>
-    let ``_.owl#hasFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasFunctionality" |> NamespacedName
-
+    let ``_.owl#hasFunctionality`` = _prefix ".owl#hasFunctionality"
     /// <summary>
     /// Functionality: turn on - turn off
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffFunctionality"></see></summary>
-    let ``_.owl#OnOffFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffFunctionality" |> NamespacedName
-
+    let ``_.owl#OnOffFunctionality`` = _prefix ".owl#OnOffFunctionality"
     /// <summary>
     /// Heating Ventilating and Air Conditioning system
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HVACSystem"></see></summary>
-    let ``_.owl#HVACSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HVACSystem" |> NamespacedName
-
+    let ``_.owl#HVACSystem`` = _prefix ".owl#HVACSystem"
     /// <summary>
     /// State: on - off
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffState"></see></summary>
-    let ``_.owl#OnOffState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffState" |> NamespacedName
-
+    let ``_.owl#OnOffState`` = _prefix ".owl#OnOffState"
     /// <summary>
     /// Provide the actual state to controllable things
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasState"></see></summary>
-    let ``_.owl#hasState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasState" |> NamespacedName
+    let ``_.owl#hasState`` = _prefix ".owl#hasState"
 
     /// <summary>
     /// Notification: on - off
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffNotificationFunctionality"></see></summary>
     let ``_.owl#OnOffNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#OnOffNotificationFunctionality"
 
     /// <summary>
     /// Functionalities for the regulation of temperature
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ThermostatControlFunctionality"></see></summary>
     let ``_.owl#ThermostatControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThermostatControlFunctionality" |> NamespacedName
+        _prefix ".owl#ThermostatControlFunctionality"
 
     /// <summary>
     /// The Pressure Sensor device measures and periodically reports the pressure of a liquid (typically water)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#PressureSensor"></see></summary>
-    let ``_.owl#PressureSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureSensor" |> NamespacedName
-
+    let ``_.owl#PressureSensor`` = _prefix ".owl#PressureSensor"
     /// <summary>
     /// The Pump device is a pump that may have variable speed. It may have optional built-in sensors and a regulation mechanism. It is typically used for pumping water. Derives from ZigBee HA specifications.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Pump"></see></summary>
-    let ``_.owl#Pump`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Pump" |> NamespacedName
-
+    let ``_.owl#Pump`` = _prefix ".owl#Pump"
     /// <summary>
     /// The Pump device controller can control a Pump device
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#PumpController"></see></summary>
-    let ``_.owl#PumpController`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PumpController" |> NamespacedName
-
+    let ``_.owl#PumpController`` = _prefix ".owl#PumpController"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VentilatingSystem"></see>
     /// </summary>
-    let ``_.owl#VentilatingSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VentilatingSystem" |> NamespacedName
-
+    let ``_.owl#VentilatingSystem`` = _prefix ".owl#VentilatingSystem"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Thermostat"></see>
     /// </summary>
-    let ``_.owl#Thermostat`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Thermostat" |> NamespacedName
-
+    let ``_.owl#Thermostat`` = _prefix ".owl#Thermostat"
     /// <summary>
     /// Utility to warm a building
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingSystem"></see></summary>
-    let ``_.owl#HeatingSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingSystem" |> NamespacedName
-
+    let ``_.owl#HeatingSystem`` = _prefix ".owl#HeatingSystem"
     /// <summary>
     /// The Flow  Sensor device measures and periodically reports the flow rate of a liquid (typically water)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SingleFlowSensor"></see></summary>
-    let ``_.owl#SingleFlowSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleFlowSensor" |> NamespacedName
-
+    let ``_.owl#SingleFlowSensor`` = _prefix ".owl#SingleFlowSensor"
     /// <summary>
     /// The Heating and Cooling Unit device can heat or cool a space in a house. It is not mandatory to provide both functionalities. It may be an indoor air handler. Derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingAndCoolingUnit"></see></summary>
-    let ``_.owl#HeatingAndCoolingUnit`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingAndCoolingUnit" |> NamespacedName
-
+    let ``_.owl#HeatingAndCoolingUnit`` = _prefix ".owl#HeatingAndCoolingUnit"
     /// <summary>
     /// A clock that wakes sleeper at preset time
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#AlarmClock"></see></summary>
-    let ``_.owl#AlarmClock`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AlarmClock" |> NamespacedName
-
+    let ``_.owl#AlarmClock`` = _prefix ".owl#AlarmClock"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Clock"></see>
     /// </summary>
-    let ``_.owl#Clock`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Clock" |> NamespacedName
-
+    let ``_.owl#Clock`` = _prefix ".owl#Clock"
     /// <summary>
     /// A machine for performing calculations automatically, work and play
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Computer"></see></summary>
-    let ``_.owl#Computer`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Computer" |> NamespacedName
-
+    let ``_.owl#Computer`` = _prefix ".owl#Computer"
     /// <summary>
     /// A diversion that holds the attention
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Entertainment"></see></summary>
-    let ``_.owl#Entertainment`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Entertainment" |> NamespacedName
-
+    let ``_.owl#Entertainment`` = _prefix ".owl#Entertainment"
     /// <summary>
     /// Appliances for communicate
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Communication"></see></summary>
-    let ``_.owl#Communication`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Communication" |> NamespacedName
-
+    let ``_.owl#Communication`` = _prefix ".owl#Communication"
     /// <summary>
     /// A device for creating a current of air
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Fan"></see></summary>
-    let ``_.owl#Fan`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Fan" |> NamespacedName
-
+    let ``_.owl#Fan`` = _prefix ".owl#Fan"
     /// <summary>
     /// Output device that prints
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Printer"></see></summary>
-    let ``_.owl#Printer`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Printer" |> NamespacedName
-
+    let ``_.owl#Printer`` = _prefix ".owl#Printer"
     /// <summary>
     /// A kitchen appliance for brewing coffee automatically
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#CoffeeMaker"></see></summary>
-    let ``_.owl#CoffeeMaker`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CoffeeMaker" |> NamespacedName
-
+    let ``_.owl#CoffeeMaker`` = _prefix ".owl#CoffeeMaker"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AlertNotification"></see>
     /// </summary>
-    let ``_.owl#AlertNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AlertNotification" |> NamespacedName
-
+    let ``_.owl#AlertNotification`` = _prefix ".owl#AlertNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ParametricNotification"></see>
     /// </summary>
-    let ``_.owl#ParametricNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ParametricNotification" |> NamespacedName
+    let ``_.owl#ParametricNotification`` = _prefix ".owl#ParametricNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AlertNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#AlertNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AlertNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#AlertNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hasNotification"></see>
     /// </summary>
-    let ``_.owl#hasNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasNotification" |> NamespacedName
+    let ``_.owl#hasNotification`` = _prefix ".owl#hasNotification"
 
     /// <summary>
     /// Discrete notification with exactly one values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SingleValuedNotificationFunctionality"></see></summary>
     let ``_.owl#SingleValuedNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleValuedNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SingleValuedNotificationFunctionality"
 
     /// <summary>
     /// Electronic device that answers the telephone and records messages
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#AnsweringMachine"></see></summary>
-    let ``_.owl#AnsweringMachine`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AnsweringMachine" |> NamespacedName
-
+    let ``_.owl#AnsweringMachine`` = _prefix ".owl#AnsweringMachine"
     /// <summary>
     /// Appliance that send text and document
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Fax"></see></summary>
-    let ``_.owl#Fax`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Fax" |> NamespacedName
-
+    let ``_.owl#Fax`` = _prefix ".owl#Fax"
     /// <summary>
     /// A telephonic intercommunication system linking different rooms in a building
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Interphone"></see></summary>
-    let ``_.owl#Interphone`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Interphone" |> NamespacedName
-
+    let ``_.owl#Interphone`` = _prefix ".owl#Interphone"
     /// <summary>
     /// Appliance to comunicate with other person
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Phone"></see></summary>
-    let ``_.owl#Phone`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Phone" |> NamespacedName
-
+    let ``_.owl#Phone`` = _prefix ".owl#Phone"
     /// <summary>
     /// System that provides security about intrusion
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#AntiIntrusionSystem"></see></summary>
-    let ``_.owl#AntiIntrusionSystem`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AntiIntrusionSystem" |> NamespacedName
+    let ``_.owl#AntiIntrusionSystem`` = _prefix ".owl#AntiIntrusionSystem"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApparentPowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ApparentPowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApparentPowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ApparentPowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApparentPowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ApparentPowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApparentPowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ApparentPowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApparentPowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ApparentPowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApparentPowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ApparentPowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApparentPowerMeter"></see>
     /// </summary>
-    let ``_.owl#ApparentPowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApparentPowerMeter" |> NamespacedName
-
+    let ``_.owl#ApparentPowerMeter`` = _prefix ".owl#ApparentPowerMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApparentPowerStateValue"></see>
     /// </summary>
-    let ``_.owl#ApparentPowerStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApparentPowerStateValue" |> NamespacedName
+    let ``_.owl#ApparentPowerStateValue`` = _prefix ".owl#ApparentPowerStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApplianceCycleTimingNotification"></see>
     /// </summary>
     let ``_.owl#ApplianceCycleTimingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApplianceCycleTimingNotification" |> NamespacedName
+        _prefix ".owl#ApplianceCycleTimingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EndTimeChangedNotification"></see>
     /// </summary>
-    let ``_.owl#EndTimeChangedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EndTimeChangedNotification" |> NamespacedName
+    let ``_.owl#EndTimeChangedNotification`` = _prefix ".owl#EndTimeChangedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RemainingTimeChangedNotification"></see>
     /// </summary>
     let ``_.owl#RemainingTimeChangedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RemainingTimeChangedNotification" |> NamespacedName
+        _prefix ".owl#RemainingTimeChangedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartTimeChangedNotification"></see>
     /// </summary>
     let ``_.owl#StartTimeChangedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartTimeChangedNotification" |> NamespacedName
+        _prefix ".owl#StartTimeChangedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ApplianceManagementFunctionality"></see>
     /// </summary>
     let ``_.owl#ApplianceManagementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ApplianceManagementFunctionality" |> NamespacedName
+        _prefix ".owl#ApplianceManagementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DeleteApplianceCommand"></see>
     /// </summary>
-    let ``_.owl#DeleteApplianceCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DeleteApplianceCommand" |> NamespacedName
-
+    let ``_.owl#DeleteApplianceCommand`` = _prefix ".owl#DeleteApplianceCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hasCommand"></see>
     /// </summary>
-    let ``_.owl#hasCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasCommand" |> NamespacedName
-
+    let ``_.owl#hasCommand`` = _prefix ".owl#hasCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#InstallApplianceCommand"></see>
     /// </summary>
-    let ``_.owl#InstallApplianceCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#InstallApplianceCommand" |> NamespacedName
-
+    let ``_.owl#InstallApplianceCommand`` = _prefix ".owl#InstallApplianceCommand"
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkFunctionality"></see></summary>
-    let ``_.owl#NetworkFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkFunctionality" |> NamespacedName
-
+    let ``_.owl#NetworkFunctionality`` = _prefix ".owl#NetworkFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NonParametricNotification"></see>
     /// </summary>
-    let ``_.owl#NonParametricNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NonParametricNotification" |> NamespacedName
-
+    let ``_.owl#NonParametricNotification`` = _prefix ".owl#NonParametricNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PauseApplianceNotification"></see>
     /// </summary>
-    let ``_.owl#PauseApplianceNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PauseApplianceNotification" |> NamespacedName
-
+    let ``_.owl#PauseApplianceNotification`` = _prefix ".owl#PauseApplianceNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartApplianceNotification"></see>
     /// </summary>
-    let ``_.owl#StartApplianceNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartApplianceNotification" |> NamespacedName
-
+    let ``_.owl#StartApplianceNotification`` = _prefix ".owl#StartApplianceNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopApplianceNotification"></see>
     /// </summary>
-    let ``_.owl#StopApplianceNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopApplianceNotification" |> NamespacedName
-
+    let ``_.owl#StopApplianceNotification`` = _prefix ".owl#StopApplianceNotification"
     /// <summary>
     /// Durable goods for home or office use
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Appliances"></see></summary>
-    let ``_.owl#Appliances`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Appliances" |> NamespacedName
-
+    let ``_.owl#Appliances`` = _prefix ".owl#Appliances"
     /// <summary>
     /// All building things that can be controlled by domotic system
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Controllable"></see></summary>
-    let ``_.owl#Controllable`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Controllable" |> NamespacedName
-
+    let ``_.owl#Controllable`` = _prefix ".owl#Controllable"
     /// <summary>
     /// All plants of the house, e.g. Electrical system, Hydraulic system
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HousePlants"></see></summary>
-    let ``_.owl#HousePlants`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HousePlants" |> NamespacedName
-
+    let ``_.owl#HousePlants`` = _prefix ".owl#HousePlants"
     /// <summary>
     /// All the architectural elements that compose the environment
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Architectural"></see></summary>
-    let ``_.owl#Architectural`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Architectural" |> NamespacedName
-
+    let ``_.owl#Architectural`` = _prefix ".owl#Architectural"
     /// <summary>
     /// All building things that can't be controlled by domotic system
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#UnControllable"></see></summary>
-    let ``_.owl#UnControllable`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UnControllable" |> NamespacedName
-
+    let ``_.owl#UnControllable`` = _prefix ".owl#UnControllable"
     /// <summary>
     /// Furnishings that make a room or other area ready for occupancy
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Furniture"></see></summary>
-    let ``_.owl#Furniture`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Furniture" |> NamespacedName
-
+    let ``_.owl#Furniture`` = _prefix ".owl#Furniture"
     /// <summary>
     /// Chair with a support on each side for arms
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Armchair"></see></summary>
-    let ``_.owl#Armchair`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Armchair" |> NamespacedName
-
+    let ``_.owl#Armchair`` = _prefix ".owl#Armchair"
     /// <summary>
     /// A canopy made of canvas to shelter people or things from rain or sun.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Awning"></see></summary>
-    let ``_.owl#Awning`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Awning" |> NamespacedName
-
+    let ``_.owl#Awning`` = _prefix ".owl#Awning"
     /// <summary>
     /// A tall piece of furniture that provides storage space for clothes
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Wardrobe"></see></summary>
-    let ``_.owl#Wardrobe`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Wardrobe" |> NamespacedName
-
+    let ``_.owl#Wardrobe`` = _prefix ".owl#Wardrobe"
     /// <summary>
     /// Confine to a small space.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Closet"></see></summary>
-    let ``_.owl#Closet`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Closet" |> NamespacedName
-
+    let ``_.owl#Closet`` = _prefix ".owl#Closet"
     /// <summary>
     /// An upholstered seat for more than one person
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Sofa"></see></summary>
-    let ``_.owl#Sofa`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Sofa" |> NamespacedName
-
+    let ``_.owl#Sofa`` = _prefix ".owl#Sofa"
     /// <summary>
     /// A small room (or recess) or cabinet used for storage space
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Cupboard"></see></summary>
-    let ``_.owl#Cupboard`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Cupboard" |> NamespacedName
-
+    let ``_.owl#Cupboard`` = _prefix ".owl#Cupboard"
     /// <summary>
     /// Shade object, the name includes an underscore sign only for distinguishing the name from the shade actuator, whose name is directly mapped from ZigBee
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Shade"></see></summary>
-    let ``_.owl#Shade`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Shade" |> NamespacedName
-
+    let ``_.owl#Shade`` = _prefix ".owl#Shade"
     /// <summary>
     /// A seat for one person, with a support for the back.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Chair"></see></summary>
-    let ``_.owl#Chair`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Chair" |> NamespacedName
-
+    let ``_.owl#Chair`` = _prefix ".owl#Chair"
     /// <summary>
     /// Piece of furniture that provides a place to sleep.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Bed"></see></summary>
-    let ``_.owl#Bed`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Bed" |> NamespacedName
-
+    let ``_.owl#Bed`` = _prefix ".owl#Bed"
     /// <summary>
     /// A small table or stand placed at a bedside.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Nightstand"></see></summary>
-    let ``_.owl#Nightstand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Nightstand" |> NamespacedName
-
+    let ``_.owl#Nightstand`` = _prefix ".owl#Nightstand"
     /// <summary>
     /// A hinged cover or screen for a window, usually fitted with louvers.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Shutter"></see></summary>
-    let ``_.owl#Shutter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Shutter" |> NamespacedName
-
+    let ``_.owl#Shutter`` = _prefix ".owl#Shutter"
     /// <summary>
     /// A piece of furniture with a writing surface and usually drawers or other compartments
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Desk"></see></summary>
-    let ``_.owl#Desk`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Desk" |> NamespacedName
-
+    let ``_.owl#Desk`` = _prefix ".owl#Desk"
     /// <summary>
     /// All the fixtures of a bathroom
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SanitaryFixtures"></see></summary>
-    let ``_.owl#SanitaryFixtures`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SanitaryFixtures" |> NamespacedName
-
+    let ``_.owl#SanitaryFixtures`` = _prefix ".owl#SanitaryFixtures"
     /// <summary>
     /// A boxlike container in a piece of furniture; made so as to slide in and out
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Drawer"></see></summary>
-    let ``_.owl#Drawer`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Drawer" |> NamespacedName
-
+    let ``_.owl#Drawer`` = _prefix ".owl#Drawer"
     /// <summary>
     /// A piece of furniture having a smooth flat top that is usually supported by one or more vertical legs
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Table"></see></summary>
-    let ``_.owl#Table`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Table" |> NamespacedName
-
+    let ``_.owl#Table`` = _prefix ".owl#Table"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AssociateCommand"></see>
     /// </summary>
-    let ``_.owl#AssociateCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AssociateCommand" |> NamespacedName
-
+    let ``_.owl#AssociateCommand`` = _prefix ".owl#AssociateCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NonParametricCommand"></see>
     /// </summary>
-    let ``_.owl#NonParametricCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NonParametricCommand" |> NamespacedName
-
+    let ``_.owl#NonParametricCommand`` = _prefix ".owl#NonParametricCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VoidCommand"></see>
     /// </summary>
-    let ``_.owl#VoidCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VoidCommand" |> NamespacedName
-
+    let ``_.owl#VoidCommand`` = _prefix ".owl#VoidCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AssociateFunctionality"></see>
     /// </summary>
-    let ``_.owl#AssociateFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AssociateFunctionality" |> NamespacedName
-
+    let ``_.owl#AssociateFunctionality`` = _prefix ".owl#AssociateFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisassociateCommand"></see>
     /// </summary>
-    let ``_.owl#DisassociateCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisassociateCommand" |> NamespacedName
+    let ``_.owl#DisassociateCommand`` = _prefix ".owl#DisassociateCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AssociatingDeviceNotification"></see>
     /// </summary>
     let ``_.owl#AssociatingDeviceNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AssociatingDeviceNotification" |> NamespacedName
+        _prefix ".owl#AssociatingDeviceNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZWaveNotification"></see>
     /// </summary>
-    let ``_.owl#ZWaveNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZWaveNotification" |> NamespacedName
+    let ``_.owl#ZWaveNotification`` = _prefix ".owl#ZWaveNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#AssociationNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#AssociationNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AssociationNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#AssociationNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisassociatingDeviceNotification"></see>
     /// </summary>
     let ``_.owl#DisassociatingDeviceNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisassociatingDeviceNotification" |> NamespacedName
+        _prefix ".owl#DisassociatingDeviceNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IdleNotification"></see>
     /// </summary>
-    let ``_.owl#IdleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IdleNotification" |> NamespacedName
+    let ``_.owl#IdleNotification`` = _prefix ".owl#IdleNotification"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkNotificationFunctionality"></see></summary>
     let ``_.owl#NetworkNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#NetworkNotificationFunctionality"
 
     /// <summary>
     /// Association between a mobile uncontrollable object and its actuator
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasActuator"></see></summary>
-    let ``_.owl#hasActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasActuator" |> NamespacedName
-
+    let ``_.owl#hasActuator`` = _prefix ".owl#hasActuator"
     /// <summary>
     /// A mechanism that allow automatic control about awning
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#AwningActuator"></see></summary>
-    let ``_.owl#AwningActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#AwningActuator" |> NamespacedName
-
+    let ``_.owl#AwningActuator`` = _prefix ".owl#AwningActuator"
     /// <summary>
     /// Functionality: open - close
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OpenCloseFunctionality"></see></summary>
-    let ``_.owl#OpenCloseFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenCloseFunctionality" |> NamespacedName
-
+    let ``_.owl#OpenCloseFunctionality`` = _prefix ".owl#OpenCloseFunctionality"
     /// <summary>
     /// State: open - close
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OpenCloseState"></see></summary>
-    let ``_.owl#OpenCloseState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenCloseState" |> NamespacedName
-
+    let ``_.owl#OpenCloseState`` = _prefix ".owl#OpenCloseState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovementState"></see>
     /// </summary>
-    let ``_.owl#MovementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovementState" |> NamespacedName
-
+    let ``_.owl#MovementState`` = _prefix ".owl#MovementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#actuatorOf"></see>
     /// </summary>
-    let ``_.owl#actuatorOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#actuatorOf" |> NamespacedName
+    let ``_.owl#actuatorOf`` = _prefix ".owl#actuatorOf"
 
     /// <summary>
     /// Notification: open - close
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OpenCloseNotificationFunctionality"></see></summary>
     let ``_.owl#OpenCloseNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenCloseNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#OpenCloseNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MovementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MovementNotificationFunctionality"
 
     /// <summary>
     /// A mechanism that allow automatic opening and closing about window
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WindowActuator"></see></summary>
-    let ``_.owl#WindowActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WindowActuator" |> NamespacedName
-
+    let ``_.owl#WindowActuator`` = _prefix ".owl#WindowActuator"
     /// <summary>
     /// A mechanism that allow automatic opening and closing about door
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DoorActuator"></see></summary>
-    let ``_.owl#DoorActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DoorActuator" |> NamespacedName
-
+    let ``_.owl#DoorActuator`` = _prefix ".owl#DoorActuator"
     /// <summary>
     /// A mechanism that allow automatic opening and closing about gate
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GateActuator"></see></summary>
-    let ``_.owl#GateActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GateActuator" |> NamespacedName
-
+    let ``_.owl#GateActuator`` = _prefix ".owl#GateActuator"
     /// <summary>
     /// The Shade Actuator device provides the ability to open or close window coverings, including setting partially open or partially closed states. This device type includes roller shades, drapes and tilt-only blinds actuators. Derives from ZigBee HA specifications (Shade device)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ShadeActuator"></see></summary>
-    let ``_.owl#ShadeActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShadeActuator" |> NamespacedName
-
+    let ``_.owl#ShadeActuator`` = _prefix ".owl#ShadeActuator"
     /// <summary>
     /// A mechanism that allow automatic control about shutter
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ShutterActuator"></see></summary>
-    let ``_.owl#ShutterActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShutterActuator" |> NamespacedName
-
+    let ``_.owl#ShutterActuator`` = _prefix ".owl#ShutterActuator"
     /// <summary>
     /// Components manufactured by Bticino
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#BTicinoComponent"></see></summary>
-    let ``_.owl#BTicinoComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BTicinoComponent" |> NamespacedName
-
+    let ``_.owl#BTicinoComponent`` = _prefix ".owl#BTicinoComponent"
     /// <summary>
     /// The address of the component
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#physicalAddress"></see></summary>
-    let ``_.owl#physicalAddress`` =
-        Namespaced_IRI.parse _namespace_name ".owl#physicalAddress" |> NamespacedName
-
+    let ``_.owl#physicalAddress`` = _prefix ".owl#physicalAddress"
     /// <summary>
     /// The category of the component
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#physicalType"></see></summary>
-    let ``_.owl#physicalType`` =
-        Namespaced_IRI.parse _namespace_name ".owl#physicalType" |> NamespacedName
-
+    let ``_.owl#physicalType`` = _prefix ".owl#physicalType"
     /// <summary>
     /// The manufacturers of the domotic component
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkComponent"></see></summary>
-    let ``_.owl#NetworkComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkComponent" |> NamespacedName
-
+    let ``_.owl#NetworkComponent`` = _prefix ".owl#NetworkComponent"
     /// <summary>
     /// Emulated component
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#EliteComponent"></see></summary>
-    let ``_.owl#EliteComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EliteComponent" |> NamespacedName
-
+    let ``_.owl#EliteComponent`` = _prefix ".owl#EliteComponent"
     /// <summary>
     /// Components manufactured by Konnex
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#KonnexComponent"></see></summary>
-    let ``_.owl#KonnexComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KonnexComponent" |> NamespacedName
-
+    let ``_.owl#KonnexComponent`` = _prefix ".owl#KonnexComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZigBeeComponent"></see>
     /// </summary>
-    let ``_.owl#ZigBeeComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZigBeeComponent" |> NamespacedName
-
+    let ``_.owl#ZigBeeComponent`` = _prefix ".owl#ZigBeeComponent"
     /// <summary>
     /// A BTIcino Gateway
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#BTicinoGateway"></see></summary>
-    let ``_.owl#BTicinoGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BTicinoGateway" |> NamespacedName
-
+    let ``_.owl#BTicinoGateway`` = _prefix ".owl#BTicinoGateway"
     /// <summary>
     /// A Konnex Gateway
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#KonnexGateway"></see></summary>
-    let ``_.owl#KonnexGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KonnexGateway" |> NamespacedName
-
+    let ``_.owl#KonnexGateway`` = _prefix ".owl#KonnexGateway"
     /// <summary>
     /// A software emulator of a network level to be used for simulating devices not available in the real world
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#EliteGateway"></see></summary>
-    let ``_.owl#EliteGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EliteGateway" |> NamespacedName
-
+    let ``_.owl#EliteGateway`` = _prefix ".owl#EliteGateway"
     /// <summary>
     /// A platform projecting from the wall of a building and surrounded by a balustrade or railing or parapet
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Balcony"></see></summary>
-    let ``_.owl#Balcony`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Balcony" |> NamespacedName
-
+    let ``_.owl#Balcony`` = _prefix ".owl#Balcony"
     /// <summary>
     /// The horizontal architectural component of a building
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Horizontal"></see></summary>
-    let ``_.owl#Horizontal`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Horizontal" |> NamespacedName
-
+    let ``_.owl#Horizontal`` = _prefix ".owl#Horizontal"
     /// <summary>
     /// The overhead upper surface of a room
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Ceiling"></see></summary>
-    let ``_.owl#Ceiling`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Ceiling" |> NamespacedName
-
+    let ``_.owl#Ceiling`` = _prefix ".owl#Ceiling"
     /// <summary>
     /// The inside lower horizontal surface of a room
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Floor"></see></summary>
-    let ``_.owl#Floor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Floor" |> NamespacedName
-
+    let ``_.owl#Floor`` = _prefix ".owl#Floor"
     /// <summary>
     /// Outdoor area adjoining a residence
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Terrace"></see></summary>
-    let ``_.owl#Terrace`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Terrace" |> NamespacedName
-
+    let ``_.owl#Terrace`` = _prefix ".owl#Terrace"
     /// <summary>
     /// A room of the building
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Room"></see></summary>
-    let ``_.owl#Room`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Room" |> NamespacedName
-
+    let ``_.owl#Room`` = _prefix ".owl#Room"
     /// <summary>
     /// A relatively large open container that you fill with water and use to wash the body
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Bathtub"></see></summary>
-    let ``_.owl#Bathtub`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Bathtub" |> NamespacedName
-
+    let ``_.owl#Bathtub`` = _prefix ".owl#Bathtub"
     /// <summary>
     /// A basin for washing genitals and anal area
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Bidet"></see></summary>
-    let ``_.owl#Bidet`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Bidet" |> NamespacedName
-
+    let ``_.owl#Bidet`` = _prefix ".owl#Bidet"
     /// <summary>
     /// A plumbing fixture that sprays water over you
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Shower"></see></summary>
-    let ``_.owl#Shower`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Shower" |> NamespacedName
-
+    let ``_.owl#Shower`` = _prefix ".owl#Shower"
     /// <summary>
     /// A basin for washing the hands
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Washbasin"></see></summary>
-    let ``_.owl#Washbasin`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Washbasin" |> NamespacedName
-
+    let ``_.owl#Washbasin`` = _prefix ".owl#Washbasin"
     /// <summary>
     /// A plumbing fixture for defecation and urination
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WaterCloset"></see></summary>
-    let ``_.owl#WaterCloset`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WaterCloset" |> NamespacedName
-
+    let ``_.owl#WaterCloset`` = _prefix ".owl#WaterCloset"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#BatteryLevelNotification"></see>
     /// </summary>
-    let ``_.owl#BatteryLevelNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BatteryLevelNotification" |> NamespacedName
+    let ``_.owl#BatteryLevelNotification`` = _prefix ".owl#BatteryLevelNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#BatteryLevelNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#BatteryLevelNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BatteryLevelNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#BatteryLevelNotificationFunctionality"
 
     /// <summary>
     /// Notification of continuous values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ContinuousNotificationFunctionality"></see></summary>
     let ``_.owl#ContinuousNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ContinuousNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ContinuousNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#BlueStateValue"></see>
     /// </summary>
-    let ``_.owl#BlueStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BlueStateValue" |> NamespacedName
-
+    let ``_.owl#BlueStateValue`` = _prefix ".owl#BlueStateValue"
     /// <summary>
     /// Sealed vessel where water is warm up
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Boiler"></see></summary>
-    let ``_.owl#Boiler`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Boiler" |> NamespacedName
-
+    let ``_.owl#Boiler`` = _prefix ".owl#Boiler"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingApplianceState"></see>
     /// </summary>
-    let ``_.owl#HeatingApplianceState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingApplianceState" |> NamespacedName
-
+    let ``_.owl#HeatingApplianceState`` = _prefix ".owl#HeatingApplianceState"
     /// <summary>
     /// Major household appliances.
     ///
     /// It mus be noticed that the functionality modeling uses existential quantifiers for functionalities that can be optional, this is only for the sake of easier interpretation and should be improved in future releases
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WhiteGoods"></see></summary>
-    let ``_.owl#WhiteGoods`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WhiteGoods" |> NamespacedName
+    let ``_.owl#WhiteGoods`` = _prefix ".owl#WhiteGoods"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperHeatingNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SuperHeatingNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperHeatingNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SuperHeatingNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperHeatingFunctionality"></see>
     /// </summary>
-    let ``_.owl#SuperHeatingFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperHeatingFunctionality" |> NamespacedName
-
+    let ``_.owl#SuperHeatingFunctionality`` = _prefix ".owl#SuperHeatingFunctionality"
     /// <summary>
     /// A utensil for cooking
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Cooker"></see></summary>
-    let ``_.owl#Cooker`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Cooker" |> NamespacedName
-
+    let ``_.owl#Cooker`` = _prefix ".owl#Cooker"
     /// <summary>
     /// Electric refrigerator in which food is frozen and stored for long periods of time
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DeepFreezer"></see></summary>
-    let ``_.owl#DeepFreezer`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DeepFreezer" |> NamespacedName
-
+    let ``_.owl#DeepFreezer`` = _prefix ".owl#DeepFreezer"
     /// <summary>
     /// A home appliance for washing clothes and linens automatically
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WashingMachine"></see></summary>
-    let ``_.owl#WashingMachine`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WashingMachine" |> NamespacedName
-
+    let ``_.owl#WashingMachine`` = _prefix ".owl#WashingMachine"
     /// <summary>
     /// Kitchen appliance used for baking or roasting
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Oven"></see></summary>
-    let ``_.owl#Oven`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Oven" |> NamespacedName
-
+    let ``_.owl#Oven`` = _prefix ".owl#Oven"
     /// <summary>
     /// A refrigerator in which the coolant is pumped around by an electric motor
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Fridge"></see></summary>
-    let ``_.owl#Fridge`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Fridge" |> NamespacedName
-
+    let ``_.owl#Fridge`` = _prefix ".owl#Fridge"
     /// <summary>
     /// A machine for washing dishes
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Dishwasher"></see></summary>
-    let ``_.owl#Dishwasher`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Dishwasher" |> NamespacedName
-
+    let ``_.owl#Dishwasher`` = _prefix ".owl#Dishwasher"
     /// <summary>
     /// Heating apparatus
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Stove"></see></summary>
-    let ``_.owl#Stove`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Stove" |> NamespacedName
-
+    let ``_.owl#Stove`` = _prefix ".owl#Stove"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#BrightnessStateValue"></see>
     /// </summary>
-    let ``_.owl#BrightnessStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BrightnessStateValue" |> NamespacedName
-
+    let ``_.owl#BrightnessStateValue`` = _prefix ".owl#BrightnessStateValue"
     /// <summary>
     /// Small household electrical entertainment appliances
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#BrownGoods"></see></summary>
-    let ``_.owl#BrownGoods`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BrownGoods" |> NamespacedName
-
+    let ``_.owl#BrownGoods`` = _prefix ".owl#BrownGoods"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Building"></see>
     /// </summary>
-    let ``_.owl#Building`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Building" |> NamespacedName
-
+    let ``_.owl#Building`` = _prefix ".owl#Building"
     /// <summary>
     /// Indicates which object are contained in a building environment, e.g. the kitchen contains Lamp1,Lamp2...
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#contains"></see></summary>
-    let ``_.owl#contains`` =
-        Namespaced_IRI.parse _namespace_name ".owl#contains" |> NamespacedName
-
+    let ``_.owl#contains`` = _prefix ".owl#contains"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Flat"></see>
     /// </summary>
-    let ``_.owl#Flat`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Flat" |> NamespacedName
-
+    let ``_.owl#Flat`` = _prefix ".owl#Flat"
     /// <summary>
     /// A physical environment in which people lives, e.g. kitchen, bathroom
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#BuildingEnvironment"></see></summary>
-    let ``_.owl#BuildingEnvironment`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BuildingEnvironment" |> NamespacedName
-
+    let ``_.owl#BuildingEnvironment`` = _prefix ".owl#BuildingEnvironment"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Storey"></see>
     /// </summary>
-    let ``_.owl#Storey`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Storey" |> NamespacedName
-
+    let ``_.owl#Storey`` = _prefix ".owl#Storey"
     /// <summary>
     /// The garden of the building
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Garden"></see></summary>
-    let ``_.owl#Garden`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Garden" |> NamespacedName
-
+    let ``_.owl#Garden`` = _prefix ".owl#Garden"
     /// <summary>
     /// The garage of the buinding
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Garage"></see></summary>
-    let ``_.owl#Garage`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Garage" |> NamespacedName
-
+    let ``_.owl#Garage`` = _prefix ".owl#Garage"
     /// <summary>
     /// All things that creates a Building, it is intended as root of all building components
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#BuildingThing"></see></summary>
-    let ``_.owl#BuildingThing`` =
-        Namespaced_IRI.parse _namespace_name ".owl#BuildingThing" |> NamespacedName
-
+    let ``_.owl#BuildingThing`` = _prefix ".owl#BuildingThing"
     /// <summary>
     /// A monostable electrical switch operated by pressing a button
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Button"></see></summary>
-    let ``_.owl#Button`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Button" |> NamespacedName
+    let ``_.owl#Button`` = _prefix ".owl#Button"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ButtonNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ButtonNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ButtonNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ButtonNotificationFunctionality"
 
     /// <summary>
     /// The Scene Selector device is capable of setting up and selecting scenes on other devices, including group of devices. It derives from ZigBee HA specifications.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SceneSelector"></see></summary>
-    let ``_.owl#SceneSelector`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SceneSelector" |> NamespacedName
-
+    let ``_.owl#SceneSelector`` = _prefix ".owl#SceneSelector"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SingleScenarioControl"></see>
     /// </summary>
-    let ``_.owl#SingleScenarioControl`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleScenarioControl" |> NamespacedName
-
+    let ``_.owl#SingleScenarioControl`` = _prefix ".owl#SingleScenarioControl"
     /// <summary>
     /// A round handle used to adjust continuous amplitude, e.g. volume
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Knob"></see></summary>
-    let ``_.owl#Knob`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Knob" |> NamespacedName
-
+    let ``_.owl#Knob`` = _prefix ".owl#Knob"
     /// <summary>
     /// The Shade Controller device can control the level of a shade, derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ShadeController"></see></summary>
-    let ``_.owl#ShadeController`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShadeController" |> NamespacedName
-
+    let ``_.owl#ShadeController`` = _prefix ".owl#ShadeController"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ToggleRelay"></see>
     /// </summary>
-    let ``_.owl#ToggleRelay`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ToggleRelay" |> NamespacedName
-
+    let ``_.owl#ToggleRelay`` = _prefix ".owl#ToggleRelay"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RemoteControl"></see>
     /// </summary>
-    let ``_.owl#RemoteControl`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RemoteControl" |> NamespacedName
-
+    let ``_.owl#RemoteControl`` = _prefix ".owl#RemoteControl"
     /// <summary>
     /// Bi-stable control consisting of a mechanical or electrical or electronic device for making or breaking or changing the connections in a circuit
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Switch"></see></summary>
-    let ``_.owl#Switch`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Switch" |> NamespacedName
+    let ``_.owl#Switch`` = _prefix ".owl#Switch"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ButtonMNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ButtonMNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ButtonMNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ButtonMNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReleasedMNotification"></see>
     /// </summary>
-    let ``_.owl#ReleasedMNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReleasedMNotification" |> NamespacedName
-
+    let ``_.owl#ReleasedMNotification`` = _prefix ".owl#ReleasedMNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressedMNotification"></see>
     /// </summary>
-    let ``_.owl#PressedMNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressedMNotification" |> NamespacedName
+    let ``_.owl#PressedMNotification`` = _prefix ".owl#PressedMNotification"
 
     /// <summary>
     /// Discrete notification with exactly two values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DoubleValuedNotificationFunctionality"></see></summary>
     let ``_.owl#DoubleValuedNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DoubleValuedNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#DoubleValuedNotificationFunctionality"
 
     /// <summary>
     /// An electric signaling device, such as a doorbell, that makes a buzzing sound.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Buzzer"></see></summary>
-    let ``_.owl#Buzzer`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Buzzer" |> NamespacedName
+    let ``_.owl#Buzzer`` = _prefix ".owl#Buzzer"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CameraPictureImageControlFunctionality"></see>
     /// </summary>
     let ``_.owl#CameraPictureImageControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CameraPictureImageControlFunctionality" |> NamespacedName
+        _prefix ".owl#CameraPictureImageControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IncreaseColorCommand"></see>
     /// </summary>
-    let ``_.owl#IncreaseColorCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IncreaseColorCommand" |> NamespacedName
-
+    let ``_.owl#IncreaseColorCommand`` = _prefix ".owl#IncreaseColorCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IncreaseContrastCommand"></see>
     /// </summary>
-    let ``_.owl#IncreaseContrastCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IncreaseContrastCommand" |> NamespacedName
+    let ``_.owl#IncreaseContrastCommand`` = _prefix ".owl#IncreaseContrastCommand"
 
     /// <summary>
     /// Functionalities continuous in time or space
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ContinuousControlFunctionality"></see></summary>
     let ``_.owl#ContinuousControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ContinuousControlFunctionality" |> NamespacedName
+        _prefix ".owl#ContinuousControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DecreaseLuminosityCommand"></see>
     /// </summary>
-    let ``_.owl#DecreaseLuminosityCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DecreaseLuminosityCommand" |> NamespacedName
-
+    let ``_.owl#DecreaseLuminosityCommand`` = _prefix ".owl#DecreaseLuminosityCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IncreaseLuminosityCommand"></see>
     /// </summary>
-    let ``_.owl#IncreaseLuminosityCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IncreaseLuminosityCommand" |> NamespacedName
-
+    let ``_.owl#IncreaseLuminosityCommand`` = _prefix ".owl#IncreaseLuminosityCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DecreaseContrastCommand"></see>
     /// </summary>
-    let ``_.owl#DecreaseContrastCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DecreaseContrastCommand" |> NamespacedName
-
+    let ``_.owl#DecreaseContrastCommand`` = _prefix ".owl#DecreaseContrastCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DecreaseColorCommand"></see>
     /// </summary>
-    let ``_.owl#DecreaseColorCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DecreaseColorCommand" |> NamespacedName
+    let ``_.owl#DecreaseColorCommand`` = _prefix ".owl#DecreaseColorCommand"
 
     /// <summary>
     /// Functionalities for the regulation of timer
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TimeRegulationFunctionality"></see></summary>
     let ``_.owl#TimeRegulationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TimeRegulationFunctionality" |> NamespacedName
+        _prefix ".owl#TimeRegulationFunctionality"
 
     /// <summary>
     /// Models the capability of controlling the speed of a cooling/heating fan. Derives from ZigBee HA
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#FanControlFunctionality"></see></summary>
-    let ``_.owl#FanControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FanControlFunctionality" |> NamespacedName
-
+    let ``_.owl#FanControlFunctionality`` = _prefix ".owl#FanControlFunctionality"
     /// <summary>
     /// Level control functionality, used for allowing devices to be controlled in a continuous manner, derives from ZigBee Home Automation specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LevelControlFunctionality"></see></summary>
-    let ``_.owl#LevelControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelControlFunctionality" |> NamespacedName
+    let ``_.owl#LevelControlFunctionality`` = _prefix ".owl#LevelControlFunctionality"
 
     /// <summary>
     /// Functionalities for the regulation of shutter
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ShutterRegulationFunctionality"></see></summary>
     let ``_.owl#ShutterRegulationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShutterRegulationFunctionality" |> NamespacedName
+        _prefix ".owl#ShutterRegulationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CameraPictureQualityControlFunctionality"></see>
     /// </summary>
     let ``_.owl#CameraPictureQualityControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CameraPictureQualityControlFunctionality" |> NamespacedName
+        _prefix ".owl#CameraPictureQualityControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorControlFunctionality"></see>
     /// </summary>
-    let ``_.owl#ColorControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorControlFunctionality" |> NamespacedName
+    let ``_.owl#ColorControlFunctionality`` = _prefix ".owl#ColorControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CameraPictureZoomPanControlFunctionality"></see>
     /// </summary>
     let ``_.owl#CameraPictureZoomPanControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CameraPictureZoomPanControlFunctionality" |> NamespacedName
+        _prefix ".owl#CameraPictureZoomPanControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TunerFunctionality"></see>
     /// </summary>
-    let ``_.owl#TunerFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TunerFunctionality" |> NamespacedName
-
+    let ``_.owl#TunerFunctionality`` = _prefix ".owl#TunerFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IncreaseQualityCommand"></see>
     /// </summary>
-    let ``_.owl#IncreaseQualityCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IncreaseQualityCommand" |> NamespacedName
-
+    let ``_.owl#IncreaseQualityCommand`` = _prefix ".owl#IncreaseQualityCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DecreaseQualityCommand"></see>
     /// </summary>
-    let ``_.owl#DecreaseQualityCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DecreaseQualityCommand" |> NamespacedName
-
+    let ``_.owl#DecreaseQualityCommand`` = _prefix ".owl#DecreaseQualityCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PanRightCommand"></see>
     /// </summary>
-    let ``_.owl#PanRightCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PanRightCommand" |> NamespacedName
-
+    let ``_.owl#PanRightCommand`` = _prefix ".owl#PanRightCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PanDownCommand"></see>
     /// </summary>
-    let ``_.owl#PanDownCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PanDownCommand" |> NamespacedName
-
+    let ``_.owl#PanDownCommand`` = _prefix ".owl#PanDownCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PanLeftCommand"></see>
     /// </summary>
-    let ``_.owl#PanLeftCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PanLeftCommand" |> NamespacedName
-
+    let ``_.owl#PanLeftCommand`` = _prefix ".owl#PanLeftCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZoomOutCommand"></see>
     /// </summary>
-    let ``_.owl#ZoomOutCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZoomOutCommand" |> NamespacedName
-
+    let ``_.owl#ZoomOutCommand`` = _prefix ".owl#ZoomOutCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZoomInCommand"></see>
     /// </summary>
-    let ``_.owl#ZoomInCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZoomInCommand" |> NamespacedName
-
+    let ``_.owl#ZoomInCommand`` = _prefix ".owl#ZoomInCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PanUpCommand"></see>
     /// </summary>
-    let ``_.owl#PanUpCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PanUpCommand" |> NamespacedName
+    let ``_.owl#PanUpCommand`` = _prefix ".owl#PanUpCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ChangedDesiredTemperatureNotification"></see>
     /// </summary>
     let ``_.owl#ChangedDesiredTemperatureNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ChangedDesiredTemperatureNotification" |> NamespacedName
+        _prefix ".owl#ChangedDesiredTemperatureNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DeleteSceneNotification"></see>
     /// </summary>
-    let ``_.owl#DeleteSceneNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DeleteSceneNotification" |> NamespacedName
-
+    let ``_.owl#DeleteSceneNotification`` = _prefix ".owl#DeleteSceneNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoreSceneNotification"></see>
     /// </summary>
-    let ``_.owl#StoreSceneNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoreSceneNotification" |> NamespacedName
+    let ``_.owl#StoreSceneNotification`` = _prefix ".owl#StoreSceneNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressureMeasurementMNotification"></see>
     /// </summary>
     let ``_.owl#PressureMeasurementMNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureMeasurementMNotification" |> NamespacedName
+        _prefix ".owl#PressureMeasurementMNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HumidityMeasurementMNotification"></see>
     /// </summary>
     let ``_.owl#HumidityMeasurementMNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumidityMeasurementMNotification" |> NamespacedName
+        _prefix ".owl#HumidityMeasurementMNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LeaveGroupNotification"></see>
     /// </summary>
-    let ``_.owl#LeaveGroupNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LeaveGroupNotification" |> NamespacedName
-
+    let ``_.owl#LeaveGroupNotification`` = _prefix ".owl#LeaveGroupNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#JoinGroupNotification"></see>
     /// </summary>
-    let ``_.owl#JoinGroupNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#JoinGroupNotification" |> NamespacedName
-
+    let ``_.owl#JoinGroupNotification`` = _prefix ".owl#JoinGroupNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelControlNotification"></see>
     /// </summary>
-    let ``_.owl#LevelControlNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelControlNotification" |> NamespacedName
+    let ``_.owl#LevelControlNotification`` = _prefix ".owl#LevelControlNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureMeasurementMNotification"></see>
     /// </summary>
     let ``_.owl#TemperatureMeasurementMNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureMeasurementMNotification" |> NamespacedName
+        _prefix ".owl#TemperatureMeasurementMNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowRateMeasurementMNotification"></see>
     /// </summary>
     let ``_.owl#FlowRateMeasurementMNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowRateMeasurementMNotification" |> NamespacedName
+        _prefix ".owl#FlowRateMeasurementMNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ChannelControlNotification"></see>
     /// </summary>
-    let ``_.owl#ChannelControlNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ChannelControlNotification" |> NamespacedName
+    let ``_.owl#ChannelControlNotification`` = _prefix ".owl#ChannelControlNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ParametricLevelNotification"></see>
     /// </summary>
     let ``_.owl#ParametricLevelNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ParametricLevelNotification" |> NamespacedName
+        _prefix ".owl#ParametricLevelNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ClimateScheduleFunctionality"></see>
     /// </summary>
     let ``_.owl#ClimateScheduleFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ClimateScheduleFunctionality" |> NamespacedName
+        _prefix ".owl#ClimateScheduleFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetDailyClimateScheduleCommand"></see>
     /// </summary>
     let ``_.owl#SetDailyClimateScheduleCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetDailyClimateScheduleCommand" |> NamespacedName
+        _prefix ".owl#SetDailyClimateScheduleCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetClimateScheduleCommand"></see>
     /// </summary>
-    let ``_.owl#SetClimateScheduleCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetClimateScheduleCommand" |> NamespacedName
-
+    let ``_.owl#SetClimateScheduleCommand`` = _prefix ".owl#SetClimateScheduleCommand"
     /// <summary>
     /// Discrete functionalities with exactly two values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DoubleValuedFunctionality"></see></summary>
-    let ``_.owl#DoubleValuedFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DoubleValuedFunctionality" |> NamespacedName
+    let ``_.owl#DoubleValuedFunctionality`` = _prefix ".owl#DoubleValuedFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ClimateScheduleNotification"></see>
     /// </summary>
     let ``_.owl#ClimateScheduleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ClimateScheduleNotification" |> NamespacedName
+        _prefix ".owl#ClimateScheduleNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ClimateScheduleNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ClimateScheduleNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ClimateScheduleNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ClimateScheduleNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WeeklyClimateScheduleNotification"></see>
     /// </summary>
     let ``_.owl#WeeklyClimateScheduleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WeeklyClimateScheduleNotification" |> NamespacedName
+        _prefix ".owl#WeeklyClimateScheduleNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DailyClimateScheduleNotification"></see>
     /// </summary>
     let ``_.owl#DailyClimateScheduleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DailyClimateScheduleNotification" |> NamespacedName
+        _prefix ".owl#DailyClimateScheduleNotification"
 
     /// <summary>
     /// Notification of fixed values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DiscreteNotificationFunctionality"></see></summary>
     let ``_.owl#DiscreteNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscreteNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#DiscreteNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ClimateScheduleQueryFunctionality"></see>
     /// </summary>
     let ``_.owl#ClimateScheduleQueryFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ClimateScheduleQueryFunctionality" |> NamespacedName
+        _prefix ".owl#ClimateScheduleQueryFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetClimateScheduleCommand"></see>
     /// </summary>
-    let ``_.owl#GetClimateScheduleCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetClimateScheduleCommand" |> NamespacedName
-
+    let ``_.owl#GetClimateScheduleCommand`` = _prefix ".owl#GetClimateScheduleCommand"
     /// <summary>
     /// Capability of a controllable building thing that must reply to an interrogation about its state
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#QueryFunctionality"></see></summary>
-    let ``_.owl#QueryFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#QueryFunctionality" |> NamespacedName
-
+    let ``_.owl#QueryFunctionality`` = _prefix ".owl#QueryFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ClimateScheduleState"></see>
     /// </summary>
-    let ``_.owl#ClimateScheduleState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ClimateScheduleState" |> NamespacedName
-
+    let ``_.owl#ClimateScheduleState`` = _prefix ".owl#ClimateScheduleState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hasStateValue"></see>
     /// </summary>
-    let ``_.owl#hasStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasStateValue" |> NamespacedName
-
+    let ``_.owl#hasStateValue`` = _prefix ".owl#hasStateValue"
     /// <summary>
     /// States not continuous, with fixed values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DiscreteState"></see></summary>
-    let ``_.owl#DiscreteState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscreteState" |> NamespacedName
-
+    let ``_.owl#DiscreteState`` = _prefix ".owl#DiscreteState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CloseCommand"></see>
     /// </summary>
-    let ``_.owl#CloseCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CloseCommand" |> NamespacedName
-
+    let ``_.owl#CloseCommand`` = _prefix ".owl#CloseCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopHeatingCoolingCommand"></see>
     /// </summary>
-    let ``_.owl#StopHeatingCoolingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopHeatingCoolingCommand" |> NamespacedName
-
+    let ``_.owl#StopHeatingCoolingCommand`` = _prefix ".owl#StopHeatingCoolingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetCommand"></see>
     /// </summary>
-    let ``_.owl#GetCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetCommand" |> NamespacedName
-
+    let ``_.owl#GetCommand`` = _prefix ".owl#GetCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DeleteGroupCommand"></see>
     /// </summary>
-    let ``_.owl#DeleteGroupCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DeleteGroupCommand" |> NamespacedName
-
+    let ``_.owl#DeleteGroupCommand`` = _prefix ".owl#DeleteGroupCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PreviousTrackCommand"></see>
     /// </summary>
-    let ``_.owl#PreviousTrackCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PreviousTrackCommand" |> NamespacedName
-
+    let ``_.owl#PreviousTrackCommand`` = _prefix ".owl#PreviousTrackCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetHourCommand"></see>
     /// </summary>
-    let ``_.owl#SetHourCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetHourCommand" |> NamespacedName
-
+    let ``_.owl#SetHourCommand`` = _prefix ".owl#SetHourCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StandBy"></see>
     /// </summary>
-    let ``_.owl#StandBy`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StandBy" |> NamespacedName
-
+    let ``_.owl#StandBy`` = _prefix ".owl#StandBy"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OffCommand"></see>
     /// </summary>
-    let ``_.owl#OffCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OffCommand" |> NamespacedName
-
+    let ``_.owl#OffCommand`` = _prefix ".owl#OffCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetTimeoutCommand"></see>
     /// </summary>
-    let ``_.owl#SetTimeoutCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetTimeoutCommand" |> NamespacedName
-
+    let ``_.owl#SetTimeoutCommand`` = _prefix ".owl#SetTimeoutCommand"
     /// <summary>
     /// the command for getting the occupancy state of a given room/environment
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GetOccupancyCommand"></see></summary>
-    let ``_.owl#GetOccupancyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetOccupancyCommand" |> NamespacedName
-
+    let ``_.owl#GetOccupancyCommand`` = _prefix ".owl#GetOccupancyCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RewindCommand"></see>
     /// </summary>
-    let ``_.owl#RewindCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RewindCommand" |> NamespacedName
-
+    let ``_.owl#RewindCommand`` = _prefix ".owl#RewindCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlayCommand"></see>
     /// </summary>
-    let ``_.owl#PlayCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlayCommand" |> NamespacedName
-
+    let ``_.owl#PlayCommand`` = _prefix ".owl#PlayCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NextTrackCommand"></see>
     /// </summary>
-    let ``_.owl#NextTrackCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NextTrackCommand" |> NamespacedName
-
+    let ``_.owl#NextTrackCommand`` = _prefix ".owl#NextTrackCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GoToTrackCommand"></see>
     /// </summary>
-    let ``_.owl#GoToTrackCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GoToTrackCommand" |> NamespacedName
-
+    let ``_.owl#GoToTrackCommand`` = _prefix ".owl#GoToTrackCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ForwardCommand"></see>
     /// </summary>
-    let ``_.owl#ForwardCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ForwardCommand" |> NamespacedName
-
+    let ``_.owl#ForwardCommand`` = _prefix ".owl#ForwardCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoreSceneCommand"></see>
     /// </summary>
-    let ``_.owl#StoreSceneCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoreSceneCommand" |> NamespacedName
-
+    let ``_.owl#StoreSceneCommand`` = _prefix ".owl#StoreSceneCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OnFlashingCommand"></see>
     /// </summary>
-    let ``_.owl#OnFlashingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnFlashingCommand" |> NamespacedName
-
+    let ``_.owl#OnFlashingCommand`` = _prefix ".owl#OnFlashingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#UpCommand"></see>
     /// </summary>
-    let ``_.owl#UpCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UpCommand" |> NamespacedName
-
+    let ``_.owl#UpCommand`` = _prefix ".owl#UpCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetPressureCommand"></see>
     /// </summary>
-    let ``_.owl#GetPressureCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetPressureCommand" |> NamespacedName
-
+    let ``_.owl#GetPressureCommand`` = _prefix ".owl#GetPressureCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OnCommand"></see>
     /// </summary>
-    let ``_.owl#OnCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnCommand" |> NamespacedName
-
+    let ``_.owl#OnCommand`` = _prefix ".owl#OnCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopPlayingCommand"></see>
     /// </summary>
-    let ``_.owl#StopPlayingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopPlayingCommand" |> NamespacedName
-
+    let ``_.owl#StopPlayingCommand`` = _prefix ".owl#StopPlayingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetFlowRateCommand"></see>
     /// </summary>
-    let ``_.owl#GetFlowRateCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetFlowRateCommand" |> NamespacedName
-
+    let ``_.owl#GetFlowRateCommand`` = _prefix ".owl#GetFlowRateCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetChannelCommand"></see>
     /// </summary>
-    let ``_.owl#SetChannelCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetChannelCommand" |> NamespacedName
-
+    let ``_.owl#SetChannelCommand`` = _prefix ".owl#SetChannelCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DownCommand"></see>
     /// </summary>
-    let ``_.owl#DownCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DownCommand" |> NamespacedName
-
+    let ``_.owl#DownCommand`` = _prefix ".owl#DownCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RestCommand"></see>
     /// </summary>
-    let ``_.owl#RestCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RestCommand" |> NamespacedName
-
+    let ``_.owl#RestCommand`` = _prefix ".owl#RestCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetCommand"></see>
     /// </summary>
-    let ``_.owl#SetCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetCommand" |> NamespacedName
-
+    let ``_.owl#SetCommand`` = _prefix ".owl#SetCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoreGroupCommand"></see>
     /// </summary>
-    let ``_.owl#StoreGroupCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoreGroupCommand" |> NamespacedName
-
+    let ``_.owl#StoreGroupCommand`` = _prefix ".owl#StoreGroupCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatCommand"></see>
     /// </summary>
-    let ``_.owl#HeatCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatCommand" |> NamespacedName
-
+    let ``_.owl#HeatCommand`` = _prefix ".owl#HeatCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetMinutesCommand"></see>
     /// </summary>
-    let ``_.owl#SetMinutesCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetMinutesCommand" |> NamespacedName
-
+    let ``_.owl#SetMinutesCommand`` = _prefix ".owl#SetMinutesCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetRelativeHumidityCommand"></see>
     /// </summary>
-    let ``_.owl#GetRelativeHumidityCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetRelativeHumidityCommand" |> NamespacedName
-
+    let ``_.owl#GetRelativeHumidityCommand`` = _prefix ".owl#GetRelativeHumidityCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetDesiredTemperature"></see>
     /// </summary>
-    let ``_.owl#SetDesiredTemperature`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetDesiredTemperature" |> NamespacedName
-
+    let ``_.owl#SetDesiredTemperature`` = _prefix ".owl#SetDesiredTemperature"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GrabPictureCommand"></see>
     /// </summary>
-    let ``_.owl#GrabPictureCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GrabPictureCommand" |> NamespacedName
-
+    let ``_.owl#GrabPictureCommand`` = _prefix ".owl#GrabPictureCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetSpeedCommand"></see>
     /// </summary>
-    let ``_.owl#SetSpeedCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetSpeedCommand" |> NamespacedName
-
+    let ``_.owl#SetSpeedCommand`` = _prefix ".owl#SetSpeedCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CoolCommand"></see>
     /// </summary>
-    let ``_.owl#CoolCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CoolCommand" |> NamespacedName
-
+    let ``_.owl#CoolCommand`` = _prefix ".owl#CoolCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StepDownCommand"></see>
     /// </summary>
-    let ``_.owl#StepDownCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StepDownCommand" |> NamespacedName
-
+    let ``_.owl#StepDownCommand`` = _prefix ".owl#StepDownCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetSecondsCommand"></see>
     /// </summary>
-    let ``_.owl#SetSecondsCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetSecondsCommand" |> NamespacedName
-
+    let ``_.owl#SetSecondsCommand`` = _prefix ".owl#SetSecondsCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StepUpCommand"></see>
     /// </summary>
-    let ``_.owl#StepUpCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StepUpCommand" |> NamespacedName
-
+    let ``_.owl#StepUpCommand`` = _prefix ".owl#StepUpCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PauseCommand"></see>
     /// </summary>
-    let ``_.owl#PauseCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PauseCommand" |> NamespacedName
-
+    let ``_.owl#PauseCommand`` = _prefix ".owl#PauseCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetVolumeCommand"></see>
     /// </summary>
-    let ``_.owl#SetVolumeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetVolumeCommand" |> NamespacedName
-
+    let ``_.owl#SetVolumeCommand`` = _prefix ".owl#SetVolumeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TimedOnCommand"></see>
     /// </summary>
-    let ``_.owl#TimedOnCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TimedOnCommand" |> NamespacedName
-
+    let ``_.owl#TimedOnCommand`` = _prefix ".owl#TimedOnCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SpeedDownCommand"></see>
     /// </summary>
-    let ``_.owl#SpeedDownCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SpeedDownCommand" |> NamespacedName
-
+    let ``_.owl#SpeedDownCommand`` = _prefix ".owl#SpeedDownCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ToggleCommand"></see>
     /// </summary>
-    let ``_.owl#ToggleCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ToggleCommand" |> NamespacedName
-
+    let ``_.owl#ToggleCommand`` = _prefix ".owl#ToggleCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OpenCommand"></see>
     /// </summary>
-    let ``_.owl#OpenCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenCommand" |> NamespacedName
-
+    let ``_.owl#OpenCommand`` = _prefix ".owl#OpenCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetTemperatureCommand"></see>
     /// </summary>
-    let ``_.owl#GetTemperatureCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetTemperatureCommand" |> NamespacedName
-
+    let ``_.owl#GetTemperatureCommand`` = _prefix ".owl#GetTemperatureCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OffFlashingCommand"></see>
     /// </summary>
-    let ``_.owl#OffFlashingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OffFlashingCommand" |> NamespacedName
-
+    let ``_.owl#OffFlashingCommand`` = _prefix ".owl#OffFlashingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DeleteSceneCommand"></see>
     /// </summary>
-    let ``_.owl#DeleteSceneCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DeleteSceneCommand" |> NamespacedName
-
+    let ``_.owl#DeleteSceneCommand`` = _prefix ".owl#DeleteSceneCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SpeedUpCommand"></see>
     /// </summary>
-    let ``_.owl#SpeedUpCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SpeedUpCommand" |> NamespacedName
-
+    let ``_.owl#SpeedUpCommand`` = _prefix ".owl#SpeedUpCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CloseNetworkCommand"></see>
     /// </summary>
-    let ``_.owl#CloseNetworkCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CloseNetworkCommand" |> NamespacedName
+    let ``_.owl#CloseNetworkCommand`` = _prefix ".owl#CloseNetworkCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Co2MeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#Co2MeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Co2MeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#Co2MeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetCo2ConcentrationCommand"></see>
     /// </summary>
-    let ``_.owl#GetCo2ConcentrationCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetCo2ConcentrationCommand" |> NamespacedName
-
+    let ``_.owl#GetCo2ConcentrationCommand`` = _prefix ".owl#GetCo2ConcentrationCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Co2MeasurementNotification"></see>
     /// </summary>
-    let ``_.owl#Co2MeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Co2MeasurementNotification" |> NamespacedName
+    let ``_.owl#Co2MeasurementNotification`` = _prefix ".owl#Co2MeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Co2MeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#Co2MeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Co2MeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#Co2MeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Co2MeasurementState"></see>
     /// </summary>
-    let ``_.owl#Co2MeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Co2MeasurementState" |> NamespacedName
-
+    let ``_.owl#Co2MeasurementState`` = _prefix ".owl#Co2MeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Co2MeasurementStateValue"></see>
     /// </summary>
-    let ``_.owl#Co2MeasurementStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Co2MeasurementStateValue" |> NamespacedName
-
+    let ``_.owl#Co2MeasurementStateValue`` = _prefix ".owl#Co2MeasurementStateValue"
     /// <summary>
     /// States continuous in time or space
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ContinuousState"></see></summary>
-    let ``_.owl#ContinuousState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ContinuousState" |> NamespacedName
-
+    let ``_.owl#ContinuousState`` = _prefix ".owl#ContinuousState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Co2Sensor"></see>
     /// </summary>
-    let ``_.owl#Co2Sensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Co2Sensor" |> NamespacedName
+    let ``_.owl#Co2Sensor`` = _prefix ".owl#Co2Sensor"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColdWaterM3MeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ColdWaterM3MeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColdWaterM3MeasurementNotification" |> NamespacedName
+        _prefix ".owl#ColdWaterM3MeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetColorRGBCommand"></see>
     /// </summary>
-    let ``_.owl#SetColorRGBCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetColorRGBCommand" |> NamespacedName
-
+    let ``_.owl#SetColorRGBCommand`` = _prefix ".owl#SetColorRGBCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetColorHSBCommand"></see>
     /// </summary>
-    let ``_.owl#SetColorHSBCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetColorHSBCommand" |> NamespacedName
-
+    let ``_.owl#SetColorHSBCommand`` = _prefix ".owl#SetColorHSBCommand"
     /// <summary>
     /// The Color Dimmable Light device can be switched on and off, and its luminance, hue and saturation levels may be controlled, derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ColorDimmableLight"></see></summary>
-    let ``_.owl#ColorDimmableLight`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorDimmableLight" |> NamespacedName
+    let ``_.owl#ColorDimmableLight`` = _prefix ".owl#ColorDimmableLight"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ColorNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ColorNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorState"></see>
     /// </summary>
-    let ``_.owl#ColorState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorState" |> NamespacedName
-
+    let ``_.owl#ColorState`` = _prefix ".owl#ColorState"
     /// <summary>
     /// The Dimmable Light device is a light that can be switched on and off, and whose luminance level may be controlled, derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DimmableLight"></see></summary>
-    let ``_.owl#DimmableLight`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DimmableLight" |> NamespacedName
-
+    let ``_.owl#DimmableLight`` = _prefix ".owl#DimmableLight"
     /// <summary>
     /// The Color Dimmer Switch device can turn a light on and off, and control the luminance, hue and saturation levels of a multicolor light, derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ColorDimmerSwitch"></see></summary>
-    let ``_.owl#ColorDimmerSwitch`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorDimmerSwitch" |> NamespacedName
-
+    let ``_.owl#ColorDimmerSwitch`` = _prefix ".owl#ColorDimmerSwitch"
     /// <summary>
     /// Association between a controller and the controlled object
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#controlledObject"></see></summary>
-    let ``_.owl#controlledObject`` =
-        Namespaced_IRI.parse _namespace_name ".owl#controlledObject" |> NamespacedName
-
+    let ``_.owl#controlledObject`` = _prefix ".owl#controlledObject"
     /// <summary>
     /// Switch for controlling dimmable lights, derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DimmerSwitch"></see></summary>
-    let ``_.owl#DimmerSwitch`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DimmerSwitch" |> NamespacedName
-
+    let ``_.owl#DimmerSwitch`` = _prefix ".owl#DimmerSwitch"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorHSBNotification"></see>
     /// </summary>
-    let ``_.owl#ColorHSBNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorHSBNotification" |> NamespacedName
-
+    let ``_.owl#ColorHSBNotification`` = _prefix ".owl#ColorHSBNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorRGBNotification"></see>
     /// </summary>
-    let ``_.owl#ColorRGBNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorRGBNotification" |> NamespacedName
-
+    let ``_.owl#ColorRGBNotification`` = _prefix ".owl#ColorRGBNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorStateHSB"></see>
     /// </summary>
-    let ``_.owl#ColorStateHSB`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorStateHSB" |> NamespacedName
-
+    let ``_.owl#ColorStateHSB`` = _prefix ".owl#ColorStateHSB"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HueStateValue"></see>
     /// </summary>
-    let ``_.owl#HueStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HueStateValue" |> NamespacedName
-
+    let ``_.owl#HueStateValue`` = _prefix ".owl#HueStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SaturationStateValue"></see>
     /// </summary>
-    let ``_.owl#SaturationStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SaturationStateValue" |> NamespacedName
-
+    let ``_.owl#SaturationStateValue`` = _prefix ".owl#SaturationStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ColorStateRGB"></see>
     /// </summary>
-    let ``_.owl#ColorStateRGB`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ColorStateRGB" |> NamespacedName
-
+    let ``_.owl#ColorStateRGB`` = _prefix ".owl#ColorStateRGB"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GreenStateValue"></see>
     /// </summary>
-    let ``_.owl#GreenStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GreenStateValue" |> NamespacedName
-
+    let ``_.owl#GreenStateValue`` = _prefix ".owl#GreenStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RedStateValue"></see>
     /// </summary>
-    let ``_.owl#RedStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RedStateValue" |> NamespacedName
-
+    let ``_.owl#RedStateValue`` = _prefix ".owl#RedStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Command"></see>
     /// </summary>
-    let ``_.owl#Command`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Command" |> NamespacedName
-
+    let ``_.owl#Command`` = _prefix ".owl#Command"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ConfigurationFunctionality"></see>
     /// </summary>
-    let ``_.owl#ConfigurationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ConfigurationFunctionality" |> NamespacedName
-
+    let ``_.owl#ConfigurationFunctionality`` = _prefix ".owl#ConfigurationFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetConfigurationCommand"></see>
     /// </summary>
-    let ``_.owl#GetConfigurationCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetConfigurationCommand" |> NamespacedName
-
+    let ``_.owl#GetConfigurationCommand`` = _prefix ".owl#GetConfigurationCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ConnectionState"></see>
     /// </summary>
-    let ``_.owl#ConnectionState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ConnectionState" |> NamespacedName
-
+    let ``_.owl#ConnectionState`` = _prefix ".owl#ConnectionState"
     /// <summary>
     /// Discrete states with exactly two values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DoubleValuedState"></see></summary>
-    let ``_.owl#DoubleValuedState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DoubleValuedState" |> NamespacedName
-
+    let ``_.owl#DoubleValuedState`` = _prefix ".owl#DoubleValuedState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ConsumedWaterStateValue"></see>
     /// </summary>
-    let ``_.owl#ConsumedWaterStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ConsumedWaterStateValue" |> NamespacedName
-
+    let ``_.owl#ConsumedWaterStateValue`` = _prefix ".owl#ConsumedWaterStateValue"
     /// <summary>
     /// Capability of a controllable building thing that can receive commands
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ControlFunctionality"></see></summary>
-    let ``_.owl#ControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ControlFunctionality" |> NamespacedName
+    let ``_.owl#ControlFunctionality`` = _prefix ".owl#ControlFunctionality"
 
     /// <summary>
     /// Functionalities not continuous, with fixed values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DiscreteControlFunctionality"></see></summary>
     let ``_.owl#DiscreteControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscreteControlFunctionality" |> NamespacedName
+        _prefix ".owl#DiscreteControlFunctionality"
 
     /// <summary>
     /// Capability of a controllable building thing that notifies information,e.g.door sensor notifies "open"-"close"
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#NotificationFunctionality"></see></summary>
-    let ``_.owl#NotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NotificationFunctionality" |> NamespacedName
-
+    let ``_.owl#NotificationFunctionality`` = _prefix ".owl#NotificationFunctionality"
     /// <summary>
     /// Models the states of the controllable objects
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#State"></see></summary>
-    let ``_.owl#State`` =
-        Namespaced_IRI.parse _namespace_name ".owl#State" |> NamespacedName
-
+    let ``_.owl#State`` = _prefix ".owl#State"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#unitOfMeasure"></see>
     /// </summary>
-    let ``_.owl#unitOfMeasure`` =
-        Namespaced_IRI.parse _namespace_name ".owl#unitOfMeasure" |> NamespacedName
-
+    let ``_.owl#unitOfMeasure`` = _prefix ".owl#unitOfMeasure"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StateValue"></see>
     /// </summary>
-    let ``_.owl#StateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StateValue" |> NamespacedName
-
+    let ``_.owl#StateValue`` = _prefix ".owl#StateValue"
     /// <summary>
     /// Capability of a controllable building thing
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Functionality"></see></summary>
-    let ``_.owl#Functionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Functionality" |> NamespacedName
-
+    let ``_.owl#Functionality`` = _prefix ".owl#Functionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CoolingApplianceState"></see>
     /// </summary>
-    let ``_.owl#CoolingApplianceState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CoolingApplianceState" |> NamespacedName
-
+    let ``_.owl#CoolingApplianceState`` = _prefix ".owl#CoolingApplianceState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GenericApplianceState"></see>
     /// </summary>
-    let ``_.owl#GenericApplianceState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GenericApplianceState" |> NamespacedName
+    let ``_.owl#GenericApplianceState`` = _prefix ".owl#GenericApplianceState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CurrentMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#CurrentMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CurrentMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#CurrentMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CurrentMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#CurrentMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CurrentMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#CurrentMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CurrentMeasurementState"></see>
     /// </summary>
-    let ``_.owl#CurrentMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CurrentMeasurementState" |> NamespacedName
-
+    let ``_.owl#CurrentMeasurementState`` = _prefix ".owl#CurrentMeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CurrentMeter"></see>
     /// </summary>
-    let ``_.owl#CurrentMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CurrentMeter" |> NamespacedName
-
+    let ``_.owl#CurrentMeter`` = _prefix ".owl#CurrentMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ElectricityMeter"></see>
     /// </summary>
-    let ``_.owl#ElectricityMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ElectricityMeter" |> NamespacedName
+    let ``_.owl#ElectricityMeter`` = _prefix ".owl#ElectricityMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CycleTimingControlFunctionality"></see>
     /// </summary>
     let ``_.owl#CycleTimingControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CycleTimingControlFunctionality" |> NamespacedName
+        _prefix ".owl#CycleTimingControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetEndTimeCommand"></see>
     /// </summary>
-    let ``_.owl#SetEndTimeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetEndTimeCommand" |> NamespacedName
-
+    let ``_.owl#SetEndTimeCommand`` = _prefix ".owl#SetEndTimeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetStartTimeCommand"></see>
     /// </summary>
-    let ``_.owl#SetStartTimeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetStartTimeCommand" |> NamespacedName
-
+    let ``_.owl#SetStartTimeCommand`` = _prefix ".owl#SetStartTimeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SetRemainingTimeCommand"></see>
     /// </summary>
-    let ``_.owl#SetRemainingTimeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SetRemainingTimeCommand" |> NamespacedName
-
+    let ``_.owl#SetRemainingTimeCommand`` = _prefix ".owl#SetRemainingTimeCommand"
     /// <summary>
     /// Discrete functionalities with exactly three values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TripleValuedFunctionality"></see></summary>
-    let ``_.owl#TripleValuedFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TripleValuedFunctionality" |> NamespacedName
+    let ``_.owl#TripleValuedFunctionality`` = _prefix ".owl#TripleValuedFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CycleTimingNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#CycleTimingNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CycleTimingNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#CycleTimingNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TripleValuedNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#TripleValuedNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TripleValuedNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#TripleValuedNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#CycleTimingQueryFunctionality"></see>
     /// </summary>
     let ``_.owl#CycleTimingQueryFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#CycleTimingQueryFunctionality" |> NamespacedName
+        _prefix ".owl#CycleTimingQueryFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetEndTimeCommand"></see>
     /// </summary>
-    let ``_.owl#GetEndTimeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetEndTimeCommand" |> NamespacedName
-
+    let ``_.owl#GetEndTimeCommand`` = _prefix ".owl#GetEndTimeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetRemainingTimeCommand"></see>
     /// </summary>
-    let ``_.owl#GetRemainingTimeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetRemainingTimeCommand" |> NamespacedName
-
+    let ``_.owl#GetRemainingTimeCommand`` = _prefix ".owl#GetRemainingTimeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetStartTimeCommand"></see>
     /// </summary>
-    let ``_.owl#GetStartTimeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetStartTimeCommand" |> NamespacedName
-
+    let ``_.owl#GetStartTimeCommand`` = _prefix ".owl#GetStartTimeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DecreaseVolumeCommand"></see>
     /// </summary>
-    let ``_.owl#DecreaseVolumeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DecreaseVolumeCommand" |> NamespacedName
-
+    let ``_.owl#DecreaseVolumeCommand`` = _prefix ".owl#DecreaseVolumeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FreezingApplianceState"></see>
     /// </summary>
-    let ``_.owl#FreezingApplianceState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FreezingApplianceState" |> NamespacedName
+    let ``_.owl#FreezingApplianceState`` = _prefix ".owl#FreezingApplianceState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperFreezingNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SuperFreezingNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperFreezingNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SuperFreezingNotificationFunctionality"
 
     /// <summary>
     /// Describes the ability of a device to start/stop a super freezing cycle, tipically defined for fridges, refrigerators and freezers. Derives from the energy@home zigbee extension and from the EN50523 standard
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SuperFreezingFunctionality"></see></summary>
-    let ``_.owl#SuperFreezingFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperFreezingFunctionality" |> NamespacedName
-
+    let ``_.owl#SuperFreezingFunctionality`` = _prefix ".owl#SuperFreezingFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ParametricCommand"></see>
     /// </summary>
-    let ``_.owl#ParametricCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ParametricCommand" |> NamespacedName
-
+    let ``_.owl#ParametricCommand`` = _prefix ".owl#ParametricCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SelectSourceCommand"></see>
     /// </summary>
-    let ``_.owl#SelectSourceCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SelectSourceCommand" |> NamespacedName
+    let ``_.owl#SelectSourceCommand`` = _prefix ".owl#SelectSourceCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetRelativeHumidityMCommand"></see>
     /// </summary>
     let ``_.owl#GetRelativeHumidityMCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetRelativeHumidityMCommand" |> NamespacedName
+        _prefix ".owl#GetRelativeHumidityMCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetPressureMCommand"></see>
     /// </summary>
-    let ``_.owl#GetPressureMCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetPressureMCommand" |> NamespacedName
-
+    let ``_.owl#GetPressureMCommand`` = _prefix ".owl#GetPressureMCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetLuminanceCommand"></see>
     /// </summary>
-    let ``_.owl#GetLuminanceCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetLuminanceCommand" |> NamespacedName
-
+    let ``_.owl#GetLuminanceCommand`` = _prefix ".owl#GetLuminanceCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetTemperatureMCommand"></see>
     /// </summary>
-    let ``_.owl#GetTemperatureMCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetTemperatureMCommand" |> NamespacedName
-
+    let ``_.owl#GetTemperatureMCommand`` = _prefix ".owl#GetTemperatureMCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetFlowRateMCommand"></see>
     /// </summary>
-    let ``_.owl#GetFlowRateMCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetFlowRateMCommand" |> NamespacedName
-
+    let ``_.owl#GetFlowRateMCommand`` = _prefix ".owl#GetFlowRateMCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkNotification"></see>
     /// </summary>
-    let ``_.owl#NetworkNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkNotification" |> NamespacedName
-
+    let ``_.owl#NetworkNotification`` = _prefix ".owl#NetworkNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DeviceAssociationState"></see>
     /// </summary>
-    let ``_.owl#DeviceAssociationState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DeviceAssociationState" |> NamespacedName
-
+    let ``_.owl#DeviceAssociationState`` = _prefix ".owl#DeviceAssociationState"
     /// <summary>
     /// Discrete states with exactly three values
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TripleValuedState"></see></summary>
-    let ``_.owl#TripleValuedState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TripleValuedState" |> NamespacedName
+    let ``_.owl#TripleValuedState`` = _prefix ".owl#TripleValuedState"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SceneNotificationFunctionality"></see></summary>
     let ``_.owl#SceneNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SceneNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SceneNotificationFunctionality"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SceneFunctionality"></see></summary>
-    let ``_.owl#SceneFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SceneFunctionality" |> NamespacedName
+    let ``_.owl#SceneFunctionality`` = _prefix ".owl#SceneFunctionality"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GroupNotificationFunctionality"></see></summary>
     let ``_.owl#GroupNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GroupNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#GroupNotificationFunctionality"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GroupFunctionality"></see></summary>
-    let ``_.owl#GroupFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GroupFunctionality" |> NamespacedName
-
+    let ``_.owl#GroupFunctionality`` = _prefix ".owl#GroupFunctionality"
     /// <summary>
     /// Lamp that varies the level of illumination
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DimmerLamp"></see></summary>
-    let ``_.owl#DimmerLamp`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DimmerLamp" |> NamespacedName
+    let ``_.owl#DimmerLamp`` = _prefix ".owl#DimmerLamp"
 
     /// <summary>
     /// Functionalities for the regulation of ligth
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LightRegulationFunctionality"></see></summary>
     let ``_.owl#LightRegulationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LightRegulationFunctionality" |> NamespacedName
+        _prefix ".owl#LightRegulationFunctionality"
 
     /// <summary>
     /// An artificial source of visible illumination
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Lamp"></see></summary>
-    let ``_.owl#Lamp`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Lamp" |> NamespacedName
-
+    let ``_.owl#Lamp`` = _prefix ".owl#Lamp"
     /// <summary>
     /// Models the state of the object that illuminates
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LightIntensityState"></see></summary>
-    let ``_.owl#LightIntensityState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LightIntensityState" |> NamespacedName
+    let ``_.owl#LightIntensityState`` = _prefix ".owl#LightIntensityState"
 
     /// <summary>
     /// Notification functionality for controlling continuously adjustable device, e.g. dimmers, derives from ZigBee Home Automation specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SimpleLevelNotificationFunctionality"></see></summary>
     let ``_.owl#SimpleLevelNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SimpleLevelNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SimpleLevelNotificationFunctionality"
 
     /// <summary>
     /// Simple lamp that can be just turn on or turn off
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SimpleLamp"></see></summary>
-    let ``_.owl#SimpleLamp`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SimpleLamp" |> NamespacedName
-
+    let ``_.owl#SimpleLamp`` = _prefix ".owl#SimpleLamp"
     /// <summary>
     /// Level control switch, derives from the ZigBee Home Automation specification
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LevelControlSwitch"></see></summary>
-    let ``_.owl#LevelControlSwitch`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelControlSwitch" |> NamespacedName
-
+    let ``_.owl#LevelControlSwitch`` = _prefix ".owl#LevelControlSwitch"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisableGasCommand"></see>
     /// </summary>
-    let ``_.owl#DisableGasCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisableGasCommand" |> NamespacedName
+    let ``_.owl#DisableGasCommand`` = _prefix ".owl#DisableGasCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscoveryActiveNotification"></see>
     /// </summary>
     let ``_.owl#DiscoveryActiveNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscoveryActiveNotification" |> NamespacedName
+        _prefix ".owl#DiscoveryActiveNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HueNotification"></see>
     /// </summary>
-    let ``_.owl#HueNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HueNotification" |> NamespacedName
-
+    let ``_.owl#HueNotification`` = _prefix ".owl#HueNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscoveryFunctionality"></see>
     /// </summary>
-    let ``_.owl#DiscoveryFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscoveryFunctionality" |> NamespacedName
-
+    let ``_.owl#DiscoveryFunctionality`` = _prefix ".owl#DiscoveryFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartDiscoveryCommand"></see>
     /// </summary>
-    let ``_.owl#StartDiscoveryCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartDiscoveryCommand" |> NamespacedName
-
+    let ``_.owl#StartDiscoveryCommand`` = _prefix ".owl#StartDiscoveryCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopDiscoveryCommand"></see>
     /// </summary>
-    let ``_.owl#StopDiscoveryCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopDiscoveryCommand" |> NamespacedName
-
+    let ``_.owl#StopDiscoveryCommand`` = _prefix ".owl#StopDiscoveryCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscoveryIdleNotification"></see>
     /// </summary>
-    let ``_.owl#DiscoveryIdleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscoveryIdleNotification" |> NamespacedName
+    let ``_.owl#DiscoveryIdleNotification`` = _prefix ".owl#DiscoveryIdleNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscoveryNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#DiscoveryNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscoveryNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#DiscoveryNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscoveryState"></see>
     /// </summary>
-    let ``_.owl#DiscoveryState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscoveryState" |> NamespacedName
+    let ``_.owl#DiscoveryState`` = _prefix ".owl#DiscoveryState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DiscreteOutputFunctionality"></see>
     /// </summary>
     let ``_.owl#DiscreteOutputFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DiscreteOutputFunctionality" |> NamespacedName
+        _prefix ".owl#DiscreteOutputFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartStopPauseNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#StartStopPauseNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartStopPauseNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#StartStopPauseNotificationFunctionality"
 
     /// <summary>
     /// A functionality describing the ability of a device, tipically an appliance, to start, stop or pause its current cycle.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#StartStopPauseFunctionality"></see></summary>
     let ``_.owl#StartStopPauseFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartStopPauseFunctionality" |> NamespacedName
+        _prefix ".owl#StartStopPauseFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisplayCommand"></see>
     /// </summary>
-    let ``_.owl#DisplayCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisplayCommand" |> NamespacedName
-
+    let ``_.owl#DisplayCommand`` = _prefix ".owl#DisplayCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DisplayFunctionality"></see>
     /// </summary>
-    let ``_.owl#DisplayFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DisplayFunctionality" |> NamespacedName
-
+    let ``_.owl#DisplayFunctionality`` = _prefix ".owl#DisplayFunctionality"
     /// <summary>
     /// A swinging or sliding barrier that will close the entrance to a room or building.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Door"></see></summary>
-    let ``_.owl#Door`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Door" |> NamespacedName
-
+    let ``_.owl#Door`` = _prefix ".owl#Door"
     /// <summary>
     /// Association between an object and its sensor
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasSensor"></see></summary>
-    let ``_.owl#hasSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasSensor" |> NamespacedName
-
+    let ``_.owl#hasSensor`` = _prefix ".owl#hasSensor"
     /// <summary>
     /// Sensor that controls if a door is closed
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#DoorSensor"></see></summary>
-    let ``_.owl#DoorSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DoorSensor" |> NamespacedName
-
+    let ``_.owl#DoorSensor`` = _prefix ".owl#DoorSensor"
     /// <summary>
     /// An opening in a Wall
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WallOpening"></see></summary>
-    let ``_.owl#WallOpening`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WallOpening" |> NamespacedName
-
+    let ``_.owl#WallOpening`` = _prefix ".owl#WallOpening"
     /// <summary>
     /// A framework that contains a glass windowpane and is built into a wall or roof to admit light or air
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Window"></see></summary>
-    let ``_.owl#Window`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Window" |> NamespacedName
-
+    let ``_.owl#Window`` = _prefix ".owl#Window"
     /// <summary>
     /// Association between a sensor and its sensed object
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#sensorOf"></see></summary>
-    let ``_.owl#sensorOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#sensorOf" |> NamespacedName
-
+    let ``_.owl#sensorOf`` = _prefix ".owl#sensorOf"
     /// <summary>
     /// Sensor that controls if a window is closed
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WindowSensor"></see></summary>
-    let ``_.owl#WindowSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WindowSensor" |> NamespacedName
-
+    let ``_.owl#WindowSensor`` = _prefix ".owl#WindowSensor"
     /// <summary>
     /// Sensor that detects the presence of a living entity in the sensor's range
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#InfraredSensor"></see></summary>
-    let ``_.owl#InfraredSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#InfraredSensor" |> NamespacedName
-
+    let ``_.owl#InfraredSensor`` = _prefix ".owl#InfraredSensor"
     /// <summary>
     /// Sensor that detects the presence of smoke
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SmokeSensor"></see></summary>
-    let ``_.owl#SmokeSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SmokeSensor" |> NamespacedName
-
+    let ``_.owl#SmokeSensor`` = _prefix ".owl#SmokeSensor"
     /// <summary>
     /// Sensor that detects the presence of flood
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#FloodSensor"></see></summary>
-    let ``_.owl#FloodSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FloodSensor" |> NamespacedName
-
+    let ``_.owl#FloodSensor`` = _prefix ".owl#FloodSensor"
     /// <summary>
     /// The Occupancy Sensor device reports the occupancy state of an area. Derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OccupancySensor"></see></summary>
-    let ``_.owl#OccupancySensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OccupancySensor" |> NamespacedName
-
+    let ``_.owl#OccupancySensor`` = _prefix ".owl#OccupancySensor"
     /// <summary>
     /// Camera of video surveillance
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SurveillanceCamera"></see></summary>
-    let ``_.owl#SurveillanceCamera`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SurveillanceCamera" |> NamespacedName
-
+    let ``_.owl#SurveillanceCamera`` = _prefix ".owl#SurveillanceCamera"
     /// <summary>
     /// Sensor that detects the presence of gas
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GasSensor"></see></summary>
-    let ``_.owl#GasSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasSensor" |> NamespacedName
-
+    let ``_.owl#GasSensor`` = _prefix ".owl#GasSensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#DoubleBed"></see>
     /// </summary>
-    let ``_.owl#DoubleBed`` =
-        Namespaced_IRI.parse _namespace_name ".owl#DoubleBed" |> NamespacedName
-
+    let ``_.owl#DoubleBed`` = _prefix ".owl#DoubleBed"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SingleBed"></see>
     /// </summary>
-    let ``_.owl#SingleBed`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleBed" |> NamespacedName
-
+    let ``_.owl#SingleBed`` = _prefix ".owl#SingleBed"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlayFunctionality"></see>
     /// </summary>
-    let ``_.owl#PlayFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlayFunctionality" |> NamespacedName
-
+    let ``_.owl#PlayFunctionality`` = _prefix ".owl#PlayFunctionality"
     /// <summary>
     /// Discrete functionalities with exactly one value
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SingleValuedFunctionality"></see></summary>
-    let ``_.owl#SingleValuedFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleValuedFunctionality" |> NamespacedName
-
+    let ``_.owl#SingleValuedFunctionality`` = _prefix ".owl#SingleValuedFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Notification"></see>
     /// </summary>
-    let ``_.owl#Notification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Notification" |> NamespacedName
-
+    let ``_.owl#Notification`` = _prefix ".owl#Notification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingAndCoolingUnitState"></see>
     /// </summary>
-    let ``_.owl#HeatingAndCoolingUnitState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingAndCoolingUnitState" |> NamespacedName
-
+    let ``_.owl#HeatingAndCoolingUnitState`` = _prefix ".owl#HeatingAndCoolingUnitState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlayState"></see>
     /// </summary>
-    let ``_.owl#PlayState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlayState" |> NamespacedName
-
+    let ``_.owl#PlayState`` = _prefix ".owl#PlayState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SourceSelectionState"></see>
     /// </summary>
-    let ``_.owl#SourceSelectionState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SourceSelectionState" |> NamespacedName
-
+    let ``_.owl#SourceSelectionState`` = _prefix ".owl#SourceSelectionState"
     /// <summary>
     /// Appliance thar read dvd
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Dvd"></see></summary>
-    let ``_.owl#Dvd`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Dvd" |> NamespacedName
+    let ``_.owl#Dvd`` = _prefix ".owl#Dvd"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffStandbyNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#OnOffStandbyNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffStandbyNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#OnOffStandbyNotificationFunctionality"
 
     /// <summary>
     /// Models the volume value
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#VolumeLevelState"></see></summary>
-    let ``_.owl#VolumeLevelState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VolumeLevelState" |> NamespacedName
-
+    let ``_.owl#VolumeLevelState`` = _prefix ".owl#VolumeLevelState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StandByOnOffState"></see>
     /// </summary>
-    let ``_.owl#StandByOnOffState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StandByOnOffState" |> NamespacedName
-
+    let ``_.owl#StandByOnOffState`` = _prefix ".owl#StandByOnOffState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffStandByFunctionality"></see>
     /// </summary>
-    let ``_.owl#OnOffStandByFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffStandByFunctionality" |> NamespacedName
+    let ``_.owl#OnOffStandByFunctionality`` = _prefix ".owl#OnOffStandByFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlayNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#PlayNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlayNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#PlayNotificationFunctionality"
 
     /// <summary>
     /// Functionalities for the regulation of volume
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#VolumeRegulationFunctionality"></see></summary>
     let ``_.owl#VolumeRegulationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VolumeRegulationFunctionality" |> NamespacedName
+        _prefix ".owl#VolumeRegulationFunctionality"
 
     /// <summary>
     /// A communication system based on broadcasting electromagnetic waves
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Radio"></see></summary>
-    let ``_.owl#Radio`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Radio" |> NamespacedName
-
+    let ``_.owl#Radio`` = _prefix ".owl#Radio"
     /// <summary>
     /// Equipment for the reproduction of sound with high fidelity
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HiFi"></see></summary>
-    let ``_.owl#HiFi`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HiFi" |> NamespacedName
-
+    let ``_.owl#HiFi`` = _prefix ".owl#HiFi"
     /// <summary>
     /// A receiver that displays television images
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Tv"></see></summary>
-    let ``_.owl#Tv`` = Namespaced_IRI.parse _namespace_name ".owl#Tv" |> NamespacedName
-
+    let ``_.owl#Tv`` = _prefix ".owl#Tv"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EchelonCommand"></see>
     /// </summary>
-    let ``_.owl#EchelonCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EchelonCommand" |> NamespacedName
-
+    let ``_.owl#EchelonCommand`` = _prefix ".owl#EchelonCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkSpecificCommand"></see>
     /// </summary>
-    let ``_.owl#NetworkSpecificCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkSpecificCommand" |> NamespacedName
-
+    let ``_.owl#NetworkSpecificCommand`` = _prefix ".owl#NetworkSpecificCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EchelonIlon100Gateway"></see>
     /// </summary>
-    let ``_.owl#EchelonIlon100Gateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EchelonIlon100Gateway" |> NamespacedName
-
+    let ``_.owl#EchelonIlon100Gateway`` = _prefix ".owl#EchelonIlon100Gateway"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EchelonNetworkComponent"></see>
     /// </summary>
-    let ``_.owl#EchelonNetworkComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EchelonNetworkComponent" |> NamespacedName
-
+    let ``_.owl#EchelonNetworkComponent`` = _prefix ".owl#EchelonNetworkComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EchelonIlon100Property"></see>
     /// </summary>
-    let ``_.owl#EchelonIlon100Property`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EchelonIlon100Property" |> NamespacedName
-
+    let ``_.owl#EchelonIlon100Property`` = _prefix ".owl#EchelonIlon100Property"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EchelonNotification"></see>
     /// </summary>
-    let ``_.owl#EchelonNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EchelonNotification" |> NamespacedName
+    let ``_.owl#EchelonNotification`` = _prefix ".owl#EchelonNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkSpecificNotification"></see>
     /// </summary>
     let ``_.owl#NetworkSpecificNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkSpecificNotification" |> NamespacedName
+        _prefix ".owl#NetworkSpecificNotification"
 
     /// <summary>
     /// Electrical Cooker
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ElectricalCooker"></see></summary>
-    let ``_.owl#ElectricalCooker`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ElectricalCooker" |> NamespacedName
-
+    let ``_.owl#ElectricalCooker`` = _prefix ".owl#ElectricalCooker"
     /// <summary>
     /// Gas Cooker
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GasCooker"></see></summary>
-    let ``_.owl#GasCooker`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasCooker" |> NamespacedName
-
+    let ``_.owl#GasCooker`` = _prefix ".owl#GasCooker"
     /// <summary>
     /// A portable electric appliance for heating or cooking or keeping food warm
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Hotplate"></see></summary>
-    let ``_.owl#Hotplate`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Hotplate" |> NamespacedName
-
+    let ``_.owl#Hotplate`` = _prefix ".owl#Hotplate"
     /// <summary>
     /// Electrical oven
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#ElectricalOven"></see></summary>
-    let ``_.owl#ElectricalOven`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ElectricalOven" |> NamespacedName
-
+    let ``_.owl#ElectricalOven`` = _prefix ".owl#ElectricalOven"
     /// <summary>
     /// Microwave oven
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MicrowaveOven"></see></summary>
-    let ``_.owl#MicrowaveOven`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MicrowaveOven" |> NamespacedName
-
+    let ``_.owl#MicrowaveOven`` = _prefix ".owl#MicrowaveOven"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Meter"></see>
     /// </summary>
-    let ``_.owl#Meter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Meter" |> NamespacedName
+    let ``_.owl#Meter`` = _prefix ".owl#Meter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnableDisableGasFunctionality"></see>
     /// </summary>
     let ``_.owl#EnableDisableGasFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnableDisableGasFunctionality" |> NamespacedName
+        _prefix ".owl#EnableDisableGasFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnableGasCommand"></see>
     /// </summary>
-    let ``_.owl#EnableGasCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnableGasCommand" |> NamespacedName
-
+    let ``_.owl#EnableGasCommand`` = _prefix ".owl#EnableGasCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyAndPowerMeter"></see>
     /// </summary>
-    let ``_.owl#EnergyAndPowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyAndPowerMeter" |> NamespacedName
+    let ``_.owl#EnergyAndPowerMeter`` = _prefix ".owl#EnergyAndPowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActivePowerMeter"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActivePowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActivePowerMeter" |> NamespacedName
+        _prefix ".owl#SinglePhaseActivePowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseEnergyMeter"></see>
     /// </summary>
-    let ``_.owl#SinglePhaseEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseEnergyMeter" |> NamespacedName
+    let ``_.owl#SinglePhaseEnergyMeter`` = _prefix ".owl#SinglePhaseEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyAndPowerMeteringLevelControllableOutput"></see>
     /// </summary>
     let ``_.owl#EnergyAndPowerMeteringLevelControllableOutput`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyAndPowerMeteringLevelControllableOutput" |> NamespacedName
+        _prefix ".owl#EnergyAndPowerMeteringLevelControllableOutput"
 
     /// <summary>
     /// Output device whose output level can be controlled continuously, by means of a level-control command (notification), derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LevelControllableOutput"></see></summary>
-    let ``_.owl#LevelControllableOutput`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelControllableOutput" |> NamespacedName
+    let ``_.owl#LevelControllableOutput`` = _prefix ".owl#LevelControllableOutput"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActiveEnergyMeter"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActiveEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActiveEnergyMeter" |> NamespacedName
+        _prefix ".owl#SinglePhaseActiveEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyMeasurementState"></see>
     /// </summary>
-    let ``_.owl#EnergyMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyMeasurementState" |> NamespacedName
-
+    let ``_.owl#EnergyMeasurementState`` = _prefix ".owl#EnergyMeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyMeter"></see>
     /// </summary>
-    let ``_.owl#EnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyMeter" |> NamespacedName
-
+    let ``_.owl#EnergyMeter`` = _prefix ".owl#EnergyMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EnergyMeteringPowerOutlet"></see>
     /// </summary>
-    let ``_.owl#EnergyMeteringPowerOutlet`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EnergyMeteringPowerOutlet" |> NamespacedName
-
+    let ``_.owl#EnergyMeteringPowerOutlet`` = _prefix ".owl#EnergyMeteringPowerOutlet"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MainsPowerOutlet"></see>
     /// </summary>
-    let ``_.owl#MainsPowerOutlet`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MainsPowerOutlet" |> NamespacedName
-
+    let ``_.owl#MainsPowerOutlet`` = _prefix ".owl#MainsPowerOutlet"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Entrance"></see>
     /// </summary>
-    let ``_.owl#Entrance`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Entrance" |> NamespacedName
-
+    let ``_.owl#Entrance`` = _prefix ".owl#Entrance"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EventNotification"></see>
     /// </summary>
-    let ``_.owl#EventNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EventNotification" |> NamespacedName
+    let ``_.owl#EventNotification`` = _prefix ".owl#EventNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EventNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#EventNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EventNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#EventNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EventsAndAlertsNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#EventsAndAlertsNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EventsAndAlertsNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#EventsAndAlertsNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleAlertNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultipleAlertNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleAlertNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleAlertNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleEventNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultipleEventNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleEventNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleEventNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#EventsAndAlertsQueryFunctionality"></see>
     /// </summary>
     let ``_.owl#EventsAndAlertsQueryFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#EventsAndAlertsQueryFunctionality" |> NamespacedName
+        _prefix ".owl#EventsAndAlertsQueryFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetEventsAndAlertsCommand"></see>
     /// </summary>
-    let ``_.owl#GetEventsAndAlertsCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetEventsAndAlertsCommand" |> NamespacedName
-
+    let ``_.owl#GetEventsAndAlertsCommand`` = _prefix ".owl#GetEventsAndAlertsCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FaultState"></see>
     /// </summary>
-    let ``_.owl#FaultState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FaultState" |> NamespacedName
-
+    let ``_.owl#FaultState`` = _prefix ".owl#FaultState"
     /// <summary>
     /// A barrier that serves to enclose an area
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Fence"></see></summary>
-    let ``_.owl#Fence`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Fence" |> NamespacedName
-
+    let ``_.owl#Fence`` = _prefix ".owl#Fence"
     /// <summary>
     /// The vertical architectural component of a building
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Vertical"></see></summary>
-    let ``_.owl#Vertical`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Vertical" |> NamespacedName
-
+    let ``_.owl#Vertical`` = _prefix ".owl#Vertical"
     /// <summary>
     /// An opening in a Fence
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#FenceOpening"></see></summary>
-    let ``_.owl#FenceOpening`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FenceOpening" |> NamespacedName
-
+    let ``_.owl#FenceOpening`` = _prefix ".owl#FenceOpening"
     /// <summary>
     /// An architectural partition used to divide or enclose an area or to support another structure.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Wall"></see></summary>
-    let ``_.owl#Wall`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Wall" |> NamespacedName
+    let ``_.owl#Wall`` = _prefix ".owl#Wall"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FireHeatCoolNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#FireHeatCoolNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FireHeatCoolNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#FireHeatCoolNotificationFunctionality"
 
     /// <summary>
     /// Lamp that emits light in sudden short or intermittent bursts
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#FlashingLamp"></see></summary>
-    let ``_.owl#FlashingLamp`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlashingLamp" |> NamespacedName
-
+    let ``_.owl#FlashingLamp`` = _prefix ".owl#FlashingLamp"
     /// <summary>
     /// Functionality to switch on and off an object with a given switching period
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffFlashingFunctionality"></see></summary>
-    let ``_.owl#OnOffFlashingFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffFlashingFunctionality" |> NamespacedName
-
+    let ``_.owl#OnOffFlashingFunctionality`` = _prefix ".owl#OnOffFlashingFunctionality"
     /// <summary>
     /// Simple lamp that can be just turn on or turn off
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffLight"></see></summary>
-    let ``_.owl#OnOffLight`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffLight" |> NamespacedName
-
+    let ``_.owl#OnOffLight`` = _prefix ".owl#OnOffLight"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SensingState"></see>
     /// </summary>
-    let ``_.owl#SensingState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SensingState" |> NamespacedName
+    let ``_.owl#SensingState`` = _prefix ".owl#SensingState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#FlowMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#FlowMeasurementFunctionality"
 
     /// <summary>
     /// The capability of measuring the humidity of a room
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HumidityMeasurementFunctionality"></see></summary>
     let ``_.owl#HumidityMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumidityMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#HumidityMeasurementFunctionality"
 
     /// <summary>
     /// The capability of sensing the luminance of the environment in which a device is located accepts only the get command, with 1 parameter, i.e. the luminance value. Derives from ZigBee specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LightSensingFunctionality"></see></summary>
-    let ``_.owl#LightSensingFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LightSensingFunctionality" |> NamespacedName
+    let ``_.owl#LightSensingFunctionality`` = _prefix ".owl#LightSensingFunctionality"
 
     /// <summary>
     /// Functionality for getting the occupancy state of a given room
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OccupancySensingFunctionality"></see></summary>
     let ``_.owl#OccupancySensingFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OccupancySensingFunctionality" |> NamespacedName
+        _prefix ".owl#OccupancySensingFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PictureGrabFunctionality"></see>
     /// </summary>
-    let ``_.owl#PictureGrabFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PictureGrabFunctionality" |> NamespacedName
+    let ``_.owl#PictureGrabFunctionality`` = _prefix ".owl#PictureGrabFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressureMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#PressureMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#PressureMeasurementFunctionality"
 
     /// <summary>
     /// The capability of measuring temperatures
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureMeasurementFunctionality"></see></summary>
     let ``_.owl#TemperatureMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#TemperatureMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#FlowMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#FlowMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowRateMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#FlowRateMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowRateMeasurementNotification" |> NamespacedName
+        _prefix ".owl#FlowRateMeasurementNotification"
 
     /// <summary>
     /// The notification for requesting humidity measurment...
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#HumidityMeasurementNotificationFunctionality"></see></summary>
     let ``_.owl#HumidityMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumidityMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#HumidityMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressureMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#PressureMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#PressureMeasurementNotificationFunctionality"
 
     /// <summary>
     /// Notifies the measurment of a temperature, through a proper temperature sensor
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureMeasurementNotificationFunctionality"></see></summary>
     let ``_.owl#TemperatureMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#TemperatureMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SimpleMovementNotification"></see>
     /// </summary>
-    let ``_.owl#SimpleMovementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SimpleMovementNotification" |> NamespacedName
-
+    let ``_.owl#SimpleMovementNotification`` = _prefix ".owl#SimpleMovementNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelStepUpNotification"></see>
     /// </summary>
-    let ``_.owl#LevelStepUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelStepUpNotification" |> NamespacedName
+    let ``_.owl#LevelStepUpNotification`` = _prefix ".owl#LevelStepUpNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HumidityMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#HumidityMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumidityMeasurementNotification" |> NamespacedName
+        _prefix ".owl#HumidityMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelStepDownNotification"></see>
     /// </summary>
-    let ``_.owl#LevelStepDownNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelStepDownNotification" |> NamespacedName
+    let ``_.owl#LevelStepDownNotification`` = _prefix ".owl#LevelStepDownNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#TemperatureMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureMeasurementNotification" |> NamespacedName
+        _prefix ".owl#TemperatureMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressureMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#PressureMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureMeasurementNotification" |> NamespacedName
+        _prefix ".owl#PressureMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SimpleNoMovementNotification"></see>
     /// </summary>
     let ``_.owl#SimpleNoMovementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SimpleNoMovementNotification" |> NamespacedName
+        _prefix ".owl#SimpleNoMovementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowRateState"></see>
     /// </summary>
-    let ``_.owl#FlowRateState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowRateState" |> NamespacedName
-
+    let ``_.owl#FlowRateState`` = _prefix ".owl#FlowRateState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HumidityMeasurementState"></see>
     /// </summary>
-    let ``_.owl#HumidityMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumidityMeasurementState" |> NamespacedName
-
+    let ``_.owl#HumidityMeasurementState`` = _prefix ".owl#HumidityMeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelState"></see>
     /// </summary>
-    let ``_.owl#LevelState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelState" |> NamespacedName
-
+    let ``_.owl#LevelState`` = _prefix ".owl#LevelState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PressureState"></see>
     /// </summary>
-    let ``_.owl#PressureState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PressureState" |> NamespacedName
-
+    let ``_.owl#PressureState`` = _prefix ".owl#PressureState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ShadeState"></see>
     /// </summary>
-    let ``_.owl#ShadeState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShadeState" |> NamespacedName
-
+    let ``_.owl#ShadeState`` = _prefix ".owl#ShadeState"
     /// <summary>
     /// Models the temperature value
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureState"></see></summary>
-    let ``_.owl#TemperatureState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureState" |> NamespacedName
-
+    let ``_.owl#TemperatureState`` = _prefix ".owl#TemperatureState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TunerState"></see>
     /// </summary>
-    let ``_.owl#TunerState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TunerState" |> NamespacedName
-
+    let ``_.owl#TunerState`` = _prefix ".owl#TunerState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FlowSensor"></see>
     /// </summary>
-    let ``_.owl#FlowSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FlowSensor" |> NamespacedName
-
+    let ``_.owl#FlowSensor`` = _prefix ".owl#FlowSensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ForwardNotification"></see>
     /// </summary>
-    let ``_.owl#ForwardNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ForwardNotification" |> NamespacedName
+    let ``_.owl#ForwardNotification`` = _prefix ".owl#ForwardNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FrequencyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#FrequencyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FrequencyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#FrequencyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetFrequencyCommand"></see>
     /// </summary>
-    let ``_.owl#GetFrequencyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetFrequencyCommand" |> NamespacedName
+    let ``_.owl#GetFrequencyCommand`` = _prefix ".owl#GetFrequencyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FrequencyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#FrequencyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FrequencyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#FrequencyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FrequencyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#FrequencyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FrequencyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#FrequencyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FrequencyMeasurementState"></see>
     /// </summary>
-    let ``_.owl#FrequencyMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FrequencyMeasurementState" |> NamespacedName
-
+    let ``_.owl#FrequencyMeasurementState`` = _prefix ".owl#FrequencyMeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FrequencyStateValue"></see>
     /// </summary>
-    let ``_.owl#FrequencyStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FrequencyStateValue" |> NamespacedName
-
+    let ``_.owl#FrequencyStateValue`` = _prefix ".owl#FrequencyStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#FrequencyMeter"></see>
     /// </summary>
-    let ``_.owl#FrequencyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#FrequencyMeter" |> NamespacedName
-
+    let ``_.owl#FrequencyMeter`` = _prefix ".owl#FrequencyMeter"
     /// <summary>
     /// A functionality describing the ability of the device to start/stop a super cooling cycle (typical of fridges, freezers and refrigerators). This functionality is defined in the energy@home zigbee extension and in the EN50523 specification.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SuperCoolingFunctionality"></see></summary>
-    let ``_.owl#SuperCoolingFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperCoolingFunctionality" |> NamespacedName
+    let ``_.owl#SuperCoolingFunctionality`` = _prefix ".owl#SuperCoolingFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SuperCoolingNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SuperCoolingNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SuperCoolingNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SuperCoolingNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hasFloor"></see>
     /// </summary>
-    let ``_.owl#hasFloor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasFloor" |> NamespacedName
-
+    let ``_.owl#hasFloor`` = _prefix ".owl#hasFloor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hasCeiling"></see>
     /// </summary>
-    let ``_.owl#hasCeiling`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasCeiling" |> NamespacedName
-
+    let ``_.owl#hasCeiling`` = _prefix ".owl#hasCeiling"
     /// <summary>
     /// Heater that combusts gas
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GasHeater"></see></summary>
-    let ``_.owl#GasHeater`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasHeater" |> NamespacedName
-
+    let ``_.owl#GasHeater`` = _prefix ".owl#GasHeater"
     /// <summary>
     /// Device that heats water or supplies warmth
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Heater"></see></summary>
-    let ``_.owl#Heater`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Heater" |> NamespacedName
-
+    let ``_.owl#Heater`` = _prefix ".owl#Heater"
     /// <summary>
     /// Heater that combusts gasoil
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#GasoilHeater"></see></summary>
-    let ``_.owl#GasoilHeater`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasoilHeater" |> NamespacedName
-
+    let ``_.owl#GasoilHeater`` = _prefix ".owl#GasoilHeater"
     /// <summary>
     /// Heater that combusts wood-pellet
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#PelletHeater"></see></summary>
-    let ``_.owl#PelletHeater`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PelletHeater" |> NamespacedName
+    let ``_.owl#PelletHeater`` = _prefix ".owl#PelletHeater"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GasM3MeasurementNotification"></see>
     /// </summary>
     let ``_.owl#GasM3MeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasM3MeasurementNotification" |> NamespacedName
+        _prefix ".owl#GasM3MeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GasMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#GasMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#GasMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetConsumedM3Gas"></see>
     /// </summary>
-    let ``_.owl#GetConsumedM3Gas`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetConsumedM3Gas" |> NamespacedName
+    let ``_.owl#GetConsumedM3Gas`` = _prefix ".owl#GetConsumedM3Gas"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GasMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#GasMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#GasMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GasMeasurementState"></see>
     /// </summary>
-    let ``_.owl#GasMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasMeasurementState" |> NamespacedName
-
+    let ``_.owl#GasMeasurementState`` = _prefix ".owl#GasMeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GasStateValue"></see>
     /// </summary>
-    let ``_.owl#GasStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasStateValue" |> NamespacedName
-
+    let ``_.owl#GasStateValue`` = _prefix ".owl#GasStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GasMeter"></see>
     /// </summary>
-    let ``_.owl#GasMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GasMeter" |> NamespacedName
-
+    let ``_.owl#GasMeter`` = _prefix ".owl#GasMeter"
     /// <summary>
     /// A door-like movable barrier in a fence
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Gate"></see></summary>
-    let ``_.owl#Gate`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Gate" |> NamespacedName
+    let ``_.owl#Gate`` = _prefix ".owl#Gate"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseActiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#Get1PhaseActiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseActiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#Get1PhaseActiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NonVoidCommand"></see>
     /// </summary>
-    let ``_.owl#NonVoidCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NonVoidCommand" |> NamespacedName
+    let ``_.owl#NonVoidCommand`` = _prefix ".owl#NonVoidCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseActivePowerCommand"></see>
     /// </summary>
     let ``_.owl#Get1PhaseActivePowerCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseActivePowerCommand" |> NamespacedName
+        _prefix ".owl#Get1PhaseActivePowerCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseApparentPowerCommand"></see>
     /// </summary>
     let ``_.owl#Get1PhaseApparentPowerCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseApparentPowerCommand" |> NamespacedName
+        _prefix ".owl#Get1PhaseApparentPowerCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseCurrentCommand"></see>
     /// </summary>
-    let ``_.owl#Get1PhaseCurrentCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseCurrentCommand" |> NamespacedName
+    let ``_.owl#Get1PhaseCurrentCommand`` = _prefix ".owl#Get1PhaseCurrentCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseReactiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#Get1PhaseReactiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseReactiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#Get1PhaseReactiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseReactivePowerCommand"></see>
     /// </summary>
     let ``_.owl#Get1PhaseReactivePowerCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseReactivePowerCommand" |> NamespacedName
+        _prefix ".owl#Get1PhaseReactivePowerCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get1PhaseVoltageCommand"></see>
     /// </summary>
-    let ``_.owl#Get1PhaseVoltageCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get1PhaseVoltageCommand" |> NamespacedName
+    let ``_.owl#Get1PhaseVoltageCommand`` = _prefix ".owl#Get1PhaseVoltageCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseActiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#Get3PhaseActiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseActiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#Get3PhaseActiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseActivePowerCommand"></see>
     /// </summary>
     let ``_.owl#Get3PhaseActivePowerCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseActivePowerCommand" |> NamespacedName
+        _prefix ".owl#Get3PhaseActivePowerCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseApparentPowerCommand"></see>
     /// </summary>
     let ``_.owl#Get3PhaseApparentPowerCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseApparentPowerCommand" |> NamespacedName
+        _prefix ".owl#Get3PhaseApparentPowerCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseCurrentCommand"></see>
     /// </summary>
-    let ``_.owl#Get3PhaseCurrentCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseCurrentCommand" |> NamespacedName
-
+    let ``_.owl#Get3PhaseCurrentCommand`` = _prefix ".owl#Get3PhaseCurrentCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseLLVoltageCommand"></see>
     /// </summary>
-    let ``_.owl#Get3PhaseLLVoltageCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseLLVoltageCommand" |> NamespacedName
-
+    let ``_.owl#Get3PhaseLLVoltageCommand`` = _prefix ".owl#Get3PhaseLLVoltageCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseLNVoltageCommand"></see>
     /// </summary>
-    let ``_.owl#Get3PhaseLNVoltageCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseLNVoltageCommand" |> NamespacedName
+    let ``_.owl#Get3PhaseLNVoltageCommand`` = _prefix ".owl#Get3PhaseLNVoltageCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseReactiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#Get3PhaseReactiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseReactiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#Get3PhaseReactiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#Get3PhaseReactivePowerCommand"></see>
     /// </summary>
     let ``_.owl#Get3PhaseReactivePowerCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Get3PhaseReactivePowerCommand" |> NamespacedName
+        _prefix ".owl#Get3PhaseReactivePowerCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetColdWaterM3Command"></see>
     /// </summary>
-    let ``_.owl#GetColdWaterM3Command`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetColdWaterM3Command" |> NamespacedName
-
+    let ``_.owl#GetColdWaterM3Command`` = _prefix ".owl#GetColdWaterM3Command"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetHeatingEnergyCommand"></see>
     /// </summary>
-    let ``_.owl#GetHeatingEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetHeatingEnergyCommand" |> NamespacedName
-
+    let ``_.owl#GetHeatingEnergyCommand`` = _prefix ".owl#GetHeatingEnergyCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetHotWaterM3Command"></see>
     /// </summary>
-    let ``_.owl#GetHotWaterM3Command`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetHotWaterM3Command" |> NamespacedName
+    let ``_.owl#GetHotWaterM3Command`` = _prefix ".owl#GetHotWaterM3Command"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetMultiTariff1PhaseActiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#GetMultiTariff1PhaseActiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetMultiTariff1PhaseActiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#GetMultiTariff1PhaseActiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetMultiTariff1PhaseReactiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#GetMultiTariff1PhaseReactiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetMultiTariff1PhaseReactiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#GetMultiTariff1PhaseReactiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetMultiTariff3PhaseActiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#GetMultiTariff3PhaseActiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetMultiTariff3PhaseActiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#GetMultiTariff3PhaseActiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetMultiTariff3PhaseReactiveEnergyCommand"></see>
     /// </summary>
     let ``_.owl#GetMultiTariff3PhaseReactiveEnergyCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetMultiTariff3PhaseReactiveEnergyCommand" |> NamespacedName
+        _prefix ".owl#GetMultiTariff3PhaseReactiveEnergyCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#GetPowerFactorCommand"></see>
     /// </summary>
-    let ``_.owl#GetPowerFactorCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#GetPowerFactorCommand" |> NamespacedName
+    let ``_.owl#GetPowerFactorCommand`` = _prefix ".owl#GetPowerFactorCommand"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#IdentificationFunctionality"></see></summary>
     let ``_.owl#IdentificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IdentificationFunctionality" |> NamespacedName
+        _prefix ".owl#IdentificationFunctionality"
 
     /// <summary>
     /// Derives from the general cluster functionalities defined in ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#IdentificationNotificationFunctionality"></see></summary>
     let ``_.owl#IdentificationNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IdentificationNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#IdentificationNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeaterState"></see>
     /// </summary>
-    let ``_.owl#HeaterState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeaterState" |> NamespacedName
+    let ``_.owl#HeaterState`` = _prefix ".owl#HeaterState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelControlNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#LevelControlNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelControlNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#LevelControlNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SpeedNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SpeedNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SpeedNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SpeedNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingCycleNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#HeatingCycleNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingCycleNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#HeatingCycleNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartedHeatingCycleNotification"></see>
     /// </summary>
     let ``_.owl#StartedHeatingCycleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartedHeatingCycleNotification" |> NamespacedName
+        _prefix ".owl#StartedHeatingCycleNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoppedHeatingCycleNotification"></see>
     /// </summary>
     let ``_.owl#StoppedHeatingCycleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoppedHeatingCycleNotification" |> NamespacedName
+        _prefix ".owl#StoppedHeatingCycleNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#HeatingEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#HeatingEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#HeatingEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#HeatingEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#HeatingEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#HeatingEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingEnergyMeasurementState"></see>
     /// </summary>
     let ``_.owl#HeatingEnergyMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingEnergyMeasurementState" |> NamespacedName
+        _prefix ".owl#HeatingEnergyMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingEnergyStateValue"></see>
     /// </summary>
-    let ``_.owl#HeatingEnergyStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingEnergyStateValue" |> NamespacedName
-
+    let ``_.owl#HeatingEnergyStateValue`` = _prefix ".owl#HeatingEnergyStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HeatingEnergyMeter"></see>
     /// </summary>
-    let ``_.owl#HeatingEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HeatingEnergyMeter" |> NamespacedName
-
+    let ``_.owl#HeatingEnergyMeter`` = _prefix ".owl#HeatingEnergyMeter"
     /// <summary>
     /// Functionality to switch on an object for a given period of time
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#TimedOnFunctionality"></see></summary>
-    let ``_.owl#TimedOnFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TimedOnFunctionality" |> NamespacedName
+    let ``_.owl#TimedOnFunctionality`` = _prefix ".owl#TimedOnFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SourceSelectionFunctionality"></see>
     /// </summary>
     let ``_.owl#SourceSelectionFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SourceSelectionFunctionality" |> NamespacedName
+        _prefix ".owl#SourceSelectionFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SourceSelectionNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SourceSelectionNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SourceSelectionNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SourceSelectionNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TunerNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#TunerNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TunerNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#TunerNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HotWaterM3MeasurementNotification"></see>
     /// </summary>
     let ``_.owl#HotWaterM3MeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HotWaterM3MeasurementNotification" |> NamespacedName
+        _prefix ".owl#HotWaterM3MeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HueBridge"></see>
     /// </summary>
-    let ``_.owl#HueBridge`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HueBridge" |> NamespacedName
-
+    let ``_.owl#HueBridge`` = _prefix ".owl#HueBridge"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PushLinkFunctionality"></see>
     /// </summary>
-    let ``_.owl#PushLinkFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PushLinkFunctionality" |> NamespacedName
+    let ``_.owl#PushLinkFunctionality`` = _prefix ".owl#PushLinkFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PushLinkAuthenticationState"></see>
     /// </summary>
     let ``_.owl#PushLinkAuthenticationState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PushLinkAuthenticationState" |> NamespacedName
+        _prefix ".owl#PushLinkAuthenticationState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PushLinkNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#PushLinkNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PushLinkNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#PushLinkNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HueComponent"></see>
     /// </summary>
-    let ``_.owl#HueComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HueComponent" |> NamespacedName
-
+    let ``_.owl#HueComponent`` = _prefix ".owl#HueComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HueManager"></see>
     /// </summary>
-    let ``_.owl#HueManager`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HueManager" |> NamespacedName
-
+    let ``_.owl#HueManager`` = _prefix ".owl#HueManager"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#HumiditySensor"></see>
     /// </summary>
-    let ``_.owl#HumiditySensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#HumiditySensor" |> NamespacedName
-
+    let ``_.owl#HumiditySensor`` = _prefix ".owl#HumiditySensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#KNXNetIPGateway"></see>
     /// </summary>
-    let ``_.owl#KNXNetIPGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KNXNetIPGateway" |> NamespacedName
-
+    let ``_.owl#KNXNetIPGateway`` = _prefix ".owl#KNXNetIPGateway"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ModbusGateway"></see>
     /// </summary>
-    let ``_.owl#ModbusGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ModbusGateway" |> NamespacedName
-
+    let ``_.owl#ModbusGateway`` = _prefix ".owl#ModbusGateway"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#IncreaseVolumeCommand"></see>
     /// </summary>
-    let ``_.owl#IncreaseVolumeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#IncreaseVolumeCommand" |> NamespacedName
+    let ``_.owl#IncreaseVolumeCommand`` = _prefix ".owl#IncreaseVolumeCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SensingNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SensingNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SensingNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SensingNotificationFunctionality"
 
     /// <summary>
     /// A large whirlpool bathtub with underwater jets that massage the body
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Jacuzzi"></see></summary>
-    let ``_.owl#Jacuzzi`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Jacuzzi" |> NamespacedName
-
+    let ``_.owl#Jacuzzi`` = _prefix ".owl#Jacuzzi"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#KNXNetIPComponent"></see>
     /// </summary>
-    let ``_.owl#KNXNetIPComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KNXNetIPComponent" |> NamespacedName
-
+    let ``_.owl#KNXNetIPComponent`` = _prefix ".owl#KNXNetIPComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#KonnexCommand"></see>
     /// </summary>
-    let ``_.owl#KonnexCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KonnexCommand" |> NamespacedName
-
+    let ``_.owl#KonnexCommand`` = _prefix ".owl#KonnexCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#KonnexNotification"></see>
     /// </summary>
-    let ``_.owl#KonnexNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#KonnexNotification" |> NamespacedName
-
+    let ``_.owl#KonnexNotification`` = _prefix ".owl#KonnexNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LampHolder"></see>
     /// </summary>
-    let ``_.owl#LampHolder`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LampHolder" |> NamespacedName
-
+    let ``_.owl#LampHolder`` = _prefix ".owl#LampHolder"
     /// <summary>
     /// Models a binary output which can be only in on or off state (OnOffState), compatible with the ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffOutput"></see></summary>
-    let ``_.owl#OnOffOutput`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffOutput" |> NamespacedName
+    let ``_.owl#OnOffOutput`` = _prefix ".owl#OnOffOutput"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LevelNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#LevelNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LevelNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#LevelNotificationFunctionality"
 
     /// <summary>
     /// The Light Sensor device reports the illuminance of an area
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#LightSensor"></see></summary>
-    let ``_.owl#LightSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LightSensor" |> NamespacedName
+    let ``_.owl#LightSensor`` = _prefix ".owl#LightSensor"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LuminosityNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#LuminosityNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LuminosityNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#LuminosityNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LoweringStateValue"></see>
     /// </summary>
-    let ``_.owl#LoweringStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LoweringStateValue" |> NamespacedName
+    let ``_.owl#LoweringStateValue`` = _prefix ".owl#LoweringStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#LuminosityMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#LuminosityMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#LuminosityMeasurementNotification" |> NamespacedName
+        _prefix ".owl#LuminosityMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MeteringPowerOutlet"></see>
     /// </summary>
-    let ``_.owl#MeteringPowerOutlet`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MeteringPowerOutlet" |> NamespacedName
-
+    let ``_.owl#MeteringPowerOutlet`` = _prefix ".owl#MeteringPowerOutlet"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerFactorMeter"></see>
     /// </summary>
-    let ``_.owl#PowerFactorMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerFactorMeter" |> NamespacedName
-
+    let ``_.owl#PowerFactorMeter`` = _prefix ".owl#PowerFactorMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerMeteringPowerOutlet"></see>
     /// </summary>
-    let ``_.owl#PowerMeteringPowerOutlet`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerMeteringPowerOutlet" |> NamespacedName
+    let ``_.owl#PowerMeteringPowerOutlet`` = _prefix ".owl#PowerMeteringPowerOutlet"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MicrowaveEmissionNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MicrowaveEmissionNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MicrowaveEmissionNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MicrowaveEmissionNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MicrowaveEmissionState"></see>
     /// </summary>
-    let ``_.owl#MicrowaveEmissionState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MicrowaveEmissionState" |> NamespacedName
-
+    let ``_.owl#MicrowaveEmissionState`` = _prefix ".owl#MicrowaveEmissionState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ModBusStateValue"></see>
     /// </summary>
-    let ``_.owl#ModBusStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ModBusStateValue" |> NamespacedName
-
+    let ``_.owl#ModBusStateValue`` = _prefix ".owl#ModBusStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ModbusCommand"></see>
     /// </summary>
-    let ``_.owl#ModbusCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ModbusCommand" |> NamespacedName
-
+    let ``_.owl#ModbusCommand`` = _prefix ".owl#ModbusCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ModbusComponent"></see>
     /// </summary>
-    let ``_.owl#ModbusComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ModbusComponent" |> NamespacedName
-
+    let ``_.owl#ModbusComponent`` = _prefix ".owl#ModbusComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ModbusNotification"></see>
     /// </summary>
-    let ``_.owl#ModbusNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ModbusNotification" |> NamespacedName
-
+    let ``_.owl#ModbusNotification`` = _prefix ".owl#ModbusNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkSpecificStateValue"></see>
     /// </summary>
-    let ``_.owl#NetworkSpecificStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkSpecificStateValue" |> NamespacedName
+    let ``_.owl#NetworkSpecificStateValue`` = _prefix ".owl#NetworkSpecificStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovementAndTemperatureSensor"></see>
     /// </summary>
     let ``_.owl#MovementAndTemperatureSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovementAndTemperatureSensor" |> NamespacedName
+        _prefix ".owl#MovementAndTemperatureSensor"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovementSensor"></see>
     /// </summary>
-    let ``_.owl#MovementSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovementSensor" |> NamespacedName
-
+    let ``_.owl#MovementSensor`` = _prefix ".owl#MovementSensor"
     /// <summary>
     /// Sensor that detects the temperature of the atmosphere
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SingleTemperatureSensor"></see></summary>
-    let ``_.owl#SingleTemperatureSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleTemperatureSensor" |> NamespacedName
-
+    let ``_.owl#SingleTemperatureSensor`` = _prefix ".owl#SingleTemperatureSensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovingDownNotification"></see>
     /// </summary>
-    let ``_.owl#MovingDownNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovingDownNotification" |> NamespacedName
-
+    let ``_.owl#MovingDownNotification`` = _prefix ".owl#MovingDownNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovingUpNotification"></see>
     /// </summary>
-    let ``_.owl#MovingUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovingUpNotification" |> NamespacedName
+    let ``_.owl#MovingUpNotification`` = _prefix ".owl#MovingUpNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PresenceNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#PresenceNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PresenceNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#PresenceNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#UpDownNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#UpDownNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UpDownNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#UpDownNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OccupancyState"></see>
     /// </summary>
-    let ``_.owl#OccupancyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OccupancyState" |> NamespacedName
-
+    let ``_.owl#OccupancyState`` = _prefix ".owl#OccupancyState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PresenceState"></see>
     /// </summary>
-    let ``_.owl#PresenceState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PresenceState" |> NamespacedName
-
+    let ``_.owl#PresenceState`` = _prefix ".owl#PresenceState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MovingUpDownState"></see>
     /// </summary>
-    let ``_.owl#MovingUpDownState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MovingUpDownState" |> NamespacedName
-
+    let ``_.owl#MovingUpDownState`` = _prefix ".owl#MovingUpDownState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RaisingStateValue"></see>
     /// </summary>
-    let ``_.owl#RaisingStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RaisingStateValue" |> NamespacedName
+    let ``_.owl#RaisingStateValue`` = _prefix ".owl#RaisingStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffActiveEnergyStateValue"></see>
     /// </summary>
     let ``_.owl#MultiTariffActiveEnergyStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffActiveEnergyStateValue" |> NamespacedName
+        _prefix ".owl#MultiTariffActiveEnergyStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffEnergyMeter"></see>
     /// </summary>
-    let ``_.owl#MultiTariffEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffEnergyMeter" |> NamespacedName
+    let ``_.owl#MultiTariffEnergyMeter`` = _prefix ".owl#MultiTariffEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffReactiveEnergyStateValue"></see>
     /// </summary>
     let ``_.owl#MultiTariffReactiveEnergyStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffReactiveEnergyStateValue" |> NamespacedName
+        _prefix ".owl#MultiTariffReactiveEnergyStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseActiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseActiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseActiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseActiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseActiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseActiveEnergyState"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseActiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseActiveEnergyState" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseActiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseEnergyMeter"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseEnergyMeter" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseReactiveEnergyState"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseReactiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseReactiveEnergyState" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseReactiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseReactiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseReactiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseReactiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseReactiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ReactiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ReactiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#MultiTariffSinglePhaseReactiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ReactiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ReactiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseActiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseActiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseActiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseActiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseActiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseActiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseActiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseActiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseActiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseActiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseActiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseActiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseActiveEnergyState"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseActiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseActiveEnergyState" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseActiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseEnergyMeter"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseEnergyMeter" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseReactiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseReactiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseReactiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseReactiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseReactiveEnergyState"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseReactiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseReactiveEnergyState" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseReactiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#MultiTariffThreePhaseReactiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleAlertNotification"></see>
     /// </summary>
-    let ``_.owl#MultipleAlertNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleAlertNotification" |> NamespacedName
-
+    let ``_.owl#MultipleAlertNotification`` = _prefix ".owl#MultipleAlertNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleEventNotification"></see>
     /// </summary>
-    let ``_.owl#MultipleEventNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleEventNotification" |> NamespacedName
+    let ``_.owl#MultipleEventNotification`` = _prefix ".owl#MultipleEventNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleFlowMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#MultipleFlowMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleFlowMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleFlowMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleFlowMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultipleFlowMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleFlowMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleFlowMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleFlowRateState"></see>
     /// </summary>
-    let ``_.owl#MultipleFlowRateState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleFlowRateState" |> NamespacedName
-
+    let ``_.owl#MultipleFlowRateState`` = _prefix ".owl#MultipleFlowRateState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleFlowRateStateValue"></see>
     /// </summary>
-    let ``_.owl#MultipleFlowRateStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleFlowRateStateValue" |> NamespacedName
-
+    let ``_.owl#MultipleFlowRateStateValue`` = _prefix ".owl#MultipleFlowRateStateValue"
     /// <summary>
     /// The Flow  Sensor device measures and periodically reports the flow rate of a liquid (typically water)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleFlowSensor"></see></summary>
-    let ``_.owl#MultipleFlowSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleFlowSensor" |> NamespacedName
+    let ``_.owl#MultipleFlowSensor`` = _prefix ".owl#MultipleFlowSensor"
 
     /// <summary>
     /// The capability of measuring the humidity of a room
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleHumidityMeasurementFunctionality"></see></summary>
     let ``_.owl#MultipleHumidityMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleHumidityMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleHumidityMeasurementFunctionality"
 
     /// <summary>
     /// The notification for requesting humidity measurment...
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleHumidityMeasurementNotificationFunctionality"></see></summary>
     let ``_.owl#MultipleHumidityMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleHumidityMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleHumidityMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiplePressureMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiplePressureMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiplePressureMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultiplePressureMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiplePressureMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#MultiplePressureMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiplePressureMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultiplePressureMeasurementNotificationFunctionality"
 
     /// <summary>
     /// The Pressure Sensor device measures and periodically reports the pressure of a liquid (typically water)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultiplePressureSensor"></see></summary>
-    let ``_.owl#MultiplePressureSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiplePressureSensor" |> NamespacedName
-
+    let ``_.owl#MultiplePressureSensor`` = _prefix ".owl#MultiplePressureSensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiplePressureState"></see>
     /// </summary>
-    let ``_.owl#MultiplePressureState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiplePressureState" |> NamespacedName
-
+    let ``_.owl#MultiplePressureState`` = _prefix ".owl#MultiplePressureState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultiplePressureStateValue"></see>
     /// </summary>
-    let ``_.owl#MultiplePressureStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultiplePressureStateValue" |> NamespacedName
+    let ``_.owl#MultiplePressureStateValue`` = _prefix ".owl#MultiplePressureStateValue"
 
     /// <summary>
     /// The capability of measuring temperatures
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleTemperatureMeasurementFunctionality"></see></summary>
     let ``_.owl#MultipleTemperatureMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleTemperatureMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleTemperatureMeasurementFunctionality"
 
     /// <summary>
     /// Notifies the measurment of a temperature, through a proper temperature sensor
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleTemperatureMeasurementNotificationFunctionality"></see></summary>
     let ``_.owl#MultipleTemperatureMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleTemperatureMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#MultipleTemperatureMeasurementNotificationFunctionality"
 
     /// <summary>
     /// Sensor that detects the temperature of the atmosphere
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleTemperatureSensor"></see></summary>
-    let ``_.owl#MultipleTemperatureSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleTemperatureSensor" |> NamespacedName
-
+    let ``_.owl#MultipleTemperatureSensor`` = _prefix ".owl#MultipleTemperatureSensor"
     /// <summary>
     /// Models the temperature value
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleTemperatureState"></see></summary>
-    let ``_.owl#MultipleTemperatureState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleTemperatureState" |> NamespacedName
-
+    let ``_.owl#MultipleTemperatureState`` = _prefix ".owl#MultipleTemperatureState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureSensor"></see>
     /// </summary>
-    let ``_.owl#TemperatureSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureSensor" |> NamespacedName
+    let ``_.owl#TemperatureSensor`` = _prefix ".owl#TemperatureSensor"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#MultipleTemperatureStateValue"></see>
     /// </summary>
     let ``_.owl#MultipleTemperatureStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#MultipleTemperatureStateValue" |> NamespacedName
+        _prefix ".owl#MultipleTemperatureStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkClosedNotification"></see>
     /// </summary>
-    let ``_.owl#NetworkClosedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkClosedNotification" |> NamespacedName
-
+    let ``_.owl#NetworkClosedNotification`` = _prefix ".owl#NetworkClosedNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZigBeeNotification"></see>
     /// </summary>
-    let ``_.owl#ZigBeeNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZigBeeNotification" |> NamespacedName
+    let ``_.owl#ZigBeeNotification`` = _prefix ".owl#ZigBeeNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkManagementFunctionality"></see>
     /// </summary>
     let ``_.owl#NetworkManagementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkManagementFunctionality" |> NamespacedName
+        _prefix ".owl#NetworkManagementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OpenNetworkCommand"></see>
     /// </summary>
-    let ``_.owl#OpenNetworkCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OpenNetworkCommand" |> NamespacedName
+    let ``_.owl#OpenNetworkCommand`` = _prefix ".owl#OpenNetworkCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkManagementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#NetworkManagementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkManagementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#NetworkManagementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkOpenedNotification"></see>
     /// </summary>
-    let ``_.owl#NetworkOpenedNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkOpenedNotification" |> NamespacedName
-
+    let ``_.owl#NetworkOpenedNotification`` = _prefix ".owl#NetworkOpenedNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#NetworkManagementState"></see>
     /// </summary>
-    let ``_.owl#NetworkManagementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#NetworkManagementState" |> NamespacedName
-
+    let ``_.owl#NetworkManagementState`` = _prefix ".owl#NetworkManagementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RestDownNotification"></see>
     /// </summary>
-    let ``_.owl#RestDownNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RestDownNotification" |> NamespacedName
-
+    let ``_.owl#RestDownNotification`` = _prefix ".owl#RestDownNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RestNotification"></see>
     /// </summary>
-    let ``_.owl#RestNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RestNotification" |> NamespacedName
-
+    let ``_.owl#RestNotification`` = _prefix ".owl#RestNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RestUpNotification"></see>
     /// </summary>
-    let ``_.owl#RestUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RestUpNotification" |> NamespacedName
-
+    let ``_.owl#RestUpNotification`` = _prefix ".owl#RestUpNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SpeedStepDownNotification"></see>
     /// </summary>
-    let ``_.owl#SpeedStepDownNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SpeedStepDownNotification" |> NamespacedName
-
+    let ``_.owl#SpeedStepDownNotification`` = _prefix ".owl#SpeedStepDownNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SpeedStepUpNotification"></see>
     /// </summary>
-    let ``_.owl#SpeedStepUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SpeedStepUpNotification" |> NamespacedName
-
+    let ``_.owl#SpeedStepUpNotification`` = _prefix ".owl#SpeedStepUpNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TuningStepDownNotification"></see>
     /// </summary>
-    let ``_.owl#TuningStepDownNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TuningStepDownNotification" |> NamespacedName
-
+    let ``_.owl#TuningStepDownNotification`` = _prefix ".owl#TuningStepDownNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TuningStepUpNotification"></see>
     /// </summary>
-    let ``_.owl#TuningStepUpNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TuningStepUpNotification" |> NamespacedName
-
+    let ``_.owl#TuningStepUpNotification`` = _prefix ".owl#TuningStepUpNotification"
     /// <summary>
     /// Functionality: up - down
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#UpDownFunctionality"></see></summary>
-    let ``_.owl#UpDownFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UpDownFunctionality" |> NamespacedName
-
+    let ``_.owl#UpDownFunctionality`` = _prefix ".owl#UpDownFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StepFunctionality"></see>
     /// </summary>
-    let ``_.owl#StepFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StepFunctionality" |> NamespacedName
-
+    let ``_.owl#StepFunctionality`` = _prefix ".owl#StepFunctionality"
     /// <summary>
     /// OnOffSwitch for Lights only, derives from ZigBee HA specifications
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffLightSwitch"></see></summary>
-    let ``_.owl#OnOffLightSwitch`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffLightSwitch" |> NamespacedName
-
+    let ``_.owl#OnOffLightSwitch`` = _prefix ".owl#OnOffLightSwitch"
     /// <summary>
     /// Generic OnOff switch, derives from the ZigBee Home Automation specification
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#OnOffSwitch"></see></summary>
-    let ``_.owl#OnOffSwitch`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OnOffSwitch" |> NamespacedName
-
+    let ``_.owl#OnOffSwitch`` = _prefix ".owl#OnOffSwitch"
     /// <summary>
     /// Functionality: up - down - rest
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#UpDownRestFunctionality"></see></summary>
-    let ``_.owl#UpDownRestFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UpDownRestFunctionality" |> NamespacedName
+    let ``_.owl#UpDownRestFunctionality`` = _prefix ".owl#UpDownRestFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OverloadControlFunctionality"></see>
     /// </summary>
     let ``_.owl#OverloadControlFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OverloadControlFunctionality" |> NamespacedName
+        _prefix ".owl#OverloadControlFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OverloadWarningCommand"></see>
     /// </summary>
-    let ``_.owl#OverloadWarningCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OverloadWarningCommand" |> NamespacedName
-
+    let ``_.owl#OverloadWarningCommand`` = _prefix ".owl#OverloadWarningCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OverloadPauseResumeCommand"></see>
     /// </summary>
-    let ``_.owl#OverloadPauseResumeCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OverloadPauseResumeCommand" |> NamespacedName
-
+    let ``_.owl#OverloadPauseResumeCommand`` = _prefix ".owl#OverloadPauseResumeCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#OverloadPauseCommand"></see>
     /// </summary>
-    let ``_.owl#OverloadPauseCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#OverloadPauseCommand" |> NamespacedName
-
+    let ``_.owl#OverloadPauseCommand`` = _prefix ".owl#OverloadPauseCommand"
     /// <summary>
     /// A vertical structure that divides or separates
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Partition"></see></summary>
-    let ``_.owl#Partition`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Partition" |> NamespacedName
-
+    let ``_.owl#Partition`` = _prefix ".owl#Partition"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PausePlaybackNotification"></see>
     /// </summary>
-    let ``_.owl#PausePlaybackNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PausePlaybackNotification" |> NamespacedName
-
+    let ``_.owl#PausePlaybackNotification`` = _prefix ".owl#PausePlaybackNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PlayNotification"></see>
     /// </summary>
-    let ``_.owl#PlayNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PlayNotification" |> NamespacedName
-
+    let ``_.owl#PlayNotification`` = _prefix ".owl#PlayNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RewindNotification"></see>
     /// </summary>
-    let ``_.owl#RewindNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RewindNotification" |> NamespacedName
-
+    let ``_.owl#RewindNotification`` = _prefix ".owl#RewindNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopPlaybackNotification"></see>
     /// </summary>
-    let ``_.owl#StopPlaybackNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopPlaybackNotification" |> NamespacedName
-
+    let ``_.owl#StopPlaybackNotification`` = _prefix ".owl#StopPlaybackNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TrackControlNotification"></see>
     /// </summary>
-    let ``_.owl#TrackControlNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TrackControlNotification" |> NamespacedName
+    let ``_.owl#TrackControlNotification`` = _prefix ".owl#TrackControlNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerFactorMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#PowerFactorMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerFactorMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#PowerFactorMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerFactorMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#PowerFactorMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerFactorMeasurementNotification" |> NamespacedName
+        _prefix ".owl#PowerFactorMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerFactorMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#PowerFactorMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerFactorMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#PowerFactorMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerFactorMeasurementState"></see>
     /// </summary>
     let ``_.owl#PowerFactorMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerFactorMeasurementState" |> NamespacedName
+        _prefix ".owl#PowerFactorMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerFactorStateValue"></see>
     /// </summary>
-    let ``_.owl#PowerFactorStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerFactorStateValue" |> NamespacedName
+    let ``_.owl#PowerFactorStateValue`` = _prefix ".owl#PowerFactorStateValue"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PowerMeteringLevelControllableOutput"></see>
     /// </summary>
     let ``_.owl#PowerMeteringLevelControllableOutput`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PowerMeteringLevelControllableOutput" |> NamespacedName
+        _prefix ".owl#PowerMeteringLevelControllableOutput"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PresenceAndMovementSensor"></see>
     /// </summary>
-    let ``_.owl#PresenceAndMovementSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PresenceAndMovementSensor" |> NamespacedName
-
+    let ``_.owl#PresenceAndMovementSensor`` = _prefix ".owl#PresenceAndMovementSensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PresenceSensor"></see>
     /// </summary>
-    let ``_.owl#PresenceSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PresenceSensor" |> NamespacedName
-
+    let ``_.owl#PresenceSensor`` = _prefix ".owl#PresenceSensor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ProgramState"></see>
     /// </summary>
-    let ``_.owl#ProgramState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ProgramState" |> NamespacedName
+    let ``_.owl#ProgramState`` = _prefix ".owl#ProgramState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PushLinkAuthenticationActiveNotification"></see>
     /// </summary>
     let ``_.owl#PushLinkAuthenticationActiveNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PushLinkAuthenticationActiveNotification" |> NamespacedName
+        _prefix ".owl#PushLinkAuthenticationActiveNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#PushLinkAuthenticationIdleNotification"></see>
     /// </summary>
     let ``_.owl#PushLinkAuthenticationIdleNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#PushLinkAuthenticationIdleNotification" |> NamespacedName
+        _prefix ".owl#PushLinkAuthenticationIdleNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopPushLinkAuthenticationCommand"></see>
     /// </summary>
     let ``_.owl#StopPushLinkAuthenticationCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopPushLinkAuthenticationCommand" |> NamespacedName
+        _prefix ".owl#StopPushLinkAuthenticationCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartPushLinkAuthenticationCommand"></see>
     /// </summary>
     let ``_.owl#StartPushLinkAuthenticationCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartPushLinkAuthenticationCommand" |> NamespacedName
+        _prefix ".owl#StartPushLinkAuthenticationCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#QuadSensor"></see>
     /// </summary>
-    let ``_.owl#QuadSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#QuadSensor" |> NamespacedName
+    let ``_.owl#QuadSensor`` = _prefix ".owl#QuadSensor"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactivePowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ReactivePowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactivePowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ReactivePowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactivePowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ReactivePowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactivePowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ReactivePowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactivePowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ReactivePowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactivePowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ReactivePowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactivePowerMeter"></see>
     /// </summary>
-    let ``_.owl#ReactivePowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactivePowerMeter" |> NamespacedName
-
+    let ``_.owl#ReactivePowerMeter`` = _prefix ".owl#ReactivePowerMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ReactivePowerStateValue"></see>
     /// </summary>
-    let ``_.owl#ReactivePowerStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ReactivePowerStateValue" |> NamespacedName
-
+    let ``_.owl#ReactivePowerStateValue`` = _prefix ".owl#ReactivePowerStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#RunState"></see>
     /// </summary>
-    let ``_.owl#RunState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#RunState" |> NamespacedName
-
+    let ``_.owl#RunState`` = _prefix ".owl#RunState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SelfClosingDoorActuator"></see>
     /// </summary>
-    let ``_.owl#SelfClosingDoorActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SelfClosingDoorActuator" |> NamespacedName
+    let ``_.owl#SelfClosingDoorActuator`` = _prefix ".owl#SelfClosingDoorActuator"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VerticalNoMovementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#VerticalNoMovementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VerticalNoMovementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#VerticalNoMovementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VerticalMovementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#VerticalMovementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VerticalMovementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#VerticalMovementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ShutterState"></see>
     /// </summary>
-    let ``_.owl#ShutterState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShutterState" |> NamespacedName
-
+    let ``_.owl#ShutterState`` = _prefix ".owl#ShutterState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ShutterButton"></see>
     /// </summary>
-    let ``_.owl#ShutterButton`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ShutterButton" |> NamespacedName
-
+    let ``_.owl#ShutterButton`` = _prefix ".owl#ShutterButton"
     /// <summary>
     /// State: up - down - rest
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#UpDownRestState"></see></summary>
-    let ``_.owl#UpDownRestState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#UpDownRestState" |> NamespacedName
+    let ``_.owl#UpDownRestState`` = _prefix ".owl#UpDownRestState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseActiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseActiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseActiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActiveEnergyState"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActiveEnergyState" |> NamespacedName
+        _prefix ".owl#SinglePhaseActiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SingleTariffEnergyMeter"></see>
     /// </summary>
-    let ``_.owl#SingleTariffEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SingleTariffEnergyMeter" |> NamespacedName
+    let ``_.owl#SingleTariffEnergyMeter`` = _prefix ".owl#SingleTariffEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActivePowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActivePowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActivePowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseActivePowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActivePowerMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActivePowerMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActivePowerMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseActivePowerMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActivePowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActivePowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActivePowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseActivePowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseActivePowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#SinglePhaseActivePowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseActivePowerMeasurementState" |> NamespacedName
+        _prefix ".owl#SinglePhaseActivePowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseApparentPowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseApparentPowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseApparentPowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseApparentPowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseApparentPowerMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseApparentPowerMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseApparentPowerMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseApparentPowerMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseApparentPowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseApparentPowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseApparentPowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseApparentPowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseApparentPowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#SinglePhaseApparentPowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseApparentPowerMeasurementState" |> NamespacedName
+        _prefix ".owl#SinglePhaseApparentPowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseApparentPowerMeter"></see>
     /// </summary>
     let ``_.owl#SinglePhaseApparentPowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseApparentPowerMeter" |> NamespacedName
+        _prefix ".owl#SinglePhaseApparentPowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseCurrentMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseCurrentMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseCurrentMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseCurrentMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseCurrentMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseCurrentMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseCurrentMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseCurrentMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseCurrentMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseCurrentMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseCurrentMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseCurrentMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseCurrentMeter"></see>
     /// </summary>
-    let ``_.owl#SinglePhaseCurrentMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseCurrentMeter" |> NamespacedName
-
+    let ``_.owl#SinglePhaseCurrentMeter`` = _prefix ".owl#SinglePhaseCurrentMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseCurrentState"></see>
     /// </summary>
-    let ``_.owl#SinglePhaseCurrentState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseCurrentState" |> NamespacedName
+    let ``_.owl#SinglePhaseCurrentState`` = _prefix ".owl#SinglePhaseCurrentState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseElectricityMeter"></see>
     /// </summary>
     let ``_.owl#SinglePhaseElectricityMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseElectricityMeter" |> NamespacedName
+        _prefix ".owl#SinglePhaseElectricityMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactivePowerMeter"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactivePowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactivePowerMeter" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactivePowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseVoltageMeter"></see>
     /// </summary>
-    let ``_.owl#SinglePhaseVoltageMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseVoltageMeter" |> NamespacedName
+    let ``_.owl#SinglePhaseVoltageMeter`` = _prefix ".owl#SinglePhaseVoltageMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactiveEnergyState"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactiveEnergyState" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactivePowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactivePowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactivePowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactivePowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactivePowerMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactivePowerMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactivePowerMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactivePowerMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactivePowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactivePowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactivePowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactivePowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseReactivePowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#SinglePhaseReactivePowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseReactivePowerMeasurementState" |> NamespacedName
+        _prefix ".owl#SinglePhaseReactivePowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseVoltageMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseVoltageMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseVoltageMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseVoltageMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VoltageMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#VoltageMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VoltageMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#VoltageMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseVoltageMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#SinglePhaseVoltageMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseVoltageMeasurementNotification" |> NamespacedName
+        _prefix ".owl#SinglePhaseVoltageMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseVoltageMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#SinglePhaseVoltageMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseVoltageMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#SinglePhaseVoltageMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VoltageMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#VoltageMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VoltageMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#VoltageMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SinglePhaseVoltageState"></see>
     /// </summary>
-    let ``_.owl#SinglePhaseVoltageState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SinglePhaseVoltageState" |> NamespacedName
-
+    let ``_.owl#SinglePhaseVoltageState`` = _prefix ".owl#SinglePhaseVoltageState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VoltageMeter"></see>
     /// </summary>
-    let ``_.owl#VoltageMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VoltageMeter" |> NamespacedName
-
+    let ``_.owl#VoltageMeter`` = _prefix ".owl#VoltageMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VoltageStateValue"></see>
     /// </summary>
-    let ``_.owl#VoltageStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VoltageStateValue" |> NamespacedName
-
+    let ``_.owl#VoltageStateValue`` = _prefix ".owl#VoltageStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#VoltageMeasurementState"></see>
     /// </summary>
-    let ``_.owl#VoltageMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#VoltageMeasurementState" |> NamespacedName
-
+    let ``_.owl#VoltageMeasurementState`` = _prefix ".owl#VoltageMeasurementState"
     /// <summary>
     /// A device in which compressed air or steam is driven against a rotating perforated disk to create a loud, often wailing sound as a signal or warning.
     ///
     /// An electronic device producing a similar sound as a signal or warning: a police car siren.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Siren"></see></summary>
-    let ``_.owl#Siren`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Siren" |> NamespacedName
-
+    let ``_.owl#Siren`` = _prefix ".owl#Siren"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SnapshotCamera"></see>
     /// </summary>
-    let ``_.owl#SnapshotCamera`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SnapshotCamera" |> NamespacedName
-
+    let ``_.owl#SnapshotCamera`` = _prefix ".owl#SnapshotCamera"
     /// <summary>
     /// Plays a Sound (default, or selected through a goTotrack, or...)
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#SoundFunctionality"></see></summary>
-    let ``_.owl#SoundFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SoundFunctionality" |> NamespacedName
-
+    let ``_.owl#SoundFunctionality`` = _prefix ".owl#SoundFunctionality"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ToggleFunctionality"></see>
     /// </summary>
-    let ``_.owl#ToggleFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ToggleFunctionality" |> NamespacedName
+    let ``_.owl#ToggleFunctionality`` = _prefix ".owl#ToggleFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SourceSelectionNotification"></see>
     /// </summary>
     let ``_.owl#SourceSelectionNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SourceSelectionNotification" |> NamespacedName
+        _prefix ".owl#SourceSelectionNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#SpeedControlNotification"></see>
     /// </summary>
-    let ``_.owl#SpeedControlNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#SpeedControlNotification" |> NamespacedName
-
+    let ``_.owl#SpeedControlNotification`` = _prefix ".owl#SpeedControlNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartCommand"></see>
     /// </summary>
-    let ``_.owl#StartCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartCommand" |> NamespacedName
-
+    let ``_.owl#StartCommand`` = _prefix ".owl#StartCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopCommand"></see>
     /// </summary>
-    let ``_.owl#StopCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopCommand" |> NamespacedName
-
+    let ``_.owl#StopCommand`` = _prefix ".owl#StopCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartSuperFreezingCommand"></see>
     /// </summary>
-    let ``_.owl#StartSuperFreezingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartSuperFreezingCommand" |> NamespacedName
-
+    let ``_.owl#StartSuperFreezingCommand`` = _prefix ".owl#StartSuperFreezingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartSuperHeatingCommand"></see>
     /// </summary>
-    let ``_.owl#StartSuperHeatingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartSuperHeatingCommand" |> NamespacedName
-
+    let ``_.owl#StartSuperHeatingCommand`` = _prefix ".owl#StartSuperHeatingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartSupercoolingCommand"></see>
     /// </summary>
-    let ``_.owl#StartSupercoolingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartSupercoolingCommand" |> NamespacedName
+    let ``_.owl#StartSupercoolingCommand`` = _prefix ".owl#StartSupercoolingCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartedSuperCoolingNotification"></see>
     /// </summary>
     let ``_.owl#StartedSuperCoolingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartedSuperCoolingNotification" |> NamespacedName
+        _prefix ".owl#StartedSuperCoolingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartedSuperFreezingNotification"></see>
     /// </summary>
     let ``_.owl#StartedSuperFreezingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartedSuperFreezingNotification" |> NamespacedName
+        _prefix ".owl#StartedSuperFreezingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartedSuperHeatingNotification"></see>
     /// </summary>
     let ``_.owl#StartedSuperHeatingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartedSuperHeatingNotification" |> NamespacedName
+        _prefix ".owl#StartedSuperHeatingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StartedWashingNotification"></see>
     /// </summary>
-    let ``_.owl#StartedWashingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StartedWashingNotification" |> NamespacedName
-
+    let ``_.owl#StartedWashingNotification`` = _prefix ".owl#StartedWashingNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StepShutterActuator"></see>
     /// </summary>
-    let ``_.owl#StepShutterActuator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StepShutterActuator" |> NamespacedName
-
+    let ``_.owl#StepShutterActuator`` = _prefix ".owl#StepShutterActuator"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopSuperFreezingCommand"></see>
     /// </summary>
-    let ``_.owl#StopSuperFreezingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopSuperFreezingCommand" |> NamespacedName
-
+    let ``_.owl#StopSuperFreezingCommand`` = _prefix ".owl#StopSuperFreezingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopSuperHeatingCommand"></see>
     /// </summary>
-    let ``_.owl#StopSuperHeatingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopSuperHeatingCommand" |> NamespacedName
-
+    let ``_.owl#StopSuperHeatingCommand`` = _prefix ".owl#StopSuperHeatingCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StopSupercoolingCommand"></see>
     /// </summary>
-    let ``_.owl#StopSupercoolingCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StopSupercoolingCommand" |> NamespacedName
+    let ``_.owl#StopSupercoolingCommand`` = _prefix ".owl#StopSupercoolingCommand"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoppedSuperCoolingNotification"></see>
     /// </summary>
     let ``_.owl#StoppedSuperCoolingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoppedSuperCoolingNotification" |> NamespacedName
+        _prefix ".owl#StoppedSuperCoolingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoppedSuperFreezingNotification"></see>
     /// </summary>
     let ``_.owl#StoppedSuperFreezingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoppedSuperFreezingNotification" |> NamespacedName
+        _prefix ".owl#StoppedSuperFreezingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoppedSuperHeatingNotification"></see>
     /// </summary>
     let ``_.owl#StoppedSuperHeatingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoppedSuperHeatingNotification" |> NamespacedName
+        _prefix ".owl#StoppedSuperHeatingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#StoppedWashingNotification"></see>
     /// </summary>
-    let ``_.owl#StoppedWashingNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#StoppedWashingNotification" |> NamespacedName
+    let ``_.owl#StoppedWashingNotification`` = _prefix ".owl#StoppedWashingNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TemperatureAndHumiditySensor"></see>
     /// </summary>
     let ``_.owl#TemperatureAndHumiditySensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TemperatureAndHumiditySensor" |> NamespacedName
+        _prefix ".owl#TemperatureAndHumiditySensor"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TexasInstrumentsComponent"></see>
     /// </summary>
-    let ``_.owl#TexasInstrumentsComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TexasInstrumentsComponent" |> NamespacedName
-
+    let ``_.owl#TexasInstrumentsComponent`` = _prefix ".owl#TexasInstrumentsComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TexasInstrumentsGateway"></see>
     /// </summary>
-    let ``_.owl#TexasInstrumentsGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TexasInstrumentsGateway" |> NamespacedName
+    let ``_.owl#TexasInstrumentsGateway`` = _prefix ".owl#TexasInstrumentsGateway"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThermostatQueryFunctionality"></see>
     /// </summary>
     let ``_.owl#ThermostatQueryFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThermostatQueryFunctionality" |> NamespacedName
+        _prefix ".owl#ThermostatQueryFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThermostaticRadiatorValve"></see>
     /// </summary>
-    let ``_.owl#ThermostaticRadiatorValve`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThermostaticRadiatorValve" |> NamespacedName
+    let ``_.owl#ThermostaticRadiatorValve`` = _prefix ".owl#ThermostaticRadiatorValve"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseActiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseActiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseActiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActiveEnergyState"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActiveEnergyState" |> NamespacedName
+        _prefix ".owl#ThreePhaseActiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActivePowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActivePowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActivePowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseActivePowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActivePowerMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActivePowerMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActivePowerMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseActivePowerMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActivePowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActivePowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActivePowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseActivePowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActivePowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ThreePhaseActivePowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActivePowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ThreePhaseActivePowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseActivePowerMeter"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseActivePowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseActivePowerMeter" |> NamespacedName
+    let ``_.owl#ThreePhaseActivePowerMeter`` = _prefix ".owl#ThreePhaseActivePowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseApparentPowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseApparentPowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseApparentPowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseApparentPowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseApparentPowerMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseApparentPowerMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseApparentPowerMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseApparentPowerMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseApparentPowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseApparentPowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseApparentPowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseApparentPowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseApparentPowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ThreePhaseApparentPowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseApparentPowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ThreePhaseApparentPowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseApparentPowerMeter"></see>
     /// </summary>
     let ``_.owl#ThreePhaseApparentPowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseApparentPowerMeter" |> NamespacedName
+        _prefix ".owl#ThreePhaseApparentPowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseCurrentMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseCurrentMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseCurrentMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseCurrentMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseCurrentMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseCurrentMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseCurrentMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseCurrentMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseCurrentMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseCurrentMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseCurrentMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseCurrentMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseCurrentMeter"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseCurrentMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseCurrentMeter" |> NamespacedName
-
+    let ``_.owl#ThreePhaseCurrentMeter`` = _prefix ".owl#ThreePhaseCurrentMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseCurrentState"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseCurrentState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseCurrentState" |> NamespacedName
-
+    let ``_.owl#ThreePhaseCurrentState`` = _prefix ".owl#ThreePhaseCurrentState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseElectricityMeter"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseElectricityMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseElectricityMeter" |> NamespacedName
+    let ``_.owl#ThreePhaseElectricityMeter`` = _prefix ".owl#ThreePhaseElectricityMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactivePowerMeter"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactivePowerMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactivePowerMeter" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactivePowerMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseVoltageMeter"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseVoltageMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseVoltageMeter" |> NamespacedName
-
+    let ``_.owl#ThreePhaseVoltageMeter`` = _prefix ".owl#ThreePhaseVoltageMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseEnergyMeter"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseEnergyMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseEnergyMeter" |> NamespacedName
+    let ``_.owl#ThreePhaseEnergyMeter`` = _prefix ".owl#ThreePhaseEnergyMeter"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactiveEnergyState"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactiveEnergyState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactiveEnergyState" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactiveEnergyState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactiveEnergyMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactiveEnergyMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactiveEnergyMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactiveEnergyMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactiveEnergyMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactiveEnergyMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactiveEnergyMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactiveEnergyMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseLLVoltageMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseLLVoltageMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseLLVoltageMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseLLVoltageMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseLNVoltageMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseLNVoltageMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseLNVoltageMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseLNVoltageMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactiveEnergyMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactiveEnergyMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactiveEnergyMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactiveEnergyMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactivePowerMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactivePowerMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactivePowerMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactivePowerMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactivePowerMeasurementNotification"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactivePowerMeasurementNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactivePowerMeasurementNotification" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactivePowerMeasurementNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactivePowerMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactivePowerMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactivePowerMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactivePowerMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseReactivePowerMeasurementState"></see>
     /// </summary>
     let ``_.owl#ThreePhaseReactivePowerMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseReactivePowerMeasurementState" |> NamespacedName
+        _prefix ".owl#ThreePhaseReactivePowerMeasurementState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseVoltageMeasurementFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseVoltageMeasurementFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseVoltageMeasurementFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseVoltageMeasurementFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseVoltageMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#ThreePhaseVoltageMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseVoltageMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#ThreePhaseVoltageMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ThreePhaseVoltageState"></see>
     /// </summary>
-    let ``_.owl#ThreePhaseVoltageState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ThreePhaseVoltageState" |> NamespacedName
+    let ``_.owl#ThreePhaseVoltageState`` = _prefix ".owl#ThreePhaseVoltageState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TridimensionalAccelerationNotification"></see>
     /// </summary>
     let ``_.owl#TridimensionalAccelerationNotification`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TridimensionalAccelerationNotification" |> NamespacedName
+        _prefix ".owl#TridimensionalAccelerationNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TridimensionalAccelerationNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#TridimensionalAccelerationNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TridimensionalAccelerationNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#TridimensionalAccelerationNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#TripleSensor"></see>
     /// </summary>
-    let ``_.owl#TripleSensor`` =
-        Namespaced_IRI.parse _namespace_name ".owl#TripleSensor" |> NamespacedName
-
+    let ``_.owl#TripleSensor`` = _prefix ".owl#TripleSensor"
     /// <summary>
     /// A device that circulates fresh air and expels stale or foul air.
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#Ventilator"></see></summary>
-    let ``_.owl#Ventilator`` =
-        Namespaced_IRI.parse _namespace_name ".owl#Ventilator" |> NamespacedName
-
+    let ``_.owl#Ventilator`` = _prefix ".owl#Ventilator"
     /// <summary>
     /// Association between a wallopening(door or window) and the wall opening where it is
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#isInWall"></see></summary>
-    let ``_.owl#isInWall`` =
-        Namespaced_IRI.parse _namespace_name ".owl#isInWall" |> NamespacedName
-
+    let ``_.owl#isInWall`` = _prefix ".owl#isInWall"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WashRinseStateValue"></see>
     /// </summary>
-    let ``_.owl#WashRinseStateValue`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WashRinseStateValue" |> NamespacedName
-
+    let ``_.owl#WashRinseStateValue`` = _prefix ".owl#WashRinseStateValue"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WashingApplianceState"></see>
     /// </summary>
-    let ``_.owl#WashingApplianceState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WashingApplianceState" |> NamespacedName
+    let ``_.owl#WashingApplianceState`` = _prefix ".owl#WashingApplianceState"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WashingCycleNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#WashingCycleNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WashingCycleNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#WashingCycleNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WaterMeasurementFuctionality"></see>
     /// </summary>
     let ``_.owl#WaterMeasurementFuctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WaterMeasurementFuctionality" |> NamespacedName
+        _prefix ".owl#WaterMeasurementFuctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WaterMeasurementNotificationFunctionality"></see>
     /// </summary>
     let ``_.owl#WaterMeasurementNotificationFunctionality`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WaterMeasurementNotificationFunctionality" |> NamespacedName
+        _prefix ".owl#WaterMeasurementNotificationFunctionality"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WaterMeasurementState"></see>
     /// </summary>
-    let ``_.owl#WaterMeasurementState`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WaterMeasurementState" |> NamespacedName
-
+    let ``_.owl#WaterMeasurementState`` = _prefix ".owl#WaterMeasurementState"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#WaterMeter"></see>
     /// </summary>
-    let ``_.owl#WaterMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WaterMeter" |> NamespacedName
-
+    let ``_.owl#WaterMeter`` = _prefix ".owl#WaterMeter"
     /// <summary>
     /// Phone with no wire
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#WirelessPhone"></see></summary>
-    let ``_.owl#WirelessPhone`` =
-        Namespaced_IRI.parse _namespace_name ".owl#WirelessPhone" |> NamespacedName
-
+    let ``_.owl#WirelessPhone`` = _prefix ".owl#WirelessPhone"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZWaveComponent"></see>
     /// </summary>
-    let ``_.owl#ZWaveComponent`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZWaveComponent" |> NamespacedName
-
+    let ``_.owl#ZWaveComponent`` = _prefix ".owl#ZWaveComponent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZWaveGateway"></see>
     /// </summary>
-    let ``_.owl#ZWaveGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZWaveGateway" |> NamespacedName
-
+    let ``_.owl#ZWaveGateway`` = _prefix ".owl#ZWaveGateway"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ZigBeeGateway"></see>
     /// </summary>
-    let ``_.owl#ZigBeeGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ZigBeeGateway" |> NamespacedName
-
+    let ``_.owl#ZigBeeGateway`` = _prefix ".owl#ZigBeeGateway"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#ceilingOf"></see>
     /// </summary>
-    let ``_.owl#ceilingOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#ceilingOf" |> NamespacedName
-
+    let ``_.owl#ceilingOf`` = _prefix ".owl#ceilingOf"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#commandOf"></see>
     /// </summary>
-    let ``_.owl#commandOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#commandOf" |> NamespacedName
-
+    let ``_.owl#commandOf`` = _prefix ".owl#commandOf"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#eZ430Chronos"></see>
     /// </summary>
-    let ``_.owl#eZ430Chronos`` =
-        Namespaced_IRI.parse _namespace_name ".owl#eZ430Chronos" |> NamespacedName
-
+    let ``_.owl#eZ430Chronos`` = _prefix ".owl#eZ430Chronos"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#floorOf"></see>
     /// </summary>
-    let ``_.owl#floorOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#floorOf" |> NamespacedName
-
+    let ``_.owl#floorOf`` = _prefix ".owl#floorOf"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#generateCommand"></see>
     /// </summary>
-    let ``_.owl#generateCommand`` =
-        Namespaced_IRI.parse _namespace_name ".owl#generateCommand" |> NamespacedName
-
+    let ``_.owl#generateCommand`` = _prefix ".owl#generateCommand"
     /// <summary>
     /// Association between an object and its controller,e.g.switch,button,knob
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasControl"></see></summary>
-    let ``_.owl#hasControl`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasControl" |> NamespacedName
-
+    let ``_.owl#hasControl`` = _prefix ".owl#hasControl"
     /// <summary>
     /// Relates a given domotic component with the network level gateway used to control it
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasGateway"></see></summary>
-    let ``_.owl#hasGateway`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasGateway" |> NamespacedName
-
+    let ``_.owl#hasGateway`` = _prefix ".owl#hasGateway"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#hasMeter"></see>
     /// </summary>
-    let ``_.owl#hasMeter`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasMeter" |> NamespacedName
-
+    let ``_.owl#hasMeter`` = _prefix ".owl#hasMeter"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#meterOf"></see>
     /// </summary>
-    let ``_.owl#meterOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#meterOf" |> NamespacedName
-
+    let ``_.owl#meterOf`` = _prefix ".owl#meterOf"
     /// <summary>
     /// Association between a room and its walls
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasWall"></see></summary>
-    let ``_.owl#hasWall`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasWall" |> NamespacedName
-
+    let ``_.owl#hasWall`` = _prefix ".owl#hasWall"
     /// <summary>
     /// Association between a wall and its opening like door,window
     /// <see href="http://elite.polito.it/ontologies/dogont.owl#hasWallOpening"></see></summary>
-    let ``_.owl#hasWallOpening`` =
-        Namespaced_IRI.parse _namespace_name ".owl#hasWallOpening" |> NamespacedName
-
+    let ``_.owl#hasWallOpening`` = _prefix ".owl#hasWallOpening"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#instanceId"></see>
     /// </summary>
-    let ``_.owl#instanceId`` =
-        Namespaced_IRI.parse _namespace_name ".owl#instanceId" |> NamespacedName
-
+    let ``_.owl#instanceId`` = _prefix ".owl#instanceId"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#nodeId"></see>
     /// </summary>
-    let ``_.owl#nodeId`` =
-        Namespaced_IRI.parse _namespace_name ".owl#nodeId" |> NamespacedName
-
+    let ``_.owl#nodeId`` = _prefix ".owl#nodeId"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#notificationOf"></see>
     /// </summary>
-    let ``_.owl#notificationOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#notificationOf" |> NamespacedName
-
+    let ``_.owl#notificationOf`` = _prefix ".owl#notificationOf"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#plugOf"></see>
     /// </summary>
-    let ``_.owl#plugOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#plugOf" |> NamespacedName
-
+    let ``_.owl#plugOf`` = _prefix ".owl#plugOf"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#pluggedIn"></see>
     /// </summary>
-    let ``_.owl#pluggedIn`` =
-        Namespaced_IRI.parse _namespace_name ".owl#pluggedIn" |> NamespacedName
-
+    let ``_.owl#pluggedIn`` = _prefix ".owl#pluggedIn"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/dogont.owl#statevalueOf"></see>
     /// </summary>
-    let ``_.owl#statevalueOf`` =
-        Namespaced_IRI.parse _namespace_name ".owl#statevalueOf" |> NamespacedName
+    let ``_.owl#statevalueOf`` = _prefix ".owl#statevalueOf"

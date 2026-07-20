@@ -53,7 +53,7 @@ open DiagnosticsErgonomics
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PowershellErgonomics.fsx"
 open PowershellErgonomics
 
-
+/
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\MermaidErgonomics.fsx"
 open MermaidErgonomics
 
@@ -364,7 +364,7 @@ let my_namespace = "DoxAletheia"
 let all_schemes =
 
     Oak() {
-        Namespace(my_namespace) {
+        Namespace($"{my_namespace}.Iana") {
             nested_module "Uri_Scheme" 0 iana_schemes
 
             Module("Uri_Schemes") {
@@ -401,6 +401,6 @@ let all_schemes =
     |> Gen.run
 
 let iana_schemes_fs =
-    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\Iana_Schemes.fs"
+        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\Iana_Schemes.fs"
 
 File.WriteAllText(iana_schemes_fs, all_schemes)

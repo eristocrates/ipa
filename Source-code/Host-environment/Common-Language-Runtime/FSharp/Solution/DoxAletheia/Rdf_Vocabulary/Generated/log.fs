@@ -1,24 +1,28 @@
 namespace http.www.w3.org._2000._10.swap.log.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module log =
     let _namespace_name = "http://www.w3.org/2000/10/swap/log#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Any statement mentioning anything in this class
     /// is considered boring and purged by the cwm --purge option.
     /// This is a convenience, and does not have any value when published as a
     /// general fact on the web.
     /// <see href="http://www.w3.org/2000/10/swap/log#Chaff"></see></summary>
-    let Chaff = Namespaced_IRI.parse _namespace_name "Chaff" |> NamespacedName
+    let Chaff = _prefix "Chaff"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/log#Formula"></see>
     /// </summary>
-    let Formula = Namespaced_IRI.parse _namespace_name "Formula" |> NamespacedName
+    let Formula = _prefix "Formula"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/log#List"></see>
     /// </summary>
-    let List = Namespaced_IRI.parse _namespace_name "List" |> NamespacedName
+    let List = _prefix "List"
     /// <summary>
     /// A document which, which parsed as Notation3
     /// as defined in general by http://www.w3.org/DesignIssues/Notation3.html
@@ -27,22 +31,22 @@ module log =
     /// of any other identifiers used in the document.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#N3Document"></see></summary>
-    let N3Document = Namespaced_IRI.parse _namespace_name "N3Document" |> NamespacedName
+    let N3Document = _prefix "N3Document"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/log#Other"></see>
     /// </summary>
-    let Other = Namespaced_IRI.parse _namespace_name "Other" |> NamespacedName
+    let Other = _prefix "Other"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/log#String"></see>
     /// </summary>
-    let String = Namespaced_IRI.parse _namespace_name "String" |> NamespacedName
+    let String = _prefix "String"
     /// <summary>
     /// Something which is true: believe it as you would believe this.
     ///
     /// 	Understood natively by cwm in that it will execute rules in a formula
     /// 	declared a Truth within a formula it is already taking rules from.
     /// <see href="http://www.w3.org/2000/10/swap/log#Truth"></see></summary>
-    let Truth = Namespaced_IRI.parse _namespace_name "Truth" |> NamespacedName
+    let Truth = _prefix "Truth"
     /// <summary>
     /// All possible conclusions which can be drawn from a formula.
     ///
@@ -54,8 +58,7 @@ module log =
     /// signatures, etc.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#conclusion"></see></summary>
-    let conclusion = Namespaced_IRI.parse _namespace_name "conclusion" |> NamespacedName
-
+    let conclusion = _prefix "conclusion"
     /// <summary>
     /// "A function to merge formulae: logical AND.
     ///
@@ -65,17 +68,14 @@ module log =
     /// A cwm built-in function.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#conjunction"></see></summary>
-    let conjunction =
-        Namespaced_IRI.parse _namespace_name "conjunction" |> NamespacedName
-
+    let conjunction = _prefix "conjunction"
     /// <summary>
     /// This connects a document and a string that represents it.
     /// (Cwm knows how to go get a document in order to evaluate this.)
     /// Note that the content-type of the information is not given and
     /// so must be known or guessed.
     /// <see href="http://www.w3.org/2000/10/swap/log#content"></see></summary>
-    let content = Namespaced_IRI.parse _namespace_name "content" |> NamespacedName
-
+    let content = _prefix "content"
     /// <summary>
     /// 	When document D is the definitiveDocument for property P,
     /// any statement X P Y is true iff and only if the semantics of document D
@@ -87,9 +87,7 @@ module log =
     /// (Cwm will do this if its mode includes "r").
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#definitiveDocument"></see></summary>
-    let definitiveDocument =
-        Namespaced_IRI.parse _namespace_name "definitiveDocument" |> NamespacedName
-
+    let definitiveDocument = _prefix "definitiveDocument"
     /// <summary>
     /// 	When service S is the definitiveService for property P,
     /// any statement X P Y is true iff and only if a query to S returns
@@ -104,22 +102,20 @@ module log =
     /// (Cwm will do this if its mode includes "r").
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#definitiveService"></see></summary>
-    let definitiveService =
-        Namespaced_IRI.parse _namespace_name "definitiveService" |> NamespacedName
-
+    let definitiveService = _prefix "definitiveService"
     /// <summary>
     /// Takes a list of a string and a URI and creates a datatyped
     ///      literal. For example, { ("2005-03-30T11:00:00" :tz) log:dtlit ?X } =&gt; { ?X a :Answer } .
     ///     will produce "2005-03-30T11:00:00"^^:tz a :Answer .
     /// <see href="http://www.w3.org/2000/10/swap/log#dtlit"></see></summary>
-    let dtlit = Namespaced_IRI.parse _namespace_name "dtlit" |> NamespacedName
+    let dtlit = _prefix "dtlit"
     /// <summary>
     /// True if the subject and object are the same RDF node (symbol or literal).
     /// Do not confuse with owl:sameAs.
     /// A cwm built-in logical operator, RDF graph level.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#equalTo"></see></summary>
-    let equalTo = Namespaced_IRI.parse _namespace_name "equalTo" |> NamespacedName
+    let equalTo = _prefix "equalTo"
     /// <summary>
     /// Logical implication.
     /// This is the relation between the antecedent (subject) and
@@ -136,7 +132,7 @@ module log =
     /// added to various formula.)
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#implies"></see></summary>
-    let implies = Namespaced_IRI.parse _namespace_name "implies" |> NamespacedName
+    let implies = _prefix "implies"
     /// <summary>
     /// The subject formula includes the object formula.
     /// Formula A includes formula B if there exists some substitution
@@ -151,18 +147,17 @@ module log =
     /// (Understood natively by cwm when in in the antecedent of a rule.
     /// You can use this to peer inside nested formulae.)
     /// <see href="http://www.w3.org/2000/10/swap/log#includes"></see></summary>
-    let includes = Namespaced_IRI.parse _namespace_name "includes" |> NamespacedName
+    let includes = _prefix "includes"
     /// <summary>
     /// The subject formula, expressed as N3, gives this string.
     /// <see href="http://www.w3.org/2000/10/swap/log#n3String"></see></summary>
-    let n3String = Namespaced_IRI.parse _namespace_name "n3String" |> NamespacedName
+    let n3String = _prefix "n3String"
     /// <summary>
     /// Equality in this sense is actually the same URI.
     /// A cwm built-in logical operator.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#notEqualTo"></see></summary>
-    let notEqualTo = Namespaced_IRI.parse _namespace_name "notEqualTo" |> NamespacedName
-
+    let notEqualTo = _prefix "notEqualTo"
     /// <summary>
     /// The object formula is NOT a subset of subject.
     ///     True iff log:includes is false.
@@ -173,28 +168,24 @@ module log =
     ///     would result)
     ///     Related: See includes
     /// <see href="http://www.w3.org/2000/10/swap/log#notIncludes"></see></summary>
-    let notIncludes =
-        Namespaced_IRI.parse _namespace_name "notIncludes" |> NamespacedName
-
+    let notIncludes = _prefix "notIncludes"
     /// <summary>
     /// The subject is a key and the object is a string,
     /// where the strings are to be output in the order of the keys.
     /// See cwm --strings in cwm --help.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#outputString"></see></summary>
-    let outputString =
-        Namespaced_IRI.parse _namespace_name "outputString" |> NamespacedName
-
+    let outputString = _prefix "outputString"
     /// <summary>
     /// The subject string, parsed as N3, gives this formula.
     /// <see href="http://www.w3.org/2000/10/swap/log#parsedAsN3"></see></summary>
-    let parsedAsN3 = Namespaced_IRI.parse _namespace_name "parsedAsN3" |> NamespacedName
+    let parsedAsN3 = _prefix "parsedAsN3"
     /// <summary>
     /// For anything identified by a URI with a fragid, this is the
     /// thing identified by the same URI without a hash or fragid.
     /// For anything else, it is itself.
     /// <see href="http://www.w3.org/2000/10/swap/log#racine"></see></summary>
-    let racine = Namespaced_IRI.parse _namespace_name "racine" |> NamespacedName
+    let racine = _prefix "racine"
     /// <summary>
     ///
     /// This is a low-level language type, one of log:Formula, log:Literal,
@@ -203,14 +194,14 @@ module log =
     /// and you can check which using log:rawType.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#rawType"></see></summary>
-    let rawType = Namespaced_IRI.parse _namespace_name "rawType" |> NamespacedName
+    let rawType = _prefix "rawType"
     /// <summary>
     /// This allows one to look at the actual string of the URI which identifies this,
     /// for anything, even a blank node or a formula. This peeks into the internal
     /// workings of cwm, and so is not normally used. Use log:uri instead.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#rawUri"></see></summary>
-    let rawUri = Namespaced_IRI.parse _namespace_name "rawUri" |> NamespacedName
+    let rawUri = _prefix "rawUri"
     /// <summary>
     /// The log:semantics of a document is the formula.
     /// achieved by parsing representation of the document.
@@ -233,17 +224,14 @@ module log =
     /// also calculable, and so they could be added in due course.
     /// See for example GRDDL, RDFa, etc)
     /// <see href="http://www.w3.org/2000/10/swap/log#semantics"></see></summary>
-    let semantics = Namespaced_IRI.parse _namespace_name "semantics" |> NamespacedName
-
+    let semantics = _prefix "semantics"
     /// <summary>
     /// This connects a document and either the formula it parses to,
     /// or an error message explaining what went wrong with trying. See log:semantics.
     /// (Cwm knows how to go get a document and parse it in order to evaluate this.)
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#semanticsOrError"></see></summary>
-    let semanticsOrError =
-        Namespaced_IRI.parse _namespace_name "semanticsOrError" |> NamespacedName
-
+    let semanticsOrError = _prefix "semanticsOrError"
     /// <summary>
     /// This allows one to look at the actual string of the URI which identifies this.
     ///
@@ -253,4 +241,4 @@ module log =
     /// functionality. Use to implement the URI spec and protocol specs, etc.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/log#uri"></see></summary>
-    let uri = Namespaced_IRI.parse _namespace_name "uri" |> NamespacedName
+    let uri = _prefix "uri"

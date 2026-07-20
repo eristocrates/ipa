@@ -1,9 +1,13 @@
 namespace http.www.daml.org.services.owl_s._1._2.Service.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module owls_Service =
     let _namespace_name = "http://www.daml.org/services/owl-s/1.2/Service.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// See comments above
     ///
@@ -12,14 +16,11 @@ module owls_Service =
     ///     discovery purposes; that is, it exists so as to provide a Profile.)
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#Service"></see></summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
-
+    let Service = _prefix "Service"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#describedBy"></see>
     /// </summary>
-    let describedBy =
-        Namespaced_IRI.parse _namespace_name "describedBy" |> NamespacedName
-
+    let describedBy = _prefix "describedBy"
     /// <summary>
     /// See comments above
     ///
@@ -28,61 +29,50 @@ module owls_Service =
     ///     isn't expressed here.)
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#ServiceGrounding"></see></summary>
-    let ServiceGrounding =
-        Namespaced_IRI.parse _namespace_name "ServiceGrounding" |> NamespacedName
-
+    let ServiceGrounding = _prefix "ServiceGrounding"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#supportedBy"></see>
     /// </summary>
-    let supportedBy =
-        Namespaced_IRI.parse _namespace_name "supportedBy" |> NamespacedName
-
+    let supportedBy = _prefix "supportedBy"
     /// <summary>
     /// See comments above
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#ServiceModel"></see></summary>
-    let ServiceModel =
-        Namespaced_IRI.parse _namespace_name "ServiceModel" |> NamespacedName
-
+    let ServiceModel = _prefix "ServiceModel"
     /// <summary>
     /// See comments above
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#ServiceProfile"></see></summary>
-    let ServiceProfile =
-        Namespaced_IRI.parse _namespace_name "ServiceProfile" |> NamespacedName
-
+    let ServiceProfile = _prefix "ServiceProfile"
     /// <summary>
     ///
     ///     There are no cardinality restrictions on this property. That is,
     ///     the same service model can be used by many different services.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#describes"></see></summary>
-    let describes = Namespaced_IRI.parse _namespace_name "describes" |> NamespacedName
-
+    let describes = _prefix "describes"
     /// <summary>
     ///
     ///     There are no cardinality restrictions on this property.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#presentedBy"></see></summary>
-    let presentedBy =
-        Namespaced_IRI.parse _namespace_name "presentedBy" |> NamespacedName
-
+    let presentedBy = _prefix "presentedBy"
     /// <summary>
     ///
     ///     There are no cardinality restrictions on this property.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#presents"></see></summary>
-    let presents = Namespaced_IRI.parse _namespace_name "presents" |> NamespacedName
+    let presents = _prefix "presents"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#providedBy"></see>
     /// </summary>
-    let providedBy = Namespaced_IRI.parse _namespace_name "providedBy" |> NamespacedName
+    let providedBy = _prefix "providedBy"
     /// <summary>
     ///
     ///     OWL-S is completely agnostic at present about what kind of thing
     ///     provides a service (hence, no domain declared here).
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#provides"></see></summary>
-    let provides = Namespaced_IRI.parse _namespace_name "provides" |> NamespacedName
+    let provides = _prefix "provides"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Service.owl#supports"></see>
     /// </summary>
-    let supports = Namespaced_IRI.parse _namespace_name "supports" |> NamespacedName
+    let supports = _prefix "supports"

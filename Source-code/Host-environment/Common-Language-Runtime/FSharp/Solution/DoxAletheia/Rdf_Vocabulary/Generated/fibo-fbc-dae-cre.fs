@@ -1,177 +1,132 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.DebtAndEquities.CreditEvents.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_dae_cre =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/Bankruptcy"></see>
     /// </summary>
-    let Bankruptcy = Namespaced_IRI.parse _namespace_name "Bankruptcy" |> NamespacedName
-
+    let Bankruptcy = _prefix "Bankruptcy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/EntitySpecificCreditEvent"></see>
     /// </summary>
-    let EntitySpecificCreditEvent =
-        Namespaced_IRI.parse _namespace_name "EntitySpecificCreditEvent" |> NamespacedName
-
+    let EntitySpecificCreditEvent = _prefix "EntitySpecificCreditEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/CreditEvent"></see>
     /// </summary>
-    let CreditEvent =
-        Namespaced_IRI.parse _namespace_name "CreditEvent" |> NamespacedName
-
+    let CreditEvent = _prefix "CreditEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/CrossDefaultProvision"></see>
     /// </summary>
-    let CrossDefaultProvision =
-        Namespaced_IRI.parse _namespace_name "CrossDefaultProvision" |> NamespacedName
-
+    let CrossDefaultProvision = _prefix "CrossDefaultProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/hasDefaultThresholdAmount"></see>
     /// </summary>
-    let hasDefaultThresholdAmount =
-        Namespaced_IRI.parse _namespace_name "hasDefaultThresholdAmount" |> NamespacedName
-
+    let hasDefaultThresholdAmount = _prefix "hasDefaultThresholdAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/DefaultEvent"></see>
     /// </summary>
-    let DefaultEvent =
-        Namespaced_IRI.parse _namespace_name "DefaultEvent" |> NamespacedName
-
+    let DefaultEvent = _prefix "DefaultEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/ObligationSpecificCreditEvent"></see>
     /// </summary>
-    let ObligationSpecificCreditEvent =
-        Namespaced_IRI.parse _namespace_name "ObligationSpecificCreditEvent" |> NamespacedName
-
+    let ObligationSpecificCreditEvent = _prefix "ObligationSpecificCreditEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/DistressedRatingsDowngrade"></see>
     /// </summary>
-    let DistressedRatingsDowngrade =
-        Namespaced_IRI.parse _namespace_name "DistressedRatingsDowngrade" |> NamespacedName
-
+    let DistressedRatingsDowngrade = _prefix "DistressedRatingsDowngrade"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/Downgrade"></see>
     /// </summary>
-    let Downgrade = Namespaced_IRI.parse _namespace_name "Downgrade" |> NamespacedName
-
+    let Downgrade = _prefix "Downgrade"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/FailureToPay"></see>
     /// </summary>
-    let FailureToPay =
-        Namespaced_IRI.parse _namespace_name "FailureToPay" |> NamespacedName
-
+    let FailureToPay = _prefix "FailureToPay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/hasGracePeriod"></see>
     /// </summary>
-    let hasGracePeriod =
-        Namespaced_IRI.parse _namespace_name "hasGracePeriod" |> NamespacedName
-
+    let hasGracePeriod = _prefix "hasGracePeriod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/FailureToPayInterest"></see>
     /// </summary>
-    let FailureToPayInterest =
-        Namespaced_IRI.parse _namespace_name "FailureToPayInterest" |> NamespacedName
-
+    let FailureToPayInterest = _prefix "FailureToPayInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/FailureToPayPrincipal"></see>
     /// </summary>
-    let FailureToPayPrincipal =
-        Namespaced_IRI.parse _namespace_name "FailureToPayPrincipal" |> NamespacedName
-
+    let FailureToPayPrincipal = _prefix "FailureToPayPrincipal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/FilingForBankruptcy"></see>
     /// </summary>
-    let FilingForBankruptcy =
-        Namespaced_IRI.parse _namespace_name "FilingForBankruptcy" |> NamespacedName
-
+    let FilingForBankruptcy = _prefix "FilingForBankruptcy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/HardCreditEvent"></see>
     /// </summary>
-    let HardCreditEvent =
-        Namespaced_IRI.parse _namespace_name "HardCreditEvent" |> NamespacedName
-
+    let HardCreditEvent = _prefix "HardCreditEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/InstallmentDefault"></see>
     /// </summary>
-    let InstallmentDefault =
-        Namespaced_IRI.parse _namespace_name "InstallmentDefault" |> NamespacedName
+    let InstallmentDefault = _prefix "InstallmentDefault"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/InterestObligationInLightOfDefault"></see>
     /// </summary>
     let InterestObligationInLightOfDefault =
-        Namespaced_IRI.parse _namespace_name "InterestObligationInLightOfDefault" |> NamespacedName
+        _prefix "InterestObligationInLightOfDefault"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/hasDefaultInterestCompoundingBasis"></see>
     /// </summary>
     let hasDefaultInterestCompoundingBasis =
-        Namespaced_IRI.parse _namespace_name "hasDefaultInterestCompoundingBasis" |> NamespacedName
+        _prefix "hasDefaultInterestCompoundingBasis"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/isDefaultInterestApplicable"></see>
     /// </summary>
-    let isDefaultInterestApplicable =
-        Namespaced_IRI.parse _namespace_name "isDefaultInterestApplicable" |> NamespacedName
-
+    let isDefaultInterestApplicable = _prefix "isDefaultInterestApplicable"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/MaturityExtension"></see>
     /// </summary>
-    let MaturityExtension =
-        Namespaced_IRI.parse _namespace_name "MaturityExtension" |> NamespacedName
-
+    let MaturityExtension = _prefix "MaturityExtension"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/Moratorium"></see>
     /// </summary>
-    let Moratorium = Namespaced_IRI.parse _namespace_name "Moratorium" |> NamespacedName
-
+    let Moratorium = _prefix "Moratorium"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/ObligationAcceleration"></see>
     /// </summary>
-    let ObligationAcceleration =
-        Namespaced_IRI.parse _namespace_name "ObligationAcceleration" |> NamespacedName
-
+    let ObligationAcceleration = _prefix "ObligationAcceleration"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/ObligationDefault"></see>
     /// </summary>
-    let ObligationDefault =
-        Namespaced_IRI.parse _namespace_name "ObligationDefault" |> NamespacedName
-
+    let ObligationDefault = _prefix "ObligationDefault"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/ObligationRestructuring"></see>
     /// </summary>
-    let ObligationRestructuring =
-        Namespaced_IRI.parse _namespace_name "ObligationRestructuring" |> NamespacedName
-
+    let ObligationRestructuring = _prefix "ObligationRestructuring"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/Repudiation"></see>
     /// </summary>
-    let Repudiation =
-        Namespaced_IRI.parse _namespace_name "Repudiation" |> NamespacedName
-
+    let Repudiation = _prefix "Repudiation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/SoftCreditEvent"></see>
     /// </summary>
-    let SoftCreditEvent =
-        Namespaced_IRI.parse _namespace_name "SoftCreditEvent" |> NamespacedName
-
+    let SoftCreditEvent = _prefix "SoftCreditEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/WriteDown"></see>
     /// </summary>
-    let WriteDown = Namespaced_IRI.parse _namespace_name "WriteDown" |> NamespacedName
-
+    let WriteDown = _prefix "WriteDown"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/involvesMultipleEvents"></see>
     /// </summary>
-    let involvesMultipleEvents =
-        Namespaced_IRI.parse _namespace_name "involvesMultipleEvents" |> NamespacedName
-
+    let involvesMultipleEvents = _prefix "involvesMultipleEvents"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/isGracePeriodExtendable"></see>
     /// </summary>
-    let isGracePeriodExtendable =
-        Namespaced_IRI.parse _namespace_name "isGracePeriodExtendable" |> NamespacedName
+    let isGracePeriodExtendable = _prefix "isGracePeriodExtendable"

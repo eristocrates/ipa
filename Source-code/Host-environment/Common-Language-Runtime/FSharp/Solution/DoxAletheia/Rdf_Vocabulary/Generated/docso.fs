@@ -1,42 +1,38 @@
 namespace http.purl.org.ontology.dso.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module docso =
     let _namespace_name = "http://purl.org/ontology/dso#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#DocumentService"></see>
     /// </summary>
-    let DocumentService =
-        Namespaced_IRI.parse _namespace_name "DocumentService" |> NamespacedName
-
+    let DocumentService = _prefix "DocumentService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#Interloan"></see>
     /// </summary>
-    let Interloan = Namespaced_IRI.parse _namespace_name "Interloan" |> NamespacedName
+    let Interloan = _prefix "Interloan"
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#Loan"></see>
     /// </summary>
-    let Loan = Namespaced_IRI.parse _namespace_name "Loan" |> NamespacedName
+    let Loan = _prefix "Loan"
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#OpenAccess"></see>
     /// </summary>
-    let OpenAccess = Namespaced_IRI.parse _namespace_name "OpenAccess" |> NamespacedName
-
+    let OpenAccess = _prefix "OpenAccess"
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#Presentation"></see>
     /// </summary>
-    let Presentation =
-        Namespaced_IRI.parse _namespace_name "Presentation" |> NamespacedName
-
+    let Presentation = _prefix "Presentation"
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#hasDocument"></see>
     /// </summary>
-    let hasDocument =
-        Namespaced_IRI.parse _namespace_name "hasDocument" |> NamespacedName
-
+    let hasDocument = _prefix "hasDocument"
     /// <summary>
     ///   <see href="http://purl.org/ontology/dso#hasService"></see>
     /// </summary>
-    let hasService = Namespaced_IRI.parse _namespace_name "hasService" |> NamespacedName
+    let hasService = _prefix "hasService"

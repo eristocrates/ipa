@@ -1,8615 +1,6767 @@
 namespace http.sparql.cwrc.ca.ontologies.cwrc.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module cwrc =
     let _namespace_name = "http://sparql.cwrc.ca/ontologies/cwrc#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#originalOrlandoAuthor"></see>
     /// </summary>
-    let originalOrlandoAuthor =
-        Namespaced_IRI.parse _namespace_name "originalOrlandoAuthor" |> NamespacedName
-
+    let originalOrlandoAuthor = _prefix "originalOrlandoAuthor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ConstanceCrompton"></see>
     /// </summary>
-    let ConstanceCrompton =
-        Namespaced_IRI.parse _namespace_name "ConstanceCrompton" |> NamespacedName
-
+    let ConstanceCrompton = _prefix "ConstanceCrompton"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sshrc"></see>
     /// </summary>
-    let sshrc = Namespaced_IRI.parse _namespace_name "sshrc" |> NamespacedName
+    let sshrc = _prefix "sshrc"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SusanBrown"></see>
     /// </summary>
-    let SusanBrown = Namespaced_IRI.parse _namespace_name "SusanBrown" |> NamespacedName
-
+    let SusanBrown = _prefix "SusanBrown"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ColinFaulkner"></see>
     /// </summary>
-    let ColinFaulkner =
-        Namespaced_IRI.parse _namespace_name "ColinFaulkner" |> NamespacedName
-
+    let ColinFaulkner = _prefix "ColinFaulkner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#KimMartin"></see>
     /// </summary>
-    let KimMartin = Namespaced_IRI.parse _namespace_name "KimMartin" |> NamespacedName
-
+    let KimMartin = _prefix "KimMartin"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#JohnSimpson"></see>
     /// </summary>
-    let JohnSimpson =
-        Namespaced_IRI.parse _namespace_name "JohnSimpson" |> NamespacedName
-
+    let JohnSimpson = _prefix "JohnSimpson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#DebStacey"></see>
     /// </summary>
-    let DebStacey = Namespaced_IRI.parse _namespace_name "DebStacey" |> NamespacedName
-
+    let DebStacey = _prefix "DebStacey"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#JoelCummings"></see>
     /// </summary>
-    let JoelCummings =
-        Namespaced_IRI.parse _namespace_name "JoelCummings" |> NamespacedName
-
+    let JoelCummings = _prefix "JoelCummings"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#AlliyyaMo"></see>
     /// </summary>
-    let AlliyyaMo = Namespaced_IRI.parse _namespace_name "AlliyyaMo" |> NamespacedName
-
+    let AlliyyaMo = _prefix "AlliyyaMo"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#JasmineDrudgeWillson"></see>
     /// </summary>
-    let JasmineDrudgeWillson =
-        Namespaced_IRI.parse _namespace_name "JasmineDrudgeWillson" |> NamespacedName
-
+    let JasmineDrudgeWillson = _prefix "JasmineDrudgeWillson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#JadePenancier"></see>
     /// </summary>
-    let JadePenancier =
-        Namespaced_IRI.parse _namespace_name "JadePenancier" |> NamespacedName
-
+    let JadePenancier = _prefix "JadePenancier"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#RobWarren"></see>
     /// </summary>
-    let RobWarren = Namespaced_IRI.parse _namespace_name "RobWarren" |> NamespacedName
-
+    let RobWarren = _prefix "RobWarren"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#AbigelLemak"></see>
     /// </summary>
-    let AbigelLemak =
-        Namespaced_IRI.parse _namespace_name "AbigelLemak" |> NamespacedName
-
+    let AbigelLemak = _prefix "AbigelLemak"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#GurjapSingh"></see>
     /// </summary>
-    let GurjapSingh =
-        Namespaced_IRI.parse _namespace_name "GurjapSingh" |> NamespacedName
-
+    let GurjapSingh = _prefix "GurjapSingh"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cwrc"></see>
     /// </summary>
-    let cwrc = Namespaced_IRI.parse _namespace_name "cwrc" |> NamespacedName
-
+    let cwrc = _prefix "cwrc"
     /// <summary>
     /// The CWRC Ontology is the ontology of the Canadian Writing Research Collaboratory.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#datasetdefinition"></see></summary>
-    let datasetdefinition =
-        Namespaced_IRI.parse _namespace_name "datasetdefinition" |> NamespacedName
+    let datasetdefinition = _prefix "datasetdefinition"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#04b840aa-9c38-4e36-8d7c-21b38e192646"></see>
     /// </summary>
     let ``_04b840aa-9c38-4e36-8d7c-21b38e192646`` =
-        Namespaced_IRI.parse _namespace_name "04b840aa-9c38-4e36-8d7c-21b38e192646" |> NamespacedName
+        _prefix "04b840aa-9c38-4e36-8d7c-21b38e192646"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#04b840aa-9c38-4e36-8d7c-21b38e192646-5d410f84e2"></see>
     /// </summary>
     let ``_04b840aa-9c38-4e36-8d7c-21b38e192646-5d410f84e2`` =
-        Namespaced_IRI.parse _namespace_name "04b840aa-9c38-4e36-8d7c-21b38e192646-5d410f84e2" |> NamespacedName
+        _prefix "04b840aa-9c38-4e36-8d7c-21b38e192646-5d410f84e2"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#04b840aa-9c38-4e36-8d7c-21b38e192646-1e19da2a76"></see>
     /// </summary>
     let ``_04b840aa-9c38-4e36-8d7c-21b38e192646-1e19da2a76`` =
-        Namespaced_IRI.parse _namespace_name "04b840aa-9c38-4e36-8d7c-21b38e192646-1e19da2a76" |> NamespacedName
+        _prefix "04b840aa-9c38-4e36-8d7c-21b38e192646-1e19da2a76"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#04b840aa-9c38-4e36-8d7c-21b38e192646-dd5a878fc2"></see>
     /// </summary>
     let ``_04b840aa-9c38-4e36-8d7c-21b38e192646-dd5a878fc2`` =
-        Namespaced_IRI.parse _namespace_name "04b840aa-9c38-4e36-8d7c-21b38e192646-dd5a878fc2" |> NamespacedName
+        _prefix "04b840aa-9c38-4e36-8d7c-21b38e192646-dd5a878fc2"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#06e019b1-2bad-4fc2-8666-6f374a2e246a"></see>
     /// </summary>
     let ``_06e019b1-2bad-4fc2-8666-6f374a2e246a`` =
-        Namespaced_IRI.parse _namespace_name "06e019b1-2bad-4fc2-8666-6f374a2e246a" |> NamespacedName
+        _prefix "06e019b1-2bad-4fc2-8666-6f374a2e246a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#06e019b1-2bad-4fc2-8666-6f374a2e246a-3fb34a38c8"></see>
     /// </summary>
     let ``_06e019b1-2bad-4fc2-8666-6f374a2e246a-3fb34a38c8`` =
-        Namespaced_IRI.parse _namespace_name "06e019b1-2bad-4fc2-8666-6f374a2e246a-3fb34a38c8" |> NamespacedName
+        _prefix "06e019b1-2bad-4fc2-8666-6f374a2e246a-3fb34a38c8"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#06e019b1-2bad-4fc2-8666-6f374a2e246a-partof"></see>
     /// </summary>
     let ``_06e019b1-2bad-4fc2-8666-6f374a2e246a-partof`` =
-        Namespaced_IRI.parse _namespace_name "06e019b1-2bad-4fc2-8666-6f374a2e246a-partof" |> NamespacedName
+        _prefix "06e019b1-2bad-4fc2-8666-6f374a2e246a-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2002eb96-4775-4ae0-ba0f-6704c30264a9"></see>
     /// </summary>
     let ``_2002eb96-4775-4ae0-ba0f-6704c30264a9`` =
-        Namespaced_IRI.parse _namespace_name "2002eb96-4775-4ae0-ba0f-6704c30264a9" |> NamespacedName
+        _prefix "2002eb96-4775-4ae0-ba0f-6704c30264a9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2002eb96-4775-4ae0-ba0f-6704c30264a9-48185cb881"></see>
     /// </summary>
     let ``_2002eb96-4775-4ae0-ba0f-6704c30264a9-48185cb881`` =
-        Namespaced_IRI.parse _namespace_name "2002eb96-4775-4ae0-ba0f-6704c30264a9-48185cb881" |> NamespacedName
+        _prefix "2002eb96-4775-4ae0-ba0f-6704c30264a9-48185cb881"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2002eb96-4775-4ae0-ba0f-6704c30264a9-8d87593063"></see>
     /// </summary>
     let ``_2002eb96-4775-4ae0-ba0f-6704c30264a9-8d87593063`` =
-        Namespaced_IRI.parse _namespace_name "2002eb96-4775-4ae0-ba0f-6704c30264a9-8d87593063" |> NamespacedName
+        _prefix "2002eb96-4775-4ae0-ba0f-6704c30264a9-8d87593063"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#20b2549d-ee16-45e2-8f42-5e369da2ae0f"></see>
     /// </summary>
     let ``_20b2549d-ee16-45e2-8f42-5e369da2ae0f`` =
-        Namespaced_IRI.parse _namespace_name "20b2549d-ee16-45e2-8f42-5e369da2ae0f" |> NamespacedName
+        _prefix "20b2549d-ee16-45e2-8f42-5e369da2ae0f"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#20b2549d-ee16-45e2-8f42-5e369da2ae0f-c18718c096"></see>
     /// </summary>
     let ``_20b2549d-ee16-45e2-8f42-5e369da2ae0f-c18718c096`` =
-        Namespaced_IRI.parse _namespace_name "20b2549d-ee16-45e2-8f42-5e369da2ae0f-c18718c096" |> NamespacedName
+        _prefix "20b2549d-ee16-45e2-8f42-5e369da2ae0f-c18718c096"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#20b2549d-ee16-45e2-8f42-5e369da2ae0f-058f6f7211"></see>
     /// </summary>
     let ``_20b2549d-ee16-45e2-8f42-5e369da2ae0f-058f6f7211`` =
-        Namespaced_IRI.parse _namespace_name "20b2549d-ee16-45e2-8f42-5e369da2ae0f-058f6f7211" |> NamespacedName
+        _prefix "20b2549d-ee16-45e2-8f42-5e369da2ae0f-058f6f7211"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b"></see>
     /// </summary>
     let ``_20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b`` =
-        Namespaced_IRI.parse _namespace_name "20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b" |> NamespacedName
+        _prefix "20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-ecfae99691"></see>
     /// </summary>
     let ``_20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-ecfae99691`` =
-        Namespaced_IRI.parse _namespace_name "20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-ecfae99691" |> NamespacedName
+        _prefix "20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-ecfae99691"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-769103a942"></see>
     /// </summary>
     let ``_20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-769103a942`` =
-        Namespaced_IRI.parse _namespace_name "20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-769103a942" |> NamespacedName
+        _prefix "20f0c9a2-4cc1-4838-87a5-3b6df3b0a24b-769103a942"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#21bad544-af11-4b8d-869f-2d26f53943c8"></see>
     /// </summary>
     let ``_21bad544-af11-4b8d-869f-2d26f53943c8`` =
-        Namespaced_IRI.parse _namespace_name "21bad544-af11-4b8d-869f-2d26f53943c8" |> NamespacedName
+        _prefix "21bad544-af11-4b8d-869f-2d26f53943c8"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#21bad544-af11-4b8d-869f-2d26f53943c8-027917040a"></see>
     /// </summary>
     let ``_21bad544-af11-4b8d-869f-2d26f53943c8-027917040a`` =
-        Namespaced_IRI.parse _namespace_name "21bad544-af11-4b8d-869f-2d26f53943c8-027917040a" |> NamespacedName
+        _prefix "21bad544-af11-4b8d-869f-2d26f53943c8-027917040a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#21bad544-af11-4b8d-869f-2d26f53943c8-partof"></see>
     /// </summary>
     let ``_21bad544-af11-4b8d-869f-2d26f53943c8-partof`` =
-        Namespaced_IRI.parse _namespace_name "21bad544-af11-4b8d-869f-2d26f53943c8-partof" |> NamespacedName
+        _prefix "21bad544-af11-4b8d-869f-2d26f53943c8-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2237f8bc-6be9-44b5-8fe9-f531c6a44a58"></see>
     /// </summary>
     let ``_2237f8bc-6be9-44b5-8fe9-f531c6a44a58`` =
-        Namespaced_IRI.parse _namespace_name "2237f8bc-6be9-44b5-8fe9-f531c6a44a58" |> NamespacedName
+        _prefix "2237f8bc-6be9-44b5-8fe9-f531c6a44a58"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2237f8bc-6be9-44b5-8fe9-f531c6a44a58-da81d2bb55"></see>
     /// </summary>
     let ``_2237f8bc-6be9-44b5-8fe9-f531c6a44a58-da81d2bb55`` =
-        Namespaced_IRI.parse _namespace_name "2237f8bc-6be9-44b5-8fe9-f531c6a44a58-da81d2bb55" |> NamespacedName
+        _prefix "2237f8bc-6be9-44b5-8fe9-f531c6a44a58-da81d2bb55"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2237f8bc-6be9-44b5-8fe9-f531c6a44a58-9796ffdebf"></see>
     /// </summary>
     let ``_2237f8bc-6be9-44b5-8fe9-f531c6a44a58-9796ffdebf`` =
-        Namespaced_IRI.parse _namespace_name "2237f8bc-6be9-44b5-8fe9-f531c6a44a58-9796ffdebf" |> NamespacedName
+        _prefix "2237f8bc-6be9-44b5-8fe9-f531c6a44a58-9796ffdebf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#2237f8bc-6be9-44b5-8fe9-f531c6a44a58-cdc9f758b8"></see>
     /// </summary>
     let ``_2237f8bc-6be9-44b5-8fe9-f531c6a44a58-cdc9f758b8`` =
-        Namespaced_IRI.parse _namespace_name "2237f8bc-6be9-44b5-8fe9-f531c6a44a58-cdc9f758b8" |> NamespacedName
+        _prefix "2237f8bc-6be9-44b5-8fe9-f531c6a44a58-cdc9f758b8"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#23ad5d2a-605e-4116-8f81-7db6b95395ea"></see>
     /// </summary>
     let ``_23ad5d2a-605e-4116-8f81-7db6b95395ea`` =
-        Namespaced_IRI.parse _namespace_name "23ad5d2a-605e-4116-8f81-7db6b95395ea" |> NamespacedName
+        _prefix "23ad5d2a-605e-4116-8f81-7db6b95395ea"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#23ad5d2a-605e-4116-8f81-7db6b95395ea-35ae67fab9"></see>
     /// </summary>
     let ``_23ad5d2a-605e-4116-8f81-7db6b95395ea-35ae67fab9`` =
-        Namespaced_IRI.parse _namespace_name "23ad5d2a-605e-4116-8f81-7db6b95395ea-35ae67fab9" |> NamespacedName
+        _prefix "23ad5d2a-605e-4116-8f81-7db6b95395ea-35ae67fab9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#23ad5d2a-605e-4116-8f81-7db6b95395ea-86b08955b2"></see>
     /// </summary>
     let ``_23ad5d2a-605e-4116-8f81-7db6b95395ea-86b08955b2`` =
-        Namespaced_IRI.parse _namespace_name "23ad5d2a-605e-4116-8f81-7db6b95395ea-86b08955b2" |> NamespacedName
+        _prefix "23ad5d2a-605e-4116-8f81-7db6b95395ea-86b08955b2"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#23ad5d2a-605e-4116-8f81-7db6b95395ea-7d8f197f96"></see>
     /// </summary>
     let ``_23ad5d2a-605e-4116-8f81-7db6b95395ea-7d8f197f96`` =
-        Namespaced_IRI.parse _namespace_name "23ad5d2a-605e-4116-8f81-7db6b95395ea-7d8f197f96" |> NamespacedName
+        _prefix "23ad5d2a-605e-4116-8f81-7db6b95395ea-7d8f197f96"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-cdc669be47"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-cdc669be47`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-cdc669be47" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-cdc669be47"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-7e070c5373"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-7e070c5373`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-7e070c5373" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-7e070c5373"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-327d5213ef"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-327d5213ef`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-327d5213ef" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-327d5213ef"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-2a0b3739d4"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-2a0b3739d4`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-2a0b3739d4" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-2a0b3739d4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-63a2ae33d9"></see>
     /// </summary>
     let ``_26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-63a2ae33d9`` =
-        Namespaced_IRI.parse _namespace_name "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-63a2ae33d9" |> NamespacedName
+        _prefix "26ad3610-a0bb-4e62-8fbc-d6be9ccbbdf6-partof-63a2ae33d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26cf15ba-5650-43ef-9a55-229c7ce3bbbb"></see>
     /// </summary>
     let ``_26cf15ba-5650-43ef-9a55-229c7ce3bbbb`` =
-        Namespaced_IRI.parse _namespace_name "26cf15ba-5650-43ef-9a55-229c7ce3bbbb" |> NamespacedName
+        _prefix "26cf15ba-5650-43ef-9a55-229c7ce3bbbb"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26cf15ba-5650-43ef-9a55-229c7ce3bbbb-318cb143c9"></see>
     /// </summary>
     let ``_26cf15ba-5650-43ef-9a55-229c7ce3bbbb-318cb143c9`` =
-        Namespaced_IRI.parse _namespace_name "26cf15ba-5650-43ef-9a55-229c7ce3bbbb-318cb143c9" |> NamespacedName
+        _prefix "26cf15ba-5650-43ef-9a55-229c7ce3bbbb-318cb143c9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#26cf15ba-5650-43ef-9a55-229c7ce3bbbb-8b8a0c6d52"></see>
     /// </summary>
     let ``_26cf15ba-5650-43ef-9a55-229c7ce3bbbb-8b8a0c6d52`` =
-        Namespaced_IRI.parse _namespace_name "26cf15ba-5650-43ef-9a55-229c7ce3bbbb-8b8a0c6d52" |> NamespacedName
+        _prefix "26cf15ba-5650-43ef-9a55-229c7ce3bbbb-8b8a0c6d52"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9"></see>
     /// </summary>
     let ``_27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9`` =
-        Namespaced_IRI.parse _namespace_name "27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9" |> NamespacedName
+        _prefix "27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-84fe24be76"></see>
     /// </summary>
     let ``_27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-84fe24be76`` =
-        Namespaced_IRI.parse _namespace_name "27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-84fe24be76" |> NamespacedName
+        _prefix "27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-84fe24be76"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-5f1ecef571"></see>
     /// </summary>
     let ``_27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-5f1ecef571`` =
-        Namespaced_IRI.parse _namespace_name "27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-5f1ecef571" |> NamespacedName
+        _prefix "27faa9ed-1d5c-44c4-b3f3-e6ac3f57e5f9-5f1ecef571"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc"></see>
     /// </summary>
     let ``_3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc`` =
-        Namespaced_IRI.parse _namespace_name "3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc" |> NamespacedName
+        _prefix "3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-e3d3563976"></see>
     /// </summary>
     let ``_3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-e3d3563976`` =
-        Namespaced_IRI.parse _namespace_name "3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-e3d3563976" |> NamespacedName
+        _prefix "3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-e3d3563976"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-5cdc250d3f"></see>
     /// </summary>
     let ``_3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-5cdc250d3f`` =
-        Namespaced_IRI.parse _namespace_name "3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-5cdc250d3f" |> NamespacedName
+        _prefix "3238e1a7-6d28-49ed-a48a-cb2cb5e3d1cc-5cdc250d3f"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#366c694c-b5bd-47b4-80a9-2dead4f7a7cb"></see>
     /// </summary>
     let ``_366c694c-b5bd-47b4-80a9-2dead4f7a7cb`` =
-        Namespaced_IRI.parse _namespace_name "366c694c-b5bd-47b4-80a9-2dead4f7a7cb" |> NamespacedName
+        _prefix "366c694c-b5bd-47b4-80a9-2dead4f7a7cb"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#366c694c-b5bd-47b4-80a9-2dead4f7a7cb-fe3a497236"></see>
     /// </summary>
     let ``_366c694c-b5bd-47b4-80a9-2dead4f7a7cb-fe3a497236`` =
-        Namespaced_IRI.parse _namespace_name "366c694c-b5bd-47b4-80a9-2dead4f7a7cb-fe3a497236" |> NamespacedName
+        _prefix "366c694c-b5bd-47b4-80a9-2dead4f7a7cb-fe3a497236"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#366c694c-b5bd-47b4-80a9-2dead4f7a7cb-d59f1c99c3"></see>
     /// </summary>
     let ``_366c694c-b5bd-47b4-80a9-2dead4f7a7cb-d59f1c99c3`` =
-        Namespaced_IRI.parse _namespace_name "366c694c-b5bd-47b4-80a9-2dead4f7a7cb-d59f1c99c3" |> NamespacedName
+        _prefix "366c694c-b5bd-47b4-80a9-2dead4f7a7cb-d59f1c99c3"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3d49dc32-ac97-4abd-a252-573c52b463cf"></see>
     /// </summary>
     let ``_3d49dc32-ac97-4abd-a252-573c52b463cf`` =
-        Namespaced_IRI.parse _namespace_name "3d49dc32-ac97-4abd-a252-573c52b463cf" |> NamespacedName
+        _prefix "3d49dc32-ac97-4abd-a252-573c52b463cf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3d49dc32-ac97-4abd-a252-573c52b463cf-c743e92034"></see>
     /// </summary>
     let ``_3d49dc32-ac97-4abd-a252-573c52b463cf-c743e92034`` =
-        Namespaced_IRI.parse _namespace_name "3d49dc32-ac97-4abd-a252-573c52b463cf-c743e92034" |> NamespacedName
+        _prefix "3d49dc32-ac97-4abd-a252-573c52b463cf-c743e92034"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3d49dc32-ac97-4abd-a252-573c52b463cf-d0e255da83"></see>
     /// </summary>
     let ``_3d49dc32-ac97-4abd-a252-573c52b463cf-d0e255da83`` =
-        Namespaced_IRI.parse _namespace_name "3d49dc32-ac97-4abd-a252-573c52b463cf-d0e255da83" |> NamespacedName
+        _prefix "3d49dc32-ac97-4abd-a252-573c52b463cf-d0e255da83"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3f1dd1b1-411b-45a9-a860-7b45bf0a1174"></see>
     /// </summary>
     let ``_3f1dd1b1-411b-45a9-a860-7b45bf0a1174`` =
-        Namespaced_IRI.parse _namespace_name "3f1dd1b1-411b-45a9-a860-7b45bf0a1174" |> NamespacedName
+        _prefix "3f1dd1b1-411b-45a9-a860-7b45bf0a1174"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a4e96325de"></see>
     /// </summary>
     let ``_3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a4e96325de`` =
-        Namespaced_IRI.parse _namespace_name "3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a4e96325de" |> NamespacedName
+        _prefix "3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a4e96325de"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a050f81cb4"></see>
     /// </summary>
     let ``_3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a050f81cb4`` =
-        Namespaced_IRI.parse _namespace_name "3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a050f81cb4" |> NamespacedName
+        _prefix "3f1dd1b1-411b-45a9-a860-7b45bf0a1174-a050f81cb4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#3f1dd1b1-411b-45a9-a860-7b45bf0a1174-dbafaea23e"></see>
     /// </summary>
     let ``_3f1dd1b1-411b-45a9-a860-7b45bf0a1174-dbafaea23e`` =
-        Namespaced_IRI.parse _namespace_name "3f1dd1b1-411b-45a9-a860-7b45bf0a1174-dbafaea23e" |> NamespacedName
+        _prefix "3f1dd1b1-411b-45a9-a860-7b45bf0a1174-dbafaea23e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#40523fef-509d-4802-900d-4f230fe50123"></see>
     /// </summary>
     let ``_40523fef-509d-4802-900d-4f230fe50123`` =
-        Namespaced_IRI.parse _namespace_name "40523fef-509d-4802-900d-4f230fe50123" |> NamespacedName
+        _prefix "40523fef-509d-4802-900d-4f230fe50123"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#40523fef-509d-4802-900d-4f230fe50123-ff80d41ff3"></see>
     /// </summary>
     let ``_40523fef-509d-4802-900d-4f230fe50123-ff80d41ff3`` =
-        Namespaced_IRI.parse _namespace_name "40523fef-509d-4802-900d-4f230fe50123-ff80d41ff3" |> NamespacedName
+        _prefix "40523fef-509d-4802-900d-4f230fe50123-ff80d41ff3"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#40523fef-509d-4802-900d-4f230fe50123-769103a942"></see>
     /// </summary>
     let ``_40523fef-509d-4802-900d-4f230fe50123-769103a942`` =
-        Namespaced_IRI.parse _namespace_name "40523fef-509d-4802-900d-4f230fe50123-769103a942" |> NamespacedName
+        _prefix "40523fef-509d-4802-900d-4f230fe50123-769103a942"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#4dc5ff8c-d908-4377-bca8-9394408b7b67"></see>
     /// </summary>
     let ``_4dc5ff8c-d908-4377-bca8-9394408b7b67`` =
-        Namespaced_IRI.parse _namespace_name "4dc5ff8c-d908-4377-bca8-9394408b7b67" |> NamespacedName
+        _prefix "4dc5ff8c-d908-4377-bca8-9394408b7b67"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#4dc5ff8c-d908-4377-bca8-9394408b7b67-f3dac63164"></see>
     /// </summary>
     let ``_4dc5ff8c-d908-4377-bca8-9394408b7b67-f3dac63164`` =
-        Namespaced_IRI.parse _namespace_name "4dc5ff8c-d908-4377-bca8-9394408b7b67-f3dac63164" |> NamespacedName
+        _prefix "4dc5ff8c-d908-4377-bca8-9394408b7b67-f3dac63164"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#4dc5ff8c-d908-4377-bca8-9394408b7b67-partof"></see>
     /// </summary>
     let ``_4dc5ff8c-d908-4377-bca8-9394408b7b67-partof`` =
-        Namespaced_IRI.parse _namespace_name "4dc5ff8c-d908-4377-bca8-9394408b7b67-partof" |> NamespacedName
+        _prefix "4dc5ff8c-d908-4377-bca8-9394408b7b67-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#4f4d7ca6-5625-46d9-bd88-17847ee076d8"></see>
     /// </summary>
     let ``_4f4d7ca6-5625-46d9-bd88-17847ee076d8`` =
-        Namespaced_IRI.parse _namespace_name "4f4d7ca6-5625-46d9-bd88-17847ee076d8" |> NamespacedName
+        _prefix "4f4d7ca6-5625-46d9-bd88-17847ee076d8"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#4f4d7ca6-5625-46d9-bd88-17847ee076d8-9141ebf465"></see>
     /// </summary>
     let ``_4f4d7ca6-5625-46d9-bd88-17847ee076d8-9141ebf465`` =
-        Namespaced_IRI.parse _namespace_name "4f4d7ca6-5625-46d9-bd88-17847ee076d8-9141ebf465" |> NamespacedName
+        _prefix "4f4d7ca6-5625-46d9-bd88-17847ee076d8-9141ebf465"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#4f4d7ca6-5625-46d9-bd88-17847ee076d8-63a2ae33d9"></see>
     /// </summary>
     let ``_4f4d7ca6-5625-46d9-bd88-17847ee076d8-63a2ae33d9`` =
-        Namespaced_IRI.parse _namespace_name "4f4d7ca6-5625-46d9-bd88-17847ee076d8-63a2ae33d9" |> NamespacedName
+        _prefix "4f4d7ca6-5625-46d9-bd88-17847ee076d8-63a2ae33d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#59f48ef6-ebc7-4a58-ac43-2025deb369ec"></see>
     /// </summary>
     let ``_59f48ef6-ebc7-4a58-ac43-2025deb369ec`` =
-        Namespaced_IRI.parse _namespace_name "59f48ef6-ebc7-4a58-ac43-2025deb369ec" |> NamespacedName
+        _prefix "59f48ef6-ebc7-4a58-ac43-2025deb369ec"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#59f48ef6-ebc7-4a58-ac43-2025deb369ec-842232a3cd"></see>
     /// </summary>
     let ``_59f48ef6-ebc7-4a58-ac43-2025deb369ec-842232a3cd`` =
-        Namespaced_IRI.parse _namespace_name "59f48ef6-ebc7-4a58-ac43-2025deb369ec-842232a3cd" |> NamespacedName
+        _prefix "59f48ef6-ebc7-4a58-ac43-2025deb369ec-842232a3cd"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#59f48ef6-ebc7-4a58-ac43-2025deb369ec-partof"></see>
     /// </summary>
     let ``_59f48ef6-ebc7-4a58-ac43-2025deb369ec-partof`` =
-        Namespaced_IRI.parse _namespace_name "59f48ef6-ebc7-4a58-ac43-2025deb369ec-partof" |> NamespacedName
+        _prefix "59f48ef6-ebc7-4a58-ac43-2025deb369ec-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#5e3f3ab7-be20-4dc5-91ec-f41946e05e28"></see>
     /// </summary>
     let ``_5e3f3ab7-be20-4dc5-91ec-f41946e05e28`` =
-        Namespaced_IRI.parse _namespace_name "5e3f3ab7-be20-4dc5-91ec-f41946e05e28" |> NamespacedName
+        _prefix "5e3f3ab7-be20-4dc5-91ec-f41946e05e28"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#5e3f3ab7-be20-4dc5-91ec-f41946e05e28-5618f6070b"></see>
     /// </summary>
     let ``_5e3f3ab7-be20-4dc5-91ec-f41946e05e28-5618f6070b`` =
-        Namespaced_IRI.parse _namespace_name "5e3f3ab7-be20-4dc5-91ec-f41946e05e28-5618f6070b" |> NamespacedName
+        _prefix "5e3f3ab7-be20-4dc5-91ec-f41946e05e28-5618f6070b"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#5e3f3ab7-be20-4dc5-91ec-f41946e05e28-63a2ae33d9"></see>
     /// </summary>
     let ``_5e3f3ab7-be20-4dc5-91ec-f41946e05e28-63a2ae33d9`` =
-        Namespaced_IRI.parse _namespace_name "5e3f3ab7-be20-4dc5-91ec-f41946e05e28-63a2ae33d9" |> NamespacedName
+        _prefix "5e3f3ab7-be20-4dc5-91ec-f41946e05e28-63a2ae33d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249"></see>
     /// </summary>
     let ``_5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249`` =
-        Namespaced_IRI.parse _namespace_name "5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249" |> NamespacedName
+        _prefix "5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-43b2d638e3"></see>
     /// </summary>
     let ``_5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-43b2d638e3`` =
-        Namespaced_IRI.parse _namespace_name "5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-43b2d638e3" |> NamespacedName
+        _prefix "5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-43b2d638e3"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-13cadb9dc7"></see>
     /// </summary>
     let ``_5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-13cadb9dc7`` =
-        Namespaced_IRI.parse _namespace_name "5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-13cadb9dc7" |> NamespacedName
+        _prefix "5e45242f-0c2e-4aaa-8ddb-ac54dd0e6249-13cadb9dc7"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#62208dcb-ed1f-4612-8433-d6e4e5e0b7fc"></see>
     /// </summary>
     let ``_62208dcb-ed1f-4612-8433-d6e4e5e0b7fc`` =
-        Namespaced_IRI.parse _namespace_name "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc" |> NamespacedName
+        _prefix "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-706552b3f4"></see>
     /// </summary>
     let ``_62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-706552b3f4`` =
-        Namespaced_IRI.parse _namespace_name "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-706552b3f4" |> NamespacedName
+        _prefix "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-706552b3f4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-352a867f1c"></see>
     /// </summary>
     let ``_62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-352a867f1c`` =
-        Namespaced_IRI.parse _namespace_name "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-352a867f1c" |> NamespacedName
+        _prefix "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-352a867f1c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof"></see>
     /// </summary>
     let ``_62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof`` =
-        Namespaced_IRI.parse _namespace_name "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof" |> NamespacedName
+        _prefix "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof-72abfae814"></see>
     /// </summary>
     let ``_62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof-72abfae814`` =
-        Namespaced_IRI.parse _namespace_name "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof-72abfae814" |> NamespacedName
+        _prefix "62208dcb-ed1f-4612-8433-d6e4e5e0b7fc-partof-72abfae814"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#65424c4e-5257-4e6c-962f-de12a7f11aea"></see>
     /// </summary>
     let ``_65424c4e-5257-4e6c-962f-de12a7f11aea`` =
-        Namespaced_IRI.parse _namespace_name "65424c4e-5257-4e6c-962f-de12a7f11aea" |> NamespacedName
+        _prefix "65424c4e-5257-4e6c-962f-de12a7f11aea"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#65424c4e-5257-4e6c-962f-de12a7f11aea-215ee9c7d9"></see>
     /// </summary>
     let ``_65424c4e-5257-4e6c-962f-de12a7f11aea-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "65424c4e-5257-4e6c-962f-de12a7f11aea-215ee9c7d9" |> NamespacedName
+        _prefix "65424c4e-5257-4e6c-962f-de12a7f11aea-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#65424c4e-5257-4e6c-962f-de12a7f11aea-partof"></see>
     /// </summary>
     let ``_65424c4e-5257-4e6c-962f-de12a7f11aea-partof`` =
-        Namespaced_IRI.parse _namespace_name "65424c4e-5257-4e6c-962f-de12a7f11aea-partof" |> NamespacedName
+        _prefix "65424c4e-5257-4e6c-962f-de12a7f11aea-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#65424c4e-5257-4e6c-962f-de12a7f11aea-partof-215ee9c7d9"></see>
     /// </summary>
     let ``_65424c4e-5257-4e6c-962f-de12a7f11aea-partof-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "65424c4e-5257-4e6c-962f-de12a7f11aea-partof-215ee9c7d9" |> NamespacedName
+        _prefix "65424c4e-5257-4e6c-962f-de12a7f11aea-partof-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#65424c4e-5257-4e6c-962f-de12a7f11aea-partof-712daeb456"></see>
     /// </summary>
     let ``_65424c4e-5257-4e6c-962f-de12a7f11aea-partof-712daeb456`` =
-        Namespaced_IRI.parse _namespace_name "65424c4e-5257-4e6c-962f-de12a7f11aea-partof-712daeb456" |> NamespacedName
+        _prefix "65424c4e-5257-4e6c-962f-de12a7f11aea-partof-712daeb456"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#6addf580-24e2-4750-9d2a-aa6dd66032a6"></see>
     /// </summary>
     let ``_6addf580-24e2-4750-9d2a-aa6dd66032a6`` =
-        Namespaced_IRI.parse _namespace_name "6addf580-24e2-4750-9d2a-aa6dd66032a6" |> NamespacedName
+        _prefix "6addf580-24e2-4750-9d2a-aa6dd66032a6"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#6addf580-24e2-4750-9d2a-aa6dd66032a6-215ee9c7d9"></see>
     /// </summary>
     let ``_6addf580-24e2-4750-9d2a-aa6dd66032a6-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "6addf580-24e2-4750-9d2a-aa6dd66032a6-215ee9c7d9" |> NamespacedName
+        _prefix "6addf580-24e2-4750-9d2a-aa6dd66032a6-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#6addf580-24e2-4750-9d2a-aa6dd66032a6-partof"></see>
     /// </summary>
     let ``_6addf580-24e2-4750-9d2a-aa6dd66032a6-partof`` =
-        Namespaced_IRI.parse _namespace_name "6addf580-24e2-4750-9d2a-aa6dd66032a6-partof" |> NamespacedName
+        _prefix "6addf580-24e2-4750-9d2a-aa6dd66032a6-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#713873c7-011a-4b34-b5dc-d6d147575119"></see>
     /// </summary>
     let ``_713873c7-011a-4b34-b5dc-d6d147575119`` =
-        Namespaced_IRI.parse _namespace_name "713873c7-011a-4b34-b5dc-d6d147575119" |> NamespacedName
+        _prefix "713873c7-011a-4b34-b5dc-d6d147575119"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#713873c7-011a-4b34-b5dc-d6d147575119-37765af5b7"></see>
     /// </summary>
     let ``_713873c7-011a-4b34-b5dc-d6d147575119-37765af5b7`` =
-        Namespaced_IRI.parse _namespace_name "713873c7-011a-4b34-b5dc-d6d147575119-37765af5b7" |> NamespacedName
+        _prefix "713873c7-011a-4b34-b5dc-d6d147575119-37765af5b7"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#713873c7-011a-4b34-b5dc-d6d147575119-partof"></see>
     /// </summary>
     let ``_713873c7-011a-4b34-b5dc-d6d147575119-partof`` =
-        Namespaced_IRI.parse _namespace_name "713873c7-011a-4b34-b5dc-d6d147575119-partof" |> NamespacedName
+        _prefix "713873c7-011a-4b34-b5dc-d6d147575119-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#727d97bc-af78-4122-94be-aa78b2e97d5a"></see>
     /// </summary>
     let ``_727d97bc-af78-4122-94be-aa78b2e97d5a`` =
-        Namespaced_IRI.parse _namespace_name "727d97bc-af78-4122-94be-aa78b2e97d5a" |> NamespacedName
+        _prefix "727d97bc-af78-4122-94be-aa78b2e97d5a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#727d97bc-af78-4122-94be-aa78b2e97d5a-17b91d1c8c"></see>
     /// </summary>
     let ``_727d97bc-af78-4122-94be-aa78b2e97d5a-17b91d1c8c`` =
-        Namespaced_IRI.parse _namespace_name "727d97bc-af78-4122-94be-aa78b2e97d5a-17b91d1c8c" |> NamespacedName
+        _prefix "727d97bc-af78-4122-94be-aa78b2e97d5a-17b91d1c8c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#72ce1f91-b3d5-4b7b-8b76-dc674513bec1"></see>
     /// </summary>
     let ``_72ce1f91-b3d5-4b7b-8b76-dc674513bec1`` =
-        Namespaced_IRI.parse _namespace_name "72ce1f91-b3d5-4b7b-8b76-dc674513bec1" |> NamespacedName
+        _prefix "72ce1f91-b3d5-4b7b-8b76-dc674513bec1"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#72ce1f91-b3d5-4b7b-8b76-dc674513bec1-4c365f6a6e"></see>
     /// </summary>
     let ``_72ce1f91-b3d5-4b7b-8b76-dc674513bec1-4c365f6a6e`` =
-        Namespaced_IRI.parse _namespace_name "72ce1f91-b3d5-4b7b-8b76-dc674513bec1-4c365f6a6e" |> NamespacedName
+        _prefix "72ce1f91-b3d5-4b7b-8b76-dc674513bec1-4c365f6a6e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#72ce1f91-b3d5-4b7b-8b76-dc674513bec1-f1c3424826"></see>
     /// </summary>
     let ``_72ce1f91-b3d5-4b7b-8b76-dc674513bec1-f1c3424826`` =
-        Namespaced_IRI.parse _namespace_name "72ce1f91-b3d5-4b7b-8b76-dc674513bec1-f1c3424826" |> NamespacedName
+        _prefix "72ce1f91-b3d5-4b7b-8b76-dc674513bec1-f1c3424826"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#734cd035-459b-407e-8a08-b68cd2bb743a"></see>
     /// </summary>
     let ``_734cd035-459b-407e-8a08-b68cd2bb743a`` =
-        Namespaced_IRI.parse _namespace_name "734cd035-459b-407e-8a08-b68cd2bb743a" |> NamespacedName
+        _prefix "734cd035-459b-407e-8a08-b68cd2bb743a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#734cd035-459b-407e-8a08-b68cd2bb743a-b79efa6e1c"></see>
     /// </summary>
     let ``_734cd035-459b-407e-8a08-b68cd2bb743a-b79efa6e1c`` =
-        Namespaced_IRI.parse _namespace_name "734cd035-459b-407e-8a08-b68cd2bb743a-b79efa6e1c" |> NamespacedName
+        _prefix "734cd035-459b-407e-8a08-b68cd2bb743a-b79efa6e1c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#75660bb0-b804-428e-8efb-c139bc7a63d6"></see>
     /// </summary>
     let ``_75660bb0-b804-428e-8efb-c139bc7a63d6`` =
-        Namespaced_IRI.parse _namespace_name "75660bb0-b804-428e-8efb-c139bc7a63d6" |> NamespacedName
+        _prefix "75660bb0-b804-428e-8efb-c139bc7a63d6"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#75660bb0-b804-428e-8efb-c139bc7a63d6-9341b4f3e5"></see>
     /// </summary>
     let ``_75660bb0-b804-428e-8efb-c139bc7a63d6-9341b4f3e5`` =
-        Namespaced_IRI.parse _namespace_name "75660bb0-b804-428e-8efb-c139bc7a63d6-9341b4f3e5" |> NamespacedName
+        _prefix "75660bb0-b804-428e-8efb-c139bc7a63d6-9341b4f3e5"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#75660bb0-b804-428e-8efb-c139bc7a63d6-8471bb905b"></see>
     /// </summary>
     let ``_75660bb0-b804-428e-8efb-c139bc7a63d6-8471bb905b`` =
-        Namespaced_IRI.parse _namespace_name "75660bb0-b804-428e-8efb-c139bc7a63d6-8471bb905b" |> NamespacedName
+        _prefix "75660bb0-b804-428e-8efb-c139bc7a63d6-8471bb905b"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#75660bb0-b804-428e-8efb-c139bc7a63d6-partof"></see>
     /// </summary>
     let ``_75660bb0-b804-428e-8efb-c139bc7a63d6-partof`` =
-        Namespaced_IRI.parse _namespace_name "75660bb0-b804-428e-8efb-c139bc7a63d6-partof" |> NamespacedName
+        _prefix "75660bb0-b804-428e-8efb-c139bc7a63d6-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8-42d9d30d94"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8-42d9d30d94`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8-42d9d30d94" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8-42d9d30d94"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8-706552b3f4"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8-706552b3f4`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8-706552b3f4" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8-706552b3f4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8-cf7aa6a7bf"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8-cf7aa6a7bf`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8-cf7aa6a7bf" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8-cf7aa6a7bf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8-9f43ebd6db"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8-9f43ebd6db`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8-9f43ebd6db" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8-9f43ebd6db"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8-ab964c6950"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8-ab964c6950`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8-ab964c6950" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8-ab964c6950"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#772b1b45-8046-46b0-a746-bbdc8849a6c8-partof"></see>
     /// </summary>
     let ``_772b1b45-8046-46b0-a746-bbdc8849a6c8-partof`` =
-        Namespaced_IRI.parse _namespace_name "772b1b45-8046-46b0-a746-bbdc8849a6c8-partof" |> NamespacedName
+        _prefix "772b1b45-8046-46b0-a746-bbdc8849a6c8-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca-9f43ebd6db"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca-9f43ebd6db`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca-9f43ebd6db" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca-9f43ebd6db"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca-42d9d30d94"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca-42d9d30d94`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca-42d9d30d94" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca-42d9d30d94"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca-706552b3f4"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca-706552b3f4`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca-706552b3f4" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca-706552b3f4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca-cf7aa6a7bf"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca-cf7aa6a7bf`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca-cf7aa6a7bf" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca-cf7aa6a7bf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca-ab964c6950"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca-ab964c6950`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca-ab964c6950" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca-ab964c6950"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#775357d1-e547-4674-9467-50b0308354ca-partof"></see>
     /// </summary>
     let ``_775357d1-e547-4674-9467-50b0308354ca-partof`` =
-        Namespaced_IRI.parse _namespace_name "775357d1-e547-4674-9467-50b0308354ca-partof" |> NamespacedName
+        _prefix "775357d1-e547-4674-9467-50b0308354ca-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7b624412-74a3-4560-a038-d59b747ee9c7"></see>
     /// </summary>
     let ``_7b624412-74a3-4560-a038-d59b747ee9c7`` =
-        Namespaced_IRI.parse _namespace_name "7b624412-74a3-4560-a038-d59b747ee9c7" |> NamespacedName
+        _prefix "7b624412-74a3-4560-a038-d59b747ee9c7"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7b624412-74a3-4560-a038-d59b747ee9c7-partof"></see>
     /// </summary>
     let ``_7b624412-74a3-4560-a038-d59b747ee9c7-partof`` =
-        Namespaced_IRI.parse _namespace_name "7b624412-74a3-4560-a038-d59b747ee9c7-partof" |> NamespacedName
+        _prefix "7b624412-74a3-4560-a038-d59b747ee9c7-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7c123714-5956-4ce5-bf15-39f3f7c5deed"></see>
     /// </summary>
     let ``_7c123714-5956-4ce5-bf15-39f3f7c5deed`` =
-        Namespaced_IRI.parse _namespace_name "7c123714-5956-4ce5-bf15-39f3f7c5deed" |> NamespacedName
+        _prefix "7c123714-5956-4ce5-bf15-39f3f7c5deed"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7d891586-52df-49f4-9cef-77e26f1a0ed6"></see>
     /// </summary>
     let ``_7d891586-52df-49f4-9cef-77e26f1a0ed6`` =
-        Namespaced_IRI.parse _namespace_name "7d891586-52df-49f4-9cef-77e26f1a0ed6" |> NamespacedName
+        _prefix "7d891586-52df-49f4-9cef-77e26f1a0ed6"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7d891586-52df-49f4-9cef-77e26f1a0ed6-ff77f5d24a"></see>
     /// </summary>
     let ``_7d891586-52df-49f4-9cef-77e26f1a0ed6-ff77f5d24a`` =
-        Namespaced_IRI.parse _namespace_name "7d891586-52df-49f4-9cef-77e26f1a0ed6-ff77f5d24a" |> NamespacedName
+        _prefix "7d891586-52df-49f4-9cef-77e26f1a0ed6-ff77f5d24a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7d891586-52df-49f4-9cef-77e26f1a0ed6-706552b3f4"></see>
     /// </summary>
     let ``_7d891586-52df-49f4-9cef-77e26f1a0ed6-706552b3f4`` =
-        Namespaced_IRI.parse _namespace_name "7d891586-52df-49f4-9cef-77e26f1a0ed6-706552b3f4" |> NamespacedName
+        _prefix "7d891586-52df-49f4-9cef-77e26f1a0ed6-706552b3f4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7d891586-52df-49f4-9cef-77e26f1a0ed6-4d944811ab"></see>
     /// </summary>
     let ``_7d891586-52df-49f4-9cef-77e26f1a0ed6-4d944811ab`` =
-        Namespaced_IRI.parse _namespace_name "7d891586-52df-49f4-9cef-77e26f1a0ed6-4d944811ab" |> NamespacedName
+        _prefix "7d891586-52df-49f4-9cef-77e26f1a0ed6-4d944811ab"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7d891586-52df-49f4-9cef-77e26f1a0ed6-3cddc7f227"></see>
     /// </summary>
     let ``_7d891586-52df-49f4-9cef-77e26f1a0ed6-3cddc7f227`` =
-        Namespaced_IRI.parse _namespace_name "7d891586-52df-49f4-9cef-77e26f1a0ed6-3cddc7f227" |> NamespacedName
+        _prefix "7d891586-52df-49f4-9cef-77e26f1a0ed6-3cddc7f227"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7d891586-52df-49f4-9cef-77e26f1a0ed6-partof"></see>
     /// </summary>
     let ``_7d891586-52df-49f4-9cef-77e26f1a0ed6-partof`` =
-        Namespaced_IRI.parse _namespace_name "7d891586-52df-49f4-9cef-77e26f1a0ed6-partof" |> NamespacedName
+        _prefix "7d891586-52df-49f4-9cef-77e26f1a0ed6-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7faf2c87-1064-43d7-81b9-90f16068587e"></see>
     /// </summary>
     let ``_7faf2c87-1064-43d7-81b9-90f16068587e`` =
-        Namespaced_IRI.parse _namespace_name "7faf2c87-1064-43d7-81b9-90f16068587e" |> NamespacedName
+        _prefix "7faf2c87-1064-43d7-81b9-90f16068587e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7faf2c87-1064-43d7-81b9-90f16068587e-7c9776f33e"></see>
     /// </summary>
     let ``_7faf2c87-1064-43d7-81b9-90f16068587e-7c9776f33e`` =
-        Namespaced_IRI.parse _namespace_name "7faf2c87-1064-43d7-81b9-90f16068587e-7c9776f33e" |> NamespacedName
+        _prefix "7faf2c87-1064-43d7-81b9-90f16068587e-7c9776f33e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7faf2c87-1064-43d7-81b9-90f16068587e-06e80bcecd"></see>
     /// </summary>
     let ``_7faf2c87-1064-43d7-81b9-90f16068587e-06e80bcecd`` =
-        Namespaced_IRI.parse _namespace_name "7faf2c87-1064-43d7-81b9-90f16068587e-06e80bcecd" |> NamespacedName
+        _prefix "7faf2c87-1064-43d7-81b9-90f16068587e-06e80bcecd"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7faf2c87-1064-43d7-81b9-90f16068587e-ad9e6833cd"></see>
     /// </summary>
     let ``_7faf2c87-1064-43d7-81b9-90f16068587e-ad9e6833cd`` =
-        Namespaced_IRI.parse _namespace_name "7faf2c87-1064-43d7-81b9-90f16068587e-ad9e6833cd" |> NamespacedName
+        _prefix "7faf2c87-1064-43d7-81b9-90f16068587e-ad9e6833cd"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7fb45454-7271-48b3-bd57-7a2b4572fc21"></see>
     /// </summary>
     let ``_7fb45454-7271-48b3-bd57-7a2b4572fc21`` =
-        Namespaced_IRI.parse _namespace_name "7fb45454-7271-48b3-bd57-7a2b4572fc21" |> NamespacedName
+        _prefix "7fb45454-7271-48b3-bd57-7a2b4572fc21"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7fb45454-7271-48b3-bd57-7a2b4572fc21-afbfc72532"></see>
     /// </summary>
     let ``_7fb45454-7271-48b3-bd57-7a2b4572fc21-afbfc72532`` =
-        Namespaced_IRI.parse _namespace_name "7fb45454-7271-48b3-bd57-7a2b4572fc21-afbfc72532" |> NamespacedName
+        _prefix "7fb45454-7271-48b3-bd57-7a2b4572fc21-afbfc72532"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#7fb45454-7271-48b3-bd57-7a2b4572fc21-215ee9c7d9"></see>
     /// </summary>
     let ``_7fb45454-7271-48b3-bd57-7a2b4572fc21-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "7fb45454-7271-48b3-bd57-7a2b4572fc21-215ee9c7d9" |> NamespacedName
+        _prefix "7fb45454-7271-48b3-bd57-7a2b4572fc21-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8049540f-3673-4ca0-920c-cb5326d7c466"></see>
     /// </summary>
     let ``_8049540f-3673-4ca0-920c-cb5326d7c466`` =
-        Namespaced_IRI.parse _namespace_name "8049540f-3673-4ca0-920c-cb5326d7c466" |> NamespacedName
+        _prefix "8049540f-3673-4ca0-920c-cb5326d7c466"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8049540f-3673-4ca0-920c-cb5326d7c466-215ee9c7d9"></see>
     /// </summary>
     let ``_8049540f-3673-4ca0-920c-cb5326d7c466-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "8049540f-3673-4ca0-920c-cb5326d7c466-215ee9c7d9" |> NamespacedName
+        _prefix "8049540f-3673-4ca0-920c-cb5326d7c466-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8049540f-3673-4ca0-920c-cb5326d7c466-bedac43443"></see>
     /// </summary>
     let ``_8049540f-3673-4ca0-920c-cb5326d7c466-bedac43443`` =
-        Namespaced_IRI.parse _namespace_name "8049540f-3673-4ca0-920c-cb5326d7c466-bedac43443" |> NamespacedName
+        _prefix "8049540f-3673-4ca0-920c-cb5326d7c466-bedac43443"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#825995b3-3b66-4e0a-a62d-d8649aaead78"></see>
     /// </summary>
     let ``_825995b3-3b66-4e0a-a62d-d8649aaead78`` =
-        Namespaced_IRI.parse _namespace_name "825995b3-3b66-4e0a-a62d-d8649aaead78" |> NamespacedName
+        _prefix "825995b3-3b66-4e0a-a62d-d8649aaead78"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#825995b3-3b66-4e0a-a62d-d8649aaead78-5336e1be2c"></see>
     /// </summary>
     let ``_825995b3-3b66-4e0a-a62d-d8649aaead78-5336e1be2c`` =
-        Namespaced_IRI.parse _namespace_name "825995b3-3b66-4e0a-a62d-d8649aaead78-5336e1be2c" |> NamespacedName
+        _prefix "825995b3-3b66-4e0a-a62d-d8649aaead78-5336e1be2c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#825995b3-3b66-4e0a-a62d-d8649aaead78-63a2ae33d9"></see>
     /// </summary>
     let ``_825995b3-3b66-4e0a-a62d-d8649aaead78-63a2ae33d9`` =
-        Namespaced_IRI.parse _namespace_name "825995b3-3b66-4e0a-a62d-d8649aaead78-63a2ae33d9" |> NamespacedName
+        _prefix "825995b3-3b66-4e0a-a62d-d8649aaead78-63a2ae33d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#842ffbb4-11de-4212-8e6e-9d4d8d28d3a5"></see>
     /// </summary>
     let ``_842ffbb4-11de-4212-8e6e-9d4d8d28d3a5`` =
-        Namespaced_IRI.parse _namespace_name "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5" |> NamespacedName
+        _prefix "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-215ee9c7d9"></see>
     /// </summary>
     let ``_842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-215ee9c7d9" |> NamespacedName
+        _prefix "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof"></see>
     /// </summary>
     let ``_842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof`` =
-        Namespaced_IRI.parse _namespace_name "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof" |> NamespacedName
+        _prefix "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof-215ee9c7d9"></see>
     /// </summary>
     let ``_842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof-215ee9c7d9" |> NamespacedName
+        _prefix "842ffbb4-11de-4212-8e6e-9d4d8d28d3a5-partof-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8f9744a7-4861-4bd3-a956-e4aab75b7e77"></see>
     /// </summary>
     let ``_8f9744a7-4861-4bd3-a956-e4aab75b7e77`` =
-        Namespaced_IRI.parse _namespace_name "8f9744a7-4861-4bd3-a956-e4aab75b7e77" |> NamespacedName
+        _prefix "8f9744a7-4861-4bd3-a956-e4aab75b7e77"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8f9744a7-4861-4bd3-a956-e4aab75b7e77-010dabac97"></see>
     /// </summary>
     let ``_8f9744a7-4861-4bd3-a956-e4aab75b7e77-010dabac97`` =
-        Namespaced_IRI.parse _namespace_name "8f9744a7-4861-4bd3-a956-e4aab75b7e77-010dabac97" |> NamespacedName
+        _prefix "8f9744a7-4861-4bd3-a956-e4aab75b7e77-010dabac97"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8f9744a7-4861-4bd3-a956-e4aab75b7e77-10865207d0"></see>
     /// </summary>
     let ``_8f9744a7-4861-4bd3-a956-e4aab75b7e77-10865207d0`` =
-        Namespaced_IRI.parse _namespace_name "8f9744a7-4861-4bd3-a956-e4aab75b7e77-10865207d0" |> NamespacedName
+        _prefix "8f9744a7-4861-4bd3-a956-e4aab75b7e77-10865207d0"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8fd7cfcc-7613-4c1c-af44-798d6a3dca4c"></see>
     /// </summary>
     let ``_8fd7cfcc-7613-4c1c-af44-798d6a3dca4c`` =
-        Namespaced_IRI.parse _namespace_name "8fd7cfcc-7613-4c1c-af44-798d6a3dca4c" |> NamespacedName
+        _prefix "8fd7cfcc-7613-4c1c-af44-798d6a3dca4c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-109da887be"></see>
     /// </summary>
     let ``_8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-109da887be`` =
-        Namespaced_IRI.parse _namespace_name "8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-109da887be" |> NamespacedName
+        _prefix "8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-109da887be"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-e2ba549b99"></see>
     /// </summary>
     let ``_8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-e2ba549b99`` =
-        Namespaced_IRI.parse _namespace_name "8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-e2ba549b99" |> NamespacedName
+        _prefix "8fd7cfcc-7613-4c1c-af44-798d6a3dca4c-e2ba549b99"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#9144c07e-d14f-4371-8d28-7545b7337a4a"></see>
     /// </summary>
     let ``_9144c07e-d14f-4371-8d28-7545b7337a4a`` =
-        Namespaced_IRI.parse _namespace_name "9144c07e-d14f-4371-8d28-7545b7337a4a" |> NamespacedName
+        _prefix "9144c07e-d14f-4371-8d28-7545b7337a4a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#9144c07e-d14f-4371-8d28-7545b7337a4a-215ee9c7d9"></see>
     /// </summary>
     let ``_9144c07e-d14f-4371-8d28-7545b7337a4a-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "9144c07e-d14f-4371-8d28-7545b7337a4a-215ee9c7d9" |> NamespacedName
+        _prefix "9144c07e-d14f-4371-8d28-7545b7337a4a-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#9144c07e-d14f-4371-8d28-7545b7337a4a-80d754989b"></see>
     /// </summary>
     let ``_9144c07e-d14f-4371-8d28-7545b7337a4a-80d754989b`` =
-        Namespaced_IRI.parse _namespace_name "9144c07e-d14f-4371-8d28-7545b7337a4a-80d754989b" |> NamespacedName
+        _prefix "9144c07e-d14f-4371-8d28-7545b7337a4a-80d754989b"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#9f8246db-bb73-4ad1-ab02-693da46dbd06"></see>
     /// </summary>
     let ``_9f8246db-bb73-4ad1-ab02-693da46dbd06`` =
-        Namespaced_IRI.parse _namespace_name "9f8246db-bb73-4ad1-ab02-693da46dbd06" |> NamespacedName
+        _prefix "9f8246db-bb73-4ad1-ab02-693da46dbd06"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#9f8246db-bb73-4ad1-ab02-693da46dbd06-5d348c3259"></see>
     /// </summary>
     let ``_9f8246db-bb73-4ad1-ab02-693da46dbd06-5d348c3259`` =
-        Namespaced_IRI.parse _namespace_name "9f8246db-bb73-4ad1-ab02-693da46dbd06-5d348c3259" |> NamespacedName
+        _prefix "9f8246db-bb73-4ad1-ab02-693da46dbd06-5d348c3259"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#9f8246db-bb73-4ad1-ab02-693da46dbd06-partof"></see>
     /// </summary>
     let ``_9f8246db-bb73-4ad1-ab02-693da46dbd06-partof`` =
-        Namespaced_IRI.parse _namespace_name "9f8246db-bb73-4ad1-ab02-693da46dbd06-partof" |> NamespacedName
+        _prefix "9f8246db-bb73-4ad1-ab02-693da46dbd06-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NaturalPerson"></see>
     /// </summary>
-    let NaturalPerson =
-        Namespaced_IRI.parse _namespace_name "NaturalPerson" |> NamespacedName
-
+    let NaturalPerson = _prefix "NaturalPerson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#AbusiveName"></see>
     /// </summary>
-    let AbusiveName =
-        Namespaced_IRI.parse _namespace_name "AbusiveName" |> NamespacedName
-
+    let AbusiveName = _prefix "AbusiveName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NameType"></see>
     /// </summary>
-    let NameType = Namespaced_IRI.parse _namespace_name "NameType" |> NamespacedName
+    let NameType = _prefix "NameType"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Actor"></see>
     /// </summary>
-    let Actor = Namespaced_IRI.parse _namespace_name "Actor" |> NamespacedName
+    let Actor = _prefix "Actor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Role"></see>
     /// </summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
-
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#AdditionalName"></see>
     /// </summary>
-    let AdditionalName =
-        Namespaced_IRI.parse _namespace_name "AdditionalName" |> NamespacedName
-
+    let AdditionalName = _prefix "AdditionalName"
     /// <summary>
     /// CWRC address is the equivalent of a schema.org Postal Address and uses the predicates from schema Postal Address.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#Address"></see></summary>
-    let Address = Namespaced_IRI.parse _namespace_name "Address" |> NamespacedName
+    let Address = _prefix "Address"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
-
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Androgynous"></see>
     /// </summary>
-    let Androgynous =
-        Namespaced_IRI.parse _namespace_name "Androgynous" |> NamespacedName
-
+    let Androgynous = _prefix "Androgynous"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Gender"></see>
     /// </summary>
-    let Gender = Namespaced_IRI.parse _namespace_name "Gender" |> NamespacedName
-
+    let Gender = _prefix "Gender"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#AuthorialName"></see>
     /// </summary>
-    let AuthorialName =
-        Namespaced_IRI.parse _namespace_name "AuthorialName" |> NamespacedName
-
+    let AuthorialName = _prefix "AuthorialName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#BiographyContext"></see>
     /// </summary>
-    let BiographyContext =
-        Namespaced_IRI.parse _namespace_name "BiographyContext" |> NamespacedName
-
+    let BiographyContext = _prefix "BiographyContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
-
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#BirthContext"></see>
     /// </summary>
-    let BirthContext =
-        Namespaced_IRI.parse _namespace_name "BirthContext" |> NamespacedName
-
+    let BirthContext = _prefix "BirthContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#BirthPosition"></see>
     /// </summary>
-    let BirthPosition =
-        Namespaced_IRI.parse _namespace_name "BirthPosition" |> NamespacedName
-
+    let BirthPosition = _prefix "BirthPosition"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Birthname"></see>
     /// </summary>
-    let Birthname = Namespaced_IRI.parse _namespace_name "Birthname" |> NamespacedName
-
+    let Birthname = _prefix "Birthname"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#BoardingSchool"></see></summary>
-    let BoardingSchool =
-        Namespaced_IRI.parse _namespace_name "BoardingSchool" |> NamespacedName
-
+    let BoardingSchool = _prefix "BoardingSchool"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#EducationalOrganization"></see></summary>
-    let EducationalOrganization =
-        Namespaced_IRI.parse _namespace_name "EducationalOrganization" |> NamespacedName
-
+    let EducationalOrganization = _prefix "EducationalOrganization"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#BritishWomenLiteraryClimate"></see>
     /// </summary>
-    let BritishWomenLiteraryClimate =
-        Namespaced_IRI.parse _namespace_name "BritishWomenLiteraryClimate" |> NamespacedName
-
+    let BritishWomenLiteraryClimate = _prefix "BritishWomenLiteraryClimate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#LiteraryClimate"></see>
     /// </summary>
-    let LiteraryClimate =
-        Namespaced_IRI.parse _namespace_name "LiteraryClimate" |> NamespacedName
-
+    let LiteraryClimate = _prefix "LiteraryClimate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Bursary"></see>
     /// </summary>
-    let Bursary = Namespaced_IRI.parse _namespace_name "Bursary" |> NamespacedName
-
+    let Bursary = _prefix "Bursary"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EducationalAward"></see>
     /// </summary>
-    let EducationalAward =
-        Namespaced_IRI.parse _namespace_name "EducationalAward" |> NamespacedName
-
+    let EducationalAward = _prefix "EducationalAward"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Certainty"></see>
     /// </summary>
-    let Certainty = Namespaced_IRI.parse _namespace_name "Certainty" |> NamespacedName
+    let Certainty = _prefix "Certainty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ChangeSet"></see>
     /// </summary>
-    let ChangeSet = Namespaced_IRI.parse _namespace_name "ChangeSet" |> NamespacedName
-
+    let ChangeSet = _prefix "ChangeSet"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#CoEducationalSchool"></see></summary>
-    let CoEducationalSchool =
-        Namespaced_IRI.parse _namespace_name "CoEducationalSchool" |> NamespacedName
-
+    let CoEducationalSchool = _prefix "CoEducationalSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#CompetencyQuestion"></see>
     /// </summary>
-    let CompetencyQuestion =
-        Namespaced_IRI.parse _namespace_name "CompetencyQuestion" |> NamespacedName
-
+    let CompetencyQuestion = _prefix "CompetencyQuestion"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#ComprehensiveSchool"></see></summary>
-    let ComprehensiveSchool =
-        Namespaced_IRI.parse _namespace_name "ComprehensiveSchool" |> NamespacedName
-
+    let ComprehensiveSchool = _prefix "ComprehensiveSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Credential"></see>
     /// </summary>
-    let Credential = Namespaced_IRI.parse _namespace_name "Credential" |> NamespacedName
-
+    let Credential = _prefix "Credential"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#CrypticName"></see>
     /// </summary>
-    let CrypticName =
-        Namespaced_IRI.parse _namespace_name "CrypticName" |> NamespacedName
-
+    let CrypticName = _prefix "CrypticName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#CulturalForm"></see>
     /// </summary>
-    let CulturalForm =
-        Namespaced_IRI.parse _namespace_name "CulturalForm" |> NamespacedName
-
+    let CulturalForm = _prefix "CulturalForm"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#CulturalFormContext"></see>
     /// </summary>
-    let CulturalFormContext =
-        Namespaced_IRI.parse _namespace_name "CulturalFormContext" |> NamespacedName
-
+    let CulturalFormContext = _prefix "CulturalFormContext"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#CulturalForm" title="#CulturalForm"&gt;cultural form&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#CulturalFormation"></see></summary>
-    let CulturalFormation =
-        Namespaced_IRI.parse _namespace_name "CulturalFormation" |> NamespacedName
-
+    let CulturalFormation = _prefix "CulturalFormation"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#DameSchool"></see></summary>
-    let DameSchool = Namespaced_IRI.parse _namespace_name "DameSchool" |> NamespacedName
+    let DameSchool = _prefix "DameSchool"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#DaySchool"></see></summary>
-    let DaySchool = Namespaced_IRI.parse _namespace_name "DaySchool" |> NamespacedName
-
+    let DaySchool = _prefix "DaySchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#DeathContext"></see>
     /// </summary>
-    let DeathContext =
-        Namespaced_IRI.parse _namespace_name "DeathContext" |> NamespacedName
-
+    let DeathContext = _prefix "DeathContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#DecadeSignficance"></see>
     /// </summary>
-    let DecadeSignficance =
-        Namespaced_IRI.parse _namespace_name "DecadeSignficance" |> NamespacedName
-
+    let DecadeSignficance = _prefix "DecadeSignficance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Distinction"></see>
     /// </summary>
-    let Distinction =
-        Namespaced_IRI.parse _namespace_name "Distinction" |> NamespacedName
-
+    let Distinction = _prefix "Distinction"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#DomesticEducationContext"></see>
     /// </summary>
-    let DomesticEducationContext =
-        Namespaced_IRI.parse _namespace_name "DomesticEducationContext" |> NamespacedName
-
+    let DomesticEducationContext = _prefix "DomesticEducationContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EducationContext"></see>
     /// </summary>
-    let EducationContext =
-        Namespaced_IRI.parse _namespace_name "EducationContext" |> NamespacedName
-
+    let EducationContext = _prefix "EducationContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EducationalPrize"></see>
     /// </summary>
-    let EducationalPrize =
-        Namespaced_IRI.parse _namespace_name "EducationalPrize" |> NamespacedName
-
+    let EducationalPrize = _prefix "EducationalPrize"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EducationalSubject"></see>
     /// </summary>
-    let EducationalSubject =
-        Namespaced_IRI.parse _namespace_name "EducationalSubject" |> NamespacedName
-
+    let EducationalSubject = _prefix "EducationalSubject"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EducationalText"></see>
     /// </summary>
-    let EducationalText =
-        Namespaced_IRI.parse _namespace_name "EducationalText" |> NamespacedName
-
+    let EducationalText = _prefix "EducationalText"
     /// <summary>
     /// Deprecated in favour of foreign instance &lt;a href="http://id.loc.gov/vocabulary/languages/eng"&gt;eng&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#EnglishLanguage"></see></summary>
-    let EnglishLanguage =
-        Namespaced_IRI.parse _namespace_name "EnglishLanguage" |> NamespacedName
-
+    let EnglishLanguage = _prefix "EnglishLanguage"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#englishNationalHeritage" title="#englishNationalHeritage"&gt;English&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#EnglishNationalHeritage"></see></summary>
-    let EnglishNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "EnglishNationalHeritage" |> NamespacedName
-
+    let EnglishNationalHeritage = _prefix "EnglishNationalHeritage"
     /// <summary>
     /// Deprecated in favour of foreign instance ISO 3166-2:GB-ENG.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#englishNationalHeritage"></see></summary>
-    let englishNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "englishNationalHeritage" |> NamespacedName
-
+    let englishNationalHeritage = _prefix "englishNationalHeritage"
     /// <summary>
     /// Deprecated in favour of instance ISO 3166-2:GB-ENG.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#EnglishNationalIdentity"></see></summary>
-    let EnglishNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "EnglishNationalIdentity" |> NamespacedName
-
+    let EnglishNationalIdentity = _prefix "EnglishNationalIdentity"
     /// <summary>
     /// Deprecated in favour of foreign instance ISO 3166-2:GB-ENG.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#englishNationalIdentity"></see></summary>
-    let englishNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "englishNationalIdentity" |> NamespacedName
-
+    let englishNationalIdentity = _prefix "englishNationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EssayAward"></see>
     /// </summary>
-    let EssayAward = Namespaced_IRI.parse _namespace_name "EssayAward" |> NamespacedName
+    let EssayAward = _prefix "EssayAward"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Ethnicity"></see>
     /// </summary>
-    let Ethnicity = Namespaced_IRI.parse _namespace_name "Ethnicity" |> NamespacedName
-
+    let Ethnicity = _prefix "Ethnicity"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#RaceEthnicityContext" title="#RaceEthnicityContext"&gt;race or ethnicity context&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#EthnicityContext"></see></summary>
-    let EthnicityContext =
-        Namespaced_IRI.parse _namespace_name "EthnicityContext" |> NamespacedName
-
+    let EthnicityContext = _prefix "EthnicityContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#RaceEthnicityContext"></see>
     /// </summary>
-    let RaceEthnicityContext =
-        Namespaced_IRI.parse _namespace_name "RaceEthnicityContext" |> NamespacedName
-
+    let RaceEthnicityContext = _prefix "RaceEthnicityContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#RaceColour"></see>
     /// </summary>
-    let RaceColour = Namespaced_IRI.parse _namespace_name "RaceColour" |> NamespacedName
+    let RaceColour = _prefix "RaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Exhibition"></see>
     /// </summary>
-    let Exhibition = Namespaced_IRI.parse _namespace_name "Exhibition" |> NamespacedName
-
+    let Exhibition = _prefix "Exhibition"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#FamiliarName"></see>
     /// </summary>
-    let FamiliarName =
-        Namespaced_IRI.parse _namespace_name "FamiliarName" |> NamespacedName
-
+    let FamiliarName = _prefix "FamiliarName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#FamilyContext"></see>
     /// </summary>
-    let FamilyContext =
-        Namespaced_IRI.parse _namespace_name "FamilyContext" |> NamespacedName
-
+    let FamilyContext = _prefix "FamilyContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Fellowship"></see>
     /// </summary>
-    let Fellowship = Namespaced_IRI.parse _namespace_name "Fellowship" |> NamespacedName
-
+    let Fellowship = _prefix "Fellowship"
     /// <summary>
     /// Deprecated with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#FemaleLabel"></see></summary>
-    let FemaleLabel =
-        Namespaced_IRI.parse _namespace_name "FemaleLabel" |> NamespacedName
-
+    let FemaleLabel = _prefix "FemaleLabel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#TextLabels"></see>
     /// </summary>
-    let TextLabels = Namespaced_IRI.parse _namespace_name "TextLabels" |> NamespacedName
-
+    let TextLabels = _prefix "TextLabels"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#woman" title="#woman"&gt;woman&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderWomanFemale"></see></summary>
-    let genderWomanFemale =
-        Namespaced_IRI.parse _namespace_name "genderWomanFemale" |> NamespacedName
-
+    let genderWomanFemale = _prefix "genderWomanFemale"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#genderWomanFemale" title="#genderWomanFemale"&gt;Woman/Female&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#femaleSex"></see></summary>
-    let femaleSex = Namespaced_IRI.parse _namespace_name "femaleSex" |> NamespacedName
-
+    let femaleSex = _prefix "femaleSex"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#FictionalPerson"></see>
     /// </summary>
-    let FictionalPerson =
-        Namespaced_IRI.parse _namespace_name "FictionalPerson" |> NamespacedName
-
+    let FictionalPerson = _prefix "FictionalPerson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Forename"></see>
     /// </summary>
-    let Forename = Namespaced_IRI.parse _namespace_name "Forename" |> NamespacedName
-
+    let Forename = _prefix "Forename"
     /// <summary>
     /// Deprecated in favour of foreign instance &lt;a href="http://id.loc.gov/vocabulary/languages/fre"&gt;fre&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#FrenchLanguage"></see></summary>
-    let FrenchLanguage =
-        Namespaced_IRI.parse _namespace_name "FrenchLanguage" |> NamespacedName
-
+    let FrenchLanguage = _prefix "FrenchLanguage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#FriendsAndAssociatesContext"></see>
     /// </summary>
-    let FriendsAndAssociatesContext =
-        Namespaced_IRI.parse _namespace_name "FriendsAndAssociatesContext" |> NamespacedName
-
+    let FriendsAndAssociatesContext = _prefix "FriendsAndAssociatesContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#GenderContext"></see>
     /// </summary>
-    let GenderContext =
-        Namespaced_IRI.parse _namespace_name "GenderContext" |> NamespacedName
-
+    let GenderContext = _prefix "GenderContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#GenderQueer"></see>
     /// </summary>
-    let GenderQueer =
-        Namespaced_IRI.parse _namespace_name "GenderQueer" |> NamespacedName
-
+    let GenderQueer = _prefix "GenderQueer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#representedBy"></see>
     /// </summary>
-    let representedBy =
-        Namespaced_IRI.parse _namespace_name "representedBy" |> NamespacedName
-
+    let representedBy = _prefix "representedBy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#queerLabel"></see>
     /// </summary>
-    let queerLabel = Namespaced_IRI.parse _namespace_name "queerLabel" |> NamespacedName
-
+    let queerLabel = _prefix "queerLabel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#GenerationalName"></see>
     /// </summary>
-    let GenerationalName =
-        Namespaced_IRI.parse _namespace_name "GenerationalName" |> NamespacedName
-
+    let GenerationalName = _prefix "GenerationalName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#GeographicHeritage"></see>
     /// </summary>
-    let GeographicHeritage =
-        Namespaced_IRI.parse _namespace_name "GeographicHeritage" |> NamespacedName
-
+    let GeographicHeritage = _prefix "GeographicHeritage"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#GeographicHeritage" title="#GeographicHeritage"&gt;geographic heritage&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#GeographicalHeritage"></see></summary>
-    let GeographicalHeritage =
-        Namespaced_IRI.parse _namespace_name "GeographicalHeritage" |> NamespacedName
-
+    let GeographicalHeritage = _prefix "GeographicalHeritage"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#GrammarSchool"></see></summary>
-    let GrammarSchool =
-        Namespaced_IRI.parse _namespace_name "GrammarSchool" |> NamespacedName
-
+    let GrammarSchool = _prefix "GrammarSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#HealthContext"></see>
     /// </summary>
-    let HealthContext =
-        Namespaced_IRI.parse _namespace_name "HealthContext" |> NamespacedName
-
+    let HealthContext = _prefix "HealthContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#HistoricSignificance"></see>
     /// </summary>
-    let HistoricSignificance =
-        Namespaced_IRI.parse _namespace_name "HistoricSignificance" |> NamespacedName
-
+    let HistoricSignificance = _prefix "HistoricSignificance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#HonorificName"></see>
     /// </summary>
-    let HonorificName =
-        Namespaced_IRI.parse _namespace_name "HonorificName" |> NamespacedName
-
+    let HonorificName = _prefix "HonorificName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#IndexedName"></see>
     /// </summary>
-    let IndexedName =
-        Namespaced_IRI.parse _namespace_name "IndexedName" |> NamespacedName
-
+    let IndexedName = _prefix "IndexedName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#IndividualSignificance"></see>
     /// </summary>
-    let IndividualSignificance =
-        Namespaced_IRI.parse _namespace_name "IndividualSignificance" |> NamespacedName
-
+    let IndividualSignificance = _prefix "IndividualSignificance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#InstitutionalEducationContext"></see>
     /// </summary>
-    let InstitutionalEducationContext =
-        Namespaced_IRI.parse _namespace_name "InstitutionalEducationContext" |> NamespacedName
-
+    let InstitutionalEducationContext = _prefix "InstitutionalEducationContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#IntervalTime"></see>
     /// </summary>
-    let IntervalTime =
-        Namespaced_IRI.parse _namespace_name "IntervalTime" |> NamespacedName
-
+    let IntervalTime = _prefix "IntervalTime"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#IntimateRelationshipsContext"></see>
     /// </summary>
-    let IntimateRelationshipsContext =
-        Namespaced_IRI.parse _namespace_name "IntimateRelationshipsContext" |> NamespacedName
-
+    let IntimateRelationshipsContext = _prefix "IntimateRelationshipsContext"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#jewishEthnicity" title="#jewishEthnicity"&gt;Jewish&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#JewishEthnicity"></see></summary>
-    let JewishEthnicity =
-        Namespaced_IRI.parse _namespace_name "JewishEthnicity" |> NamespacedName
-
+    let JewishEthnicity = _prefix "JewishEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishEthnicity"></see></summary>
-    let jewishEthnicity =
-        Namespaced_IRI.parse _namespace_name "jewishEthnicity" |> NamespacedName
-
+    let jewishEthnicity = _prefix "jewishEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishLabel"></see>
     /// </summary>
-    let jewishLabel =
-        Namespaced_IRI.parse _namespace_name "jewishLabel" |> NamespacedName
-
+    let jewishLabel = _prefix "jewishLabel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Language"></see>
     /// </summary>
-    let Language = Namespaced_IRI.parse _namespace_name "Language" |> NamespacedName
-
+    let Language = _prefix "Language"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#CulturalFormContext" title="#CulturalFormContext"&gt;cultural form context&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#LanguageContext"></see></summary>
-    let LanguageContext =
-        Namespaced_IRI.parse _namespace_name "LanguageContext" |> NamespacedName
-
+    let LanguageContext = _prefix "LanguageContext"
     /// <summary>
     /// Deprecated, with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#LinguisticAbility"></see></summary>
-    let LinguisticAbility =
-        Namespaced_IRI.parse _namespace_name "LinguisticAbility" |> NamespacedName
-
+    let LinguisticAbility = _prefix "LinguisticAbility"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#LeisureContext"></see>
     /// </summary>
-    let LeisureContext =
-        Namespaced_IRI.parse _namespace_name "LeisureContext" |> NamespacedName
-
+    let LeisureContext = _prefix "LeisureContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#LiteraryName"></see>
     /// </summary>
-    let LiteraryName =
-        Namespaced_IRI.parse _namespace_name "LiteraryName" |> NamespacedName
-
+    let LiteraryName = _prefix "LiteraryName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#LocalName"></see>
     /// </summary>
-    let LocalName = Namespaced_IRI.parse _namespace_name "LocalName" |> NamespacedName
-
+    let LocalName = _prefix "LocalName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#MarriedName"></see>
     /// </summary>
-    let MarriedName =
-        Namespaced_IRI.parse _namespace_name "MarriedName" |> NamespacedName
-
+    let MarriedName = _prefix "MarriedName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#MentalHealthContext"></see>
     /// </summary>
-    let MentalHealthContext =
-        Namespaced_IRI.parse _namespace_name "MentalHealthContext" |> NamespacedName
-
+    let MentalHealthContext = _prefix "MentalHealthContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NameContext"></see>
     /// </summary>
-    let NameContext =
-        Namespaced_IRI.parse _namespace_name "NameContext" |> NamespacedName
-
+    let NameContext = _prefix "NameContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NameLink"></see>
     /// </summary>
-    let NameLink = Namespaced_IRI.parse _namespace_name "NameLink" |> NamespacedName
-
+    let NameLink = _prefix "NameLink"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PersonalName"></see>
     /// </summary>
-    let PersonalName =
-        Namespaced_IRI.parse _namespace_name "PersonalName" |> NamespacedName
-
+    let PersonalName = _prefix "PersonalName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NationalHeritage"></see>
     /// </summary>
-    let NationalHeritage =
-        Namespaced_IRI.parse _namespace_name "NationalHeritage" |> NamespacedName
-
+    let NationalHeritage = _prefix "NationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NationalIdentity"></see>
     /// </summary>
-    let NationalIdentity =
-        Namespaced_IRI.parse _namespace_name "NationalIdentity" |> NamespacedName
-
+    let NationalIdentity = _prefix "NationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#NationalityContext"></see>
     /// </summary>
-    let NationalityContext =
-        Namespaced_IRI.parse _namespace_name "NationalityContext" |> NamespacedName
-
+    let NationalityContext = _prefix "NationalityContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Nickname"></see>
     /// </summary>
-    let Nickname = Namespaced_IRI.parse _namespace_name "Nickname" |> NamespacedName
+    let Nickname = _prefix "Nickname"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Occupation"></see>
     /// </summary>
-    let Occupation = Namespaced_IRI.parse _namespace_name "Occupation" |> NamespacedName
-
+    let Occupation = _prefix "Occupation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#OccupationContext"></see>
     /// </summary>
-    let OccupationContext =
-        Namespaced_IRI.parse _namespace_name "OccupationContext" |> NamespacedName
-
+    let OccupationContext = _prefix "OccupationContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Oeuvre"></see>
     /// </summary>
-    let Oeuvre = Namespaced_IRI.parse _namespace_name "Oeuvre" |> NamespacedName
-
+    let Oeuvre = _prefix "Oeuvre"
     /// <summary>
     ///
     /// Deprecated in favour of class &lt;a href="https://www.w3.org/TR/vocab-org/#class-formalorganization"&gt;org:formalOrganization&lt;/a&gt;
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#Organization"></see></summary>
-    let Organization =
-        Namespaced_IRI.parse _namespace_name "Organization" |> NamespacedName
-
+    let Organization = _prefix "Organization"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#EventElement" title="#EventElement"&gt;[http://sparql.cwrc.ca/ontologies/cwrc#EventElement]&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#Performance"></see></summary>
-    let Performance =
-        Namespaced_IRI.parse _namespace_name "Performance" |> NamespacedName
-
+    let Performance = _prefix "Performance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasElement"></see>
     /// </summary>
-    let hasElement = Namespaced_IRI.parse _namespace_name "hasElement" |> NamespacedName
-
+    let hasElement = _prefix "hasElement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#EventElement"></see>
     /// </summary>
-    let EventElement =
-        Namespaced_IRI.parse _namespace_name "EventElement" |> NamespacedName
-
+    let EventElement = _prefix "EventElement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PeriodSignificance"></see>
     /// </summary>
-    let PeriodSignificance =
-        Namespaced_IRI.parse _namespace_name "PeriodSignificance" |> NamespacedName
-
+    let PeriodSignificance = _prefix "PeriodSignificance"
     /// <summary>
     /// This definition is indebted to the Text Encoding Initiative's definition of the "persona" element. See &lt;a href="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-persona.html" title="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-persona.html"&gt;TEI element persona &lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#Persona"></see></summary>
-    let Persona = Namespaced_IRI.parse _namespace_name "Persona" |> NamespacedName
-
+    let Persona = _prefix "Persona"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PhysicalHealthContext"></see>
     /// </summary>
-    let PhysicalHealthContext =
-        Namespaced_IRI.parse _namespace_name "PhysicalHealthContext" |> NamespacedName
-
+    let PhysicalHealthContext = _prefix "PhysicalHealthContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PoliticalAffiliation"></see>
     /// </summary>
-    let PoliticalAffiliation =
-        Namespaced_IRI.parse _namespace_name "PoliticalAffiliation" |> NamespacedName
-
+    let PoliticalAffiliation = _prefix "PoliticalAffiliation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PoliticalClimate"></see>
     /// </summary>
-    let PoliticalClimate =
-        Namespaced_IRI.parse _namespace_name "PoliticalClimate" |> NamespacedName
-
+    let PoliticalClimate = _prefix "PoliticalClimate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PoliticalContext"></see>
     /// </summary>
-    let PoliticalContext =
-        Namespaced_IRI.parse _namespace_name "PoliticalContext" |> NamespacedName
-
+    let PoliticalContext = _prefix "PoliticalContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PoliticalOrganization"></see>
     /// </summary>
-    let PoliticalOrganization =
-        Namespaced_IRI.parse _namespace_name "PoliticalOrganization" |> NamespacedName
-
+    let PoliticalOrganization = _prefix "PoliticalOrganization"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#PostSecondarySchool"></see></summary>
-    let PostSecondarySchool =
-        Namespaced_IRI.parse _namespace_name "PostSecondarySchool" |> NamespacedName
-
+    let PostSecondarySchool = _prefix "PostSecondarySchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PreferredName"></see>
     /// </summary>
-    let PreferredName =
-        Namespaced_IRI.parse _namespace_name "PreferredName" |> NamespacedName
-
+    let PreferredName = _prefix "PreferredName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#rangeIncludes"></see>
     /// </summary>
-    let rangeIncludes =
-        Namespaced_IRI.parse _namespace_name "rangeIncludes" |> NamespacedName
-
+    let rangeIncludes = _prefix "rangeIncludes"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PrepSchool"></see>
     /// </summary>
-    let PrepSchool = Namespaced_IRI.parse _namespace_name "PrepSchool" |> NamespacedName
-
+    let PrepSchool = _prefix "PrepSchool"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#PrimarySchool"></see></summary>
-    let PrimarySchool =
-        Namespaced_IRI.parse _namespace_name "PrimarySchool" |> NamespacedName
-
+    let PrimarySchool = _prefix "PrimarySchool"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#PrivateSchool"></see></summary>
-    let PrivateSchool =
-        Namespaced_IRI.parse _namespace_name "PrivateSchool" |> NamespacedName
-
+    let PrivateSchool = _prefix "PrivateSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ProfessionalTitle"></see>
     /// </summary>
-    let ProfessionalTitle =
-        Namespaced_IRI.parse _namespace_name "ProfessionalTitle" |> NamespacedName
-
+    let ProfessionalTitle = _prefix "ProfessionalTitle"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#RoleName"></see>
     /// </summary>
-    let RoleName = Namespaced_IRI.parse _namespace_name "RoleName" |> NamespacedName
+    let RoleName = _prefix "RoleName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Pseudonym"></see>
     /// </summary>
-    let Pseudonym = Namespaced_IRI.parse _namespace_name "Pseudonym" |> NamespacedName
-
+    let Pseudonym = _prefix "Pseudonym"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#PunctiveTime"></see>
     /// </summary>
-    let PunctiveTime =
-        Namespaced_IRI.parse _namespace_name "PunctiveTime" |> NamespacedName
-
+    let PunctiveTime = _prefix "PunctiveTime"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#RaceColour" title="#RaceColour"&gt;race or colour&lt;/a&gt; and &lt;a href="#Ethnicity" title="#Ethnicity"&gt;ethnicity&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#RaceEthnicity"></see></summary>
-    let RaceEthnicity =
-        Namespaced_IRI.parse _namespace_name "RaceEthnicity" |> NamespacedName
-
+    let RaceEthnicity = _prefix "RaceEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Religion"></see>
     /// </summary>
-    let Religion = Namespaced_IRI.parse _namespace_name "Religion" |> NamespacedName
-
+    let Religion = _prefix "Religion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ReligionContext"></see>
     /// </summary>
-    let ReligionContext =
-        Namespaced_IRI.parse _namespace_name "ReligionContext" |> NamespacedName
-
+    let ReligionContext = _prefix "ReligionContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ReligiousOrganization"></see>
     /// </summary>
-    let ReligiousOrganization =
-        Namespaced_IRI.parse _namespace_name "ReligiousOrganization" |> NamespacedName
-
+    let ReligiousOrganization = _prefix "ReligiousOrganization"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ReligiousSchool"></see>
     /// </summary>
-    let ReligiousSchool =
-        Namespaced_IRI.parse _namespace_name "ReligiousSchool" |> NamespacedName
-
+    let ReligiousSchool = _prefix "ReligiousSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ReligousName"></see>
     /// </summary>
-    let ReligousName =
-        Namespaced_IRI.parse _namespace_name "ReligousName" |> NamespacedName
-
+    let ReligousName = _prefix "ReligousName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ReproductiveHistory"></see>
     /// </summary>
-    let ReproductiveHistory =
-        Namespaced_IRI.parse _namespace_name "ReproductiveHistory" |> NamespacedName
-
+    let ReproductiveHistory = _prefix "ReproductiveHistory"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#RomanceName"></see>
     /// </summary>
-    let RomanceName =
-        Namespaced_IRI.parse _namespace_name "RomanceName" |> NamespacedName
-
+    let RomanceName = _prefix "RomanceName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#RoyalName"></see>
     /// </summary>
-    let RoyalName = Namespaced_IRI.parse _namespace_name "RoyalName" |> NamespacedName
-
+    let RoyalName = _prefix "RoyalName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Scholarship"></see>
     /// </summary>
-    let Scholarship =
-        Namespaced_IRI.parse _namespace_name "Scholarship" |> NamespacedName
-
+    let Scholarship = _prefix "Scholarship"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#SecondaryModernSchool"></see></summary>
-    let SecondaryModernSchool =
-        Namespaced_IRI.parse _namespace_name "SecondaryModernSchool" |> NamespacedName
-
+    let SecondaryModernSchool = _prefix "SecondaryModernSchool"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#SecondarySchool"></see></summary>
-    let SecondarySchool =
-        Namespaced_IRI.parse _namespace_name "SecondarySchool" |> NamespacedName
-
+    let SecondarySchool = _prefix "SecondarySchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SecularSchool"></see>
     /// </summary>
-    let SecularSchool =
-        Namespaced_IRI.parse _namespace_name "SecularSchool" |> NamespacedName
-
+    let SecularSchool = _prefix "SecularSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SelfConstructedName"></see>
     /// </summary>
-    let SelfConstructedName =
-        Namespaced_IRI.parse _namespace_name "SelfConstructedName" |> NamespacedName
-
+    let SelfConstructedName = _prefix "SelfConstructedName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SelfTaughtEducationContext"></see>
     /// </summary>
-    let SelfTaughtEducationContext =
-        Namespaced_IRI.parse _namespace_name "SelfTaughtEducationContext" |> NamespacedName
-
+    let SelfTaughtEducationContext = _prefix "SelfTaughtEducationContext"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#Gender" title="#Gender"&gt;gender&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#SexIdentity"></see></summary>
-    let SexIdentity =
-        Namespaced_IRI.parse _namespace_name "SexIdentity" |> NamespacedName
-
+    let SexIdentity = _prefix "SexIdentity"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#Sexuality" title="#Sexuality"&gt;sexuality&lt;/a&gt;.
     /// Deprecated in favour of &lt;a href="#Sexuality" title="#Sexuality"&gt;sexuality&lt;/a&gt; term.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#SexualIdentity"></see></summary>
-    let SexualIdentity =
-        Namespaced_IRI.parse _namespace_name "SexualIdentity" |> NamespacedName
-
+    let SexualIdentity = _prefix "SexualIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Sexuality"></see>
     /// </summary>
-    let Sexuality = Namespaced_IRI.parse _namespace_name "Sexuality" |> NamespacedName
-
+    let Sexuality = _prefix "Sexuality"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SexualityContext"></see>
     /// </summary>
-    let SexualityContext =
-        Namespaced_IRI.parse _namespace_name "SexualityContext" |> NamespacedName
-
+    let SexualityContext = _prefix "SexualityContext"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#SingleSexSchool"></see></summary>
-    let SingleSexSchool =
-        Namespaced_IRI.parse _namespace_name "SingleSexSchool" |> NamespacedName
-
+    let SingleSexSchool = _prefix "SingleSexSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SocialClass"></see>
     /// </summary>
-    let SocialClass =
-        Namespaced_IRI.parse _namespace_name "SocialClass" |> NamespacedName
-
+    let SocialClass = _prefix "SocialClass"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SocialClassContext"></see>
     /// </summary>
-    let SocialClassContext =
-        Namespaced_IRI.parse _namespace_name "SocialClassContext" |> NamespacedName
-
+    let SocialClassContext = _prefix "SocialClassContext"
     /// <summary>
     /// Deprecated in favour of class &lt;a href="#SocialClass" title="#SocialClass"&gt;social class&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#SocialClassIdentity"></see></summary>
-    let SocialClassIdentity =
-        Namespaced_IRI.parse _namespace_name "SocialClassIdentity" |> NamespacedName
-
+    let SocialClassIdentity = _prefix "SocialClassIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SocialClimate"></see>
     /// </summary>
-    let SocialClimate =
-        Namespaced_IRI.parse _namespace_name "SocialClimate" |> NamespacedName
-
+    let SocialClimate = _prefix "SocialClimate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SpatialContext"></see>
     /// </summary>
-    let SpatialContext =
-        Namespaced_IRI.parse _namespace_name "SpatialContext" |> NamespacedName
-
+    let SpatialContext = _prefix "SpatialContext"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#StateSchool"></see></summary>
-    let StateSchool =
-        Namespaced_IRI.parse _namespace_name "StateSchool" |> NamespacedName
-
+    let StateSchool = _prefix "StateSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Studentship"></see>
     /// </summary>
-    let Studentship =
-        Namespaced_IRI.parse _namespace_name "Studentship" |> NamespacedName
-
+    let Studentship = _prefix "Studentship"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#StyledName"></see>
     /// </summary>
-    let StyledName = Namespaced_IRI.parse _namespace_name "StyledName" |> NamespacedName
+    let StyledName = _prefix "StyledName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Surname"></see>
     /// </summary>
-    let Surname = Namespaced_IRI.parse _namespace_name "Surname" |> NamespacedName
+    let Surname = _prefix "Surname"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#SystemName"></see>
     /// </summary>
-    let SystemName = Namespaced_IRI.parse _namespace_name "SystemName" |> NamespacedName
+    let SystemName = _prefix "SystemName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#TitledName"></see>
     /// </summary>
-    let TitledName = Namespaced_IRI.parse _namespace_name "TitledName" |> NamespacedName
-
+    let TitledName = _prefix "TitledName"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#TradeSchool"></see></summary>
-    let TradeSchool =
-        Namespaced_IRI.parse _namespace_name "TradeSchool" |> NamespacedName
-
+    let TradeSchool = _prefix "TradeSchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ViolenceContext"></see>
     /// </summary>
-    let ViolenceContext =
-        Namespaced_IRI.parse _namespace_name "ViolenceContext" |> NamespacedName
-
+    let ViolenceContext = _prefix "ViolenceContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#WealthContext"></see>
     /// </summary>
-    let WealthContext =
-        Namespaced_IRI.parse _namespace_name "WealthContext" |> NamespacedName
-
+    let WealthContext = _prefix "WealthContext"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#WomensHealthContext"></see>
     /// </summary>
-    let WomensHealthContext =
-        Namespaced_IRI.parse _namespace_name "WomensHealthContext" |> NamespacedName
+    let WomensHealthContext = _prefix "WomensHealthContext"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-4ee64522b2"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-4ee64522b2`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-4ee64522b2" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-4ee64522b2"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-588ae315d6"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-588ae315d6`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-588ae315d6" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-588ae315d6"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-9856975261"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-9856975261`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-9856975261" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-9856975261"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-b3f841f5c0"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-b3f841f5c0`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-b3f841f5c0" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-b3f841f5c0"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-dc53f66118"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-dc53f66118`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-dc53f66118" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-dc53f66118"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-partof"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-partof`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-partof" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a5686049-f450-415c-9ca6-deee26e30899-partof-79e6794d92"></see>
     /// </summary>
     let ``a5686049-f450-415c-9ca6-deee26e30899-partof-79e6794d92`` =
-        Namespaced_IRI.parse _namespace_name "a5686049-f450-415c-9ca6-deee26e30899-partof-79e6794d92" |> NamespacedName
+        _prefix "a5686049-f450-415c-9ca6-deee26e30899-partof-79e6794d92"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a647a149-3420-4a0d-8462-03900131060e"></see>
     /// </summary>
     let ``a647a149-3420-4a0d-8462-03900131060e`` =
-        Namespaced_IRI.parse _namespace_name "a647a149-3420-4a0d-8462-03900131060e" |> NamespacedName
+        _prefix "a647a149-3420-4a0d-8462-03900131060e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a647a149-3420-4a0d-8462-03900131060e-d623563918"></see>
     /// </summary>
     let ``a647a149-3420-4a0d-8462-03900131060e-d623563918`` =
-        Namespaced_IRI.parse _namespace_name "a647a149-3420-4a0d-8462-03900131060e-d623563918" |> NamespacedName
+        _prefix "a647a149-3420-4a0d-8462-03900131060e-d623563918"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a647a149-3420-4a0d-8462-03900131060e-67d1668522"></see>
     /// </summary>
     let ``a647a149-3420-4a0d-8462-03900131060e-67d1668522`` =
-        Namespaced_IRI.parse _namespace_name "a647a149-3420-4a0d-8462-03900131060e-67d1668522" |> NamespacedName
+        _prefix "a647a149-3420-4a0d-8462-03900131060e-67d1668522"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a647a149-3420-4a0d-8462-03900131060e-62fc70c238"></see>
     /// </summary>
     let ``a647a149-3420-4a0d-8462-03900131060e-62fc70c238`` =
-        Namespaced_IRI.parse _namespace_name "a647a149-3420-4a0d-8462-03900131060e-62fc70c238" |> NamespacedName
+        _prefix "a647a149-3420-4a0d-8462-03900131060e-62fc70c238"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#a647a149-3420-4a0d-8462-03900131060e-d9d06e8cbe"></see>
     /// </summary>
     let ``a647a149-3420-4a0d-8462-03900131060e-d9d06e8cbe`` =
-        Namespaced_IRI.parse _namespace_name "a647a149-3420-4a0d-8462-03900131060e-d9d06e8cbe" |> NamespacedName
+        _prefix "a647a149-3420-4a0d-8462-03900131060e-d9d06e8cbe"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aa8dae29-558b-4bda-9859-9ed43faede36"></see>
     /// </summary>
     let ``aa8dae29-558b-4bda-9859-9ed43faede36`` =
-        Namespaced_IRI.parse _namespace_name "aa8dae29-558b-4bda-9859-9ed43faede36" |> NamespacedName
+        _prefix "aa8dae29-558b-4bda-9859-9ed43faede36"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aa8dae29-558b-4bda-9859-9ed43faede36-04b657798c"></see>
     /// </summary>
     let ``aa8dae29-558b-4bda-9859-9ed43faede36-04b657798c`` =
-        Namespaced_IRI.parse _namespace_name "aa8dae29-558b-4bda-9859-9ed43faede36-04b657798c" |> NamespacedName
+        _prefix "aa8dae29-558b-4bda-9859-9ed43faede36-04b657798c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aa8dae29-558b-4bda-9859-9ed43faede36-45528df81c"></see>
     /// </summary>
     let ``aa8dae29-558b-4bda-9859-9ed43faede36-45528df81c`` =
-        Namespaced_IRI.parse _namespace_name "aa8dae29-558b-4bda-9859-9ed43faede36-45528df81c" |> NamespacedName
+        _prefix "aa8dae29-558b-4bda-9859-9ed43faede36-45528df81c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aaa909f5-ffb5-4995-8245-b169d3c64746"></see>
     /// </summary>
     let ``aaa909f5-ffb5-4995-8245-b169d3c64746`` =
-        Namespaced_IRI.parse _namespace_name "aaa909f5-ffb5-4995-8245-b169d3c64746" |> NamespacedName
+        _prefix "aaa909f5-ffb5-4995-8245-b169d3c64746"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aaa909f5-ffb5-4995-8245-b169d3c64746-706552b3f4"></see>
     /// </summary>
     let ``aaa909f5-ffb5-4995-8245-b169d3c64746-706552b3f4`` =
-        Namespaced_IRI.parse _namespace_name "aaa909f5-ffb5-4995-8245-b169d3c64746-706552b3f4" |> NamespacedName
+        _prefix "aaa909f5-ffb5-4995-8245-b169d3c64746-706552b3f4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aaa909f5-ffb5-4995-8245-b169d3c64746-352a867f1c"></see>
     /// </summary>
     let ``aaa909f5-ffb5-4995-8245-b169d3c64746-352a867f1c`` =
-        Namespaced_IRI.parse _namespace_name "aaa909f5-ffb5-4995-8245-b169d3c64746-352a867f1c" |> NamespacedName
+        _prefix "aaa909f5-ffb5-4995-8245-b169d3c64746-352a867f1c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aaa909f5-ffb5-4995-8245-b169d3c64746-partof"></see>
     /// </summary>
     let ``aaa909f5-ffb5-4995-8245-b169d3c64746-partof`` =
-        Namespaced_IRI.parse _namespace_name "aaa909f5-ffb5-4995-8245-b169d3c64746-partof" |> NamespacedName
+        _prefix "aaa909f5-ffb5-4995-8245-b169d3c64746-partof"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#abolitionism"></see></summary>
-    let abolitionism =
-        Namespaced_IRI.parse _namespace_name "abolitionism" |> NamespacedName
-
+    let abolitionism = _prefix "abolitionism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#contraryTo"></see>
     /// </summary>
-    let contraryTo = Namespaced_IRI.parse _namespace_name "contraryTo" |> NamespacedName
-
+    let contraryTo = _prefix "contraryTo"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pro-Slavery"></see></summary>
-    let ``pro-Slavery`` =
-        Namespaced_IRI.parse _namespace_name "pro-Slavery" |> NamespacedName
-
+    let ``pro-Slavery`` = _prefix "pro-Slavery"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#humanRights"></see></summary>
-    let humanRights =
-        Namespaced_IRI.parse _namespace_name "humanRights" |> NamespacedName
-
+    let humanRights = _prefix "humanRights"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#civilRights"></see></summary>
-    let civilRights =
-        Namespaced_IRI.parse _namespace_name "civilRights" |> NamespacedName
-
+    let civilRights = _prefix "civilRights"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#racialEquality"></see></summary>
-    let racialEquality =
-        Namespaced_IRI.parse _namespace_name "racialEquality" |> NamespacedName
-
+    let racialEquality = _prefix "racialEquality"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#abolitionist"></see>
     /// </summary>
-    let abolitionist =
-        Namespaced_IRI.parse _namespace_name "abolitionist" |> NamespacedName
-
+    let abolitionist = _prefix "abolitionist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#activist"></see>
     /// </summary>
-    let activist = Namespaced_IRI.parse _namespace_name "activist" |> NamespacedName
+    let activist = _prefix "activist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#abortion"></see>
     /// </summary>
-    let abortion = Namespaced_IRI.parse _namespace_name "abortion" |> NamespacedName
-
+    let abortion = _prefix "abortion"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#abrahamicReligions"></see></summary>
-    let abrahamicReligions =
-        Namespaced_IRI.parse _namespace_name "abrahamicReligions" |> NamespacedName
-
+    let abrahamicReligions = _prefix "abrahamicReligions"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#academic"></see>
     /// </summary>
-    let academic = Namespaced_IRI.parse _namespace_name "academic" |> NamespacedName
+    let academic = _prefix "academic"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#education"></see>
     /// </summary>
-    let education = Namespaced_IRI.parse _namespace_name "education" |> NamespacedName
+    let education = _prefix "education"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#accountant"></see>
     /// </summary>
-    let accountant = Namespaced_IRI.parse _namespace_name "accountant" |> NamespacedName
+    let accountant = _prefix "accountant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#finance"></see>
     /// </summary>
-    let finance = Namespaced_IRI.parse _namespace_name "finance" |> NamespacedName
-
+    let finance = _prefix "finance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#actorManager"></see>
     /// </summary>
-    let actorManager =
-        Namespaced_IRI.parse _namespace_name "actorManager" |> NamespacedName
-
+    let actorManager = _prefix "actorManager"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#theatreWork"></see>
     /// </summary>
-    let theatreWork =
-        Namespaced_IRI.parse _namespace_name "theatreWork" |> NamespacedName
-
+    let theatreWork = _prefix "theatreWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#adjudicator"></see>
     /// </summary>
-    let adjudicator =
-        Namespaced_IRI.parse _namespace_name "adjudicator" |> NamespacedName
-
+    let adjudicator = _prefix "adjudicator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#administrator"></see>
     /// </summary>
-    let administrator =
-        Namespaced_IRI.parse _namespace_name "administrator" |> NamespacedName
-
+    let administrator = _prefix "administrator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#adoption"></see>
     /// </summary>
-    let adoption = Namespaced_IRI.parse _namespace_name "adoption" |> NamespacedName
+    let adoption = _prefix "adoption"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#adventism"></see></summary>
-    let adventism = Namespaced_IRI.parse _namespace_name "adventism" |> NamespacedName
-
+    let adventism = _prefix "adventism"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#protestantism"></see></summary>
-    let protestantism =
-        Namespaced_IRI.parse _namespace_name "protestantism" |> NamespacedName
-
+    let protestantism = _prefix "protestantism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#advertising"></see>
     /// </summary>
-    let advertising =
-        Namespaced_IRI.parse _namespace_name "advertising" |> NamespacedName
-
+    let advertising = _prefix "advertising"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#advocate"></see>
     /// </summary>
-    let advocate = Namespaced_IRI.parse _namespace_name "advocate" |> NamespacedName
+    let advocate = _prefix "advocate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politics"></see>
     /// </summary>
-    let politics = Namespaced_IRI.parse _namespace_name "politics" |> NamespacedName
+    let politics = _prefix "politics"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aec674cf-2108-4977-be3a-9317efe35aa9"></see>
     /// </summary>
     let ``aec674cf-2108-4977-be3a-9317efe35aa9`` =
-        Namespaced_IRI.parse _namespace_name "aec674cf-2108-4977-be3a-9317efe35aa9" |> NamespacedName
+        _prefix "aec674cf-2108-4977-be3a-9317efe35aa9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aec674cf-2108-4977-be3a-9317efe35aa9-b6c5d2bffd"></see>
     /// </summary>
     let ``aec674cf-2108-4977-be3a-9317efe35aa9-b6c5d2bffd`` =
-        Namespaced_IRI.parse _namespace_name "aec674cf-2108-4977-be3a-9317efe35aa9-b6c5d2bffd" |> NamespacedName
+        _prefix "aec674cf-2108-4977-be3a-9317efe35aa9-b6c5d2bffd"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aec674cf-2108-4977-be3a-9317efe35aa9-partof"></see>
     /// </summary>
     let ``aec674cf-2108-4977-be3a-9317efe35aa9-partof`` =
-        Namespaced_IRI.parse _namespace_name "aec674cf-2108-4977-be3a-9317efe35aa9-partof" |> NamespacedName
+        _prefix "aec674cf-2108-4977-be3a-9317efe35aa9-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#affectedEntity"></see>
     /// </summary>
-    let affectedEntity =
-        Namespaced_IRI.parse _namespace_name "affectedEntity" |> NamespacedName
-
+    let affectedEntity = _prefix "affectedEntity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#african-AmericanEthnicity"></see></summary>
-    let ``african-AmericanEthnicity`` =
-        Namespaced_IRI.parse _namespace_name "african-AmericanEthnicity" |> NamespacedName
-
+    let ``african-AmericanEthnicity`` = _prefix "african-AmericanEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#blackLabel"></see>
     /// </summary>
-    let blackLabel = Namespaced_IRI.parse _namespace_name "blackLabel" |> NamespacedName
-
+    let blackLabel = _prefix "blackLabel"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#africanEthnicity"></see></summary>
-    let africanEthnicity =
-        Namespaced_IRI.parse _namespace_name "africanEthnicity" |> NamespacedName
-
+    let africanEthnicity = _prefix "africanEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#africanNationalHeritage"></see></summary>
-    let africanNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "africanNationalHeritage" |> NamespacedName
-
+    let africanNationalHeritage = _prefix "africanNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#africanNationalIdentity"></see>
     /// </summary>
-    let africanNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "africanNationalIdentity" |> NamespacedName
-
+    let africanNationalIdentity = _prefix "africanNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#afro-CaribbeanRaceColour"></see></summary>
-    let ``afro-CaribbeanRaceColour`` =
-        Namespaced_IRI.parse _namespace_name "afro-CaribbeanRaceColour" |> NamespacedName
-
+    let ``afro-CaribbeanRaceColour`` = _prefix "afro-CaribbeanRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#agent"></see>
     /// </summary>
-    let agent = Namespaced_IRI.parse _namespace_name "agent" |> NamespacedName
-
+    let agent = _prefix "agent"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#agnosticism"></see></summary>
-    let agnosticism =
-        Namespaced_IRI.parse _namespace_name "agnosticism" |> NamespacedName
-
+    let agnosticism = _prefix "agnosticism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#aidsActivism"></see></summary>
-    let aidsActivism =
-        Namespaced_IRI.parse _namespace_name "aidsActivism" |> NamespacedName
-
+    let aidsActivism = _prefix "aidsActivism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialReform"></see></summary>
-    let socialReform =
-        Namespaced_IRI.parse _namespace_name "socialReform" |> NamespacedName
-
+    let socialReform = _prefix "socialReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#airForce"></see>
     /// </summary>
-    let airForce = Namespaced_IRI.parse _namespace_name "airForce" |> NamespacedName
-
+    let airForce = _prefix "airForce"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#airRaidWarden"></see>
     /// </summary>
-    let airRaidWarden =
-        Namespaced_IRI.parse _namespace_name "airRaidWarden" |> NamespacedName
-
+    let airRaidWarden = _prefix "airRaidWarden"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#warWork"></see>
     /// </summary>
-    let warWork = Namespaced_IRI.parse _namespace_name "warWork" |> NamespacedName
-
+    let warWork = _prefix "warWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aircraftIndustry"></see>
     /// </summary>
-    let aircraftIndustry =
-        Namespaced_IRI.parse _namespace_name "aircraftIndustry" |> NamespacedName
-
+    let aircraftIndustry = _prefix "aircraftIndustry"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#airman"></see>
     /// </summary>
-    let airman = Namespaced_IRI.parse _namespace_name "airman" |> NamespacedName
+    let airman = _prefix "airman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pilot"></see>
     /// </summary>
-    let pilot = Namespaced_IRI.parse _namespace_name "pilot" |> NamespacedName
+    let pilot = _prefix "pilot"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#military"></see>
     /// </summary>
-    let military = Namespaced_IRI.parse _namespace_name "military" |> NamespacedName
+    let military = _prefix "military"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#alteredBy"></see>
     /// </summary>
-    let alteredBy = Namespaced_IRI.parse _namespace_name "alteredBy" |> NamespacedName
-
+    let alteredBy = _prefix "alteredBy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#alternativeMedicine"></see>
     /// </summary>
-    let alternativeMedicine =
-        Namespaced_IRI.parse _namespace_name "alternativeMedicine" |> NamespacedName
-
+    let alternativeMedicine = _prefix "alternativeMedicine"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ambulanceWorker"></see>
     /// </summary>
-    let ambulanceWorker =
-        Namespaced_IRI.parse _namespace_name "ambulanceWorker" |> NamespacedName
-
+    let ambulanceWorker = _prefix "ambulanceWorker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#americanNationalism"></see>
     /// </summary>
-    let americanNationalism =
-        Namespaced_IRI.parse _namespace_name "americanNationalism" |> NamespacedName
-
+    let americanNationalism = _prefix "americanNationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalism"></see></summary>
-    let nationalism =
-        Namespaced_IRI.parse _namespace_name "nationalism" |> NamespacedName
-
+    let nationalism = _prefix "nationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anarchism"></see></summary>
-    let anarchism = Namespaced_IRI.parse _namespace_name "anarchism" |> NamespacedName
-
+    let anarchism = _prefix "anarchism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Monarchism"></see></summary>
-    let ``anti-Monarchism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Monarchism" |> NamespacedName
-
+    let ``anti-Monarchism`` = _prefix "anti-Monarchism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ancestorOf"></see>
     /// </summary>
-    let ancestorOf = Namespaced_IRI.parse _namespace_name "ancestorOf" |> NamespacedName
+    let ancestorOf = _prefix "ancestorOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#relativeOf"></see>
     /// </summary>
-    let relativeOf = Namespaced_IRI.parse _namespace_name "relativeOf" |> NamespacedName
-
+    let relativeOf = _prefix "relativeOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasAncestor"></see>
     /// </summary>
-    let hasAncestor =
-        Namespaced_IRI.parse _namespace_name "hasAncestor" |> NamespacedName
-
+    let hasAncestor = _prefix "hasAncestor"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglicanism"></see></summary>
-    let anglicanism =
-        Namespaced_IRI.parse _namespace_name "anglicanism" |> NamespacedName
-
+    let anglicanism = _prefix "anglicanism"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#christianity"></see></summary>
-    let christianity =
-        Namespaced_IRI.parse _namespace_name "christianity" |> NamespacedName
-
+    let christianity = _prefix "christianity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglo-IndianNationalIdentity"></see>
     /// </summary>
-    let ``anglo-IndianNationalIdentity`` =
-        Namespaced_IRI.parse _namespace_name "anglo-IndianNationalIdentity" |> NamespacedName
-
+    let ``anglo-IndianNationalIdentity`` = _prefix "anglo-IndianNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglo-IrishEthnicity"></see></summary>
-    let ``anglo-IrishEthnicity`` =
-        Namespaced_IRI.parse _namespace_name "anglo-IrishEthnicity" |> NamespacedName
-
+    let ``anglo-IrishEthnicity`` = _prefix "anglo-IrishEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#europeanEthnicity"></see></summary>
-    let europeanEthnicity =
-        Namespaced_IRI.parse _namespace_name "europeanEthnicity" |> NamespacedName
-
+    let europeanEthnicity = _prefix "europeanEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglo-IrishNationalHeritage"></see></summary>
-    let ``anglo-IrishNationalHeritage`` =
-        Namespaced_IRI.parse _namespace_name "anglo-IrishNationalHeritage" |> NamespacedName
-
+    let ``anglo-IrishNationalHeritage`` = _prefix "anglo-IrishNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglo-IrishNationalIdentity"></see>
     /// </summary>
-    let ``anglo-IrishNationalIdentity`` =
-        Namespaced_IRI.parse _namespace_name "anglo-IrishNationalIdentity" |> NamespacedName
-
+    let ``anglo-IrishNationalIdentity`` = _prefix "anglo-IrishNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglo-IrishRaceColour"></see></summary>
-    let ``anglo-IrishRaceColour`` =
-        Namespaced_IRI.parse _namespace_name "anglo-IrishRaceColour" |> NamespacedName
-
+    let ``anglo-IrishRaceColour`` = _prefix "anglo-IrishRaceColour"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anglo-NormanEthnicity"></see></summary>
-    let ``anglo-NormanEthnicity`` =
-        Namespaced_IRI.parse _namespace_name "anglo-NormanEthnicity" |> NamespacedName
-
+    let ``anglo-NormanEthnicity`` = _prefix "anglo-NormanEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#animalWelfareAdvocacy"></see></summary>
-    let animalWelfareAdvocacy =
-        Namespaced_IRI.parse _namespace_name "animalWelfareAdvocacy" |> NamespacedName
-
+    let animalWelfareAdvocacy = _prefix "animalWelfareAdvocacy"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#feminism"></see></summary>
-    let feminism = Namespaced_IRI.parse _namespace_name "feminism" |> NamespacedName
-
+    let feminism = _prefix "feminism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-American"></see></summary>
-    let ``anti-American`` =
-        Namespaced_IRI.parse _namespace_name "anti-American" |> NamespacedName
-
+    let ``anti-American`` = _prefix "anti-American"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pro-American"></see>
     /// </summary>
-    let ``pro-American`` =
-        Namespaced_IRI.parse _namespace_name "pro-American" |> NamespacedName
-
+    let ``pro-American`` = _prefix "pro-American"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Antisemitism"></see></summary>
-    let ``anti-Antisemitism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Antisemitism" |> NamespacedName
-
+    let ``anti-Antisemitism`` = _prefix "anti-Antisemitism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#antisemitism"></see></summary>
-    let antisemitism =
-        Namespaced_IRI.parse _namespace_name "antisemitism" |> NamespacedName
-
+    let antisemitism = _prefix "antisemitism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Fascism"></see></summary>
-    let ``anti-Fascism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Fascism" |> NamespacedName
-
+    let ``anti-Fascism`` = _prefix "anti-Fascism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Apartheid"></see></summary>
-    let ``anti-Apartheid`` =
-        Namespaced_IRI.parse _namespace_name "anti-Apartheid" |> NamespacedName
-
+    let ``anti-Apartheid`` = _prefix "anti-Apartheid"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Boer"></see></summary>
-    let ``anti-Boer`` =
-        Namespaced_IRI.parse _namespace_name "anti-Boer" |> NamespacedName
-
+    let ``anti-Boer`` = _prefix "anti-Boer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pro-BoerWar"></see></summary>
-    let ``pro-BoerWar`` =
-        Namespaced_IRI.parse _namespace_name "pro-BoerWar" |> NamespacedName
-
+    let ``pro-BoerWar`` = _prefix "pro-BoerWar"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-War"></see></summary>
-    let ``anti-War`` = Namespaced_IRI.parse _namespace_name "anti-War" |> NamespacedName
-
+    let ``anti-War`` = _prefix "anti-War"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Bolshevism"></see></summary>
-    let ``anti-Bolshevism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Bolshevism" |> NamespacedName
-
+    let ``anti-Bolshevism`` = _prefix "anti-Bolshevism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bolshevism"></see></summary>
-    let bolshevism = Namespaced_IRI.parse _namespace_name "bolshevism" |> NamespacedName
-
+    let bolshevism = _prefix "bolshevism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Communism"></see></summary>
-    let ``anti-Communism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Communism" |> NamespacedName
-
+    let ``anti-Communism`` = _prefix "anti-Communism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Bonapartism"></see></summary>
-    let ``anti-Bonapartism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Bonapartism" |> NamespacedName
-
+    let ``anti-Bonapartism`` = _prefix "anti-Bonapartism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bonapartism"></see></summary>
-    let bonapartism =
-        Namespaced_IRI.parse _namespace_name "bonapartism" |> NamespacedName
-
+    let bonapartism = _prefix "bonapartism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-British"></see></summary>
-    let ``anti-British`` =
-        Namespaced_IRI.parse _namespace_name "anti-British" |> NamespacedName
-
+    let ``anti-British`` = _prefix "anti-British"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-CapitalPunishment"></see></summary>
-    let ``anti-CapitalPunishment`` =
-        Namespaced_IRI.parse _namespace_name "anti-CapitalPunishment" |> NamespacedName
-
+    let ``anti-CapitalPunishment`` = _prefix "anti-CapitalPunishment"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Capitalism"></see></summary>
-    let ``anti-Capitalism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Capitalism" |> NamespacedName
-
+    let ``anti-Capitalism`` = _prefix "anti-Capitalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#communism"></see></summary>
-    let communism = Namespaced_IRI.parse _namespace_name "communism" |> NamespacedName
-
+    let communism = _prefix "communism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Caste"></see></summary>
-    let ``anti-Caste`` =
-        Namespaced_IRI.parse _namespace_name "anti-Caste" |> NamespacedName
-
+    let ``anti-Caste`` = _prefix "anti-Caste"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Catholicism"></see></summary>
-    let ``anti-Catholicism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Catholicism" |> NamespacedName
-
+    let ``anti-Catholicism`` = _prefix "anti-Catholicism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pro-Catholicism"></see></summary>
-    let ``pro-Catholicism`` =
-        Namespaced_IRI.parse _namespace_name "pro-Catholicism" |> NamespacedName
-
+    let ``pro-Catholicism`` = _prefix "pro-Catholicism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Censorship"></see></summary>
-    let ``anti-Censorship`` =
-        Namespaced_IRI.parse _namespace_name "anti-Censorship" |> NamespacedName
-
+    let ``anti-Censorship`` = _prefix "anti-Censorship"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Conscriptionism"></see></summary>
-    let ``anti-Conscriptionism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Conscriptionism" |> NamespacedName
-
+    let ``anti-Conscriptionism`` = _prefix "anti-Conscriptionism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-ContagiousDiseasesAct"></see></summary>
-    let ``anti-ContagiousDiseasesAct`` =
-        Namespaced_IRI.parse _namespace_name "anti-ContagiousDiseasesAct" |> NamespacedName
-
+    let ``anti-ContagiousDiseasesAct`` = _prefix "anti-ContagiousDiseasesAct"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-CorporalPunishment"></see></summary>
-    let ``anti-CorporalPunishment`` =
-        Namespaced_IRI.parse _namespace_name "anti-CorporalPunishment" |> NamespacedName
-
+    let ``anti-CorporalPunishment`` = _prefix "anti-CorporalPunishment"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Dreyfusard"></see></summary>
-    let ``anti-Dreyfusard`` =
-        Namespaced_IRI.parse _namespace_name "anti-Dreyfusard" |> NamespacedName
-
+    let ``anti-Dreyfusard`` = _prefix "anti-Dreyfusard"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dreyfusard"></see></summary>
-    let dreyfusard = Namespaced_IRI.parse _namespace_name "dreyfusard" |> NamespacedName
-
+    let dreyfusard = _prefix "dreyfusard"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-European"></see></summary>
-    let ``anti-European`` =
-        Namespaced_IRI.parse _namespace_name "anti-European" |> NamespacedName
-
+    let ``anti-European`` = _prefix "anti-European"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pro-European"></see></summary>
-    let ``pro-European`` =
-        Namespaced_IRI.parse _namespace_name "pro-European" |> NamespacedName
-
+    let ``pro-European`` = _prefix "pro-European"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#fascism"></see></summary>
-    let fascism = Namespaced_IRI.parse _namespace_name "fascism" |> NamespacedName
-
+    let fascism = _prefix "fascism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Federalism"></see></summary>
-    let ``anti-Federalism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Federalism" |> NamespacedName
-
+    let ``anti-Federalism`` = _prefix "anti-Federalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Feminism"></see></summary>
-    let ``anti-Feminism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Feminism" |> NamespacedName
-
+    let ``anti-Feminism`` = _prefix "anti-Feminism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#suffrage"></see></summary>
-    let suffrage = Namespaced_IRI.parse _namespace_name "suffrage" |> NamespacedName
-
+    let suffrage = _prefix "suffrage"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Globalism"></see></summary>
-    let ``anti-Globalism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Globalism" |> NamespacedName
-
+    let ``anti-Globalism`` = _prefix "anti-Globalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Imperialism"></see></summary>
-    let ``anti-Imperialism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Imperialism" |> NamespacedName
-
+    let ``anti-Imperialism`` = _prefix "anti-Imperialism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#imperialism"></see></summary>
-    let imperialism =
-        Namespaced_IRI.parse _namespace_name "imperialism" |> NamespacedName
-
+    let imperialism = _prefix "imperialism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Jacobin"></see></summary>
-    let ``anti-Jacobin`` =
-        Namespaced_IRI.parse _namespace_name "anti-Jacobin" |> NamespacedName
-
+    let ``anti-Jacobin`` = _prefix "anti-Jacobin"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Jacobite"></see></summary>
-    let ``anti-Jacobite`` =
-        Namespaced_IRI.parse _namespace_name "anti-Jacobite" |> NamespacedName
-
+    let ``anti-Jacobite`` = _prefix "anti-Jacobite"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jacobitism"></see></summary>
-    let jacobitism = Namespaced_IRI.parse _namespace_name "jacobitism" |> NamespacedName
-
+    let jacobitism = _prefix "jacobitism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-LandLeague"></see></summary>
-    let ``anti-LandLeague`` =
-        Namespaced_IRI.parse _namespace_name "anti-LandLeague" |> NamespacedName
-
+    let ``anti-LandLeague`` = _prefix "anti-LandLeague"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#irishUnionism"></see></summary>
-    let irishUnionism =
-        Namespaced_IRI.parse _namespace_name "irishUnionism" |> NamespacedName
-
+    let irishUnionism = _prefix "irishUnionism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#monarchism"></see></summary>
-    let monarchism = Namespaced_IRI.parse _namespace_name "monarchism" |> NamespacedName
-
+    let monarchism = _prefix "monarchism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-NuclearMovement"></see></summary>
-    let ``anti-NuclearMovement`` =
-        Namespaced_IRI.parse _namespace_name "anti-NuclearMovement" |> NamespacedName
-
+    let ``anti-NuclearMovement`` = _prefix "anti-NuclearMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#environmentalism"></see></summary>
-    let environmentalism =
-        Namespaced_IRI.parse _namespace_name "environmentalism" |> NamespacedName
-
+    let environmentalism = _prefix "environmentalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Pacifism"></see></summary>
-    let ``anti-Pacifism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Pacifism" |> NamespacedName
-
+    let ``anti-Pacifism`` = _prefix "anti-Pacifism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pacifism"></see></summary>
-    let pacifism = Namespaced_IRI.parse _namespace_name "pacifism" |> NamespacedName
-
+    let pacifism = _prefix "pacifism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-PovertyMovement"></see></summary>
-    let ``anti-PovertyMovement`` =
-        Namespaced_IRI.parse _namespace_name "anti-PovertyMovement" |> NamespacedName
-
+    let ``anti-PovertyMovement`` = _prefix "anti-PovertyMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Racism"></see></summary>
-    let ``anti-Racism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Racism" |> NamespacedName
-
+    let ``anti-Racism`` = _prefix "anti-Racism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#racism"></see></summary>
-    let racism = Namespaced_IRI.parse _namespace_name "racism" |> NamespacedName
-
+    let racism = _prefix "racism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#blackAnti-Oppression"></see></summary>
-    let ``blackAnti-Oppression`` =
-        Namespaced_IRI.parse _namespace_name "blackAnti-Oppression" |> NamespacedName
-
+    let ``blackAnti-Oppression`` = _prefix "blackAnti-Oppression"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Socialism"></see></summary>
-    let ``anti-Socialism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Socialism" |> NamespacedName
-
+    let ``anti-Socialism`` = _prefix "anti-Socialism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialism"></see></summary>
-    let socialism = Namespaced_IRI.parse _namespace_name "socialism" |> NamespacedName
-
+    let socialism = _prefix "socialism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Suffrage"></see></summary>
-    let ``anti-Suffrage`` =
-        Namespaced_IRI.parse _namespace_name "anti-Suffrage" |> NamespacedName
-
+    let ``anti-Suffrage`` = _prefix "anti-Suffrage"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Trade-Unionism"></see></summary>
-    let ``anti-Trade-Unionism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Trade-Unionism" |> NamespacedName
-
+    let ``anti-Trade-Unionism`` = _prefix "anti-Trade-Unionism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#labourMovement"></see></summary>
-    let labourMovement =
-        Namespaced_IRI.parse _namespace_name "labourMovement" |> NamespacedName
-
+    let labourMovement = _prefix "labourMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Urbanism"></see></summary>
-    let ``anti-Urbanism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Urbanism" |> NamespacedName
-
+    let ``anti-Urbanism`` = _prefix "anti-Urbanism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Vaccination"></see></summary>
-    let ``anti-Vaccination`` =
-        Namespaced_IRI.parse _namespace_name "anti-Vaccination" |> NamespacedName
-
+    let ``anti-Vaccination`` = _prefix "anti-Vaccination"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Vivisection"></see></summary>
-    let ``anti-Vivisection`` =
-        Namespaced_IRI.parse _namespace_name "anti-Vivisection" |> NamespacedName
-
+    let ``anti-Vivisection`` = _prefix "anti-Vivisection"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-Zionism"></see></summary>
-    let ``anti-Zionism`` =
-        Namespaced_IRI.parse _namespace_name "anti-Zionism" |> NamespacedName
-
+    let ``anti-Zionism`` = _prefix "anti-Zionism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#zionism"></see></summary>
-    let zionism = Namespaced_IRI.parse _namespace_name "zionism" |> NamespacedName
-
+    let zionism = _prefix "zionism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#anti-masonry"></see></summary>
-    let ``anti-masonry`` =
-        Namespaced_IRI.parse _namespace_name "anti-masonry" |> NamespacedName
-
+    let ``anti-masonry`` = _prefix "anti-masonry"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#antiClericalism"></see></summary>
-    let antiClericalism =
-        Namespaced_IRI.parse _namespace_name "antiClericalism" |> NamespacedName
-
+    let antiClericalism = _prefix "antiClericalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#methodism"></see>
     /// </summary>
-    let methodism = Namespaced_IRI.parse _namespace_name "methodism" |> NamespacedName
-
+    let methodism = _prefix "methodism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#antidisestablishmentarianism"></see></summary>
-    let antidisestablishmentarianism =
-        Namespaced_IRI.parse _namespace_name "antidisestablishmentarianism" |> NamespacedName
-
+    let antidisestablishmentarianism = _prefix "antidisestablishmentarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#disestablishmentarianism"></see></summary>
-    let disestablishmentarianism =
-        Namespaced_IRI.parse _namespace_name "disestablishmentarianism" |> NamespacedName
-
+    let disestablishmentarianism = _prefix "disestablishmentarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#appeasement"></see></summary>
-    let appeasement =
-        Namespaced_IRI.parse _namespace_name "appeasement" |> NamespacedName
-
+    let appeasement = _prefix "appeasement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#appraiser"></see>
     /// </summary>
-    let appraiser = Namespaced_IRI.parse _namespace_name "appraiser" |> NamespacedName
-
+    let appraiser = _prefix "appraiser"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#arabEthnicity"></see></summary>
-    let arabEthnicity =
-        Namespaced_IRI.parse _namespace_name "arabEthnicity" |> NamespacedName
-
+    let arabEthnicity = _prefix "arabEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#archaeologist"></see>
     /// </summary>
-    let archaeologist =
-        Namespaced_IRI.parse _namespace_name "archaeologist" |> NamespacedName
-
+    let archaeologist = _prefix "archaeologist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#architecture"></see>
     /// </summary>
-    let architecture =
-        Namespaced_IRI.parse _namespace_name "architecture" |> NamespacedName
-
+    let architecture = _prefix "architecture"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#archivist"></see>
     /// </summary>
-    let archivist = Namespaced_IRI.parse _namespace_name "archivist" |> NamespacedName
+    let archivist = _prefix "archivist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#librarian"></see>
     /// </summary>
-    let librarian = Namespaced_IRI.parse _namespace_name "librarian" |> NamespacedName
+    let librarian = _prefix "librarian"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#aristocrat"></see>
     /// </summary>
-    let aristocrat = Namespaced_IRI.parse _namespace_name "aristocrat" |> NamespacedName
+    let aristocrat = _prefix "aristocrat"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#army"></see>
     /// </summary>
-    let army = Namespaced_IRI.parse _namespace_name "army" |> NamespacedName
-
+    let army = _prefix "army"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#artsAdministrator"></see>
     /// </summary>
-    let artsAdministrator =
-        Namespaced_IRI.parse _namespace_name "artsAdministrator" |> NamespacedName
-
+    let artsAdministrator = _prefix "artsAdministrator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#manager"></see>
     /// </summary>
-    let manager = Namespaced_IRI.parse _namespace_name "manager" |> NamespacedName
-
+    let manager = _prefix "manager"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#artsAdvocacy"></see></summary>
-    let artsAdvocacy =
-        Namespaced_IRI.parse _namespace_name "artsAdvocacy" |> NamespacedName
-
+    let artsAdvocacy = _prefix "artsAdvocacy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#artsAdvocate"></see>
     /// </summary>
-    let artsAdvocate =
-        Namespaced_IRI.parse _namespace_name "artsAdvocate" |> NamespacedName
-
+    let artsAdvocate = _prefix "artsAdvocate"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#asceticism"></see></summary>
-    let asceticism = Namespaced_IRI.parse _namespace_name "asceticism" |> NamespacedName
-
+    let asceticism = _prefix "asceticism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#ashkenaziJewishEthnicity"></see></summary>
-    let ashkenaziJewishEthnicity =
-        Namespaced_IRI.parse _namespace_name "ashkenaziJewishEthnicity" |> NamespacedName
-
+    let ashkenaziJewishEthnicity = _prefix "ashkenaziJewishEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#asianRaceColour"></see></summary>
-    let asianRaceColour =
-        Namespaced_IRI.parse _namespace_name "asianRaceColour" |> NamespacedName
-
+    let asianRaceColour = _prefix "asianRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#assistant"></see>
     /// </summary>
-    let assistant = Namespaced_IRI.parse _namespace_name "assistant" |> NamespacedName
-
+    let assistant = _prefix "assistant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#associationInvolvement"></see>
     /// </summary>
-    let associationInvolvement =
-        Namespaced_IRI.parse _namespace_name "associationInvolvement" |> NamespacedName
-
+    let associationInvolvement = _prefix "associationInvolvement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#astronomer"></see>
     /// </summary>
-    let astronomer = Namespaced_IRI.parse _namespace_name "astronomer" |> NamespacedName
+    let astronomer = _prefix "astronomer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#scientist"></see>
     /// </summary>
-    let scientist = Namespaced_IRI.parse _namespace_name "scientist" |> NamespacedName
+    let scientist = _prefix "scientist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#atheism"></see></summary>
-    let atheism = Namespaced_IRI.parse _namespace_name "atheism" |> NamespacedName
+    let atheism = _prefix "atheism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#attends"></see>
     /// </summary>
-    let attends = Namespaced_IRI.parse _namespace_name "attends" |> NamespacedName
+    let attends = _prefix "attends"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#School"></see>
     /// </summary>
-    let School = Namespaced_IRI.parse _namespace_name "School" |> NamespacedName
+    let School = _prefix "School"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStudent"></see>
     /// </summary>
-    let hasStudent = Namespaced_IRI.parse _namespace_name "hasStudent" |> NamespacedName
-
+    let hasStudent = _prefix "hasStudent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#attendsPostSecondarySchool"></see>
     /// </summary>
-    let attendsPostSecondarySchool =
-        Namespaced_IRI.parse _namespace_name "attendsPostSecondarySchool" |> NamespacedName
-
+    let attendsPostSecondarySchool = _prefix "attendsPostSecondarySchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#attendsPrimarySchool"></see>
     /// </summary>
-    let attendsPrimarySchool =
-        Namespaced_IRI.parse _namespace_name "attendsPrimarySchool" |> NamespacedName
-
+    let attendsPrimarySchool = _prefix "attendsPrimarySchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#attendsSecondarySchool"></see>
     /// </summary>
-    let attendsSecondarySchool =
-        Namespaced_IRI.parse _namespace_name "attendsSecondarySchool" |> NamespacedName
-
+    let attendsSecondarySchool = _prefix "attendsSecondarySchool"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#attorneyGeneral"></see>
     /// </summary>
-    let attorneyGeneral =
-        Namespaced_IRI.parse _namespace_name "attorneyGeneral" |> NamespacedName
-
+    let attorneyGeneral = _prefix "attorneyGeneral"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#governmentOfficial"></see>
     /// </summary>
-    let governmentOfficial =
-        Namespaced_IRI.parse _namespace_name "governmentOfficial" |> NamespacedName
-
+    let governmentOfficial = _prefix "governmentOfficial"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#auctioneer"></see>
     /// </summary>
-    let auctioneer = Namespaced_IRI.parse _namespace_name "auctioneer" |> NamespacedName
+    let auctioneer = _prefix "auctioneer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#auntOf"></see>
     /// </summary>
-    let auntOf = Namespaced_IRI.parse _namespace_name "auntOf" |> NamespacedName
+    let auntOf = _prefix "auntOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasAunt"></see>
     /// </summary>
-    let hasAunt = Namespaced_IRI.parse _namespace_name "hasAunt" |> NamespacedName
-
+    let hasAunt = _prefix "hasAunt"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#automobileIndustry"></see>
     /// </summary>
-    let automobileIndustry =
-        Namespaced_IRI.parse _namespace_name "automobileIndustry" |> NamespacedName
-
+    let automobileIndustry = _prefix "automobileIndustry"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#transportationWork"></see>
     /// </summary>
-    let transportationWork =
-        Namespaced_IRI.parse _namespace_name "transportationWork" |> NamespacedName
-
+    let transportationWork = _prefix "transportationWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#awardedTo"></see>
     /// </summary>
-    let awardedTo = Namespaced_IRI.parse _namespace_name "awardedTo" |> NamespacedName
+    let awardedTo = _prefix "awardedTo"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b69cb6a0-ac73-4219-bfb0-e4804ff1403e"></see>
     /// </summary>
     let ``b69cb6a0-ac73-4219-bfb0-e4804ff1403e`` =
-        Namespaced_IRI.parse _namespace_name "b69cb6a0-ac73-4219-bfb0-e4804ff1403e" |> NamespacedName
+        _prefix "b69cb6a0-ac73-4219-bfb0-e4804ff1403e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b69cb6a0-ac73-4219-bfb0-e4804ff1403e-f478fff214"></see>
     /// </summary>
     let ``b69cb6a0-ac73-4219-bfb0-e4804ff1403e-f478fff214`` =
-        Namespaced_IRI.parse _namespace_name "b69cb6a0-ac73-4219-bfb0-e4804ff1403e-f478fff214" |> NamespacedName
+        _prefix "b69cb6a0-ac73-4219-bfb0-e4804ff1403e-f478fff214"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b69cb6a0-ac73-4219-bfb0-e4804ff1403e-00295cd251"></see>
     /// </summary>
     let ``b69cb6a0-ac73-4219-bfb0-e4804ff1403e-00295cd251`` =
-        Namespaced_IRI.parse _namespace_name "b69cb6a0-ac73-4219-bfb0-e4804ff1403e-00295cd251" |> NamespacedName
+        _prefix "b69cb6a0-ac73-4219-bfb0-e4804ff1403e-00295cd251"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b69cb6a0-ac73-4219-bfb0-e4804ff1403e-d3cf0482b8"></see>
     /// </summary>
     let ``b69cb6a0-ac73-4219-bfb0-e4804ff1403e-d3cf0482b8`` =
-        Namespaced_IRI.parse _namespace_name "b69cb6a0-ac73-4219-bfb0-e4804ff1403e-d3cf0482b8" |> NamespacedName
+        _prefix "b69cb6a0-ac73-4219-bfb0-e4804ff1403e-d3cf0482b8"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b736fb3c-dcde-49f3-aa07-67ce6a42100a"></see>
     /// </summary>
     let ``b736fb3c-dcde-49f3-aa07-67ce6a42100a`` =
-        Namespaced_IRI.parse _namespace_name "b736fb3c-dcde-49f3-aa07-67ce6a42100a" |> NamespacedName
+        _prefix "b736fb3c-dcde-49f3-aa07-67ce6a42100a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b736fb3c-dcde-49f3-aa07-67ce6a42100a-1ca90e57c1"></see>
     /// </summary>
     let ``b736fb3c-dcde-49f3-aa07-67ce6a42100a-1ca90e57c1`` =
-        Namespaced_IRI.parse _namespace_name "b736fb3c-dcde-49f3-aa07-67ce6a42100a-1ca90e57c1" |> NamespacedName
+        _prefix "b736fb3c-dcde-49f3-aa07-67ce6a42100a-1ca90e57c1"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b736fb3c-dcde-49f3-aa07-67ce6a42100a-partof"></see>
     /// </summary>
     let ``b736fb3c-dcde-49f3-aa07-67ce6a42100a-partof`` =
-        Namespaced_IRI.parse _namespace_name "b736fb3c-dcde-49f3-aa07-67ce6a42100a-partof" |> NamespacedName
+        _prefix "b736fb3c-dcde-49f3-aa07-67ce6a42100a-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b95a3e61-23f6-4603-bb6b-06703aceb3c9"></see>
     /// </summary>
     let ``b95a3e61-23f6-4603-bb6b-06703aceb3c9`` =
-        Namespaced_IRI.parse _namespace_name "b95a3e61-23f6-4603-bb6b-06703aceb3c9" |> NamespacedName
+        _prefix "b95a3e61-23f6-4603-bb6b-06703aceb3c9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b95a3e61-23f6-4603-bb6b-06703aceb3c9-b531d0ad51"></see>
     /// </summary>
     let ``b95a3e61-23f6-4603-bb6b-06703aceb3c9-b531d0ad51`` =
-        Namespaced_IRI.parse _namespace_name "b95a3e61-23f6-4603-bb6b-06703aceb3c9-b531d0ad51" |> NamespacedName
+        _prefix "b95a3e61-23f6-4603-bb6b-06703aceb3c9-b531d0ad51"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b95a3e61-23f6-4603-bb6b-06703aceb3c9-318cb143c9"></see>
     /// </summary>
     let ``b95a3e61-23f6-4603-bb6b-06703aceb3c9-318cb143c9`` =
-        Namespaced_IRI.parse _namespace_name "b95a3e61-23f6-4603-bb6b-06703aceb3c9-318cb143c9" |> NamespacedName
+        _prefix "b95a3e61-23f6-4603-bb6b-06703aceb3c9-318cb143c9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b95a3e61-23f6-4603-bb6b-06703aceb3c9-16ff462e2c"></see>
     /// </summary>
     let ``b95a3e61-23f6-4603-bb6b-06703aceb3c9-16ff462e2c`` =
-        Namespaced_IRI.parse _namespace_name "b95a3e61-23f6-4603-bb6b-06703aceb3c9-16ff462e2c" |> NamespacedName
+        _prefix "b95a3e61-23f6-4603-bb6b-06703aceb3c9-16ff462e2c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b9eeccf9-9380-4341-99dc-a83f5ee32909"></see>
     /// </summary>
     let ``b9eeccf9-9380-4341-99dc-a83f5ee32909`` =
-        Namespaced_IRI.parse _namespace_name "b9eeccf9-9380-4341-99dc-a83f5ee32909" |> NamespacedName
+        _prefix "b9eeccf9-9380-4341-99dc-a83f5ee32909"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b9eeccf9-9380-4341-99dc-a83f5ee32909-f7b703e604"></see>
     /// </summary>
     let ``b9eeccf9-9380-4341-99dc-a83f5ee32909-f7b703e604`` =
-        Namespaced_IRI.parse _namespace_name "b9eeccf9-9380-4341-99dc-a83f5ee32909-f7b703e604" |> NamespacedName
+        _prefix "b9eeccf9-9380-4341-99dc-a83f5ee32909-f7b703e604"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#b9eeccf9-9380-4341-99dc-a83f5ee32909-partof"></see>
     /// </summary>
     let ``b9eeccf9-9380-4341-99dc-a83f5ee32909-partof`` =
-        Namespaced_IRI.parse _namespace_name "b9eeccf9-9380-4341-99dc-a83f5ee32909-partof" |> NamespacedName
+        _prefix "b9eeccf9-9380-4341-99dc-a83f5ee32909-partof"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bachelorOfArts"></see></summary>
-    let bachelorOfArts =
-        Namespaced_IRI.parse _namespace_name "bachelorOfArts" |> NamespacedName
-
+    let bachelorOfArts = _prefix "bachelorOfArts"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#undergraduateDegree"></see></summary>
-    let undergraduateDegree =
-        Namespaced_IRI.parse _namespace_name "undergraduateDegree" |> NamespacedName
-
+    let undergraduateDegree = _prefix "undergraduateDegree"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bachelorOfScience"></see></summary>
-    let bachelorOfScience =
-        Namespaced_IRI.parse _namespace_name "bachelorOfScience" |> NamespacedName
-
+    let bachelorOfScience = _prefix "bachelorOfScience"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#baker"></see>
     /// </summary>
-    let baker = Namespaced_IRI.parse _namespace_name "baker" |> NamespacedName
-
+    let baker = _prefix "baker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#skilledTrade"></see>
     /// </summary>
-    let skilledTrade =
-        Namespaced_IRI.parse _namespace_name "skilledTrade" |> NamespacedName
-
+    let skilledTrade = _prefix "skilledTrade"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bankrupt"></see>
     /// </summary>
-    let bankrupt = Namespaced_IRI.parse _namespace_name "bankrupt" |> NamespacedName
-
+    let bankrupt = _prefix "bankrupt"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#baptistChristianity"></see></summary>
-    let baptistChristianity =
-        Namespaced_IRI.parse _namespace_name "baptistChristianity" |> NamespacedName
-
+    let baptistChristianity = _prefix "baptistChristianity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dissentProtestant"></see>
     /// </summary>
-    let dissentProtestant =
-        Namespaced_IRI.parse _namespace_name "dissentProtestant" |> NamespacedName
-
+    let dissentProtestant = _prefix "dissentProtestant"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// Deprecated in favour of instance &lt;a href="#baptistChristianity" title="#baptistChristianity"&gt;Baptist Christianity&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#baptistChurch"></see></summary>
-    let baptistChurch =
-        Namespaced_IRI.parse _namespace_name "baptistChurch" |> NamespacedName
+    let baptistChurch = _prefix "baptistChurch"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bd6e0e18-2543-4310-94da-aae6557df17d"></see>
     /// </summary>
     let ``bd6e0e18-2543-4310-94da-aae6557df17d`` =
-        Namespaced_IRI.parse _namespace_name "bd6e0e18-2543-4310-94da-aae6557df17d" |> NamespacedName
+        _prefix "bd6e0e18-2543-4310-94da-aae6557df17d"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bd6e0e18-2543-4310-94da-aae6557df17d-a4adea3de1"></see>
     /// </summary>
     let ``bd6e0e18-2543-4310-94da-aae6557df17d-a4adea3de1`` =
-        Namespaced_IRI.parse _namespace_name "bd6e0e18-2543-4310-94da-aae6557df17d-a4adea3de1" |> NamespacedName
+        _prefix "bd6e0e18-2543-4310-94da-aae6557df17d-a4adea3de1"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bd6e0e18-2543-4310-94da-aae6557df17d-696c1e861a"></see>
     /// </summary>
     let ``bd6e0e18-2543-4310-94da-aae6557df17d-696c1e861a`` =
-        Namespaced_IRI.parse _namespace_name "bd6e0e18-2543-4310-94da-aae6557df17d-696c1e861a" |> NamespacedName
+        _prefix "bd6e0e18-2543-4310-94da-aae6557df17d-696c1e861a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bd6e0e18-2543-4310-94da-aae6557df17d-8a2569e7f2"></see>
     /// </summary>
     let ``bd6e0e18-2543-4310-94da-aae6557df17d-8a2569e7f2`` =
-        Namespaced_IRI.parse _namespace_name "bd6e0e18-2543-4310-94da-aae6557df17d-8a2569e7f2" |> NamespacedName
+        _prefix "bd6e0e18-2543-4310-94da-aae6557df17d-8a2569e7f2"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bd6e0e18-2543-4310-94da-aae6557df17d-7bc3557dcf"></see>
     /// </summary>
     let ``bd6e0e18-2543-4310-94da-aae6557df17d-7bc3557dcf`` =
-        Namespaced_IRI.parse _namespace_name "bd6e0e18-2543-4310-94da-aae6557df17d-7bc3557dcf" |> NamespacedName
+        _prefix "bd6e0e18-2543-4310-94da-aae6557df17d-7bc3557dcf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bdfac2f5-ae45-4af7-941c-ec37b12f1a38"></see>
     /// </summary>
     let ``bdfac2f5-ae45-4af7-941c-ec37b12f1a38`` =
-        Namespaced_IRI.parse _namespace_name "bdfac2f5-ae45-4af7-941c-ec37b12f1a38" |> NamespacedName
+        _prefix "bdfac2f5-ae45-4af7-941c-ec37b12f1a38"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bdfac2f5-ae45-4af7-941c-ec37b12f1a38-4c7d285ea3"></see>
     /// </summary>
     let ``bdfac2f5-ae45-4af7-941c-ec37b12f1a38-4c7d285ea3`` =
-        Namespaced_IRI.parse _namespace_name "bdfac2f5-ae45-4af7-941c-ec37b12f1a38-4c7d285ea3" |> NamespacedName
+        _prefix "bdfac2f5-ae45-4af7-941c-ec37b12f1a38-4c7d285ea3"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bdfac2f5-ae45-4af7-941c-ec37b12f1a38-0ee2efb217"></see>
     /// </summary>
     let ``bdfac2f5-ae45-4af7-941c-ec37b12f1a38-0ee2efb217`` =
-        Namespaced_IRI.parse _namespace_name "bdfac2f5-ae45-4af7-941c-ec37b12f1a38-0ee2efb217" |> NamespacedName
+        _prefix "bdfac2f5-ae45-4af7-941c-ec37b12f1a38-0ee2efb217"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#beautician"></see>
     /// </summary>
-    let beautician = Namespaced_IRI.parse _namespace_name "beautician" |> NamespacedName
+    let beautician = _prefix "beautician"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#beauty"></see>
     /// </summary>
-    let beauty = Namespaced_IRI.parse _namespace_name "beauty" |> NamespacedName
+    let beauty = _prefix "beauty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#beggar"></see>
     /// </summary>
-    let beggar = Namespaced_IRI.parse _namespace_name "beggar" |> NamespacedName
+    let beggar = _prefix "beggar"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#indigent"></see>
     /// </summary>
-    let indigent = Namespaced_IRI.parse _namespace_name "indigent" |> NamespacedName
+    let indigent = _prefix "indigent"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#behemenism"></see></summary>
-    let behemenism = Namespaced_IRI.parse _namespace_name "behemenism" |> NamespacedName
-
+    let behemenism = _prefix "behemenism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#benedictineOrder"></see></summary>
-    let benedictineOrder =
-        Namespaced_IRI.parse _namespace_name "benedictineOrder" |> NamespacedName
-
+    let benedictineOrder = _prefix "benedictineOrder"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#catholicism"></see></summary>
-    let catholicism =
-        Namespaced_IRI.parse _namespace_name "catholicism" |> NamespacedName
-
+    let catholicism = _prefix "catholicism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bengaliEthnicity"></see></summary>
-    let bengaliEthnicity =
-        Namespaced_IRI.parse _namespace_name "bengaliEthnicity" |> NamespacedName
-
+    let bengaliEthnicity = _prefix "bengaliEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bengaliNationalHeritage"></see></summary>
-    let bengaliNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "bengaliNationalHeritage" |> NamespacedName
-
+    let bengaliNationalHeritage = _prefix "bengaliNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bibliography"></see>
     /// </summary>
-    let bibliography =
-        Namespaced_IRI.parse _namespace_name "bibliography" |> NamespacedName
-
+    let bibliography = _prefix "bibliography"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bibliophile"></see>
     /// </summary>
-    let bibliophile =
-        Namespaced_IRI.parse _namespace_name "bibliophile" |> NamespacedName
-
+    let bibliophile = _prefix "bibliophile"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#billCollector"></see>
     /// </summary>
-    let billCollector =
-        Namespaced_IRI.parse _namespace_name "billCollector" |> NamespacedName
-
+    let billCollector = _prefix "billCollector"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#biologist"></see>
     /// </summary>
-    let biologist = Namespaced_IRI.parse _namespace_name "biologist" |> NamespacedName
-
+    let biologist = _prefix "biologist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lifeScientist"></see>
     /// </summary>
-    let lifeScientist =
-        Namespaced_IRI.parse _namespace_name "lifeScientist" |> NamespacedName
-
+    let lifeScientist = _prefix "lifeScientist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#birthControl"></see>
     /// </summary>
-    let birthControl =
-        Namespaced_IRI.parse _namespace_name "birthControl" |> NamespacedName
-
+    let birthControl = _prefix "birthControl"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#birthControlActivism"></see></summary>
-    let birthControlActivism =
-        Namespaced_IRI.parse _namespace_name "birthControlActivism" |> NamespacedName
-
+    let birthControlActivism = _prefix "birthControlActivism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualReform"></see></summary>
-    let sexualReform =
-        Namespaced_IRI.parse _namespace_name "sexualReform" |> NamespacedName
-
+    let sexualReform = _prefix "sexualReform"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pro-Choice"></see></summary>
-    let ``pro-Choice`` =
-        Namespaced_IRI.parse _namespace_name "pro-Choice" |> NamespacedName
-
+    let ``pro-Choice`` = _prefix "pro-Choice"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#birthDateOf"></see>
     /// </summary>
-    let birthDateOf =
-        Namespaced_IRI.parse _namespace_name "birthDateOf" |> NamespacedName
-
+    let birthDateOf = _prefix "birthDateOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasBirthDate"></see>
     /// </summary>
-    let hasBirthDate =
-        Namespaced_IRI.parse _namespace_name "hasBirthDate" |> NamespacedName
-
+    let hasBirthDate = _prefix "hasBirthDate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#birthPlaceOf"></see>
     /// </summary>
-    let birthPlaceOf =
-        Namespaced_IRI.parse _namespace_name "birthPlaceOf" |> NamespacedName
-
+    let birthPlaceOf = _prefix "birthPlaceOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasBirthPlace"></see>
     /// </summary>
-    let hasBirthPlace =
-        Namespaced_IRI.parse _namespace_name "hasBirthPlace" |> NamespacedName
-
+    let hasBirthPlace = _prefix "hasBirthPlace"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#blackRaceColour" title="#blackRaceColour"&gt;black&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#black"></see></summary>
-    let black = Namespaced_IRI.parse _namespace_name "black" |> NamespacedName
-
+    let black = _prefix "black"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#blackRaceColour"></see></summary>
-    let blackRaceColour =
-        Namespaced_IRI.parse _namespace_name "blackRaceColour" |> NamespacedName
-
+    let blackRaceColour = _prefix "blackRaceColour"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#blackEthnicity"></see></summary>
-    let blackEthnicity =
-        Namespaced_IRI.parse _namespace_name "blackEthnicity" |> NamespacedName
-
+    let blackEthnicity = _prefix "blackEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#represents"></see>
     /// </summary>
-    let represents = Namespaced_IRI.parse _namespace_name "represents" |> NamespacedName
-
+    let represents = _prefix "represents"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#blackNationalism"></see></summary>
-    let blackNationalism =
-        Namespaced_IRI.parse _namespace_name "blackNationalism" |> NamespacedName
-
+    let blackNationalism = _prefix "blackNationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#blackWomanRaceColour"></see>
     /// </summary>
-    let blackWomanRaceColour =
-        Namespaced_IRI.parse _namespace_name "blackWomanRaceColour" |> NamespacedName
-
+    let blackWomanRaceColour = _prefix "blackWomanRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#blacksmith"></see>
     /// </summary>
-    let blacksmith = Namespaced_IRI.parse _namespace_name "blacksmith" |> NamespacedName
-
+    let blacksmith = _prefix "blacksmith"
     /// <summary>
     /// Deprecated, with no current equivalence, in favour of definition of family relationships as more fluid and expansive than blood relations.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bloodRelativeOf"></see></summary>
-    let bloodRelativeOf =
-        Namespaced_IRI.parse _namespace_name "bloodRelativeOf" |> NamespacedName
-
+    let bloodRelativeOf = _prefix "bloodRelativeOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#boardMember"></see>
     /// </summary>
-    let boardMember =
-        Namespaced_IRI.parse _namespace_name "boardMember" |> NamespacedName
-
+    let boardMember = _prefix "boardMember"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#boardingHouseKeeper"></see>
     /// </summary>
-    let boardingHouseKeeper =
-        Namespaced_IRI.parse _namespace_name "boardingHouseKeeper" |> NamespacedName
-
+    let boardingHouseKeeper = _prefix "boardingHouseKeeper"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#housekeeper"></see>
     /// </summary>
-    let housekeeper =
-        Namespaced_IRI.parse _namespace_name "housekeeper" |> NamespacedName
-
+    let housekeeper = _prefix "housekeeper"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bohemianism"></see>
     /// </summary>
-    let bohemianism =
-        Namespaced_IRI.parse _namespace_name "bohemianism" |> NamespacedName
-
+    let bohemianism = _prefix "bohemianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bookProduction"></see>
     /// </summary>
-    let bookProduction =
-        Namespaced_IRI.parse _namespace_name "bookProduction" |> NamespacedName
-
+    let bookProduction = _prefix "bookProduction"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#publishing"></see>
     /// </summary>
-    let publishing = Namespaced_IRI.parse _namespace_name "publishing" |> NamespacedName
+    let publishing = _prefix "publishing"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bookbinder"></see>
     /// </summary>
-    let bookbinder = Namespaced_IRI.parse _namespace_name "bookbinder" |> NamespacedName
-
+    let bookbinder = _prefix "bookbinder"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bookclubParticipatant"></see>
     /// </summary>
-    let bookclubParticipatant =
-        Namespaced_IRI.parse _namespace_name "bookclubParticipatant" |> NamespacedName
-
+    let bookclubParticipatant = _prefix "bookclubParticipatant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryGroupParticipant"></see>
     /// </summary>
-    let literaryGroupParticipant =
-        Namespaced_IRI.parse _namespace_name "literaryGroupParticipant" |> NamespacedName
-
+    let literaryGroupParticipant = _prefix "literaryGroupParticipant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#botanist"></see>
     /// </summary>
-    let botanist = Namespaced_IRI.parse _namespace_name "botanist" |> NamespacedName
+    let botanist = _prefix "botanist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#boulangism"></see></summary>
-    let boulangism = Namespaced_IRI.parse _namespace_name "boulangism" |> NamespacedName
+    let boulangism = _prefix "boulangism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#brahmin"></see>
     /// </summary>
-    let brahmin = Namespaced_IRI.parse _namespace_name "brahmin" |> NamespacedName
+    let brahmin = _prefix "brahmin"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#brewer"></see>
     /// </summary>
-    let brewer = Namespaced_IRI.parse _namespace_name "brewer" |> NamespacedName
-
+    let brewer = _prefix "brewer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#britishNationalIdentity"></see>
     /// </summary>
-    let britishNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "britishNationalIdentity" |> NamespacedName
-
+    let britishNationalIdentity = _prefix "britishNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#britishNationalism"></see></summary>
-    let britishNationalism =
-        Namespaced_IRI.parse _namespace_name "britishNationalism" |> NamespacedName
-
+    let britishNationalism = _prefix "britishNationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#broadcasting"></see>
     /// </summary>
-    let broadcasting =
-        Namespaced_IRI.parse _namespace_name "broadcasting" |> NamespacedName
-
+    let broadcasting = _prefix "broadcasting"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#brotherOf"></see>
     /// </summary>
-    let brotherOf = Namespaced_IRI.parse _namespace_name "brotherOf" |> NamespacedName
+    let brotherOf = _prefix "brotherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#siblingOf"></see>
     /// </summary>
-    let siblingOf = Namespaced_IRI.parse _namespace_name "siblingOf" |> NamespacedName
+    let siblingOf = _prefix "siblingOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasBrother"></see>
     /// </summary>
-    let hasBrother = Namespaced_IRI.parse _namespace_name "hasBrother" |> NamespacedName
+    let hasBrother = _prefix "hasBrother"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#buddhism"></see></summary>
-    let buddhism = Namespaced_IRI.parse _namespace_name "buddhism" |> NamespacedName
-
+    let buddhism = _prefix "buddhism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bullionCarrier"></see>
     /// </summary>
-    let bullionCarrier =
-        Namespaced_IRI.parse _namespace_name "bullionCarrier" |> NamespacedName
-
+    let bullionCarrier = _prefix "bullionCarrier"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#burialPlaceOf"></see>
     /// </summary>
-    let burialPlaceOf =
-        Namespaced_IRI.parse _namespace_name "burialPlaceOf" |> NamespacedName
-
+    let burialPlaceOf = _prefix "burialPlaceOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasBurialPlace"></see>
     /// </summary>
-    let hasBurialPlace =
-        Namespaced_IRI.parse _namespace_name "hasBurialPlace" |> NamespacedName
-
+    let hasBurialPlace = _prefix "hasBurialPlace"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#bursar"></see>
     /// </summary>
-    let bursar = Namespaced_IRI.parse _namespace_name "bursar" |> NamespacedName
+    let bursar = _prefix "bursar"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#bushido"></see></summary>
-    let bushido = Namespaced_IRI.parse _namespace_name "bushido" |> NamespacedName
+    let bushido = _prefix "bushido"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#business"></see>
     /// </summary>
-    let business = Namespaced_IRI.parse _namespace_name "business" |> NamespacedName
-
+    let business = _prefix "business"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#businessOwner"></see>
     /// </summary>
-    let businessOwner =
-        Namespaced_IRI.parse _namespace_name "businessOwner" |> NamespacedName
-
+    let businessOwner = _prefix "businessOwner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#butcher"></see>
     /// </summary>
-    let butcher = Namespaced_IRI.parse _namespace_name "butcher" |> NamespacedName
+    let butcher = _prefix "butcher"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c1583789-0dad-41d3-8a42-94d7a8e6d451"></see>
     /// </summary>
     let ``c1583789-0dad-41d3-8a42-94d7a8e6d451`` =
-        Namespaced_IRI.parse _namespace_name "c1583789-0dad-41d3-8a42-94d7a8e6d451" |> NamespacedName
+        _prefix "c1583789-0dad-41d3-8a42-94d7a8e6d451"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c3a52178-f054-494c-9afd-7421ddcb384a"></see>
     /// </summary>
     let ``c3a52178-f054-494c-9afd-7421ddcb384a`` =
-        Namespaced_IRI.parse _namespace_name "c3a52178-f054-494c-9afd-7421ddcb384a" |> NamespacedName
+        _prefix "c3a52178-f054-494c-9afd-7421ddcb384a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c3a52178-f054-494c-9afd-7421ddcb384a-215ee9c7d9"></see>
     /// </summary>
     let ``c3a52178-f054-494c-9afd-7421ddcb384a-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "c3a52178-f054-494c-9afd-7421ddcb384a-215ee9c7d9" |> NamespacedName
+        _prefix "c3a52178-f054-494c-9afd-7421ddcb384a-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c3a52178-f054-494c-9afd-7421ddcb384a-partof"></see>
     /// </summary>
     let ``c3a52178-f054-494c-9afd-7421ddcb384a-partof`` =
-        Namespaced_IRI.parse _namespace_name "c3a52178-f054-494c-9afd-7421ddcb384a-partof" |> NamespacedName
+        _prefix "c3a52178-f054-494c-9afd-7421ddcb384a-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c5e7bace-95bb-4820-bd7d-6bb97c1badc5"></see>
     /// </summary>
     let ``c5e7bace-95bb-4820-bd7d-6bb97c1badc5`` =
-        Namespaced_IRI.parse _namespace_name "c5e7bace-95bb-4820-bd7d-6bb97c1badc5" |> NamespacedName
+        _prefix "c5e7bace-95bb-4820-bd7d-6bb97c1badc5"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c6a678e5-8fc6-41bc-8631-7cfb7116017e"></see>
     /// </summary>
     let ``c6a678e5-8fc6-41bc-8631-7cfb7116017e`` =
-        Namespaced_IRI.parse _namespace_name "c6a678e5-8fc6-41bc-8631-7cfb7116017e" |> NamespacedName
+        _prefix "c6a678e5-8fc6-41bc-8631-7cfb7116017e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c6a678e5-8fc6-41bc-8631-7cfb7116017e-215ee9c7d9"></see>
     /// </summary>
     let ``c6a678e5-8fc6-41bc-8631-7cfb7116017e-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "c6a678e5-8fc6-41bc-8631-7cfb7116017e-215ee9c7d9" |> NamespacedName
+        _prefix "c6a678e5-8fc6-41bc-8631-7cfb7116017e-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c6a678e5-8fc6-41bc-8631-7cfb7116017e-5c65118109"></see>
     /// </summary>
     let ``c6a678e5-8fc6-41bc-8631-7cfb7116017e-5c65118109`` =
-        Namespaced_IRI.parse _namespace_name "c6a678e5-8fc6-41bc-8631-7cfb7116017e-5c65118109" |> NamespacedName
+        _prefix "c6a678e5-8fc6-41bc-8631-7cfb7116017e-5c65118109"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c7fcb056-415f-4700-8a9b-d228c9b969fe"></see>
     /// </summary>
     let ``c7fcb056-415f-4700-8a9b-d228c9b969fe`` =
-        Namespaced_IRI.parse _namespace_name "c7fcb056-415f-4700-8a9b-d228c9b969fe" |> NamespacedName
+        _prefix "c7fcb056-415f-4700-8a9b-d228c9b969fe"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c7fcb056-415f-4700-8a9b-d228c9b969fe-215ee9c7d9"></see>
     /// </summary>
     let ``c7fcb056-415f-4700-8a9b-d228c9b969fe-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "c7fcb056-415f-4700-8a9b-d228c9b969fe-215ee9c7d9" |> NamespacedName
+        _prefix "c7fcb056-415f-4700-8a9b-d228c9b969fe-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c7fcb056-415f-4700-8a9b-d228c9b969fe-partof"></see>
     /// </summary>
     let ``c7fcb056-415f-4700-8a9b-d228c9b969fe-partof`` =
-        Namespaced_IRI.parse _namespace_name "c7fcb056-415f-4700-8a9b-d228c9b969fe-partof" |> NamespacedName
+        _prefix "c7fcb056-415f-4700-8a9b-d228c9b969fe-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c7fcb056-415f-4700-8a9b-d228c9b969fe-partof-8b553ee329"></see>
     /// </summary>
     let ``c7fcb056-415f-4700-8a9b-d228c9b969fe-partof-8b553ee329`` =
-        Namespaced_IRI.parse _namespace_name "c7fcb056-415f-4700-8a9b-d228c9b969fe-partof-8b553ee329" |> NamespacedName
+        _prefix "c7fcb056-415f-4700-8a9b-d228c9b969fe-partof-8b553ee329"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c808aed0-eb7b-4c84-9863-63da43401f8e"></see>
     /// </summary>
     let ``c808aed0-eb7b-4c84-9863-63da43401f8e`` =
-        Namespaced_IRI.parse _namespace_name "c808aed0-eb7b-4c84-9863-63da43401f8e" |> NamespacedName
+        _prefix "c808aed0-eb7b-4c84-9863-63da43401f8e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c808aed0-eb7b-4c84-9863-63da43401f8e-d76b887762"></see>
     /// </summary>
     let ``c808aed0-eb7b-4c84-9863-63da43401f8e-d76b887762`` =
-        Namespaced_IRI.parse _namespace_name "c808aed0-eb7b-4c84-9863-63da43401f8e-d76b887762" |> NamespacedName
+        _prefix "c808aed0-eb7b-4c84-9863-63da43401f8e-d76b887762"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#c808aed0-eb7b-4c84-9863-63da43401f8e-0204e54c05"></see>
     /// </summary>
     let ``c808aed0-eb7b-4c84-9863-63da43401f8e-0204e54c05`` =
-        Namespaced_IRI.parse _namespace_name "c808aed0-eb7b-4c84-9863-63da43401f8e-0204e54c05" |> NamespacedName
+        _prefix "c808aed0-eb7b-4c84-9863-63da43401f8e-0204e54c05"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#calligraphy"></see>
     /// </summary>
-    let calligraphy =
-        Namespaced_IRI.parse _namespace_name "calligraphy" |> NamespacedName
-
+    let calligraphy = _prefix "calligraphy"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#calvinism"></see></summary>
-    let calvinism = Namespaced_IRI.parse _namespace_name "calvinism" |> NamespacedName
+    let calvinism = _prefix "calvinism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#camisards"></see></summary>
-    let camisards = Namespaced_IRI.parse _namespace_name "camisards" |> NamespacedName
-
+    let camisards = _prefix "camisards"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#huguenotNationalHeritage"></see></summary>
-    let huguenotNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "huguenotNationalHeritage" |> NamespacedName
-
+    let huguenotNationalHeritage = _prefix "huguenotNationalHeritage"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#capitalism"></see></summary>
-    let capitalism = Namespaced_IRI.parse _namespace_name "capitalism" |> NamespacedName
+    let capitalism = _prefix "capitalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#captain"></see>
     /// </summary>
-    let captain = Namespaced_IRI.parse _namespace_name "captain" |> NamespacedName
+    let captain = _prefix "captain"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#careGiver"></see>
     /// </summary>
-    let careGiver = Namespaced_IRI.parse _namespace_name "careGiver" |> NamespacedName
-
+    let careGiver = _prefix "careGiver"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#cartesianism"></see></summary>
-    let cartesianism =
-        Namespaced_IRI.parse _namespace_name "cartesianism" |> NamespacedName
-
+    let cartesianism = _prefix "cartesianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#rationalism"></see></summary>
-    let rationalism =
-        Namespaced_IRI.parse _namespace_name "rationalism" |> NamespacedName
-
+    let rationalism = _prefix "rationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cartoonist"></see>
     /// </summary>
-    let cartoonist = Namespaced_IRI.parse _namespace_name "cartoonist" |> NamespacedName
+    let cartoonist = _prefix "cartoonist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#catering"></see>
     /// </summary>
-    let catering = Namespaced_IRI.parse _namespace_name "catering" |> NamespacedName
+    let catering = _prefix "catering"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cooking"></see>
     /// </summary>
-    let cooking = Namespaced_IRI.parse _namespace_name "cooking" |> NamespacedName
-
+    let cooking = _prefix "cooking"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// Deprecated in favour of instance &lt;a href="#catholicism" title="#catholicism"&gt;Roman Catholicism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#catholicChurch"></see></summary>
-    let catholicChurch =
-        Namespaced_IRI.parse _namespace_name "catholicChurch" |> NamespacedName
-
+    let catholicChurch = _prefix "catholicChurch"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#catholicEmancipation"></see></summary>
-    let catholicEmancipation =
-        Namespaced_IRI.parse _namespace_name "catholicEmancipation" |> NamespacedName
-
+    let catholicEmancipation = _prefix "catholicEmancipation"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#celticEthnicity"></see></summary>
-    let celticEthnicity =
-        Namespaced_IRI.parse _namespace_name "celticEthnicity" |> NamespacedName
-
+    let celticEthnicity = _prefix "celticEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#censor"></see>
     /// </summary>
-    let censor = Namespaced_IRI.parse _namespace_name "censor" |> NamespacedName
-
+    let censor = _prefix "censor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#certaintyOf"></see>
     /// </summary>
-    let certaintyOf =
-        Namespaced_IRI.parse _namespace_name "certaintyOf" |> NamespacedName
-
+    let certaintyOf = _prefix "certaintyOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCertainty"></see>
     /// </summary>
-    let hasCertainty =
-        Namespaced_IRI.parse _namespace_name "hasCertainty" |> NamespacedName
-
+    let hasCertainty = _prefix "hasCertainty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#certificate"></see>
     /// </summary>
-    let certificate =
-        Namespaced_IRI.parse _namespace_name "certificate" |> NamespacedName
-
+    let certificate = _prefix "certificate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#chairperson"></see>
     /// </summary>
-    let chairperson =
-        Namespaced_IRI.parse _namespace_name "chairperson" |> NamespacedName
-
+    let chairperson = _prefix "chairperson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#chaperone"></see>
     /// </summary>
-    let chaperone = Namespaced_IRI.parse _namespace_name "chaperone" |> NamespacedName
-
+    let chaperone = _prefix "chaperone"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#charityWorker"></see>
     /// </summary>
-    let charityWorker =
-        Namespaced_IRI.parse _namespace_name "charityWorker" |> NamespacedName
-
+    let charityWorker = _prefix "charityWorker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#philanthropist"></see>
     /// </summary>
-    let philanthropist =
-        Namespaced_IRI.parse _namespace_name "philanthropist" |> NamespacedName
-
+    let philanthropist = _prefix "philanthropist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#chartism"></see></summary>
-    let chartism = Namespaced_IRI.parse _namespace_name "chartism" |> NamespacedName
+    let chartism = _prefix "chartism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#chemist"></see>
     /// </summary>
-    let chemist = Namespaced_IRI.parse _namespace_name "chemist" |> NamespacedName
+    let chemist = _prefix "chemist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#chess"></see>
     /// </summary>
-    let chess = Namespaced_IRI.parse _namespace_name "chess" |> NamespacedName
+    let chess = _prefix "chess"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#childOf"></see>
     /// </summary>
-    let childOf = Namespaced_IRI.parse _namespace_name "childOf" |> NamespacedName
+    let childOf = _prefix "childOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasChild"></see>
     /// </summary>
-    let hasChild = Namespaced_IRI.parse _namespace_name "hasChild" |> NamespacedName
+    let hasChild = _prefix "hasChild"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#childcare"></see>
     /// </summary>
-    let childcare = Namespaced_IRI.parse _namespace_name "childcare" |> NamespacedName
-
+    let childcare = _prefix "childcare"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#childcareWork"></see>
     /// </summary>
-    let childcareWork =
-        Namespaced_IRI.parse _namespace_name "childcareWork" |> NamespacedName
-
+    let childcareWork = _prefix "childcareWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#childlessness"></see>
     /// </summary>
-    let childlessness =
-        Namespaced_IRI.parse _namespace_name "childlessness" |> NamespacedName
-
+    let childlessness = _prefix "childlessness"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#childrensWelfare"></see></summary>
-    let childrensWelfare =
-        Namespaced_IRI.parse _namespace_name "childrensWelfare" |> NamespacedName
-
+    let childrensWelfare = _prefix "childrensWelfare"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#chineseEthnicity"></see></summary>
-    let chineseEthnicity =
-        Namespaced_IRI.parse _namespace_name "chineseEthnicity" |> NamespacedName
-
+    let chineseEthnicity = _prefix "chineseEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#christianPacifism"></see></summary>
-    let christianPacifism =
-        Namespaced_IRI.parse _namespace_name "christianPacifism" |> NamespacedName
-
+    let christianPacifism = _prefix "christianPacifism"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#christianScience"></see></summary>
-    let christianScience =
-        Namespaced_IRI.parse _namespace_name "christianScience" |> NamespacedName
-
+    let christianScience = _prefix "christianScience"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#christianSocialism"></see></summary>
-    let christianSocialism =
-        Namespaced_IRI.parse _namespace_name "christianSocialism" |> NamespacedName
-
+    let christianSocialism = _prefix "christianSocialism"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// Deprecated in favour of instance &lt;a href="#christianScience" title="#christianScience"&gt;Christian Science&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#churchOfChristianScience"></see></summary>
-    let churchOfChristianScience =
-        Namespaced_IRI.parse _namespace_name "churchOfChristianScience" |> NamespacedName
-
+    let churchOfChristianScience = _prefix "churchOfChristianScience"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#anglicanism" title="#anglicanism"&gt;Anglicanism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#churchOfEngland"></see></summary>
-    let churchOfEngland =
-        Namespaced_IRI.parse _namespace_name "churchOfEngland" |> NamespacedName
-
+    let churchOfEngland = _prefix "churchOfEngland"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#anglicanism" title="#anglicanism"&gt;Anglicanism&lt;/a&gt;.
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#churchOfIreland"></see></summary>
-    let churchOfIreland =
-        Namespaced_IRI.parse _namespace_name "churchOfIreland" |> NamespacedName
-
+    let churchOfIreland = _prefix "churchOfIreland"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cisGender"></see>
     /// </summary>
-    let cisGender = Namespaced_IRI.parse _namespace_name "cisGender" |> NamespacedName
+    let cisGender = _prefix "cisGender"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cisMan"></see>
     /// </summary>
-    let cisMan = Namespaced_IRI.parse _namespace_name "cisMan" |> NamespacedName
+    let cisMan = _prefix "cisMan"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#manLabel"></see>
     /// </summary>
-    let manLabel = Namespaced_IRI.parse _namespace_name "manLabel" |> NamespacedName
+    let manLabel = _prefix "manLabel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cisWoman"></see>
     /// </summary>
-    let cisWoman = Namespaced_IRI.parse _namespace_name "cisWoman" |> NamespacedName
+    let cisWoman = _prefix "cisWoman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#womanLabel"></see>
     /// </summary>
-    let womanLabel = Namespaced_IRI.parse _namespace_name "womanLabel" |> NamespacedName
-
+    let womanLabel = _prefix "womanLabel"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#civilLibertarianism"></see></summary>
-    let civilLibertarianism =
-        Namespaced_IRI.parse _namespace_name "civilLibertarianism" |> NamespacedName
-
+    let civilLibertarianism = _prefix "civilLibertarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#libertarianism"></see></summary>
-    let libertarianism =
-        Namespaced_IRI.parse _namespace_name "libertarianism" |> NamespacedName
-
+    let libertarianism = _prefix "libertarianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#classicist"></see>
     /// </summary>
-    let classicist = Namespaced_IRI.parse _namespace_name "classicist" |> NamespacedName
+    let classicist = _prefix "classicist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cleaner"></see>
     /// </summary>
-    let cleaner = Namespaced_IRI.parse _namespace_name "cleaner" |> NamespacedName
-
+    let cleaner = _prefix "cleaner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#domesticServant"></see>
     /// </summary>
-    let domesticServant =
-        Namespaced_IRI.parse _namespace_name "domesticServant" |> NamespacedName
-
+    let domesticServant = _prefix "domesticServant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#clericalWork"></see>
     /// </summary>
-    let clericalWork =
-        Namespaced_IRI.parse _namespace_name "clericalWork" |> NamespacedName
-
+    let clericalWork = _prefix "clericalWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#clothingProduction"></see>
     /// </summary>
-    let clothingProduction =
-        Namespaced_IRI.parse _namespace_name "clothingProduction" |> NamespacedName
-
+    let clothingProduction = _prefix "clothingProduction"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#clothworker"></see>
     /// </summary>
-    let clothworker =
-        Namespaced_IRI.parse _namespace_name "clothworker" |> NamespacedName
-
+    let clothworker = _prefix "clothworker"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#co-operativeMovement"></see></summary>
-    let ``co-operativeMovement`` =
-        Namespaced_IRI.parse _namespace_name "co-operativeMovement" |> NamespacedName
-
+    let ``co-operativeMovement`` = _prefix "co-operativeMovement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#coach"></see>
     /// </summary>
-    let coach = Namespaced_IRI.parse _namespace_name "coach" |> NamespacedName
+    let coach = _prefix "coach"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sports"></see>
     /// </summary>
-    let sports = Namespaced_IRI.parse _namespace_name "sports" |> NamespacedName
+    let sports = _prefix "sports"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#coastGuard"></see>
     /// </summary>
-    let coastGuard = Namespaced_IRI.parse _namespace_name "coastGuard" |> NamespacedName
-
+    let coastGuard = _prefix "coastGuard"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lawEnforcement"></see>
     /// </summary>
-    let lawEnforcement =
-        Namespaced_IRI.parse _namespace_name "lawEnforcement" |> NamespacedName
-
+    let lawEnforcement = _prefix "lawEnforcement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cobbler"></see>
     /// </summary>
-    let cobbler = Namespaced_IRI.parse _namespace_name "cobbler" |> NamespacedName
+    let cobbler = _prefix "cobbler"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#collector"></see>
     /// </summary>
-    let collector = Namespaced_IRI.parse _namespace_name "collector" |> NamespacedName
-
+    let collector = _prefix "collector"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#colonialOfficial"></see>
     /// </summary>
-    let colonialOfficial =
-        Namespaced_IRI.parse _namespace_name "colonialOfficial" |> NamespacedName
-
+    let colonialOfficial = _prefix "colonialOfficial"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#government"></see>
     /// </summary>
-    let government = Namespaced_IRI.parse _namespace_name "government" |> NamespacedName
-
+    let government = _prefix "government"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#commissioner"></see>
     /// </summary>
-    let commissioner =
-        Namespaced_IRI.parse _namespace_name "commissioner" |> NamespacedName
-
+    let commissioner = _prefix "commissioner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#committeeMember"></see>
     /// </summary>
-    let committeeMember =
-        Namespaced_IRI.parse _namespace_name "committeeMember" |> NamespacedName
-
+    let committeeMember = _prefix "committeeMember"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#communalism"></see></summary>
-    let communalism =
-        Namespaced_IRI.parse _namespace_name "communalism" |> NamespacedName
-
+    let communalism = _prefix "communalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#communeOrganizer"></see>
     /// </summary>
-    let communeOrganizer =
-        Namespaced_IRI.parse _namespace_name "communeOrganizer" |> NamespacedName
-
+    let communeOrganizer = _prefix "communeOrganizer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#liberalism"></see></summary>
-    let liberalism = Namespaced_IRI.parse _namespace_name "liberalism" |> NamespacedName
+    let liberalism = _prefix "liberalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#marxism"></see></summary>
-    let marxism = Namespaced_IRI.parse _namespace_name "marxism" |> NamespacedName
+    let marxism = _prefix "marxism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#maoism"></see></summary>
-    let maoism = Namespaced_IRI.parse _namespace_name "maoism" |> NamespacedName
+    let maoism = _prefix "maoism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#companion"></see>
     /// </summary>
-    let companion = Namespaced_IRI.parse _namespace_name "companion" |> NamespacedName
+    let companion = _prefix "companion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#composer"></see>
     /// </summary>
-    let composer = Namespaced_IRI.parse _namespace_name "composer" |> NamespacedName
+    let composer = _prefix "composer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#music"></see>
     /// </summary>
-    let music = Namespaced_IRI.parse _namespace_name "music" |> NamespacedName
-
+    let music = _prefix "music"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#computerScientist"></see>
     /// </summary>
-    let computerScientist =
-        Namespaced_IRI.parse _namespace_name "computerScientist" |> NamespacedName
-
+    let computerScientist = _prefix "computerScientist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#computerWork"></see>
     /// </summary>
-    let computerWork =
-        Namespaced_IRI.parse _namespace_name "computerWork" |> NamespacedName
-
+    let computerWork = _prefix "computerWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dataProcessing"></see>
     /// </summary>
-    let dataProcessing =
-        Namespaced_IRI.parse _namespace_name "dataProcessing" |> NamespacedName
-
+    let dataProcessing = _prefix "dataProcessing"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#confectioner"></see>
     /// </summary>
-    let confectioner =
-        Namespaced_IRI.parse _namespace_name "confectioner" |> NamespacedName
-
+    let confectioner = _prefix "confectioner"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#congregationalism" title="#congregationalism"&gt;Congregationalism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#congregationalChurch"></see></summary>
-    let congregationalChurch =
-        Namespaced_IRI.parse _namespace_name "congregationalChurch" |> NamespacedName
-
+    let congregationalChurch = _prefix "congregationalChurch"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#congregationalism"></see></summary>
-    let congregationalism =
-        Namespaced_IRI.parse _namespace_name "congregationalism" |> NamespacedName
-
+    let congregationalism = _prefix "congregationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#connoisseur"></see>
     /// </summary>
-    let connoisseur =
-        Namespaced_IRI.parse _namespace_name "connoisseur" |> NamespacedName
-
+    let connoisseur = _prefix "connoisseur"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#conscientiousObjection"></see></summary>
-    let conscientiousObjection =
-        Namespaced_IRI.parse _namespace_name "conscientiousObjection" |> NamespacedName
-
+    let conscientiousObjection = _prefix "conscientiousObjection"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#conservationist"></see>
     /// </summary>
-    let conservationist =
-        Namespaced_IRI.parse _namespace_name "conservationist" |> NamespacedName
-
+    let conservationist = _prefix "conservationist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#conservatism"></see></summary>
-    let conservatism =
-        Namespaced_IRI.parse _namespace_name "conservatism" |> NamespacedName
-
+    let conservatism = _prefix "conservatism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#neo-Conservatism"></see></summary>
-    let ``neo-Conservatism`` =
-        Namespaced_IRI.parse _namespace_name "neo-Conservatism" |> NamespacedName
-
+    let ``neo-Conservatism`` = _prefix "neo-Conservatism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#conservativeFeminism"></see></summary>
-    let conservativeFeminism =
-        Namespaced_IRI.parse _namespace_name "conservativeFeminism" |> NamespacedName
-
+    let conservativeFeminism = _prefix "conservativeFeminism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#conservativePartyUk"></see></summary>
-    let conservativePartyUk =
-        Namespaced_IRI.parse _namespace_name "conservativePartyUk" |> NamespacedName
-
+    let conservativePartyUk = _prefix "conservativePartyUk"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#constitutionalism"></see></summary>
-    let constitutionalism =
-        Namespaced_IRI.parse _namespace_name "constitutionalism" |> NamespacedName
-
+    let constitutionalism = _prefix "constitutionalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#construction"></see>
     /// </summary>
-    let construction =
-        Namespaced_IRI.parse _namespace_name "construction" |> NamespacedName
-
+    let construction = _prefix "construction"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#consultant"></see>
     /// </summary>
-    let consultant = Namespaced_IRI.parse _namespace_name "consultant" |> NamespacedName
+    let consultant = _prefix "consultant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#contractor"></see>
     /// </summary>
-    let contractor = Namespaced_IRI.parse _namespace_name "contractor" |> NamespacedName
-
+    let contractor = _prefix "contractor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#coopOrganizer"></see>
     /// </summary>
-    let coopOrganizer =
-        Namespaced_IRI.parse _namespace_name "coopOrganizer" |> NamespacedName
-
+    let coopOrganizer = _prefix "coopOrganizer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cooper"></see>
     /// </summary>
-    let cooper = Namespaced_IRI.parse _namespace_name "cooper" |> NamespacedName
+    let cooper = _prefix "cooper"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#copyist"></see>
     /// </summary>
-    let copyist = Namespaced_IRI.parse _namespace_name "copyist" |> NamespacedName
-
+    let copyist = _prefix "copyist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#transcriber"></see>
     /// </summary>
-    let transcriber =
-        Namespaced_IRI.parse _namespace_name "transcriber" |> NamespacedName
-
+    let transcriber = _prefix "transcriber"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#cornishNationalHeritage"></see></summary>
-    let cornishNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "cornishNationalHeritage" |> NamespacedName
-
+    let cornishNationalHeritage = _prefix "cornishNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#corporateDirector"></see>
     /// </summary>
-    let corporateDirector =
-        Namespaced_IRI.parse _namespace_name "corporateDirector" |> NamespacedName
-
+    let corporateDirector = _prefix "corporateDirector"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#counsellor"></see>
     /// </summary>
-    let counsellor = Namespaced_IRI.parse _namespace_name "counsellor" |> NamespacedName
+    let counsellor = _prefix "counsellor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#courtier"></see>
     /// </summary>
-    let courtier = Namespaced_IRI.parse _namespace_name "courtier" |> NamespacedName
+    let courtier = _prefix "courtier"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cousinOf"></see>
     /// </summary>
-    let cousinOf = Namespaced_IRI.parse _namespace_name "cousinOf" |> NamespacedName
+    let cousinOf = _prefix "cousinOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCousin"></see>
     /// </summary>
-    let hasCousin = Namespaced_IRI.parse _namespace_name "hasCousin" |> NamespacedName
-
+    let hasCousin = _prefix "hasCousin"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#covenanters"></see></summary>
-    let covenanters =
-        Namespaced_IRI.parse _namespace_name "covenanters" |> NamespacedName
-
+    let covenanters = _prefix "covenanters"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#craftsperson"></see>
     /// </summary>
-    let craftsperson =
-        Namespaced_IRI.parse _namespace_name "craftsperson" |> NamespacedName
-
+    let craftsperson = _prefix "craftsperson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#credentialHeldBy"></see>
     /// </summary>
-    let credentialHeldBy =
-        Namespaced_IRI.parse _namespace_name "credentialHeldBy" |> NamespacedName
-
+    let credentialHeldBy = _prefix "credentialHeldBy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCredentialIn"></see>
     /// </summary>
-    let hasCredentialIn =
-        Namespaced_IRI.parse _namespace_name "hasCredentialIn" |> NamespacedName
-
+    let hasCredentialIn = _prefix "hasCredentialIn"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#credentialSubjectOf"></see>
     /// </summary>
-    let credentialSubjectOf =
-        Namespaced_IRI.parse _namespace_name "credentialSubjectOf" |> NamespacedName
-
+    let credentialSubjectOf = _prefix "credentialSubjectOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCredentialSubject"></see>
     /// </summary>
-    let hasCredentialSubject =
-        Namespaced_IRI.parse _namespace_name "hasCredentialSubject" |> NamespacedName
-
+    let hasCredentialSubject = _prefix "hasCredentialSubject"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#creoleEthnicity"></see></summary>
-    let creoleEthnicity =
-        Namespaced_IRI.parse _namespace_name "creoleEthnicity" |> NamespacedName
-
+    let creoleEthnicity = _prefix "creoleEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#creoleRaceColour"></see>
     /// </summary>
-    let creoleRaceColour =
-        Namespaced_IRI.parse _namespace_name "creoleRaceColour" |> NamespacedName
-
+    let creoleRaceColour = _prefix "creoleRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cricket"></see>
     /// </summary>
-    let cricket = Namespaced_IRI.parse _namespace_name "cricket" |> NamespacedName
+    let cricket = _prefix "cricket"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#criminal"></see>
     /// </summary>
-    let criminal = Namespaced_IRI.parse _namespace_name "criminal" |> NamespacedName
+    let criminal = _prefix "criminal"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#critic"></see>
     /// </summary>
-    let critic = Namespaced_IRI.parse _namespace_name "critic" |> NamespacedName
+    let critic = _prefix "critic"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#writer"></see>
     /// </summary>
-    let writer = Namespaced_IRI.parse _namespace_name "writer" |> NamespacedName
-
+    let writer = _prefix "writer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#culturalFormOf"></see>
     /// </summary>
-    let culturalFormOf =
-        Namespaced_IRI.parse _namespace_name "culturalFormOf" |> NamespacedName
-
+    let culturalFormOf = _prefix "culturalFormOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCulturalForm"></see>
     /// </summary>
-    let hasCulturalForm =
-        Namespaced_IRI.parse _namespace_name "hasCulturalForm" |> NamespacedName
-
+    let hasCulturalForm = _prefix "hasCulturalForm"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#curator"></see>
     /// </summary>
-    let curator = Namespaced_IRI.parse _namespace_name "curator" |> NamespacedName
-
+    let curator = _prefix "curator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#exhibitions"></see>
     /// </summary>
-    let exhibitions =
-        Namespaced_IRI.parse _namespace_name "exhibitions" |> NamespacedName
-
+    let exhibitions = _prefix "exhibitions"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#cyclist"></see>
     /// </summary>
-    let cyclist = Namespaced_IRI.parse _namespace_name "cyclist" |> NamespacedName
+    let cyclist = _prefix "cyclist"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d53c6644-df5c-43d7-86d3-2954c0d5a656"></see>
     /// </summary>
     let ``d53c6644-df5c-43d7-86d3-2954c0d5a656`` =
-        Namespaced_IRI.parse _namespace_name "d53c6644-df5c-43d7-86d3-2954c0d5a656" |> NamespacedName
+        _prefix "d53c6644-df5c-43d7-86d3-2954c0d5a656"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d53c6644-df5c-43d7-86d3-2954c0d5a656-cb4c10a176"></see>
     /// </summary>
     let ``d53c6644-df5c-43d7-86d3-2954c0d5a656-cb4c10a176`` =
-        Namespaced_IRI.parse _namespace_name "d53c6644-df5c-43d7-86d3-2954c0d5a656-cb4c10a176" |> NamespacedName
+        _prefix "d53c6644-df5c-43d7-86d3-2954c0d5a656-cb4c10a176"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d596c4a0-ecaf-4739-8a58-3e0af7dba4c7"></see>
     /// </summary>
     let ``d596c4a0-ecaf-4739-8a58-3e0af7dba4c7`` =
-        Namespaced_IRI.parse _namespace_name "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7" |> NamespacedName
+        _prefix "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-cf7aa6a7bf"></see>
     /// </summary>
     let ``d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-cf7aa6a7bf`` =
-        Namespaced_IRI.parse _namespace_name "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-cf7aa6a7bf" |> NamespacedName
+        _prefix "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-cf7aa6a7bf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-706552b3f4"></see>
     /// </summary>
     let ``d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-706552b3f4`` =
-        Namespaced_IRI.parse _namespace_name "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-706552b3f4" |> NamespacedName
+        _prefix "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-706552b3f4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-42d9d30d94"></see>
     /// </summary>
     let ``d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-42d9d30d94`` =
-        Namespaced_IRI.parse _namespace_name "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-42d9d30d94" |> NamespacedName
+        _prefix "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-42d9d30d94"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-e523623174"></see>
     /// </summary>
     let ``d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-e523623174`` =
-        Namespaced_IRI.parse _namespace_name "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-e523623174" |> NamespacedName
+        _prefix "d596c4a0-ecaf-4739-8a58-3e0af7dba4c7-e523623174"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d95dce89-623d-4226-afd5-c602db0b6c7f"></see>
     /// </summary>
     let ``d95dce89-623d-4226-afd5-c602db0b6c7f`` =
-        Namespaced_IRI.parse _namespace_name "d95dce89-623d-4226-afd5-c602db0b6c7f" |> NamespacedName
+        _prefix "d95dce89-623d-4226-afd5-c602db0b6c7f"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d95dce89-623d-4226-afd5-c602db0b6c7f-215ee9c7d9"></see>
     /// </summary>
     let ``d95dce89-623d-4226-afd5-c602db0b6c7f-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "d95dce89-623d-4226-afd5-c602db0b6c7f-215ee9c7d9" |> NamespacedName
+        _prefix "d95dce89-623d-4226-afd5-c602db0b6c7f-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#d95dce89-623d-4226-afd5-c602db0b6c7f-partof"></see>
     /// </summary>
     let ``d95dce89-623d-4226-afd5-c602db0b6c7f-partof`` =
-        Namespaced_IRI.parse _namespace_name "d95dce89-623d-4226-afd5-c602db0b6c7f-partof" |> NamespacedName
+        _prefix "d95dce89-623d-4226-afd5-c602db0b6c7f-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dairyWork"></see>
     /// </summary>
-    let dairyWork = Namespaced_IRI.parse _namespace_name "dairyWork" |> NamespacedName
+    let dairyWork = _prefix "dairyWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#farming"></see>
     /// </summary>
-    let farming = Namespaced_IRI.parse _namespace_name "farming" |> NamespacedName
+    let farming = _prefix "farming"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dance"></see>
     /// </summary>
-    let dance = Namespaced_IRI.parse _namespace_name "dance" |> NamespacedName
+    let dance = _prefix "dance"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#darwinism"></see></summary>
-    let darwinism = Namespaced_IRI.parse _namespace_name "darwinism" |> NamespacedName
+    let darwinism = _prefix "darwinism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#secularism"></see></summary>
-    let secularism = Namespaced_IRI.parse _namespace_name "secularism" |> NamespacedName
+    let secularism = _prefix "secularism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#AbiLemak"></see>
     /// </summary>
-    let AbiLemak = Namespaced_IRI.parse _namespace_name "AbiLemak" |> NamespacedName
+    let AbiLemak = _prefix "AbiLemak"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#daughterOf"></see>
     /// </summary>
-    let daughterOf = Namespaced_IRI.parse _namespace_name "daughterOf" |> NamespacedName
-
+    let daughterOf = _prefix "daughterOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasDaughter"></see>
     /// </summary>
-    let hasDaughter =
-        Namespaced_IRI.parse _namespace_name "hasDaughter" |> NamespacedName
+    let hasDaughter = _prefix "hasDaughter"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#db2f8571-a773-4068-a35f-34262950bb8f"></see>
     /// </summary>
     let ``db2f8571-a773-4068-a35f-34262950bb8f`` =
-        Namespaced_IRI.parse _namespace_name "db2f8571-a773-4068-a35f-34262950bb8f" |> NamespacedName
+        _prefix "db2f8571-a773-4068-a35f-34262950bb8f"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#db2f8571-a773-4068-a35f-34262950bb8f-9841babf77"></see>
     /// </summary>
     let ``db2f8571-a773-4068-a35f-34262950bb8f-9841babf77`` =
-        Namespaced_IRI.parse _namespace_name "db2f8571-a773-4068-a35f-34262950bb8f-9841babf77" |> NamespacedName
+        _prefix "db2f8571-a773-4068-a35f-34262950bb8f-9841babf77"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#db3de175-7d4a-4860-908b-a905b9cc9b07"></see>
     /// </summary>
     let ``db3de175-7d4a-4860-908b-a905b9cc9b07`` =
-        Namespaced_IRI.parse _namespace_name "db3de175-7d4a-4860-908b-a905b9cc9b07" |> NamespacedName
+        _prefix "db3de175-7d4a-4860-908b-a905b9cc9b07"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#db3de175-7d4a-4860-908b-a905b9cc9b07-84fe24be76"></see>
     /// </summary>
     let ``db3de175-7d4a-4860-908b-a905b9cc9b07-84fe24be76`` =
-        Namespaced_IRI.parse _namespace_name "db3de175-7d4a-4860-908b-a905b9cc9b07-84fe24be76" |> NamespacedName
+        _prefix "db3de175-7d4a-4860-908b-a905b9cc9b07-84fe24be76"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#db3de175-7d4a-4860-908b-a905b9cc9b07-9eccf82c6d"></see>
     /// </summary>
     let ``db3de175-7d4a-4860-908b-a905b9cc9b07-9eccf82c6d`` =
-        Namespaced_IRI.parse _namespace_name "db3de175-7d4a-4860-908b-a905b9cc9b07-9eccf82c6d" |> NamespacedName
+        _prefix "db3de175-7d4a-4860-908b-a905b9cc9b07-9eccf82c6d"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#deathDateOf"></see>
     /// </summary>
-    let deathDateOf =
-        Namespaced_IRI.parse _namespace_name "deathDateOf" |> NamespacedName
-
+    let deathDateOf = _prefix "deathDateOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasDeathDate"></see>
     /// </summary>
-    let hasDeathDate =
-        Namespaced_IRI.parse _namespace_name "hasDeathDate" |> NamespacedName
-
+    let hasDeathDate = _prefix "hasDeathDate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#deathPlaceOf"></see>
     /// </summary>
-    let deathPlaceOf =
-        Namespaced_IRI.parse _namespace_name "deathPlaceOf" |> NamespacedName
-
+    let deathPlaceOf = _prefix "deathPlaceOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasDeathPlace"></see>
     /// </summary>
-    let hasDeathPlace =
-        Namespaced_IRI.parse _namespace_name "hasDeathPlace" |> NamespacedName
-
+    let hasDeathPlace = _prefix "hasDeathPlace"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#decoder"></see>
     /// </summary>
-    let decoder = Namespaced_IRI.parse _namespace_name "decoder" |> NamespacedName
+    let decoder = _prefix "decoder"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#deism"></see></summary>
-    let deism = Namespaced_IRI.parse _namespace_name "deism" |> NamespacedName
-
+    let deism = _prefix "deism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#deliveryPerson"></see>
     /// </summary>
-    let deliveryPerson =
-        Namespaced_IRI.parse _namespace_name "deliveryPerson" |> NamespacedName
-
+    let deliveryPerson = _prefix "deliveryPerson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#democrat"></see>
     /// </summary>
-    let democrat = Namespaced_IRI.parse _namespace_name "democrat" |> NamespacedName
+    let democrat = _prefix "democrat"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dentist"></see>
     /// </summary>
-    let dentist = Namespaced_IRI.parse _namespace_name "dentist" |> NamespacedName
-
+    let dentist = _prefix "dentist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#healthCareProvider"></see>
     /// </summary>
-    let healthCareProvider =
-        Namespaced_IRI.parse _namespace_name "healthCareProvider" |> NamespacedName
-
+    let healthCareProvider = _prefix "healthCareProvider"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#designer"></see>
     /// </summary>
-    let designer = Namespaced_IRI.parse _namespace_name "designer" |> NamespacedName
-
+    let designer = _prefix "designer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#determinism"></see></summary>
-    let determinism =
-        Namespaced_IRI.parse _namespace_name "determinism" |> NamespacedName
+    let determinism = _prefix "determinism"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#df029fed-c7f8-4438-97a4-33d9ff712cad"></see>
     /// </summary>
     let ``df029fed-c7f8-4438-97a4-33d9ff712cad`` =
-        Namespaced_IRI.parse _namespace_name "df029fed-c7f8-4438-97a4-33d9ff712cad" |> NamespacedName
+        _prefix "df029fed-c7f8-4438-97a4-33d9ff712cad"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#df029fed-c7f8-4438-97a4-33d9ff712cad-b531d0ad51"></see>
     /// </summary>
     let ``df029fed-c7f8-4438-97a4-33d9ff712cad-b531d0ad51`` =
-        Namespaced_IRI.parse _namespace_name "df029fed-c7f8-4438-97a4-33d9ff712cad-b531d0ad51" |> NamespacedName
+        _prefix "df029fed-c7f8-4438-97a4-33d9ff712cad-b531d0ad51"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#df029fed-c7f8-4438-97a4-33d9ff712cad-63a2ae33d9"></see>
     /// </summary>
     let ``df029fed-c7f8-4438-97a4-33d9ff712cad-63a2ae33d9`` =
-        Namespaced_IRI.parse _namespace_name "df029fed-c7f8-4438-97a4-33d9ff712cad-63a2ae33d9" |> NamespacedName
+        _prefix "df029fed-c7f8-4438-97a4-33d9ff712cad-63a2ae33d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#diploma"></see>
     /// </summary>
-    let diploma = Namespaced_IRI.parse _namespace_name "diploma" |> NamespacedName
+    let diploma = _prefix "diploma"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#diplomat"></see>
     /// </summary>
-    let diplomat = Namespaced_IRI.parse _namespace_name "diplomat" |> NamespacedName
+    let diplomat = _prefix "diplomat"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#director"></see>
     /// </summary>
-    let director = Namespaced_IRI.parse _namespace_name "director" |> NamespacedName
+    let director = _prefix "director"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#dissentProtestant" title="#dissentProtestant"&gt;Dissent (Protestant)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dissenters"></see></summary>
-    let dissenters = Namespaced_IRI.parse _namespace_name "dissenters" |> NamespacedName
-
+    let dissenters = _prefix "dissenters"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dissentingChristianity"></see></summary>
-    let dissentingChristianity =
-        Namespaced_IRI.parse _namespace_name "dissentingChristianity" |> NamespacedName
-
+    let dissentingChristianity = _prefix "dissentingChristianity"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#dissentProtestant" title="#dissentProtestant"&gt;Dissent (Protestant)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dissentingChurches"></see></summary>
-    let dissentingChurches =
-        Namespaced_IRI.parse _namespace_name "dissentingChurches" |> NamespacedName
-
+    let dissentingChurches = _prefix "dissentingChurches"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#diver"></see>
     /// </summary>
-    let diver = Namespaced_IRI.parse _namespace_name "diver" |> NamespacedName
-
+    let diver = _prefix "diver"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dockyardWork"></see>
     /// </summary>
-    let dockyardWork =
-        Namespaced_IRI.parse _namespace_name "dockyardWork" |> NamespacedName
-
+    let dockyardWork = _prefix "dockyardWork"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#doctorOfPhilosophy"></see></summary>
-    let doctorOfPhilosophy =
-        Namespaced_IRI.parse _namespace_name "doctorOfPhilosophy" |> NamespacedName
-
+    let doctorOfPhilosophy = _prefix "doctorOfPhilosophy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#postgraduateDegree"></see>
     /// </summary>
-    let postgraduateDegree =
-        Namespaced_IRI.parse _namespace_name "postgraduateDegree" |> NamespacedName
-
+    let postgraduateDegree = _prefix "postgraduateDegree"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#domainIncludes"></see>
     /// </summary>
-    let domainIncludes =
-        Namespaced_IRI.parse _namespace_name "domainIncludes" |> NamespacedName
-
+    let domainIncludes = _prefix "domainIncludes"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#servant"></see>
     /// </summary>
-    let servant = Namespaced_IRI.parse _namespace_name "servant" |> NamespacedName
-
+    let servant = _prefix "servant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#domesticWork"></see>
     /// </summary>
-    let domesticWork =
-        Namespaced_IRI.parse _namespace_name "domesticWork" |> NamespacedName
-
+    let domesticWork = _prefix "domesticWork"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dominicanOrder"></see></summary>
-    let dominicanOrder =
-        Namespaced_IRI.parse _namespace_name "dominicanOrder" |> NamespacedName
-
+    let dominicanOrder = _prefix "dominicanOrder"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#draper"></see>
     /// </summary>
-    let draper = Namespaced_IRI.parse _namespace_name "draper" |> NamespacedName
-
+    let draper = _prefix "draper"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dressReform"></see></summary>
-    let dressReform =
-        Namespaced_IRI.parse _namespace_name "dressReform" |> NamespacedName
-
+    let dressReform = _prefix "dressReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#dressmaking"></see>
     /// </summary>
-    let dressmaking =
-        Namespaced_IRI.parse _namespace_name "dressmaking" |> NamespacedName
-
+    let dressmaking = _prefix "dressmaking"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#tailor"></see>
     /// </summary>
-    let tailor = Namespaced_IRI.parse _namespace_name "tailor" |> NamespacedName
+    let tailor = _prefix "tailor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#drinking"></see>
     /// </summary>
-    let drinking = Namespaced_IRI.parse _namespace_name "drinking" |> NamespacedName
+    let drinking = _prefix "drinking"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#drugUse"></see>
     /// </summary>
-    let drugUse = Namespaced_IRI.parse _namespace_name "drugUse" |> NamespacedName
-
+    let drugUse = _prefix "drugUse"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#dutchNationalHeritage"></see></summary>
-    let dutchNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "dutchNationalHeritage" |> NamespacedName
+    let dutchNationalHeritage = _prefix "dutchNationalHeritage"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e053e9f1-37ea-407d-b0cd-caaf413c142e"></see>
     /// </summary>
     let ``e053e9f1-37ea-407d-b0cd-caaf413c142e`` =
-        Namespaced_IRI.parse _namespace_name "e053e9f1-37ea-407d-b0cd-caaf413c142e" |> NamespacedName
+        _prefix "e053e9f1-37ea-407d-b0cd-caaf413c142e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e053e9f1-37ea-407d-b0cd-caaf413c142e-a521eafbdd"></see>
     /// </summary>
     let ``e053e9f1-37ea-407d-b0cd-caaf413c142e-a521eafbdd`` =
-        Namespaced_IRI.parse _namespace_name "e053e9f1-37ea-407d-b0cd-caaf413c142e-a521eafbdd" |> NamespacedName
+        _prefix "e053e9f1-37ea-407d-b0cd-caaf413c142e-a521eafbdd"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e053e9f1-37ea-407d-b0cd-caaf413c142e-63a2ae33d9"></see>
     /// </summary>
     let ``e053e9f1-37ea-407d-b0cd-caaf413c142e-63a2ae33d9`` =
-        Namespaced_IRI.parse _namespace_name "e053e9f1-37ea-407d-b0cd-caaf413c142e-63a2ae33d9" |> NamespacedName
+        _prefix "e053e9f1-37ea-407d-b0cd-caaf413c142e-63a2ae33d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e1f710d3-6ebd-4181-be61-bf931282a8b7"></see>
     /// </summary>
     let ``e1f710d3-6ebd-4181-be61-bf931282a8b7`` =
-        Namespaced_IRI.parse _namespace_name "e1f710d3-6ebd-4181-be61-bf931282a8b7" |> NamespacedName
+        _prefix "e1f710d3-6ebd-4181-be61-bf931282a8b7"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e1f710d3-6ebd-4181-be61-bf931282a8b7-215ee9c7d9"></see>
     /// </summary>
     let ``e1f710d3-6ebd-4181-be61-bf931282a8b7-215ee9c7d9`` =
-        Namespaced_IRI.parse _namespace_name "e1f710d3-6ebd-4181-be61-bf931282a8b7-215ee9c7d9" |> NamespacedName
+        _prefix "e1f710d3-6ebd-4181-be61-bf931282a8b7-215ee9c7d9"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e1f710d3-6ebd-4181-be61-bf931282a8b7-47d7a4164e"></see>
     /// </summary>
     let ``e1f710d3-6ebd-4181-be61-bf931282a8b7-47d7a4164e`` =
-        Namespaced_IRI.parse _namespace_name "e1f710d3-6ebd-4181-be61-bf931282a8b7-47d7a4164e" |> NamespacedName
+        _prefix "e1f710d3-6ebd-4181-be61-bf931282a8b7-47d7a4164e"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e2c7e804-1fa1-4575-b2a1-bf284412e036"></see>
     /// </summary>
     let ``e2c7e804-1fa1-4575-b2a1-bf284412e036`` =
-        Namespaced_IRI.parse _namespace_name "e2c7e804-1fa1-4575-b2a1-bf284412e036" |> NamespacedName
+        _prefix "e2c7e804-1fa1-4575-b2a1-bf284412e036"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e2c7e804-1fa1-4575-b2a1-bf284412e036-d0d3bac526"></see>
     /// </summary>
     let ``e2c7e804-1fa1-4575-b2a1-bf284412e036-d0d3bac526`` =
-        Namespaced_IRI.parse _namespace_name "e2c7e804-1fa1-4575-b2a1-bf284412e036-d0d3bac526" |> NamespacedName
+        _prefix "e2c7e804-1fa1-4575-b2a1-bf284412e036-d0d3bac526"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#e2c7e804-1fa1-4575-b2a1-bf284412e036-a1a376d816"></see>
     /// </summary>
     let ``e2c7e804-1fa1-4575-b2a1-bf284412e036-a1a376d816`` =
-        Namespaced_IRI.parse _namespace_name "e2c7e804-1fa1-4575-b2a1-bf284412e036-a1a376d816" |> NamespacedName
+        _prefix "e2c7e804-1fa1-4575-b2a1-bf284412e036-a1a376d816"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ea282bf0-da27-4ecc-98bd-e1aff595fc07"></see>
     /// </summary>
     let ``ea282bf0-da27-4ecc-98bd-e1aff595fc07`` =
-        Namespaced_IRI.parse _namespace_name "ea282bf0-da27-4ecc-98bd-e1aff595fc07" |> NamespacedName
+        _prefix "ea282bf0-da27-4ecc-98bd-e1aff595fc07"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ea282bf0-da27-4ecc-98bd-e1aff595fc07-a73943684a"></see>
     /// </summary>
     let ``ea282bf0-da27-4ecc-98bd-e1aff595fc07-a73943684a`` =
-        Namespaced_IRI.parse _namespace_name "ea282bf0-da27-4ecc-98bd-e1aff595fc07-a73943684a" |> NamespacedName
+        _prefix "ea282bf0-da27-4ecc-98bd-e1aff595fc07-a73943684a"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ea282bf0-da27-4ecc-98bd-e1aff595fc07-a70e175b3d"></see>
     /// </summary>
     let ``ea282bf0-da27-4ecc-98bd-e1aff595fc07-a70e175b3d`` =
-        Namespaced_IRI.parse _namespace_name "ea282bf0-da27-4ecc-98bd-e1aff595fc07-a70e175b3d" |> NamespacedName
+        _prefix "ea282bf0-da27-4ecc-98bd-e1aff595fc07-a70e175b3d"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#easternReligions"></see></summary>
-    let easternReligions =
-        Namespaced_IRI.parse _namespace_name "easternReligions" |> NamespacedName
+    let easternReligions = _prefix "easternReligions"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbb5e23-2c34-4810-b921-1d72694af314"></see>
     /// </summary>
     let ``ebbb5e23-2c34-4810-b921-1d72694af314`` =
-        Namespaced_IRI.parse _namespace_name "ebbb5e23-2c34-4810-b921-1d72694af314" |> NamespacedName
+        _prefix "ebbb5e23-2c34-4810-b921-1d72694af314"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbb5e23-2c34-4810-b921-1d72694af314-fb3b58e90b"></see>
     /// </summary>
     let ``ebbb5e23-2c34-4810-b921-1d72694af314-fb3b58e90b`` =
-        Namespaced_IRI.parse _namespace_name "ebbb5e23-2c34-4810-b921-1d72694af314-fb3b58e90b" |> NamespacedName
+        _prefix "ebbb5e23-2c34-4810-b921-1d72694af314-fb3b58e90b"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbb5e23-2c34-4810-b921-1d72694af314-d5a62f9799"></see>
     /// </summary>
     let ``ebbb5e23-2c34-4810-b921-1d72694af314-d5a62f9799`` =
-        Namespaced_IRI.parse _namespace_name "ebbb5e23-2c34-4810-b921-1d72694af314-d5a62f9799" |> NamespacedName
+        _prefix "ebbb5e23-2c34-4810-b921-1d72694af314-d5a62f9799"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbb5e23-2c34-4810-b921-1d72694af314-225e6db077"></see>
     /// </summary>
     let ``ebbb5e23-2c34-4810-b921-1d72694af314-225e6db077`` =
-        Namespaced_IRI.parse _namespace_name "ebbb5e23-2c34-4810-b921-1d72694af314-225e6db077" |> NamespacedName
+        _prefix "ebbb5e23-2c34-4810-b921-1d72694af314-225e6db077"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbb5e23-2c34-4810-b921-1d72694af314-partof"></see>
     /// </summary>
     let ``ebbb5e23-2c34-4810-b921-1d72694af314-partof`` =
-        Namespaced_IRI.parse _namespace_name "ebbb5e23-2c34-4810-b921-1d72694af314-partof" |> NamespacedName
+        _prefix "ebbb5e23-2c34-4810-b921-1d72694af314-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbb5e23-2c34-4810-b921-1d72694af314-partof-33254c3df4"></see>
     /// </summary>
     let ``ebbb5e23-2c34-4810-b921-1d72694af314-partof-33254c3df4`` =
-        Namespaced_IRI.parse _namespace_name "ebbb5e23-2c34-4810-b921-1d72694af314-partof-33254c3df4" |> NamespacedName
+        _prefix "ebbb5e23-2c34-4810-b921-1d72694af314-partof-33254c3df4"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470"></see>
     /// </summary>
     let ``ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470`` =
-        Namespaced_IRI.parse _namespace_name "ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470" |> NamespacedName
+        _prefix "ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-803d6baa7c"></see>
     /// </summary>
     let ``ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-803d6baa7c`` =
-        Namespaced_IRI.parse _namespace_name "ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-803d6baa7c" |> NamespacedName
+        _prefix "ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-803d6baa7c"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-a76289714f"></see>
     /// </summary>
     let ``ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-a76289714f`` =
-        Namespaced_IRI.parse _namespace_name "ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-a76289714f" |> NamespacedName
+        _prefix "ebbbc6b3-1f7b-4b8d-8eb2-003fafec3470-a76289714f"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#ecumenism"></see></summary>
-    let ecumenism = Namespaced_IRI.parse _namespace_name "ecumenism" |> NamespacedName
+    let ecumenism = _prefix "ecumenism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#editing"></see>
     /// </summary>
-    let editing = Namespaced_IRI.parse _namespace_name "editing" |> NamespacedName
-
+    let editing = _prefix "editing"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#educationReform"></see></summary>
-    let educationReform =
-        Namespaced_IRI.parse _namespace_name "educationReform" |> NamespacedName
-
+    let educationReform = _prefix "educationReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#educationalAdministration"></see>
     /// </summary>
-    let educationalAdministration =
-        Namespaced_IRI.parse _namespace_name "educationalAdministration" |> NamespacedName
-
+    let educationalAdministration = _prefix "educationalAdministration"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#educationalAwardPrize"></see>
     /// </summary>
-    let educationalAwardPrize =
-        Namespaced_IRI.parse _namespace_name "educationalAwardPrize" |> NamespacedName
-
+    let educationalAwardPrize = _prefix "educationalAwardPrize"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#educationalAwardScholarship"></see>
     /// </summary>
-    let educationalAwardScholarship =
-        Namespaced_IRI.parse _namespace_name "educationalAwardScholarship" |> NamespacedName
-
+    let educationalAwardScholarship = _prefix "educationalAwardScholarship"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#egalitarianism"></see></summary>
-    let egalitarianism =
-        Namespaced_IRI.parse _namespace_name "egalitarianism" |> NamespacedName
-
+    let egalitarianism = _prefix "egalitarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#egyptianNationalism"></see></summary>
-    let egyptianNationalism =
-        Namespaced_IRI.parse _namespace_name "egyptianNationalism" |> NamespacedName
-
+    let egyptianNationalism = _prefix "egyptianNationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#elderRights"></see></summary>
-    let elderRights =
-        Namespaced_IRI.parse _namespace_name "elderRights" |> NamespacedName
-
+    let elderRights = _prefix "elderRights"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#eldestChild"></see>
     /// </summary>
-    let eldestChild =
-        Namespaced_IRI.parse _namespace_name "eldestChild" |> NamespacedName
-
+    let eldestChild = _prefix "eldestChild"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#elevatorOperator"></see>
     /// </summary>
-    let elevatorOperator =
-        Namespaced_IRI.parse _namespace_name "elevatorOperator" |> NamespacedName
-
+    let elevatorOperator = _prefix "elevatorOperator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#elocutionist"></see>
     /// </summary>
-    let elocutionist =
-        Namespaced_IRI.parse _namespace_name "elocutionist" |> NamespacedName
-
+    let elocutionist = _prefix "elocutionist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#employer"></see>
     /// </summary>
-    let employer = Namespaced_IRI.parse _namespace_name "employer" |> NamespacedName
-
+    let employer = _prefix "employer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#employmentAgent"></see>
     /// </summary>
-    let employmentAgent =
-        Namespaced_IRI.parse _namespace_name "employmentAgent" |> NamespacedName
-
+    let employmentAgent = _prefix "employmentAgent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#engineering"></see>
     /// </summary>
-    let engineering =
-        Namespaced_IRI.parse _namespace_name "engineering" |> NamespacedName
-
+    let engineering = _prefix "engineering"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#englishGeographicHeritage" title="#englishGeographicHeritage"&gt;England&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#england"></see></summary>
-    let england = Namespaced_IRI.parse _namespace_name "england" |> NamespacedName
-
+    let england = _prefix "england"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#englishGeographicHeritage"></see>
     /// </summary>
-    let englishGeographicHeritage =
-        Namespaced_IRI.parse _namespace_name "englishGeographicHeritage" |> NamespacedName
-
+    let englishGeographicHeritage = _prefix "englishGeographicHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#englishLabel"></see>
     /// </summary>
-    let englishLabel =
-        Namespaced_IRI.parse _namespace_name "englishLabel" |> NamespacedName
-
+    let englishLabel = _prefix "englishLabel"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#englishLabel" title="#englishLabel"&gt;English identity&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#englandLabel"></see></summary>
-    let englandLabel =
-        Namespaced_IRI.parse _namespace_name "englandLabel" |> NamespacedName
-
+    let englandLabel = _prefix "englandLabel"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#englishEthnicity"></see></summary>
-    let englishEthnicity =
-        Namespaced_IRI.parse _namespace_name "englishEthnicity" |> NamespacedName
-
+    let englishEthnicity = _prefix "englishEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#englishRaceColour"></see></summary>
-    let englishRaceColour =
-        Namespaced_IRI.parse _namespace_name "englishRaceColour" |> NamespacedName
-
+    let englishRaceColour = _prefix "englishRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#engraver"></see>
     /// </summary>
-    let engraver = Namespaced_IRI.parse _namespace_name "engraver" |> NamespacedName
-
+    let engraver = _prefix "engraver"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#entrepreneurial-industrialist" title="#entrepreneurial-industrialist"&gt;entrepreneurial&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#entrepreneurial-industrialism"></see></summary>
-    let ``entrepreneurial-industrialism`` =
-        Namespaced_IRI.parse _namespace_name "entrepreneurial-industrialism" |> NamespacedName
-
+    let ``entrepreneurial-industrialism`` = _prefix "entrepreneurial-industrialism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#entrepreneurial-industrialist"></see>
     /// </summary>
-    let ``entrepreneurial-industrialist`` =
-        Namespaced_IRI.parse _namespace_name "entrepreneurial-industrialist" |> NamespacedName
-
+    let ``entrepreneurial-industrialist`` = _prefix "entrepreneurial-industrialist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#equineActivity"></see>
     /// </summary>
-    let equineActivity =
-        Namespaced_IRI.parse _namespace_name "equineActivity" |> NamespacedName
-
+    let equineActivity = _prefix "equineActivity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ethnicityOf"></see>
     /// </summary>
-    let ethnicityOf =
-        Namespaced_IRI.parse _namespace_name "ethnicityOf" |> NamespacedName
-
+    let ethnicityOf = _prefix "ethnicityOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ethnicityReportedOf"></see>
     /// </summary>
-    let ethnicityReportedOf =
-        Namespaced_IRI.parse _namespace_name "ethnicityReportedOf" |> NamespacedName
-
+    let ethnicityReportedOf = _prefix "ethnicityReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ethnicitySelfReportedOf"></see>
     /// </summary>
-    let ethnicitySelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "ethnicitySelfReportedOf" |> NamespacedName
-
+    let ethnicitySelfReportedOf = _prefix "ethnicitySelfReportedOf"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#eugenics"></see></summary>
-    let eugenics = Namespaced_IRI.parse _namespace_name "eugenics" |> NamespacedName
-
+    let eugenics = _prefix "eugenics"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#eurasianLabel"></see>
     /// </summary>
-    let eurasianLabel =
-        Namespaced_IRI.parse _namespace_name "eurasianLabel" |> NamespacedName
-
+    let eurasianLabel = _prefix "eurasianLabel"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#eurasianRaceColour"></see></summary>
-    let eurasianRaceColour =
-        Namespaced_IRI.parse _namespace_name "eurasianRaceColour" |> NamespacedName
-
+    let eurasianRaceColour = _prefix "eurasianRaceColour"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// Deprecated in favour of instance &lt;a href="#eurasianRaceColour" title="#eurasianRaceColour"&gt;eurasian&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#eurasianRace"></see></summary>
-    let eurasianRace =
-        Namespaced_IRI.parse _namespace_name "eurasianRace" |> NamespacedName
-
+    let eurasianRace = _prefix "eurasianRace"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#europeanNationalHeritage"></see>
     /// </summary>
-    let europeanNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "europeanNationalHeritage" |> NamespacedName
-
+    let europeanNationalHeritage = _prefix "europeanNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#europeanNationalIdentity"></see>
     /// </summary>
-    let europeanNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "europeanNationalIdentity" |> NamespacedName
-
+    let europeanNationalIdentity = _prefix "europeanNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#evangelicalism"></see></summary>
-    let evangelicalism =
-        Namespaced_IRI.parse _namespace_name "evangelicalism" |> NamespacedName
-
+    let evangelicalism = _prefix "evangelicalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#eventOf"></see>
     /// </summary>
-    let eventOf = Namespaced_IRI.parse _namespace_name "eventOf" |> NamespacedName
+    let eventOf = _prefix "eventOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEvent"></see>
     /// </summary>
-    let hasEvent = Namespaced_IRI.parse _namespace_name "hasEvent" |> NamespacedName
-
+    let hasEvent = _prefix "hasEvent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#eventOrganizer"></see>
     /// </summary>
-    let eventOrganizer =
-        Namespaced_IRI.parse _namespace_name "eventOrganizer" |> NamespacedName
-
+    let eventOrganizer = _prefix "eventOrganizer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#existentialism"></see></summary>
-    let existentialism =
-        Namespaced_IRI.parse _namespace_name "existentialism" |> NamespacedName
-
+    let existentialism = _prefix "existentialism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#explorer"></see>
     /// </summary>
-    let explorer = Namespaced_IRI.parse _namespace_name "explorer" |> NamespacedName
+    let explorer = _prefix "explorer"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f3666ac1-4f95-4f12-a02e-88ed27197d35"></see>
     /// </summary>
     let ``f3666ac1-4f95-4f12-a02e-88ed27197d35`` =
-        Namespaced_IRI.parse _namespace_name "f3666ac1-4f95-4f12-a02e-88ed27197d35" |> NamespacedName
+        _prefix "f3666ac1-4f95-4f12-a02e-88ed27197d35"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f3666ac1-4f95-4f12-a02e-88ed27197d35-212cf56127"></see>
     /// </summary>
     let ``f3666ac1-4f95-4f12-a02e-88ed27197d35-212cf56127`` =
-        Namespaced_IRI.parse _namespace_name "f3666ac1-4f95-4f12-a02e-88ed27197d35-212cf56127" |> NamespacedName
+        _prefix "f3666ac1-4f95-4f12-a02e-88ed27197d35-212cf56127"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f3666ac1-4f95-4f12-a02e-88ed27197d35-8066d74e86"></see>
     /// </summary>
     let ``f3666ac1-4f95-4f12-a02e-88ed27197d35-8066d74e86`` =
-        Namespaced_IRI.parse _namespace_name "f3666ac1-4f95-4f12-a02e-88ed27197d35-8066d74e86" |> NamespacedName
+        _prefix "f3666ac1-4f95-4f12-a02e-88ed27197d35-8066d74e86"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f3666ac1-4f95-4f12-a02e-88ed27197d35-2eb3e2ce3d"></see>
     /// </summary>
     let ``f3666ac1-4f95-4f12-a02e-88ed27197d35-2eb3e2ce3d`` =
-        Namespaced_IRI.parse _namespace_name "f3666ac1-4f95-4f12-a02e-88ed27197d35-2eb3e2ce3d" |> NamespacedName
+        _prefix "f3666ac1-4f95-4f12-a02e-88ed27197d35-2eb3e2ce3d"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f62e94d6-bd04-494c-9282-53af0a3f3376"></see>
     /// </summary>
     let ``f62e94d6-bd04-494c-9282-53af0a3f3376`` =
-        Namespaced_IRI.parse _namespace_name "f62e94d6-bd04-494c-9282-53af0a3f3376" |> NamespacedName
+        _prefix "f62e94d6-bd04-494c-9282-53af0a3f3376"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f62e94d6-bd04-494c-9282-53af0a3f3376-f16cfae794"></see>
     /// </summary>
     let ``f62e94d6-bd04-494c-9282-53af0a3f3376-f16cfae794`` =
-        Namespaced_IRI.parse _namespace_name "f62e94d6-bd04-494c-9282-53af0a3f3376-f16cfae794" |> NamespacedName
+        _prefix "f62e94d6-bd04-494c-9282-53af0a3f3376-f16cfae794"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f62e94d6-bd04-494c-9282-53af0a3f3376-partof"></see>
     /// </summary>
     let ``f62e94d6-bd04-494c-9282-53af0a3f3376-partof`` =
-        Namespaced_IRI.parse _namespace_name "f62e94d6-bd04-494c-9282-53af0a3f3376-partof" |> NamespacedName
+        _prefix "f62e94d6-bd04-494c-9282-53af0a3f3376-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f77171be-f937-4067-8dbe-fd9982822a96"></see>
     /// </summary>
     let ``f77171be-f937-4067-8dbe-fd9982822a96`` =
-        Namespaced_IRI.parse _namespace_name "f77171be-f937-4067-8dbe-fd9982822a96" |> NamespacedName
+        _prefix "f77171be-f937-4067-8dbe-fd9982822a96"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f77171be-f937-4067-8dbe-fd9982822a96-fd4dbf406b"></see>
     /// </summary>
     let ``f77171be-f937-4067-8dbe-fd9982822a96-fd4dbf406b`` =
-        Namespaced_IRI.parse _namespace_name "f77171be-f937-4067-8dbe-fd9982822a96-fd4dbf406b" |> NamespacedName
+        _prefix "f77171be-f937-4067-8dbe-fd9982822a96-fd4dbf406b"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#f77171be-f937-4067-8dbe-fd9982822a96-e9e89595ea"></see>
     /// </summary>
     let ``f77171be-f937-4067-8dbe-fd9982822a96-e9e89595ea`` =
-        Namespaced_IRI.parse _namespace_name "f77171be-f937-4067-8dbe-fd9982822a96-e9e89595ea" |> NamespacedName
+        _prefix "f77171be-f937-4067-8dbe-fd9982822a96-e9e89595ea"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fab56e35-9796-4e6d-861d-a6b626f5714d"></see>
     /// </summary>
     let ``fab56e35-9796-4e6d-861d-a6b626f5714d`` =
-        Namespaced_IRI.parse _namespace_name "fab56e35-9796-4e6d-861d-a6b626f5714d" |> NamespacedName
+        _prefix "fab56e35-9796-4e6d-861d-a6b626f5714d"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fab56e35-9796-4e6d-861d-a6b626f5714d-9871ba1d86"></see>
     /// </summary>
     let ``fab56e35-9796-4e6d-861d-a6b626f5714d-9871ba1d86`` =
-        Namespaced_IRI.parse _namespace_name "fab56e35-9796-4e6d-861d-a6b626f5714d-9871ba1d86" |> NamespacedName
+        _prefix "fab56e35-9796-4e6d-861d-a6b626f5714d-9871ba1d86"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fab56e35-9796-4e6d-861d-a6b626f5714d-partof"></see>
     /// </summary>
     let ``fab56e35-9796-4e6d-861d-a6b626f5714d-partof`` =
-        Namespaced_IRI.parse _namespace_name "fab56e35-9796-4e6d-861d-a6b626f5714d-partof" |> NamespacedName
+        _prefix "fab56e35-9796-4e6d-861d-a6b626f5714d-partof"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fab56e35-9796-4e6d-861d-a6b626f5714d-partof-534915cfcc"></see>
     /// </summary>
     let ``fab56e35-9796-4e6d-861d-a6b626f5714d-partof-534915cfcc`` =
-        Namespaced_IRI.parse _namespace_name "fab56e35-9796-4e6d-861d-a6b626f5714d-partof-534915cfcc" |> NamespacedName
+        _prefix "fab56e35-9796-4e6d-861d-a6b626f5714d-partof-534915cfcc"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fab56e35-9796-4e6d-861d-a6b626f5714d-partof-1dda925352"></see>
     /// </summary>
     let ``fab56e35-9796-4e6d-861d-a6b626f5714d-partof-1dda925352`` =
-        Namespaced_IRI.parse _namespace_name "fab56e35-9796-4e6d-861d-a6b626f5714d-partof-1dda925352" |> NamespacedName
+        _prefix "fab56e35-9796-4e6d-861d-a6b626f5714d-partof-1dda925352"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#factoryWorker"></see>
     /// </summary>
-    let factoryWorker =
-        Namespaced_IRI.parse _namespace_name "factoryWorker" |> NamespacedName
-
+    let factoryWorker = _prefix "factoryWorker"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#faithHealing"></see></summary>
-    let faithHealing =
-        Namespaced_IRI.parse _namespace_name "faithHealing" |> NamespacedName
-
+    let faithHealing = _prefix "faithHealing"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#familyBasedOccupationOf"></see>
     /// </summary>
-    let familyBasedOccupationOf =
-        Namespaced_IRI.parse _namespace_name "familyBasedOccupationOf" |> NamespacedName
-
+    let familyBasedOccupationOf = _prefix "familyBasedOccupationOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#occupationOf"></see>
     /// </summary>
-    let occupationOf =
-        Namespaced_IRI.parse _namespace_name "occupationOf" |> NamespacedName
-
+    let occupationOf = _prefix "occupationOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fashion"></see>
     /// </summary>
-    let fashion = Namespaced_IRI.parse _namespace_name "fashion" |> NamespacedName
+    let fashion = _prefix "fashion"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#fatalism"></see></summary>
-    let fatalism = Namespaced_IRI.parse _namespace_name "fatalism" |> NamespacedName
+    let fatalism = _prefix "fatalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fatherOf"></see>
     /// </summary>
-    let fatherOf = Namespaced_IRI.parse _namespace_name "fatherOf" |> NamespacedName
+    let fatherOf = _prefix "fatherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#parentOf"></see>
     /// </summary>
-    let parentOf = Namespaced_IRI.parse _namespace_name "parentOf" |> NamespacedName
+    let parentOf = _prefix "parentOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasFather"></see>
     /// </summary>
-    let hasFather = Namespaced_IRI.parse _namespace_name "hasFather" |> NamespacedName
+    let hasFather = _prefix "hasFather"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fellow"></see>
     /// </summary>
-    let fellow = Namespaced_IRI.parse _namespace_name "fellow" |> NamespacedName
-
+    let fellow = _prefix "fellow"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#feministAnti-ViolenceActivism"></see></summary>
-    let ``feministAnti-ViolenceActivism`` =
-        Namespaced_IRI.parse _namespace_name "feministAnti-ViolenceActivism" |> NamespacedName
-
+    let ``feministAnti-ViolenceActivism`` = _prefix "feministAnti-ViolenceActivism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#feministInternationalism"></see></summary>
-    let feministInternationalism =
-        Namespaced_IRI.parse _namespace_name "feministInternationalism" |> NamespacedName
-
+    let feministInternationalism = _prefix "feministInternationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#internationalism"></see></summary>
-    let internationalism =
-        Namespaced_IRI.parse _namespace_name "internationalism" |> NamespacedName
-
+    let internationalism = _prefix "internationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#feministPacifism"></see></summary>
-    let feministPacifism =
-        Namespaced_IRI.parse _namespace_name "feministPacifism" |> NamespacedName
+    let feministPacifism = _prefix "feministPacifism"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ffd10388-4cd6-429c-9ca0-b4d9476496a1"></see>
     /// </summary>
     let ``ffd10388-4cd6-429c-9ca0-b4d9476496a1`` =
-        Namespaced_IRI.parse _namespace_name "ffd10388-4cd6-429c-9ca0-b4d9476496a1" |> NamespacedName
+        _prefix "ffd10388-4cd6-429c-9ca0-b4d9476496a1"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ffd10388-4cd6-429c-9ca0-b4d9476496a1-e7a6810311"></see>
     /// </summary>
     let ``ffd10388-4cd6-429c-9ca0-b4d9476496a1-e7a6810311`` =
-        Namespaced_IRI.parse _namespace_name "ffd10388-4cd6-429c-9ca0-b4d9476496a1-e7a6810311" |> NamespacedName
+        _prefix "ffd10388-4cd6-429c-9ca0-b4d9476496a1-e7a6810311"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ffd10388-4cd6-429c-9ca0-b4d9476496a1-16ff462e2c"></see>
     /// </summary>
     let ``ffd10388-4cd6-429c-9ca0-b4d9476496a1-16ff462e2c`` =
-        Namespaced_IRI.parse _namespace_name "ffd10388-4cd6-429c-9ca0-b4d9476496a1-16ff462e2c" |> NamespacedName
+        _prefix "ffd10388-4cd6-429c-9ca0-b4d9476496a1-16ff462e2c"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#fifthMonarchists"></see></summary>
-    let fifthMonarchists =
-        Namespaced_IRI.parse _namespace_name "fifthMonarchists" |> NamespacedName
-
+    let fifthMonarchists = _prefix "fifthMonarchists"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#millenarianism"></see></summary>
-    let millenarianism =
-        Namespaced_IRI.parse _namespace_name "millenarianism" |> NamespacedName
-
+    let millenarianism = _prefix "millenarianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#filmIndustry"></see>
     /// </summary>
-    let filmIndustry =
-        Namespaced_IRI.parse _namespace_name "filmIndustry" |> NamespacedName
-
+    let filmIndustry = _prefix "filmIndustry"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#investor"></see>
     /// </summary>
-    let investor = Namespaced_IRI.parse _namespace_name "investor" |> NamespacedName
-
+    let investor = _prefix "investor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#firefighter"></see>
     /// </summary>
-    let firefighter =
-        Namespaced_IRI.parse _namespace_name "firefighter" |> NamespacedName
-
+    let firefighter = _prefix "firefighter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#firstAid"></see>
     /// </summary>
-    let firstAid = Namespaced_IRI.parse _namespace_name "firstAid" |> NamespacedName
+    let firstAid = _prefix "firstAid"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fisherman"></see>
     /// </summary>
-    let fisherman = Namespaced_IRI.parse _namespace_name "fisherman" |> NamespacedName
+    let fisherman = _prefix "fisherman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fishmonger"></see>
     /// </summary>
-    let fishmonger = Namespaced_IRI.parse _namespace_name "fishmonger" |> NamespacedName
-
+    let fishmonger = _prefix "fishmonger"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#flemishNationalHeritage"></see></summary>
-    let flemishNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "flemishNationalHeritage" |> NamespacedName
-
+    let flemishNationalHeritage = _prefix "flemishNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#florentineNationalIdentity"></see>
     /// </summary>
-    let florentineNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "florentineNationalIdentity" |> NamespacedName
-
+    let florentineNationalIdentity = _prefix "florentineNationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#foodDistribution"></see>
     /// </summary>
-    let foodDistribution =
-        Namespaced_IRI.parse _namespace_name "foodDistribution" |> NamespacedName
-
+    let foodDistribution = _prefix "foodDistribution"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#merchant"></see>
     /// </summary>
-    let merchant = Namespaced_IRI.parse _namespace_name "merchant" |> NamespacedName
+    let merchant = _prefix "merchant"
     /// <summary>
     /// Deprecated, with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#forebearOf"></see></summary>
-    let forebearOf = Namespaced_IRI.parse _namespace_name "forebearOf" |> NamespacedName
-
+    let forebearOf = _prefix "forebearOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fosterParent"></see>
     /// </summary>
-    let fosterParent =
-        Namespaced_IRI.parse _namespace_name "fosterParent" |> NamespacedName
-
+    let fosterParent = _prefix "fosterParent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#founder"></see>
     /// </summary>
-    let founder = Namespaced_IRI.parse _namespace_name "founder" |> NamespacedName
-
+    let founder = _prefix "founder"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#freeTradeMovement"></see></summary>
-    let freeTradeMovement =
-        Namespaced_IRI.parse _namespace_name "freeTradeMovement" |> NamespacedName
-
+    let freeTradeMovement = _prefix "freeTradeMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#freemasonry"></see></summary>
-    let freemasonry =
-        Namespaced_IRI.parse _namespace_name "freemasonry" |> NamespacedName
-
+    let freemasonry = _prefix "freemasonry"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#freethought"></see></summary>
-    let freethought =
-        Namespaced_IRI.parse _namespace_name "freethought" |> NamespacedName
-
+    let freethought = _prefix "freethought"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#frenchNationalism"></see></summary>
-    let frenchNationalism =
-        Namespaced_IRI.parse _namespace_name "frenchNationalism" |> NamespacedName
-
+    let frenchNationalism = _prefix "frenchNationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#fundraiser"></see>
     /// </summary>
-    let fundraiser = Namespaced_IRI.parse _namespace_name "fundraiser" |> NamespacedName
-
+    let fundraiser = _prefix "fundraiser"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#gaelEthnicity"></see></summary>
-    let gaelEthnicity =
-        Namespaced_IRI.parse _namespace_name "gaelEthnicity" |> NamespacedName
-
+    let gaelEthnicity = _prefix "gaelEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#scottishEthnicity"></see></summary>
-    let scottishEthnicity =
-        Namespaced_IRI.parse _namespace_name "scottishEthnicity" |> NamespacedName
-
+    let scottishEthnicity = _prefix "scottishEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#gambling"></see>
     /// </summary>
-    let gambling = Namespaced_IRI.parse _namespace_name "gambling" |> NamespacedName
+    let gambling = _prefix "gambling"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#gardener"></see>
     /// </summary>
-    let gardener = Namespaced_IRI.parse _namespace_name "gardener" |> NamespacedName
+    let gardener = _prefix "gardener"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#gastronome"></see>
     /// </summary>
-    let gastronome = Namespaced_IRI.parse _namespace_name "gastronome" |> NamespacedName
+    let gastronome = _prefix "gastronome"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#gayRights"></see></summary>
-    let gayRights = Namespaced_IRI.parse _namespace_name "gayRights" |> NamespacedName
-
+    let gayRights = _prefix "gayRights"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#man" title="#man"&gt;man&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderManMale"></see></summary>
-    let genderManMale =
-        Namespaced_IRI.parse _namespace_name "genderManMale" |> NamespacedName
-
+    let genderManMale = _prefix "genderManMale"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#man"></see>
     /// </summary>
-    let man = Namespaced_IRI.parse _namespace_name "man" |> NamespacedName
+    let man = _prefix "man"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderOf"></see>
     /// </summary>
-    let genderOf = Namespaced_IRI.parse _namespace_name "genderOf" |> NamespacedName
-
+    let genderOf = _prefix "genderOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderReportedOf"></see>
     /// </summary>
-    let genderReportedOf =
-        Namespaced_IRI.parse _namespace_name "genderReportedOf" |> NamespacedName
-
+    let genderReportedOf = _prefix "genderReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderSelfReportedOf"></see>
     /// </summary>
-    let genderSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "genderSelfReportedOf" |> NamespacedName
-
+    let genderSelfReportedOf = _prefix "genderSelfReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#transMan" title="#transMan"&gt;transman/transmale&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderTransMan"></see></summary>
-    let genderTransMan =
-        Namespaced_IRI.parse _namespace_name "genderTransMan" |> NamespacedName
-
+    let genderTransMan = _prefix "genderTransMan"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#transMan"></see>
     /// </summary>
-    let transMan = Namespaced_IRI.parse _namespace_name "transMan" |> NamespacedName
-
+    let transMan = _prefix "transMan"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#transWoman" title="#transWoman"&gt;transwoman/transfemale&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#genderTransWoman"></see></summary>
-    let genderTransWoman =
-        Namespaced_IRI.parse _namespace_name "genderTransWoman" |> NamespacedName
-
+    let genderTransWoman = _prefix "genderTransWoman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#transWoman"></see>
     /// </summary>
-    let transWoman = Namespaced_IRI.parse _namespace_name "transWoman" |> NamespacedName
+    let transWoman = _prefix "transWoman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#woman"></see>
     /// </summary>
-    let woman = Namespaced_IRI.parse _namespace_name "woman" |> NamespacedName
-
+    let woman = _prefix "woman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#genealogist"></see>
     /// </summary>
-    let genealogist =
-        Namespaced_IRI.parse _namespace_name "genealogist" |> NamespacedName
-
+    let genealogist = _prefix "genealogist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#gentleman"></see>
     /// </summary>
-    let gentleman = Namespaced_IRI.parse _namespace_name "gentleman" |> NamespacedName
+    let gentleman = _prefix "gentleman"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#gentry"></see>
     /// </summary>
-    let gentry = Namespaced_IRI.parse _namespace_name "gentry" |> NamespacedName
+    let gentry = _prefix "gentry"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#geographer"></see>
     /// </summary>
-    let geographer = Namespaced_IRI.parse _namespace_name "geographer" |> NamespacedName
-
+    let geographer = _prefix "geographer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#geographicHeritageOf"></see>
     /// </summary>
-    let geographicHeritageOf =
-        Namespaced_IRI.parse _namespace_name "geographicHeritageOf" |> NamespacedName
-
+    let geographicHeritageOf = _prefix "geographicHeritageOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#geographicHeritageReportedOf"></see>
     /// </summary>
-    let geographicHeritageReportedOf =
-        Namespaced_IRI.parse _namespace_name "geographicHeritageReportedOf" |> NamespacedName
-
+    let geographicHeritageReportedOf = _prefix "geographicHeritageReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#geographicHeritageSelfReportedOf"></see>
     /// </summary>
-    let geographicHeritageSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "geographicHeritageSelfReportedOf" |> NamespacedName
-
+    let geographicHeritageSelfReportedOf = _prefix "geographicHeritageSelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#geologist"></see>
     /// </summary>
-    let geologist = Namespaced_IRI.parse _namespace_name "geologist" |> NamespacedName
-
+    let geologist = _prefix "geologist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#germanNationalism"></see></summary>
-    let germanNationalism =
-        Namespaced_IRI.parse _namespace_name "germanNationalism" |> NamespacedName
-
+    let germanNationalism = _prefix "germanNationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#girondin"></see></summary>
-    let girondin = Namespaced_IRI.parse _namespace_name "girondin" |> NamespacedName
+    let girondin = _prefix "girondin"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jacobinism"></see></summary>
-    let jacobinism = Namespaced_IRI.parse _namespace_name "jacobinism" |> NamespacedName
-
+    let jacobinism = _prefix "jacobinism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#glassWorker"></see>
     /// </summary>
-    let glassWorker =
-        Namespaced_IRI.parse _namespace_name "glassWorker" |> NamespacedName
-
+    let glassWorker = _prefix "glassWorker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#glover"></see>
     /// </summary>
-    let glover = Namespaced_IRI.parse _namespace_name "glover" |> NamespacedName
+    let glover = _prefix "glover"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#gnosticism"></see></summary>
-    let gnosticism = Namespaced_IRI.parse _namespace_name "gnosticism" |> NamespacedName
+    let gnosticism = _prefix "gnosticism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#goldsmith"></see>
     /// </summary>
-    let goldsmith = Namespaced_IRI.parse _namespace_name "goldsmith" |> NamespacedName
+    let goldsmith = _prefix "goldsmith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#jeweller"></see>
     /// </summary>
-    let jeweller = Namespaced_IRI.parse _namespace_name "jeweller" |> NamespacedName
+    let jeweller = _prefix "jeweller"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#governess"></see>
     /// </summary>
-    let governess = Namespaced_IRI.parse _namespace_name "governess" |> NamespacedName
-
+    let governess = _prefix "governess"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#governorGeneral"></see>
     /// </summary>
-    let governorGeneral =
-        Namespaced_IRI.parse _namespace_name "governorGeneral" |> NamespacedName
-
+    let governorGeneral = _prefix "governorGeneral"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#higherGovernment"></see>
     /// </summary>
-    let higherGovernment =
-        Namespaced_IRI.parse _namespace_name "higherGovernment" |> NamespacedName
-
+    let higherGovernment = _prefix "higherGovernment"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grandChildOf"></see>
     /// </summary>
-    let grandChildOf =
-        Namespaced_IRI.parse _namespace_name "grandChildOf" |> NamespacedName
-
+    let grandChildOf = _prefix "grandChildOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGrandChild"></see>
     /// </summary>
-    let hasGrandChild =
-        Namespaced_IRI.parse _namespace_name "hasGrandChild" |> NamespacedName
-
+    let hasGrandChild = _prefix "hasGrandChild"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grandDaughterOf"></see>
     /// </summary>
-    let grandDaughterOf =
-        Namespaced_IRI.parse _namespace_name "grandDaughterOf" |> NamespacedName
-
+    let grandDaughterOf = _prefix "grandDaughterOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGrandDaughter"></see>
     /// </summary>
-    let hasGrandDaughter =
-        Namespaced_IRI.parse _namespace_name "hasGrandDaughter" |> NamespacedName
-
+    let hasGrandDaughter = _prefix "hasGrandDaughter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grandFatherOf"></see>
     /// </summary>
-    let grandFatherOf =
-        Namespaced_IRI.parse _namespace_name "grandFatherOf" |> NamespacedName
-
+    let grandFatherOf = _prefix "grandFatherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grandParentOf"></see>
     /// </summary>
-    let grandParentOf =
-        Namespaced_IRI.parse _namespace_name "grandParentOf" |> NamespacedName
-
+    let grandParentOf = _prefix "grandParentOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGrandFather"></see>
     /// </summary>
-    let hasGrandFather =
-        Namespaced_IRI.parse _namespace_name "hasGrandFather" |> NamespacedName
-
+    let hasGrandFather = _prefix "hasGrandFather"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grandMotherOf"></see>
     /// </summary>
-    let grandMotherOf =
-        Namespaced_IRI.parse _namespace_name "grandMotherOf" |> NamespacedName
-
+    let grandMotherOf = _prefix "grandMotherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGrandMother"></see>
     /// </summary>
-    let hasGrandMother =
-        Namespaced_IRI.parse _namespace_name "hasGrandMother" |> NamespacedName
-
+    let hasGrandMother = _prefix "hasGrandMother"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGrandParent"></see>
     /// </summary>
-    let hasGrandParent =
-        Namespaced_IRI.parse _namespace_name "hasGrandParent" |> NamespacedName
-
+    let hasGrandParent = _prefix "hasGrandParent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grandSonOf"></see>
     /// </summary>
-    let grandSonOf = Namespaced_IRI.parse _namespace_name "grandSonOf" |> NamespacedName
-
+    let grandSonOf = _prefix "grandSonOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGrandSon"></see>
     /// </summary>
-    let hasGrandSon =
-        Namespaced_IRI.parse _namespace_name "hasGrandSon" |> NamespacedName
-
+    let hasGrandSon = _prefix "hasGrandSon"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#greekNationalist"></see></summary>
-    let greekNationalist =
-        Namespaced_IRI.parse _namespace_name "greekNationalist" |> NamespacedName
-
+    let greekNationalist = _prefix "greekNationalist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#grocer"></see>
     /// </summary>
-    let grocer = Namespaced_IRI.parse _namespace_name "grocer" |> NamespacedName
+    let grocer = _prefix "grocer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#guardian"></see>
     /// </summary>
-    let guardian = Namespaced_IRI.parse _namespace_name "guardian" |> NamespacedName
+    let guardian = _prefix "guardian"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#guardianOf"></see>
     /// </summary>
-    let guardianOf = Namespaced_IRI.parse _namespace_name "guardianOf" |> NamespacedName
-
+    let guardianOf = _prefix "guardianOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasInterpersonalRelationshipWith"></see>
     /// </summary>
-    let hasInterpersonalRelationshipWith =
-        Namespaced_IRI.parse _namespace_name "hasInterpersonalRelationshipWith" |> NamespacedName
-
+    let hasInterpersonalRelationshipWith = _prefix "hasInterpersonalRelationshipWith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGuardian"></see>
     /// </summary>
-    let hasGuardian =
-        Namespaced_IRI.parse _namespace_name "hasGuardian" |> NamespacedName
-
+    let hasGuardian = _prefix "hasGuardian"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#guelphPartyFlorence"></see></summary>
-    let guelphPartyFlorence =
-        Namespaced_IRI.parse _namespace_name "guelphPartyFlorence" |> NamespacedName
-
+    let guelphPartyFlorence = _prefix "guelphPartyFlorence"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#haberdasher"></see>
     /// </summary>
-    let haberdasher =
-        Namespaced_IRI.parse _namespace_name "haberdasher" |> NamespacedName
-
+    let haberdasher = _prefix "haberdasher"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#halfBrotherOf"></see>
     /// </summary>
-    let halfBrotherOf =
-        Namespaced_IRI.parse _namespace_name "halfBrotherOf" |> NamespacedName
-
+    let halfBrotherOf = _prefix "halfBrotherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasHalfBrother"></see>
     /// </summary>
-    let hasHalfBrother =
-        Namespaced_IRI.parse _namespace_name "hasHalfBrother" |> NamespacedName
-
+    let hasHalfBrother = _prefix "hasHalfBrother"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#halfSisterOf"></see>
     /// </summary>
-    let halfSisterOf =
-        Namespaced_IRI.parse _namespace_name "halfSisterOf" |> NamespacedName
-
+    let halfSisterOf = _prefix "halfSisterOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sisterOf"></see>
     /// </summary>
-    let sisterOf = Namespaced_IRI.parse _namespace_name "sisterOf" |> NamespacedName
-
+    let sisterOf = _prefix "sisterOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasHalfSister"></see>
     /// </summary>
-    let hasHalfSister =
-        Namespaced_IRI.parse _namespace_name "hasHalfSister" |> NamespacedName
-
+    let hasHalfSister = _prefix "hasHalfSister"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#handwritingExpert"></see>
     /// </summary>
-    let handwritingExpert =
-        Namespaced_IRI.parse _namespace_name "handwritingExpert" |> NamespacedName
-
+    let handwritingExpert = _prefix "handwritingExpert"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hanoverian"></see></summary>
-    let hanoverian = Namespaced_IRI.parse _namespace_name "hanoverian" |> NamespacedName
-
+    let hanoverian = _prefix "hanoverian"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hanoverianNationalIdentity"></see>
     /// </summary>
-    let hanoverianNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "hanoverianNationalIdentity" |> NamespacedName
-
+    let hanoverianNationalIdentity = _prefix "hanoverianNationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasActivistInvolvementFrom"></see>
     /// </summary>
-    let hasActivistInvolvementFrom =
-        Namespaced_IRI.parse _namespace_name "hasActivistInvolvementFrom" |> NamespacedName
-
+    let hasActivistInvolvementFrom = _prefix "hasActivistInvolvementFrom"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalMembershipFrom"></see>
     /// </summary>
-    let hasPoliticalMembershipFrom =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalMembershipFrom" |> NamespacedName
-
+    let hasPoliticalMembershipFrom = _prefix "hasPoliticalMembershipFrom"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasActivistInvolvementIn"></see>
     /// </summary>
-    let hasActivistInvolvementIn =
-        Namespaced_IRI.parse _namespace_name "hasActivistInvolvementIn" |> NamespacedName
-
+    let hasActivistInvolvementIn = _prefix "hasActivistInvolvementIn"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalMembershipIn"></see>
     /// </summary>
-    let hasPoliticalMembershipIn =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalMembershipIn" |> NamespacedName
-
+    let hasPoliticalMembershipIn = _prefix "hasPoliticalMembershipIn"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRelative"></see>
     /// </summary>
-    let hasRelative =
-        Namespaced_IRI.parse _namespace_name "hasRelative" |> NamespacedName
-
+    let hasRelative = _prefix "hasRelative"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasAward"></see>
     /// </summary>
-    let hasAward = Namespaced_IRI.parse _namespace_name "hasAward" |> NamespacedName
-
+    let hasAward = _prefix "hasAward"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasBirthPosition"></see>
     /// </summary>
-    let hasBirthPosition =
-        Namespaced_IRI.parse _namespace_name "hasBirthPosition" |> NamespacedName
-
+    let hasBirthPosition = _prefix "hasBirthPosition"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSibling"></see>
     /// </summary>
-    let hasSibling = Namespaced_IRI.parse _namespace_name "hasSibling" |> NamespacedName
-
+    let hasSibling = _prefix "hasSibling"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCauseOfDeath"></see>
     /// </summary>
-    let hasCauseOfDeath =
-        Namespaced_IRI.parse _namespace_name "hasCauseOfDeath" |> NamespacedName
-
+    let hasCauseOfDeath = _prefix "hasCauseOfDeath"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasChildren"></see>
     /// </summary>
-    let hasChildren =
-        Namespaced_IRI.parse _namespace_name "hasChildren" |> NamespacedName
-
+    let hasChildren = _prefix "hasChildren"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasReproductiveHistory"></see>
     /// </summary>
-    let hasReproductiveHistory =
-        Namespaced_IRI.parse _namespace_name "hasReproductiveHistory" |> NamespacedName
-
+    let hasReproductiveHistory = _prefix "hasReproductiveHistory"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCohabitant"></see>
     /// </summary>
-    let hasCohabitant =
-        Namespaced_IRI.parse _namespace_name "hasCohabitant" |> NamespacedName
-
+    let hasCohabitant = _prefix "hasCohabitant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCompanion"></see>
     /// </summary>
-    let hasCompanion =
-        Namespaced_IRI.parse _namespace_name "hasCompanion" |> NamespacedName
-
+    let hasCompanion = _prefix "hasCompanion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasContestedBehaviour"></see>
     /// </summary>
-    let hasContestedBehaviour =
-        Namespaced_IRI.parse _namespace_name "hasContestedBehaviour" |> NamespacedName
-
+    let hasContestedBehaviour = _prefix "hasContestedBehaviour"
     /// <summary>
     /// Deprecated in favour of object property &lt;a href="#hasCulturalForm" title="#hasCulturalForm"&gt;has a cultural form&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasCulturalForms"></see></summary>
-    let hasCulturalForms =
-        Namespaced_IRI.parse _namespace_name "hasCulturalForms" |> NamespacedName
-
+    let hasCulturalForms = _prefix "hasCulturalForms"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEducation"></see>
     /// </summary>
-    let hasEducation =
-        Namespaced_IRI.parse _namespace_name "hasEducation" |> NamespacedName
-
+    let hasEducation = _prefix "hasEducation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEmigrant"></see>
     /// </summary>
-    let hasEmigrant =
-        Namespaced_IRI.parse _namespace_name "hasEmigrant" |> NamespacedName
-
+    let hasEmigrant = _prefix "hasEmigrant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasInhabitant"></see>
     /// </summary>
-    let hasInhabitant =
-        Namespaced_IRI.parse _namespace_name "hasInhabitant" |> NamespacedName
-
+    let hasInhabitant = _prefix "hasInhabitant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEmployee"></see>
     /// </summary>
-    let hasEmployee =
-        Namespaced_IRI.parse _namespace_name "hasEmployee" |> NamespacedName
-
+    let hasEmployee = _prefix "hasEmployee"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEmployer"></see>
     /// </summary>
-    let hasEmployer =
-        Namespaced_IRI.parse _namespace_name "hasEmployer" |> NamespacedName
-
+    let hasEmployer = _prefix "hasEmployer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasOccupation"></see>
     /// </summary>
-    let hasOccupation =
-        Namespaced_IRI.parse _namespace_name "hasOccupation" |> NamespacedName
-
+    let hasOccupation = _prefix "hasOccupation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEroticRelationshipWith"></see>
     /// </summary>
-    let hasEroticRelationshipWith =
-        Namespaced_IRI.parse _namespace_name "hasEroticRelationshipWith" |> NamespacedName
-
+    let hasEroticRelationshipWith = _prefix "hasEroticRelationshipWith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasIntimateRelationshipWith"></see>
     /// </summary>
-    let hasIntimateRelationshipWith =
-        Namespaced_IRI.parse _namespace_name "hasIntimateRelationshipWith" |> NamespacedName
-
+    let hasIntimateRelationshipWith = _prefix "hasIntimateRelationshipWith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEthnicity"></see>
     /// </summary>
-    let hasEthnicity =
-        Namespaced_IRI.parse _namespace_name "hasEthnicity" |> NamespacedName
-
+    let hasEthnicity = _prefix "hasEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEthnicityReported"></see>
     /// </summary>
-    let hasEthnicityReported =
-        Namespaced_IRI.parse _namespace_name "hasEthnicityReported" |> NamespacedName
-
+    let hasEthnicityReported = _prefix "hasEthnicityReported"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasEthnicitySelfReported" title="#hasEthnicitySelfReported"&gt;has ethnic identity (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEthnicitySelfDefined"></see></summary>
-    let hasEthnicitySelfDefined =
-        Namespaced_IRI.parse _namespace_name "hasEthnicitySelfDefined" |> NamespacedName
-
+    let hasEthnicitySelfDefined = _prefix "hasEthnicitySelfDefined"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEthnicitySelfReported"></see>
     /// </summary>
-    let hasEthnicitySelfReported =
-        Namespaced_IRI.parse _namespace_name "hasEthnicitySelfReported" |> NamespacedName
-
+    let hasEthnicitySelfReported = _prefix "hasEthnicitySelfReported"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#personalPropertySelfReported" title="#personalPropertySelfReported"&gt;personal property self-reported&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#personalPropertySelfDeclared"></see></summary>
-    let personalPropertySelfDeclared =
-        Namespaced_IRI.parse _namespace_name "personalPropertySelfDeclared" |> NamespacedName
-
+    let personalPropertySelfDeclared = _prefix "personalPropertySelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasFamilyBasedOccupation"></see>
     /// </summary>
-    let hasFamilyBasedOccupation =
-        Namespaced_IRI.parse _namespace_name "hasFamilyBasedOccupation" |> NamespacedName
-
+    let hasFamilyBasedOccupation = _prefix "hasFamilyBasedOccupation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasParent"></see>
     /// </summary>
-    let hasParent = Namespaced_IRI.parse _namespace_name "hasParent" |> NamespacedName
-
+    let hasParent = _prefix "hasParent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasFunctionalRelation"></see>
     /// </summary>
-    let hasFunctionalRelation =
-        Namespaced_IRI.parse _namespace_name "hasFunctionalRelation" |> NamespacedName
-
+    let hasFunctionalRelation = _prefix "hasFunctionalRelation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGender"></see>
     /// </summary>
-    let hasGender = Namespaced_IRI.parse _namespace_name "hasGender" |> NamespacedName
-
+    let hasGender = _prefix "hasGender"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGenderReported"></see>
     /// </summary>
-    let hasGenderReported =
-        Namespaced_IRI.parse _namespace_name "hasGenderReported" |> NamespacedName
-
+    let hasGenderReported = _prefix "hasGenderReported"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasGenderSelfReported" title="#hasGenderSelfReported"&gt;has gender identity (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGenderSelfDeclared"></see></summary>
-    let hasGenderSelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasGenderSelfDeclared" |> NamespacedName
-
+    let hasGenderSelfDeclared = _prefix "hasGenderSelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGenderSelfReported"></see>
     /// </summary>
-    let hasGenderSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasGenderSelfReported" |> NamespacedName
-
+    let hasGenderSelfReported = _prefix "hasGenderSelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGenderedPoliticalActivity"></see>
     /// </summary>
-    let hasGenderedPoliticalActivity =
-        Namespaced_IRI.parse _namespace_name "hasGenderedPoliticalActivity" |> NamespacedName
-
+    let hasGenderedPoliticalActivity = _prefix "hasGenderedPoliticalActivity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalAffiliation"></see>
     /// </summary>
-    let hasPoliticalAffiliation =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalAffiliation" |> NamespacedName
-
+    let hasPoliticalAffiliation = _prefix "hasPoliticalAffiliation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGenderedPoliticalActivityFrom"></see>
     /// </summary>
-    let hasGenderedPoliticalActivityFrom =
-        Namespaced_IRI.parse _namespace_name "hasGenderedPoliticalActivityFrom" |> NamespacedName
-
+    let hasGenderedPoliticalActivityFrom = _prefix "hasGenderedPoliticalActivityFrom"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politicalAffiliationOf"></see>
     /// </summary>
-    let politicalAffiliationOf =
-        Namespaced_IRI.parse _namespace_name "politicalAffiliationOf" |> NamespacedName
-
+    let politicalAffiliationOf = _prefix "politicalAffiliationOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGeographicHeritage"></see>
     /// </summary>
-    let hasGeographicHeritage =
-        Namespaced_IRI.parse _namespace_name "hasGeographicHeritage" |> NamespacedName
-
+    let hasGeographicHeritage = _prefix "hasGeographicHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGeographicHeritageReported"></see>
     /// </summary>
-    let hasGeographicHeritageReported =
-        Namespaced_IRI.parse _namespace_name "hasGeographicHeritageReported" |> NamespacedName
-
+    let hasGeographicHeritageReported = _prefix "hasGeographicHeritageReported"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasGeographicHeritageSelfReported" title="#hasGeographicHeritageSelfReported"&gt;has geographic heritage (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGeographicHeritageSelfDeclared"></see></summary>
-    let hasGeographicHeritageSelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasGeographicHeritageSelfDeclared" |> NamespacedName
-
+    let hasGeographicHeritageSelfDeclared = _prefix "hasGeographicHeritageSelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasGeographicHeritageSelfReported"></see>
     /// </summary>
-    let hasGeographicHeritageSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasGeographicHeritageSelfReported" |> NamespacedName
-
+    let hasGeographicHeritageSelfReported = _prefix "hasGeographicHeritageSelfReported"
     /// <summary>
     /// Deprecated, with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#personalProperty"></see></summary>
-    let personalProperty =
-        Namespaced_IRI.parse _namespace_name "personalProperty" |> NamespacedName
-
+    let personalProperty = _prefix "personalProperty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSister"></see>
     /// </summary>
-    let hasSister = Namespaced_IRI.parse _namespace_name "hasSister" |> NamespacedName
+    let hasSister = _prefix "hasSister"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasHusband"></see>
     /// </summary>
-    let hasHusband = Namespaced_IRI.parse _namespace_name "hasHusband" |> NamespacedName
+    let hasHusband = _prefix "hasHusband"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPartner"></see>
     /// </summary>
-    let hasPartner = Namespaced_IRI.parse _namespace_name "hasPartner" |> NamespacedName
-
+    let hasPartner = _prefix "hasPartner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasIDependencyOn"></see>
     /// </summary>
-    let hasIDependencyOn =
-        Namespaced_IRI.parse _namespace_name "hasIDependencyOn" |> NamespacedName
-
+    let hasIDependencyOn = _prefix "hasIDependencyOn"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasImmigrant"></see>
     /// </summary>
-    let hasImmigrant =
-        Namespaced_IRI.parse _namespace_name "hasImmigrant" |> NamespacedName
-
+    let hasImmigrant = _prefix "hasImmigrant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasTraveller"></see>
     /// </summary>
-    let hasTraveller =
-        Namespaced_IRI.parse _namespace_name "hasTraveller" |> NamespacedName
-
+    let hasTraveller = _prefix "hasTraveller"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#relatesSpatiallyTo"></see>
     /// </summary>
-    let relatesSpatiallyTo =
-        Namespaced_IRI.parse _namespace_name "relatesSpatiallyTo" |> NamespacedName
-
+    let relatesSpatiallyTo = _prefix "relatesSpatiallyTo"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasInstructor"></see>
     /// </summary>
-    let hasInstructor =
-        Namespaced_IRI.parse _namespace_name "hasInstructor" |> NamespacedName
-
+    let hasInstructor = _prefix "hasInstructor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSocialRelationshipWith"></see>
     /// </summary>
-    let hasSocialRelationshipWith =
-        Namespaced_IRI.parse _namespace_name "hasSocialRelationshipWith" |> NamespacedName
-
+    let hasSocialRelationshipWith = _prefix "hasSocialRelationshipWith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasLinguisticAbility"></see>
     /// </summary>
-    let hasLinguisticAbility =
-        Namespaced_IRI.parse _namespace_name "hasLinguisticAbility" |> NamespacedName
-
+    let hasLinguisticAbility = _prefix "hasLinguisticAbility"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#linguisticAbilityOf"></see>
     /// </summary>
-    let linguisticAbilityOf =
-        Namespaced_IRI.parse _namespace_name "linguisticAbilityOf" |> NamespacedName
-
+    let linguisticAbilityOf = _prefix "linguisticAbilityOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasLinguisticAbilityReported"></see>
     /// </summary>
-    let hasLinguisticAbilityReported =
-        Namespaced_IRI.parse _namespace_name "hasLinguisticAbilityReported" |> NamespacedName
-
+    let hasLinguisticAbilityReported = _prefix "hasLinguisticAbilityReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#linguisticAbilityReportedOf"></see>
     /// </summary>
-    let linguisticAbilityReportedOf =
-        Namespaced_IRI.parse _namespace_name "linguisticAbilityReportedOf" |> NamespacedName
-
+    let linguisticAbilityReportedOf = _prefix "linguisticAbilityReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasLinguisticAbilitySelfReported" title="#hasLinguisticAbilitySelfReported"&gt;language known (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasLinguisticAbilitySelfDeclared"></see></summary>
-    let hasLinguisticAbilitySelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasLinguisticAbilitySelfDeclared" |> NamespacedName
-
+    let hasLinguisticAbilitySelfDeclared = _prefix "hasLinguisticAbilitySelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasLinguisticAbilitySelfReported"></see>
     /// </summary>
-    let hasLinguisticAbilitySelfReported =
-        Namespaced_IRI.parse _namespace_name "hasLinguisticAbilitySelfReported" |> NamespacedName
-
+    let hasLinguisticAbilitySelfReported = _prefix "hasLinguisticAbilitySelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#linguisticAbilitySelfReportedOf"></see>
     /// </summary>
-    let linguisticAbilitySelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "linguisticAbilitySelfReportedOf" |> NamespacedName
-
+    let linguisticAbilitySelfReportedOf = _prefix "linguisticAbilitySelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasLocation"></see>
     /// </summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasMother"></see>
     /// </summary>
-    let hasMother = Namespaced_IRI.parse _namespace_name "hasMother" |> NamespacedName
+    let hasMother = _prefix "hasMother"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNamePart"></see>
     /// </summary>
-    let hasNamePart =
-        Namespaced_IRI.parse _namespace_name "hasNamePart" |> NamespacedName
-
+    let hasNamePart = _prefix "hasNamePart"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationalHeritage"></see>
     /// </summary>
-    let hasNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "hasNationalHeritage" |> NamespacedName
-
+    let hasNationalHeritage = _prefix "hasNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalHeritageOf"></see>
     /// </summary>
-    let nationalHeritageOf =
-        Namespaced_IRI.parse _namespace_name "nationalHeritageOf" |> NamespacedName
-
+    let nationalHeritageOf = _prefix "nationalHeritageOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationalHeritageReported"></see>
     /// </summary>
-    let hasNationalHeritageReported =
-        Namespaced_IRI.parse _namespace_name "hasNationalHeritageReported" |> NamespacedName
-
+    let hasNationalHeritageReported = _prefix "hasNationalHeritageReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalHeritageReportedOf"></see>
     /// </summary>
-    let nationalHeritageReportedOf =
-        Namespaced_IRI.parse _namespace_name "nationalHeritageReportedOf" |> NamespacedName
-
+    let nationalHeritageReportedOf = _prefix "nationalHeritageReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationalHeritageSelfReported"></see>
     /// </summary>
-    let hasNationalHeritageSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasNationalHeritageSelfReported" |> NamespacedName
-
+    let hasNationalHeritageSelfReported = _prefix "hasNationalHeritageSelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalHeritageSelfReportedOf"></see>
     /// </summary>
-    let nationalHeritageSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "nationalHeritageSelfReportedOf" |> NamespacedName
-
+    let nationalHeritageSelfReportedOf = _prefix "nationalHeritageSelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationality"></see>
     /// </summary>
-    let hasNationality =
-        Namespaced_IRI.parse _namespace_name "hasNationality" |> NamespacedName
-
+    let hasNationality = _prefix "hasNationality"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalityOf"></see>
     /// </summary>
-    let nationalityOf =
-        Namespaced_IRI.parse _namespace_name "nationalityOf" |> NamespacedName
-
+    let nationalityOf = _prefix "nationalityOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationalityReported"></see>
     /// </summary>
-    let hasNationalityReported =
-        Namespaced_IRI.parse _namespace_name "hasNationalityReported" |> NamespacedName
-
+    let hasNationalityReported = _prefix "hasNationalityReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalityReportedOf"></see>
     /// </summary>
-    let nationalityReportedOf =
-        Namespaced_IRI.parse _namespace_name "nationalityReportedOf" |> NamespacedName
-
+    let nationalityReportedOf = _prefix "nationalityReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasNationalitySelfReported" title="#hasNationalitySelfReported"&gt;has national identity (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationalitySelfDeclared"></see></summary>
-    let hasNationalitySelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasNationalitySelfDeclared" |> NamespacedName
-
+    let hasNationalitySelfDeclared = _prefix "hasNationalitySelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNationalitySelfReported"></see>
     /// </summary>
-    let hasNationalitySelfReported =
-        Namespaced_IRI.parse _namespace_name "hasNationalitySelfReported" |> NamespacedName
-
+    let hasNationalitySelfReported = _prefix "hasNationalitySelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nationalitySelfReportedOf"></see>
     /// </summary>
-    let nationalitySelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "nationalitySelfReportedOf" |> NamespacedName
-
+    let nationalitySelfReportedOf = _prefix "nationalitySelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNativeLinguisticAbility"></see>
     /// </summary>
-    let hasNativeLinguisticAbility =
-        Namespaced_IRI.parse _namespace_name "hasNativeLinguisticAbility" |> NamespacedName
-
+    let hasNativeLinguisticAbility = _prefix "hasNativeLinguisticAbility"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nativeLinguisticAbilityOf"></see>
     /// </summary>
-    let nativeLinguisticAbilityOf =
-        Namespaced_IRI.parse _namespace_name "nativeLinguisticAbilityOf" |> NamespacedName
+    let nativeLinguisticAbilityOf = _prefix "nativeLinguisticAbilityOf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNativeLinguisticAbilityReported"></see>
     /// </summary>
     let hasNativeLinguisticAbilityReported =
-        Namespaced_IRI.parse _namespace_name "hasNativeLinguisticAbilityReported" |> NamespacedName
+        _prefix "hasNativeLinguisticAbilityReported"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nativeLinguisticAbilityReportedOf"></see>
     /// </summary>
-    let nativeLinguisticAbilityReportedOf =
-        Namespaced_IRI.parse _namespace_name "nativeLinguisticAbilityReportedOf" |> NamespacedName
+    let nativeLinguisticAbilityReportedOf = _prefix "nativeLinguisticAbilityReportedOf"
 
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasLinguisticAbilitySelfReported" title="#hasLinguisticAbilitySelfReported"&gt;language known (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNativeLinguisticAbilitySelfDeclared"></see></summary>
     let hasNativeLinguisticAbilitySelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasNativeLinguisticAbilitySelfDeclared" |> NamespacedName
+        _prefix "hasNativeLinguisticAbilitySelfDeclared"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNativeLinguisticAbilitySelfReported"></see>
     /// </summary>
     let hasNativeLinguisticAbilitySelfReported =
-        Namespaced_IRI.parse _namespace_name "hasNativeLinguisticAbilitySelfReported" |> NamespacedName
+        _prefix "hasNativeLinguisticAbilitySelfReported"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nativeLinguisticAbilitySelfReportedOf"></see>
     /// </summary>
     let nativeLinguisticAbilitySelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "nativeLinguisticAbilitySelfReportedOf" |> NamespacedName
+        _prefix "nativeLinguisticAbilitySelfReportedOf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNephew"></see>
     /// </summary>
-    let hasNephew = Namespaced_IRI.parse _namespace_name "hasNephew" |> NamespacedName
+    let hasNephew = _prefix "hasNephew"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNiece"></see>
     /// </summary>
-    let hasNiece = Namespaced_IRI.parse _namespace_name "hasNiece" |> NamespacedName
-
+    let hasNiece = _prefix "hasNiece"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasNonEroticRelationshipWith"></see>
     /// </summary>
-    let hasNonEroticRelationshipWith =
-        Namespaced_IRI.parse _namespace_name "hasNonEroticRelationshipWith" |> NamespacedName
-
+    let hasNonEroticRelationshipWith = _prefix "hasNonEroticRelationshipWith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasOccupationIncome"></see>
     /// </summary>
-    let hasOccupationIncome =
-        Namespaced_IRI.parse _namespace_name "hasOccupationIncome" |> NamespacedName
-
+    let hasOccupationIncome = _prefix "hasOccupationIncome"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#occupationIncomeOf"></see>
     /// </summary>
-    let occupationIncomeOf =
-        Namespaced_IRI.parse _namespace_name "occupationIncomeOf" |> NamespacedName
-
+    let occupationIncomeOf = _prefix "occupationIncomeOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasOrganization"></see>
     /// </summary>
-    let hasOrganization =
-        Namespaced_IRI.parse _namespace_name "hasOrganization" |> NamespacedName
-
+    let hasOrganization = _prefix "hasOrganization"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPaidOccupation"></see>
     /// </summary>
-    let hasPaidOccupation =
-        Namespaced_IRI.parse _namespace_name "hasPaidOccupation" |> NamespacedName
-
+    let hasPaidOccupation = _prefix "hasPaidOccupation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#paidOccupationOf"></see>
     /// </summary>
-    let paidOccupationOf =
-        Namespaced_IRI.parse _namespace_name "paidOccupationOf" |> NamespacedName
-
+    let paidOccupationOf = _prefix "paidOccupationOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasParticipant"></see>
     /// </summary>
-    let hasParticipant =
-        Namespaced_IRI.parse _namespace_name "hasParticipant" |> NamespacedName
-
+    let hasParticipant = _prefix "hasParticipant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#partnerOf"></see>
     /// </summary>
-    let partnerOf = Namespaced_IRI.parse _namespace_name "partnerOf" |> NamespacedName
-
+    let partnerOf = _prefix "partnerOf"
     /// <summary>
     /// Deprecated in favour of property &lt;a href="#hasEventElement" title="#hasEventElement"&gt;[http://sparql.cwrc.ca/ontologies/cwrc#hasEventElement]&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPeformance"></see></summary>
-    let hasPeformance =
-        Namespaced_IRI.parse _namespace_name "hasPeformance" |> NamespacedName
-
+    let hasPeformance = _prefix "hasPeformance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasEventElement"></see>
     /// </summary>
-    let hasEventElement =
-        Namespaced_IRI.parse _namespace_name "hasEventElement" |> NamespacedName
-
+    let hasEventElement = _prefix "hasEventElement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPersona"></see>
     /// </summary>
-    let hasPersona = Namespaced_IRI.parse _namespace_name "hasPersona" |> NamespacedName
-
+    let hasPersona = _prefix "hasPersona"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalAffiliationReported"></see>
     /// </summary>
-    let hasPoliticalAffiliationReported =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalAffiliationReported" |> NamespacedName
-
+    let hasPoliticalAffiliationReported = _prefix "hasPoliticalAffiliationReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politicalAffiliationReportedOf"></see>
     /// </summary>
-    let politicalAffiliationReportedOf =
-        Namespaced_IRI.parse _namespace_name "politicalAffiliationReportedOf" |> NamespacedName
+    let politicalAffiliationReportedOf = _prefix "politicalAffiliationReportedOf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalAffiliationSelfReported"></see>
     /// </summary>
     let hasPoliticalAffiliationSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalAffiliationSelfReported" |> NamespacedName
+        _prefix "hasPoliticalAffiliationSelfReported"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politicalAffiliationSelfReportedOf"></see>
     /// </summary>
     let politicalAffiliationSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "politicalAffiliationSelfReportedOf" |> NamespacedName
+        _prefix "politicalAffiliationSelfReportedOf"
 
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalInvolvementFrom"></see>
     /// </summary>
-    let hasPoliticalInvolvementFrom =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalInvolvementFrom" |> NamespacedName
-
+    let hasPoliticalInvolvementFrom = _prefix "hasPoliticalInvolvementFrom"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPoliticalInvolvementIn"></see>
     /// </summary>
-    let hasPoliticalInvolvementIn =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalInvolvementIn" |> NamespacedName
-
+    let hasPoliticalInvolvementIn = _prefix "hasPoliticalInvolvementIn"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasPossiblyEroticRelationshipWith"></see>
     /// </summary>
-    let hasPossiblyEroticRelationshipWith =
-        Namespaced_IRI.parse _namespace_name "hasPossiblyEroticRelationshipWith" |> NamespacedName
-
+    let hasPossiblyEroticRelationshipWith = _prefix "hasPossiblyEroticRelationshipWith"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRaceColour"></see>
     /// </summary>
-    let hasRaceColour =
-        Namespaced_IRI.parse _namespace_name "hasRaceColour" |> NamespacedName
-
+    let hasRaceColour = _prefix "hasRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#raceColourOf"></see>
     /// </summary>
-    let raceColourOf =
-        Namespaced_IRI.parse _namespace_name "raceColourOf" |> NamespacedName
-
+    let raceColourOf = _prefix "raceColourOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRaceColourReported"></see>
     /// </summary>
-    let hasRaceColourReported =
-        Namespaced_IRI.parse _namespace_name "hasRaceColourReported" |> NamespacedName
-
+    let hasRaceColourReported = _prefix "hasRaceColourReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#raceColourReportedOf"></see>
     /// </summary>
-    let raceColourReportedOf =
-        Namespaced_IRI.parse _namespace_name "raceColourReportedOf" |> NamespacedName
-
+    let raceColourReportedOf = _prefix "raceColourReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasNationalitySelfReported" title="#hasNationalitySelfReported"&gt;has national identity (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRaceColourSelfDeclared"></see></summary>
-    let hasRaceColourSelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasRaceColourSelfDeclared" |> NamespacedName
-
+    let hasRaceColourSelfDeclared = _prefix "hasRaceColourSelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#Race"></see>
     /// </summary>
-    let Race = Namespaced_IRI.parse _namespace_name "Race" |> NamespacedName
-
+    let Race = _prefix "Race"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRaceColourSelfReported"></see>
     /// </summary>
-    let hasRaceColourSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasRaceColourSelfReported" |> NamespacedName
-
+    let hasRaceColourSelfReported = _prefix "hasRaceColourSelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#raceColourSelfReportedOf"></see>
     /// </summary>
-    let raceColourSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "raceColourSelfReportedOf" |> NamespacedName
-
+    let raceColourSelfReportedOf = _prefix "raceColourSelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasReligion"></see>
     /// </summary>
-    let hasReligion =
-        Namespaced_IRI.parse _namespace_name "hasReligion" |> NamespacedName
-
+    let hasReligion = _prefix "hasReligion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#religionOf"></see>
     /// </summary>
-    let religionOf = Namespaced_IRI.parse _namespace_name "religionOf" |> NamespacedName
-
+    let religionOf = _prefix "religionOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasReligionReported"></see>
     /// </summary>
-    let hasReligionReported =
-        Namespaced_IRI.parse _namespace_name "hasReligionReported" |> NamespacedName
-
+    let hasReligionReported = _prefix "hasReligionReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#religionReportedOf"></see>
     /// </summary>
-    let religionReportedOf =
-        Namespaced_IRI.parse _namespace_name "religionReportedOf" |> NamespacedName
-
+    let religionReportedOf = _prefix "religionReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasReligionSelfReported" title="#hasReligionSelfReported"&gt;has religious affiliation (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasReligionSelfDefined"></see></summary>
-    let hasReligionSelfDefined =
-        Namespaced_IRI.parse _namespace_name "hasReligionSelfDefined" |> NamespacedName
-
+    let hasReligionSelfDefined = _prefix "hasReligionSelfDefined"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasReligionSelfReported"></see>
     /// </summary>
-    let hasReligionSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasReligionSelfReported" |> NamespacedName
-
+    let hasReligionSelfReported = _prefix "hasReligionSelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#religionSelfReportedOf"></see>
     /// </summary>
-    let religionSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "religionSelfReportedOf" |> NamespacedName
-
+    let religionSelfReportedOf = _prefix "religionSelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRelocatee"></see>
     /// </summary>
-    let hasRelocatee =
-        Namespaced_IRI.parse _namespace_name "hasRelocatee" |> NamespacedName
-
+    let hasRelocatee = _prefix "hasRelocatee"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasRole"></see>
     /// </summary>
-    let hasRole = Namespaced_IRI.parse _namespace_name "hasRole" |> NamespacedName
-
+    let hasRole = _prefix "hasRole"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSexuality"></see>
     /// </summary>
-    let hasSexuality =
-        Namespaced_IRI.parse _namespace_name "hasSexuality" |> NamespacedName
-
+    let hasSexuality = _prefix "hasSexuality"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityOf"></see>
     /// </summary>
-    let sexualityOf =
-        Namespaced_IRI.parse _namespace_name "sexualityOf" |> NamespacedName
-
+    let sexualityOf = _prefix "sexualityOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSexualityReported"></see>
     /// </summary>
-    let hasSexualityReported =
-        Namespaced_IRI.parse _namespace_name "hasSexualityReported" |> NamespacedName
-
+    let hasSexualityReported = _prefix "hasSexualityReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityReportedOf"></see>
     /// </summary>
-    let sexualityReportedOf =
-        Namespaced_IRI.parse _namespace_name "sexualityReportedOf" |> NamespacedName
-
+    let sexualityReportedOf = _prefix "sexualityReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasSexualitySelfReported" title="#hasSexualitySelfReported"&gt;has sexual identity (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSexualitySelfDeclared"></see></summary>
-    let hasSexualitySelfDeclared =
-        Namespaced_IRI.parse _namespace_name "hasSexualitySelfDeclared" |> NamespacedName
-
+    let hasSexualitySelfDeclared = _prefix "hasSexualitySelfDeclared"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSexualitySelfReported"></see>
     /// </summary>
-    let hasSexualitySelfReported =
-        Namespaced_IRI.parse _namespace_name "hasSexualitySelfReported" |> NamespacedName
-
+    let hasSexualitySelfReported = _prefix "hasSexualitySelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualitySelfReportedOf"></see>
     /// </summary>
-    let sexualitySelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "sexualitySelfReportedOf" |> NamespacedName
-
+    let sexualitySelfReportedOf = _prefix "sexualitySelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSocialClass"></see>
     /// </summary>
-    let hasSocialClass =
-        Namespaced_IRI.parse _namespace_name "hasSocialClass" |> NamespacedName
-
+    let hasSocialClass = _prefix "hasSocialClass"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialClassOf"></see>
     /// </summary>
-    let socialClassOf =
-        Namespaced_IRI.parse _namespace_name "socialClassOf" |> NamespacedName
-
+    let socialClassOf = _prefix "socialClassOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSocialClassReported"></see>
     /// </summary>
-    let hasSocialClassReported =
-        Namespaced_IRI.parse _namespace_name "hasSocialClassReported" |> NamespacedName
-
+    let hasSocialClassReported = _prefix "hasSocialClassReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialClassReportedOf"></see>
     /// </summary>
-    let socialClassReportedOf =
-        Namespaced_IRI.parse _namespace_name "socialClassReportedOf" |> NamespacedName
-
+    let socialClassReportedOf = _prefix "socialClassReportedOf"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasSocialClassSelfReported" title="#hasSocialClassSelfReported"&gt;has class identity (self-reported)&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSocialClassSelfDefined"></see></summary>
-    let hasSocialClassSelfDefined =
-        Namespaced_IRI.parse _namespace_name "hasSocialClassSelfDefined" |> NamespacedName
-
+    let hasSocialClassSelfDefined = _prefix "hasSocialClassSelfDefined"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSocialClassSelfReported"></see>
     /// </summary>
-    let hasSocialClassSelfReported =
-        Namespaced_IRI.parse _namespace_name "hasSocialClassSelfReported" |> NamespacedName
-
+    let hasSocialClassSelfReported = _prefix "hasSocialClassSelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialClassSelfReportedOf"></see>
     /// </summary>
-    let socialClassSelfReportedOf =
-        Namespaced_IRI.parse _namespace_name "socialClassSelfReportedOf" |> NamespacedName
-
+    let socialClassSelfReportedOf = _prefix "socialClassSelfReportedOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSon"></see>
     /// </summary>
-    let hasSon = Namespaced_IRI.parse _namespace_name "hasSon" |> NamespacedName
-
+    let hasSon = _prefix "hasSon"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasSortOrder"></see>
     /// </summary>
-    let hasSortOrder =
-        Namespaced_IRI.parse _namespace_name "hasSortOrder" |> NamespacedName
-
+    let hasSortOrder = _prefix "hasSortOrder"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepBrother"></see>
     /// </summary>
-    let hasStepBrother =
-        Namespaced_IRI.parse _namespace_name "hasStepBrother" |> NamespacedName
-
+    let hasStepBrother = _prefix "hasStepBrother"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepChild"></see>
     /// </summary>
-    let hasStepChild =
-        Namespaced_IRI.parse _namespace_name "hasStepChild" |> NamespacedName
-
+    let hasStepChild = _prefix "hasStepChild"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepDaughter"></see>
     /// </summary>
-    let hasStepDaughter =
-        Namespaced_IRI.parse _namespace_name "hasStepDaughter" |> NamespacedName
-
+    let hasStepDaughter = _prefix "hasStepDaughter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepFather"></see>
     /// </summary>
-    let hasStepFather =
-        Namespaced_IRI.parse _namespace_name "hasStepFather" |> NamespacedName
-
+    let hasStepFather = _prefix "hasStepFather"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepParent"></see>
     /// </summary>
-    let hasStepParent =
-        Namespaced_IRI.parse _namespace_name "hasStepParent" |> NamespacedName
-
+    let hasStepParent = _prefix "hasStepParent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepMother"></see>
     /// </summary>
-    let hasStepMother =
-        Namespaced_IRI.parse _namespace_name "hasStepMother" |> NamespacedName
-
+    let hasStepMother = _prefix "hasStepMother"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepMotherOf"></see>
     /// </summary>
-    let stepMotherOf =
-        Namespaced_IRI.parse _namespace_name "stepMotherOf" |> NamespacedName
-
+    let stepMotherOf = _prefix "stepMotherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepSister"></see>
     /// </summary>
-    let hasStepSister =
-        Namespaced_IRI.parse _namespace_name "hasStepSister" |> NamespacedName
-
+    let hasStepSister = _prefix "hasStepSister"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasStepSon"></see>
     /// </summary>
-    let hasStepSon = Namespaced_IRI.parse _namespace_name "hasStepSon" |> NamespacedName
-
+    let hasStepSon = _prefix "hasStepSon"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasTimeCertainty"></see>
     /// </summary>
-    let hasTimeCertainty =
-        Namespaced_IRI.parse _namespace_name "hasTimeCertainty" |> NamespacedName
-
+    let hasTimeCertainty = _prefix "hasTimeCertainty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasUncle"></see>
     /// </summary>
-    let hasUncle = Namespaced_IRI.parse _namespace_name "hasUncle" |> NamespacedName
+    let hasUncle = _prefix "hasUncle"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasVistor"></see>
     /// </summary>
-    let hasVistor = Namespaced_IRI.parse _namespace_name "hasVistor" |> NamespacedName
-
+    let hasVistor = _prefix "hasVistor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasVolunteerOccupation"></see>
     /// </summary>
-    let hasVolunteerOccupation =
-        Namespaced_IRI.parse _namespace_name "hasVolunteerOccupation" |> NamespacedName
-
+    let hasVolunteerOccupation = _prefix "hasVolunteerOccupation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#volunteerOccupationOf"></see>
     /// </summary>
-    let volunteerOccupationOf =
-        Namespaced_IRI.parse _namespace_name "volunteerOccupationOf" |> NamespacedName
-
+    let volunteerOccupationOf = _prefix "volunteerOccupationOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hasWife"></see>
     /// </summary>
-    let hasWife = Namespaced_IRI.parse _namespace_name "hasWife" |> NamespacedName
-
+    let hasWife = _prefix "hasWife"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#headOfState"></see>
     /// </summary>
-    let headOfState =
-        Namespaced_IRI.parse _namespace_name "headOfState" |> NamespacedName
-
+    let headOfState = _prefix "headOfState"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hermeticism"></see></summary>
-    let hermeticism =
-        Namespaced_IRI.parse _namespace_name "hermeticism" |> NamespacedName
-
+    let hermeticism = _prefix "hermeticism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#heterosexual"></see>
     /// </summary>
-    let heterosexual =
-        Namespaced_IRI.parse _namespace_name "heterosexual" |> NamespacedName
-
+    let heterosexual = _prefix "heterosexual"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#highCertainty"></see>
     /// </summary>
-    let highCertainty =
-        Namespaced_IRI.parse _namespace_name "highCertainty" |> NamespacedName
-
+    let highCertainty = _prefix "highCertainty"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#highChurchParty"></see></summary>
-    let highChurchParty =
-        Namespaced_IRI.parse _namespace_name "highChurchParty" |> NamespacedName
-
+    let highChurchParty = _prefix "highChurchParty"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#highToryism"></see></summary>
-    let highToryism =
-        Namespaced_IRI.parse _namespace_name "highToryism" |> NamespacedName
-
+    let highToryism = _prefix "highToryism"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#hinduism"></see></summary>
-    let hinduism = Namespaced_IRI.parse _namespace_name "hinduism" |> NamespacedName
+    let hinduism = _prefix "hinduism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#historian"></see>
     /// </summary>
-    let historian = Namespaced_IRI.parse _namespace_name "historian" |> NamespacedName
+    let historian = _prefix "historian"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#homeRule"></see></summary>
-    let homeRule = Namespaced_IRI.parse _namespace_name "homeRule" |> NamespacedName
+    let homeRule = _prefix "homeRule"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#homosexual"></see>
     /// </summary>
-    let homosexual = Namespaced_IRI.parse _namespace_name "homosexual" |> NamespacedName
-
+    let homosexual = _prefix "homosexual"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#honoraryDegree"></see></summary>
-    let honoraryDegree =
-        Namespaced_IRI.parse _namespace_name "honoraryDegree" |> NamespacedName
-
+    let honoraryDegree = _prefix "honoraryDegree"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hospitality"></see>
     /// </summary>
-    let hospitality =
-        Namespaced_IRI.parse _namespace_name "hospitality" |> NamespacedName
-
+    let hospitality = _prefix "hospitality"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hostess"></see>
     /// </summary>
-    let hostess = Namespaced_IRI.parse _namespace_name "hostess" |> NamespacedName
-
+    let hostess = _prefix "hostess"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#housePainter"></see>
     /// </summary>
-    let housePainter =
-        Namespaced_IRI.parse _namespace_name "housePainter" |> NamespacedName
-
+    let housePainter = _prefix "housePainter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#houseSitter"></see>
     /// </summary>
-    let houseSitter =
-        Namespaced_IRI.parse _namespace_name "houseSitter" |> NamespacedName
-
+    let houseSitter = _prefix "houseSitter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#housework"></see>
     /// </summary>
-    let housework = Namespaced_IRI.parse _namespace_name "housework" |> NamespacedName
-
+    let housework = _prefix "housework"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#housingMovement"></see></summary>
-    let housingMovement =
-        Namespaced_IRI.parse _namespace_name "housingMovement" |> NamespacedName
-
+    let housingMovement = _prefix "housingMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#humanism"></see></summary>
-    let humanism = Namespaced_IRI.parse _namespace_name "humanism" |> NamespacedName
-
+    let humanism = _prefix "humanism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#humanitarianWork"></see>
     /// </summary>
-    let humanitarianWork =
-        Namespaced_IRI.parse _namespace_name "humanitarianWork" |> NamespacedName
-
+    let humanitarianWork = _prefix "humanitarianWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hunter"></see>
     /// </summary>
-    let hunter = Namespaced_IRI.parse _namespace_name "hunter" |> NamespacedName
+    let hunter = _prefix "hunter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#husbandOf"></see>
     /// </summary>
-    let husbandOf = Namespaced_IRI.parse _namespace_name "husbandOf" |> NamespacedName
+    let husbandOf = _prefix "husbandOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#hypnotist"></see>
     /// </summary>
-    let hypnotist = Namespaced_IRI.parse _namespace_name "hypnotist" |> NamespacedName
+    let hypnotist = _prefix "hypnotist"
     /// <summary>
     /// Deprecated from previous Orlando Ontology design.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#identity"></see></summary>
-    let identity = Namespaced_IRI.parse _namespace_name "identity" |> NamespacedName
-
+    let identity = _prefix "identity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#igboEthnicity"></see></summary>
-    let igboEthnicity =
-        Namespaced_IRI.parse _namespace_name "igboEthnicity" |> NamespacedName
-
+    let igboEthnicity = _prefix "igboEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#illustrator"></see>
     /// </summary>
-    let illustrator =
-        Namespaced_IRI.parse _namespace_name "illustrator" |> NamespacedName
-
+    let illustrator = _prefix "illustrator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#immunologist"></see>
     /// </summary>
-    let immunologist =
-        Namespaced_IRI.parse _namespace_name "immunologist" |> NamespacedName
-
+    let immunologist = _prefix "immunologist"
     /// <summary>
     /// Deprecated from previous Orlando Ontology design.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#inRole"></see></summary>
-    let inRole = Namespaced_IRI.parse _namespace_name "inRole" |> NamespacedName
-
+    let inRole = _prefix "inRole"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#independentMethodistConnexion"></see></summary>
-    let independentMethodistConnexion =
-        Namespaced_IRI.parse _namespace_name "independentMethodistConnexion" |> NamespacedName
-
+    let independentMethodistConnexion = _prefix "independentMethodistConnexion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#indexedBy"></see>
     /// </summary>
-    let indexedBy = Namespaced_IRI.parse _namespace_name "indexedBy" |> NamespacedName
-
+    let indexedBy = _prefix "indexedBy"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#indianIndependence"></see></summary>
-    let indianIndependence =
-        Namespaced_IRI.parse _namespace_name "indianIndependence" |> NamespacedName
-
+    let indianIndependence = _prefix "indianIndependence"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#indianRaceColour"></see></summary>
-    let indianRaceColour =
-        Namespaced_IRI.parse _namespace_name "indianRaceColour" |> NamespacedName
-
+    let indianRaceColour = _prefix "indianRaceColour"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#indianUnification"></see></summary>
-    let indianUnification =
-        Namespaced_IRI.parse _namespace_name "indianUnification" |> NamespacedName
+    let indianUnification = _prefix "indianUnification"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#indigenousPeoplesOfAmericasEthnicity"></see></summary>
     let indigenousPeoplesOfAmericasEthnicity =
-        Namespaced_IRI.parse _namespace_name "indigenousPeoplesOfAmericasEthnicity" |> NamespacedName
+        _prefix "indigenousPeoplesOfAmericasEthnicity"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#indigenousPeoplesOfAmericasRaceColour"></see></summary>
     let indigenousPeoplesOfAmericasRaceColour =
-        Namespaced_IRI.parse _namespace_name "indigenousPeoplesOfAmericasRaceColour" |> NamespacedName
+        _prefix "indigenousPeoplesOfAmericasRaceColour"
 
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#indigenousRights"></see></summary>
-    let indigenousRights =
-        Namespaced_IRI.parse _namespace_name "indigenousRights" |> NamespacedName
-
+    let indigenousRights = _prefix "indigenousRights"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#individualism"></see></summary>
-    let individualism =
-        Namespaced_IRI.parse _namespace_name "individualism" |> NamespacedName
-
+    let individualism = _prefix "individualism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#inhabits"></see>
     /// </summary>
-    let inhabits = Namespaced_IRI.parse _namespace_name "inhabits" |> NamespacedName
+    let inhabits = _prefix "inhabits"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#insurance"></see>
     /// </summary>
-    let insurance = Namespaced_IRI.parse _namespace_name "insurance" |> NamespacedName
-
+    let insurance = _prefix "insurance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#intellectual"></see>
     /// </summary>
-    let intellectual =
-        Namespaced_IRI.parse _namespace_name "intellectual" |> NamespacedName
-
+    let intellectual = _prefix "intellectual"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#intelligenceWork"></see>
     /// </summary>
-    let intelligenceWork =
-        Namespaced_IRI.parse _namespace_name "intelligenceWork" |> NamespacedName
-
+    let intelligenceWork = _prefix "intelligenceWork"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#hasInterpersonalRelationshipWith" title="#hasInterpersonalRelationshipWith"&gt;has interpersonal relationship with&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#interpersonalRelationship"></see></summary>
-    let interpersonalRelationship =
-        Namespaced_IRI.parse _namespace_name "interpersonalRelationship" |> NamespacedName
-
+    let interpersonalRelationship = _prefix "interpersonalRelationship"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#interviewer"></see>
     /// </summary>
-    let interviewer =
-        Namespaced_IRI.parse _namespace_name "interviewer" |> NamespacedName
-
+    let interviewer = _prefix "interviewer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#inventor"></see>
     /// </summary>
-    let inventor = Namespaced_IRI.parse _namespace_name "inventor" |> NamespacedName
-
+    let inventor = _prefix "inventor"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#irishEthnicity"></see></summary>
-    let irishEthnicity =
-        Namespaced_IRI.parse _namespace_name "irishEthnicity" |> NamespacedName
-
+    let irishEthnicity = _prefix "irishEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#irishHomeRuleMovement"></see></summary>
-    let irishHomeRuleMovement =
-        Namespaced_IRI.parse _namespace_name "irishHomeRuleMovement" |> NamespacedName
-
+    let irishHomeRuleMovement = _prefix "irishHomeRuleMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#republicanism"></see></summary>
-    let republicanism =
-        Namespaced_IRI.parse _namespace_name "republicanism" |> NamespacedName
-
+    let republicanism = _prefix "republicanism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#irishRepublicanism"></see></summary>
-    let irishRepublicanism =
-        Namespaced_IRI.parse _namespace_name "irishRepublicanism" |> NamespacedName
-
+    let irishRepublicanism = _prefix "irishRepublicanism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#irishNationalism"></see></summary>
-    let irishNationalism =
-        Namespaced_IRI.parse _namespace_name "irishNationalism" |> NamespacedName
-
+    let irishNationalism = _prefix "irishNationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ironmaster"></see>
     /// </summary>
-    let ironmaster = Namespaced_IRI.parse _namespace_name "ironmaster" |> NamespacedName
+    let ironmaster = _prefix "ironmaster"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#ironmonger"></see>
     /// </summary>
-    let ironmonger = Namespaced_IRI.parse _namespace_name "ironmonger" |> NamespacedName
-
+    let ironmonger = _prefix "ironmonger"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#iroquoisNationalHeritage"></see></summary>
-    let iroquoisNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "iroquoisNationalHeritage" |> NamespacedName
-
+    let iroquoisNationalHeritage = _prefix "iroquoisNationalHeritage"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#islam"></see></summary>
-    let islam = Namespaced_IRI.parse _namespace_name "islam" |> NamespacedName
-
+    let islam = _prefix "islam"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#isolationism"></see></summary>
-    let isolationism =
-        Namespaced_IRI.parse _namespace_name "isolationism" |> NamespacedName
-
+    let isolationism = _prefix "isolationism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#italianNationalism"></see></summary>
-    let italianNationalism =
-        Namespaced_IRI.parse _namespace_name "italianNationalism" |> NamespacedName
-
+    let italianNationalism = _prefix "italianNationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#italianUnification"></see></summary>
-    let italianUnification =
-        Namespaced_IRI.parse _namespace_name "italianUnification" |> NamespacedName
-
+    let italianUnification = _prefix "italianUnification"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#revolutionaryPolitics"></see></summary>
-    let revolutionaryPolitics =
-        Namespaced_IRI.parse _namespace_name "revolutionaryPolitics" |> NamespacedName
-
+    let revolutionaryPolitics = _prefix "revolutionaryPolitics"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#jacobinism" title="#jacobinism"&gt;Jacobinism&lt;/a&gt;.
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jacobism"></see></summary>
-    let jacobism = Namespaced_IRI.parse _namespace_name "jacobism" |> NamespacedName
-
+    let jacobism = _prefix "jacobism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jamaicanEthnicity"></see></summary>
-    let jamaicanEthnicity =
-        Namespaced_IRI.parse _namespace_name "jamaicanEthnicity" |> NamespacedName
-
+    let jamaicanEthnicity = _prefix "jamaicanEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jansenism"></see></summary>
-    let jansenism = Namespaced_IRI.parse _namespace_name "jansenism" |> NamespacedName
-
+    let jansenism = _prefix "jansenism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishEmancipation"></see></summary>
-    let jewishEmancipation =
-        Namespaced_IRI.parse _namespace_name "jewishEmancipation" |> NamespacedName
-
+    let jewishEmancipation = _prefix "jewishEmancipation"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishGeographicHeritage"></see>
     /// </summary>
-    let jewishGeographicHeritage =
-        Namespaced_IRI.parse _namespace_name "jewishGeographicHeritage" |> NamespacedName
-
+    let jewishGeographicHeritage = _prefix "jewishGeographicHeritage"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishRaceColour"></see></summary>
-    let jewishRaceColour =
-        Namespaced_IRI.parse _namespace_name "jewishRaceColour" |> NamespacedName
-
+    let jewishRaceColour = _prefix "jewishRaceColour"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#judaism"></see></summary>
-    let judaism = Namespaced_IRI.parse _namespace_name "judaism" |> NamespacedName
-
+    let judaism = _prefix "judaism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishNationalIdentity"></see>
     /// </summary>
-    let jewishNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "jewishNationalIdentity" |> NamespacedName
-
+    let jewishNationalIdentity = _prefix "jewishNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishNationalHeritage"></see></summary>
-    let jewishNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "jewishNationalHeritage" |> NamespacedName
-
+    let jewishNationalHeritage = _prefix "jewishNationalHeritage"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// Deprecated in favour of instance &lt;a href="#judaism" title="#judaism"&gt;Judaism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#jewishReligion"></see></summary>
-    let jewishReligion =
-        Namespaced_IRI.parse _namespace_name "jewishReligion" |> NamespacedName
-
+    let jewishReligion = _prefix "jewishReligion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#journalist"></see>
     /// </summary>
-    let journalist = Namespaced_IRI.parse _namespace_name "journalist" |> NamespacedName
+    let journalist = _prefix "journalist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#judge"></see>
     /// </summary>
-    let judge = Namespaced_IRI.parse _namespace_name "judge" |> NamespacedName
+    let judge = _prefix "judge"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#knight"></see>
     /// </summary>
-    let knight = Namespaced_IRI.parse _namespace_name "knight" |> NamespacedName
-
+    let knight = _prefix "knight"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#labourUnion"></see>
     /// </summary>
-    let labourUnion =
-        Namespaced_IRI.parse _namespace_name "labourUnion" |> NamespacedName
-
+    let labourUnion = _prefix "labourUnion"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#ladyLiterateInArts"></see></summary>
-    let ladyLiterateInArts =
-        Namespaced_IRI.parse _namespace_name "ladyLiterateInArts" |> NamespacedName
-
+    let ladyLiterateInArts = _prefix "ladyLiterateInArts"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#landReform"></see></summary>
-    let landReform = Namespaced_IRI.parse _namespace_name "landReform" |> NamespacedName
-
+    let landReform = _prefix "landReform"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#latitudinarianism"></see></summary>
-    let latitudinarianism =
-        Namespaced_IRI.parse _namespace_name "latitudinarianism" |> NamespacedName
-
+    let latitudinarianism = _prefix "latitudinarianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#laundryWorker"></see>
     /// </summary>
-    let laundryWorker =
-        Namespaced_IRI.parse _namespace_name "laundryWorker" |> NamespacedName
-
+    let laundryWorker = _prefix "laundryWorker"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#lawDegree"></see></summary>
-    let lawDegree = Namespaced_IRI.parse _namespace_name "lawDegree" |> NamespacedName
-
+    let lawDegree = _prefix "lawDegree"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#professionalDegree"></see></summary>
-    let professionalDegree =
-        Namespaced_IRI.parse _namespace_name "professionalDegree" |> NamespacedName
-
+    let professionalDegree = _prefix "professionalDegree"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lawyer"></see>
     /// </summary>
-    let lawyer = Namespaced_IRI.parse _namespace_name "lawyer" |> NamespacedName
+    let lawyer = _prefix "lawyer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#legalWork"></see>
     /// </summary>
-    let legalWork = Namespaced_IRI.parse _namespace_name "legalWork" |> NamespacedName
-
+    let legalWork = _prefix "legalWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#leatherWorker"></see>
     /// </summary>
-    let leatherWorker =
-        Namespaced_IRI.parse _namespace_name "leatherWorker" |> NamespacedName
-
+    let leatherWorker = _prefix "leatherWorker"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#left-Wing"></see></summary>
-    let ``left-Wing`` =
-        Namespaced_IRI.parse _namespace_name "left-Wing" |> NamespacedName
-
+    let ``left-Wing`` = _prefix "left-Wing"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lesbian"></see>
     /// </summary>
-    let lesbian = Namespaced_IRI.parse _namespace_name "lesbian" |> NamespacedName
-
+    let lesbian = _prefix "lesbian"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#lesbianFeminism"></see></summary>
-    let lesbianFeminism =
-        Namespaced_IRI.parse _namespace_name "lesbianFeminism" |> NamespacedName
-
+    let lesbianFeminism = _prefix "lesbianFeminism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#liaisonOfficer"></see>
     /// </summary>
-    let liaisonOfficer =
-        Namespaced_IRI.parse _namespace_name "liaisonOfficer" |> NamespacedName
-
+    let liaisonOfficer = _prefix "liaisonOfficer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#liberalUnionistParty"></see></summary>
-    let liberalUnionistParty =
-        Namespaced_IRI.parse _namespace_name "liberalUnionistParty" |> NamespacedName
-
+    let liberalUnionistParty = _prefix "liberalUnionistParty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#linguist"></see>
     /// </summary>
-    let linguist = Namespaced_IRI.parse _namespace_name "linguist" |> NamespacedName
-
+    let linguist = _prefix "linguist"
     /// <summary>
     /// Deprecated, with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#literalForm"></see></summary>
-    let literalForm =
-        Namespaced_IRI.parse _namespace_name "literalForm" |> NamespacedName
-
+    let literalForm = _prefix "literalForm"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryAgent"></see>
     /// </summary>
-    let literaryAgent =
-        Namespaced_IRI.parse _namespace_name "literaryAgent" |> NamespacedName
-
+    let literaryAgent = _prefix "literaryAgent"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryAssistant"></see>
     /// </summary>
-    let literaryAssistant =
-        Namespaced_IRI.parse _namespace_name "literaryAssistant" |> NamespacedName
-
+    let literaryAssistant = _prefix "literaryAssistant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryConservationist"></see>
     /// </summary>
-    let literaryConservationist =
-        Namespaced_IRI.parse _namespace_name "literaryConservationist" |> NamespacedName
-
+    let literaryConservationist = _prefix "literaryConservationist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryExecutor"></see>
     /// </summary>
-    let literaryExecutor =
-        Namespaced_IRI.parse _namespace_name "literaryExecutor" |> NamespacedName
-
+    let literaryExecutor = _prefix "literaryExecutor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryForger"></see>
     /// </summary>
-    let literaryForger =
-        Namespaced_IRI.parse _namespace_name "literaryForger" |> NamespacedName
-
+    let literaryForger = _prefix "literaryForger"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryPrizeAdjudicator"></see>
     /// </summary>
-    let literaryPrizeAdjudicator =
-        Namespaced_IRI.parse _namespace_name "literaryPrizeAdjudicator" |> NamespacedName
-
+    let literaryPrizeAdjudicator = _prefix "literaryPrizeAdjudicator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#literaryScholar"></see>
     /// </summary>
-    let literaryScholar =
-        Namespaced_IRI.parse _namespace_name "literaryScholar" |> NamespacedName
-
+    let literaryScholar = _prefix "literaryScholar"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lithographer"></see>
     /// </summary>
-    let lithographer =
-        Namespaced_IRI.parse _namespace_name "lithographer" |> NamespacedName
-
+    let lithographer = _prefix "lithographer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#litigant"></see>
     /// </summary>
-    let litigant = Namespaced_IRI.parse _namespace_name "litigant" |> NamespacedName
+    let litigant = _prefix "litigant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lobbyist"></see>
     /// </summary>
-    let lobbyist = Namespaced_IRI.parse _namespace_name "lobbyist" |> NamespacedName
-
+    let lobbyist = _prefix "lobbyist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#localGovernment"></see>
     /// </summary>
-    let localGovernment =
-        Namespaced_IRI.parse _namespace_name "localGovernment" |> NamespacedName
-
+    let localGovernment = _prefix "localGovernment"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#locationOf"></see>
     /// </summary>
-    let locationOf = Namespaced_IRI.parse _namespace_name "locationOf" |> NamespacedName
+    let locationOf = _prefix "locationOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#logger"></see>
     /// </summary>
-    let logger = Namespaced_IRI.parse _namespace_name "logger" |> NamespacedName
+    let logger = _prefix "logger"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#lollardy" title="#lollardy"&gt;Lollardy&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#lollards"></see></summary>
-    let lollards = Namespaced_IRI.parse _namespace_name "lollards" |> NamespacedName
+    let lollards = _prefix "lollards"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#lollardy"></see></summary>
-    let lollardy = Namespaced_IRI.parse _namespace_name "lollardy" |> NamespacedName
-
+    let lollardy = _prefix "lollardy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lordChamberlain"></see>
     /// </summary>
-    let lordChamberlain =
-        Namespaced_IRI.parse _namespace_name "lordChamberlain" |> NamespacedName
-
+    let lordChamberlain = _prefix "lordChamberlain"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lordChancellor"></see>
     /// </summary>
-    let lordChancellor =
-        Namespaced_IRI.parse _namespace_name "lordChancellor" |> NamespacedName
-
+    let lordChancellor = _prefix "lordChancellor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lowCertainty"></see>
     /// </summary>
-    let lowCertainty =
-        Namespaced_IRI.parse _namespace_name "lowCertainty" |> NamespacedName
-
+    let lowCertainty = _prefix "lowCertainty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#lowerMiddleClass"></see>
     /// </summary>
-    let lowerMiddleClass =
-        Namespaced_IRI.parse _namespace_name "lowerMiddleClass" |> NamespacedName
-
+    let lowerMiddleClass = _prefix "lowerMiddleClass"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#middleClass"></see>
     /// </summary>
-    let middleClass =
-        Namespaced_IRI.parse _namespace_name "middleClass" |> NamespacedName
-
+    let middleClass = _prefix "middleClass"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#machineWork"></see>
     /// </summary>
-    let machineWork =
-        Namespaced_IRI.parse _namespace_name "machineWork" |> NamespacedName
-
+    let machineWork = _prefix "machineWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#madeAlteration"></see>
     /// </summary>
-    let madeAlteration =
-        Namespaced_IRI.parse _namespace_name "madeAlteration" |> NamespacedName
-
+    let madeAlteration = _prefix "madeAlteration"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#magistrate"></see>
     /// </summary>
-    let magistrate = Namespaced_IRI.parse _namespace_name "magistrate" |> NamespacedName
-
+    let magistrate = _prefix "magistrate"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#maidOfHonour"></see>
     /// </summary>
-    let maidOfHonour =
-        Namespaced_IRI.parse _namespace_name "maidOfHonour" |> NamespacedName
-
+    let maidOfHonour = _prefix "maidOfHonour"
     /// <summary>
     /// Deprecated with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#maleLabel"></see></summary>
-    let maleLabel = Namespaced_IRI.parse _namespace_name "maleLabel" |> NamespacedName
+    let maleLabel = _prefix "maleLabel"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#genderManMale" title="#genderManMale"&gt;man/male&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#maleSex"></see></summary>
-    let maleSex = Namespaced_IRI.parse _namespace_name "maleSex" |> NamespacedName
-
+    let maleSex = _prefix "maleSex"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#malthusianism"></see></summary>
-    let malthusianism =
-        Namespaced_IRI.parse _namespace_name "malthusianism" |> NamespacedName
-
+    let malthusianism = _prefix "malthusianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#managerial"></see>
     /// </summary>
-    let managerial = Namespaced_IRI.parse _namespace_name "managerial" |> NamespacedName
+    let managerial = _prefix "managerial"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#manservant"></see>
     /// </summary>
-    let manservant = Namespaced_IRI.parse _namespace_name "manservant" |> NamespacedName
-
+    let manservant = _prefix "manservant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#manualLabourer"></see>
     /// </summary>
-    let manualLabourer =
-        Namespaced_IRI.parse _namespace_name "manualLabourer" |> NamespacedName
-
+    let manualLabourer = _prefix "manualLabourer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#manufacturer"></see>
     /// </summary>
-    let manufacturer =
-        Namespaced_IRI.parse _namespace_name "manufacturer" |> NamespacedName
-
+    let manufacturer = _prefix "manufacturer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mapping"></see>
     /// </summary>
-    let mapping = Namespaced_IRI.parse _namespace_name "mapping" |> NamespacedName
-
+    let mapping = _prefix "mapping"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#marriageLawReform"></see></summary>
-    let marriageLawReform =
-        Namespaced_IRI.parse _namespace_name "marriageLawReform" |> NamespacedName
-
+    let marriageLawReform = _prefix "marriageLawReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#martyr"></see>
     /// </summary>
-    let martyr = Namespaced_IRI.parse _namespace_name "martyr" |> NamespacedName
+    let martyr = _prefix "martyr"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mason"></see>
     /// </summary>
-    let mason = Namespaced_IRI.parse _namespace_name "mason" |> NamespacedName
-
+    let mason = _prefix "mason"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#masterOfTheRevels"></see>
     /// </summary>
-    let masterOfTheRevels =
-        Namespaced_IRI.parse _namespace_name "masterOfTheRevels" |> NamespacedName
-
+    let masterOfTheRevels = _prefix "masterOfTheRevels"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#mastersDegree"></see></summary>
-    let mastersDegree =
-        Namespaced_IRI.parse _namespace_name "mastersDegree" |> NamespacedName
-
+    let mastersDegree = _prefix "mastersDegree"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mathematics"></see>
     /// </summary>
-    let mathematics =
-        Namespaced_IRI.parse _namespace_name "mathematics" |> NamespacedName
-
+    let mathematics = _prefix "mathematics"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#matron"></see>
     /// </summary>
-    let matron = Namespaced_IRI.parse _namespace_name "matron" |> NamespacedName
+    let matron = _prefix "matron"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mayor"></see>
     /// </summary>
-    let mayor = Namespaced_IRI.parse _namespace_name "mayor" |> NamespacedName
-
+    let mayor = _prefix "mayor"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#medicalDegree"></see></summary>
-    let medicalDegree =
-        Namespaced_IRI.parse _namespace_name "medicalDegree" |> NamespacedName
-
+    let medicalDegree = _prefix "medicalDegree"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#medicalDoctor"></see>
     /// </summary>
-    let medicalDoctor =
-        Namespaced_IRI.parse _namespace_name "medicalDoctor" |> NamespacedName
-
+    let medicalDoctor = _prefix "medicalDoctor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mediumCertainty"></see>
     /// </summary>
-    let mediumCertainty =
-        Namespaced_IRI.parse _namespace_name "mediumCertainty" |> NamespacedName
-
+    let mediumCertainty = _prefix "mediumCertainty"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#memberOfParliament"></see>
     /// </summary>
-    let memberOfParliament =
-        Namespaced_IRI.parse _namespace_name "memberOfParliament" |> NamespacedName
-
+    let memberOfParliament = _prefix "memberOfParliament"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mentalHealthProfessional"></see>
     /// </summary>
-    let mentalHealthProfessional =
-        Namespaced_IRI.parse _namespace_name "mentalHealthProfessional" |> NamespacedName
-
+    let mentalHealthProfessional = _prefix "mentalHealthProfessional"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mentor"></see>
     /// </summary>
-    let mentor = Namespaced_IRI.parse _namespace_name "mentor" |> NamespacedName
+    let mentor = _prefix "mentor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mercer"></see>
     /// </summary>
-    let mercer = Namespaced_IRI.parse _namespace_name "mercer" |> NamespacedName
-
+    let mercer = _prefix "mercer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#merchantTaylor"></see>
     /// </summary>
-    let merchantTaylor =
-        Namespaced_IRI.parse _namespace_name "merchantTaylor" |> NamespacedName
-
+    let merchantTaylor = _prefix "merchantTaylor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#metalWork"></see>
     /// </summary>
-    let metalWork = Namespaced_IRI.parse _namespace_name "metalWork" |> NamespacedName
+    let metalWork = _prefix "metalWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#metallurgy"></see>
     /// </summary>
-    let metallurgy = Namespaced_IRI.parse _namespace_name "metallurgy" |> NamespacedName
-
+    let metallurgy = _prefix "metallurgy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#meteorologist"></see>
     /// </summary>
-    let meteorologist =
-        Namespaced_IRI.parse _namespace_name "meteorologist" |> NamespacedName
-
+    let meteorologist = _prefix "meteorologist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#methodistEpiscopalian"></see></summary>
-    let methodistEpiscopalian =
-        Namespaced_IRI.parse _namespace_name "methodistEpiscopalian" |> NamespacedName
-
+    let methodistEpiscopalian = _prefix "methodistEpiscopalian"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#middleChild"></see>
     /// </summary>
-    let middleChild =
-        Namespaced_IRI.parse _namespace_name "middleChild" |> NamespacedName
-
+    let middleChild = _prefix "middleChild"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#midwife"></see>
     /// </summary>
-    let midwife = Namespaced_IRI.parse _namespace_name "midwife" |> NamespacedName
-
+    let midwife = _prefix "midwife"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#migratesFrom"></see>
     /// </summary>
-    let migratesFrom =
-        Namespaced_IRI.parse _namespace_name "migratesFrom" |> NamespacedName
-
+    let migratesFrom = _prefix "migratesFrom"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#migratesTo"></see>
     /// </summary>
-    let migratesTo = Namespaced_IRI.parse _namespace_name "migratesTo" |> NamespacedName
+    let migratesTo = _prefix "migratesTo"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#travelsTo"></see>
     /// </summary>
-    let travelsTo = Namespaced_IRI.parse _namespace_name "travelsTo" |> NamespacedName
+    let travelsTo = _prefix "travelsTo"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#militarism"></see></summary>
-    let militarism = Namespaced_IRI.parse _namespace_name "militarism" |> NamespacedName
+    let militarism = _prefix "militarism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#miller"></see>
     /// </summary>
-    let miller = Namespaced_IRI.parse _namespace_name "miller" |> NamespacedName
+    let miller = _prefix "miller"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#milliner"></see>
     /// </summary>
-    let milliner = Namespaced_IRI.parse _namespace_name "milliner" |> NamespacedName
+    let milliner = _prefix "milliner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#miner"></see>
     /// </summary>
-    let miner = Namespaced_IRI.parse _namespace_name "miner" |> NamespacedName
+    let miner = _prefix "miner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mining"></see>
     /// </summary>
-    let mining = Namespaced_IRI.parse _namespace_name "mining" |> NamespacedName
-
+    let mining = _prefix "mining"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#miscarriage"></see>
     /// </summary>
-    let miscarriage =
-        Namespaced_IRI.parse _namespace_name "miscarriage" |> NamespacedName
-
+    let miscarriage = _prefix "miscarriage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#miser"></see>
     /// </summary>
-    let miser = Namespaced_IRI.parse _namespace_name "miser" |> NamespacedName
-
+    let miser = _prefix "miser"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#missionaryWork"></see>
     /// </summary>
-    let missionaryWork =
-        Namespaced_IRI.parse _namespace_name "missionaryWork" |> NamespacedName
-
+    let missionaryWork = _prefix "missionaryWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#religious"></see>
     /// </summary>
-    let religious = Namespaced_IRI.parse _namespace_name "religious" |> NamespacedName
+    let religious = _prefix "religious"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mistress"></see>
     /// </summary>
-    let mistress = Namespaced_IRI.parse _namespace_name "mistress" |> NamespacedName
+    let mistress = _prefix "mistress"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexWorker"></see>
     /// </summary>
-    let sexWorker = Namespaced_IRI.parse _namespace_name "sexWorker" |> NamespacedName
-
+    let sexWorker = _prefix "sexWorker"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#mixedRaceColour"></see></summary>
-    let mixedRaceColour =
-        Namespaced_IRI.parse _namespace_name "mixedRaceColour" |> NamespacedName
-
+    let mixedRaceColour = _prefix "mixedRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#whiteLabel"></see>
     /// </summary>
-    let whiteLabel = Namespaced_IRI.parse _namespace_name "whiteLabel" |> NamespacedName
+    let whiteLabel = _prefix "whiteLabel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#model"></see>
     /// </summary>
-    let model = Namespaced_IRI.parse _namespace_name "model" |> NamespacedName
-
+    let model = _prefix "model"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#mohawkNationalHeritage"></see></summary>
-    let mohawkNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "mohawkNationalHeritage" |> NamespacedName
-
+    let mohawkNationalHeritage = _prefix "mohawkNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mohawkNationalIdentity"></see>
     /// </summary>
-    let mohawkNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "mohawkNationalIdentity" |> NamespacedName
-
+    let mohawkNationalIdentity = _prefix "mohawkNationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#monarch"></see>
     /// </summary>
-    let monarch = Namespaced_IRI.parse _namespace_name "monarch" |> NamespacedName
+    let monarch = _prefix "monarch"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#monism"></see></summary>
-    let monism = Namespaced_IRI.parse _namespace_name "monism" |> NamespacedName
+    let monism = _prefix "monism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#moravian"></see></summary>
-    let moravian = Namespaced_IRI.parse _namespace_name "moravian" |> NamespacedName
+    let moravian = _prefix "moravian"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#motherOf"></see>
     /// </summary>
-    let motherOf = Namespaced_IRI.parse _namespace_name "motherOf" |> NamespacedName
-
+    let motherOf = _prefix "motherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#mountaineering"></see>
     /// </summary>
-    let mountaineering =
-        Namespaced_IRI.parse _namespace_name "mountaineering" |> NamespacedName
-
+    let mountaineering = _prefix "mountaineering"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#multiculturalism"></see></summary>
-    let multiculturalism =
-        Namespaced_IRI.parse _namespace_name "multiculturalism" |> NamespacedName
-
+    let multiculturalism = _prefix "multiculturalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#multiracialism"></see></summary>
-    let multiracialism =
-        Namespaced_IRI.parse _namespace_name "multiracialism" |> NamespacedName
-
+    let multiracialism = _prefix "multiracialism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#munitionsWorker"></see>
     /// </summary>
-    let munitionsWorker =
-        Namespaced_IRI.parse _namespace_name "munitionsWorker" |> NamespacedName
-
+    let munitionsWorker = _prefix "munitionsWorker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#performer"></see>
     /// </summary>
-    let performer = Namespaced_IRI.parse _namespace_name "performer" |> NamespacedName
-
+    let performer = _prefix "performer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#musicologist"></see>
     /// </summary>
-    let musicologist =
-        Namespaced_IRI.parse _namespace_name "musicologist" |> NamespacedName
-
+    let musicologist = _prefix "musicologist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#mysticism"></see></summary>
-    let mysticism = Namespaced_IRI.parse _namespace_name "mysticism" |> NamespacedName
+    let mysticism = _prefix "mysticism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#patriotism"></see></summary>
-    let patriotism = Namespaced_IRI.parse _namespace_name "patriotism" |> NamespacedName
-
+    let patriotism = _prefix "patriotism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#naturalReligion"></see></summary>
-    let naturalReligion =
-        Namespaced_IRI.parse _namespace_name "naturalReligion" |> NamespacedName
-
+    let naturalReligion = _prefix "naturalReligion"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#naturalist"></see>
     /// </summary>
-    let naturalist = Namespaced_IRI.parse _namespace_name "naturalist" |> NamespacedName
+    let naturalist = _prefix "naturalist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#navy"></see>
     /// </summary>
-    let navy = Namespaced_IRI.parse _namespace_name "navy" |> NamespacedName
+    let navy = _prefix "navy"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#nazism"></see></summary>
-    let nazism = Namespaced_IRI.parse _namespace_name "nazism" |> NamespacedName
+    let nazism = _prefix "nazism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#needlework"></see>
     /// </summary>
-    let needlework = Namespaced_IRI.parse _namespace_name "needlework" |> NamespacedName
-
+    let needlework = _prefix "needlework"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#neo-thomism"></see>
     /// </summary>
-    let ``neo-thomism`` =
-        Namespaced_IRI.parse _namespace_name "neo-thomism" |> NamespacedName
-
+    let ``neo-thomism`` = _prefix "neo-thomism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nephewOf"></see>
     /// </summary>
-    let nephewOf = Namespaced_IRI.parse _namespace_name "nephewOf" |> NamespacedName
+    let nephewOf = _prefix "nephewOf"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#newDealer"></see></summary>
-    let newDealer = Namespaced_IRI.parse _namespace_name "newDealer" |> NamespacedName
+    let newDealer = _prefix "newDealer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#newThought"></see></summary>
-    let newThought = Namespaced_IRI.parse _namespace_name "newThought" |> NamespacedName
-
+    let newThought = _prefix "newThought"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#newUnionism"></see></summary>
-    let newUnionism =
-        Namespaced_IRI.parse _namespace_name "newUnionism" |> NamespacedName
-
+    let newUnionism = _prefix "newUnionism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nieceOf"></see>
     /// </summary>
-    let nieceOf = Namespaced_IRI.parse _namespace_name "nieceOf" |> NamespacedName
+    let nieceOf = _prefix "nieceOf"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#nihilism"></see></summary>
-    let nihilism = Namespaced_IRI.parse _namespace_name "nihilism" |> NamespacedName
+    let nihilism = _prefix "nihilism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nobility"></see>
     /// </summary>
-    let nobility = Namespaced_IRI.parse _namespace_name "nobility" |> NamespacedName
-
+    let nobility = _prefix "nobility"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#nonjurorsMovement"></see></summary>
-    let nonjurorsMovement =
-        Namespaced_IRI.parse _namespace_name "nonjurorsMovement" |> NamespacedName
-
+    let nonjurorsMovement = _prefix "nonjurorsMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#normanNationalHeritage"></see></summary>
-    let normanNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "normanNationalHeritage" |> NamespacedName
-
+    let normanNationalHeritage = _prefix "normanNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#numismatist"></see>
     /// </summary>
-    let numismatist =
-        Namespaced_IRI.parse _namespace_name "numismatist" |> NamespacedName
-
+    let numismatist = _prefix "numismatist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nun"></see>
     /// </summary>
-    let nun = Namespaced_IRI.parse _namespace_name "nun" |> NamespacedName
+    let nun = _prefix "nun"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#nursing"></see>
     /// </summary>
-    let nursing = Namespaced_IRI.parse _namespace_name "nursing" |> NamespacedName
+    let nursing = _prefix "nursing"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#obeah"></see></summary>
-    let obeah = Namespaced_IRI.parse _namespace_name "obeah" |> NamespacedName
+    let obeah = _prefix "obeah"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#occultism"></see>
     /// </summary>
-    let occultism = Namespaced_IRI.parse _namespace_name "occultism" |> NamespacedName
+    let occultism = _prefix "occultism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#onlyChild"></see>
     /// </summary>
-    let onlyChild = Namespaced_IRI.parse _namespace_name "onlyChild" |> NamespacedName
-
+    let onlyChild = _prefix "onlyChild"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#oppositionPolitics"></see></summary>
-    let oppositionPolitics =
-        Namespaced_IRI.parse _namespace_name "oppositionPolitics" |> NamespacedName
-
+    let oppositionPolitics = _prefix "oppositionPolitics"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#optician"></see>
     /// </summary>
-    let optician = Namespaced_IRI.parse _namespace_name "optician" |> NamespacedName
+    let optician = _prefix "optician"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#orderly"></see>
     /// </summary>
-    let orderly = Namespaced_IRI.parse _namespace_name "orderly" |> NamespacedName
-
+    let orderly = _prefix "orderly"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#orphanageWork"></see>
     /// </summary>
-    let orphanageWork =
-        Namespaced_IRI.parse _namespace_name "orphanageWork" |> NamespacedName
-
+    let orphanageWork = _prefix "orphanageWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialWork"></see>
     /// </summary>
-    let socialWork = Namespaced_IRI.parse _namespace_name "socialWork" |> NamespacedName
+    let socialWork = _prefix "socialWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pacifist"></see>
     /// </summary>
-    let pacifist = Namespaced_IRI.parse _namespace_name "pacifist" |> NamespacedName
+    let pacifist = _prefix "pacifist"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#paganism" title="#paganism"&gt;Paganism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pagan"></see></summary>
-    let pagan = Namespaced_IRI.parse _namespace_name "pagan" |> NamespacedName
+    let pagan = _prefix "pagan"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#paganism"></see></summary>
-    let paganism = Namespaced_IRI.parse _namespace_name "paganism" |> NamespacedName
+    let paganism = _prefix "paganism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pantheism"></see></summary>
-    let pantheism = Namespaced_IRI.parse _namespace_name "pantheism" |> NamespacedName
+    let pantheism = _prefix "pantheism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#parishWork"></see>
     /// </summary>
-    let parishWork = Namespaced_IRI.parse _namespace_name "parishWork" |> NamespacedName
-
+    let parishWork = _prefix "parishWork"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#parliamentarianism"></see></summary>
-    let parliamentarianism =
-        Namespaced_IRI.parse _namespace_name "parliamentarianism" |> NamespacedName
-
+    let parliamentarianism = _prefix "parliamentarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#parliamentaryReform"></see></summary>
-    let parliamentaryReform =
-        Namespaced_IRI.parse _namespace_name "parliamentaryReform" |> NamespacedName
-
+    let parliamentaryReform = _prefix "parliamentaryReform"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#parsiEthnicity"></see></summary>
-    let parsiEthnicity =
-        Namespaced_IRI.parse _namespace_name "parsiEthnicity" |> NamespacedName
-
+    let parsiEthnicity = _prefix "parsiEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#participantOf"></see>
     /// </summary>
-    let participantOf =
-        Namespaced_IRI.parse _namespace_name "participantOf" |> NamespacedName
-
+    let participantOf = _prefix "participantOf"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#paternalism"></see></summary>
-    let paternalism =
-        Namespaced_IRI.parse _namespace_name "paternalism" |> NamespacedName
-
+    let paternalism = _prefix "paternalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#patriot"></see>
     /// </summary>
-    let patriot = Namespaced_IRI.parse _namespace_name "patriot" |> NamespacedName
+    let patriot = _prefix "patriot"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#patron"></see>
     /// </summary>
-    let patron = Namespaced_IRI.parse _namespace_name "patron" |> NamespacedName
+    let patron = _prefix "patron"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pawnbroker"></see>
     /// </summary>
-    let pawnbroker = Namespaced_IRI.parse _namespace_name "pawnbroker" |> NamespacedName
-
+    let pawnbroker = _prefix "pawnbroker"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#pentecostalism"></see></summary>
-    let pentecostalism =
-        Namespaced_IRI.parse _namespace_name "pentecostalism" |> NamespacedName
-
+    let pentecostalism = _prefix "pentecostalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#personaOf"></see>
     /// </summary>
-    let personaOf = Namespaced_IRI.parse _namespace_name "personaOf" |> NamespacedName
-
+    let personaOf = _prefix "personaOf"
     /// <summary>
     /// Deprecated, with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#personalPropertySelfReported"></see></summary>
-    let personalPropertySelfReported =
-        Namespaced_IRI.parse _namespace_name "personalPropertySelfReported" |> NamespacedName
-
+    let personalPropertySelfReported = _prefix "personalPropertySelfReported"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pharmacist"></see>
     /// </summary>
-    let pharmacist = Namespaced_IRI.parse _namespace_name "pharmacist" |> NamespacedName
-
+    let pharmacist = _prefix "pharmacist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#philanthropicVisitor"></see>
     /// </summary>
-    let philanthropicVisitor =
-        Namespaced_IRI.parse _namespace_name "philanthropicVisitor" |> NamespacedName
-
+    let philanthropicVisitor = _prefix "philanthropicVisitor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#philosopher"></see>
     /// </summary>
-    let philosopher =
-        Namespaced_IRI.parse _namespace_name "philosopher" |> NamespacedName
-
+    let philosopher = _prefix "philosopher"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#philosophicalRadicals"></see></summary>
-    let philosophicalRadicals =
-        Namespaced_IRI.parse _namespace_name "philosophicalRadicals" |> NamespacedName
-
+    let philosophicalRadicals = _prefix "philosophicalRadicals"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#photography"></see>
     /// </summary>
-    let photography =
-        Namespaced_IRI.parse _namespace_name "photography" |> NamespacedName
-
+    let photography = _prefix "photography"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#physiognomist"></see>
     /// </summary>
-    let physiognomist =
-        Namespaced_IRI.parse _namespace_name "physiognomist" |> NamespacedName
-
+    let physiognomist = _prefix "physiognomist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#plumber"></see>
     /// </summary>
-    let plumber = Namespaced_IRI.parse _namespace_name "plumber" |> NamespacedName
-
+    let plumber = _prefix "plumber"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#plymouthBrethren"></see></summary>
-    let plymouthBrethren =
-        Namespaced_IRI.parse _namespace_name "plymouthBrethren" |> NamespacedName
-
+    let plymouthBrethren = _prefix "plymouthBrethren"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#poetLaureate"></see>
     /// </summary>
-    let poetLaureate =
-        Namespaced_IRI.parse _namespace_name "poetLaureate" |> NamespacedName
-
+    let poetLaureate = _prefix "poetLaureate"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#polishNationalism"></see></summary>
-    let polishNationalism =
-        Namespaced_IRI.parse _namespace_name "polishNationalism" |> NamespacedName
-
+    let polishNationalism = _prefix "polishNationalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politicalHost"></see>
     /// </summary>
-    let politicalHost =
-        Namespaced_IRI.parse _namespace_name "politicalHost" |> NamespacedName
-
+    let politicalHost = _prefix "politicalHost"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politicalScience"></see>
     /// </summary>
-    let politicalScience =
-        Namespaced_IRI.parse _namespace_name "politicalScience" |> NamespacedName
-
+    let politicalScience = _prefix "politicalScience"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#politicalSpeaker"></see>
     /// </summary>
-    let politicalSpeaker =
-        Namespaced_IRI.parse _namespace_name "politicalSpeaker" |> NamespacedName
-
+    let politicalSpeaker = _prefix "politicalSpeaker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#publicSpeaker"></see>
     /// </summary>
-    let publicSpeaker =
-        Namespaced_IRI.parse _namespace_name "publicSpeaker" |> NamespacedName
-
+    let publicSpeaker = _prefix "publicSpeaker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pollster"></see>
     /// </summary>
-    let pollster = Namespaced_IRI.parse _namespace_name "pollster" |> NamespacedName
-
+    let pollster = _prefix "pollster"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#poorAdvocacy"></see></summary>
-    let poorAdvocacy =
-        Namespaced_IRI.parse _namespace_name "poorAdvocacy" |> NamespacedName
-
+    let poorAdvocacy = _prefix "poorAdvocacy"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#poorLawReform"></see></summary>
-    let poorLawReform =
-        Namespaced_IRI.parse _namespace_name "poorLawReform" |> NamespacedName
-
+    let poorLawReform = _prefix "poorLawReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pornographer"></see>
     /// </summary>
-    let pornographer =
-        Namespaced_IRI.parse _namespace_name "pornographer" |> NamespacedName
-
+    let pornographer = _prefix "pornographer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#postalWorker"></see>
     /// </summary>
-    let postalWorker =
-        Namespaced_IRI.parse _namespace_name "postalWorker" |> NamespacedName
-
+    let postalWorker = _prefix "postalWorker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#pottery"></see>
     /// </summary>
-    let pottery = Namespaced_IRI.parse _namespace_name "pottery" |> NamespacedName
-
+    let pottery = _prefix "pottery"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#preferredBy"></see>
     /// </summary>
-    let preferredBy =
-        Namespaced_IRI.parse _namespace_name "preferredBy" |> NamespacedName
-
+    let preferredBy = _prefix "preferredBy"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#presbyterianism"></see></summary>
-    let presbyterianism =
-        Namespaced_IRI.parse _namespace_name "presbyterianism" |> NamespacedName
-
+    let presbyterianism = _prefix "presbyterianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#printing"></see>
     /// </summary>
-    let printing = Namespaced_IRI.parse _namespace_name "printing" |> NamespacedName
-
+    let printing = _prefix "printing"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#prisonReform"></see></summary>
-    let prisonReform =
-        Namespaced_IRI.parse _namespace_name "prisonReform" |> NamespacedName
-
+    let prisonReform = _prefix "prisonReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#prisoner"></see>
     /// </summary>
-    let prisoner = Namespaced_IRI.parse _namespace_name "prisoner" |> NamespacedName
+    let prisoner = _prefix "prisoner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#producer"></see>
     /// </summary>
-    let producer = Namespaced_IRI.parse _namespace_name "producer" |> NamespacedName
-
+    let producer = _prefix "producer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#professional"></see>
     /// </summary>
-    let professional =
-        Namespaced_IRI.parse _namespace_name "professional" |> NamespacedName
-
+    let professional = _prefix "professional"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#professor"></see>
     /// </summary>
-    let professor = Namespaced_IRI.parse _namespace_name "professor" |> NamespacedName
-
+    let professor = _prefix "professor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#propagandist"></see>
     /// </summary>
-    let propagandist =
-        Namespaced_IRI.parse _namespace_name "propagandist" |> NamespacedName
-
+    let propagandist = _prefix "propagandist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#propertyAgent"></see>
     /// </summary>
-    let propertyAgent =
-        Namespaced_IRI.parse _namespace_name "propertyAgent" |> NamespacedName
-
+    let propertyAgent = _prefix "propertyAgent"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#propertyLawReform"></see></summary>
-    let propertyLawReform =
-        Namespaced_IRI.parse _namespace_name "propertyLawReform" |> NamespacedName
-
+    let propertyLawReform = _prefix "propertyLawReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#propertyOwner"></see>
     /// </summary>
-    let propertyOwner =
-        Namespaced_IRI.parse _namespace_name "propertyOwner" |> NamespacedName
-
+    let propertyOwner = _prefix "propertyOwner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#prophet"></see>
     /// </summary>
-    let prophet = Namespaced_IRI.parse _namespace_name "prophet" |> NamespacedName
+    let prophet = _prefix "prophet"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#prospector"></see>
     /// </summary>
-    let prospector = Namespaced_IRI.parse _namespace_name "prospector" |> NamespacedName
-
+    let prospector = _prefix "prospector"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#protestantRule"></see></summary>
-    let protestantRule =
-        Namespaced_IRI.parse _namespace_name "protestantRule" |> NamespacedName
-
+    let protestantRule = _prefix "protestantRule"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#protoZionism"></see></summary>
-    let protoZionism =
-        Namespaced_IRI.parse _namespace_name "protoZionism" |> NamespacedName
-
+    let protoZionism = _prefix "protoZionism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#publicReader"></see>
     /// </summary>
-    let publicReader =
-        Namespaced_IRI.parse _namespace_name "publicReader" |> NamespacedName
-
+    let publicReader = _prefix "publicReader"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#punjabiEthnicity"></see></summary>
-    let punjabiEthnicity =
-        Namespaced_IRI.parse _namespace_name "punjabiEthnicity" |> NamespacedName
-
+    let punjabiEthnicity = _prefix "punjabiEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#puritanism"></see></summary>
-    let puritanism = Namespaced_IRI.parse _namespace_name "puritanism" |> NamespacedName
+    let puritanism = _prefix "puritanism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#quakerism"></see></summary>
-    let quakerism = Namespaced_IRI.parse _namespace_name "quakerism" |> NamespacedName
+    let quakerism = _prefix "quakerism"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#quakerism" title="#quakerism"&gt;Quakerism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#quakers"></see></summary>
-    let quakers = Namespaced_IRI.parse _namespace_name "quakers" |> NamespacedName
+    let quakers = _prefix "quakers"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#radicalism"></see></summary>
-    let radicalism = Namespaced_IRI.parse _namespace_name "radicalism" |> NamespacedName
-
+    let radicalism = _prefix "radicalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#radioIndustry"></see>
     /// </summary>
-    let radioIndustry =
-        Namespaced_IRI.parse _namespace_name "radioIndustry" |> NamespacedName
-
+    let radioIndustry = _prefix "radioIndustry"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#radioOperator"></see>
     /// </summary>
-    let radioOperator =
-        Namespaced_IRI.parse _namespace_name "radioOperator" |> NamespacedName
-
+    let radioOperator = _prefix "radioOperator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#railwayWork"></see>
     /// </summary>
-    let railwayWork =
-        Namespaced_IRI.parse _namespace_name "railwayWork" |> NamespacedName
-
+    let railwayWork = _prefix "railwayWork"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#dissentingChristianity" title="#dissentingChristianity"&gt;Dissenting Christianity&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#rationalDissenter"></see></summary>
-    let rationalDissenter =
-        Namespaced_IRI.parse _namespace_name "rationalDissenter" |> NamespacedName
-
+    let rationalDissenter = _prefix "rationalDissenter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#reading"></see>
     /// </summary>
-    let reading = Namespaced_IRI.parse _namespace_name "reading" |> NamespacedName
+    let reading = _prefix "reading"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#rebel"></see>
     /// </summary>
-    let rebel = Namespaced_IRI.parse _namespace_name "rebel" |> NamespacedName
+    let rebel = _prefix "rebel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#redCross"></see>
     /// </summary>
-    let redCross = Namespaced_IRI.parse _namespace_name "redCross" |> NamespacedName
+    let redCross = _prefix "redCross"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#reformer"></see>
     /// </summary>
-    let reformer = Namespaced_IRI.parse _namespace_name "reformer" |> NamespacedName
+    let reformer = _prefix "reformer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#refugee"></see>
     /// </summary>
-    let refugee = Namespaced_IRI.parse _namespace_name "refugee" |> NamespacedName
-
+    let refugee = _prefix "refugee"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#refugeeWork"></see>
     /// </summary>
-    let refugeeWork =
-        Namespaced_IRI.parse _namespace_name "refugeeWork" |> NamespacedName
-
+    let refugeeWork = _prefix "refugeeWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#regionalGovernment"></see>
     /// </summary>
-    let regionalGovernment =
-        Namespaced_IRI.parse _namespace_name "regionalGovernment" |> NamespacedName
-
+    let regionalGovernment = _prefix "regionalGovernment"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#reincarnation"></see></summary>
-    let reincarnation =
-        Namespaced_IRI.parse _namespace_name "reincarnation" |> NamespacedName
-
+    let reincarnation = _prefix "reincarnation"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#spiritualism"></see></summary>
-    let spiritualism =
-        Namespaced_IRI.parse _namespace_name "spiritualism" |> NamespacedName
-
+    let spiritualism = _prefix "spiritualism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#reliefWork"></see>
     /// </summary>
-    let reliefWork = Namespaced_IRI.parse _namespace_name "reliefWork" |> NamespacedName
-
+    let reliefWork = _prefix "reliefWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#religiousOfficial"></see>
     /// </summary>
-    let religiousOfficial =
-        Namespaced_IRI.parse _namespace_name "religiousOfficial" |> NamespacedName
-
+    let religiousOfficial = _prefix "religiousOfficial"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#religiousStudies"></see>
     /// </summary>
-    let religiousStudies =
-        Namespaced_IRI.parse _namespace_name "religiousStudies" |> NamespacedName
-
+    let religiousStudies = _prefix "religiousStudies"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#relocatesTo"></see>
     /// </summary>
-    let relocatesTo =
-        Namespaced_IRI.parse _namespace_name "relocatesTo" |> NamespacedName
-
+    let relocatesTo = _prefix "relocatesTo"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#rescueWork"></see>
     /// </summary>
-    let rescueWork = Namespaced_IRI.parse _namespace_name "rescueWork" |> NamespacedName
+    let rescueWork = _prefix "rescueWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#researcher"></see>
     /// </summary>
-    let researcher = Namespaced_IRI.parse _namespace_name "researcher" |> NamespacedName
+    let researcher = _prefix "researcher"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#retail"></see>
     /// </summary>
-    let retail = Namespaced_IRI.parse _namespace_name "retail" |> NamespacedName
+    let retail = _prefix "retail"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#reviewer"></see>
     /// </summary>
-    let reviewer = Namespaced_IRI.parse _namespace_name "reviewer" |> NamespacedName
+    let reviewer = _prefix "reviewer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#riding"></see>
     /// </summary>
-    let riding = Namespaced_IRI.parse _namespace_name "riding" |> NamespacedName
-
+    let riding = _prefix "riding"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#romaniEthnicity"></see></summary>
-    let romaniEthnicity =
-        Namespaced_IRI.parse _namespace_name "romaniEthnicity" |> NamespacedName
-
+    let romaniEthnicity = _prefix "romaniEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#rosicrucianism"></see></summary>
-    let rosicrucianism =
-        Namespaced_IRI.parse _namespace_name "rosicrucianism" |> NamespacedName
-
+    let rosicrucianism = _prefix "rosicrucianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#rural-unskilled"></see>
     /// </summary>
-    let ``rural-unskilled`` =
-        Namespaced_IRI.parse _namespace_name "rural-unskilled" |> NamespacedName
-
+    let ``rural-unskilled`` = _prefix "rural-unskilled"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#sabbatarianism"></see></summary>
-    let sabbatarianism =
-        Namespaced_IRI.parse _namespace_name "sabbatarianism" |> NamespacedName
-
+    let sabbatarianism = _prefix "sabbatarianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sailor"></see>
     /// </summary>
-    let sailor = Namespaced_IRI.parse _namespace_name "sailor" |> NamespacedName
+    let sailor = _prefix "sailor"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#saint"></see>
     /// </summary>
-    let saint = Namespaced_IRI.parse _namespace_name "saint" |> NamespacedName
-
+    let saint = _prefix "saint"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#salesperson"></see>
     /// </summary>
-    let salesperson =
-        Namespaced_IRI.parse _namespace_name "salesperson" |> NamespacedName
-
+    let salesperson = _prefix "salesperson"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#salter"></see>
     /// </summary>
-    let salter = Namespaced_IRI.parse _namespace_name "salter" |> NamespacedName
-
+    let salter = _prefix "salter"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#sanitaryMovement"></see></summary>
-    let sanitaryMovement =
-        Namespaced_IRI.parse _namespace_name "sanitaryMovement" |> NamespacedName
-
+    let sanitaryMovement = _prefix "sanitaryMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#urbanReform"></see></summary>
-    let urbanReform =
-        Namespaced_IRI.parse _namespace_name "urbanReform" |> NamespacedName
-
+    let urbanReform = _prefix "urbanReform"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#saxonNationalIdentity"></see>
     /// </summary>
-    let saxonNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "saxonNationalIdentity" |> NamespacedName
-
+    let saxonNationalIdentity = _prefix "saxonNationalIdentity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#scottishNationalism"></see></summary>
-    let scottishNationalism =
-        Namespaced_IRI.parse _namespace_name "scottishNationalism" |> NamespacedName
-
+    let scottishNationalism = _prefix "scottishNationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#scottishRaceColour"></see></summary>
-    let scottishRaceColour =
-        Namespaced_IRI.parse _namespace_name "scottishRaceColour" |> NamespacedName
-
+    let scottishRaceColour = _prefix "scottishRaceColour"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#seaCaptain"></see>
     /// </summary>
-    let seaCaptain = Namespaced_IRI.parse _namespace_name "seaCaptain" |> NamespacedName
-
+    let seaCaptain = _prefix "seaCaptain"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#secondarySchoolDiploma"></see>
     /// </summary>
-    let secondarySchoolDiploma =
-        Namespaced_IRI.parse _namespace_name "secondarySchoolDiploma" |> NamespacedName
-
+    let secondarySchoolDiploma = _prefix "secondarySchoolDiploma"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#seekers"></see></summary>
-    let seekers = Namespaced_IRI.parse _namespace_name "seekers" |> NamespacedName
+    let seekers = _prefix "seekers"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#separatism"></see></summary>
-    let separatism = Namespaced_IRI.parse _namespace_name "separatism" |> NamespacedName
-
+    let separatism = _prefix "separatism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#sephardicJewishEthnicity"></see></summary>
-    let sephardicJewishEthnicity =
-        Namespaced_IRI.parse _namespace_name "sephardicJewishEthnicity" |> NamespacedName
-
+    let sephardicJewishEthnicity = _prefix "sephardicJewishEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sephardicJewishNationalIdentity"></see>
     /// </summary>
-    let sephardicJewishNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "sephardicJewishNationalIdentity" |> NamespacedName
-
+    let sephardicJewishNationalIdentity = _prefix "sephardicJewishNationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#servants"></see>
     /// </summary>
-    let servants = Namespaced_IRI.parse _namespace_name "servants" |> NamespacedName
+    let servants = _prefix "servants"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#server"></see>
     /// </summary>
-    let server = Namespaced_IRI.parse _namespace_name "server" |> NamespacedName
-
+    let server = _prefix "server"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#settlementWork"></see>
     /// </summary>
-    let settlementWork =
-        Namespaced_IRI.parse _namespace_name "settlementWork" |> NamespacedName
-
+    let settlementWork = _prefix "settlementWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#settler"></see>
     /// </summary>
-    let settler = Namespaced_IRI.parse _namespace_name "settler" |> NamespacedName
-
+    let settler = _prefix "settler"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialPurity"></see></summary>
-    let socialPurity =
-        Namespaced_IRI.parse _namespace_name "socialPurity" |> NamespacedName
-
+    let socialPurity = _prefix "socialPurity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityBisexuality"></see>
     /// </summary>
-    let sexualityBisexuality =
-        Namespaced_IRI.parse _namespace_name "sexualityBisexuality" |> NamespacedName
-
+    let sexualityBisexuality = _prefix "sexualityBisexuality"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityCelibacy"></see>
     /// </summary>
-    let sexualityCelibacy =
-        Namespaced_IRI.parse _namespace_name "sexualityCelibacy" |> NamespacedName
-
+    let sexualityCelibacy = _prefix "sexualityCelibacy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityFrigidity"></see>
     /// </summary>
-    let sexualityFrigidity =
-        Namespaced_IRI.parse _namespace_name "sexualityFrigidity" |> NamespacedName
-
+    let sexualityFrigidity = _prefix "sexualityFrigidity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityLibertinism"></see>
     /// </summary>
-    let sexualityLibertinism =
-        Namespaced_IRI.parse _namespace_name "sexualityLibertinism" |> NamespacedName
-
+    let sexualityLibertinism = _prefix "sexualityLibertinism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sexualityPromiscuity"></see>
     /// </summary>
-    let sexualityPromiscuity =
-        Namespaced_IRI.parse _namespace_name "sexualityPromiscuity" |> NamespacedName
-
+    let sexualityPromiscuity = _prefix "sexualityPromiscuity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#shinto"></see></summary>
-    let shinto = Namespaced_IRI.parse _namespace_name "shinto" |> NamespacedName
+    let shinto = _prefix "shinto"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#shipping"></see>
     /// </summary>
-    let shipping = Namespaced_IRI.parse _namespace_name "shipping" |> NamespacedName
-
+    let shipping = _prefix "shipping"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#shopkeepers"></see>
     /// </summary>
-    let shopkeepers =
-        Namespaced_IRI.parse _namespace_name "shopkeepers" |> NamespacedName
-
+    let shopkeepers = _prefix "shopkeepers"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#singer"></see>
     /// </summary>
-    let singer = Namespaced_IRI.parse _namespace_name "singer" |> NamespacedName
-
+    let singer = _prefix "singer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#skilledCraftpersonArtisan"></see>
     /// </summary>
-    let skilledCraftpersonArtisan =
-        Namespaced_IRI.parse _namespace_name "skilledCraftpersonArtisan" |> NamespacedName
-
+    let skilledCraftpersonArtisan = _prefix "skilledCraftpersonArtisan"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#skinner"></see>
     /// </summary>
-    let skinner = Namespaced_IRI.parse _namespace_name "skinner" |> NamespacedName
-
+    let skinner = _prefix "skinner"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#slavEthnicity"></see></summary>
-    let slavEthnicity =
-        Namespaced_IRI.parse _namespace_name "slavEthnicity" |> NamespacedName
-
+    let slavEthnicity = _prefix "slavEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#slave"></see>
     /// </summary>
-    let slave = Namespaced_IRI.parse _namespace_name "slave" |> NamespacedName
-
+    let slave = _prefix "slave"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#slave-forced-labourer"></see>
     /// </summary>
-    let ``slave-forced-labourer`` =
-        Namespaced_IRI.parse _namespace_name "slave-forced-labourer" |> NamespacedName
-
+    let ``slave-forced-labourer`` = _prefix "slave-forced-labourer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#slaveOwner"></see>
     /// </summary>
-    let slaveOwner = Namespaced_IRI.parse _namespace_name "slaveOwner" |> NamespacedName
+    let slaveOwner = _prefix "slaveOwner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#slaver"></see>
     /// </summary>
-    let slaver = Namespaced_IRI.parse _namespace_name "slaver" |> NamespacedName
+    let slaver = _prefix "slaver"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#smuggler"></see>
     /// </summary>
-    let smuggler = Namespaced_IRI.parse _namespace_name "smuggler" |> NamespacedName
-
+    let smuggler = _prefix "smuggler"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialGospel"></see></summary>
-    let socialGospel =
-        Namespaced_IRI.parse _namespace_name "socialGospel" |> NamespacedName
-
+    let socialGospel = _prefix "socialGospel"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#socialScientist"></see>
     /// </summary>
-    let socialScientist =
-        Namespaced_IRI.parse _namespace_name "socialScientist" |> NamespacedName
-
+    let socialScientist = _prefix "socialScientist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#socializer"></see>
     /// </summary>
-    let socializer = Namespaced_IRI.parse _namespace_name "socializer" |> NamespacedName
-
+    let socializer = _prefix "socializer"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#societyOfFriends"></see></summary>
-    let societyOfFriends =
-        Namespaced_IRI.parse _namespace_name "societyOfFriends" |> NamespacedName
-
+    let societyOfFriends = _prefix "societyOfFriends"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#socinianism"></see></summary>
-    let socinianism =
-        Namespaced_IRI.parse _namespace_name "socinianism" |> NamespacedName
-
+    let socinianism = _prefix "socinianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#sonOf"></see>
     /// </summary>
-    let sonOf = Namespaced_IRI.parse _namespace_name "sonOf" |> NamespacedName
-
+    let sonOf = _prefix "sonOf"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#spanishRepublicanism"></see></summary>
-    let spanishRepublicanism =
-        Namespaced_IRI.parse _namespace_name "spanishRepublicanism" |> NamespacedName
-
+    let spanishRepublicanism = _prefix "spanishRepublicanism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#spinner"></see>
     /// </summary>
-    let spinner = Namespaced_IRI.parse _namespace_name "spinner" |> NamespacedName
+    let spinner = _prefix "spinner"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#stalinism"></see></summary>
-    let stalinism = Namespaced_IRI.parse _namespace_name "stalinism" |> NamespacedName
-
+    let stalinism = _prefix "stalinism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#statelessNationalIdentity"></see></summary>
-    let statelessNationalIdentity =
-        Namespaced_IRI.parse _namespace_name "statelessNationalIdentity" |> NamespacedName
-
+    let statelessNationalIdentity = _prefix "statelessNationalIdentity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#statistician"></see>
     /// </summary>
-    let statistician =
-        Namespaced_IRI.parse _namespace_name "statistician" |> NamespacedName
-
+    let statistician = _prefix "statistician"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepBrotherOf"></see>
     /// </summary>
-    let stepBrotherOf =
-        Namespaced_IRI.parse _namespace_name "stepBrotherOf" |> NamespacedName
-
+    let stepBrotherOf = _prefix "stepBrotherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepChildOf"></see>
     /// </summary>
-    let stepChildOf =
-        Namespaced_IRI.parse _namespace_name "stepChildOf" |> NamespacedName
-
+    let stepChildOf = _prefix "stepChildOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepDaughterOf"></see>
     /// </summary>
-    let stepDaughterOf =
-        Namespaced_IRI.parse _namespace_name "stepDaughterOf" |> NamespacedName
-
+    let stepDaughterOf = _prefix "stepDaughterOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepFatherOf"></see>
     /// </summary>
-    let stepFatherOf =
-        Namespaced_IRI.parse _namespace_name "stepFatherOf" |> NamespacedName
-
+    let stepFatherOf = _prefix "stepFatherOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepParentOf"></see>
     /// </summary>
-    let stepParentOf =
-        Namespaced_IRI.parse _namespace_name "stepParentOf" |> NamespacedName
-
+    let stepParentOf = _prefix "stepParentOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepSisterOf"></see>
     /// </summary>
-    let stepSisterOf =
-        Namespaced_IRI.parse _namespace_name "stepSisterOf" |> NamespacedName
-
+    let stepSisterOf = _prefix "stepSisterOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stepSonOf"></see>
     /// </summary>
-    let stepSonOf = Namespaced_IRI.parse _namespace_name "stepSonOf" |> NamespacedName
+    let stepSonOf = _prefix "stepSonOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#stillbirth"></see>
     /// </summary>
-    let stillbirth = Namespaced_IRI.parse _namespace_name "stillbirth" |> NamespacedName
-
+    let stillbirth = _prefix "stillbirth"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#storyteller"></see>
     /// </summary>
-    let storyteller =
-        Namespaced_IRI.parse _namespace_name "storyteller" |> NamespacedName
-
+    let storyteller = _prefix "storyteller"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#student"></see>
     /// </summary>
-    let student = Namespaced_IRI.parse _namespace_name "student" |> NamespacedName
+    let student = _prefix "student"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#studiedBy"></see>
     /// </summary>
-    let studiedBy = Namespaced_IRI.parse _namespace_name "studiedBy" |> NamespacedName
+    let studiedBy = _prefix "studiedBy"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#studies"></see>
     /// </summary>
-    let studies = Namespaced_IRI.parse _namespace_name "studies" |> NamespacedName
+    let studies = _prefix "studies"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#sufism"></see></summary>
-    let sufism = Namespaced_IRI.parse _namespace_name "sufism" |> NamespacedName
+    let sufism = _prefix "sufism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#surveyor"></see>
     /// </summary>
-    let surveyor = Namespaced_IRI.parse _namespace_name "surveyor" |> NamespacedName
-
+    let surveyor = _prefix "surveyor"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#swedenborgianism"></see></summary>
-    let swedenborgianism =
-        Namespaced_IRI.parse _namespace_name "swedenborgianism" |> NamespacedName
-
+    let swedenborgianism = _prefix "swedenborgianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#tatarNationalHeritage"></see></summary>
-    let tatarNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "tatarNationalHeritage" |> NamespacedName
-
+    let tatarNationalHeritage = _prefix "tatarNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#taxOfficial"></see>
     /// </summary>
-    let taxOfficial =
-        Namespaced_IRI.parse _namespace_name "taxOfficial" |> NamespacedName
-
+    let taxOfficial = _prefix "taxOfficial"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#taxResistance"></see></summary>
-    let taxResistance =
-        Namespaced_IRI.parse _namespace_name "taxResistance" |> NamespacedName
-
+    let taxResistance = _prefix "taxResistance"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#teacher"></see>
     /// </summary>
-    let teacher = Namespaced_IRI.parse _namespace_name "teacher" |> NamespacedName
-
+    let teacher = _prefix "teacher"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#teachesEducationalSubject"></see>
     /// </summary>
-    let teachesEducationalSubject =
-        Namespaced_IRI.parse _namespace_name "teachesEducationalSubject" |> NamespacedName
-
+    let teachesEducationalSubject = _prefix "teachesEducationalSubject"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#teachingQualification"></see>
     /// </summary>
-    let teachingQualification =
-        Namespaced_IRI.parse _namespace_name "teachingQualification" |> NamespacedName
-
+    let teachingQualification = _prefix "teachingQualification"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#technician"></see>
     /// </summary>
-    let technician = Namespaced_IRI.parse _namespace_name "technician" |> NamespacedName
-
+    let technician = _prefix "technician"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#telephoneOperator"></see>
     /// </summary>
-    let telephoneOperator =
-        Namespaced_IRI.parse _namespace_name "telephoneOperator" |> NamespacedName
-
+    let telephoneOperator = _prefix "telephoneOperator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#televisionIndustry"></see>
     /// </summary>
-    let televisionIndustry =
-        Namespaced_IRI.parse _namespace_name "televisionIndustry" |> NamespacedName
-
+    let televisionIndustry = _prefix "televisionIndustry"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#temperanceMovement"></see></summary>
-    let temperanceMovement =
-        Namespaced_IRI.parse _namespace_name "temperanceMovement" |> NamespacedName
-
+    let temperanceMovement = _prefix "temperanceMovement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#textiles"></see>
     /// </summary>
-    let textiles = Namespaced_IRI.parse _namespace_name "textiles" |> NamespacedName
+    let textiles = _prefix "textiles"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#theism"></see></summary>
-    let theism = Namespaced_IRI.parse _namespace_name "theism" |> NamespacedName
-
+    let theism = _prefix "theism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#thracianEthnicity"></see></summary>
-    let thracianEthnicity =
-        Namespaced_IRI.parse _namespace_name "thracianEthnicity" |> NamespacedName
-
+    let thracianEthnicity = _prefix "thracianEthnicity"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#timberTrade"></see>
     /// </summary>
-    let timberTrade =
-        Namespaced_IRI.parse _namespace_name "timberTrade" |> NamespacedName
-
+    let timberTrade = _prefix "timberTrade"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#timeCertaintyOf"></see>
     /// </summary>
-    let timeCertaintyOf =
-        Namespaced_IRI.parse _namespace_name "timeCertaintyOf" |> NamespacedName
-
+    let timeCertaintyOf = _prefix "timeCertaintyOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#tinker"></see>
     /// </summary>
-    let tinker = Namespaced_IRI.parse _namespace_name "tinker" |> NamespacedName
-
+    let tinker = _prefix "tinker"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#conservativePartyUk" title="#conservativePartyUk"&gt;Conservative Party (UK)&lt;/a&gt;.
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#toryPartyBritain"></see></summary>
-    let toryPartyBritain =
-        Namespaced_IRI.parse _namespace_name "toryPartyBritain" |> NamespacedName
-
+    let toryPartyBritain = _prefix "toryPartyBritain"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#whiggism"></see></summary>
-    let whiggism = Namespaced_IRI.parse _namespace_name "whiggism" |> NamespacedName
+    let whiggism = _prefix "whiggism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#tourGuide"></see>
     /// </summary>
-    let tourGuide = Namespaced_IRI.parse _namespace_name "tourGuide" |> NamespacedName
-
+    let tourGuide = _prefix "tourGuide"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#tractarianMovement"></see></summary>
-    let tractarianMovement =
-        Namespaced_IRI.parse _namespace_name "tractarianMovement" |> NamespacedName
-
+    let tractarianMovement = _prefix "tractarianMovement"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#tradeUnionism"></see></summary>
-    let tradeUnionism =
-        Namespaced_IRI.parse _namespace_name "tradeUnionism" |> NamespacedName
-
+    let tradeUnionism = _prefix "tradeUnionism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#trader"></see>
     /// </summary>
-    let trader = Namespaced_IRI.parse _namespace_name "trader" |> NamespacedName
-
+    let trader = _prefix "trader"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#transGender"></see>
     /// </summary>
-    let transGender =
-        Namespaced_IRI.parse _namespace_name "transGender" |> NamespacedName
-
+    let transGender = _prefix "transGender"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#translator"></see>
     /// </summary>
-    let translator = Namespaced_IRI.parse _namespace_name "translator" |> NamespacedName
+    let translator = _prefix "translator"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#travelling"></see>
     /// </summary>
-    let travelling = Namespaced_IRI.parse _namespace_name "travelling" |> NamespacedName
+    let travelling = _prefix "travelling"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#treasurer"></see>
     /// </summary>
-    let treasurer = Namespaced_IRI.parse _namespace_name "treasurer" |> NamespacedName
+    let treasurer = _prefix "treasurer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#trustee"></see>
     /// </summary>
-    let trustee = Namespaced_IRI.parse _namespace_name "trustee" |> NamespacedName
+    let trustee = _prefix "trustee"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#typeSetter"></see>
     /// </summary>
-    let typeSetter = Namespaced_IRI.parse _namespace_name "typeSetter" |> NamespacedName
+    let typeSetter = _prefix "typeSetter"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#uncleOf"></see>
     /// </summary>
-    let uncleOf = Namespaced_IRI.parse _namespace_name "uncleOf" |> NamespacedName
-
+    let uncleOf = _prefix "uncleOf"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#undefinedGender"></see>
     /// </summary>
-    let undefinedGender =
-        Namespaced_IRI.parse _namespace_name "undefinedGender" |> NamespacedName
-
+    let undefinedGender = _prefix "undefinedGender"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#unitarianism" title="#unitarianism"&gt;Unitarianism&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#unitarianChurch"></see></summary>
-    let unitarianChurch =
-        Namespaced_IRI.parse _namespace_name "unitarianChurch" |> NamespacedName
-
+    let unitarianChurch = _prefix "unitarianChurch"
     /// <summary>
     /// The description for this term is indebted to the Getty Art &amp; Architecture Thesaurus.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#unitarianism"></see></summary>
-    let unitarianism =
-        Namespaced_IRI.parse _namespace_name "unitarianism" |> NamespacedName
-
+    let unitarianism = _prefix "unitarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#universalist"></see></summary>
-    let universalist =
-        Namespaced_IRI.parse _namespace_name "universalist" |> NamespacedName
-
+    let universalist = _prefix "universalist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#unknownCertainty"></see>
     /// </summary>
-    let unknownCertainty =
-        Namespaced_IRI.parse _namespace_name "unknownCertainty" |> NamespacedName
-
+    let unknownCertainty = _prefix "unknownCertainty"
     /// <summary>
     /// Deprecated with no current equivalence.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#unknownSex"></see></summary>
-    let unknownSex = Namespaced_IRI.parse _namespace_name "unknownSex" |> NamespacedName
-
+    let unknownSex = _prefix "unknownSex"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#unskilledLabourer"></see>
     /// </summary>
-    let unskilledLabourer =
-        Namespaced_IRI.parse _namespace_name "unskilledLabourer" |> NamespacedName
-
+    let unskilledLabourer = _prefix "unskilledLabourer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#unspecifiedReproductiveHistory"></see>
     /// </summary>
-    let unspecifiedReproductiveHistory =
-        Namespaced_IRI.parse _namespace_name "unspecifiedReproductiveHistory" |> NamespacedName
-
+    let unspecifiedReproductiveHistory = _prefix "unspecifiedReproductiveHistory"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#upholsterer"></see>
     /// </summary>
-    let upholsterer =
-        Namespaced_IRI.parse _namespace_name "upholsterer" |> NamespacedName
-
+    let upholsterer = _prefix "upholsterer"
     /// <summary>
     /// This term is a CWRC-specific addition not in the original Orlando tag set.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#upper-middleClass"></see></summary>
-    let ``upper-middleClass`` =
-        Namespaced_IRI.parse _namespace_name "upper-middleClass" |> NamespacedName
-
+    let ``upper-middleClass`` = _prefix "upper-middleClass"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#urban-industrialUnskilled"></see>
     /// </summary>
-    let ``urban-industrialUnskilled`` =
-        Namespaced_IRI.parse _namespace_name "urban-industrialUnskilled" |> NamespacedName
-
+    let ``urban-industrialUnskilled`` = _prefix "urban-industrialUnskilled"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#urbanPlanning"></see>
     /// </summary>
-    let urbanPlanning =
-        Namespaced_IRI.parse _namespace_name "urbanPlanning" |> NamespacedName
-
+    let urbanPlanning = _prefix "urbanPlanning"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#utilitarianism"></see></summary>
-    let utilitarianism =
-        Namespaced_IRI.parse _namespace_name "utilitarianism" |> NamespacedName
-
+    let utilitarianism = _prefix "utilitarianism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#vegetarianism"></see></summary>
-    let vegetarianism =
-        Namespaced_IRI.parse _namespace_name "vegetarianism" |> NamespacedName
-
+    let vegetarianism = _prefix "vegetarianism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#venerealDisease"></see>
     /// </summary>
-    let venerealDisease =
-        Namespaced_IRI.parse _namespace_name "venerealDisease" |> NamespacedName
-
+    let venerealDisease = _prefix "venerealDisease"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#veterinaryWork"></see>
     /// </summary>
-    let veterinaryWork =
-        Namespaced_IRI.parse _namespace_name "veterinaryWork" |> NamespacedName
-
+    let veterinaryWork = _prefix "veterinaryWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#vintner"></see>
     /// </summary>
-    let vintner = Namespaced_IRI.parse _namespace_name "vintner" |> NamespacedName
+    let vintner = _prefix "vintner"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#visits"></see>
     /// </summary>
-    let visits = Namespaced_IRI.parse _namespace_name "visits" |> NamespacedName
-
+    let visits = _prefix "visits"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#visualArtist"></see>
     /// </summary>
-    let visualArtist =
-        Namespaced_IRI.parse _namespace_name "visualArtist" |> NamespacedName
-
+    let visualArtist = _prefix "visualArtist"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#vitalism"></see></summary>
-    let vitalism = Namespaced_IRI.parse _namespace_name "vitalism" |> NamespacedName
+    let vitalism = _prefix "vitalism"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#volunteer"></see>
     /// </summary>
-    let volunteer = Namespaced_IRI.parse _namespace_name "volunteer" |> NamespacedName
+    let volunteer = _prefix "volunteer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#walking"></see>
     /// </summary>
-    let walking = Namespaced_IRI.parse _namespace_name "walking" |> NamespacedName
-
+    let walking = _prefix "walking"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#warehouseWork"></see>
     /// </summary>
-    let warehouseWork =
-        Namespaced_IRI.parse _namespace_name "warehouseWork" |> NamespacedName
-
+    let warehouseWork = _prefix "warehouseWork"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#watchmaker"></see>
     /// </summary>
-    let watchmaker = Namespaced_IRI.parse _namespace_name "watchmaker" |> NamespacedName
+    let watchmaker = _prefix "watchmaker"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#weaver"></see>
     /// </summary>
-    let weaver = Namespaced_IRI.parse _namespace_name "weaver" |> NamespacedName
+    let weaver = _prefix "weaver"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#welder"></see>
     /// </summary>
-    let welder = Namespaced_IRI.parse _namespace_name "welder" |> NamespacedName
-
+    let welder = _prefix "welder"
     /// <summary>
     /// Deprecated in favour of foreign instance ISO 3166-2:GB-WLS.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#welshNationalHeritage"></see></summary>
-    let welshNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "welshNationalHeritage" |> NamespacedName
-
+    let welshNationalHeritage = _prefix "welshNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#welshLabel"></see>
     /// </summary>
-    let welshLabel = Namespaced_IRI.parse _namespace_name "welshLabel" |> NamespacedName
-
+    let welshLabel = _prefix "welshLabel"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#welshNationalism"></see></summary>
-    let welshNationalism =
-        Namespaced_IRI.parse _namespace_name "welshNationalism" |> NamespacedName
-
+    let welshNationalism = _prefix "welshNationalism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#wendishEthnicity"></see></summary>
-    let wendishEthnicity =
-        Namespaced_IRI.parse _namespace_name "wendishEthnicity" |> NamespacedName
-
+    let wendishEthnicity = _prefix "wendishEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#wesleyanism"></see></summary>
-    let wesleyanism =
-        Namespaced_IRI.parse _namespace_name "wesleyanism" |> NamespacedName
-
+    let wesleyanism = _prefix "wesleyanism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#westIndianEthnicity"></see></summary>
-    let westIndianEthnicity =
-        Namespaced_IRI.parse _namespace_name "westIndianEthnicity" |> NamespacedName
-
+    let westIndianEthnicity = _prefix "westIndianEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#westIndianNationalHeritage"></see></summary>
-    let westIndianNationalHeritage =
-        Namespaced_IRI.parse _namespace_name "westIndianNationalHeritage" |> NamespacedName
-
+    let westIndianNationalHeritage = _prefix "westIndianNationalHeritage"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#wetNurse"></see>
     /// </summary>
-    let wetNurse = Namespaced_IRI.parse _namespace_name "wetNurse" |> NamespacedName
+    let wetNurse = _prefix "wetNurse"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#whaler"></see>
     /// </summary>
-    let whaler = Namespaced_IRI.parse _namespace_name "whaler" |> NamespacedName
-
+    let whaler = _prefix "whaler"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#whiteEthnicity"></see></summary>
-    let whiteEthnicity =
-        Namespaced_IRI.parse _namespace_name "whiteEthnicity" |> NamespacedName
-
+    let whiteEthnicity = _prefix "whiteEthnicity"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#whiteRaceColour"></see></summary>
-    let whiteRaceColour =
-        Namespaced_IRI.parse _namespace_name "whiteRaceColour" |> NamespacedName
-
+    let whiteRaceColour = _prefix "whiteRaceColour"
     /// <summary>
     /// Deprecated in favour of instance &lt;a href="#whiteRaceColour" title="#whiteRaceColour"&gt;white&lt;/a&gt;.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#whiteRace"></see></summary>
-    let whiteRace = Namespaced_IRI.parse _namespace_name "whiteRace" |> NamespacedName
+    let whiteRace = _prefix "whiteRace"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#wife"></see>
     /// </summary>
-    let wife = Namespaced_IRI.parse _namespace_name "wife" |> NamespacedName
+    let wife = _prefix "wife"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#wifeOf"></see>
     /// </summary>
-    let wifeOf = Namespaced_IRI.parse _namespace_name "wifeOf" |> NamespacedName
+    let wifeOf = _prefix "wifeOf"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#wilkite"></see></summary>
-    let wilkite = Namespaced_IRI.parse _namespace_name "wilkite" |> NamespacedName
+    let wilkite = _prefix "wilkite"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#witness"></see>
     /// </summary>
-    let witness = Namespaced_IRI.parse _namespace_name "witness" |> NamespacedName
+    let witness = _prefix "witness"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#womanism"></see></summary>
-    let womanism = Namespaced_IRI.parse _namespace_name "womanism" |> NamespacedName
-
+    let womanism = _prefix "womanism"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#womensEducationReform"></see></summary>
-    let womensEducationReform =
-        Namespaced_IRI.parse _namespace_name "womensEducationReform" |> NamespacedName
-
+    let womensEducationReform = _prefix "womensEducationReform"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#womensEmploymentReform"></see></summary>
-    let womensEmploymentReform =
-        Namespaced_IRI.parse _namespace_name "womensEmploymentReform" |> NamespacedName
-
+    let womensEmploymentReform = _prefix "womensEmploymentReform"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#womensEnfranchisement"></see></summary>
-    let womensEnfranchisement =
-        Namespaced_IRI.parse _namespace_name "womensEnfranchisement" |> NamespacedName
-
+    let womensEnfranchisement = _prefix "womensEnfranchisement"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#workingClass"></see>
     /// </summary>
-    let workingClass =
-        Namespaced_IRI.parse _namespace_name "workingClass" |> NamespacedName
-
+    let workingClass = _prefix "workingClass"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#writerInResidence"></see>
     /// </summary>
-    let writerInResidence =
-        Namespaced_IRI.parse _namespace_name "writerInResidence" |> NamespacedName
-
+    let writerInResidence = _prefix "writerInResidence"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#writingGroupParticipant"></see>
     /// </summary>
-    let writingGroupParticipant =
-        Namespaced_IRI.parse _namespace_name "writingGroupParticipant" |> NamespacedName
-
+    let writingGroupParticipant = _prefix "writingGroupParticipant"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#yeoman-farmer"></see>
     /// </summary>
-    let ``yeoman-farmer`` =
-        Namespaced_IRI.parse _namespace_name "yeoman-farmer" |> NamespacedName
-
+    let ``yeoman-farmer`` = _prefix "yeoman-farmer"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#yorkist"></see>
     /// </summary>
-    let yorkist = Namespaced_IRI.parse _namespace_name "yorkist" |> NamespacedName
-
+    let yorkist = _prefix "yorkist"
     /// <summary>
     ///   <see href="http://sparql.cwrc.ca/ontologies/cwrc#youngestChild"></see>
     /// </summary>
-    let youngestChild =
-        Namespaced_IRI.parse _namespace_name "youngestChild" |> NamespacedName
-
+    let youngestChild = _prefix "youngestChild"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#zen"></see></summary>
-    let zen = Namespaced_IRI.parse _namespace_name "zen" |> NamespacedName
-
+    let zen = _prefix "zen"
     /// <summary>
     /// The description for this term is indebted to DBpedia.
     /// <see href="http://sparql.cwrc.ca/ontologies/cwrc#zoroastrianism"></see></summary>
-    let zoroastrianism =
-        Namespaced_IRI.parse _namespace_name "zoroastrianism" |> NamespacedName
+    let zoroastrianism = _prefix "zoroastrianism"

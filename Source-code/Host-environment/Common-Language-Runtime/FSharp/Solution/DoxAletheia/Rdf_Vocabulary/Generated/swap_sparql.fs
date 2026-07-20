@@ -1,55 +1,54 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.sparql.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module swap_sparql =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/sparql#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#Endpoint"></see>
     /// </summary>
-    let Endpoint = Namespaced_IRI.parse _namespace_name "Endpoint" |> NamespacedName
+    let Endpoint = _prefix "Endpoint"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#Query"></see>
     /// </summary>
-    let Query = Namespaced_IRI.parse _namespace_name "Query" |> NamespacedName
+    let Query = _prefix "Query"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#Querying"></see>
     /// </summary>
-    let Querying = Namespaced_IRI.parse _namespace_name "Querying" |> NamespacedName
+    let Querying = _prefix "Querying"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#Result"></see>
     /// </summary>
-    let Result = Namespaced_IRI.parse _namespace_name "Result" |> NamespacedName
+    let Result = _prefix "Result"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#SPARQL"></see>
     /// </summary>
-    let SPARQL = Namespaced_IRI.parse _namespace_name "SPARQL" |> NamespacedName
+    let SPARQL = _prefix "SPARQL"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#Template"></see>
     /// </summary>
-    let Template = Namespaced_IRI.parse _namespace_name "Template" |> NamespacedName
-
+    let Template = _prefix "Template"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#TemplateBinding"></see>
     /// </summary>
-    let TemplateBinding =
-        Namespaced_IRI.parse _namespace_name "TemplateBinding" |> NamespacedName
-
+    let TemplateBinding = _prefix "TemplateBinding"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#executedOn"></see>
     /// </summary>
-    let executedOn = Namespaced_IRI.parse _namespace_name "executedOn" |> NamespacedName
+    let executedOn = _prefix "executedOn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#hasBinding"></see>
     /// </summary>
-    let hasBinding = Namespaced_IRI.parse _namespace_name "hasBinding" |> NamespacedName
+    let hasBinding = _prefix "hasBinding"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#hasQuery"></see>
     /// </summary>
-    let hasQuery = Namespaced_IRI.parse _namespace_name "hasQuery" |> NamespacedName
-
+    let hasQuery = _prefix "hasQuery"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/sparql#hasTemplate"></see>
     /// </summary>
-    let hasTemplate =
-        Namespaced_IRI.parse _namespace_name "hasTemplate" |> NamespacedName
+    let hasTemplate = _prefix "hasTemplate"

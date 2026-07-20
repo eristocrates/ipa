@@ -1,16 +1,17 @@
 namespace http.purl.org.vocab.relationship.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rel =
     let _namespace_name = "http://purl.org/vocab/relationship/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/rel-vocab-20090515"></see>
     /// </summary>
-    let ``rel-vocab-20090515`` =
-        Namespaced_IRI.parse _namespace_name "rel-vocab-20090515" |> NamespacedName
-
+    let ``rel-vocab-20090515`` = _prefix "rel-vocab-20090515"
     /// <summary>
     /// &lt;p&gt;The RELATIONSHIP vocabulary can be used without modification with &lt;a href="http://xmlns.com/foaf/0.1/"&gt;FOAF&lt;/a&gt; documents. Simply replace &lt;code&gt;foaf:knows&lt;/code&gt; properties with a more specific property from this vocabulary. For backwards compatibility with older, non-RDF aware,  tools, you may want to keep the &lt;code&gt;foaf:knows&lt;/code&gt; property as well.&lt;/p&gt;     &lt;pre&gt;
     /// &lt;code class="xml"&gt;
@@ -47,9 +48,7 @@ module rel =
     ///     &lt;/pre&gt;
     ///
     /// <see href="http://purl.org/vocab/relationship/examples/1"></see></summary>
-    let ``examples/1`` =
-        Namespaced_IRI.parse _namespace_name "examples/1" |> NamespacedName
-
+    let ``examples/1`` = _prefix "examples/1"
     /// <summary>
     /// &lt;p&gt;
     ///
@@ -116,191 +115,144 @@ module rel =
     ///   &amp;lt;/foaf:Person&amp;gt;&lt;/code&gt;&lt;/pre&gt;
     ///
     /// <see href="http://purl.org/vocab/relationship/examples/2"></see></summary>
-    let ``examples/2`` =
-        Namespaced_IRI.parse _namespace_name "examples/2" |> NamespacedName
-
+    let ``examples/2`` = _prefix "examples/2"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/Relationship"></see>
     /// </summary>
-    let Relationship =
-        Namespaced_IRI.parse _namespace_name "Relationship" |> NamespacedName
-
+    let Relationship = _prefix "Relationship"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/acquaintanceOf"></see>
     /// </summary>
-    let acquaintanceOf =
-        Namespaced_IRI.parse _namespace_name "acquaintanceOf" |> NamespacedName
-
+    let acquaintanceOf = _prefix "acquaintanceOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/ambivalentOf"></see>
     /// </summary>
-    let ambivalentOf =
-        Namespaced_IRI.parse _namespace_name "ambivalentOf" |> NamespacedName
-
+    let ambivalentOf = _prefix "ambivalentOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/ancestorOf"></see>
     /// </summary>
-    let ancestorOf = Namespaced_IRI.parse _namespace_name "ancestorOf" |> NamespacedName
-
+    let ancestorOf = _prefix "ancestorOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/descendantOf"></see>
     /// </summary>
-    let descendantOf =
-        Namespaced_IRI.parse _namespace_name "descendantOf" |> NamespacedName
-
+    let descendantOf = _prefix "descendantOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/antagonistOf"></see>
     /// </summary>
-    let antagonistOf =
-        Namespaced_IRI.parse _namespace_name "antagonistOf" |> NamespacedName
-
+    let antagonistOf = _prefix "antagonistOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/apprenticeTo"></see>
     /// </summary>
-    let apprenticeTo =
-        Namespaced_IRI.parse _namespace_name "apprenticeTo" |> NamespacedName
-
+    let apprenticeTo = _prefix "apprenticeTo"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/mentorOf"></see>
     /// </summary>
-    let mentorOf = Namespaced_IRI.parse _namespace_name "mentorOf" |> NamespacedName
+    let mentorOf = _prefix "mentorOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/childOf"></see>
     /// </summary>
-    let childOf = Namespaced_IRI.parse _namespace_name "childOf" |> NamespacedName
+    let childOf = _prefix "childOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/parentOf"></see>
     /// </summary>
-    let parentOf = Namespaced_IRI.parse _namespace_name "parentOf" |> NamespacedName
-
+    let parentOf = _prefix "parentOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/closeFriendOf"></see>
     /// </summary>
-    let closeFriendOf =
-        Namespaced_IRI.parse _namespace_name "closeFriendOf" |> NamespacedName
-
+    let closeFriendOf = _prefix "closeFriendOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/collaboratesWith"></see>
     /// </summary>
-    let collaboratesWith =
-        Namespaced_IRI.parse _namespace_name "collaboratesWith" |> NamespacedName
-
+    let collaboratesWith = _prefix "collaboratesWith"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/colleagueOf"></see>
     /// </summary>
-    let colleagueOf =
-        Namespaced_IRI.parse _namespace_name "colleagueOf" |> NamespacedName
-
+    let colleagueOf = _prefix "colleagueOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/employedBy"></see>
     /// </summary>
-    let employedBy = Namespaced_IRI.parse _namespace_name "employedBy" |> NamespacedName
+    let employedBy = _prefix "employedBy"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/employerOf"></see>
     /// </summary>
-    let employerOf = Namespaced_IRI.parse _namespace_name "employerOf" |> NamespacedName
+    let employerOf = _prefix "employerOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/enemyOf"></see>
     /// </summary>
-    let enemyOf = Namespaced_IRI.parse _namespace_name "enemyOf" |> NamespacedName
+    let enemyOf = _prefix "enemyOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/engagedTo"></see>
     /// </summary>
-    let engagedTo = Namespaced_IRI.parse _namespace_name "engagedTo" |> NamespacedName
+    let engagedTo = _prefix "engagedTo"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/friendOf"></see>
     /// </summary>
-    let friendOf = Namespaced_IRI.parse _namespace_name "friendOf" |> NamespacedName
-
+    let friendOf = _prefix "friendOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/grandchildOf"></see>
     /// </summary>
-    let grandchildOf =
-        Namespaced_IRI.parse _namespace_name "grandchildOf" |> NamespacedName
-
+    let grandchildOf = _prefix "grandchildOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/grandparentOf"></see>
     /// </summary>
-    let grandparentOf =
-        Namespaced_IRI.parse _namespace_name "grandparentOf" |> NamespacedName
-
+    let grandparentOf = _prefix "grandparentOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/hasMet"></see>
     /// </summary>
-    let hasMet = Namespaced_IRI.parse _namespace_name "hasMet" |> NamespacedName
-
+    let hasMet = _prefix "hasMet"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/influencedBy"></see>
     /// </summary>
-    let influencedBy =
-        Namespaced_IRI.parse _namespace_name "influencedBy" |> NamespacedName
-
+    let influencedBy = _prefix "influencedBy"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/knowsByReputation"></see>
     /// </summary>
-    let knowsByReputation =
-        Namespaced_IRI.parse _namespace_name "knowsByReputation" |> NamespacedName
-
+    let knowsByReputation = _prefix "knowsByReputation"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/knowsInPassing"></see>
     /// </summary>
-    let knowsInPassing =
-        Namespaced_IRI.parse _namespace_name "knowsInPassing" |> NamespacedName
-
+    let knowsInPassing = _prefix "knowsInPassing"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/knowsOf"></see>
     /// </summary>
-    let knowsOf = Namespaced_IRI.parse _namespace_name "knowsOf" |> NamespacedName
-
+    let knowsOf = _prefix "knowsOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/lifePartnerOf"></see>
     /// </summary>
-    let lifePartnerOf =
-        Namespaced_IRI.parse _namespace_name "lifePartnerOf" |> NamespacedName
-
+    let lifePartnerOf = _prefix "lifePartnerOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/livesWith"></see>
     /// </summary>
-    let livesWith = Namespaced_IRI.parse _namespace_name "livesWith" |> NamespacedName
-
+    let livesWith = _prefix "livesWith"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/lostContactWith"></see>
     /// </summary>
-    let lostContactWith =
-        Namespaced_IRI.parse _namespace_name "lostContactWith" |> NamespacedName
-
+    let lostContactWith = _prefix "lostContactWith"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/neighborOf"></see>
     /// </summary>
-    let neighborOf = Namespaced_IRI.parse _namespace_name "neighborOf" |> NamespacedName
-
+    let neighborOf = _prefix "neighborOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/participant"></see>
     /// </summary>
-    let participant =
-        Namespaced_IRI.parse _namespace_name "participant" |> NamespacedName
-
+    let participant = _prefix "participant"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/participantIn"></see>
     /// </summary>
-    let participantIn =
-        Namespaced_IRI.parse _namespace_name "participantIn" |> NamespacedName
-
+    let participantIn = _prefix "participantIn"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/siblingOf"></see>
     /// </summary>
-    let siblingOf = Namespaced_IRI.parse _namespace_name "siblingOf" |> NamespacedName
+    let siblingOf = _prefix "siblingOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/spouseOf"></see>
     /// </summary>
-    let spouseOf = Namespaced_IRI.parse _namespace_name "spouseOf" |> NamespacedName
+    let spouseOf = _prefix "spouseOf"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/worksWith"></see>
     /// </summary>
-    let worksWith = Namespaced_IRI.parse _namespace_name "worksWith" |> NamespacedName
-
+    let worksWith = _prefix "worksWith"
     /// <summary>
     ///   <see href="http://purl.org/vocab/relationship/wouldLikeToKnow"></see>
     /// </summary>
-    let wouldLikeToKnow =
-        Namespaced_IRI.parse _namespace_name "wouldLikeToKnow" |> NamespacedName
+    let wouldLikeToKnow = _prefix "wouldLikeToKnow"

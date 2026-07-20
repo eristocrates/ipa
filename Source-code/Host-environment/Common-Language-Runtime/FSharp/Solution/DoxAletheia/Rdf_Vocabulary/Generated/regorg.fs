@@ -1,9 +1,12 @@
 namespace http.www.w3.org.ns.regorg.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module regorg =
     let _namespace_name = "http://www.w3.org/ns/regorg#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// rov:RegisteredOrganization is the key class for the Registered Organization vocabulary and represents
@@ -19,37 +22,28 @@ module regorg =
     ///     sub class of the more general 'Agent' class found in FOAF and Dublin Core that does encompass organizations,
     ///     natural persons, groups etc. - i.e. an Agent is any entity that is able to carry out actions.&lt;/p&gt;
     /// <see href="http://www.w3.org/ns/regorg#RegisteredOrganization"></see></summary>
-    let RegisteredOrganization =
-        Namespaced_IRI.parse _namespace_name "RegisteredOrganization" |> NamespacedName
-
+    let RegisteredOrganization = _prefix "RegisteredOrganization"
     /// <summary>
     /// The has registered organization relationship can be used to link any dcterms:Agent (equivalent class foaf:Agent) to a Registered Organization that in some way acts as a registered legal entity for it. This is useful, for example, where an organization includes one or more legal entities, or where a natural person is also registered as a legal entity. rov:hasRegisteredOrganization has a range of rov:RegisteredOrganization.
     /// <see href="http://www.w3.org/ns/regorg#hasRegisteredOrganization"></see></summary>
-    let hasRegisteredOrganization =
-        Namespaced_IRI.parse _namespace_name "hasRegisteredOrganization" |> NamespacedName
-
+    let hasRegisteredOrganization = _prefix "hasRegisteredOrganization"
     /// <summary>
     /// The legal name of the business. A business might have more than one legal name, particularly in countries with more than one official language. In such cases the language of the string should be identified.
     /// <see href="http://www.w3.org/ns/regorg#legalName"></see></summary>
-    let legalName = Namespaced_IRI.parse _namespace_name "legalName" |> NamespacedName
-
+    let legalName = _prefix "legalName"
     /// <summary>
     /// The activity of a company should be recorded using a controlled vocabulary expressed as a SKOS concept scheme. Several such vocabularies exist, many of which map to the UN's ISIC codes. Where a particular controlled vocabulary is in use within a given context, such as SIC codes in the UK, it is acceptable to use these, however, the preferred choice for European interoperability is NACE. rov:orgActivity is a sub class of org:classification which has a range of skos:Concept.
     /// <see href="http://www.w3.org/ns/regorg#orgActivity"></see></summary>
-    let orgActivity =
-        Namespaced_IRI.parse _namespace_name "orgActivity" |> NamespacedName
-
+    let orgActivity = _prefix "orgActivity"
     /// <summary>
     /// Terms like insolvent, bankrupt and in receivership are likely to have different legal implications in different jurisdictions. Best Practice for recording various other status levels is to use the relevant jurisdiction's terms and to do so in a consistent manner using a SKOS Concept Scheme. rov:orgStatus is a sub class of org:classification which has a range of skos:Concept.
     /// <see href="http://www.w3.org/ns/regorg#orgStatus"></see></summary>
-    let orgStatus = Namespaced_IRI.parse _namespace_name "orgStatus" |> NamespacedName
+    let orgStatus = _prefix "orgStatus"
     /// <summary>
     /// This property records the type of organization. Familiar types are SA, PLC, LLC, GmbH etc. Each jurisdiction will have a limited set of recognized company types and these should be used in a consistent manner using a SKOS Concept Scheme. rov:orgType is a sub class of org:classification which has a range of skos:Concept.
     /// <see href="http://www.w3.org/ns/regorg#orgType"></see></summary>
-    let orgType = Namespaced_IRI.parse _namespace_name "orgType" |> NamespacedName
-
+    let orgType = _prefix "orgType"
     /// <summary>
     /// The registration is a fundamental relationship between a legal entity and the authority with which it is registered and that confers legal status upon it. rov:registration is a sub property of adms:identifier which has a range of adms:Identifier. rov:registration has a domain of rov:RegisteredOrganization.
     /// <see href="http://www.w3.org/ns/regorg#registration"></see></summary>
-    let registration =
-        Namespaced_IRI.parse _namespace_name "registration" |> NamespacedName
+    let registration = _prefix "registration"

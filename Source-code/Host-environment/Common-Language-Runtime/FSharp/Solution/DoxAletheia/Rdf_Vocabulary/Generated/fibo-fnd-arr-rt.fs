@@ -1,123 +1,91 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Arrangements.Ratings.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_arr_rt =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/QualitativeRatingScore"></see>
     /// </summary>
-    let QualitativeRatingScore =
-        Namespaced_IRI.parse _namespace_name "QualitativeRatingScore" |> NamespacedName
-
+    let QualitativeRatingScore = _prefix "QualitativeRatingScore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingScore"></see>
     /// </summary>
-    let RatingScore =
-        Namespaced_IRI.parse _namespace_name "RatingScore" |> NamespacedName
-
+    let RatingScore = _prefix "RatingScore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/QuantitativeRatingScore"></see>
     /// </summary>
-    let QuantitativeRatingScore =
-        Namespaced_IRI.parse _namespace_name "QuantitativeRatingScore" |> NamespacedName
-
+    let QuantitativeRatingScore = _prefix "QuantitativeRatingScore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasMeasureWithinScale"></see>
     /// </summary>
-    let hasMeasureWithinScale =
-        Namespaced_IRI.parse _namespace_name "hasMeasureWithinScale" |> NamespacedName
-
+    let hasMeasureWithinScale = _prefix "hasMeasureWithinScale"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/Rating"></see>
     /// </summary>
-    let Rating = Namespaced_IRI.parse _namespace_name "Rating" |> NamespacedName
+    let Rating = _prefix "Rating"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/rates"></see>
     /// </summary>
-    let rates = Namespaced_IRI.parse _namespace_name "rates" |> NamespacedName
-
+    let rates = _prefix "rates"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingIssuer"></see>
     /// </summary>
-    let RatingIssuer =
-        Namespaced_IRI.parse _namespace_name "RatingIssuer" |> NamespacedName
-
+    let RatingIssuer = _prefix "RatingIssuer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingParty"></see>
     /// </summary>
-    let RatingParty =
-        Namespaced_IRI.parse _namespace_name "RatingParty" |> NamespacedName
-
+    let RatingParty = _prefix "RatingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasRatingScore"></see>
     /// </summary>
-    let hasRatingScore =
-        Namespaced_IRI.parse _namespace_name "hasRatingScore" |> NamespacedName
-
+    let hasRatingScore = _prefix "hasRatingScore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingAgency"></see>
     /// </summary>
-    let RatingAgency =
-        Namespaced_IRI.parse _namespace_name "RatingAgency" |> NamespacedName
-
+    let RatingAgency = _prefix "RatingAgency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingScalePublisher"></see>
     /// </summary>
-    let RatingScalePublisher =
-        Namespaced_IRI.parse _namespace_name "RatingScalePublisher" |> NamespacedName
-
+    let RatingScalePublisher = _prefix "RatingScalePublisher"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingAssessmentActivity"></see>
     /// </summary>
-    let RatingAssessmentActivity =
-        Namespaced_IRI.parse _namespace_name "RatingAssessmentActivity" |> NamespacedName
-
+    let RatingAssessmentActivity = _prefix "RatingAssessmentActivity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingAssessmentEvent"></see>
     /// </summary>
-    let RatingAssessmentEvent =
-        Namespaced_IRI.parse _namespace_name "RatingAssessmentEvent" |> NamespacedName
-
+    let RatingAssessmentEvent = _prefix "RatingAssessmentEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingReport"></see>
     /// </summary>
-    let RatingReport =
-        Namespaced_IRI.parse _namespace_name "RatingReport" |> NamespacedName
-
+    let RatingReport = _prefix "RatingReport"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingScale"></see>
     /// </summary>
-    let RatingScale =
-        Namespaced_IRI.parse _namespace_name "RatingScale" |> NamespacedName
-
+    let RatingScale = _prefix "RatingScale"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasBestMeasure"></see>
     /// </summary>
-    let hasBestMeasure =
-        Namespaced_IRI.parse _namespace_name "hasBestMeasure" |> NamespacedName
-
+    let hasBestMeasure = _prefix "hasBestMeasure"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasWorstMeasure"></see>
     /// </summary>
-    let hasWorstMeasure =
-        Namespaced_IRI.parse _namespace_name "hasWorstMeasure" |> NamespacedName
-
+    let hasWorstMeasure = _prefix "hasWorstMeasure"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasRating"></see>
     /// </summary>
-    let hasRating = Namespaced_IRI.parse _namespace_name "hasRating" |> NamespacedName
-
+    let hasRating = _prefix "hasRating"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/producesRatingsFor"></see>
     /// </summary>
-    let producesRatingsFor =
-        Namespaced_IRI.parse _namespace_name "producesRatingsFor" |> NamespacedName
-
+    let producesRatingsFor = _prefix "producesRatingsFor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/usesRatingParty"></see>
     /// </summary>
-    let usesRatingParty =
-        Namespaced_IRI.parse _namespace_name "usesRatingParty" |> NamespacedName
+    let usesRatingParty = _prefix "usesRatingParty"

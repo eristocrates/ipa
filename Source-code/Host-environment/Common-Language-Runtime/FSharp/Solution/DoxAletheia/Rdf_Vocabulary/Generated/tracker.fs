@@ -1,82 +1,62 @@
 namespace http.tracker.api.gnome.org.ontology.v3.tracker.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module tracker =
     let _namespace_name = "http://tracker.api.gnome.org/ontology/v3/tracker#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// External reference to online services
     /// <see href="http://tracker.api.gnome.org/ontology/v3/tracker#ExternalReference"></see></summary>
-    let ExternalReference =
-        Namespaced_IRI.parse _namespace_name "ExternalReference" |> NamespacedName
-
+    let ExternalReference = _prefix "ExternalReference"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#IndexedFolder"></see>
     /// </summary>
-    let IndexedFolder =
-        Namespaced_IRI.parse _namespace_name "IndexedFolder" |> NamespacedName
-
+    let IndexedFolder = _prefix "IndexedFolder"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#available"></see>
     /// </summary>
-    let available = Namespaced_IRI.parse _namespace_name "available" |> NamespacedName
-
+    let available = _prefix "available"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#extractor-data-source"></see>
     /// </summary>
-    let ``extractor-data-source`` =
-        Namespaced_IRI.parse _namespace_name "extractor-data-source" |> NamespacedName
-
+    let ``extractor-data-source`` = _prefix "extractor-data-source"
     /// <summary>
     /// Hash identifying the extractor of the metadata
     /// <see href="http://tracker.api.gnome.org/ontology/v3/tracker#extractorHash"></see></summary>
-    let extractorHash =
-        Namespaced_IRI.parse _namespace_name "extractorHash" |> NamespacedName
-
+    let extractorHash = _prefix "extractorHash"
     /// <summary>
     /// Links the information element with the external reference
     /// <see href="http://tracker.api.gnome.org/ontology/v3/tracker#hasExternalReference"></see></summary>
-    let hasExternalReference =
-        Namespaced_IRI.parse _namespace_name "hasExternalReference" |> NamespacedName
-
+    let hasExternalReference = _prefix "hasExternalReference"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#isDefaultTag"></see>
     /// </summary>
-    let isDefaultTag =
-        Namespaced_IRI.parse _namespace_name "isDefaultTag" |> NamespacedName
-
+    let isDefaultTag = _prefix "isDefaultTag"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#isOptical"></see>
     /// </summary>
-    let isOptical = Namespaced_IRI.parse _namespace_name "isOptical" |> NamespacedName
-
+    let isOptical = _prefix "isOptical"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#isRemovable"></see>
     /// </summary>
-    let isRemovable =
-        Namespaced_IRI.parse _namespace_name "isRemovable" |> NamespacedName
-
+    let isRemovable = _prefix "isRemovable"
     /// <summary>
     /// Identifier of the external reference
     /// <see href="http://tracker.api.gnome.org/ontology/v3/tracker#referenceIdentifier"></see></summary>
-    let referenceIdentifier =
-        Namespaced_IRI.parse _namespace_name "referenceIdentifier" |> NamespacedName
-
+    let referenceIdentifier = _prefix "referenceIdentifier"
     /// <summary>
     /// Source of the external reference (eg. 'Musicbrainz')
     /// <see href="http://tracker.api.gnome.org/ontology/v3/tracker#referenceSource"></see></summary>
-    let referenceSource =
-        Namespaced_IRI.parse _namespace_name "referenceSource" |> NamespacedName
-
+    let referenceSource = _prefix "referenceSource"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#tagRelatedTo"></see>
     /// </summary>
-    let tagRelatedTo =
-        Namespaced_IRI.parse _namespace_name "tagRelatedTo" |> NamespacedName
-
+    let tagRelatedTo = _prefix "tagRelatedTo"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/tracker#unmountDate"></see>
     /// </summary>
-    let unmountDate =
-        Namespaced_IRI.parse _namespace_name "unmountDate" |> NamespacedName
+    let unmountDate = _prefix "unmountDate"

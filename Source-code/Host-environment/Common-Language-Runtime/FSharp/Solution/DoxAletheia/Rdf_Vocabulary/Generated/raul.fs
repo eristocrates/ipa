@@ -1,170 +1,154 @@
 namespace http.purl.org.NET.raul.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module raul =
     let _namespace_name = "http://purl.org/NET/raul#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Button"></see>
     /// </summary>
-    let Button = Namespaced_IRI.parse _namespace_name "Button" |> NamespacedName
+    let Button = _prefix "Button"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Widget"></see>
     /// </summary>
-    let Widget = Namespaced_IRI.parse _namespace_name "Widget" |> NamespacedName
-
+    let Widget = _prefix "Widget"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#CREATEOperation"></see>
     /// </summary>
-    let CREATEOperation =
-        Namespaced_IRI.parse _namespace_name "CREATEOperation" |> NamespacedName
-
+    let CREATEOperation = _prefix "CREATEOperation"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#CRUDOperation"></see>
     /// </summary>
-    let CRUDOperation =
-        Namespaced_IRI.parse _namespace_name "CRUDOperation" |> NamespacedName
-
+    let CRUDOperation = _prefix "CRUDOperation"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Checkbox"></see>
     /// </summary>
-    let Checkbox = Namespaced_IRI.parse _namespace_name "Checkbox" |> NamespacedName
-
+    let Checkbox = _prefix "Checkbox"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#DELETEOperation"></see>
     /// </summary>
-    let DELETEOperation =
-        Namespaced_IRI.parse _namespace_name "DELETEOperation" |> NamespacedName
-
+    let DELETEOperation = _prefix "DELETEOperation"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#DynamicGroup"></see>
     /// </summary>
-    let DynamicGroup =
-        Namespaced_IRI.parse _namespace_name "DynamicGroup" |> NamespacedName
-
+    let DynamicGroup = _prefix "DynamicGroup"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Group"></see>
     /// </summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Listbox"></see>
     /// </summary>
-    let Listbox = Namespaced_IRI.parse _namespace_name "Listbox" |> NamespacedName
+    let Listbox = _prefix "Listbox"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Listitem"></see>
     /// </summary>
-    let Listitem = Namespaced_IRI.parse _namespace_name "Listitem" |> NamespacedName
+    let Listitem = _prefix "Listitem"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Page"></see>
     /// </summary>
-    let Page = Namespaced_IRI.parse _namespace_name "Page" |> NamespacedName
-
+    let Page = _prefix "Page"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#READOperation"></see>
     /// </summary>
-    let READOperation =
-        Namespaced_IRI.parse _namespace_name "READOperation" |> NamespacedName
-
+    let READOperation = _prefix "READOperation"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Radiobutton"></see>
     /// </summary>
-    let Radiobutton =
-        Namespaced_IRI.parse _namespace_name "Radiobutton" |> NamespacedName
-
+    let Radiobutton = _prefix "Radiobutton"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#Textbox"></see>
     /// </summary>
-    let Textbox = Namespaced_IRI.parse _namespace_name "Textbox" |> NamespacedName
-
+    let Textbox = _prefix "Textbox"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#UPDATEOperation"></see>
     /// </summary>
-    let UPDATEOperation =
-        Namespaced_IRI.parse _namespace_name "UPDATEOperation" |> NamespacedName
-
+    let UPDATEOperation = _prefix "UPDATEOperation"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#WidgetContainer"></see>
     /// </summary>
-    let WidgetContainer =
-        Namespaced_IRI.parse _namespace_name "WidgetContainer" |> NamespacedName
-
+    let WidgetContainer = _prefix "WidgetContainer"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#action"></see>
     /// </summary>
-    let action = Namespaced_IRI.parse _namespace_name "action" |> NamespacedName
+    let action = _prefix "action"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#checked"></see>
     /// </summary>
-    let checked_ = Namespaced_IRI.parse _namespace_name "checked" |> NamespacedName
+    let checked_ = _prefix "checked"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#class"></see>
     /// </summary>
-    let class_ = Namespaced_IRI.parse _namespace_name "class" |> NamespacedName
+    let class_ = _prefix "class"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#command"></see>
     /// </summary>
-    let command = Namespaced_IRI.parse _namespace_name "command" |> NamespacedName
+    let command = _prefix "command"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#disabled"></see>
     /// </summary>
-    let disabled = Namespaced_IRI.parse _namespace_name "disabled" |> NamespacedName
+    let disabled = _prefix "disabled"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#group"></see>
     /// </summary>
-    let group = Namespaced_IRI.parse _namespace_name "group" |> NamespacedName
+    let group = _prefix "group"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#hidden"></see>
     /// </summary>
-    let hidden = Namespaced_IRI.parse _namespace_name "hidden" |> NamespacedName
+    let hidden = _prefix "hidden"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#isPassword"></see>
     /// </summary>
-    let isPassword = Namespaced_IRI.parse _namespace_name "isPassword" |> NamespacedName
+    let isPassword = _prefix "isPassword"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#label"></see>
     /// </summary>
-    let label = Namespaced_IRI.parse _namespace_name "label" |> NamespacedName
+    let label = _prefix "label"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#list"></see>
     /// </summary>
-    let list = Namespaced_IRI.parse _namespace_name "list" |> NamespacedName
+    let list = _prefix "list"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#maxlength"></see>
     /// </summary>
-    let maxlength = Namespaced_IRI.parse _namespace_name "maxlength" |> NamespacedName
+    let maxlength = _prefix "maxlength"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#method"></see>
     /// </summary>
-    let method = Namespaced_IRI.parse _namespace_name "method" |> NamespacedName
+    let method = _prefix "method"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#multiple"></see>
     /// </summary>
-    let multiple = Namespaced_IRI.parse _namespace_name "multiple" |> NamespacedName
+    let multiple = _prefix "multiple"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#row"></see>
     /// </summary>
-    let row = Namespaced_IRI.parse _namespace_name "row" |> NamespacedName
+    let row = _prefix "row"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#selected"></see>
     /// </summary>
-    let selected = Namespaced_IRI.parse _namespace_name "selected" |> NamespacedName
+    let selected = _prefix "selected"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#size"></see>
     /// </summary>
-    let size = Namespaced_IRI.parse _namespace_name "size" |> NamespacedName
+    let size = _prefix "size"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://purl.org/NET/raul#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"

@@ -1,1133 +1,1037 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.NorthAmericanEntities.USExampleIndividuals.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_usind =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociation-US-DE"></see>
     /// </summary>
     let ``BNYMellonNationalAssociation-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociation-US-DE" |> NamespacedName
+        _prefix "BNYMellonNationalAssociation-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StandardCharteredSecuritiesNorthAmericaLLC-US-DE"></see>
     /// </summary>
     let ``StandardCharteredSecuritiesNorthAmericaLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "StandardCharteredSecuritiesNorthAmericaLLC-US-DE" |> NamespacedName
+        _prefix "StandardCharteredSecuritiesNorthAmericaLLC-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/ABNAMROSecuritiesUSALLC-US-DE"></see>
     /// </summary>
-    let ``ABNAMROSecuritiesUSALLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "ABNAMROSecuritiesUSALLC-US-DE" |> NamespacedName
-
+    let ``ABNAMROSecuritiesUSALLC-US-DE`` = _prefix "ABNAMROSecuritiesUSALLC-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLC-US-DE"></see>
     /// </summary>
-    let ``CiticorpLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLC-US-DE" |> NamespacedName
-
+    let ``CiticorpLLC-US-DE`` = _prefix "CiticorpLLC-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNPParibasUSAINC-US-DE"></see>
     /// </summary>
-    let ``BNPParibasUSAINC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "BNPParibasUSAINC-US-DE" |> NamespacedName
-
+    let ``BNPParibasUSAINC-US-DE`` = _prefix "BNPParibasUSAINC-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporation-US-MA"></see>
     /// </summary>
-    let ``StateStreetCorporation-US-MA`` =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporation-US-MA" |> NamespacedName
+    let ``StateStreetCorporation-US-MA`` = _prefix "StateStreetCorporation-US-MA"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompany-US-MA"></see>
     /// </summary>
     let ``StateStreetBankAndTrustCompany-US-MA`` =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompany-US-MA" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompany-US-MA"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupInc-US-DE"></see>
     /// </summary>
-    let ``CitigroupInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CitigroupInc-US-DE" |> NamespacedName
-
+    let ``CitigroupInc-US-DE`` = _prefix "CitigroupInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLC-US-DE"></see>
     /// </summary>
-    let ``FMRLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "FMRLLC-US-DE" |> NamespacedName
+    let ``FMRLLC-US-DE`` = _prefix "FMRLLC-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociation-US"></see>
     /// </summary>
     let ``JPMorganChaseBankNationalAssociation-US`` =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociation-US" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociation-US"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/DeutscheBankAktiengesellschaft-DE"></see>
     /// </summary>
     let ``DeutscheBankAktiengesellschaft-DE`` =
-        Namespaced_IRI.parse _namespace_name "DeutscheBankAktiengesellschaft-DE" |> NamespacedName
+        _prefix "DeutscheBankAktiengesellschaft-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCo-US-DE"></see>
     /// </summary>
-    let ``JPMorganChaseAndCo-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCo-US-DE" |> NamespacedName
-
+    let ``JPMorganChaseAndCo-US-DE`` = _prefix "JPMorganChaseAndCo-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/MorganStanleyAndCoLLC-US-DE"></see>
     /// </summary>
-    let ``MorganStanleyAndCoLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "MorganStanleyAndCoLLC-US-DE" |> NamespacedName
+    let ``MorganStanleyAndCoLLC-US-DE`` = _prefix "MorganStanleyAndCoLLC-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociation-US"></see>
     /// </summary>
     let ``BankOfAmericaNationalAssociation-US`` =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociation-US" |> NamespacedName
+        _prefix "BankOfAmericaNationalAssociation-US"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNA-US-DE"></see>
     /// </summary>
-    let ``CitibankNA-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CitibankNA-US-DE" |> NamespacedName
-
+    let ``CitibankNA-US-DE`` = _prefix "CitibankNA-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/GoldmanSachsAndCoLLC-US-NY"></see>
     /// </summary>
-    let ``GoldmanSachsAndCoLLC-US-NY`` =
-        Namespaced_IRI.parse _namespace_name "GoldmanSachsAndCoLLC-US-NY" |> NamespacedName
+    let ``GoldmanSachsAndCoLLC-US-NY`` = _prefix "GoldmanSachsAndCoLLC-US-NY"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociation-US"></see>
     /// </summary>
     let ``WellsFargoBankNationalAssociation-US`` =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociation-US" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociation-US"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLC-US-DE"></see>
     /// </summary>
-    let ``WFCHoldingsLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLC-US-DE" |> NamespacedName
-
+    let ``WFCHoldingsLLC-US-DE`` = _prefix "WFCHoldingsLLC-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompany-US-DE"></see>
     /// </summary>
-    let ``WellsFargoAndCompany-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompany-US-DE" |> NamespacedName
+    let ``WellsFargoAndCompany-US-DE`` = _prefix "WellsFargoAndCompany-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporation-US-DE"></see>
     /// </summary>
     let ``BankOfNewYorkMellonCorporation-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporation-US-DE" |> NamespacedName
+        _prefix "BankOfNewYorkMellonCorporation-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/AlphabetIncCorporateAddress"></see>
     /// </summary>
-    let AlphabetIncCorporateAddress =
-        Namespaced_IRI.parse _namespace_name "AlphabetIncCorporateAddress" |> NamespacedName
-
+    let AlphabetIncCorporateAddress = _prefix "AlphabetIncCorporateAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/AppleIncCorporateAddress"></see>
     /// </summary>
-    let AppleIncCorporateAddress =
-        Namespaced_IRI.parse _namespace_name "AppleIncCorporateAddress" |> NamespacedName
+    let AppleIncCorporateAddress = _prefix "AppleIncCorporateAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/InternationalBusinessMachinesCorporationAddress"></see>
     /// </summary>
     let InternationalBusinessMachinesCorporationAddress =
-        Namespaced_IRI.parse _namespace_name "InternationalBusinessMachinesCorporationAddress" |> NamespacedName
+        _prefix "InternationalBusinessMachinesCorporationAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheCoca-ColaCompanyCorporateAddress"></see>
     /// </summary>
     let ``TheCoca-ColaCompanyCorporateAddress`` =
-        Namespaced_IRI.parse _namespace_name "TheCoca-ColaCompanyCorporateAddress" |> NamespacedName
+        _prefix "TheCoca-ColaCompanyCorporateAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheHomeDepotIncCorporateAddress"></see>
     /// </summary>
-    let TheHomeDepotIncCorporateAddress =
-        Namespaced_IRI.parse _namespace_name "TheHomeDepotIncCorporateAddress" |> NamespacedName
+    let TheHomeDepotIncCorporateAddress = _prefix "TheHomeDepotIncCorporateAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheProctorAndGambleCompanyCorporateAddress"></see>
     /// </summary>
     let TheProctorAndGambleCompanyCorporateAddress =
-        Namespaced_IRI.parse _namespace_name "TheProctorAndGambleCompanyCorporateAddress" |> NamespacedName
+        _prefix "TheProctorAndGambleCompanyCorporateAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/ABNAMROSecurities"></see>
     /// </summary>
-    let ABNAMROSecurities =
-        Namespaced_IRI.parse _namespace_name "ABNAMROSecurities" |> NamespacedName
+    let ABNAMROSecurities = _prefix "ABNAMROSecurities"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/ABNAMROSecuritiesHeadquartersAddress"></see>
     /// </summary>
     let ABNAMROSecuritiesHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "ABNAMROSecuritiesHeadquartersAddress" |> NamespacedName
+        _prefix "ABNAMROSecuritiesHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/ABNAMROSecuritiesLegalAddress"></see>
     /// </summary>
-    let ABNAMROSecuritiesLegalAddress =
-        Namespaced_IRI.parse _namespace_name "ABNAMROSecuritiesLegalAddress" |> NamespacedName
+    let ABNAMROSecuritiesLegalAddress = _prefix "ABNAMROSecuritiesLegalAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/ABNAMROSecuritiesLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let ABNAMROSecuritiesLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "ABNAMROSecuritiesLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "ABNAMROSecuritiesLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/AlphabetIncLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let AlphabetIncLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "AlphabetIncLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "AlphabetIncLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/AppleIncLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let AppleIncLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "AppleIncLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "AppleIncLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociation"></see>
     /// </summary>
-    let BNYMellonNationalAssociation =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociation" |> NamespacedName
+    let BNYMellonNationalAssociation = _prefix "BNYMellonNationalAssociation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationDateEstablished"></see>
     /// </summary>
     let BNYMellonNationalAssociationDateEstablished =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationDateEstablished" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationDateInsured"></see>
     /// </summary>
     let BNYMellonNationalAssociationDateInsured =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationDateInsured" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationDateInsured"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationAddress"></see>
     /// </summary>
     let BNYMellonNationalAssociationAddress =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationAddress" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporation"></see>
     /// </summary>
-    let BankOfNewYorkMellonCorporation =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporation" |> NamespacedName
+    let BankOfNewYorkMellonCorporation = _prefix "BankOfNewYorkMellonCorporation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationBusinessEntityIdentifier-SD"></see>
     /// </summary>
     let ``BNYMellonNationalAssociationBusinessEntityIdentifier-SD`` =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationBusinessEntityIdentifier-SD" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationBusinessEntityIdentifier-SD"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationBusinessIdentifierCode"></see>
     /// </summary>
     let BNYMellonNationalAssociationBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationBusinessIdentifierCode" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationBusinessPartyPrefix"></see>
     /// </summary>
     let BNYMellonNationalAssociationBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationBusinessPartyPrefix" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationBusinessPartySuffix"></see>
     /// </summary>
     let BNYMellonNationalAssociationBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationBusinessPartySuffix" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationFDICCertificateNumber"></see>
     /// </summary>
     let BNYMellonNationalAssociationFDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationFDICCertificateNumber" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationFDICCertificateNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let BNYMellonNationalAssociationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationRSSDIdentifier"></see>
     /// </summary>
     let BNYMellonNationalAssociationRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationRSSDIdentifier" |> NamespacedName
+        _prefix "BNYMellonNationalAssociationRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BNYMellonNationalAssociationRTN"></see>
     /// </summary>
-    let BNYMellonNationalAssociationRTN =
-        Namespaced_IRI.parse _namespace_name "BNYMellonNationalAssociationRTN" |> NamespacedName
-
+    let BNYMellonNationalAssociationRTN = _prefix "BNYMellonNationalAssociationRTN"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociation"></see>
     /// </summary>
-    let BankOfAmericaNationalAssociation =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociation" |> NamespacedName
+    let BankOfAmericaNationalAssociation = _prefix "BankOfAmericaNationalAssociation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociationDateEstablished"></see>
     /// </summary>
     let BankOfAmericaNationalAssociationDateEstablished =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociationDateEstablished" |> NamespacedName
+        _prefix "BankOfAmericaNationalAssociationDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociationDateInsured"></see>
     /// </summary>
     let BankOfAmericaNationalAssociationDateInsured =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociationDateInsured" |> NamespacedName
+        _prefix "BankOfAmericaNationalAssociationDateInsured"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociationHeadquartersAddress"></see>
     /// </summary>
     let BankOfAmericaNationalAssociationHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociationHeadquartersAddress" |> NamespacedName
+        _prefix "BankOfAmericaNationalAssociationHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociationLegalAddress"></see>
     /// </summary>
     let BankOfAmericaNationalAssociationLegalAddress =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociationLegalAddress" |> NamespacedName
+        _prefix "BankOfAmericaNationalAssociationLegalAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfAmericaNationalAssociationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let BankOfAmericaNationalAssociationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BankOfAmericaNationalAssociationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "BankOfAmericaNationalAssociationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporationIncorporationDate"></see>
     /// </summary>
     let BankOfNewYorkMellonCorporationIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporationIncorporationDate" |> NamespacedName
+        _prefix "BankOfNewYorkMellonCorporationIncorporationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporationAddress"></see>
     /// </summary>
     let BankOfNewYorkMellonCorporationAddress =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporationAddress" |> NamespacedName
+        _prefix "BankOfNewYorkMellonCorporationAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporationBusinessEntityIdentifier"></see>
     /// </summary>
     let BankOfNewYorkMellonCorporationBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporationBusinessEntityIdentifier" |> NamespacedName
+        _prefix "BankOfNewYorkMellonCorporationBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let BankOfNewYorkMellonCorporationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "BankOfNewYorkMellonCorporationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonCorporationRSSDIdentifier"></see>
     /// </summary>
     let BankOfNewYorkMellonCorporationRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonCorporationRSSDIdentifier" |> NamespacedName
+        _prefix "BankOfNewYorkMellonCorporationRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/BankOfNewYorkMellonDateEstablished"></see>
     /// </summary>
     let BankOfNewYorkMellonDateEstablished =
-        Namespaced_IRI.parse _namespace_name "BankOfNewYorkMellonDateEstablished" |> NamespacedName
+        _prefix "BankOfNewYorkMellonDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorp"></see>
     /// </summary>
     let CitiCardsSouthDakotaAcceptanceCorp =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorp" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorp"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorp-US-DE"></see>
     /// </summary>
     let ``CitiCardsSouthDakotaAcceptanceCorp-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorp-US-DE" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorp-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorpIncorporationDate"></see>
     /// </summary>
     let CitiCardsSouthDakotaAcceptanceCorpIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorpIncorporationDate" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorpIncorporationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorpHeadquartersAddress"></see>
     /// </summary>
     let CitiCardsSouthDakotaAcceptanceCorpHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorpHeadquartersAddress" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorpHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupInc"></see>
     /// </summary>
-    let CitigroupInc =
-        Namespaced_IRI.parse _namespace_name "CitigroupInc" |> NamespacedName
+    let CitigroupInc = _prefix "CitigroupInc"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorpOwnership"></see>
     /// </summary>
     let CitiCardsSouthDakotaAcceptanceCorpOwnership =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorpOwnership" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorpOwnership"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorpBusinessEntityIdentifier"></see>
     /// </summary>
     let CitiCardsSouthDakotaAcceptanceCorpBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorpBusinessEntityIdentifier" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorpBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitiCardsSouthDakotaAcceptanceCorpRSSDIdentifier"></see>
     /// </summary>
     let CitiCardsSouthDakotaAcceptanceCorpRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "CitiCardsSouthDakotaAcceptanceCorpRSSDIdentifier" |> NamespacedName
+        _prefix "CitiCardsSouthDakotaAcceptanceCorpRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNA"></see>
     /// </summary>
-    let CitibankNA = Namespaced_IRI.parse _namespace_name "CitibankNA" |> NamespacedName
-
+    let CitibankNA = _prefix "CitibankNA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNADateEstablished"></see>
     /// </summary>
-    let CitibankNADateEstablished =
-        Namespaced_IRI.parse _namespace_name "CitibankNADateEstablished" |> NamespacedName
-
+    let CitibankNADateEstablished = _prefix "CitibankNADateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNADateInsured"></see>
     /// </summary>
-    let CitibankNADateInsured =
-        Namespaced_IRI.parse _namespace_name "CitibankNADateInsured" |> NamespacedName
-
+    let CitibankNADateInsured = _prefix "CitibankNADateInsured"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNAIncorporationDate"></see>
     /// </summary>
-    let CitibankNAIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "CitibankNAIncorporationDate" |> NamespacedName
-
+    let CitibankNAIncorporationDate = _prefix "CitibankNAIncorporationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNAHeadquartersAddress"></see>
     /// </summary>
-    let CitibankNAHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "CitibankNAHeadquartersAddress" |> NamespacedName
-
+    let CitibankNAHeadquartersAddress = _prefix "CitibankNAHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNALegalAddress"></see>
     /// </summary>
-    let CitibankNALegalAddress =
-        Namespaced_IRI.parse _namespace_name "CitibankNALegalAddress" |> NamespacedName
+    let CitibankNALegalAddress = _prefix "CitibankNALegalAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNABusinessEntityIdentifier"></see>
     /// </summary>
     let CitibankNABusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CitibankNABusinessEntityIdentifier" |> NamespacedName
+        _prefix "CitibankNABusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNAFDICCertificateNumber"></see>
     /// </summary>
-    let CitibankNAFDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "CitibankNAFDICCertificateNumber" |> NamespacedName
+    let CitibankNAFDICCertificateNumber = _prefix "CitibankNAFDICCertificateNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNALegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let CitibankNALegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "CitibankNALegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "CitibankNALegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNAOwnership"></see>
     /// </summary>
-    let CitibankNAOwnership =
-        Namespaced_IRI.parse _namespace_name "CitibankNAOwnership" |> NamespacedName
-
+    let CitibankNAOwnership = _prefix "CitibankNAOwnership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNARSSDIdentifier"></see>
     /// </summary>
-    let CitibankNARSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "CitibankNARSSDIdentifier" |> NamespacedName
-
+    let CitibankNARSSDIdentifier = _prefix "CitibankNARSSDIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitibankNARTN"></see>
     /// </summary>
-    let CitibankNARTN =
-        Namespaced_IRI.parse _namespace_name "CitibankNARTN" |> NamespacedName
-
+    let CitibankNARTN = _prefix "CitibankNARTN"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLC"></see>
     /// </summary>
-    let CiticorpLLC =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLC" |> NamespacedName
-
+    let CiticorpLLC = _prefix "CiticorpLLC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLCRegistrationDate"></see>
     /// </summary>
-    let CiticorpLLCRegistrationDate =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLCRegistrationDate" |> NamespacedName
-
+    let CiticorpLLCRegistrationDate = _prefix "CiticorpLLCRegistrationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupIncHeadquartersAddress"></see>
     /// </summary>
-    let CitigroupIncHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "CitigroupIncHeadquartersAddress" |> NamespacedName
+    let CitigroupIncHeadquartersAddress = _prefix "CitigroupIncHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLCBusinessEntityIdentifier"></see>
     /// </summary>
     let CiticorpLLCBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLCBusinessEntityIdentifier" |> NamespacedName
+        _prefix "CiticorpLLCBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLCLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let CiticorpLLCLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLCLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "CiticorpLLCLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLCOwnership"></see>
     /// </summary>
-    let CiticorpLLCOwnership =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLCOwnership" |> NamespacedName
-
+    let CiticorpLLCOwnership = _prefix "CiticorpLLCOwnership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CiticorpLLCRSSDIdentifier"></see>
     /// </summary>
-    let CiticorpLLCRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "CiticorpLLCRSSDIdentifier" |> NamespacedName
-
+    let CiticorpLLCRSSDIdentifier = _prefix "CiticorpLLCRSSDIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupIncIncorporationDate"></see>
     /// </summary>
-    let CitigroupIncIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "CitigroupIncIncorporationDate" |> NamespacedName
+    let CitigroupIncIncorporationDate = _prefix "CitigroupIncIncorporationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupIncBusinessEntityIdentifier"></see>
     /// </summary>
     let CitigroupIncBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CitigroupIncBusinessEntityIdentifier" |> NamespacedName
+        _prefix "CitigroupIncBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupIncLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let CitigroupIncLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "CitigroupIncLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "CitigroupIncLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/CitigroupIncRSSDIdentifier"></see>
     /// </summary>
-    let CitigroupIncRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "CitigroupIncRSSDIdentifier" |> NamespacedName
-
+    let CitigroupIncRSSDIdentifier = _prefix "CitigroupIncRSSDIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLC"></see>
     /// </summary>
-    let FMRLLC = Namespaced_IRI.parse _namespace_name "FMRLLC" |> NamespacedName
-
+    let FMRLLC = _prefix "FMRLLC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLCDateEstablished"></see>
     /// </summary>
-    let FMRLLCDateEstablished =
-        Namespaced_IRI.parse _namespace_name "FMRLLCDateEstablished" |> NamespacedName
-
+    let FMRLLCDateEstablished = _prefix "FMRLLCDateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLCHeadquartersAddress"></see>
     /// </summary>
-    let FMRLLCHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "FMRLLCHeadquartersAddress" |> NamespacedName
-
+    let FMRLLCHeadquartersAddress = _prefix "FMRLLCHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLCBusinessEntityIdentifier"></see>
     /// </summary>
-    let FMRLLCBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "FMRLLCBusinessEntityIdentifier" |> NamespacedName
+    let FMRLLCBusinessEntityIdentifier = _prefix "FMRLLCBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLCLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let FMRLLCLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "FMRLLCLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "FMRLLCLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/FMRLLCRSSDIdentifier"></see>
     /// </summary>
-    let FMRLLCRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "FMRLLCRSSDIdentifier" |> NamespacedName
+    let FMRLLCRSSDIdentifier = _prefix "FMRLLCRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/InternationalBusinessMachinesCorporationBusinessIdentifierCode"></see>
     /// </summary>
     let InternationalBusinessMachinesCorporationBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "InternationalBusinessMachinesCorporationBusinessIdentifierCode" |> NamespacedName
+        _prefix "InternationalBusinessMachinesCorporationBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/InternationalBusinessMachinesCorporationBusinessPartyPrefix"></see>
     /// </summary>
     let InternationalBusinessMachinesCorporationBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "InternationalBusinessMachinesCorporationBusinessPartyPrefix" |> NamespacedName
+        _prefix "InternationalBusinessMachinesCorporationBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/InternationalBusinessMachinesCorporationBusinessPartySuffix"></see>
     /// </summary>
     let InternationalBusinessMachinesCorporationBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "InternationalBusinessMachinesCorporationBusinessPartySuffix" |> NamespacedName
+        _prefix "InternationalBusinessMachinesCorporationBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/InternationalBusinessMachinesCorporationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let InternationalBusinessMachinesCorporationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "InternationalBusinessMachinesCorporationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "InternationalBusinessMachinesCorporationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCo"></see>
     /// </summary>
-    let JPMorganChaseAndCo =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCo" |> NamespacedName
+    let JPMorganChaseAndCo = _prefix "JPMorganChaseAndCo"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoIncorporationDate"></see>
     /// </summary>
     let JPMorganChaseAndCoIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoIncorporationDate" |> NamespacedName
+        _prefix "JPMorganChaseAndCoIncorporationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoHeadquartersAddress"></see>
     /// </summary>
     let JPMorganChaseAndCoHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoHeadquartersAddress" |> NamespacedName
+        _prefix "JPMorganChaseAndCoHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoBusinessEntityIdentifier"></see>
     /// </summary>
     let JPMorganChaseAndCoBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoBusinessEntityIdentifier" |> NamespacedName
+        _prefix "JPMorganChaseAndCoBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoBusinessIdentifierCode"></see>
     /// </summary>
     let JPMorganChaseAndCoBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoBusinessIdentifierCode" |> NamespacedName
+        _prefix "JPMorganChaseAndCoBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoBusinessPartyPrefix"></see>
     /// </summary>
     let JPMorganChaseAndCoBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoBusinessPartyPrefix" |> NamespacedName
+        _prefix "JPMorganChaseAndCoBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoBusinessPartySuffix"></see>
     /// </summary>
     let JPMorganChaseAndCoBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoBusinessPartySuffix" |> NamespacedName
+        _prefix "JPMorganChaseAndCoBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let JPMorganChaseAndCoLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "JPMorganChaseAndCoLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseAndCoRSSDIdentifier"></see>
     /// </summary>
-    let JPMorganChaseAndCoRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseAndCoRSSDIdentifier" |> NamespacedName
+    let JPMorganChaseAndCoRSSDIdentifier = _prefix "JPMorganChaseAndCoRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociation"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociation =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociation" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationDateEstablished"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationDateEstablished =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationDateEstablished" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationDateInsured"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationDateInsured =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationDateInsured" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationDateInsured"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationRegistrationDate"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationRegistrationDate =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationRegistrationDate" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationRegistrationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationAddress"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationAddress =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationAddress" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationBusinessEntityIdentifier"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationBusinessEntityIdentifier" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationBusinessIdentifierCode"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationBusinessIdentifierCode" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationBusinessPartyPrefix"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationBusinessPartyPrefix" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationBusinessPartySuffix"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationBusinessPartySuffix" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationFDICCertificateNumber"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationFDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationFDICCertificateNumber" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationFDICCertificateNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationRSSDIdentifier"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationRSSDIdentifier" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/JPMorganChaseBankNationalAssociationRTN"></see>
     /// </summary>
     let JPMorganChaseBankNationalAssociationRTN =
-        Namespaced_IRI.parse _namespace_name "JPMorganChaseBankNationalAssociationRTN" |> NamespacedName
+        _prefix "JPMorganChaseBankNationalAssociationRTN"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/MorganStanleyAndCoLLC"></see>
     /// </summary>
-    let MorganStanleyAndCoLLC =
-        Namespaced_IRI.parse _namespace_name "MorganStanleyAndCoLLC" |> NamespacedName
+    let MorganStanleyAndCoLLC = _prefix "MorganStanleyAndCoLLC"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/MorganStanleyAndCoLLCHeadquartersAddress"></see>
     /// </summary>
     let MorganStanleyAndCoLLCHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "MorganStanleyAndCoLLCHeadquartersAddress" |> NamespacedName
+        _prefix "MorganStanleyAndCoLLCHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/MorganStanleyAndCoLLCLegalAddress"></see>
     /// </summary>
-    let MorganStanleyAndCoLLCLegalAddress =
-        Namespaced_IRI.parse _namespace_name "MorganStanleyAndCoLLCLegalAddress" |> NamespacedName
+    let MorganStanleyAndCoLLCLegalAddress = _prefix "MorganStanleyAndCoLLCLegalAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/MorganStanleyAndCoLLCLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let MorganStanleyAndCoLLCLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "MorganStanleyAndCoLLCLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "MorganStanleyAndCoLLCLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBank"></see>
     /// </summary>
-    let PinnacleBank =
-        Namespaced_IRI.parse _namespace_name "PinnacleBank" |> NamespacedName
-
+    let PinnacleBank = _prefix "PinnacleBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBank-US-CA"></see>
     /// </summary>
-    let ``PinnacleBank-US-CA`` =
-        Namespaced_IRI.parse _namespace_name "PinnacleBank-US-CA" |> NamespacedName
-
+    let ``PinnacleBank-US-CA`` = _prefix "PinnacleBank-US-CA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankHeadquartersAddress"></see>
     /// </summary>
-    let PinnacleBankHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankHeadquartersAddress" |> NamespacedName
-
+    let PinnacleBankHeadquartersAddress = _prefix "PinnacleBankHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankLegalAddress"></see>
     /// </summary>
-    let PinnacleBankLegalAddress =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankLegalAddress" |> NamespacedName
+    let PinnacleBankLegalAddress = _prefix "PinnacleBankLegalAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankBusinessEntityIdentifier"></see>
     /// </summary>
     let PinnacleBankBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankBusinessEntityIdentifier" |> NamespacedName
+        _prefix "PinnacleBankBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankCaliforniaCertificateOfAuthority"></see>
     /// </summary>
     let PinnacleBankCaliforniaCertificateOfAuthority =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankCaliforniaCertificateOfAuthority" |> NamespacedName
+        _prefix "PinnacleBankCaliforniaCertificateOfAuthority"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankCaliforniaCertificateOfAuthorityIdentifier"></see>
     /// </summary>
     let PinnacleBankCaliforniaCertificateOfAuthorityIdentifier =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankCaliforniaCertificateOfAuthorityIdentifier" |> NamespacedName
+        _prefix "PinnacleBankCaliforniaCertificateOfAuthorityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankDateOfRegistration"></see>
     /// </summary>
-    let PinnacleBankDateOfRegistration =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankDateOfRegistration" |> NamespacedName
-
+    let PinnacleBankDateOfRegistration = _prefix "PinnacleBankDateOfRegistration"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankFDICCertificateNumber"></see>
     /// </summary>
-    let PinnacleBankFDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankFDICCertificateNumber" |> NamespacedName
-
+    let PinnacleBankFDICCertificateNumber = _prefix "PinnacleBankFDICCertificateNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankRSSDIdentifier"></see>
     /// </summary>
-    let PinnacleBankRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankRSSDIdentifier" |> NamespacedName
-
+    let PinnacleBankRSSDIdentifier = _prefix "PinnacleBankRSSDIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/PinnacleBankRTN"></see>
     /// </summary>
-    let PinnacleBankRTN =
-        Namespaced_IRI.parse _namespace_name "PinnacleBankRTN" |> NamespacedName
-
+    let PinnacleBankRTN = _prefix "PinnacleBankRTN"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompany"></see>
     /// </summary>
-    let StateStreetBankAndTrustCompany =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompany" |> NamespacedName
+    let StateStreetBankAndTrustCompany = _prefix "StateStreetBankAndTrustCompany"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyDateEstablished"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyDateEstablished =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyDateEstablished" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyDateInsured"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyDateInsured =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyDateInsured" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyDateInsured"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyRegistrationDate"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyRegistrationDate =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyRegistrationDate" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyRegistrationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporationHeadquartersAddress"></see>
     /// </summary>
     let StateStreetCorporationHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporationHeadquartersAddress" |> NamespacedName
+        _prefix "StateStreetCorporationHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporation"></see>
     /// </summary>
-    let StateStreetCorporation =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporation" |> NamespacedName
+    let StateStreetCorporation = _prefix "StateStreetCorporation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyBusinessEntityIdentifier"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyBusinessEntityIdentifier" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyBusinessIdentifierCode"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyBusinessIdentifierCode" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyBusinessPartyPrefix"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyBusinessPartyPrefix" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyBusinessPartySuffix"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyBusinessPartySuffix" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyFDICCertificateNumber"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyFDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyFDICCertificateNumber" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyFDICCertificateNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyRSSDIdentifier"></see>
     /// </summary>
     let StateStreetBankAndTrustCompanyRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyRSSDIdentifier" |> NamespacedName
+        _prefix "StateStreetBankAndTrustCompanyRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetBankAndTrustCompanyRTN"></see>
     /// </summary>
-    let StateStreetBankAndTrustCompanyRTN =
-        Namespaced_IRI.parse _namespace_name "StateStreetBankAndTrustCompanyRTN" |> NamespacedName
+    let StateStreetBankAndTrustCompanyRTN = _prefix "StateStreetBankAndTrustCompanyRTN"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporationIncorporationDate"></see>
     /// </summary>
     let StateStreetCorporationIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporationIncorporationDate" |> NamespacedName
+        _prefix "StateStreetCorporationIncorporationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporationBusinessEntityIdentifier"></see>
     /// </summary>
     let StateStreetCorporationBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporationBusinessEntityIdentifier" |> NamespacedName
+        _prefix "StateStreetCorporationBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let StateStreetCorporationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "StateStreetCorporationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/StateStreetCorporationRSSDIdentifier"></see>
     /// </summary>
     let StateStreetCorporationRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "StateStreetCorporationRSSDIdentifier" |> NamespacedName
+        _prefix "StateStreetCorporationRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheCoca-ColaCompanyBusinessIdentifierCode"></see>
     /// </summary>
     let ``TheCoca-ColaCompanyBusinessIdentifierCode`` =
-        Namespaced_IRI.parse _namespace_name "TheCoca-ColaCompanyBusinessIdentifierCode" |> NamespacedName
+        _prefix "TheCoca-ColaCompanyBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheCoca-ColaCompanyBusinessPartyPrefix"></see>
     /// </summary>
     let ``TheCoca-ColaCompanyBusinessPartyPrefix`` =
-        Namespaced_IRI.parse _namespace_name "TheCoca-ColaCompanyBusinessPartyPrefix" |> NamespacedName
+        _prefix "TheCoca-ColaCompanyBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheCoca-ColaCompanyBusinessPartySuffix"></see>
     /// </summary>
     let ``TheCoca-ColaCompanyBusinessPartySuffix`` =
-        Namespaced_IRI.parse _namespace_name "TheCoca-ColaCompanyBusinessPartySuffix" |> NamespacedName
+        _prefix "TheCoca-ColaCompanyBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheCoca-ColaCompanyLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let ``TheCoca-ColaCompanyLegalEntityIdentifierRegistryEntry`` =
-        Namespaced_IRI.parse _namespace_name "TheCoca-ColaCompanyLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "TheCoca-ColaCompanyLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheHomeDepotIncLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let TheHomeDepotIncLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "TheHomeDepotIncLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "TheHomeDepotIncLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheProctorAndGambleCompanyBusinessIdentifierCode"></see>
     /// </summary>
     let TheProctorAndGambleCompanyBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "TheProctorAndGambleCompanyBusinessIdentifierCode" |> NamespacedName
+        _prefix "TheProctorAndGambleCompanyBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheProctorAndGambleCompanyBusinessPartyPrefix"></see>
     /// </summary>
     let TheProctorAndGambleCompanyBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "TheProctorAndGambleCompanyBusinessPartyPrefix" |> NamespacedName
+        _prefix "TheProctorAndGambleCompanyBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheProctorAndGambleCompanyBusinessPartySuffix"></see>
     /// </summary>
     let TheProctorAndGambleCompanyBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "TheProctorAndGambleCompanyBusinessPartySuffix" |> NamespacedName
+        _prefix "TheProctorAndGambleCompanyBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheProctorAndGambleCompanyDateEstablished"></see>
     /// </summary>
     let TheProctorAndGambleCompanyDateEstablished =
-        Namespaced_IRI.parse _namespace_name "TheProctorAndGambleCompanyDateEstablished" |> NamespacedName
+        _prefix "TheProctorAndGambleCompanyDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/TheProctorAndGambleCompanyLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let TheProctorAndGambleCompanyLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "TheProctorAndGambleCompanyLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "TheProctorAndGambleCompanyLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLC"></see>
     /// </summary>
-    let WFCHoldingsLLC =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLC" |> NamespacedName
-
+    let WFCHoldingsLLC = _prefix "WFCHoldingsLLC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLCIncorporationDate"></see>
     /// </summary>
-    let WFCHoldingsLLCIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLCIncorporationDate" |> NamespacedName
-
+    let WFCHoldingsLLCIncorporationDate = _prefix "WFCHoldingsLLCIncorporationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLCHeadquartersAddress"></see>
     /// </summary>
-    let WFCHoldingsLLCHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLCHeadquartersAddress" |> NamespacedName
-
+    let WFCHoldingsLLCHeadquartersAddress = _prefix "WFCHoldingsLLCHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompany"></see>
     /// </summary>
-    let WellsFargoAndCompany =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompany" |> NamespacedName
-
+    let WellsFargoAndCompany = _prefix "WellsFargoAndCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociation"></see>
     /// </summary>
-    let WellsFargoBankNationalAssociation =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociation" |> NamespacedName
+    let WellsFargoBankNationalAssociation = _prefix "WellsFargoBankNationalAssociation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLCBusinessEntityIdentifier"></see>
     /// </summary>
     let WFCHoldingsLLCBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLCBusinessEntityIdentifier" |> NamespacedName
+        _prefix "WFCHoldingsLLCBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLCLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let WFCHoldingsLLCLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLCLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "WFCHoldingsLLCLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WFCHoldingsLLCOwnership"></see>
     /// </summary>
-    let WFCHoldingsLLCOwnership =
-        Namespaced_IRI.parse _namespace_name "WFCHoldingsLLCOwnership" |> NamespacedName
+    let WFCHoldingsLLCOwnership = _prefix "WFCHoldingsLLCOwnership"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompanyIncorporationDate"></see>
     /// </summary>
     let WellsFargoAndCompanyIncorporationDate =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompanyIncorporationDate" |> NamespacedName
+        _prefix "WellsFargoAndCompanyIncorporationDate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompanyHeadquartersAddress"></see>
     /// </summary>
     let WellsFargoAndCompanyHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompanyHeadquartersAddress" |> NamespacedName
+        _prefix "WellsFargoAndCompanyHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompanyBusinessEntityIdentifier"></see>
     /// </summary>
     let WellsFargoAndCompanyBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompanyBusinessEntityIdentifier" |> NamespacedName
+        _prefix "WellsFargoAndCompanyBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompanyLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let WellsFargoAndCompanyLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompanyLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "WellsFargoAndCompanyLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoAndCompanyRSSDIdentifier"></see>
     /// </summary>
     let WellsFargoAndCompanyRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "WellsFargoAndCompanyRSSDIdentifier" |> NamespacedName
+        _prefix "WellsFargoAndCompanyRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationDateEstablished"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationDateEstablished =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationDateEstablished" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationDateInsured"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationDateInsured =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationDateInsured" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationDateInsured"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationHeadquartersAddress"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationHeadquartersAddress" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationLegalAddress"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationLegalAddress =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationLegalAddress" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationLegalAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationBusinessIdentifierCode"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationBusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationBusinessIdentifierCode" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationBusinessIdentifierCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationBusinessPartyPrefix"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationBusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationBusinessPartyPrefix" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationBusinessPartyPrefix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationBusinessPartySuffix"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationBusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationBusinessPartySuffix" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationBusinessPartySuffix"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationFDICCertificateNumber"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationFDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationFDICCertificateNumber" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationFDICCertificateNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationOwnership"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationOwnership =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationOwnership" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationOwnership"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationRSSDIdentifier"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationRSSDIdentifier =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationRSSDIdentifier" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationRSSDIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USExampleIndividuals/WellsFargoBankNationalAssociationRTN"></see>
     /// </summary>
     let WellsFargoBankNationalAssociationRTN =
-        Namespaced_IRI.parse _namespace_name "WellsFargoBankNationalAssociationRTN" |> NamespacedName
+        _prefix "WellsFargoBankNationalAssociationRTN"

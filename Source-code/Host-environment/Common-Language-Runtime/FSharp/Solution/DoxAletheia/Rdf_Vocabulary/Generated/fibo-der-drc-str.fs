@@ -1,145 +1,115 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.StructuredInstruments.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_str =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/BarrierCapitalProtectionCertificate"></see>
     /// </summary>
     let BarrierCapitalProtectionCertificate =
-        Namespaced_IRI.parse _namespace_name "BarrierCapitalProtectionCertificate" |> NamespacedName
+        _prefix "BarrierCapitalProtectionCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/CapitalProtectedProduct"></see>
     /// </summary>
-    let CapitalProtectedProduct =
-        Namespaced_IRI.parse _namespace_name "CapitalProtectedProduct" |> NamespacedName
-
+    let CapitalProtectedProduct = _prefix "CapitalProtectedProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/ParticipationCertificate"></see>
     /// </summary>
-    let ParticipationCertificate =
-        Namespaced_IRI.parse _namespace_name "ParticipationCertificate" |> NamespacedName
-
+    let ParticipationCertificate = _prefix "ParticipationCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/BarrierDiscountCertificate"></see>
     /// </summary>
-    let BarrierDiscountCertificate =
-        Namespaced_IRI.parse _namespace_name "BarrierDiscountCertificate" |> NamespacedName
+    let BarrierDiscountCertificate = _prefix "BarrierDiscountCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/BarrierReverseConvertibleCertificate"></see>
     /// </summary>
     let BarrierReverseConvertibleCertificate =
-        Namespaced_IRI.parse _namespace_name "BarrierReverseConvertibleCertificate" |> NamespacedName
+        _prefix "BarrierReverseConvertibleCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/BasketCertificate"></see>
     /// </summary>
-    let BasketCertificate =
-        Namespaced_IRI.parse _namespace_name "BasketCertificate" |> NamespacedName
-
+    let BasketCertificate = _prefix "BasketCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/BonusCertificate"></see>
     /// </summary>
-    let BonusCertificate =
-        Namespaced_IRI.parse _namespace_name "BonusCertificate" |> NamespacedName
-
+    let BonusCertificate = _prefix "BonusCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/StructuredProduct"></see>
     /// </summary>
-    let StructuredProduct =
-        Namespaced_IRI.parse _namespace_name "StructuredProduct" |> NamespacedName
+    let StructuredProduct = _prefix "StructuredProduct"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/CapitalProtectionCertificateWithCoupons"></see>
     /// </summary>
     let CapitalProtectionCertificateWithCoupons =
-        Namespaced_IRI.parse _namespace_name "CapitalProtectionCertificateWithCoupons" |> NamespacedName
+        _prefix "CapitalProtectionCertificateWithCoupons"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/CapitalProtectionCertificateWithParticipation"></see>
     /// </summary>
     let CapitalProtectionCertificateWithParticipation =
-        Namespaced_IRI.parse _namespace_name "CapitalProtectionCertificateWithParticipation" |> NamespacedName
+        _prefix "CapitalProtectionCertificateWithParticipation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/CapitalProtectionConvertibleCertificate"></see>
     /// </summary>
     let CapitalProtectionConvertibleCertificate =
-        Namespaced_IRI.parse _namespace_name "CapitalProtectionConvertibleCertificate" |> NamespacedName
+        _prefix "CapitalProtectionConvertibleCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/DiscountCertificate"></see>
     /// </summary>
-    let DiscountCertificate =
-        Namespaced_IRI.parse _namespace_name "DiscountCertificate" |> NamespacedName
-
+    let DiscountCertificate = _prefix "DiscountCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/ExpressCertificate"></see>
     /// </summary>
-    let ExpressCertificate =
-        Namespaced_IRI.parse _namespace_name "ExpressCertificate" |> NamespacedName
-
+    let ExpressCertificate = _prefix "ExpressCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/IndexCertificate"></see>
     /// </summary>
-    let IndexCertificate =
-        Namespaced_IRI.parse _namespace_name "IndexCertificate" |> NamespacedName
-
+    let IndexCertificate = _prefix "IndexCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/LeveragedProduct"></see>
     /// </summary>
-    let LeveragedProduct =
-        Namespaced_IRI.parse _namespace_name "LeveragedProduct" |> NamespacedName
-
+    let LeveragedProduct = _prefix "LeveragedProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/OutperformanceBonusCertificate"></see>
     /// </summary>
-    let OutperformanceBonusCertificate =
-        Namespaced_IRI.parse _namespace_name "OutperformanceBonusCertificate" |> NamespacedName
-
+    let OutperformanceBonusCertificate = _prefix "OutperformanceBonusCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/OutperformanceCertificate"></see>
     /// </summary>
-    let OutperformanceCertificate =
-        Namespaced_IRI.parse _namespace_name "OutperformanceCertificate" |> NamespacedName
-
+    let OutperformanceCertificate = _prefix "OutperformanceCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/ParticipationInstrument"></see>
     /// </summary>
-    let ParticipationInstrument =
-        Namespaced_IRI.parse _namespace_name "ParticipationInstrument" |> NamespacedName
-
+    let ParticipationInstrument = _prefix "ParticipationInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/ReverseConvertibleCertificate"></see>
     /// </summary>
-    let ReverseConvertibleCertificate =
-        Namespaced_IRI.parse _namespace_name "ReverseConvertibleCertificate" |> NamespacedName
-
+    let ReverseConvertibleCertificate = _prefix "ReverseConvertibleCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/TrackerCertificate"></see>
     /// </summary>
-    let TrackerCertificate =
-        Namespaced_IRI.parse _namespace_name "TrackerCertificate" |> NamespacedName
-
+    let TrackerCertificate = _prefix "TrackerCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/TurboCertificate"></see>
     /// </summary>
-    let TurboCertificate =
-        Namespaced_IRI.parse _namespace_name "TurboCertificate" |> NamespacedName
-
+    let TurboCertificate = _prefix "TurboCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/TwinWinCertificate"></see>
     /// </summary>
-    let TwinWinCertificate =
-        Namespaced_IRI.parse _namespace_name "TwinWinCertificate" |> NamespacedName
-
+    let TwinWinCertificate = _prefix "TwinWinCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/YieldEnhancementProduct"></see>
     /// </summary>
-    let YieldEnhancementProduct =
-        Namespaced_IRI.parse _namespace_name "YieldEnhancementProduct" |> NamespacedName
+    let YieldEnhancementProduct = _prefix "YieldEnhancementProduct"

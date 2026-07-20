@@ -1,116 +1,90 @@
 namespace https.www.gleif.org.ontology.Geocoding.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gleif_geo =
     let _namespace_name = "https://www.gleif.org/ontology/Geocoding/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/MatchTypePointAddress"></see>
     /// </summary>
-    let MatchTypePointAddress =
-        Namespaced_IRI.parse _namespace_name "MatchTypePointAddress" |> NamespacedName
-
+    let MatchTypePointAddress = _prefix "MatchTypePointAddress"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/MatchTypeInterpolated"></see>
     /// </summary>
-    let MatchTypeInterpolated =
-        Namespaced_IRI.parse _namespace_name "MatchTypeInterpolated" |> NamespacedName
-
+    let MatchTypeInterpolated = _prefix "MatchTypeInterpolated"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/BoundingBox"></see>
     /// </summary>
-    let BoundingBox =
-        Namespaced_IRI.parse _namespace_name "BoundingBox" |> NamespacedName
-
+    let BoundingBox = _prefix "BoundingBox"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/topLeft"></see>
     /// </summary>
-    let topLeft = Namespaced_IRI.parse _namespace_name "topLeft" |> NamespacedName
-
+    let topLeft = _prefix "topLeft"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/bottomRight"></see>
     /// </summary>
-    let bottomRight =
-        Namespaced_IRI.parse _namespace_name "bottomRight" |> NamespacedName
-
+    let bottomRight = _prefix "bottomRight"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/GeocodedAddress"></see>
     /// </summary>
-    let GeocodedAddress =
-        Namespaced_IRI.parse _namespace_name "GeocodedAddress" |> NamespacedName
-
+    let GeocodedAddress = _prefix "GeocodedAddress"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/relevance"></see>
     /// </summary>
-    let relevance = Namespaced_IRI.parse _namespace_name "relevance" |> NamespacedName
-
+    let relevance = _prefix "relevance"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/hasBoundingBox"></see>
     /// </summary>
-    let hasBoundingBox =
-        Namespaced_IRI.parse _namespace_name "hasBoundingBox" |> NamespacedName
-
+    let hasBoundingBox = _prefix "hasBoundingBox"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/hasStreet"></see>
     /// </summary>
-    let hasStreet = Namespaced_IRI.parse _namespace_name "hasStreet" |> NamespacedName
-
+    let hasStreet = _prefix "hasStreet"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/hasDistrict"></see>
     /// </summary>
-    let hasDistrict =
-        Namespaced_IRI.parse _namespace_name "hasDistrict" |> NamespacedName
-
+    let hasDistrict = _prefix "hasDistrict"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/matchDate"></see>
     /// </summary>
-    let matchDate = Namespaced_IRI.parse _namespace_name "matchDate" |> NamespacedName
-
+    let matchDate = _prefix "matchDate"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/formattedAddressText"></see>
     /// </summary>
-    let formattedAddressText =
-        Namespaced_IRI.parse _namespace_name "formattedAddressText" |> NamespacedName
-
+    let formattedAddressText = _prefix "formattedAddressText"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/matchType"></see>
     /// </summary>
-    let matchType = Namespaced_IRI.parse _namespace_name "matchType" |> NamespacedName
+    let matchType = _prefix "matchType"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/MatchType"></see>
     /// </summary>
-    let MatchType = Namespaced_IRI.parse _namespace_name "MatchType" |> NamespacedName
+    let MatchType = _prefix "MatchType"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/locationId"></see>
     /// </summary>
-    let locationId = Namespaced_IRI.parse _namespace_name "locationId" |> NamespacedName
-
+    let locationId = _prefix "locationId"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/hasRegionText"></see>
     /// </summary>
-    let hasRegionText =
-        Namespaced_IRI.parse _namespace_name "hasRegionText" |> NamespacedName
-
+    let hasRegionText = _prefix "hasRegionText"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/originalAddress"></see>
     /// </summary>
-    let originalAddress =
-        Namespaced_IRI.parse _namespace_name "originalAddress" |> NamespacedName
-
+    let originalAddress = _prefix "originalAddress"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/originalAddressText"></see>
     /// </summary>
-    let originalAddressText =
-        Namespaced_IRI.parse _namespace_name "originalAddressText" |> NamespacedName
-
+    let originalAddressText = _prefix "originalAddressText"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/hasGeocodedAddress"></see>
     /// </summary>
-    let hasGeocodedAddress =
-        Namespaced_IRI.parse _namespace_name "hasGeocodedAddress" |> NamespacedName
-
+    let hasGeocodedAddress = _prefix "hasGeocodedAddress"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Geocoding/matchLevel"></see>
     /// </summary>
-    let matchLevel = Namespaced_IRI.parse _namespace_name "matchLevel" |> NamespacedName
+    let matchLevel = _prefix "matchLevel"

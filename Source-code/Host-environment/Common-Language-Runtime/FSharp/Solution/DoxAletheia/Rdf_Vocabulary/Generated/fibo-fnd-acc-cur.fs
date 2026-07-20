@@ -1,178 +1,131 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Accounting.CurrencyAmount.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_acc_cur =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/AmountOfMoney"></see>
     /// </summary>
-    let AmountOfMoney =
-        Namespaced_IRI.parse _namespace_name "AmountOfMoney" |> NamespacedName
-
+    let AmountOfMoney = _prefix "AmountOfMoney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasCurrency"></see>
     /// </summary>
-    let hasCurrency =
-        Namespaced_IRI.parse _namespace_name "hasCurrency" |> NamespacedName
-
+    let hasCurrency = _prefix "hasCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Currency"></see>
     /// </summary>
-    let Currency = Namespaced_IRI.parse _namespace_name "Currency" |> NamespacedName
-
+    let Currency = _prefix "Currency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/CalculatedPrice"></see>
     /// </summary>
-    let CalculatedPrice =
-        Namespaced_IRI.parse _namespace_name "CalculatedPrice" |> NamespacedName
-
+    let CalculatedPrice = _prefix "CalculatedPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/MonetaryPrice"></see>
     /// </summary>
-    let MonetaryPrice =
-        Namespaced_IRI.parse _namespace_name "MonetaryPrice" |> NamespacedName
-
+    let MonetaryPrice = _prefix "MonetaryPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasMinorUnit"></see>
     /// </summary>
-    let hasMinorUnit =
-        Namespaced_IRI.parse _namespace_name "hasMinorUnit" |> NamespacedName
-
+    let hasMinorUnit = _prefix "hasMinorUnit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasNumericCode"></see>
     /// </summary>
-    let hasNumericCode =
-        Namespaced_IRI.parse _namespace_name "hasNumericCode" |> NamespacedName
-
+    let hasNumericCode = _prefix "hasNumericCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/CurrencyBasket"></see>
     /// </summary>
-    let CurrencyBasket =
-        Namespaced_IRI.parse _namespace_name "CurrencyBasket" |> NamespacedName
-
+    let CurrencyBasket = _prefix "CurrencyBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/CurrencyIdentifier"></see>
     /// </summary>
-    let CurrencyIdentifier =
-        Namespaced_IRI.parse _namespace_name "CurrencyIdentifier" |> NamespacedName
-
+    let CurrencyIdentifier = _prefix "CurrencyIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/ExchangeRate"></see>
     /// </summary>
-    let ExchangeRate =
-        Namespaced_IRI.parse _namespace_name "ExchangeRate" |> NamespacedName
-
+    let ExchangeRate = _prefix "ExchangeRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasBaseCurrency"></see>
     /// </summary>
-    let hasBaseCurrency =
-        Namespaced_IRI.parse _namespace_name "hasBaseCurrency" |> NamespacedName
-
+    let hasBaseCurrency = _prefix "hasBaseCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasDealtCurrency"></see>
     /// </summary>
-    let hasDealtCurrency =
-        Namespaced_IRI.parse _namespace_name "hasDealtCurrency" |> NamespacedName
-
+    let hasDealtCurrency = _prefix "hasDealtCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasRateValue"></see>
     /// </summary>
-    let hasRateValue =
-        Namespaced_IRI.parse _namespace_name "hasRateValue" |> NamespacedName
-
+    let hasRateValue = _prefix "hasRateValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Funds"></see>
     /// </summary>
-    let Funds = Namespaced_IRI.parse _namespace_name "Funds" |> NamespacedName
-
+    let Funds = _prefix "Funds"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/FundsIdentifier"></see>
     /// </summary>
-    let FundsIdentifier =
-        Namespaced_IRI.parse _namespace_name "FundsIdentifier" |> NamespacedName
-
+    let FundsIdentifier = _prefix "FundsIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/InterestRate"></see>
     /// </summary>
-    let InterestRate =
-        Namespaced_IRI.parse _namespace_name "InterestRate" |> NamespacedName
-
+    let InterestRate = _prefix "InterestRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/PercentageMonetaryAmount"></see>
     /// </summary>
-    let PercentageMonetaryAmount =
-        Namespaced_IRI.parse _namespace_name "PercentageMonetaryAmount" |> NamespacedName
-
+    let PercentageMonetaryAmount = _prefix "PercentageMonetaryAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/MonetaryAmount"></see>
     /// </summary>
-    let MonetaryAmount =
-        Namespaced_IRI.parse _namespace_name "MonetaryAmount" |> NamespacedName
-
+    let MonetaryAmount = _prefix "MonetaryAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasAmount"></see>
     /// </summary>
-    let hasAmount = Namespaced_IRI.parse _namespace_name "hasAmount" |> NamespacedName
+    let hasAmount = _prefix "hasAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Price"></see>
     /// </summary>
-    let Price = Namespaced_IRI.parse _namespace_name "Price" |> NamespacedName
-
+    let Price = _prefix "Price"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/PreciousMetal"></see>
     /// </summary>
-    let PreciousMetal =
-        Namespaced_IRI.parse _namespace_name "PreciousMetal" |> NamespacedName
-
+    let PreciousMetal = _prefix "PreciousMetal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/PreciousMetalIdentifier"></see>
     /// </summary>
-    let PreciousMetalIdentifier =
-        Namespaced_IRI.parse _namespace_name "PreciousMetalIdentifier" |> NamespacedName
-
+    let PreciousMetalIdentifier = _prefix "PreciousMetalIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/UnitOfAccount"></see>
     /// </summary>
-    let UnitOfAccount =
-        Namespaced_IRI.parse _namespace_name "UnitOfAccount" |> NamespacedName
-
+    let UnitOfAccount = _prefix "UnitOfAccount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/UnitOfAccountIdentifier"></see>
     /// </summary>
-    let UnitOfAccountIdentifier =
-        Namespaced_IRI.parse _namespace_name "UnitOfAccountIdentifier" |> NamespacedName
-
+    let UnitOfAccountIdentifier = _prefix "UnitOfAccountIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/UnitPrice"></see>
     /// </summary>
-    let UnitPrice = Namespaced_IRI.parse _namespace_name "UnitPrice" |> NamespacedName
+    let UnitPrice = _prefix "UnitPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/isPriceFor"></see>
     /// </summary>
-    let isPriceFor = Namespaced_IRI.parse _namespace_name "isPriceFor" |> NamespacedName
-
+    let isPriceFor = _prefix "isPriceFor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasFundsType"></see>
     /// </summary>
-    let hasFundsType =
-        Namespaced_IRI.parse _namespace_name "hasFundsType" |> NamespacedName
-
+    let hasFundsType = _prefix "hasFundsType"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasMonetaryAmount"></see>
     /// </summary>
-    let hasMonetaryAmount =
-        Namespaced_IRI.parse _namespace_name "hasMonetaryAmount" |> NamespacedName
-
+    let hasMonetaryAmount = _prefix "hasMonetaryAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasNotionalAmount"></see>
     /// </summary>
-    let hasNotionalAmount =
-        Namespaced_IRI.parse _namespace_name "hasNotionalAmount" |> NamespacedName
-
+    let hasNotionalAmount = _prefix "hasNotionalAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/hasPrice"></see>
     /// </summary>
-    let hasPrice = Namespaced_IRI.parse _namespace_name "hasPrice" |> NamespacedName
+    let hasPrice = _prefix "hasPrice"

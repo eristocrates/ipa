@@ -1,259 +1,201 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.NorthAmericanJurisdiction.CAGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_caj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/CanadianEntity"></see>
     /// </summary>
-    let CanadianEntity =
-        Namespaced_IRI.parse _namespace_name "CanadianEntity" |> NamespacedName
-
+    let CanadianEntity = _prefix "CanadianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfCanada"></see>
     /// </summary>
-    let GovernmentOfCanada =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfCanada" |> NamespacedName
-
+    let GovernmentOfCanada = _prefix "GovernmentOfCanada"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/CanadianJurisdiction"></see>
     /// </summary>
-    let CanadianJurisdiction =
-        Namespaced_IRI.parse _namespace_name "CanadianJurisdiction" |> NamespacedName
-
+    let CanadianJurisdiction = _prefix "CanadianJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfAlberta"></see>
     /// </summary>
-    let GovernmentOfAlberta =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfAlberta" |> NamespacedName
-
+    let GovernmentOfAlberta = _prefix "GovernmentOfAlberta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfAlbertaJurisdiction"></see>
     /// </summary>
-    let ProvinceOfAlbertaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfAlbertaJurisdiction" |> NamespacedName
-
+    let ProvinceOfAlbertaJurisdiction = _prefix "ProvinceOfAlbertaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfBritishColumbia"></see>
     /// </summary>
-    let GovernmentOfBritishColumbia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfBritishColumbia" |> NamespacedName
+    let GovernmentOfBritishColumbia = _prefix "GovernmentOfBritishColumbia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfBritishColumbiaJurisdiction"></see>
     /// </summary>
     let ProvinceOfBritishColumbiaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfBritishColumbiaJurisdiction" |> NamespacedName
+        _prefix "ProvinceOfBritishColumbiaJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfManitoba"></see>
     /// </summary>
-    let GovernmentOfManitoba =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfManitoba" |> NamespacedName
-
+    let GovernmentOfManitoba = _prefix "GovernmentOfManitoba"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfManitobaJurisdiction"></see>
     /// </summary>
-    let ProvinceOfManitobaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfManitobaJurisdiction" |> NamespacedName
-
+    let ProvinceOfManitobaJurisdiction = _prefix "ProvinceOfManitobaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfNewBrunswick"></see>
     /// </summary>
-    let GovernmentOfNewBrunswick =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfNewBrunswick" |> NamespacedName
+    let GovernmentOfNewBrunswick = _prefix "GovernmentOfNewBrunswick"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfNewBrunswickJurisdiction"></see>
     /// </summary>
     let ProvinceOfNewBrunswickJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfNewBrunswickJurisdiction" |> NamespacedName
+        _prefix "ProvinceOfNewBrunswickJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfNewfoundlandAndLabrador"></see>
     /// </summary>
     let GovernmentOfNewfoundlandAndLabrador =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfNewfoundlandAndLabrador" |> NamespacedName
+        _prefix "GovernmentOfNewfoundlandAndLabrador"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfNewfoundlandAndLabradorJurisdiction"></see>
     /// </summary>
     let ProvinceOfNewfoundlandAndLabradorJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfNewfoundlandAndLabradorJurisdiction" |> NamespacedName
+        _prefix "ProvinceOfNewfoundlandAndLabradorJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfNorthwestTerritories"></see>
     /// </summary>
-    let GovernmentOfNorthwestTerritories =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfNorthwestTerritories" |> NamespacedName
-
+    let GovernmentOfNorthwestTerritories = _prefix "GovernmentOfNorthwestTerritories"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/NorthwestTerritoriesJurisdiction"></see>
     /// </summary>
-    let NorthwestTerritoriesJurisdiction =
-        Namespaced_IRI.parse _namespace_name "NorthwestTerritoriesJurisdiction" |> NamespacedName
-
+    let NorthwestTerritoriesJurisdiction = _prefix "NorthwestTerritoriesJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfNovaScotia"></see>
     /// </summary>
-    let GovernmentOfNovaScotia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfNovaScotia" |> NamespacedName
-
+    let GovernmentOfNovaScotia = _prefix "GovernmentOfNovaScotia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfNovaScotiaJurisdiction"></see>
     /// </summary>
-    let ProvinceOfNovaScotiaJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfNovaScotiaJurisdiction" |> NamespacedName
-
+    let ProvinceOfNovaScotiaJurisdiction = _prefix "ProvinceOfNovaScotiaJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfNunavut"></see>
     /// </summary>
-    let GovernmentOfNunavut =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfNunavut" |> NamespacedName
-
+    let GovernmentOfNunavut = _prefix "GovernmentOfNunavut"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/NunavutJurisdiction"></see>
     /// </summary>
-    let NunavutJurisdiction =
-        Namespaced_IRI.parse _namespace_name "NunavutJurisdiction" |> NamespacedName
-
+    let NunavutJurisdiction = _prefix "NunavutJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfOntario"></see>
     /// </summary>
-    let GovernmentOfOntario =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfOntario" |> NamespacedName
-
+    let GovernmentOfOntario = _prefix "GovernmentOfOntario"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfOntarioJurisdiction"></see>
     /// </summary>
-    let ProvinceOfOntarioJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfOntarioJurisdiction" |> NamespacedName
-
+    let ProvinceOfOntarioJurisdiction = _prefix "ProvinceOfOntarioJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfPrinceEdwardIsland"></see>
     /// </summary>
-    let GovernmentOfPrinceEdwardIsland =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfPrinceEdwardIsland" |> NamespacedName
+    let GovernmentOfPrinceEdwardIsland = _prefix "GovernmentOfPrinceEdwardIsland"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfPrinceEdwardIslandJurisdiction"></see>
     /// </summary>
     let ProvinceOfPrinceEdwardIslandJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfPrinceEdwardIslandJurisdiction" |> NamespacedName
+        _prefix "ProvinceOfPrinceEdwardIslandJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfQuebec"></see>
     /// </summary>
-    let GovernmentOfQuebec =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfQuebec" |> NamespacedName
-
+    let GovernmentOfQuebec = _prefix "GovernmentOfQuebec"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfQuebecJurisdiction"></see>
     /// </summary>
-    let ProvinceOfQuebecJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfQuebecJurisdiction" |> NamespacedName
-
+    let ProvinceOfQuebecJurisdiction = _prefix "ProvinceOfQuebecJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfSaskatchewan"></see>
     /// </summary>
-    let GovernmentOfSaskatchewan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfSaskatchewan" |> NamespacedName
+    let GovernmentOfSaskatchewan = _prefix "GovernmentOfSaskatchewan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfSaskatchewanJurisdiction"></see>
     /// </summary>
     let ProvinceOfSaskatchewanJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfSaskatchewanJurisdiction" |> NamespacedName
+        _prefix "ProvinceOfSaskatchewanJurisdiction"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/GovernmentOfYukon"></see>
     /// </summary>
-    let GovernmentOfYukon =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfYukon" |> NamespacedName
-
+    let GovernmentOfYukon = _prefix "GovernmentOfYukon"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/YukonJurisdiction"></see>
     /// </summary>
-    let YukonJurisdiction =
-        Namespaced_IRI.parse _namespace_name "YukonJurisdiction" |> NamespacedName
-
+    let YukonJurisdiction = _prefix "YukonJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/NorthwestTerritoriesEntity"></see>
     /// </summary>
-    let NorthwestTerritoriesEntity =
-        Namespaced_IRI.parse _namespace_name "NorthwestTerritoriesEntity" |> NamespacedName
-
+    let NorthwestTerritoriesEntity = _prefix "NorthwestTerritoriesEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/NunavutEntity"></see>
     /// </summary>
-    let NunavutEntity =
-        Namespaced_IRI.parse _namespace_name "NunavutEntity" |> NamespacedName
-
+    let NunavutEntity = _prefix "NunavutEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfAlbertaEntity"></see>
     /// </summary>
-    let ProvinceOfAlbertaEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfAlbertaEntity" |> NamespacedName
-
+    let ProvinceOfAlbertaEntity = _prefix "ProvinceOfAlbertaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfBritishColumbiaEntity"></see>
     /// </summary>
-    let ProvinceOfBritishColumbiaEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfBritishColumbiaEntity" |> NamespacedName
-
+    let ProvinceOfBritishColumbiaEntity = _prefix "ProvinceOfBritishColumbiaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfManitobaEntity"></see>
     /// </summary>
-    let ProvinceOfManitobaEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfManitobaEntity" |> NamespacedName
-
+    let ProvinceOfManitobaEntity = _prefix "ProvinceOfManitobaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfNewBrunswickEntity"></see>
     /// </summary>
-    let ProvinceOfNewBrunswickEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfNewBrunswickEntity" |> NamespacedName
+    let ProvinceOfNewBrunswickEntity = _prefix "ProvinceOfNewBrunswickEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfNewfoundlandAndLabradorEntity"></see>
     /// </summary>
     let ProvinceOfNewfoundlandAndLabradorEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfNewfoundlandAndLabradorEntity" |> NamespacedName
+        _prefix "ProvinceOfNewfoundlandAndLabradorEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfNovaScotiaEntity"></see>
     /// </summary>
-    let ProvinceOfNovaScotiaEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfNovaScotiaEntity" |> NamespacedName
-
+    let ProvinceOfNovaScotiaEntity = _prefix "ProvinceOfNovaScotiaEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfOntarioEntity"></see>
     /// </summary>
-    let ProvinceOfOntarioEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfOntarioEntity" |> NamespacedName
+    let ProvinceOfOntarioEntity = _prefix "ProvinceOfOntarioEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfPrinceEdwardIslandEntity"></see>
     /// </summary>
     let ProvinceOfPrinceEdwardIslandEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfPrinceEdwardIslandEntity" |> NamespacedName
+        _prefix "ProvinceOfPrinceEdwardIslandEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfQuebecEntity"></see>
     /// </summary>
-    let ProvinceOfQuebecEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfQuebecEntity" |> NamespacedName
-
+    let ProvinceOfQuebecEntity = _prefix "ProvinceOfQuebecEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/ProvinceOfSaskatchewanEntity"></see>
     /// </summary>
-    let ProvinceOfSaskatchewanEntity =
-        Namespaced_IRI.parse _namespace_name "ProvinceOfSaskatchewanEntity" |> NamespacedName
-
+    let ProvinceOfSaskatchewanEntity = _prefix "ProvinceOfSaskatchewanEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/YukonEntity"></see>
     /// </summary>
-    let YukonEntity =
-        Namespaced_IRI.parse _namespace_name "YukonEntity" |> NamespacedName
+    let YukonEntity = _prefix "YukonEntity"

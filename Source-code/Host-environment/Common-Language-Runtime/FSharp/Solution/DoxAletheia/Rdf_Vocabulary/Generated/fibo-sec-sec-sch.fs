@@ -1,97 +1,84 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Securities.ParametricSchedules.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_sec_sch =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/AuctionDateRule"></see>
     /// </summary>
-    let AuctionDateRule =
-        Namespaced_IRI.parse _namespace_name "AuctionDateRule" |> NamespacedName
-
+    let AuctionDateRule = _prefix "AuctionDateRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/DateReturnedBySettlementDateRule"></see>
     /// </summary>
-    let DateReturnedBySettlementDateRule =
-        Namespaced_IRI.parse _namespace_name "DateReturnedBySettlementDateRule" |> NamespacedName
-
+    let DateReturnedBySettlementDateRule = _prefix "DateReturnedBySettlementDateRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/SettlementDateRule"></see>
     /// </summary>
-    let SettlementDateRule =
-        Namespaced_IRI.parse _namespace_name "SettlementDateRule" |> NamespacedName
-
+    let SettlementDateRule = _prefix "SettlementDateRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/DateReturnedByTradingDateRule"></see>
     /// </summary>
-    let DateReturnedByTradingDateRule =
-        Namespaced_IRI.parse _namespace_name "DateReturnedByTradingDateRule" |> NamespacedName
-
+    let DateReturnedByTradingDateRule = _prefix "DateReturnedByTradingDateRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/TradingDateRule"></see>
     /// </summary>
-    let TradingDateRule =
-        Namespaced_IRI.parse _namespace_name "TradingDateRule" |> NamespacedName
-
+    let TradingDateRule = _prefix "TradingDateRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/FloatingRateNoteDate"></see>
     /// </summary>
-    let FloatingRateNoteDate =
-        Namespaced_IRI.parse _namespace_name "FloatingRateNoteDate" |> NamespacedName
-
+    let FloatingRateNoteDate = _prefix "FloatingRateNoteDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/FloatingRateNoteDateRule"></see>
     /// </summary>
-    let FloatingRateNoteDateRule =
-        Namespaced_IRI.parse _namespace_name "FloatingRateNoteDateRule" |> NamespacedName
+    let FloatingRateNoteDateRule = _prefix "FloatingRateNoteDateRule"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/InternationalMoneyMarketAustralianDollarTradingDateRule"></see>
     /// </summary>
     let InternationalMoneyMarketAustralianDollarTradingDateRule =
-        Namespaced_IRI.parse _namespace_name "InternationalMoneyMarketAustralianDollarTradingDateRule" |> NamespacedName
+        _prefix "InternationalMoneyMarketAustralianDollarTradingDateRule"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/InternationalMoneyMarketCanadianDollarTradingDateRule"></see>
     /// </summary>
     let InternationalMoneyMarketCanadianDollarTradingDateRule =
-        Namespaced_IRI.parse _namespace_name "InternationalMoneyMarketCanadianDollarTradingDateRule" |> NamespacedName
+        _prefix "InternationalMoneyMarketCanadianDollarTradingDateRule"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/InternationalMoneyMarketNewZealandDollarTradingDateRule"></see>
     /// </summary>
     let InternationalMoneyMarketNewZealandDollarTradingDateRule =
-        Namespaced_IRI.parse _namespace_name "InternationalMoneyMarketNewZealandDollarTradingDateRule" |> NamespacedName
+        _prefix "InternationalMoneyMarketNewZealandDollarTradingDateRule"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/InternationalMoneyMarketSettlementDateRule"></see>
     /// </summary>
     let InternationalMoneyMarketSettlementDateRule =
-        Namespaced_IRI.parse _namespace_name "InternationalMoneyMarketSettlementDateRule" |> NamespacedName
+        _prefix "InternationalMoneyMarketSettlementDateRule"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/ScheduledCalculationPeriodEndEvent"></see>
     /// </summary>
     let ScheduledCalculationPeriodEndEvent =
-        Namespaced_IRI.parse _namespace_name "ScheduledCalculationPeriodEndEvent" |> NamespacedName
+        _prefix "ScheduledCalculationPeriodEndEvent"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/ScheduledCalculationPeriodStartEvent"></see>
     /// </summary>
     let ScheduledCalculationPeriodStartEvent =
-        Namespaced_IRI.parse _namespace_name "ScheduledCalculationPeriodStartEvent" |> NamespacedName
+        _prefix "ScheduledCalculationPeriodStartEvent"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/USTreasuryBillAuctionDateRule"></see>
     /// </summary>
-    let USTreasuryBillAuctionDateRule =
-        Namespaced_IRI.parse _namespace_name "USTreasuryBillAuctionDateRule" |> NamespacedName
-
+    let USTreasuryBillAuctionDateRule = _prefix "USTreasuryBillAuctionDateRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/ParametricSchedules/USTreasuryBillDate"></see>
     /// </summary>
-    let USTreasuryBillDate =
-        Namespaced_IRI.parse _namespace_name "USTreasuryBillDate" |> NamespacedName
+    let USTreasuryBillDate = _prefix "USTreasuryBillDate"

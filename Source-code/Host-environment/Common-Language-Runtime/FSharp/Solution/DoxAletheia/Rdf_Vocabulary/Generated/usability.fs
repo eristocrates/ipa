@@ -1,410 +1,318 @@
 namespace https.w3id.org.usability.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module usability =
     let _namespace_name = "https://w3id.org/usability#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The base class for events which are user actions related to user interation with the interface (clicks, mouse movements, etc.)
     /// <see href="https://w3id.org/usability#ActionEvent"></see></summary>
-    let ActionEvent =
-        Namespaced_IRI.parse _namespace_name "ActionEvent" |> NamespacedName
-
+    let ActionEvent = _prefix "ActionEvent"
     /// <summary>
     /// The base class for all different kinds of event that may be occured while the user is interacting with the software
     /// <see href="https://w3id.org/usability#Event"></see></summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     /// The class that represents any mouse click
     /// <see href="https://w3id.org/usability#ClickMouseActionEvent"></see></summary>
-    let ClickMouseActionEvent =
-        Namespaced_IRI.parse _namespace_name "ClickMouseActionEvent" |> NamespacedName
-
+    let ClickMouseActionEvent = _prefix "ClickMouseActionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasInRegionY"></see>
     /// </summary>
-    let hasInRegionY =
-        Namespaced_IRI.parse _namespace_name "hasInRegionY" |> NamespacedName
-
+    let hasInRegionY = _prefix "hasInRegionY"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasInRegionX"></see>
     /// </summary>
-    let hasInRegionX =
-        Namespaced_IRI.parse _namespace_name "hasInRegionX" |> NamespacedName
-
+    let hasInRegionX = _prefix "hasInRegionX"
     /// <summary>
     /// The class that represents actions related to user's manipulations with a mouse
     /// <see href="https://w3id.org/usability#MouseActionEvent"></see></summary>
-    let MouseActionEvent =
-        Namespaced_IRI.parse _namespace_name "MouseActionEvent" |> NamespacedName
-
+    let MouseActionEvent = _prefix "MouseActionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Command"></see>
     /// </summary>
-    let Command = Namespaced_IRI.parse _namespace_name "Command" |> NamespacedName
+    let Command = _prefix "Command"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     /// The class that represents events, related with the fact of calling a certain command (function) by the user
     /// <see href="https://w3id.org/usability#CommandEvent"></see></summary>
-    let CommandEvent =
-        Namespaced_IRI.parse _namespace_name "CommandEvent" |> NamespacedName
-
+    let CommandEvent = _prefix "CommandEvent"
     /// <summary>
     /// The property that associates specific command with the event in which the command was called
     /// <see href="https://w3id.org/usability#wasInvokedIn"></see></summary>
-    let wasInvokedIn =
-        Namespaced_IRI.parse _namespace_name "wasInvokedIn" |> NamespacedName
-
+    let wasInvokedIn = _prefix "wasInvokedIn"
     /// <summary>
     /// A transitive property which determines that some object is contained/stored/located inside of some subject. Inverse of contains
     /// <see href="https://w3id.org/usability#isContainedIn"></see></summary>
-    let isContainedIn =
-        Namespaced_IRI.parse _namespace_name "isContainedIn" |> NamespacedName
-
+    let isContainedIn = _prefix "isContainedIn"
     /// <summary>
     ///   <see href="https://w3id.org/usability#CommandA"></see>
     /// </summary>
-    let CommandA = Namespaced_IRI.parse _namespace_name "CommandA" |> NamespacedName
+    let CommandA = _prefix "CommandA"
     /// <summary>
     ///   <see href="https://w3id.org/usability#CommandB"></see>
     /// </summary>
-    let CommandB = Namespaced_IRI.parse _namespace_name "CommandB" |> NamespacedName
-
+    let CommandB = _prefix "CommandB"
     /// <summary>
     ///   <see href="https://w3id.org/usability#RegionVariation211"></see>
     /// </summary>
-    let RegionVariation211 =
-        Namespaced_IRI.parse _namespace_name "RegionVariation211" |> NamespacedName
-
+    let RegionVariation211 = _prefix "RegionVariation211"
     /// <summary>
     /// The property that associates command event with the specific command instance
     /// <see href="https://w3id.org/usability#wasAssociatedWith"></see></summary>
-    let wasAssociatedWith =
-        Namespaced_IRI.parse _namespace_name "wasAssociatedWith" |> NamespacedName
-
+    let wasAssociatedWith = _prefix "wasAssociatedWith"
     /// <summary>
     /// A transitive property which determines that some subject contains/stores some object inside of it. Inverse of isContainedIn
     /// <see href="https://w3id.org/usability#contains"></see></summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="https://w3id.org/usability#CommandEvent1113"></see>
     /// </summary>
-    let CommandEvent1113 =
-        Namespaced_IRI.parse _namespace_name "CommandEvent1113" |> NamespacedName
-
+    let CommandEvent1113 = _prefix "CommandEvent1113"
     /// <summary>
     ///   <see href="https://w3id.org/usability#RegionVariation111"></see>
     /// </summary>
-    let RegionVariation111 =
-        Namespaced_IRI.parse _namespace_name "RegionVariation111" |> NamespacedName
-
+    let RegionVariation111 = _prefix "RegionVariation111"
     /// <summary>
     ///   <see href="https://w3id.org/usability#CommandEvent1114"></see>
     /// </summary>
-    let CommandEvent1114 =
-        Namespaced_IRI.parse _namespace_name "CommandEvent1114" |> NamespacedName
-
+    let CommandEvent1114 = _prefix "CommandEvent1114"
     /// <summary>
     ///   <see href="https://w3id.org/usability#CommandEvent2112"></see>
     /// </summary>
-    let CommandEvent2112 =
-        Namespaced_IRI.parse _namespace_name "CommandEvent2112" |> NamespacedName
-
+    let CommandEvent2112 = _prefix "CommandEvent2112"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Device"></see>
     /// </summary>
-    let Device = Namespaced_IRI.parse _namespace_name "Device" |> NamespacedName
+    let Device = _prefix "Device"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasUid"></see>
     /// </summary>
-    let hasUid = Namespaced_IRI.parse _namespace_name "hasUid" |> NamespacedName
+    let hasUid = _prefix "hasUid"
     /// <summary>
     /// A period of time when a user interacts with the software
     /// <see href="https://w3id.org/usability#Session"></see></summary>
-    let Session = Namespaced_IRI.parse _namespace_name "Session" |> NamespacedName
+    let Session = _prefix "Session"
     /// <summary>
     /// The property that associates a device with the sessions which were run on that device
     /// <see href="https://w3id.org/usability#wasUsedIn"></see></summary>
-    let wasUsedIn = Namespaced_IRI.parse _namespace_name "wasUsedIn" |> NamespacedName
+    let wasUsedIn = _prefix "wasUsedIn"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Device1"></see>
     /// </summary>
-    let Device1 = Namespaced_IRI.parse _namespace_name "Device1" |> NamespacedName
+    let Device1 = _prefix "Device1"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Session2"></see>
     /// </summary>
-    let Session2 = Namespaced_IRI.parse _namespace_name "Session2" |> NamespacedName
+    let Session2 = _prefix "Session2"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Session1"></see>
     /// </summary>
-    let Session1 = Namespaced_IRI.parse _namespace_name "Session1" |> NamespacedName
-
+    let Session1 = _prefix "Session1"
     /// <summary>
     /// The class that represents a double mouse click
     /// <see href="https://w3id.org/usability#DoubleClickMouseEvent"></see></summary>
-    let DoubleClickMouseEvent =
-        Namespaced_IRI.parse _namespace_name "DoubleClickMouseEvent" |> NamespacedName
-
+    let DoubleClickMouseEvent = _prefix "DoubleClickMouseEvent"
     /// <summary>
     /// The class that represents double tap - two short taps on the screen
     /// <see href="https://w3id.org/usability#DoubleTapTouchActionEvent"></see></summary>
-    let DoubleTapTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "DoubleTapTouchActionEvent" |> NamespacedName
-
+    let DoubleTapTouchActionEvent = _prefix "DoubleTapTouchActionEvent"
     /// <summary>
     /// The class that represents differend kinds events related to user's tap on the touch screen
     /// <see href="https://w3id.org/usability#TapTouchActionEvent"></see></summary>
-    let TapTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "TapTouchActionEvent" |> NamespacedName
-
+    let TapTouchActionEvent = _prefix "TapTouchActionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasDateTime"></see>
     /// </summary>
-    let hasDateTime =
-        Namespaced_IRI.parse _namespace_name "hasDateTime" |> NamespacedName
-
+    let hasDateTime = _prefix "hasDateTime"
     /// <summary>
     /// Class that describes a region variation, since a region may have one or more variations. Variation is a unique combination of region image's height and width, or their range
     /// <see href="https://w3id.org/usability#Variation"></see></summary>
-    let Variation = Namespaced_IRI.parse _namespace_name "Variation" |> NamespacedName
+    let Variation = _prefix "Variation"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Event1111"></see>
     /// </summary>
-    let Event1111 = Namespaced_IRI.parse _namespace_name "Event1111" |> NamespacedName
+    let Event1111 = _prefix "Event1111"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Event1112"></see>
     /// </summary>
-    let Event1112 = Namespaced_IRI.parse _namespace_name "Event1112" |> NamespacedName
+    let Event1112 = _prefix "Event1112"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Event1121"></see>
     /// </summary>
-    let Event1121 = Namespaced_IRI.parse _namespace_name "Event1121" |> NamespacedName
+    let Event1121 = _prefix "Event1121"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Event1122"></see>
     /// </summary>
-    let Event1122 = Namespaced_IRI.parse _namespace_name "Event1122" |> NamespacedName
+    let Event1122 = _prefix "Event1122"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Event2111"></see>
     /// </summary>
-    let Event2111 = Namespaced_IRI.parse _namespace_name "Event2111" |> NamespacedName
-
+    let Event2111 = _prefix "Event2111"
     /// <summary>
     /// The class that represents touch-and-hold action - continuous touch with a single finger
     /// <see href="https://w3id.org/usability#HoldTapTouchActionEvent"></see></summary>
-    let HoldTapTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "HoldTapTouchActionEvent" |> NamespacedName
-
+    let HoldTapTouchActionEvent = _prefix "HoldTapTouchActionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Image"></see>
     /// </summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
+    let Image = _prefix "Image"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasDpiX"></see>
     /// </summary>
-    let hasDpiX = Namespaced_IRI.parse _namespace_name "hasDpiX" |> NamespacedName
+    let hasDpiX = _prefix "hasDpiX"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasHeight"></see>
     /// </summary>
-    let hasHeight = Namespaced_IRI.parse _namespace_name "hasHeight" |> NamespacedName
-
+    let hasHeight = _prefix "hasHeight"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasBinaryData"></see>
     /// </summary>
-    let hasBinaryData =
-        Namespaced_IRI.parse _namespace_name "hasBinaryData" |> NamespacedName
-
+    let hasBinaryData = _prefix "hasBinaryData"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasWidth"></see>
     /// </summary>
-    let hasWidth = Namespaced_IRI.parse _namespace_name "hasWidth" |> NamespacedName
+    let hasWidth = _prefix "hasWidth"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasDpiY"></see>
     /// </summary>
-    let hasDpiY = Namespaced_IRI.parse _namespace_name "hasDpiY" |> NamespacedName
+    let hasDpiY = _prefix "hasDpiY"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Image111"></see>
     /// </summary>
-    let Image111 = Namespaced_IRI.parse _namespace_name "Image111" |> NamespacedName
+    let Image111 = _prefix "Image111"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Image112"></see>
     /// </summary>
-    let Image112 = Namespaced_IRI.parse _namespace_name "Image112" |> NamespacedName
+    let Image112 = _prefix "Image112"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Image211"></see>
     /// </summary>
-    let Image211 = Namespaced_IRI.parse _namespace_name "Image211" |> NamespacedName
-
+    let Image211 = _prefix "Image211"
     /// <summary>
     /// The class that represents actions related to user's manipulations with a keyboard
     /// <see href="https://w3id.org/usability#KeyboardActionEvent"></see></summary>
-    let KeyboardActionEvent =
-        Namespaced_IRI.parse _namespace_name "KeyboardActionEvent" |> NamespacedName
-
+    let KeyboardActionEvent = _prefix "KeyboardActionEvent"
     /// <summary>
     /// The class that represents touch - a touch that is slightly longer then tap
     /// <see href="https://w3id.org/usability#LongTapTouchActionEvent"></see></summary>
-    let LongTapTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "LongTapTouchActionEvent" |> NamespacedName
-
+    let LongTapTouchActionEvent = _prefix "LongTapTouchActionEvent"
     /// <summary>
     /// The class that represents movements of cursor. hasInRegionX and hasInRegionY properties store information about the new cursor coordinates after the movement
     /// <see href="https://w3id.org/usability#MoveMouseActionEvent"></see></summary>
-    let MoveMouseActionEvent =
-        Namespaced_IRI.parse _namespace_name "MoveMouseActionEvent" |> NamespacedName
-
+    let MoveMouseActionEvent = _prefix "MoveMouseActionEvent"
     /// <summary>
     /// The class that represents pinch - a contractive movement with two fingers on the screen to scale down the image.
     /// <see href="https://w3id.org/usability#PinchTouchActionEvent"></see></summary>
-    let PinchTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "PinchTouchActionEvent" |> NamespacedName
-
+    let PinchTouchActionEvent = _prefix "PinchTouchActionEvent"
     /// <summary>
     /// The class that represents events related to user interations with touchscreen, like smartphone or tablet PC
     /// <see href="https://w3id.org/usability#TouchActionEvent"></see></summary>
-    let TouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "TouchActionEvent" |> NamespacedName
-
+    let TouchActionEvent = _prefix "TouchActionEvent"
     /// <summary>
     /// A fragment of GUI, for example, the whole window, or a part of it
     /// <see href="https://w3id.org/usability#Region"></see></summary>
-    let Region = Namespaced_IRI.parse _namespace_name "Region" |> NamespacedName
-
+    let Region = _prefix "Region"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasMinHeight"></see>
     /// </summary>
-    let hasMinHeight =
-        Namespaced_IRI.parse _namespace_name "hasMinHeight" |> NamespacedName
-
+    let hasMinHeight = _prefix "hasMinHeight"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasMaxWidth"></see>
     /// </summary>
-    let hasMaxWidth =
-        Namespaced_IRI.parse _namespace_name "hasMaxWidth" |> NamespacedName
-
+    let hasMaxWidth = _prefix "hasMaxWidth"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasMaxHeight"></see>
     /// </summary>
-    let hasMaxHeight =
-        Namespaced_IRI.parse _namespace_name "hasMaxHeight" |> NamespacedName
-
+    let hasMaxHeight = _prefix "hasMaxHeight"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasMinWidth"></see>
     /// </summary>
-    let hasMinWidth =
-        Namespaced_IRI.parse _namespace_name "hasMinWidth" |> NamespacedName
-
+    let hasMinWidth = _prefix "hasMinWidth"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Region11"></see>
     /// </summary>
-    let Region11 = Namespaced_IRI.parse _namespace_name "Region11" |> NamespacedName
-
+    let Region11 = _prefix "Region11"
     /// <summary>
     ///   <see href="https://w3id.org/usability#RegionVariation112"></see>
     /// </summary>
-    let RegionVariation112 =
-        Namespaced_IRI.parse _namespace_name "RegionVariation112" |> NamespacedName
-
+    let RegionVariation112 = _prefix "RegionVariation112"
     /// <summary>
     ///   <see href="https://w3id.org/usability#Region21"></see>
     /// </summary>
-    let Region21 = Namespaced_IRI.parse _namespace_name "Region21" |> NamespacedName
+    let Region21 = _prefix "Region21"
     /// <summary>
     /// The property which associate some region variation with its image
     /// <see href="https://w3id.org/usability#hasImage"></see></summary>
-    let hasImage = Namespaced_IRI.parse _namespace_name "hasImage" |> NamespacedName
-
+    let hasImage = _prefix "hasImage"
     /// <summary>
     /// The class that represents a mouse wheel scroll
     /// <see href="https://w3id.org/usability#ScrollMouseActionEvent"></see></summary>
-    let ScrollMouseActionEvent =
-        Namespaced_IRI.parse _namespace_name "ScrollMouseActionEvent" |> NamespacedName
-
+    let ScrollMouseActionEvent = _prefix "ScrollMouseActionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasEndDateTime"></see>
     /// </summary>
-    let hasEndDateTime =
-        Namespaced_IRI.parse _namespace_name "hasEndDateTime" |> NamespacedName
-
+    let hasEndDateTime = _prefix "hasEndDateTime"
     /// <summary>
     /// The property that associates a session with the device on which the session was run
     /// <see href="https://w3id.org/usability#wasPerformedOn"></see></summary>
-    let wasPerformedOn =
-        Namespaced_IRI.parse _namespace_name "wasPerformedOn" |> NamespacedName
-
+    let wasPerformedOn = _prefix "wasPerformedOn"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasStartDateTime"></see>
     /// </summary>
-    let hasStartDateTime =
-        Namespaced_IRI.parse _namespace_name "hasStartDateTime" |> NamespacedName
-
+    let hasStartDateTime = _prefix "hasStartDateTime"
     /// <summary>
     /// The user who runs sessions
     /// <see href="https://w3id.org/usability#User"></see></summary>
-    let User = Namespaced_IRI.parse _namespace_name "User" |> NamespacedName
-
+    let User = _prefix "User"
     /// <summary>
     /// The property that associates a session with the user who performed it
     /// <see href="https://w3id.org/usability#wasPerformedBy"></see></summary>
-    let wasPerformedBy =
-        Namespaced_IRI.parse _namespace_name "wasPerformedBy" |> NamespacedName
-
+    let wasPerformedBy = _prefix "wasPerformedBy"
     /// <summary>
     /// The class that represents a single mouse click
     /// <see href="https://w3id.org/usability#SingleClickMouseEvent"></see></summary>
-    let SingleClickMouseEvent =
-        Namespaced_IRI.parse _namespace_name "SingleClickMouseEvent" |> NamespacedName
-
+    let SingleClickMouseEvent = _prefix "SingleClickMouseEvent"
     /// <summary>
     /// The class that represents tap action - single short touch with one finger
     /// <see href="https://w3id.org/usability#SingleTapTouchActionEvent"></see></summary>
-    let SingleTapTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "SingleTapTouchActionEvent" |> NamespacedName
-
+    let SingleTapTouchActionEvent = _prefix "SingleTapTouchActionEvent"
     /// <summary>
     /// The class that represents stretch (pinch it open) - tensile movement with two fingers on the screen to enlarge the image.
     /// <see href="https://w3id.org/usability#StretchTouchActionEvent"></see></summary>
-    let StretchTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "StretchTouchActionEvent" |> NamespacedName
-
+    let StretchTouchActionEvent = _prefix "StretchTouchActionEvent"
     /// <summary>
     /// The class the represents swipe (slide) - a continuous movement of the finger across the screen
     /// <see href="https://w3id.org/usability#SwipeTouchActionEvent"></see></summary>
-    let SwipeTouchActionEvent =
-        Namespaced_IRI.parse _namespace_name "SwipeTouchActionEvent" |> NamespacedName
-
+    let SwipeTouchActionEvent = _prefix "SwipeTouchActionEvent"
     /// <summary>
     /// The class that represents clicks on a keyboard
     /// <see href="https://w3id.org/usability#TypeKeyboardActionEvent"></see></summary>
-    let TypeKeyboardActionEvent =
-        Namespaced_IRI.parse _namespace_name "TypeKeyboardActionEvent" |> NamespacedName
-
+    let TypeKeyboardActionEvent = _prefix "TypeKeyboardActionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/usability#performed"></see>
     /// </summary>
-    let performed = Namespaced_IRI.parse _namespace_name "performed" |> NamespacedName
+    let performed = _prefix "performed"
     /// <summary>
     ///   <see href="https://w3id.org/usability#User1"></see>
     /// </summary>
-    let User1 = Namespaced_IRI.parse _namespace_name "User1" |> NamespacedName
+    let User1 = _prefix "User1"
     /// <summary>
     ///   <see href="https://w3id.org/usability#User2"></see>
     /// </summary>
-    let User2 = Namespaced_IRI.parse _namespace_name "User2" |> NamespacedName
-
+    let User2 = _prefix "User2"
     /// <summary>
     ///   <see href="https://w3id.org/usability#hasCommandName"></see>
     /// </summary>
-    let hasCommandName =
-        Namespaced_IRI.parse _namespace_name "hasCommandName" |> NamespacedName
-
+    let hasCommandName = _prefix "hasCommandName"
     /// <summary>
     /// The property that associates an image with the corresponding region variation
     /// <see href="https://w3id.org/usability#wasImaged"></see></summary>
-    let wasImaged = Namespaced_IRI.parse _namespace_name "wasImaged" |> NamespacedName
+    let wasImaged = _prefix "wasImaged"

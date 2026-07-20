@@ -1,1757 +1,1346 @@
 namespace https.w3id.org.earthsemantics.OSO.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module oso =
     let _namespace_name = "https://w3id.org/earthsemantics/OSO#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Mol%C3%A8ne"></see>
     /// </summary>
-    let ``Mol%C3%A8ne`` =
-        Namespaced_IRI.parse _namespace_name "Mol%C3%A8ne" |> NamespacedName
-
+    let ``Mol%C3%A8ne`` = _prefix "Mol%C3%A8ne"
     /// <summary>
     /// A localized observatory site, attached to a regional facility, potentially hosting one or more measurement platforms.
     /// <see href="https://w3id.org/earthsemantics/OSO#Site"></see></summary>
-    let Site = Namespaced_IRI.parse _namespace_name "Site" |> NamespacedName
+    let Site = _prefix "Site"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Canada"></see>
     /// </summary>
-    let Canada = Namespaced_IRI.parse _namespace_name "Canada" |> NamespacedName
+    let Canada = _prefix "Canada"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#France"></see>
     /// </summary>
-    let France = Namespaced_IRI.parse _namespace_name "France" |> NamespacedName
-
+    let France = _prefix "France"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#French_riviera"></see>
     /// </summary>
-    let French_riviera =
-        Namespaced_IRI.parse _namespace_name "French_riviera" |> NamespacedName
-
+    let French_riviera = _prefix "French_riviera"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Greece"></see>
     /// </summary>
-    let Greece = Namespaced_IRI.parse _namespace_name "Greece" |> NamespacedName
+    let Greece = _prefix "Greece"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ireland"></see>
     /// </summary>
-    let Ireland = Namespaced_IRI.parse _namespace_name "Ireland" |> NamespacedName
+    let Ireland = _prefix "Ireland"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Italy"></see>
     /// </summary>
-    let Italy = Namespaced_IRI.parse _namespace_name "Italy" |> NamespacedName
+    let Italy = _prefix "Italy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Japan"></see>
     /// </summary>
-    let Japan = Namespaced_IRI.parse _namespace_name "Japan" |> NamespacedName
+    let Japan = _prefix "Japan"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Norway"></see>
     /// </summary>
-    let Norway = Namespaced_IRI.parse _namespace_name "Norway" |> NamespacedName
+    let Norway = _prefix "Norway"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Portugal"></see>
     /// </summary>
-    let Portugal = Namespaced_IRI.parse _namespace_name "Portugal" |> NamespacedName
+    let Portugal = _prefix "Portugal"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Romania"></see>
     /// </summary>
-    let Romania = Namespaced_IRI.parse _namespace_name "Romania" |> NamespacedName
+    let Romania = _prefix "Romania"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Spain"></see>
     /// </summary>
-    let Spain = Namespaced_IRI.parse _namespace_name "Spain" |> NamespacedName
+    let Spain = _prefix "Spain"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Sweden"></see>
     /// </summary>
-    let Sweden = Namespaced_IRI.parse _namespace_name "Sweden" |> NamespacedName
+    let Sweden = _prefix "Sweden"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Turkey"></see>
     /// </summary>
-    let Turkey = Namespaced_IRI.parse _namespace_name "Turkey" |> NamespacedName
+    let Turkey = _prefix "Turkey"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ukraine"></see>
     /// </summary>
-    let Ukraine = Namespaced_IRI.parse _namespace_name "Ukraine" |> NamespacedName
-
+    let Ukraine = _prefix "Ukraine"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#United_Kingdom"></see>
     /// </summary>
-    let United_Kingdom =
-        Namespaced_IRI.parse _namespace_name "United_Kingdom" |> NamespacedName
-
+    let United_Kingdom = _prefix "United_Kingdom"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Vanuatu"></see>
     /// </summary>
-    let Vanuatu = Namespaced_IRI.parse _namespace_name "Vanuatu" |> NamespacedName
-
+    let Vanuatu = _prefix "Vanuatu"
     /// <summary>
     /// An oceanographic campaign linked to a Regional Facility
     /// <see href="https://w3id.org/earthsemantics/OSO#OceanographicCampaign"></see></summary>
-    let OceanographicCampaign =
-        Namespaced_IRI.parse _namespace_name "OceanographicCampaign" |> NamespacedName
-
+    let OceanographicCampaign = _prefix "OceanographicCampaign"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO_DMSG"></see>
     /// </summary>
-    let EMSO_DMSG = Namespaced_IRI.parse _namespace_name "EMSO_DMSG" |> NamespacedName
+    let EMSO_DMSG = _prefix "EMSO_DMSG"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Azores"></see>
     /// </summary>
-    let Azores = Namespaced_IRI.parse _namespace_name "Azores" |> NamespacedName
+    let Azores = _prefix "Azores"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO"></see>
     /// </summary>
-    let EMSO = Namespaced_IRI.parse _namespace_name "EMSO" |> NamespacedName
+    let EMSO = _prefix "EMSO"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ifremer"></see>
     /// </summary>
-    let Ifremer = Namespaced_IRI.parse _namespace_name "Ifremer" |> NamespacedName
-
+    let Ifremer = _prefix "Ifremer"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO_EVOLVE"></see>
     /// </summary>
-    let EMSO_EVOLVE =
-        Namespaced_IRI.parse _namespace_name "EMSO_EVOLVE" |> NamespacedName
-
+    let EMSO_EVOLVE = _prefix "EMSO_EVOLVE"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#European_Commission"></see>
     /// </summary>
-    let European_Commission =
-        Namespaced_IRI.parse _namespace_name "European_Commission" |> NamespacedName
-
+    let European_Commission = _prefix "European_Commission"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO-France"></see>
     /// </summary>
-    let ``EMSO-France`` =
-        Namespaced_IRI.parse _namespace_name "EMSO-France" |> NamespacedName
-
+    let ``EMSO-France`` = _prefix "EMSO-France"
     /// <summary>
     /// The Marine Institute is the national agency responsible for Marine Research, Technology Development and Innovation (RTDI).
     /// <see href="https://w3id.org/earthsemantics/OSO#Marine_institute"></see></summary>
-    let Marine_institute =
-        Namespaced_IRI.parse _namespace_name "Marine_institute" |> NamespacedName
-
+    let Marine_institute = _prefix "Marine_institute"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#OntologyEngineeringWorkflow"></see>
     /// </summary>
-    let OntologyEngineeringWorkflow =
-        Namespaced_IRI.parse _namespace_name "OntologyEngineeringWorkflow" |> NamespacedName
-
+    let OntologyEngineeringWorkflow = _prefix "OntologyEngineeringWorkflow"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#AIMSIR"></see>
     /// </summary>
-    let AIMSIR = Namespaced_IRI.parse _namespace_name "AIMSIR" |> NamespacedName
+    let AIMSIR = _prefix "AIMSIR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ALBATROSS"></see>
     /// </summary>
-    let ALBATROSS = Namespaced_IRI.parse _namespace_name "ALBATROSS" |> NamespacedName
+    let ALBATROSS = _prefix "ALBATROSS"
     /// <summary>
     /// An observation platform, fixed or mobile, installed on a site or subsite, supporting one or more instruments or acquisition systems.
     /// <see href="https://w3id.org/earthsemantics/OSO#Platform"></see></summary>
-    let Platform = Namespaced_IRI.parse _namespace_name "Platform" |> NamespacedName
-
+    let Platform = _prefix "Platform"
     /// <summary>
     /// Date of the first deployment of an instrument, platform, or infrastructure.
     /// <see href="https://w3id.org/earthsemantics/OSO#dateFirstDeployment"></see></summary>
-    let dateFirstDeployment =
-        Namespaced_IRI.parse _namespace_name "dateFirstDeployment" |> NamespacedName
-
+    let dateFirstDeployment = _prefix "dateFirstDeployment"
     /// <summary>
     /// Links a platform instance to a controlled concept from the NERC L06 SeaVoX Platform Categories vocabulary.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasPlatformCategory"></see></summary>
-    let hasPlatformCategory =
-        Namespaced_IRI.parse _namespace_name "hasPlatformCategory" |> NamespacedName
-
+    let hasPlatformCategory = _prefix "hasPlatformCategory"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ANTARES"></see>
     /// </summary>
-    let ANTARES = Namespaced_IRI.parse _namespace_name "ANTARES" |> NamespacedName
+    let ANTARES = _prefix "ANTARES"
     /// <summary>
     /// A subsite of observation, a finer component of a site, enabling increased spatial granularity for measurement or instrumentation.
     /// <see href="https://w3id.org/earthsemantics/OSO#Subsite"></see></summary>
-    let Subsite = Namespaced_IRI.parse _namespace_name "Subsite" |> NamespacedName
-
+    let Subsite = _prefix "Subsite"
     /// <summary>
     /// a subsite contains one or more platforms
     /// <see href="https://w3id.org/earthsemantics/OSO#Subsite_contains_a_Platform"></see></summary>
-    let Subsite_contains_a_Platform =
-        Namespaced_IRI.parse _namespace_name "Subsite_contains_a_Platform" |> NamespacedName
-
+    let Subsite_contains_a_Platform = _prefix "Subsite_contains_a_Platform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IL07"></see>
     /// </summary>
-    let IL07 = Namespaced_IRI.parse _namespace_name "IL07" |> NamespacedName
-
+    let IL07 = _prefix "IL07"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Subsite_is_part_of_a_RI"></see>
     /// </summary>
-    let Subsite_is_part_of_a_RI =
-        Namespaced_IRI.parse _namespace_name "Subsite_is_part_of_a_RI" |> NamespacedName
-
+    let Subsite_is_part_of_a_RI = _prefix "Subsite_is_part_of_a_RI"
     /// <summary>
     /// Indicates whether a site or subsite is considered a test site (true/false).
     /// <see href="https://w3id.org/earthsemantics/OSO#isTestSite"></see></summary>
-    let isTestSite = Namespaced_IRI.parse _namespace_name "isTestSite" |> NamespacedName
+    let isTestSite = _prefix "isTestSite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ARDITI"></see>
     /// </summary>
-    let ARDITI = Namespaced_IRI.parse _namespace_name "ARDITI" |> NamespacedName
+    let ARDITI = _prefix "ARDITI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#hasCountry"></see>
     /// </summary>
-    let hasCountry = Namespaced_IRI.parse _namespace_name "hasCountry" |> NamespacedName
+    let hasCountry = _prefix "hasCountry"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Alan_BERRY"></see>
     /// </summary>
-    let Alan_BERRY = Namespaced_IRI.parse _namespace_name "Alan_BERRY" |> NamespacedName
+    let Alan_BERRY = _prefix "Alan_BERRY"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#hasORCID"></see>
     /// </summary>
-    let hasORCID = Namespaced_IRI.parse _namespace_name "hasORCID" |> NamespacedName
+    let hasORCID = _prefix "hasORCID"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Antigonia"></see>
     /// </summary>
-    let Antigonia = Namespaced_IRI.parse _namespace_name "Antigonia" |> NamespacedName
-
+    let Antigonia = _prefix "Antigonia"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#AtlanticWhaleDealbbox"></see>
     /// </summary>
-    let AtlanticWhaleDealbbox =
-        Namespaced_IRI.parse _namespace_name "AtlanticWhaleDealbbox" |> NamespacedName
-
+    let AtlanticWhaleDealbbox = _prefix "AtlanticWhaleDealbbox"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Atlantic_Whale_Deal"></see>
     /// </summary>
-    let Atlantic_Whale_Deal =
-        Namespaced_IRI.parse _namespace_name "Atlantic_Whale_Deal" |> NamespacedName
-
+    let Atlantic_Whale_Deal = _prefix "Atlantic_Whale_Deal"
     /// <summary>
     /// A research project supported by dedicated financial funding from one or more organizations or funding bodies.
     /// <see href="https://w3id.org/earthsemantics/OSO#FundedProject"></see></summary>
-    let FundedProject =
-        Namespaced_IRI.parse _namespace_name "FundedProject" |> NamespacedName
-
+    let FundedProject = _prefix "FundedProject"
     /// <summary>
     /// Indicates the organization responsible for leading or coordinating a research project.
     /// <see href="https://w3id.org/earthsemantics/OSO#Project_is_led_by_an_Organization"></see></summary>
-    let Project_is_led_by_an_Organization =
-        Namespaced_IRI.parse _namespace_name "Project_is_led_by_an_Organization" |> NamespacedName
-
+    let Project_is_led_by_an_Organization = _prefix "Project_is_led_by_an_Organization"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#hasLogo"></see>
     /// </summary>
-    let hasLogo = Namespaced_IRI.parse _namespace_name "hasLogo" |> NamespacedName
-
+    let hasLogo = _prefix "hasLogo"
     /// <summary>
     /// Relates an entity to its geographical extent, such as a bounding box or spatial coverage.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasSpatialExtent"></see></summary>
-    let hasSpatialExtent =
-        Namespaced_IRI.parse _namespace_name "hasSpatialExtent" |> NamespacedName
-
+    let hasSpatialExtent = _prefix "hasSpatialExtent"
     /// <summary>
     /// A regional facility containing sites, associated with research infrastructures, oceanographic campaigns, organizations, and a Regional Team Leader.
     /// <see href="https://w3id.org/earthsemantics/OSO#RegionalFacility"></see></summary>
-    let RegionalFacility =
-        Namespaced_IRI.parse _namespace_name "RegionalFacility" |> NamespacedName
-
+    let RegionalFacility = _prefix "RegionalFacility"
     /// <summary>
     /// value expressed in nautical miles (NM)
     /// <see href="https://w3id.org/earthsemantics/OSO#DistanceFromLand"></see></summary>
-    let DistanceFromLand =
-        Namespaced_IRI.parse _namespace_name "DistanceFromLand" |> NamespacedName
-
+    let DistanceFromLand = _prefix "DistanceFromLand"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#RegionalFacilityispartofRI"></see>
     /// </summary>
-    let RegionalFacilityispartofRI =
-        Namespaced_IRI.parse _namespace_name "RegionalFacilityispartofRI" |> NamespacedName
-
+    let RegionalFacilityispartofRI = _prefix "RegionalFacilityispartofRI"
     /// <summary>
     /// A Regional Facility contains one or more Sites.
     /// <see href="https://w3id.org/earthsemantics/OSO#containsSite"></see></summary>
-    let containsSite =
-        Namespaced_IRI.parse _namespace_name "containsSite" |> NamespacedName
-
+    let containsSite = _prefix "containsSite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Lucky_Strike"></see>
     /// </summary>
-    let Lucky_Strike =
-        Namespaced_IRI.parse _namespace_name "Lucky_Strike" |> NamespacedName
-
+    let Lucky_Strike = _prefix "Lucky_Strike"
     /// <summary>
     /// Links a regional facility to its spatial extent, aligned with EX_Extent/EX_GeographicBoundingBox in ISO 19115-3.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasBoundingBox"></see></summary>
-    let hasBoundingBox =
-        Namespaced_IRI.parse _namespace_name "hasBoundingBox" |> NamespacedName
-
+    let hasBoundingBox = _prefix "hasBoundingBox"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Azoresbbox"></see>
     /// </summary>
-    let Azoresbbox = Namespaced_IRI.parse _namespace_name "Azoresbbox" |> NamespacedName
-
+    let Azoresbbox = _prefix "Azoresbbox"
     /// <summary>
     /// Links a regional facility to its membership within an ERIC infrastructure.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasERICMembership"></see></summary>
-    let hasERICMembership =
-        Namespaced_IRI.parse _namespace_name "hasERICMembership" |> NamespacedName
-
+    let hasERICMembership = _prefix "hasERICMembership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Azores_EMSO_membership"></see>
     /// </summary>
-    let Azores_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Azores_EMSO_membership" |> NamespacedName
-
+    let Azores_EMSO_membership = _prefix "Azores_EMSO_membership"
     /// <summary>
     /// A Regional Facility is managed by one Regional Team Leader.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasRegionalTeamLeader"></see></summary>
-    let hasRegionalTeamLeader =
-        Namespaced_IRI.parse _namespace_name "hasRegionalTeamLeader" |> NamespacedName
-
+    let hasRegionalTeamLeader = _prefix "hasRegionalTeamLeader"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Marjolaine_MATABOS"></see>
     /// </summary>
-    let Marjolaine_MATABOS =
-        Namespaced_IRI.parse _namespace_name "Marjolaine_MATABOS" |> NamespacedName
-
+    let Marjolaine_MATABOS = _prefix "Marjolaine_MATABOS"
     /// <summary>
     /// A Regional Facility is linked to zero or more Oceanographic Campaigns.
     /// <see href="https://w3id.org/earthsemantics/OSO#linkedToCampaigns"></see></summary>
-    let linkedToCampaigns =
-        Namespaced_IRI.parse _namespace_name "linkedToCampaigns" |> NamespacedName
-
+    let linkedToCampaigns = _prefix "linkedToCampaigns"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#LUCKYDIVMIC"></see>
     /// </summary>
-    let LUCKYDIVMIC =
-        Namespaced_IRI.parse _namespace_name "LUCKYDIVMIC" |> NamespacedName
-
+    let LUCKYDIVMIC = _prefix "LUCKYDIVMIC"
     /// <summary>
     /// A Regional Facility is linked to zero or more of series of Oceanographic Campaigns.
     /// <see href="https://w3id.org/earthsemantics/OSO#linkedToSeries"></see></summary>
-    let linkedToSeries =
-        Namespaced_IRI.parse _namespace_name "linkedToSeries" |> NamespacedName
-
+    let linkedToSeries = _prefix "linkedToSeries"
     /// <summary>
     /// MOMAR is the acronym for MOnitoring the Mid Atlantic Ridge
     /// <see href="https://w3id.org/earthsemantics/OSO#MOMARSAT"></see></summary>
-    let MOMARSAT = Namespaced_IRI.parse _namespace_name "MOMARSAT" |> NamespacedName
+    let MOMARSAT = _prefix "MOMARSAT"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#HYDROMOMAR"></see>
     /// </summary>
-    let HYDROMOMAR = Namespaced_IRI.parse _namespace_name "HYDROMOMAR" |> NamespacedName
-
+    let HYDROMOMAR = _prefix "HYDROMOMAR"
     /// <summary>
     /// value expressed in meter (m)
     /// <see href="https://w3id.org/earthsemantics/OSO#maxWaterDepth"></see></summary>
-    let maxWaterDepth =
-        Namespaced_IRI.parse _namespace_name "maxWaterDepth" |> NamespacedName
-
+    let maxWaterDepth = _prefix "maxWaterDepth"
     /// <summary>
     /// A class representing the membership relationship between an organisation or national entity and a European Research Infrastructure Consortium (ERIC).
     /// <see href="https://w3id.org/earthsemantics/OSO#ERICMembership"></see></summary>
-    let ERICMembership =
-        Namespaced_IRI.parse _namespace_name "ERICMembership" |> NamespacedName
-
+    let ERICMembership = _prefix "ERICMembership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#isERICMembershipOf"></see>
     /// </summary>
-    let isERICMembershipOf =
-        Namespaced_IRI.parse _namespace_name "isERICMembershipOf" |> NamespacedName
-
+    let isERICMembershipOf = _prefix "isERICMembershipOf"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#membershipInERIC"></see>
     /// </summary>
-    let membershipInERIC =
-        Namespaced_IRI.parse _namespace_name "membershipInERIC" |> NamespacedName
-
+    let membershipInERIC = _prefix "membershipInERIC"
     /// <summary>
     /// Corresponds to eastBoundLongitude in ISO 19115-3
     /// <see href="https://w3id.org/earthsemantics/OSO#hasEastLongitude"></see></summary>
-    let hasEastLongitude =
-        Namespaced_IRI.parse _namespace_name "hasEastLongitude" |> NamespacedName
-
+    let hasEastLongitude = _prefix "hasEastLongitude"
     /// <summary>
     /// Corresponds to northBoundLatitude in ISO 19115-3
     /// <see href="https://w3id.org/earthsemantics/OSO#hasNorthLatitude"></see></summary>
-    let hasNorthLatitude =
-        Namespaced_IRI.parse _namespace_name "hasNorthLatitude" |> NamespacedName
-
+    let hasNorthLatitude = _prefix "hasNorthLatitude"
     /// <summary>
     /// Corresponds to southBoundLatitude in ISO 19115-3
     /// <see href="https://w3id.org/earthsemantics/OSO#hasSouthLatitude"></see></summary>
-    let hasSouthLatitude =
-        Namespaced_IRI.parse _namespace_name "hasSouthLatitude" |> NamespacedName
-
+    let hasSouthLatitude = _prefix "hasSouthLatitude"
     /// <summary>
     /// Corresponds to westBoundLongitude in ISO 19115-3
     /// <see href="https://w3id.org/earthsemantics/OSO#hasWestLongitude"></see></summary>
-    let hasWestLongitude =
-        Namespaced_IRI.parse _namespace_name "hasWestLongitude" |> NamespacedName
-
+    let hasWestLongitude = _prefix "hasWestLongitude"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#B%C3%A9n%C3%A9dicte_FERR%C3%89"></see>
     /// </summary>
-    let ``B%C3%A9n%C3%A9dicte_FERR%C3%89`` =
-        Namespaced_IRI.parse _namespace_name "B%C3%A9n%C3%A9dicte_FERR%C3%89" |> NamespacedName
-
+    let ``B%C3%A9n%C3%A9dicte_FERR%C3%89`` = _prefix "B%C3%A9n%C3%A9dicte_FERR%C3%89"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BB"></see>
     /// </summary>
-    let BB = Namespaced_IRI.parse _namespace_name "BB" |> NamespacedName
-
+    let BB = _prefix "BB"
     /// <summary>
     /// A site contains one or more platforms.
     /// <see href="https://w3id.org/earthsemantics/OSO#containsPlatform"></see></summary>
-    let containsPlatform =
-        Namespaced_IRI.parse _namespace_name "containsPlatform" |> NamespacedName
-
+    let containsPlatform = _prefix "containsPlatform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BB_Mooring"></see>
     /// </summary>
-    let BB_Mooring = Namespaced_IRI.parse _namespace_name "BB_Mooring" |> NamespacedName
-
+    let BB_Mooring = _prefix "BB_Mooring"
     /// <summary>
     /// A Site is managed by one Site Responsible.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasSiteResponsible"></see></summary>
-    let hasSiteResponsible =
-        Namespaced_IRI.parse _namespace_name "hasSiteResponsible" |> NamespacedName
-
+    let hasSiteResponsible = _prefix "hasSiteResponsible"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Stefano_MISEROCCHI"></see>
     /// </summary>
-    let Stefano_MISEROCCHI =
-        Namespaced_IRI.parse _namespace_name "Stefano_MISEROCCHI" |> NamespacedName
-
+    let Stefano_MISEROCCHI = _prefix "Stefano_MISEROCCHI"
     /// <summary>
     /// A Platform may have zero or more Principal Investigators.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasPrincipalInvestigator"></see></summary>
-    let hasPrincipalInvestigator =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalInvestigator" |> NamespacedName
-
+    let hasPrincipalInvestigator = _prefix "hasPrincipalInvestigator"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Vanessa_CARDIN"></see>
     /// </summary>
-    let Vanessa_CARDIN =
-        Namespaced_IRI.parse _namespace_name "Vanessa_CARDIN" |> NamespacedName
-
+    let Vanessa_CARDIN = _prefix "Vanessa_CARDIN"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BILLION"></see>
     /// </summary>
-    let BILLION = Namespaced_IRI.parse _namespace_name "BILLION" |> NamespacedName
-
+    let BILLION = _prefix "BILLION"
     /// <summary>
     /// This mooring is not part of either the EMSO-France network or the EMSO-ERIC network
     /// <see href="https://w3id.org/earthsemantics/OSO#Billion_mooring"></see></summary>
-    let Billion_mooring =
-        Namespaced_IRI.parse _namespace_name "Billion_mooring" |> NamespacedName
-
+    let Billion_mooring = _prefix "Billion_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BJS"></see>
     /// </summary>
-    let BJS = Namespaced_IRI.parse _namespace_name "BJS" |> NamespacedName
-
+    let BJS = _prefix "BJS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BJS_BathyBot"></see>
     /// </summary>
-    let BJS_BathyBot =
-        Namespaced_IRI.parse _namespace_name "BJS_BathyBot" |> NamespacedName
-
+    let BJS_BathyBot = _prefix "BJS_BathyBot"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BJS_SeabedStation"></see>
     /// </summary>
-    let BJS_SeabedStation =
-        Namespaced_IRI.parse _namespace_name "BJS_SeabedStation" |> NamespacedName
-
+    let BJS_SeabedStation = _prefix "BJS_SeabedStation"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BJS_BathyDock"></see>
     /// </summary>
-    let BJS_BathyDock =
-        Namespaced_IRI.parse _namespace_name "BJS_BathyDock" |> NamespacedName
-
+    let BJS_BathyDock = _prefix "BJS_BathyDock"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#BRGM"></see>
     /// </summary>
-    let BRGM = Namespaced_IRI.parse _namespace_name "BRGM" |> NamespacedName
+    let BRGM = _prefix "BRGM"
     /// <summary>
     /// This property links an Organisation to its EDMO (European Directory of Marine Organisations) identifier.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasEDMO"></see></summary>
-    let hasEDMO = Namespaced_IRI.parse _namespace_name "hasEDMO" |> NamespacedName
+    let hasEDMO = _prefix "hasEDMO"
     /// <summary>
     /// This property links an Organisation to its ROR (Research Organization Registry) identifier.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasROR"></see></summary>
-    let hasROR = Namespaced_IRI.parse _namespace_name "hasROR" |> NamespacedName
-
+    let hasROR = _prefix "hasROR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Balearic_Sea"></see>
     /// </summary>
-    let Balearic_Sea =
-        Namespaced_IRI.parse _namespace_name "Balearic_Sea" |> NamespacedName
-
+    let Balearic_Sea = _prefix "Balearic_Sea"
     /// <summary>
     /// WMO ID 6103565
     /// <see href="https://w3id.org/earthsemantics/OSO#OBSEA"></see></summary>
-    let OBSEA = Namespaced_IRI.parse _namespace_name "OBSEA" |> NamespacedName
-
+    let OBSEA = _prefix "OBSEA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Balearic_Sea_EMSO_membership"></see>
     /// </summary>
-    let Balearic_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Balearic_Sea_EMSO_membership" |> NamespacedName
-
+    let Balearic_Sea_EMSO_membership = _prefix "Balearic_Sea_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Joaquin_DEL_RIO"></see>
     /// </summary>
-    let Joaquin_DEL_RIO =
-        Namespaced_IRI.parse _namespace_name "Joaquin_DEL_RIO" |> NamespacedName
-
+    let Joaquin_DEL_RIO = _prefix "Joaquin_DEL_RIO"
     /// <summary>
     /// A Regional Facility is managed by one or more Organisations.
     /// <see href="https://w3id.org/earthsemantics/OSO#ledByOrganization"></see></summary>
-    let ledByOrganization =
-        Namespaced_IRI.parse _namespace_name "ledByOrganization" |> NamespacedName
-
+    let ledByOrganization = _prefix "ledByOrganization"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#UPC"></see>
     /// </summary>
-    let UPC = Namespaced_IRI.parse _namespace_name "UPC" |> NamespacedName
-
+    let UPC = _prefix "UPC"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Bay_of_Biscay_Slope"></see>
     /// </summary>
-    let Bay_of_Biscay_Slope =
-        Namespaced_IRI.parse _namespace_name "Bay_of_Biscay_Slope" |> NamespacedName
+    let Bay_of_Biscay_Slope = _prefix "Bay_of_Biscay_Slope"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#RegionalFacility_is_linked_to_a_project"></see>
     /// </summary>
     let RegionalFacility_is_linked_to_a_project =
-        Namespaced_IRI.parse _namespace_name "RegionalFacility_is_linked_to_a_project" |> NamespacedName
+        _prefix "RegionalFacility_is_linked_to_a_project"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Marha"></see>
     /// </summary>
-    let Marha = Namespaced_IRI.parse _namespace_name "Marha" |> NamespacedName
-
+    let Marha = _prefix "Marha"
     /// <summary>
     /// A Regional Facility is related to zero or more Research Infrastructure
     /// <see href="https://w3id.org/earthsemantics/OSO#RegionalFacilityisRelatedTo"></see></summary>
-    let RegionalFacilityisRelatedTo =
-        Namespaced_IRI.parse _namespace_name "RegionalFacilityisRelatedTo" |> NamespacedName
-
+    let RegionalFacilityisRelatedTo = _prefix "RegionalFacilityisRelatedTo"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Lampaul_Canyon"></see>
     /// </summary>
-    let Lampaul_Canyon =
-        Namespaced_IRI.parse _namespace_name "Lampaul_Canyon" |> NamespacedName
-
+    let Lampaul_Canyon = _prefix "Lampaul_Canyon"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CHEREEF-OBS"></see>
     /// </summary>
-    let ``CHEREEF-OBS`` =
-        Namespaced_IRI.parse _namespace_name "CHEREEF-OBS" |> NamespacedName
-
+    let ``CHEREEF-OBS`` = _prefix "CHEREEF-OBS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Benthic_station"></see>
     /// </summary>
-    let Benthic_station =
-        Namespaced_IRI.parse _namespace_name "Benthic_station" |> NamespacedName
-
+    let Benthic_station = _prefix "Benthic_station"
     /// <summary>
     /// The Black Sea is one of the largest regional seas of the Eurasian continent and unique in many of its geographical, geological, biological, hydrographical and socio-political characteristics. With anoxic conditions in the deep, problems with invasive species and high sediment loads delivered to the system, this area has unique problems requiring long-term stations. The Black Sea is located in a geological complex area, where three major tectonic plates (Eurasian, Anatolian, Arabian) interact. Geo hazards, such as earthquarkes, submarine landslide, displacement along active faults, are present and are possible triggers of tsunami, together with extreme meteorological events.
     /// <see href="https://w3id.org/earthsemantics/OSO#Black_Sea"></see></summary>
-    let Black_Sea = Namespaced_IRI.parse _namespace_name "Black_Sea" |> NamespacedName
+    let Black_Sea = _prefix "Black_Sea"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EUXINUS"></see>
     /// </summary>
-    let EUXINUS = Namespaced_IRI.parse _namespace_name "EUXINUS" |> NamespacedName
+    let EUXINUS = _prefix "EUXINUS"
     /// <summary>
     /// Links an entity to its geometric representation.
     /// <see href="https://w3id.org/earthsemantics/OSO#EuxRo01"></see></summary>
-    let EuxRo01 = Namespaced_IRI.parse _namespace_name "EuxRo01" |> NamespacedName
+    let EuxRo01 = _prefix "EuxRo01"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo03"></see>
     /// </summary>
-    let EuxRo03 = Namespaced_IRI.parse _namespace_name "EuxRo03" |> NamespacedName
+    let EuxRo03 = _prefix "EuxRo03"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo02"></see>
     /// </summary>
-    let EuxRo02 = Namespaced_IRI.parse _namespace_name "EuxRo02" |> NamespacedName
-
+    let EuxRo02 = _prefix "EuxRo02"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Black_Sea_RF_bbox"></see>
     /// </summary>
-    let Black_Sea_RF_bbox =
-        Namespaced_IRI.parse _namespace_name "Black_Sea_RF_bbox" |> NamespacedName
-
+    let Black_Sea_RF_bbox = _prefix "Black_Sea_RF_bbox"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Black_Sea_EMSO_membership"></see>
     /// </summary>
-    let Black_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Black_Sea_EMSO_membership" |> NamespacedName
-
+    let Black_Sea_EMSO_membership = _prefix "Black_Sea_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Vlad_R%C4%83dulescu"></see>
     /// </summary>
-    let ``Vlad_R%C4%83dulescu`` =
-        Namespaced_IRI.parse _namespace_name "Vlad_R%C4%83dulescu" |> NamespacedName
-
+    let ``Vlad_R%C4%83dulescu`` = _prefix "Vlad_R%C4%83dulescu"
     /// <summary>
     /// The Ministry of National Education (ANCS) appointed GeoEcoMar to represent Romania in EMSO.
     /// <see href="https://w3id.org/earthsemantics/OSO#GeoEcoMar"></see></summary>
-    let GeoEcoMar = Namespaced_IRI.parse _namespace_name "GeoEcoMar" |> NamespacedName
-
+    let GeoEcoMar = _prefix "GeoEcoMar"
     /// <summary>
     /// value expressed in meter (m)
     /// <see href="https://w3id.org/earthsemantics/OSO#minWaterDepth"></see></summary>
-    let minWaterDepth =
-        Namespaced_IRI.parse _namespace_name "minWaterDepth" |> NamespacedName
-
+    let minWaterDepth = _prefix "minWaterDepth"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Boris_MARCAILLOU"></see>
     /// </summary>
-    let Boris_MARCAILLOU =
-        Namespaced_IRI.parse _namespace_name "Boris_MARCAILLOU" |> NamespacedName
-
+    let Boris_MARCAILLOU = _prefix "Boris_MARCAILLOU"
     /// <summary>
     /// A series of oceanographic campaigns linked to a Regional Facility.
     /// <see href="https://w3id.org/earthsemantics/OSO#SeriesOfOceanographicCampaigns"></see></summary>
-    let SeriesOfOceanographicCampaigns =
-        Namespaced_IRI.parse _namespace_name "SeriesOfOceanographicCampaigns" |> NamespacedName
-
+    let SeriesOfOceanographicCampaigns = _prefix "SeriesOfOceanographicCampaigns"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CLASS"></see>
     /// </summary>
-    let CLASS = Namespaced_IRI.parse _namespace_name "CLASS" |> NamespacedName
+    let CLASS = _prefix "CLASS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CNR"></see>
     /// </summary>
-    let CNR = Namespaced_IRI.parse _namespace_name "CNR" |> NamespacedName
+    let CNR = _prefix "CNR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#isMemberof"></see>
     /// </summary>
-    let isMemberof = Namespaced_IRI.parse _namespace_name "isMemberof" |> NamespacedName
+    let isMemberof = _prefix "isMemberof"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CNRS"></see>
     /// </summary>
-    let CNRS = Namespaced_IRI.parse _namespace_name "CNRS" |> NamespacedName
+    let CNRS = _prefix "CNRS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CONDOR"></see>
     /// </summary>
-    let CONDOR = Namespaced_IRI.parse _namespace_name "CONDOR" |> NamespacedName
-
+    let CONDOR = _prefix "CONDOR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Site_is_part_of_a_RI"></see>
     /// </summary>
-    let Site_is_part_of_a_RI =
-        Namespaced_IRI.parse _namespace_name "Site_is_part_of_a_RI" |> NamespacedName
-
+    let Site_is_part_of_a_RI = _prefix "Site_is_part_of_a_RI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO-PT"></see>
     /// </summary>
-    let ``EMSO-PT`` = Namespaced_IRI.parse _namespace_name "EMSO-PT" |> NamespacedName
+    let ``EMSO-PT`` = _prefix "EMSO-PT"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CSIC"></see>
     /// </summary>
-    let CSIC = Namespaced_IRI.parse _namespace_name "CSIC" |> NamespacedName
+    let CSIC = _prefix "CSIC"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#CTD"></see>
     /// </summary>
-    let CTD = Namespaced_IRI.parse _namespace_name "CTD" |> NamespacedName
+    let CTD = _prefix "CTD"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Calipso"></see>
     /// </summary>
-    let Calipso = Namespaced_IRI.parse _namespace_name "Calipso" |> NamespacedName
-
+    let Calipso = _prefix "Calipso"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Calipso_Seabed_Station"></see>
     /// </summary>
-    let Calipso_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "Calipso_Seabed_Station" |> NamespacedName
-
+    let Calipso_Seabed_Station = _prefix "Calipso_Seabed_Station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Davide_EMBRIACO"></see>
     /// </summary>
-    let Davide_EMBRIACO =
-        Namespaced_IRI.parse _namespace_name "Davide_EMBRIACO" |> NamespacedName
-
+    let Davide_EMBRIACO = _prefix "Davide_EMBRIACO"
     /// <summary>
     /// Canarias Regional Facility is linked to the Atlantic Whale Deal project (issue concerning collision with marine mammals)
     /// <see href="https://w3id.org/earthsemantics/OSO#Canarias"></see></summary>
-    let Canarias = Namespaced_IRI.parse _namespace_name "Canarias" |> NamespacedName
+    let Canarias = _prefix "Canarias"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ESTOC"></see>
     /// </summary>
-    let ESTOC = Namespaced_IRI.parse _namespace_name "ESTOC" |> NamespacedName
-
+    let ESTOC = _prefix "ESTOC"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#East_of_Gran_Canaria"></see>
     /// </summary>
-    let East_of_Gran_Canaria =
-        Namespaced_IRI.parse _namespace_name "East_of_Gran_Canaria" |> NamespacedName
-
+    let East_of_Gran_Canaria = _prefix "East_of_Gran_Canaria"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Canarias_EMSO_membership"></see>
     /// </summary>
-    let Canarias_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Canarias_EMSO_membership" |> NamespacedName
-
+    let Canarias_EMSO_membership = _prefix "Canarias_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Eric_DELORY"></see>
     /// </summary>
-    let Eric_DELORY =
-        Namespaced_IRI.parse _namespace_name "Eric_DELORY" |> NamespacedName
-
+    let Eric_DELORY = _prefix "Eric_DELORY"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ULPGC"></see>
     /// </summary>
-    let ULPGC = Namespaced_IRI.parse _namespace_name "ULPGC" |> NamespacedName
+    let ULPGC = _prefix "ULPGC"
     /// <summary>
     /// The Ministry of Economy and Competitiveness (MINECO) is represented within EMSO by PLOCAN.
     /// <see href="https://w3id.org/earthsemantics/OSO#PLOCAN"></see></summary>
-    let PLOCAN = Namespaced_IRI.parse _namespace_name "PLOCAN" |> NamespacedName
+    let PLOCAN = _prefix "PLOCAN"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Capelinhos"></see>
     /// </summary>
-    let Capelinhos = Namespaced_IRI.parse _namespace_name "Capelinhos" |> NamespacedName
-
+    let Capelinhos = _prefix "Capelinhos"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Capelinhos_AutonomousDevices"></see>
     /// </summary>
-    let Capelinhos_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "Capelinhos_AutonomousDevices" |> NamespacedName
-
+    let Capelinhos_AutonomousDevices = _prefix "Capelinhos_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Carlos_SOUSA"></see>
     /// </summary>
-    let Carlos_SOUSA =
-        Namespaced_IRI.parse _namespace_name "Carlos_SOUSA" |> NamespacedName
-
+    let Carlos_SOUSA = _prefix "Carlos_SOUSA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Celtic_Seas"></see>
     /// </summary>
-    let Celtic_Seas =
-        Namespaced_IRI.parse _namespace_name "Celtic_Seas" |> NamespacedName
-
+    let Celtic_Seas = _prefix "Celtic_Seas"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Smartbay"></see>
     /// </summary>
-    let Smartbay = Namespaced_IRI.parse _namespace_name "Smartbay" |> NamespacedName
-
+    let Smartbay = _prefix "Smartbay"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Rockall_Trough"></see>
     /// </summary>
-    let South_Rockall_Trough =
-        Namespaced_IRI.parse _namespace_name "South_Rockall_Trough" |> NamespacedName
-
+    let South_Rockall_Trough = _prefix "South_Rockall_Trough"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Celtic_Seas_EMSO_membership"></see>
     /// </summary>
-    let Celtic_Seas_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Celtic_Seas_EMSO_membership" |> NamespacedName
-
+    let Celtic_Seas_EMSO_membership = _prefix "Celtic_Seas_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Central_Fram_Strait"></see>
     /// </summary>
-    let Central_Fram_Strait =
-        Namespaced_IRI.parse _namespace_name "Central_Fram_Strait" |> NamespacedName
-
+    let Central_Fram_Strait = _prefix "Central_Fram_Strait"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Central_Fram_Strait_mooring"></see>
     /// </summary>
-    let Central_Fram_Strait_mooring =
-        Namespaced_IRI.parse _namespace_name "Central_Fram_Strait_mooring" |> NamespacedName
-
+    let Central_Fram_Strait_mooring = _prefix "Central_Fram_Strait_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Laura_DE_STEUR"></see>
     /// </summary>
-    let Laura_DE_STEUR =
-        Namespaced_IRI.parse _namespace_name "Laura_DE_STEUR" |> NamespacedName
-
+    let Laura_DE_STEUR = _prefix "Laura_DE_STEUR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Cimendef"></see>
     /// </summary>
-    let Cimendef = Namespaced_IRI.parse _namespace_name "Cimendef" |> NamespacedName
-
+    let Cimendef = _prefix "Cimendef"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Condor_seamount"></see>
     /// </summary>
-    let Condor_seamount =
-        Namespaced_IRI.parse _namespace_name "Condor_seamount" |> NamespacedName
-
+    let Condor_seamount = _prefix "Condor_seamount"
     /// <summary>
     /// A Regional Facility is associated with one or more Research Infrastructures.
     /// <see href="https://w3id.org/earthsemantics/OSO#associatedWithRI"></see></summary>
-    let associatedWithRI =
-        Namespaced_IRI.parse _namespace_name "associatedWithRI" |> NamespacedName
-
+    let associatedWithRI = _prefix "associatedWithRI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IPMA"></see>
     /// </summary>
-    let IPMA = Namespaced_IRI.parse _namespace_name "IPMA" |> NamespacedName
+    let IPMA = _prefix "IPMA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Cretan_Sea"></see>
     /// </summary>
-    let Cretan_Sea = Namespaced_IRI.parse _namespace_name "Cretan_Sea" |> NamespacedName
+    let Cretan_Sea = _prefix "Cretan_Sea"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#E1M3A"></see>
     /// </summary>
-    let E1M3A = Namespaced_IRI.parse _namespace_name "E1M3A" |> NamespacedName
-
+    let E1M3A = _prefix "E1M3A"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Cretan_Sea_EMSO_membership"></see>
     /// </summary>
-    let Cretan_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Cretan_Sea_EMSO_membership" |> NamespacedName
-
+    let Cretan_Sea_EMSO_membership = _prefix "Cretan_Sea_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#George_PETIHAKIS"></see>
     /// </summary>
-    let George_PETIHAKIS =
-        Namespaced_IRI.parse _namespace_name "George_PETIHAKIS" |> NamespacedName
-
+    let George_PETIHAKIS = _prefix "George_PETIHAKIS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#HCMR"></see>
     /// </summary>
-    let HCMR = Namespaced_IRI.parse _namespace_name "HCMR" |> NamespacedName
+    let HCMR = _prefix "HCMR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Crystal"></see>
     /// </summary>
-    let Crystal = Namespaced_IRI.parse _namespace_name "Crystal" |> NamespacedName
+    let Crystal = _prefix "Crystal"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Cypres"></see>
     /// </summary>
-    let Cypres = Namespaced_IRI.parse _namespace_name "Cypres" |> NamespacedName
+    let Cypres = _prefix "Cypres"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#DAS"></see>
     /// </summary>
-    let DAS = Namespaced_IRI.parse _namespace_name "DAS" |> NamespacedName
-
+    let DAS = _prefix "DAS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Martin_PATRIAT"></see>
     /// </summary>
-    let Martin_PATRIAT =
-        Namespaced_IRI.parse _namespace_name "Martin_PATRIAT" |> NamespacedName
-
+    let Martin_PATRIAT = _prefix "Martin_PATRIAT"
     /// <summary>
     /// DYFAMED: Dynamics of Atmospheric Fluxes in the Mediterranean
     /// <see href="https://w3id.org/earthsemantics/OSO#DYFAMED"></see></summary>
-    let DYFAMED = Namespaced_IRI.parse _namespace_name "DYFAMED" |> NamespacedName
-
+    let DYFAMED = _prefix "DYFAMED"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Dyfamed_Mugobs"></see>
     /// </summary>
-    let Dyfamed_Mugobs =
-        Namespaced_IRI.parse _namespace_name "Dyfamed_Mugobs" |> NamespacedName
-
+    let Dyfamed_Mugobs = _prefix "Dyfamed_Mugobs"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Dyfamed_mooring"></see>
     /// </summary>
-    let Dyfamed_mooring =
-        Namespaced_IRI.parse _namespace_name "Dyfamed_mooring" |> NamespacedName
-
+    let Dyfamed_mooring = _prefix "Dyfamed_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Dyfamed_ODAS"></see>
     /// </summary>
-    let Dyfamed_ODAS =
-        Namespaced_IRI.parse _namespace_name "Dyfamed_ODAS" |> NamespacedName
-
+    let Dyfamed_ODAS = _prefix "Dyfamed_ODAS"
     /// <summary>
     /// Associates an entity with a geographical location description or geometry.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasLocation"></see></summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Laurent_COPPOLA"></see>
     /// </summary>
-    let Laurent_COPPOLA =
-        Namespaced_IRI.parse _namespace_name "Laurent_COPPOLA" |> NamespacedName
-
+    let Laurent_COPPOLA = _prefix "Laurent_COPPOLA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Deployment"></see>
     /// </summary>
-    let Deployment = Namespaced_IRI.parse _namespace_name "Deployment" |> NamespacedName
+    let Deployment = _prefix "Deployment"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Dione"></see>
     /// </summary>
-    let Dione = Namespaced_IRI.parse _namespace_name "Dione" |> NamespacedName
-
+    let Dione = _prefix "Dione"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Dione_Seabed_Station"></see>
     /// </summary>
-    let Dione_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "Dione_Seabed_Station" |> NamespacedName
-
+    let Dione_Seabed_Station = _prefix "Dione_Seabed_Station"
     /// <summary>
     /// List of EMSO scientific disciplines associated to a Regional Facility
     /// <see href="https://w3id.org/earthsemantics/OSO#Discipline"></see></summary>
-    let Discipline = Namespaced_IRI.parse _namespace_name "Discipline" |> NamespacedName
-
+    let Discipline = _prefix "Discipline"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Dominique_LEFEVRE"></see>
     /// </summary>
-    let Dominique_LEFEVRE =
-        Namespaced_IRI.parse _namespace_name "Dominique_LEFEVRE" |> NamespacedName
-
+    let Dominique_LEFEVRE = _prefix "Dominique_LEFEVRE"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#E1M3A_mooring"></see>
     /// </summary>
-    let E1M3A_mooring =
-        Namespaced_IRI.parse _namespace_name "E1M3A_mooring" |> NamespacedName
-
+    let E1M3A_mooring = _prefix "E1M3A_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Leonidas_PERIVOLIOTIS"></see>
     /// </summary>
-    let Leonidas_PERIVOLIOTIS =
-        Namespaced_IRI.parse _namespace_name "Leonidas_PERIVOLIOTIS" |> NamespacedName
-
+    let Leonidas_PERIVOLIOTIS = _prefix "Leonidas_PERIVOLIOTIS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#E2M3A"></see>
     /// </summary>
-    let E2M3A = Namespaced_IRI.parse _namespace_name "E2M3A" |> NamespacedName
+    let E2M3A = _prefix "E2M3A"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#E2M3A_buoy"></see>
     /// </summary>
-    let E2M3A_buoy = Namespaced_IRI.parse _namespace_name "E2M3A_buoy" |> NamespacedName
-
+    let E2M3A_buoy = _prefix "E2M3A_buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#E2M3A_mooring"></see>
     /// </summary>
-    let E2M3A_mooring =
-        Namespaced_IRI.parse _namespace_name "E2M3A_mooring" |> NamespacedName
-
+    let E2M3A_mooring = _prefix "E2M3A_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EDOKKO"></see>
     /// </summary>
-    let EDOKKO = Namespaced_IRI.parse _namespace_name "EDOKKO" |> NamespacedName
-
+    let EDOKKO = _prefix "EDOKKO"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMBRC-France"></see>
     /// </summary>
-    let ``EMBRC-France`` =
-        Namespaced_IRI.parse _namespace_name "EMBRC-France" |> NamespacedName
-
+    let ``EMBRC-France`` = _prefix "EMBRC-France"
     /// <summary>
     /// A research infrastructure may bring together one or more Regional Facilities
     /// <see href="https://w3id.org/earthsemantics/OSO#ResearchInfrastructure"></see></summary>
-    let ResearchInfrastructure =
-        Namespaced_IRI.parse _namespace_name "ResearchInfrastructure" |> NamespacedName
-
+    let ResearchInfrastructure = _prefix "ResearchInfrastructure"
     /// <summary>
     /// Links a research infrastructure (ERIC or national) to the organisation that manages or coordinates it.
     /// <see href="https://w3id.org/earthsemantics/OSO#isManagedBy"></see></summary>
-    let isManagedBy =
-        Namespaced_IRI.parse _namespace_name "isManagedBy" |> NamespacedName
-
+    let isManagedBy = _prefix "isManagedBy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SorbonneUniversit%C3%A9"></see>
     /// </summary>
-    let ``SorbonneUniversit%C3%A9`` =
-        Namespaced_IRI.parse _namespace_name "SorbonneUniversit%C3%A9" |> NamespacedName
-
+    let ``SorbonneUniversit%C3%A9`` = _prefix "SorbonneUniversit%C3%A9"
     /// <summary>
     /// A European Research Infrastructure Consortium established under the ERIC legal framework to support long-term scientific collaboration and shared research services.
     /// <see href="https://w3id.org/earthsemantics/OSO#ERIC"></see></summary>
-    let ERIC = Namespaced_IRI.parse _namespace_name "ERIC" |> NamespacedName
-
+    let ERIC = _prefix "ERIC"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ERIC_has_a_Director_General"></see>
     /// </summary>
-    let ERIC_has_a_Director_General =
-        Namespaced_IRI.parse _namespace_name "ERIC_has_a_Director_General" |> NamespacedName
-
+    let ERIC_has_a_Director_General = _prefix "ERIC_has_a_Director_General"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ingrid_PUILLAT"></see>
     /// </summary>
-    let Ingrid_PUILLAT =
-        Namespaced_IRI.parse _namespace_name "Ingrid_PUILLAT" |> NamespacedName
-
+    let Ingrid_PUILLAT = _prefix "Ingrid_PUILLAT"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ERICfederate"></see>
     /// </summary>
-    let ERICfederate =
-        Namespaced_IRI.parse _namespace_name "ERICfederate" |> NamespacedName
-
+    let ERICfederate = _prefix "ERICfederate"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#NorEMSO"></see>
     /// </summary>
-    let NorEMSO = Namespaced_IRI.parse _namespace_name "NorEMSO" |> NamespacedName
-
+    let NorEMSO = _prefix "NorEMSO"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#RegionalFacilityisledby"></see>
     /// </summary>
-    let RegionalFacilityisledby =
-        Namespaced_IRI.parse _namespace_name "RegionalFacilityisledby" |> NamespacedName
-
+    let RegionalFacilityisledby = _prefix "RegionalFacilityisledby"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Nadine_LANTERI"></see>
     /// </summary>
-    let Nadine_LANTERI =
-        Namespaced_IRI.parse _namespace_name "Nadine_LANTERI" |> NamespacedName
-
+    let Nadine_LANTERI = _prefix "Nadine_LANTERI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Zuzia_STROYNOWSKI"></see>
     /// </summary>
-    let Zuzia_STROYNOWSKI =
-        Namespaced_IRI.parse _namespace_name "Zuzia_STROYNOWSKI" |> NamespacedName
-
+    let Zuzia_STROYNOWSKI = _prefix "Zuzia_STROYNOWSKI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#European_Union"></see>
     /// </summary>
-    let European_Union =
-        Namespaced_IRI.parse _namespace_name "European_Union" |> NamespacedName
-
+    let European_Union = _prefix "European_Union"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO_Italia"></see>
     /// </summary>
-    let EMSO_Italia =
-        Namespaced_IRI.parse _namespace_name "EMSO_Italia" |> NamespacedName
-
+    let EMSO_Italia = _prefix "EMSO_Italia"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO_LIGURE_OUEST"></see>
     /// </summary>
-    let EMSO_LIGURE_OUEST =
-        Namespaced_IRI.parse _namespace_name "EMSO_LIGURE_OUEST" |> NamespacedName
-
+    let EMSO_LIGURE_OUEST = _prefix "EMSO_LIGURE_OUEST"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EMSO_SA"></see>
     /// </summary>
-    let EMSO_SA = Namespaced_IRI.parse _namespace_name "EMSO_SA" |> NamespacedName
-
+    let EMSO_SA = _prefix "EMSO_SA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ESTOC_Subsurface_gliders"></see>
     /// </summary>
-    let ESTOC_Subsurface_gliders =
-        Namespaced_IRI.parse _namespace_name "ESTOC_Subsurface_gliders" |> NamespacedName
-
+    let ESTOC_Subsurface_gliders = _prefix "ESTOC_Subsurface_gliders"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ESTOC_Moored_Surface_Buoy"></see>
     /// </summary>
-    let ESTOC_Moored_Surface_Buoy =
-        Namespaced_IRI.parse _namespace_name "ESTOC_Moored_Surface_Buoy" |> NamespacedName
-
+    let ESTOC_Moored_Surface_Buoy = _prefix "ESTOC_Moored_Surface_Buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ESTOC_Autonomous_Devices"></see>
     /// </summary>
-    let ESTOC_Autonomous_Devices =
-        Namespaced_IRI.parse _namespace_name "ESTOC_Autonomous_Devices" |> NamespacedName
-
+    let ESTOC_Autonomous_Devices = _prefix "ESTOC_Autonomous_Devices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ESTOC_Subsurface_mooring"></see>
     /// </summary>
-    let ESTOC_Subsurface_mooring =
-        Namespaced_IRI.parse _namespace_name "ESTOC_Subsurface_mooring" |> NamespacedName
-
+    let ESTOC_Subsurface_mooring = _prefix "ESTOC_Subsurface_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EastVulcano"></see>
     /// </summary>
-    let EastVulcano =
-        Namespaced_IRI.parse _namespace_name "EastVulcano" |> NamespacedName
-
+    let EastVulcano = _prefix "EastVulcano"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SiteLedBy"></see>
     /// </summary>
-    let SiteLedBy = Namespaced_IRI.parse _namespace_name "SiteLedBy" |> NamespacedName
+    let SiteLedBy = _prefix "SiteLedBy"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#East_of_Gran_Canaria_Autonomous_Devices"></see>
     /// </summary>
     let East_of_Gran_Canaria_Autonomous_Devices =
-        Namespaced_IRI.parse _namespace_name "East_of_Gran_Canaria_Autonomous_Devices" |> NamespacedName
+        _prefix "East_of_Gran_Canaria_Autonomous_Devices"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#East_of_Gran_Canaria_Seabed_Station"></see>
     /// </summary>
     let East_of_Gran_Canaria_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "East_of_Gran_Canaria_Seabed_Station" |> NamespacedName
+        _prefix "East_of_Gran_Canaria_Seabed_Station"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#European_Marine_Biological_Resource_Centre"></see>
     /// </summary>
     let European_Marine_Biological_Resource_Centre =
-        Namespaced_IRI.parse _namespace_name "European_Marine_Biological_Resource_Centre" |> NamespacedName
+        _prefix "European_Marine_Biological_Resource_Centre"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo01_surface_buoy"></see>
     /// </summary>
-    let EuxRo01_surface_buoy =
-        Namespaced_IRI.parse _namespace_name "EuxRo01_surface_buoy" |> NamespacedName
-
+    let EuxRo01_surface_buoy = _prefix "EuxRo01_surface_buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#hasGeometry"></see>
     /// </summary>
-    let hasGeometry =
-        Namespaced_IRI.parse _namespace_name "hasGeometry" |> NamespacedName
-
+    let hasGeometry = _prefix "hasGeometry"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo01_geom"></see>
     /// </summary>
-    let EuxRo01_geom =
-        Namespaced_IRI.parse _namespace_name "EuxRo01_geom" |> NamespacedName
-
+    let EuxRo01_geom = _prefix "EuxRo01_geom"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo02_surface_buoy"></see>
     /// </summary>
-    let EuxRo02_surface_buoy =
-        Namespaced_IRI.parse _namespace_name "EuxRo02_surface_buoy" |> NamespacedName
-
+    let EuxRo02_surface_buoy = _prefix "EuxRo02_surface_buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo02_seabed_station"></see>
     /// </summary>
-    let EuxRo02_seabed_station =
-        Namespaced_IRI.parse _namespace_name "EuxRo02_seabed_station" |> NamespacedName
-
+    let EuxRo02_seabed_station = _prefix "EuxRo02_seabed_station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo03_surface_buoy"></see>
     /// </summary>
-    let EuxRo03_surface_buoy =
-        Namespaced_IRI.parse _namespace_name "EuxRo03_surface_buoy" |> NamespacedName
-
+    let EuxRo03_surface_buoy = _prefix "EuxRo03_surface_buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#EuxRo03_seabed_station"></see>
     /// </summary>
-    let EuxRo03_seabed_station =
-        Namespaced_IRI.parse _namespace_name "EuxRo03_seabed_station" |> NamespacedName
-
+    let EuxRo03_seabed_station = _prefix "EuxRo03_seabed_station"
     /// <summary>
     /// The Fundação para a Ciência e a Tecnologia (FCT) represents Portugal in EMSO.
     /// <see href="https://w3id.org/earthsemantics/OSO#FCT"></see></summary>
-    let FCT = Namespaced_IRI.parse _namespace_name "FCT" |> NamespacedName
+    let FCT = _prefix "FCT"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#FF"></see>
     /// </summary>
-    let FF = Namespaced_IRI.parse _namespace_name "FF" |> NamespacedName
+    let FF = _prefix "FF"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#FF_Mooring"></see>
     /// </summary>
-    let FF_Mooring = Namespaced_IRI.parse _namespace_name "FF_Mooring" |> NamespacedName
-
+    let FF_Mooring = _prefix "FF_Mooring"
     /// <summary>
     /// A structured scientific activity designed to produce new knowledge, data, or understanding within a defined scope and duration.
     /// <see href="https://w3id.org/earthsemantics/OSO#ResearchProject"></see></summary>
-    let ResearchProject =
-        Namespaced_IRI.parse _namespace_name "ResearchProject" |> NamespacedName
-
+    let ResearchProject = _prefix "ResearchProject"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Galatea"></see>
     /// </summary>
-    let Galatea = Namespaced_IRI.parse _namespace_name "Galatea" |> NamespacedName
-
+    let Galatea = _prefix "Galatea"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Galatea_Mooring"></see>
     /// </summary>
-    let Galatea_Mooring =
-        Namespaced_IRI.parse _namespace_name "Galatea_Mooring" |> NamespacedName
-
+    let Galatea_Mooring = _prefix "Galatea_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Geometry"></see>
     /// </summary>
-    let Geometry = Namespaced_IRI.parse _namespace_name "Geometry" |> NamespacedName
-
+    let Geometry = _prefix "Geometry"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Hellenic_Arc"></see>
     /// </summary>
-    let Hellenic_Arc =
-        Namespaced_IRI.parse _namespace_name "Hellenic_Arc" |> NamespacedName
-
+    let Hellenic_Arc = _prefix "Hellenic_Arc"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PYLOS"></see>
     /// </summary>
-    let PYLOS = Namespaced_IRI.parse _namespace_name "PYLOS" |> NamespacedName
-
+    let PYLOS = _prefix "PYLOS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Hellenic_Arc_EMSO_membership"></see>
     /// </summary>
-    let Hellenic_Arc_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Hellenic_Arc_EMSO_membership" |> NamespacedName
-
+    let Hellenic_Arc_EMSO_membership = _prefix "Hellenic_Arc_EMSO_membership"
     /// <summary>
     /// Date marking the end of deployment of an instrument, platform, or infrastructure.
     /// <see href="https://w3id.org/earthsemantics/OSO#dateEndDeployment"></see></summary>
-    let dateEndDeployment =
-        Namespaced_IRI.parse _namespace_name "dateEndDeployment" |> NamespacedName
-
+    let dateEndDeployment = _prefix "dateEndDeployment"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#INFN"></see>
     /// </summary>
-    let INFN = Namespaced_IRI.parse _namespace_name "INFN" |> NamespacedName
+    let INFN = _prefix "INFN"
     /// <summary>
     /// The Ministry of Education, University and Research (MIUR) appointed INGV to represent the Italian scientific community in marine science across different Italian research institutions.
     /// <see href="https://w3id.org/earthsemantics/OSO#INGV"></see></summary>
-    let INGV = Namespaced_IRI.parse _namespace_name "INGV" |> NamespacedName
+    let INGV = _prefix "INGV"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IPGP"></see>
     /// </summary>
-    let IPGP = Namespaced_IRI.parse _namespace_name "IPGP" |> NamespacedName
+    let IPGP = _prefix "IPGP"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IRD"></see>
     /// </summary>
-    let IRD = Namespaced_IRI.parse _namespace_name "IRD" |> NamespacedName
+    let IRD = _prefix "IRD"
     /// <summary>
     /// IbMa-CSV: Iberian Margin Cap St. Vincent
     /// <see href="https://w3id.org/earthsemantics/OSO#IbMa-CSV"></see></summary>
-    let ``IbMa-CSV`` = Namespaced_IRI.parse _namespace_name "IbMa-CSV" |> NamespacedName
-
+    let ``IbMa-CSV`` = _prefix "IbMa-CSV"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IbMaCSV_Seabed_Station"></see>
     /// </summary>
-    let IbMaCSV_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "IbMaCSV_Seabed_Station" |> NamespacedName
-
+    let IbMaCSV_Seabed_Station = _prefix "IbMaCSV_Seabed_Station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IbMaCSV_TUPEM_SubSurface_Mooring"></see>
     /// </summary>
-    let IbMaCSV_TUPEM_SubSurface_Mooring =
-        Namespaced_IRI.parse _namespace_name "IbMaCSV_TUPEM_SubSurface_Mooring" |> NamespacedName
-
+    let IbMaCSV_TUPEM_SubSurface_Mooring = _prefix "IbMaCSV_TUPEM_SubSurface_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IbMaCSV_SaoVicenteCanyon"></see>
     /// </summary>
-    let IbMaCSV_SaoVicenteCanyon =
-        Namespaced_IRI.parse _namespace_name "IbMaCSV_SaoVicenteCanyon" |> NamespacedName
+    let IbMaCSV_SaoVicenteCanyon = _prefix "IbMaCSV_SaoVicenteCanyon"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IbMaCSV_TUPEM_Fixed_SubSurface_Vertical_Profiler"></see>
     /// </summary>
     let IbMaCSV_TUPEM_Fixed_SubSurface_Vertical_Profiler =
-        Namespaced_IRI.parse _namespace_name "IbMaCSV_TUPEM_Fixed_SubSurface_Vertical_Profiler" |> NamespacedName
+        _prefix "IbMaCSV_TUPEM_Fixed_SubSurface_Vertical_Profiler"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Paulo_RELVAS"></see>
     /// </summary>
-    let Paulo_RELVAS =
-        Namespaced_IRI.parse _namespace_name "Paulo_RELVAS" |> NamespacedName
-
+    let Paulo_RELVAS = _prefix "Paulo_RELVAS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IbMa-N"></see>
     /// </summary>
-    let ``IbMa-N`` = Namespaced_IRI.parse _namespace_name "IbMa-N" |> NamespacedName
-
+    let ``IbMa-N`` = _prefix "IbMa-N"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#hasDeployment"></see>
     /// </summary>
-    let hasDeployment =
-        Namespaced_IRI.parse _namespace_name "hasDeployment" |> NamespacedName
+    let hasDeployment = _prefix "hasDeployment"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#TUPEM_SubSurface_Mooring_deployment_2"></see>
     /// </summary>
     let TUPEM_SubSurface_Mooring_deployment_2 =
-        Namespaced_IRI.parse _namespace_name "TUPEM_SubSurface_Mooring_deployment_2" |> NamespacedName
+        _prefix "TUPEM_SubSurface_Mooring_deployment_2"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#TUPEM_SubSurface_Mooring_deployment_1"></see>
     /// </summary>
     let TUPEM_SubSurface_Mooring_deployment_1 =
-        Namespaced_IRI.parse _namespace_name "TUPEM_SubSurface_Mooring_deployment_1" |> NamespacedName
+        _prefix "TUPEM_SubSurface_Mooring_deployment_1"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#IbMaN"></see>
     /// </summary>
-    let IbMaN = Namespaced_IRI.parse _namespace_name "IbMaN" |> NamespacedName
+    let IbMaN = _prefix "IbMaN"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#hasStatus"></see>
     /// </summary>
-    let hasStatus = Namespaced_IRI.parse _namespace_name "hasStatus" |> NamespacedName
+    let hasStatus = _prefix "hasStatus"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Planned"></see>
     /// </summary>
-    let Planned = Namespaced_IRI.parse _namespace_name "Planned" |> NamespacedName
-
+    let Planned = _prefix "Planned"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Iberian_Margin"></see>
     /// </summary>
-    let Iberian_Margin =
-        Namespaced_IRI.parse _namespace_name "Iberian_Margin" |> NamespacedName
-
+    let Iberian_Margin = _prefix "Iberian_Margin"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Iberian_Margin_EMSO_membership"></see>
     /// </summary>
-    let Iberian_Margin_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Iberian_Margin_EMSO_membership" |> NamespacedName
-
+    let Iberian_Margin_EMSO_membership = _prefix "Iberian_Margin_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ilker_FER"></see>
     /// </summary>
-    let Ilker_FER = Namespaced_IRI.parse _namespace_name "Ilker_FER" |> NamespacedName
-
+    let Ilker_FER = _prefix "Ilker_FER"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ingunn_SKJELVAN"></see>
     /// </summary>
-    let Ingunn_SKJELVAN =
-        Namespaced_IRI.parse _namespace_name "Ingunn_SKJELVAN" |> NamespacedName
-
+    let Ingunn_SKJELVAN = _prefix "Ingunn_SKJELVAN"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Iroise"></see>
     /// </summary>
-    let Iroise = Namespaced_IRI.parse _namespace_name "Iroise" |> NamespacedName
+    let Iroise = _prefix "Iroise"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Molene"></see>
     /// </summary>
-    let Molene = Namespaced_IRI.parse _namespace_name "Molene" |> NamespacedName
+    let Molene = _prefix "Molene"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Poulmic"></see>
     /// </summary>
-    let Poulmic = Namespaced_IRI.parse _namespace_name "Poulmic" |> NamespacedName
-
+    let Poulmic = _prefix "Poulmic"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Iroise_RF_bbox"></see>
     /// </summary>
-    let Iroise_RF_bbox =
-        Namespaced_IRI.parse _namespace_name "Iroise_RF_bbox" |> NamespacedName
-
+    let Iroise_RF_bbox = _prefix "Iroise_RF_bbox"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Iroise_EMSO_membership"></see>
     /// </summary>
-    let Iroise_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Iroise_EMSO_membership" |> NamespacedName
-
+    let Iroise_EMSO_membership = _prefix "Iroise_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Isabel"></see>
     /// </summary>
-    let Isabel = Namespaced_IRI.parse _namespace_name "Isabel" |> NamespacedName
+    let Isabel = _prefix "Isabel"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#JAMSTEC"></see>
     /// </summary>
-    let JAMSTEC = Namespaced_IRI.parse _namespace_name "JAMSTEC" |> NamespacedName
+    let JAMSTEC = _prefix "JAMSTEC"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#KANADEEP_2"></see>
     /// </summary>
-    let KANADEEP_2 = Namespaced_IRI.parse _namespace_name "KANADEEP_2" |> NamespacedName
+    let KANADEEP_2 = _prefix "KANADEEP_2"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#KASEAOPE"></see>
     /// </summary>
-    let KASEAOPE = Namespaced_IRI.parse _namespace_name "KASEAOPE" |> NamespacedName
+    let KASEAOPE = _prefix "KASEAOPE"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#KASEASPACE"></see>
     /// </summary>
-    let KASEASPACE = Namespaced_IRI.parse _namespace_name "KASEASPACE" |> NamespacedName
-
+    let KASEASPACE = _prefix "KASEASPACE"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Karin_SIGLOCH"></see>
     /// </summary>
-    let Karin_SIGLOCH =
-        Namespaced_IRI.parse _namespace_name "Karin_SIGLOCH" |> NamespacedName
-
+    let Karin_SIGLOCH = _prefix "Karin_SIGLOCH"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Karine_OLU"></see>
     /// </summary>
-    let Karine_OLU = Namespaced_IRI.parse _namespace_name "Karine_OLU" |> NamespacedName
+    let Karine_OLU = _prefix "Karine_OLU"
     /// <summary>
     /// LION
     /// <see href="https://w3id.org/earthsemantics/OSO#LION"></see></summary>
-    let LION = Namespaced_IRI.parse _namespace_name "LION" |> NamespacedName
-
+    let LION = _prefix "LION"
     /// <summary>
     /// This mooring belongs exclusively to the EMSO-France network and is not part of the EMSO-ERIC network
     /// <see href="https://w3id.org/earthsemantics/OSO#Lion_mooring"></see></summary>
-    let Lion_mooring =
-        Namespaced_IRI.parse _namespace_name "Lion_mooring" |> NamespacedName
-
+    let Lion_mooring = _prefix "Lion_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Patrice_BRETEL"></see>
     /// </summary>
-    let Patrice_BRETEL =
-        Namespaced_IRI.parse _namespace_name "Patrice_BRETEL" |> NamespacedName
-
+    let Patrice_BRETEL = _prefix "Patrice_BRETEL"
     /// <summary>
     /// LO: Western Ligurian site
     /// <see href="https://w3id.org/earthsemantics/OSO#LO"></see></summary>
-    let LO = Namespaced_IRI.parse _namespace_name "LO" |> NamespacedName
-
+    let LO = _prefix "LO"
     /// <summary>
     /// A site can be associated to one or more subsites
     /// <see href="https://w3id.org/earthsemantics/OSO#Site_has_a_Subsite"></see></summary>
-    let Site_has_a_Subsite =
-        Namespaced_IRI.parse _namespace_name "Site_has_a_Subsite" |> NamespacedName
-
+    let Site_has_a_Subsite = _prefix "Site_has_a_Subsite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MII"></see>
     /// </summary>
-    let MII = Namespaced_IRI.parse _namespace_name "MII" |> NamespacedName
-
+    let MII = _prefix "MII"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#S%C3%A9verine_MARTINI"></see>
     /// </summary>
-    let ``S%C3%A9verine_MARTINI`` =
-        Namespaced_IRI.parse _namespace_name "S%C3%A9verine_MARTINI" |> NamespacedName
-
+    let ``S%C3%A9verine_MARTINI`` = _prefix "S%C3%A9verine_MARTINI"
     /// <summary>
     /// Associates an entity with a Digital Object Identifier (DOI) for persistent identification.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasDOI"></see></summary>
-    let hasDOI = Namespaced_IRI.parse _namespace_name "hasDOI" |> NamespacedName
+    let hasDOI = _prefix "hasDOI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MARLEY"></see>
     /// </summary>
-    let MARLEY = Namespaced_IRI.parse _namespace_name "MARLEY" |> NamespacedName
-
+    let MARLEY = _prefix "MARLEY"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Laurent_GAUTIER"></see>
     /// </summary>
-    let Laurent_GAUTIER =
-        Namespaced_IRI.parse _namespace_name "Laurent_GAUTIER" |> NamespacedName
-
+    let Laurent_GAUTIER = _prefix "Laurent_GAUTIER"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#LavaLake"></see>
     /// </summary>
-    let LavaLake = Namespaced_IRI.parse _namespace_name "LavaLake" |> NamespacedName
+    let LavaLake = _prefix "LavaLake"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SeaMoNWest"></see>
     /// </summary>
-    let SeaMoNWest = Namespaced_IRI.parse _namespace_name "SeaMoNWest" |> NamespacedName
+    let SeaMoNWest = _prefix "SeaMoNWest"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#WestLake"></see>
     /// </summary>
-    let WestLake = Namespaced_IRI.parse _namespace_name "WestLake" |> NamespacedName
-
+    let WestLake = _prefix "WestLake"
     /// <summary>
     /// Regional Facility covering a broad north-western Mediterranean marine area, including the Ligurian Sea, the French Riviera, the Gulf of Lion, and the intermediate marine space.
     /// <see href="https://w3id.org/earthsemantics/OSO#Ligurian_Sea"></see></summary>
-    let Ligurian_Sea =
-        Namespaced_IRI.parse _namespace_name "Ligurian_Sea" |> NamespacedName
-
+    let Ligurian_Sea = _prefix "Ligurian_Sea"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Nice"></see>
     /// </summary>
-    let Nice = Namespaced_IRI.parse _namespace_name "Nice" |> NamespacedName
-
+    let Nice = _prefix "Nice"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ligurian_Sea_RF_bbox"></see>
     /// </summary>
-    let Ligurian_Sea_RF_bbox =
-        Namespaced_IRI.parse _namespace_name "Ligurian_Sea_RF_bbox" |> NamespacedName
-
+    let Ligurian_Sea_RF_bbox = _prefix "Ligurian_Sea_RF_bbox"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ligurian_Sea_EMSO_membership"></see>
     /// </summary>
-    let Ligurian_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Ligurian_Sea_EMSO_membership" |> NamespacedName
-
+    let Ligurian_Sea_EMSO_membership = _prefix "Ligurian_Sea_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MUG-OBS"></see>
     /// </summary>
-    let ``MUG-OBS`` = Namespaced_IRI.parse _namespace_name "MUG-OBS" |> NamespacedName
+    let ``MUG-OBS`` = _prefix "MUG-OBS"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MOOSE-GE"></see>
     /// </summary>
-    let ``MOOSE-GE`` = Namespaced_IRI.parse _namespace_name "MOOSE-GE" |> NamespacedName
-
+    let ``MOOSE-GE`` = _prefix "MOOSE-GE"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Louis_GELLI"></see>
     /// </summary>
-    let Louis_GELLI =
-        Namespaced_IRI.parse _namespace_name "Louis_GELLI" |> NamespacedName
-
+    let Louis_GELLI = _prefix "Louis_GELLI"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Y3"></see>
     /// </summary>
-    let Y3 = Namespaced_IRI.parse _namespace_name "Y3" |> NamespacedName
+    let Y3 = _prefix "Y3"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MontSegur"></see>
     /// </summary>
-    let MontSegur = Namespaced_IRI.parse _namespace_name "MontSegur" |> NamespacedName
-
+    let MontSegur = _prefix "MontSegur"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SouthCrystal"></see>
     /// </summary>
-    let SouthCrystal =
-        Namespaced_IRI.parse _namespace_name "SouthCrystal" |> NamespacedName
-
+    let SouthCrystal = _prefix "SouthCrystal"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Sapin"></see>
     /// </summary>
-    let Sapin = Namespaced_IRI.parse _namespace_name "Sapin" |> NamespacedName
+    let Sapin = _prefix "Sapin"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Surface"></see>
     /// </summary>
-    let Surface = Namespaced_IRI.parse _namespace_name "Surface" |> NamespacedName
+    let Surface = _prefix "Surface"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Sintra"></see>
     /// </summary>
-    let Sintra = Namespaced_IRI.parse _namespace_name "Sintra" |> NamespacedName
-
+    let Sintra = _prefix "Sintra"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#WhiteCastle"></see>
     /// </summary>
-    let WhiteCastle =
-        Namespaced_IRI.parse _namespace_name "WhiteCastle" |> NamespacedName
-
+    let WhiteCastle = _prefix "WhiteCastle"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#TourEiffel"></see>
     /// </summary>
-    let TourEiffel = Namespaced_IRI.parse _namespace_name "TourEiffel" |> NamespacedName
-
+    let TourEiffel = _prefix "TourEiffel"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Lucky_Strike_AutonomousDevices"></see>
     /// </summary>
-    let Lucky_Strike_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "Lucky_Strike_AutonomousDevices" |> NamespacedName
-
+    let Lucky_Strike_AutonomousDevices = _prefix "Lucky_Strike_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Lucky_Strike_EGIM"></see>
     /// </summary>
-    let Lucky_Strike_EGIM =
-        Namespaced_IRI.parse _namespace_name "Lucky_Strike_EGIM" |> NamespacedName
-
+    let Lucky_Strike_EGIM = _prefix "Lucky_Strike_EGIM"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Lucky_Strike_Hydrographicmooring"></see>
     /// </summary>
-    let Lucky_Strike_Hydrographicmooring =
-        Namespaced_IRI.parse _namespace_name "Lucky_Strike_Hydrographicmooring" |> NamespacedName
-
+    let Lucky_Strike_Hydrographicmooring = _prefix "Lucky_Strike_Hydrographicmooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Thibault_BARREYRE"></see>
     /// </summary>
-    let Thibault_BARREYRE =
-        Namespaced_IRI.parse _namespace_name "Thibault_BARREYRE" |> NamespacedName
-
+    let Thibault_BARREYRE = _prefix "Thibault_BARREYRE"
     /// <summary>
     /// An observation subplatform, a component or specific segment of a platform, dedicated to a particular type of measurement or instrumental configuration.
     /// <see href="https://w3id.org/earthsemantics/OSO#SubPlatform"></see></summary>
-    let SubPlatform =
-        Namespaced_IRI.parse _namespace_name "SubPlatform" |> NamespacedName
-
+    let SubPlatform = _prefix "SubPlatform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Lucky_Strike_Surface_BOREL"></see>
     /// </summary>
-    let Lucky_Strike_Surface_BOREL =
-        Namespaced_IRI.parse _namespace_name "Lucky_Strike_Surface_BOREL" |> NamespacedName
-
+    let Lucky_Strike_Surface_BOREL = _prefix "Lucky_Strike_Surface_BOREL"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MARMESONET"></see>
     /// </summary>
-    let MARMESONET = Namespaced_IRI.parse _namespace_name "MARMESONET" |> NamespacedName
+    let MARMESONET = _prefix "MARMESONET"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MARMOR"></see>
     /// </summary>
-    let MARMOR = Namespaced_IRI.parse _namespace_name "MARMOR" |> NamespacedName
+    let MARMOR = _prefix "MARMOR"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Mayotte"></see>
     /// </summary>
-    let Mayotte = Namespaced_IRI.parse _namespace_name "Mayotte" |> NamespacedName
+    let Mayotte = _prefix "Mayotte"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MARNAUT"></see>
     /// </summary>
-    let MARNAUT = Namespaced_IRI.parse _namespace_name "MARNAUT" |> NamespacedName
-
+    let MARNAUT = _prefix "MARNAUT"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MARSITECRUISE"></see>
     /// </summary>
-    let MARSITECRUISE =
-        Namespaced_IRI.parse _namespace_name "MARSITECRUISE" |> NamespacedName
-
+    let MARSITECRUISE = _prefix "MARSITECRUISE"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MAYOBS"></see>
     /// </summary>
-    let MAYOBS = Namespaced_IRI.parse _namespace_name "MAYOBS" |> NamespacedName
+    let MAYOBS = _prefix "MAYOBS"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Office_fran%C3%A7ais_de_la_biodiversit%C3%A9"></see>
     /// </summary>
     let ``Office_fran%C3%A7ais_de_la_biodiversit%C3%A9`` =
-        Namespaced_IRI.parse _namespace_name "Office_fran%C3%A7ais_de_la_biodiversit%C3%A9" |> NamespacedName
+        _prefix "Office_fran%C3%A7ais_de_la_biodiversit%C3%A9"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Marmara"></see>
     /// </summary>
-    let Marmara = Namespaced_IRI.parse _namespace_name "Marmara" |> NamespacedName
-
+    let Marmara = _prefix "Marmara"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Marmara_AutonomousDevices"></see>
     /// </summary>
-    let Marmara_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "Marmara_AutonomousDevices" |> NamespacedName
-
+    let Marmara_AutonomousDevices = _prefix "Marmara_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Pierre_HENRY"></see>
     /// </summary>
-    let Pierre_HENRY =
-        Namespaced_IRI.parse _namespace_name "Pierre_HENRY" |> NamespacedName
-
+    let Pierre_HENRY = _prefix "Pierre_HENRY"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Marmara_Sea"></see>
     /// </summary>
-    let Marmara_Sea =
-        Namespaced_IRI.parse _namespace_name "Marmara_Sea" |> NamespacedName
-
+    let Marmara_Sea = _prefix "Marmara_Sea"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SN-4"></see>
     /// </summary>
-    let ``SN-4`` = Namespaced_IRI.parse _namespace_name "SN-4" |> NamespacedName
-
+    let ``SN-4`` = _prefix "SN-4"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Marmara_Sea_RF_bbox"></see>
     /// </summary>
-    let Marmara_Sea_RF_bbox =
-        Namespaced_IRI.parse _namespace_name "Marmara_Sea_RF_bbox" |> NamespacedName
-
+    let Marmara_Sea_RF_bbox = _prefix "Marmara_Sea_RF_bbox"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ScInObs"></see>
     /// </summary>
-    let ScInObs = Namespaced_IRI.parse _namespace_name "ScInObs" |> NamespacedName
+    let ScInObs = _prefix "ScInObs"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#REVOSIMA"></see>
     /// </summary>
-    let REVOSIMA = Namespaced_IRI.parse _namespace_name "REVOSIMA" |> NamespacedName
-
+    let REVOSIMA = _prefix "REVOSIMA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MayotteSite"></see>
     /// </summary>
-    let MayotteSite =
-        Namespaced_IRI.parse _namespace_name "MayotteSite" |> NamespacedName
-
+    let MayotteSite = _prefix "MayotteSite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MayotteCCNode1"></see>
     /// </summary>
-    let MayotteCCNode1 =
-        Namespaced_IRI.parse _namespace_name "MayotteCCNode1" |> NamespacedName
-
+    let MayotteCCNode1 = _prefix "MayotteCCNode1"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MayotteCCNode2"></see>
     /// </summary>
-    let MayotteCCNode2 =
-        Namespaced_IRI.parse _namespace_name "MayotteCCNode2" |> NamespacedName
-
+    let MayotteCCNode2 = _prefix "MayotteCCNode2"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MayotteCCNode3"></see>
     /// </summary>
-    let MayotteCCNode3 =
-        Namespaced_IRI.parse _namespace_name "MayotteCCNode3" |> NamespacedName
-
+    let MayotteCCNode3 = _prefix "MayotteCCNode3"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MayotteCCNode4"></see>
     /// </summary>
-    let MayotteCCNode4 =
-        Namespaced_IRI.parse _namespace_name "MayotteCCNode4" |> NamespacedName
-
+    let MayotteCCNode4 = _prefix "MayotteCCNode4"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Mohn"></see>
     /// </summary>
-    let Mohn = Namespaced_IRI.parse _namespace_name "Mohn" |> NamespacedName
-
+    let Mohn = _prefix "Mohn"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Mohn_Seabed_Station"></see>
     /// </summary>
-    let Mohn_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "Mohn_Seabed_Station" |> NamespacedName
-
+    let Mohn_Seabed_Station = _prefix "Mohn_Seabed_Station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Mohn_Subsurface_mooring"></see>
     /// </summary>
-    let Mohn_Subsurface_mooring =
-        Namespaced_IRI.parse _namespace_name "Mohn_Subsurface_mooring" |> NamespacedName
-
+    let Mohn_Subsurface_mooring = _prefix "Mohn_Subsurface_mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Steffen_JORGENSEN"></see>
     /// </summary>
-    let Steffen_JORGENSEN =
-        Namespaced_IRI.parse _namespace_name "Steffen_JORGENSEN" |> NamespacedName
-
+    let Steffen_JORGENSEN = _prefix "Steffen_JORGENSEN"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Molene_SubmarinePlatform"></see>
     /// </summary>
-    let Molene_SubmarinePlatform =
-        Namespaced_IRI.parse _namespace_name "Molene_SubmarinePlatform" |> NamespacedName
-
+    let Molene_SubmarinePlatform = _prefix "Molene_SubmarinePlatform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Molene_AutonomousDevices"></see>
     /// </summary>
-    let Molene_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "Molene_AutonomousDevices" |> NamespacedName
-
+    let Molene_AutonomousDevices = _prefix "Molene_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#MontSegur_AutonomousDevices"></see>
     /// </summary>
-    let MontSegur_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "MontSegur_AutonomousDevices" |> NamespacedName
-
+    let MontSegur_AutonomousDevices = _prefix "MontSegur_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Munida"></see>
     /// </summary>
-    let Munida = Namespaced_IRI.parse _namespace_name "Munida" |> NamespacedName
-
+    let Munida = _prefix "Munida"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#mooring_line_B"></see>
     /// </summary>
-    let mooring_line_B =
-        Namespaced_IRI.parse _namespace_name "mooring_line_B" |> NamespacedName
-
+    let mooring_line_B = _prefix "mooring_line_B"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#mooring_line_A"></see>
     /// </summary>
-    let mooring_line_A =
-        Namespaced_IRI.parse _namespace_name "mooring_line_A" |> NamespacedName
-
+    let mooring_line_A = _prefix "mooring_line_A"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#mooring_line_C"></see>
     /// </summary>
-    let mooring_line_C =
-        Namespaced_IRI.parse _namespace_name "mooring_line_C" |> NamespacedName
-
+    let mooring_line_C = _prefix "mooring_line_C"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#NOC"></see>
     /// </summary>
-    let NOC = Namespaced_IRI.parse _namespace_name "NOC" |> NamespacedName
-
+    let NOC = _prefix "NOC"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#NewHebridesSite"></see>
     /// </summary>
-    let NewHebridesSite =
-        Namespaced_IRI.parse _namespace_name "NewHebridesSite" |> NamespacedName
-
+    let NewHebridesSite = _prefix "NewHebridesSite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#node3"></see>
     /// </summary>
-    let node3 = Namespaced_IRI.parse _namespace_name "node3" |> NamespacedName
+    let node3 = _prefix "node3"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#node1"></see>
     /// </summary>
-    let node1 = Namespaced_IRI.parse _namespace_name "node1" |> NamespacedName
+    let node1 = _prefix "node1"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#node4"></see>
     /// </summary>
-    let node4 = Namespaced_IRI.parse _namespace_name "node4" |> NamespacedName
+    let node4 = _prefix "node4"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#node2"></see>
     /// </summary>
-    let node2 = Namespaced_IRI.parse _namespace_name "node2" |> NamespacedName
-
+    let node2 = _prefix "node2"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#New_Caledonia"></see>
     /// </summary>
-    let New_Caledonia =
-        Namespaced_IRI.parse _namespace_name "New_Caledonia" |> NamespacedName
-
+    let New_Caledonia = _prefix "New_Caledonia"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Stylaster"></see>
     /// </summary>
-    let Stylaster = Namespaced_IRI.parse _namespace_name "Stylaster" |> NamespacedName
-
+    let Stylaster = _prefix "Stylaster"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Nice_West_station"></see>
     /// </summary>
-    let Nice_West_station =
-        Namespaced_IRI.parse _namespace_name "Nice_West_station" |> NamespacedName
-
+    let Nice_West_station = _prefix "Nice_West_station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Nice_East_station"></see>
     /// </summary>
-    let Nice_East_station =
-        Namespaced_IRI.parse _namespace_name "Nice_East_station" |> NamespacedName
-
+    let Nice_East_station = _prefix "Nice_East_station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#S%C3%A9bastien_GARZIGLIA"></see>
     /// </summary>
-    let ``S%C3%A9bastien_GARZIGLIA`` =
-        Namespaced_IRI.parse _namespace_name "S%C3%A9bastien_GARZIGLIA" |> NamespacedName
-
+    let ``S%C3%A9bastien_GARZIGLIA`` = _prefix "S%C3%A9bastien_GARZIGLIA"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#UiB"></see>
     /// </summary>
-    let UiB = Namespaced_IRI.parse _namespace_name "UiB" |> NamespacedName
-
+    let UiB = _prefix "UiB"
     /// <summary>
     /// The Nordic Seas regional facility comprises 5 ocean glider sections, 4 mooring sites, and one multi-array observatory. The facility combines existing monitoring components, which are expanded, with new installations, with the main aim of improving understanding of the role of the Nordic Seas in the global climate system. In particular, the multidisciplinary research conducted at the Nordic Seas regional facility focuses on:
     ///
@@ -1764,396 +1353,292 @@ module oso =
     ///
     ///                              EMSO scientific disciplines: physical oceanography, biogeochemistry, marine ecology (planned)
     /// <see href="https://w3id.org/earthsemantics/OSO#Nordic_Seas"></see></summary>
-    let Nordic_Seas =
-        Namespaced_IRI.parse _namespace_name "Nordic_Seas" |> NamespacedName
-
+    let Nordic_Seas = _prefix "Nordic_Seas"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Svinoy"></see>
     /// </summary>
-    let Svinoy = Namespaced_IRI.parse _namespace_name "Svinoy" |> NamespacedName
+    let Svinoy = _prefix "Svinoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Cape"></see>
     /// </summary>
-    let South_Cape = Namespaced_IRI.parse _namespace_name "South_Cape" |> NamespacedName
+    let South_Cape = _prefix "South_Cape"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Station_M"></see>
     /// </summary>
-    let Station_M = Namespaced_IRI.parse _namespace_name "Station_M" |> NamespacedName
-
+    let Station_M = _prefix "Station_M"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Nordic_Seas_EMSO_membership"></see>
     /// </summary>
-    let Nordic_Seas_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Nordic_Seas_EMSO_membership" |> NamespacedName
-
+    let Nordic_Seas_EMSO_membership = _prefix "Nordic_Seas_EMSO_membership"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#OBSEA_seabed_station"></see>
     /// </summary>
-    let OBSEA_seabed_station =
-        Namespaced_IRI.parse _namespace_name "OBSEA_seabed_station" |> NamespacedName
-
+    let OBSEA_seabed_station = _prefix "OBSEA_seabed_station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#OBSEA_buoy"></see>
     /// </summary>
-    let OBSEA_buoy = Namespaced_IRI.parse _namespace_name "OBSEA_buoy" |> NamespacedName
-
+    let OBSEA_buoy = _prefix "OBSEA_buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#ODASItalia1"></see>
     /// </summary>
-    let ODASItalia1 =
-        Namespaced_IRI.parse _namespace_name "ODASItalia1" |> NamespacedName
-
+    let ODASItalia1 = _prefix "ODASItalia1"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Roberto_BOZZANO"></see>
     /// </summary>
-    let Roberto_BOZZANO =
-        Namespaced_IRI.parse _namespace_name "Roberto_BOZZANO" |> NamespacedName
-
+    let Roberto_BOZZANO = _prefix "Roberto_BOZZANO"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#OGS"></see>
     /// </summary>
-    let OGS = Namespaced_IRI.parse _namespace_name "OGS" |> NamespacedName
-
+    let OGS = _prefix "OGS"
     /// <summary>
     /// Root class grouping deprecated OSO classes.
     /// <see href="https://w3id.org/earthsemantics/OSO#ObsoleteClass"></see></summary>
-    let ObsoleteClass =
-        Namespaced_IRI.parse _namespace_name "ObsoleteClass" |> NamespacedName
-
+    let ObsoleteClass = _prefix "ObsoleteClass"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Ocean_Network_Canada"></see>
     /// </summary>
-    let Ocean_Network_Canada =
-        Namespaced_IRI.parse _namespace_name "Ocean_Network_Canada" |> NamespacedName
-
+    let Ocean_Network_Canada = _prefix "Ocean_Network_Canada"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PAP_Central_Site"></see>
     /// </summary>
-    let PAP_Central_Site =
-        Namespaced_IRI.parse _namespace_name "PAP_Central_Site" |> NamespacedName
-
+    let PAP_Central_Site = _prefix "PAP_Central_Site"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Susan_HARTMAN"></see>
     /// </summary>
-    let Susan_HARTMAN =
-        Namespaced_IRI.parse _namespace_name "Susan_HARTMAN" |> NamespacedName
-
+    let Susan_HARTMAN = _prefix "Susan_HARTMAN"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PAP_H4"></see>
     /// </summary>
-    let PAP_H4 = Namespaced_IRI.parse _namespace_name "PAP_H4" |> NamespacedName
+    let PAP_H4 = _prefix "PAP_H4"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PAP_P4"></see>
     /// </summary>
-    let PAP_P4 = Namespaced_IRI.parse _namespace_name "PAP_P4" |> NamespacedName
-
+    let PAP_P4 = _prefix "PAP_P4"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PI_Molene_AutonomousDevices"></see>
     /// </summary>
-    let PI_Molene_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "PI_Molene_AutonomousDevices" |> NamespacedName
-
+    let PI_Molene_AutonomousDevices = _prefix "PI_Molene_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PI_PoulmicPlatform"></see>
     /// </summary>
-    let PI_PoulmicPlatform =
-        Namespaced_IRI.parse _namespace_name "PI_PoulmicPlatform" |> NamespacedName
-
+    let PI_PoulmicPlatform = _prefix "PI_PoulmicPlatform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PI_SubmarinePlatform"></see>
     /// </summary>
-    let PI_SubmarinePlatform =
-        Namespaced_IRI.parse _namespace_name "PI_SubmarinePlatform" |> NamespacedName
-
+    let PI_SubmarinePlatform = _prefix "PI_SubmarinePlatform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PYLOS_Mooring"></see>
     /// </summary>
-    let PYLOS_Mooring =
-        Namespaced_IRI.parse _namespace_name "PYLOS_Mooring" |> NamespacedName
-
+    let PYLOS_Mooring = _prefix "PYLOS_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#PYLOS_Platform"></see>
     /// </summary>
-    let PYLOS_Platform =
-        Namespaced_IRI.parse _namespace_name "PYLOS_Platform" |> NamespacedName
-
+    let PYLOS_Platform = _prefix "PYLOS_Platform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Pacific_Peering"></see>
     /// </summary>
-    let Pacific_Peering =
-        Namespaced_IRI.parse _namespace_name "Pacific_Peering" |> NamespacedName
-
+    let Pacific_Peering = _prefix "Pacific_Peering"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#isInvolvedIn"></see>
     /// </summary>
-    let isInvolvedIn =
-        Namespaced_IRI.parse _namespace_name "isInvolvedIn" |> NamespacedName
-
+    let isInvolvedIn = _prefix "isInvolvedIn"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#TamTam"></see>
     /// </summary>
-    let TamTam = Namespaced_IRI.parse _namespace_name "TamTam" |> NamespacedName
-
+    let TamTam = _prefix "TamTam"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Platform_contains_Subplatforms"></see>
     /// </summary>
-    let Platform_contains_Subplatforms =
-        Namespaced_IRI.parse _namespace_name "Platform_contains_Subplatforms" |> NamespacedName
-
+    let Platform_contains_Subplatforms = _prefix "Platform_contains_Subplatforms"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Porcupine_Abyssal_Plain"></see>
     /// </summary>
-    let Porcupine_Abyssal_Plain =
-        Namespaced_IRI.parse _namespace_name "Porcupine_Abyssal_Plain" |> NamespacedName
+    let Porcupine_Abyssal_Plain = _prefix "Porcupine_Abyssal_Plain"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Porcupine_Abyssal_Plain_EMSO_membership"></see>
     /// </summary>
     let Porcupine_Abyssal_Plain_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Porcupine_Abyssal_Plain_EMSO_membership" |> NamespacedName
+        _prefix "Porcupine_Abyssal_Plain_EMSO_membership"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Poulmic_Platform"></see>
     /// </summary>
-    let Poulmic_Platform =
-        Namespaced_IRI.parse _namespace_name "Poulmic_Platform" |> NamespacedName
-
+    let Poulmic_Platform = _prefix "Poulmic_Platform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#R1"></see>
     /// </summary>
-    let R1 = Namespaced_IRI.parse _namespace_name "R1" |> NamespacedName
-
+    let R1 = _prefix "R1"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#R1_SmartCable"></see>
     /// </summary>
-    let R1_SmartCable =
-        Namespaced_IRI.parse _namespace_name "R1_SmartCable" |> NamespacedName
-
+    let R1_SmartCable = _prefix "R1_SmartCable"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#R2"></see>
     /// </summary>
-    let R2 = Namespaced_IRI.parse _namespace_name "R2" |> NamespacedName
-
+    let R2 = _prefix "R2"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#R2_SmartCable"></see>
     /// </summary>
-    let R2_SmartCable =
-        Namespaced_IRI.parse _namespace_name "R2_SmartCable" |> NamespacedName
-
+    let R2_SmartCable = _prefix "R2_SmartCable"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#R3"></see>
     /// </summary>
-    let R3 = Namespaced_IRI.parse _namespace_name "R3" |> NamespacedName
-
+    let R3 = _prefix "R3"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#R3_SmartCable"></see>
     /// </summary>
-    let R3_SmartCable =
-        Namespaced_IRI.parse _namespace_name "R3_SmartCable" |> NamespacedName
-
+    let R3_SmartCable = _prefix "R3_SmartCable"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#RegionalTeamLeaderIroise"></see>
     /// </summary>
-    let RegionalTeamLeaderIroise =
-        Namespaced_IRI.parse _namespace_name "RegionalTeamLeaderIroise" |> NamespacedName
-
+    let RegionalTeamLeaderIroise = _prefix "RegionalTeamLeaderIroise"
     /// <summary>
     /// The Kingdom of Norway is represented in EMSO by the Research Council of Norway.
     /// <see href="https://w3id.org/earthsemantics/OSO#Research_Council_of_Norway"></see></summary>
-    let Research_Council_of_Norway =
-        Namespaced_IRI.parse _namespace_name "Research_Council_of_Norway" |> NamespacedName
-
+    let Research_Council_of_Norway = _prefix "Research_Council_of_Norway"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SN1"></see>
     /// </summary>
-    let SN1 = Namespaced_IRI.parse _namespace_name "SN1" |> NamespacedName
-
+    let SN1 = _prefix "SN1"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SN1_Seabed_Station"></see>
     /// </summary>
-    let SN1_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "SN1_Seabed_Station" |> NamespacedName
-
+    let SN1_Seabed_Station = _prefix "SN1_Seabed_Station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SeaMoNEast"></see>
     /// </summary>
-    let SeaMoNEast = Namespaced_IRI.parse _namespace_name "SeaMoNEast" |> NamespacedName
+    let SeaMoNEast = _prefix "SeaMoNEast"
     /// <summary>
     /// Associates an infrastructure or system with one or more observation sites.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasSite"></see></summary>
-    let hasSite = Namespaced_IRI.parse _namespace_name "hasSite" |> NamespacedName
-
+    let hasSite = _prefix "hasSite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SiteResponsibleMol%C3%A8ne"></see>
     /// </summary>
-    let ``SiteResponsibleMol%C3%A8ne`` =
-        Namespaced_IRI.parse _namespace_name "SiteResponsibleMol%C3%A8ne" |> NamespacedName
-
+    let ``SiteResponsibleMol%C3%A8ne`` = _prefix "SiteResponsibleMol%C3%A8ne"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SiteResponsiblePoulmic"></see>
     /// </summary>
-    let SiteResponsiblePoulmic =
-        Namespaced_IRI.parse _namespace_name "SiteResponsiblePoulmic" |> NamespacedName
-
+    let SiteResponsiblePoulmic = _prefix "SiteResponsiblePoulmic"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Site_has_Latitude"></see>
     /// </summary>
-    let Site_has_Latitude =
-        Namespaced_IRI.parse _namespace_name "Site_has_Latitude" |> NamespacedName
-
+    let Site_has_Latitude = _prefix "Site_has_Latitude"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Site_has_Longitude"></see>
     /// </summary>
-    let Site_has_Longitude =
-        Namespaced_IRI.parse _namespace_name "Site_has_Longitude" |> NamespacedName
-
+    let Site_has_Longitude = _prefix "Site_has_Longitude"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Smartbay_buoy"></see>
     /// </summary>
-    let Smartbay_buoy =
-        Namespaced_IRI.parse _namespace_name "Smartbay_buoy" |> NamespacedName
-
+    let Smartbay_buoy = _prefix "Smartbay_buoy"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Smartbay_observatory"></see>
     /// </summary>
-    let Smartbay_observatory =
-        Namespaced_IRI.parse _namespace_name "Smartbay_observatory" |> NamespacedName
-
+    let Smartbay_observatory = _prefix "Smartbay_observatory"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Adriatic_Sea"></see>
     /// </summary>
-    let South_Adriatic_Sea =
-        Namespaced_IRI.parse _namespace_name "South_Adriatic_Sea" |> NamespacedName
+    let South_Adriatic_Sea = _prefix "South_Adriatic_Sea"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Adriatic_Sea_EMSO_membership"></see>
     /// </summary>
     let South_Adriatic_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "South_Adriatic_Sea_EMSO_membership" |> NamespacedName
+        _prefix "South_Adriatic_Sea_EMSO_membership"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Cape_Seabed_Station"></see>
     /// </summary>
-    let South_Cape_Seabed_Station =
-        Namespaced_IRI.parse _namespace_name "South_Cape_Seabed_Station" |> NamespacedName
-
+    let South_Cape_Seabed_Station = _prefix "South_Cape_Seabed_Station"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Cape_Subsurface_Mooring"></see>
     /// </summary>
-    let South_Cape_Subsurface_Mooring =
-        Namespaced_IRI.parse _namespace_name "South_Cape_Subsurface_Mooring" |> NamespacedName
-
+    let South_Cape_Subsurface_Mooring = _prefix "South_Cape_Subsurface_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#South_Rockall_Trough_Mooring"></see>
     /// </summary>
-    let South_Rockall_Trough_Mooring =
-        Namespaced_IRI.parse _namespace_name "South_Rockall_Trough_Mooring" |> NamespacedName
-
+    let South_Rockall_Trough_Mooring = _prefix "South_Rockall_Trough_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Station_M_Subsurface_Mooring"></see>
     /// </summary>
-    let Station_M_Subsurface_Mooring =
-        Namespaced_IRI.parse _namespace_name "Station_M_Subsurface_Mooring" |> NamespacedName
-
+    let Station_M_Subsurface_Mooring = _prefix "Station_M_Subsurface_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#pilot_line"></see>
     /// </summary>
-    let pilot_line = Namespaced_IRI.parse _namespace_name "pilot_line" |> NamespacedName
+    let pilot_line = _prefix "pilot_line"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#profil_CTD"></see>
     /// </summary>
-    let profil_CTD = Namespaced_IRI.parse _namespace_name "profil_CTD" |> NamespacedName
-
+    let profil_CTD = _prefix "profil_CTD"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#SubmarinePlatform"></see>
     /// </summary>
-    let SubmarinePlatform =
-        Namespaced_IRI.parse _namespace_name "SubmarinePlatform" |> NamespacedName
-
+    let SubmarinePlatform = _prefix "SubmarinePlatform"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Svinoy_North"></see>
     /// </summary>
-    let Svinoy_North =
-        Namespaced_IRI.parse _namespace_name "Svinoy_North" |> NamespacedName
-
+    let Svinoy_North = _prefix "Svinoy_North"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Svinoy_South"></see>
     /// </summary>
-    let Svinoy_South =
-        Namespaced_IRI.parse _namespace_name "Svinoy_South" |> NamespacedName
-
+    let Svinoy_South = _prefix "Svinoy_South"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Svinoy_North_Subsurface_Mooring"></see>
     /// </summary>
-    let Svinoy_North_Subsurface_Mooring =
-        Namespaced_IRI.parse _namespace_name "Svinoy_North_Subsurface_Mooring" |> NamespacedName
-
+    let Svinoy_North_Subsurface_Mooring = _prefix "Svinoy_North_Subsurface_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Svinoy_South_Subsurface_Mooring"></see>
     /// </summary>
-    let Svinoy_South_Subsurface_Mooring =
-        Namespaced_IRI.parse _namespace_name "Svinoy_South_Subsurface_Mooring" |> NamespacedName
-
+    let Svinoy_South_Subsurface_Mooring = _prefix "Svinoy_South_Subsurface_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#TourEiffel_AutonomousDevices"></see>
     /// </summary>
-    let TourEiffel_AutonomousDevices =
-        Namespaced_IRI.parse _namespace_name "TourEiffel_AutonomousDevices" |> NamespacedName
-
+    let TourEiffel_AutonomousDevices = _prefix "TourEiffel_AutonomousDevices"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Vanuatu_Trench"></see>
     /// </summary>
-    let Vanuatu_Trench =
-        Namespaced_IRI.parse _namespace_name "Vanuatu_Trench" |> NamespacedName
-
+    let Vanuatu_Trench = _prefix "Vanuatu_Trench"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#W1M3A"></see>
     /// </summary>
-    let W1M3A = Namespaced_IRI.parse _namespace_name "W1M3A" |> NamespacedName
-
+    let W1M3A = _prefix "W1M3A"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#W1M3A_Mooring"></see>
     /// </summary>
-    let W1M3A_Mooring =
-        Namespaced_IRI.parse _namespace_name "W1M3A_Mooring" |> NamespacedName
-
+    let W1M3A_Mooring = _prefix "W1M3A_Mooring"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Western_Ionian_Sea"></see>
     /// </summary>
-    let Western_Ionian_Sea =
-        Namespaced_IRI.parse _namespace_name "Western_Ionian_Sea" |> NamespacedName
+    let Western_Ionian_Sea = _prefix "Western_Ionian_Sea"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Western_Ionian_Sea_EMSO_membership"></see>
     /// </summary>
     let Western_Ionian_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Western_Ionian_Sea_EMSO_membership" |> NamespacedName
+        _prefix "Western_Ionian_Sea_EMSO_membership"
 
     /// <summary>
     /// The Regional Facility 'Western Mediterranean Sea' corresponds to the Ligurian Sea, as defined by the International Hydrographic Organization.
     /// <see href="https://w3id.org/earthsemantics/OSO#Western_Mediterranean_Sea"></see></summary>
-    let Western_Mediterranean_Sea =
-        Namespaced_IRI.parse _namespace_name "Western_Mediterranean_Sea" |> NamespacedName
+    let Western_Mediterranean_Sea = _prefix "Western_Mediterranean_Sea"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#Western_Mediterranean_Sea_EMSO_membership"></see>
     /// </summary>
     let Western_Mediterranean_Sea_EMSO_membership =
-        Namespaced_IRI.parse _namespace_name "Western_Mediterranean_Sea_EMSO_membership" |> NamespacedName
+        _prefix "Western_Mediterranean_Sea_EMSO_membership"
 
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#geosciences"></see>
     /// </summary>
-    let geosciences =
-        Namespaced_IRI.parse _namespace_name "geosciences" |> NamespacedName
-
+    let geosciences = _prefix "geosciences"
     /// <summary>
     /// Relates a site to a subdivision or component subsite.
     /// <see href="https://w3id.org/earthsemantics/OSO#hasSubsite"></see></summary>
-    let hasSubsite = Namespaced_IRI.parse _namespace_name "hasSubsite" |> NamespacedName
-
+    let hasSubsite = _prefix "hasSubsite"
     /// <summary>
     ///   <see href="https://w3id.org/earthsemantics/OSO#physical_oceanography"></see>
     /// </summary>
-    let physical_oceanography =
-        Namespaced_IRI.parse _namespace_name "physical_oceanography" |> NamespacedName
+    let physical_oceanography = _prefix "physical_oceanography"

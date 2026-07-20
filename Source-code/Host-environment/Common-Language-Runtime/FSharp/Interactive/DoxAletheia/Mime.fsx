@@ -330,13 +330,13 @@ let by_substring =
 
 
 let mime_types_fs =
-    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\MimeTypes.fs"
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\MimeTypes.fs"
 
 let mime_path_fs =
-    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\MimePath.fs"
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\MimePath.fs"
 
 let mime_substring_fs =
-    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\MimeSubstring.fs"
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\MimeSubstring.fs"
 
 File.WriteAllText(mime_path_fs, by_path)
 File.WriteAllText(mime_substring_fs, by_substring)

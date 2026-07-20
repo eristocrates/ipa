@@ -1,213 +1,154 @@
 namespace https.data.istex.fr.ontology.istex.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module istex =
     let _namespace_name = "https://data.istex.fr/ontology/istex#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#ContentTypeConcept"></see>
     /// </summary>
-    let ContentTypeConcept =
-        Namespaced_IRI.parse _namespace_name "ContentTypeConcept" |> NamespacedName
-
+    let ContentTypeConcept = _prefix "ContentTypeConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#EnrichmentProcessConcept"></see>
     /// </summary>
-    let EnrichmentProcessConcept =
-        Namespaced_IRI.parse _namespace_name "EnrichmentProcessConcept" |> NamespacedName
-
+    let EnrichmentProcessConcept = _prefix "EnrichmentProcessConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#GeographicConcept"></see>
     /// </summary>
-    let GeographicConcept =
-        Namespaced_IRI.parse _namespace_name "GeographicConcept" |> NamespacedName
-
+    let GeographicConcept = _prefix "GeographicConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#InistConcept"></see>
     /// </summary>
-    let InistConcept =
-        Namespaced_IRI.parse _namespace_name "InistConcept" |> NamespacedName
-
+    let InistConcept = _prefix "InistConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#NamedEntityConcept"></see>
     /// </summary>
-    let NamedEntityConcept =
-        Namespaced_IRI.parse _namespace_name "NamedEntityConcept" |> NamespacedName
-
+    let NamedEntityConcept = _prefix "NamedEntityConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#OrganizationConcept"></see>
     /// </summary>
-    let OrganizationConcept =
-        Namespaced_IRI.parse _namespace_name "OrganizationConcept" |> NamespacedName
-
+    let OrganizationConcept = _prefix "OrganizationConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#PlaceConcept"></see>
     /// </summary>
-    let PlaceConcept =
-        Namespaced_IRI.parse _namespace_name "PlaceConcept" |> NamespacedName
-
+    let PlaceConcept = _prefix "PlaceConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#PublicationTypeConcept"></see>
     /// </summary>
-    let PublicationTypeConcept =
-        Namespaced_IRI.parse _namespace_name "PublicationTypeConcept" |> NamespacedName
-
+    let PublicationTypeConcept = _prefix "PublicationTypeConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#PublisherConcept"></see>
     /// </summary>
-    let PublisherConcept =
-        Namespaced_IRI.parse _namespace_name "PublisherConcept" |> NamespacedName
-
+    let PublisherConcept = _prefix "PublisherConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#ScienceMetrixConcept"></see>
     /// </summary>
-    let ScienceMetrixConcept =
-        Namespaced_IRI.parse _namespace_name "ScienceMetrixConcept" |> NamespacedName
-
+    let ScienceMetrixConcept = _prefix "ScienceMetrixConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#ScientificDomain"></see>
     /// </summary>
-    let ScientificDomain =
-        Namespaced_IRI.parse _namespace_name "ScientificDomain" |> NamespacedName
-
+    let ScientificDomain = _prefix "ScientificDomain"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#ScopusConcept"></see>
     /// </summary>
-    let ScopusConcept =
-        Namespaced_IRI.parse _namespace_name "ScopusConcept" |> NamespacedName
-
+    let ScopusConcept = _prefix "ScopusConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#WosConcept"></see>
     /// </summary>
-    let WosConcept = Namespaced_IRI.parse _namespace_name "WosConcept" |> NamespacedName
+    let WosConcept = _prefix "WosConcept"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#accessURL"></see>
     /// </summary>
-    let accessURL = Namespaced_IRI.parse _namespace_name "accessURL" |> NamespacedName
-
+    let accessURL = _prefix "accessURL"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#affiliation"></see>
     /// </summary>
-    let affiliation =
-        Namespaced_IRI.parse _namespace_name "affiliation" |> NamespacedName
-
+    let affiliation = _prefix "affiliation"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#analysisType"></see>
     /// </summary>
-    let analysisType =
-        Namespaced_IRI.parse _namespace_name "analysisType" |> NamespacedName
-
+    let analysisType = _prefix "analysisType"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#constraint"></see>
     /// </summary>
-    let constraint_ =
-        Namespaced_IRI.parse _namespace_name "constraint" |> NamespacedName
-
+    let constraint_ = _prefix "constraint"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#contentType"></see>
     /// </summary>
-    let contentType =
-        Namespaced_IRI.parse _namespace_name "contentType" |> NamespacedName
-
+    let contentType = _prefix "contentType"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#eISBN"></see>
     /// </summary>
-    let eISBN = Namespaced_IRI.parse _namespace_name "eISBN" |> NamespacedName
-
+    let eISBN = _prefix "eISBN"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#enrichmentProcess"></see>
     /// </summary>
-    let enrichmentProcess =
-        Namespaced_IRI.parse _namespace_name "enrichmentProcess" |> NamespacedName
-
+    let enrichmentProcess = _prefix "enrichmentProcess"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#enrichmentType"></see>
     /// </summary>
-    let enrichmentType =
-        Namespaced_IRI.parse _namespace_name "enrichmentType" |> NamespacedName
-
+    let enrichmentType = _prefix "enrichmentType"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#extractedEntity"></see>
     /// </summary>
-    let extractedEntity =
-        Namespaced_IRI.parse _namespace_name "extractedEntity" |> NamespacedName
-
+    let extractedEntity = _prefix "extractedEntity"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#extractedGeog"></see>
     /// </summary>
-    let extractedGeog =
-        Namespaced_IRI.parse _namespace_name "extractedGeog" |> NamespacedName
-
+    let extractedGeog = _prefix "extractedGeog"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#extractedOrganization"></see>
     /// </summary>
-    let extractedOrganization =
-        Namespaced_IRI.parse _namespace_name "extractedOrganization" |> NamespacedName
-
+    let extractedOrganization = _prefix "extractedOrganization"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#extractedPlace"></see>
     /// </summary>
-    let extractedPlace =
-        Namespaced_IRI.parse _namespace_name "extractedPlace" |> NamespacedName
-
+    let extractedPlace = _prefix "extractedPlace"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#idIstex"></see>
     /// </summary>
-    let idIstex = Namespaced_IRI.parse _namespace_name "idIstex" |> NamespacedName
-
+    let idIstex = _prefix "idIstex"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#identityProvider"></see>
     /// </summary>
-    let identityProvider =
-        Namespaced_IRI.parse _namespace_name "identityProvider" |> NamespacedName
-
+    let identityProvider = _prefix "identityProvider"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#publicationTitle"></see>
     /// </summary>
-    let publicationTitle =
-        Namespaced_IRI.parse _namespace_name "publicationTitle" |> NamespacedName
-
+    let publicationTitle = _prefix "publicationTitle"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#publicationType"></see>
     /// </summary>
-    let publicationType =
-        Namespaced_IRI.parse _namespace_name "publicationType" |> NamespacedName
-
+    let publicationType = _prefix "publicationType"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#quantityOfItems"></see>
     /// </summary>
-    let quantityOfItems =
-        Namespaced_IRI.parse _namespace_name "quantityOfItems" |> NamespacedName
-
+    let quantityOfItems = _prefix "quantityOfItems"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#query"></see>
     /// </summary>
-    let query = Namespaced_IRI.parse _namespace_name "query" |> NamespacedName
-
+    let query = _prefix "query"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#subjectInist"></see>
     /// </summary>
-    let subjectInist =
-        Namespaced_IRI.parse _namespace_name "subjectInist" |> NamespacedName
-
+    let subjectInist = _prefix "subjectInist"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#subjectScienceMetrix"></see>
     /// </summary>
-    let subjectScienceMetrix =
-        Namespaced_IRI.parse _namespace_name "subjectScienceMetrix" |> NamespacedName
-
+    let subjectScienceMetrix = _prefix "subjectScienceMetrix"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#subjectScopus"></see>
     /// </summary>
-    let subjectScopus =
-        Namespaced_IRI.parse _namespace_name "subjectScopus" |> NamespacedName
-
+    let subjectScopus = _prefix "subjectScopus"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#subjectWos"></see>
     /// </summary>
-    let subjectWos = Namespaced_IRI.parse _namespace_name "subjectWos" |> NamespacedName
+    let subjectWos = _prefix "subjectWos"
     /// <summary>
     ///   <see href="https://data.istex.fr/ontology/istex#tool"></see>
     /// </summary>
-    let tool = Namespaced_IRI.parse _namespace_name "tool" |> NamespacedName
+    let tool = _prefix "tool"

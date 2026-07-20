@@ -1,694 +1,566 @@
 namespace http.spitfire_project.eu.ontology.ns.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module spt =
     let _namespace_name = "http://spitfire-project.eu/ontology/ns/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/AccessLayer"></see>
     /// </summary>
-    let AccessLayer =
-        Namespaced_IRI.parse _namespace_name "AccessLayer" |> NamespacedName
-
+    let AccessLayer = _prefix "AccessLayer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/ModelLayer"></see>
     /// </summary>
-    let ModelLayer = Namespaced_IRI.parse _namespace_name "ModelLayer" |> NamespacedName
+    let ModelLayer = _prefix "ModelLayer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Acoustic"></see>
     /// </summary>
-    let Acoustic = Namespaced_IRI.parse _namespace_name "Acoustic" |> NamespacedName
+    let Acoustic = _prefix "Acoustic"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Energy"></see>
     /// </summary>
-    let Energy = Namespaced_IRI.parse _namespace_name "Energy" |> NamespacedName
+    let Energy = _prefix "Energy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Activity"></see>
     /// </summary>
-    let Activity = Namespaced_IRI.parse _namespace_name "Activity" |> NamespacedName
-
+    let Activity = _prefix "Activity"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/ActuatedProperty"></see>
     /// </summary>
-    let ActuatedProperty =
-        Namespaced_IRI.parse _namespace_name "ActuatedProperty" |> NamespacedName
-
+    let ActuatedProperty = _prefix "ActuatedProperty"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Actuator"></see>
     /// </summary>
-    let Actuator = Namespaced_IRI.parse _namespace_name "Actuator" |> NamespacedName
+    let Actuator = _prefix "Actuator"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Transducer"></see>
     /// </summary>
-    let Transducer = Namespaced_IRI.parse _namespace_name "Transducer" |> NamespacedName
+    let Transducer = _prefix "Transducer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Agent"></see>
     /// </summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Chemical"></see>
     /// </summary>
-    let Chemical = Namespaced_IRI.parse _namespace_name "Chemical" |> NamespacedName
+    let Chemical = _prefix "Chemical"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/CoreLayer"></see>
     /// </summary>
-    let CoreLayer = Namespaced_IRI.parse _namespace_name "CoreLayer" |> NamespacedName
+    let CoreLayer = _prefix "CoreLayer"
     /// <summary>
     /// Link Association.
     /// <see href="http://spitfire-project.eu/ontology/ns/DataLink"></see></summary>
-    let DataLink = Namespaced_IRI.parse _namespace_name "DataLink" |> NamespacedName
+    let DataLink = _prefix "DataLink"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/DeviceRole"></see>
     /// </summary>
-    let DeviceRole = Namespaced_IRI.parse _namespace_name "DeviceRole" |> NamespacedName
-
+    let DeviceRole = _prefix "DeviceRole"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/DistributionLayer"></see>
     /// </summary>
-    let DistributionLayer =
-        Namespaced_IRI.parse _namespace_name "DistributionLayer" |> NamespacedName
-
+    let DistributionLayer = _prefix "DistributionLayer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Electrical"></see>
     /// </summary>
-    let Electrical = Namespaced_IRI.parse _namespace_name "Electrical" |> NamespacedName
-
+    let Electrical = _prefix "Electrical"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Electromagnetic"></see>
     /// </summary>
-    let Electromagnetic =
-        Namespaced_IRI.parse _namespace_name "Electromagnetic" |> NamespacedName
-
+    let Electromagnetic = _prefix "Electromagnetic"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Magnetic"></see>
     /// </summary>
-    let Magnetic = Namespaced_IRI.parse _namespace_name "Magnetic" |> NamespacedName
-
+    let Magnetic = _prefix "Magnetic"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/EnergyLabel"></see>
     /// </summary>
-    let EnergyLabel =
-        Namespaced_IRI.parse _namespace_name "EnergyLabel" |> NamespacedName
-
+    let EnergyLabel = _prefix "EnergyLabel"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/EnergySource"></see>
     /// </summary>
-    let EnergySource =
-        Namespaced_IRI.parse _namespace_name "EnergySource" |> NamespacedName
-
+    let EnergySource = _prefix "EnergySource"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/FlatModel"></see>
     /// </summary>
-    let FlatModel = Namespaced_IRI.parse _namespace_name "FlatModel" |> NamespacedName
-
+    let FlatModel = _prefix "FlatModel"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/NetworkTopology"></see>
     /// </summary>
-    let NetworkTopology =
-        Namespaced_IRI.parse _namespace_name "NetworkTopology" |> NamespacedName
-
+    let NetworkTopology = _prefix "NetworkTopology"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Green"></see>
     /// </summary>
-    let Green = Namespaced_IRI.parse _namespace_name "Green" |> NamespacedName
-
+    let Green = _prefix "Green"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/HierarchicalModel"></see>
     /// </summary>
-    let HierarchicalModel =
-        Namespaced_IRI.parse _namespace_name "HierarchicalModel" |> NamespacedName
-
+    let HierarchicalModel = _prefix "HierarchicalModel"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Light"></see>
     /// </summary>
-    let Light = Namespaced_IRI.parse _namespace_name "Light" |> NamespacedName
-
+    let Light = _prefix "Light"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/LinkActivity"></see>
     /// </summary>
-    let LinkActivity =
-        Namespaced_IRI.parse _namespace_name "LinkActivity" |> NamespacedName
-
+    let LinkActivity = _prefix "LinkActivity"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/LinkProperty"></see>
     /// </summary>
-    let LinkProperty =
-        Namespaced_IRI.parse _namespace_name "LinkProperty" |> NamespacedName
-
+    let LinkProperty = _prefix "LinkProperty"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/LinkQuality"></see>
     /// </summary>
-    let LinkQuality =
-        Namespaced_IRI.parse _namespace_name "LinkQuality" |> NamespacedName
-
+    let LinkQuality = _prefix "LinkQuality"
     /// <summary>
     /// Link Review.
     /// <see href="http://spitfire-project.eu/ontology/ns/LinkReview"></see></summary>
-    let LinkReview = Namespaced_IRI.parse _namespace_name "LinkReview" |> NamespacedName
+    let LinkReview = _prefix "LinkReview"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Mechanical"></see>
     /// </summary>
-    let Mechanical = Namespaced_IRI.parse _namespace_name "Mechanical" |> NamespacedName
+    let Mechanical = _prefix "Mechanical"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/MeshModel"></see>
     /// </summary>
-    let MeshModel = Namespaced_IRI.parse _namespace_name "MeshModel" |> NamespacedName
+    let MeshModel = _prefix "MeshModel"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Mood"></see>
     /// </summary>
-    let Mood = Namespaced_IRI.parse _namespace_name "Mood" |> NamespacedName
+    let Mood = _prefix "Mood"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Motion"></see>
     /// </summary>
-    let Motion = Namespaced_IRI.parse _namespace_name "Motion" |> NamespacedName
-
+    let Motion = _prefix "Motion"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/NetworkLink"></see>
     /// </summary>
-    let NetworkLink =
-        Namespaced_IRI.parse _namespace_name "NetworkLink" |> NamespacedName
-
+    let NetworkLink = _prefix "NetworkLink"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/NetworkProperty"></see>
     /// </summary>
-    let NetworkProperty =
-        Namespaced_IRI.parse _namespace_name "NetworkProperty" |> NamespacedName
-
+    let NetworkProperty = _prefix "NetworkProperty"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/NetworkQuality"></see>
     /// </summary>
-    let NetworkQuality =
-        Namespaced_IRI.parse _namespace_name "NetworkQuality" |> NamespacedName
-
+    let NetworkQuality = _prefix "NetworkQuality"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/NotGreen"></see>
     /// </summary>
-    let NotGreen = Namespaced_IRI.parse _namespace_name "NotGreen" |> NamespacedName
-
+    let NotGreen = _prefix "NotGreen"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/NotRenewable"></see>
     /// </summary>
-    let NotRenewable =
-        Namespaced_IRI.parse _namespace_name "NotRenewable" |> NamespacedName
-
+    let NotRenewable = _prefix "NotRenewable"
     /// <summary>
     /// Observation Value.
     /// <see href="http://spitfire-project.eu/ontology/ns/OV"></see></summary>
-    let OV = Namespaced_IRI.parse _namespace_name "OV" |> NamespacedName
+    let OV = _prefix "OV"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
-
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/PlatformTemporalProperty"></see>
     /// </summary>
-    let PlatformTemporalProperty =
-        Namespaced_IRI.parse _namespace_name "PlatformTemporalProperty" |> NamespacedName
-
+    let PlatformTemporalProperty = _prefix "PlatformTemporalProperty"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/TemporalProperty"></see>
     /// </summary>
-    let TemporalProperty =
-        Namespaced_IRI.parse _namespace_name "TemporalProperty" |> NamespacedName
-
+    let TemporalProperty = _prefix "TemporalProperty"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Power"></see>
     /// </summary>
-    let Power = Namespaced_IRI.parse _namespace_name "Power" |> NamespacedName
+    let Power = _prefix "Power"
     /// <summary>
     /// Observed property (Quantity).
     /// <see href="http://spitfire-project.eu/ontology/ns/Quantity"></see></summary>
-    let Quantity = Namespaced_IRI.parse _namespace_name "Quantity" |> NamespacedName
+    let Quantity = _prefix "Quantity"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Renewable"></see>
     /// </summary>
-    let Renewable = Namespaced_IRI.parse _namespace_name "Renewable" |> NamespacedName
-
+    let Renewable = _prefix "Renewable"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/SensorNetwork"></see>
     /// </summary>
-    let SensorNetwork =
-        Namespaced_IRI.parse _namespace_name "SensorNetwork" |> NamespacedName
-
+    let SensorNetwork = _prefix "SensorNetwork"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/SensorProjectTopic"></see>
     /// </summary>
-    let SensorProjectTopic =
-        Namespaced_IRI.parse _namespace_name "SensorProjectTopic" |> NamespacedName
-
+    let SensorProjectTopic = _prefix "SensorProjectTopic"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/SensorRole"></see>
     /// </summary>
-    let SensorRole = Namespaced_IRI.parse _namespace_name "SensorRole" |> NamespacedName
-
+    let SensorRole = _prefix "SensorRole"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/SensorTemporalProperty"></see>
     /// </summary>
-    let SensorTemporalProperty =
-        Namespaced_IRI.parse _namespace_name "SensorTemporalProperty" |> NamespacedName
-
+    let SensorTemporalProperty = _prefix "SensorTemporalProperty"
     /// <summary>
     /// Versions of a same observed Property (Quantity) which vary across time and space, as captured by the sensor's observed values.
     /// <see href="http://spitfire-project.eu/ontology/ns/TSMap"></see></summary>
-    let TSMap = Namespaced_IRI.parse _namespace_name "TSMap" |> NamespacedName
+    let TSMap = _prefix "TSMap"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Thermal"></see>
     /// </summary>
-    let Thermal = Namespaced_IRI.parse _namespace_name "Thermal" |> NamespacedName
+    let Thermal = _prefix "Thermal"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/Unit"></see>
     /// </summary>
-    let Unit = Namespaced_IRI.parse _namespace_name "Unit" |> NamespacedName
-
+    let Unit = _prefix "Unit"
     /// <summary>
     /// Relationship among a LinkActivity and the end datetime of the time range which it refers to.
     /// <see href="http://spitfire-project.eu/ontology/ns/activityEnd"></see></summary>
-    let activityEnd =
-        Namespaced_IRI.parse _namespace_name "activityEnd" |> NamespacedName
-
+    let activityEnd = _prefix "activityEnd"
     /// <summary>
     /// Relationship among an Activity and the start datetime of the time range which it refers to.
     /// <see href="http://spitfire-project.eu/ontology/ns/activityStart"></see></summary>
-    let activityStart =
-        Namespaced_IRI.parse _namespace_name "activityStart" |> NamespacedName
-
+    let activityStart = _prefix "activityStart"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/actuate"></see>
     /// </summary>
-    let actuate = Namespaced_IRI.parse _namespace_name "actuate" |> NamespacedName
+    let actuate = _prefix "actuate"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/actuatedBy"></see>
     /// </summary>
-    let actuatedBy = Namespaced_IRI.parse _namespace_name "actuatedBy" |> NamespacedName
-
+    let actuatedBy = _prefix "actuatedBy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/actuatedProperty"></see>
     /// </summary>
-    let actuatedProperty =
-        Namespaced_IRI.parse _namespace_name "actuatedProperty" |> NamespacedName
-
+    let actuatedProperty = _prefix "actuatedProperty"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/actuatedPropertyOf"></see>
     /// </summary>
-    let actuatedPropertyOf =
-        Namespaced_IRI.parse _namespace_name "actuatedPropertyOf" |> NamespacedName
-
+    let actuatedPropertyOf = _prefix "actuatedPropertyOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/avgValue"></see>
     /// </summary>
-    let avgValue = Namespaced_IRI.parse _namespace_name "avgValue" |> NamespacedName
-
+    let avgValue = _prefix "avgValue"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/belongsToLayer"></see>
     /// </summary>
-    let belongsToLayer =
-        Namespaced_IRI.parse _namespace_name "belongsToLayer" |> NamespacedName
-
+    let belongsToLayer = _prefix "belongsToLayer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/belongsToNetwork"></see>
     /// </summary>
-    let belongsToNetwork =
-        Namespaced_IRI.parse _namespace_name "belongsToNetwork" |> NamespacedName
-
+    let belongsToNetwork = _prefix "belongsToNetwork"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/bytes"></see>
     /// </summary>
-    let bytes = Namespaced_IRI.parse _namespace_name "bytes" |> NamespacedName
+    let bytes = _prefix "bytes"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/confidence"></see>
     /// </summary>
-    let confidence = Namespaced_IRI.parse _namespace_name "confidence" |> NamespacedName
-
+    let confidence = _prefix "confidence"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/containedIn"></see>
     /// </summary>
-    let containedIn =
-        Namespaced_IRI.parse _namespace_name "containedIn" |> NamespacedName
-
+    let containedIn = _prefix "containedIn"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/describesNetwork"></see>
     /// </summary>
-    let describesNetwork =
-        Namespaced_IRI.parse _namespace_name "describesNetwork" |> NamespacedName
-
+    let describesNetwork = _prefix "describesNetwork"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/endpoint"></see>
     /// </summary>
-    let endpoint = Namespaced_IRI.parse _namespace_name "endpoint" |> NamespacedName
-
+    let endpoint = _prefix "endpoint"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/energyConsumed"></see>
     /// </summary>
-    let energyConsumed =
-        Namespaced_IRI.parse _namespace_name "energyConsumed" |> NamespacedName
-
+    let energyConsumed = _prefix "energyConsumed"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/energyLabel"></see>
     /// </summary>
-    let energyLabel =
-        Namespaced_IRI.parse _namespace_name "energyLabel" |> NamespacedName
-
+    let energyLabel = _prefix "energyLabel"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/energyOutcomes"></see>
     /// </summary>
-    let energyOutcomes =
-        Namespaced_IRI.parse _namespace_name "energyOutcomes" |> NamespacedName
-
+    let energyOutcomes = _prefix "energyOutcomes"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/energyRate"></see>
     /// </summary>
-    let energyRate = Namespaced_IRI.parse _namespace_name "energyRate" |> NamespacedName
-
+    let energyRate = _prefix "energyRate"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/energySource"></see>
     /// </summary>
-    let energySource =
-        Namespaced_IRI.parse _namespace_name "energySource" |> NamespacedName
-
+    let energySource = _prefix "energySource"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/energyUsedIn"></see>
     /// </summary>
-    let energyUsedIn =
-        Namespaced_IRI.parse _namespace_name "energyUsedIn" |> NamespacedName
-
+    let energyUsedIn = _prefix "energyUsedIn"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/feed"></see>
     /// </summary>
-    let feed = Namespaced_IRI.parse _namespace_name "feed" |> NamespacedName
+    let feed = _prefix "feed"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/forSTatus"></see>
     /// </summary>
-    let forSTatus = Namespaced_IRI.parse _namespace_name "forSTatus" |> NamespacedName
-
+    let forSTatus = _prefix "forSTatus"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/context-types#Status"></see>
     /// </summary>
-    let ``context-types#Status`` =
-        Namespaced_IRI.parse _namespace_name "context-types#Status" |> NamespacedName
-
+    let ``context-types#Status`` = _prefix "context-types#Status"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/mood"></see>
     /// </summary>
-    let mood = Namespaced_IRI.parse _namespace_name "mood" |> NamespacedName
+    let mood = _prefix "mood"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/from"></see>
     /// </summary>
-    let from = Namespaced_IRI.parse _namespace_name "from" |> NamespacedName
+    let from = _prefix "from"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/to"></see>
     /// </summary>
-    let to_ = Namespaced_IRI.parse _namespace_name "to" |> NamespacedName
-
+    let to_ = _prefix "to"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/inputEnergy"></see>
     /// </summary>
-    let inputEnergy =
-        Namespaced_IRI.parse _namespace_name "inputEnergy" |> NamespacedName
-
+    let inputEnergy = _prefix "inputEnergy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/outputEnergy"></see>
     /// </summary>
-    let outputEnergy =
-        Namespaced_IRI.parse _namespace_name "outputEnergy" |> NamespacedName
-
+    let outputEnergy = _prefix "outputEnergy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/ipDevice"></see>
     /// </summary>
-    let ipDevice = Namespaced_IRI.parse _namespace_name "ipDevice" |> NamespacedName
+    let ipDevice = _prefix "ipDevice"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/ipGate"></see>
     /// </summary>
-    let ipGate = Namespaced_IRI.parse _namespace_name "ipGate" |> NamespacedName
+    let ipGate = _prefix "ipGate"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/layer"></see>
     /// </summary>
-    let layer = Namespaced_IRI.parse _namespace_name "layer" |> NamespacedName
+    let layer = _prefix "layer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/isLayerOf"></see>
     /// </summary>
-    let isLayerOf = Namespaced_IRI.parse _namespace_name "isLayerOf" |> NamespacedName
+    let isLayerOf = _prefix "isLayerOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/layerOf"></see>
     /// </summary>
-    let layerOf = Namespaced_IRI.parse _namespace_name "layerOf" |> NamespacedName
+    let layerOf = _prefix "layerOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/hasLayer"></see>
     /// </summary>
-    let hasLayer = Namespaced_IRI.parse _namespace_name "hasLayer" |> NamespacedName
-
+    let hasLayer = _prefix "hasLayer"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/linkActivity"></see>
     /// </summary>
-    let linkActivity =
-        Namespaced_IRI.parse _namespace_name "linkActivity" |> NamespacedName
-
+    let linkActivity = _prefix "linkActivity"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/linkActivityOf"></see>
     /// </summary>
-    let linkActivityOf =
-        Namespaced_IRI.parse _namespace_name "linkActivityOf" |> NamespacedName
-
+    let linkActivityOf = _prefix "linkActivityOf"
     /// <summary>
     /// Relationship among a LinkActivity and the amount of packets received in the time range specified by the predicates :startDateTime and :endDateTime
     /// <see href="http://spitfire-project.eu/ontology/ns/linkActivityValue"></see></summary>
-    let linkActivityValue =
-        Namespaced_IRI.parse _namespace_name "linkActivityValue" |> NamespacedName
-
+    let linkActivityValue = _prefix "linkActivityValue"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/linkQuality"></see>
     /// </summary>
-    let linkQuality =
-        Namespaced_IRI.parse _namespace_name "linkQuality" |> NamespacedName
-
+    let linkQuality = _prefix "linkQuality"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/isQualityOf"></see>
     /// </summary>
-    let isQualityOf =
-        Namespaced_IRI.parse _namespace_name "isQualityOf" |> NamespacedName
-
+    let isQualityOf = _prefix "isQualityOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/linkQualityOf"></see>
     /// </summary>
-    let linkQualityOf =
-        Namespaced_IRI.parse _namespace_name "linkQualityOf" |> NamespacedName
-
+    let linkQualityOf = _prefix "linkQualityOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/linkQualityValue"></see>
     /// </summary>
-    let linkQualityValue =
-        Namespaced_IRI.parse _namespace_name "linkQualityValue" |> NamespacedName
-
+    let linkQualityValue = _prefix "linkQualityValue"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/maxValue"></see>
     /// </summary>
-    let maxValue = Namespaced_IRI.parse _namespace_name "maxValue" |> NamespacedName
+    let maxValue = _prefix "maxValue"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/message"></see>
     /// </summary>
-    let message = Namespaced_IRI.parse _namespace_name "message" |> NamespacedName
+    let message = _prefix "message"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/minValue"></see>
     /// </summary>
-    let minValue = Namespaced_IRI.parse _namespace_name "minValue" |> NamespacedName
+    let minValue = _prefix "minValue"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/forStatus"></see>
     /// </summary>
-    let forStatus = Namespaced_IRI.parse _namespace_name "forStatus" |> NamespacedName
+    let forStatus = _prefix "forStatus"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/nearby"></see>
     /// </summary>
-    let nearby = Namespaced_IRI.parse _namespace_name "nearby" |> NamespacedName
+    let nearby = _prefix "nearby"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/netLink"></see>
     /// </summary>
-    let netLink = Namespaced_IRI.parse _namespace_name "netLink" |> NamespacedName
+    let netLink = _prefix "netLink"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/isLinkOf"></see>
     /// </summary>
-    let isLinkOf = Namespaced_IRI.parse _namespace_name "isLinkOf" |> NamespacedName
+    let isLinkOf = _prefix "isLinkOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/netLinkOf"></see>
     /// </summary>
-    let netLinkOf = Namespaced_IRI.parse _namespace_name "netLinkOf" |> NamespacedName
+    let netLinkOf = _prefix "netLinkOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/hasLink"></see>
     /// </summary>
-    let hasLink = Namespaced_IRI.parse _namespace_name "hasLink" |> NamespacedName
+    let hasLink = _prefix "hasLink"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/netRole"></see>
     /// </summary>
-    let netRole = Namespaced_IRI.parse _namespace_name "netRole" |> NamespacedName
+    let netRole = _prefix "netRole"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/obs"></see>
     /// </summary>
-    let obs = Namespaced_IRI.parse _namespace_name "obs" |> NamespacedName
+    let obs = _prefix "obs"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/obsBy"></see>
     /// </summary>
-    let obsBy = Namespaced_IRI.parse _namespace_name "obsBy" |> NamespacedName
+    let obsBy = _prefix "obsBy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/out"></see>
     /// </summary>
-    let out = Namespaced_IRI.parse _namespace_name "out" |> NamespacedName
+    let out = _prefix "out"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/outOf"></see>
     /// </summary>
-    let outOf = Namespaced_IRI.parse _namespace_name "outOf" |> NamespacedName
+    let outOf = _prefix "outOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/over"></see>
     /// </summary>
-    let over = Namespaced_IRI.parse _namespace_name "over" |> NamespacedName
+    let over = _prefix "over"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/ownedBy"></see>
     /// </summary>
-    let ownedBy = Namespaced_IRI.parse _namespace_name "ownedBy" |> NamespacedName
+    let ownedBy = _prefix "ownedBy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/owns"></see>
     /// </summary>
-    let owns = Namespaced_IRI.parse _namespace_name "owns" |> NamespacedName
-
+    let owns = _prefix "owns"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/priorityLevel"></see>
     /// </summary>
-    let priorityLevel =
-        Namespaced_IRI.parse _namespace_name "priorityLevel" |> NamespacedName
-
+    let priorityLevel = _prefix "priorityLevel"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/projectTopic"></see>
     /// </summary>
-    let projectTopic =
-        Namespaced_IRI.parse _namespace_name "projectTopic" |> NamespacedName
-
+    let projectTopic = _prefix "projectTopic"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/projectTopicOf"></see>
     /// </summary>
-    let projectTopicOf =
-        Namespaced_IRI.parse _namespace_name "projectTopicOf" |> NamespacedName
-
+    let projectTopicOf = _prefix "projectTopicOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sameAsLink"></see>
     /// </summary>
-    let sameAsLink = Namespaced_IRI.parse _namespace_name "sameAsLink" |> NamespacedName
-
+    let sameAsLink = _prefix "sameAsLink"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sameContext"></see>
     /// </summary>
-    let sameContext =
-        Namespaced_IRI.parse _namespace_name "sameContext" |> NamespacedName
-
+    let sameContext = _prefix "sameContext"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sameDomain"></see>
     /// </summary>
-    let sameDomain = Namespaced_IRI.parse _namespace_name "sameDomain" |> NamespacedName
-
+    let sameDomain = _prefix "sameDomain"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sameLocation"></see>
     /// </summary>
-    let sameLocation =
-        Namespaced_IRI.parse _namespace_name "sameLocation" |> NamespacedName
-
+    let sameLocation = _prefix "sameLocation"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sameTime"></see>
     /// </summary>
-    let sameTime = Namespaced_IRI.parse _namespace_name "sameTime" |> NamespacedName
-
+    let sameTime = _prefix "sameTime"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/savedEnergy"></see>
     /// </summary>
-    let savedEnergy =
-        Namespaced_IRI.parse _namespace_name "savedEnergy" |> NamespacedName
-
+    let savedEnergy = _prefix "savedEnergy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/SavedEnergy"></see>
     /// </summary>
-    let SavedEnergy =
-        Namespaced_IRI.parse _namespace_name "SavedEnergy" |> NamespacedName
-
+    let SavedEnergy = _prefix "SavedEnergy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/savedEnergyOf"></see>
     /// </summary>
-    let savedEnergyOf =
-        Namespaced_IRI.parse _namespace_name "savedEnergyOf" |> NamespacedName
-
+    let savedEnergyOf = _prefix "savedEnergyOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/seeAlsoLink"></see>
     /// </summary>
-    let seeAlsoLink =
-        Namespaced_IRI.parse _namespace_name "seeAlsoLink" |> NamespacedName
-
+    let seeAlsoLink = _prefix "seeAlsoLink"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sensed"></see>
     /// </summary>
-    let sensed = Namespaced_IRI.parse _namespace_name "sensed" |> NamespacedName
+    let sensed = _prefix "sensed"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/sensedBy"></see>
     /// </summary>
-    let sensedBy = Namespaced_IRI.parse _namespace_name "sensedBy" |> NamespacedName
+    let sensedBy = _prefix "sensedBy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
+    let status = _prefix "status"
     /// <summary>
     /// Datetime after which a given entity and all the triples referred to it, are not valid anymore.
     /// <see href="http://spitfire-project.eu/ontology/ns/tEnd"></see></summary>
-    let tEnd = Namespaced_IRI.parse _namespace_name "tEnd" |> NamespacedName
+    let tEnd = _prefix "tEnd"
     /// <summary>
     /// Datetime at which a given entity and all the triples referred to it, start to be valid.
     /// <see href="http://spitfire-project.eu/ontology/ns/tStart"></see></summary>
-    let tStart = Namespaced_IRI.parse _namespace_name "tStart" |> NamespacedName
+    let tStart = _prefix "tStart"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/temporal"></see>
     /// </summary>
-    let temporal = Namespaced_IRI.parse _namespace_name "temporal" |> NamespacedName
+    let temporal = _prefix "temporal"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/temporalOf"></see>
     /// </summary>
-    let temporalOf = Namespaced_IRI.parse _namespace_name "temporalOf" |> NamespacedName
+    let temporalOf = _prefix "temporalOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/totAreas"></see>
     /// </summary>
-    let totAreas = Namespaced_IRI.parse _namespace_name "totAreas" |> NamespacedName
+    let totAreas = _prefix "totAreas"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/tsMap"></see>
     /// </summary>
-    let tsMap = Namespaced_IRI.parse _namespace_name "tsMap" |> NamespacedName
+    let tsMap = _prefix "tsMap"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/tsMapOf"></see>
     /// </summary>
-    let tsMapOf = Namespaced_IRI.parse _namespace_name "tsMapOf" |> NamespacedName
+    let tsMapOf = _prefix "tsMapOf"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/under"></see>
     /// </summary>
-    let under = Namespaced_IRI.parse _namespace_name "under" |> NamespacedName
+    let under = _prefix "under"
     /// <summary>
     /// Unit of Measurement in use on a specific device or sensor or sensing device
     /// <see href="http://spitfire-project.eu/ontology/ns/uom"></see></summary>
-    let uom = Namespaced_IRI.parse _namespace_name "uom" |> NamespacedName
+    let uom = _prefix "uom"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/valueRange"></see>
     /// </summary>
-    let valueRange = Namespaced_IRI.parse _namespace_name "valueRange" |> NamespacedName
+    let valueRange = _prefix "valueRange"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/wears"></see>
     /// </summary>
-    let wears = Namespaced_IRI.parse _namespace_name "wears" |> NamespacedName
+    let wears = _prefix "wears"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/wornBy"></see>
     /// </summary>
-    let wornBy = Namespaced_IRI.parse _namespace_name "wornBy" |> NamespacedName
-
+    let wornBy = _prefix "wornBy"
     /// <summary>
     ///   <see href="http://spitfire-project.eu/ontology/ns/weatherForecast"></see>
     /// </summary>
-    let weatherForecast =
-        Namespaced_IRI.parse _namespace_name "weatherForecast" |> NamespacedName
+    let weatherForecast = _prefix "weatherForecast"

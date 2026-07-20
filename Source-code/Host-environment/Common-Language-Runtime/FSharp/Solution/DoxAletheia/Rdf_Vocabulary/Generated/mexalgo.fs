@@ -1,349 +1,274 @@
 namespace http.mex.aksw.org.mex_algo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module mexalgo =
     let _namespace_name = "http://mex.aksw.org/mex-algo#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AllDisjointClasses"></see>
     /// </summary>
-    let AllDisjointClasses =
-        Namespaced_IRI.parse _namespace_name "AllDisjointClasses" |> NamespacedName
-
+    let AllDisjointClasses = _prefix "AllDisjointClasses"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#C"></see>
     /// </summary>
-    let C = Namespaced_IRI.parse _namespace_name "C" |> NamespacedName
+    let C = _prefix "C"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DLLearner"></see>
     /// </summary>
-    let DLLearner = Namespaced_IRI.parse _namespace_name "DLLearner" |> NamespacedName
+    let DLLearner = _prefix "DLLearner"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#FAMa"></see>
     /// </summary>
-    let FAMa = Namespaced_IRI.parse _namespace_name "FAMa" |> NamespacedName
+    let FAMa = _prefix "FAMa"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Java"></see>
     /// </summary>
-    let Java = Namespaced_IRI.parse _namespace_name "Java" |> NamespacedName
+    let Java = _prefix "Java"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LibLinear"></see>
     /// </summary>
-    let LibLinear = Namespaced_IRI.parse _namespace_name "LibLinear" |> NamespacedName
+    let LibLinear = _prefix "LibLinear"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LibSVM"></see>
     /// </summary>
-    let LibSVM = Namespaced_IRI.parse _namespace_name "LibSVM" |> NamespacedName
+    let LibSVM = _prefix "LibSVM"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Matlab"></see>
     /// </summary>
-    let Matlab = Namespaced_IRI.parse _namespace_name "Matlab" |> NamespacedName
+    let Matlab = _prefix "Matlab"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Octave"></see>
     /// </summary>
-    let Octave = Namespaced_IRI.parse _namespace_name "Octave" |> NamespacedName
+    let Octave = _prefix "Octave"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Other"></see>
     /// </summary>
-    let Other = Namespaced_IRI.parse _namespace_name "Other" |> NamespacedName
+    let Other = _prefix "Other"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Python"></see>
     /// </summary>
-    let Python = Namespaced_IRI.parse _namespace_name "Python" |> NamespacedName
+    let Python = _prefix "Python"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#R"></see>
     /// </summary>
-    let R = Namespaced_IRI.parse _namespace_name "R" |> NamespacedName
-
+    let R = _prefix "R"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SASEnterpriseMiner"></see>
     /// </summary>
-    let SASEnterpriseMiner =
-        Namespaced_IRI.parse _namespace_name "SASEnterpriseMiner" |> NamespacedName
-
+    let SASEnterpriseMiner = _prefix "SASEnterpriseMiner"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SPSS"></see>
     /// </summary>
-    let SPSS = Namespaced_IRI.parse _namespace_name "SPSS" |> NamespacedName
+    let SPSS = _prefix "SPSS"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Weka"></see>
     /// </summary>
-    let Weka = Namespaced_IRI.parse _namespace_name "Weka" |> NamespacedName
+    let Weka = _prefix "Weka"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DotNet"></see>
     /// </summary>
-    let DotNet = Namespaced_IRI.parse _namespace_name "DotNet" |> NamespacedName
-
+    let DotNet = _prefix "DotNet"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Metaheuristic"></see>
     /// </summary>
-    let Metaheuristic =
-        Namespaced_IRI.parse _namespace_name "Metaheuristic" |> NamespacedName
-
+    let Metaheuristic = _prefix "Metaheuristic"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Association"></see>
     /// </summary>
-    let Association =
-        Namespaced_IRI.parse _namespace_name "Association" |> NamespacedName
-
+    let Association = _prefix "Association"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Classification"></see>
     /// </summary>
-    let Classification =
-        Namespaced_IRI.parse _namespace_name "Classification" |> NamespacedName
-
+    let Classification = _prefix "Classification"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Clustering"></see>
     /// </summary>
-    let Clustering = Namespaced_IRI.parse _namespace_name "Clustering" |> NamespacedName
+    let Clustering = _prefix "Clustering"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Regression"></see>
     /// </summary>
-    let Regression = Namespaced_IRI.parse _namespace_name "Regression" |> NamespacedName
-
+    let Regression = _prefix "Regression"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Summarization"></see>
     /// </summary>
-    let Summarization =
-        Namespaced_IRI.parse _namespace_name "Summarization" |> NamespacedName
-
+    let Summarization = _prefix "Summarization"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Boosting"></see>
     /// </summary>
-    let Boosting = Namespaced_IRI.parse _namespace_name "Boosting" |> NamespacedName
-
+    let Boosting = _prefix "Boosting"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ArtificialNeuralNetwork"></see>
     /// </summary>
-    let ArtificialNeuralNetwork =
-        Namespaced_IRI.parse _namespace_name "ArtificialNeuralNetwork" |> NamespacedName
-
+    let ArtificialNeuralNetwork = _prefix "ArtificialNeuralNetwork"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#BayesTheory"></see>
     /// </summary>
-    let BayesTheory =
-        Namespaced_IRI.parse _namespace_name "BayesTheory" |> NamespacedName
-
+    let BayesTheory = _prefix "BayesTheory"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DecisionTrees"></see>
     /// </summary>
-    let DecisionTrees =
-        Namespaced_IRI.parse _namespace_name "DecisionTrees" |> NamespacedName
-
+    let DecisionTrees = _prefix "DecisionTrees"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#GeneticAlgorithms"></see>
     /// </summary>
-    let GeneticAlgorithms =
-        Namespaced_IRI.parse _namespace_name "GeneticAlgorithms" |> NamespacedName
-
+    let GeneticAlgorithms = _prefix "GeneticAlgorithms"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#RegressionFunctions"></see>
     /// </summary>
-    let RegressionFunctions =
-        Namespaced_IRI.parse _namespace_name "RegressionFunctions" |> NamespacedName
-
+    let RegressionFunctions = _prefix "RegressionFunctions"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SupportVectorNetworks"></see>
     /// </summary>
-    let SupportVectorNetworks =
-        Namespaced_IRI.parse _namespace_name "SupportVectorNetworks" |> NamespacedName
-
+    let SupportVectorNetworks = _prefix "SupportVectorNetworks"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Reinforcement"></see>
     /// </summary>
-    let Reinforcement =
-        Namespaced_IRI.parse _namespace_name "Reinforcement" |> NamespacedName
-
+    let Reinforcement = _prefix "Reinforcement"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SemiSupervised"></see>
     /// </summary>
-    let SemiSupervised =
-        Namespaced_IRI.parse _namespace_name "SemiSupervised" |> NamespacedName
-
+    let SemiSupervised = _prefix "SemiSupervised"
     /// <summary>
     /// Supervised learning assumes that trainning examples are classified (labeled by class labels)
     /// <see href="http://mex.aksw.org/mex-algo#Supervised"></see></summary>
-    let Supervised = Namespaced_IRI.parse _namespace_name "Supervised" |> NamespacedName
-
+    let Supervised = _prefix "Supervised"
     /// <summary>
     /// Unsupervised learning concerns the analysis of unclassified examples
     /// <see href="http://mex.aksw.org/mex-algo#Unsupervised"></see></summary>
-    let Unsupervised =
-        Namespaced_IRI.parse _namespace_name "Unsupervised" |> NamespacedName
-
+    let Unsupervised = _prefix "Unsupervised"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Algorithm"></see>
     /// </summary>
-    let Algorithm = Namespaced_IRI.parse _namespace_name "Algorithm" |> NamespacedName
-
+    let Algorithm = _prefix "Algorithm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AlgorithmParameterCollection"></see>
     /// </summary>
-    let AlgorithmParameterCollection =
-        Namespaced_IRI.parse _namespace_name "AlgorithmParameterCollection" |> NamespacedName
-
+    let AlgorithmParameterCollection = _prefix "AlgorithmParameterCollection"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AlgorithmClass"></see>
     /// </summary>
-    let AlgorithmClass =
-        Namespaced_IRI.parse _namespace_name "AlgorithmClass" |> NamespacedName
-
+    let AlgorithmClass = _prefix "AlgorithmClass"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AlgorithmParameter"></see>
     /// </summary>
-    let AlgorithmParameter =
-        Namespaced_IRI.parse _namespace_name "AlgorithmParameter" |> NamespacedName
-
+    let AlgorithmParameter = _prefix "AlgorithmParameter"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Implementation"></see>
     /// </summary>
-    let Implementation =
-        Namespaced_IRI.parse _namespace_name "Implementation" |> NamespacedName
-
+    let Implementation = _prefix "Implementation"
     /// <summary>
     /// Supervised Learning, Unsupervised Learning, Semi-supervised Learning, Reinforcement Learning, ...
     /// <see href="http://mex.aksw.org/mex-algo#LearningMethod"></see></summary>
-    let LearningMethod =
-        Namespaced_IRI.parse _namespace_name "LearningMethod" |> NamespacedName
-
+    let LearningMethod = _prefix "LearningMethod"
     /// <summary>
     /// A ValuePartition that describes only values from Regression, Classification or Clustering. NB Subclasses can themselves be divided up into further partitions.
     /// <see href="http://mex.aksw.org/mex-algo#LearningProblem"></see></summary>
-    let LearningProblem =
-        Namespaced_IRI.parse _namespace_name "LearningProblem" |> NamespacedName
-
+    let LearningProblem = _prefix "LearningProblem"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ADTree"></see>
     /// </summary>
-    let ADTree = Namespaced_IRI.parse _namespace_name "ADTree" |> NamespacedName
+    let ADTree = _prefix "ADTree"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#hasClass"></see>
     /// </summary>
-    let hasClass = Namespaced_IRI.parse _namespace_name "hasClass" |> NamespacedName
-
+    let hasClass = _prefix "hasClass"
     /// <summary>
     /// The basic information regarding the algorithms used into the experiment
     /// <see href="http://mex.aksw.org/mex-algo#NamedAlgorithm"></see></summary>
-    let NamedAlgorithm =
-        Namespaced_IRI.parse _namespace_name "NamedAlgorithm" |> NamespacedName
-
+    let NamedAlgorithm = _prefix "NamedAlgorithm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AODE"></see>
     /// </summary>
-    let AODE = Namespaced_IRI.parse _namespace_name "AODE" |> NamespacedName
-
+    let AODE = _prefix "AODE"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NamedIndividual"></see>
     /// </summary>
-    let NamedIndividual =
-        Namespaced_IRI.parse _namespace_name "NamedIndividual" |> NamespacedName
-
+    let NamedIndividual = _prefix "NamedIndividual"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AQ"></see>
     /// </summary>
-    let AQ = Namespaced_IRI.parse _namespace_name "AQ" |> NamespacedName
+    let AQ = _prefix "AQ"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Rules"></see>
     /// </summary>
-    let Rules = Namespaced_IRI.parse _namespace_name "Rules" |> NamespacedName
+    let Rules = _prefix "Rules"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AdaBoost"></see>
     /// </summary>
-    let AdaBoost = Namespaced_IRI.parse _namespace_name "AdaBoost" |> NamespacedName
-
+    let AdaBoost = _prefix "AdaBoost"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AdaptativeBoost"></see>
     /// </summary>
-    let AdaptativeBoost =
-        Namespaced_IRI.parse _namespace_name "AdaptativeBoost" |> NamespacedName
-
+    let AdaptativeBoost = _prefix "AdaptativeBoost"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#hasLearningMethod"></see>
     /// </summary>
-    let hasLearningMethod =
-        Namespaced_IRI.parse _namespace_name "hasLearningMethod" |> NamespacedName
-
+    let hasLearningMethod = _prefix "hasLearningMethod"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#hasLearningProblem"></see>
     /// </summary>
-    let hasLearningProblem =
-        Namespaced_IRI.parse _namespace_name "hasLearningProblem" |> NamespacedName
-
+    let hasLearningProblem = _prefix "hasLearningProblem"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ApacheMahout"></see>
     /// </summary>
-    let ApacheMahout =
-        Namespaced_IRI.parse _namespace_name "ApacheMahout" |> NamespacedName
-
+    let ApacheMahout = _prefix "ApacheMahout"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Apriori"></see>
     /// </summary>
-    let Apriori = Namespaced_IRI.parse _namespace_name "Apriori" |> NamespacedName
+    let Apriori = _prefix "Apriori"
 
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AutoregressiveIntegratedMovingAverage"></see>
     /// </summary>
     let AutoregressiveIntegratedMovingAverage =
-        Namespaced_IRI.parse _namespace_name "AutoregressiveIntegratedMovingAverage" |> NamespacedName
+        _prefix "AutoregressiveIntegratedMovingAverage"
 
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AutoregressiveMovingAverage"></see>
     /// </summary>
-    let AutoregressiveMovingAverage =
-        Namespaced_IRI.parse _namespace_name "AutoregressiveMovingAverage" |> NamespacedName
-
+    let AutoregressiveMovingAverage = _prefix "AutoregressiveMovingAverage"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#AverageOneDependenceEstimators"></see>
     /// </summary>
-    let AverageOneDependenceEstimators =
-        Namespaced_IRI.parse _namespace_name "AverageOneDependenceEstimators" |> NamespacedName
-
+    let AverageOneDependenceEstimators = _prefix "AverageOneDependenceEstimators"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#BFTree"></see>
     /// </summary>
-    let BFTree = Namespaced_IRI.parse _namespace_name "BFTree" |> NamespacedName
+    let BFTree = _prefix "BFTree"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#BIRCH"></see>
     /// </summary>
-    let BIRCH = Namespaced_IRI.parse _namespace_name "BIRCH" |> NamespacedName
-
+    let BIRCH = _prefix "BIRCH"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#BackPropagation"></see>
     /// </summary>
-    let BackPropagation =
-        Namespaced_IRI.parse _namespace_name "BackPropagation" |> NamespacedName
-
+    let BackPropagation = _prefix "BackPropagation"
     /// <summary>
     /// Random forests are an ensemble learning method for classification, regression and other tasks, that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees. Random forests correct for decision trees' habit of overfitting to their training set.
     /// <see href="http://mex.aksw.org/mex-algo#RandomForest"></see></summary>
-    let RandomForest =
-        Namespaced_IRI.parse _namespace_name "RandomForest" |> NamespacedName
-
+    let RandomForest = _prefix "RandomForest"
     /// <summary>
     /// In machine learning, support vector machines (SVMs, also support vector networks) are supervised learning models with associated learning algorithms that analyze data and recognize patterns, used for classification and regression analysis. Given a set of training examples, each marked as belonging to one of two categories, an SVM training algorithm builds a model that assigns new examples into one category or the other, making it a non-probabilistic binary linear classifier. An SVM model is a representation of the examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall on.
     ///
     /// In addition to performing linear classification, SVMs can efficiently perform a non-linear classification using what is called the kernel trick, implicitly mapping their inputs into high-dimensional feature spaces.
     /// <see href="http://mex.aksw.org/mex-algo#SupportVectorMachines"></see></summary>
-    let SupportVectorMachines =
-        Namespaced_IRI.parse _namespace_name "SupportVectorMachines" |> NamespacedName
-
+    let SupportVectorMachines = _prefix "SupportVectorMachines"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LogisticRegression"></see>
     /// </summary>
-    let LogisticRegression =
-        Namespaced_IRI.parse _namespace_name "LogisticRegression" |> NamespacedName
-
+    let LogisticRegression = _prefix "LogisticRegression"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#RegressionAnalysis"></see>
     /// </summary>
-    let RegressionAnalysis =
-        Namespaced_IRI.parse _namespace_name "RegressionAnalysis" |> NamespacedName
-
+    let RegressionAnalysis = _prefix "RegressionAnalysis"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Kmeans"></see>
     /// </summary>
-    let Kmeans = Namespaced_IRI.parse _namespace_name "Kmeans" |> NamespacedName
+    let Kmeans = _prefix "Kmeans"
     /// <summary>
     /// In machine learning, naive Bayes classifiers are a family of simple probabilistic classifiers based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
     ///
@@ -353,626 +278,504 @@ module mexalgo =
     ///
     /// In the statistics and computer science literature, Naive Bayes models are known under a variety of names, including simple Bayes and independence Bayes.[4] All these names reference the use of Bayes' theorem in the classifier's decision rule, but naive Bayes is not (necessarily) a Bayesian method Russell and Norvig note that "[naive Bayes] is sometimes called a Bayesian classifier, a somewhat careless usage that has prompted true Bayesians to call it the idiot Bayes model.
     /// <see href="http://mex.aksw.org/mex-algo#NaiveBayes"></see></summary>
-    let NaiveBayes = Namespaced_IRI.parse _namespace_name "NaiveBayes" |> NamespacedName
+    let NaiveBayes = _prefix "NaiveBayes"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Bagging"></see>
     /// </summary>
-    let Bagging = Namespaced_IRI.parse _namespace_name "Bagging" |> NamespacedName
+    let Bagging = _prefix "Bagging"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Baseline"></see>
     /// </summary>
-    let Baseline = Namespaced_IRI.parse _namespace_name "Baseline" |> NamespacedName
+    let Baseline = _prefix "Baseline"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Bayes"></see>
     /// </summary>
-    let Bayes = Namespaced_IRI.parse _namespace_name "Bayes" |> NamespacedName
-
+    let Bayes = _prefix "Bayes"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#BayesTheoryAlgorithms"></see>
     /// </summary>
-    let BayesTheoryAlgorithms =
-        Namespaced_IRI.parse _namespace_name "BayesTheoryAlgorithms" |> NamespacedName
-
+    let BayesTheoryAlgorithms = _prefix "BayesTheoryAlgorithms"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Bootstrap"></see>
     /// </summary>
-    let Bootstrap = Namespaced_IRI.parse _namespace_name "Bootstrap" |> NamespacedName
+    let Bootstrap = _prefix "Bootstrap"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Library"></see>
     /// </summary>
-    let Library = Namespaced_IRI.parse _namespace_name "Library" |> NamespacedName
+    let Library = _prefix "Library"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#C-SVM"></see>
     /// </summary>
-    let ``C-SVM`` = Namespaced_IRI.parse _namespace_name "C-SVM" |> NamespacedName
+    let ``C-SVM`` = _prefix "C-SVM"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#C45"></see>
     /// </summary>
-    let C45 = Namespaced_IRI.parse _namespace_name "C45" |> NamespacedName
+    let C45 = _prefix "C45"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CART"></see>
     /// </summary>
-    let CART = Namespaced_IRI.parse _namespace_name "CART" |> NamespacedName
+    let CART = _prefix "CART"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CHAID"></see>
     /// </summary>
-    let CHAID = Namespaced_IRI.parse _namespace_name "CHAID" |> NamespacedName
+    let CHAID = _prefix "CHAID"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CHAMELEON"></see>
     /// </summary>
-    let CHAMELEON = Namespaced_IRI.parse _namespace_name "CHAMELEON" |> NamespacedName
+    let CHAMELEON = _prefix "CHAMELEON"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CLARA"></see>
     /// </summary>
-    let CLARA = Namespaced_IRI.parse _namespace_name "CLARA" |> NamespacedName
+    let CLARA = _prefix "CLARA"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CLARANS"></see>
     /// </summary>
-    let CLARANS = Namespaced_IRI.parse _namespace_name "CLARANS" |> NamespacedName
+    let CLARANS = _prefix "CLARANS"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CPlusPlus"></see>
     /// </summary>
-    let CPlusPlus = Namespaced_IRI.parse _namespace_name "CPlusPlus" |> NamespacedName
+    let CPlusPlus = _prefix "CPlusPlus"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CURE"></see>
     /// </summary>
-    let CURE = Namespaced_IRI.parse _namespace_name "CURE" |> NamespacedName
+    let CURE = _prefix "CURE"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Centura"></see>
     /// </summary>
-    let Centura = Namespaced_IRI.parse _namespace_name "Centura" |> NamespacedName
-
+    let Centura = _prefix "Centura"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#CrossValidation"></see>
     /// </summary>
-    let CrossValidation =
-        Namespaced_IRI.parse _namespace_name "CrossValidation" |> NamespacedName
-
+    let CrossValidation = _prefix "CrossValidation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DL-Learner"></see>
     /// </summary>
-    let ``DL-Learner`` =
-        Namespaced_IRI.parse _namespace_name "DL-Learner" |> NamespacedName
-
+    let ``DL-Learner`` = _prefix "DL-Learner"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DL-Learning"></see>
     /// </summary>
-    let ``DL-Learning`` =
-        Namespaced_IRI.parse _namespace_name "DL-Learning" |> NamespacedName
-
+    let ``DL-Learning`` = _prefix "DL-Learning"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DecisionStump"></see>
     /// </summary>
-    let DecisionStump =
-        Namespaced_IRI.parse _namespace_name "DecisionStump" |> NamespacedName
-
+    let DecisionStump = _prefix "DecisionStump"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#DecisionTreesAlgorithms"></see>
     /// </summary>
-    let DecisionTreesAlgorithms =
-        Namespaced_IRI.parse _namespace_name "DecisionTreesAlgorithms" |> NamespacedName
-
+    let DecisionTreesAlgorithms = _prefix "DecisionTreesAlgorithms"
     /// <summary>
     /// are typically unsupervised and are used to induce interesting patterns (such as association rules) from unlabeled data. The induced patterns are useful in exploratory data analysis.
     /// <see href="http://mex.aksw.org/mex-algo#DescriptiveMethod"></see></summary>
-    let DescriptiveMethod =
-        Namespaced_IRI.parse _namespace_name "DescriptiveMethod" |> NamespacedName
-
+    let DescriptiveMethod = _prefix "DescriptiveMethod"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ELKI"></see>
     /// </summary>
-    let ELKI = Namespaced_IRI.parse _namespace_name "ELKI" |> NamespacedName
+    let ELKI = _prefix "ELKI"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#EViews"></see>
     /// </summary>
-    let EViews = Namespaced_IRI.parse _namespace_name "EViews" |> NamespacedName
+    let EViews = _prefix "EViews"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Encog"></see>
     /// </summary>
-    let Encog = Namespaced_IRI.parse _namespace_name "Encog" |> NamespacedName
-
+    let Encog = _prefix "Encog"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#EnsambleTechnique"></see>
     /// </summary>
-    let EnsambleTechnique =
-        Namespaced_IRI.parse _namespace_name "EnsambleTechnique" |> NamespacedName
-
+    let EnsambleTechnique = _prefix "EnsambleTechnique"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#FP"></see>
     /// </summary>
-    let FP = Namespaced_IRI.parse _namespace_name "FP" |> NamespacedName
-
+    let FP = _prefix "FP"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#FP-growth"></see>
     /// </summary>
-    let ``FP-growth`` =
-        Namespaced_IRI.parse _namespace_name "FP-growth" |> NamespacedName
-
+    let ``FP-growth`` = _prefix "FP-growth"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ForClassificationProblem"></see>
     /// </summary>
-    let ForClassificationProblem =
-        Namespaced_IRI.parse _namespace_name "ForClassificationProblem" |> NamespacedName
-
+    let ForClassificationProblem = _prefix "ForClassificationProblem"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#GA"></see>
     /// </summary>
-    let GA = Namespaced_IRI.parse _namespace_name "GA" |> NamespacedName
-
+    let GA = _prefix "GA"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#GaussianRBF"></see>
     /// </summary>
-    let GaussianRBF =
-        Namespaced_IRI.parse _namespace_name "GaussianRBF" |> NamespacedName
-
+    let GaussianRBF = _prefix "GaussianRBF"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#GeneticAlgorithm"></see>
     /// </summary>
-    let GeneticAlgorithm =
-        Namespaced_IRI.parse _namespace_name "GeneticAlgorithm" |> NamespacedName
-
+    let GeneticAlgorithm = _prefix "GeneticAlgorithm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#GraphKernel"></see>
     /// </summary>
-    let GraphKernel =
-        Namespaced_IRI.parse _namespace_name "GraphKernel" |> NamespacedName
-
+    let GraphKernel = _prefix "GraphKernel"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#H2O"></see>
     /// </summary>
-    let H2O = Namespaced_IRI.parse _namespace_name "H2O" |> NamespacedName
+    let H2O = _prefix "H2O"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Holdout"></see>
     /// </summary>
-    let Holdout = Namespaced_IRI.parse _namespace_name "Holdout" |> NamespacedName
-
+    let Holdout = _prefix "Holdout"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#HybridAlgorithm"></see>
     /// </summary>
-    let HybridAlgorithm =
-        Namespaced_IRI.parse _namespace_name "HybridAlgorithm" |> NamespacedName
-
+    let HybridAlgorithm = _prefix "HybridAlgorithm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#IBMMiner"></see>
     /// </summary>
-    let IBMMiner = Namespaced_IRI.parse _namespace_name "IBMMiner" |> NamespacedName
+    let IBMMiner = _prefix "IBMMiner"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ID3"></see>
     /// </summary>
-    let ID3 = Namespaced_IRI.parse _namespace_name "ID3" |> NamespacedName
+    let ID3 = _prefix "ID3"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#INDUCE"></see>
     /// </summary>
-    let INDUCE = Namespaced_IRI.parse _namespace_name "INDUCE" |> NamespacedName
-
+    let INDUCE = _prefix "INDUCE"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#InductiveLogicProgramming"></see>
     /// </summary>
-    let InductiveLogicProgramming =
-        Namespaced_IRI.parse _namespace_name "InductiveLogicProgramming" |> NamespacedName
-
+    let InductiveLogicProgramming = _prefix "InductiveLogicProgramming"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#J48"></see>
     /// </summary>
-    let J48 = Namespaced_IRI.parse _namespace_name "J48" |> NamespacedName
+    let J48 = _prefix "J48"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#J48Graft"></see>
     /// </summary>
-    let J48Graft = Namespaced_IRI.parse _namespace_name "J48Graft" |> NamespacedName
+    let J48Graft = _prefix "J48Graft"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#JavaScript"></see>
     /// </summary>
-    let JavaScript = Namespaced_IRI.parse _namespace_name "JavaScript" |> NamespacedName
+    let JavaScript = _prefix "JavaScript"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Julia"></see>
     /// </summary>
-    let Julia = Namespaced_IRI.parse _namespace_name "Julia" |> NamespacedName
+    let Julia = _prefix "Julia"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#K-means"></see>
     /// </summary>
-    let ``K-means`` = Namespaced_IRI.parse _namespace_name "K-means" |> NamespacedName
+    let ``K-means`` = _prefix "K-means"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#KNIME"></see>
     /// </summary>
-    let KNIME = Namespaced_IRI.parse _namespace_name "KNIME" |> NamespacedName
+    let KNIME = _prefix "KNIME"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#KXEN"></see>
     /// </summary>
-    let KXEN = Namespaced_IRI.parse _namespace_name "KXEN" |> NamespacedName
+    let KXEN = _prefix "KXEN"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LADTree"></see>
     /// </summary>
-    let LADTree = Namespaced_IRI.parse _namespace_name "LADTree" |> NamespacedName
+    let LADTree = _prefix "LADTree"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LIONsolver"></see>
     /// </summary>
-    let LIONsolver = Namespaced_IRI.parse _namespace_name "LIONsolver" |> NamespacedName
+    let LIONsolver = _prefix "LIONsolver"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LMT"></see>
     /// </summary>
-    let LMT = Namespaced_IRI.parse _namespace_name "LMT" |> NamespacedName
+    let LMT = _prefix "LMT"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Linear"></see>
     /// </summary>
-    let Linear = Namespaced_IRI.parse _namespace_name "Linear" |> NamespacedName
-
+    let Linear = _prefix "Linear"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LinearRegression"></see>
     /// </summary>
-    let LinearRegression =
-        Namespaced_IRI.parse _namespace_name "LinearRegression" |> NamespacedName
-
+    let LinearRegression = _prefix "LinearRegression"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Linear_Regression"></see>
     /// </summary>
-    let Linear_Regression =
-        Namespaced_IRI.parse _namespace_name "Linear_Regression" |> NamespacedName
-
+    let Linear_Regression = _prefix "Linear_Regression"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#LogicalRepresentations"></see>
     /// </summary>
-    let LogicalRepresentations =
-        Namespaced_IRI.parse _namespace_name "LogicalRepresentations" |> NamespacedName
-
+    let LogicalRepresentations = _prefix "LogicalRepresentations"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Logistic_Regression"></see>
     /// </summary>
-    let Logistic_Regression =
-        Namespaced_IRI.parse _namespace_name "Logistic_Regression" |> NamespacedName
-
+    let Logistic_Regression = _prefix "Logistic_Regression"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#MARS"></see>
     /// </summary>
-    let MARS = Namespaced_IRI.parse _namespace_name "MARS" |> NamespacedName
+    let MARS = _prefix "MARS"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#MLPACK"></see>
     /// </summary>
-    let MLPACK = Namespaced_IRI.parse _namespace_name "MLPACK" |> NamespacedName
+    let MLPACK = _prefix "MLPACK"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Markov"></see>
     /// </summary>
-    let Markov = Namespaced_IRI.parse _namespace_name "Markov" |> NamespacedName
-
+    let Markov = _prefix "Markov"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#MassiveOnlineAnalysis"></see>
     /// </summary>
-    let MassiveOnlineAnalysis =
-        Namespaced_IRI.parse _namespace_name "MassiveOnlineAnalysis" |> NamespacedName
-
+    let MassiveOnlineAnalysis = _prefix "MassiveOnlineAnalysis"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Mathematica"></see>
     /// </summary>
-    let Mathematica =
-        Namespaced_IRI.parse _namespace_name "Mathematica" |> NamespacedName
-
+    let Mathematica = _prefix "Mathematica"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#MicrosoftAzureMachineLearning"></see>
     /// </summary>
-    let MicrosoftAzureMachineLearning =
-        Namespaced_IRI.parse _namespace_name "MicrosoftAzureMachineLearning" |> NamespacedName
-
+    let MicrosoftAzureMachineLearning = _prefix "MicrosoftAzureMachineLearning"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Microsoft_SQL_Server"></see>
     /// </summary>
-    let Microsoft_SQL_Server =
-        Namespaced_IRI.parse _namespace_name "Microsoft_SQL_Server" |> NamespacedName
-
+    let Microsoft_SQL_Server = _prefix "Microsoft_SQL_Server"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#MonteCarloMachineLearningLibrary"></see>
     /// </summary>
-    let MonteCarloMachineLearningLibrary =
-        Namespaced_IRI.parse _namespace_name "MonteCarloMachineLearningLibrary" |> NamespacedName
-
+    let MonteCarloMachineLearningLibrary = _prefix "MonteCarloMachineLearningLibrary"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NBTree"></see>
     /// </summary>
-    let NBTree = Namespaced_IRI.parse _namespace_name "NBTree" |> NamespacedName
-
+    let NBTree = _prefix "NBTree"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NN-BackPropagation"></see>
     /// </summary>
-    let ``NN-BackPropagation`` =
-        Namespaced_IRI.parse _namespace_name "NN-BackPropagation" |> NamespacedName
-
+    let ``NN-BackPropagation`` = _prefix "NN-BackPropagation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Naive_Bayes"></see>
     /// </summary>
-    let Naive_Bayes =
-        Namespaced_IRI.parse _namespace_name "Naive_Bayes" |> NamespacedName
-
+    let Naive_Bayes = _prefix "Naive_Bayes"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NearestNeigbour"></see>
     /// </summary>
-    let NearestNeigbour =
-        Namespaced_IRI.parse _namespace_name "NearestNeigbour" |> NamespacedName
-
+    let NearestNeigbour = _prefix "NearestNeigbour"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NearestNeighbour"></see>
     /// </summary>
-    let NearestNeighbour =
-        Namespaced_IRI.parse _namespace_name "NearestNeighbour" |> NamespacedName
-
+    let NearestNeighbour = _prefix "NearestNeighbour"
     /// <summary>
     /// k-NN
     /// <see href="http://mex.aksw.org/mex-algo#Nearest_Neighbour"></see></summary>
-    let Nearest_Neighbour =
-        Namespaced_IRI.parse _namespace_name "Nearest_Neighbour" |> NamespacedName
-
+    let Nearest_Neighbour = _prefix "Nearest_Neighbour"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NeuralNetwork"></see>
     /// </summary>
-    let NeuralNetwork =
-        Namespaced_IRI.parse _namespace_name "NeuralNetwork" |> NamespacedName
-
+    let NeuralNetwork = _prefix "NeuralNetwork"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NeuroSolutions"></see>
     /// </summary>
-    let NeuroSolutions =
-        Namespaced_IRI.parse _namespace_name "NeuroSolutions" |> NamespacedName
-
+    let NeuroSolutions = _prefix "NeuroSolutions"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#NodeJS"></see>
     /// </summary>
-    let NodeJS = Namespaced_IRI.parse _namespace_name "NodeJS" |> NamespacedName
+    let NodeJS = _prefix "NodeJS"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#OPTICS"></see>
     /// </summary>
-    let OPTICS = Namespaced_IRI.parse _namespace_name "OPTICS" |> NamespacedName
+    let OPTICS = _prefix "OPTICS"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#OpenCV"></see>
     /// </summary>
-    let OpenCV = Namespaced_IRI.parse _namespace_name "OpenCV" |> NamespacedName
+    let OpenCV = _prefix "OpenCV"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#OpenNN"></see>
     /// </summary>
-    let OpenNN = Namespaced_IRI.parse _namespace_name "OpenNN" |> NamespacedName
-
+    let OpenNN = _prefix "OpenNN"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#OracleDataMining"></see>
     /// </summary>
-    let OracleDataMining =
-        Namespaced_IRI.parse _namespace_name "OracleDataMining" |> NamespacedName
-
+    let OracleDataMining = _prefix "OracleDataMining"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Orange"></see>
     /// </summary>
-    let Orange = Namespaced_IRI.parse _namespace_name "Orange" |> NamespacedName
+    let Orange = _prefix "Orange"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#PHP"></see>
     /// </summary>
-    let PHP = Namespaced_IRI.parse _namespace_name "PHP" |> NamespacedName
+    let PHP = _prefix "PHP"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#PathKernel"></see>
     /// </summary>
-    let PathKernel = Namespaced_IRI.parse _namespace_name "PathKernel" |> NamespacedName
+    let PathKernel = _prefix "PathKernel"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Polynomial"></see>
     /// </summary>
-    let Polynomial = Namespaced_IRI.parse _namespace_name "Polynomial" |> NamespacedName
-
+    let Polynomial = _prefix "Polynomial"
     /// <summary>
     /// they are used to induce models or theories from class-labeled data
     /// <see href="http://mex.aksw.org/mex-algo#PredictiveMethod"></see></summary>
-    let PredictiveMethod =
-        Namespaced_IRI.parse _namespace_name "PredictiveMethod" |> NamespacedName
-
+    let PredictiveMethod = _prefix "PredictiveMethod"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#ProbabilisticSoftLogic"></see>
     /// </summary>
-    let ProbabilisticSoftLogic =
-        Namespaced_IRI.parse _namespace_name "ProbabilisticSoftLogic" |> NamespacedName
-
+    let ProbabilisticSoftLogic = _prefix "ProbabilisticSoftLogic"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#R-SVM"></see>
     /// </summary>
-    let ``R-SVM`` = Namespaced_IRI.parse _namespace_name "R-SVM" |> NamespacedName
+    let ``R-SVM`` = _prefix "R-SVM"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#RCASE"></see>
     /// </summary>
-    let RCASE = Namespaced_IRI.parse _namespace_name "RCASE" |> NamespacedName
+    let RCASE = _prefix "RCASE"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#REPTree"></see>
     /// </summary>
-    let REPTree = Namespaced_IRI.parse _namespace_name "REPTree" |> NamespacedName
-
+    let REPTree = _prefix "REPTree"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#RandomCrossValidation"></see>
     /// </summary>
-    let RandomCrossValidation =
-        Namespaced_IRI.parse _namespace_name "RandomCrossValidation" |> NamespacedName
-
+    let RandomCrossValidation = _prefix "RandomCrossValidation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#RapidMiner"></see>
     /// </summary>
-    let RapidMiner = Namespaced_IRI.parse _namespace_name "RapidMiner" |> NamespacedName
+    let RapidMiner = _prefix "RapidMiner"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Ruby"></see>
     /// </summary>
-    let Ruby = Namespaced_IRI.parse _namespace_name "Ruby" |> NamespacedName
+    let Ruby = _prefix "Ruby"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SAP"></see>
     /// </summary>
-    let SAP = Namespaced_IRI.parse _namespace_name "SAP" |> NamespacedName
+    let SAP = _prefix "SAP"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SAS"></see>
     /// </summary>
-    let SAS = Namespaced_IRI.parse _namespace_name "SAS" |> NamespacedName
-
+    let SAS = _prefix "SAS"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SQLServerAnalysisServices"></see>
     /// </summary>
-    let SQLServerAnalysisServices =
-        Namespaced_IRI.parse _namespace_name "SQLServerAnalysisServices" |> NamespacedName
-
+    let SQLServerAnalysisServices = _prefix "SQLServerAnalysisServices"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#STATISTICADataMiner"></see>
     /// </summary>
-    let STATISTICADataMiner =
-        Namespaced_IRI.parse _namespace_name "STATISTICADataMiner" |> NamespacedName
-
+    let STATISTICADataMiner = _prefix "STATISTICADataMiner"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SVM"></see>
     /// </summary>
-    let SVM = Namespaced_IRI.parse _namespace_name "SVM" |> NamespacedName
+    let SVM = _prefix "SVM"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Shogun"></see>
     /// </summary>
-    let Shogun = Namespaced_IRI.parse _namespace_name "Shogun" |> NamespacedName
+    let Shogun = _prefix "Shogun"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Sigmoid"></see>
     /// </summary>
-    let Sigmoid = Namespaced_IRI.parse _namespace_name "Sigmoid" |> NamespacedName
+    let Sigmoid = _prefix "Sigmoid"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SimpleCart"></see>
     /// </summary>
-    let SimpleCart = Namespaced_IRI.parse _namespace_name "SimpleCart" |> NamespacedName
+    let SimpleCart = _prefix "SimpleCart"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Stata"></see>
     /// </summary>
-    let Stata = Namespaced_IRI.parse _namespace_name "Stata" |> NamespacedName
-
+    let Stata = _prefix "Stata"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#StatisticalApproach"></see>
     /// </summary>
-    let StatisticalApproach =
-        Namespaced_IRI.parse _namespace_name "StatisticalApproach" |> NamespacedName
-
+    let StatisticalApproach = _prefix "StatisticalApproach"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#StringKernel"></see>
     /// </summary>
-    let StringKernel =
-        Namespaced_IRI.parse _namespace_name "StringKernel" |> NamespacedName
-
+    let StringKernel = _prefix "StringKernel"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SupervisedApproach"></see>
     /// </summary>
-    let SupervisedApproach =
-        Namespaced_IRI.parse _namespace_name "SupervisedApproach" |> NamespacedName
-
+    let SupervisedApproach = _prefix "SupervisedApproach"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#SymbolicApproach"></see>
     /// </summary>
-    let SymbolicApproach =
-        Namespaced_IRI.parse _namespace_name "SymbolicApproach" |> NamespacedName
-
+    let SymbolicApproach = _prefix "SymbolicApproach"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Test"></see>
     /// </summary>
-    let Test = Namespaced_IRI.parse _namespace_name "Test" |> NamespacedName
+    let Test = _prefix "Test"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Trainning"></see>
     /// </summary>
-    let Trainning = Namespaced_IRI.parse _namespace_name "Trainning" |> NamespacedName
+    let Trainning = _prefix "Trainning"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#TreeKernel"></see>
     /// </summary>
-    let TreeKernel = Namespaced_IRI.parse _namespace_name "TreeKernel" |> NamespacedName
-
+    let TreeKernel = _prefix "TreeKernel"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#UnsupervisedApproach"></see>
     /// </summary>
-    let UnsupervisedApproach =
-        Namespaced_IRI.parse _namespace_name "UnsupervisedApproach" |> NamespacedName
-
+    let UnsupervisedApproach = _prefix "UnsupervisedApproach"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#UserClassifier"></see>
     /// </summary>
-    let UserClassifier =
-        Namespaced_IRI.parse _namespace_name "UserClassifier" |> NamespacedName
-
+    let UserClassifier = _prefix "UserClassifier"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Validation"></see>
     /// </summary>
-    let Validation = Namespaced_IRI.parse _namespace_name "Validation" |> NamespacedName
+    let Validation = _prefix "Validation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#WEKA"></see>
     /// </summary>
-    let WEKA = Namespaced_IRI.parse _namespace_name "WEKA" |> NamespacedName
+    let WEKA = _prefix "WEKA"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#YALE"></see>
     /// </summary>
-    let YALE = Namespaced_IRI.parse _namespace_name "YALE" |> NamespacedName
+    let YALE = _prefix "YALE"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#Yooreeka"></see>
     /// </summary>
-    let Yooreeka = Namespaced_IRI.parse _namespace_name "Yooreeka" |> NamespacedName
+    let Yooreeka = _prefix "Yooreeka"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#acronym"></see>
     /// </summary>
-    let acronym = Namespaced_IRI.parse _namespace_name "acronym" |> NamespacedName
-
+    let acronym = _prefix "acronym"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#hasAlgorithmConfiguration"></see>
     /// </summary>
-    let hasAlgorithmConfiguration =
-        Namespaced_IRI.parse _namespace_name "hasAlgorithmConfiguration" |> NamespacedName
-
+    let hasAlgorithmConfiguration = _prefix "hasAlgorithmConfiguration"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#hasAlgorithmParameterCollection"></see>
     /// </summary>
-    let hasAlgorithmParameterCollection =
-        Namespaced_IRI.parse _namespace_name "hasAlgorithmParameterCollection" |> NamespacedName
-
+    let hasAlgorithmParameterCollection = _prefix "hasAlgorithmParameterCollection"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#hasImplementation"></see>
     /// </summary>
-    let hasImplementation =
-        Namespaced_IRI.parse _namespace_name "hasImplementation" |> NamespacedName
-
+    let hasImplementation = _prefix "hasImplementation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#isAlgorithmConfigurationOf"></see>
     /// </summary>
-    let isAlgorithmConfigurationOf =
-        Namespaced_IRI.parse _namespace_name "isAlgorithmConfigurationOf" |> NamespacedName
-
+    let isAlgorithmConfigurationOf = _prefix "isAlgorithmConfigurationOf"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#isAlgorithmParameterCollectionOf"></see>
     /// </summary>
-    let isAlgorithmParameterCollectionOf =
-        Namespaced_IRI.parse _namespace_name "isAlgorithmParameterCollectionOf" |> NamespacedName
-
+    let isAlgorithmParameterCollectionOf = _prefix "isAlgorithmParameterCollectionOf"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#isClassOf"></see>
     /// </summary>
-    let isClassOf = Namespaced_IRI.parse _namespace_name "isClassOf" |> NamespacedName
-
+    let isClassOf = _prefix "isClassOf"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#isImplementationOf"></see>
     /// </summary>
-    let isImplementationOf =
-        Namespaced_IRI.parse _namespace_name "isImplementationOf" |> NamespacedName
-
+    let isImplementationOf = _prefix "isImplementationOf"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#isLearningMethodOf"></see>
     /// </summary>
-    let isLearningMethodOf =
-        Namespaced_IRI.parse _namespace_name "isLearningMethodOf" |> NamespacedName
-
+    let isLearningMethodOf = _prefix "isLearningMethodOf"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#isLearningProblemOf"></see>
     /// </summary>
-    let isLearningProblemOf =
-        Namespaced_IRI.parse _namespace_name "isLearningProblemOf" |> NamespacedName
-
+    let isLearningProblemOf = _prefix "isLearningProblemOf"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#k-means"></see>
     /// </summary>
-    let ``k-means`` = Namespaced_IRI.parse _namespace_name "k-means" |> NamespacedName
+    let ``k-means`` = _prefix "k-means"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#mlpy"></see>
     /// </summary>
-    let mlpy = Namespaced_IRI.parse _namespace_name "mlpy" |> NamespacedName
+    let mlpy = _prefix "mlpy"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#parametro1"></see>
     /// </summary>
-    let parametro1 = Namespaced_IRI.parse _namespace_name "parametro1" |> NamespacedName
+    let parametro1 = _prefix "parametro1"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#parametro2"></see>
     /// </summary>
-    let parametro2 = Namespaced_IRI.parse _namespace_name "parametro2" |> NamespacedName
-
+    let parametro2 = _prefix "parametro2"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-algo#scikit-learn"></see>
     /// </summary>
-    let ``scikit-learn`` =
-        Namespaced_IRI.parse _namespace_name "scikit-learn" |> NamespacedName
+    let ``scikit-learn`` = _prefix "scikit-learn"

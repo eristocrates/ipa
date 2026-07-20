@@ -1,2669 +1,2463 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.BusinessCentersIndividuals.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_bci =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AEAB"></see>
     /// </summary>
-    let AEAB = Namespaced_IRI.parse _namespace_name "AEAB" |> NamespacedName
-
+    let AEAB = _prefix "AEAB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/FpMLBusinessCenterCodeScheme"></see>
     /// </summary>
-    let FpMLBusinessCenterCodeScheme =
-        Namespaced_IRI.parse _namespace_name "FpMLBusinessCenterCodeScheme" |> NamespacedName
-
+    let FpMLBusinessCenterCodeScheme = _prefix "FpMLBusinessCenterCodeScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AbuDhabiBusinessDay"></see>
     /// </summary>
-    let AbuDhabiBusinessDay =
-        Namespaced_IRI.parse _namespace_name "AbuDhabiBusinessDay" |> NamespacedName
-
+    let AbuDhabiBusinessDay = _prefix "AbuDhabiBusinessDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AEAD"></see>
     /// </summary>
-    let AEAD = Namespaced_IRI.parse _namespace_name "AEAD" |> NamespacedName
-
+    let AEAD = _prefix "AEAD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AbuDhabiSettlementDay"></see>
     /// </summary>
-    let AbuDhabiSettlementDay =
-        Namespaced_IRI.parse _namespace_name "AbuDhabiSettlementDay" |> NamespacedName
-
+    let AbuDhabiSettlementDay = _prefix "AbuDhabiSettlementDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AEDU"></see>
     /// </summary>
-    let AEDU = Namespaced_IRI.parse _namespace_name "AEDU" |> NamespacedName
+    let AEDU = _prefix "AEDU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dubai"></see>
     /// </summary>
-    let Dubai = Namespaced_IRI.parse _namespace_name "Dubai" |> NamespacedName
+    let Dubai = _prefix "Dubai"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AMYE"></see>
     /// </summary>
-    let AMYE = Namespaced_IRI.parse _namespace_name "AMYE" |> NamespacedName
+    let AMYE = _prefix "AMYE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Yerevan"></see>
     /// </summary>
-    let Yerevan = Namespaced_IRI.parse _namespace_name "Yerevan" |> NamespacedName
+    let Yerevan = _prefix "Yerevan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AOLU"></see>
     /// </summary>
-    let AOLU = Namespaced_IRI.parse _namespace_name "AOLU" |> NamespacedName
+    let AOLU = _prefix "AOLU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Luanda"></see>
     /// </summary>
-    let Luanda = Namespaced_IRI.parse _namespace_name "Luanda" |> NamespacedName
+    let Luanda = _prefix "Luanda"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ARBA"></see>
     /// </summary>
-    let ARBA = Namespaced_IRI.parse _namespace_name "ARBA" |> NamespacedName
-
+    let ARBA = _prefix "ARBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Buenos_Aires"></see>
     /// </summary>
-    let Buenos_Aires =
-        Namespaced_IRI.parse _namespace_name "Buenos_Aires" |> NamespacedName
-
+    let Buenos_Aires = _prefix "Buenos_Aires"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ATVI"></see>
     /// </summary>
-    let ATVI = Namespaced_IRI.parse _namespace_name "ATVI" |> NamespacedName
+    let ATVI = _prefix "ATVI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Vienna"></see>
     /// </summary>
-    let Vienna = Namespaced_IRI.parse _namespace_name "Vienna" |> NamespacedName
+    let Vienna = _prefix "Vienna"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUAD"></see>
     /// </summary>
-    let AUAD = Namespaced_IRI.parse _namespace_name "AUAD" |> NamespacedName
+    let AUAD = _prefix "AUAD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Adelaide"></see>
     /// </summary>
-    let Adelaide = Namespaced_IRI.parse _namespace_name "Adelaide" |> NamespacedName
+    let Adelaide = _prefix "Adelaide"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUBR"></see>
     /// </summary>
-    let AUBR = Namespaced_IRI.parse _namespace_name "AUBR" |> NamespacedName
+    let AUBR = _prefix "AUBR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Brisbane"></see>
     /// </summary>
-    let Brisbane = Namespaced_IRI.parse _namespace_name "Brisbane" |> NamespacedName
+    let Brisbane = _prefix "Brisbane"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUCA"></see>
     /// </summary>
-    let AUCA = Namespaced_IRI.parse _namespace_name "AUCA" |> NamespacedName
+    let AUCA = _prefix "AUCA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Canberra"></see>
     /// </summary>
-    let Canberra = Namespaced_IRI.parse _namespace_name "Canberra" |> NamespacedName
+    let Canberra = _prefix "Canberra"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUDA"></see>
     /// </summary>
-    let AUDA = Namespaced_IRI.parse _namespace_name "AUDA" |> NamespacedName
+    let AUDA = _prefix "AUDA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Darwin"></see>
     /// </summary>
-    let Darwin = Namespaced_IRI.parse _namespace_name "Darwin" |> NamespacedName
+    let Darwin = _prefix "Darwin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUME"></see>
     /// </summary>
-    let AUME = Namespaced_IRI.parse _namespace_name "AUME" |> NamespacedName
+    let AUME = _prefix "AUME"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Melbourne"></see>
     /// </summary>
-    let Melbourne = Namespaced_IRI.parse _namespace_name "Melbourne" |> NamespacedName
+    let Melbourne = _prefix "Melbourne"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUPE"></see>
     /// </summary>
-    let AUPE = Namespaced_IRI.parse _namespace_name "AUPE" |> NamespacedName
+    let AUPE = _prefix "AUPE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Perth"></see>
     /// </summary>
-    let Perth = Namespaced_IRI.parse _namespace_name "Perth" |> NamespacedName
+    let Perth = _prefix "Perth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AUSY"></see>
     /// </summary>
-    let AUSY = Namespaced_IRI.parse _namespace_name "AUSY" |> NamespacedName
+    let AUSY = _prefix "AUSY"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sydney"></see>
     /// </summary>
-    let Sydney = Namespaced_IRI.parse _namespace_name "Sydney" |> NamespacedName
+    let Sydney = _prefix "Sydney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/AZBA"></see>
     /// </summary>
-    let AZBA = Namespaced_IRI.parse _namespace_name "AZBA" |> NamespacedName
+    let AZBA = _prefix "AZBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Baku"></see>
     /// </summary>
-    let Baku = Namespaced_IRI.parse _namespace_name "Baku" |> NamespacedName
+    let Baku = _prefix "Baku"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Aabenraa"></see>
     /// </summary>
-    let Aabenraa = Namespaced_IRI.parse _namespace_name "Aabenraa" |> NamespacedName
+    let Aabenraa = _prefix "Aabenraa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Aalborg"></see>
     /// </summary>
-    let Aalborg = Namespaced_IRI.parse _namespace_name "Aalborg" |> NamespacedName
+    let Aalborg = _prefix "Aalborg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Abha"></see>
     /// </summary>
-    let Abha = Namespaced_IRI.parse _namespace_name "Abha" |> NamespacedName
+    let Abha = _prefix "Abha"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Abidjan"></see>
     /// </summary>
-    let Abidjan = Namespaced_IRI.parse _namespace_name "Abidjan" |> NamespacedName
+    let Abidjan = _prefix "Abidjan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Abu_Dhabi"></see>
     /// </summary>
-    let Abu_Dhabi = Namespaced_IRI.parse _namespace_name "Abu_Dhabi" |> NamespacedName
+    let Abu_Dhabi = _prefix "Abu_Dhabi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Abuja"></see>
     /// </summary>
-    let Abuja = Namespaced_IRI.parse _namespace_name "Abuja" |> NamespacedName
+    let Abuja = _prefix "Abuja"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Accra"></see>
     /// </summary>
-    let Accra = Namespaced_IRI.parse _namespace_name "Accra" |> NamespacedName
-
+    let Accra = _prefix "Accra"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Addis_Ababa"></see>
     /// </summary>
-    let Addis_Ababa =
-        Namespaced_IRI.parse _namespace_name "Addis_Ababa" |> NamespacedName
-
+    let Addis_Ababa = _prefix "Addis_Ababa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Aden"></see>
     /// </summary>
-    let Aden = Namespaced_IRI.parse _namespace_name "Aden" |> NamespacedName
+    let Aden = _prefix "Aden"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ahmedabad"></see>
     /// </summary>
-    let Ahmedabad = Namespaced_IRI.parse _namespace_name "Ahmedabad" |> NamespacedName
+    let Ahmedabad = _prefix "Ahmedabad"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Aichi"></see>
     /// </summary>
-    let Aichi = Namespaced_IRI.parse _namespace_name "Aichi" |> NamespacedName
+    let Aichi = _prefix "Aichi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Alberta"></see>
     /// </summary>
-    let Alberta = Namespaced_IRI.parse _namespace_name "Alberta" |> NamespacedName
+    let Alberta = _prefix "Alberta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Algiers"></see>
     /// </summary>
-    let Algiers = Namespaced_IRI.parse _namespace_name "Algiers" |> NamespacedName
+    let Algiers = _prefix "Algiers"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Almaty"></see>
     /// </summary>
-    let Almaty = Namespaced_IRI.parse _namespace_name "Almaty" |> NamespacedName
+    let Almaty = _prefix "Almaty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Amman"></see>
     /// </summary>
-    let Amman = Namespaced_IRI.parse _namespace_name "Amman" |> NamespacedName
+    let Amman = _prefix "Amman"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Amsterdam"></see>
     /// </summary>
-    let Amsterdam = Namespaced_IRI.parse _namespace_name "Amsterdam" |> NamespacedName
+    let Amsterdam = _prefix "Amsterdam"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ankara"></see>
     /// </summary>
-    let Ankara = Namespaced_IRI.parse _namespace_name "Ankara" |> NamespacedName
-
+    let Ankara = _prefix "Ankara"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Antananarivo"></see>
     /// </summary>
-    let Antananarivo =
-        Namespaced_IRI.parse _namespace_name "Antananarivo" |> NamespacedName
-
+    let Antananarivo = _prefix "Antananarivo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Antwerpen"></see>
     /// </summary>
-    let Antwerpen = Namespaced_IRI.parse _namespace_name "Antwerpen" |> NamespacedName
+    let Antwerpen = _prefix "Antwerpen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Astana"></see>
     /// </summary>
-    let Astana = Namespaced_IRI.parse _namespace_name "Astana" |> NamespacedName
+    let Astana = _prefix "Astana"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Asuncion"></see>
     /// </summary>
-    let Asuncion = Namespaced_IRI.parse _namespace_name "Asuncion" |> NamespacedName
+    let Asuncion = _prefix "Asuncion"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Athens"></see>
     /// </summary>
-    let Athens = Namespaced_IRI.parse _namespace_name "Athens" |> NamespacedName
+    let Athens = _prefix "Athens"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Atlanta"></see>
     /// </summary>
-    let Atlanta = Namespaced_IRI.parse _namespace_name "Atlanta" |> NamespacedName
+    let Atlanta = _prefix "Atlanta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Auckland"></see>
     /// </summary>
-    let Auckland = Namespaced_IRI.parse _namespace_name "Auckland" |> NamespacedName
+    let Auckland = _prefix "Auckland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Aylesbury"></see>
     /// </summary>
-    let Aylesbury = Namespaced_IRI.parse _namespace_name "Aylesbury" |> NamespacedName
+    let Aylesbury = _prefix "Aylesbury"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BBBR"></see>
     /// </summary>
-    let BBBR = Namespaced_IRI.parse _namespace_name "BBBR" |> NamespacedName
+    let BBBR = _prefix "BBBR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bridgetown"></see>
     /// </summary>
-    let Bridgetown = Namespaced_IRI.parse _namespace_name "Bridgetown" |> NamespacedName
+    let Bridgetown = _prefix "Bridgetown"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BDDH"></see>
     /// </summary>
-    let BDDH = Namespaced_IRI.parse _namespace_name "BDDH" |> NamespacedName
+    let BDDH = _prefix "BDDH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dhaka"></see>
     /// </summary>
-    let Dhaka = Namespaced_IRI.parse _namespace_name "Dhaka" |> NamespacedName
+    let Dhaka = _prefix "Dhaka"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BEBR"></see>
     /// </summary>
-    let BEBR = Namespaced_IRI.parse _namespace_name "BEBR" |> NamespacedName
+    let BEBR = _prefix "BEBR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Brussels"></see>
     /// </summary>
-    let Brussels = Namespaced_IRI.parse _namespace_name "Brussels" |> NamespacedName
+    let Brussels = _prefix "Brussels"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BGSO"></see>
     /// </summary>
-    let BGSO = Namespaced_IRI.parse _namespace_name "BGSO" |> NamespacedName
+    let BGSO = _prefix "BGSO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sofia"></see>
     /// </summary>
-    let Sofia = Namespaced_IRI.parse _namespace_name "Sofia" |> NamespacedName
+    let Sofia = _prefix "Sofia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BHMA"></see>
     /// </summary>
-    let BHMA = Namespaced_IRI.parse _namespace_name "BHMA" |> NamespacedName
+    let BHMA = _prefix "BHMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Manama"></see>
     /// </summary>
-    let Manama = Namespaced_IRI.parse _namespace_name "Manama" |> NamespacedName
+    let Manama = _prefix "Manama"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BMHA"></see>
     /// </summary>
-    let BMHA = Namespaced_IRI.parse _namespace_name "BMHA" |> NamespacedName
+    let BMHA = _prefix "BMHA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hamilton"></see>
     /// </summary>
-    let Hamilton = Namespaced_IRI.parse _namespace_name "Hamilton" |> NamespacedName
+    let Hamilton = _prefix "Hamilton"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BNBS"></see>
     /// </summary>
-    let BNBS = Namespaced_IRI.parse _namespace_name "BNBS" |> NamespacedName
-
+    let BNBS = _prefix "BNBS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bandar_Seri_Begawan"></see>
     /// </summary>
-    let Bandar_Seri_Begawan =
-        Namespaced_IRI.parse _namespace_name "Bandar_Seri_Begawan" |> NamespacedName
-
+    let Bandar_Seri_Begawan = _prefix "Bandar_Seri_Begawan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BOLP"></see>
     /// </summary>
-    let BOLP = Namespaced_IRI.parse _namespace_name "BOLP" |> NamespacedName
+    let BOLP = _prefix "BOLP"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/La_Paz"></see>
     /// </summary>
-    let La_Paz = Namespaced_IRI.parse _namespace_name "La_Paz" |> NamespacedName
+    let La_Paz = _prefix "La_Paz"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BRBD"></see>
     /// </summary>
-    let BRBD = Namespaced_IRI.parse _namespace_name "BRBD" |> NamespacedName
-
+    let BRBD = _prefix "BRBD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BrazilBusinessDay"></see>
     /// </summary>
-    let BrazilBusinessDay =
-        Namespaced_IRI.parse _namespace_name "BrazilBusinessDay" |> NamespacedName
-
+    let BrazilBusinessDay = _prefix "BrazilBusinessDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BRBR"></see>
     /// </summary>
-    let BRBR = Namespaced_IRI.parse _namespace_name "BRBR" |> NamespacedName
+    let BRBR = _prefix "BRBR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Brasilia"></see>
     /// </summary>
-    let Brasilia = Namespaced_IRI.parse _namespace_name "Brasilia" |> NamespacedName
+    let Brasilia = _prefix "Brasilia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BRRJ"></see>
     /// </summary>
-    let BRRJ = Namespaced_IRI.parse _namespace_name "BRRJ" |> NamespacedName
-
+    let BRRJ = _prefix "BRRJ"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rio_de_Janeiro"></see>
     /// </summary>
-    let Rio_de_Janeiro =
-        Namespaced_IRI.parse _namespace_name "Rio_de_Janeiro" |> NamespacedName
-
+    let Rio_de_Janeiro = _prefix "Rio_de_Janeiro"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BRSP"></see>
     /// </summary>
-    let BRSP = Namespaced_IRI.parse _namespace_name "BRSP" |> NamespacedName
+    let BRSP = _prefix "BRSP"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sao_Paulo"></see>
     /// </summary>
-    let Sao_Paulo = Namespaced_IRI.parse _namespace_name "Sao_Paulo" |> NamespacedName
+    let Sao_Paulo = _prefix "Sao_Paulo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BSNA"></see>
     /// </summary>
-    let BSNA = Namespaced_IRI.parse _namespace_name "BSNA" |> NamespacedName
+    let BSNA = _prefix "BSNA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nassau"></see>
     /// </summary>
-    let Nassau = Namespaced_IRI.parse _namespace_name "Nassau" |> NamespacedName
+    let Nassau = _prefix "Nassau"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BWGA"></see>
     /// </summary>
-    let BWGA = Namespaced_IRI.parse _namespace_name "BWGA" |> NamespacedName
+    let BWGA = _prefix "BWGA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Gaborone"></see>
     /// </summary>
-    let Gaborone = Namespaced_IRI.parse _namespace_name "Gaborone" |> NamespacedName
+    let Gaborone = _prefix "Gaborone"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/BYMI"></see>
     /// </summary>
-    let BYMI = Namespaced_IRI.parse _namespace_name "BYMI" |> NamespacedName
+    let BYMI = _prefix "BYMI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Minsk"></see>
     /// </summary>
-    let Minsk = Namespaced_IRI.parse _namespace_name "Minsk" |> NamespacedName
+    let Minsk = _prefix "Minsk"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Baghdad"></see>
     /// </summary>
-    let Baghdad = Namespaced_IRI.parse _namespace_name "Baghdad" |> NamespacedName
+    let Baghdad = _prefix "Baghdad"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bangalore"></see>
     /// </summary>
-    let Bangalore = Namespaced_IRI.parse _namespace_name "Bangalore" |> NamespacedName
+    let Bangalore = _prefix "Bangalore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bangkok"></see>
     /// </summary>
-    let Bangkok = Namespaced_IRI.parse _namespace_name "Bangkok" |> NamespacedName
+    let Bangkok = _prefix "Bangkok"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Banja_Luka"></see>
     /// </summary>
-    let Banja_Luka = Namespaced_IRI.parse _namespace_name "Banja_Luka" |> NamespacedName
+    let Banja_Luka = _prefix "Banja_Luka"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Banjul"></see>
     /// </summary>
-    let Banjul = Namespaced_IRI.parse _namespace_name "Banjul" |> NamespacedName
+    let Banjul = _prefix "Banjul"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Barcelona"></see>
     /// </summary>
-    let Barcelona = Namespaced_IRI.parse _namespace_name "Barcelona" |> NamespacedName
+    let Barcelona = _prefix "Barcelona"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Basel"></see>
     /// </summary>
-    let Basel = Namespaced_IRI.parse _namespace_name "Basel" |> NamespacedName
+    let Basel = _prefix "Basel"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Basseterre"></see>
     /// </summary>
-    let Basseterre = Namespaced_IRI.parse _namespace_name "Basseterre" |> NamespacedName
+    let Basseterre = _prefix "Basseterre"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bedminster"></see>
     /// </summary>
-    let Bedminster = Namespaced_IRI.parse _namespace_name "Bedminster" |> NamespacedName
+    let Bedminster = _prefix "Bedminster"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Beijing"></see>
     /// </summary>
-    let Beijing = Namespaced_IRI.parse _namespace_name "Beijing" |> NamespacedName
+    let Beijing = _prefix "Beijing"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Beirut"></see>
     /// </summary>
-    let Beirut = Namespaced_IRI.parse _namespace_name "Beirut" |> NamespacedName
+    let Beirut = _prefix "Beirut"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Belgrade"></see>
     /// </summary>
-    let Belgrade = Namespaced_IRI.parse _namespace_name "Belgrade" |> NamespacedName
+    let Belgrade = _prefix "Belgrade"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bergamo"></see>
     /// </summary>
-    let Bergamo = Namespaced_IRI.parse _namespace_name "Bergamo" |> NamespacedName
+    let Bergamo = _prefix "Bergamo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bergen"></see>
     /// </summary>
-    let Bergen = Namespaced_IRI.parse _namespace_name "Bergen" |> NamespacedName
+    let Bergen = _prefix "Bergen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Berlin"></see>
     /// </summary>
-    let Berlin = Namespaced_IRI.parse _namespace_name "Berlin" |> NamespacedName
+    let Berlin = _prefix "Berlin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bermuda"></see>
     /// </summary>
-    let Bermuda = Namespaced_IRI.parse _namespace_name "Bermuda" |> NamespacedName
+    let Bermuda = _prefix "Bermuda"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Berne"></see>
     /// </summary>
-    let Berne = Namespaced_IRI.parse _namespace_name "Berne" |> NamespacedName
+    let Berne = _prefix "Berne"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Biella"></see>
     /// </summary>
-    let Biella = Namespaced_IRI.parse _namespace_name "Biella" |> NamespacedName
+    let Biella = _prefix "Biella"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bilbao"></see>
     /// </summary>
-    let Bilbao = Namespaced_IRI.parse _namespace_name "Bilbao" |> NamespacedName
+    let Bilbao = _prefix "Bilbao"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Birkirkara"></see>
     /// </summary>
-    let Birkirkara = Namespaced_IRI.parse _namespace_name "Birkirkara" |> NamespacedName
+    let Birkirkara = _prefix "Birkirkara"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bishkek"></see>
     /// </summary>
-    let Bishkek = Namespaced_IRI.parse _namespace_name "Bishkek" |> NamespacedName
+    let Bishkek = _prefix "Bishkek"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Blantyre"></see>
     /// </summary>
-    let Blantyre = Namespaced_IRI.parse _namespace_name "Blantyre" |> NamespacedName
+    let Blantyre = _prefix "Blantyre"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Boca_Raton"></see>
     /// </summary>
-    let Boca_Raton = Namespaced_IRI.parse _namespace_name "Boca_Raton" |> NamespacedName
+    let Boca_Raton = _prefix "Boca_Raton"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bogota"></see>
     /// </summary>
-    let Bogota = Namespaced_IRI.parse _namespace_name "Bogota" |> NamespacedName
+    let Bogota = _prefix "Bogota"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bologna"></see>
     /// </summary>
-    let Bologna = Namespaced_IRI.parse _namespace_name "Bologna" |> NamespacedName
+    let Bologna = _prefix "Bologna"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Boston"></see>
     /// </summary>
-    let Boston = Namespaced_IRI.parse _namespace_name "Boston" |> NamespacedName
+    let Boston = _prefix "Boston"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bradford"></see>
     /// </summary>
-    let Bradford = Namespaced_IRI.parse _namespace_name "Bradford" |> NamespacedName
+    let Bradford = _prefix "Bradford"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bratislava"></see>
     /// </summary>
-    let Bratislava = Namespaced_IRI.parse _namespace_name "Bratislava" |> NamespacedName
+    let Bratislava = _prefix "Bratislava"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bremen"></see>
     /// </summary>
-    let Bremen = Namespaced_IRI.parse _namespace_name "Bremen" |> NamespacedName
+    let Bremen = _prefix "Bremen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Brno"></see>
     /// </summary>
-    let Brno = Namespaced_IRI.parse _namespace_name "Brno" |> NamespacedName
-
+    let Brno = _prefix "Brno"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bryanston_Sandton"></see>
     /// </summary>
-    let Bryanston_Sandton =
-        Namespaced_IRI.parse _namespace_name "Bryanston_Sandton" |> NamespacedName
-
+    let Bryanston_Sandton = _prefix "Bryanston_Sandton"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Bucharest"></see>
     /// </summary>
-    let Bucharest = Namespaced_IRI.parse _namespace_name "Bucharest" |> NamespacedName
+    let Bucharest = _prefix "Bucharest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Budaors"></see>
     /// </summary>
-    let Budaors = Namespaced_IRI.parse _namespace_name "Budaors" |> NamespacedName
+    let Budaors = _prefix "Budaors"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Budapest"></see>
     /// </summary>
-    let Budapest = Namespaced_IRI.parse _namespace_name "Budapest" |> NamespacedName
+    let Budapest = _prefix "Budapest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CACL"></see>
     /// </summary>
-    let CACL = Namespaced_IRI.parse _namespace_name "CACL" |> NamespacedName
+    let CACL = _prefix "CACL"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Calgary"></see>
     /// </summary>
-    let Calgary = Namespaced_IRI.parse _namespace_name "Calgary" |> NamespacedName
+    let Calgary = _prefix "Calgary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CAFR"></see>
     /// </summary>
-    let CAFR = Namespaced_IRI.parse _namespace_name "CAFR" |> NamespacedName
-
+    let CAFR = _prefix "CAFR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Fredericton"></see>
     /// </summary>
-    let Fredericton =
-        Namespaced_IRI.parse _namespace_name "Fredericton" |> NamespacedName
-
+    let Fredericton = _prefix "Fredericton"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CAMO"></see>
     /// </summary>
-    let CAMO = Namespaced_IRI.parse _namespace_name "CAMO" |> NamespacedName
+    let CAMO = _prefix "CAMO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Montreal"></see>
     /// </summary>
-    let Montreal = Namespaced_IRI.parse _namespace_name "Montreal" |> NamespacedName
+    let Montreal = _prefix "Montreal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CAOT"></see>
     /// </summary>
-    let CAOT = Namespaced_IRI.parse _namespace_name "CAOT" |> NamespacedName
+    let CAOT = _prefix "CAOT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ottawa"></see>
     /// </summary>
-    let Ottawa = Namespaced_IRI.parse _namespace_name "Ottawa" |> NamespacedName
+    let Ottawa = _prefix "Ottawa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CATO"></see>
     /// </summary>
-    let CATO = Namespaced_IRI.parse _namespace_name "CATO" |> NamespacedName
+    let CATO = _prefix "CATO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Toronto"></see>
     /// </summary>
-    let Toronto = Namespaced_IRI.parse _namespace_name "Toronto" |> NamespacedName
+    let Toronto = _prefix "Toronto"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CAVA"></see>
     /// </summary>
-    let CAVA = Namespaced_IRI.parse _namespace_name "CAVA" |> NamespacedName
+    let CAVA = _prefix "CAVA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Vancouver"></see>
     /// </summary>
-    let Vancouver = Namespaced_IRI.parse _namespace_name "Vancouver" |> NamespacedName
+    let Vancouver = _prefix "Vancouver"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CAWI"></see>
     /// </summary>
-    let CAWI = Namespaced_IRI.parse _namespace_name "CAWI" |> NamespacedName
+    let CAWI = _prefix "CAWI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Winnipeg"></see>
     /// </summary>
-    let Winnipeg = Namespaced_IRI.parse _namespace_name "Winnipeg" |> NamespacedName
+    let Winnipeg = _prefix "Winnipeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CHBA"></see>
     /// </summary>
-    let CHBA = Namespaced_IRI.parse _namespace_name "CHBA" |> NamespacedName
+    let CHBA = _prefix "CHBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CHGE"></see>
     /// </summary>
-    let CHGE = Namespaced_IRI.parse _namespace_name "CHGE" |> NamespacedName
+    let CHGE = _prefix "CHGE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Geneva"></see>
     /// </summary>
-    let Geneva = Namespaced_IRI.parse _namespace_name "Geneva" |> NamespacedName
+    let Geneva = _prefix "Geneva"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CHZU"></see>
     /// </summary>
-    let CHZU = Namespaced_IRI.parse _namespace_name "CHZU" |> NamespacedName
+    let CHZU = _prefix "CHZU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Zurich"></see>
     /// </summary>
-    let Zurich = Namespaced_IRI.parse _namespace_name "Zurich" |> NamespacedName
+    let Zurich = _prefix "Zurich"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CIAB"></see>
     /// </summary>
-    let CIAB = Namespaced_IRI.parse _namespace_name "CIAB" |> NamespacedName
+    let CIAB = _prefix "CIAB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CLSA"></see>
     /// </summary>
-    let CLSA = Namespaced_IRI.parse _namespace_name "CLSA" |> NamespacedName
+    let CLSA = _prefix "CLSA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Santiago"></see>
     /// </summary>
-    let Santiago = Namespaced_IRI.parse _namespace_name "Santiago" |> NamespacedName
+    let Santiago = _prefix "Santiago"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CMYA"></see>
     /// </summary>
-    let CMYA = Namespaced_IRI.parse _namespace_name "CMYA" |> NamespacedName
+    let CMYA = _prefix "CMYA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Yaounde"></see>
     /// </summary>
-    let Yaounde = Namespaced_IRI.parse _namespace_name "Yaounde" |> NamespacedName
+    let Yaounde = _prefix "Yaounde"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CNBE"></see>
     /// </summary>
-    let CNBE = Namespaced_IRI.parse _namespace_name "CNBE" |> NamespacedName
+    let CNBE = _prefix "CNBE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CNSH"></see>
     /// </summary>
-    let CNSH = Namespaced_IRI.parse _namespace_name "CNSH" |> NamespacedName
+    let CNSH = _prefix "CNSH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Shanghai"></see>
     /// </summary>
-    let Shanghai = Namespaced_IRI.parse _namespace_name "Shanghai" |> NamespacedName
+    let Shanghai = _prefix "Shanghai"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/COBO"></see>
     /// </summary>
-    let COBO = Namespaced_IRI.parse _namespace_name "COBO" |> NamespacedName
+    let COBO = _prefix "COBO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CRSJ"></see>
     /// </summary>
-    let CRSJ = Namespaced_IRI.parse _namespace_name "CRSJ" |> NamespacedName
+    let CRSJ = _prefix "CRSJ"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Jose"></see>
     /// </summary>
-    let San_Jose = Namespaced_IRI.parse _namespace_name "San_Jose" |> NamespacedName
+    let San_Jose = _prefix "San_Jose"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CWWI"></see>
     /// </summary>
-    let CWWI = Namespaced_IRI.parse _namespace_name "CWWI" |> NamespacedName
+    let CWWI = _prefix "CWWI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Willemstad"></see>
     /// </summary>
-    let Willemstad = Namespaced_IRI.parse _namespace_name "Willemstad" |> NamespacedName
+    let Willemstad = _prefix "Willemstad"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CYNI"></see>
     /// </summary>
-    let CYNI = Namespaced_IRI.parse _namespace_name "CYNI" |> NamespacedName
+    let CYNI = _prefix "CYNI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nicosia"></see>
     /// </summary>
-    let Nicosia = Namespaced_IRI.parse _namespace_name "Nicosia" |> NamespacedName
+    let Nicosia = _prefix "Nicosia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/CZPR"></see>
     /// </summary>
-    let CZPR = Namespaced_IRI.parse _namespace_name "CZPR" |> NamespacedName
+    let CZPR = _prefix "CZPR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Prague"></see>
     /// </summary>
-    let Prague = Namespaced_IRI.parse _namespace_name "Prague" |> NamespacedName
+    let Prague = _prefix "Prague"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Cairo"></see>
     /// </summary>
-    let Cairo = Namespaced_IRI.parse _namespace_name "Cairo" |> NamespacedName
+    let Cairo = _prefix "Cairo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Calcutta"></see>
     /// </summary>
-    let Calcutta = Namespaced_IRI.parse _namespace_name "Calcutta" |> NamespacedName
+    let Calcutta = _prefix "Calcutta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Cape_Town"></see>
     /// </summary>
-    let Cape_Town = Namespaced_IRI.parse _namespace_name "Cape_Town" |> NamespacedName
+    let Cape_Town = _prefix "Cape_Town"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Caracas"></see>
     /// </summary>
-    let Caracas = Namespaced_IRI.parse _namespace_name "Caracas" |> NamespacedName
+    let Caracas = _prefix "Caracas"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Casablanca"></see>
     /// </summary>
-    let Casablanca = Namespaced_IRI.parse _namespace_name "Casablanca" |> NamespacedName
+    let Casablanca = _prefix "Casablanca"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Charlotte"></see>
     /// </summary>
-    let Charlotte = Namespaced_IRI.parse _namespace_name "Charlotte" |> NamespacedName
+    let Charlotte = _prefix "Charlotte"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Chatham"></see>
     /// </summary>
-    let Chatham = Namespaced_IRI.parse _namespace_name "Chatham" |> NamespacedName
+    let Chatham = _prefix "Chatham"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Chennai"></see>
     /// </summary>
-    let Chennai = Namespaced_IRI.parse _namespace_name "Chennai" |> NamespacedName
+    let Chennai = _prefix "Chennai"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Chicago"></see>
     /// </summary>
-    let Chicago = Namespaced_IRI.parse _namespace_name "Chicago" |> NamespacedName
+    let Chicago = _prefix "Chicago"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Chisinau"></see>
     /// </summary>
-    let Chisinau = Namespaced_IRI.parse _namespace_name "Chisinau" |> NamespacedName
+    let Chisinau = _prefix "Chisinau"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Chittagong"></see>
     /// </summary>
-    let Chittagong = Namespaced_IRI.parse _namespace_name "Chittagong" |> NamespacedName
-
+    let Chittagong = _prefix "Chittagong"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Chiyoda-ku"></see>
     /// </summary>
-    let ``Chiyoda-ku`` =
-        Namespaced_IRI.parse _namespace_name "Chiyoda-ku" |> NamespacedName
-
+    let ``Chiyoda-ku`` = _prefix "Chiyoda-ku"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Cluj_Napoca"></see>
     /// </summary>
-    let Cluj_Napoca =
-        Namespaced_IRI.parse _namespace_name "Cluj_Napoca" |> NamespacedName
-
+    let Cluj_Napoca = _prefix "Cluj_Napoca"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Cologne"></see>
     /// </summary>
-    let Cologne = Namespaced_IRI.parse _namespace_name "Cologne" |> NamespacedName
+    let Cologne = _prefix "Cologne"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Colombo"></see>
     /// </summary>
-    let Colombo = Namespaced_IRI.parse _namespace_name "Colombo" |> NamespacedName
+    let Colombo = _prefix "Colombo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Conakry"></see>
     /// </summary>
-    let Conakry = Namespaced_IRI.parse _namespace_name "Conakry" |> NamespacedName
+    let Conakry = _prefix "Conakry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Copenhagen"></see>
     /// </summary>
-    let Copenhagen = Namespaced_IRI.parse _namespace_name "Copenhagen" |> NamespacedName
+    let Copenhagen = _prefix "Copenhagen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Cordoba"></see>
     /// </summary>
-    let Cordoba = Namespaced_IRI.parse _namespace_name "Cordoba" |> NamespacedName
+    let Cordoba = _prefix "Cordoba"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Corrientes"></see>
     /// </summary>
-    let Corrientes = Namespaced_IRI.parse _namespace_name "Corrientes" |> NamespacedName
+    let Corrientes = _prefix "Corrientes"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Curitiba"></see>
     /// </summary>
-    let Curitiba = Namespaced_IRI.parse _namespace_name "Curitiba" |> NamespacedName
+    let Curitiba = _prefix "Curitiba"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DECO"></see>
     /// </summary>
-    let DECO = Namespaced_IRI.parse _namespace_name "DECO" |> NamespacedName
+    let DECO = _prefix "DECO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEDU"></see>
     /// </summary>
-    let DEDU = Namespaced_IRI.parse _namespace_name "DEDU" |> NamespacedName
+    let DEDU = _prefix "DEDU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dusseldorf"></see>
     /// </summary>
-    let Dusseldorf = Namespaced_IRI.parse _namespace_name "Dusseldorf" |> NamespacedName
+    let Dusseldorf = _prefix "Dusseldorf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEFR"></see>
     /// </summary>
-    let DEFR = Namespaced_IRI.parse _namespace_name "DEFR" |> NamespacedName
+    let DEFR = _prefix "DEFR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Frankfurt"></see>
     /// </summary>
-    let Frankfurt = Namespaced_IRI.parse _namespace_name "Frankfurt" |> NamespacedName
+    let Frankfurt = _prefix "Frankfurt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEHA"></see>
     /// </summary>
-    let DEHA = Namespaced_IRI.parse _namespace_name "DEHA" |> NamespacedName
+    let DEHA = _prefix "DEHA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hannover"></see>
     /// </summary>
-    let Hannover = Namespaced_IRI.parse _namespace_name "Hannover" |> NamespacedName
+    let Hannover = _prefix "Hannover"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEHH"></see>
     /// </summary>
-    let DEHH = Namespaced_IRI.parse _namespace_name "DEHH" |> NamespacedName
+    let DEHH = _prefix "DEHH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hamburg"></see>
     /// </summary>
-    let Hamburg = Namespaced_IRI.parse _namespace_name "Hamburg" |> NamespacedName
+    let Hamburg = _prefix "Hamburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DELE"></see>
     /// </summary>
-    let DELE = Namespaced_IRI.parse _namespace_name "DELE" |> NamespacedName
+    let DELE = _prefix "DELE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Leipzig"></see>
     /// </summary>
-    let Leipzig = Namespaced_IRI.parse _namespace_name "Leipzig" |> NamespacedName
+    let Leipzig = _prefix "Leipzig"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEMA"></see>
     /// </summary>
-    let DEMA = Namespaced_IRI.parse _namespace_name "DEMA" |> NamespacedName
+    let DEMA = _prefix "DEMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mainz"></see>
     /// </summary>
-    let Mainz = Namespaced_IRI.parse _namespace_name "Mainz" |> NamespacedName
+    let Mainz = _prefix "Mainz"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEMU"></see>
     /// </summary>
-    let DEMU = Namespaced_IRI.parse _namespace_name "DEMU" |> NamespacedName
+    let DEMU = _prefix "DEMU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Munich"></see>
     /// </summary>
-    let Munich = Namespaced_IRI.parse _namespace_name "Munich" |> NamespacedName
+    let Munich = _prefix "Munich"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DEST"></see>
     /// </summary>
-    let DEST = Namespaced_IRI.parse _namespace_name "DEST" |> NamespacedName
+    let DEST = _prefix "DEST"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Stuttgart"></see>
     /// </summary>
-    let Stuttgart = Namespaced_IRI.parse _namespace_name "Stuttgart" |> NamespacedName
+    let Stuttgart = _prefix "Stuttgart"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DKCO"></see>
     /// </summary>
-    let DKCO = Namespaced_IRI.parse _namespace_name "DKCO" |> NamespacedName
+    let DKCO = _prefix "DKCO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DOSD"></see>
     /// </summary>
-    let DOSD = Namespaced_IRI.parse _namespace_name "DOSD" |> NamespacedName
-
+    let DOSD = _prefix "DOSD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Santo_Domingo"></see>
     /// </summary>
-    let Santo_Domingo =
-        Namespaced_IRI.parse _namespace_name "Santo_Domingo" |> NamespacedName
-
+    let Santo_Domingo = _prefix "Santo_Domingo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/DZAL"></see>
     /// </summary>
-    let DZAL = Namespaced_IRI.parse _namespace_name "DZAL" |> NamespacedName
+    let DZAL = _prefix "DZAL"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dakar"></see>
     /// </summary>
-    let Dakar = Namespaced_IRI.parse _namespace_name "Dakar" |> NamespacedName
+    let Dakar = _prefix "Dakar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dalian"></see>
     /// </summary>
-    let Dalian = Namespaced_IRI.parse _namespace_name "Dalian" |> NamespacedName
+    let Dalian = _prefix "Dalian"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dallas"></see>
     /// </summary>
-    let Dallas = Namespaced_IRI.parse _namespace_name "Dallas" |> NamespacedName
+    let Dallas = _prefix "Dallas"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Damascus"></see>
     /// </summary>
-    let Damascus = Namespaced_IRI.parse _namespace_name "Damascus" |> NamespacedName
-
+    let Damascus = _prefix "Damascus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dar_es_Salaam"></see>
     /// </summary>
-    let Dar_es_Salaam =
-        Namespaced_IRI.parse _namespace_name "Dar_es_Salaam" |> NamespacedName
-
+    let Dar_es_Salaam = _prefix "Dar_es_Salaam"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Denver"></see>
     /// </summary>
-    let Denver = Namespaced_IRI.parse _namespace_name "Denver" |> NamespacedName
+    let Denver = _prefix "Denver"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Detroit"></see>
     /// </summary>
-    let Detroit = Namespaced_IRI.parse _namespace_name "Detroit" |> NamespacedName
-
+    let Detroit = _prefix "Detroit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dnipropetrovsk"></see>
     /// </summary>
-    let Dnipropetrovsk =
-        Namespaced_IRI.parse _namespace_name "Dnipropetrovsk" |> NamespacedName
-
+    let Dnipropetrovsk = _prefix "Dnipropetrovsk"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dodoma"></see>
     /// </summary>
-    let Dodoma = Namespaced_IRI.parse _namespace_name "Dodoma" |> NamespacedName
+    let Dodoma = _prefix "Dodoma"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Doha"></see>
     /// </summary>
-    let Doha = Namespaced_IRI.parse _namespace_name "Doha" |> NamespacedName
+    let Doha = _prefix "Doha"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Douala"></see>
     /// </summary>
-    let Douala = Namespaced_IRI.parse _namespace_name "Douala" |> NamespacedName
-
+    let Douala = _prefix "Douala"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Downers_Grove"></see>
     /// </summary>
-    let Downers_Grove =
-        Namespaced_IRI.parse _namespace_name "Downers_Grove" |> NamespacedName
-
+    let Downers_Grove = _prefix "Downers_Grove"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Dublin"></see>
     /// </summary>
-    let Dublin = Namespaced_IRI.parse _namespace_name "Dublin" |> NamespacedName
+    let Dublin = _prefix "Dublin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ECGU"></see>
     /// </summary>
-    let ECGU = Namespaced_IRI.parse _namespace_name "ECGU" |> NamespacedName
+    let ECGU = _prefix "ECGU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Guayaquil"></see>
     /// </summary>
-    let Guayaquil = Namespaced_IRI.parse _namespace_name "Guayaquil" |> NamespacedName
+    let Guayaquil = _prefix "Guayaquil"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/EETA"></see>
     /// </summary>
-    let EETA = Namespaced_IRI.parse _namespace_name "EETA" |> NamespacedName
+    let EETA = _prefix "EETA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tallinn"></see>
     /// </summary>
-    let Tallinn = Namespaced_IRI.parse _namespace_name "Tallinn" |> NamespacedName
+    let Tallinn = _prefix "Tallinn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/EGCA"></see>
     /// </summary>
-    let EGCA = Namespaced_IRI.parse _namespace_name "EGCA" |> NamespacedName
+    let EGCA = _prefix "EGCA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ESAS"></see>
     /// </summary>
-    let ESAS = Namespaced_IRI.parse _namespace_name "ESAS" |> NamespacedName
-
+    let ESAS = _prefix "ESAS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ESASSettlementDay"></see>
     /// </summary>
-    let ESASSettlementDay =
-        Namespaced_IRI.parse _namespace_name "ESASSettlementDay" |> NamespacedName
-
+    let ESASSettlementDay = _prefix "ESASSettlementDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Wellington"></see>
     /// </summary>
-    let Wellington = Namespaced_IRI.parse _namespace_name "Wellington" |> NamespacedName
+    let Wellington = _prefix "Wellington"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ESBA"></see>
     /// </summary>
-    let ESBA = Namespaced_IRI.parse _namespace_name "ESBA" |> NamespacedName
+    let ESBA = _prefix "ESBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ESMA"></see>
     /// </summary>
-    let ESMA = Namespaced_IRI.parse _namespace_name "ESMA" |> NamespacedName
+    let ESMA = _prefix "ESMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Madrid"></see>
     /// </summary>
-    let Madrid = Namespaced_IRI.parse _namespace_name "Madrid" |> NamespacedName
+    let Madrid = _prefix "Madrid"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ESSS"></see>
     /// </summary>
-    let ESSS = Namespaced_IRI.parse _namespace_name "ESSS" |> NamespacedName
-
+    let ESSS = _prefix "ESSS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Sebastian"></see>
     /// </summary>
-    let San_Sebastian =
-        Namespaced_IRI.parse _namespace_name "San_Sebastian" |> NamespacedName
-
+    let San_Sebastian = _prefix "San_Sebastian"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ETAA"></see>
     /// </summary>
-    let ETAA = Namespaced_IRI.parse _namespace_name "ETAA" |> NamespacedName
+    let ETAA = _prefix "ETAA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/EUTA"></see>
     /// </summary>
-    let EUTA = Namespaced_IRI.parse _namespace_name "EUTA" |> NamespacedName
-
+    let EUTA = _prefix "EUTA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TARGETSettlementDay"></see>
     /// </summary>
-    let TARGETSettlementDay =
-        Namespaced_IRI.parse _namespace_name "TARGETSettlementDay" |> NamespacedName
-
+    let TARGETSettlementDay = _prefix "TARGETSettlementDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ebene"></see>
     /// </summary>
-    let Ebene = Namespaced_IRI.parse _namespace_name "Ebene" |> NamespacedName
-
+    let Ebene = _prefix "Ebene"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Eden_Island"></see>
     /// </summary>
-    let Eden_Island =
-        Namespaced_IRI.parse _namespace_name "Eden_Island" |> NamespacedName
-
+    let Eden_Island = _prefix "Eden_Island"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Edinburgh"></see>
     /// </summary>
-    let Edinburgh = Namespaced_IRI.parse _namespace_name "Edinburgh" |> NamespacedName
-
+    let Edinburgh = _prefix "Edinburgh"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ekaterinburg"></see>
     /// </summary>
-    let Ekaterinburg =
-        Namespaced_IRI.parse _namespace_name "Ekaterinburg" |> NamespacedName
-
+    let Ekaterinburg = _prefix "Ekaterinburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/El_Salvador"></see>
     /// </summary>
-    let El_Salvador =
-        Namespaced_IRI.parse _namespace_name "El_Salvador" |> NamespacedName
-
+    let El_Salvador = _prefix "El_Salvador"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Esch-sur-alzette"></see>
     /// </summary>
-    let ``Esch-sur-alzette`` =
-        Namespaced_IRI.parse _namespace_name "Esch-sur-alzette" |> NamespacedName
-
+    let ``Esch-sur-alzette`` = _prefix "Esch-sur-alzette"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Eschborn"></see>
     /// </summary>
-    let Eschborn = Namespaced_IRI.parse _namespace_name "Eschborn" |> NamespacedName
-
+    let Eschborn = _prefix "Eschborn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Espirito_Santo"></see>
     /// </summary>
-    let Espirito_Santo =
-        Namespaced_IRI.parse _namespace_name "Espirito_Santo" |> NamespacedName
-
+    let Espirito_Santo = _prefix "Espirito_Santo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Espoo"></see>
     /// </summary>
-    let Espoo = Namespaced_IRI.parse _namespace_name "Espoo" |> NamespacedName
+    let Espoo = _prefix "Espoo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/FIHE"></see>
     /// </summary>
-    let FIHE = Namespaced_IRI.parse _namespace_name "FIHE" |> NamespacedName
+    let FIHE = _prefix "FIHE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Helsinki"></see>
     /// </summary>
-    let Helsinki = Namespaced_IRI.parse _namespace_name "Helsinki" |> NamespacedName
+    let Helsinki = _prefix "Helsinki"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/FRPA"></see>
     /// </summary>
-    let FRPA = Namespaced_IRI.parse _namespace_name "FRPA" |> NamespacedName
+    let FRPA = _prefix "FRPA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Paris"></see>
     /// </summary>
-    let Paris = Namespaced_IRI.parse _namespace_name "Paris" |> NamespacedName
+    let Paris = _prefix "Paris"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Fiac"></see>
     /// </summary>
-    let Fiac = Namespaced_IRI.parse _namespace_name "Fiac" |> NamespacedName
+    let Fiac = _prefix "Fiac"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Firenze"></see>
     /// </summary>
-    let Firenze = Namespaced_IRI.parse _namespace_name "Firenze" |> NamespacedName
+    let Firenze = _prefix "Firenze"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Florence"></see>
     /// </summary>
-    let Florence = Namespaced_IRI.parse _namespace_name "Florence" |> NamespacedName
+    let Florence = _prefix "Florence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Freetown"></see>
     /// </summary>
-    let Freetown = Namespaced_IRI.parse _namespace_name "Freetown" |> NamespacedName
+    let Freetown = _prefix "Freetown"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Fukuoka"></see>
     /// </summary>
-    let Fukuoka = Namespaced_IRI.parse _namespace_name "Fukuoka" |> NamespacedName
+    let Fukuoka = _prefix "Fukuoka"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GBED"></see>
     /// </summary>
-    let GBED = Namespaced_IRI.parse _namespace_name "GBED" |> NamespacedName
+    let GBED = _prefix "GBED"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GBLO"></see>
     /// </summary>
-    let GBLO = Namespaced_IRI.parse _namespace_name "GBLO" |> NamespacedName
+    let GBLO = _prefix "GBLO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/London"></see>
     /// </summary>
-    let London = Namespaced_IRI.parse _namespace_name "London" |> NamespacedName
+    let London = _prefix "London"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GETB"></see>
     /// </summary>
-    let GETB = Namespaced_IRI.parse _namespace_name "GETB" |> NamespacedName
+    let GETB = _prefix "GETB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tbilisi"></see>
     /// </summary>
-    let Tbilisi = Namespaced_IRI.parse _namespace_name "Tbilisi" |> NamespacedName
+    let Tbilisi = _prefix "Tbilisi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GGSP"></see>
     /// </summary>
-    let GGSP = Namespaced_IRI.parse _namespace_name "GGSP" |> NamespacedName
-
+    let GGSP = _prefix "GGSP"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Saint_Peter_Port"></see>
     /// </summary>
-    let Saint_Peter_Port =
-        Namespaced_IRI.parse _namespace_name "Saint_Peter_Port" |> NamespacedName
-
+    let Saint_Peter_Port = _prefix "Saint_Peter_Port"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GHAC"></see>
     /// </summary>
-    let GHAC = Namespaced_IRI.parse _namespace_name "GHAC" |> NamespacedName
+    let GHAC = _prefix "GHAC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GMBA"></see>
     /// </summary>
-    let GMBA = Namespaced_IRI.parse _namespace_name "GMBA" |> NamespacedName
+    let GMBA = _prefix "GMBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GNCO"></see>
     /// </summary>
-    let GNCO = Namespaced_IRI.parse _namespace_name "GNCO" |> NamespacedName
+    let GNCO = _prefix "GNCO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GRAT"></see>
     /// </summary>
-    let GRAT = Namespaced_IRI.parse _namespace_name "GRAT" |> NamespacedName
+    let GRAT = _prefix "GRAT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/GUGC"></see>
     /// </summary>
-    let GUGC = Namespaced_IRI.parse _namespace_name "GUGC" |> NamespacedName
-
+    let GUGC = _prefix "GUGC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Guatemala_City"></see>
     /// </summary>
-    let Guatemala_City =
-        Namespaced_IRI.parse _namespace_name "Guatemala_City" |> NamespacedName
-
+    let Guatemala_City = _prefix "Guatemala_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Gandhinagar"></see>
     /// </summary>
-    let Gandhinagar =
-        Namespaced_IRI.parse _namespace_name "Gandhinagar" |> NamespacedName
-
+    let Gandhinagar = _prefix "Gandhinagar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Genova"></see>
     /// </summary>
-    let Genova = Namespaced_IRI.parse _namespace_name "Genova" |> NamespacedName
-
+    let Genova = _prefix "Genova"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/George_Town"></see>
     /// </summary>
-    let George_Town =
-        Namespaced_IRI.parse _namespace_name "George_Town" |> NamespacedName
-
+    let George_Town = _prefix "George_Town"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Georgetown"></see>
     /// </summary>
-    let Georgetown = Namespaced_IRI.parse _namespace_name "Georgetown" |> NamespacedName
+    let Georgetown = _prefix "Georgetown"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Gibraltar"></see>
     /// </summary>
-    let Gibraltar = Namespaced_IRI.parse _namespace_name "Gibraltar" |> NamespacedName
+    let Gibraltar = _prefix "Gibraltar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Gift_City"></see>
     /// </summary>
-    let Gift_City = Namespaced_IRI.parse _namespace_name "Gift_City" |> NamespacedName
+    let Gift_City = _prefix "Gift_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Glenview"></see>
     /// </summary>
-    let Glenview = Namespaced_IRI.parse _namespace_name "Glenview" |> NamespacedName
+    let Glenview = _prefix "Glenview"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Great_Neck"></see>
     /// </summary>
-    let Great_Neck = Namespaced_IRI.parse _namespace_name "Great_Neck" |> NamespacedName
+    let Great_Neck = _prefix "Great_Neck"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Greenwich"></see>
     /// </summary>
-    let Greenwich = Namespaced_IRI.parse _namespace_name "Greenwich" |> NamespacedName
+    let Greenwich = _prefix "Greenwich"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Grindsted"></see>
     /// </summary>
-    let Grindsted = Namespaced_IRI.parse _namespace_name "Grindsted" |> NamespacedName
+    let Grindsted = _prefix "Grindsted"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Guangzhou"></see>
     /// </summary>
-    let Guangzhou = Namespaced_IRI.parse _namespace_name "Guangzhou" |> NamespacedName
+    let Guangzhou = _prefix "Guangzhou"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Guaynabo"></see>
     /// </summary>
-    let Guaynabo = Namespaced_IRI.parse _namespace_name "Guaynabo" |> NamespacedName
+    let Guaynabo = _prefix "Guaynabo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Guildford"></see>
     /// </summary>
-    let Guildford = Namespaced_IRI.parse _namespace_name "Guildford" |> NamespacedName
+    let Guildford = _prefix "Guildford"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/HKHK"></see>
     /// </summary>
-    let HKHK = Namespaced_IRI.parse _namespace_name "HKHK" |> NamespacedName
+    let HKHK = _prefix "HKHK"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hong_Kong"></see>
     /// </summary>
-    let Hong_Kong = Namespaced_IRI.parse _namespace_name "Hong_Kong" |> NamespacedName
+    let Hong_Kong = _prefix "Hong_Kong"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/HNTE"></see>
     /// </summary>
-    let HNTE = Namespaced_IRI.parse _namespace_name "HNTE" |> NamespacedName
-
+    let HNTE = _prefix "HNTE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tegucigalpa"></see>
     /// </summary>
-    let Tegucigalpa =
-        Namespaced_IRI.parse _namespace_name "Tegucigalpa" |> NamespacedName
-
+    let Tegucigalpa = _prefix "Tegucigalpa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/HRZA"></see>
     /// </summary>
-    let HRZA = Namespaced_IRI.parse _namespace_name "HRZA" |> NamespacedName
+    let HRZA = _prefix "HRZA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Zagreb"></see>
     /// </summary>
-    let Zagreb = Namespaced_IRI.parse _namespace_name "Zagreb" |> NamespacedName
+    let Zagreb = _prefix "Zagreb"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/HUBU"></see>
     /// </summary>
-    let HUBU = Namespaced_IRI.parse _namespace_name "HUBU" |> NamespacedName
+    let HUBU = _prefix "HUBU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hanoi"></see>
     /// </summary>
-    let Hanoi = Namespaced_IRI.parse _namespace_name "Hanoi" |> NamespacedName
+    let Hanoi = _prefix "Hanoi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Harare"></see>
     /// </summary>
-    let Harare = Namespaced_IRI.parse _namespace_name "Harare" |> NamespacedName
+    let Harare = _prefix "Harare"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hiroshima"></see>
     /// </summary>
-    let Hiroshima = Namespaced_IRI.parse _namespace_name "Hiroshima" |> NamespacedName
-
+    let Hiroshima = _prefix "Hiroshima"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ho_Chi_Minh_City"></see>
     /// </summary>
-    let Ho_Chi_Minh_City =
-        Namespaced_IRI.parse _namespace_name "Ho_Chi_Minh_City" |> NamespacedName
-
+    let Ho_Chi_Minh_City = _prefix "Ho_Chi_Minh_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ho_Chi_Minh__formerly_Saigon_"></see>
     /// </summary>
-    let Ho_Chi_Minh__formerly_Saigon_ =
-        Namespaced_IRI.parse _namespace_name "Ho_Chi_Minh__formerly_Saigon_" |> NamespacedName
-
+    let Ho_Chi_Minh__formerly_Saigon_ = _prefix "Ho_Chi_Minh__formerly_Saigon_"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Honolulu"></see>
     /// </summary>
-    let Honolulu = Namespaced_IRI.parse _namespace_name "Honolulu" |> NamespacedName
+    let Honolulu = _prefix "Honolulu"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Horsens"></see>
     /// </summary>
-    let Horsens = Namespaced_IRI.parse _namespace_name "Horsens" |> NamespacedName
+    let Horsens = _prefix "Horsens"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Houston"></see>
     /// </summary>
-    let Houston = Namespaced_IRI.parse _namespace_name "Houston" |> NamespacedName
+    let Houston = _prefix "Houston"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hove"></see>
     /// </summary>
-    let Hove = Namespaced_IRI.parse _namespace_name "Hove" |> NamespacedName
-
+    let Hove = _prefix "Hove"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hradec_Kralove"></see>
     /// </summary>
-    let Hradec_Kralove =
-        Namespaced_IRI.parse _namespace_name "Hradec_Kralove" |> NamespacedName
-
+    let Hradec_Kralove = _prefix "Hradec_Kralove"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Hyderabad"></see>
     /// </summary>
-    let Hyderabad = Namespaced_IRI.parse _namespace_name "Hyderabad" |> NamespacedName
+    let Hyderabad = _prefix "Hyderabad"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/IDJA"></see>
     /// </summary>
-    let IDJA = Namespaced_IRI.parse _namespace_name "IDJA" |> NamespacedName
+    let IDJA = _prefix "IDJA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Jakarta"></see>
     /// </summary>
-    let Jakarta = Namespaced_IRI.parse _namespace_name "Jakarta" |> NamespacedName
+    let Jakarta = _prefix "Jakarta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/IEDU"></see>
     /// </summary>
-    let IEDU = Namespaced_IRI.parse _namespace_name "IEDU" |> NamespacedName
+    let IEDU = _prefix "IEDU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ILJE"></see>
     /// </summary>
-    let ILJE = Namespaced_IRI.parse _namespace_name "ILJE" |> NamespacedName
+    let ILJE = _prefix "ILJE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Jerusalem"></see>
     /// </summary>
-    let Jerusalem = Namespaced_IRI.parse _namespace_name "Jerusalem" |> NamespacedName
+    let Jerusalem = _prefix "Jerusalem"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ILTA"></see>
     /// </summary>
-    let ILTA = Namespaced_IRI.parse _namespace_name "ILTA" |> NamespacedName
+    let ILTA = _prefix "ILTA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tel_Aviv"></see>
     /// </summary>
-    let Tel_Aviv = Namespaced_IRI.parse _namespace_name "Tel_Aviv" |> NamespacedName
+    let Tel_Aviv = _prefix "Tel_Aviv"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INAH"></see>
     /// </summary>
-    let INAH = Namespaced_IRI.parse _namespace_name "INAH" |> NamespacedName
+    let INAH = _prefix "INAH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INBA"></see>
     /// </summary>
-    let INBA = Namespaced_IRI.parse _namespace_name "INBA" |> NamespacedName
+    let INBA = _prefix "INBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INCH"></see>
     /// </summary>
-    let INCH = Namespaced_IRI.parse _namespace_name "INCH" |> NamespacedName
+    let INCH = _prefix "INCH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INHY"></see>
     /// </summary>
-    let INHY = Namespaced_IRI.parse _namespace_name "INHY" |> NamespacedName
+    let INHY = _prefix "INHY"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INKO"></see>
     /// </summary>
-    let INKO = Namespaced_IRI.parse _namespace_name "INKO" |> NamespacedName
+    let INKO = _prefix "INKO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kolkata"></see>
     /// </summary>
-    let Kolkata = Namespaced_IRI.parse _namespace_name "Kolkata" |> NamespacedName
+    let Kolkata = _prefix "Kolkata"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INMU"></see>
     /// </summary>
-    let INMU = Namespaced_IRI.parse _namespace_name "INMU" |> NamespacedName
+    let INMU = _prefix "INMU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mumbai"></see>
     /// </summary>
-    let Mumbai = Namespaced_IRI.parse _namespace_name "Mumbai" |> NamespacedName
+    let Mumbai = _prefix "Mumbai"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/INND"></see>
     /// </summary>
-    let INND = Namespaced_IRI.parse _namespace_name "INND" |> NamespacedName
+    let INND = _prefix "INND"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/New_Delhi"></see>
     /// </summary>
-    let New_Delhi = Namespaced_IRI.parse _namespace_name "New_Delhi" |> NamespacedName
+    let New_Delhi = _prefix "New_Delhi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/IQBA"></see>
     /// </summary>
-    let IQBA = Namespaced_IRI.parse _namespace_name "IQBA" |> NamespacedName
+    let IQBA = _prefix "IQBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/IRTE"></see>
     /// </summary>
-    let IRTE = Namespaced_IRI.parse _namespace_name "IRTE" |> NamespacedName
+    let IRTE = _prefix "IRTE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Teheran"></see>
     /// </summary>
-    let Teheran = Namespaced_IRI.parse _namespace_name "Teheran" |> NamespacedName
+    let Teheran = _prefix "Teheran"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ISRE"></see>
     /// </summary>
-    let ISRE = Namespaced_IRI.parse _namespace_name "ISRE" |> NamespacedName
+    let ISRE = _prefix "ISRE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Reykjavik"></see>
     /// </summary>
-    let Reykjavik = Namespaced_IRI.parse _namespace_name "Reykjavik" |> NamespacedName
+    let Reykjavik = _prefix "Reykjavik"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ITMI"></see>
     /// </summary>
-    let ITMI = Namespaced_IRI.parse _namespace_name "ITMI" |> NamespacedName
+    let ITMI = _prefix "ITMI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Milan"></see>
     /// </summary>
-    let Milan = Namespaced_IRI.parse _namespace_name "Milan" |> NamespacedName
+    let Milan = _prefix "Milan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ITRO"></see>
     /// </summary>
-    let ITRO = Namespaced_IRI.parse _namespace_name "ITRO" |> NamespacedName
+    let ITRO = _prefix "ITRO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rome"></see>
     /// </summary>
-    let Rome = Namespaced_IRI.parse _namespace_name "Rome" |> NamespacedName
+    let Rome = _prefix "Rome"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ITTU"></see>
     /// </summary>
-    let ITTU = Namespaced_IRI.parse _namespace_name "ITTU" |> NamespacedName
+    let ITTU = _prefix "ITTU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Turin"></see>
     /// </summary>
-    let Turin = Namespaced_IRI.parse _namespace_name "Turin" |> NamespacedName
-
+    let Turin = _prefix "Turin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Indore_Madhya_Pradesh"></see>
     /// </summary>
-    let Indore_Madhya_Pradesh =
-        Namespaced_IRI.parse _namespace_name "Indore_Madhya_Pradesh" |> NamespacedName
-
+    let Indore_Madhya_Pradesh = _prefix "Indore_Madhya_Pradesh"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Islamabad"></see>
     /// </summary>
-    let Islamabad = Namespaced_IRI.parse _namespace_name "Islamabad" |> NamespacedName
+    let Islamabad = _prefix "Islamabad"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Istanbul"></see>
     /// </summary>
-    let Istanbul = Namespaced_IRI.parse _namespace_name "Istanbul" |> NamespacedName
+    let Istanbul = _prefix "Istanbul"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Izmir"></see>
     /// </summary>
-    let Izmir = Namespaced_IRI.parse _namespace_name "Izmir" |> NamespacedName
+    let Izmir = _prefix "Izmir"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/JESH"></see>
     /// </summary>
-    let JESH = Namespaced_IRI.parse _namespace_name "JESH" |> NamespacedName
-
+    let JESH = _prefix "JESH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/St._Helier"></see>
     /// </summary>
-    let ``St._Helier`` =
-        Namespaced_IRI.parse _namespace_name "St._Helier" |> NamespacedName
-
+    let ``St._Helier`` = _prefix "St._Helier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/JMKI"></see>
     /// </summary>
-    let JMKI = Namespaced_IRI.parse _namespace_name "JMKI" |> NamespacedName
+    let JMKI = _prefix "JMKI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kingston"></see>
     /// </summary>
-    let Kingston = Namespaced_IRI.parse _namespace_name "Kingston" |> NamespacedName
+    let Kingston = _prefix "Kingston"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/JOAM"></see>
     /// </summary>
-    let JOAM = Namespaced_IRI.parse _namespace_name "JOAM" |> NamespacedName
+    let JOAM = _prefix "JOAM"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/JPTO"></see>
     /// </summary>
-    let JPTO = Namespaced_IRI.parse _namespace_name "JPTO" |> NamespacedName
+    let JPTO = _prefix "JPTO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tokyo"></see>
     /// </summary>
-    let Tokyo = Namespaced_IRI.parse _namespace_name "Tokyo" |> NamespacedName
+    let Tokyo = _prefix "Tokyo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Jaen"></see>
     /// </summary>
-    let Jaen = Namespaced_IRI.parse _namespace_name "Jaen" |> NamespacedName
+    let Jaen = _prefix "Jaen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Jeddah"></see>
     /// </summary>
-    let Jeddah = Namespaced_IRI.parse _namespace_name "Jeddah" |> NamespacedName
-
+    let Jeddah = _prefix "Jeddah"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Jersey_City"></see>
     /// </summary>
-    let Jersey_City =
-        Namespaced_IRI.parse _namespace_name "Jersey_City" |> NamespacedName
-
+    let Jersey_City = _prefix "Jersey_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Johannesburg"></see>
     /// </summary>
-    let Johannesburg =
-        Namespaced_IRI.parse _namespace_name "Johannesburg" |> NamespacedName
-
+    let Johannesburg = _prefix "Johannesburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/KENA"></see>
     /// </summary>
-    let KENA = Namespaced_IRI.parse _namespace_name "KENA" |> NamespacedName
+    let KENA = _prefix "KENA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nairobi"></see>
     /// </summary>
-    let Nairobi = Namespaced_IRI.parse _namespace_name "Nairobi" |> NamespacedName
+    let Nairobi = _prefix "Nairobi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/KHPP"></see>
     /// </summary>
-    let KHPP = Namespaced_IRI.parse _namespace_name "KHPP" |> NamespacedName
+    let KHPP = _prefix "KHPP"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Phnom_Penh"></see>
     /// </summary>
-    let Phnom_Penh = Namespaced_IRI.parse _namespace_name "Phnom_Penh" |> NamespacedName
+    let Phnom_Penh = _prefix "Phnom_Penh"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/KRSE"></see>
     /// </summary>
-    let KRSE = Namespaced_IRI.parse _namespace_name "KRSE" |> NamespacedName
+    let KRSE = _prefix "KRSE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Seoul"></see>
     /// </summary>
-    let Seoul = Namespaced_IRI.parse _namespace_name "Seoul" |> NamespacedName
+    let Seoul = _prefix "Seoul"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/KWKC"></see>
     /// </summary>
-    let KWKC = Namespaced_IRI.parse _namespace_name "KWKC" |> NamespacedName
-
+    let KWKC = _prefix "KWKC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kuwait_City"></see>
     /// </summary>
-    let Kuwait_City =
-        Namespaced_IRI.parse _namespace_name "Kuwait_City" |> NamespacedName
-
+    let Kuwait_City = _prefix "Kuwait_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/KYGE"></see>
     /// </summary>
-    let KYGE = Namespaced_IRI.parse _namespace_name "KYGE" |> NamespacedName
+    let KYGE = _prefix "KYGE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/KZAL"></see>
     /// </summary>
-    let KZAL = Namespaced_IRI.parse _namespace_name "KZAL" |> NamespacedName
+    let KZAL = _prefix "KZAL"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kampala"></see>
     /// </summary>
-    let Kampala = Namespaced_IRI.parse _namespace_name "Kampala" |> NamespacedName
-
+    let Kampala = _prefix "Kampala"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kansas_City"></see>
     /// </summary>
-    let Kansas_City =
-        Namespaced_IRI.parse _namespace_name "Kansas_City" |> NamespacedName
-
+    let Kansas_City = _prefix "Kansas_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Karachi"></see>
     /// </summary>
-    let Karachi = Namespaced_IRI.parse _namespace_name "Karachi" |> NamespacedName
+    let Karachi = _prefix "Karachi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kathmandu"></see>
     /// </summary>
-    let Kathmandu = Namespaced_IRI.parse _namespace_name "Kathmandu" |> NamespacedName
+    let Kathmandu = _prefix "Kathmandu"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kharkov"></see>
     /// </summary>
-    let Kharkov = Namespaced_IRI.parse _namespace_name "Kharkov" |> NamespacedName
+    let Kharkov = _prefix "Kharkov"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Khartoum"></see>
     /// </summary>
-    let Khartoum = Namespaced_IRI.parse _namespace_name "Khartoum" |> NamespacedName
+    let Khartoum = _prefix "Khartoum"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kiel"></see>
     /// </summary>
-    let Kiel = Namespaced_IRI.parse _namespace_name "Kiel" |> NamespacedName
+    let Kiel = _prefix "Kiel"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kiev"></see>
     /// </summary>
-    let Kiev = Namespaced_IRI.parse _namespace_name "Kiev" |> NamespacedName
+    let Kiev = _prefix "Kiev"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kigali"></see>
     /// </summary>
-    let Kigali = Namespaced_IRI.parse _namespace_name "Kigali" |> NamespacedName
+    let Kigali = _prefix "Kigali"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kingstown"></see>
     /// </summary>
-    let Kingstown = Namespaced_IRI.parse _namespace_name "Kingstown" |> NamespacedName
-
+    let Kingstown = _prefix "Kingstown"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Klagenfurt_Am_Woerthersee"></see>
     /// </summary>
-    let Klagenfurt_Am_Woerthersee =
-        Namespaced_IRI.parse _namespace_name "Klagenfurt_Am_Woerthersee" |> NamespacedName
-
+    let Klagenfurt_Am_Woerthersee = _prefix "Klagenfurt_Am_Woerthersee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kobe"></see>
     /// </summary>
-    let Kobe = Namespaced_IRI.parse _namespace_name "Kobe" |> NamespacedName
-
+    let Kobe = _prefix "Kobe"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kongsvinger"></see>
     /// </summary>
-    let Kongsvinger =
-        Namespaced_IRI.parse _namespace_name "Kongsvinger" |> NamespacedName
-
+    let Kongsvinger = _prefix "Kongsvinger"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Krakow"></see>
     /// </summary>
-    let Krakow = Namespaced_IRI.parse _namespace_name "Krakow" |> NamespacedName
-
+    let Krakow = _prefix "Krakow"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kuala_Lumpur"></see>
     /// </summary>
-    let Kuala_Lumpur =
-        Namespaced_IRI.parse _namespace_name "Kuala_Lumpur" |> NamespacedName
-
+    let Kuala_Lumpur = _prefix "Kuala_Lumpur"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Kyoto"></see>
     /// </summary>
-    let Kyoto = Namespaced_IRI.parse _namespace_name "Kyoto" |> NamespacedName
+    let Kyoto = _prefix "Kyoto"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/LAVI"></see>
     /// </summary>
-    let LAVI = Namespaced_IRI.parse _namespace_name "LAVI" |> NamespacedName
+    let LAVI = _prefix "LAVI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Vientiane"></see>
     /// </summary>
-    let Vientiane = Namespaced_IRI.parse _namespace_name "Vientiane" |> NamespacedName
+    let Vientiane = _prefix "Vientiane"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/LBBE"></see>
     /// </summary>
-    let LBBE = Namespaced_IRI.parse _namespace_name "LBBE" |> NamespacedName
+    let LBBE = _prefix "LBBE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/LKCO"></see>
     /// </summary>
-    let LKCO = Namespaced_IRI.parse _namespace_name "LKCO" |> NamespacedName
+    let LKCO = _prefix "LKCO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/LULU"></see>
     /// </summary>
-    let LULU = Namespaced_IRI.parse _namespace_name "LULU" |> NamespacedName
+    let LULU = _prefix "LULU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Luxembourg"></see>
     /// </summary>
-    let Luxembourg = Namespaced_IRI.parse _namespace_name "Luxembourg" |> NamespacedName
+    let Luxembourg = _prefix "Luxembourg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/LVRI"></see>
     /// </summary>
-    let LVRI = Namespaced_IRI.parse _namespace_name "LVRI" |> NamespacedName
+    let LVRI = _prefix "LVRI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Riga"></see>
     /// </summary>
-    let Riga = Namespaced_IRI.parse _namespace_name "Riga" |> NamespacedName
+    let Riga = _prefix "Riga"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Labuan"></see>
     /// </summary>
-    let Labuan = Namespaced_IRI.parse _namespace_name "Labuan" |> NamespacedName
+    let Labuan = _prefix "Labuan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lagos"></see>
     /// </summary>
-    let Lagos = Namespaced_IRI.parse _namespace_name "Lagos" |> NamespacedName
+    let Lagos = _prefix "Lagos"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lahore"></see>
     /// </summary>
-    let Lahore = Namespaced_IRI.parse _namespace_name "Lahore" |> NamespacedName
+    let Lahore = _prefix "Lahore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lane_Cove"></see>
     /// </summary>
-    let Lane_Cove = Namespaced_IRI.parse _namespace_name "Lane_Cove" |> NamespacedName
+    let Lane_Cove = _prefix "Lane_Cove"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lao"></see>
     /// </summary>
-    let Lao = Namespaced_IRI.parse _namespace_name "Lao" |> NamespacedName
+    let Lao = _prefix "Lao"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Larnaca"></see>
     /// </summary>
-    let Larnaca = Namespaced_IRI.parse _namespace_name "Larnaca" |> NamespacedName
+    let Larnaca = _prefix "Larnaca"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lenexa"></see>
     /// </summary>
-    let Lenexa = Namespaced_IRI.parse _namespace_name "Lenexa" |> NamespacedName
+    let Lenexa = _prefix "Lenexa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Leuven"></see>
     /// </summary>
-    let Leuven = Namespaced_IRI.parse _namespace_name "Leuven" |> NamespacedName
+    let Leuven = _prefix "Leuven"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lilongwe"></see>
     /// </summary>
-    let Lilongwe = Namespaced_IRI.parse _namespace_name "Lilongwe" |> NamespacedName
+    let Lilongwe = _prefix "Lilongwe"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lima"></see>
     /// </summary>
-    let Lima = Namespaced_IRI.parse _namespace_name "Lima" |> NamespacedName
+    let Lima = _prefix "Lima"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Limassol"></see>
     /// </summary>
-    let Limassol = Namespaced_IRI.parse _namespace_name "Limassol" |> NamespacedName
+    let Limassol = _prefix "Limassol"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Linz"></see>
     /// </summary>
-    let Linz = Namespaced_IRI.parse _namespace_name "Linz" |> NamespacedName
+    let Linz = _prefix "Linz"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lisbon"></see>
     /// </summary>
-    let Lisbon = Namespaced_IRI.parse _namespace_name "Lisbon" |> NamespacedName
+    let Lisbon = _prefix "Lisbon"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ljubljana"></see>
     /// </summary>
-    let Ljubljana = Namespaced_IRI.parse _namespace_name "Ljubljana" |> NamespacedName
-
+    let Ljubljana = _prefix "Ljubljana"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Los_Angeles"></see>
     /// </summary>
-    let Los_Angeles =
-        Namespaced_IRI.parse _namespace_name "Los_Angeles" |> NamespacedName
-
+    let Los_Angeles = _prefix "Los_Angeles"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Lusaka"></see>
     /// </summary>
-    let Lusaka = Namespaced_IRI.parse _namespace_name "Lusaka" |> NamespacedName
+    let Lusaka = _prefix "Lusaka"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Luzern"></see>
     /// </summary>
-    let Luzern = Namespaced_IRI.parse _namespace_name "Luzern" |> NamespacedName
+    let Luzern = _prefix "Luzern"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MACA"></see>
     /// </summary>
-    let MACA = Namespaced_IRI.parse _namespace_name "MACA" |> NamespacedName
+    let MACA = _prefix "MACA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MARA"></see>
     /// </summary>
-    let MARA = Namespaced_IRI.parse _namespace_name "MARA" |> NamespacedName
+    let MARA = _prefix "MARA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rabat"></see>
     /// </summary>
-    let Rabat = Namespaced_IRI.parse _namespace_name "Rabat" |> NamespacedName
+    let Rabat = _prefix "Rabat"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MCMO"></see>
     /// </summary>
-    let MCMO = Namespaced_IRI.parse _namespace_name "MCMO" |> NamespacedName
+    let MCMO = _prefix "MCMO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Monaco"></see>
     /// </summary>
-    let Monaco = Namespaced_IRI.parse _namespace_name "Monaco" |> NamespacedName
+    let Monaco = _prefix "Monaco"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MNUB"></see>
     /// </summary>
-    let MNUB = Namespaced_IRI.parse _namespace_name "MNUB" |> NamespacedName
+    let MNUB = _prefix "MNUB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Ulan_Bator"></see>
     /// </summary>
-    let Ulan_Bator = Namespaced_IRI.parse _namespace_name "Ulan_Bator" |> NamespacedName
+    let Ulan_Bator = _prefix "Ulan_Bator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MOMA"></see>
     /// </summary>
-    let MOMA = Namespaced_IRI.parse _namespace_name "MOMA" |> NamespacedName
+    let MOMA = _prefix "MOMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Macau"></see>
     /// </summary>
-    let Macau = Namespaced_IRI.parse _namespace_name "Macau" |> NamespacedName
+    let Macau = _prefix "Macau"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MTVA"></see>
     /// </summary>
-    let MTVA = Namespaced_IRI.parse _namespace_name "MTVA" |> NamespacedName
+    let MTVA = _prefix "MTVA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Valletta"></see>
     /// </summary>
-    let Valletta = Namespaced_IRI.parse _namespace_name "Valletta" |> NamespacedName
+    let Valletta = _prefix "Valletta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MUPL"></see>
     /// </summary>
-    let MUPL = Namespaced_IRI.parse _namespace_name "MUPL" |> NamespacedName
+    let MUPL = _prefix "MUPL"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Port_Louis"></see>
     /// </summary>
-    let Port_Louis = Namespaced_IRI.parse _namespace_name "Port_Louis" |> NamespacedName
+    let Port_Louis = _prefix "Port_Louis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MVMA"></see>
     /// </summary>
-    let MVMA = Namespaced_IRI.parse _namespace_name "MVMA" |> NamespacedName
+    let MVMA = _prefix "MVMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Male"></see>
     /// </summary>
-    let Male = Namespaced_IRI.parse _namespace_name "Male" |> NamespacedName
+    let Male = _prefix "Male"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MWLI"></see>
     /// </summary>
-    let MWLI = Namespaced_IRI.parse _namespace_name "MWLI" |> NamespacedName
+    let MWLI = _prefix "MWLI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MXMC"></see>
     /// </summary>
-    let MXMC = Namespaced_IRI.parse _namespace_name "MXMC" |> NamespacedName
-
+    let MXMC = _prefix "MXMC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mexico_City"></see>
     /// </summary>
-    let Mexico_City =
-        Namespaced_IRI.parse _namespace_name "Mexico_City" |> NamespacedName
-
+    let Mexico_City = _prefix "Mexico_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MYKL"></see>
     /// </summary>
-    let MYKL = Namespaced_IRI.parse _namespace_name "MYKL" |> NamespacedName
+    let MYKL = _prefix "MYKL"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MYLA"></see>
     /// </summary>
-    let MYLA = Namespaced_IRI.parse _namespace_name "MYLA" |> NamespacedName
+    let MYLA = _prefix "MYLA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/MZMA"></see>
     /// </summary>
-    let MZMA = Namespaced_IRI.parse _namespace_name "MZMA" |> NamespacedName
+    let MZMA = _prefix "MZMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Maputo"></see>
     /// </summary>
-    let Maputo = Namespaced_IRI.parse _namespace_name "Maputo" |> NamespacedName
+    let Maputo = _prefix "Maputo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Madras"></see>
     /// </summary>
-    let Madras = Namespaced_IRI.parse _namespace_name "Madras" |> NamespacedName
+    let Madras = _prefix "Madras"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Makati"></see>
     /// </summary>
-    let Makati = Namespaced_IRI.parse _namespace_name "Makati" |> NamespacedName
-
+    let Makati = _prefix "Makati"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Makati_City"></see>
     /// </summary>
-    let Makati_City =
-        Namespaced_IRI.parse _namespace_name "Makati_City" |> NamespacedName
-
+    let Makati_City = _prefix "Makati_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Managua"></see>
     /// </summary>
-    let Managua = Namespaced_IRI.parse _namespace_name "Managua" |> NamespacedName
+    let Managua = _prefix "Managua"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Manila"></see>
     /// </summary>
-    let Manila = Namespaced_IRI.parse _namespace_name "Manila" |> NamespacedName
+    let Manila = _prefix "Manila"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Maringa"></see>
     /// </summary>
-    let Maringa = Namespaced_IRI.parse _namespace_name "Maringa" |> NamespacedName
+    let Maringa = _prefix "Maringa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mbabane"></see>
     /// </summary>
-    let Mbabane = Namespaced_IRI.parse _namespace_name "Mbabane" |> NamespacedName
+    let Mbabane = _prefix "Mbabane"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mendoza"></see>
     /// </summary>
-    let Mendoza = Namespaced_IRI.parse _namespace_name "Mendoza" |> NamespacedName
+    let Mendoza = _prefix "Mendoza"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Miami"></see>
     /// </summary>
-    let Miami = Namespaced_IRI.parse _namespace_name "Miami" |> NamespacedName
-
+    let Miami = _prefix "Miami"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Milton_Keynes"></see>
     /// </summary>
-    let Milton_Keynes =
-        Namespaced_IRI.parse _namespace_name "Milton_Keynes" |> NamespacedName
-
+    let Milton_Keynes = _prefix "Milton_Keynes"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Minneapolis"></see>
     /// </summary>
-    let Minneapolis =
-        Namespaced_IRI.parse _namespace_name "Minneapolis" |> NamespacedName
-
+    let Minneapolis = _prefix "Minneapolis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mobile"></see>
     /// </summary>
-    let Mobile = Namespaced_IRI.parse _namespace_name "Mobile" |> NamespacedName
+    let Mobile = _prefix "Mobile"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Montenegro"></see>
     /// </summary>
-    let Montenegro = Namespaced_IRI.parse _namespace_name "Montenegro" |> NamespacedName
+    let Montenegro = _prefix "Montenegro"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Montevideo"></see>
     /// </summary>
-    let Montevideo = Namespaced_IRI.parse _namespace_name "Montevideo" |> NamespacedName
+    let Montevideo = _prefix "Montevideo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Moorpark"></see>
     /// </summary>
-    let Moorpark = Namespaced_IRI.parse _namespace_name "Moorpark" |> NamespacedName
+    let Moorpark = _prefix "Moorpark"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Moscow"></see>
     /// </summary>
-    let Moscow = Namespaced_IRI.parse _namespace_name "Moscow" |> NamespacedName
-
+    let Moscow = _prefix "Moscow"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Mount_Pleasant"></see>
     /// </summary>
-    let Mount_Pleasant =
-        Namespaced_IRI.parse _namespace_name "Mount_Pleasant" |> NamespacedName
-
+    let Mount_Pleasant = _prefix "Mount_Pleasant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Muscat"></see>
     /// </summary>
-    let Muscat = Namespaced_IRI.parse _namespace_name "Muscat" |> NamespacedName
+    let Muscat = _prefix "Muscat"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NAWI"></see>
     /// </summary>
-    let NAWI = Namespaced_IRI.parse _namespace_name "NAWI" |> NamespacedName
+    let NAWI = _prefix "NAWI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Windhoek"></see>
     /// </summary>
-    let Windhoek = Namespaced_IRI.parse _namespace_name "Windhoek" |> NamespacedName
+    let Windhoek = _prefix "Windhoek"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NGAB"></see>
     /// </summary>
-    let NGAB = Namespaced_IRI.parse _namespace_name "NGAB" |> NamespacedName
+    let NGAB = _prefix "NGAB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NGLA"></see>
     /// </summary>
-    let NGLA = Namespaced_IRI.parse _namespace_name "NGLA" |> NamespacedName
+    let NGLA = _prefix "NGLA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NLAM"></see>
     /// </summary>
-    let NLAM = Namespaced_IRI.parse _namespace_name "NLAM" |> NamespacedName
+    let NLAM = _prefix "NLAM"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NLRO"></see>
     /// </summary>
-    let NLRO = Namespaced_IRI.parse _namespace_name "NLRO" |> NamespacedName
+    let NLRO = _prefix "NLRO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rotterdam"></see>
     /// </summary>
-    let Rotterdam = Namespaced_IRI.parse _namespace_name "Rotterdam" |> NamespacedName
+    let Rotterdam = _prefix "Rotterdam"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NOOS"></see>
     /// </summary>
-    let NOOS = Namespaced_IRI.parse _namespace_name "NOOS" |> NamespacedName
+    let NOOS = _prefix "NOOS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Oslo"></see>
     /// </summary>
-    let Oslo = Namespaced_IRI.parse _namespace_name "Oslo" |> NamespacedName
+    let Oslo = _prefix "Oslo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NPKA"></see>
     /// </summary>
-    let NPKA = Namespaced_IRI.parse _namespace_name "NPKA" |> NamespacedName
+    let NPKA = _prefix "NPKA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NYFD"></see>
     /// </summary>
-    let NYFD = Namespaced_IRI.parse _namespace_name "NYFD" |> NamespacedName
-
+    let NYFD = _prefix "NYFD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NewYorkFederalReserveBusinessDay"></see>
     /// </summary>
-    let NewYorkFederalReserveBusinessDay =
-        Namespaced_IRI.parse _namespace_name "NewYorkFederalReserveBusinessDay" |> NamespacedName
-
+    let NewYorkFederalReserveBusinessDay = _prefix "NewYorkFederalReserveBusinessDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NYSE"></see>
     /// </summary>
-    let NYSE = Namespaced_IRI.parse _namespace_name "NYSE" |> NamespacedName
-
+    let NYSE = _prefix "NYSE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NewYorkStockExchangeBusinessDay"></see>
     /// </summary>
-    let NewYorkStockExchangeBusinessDay =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeBusinessDay" |> NamespacedName
-
+    let NewYorkStockExchangeBusinessDay = _prefix "NewYorkStockExchangeBusinessDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NZAU"></see>
     /// </summary>
-    let NZAU = Namespaced_IRI.parse _namespace_name "NZAU" |> NamespacedName
+    let NZAU = _prefix "NZAU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/NZWE"></see>
     /// </summary>
-    let NZWE = Namespaced_IRI.parse _namespace_name "NZWE" |> NamespacedName
+    let NZWE = _prefix "NZWE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nablus"></see>
     /// </summary>
-    let Nablus = Namespaced_IRI.parse _namespace_name "Nablus" |> NamespacedName
+    let Nablus = _prefix "Nablus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nacka"></see>
     /// </summary>
-    let Nacka = Namespaced_IRI.parse _namespace_name "Nacka" |> NamespacedName
+    let Nacka = _prefix "Nacka"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nagoya"></see>
     /// </summary>
-    let Nagoya = Namespaced_IRI.parse _namespace_name "Nagoya" |> NamespacedName
+    let Nagoya = _prefix "Nagoya"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Narberth"></see>
     /// </summary>
-    let Narberth = Namespaced_IRI.parse _namespace_name "Narberth" |> NamespacedName
+    let Narberth = _prefix "Narberth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nasau"></see>
     /// </summary>
-    let Nasau = Namespaced_IRI.parse _namespace_name "Nasau" |> NamespacedName
+    let Nasau = _prefix "Nasau"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/New_York"></see>
     /// </summary>
-    let New_York = Namespaced_IRI.parse _namespace_name "New_York" |> NamespacedName
+    let New_York = _prefix "New_York"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Newcastle"></see>
     /// </summary>
-    let Newcastle = Namespaced_IRI.parse _namespace_name "Newcastle" |> NamespacedName
+    let Newcastle = _prefix "Newcastle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nigita"></see>
     /// </summary>
-    let Nigita = Namespaced_IRI.parse _namespace_name "Nigita" |> NamespacedName
-
+    let Nigita = _prefix "Nigita"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nizhniy_Novgorod"></see>
     /// </summary>
-    let Nizhniy_Novgorod =
-        Namespaced_IRI.parse _namespace_name "Nizhniy_Novgorod" |> NamespacedName
-
+    let Nizhniy_Novgorod = _prefix "Nizhniy_Novgorod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/North_Bergen"></see>
     /// </summary>
-    let North_Bergen =
-        Namespaced_IRI.parse _namespace_name "North_Bergen" |> NamespacedName
-
+    let North_Bergen = _prefix "North_Bergen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/North_Sydney"></see>
     /// </summary>
-    let North_Sydney =
-        Namespaced_IRI.parse _namespace_name "North_Sydney" |> NamespacedName
-
+    let North_Sydney = _prefix "North_Sydney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Novosibirsk"></see>
     /// </summary>
-    let Novosibirsk =
-        Namespaced_IRI.parse _namespace_name "Novosibirsk" |> NamespacedName
-
+    let Novosibirsk = _prefix "Novosibirsk"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Nyon"></see>
     /// </summary>
-    let Nyon = Namespaced_IRI.parse _namespace_name "Nyon" |> NamespacedName
+    let Nyon = _prefix "Nyon"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/OMMU"></see>
     /// </summary>
-    let OMMU = Namespaced_IRI.parse _namespace_name "OMMU" |> NamespacedName
+    let OMMU = _prefix "OMMU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Odessa"></see>
     /// </summary>
-    let Odessa = Namespaced_IRI.parse _namespace_name "Odessa" |> NamespacedName
+    let Odessa = _prefix "Odessa"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Oldenburg"></see>
     /// </summary>
-    let Oldenburg = Namespaced_IRI.parse _namespace_name "Oldenburg" |> NamespacedName
+    let Oldenburg = _prefix "Oldenburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Osaka"></see>
     /// </summary>
-    let Osaka = Namespaced_IRI.parse _namespace_name "Osaka" |> NamespacedName
-
+    let Osaka = _prefix "Osaka"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Oststeinbek"></see>
     /// </summary>
-    let Oststeinbek =
-        Namespaced_IRI.parse _namespace_name "Oststeinbek" |> NamespacedName
-
+    let Oststeinbek = _prefix "Oststeinbek"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PAPC"></see>
     /// </summary>
-    let PAPC = Namespaced_IRI.parse _namespace_name "PAPC" |> NamespacedName
-
+    let PAPC = _prefix "PAPC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Panama_City"></see>
     /// </summary>
-    let Panama_City =
-        Namespaced_IRI.parse _namespace_name "Panama_City" |> NamespacedName
-
+    let Panama_City = _prefix "Panama_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PELI"></see>
     /// </summary>
-    let PELI = Namespaced_IRI.parse _namespace_name "PELI" |> NamespacedName
+    let PELI = _prefix "PELI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PHMA"></see>
     /// </summary>
-    let PHMA = Namespaced_IRI.parse _namespace_name "PHMA" |> NamespacedName
+    let PHMA = _prefix "PHMA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PHMK"></see>
     /// </summary>
-    let PHMK = Namespaced_IRI.parse _namespace_name "PHMK" |> NamespacedName
+    let PHMK = _prefix "PHMK"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PKKA"></see>
     /// </summary>
-    let PKKA = Namespaced_IRI.parse _namespace_name "PKKA" |> NamespacedName
+    let PKKA = _prefix "PKKA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PLWA"></see>
     /// </summary>
-    let PLWA = Namespaced_IRI.parse _namespace_name "PLWA" |> NamespacedName
+    let PLWA = _prefix "PLWA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Warsaw"></see>
     /// </summary>
-    let Warsaw = Namespaced_IRI.parse _namespace_name "Warsaw" |> NamespacedName
+    let Warsaw = _prefix "Warsaw"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PRSJ"></see>
     /// </summary>
-    let PRSJ = Namespaced_IRI.parse _namespace_name "PRSJ" |> NamespacedName
+    let PRSJ = _prefix "PRSJ"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Juan"></see>
     /// </summary>
-    let San_Juan = Namespaced_IRI.parse _namespace_name "San_Juan" |> NamespacedName
+    let San_Juan = _prefix "San_Juan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/PTLI"></see>
     /// </summary>
-    let PTLI = Namespaced_IRI.parse _namespace_name "PTLI" |> NamespacedName
+    let PTLI = _prefix "PTLI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Padova"></see>
     /// </summary>
-    let Padova = Namespaced_IRI.parse _namespace_name "Padova" |> NamespacedName
-
+    let Padova = _prefix "Padova"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Palma_De_Mallorca"></see>
     /// </summary>
-    let Palma_De_Mallorca =
-        Namespaced_IRI.parse _namespace_name "Palma_De_Mallorca" |> NamespacedName
-
+    let Palma_De_Mallorca = _prefix "Palma_De_Mallorca"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Pasig_City"></see>
     /// </summary>
-    let Pasig_City = Namespaced_IRI.parse _namespace_name "Pasig_City" |> NamespacedName
-
+    let Pasig_City = _prefix "Pasig_City"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Philadelphia"></see>
     /// </summary>
-    let Philadelphia =
-        Namespaced_IRI.parse _namespace_name "Philadelphia" |> NamespacedName
-
+    let Philadelphia = _prefix "Philadelphia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Phoenix"></see>
     /// </summary>
-    let Phoenix = Namespaced_IRI.parse _namespace_name "Phoenix" |> NamespacedName
+    let Phoenix = _prefix "Phoenix"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Podgorica"></see>
     /// </summary>
-    let Podgorica = Namespaced_IRI.parse _namespace_name "Podgorica" |> NamespacedName
+    let Podgorica = _prefix "Podgorica"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Polokwane"></see>
     /// </summary>
-    let Polokwane = Namespaced_IRI.parse _namespace_name "Polokwane" |> NamespacedName
-
+    let Polokwane = _prefix "Polokwane"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Port_Moresby"></see>
     /// </summary>
-    let Port_Moresby =
-        Namespaced_IRI.parse _namespace_name "Port_Moresby" |> NamespacedName
-
+    let Port_Moresby = _prefix "Port_Moresby"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Port_Vila"></see>
     /// </summary>
-    let Port_Vila = Namespaced_IRI.parse _namespace_name "Port_Vila" |> NamespacedName
-
+    let Port_Vila = _prefix "Port_Vila"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Port_of_Spain"></see>
     /// </summary>
-    let Port_of_Spain =
-        Namespaced_IRI.parse _namespace_name "Port_of_Spain" |> NamespacedName
-
+    let Port_of_Spain = _prefix "Port_of_Spain"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Portland"></see>
     /// </summary>
-    let Portland = Namespaced_IRI.parse _namespace_name "Portland" |> NamespacedName
+    let Portland = _prefix "Portland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Porto"></see>
     /// </summary>
-    let Porto = Namespaced_IRI.parse _namespace_name "Porto" |> NamespacedName
+    let Porto = _prefix "Porto"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Praia"></see>
     /// </summary>
-    let Praia = Namespaced_IRI.parse _namespace_name "Praia" |> NamespacedName
+    let Praia = _prefix "Praia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Princeton"></see>
     /// </summary>
-    let Princeton = Namespaced_IRI.parse _namespace_name "Princeton" |> NamespacedName
+    let Princeton = _prefix "Princeton"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Purchase"></see>
     /// </summary>
-    let Purchase = Namespaced_IRI.parse _namespace_name "Purchase" |> NamespacedName
+    let Purchase = _prefix "Purchase"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/QADO"></see>
     /// </summary>
-    let QADO = Namespaced_IRI.parse _namespace_name "QADO" |> NamespacedName
+    let QADO = _prefix "QADO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Quito"></see>
     /// </summary>
-    let Quito = Namespaced_IRI.parse _namespace_name "Quito" |> NamespacedName
+    let Quito = _prefix "Quito"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ROBU"></see>
     /// </summary>
-    let ROBU = Namespaced_IRI.parse _namespace_name "ROBU" |> NamespacedName
+    let ROBU = _prefix "ROBU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/RSBE"></see>
     /// </summary>
-    let RSBE = Namespaced_IRI.parse _namespace_name "RSBE" |> NamespacedName
+    let RSBE = _prefix "RSBE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/RUMO"></see>
     /// </summary>
-    let RUMO = Namespaced_IRI.parse _namespace_name "RUMO" |> NamespacedName
+    let RUMO = _prefix "RUMO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Randers"></see>
     /// </summary>
-    let Randers = Namespaced_IRI.parse _namespace_name "Randers" |> NamespacedName
+    let Randers = _prefix "Randers"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Red_Bank"></see>
     /// </summary>
-    let Red_Bank = Namespaced_IRI.parse _namespace_name "Red_Bank" |> NamespacedName
+    let Red_Bank = _prefix "Red_Bank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Regensburg"></see>
     /// </summary>
-    let Regensburg = Namespaced_IRI.parse _namespace_name "Regensburg" |> NamespacedName
-
+    let Regensburg = _prefix "Regensburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Reggio_Emilia"></see>
     /// </summary>
-    let Reggio_Emilia =
-        Namespaced_IRI.parse _namespace_name "Reggio_Emilia" |> NamespacedName
-
+    let Reggio_Emilia = _prefix "Reggio_Emilia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Riyadh"></see>
     /// </summary>
-    let Riyadh = Namespaced_IRI.parse _namespace_name "Riyadh" |> NamespacedName
+    let Riyadh = _prefix "Riyadh"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Road_Town"></see>
     /// </summary>
-    let Road_Town = Namespaced_IRI.parse _namespace_name "Road_Town" |> NamespacedName
+    let Road_Town = _prefix "Road_Town"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rodgau"></see>
     /// </summary>
-    let Rodgau = Namespaced_IRI.parse _namespace_name "Rodgau" |> NamespacedName
+    let Rodgau = _prefix "Rodgau"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rosario"></see>
     /// </summary>
-    let Rosario = Namespaced_IRI.parse _namespace_name "Rosario" |> NamespacedName
+    let Rosario = _prefix "Rosario"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Rostov"></see>
     /// </summary>
-    let Rostov = Namespaced_IRI.parse _namespace_name "Rostov" |> NamespacedName
-
+    let Rostov = _prefix "Rostov"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/S-hertogenbosch"></see>
     /// </summary>
-    let ``S-hertogenbosch`` =
-        Namespaced_IRI.parse _namespace_name "S-hertogenbosch" |> NamespacedName
-
+    let ``S-hertogenbosch`` = _prefix "S-hertogenbosch"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SAAB"></see>
     /// </summary>
-    let SAAB = Namespaced_IRI.parse _namespace_name "SAAB" |> NamespacedName
+    let SAAB = _prefix "SAAB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SAJE"></see>
     /// </summary>
-    let SAJE = Namespaced_IRI.parse _namespace_name "SAJE" |> NamespacedName
+    let SAJE = _prefix "SAJE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SARI"></see>
     /// </summary>
-    let SARI = Namespaced_IRI.parse _namespace_name "SARI" |> NamespacedName
+    let SARI = _prefix "SARI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SEST"></see>
     /// </summary>
-    let SEST = Namespaced_IRI.parse _namespace_name "SEST" |> NamespacedName
+    let SEST = _prefix "SEST"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Stockholm"></see>
     /// </summary>
-    let Stockholm = Namespaced_IRI.parse _namespace_name "Stockholm" |> NamespacedName
+    let Stockholm = _prefix "Stockholm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SGSI"></see>
     /// </summary>
-    let SGSI = Namespaced_IRI.parse _namespace_name "SGSI" |> NamespacedName
+    let SGSI = _prefix "SGSI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Singapore"></see>
     /// </summary>
-    let Singapore = Namespaced_IRI.parse _namespace_name "Singapore" |> NamespacedName
+    let Singapore = _prefix "Singapore"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SILJ"></see>
     /// </summary>
-    let SILJ = Namespaced_IRI.parse _namespace_name "SILJ" |> NamespacedName
+    let SILJ = _prefix "SILJ"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SKBR"></see>
     /// </summary>
-    let SKBR = Namespaced_IRI.parse _namespace_name "SKBR" |> NamespacedName
+    let SKBR = _prefix "SKBR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SLFR"></see>
     /// </summary>
-    let SLFR = Namespaced_IRI.parse _namespace_name "SLFR" |> NamespacedName
+    let SLFR = _prefix "SLFR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SNDA"></see>
     /// </summary>
-    let SNDA = Namespaced_IRI.parse _namespace_name "SNDA" |> NamespacedName
+    let SNDA = _prefix "SNDA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/SVSS"></see>
     /// </summary>
-    let SVSS = Namespaced_IRI.parse _namespace_name "SVSS" |> NamespacedName
-
+    let SVSS = _prefix "SVSS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Salvador"></see>
     /// </summary>
-    let San_Salvador =
-        Namespaced_IRI.parse _namespace_name "San_Salvador" |> NamespacedName
-
+    let San_Salvador = _prefix "San_Salvador"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sabadell"></see>
     /// </summary>
-    let Sabadell = Namespaced_IRI.parse _namespace_name "Sabadell" |> NamespacedName
+    let Sabadell = _prefix "Sabadell"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sacramento"></see>
     /// </summary>
-    let Sacramento = Namespaced_IRI.parse _namespace_name "Sacramento" |> NamespacedName
-
+    let Sacramento = _prefix "Sacramento"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Saint_Petersburg"></see>
     /// </summary>
-    let Saint_Petersburg =
-        Namespaced_IRI.parse _namespace_name "Saint_Petersburg" |> NamespacedName
-
+    let Saint_Petersburg = _prefix "Saint_Petersburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Salzburg"></see>
     /// </summary>
-    let Salzburg = Namespaced_IRI.parse _namespace_name "Salzburg" |> NamespacedName
+    let Salzburg = _prefix "Salzburg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Samara"></see>
     /// </summary>
-    let Samara = Namespaced_IRI.parse _namespace_name "Samara" |> NamespacedName
+    let Samara = _prefix "Samara"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Carlos"></see>
     /// </summary>
-    let San_Carlos = Namespaced_IRI.parse _namespace_name "San_Carlos" |> NamespacedName
-
+    let San_Carlos = _prefix "San_Carlos"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Francisco"></see>
     /// </summary>
-    let San_Francisco =
-        Namespaced_IRI.parse _namespace_name "San_Francisco" |> NamespacedName
-
+    let San_Francisco = _prefix "San_Francisco"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/San_Pedro_Sula"></see>
     /// </summary>
-    let San_Pedro_Sula =
-        Namespaced_IRI.parse _namespace_name "San_Pedro_Sula" |> NamespacedName
-
+    let San_Pedro_Sula = _prefix "San_Pedro_Sula"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Santa_Fe"></see>
     /// </summary>
-    let Santa_Fe = Namespaced_IRI.parse _namespace_name "Santa_Fe" |> NamespacedName
+    let Santa_Fe = _prefix "Santa_Fe"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Santander"></see>
     /// </summary>
-    let Santander = Namespaced_IRI.parse _namespace_name "Santander" |> NamespacedName
+    let Santander = _prefix "Santander"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sapporo"></see>
     /// </summary>
-    let Sapporo = Namespaced_IRI.parse _namespace_name "Sapporo" |> NamespacedName
+    let Sapporo = _prefix "Sapporo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sarajevo"></see>
     /// </summary>
-    let Sarajevo = Namespaced_IRI.parse _namespace_name "Sarajevo" |> NamespacedName
+    let Sarajevo = _prefix "Sarajevo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Schwerin"></see>
     /// </summary>
-    let Schwerin = Namespaced_IRI.parse _namespace_name "Schwerin" |> NamespacedName
+    let Schwerin = _prefix "Schwerin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Scottsdale"></see>
     /// </summary>
-    let Scottsdale = Namespaced_IRI.parse _namespace_name "Scottsdale" |> NamespacedName
+    let Scottsdale = _prefix "Scottsdale"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sea_Girt"></see>
     /// </summary>
-    let Sea_Girt = Namespaced_IRI.parse _namespace_name "Sea_Girt" |> NamespacedName
+    let Sea_Girt = _prefix "Sea_Girt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Seattle"></see>
     /// </summary>
-    let Seattle = Namespaced_IRI.parse _namespace_name "Seattle" |> NamespacedName
+    let Seattle = _prefix "Seattle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Shenzhen"></see>
     /// </summary>
-    let Shenzhen = Namespaced_IRI.parse _namespace_name "Shenzhen" |> NamespacedName
-
+    let Shenzhen = _prefix "Shenzhen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Shimonoseki"></see>
     /// </summary>
-    let Shimonoseki =
-        Namespaced_IRI.parse _namespace_name "Shimonoseki" |> NamespacedName
-
+    let Shimonoseki = _prefix "Shimonoseki"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sibiu"></see>
     /// </summary>
-    let Sibiu = Namespaced_IRI.parse _namespace_name "Sibiu" |> NamespacedName
+    let Sibiu = _prefix "Sibiu"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Silkeborg"></see>
     /// </summary>
-    let Silkeborg = Namespaced_IRI.parse _namespace_name "Silkeborg" |> NamespacedName
+    let Silkeborg = _prefix "Silkeborg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Skopje"></see>
     /// </summary>
-    let Skopje = Namespaced_IRI.parse _namespace_name "Skopje" |> NamespacedName
+    let Skopje = _prefix "Skopje"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Sliema"></see>
     /// </summary>
-    let Sliema = Namespaced_IRI.parse _namespace_name "Sliema" |> NamespacedName
+    let Sliema = _prefix "Sliema"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Split"></see>
     /// </summary>
-    let Split = Namespaced_IRI.parse _namespace_name "Split" |> NamespacedName
+    let Split = _prefix "Split"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/St_Albans"></see>
     /// </summary>
-    let St_Albans = Namespaced_IRI.parse _namespace_name "St_Albans" |> NamespacedName
+    let St_Albans = _prefix "St_Albans"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/St_John"></see>
     /// </summary>
-    let St_John = Namespaced_IRI.parse _namespace_name "St_John" |> NamespacedName
+    let St_John = _prefix "St_John"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Stamford"></see>
     /// </summary>
-    let Stamford = Namespaced_IRI.parse _namespace_name "Stamford" |> NamespacedName
+    let Stamford = _prefix "Stamford"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Summit"></see>
     /// </summary>
-    let Summit = Namespaced_IRI.parse _namespace_name "Summit" |> NamespacedName
+    let Summit = _prefix "Summit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Surabaya"></see>
     /// </summary>
-    let Surabaya = Namespaced_IRI.parse _namespace_name "Surabaya" |> NamespacedName
+    let Surabaya = _prefix "Surabaya"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Suva"></see>
     /// </summary>
-    let Suva = Namespaced_IRI.parse _namespace_name "Suva" |> NamespacedName
+    let Suva = _prefix "Suva"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/THBA"></see>
     /// </summary>
-    let THBA = Namespaced_IRI.parse _namespace_name "THBA" |> NamespacedName
+    let THBA = _prefix "THBA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TNTU"></see>
     /// </summary>
-    let TNTU = Namespaced_IRI.parse _namespace_name "TNTU" |> NamespacedName
+    let TNTU = _prefix "TNTU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tunis"></see>
     /// </summary>
-    let Tunis = Namespaced_IRI.parse _namespace_name "Tunis" |> NamespacedName
+    let Tunis = _prefix "Tunis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TRAN"></see>
     /// </summary>
-    let TRAN = Namespaced_IRI.parse _namespace_name "TRAN" |> NamespacedName
+    let TRAN = _prefix "TRAN"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TRIS"></see>
     /// </summary>
-    let TRIS = Namespaced_IRI.parse _namespace_name "TRIS" |> NamespacedName
+    let TRIS = _prefix "TRIS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TTPS"></see>
     /// </summary>
-    let TTPS = Namespaced_IRI.parse _namespace_name "TTPS" |> NamespacedName
+    let TTPS = _prefix "TTPS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TWTA"></see>
     /// </summary>
-    let TWTA = Namespaced_IRI.parse _namespace_name "TWTA" |> NamespacedName
+    let TWTA = _prefix "TWTA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Taipei"></see>
     /// </summary>
-    let Taipei = Namespaced_IRI.parse _namespace_name "Taipei" |> NamespacedName
+    let Taipei = _prefix "Taipei"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TZDA"></see>
     /// </summary>
-    let TZDA = Namespaced_IRI.parse _namespace_name "TZDA" |> NamespacedName
+    let TZDA = _prefix "TZDA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/TZDO"></see>
     /// </summary>
-    let TZDO = Namespaced_IRI.parse _namespace_name "TZDO" |> NamespacedName
+    let TZDO = _prefix "TZDO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Taiwan"></see>
     /// </summary>
-    let Taiwan = Namespaced_IRI.parse _namespace_name "Taiwan" |> NamespacedName
+    let Taiwan = _prefix "Taiwan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tashkent"></see>
     /// </summary>
-    let Tashkent = Namespaced_IRI.parse _namespace_name "Tashkent" |> NamespacedName
+    let Tashkent = _prefix "Tashkent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/The_Hague"></see>
     /// </summary>
-    let The_Hague = Namespaced_IRI.parse _namespace_name "The_Hague" |> NamespacedName
-
+    let The_Hague = _prefix "The_Hague"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/The_Woodlands"></see>
     /// </summary>
-    let The_Woodlands =
-        Namespaced_IRI.parse _namespace_name "The_Woodlands" |> NamespacedName
-
+    let The_Woodlands = _prefix "The_Woodlands"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tirana"></see>
     /// </summary>
-    let Tirana = Namespaced_IRI.parse _namespace_name "Tirana" |> NamespacedName
+    let Tirana = _prefix "Tirana"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Torshavn"></see>
     /// </summary>
-    let Torshavn = Namespaced_IRI.parse _namespace_name "Torshavn" |> NamespacedName
+    let Torshavn = _prefix "Torshavn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tortola"></see>
     /// </summary>
-    let Tortola = Namespaced_IRI.parse _namespace_name "Tortola" |> NamespacedName
+    let Tortola = _prefix "Tortola"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Triesen"></see>
     /// </summary>
-    let Triesen = Namespaced_IRI.parse _namespace_name "Triesen" |> NamespacedName
+    let Triesen = _prefix "Triesen"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tripoli"></see>
     /// </summary>
-    let Tripoli = Namespaced_IRI.parse _namespace_name "Tripoli" |> NamespacedName
+    let Tripoli = _prefix "Tripoli"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tromso"></see>
     /// </summary>
-    let Tromso = Namespaced_IRI.parse _namespace_name "Tromso" |> NamespacedName
+    let Tromso = _prefix "Tromso"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Trondheim"></see>
     /// </summary>
-    let Trondheim = Namespaced_IRI.parse _namespace_name "Trondheim" |> NamespacedName
+    let Trondheim = _prefix "Trondheim"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Tucuman"></see>
     /// </summary>
-    let Tucuman = Namespaced_IRI.parse _namespace_name "Tucuman" |> NamespacedName
+    let Tucuman = _prefix "Tucuman"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/UAKI"></see>
     /// </summary>
-    let UAKI = Namespaced_IRI.parse _namespace_name "UAKI" |> NamespacedName
+    let UAKI = _prefix "UAKI"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/UGKA"></see>
     /// </summary>
-    let UGKA = Namespaced_IRI.parse _namespace_name "UGKA" |> NamespacedName
+    let UGKA = _prefix "UGKA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USBO"></see>
     /// </summary>
-    let USBO = Namespaced_IRI.parse _namespace_name "USBO" |> NamespacedName
+    let USBO = _prefix "USBO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USCH"></see>
     /// </summary>
-    let USCH = Namespaced_IRI.parse _namespace_name "USCH" |> NamespacedName
+    let USCH = _prefix "USCH"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USCR"></see>
     /// </summary>
-    let USCR = Namespaced_IRI.parse _namespace_name "USCR" |> NamespacedName
+    let USCR = _prefix "USCR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USDC"></see>
     /// </summary>
-    let USDC = Namespaced_IRI.parse _namespace_name "USDC" |> NamespacedName
+    let USDC = _prefix "USDC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Washington"></see>
     /// </summary>
-    let Washington = Namespaced_IRI.parse _namespace_name "Washington" |> NamespacedName
+    let Washington = _prefix "Washington"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USDN"></see>
     /// </summary>
-    let USDN = Namespaced_IRI.parse _namespace_name "USDN" |> NamespacedName
+    let USDN = _prefix "USDN"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USDT"></see>
     /// </summary>
-    let USDT = Namespaced_IRI.parse _namespace_name "USDT" |> NamespacedName
+    let USDT = _prefix "USDT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USGS"></see>
     /// </summary>
-    let USGS = Namespaced_IRI.parse _namespace_name "USGS" |> NamespacedName
-
+    let USGS = _prefix "USGS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USGovernmentSecuritiesBusinessDay"></see>
     /// </summary>
-    let USGovernmentSecuritiesBusinessDay =
-        Namespaced_IRI.parse _namespace_name "USGovernmentSecuritiesBusinessDay" |> NamespacedName
-
+    let USGovernmentSecuritiesBusinessDay = _prefix "USGovernmentSecuritiesBusinessDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USHL"></see>
     /// </summary>
-    let USHL = Namespaced_IRI.parse _namespace_name "USHL" |> NamespacedName
+    let USHL = _prefix "USHL"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USHO"></see>
     /// </summary>
-    let USHO = Namespaced_IRI.parse _namespace_name "USHO" |> NamespacedName
+    let USHO = _prefix "USHO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USLA"></see>
     /// </summary>
-    let USLA = Namespaced_IRI.parse _namespace_name "USLA" |> NamespacedName
+    let USLA = _prefix "USLA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USMB"></see>
     /// </summary>
-    let USMB = Namespaced_IRI.parse _namespace_name "USMB" |> NamespacedName
+    let USMB = _prefix "USMB"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USMN"></see>
     /// </summary>
-    let USMN = Namespaced_IRI.parse _namespace_name "USMN" |> NamespacedName
+    let USMN = _prefix "USMN"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USNY"></see>
     /// </summary>
-    let USNY = Namespaced_IRI.parse _namespace_name "USNY" |> NamespacedName
+    let USNY = _prefix "USNY"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USPO"></see>
     /// </summary>
-    let USPO = Namespaced_IRI.parse _namespace_name "USPO" |> NamespacedName
+    let USPO = _prefix "USPO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USSA"></see>
     /// </summary>
-    let USSA = Namespaced_IRI.parse _namespace_name "USSA" |> NamespacedName
+    let USSA = _prefix "USSA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USSE"></see>
     /// </summary>
-    let USSE = Namespaced_IRI.parse _namespace_name "USSE" |> NamespacedName
+    let USSE = _prefix "USSE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USSF"></see>
     /// </summary>
-    let USSF = Namespaced_IRI.parse _namespace_name "USSF" |> NamespacedName
+    let USSF = _prefix "USSF"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/USWT"></see>
     /// </summary>
-    let USWT = Namespaced_IRI.parse _namespace_name "USWT" |> NamespacedName
+    let USWT = _prefix "USWT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Wichita"></see>
     /// </summary>
-    let Wichita = Namespaced_IRI.parse _namespace_name "Wichita" |> NamespacedName
+    let Wichita = _prefix "Wichita"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/UYMO"></see>
     /// </summary>
-    let UYMO = Namespaced_IRI.parse _namespace_name "UYMO" |> NamespacedName
+    let UYMO = _prefix "UYMO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/UZTA"></see>
     /// </summary>
-    let UZTA = Namespaced_IRI.parse _namespace_name "UZTA" |> NamespacedName
-
+    let UZTA = _prefix "UZTA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Unterschleisshem"></see>
     /// </summary>
-    let Unterschleisshem =
-        Namespaced_IRI.parse _namespace_name "Unterschleisshem" |> NamespacedName
-
+    let Unterschleisshem = _prefix "Unterschleisshem"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Utrecht"></see>
     /// </summary>
-    let Utrecht = Namespaced_IRI.parse _namespace_name "Utrecht" |> NamespacedName
+    let Utrecht = _prefix "Utrecht"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/VECA"></see>
     /// </summary>
-    let VECA = Namespaced_IRI.parse _namespace_name "VECA" |> NamespacedName
+    let VECA = _prefix "VECA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/VGRT"></see>
     /// </summary>
-    let VGRT = Namespaced_IRI.parse _namespace_name "VGRT" |> NamespacedName
+    let VGRT = _prefix "VGRT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/VNHA"></see>
     /// </summary>
-    let VNHA = Namespaced_IRI.parse _namespace_name "VNHA" |> NamespacedName
+    let VNHA = _prefix "VNHA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/VNHC"></see>
     /// </summary>
-    let VNHC = Namespaced_IRI.parse _namespace_name "VNHC" |> NamespacedName
+    let VNHC = _prefix "VNHC"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Vaduz"></see>
     /// </summary>
-    let Vaduz = Namespaced_IRI.parse _namespace_name "Vaduz" |> NamespacedName
+    let Vaduz = _prefix "Vaduz"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Valencia"></see>
     /// </summary>
-    let Valencia = Namespaced_IRI.parse _namespace_name "Valencia" |> NamespacedName
+    let Valencia = _prefix "Valencia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Valparaiso"></see>
     /// </summary>
-    let Valparaiso = Namespaced_IRI.parse _namespace_name "Valparaiso" |> NamespacedName
+    let Valparaiso = _prefix "Valparaiso"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Varazdin"></see>
     /// </summary>
-    let Varazdin = Namespaced_IRI.parse _namespace_name "Varazdin" |> NamespacedName
+    let Varazdin = _prefix "Varazdin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Victoria"></see>
     /// </summary>
-    let Victoria = Namespaced_IRI.parse _namespace_name "Victoria" |> NamespacedName
-
+    let Victoria = _prefix "Victoria"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Victoria_Falls"></see>
     /// </summary>
-    let Victoria_Falls =
-        Namespaced_IRI.parse _namespace_name "Victoria_Falls" |> NamespacedName
-
+    let Victoria_Falls = _prefix "Victoria_Falls"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Vilnius"></see>
     /// </summary>
-    let Vilnius = Namespaced_IRI.parse _namespace_name "Vilnius" |> NamespacedName
-
+    let Vilnius = _prefix "Vilnius"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Vladivostok"></see>
     /// </summary>
-    let Vladivostok =
-        Namespaced_IRI.parse _namespace_name "Vladivostok" |> NamespacedName
-
+    let Vladivostok = _prefix "Vladivostok"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Washington_New_York"></see>
     /// </summary>
-    let Washington_New_York =
-        Namespaced_IRI.parse _namespace_name "Washington_New_York" |> NamespacedName
-
+    let Washington_New_York = _prefix "Washington_New_York"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Wilmington"></see>
     /// </summary>
-    let Wilmington = Namespaced_IRI.parse _namespace_name "Wilmington" |> NamespacedName
-
+    let Wilmington = _prefix "Wilmington"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Winter_Park"></see>
     /// </summary>
-    let Winter_Park =
-        Namespaced_IRI.parse _namespace_name "Winter_Park" |> NamespacedName
-
+    let Winter_Park = _prefix "Winter_Park"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Wroclaw"></see>
     /// </summary>
-    let Wroclaw = Namespaced_IRI.parse _namespace_name "Wroclaw" |> NamespacedName
+    let Wroclaw = _prefix "Wroclaw"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Wuxi"></see>
     /// </summary>
-    let Wuxi = Namespaced_IRI.parse _namespace_name "Wuxi" |> NamespacedName
+    let Wuxi = _prefix "Wuxi"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/YEAD"></see>
     /// </summary>
-    let YEAD = Namespaced_IRI.parse _namespace_name "YEAD" |> NamespacedName
+    let YEAD = _prefix "YEAD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ZAJO"></see>
     /// </summary>
-    let ZAJO = Namespaced_IRI.parse _namespace_name "ZAJO" |> NamespacedName
+    let ZAJO = _prefix "ZAJO"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ZMLU"></see>
     /// </summary>
-    let ZMLU = Namespaced_IRI.parse _namespace_name "ZMLU" |> NamespacedName
+    let ZMLU = _prefix "ZMLU"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/ZWHA"></see>
     /// </summary>
-    let ZWHA = Namespaced_IRI.parse _namespace_name "ZWHA" |> NamespacedName
+    let ZWHA = _prefix "ZWHA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Zaragoza"></see>
     /// </summary>
-    let Zaragoza = Namespaced_IRI.parse _namespace_name "Zaragoza" |> NamespacedName
+    let Zaragoza = _prefix "Zaragoza"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Zhengzhou"></see>
     /// </summary>
-    let Zhengzhou = Namespaced_IRI.parse _namespace_name "Zhengzhou" |> NamespacedName
+    let Zhengzhou = _prefix "Zhengzhou"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Zilina"></see>
     /// </summary>
-    let Zilina = Namespaced_IRI.parse _namespace_name "Zilina" |> NamespacedName
+    let Zilina = _prefix "Zilina"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/Zug"></see>
     /// </summary>
-    let Zug = Namespaced_IRI.parse _namespace_name "Zug" |> NamespacedName
+    let Zug = _prefix "Zug"

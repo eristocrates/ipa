@@ -1,63 +1,54 @@
 namespace http.health.data.gov.def.hospital.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module hosp =
     let _namespace_name = "http://health.data.gov/def/hospital/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/Hospital"></see>
     /// </summary>
-    let Hospital = Namespaced_IRI.parse _namespace_name "Hospital" |> NamespacedName
-
+    let Hospital = _prefix "Hospital"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/HospitalOwnershipType"></see>
     /// </summary>
-    let HospitalOwnershipType =
-        Namespaced_IRI.parse _namespace_name "HospitalOwnershipType" |> NamespacedName
-
+    let HospitalOwnershipType = _prefix "HospitalOwnershipType"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/HospitalType"></see>
     /// </summary>
-    let HospitalType =
-        Namespaced_IRI.parse _namespace_name "HospitalType" |> NamespacedName
-
+    let HospitalType = _prefix "HospitalType"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/accreditation"></see>
     /// </summary>
-    let accreditation =
-        Namespaced_IRI.parse _namespace_name "accreditation" |> NamespacedName
-
+    let accreditation = _prefix "accreditation"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/cacProvider"></see>
     /// </summary>
-    let cacProvider =
-        Namespaced_IRI.parse _namespace_name "cacProvider" |> NamespacedName
-
+    let cacProvider = _prefix "cacProvider"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/emergencyServices"></see>
     /// </summary>
-    let emergencyServices =
-        Namespaced_IRI.parse _namespace_name "emergencyServices" |> NamespacedName
-
+    let emergencyServices = _prefix "emergencyServices"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/mpvProvider"></see>
     /// </summary>
-    let mpvProvider =
-        Namespaced_IRI.parse _namespace_name "mpvProvider" |> NamespacedName
-
+    let mpvProvider = _prefix "mpvProvider"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/ownership"></see>
     /// </summary>
-    let ownership = Namespaced_IRI.parse _namespace_name "ownership" |> NamespacedName
+    let ownership = _prefix "ownership"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/site"></see>
     /// </summary>
-    let site = Namespaced_IRI.parse _namespace_name "site" |> NamespacedName
+    let site = _prefix "site"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/treats"></see>
     /// </summary>
-    let treats = Namespaced_IRI.parse _namespace_name "treats" |> NamespacedName
+    let treats = _prefix "treats"
     /// <summary>
     ///   <see href="http://health.data.gov/def/hospital/type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"

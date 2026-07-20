@@ -1,581 +1,458 @@
 namespace http.www.w3.org.TR._2003.PR_owl_guide_20031209.food.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fowl =
     let _namespace_name = "http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Bananas"></see>
     /// </summary>
-    let Bananas = Namespaced_IRI.parse _namespace_name "Bananas" |> NamespacedName
+    let Bananas = _prefix "Bananas"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruit"></see>
     /// </summary>
-    let SweetFruit = Namespaced_IRI.parse _namespace_name "SweetFruit" |> NamespacedName
+    let SweetFruit = _prefix "SweetFruit"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BeefCurry"></see>
     /// </summary>
-    let BeefCurry = Namespaced_IRI.parse _namespace_name "BeefCurry" |> NamespacedName
-
+    let BeefCurry = _prefix "BeefCurry"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpicyRedMeat"></see>
     /// </summary>
-    let SpicyRedMeat =
-        Namespaced_IRI.parse _namespace_name "SpicyRedMeat" |> NamespacedName
-
+    let SpicyRedMeat = _prefix "SpicyRedMeat"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BlandFish"></see>
     /// </summary>
-    let BlandFish = Namespaced_IRI.parse _namespace_name "BlandFish" |> NamespacedName
+    let BlandFish = _prefix "BlandFish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fish"></see>
     /// </summary>
-    let Fish = Namespaced_IRI.parse _namespace_name "Fish" |> NamespacedName
-
+    let Fish = _prefix "Fish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonBlandFish"></see>
     /// </summary>
-    let NonBlandFish =
-        Namespaced_IRI.parse _namespace_name "NonBlandFish" |> NamespacedName
-
+    let NonBlandFish = _prefix "NonBlandFish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BlandFishCourse"></see>
     /// </summary>
-    let BlandFishCourse =
-        Namespaced_IRI.parse _namespace_name "BlandFishCourse" |> NamespacedName
-
+    let BlandFishCourse = _prefix "BlandFishCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#hasDrink"></see>
     /// </summary>
-    let hasDrink = Namespaced_IRI.parse _namespace_name "hasDrink" |> NamespacedName
+    let hasDrink = _prefix "hasDrink"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Delicate"></see>
     /// </summary>
-    let Delicate = Namespaced_IRI.parse _namespace_name "Delicate" |> NamespacedName
+    let Delicate = _prefix "Delicate"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse"></see>
     /// </summary>
-    let MealCourse = Namespaced_IRI.parse _namespace_name "MealCourse" |> NamespacedName
+    let MealCourse = _prefix "MealCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#hasFood"></see>
     /// </summary>
-    let hasFood = Namespaced_IRI.parse _namespace_name "hasFood" |> NamespacedName
+    let hasFood = _prefix "hasFood"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Cake"></see>
     /// </summary>
-    let Cake = Namespaced_IRI.parse _namespace_name "Cake" |> NamespacedName
-
+    let Cake = _prefix "Cake"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetDessert"></see>
     /// </summary>
-    let SweetDessert =
-        Namespaced_IRI.parse _namespace_name "SweetDessert" |> NamespacedName
-
+    let SweetDessert = _prefix "SweetDessert"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Cheese"></see>
     /// </summary>
-    let Cheese = Namespaced_IRI.parse _namespace_name "Cheese" |> NamespacedName
-
+    let Cheese = _prefix "Cheese"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#CheeseNutsDessert"></see>
     /// </summary>
-    let CheeseNutsDessert =
-        Namespaced_IRI.parse _namespace_name "CheeseNutsDessert" |> NamespacedName
-
+    let CheeseNutsDessert = _prefix "CheeseNutsDessert"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Dessert"></see>
     /// </summary>
-    let Dessert = Namespaced_IRI.parse _namespace_name "Dessert" |> NamespacedName
-
+    let Dessert = _prefix "Dessert"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#CheeseNutsDessertCourse"></see>
     /// </summary>
-    let CheeseNutsDessertCourse =
-        Namespaced_IRI.parse _namespace_name "CheeseNutsDessertCourse" |> NamespacedName
-
+    let CheeseNutsDessertCourse = _prefix "CheeseNutsDessertCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Red"></see>
     /// </summary>
-    let Red = Namespaced_IRI.parse _namespace_name "Red" |> NamespacedName
+    let Red = _prefix "Red"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Chicken"></see>
     /// </summary>
-    let Chicken = Namespaced_IRI.parse _namespace_name "Chicken" |> NamespacedName
-
+    let Chicken = _prefix "Chicken"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#LightMeatFowl"></see>
     /// </summary>
-    let LightMeatFowl =
-        Namespaced_IRI.parse _namespace_name "LightMeatFowl" |> NamespacedName
-
+    let LightMeatFowl = _prefix "LightMeatFowl"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Clams"></see>
     /// </summary>
-    let Clams = Namespaced_IRI.parse _namespace_name "Clams" |> NamespacedName
-
+    let Clams = _prefix "Clams"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonOysterShellfish"></see>
     /// </summary>
-    let NonOysterShellfish =
-        Namespaced_IRI.parse _namespace_name "NonOysterShellfish" |> NamespacedName
-
+    let NonOysterShellfish = _prefix "NonOysterShellfish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing"></see>
     /// </summary>
-    let ConsumableThing =
-        Namespaced_IRI.parse _namespace_name "ConsumableThing" |> NamespacedName
-
+    let ConsumableThing = _prefix "ConsumableThing"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Crab"></see>
     /// </summary>
-    let Crab = Namespaced_IRI.parse _namespace_name "Crab" |> NamespacedName
-
+    let Crab = _prefix "Crab"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DarkMeatFowl"></see>
     /// </summary>
-    let DarkMeatFowl =
-        Namespaced_IRI.parse _namespace_name "DarkMeatFowl" |> NamespacedName
-
+    let DarkMeatFowl = _prefix "DarkMeatFowl"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fowl"></see>
     /// </summary>
-    let Fowl = Namespaced_IRI.parse _namespace_name "Fowl" |> NamespacedName
-
+    let Fowl = _prefix "Fowl"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DarkMeatFowlCourse"></see>
     /// </summary>
-    let DarkMeatFowlCourse =
-        Namespaced_IRI.parse _namespace_name "DarkMeatFowlCourse" |> NamespacedName
-
+    let DarkMeatFowlCourse = _prefix "DarkMeatFowlCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Light"></see>
     /// </summary>
-    let Light = Namespaced_IRI.parse _namespace_name "Light" |> NamespacedName
+    let Light = _prefix "Light"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Dry"></see>
     /// </summary>
-    let Dry = Namespaced_IRI.parse _namespace_name "Dry" |> NamespacedName
-
+    let Dry = _prefix "Dry"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing"></see>
     /// </summary>
-    let EdibleThing =
-        Namespaced_IRI.parse _namespace_name "EdibleThing" |> NamespacedName
-
+    let EdibleThing = _prefix "EdibleThing"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fruit"></see>
     /// </summary>
-    let Fruit = Namespaced_IRI.parse _namespace_name "Fruit" |> NamespacedName
-
+    let Fruit = _prefix "Fruit"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DessertCourse"></see>
     /// </summary>
-    let DessertCourse =
-        Namespaced_IRI.parse _namespace_name "DessertCourse" |> NamespacedName
-
+    let DessertCourse = _prefix "DessertCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Full"></see>
     /// </summary>
-    let Full = Namespaced_IRI.parse _namespace_name "Full" |> NamespacedName
+    let Full = _prefix "Full"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Strong"></see>
     /// </summary>
-    let Strong = Namespaced_IRI.parse _namespace_name "Strong" |> NamespacedName
+    let Strong = _prefix "Strong"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Sweet"></see>
     /// </summary>
-    let Sweet = Namespaced_IRI.parse _namespace_name "Sweet" |> NamespacedName
+    let Sweet = _prefix "Sweet"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Duck"></see>
     /// </summary>
-    let Duck = Namespaced_IRI.parse _namespace_name "Duck" |> NamespacedName
-
+    let Duck = _prefix "Duck"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EatingGrape"></see>
     /// </summary>
-    let EatingGrape =
-        Namespaced_IRI.parse _namespace_name "EatingGrape" |> NamespacedName
-
+    let EatingGrape = _prefix "EatingGrape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape"></see>
     /// </summary>
-    let Grape = Namespaced_IRI.parse _namespace_name "Grape" |> NamespacedName
-
+    let Grape = _prefix "Grape"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FettucineAlfRedo"></see>
     /// </summary>
-    let FettucineAlfRedo =
-        Namespaced_IRI.parse _namespace_name "FettucineAlfRedo" |> NamespacedName
-
+    let FettucineAlfRedo = _prefix "FettucineAlfRedo"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithHeavyCreamSauce"></see>
     /// </summary>
-    let PastaWithHeavyCreamSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithHeavyCreamSauce" |> NamespacedName
-
+    let PastaWithHeavyCreamSauce = _prefix "PastaWithHeavyCreamSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Seafood"></see>
     /// </summary>
-    let Seafood = Namespaced_IRI.parse _namespace_name "Seafood" |> NamespacedName
+    let Seafood = _prefix "Seafood"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Shellfish"></see>
     /// </summary>
-    let Shellfish = Namespaced_IRI.parse _namespace_name "Shellfish" |> NamespacedName
+    let Shellfish = _prefix "Shellfish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FishCourse"></see>
     /// </summary>
-    let FishCourse = Namespaced_IRI.parse _namespace_name "FishCourse" |> NamespacedName
+    let FishCourse = _prefix "FishCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Medium"></see>
     /// </summary>
-    let Medium = Namespaced_IRI.parse _namespace_name "Medium" |> NamespacedName
+    let Medium = _prefix "Medium"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Flounder"></see>
     /// </summary>
-    let Flounder = Namespaced_IRI.parse _namespace_name "Flounder" |> NamespacedName
+    let Flounder = _prefix "Flounder"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FraDiavolo"></see>
     /// </summary>
-    let FraDiavolo = Namespaced_IRI.parse _namespace_name "FraDiavolo" |> NamespacedName
-
+    let FraDiavolo = _prefix "FraDiavolo"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithSpicyRedSauce"></see>
     /// </summary>
-    let PastaWithSpicyRedSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithSpicyRedSauce" |> NamespacedName
-
+    let PastaWithSpicyRedSauce = _prefix "PastaWithSpicyRedSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSweetFruit"></see>
     /// </summary>
-    let NonSweetFruit =
-        Namespaced_IRI.parse _namespace_name "NonSweetFruit" |> NamespacedName
-
+    let NonSweetFruit = _prefix "NonSweetFruit"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FruitCourse"></see>
     /// </summary>
-    let FruitCourse =
-        Namespaced_IRI.parse _namespace_name "FruitCourse" |> NamespacedName
-
+    let FruitCourse = _prefix "FruitCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#White"></see>
     /// </summary>
-    let White = Namespaced_IRI.parse _namespace_name "White" |> NamespacedName
-
+    let White = _prefix "White"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#GarlickyRoast"></see>
     /// </summary>
-    let GarlickyRoast =
-        Namespaced_IRI.parse _namespace_name "GarlickyRoast" |> NamespacedName
-
+    let GarlickyRoast = _prefix "GarlickyRoast"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Goose"></see>
     /// </summary>
-    let Goose = Namespaced_IRI.parse _namespace_name "Goose" |> NamespacedName
+    let Goose = _prefix "Goose"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Halibut"></see>
     /// </summary>
-    let Halibut = Namespaced_IRI.parse _namespace_name "Halibut" |> NamespacedName
+    let Halibut = _prefix "Halibut"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Juice"></see>
     /// </summary>
-    let Juice = Namespaced_IRI.parse _namespace_name "Juice" |> NamespacedName
-
+    let Juice = _prefix "Juice"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit"></see>
     /// </summary>
-    let madeFromFruit =
-        Namespaced_IRI.parse _namespace_name "madeFromFruit" |> NamespacedName
-
+    let madeFromFruit = _prefix "madeFromFruit"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid"></see>
     /// </summary>
-    let PotableLiquid =
-        Namespaced_IRI.parse _namespace_name "PotableLiquid" |> NamespacedName
-
+    let PotableLiquid = _prefix "PotableLiquid"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#LightMeatFowlCourse"></see>
     /// </summary>
-    let LightMeatFowlCourse =
-        Namespaced_IRI.parse _namespace_name "LightMeatFowlCourse" |> NamespacedName
-
+    let LightMeatFowlCourse = _prefix "LightMeatFowlCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Moderate"></see>
     /// </summary>
-    let Moderate = Namespaced_IRI.parse _namespace_name "Moderate" |> NamespacedName
+    let Moderate = _prefix "Moderate"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Lobster"></see>
     /// </summary>
-    let Lobster = Namespaced_IRI.parse _namespace_name "Lobster" |> NamespacedName
+    let Lobster = _prefix "Lobster"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meal"></see>
     /// </summary>
-    let Meal = Namespaced_IRI.parse _namespace_name "Meal" |> NamespacedName
+    let Meal = _prefix "Meal"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#course"></see>
     /// </summary>
-    let course = Namespaced_IRI.parse _namespace_name "course" |> NamespacedName
+    let course = _prefix "course"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine"></see>
     /// </summary>
-    let Wine = Namespaced_IRI.parse _namespace_name "Wine" |> NamespacedName
+    let Wine = _prefix "Wine"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meat"></see>
     /// </summary>
-    let Meat = Namespaced_IRI.parse _namespace_name "Meat" |> NamespacedName
+    let Meat = _prefix "Meat"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MixedFruit"></see>
     /// </summary>
-    let MixedFruit = Namespaced_IRI.parse _namespace_name "MixedFruit" |> NamespacedName
+    let MixedFruit = _prefix "MixedFruit"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Mussels"></see>
     /// </summary>
-    let Mussels = Namespaced_IRI.parse _namespace_name "Mussels" |> NamespacedName
-
+    let Mussels = _prefix "Mussels"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonBlandFishCourse"></see>
     /// </summary>
-    let NonBlandFishCourse =
-        Namespaced_IRI.parse _namespace_name "NonBlandFishCourse" |> NamespacedName
-
+    let NonBlandFishCourse = _prefix "NonBlandFishCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonConsumableThing"></see>
     /// </summary>
-    let NonConsumableThing =
-        Namespaced_IRI.parse _namespace_name "NonConsumableThing" |> NamespacedName
-
+    let NonConsumableThing = _prefix "NonConsumableThing"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OysterShellfish"></see>
     /// </summary>
-    let OysterShellfish =
-        Namespaced_IRI.parse _namespace_name "OysterShellfish" |> NamespacedName
-
+    let OysterShellfish = _prefix "OysterShellfish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonOysterShellfishCourse"></see>
     /// </summary>
-    let NonOysterShellfishCourse =
-        Namespaced_IRI.parse _namespace_name "NonOysterShellfishCourse" |> NamespacedName
-
+    let NonOysterShellfishCourse = _prefix "NonOysterShellfishCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonRedMeat"></see>
     /// </summary>
-    let NonRedMeat = Namespaced_IRI.parse _namespace_name "NonRedMeat" |> NamespacedName
+    let NonRedMeat = _prefix "NonRedMeat"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeat"></see>
     /// </summary>
-    let RedMeat = Namespaced_IRI.parse _namespace_name "RedMeat" |> NamespacedName
-
+    let RedMeat = _prefix "RedMeat"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonRedMeatCourse"></see>
     /// </summary>
-    let NonRedMeatCourse =
-        Namespaced_IRI.parse _namespace_name "NonRedMeatCourse" |> NamespacedName
-
+    let NonRedMeatCourse = _prefix "NonRedMeatCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSpicyRedMeat"></see>
     /// </summary>
-    let NonSpicyRedMeat =
-        Namespaced_IRI.parse _namespace_name "NonSpicyRedMeat" |> NamespacedName
-
+    let NonSpicyRedMeat = _prefix "NonSpicyRedMeat"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSpicyRedMeatCourse"></see>
     /// </summary>
-    let NonSpicyRedMeatCourse =
-        Namespaced_IRI.parse _namespace_name "NonSpicyRedMeatCourse" |> NamespacedName
-
+    let NonSpicyRedMeatCourse = _prefix "NonSpicyRedMeatCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSweetFruitCourse"></see>
     /// </summary>
-    let NonSweetFruitCourse =
-        Namespaced_IRI.parse _namespace_name "NonSweetFruitCourse" |> NamespacedName
-
+    let NonSweetFruitCourse = _prefix "NonSweetFruitCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OffDry"></see>
     /// </summary>
-    let OffDry = Namespaced_IRI.parse _namespace_name "OffDry" |> NamespacedName
+    let OffDry = _prefix "OffDry"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Nuts"></see>
     /// </summary>
-    let Nuts = Namespaced_IRI.parse _namespace_name "Nuts" |> NamespacedName
-
+    let Nuts = _prefix "Nuts"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OtherTomatoBasedFood"></see>
     /// </summary>
-    let OtherTomatoBasedFood =
-        Namespaced_IRI.parse _namespace_name "OtherTomatoBasedFood" |> NamespacedName
-
+    let OtherTomatoBasedFood = _prefix "OtherTomatoBasedFood"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pasta"></see>
     /// </summary>
-    let Pasta = Namespaced_IRI.parse _namespace_name "Pasta" |> NamespacedName
-
+    let Pasta = _prefix "Pasta"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OtherTomatoBasedFoodCourse"></see>
     /// </summary>
-    let OtherTomatoBasedFoodCourse =
-        Namespaced_IRI.parse _namespace_name "OtherTomatoBasedFoodCourse" |> NamespacedName
-
+    let OtherTomatoBasedFoodCourse = _prefix "OtherTomatoBasedFoodCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OysterShellfishCourse"></see>
     /// </summary>
-    let OysterShellfishCourse =
-        Namespaced_IRI.parse _namespace_name "OysterShellfishCourse" |> NamespacedName
-
+    let OysterShellfishCourse = _prefix "OysterShellfishCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Oysters"></see>
     /// </summary>
-    let Oysters = Namespaced_IRI.parse _namespace_name "Oysters" |> NamespacedName
-
+    let Oysters = _prefix "Oysters"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithHeavyCreamCourse"></see>
     /// </summary>
-    let PastaWithHeavyCreamCourse =
-        Namespaced_IRI.parse _namespace_name "PastaWithHeavyCreamCourse" |> NamespacedName
-
+    let PastaWithHeavyCreamCourse = _prefix "PastaWithHeavyCreamCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithWhiteSauce"></see>
     /// </summary>
-    let PastaWithWhiteSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithWhiteSauce" |> NamespacedName
-
+    let PastaWithWhiteSauce = _prefix "PastaWithWhiteSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithLightCreamCourse"></see>
     /// </summary>
-    let PastaWithLightCreamCourse =
-        Namespaced_IRI.parse _namespace_name "PastaWithLightCreamCourse" |> NamespacedName
-
+    let PastaWithLightCreamCourse = _prefix "PastaWithLightCreamCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithLightCreamSauce"></see>
     /// </summary>
-    let PastaWithLightCreamSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithLightCreamSauce" |> NamespacedName
-
+    let PastaWithLightCreamSauce = _prefix "PastaWithLightCreamSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithNonSpicyRedSauce"></see>
     /// </summary>
-    let PastaWithNonSpicyRedSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithNonSpicyRedSauce" |> NamespacedName
-
+    let PastaWithNonSpicyRedSauce = _prefix "PastaWithNonSpicyRedSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithRedSauce"></see>
     /// </summary>
-    let PastaWithRedSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithRedSauce" |> NamespacedName
-
+    let PastaWithRedSauce = _prefix "PastaWithRedSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithNonSpicyRedSauceCourse"></see>
     /// </summary>
-    let PastaWithNonSpicyRedSauceCourse =
-        Namespaced_IRI.parse _namespace_name "PastaWithNonSpicyRedSauceCourse" |> NamespacedName
-
+    let PastaWithNonSpicyRedSauceCourse = _prefix "PastaWithNonSpicyRedSauceCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithSpicyRedSauceCourse"></see>
     /// </summary>
-    let PastaWithSpicyRedSauceCourse =
-        Namespaced_IRI.parse _namespace_name "PastaWithSpicyRedSauceCourse" |> NamespacedName
-
+    let PastaWithSpicyRedSauceCourse = _prefix "PastaWithSpicyRedSauceCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithWhiteClamSauce"></see>
     /// </summary>
-    let PastaWithWhiteClamSauce =
-        Namespaced_IRI.parse _namespace_name "PastaWithWhiteClamSauce" |> NamespacedName
-
+    let PastaWithWhiteClamSauce = _prefix "PastaWithWhiteClamSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Peaches"></see>
     /// </summary>
-    let Peaches = Namespaced_IRI.parse _namespace_name "Peaches" |> NamespacedName
+    let Peaches = _prefix "Peaches"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pie"></see>
     /// </summary>
-    let Pie = Namespaced_IRI.parse _namespace_name "Pie" |> NamespacedName
+    let Pie = _prefix "Pie"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pizza"></see>
     /// </summary>
-    let Pizza = Namespaced_IRI.parse _namespace_name "Pizza" |> NamespacedName
+    let Pizza = _prefix "Pizza"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pork"></see>
     /// </summary>
-    let Pork = Namespaced_IRI.parse _namespace_name "Pork" |> NamespacedName
-
+    let Pork = _prefix "Pork"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeatCourse"></see>
     /// </summary>
-    let RedMeatCourse =
-        Namespaced_IRI.parse _namespace_name "RedMeatCourse" |> NamespacedName
-
+    let RedMeatCourse = _prefix "RedMeatCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RoastBeef"></see>
     /// </summary>
-    let RoastBeef = Namespaced_IRI.parse _namespace_name "RoastBeef" |> NamespacedName
+    let RoastBeef = _prefix "RoastBeef"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Rose"></see>
     /// </summary>
-    let Rose = Namespaced_IRI.parse _namespace_name "Rose" |> NamespacedName
+    let Rose = _prefix "Rose"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Scrod"></see>
     /// </summary>
-    let Scrod = Namespaced_IRI.parse _namespace_name "Scrod" |> NamespacedName
-
+    let Scrod = _prefix "Scrod"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SeafoodCourse"></see>
     /// </summary>
-    let SeafoodCourse =
-        Namespaced_IRI.parse _namespace_name "SeafoodCourse" |> NamespacedName
-
+    let SeafoodCourse = _prefix "SeafoodCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ShellfishCourse"></see>
     /// </summary>
-    let ShellfishCourse =
-        Namespaced_IRI.parse _namespace_name "ShellfishCourse" |> NamespacedName
-
+    let ShellfishCourse = _prefix "ShellfishCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpaghettiWithTomatoSauce"></see>
     /// </summary>
-    let SpaghettiWithTomatoSauce =
-        Namespaced_IRI.parse _namespace_name "SpaghettiWithTomatoSauce" |> NamespacedName
-
+    let SpaghettiWithTomatoSauce = _prefix "SpaghettiWithTomatoSauce"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpicyRedMeatCourse"></see>
     /// </summary>
-    let SpicyRedMeatCourse =
-        Namespaced_IRI.parse _namespace_name "SpicyRedMeatCourse" |> NamespacedName
-
+    let SpicyRedMeatCourse = _prefix "SpicyRedMeatCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Steak"></see>
     /// </summary>
-    let Steak = Namespaced_IRI.parse _namespace_name "Steak" |> NamespacedName
-
+    let Steak = _prefix "Steak"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetDessertCourse"></see>
     /// </summary>
-    let SweetDessertCourse =
-        Namespaced_IRI.parse _namespace_name "SweetDessertCourse" |> NamespacedName
-
+    let SweetDessertCourse = _prefix "SweetDessertCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruitCourse"></see>
     /// </summary>
-    let SweetFruitCourse =
-        Namespaced_IRI.parse _namespace_name "SweetFruitCourse" |> NamespacedName
-
+    let SweetFruitCourse = _prefix "SweetFruitCourse"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Swordfish"></see>
     /// </summary>
-    let Swordfish = Namespaced_IRI.parse _namespace_name "Swordfish" |> NamespacedName
-
+    let Swordfish = _prefix "Swordfish"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ThompsonSeedless"></see>
     /// </summary>
-    let ThompsonSeedless =
-        Namespaced_IRI.parse _namespace_name "ThompsonSeedless" |> NamespacedName
-
+    let ThompsonSeedless = _prefix "ThompsonSeedless"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Tuna"></see>
     /// </summary>
-    let Tuna = Namespaced_IRI.parse _namespace_name "Tuna" |> NamespacedName
+    let Tuna = _prefix "Tuna"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Turkey"></see>
     /// </summary>
-    let Turkey = Namespaced_IRI.parse _namespace_name "Turkey" |> NamespacedName
+    let Turkey = _prefix "Turkey"
     /// <summary>
     ///   <see href="http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Veal"></see>
     /// </summary>
-    let Veal = Namespaced_IRI.parse _namespace_name "Veal" |> NamespacedName
+    let Veal = _prefix "Veal"

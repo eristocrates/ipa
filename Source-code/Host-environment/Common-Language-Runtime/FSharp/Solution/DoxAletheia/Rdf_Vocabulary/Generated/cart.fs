@@ -1,37 +1,38 @@
 namespace http.purl.org.net.cartCoord.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module cart =
     let _namespace_name = "http://purl.org/net/cartCoord#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#Point"></see>
     /// </summary>
-    let Point = Namespaced_IRI.parse _namespace_name "Point" |> NamespacedName
+    let Point = _prefix "Point"
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#Point_List"></see>
     /// </summary>
-    let Point_List = Namespaced_IRI.parse _namespace_name "Point_List" |> NamespacedName
-
+    let Point_List = _prefix "Point_List"
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#hasPlacement"></see>
     /// </summary>
-    let hasPlacement =
-        Namespaced_IRI.parse _namespace_name "hasPlacement" |> NamespacedName
-
+    let hasPlacement = _prefix "hasPlacement"
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#hasPoint"></see>
     /// </summary>
-    let hasPoint = Namespaced_IRI.parse _namespace_name "hasPoint" |> NamespacedName
+    let hasPoint = _prefix "hasPoint"
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#xcoord"></see>
     /// </summary>
-    let xcoord = Namespaced_IRI.parse _namespace_name "xcoord" |> NamespacedName
+    let xcoord = _prefix "xcoord"
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#ycoord"></see>
     /// </summary>
-    let ycoord = Namespaced_IRI.parse _namespace_name "ycoord" |> NamespacedName
+    let ycoord = _prefix "ycoord"
     /// <summary>
     ///   <see href="http://purl.org/net/cartCoord#zcoord"></see>
     /// </summary>
-    let zcoord = Namespaced_IRI.parse _namespace_name "zcoord" |> NamespacedName
+    let zcoord = _prefix "zcoord"

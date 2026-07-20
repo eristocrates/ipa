@@ -1,69 +1,55 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Arrangements.Lifecycles.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_arr_lif =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/Lifecycle"></see>
     /// </summary>
-    let Lifecycle = Namespaced_IRI.parse _namespace_name "Lifecycle" |> NamespacedName
+    let Lifecycle = _prefix "Lifecycle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/hasStage"></see>
     /// </summary>
-    let hasStage = Namespaced_IRI.parse _namespace_name "hasStage" |> NamespacedName
-
+    let hasStage = _prefix "hasStage"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/LifecycleStage"></see>
     /// </summary>
-    let LifecycleStage =
-        Namespaced_IRI.parse _namespace_name "LifecycleStage" |> NamespacedName
-
+    let LifecycleStage = _prefix "LifecycleStage"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/isLifecycleOf"></see>
     /// </summary>
-    let isLifecycleOf =
-        Namespaced_IRI.parse _namespace_name "isLifecycleOf" |> NamespacedName
-
+    let isLifecycleOf = _prefix "isLifecycleOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/LifecycleEvent"></see>
     /// </summary>
-    let LifecycleEvent =
-        Namespaced_IRI.parse _namespace_name "LifecycleEvent" |> NamespacedName
-
+    let LifecycleEvent = _prefix "LifecycleEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/LifecycleEventOccurrence"></see>
     /// </summary>
-    let LifecycleEventOccurrence =
-        Namespaced_IRI.parse _namespace_name "LifecycleEventOccurrence" |> NamespacedName
-
+    let LifecycleEventOccurrence = _prefix "LifecycleEventOccurrence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/LifecycleStageOccurrence"></see>
     /// </summary>
-    let LifecycleStageOccurrence =
-        Namespaced_IRI.parse _namespace_name "LifecycleStageOccurrence" |> NamespacedName
-
+    let LifecycleStageOccurrence = _prefix "LifecycleStageOccurrence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/LifecycleOccurrence"></see>
     /// </summary>
-    let LifecycleOccurrence =
-        Namespaced_IRI.parse _namespace_name "LifecycleOccurrence" |> NamespacedName
-
+    let LifecycleOccurrence = _prefix "LifecycleOccurrence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/isStageOf"></see>
     /// </summary>
-    let isStageOf = Namespaced_IRI.parse _namespace_name "isStageOf" |> NamespacedName
-
+    let isStageOf = _prefix "isStageOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/LifecycleStatus"></see>
     /// </summary>
-    let LifecycleStatus =
-        Namespaced_IRI.parse _namespace_name "LifecycleStatus" |> NamespacedName
-
+    let LifecycleStatus = _prefix "LifecycleStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/hasLifecycle"></see>
     /// </summary>
-    let hasLifecycle =
-        Namespaced_IRI.parse _namespace_name "hasLifecycle" |> NamespacedName
+    let hasLifecycle = _prefix "hasLifecycle"

@@ -1,141 +1,122 @@
 namespace http.spi_fm.uca.es.spdef.models.genericTools.wikim._1._0.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module wikim =
     let _namespace_name = "http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#ruizrube"></see>
     /// </summary>
-    let ruizrube = Namespaced_IRI.parse _namespace_name "ruizrube" |> NamespacedName
+    let ruizrube = _prefix "ruizrube"
     /// <summary>
     /// Clase que representa a un artículo dentro de la wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#Article"></see></summary>
-    let Article = Namespaced_IRI.parse _namespace_name "Article" |> NamespacedName
-
+    let Article = _prefix "Article"
     /// <summary>
     /// Clase abstracta que representa a un tipo de contenido
     ///    concreto que puede almacenar una wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#WikiContent"></see></summary>
-    let WikiContent =
-        Namespaced_IRI.parse _namespace_name "WikiContent" |> NamespacedName
-
+    let WikiContent = _prefix "WikiContent"
     /// <summary>
     /// Clase que representa a una categoría dentro una
     ///    instancia de la wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#Category"></see></summary>
-    let Category = Namespaced_IRI.parse _namespace_name "Category" |> NamespacedName
+    let Category = _prefix "Category"
     /// <summary>
     /// Clase que representa a un determinado archivo binario
     ///    almacenado en la wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#File"></see></summary>
-    let File = Namespaced_IRI.parse _namespace_name "File" |> NamespacedName
+    let File = _prefix "File"
     /// <summary>
     /// Clase que representa la inclusión de una imagen dentro
     ///    de un artículo wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#Image"></see></summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
-
+    let Image = _prefix "Image"
     /// <summary>
     /// Clase abstracta que se especializa en cada tipo de
     ///    contenido que puede incluirse dentro de una sección de un artículo.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#SectionContent"></see></summary>
-    let SectionContent =
-        Namespaced_IRI.parse _namespace_name "SectionContent" |> NamespacedName
-
+    let SectionContent = _prefix "SectionContent"
     /// <summary>
     /// Clase que representa el item de una lista.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#Item"></see></summary>
-    let Item = Namespaced_IRI.parse _namespace_name "Item" |> NamespacedName
+    let Item = _prefix "Item"
     /// <summary>
     /// Clase que representa un lista de items.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#ItemList"></see></summary>
-    let ItemList = Namespaced_IRI.parse _namespace_name "ItemList" |> NamespacedName
+    let ItemList = _prefix "ItemList"
     /// <summary>
     /// Clase que representa un párrafo de texto.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#Paragraph"></see></summary>
-    let Paragraph = Namespaced_IRI.parse _namespace_name "Paragraph" |> NamespacedName
+    let Paragraph = _prefix "Paragraph"
     /// <summary>
     /// Clase que permite declarar una sección dentro de un
     ///    artículo de la wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#Section"></see></summary>
-    let Section = Namespaced_IRI.parse _namespace_name "Section" |> NamespacedName
+    let Section = _prefix "Section"
     /// <summary>
     /// Clase que representa al usuario y la página del mismo
     ///    dentro de la wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#User"></see></summary>
-    let User = Namespaced_IRI.parse _namespace_name "User" |> NamespacedName
-
+    let User = _prefix "User"
     /// <summary>
     /// Clase contenedora de todos los contenidos existentes en
     ///    la wiki.
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#WikiDatabase"></see></summary>
-    let WikiDatabase =
-        Namespaced_IRI.parse _namespace_name "WikiDatabase" |> NamespacedName
-
+    let WikiDatabase = _prefix "WikiDatabase"
     /// <summary>
     /// Texto alternativo que disponen las imágenes
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#alternative"></see></summary>
-    let alternative =
-        Namespaced_IRI.parse _namespace_name "alternative" |> NamespacedName
-
+    let alternative = _prefix "alternative"
     /// <summary>
     /// Categorías de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#categories"></see></summary>
-    let categories = Namespaced_IRI.parse _namespace_name "categories" |> NamespacedName
-
+    let categories = _prefix "categories"
     /// <summary>
     ///   <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     /// Secciones incluidas dentro de otra sección de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#embeddedSections"></see></summary>
-    let embeddedSections =
-        Namespaced_IRI.parse _namespace_name "embeddedSections" |> NamespacedName
-
+    let embeddedSections = _prefix "embeddedSections"
     /// <summary>
     /// Items que forman parte de una lista de items de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#items"></see></summary>
-    let items = Namespaced_IRI.parse _namespace_name "items" |> NamespacedName
+    let items = _prefix "items"
     /// <summary>
     /// Nombre de un contenido, sección o lista de elementos dentro de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#name"></see></summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     /// Orden de un contenido dentro de una sección de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#order"></see></summary>
-    let order = Namespaced_IRI.parse _namespace_name "order" |> NamespacedName
-
+    let order = _prefix "order"
     /// <summary>
     /// Categorías padre de una dada
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#parentCategory"></see></summary>
-    let parentCategory =
-        Namespaced_IRI.parse _namespace_name "parentCategory" |> NamespacedName
-
+    let parentCategory = _prefix "parentCategory"
     /// <summary>
     /// Contenidos incluidos dentro de una sección de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#sectionContents"></see></summary>
-    let sectionContents =
-        Namespaced_IRI.parse _namespace_name "sectionContents" |> NamespacedName
-
+    let sectionContents = _prefix "sectionContents"
     /// <summary>
     /// Secciones incluidas dentro de un artículo wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#sections"></see></summary>
-    let sections = Namespaced_IRI.parse _namespace_name "sections" |> NamespacedName
+    let sections = _prefix "sections"
     /// <summary>
     /// Texto que aparece dentro de una sección, párrafo o item de un artículo de la wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#text"></see></summary>
-    let text = Namespaced_IRI.parse _namespace_name "text" |> NamespacedName
+    let text = _prefix "text"
     /// <summary>
     /// Dirección web de una imagen
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#uri"></see></summary>
-    let uri = Namespaced_IRI.parse _namespace_name "uri" |> NamespacedName
-
+    let uri = _prefix "uri"
     /// <summary>
     /// Contenidos existentes en el sistema wiki
     /// <see href="http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#wikiContents"></see></summary>
-    let wikiContents =
-        Namespaced_IRI.parse _namespace_name "wikiContents" |> NamespacedName
+    let wikiContents = _prefix "wikiContents"

@@ -1,515 +1,454 @@
 namespace https.w3id.org.def.foo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module foo =
     let _namespace_name = "https://w3id.org/def/foo#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Altitude"></see>
     /// </summary>
-    let Altitude = Namespaced_IRI.parse _namespace_name "Altitude" |> NamespacedName
+    let Altitude = _prefix "Altitude"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Latitude"></see>
     /// </summary>
-    let Latitude = Namespaced_IRI.parse _namespace_name "Latitude" |> NamespacedName
+    let Latitude = _prefix "Latitude"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Longitude"></see>
     /// </summary>
-    let Longitude = Namespaced_IRI.parse _namespace_name "Longitude" |> NamespacedName
-
+    let Longitude = _prefix "Longitude"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#FeatureOfInterest"></see>
     /// </summary>
-    let FeatureOfInterest =
-        Namespaced_IRI.parse _namespace_name "FeatureOfInterest" |> NamespacedName
-
+    let FeatureOfInterest = _prefix "FeatureOfInterest"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#ObservableProperty"></see>
     /// </summary>
-    let ObservableProperty =
-        Namespaced_IRI.parse _namespace_name "ObservableProperty" |> NamespacedName
-
+    let ObservableProperty = _prefix "ObservableProperty"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Observation"></see>
     /// </summary>
-    let Observation =
-        Namespaced_IRI.parse _namespace_name "Observation" |> NamespacedName
-
+    let Observation = _prefix "Observation"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Sensor"></see>
     /// </summary>
-    let Sensor = Namespaced_IRI.parse _namespace_name "Sensor" |> NamespacedName
-
+    let Sensor = _prefix "Sensor"
     /// <summary>
     /// A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.
     /// <see href="https://w3id.org/def/foo#hasFeatureOfInterest"></see></summary>
-    let hasFeatureOfInterest =
-        Namespaced_IRI.parse _namespace_name "hasFeatureOfInterest" |> NamespacedName
-
+    let hasFeatureOfInterest = _prefix "hasFeatureOfInterest"
     /// <summary>
     /// Relation between an ObservableProperty and the Sensor able to observe it.
     /// <see href="https://w3id.org/def/foo#isObservedBy"></see></summary>
-    let isObservedBy =
-        Namespaced_IRI.parse _namespace_name "isObservedBy" |> NamespacedName
-
+    let isObservedBy = _prefix "isObservedBy"
     /// <summary>
     /// Relation between an Observation and the Sensor which made the Observation.
     /// <see href="https://w3id.org/def/foo#madeBySensor"></see></summary>
-    let madeBySensor =
-        Namespaced_IRI.parse _namespace_name "madeBySensor" |> NamespacedName
-
+    let madeBySensor = _prefix "madeBySensor"
     /// <summary>
     /// Relation between a Sensor and an Observation made by the Sensor.
     /// <see href="https://w3id.org/def/foo#madeObservation"></see></summary>
-    let madeObservation =
-        Namespaced_IRI.parse _namespace_name "madeObservation" |> NamespacedName
-
+    let madeObservation = _prefix "madeObservation"
     /// <summary>
     /// Relation between a Sensor and an ObservableProperty that it is capable of sensing.
     /// <see href="https://w3id.org/def/foo#observes"></see></summary>
-    let observes = Namespaced_IRI.parse _namespace_name "observes" |> NamespacedName
+    let observes = _prefix "observes"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#V2.0"></see>
     /// </summary>
-    let ``V2.0`` = Namespaced_IRI.parse _namespace_name "V2.0" |> NamespacedName
+    let ``V2.0`` = _prefix "V2.0"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Abaw"></see>
     /// </summary>
-    let Abaw = Namespaced_IRI.parse _namespace_name "Abaw" |> NamespacedName
-
+    let Abaw = _prefix "Abaw"
     /// <summary>
     /// Bornean elephants exhibit distinct morphological and behavioural traits compared to mainland Asian elephants, and their genetic uniqueness emphasises their priority for conservation efforts. Although they are considered an evolutionary significant unit requiring tailored conservation measures, their formal recognition as a subspecies awaits further research. Restricted to about 5% of Borneo, primarily in Sabah, Bornean elephants typically form family groups of 5 to 20 individuals, occasionally merging into larger herds of up to 200.
     /// <see href="https://w3id.org/def/foo#ElephasMaximus"></see></summary>
-    let ElephasMaximus =
-        Namespaced_IRI.parse _namespace_name "ElephasMaximus" |> NamespacedName
-
+    let ElephasMaximus = _prefix "ElephasMaximus"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#GPSObservation"></see>
     /// </summary>
-    let GPSObservation =
-        Namespaced_IRI.parse _namespace_name "GPSObservation" |> NamespacedName
-
+    let GPSObservation = _prefix "GPSObservation"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Animalia"></see>
     /// </summary>
-    let Animalia = Namespaced_IRI.parse _namespace_name "Animalia" |> NamespacedName
+    let Animalia = _prefix "Animalia"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Kingdom"></see>
     /// </summary>
-    let Kingdom = Namespaced_IRI.parse _namespace_name "Kingdom" |> NamespacedName
+    let Kingdom = _prefix "Kingdom"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Aqeela"></see>
     /// </summary>
-    let Aqeela = Namespaced_IRI.parse _namespace_name "Aqeela" |> NamespacedName
+    let Aqeela = _prefix "Aqeela"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Bikang1"></see>
     /// </summary>
-    let Bikang1 = Namespaced_IRI.parse _namespace_name "Bikang1" |> NamespacedName
+    let Bikang1 = _prefix "Bikang1"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Bikang2"></see>
     /// </summary>
-    let Bikang2 = Namespaced_IRI.parse _namespace_name "Bikang2" |> NamespacedName
+    let Bikang2 = _prefix "Bikang2"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Binbingan"></see>
     /// </summary>
-    let Binbingan = Namespaced_IRI.parse _namespace_name "Binbingan" |> NamespacedName
+    let Binbingan = _prefix "Binbingan"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#CNRatio"></see>
     /// </summary>
-    let CNRatio = Namespaced_IRI.parse _namespace_name "CNRatio" |> NamespacedName
+    let CNRatio = _prefix "CNRatio"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#CameraTrap"></see>
     /// </summary>
-    let CameraTrap = Namespaced_IRI.parse _namespace_name "CameraTrap" |> NamespacedName
+    let CameraTrap = _prefix "CameraTrap"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Image"></see>
     /// </summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
-
+    let Image = _prefix "Image"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#ImageObservation"></see>
     /// </summary>
-    let ImageObservation =
-        Namespaced_IRI.parse _namespace_name "ImageObservation" |> NamespacedName
-
+    let ImageObservation = _prefix "ImageObservation"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Carnivora"></see>
     /// </summary>
-    let Carnivora = Namespaced_IRI.parse _namespace_name "Carnivora" |> NamespacedName
+    let Carnivora = _prefix "Carnivora"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Order"></see>
     /// </summary>
-    let Order = Namespaced_IRI.parse _namespace_name "Order" |> NamespacedName
+    let Order = _prefix "Order"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Chordata"></see>
     /// </summary>
-    let Chordata = Namespaced_IRI.parse _namespace_name "Chordata" |> NamespacedName
+    let Chordata = _prefix "Chordata"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Class"></see>
     /// </summary>
-    let Class = Namespaced_IRI.parse _namespace_name "Class" |> NamespacedName
+    let Class = _prefix "Class"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Clay"></see>
     /// </summary>
-    let Clay = Namespaced_IRI.parse _namespace_name "Clay" |> NamespacedName
+    let Clay = _prefix "Clay"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Count"></see>
     /// </summary>
-    let Count = Namespaced_IRI.parse _namespace_name "Count" |> NamespacedName
+    let Count = _prefix "Count"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Cov"></see>
     /// </summary>
-    let Cov = Namespaced_IRI.parse _namespace_name "Cov" |> NamespacedName
+    let Cov = _prefix "Cov"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Dara"></see>
     /// </summary>
-    let Dara = Namespaced_IRI.parse _namespace_name "Dara" |> NamespacedName
+    let Dara = _prefix "Dara"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Date"></see>
     /// </summary>
-    let Date = Namespaced_IRI.parse _namespace_name "Date" |> NamespacedName
+    let Date = _prefix "Date"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Direction"></see>
     /// </summary>
-    let Direction = Namespaced_IRI.parse _namespace_name "Direction" |> NamespacedName
+    let Direction = _prefix "Direction"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Distance"></see>
     /// </summary>
-    let Distance = Namespaced_IRI.parse _namespace_name "Distance" |> NamespacedName
-
+    let Distance = _prefix "Distance"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Elephantidae"></see>
     /// </summary>
-    let Elephantidae =
-        Namespaced_IRI.parse _namespace_name "Elephantidae" |> NamespacedName
-
+    let Elephantidae = _prefix "Elephantidae"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Family"></see>
     /// </summary>
-    let Family = Namespaced_IRI.parse _namespace_name "Family" |> NamespacedName
-
+    let Family = _prefix "Family"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Proboscidea"></see>
     /// </summary>
-    let Proboscidea =
-        Namespaced_IRI.parse _namespace_name "Proboscidea" |> NamespacedName
-
+    let Proboscidea = _prefix "Proboscidea"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Mammalia"></see>
     /// </summary>
-    let Mammalia = Namespaced_IRI.parse _namespace_name "Mammalia" |> NamespacedName
+    let Mammalia = _prefix "Mammalia"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#GMTDate"></see>
     /// </summary>
-    let GMTDate = Namespaced_IRI.parse _namespace_name "GMTDate" |> NamespacedName
+    let GMTDate = _prefix "GMTDate"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#GMTTime"></see>
     /// </summary>
-    let GMTTime = Namespaced_IRI.parse _namespace_name "GMTTime" |> NamespacedName
+    let GMTTime = _prefix "GMTTime"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#HDOP"></see>
     /// </summary>
-    let HDOP = Namespaced_IRI.parse _namespace_name "HDOP" |> NamespacedName
+    let HDOP = _prefix "HDOP"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#ID"></see>
     /// </summary>
-    let ID = Namespaced_IRI.parse _namespace_name "ID" |> NamespacedName
+    let ID = _prefix "ID"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#LocalDate"></see>
     /// </summary>
-    let LocalDate = Namespaced_IRI.parse _namespace_name "LocalDate" |> NamespacedName
+    let LocalDate = _prefix "LocalDate"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#LocalTime"></see>
     /// </summary>
-    let LocalTime = Namespaced_IRI.parse _namespace_name "LocalTime" |> NamespacedName
+    let LocalTime = _prefix "LocalTime"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Speed"></see>
     /// </summary>
-    let Speed = Namespaced_IRI.parse _namespace_name "Speed" |> NamespacedName
-
+    let Speed = _prefix "Speed"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Temperature"></see>
     /// </summary>
-    let Temperature =
-        Namespaced_IRI.parse _namespace_name "Temperature" |> NamespacedName
-
+    let Temperature = _prefix "Temperature"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Jasper"></see>
     /// </summary>
-    let Jasper = Namespaced_IRI.parse _namespace_name "Jasper" |> NamespacedName
+    let Jasper = _prefix "Jasper"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Seri"></see>
     /// </summary>
-    let Seri = Namespaced_IRI.parse _namespace_name "Seri" |> NamespacedName
+    let Seri = _prefix "Seri"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Liun"></see>
     /// </summary>
-    let Liun = Namespaced_IRI.parse _namespace_name "Liun" |> NamespacedName
+    let Liun = _prefix "Liun"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Ita"></see>
     /// </summary>
-    let Ita = Namespaced_IRI.parse _namespace_name "Ita" |> NamespacedName
+    let Ita = _prefix "Ita"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Kuma"></see>
     /// </summary>
-    let Kuma = Namespaced_IRI.parse _namespace_name "Kuma" |> NamespacedName
+    let Kuma = _prefix "Kuma"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Tulid"></see>
     /// </summary>
-    let Tulid = Namespaced_IRI.parse _namespace_name "Tulid" |> NamespacedName
+    let Tulid = _prefix "Tulid"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Sejati"></see>
     /// </summary>
-    let Sejati = Namespaced_IRI.parse _namespace_name "Sejati" |> NamespacedName
+    let Sejati = _prefix "Sejati"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Puteri"></see>
     /// </summary>
-    let Puteri = Namespaced_IRI.parse _namespace_name "Puteri" |> NamespacedName
+    let Puteri = _prefix "Puteri"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Maliau"></see>
     /// </summary>
-    let Maliau = Namespaced_IRI.parse _namespace_name "Maliau" |> NamespacedName
+    let Maliau = _prefix "Maliau"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Umas2"></see>
     /// </summary>
-    let Umas2 = Namespaced_IRI.parse _namespace_name "Umas2" |> NamespacedName
+    let Umas2 = _prefix "Umas2"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Merotai"></see>
     /// </summary>
-    let Merotai = Namespaced_IRI.parse _namespace_name "Merotai" |> NamespacedName
+    let Merotai = _prefix "Merotai"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Jasmin"></see>
     /// </summary>
-    let Jasmin = Namespaced_IRI.parse _namespace_name "Jasmin" |> NamespacedName
+    let Jasmin = _prefix "Jasmin"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Kasih"></see>
     /// </summary>
-    let Kasih = Namespaced_IRI.parse _namespace_name "Kasih" |> NamespacedName
+    let Kasih = _prefix "Kasih"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Tunglap"></see>
     /// </summary>
-    let Tunglap = Namespaced_IRI.parse _namespace_name "Tunglap" |> NamespacedName
+    let Tunglap = _prefix "Tunglap"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Putut"></see>
     /// </summary>
-    let Putut = Namespaced_IRI.parse _namespace_name "Putut" |> NamespacedName
+    let Putut = _prefix "Putut"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Guli"></see>
     /// </summary>
-    let Guli = Namespaced_IRI.parse _namespace_name "Guli" |> NamespacedName
+    let Guli = _prefix "Guli"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#resultTime"></see>
     /// </summary>
-    let resultTime = Namespaced_IRI.parse _namespace_name "resultTime" |> NamespacedName
+    let resultTime = _prefix "resultTime"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Genus"></see>
     /// </summary>
-    let Genus = Namespaced_IRI.parse _namespace_name "Genus" |> NamespacedName
+    let Genus = _prefix "Genus"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Horizon"></see>
     /// </summary>
-    let Horizon = Namespaced_IRI.parse _namespace_name "Horizon" |> NamespacedName
+    let Horizon = _prefix "Horizon"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Identifier"></see>
     /// </summary>
-    let Identifier = Namespaced_IRI.parse _namespace_name "Identifier" |> NamespacedName
+    let Identifier = _prefix "Identifier"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#ImageID"></see>
     /// </summary>
-    let ImageID = Namespaced_IRI.parse _namespace_name "ImageID" |> NamespacedName
+    let ImageID = _prefix "ImageID"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Make"></see>
     /// </summary>
-    let Make = Namespaced_IRI.parse _namespace_name "Make" |> NamespacedName
+    let Make = _prefix "Make"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Model"></see>
     /// </summary>
-    let Model = Namespaced_IRI.parse _namespace_name "Model" |> NamespacedName
+    let Model = _prefix "Model"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Time"></see>
     /// </summary>
-    let Time = Namespaced_IRI.parse _namespace_name "Time" |> NamespacedName
+    let Time = _prefix "Time"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#InorganicP"></see>
     /// </summary>
-    let InorganicP = Namespaced_IRI.parse _namespace_name "InorganicP" |> NamespacedName
+    let InorganicP = _prefix "InorganicP"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#LandUse"></see>
     /// </summary>
-    let LandUse = Namespaced_IRI.parse _namespace_name "LandUse" |> NamespacedName
-
+    let LandUse = _prefix "LandUse"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#LianaDBH_cm"></see>
     /// </summary>
-    let LianaDBH_cm =
-        Namespaced_IRI.parse _namespace_name "LianaDBH_cm" |> NamespacedName
-
+    let LianaDBH_cm = _prefix "LianaDBH_cm"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Lianas"></see>
     /// </summary>
-    let Lianas = Namespaced_IRI.parse _namespace_name "Lianas" |> NamespacedName
+    let Lianas = _prefix "Lianas"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#PlotNo"></see>
     /// </summary>
-    let PlotNo = Namespaced_IRI.parse _namespace_name "PlotNo" |> NamespacedName
+    let PlotNo = _prefix "PlotNo"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#SiteName"></see>
     /// </summary>
-    let SiteName = Namespaced_IRI.parse _namespace_name "SiteName" |> NamespacedName
-
+    let SiteName = _prefix "SiteName"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#SitePlotCode"></see>
     /// </summary>
-    let SitePlotCode =
-        Namespaced_IRI.parse _namespace_name "SitePlotCode" |> NamespacedName
-
+    let SitePlotCode = _prefix "SitePlotCode"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeObservation"></see>
     /// </summary>
-    let TreeObservation =
-        Namespaced_IRI.parse _namespace_name "TreeObservation" |> NamespacedName
-
+    let TreeObservation = _prefix "TreeObservation"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#MalayopythonReticulatus"></see>
     /// </summary>
-    let MalayopythonReticulatus =
-        Namespaced_IRI.parse _namespace_name "MalayopythonReticulatus" |> NamespacedName
-
+    let MalayopythonReticulatus = _prefix "MalayopythonReticulatus"
     /// <summary>
     /// Manis Javanica is a species critically threatened by poaching and habitat loss. It is one of eight pangolin species, all of which are considered Vulnerable, Endangered, or Critically Endangered according to the IUCN Red List and listed in CITES Appendix I. The Sunda pangolin, critically endangered and the only species found in Malaysia, inhabits Peninsular Malaysia and Malaysian Borneo, including Sabah and Sarawak. Despite its high protection status in Sabah, where it is (totally protected) under the Wildlife Conservation Enactment 1997, the species faces severe threats from illegal wildlife trade and habitat degradation. In 2019, authorities in Sabah seized over 30 tonnes of pangolin products, highlighting the extensive illicit trade network. The Sunda pangolin occupies various habitats, from primary and secondary forests to wetlands, mangroves, and grasslands.
     /// <see href="https://w3id.org/def/foo#ManisJavanica"></see></summary>
-    let ManisJavanica =
-        Namespaced_IRI.parse _namespace_name "ManisJavanica" |> NamespacedName
-
+    let ManisJavanica = _prefix "ManisJavanica"
     /// <summary>
     /// Male proboscis monkeys have notably large noses, which are believed to have evolved due to their sexually competitive social system. Significant correlations exist between nose size, body size, testis size, and the number of females in a male's harem. This suggests that both male competition and female choice have driven the evolution of these enlarged noses.
     /// <see href="https://w3id.org/def/foo#Nasalislarvatus"></see></summary>
-    let Nasalislarvatus =
-        Namespaced_IRI.parse _namespace_name "Nasalislarvatus" |> NamespacedName
-
+    let Nasalislarvatus = _prefix "Nasalislarvatus"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Phylum"></see>
     /// </summary>
-    let Phylum = Namespaced_IRI.parse _namespace_name "Phylum" |> NamespacedName
+    let Phylum = _prefix "Phylum"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#PlotName"></see>
     /// </summary>
-    let PlotName = Namespaced_IRI.parse _namespace_name "PlotName" |> NamespacedName
+    let PlotName = _prefix "PlotName"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Reptilia"></see>
     /// </summary>
-    let Reptilia = Namespaced_IRI.parse _namespace_name "Reptilia" |> NamespacedName
+    let Reptilia = _prefix "Reptilia"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Sand"></see>
     /// </summary>
-    let Sand = Namespaced_IRI.parse _namespace_name "Sand" |> NamespacedName
+    let Sand = _prefix "Sand"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Silt"></see>
     /// </summary>
-    let Silt = Namespaced_IRI.parse _namespace_name "Silt" |> NamespacedName
+    let Silt = _prefix "Silt"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Site"></see>
     /// </summary>
-    let Site = Namespaced_IRI.parse _namespace_name "Site" |> NamespacedName
+    let Site = _prefix "Site"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Soil"></see>
     /// </summary>
-    let Soil = Namespaced_IRI.parse _namespace_name "Soil" |> NamespacedName
-
+    let Soil = _prefix "Soil"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#SoilObservation"></see>
     /// </summary>
-    let SoilObservation =
-        Namespaced_IRI.parse _namespace_name "SoilObservation" |> NamespacedName
-
+    let SoilObservation = _prefix "SoilObservation"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#SoilPH"></see>
     /// </summary>
-    let SoilPH = Namespaced_IRI.parse _namespace_name "SoilPH" |> NamespacedName
+    let SoilPH = _prefix "SoilPH"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Subplot"></see>
     /// </summary>
-    let Subplot = Namespaced_IRI.parse _namespace_name "Subplot" |> NamespacedName
+    let Subplot = _prefix "Subplot"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TotalC"></see>
     /// </summary>
-    let TotalC = Namespaced_IRI.parse _namespace_name "TotalC" |> NamespacedName
+    let TotalC = _prefix "TotalC"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TotalN"></see>
     /// </summary>
-    let TotalN = Namespaced_IRI.parse _namespace_name "TotalN" |> NamespacedName
+    let TotalN = _prefix "TotalN"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TotalP"></see>
     /// </summary>
-    let TotalP = Namespaced_IRI.parse _namespace_name "TotalP" |> NamespacedName
+    let TotalP = _prefix "TotalP"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#SoilSensor"></see>
     /// </summary>
-    let SoilSensor = Namespaced_IRI.parse _namespace_name "SoilSensor" |> NamespacedName
+    let SoilSensor = _prefix "SoilSensor"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Species"></see>
     /// </summary>
-    let Species = Namespaced_IRI.parse _namespace_name "Species" |> NamespacedName
+    let Species = _prefix "Species"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Squamata"></see>
     /// </summary>
-    let Squamata = Namespaced_IRI.parse _namespace_name "Squamata" |> NamespacedName
-
+    let Squamata = _prefix "Squamata"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#SubplotRadius_m"></see>
     /// </summary>
-    let SubplotRadius_m =
-        Namespaced_IRI.parse _namespace_name "SubplotRadius_m" |> NamespacedName
-
+    let SubplotRadius_m = _prefix "SubplotRadius_m"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TaxonRank"></see>
     /// </summary>
-    let TaxonRank = Namespaced_IRI.parse _namespace_name "TaxonRank" |> NamespacedName
+    let TaxonRank = _prefix "TaxonRank"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeDBH_cm"></see>
     /// </summary>
-    let TreeDBH_cm = Namespaced_IRI.parse _namespace_name "TreeDBH_cm" |> NamespacedName
-
+    let TreeDBH_cm = _prefix "TreeDBH_cm"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeHeight_m"></see>
     /// </summary>
-    let TreeHeight_m =
-        Namespaced_IRI.parse _namespace_name "TreeHeight_m" |> NamespacedName
-
+    let TreeHeight_m = _prefix "TreeHeight_m"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeID"></see>
     /// </summary>
-    let TreeID = Namespaced_IRI.parse _namespace_name "TreeID" |> NamespacedName
-
+    let TreeID = _prefix "TreeID"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeIndividualNo"></see>
     /// </summary>
-    let TreeIndividualNo =
-        Namespaced_IRI.parse _namespace_name "TreeIndividualNo" |> NamespacedName
-
+    let TreeIndividualNo = _prefix "TreeIndividualNo"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeNLianas"></see>
     /// </summary>
-    let TreeNLianas =
-        Namespaced_IRI.parse _namespace_name "TreeNLianas" |> NamespacedName
-
+    let TreeNLianas = _prefix "TreeNLianas"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#TreeNotes"></see>
     /// </summary>
-    let TreeNotes = Namespaced_IRI.parse _namespace_name "TreeNotes" |> NamespacedName
+    let TreeNotes = _prefix "TreeNotes"
     /// <summary>
     ///   <see href="https://w3id.org/def/foo#Viverridae"></see>
     /// </summary>
-    let Viverridae = Namespaced_IRI.parse _namespace_name "Viverridae" |> NamespacedName
-
+    let Viverridae = _prefix "Viverridae"
     /// <summary>
     /// A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it.
     /// <see href="https://w3id.org/def/foo#isFeatureOfInterestOf"></see></summary>
-    let isFeatureOfInterestOf =
-        Namespaced_IRI.parse _namespace_name "isFeatureOfInterestOf" |> NamespacedName
-
+    let isFeatureOfInterestOf = _prefix "isFeatureOfInterestOf"
     /// <summary>
     /// Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation.
     /// <see href="https://w3id.org/def/foo#observedProperty"></see></summary>
-    let observedProperty =
-        Namespaced_IRI.parse _namespace_name "observedProperty" |> NamespacedName
+    let observedProperty = _prefix "observedProperty"

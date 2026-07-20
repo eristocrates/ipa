@@ -1,356 +1,270 @@
 namespace http.dati.cdec.it.lod.shoah.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module shoah =
     let _namespace_name = "http://dati.cdec.it/lod/shoah/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/www.cdec.it"></see>
     /// </summary>
-    let ``www.cdec.it`` =
-        Namespaced_IRI.parse _namespace_name "www.cdec.it" |> NamespacedName
-
+    let ``www.cdec.it`` = _prefix "www.cdec.it"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/www.regesta.com"></see>
     /// </summary>
-    let ``www.regesta.com`` =
-        Namespaced_IRI.parse _namespace_name "www.regesta.com" |> NamespacedName
-
+    let ``www.regesta.com`` = _prefix "www.regesta.com"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/0.1"></see>
     /// </summary>
-    let ``_0.1`` = Namespaced_IRI.parse _namespace_name "0.1" |> NamespacedName
+    let ``_0.1`` = _prefix "0.1"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/Convoy"></see>
     /// </summary>
-    let Convoy = Namespaced_IRI.parse _namespace_name "Convoy" |> NamespacedName
-
+    let Convoy = _prefix "Convoy"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/DetentionPlace"></see>
     /// </summary>
-    let DetentionPlace =
-        Namespaced_IRI.parse _namespace_name "DetentionPlace" |> NamespacedName
-
+    let DetentionPlace = _prefix "DetentionPlace"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/DetentionPlaceTransfer"></see>
     /// </summary>
-    let DetentionPlaceTransfer =
-        Namespaced_IRI.parse _namespace_name "DetentionPlaceTransfer" |> NamespacedName
-
+    let DetentionPlaceTransfer = _prefix "DetentionPlaceTransfer"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/Liberation"></see>
     /// </summary>
-    let Liberation = Namespaced_IRI.parse _namespace_name "Liberation" |> NamespacedName
+    let Liberation = _prefix "Liberation"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/Massacre"></see>
     /// </summary>
-    let Massacre = Namespaced_IRI.parse _namespace_name "Massacre" |> NamespacedName
+    let Massacre = _prefix "Massacre"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/NaziCamp"></see>
     /// </summary>
-    let NaziCamp = Namespaced_IRI.parse _namespace_name "NaziCamp" |> NamespacedName
-
+    let NaziCamp = _prefix "NaziCamp"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/NaziCampTransfer"></see>
     /// </summary>
-    let NaziCampTransfer =
-        Namespaced_IRI.parse _namespace_name "NaziCampTransfer" |> NamespacedName
-
+    let NaziCampTransfer = _prefix "NaziCampTransfer"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/Persecution"></see>
     /// </summary>
-    let Persecution =
-        Namespaced_IRI.parse _namespace_name "Persecution" |> NamespacedName
-
+    let Persecution = _prefix "Persecution"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/arrestDate"></see>
     /// </summary>
-    let arrestDate = Namespaced_IRI.parse _namespace_name "arrestDate" |> NamespacedName
-
+    let arrestDate = _prefix "arrestDate"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/arrestPlace"></see>
     /// </summary>
-    let arrestPlace =
-        Namespaced_IRI.parse _namespace_name "arrestPlace" |> NamespacedName
-
+    let arrestPlace = _prefix "arrestPlace"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/arrestedBy"></see>
     /// </summary>
-    let arrestedBy = Namespaced_IRI.parse _namespace_name "arrestedBy" |> NamespacedName
-
+    let arrestedBy = _prefix "arrestedBy"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/arrivalDate"></see>
     /// </summary>
-    let arrivalDate =
-        Namespaced_IRI.parse _namespace_name "arrivalDate" |> NamespacedName
-
+    let arrivalDate = _prefix "arrivalDate"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/auntOf"></see>
     /// </summary>
-    let auntOf = Namespaced_IRI.parse _namespace_name "auntOf" |> NamespacedName
+    let auntOf = _prefix "auntOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/brotherOf"></see>
     /// </summary>
-    let brotherOf = Namespaced_IRI.parse _namespace_name "brotherOf" |> NamespacedName
-
+    let brotherOf = _prefix "brotherOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/campSerialNumber"></see>
     /// </summary>
-    let campSerialNumber =
-        Namespaced_IRI.parse _namespace_name "campSerialNumber" |> NamespacedName
-
+    let campSerialNumber = _prefix "campSerialNumber"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/consortFamilyName"></see>
     /// </summary>
-    let consortFamilyName =
-        Namespaced_IRI.parse _namespace_name "consortFamilyName" |> NamespacedName
-
+    let consortFamilyName = _prefix "consortFamilyName"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/consortFirstName"></see>
     /// </summary>
-    let consortFirstName =
-        Namespaced_IRI.parse _namespace_name "consortFirstName" |> NamespacedName
-
+    let consortFirstName = _prefix "consortFirstName"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/consortOf"></see>
     /// </summary>
-    let consortOf = Namespaced_IRI.parse _namespace_name "consortOf" |> NamespacedName
-
+    let consortOf = _prefix "consortOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/consortReligion"></see>
     /// </summary>
-    let consortReligion =
-        Namespaced_IRI.parse _namespace_name "consortReligion" |> NamespacedName
-
+    let consortReligion = _prefix "consortReligion"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/convoy"></see>
     /// </summary>
-    let convoy = Namespaced_IRI.parse _namespace_name "convoy" |> NamespacedName
-
+    let convoy = _prefix "convoy"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/convoyDeparturePlace"></see>
     /// </summary>
-    let convoyDeparturePlace =
-        Namespaced_IRI.parse _namespace_name "convoyDeparturePlace" |> NamespacedName
-
+    let convoyDeparturePlace = _prefix "convoyDeparturePlace"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/convoyNumber"></see>
     /// </summary>
-    let convoyNumber =
-        Namespaced_IRI.parse _namespace_name "convoyNumber" |> NamespacedName
-
+    let convoyNumber = _prefix "convoyNumber"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/country"></see>
     /// </summary>
-    let country = Namespaced_IRI.parse _namespace_name "country" |> NamespacedName
-
+    let country = _prefix "country"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/dateOfBirth"></see>
     /// </summary>
-    let dateOfBirth =
-        Namespaced_IRI.parse _namespace_name "dateOfBirth" |> NamespacedName
-
+    let dateOfBirth = _prefix "dateOfBirth"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/dateOfDeath"></see>
     /// </summary>
-    let dateOfDeath =
-        Namespaced_IRI.parse _namespace_name "dateOfDeath" |> NamespacedName
-
+    let dateOfDeath = _prefix "dateOfDeath"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/deathDescription"></see>
     /// </summary>
-    let deathDescription =
-        Namespaced_IRI.parse _namespace_name "deathDescription" |> NamespacedName
-
+    let deathDescription = _prefix "deathDescription"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/deathInItaly"></see>
     /// </summary>
-    let deathInItaly =
-        Namespaced_IRI.parse _namespace_name "deathInItaly" |> NamespacedName
-
+    let deathInItaly = _prefix "deathInItaly"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/departureDate"></see>
     /// </summary>
-    let departureDate =
-        Namespaced_IRI.parse _namespace_name "departureDate" |> NamespacedName
-
+    let departureDate = _prefix "departureDate"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/detentionPlace"></see>
     /// </summary>
-    let detentionPlace =
-        Namespaced_IRI.parse _namespace_name "detentionPlace" |> NamespacedName
-
+    let detentionPlace = _prefix "detentionPlace"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/detentionPlaceTransfer"></see>
     /// </summary>
-    let detentionPlaceTransfer =
-        Namespaced_IRI.parse _namespace_name "detentionPlaceTransfer" |> NamespacedName
-
+    let detentionPlaceTransfer = _prefix "detentionPlaceTransfer"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/districtOfResidence"></see>
     /// </summary>
-    let districtOfResidence =
-        Namespaced_IRI.parse _namespace_name "districtOfResidence" |> NamespacedName
-
+    let districtOfResidence = _prefix "districtOfResidence"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/fatherName"></see>
     /// </summary>
-    let fatherName = Namespaced_IRI.parse _namespace_name "fatherName" |> NamespacedName
+    let fatherName = _prefix "fatherName"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/fatherOf"></see>
     /// </summary>
-    let fatherOf = Namespaced_IRI.parse _namespace_name "fatherOf" |> NamespacedName
-
+    let fatherOf = _prefix "fatherOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/fromNaziCamp"></see>
     /// </summary>
-    let fromNaziCamp =
-        Namespaced_IRI.parse _namespace_name "fromNaziCamp" |> NamespacedName
-
+    let fromNaziCamp = _prefix "fromNaziCamp"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/fromPrison"></see>
     /// </summary>
-    let fromPrison = Namespaced_IRI.parse _namespace_name "fromPrison" |> NamespacedName
-
+    let fromPrison = _prefix "fromPrison"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/grandfatherOf"></see>
     /// </summary>
-    let grandfatherOf =
-        Namespaced_IRI.parse _namespace_name "grandfatherOf" |> NamespacedName
-
+    let grandfatherOf = _prefix "grandfatherOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/grandmotherOf"></see>
     /// </summary>
-    let grandmotherOf =
-        Namespaced_IRI.parse _namespace_name "grandmotherOf" |> NamespacedName
-
+    let grandmotherOf = _prefix "grandmotherOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/liberation"></see>
     /// </summary>
-    let liberation = Namespaced_IRI.parse _namespace_name "liberation" |> NamespacedName
-
+    let liberation = _prefix "liberation"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/liberationDate"></see>
     /// </summary>
-    let liberationDate =
-        Namespaced_IRI.parse _namespace_name "liberationDate" |> NamespacedName
-
+    let liberationDate = _prefix "liberationDate"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/massacre"></see>
     /// </summary>
-    let massacre = Namespaced_IRI.parse _namespace_name "massacre" |> NamespacedName
-
+    let massacre = _prefix "massacre"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/motherMaidenName"></see>
     /// </summary>
-    let motherMaidenName =
-        Namespaced_IRI.parse _namespace_name "motherMaidenName" |> NamespacedName
-
+    let motherMaidenName = _prefix "motherMaidenName"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/motherName"></see>
     /// </summary>
-    let motherName = Namespaced_IRI.parse _namespace_name "motherName" |> NamespacedName
+    let motherName = _prefix "motherName"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/motherOf"></see>
     /// </summary>
-    let motherOf = Namespaced_IRI.parse _namespace_name "motherOf" |> NamespacedName
-
+    let motherOf = _prefix "motherOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/naziCampTransfer"></see>
     /// </summary>
-    let naziCampTransfer =
-        Namespaced_IRI.parse _namespace_name "naziCampTransfer" |> NamespacedName
-
+    let naziCampTransfer = _prefix "naziCampTransfer"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/parentPlace"></see>
     /// </summary>
-    let parentPlace =
-        Namespaced_IRI.parse _namespace_name "parentPlace" |> NamespacedName
-
+    let parentPlace = _prefix "parentPlace"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/parentReligion"></see>
     /// </summary>
-    let parentReligion =
-        Namespaced_IRI.parse _namespace_name "parentReligion" |> NamespacedName
-
+    let parentReligion = _prefix "parentReligion"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/persecution"></see>
     /// </summary>
-    let persecution =
-        Namespaced_IRI.parse _namespace_name "persecution" |> NamespacedName
-
+    let persecution = _prefix "persecution"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/persecutionCategory"></see>
     /// </summary>
-    let persecutionCategory =
-        Namespaced_IRI.parse _namespace_name "persecutionCategory" |> NamespacedName
-
+    let persecutionCategory = _prefix "persecutionCategory"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/placeOfBirth"></see>
     /// </summary>
-    let placeOfBirth =
-        Namespaced_IRI.parse _namespace_name "placeOfBirth" |> NamespacedName
-
+    let placeOfBirth = _prefix "placeOfBirth"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/placeOfDeath"></see>
     /// </summary>
-    let placeOfDeath =
-        Namespaced_IRI.parse _namespace_name "placeOfDeath" |> NamespacedName
-
+    let placeOfDeath = _prefix "placeOfDeath"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/returnDate"></see>
     /// </summary>
-    let returnDate = Namespaced_IRI.parse _namespace_name "returnDate" |> NamespacedName
-
+    let returnDate = _prefix "returnDate"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/returnPlace"></see>
     /// </summary>
-    let returnPlace =
-        Namespaced_IRI.parse _namespace_name "returnPlace" |> NamespacedName
-
+    let returnPlace = _prefix "returnPlace"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/shoahSurvivor"></see>
     /// </summary>
-    let shoahSurvivor =
-        Namespaced_IRI.parse _namespace_name "shoahSurvivor" |> NamespacedName
-
+    let shoahSurvivor = _prefix "shoahSurvivor"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/sisterOf"></see>
     /// </summary>
-    let sisterOf = Namespaced_IRI.parse _namespace_name "sisterOf" |> NamespacedName
+    let sisterOf = _prefix "sisterOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/subCampOf"></see>
     /// </summary>
-    let subCampOf = Namespaced_IRI.parse _namespace_name "subCampOf" |> NamespacedName
+    let subCampOf = _prefix "subCampOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/toNaziCamp"></see>
     /// </summary>
-    let toNaziCamp = Namespaced_IRI.parse _namespace_name "toNaziCamp" |> NamespacedName
+    let toNaziCamp = _prefix "toNaziCamp"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/toPrison"></see>
     /// </summary>
-    let toPrison = Namespaced_IRI.parse _namespace_name "toPrison" |> NamespacedName
-
+    let toPrison = _prefix "toPrison"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/transferDate"></see>
     /// </summary>
-    let transferDate =
-        Namespaced_IRI.parse _namespace_name "transferDate" |> NamespacedName
-
+    let transferDate = _prefix "transferDate"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/uncleOf"></see>
     /// </summary>
-    let uncleOf = Namespaced_IRI.parse _namespace_name "uncleOf" |> NamespacedName
+    let uncleOf = _prefix "uncleOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/widowOf"></see>
     /// </summary>
-    let widowOf = Namespaced_IRI.parse _namespace_name "widowOf" |> NamespacedName
+    let widowOf = _prefix "widowOf"
     /// <summary>
     ///   <see href="http://dati.cdec.it/lod/shoah/widowerOf"></see>
     /// </summary>
-    let widowerOf = Namespaced_IRI.parse _namespace_name "widowerOf" |> NamespacedName
+    let widowerOf = _prefix "widowerOf"

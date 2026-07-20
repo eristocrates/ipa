@@ -1,14 +1,16 @@
 module DoxAletheia.Rdf_Document
+
 open System
+
 open System.IO
 open System.Text
 open System.Globalization
 open System.Xml
-open Rdf_Vocabulary
-open Namespace_Prefixes
+
 
 open FSharp.HashCollections
 open VDS.RDF
+open VDS.RDF.Query
 open VDS.RDF.Parsing
 open VDS.RDF.Parsing.Tokens
 open VDS.RDF.Storage
@@ -32,180 +34,22 @@ open QuikGraph.MSAGL
 open QuikGraph.Petri
 
 
-type Draft_Document =
-    {
+open System
+open Newtonsoft.Json
+open Newtonsoft.Json.Linq
+open VDS.RDF
+open VDS.RDF.JsonLd
+open VDS.RDF.Writing
+open DoxAletheia
+open Namespace_Prefixes
 
-      subjects: Rdf_Subject array
-      predicates: Rdf_Predicate array
-      objects: Rdf_Object array
-      predicateObjectLists: PredicateObjectList array
-      triples: HashSet<Rdf_Triple>
+open Fabulous.AST
+open Fantomas.Core.SyntaxOak
 
-     }
+open type Fabulous.AST.Ast
 
-    static member from_subject subject_term =
+open FSharp.Json
 
-        { subjects = [| subject_term |]
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
-
-        }
-
-    static member from_subjects subjects =
-
-        { subjects = subjects |> List.toArray
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
-
-        }
-
-    static member from_predicate predicate_term =
-
-        { subjects = [||]
-          predicates = [| predicate_term |]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
-
-        }
-
-    static member from_predicates predicates =
-
-        { subjects = [||]
-          predicates = predicates
-          objects = [||]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
-
-        }
-
-    static member from_object object_term =
-
-        { subjects = [||]
-          predicates = [||]
-          objects = [| object_term |]
-          predicateObjectLists = [||]
-          triples = HashSet.empty
-
-        }
-
-    static member from_objects objects =
-
-        { subjects = [||]
-          predicates = [||]
-          objects = objects
-          predicateObjectLists = [||]
-          triples = HashSet.empty
-
-        }
-
-
-    member this.materialize_triples =
-        let triples_from_terms =
-            Triples.from_terms this.subjects this.predicates this.objects
-
-        let triples_from_subjects_predicateObjectLists =
-            Triples.from_subjects_predicateObjectLists this.subjects this.predicateObjectLists
-
-        { subjects = [||]
-          predicates = [||]
-          objects = [||]
-          predicateObjectLists = [||]
-          triples =
-            HashSet.union
-                this.triples
-                (HashSet.union triples_from_terms triples_from_subjects_predicateObjectLists)
-
-
-        }
-
-    member this.add_subjects subject_terms =
-        { this with subjects = this.subjects |> Array.append subject_terms }
-
-    member this.add_subject subject_term = this.add_subjects [| subject_term |]
-
-
-    member this.add_predicates predicate_terms =
-
-        { this with predicates = this.predicates |> Array.append predicate_terms }
-
-    member this.add_predicateObjectLists predicateObjectLists =
-
-        { this with
-            predicateObjectLists =
-                this.predicateObjectLists
-                |> Array.append predicateObjectLists }
-
-    member this.add_predicate predicate_term =
-        this.add_predicates [| predicate_term |]
-
-    member this.add_objects object_terms =
-        { this with objects = this.objects |> Array.append object_terms }
-
-    member this.add_object object_term = this.add_objects [| object_term |]
-
-    member this.add_literal literal =
-        Rdf_Literal.autotyped literal
-        |> Rdf_Object.LiteralObject
-        |> this.add_object
-
-    member this.add_literals literals =
-        literals
-        |> List.toArray
-        |> Array.Parallel.map (fun literal ->
-            literal
-            |> Rdf_Literal.autotyped
-            |> Rdf_Object.LiteralObject)
-        |> this.add_objects
-
-
-
-let global_prefix_map = global_prefix_declarations |> Map.ofArray
-
-
-let prefixed_name (delimiter: string) (iri: Namespaced_IRI) =
-    let namespace_name = iri.namespace_iriref.as_rendered_string
-    let prefix_label = global_prefix_map[namespace_name]
-    sprintf "%s%s%s" prefix_label delimiter iri.local_name.as_raw_string
-
-
-let curie (iri: Namespaced_IRI) = iri |> prefixed_name ":"
-
-
-
-
-let map_prefixes (graph: IGraph) =
-    global_prefix_declarations
-    |> Array.Parallel.iter (fun (namespace_name, prefix_label) ->
-
-        let uri_nodes =
-            graph.AllNodes
-            |> Seq.toArray
-            |> Array.Parallel.choose (fun inode ->
-                if inode.NodeType = NodeType.Uri then
-                    Some(inode :?> UriNode)
-                else
-                    None
-
-            )
-
-        let term_is_namespaced =
-            uri_nodes
-            |> Array.Parallel.exists (fun uri_node ->
-
-                uri_node.Uri.OriginalString.StartsWith(namespace_name)
-
-            )
-
-        if term_is_namespaced then
-            graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name)))
-
-
-type Rdf_Graph = { triples: HashSet<Rdf_Triple> }
 
 
 type Textual_Syntax =
@@ -222,7 +66,10 @@ type Textual_Syntax =
         Path.Combine(parent_directory, sprintf "%s.%s" stem this.file_extension)
 
 
+
+
 module NTriples =
+
     let syntax =
         { syntax_name = "NTriples"
           file_extension = "nt"
@@ -239,7 +86,7 @@ module NTriples =
             parser.Load(graph, reader)
         with
         | err ->
-            
+
             failwithf "The text %s failed to parse with error %s" text err.Message
 
     let iriref_nt (iriref: IRIREF) = "<" + iriref.as_raw_string + ">"
@@ -318,68 +165,43 @@ module NTriples =
 
 
 
-module NQuads =
-    let syntax =
-        { syntax_name = "N-Quads"
-          file_extension = "nq" }
-
-    let mime_type = Mime_Path.application.n.quads.media_type
-
-module TriG =
-    let syntax =
-        { syntax_name = "TriG"
-          file_extension = "trig"
-
-        }
-
-    let mime_type = Mime_Path.application.trig.media_type
-
-module D2 =
-
-    let syntax =
-        { syntax_name = "D2"
-          file_extension = "d2" }
-
-    let prefix_delimiter = "\\:"
-
-    let vertex_d2 (vertex: Vertex) =
-        vertex.as_rendered_string prefix_delimiter global_prefix_map
-
-    let edge_d2 (edge: Edge) =
-        edge.as_rendered_string prefix_delimiter global_prefix_map
-
-    let graph_lines (rdf_graph: Rdf_Graph) =
-        rdf_graph.triples
-        |> Array.ofSeq
-        |> Array.Parallel.map (fun triple ->
-            SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
-        |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
-            sprintf "%s -> %s : %s" (vertex_d2 in_vertex) (vertex_d2 out_vertex) (edge_d2 out_edge))
-
-    let graph_text (rdf_graph: Rdf_Graph) =
-        rdf_graph |> graph_lines |> String.concat "\n"
-
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
-        let file_text = { triples = draft.triples } |> graph_text
-
-        let file_path = syntax.file_path parent_directory stem
-        File.WriteAllText(file_path, file_text)
-
-
-
-type YoGraph = Yog.Model.Graph<Vertex, Edge>
-type Quik_Edge = TaggedEdge<Vertex, Edge>
-type Quik_Graph = BidirectionalGraph<Vertex, Quik_Edge>
-
-
-module Rdf_Graph =
-    let to_igraph (rdf_graph: Rdf_Graph) =
+module IGraph =
+    let from_rdf_graph (rdf_graph: Rdf_Graph) =
         let igraph = new ThreadSafeGraph()
         NTriples.parse (NTriples.graph_text rdf_graph) igraph
         igraph
 
 
-    let to_yograph (rdf_graph: Rdf_Graph) =
+    let map_prefixes (graph: IGraph) =
+        global_prefix_declarations
+        |> Array.Parallel.iter (fun (namespace_name, prefix_label) ->
+
+            let uri_nodes =
+                graph.AllNodes
+                |> Seq.toArray
+                |> Array.Parallel.choose (fun inode ->
+                    if inode.NodeType = NodeType.Uri then
+                        Some(inode :?> UriNode)
+                    else
+                        None
+
+                )
+
+            let term_is_namespaced =
+                uri_nodes
+                |> Array.Parallel.exists (fun uri_node ->
+
+                    uri_node.Uri.OriginalString.StartsWith(namespace_name)
+
+                )
+
+            if term_is_namespaced then
+                graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name)))
+
+type YoGraph = Graph<Vertex, Edge>
+
+module YoGraph =
+    let from_rdf_graph (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
         |> Array.ofSeq
         |> Array.Parallel.map (fun triple ->
@@ -388,7 +210,12 @@ module Rdf_Graph =
         |> Labeled.fromList Directed
         |> Labeled.toGraph
 
-    let to_quik_graph (rdf_graph: Rdf_Graph) =
+
+type Quik_Edge = TaggedEdge<Vertex, Edge>
+type Quik_Graph = BidirectionalGraph<Vertex, Quik_Edge>
+
+module Quik_Graph =
+    let from_rdf_graph (rdf_graph: Rdf_Graph) =
         let quik_graph = new Quik_Graph()
 
         rdf_graph.triples
@@ -560,7 +387,7 @@ module Turtle =
         tw.WriteLine()
 
     let write_igraph (parent_directory: string) (stem: string) (graph: VDS.RDF.IGraph) =
-        map_prefixes graph
+        IGraph.map_prefixes graph
 
         use file_stream =
             new FileStream(syntax.file_path parent_directory stem, FileMode.Create, FileAccess.Write, FileShare.Read)
@@ -589,14 +416,111 @@ module Turtle =
         writer.Save(graph, syntax.file_path parent_directory stem)
 
 *)
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         let file_path = syntax.file_path parent_directory stem
 
         { triples = draft.triples }
-        |> Rdf_Graph.to_igraph
+        |> IGraph.from_rdf_graph
         |> write_igraph parent_directory stem
 
 
+
+module JsonLd =
+    let syntax =
+        { syntax_name = "JsonLd"
+          file_extension = "jsonld" }
+    let triplestore_from_igraph (output_path: string) (graph: IGraph) =
+        let store = new TripleStore()
+
+        store.Add(graph) |> ignore
+
+        let writer = JsonLdWriter()
+        writer.Save(store, output_path)
+        store
+
+    let private context_from_graph (graph: IGraph) =
+        let context = JObject()
+
+        for prefix in graph.NamespaceMap.Prefixes do
+            let namespace_iri =
+                graph
+                    .NamespaceMap
+                    .GetNamespaceUri(
+                        prefix
+                    )
+                    .AbsoluteUri
+
+            if String.IsNullOrEmpty(prefix) then
+                // Turtle's default prefix corresponds most closely to @vocab.
+                context["@vocab"] <- JValue(namespace_iri)
+            else
+                let prefix_definition = JObject()
+
+                prefix_definition["@id"] <- JValue(namespace_iri)
+
+                prefix_definition["@prefix"] <- JValue(true)
+
+                context[prefix] <- prefix_definition
+
+        context
+
+    let compacted_from_igraph (graph: IGraph) =
+        let store = new TripleStore()
+        store.Add(graph) |> ignore
+
+        let expanded_json_ld = JsonLdWriter().SerializeStore(store)
+
+        let context = context_from_graph graph
+
+        let options = JsonLdProcessorOptions()
+        options.Ordered <- true
+
+        JsonLdProcessor.Compact(expanded_json_ld, context, options)
+        |> _.ToString(Formatting.Indented)
+
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) = 
+        let file_text = 
+            { triples = draft.triples }
+            |> IGraph.from_rdf_graph
+            |> compacted_from_igraph
+
+        let file_path = syntax.file_path parent_directory stem
+        File.WriteAllText(file_path, file_text)
+module JsonRq =
+    
+    let syntax = 
+        { syntax_name = "SPARQL Results JSON"
+          file_extension = "rq.json" }
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
+        let file_path = syntax.file_path parent_directory stem
+        let store = new TripleStore()
+
+        store.Add({ triples = draft.triples } |> IGraph.from_rdf_graph) |> ignore
+
+        let dataset =
+            new InMemoryDataset(store)
+
+        let query =
+            SparqlQueryParser().ParseFromString(
+                """
+                SELECT ?source ?predicate ?target
+                WHERE {
+                    ?source ?predicate ?target
+                }
+                """
+            )
+
+        let processor =
+            new LeviathanQueryProcessor(dataset)
+
+        let results =
+            processor.ProcessQuery(query)
+            :?> SparqlResultSet
+
+        SparqlJsonWriter().Save(
+            results,
+            file_path
+        )
 module ddot =
     module it =
         let syntax =
@@ -618,7 +542,7 @@ module ddot =
         let graph_text (rdf_graph: Rdf_Graph) =
             rdf_graph |> graph_lines |> String.concat "\n"
 
-        let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+        let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
             let file_text = { triples = draft.triples } |> graph_text
 
             let file_path = syntax.file_path parent_directory stem
@@ -643,7 +567,7 @@ module Dot =
     let yog_options: Dot.Options<Vertex, Edge> =
         {
 
-          NodeLabel = (fun vertex_id vertex -> vertex_dot vertex)
+          NodeLabel = (fun _ vertex -> vertex_dot vertex)
           EdgeLabel = (fun edge -> edge_dot edge)
           HighlightedSourceNodes = Set.empty
           HighlightedSinkNodes = Set.empty
@@ -679,17 +603,17 @@ module Dot =
         dot_graph.Generate(new FileDotEngine(), (syntax.file_path parent_directory stem))
         |> ignore
 
-    let write_draft_from_yograph (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft_from_yograph (parent_directory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
-        |> Rdf_Graph.to_yograph
+        |> YoGraph.from_rdf_graph
         |> write_yograph parent_directory $"{stem}.yog"
 
-    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
-        |> Rdf_Graph.to_quik_graph
+        |> Quik_Graph.from_rdf_graph
         |> write_quik_graph parent_directory $"{stem}.quik"
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         draft
         |> write_draft_from_yograph parent_directory stem
 
@@ -727,25 +651,75 @@ module Mermaid =
         let file_path = syntax.file_path parent_directory stem
         Mermaid.writeFile file_path options yograph
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
-        |> Rdf_Graph.to_yograph
+        |> YoGraph.from_rdf_graph
         |> write_yograph parent_directory stem
 
 
 
+module d2 =
+    let syntax =
+        { syntax_name = "d2"
+          file_extension = "d2" }
 
-module Draft_Document =
-    let materialize_triples (draft: Draft_Document) = draft.materialize_triples
-    let emit_triples (draft: Draft_Document) = draft.triples
-    let to_rdf_graph (draft: Draft_Document) = { triples = draft.triples }
+    let prefix_delimiter = "\\:"
 
-    let to_igraph (draft: Draft_Document) =
-        draft |> to_rdf_graph |> Rdf_Graph.to_igraph
+    let vertex_d2 (vertex: Vertex) =
+        vertex.as_rendered_string prefix_delimiter global_prefix_map
+
+    let edge_d2 (edge: Edge) =
+        edge.as_rendered_string prefix_delimiter global_prefix_map
+
+    let graph_lines (rdf_graph: Rdf_Graph) =
+        rdf_graph.triples
+        |> Array.ofSeq
+        |> Array.Parallel.map (fun triple ->
+            SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
+        |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
+            sprintf "%s -> %s : %s" (vertex_d2 in_vertex) (vertex_d2 out_vertex) (edge_d2 out_edge))
+
+    let graph_text (rdf_graph: Rdf_Graph) =
+        rdf_graph |> graph_lines |> String.concat "\n"
+
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
+        let file_text = { triples = draft.triples } |> graph_text
+
+        let file_path = syntax.file_path parent_directory stem
+        File.WriteAllText(file_path, file_text)
+
+module Force_Graph_2D = 
+    let syntax =
+        { syntax_name = "2d force-graph"
+          file_extension = "force-graph.2d.json" }
+    
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
+        let file_text = Json.serialize({ triples = draft.triples } |> Force_Graph.from_rdf_graph )
+
+        let file_path = syntax.file_path parent_directory stem
+        File.WriteAllText(file_path, file_text)
+
+
+
+
+
+
+
+
+module Formula =
+    let materialize_triples (draft: Formula) = draft.materialize_triples
+    let emit_triples (draft: Formula) = draft.triples
+    let to_rdf_graph (draft: Formula) = { triples = draft.triples }
+
+    let to_igraph (draft: Formula) =
+        draft |> to_rdf_graph |> IGraph.from_rdf_graph
 
 let write_draft parent_directory stem draft =
     Turtle.write_draft parent_directory stem draft
     Dot.write_draft parent_directory stem draft
     ddot.it.write_draft parent_directory stem draft
     Mermaid.write_draft parent_directory stem draft
-    D2.write_draft parent_directory stem draft
+    d2.write_draft parent_directory stem draft
+    JsonLd.write_draft parent_directory stem draft
+    JsonRq.write_draft parent_directory stem draft
+    Force_Graph_2D.write_draft parent_directory stem draft

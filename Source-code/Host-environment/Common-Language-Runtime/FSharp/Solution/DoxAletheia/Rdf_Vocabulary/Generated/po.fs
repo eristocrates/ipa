@@ -1,26 +1,27 @@
 namespace http.purl.org.ontology.po.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module po =
     let _namespace_name = "http://purl.org/ontology/po/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/ontology/po/1.0"></see>
     /// </summary>
-    let ``_1.0`` = Namespaced_IRI.parse _namespace_name "1.0" |> NamespacedName
+    let ``_1.0`` = _prefix "1.0"
     /// <summary>
     ///   <see href="http://purl.org/ontology/po/1.1"></see>
     /// </summary>
-    let ``_1.1`` = Namespaced_IRI.parse _namespace_name "1.1" |> NamespacedName
-
+    let ``_1.1`` = _prefix "1.1"
     /// <summary>
     ///
     /// 		A version holding an audio description.
     ///
     /// <see href="http://purl.org/ontology/po/AudioDescribedVersion"></see></summary>
-    let AudioDescribedVersion =
-        Namespaced_IRI.parse _namespace_name "AudioDescribedVersion" |> NamespacedName
-
+    let AudioDescribedVersion = _prefix "AudioDescribedVersion"
     /// <summary>
     ///
     /// 		A particular version of an episode.
@@ -29,37 +30,37 @@ module po =
     /// 		The version is associated to a timeline.
     ///
     /// <see href="http://purl.org/ontology/po/Version"></see></summary>
-    let Version = Namespaced_IRI.parse _namespace_name "Version" |> NamespacedName
+    let Version = _prefix "Version"
     /// <summary>
     ///
     /// 		A brand, e.g. `Top Gear'
     ///
     /// <see href="http://purl.org/ontology/po/Brand"></see></summary>
-    let Brand = Namespaced_IRI.parse _namespace_name "Brand" |> NamespacedName
+    let Brand = _prefix "Brand"
     /// <summary>
     ///
     /// 		A programme, can either be a brand, a series or an episode
     ///
     /// <see href="http://purl.org/ontology/po/Programme"></see></summary>
-    let Programme = Namespaced_IRI.parse _namespace_name "Programme" |> NamespacedName
+    let Programme = _prefix "Programme"
     /// <summary>
     ///
     /// 		A series, e.g. `Top Gear, first season'
     ///
     /// <see href="http://purl.org/ontology/po/Series"></see></summary>
-    let Series = Namespaced_IRI.parse _namespace_name "Series" |> NamespacedName
+    let Series = _prefix "Series"
     /// <summary>
     ///
     /// 		A particular episode, e.g. `Top Gear, first episode of the first series' or the film 'A Walk in the Sun' (http://www.bbc.co.uk/programmes/b00gfzdt)
     ///
     /// <see href="http://purl.org/ontology/po/Episode"></see></summary>
-    let Episode = Namespaced_IRI.parse _namespace_name "Episode" |> NamespacedName
+    let Episode = _prefix "Episode"
     /// <summary>
     ///
     ///         A particular clip, e.g. `Clip of Top Gear, first series'
     ///
     /// <see href="http://purl.org/ontology/po/Clip"></see></summary>
-    let Clip = Namespaced_IRI.parse _namespace_name "Clip" |> NamespacedName
+    let Clip = _prefix "Clip"
     /// <summary>
     ///
     /// 		A broadcast event.
@@ -69,24 +70,21 @@ module po =
     /// 		particular version of an episode.
     ///
     /// <see href="http://purl.org/ontology/po/Broadcast"></see></summary>
-    let Broadcast = Namespaced_IRI.parse _namespace_name "Broadcast" |> NamespacedName
-
+    let Broadcast = _prefix "Broadcast"
     /// <summary>
     ///
     /// 		An organization responsible of some broadcasting services.
     ///         It can hold a set of services and outlets.
     ///
     /// <see href="http://purl.org/ontology/po/Broadcaster"></see></summary>
-    let Broadcaster =
-        Namespaced_IRI.parse _namespace_name "Broadcaster" |> NamespacedName
-
+    let Broadcaster = _prefix "Broadcaster"
     /// <summary>
     ///
     ///         A category provides a way of classifying a set of programmes. Such classifications
     ///         can be performed according to multiple dimensions and taxonomies, e.g. genre, format, places, people, subjects...
     ///
     /// <see href="http://purl.org/ontology/po/Category"></see></summary>
-    let Category = Namespaced_IRI.parse _namespace_name "Category" |> NamespacedName
+    let Category = _prefix "Category"
     /// <summary>
     ///
     ///         A physical channel on which a broadcast occurs.
@@ -95,139 +93,119 @@ module po =
     ///         Satellite.
     ///
     /// <see href="http://purl.org/ontology/po/Channel"></see></summary>
-    let Channel = Namespaced_IRI.parse _namespace_name "Channel" |> NamespacedName
-
+    let Channel = _prefix "Channel"
     /// <summary>
     ///
     ///         A programme that can have versions, and as such can be broadcast or made available on-demand, e.g. a clip or an episode.
     ///
     /// <see href="http://purl.org/ontology/po/ProgrammeItem"></see></summary>
-    let ProgrammeItem =
-        Namespaced_IRI.parse _namespace_name "ProgrammeItem" |> NamespacedName
-
+    let ProgrammeItem = _prefix "ProgrammeItem"
     /// <summary>
     ///
     /// 		Digital Audio Broadcasting
     ///
     /// <see href="http://purl.org/ontology/po/DAB"></see></summary>
-    let DAB = Namespaced_IRI.parse _namespace_name "DAB" |> NamespacedName
+    let DAB = _prefix "DAB"
     /// <summary>
     ///
     /// 		Digital Video Broadcasting
     ///
     /// <see href="http://purl.org/ontology/po/DVB"></see></summary>
-    let DVB = Namespaced_IRI.parse _namespace_name "DVB" |> NamespacedName
+    let DVB = _prefix "DVB"
     /// <summary>
     ///
     /// 		The FM broadcast band
     ///
     /// <see href="http://purl.org/ontology/po/FM"></see></summary>
-    let FM = Namespaced_IRI.parse _namespace_name "FM" |> NamespacedName
-
+    let FM = _prefix "FM"
     /// <summary>
     ///
     /// 		Specifies a broadcast as being the
     /// 		first one of a particular version.
     ///
     /// <see href="http://purl.org/ontology/po/FirstBroadcast"></see></summary>
-    let FirstBroadcast =
-        Namespaced_IRI.parse _namespace_name "FirstBroadcast" |> NamespacedName
-
+    let FirstBroadcast = _prefix "FirstBroadcast"
     /// <summary>
     ///
     /// 		Specifies a broadcast as being a
     /// 		repeat.
     ///
     /// <see href="http://purl.org/ontology/po/RepeatBroadcast"></see></summary>
-    let RepeatBroadcast =
-        Namespaced_IRI.parse _namespace_name "RepeatBroadcast" |> NamespacedName
-
+    let RepeatBroadcast = _prefix "RepeatBroadcast"
     /// <summary>
     ///
     ///         Anchor point for format taxonomies, similar to po:Genre for genre taxonomies.
     ///         Instances of this concept include documentaries, talk shows, animation, etc.
     ///
     /// <see href="http://purl.org/ontology/po/Format"></see></summary>
-    let Format = Namespaced_IRI.parse _namespace_name "Format" |> NamespacedName
+    let Format = _prefix "Format"
     /// <summary>
     ///
     ///         An anchor point for a programmes' genre taxonomy, e.g. 'Drama'/'Biographical'.
     ///
     /// <see href="http://purl.org/ontology/po/Genre"></see></summary>
-    let Genre = Namespaced_IRI.parse _namespace_name "Genre" |> NamespacedName
+    let Genre = _prefix "Genre"
     /// <summary>
     ///
     /// 		IP stream
     ///
     /// <see href="http://purl.org/ontology/po/IPStream"></see></summary>
-    let IPStream = Namespaced_IRI.parse _namespace_name "IPStream" |> NamespacedName
+    let IPStream = _prefix "IPStream"
     /// <summary>
     ///
     /// 		The AM broadcast band
     ///
     /// <see href="http://purl.org/ontology/po/LW"></see></summary>
-    let LW = Namespaced_IRI.parse _namespace_name "LW" |> NamespacedName
+    let LW = _prefix "LW"
     /// <summary>
     ///
     /// 		Radio services aiming at a local coverage.
     ///
     /// <see href="http://purl.org/ontology/po/LocalRadio"></see></summary>
-    let LocalRadio = Namespaced_IRI.parse _namespace_name "LocalRadio" |> NamespacedName
+    let LocalRadio = _prefix "LocalRadio"
     /// <summary>
     ///
     /// 		Services that use a radio medium.
     ///
     /// <see href="http://purl.org/ontology/po/Radio"></see></summary>
-    let Radio = Namespaced_IRI.parse _namespace_name "Radio" |> NamespacedName
-
+    let Radio = _prefix "Radio"
     /// <summary>
     ///
     /// 		Radio services aiming at a regional coverage.
     ///
     /// <see href="http://purl.org/ontology/po/RegionalRadio"></see></summary>
-    let RegionalRadio =
-        Namespaced_IRI.parse _namespace_name "RegionalRadio" |> NamespacedName
-
+    let RegionalRadio = _prefix "RegionalRadio"
     /// <summary>
     ///
     /// 		Radio services aiming at a national coverage.
     ///
     /// <see href="http://purl.org/ontology/po/NationalRadio"></see></summary>
-    let NationalRadio =
-        Namespaced_IRI.parse _namespace_name "NationalRadio" |> NamespacedName
-
+    let NationalRadio = _prefix "NationalRadio"
     /// <summary>
     ///
     /// 		Classification of an episode version's region corresponding to a musical track being played.
     ///
     /// <see href="http://purl.org/ontology/po/MusicSegment"></see></summary>
-    let MusicSegment =
-        Namespaced_IRI.parse _namespace_name "MusicSegment" |> NamespacedName
-
+    let MusicSegment = _prefix "MusicSegment"
     /// <summary>
     ///
     /// 		Classification of an episode version's region, e.g. 'this track was played at that time'.
     ///
     /// <see href="http://purl.org/ontology/po/Segment"></see></summary>
-    let Segment = Namespaced_IRI.parse _namespace_name "Segment" |> NamespacedName
-
+    let Segment = _prefix "Segment"
     /// <summary>
     ///
     /// 		An `original' version, the legacy version of
     /// 		a particular episode.
     ///
     /// <see href="http://purl.org/ontology/po/OriginalVersion"></see></summary>
-    let OriginalVersion =
-        Namespaced_IRI.parse _namespace_name "OriginalVersion" |> NamespacedName
-
+    let OriginalVersion = _prefix "OriginalVersion"
     /// <summary>
     ///
     /// 		A shortened version.
     ///
     /// <see href="http://purl.org/ontology/po/ShortenedVersion"></see></summary>
-    let ShortenedVersion =
-        Namespaced_IRI.parse _namespace_name "ShortenedVersion" |> NamespacedName
-
+    let ShortenedVersion = _prefix "ShortenedVersion"
     /// <summary>
     ///
     ///         Outlet of a particular service, e.g. Radio 4 LW and FM for Radio 4.
@@ -238,7 +216,7 @@ module po =
     ///         The two physical channels for broadcasts correspond to po:Channel.
     ///
     /// <see href="http://purl.org/ontology/po/Outlet"></see></summary>
-    let Outlet = Namespaced_IRI.parse _namespace_name "Outlet" |> NamespacedName
+    let Outlet = _prefix "Outlet"
     /// <summary>
     ///
     ///         A broadcasting service.
@@ -251,355 +229,301 @@ module po =
     ///         be an instance of the top-level po:Service.
     ///
     /// <see href="http://purl.org/ontology/po/Service"></see></summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
+    let Service = _prefix "Service"
     /// <summary>
     /// A person
     /// <see href="http://purl.org/ontology/po/Person"></see></summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
+    let Person = _prefix "Person"
     /// <summary>
     /// A physical place
     /// <see href="http://purl.org/ontology/po/Place"></see></summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///
     /// 		Services that use a Web medium.
     ///
     /// <see href="http://purl.org/ontology/po/Web"></see></summary>
-    let Web = Namespaced_IRI.parse _namespace_name "Web" |> NamespacedName
+    let Web = _prefix "Web"
     /// <summary>
     ///
     /// 		Services that use a television medium.
     ///
     /// <see href="http://purl.org/ontology/po/TV"></see></summary>
-    let TV = Namespaced_IRI.parse _namespace_name "TV" |> NamespacedName
+    let TV = _prefix "TV"
     /// <summary>
     ///
     /// 		A season is a group of broadcasts.
     ///
     /// <see href="http://purl.org/ontology/po/Season"></see></summary>
-    let Season = Namespaced_IRI.parse _namespace_name "Season" |> NamespacedName
-
+    let Season = _prefix "Season"
     /// <summary>
     ///
     /// 		A version holding sign language.
     ///
     /// <see href="http://purl.org/ontology/po/SignedVersion"></see></summary>
-    let SignedVersion =
-        Namespaced_IRI.parse _namespace_name "SignedVersion" |> NamespacedName
-
+    let SignedVersion = _prefix "SignedVersion"
     /// <summary>
     ///
     ///         Classification of an episode version's region holding speech content.
     ///
     /// <see href="http://purl.org/ontology/po/SpeechSegment"></see></summary>
-    let SpeechSegment =
-        Namespaced_IRI.parse _namespace_name "SpeechSegment" |> NamespacedName
-
+    let SpeechSegment = _prefix "SpeechSegment"
     /// <summary>
     ///
     ///         Anchor point for subject taxonomies.
     ///
     /// <see href="http://purl.org/ontology/po/Subject"></see></summary>
-    let Subject = Namespaced_IRI.parse _namespace_name "Subject" |> NamespacedName
+    let Subject = _prefix "Subject"
     /// <summary>
     ///
     ///         Classification of an episode version's region corresponding to a subtitle being shown.
     ///
     /// <see href="http://purl.org/ontology/po/Subtitle"></see></summary>
-    let Subtitle = Namespaced_IRI.parse _namespace_name "Subtitle" |> NamespacedName
+    let Subtitle = _prefix "Subtitle"
     /// <summary>
     /// Relates a programmes to one of its actors - a person who plays the role of a character
     /// <see href="http://purl.org/ontology/po/actor"></see></summary>
-    let actor = Namespaced_IRI.parse _namespace_name "actor" |> NamespacedName
+    let actor = _prefix "actor"
     /// <summary>
     /// Relates a programmes to a person who is credited in it
     /// <see href="http://purl.org/ontology/po/credit"></see></summary>
-    let credit = Namespaced_IRI.parse _namespace_name "credit" |> NamespacedName
+    let credit = _prefix "credit"
     /// <summary>
     /// A television reporter who coordinates a programme
     /// <see href="http://purl.org/ontology/po/anchor"></see></summary>
-    let anchor = Namespaced_IRI.parse _namespace_name "anchor" |> NamespacedName
-
+    let anchor = _prefix "anchor"
     /// <summary>
     ///
     /// 		The aspect ration of a particular version.
     ///
     /// <see href="http://purl.org/ontology/po/aspect_ratio"></see></summary>
-    let aspect_ratio =
-        Namespaced_IRI.parse _namespace_name "aspect_ratio" |> NamespacedName
-
+    let aspect_ratio = _prefix "aspect_ratio"
     /// <summary>
     /// Relates a programme to its author - the person who created the content
     /// <see href="http://purl.org/ontology/po/author"></see></summary>
-    let author = Namespaced_IRI.parse _namespace_name "author" |> NamespacedName
-
+    let author = _prefix "author"
     /// <summary>
     ///
     /// 		Relates a particular broadcast to the version being broadcasted.
     /// 		Sub-property of the event:factor one.
     ///
     /// <see href="http://purl.org/ontology/po/broadcast_of"></see></summary>
-    let broadcast_of =
-        Namespaced_IRI.parse _namespace_name "broadcast_of" |> NamespacedName
-
+    let broadcast_of = _prefix "broadcast_of"
     /// <summary>
     ///
     /// 		Relates a particular broadcast to the service or outlet on which it was.
     /// 		Sub-property of the event:factor one.
     ///
     /// <see href="http://purl.org/ontology/po/broadcast_on"></see></summary>
-    let broadcast_on =
-        Namespaced_IRI.parse _namespace_name "broadcast_on" |> NamespacedName
-
+    let broadcast_on = _prefix "broadcast_on"
     /// <summary>
     /// Deprecated property, left here for historical reasons
     /// <see href="http://purl.org/ontology/po/broadcasted_on"></see></summary>
-    let broadcasted_on =
-        Namespaced_IRI.parse _namespace_name "broadcasted_on" |> NamespacedName
-
+    let broadcasted_on = _prefix "broadcasted_on"
     /// <summary>
     ///
     /// 		Associates a service to a broadcaster
     ///
     /// <see href="http://purl.org/ontology/po/broadcaster"></see></summary>
-    let broadcaster =
-        Namespaced_IRI.parse _namespace_name "broadcaster" |> NamespacedName
-
+    let broadcaster = _prefix "broadcaster"
     /// <summary>
     ///
     ///         Relates a programme to a particular category, e.g. genre, format, place...
     ///
     /// <see href="http://purl.org/ontology/po/category"></see></summary>
-    let category = Namespaced_IRI.parse _namespace_name "category" |> NamespacedName
+    let category = _prefix "category"
     /// <summary>
     ///
     ///         Associates a service to a channel, e.g. Radio 4 LW to Radio 4 LW on Analogue Long Wave.
     ///
     /// <see href="http://purl.org/ontology/po/channel"></see></summary>
-    let channel = Namespaced_IRI.parse _namespace_name "channel" |> NamespacedName
+    let channel = _prefix "channel"
     /// <summary>
     ///
     ///         Associates a brand, a series or an episode to a clip.
     ///
     /// <see href="http://purl.org/ontology/po/clip"></see></summary>
-    let clip = Namespaced_IRI.parse _namespace_name "clip" |> NamespacedName
-
+    let clip = _prefix "clip"
     /// <summary>
     /// Relates a programme to one of its commentators
     /// <see href="http://purl.org/ontology/po/commentator"></see></summary>
-    let commentator =
-        Namespaced_IRI.parse _namespace_name "commentator" |> NamespacedName
-
+    let commentator = _prefix "commentator"
     /// <summary>
     /// Relates a programme to its supervisor. Generally refers to the person responsible for all audience-visible components of a program, film, or show, whereas the producer is responsible for the financial and other behind-the-scenes aspects. A director's duties might also include casting, script editing, shot selection, shot composition, and editing
     /// <see href="http://purl.org/ontology/po/director"></see></summary>
-    let director = Namespaced_IRI.parse _namespace_name "director" |> NamespacedName
+    let director = _prefix "director"
     /// <summary>
     /// The duration of a version, in seconds.
     /// <see href="http://purl.org/ontology/po/duration"></see></summary>
-    let duration = Namespaced_IRI.parse _namespace_name "duration" |> NamespacedName
+    let duration = _prefix "duration"
     /// <summary>
     ///
     /// 		Associates a brand or a series to an episode constituting it.
     ///
     /// <see href="http://purl.org/ontology/po/episode"></see></summary>
-    let episode = Namespaced_IRI.parse _namespace_name "episode" |> NamespacedName
-
+    let episode = _prefix "episode"
     /// <summary>
     /// Relates a programme to its executive producer - a producer who is not involved in any technical aspects of the making process, but who is still responsible for the overall production. Typically an executive producer handles business and legal issues
     /// <see href="http://purl.org/ontology/po/executive_producer"></see></summary>
-    let executive_producer =
-        Namespaced_IRI.parse _namespace_name "executive_producer" |> NamespacedName
-
+    let executive_producer = _prefix "executive_producer"
     /// <summary>
     ///
     /// 		Relates a programme to a particular format (eg. `Animation', `Documentary', etc.).
     ///
     /// <see href="http://purl.org/ontology/po/format"></see></summary>
-    let format = Namespaced_IRI.parse _namespace_name "format" |> NamespacedName
+    let format = _prefix "format"
     /// <summary>
     /// Associates a channel to its frequency
     /// <see href="http://purl.org/ontology/po/frequency"></see></summary>
-    let frequency = Namespaced_IRI.parse _namespace_name "frequency" |> NamespacedName
+    let frequency = _prefix "frequency"
     /// <summary>
     ///
     /// 		Relates a programme to a particular genre.
     ///
     /// <see href="http://purl.org/ontology/po/genre"></see></summary>
-    let genre = Namespaced_IRI.parse _namespace_name "genre" |> NamespacedName
+    let genre = _prefix "genre"
     /// <summary>
     ///
     /// 		Associates a service to a geographic location,
     /// 		aiming at capturing what this service aims at covering.
     ///
     /// <see href="http://purl.org/ontology/po/location"></see></summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
-
+    let location = _prefix "location"
     /// <summary>
     ///
     /// 		A long synopsis of a series, brand or episode.
     /// 		Sub-property of po:synopsis.
     ///
     /// <see href="http://purl.org/ontology/po/long_synopsis"></see></summary>
-    let long_synopsis =
-        Namespaced_IRI.parse _namespace_name "long_synopsis" |> NamespacedName
-
+    let long_synopsis = _prefix "long_synopsis"
     /// <summary>
     ///
     /// 		The synopsis of a series, brand or episode.
     ///
     /// <see href="http://purl.org/ontology/po/synopsis"></see></summary>
-    let synopsis = Namespaced_IRI.parse _namespace_name "synopsis" |> NamespacedName
-
+    let synopsis = _prefix "synopsis"
     /// <summary>
     /// Associates a programme with its masterbrand (its commissioner)
     /// <see href="http://purl.org/ontology/po/masterbrand"></see></summary>
-    let masterbrand =
-        Namespaced_IRI.parse _namespace_name "masterbrand" |> NamespacedName
-
+    let masterbrand = _prefix "masterbrand"
     /// <summary>
     ///
     /// 		A medium synopsis of a series, brand or episode.
     /// 		Sub-property of po:synopsis.
     ///
     /// <see href="http://purl.org/ontology/po/medium_synopsis"></see></summary>
-    let medium_synopsis =
-        Namespaced_IRI.parse _namespace_name "medium_synopsis" |> NamespacedName
-
+    let medium_synopsis = _prefix "medium_synopsis"
     /// <summary>
     /// Associates a programme to its microsite. For example http://www.bbc.co.uk/programmes/b00fm04s and http://www.bbc.co.uk/eastenders/
     /// <see href="http://purl.org/ontology/po/microsite"></see></summary>
-    let microsite = Namespaced_IRI.parse _namespace_name "microsite" |> NamespacedName
-
+    let microsite = _prefix "microsite"
     /// <summary>
     /// Relates a programme to its news reader
     /// <see href="http://purl.org/ontology/po/news_reader"></see></summary>
-    let news_reader =
-        Namespaced_IRI.parse _namespace_name "news_reader" |> NamespacedName
-
+    let news_reader = _prefix "news_reader"
     /// <summary>
     ///
     /// 		Associates a service to an outlet, e.g. Radio 4 to Radio 4 LW.
     ///
     /// <see href="http://purl.org/ontology/po/outlet"></see></summary>
-    let outlet = Namespaced_IRI.parse _namespace_name "outlet" |> NamespacedName
-
+    let outlet = _prefix "outlet"
     /// <summary>
     ///
     /// 		Relates a series to a series constituting it (eg. `Waking the dead').
     ///
     /// <see href="http://purl.org/ontology/po/parent_series"></see></summary>
-    let parent_series =
-        Namespaced_IRI.parse _namespace_name "parent_series" |> NamespacedName
-
+    let parent_series = _prefix "parent_series"
     /// <summary>
     ///
     /// 		Relates a service to another service encapsulating it (eg. `BBC One' and `BBC One South')
     ///
     /// <see href="http://purl.org/ontology/po/parent_service"></see></summary>
-    let parent_service =
-        Namespaced_IRI.parse _namespace_name "parent_service" |> NamespacedName
-
+    let parent_service = _prefix "parent_service"
     /// <summary>
     /// Relates a programme to one of its participants
     /// <see href="http://purl.org/ontology/po/participant"></see></summary>
-    let participant =
-        Namespaced_IRI.parse _namespace_name "participant" |> NamespacedName
-
+    let participant = _prefix "participant"
     /// <summary>
     /// Relates a programme to an entertainer who performs a dramatic or musical work for audience
     /// <see href="http://purl.org/ontology/po/performer"></see></summary>
-    let performer = Namespaced_IRI.parse _namespace_name "performer" |> NamespacedName
+    let performer = _prefix "performer"
     /// <summary>
     ///
     ///         Relates a programme to a person
     ///
     /// <see href="http://purl.org/ontology/po/person"></see></summary>
-    let person = Namespaced_IRI.parse _namespace_name "person" |> NamespacedName
+    let person = _prefix "person"
     /// <summary>
     ///
     ///         Relates a programme to a place (e.g. `London')
     ///
     /// <see href="http://purl.org/ontology/po/place"></see></summary>
-    let place = Namespaced_IRI.parse _namespace_name "place" |> NamespacedName
+    let place = _prefix "place"
     /// <summary>
     /// The position of a particular series or episode within its containing programme. This property can also be used to give the position of an interval within the containing timeline.
     /// <see href="http://purl.org/ontology/po/position"></see></summary>
-    let position = Namespaced_IRI.parse _namespace_name "position" |> NamespacedName
+    let position = _prefix "position"
     /// <summary>
     /// Relates a programme to its producer - the manager of an event, show, or other work, usually the individual in charge of finance, personnel, and other non-artistic aspects in the development of commercials, plays, movies, and other works
     /// <see href="http://purl.org/ontology/po/producer"></see></summary>
-    let producer = Namespaced_IRI.parse _namespace_name "producer" |> NamespacedName
-
+    let producer = _prefix "producer"
     /// <summary>
     ///
     /// 		The schedule date of a broadcast event.
     ///
     /// <see href="http://purl.org/ontology/po/schedule_date"></see></summary>
-    let schedule_date =
-        Namespaced_IRI.parse _namespace_name "schedule_date" |> NamespacedName
-
+    let schedule_date = _prefix "schedule_date"
     /// <summary>
     /// Associates a season to its constituent broadcasts
     /// <see href="http://purl.org/ontology/po/season_broadcast"></see></summary>
-    let season_broadcast =
-        Namespaced_IRI.parse _namespace_name "season_broadcast" |> NamespacedName
-
+    let season_broadcast = _prefix "season_broadcast"
     /// <summary>
     ///
     /// 		Associates a brand or a series to a series constituting it.
     ///
     /// <see href="http://purl.org/ontology/po/series"></see></summary>
-    let series = Namespaced_IRI.parse _namespace_name "series" |> NamespacedName
+    let series = _prefix "series"
     /// <summary>
     ///
     /// 		Associate a brand, series or episode to the master brand service.
     ///
     /// <see href="http://purl.org/ontology/po/service"></see></summary>
-    let service = Namespaced_IRI.parse _namespace_name "service" |> NamespacedName
-
+    let service = _prefix "service"
     /// <summary>
     ///
     /// 		A short synopsis of a series, brand or episode.
     /// 		Sub-property of po:synopsis.
     ///
     /// <see href="http://purl.org/ontology/po/short_synopsis"></see></summary>
-    let short_synopsis =
-        Namespaced_IRI.parse _namespace_name "short_synopsis" |> NamespacedName
-
+    let short_synopsis = _prefix "short_synopsis"
     /// <summary>
     ///
     /// 		The sound format of a particular version.
     ///
     /// <see href="http://purl.org/ontology/po/sound_format"></see></summary>
-    let sound_format =
-        Namespaced_IRI.parse _namespace_name "sound_format" |> NamespacedName
-
+    let sound_format = _prefix "sound_format"
     /// <summary>
     ///
     ///         Relates a programme to a subject (e.g. `Easter')
     ///
     /// <see href="http://purl.org/ontology/po/subject"></see></summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
-
+    let subject = _prefix "subject"
     /// <summary>
     /// Language of the subtitles embedded in a particular version
     /// <see href="http://purl.org/ontology/po/subtitle_language"></see></summary>
-    let subtitle_language =
-        Namespaced_IRI.parse _namespace_name "subtitle_language" |> NamespacedName
-
+    let subtitle_language = _prefix "subtitle_language"
     /// <summary>
     /// Associates a subtitle event to the corresponding text
     /// <see href="http://purl.org/ontology/po/text"></see></summary>
-    let text = Namespaced_IRI.parse _namespace_name "text" |> NamespacedName
+    let text = _prefix "text"
     /// <summary>
     /// Associates an episode's version or a version's segment with a temporal interval. This interval can be associated with a timeline, serving as an anchor for further temporal annotations, e.g. subtitles or played track
     /// <see href="http://purl.org/ontology/po/time"></see></summary>
-    let time = Namespaced_IRI.parse _namespace_name "time" |> NamespacedName
+    let time = _prefix "time"
     /// <summary>
     /// Associates a music segment with a track, as defined in MO
     /// <see href="http://purl.org/ontology/po/track"></see></summary>
-    let track = Namespaced_IRI.parse _namespace_name "track" |> NamespacedName
+    let track = _prefix "track"
     /// <summary>
     ///
     /// 		Associate an episode to a version of it.
@@ -607,4 +531,4 @@ module po =
     /// 		designed for the hearing impaired, etc.).
     ///
     /// <see href="http://purl.org/ontology/po/version"></see></summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
+    let version = _prefix "version"

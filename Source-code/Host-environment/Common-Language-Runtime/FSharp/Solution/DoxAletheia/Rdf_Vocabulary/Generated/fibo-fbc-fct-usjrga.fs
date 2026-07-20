@@ -1,943 +1,781 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.NorthAmericanEntities.USRegulatoryAgencies.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_usjrga =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/hasPrimaryFederalRegulator"></see>
     /// </summary>
-    let hasPrimaryFederalRegulator =
-        Namespaced_IRI.parse _namespace_name "hasPrimaryFederalRegulator" |> NamespacedName
+    let hasPrimaryFederalRegulator = _prefix "hasPrimaryFederalRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/BoardOfGovernorsOfTheFederalReserveSystem"></see>
     /// </summary>
     let BoardOfGovernorsOfTheFederalReserveSystem =
-        Namespaced_IRI.parse _namespace_name "BoardOfGovernorsOfTheFederalReserveSystem" |> NamespacedName
+        _prefix "BoardOfGovernorsOfTheFederalReserveSystem"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSystemMember"></see>
     /// </summary>
-    let FederalReserveSystemMember =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSystemMember" |> NamespacedName
-
+    let FederalReserveSystemMember = _prefix "FederalReserveSystemMember"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NationalBankingRegulator"></see>
     /// </summary>
-    let NationalBankingRegulator =
-        Namespaced_IRI.parse _namespace_name "NationalBankingRegulator" |> NamespacedName
-
+    let NationalBankingRegulator = _prefix "NationalBankingRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ABABusinessEntityIdentifier"></see>
     /// </summary>
-    let ABABusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "ABABusinessEntityIdentifier" |> NamespacedName
+    let ABABusinessEntityIdentifier = _prefix "ABABusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/DelawareBusinessRegistrationIdentifierScheme"></see>
     /// </summary>
     let DelawareBusinessRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "DelawareBusinessRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "DelawareBusinessRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/AmericanBankersAssociation"></see>
     /// </summary>
-    let AmericanBankersAssociation =
-        Namespaced_IRI.parse _namespace_name "AmericanBankersAssociation" |> NamespacedName
-
+    let AmericanBankersAssociation = _prefix "AmericanBankersAssociation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/DelawareBusinessEntitiesRegistry"></see>
     /// </summary>
-    let DelawareBusinessEntitiesRegistry =
-        Namespaced_IRI.parse _namespace_name "DelawareBusinessEntitiesRegistry" |> NamespacedName
-
+    let DelawareBusinessEntitiesRegistry = _prefix "DelawareBusinessEntitiesRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ABAHeadquartersAddress"></see>
     /// </summary>
-    let ABAHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "ABAHeadquartersAddress" |> NamespacedName
-
+    let ABAHeadquartersAddress = _prefix "ABAHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ABAIINRegistry"></see>
     /// </summary>
-    let ABAIINRegistry =
-        Namespaced_IRI.parse _namespace_name "ABAIINRegistry" |> NamespacedName
+    let ABAIINRegistry = _prefix "ABAIINRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/AmericanBankersAssociationRegistrationAuthority"></see>
     /// </summary>
     let AmericanBankersAssociationRegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "AmericanBankersAssociationRegistrationAuthority" |> NamespacedName
+        _prefix "AmericanBankersAssociationRegistrationAuthority"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ABAIINRegistryEntry"></see>
     /// </summary>
-    let ABAIINRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "ABAIINRegistryEntry" |> NamespacedName
-
+    let ABAIINRegistryEntry = _prefix "ABAIINRegistryEntry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/IssuerIdentificationNumber"></see>
     /// </summary>
-    let IssuerIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "IssuerIdentificationNumber" |> NamespacedName
-
+    let IssuerIdentificationNumber = _prefix "IssuerIdentificationNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ABARTNRegistry"></see>
     /// </summary>
-    let ABARTNRegistry =
-        Namespaced_IRI.parse _namespace_name "ABARTNRegistry" |> NamespacedName
+    let ABARTNRegistry = _prefix "ABARTNRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/AmericanBankersAssociationRTNRegistrar"></see>
     /// </summary>
     let AmericanBankersAssociationRTNRegistrar =
-        Namespaced_IRI.parse _namespace_name "AmericanBankersAssociationRTNRegistrar" |> NamespacedName
+        _prefix "AmericanBankersAssociationRTNRegistrar"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ABARTNRegistryEntry"></see>
     /// </summary>
-    let ABARTNRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "ABARTNRegistryEntry" |> NamespacedName
-
+    let ABARTNRegistryEntry = _prefix "ABARTNRegistryEntry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/RoutingTransitNumber"></see>
     /// </summary>
-    let RoutingTransitNumber =
-        Namespaced_IRI.parse _namespace_name "RoutingTransitNumber" |> NamespacedName
-
+    let RoutingTransitNumber = _prefix "RoutingTransitNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/AccuityInc-US-DE"></see>
     /// </summary>
-    let ``AccuityInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "AccuityInc-US-DE" |> NamespacedName
-
+    let ``AccuityInc-US-DE`` = _prefix "AccuityInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/AccuityIncHeadquartersAddress"></see>
     /// </summary>
-    let AccuityIncHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "AccuityIncHeadquartersAddress" |> NamespacedName
-
+    let AccuityIncHeadquartersAddress = _prefix "AccuityIncHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationTrustCompany"></see>
     /// </summary>
-    let CorporationTrustCompany =
-        Namespaced_IRI.parse _namespace_name "CorporationTrustCompany" |> NamespacedName
+    let CorporationTrustCompany = _prefix "CorporationTrustCompany"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/AccuityIncBusinessEntityIdentifier"></see>
     /// </summary>
     let AccuityIncBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "AccuityIncBusinessEntityIdentifier" |> NamespacedName
+        _prefix "AccuityIncBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationServiceCompany"></see>
     /// </summary>
-    let CorporationServiceCompany =
-        Namespaced_IRI.parse _namespace_name "CorporationServiceCompany" |> NamespacedName
+    let CorporationServiceCompany = _prefix "CorporationServiceCompany"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveRegulatoryAgencyAndCentralBank"></see>
     /// </summary>
     let FederalReserveRegulatoryAgencyAndCentralBank =
-        Namespaced_IRI.parse _namespace_name "FederalReserveRegulatoryAgencyAndCentralBank" |> NamespacedName
+        _prefix "FederalReserveRegulatoryAgencyAndCentralBank"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBoard"></see>
     /// </summary>
-    let FederalReserveBoard =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBoard" |> NamespacedName
-
+    let FederalReserveBoard = _prefix "FederalReserveBoard"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CFTCIndustryFilingsRepository"></see>
     /// </summary>
-    let CFTCIndustryFilingsRepository =
-        Namespaced_IRI.parse _namespace_name "CFTCIndustryFilingsRepository" |> NamespacedName
+    let CFTCIndustryFilingsRepository = _prefix "CFTCIndustryFilingsRepository"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CommoditiesFuturesAndDerivativesRegulator"></see>
     /// </summary>
     let CommoditiesFuturesAndDerivativesRegulator =
-        Namespaced_IRI.parse _namespace_name "CommoditiesFuturesAndDerivativesRegulator" |> NamespacedName
+        _prefix "CommoditiesFuturesAndDerivativesRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaBankingRegulator"></see>
     /// </summary>
-    let CaliforniaBankingRegulator =
-        Namespaced_IRI.parse _namespace_name "CaliforniaBankingRegulator" |> NamespacedName
+    let CaliforniaBankingRegulator = _prefix "CaliforniaBankingRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaDepartmentOfBusinessOversight"></see>
     /// </summary>
     let CaliforniaDepartmentOfBusinessOversight =
-        Namespaced_IRI.parse _namespace_name "CaliforniaDepartmentOfBusinessOversight" |> NamespacedName
+        _prefix "CaliforniaDepartmentOfBusinessOversight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaBusinessEntitiesRegistry"></see>
     /// </summary>
     let CaliforniaBusinessEntitiesRegistry =
-        Namespaced_IRI.parse _namespace_name "CaliforniaBusinessEntitiesRegistry" |> NamespacedName
+        _prefix "CaliforniaBusinessEntitiesRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaBusinessRegistrar"></see>
     /// </summary>
-    let CaliforniaBusinessRegistrar =
-        Namespaced_IRI.parse _namespace_name "CaliforniaBusinessRegistrar" |> NamespacedName
+    let CaliforniaBusinessRegistrar = _prefix "CaliforniaBusinessRegistrar"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaBusinessProgramsDivision"></see>
     /// </summary>
     let CaliforniaBusinessProgramsDivision =
-        Namespaced_IRI.parse _namespace_name "CaliforniaBusinessProgramsDivision" |> NamespacedName
+        _prefix "CaliforniaBusinessProgramsDivision"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/StateGovernmentEntity"></see>
     /// </summary>
-    let StateGovernmentEntity =
-        Namespaced_IRI.parse _namespace_name "StateGovernmentEntity" |> NamespacedName
+    let StateGovernmentEntity = _prefix "StateGovernmentEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaBusinessRegistrationService"></see>
     /// </summary>
     let CaliforniaBusinessRegistrationService =
-        Namespaced_IRI.parse _namespace_name "CaliforniaBusinessRegistrationService" |> NamespacedName
+        _prefix "CaliforniaBusinessRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaBusinessRegistrationIdentifierScheme"></see>
     /// </summary>
     let CaliforniaBusinessRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "CaliforniaBusinessRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "CaliforniaBusinessRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CaliforniaRegistrationAuthorityCode"></see>
     /// </summary>
     let CaliforniaRegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "CaliforniaRegistrationAuthorityCode" |> NamespacedName
+        _prefix "CaliforniaRegistrationAuthorityCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CommodityFuturesTradingCommission"></see>
     /// </summary>
-    let CommodityFuturesTradingCommission =
-        Namespaced_IRI.parse _namespace_name "CommodityFuturesTradingCommission" |> NamespacedName
-
+    let CommodityFuturesTradingCommission = _prefix "CommodityFuturesTradingCommission"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalGovernmentEntity"></see>
     /// </summary>
-    let FederalGovernmentEntity =
-        Namespaced_IRI.parse _namespace_name "FederalGovernmentEntity" |> NamespacedName
-
+    let FederalGovernmentEntity = _prefix "FederalGovernmentEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ConsumerFinanceRegulator"></see>
     /// </summary>
-    let ConsumerFinanceRegulator =
-        Namespaced_IRI.parse _namespace_name "ConsumerFinanceRegulator" |> NamespacedName
-
+    let ConsumerFinanceRegulator = _prefix "ConsumerFinanceRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ConsumerFinancialProtectionBureau"></see>
     /// </summary>
-    let ConsumerFinancialProtectionBureau =
-        Namespaced_IRI.parse _namespace_name "ConsumerFinancialProtectionBureau" |> NamespacedName
-
+    let ConsumerFinancialProtectionBureau = _prefix "ConsumerFinancialProtectionBureau"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/USDepartmentOfTheTreasury"></see>
     /// </summary>
-    let USDepartmentOfTheTreasury =
-        Namespaced_IRI.parse _namespace_name "USDepartmentOfTheTreasury" |> NamespacedName
-
+    let USDepartmentOfTheTreasury = _prefix "USDepartmentOfTheTreasury"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationServiceCompany-US-DE"></see>
     /// </summary>
-    let ``CorporationServiceCompany-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CorporationServiceCompany-US-DE" |> NamespacedName
-
+    let ``CorporationServiceCompany-US-DE`` = _prefix "CorporationServiceCompany-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationServiceCompanyAddress"></see>
     /// </summary>
-    let CorporationServiceCompanyAddress =
-        Namespaced_IRI.parse _namespace_name "CorporationServiceCompanyAddress" |> NamespacedName
+    let CorporationServiceCompanyAddress = _prefix "CorporationServiceCompanyAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationServiceCompanyBusinessEntityIdentifier"></see>
     /// </summary>
     let CorporationServiceCompanyBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CorporationServiceCompanyBusinessEntityIdentifier" |> NamespacedName
+        _prefix "CorporationServiceCompanyBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationTrustCompany-US-DE"></see>
     /// </summary>
-    let ``CorporationTrustCompany-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CorporationTrustCompany-US-DE" |> NamespacedName
+    let ``CorporationTrustCompany-US-DE`` = _prefix "CorporationTrustCompany-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationTrustCompanyHeadquartersAddress"></see>
     /// </summary>
     let CorporationTrustCompanyHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "CorporationTrustCompanyHeadquartersAddress" |> NamespacedName
+        _prefix "CorporationTrustCompanyHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/CorporationTrustCompanyBusinessEntityIdentifier"></see>
     /// </summary>
     let CorporationTrustCompanyBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CorporationTrustCompanyBusinessEntityIdentifier" |> NamespacedName
+        _prefix "CorporationTrustCompanyBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/DelawareCorporationsRegulator"></see>
     /// </summary>
-    let DelawareCorporationsRegulator =
-        Namespaced_IRI.parse _namespace_name "DelawareCorporationsRegulator" |> NamespacedName
+    let DelawareCorporationsRegulator = _prefix "DelawareCorporationsRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/DelawareBusinessRegistrationService"></see>
     /// </summary>
     let DelawareBusinessRegistrationService =
-        Namespaced_IRI.parse _namespace_name "DelawareBusinessRegistrationService" |> NamespacedName
+        _prefix "DelawareBusinessRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/DelawareDivisionOfCorporations"></see>
     /// </summary>
-    let DelawareDivisionOfCorporations =
-        Namespaced_IRI.parse _namespace_name "DelawareDivisionOfCorporations" |> NamespacedName
-
+    let DelawareDivisionOfCorporations = _prefix "DelawareDivisionOfCorporations"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/DelawareRegistrationAuthorityCode"></see>
     /// </summary>
-    let DelawareRegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "DelawareRegistrationAuthorityCode" |> NamespacedName
-
+    let DelawareRegistrationAuthorityCode = _prefix "DelawareRegistrationAuthorityCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/EDGARRepository"></see>
     /// </summary>
-    let EDGARRepository =
-        Namespaced_IRI.parse _namespace_name "EDGARRepository" |> NamespacedName
-
+    let EDGARRepository = _prefix "EDGARRepository"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SecuritiesAndExchangeRegulator"></see>
     /// </summary>
-    let SecuritiesAndExchangeRegulator =
-        Namespaced_IRI.parse _namespace_name "SecuritiesAndExchangeRegulator" |> NamespacedName
-
+    let SecuritiesAndExchangeRegulator = _prefix "SecuritiesAndExchangeRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/EmployerIdentificationNumber"></see>
     /// </summary>
-    let EmployerIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "EmployerIdentificationNumber" |> NamespacedName
-
+    let EmployerIdentificationNumber = _prefix "EmployerIdentificationNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/TaxpayerIdentificationNumber"></see>
     /// </summary>
-    let TaxpayerIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "TaxpayerIdentificationNumber" |> NamespacedName
+    let TaxpayerIdentificationNumber = _prefix "TaxpayerIdentificationNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/EmployerIdentificationNumberingScheme"></see>
     /// </summary>
     let EmployerIdentificationNumberingScheme =
-        Namespaced_IRI.parse _namespace_name "EmployerIdentificationNumberingScheme" |> NamespacedName
+        _prefix "EmployerIdentificationNumberingScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/TaxpayerIdentificationNumberingScheme"></see>
     /// </summary>
     let TaxpayerIdentificationNumberingScheme =
-        Namespaced_IRI.parse _namespace_name "TaxpayerIdentificationNumberingScheme" |> NamespacedName
+        _prefix "TaxpayerIdentificationNumberingScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FDICBusinessEntityIdentifier"></see>
     /// </summary>
-    let FDICBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "FDICBusinessEntityIdentifier" |> NamespacedName
+    let FDICBusinessEntityIdentifier = _prefix "FDICBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalDepositInsuranceCorporation"></see>
     /// </summary>
     let FederalDepositInsuranceCorporation =
-        Namespaced_IRI.parse _namespace_name "FederalDepositInsuranceCorporation" |> NamespacedName
+        _prefix "FederalDepositInsuranceCorporation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FDICCertificateNumber"></see>
     /// </summary>
-    let FDICCertificateNumber =
-        Namespaced_IRI.parse _namespace_name "FDICCertificateNumber" |> NamespacedName
-
+    let FDICCertificateNumber = _prefix "FDICCertificateNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FDICInstitutionDirectory"></see>
     /// </summary>
-    let FDICInstitutionDirectory =
-        Namespaced_IRI.parse _namespace_name "FDICInstitutionDirectory" |> NamespacedName
-
+    let FDICInstitutionDirectory = _prefix "FDICInstitutionDirectory"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalDepositInsurerAndRegulator"></see>
     /// </summary>
-    let FederalDepositInsurerAndRegulator =
-        Namespaced_IRI.parse _namespace_name "FederalDepositInsurerAndRegulator" |> NamespacedName
-
+    let FederalDepositInsurerAndRegulator = _prefix "FederalDepositInsurerAndRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FDICRegistryEntry"></see>
     /// </summary>
-    let FDICRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "FDICRegistryEntry" |> NamespacedName
-
+    let FDICRegistryEntry = _prefix "FDICRegistryEntry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FarmCreditAdministration"></see>
     /// </summary>
-    let FarmCreditAdministration =
-        Namespaced_IRI.parse _namespace_name "FarmCreditAdministration" |> NamespacedName
-
+    let FarmCreditAdministration = _prefix "FarmCreditAdministration"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FarmCreditRegulator"></see>
     /// </summary>
-    let FarmCreditRegulator =
-        Namespaced_IRI.parse _namespace_name "FarmCreditRegulator" |> NamespacedName
-
+    let FarmCreditRegulator = _prefix "FarmCreditRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/PrimaryFederalRegulator"></see>
     /// </summary>
-    let PrimaryFederalRegulator =
-        Namespaced_IRI.parse _namespace_name "PrimaryFederalRegulator" |> NamespacedName
+    let PrimaryFederalRegulator = _prefix "PrimaryFederalRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalFinancialInstitutionsExaminationCouncil"></see>
     /// </summary>
     let FederalFinancialInstitutionsExaminationCouncil =
-        Namespaced_IRI.parse _namespace_name "FederalFinancialInstitutionsExaminationCouncil" |> NamespacedName
+        _prefix "FederalFinancialInstitutionsExaminationCouncil"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NationalCreditUnionAdministration"></see>
     /// </summary>
-    let NationalCreditUnionAdministration =
-        Namespaced_IRI.parse _namespace_name "NationalCreditUnionAdministration" |> NamespacedName
+    let NationalCreditUnionAdministration = _prefix "NationalCreditUnionAdministration"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OfficeOfTheComptrollerOfTheCurrency"></see>
     /// </summary>
     let OfficeOfTheComptrollerOfTheCurrency =
-        Namespaced_IRI.parse _namespace_name "OfficeOfTheComptrollerOfTheCurrency" |> NamespacedName
+        _prefix "OfficeOfTheComptrollerOfTheCurrency"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalFinancialInstitutionsExaminationRegulator"></see>
     /// </summary>
     let FederalFinancialInstitutionsExaminationRegulator =
-        Namespaced_IRI.parse _namespace_name "FederalFinancialInstitutionsExaminationRegulator" |> NamespacedName
+        _prefix "FederalFinancialInstitutionsExaminationRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/UniformBankPerformanceReportRepository"></see>
     /// </summary>
     let UniformBankPerformanceReportRepository =
-        Namespaced_IRI.parse _namespace_name "UniformBankPerformanceReportRepository" |> NamespacedName
+        _prefix "UniformBankPerformanceReportRepository"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalHousingFinanceAgency"></see>
     /// </summary>
-    let FederalHousingFinanceAgency =
-        Namespaced_IRI.parse _namespace_name "FederalHousingFinanceAgency" |> NamespacedName
-
+    let FederalHousingFinanceAgency = _prefix "FederalHousingFinanceAgency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalHousingFinanceRegulator"></see>
     /// </summary>
-    let FederalHousingFinanceRegulator =
-        Namespaced_IRI.parse _namespace_name "FederalHousingFinanceRegulator" |> NamespacedName
-
+    let FederalHousingFinanceRegulator = _prefix "FederalHousingFinanceRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfAtlanta"></see>
     /// </summary>
-    let FederalReserveBankOfAtlanta =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfAtlanta" |> NamespacedName
-
+    let FederalReserveBankOfAtlanta = _prefix "FederalReserveBankOfAtlanta"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveDistrictBank"></see>
     /// </summary>
-    let FederalReserveDistrictBank =
-        Namespaced_IRI.parse _namespace_name "FederalReserveDistrictBank" |> NamespacedName
-
+    let FederalReserveDistrictBank = _prefix "FederalReserveDistrictBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSixthDistrict"></see>
     /// </summary>
-    let FederalReserveSixthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSixthDistrict" |> NamespacedName
-
+    let FederalReserveSixthDistrict = _prefix "FederalReserveSixthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfBoston"></see>
     /// </summary>
-    let FederalReserveBankOfBoston =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfBoston" |> NamespacedName
-
+    let FederalReserveBankOfBoston = _prefix "FederalReserveBankOfBoston"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveFirstDistrict"></see>
     /// </summary>
-    let FederalReserveFirstDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveFirstDistrict" |> NamespacedName
-
+    let FederalReserveFirstDistrict = _prefix "FederalReserveFirstDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfChicago"></see>
     /// </summary>
-    let FederalReserveBankOfChicago =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfChicago" |> NamespacedName
-
+    let FederalReserveBankOfChicago = _prefix "FederalReserveBankOfChicago"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSeventhDistrict"></see>
     /// </summary>
-    let FederalReserveSeventhDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSeventhDistrict" |> NamespacedName
-
+    let FederalReserveSeventhDistrict = _prefix "FederalReserveSeventhDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfCleveland"></see>
     /// </summary>
-    let FederalReserveBankOfCleveland =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfCleveland" |> NamespacedName
-
+    let FederalReserveBankOfCleveland = _prefix "FederalReserveBankOfCleveland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveFourthDistrict"></see>
     /// </summary>
-    let FederalReserveFourthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveFourthDistrict" |> NamespacedName
-
+    let FederalReserveFourthDistrict = _prefix "FederalReserveFourthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfDallas"></see>
     /// </summary>
-    let FederalReserveBankOfDallas =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfDallas" |> NamespacedName
-
+    let FederalReserveBankOfDallas = _prefix "FederalReserveBankOfDallas"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveEleventhDistrict"></see>
     /// </summary>
-    let FederalReserveEleventhDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveEleventhDistrict" |> NamespacedName
-
+    let FederalReserveEleventhDistrict = _prefix "FederalReserveEleventhDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfKansasCity"></see>
     /// </summary>
-    let FederalReserveBankOfKansasCity =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfKansasCity" |> NamespacedName
-
+    let FederalReserveBankOfKansasCity = _prefix "FederalReserveBankOfKansasCity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveTenthDistrict"></see>
     /// </summary>
-    let FederalReserveTenthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveTenthDistrict" |> NamespacedName
-
+    let FederalReserveTenthDistrict = _prefix "FederalReserveTenthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfMinneapolis"></see>
     /// </summary>
-    let FederalReserveBankOfMinneapolis =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfMinneapolis" |> NamespacedName
-
+    let FederalReserveBankOfMinneapolis = _prefix "FederalReserveBankOfMinneapolis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveNinthDistrict"></see>
     /// </summary>
-    let FederalReserveNinthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveNinthDistrict" |> NamespacedName
-
+    let FederalReserveNinthDistrict = _prefix "FederalReserveNinthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfNewYork"></see>
     /// </summary>
-    let FederalReserveBankOfNewYork =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfNewYork" |> NamespacedName
-
+    let FederalReserveBankOfNewYork = _prefix "FederalReserveBankOfNewYork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSecondDistrict"></see>
     /// </summary>
-    let FederalReserveSecondDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSecondDistrict" |> NamespacedName
+    let FederalReserveSecondDistrict = _prefix "FederalReserveSecondDistrict"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfNewYork-US-NY"></see>
     /// </summary>
     let ``FederalReserveBankOfNewYork-US-NY`` =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfNewYork-US-NY" |> NamespacedName
+        _prefix "FederalReserveBankOfNewYork-US-NY"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfNewYorkAddress"></see>
     /// </summary>
     let FederalReserveBankOfNewYorkAddress =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfNewYorkAddress" |> NamespacedName
+        _prefix "FederalReserveBankOfNewYorkAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfPhiladelphia"></see>
     /// </summary>
-    let FederalReserveBankOfPhiladelphia =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfPhiladelphia" |> NamespacedName
-
+    let FederalReserveBankOfPhiladelphia = _prefix "FederalReserveBankOfPhiladelphia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveThirdDistrict"></see>
     /// </summary>
-    let FederalReserveThirdDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveThirdDistrict" |> NamespacedName
-
+    let FederalReserveThirdDistrict = _prefix "FederalReserveThirdDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfRichmond"></see>
     /// </summary>
-    let FederalReserveBankOfRichmond =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfRichmond" |> NamespacedName
-
+    let FederalReserveBankOfRichmond = _prefix "FederalReserveBankOfRichmond"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveFifthDistrict"></see>
     /// </summary>
-    let FederalReserveFifthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveFifthDistrict" |> NamespacedName
-
+    let FederalReserveFifthDistrict = _prefix "FederalReserveFifthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfSanFrancisco"></see>
     /// </summary>
-    let FederalReserveBankOfSanFrancisco =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfSanFrancisco" |> NamespacedName
-
+    let FederalReserveBankOfSanFrancisco = _prefix "FederalReserveBankOfSanFrancisco"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveTwelfthDistrict"></see>
     /// </summary>
-    let FederalReserveTwelfthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveTwelfthDistrict" |> NamespacedName
-
+    let FederalReserveTwelfthDistrict = _prefix "FederalReserveTwelfthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveBankOfStLouis"></see>
     /// </summary>
-    let FederalReserveBankOfStLouis =
-        Namespaced_IRI.parse _namespace_name "FederalReserveBankOfStLouis" |> NamespacedName
-
+    let FederalReserveBankOfStLouis = _prefix "FederalReserveBankOfStLouis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveEighthDistrict"></see>
     /// </summary>
-    let FederalReserveEighthDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveEighthDistrict" |> NamespacedName
-
+    let FederalReserveEighthDistrict = _prefix "FederalReserveEighthDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSystem"></see>
     /// </summary>
-    let FederalReserveSystem =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSystem" |> NamespacedName
-
+    let FederalReserveSystem = _prefix "FederalReserveSystem"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveDistrict"></see>
     /// </summary>
-    let FederalReserveDistrict =
-        Namespaced_IRI.parse _namespace_name "FederalReserveDistrict" |> NamespacedName
-
+    let FederalReserveDistrict = _prefix "FederalReserveDistrict"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveDistrictIdentifier"></see>
     /// </summary>
-    let FederalReserveDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveDistrictIdentifier" |> NamespacedName
+    let FederalReserveDistrictIdentifier = _prefix "FederalReserveDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveEighthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveEighthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveEighthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveEighthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveEleventhDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveEleventhDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveEleventhDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveEleventhDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveFifthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveFifthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveFifthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveFifthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveFirstDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveFirstDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveFirstDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveFirstDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveFourthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveFourthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveFourthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveFourthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveNinthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveNinthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveNinthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveNinthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NationalInformationCenterRepository"></see>
     /// </summary>
     let NationalInformationCenterRepository =
-        Namespaced_IRI.parse _namespace_name "NationalInformationCenterRepository" |> NamespacedName
+        _prefix "NationalInformationCenterRepository"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSecondDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveSecondDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSecondDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveSecondDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSeventhDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveSeventhDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSeventhDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveSeventhDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSixthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveSixthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSixthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveSixthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSystemAsMemberBearingOrganization"></see>
     /// </summary>
     let FederalReserveSystemAsMemberBearingOrganization =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSystemAsMemberBearingOrganization" |> NamespacedName
+        _prefix "FederalReserveSystemAsMemberBearingOrganization"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSystemMembership"></see>
     /// </summary>
-    let FederalReserveSystemMembership =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSystemMembership" |> NamespacedName
+    let FederalReserveSystemMembership = _prefix "FederalReserveSystemMembership"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveSystemNonMemberInstitution"></see>
     /// </summary>
     let FederalReserveSystemNonMemberInstitution =
-        Namespaced_IRI.parse _namespace_name "FederalReserveSystemNonMemberInstitution" |> NamespacedName
+        _prefix "FederalReserveSystemNonMemberInstitution"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveTenthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveTenthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveTenthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveTenthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveThirdDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveThirdDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveThirdDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveThirdDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalReserveTwelfthDistrictIdentifier"></see>
     /// </summary>
     let FederalReserveTwelfthDistrictIdentifier =
-        Namespaced_IRI.parse _namespace_name "FederalReserveTwelfthDistrictIdentifier" |> NamespacedName
+        _prefix "FederalReserveTwelfthDistrictIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FederalStabilityMonitorAndRegulator"></see>
     /// </summary>
     let FederalStabilityMonitorAndRegulator =
-        Namespaced_IRI.parse _namespace_name "FederalStabilityMonitorAndRegulator" |> NamespacedName
+        _prefix "FederalStabilityMonitorAndRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FinancialStabilityOversightCouncil"></see>
     /// </summary>
     let FinancialStabilityOversightCouncil =
-        Namespaced_IRI.parse _namespace_name "FinancialStabilityOversightCouncil" |> NamespacedName
+        _prefix "FinancialStabilityOversightCouncil"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FinancialIndustryRegulator"></see>
     /// </summary>
-    let FinancialIndustryRegulator =
-        Namespaced_IRI.parse _namespace_name "FinancialIndustryRegulator" |> NamespacedName
+    let FinancialIndustryRegulator = _prefix "FinancialIndustryRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/FinancialIndustryRegulatoryAuthority"></see>
     /// </summary>
     let FinancialIndustryRegulatoryAuthority =
-        Namespaced_IRI.parse _namespace_name "FinancialIndustryRegulatoryAuthority" |> NamespacedName
+        _prefix "FinancialIndustryRegulatoryAuthority"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SecuritiesAndExchangeCommission"></see>
     /// </summary>
-    let SecuritiesAndExchangeCommission =
-        Namespaced_IRI.parse _namespace_name "SecuritiesAndExchangeCommission" |> NamespacedName
-
+    let SecuritiesAndExchangeCommission = _prefix "SecuritiesAndExchangeCommission"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/MassachusettsBusinessRegistrar"></see>
     /// </summary>
-    let MassachusettsBusinessRegistrar =
-        Namespaced_IRI.parse _namespace_name "MassachusettsBusinessRegistrar" |> NamespacedName
-
+    let MassachusettsBusinessRegistrar = _prefix "MassachusettsBusinessRegistrar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/MassachusettsCorporationRegistry"></see>
     /// </summary>
-    let MassachusettsCorporationRegistry =
-        Namespaced_IRI.parse _namespace_name "MassachusettsCorporationRegistry" |> NamespacedName
+    let MassachusettsCorporationRegistry = _prefix "MassachusettsCorporationRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/MassachusettsBusinessRegistrationService"></see>
     /// </summary>
     let MassachusettsBusinessRegistrationService =
-        Namespaced_IRI.parse _namespace_name "MassachusettsBusinessRegistrationService" |> NamespacedName
+        _prefix "MassachusettsBusinessRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/MassachusettsCorporationsDivision"></see>
     /// </summary>
-    let MassachusettsCorporationsDivision =
-        Namespaced_IRI.parse _namespace_name "MassachusettsCorporationsDivision" |> NamespacedName
+    let MassachusettsCorporationsDivision = _prefix "MassachusettsCorporationsDivision"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/MassachusettsBusinessRegistrationIdentifierScheme"></see>
     /// </summary>
     let MassachusettsBusinessRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "MassachusettsBusinessRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "MassachusettsBusinessRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/MassachusettsRegistrationAuthorityCode"></see>
     /// </summary>
     let MassachusettsRegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "MassachusettsRegistrationAuthorityCode" |> NamespacedName
+        _prefix "MassachusettsRegistrationAuthorityCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NICRegistryEntry"></see>
     /// </summary>
-    let NICRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "NICRegistryEntry" |> NamespacedName
+    let NICRegistryEntry = _prefix "NICRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ResearchStatisticsSupervisionDiscountIdentifier"></see>
     /// </summary>
     let ResearchStatisticsSupervisionDiscountIdentifier =
-        Namespaced_IRI.parse _namespace_name "ResearchStatisticsSupervisionDiscountIdentifier" |> NamespacedName
+        _prefix "ResearchStatisticsSupervisionDiscountIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NationalCreditUnionInsurerAndRegulator"></see>
     /// </summary>
     let NationalCreditUnionInsurerAndRegulator =
-        Namespaced_IRI.parse _namespace_name "NationalCreditUnionInsurerAndRegulator" |> NamespacedName
+        _prefix "NationalCreditUnionInsurerAndRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NewYorkBusinessEntitiesRegistry"></see>
     /// </summary>
-    let NewYorkBusinessEntitiesRegistry =
-        Namespaced_IRI.parse _namespace_name "NewYorkBusinessEntitiesRegistry" |> NamespacedName
-
+    let NewYorkBusinessEntitiesRegistry = _prefix "NewYorkBusinessEntitiesRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NewYorkCorporationsRegulator"></see>
     /// </summary>
-    let NewYorkCorporationsRegulator =
-        Namespaced_IRI.parse _namespace_name "NewYorkCorporationsRegulator" |> NamespacedName
+    let NewYorkCorporationsRegulator = _prefix "NewYorkCorporationsRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NewYorkBusinessRegistrationIdentifierScheme"></see>
     /// </summary>
     let NewYorkBusinessRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "NewYorkBusinessRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "NewYorkBusinessRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NewYorkBusinessRegistrationService"></see>
     /// </summary>
     let NewYorkBusinessRegistrationService =
-        Namespaced_IRI.parse _namespace_name "NewYorkBusinessRegistrationService" |> NamespacedName
+        _prefix "NewYorkBusinessRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NewYorkDivisionOfCorporations"></see>
     /// </summary>
-    let NewYorkDivisionOfCorporations =
-        Namespaced_IRI.parse _namespace_name "NewYorkDivisionOfCorporations" |> NamespacedName
-
+    let NewYorkDivisionOfCorporations = _prefix "NewYorkDivisionOfCorporations"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NewYorkRegistrationAuthorityCode"></see>
     /// </summary>
-    let NewYorkRegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "NewYorkRegistrationAuthorityCode" |> NamespacedName
+    let NewYorkRegistrationAuthorityCode = _prefix "NewYorkRegistrationAuthorityCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NonDepositoryTrustCompany-MemberInstitution"></see>
     /// </summary>
     let ``NonDepositoryTrustCompany-MemberInstitution`` =
-        Namespaced_IRI.parse _namespace_name "NonDepositoryTrustCompany-MemberInstitution" |> NamespacedName
+        _prefix "NonDepositoryTrustCompany-MemberInstitution"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/NonDepositoryTrustCompany-NonMemberInstitution"></see>
     /// </summary>
     let ``NonDepositoryTrustCompany-NonMemberInstitution`` =
-        Namespaced_IRI.parse _namespace_name "NonDepositoryTrustCompany-NonMemberInstitution" |> NamespacedName
+        _prefix "NonDepositoryTrustCompany-NonMemberInstitution"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OfficeOfThriftSupervision"></see>
     /// </summary>
-    let OfficeOfThriftSupervision =
-        Namespaced_IRI.parse _namespace_name "OfficeOfThriftSupervision" |> NamespacedName
-
+    let OfficeOfThriftSupervision = _prefix "OfficeOfThriftSupervision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OhioBusinessFilingPortal"></see>
     /// </summary>
-    let OhioBusinessFilingPortal =
-        Namespaced_IRI.parse _namespace_name "OhioBusinessFilingPortal" |> NamespacedName
-
+    let OhioBusinessFilingPortal = _prefix "OhioBusinessFilingPortal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OhioBusinessRegistrar"></see>
     /// </summary>
-    let OhioBusinessRegistrar =
-        Namespaced_IRI.parse _namespace_name "OhioBusinessRegistrar" |> NamespacedName
-
+    let OhioBusinessRegistrar = _prefix "OhioBusinessRegistrar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OhioBusinessRegistrationService"></see>
     /// </summary>
-    let OhioBusinessRegistrationService =
-        Namespaced_IRI.parse _namespace_name "OhioBusinessRegistrationService" |> NamespacedName
-
+    let OhioBusinessRegistrationService = _prefix "OhioBusinessRegistrationService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OhioBusinessServicesDivision"></see>
     /// </summary>
-    let OhioBusinessServicesDivision =
-        Namespaced_IRI.parse _namespace_name "OhioBusinessServicesDivision" |> NamespacedName
+    let OhioBusinessServicesDivision = _prefix "OhioBusinessServicesDivision"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OhioBusinessRegistrationIdentifierScheme"></see>
     /// </summary>
     let OhioBusinessRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "OhioBusinessRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "OhioBusinessRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/OhioRegistrationAuthorityCode"></see>
     /// </summary>
-    let OhioRegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "OhioRegistrationAuthorityCode" |> NamespacedName
+    let OhioRegistrationAuthorityCode = _prefix "OhioRegistrationAuthorityCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SouthDakotaBusinessInformationRegistry"></see>
     /// </summary>
     let SouthDakotaBusinessInformationRegistry =
-        Namespaced_IRI.parse _namespace_name "SouthDakotaBusinessInformationRegistry" |> NamespacedName
+        _prefix "SouthDakotaBusinessInformationRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SouthDakotaCorporationsRegulator"></see>
     /// </summary>
-    let SouthDakotaCorporationsRegulator =
-        Namespaced_IRI.parse _namespace_name "SouthDakotaCorporationsRegulator" |> NamespacedName
+    let SouthDakotaCorporationsRegulator = _prefix "SouthDakotaCorporationsRegulator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SouthDakotaBusinessRegistrationIdentifierScheme"></see>
     /// </summary>
     let SouthDakotaBusinessRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "SouthDakotaBusinessRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "SouthDakotaBusinessRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SouthDakotaBusinessRegistrationService"></see>
     /// </summary>
     let SouthDakotaBusinessRegistrationService =
-        Namespaced_IRI.parse _namespace_name "SouthDakotaBusinessRegistrationService" |> NamespacedName
+        _prefix "SouthDakotaBusinessRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SouthDakotaCorporationsDivision"></see>
     /// </summary>
-    let SouthDakotaCorporationsDivision =
-        Namespaced_IRI.parse _namespace_name "SouthDakotaCorporationsDivision" |> NamespacedName
+    let SouthDakotaCorporationsDivision = _prefix "SouthDakotaCorporationsDivision"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/SouthDakotaRegistrationAuthorityCode"></see>
     /// </summary>
     let SouthDakotaRegistrationAuthorityCode =
-        Namespaced_IRI.parse _namespace_name "SouthDakotaRegistrationAuthorityCode" |> NamespacedName
+        _prefix "SouthDakotaRegistrationAuthorityCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/StateMemberBank"></see>
     /// </summary>
-    let StateMemberBank =
-        Namespaced_IRI.parse _namespace_name "StateMemberBank" |> NamespacedName
-
+    let StateMemberBank = _prefix "StateMemberBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/ThriftRegulator"></see>
     /// </summary>
-    let ThriftRegulator =
-        Namespaced_IRI.parse _namespace_name "ThriftRegulator" |> NamespacedName
-
+    let ThriftRegulator = _prefix "ThriftRegulator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/hasSecondaryFederalRegulator"></see>
     /// </summary>
-    let hasSecondaryFederalRegulator =
-        Namespaced_IRI.parse _namespace_name "hasSecondaryFederalRegulator" |> NamespacedName
+    let hasSecondaryFederalRegulator = _prefix "hasSecondaryFederalRegulator"

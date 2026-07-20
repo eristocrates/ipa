@@ -1,90 +1,81 @@
 namespace http.purl.org.vso.ns.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module vso =
     let _namespace_name = "http://purl.org/vso/ns#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The speed interval from 0 to 100 km/h
     /// <see href="http://purl.org/vso/ns#0to100KMH"></see></summary>
-    let _0to100KMH = Namespaced_IRI.parse _namespace_name "0to100KMH" |> NamespacedName
-
+    let _0to100KMH = _prefix "0to100KMH"
     /// <summary>
     /// A value indicating a speed interval, mostly for explaining vso:acceleration data
     /// <see href="http://purl.org/vso/ns#SpeedInterval"></see></summary>
-    let SpeedInterval =
-        Namespaced_IRI.parse _namespace_name "SpeedInterval" |> NamespacedName
-
+    let SpeedInterval = _prefix "SpeedInterval"
     /// <summary>
     /// The speed interval from 0 to 60 mph
     /// <see href="http://purl.org/vso/ns#0to60MPH"></see></summary>
-    let _0to60MPH = Namespaced_IRI.parse _namespace_name "0to60MPH" |> NamespacedName
+    let _0to60MPH = _prefix "0to60MPH"
     /// <summary>
     /// The fuel quantity of 1 British (imperial) gallon
     /// <see href="http://purl.org/vso/ns#1GLI"></see></summary>
-    let _1GLI = Namespaced_IRI.parse _namespace_name "1GLI" |> NamespacedName
-
+    let _1GLI = _prefix "1GLI"
     /// <summary>
     /// A value indicating an amount of fuel
     /// <see href="http://purl.org/vso/ns#FuelQuantity"></see></summary>
-    let FuelQuantity =
-        Namespaced_IRI.parse _namespace_name "FuelQuantity" |> NamespacedName
-
+    let FuelQuantity = _prefix "FuelQuantity"
     /// <summary>
     /// The fuel quantity of 1 US gallon
     /// <see href="http://purl.org/vso/ns#1GLL"></see></summary>
-    let _1GLL = Namespaced_IRI.parse _namespace_name "1GLL" |> NamespacedName
+    let _1GLL = _prefix "1GLL"
     /// <summary>
     /// The fuel quantity of 1 liter
     /// <see href="http://purl.org/vso/ns#1LTR"></see></summary>
-    let _1LTR = Namespaced_IRI.parse _namespace_name "1LTR" |> NamespacedName
+    let _1LTR = _prefix "1LTR"
     /// <summary>
     /// Four-wheel Drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
     /// <see href="http://purl.org/vso/ns#4WD"></see></summary>
-    let _4WD = Namespaced_IRI.parse _namespace_name "4WD" |> NamespacedName
-
+    let _4WD = _prefix "4WD"
     /// <summary>
     /// A value indicating which roadwheels will receive torque
     /// <see href="http://purl.org/vso/ns#DriveWheelConfigurationValue"></see></summary>
-    let DriveWheelConfigurationValue =
-        Namespaced_IRI.parse _namespace_name "DriveWheelConfigurationValue" |> NamespacedName
-
+    let DriveWheelConfigurationValue = _prefix "DriveWheelConfigurationValue"
     /// <summary>
     /// The ACRISS Car Classification Code is a code used by many car rental companies, for classifying vehicles. ACRISS stands for Association of Car Rental Industry Systems and Standards.
     /// <see href="http://purl.org/vso/ns#ACRISSCode"></see></summary>
-    let ACRISSCode = Namespaced_IRI.parse _namespace_name "ACRISSCode" |> NamespacedName
-
+    let ACRISSCode = _prefix "ACRISSCode"
     /// <summary>
     /// A motorized road vehicle is a wheeled land vehicle whose main propulsion is provided by an engine or motor.
     /// <see href="http://purl.org/vso/ns#MotorizedRoadVehicle"></see></summary>
-    let MotorizedRoadVehicle =
-        Namespaced_IRI.parse _namespace_name "MotorizedRoadVehicle" |> NamespacedName
-
+    let MotorizedRoadVehicle = _prefix "MotorizedRoadVehicle"
     /// <summary>
     /// All-wheel Drive is a transmission layout where the engine drives all four wheels.
     /// <see href="http://purl.org/vso/ns#AWD"></see></summary>
-    let AWD = Namespaced_IRI.parse _namespace_name "AWD" |> NamespacedName
+    let AWD = _prefix "AWD"
     /// <summary>
     /// An automobile, motor car, or car is a wheeled motor vehicle used for transporting passengers, which also carries its own engine or motor.
     /// <see href="http://purl.org/vso/ns#Automobile"></see></summary>
-    let Automobile = Namespaced_IRI.parse _namespace_name "Automobile" |> NamespacedName
+    let Automobile = _prefix "Automobile"
     /// <summary>
     /// A bicycle or bike is a pedal-driven, human-powered, single-track vehicle, having two wheels attached to a frame, one behind the other. Some bicycles have a small combustion or electric engine that assists with the pedaling.
     /// <see href="http://purl.org/vso/ns#Bicycle"></see></summary>
-    let Bicycle = Namespaced_IRI.parse _namespace_name "Bicycle" |> NamespacedName
+    let Bicycle = _prefix "Bicycle"
     /// <summary>
     /// A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
     /// <see href="http://purl.org/vso/ns#Vehicle"></see></summary>
-    let Vehicle = Namespaced_IRI.parse _namespace_name "Vehicle" |> NamespacedName
+    let Vehicle = _prefix "Vehicle"
     /// <summary>
     /// A boat is a watercraft of modest size designed to float or plane, to provide passage across water.
     /// <see href="http://purl.org/vso/ns#Boat"></see></summary>
-    let Boat = Namespaced_IRI.parse _namespace_name "Boat" |> NamespacedName
+    let Boat = _prefix "Boat"
     /// <summary>
     /// A watercraft is a vehicle, vessel or craft designed to move across or through water.
     /// <see href="http://purl.org/vso/ns#Watercraft"></see></summary>
-    let Watercraft = Namespaced_IRI.parse _namespace_name "Watercraft" |> NamespacedName
-
+    let Watercraft = _prefix "Watercraft"
     /// <summary>
     /// A value indicating the body style of a vehicle.
     ///
@@ -95,19 +86,16 @@ module vso =
     ///   http://dbpedia.org/resource/Sport_utility_vehicle
     ///   http://dbpedia.org/resource/Roadster
     /// <see href="http://purl.org/vso/ns#BodyStyleValue"></see></summary>
-    let BodyStyleValue =
-        Namespaced_IRI.parse _namespace_name "BodyStyleValue" |> NamespacedName
-
+    let BodyStyleValue = _prefix "BodyStyleValue"
     /// <summary>
     /// A bus (also omnibus or autobus) is a road vehicle designed to carry passengers. Buses have a capacity as high as 300 passengers and are widely used for public transportation.
     /// Coaches are luxury busses, usually in service for long distance travel.
     /// <see href="http://purl.org/vso/ns#BusOrCoach"></see></summary>
-    let BusOrCoach = Namespaced_IRI.parse _namespace_name "BusOrCoach" |> NamespacedName
+    let BusOrCoach = _prefix "BusOrCoach"
     /// <summary>
     /// A canoe (American English) or Canadian canoe (British English) is a small narrow boat, typically human-powered, though it may also be powered by sails or small electric or gas motors.
     /// <see href="http://purl.org/vso/ns#Canoe"></see></summary>
-    let Canoe = Namespaced_IRI.parse _namespace_name "Canoe" |> NamespacedName
-
+    let Canoe = _prefix "Canoe"
     /// <summary>
     /// A value indicating the an emission standard.
     ///
@@ -120,9 +108,7 @@ module vso =
     /// Unfortunately, there are no DBPedia identifiers for the popular Euro 1 - Euro 5 standards available.
     /// If you cannot find a suitable identifier in DBPedia, define your own as an instance of vso:EmissionStandardValue.
     /// <see href="http://purl.org/vso/ns#EmissionStandardValue"></see></summary>
-    let EmissionStandardValue =
-        Namespaced_IRI.parse _namespace_name "EmissionStandardValue" |> NamespacedName
-
+    let EmissionStandardValue = _prefix "EmissionStandardValue"
     /// <summary>
     /// A value indicating an engine type.
     ///
@@ -132,14 +118,11 @@ module vso =
     ///   http://dbpedia.org/resource/Wankel_engine
     ///   http://dbpedia.org/resource/Electric_motor
     /// <see href="http://purl.org/vso/ns#EngineTypeValue"></see></summary>
-    let EngineTypeValue =
-        Namespaced_IRI.parse _namespace_name "EngineTypeValue" |> NamespacedName
-
+    let EngineTypeValue = _prefix "EngineTypeValue"
     /// <summary>
     /// Front-wheel drive is a transmission layout where the engine drives the front wheels.
     /// <see href="http://purl.org/vso/ns#FWD"></see></summary>
-    let FWD = Namespaced_IRI.parse _namespace_name "FWD" |> NamespacedName
-
+    let FWD = _prefix "FWD"
     /// <summary>
     /// A value indicating the features or accessories that are attached to or belong to a vehicle.
     ///
@@ -157,9 +140,7 @@ module vso =
     ///   http://dbpedia.org/resource/Child_safety_lock
     ///   http://dbpedia.org/resource/Parking_sensors
     /// <see href="http://purl.org/vso/ns#FeatureValue"></see></summary>
-    let FeatureValue =
-        Namespaced_IRI.parse _namespace_name "FeatureValue" |> NamespacedName
-
+    let FeatureValue = _prefix "FeatureValue"
     /// <summary>
     /// A value indicating a type of fuel.
     ///
@@ -169,69 +150,55 @@ module vso =
     ///   http://dbpedia.org/resource/Biodiesel
     ///   http://dbpedia.org/resource/Kerosene
     /// <see href="http://purl.org/vso/ns#FuelTypeValue"></see></summary>
-    let FuelTypeValue =
-        Namespaced_IRI.parse _namespace_name "FuelTypeValue" |> NamespacedName
-
+    let FuelTypeValue = _prefix "FuelTypeValue"
     /// <summary>
     /// A kayak is a small human-powered watercraft that traditionally has a covered deck, and one or more cockpits, each seating one paddler who strokes a double-bladed paddle. In this ontology, kayaks are considered watercrafts of their own kind, not a subtype of vso:Boat.
     /// <see href="http://purl.org/vso/ns#Kayak"></see></summary>
-    let Kayak = Namespaced_IRI.parse _namespace_name "Kayak" |> NamespacedName
+    let Kayak = _prefix "Kayak"
     /// <summary>
     /// The steering position is on the left side of the vehicle (viewed from the main direction of driving). For cars this means that you drive on the right side of the road.
     /// <see href="http://purl.org/vso/ns#Left"></see></summary>
-    let Left = Namespaced_IRI.parse _namespace_name "Left" |> NamespacedName
-
+    let Left = _prefix "Left"
     /// <summary>
     /// A value indicating a steering position
     /// <see href="http://purl.org/vso/ns#SteeringPositionValue"></see></summary>
-    let SteeringPositionValue =
-        Namespaced_IRI.parse _namespace_name "SteeringPositionValue" |> NamespacedName
-
+    let SteeringPositionValue = _prefix "SteeringPositionValue"
     /// <summary>
     /// A motorboat is a boat which is powered by an engine.
     /// <see href="http://purl.org/vso/ns#MotorBoat"></see></summary>
-    let MotorBoat = Namespaced_IRI.parse _namespace_name "MotorBoat" |> NamespacedName
+    let MotorBoat = _prefix "MotorBoat"
     /// <summary>
     /// A motorcycle or motorbike is a single-track, two-wheeled motor vehicle.
     /// <see href="http://purl.org/vso/ns#Motorcycle"></see></summary>
-    let Motorcycle = Namespaced_IRI.parse _namespace_name "Motorcycle" |> NamespacedName
-
+    let Motorcycle = _prefix "Motorcycle"
     /// <summary>
     /// A motorized bicycle is a bicycle with an attached motor used to power the vehicle, or to assist with pedaling.
     /// <see href="http://purl.org/vso/ns#MotorizedBicycle"></see></summary>
-    let MotorizedBicycle =
-        Namespaced_IRI.parse _namespace_name "MotorizedBicycle" |> NamespacedName
-
+    let MotorizedBicycle = _prefix "MotorizedBicycle"
     /// <summary>
     /// A quadracycle is a four-wheeled human-powered vehicle. It is also referred to as a quadricycle, quadcycle pedal car or four-wheeled bicycle.
     /// <see href="http://purl.org/vso/ns#Quadracycle"></see></summary>
-    let Quadracycle =
-        Namespaced_IRI.parse _namespace_name "Quadracycle" |> NamespacedName
-
+    let Quadracycle = _prefix "Quadracycle"
     /// <summary>
     /// Rear-wheel drive is a transmission layout where the engine drives the rear wheels.
     /// <see href="http://purl.org/vso/ns#RWD"></see></summary>
-    let RWD = Namespaced_IRI.parse _namespace_name "RWD" |> NamespacedName
+    let RWD = _prefix "RWD"
     /// <summary>
     /// A rickshaw (or ricksha) is a two-wheeled cart which seats one or two persons and is being drawn by a runner.
     /// <see href="http://purl.org/vso/ns#Rickshaw"></see></summary>
-    let Rickshaw = Namespaced_IRI.parse _namespace_name "Rickshaw" |> NamespacedName
+    let Rickshaw = _prefix "Rickshaw"
     /// <summary>
     /// The steering position is on the right side of the vehicle (viewed from the main direction of driving). For cars this means that you drive on the left side of the road.
     /// <see href="http://purl.org/vso/ns#Right"></see></summary>
-    let Right = Namespaced_IRI.parse _namespace_name "Right" |> NamespacedName
-
+    let Right = _prefix "Right"
     /// <summary>
     /// A sailboat or sailing boat is a boat propelled partly or entirely by sails.
     /// <see href="http://purl.org/vso/ns#SailingBoat"></see></summary>
-    let SailingBoat =
-        Namespaced_IRI.parse _namespace_name "SailingBoat" |> NamespacedName
-
+    let SailingBoat = _prefix "SailingBoat"
     /// <summary>
     /// A ship is a large watercraft that floats on water.
     /// <see href="http://purl.org/vso/ns#Ship"></see></summary>
-    let Ship = Namespaced_IRI.parse _namespace_name "Ship" |> NamespacedName
-
+    let Ship = _prefix "Ship"
     /// <summary>
     /// A value indicating a type of transmission.
     ///
@@ -239,44 +206,36 @@ module vso =
     ///   http://dbpedia.org/resource/Manual_transmission
     ///   http://dbpedia.org/resource/Automatic_transmission
     /// <see href="http://purl.org/vso/ns#TransmissionTypeValue"></see></summary>
-    let TransmissionTypeValue =
-        Namespaced_IRI.parse _namespace_name "TransmissionTypeValue" |> NamespacedName
-
+    let TransmissionTypeValue = _prefix "TransmissionTypeValue"
     /// <summary>
     /// A lorry (British English) or truck (American English) is a motor vehicle designed to transport cargo.
     /// <see href="http://purl.org/vso/ns#Truck"></see></summary>
-    let Truck = Namespaced_IRI.parse _namespace_name "Truck" |> NamespacedName
-
+    let Truck = _prefix "Truck"
     /// <summary>
     /// A pre-mixed fuel-oil mixture
     /// <see href="http://purl.org/vso/ns#TwoStrokeMixture"></see></summary>
-    let TwoStrokeMixture =
-        Namespaced_IRI.parse _namespace_name "TwoStrokeMixture" |> NamespacedName
-
+    let TwoStrokeMixture = _prefix "TwoStrokeMixture"
     /// <summary>
     /// A unique serial number used by the automotive industry to identify individual motor vehicles
     /// <see href="http://purl.org/vso/ns#VIN"></see></summary>
-    let VIN = Namespaced_IRI.parse _namespace_name "VIN" |> NamespacedName
+    let VIN = _prefix "VIN"
     /// <summary>
     /// A van is a kind of vehicle used for transporting  goods or groups of people. It is usually a box-shaped vehicle on four wheels, about the same width and length as a large automobile,
     /// but taller and usually higher off the ground, also referred to as a light commercial vehicle or LCV.
     /// <see href="http://purl.org/vso/ns#Van"></see></summary>
-    let Van = Namespaced_IRI.parse _namespace_name "Van" |> NamespacedName
-
+    let Van = _prefix "Van"
     /// <summary>
     /// The time needed to accelerate the vehicle from a given start velocity to a given target velocity
     /// Typical unit code(s): SEC for seconds
     ///
     /// Note: There are unfortunately no standard unit codes for seconds/0..100 km/h or seconds/0..60 mph. Simply use "SEC" for seconds and indicate the velocities in the rdfs:label of the gr:QuantitativeValueFloat, or use vso:referenceSpeeds with vso:0to60MPH (0..60 mph) or vso:0to100KMH (0..100 km/h) to specify the reference speeds.
     /// <see href="http://purl.org/vso/ns#acceleration"></see></summary>
-    let acceleration =
-        Namespaced_IRI.parse _namespace_name "acceleration" |> NamespacedName
-
+    let acceleration = _prefix "acceleration"
     /// <summary>
     /// The number of axles
     /// Typical unit code(s): C62
     /// <see href="http://purl.org/vso/ns#axles"></see></summary>
-    let axles = Namespaced_IRI.parse _namespace_name "axles" |> NamespacedName
+    let axles = _prefix "axles"
     /// <summary>
     /// Indicates the design and body style of the vehicle.
     ///
@@ -291,43 +250,37 @@ module vso =
     ///
     /// If you cannot find a suitable identifier in DBPedia, define your own as an instance of vso:BodyStyleValue.
     /// <see href="http://purl.org/vso/ns#bodyStyle"></see></summary>
-    let bodyStyle = Namespaced_IRI.parse _namespace_name "bodyStyle" |> NamespacedName
-
+    let bodyStyle = _prefix "bodyStyle"
     /// <summary>
     /// The available volume for cargo or luggage. For automobiles, this is usually the trunk space.
     /// Typical unit code(s): LTR for liters, FTQ for cubic foot/feet
     ///
     /// Note: You can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#cargoVolume"></see></summary>
-    let cargoVolume =
-        Namespaced_IRI.parse _namespace_name "cargoVolume" |> NamespacedName
-
+    let cargoVolume = _prefix "cargoVolume"
     /// <summary>
     /// The color of the vehicle
     /// <see href="http://purl.org/vso/ns#color"></see></summary>
-    let color = Namespaced_IRI.parse _namespace_name "color" |> NamespacedName
+    let color = _prefix "color"
     /// <summary>
     /// A textual description of the condition of the vehicle. This property should be mainly used with gr:ActualProductOrServiceInstance.
     /// <see href="http://purl.org/vso/ns#condition"></see></summary>
-    let condition = Namespaced_IRI.parse _namespace_name "condition" |> NamespacedName
+    let condition = _prefix "condition"
     /// <summary>
     /// A textual description of known damages, both repaired and unrepaired.
     ///
     /// Note: This property should be used with gr:ActualProductOrServiceInstance (when offering a vehicle) or gr:ProductOrServicesSomeInstancesPlaceholder (when seeking a vehicle using gr:seeks) only.
     /// <see href="http://purl.org/vso/ns#damages"></see></summary>
-    let damages = Namespaced_IRI.parse _namespace_name "damages" |> NamespacedName
+    let damages = _prefix "damages"
     /// <summary>
     /// The number of doors
     /// Typical unit code(s): C62
     /// <see href="http://purl.org/vso/ns#doors"></see></summary>
-    let doors = Namespaced_IRI.parse _namespace_name "doors" |> NamespacedName
-
+    let doors = _prefix "doors"
     /// <summary>
     /// The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain
     /// <see href="http://purl.org/vso/ns#driveWheelConfiguration"></see></summary>
-    let driveWheelConfiguration =
-        Namespaced_IRI.parse _namespace_name "driveWheelConfiguration" |> NamespacedName
-
+    let driveWheelConfiguration = _prefix "driveWheelConfiguration"
     /// <summary>
     /// The volume swept by all of the pistons inside the cylinders of an internal combustion engine in a single movement. If there are multiple engines, simply attach this property multiple times.
     /// Typical unit code(s): CMQ for cubic centimeter, LTR for liters, INQ for cubic inches
@@ -335,14 +288,11 @@ module vso =
     /// Note 1: You can link to information about how the given value has been determined using the gr:valueReference property.
     /// Note 2: You can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#engineDisplacement"></see></summary>
-    let engineDisplacement =
-        Namespaced_IRI.parse _namespace_name "engineDisplacement" |> NamespacedName
-
+    let engineDisplacement = _prefix "engineDisplacement"
     /// <summary>
     /// A short text indicating the engine(s) of the vehicle
     /// <see href="http://purl.org/vso/ns#engineName"></see></summary>
-    let engineName = Namespaced_IRI.parse _namespace_name "engineName" |> NamespacedName
-
+    let engineName = _prefix "engineName"
     /// <summary>
     /// The power of the vehicle's engine. If there are multiple engines, simply attach this property multiple times.
     /// Typical unit code(s): KWT for kilowatt
@@ -351,9 +301,7 @@ module vso =
     /// Note 2: You can link to information about how the given value has been determined using the gr:valueReference property.
     /// Note 3: You can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#enginePower"></see></summary>
-    let enginePower =
-        Namespaced_IRI.parse _namespace_name "enginePower" |> NamespacedName
-
+    let enginePower = _prefix "enginePower"
     /// <summary>
     /// The type of engine or engines powering the vehicle. If there are multiple engines, simply attach this property multiple times.
     ///
@@ -365,7 +313,7 @@ module vso =
     ///
     /// If you cannot find a suitable identifier in DBPedia, define your own as an instance of vso:EngineTypeValue.
     /// <see href="http://purl.org/vso/ns#engineType"></see></summary>
-    let engineType = Namespaced_IRI.parse _namespace_name "engineType" |> NamespacedName
+    let engineType = _prefix "engineType"
     /// <summary>
     /// Indicates a built-in feature, accessory, or component of the vehicle.
     ///
@@ -387,14 +335,11 @@ module vso =
     ///
     /// If you cannot find a suitable identifier in DBPedia, define your own as an instance of vso:FeatureValue.
     /// <see href="http://purl.org/vso/ns#feature"></see></summary>
-    let feature = Namespaced_IRI.parse _namespace_name "feature" |> NamespacedName
-
+    let feature = _prefix "feature"
     /// <summary>
     /// The date of the first registration of the vehicle with the respective public authorities. This property should be used mainly with gr:ActualProductOrServiceInstance.
     /// <see href="http://purl.org/vso/ns#firstRegistration"></see></summary>
-    let firstRegistration =
-        Namespaced_IRI.parse _namespace_name "firstRegistration" |> NamespacedName
-
+    let firstRegistration = _prefix "firstRegistration"
     /// <summary>
     /// The amount of fuel consumed for traveling a particular distance or temporal duration with the given vehicle (e.g. liters per 100 km)
     /// Typical unit code(s): LTR for liters, GLL of US Gallons, GLI for UK / Imperial Gallons
@@ -403,9 +348,7 @@ module vso =
     /// Note 2: There are two ways of indicating the fuel consumption, vso:fuelConsumption (e.g. 8 liters per 100 km) and vso:fuelEconomy (e.g. 30 miles per gallon). They are reciprocal.
     /// Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use gr:valueReference to link the value for the fuel consumption to another value.
     /// <see href="http://purl.org/vso/ns#fuelConsumption"></see></summary>
-    let fuelConsumption =
-        Namespaced_IRI.parse _namespace_name "fuelConsumption" |> NamespacedName
-
+    let fuelConsumption = _prefix "fuelConsumption"
     /// <summary>
     /// The distance traveled per unit of fuel used; most commonly miles per gallon (mpg) or kilometers per liter (km/L)
     /// Typical unit code(s): KMT for kilometers, SMI for statute miles
@@ -417,16 +360,12 @@ module vso =
     /// Note 3: There are two ways of indicating the fuel consumption, vso:fuelConsumption (e.g. 8 liters per 100 km) and vso:fuelEconomy (e.g. 30 miles per gallon). They are reciprocal.
     /// Note 4: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use gr:valueReference to link the value for the fuel economy to another value.
     /// <see href="http://purl.org/vso/ns#fuelEconomy"></see></summary>
-    let fuelEconomy =
-        Namespaced_IRI.parse _namespace_name "fuelEconomy" |> NamespacedName
-
+    let fuelEconomy = _prefix "fuelEconomy"
     /// <summary>
     /// The volume of the fuel tank. If there are multiple tanks, this should indicate the total of all tanks.
     /// Typical unit code(s): LTR for liters, GLL of US gallons, GLI for UK / imperial gallons
     /// <see href="http://purl.org/vso/ns#fuelTankVolume"></see></summary>
-    let fuelTankVolume =
-        Namespaced_IRI.parse _namespace_name "fuelTankVolume" |> NamespacedName
-
+    let fuelTankVolume = _prefix "fuelTankVolume"
     /// <summary>
     /// The type of fuel suitable for the engine or engines of the vehicle.
     ///
@@ -438,23 +377,22 @@ module vso =
     ///
     /// For two-stroke mixtures, use vso:TwoStrokeMixture.
     /// <see href="http://purl.org/vso/ns#fuelType"></see></summary>
-    let fuelType = Namespaced_IRI.parse _namespace_name "fuelType" |> NamespacedName
+    let fuelType = _prefix "fuelType"
     /// <summary>
     /// The total number of forward and reverse gears available for the transmission system of the vehicle
     /// Typical unit code(s): C62
     /// <see href="http://purl.org/vso/ns#gearsTotal"></see></summary>
-    let gearsTotal = Namespaced_IRI.parse _namespace_name "gearsTotal" |> NamespacedName
+    let gearsTotal = _prefix "gearsTotal"
     /// <summary>
     /// The outer height of the vehicle. Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// Typical unit code(s): CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet
     /// <see href="http://purl.org/vso/ns#height"></see></summary>
-    let height = Namespaced_IRI.parse _namespace_name "height" |> NamespacedName
+    let height = _prefix "height"
     /// <summary>
     /// The outer length of the vehicle. Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// Typical unit code(s): CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet
     /// <see href="http://purl.org/vso/ns#length"></see></summary>
-    let length = Namespaced_IRI.parse _namespace_name "length" |> NamespacedName
-
+    let length = _prefix "length"
     /// <summary>
     /// Indicates that the vehicle meets the respective emission standard.
     ///
@@ -467,22 +405,18 @@ module vso =
     /// Unfortunately, there are no DBPedia identifiers for the popular Euro 1 - Euro 5 standards available.
     /// If you cannot find a suitable identifier in DBPedia, define your own as an instance of vso:EmissionStandardValue.
     /// <see href="http://purl.org/vso/ns#meetsEmissionStandard"></see></summary>
-    let meetsEmissionStandard =
-        Namespaced_IRI.parse _namespace_name "meetsEmissionStandard" |> NamespacedName
-
+    let meetsEmissionStandard = _prefix "meetsEmissionStandard"
     /// <summary>
     /// The total distance travelled by the particular vehicle since its initial production, as read from its odometer
     /// Typical unit code(s): KMT for kilometers, SMI for statute miles
     ///
     /// Note: This property should be used with gr:ActualProductOrServiceInstance (when offering a vehicle) or gr:ProductOrServicesSomeInstancesPlaceholder (when seeking a vehicle using gr:seeks) only.
     /// <see href="http://purl.org/vso/ns#mileageFromOdometer"></see></summary>
-    let mileageFromOdometer =
-        Namespaced_IRI.parse _namespace_name "mileageFromOdometer" |> NamespacedName
-
+    let mileageFromOdometer = _prefix "mileageFromOdometer"
     /// <summary>
     /// The release date of a vehicle model (often used to differentiate versions of the same make and model)
     /// <see href="http://purl.org/vso/ns#modelDate"></see></summary>
-    let modelDate = Namespaced_IRI.parse _namespace_name "modelDate" |> NamespacedName
+    let modelDate = _prefix "modelDate"
     /// <summary>
     /// The permited weight of passengers and cargo, EXCLUDING the weight of the empty vehicle
     /// Typical unit code(s): KGM for kilogram, LBR for pound
@@ -492,50 +426,37 @@ module vso =
     /// Note 3: You may also link to a gr:QualitativeValue node that provides additional information using gr:valueReference.
     /// Note 4: Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#payload"></see></summary>
-    let payload = Namespaced_IRI.parse _namespace_name "payload" |> NamespacedName
-
+    let payload = _prefix "payload"
     /// <summary>
     /// The number of previous owners of the vehicle, including the current one
     /// Typical unit code(s): C62
     ///
     /// Note: This property should be used with gr:ActualProductOrServiceInstance (when offering a vehicle) or gr:ProductOrServicesSomeInstancesPlaceholder (when seeking a vehicle using gr:seeks) only.
     /// <see href="http://purl.org/vso/ns#previousOwners"></see></summary>
-    let previousOwners =
-        Namespaced_IRI.parse _namespace_name "previousOwners" |> NamespacedName
-
+    let previousOwners = _prefix "previousOwners"
     /// <summary>
     /// The date of production of the vehicle. This property should be used mainly with gr:ActualProductOrServiceInstance.
     /// <see href="http://purl.org/vso/ns#productionDate"></see></summary>
-    let productionDate =
-        Namespaced_IRI.parse _namespace_name "productionDate" |> NamespacedName
-
+    let productionDate = _prefix "productionDate"
     /// <summary>
     /// The distance to which a vso:fuelConsumption value refers
     /// <see href="http://purl.org/vso/ns#referenceDistance"></see></summary>
-    let referenceDistance =
-        Namespaced_IRI.parse _namespace_name "referenceDistance" |> NamespacedName
-
+    let referenceDistance = _prefix "referenceDistance"
     /// <summary>
     /// The quantity of fuel to which a vso:fuelEconomy value refers
     /// <see href="http://purl.org/vso/ns#referenceFuelQuantity"></see></summary>
-    let referenceFuelQuantity =
-        Namespaced_IRI.parse _namespace_name "referenceFuelQuantity" |> NamespacedName
-
+    let referenceFuelQuantity = _prefix "referenceFuelQuantity"
     /// <summary>
     /// The interval of initial and target speed to which a vso:acceleration value refers
     /// <see href="http://purl.org/vso/ns#referenceSpeeds"></see></summary>
-    let referenceSpeeds =
-        Namespaced_IRI.parse _namespace_name "referenceSpeeds" |> NamespacedName
-
+    let referenceSpeeds = _prefix "referenceSpeeds"
     /// <summary>
     /// Indicates whether the vehicle has been used for commercial rental. The legislation in many countries requires this information to be revealed when offering a car for sale.
     ///
     /// Note 1: This property should be used with gr:ActualProductOrServiceInstance (when offering a vehicle) or gr:ProductOrServicesSomeInstancesPlaceholder (when seeking a vehicle using gr:seeks) only.
     /// Note 2: This property is relevant mainly for offers to SELL the vehicle (gr:hasBusinessFunction gr:Sell).
     /// <see href="http://purl.org/vso/ns#rentalUsage"></see></summary>
-    let rentalUsage =
-        Namespaced_IRI.parse _namespace_name "rentalUsage" |> NamespacedName
-
+    let rentalUsage = _prefix "rentalUsage"
     /// <summary>
     /// The permited total weight of cargo and installations (e.g. a roof rack) on top of the vehicle
     /// Typical unit code(s): KGM for kilogram, LBR for pound
@@ -544,15 +465,12 @@ module vso =
     /// Note 2: You may also link to a gr:QualitativeValue node that provides additional information using gr:valueReference.
     /// Note 3: Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#roofLoad"></see></summary>
-    let roofLoad = Namespaced_IRI.parse _namespace_name "roofLoad" |> NamespacedName
-
+    let roofLoad = _prefix "roofLoad"
     /// <summary>
     /// The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law
     /// Typical unit code(s): C62 for persons
     /// <see href="http://purl.org/vso/ns#seatingCapacity"></see></summary>
-    let seatingCapacity =
-        Namespaced_IRI.parse _namespace_name "seatingCapacity" |> NamespacedName
-
+    let seatingCapacity = _prefix "seatingCapacity"
     /// <summary>
     /// The speed range of the vehicle. If the vehicle is powered by an engine, the upper limit of the speed range (indicated by gr:hasMaxValueFloat) should be the maximum speed achievable under regular conditions.
     /// Typical unit code(s): KMH for km/h, HM for mile per hour (0.447 04 m/s), KNT for knot
@@ -560,14 +478,11 @@ module vso =
     /// Note 1: Use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate the range. Typically, the minimal value is zero.
     /// Note 2: There are many different ways of measuring the speed range. You can link to information about how the given value has been determined using the gr:valueReference property.
     /// <see href="http://purl.org/vso/ns#speed"></see></summary>
-    let speed = Namespaced_IRI.parse _namespace_name "speed" |> NamespacedName
-
+    let speed = _prefix "speed"
     /// <summary>
     /// The position of the steering wheel or similar device (mostly for cars)
     /// <see href="http://purl.org/vso/ns#steeringPosition"></see></summary>
-    let steeringPosition =
-        Namespaced_IRI.parse _namespace_name "steeringPosition" |> NamespacedName
-
+    let steeringPosition = _prefix "steeringPosition"
     /// <summary>
     /// The permited vertical load (TWR) of a trailer attached to the vehicle. Also referred to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR).
     /// 	Typical unit code(s): KGM for kilogram, LBR for pound
@@ -576,9 +491,7 @@ module vso =
     /// Note 2: You may also link to a gr:QualitativeValue node that provides additional information using gr:valueReference.
     /// Note 3: Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#tongueWeight"></see></summary>
-    let tongueWeight =
-        Namespaced_IRI.parse _namespace_name "tongueWeight" |> NamespacedName
-
+    let tongueWeight = _prefix "tongueWeight"
     /// <summary>
     /// The permited weight of a trailer attached to the vehicle.
     /// Typical unit code(s): KGM for kilogram, LBR for pound
@@ -587,9 +500,7 @@ module vso =
     /// Note 2: You may also link to a gr:QualitativeValue node that provides additional information using gr:valueReference.
     /// Note 3: Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#trailerWeight"></see></summary>
-    let trailerWeight =
-        Namespaced_IRI.parse _namespace_name "trailerWeight" |> NamespacedName
-
+    let trailerWeight = _prefix "trailerWeight"
     /// <summary>
     /// The type of component used for transmitting the power from a rotating power source to the wheels or propeller(s) ("gearbox" for cars).
     ///
@@ -599,9 +510,7 @@ module vso =
     ///
     /// If you cannot find a suitable identifier in DBPedia, define your own as an instance of vso:TransmissionTypeValue.
     /// <see href="http://purl.org/vso/ns#transmission"></see></summary>
-    let transmission =
-        Namespaced_IRI.parse _namespace_name "transmission" |> NamespacedName
-
+    let transmission = _prefix "transmission"
     /// <summary>
     /// The weight of the empty vehicle ("curb weight" for cars), i.e. with standard equipment, all necessary operating consumables (e.g. motor oil and coolant), a full tank of fuel, while not loaded with either passengers or cargo
     /// Typical unit code(s): KGM for kilogram, LBR for pound
@@ -611,8 +520,7 @@ module vso =
     /// Note 3: You may also link to a gr:QualitativeValue node that provides additional information using gr:valueReference.
     /// Note 4: Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#weight"></see></summary>
-    let weight = Namespaced_IRI.parse _namespace_name "weight" |> NamespacedName
-
+    let weight = _prefix "weight"
     /// <summary>
     /// The permited total weight of the loaded vehicle, including passengers and cargo and the weight of the empty vehicle
     /// Typical unit code(s): KGM for kilogram, LBR for pound
@@ -621,16 +529,14 @@ module vso =
     /// Note 2: You may also link to a gr:QualitativeValue node that provides additional information using gr:valueReference.
     /// Note 3: Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// <see href="http://purl.org/vso/ns#weightTotal"></see></summary>
-    let weightTotal =
-        Namespaced_IRI.parse _namespace_name "weightTotal" |> NamespacedName
-
+    let weightTotal = _prefix "weightTotal"
     /// <summary>
     /// The distance between the centers of the front and rear wheels
     /// Typical unit code(s): CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet
     /// <see href="http://purl.org/vso/ns#wheelbase"></see></summary>
-    let wheelbase = Namespaced_IRI.parse _namespace_name "wheelbase" |> NamespacedName
+    let wheelbase = _prefix "wheelbase"
     /// <summary>
     /// The outer width of the vehicle. Note that you can use gr:hasMinValueFloat and gr:hasMaxValueFloat to indicate ranges.
     /// Typical unit code(s): CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet
     /// <see href="http://purl.org/vso/ns#width"></see></summary>
-    let width = Namespaced_IRI.parse _namespace_name "width" |> NamespacedName
+    let width = _prefix "width"

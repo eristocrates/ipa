@@ -1,282 +1,209 @@
 namespace http.data.vlaanderen.be.ns.persoon.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module bperson =
     let _namespace_name = "http://data.vlaanderen.be/ns/persoon#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Afstamming"></see>
     /// </summary>
-    let Afstamming = Namespaced_IRI.parse _namespace_name "Afstamming" |> NamespacedName
-
+    let Afstamming = _prefix "Afstamming"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"></see>
     /// </summary>
-    let Persoonsrelatie =
-        Namespaced_IRI.parse _namespace_name "Persoonsrelatie" |> NamespacedName
-
+    let Persoonsrelatie = _prefix "Persoonsrelatie"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat"></see>
     /// </summary>
-    let BurgerlijkeStaat =
-        Namespaced_IRI.parse _namespace_name "BurgerlijkeStaat" |> NamespacedName
-
+    let BurgerlijkeStaat = _prefix "BurgerlijkeStaat"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Domicilie"></see>
     /// </summary>
-    let Domicilie = Namespaced_IRI.parse _namespace_name "Domicilie" |> NamespacedName
-
+    let Domicilie = _prefix "Domicilie"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Verblijfplaats"></see>
     /// </summary>
-    let Verblijfplaats =
-        Namespaced_IRI.parse _namespace_name "Verblijfplaats" |> NamespacedName
-
+    let Verblijfplaats = _prefix "Verblijfplaats"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Geboorte"></see>
     /// </summary>
-    let Geboorte = Namespaced_IRI.parse _namespace_name "Geboorte" |> NamespacedName
-
+    let Geboorte = _prefix "Geboorte"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis"></see>
     /// </summary>
-    let Persoonsgebeurtenis =
-        Namespaced_IRI.parse _namespace_name "Persoonsgebeurtenis" |> NamespacedName
-
+    let Persoonsgebeurtenis = _prefix "Persoonsgebeurtenis"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#GeenInwoner"></see>
     /// </summary>
-    let GeenInwoner =
-        Namespaced_IRI.parse _namespace_name "GeenInwoner" |> NamespacedName
-
+    let GeenInwoner = _prefix "GeenInwoner"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Inwonerschap"></see>
     /// </summary>
-    let Inwonerschap =
-        Namespaced_IRI.parse _namespace_name "Inwonerschap" |> NamespacedName
-
+    let Inwonerschap = _prefix "Inwonerschap"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon"></see>
     /// </summary>
-    let GeregistreerdPersoon =
-        Namespaced_IRI.parse _namespace_name "GeregistreerdPersoon" |> NamespacedName
-
+    let GeregistreerdPersoon = _prefix "GeregistreerdPersoon"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Gezin"></see>
     /// </summary>
-    let Gezin = Namespaced_IRI.parse _namespace_name "Gezin" |> NamespacedName
-
+    let Gezin = _prefix "Gezin"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Gezinsrelatie"></see>
     /// </summary>
-    let Gezinsrelatie =
-        Namespaced_IRI.parse _namespace_name "Gezinsrelatie" |> NamespacedName
-
+    let Gezinsrelatie = _prefix "Gezinsrelatie"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Huwelijk"></see>
     /// </summary>
-    let Huwelijk = Namespaced_IRI.parse _namespace_name "Huwelijk" |> NamespacedName
+    let Huwelijk = _prefix "Huwelijk"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Inwoner"></see>
     /// </summary>
-    let Inwoner = Namespaced_IRI.parse _namespace_name "Inwoner" |> NamespacedName
-
+    let Inwoner = _prefix "Inwoner"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Inwonerschap.binnenJurisdictie"></see>
     /// </summary>
-    let ``Inwonerschap.binnenJurisdictie`` =
-        Namespaced_IRI.parse _namespace_name "Inwonerschap.binnenJurisdictie" |> NamespacedName
-
+    let ``Inwonerschap.binnenJurisdictie`` = _prefix "Inwonerschap.binnenJurisdictie"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Nationaliteit"></see>
     /// </summary>
-    let Nationaliteit =
-        Namespaced_IRI.parse _namespace_name "Nationaliteit" |> NamespacedName
-
+    let Nationaliteit = _prefix "Nationaliteit"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Overlijden"></see>
     /// </summary>
-    let Overlijden = Namespaced_IRI.parse _namespace_name "Overlijden" |> NamespacedName
-
+    let Overlijden = _prefix "Overlijden"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#PermanentInwoner"></see>
     /// </summary>
-    let PermanentInwoner =
-        Namespaced_IRI.parse _namespace_name "PermanentInwoner" |> NamespacedName
-
+    let PermanentInwoner = _prefix "PermanentInwoner"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Samenwonen"></see>
     /// </summary>
-    let Samenwonen = Namespaced_IRI.parse _namespace_name "Samenwonen" |> NamespacedName
-
+    let Samenwonen = _prefix "Samenwonen"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Staatsburger"></see>
     /// </summary>
-    let Staatsburger =
-        Namespaced_IRI.parse _namespace_name "Staatsburger" |> NamespacedName
-
+    let Staatsburger = _prefix "Staatsburger"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Staatsburgerschap"></see>
     /// </summary>
-    let Staatsburgerschap =
-        Namespaced_IRI.parse _namespace_name "Staatsburgerschap" |> NamespacedName
+    let Staatsburgerschap = _prefix "Staatsburgerschap"
 
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Staatsburgerschap.binnenJurisdictie"></see>
     /// </summary>
     let ``Staatsburgerschap.binnenJurisdictie`` =
-        Namespaced_IRI.parse _namespace_name "Staatsburgerschap.binnenJurisdictie" |> NamespacedName
+        _prefix "Staatsburgerschap.binnenJurisdictie"
 
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#TijdelijkInwoner"></see>
     /// </summary>
-    let TijdelijkInwoner =
-        Namespaced_IRI.parse _namespace_name "TijdelijkInwoner" |> NamespacedName
-
+    let TijdelijkInwoner = _prefix "TijdelijkInwoner"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Voogdij"></see>
     /// </summary>
-    let Voogdij = Namespaced_IRI.parse _namespace_name "Voogdij" |> NamespacedName
-
+    let Voogdij = _prefix "Voogdij"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#Vreemdeling"></see>
     /// </summary>
-    let Vreemdeling =
-        Namespaced_IRI.parse _namespace_name "Vreemdeling" |> NamespacedName
-
+    let Vreemdeling = _prefix "Vreemdeling"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#afstammingsType"></see>
     /// </summary>
-    let afstammingsType =
-        Namespaced_IRI.parse _namespace_name "afstammingsType" |> NamespacedName
-
+    let afstammingsType = _prefix "afstammingsType"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#datum"></see>
     /// </summary>
-    let datum = Namespaced_IRI.parse _namespace_name "datum" |> NamespacedName
-
+    let datum = _prefix "datum"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#datumVanAfstamming"></see>
     /// </summary>
-    let datumVanAfstamming =
-        Namespaced_IRI.parse _namespace_name "datumVanAfstamming" |> NamespacedName
-
+    let datumVanAfstamming = _prefix "datumVanAfstamming"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"></see>
     /// </summary>
-    let gebruikteVoornaam =
-        Namespaced_IRI.parse _namespace_name "gebruikteVoornaam" |> NamespacedName
-
+    let gebruikteVoornaam = _prefix "gebruikteVoornaam"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#geslacht"></see>
     /// </summary>
-    let geslacht = Namespaced_IRI.parse _namespace_name "geslacht" |> NamespacedName
-
+    let geslacht = _prefix "geslacht"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#gezinsadres"></see>
     /// </summary>
-    let gezinsadres =
-        Namespaced_IRI.parse _namespace_name "gezinsadres" |> NamespacedName
-
+    let gezinsadres = _prefix "gezinsadres"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#gezinsrelatietype"></see>
     /// </summary>
-    let gezinsrelatietype =
-        Namespaced_IRI.parse _namespace_name "gezinsrelatietype" |> NamespacedName
-
+    let gezinsrelatietype = _prefix "gezinsrelatietype"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftBurgerlijkeStaat"></see>
     /// </summary>
-    let heeftBurgerlijkeStaat =
-        Namespaced_IRI.parse _namespace_name "heeftBurgerlijkeStaat" |> NamespacedName
-
+    let heeftBurgerlijkeStaat = _prefix "heeftBurgerlijkeStaat"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftGeboorte"></see>
     /// </summary>
-    let heeftGeboorte =
-        Namespaced_IRI.parse _namespace_name "heeftGeboorte" |> NamespacedName
-
+    let heeftGeboorte = _prefix "heeftGeboorte"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftInwonerschap"></see>
     /// </summary>
-    let heeftInwonerschap =
-        Namespaced_IRI.parse _namespace_name "heeftInwonerschap" |> NamespacedName
-
+    let heeftInwonerschap = _prefix "heeftInwonerschap"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftNationaliteit"></see>
     /// </summary>
-    let heeftNationaliteit =
-        Namespaced_IRI.parse _namespace_name "heeftNationaliteit" |> NamespacedName
-
+    let heeftNationaliteit = _prefix "heeftNationaliteit"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftOverlijden"></see>
     /// </summary>
-    let heeftOverlijden =
-        Namespaced_IRI.parse _namespace_name "heeftOverlijden" |> NamespacedName
-
+    let heeftOverlijden = _prefix "heeftOverlijden"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftPersoonsrelatie"></see>
     /// </summary>
-    let heeftPersoonsrelatie =
-        Namespaced_IRI.parse _namespace_name "heeftPersoonsrelatie" |> NamespacedName
-
+    let heeftPersoonsrelatie = _prefix "heeftPersoonsrelatie"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftStaatsburgerschap"></see>
     /// </summary>
-    let heeftStaatsburgerschap =
-        Namespaced_IRI.parse _namespace_name "heeftStaatsburgerschap" |> NamespacedName
-
+    let heeftStaatsburgerschap = _prefix "heeftStaatsburgerschap"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#heeftVerblijfplaats"></see>
     /// </summary>
-    let heeftVerblijfplaats =
-        Namespaced_IRI.parse _namespace_name "heeftVerblijfplaats" |> NamespacedName
-
+    let heeftVerblijfplaats = _prefix "heeftVerblijfplaats"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#isHoofdVan"></see>
     /// </summary>
-    let isHoofdVan = Namespaced_IRI.parse _namespace_name "isHoofdVan" |> NamespacedName
+    let isHoofdVan = _prefix "isHoofdVan"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#isLidVan"></see>
     /// </summary>
-    let isLidVan = Namespaced_IRI.parse _namespace_name "isLidVan" |> NamespacedName
-
+    let isLidVan = _prefix "isLidVan"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#isRelatieMet"></see>
     /// </summary>
-    let isRelatieMet =
-        Namespaced_IRI.parse _namespace_name "isRelatieMet" |> NamespacedName
-
+    let isRelatieMet = _prefix "isRelatieMet"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#nationaliteit"></see>
     /// </summary>
-    let nationaliteit =
-        Namespaced_IRI.parse _namespace_name "nationaliteit" |> NamespacedName
-
+    let nationaliteit = _prefix "nationaliteit"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#plaats"></see>
     /// </summary>
-    let plaats = Namespaced_IRI.parse _namespace_name "plaats" |> NamespacedName
-
+    let plaats = _prefix "plaats"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#registratie"></see>
     /// </summary>
-    let registratie =
-        Namespaced_IRI.parse _namespace_name "registratie" |> NamespacedName
-
+    let registratie = _prefix "registratie"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
-
+    let type_ = _prefix "type"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#verblijfsadres"></see>
     /// </summary>
-    let verblijfsadres =
-        Namespaced_IRI.parse _namespace_name "verblijfsadres" |> NamespacedName
-
+    let verblijfsadres = _prefix "verblijfsadres"
     /// <summary>
     ///   <see href="http://data.vlaanderen.be/ns/persoon#volledigeNaam"></see>
     /// </summary>
-    let volledigeNaam =
-        Namespaced_IRI.parse _namespace_name "volledigeNaam" |> NamespacedName
+    let volledigeNaam = _prefix "volledigeNaam"

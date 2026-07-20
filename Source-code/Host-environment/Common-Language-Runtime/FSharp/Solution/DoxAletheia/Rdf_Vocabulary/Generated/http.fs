@@ -1,203 +1,166 @@
 namespace http.www.w3.org._2011.http.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module http =
     let _namespace_name = "http://www.w3.org/2011/http#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A connection used for HTTP transfer.
     /// <see href="http://www.w3.org/2011/http#Connection"></see></summary>
-    let Connection = Namespaced_IRI.parse _namespace_name "Connection" |> NamespacedName
-
+    let Connection = _prefix "Connection"
     /// <summary>
     /// An entity header in an HTTP message.
     /// <see href="http://www.w3.org/2011/http#EntityHeader"></see></summary>
-    let EntityHeader =
-        Namespaced_IRI.parse _namespace_name "EntityHeader" |> NamespacedName
-
+    let EntityHeader = _prefix "EntityHeader"
     /// <summary>
     /// A header in an HTTP message.
     /// <see href="http://www.w3.org/2011/http#MessageHeader"></see></summary>
-    let MessageHeader =
-        Namespaced_IRI.parse _namespace_name "MessageHeader" |> NamespacedName
-
+    let MessageHeader = _prefix "MessageHeader"
     /// <summary>
     /// A general header in an HTTP message.
     /// <see href="http://www.w3.org/2011/http#GeneralHeader"></see></summary>
-    let GeneralHeader =
-        Namespaced_IRI.parse _namespace_name "GeneralHeader" |> NamespacedName
-
+    let GeneralHeader = _prefix "GeneralHeader"
     /// <summary>
     /// A part of a deconstructed header value.
     /// <see href="http://www.w3.org/2011/http#HeaderElement"></see></summary>
-    let HeaderElement =
-        Namespaced_IRI.parse _namespace_name "HeaderElement" |> NamespacedName
-
+    let HeaderElement = _prefix "HeaderElement"
     /// <summary>
     /// A header name.
     /// <see href="http://www.w3.org/2011/http#HeaderName"></see></summary>
-    let HeaderName = Namespaced_IRI.parse _namespace_name "HeaderName" |> NamespacedName
+    let HeaderName = _prefix "HeaderName"
     /// <summary>
     /// An HTTP message.
     /// <see href="http://www.w3.org/2011/http#Message"></see></summary>
-    let Message = Namespaced_IRI.parse _namespace_name "Message" |> NamespacedName
+    let Message = _prefix "Message"
     /// <summary>
     /// The HTTP method used for the request.
     /// <see href="http://www.w3.org/2011/http#Method"></see></summary>
-    let Method = Namespaced_IRI.parse _namespace_name "Method" |> NamespacedName
+    let Method = _prefix "Method"
     /// <summary>
     /// A parameter for a part of a header value.
     /// <see href="http://www.w3.org/2011/http#Parameter"></see></summary>
-    let Parameter = Namespaced_IRI.parse _namespace_name "Parameter" |> NamespacedName
+    let Parameter = _prefix "Parameter"
     /// <summary>
     /// An HTTP request.
     /// <see href="http://www.w3.org/2011/http#Request"></see></summary>
-    let Request = Namespaced_IRI.parse _namespace_name "Request" |> NamespacedName
-
+    let Request = _prefix "Request"
     /// <summary>
     /// A header in an HTTP request message.
     /// <see href="http://www.w3.org/2011/http#RequestHeader"></see></summary>
-    let RequestHeader =
-        Namespaced_IRI.parse _namespace_name "RequestHeader" |> NamespacedName
-
+    let RequestHeader = _prefix "RequestHeader"
     /// <summary>
     /// An HTTP response.
     /// <see href="http://www.w3.org/2011/http#Response"></see></summary>
-    let Response = Namespaced_IRI.parse _namespace_name "Response" |> NamespacedName
-
+    let Response = _prefix "Response"
     /// <summary>
     /// A header in an HTTP response message.
     /// <see href="http://www.w3.org/2011/http#ResponseHeader"></see></summary>
-    let ResponseHeader =
-        Namespaced_IRI.parse _namespace_name "ResponseHeader" |> NamespacedName
-
+    let ResponseHeader = _prefix "ResponseHeader"
     /// <summary>
     /// The status code of an HTTP response.
     /// <see href="http://www.w3.org/2011/http#StatusCode"></see></summary>
-    let StatusCode = Namespaced_IRI.parse _namespace_name "StatusCode" |> NamespacedName
-
+    let StatusCode = _prefix "StatusCode"
     /// <summary>
     /// The absolute path sort of request URI.
     /// <see href="http://www.w3.org/2011/http#absolutePath"></see></summary>
-    let absolutePath =
-        Namespaced_IRI.parse _namespace_name "absolutePath" |> NamespacedName
-
+    let absolutePath = _prefix "absolutePath"
     /// <summary>
     /// The request URI of an HTTP request.
     /// <see href="http://www.w3.org/2011/http#requestURI"></see></summary>
-    let requestURI = Namespaced_IRI.parse _namespace_name "requestURI" |> NamespacedName
-
+    let requestURI = _prefix "requestURI"
     /// <summary>
     /// The absolute request URI.
     /// <see href="http://www.w3.org/2011/http#absoluteURI"></see></summary>
-    let absoluteURI =
-        Namespaced_IRI.parse _namespace_name "absoluteURI" |> NamespacedName
-
+    let absoluteURI = _prefix "absoluteURI"
     /// <summary>
     /// The authority sort of request URI.
     /// <see href="http://www.w3.org/2011/http#authority"></see></summary>
-    let authority = Namespaced_IRI.parse _namespace_name "authority" |> NamespacedName
+    let authority = _prefix "authority"
     /// <summary>
     /// The entity body of an HTTP message.
     /// <see href="http://www.w3.org/2011/http#body"></see></summary>
-    let body = Namespaced_IRI.parse _namespace_name "body" |> NamespacedName
-
+    let body = _prefix "body"
     /// <summary>
     /// The authority of a connection used for the HTTP transfer.
     /// <see href="http://www.w3.org/2011/http#connectionAuthority"></see></summary>
-    let connectionAuthority =
-        Namespaced_IRI.parse _namespace_name "connectionAuthority" |> NamespacedName
-
+    let connectionAuthority = _prefix "connectionAuthority"
     /// <summary>
     /// The name of a header element.
     /// <see href="http://www.w3.org/2011/http#elementName"></see></summary>
-    let elementName =
-        Namespaced_IRI.parse _namespace_name "elementName" |> NamespacedName
-
+    let elementName = _prefix "elementName"
     /// <summary>
     /// The value of a header element.
     /// <see href="http://www.w3.org/2011/http#elementValue"></see></summary>
-    let elementValue =
-        Namespaced_IRI.parse _namespace_name "elementValue" |> NamespacedName
-
+    let elementValue = _prefix "elementValue"
     /// <summary>
     /// The name of an HTTP header field.
     /// <see href="http://www.w3.org/2011/http#fieldName"></see></summary>
-    let fieldName = Namespaced_IRI.parse _namespace_name "fieldName" |> NamespacedName
+    let fieldName = _prefix "fieldName"
     /// <summary>
     /// The value of an HTTP header field.
     /// <see href="http://www.w3.org/2011/http#fieldValue"></see></summary>
-    let fieldValue = Namespaced_IRI.parse _namespace_name "fieldValue" |> NamespacedName
+    let fieldValue = _prefix "fieldValue"
     /// <summary>
     /// The name of an HTTP header.
     /// <see href="http://www.w3.org/2011/http#hdrName"></see></summary>
-    let hdrName = Namespaced_IRI.parse _namespace_name "hdrName" |> NamespacedName
-
+    let hdrName = _prefix "hdrName"
     /// <summary>
     /// The deconstructed parts of an HTTP header value.
     /// <see href="http://www.w3.org/2011/http#headerElements"></see></summary>
-    let headerElements =
-        Namespaced_IRI.parse _namespace_name "headerElements" |> NamespacedName
-
+    let headerElements = _prefix "headerElements"
     /// <summary>
     /// The headers in an HTTP message.
     /// <see href="http://www.w3.org/2011/http#headers"></see></summary>
-    let headers = Namespaced_IRI.parse _namespace_name "headers" |> NamespacedName
-
+    let headers = _prefix "headers"
     /// <summary>
     /// The HTTP version of an HTTP message.
     /// <see href="http://www.w3.org/2011/http#httpVersion"></see></summary>
-    let httpVersion =
-        Namespaced_IRI.parse _namespace_name "httpVersion" |> NamespacedName
-
+    let httpVersion = _prefix "httpVersion"
     /// <summary>
     /// The HTTP method name used for the HTTP request.
     /// <see href="http://www.w3.org/2011/http#methodName"></see></summary>
-    let methodName = Namespaced_IRI.parse _namespace_name "methodName" |> NamespacedName
+    let methodName = _prefix "methodName"
     /// <summary>
     /// The HTTP method used for the HTTP request.
     /// <see href="http://www.w3.org/2011/http#mthd"></see></summary>
-    let mthd = Namespaced_IRI.parse _namespace_name "mthd" |> NamespacedName
+    let mthd = _prefix "mthd"
     /// <summary>
     /// The name of a parameter in a part of a deconstructed HTTP header value.
     /// <see href="http://www.w3.org/2011/http#paramName"></see></summary>
-    let paramName = Namespaced_IRI.parse _namespace_name "paramName" |> NamespacedName
+    let paramName = _prefix "paramName"
     /// <summary>
     /// The value of a parameter in a part of a deconstructed HTTP header value.
     /// <see href="http://www.w3.org/2011/http#paramValue"></see></summary>
-    let paramValue = Namespaced_IRI.parse _namespace_name "paramValue" |> NamespacedName
+    let paramValue = _prefix "paramValue"
     /// <summary>
     /// The parameters in a part of a deconstructed HTTP header value.
     /// <see href="http://www.w3.org/2011/http#params"></see></summary>
-    let params_ = Namespaced_IRI.parse _namespace_name "params" |> NamespacedName
-
+    let params_ = _prefix "params"
     /// <summary>
     /// The reason phrase (status text) of an HTTP response.
     /// <see href="http://www.w3.org/2011/http#reasonPhrase"></see></summary>
-    let reasonPhrase =
-        Namespaced_IRI.parse _namespace_name "reasonPhrase" |> NamespacedName
-
+    let reasonPhrase = _prefix "reasonPhrase"
     /// <summary>
     /// The HTTP requests made via a connection.
     /// <see href="http://www.w3.org/2011/http#requests"></see></summary>
-    let requests = Namespaced_IRI.parse _namespace_name "requests" |> NamespacedName
+    let requests = _prefix "requests"
     /// <summary>
     /// The HTTP response sent in answer to an HTTP request.
     /// <see href="http://www.w3.org/2011/http#resp"></see></summary>
-    let resp = Namespaced_IRI.parse _namespace_name "resp" |> NamespacedName
+    let resp = _prefix "resp"
     /// <summary>
     /// The status code of an HTTP response.
     /// <see href="http://www.w3.org/2011/http#sc"></see></summary>
-    let sc = Namespaced_IRI.parse _namespace_name "sc" |> NamespacedName
-
+    let sc = _prefix "sc"
     /// <summary>
     /// The status code number.
     /// <see href="http://www.w3.org/2011/http#statusCodeNumber"></see></summary>
-    let statusCodeNumber =
-        Namespaced_IRI.parse _namespace_name "statusCodeNumber" |> NamespacedName
-
+    let statusCodeNumber = _prefix "statusCodeNumber"
     /// <summary>
     /// The status code value of an HTTP response.
     /// <see href="http://www.w3.org/2011/http#statusCodeValue"></see></summary>
-    let statusCodeValue =
-        Namespaced_IRI.parse _namespace_name "statusCodeValue" |> NamespacedName
+    let statusCodeValue = _prefix "statusCodeValue"

@@ -1,6787 +1,4702 @@
 namespace https.w3id.org.dpv.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dpv =
     let _namespace_name = "https://w3id.org/dpv#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/dpv#rights-properties"></see>
     /// </summary>
-    let ``rights-properties`` =
-        Namespaced_IRI.parse _namespace_name "rights-properties" |> NamespacedName
-
+    let ``rights-properties`` = _prefix "rights-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightExerciseRecord"></see>
     /// </summary>
-    let RightExerciseRecord =
-        Namespaced_IRI.parse _namespace_name "RightExerciseRecord" |> NamespacedName
-
+    let RightExerciseRecord = _prefix "RightExerciseRecord"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightExerciseActivity"></see>
     /// </summary>
-    let RightExerciseActivity =
-        Namespaced_IRI.parse _namespace_name "RightExerciseActivity" |> NamespacedName
-
+    let RightExerciseActivity = _prefix "RightExerciseActivity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#rights-classes"></see>
     /// </summary>
-    let ``rights-classes`` =
-        Namespaced_IRI.parse _namespace_name "rights-classes" |> NamespacedName
-
+    let ``rights-classes`` = _prefix "rights-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#serialisation-html"></see>
     /// </summary>
-    let ``serialisation-html`` =
-        Namespaced_IRI.parse _namespace_name "serialisation-html" |> NamespacedName
-
+    let ``serialisation-html`` = _prefix "serialisation-html"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#serialisation-rdf"></see>
     /// </summary>
-    let ``serialisation-rdf`` =
-        Namespaced_IRI.parse _namespace_name "serialisation-rdf" |> NamespacedName
-
+    let ``serialisation-rdf`` = _prefix "serialisation-rdf"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#serialisation-jsonld"></see>
     /// </summary>
-    let ``serialisation-jsonld`` =
-        Namespaced_IRI.parse _namespace_name "serialisation-jsonld" |> NamespacedName
-
+    let ``serialisation-jsonld`` = _prefix "serialisation-jsonld"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#serialisation-n3"></see>
     /// </summary>
-    let ``serialisation-n3`` =
-        Namespaced_IRI.parse _namespace_name "serialisation-n3" |> NamespacedName
-
+    let ``serialisation-n3`` = _prefix "serialisation-n3"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#serialisation-ttl"></see>
     /// </summary>
-    let ``serialisation-ttl`` =
-        Namespaced_IRI.parse _namespace_name "serialisation-ttl" |> NamespacedName
-
+    let ``serialisation-ttl`` = _prefix "serialisation-ttl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AILiteracy"></see>
     /// </summary>
-    let AILiteracy = Namespaced_IRI.parse _namespace_name "AILiteracy" |> NamespacedName
-
+    let AILiteracy = _prefix "AILiteracy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OrganisationalMeasure"></see>
     /// </summary>
-    let OrganisationalMeasure =
-        Namespaced_IRI.parse _namespace_name "OrganisationalMeasure" |> NamespacedName
-
+    let OrganisationalMeasure = _prefix "OrganisationalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DigitalLiteracy"></see>
     /// </summary>
-    let DigitalLiteracy =
-        Namespaced_IRI.parse _namespace_name "DigitalLiteracy" |> NamespacedName
-
+    let DigitalLiteracy = _prefix "DigitalLiteracy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#organisational-measures-classes"></see>
     /// </summary>
-    let ``organisational-measures-classes`` =
-        Namespaced_IRI.parse _namespace_name "organisational-measures-classes" |> NamespacedName
-
+    let ``organisational-measures-classes`` = _prefix "organisational-measures-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AINotice"></see>
     /// </summary>
-    let AINotice = Namespaced_IRI.parse _namespace_name "AINotice" |> NamespacedName
+    let AINotice = _prefix "AINotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Notice"></see>
     /// </summary>
-    let Notice = Namespaced_IRI.parse _namespace_name "Notice" |> NamespacedName
-
+    let Notice = _prefix "Notice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AcademicResearch"></see>
     /// </summary>
-    let AcademicResearch =
-        Namespaced_IRI.parse _namespace_name "AcademicResearch" |> NamespacedName
-
+    let AcademicResearch = _prefix "AcademicResearch"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Purpose"></see>
     /// </summary>
-    let Purpose = Namespaced_IRI.parse _namespace_name "Purpose" |> NamespacedName
-
+    let Purpose = _prefix "Purpose"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ResearchAndDevelopment"></see>
     /// </summary>
-    let ResearchAndDevelopment =
-        Namespaced_IRI.parse _namespace_name "ResearchAndDevelopment" |> NamespacedName
-
+    let ResearchAndDevelopment = _prefix "ResearchAndDevelopment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#purposes-classes"></see>
     /// </summary>
-    let ``purposes-classes`` =
-        Namespaced_IRI.parse _namespace_name "purposes-classes" |> NamespacedName
-
+    let ``purposes-classes`` = _prefix "purposes-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AcademicScientificOrganisation"></see>
     /// </summary>
-    let AcademicScientificOrganisation =
-        Namespaced_IRI.parse _namespace_name "AcademicScientificOrganisation" |> NamespacedName
-
+    let AcademicScientificOrganisation = _prefix "AcademicScientificOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Organisation"></see>
     /// </summary>
-    let Organisation =
-        Namespaced_IRI.parse _namespace_name "Organisation" |> NamespacedName
-
+    let Organisation = _prefix "Organisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-organisation-classes"></see>
     /// </summary>
-    let ``entities-organisation-classes`` =
-        Namespaced_IRI.parse _namespace_name "entities-organisation-classes" |> NamespacedName
-
+    let ``entities-organisation-classes`` = _prefix "entities-organisation-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AcceptContract"></see>
     /// </summary>
-    let AcceptContract =
-        Namespaced_IRI.parse _namespace_name "AcceptContract" |> NamespacedName
-
+    let AcceptContract = _prefix "AcceptContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractControl"></see>
     /// </summary>
-    let ContractControl =
-        Namespaced_IRI.parse _namespace_name "ContractControl" |> NamespacedName
-
+    let ContractControl = _prefix "ContractControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#contract-control-classes"></see>
     /// </summary>
-    let ``contract-control-classes`` =
-        Namespaced_IRI.parse _namespace_name "contract-control-classes" |> NamespacedName
-
+    let ``contract-control-classes`` = _prefix "contract-control-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AcceptableRule"></see>
     /// </summary>
-    let AcceptableRule =
-        Namespaced_IRI.parse _namespace_name "AcceptableRule" |> NamespacedName
-
+    let AcceptableRule = _prefix "AcceptableRule"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Rule"></see>
     /// </summary>
-    let Rule = Namespaced_IRI.parse _namespace_name "Rule" |> NamespacedName
-
+    let Rule = _prefix "Rule"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#rules-classes"></see>
     /// </summary>
-    let ``rules-classes`` =
-        Namespaced_IRI.parse _namespace_name "rules-classes" |> NamespacedName
-
+    let ``rules-classes`` = _prefix "rules-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AcceptableUsePolicy"></see>
     /// </summary>
-    let AcceptableUsePolicy =
-        Namespaced_IRI.parse _namespace_name "AcceptableUsePolicy" |> NamespacedName
-
+    let AcceptableUsePolicy = _prefix "AcceptableUsePolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Policy"></see>
     /// </summary>
-    let Policy = Namespaced_IRI.parse _namespace_name "Policy" |> NamespacedName
+    let Policy = _prefix "Policy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Access"></see>
     /// </summary>
-    let Access = Namespaced_IRI.parse _namespace_name "Access" |> NamespacedName
+    let Access = _prefix "Access"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Processing"></see>
     /// </summary>
-    let Processing = Namespaced_IRI.parse _namespace_name "Processing" |> NamespacedName
+    let Processing = _prefix "Processing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Use"></see>
     /// </summary>
-    let Use = Namespaced_IRI.parse _namespace_name "Use" |> NamespacedName
-
+    let Use = _prefix "Use"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#processing-classes"></see>
     /// </summary>
-    let ``processing-classes`` =
-        Namespaced_IRI.parse _namespace_name "processing-classes" |> NamespacedName
-
+    let ``processing-classes`` = _prefix "processing-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AccessControlMethod"></see>
     /// </summary>
-    let AccessControlMethod =
-        Namespaced_IRI.parse _namespace_name "AccessControlMethod" |> NamespacedName
-
+    let AccessControlMethod = _prefix "AccessControlMethod"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TechnicalMeasure"></see>
     /// </summary>
-    let TechnicalMeasure =
-        Namespaced_IRI.parse _namespace_name "TechnicalMeasure" |> NamespacedName
-
+    let TechnicalMeasure = _prefix "TechnicalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#technical-measures-classes"></see>
     /// </summary>
-    let ``technical-measures-classes`` =
-        Namespaced_IRI.parse _namespace_name "technical-measures-classes" |> NamespacedName
-
+    let ``technical-measures-classes`` = _prefix "technical-measures-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AccountManagement"></see>
     /// </summary>
-    let AccountManagement =
-        Namespaced_IRI.parse _namespace_name "AccountManagement" |> NamespacedName
-
+    let AccountManagement = _prefix "AccountManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Acquire"></see>
     /// </summary>
-    let Acquire = Namespaced_IRI.parse _namespace_name "Acquire" |> NamespacedName
+    let Acquire = _prefix "Acquire"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Obtain"></see>
     /// </summary>
-    let Obtain = Namespaced_IRI.parse _namespace_name "Obtain" |> NamespacedName
-
+    let Obtain = _prefix "Obtain"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActiveRight"></see>
     /// </summary>
-    let ActiveRight =
-        Namespaced_IRI.parse _namespace_name "ActiveRight" |> NamespacedName
-
+    let ActiveRight = _prefix "ActiveRight"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Right"></see>
     /// </summary>
-    let Right = Namespaced_IRI.parse _namespace_name "Right" |> NamespacedName
-
+    let Right = _prefix "Right"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivelyInvolved"></see>
     /// </summary>
-    let ActivelyInvolved =
-        Namespaced_IRI.parse _namespace_name "ActivelyInvolved" |> NamespacedName
-
+    let ActivelyInvolved = _prefix "ActivelyInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InvolvementStatus"></see>
     /// </summary>
-    let InvolvementStatus =
-        Namespaced_IRI.parse _namespace_name "InvolvementStatus" |> NamespacedName
-
+    let InvolvementStatus = _prefix "InvolvementStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#status-classes"></see>
     /// </summary>
-    let ``status-classes`` =
-        Namespaced_IRI.parse _namespace_name "status-classes" |> NamespacedName
-
+    let ``status-classes`` = _prefix "status-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityCompleted"></see>
     /// </summary>
-    let ActivityCompleted =
-        Namespaced_IRI.parse _namespace_name "ActivityCompleted" |> NamespacedName
-
+    let ActivityCompleted = _prefix "ActivityCompleted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityStatus"></see>
     /// </summary>
-    let ActivityStatus =
-        Namespaced_IRI.parse _namespace_name "ActivityStatus" |> NamespacedName
-
+    let ActivityStatus = _prefix "ActivityStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityHalted"></see>
     /// </summary>
-    let ActivityHalted =
-        Namespaced_IRI.parse _namespace_name "ActivityHalted" |> NamespacedName
-
+    let ActivityHalted = _prefix "ActivityHalted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityMonitoring"></see>
     /// </summary>
-    let ActivityMonitoring =
-        Namespaced_IRI.parse _namespace_name "ActivityMonitoring" |> NamespacedName
-
+    let ActivityMonitoring = _prefix "ActivityMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityNotCompleted"></see>
     /// </summary>
-    let ActivityNotCompleted =
-        Namespaced_IRI.parse _namespace_name "ActivityNotCompleted" |> NamespacedName
-
+    let ActivityNotCompleted = _prefix "ActivityNotCompleted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityOngoing"></see>
     /// </summary>
-    let ActivityOngoing =
-        Namespaced_IRI.parse _namespace_name "ActivityOngoing" |> NamespacedName
-
+    let ActivityOngoing = _prefix "ActivityOngoing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityPlanned"></see>
     /// </summary>
-    let ActivityPlanned =
-        Namespaced_IRI.parse _namespace_name "ActivityPlanned" |> NamespacedName
-
+    let ActivityPlanned = _prefix "ActivityPlanned"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ActivityProposed"></see>
     /// </summary>
-    let ActivityProposed =
-        Namespaced_IRI.parse _namespace_name "ActivityProposed" |> NamespacedName
-
+    let ActivityProposed = _prefix "ActivityProposed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Status"></see>
     /// </summary>
-    let Status = Namespaced_IRI.parse _namespace_name "Status" |> NamespacedName
+    let Status = _prefix "Status"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Adapt"></see>
     /// </summary>
-    let Adapt = Namespaced_IRI.parse _namespace_name "Adapt" |> NamespacedName
+    let Adapt = _prefix "Adapt"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Transform"></see>
     /// </summary>
-    let Transform = Namespaced_IRI.parse _namespace_name "Transform" |> NamespacedName
+    let Transform = _prefix "Transform"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Adult"></see>
     /// </summary>
-    let Adult = Namespaced_IRI.parse _namespace_name "Adult" |> NamespacedName
-
+    let Adult = _prefix "Adult"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanSubject"></see>
     /// </summary>
-    let HumanSubject =
-        Namespaced_IRI.parse _namespace_name "HumanSubject" |> NamespacedName
-
+    let HumanSubject = _prefix "HumanSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-datasubject-classes"></see>
     /// </summary>
-    let ``entities-datasubject-classes`` =
-        Namespaced_IRI.parse _namespace_name "entities-datasubject-classes" |> NamespacedName
-
+    let ``entities-datasubject-classes`` = _prefix "entities-datasubject-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Advertising"></see>
     /// </summary>
-    let Advertising =
-        Namespaced_IRI.parse _namespace_name "Advertising" |> NamespacedName
-
+    let Advertising = _prefix "Advertising"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Marketing"></see>
     /// </summary>
-    let Marketing = Namespaced_IRI.parse _namespace_name "Marketing" |> NamespacedName
-
+    let Marketing = _prefix "Marketing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AgeVerification"></see>
     /// </summary>
-    let AgeVerification =
-        Namespaced_IRI.parse _namespace_name "AgeVerification" |> NamespacedName
-
+    let AgeVerification = _prefix "AgeVerification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Verification"></see>
     /// </summary>
-    let Verification =
-        Namespaced_IRI.parse _namespace_name "Verification" |> NamespacedName
-
+    let Verification = _prefix "Verification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Aggregate"></see>
     /// </summary>
-    let Aggregate = Namespaced_IRI.parse _namespace_name "Aggregate" |> NamespacedName
+    let Aggregate = _prefix "Aggregate"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Alter"></see>
     /// </summary>
-    let Alter = Namespaced_IRI.parse _namespace_name "Alter" |> NamespacedName
-
+    let Alter = _prefix "Alter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AlgorithmicLogic"></see>
     /// </summary>
-    let AlgorithmicLogic =
-        Namespaced_IRI.parse _namespace_name "AlgorithmicLogic" |> NamespacedName
-
+    let AlgorithmicLogic = _prefix "AlgorithmicLogic"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProcessingContext"></see>
     /// </summary>
-    let ProcessingContext =
-        Namespaced_IRI.parse _namespace_name "ProcessingContext" |> NamespacedName
-
+    let ProcessingContext = _prefix "ProcessingContext"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#processing-context-classes"></see>
     /// </summary>
-    let ``processing-context-classes`` =
-        Namespaced_IRI.parse _namespace_name "processing-context-classes" |> NamespacedName
-
+    let ``processing-context-classes`` = _prefix "processing-context-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Align"></see>
     /// </summary>
-    let Align = Namespaced_IRI.parse _namespace_name "Align" |> NamespacedName
-
+    let Align = _prefix "Align"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AmbulanceProvider"></see>
     /// </summary>
-    let AmbulanceProvider =
-        Namespaced_IRI.parse _namespace_name "AmbulanceProvider" |> NamespacedName
-
+    let AmbulanceProvider = _prefix "AmbulanceProvider"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EmergencyServiceProvider"></see>
     /// </summary>
-    let EmergencyServiceProvider =
-        Namespaced_IRI.parse _namespace_name "EmergencyServiceProvider" |> NamespacedName
-
+    let EmergencyServiceProvider = _prefix "EmergencyServiceProvider"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Analyse"></see>
     /// </summary>
-    let Analyse = Namespaced_IRI.parse _namespace_name "Analyse" |> NamespacedName
-
+    let Analyse = _prefix "Analyse"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Anonymisation"></see>
     /// </summary>
-    let Anonymisation =
-        Namespaced_IRI.parse _namespace_name "Anonymisation" |> NamespacedName
-
+    let Anonymisation = _prefix "Anonymisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Deidentification"></see>
     /// </summary>
-    let Deidentification =
-        Namespaced_IRI.parse _namespace_name "Deidentification" |> NamespacedName
-
+    let Deidentification = _prefix "Deidentification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Anonymise"></see>
     /// </summary>
-    let Anonymise = Namespaced_IRI.parse _namespace_name "Anonymise" |> NamespacedName
-
+    let Anonymise = _prefix "Anonymise"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AnonymisedData"></see>
     /// </summary>
-    let AnonymisedData =
-        Namespaced_IRI.parse _namespace_name "AnonymisedData" |> NamespacedName
-
+    let AnonymisedData = _prefix "AnonymisedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonPersonalData"></see>
     /// </summary>
-    let NonPersonalData =
-        Namespaced_IRI.parse _namespace_name "NonPersonalData" |> NamespacedName
-
+    let NonPersonalData = _prefix "NonPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#personal-data-classes"></see>
     /// </summary>
-    let ``personal-data-classes`` =
-        Namespaced_IRI.parse _namespace_name "personal-data-classes" |> NamespacedName
-
+    let ``personal-data-classes`` = _prefix "personal-data-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Applicability"></see>
     /// </summary>
-    let Applicability =
-        Namespaced_IRI.parse _namespace_name "Applicability" |> NamespacedName
-
+    let Applicability = _prefix "Applicability"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
-
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#context-classes"></see>
     /// </summary>
-    let ``context-classes`` =
-        Namespaced_IRI.parse _namespace_name "context-classes" |> NamespacedName
-
+    let ``context-classes`` = _prefix "context-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Applicant"></see>
     /// </summary>
-    let Applicant = Namespaced_IRI.parse _namespace_name "Applicant" |> NamespacedName
-
+    let Applicant = _prefix "Applicant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ApprovalProcedure"></see>
     /// </summary>
-    let ApprovalProcedure =
-        Namespaced_IRI.parse _namespace_name "ApprovalProcedure" |> NamespacedName
-
+    let ApprovalProcedure = _prefix "ApprovalProcedure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GovernanceProcedures"></see>
     /// </summary>
-    let GovernanceProcedures =
-        Namespaced_IRI.parse _namespace_name "GovernanceProcedures" |> NamespacedName
-
+    let GovernanceProcedures = _prefix "GovernanceProcedures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Assess"></see>
     /// </summary>
-    let Assess = Namespaced_IRI.parse _namespace_name "Assess" |> NamespacedName
+    let Assess = _prefix "Assess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Assessment"></see>
     /// </summary>
-    let Assessment = Namespaced_IRI.parse _namespace_name "Assessment" |> NamespacedName
-
+    let Assessment = _prefix "Assessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AssetManagementProcedures"></see>
     /// </summary>
-    let AssetManagementProcedures =
-        Namespaced_IRI.parse _namespace_name "AssetManagementProcedures" |> NamespacedName
-
+    let AssetManagementProcedures = _prefix "AssetManagementProcedures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AssistiveAutomation"></see>
     /// </summary>
-    let AssistiveAutomation =
-        Namespaced_IRI.parse _namespace_name "AssistiveAutomation" |> NamespacedName
-
+    let AssistiveAutomation = _prefix "AssistiveAutomation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AutomationLevel"></see>
     /// </summary>
-    let AutomationLevel =
-        Namespaced_IRI.parse _namespace_name "AutomationLevel" |> NamespacedName
-
+    let AutomationLevel = _prefix "AutomationLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AsylumSeeker"></see>
     /// </summary>
-    let AsylumSeeker =
-        Namespaced_IRI.parse _namespace_name "AsylumSeeker" |> NamespacedName
-
+    let AsylumSeeker = _prefix "AsylumSeeker"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VulnerableHuman"></see>
     /// </summary>
-    let VulnerableHuman =
-        Namespaced_IRI.parse _namespace_name "VulnerableHuman" |> NamespacedName
-
+    let VulnerableHuman = _prefix "VulnerableHuman"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AsymmetricCryptography"></see>
     /// </summary>
-    let AsymmetricCryptography =
-        Namespaced_IRI.parse _namespace_name "AsymmetricCryptography" |> NamespacedName
-
+    let AsymmetricCryptography = _prefix "AsymmetricCryptography"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CryptographicMethods"></see>
     /// </summary>
-    let CryptographicMethods =
-        Namespaced_IRI.parse _namespace_name "CryptographicMethods" |> NamespacedName
-
+    let CryptographicMethods = _prefix "CryptographicMethods"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AsymmetricEncryption"></see>
     /// </summary>
-    let AsymmetricEncryption =
-        Namespaced_IRI.parse _namespace_name "AsymmetricEncryption" |> NamespacedName
-
+    let AsymmetricEncryption = _prefix "AsymmetricEncryption"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Encryption"></see>
     /// </summary>
-    let Encryption = Namespaced_IRI.parse _namespace_name "Encryption" |> NamespacedName
+    let Encryption = _prefix "Encryption"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Audit"></see>
     /// </summary>
-    let Audit = Namespaced_IRI.parse _namespace_name "Audit" |> NamespacedName
-
+    let Audit = _prefix "Audit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditApproved"></see>
     /// </summary>
-    let AuditApproved =
-        Namespaced_IRI.parse _namespace_name "AuditApproved" |> NamespacedName
-
+    let AuditApproved = _prefix "AuditApproved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditStatus"></see>
     /// </summary>
-    let AuditStatus =
-        Namespaced_IRI.parse _namespace_name "AuditStatus" |> NamespacedName
-
+    let AuditStatus = _prefix "AuditStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditConditionallyApproved"></see>
     /// </summary>
-    let AuditConditionallyApproved =
-        Namespaced_IRI.parse _namespace_name "AuditConditionallyApproved" |> NamespacedName
-
+    let AuditConditionallyApproved = _prefix "AuditConditionallyApproved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditNotRequired"></see>
     /// </summary>
-    let AuditNotRequired =
-        Namespaced_IRI.parse _namespace_name "AuditNotRequired" |> NamespacedName
-
+    let AuditNotRequired = _prefix "AuditNotRequired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditRejected"></see>
     /// </summary>
-    let AuditRejected =
-        Namespaced_IRI.parse _namespace_name "AuditRejected" |> NamespacedName
-
+    let AuditRejected = _prefix "AuditRejected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditRequested"></see>
     /// </summary>
-    let AuditRequested =
-        Namespaced_IRI.parse _namespace_name "AuditRequested" |> NamespacedName
-
+    let AuditRequested = _prefix "AuditRequested"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuditRequired"></see>
     /// </summary>
-    let AuditRequired =
-        Namespaced_IRI.parse _namespace_name "AuditRequired" |> NamespacedName
-
+    let AuditRequired = _prefix "AuditRequired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Authentication-ABC"></see>
     /// </summary>
-    let ``Authentication-ABC`` =
-        Namespaced_IRI.parse _namespace_name "Authentication-ABC" |> NamespacedName
-
+    let ``Authentication-ABC`` = _prefix "Authentication-ABC"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CryptographicAuthentication"></see>
     /// </summary>
-    let CryptographicAuthentication =
-        Namespaced_IRI.parse _namespace_name "CryptographicAuthentication" |> NamespacedName
-
+    let CryptographicAuthentication = _prefix "CryptographicAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Authentication-PABC"></see>
     /// </summary>
-    let ``Authentication-PABC`` =
-        Namespaced_IRI.parse _namespace_name "Authentication-PABC" |> NamespacedName
-
+    let ``Authentication-PABC`` = _prefix "Authentication-PABC"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuthenticationProtocols"></see>
     /// </summary>
-    let AuthenticationProtocols =
-        Namespaced_IRI.parse _namespace_name "AuthenticationProtocols" |> NamespacedName
-
+    let AuthenticationProtocols = _prefix "AuthenticationProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuthorisationProcedure"></see>
     /// </summary>
-    let AuthorisationProcedure =
-        Namespaced_IRI.parse _namespace_name "AuthorisationProcedure" |> NamespacedName
-
+    let AuthorisationProcedure = _prefix "AuthorisationProcedure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityProcedure"></see>
     /// </summary>
-    let SecurityProcedure =
-        Namespaced_IRI.parse _namespace_name "SecurityProcedure" |> NamespacedName
-
+    let SecurityProcedure = _prefix "SecurityProcedure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuthorisationProtocols"></see>
     /// </summary>
-    let AuthorisationProtocols =
-        Namespaced_IRI.parse _namespace_name "AuthorisationProtocols" |> NamespacedName
-
+    let AuthorisationProtocols = _prefix "AuthorisationProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Authority"></see>
     /// </summary>
-    let Authority = Namespaced_IRI.parse _namespace_name "Authority" |> NamespacedName
-
+    let Authority = _prefix "Authority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GovernmentalOrganisation"></see>
     /// </summary>
-    let GovernmentalOrganisation =
-        Namespaced_IRI.parse _namespace_name "GovernmentalOrganisation" |> NamespacedName
-
+    let GovernmentalOrganisation = _prefix "GovernmentalOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-authority-classes"></see>
     /// </summary>
-    let ``entities-authority-classes`` =
-        Namespaced_IRI.parse _namespace_name "entities-authority-classes" |> NamespacedName
-
+    let ``entities-authority-classes`` = _prefix "entities-authority-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuthorityInformed"></see>
     /// </summary>
-    let AuthorityInformed =
-        Namespaced_IRI.parse _namespace_name "AuthorityInformed" |> NamespacedName
-
+    let AuthorityInformed = _prefix "AuthorityInformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityInformedStatus"></see>
     /// </summary>
-    let EntityInformedStatus =
-        Namespaced_IRI.parse _namespace_name "EntityInformedStatus" |> NamespacedName
-
+    let EntityInformedStatus = _prefix "EntityInformedStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityInformed"></see>
     /// </summary>
-    let EntityInformed =
-        Namespaced_IRI.parse _namespace_name "EntityInformed" |> NamespacedName
-
+    let EntityInformed = _prefix "EntityInformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AuthorityUninformed"></see>
     /// </summary>
-    let AuthorityUninformed =
-        Namespaced_IRI.parse _namespace_name "AuthorityUninformed" |> NamespacedName
-
+    let AuthorityUninformed = _prefix "AuthorityUninformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityUninformed"></see>
     /// </summary>
-    let EntityUninformed =
-        Namespaced_IRI.parse _namespace_name "EntityUninformed" |> NamespacedName
-
+    let EntityUninformed = _prefix "EntityUninformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AutomatedDecisionMaking"></see>
     /// </summary>
-    let AutomatedDecisionMaking =
-        Namespaced_IRI.parse _namespace_name "AutomatedDecisionMaking" |> NamespacedName
-
+    let AutomatedDecisionMaking = _prefix "AutomatedDecisionMaking"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DecisionMaking"></see>
     /// </summary>
-    let DecisionMaking =
-        Namespaced_IRI.parse _namespace_name "DecisionMaking" |> NamespacedName
-
+    let DecisionMaking = _prefix "DecisionMaking"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#AutomatedScoringOfIndividuals"></see>
     /// </summary>
-    let AutomatedScoringOfIndividuals =
-        Namespaced_IRI.parse _namespace_name "AutomatedScoringOfIndividuals" |> NamespacedName
-
+    let AutomatedScoringOfIndividuals = _prefix "AutomatedScoringOfIndividuals"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ScoringOfIndividuals"></see>
     /// </summary>
-    let ScoringOfIndividuals =
-        Namespaced_IRI.parse _namespace_name "ScoringOfIndividuals" |> NamespacedName
-
+    let ScoringOfIndividuals = _prefix "ScoringOfIndividuals"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Autonomous"></see>
     /// </summary>
-    let Autonomous = Namespaced_IRI.parse _namespace_name "Autonomous" |> NamespacedName
-
+    let Autonomous = _prefix "Autonomous"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#B2B2CContract"></see>
     /// </summary>
-    let B2B2CContract =
-        Namespaced_IRI.parse _namespace_name "B2B2CContract" |> NamespacedName
-
+    let B2B2CContract = _prefix "B2B2CContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalBasis"></see>
     /// </summary>
-    let LegalBasis = Namespaced_IRI.parse _namespace_name "LegalBasis" |> NamespacedName
-
+    let LegalBasis = _prefix "LegalBasis"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#B2CContract"></see>
     /// </summary>
-    let B2CContract =
-        Namespaced_IRI.parse _namespace_name "B2CContract" |> NamespacedName
-
+    let B2CContract = _prefix "B2CContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#B2BContract"></see>
     /// </summary>
-    let B2BContract =
-        Namespaced_IRI.parse _namespace_name "B2BContract" |> NamespacedName
-
+    let B2BContract = _prefix "B2BContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#contract-types-classes"></see>
     /// </summary>
-    let ``contract-types-classes`` =
-        Namespaced_IRI.parse _namespace_name "contract-types-classes" |> NamespacedName
-
+    let ``contract-types-classes`` = _prefix "contract-types-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractByEntityType"></see>
     /// </summary>
-    let ContractByEntityType =
-        Namespaced_IRI.parse _namespace_name "ContractByEntityType" |> NamespacedName
-
+    let ContractByEntityType = _prefix "ContractByEntityType"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#BackgroundChecks"></see>
     /// </summary>
-    let BackgroundChecks =
-        Namespaced_IRI.parse _namespace_name "BackgroundChecks" |> NamespacedName
-
+    let BackgroundChecks = _prefix "BackgroundChecks"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#BiometricAuthentication"></see>
     /// </summary>
-    let BiometricAuthentication =
-        Namespaced_IRI.parse _namespace_name "BiometricAuthentication" |> NamespacedName
-
+    let BiometricAuthentication = _prefix "BiometricAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#C2BContract"></see>
     /// </summary>
-    let C2BContract =
-        Namespaced_IRI.parse _namespace_name "C2BContract" |> NamespacedName
-
+    let C2BContract = _prefix "C2BContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#C2CContract"></see>
     /// </summary>
-    let C2CContract =
-        Namespaced_IRI.parse _namespace_name "C2CContract" |> NamespacedName
-
+    let C2CContract = _prefix "C2CContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotChallengeProcess"></see>
     /// </summary>
-    let CannotChallengeProcess =
-        Namespaced_IRI.parse _namespace_name "CannotChallengeProcess" |> NamespacedName
-
+    let CannotChallengeProcess = _prefix "CannotChallengeProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityNonPermissiveInvolvement"></see>
     /// </summary>
-    let EntityNonPermissiveInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityNonPermissiveInvolvement" |> NamespacedName
-
+    let EntityNonPermissiveInvolvement = _prefix "EntityNonPermissiveInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotChallengeProcessInput"></see>
     /// </summary>
-    let CannotChallengeProcessInput =
-        Namespaced_IRI.parse _namespace_name "CannotChallengeProcessInput" |> NamespacedName
-
+    let CannotChallengeProcessInput = _prefix "CannotChallengeProcessInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotChallengeProcessOutput"></see>
     /// </summary>
-    let CannotChallengeProcessOutput =
-        Namespaced_IRI.parse _namespace_name "CannotChallengeProcessOutput" |> NamespacedName
-
+    let CannotChallengeProcessOutput = _prefix "CannotChallengeProcessOutput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotCorrectProcess"></see>
     /// </summary>
-    let CannotCorrectProcess =
-        Namespaced_IRI.parse _namespace_name "CannotCorrectProcess" |> NamespacedName
-
+    let CannotCorrectProcess = _prefix "CannotCorrectProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotCorrectProcessInput"></see>
     /// </summary>
-    let CannotCorrectProcessInput =
-        Namespaced_IRI.parse _namespace_name "CannotCorrectProcessInput" |> NamespacedName
-
+    let CannotCorrectProcessInput = _prefix "CannotCorrectProcessInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotCorrectProcessOutput"></see>
     /// </summary>
-    let CannotCorrectProcessOutput =
-        Namespaced_IRI.parse _namespace_name "CannotCorrectProcessOutput" |> NamespacedName
-
+    let CannotCorrectProcessOutput = _prefix "CannotCorrectProcessOutput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotObjectToProcess"></see>
     /// </summary>
-    let CannotObjectToProcess =
-        Namespaced_IRI.parse _namespace_name "CannotObjectToProcess" |> NamespacedName
-
+    let CannotObjectToProcess = _prefix "CannotObjectToProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotOptInToProcess"></see>
     /// </summary>
-    let CannotOptInToProcess =
-        Namespaced_IRI.parse _namespace_name "CannotOptInToProcess" |> NamespacedName
-
+    let CannotOptInToProcess = _prefix "CannotOptInToProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotOptOutFromProcess"></see>
     /// </summary>
-    let CannotOptOutFromProcess =
-        Namespaced_IRI.parse _namespace_name "CannotOptOutFromProcess" |> NamespacedName
-
+    let CannotOptOutFromProcess = _prefix "CannotOptOutFromProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotReverseProcessEffects"></see>
     /// </summary>
-    let CannotReverseProcessEffects =
-        Namespaced_IRI.parse _namespace_name "CannotReverseProcessEffects" |> NamespacedName
-
+    let CannotReverseProcessEffects = _prefix "CannotReverseProcessEffects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotReverseProcessInput"></see>
     /// </summary>
-    let CannotReverseProcessInput =
-        Namespaced_IRI.parse _namespace_name "CannotReverseProcessInput" |> NamespacedName
-
+    let CannotReverseProcessInput = _prefix "CannotReverseProcessInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotReverseProcessOutput"></see>
     /// </summary>
-    let CannotReverseProcessOutput =
-        Namespaced_IRI.parse _namespace_name "CannotReverseProcessOutput" |> NamespacedName
-
+    let CannotReverseProcessOutput = _prefix "CannotReverseProcessOutput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CannotWithdrawFromProcess"></see>
     /// </summary>
-    let CannotWithdrawFromProcess =
-        Namespaced_IRI.parse _namespace_name "CannotWithdrawFromProcess" |> NamespacedName
-
+    let CannotWithdrawFromProcess = _prefix "CannotWithdrawFromProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Certification"></see>
     /// </summary>
-    let Certification =
-        Namespaced_IRI.parse _namespace_name "Certification" |> NamespacedName
-
+    let Certification = _prefix "Certification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CertificationSeal"></see>
     /// </summary>
-    let CertificationSeal =
-        Namespaced_IRI.parse _namespace_name "CertificationSeal" |> NamespacedName
-
+    let CertificationSeal = _prefix "CertificationSeal"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ChallengingProcess"></see>
     /// </summary>
-    let ChallengingProcess =
-        Namespaced_IRI.parse _namespace_name "ChallengingProcess" |> NamespacedName
-
+    let ChallengingProcess = _prefix "ChallengingProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityPermissiveInvolvement"></see>
     /// </summary>
-    let EntityPermissiveInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityPermissiveInvolvement" |> NamespacedName
-
+    let EntityPermissiveInvolvement = _prefix "EntityPermissiveInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ChallengingProcessInput"></see>
     /// </summary>
-    let ChallengingProcessInput =
-        Namespaced_IRI.parse _namespace_name "ChallengingProcessInput" |> NamespacedName
-
+    let ChallengingProcessInput = _prefix "ChallengingProcessInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ChallengingProcessOutput"></see>
     /// </summary>
-    let ChallengingProcessOutput =
-        Namespaced_IRI.parse _namespace_name "ChallengingProcessOutput" |> NamespacedName
-
+    let ChallengingProcessOutput = _prefix "ChallengingProcessOutput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CharityOrganisation"></see>
     /// </summary>
-    let CharityOrganisation =
-        Namespaced_IRI.parse _namespace_name "CharityOrganisation" |> NamespacedName
-
+    let CharityOrganisation = _prefix "CharityOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalEntity"></see>
     /// </summary>
-    let LegalEntity =
-        Namespaced_IRI.parse _namespace_name "LegalEntity" |> NamespacedName
-
+    let LegalEntity = _prefix "LegalEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Child"></see>
     /// </summary>
-    let Child = Namespaced_IRI.parse _namespace_name "Child" |> NamespacedName
+    let Child = _prefix "Child"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Citizen"></see>
     /// </summary>
-    let Citizen = Namespaced_IRI.parse _namespace_name "Citizen" |> NamespacedName
+    let Citizen = _prefix "Citizen"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#City"></see>
     /// </summary>
-    let City = Namespaced_IRI.parse _namespace_name "City" |> NamespacedName
+    let City = _prefix "City"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Region"></see>
     /// </summary>
-    let Region = Namespaced_IRI.parse _namespace_name "Region" |> NamespacedName
-
+    let Region = _prefix "Region"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#jurisdiction-classes"></see>
     /// </summary>
-    let ``jurisdiction-classes`` =
-        Namespaced_IRI.parse _namespace_name "jurisdiction-classes" |> NamespacedName
-
+    let ``jurisdiction-classes`` = _prefix "jurisdiction-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Client"></see>
     /// </summary>
-    let Client = Namespaced_IRI.parse _namespace_name "Client" |> NamespacedName
+    let Client = _prefix "Client"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Customer"></see>
     /// </summary>
-    let Customer = Namespaced_IRI.parse _namespace_name "Customer" |> NamespacedName
+    let Customer = _prefix "Customer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Clinic"></see>
     /// </summary>
-    let Clinic = Namespaced_IRI.parse _namespace_name "Clinic" |> NamespacedName
-
+    let Clinic = _prefix "Clinic"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CloudLocation"></see>
     /// </summary>
-    let CloudLocation =
-        Namespaced_IRI.parse _namespace_name "CloudLocation" |> NamespacedName
-
+    let CloudLocation = _prefix "CloudLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Location"></see>
     /// </summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
-
+    let Location = _prefix "Location"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RemoteLocation"></see>
     /// </summary>
-    let RemoteLocation =
-        Namespaced_IRI.parse _namespace_name "RemoteLocation" |> NamespacedName
-
+    let RemoteLocation = _prefix "RemoteLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CodeOfConduct"></see>
     /// </summary>
-    let CodeOfConduct =
-        Namespaced_IRI.parse _namespace_name "CodeOfConduct" |> NamespacedName
-
+    let CodeOfConduct = _prefix "CodeOfConduct"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GuidelinesPrinciple"></see>
     /// </summary>
-    let GuidelinesPrinciple =
-        Namespaced_IRI.parse _namespace_name "GuidelinesPrinciple" |> NamespacedName
-
+    let GuidelinesPrinciple = _prefix "GuidelinesPrinciple"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Collect"></see>
     /// </summary>
-    let Collect = Namespaced_IRI.parse _namespace_name "Collect" |> NamespacedName
-
+    let Collect = _prefix "Collect"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CollectedData"></see>
     /// </summary>
-    let CollectedData =
-        Namespaced_IRI.parse _namespace_name "CollectedData" |> NamespacedName
-
+    let CollectedData = _prefix "CollectedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Data"></see>
     /// </summary>
-    let Data = Namespaced_IRI.parse _namespace_name "Data" |> NamespacedName
-
+    let Data = _prefix "Data"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CollectedPersonalData"></see>
     /// </summary>
-    let CollectedPersonalData =
-        Namespaced_IRI.parse _namespace_name "CollectedPersonalData" |> NamespacedName
-
+    let CollectedPersonalData = _prefix "CollectedPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalData"></see>
     /// </summary>
-    let PersonalData =
-        Namespaced_IRI.parse _namespace_name "PersonalData" |> NamespacedName
-
+    let PersonalData = _prefix "PersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CombatClimateChange"></see>
     /// </summary>
-    let CombatClimateChange =
-        Namespaced_IRI.parse _namespace_name "CombatClimateChange" |> NamespacedName
-
+    let CombatClimateChange = _prefix "CombatClimateChange"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicBenefit"></see>
     /// </summary>
-    let PublicBenefit =
-        Namespaced_IRI.parse _namespace_name "PublicBenefit" |> NamespacedName
-
+    let PublicBenefit = _prefix "PublicBenefit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Combine"></see>
     /// </summary>
-    let Combine = Namespaced_IRI.parse _namespace_name "Combine" |> NamespacedName
-
+    let Combine = _prefix "Combine"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CommercialPurpose"></see>
     /// </summary>
-    let CommercialPurpose =
-        Namespaced_IRI.parse _namespace_name "CommercialPurpose" |> NamespacedName
-
+    let CommercialPurpose = _prefix "CommercialPurpose"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CommercialResearch"></see>
     /// </summary>
-    let CommercialResearch =
-        Namespaced_IRI.parse _namespace_name "CommercialResearch" |> NamespacedName
-
+    let CommercialResearch = _prefix "CommercialResearch"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CommerciallyConfidentialData"></see>
     /// </summary>
-    let CommerciallyConfidentialData =
-        Namespaced_IRI.parse _namespace_name "CommerciallyConfidentialData" |> NamespacedName
-
+    let CommerciallyConfidentialData = _prefix "CommerciallyConfidentialData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConfidentialData"></see>
     /// </summary>
-    let ConfidentialData =
-        Namespaced_IRI.parse _namespace_name "ConfidentialData" |> NamespacedName
-
+    let ConfidentialData = _prefix "ConfidentialData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CommunicationForCustomerCare"></see>
     /// </summary>
-    let CommunicationForCustomerCare =
-        Namespaced_IRI.parse _namespace_name "CommunicationForCustomerCare" |> NamespacedName
-
+    let CommunicationForCustomerCare = _prefix "CommunicationForCustomerCare"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CommunicationManagement"></see>
     /// </summary>
-    let CommunicationManagement =
-        Namespaced_IRI.parse _namespace_name "CommunicationManagement" |> NamespacedName
-
+    let CommunicationManagement = _prefix "CommunicationManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CustomerCare"></see>
     /// </summary>
-    let CustomerCare =
-        Namespaced_IRI.parse _namespace_name "CustomerCare" |> NamespacedName
-
+    let CustomerCare = _prefix "CustomerCare"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CompatibilityUnknown"></see>
     /// </summary>
-    let CompatibilityUnknown =
-        Namespaced_IRI.parse _namespace_name "CompatibilityUnknown" |> NamespacedName
-
+    let CompatibilityUnknown = _prefix "CompatibilityUnknown"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReuseCompatibility"></see>
     /// </summary>
-    let ReuseCompatibility =
-        Namespaced_IRI.parse _namespace_name "ReuseCompatibility" |> NamespacedName
-
+    let ReuseCompatibility = _prefix "ReuseCompatibility"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ComplianceAssessment"></see>
     /// </summary>
-    let ComplianceAssessment =
-        Namespaced_IRI.parse _namespace_name "ComplianceAssessment" |> NamespacedName
-
+    let ComplianceAssessment = _prefix "ComplianceAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ComplianceIndeterminate"></see>
     /// </summary>
-    let ComplianceIndeterminate =
-        Namespaced_IRI.parse _namespace_name "ComplianceIndeterminate" |> NamespacedName
-
+    let ComplianceIndeterminate = _prefix "ComplianceIndeterminate"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ComplianceStatus"></see>
     /// </summary>
-    let ComplianceStatus =
-        Namespaced_IRI.parse _namespace_name "ComplianceStatus" |> NamespacedName
-
+    let ComplianceStatus = _prefix "ComplianceStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ComplianceMonitoring"></see>
     /// </summary>
-    let ComplianceMonitoring =
-        Namespaced_IRI.parse _namespace_name "ComplianceMonitoring" |> NamespacedName
-
+    let ComplianceMonitoring = _prefix "ComplianceMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ComplianceUnknown"></see>
     /// </summary>
-    let ComplianceUnknown =
-        Namespaced_IRI.parse _namespace_name "ComplianceUnknown" |> NamespacedName
-
+    let ComplianceUnknown = _prefix "ComplianceUnknown"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ComplianceViolation"></see>
     /// </summary>
-    let ComplianceViolation =
-        Namespaced_IRI.parse _namespace_name "ComplianceViolation" |> NamespacedName
-
+    let ComplianceViolation = _prefix "ComplianceViolation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Compliant"></see>
     /// </summary>
-    let Compliant = Namespaced_IRI.parse _namespace_name "Compliant" |> NamespacedName
-
+    let Compliant = _prefix "Compliant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConditionalAutomation"></see>
     /// </summary>
-    let ConditionalAutomation =
-        Namespaced_IRI.parse _namespace_name "ConditionalAutomation" |> NamespacedName
-
+    let ConditionalAutomation = _prefix "ConditionalAutomation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConfidentialityAgreement"></see>
     /// </summary>
-    let ConfidentialityAgreement =
-        Namespaced_IRI.parse _namespace_name "ConfidentialityAgreement" |> NamespacedName
-
+    let ConfidentialityAgreement = _prefix "ConfidentialityAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalMeasure"></see>
     /// </summary>
-    let LegalMeasure =
-        Namespaced_IRI.parse _namespace_name "LegalMeasure" |> NamespacedName
-
+    let LegalMeasure = _prefix "LegalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalAgreement"></see>
     /// </summary>
-    let LegalAgreement =
-        Namespaced_IRI.parse _namespace_name "LegalAgreement" |> NamespacedName
-
+    let LegalAgreement = _prefix "LegalAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#legal-measures-classes"></see>
     /// </summary>
-    let ``legal-measures-classes`` =
-        Namespaced_IRI.parse _namespace_name "legal-measures-classes" |> NamespacedName
-
+    let ``legal-measures-classes`` = _prefix "legal-measures-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConformanceAssessment"></see>
     /// </summary>
-    let ConformanceAssessment =
-        Namespaced_IRI.parse _namespace_name "ConformanceAssessment" |> NamespacedName
-
+    let ConformanceAssessment = _prefix "ConformanceAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConformanceStatus"></see>
     /// </summary>
-    let ConformanceStatus =
-        Namespaced_IRI.parse _namespace_name "ConformanceStatus" |> NamespacedName
-
+    let ConformanceStatus = _prefix "ConformanceStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Conformant"></see>
     /// </summary>
-    let Conformant = Namespaced_IRI.parse _namespace_name "Conformant" |> NamespacedName
+    let Conformant = _prefix "Conformant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Consent"></see>
     /// </summary>
-    let Consent = Namespaced_IRI.parse _namespace_name "Consent" |> NamespacedName
-
+    let Consent = _prefix "Consent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#legal-basis-classes"></see>
     /// </summary>
-    let ``legal-basis-classes`` =
-        Namespaced_IRI.parse _namespace_name "legal-basis-classes" |> NamespacedName
-
+    let ``legal-basis-classes`` = _prefix "legal-basis-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentControl"></see>
     /// </summary>
-    let ConsentControl =
-        Namespaced_IRI.parse _namespace_name "ConsentControl" |> NamespacedName
-
+    let ConsentControl = _prefix "ConsentControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityInvolvement"></see>
     /// </summary>
-    let EntityInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityInvolvement" |> NamespacedName
-
+    let EntityInvolvement = _prefix "EntityInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#consent-controls-classes"></see>
     /// </summary>
-    let ``consent-controls-classes`` =
-        Namespaced_IRI.parse _namespace_name "consent-controls-classes" |> NamespacedName
-
+    let ``consent-controls-classes`` = _prefix "consent-controls-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentExpired"></see>
     /// </summary>
-    let ConsentExpired =
-        Namespaced_IRI.parse _namespace_name "ConsentExpired" |> NamespacedName
-
+    let ConsentExpired = _prefix "ConsentExpired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentStatus"></see>
     /// </summary>
-    let ConsentStatus =
-        Namespaced_IRI.parse _namespace_name "ConsentStatus" |> NamespacedName
-
+    let ConsentStatus = _prefix "ConsentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentStatusInvalidForProcessing"></see>
     /// </summary>
-    let ConsentStatusInvalidForProcessing =
-        Namespaced_IRI.parse _namespace_name "ConsentStatusInvalidForProcessing" |> NamespacedName
-
+    let ConsentStatusInvalidForProcessing = _prefix "ConsentStatusInvalidForProcessing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#consent-status-classes"></see>
     /// </summary>
-    let ``consent-status-classes`` =
-        Namespaced_IRI.parse _namespace_name "consent-status-classes" |> NamespacedName
-
+    let ``consent-status-classes`` = _prefix "consent-status-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentGiven"></see>
     /// </summary>
-    let ConsentGiven =
-        Namespaced_IRI.parse _namespace_name "ConsentGiven" |> NamespacedName
-
+    let ConsentGiven = _prefix "ConsentGiven"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentStatusValidForProcessing"></see>
     /// </summary>
-    let ConsentStatusValidForProcessing =
-        Namespaced_IRI.parse _namespace_name "ConsentStatusValidForProcessing" |> NamespacedName
-
+    let ConsentStatusValidForProcessing = _prefix "ConsentStatusValidForProcessing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentInvalidated"></see>
     /// </summary>
-    let ConsentInvalidated =
-        Namespaced_IRI.parse _namespace_name "ConsentInvalidated" |> NamespacedName
-
+    let ConsentInvalidated = _prefix "ConsentInvalidated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentManagement"></see>
     /// </summary>
-    let ConsentManagement =
-        Namespaced_IRI.parse _namespace_name "ConsentManagement" |> NamespacedName
-
+    let ConsentManagement = _prefix "ConsentManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PermissionManagement"></see>
     /// </summary>
-    let PermissionManagement =
-        Namespaced_IRI.parse _namespace_name "PermissionManagement" |> NamespacedName
-
+    let PermissionManagement = _prefix "PermissionManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentNotice"></see>
     /// </summary>
-    let ConsentNotice =
-        Namespaced_IRI.parse _namespace_name "ConsentNotice" |> NamespacedName
-
+    let ConsentNotice = _prefix "ConsentNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivacyNotice"></see>
     /// </summary>
-    let PrivacyNotice =
-        Namespaced_IRI.parse _namespace_name "PrivacyNotice" |> NamespacedName
-
+    let PrivacyNotice = _prefix "PrivacyNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#notice-classes"></see>
     /// </summary>
-    let ``notice-classes`` =
-        Namespaced_IRI.parse _namespace_name "notice-classes" |> NamespacedName
-
+    let ``notice-classes`` = _prefix "notice-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentReceipt"></see>
     /// </summary>
-    let ConsentReceipt =
-        Namespaced_IRI.parse _namespace_name "ConsentReceipt" |> NamespacedName
-
+    let ConsentReceipt = _prefix "ConsentReceipt"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentRecord"></see>
     /// </summary>
-    let ConsentRecord =
-        Namespaced_IRI.parse _namespace_name "ConsentRecord" |> NamespacedName
-
+    let ConsentRecord = _prefix "ConsentRecord"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProcessingRecord"></see>
     /// </summary>
-    let DataProcessingRecord =
-        Namespaced_IRI.parse _namespace_name "DataProcessingRecord" |> NamespacedName
-
+    let DataProcessingRecord = _prefix "DataProcessingRecord"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentRefused"></see>
     /// </summary>
-    let ConsentRefused =
-        Namespaced_IRI.parse _namespace_name "ConsentRefused" |> NamespacedName
-
+    let ConsentRefused = _prefix "ConsentRefused"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentRequestDeferred"></see>
     /// </summary>
-    let ConsentRequestDeferred =
-        Namespaced_IRI.parse _namespace_name "ConsentRequestDeferred" |> NamespacedName
-
+    let ConsentRequestDeferred = _prefix "ConsentRequestDeferred"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentRequested"></see>
     /// </summary>
-    let ConsentRequested =
-        Namespaced_IRI.parse _namespace_name "ConsentRequested" |> NamespacedName
-
+    let ConsentRequested = _prefix "ConsentRequested"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentRevoked"></see>
     /// </summary>
-    let ConsentRevoked =
-        Namespaced_IRI.parse _namespace_name "ConsentRevoked" |> NamespacedName
-
+    let ConsentRevoked = _prefix "ConsentRevoked"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentUnknown"></see>
     /// </summary>
-    let ConsentUnknown =
-        Namespaced_IRI.parse _namespace_name "ConsentUnknown" |> NamespacedName
-
+    let ConsentUnknown = _prefix "ConsentUnknown"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsentWithdrawn"></see>
     /// </summary>
-    let ConsentWithdrawn =
-        Namespaced_IRI.parse _namespace_name "ConsentWithdrawn" |> NamespacedName
-
+    let ConsentWithdrawn = _prefix "ConsentWithdrawn"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Consequence"></see>
     /// </summary>
-    let Consequence =
-        Namespaced_IRI.parse _namespace_name "Consequence" |> NamespacedName
-
+    let Consequence = _prefix "Consequence"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RiskConcept"></see>
     /// </summary>
-    let RiskConcept =
-        Namespaced_IRI.parse _namespace_name "RiskConcept" |> NamespacedName
-
+    let RiskConcept = _prefix "RiskConcept"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#risk-classes"></see>
     /// </summary>
-    let ``risk-classes`` =
-        Namespaced_IRI.parse _namespace_name "risk-classes" |> NamespacedName
-
+    let ``risk-classes`` = _prefix "risk-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsequenceAsSideEffect"></see>
     /// </summary>
-    let ConsequenceAsSideEffect =
-        Namespaced_IRI.parse _namespace_name "ConsequenceAsSideEffect" |> NamespacedName
-
+    let ConsequenceAsSideEffect = _prefix "ConsequenceAsSideEffect"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsequenceOfFailure"></see>
     /// </summary>
-    let ConsequenceOfFailure =
-        Namespaced_IRI.parse _namespace_name "ConsequenceOfFailure" |> NamespacedName
-
+    let ConsequenceOfFailure = _prefix "ConsequenceOfFailure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsequenceOfSuccess"></see>
     /// </summary>
-    let ConsequenceOfSuccess =
-        Namespaced_IRI.parse _namespace_name "ConsequenceOfSuccess" |> NamespacedName
-
+    let ConsequenceOfSuccess = _prefix "ConsequenceOfSuccess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Consult"></see>
     /// </summary>
-    let Consult = Namespaced_IRI.parse _namespace_name "Consult" |> NamespacedName
-
+    let Consult = _prefix "Consult"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Consultation"></see>
     /// </summary>
-    let Consultation =
-        Namespaced_IRI.parse _namespace_name "Consultation" |> NamespacedName
-
+    let Consultation = _prefix "Consultation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsultationWithAuthority"></see>
     /// </summary>
-    let ConsultationWithAuthority =
-        Namespaced_IRI.parse _namespace_name "ConsultationWithAuthority" |> NamespacedName
-
+    let ConsultationWithAuthority = _prefix "ConsultationWithAuthority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsultationWithDPO"></see>
     /// </summary>
-    let ConsultationWithDPO =
-        Namespaced_IRI.parse _namespace_name "ConsultationWithDPO" |> NamespacedName
-
+    let ConsultationWithDPO = _prefix "ConsultationWithDPO"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsultationWithDataSubject"></see>
     /// </summary>
-    let ConsultationWithDataSubject =
-        Namespaced_IRI.parse _namespace_name "ConsultationWithDataSubject" |> NamespacedName
+    let ConsultationWithDataSubject = _prefix "ConsultationWithDataSubject"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsultationWithDataSubjectRepresentative"></see>
     /// </summary>
     let ConsultationWithDataSubjectRepresentative =
-        Namespaced_IRI.parse _namespace_name "ConsultationWithDataSubjectRepresentative" |> NamespacedName
+        _prefix "ConsultationWithDataSubjectRepresentative"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Consumer"></see>
     /// </summary>
-    let Consumer = Namespaced_IRI.parse _namespace_name "Consumer" |> NamespacedName
-
+    let Consumer = _prefix "Consumer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ConsumerStandardFormContract"></see>
     /// </summary>
-    let ConsumerStandardFormContract =
-        Namespaced_IRI.parse _namespace_name "ConsumerStandardFormContract" |> NamespacedName
-
+    let ConsumerStandardFormContract = _prefix "ConsumerStandardFormContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StandardFormContract"></see>
     /// </summary>
-    let StandardFormContract =
-        Namespaced_IRI.parse _namespace_name "StandardFormContract" |> NamespacedName
-
+    let StandardFormContract = _prefix "StandardFormContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContextuallyAnonymisedData"></see>
     /// </summary>
-    let ContextuallyAnonymisedData =
-        Namespaced_IRI.parse _namespace_name "ContextuallyAnonymisedData" |> NamespacedName
-
+    let ContextuallyAnonymisedData = _prefix "ContextuallyAnonymisedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PseudonymisedData"></see>
     /// </summary>
-    let PseudonymisedData =
-        Namespaced_IRI.parse _namespace_name "PseudonymisedData" |> NamespacedName
-
+    let PseudonymisedData = _prefix "PseudonymisedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContinuousFrequency"></see>
     /// </summary>
-    let ContinuousFrequency =
-        Namespaced_IRI.parse _namespace_name "ContinuousFrequency" |> NamespacedName
-
+    let ContinuousFrequency = _prefix "ContinuousFrequency"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Frequency"></see>
     /// </summary>
-    let Frequency = Namespaced_IRI.parse _namespace_name "Frequency" |> NamespacedName
+    let Frequency = _prefix "Frequency"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Contract"></see>
     /// </summary>
-    let Contract = Namespaced_IRI.parse _namespace_name "Contract" |> NamespacedName
-
+    let Contract = _prefix "Contract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractActivationStatus"></see>
     /// </summary>
-    let ContractActivationStatus =
-        Namespaced_IRI.parse _namespace_name "ContractActivationStatus" |> NamespacedName
-
+    let ContractActivationStatus = _prefix "ContractActivationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractStatus"></see>
     /// </summary>
-    let ContractStatus =
-        Namespaced_IRI.parse _namespace_name "ContractStatus" |> NamespacedName
-
+    let ContractStatus = _prefix "ContractStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#contract-status-classes"></see>
     /// </summary>
-    let ``contract-status-classes`` =
-        Namespaced_IRI.parse _namespace_name "contract-status-classes" |> NamespacedName
-
+    let ``contract-status-classes`` = _prefix "contract-status-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractActive"></see>
     /// </summary>
-    let ContractActive =
-        Namespaced_IRI.parse _namespace_name "ContractActive" |> NamespacedName
-
+    let ContractActive = _prefix "ContractActive"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractAmended"></see>
     /// </summary>
-    let ContractAmended =
-        Namespaced_IRI.parse _namespace_name "ContractAmended" |> NamespacedName
-
+    let ContractAmended = _prefix "ContractAmended"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractPerformanceStatus"></see>
     /// </summary>
-    let ContractPerformanceStatus =
-        Namespaced_IRI.parse _namespace_name "ContractPerformanceStatus" |> NamespacedName
-
+    let ContractPerformanceStatus = _prefix "ContractPerformanceStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractAmendmentClause"></see>
     /// </summary>
-    let ContractAmendmentClause =
-        Namespaced_IRI.parse _namespace_name "ContractAmendmentClause" |> NamespacedName
-
+    let ContractAmendmentClause = _prefix "ContractAmendmentClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualClause"></see>
     /// </summary>
-    let ContractualClause =
-        Namespaced_IRI.parse _namespace_name "ContractualClause" |> NamespacedName
-
+    let ContractualClause = _prefix "ContractualClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#contract-clause-classes"></see>
     /// </summary>
-    let ``contract-clause-classes`` =
-        Namespaced_IRI.parse _namespace_name "contract-clause-classes" |> NamespacedName
-
+    let ``contract-clause-classes`` = _prefix "contract-clause-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractApproved"></see>
     /// </summary>
-    let ContractApproved =
-        Namespaced_IRI.parse _namespace_name "ContractApproved" |> NamespacedName
-
+    let ContractApproved = _prefix "ContractApproved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractPreparationStatus"></see>
     /// </summary>
-    let ContractPreparationStatus =
-        Namespaced_IRI.parse _namespace_name "ContractPreparationStatus" |> NamespacedName
-
+    let ContractPreparationStatus = _prefix "ContractPreparationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractBeingPerformed"></see>
     /// </summary>
-    let ContractBeingPerformed =
-        Namespaced_IRI.parse _namespace_name "ContractBeingPerformed" |> NamespacedName
-
+    let ContractBeingPerformed = _prefix "ContractBeingPerformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractBreached"></see>
     /// </summary>
-    let ContractBreached =
-        Namespaced_IRI.parse _namespace_name "ContractBreached" |> NamespacedName
-
+    let ContractBreached = _prefix "ContractBreached"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractTerminationStatus"></see>
     /// </summary>
-    let ContractTerminationStatus =
-        Namespaced_IRI.parse _namespace_name "ContractTerminationStatus" |> NamespacedName
-
+    let ContractTerminationStatus = _prefix "ContractTerminationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractByDomain"></see>
     /// </summary>
-    let ContractByDomain =
-        Namespaced_IRI.parse _namespace_name "ContractByDomain" |> NamespacedName
-
+    let ContractByDomain = _prefix "ContractByDomain"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractByNegotiationType"></see>
     /// </summary>
-    let ContractByNegotiationType =
-        Namespaced_IRI.parse _namespace_name "ContractByNegotiationType" |> NamespacedName
-
+    let ContractByNegotiationType = _prefix "ContractByNegotiationType"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractConfidentialityClause"></see>
     /// </summary>
-    let ContractConfidentialityClause =
-        Namespaced_IRI.parse _namespace_name "ContractConfidentialityClause" |> NamespacedName
-
+    let ContractConfidentialityClause = _prefix "ContractConfidentialityClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractDefinitions"></see>
     /// </summary>
-    let ContractDefinitions =
-        Namespaced_IRI.parse _namespace_name "ContractDefinitions" |> NamespacedName
-
+    let ContractDefinitions = _prefix "ContractDefinitions"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractDisputeResolutionClause"></see>
     /// </summary>
-    let ContractDisputeResolutionClause =
-        Namespaced_IRI.parse _namespace_name "ContractDisputeResolutionClause" |> NamespacedName
-
+    let ContractDisputeResolutionClause = _prefix "ContractDisputeResolutionClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractDisputed"></see>
     /// </summary>
-    let ContractDisputed =
-        Namespaced_IRI.parse _namespace_name "ContractDisputed" |> NamespacedName
-
+    let ContractDisputed = _prefix "ContractDisputed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractDrafted"></see>
     /// </summary>
-    let ContractDrafted =
-        Namespaced_IRI.parse _namespace_name "ContractDrafted" |> NamespacedName
-
+    let ContractDrafted = _prefix "ContractDrafted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractExecutionStatus"></see>
     /// </summary>
-    let ContractExecutionStatus =
-        Namespaced_IRI.parse _namespace_name "ContractExecutionStatus" |> NamespacedName
-
+    let ContractExecutionStatus = _prefix "ContractExecutionStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractExpired"></see>
     /// </summary>
-    let ContractExpired =
-        Namespaced_IRI.parse _namespace_name "ContractExpired" |> NamespacedName
-
+    let ContractExpired = _prefix "ContractExpired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractExtended"></see>
     /// </summary>
-    let ContractExtended =
-        Namespaced_IRI.parse _namespace_name "ContractExtended" |> NamespacedName
-
+    let ContractExtended = _prefix "ContractExtended"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractFulfilled"></see>
     /// </summary>
-    let ContractFulfilled =
-        Namespaced_IRI.parse _namespace_name "ContractFulfilled" |> NamespacedName
-
+    let ContractFulfilled = _prefix "ContractFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractFulfilmentStatus"></see>
     /// </summary>
-    let ContractFulfilmentStatus =
-        Namespaced_IRI.parse _namespace_name "ContractFulfilmentStatus" |> NamespacedName
-
+    let ContractFulfilmentStatus = _prefix "ContractFulfilmentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractFullyExecuted"></see>
     /// </summary>
-    let ContractFullyExecuted =
-        Namespaced_IRI.parse _namespace_name "ContractFullyExecuted" |> NamespacedName
-
+    let ContractFullyExecuted = _prefix "ContractFullyExecuted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractFullySigned"></see>
     /// </summary>
-    let ContractFullySigned =
-        Namespaced_IRI.parse _namespace_name "ContractFullySigned" |> NamespacedName
-
+    let ContractFullySigned = _prefix "ContractFullySigned"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractInactive"></see>
     /// </summary>
-    let ContractInactive =
-        Namespaced_IRI.parse _namespace_name "ContractInactive" |> NamespacedName
-
+    let ContractInactive = _prefix "ContractInactive"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractJurisdictionClause"></see>
     /// </summary>
-    let ContractJurisdictionClause =
-        Namespaced_IRI.parse _namespace_name "ContractJurisdictionClause" |> NamespacedName
-
+    let ContractJurisdictionClause = _prefix "ContractJurisdictionClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractNegotiated"></see>
     /// </summary>
-    let ContractNegotiated =
-        Namespaced_IRI.parse _namespace_name "ContractNegotiated" |> NamespacedName
-
+    let ContractNegotiated = _prefix "ContractNegotiated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractNotFulfilled"></see>
     /// </summary>
-    let ContractNotFulfilled =
-        Namespaced_IRI.parse _namespace_name "ContractNotFulfilled" |> NamespacedName
-
+    let ContractNotFulfilled = _prefix "ContractNotFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractOffered"></see>
     /// </summary>
-    let ContractOffered =
-        Namespaced_IRI.parse _namespace_name "ContractOffered" |> NamespacedName
-
+    let ContractOffered = _prefix "ContractOffered"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractPartiallyFulfilled"></see>
     /// </summary>
-    let ContractPartiallyFulfilled =
-        Namespaced_IRI.parse _namespace_name "ContractPartiallyFulfilled" |> NamespacedName
-
+    let ContractPartiallyFulfilled = _prefix "ContractPartiallyFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractPartiallySigned"></see>
     /// </summary>
-    let ContractPartiallySigned =
-        Namespaced_IRI.parse _namespace_name "ContractPartiallySigned" |> NamespacedName
-
+    let ContractPartiallySigned = _prefix "ContractPartiallySigned"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractPerformance"></see>
     /// </summary>
-    let ContractPerformance =
-        Namespaced_IRI.parse _namespace_name "ContractPerformance" |> NamespacedName
-
+    let ContractPerformance = _prefix "ContractPerformance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractPreamble"></see>
     /// </summary>
-    let ContractPreamble =
-        Namespaced_IRI.parse _namespace_name "ContractPreamble" |> NamespacedName
-
+    let ContractPreamble = _prefix "ContractPreamble"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractRejected"></see>
     /// </summary>
-    let ContractRejected =
-        Namespaced_IRI.parse _namespace_name "ContractRejected" |> NamespacedName
-
+    let ContractRejected = _prefix "ContractRejected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractRenewed"></see>
     /// </summary>
-    let ContractRenewed =
-        Namespaced_IRI.parse _namespace_name "ContractRenewed" |> NamespacedName
-
+    let ContractRenewed = _prefix "ContractRenewed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractSignedByParty"></see>
     /// </summary>
-    let ContractSignedByParty =
-        Namespaced_IRI.parse _namespace_name "ContractSignedByParty" |> NamespacedName
-
+    let ContractSignedByParty = _prefix "ContractSignedByParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractTemporarilySuspended"></see>
     /// </summary>
-    let ContractTemporarilySuspended =
-        Namespaced_IRI.parse _namespace_name "ContractTemporarilySuspended" |> NamespacedName
-
+    let ContractTemporarilySuspended = _prefix "ContractTemporarilySuspended"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractTerminated"></see>
     /// </summary>
-    let ContractTerminated =
-        Namespaced_IRI.parse _namespace_name "ContractTerminated" |> NamespacedName
-
+    let ContractTerminated = _prefix "ContractTerminated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractTerminationClause"></see>
     /// </summary>
-    let ContractTerminationClause =
-        Namespaced_IRI.parse _namespace_name "ContractTerminationClause" |> NamespacedName
-
+    let ContractTerminationClause = _prefix "ContractTerminationClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractUnderNegotiation"></see>
     /// </summary>
-    let ContractUnderNegotiation =
-        Namespaced_IRI.parse _namespace_name "ContractUnderNegotiation" |> NamespacedName
-
+    let ContractUnderNegotiation = _prefix "ContractUnderNegotiation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractUnderReview"></see>
     /// </summary>
-    let ContractUnderReview =
-        Namespaced_IRI.parse _namespace_name "ContractUnderReview" |> NamespacedName
-
+    let ContractUnderReview = _prefix "ContractUnderReview"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractViolated"></see>
     /// </summary>
-    let ContractViolated =
-        Namespaced_IRI.parse _namespace_name "ContractViolated" |> NamespacedName
-
+    let ContractViolated = _prefix "ContractViolated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualClauseFulfilled"></see>
     /// </summary>
-    let ContractualClauseFulfilled =
-        Namespaced_IRI.parse _namespace_name "ContractualClauseFulfilled" |> NamespacedName
-
+    let ContractualClauseFulfilled = _prefix "ContractualClauseFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualClauseFulfilmentStatus"></see>
     /// </summary>
-    let ContractualClauseFulfilmentStatus =
-        Namespaced_IRI.parse _namespace_name "ContractualClauseFulfilmentStatus" |> NamespacedName
-
+    let ContractualClauseFulfilmentStatus = _prefix "ContractualClauseFulfilmentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualClauseNotFulfilled"></see>
     /// </summary>
-    let ContractualClauseNotFulfilled =
-        Namespaced_IRI.parse _namespace_name "ContractualClauseNotFulfilled" |> NamespacedName
+    let ContractualClauseNotFulfilled = _prefix "ContractualClauseNotFulfilled"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualClausePartiallyFulfilled"></see>
     /// </summary>
     let ContractualClausePartiallyFulfilled =
-        Namespaced_IRI.parse _namespace_name "ContractualClausePartiallyFulfilled" |> NamespacedName
+        _prefix "ContractualClausePartiallyFulfilled"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualClauseViolated"></see>
     /// </summary>
-    let ContractualClauseViolated =
-        Namespaced_IRI.parse _namespace_name "ContractualClauseViolated" |> NamespacedName
-
+    let ContractualClauseViolated = _prefix "ContractualClauseViolated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ContractualTerms"></see>
     /// </summary>
-    let ContractualTerms =
-        Namespaced_IRI.parse _namespace_name "ContractualTerms" |> NamespacedName
-
+    let ContractualTerms = _prefix "ContractualTerms"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ControllerDataSubjectAgreement"></see>
     /// </summary>
-    let ControllerDataSubjectAgreement =
-        Namespaced_IRI.parse _namespace_name "ControllerDataSubjectAgreement" |> NamespacedName
-
+    let ControllerDataSubjectAgreement = _prefix "ControllerDataSubjectAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectContract"></see>
     /// </summary>
-    let DataSubjectContract =
-        Namespaced_IRI.parse _namespace_name "DataSubjectContract" |> NamespacedName
-
+    let DataSubjectContract = _prefix "DataSubjectContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ControllerInformed"></see>
     /// </summary>
-    let ControllerInformed =
-        Namespaced_IRI.parse _namespace_name "ControllerInformed" |> NamespacedName
-
+    let ControllerInformed = _prefix "ControllerInformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ControllerProcessorAgreement"></see>
     /// </summary>
-    let ControllerProcessorAgreement =
-        Namespaced_IRI.parse _namespace_name "ControllerProcessorAgreement" |> NamespacedName
-
+    let ControllerProcessorAgreement = _prefix "ControllerProcessorAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProcessorContract"></see>
     /// </summary>
-    let DataProcessorContract =
-        Namespaced_IRI.parse _namespace_name "DataProcessorContract" |> NamespacedName
-
+    let DataProcessorContract = _prefix "DataProcessorContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ControllerUninformed"></see>
     /// </summary>
-    let ControllerUninformed =
-        Namespaced_IRI.parse _namespace_name "ControllerUninformed" |> NamespacedName
-
+    let ControllerUninformed = _prefix "ControllerUninformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Copy"></see>
     /// </summary>
-    let Copy = Namespaced_IRI.parse _namespace_name "Copy" |> NamespacedName
-
+    let Copy = _prefix "Copy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CorrectingProcess"></see>
     /// </summary>
-    let CorrectingProcess =
-        Namespaced_IRI.parse _namespace_name "CorrectingProcess" |> NamespacedName
-
+    let CorrectingProcess = _prefix "CorrectingProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CorrectingProcessInput"></see>
     /// </summary>
-    let CorrectingProcessInput =
-        Namespaced_IRI.parse _namespace_name "CorrectingProcessInput" |> NamespacedName
-
+    let CorrectingProcessInput = _prefix "CorrectingProcessInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CorrectingProcessOutput"></see>
     /// </summary>
-    let CorrectingProcessOutput =
-        Namespaced_IRI.parse _namespace_name "CorrectingProcessOutput" |> NamespacedName
-
+    let CorrectingProcessOutput = _prefix "CorrectingProcessOutput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CounterMoneyLaundering"></see>
     /// </summary>
-    let CounterMoneyLaundering =
-        Namespaced_IRI.parse _namespace_name "CounterMoneyLaundering" |> NamespacedName
-
+    let CounterMoneyLaundering = _prefix "CounterMoneyLaundering"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FraudPreventionAndDetection"></see>
     /// </summary>
-    let FraudPreventionAndDetection =
-        Namespaced_IRI.parse _namespace_name "FraudPreventionAndDetection" |> NamespacedName
-
+    let FraudPreventionAndDetection = _prefix "FraudPreventionAndDetection"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Counterterrorism"></see>
     /// </summary>
-    let Counterterrorism =
-        Namespaced_IRI.parse _namespace_name "Counterterrorism" |> NamespacedName
-
+    let Counterterrorism = _prefix "Counterterrorism"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Country"></see>
     /// </summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
-
+    let Country = _prefix "Country"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Jurisdiction"></see>
     /// </summary>
-    let Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Jurisdiction" |> NamespacedName
-
+    let Jurisdiction = _prefix "Jurisdiction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CredentialManagement"></see>
     /// </summary>
-    let CredentialManagement =
-        Namespaced_IRI.parse _namespace_name "CredentialManagement" |> NamespacedName
-
+    let CredentialManagement = _prefix "CredentialManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CrossBorderTransfer"></see>
     /// </summary>
-    let CrossBorderTransfer =
-        Namespaced_IRI.parse _namespace_name "CrossBorderTransfer" |> NamespacedName
-
+    let CrossBorderTransfer = _prefix "CrossBorderTransfer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Transfer"></see>
     /// </summary>
-    let Transfer = Namespaced_IRI.parse _namespace_name "Transfer" |> NamespacedName
-
+    let Transfer = _prefix "Transfer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CryptographicKeyManagement"></see>
     /// </summary>
-    let CryptographicKeyManagement =
-        Namespaced_IRI.parse _namespace_name "CryptographicKeyManagement" |> NamespacedName
-
+    let CryptographicKeyManagement = _prefix "CryptographicKeyManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CustomerManagement"></see>
     /// </summary>
-    let CustomerManagement =
-        Namespaced_IRI.parse _namespace_name "CustomerManagement" |> NamespacedName
-
+    let CustomerManagement = _prefix "CustomerManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CustomerClaimsManagement"></see>
     /// </summary>
-    let CustomerClaimsManagement =
-        Namespaced_IRI.parse _namespace_name "CustomerClaimsManagement" |> NamespacedName
-
+    let CustomerClaimsManagement = _prefix "CustomerClaimsManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CustomerOrderManagement"></see>
     /// </summary>
-    let CustomerOrderManagement =
-        Namespaced_IRI.parse _namespace_name "CustomerOrderManagement" |> NamespacedName
-
+    let CustomerOrderManagement = _prefix "CustomerOrderManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CustomerRelationshipManagement"></see>
     /// </summary>
-    let CustomerRelationshipManagement =
-        Namespaced_IRI.parse _namespace_name "CustomerRelationshipManagement" |> NamespacedName
-
+    let CustomerRelationshipManagement = _prefix "CustomerRelationshipManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CustomerSolvencyMonitoring"></see>
     /// </summary>
-    let CustomerSolvencyMonitoring =
-        Namespaced_IRI.parse _namespace_name "CustomerSolvencyMonitoring" |> NamespacedName
-
+    let CustomerSolvencyMonitoring = _prefix "CustomerSolvencyMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CybersecurityAssessment"></see>
     /// </summary>
-    let CybersecurityAssessment =
-        Namespaced_IRI.parse _namespace_name "CybersecurityAssessment" |> NamespacedName
-
+    let CybersecurityAssessment = _prefix "CybersecurityAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityAssessment"></see>
     /// </summary>
-    let SecurityAssessment =
-        Namespaced_IRI.parse _namespace_name "SecurityAssessment" |> NamespacedName
-
+    let SecurityAssessment = _prefix "SecurityAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#CybersecurityTraining"></see>
     /// </summary>
-    let CybersecurityTraining =
-        Namespaced_IRI.parse _namespace_name "CybersecurityTraining" |> NamespacedName
-
+    let CybersecurityTraining = _prefix "CybersecurityTraining"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StaffTraining"></see>
     /// </summary>
-    let StaffTraining =
-        Namespaced_IRI.parse _namespace_name "StaffTraining" |> NamespacedName
-
+    let StaffTraining = _prefix "StaffTraining"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DPIA"></see>
     /// </summary>
-    let DPIA = Namespaced_IRI.parse _namespace_name "DPIA" |> NamespacedName
-
+    let DPIA = _prefix "DPIA"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightsImpactAssessment"></see>
     /// </summary>
-    let RightsImpactAssessment =
-        Namespaced_IRI.parse _namespace_name "RightsImpactAssessment" |> NamespacedName
-
+    let RightsImpactAssessment = _prefix "RightsImpactAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DashboardNotice"></see>
     /// </summary>
-    let DashboardNotice =
-        Namespaced_IRI.parse _namespace_name "DashboardNotice" |> NamespacedName
-
+    let DashboardNotice = _prefix "DashboardNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataAltruism"></see>
     /// </summary>
-    let DataAltruism =
-        Namespaced_IRI.parse _namespace_name "DataAltruism" |> NamespacedName
-
+    let DataAltruism = _prefix "DataAltruism"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataBackupProtocols"></see>
     /// </summary>
-    let DataBackupProtocols =
-        Namespaced_IRI.parse _namespace_name "DataBackupProtocols" |> NamespacedName
-
+    let DataBackupProtocols = _prefix "DataBackupProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataBreachImpactAssessment"></see>
     /// </summary>
-    let DataBreachImpactAssessment =
-        Namespaced_IRI.parse _namespace_name "DataBreachImpactAssessment" |> NamespacedName
-
+    let DataBreachImpactAssessment = _prefix "DataBreachImpactAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataBreachNotice"></see>
     /// </summary>
-    let DataBreachNotice =
-        Namespaced_IRI.parse _namespace_name "DataBreachNotice" |> NamespacedName
-
+    let DataBreachNotice = _prefix "DataBreachNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityIncidentNotice"></see>
     /// </summary>
-    let SecurityIncidentNotice =
-        Namespaced_IRI.parse _namespace_name "SecurityIncidentNotice" |> NamespacedName
-
+    let SecurityIncidentNotice = _prefix "SecurityIncidentNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataBreachNotification"></see>
     /// </summary>
-    let DataBreachNotification =
-        Namespaced_IRI.parse _namespace_name "DataBreachNotification" |> NamespacedName
-
+    let DataBreachNotification = _prefix "DataBreachNotification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityIncidentNotification"></see>
     /// </summary>
-    let SecurityIncidentNotification =
-        Namespaced_IRI.parse _namespace_name "SecurityIncidentNotification" |> NamespacedName
-
+    let SecurityIncidentNotification = _prefix "SecurityIncidentNotification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataBreachRecord"></see>
     /// </summary>
-    let DataBreachRecord =
-        Namespaced_IRI.parse _namespace_name "DataBreachRecord" |> NamespacedName
-
+    let DataBreachRecord = _prefix "DataBreachRecord"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecordsOfActivities"></see>
     /// </summary>
-    let RecordsOfActivities =
-        Namespaced_IRI.parse _namespace_name "RecordsOfActivities" |> NamespacedName
-
+    let RecordsOfActivities = _prefix "RecordsOfActivities"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataController"></see>
     /// </summary>
-    let DataController =
-        Namespaced_IRI.parse _namespace_name "DataController" |> NamespacedName
-
+    let DataController = _prefix "DataController"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-legalrole-classes"></see>
     /// </summary>
-    let ``entities-legalrole-classes`` =
-        Namespaced_IRI.parse _namespace_name "entities-legalrole-classes" |> NamespacedName
-
+    let ``entities-legalrole-classes`` = _prefix "entities-legalrole-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataControllerContract"></see>
     /// </summary>
-    let DataControllerContract =
-        Namespaced_IRI.parse _namespace_name "DataControllerContract" |> NamespacedName
-
+    let DataControllerContract = _prefix "DataControllerContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProcessingAgreement"></see>
     /// </summary>
-    let DataProcessingAgreement =
-        Namespaced_IRI.parse _namespace_name "DataProcessingAgreement" |> NamespacedName
-
+    let DataProcessingAgreement = _prefix "DataProcessingAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataControllerDataSource"></see>
     /// </summary>
-    let DataControllerDataSource =
-        Namespaced_IRI.parse _namespace_name "DataControllerDataSource" |> NamespacedName
-
+    let DataControllerDataSource = _prefix "DataControllerDataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSource"></see>
     /// </summary>
-    let DataSource = Namespaced_IRI.parse _namespace_name "DataSource" |> NamespacedName
-
+    let DataSource = _prefix "DataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataDeletionPolicy"></see>
     /// </summary>
-    let DataDeletionPolicy =
-        Namespaced_IRI.parse _namespace_name "DataDeletionPolicy" |> NamespacedName
-
+    let DataDeletionPolicy = _prefix "DataDeletionPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProcessingPolicy"></see>
     /// </summary>
-    let DataProcessingPolicy =
-        Namespaced_IRI.parse _namespace_name "DataProcessingPolicy" |> NamespacedName
-
+    let DataProcessingPolicy = _prefix "DataProcessingPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataErasurePolicy"></see>
     /// </summary>
-    let DataErasurePolicy =
-        Namespaced_IRI.parse _namespace_name "DataErasurePolicy" |> NamespacedName
-
+    let DataErasurePolicy = _prefix "DataErasurePolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataExporter"></see>
     /// </summary>
-    let DataExporter =
-        Namespaced_IRI.parse _namespace_name "DataExporter" |> NamespacedName
-
+    let DataExporter = _prefix "DataExporter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataGovernance"></see>
     /// </summary>
-    let DataGovernance =
-        Namespaced_IRI.parse _namespace_name "DataGovernance" |> NamespacedName
-
+    let DataGovernance = _prefix "DataGovernance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OrganisationGovernance"></see>
     /// </summary>
-    let OrganisationGovernance =
-        Namespaced_IRI.parse _namespace_name "OrganisationGovernance" |> NamespacedName
-
+    let OrganisationGovernance = _prefix "OrganisationGovernance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataHandlingClause"></see>
     /// </summary>
-    let DataHandlingClause =
-        Namespaced_IRI.parse _namespace_name "DataHandlingClause" |> NamespacedName
-
+    let DataHandlingClause = _prefix "DataHandlingClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataImporter"></see>
     /// </summary>
-    let DataImporter =
-        Namespaced_IRI.parse _namespace_name "DataImporter" |> NamespacedName
-
+    let DataImporter = _prefix "DataImporter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Recipient"></see>
     /// </summary>
-    let Recipient = Namespaced_IRI.parse _namespace_name "Recipient" |> NamespacedName
-
+    let Recipient = _prefix "Recipient"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataInteroperabilityAssessment"></see>
     /// </summary>
-    let DataInteroperabilityAssessment =
-        Namespaced_IRI.parse _namespace_name "DataInteroperabilityAssessment" |> NamespacedName
-
+    let DataInteroperabilityAssessment = _prefix "DataInteroperabilityAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataInteroperabilityManagement"></see>
     /// </summary>
-    let DataInteroperabilityManagement =
-        Namespaced_IRI.parse _namespace_name "DataInteroperabilityManagement" |> NamespacedName
-
+    let DataInteroperabilityManagement = _prefix "DataInteroperabilityManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataInteroperabilityImprovement"></see>
     /// </summary>
-    let DataInteroperabilityImprovement =
-        Namespaced_IRI.parse _namespace_name "DataInteroperabilityImprovement" |> NamespacedName
-
+    let DataInteroperabilityImprovement = _prefix "DataInteroperabilityImprovement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataInventoryManagement"></see>
     /// </summary>
-    let DataInventoryManagement =
-        Namespaced_IRI.parse _namespace_name "DataInventoryManagement" |> NamespacedName
-
+    let DataInventoryManagement = _prefix "DataInventoryManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataJurisdictionPolicy"></see>
     /// </summary>
-    let DataJurisdictionPolicy =
-        Namespaced_IRI.parse _namespace_name "DataJurisdictionPolicy" |> NamespacedName
-
+    let DataJurisdictionPolicy = _prefix "DataJurisdictionPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataLiteracy"></see>
     /// </summary>
-    let DataLiteracy =
-        Namespaced_IRI.parse _namespace_name "DataLiteracy" |> NamespacedName
-
+    let DataLiteracy = _prefix "DataLiteracy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProcessor"></see>
     /// </summary>
-    let DataProcessor =
-        Namespaced_IRI.parse _namespace_name "DataProcessor" |> NamespacedName
-
+    let DataProcessor = _prefix "DataProcessor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProtectionAuthority"></see>
     /// </summary>
-    let DataProtectionAuthority =
-        Namespaced_IRI.parse _namespace_name "DataProtectionAuthority" |> NamespacedName
-
+    let DataProtectionAuthority = _prefix "DataProtectionAuthority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProtectionOfficer"></see>
     /// </summary>
-    let DataProtectionOfficer =
-        Namespaced_IRI.parse _namespace_name "DataProtectionOfficer" |> NamespacedName
-
+    let DataProtectionOfficer = _prefix "DataProtectionOfficer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Representative"></see>
     /// </summary>
-    let Representative =
-        Namespaced_IRI.parse _namespace_name "Representative" |> NamespacedName
-
+    let Representative = _prefix "Representative"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataProtectionTraining"></see>
     /// </summary>
-    let DataProtectionTraining =
-        Namespaced_IRI.parse _namespace_name "DataProtectionTraining" |> NamespacedName
-
+    let DataProtectionTraining = _prefix "DataProtectionTraining"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataPublishedByDataSubject"></see>
     /// </summary>
-    let DataPublishedByDataSubject =
-        Namespaced_IRI.parse _namespace_name "DataPublishedByDataSubject" |> NamespacedName
-
+    let DataPublishedByDataSubject = _prefix "DataPublishedByDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectDataSource"></see>
     /// </summary>
-    let DataSubjectDataSource =
-        Namespaced_IRI.parse _namespace_name "DataSubjectDataSource" |> NamespacedName
-
+    let DataSubjectDataSource = _prefix "DataSubjectDataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataQualityAssessment"></see>
     /// </summary>
-    let DataQualityAssessment =
-        Namespaced_IRI.parse _namespace_name "DataQualityAssessment" |> NamespacedName
-
+    let DataQualityAssessment = _prefix "DataQualityAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataQualityManagement"></see>
     /// </summary>
-    let DataQualityManagement =
-        Namespaced_IRI.parse _namespace_name "DataQualityManagement" |> NamespacedName
-
+    let DataQualityManagement = _prefix "DataQualityManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataQualityImprovement"></see>
     /// </summary>
-    let DataQualityImprovement =
-        Namespaced_IRI.parse _namespace_name "DataQualityImprovement" |> NamespacedName
-
+    let DataQualityImprovement = _prefix "DataQualityImprovement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataRedaction"></see>
     /// </summary>
-    let DataRedaction =
-        Namespaced_IRI.parse _namespace_name "DataRedaction" |> NamespacedName
-
+    let DataRedaction = _prefix "DataRedaction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSanitisationTechnique"></see>
     /// </summary>
-    let DataSanitisationTechnique =
-        Namespaced_IRI.parse _namespace_name "DataSanitisationTechnique" |> NamespacedName
-
+    let DataSanitisationTechnique = _prefix "DataSanitisationTechnique"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataRestorationPolicy"></see>
     /// </summary>
-    let DataRestorationPolicy =
-        Namespaced_IRI.parse _namespace_name "DataRestorationPolicy" |> NamespacedName
-
+    let DataRestorationPolicy = _prefix "DataRestorationPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataReusePolicy"></see>
     /// </summary>
-    let DataReusePolicy =
-        Namespaced_IRI.parse _namespace_name "DataReusePolicy" |> NamespacedName
-
+    let DataReusePolicy = _prefix "DataReusePolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSecurityManagement"></see>
     /// </summary>
-    let DataSecurityManagement =
-        Namespaced_IRI.parse _namespace_name "DataSecurityManagement" |> NamespacedName
-
+    let DataSecurityManagement = _prefix "DataSecurityManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataStoragePolicy"></see>
     /// </summary>
-    let DataStoragePolicy =
-        Namespaced_IRI.parse _namespace_name "DataStoragePolicy" |> NamespacedName
-
+    let DataStoragePolicy = _prefix "DataStoragePolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubProcessor"></see>
     /// </summary>
-    let DataSubProcessor =
-        Namespaced_IRI.parse _namespace_name "DataSubProcessor" |> NamespacedName
-
+    let DataSubProcessor = _prefix "DataSubProcessor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubject"></see>
     /// </summary>
-    let DataSubject =
-        Namespaced_IRI.parse _namespace_name "DataSubject" |> NamespacedName
-
+    let DataSubject = _prefix "DataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectInformed"></see>
     /// </summary>
-    let DataSubjectInformed =
-        Namespaced_IRI.parse _namespace_name "DataSubjectInformed" |> NamespacedName
-
+    let DataSubjectInformed = _prefix "DataSubjectInformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectRight"></see>
     /// </summary>
-    let DataSubjectRight =
-        Namespaced_IRI.parse _namespace_name "DataSubjectRight" |> NamespacedName
-
+    let DataSubjectRight = _prefix "DataSubjectRight"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectRightsManagement"></see>
     /// </summary>
-    let DataSubjectRightsManagement =
-        Namespaced_IRI.parse _namespace_name "DataSubjectRightsManagement" |> NamespacedName
-
+    let DataSubjectRightsManagement = _prefix "DataSubjectRightsManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightsManagement"></see>
     /// </summary>
-    let RightsManagement =
-        Namespaced_IRI.parse _namespace_name "RightsManagement" |> NamespacedName
-
+    let RightsManagement = _prefix "RightsManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectScale"></see>
     /// </summary>
-    let DataSubjectScale =
-        Namespaced_IRI.parse _namespace_name "DataSubjectScale" |> NamespacedName
-
+    let DataSubjectScale = _prefix "DataSubjectScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Scale"></see>
     /// </summary>
-    let Scale = Namespaced_IRI.parse _namespace_name "Scale" |> NamespacedName
-
+    let Scale = _prefix "Scale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#processing-scale-classes"></see>
     /// </summary>
-    let ``processing-scale-classes`` =
-        Namespaced_IRI.parse _namespace_name "processing-scale-classes" |> NamespacedName
-
+    let ``processing-scale-classes`` = _prefix "processing-scale-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataSubjectUninformed"></see>
     /// </summary>
-    let DataSubjectUninformed =
-        Namespaced_IRI.parse _namespace_name "DataSubjectUninformed" |> NamespacedName
-
+    let DataSubjectUninformed = _prefix "DataSubjectUninformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataTransferImpactAssessment"></see>
     /// </summary>
-    let DataTransferImpactAssessment =
-        Namespaced_IRI.parse _namespace_name "DataTransferImpactAssessment" |> NamespacedName
-
+    let DataTransferImpactAssessment = _prefix "DataTransferImpactAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImpactAssessment"></see>
     /// </summary>
-    let ImpactAssessment =
-        Namespaced_IRI.parse _namespace_name "ImpactAssessment" |> NamespacedName
-
+    let ImpactAssessment = _prefix "ImpactAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataTransferLegalBasis"></see>
     /// </summary>
-    let DataTransferLegalBasis =
-        Namespaced_IRI.parse _namespace_name "DataTransferLegalBasis" |> NamespacedName
-
+    let DataTransferLegalBasis = _prefix "DataTransferLegalBasis"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataTransferNotice"></see>
     /// </summary>
-    let DataTransferNotice =
-        Namespaced_IRI.parse _namespace_name "DataTransferNotice" |> NamespacedName
-
+    let DataTransferNotice = _prefix "DataTransferNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataTransferRecord"></see>
     /// </summary>
-    let DataTransferRecord =
-        Namespaced_IRI.parse _namespace_name "DataTransferRecord" |> NamespacedName
-
+    let DataTransferRecord = _prefix "DataTransferRecord"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DataVolume"></see>
     /// </summary>
-    let DataVolume = Namespaced_IRI.parse _namespace_name "DataVolume" |> NamespacedName
-
+    let DataVolume = _prefix "DataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DecentralisedLocations"></see>
     /// </summary>
-    let DecentralisedLocations =
-        Namespaced_IRI.parse _namespace_name "DecentralisedLocations" |> NamespacedName
-
+    let DecentralisedLocations = _prefix "DecentralisedLocations"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LocationFixture"></see>
     /// </summary>
-    let LocationFixture =
-        Namespaced_IRI.parse _namespace_name "LocationFixture" |> NamespacedName
-
+    let LocationFixture = _prefix "LocationFixture"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Delete"></see>
     /// </summary>
-    let Delete = Namespaced_IRI.parse _namespace_name "Delete" |> NamespacedName
+    let Delete = _prefix "Delete"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Remove"></see>
     /// </summary>
-    let Remove = Namespaced_IRI.parse _namespace_name "Remove" |> NamespacedName
-
+    let Remove = _prefix "Remove"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DeliveryOfGoods"></see>
     /// </summary>
-    let DeliveryOfGoods =
-        Namespaced_IRI.parse _namespace_name "DeliveryOfGoods" |> NamespacedName
-
+    let DeliveryOfGoods = _prefix "DeliveryOfGoods"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestedServiceProvision"></see>
     /// </summary>
-    let RequestedServiceProvision =
-        Namespaced_IRI.parse _namespace_name "RequestedServiceProvision" |> NamespacedName
-
+    let RequestedServiceProvision = _prefix "RequestedServiceProvision"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Derive"></see>
     /// </summary>
-    let Derive = Namespaced_IRI.parse _namespace_name "Derive" |> NamespacedName
-
+    let Derive = _prefix "Derive"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DerivedData"></see>
     /// </summary>
-    let DerivedData =
-        Namespaced_IRI.parse _namespace_name "DerivedData" |> NamespacedName
-
+    let DerivedData = _prefix "DerivedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DerivedPersonalData"></see>
     /// </summary>
-    let DerivedPersonalData =
-        Namespaced_IRI.parse _namespace_name "DerivedPersonalData" |> NamespacedName
-
+    let DerivedPersonalData = _prefix "DerivedPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DesignStandard"></see>
     /// </summary>
-    let DesignStandard =
-        Namespaced_IRI.parse _namespace_name "DesignStandard" |> NamespacedName
-
+    let DesignStandard = _prefix "DesignStandard"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Standard"></see>
     /// </summary>
-    let Standard = Namespaced_IRI.parse _namespace_name "Standard" |> NamespacedName
+    let Standard = _prefix "Standard"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Destruct"></see>
     /// </summary>
-    let Destruct = Namespaced_IRI.parse _namespace_name "Destruct" |> NamespacedName
-
+    let Destruct = _prefix "Destruct"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DeterministicPseudonymisation"></see>
     /// </summary>
-    let DeterministicPseudonymisation =
-        Namespaced_IRI.parse _namespace_name "DeterministicPseudonymisation" |> NamespacedName
-
+    let DeterministicPseudonymisation = _prefix "DeterministicPseudonymisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Pseudonymisation"></see>
     /// </summary>
-    let Pseudonymisation =
-        Namespaced_IRI.parse _namespace_name "Pseudonymisation" |> NamespacedName
-
+    let Pseudonymisation = _prefix "Pseudonymisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Deterrence"></see>
     /// </summary>
-    let Deterrence = Namespaced_IRI.parse _namespace_name "Deterrence" |> NamespacedName
-
+    let Deterrence = _prefix "Deterrence"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UnacceptableRule"></see>
     /// </summary>
-    let UnacceptableRule =
-        Namespaced_IRI.parse _namespace_name "UnacceptableRule" |> NamespacedName
-
+    let UnacceptableRule = _prefix "UnacceptableRule"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DeterrenceFollowed"></see>
     /// </summary>
-    let DeterrenceFollowed =
-        Namespaced_IRI.parse _namespace_name "DeterrenceFollowed" |> NamespacedName
-
+    let DeterrenceFollowed = _prefix "DeterrenceFollowed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RuleFulfilmentStatus"></see>
     /// </summary>
-    let RuleFulfilmentStatus =
-        Namespaced_IRI.parse _namespace_name "RuleFulfilmentStatus" |> NamespacedName
-
+    let RuleFulfilmentStatus = _prefix "RuleFulfilmentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RuleFulfilled"></see>
     /// </summary>
-    let RuleFulfilled =
-        Namespaced_IRI.parse _namespace_name "RuleFulfilled" |> NamespacedName
-
+    let RuleFulfilled = _prefix "RuleFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DeterrenceNotFollowed"></see>
     /// </summary>
-    let DeterrenceNotFollowed =
-        Namespaced_IRI.parse _namespace_name "DeterrenceNotFollowed" |> NamespacedName
-
+    let DeterrenceNotFollowed = _prefix "DeterrenceNotFollowed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RuleUnfulfilled"></see>
     /// </summary>
-    let RuleUnfulfilled =
-        Namespaced_IRI.parse _namespace_name "RuleUnfulfilled" |> NamespacedName
-
+    let RuleUnfulfilled = _prefix "RuleUnfulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DeviceNotice"></see>
     /// </summary>
-    let DeviceNotice =
-        Namespaced_IRI.parse _namespace_name "DeviceNotice" |> NamespacedName
-
+    let DeviceNotice = _prefix "DeviceNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DifferentialPrivacy"></see>
     /// </summary>
-    let DifferentialPrivacy =
-        Namespaced_IRI.parse _namespace_name "DifferentialPrivacy" |> NamespacedName
-
+    let DifferentialPrivacy = _prefix "DifferentialPrivacy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DigitalRightsManagement"></see>
     /// </summary>
-    let DigitalRightsManagement =
-        Namespaced_IRI.parse _namespace_name "DigitalRightsManagement" |> NamespacedName
-
+    let DigitalRightsManagement = _prefix "DigitalRightsManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DigitalSignatures"></see>
     /// </summary>
-    let DigitalSignatures =
-        Namespaced_IRI.parse _namespace_name "DigitalSignatures" |> NamespacedName
-
+    let DigitalSignatures = _prefix "DigitalSignatures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DirectMarketing"></see>
     /// </summary>
-    let DirectMarketing =
-        Namespaced_IRI.parse _namespace_name "DirectMarketing" |> NamespacedName
-
+    let DirectMarketing = _prefix "DirectMarketing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DisasterRecoveryProcedures"></see>
     /// </summary>
-    let DisasterRecoveryProcedures =
-        Namespaced_IRI.parse _namespace_name "DisasterRecoveryProcedures" |> NamespacedName
-
+    let DisasterRecoveryProcedures = _prefix "DisasterRecoveryProcedures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Disclose"></see>
     /// </summary>
-    let Disclose = Namespaced_IRI.parse _namespace_name "Disclose" |> NamespacedName
-
+    let Disclose = _prefix "Disclose"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DiscloseByTransmission"></see>
     /// </summary>
-    let DiscloseByTransmission =
-        Namespaced_IRI.parse _namespace_name "DiscloseByTransmission" |> NamespacedName
-
+    let DiscloseByTransmission = _prefix "DiscloseByTransmission"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Display"></see>
     /// </summary>
-    let Display = Namespaced_IRI.parse _namespace_name "Display" |> NamespacedName
-
+    let Display = _prefix "Display"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DisputeManagement"></see>
     /// </summary>
-    let DisputeManagement =
-        Namespaced_IRI.parse _namespace_name "DisputeManagement" |> NamespacedName
-
+    let DisputeManagement = _prefix "DisputeManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Disseminate"></see>
     /// </summary>
-    let Disseminate =
-        Namespaced_IRI.parse _namespace_name "Disseminate" |> NamespacedName
-
+    let Disseminate = _prefix "Disseminate"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DistributedSystemSecurity"></see>
     /// </summary>
-    let DistributedSystemSecurity =
-        Namespaced_IRI.parse _namespace_name "DistributedSystemSecurity" |> NamespacedName
-
+    let DistributedSystemSecurity = _prefix "DistributedSystemSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityMethod"></see>
     /// </summary>
-    let SecurityMethod =
-        Namespaced_IRI.parse _namespace_name "SecurityMethod" |> NamespacedName
-
+    let SecurityMethod = _prefix "SecurityMethod"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DistributionAgreement"></see>
     /// </summary>
-    let DistributionAgreement =
-        Namespaced_IRI.parse _namespace_name "DistributionAgreement" |> NamespacedName
+    let DistributionAgreement = _prefix "DistributionAgreement"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DocumentRandomisedPseudonymisation"></see>
     /// </summary>
     let DocumentRandomisedPseudonymisation =
-        Namespaced_IRI.parse _namespace_name "DocumentRandomisedPseudonymisation" |> NamespacedName
+        _prefix "DocumentRandomisedPseudonymisation"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#DocumentSecurity"></see>
     /// </summary>
-    let DocumentSecurity =
-        Namespaced_IRI.parse _namespace_name "DocumentSecurity" |> NamespacedName
-
+    let DocumentSecurity = _prefix "DocumentSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Download"></see>
     /// </summary>
-    let Download = Namespaced_IRI.parse _namespace_name "Download" |> NamespacedName
+    let Download = _prefix "Download"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Duration"></see>
     /// </summary>
-    let Duration = Namespaced_IRI.parse _namespace_name "Duration" |> NamespacedName
+    let Duration = _prefix "Duration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EULA"></see>
     /// </summary>
-    let EULA = Namespaced_IRI.parse _namespace_name "EULA" |> NamespacedName
-
+    let EULA = _prefix "EULA"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LicenseAgreement"></see>
     /// </summary>
-    let LicenseAgreement =
-        Namespaced_IRI.parse _namespace_name "LicenseAgreement" |> NamespacedName
-
+    let LicenseAgreement = _prefix "LicenseAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EconomicUnion"></see>
     /// </summary>
-    let EconomicUnion =
-        Namespaced_IRI.parse _namespace_name "EconomicUnion" |> NamespacedName
-
+    let EconomicUnion = _prefix "EconomicUnion"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EducationalOrganisation"></see>
     /// </summary>
-    let EducationalOrganisation =
-        Namespaced_IRI.parse _namespace_name "EducationalOrganisation" |> NamespacedName
-
+    let EducationalOrganisation = _prefix "EducationalOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EducationalTraining"></see>
     /// </summary>
-    let EducationalTraining =
-        Namespaced_IRI.parse _namespace_name "EducationalTraining" |> NamespacedName
+    let EducationalTraining = _prefix "EducationalTraining"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EffectivenessDeterminationProcedures"></see>
     /// </summary>
     let EffectivenessDeterminationProcedures =
-        Namespaced_IRI.parse _namespace_name "EffectivenessDeterminationProcedures" |> NamespacedName
+        _prefix "EffectivenessDeterminationProcedures"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ElderlyDataSubject"></see>
     /// </summary>
-    let ElderlyDataSubject =
-        Namespaced_IRI.parse _namespace_name "ElderlyDataSubject" |> NamespacedName
-
+    let ElderlyDataSubject = _prefix "ElderlyDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VulnerableDataSubject"></see>
     /// </summary>
-    let VulnerableDataSubject =
-        Namespaced_IRI.parse _namespace_name "VulnerableDataSubject" |> NamespacedName
-
+    let VulnerableDataSubject = _prefix "VulnerableDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ElderlyHuman"></see>
     /// </summary>
-    let ElderlyHuman =
-        Namespaced_IRI.parse _namespace_name "ElderlyHuman" |> NamespacedName
-
+    let ElderlyHuman = _prefix "ElderlyHuman"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EmergencyHealthcareProvider"></see>
     /// </summary>
-    let EmergencyHealthcareProvider =
-        Namespaced_IRI.parse _namespace_name "EmergencyHealthcareProvider" |> NamespacedName
-
+    let EmergencyHealthcareProvider = _prefix "EmergencyHealthcareProvider"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Employee"></see>
     /// </summary>
-    let Employee = Namespaced_IRI.parse _namespace_name "Employee" |> NamespacedName
-
+    let Employee = _prefix "Employee"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EmploymentContract"></see>
     /// </summary>
-    let EmploymentContract =
-        Namespaced_IRI.parse _namespace_name "EmploymentContract" |> NamespacedName
-
+    let EmploymentContract = _prefix "EmploymentContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EncryptionAtRest"></see>
     /// </summary>
-    let EncryptionAtRest =
-        Namespaced_IRI.parse _namespace_name "EncryptionAtRest" |> NamespacedName
-
+    let EncryptionAtRest = _prefix "EncryptionAtRest"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EncryptionInTransfer"></see>
     /// </summary>
-    let EncryptionInTransfer =
-        Namespaced_IRI.parse _namespace_name "EncryptionInTransfer" |> NamespacedName
-
+    let EncryptionInTransfer = _prefix "EncryptionInTransfer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EncryptionInUse"></see>
     /// </summary>
-    let EncryptionInUse =
-        Namespaced_IRI.parse _namespace_name "EncryptionInUse" |> NamespacedName
-
+    let EncryptionInUse = _prefix "EncryptionInUse"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EndToEndEncryption"></see>
     /// </summary>
-    let EndToEndEncryption =
-        Namespaced_IRI.parse _namespace_name "EndToEndEncryption" |> NamespacedName
-
+    let EndToEndEncryption = _prefix "EndToEndEncryption"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EndlessDuration"></see>
     /// </summary>
-    let EndlessDuration =
-        Namespaced_IRI.parse _namespace_name "EndlessDuration" |> NamespacedName
-
+    let EndlessDuration = _prefix "EndlessDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EnforceAccessControl"></see>
     /// </summary>
-    let EnforceAccessControl =
-        Namespaced_IRI.parse _namespace_name "EnforceAccessControl" |> NamespacedName
-
+    let EnforceAccessControl = _prefix "EnforceAccessControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EnforceSecurity"></see>
     /// </summary>
-    let EnforceSecurity =
-        Namespaced_IRI.parse _namespace_name "EnforceSecurity" |> NamespacedName
-
+    let EnforceSecurity = _prefix "EnforceSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EnterIntoContract"></see>
     /// </summary>
-    let EnterIntoContract =
-        Namespaced_IRI.parse _namespace_name "EnterIntoContract" |> NamespacedName
-
+    let EnterIntoContract = _prefix "EnterIntoContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Entity"></see>
     /// </summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
-
+    let Entity = _prefix "Entity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-classes"></see>
     /// </summary>
-    let ``entities-classes`` =
-        Namespaced_IRI.parse _namespace_name "entities-classes" |> NamespacedName
-
+    let ``entities-classes`` = _prefix "entities-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityActiveInvolvement"></see>
     /// </summary>
-    let EntityActiveInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityActiveInvolvement" |> NamespacedName
-
+    let EntityActiveInvolvement = _prefix "EntityActiveInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityIntendedInvolvement"></see>
     /// </summary>
-    let EntityIntendedInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityIntendedInvolvement" |> NamespacedName
-
+    let EntityIntendedInvolvement = _prefix "EntityIntendedInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityInvolvementStatus"></see>
     /// </summary>
-    let EntityInvolvementStatus =
-        Namespaced_IRI.parse _namespace_name "EntityInvolvementStatus" |> NamespacedName
-
+    let EntityInvolvementStatus = _prefix "EntityInvolvementStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Intended"></see>
     /// </summary>
-    let Intended = Namespaced_IRI.parse _namespace_name "Intended" |> NamespacedName
-
+    let Intended = _prefix "Intended"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityInvolved"></see>
     /// </summary>
-    let EntityInvolved =
-        Namespaced_IRI.parse _namespace_name "EntityInvolved" |> NamespacedName
-
+    let EntityInvolved = _prefix "EntityInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityNonInvolvement"></see>
     /// </summary>
-    let EntityNonInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityNonInvolvement" |> NamespacedName
-
+    let EntityNonInvolvement = _prefix "EntityNonInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityNotInvolved"></see>
     /// </summary>
-    let EntityNotInvolved =
-        Namespaced_IRI.parse _namespace_name "EntityNotInvolved" |> NamespacedName
-
+    let EntityNotInvolved = _prefix "EntityNotInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityPassiveInvolvement"></see>
     /// </summary>
-    let EntityPassiveInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityPassiveInvolvement" |> NamespacedName
-
+    let EntityPassiveInvolvement = _prefix "EntityPassiveInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityUnintendedInvolvement"></see>
     /// </summary>
-    let EntityUnintendedInvolvement =
-        Namespaced_IRI.parse _namespace_name "EntityUnintendedInvolvement" |> NamespacedName
-
+    let EntityUnintendedInvolvement = _prefix "EntityUnintendedInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Unintended"></see>
     /// </summary>
-    let Unintended = Namespaced_IRI.parse _namespace_name "Unintended" |> NamespacedName
-
+    let Unintended = _prefix "Unintended"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EnvironmentalProtection"></see>
     /// </summary>
-    let EnvironmentalProtection =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalProtection" |> NamespacedName
-
+    let EnvironmentalProtection = _prefix "EnvironmentalProtection"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalMeasure"></see>
     /// </summary>
-    let PhysicalMeasure =
-        Namespaced_IRI.parse _namespace_name "PhysicalMeasure" |> NamespacedName
-
+    let PhysicalMeasure = _prefix "PhysicalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#physical-measures-classes"></see>
     /// </summary>
-    let ``physical-measures-classes`` =
-        Namespaced_IRI.parse _namespace_name "physical-measures-classes" |> NamespacedName
-
+    let ``physical-measures-classes`` = _prefix "physical-measures-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Erase"></see>
     /// </summary>
-    let Erase = Namespaced_IRI.parse _namespace_name "Erase" |> NamespacedName
-
+    let Erase = _prefix "Erase"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EstablishContractualAgreement"></see>
     /// </summary>
-    let EstablishContractualAgreement =
-        Namespaced_IRI.parse _namespace_name "EstablishContractualAgreement" |> NamespacedName
-
+    let EstablishContractualAgreement = _prefix "EstablishContractualAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EvaluationOfIndividuals"></see>
     /// </summary>
-    let EvaluationOfIndividuals =
-        Namespaced_IRI.parse _namespace_name "EvaluationOfIndividuals" |> NamespacedName
-
+    let EvaluationOfIndividuals = _prefix "EvaluationOfIndividuals"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EvaluationScoring"></see>
     /// </summary>
-    let EvaluationScoring =
-        Namespaced_IRI.parse _namespace_name "EvaluationScoring" |> NamespacedName
-
+    let EvaluationScoring = _prefix "EvaluationScoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ExpectationStatus"></see>
     /// </summary>
-    let ExpectationStatus =
-        Namespaced_IRI.parse _namespace_name "ExpectationStatus" |> NamespacedName
-
+    let ExpectationStatus = _prefix "ExpectationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Expected"></see>
     /// </summary>
-    let Expected = Namespaced_IRI.parse _namespace_name "Expected" |> NamespacedName
-
+    let Expected = _prefix "Expected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ExplicitlyExpressedConsent"></see>
     /// </summary>
-    let ExplicitlyExpressedConsent =
-        Namespaced_IRI.parse _namespace_name "ExplicitlyExpressedConsent" |> NamespacedName
-
+    let ExplicitlyExpressedConsent = _prefix "ExplicitlyExpressedConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ExpressedConsent"></see>
     /// </summary>
-    let ExpressedConsent =
-        Namespaced_IRI.parse _namespace_name "ExpressedConsent" |> NamespacedName
-
+    let ExpressedConsent = _prefix "ExpressedConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#consent-types-classes"></see>
     /// </summary>
-    let ``consent-types-classes`` =
-        Namespaced_IRI.parse _namespace_name "consent-types-classes" |> NamespacedName
-
+    let ``consent-types-classes`` = _prefix "consent-types-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Export"></see>
     /// </summary>
-    let Export = Namespaced_IRI.parse _namespace_name "Export" |> NamespacedName
-
+    let Export = _prefix "Export"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InformedConsent"></see>
     /// </summary>
-    let InformedConsent =
-        Namespaced_IRI.parse _namespace_name "InformedConsent" |> NamespacedName
-
+    let InformedConsent = _prefix "InformedConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FRIA"></see>
     /// </summary>
-    let FRIA = Namespaced_IRI.parse _namespace_name "FRIA" |> NamespacedName
-
+    let FRIA = _prefix "FRIA"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FederatedLocations"></see>
     /// </summary>
-    let FederatedLocations =
-        Namespaced_IRI.parse _namespace_name "FederatedLocations" |> NamespacedName
-
+    let FederatedLocations = _prefix "FederatedLocations"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FeeNotRequired"></see>
     /// </summary>
-    let FeeNotRequired =
-        Namespaced_IRI.parse _namespace_name "FeeNotRequired" |> NamespacedName
-
+    let FeeNotRequired = _prefix "FeeNotRequired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FeeRequirement"></see>
     /// </summary>
-    let FeeRequirement =
-        Namespaced_IRI.parse _namespace_name "FeeRequirement" |> NamespacedName
-
+    let FeeRequirement = _prefix "FeeRequirement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FeeRequired"></see>
     /// </summary>
-    let FeeRequired =
-        Namespaced_IRI.parse _namespace_name "FeeRequired" |> NamespacedName
-
+    let FeeRequired = _prefix "FeeRequired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FileSystemSecurity"></see>
     /// </summary>
-    let FileSystemSecurity =
-        Namespaced_IRI.parse _namespace_name "FileSystemSecurity" |> NamespacedName
-
+    let FileSystemSecurity = _prefix "FileSystemSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Filter"></see>
     /// </summary>
-    let Filter = Namespaced_IRI.parse _namespace_name "Filter" |> NamespacedName
-
+    let Filter = _prefix "Filter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FireDepartment"></see>
     /// </summary>
-    let FireDepartment =
-        Namespaced_IRI.parse _namespace_name "FireDepartment" |> NamespacedName
-
+    let FireDepartment = _prefix "FireDepartment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FixedLocation"></see>
     /// </summary>
-    let FixedLocation =
-        Namespaced_IRI.parse _namespace_name "FixedLocation" |> NamespacedName
-
+    let FixedLocation = _prefix "FixedLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FixedMultipleLocations"></see>
     /// </summary>
-    let FixedMultipleLocations =
-        Namespaced_IRI.parse _namespace_name "FixedMultipleLocations" |> NamespacedName
-
+    let FixedMultipleLocations = _prefix "FixedMultipleLocations"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FixedOccurrencesDuration"></see>
     /// </summary>
-    let FixedOccurrencesDuration =
-        Namespaced_IRI.parse _namespace_name "FixedOccurrencesDuration" |> NamespacedName
-
+    let FixedOccurrencesDuration = _prefix "FixedOccurrencesDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FixedSingularLocation"></see>
     /// </summary>
-    let FixedSingularLocation =
-        Namespaced_IRI.parse _namespace_name "FixedSingularLocation" |> NamespacedName
-
+    let FixedSingularLocation = _prefix "FixedSingularLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ForProfitOrganisation"></see>
     /// </summary>
-    let ForProfitOrganisation =
-        Namespaced_IRI.parse _namespace_name "ForProfitOrganisation" |> NamespacedName
-
+    let ForProfitOrganisation = _prefix "ForProfitOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Format"></see>
     /// </summary>
-    let Format = Namespaced_IRI.parse _namespace_name "Format" |> NamespacedName
+    let Format = _prefix "Format"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Structure"></see>
     /// </summary>
-    let Structure = Namespaced_IRI.parse _namespace_name "Structure" |> NamespacedName
-
+    let Structure = _prefix "Structure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MisusePreventionAndDetection"></see>
     /// </summary>
-    let MisusePreventionAndDetection =
-        Namespaced_IRI.parse _namespace_name "MisusePreventionAndDetection" |> NamespacedName
-
+    let MisusePreventionAndDetection = _prefix "MisusePreventionAndDetection"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FulfilmentOfContractualObligation"></see>
     /// </summary>
-    let FulfilmentOfContractualObligation =
-        Namespaced_IRI.parse _namespace_name "FulfilmentOfContractualObligation" |> NamespacedName
-
+    let FulfilmentOfContractualObligation = _prefix "FulfilmentOfContractualObligation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FulfilmentOfObligation"></see>
     /// </summary>
-    let FulfilmentOfObligation =
-        Namespaced_IRI.parse _namespace_name "FulfilmentOfObligation" |> NamespacedName
-
+    let FulfilmentOfObligation = _prefix "FulfilmentOfObligation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FullAutomation"></see>
     /// </summary>
-    let FullAutomation =
-        Namespaced_IRI.parse _namespace_name "FullAutomation" |> NamespacedName
-
+    let FullAutomation = _prefix "FullAutomation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#FullyRandomisedPseudonymisation"></see>
     /// </summary>
-    let FullyRandomisedPseudonymisation =
-        Namespaced_IRI.parse _namespace_name "FullyRandomisedPseudonymisation" |> NamespacedName
-
+    let FullyRandomisedPseudonymisation = _prefix "FullyRandomisedPseudonymisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#G2BContract"></see>
     /// </summary>
-    let G2BContract =
-        Namespaced_IRI.parse _namespace_name "G2BContract" |> NamespacedName
-
+    let G2BContract = _prefix "G2BContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#G2CContract"></see>
     /// </summary>
-    let G2CContract =
-        Namespaced_IRI.parse _namespace_name "G2CContract" |> NamespacedName
-
+    let G2CContract = _prefix "G2CContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#G2GContract"></see>
     /// </summary>
-    let G2GContract =
-        Namespaced_IRI.parse _namespace_name "G2GContract" |> NamespacedName
-
+    let G2GContract = _prefix "G2GContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Generate"></see>
     /// </summary>
-    let Generate = Namespaced_IRI.parse _namespace_name "Generate" |> NamespacedName
-
+    let Generate = _prefix "Generate"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GeneratedData"></see>
     /// </summary>
-    let GeneratedData =
-        Namespaced_IRI.parse _namespace_name "GeneratedData" |> NamespacedName
-
+    let GeneratedData = _prefix "GeneratedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GeneratedPersonalData"></see>
     /// </summary>
-    let GeneratedPersonalData =
-        Namespaced_IRI.parse _namespace_name "GeneratedPersonalData" |> NamespacedName
-
+    let GeneratedPersonalData = _prefix "GeneratedPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GeographicCoverage"></see>
     /// </summary>
-    let GeographicCoverage =
-        Namespaced_IRI.parse _namespace_name "GeographicCoverage" |> NamespacedName
-
+    let GeographicCoverage = _prefix "GeographicCoverage"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GlobalScale"></see>
     /// </summary>
-    let GlobalScale =
-        Namespaced_IRI.parse _namespace_name "GlobalScale" |> NamespacedName
-
+    let GlobalScale = _prefix "GlobalScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GraphicalNotice"></see>
     /// </summary>
-    let GraphicalNotice =
-        Namespaced_IRI.parse _namespace_name "GraphicalNotice" |> NamespacedName
-
+    let GraphicalNotice = _prefix "GraphicalNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GuardianOfDataSubject"></see>
     /// </summary>
-    let GuardianOfDataSubject =
-        Namespaced_IRI.parse _namespace_name "GuardianOfDataSubject" |> NamespacedName
-
+    let GuardianOfDataSubject = _prefix "GuardianOfDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#GuardianOfHuman"></see>
     /// </summary>
-    let GuardianOfHuman =
-        Namespaced_IRI.parse _namespace_name "GuardianOfHuman" |> NamespacedName
-
+    let GuardianOfHuman = _prefix "GuardianOfHuman"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Guideline"></see>
     /// </summary>
-    let Guideline = Namespaced_IRI.parse _namespace_name "Guideline" |> NamespacedName
-
+    let Guideline = _prefix "Guideline"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HardwareSecurityProtocols"></see>
     /// </summary>
-    let HardwareSecurityProtocols =
-        Namespaced_IRI.parse _namespace_name "HardwareSecurityProtocols" |> NamespacedName
-
+    let HardwareSecurityProtocols = _prefix "HardwareSecurityProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HashFunctions"></see>
     /// </summary>
-    let HashFunctions =
-        Namespaced_IRI.parse _namespace_name "HashFunctions" |> NamespacedName
-
+    let HashFunctions = _prefix "HashFunctions"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HashMessageAuthenticationCode"></see>
     /// </summary>
-    let HashMessageAuthenticationCode =
-        Namespaced_IRI.parse _namespace_name "HashMessageAuthenticationCode" |> NamespacedName
-
+    let HashMessageAuthenticationCode = _prefix "HashMessageAuthenticationCode"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HealthcareOrganisation"></see>
     /// </summary>
-    let HealthcareOrganisation =
-        Namespaced_IRI.parse _namespace_name "HealthcareOrganisation" |> NamespacedName
-
+    let HealthcareOrganisation = _prefix "HealthcareOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HighAutomation"></see>
     /// </summary>
-    let HighAutomation =
-        Namespaced_IRI.parse _namespace_name "HighAutomation" |> NamespacedName
-
+    let HighAutomation = _prefix "HighAutomation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HomomorphicEncryption"></see>
     /// </summary>
-    let HomomorphicEncryption =
-        Namespaced_IRI.parse _namespace_name "HomomorphicEncryption" |> NamespacedName
-
+    let HomomorphicEncryption = _prefix "HomomorphicEncryption"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Hospital"></see>
     /// </summary>
-    let Hospital = Namespaced_IRI.parse _namespace_name "Hospital" |> NamespacedName
-
+    let Hospital = _prefix "Hospital"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HugeDataVolume"></see>
     /// </summary>
-    let HugeDataVolume =
-        Namespaced_IRI.parse _namespace_name "HugeDataVolume" |> NamespacedName
-
+    let HugeDataVolume = _prefix "HugeDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HugeScaleOfDataSubjects"></see>
     /// </summary>
-    let HugeScaleOfDataSubjects =
-        Namespaced_IRI.parse _namespace_name "HugeScaleOfDataSubjects" |> NamespacedName
-
+    let HugeScaleOfDataSubjects = _prefix "HugeScaleOfDataSubjects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolved"></see>
     /// </summary>
-    let HumanInvolved =
-        Namespaced_IRI.parse _namespace_name "HumanInvolved" |> NamespacedName
-
+    let HumanInvolved = _prefix "HumanInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvement"></see>
     /// </summary>
-    let HumanInvolvement =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvement" |> NamespacedName
-
+    let HumanInvolvement = _prefix "HumanInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvementForControl"></see>
     /// </summary>
-    let HumanInvolvementForControl =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvementForControl" |> NamespacedName
-
+    let HumanInvolvementForControl = _prefix "HumanInvolvementForControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvementForDecision"></see>
     /// </summary>
-    let HumanInvolvementForDecision =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvementForDecision" |> NamespacedName
-
+    let HumanInvolvementForDecision = _prefix "HumanInvolvementForDecision"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvementForInput"></see>
     /// </summary>
-    let HumanInvolvementForInput =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvementForInput" |> NamespacedName
-
+    let HumanInvolvementForInput = _prefix "HumanInvolvementForInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvementForIntervention"></see>
     /// </summary>
-    let HumanInvolvementForIntervention =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvementForIntervention" |> NamespacedName
-
+    let HumanInvolvementForIntervention = _prefix "HumanInvolvementForIntervention"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvementForOversight"></see>
     /// </summary>
-    let HumanInvolvementForOversight =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvementForOversight" |> NamespacedName
-
+    let HumanInvolvementForOversight = _prefix "HumanInvolvementForOversight"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanInvolvementForVerification"></see>
     /// </summary>
-    let HumanInvolvementForVerification =
-        Namespaced_IRI.parse _namespace_name "HumanInvolvementForVerification" |> NamespacedName
-
+    let HumanInvolvementForVerification = _prefix "HumanInvolvementForVerification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanNotInvolved"></see>
     /// </summary>
-    let HumanNotInvolved =
-        Namespaced_IRI.parse _namespace_name "HumanNotInvolved" |> NamespacedName
-
+    let HumanNotInvolved = _prefix "HumanNotInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HumanResourceManagement"></see>
     /// </summary>
-    let HumanResourceManagement =
-        Namespaced_IRI.parse _namespace_name "HumanResourceManagement" |> NamespacedName
-
+    let HumanResourceManagement = _prefix "HumanResourceManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#HybridPublicPrivateSpace"></see>
     /// </summary>
-    let HybridPublicPrivateSpace =
-        Namespaced_IRI.parse _namespace_name "HybridPublicPrivateSpace" |> NamespacedName
-
+    let HybridPublicPrivateSpace = _prefix "HybridPublicPrivateSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicSpace"></see>
     /// </summary>
-    let PublicSpace =
-        Namespaced_IRI.parse _namespace_name "PublicSpace" |> NamespacedName
-
+    let PublicSpace = _prefix "PublicSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivateSpace"></see>
     /// </summary>
-    let PrivateSpace =
-        Namespaced_IRI.parse _namespace_name "PrivateSpace" |> NamespacedName
-
+    let PrivateSpace = _prefix "PrivateSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IPRManagement"></see>
     /// </summary>
-    let IPRManagement =
-        Namespaced_IRI.parse _namespace_name "IPRManagement" |> NamespacedName
-
+    let IPRManagement = _prefix "IPRManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IdentifyingPersonalData"></see>
     /// </summary>
-    let IdentifyingPersonalData =
-        Namespaced_IRI.parse _namespace_name "IdentifyingPersonalData" |> NamespacedName
-
+    let IdentifyingPersonalData = _prefix "IdentifyingPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IdentityAuthentication"></see>
     /// </summary>
-    let IdentityAuthentication =
-        Namespaced_IRI.parse _namespace_name "IdentityAuthentication" |> NamespacedName
-
+    let IdentityAuthentication = _prefix "IdentityAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IdentityManagementMethod"></see>
     /// </summary>
-    let IdentityManagementMethod =
-        Namespaced_IRI.parse _namespace_name "IdentityManagementMethod" |> NamespacedName
-
+    let IdentityManagementMethod = _prefix "IdentityManagementMethod"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IdentityVerification"></see>
     /// </summary>
-    let IdentityVerification =
-        Namespaced_IRI.parse _namespace_name "IdentityVerification" |> NamespacedName
-
+    let IdentityVerification = _prefix "IdentityVerification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Immigrant"></see>
     /// </summary>
-    let Immigrant = Namespaced_IRI.parse _namespace_name "Immigrant" |> NamespacedName
+    let Immigrant = _prefix "Immigrant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Impact"></see>
     /// </summary>
-    let Impact = Namespaced_IRI.parse _namespace_name "Impact" |> NamespacedName
-
+    let Impact = _prefix "Impact"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RiskAssessment"></see>
     /// </summary>
-    let RiskAssessment =
-        Namespaced_IRI.parse _namespace_name "RiskAssessment" |> NamespacedName
-
+    let RiskAssessment = _prefix "RiskAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImpliedConsent"></see>
     /// </summary>
-    let ImpliedConsent =
-        Namespaced_IRI.parse _namespace_name "ImpliedConsent" |> NamespacedName
-
+    let ImpliedConsent = _prefix "ImpliedConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Importance"></see>
     /// </summary>
-    let Importance = Namespaced_IRI.parse _namespace_name "Importance" |> NamespacedName
+    let Importance = _prefix "Importance"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImproveExistingProductsAndServices"></see>
     /// </summary>
     let ImproveExistingProductsAndServices =
-        Namespaced_IRI.parse _namespace_name "ImproveExistingProductsAndServices" |> NamespacedName
+        _prefix "ImproveExistingProductsAndServices"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OptimisationForController"></see>
     /// </summary>
-    let OptimisationForController =
-        Namespaced_IRI.parse _namespace_name "OptimisationForController" |> NamespacedName
-
+    let OptimisationForController = _prefix "OptimisationForController"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImproveHealthcare"></see>
     /// </summary>
-    let ImproveHealthcare =
-        Namespaced_IRI.parse _namespace_name "ImproveHealthcare" |> NamespacedName
-
+    let ImproveHealthcare = _prefix "ImproveHealthcare"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImproveInternalCRMProcesses"></see>
     /// </summary>
-    let ImproveInternalCRMProcesses =
-        Namespaced_IRI.parse _namespace_name "ImproveInternalCRMProcesses" |> NamespacedName
-
+    let ImproveInternalCRMProcesses = _prefix "ImproveInternalCRMProcesses"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImprovePublicServices"></see>
     /// </summary>
-    let ImprovePublicServices =
-        Namespaced_IRI.parse _namespace_name "ImprovePublicServices" |> NamespacedName
-
+    let ImprovePublicServices = _prefix "ImprovePublicServices"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ImproveTransportMobility"></see>
     /// </summary>
-    let ImproveTransportMobility =
-        Namespaced_IRI.parse _namespace_name "ImproveTransportMobility" |> NamespacedName
-
+    let ImproveTransportMobility = _prefix "ImproveTransportMobility"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IncidentManagementProcedures"></see>
     /// </summary>
-    let IncidentManagementProcedures =
-        Namespaced_IRI.parse _namespace_name "IncidentManagementProcedures" |> NamespacedName
-
+    let IncidentManagementProcedures = _prefix "IncidentManagementProcedures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IncidentReportingCommunication"></see>
     /// </summary>
-    let IncidentReportingCommunication =
-        Namespaced_IRI.parse _namespace_name "IncidentReportingCommunication" |> NamespacedName
-
+    let IncidentReportingCommunication = _prefix "IncidentReportingCommunication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IncorrectData"></see>
     /// </summary>
-    let IncorrectData =
-        Namespaced_IRI.parse _namespace_name "IncorrectData" |> NamespacedName
-
+    let IncorrectData = _prefix "IncorrectData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IncreaseServiceRobustness"></see>
     /// </summary>
-    let IncreaseServiceRobustness =
-        Namespaced_IRI.parse _namespace_name "IncreaseServiceRobustness" |> NamespacedName
-
+    let IncreaseServiceRobustness = _prefix "IncreaseServiceRobustness"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IndeterminateDuration"></see>
     /// </summary>
-    let IndeterminateDuration =
-        Namespaced_IRI.parse _namespace_name "IndeterminateDuration" |> NamespacedName
-
+    let IndeterminateDuration = _prefix "IndeterminateDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IndustryConsortium"></see>
     /// </summary>
-    let IndustryConsortium =
-        Namespaced_IRI.parse _namespace_name "IndustryConsortium" |> NamespacedName
-
+    let IndustryConsortium = _prefix "IndustryConsortium"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Infer"></see>
     /// </summary>
-    let Infer = Namespaced_IRI.parse _namespace_name "Infer" |> NamespacedName
-
+    let Infer = _prefix "Infer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InferredData"></see>
     /// </summary>
-    let InferredData =
-        Namespaced_IRI.parse _namespace_name "InferredData" |> NamespacedName
-
+    let InferredData = _prefix "InferredData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InferredPersonalData"></see>
     /// </summary>
-    let InferredPersonalData =
-        Namespaced_IRI.parse _namespace_name "InferredPersonalData" |> NamespacedName
-
+    let InferredPersonalData = _prefix "InferredPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InformationAudit"></see>
     /// </summary>
-    let InformationAudit =
-        Namespaced_IRI.parse _namespace_name "InformationAudit" |> NamespacedName
-
+    let InformationAudit = _prefix "InformationAudit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InformationFlowControl"></see>
     /// </summary>
-    let InformationFlowControl =
-        Namespaced_IRI.parse _namespace_name "InformationFlowControl" |> NamespacedName
-
+    let InformationFlowControl = _prefix "InformationFlowControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InformationSecurityPolicy"></see>
     /// </summary>
-    let InformationSecurityPolicy =
-        Namespaced_IRI.parse _namespace_name "InformationSecurityPolicy" |> NamespacedName
-
+    let InformationSecurityPolicy = _prefix "InformationSecurityPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InnovativeUseOfExistingTechnology"></see>
     /// </summary>
-    let InnovativeUseOfExistingTechnology =
-        Namespaced_IRI.parse _namespace_name "InnovativeUseOfExistingTechnology" |> NamespacedName
-
+    let InnovativeUseOfExistingTechnology = _prefix "InnovativeUseOfExistingTechnology"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InnovativeUseOfTechnology"></see>
     /// </summary>
-    let InnovativeUseOfTechnology =
-        Namespaced_IRI.parse _namespace_name "InnovativeUseOfTechnology" |> NamespacedName
-
+    let InnovativeUseOfTechnology = _prefix "InnovativeUseOfTechnology"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InnovativeUseOfNewTechnologies"></see>
     /// </summary>
-    let InnovativeUseOfNewTechnologies =
-        Namespaced_IRI.parse _namespace_name "InnovativeUseOfNewTechnologies" |> NamespacedName
-
+    let InnovativeUseOfNewTechnologies = _prefix "InnovativeUseOfNewTechnologies"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IntellectualPropertyData"></see>
     /// </summary>
-    let IntellectualPropertyData =
-        Namespaced_IRI.parse _namespace_name "IntellectualPropertyData" |> NamespacedName
-
+    let IntellectualPropertyData = _prefix "IntellectualPropertyData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IntentionStatus"></see>
     /// </summary>
-    let IntentionStatus =
-        Namespaced_IRI.parse _namespace_name "IntentionStatus" |> NamespacedName
-
+    let IntentionStatus = _prefix "IntentionStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InternalResourceOptimisation"></see>
     /// </summary>
-    let InternalResourceOptimisation =
-        Namespaced_IRI.parse _namespace_name "InternalResourceOptimisation" |> NamespacedName
-
+    let InternalResourceOptimisation = _prefix "InternalResourceOptimisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InternationalOrganisation"></see>
     /// </summary>
-    let InternationalOrganisation =
-        Namespaced_IRI.parse _namespace_name "InternationalOrganisation" |> NamespacedName
-
+    let InternationalOrganisation = _prefix "InternationalOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#IntrusionDetectionSystem"></see>
     /// </summary>
-    let IntrusionDetectionSystem =
-        Namespaced_IRI.parse _namespace_name "IntrusionDetectionSystem" |> NamespacedName
-
+    let IntrusionDetectionSystem = _prefix "IntrusionDetectionSystem"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#InverseJurisdiction"></see>
     /// </summary>
-    let InverseJurisdiction =
-        Namespaced_IRI.parse _namespace_name "InverseJurisdiction" |> NamespacedName
-
+    let InverseJurisdiction = _prefix "InverseJurisdiction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#JITNotice"></see>
     /// </summary>
-    let JITNotice = Namespaced_IRI.parse _namespace_name "JITNotice" |> NamespacedName
-
+    let JITNotice = _prefix "JITNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#JobApplicant"></see>
     /// </summary>
-    let JobApplicant =
-        Namespaced_IRI.parse _namespace_name "JobApplicant" |> NamespacedName
-
+    let JobApplicant = _prefix "JobApplicant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#JointDataControllers"></see>
     /// </summary>
-    let JointDataControllers =
-        Namespaced_IRI.parse _namespace_name "JointDataControllers" |> NamespacedName
-
+    let JointDataControllers = _prefix "JointDataControllers"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#JointDataControllersAgreement"></see>
     /// </summary>
-    let JointDataControllersAgreement =
-        Namespaced_IRI.parse _namespace_name "JointDataControllersAgreement" |> NamespacedName
-
+    let JointDataControllersAgreement = _prefix "JointDataControllersAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#JudicialOrganisation"></see>
     /// </summary>
-    let JudicialOrganisation =
-        Namespaced_IRI.parse _namespace_name "JudicialOrganisation" |> NamespacedName
-
+    let JudicialOrganisation = _prefix "JudicialOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Justification"></see>
     /// </summary>
-    let Justification =
-        Namespaced_IRI.parse _namespace_name "Justification" |> NamespacedName
-
+    let Justification = _prefix "Justification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LargeDataVolume"></see>
     /// </summary>
-    let LargeDataVolume =
-        Namespaced_IRI.parse _namespace_name "LargeDataVolume" |> NamespacedName
-
+    let LargeDataVolume = _prefix "LargeDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LargeScaleOfDataSubjects"></see>
     /// </summary>
-    let LargeScaleOfDataSubjects =
-        Namespaced_IRI.parse _namespace_name "LargeScaleOfDataSubjects" |> NamespacedName
-
+    let LargeScaleOfDataSubjects = _prefix "LargeScaleOfDataSubjects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LargeScaleProcessing"></see>
     /// </summary>
-    let LargeScaleProcessing =
-        Namespaced_IRI.parse _namespace_name "LargeScaleProcessing" |> NamespacedName
-
+    let LargeScaleProcessing = _prefix "LargeScaleProcessing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProcessingScale"></see>
     /// </summary>
-    let ProcessingScale =
-        Namespaced_IRI.parse _namespace_name "ProcessingScale" |> NamespacedName
-
+    let ProcessingScale = _prefix "ProcessingScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Law"></see>
     /// </summary>
-    let Law = Namespaced_IRI.parse _namespace_name "Law" |> NamespacedName
-
+    let Law = _prefix "Law"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LawEnforcementOrganisation"></see>
     /// </summary>
-    let LawEnforcementOrganisation =
-        Namespaced_IRI.parse _namespace_name "LawEnforcementOrganisation" |> NamespacedName
-
+    let LawEnforcementOrganisation = _prefix "LawEnforcementOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Lawful"></see>
     /// </summary>
-    let Lawful = Namespaced_IRI.parse _namespace_name "Lawful" |> NamespacedName
+    let Lawful = _prefix "Lawful"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Lawfulness"></see>
     /// </summary>
-    let Lawfulness = Namespaced_IRI.parse _namespace_name "Lawfulness" |> NamespacedName
-
+    let Lawfulness = _prefix "Lawfulness"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LawfulnessUnknown"></see>
     /// </summary>
-    let LawfulnessUnknown =
-        Namespaced_IRI.parse _namespace_name "LawfulnessUnknown" |> NamespacedName
-
+    let LawfulnessUnknown = _prefix "LawfulnessUnknown"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LayeredNotice"></see>
     /// </summary>
-    let LayeredNotice =
-        Namespaced_IRI.parse _namespace_name "LayeredNotice" |> NamespacedName
-
+    let LayeredNotice = _prefix "LayeredNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalCompliance"></see>
     /// </summary>
-    let LegalCompliance =
-        Namespaced_IRI.parse _namespace_name "LegalCompliance" |> NamespacedName
-
+    let LegalCompliance = _prefix "LegalCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalComplianceAssessment"></see>
     /// </summary>
-    let LegalComplianceAssessment =
-        Namespaced_IRI.parse _namespace_name "LegalComplianceAssessment" |> NamespacedName
-
+    let LegalComplianceAssessment = _prefix "LegalComplianceAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalComplianceAudit"></see>
     /// </summary>
-    let LegalComplianceAudit =
-        Namespaced_IRI.parse _namespace_name "LegalComplianceAudit" |> NamespacedName
-
+    let LegalComplianceAudit = _prefix "LegalComplianceAudit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TechnicalOrganisationalMeasure"></see>
     /// </summary>
-    let TechnicalOrganisationalMeasure =
-        Namespaced_IRI.parse _namespace_name "TechnicalOrganisationalMeasure" |> NamespacedName
-
+    let TechnicalOrganisationalMeasure = _prefix "TechnicalOrganisationalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TOM-classes"></see>
     /// </summary>
-    let ``TOM-classes`` =
-        Namespaced_IRI.parse _namespace_name "TOM-classes" |> NamespacedName
-
+    let ``TOM-classes`` = _prefix "TOM-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalObligation"></see>
     /// </summary>
-    let LegalObligation =
-        Namespaced_IRI.parse _namespace_name "LegalObligation" |> NamespacedName
-
+    let LegalObligation = _prefix "LegalObligation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalObligationCompleted"></see>
     /// </summary>
-    let LegalObligationCompleted =
-        Namespaced_IRI.parse _namespace_name "LegalObligationCompleted" |> NamespacedName
-
+    let LegalObligationCompleted = _prefix "LegalObligationCompleted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalObligationStatus"></see>
     /// </summary>
-    let LegalObligationStatus =
-        Namespaced_IRI.parse _namespace_name "LegalObligationStatus" |> NamespacedName
-
+    let LegalObligationStatus = _prefix "LegalObligationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#legal-basis-status-classes"></see>
     /// </summary>
-    let ``legal-basis-status-classes`` =
-        Namespaced_IRI.parse _namespace_name "legal-basis-status-classes" |> NamespacedName
-
+    let ``legal-basis-status-classes`` = _prefix "legal-basis-status-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalObligationOngoing"></see>
     /// </summary>
-    let LegalObligationOngoing =
-        Namespaced_IRI.parse _namespace_name "LegalObligationOngoing" |> NamespacedName
-
+    let LegalObligationOngoing = _prefix "LegalObligationOngoing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegalObligationPending"></see>
     /// </summary>
-    let LegalObligationPending =
-        Namespaced_IRI.parse _namespace_name "LegalObligationPending" |> NamespacedName
-
+    let LegalObligationPending = _prefix "LegalObligationPending"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterest"></see>
     /// </summary>
-    let LegitimateInterest =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterest" |> NamespacedName
-
+    let LegitimateInterest = _prefix "LegitimateInterest"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestAssessment"></see>
     /// </summary>
-    let LegitimateInterestAssessment =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestAssessment" |> NamespacedName
-
+    let LegitimateInterestAssessment = _prefix "LegitimateInterestAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestInformed"></see>
     /// </summary>
-    let LegitimateInterestInformed =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestInformed" |> NamespacedName
-
+    let LegitimateInterestInformed = _prefix "LegitimateInterestInformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestStatus"></see>
     /// </summary>
-    let LegitimateInterestStatus =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestStatus" |> NamespacedName
-
+    let LegitimateInterestStatus = _prefix "LegitimateInterestStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestNotObjected"></see>
     /// </summary>
-    let LegitimateInterestNotObjected =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestNotObjected" |> NamespacedName
-
+    let LegitimateInterestNotObjected = _prefix "LegitimateInterestNotObjected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestObjected"></see>
     /// </summary>
-    let LegitimateInterestObjected =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestObjected" |> NamespacedName
-
+    let LegitimateInterestObjected = _prefix "LegitimateInterestObjected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestOfController"></see>
     /// </summary>
-    let LegitimateInterestOfController =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestOfController" |> NamespacedName
-
+    let LegitimateInterestOfController = _prefix "LegitimateInterestOfController"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestOfDataSubject"></see>
     /// </summary>
-    let LegitimateInterestOfDataSubject =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestOfDataSubject" |> NamespacedName
-
+    let LegitimateInterestOfDataSubject = _prefix "LegitimateInterestOfDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestOfThirdParty"></see>
     /// </summary>
-    let LegitimateInterestOfThirdParty =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestOfThirdParty" |> NamespacedName
-
+    let LegitimateInterestOfThirdParty = _prefix "LegitimateInterestOfThirdParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LegitimateInterestUninformed"></see>
     /// </summary>
-    let LegitimateInterestUninformed =
-        Namespaced_IRI.parse _namespace_name "LegitimateInterestUninformed" |> NamespacedName
-
+    let LegitimateInterestUninformed = _prefix "LegitimateInterestUninformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Likelihood"></see>
     /// </summary>
-    let Likelihood = Namespaced_IRI.parse _namespace_name "Likelihood" |> NamespacedName
-
+    let Likelihood = _prefix "Likelihood"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LocalEnvironmentScale"></see>
     /// </summary>
-    let LocalEnvironmentScale =
-        Namespaced_IRI.parse _namespace_name "LocalEnvironmentScale" |> NamespacedName
-
+    let LocalEnvironmentScale = _prefix "LocalEnvironmentScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LocalLocation"></see>
     /// </summary>
-    let LocalLocation =
-        Namespaced_IRI.parse _namespace_name "LocalLocation" |> NamespacedName
-
+    let LocalLocation = _prefix "LocalLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LocationLocality"></see>
     /// </summary>
-    let LocationLocality =
-        Namespaced_IRI.parse _namespace_name "LocationLocality" |> NamespacedName
-
+    let LocationLocality = _prefix "LocationLocality"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LocalityScale"></see>
     /// </summary>
-    let LocalityScale =
-        Namespaced_IRI.parse _namespace_name "LocalityScale" |> NamespacedName
-
+    let LocalityScale = _prefix "LocalityScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#LoggingPolicy"></see>
     /// </summary>
-    let LoggingPolicy =
-        Namespaced_IRI.parse _namespace_name "LoggingPolicy" |> NamespacedName
-
+    let LoggingPolicy = _prefix "LoggingPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MaintainFraudDatabase"></see>
     /// </summary>
-    let MaintainFraudDatabase =
-        Namespaced_IRI.parse _namespace_name "MaintainFraudDatabase" |> NamespacedName
-
+    let MaintainFraudDatabase = _prefix "MaintainFraudDatabase"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MakeAvailable"></see>
     /// </summary>
-    let MakeAvailable =
-        Namespaced_IRI.parse _namespace_name "MakeAvailable" |> NamespacedName
-
+    let MakeAvailable = _prefix "MakeAvailable"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ManageConsent"></see>
     /// </summary>
-    let ManageConsent =
-        Namespaced_IRI.parse _namespace_name "ManageConsent" |> NamespacedName
-
+    let ManageConsent = _prefix "ManageConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WithdrawConsent"></see>
     /// </summary>
-    let WithdrawConsent =
-        Namespaced_IRI.parse _namespace_name "WithdrawConsent" |> NamespacedName
-
+    let WithdrawConsent = _prefix "WithdrawConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvideConsent"></see>
     /// </summary>
-    let ProvideConsent =
-        Namespaced_IRI.parse _namespace_name "ProvideConsent" |> NamespacedName
-
+    let ProvideConsent = _prefix "ProvideConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReaffirmConsent"></see>
     /// </summary>
-    let ReaffirmConsent =
-        Namespaced_IRI.parse _namespace_name "ReaffirmConsent" |> NamespacedName
-
+    let ReaffirmConsent = _prefix "ReaffirmConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ManagementStandard"></see>
     /// </summary>
-    let ManagementStandard =
-        Namespaced_IRI.parse _namespace_name "ManagementStandard" |> NamespacedName
-
+    let ManagementStandard = _prefix "ManagementStandard"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Match"></see>
     /// </summary>
-    let Match = Namespaced_IRI.parse _namespace_name "Match" |> NamespacedName
-
+    let Match = _prefix "Match"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MediumDataVolume"></see>
     /// </summary>
-    let MediumDataVolume =
-        Namespaced_IRI.parse _namespace_name "MediumDataVolume" |> NamespacedName
-
+    let MediumDataVolume = _prefix "MediumDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MediumScaleOfDataSubjects"></see>
     /// </summary>
-    let MediumScaleOfDataSubjects =
-        Namespaced_IRI.parse _namespace_name "MediumScaleOfDataSubjects" |> NamespacedName
-
+    let MediumScaleOfDataSubjects = _prefix "MediumScaleOfDataSubjects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MediumScaleProcessing"></see>
     /// </summary>
-    let MediumScaleProcessing =
-        Namespaced_IRI.parse _namespace_name "MediumScaleProcessing" |> NamespacedName
-
+    let MediumScaleProcessing = _prefix "MediumScaleProcessing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Member"></see>
     /// </summary>
-    let Member = Namespaced_IRI.parse _namespace_name "Member" |> NamespacedName
-
+    let Member = _prefix "Member"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MemberPartnerManagement"></see>
     /// </summary>
-    let MemberPartnerManagement =
-        Namespaced_IRI.parse _namespace_name "MemberPartnerManagement" |> NamespacedName
-
+    let MemberPartnerManagement = _prefix "MemberPartnerManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MentallyVulnerableDataSubject"></see>
     /// </summary>
-    let MentallyVulnerableDataSubject =
-        Namespaced_IRI.parse _namespace_name "MentallyVulnerableDataSubject" |> NamespacedName
-
+    let MentallyVulnerableDataSubject = _prefix "MentallyVulnerableDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MentallyVulnerableHuman"></see>
     /// </summary>
-    let MentallyVulnerableHuman =
-        Namespaced_IRI.parse _namespace_name "MentallyVulnerableHuman" |> NamespacedName
-
+    let MentallyVulnerableHuman = _prefix "MentallyVulnerableHuman"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MessageAuthenticationCodes"></see>
     /// </summary>
-    let MessageAuthenticationCodes =
-        Namespaced_IRI.parse _namespace_name "MessageAuthenticationCodes" |> NamespacedName
-
+    let MessageAuthenticationCodes = _prefix "MessageAuthenticationCodes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MetadataManagement"></see>
     /// </summary>
-    let MetadataManagement =
-        Namespaced_IRI.parse _namespace_name "MetadataManagement" |> NamespacedName
-
+    let MetadataManagement = _prefix "MetadataManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MobilePlatformSecurity"></see>
     /// </summary>
-    let MobilePlatformSecurity =
-        Namespaced_IRI.parse _namespace_name "MobilePlatformSecurity" |> NamespacedName
-
+    let MobilePlatformSecurity = _prefix "MobilePlatformSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Modify"></see>
     /// </summary>
-    let Modify = Namespaced_IRI.parse _namespace_name "Modify" |> NamespacedName
+    let Modify = _prefix "Modify"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Monitor"></see>
     /// </summary>
-    let Monitor = Namespaced_IRI.parse _namespace_name "Monitor" |> NamespacedName
-
+    let Monitor = _prefix "Monitor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MonitoringPolicy"></see>
     /// </summary>
-    let MonitoringPolicy =
-        Namespaced_IRI.parse _namespace_name "MonitoringPolicy" |> NamespacedName
-
+    let MonitoringPolicy = _prefix "MonitoringPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MonotonicCounterPseudonymisation"></see>
     /// </summary>
-    let MonotonicCounterPseudonymisation =
-        Namespaced_IRI.parse _namespace_name "MonotonicCounterPseudonymisation" |> NamespacedName
-
+    let MonotonicCounterPseudonymisation = _prefix "MonotonicCounterPseudonymisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Move"></see>
     /// </summary>
-    let Move = Namespaced_IRI.parse _namespace_name "Move" |> NamespacedName
-
+    let Move = _prefix "Move"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MultiFactorAuthentication"></see>
     /// </summary>
-    let MultiFactorAuthentication =
-        Namespaced_IRI.parse _namespace_name "MultiFactorAuthentication" |> NamespacedName
-
+    let MultiFactorAuthentication = _prefix "MultiFactorAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#MultiNationalScale"></see>
     /// </summary>
-    let MultiNationalScale =
-        Namespaced_IRI.parse _namespace_name "MultiNationalScale" |> NamespacedName
-
+    let MultiNationalScale = _prefix "MultiNationalScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NDA"></see>
     /// </summary>
-    let NDA = Namespaced_IRI.parse _namespace_name "NDA" |> NamespacedName
-
+    let NDA = _prefix "NDA"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NationalAuthority"></see>
     /// </summary>
-    let NationalAuthority =
-        Namespaced_IRI.parse _namespace_name "NationalAuthority" |> NamespacedName
-
+    let NationalAuthority = _prefix "NationalAuthority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NationalScale"></see>
     /// </summary>
-    let NationalScale =
-        Namespaced_IRI.parse _namespace_name "NationalScale" |> NamespacedName
-
+    let NationalScale = _prefix "NationalScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NaturalPerson"></see>
     /// </summary>
-    let NaturalPerson =
-        Namespaced_IRI.parse _namespace_name "NaturalPerson" |> NamespacedName
-
+    let NaturalPerson = _prefix "NaturalPerson"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NearlyGlobalScale"></see>
     /// </summary>
-    let NearlyGlobalScale =
-        Namespaced_IRI.parse _namespace_name "NearlyGlobalScale" |> NamespacedName
-
+    let NearlyGlobalScale = _prefix "NearlyGlobalScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Necessity"></see>
     /// </summary>
-    let Necessity = Namespaced_IRI.parse _namespace_name "Necessity" |> NamespacedName
-
+    let Necessity = _prefix "Necessity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NegotiateContract"></see>
     /// </summary>
-    let NegotiateContract =
-        Namespaced_IRI.parse _namespace_name "NegotiateContract" |> NamespacedName
-
+    let NegotiateContract = _prefix "NegotiateContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NegotiatedContract"></see>
     /// </summary>
-    let NegotiatedContract =
-        Namespaced_IRI.parse _namespace_name "NegotiatedContract" |> NamespacedName
-
+    let NegotiatedContract = _prefix "NegotiatedContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NetworkProxyRouting"></see>
     /// </summary>
-    let NetworkProxyRouting =
-        Namespaced_IRI.parse _namespace_name "NetworkProxyRouting" |> NamespacedName
-
+    let NetworkProxyRouting = _prefix "NetworkProxyRouting"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NetworkSecurityProtocols"></see>
     /// </summary>
-    let NetworkSecurityProtocols =
-        Namespaced_IRI.parse _namespace_name "NetworkSecurityProtocols" |> NamespacedName
-
+    let NetworkSecurityProtocols = _prefix "NetworkSecurityProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonCitizen"></see>
     /// </summary>
-    let NonCitizen = Namespaced_IRI.parse _namespace_name "NonCitizen" |> NamespacedName
-
+    let NonCitizen = _prefix "NonCitizen"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonCommercialPurpose"></see>
     /// </summary>
-    let NonCommercialPurpose =
-        Namespaced_IRI.parse _namespace_name "NonCommercialPurpose" |> NamespacedName
-
+    let NonCommercialPurpose = _prefix "NonCommercialPurpose"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonCommercialResearch"></see>
     /// </summary>
-    let NonCommercialResearch =
-        Namespaced_IRI.parse _namespace_name "NonCommercialResearch" |> NamespacedName
-
+    let NonCommercialResearch = _prefix "NonCommercialResearch"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonCompliant"></see>
     /// </summary>
-    let NonCompliant =
-        Namespaced_IRI.parse _namespace_name "NonCompliant" |> NamespacedName
-
+    let NonCompliant = _prefix "NonCompliant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonConformant"></see>
     /// </summary>
-    let NonConformant =
-        Namespaced_IRI.parse _namespace_name "NonConformant" |> NamespacedName
-
+    let NonConformant = _prefix "NonConformant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonGovernmentalOrganisation"></see>
     /// </summary>
-    let NonGovernmentalOrganisation =
-        Namespaced_IRI.parse _namespace_name "NonGovernmentalOrganisation" |> NamespacedName
-
+    let NonGovernmentalOrganisation = _prefix "NonGovernmentalOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonPersonalDataProcess"></see>
     /// </summary>
-    let NonPersonalDataProcess =
-        Namespaced_IRI.parse _namespace_name "NonPersonalDataProcess" |> NamespacedName
-
+    let NonPersonalDataProcess = _prefix "NonPersonalDataProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Process"></see>
     /// </summary>
-    let Process = Namespaced_IRI.parse _namespace_name "Process" |> NamespacedName
-
+    let Process = _prefix "Process"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#process-classes"></see>
     /// </summary>
-    let ``process-classes`` =
-        Namespaced_IRI.parse _namespace_name "process-classes" |> NamespacedName
-
+    let ``process-classes`` = _prefix "process-classes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonProfitOrganisation"></see>
     /// </summary>
-    let NonProfitOrganisation =
-        Namespaced_IRI.parse _namespace_name "NonProfitOrganisation" |> NamespacedName
-
+    let NonProfitOrganisation = _prefix "NonProfitOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NonPublicDataSource"></see>
     /// </summary>
-    let NonPublicDataSource =
-        Namespaced_IRI.parse _namespace_name "NonPublicDataSource" |> NamespacedName
-
+    let NonPublicDataSource = _prefix "NonPublicDataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotApplicable"></see>
     /// </summary>
-    let NotApplicable =
-        Namespaced_IRI.parse _namespace_name "NotApplicable" |> NamespacedName
-
+    let NotApplicable = _prefix "NotApplicable"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotAutomated"></see>
     /// </summary>
-    let NotAutomated =
-        Namespaced_IRI.parse _namespace_name "NotAutomated" |> NamespacedName
-
+    let NotAutomated = _prefix "NotAutomated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotAvailable"></see>
     /// </summary>
-    let NotAvailable =
-        Namespaced_IRI.parse _namespace_name "NotAvailable" |> NamespacedName
-
+    let NotAvailable = _prefix "NotAvailable"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotInvolved"></see>
     /// </summary>
-    let NotInvolved =
-        Namespaced_IRI.parse _namespace_name "NotInvolved" |> NamespacedName
-
+    let NotInvolved = _prefix "NotInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotRequired"></see>
     /// </summary>
-    let NotRequired =
-        Namespaced_IRI.parse _namespace_name "NotRequired" |> NamespacedName
-
+    let NotRequired = _prefix "NotRequired"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeCommunicated"></see>
     /// </summary>
-    let NoticeCommunicated =
-        Namespaced_IRI.parse _namespace_name "NoticeCommunicated" |> NamespacedName
-
+    let NoticeCommunicated = _prefix "NoticeCommunicated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeStatus"></see>
     /// </summary>
-    let NoticeStatus =
-        Namespaced_IRI.parse _namespace_name "NoticeStatus" |> NamespacedName
-
+    let NoticeStatus = _prefix "NoticeStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeGenerated"></see>
     /// </summary>
-    let NoticeGenerated =
-        Namespaced_IRI.parse _namespace_name "NoticeGenerated" |> NamespacedName
-
+    let NoticeGenerated = _prefix "NoticeGenerated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeIcon"></see>
     /// </summary>
-    let NoticeIcon = Namespaced_IRI.parse _namespace_name "NoticeIcon" |> NamespacedName
-
+    let NoticeIcon = _prefix "NoticeIcon"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeLatest"></see>
     /// </summary>
-    let NoticeLatest =
-        Namespaced_IRI.parse _namespace_name "NoticeLatest" |> NamespacedName
-
+    let NoticeLatest = _prefix "NoticeLatest"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeLayer"></see>
     /// </summary>
-    let NoticeLayer =
-        Namespaced_IRI.parse _namespace_name "NoticeLayer" |> NamespacedName
-
+    let NoticeLayer = _prefix "NoticeLayer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeStale"></see>
     /// </summary>
-    let NoticeStale =
-        Namespaced_IRI.parse _namespace_name "NoticeStale" |> NamespacedName
-
+    let NoticeStale = _prefix "NoticeStale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeUnused"></see>
     /// </summary>
-    let NoticeUnused =
-        Namespaced_IRI.parse _namespace_name "NoticeUnused" |> NamespacedName
-
+    let NoticeUnused = _prefix "NoticeUnused"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeUpdated"></see>
     /// </summary>
-    let NoticeUpdated =
-        Namespaced_IRI.parse _namespace_name "NoticeUpdated" |> NamespacedName
-
+    let NoticeUpdated = _prefix "NoticeUpdated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NoticeUsed"></see>
     /// </summary>
-    let NoticeUsed = Namespaced_IRI.parse _namespace_name "NoticeUsed" |> NamespacedName
-
+    let NoticeUsed = _prefix "NoticeUsed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Notification"></see>
     /// </summary>
-    let Notification =
-        Namespaced_IRI.parse _namespace_name "Notification" |> NamespacedName
-
+    let Notification = _prefix "Notification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotificationCompleted"></see>
     /// </summary>
-    let NotificationCompleted =
-        Namespaced_IRI.parse _namespace_name "NotificationCompleted" |> NamespacedName
-
+    let NotificationCompleted = _prefix "NotificationCompleted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotificationStatus"></see>
     /// </summary>
-    let NotificationStatus =
-        Namespaced_IRI.parse _namespace_name "NotificationStatus" |> NamespacedName
-
+    let NotificationStatus = _prefix "NotificationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotificationFailed"></see>
     /// </summary>
-    let NotificationFailed =
-        Namespaced_IRI.parse _namespace_name "NotificationFailed" |> NamespacedName
-
+    let NotificationFailed = _prefix "NotificationFailed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotificationNotNeeded"></see>
     /// </summary>
-    let NotificationNotNeeded =
-        Namespaced_IRI.parse _namespace_name "NotificationNotNeeded" |> NamespacedName
-
+    let NotificationNotNeeded = _prefix "NotificationNotNeeded"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotificationOngoing"></see>
     /// </summary>
-    let NotificationOngoing =
-        Namespaced_IRI.parse _namespace_name "NotificationOngoing" |> NamespacedName
-
+    let NotificationOngoing = _prefix "NotificationOngoing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#NotificationPlanned"></see>
     /// </summary>
-    let NotificationPlanned =
-        Namespaced_IRI.parse _namespace_name "NotificationPlanned" |> NamespacedName
-
+    let NotificationPlanned = _prefix "NotificationPlanned"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObjectingToProcess"></see>
     /// </summary>
-    let ObjectingToProcess =
-        Namespaced_IRI.parse _namespace_name "ObjectingToProcess" |> NamespacedName
-
+    let ObjectingToProcess = _prefix "ObjectingToProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Obligation"></see>
     /// </summary>
-    let Obligation = Namespaced_IRI.parse _namespace_name "Obligation" |> NamespacedName
-
+    let Obligation = _prefix "Obligation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObligationFulfilled"></see>
     /// </summary>
-    let ObligationFulfilled =
-        Namespaced_IRI.parse _namespace_name "ObligationFulfilled" |> NamespacedName
-
+    let ObligationFulfilled = _prefix "ObligationFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObligationUnfulfilled"></see>
     /// </summary>
-    let ObligationUnfulfilled =
-        Namespaced_IRI.parse _namespace_name "ObligationUnfulfilled" |> NamespacedName
-
+    let ObligationUnfulfilled = _prefix "ObligationUnfulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObligationViolated"></see>
     /// </summary>
-    let ObligationViolated =
-        Namespaced_IRI.parse _namespace_name "ObligationViolated" |> NamespacedName
-
+    let ObligationViolated = _prefix "ObligationViolated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RuleViolated"></see>
     /// </summary>
-    let RuleViolated =
-        Namespaced_IRI.parse _namespace_name "RuleViolated" |> NamespacedName
-
+    let RuleViolated = _prefix "RuleViolated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Observe"></see>
     /// </summary>
-    let Observe = Namespaced_IRI.parse _namespace_name "Observe" |> NamespacedName
-
+    let Observe = _prefix "Observe"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObservedData"></see>
     /// </summary>
-    let ObservedData =
-        Namespaced_IRI.parse _namespace_name "ObservedData" |> NamespacedName
-
+    let ObservedData = _prefix "ObservedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObservedPersonalData"></see>
     /// </summary>
-    let ObservedPersonalData =
-        Namespaced_IRI.parse _namespace_name "ObservedPersonalData" |> NamespacedName
-
+    let ObservedPersonalData = _prefix "ObservedPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ObtainConsent"></see>
     /// </summary>
-    let ObtainConsent =
-        Namespaced_IRI.parse _namespace_name "ObtainConsent" |> NamespacedName
-
+    let ObtainConsent = _prefix "ObtainConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OfferContract"></see>
     /// </summary>
-    let OfferContract =
-        Namespaced_IRI.parse _namespace_name "OfferContract" |> NamespacedName
+    let OfferContract = _prefix "OfferContract"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OfficialAuthorityExerciseCompleted"></see>
     /// </summary>
     let OfficialAuthorityExerciseCompleted =
-        Namespaced_IRI.parse _namespace_name "OfficialAuthorityExerciseCompleted" |> NamespacedName
+        _prefix "OfficialAuthorityExerciseCompleted"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OfficialAuthorityExerciseStatus"></see>
     /// </summary>
-    let OfficialAuthorityExerciseStatus =
-        Namespaced_IRI.parse _namespace_name "OfficialAuthorityExerciseStatus" |> NamespacedName
-
+    let OfficialAuthorityExerciseStatus = _prefix "OfficialAuthorityExerciseStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OfficialAuthorityExerciseOngoing"></see>
     /// </summary>
-    let OfficialAuthorityExerciseOngoing =
-        Namespaced_IRI.parse _namespace_name "OfficialAuthorityExerciseOngoing" |> NamespacedName
-
+    let OfficialAuthorityExerciseOngoing = _prefix "OfficialAuthorityExerciseOngoing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OfficialAuthorityExercisePending"></see>
     /// </summary>
-    let OfficialAuthorityExercisePending =
-        Namespaced_IRI.parse _namespace_name "OfficialAuthorityExercisePending" |> NamespacedName
-
+    let OfficialAuthorityExercisePending = _prefix "OfficialAuthorityExercisePending"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OfficialAuthorityOfController"></see>
     /// </summary>
-    let OfficialAuthorityOfController =
-        Namespaced_IRI.parse _namespace_name "OfficialAuthorityOfController" |> NamespacedName
-
+    let OfficialAuthorityOfController = _prefix "OfficialAuthorityOfController"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OftenFrequency"></see>
     /// </summary>
-    let OftenFrequency =
-        Namespaced_IRI.parse _namespace_name "OftenFrequency" |> NamespacedName
-
+    let OftenFrequency = _prefix "OftenFrequency"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OperatingSystemSecurity"></see>
     /// </summary>
-    let OperatingSystemSecurity =
-        Namespaced_IRI.parse _namespace_name "OperatingSystemSecurity" |> NamespacedName
-
+    let OperatingSystemSecurity = _prefix "OperatingSystemSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OptimisationForConsumer"></see>
     /// </summary>
-    let OptimisationForConsumer =
-        Namespaced_IRI.parse _namespace_name "OptimisationForConsumer" |> NamespacedName
-
+    let OptimisationForConsumer = _prefix "OptimisationForConsumer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceOptimisation"></see>
     /// </summary>
-    let ServiceOptimisation =
-        Namespaced_IRI.parse _namespace_name "ServiceOptimisation" |> NamespacedName
-
+    let ServiceOptimisation = _prefix "ServiceOptimisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OptimiseUserInterface"></see>
     /// </summary>
-    let OptimiseUserInterface =
-        Namespaced_IRI.parse _namespace_name "OptimiseUserInterface" |> NamespacedName
-
+    let OptimiseUserInterface = _prefix "OptimiseUserInterface"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OptingInToProcess"></see>
     /// </summary>
-    let OptingInToProcess =
-        Namespaced_IRI.parse _namespace_name "OptingInToProcess" |> NamespacedName
-
+    let OptingInToProcess = _prefix "OptingInToProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OptingOutFromProcess"></see>
     /// </summary>
-    let OptingOutFromProcess =
-        Namespaced_IRI.parse _namespace_name "OptingOutFromProcess" |> NamespacedName
-
+    let OptingOutFromProcess = _prefix "OptingOutFromProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Optional"></see>
     /// </summary>
-    let Optional = Namespaced_IRI.parse _namespace_name "Optional" |> NamespacedName
+    let Optional = _prefix "Optional"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OralNotice"></see>
     /// </summary>
-    let OralNotice = Namespaced_IRI.parse _namespace_name "OralNotice" |> NamespacedName
-
+    let OralNotice = _prefix "OralNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OrganisationComplianceManagement"></see>
     /// </summary>
-    let OrganisationComplianceManagement =
-        Namespaced_IRI.parse _namespace_name "OrganisationComplianceManagement" |> NamespacedName
-
+    let OrganisationComplianceManagement = _prefix "OrganisationComplianceManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OrganisationRiskManagement"></see>
     /// </summary>
-    let OrganisationRiskManagement =
-        Namespaced_IRI.parse _namespace_name "OrganisationRiskManagement" |> NamespacedName
-
+    let OrganisationRiskManagement = _prefix "OrganisationRiskManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#OrganisationalUnit"></see>
     /// </summary>
-    let OrganisationalUnit =
-        Namespaced_IRI.parse _namespace_name "OrganisationalUnit" |> NamespacedName
-
+    let OrganisationalUnit = _prefix "OrganisationalUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Organise"></see>
     /// </summary>
-    let Organise = Namespaced_IRI.parse _namespace_name "Organise" |> NamespacedName
+    let Organise = _prefix "Organise"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PIA"></see>
     /// </summary>
-    let PIA = Namespaced_IRI.parse _namespace_name "PIA" |> NamespacedName
-
+    let PIA = _prefix "PIA"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ParentLegalEntity"></see>
     /// </summary>
-    let ParentLegalEntity =
-        Namespaced_IRI.parse _namespace_name "ParentLegalEntity" |> NamespacedName
-
+    let ParentLegalEntity = _prefix "ParentLegalEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ParentOfDataSubject"></see>
     /// </summary>
-    let ParentOfDataSubject =
-        Namespaced_IRI.parse _namespace_name "ParentOfDataSubject" |> NamespacedName
-
+    let ParentOfDataSubject = _prefix "ParentOfDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ParentOfHuman"></see>
     /// </summary>
-    let ParentOfHuman =
-        Namespaced_IRI.parse _namespace_name "ParentOfHuman" |> NamespacedName
-
+    let ParentOfHuman = _prefix "ParentOfHuman"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PartialAutomation"></see>
     /// </summary>
-    let PartialAutomation =
-        Namespaced_IRI.parse _namespace_name "PartialAutomation" |> NamespacedName
-
+    let PartialAutomation = _prefix "PartialAutomation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PartiallyCompliant"></see>
     /// </summary>
-    let PartiallyCompliant =
-        Namespaced_IRI.parse _namespace_name "PartiallyCompliant" |> NamespacedName
-
+    let PartiallyCompliant = _prefix "PartiallyCompliant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Participant"></see>
     /// </summary>
-    let Participant =
-        Namespaced_IRI.parse _namespace_name "Participant" |> NamespacedName
-
+    let Participant = _prefix "Participant"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PassiveRight"></see>
     /// </summary>
-    let PassiveRight =
-        Namespaced_IRI.parse _namespace_name "PassiveRight" |> NamespacedName
-
+    let PassiveRight = _prefix "PassiveRight"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PassivelyInvolved"></see>
     /// </summary>
-    let PassivelyInvolved =
-        Namespaced_IRI.parse _namespace_name "PassivelyInvolved" |> NamespacedName
-
+    let PassivelyInvolved = _prefix "PassivelyInvolved"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PasswordAuthentication"></see>
     /// </summary>
-    let PasswordAuthentication =
-        Namespaced_IRI.parse _namespace_name "PasswordAuthentication" |> NamespacedName
-
+    let PasswordAuthentication = _prefix "PasswordAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Patient"></see>
     /// </summary>
-    let Patient = Namespaced_IRI.parse _namespace_name "Patient" |> NamespacedName
-
+    let Patient = _prefix "Patient"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PaymentManagement"></see>
     /// </summary>
-    let PaymentManagement =
-        Namespaced_IRI.parse _namespace_name "PaymentManagement" |> NamespacedName
-
+    let PaymentManagement = _prefix "PaymentManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceProvision"></see>
     /// </summary>
-    let ServiceProvision =
-        Namespaced_IRI.parse _namespace_name "ServiceProvision" |> NamespacedName
-
+    let ServiceProvision = _prefix "ServiceProvision"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PenetrationTestingMethods"></see>
     /// </summary>
-    let PenetrationTestingMethods =
-        Namespaced_IRI.parse _namespace_name "PenetrationTestingMethods" |> NamespacedName
-
+    let PenetrationTestingMethods = _prefix "PenetrationTestingMethods"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Permission"></see>
     /// </summary>
-    let Permission = Namespaced_IRI.parse _namespace_name "Permission" |> NamespacedName
-
+    let Permission = _prefix "Permission"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PermissionNotUtilised"></see>
     /// </summary>
-    let PermissionNotUtilised =
-        Namespaced_IRI.parse _namespace_name "PermissionNotUtilised" |> NamespacedName
-
+    let PermissionNotUtilised = _prefix "PermissionNotUtilised"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PermissionUtilised"></see>
     /// </summary>
-    let PermissionUtilised =
-        Namespaced_IRI.parse _namespace_name "PermissionUtilised" |> NamespacedName
-
+    let PermissionUtilised = _prefix "PermissionUtilised"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalDataAudit"></see>
     /// </summary>
-    let PersonalDataAudit =
-        Namespaced_IRI.parse _namespace_name "PersonalDataAudit" |> NamespacedName
-
+    let PersonalDataAudit = _prefix "PersonalDataAudit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalDataHandling"></see>
     /// </summary>
-    let PersonalDataHandling =
-        Namespaced_IRI.parse _namespace_name "PersonalDataHandling" |> NamespacedName
-
+    let PersonalDataHandling = _prefix "PersonalDataHandling"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalDataProcess"></see>
     /// </summary>
-    let PersonalDataProcess =
-        Namespaced_IRI.parse _namespace_name "PersonalDataProcess" |> NamespacedName
-
+    let PersonalDataProcess = _prefix "PersonalDataProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalSpace"></see>
     /// </summary>
-    let PersonalSpace =
-        Namespaced_IRI.parse _namespace_name "PersonalSpace" |> NamespacedName
-
+    let PersonalSpace = _prefix "PersonalSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Personalisation"></see>
     /// </summary>
-    let Personalisation =
-        Namespaced_IRI.parse _namespace_name "Personalisation" |> NamespacedName
-
+    let Personalisation = _prefix "Personalisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalisedAdvertising"></see>
     /// </summary>
-    let PersonalisedAdvertising =
-        Namespaced_IRI.parse _namespace_name "PersonalisedAdvertising" |> NamespacedName
-
+    let PersonalisedAdvertising = _prefix "PersonalisedAdvertising"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonalisedBenefits"></see>
     /// </summary>
-    let PersonalisedBenefits =
-        Namespaced_IRI.parse _namespace_name "PersonalisedBenefits" |> NamespacedName
-
+    let PersonalisedBenefits = _prefix "PersonalisedBenefits"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServicePersonalisation"></see>
     /// </summary>
-    let ServicePersonalisation =
-        Namespaced_IRI.parse _namespace_name "ServicePersonalisation" |> NamespacedName
-
+    let ServicePersonalisation = _prefix "ServicePersonalisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelBehaviourMonitoring"></see>
     /// </summary>
-    let PersonnelBehaviourMonitoring =
-        Namespaced_IRI.parse _namespace_name "PersonnelBehaviourMonitoring" |> NamespacedName
-
+    let PersonnelBehaviourMonitoring = _prefix "PersonnelBehaviourMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelMonitoring"></see>
     /// </summary>
-    let PersonnelMonitoring =
-        Namespaced_IRI.parse _namespace_name "PersonnelMonitoring" |> NamespacedName
-
+    let PersonnelMonitoring = _prefix "PersonnelMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelHiring"></see>
     /// </summary>
-    let PersonnelHiring =
-        Namespaced_IRI.parse _namespace_name "PersonnelHiring" |> NamespacedName
-
+    let PersonnelHiring = _prefix "PersonnelHiring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelManagement"></see>
     /// </summary>
-    let PersonnelManagement =
-        Namespaced_IRI.parse _namespace_name "PersonnelManagement" |> NamespacedName
-
+    let PersonnelManagement = _prefix "PersonnelManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelOffboarding"></see>
     /// </summary>
-    let PersonnelOffboarding =
-        Namespaced_IRI.parse _namespace_name "PersonnelOffboarding" |> NamespacedName
-
+    let PersonnelOffboarding = _prefix "PersonnelOffboarding"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelOnboarding"></see>
     /// </summary>
-    let PersonnelOnboarding =
-        Namespaced_IRI.parse _namespace_name "PersonnelOnboarding" |> NamespacedName
-
+    let PersonnelOnboarding = _prefix "PersonnelOnboarding"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelPayment"></see>
     /// </summary>
-    let PersonnelPayment =
-        Namespaced_IRI.parse _namespace_name "PersonnelPayment" |> NamespacedName
-
+    let PersonnelPayment = _prefix "PersonnelPayment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelPerformanceEvaluation"></see>
     /// </summary>
-    let PersonnelPerformanceEvaluation =
-        Namespaced_IRI.parse _namespace_name "PersonnelPerformanceEvaluation" |> NamespacedName
-
+    let PersonnelPerformanceEvaluation = _prefix "PersonnelPerformanceEvaluation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelPerformanceManagement"></see>
     /// </summary>
-    let PersonnelPerformanceManagement =
-        Namespaced_IRI.parse _namespace_name "PersonnelPerformanceManagement" |> NamespacedName
-
+    let PersonnelPerformanceManagement = _prefix "PersonnelPerformanceManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelPerformanceMonitoring"></see>
     /// </summary>
-    let PersonnelPerformanceMonitoring =
-        Namespaced_IRI.parse _namespace_name "PersonnelPerformanceMonitoring" |> NamespacedName
-
+    let PersonnelPerformanceMonitoring = _prefix "PersonnelPerformanceMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelPerformancePrediction"></see>
     /// </summary>
-    let PersonnelPerformancePrediction =
-        Namespaced_IRI.parse _namespace_name "PersonnelPerformancePrediction" |> NamespacedName
-
+    let PersonnelPerformancePrediction = _prefix "PersonnelPerformancePrediction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelPromotionManagement"></see>
     /// </summary>
-    let PersonnelPromotionManagement =
-        Namespaced_IRI.parse _namespace_name "PersonnelPromotionManagement" |> NamespacedName
-
+    let PersonnelPromotionManagement = _prefix "PersonnelPromotionManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelTerminationManagement"></see>
     /// </summary>
-    let PersonnelTerminationManagement =
-        Namespaced_IRI.parse _namespace_name "PersonnelTerminationManagement" |> NamespacedName
-
+    let PersonnelTerminationManagement = _prefix "PersonnelTerminationManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PersonnelWorkloadManagement"></see>
     /// </summary>
-    let PersonnelWorkloadManagement =
-        Namespaced_IRI.parse _namespace_name "PersonnelWorkloadManagement" |> NamespacedName
-
+    let PersonnelWorkloadManagement = _prefix "PersonnelWorkloadManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalAccessControlMethod"></see>
     /// </summary>
-    let PhysicalAccessControlMethod =
-        Namespaced_IRI.parse _namespace_name "PhysicalAccessControlMethod" |> NamespacedName
-
+    let PhysicalAccessControlMethod = _prefix "PhysicalAccessControlMethod"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalAuthentication"></see>
     /// </summary>
-    let PhysicalAuthentication =
-        Namespaced_IRI.parse _namespace_name "PhysicalAuthentication" |> NamespacedName
-
+    let PhysicalAuthentication = _prefix "PhysicalAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalAuthorisation"></see>
     /// </summary>
-    let PhysicalAuthorisation =
-        Namespaced_IRI.parse _namespace_name "PhysicalAuthorisation" |> NamespacedName
-
+    let PhysicalAuthorisation = _prefix "PhysicalAuthorisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalDeviceSecurity"></see>
     /// </summary>
-    let PhysicalDeviceSecurity =
-        Namespaced_IRI.parse _namespace_name "PhysicalDeviceSecurity" |> NamespacedName
-
+    let PhysicalDeviceSecurity = _prefix "PhysicalDeviceSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalInterceptionProtection"></see>
     /// </summary>
-    let PhysicalInterceptionProtection =
-        Namespaced_IRI.parse _namespace_name "PhysicalInterceptionProtection" |> NamespacedName
-
+    let PhysicalInterceptionProtection = _prefix "PhysicalInterceptionProtection"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalInterruptionProtection"></see>
     /// </summary>
-    let PhysicalInterruptionProtection =
-        Namespaced_IRI.parse _namespace_name "PhysicalInterruptionProtection" |> NamespacedName
-
+    let PhysicalInterruptionProtection = _prefix "PhysicalInterruptionProtection"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalNetworkSecurity"></see>
     /// </summary>
-    let PhysicalNetworkSecurity =
-        Namespaced_IRI.parse _namespace_name "PhysicalNetworkSecurity" |> NamespacedName
-
+    let PhysicalNetworkSecurity = _prefix "PhysicalNetworkSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalSecureStorage"></see>
     /// </summary>
-    let PhysicalSecureStorage =
-        Namespaced_IRI.parse _namespace_name "PhysicalSecureStorage" |> NamespacedName
-
+    let PhysicalSecureStorage = _prefix "PhysicalSecureStorage"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalSupplySecurity"></see>
     /// </summary>
-    let PhysicalSupplySecurity =
-        Namespaced_IRI.parse _namespace_name "PhysicalSupplySecurity" |> NamespacedName
-
+    let PhysicalSupplySecurity = _prefix "PhysicalSupplySecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PhysicalSurveillance"></see>
     /// </summary>
-    let PhysicalSurveillance =
-        Namespaced_IRI.parse _namespace_name "PhysicalSurveillance" |> NamespacedName
-
+    let PhysicalSurveillance = _prefix "PhysicalSurveillance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PoliticalCampaign"></see>
     /// </summary>
-    let PoliticalCampaign =
-        Namespaced_IRI.parse _namespace_name "PoliticalCampaign" |> NamespacedName
-
+    let PoliticalCampaign = _prefix "PoliticalCampaign"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PostQuantumCryptography"></see>
     /// </summary>
-    let PostQuantumCryptography =
-        Namespaced_IRI.parse _namespace_name "PostQuantumCryptography" |> NamespacedName
-
+    let PostQuantumCryptography = _prefix "PostQuantumCryptography"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PostedNotice"></see>
     /// </summary>
-    let PostedNotice =
-        Namespaced_IRI.parse _namespace_name "PostedNotice" |> NamespacedName
-
+    let PostedNotice = _prefix "PostedNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrimaryImportance"></see>
     /// </summary>
-    let PrimaryImportance =
-        Namespaced_IRI.parse _namespace_name "PrimaryImportance" |> NamespacedName
-
+    let PrimaryImportance = _prefix "PrimaryImportance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrimaryUse"></see>
     /// </summary>
-    let PrimaryUse = Namespaced_IRI.parse _namespace_name "PrimaryUse" |> NamespacedName
+    let PrimaryUse = _prefix "PrimaryUse"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Principle"></see>
     /// </summary>
-    let Principle = Namespaced_IRI.parse _namespace_name "Principle" |> NamespacedName
-
+    let Principle = _prefix "Principle"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrintedNotice"></see>
     /// </summary>
-    let PrintedNotice =
-        Namespaced_IRI.parse _namespace_name "PrintedNotice" |> NamespacedName
-
+    let PrintedNotice = _prefix "PrintedNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivacyByDefault"></see>
     /// </summary>
-    let PrivacyByDefault =
-        Namespaced_IRI.parse _namespace_name "PrivacyByDefault" |> NamespacedName
-
+    let PrivacyByDefault = _prefix "PrivacyByDefault"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivacyByDesign"></see>
     /// </summary>
-    let PrivacyByDesign =
-        Namespaced_IRI.parse _namespace_name "PrivacyByDesign" |> NamespacedName
-
+    let PrivacyByDesign = _prefix "PrivacyByDesign"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivacyPreservingProtocol"></see>
     /// </summary>
-    let PrivacyPreservingProtocol =
-        Namespaced_IRI.parse _namespace_name "PrivacyPreservingProtocol" |> NamespacedName
-
+    let PrivacyPreservingProtocol = _prefix "PrivacyPreservingProtocol"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivateCommunalSpace"></see>
     /// </summary>
-    let PrivateCommunalSpace =
-        Namespaced_IRI.parse _namespace_name "PrivateCommunalSpace" |> NamespacedName
-
+    let PrivateCommunalSpace = _prefix "PrivateCommunalSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivateInformationRetrieval"></see>
     /// </summary>
-    let PrivateInformationRetrieval =
-        Namespaced_IRI.parse _namespace_name "PrivateInformationRetrieval" |> NamespacedName
-
+    let PrivateInformationRetrieval = _prefix "PrivateInformationRetrieval"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivateLocation"></see>
     /// </summary>
-    let PrivateLocation =
-        Namespaced_IRI.parse _namespace_name "PrivateLocation" |> NamespacedName
-
+    let PrivateLocation = _prefix "PrivateLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivateSectorBody"></see>
     /// </summary>
-    let PrivateSectorBody =
-        Namespaced_IRI.parse _namespace_name "PrivateSectorBody" |> NamespacedName
-
+    let PrivateSectorBody = _prefix "PrivateSectorBody"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivatelyOperatedPublicSpace"></see>
     /// </summary>
-    let PrivatelyOperatedPublicSpace =
-        Namespaced_IRI.parse _namespace_name "PrivatelyOperatedPublicSpace" |> NamespacedName
-
+    let PrivatelyOperatedPublicSpace = _prefix "PrivatelyOperatedPublicSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PubliclyAccessibleSpace"></see>
     /// </summary>
-    let PubliclyAccessibleSpace =
-        Namespaced_IRI.parse _namespace_name "PubliclyAccessibleSpace" |> NamespacedName
-
+    let PubliclyAccessibleSpace = _prefix "PubliclyAccessibleSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivatelyOwnedPublicSpace"></see>
     /// </summary>
-    let PrivatelyOwnedPublicSpace =
-        Namespaced_IRI.parse _namespace_name "PrivatelyOwnedPublicSpace" |> NamespacedName
-
+    let PrivatelyOwnedPublicSpace = _prefix "PrivatelyOwnedPublicSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PrivatelyOwnedSpace"></see>
     /// </summary>
-    let PrivatelyOwnedSpace =
-        Namespaced_IRI.parse _namespace_name "PrivatelyOwnedSpace" |> NamespacedName
-
+    let PrivatelyOwnedSpace = _prefix "PrivatelyOwnedSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProcessingCondition"></see>
     /// </summary>
-    let ProcessingCondition =
-        Namespaced_IRI.parse _namespace_name "ProcessingCondition" |> NamespacedName
-
+    let ProcessingCondition = _prefix "ProcessingCondition"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProcessingDuration"></see>
     /// </summary>
-    let ProcessingDuration =
-        Namespaced_IRI.parse _namespace_name "ProcessingDuration" |> NamespacedName
-
+    let ProcessingDuration = _prefix "ProcessingDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProcessingLocation"></see>
     /// </summary>
-    let ProcessingLocation =
-        Namespaced_IRI.parse _namespace_name "ProcessingLocation" |> NamespacedName
-
+    let ProcessingLocation = _prefix "ProcessingLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProfessionalConfidentialData"></see>
     /// </summary>
-    let ProfessionalConfidentialData =
-        Namespaced_IRI.parse _namespace_name "ProfessionalConfidentialData" |> NamespacedName
-
+    let ProfessionalConfidentialData = _prefix "ProfessionalConfidentialData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProfessionalTraining"></see>
     /// </summary>
-    let ProfessionalTraining =
-        Namespaced_IRI.parse _namespace_name "ProfessionalTraining" |> NamespacedName
-
+    let ProfessionalTraining = _prefix "ProfessionalTraining"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Profiling"></see>
     /// </summary>
-    let Profiling = Namespaced_IRI.parse _namespace_name "Profiling" |> NamespacedName
-
+    let Profiling = _prefix "Profiling"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Prohibition"></see>
     /// </summary>
-    let Prohibition =
-        Namespaced_IRI.parse _namespace_name "Prohibition" |> NamespacedName
-
+    let Prohibition = _prefix "Prohibition"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProhibitionUnviolated"></see>
     /// </summary>
-    let ProhibitionUnviolated =
-        Namespaced_IRI.parse _namespace_name "ProhibitionUnviolated" |> NamespacedName
-
+    let ProhibitionUnviolated = _prefix "ProhibitionUnviolated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProhibitionViolated"></see>
     /// </summary>
-    let ProhibitionViolated =
-        Namespaced_IRI.parse _namespace_name "ProhibitionViolated" |> NamespacedName
-
+    let ProhibitionViolated = _prefix "ProhibitionViolated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProtectionOfIPR"></see>
     /// </summary>
-    let ProtectionOfIPR =
-        Namespaced_IRI.parse _namespace_name "ProtectionOfIPR" |> NamespacedName
-
+    let ProtectionOfIPR = _prefix "ProtectionOfIPR"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProtectionOfNationalSecurity"></see>
     /// </summary>
-    let ProtectionOfNationalSecurity =
-        Namespaced_IRI.parse _namespace_name "ProtectionOfNationalSecurity" |> NamespacedName
-
+    let ProtectionOfNationalSecurity = _prefix "ProtectionOfNationalSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProtectionOfPublicSecurity"></see>
     /// </summary>
-    let ProtectionOfPublicSecurity =
-        Namespaced_IRI.parse _namespace_name "ProtectionOfPublicSecurity" |> NamespacedName
-
+    let ProtectionOfPublicSecurity = _prefix "ProtectionOfPublicSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvideEventRecommendations"></see>
     /// </summary>
-    let ProvideEventRecommendations =
-        Namespaced_IRI.parse _namespace_name "ProvideEventRecommendations" |> NamespacedName
+    let ProvideEventRecommendations = _prefix "ProvideEventRecommendations"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvidePersonalisedRecommendations"></see>
     /// </summary>
     let ProvidePersonalisedRecommendations =
-        Namespaced_IRI.parse _namespace_name "ProvidePersonalisedRecommendations" |> NamespacedName
+        _prefix "ProvidePersonalisedRecommendations"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvideOfficialStatistics"></see>
     /// </summary>
-    let ProvideOfficialStatistics =
-        Namespaced_IRI.parse _namespace_name "ProvideOfficialStatistics" |> NamespacedName
-
+    let ProvideOfficialStatistics = _prefix "ProvideOfficialStatistics"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvideProductRecommendations"></see>
     /// </summary>
-    let ProvideProductRecommendations =
-        Namespaced_IRI.parse _namespace_name "ProvideProductRecommendations" |> NamespacedName
-
+    let ProvideProductRecommendations = _prefix "ProvideProductRecommendations"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvidedData"></see>
     /// </summary>
-    let ProvidedData =
-        Namespaced_IRI.parse _namespace_name "ProvidedData" |> NamespacedName
-
+    let ProvidedData = _prefix "ProvidedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProvidedPersonalData"></see>
     /// </summary>
-    let ProvidedPersonalData =
-        Namespaced_IRI.parse _namespace_name "ProvidedPersonalData" |> NamespacedName
-
+    let ProvidedPersonalData = _prefix "ProvidedPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ProviderStandardFormContract"></see>
     /// </summary>
-    let ProviderStandardFormContract =
-        Namespaced_IRI.parse _namespace_name "ProviderStandardFormContract" |> NamespacedName
-
+    let ProviderStandardFormContract = _prefix "ProviderStandardFormContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Pseudonymise"></see>
     /// </summary>
-    let Pseudonymise =
-        Namespaced_IRI.parse _namespace_name "Pseudonymise" |> NamespacedName
-
+    let Pseudonymise = _prefix "Pseudonymise"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicDataSource"></see>
     /// </summary>
-    let PublicDataSource =
-        Namespaced_IRI.parse _namespace_name "PublicDataSource" |> NamespacedName
-
+    let PublicDataSource = _prefix "PublicDataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicInterest"></see>
     /// </summary>
-    let PublicInterest =
-        Namespaced_IRI.parse _namespace_name "PublicInterest" |> NamespacedName
-
+    let PublicInterest = _prefix "PublicInterest"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicInterestCompleted"></see>
     /// </summary>
-    let PublicInterestCompleted =
-        Namespaced_IRI.parse _namespace_name "PublicInterestCompleted" |> NamespacedName
-
+    let PublicInterestCompleted = _prefix "PublicInterestCompleted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicInterestStatus"></see>
     /// </summary>
-    let PublicInterestStatus =
-        Namespaced_IRI.parse _namespace_name "PublicInterestStatus" |> NamespacedName
-
+    let PublicInterestStatus = _prefix "PublicInterestStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicInterestObjected"></see>
     /// </summary>
-    let PublicInterestObjected =
-        Namespaced_IRI.parse _namespace_name "PublicInterestObjected" |> NamespacedName
-
+    let PublicInterestObjected = _prefix "PublicInterestObjected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicInterestOngoing"></see>
     /// </summary>
-    let PublicInterestOngoing =
-        Namespaced_IRI.parse _namespace_name "PublicInterestOngoing" |> NamespacedName
-
+    let PublicInterestOngoing = _prefix "PublicInterestOngoing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicInterestPending"></see>
     /// </summary>
-    let PublicInterestPending =
-        Namespaced_IRI.parse _namespace_name "PublicInterestPending" |> NamespacedName
-
+    let PublicInterestPending = _prefix "PublicInterestPending"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicLocation"></see>
     /// </summary>
-    let PublicLocation =
-        Namespaced_IRI.parse _namespace_name "PublicLocation" |> NamespacedName
-
+    let PublicLocation = _prefix "PublicLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicPolicyMaking"></see>
     /// </summary>
-    let PublicPolicyMaking =
-        Namespaced_IRI.parse _namespace_name "PublicPolicyMaking" |> NamespacedName
-
+    let PublicPolicyMaking = _prefix "PublicPolicyMaking"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicRegisterOfEntities"></see>
     /// </summary>
-    let PublicRegisterOfEntities =
-        Namespaced_IRI.parse _namespace_name "PublicRegisterOfEntities" |> NamespacedName
-
+    let PublicRegisterOfEntities = _prefix "PublicRegisterOfEntities"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicRelations"></see>
     /// </summary>
-    let PublicRelations =
-        Namespaced_IRI.parse _namespace_name "PublicRelations" |> NamespacedName
-
+    let PublicRelations = _prefix "PublicRelations"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PublicSectorBody"></see>
     /// </summary>
-    let PublicSectorBody =
-        Namespaced_IRI.parse _namespace_name "PublicSectorBody" |> NamespacedName
-
+    let PublicSectorBody = _prefix "PublicSectorBody"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#PubliclyOwnedSpace"></see>
     /// </summary>
-    let PubliclyOwnedSpace =
-        Namespaced_IRI.parse _namespace_name "PubliclyOwnedSpace" |> NamespacedName
-
+    let PubliclyOwnedSpace = _prefix "PubliclyOwnedSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#QuantumCryptography"></see>
     /// </summary>
-    let QuantumCryptography =
-        Namespaced_IRI.parse _namespace_name "QuantumCryptography" |> NamespacedName
-
+    let QuantumCryptography = _prefix "QuantumCryptography"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Query"></see>
     /// </summary>
-    let Query = Namespaced_IRI.parse _namespace_name "Query" |> NamespacedName
-
+    let Query = _prefix "Query"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RNGPseudonymisation"></see>
     /// </summary>
-    let RNGPseudonymisation =
-        Namespaced_IRI.parse _namespace_name "RNGPseudonymisation" |> NamespacedName
-
+    let RNGPseudonymisation = _prefix "RNGPseudonymisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ROPA"></see>
     /// </summary>
-    let ROPA = Namespaced_IRI.parse _namespace_name "ROPA" |> NamespacedName
-
+    let ROPA = _prefix "ROPA"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RandomLocation"></see>
     /// </summary>
-    let RandomLocation =
-        Namespaced_IRI.parse _namespace_name "RandomLocation" |> NamespacedName
-
+    let RandomLocation = _prefix "RandomLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecertificationPolicy"></see>
     /// </summary>
-    let RecertificationPolicy =
-        Namespaced_IRI.parse _namespace_name "RecertificationPolicy" |> NamespacedName
-
+    let RecertificationPolicy = _prefix "RecertificationPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecipientInformed"></see>
     /// </summary>
-    let RecipientInformed =
-        Namespaced_IRI.parse _namespace_name "RecipientInformed" |> NamespacedName
-
+    let RecipientInformed = _prefix "RecipientInformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecipientUninformed"></see>
     /// </summary>
-    let RecipientUninformed =
-        Namespaced_IRI.parse _namespace_name "RecipientUninformed" |> NamespacedName
-
+    let RecipientUninformed = _prefix "RecipientUninformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Recommendation"></see>
     /// </summary>
-    let Recommendation =
-        Namespaced_IRI.parse _namespace_name "Recommendation" |> NamespacedName
-
+    let Recommendation = _prefix "Recommendation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecommendationFollowed"></see>
     /// </summary>
-    let RecommendationFollowed =
-        Namespaced_IRI.parse _namespace_name "RecommendationFollowed" |> NamespacedName
-
+    let RecommendationFollowed = _prefix "RecommendationFollowed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecommendationNotFollowed"></see>
     /// </summary>
-    let RecommendationNotFollowed =
-        Namespaced_IRI.parse _namespace_name "RecommendationNotFollowed" |> NamespacedName
-
+    let RecommendationNotFollowed = _prefix "RecommendationNotFollowed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Record"></see>
     /// </summary>
-    let Record = Namespaced_IRI.parse _namespace_name "Record" |> NamespacedName
-
+    let Record = _prefix "Record"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecordManagement"></see>
     /// </summary>
-    let RecordManagement =
-        Namespaced_IRI.parse _namespace_name "RecordManagement" |> NamespacedName
-
+    let RecordManagement = _prefix "RecordManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentAdvertising"></see>
     /// </summary>
-    let RecruitmentAdvertising =
-        Namespaced_IRI.parse _namespace_name "RecruitmentAdvertising" |> NamespacedName
+    let RecruitmentAdvertising = _prefix "RecruitmentAdvertising"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicantBackgroundCheck"></see>
     /// </summary>
     let RecruitmentApplicantBackgroundCheck =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicantBackgroundCheck" |> NamespacedName
+        _prefix "RecruitmentApplicantBackgroundCheck"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentManagement"></see>
     /// </summary>
-    let RecruitmentManagement =
-        Namespaced_IRI.parse _namespace_name "RecruitmentManagement" |> NamespacedName
+    let RecruitmentManagement = _prefix "RecruitmentManagement"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicantCriminalBackgroundCheck"></see>
     /// </summary>
     let RecruitmentApplicantCriminalBackgroundCheck =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicantCriminalBackgroundCheck" |> NamespacedName
+        _prefix "RecruitmentApplicantCriminalBackgroundCheck"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicantInformationAuthentication"></see>
     /// </summary>
     let RecruitmentApplicantInformationAuthentication =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicantInformationAuthentication" |> NamespacedName
+        _prefix "RecruitmentApplicantInformationAuthentication"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicantSelection"></see>
     /// </summary>
-    let RecruitmentApplicantSelection =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicantSelection" |> NamespacedName
-
+    let RecruitmentApplicantSelection = _prefix "RecruitmentApplicantSelection"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicationAnalysis"></see>
     /// </summary>
-    let RecruitmentApplicationAnalysis =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicationAnalysis" |> NamespacedName
-
+    let RecruitmentApplicationAnalysis = _prefix "RecruitmentApplicationAnalysis"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicationManagement"></see>
     /// </summary>
-    let RecruitmentApplicationManagement =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicationManagement" |> NamespacedName
-
+    let RecruitmentApplicationManagement = _prefix "RecruitmentApplicationManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentApplicationScreening"></see>
     /// </summary>
-    let RecruitmentApplicationScreening =
-        Namespaced_IRI.parse _namespace_name "RecruitmentApplicationScreening" |> NamespacedName
-
+    let RecruitmentApplicationScreening = _prefix "RecruitmentApplicationScreening"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentInterviewAnalysis"></see>
     /// </summary>
-    let RecruitmentInterviewAnalysis =
-        Namespaced_IRI.parse _namespace_name "RecruitmentInterviewAnalysis" |> NamespacedName
-
+    let RecruitmentInterviewAnalysis = _prefix "RecruitmentInterviewAnalysis"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentInterviewManagement"></see>
     /// </summary>
-    let RecruitmentInterviewManagement =
-        Namespaced_IRI.parse _namespace_name "RecruitmentInterviewManagement" |> NamespacedName
-
+    let RecruitmentInterviewManagement = _prefix "RecruitmentInterviewManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentInterviewAssessment"></see>
     /// </summary>
-    let RecruitmentInterviewAssessment =
-        Namespaced_IRI.parse _namespace_name "RecruitmentInterviewAssessment" |> NamespacedName
-
+    let RecruitmentInterviewAssessment = _prefix "RecruitmentInterviewAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentInterviewScheduling"></see>
     /// </summary>
-    let RecruitmentInterviewScheduling =
-        Namespaced_IRI.parse _namespace_name "RecruitmentInterviewScheduling" |> NamespacedName
-
+    let RecruitmentInterviewScheduling = _prefix "RecruitmentInterviewScheduling"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RecruitmentTargetedAdvertising"></see>
     /// </summary>
-    let RecruitmentTargetedAdvertising =
-        Namespaced_IRI.parse _namespace_name "RecruitmentTargetedAdvertising" |> NamespacedName
-
+    let RecruitmentTargetedAdvertising = _prefix "RecruitmentTargetedAdvertising"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TargetedAdvertising"></see>
     /// </summary>
-    let TargetedAdvertising =
-        Namespaced_IRI.parse _namespace_name "TargetedAdvertising" |> NamespacedName
-
+    let TargetedAdvertising = _prefix "TargetedAdvertising"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Reformat"></see>
     /// </summary>
-    let Reformat = Namespaced_IRI.parse _namespace_name "Reformat" |> NamespacedName
-
+    let Reformat = _prefix "Reformat"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RefuseConsent"></see>
     /// </summary>
-    let RefuseConsent =
-        Namespaced_IRI.parse _namespace_name "RefuseConsent" |> NamespacedName
-
+    let RefuseConsent = _prefix "RefuseConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RefuseContract"></see>
     /// </summary>
-    let RefuseContract =
-        Namespaced_IRI.parse _namespace_name "RefuseContract" |> NamespacedName
-
+    let RefuseContract = _prefix "RefuseContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RegionalAuthority"></see>
     /// </summary>
-    let RegionalAuthority =
-        Namespaced_IRI.parse _namespace_name "RegionalAuthority" |> NamespacedName
-
+    let RegionalAuthority = _prefix "RegionalAuthority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RegionalScale"></see>
     /// </summary>
-    let RegionalScale =
-        Namespaced_IRI.parse _namespace_name "RegionalScale" |> NamespacedName
-
+    let RegionalScale = _prefix "RegionalScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RegulatorySandbox"></see>
     /// </summary>
-    let RegulatorySandbox =
-        Namespaced_IRI.parse _namespace_name "RegulatorySandbox" |> NamespacedName
-
+    let RegulatorySandbox = _prefix "RegulatorySandbox"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Safeguard"></see>
     /// </summary>
-    let Safeguard = Namespaced_IRI.parse _namespace_name "Safeguard" |> NamespacedName
-
+    let Safeguard = _prefix "Safeguard"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReligiousAssociations"></see>
     /// </summary>
-    let ReligiousAssociations =
-        Namespaced_IRI.parse _namespace_name "ReligiousAssociations" |> NamespacedName
-
+    let ReligiousAssociations = _prefix "ReligiousAssociations"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RenewedConsentGiven"></see>
     /// </summary>
-    let RenewedConsentGiven =
-        Namespaced_IRI.parse _namespace_name "RenewedConsentGiven" |> NamespacedName
-
+    let RenewedConsentGiven = _prefix "RenewedConsentGiven"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RepairImpairments"></see>
     /// </summary>
-    let RepairImpairments =
-        Namespaced_IRI.parse _namespace_name "RepairImpairments" |> NamespacedName
-
+    let RepairImpairments = _prefix "RepairImpairments"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestAccepted"></see>
     /// </summary>
-    let RequestAccepted =
-        Namespaced_IRI.parse _namespace_name "RequestAccepted" |> NamespacedName
-
+    let RequestAccepted = _prefix "RequestAccepted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestStatus"></see>
     /// </summary>
-    let RequestStatus =
-        Namespaced_IRI.parse _namespace_name "RequestStatus" |> NamespacedName
-
+    let RequestStatus = _prefix "RequestStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestAcknowledged"></see>
     /// </summary>
-    let RequestAcknowledged =
-        Namespaced_IRI.parse _namespace_name "RequestAcknowledged" |> NamespacedName
-
+    let RequestAcknowledged = _prefix "RequestAcknowledged"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestActionDelayed"></see>
     /// </summary>
-    let RequestActionDelayed =
-        Namespaced_IRI.parse _namespace_name "RequestActionDelayed" |> NamespacedName
-
+    let RequestActionDelayed = _prefix "RequestActionDelayed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestFulfilled"></see>
     /// </summary>
-    let RequestFulfilled =
-        Namespaced_IRI.parse _namespace_name "RequestFulfilled" |> NamespacedName
-
+    let RequestFulfilled = _prefix "RequestFulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestInitiated"></see>
     /// </summary>
-    let RequestInitiated =
-        Namespaced_IRI.parse _namespace_name "RequestInitiated" |> NamespacedName
-
+    let RequestInitiated = _prefix "RequestInitiated"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestRejected"></see>
     /// </summary>
-    let RequestRejected =
-        Namespaced_IRI.parse _namespace_name "RequestRejected" |> NamespacedName
-
+    let RequestRejected = _prefix "RequestRejected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestRequiredActionPerformed"></see>
     /// </summary>
-    let RequestRequiredActionPerformed =
-        Namespaced_IRI.parse _namespace_name "RequestRequiredActionPerformed" |> NamespacedName
-
+    let RequestRequiredActionPerformed = _prefix "RequestRequiredActionPerformed"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestRequiresAction"></see>
     /// </summary>
-    let RequestRequiresAction =
-        Namespaced_IRI.parse _namespace_name "RequestRequiresAction" |> NamespacedName
-
+    let RequestRequiresAction = _prefix "RequestRequiresAction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestStatusQuery"></see>
     /// </summary>
-    let RequestStatusQuery =
-        Namespaced_IRI.parse _namespace_name "RequestStatusQuery" |> NamespacedName
-
+    let RequestStatusQuery = _prefix "RequestStatusQuery"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RequestUnfulfilled"></see>
     /// </summary>
-    let RequestUnfulfilled =
-        Namespaced_IRI.parse _namespace_name "RequestUnfulfilled" |> NamespacedName
-
+    let RequestUnfulfilled = _prefix "RequestUnfulfilled"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Required"></see>
     /// </summary>
-    let Required = Namespaced_IRI.parse _namespace_name "Required" |> NamespacedName
-
+    let Required = _prefix "Required"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ResidualRisk"></see>
     /// </summary>
-    let ResidualRisk =
-        Namespaced_IRI.parse _namespace_name "ResidualRisk" |> NamespacedName
-
+    let ResidualRisk = _prefix "ResidualRisk"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Risk"></see>
     /// </summary>
-    let Risk = Namespaced_IRI.parse _namespace_name "Risk" |> NamespacedName
+    let Risk = _prefix "Risk"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Restrict"></see>
     /// </summary>
-    let Restrict = Namespaced_IRI.parse _namespace_name "Restrict" |> NamespacedName
+    let Restrict = _prefix "Restrict"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Retrieve"></see>
     /// </summary>
-    let Retrieve = Namespaced_IRI.parse _namespace_name "Retrieve" |> NamespacedName
-
+    let Retrieve = _prefix "Retrieve"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReversingProcessEffects"></see>
     /// </summary>
-    let ReversingProcessEffects =
-        Namespaced_IRI.parse _namespace_name "ReversingProcessEffects" |> NamespacedName
-
+    let ReversingProcessEffects = _prefix "ReversingProcessEffects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReversingProcessInput"></see>
     /// </summary>
-    let ReversingProcessInput =
-        Namespaced_IRI.parse _namespace_name "ReversingProcessInput" |> NamespacedName
-
+    let ReversingProcessInput = _prefix "ReversingProcessInput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReversingProcessOutput"></see>
     /// </summary>
-    let ReversingProcessOutput =
-        Namespaced_IRI.parse _namespace_name "ReversingProcessOutput" |> NamespacedName
-
+    let ReversingProcessOutput = _prefix "ReversingProcessOutput"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReviewImpactAssessment"></see>
     /// </summary>
-    let ReviewImpactAssessment =
-        Namespaced_IRI.parse _namespace_name "ReviewImpactAssessment" |> NamespacedName
-
+    let ReviewImpactAssessment = _prefix "ReviewImpactAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ReviewProcedure"></see>
     /// </summary>
-    let ReviewProcedure =
-        Namespaced_IRI.parse _namespace_name "ReviewProcedure" |> NamespacedName
-
+    let ReviewProcedure = _prefix "ReviewProcedure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightExerciseNotice"></see>
     /// </summary>
-    let RightExerciseNotice =
-        Namespaced_IRI.parse _namespace_name "RightExerciseNotice" |> NamespacedName
-
+    let RightExerciseNotice = _prefix "RightExerciseNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightNotice"></see>
     /// </summary>
-    let RightNotice =
-        Namespaced_IRI.parse _namespace_name "RightNotice" |> NamespacedName
-
+    let RightNotice = _prefix "RightNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightFulfilmentNotice"></see>
     /// </summary>
-    let RightFulfilmentNotice =
-        Namespaced_IRI.parse _namespace_name "RightFulfilmentNotice" |> NamespacedName
-
+    let RightFulfilmentNotice = _prefix "RightFulfilmentNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightNonFulfilmentNotice"></see>
     /// </summary>
-    let RightNonFulfilmentNotice =
-        Namespaced_IRI.parse _namespace_name "RightNonFulfilmentNotice" |> NamespacedName
-
+    let RightNonFulfilmentNotice = _prefix "RightNonFulfilmentNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RightsFulfilment"></see>
     /// </summary>
-    let RightsFulfilment =
-        Namespaced_IRI.parse _namespace_name "RightsFulfilment" |> NamespacedName
-
+    let RightsFulfilment = _prefix "RightsFulfilment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RiskLevel"></see>
     /// </summary>
-    let RiskLevel = Namespaced_IRI.parse _namespace_name "RiskLevel" |> NamespacedName
-
+    let RiskLevel = _prefix "RiskLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#RiskMitigationMeasure"></see>
     /// </summary>
-    let RiskMitigationMeasure =
-        Namespaced_IRI.parse _namespace_name "RiskMitigationMeasure" |> NamespacedName
-
+    let RiskMitigationMeasure = _prefix "RiskMitigationMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SMEOrganisation"></see>
     /// </summary>
-    let SMEOrganisation =
-        Namespaced_IRI.parse _namespace_name "SMEOrganisation" |> NamespacedName
-
+    let SMEOrganisation = _prefix "SMEOrganisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SafeguardForDataTransfer"></see>
     /// </summary>
-    let SafeguardForDataTransfer =
-        Namespaced_IRI.parse _namespace_name "SafeguardForDataTransfer" |> NamespacedName
-
+    let SafeguardForDataTransfer = _prefix "SafeguardForDataTransfer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ScientificResearch"></see>
     /// </summary>
-    let ScientificResearch =
-        Namespaced_IRI.parse _namespace_name "ScientificResearch" |> NamespacedName
-
+    let ScientificResearch = _prefix "ScientificResearch"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Scope"></see>
     /// </summary>
-    let Scope = Namespaced_IRI.parse _namespace_name "Scope" |> NamespacedName
+    let Scope = _prefix "Scope"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Screen"></see>
     /// </summary>
-    let Screen = Namespaced_IRI.parse _namespace_name "Screen" |> NamespacedName
+    let Screen = _prefix "Screen"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Seal"></see>
     /// </summary>
-    let Seal = Namespaced_IRI.parse _namespace_name "Seal" |> NamespacedName
-
+    let Seal = _prefix "Seal"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SearchFunctionalities"></see>
     /// </summary>
-    let SearchFunctionalities =
-        Namespaced_IRI.parse _namespace_name "SearchFunctionalities" |> NamespacedName
-
+    let SearchFunctionalities = _prefix "SearchFunctionalities"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecondaryImportance"></see>
     /// </summary>
-    let SecondaryImportance =
-        Namespaced_IRI.parse _namespace_name "SecondaryImportance" |> NamespacedName
-
+    let SecondaryImportance = _prefix "SecondaryImportance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecondaryUse"></see>
     /// </summary>
-    let SecondaryUse =
-        Namespaced_IRI.parse _namespace_name "SecondaryUse" |> NamespacedName
-
+    let SecondaryUse = _prefix "SecondaryUse"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecretSharingSchemes"></see>
     /// </summary>
-    let SecretSharingSchemes =
-        Namespaced_IRI.parse _namespace_name "SecretSharingSchemes" |> NamespacedName
-
+    let SecretSharingSchemes = _prefix "SecretSharingSchemes"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Sector"></see>
     /// </summary>
-    let Sector = Namespaced_IRI.parse _namespace_name "Sector" |> NamespacedName
-
+    let Sector = _prefix "Sector"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecureMultiPartyComputation"></see>
     /// </summary>
-    let SecureMultiPartyComputation =
-        Namespaced_IRI.parse _namespace_name "SecureMultiPartyComputation" |> NamespacedName
-
+    let SecureMultiPartyComputation = _prefix "SecureMultiPartyComputation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecureProcessingEnvironment"></see>
     /// </summary>
-    let SecureProcessingEnvironment =
-        Namespaced_IRI.parse _namespace_name "SecureProcessingEnvironment" |> NamespacedName
-
+    let SecureProcessingEnvironment = _prefix "SecureProcessingEnvironment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityAudit"></see>
     /// </summary>
-    let SecurityAudit =
-        Namespaced_IRI.parse _namespace_name "SecurityAudit" |> NamespacedName
-
+    let SecurityAudit = _prefix "SecurityAudit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityIncidentRecord"></see>
     /// </summary>
-    let SecurityIncidentRecord =
-        Namespaced_IRI.parse _namespace_name "SecurityIncidentRecord" |> NamespacedName
-
+    let SecurityIncidentRecord = _prefix "SecurityIncidentRecord"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityKnowledgeTraining"></see>
     /// </summary>
-    let SecurityKnowledgeTraining =
-        Namespaced_IRI.parse _namespace_name "SecurityKnowledgeTraining" |> NamespacedName
-
+    let SecurityKnowledgeTraining = _prefix "SecurityKnowledgeTraining"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SecurityRoleProcedures"></see>
     /// </summary>
-    let SecurityRoleProcedures =
-        Namespaced_IRI.parse _namespace_name "SecurityRoleProcedures" |> NamespacedName
-
+    let SecurityRoleProcedures = _prefix "SecurityRoleProcedures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SellDataToThirdParties"></see>
     /// </summary>
-    let SellDataToThirdParties =
-        Namespaced_IRI.parse _namespace_name "SellDataToThirdParties" |> NamespacedName
-
+    let SellDataToThirdParties = _prefix "SellDataToThirdParties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SellProducts"></see>
     /// </summary>
-    let SellProducts =
-        Namespaced_IRI.parse _namespace_name "SellProducts" |> NamespacedName
-
+    let SellProducts = _prefix "SellProducts"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SellInsightsFromData"></see>
     /// </summary>
-    let SellInsightsFromData =
-        Namespaced_IRI.parse _namespace_name "SellInsightsFromData" |> NamespacedName
-
+    let SellInsightsFromData = _prefix "SellInsightsFromData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SellProductsToDataSubject"></see>
     /// </summary>
-    let SellProductsToDataSubject =
-        Namespaced_IRI.parse _namespace_name "SellProductsToDataSubject" |> NamespacedName
-
+    let SellProductsToDataSubject = _prefix "SellProductsToDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SemiPrivateSpace"></see>
     /// </summary>
-    let SemiPrivateSpace =
-        Namespaced_IRI.parse _namespace_name "SemiPrivateSpace" |> NamespacedName
-
+    let SemiPrivateSpace = _prefix "SemiPrivateSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SensitiveData"></see>
     /// </summary>
-    let SensitiveData =
-        Namespaced_IRI.parse _namespace_name "SensitiveData" |> NamespacedName
-
+    let SensitiveData = _prefix "SensitiveData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SensitiveNonPersonalData"></see>
     /// </summary>
-    let SensitiveNonPersonalData =
-        Namespaced_IRI.parse _namespace_name "SensitiveNonPersonalData" |> NamespacedName
-
+    let SensitiveNonPersonalData = _prefix "SensitiveNonPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SensitivePersonalData"></see>
     /// </summary>
-    let SensitivePersonalData =
-        Namespaced_IRI.parse _namespace_name "SensitivePersonalData" |> NamespacedName
-
+    let SensitivePersonalData = _prefix "SensitivePersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SensitivityLevel"></see>
     /// </summary>
-    let SensitivityLevel =
-        Namespaced_IRI.parse _namespace_name "SensitivityLevel" |> NamespacedName
-
+    let SensitivityLevel = _prefix "SensitivityLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Severity"></see>
     /// </summary>
-    let Severity = Namespaced_IRI.parse _namespace_name "Severity" |> NamespacedName
+    let Severity = _prefix "Severity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
-
+    let Service = _prefix "Service"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceConsumer"></see>
     /// </summary>
-    let ServiceConsumer =
-        Namespaced_IRI.parse _namespace_name "ServiceConsumer" |> NamespacedName
-
+    let ServiceConsumer = _prefix "ServiceConsumer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceLevelAgreement"></see>
     /// </summary>
-    let ServiceLevelAgreement =
-        Namespaced_IRI.parse _namespace_name "ServiceLevelAgreement" |> NamespacedName
-
+    let ServiceLevelAgreement = _prefix "ServiceLevelAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceProvider"></see>
     /// </summary>
-    let ServiceProvider =
-        Namespaced_IRI.parse _namespace_name "ServiceProvider" |> NamespacedName
-
+    let ServiceProvider = _prefix "ServiceProvider"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceRegistration"></see>
     /// </summary>
-    let ServiceRegistration =
-        Namespaced_IRI.parse _namespace_name "ServiceRegistration" |> NamespacedName
-
+    let ServiceRegistration = _prefix "ServiceRegistration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ServiceUsageAnalytics"></see>
     /// </summary>
-    let ServiceUsageAnalytics =
-        Namespaced_IRI.parse _namespace_name "ServiceUsageAnalytics" |> NamespacedName
-
+    let ServiceUsageAnalytics = _prefix "ServiceUsageAnalytics"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Share"></see>
     /// </summary>
-    let Share = Namespaced_IRI.parse _namespace_name "Share" |> NamespacedName
-
+    let Share = _prefix "Share"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SingleSignOn"></see>
     /// </summary>
-    let SingleSignOn =
-        Namespaced_IRI.parse _namespace_name "SingleSignOn" |> NamespacedName
-
+    let SingleSignOn = _prefix "SingleSignOn"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SingularDataVolume"></see>
     /// </summary>
-    let SingularDataVolume =
-        Namespaced_IRI.parse _namespace_name "SingularDataVolume" |> NamespacedName
-
+    let SingularDataVolume = _prefix "SingularDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SingularFrequency"></see>
     /// </summary>
-    let SingularFrequency =
-        Namespaced_IRI.parse _namespace_name "SingularFrequency" |> NamespacedName
-
+    let SingularFrequency = _prefix "SingularFrequency"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SingularScaleOfDataSubjects"></see>
     /// </summary>
-    let SingularScaleOfDataSubjects =
-        Namespaced_IRI.parse _namespace_name "SingularScaleOfDataSubjects" |> NamespacedName
-
+    let SingularScaleOfDataSubjects = _prefix "SingularScaleOfDataSubjects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SmallDataVolume"></see>
     /// </summary>
-    let SmallDataVolume =
-        Namespaced_IRI.parse _namespace_name "SmallDataVolume" |> NamespacedName
-
+    let SmallDataVolume = _prefix "SmallDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SmallScaleOfDataSubjects"></see>
     /// </summary>
-    let SmallScaleOfDataSubjects =
-        Namespaced_IRI.parse _namespace_name "SmallScaleOfDataSubjects" |> NamespacedName
-
+    let SmallScaleOfDataSubjects = _prefix "SmallScaleOfDataSubjects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SmallScaleProcessing"></see>
     /// </summary>
-    let SmallScaleProcessing =
-        Namespaced_IRI.parse _namespace_name "SmallScaleProcessing" |> NamespacedName
-
+    let SmallScaleProcessing = _prefix "SmallScaleProcessing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SocialMediaMarketing"></see>
     /// </summary>
-    let SocialMediaMarketing =
-        Namespaced_IRI.parse _namespace_name "SocialMediaMarketing" |> NamespacedName
-
+    let SocialMediaMarketing = _prefix "SocialMediaMarketing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SpecialCategoryPersonalData"></see>
     /// </summary>
-    let SpecialCategoryPersonalData =
-        Namespaced_IRI.parse _namespace_name "SpecialCategoryPersonalData" |> NamespacedName
-
+    let SpecialCategoryPersonalData = _prefix "SpecialCategoryPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SporadicDataVolume"></see>
     /// </summary>
-    let SporadicDataVolume =
-        Namespaced_IRI.parse _namespace_name "SporadicDataVolume" |> NamespacedName
-
+    let SporadicDataVolume = _prefix "SporadicDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SporadicFrequency"></see>
     /// </summary>
-    let SporadicFrequency =
-        Namespaced_IRI.parse _namespace_name "SporadicFrequency" |> NamespacedName
-
+    let SporadicFrequency = _prefix "SporadicFrequency"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SporadicScaleOfDataSubjects"></see>
     /// </summary>
-    let SporadicScaleOfDataSubjects =
-        Namespaced_IRI.parse _namespace_name "SporadicScaleOfDataSubjects" |> NamespacedName
-
+    let SporadicScaleOfDataSubjects = _prefix "SporadicScaleOfDataSubjects"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StandardsConformance"></see>
     /// </summary>
-    let StandardsConformance =
-        Namespaced_IRI.parse _namespace_name "StandardsConformance" |> NamespacedName
-
+    let StandardsConformance = _prefix "StandardsConformance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StartupOrganisation"></see>
     /// </summary>
-    let StartupOrganisation =
-        Namespaced_IRI.parse _namespace_name "StartupOrganisation" |> NamespacedName
+    let StartupOrganisation = _prefix "StartupOrganisation"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StatisticalConfidentialityAgreement"></see>
     /// </summary>
     let StatisticalConfidentialityAgreement =
-        Namespaced_IRI.parse _namespace_name "StatisticalConfidentialityAgreement" |> NamespacedName
+        _prefix "StatisticalConfidentialityAgreement"
 
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StatisticallyConfidentialData"></see>
     /// </summary>
-    let StatisticallyConfidentialData =
-        Namespaced_IRI.parse _namespace_name "StatisticallyConfidentialData" |> NamespacedName
-
+    let StatisticallyConfidentialData = _prefix "StatisticallyConfidentialData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StorageCondition"></see>
     /// </summary>
-    let StorageCondition =
-        Namespaced_IRI.parse _namespace_name "StorageCondition" |> NamespacedName
-
+    let StorageCondition = _prefix "StorageCondition"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StorageDeletion"></see>
     /// </summary>
-    let StorageDeletion =
-        Namespaced_IRI.parse _namespace_name "StorageDeletion" |> NamespacedName
-
+    let StorageDeletion = _prefix "StorageDeletion"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StorageDuration"></see>
     /// </summary>
-    let StorageDuration =
-        Namespaced_IRI.parse _namespace_name "StorageDuration" |> NamespacedName
-
+    let StorageDuration = _prefix "StorageDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StorageLocation"></see>
     /// </summary>
-    let StorageLocation =
-        Namespaced_IRI.parse _namespace_name "StorageLocation" |> NamespacedName
-
+    let StorageLocation = _prefix "StorageLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#StorageRestoration"></see>
     /// </summary>
-    let StorageRestoration =
-        Namespaced_IRI.parse _namespace_name "StorageRestoration" |> NamespacedName
-
+    let StorageRestoration = _prefix "StorageRestoration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Store"></see>
     /// </summary>
-    let Store = Namespaced_IRI.parse _namespace_name "Store" |> NamespacedName
+    let Store = _prefix "Store"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Student"></see>
     /// </summary>
-    let Student = Namespaced_IRI.parse _namespace_name "Student" |> NamespacedName
-
+    let Student = _prefix "Student"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SubProcessorAgreement"></see>
     /// </summary>
-    let SubProcessorAgreement =
-        Namespaced_IRI.parse _namespace_name "SubProcessorAgreement" |> NamespacedName
-
+    let SubProcessorAgreement = _prefix "SubProcessorAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Subscriber"></see>
     /// </summary>
-    let Subscriber = Namespaced_IRI.parse _namespace_name "Subscriber" |> NamespacedName
-
+    let Subscriber = _prefix "Subscriber"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SubsidiaryLegalEntity"></see>
     /// </summary>
-    let SubsidiaryLegalEntity =
-        Namespaced_IRI.parse _namespace_name "SubsidiaryLegalEntity" |> NamespacedName
-
+    let SubsidiaryLegalEntity = _prefix "SubsidiaryLegalEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SupportContractNegotiation"></see>
     /// </summary>
-    let SupportContractNegotiation =
-        Namespaced_IRI.parse _namespace_name "SupportContractNegotiation" |> NamespacedName
-
+    let SupportContractNegotiation = _prefix "SupportContractNegotiation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SupportEntityDecisionMaking"></see>
     /// </summary>
-    let SupportEntityDecisionMaking =
-        Namespaced_IRI.parse _namespace_name "SupportEntityDecisionMaking" |> NamespacedName
-
+    let SupportEntityDecisionMaking = _prefix "SupportEntityDecisionMaking"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SupportExchangeOfViews"></see>
     /// </summary>
-    let SupportExchangeOfViews =
-        Namespaced_IRI.parse _namespace_name "SupportExchangeOfViews" |> NamespacedName
-
+    let SupportExchangeOfViews = _prefix "SupportExchangeOfViews"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SupportInformedConsentDecision"></see>
     /// </summary>
-    let SupportInformedConsentDecision =
-        Namespaced_IRI.parse _namespace_name "SupportInformedConsentDecision" |> NamespacedName
-
+    let SupportInformedConsentDecision = _prefix "SupportInformedConsentDecision"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SupraNationalAuthority"></see>
     /// </summary>
-    let SupraNationalAuthority =
-        Namespaced_IRI.parse _namespace_name "SupraNationalAuthority" |> NamespacedName
-
+    let SupraNationalAuthority = _prefix "SupraNationalAuthority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SupraNationalUnion"></see>
     /// </summary>
-    let SupraNationalUnion =
-        Namespaced_IRI.parse _namespace_name "SupraNationalUnion" |> NamespacedName
-
+    let SupraNationalUnion = _prefix "SupraNationalUnion"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SymmetricCryptography"></see>
     /// </summary>
-    let SymmetricCryptography =
-        Namespaced_IRI.parse _namespace_name "SymmetricCryptography" |> NamespacedName
-
+    let SymmetricCryptography = _prefix "SymmetricCryptography"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SymmetricEncryption"></see>
     /// </summary>
-    let SymmetricEncryption =
-        Namespaced_IRI.parse _namespace_name "SymmetricEncryption" |> NamespacedName
-
+    let SymmetricEncryption = _prefix "SymmetricEncryption"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SyntheticData"></see>
     /// </summary>
-    let SyntheticData =
-        Namespaced_IRI.parse _namespace_name "SyntheticData" |> NamespacedName
-
+    let SyntheticData = _prefix "SyntheticData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#SystematicMonitoring"></see>
     /// </summary>
-    let SystematicMonitoring =
-        Namespaced_IRI.parse _namespace_name "SystematicMonitoring" |> NamespacedName
-
+    let SystematicMonitoring = _prefix "SystematicMonitoring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TOM-properties"></see>
     /// </summary>
-    let ``TOM-properties`` =
-        Namespaced_IRI.parse _namespace_name "TOM-properties" |> NamespacedName
-
+    let ``TOM-properties`` = _prefix "TOM-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TechnicalServiceProvision"></see>
     /// </summary>
-    let TechnicalServiceProvision =
-        Namespaced_IRI.parse _namespace_name "TechnicalServiceProvision" |> NamespacedName
-
+    let TechnicalServiceProvision = _prefix "TechnicalServiceProvision"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TechnicalStandard"></see>
     /// </summary>
-    let TechnicalStandard =
-        Namespaced_IRI.parse _namespace_name "TechnicalStandard" |> NamespacedName
-
+    let TechnicalStandard = _prefix "TechnicalStandard"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Technology"></see>
     /// </summary>
-    let Technology = Namespaced_IRI.parse _namespace_name "Technology" |> NamespacedName
-
+    let Technology = _prefix "Technology"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TemporalDuration"></see>
     /// </summary>
-    let TemporalDuration =
-        Namespaced_IRI.parse _namespace_name "TemporalDuration" |> NamespacedName
-
+    let TemporalDuration = _prefix "TemporalDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TerminateContract"></see>
     /// </summary>
-    let TerminateContract =
-        Namespaced_IRI.parse _namespace_name "TerminateContract" |> NamespacedName
-
+    let TerminateContract = _prefix "TerminateContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TermsOfService"></see>
     /// </summary>
-    let TermsOfService =
-        Namespaced_IRI.parse _namespace_name "TermsOfService" |> NamespacedName
-
+    let TermsOfService = _prefix "TermsOfService"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ThirdCountry"></see>
     /// </summary>
-    let ThirdCountry =
-        Namespaced_IRI.parse _namespace_name "ThirdCountry" |> NamespacedName
-
+    let ThirdCountry = _prefix "ThirdCountry"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ThirdParty"></see>
     /// </summary>
-    let ThirdParty = Namespaced_IRI.parse _namespace_name "ThirdParty" |> NamespacedName
-
+    let ThirdParty = _prefix "ThirdParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ThirdPartyAgreement"></see>
     /// </summary>
-    let ThirdPartyAgreement =
-        Namespaced_IRI.parse _namespace_name "ThirdPartyAgreement" |> NamespacedName
-
+    let ThirdPartyAgreement = _prefix "ThirdPartyAgreement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ThirdPartyContract"></see>
     /// </summary>
-    let ThirdPartyContract =
-        Namespaced_IRI.parse _namespace_name "ThirdPartyContract" |> NamespacedName
-
+    let ThirdPartyContract = _prefix "ThirdPartyContract"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ThirdPartyDataSource"></see>
     /// </summary>
-    let ThirdPartyDataSource =
-        Namespaced_IRI.parse _namespace_name "ThirdPartyDataSource" |> NamespacedName
-
+    let ThirdPartyDataSource = _prefix "ThirdPartyDataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ThirdPartySecurityProcedures"></see>
     /// </summary>
-    let ThirdPartySecurityProcedures =
-        Namespaced_IRI.parse _namespace_name "ThirdPartySecurityProcedures" |> NamespacedName
-
+    let ThirdPartySecurityProcedures = _prefix "ThirdPartySecurityProcedures"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Tourist"></see>
     /// </summary>
-    let Tourist = Namespaced_IRI.parse _namespace_name "Tourist" |> NamespacedName
+    let Tourist = _prefix "Tourist"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Tracking"></see>
     /// </summary>
-    let Tracking = Namespaced_IRI.parse _namespace_name "Tracking" |> NamespacedName
-
+    let Tracking = _prefix "Tracking"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TrackingByFirstParty"></see>
     /// </summary>
-    let TrackingByFirstParty =
-        Namespaced_IRI.parse _namespace_name "TrackingByFirstParty" |> NamespacedName
-
+    let TrackingByFirstParty = _prefix "TrackingByFirstParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TrackingByThirdParty"></see>
     /// </summary>
-    let TrackingByThirdParty =
-        Namespaced_IRI.parse _namespace_name "TrackingByThirdParty" |> NamespacedName
-
+    let TrackingByThirdParty = _prefix "TrackingByThirdParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Transmit"></see>
     /// </summary>
-    let Transmit = Namespaced_IRI.parse _namespace_name "Transmit" |> NamespacedName
-
+    let Transmit = _prefix "Transmit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TrustedComputing"></see>
     /// </summary>
-    let TrustedComputing =
-        Namespaced_IRI.parse _namespace_name "TrustedComputing" |> NamespacedName
-
+    let TrustedComputing = _prefix "TrustedComputing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#TrustedExecutionEnvironment"></see>
     /// </summary>
-    let TrustedExecutionEnvironment =
-        Namespaced_IRI.parse _namespace_name "TrustedExecutionEnvironment" |> NamespacedName
-
+    let TrustedExecutionEnvironment = _prefix "TrustedExecutionEnvironment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UncategorisedData"></see>
     /// </summary>
-    let UncategorisedData =
-        Namespaced_IRI.parse _namespace_name "UncategorisedData" |> NamespacedName
-
+    let UncategorisedData = _prefix "UncategorisedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Unexpected"></see>
     /// </summary>
-    let Unexpected = Namespaced_IRI.parse _namespace_name "Unexpected" |> NamespacedName
-
+    let Unexpected = _prefix "Unexpected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UninformedConsent"></see>
     /// </summary>
-    let UninformedConsent =
-        Namespaced_IRI.parse _namespace_name "UninformedConsent" |> NamespacedName
-
+    let UninformedConsent = _prefix "UninformedConsent"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UnknownApplicability"></see>
     /// </summary>
-    let UnknownApplicability =
-        Namespaced_IRI.parse _namespace_name "UnknownApplicability" |> NamespacedName
-
+    let UnknownApplicability = _prefix "UnknownApplicability"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Unlawful"></see>
     /// </summary>
-    let Unlawful = Namespaced_IRI.parse _namespace_name "Unlawful" |> NamespacedName
-
+    let Unlawful = _prefix "Unlawful"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UnstructuredData"></see>
     /// </summary>
-    let UnstructuredData =
-        Namespaced_IRI.parse _namespace_name "UnstructuredData" |> NamespacedName
-
+    let UnstructuredData = _prefix "UnstructuredData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UntilEventDuration"></see>
     /// </summary>
-    let UntilEventDuration =
-        Namespaced_IRI.parse _namespace_name "UntilEventDuration" |> NamespacedName
-
+    let UntilEventDuration = _prefix "UntilEventDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UntilTimeDuration"></see>
     /// </summary>
-    let UntilTimeDuration =
-        Namespaced_IRI.parse _namespace_name "UntilTimeDuration" |> NamespacedName
-
+    let UntilTimeDuration = _prefix "UntilTimeDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UnverifiedData"></see>
     /// </summary>
-    let UnverifiedData =
-        Namespaced_IRI.parse _namespace_name "UnverifiedData" |> NamespacedName
-
+    let UnverifiedData = _prefix "UnverifiedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UsageControl"></see>
     /// </summary>
-    let UsageControl =
-        Namespaced_IRI.parse _namespace_name "UsageControl" |> NamespacedName
-
+    let UsageControl = _prefix "UsageControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UseSyntheticData"></see>
     /// </summary>
-    let UseSyntheticData =
-        Namespaced_IRI.parse _namespace_name "UseSyntheticData" |> NamespacedName
-
+    let UseSyntheticData = _prefix "UseSyntheticData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#User"></see>
     /// </summary>
-    let User = Namespaced_IRI.parse _namespace_name "User" |> NamespacedName
-
+    let User = _prefix "User"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#UserInterfacePersonalisation"></see>
     /// </summary>
-    let UserInterfacePersonalisation =
-        Namespaced_IRI.parse _namespace_name "UserInterfacePersonalisation" |> NamespacedName
-
+    let UserInterfacePersonalisation = _prefix "UserInterfacePersonalisation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VariableLocation"></see>
     /// </summary>
-    let VariableLocation =
-        Namespaced_IRI.parse _namespace_name "VariableLocation" |> NamespacedName
-
+    let VariableLocation = _prefix "VariableLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VendorManagement"></see>
     /// </summary>
-    let VendorManagement =
-        Namespaced_IRI.parse _namespace_name "VendorManagement" |> NamespacedName
-
+    let VendorManagement = _prefix "VendorManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VendorPayment"></see>
     /// </summary>
-    let VendorPayment =
-        Namespaced_IRI.parse _namespace_name "VendorPayment" |> NamespacedName
-
+    let VendorPayment = _prefix "VendorPayment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VendorRecordsManagement"></see>
     /// </summary>
-    let VendorRecordsManagement =
-        Namespaced_IRI.parse _namespace_name "VendorRecordsManagement" |> NamespacedName
-
+    let VendorRecordsManagement = _prefix "VendorRecordsManagement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VendorSelectionAssessment"></see>
     /// </summary>
-    let VendorSelectionAssessment =
-        Namespaced_IRI.parse _namespace_name "VendorSelectionAssessment" |> NamespacedName
-
+    let VendorSelectionAssessment = _prefix "VendorSelectionAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VerifiedData"></see>
     /// </summary>
-    let VerifiedData =
-        Namespaced_IRI.parse _namespace_name "VerifiedData" |> NamespacedName
-
+    let VerifiedData = _prefix "VerifiedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VirtualisationSecurity"></see>
     /// </summary>
-    let VirtualisationSecurity =
-        Namespaced_IRI.parse _namespace_name "VirtualisationSecurity" |> NamespacedName
-
+    let VirtualisationSecurity = _prefix "VirtualisationSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#Visitor"></see>
     /// </summary>
-    let Visitor = Namespaced_IRI.parse _namespace_name "Visitor" |> NamespacedName
-
+    let Visitor = _prefix "Visitor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterest"></see>
     /// </summary>
-    let VitalInterest =
-        Namespaced_IRI.parse _namespace_name "VitalInterest" |> NamespacedName
-
+    let VitalInterest = _prefix "VitalInterest"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestCompleted"></see>
     /// </summary>
-    let VitalInterestCompleted =
-        Namespaced_IRI.parse _namespace_name "VitalInterestCompleted" |> NamespacedName
-
+    let VitalInterestCompleted = _prefix "VitalInterestCompleted"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestStatus"></see>
     /// </summary>
-    let VitalInterestStatus =
-        Namespaced_IRI.parse _namespace_name "VitalInterestStatus" |> NamespacedName
-
+    let VitalInterestStatus = _prefix "VitalInterestStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestObjected"></see>
     /// </summary>
-    let VitalInterestObjected =
-        Namespaced_IRI.parse _namespace_name "VitalInterestObjected" |> NamespacedName
-
+    let VitalInterestObjected = _prefix "VitalInterestObjected"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestOfDataSubject"></see>
     /// </summary>
-    let VitalInterestOfDataSubject =
-        Namespaced_IRI.parse _namespace_name "VitalInterestOfDataSubject" |> NamespacedName
-
+    let VitalInterestOfDataSubject = _prefix "VitalInterestOfDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestOfNaturalPerson"></see>
     /// </summary>
-    let VitalInterestOfNaturalPerson =
-        Namespaced_IRI.parse _namespace_name "VitalInterestOfNaturalPerson" |> NamespacedName
-
+    let VitalInterestOfNaturalPerson = _prefix "VitalInterestOfNaturalPerson"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestOngoing"></see>
     /// </summary>
-    let VitalInterestOngoing =
-        Namespaced_IRI.parse _namespace_name "VitalInterestOngoing" |> NamespacedName
-
+    let VitalInterestOngoing = _prefix "VitalInterestOngoing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VitalInterestPending"></see>
     /// </summary>
-    let VitalInterestPending =
-        Namespaced_IRI.parse _namespace_name "VitalInterestPending" |> NamespacedName
-
+    let VitalInterestPending = _prefix "VitalInterestPending"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#VulnerabilityTestingMethods"></see>
     /// </summary>
-    let VulnerabilityTestingMethods =
-        Namespaced_IRI.parse _namespace_name "VulnerabilityTestingMethods" |> NamespacedName
-
+    let VulnerabilityTestingMethods = _prefix "VulnerabilityTestingMethods"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WebBrowserSecurity"></see>
     /// </summary>
-    let WebBrowserSecurity =
-        Namespaced_IRI.parse _namespace_name "WebBrowserSecurity" |> NamespacedName
-
+    let WebBrowserSecurity = _prefix "WebBrowserSecurity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WebSecurityProtocols"></see>
     /// </summary>
-    let WebSecurityProtocols =
-        Namespaced_IRI.parse _namespace_name "WebSecurityProtocols" |> NamespacedName
-
+    let WebSecurityProtocols = _prefix "WebSecurityProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WirelessSecurityProtocols"></see>
     /// </summary>
-    let WirelessSecurityProtocols =
-        Namespaced_IRI.parse _namespace_name "WirelessSecurityProtocols" |> NamespacedName
-
+    let WirelessSecurityProtocols = _prefix "WirelessSecurityProtocols"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WithdrawingFromProcess"></see>
     /// </summary>
-    let WithdrawingFromProcess =
-        Namespaced_IRI.parse _namespace_name "WithdrawingFromProcess" |> NamespacedName
-
+    let WithdrawingFromProcess = _prefix "WithdrawingFromProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WithinDevice"></see>
     /// </summary>
-    let WithinDevice =
-        Namespaced_IRI.parse _namespace_name "WithinDevice" |> NamespacedName
-
+    let WithinDevice = _prefix "WithinDevice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WithinPhysicalEnvironment"></see>
     /// </summary>
-    let WithinPhysicalEnvironment =
-        Namespaced_IRI.parse _namespace_name "WithinPhysicalEnvironment" |> NamespacedName
-
+    let WithinPhysicalEnvironment = _prefix "WithinPhysicalEnvironment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#WithinVirtualEnvironment"></see>
     /// </summary>
-    let WithinVirtualEnvironment =
-        Namespaced_IRI.parse _namespace_name "WithinVirtualEnvironment" |> NamespacedName
-
+    let WithinVirtualEnvironment = _prefix "WithinVirtualEnvironment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#ZeroKnowledgeAuthentication"></see>
     /// </summary>
-    let ZeroKnowledgeAuthentication =
-        Namespaced_IRI.parse _namespace_name "ZeroKnowledgeAuthentication" |> NamespacedName
-
+    let ZeroKnowledgeAuthentication = _prefix "ZeroKnowledgeAuthentication"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#consent-properties"></see>
     /// </summary>
-    let ``consent-properties`` =
-        Namespaced_IRI.parse _namespace_name "consent-properties" |> NamespacedName
-
+    let ``consent-properties`` = _prefix "consent-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#context-properties"></see>
     /// </summary>
-    let ``context-properties`` =
-        Namespaced_IRI.parse _namespace_name "context-properties" |> NamespacedName
-
+    let ``context-properties`` = _prefix "context-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#contract-properties"></see>
     /// </summary>
-    let ``contract-properties`` =
-        Namespaced_IRI.parse _namespace_name "contract-properties" |> NamespacedName
-
+    let ``contract-properties`` = _prefix "contract-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-authority-properties"></see>
     /// </summary>
-    let ``entities-authority-properties`` =
-        Namespaced_IRI.parse _namespace_name "entities-authority-properties" |> NamespacedName
-
+    let ``entities-authority-properties`` = _prefix "entities-authority-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-datasubject-properties"></see>
     /// </summary>
-    let ``entities-datasubject-properties`` =
-        Namespaced_IRI.parse _namespace_name "entities-datasubject-properties" |> NamespacedName
-
+    let ``entities-datasubject-properties`` = _prefix "entities-datasubject-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-legalrole-properties"></see>
     /// </summary>
-    let ``entities-legalrole-properties`` =
-        Namespaced_IRI.parse _namespace_name "entities-legalrole-properties" |> NamespacedName
-
+    let ``entities-legalrole-properties`` = _prefix "entities-legalrole-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#entities-properties"></see>
     /// </summary>
-    let ``entities-properties`` =
-        Namespaced_IRI.parse _namespace_name "entities-properties" |> NamespacedName
-
+    let ``entities-properties`` = _prefix "entities-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasActiveEntity"></see>
     /// </summary>
-    let hasActiveEntity =
-        Namespaced_IRI.parse _namespace_name "hasActiveEntity" |> NamespacedName
-
+    let hasActiveEntity = _prefix "hasActiveEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasEntity"></see>
     /// </summary>
-    let hasEntity = Namespaced_IRI.parse _namespace_name "hasEntity" |> NamespacedName
-
+    let hasEntity = _prefix "hasEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#processing-context-properties"></see>
     /// </summary>
-    let ``processing-context-properties`` =
-        Namespaced_IRI.parse _namespace_name "processing-context-properties" |> NamespacedName
-
+    let ``processing-context-properties`` = _prefix "processing-context-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasActivityStatus"></see>
     /// </summary>
-    let hasActivityStatus =
-        Namespaced_IRI.parse _namespace_name "hasActivityStatus" |> NamespacedName
-
+    let hasActivityStatus = _prefix "hasActivityStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasStatus"></see>
     /// </summary>
-    let hasStatus = Namespaced_IRI.parse _namespace_name "hasStatus" |> NamespacedName
-
+    let hasStatus = _prefix "hasStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#status-properties"></see>
     /// </summary>
-    let ``status-properties`` =
-        Namespaced_IRI.parse _namespace_name "status-properties" |> NamespacedName
-
+    let ``status-properties`` = _prefix "status-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasAddress"></see>
     /// </summary>
-    let hasAddress = Namespaced_IRI.parse _namespace_name "hasAddress" |> NamespacedName
-
+    let hasAddress = _prefix "hasAddress"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasAlgorithmicLogic"></see>
     /// </summary>
-    let hasAlgorithmicLogic =
-        Namespaced_IRI.parse _namespace_name "hasAlgorithmicLogic" |> NamespacedName
-
+    let hasAlgorithmicLogic = _prefix "hasAlgorithmicLogic"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasApplicability"></see>
     /// </summary>
-    let hasApplicability =
-        Namespaced_IRI.parse _namespace_name "hasApplicability" |> NamespacedName
-
+    let hasApplicability = _prefix "hasApplicability"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasApplicableLaw"></see>
     /// </summary>
-    let hasApplicableLaw =
-        Namespaced_IRI.parse _namespace_name "hasApplicableLaw" |> NamespacedName
-
+    let hasApplicableLaw = _prefix "hasApplicableLaw"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#jurisdiction-properties"></see>
     /// </summary>
-    let ``jurisdiction-properties`` =
-        Namespaced_IRI.parse _namespace_name "jurisdiction-properties" |> NamespacedName
-
+    let ``jurisdiction-properties`` = _prefix "jurisdiction-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasAssessment"></see>
     /// </summary>
-    let hasAssessment =
-        Namespaced_IRI.parse _namespace_name "hasAssessment" |> NamespacedName
-
+    let hasAssessment = _prefix "hasAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasOrganisationalMeasure"></see>
     /// </summary>
-    let hasOrganisationalMeasure =
-        Namespaced_IRI.parse _namespace_name "hasOrganisationalMeasure" |> NamespacedName
-
+    let hasOrganisationalMeasure = _prefix "hasOrganisationalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasAuditStatus"></see>
     /// </summary>
-    let hasAuditStatus =
-        Namespaced_IRI.parse _namespace_name "hasAuditStatus" |> NamespacedName
-
+    let hasAuditStatus = _prefix "hasAuditStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasAuthority"></see>
     /// </summary>
-    let hasAuthority =
-        Namespaced_IRI.parse _namespace_name "hasAuthority" |> NamespacedName
-
+    let hasAuthority = _prefix "hasAuthority"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasAutomationLevel"></see>
     /// </summary>
-    let hasAutomationLevel =
-        Namespaced_IRI.parse _namespace_name "hasAutomationLevel" |> NamespacedName
-
+    let hasAutomationLevel = _prefix "hasAutomationLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasComplianceStatus"></see>
     /// </summary>
-    let hasComplianceStatus =
-        Namespaced_IRI.parse _namespace_name "hasComplianceStatus" |> NamespacedName
-
+    let hasComplianceStatus = _prefix "hasComplianceStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasConformanceStatus"></see>
     /// </summary>
-    let hasConformanceStatus =
-        Namespaced_IRI.parse _namespace_name "hasConformanceStatus" |> NamespacedName
-
+    let hasConformanceStatus = _prefix "hasConformanceStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasConsentControl"></see>
     /// </summary>
-    let hasConsentControl =
-        Namespaced_IRI.parse _namespace_name "hasConsentControl" |> NamespacedName
-
+    let hasConsentControl = _prefix "hasConsentControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasConsentStatus"></see>
     /// </summary>
-    let hasConsentStatus =
-        Namespaced_IRI.parse _namespace_name "hasConsentStatus" |> NamespacedName
-
+    let hasConsentStatus = _prefix "hasConsentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasConsequence"></see>
     /// </summary>
-    let hasConsequence =
-        Namespaced_IRI.parse _namespace_name "hasConsequence" |> NamespacedName
-
+    let hasConsequence = _prefix "hasConsequence"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#risk-properties"></see>
     /// </summary>
-    let ``risk-properties`` =
-        Namespaced_IRI.parse _namespace_name "risk-properties" |> NamespacedName
-
+    let ``risk-properties`` = _prefix "risk-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasConsequenceOn"></see>
     /// </summary>
-    let hasConsequenceOn =
-        Namespaced_IRI.parse _namespace_name "hasConsequenceOn" |> NamespacedName
-
+    let hasConsequenceOn = _prefix "hasConsequenceOn"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasContact"></see>
     /// </summary>
-    let hasContact = Namespaced_IRI.parse _namespace_name "hasContact" |> NamespacedName
+    let hasContact = _prefix "hasContact"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasContext"></see>
     /// </summary>
-    let hasContext = Namespaced_IRI.parse _namespace_name "hasContext" |> NamespacedName
-
+    let hasContext = _prefix "hasContext"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasContractControl"></see>
     /// </summary>
-    let hasContractControl =
-        Namespaced_IRI.parse _namespace_name "hasContractControl" |> NamespacedName
-
+    let hasContractControl = _prefix "hasContractControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasContractStatus"></see>
     /// </summary>
-    let hasContractStatus =
-        Namespaced_IRI.parse _namespace_name "hasContractStatus" |> NamespacedName
-
+    let hasContractStatus = _prefix "hasContractStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasContractualClause"></see>
     /// </summary>
-    let hasContractualClause =
-        Namespaced_IRI.parse _namespace_name "hasContractualClause" |> NamespacedName
-
+    let hasContractualClause = _prefix "hasContractualClause"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasContractualFulfilmentStatus"></see>
     /// </summary>
-    let hasContractualFulfilmentStatus =
-        Namespaced_IRI.parse _namespace_name "hasContractualFulfilmentStatus" |> NamespacedName
-
+    let hasContractualFulfilmentStatus = _prefix "hasContractualFulfilmentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasCountry"></see>
     /// </summary>
-    let hasCountry = Namespaced_IRI.parse _namespace_name "hasCountry" |> NamespacedName
-
+    let hasCountry = _prefix "hasCountry"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasLocation"></see>
     /// </summary>
-    let hasLocation =
-        Namespaced_IRI.parse _namespace_name "hasLocation" |> NamespacedName
-
+    let hasLocation = _prefix "hasLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasData"></see>
     /// </summary>
-    let hasData = Namespaced_IRI.parse _namespace_name "hasData" |> NamespacedName
-
+    let hasData = _prefix "hasData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#personal-data-properties"></see>
     /// </summary>
-    let ``personal-data-properties`` =
-        Namespaced_IRI.parse _namespace_name "personal-data-properties" |> NamespacedName
-
+    let ``personal-data-properties`` = _prefix "personal-data-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataController"></see>
     /// </summary>
-    let hasDataController =
-        Namespaced_IRI.parse _namespace_name "hasDataController" |> NamespacedName
-
+    let hasDataController = _prefix "hasDataController"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataExporter"></see>
     /// </summary>
-    let hasDataExporter =
-        Namespaced_IRI.parse _namespace_name "hasDataExporter" |> NamespacedName
-
+    let hasDataExporter = _prefix "hasDataExporter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataImporter"></see>
     /// </summary>
-    let hasDataImporter =
-        Namespaced_IRI.parse _namespace_name "hasDataImporter" |> NamespacedName
-
+    let hasDataImporter = _prefix "hasDataImporter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRecipient"></see>
     /// </summary>
-    let hasRecipient =
-        Namespaced_IRI.parse _namespace_name "hasRecipient" |> NamespacedName
-
+    let hasRecipient = _prefix "hasRecipient"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataProcessor"></see>
     /// </summary>
-    let hasDataProcessor =
-        Namespaced_IRI.parse _namespace_name "hasDataProcessor" |> NamespacedName
-
+    let hasDataProcessor = _prefix "hasDataProcessor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataProtectionOfficer"></see>
     /// </summary>
-    let hasDataProtectionOfficer =
-        Namespaced_IRI.parse _namespace_name "hasDataProtectionOfficer" |> NamespacedName
-
+    let hasDataProtectionOfficer = _prefix "hasDataProtectionOfficer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRepresentative"></see>
     /// </summary>
-    let hasRepresentative =
-        Namespaced_IRI.parse _namespace_name "hasRepresentative" |> NamespacedName
-
+    let hasRepresentative = _prefix "hasRepresentative"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataSource"></see>
     /// </summary>
-    let hasDataSource =
-        Namespaced_IRI.parse _namespace_name "hasDataSource" |> NamespacedName
-
+    let hasDataSource = _prefix "hasDataSource"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataSubject"></see>
     /// </summary>
-    let hasDataSubject =
-        Namespaced_IRI.parse _namespace_name "hasDataSubject" |> NamespacedName
-
+    let hasDataSubject = _prefix "hasDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasHumanSubject"></see>
     /// </summary>
-    let hasHumanSubject =
-        Namespaced_IRI.parse _namespace_name "hasHumanSubject" |> NamespacedName
-
+    let hasHumanSubject = _prefix "hasHumanSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataSubjectScale"></see>
     /// </summary>
-    let hasDataSubjectScale =
-        Namespaced_IRI.parse _namespace_name "hasDataSubjectScale" |> NamespacedName
-
+    let hasDataSubjectScale = _prefix "hasDataSubjectScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasScale"></see>
     /// </summary>
-    let hasScale = Namespaced_IRI.parse _namespace_name "hasScale" |> NamespacedName
-
+    let hasScale = _prefix "hasScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#processing-scale-properties"></see>
     /// </summary>
-    let ``processing-scale-properties`` =
-        Namespaced_IRI.parse _namespace_name "processing-scale-properties" |> NamespacedName
-
+    let ``processing-scale-properties`` = _prefix "processing-scale-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDataVolume"></see>
     /// </summary>
-    let hasDataVolume =
-        Namespaced_IRI.parse _namespace_name "hasDataVolume" |> NamespacedName
-
+    let hasDataVolume = _prefix "hasDataVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDeterrence"></see>
     /// </summary>
-    let hasDeterrence =
-        Namespaced_IRI.parse _namespace_name "hasDeterrence" |> NamespacedName
-
+    let hasDeterrence = _prefix "hasDeterrence"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRule"></see>
     /// </summary>
-    let hasRule = Namespaced_IRI.parse _namespace_name "hasRule" |> NamespacedName
-
+    let hasRule = _prefix "hasRule"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#rules-properties"></see>
     /// </summary>
-    let ``rules-properties`` =
-        Namespaced_IRI.parse _namespace_name "rules-properties" |> NamespacedName
-
+    let ``rules-properties`` = _prefix "rules-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasDuration"></see>
     /// </summary>
-    let hasDuration =
-        Namespaced_IRI.parse _namespace_name "hasDuration" |> NamespacedName
-
+    let hasDuration = _prefix "hasDuration"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasEntityControl"></see>
     /// </summary>
-    let hasEntityControl =
-        Namespaced_IRI.parse _namespace_name "hasEntityControl" |> NamespacedName
-
+    let hasEntityControl = _prefix "hasEntityControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#EntityControl"></see>
     /// </summary>
-    let EntityControl =
-        Namespaced_IRI.parse _namespace_name "EntityControl" |> NamespacedName
-
+    let EntityControl = _prefix "EntityControl"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasTechnicalOrganisationalMeasure"></see>
     /// </summary>
-    let hasTechnicalOrganisationalMeasure =
-        Namespaced_IRI.parse _namespace_name "hasTechnicalOrganisationalMeasure" |> NamespacedName
-
+    let hasTechnicalOrganisationalMeasure = _prefix "hasTechnicalOrganisationalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasEntityInvolvement"></see>
     /// </summary>
-    let hasEntityInvolvement =
-        Namespaced_IRI.parse _namespace_name "hasEntityInvolvement" |> NamespacedName
-
+    let hasEntityInvolvement = _prefix "hasEntityInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasExpectation"></see>
     /// </summary>
-    let hasExpectation =
-        Namespaced_IRI.parse _namespace_name "hasExpectation" |> NamespacedName
-
+    let hasExpectation = _prefix "hasExpectation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasFee"></see>
     /// </summary>
-    let hasFee = Namespaced_IRI.parse _namespace_name "hasFee" |> NamespacedName
-
+    let hasFee = _prefix "hasFee"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasFrequency"></see>
     /// </summary>
-    let hasFrequency =
-        Namespaced_IRI.parse _namespace_name "hasFrequency" |> NamespacedName
-
+    let hasFrequency = _prefix "hasFrequency"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasFulfilmentStatus"></see>
     /// </summary>
-    let hasFulfilmentStatus =
-        Namespaced_IRI.parse _namespace_name "hasFulfilmentStatus" |> NamespacedName
-
+    let hasFulfilmentStatus = _prefix "hasFulfilmentStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasGeographicCoverage"></see>
     /// </summary>
-    let hasGeographicCoverage =
-        Namespaced_IRI.parse _namespace_name "hasGeographicCoverage" |> NamespacedName
-
+    let hasGeographicCoverage = _prefix "hasGeographicCoverage"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasHumanInvolvement"></see>
     /// </summary>
-    let hasHumanInvolvement =
-        Namespaced_IRI.parse _namespace_name "hasHumanInvolvement" |> NamespacedName
-
+    let hasHumanInvolvement = _prefix "hasHumanInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasIdentifier"></see>
     /// </summary>
-    let hasIdentifier =
-        Namespaced_IRI.parse _namespace_name "hasIdentifier" |> NamespacedName
-
+    let hasIdentifier = _prefix "hasIdentifier"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasImpact"></see>
     /// </summary>
-    let hasImpact = Namespaced_IRI.parse _namespace_name "hasImpact" |> NamespacedName
-
+    let hasImpact = _prefix "hasImpact"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasImpactAssessment"></see>
     /// </summary>
-    let hasImpactAssessment =
-        Namespaced_IRI.parse _namespace_name "hasImpactAssessment" |> NamespacedName
-
+    let hasImpactAssessment = _prefix "hasImpactAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasImpactOn"></see>
     /// </summary>
-    let hasImpactOn =
-        Namespaced_IRI.parse _namespace_name "hasImpactOn" |> NamespacedName
-
+    let hasImpactOn = _prefix "hasImpactOn"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasImportance"></see>
     /// </summary>
-    let hasImportance =
-        Namespaced_IRI.parse _namespace_name "hasImportance" |> NamespacedName
-
+    let hasImportance = _prefix "hasImportance"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasIndicationMethod"></see>
     /// </summary>
-    let hasIndicationMethod =
-        Namespaced_IRI.parse _namespace_name "hasIndicationMethod" |> NamespacedName
-
+    let hasIndicationMethod = _prefix "hasIndicationMethod"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#legal-basis-properties"></see>
     /// </summary>
-    let ``legal-basis-properties`` =
-        Namespaced_IRI.parse _namespace_name "legal-basis-properties" |> NamespacedName
-
+    let ``legal-basis-properties`` = _prefix "legal-basis-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasInformedStatus"></see>
     /// </summary>
-    let hasInformedStatus =
-        Namespaced_IRI.parse _namespace_name "hasInformedStatus" |> NamespacedName
-
+    let hasInformedStatus = _prefix "hasInformedStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasIntention"></see>
     /// </summary>
-    let hasIntention =
-        Namespaced_IRI.parse _namespace_name "hasIntention" |> NamespacedName
-
+    let hasIntention = _prefix "hasIntention"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasInverseJurisdiction"></see>
     /// </summary>
-    let hasInverseJurisdiction =
-        Namespaced_IRI.parse _namespace_name "hasInverseJurisdiction" |> NamespacedName
-
+    let hasInverseJurisdiction = _prefix "hasInverseJurisdiction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasInvolvement"></see>
     /// </summary>
-    let hasInvolvement =
-        Namespaced_IRI.parse _namespace_name "hasInvolvement" |> NamespacedName
-
+    let hasInvolvement = _prefix "hasInvolvement"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasJointDataControllers"></see>
     /// </summary>
-    let hasJointDataControllers =
-        Namespaced_IRI.parse _namespace_name "hasJointDataControllers" |> NamespacedName
-
+    let hasJointDataControllers = _prefix "hasJointDataControllers"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasJurisdiction"></see>
     /// </summary>
-    let hasJurisdiction =
-        Namespaced_IRI.parse _namespace_name "hasJurisdiction" |> NamespacedName
-
+    let hasJurisdiction = _prefix "hasJurisdiction"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasJustification"></see>
     /// </summary>
-    let hasJustification =
-        Namespaced_IRI.parse _namespace_name "hasJustification" |> NamespacedName
-
+    let hasJustification = _prefix "hasJustification"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasLawfulness"></see>
     /// </summary>
-    let hasLawfulness =
-        Namespaced_IRI.parse _namespace_name "hasLawfulness" |> NamespacedName
-
+    let hasLawfulness = _prefix "hasLawfulness"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasLegalBasis"></see>
     /// </summary>
-    let hasLegalBasis =
-        Namespaced_IRI.parse _namespace_name "hasLegalBasis" |> NamespacedName
-
+    let hasLegalBasis = _prefix "hasLegalBasis"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasLegalMeasure"></see>
     /// </summary>
-    let hasLegalMeasure =
-        Namespaced_IRI.parse _namespace_name "hasLegalMeasure" |> NamespacedName
-
+    let hasLegalMeasure = _prefix "hasLegalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasLikelihood"></see>
     /// </summary>
-    let hasLikelihood =
-        Namespaced_IRI.parse _namespace_name "hasLikelihood" |> NamespacedName
-
+    let hasLikelihood = _prefix "hasLikelihood"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNecessity"></see>
     /// </summary>
-    let hasNecessity =
-        Namespaced_IRI.parse _namespace_name "hasNecessity" |> NamespacedName
-
+    let hasNecessity = _prefix "hasNecessity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNonInvolvedEntity"></see>
     /// </summary>
-    let hasNonInvolvedEntity =
-        Namespaced_IRI.parse _namespace_name "hasNonInvolvedEntity" |> NamespacedName
-
+    let hasNonInvolvedEntity = _prefix "hasNonInvolvedEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNonPersonalDataProcess"></see>
     /// </summary>
-    let hasNonPersonalDataProcess =
-        Namespaced_IRI.parse _namespace_name "hasNonPersonalDataProcess" |> NamespacedName
-
+    let hasNonPersonalDataProcess = _prefix "hasNonPersonalDataProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#process-properties"></see>
     /// </summary>
-    let ``process-properties`` =
-        Namespaced_IRI.parse _namespace_name "process-properties" |> NamespacedName
-
+    let ``process-properties`` = _prefix "process-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNotice"></see>
     /// </summary>
-    let hasNotice = Namespaced_IRI.parse _namespace_name "hasNotice" |> NamespacedName
-
+    let hasNotice = _prefix "hasNotice"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#notice-properties"></see>
     /// </summary>
-    let ``notice-properties`` =
-        Namespaced_IRI.parse _namespace_name "notice-properties" |> NamespacedName
-
+    let ``notice-properties`` = _prefix "notice-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNoticeIcon"></see>
     /// </summary>
-    let hasNoticeIcon =
-        Namespaced_IRI.parse _namespace_name "hasNoticeIcon" |> NamespacedName
-
+    let hasNoticeIcon = _prefix "hasNoticeIcon"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNoticeLayer"></see>
     /// </summary>
-    let hasNoticeLayer =
-        Namespaced_IRI.parse _namespace_name "hasNoticeLayer" |> NamespacedName
-
+    let hasNoticeLayer = _prefix "hasNoticeLayer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNoticeStatus"></see>
     /// </summary>
-    let hasNoticeStatus =
-        Namespaced_IRI.parse _namespace_name "hasNoticeStatus" |> NamespacedName
-
+    let hasNoticeStatus = _prefix "hasNoticeStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasNotificationStatus"></see>
     /// </summary>
-    let hasNotificationStatus =
-        Namespaced_IRI.parse _namespace_name "hasNotificationStatus" |> NamespacedName
-
+    let hasNotificationStatus = _prefix "hasNotificationStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasObligation"></see>
     /// </summary>
-    let hasObligation =
-        Namespaced_IRI.parse _namespace_name "hasObligation" |> NamespacedName
-
+    let hasObligation = _prefix "hasObligation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasOrganisationalUnit"></see>
     /// </summary>
-    let hasOrganisationalUnit =
-        Namespaced_IRI.parse _namespace_name "hasOrganisationalUnit" |> NamespacedName
-
+    let hasOrganisationalUnit = _prefix "hasOrganisationalUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasOutcome"></see>
     /// </summary>
-    let hasOutcome = Namespaced_IRI.parse _namespace_name "hasOutcome" |> NamespacedName
+    let hasOutcome = _prefix "hasOutcome"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasParty"></see>
     /// </summary>
-    let hasParty = Namespaced_IRI.parse _namespace_name "hasParty" |> NamespacedName
-
+    let hasParty = _prefix "hasParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPassiveEntity"></see>
     /// </summary>
-    let hasPassiveEntity =
-        Namespaced_IRI.parse _namespace_name "hasPassiveEntity" |> NamespacedName
-
+    let hasPassiveEntity = _prefix "hasPassiveEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPermission"></see>
     /// </summary>
-    let hasPermission =
-        Namespaced_IRI.parse _namespace_name "hasPermission" |> NamespacedName
-
+    let hasPermission = _prefix "hasPermission"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPersonalData"></see>
     /// </summary>
-    let hasPersonalData =
-        Namespaced_IRI.parse _namespace_name "hasPersonalData" |> NamespacedName
-
+    let hasPersonalData = _prefix "hasPersonalData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPersonalDataHandling"></see>
     /// </summary>
-    let hasPersonalDataHandling =
-        Namespaced_IRI.parse _namespace_name "hasPersonalDataHandling" |> NamespacedName
-
+    let hasPersonalDataHandling = _prefix "hasPersonalDataHandling"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPersonalDataProcess"></see>
     /// </summary>
-    let hasPersonalDataProcess =
-        Namespaced_IRI.parse _namespace_name "hasPersonalDataProcess" |> NamespacedName
-
+    let hasPersonalDataProcess = _prefix "hasPersonalDataProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPhysicalMeasure"></see>
     /// </summary>
-    let hasPhysicalMeasure =
-        Namespaced_IRI.parse _namespace_name "hasPhysicalMeasure" |> NamespacedName
-
+    let hasPhysicalMeasure = _prefix "hasPhysicalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPolicy"></see>
     /// </summary>
-    let hasPolicy = Namespaced_IRI.parse _namespace_name "hasPolicy" |> NamespacedName
+    let hasPolicy = _prefix "hasPolicy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasProcess"></see>
     /// </summary>
-    let hasProcess = Namespaced_IRI.parse _namespace_name "hasProcess" |> NamespacedName
-
+    let hasProcess = _prefix "hasProcess"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasProcessing"></see>
     /// </summary>
-    let hasProcessing =
-        Namespaced_IRI.parse _namespace_name "hasProcessing" |> NamespacedName
-
+    let hasProcessing = _prefix "hasProcessing"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#processing-properties"></see>
     /// </summary>
-    let ``processing-properties`` =
-        Namespaced_IRI.parse _namespace_name "processing-properties" |> NamespacedName
-
+    let ``processing-properties`` = _prefix "processing-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasProcessingCondition"></see>
     /// </summary>
-    let hasProcessingCondition =
-        Namespaced_IRI.parse _namespace_name "hasProcessingCondition" |> NamespacedName
-
+    let hasProcessingCondition = _prefix "hasProcessingCondition"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasProcessingScale"></see>
     /// </summary>
-    let hasProcessingScale =
-        Namespaced_IRI.parse _namespace_name "hasProcessingScale" |> NamespacedName
-
+    let hasProcessingScale = _prefix "hasProcessingScale"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasProhibition"></see>
     /// </summary>
-    let hasProhibition =
-        Namespaced_IRI.parse _namespace_name "hasProhibition" |> NamespacedName
-
+    let hasProhibition = _prefix "hasProhibition"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasPurpose"></see>
     /// </summary>
-    let hasPurpose = Namespaced_IRI.parse _namespace_name "hasPurpose" |> NamespacedName
-
+    let hasPurpose = _prefix "hasPurpose"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#purposes-properties"></see>
     /// </summary>
-    let ``purposes-properties`` =
-        Namespaced_IRI.parse _namespace_name "purposes-properties" |> NamespacedName
-
+    let ``purposes-properties`` = _prefix "purposes-properties"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRecipientDataController"></see>
     /// </summary>
-    let hasRecipientDataController =
-        Namespaced_IRI.parse _namespace_name "hasRecipientDataController" |> NamespacedName
-
+    let hasRecipientDataController = _prefix "hasRecipientDataController"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRecipientThirdParty"></see>
     /// </summary>
-    let hasRecipientThirdParty =
-        Namespaced_IRI.parse _namespace_name "hasRecipientThirdParty" |> NamespacedName
-
+    let hasRecipientThirdParty = _prefix "hasRecipientThirdParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRecommendation"></see>
     /// </summary>
-    let hasRecommendation =
-        Namespaced_IRI.parse _namespace_name "hasRecommendation" |> NamespacedName
-
+    let hasRecommendation = _prefix "hasRecommendation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRecordOfActivity"></see>
     /// </summary>
-    let hasRecordOfActivity =
-        Namespaced_IRI.parse _namespace_name "hasRecordOfActivity" |> NamespacedName
-
+    let hasRecordOfActivity = _prefix "hasRecordOfActivity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRelationWithDataSubject"></see>
     /// </summary>
-    let hasRelationWithDataSubject =
-        Namespaced_IRI.parse _namespace_name "hasRelationWithDataSubject" |> NamespacedName
-
+    let hasRelationWithDataSubject = _prefix "hasRelationWithDataSubject"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRequestStatus"></see>
     /// </summary>
-    let hasRequestStatus =
-        Namespaced_IRI.parse _namespace_name "hasRequestStatus" |> NamespacedName
-
+    let hasRequestStatus = _prefix "hasRequestStatus"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasResidualRisk"></see>
     /// </summary>
-    let hasResidualRisk =
-        Namespaced_IRI.parse _namespace_name "hasResidualRisk" |> NamespacedName
-
+    let hasResidualRisk = _prefix "hasResidualRisk"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasResponsibleEntity"></see>
     /// </summary>
-    let hasResponsibleEntity =
-        Namespaced_IRI.parse _namespace_name "hasResponsibleEntity" |> NamespacedName
-
+    let hasResponsibleEntity = _prefix "hasResponsibleEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasReuseCompatibility"></see>
     /// </summary>
-    let hasReuseCompatibility =
-        Namespaced_IRI.parse _namespace_name "hasReuseCompatibility" |> NamespacedName
-
+    let hasReuseCompatibility = _prefix "hasReuseCompatibility"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRight"></see>
     /// </summary>
-    let hasRight = Namespaced_IRI.parse _namespace_name "hasRight" |> NamespacedName
+    let hasRight = _prefix "hasRight"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRisk"></see>
     /// </summary>
-    let hasRisk = Namespaced_IRI.parse _namespace_name "hasRisk" |> NamespacedName
-
+    let hasRisk = _prefix "hasRisk"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRiskAssessment"></see>
     /// </summary>
-    let hasRiskAssessment =
-        Namespaced_IRI.parse _namespace_name "hasRiskAssessment" |> NamespacedName
-
+    let hasRiskAssessment = _prefix "hasRiskAssessment"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasRiskLevel"></see>
     /// </summary>
-    let hasRiskLevel =
-        Namespaced_IRI.parse _namespace_name "hasRiskLevel" |> NamespacedName
-
+    let hasRiskLevel = _prefix "hasRiskLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasScope"></see>
     /// </summary>
-    let hasScope = Namespaced_IRI.parse _namespace_name "hasScope" |> NamespacedName
+    let hasScope = _prefix "hasScope"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasSector"></see>
     /// </summary>
-    let hasSector = Namespaced_IRI.parse _namespace_name "hasSector" |> NamespacedName
-
+    let hasSector = _prefix "hasSector"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasSensitivityLevel"></see>
     /// </summary>
-    let hasSensitivityLevel =
-        Namespaced_IRI.parse _namespace_name "hasSensitivityLevel" |> NamespacedName
-
+    let hasSensitivityLevel = _prefix "hasSensitivityLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasService"></see>
     /// </summary>
-    let hasService = Namespaced_IRI.parse _namespace_name "hasService" |> NamespacedName
-
+    let hasService = _prefix "hasService"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasServiceConsumer"></see>
     /// </summary>
-    let hasServiceConsumer =
-        Namespaced_IRI.parse _namespace_name "hasServiceConsumer" |> NamespacedName
-
+    let hasServiceConsumer = _prefix "hasServiceConsumer"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasServiceProvider"></see>
     /// </summary>
-    let hasServiceProvider =
-        Namespaced_IRI.parse _namespace_name "hasServiceProvider" |> NamespacedName
-
+    let hasServiceProvider = _prefix "hasServiceProvider"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasSeverity"></see>
     /// </summary>
-    let hasSeverity =
-        Namespaced_IRI.parse _namespace_name "hasSeverity" |> NamespacedName
-
+    let hasSeverity = _prefix "hasSeverity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasStorageCondition"></see>
     /// </summary>
-    let hasStorageCondition =
-        Namespaced_IRI.parse _namespace_name "hasStorageCondition" |> NamespacedName
-
+    let hasStorageCondition = _prefix "hasStorageCondition"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasSubsidiary"></see>
     /// </summary>
-    let hasSubsidiary =
-        Namespaced_IRI.parse _namespace_name "hasSubsidiary" |> NamespacedName
-
+    let hasSubsidiary = _prefix "hasSubsidiary"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasTechnicalMeasure"></see>
     /// </summary>
-    let hasTechnicalMeasure =
-        Namespaced_IRI.parse _namespace_name "hasTechnicalMeasure" |> NamespacedName
-
+    let hasTechnicalMeasure = _prefix "hasTechnicalMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasThirdCountry"></see>
     /// </summary>
-    let hasThirdCountry =
-        Namespaced_IRI.parse _namespace_name "hasThirdCountry" |> NamespacedName
-
+    let hasThirdCountry = _prefix "hasThirdCountry"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasThirdParty"></see>
     /// </summary>
-    let hasThirdParty =
-        Namespaced_IRI.parse _namespace_name "hasThirdParty" |> NamespacedName
-
+    let hasThirdParty = _prefix "hasThirdParty"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasUncategorisedData"></see>
     /// </summary>
-    let hasUncategorisedData =
-        Namespaced_IRI.parse _namespace_name "hasUncategorisedData" |> NamespacedName
-
+    let hasUncategorisedData = _prefix "hasUncategorisedData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#hasUnstructuredData"></see>
     /// </summary>
-    let hasUnstructuredData =
-        Namespaced_IRI.parse _namespace_name "hasUnstructuredData" |> NamespacedName
-
+    let hasUnstructuredData = _prefix "hasUnstructuredData"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isAfter"></see>
     /// </summary>
-    let isAfter = Namespaced_IRI.parse _namespace_name "isAfter" |> NamespacedName
-
+    let isAfter = _prefix "isAfter"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isApplicableFor"></see>
     /// </summary>
-    let isApplicableFor =
-        Namespaced_IRI.parse _namespace_name "isApplicableFor" |> NamespacedName
-
+    let isApplicableFor = _prefix "isApplicableFor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isAuthorityFor"></see>
     /// </summary>
-    let isAuthorityFor =
-        Namespaced_IRI.parse _namespace_name "isAuthorityFor" |> NamespacedName
-
+    let isAuthorityFor = _prefix "isAuthorityFor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isBefore"></see>
     /// </summary>
-    let isBefore = Namespaced_IRI.parse _namespace_name "isBefore" |> NamespacedName
-
+    let isBefore = _prefix "isBefore"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isDeterminedByEntity"></see>
     /// </summary>
-    let isDeterminedByEntity =
-        Namespaced_IRI.parse _namespace_name "isDeterminedByEntity" |> NamespacedName
-
+    let isDeterminedByEntity = _prefix "isDeterminedByEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isDuring"></see>
     /// </summary>
-    let isDuring = Namespaced_IRI.parse _namespace_name "isDuring" |> NamespacedName
-
+    let isDuring = _prefix "isDuring"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isExercisedAt"></see>
     /// </summary>
-    let isExercisedAt =
-        Namespaced_IRI.parse _namespace_name "isExercisedAt" |> NamespacedName
-
+    let isExercisedAt = _prefix "isExercisedAt"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isImplementedByEntity"></see>
     /// </summary>
-    let isImplementedByEntity =
-        Namespaced_IRI.parse _namespace_name "isImplementedByEntity" |> NamespacedName
-
+    let isImplementedByEntity = _prefix "isImplementedByEntity"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isImplementedUsingTechnology"></see>
     /// </summary>
-    let isImplementedUsingTechnology =
-        Namespaced_IRI.parse _namespace_name "isImplementedUsingTechnology" |> NamespacedName
-
+    let isImplementedUsingTechnology = _prefix "isImplementedUsingTechnology"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isIndicatedAtTime"></see>
     /// </summary>
-    let isIndicatedAtTime =
-        Namespaced_IRI.parse _namespace_name "isIndicatedAtTime" |> NamespacedName
-
+    let isIndicatedAtTime = _prefix "isIndicatedAtTime"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isIndicatedBy"></see>
     /// </summary>
-    let isIndicatedBy =
-        Namespaced_IRI.parse _namespace_name "isIndicatedBy" |> NamespacedName
-
+    let isIndicatedBy = _prefix "isIndicatedBy"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isMitigatedByMeasure"></see>
     /// </summary>
-    let isMitigatedByMeasure =
-        Namespaced_IRI.parse _namespace_name "isMitigatedByMeasure" |> NamespacedName
-
+    let isMitigatedByMeasure = _prefix "isMitigatedByMeasure"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isNotApplicableFor"></see>
     /// </summary>
-    let isNotApplicableFor =
-        Namespaced_IRI.parse _namespace_name "isNotApplicableFor" |> NamespacedName
-
+    let isNotApplicableFor = _prefix "isNotApplicableFor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isOrganisationalUnitOf"></see>
     /// </summary>
-    let isOrganisationalUnitOf =
-        Namespaced_IRI.parse _namespace_name "isOrganisationalUnitOf" |> NamespacedName
-
+    let isOrganisationalUnitOf = _prefix "isOrganisationalUnitOf"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isOutsideOfLocation"></see>
     /// </summary>
-    let isOutsideOfLocation =
-        Namespaced_IRI.parse _namespace_name "isOutsideOfLocation" |> NamespacedName
-
+    let isOutsideOfLocation = _prefix "isOutsideOfLocation"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isPolicyFor"></see>
     /// </summary>
-    let isPolicyFor =
-        Namespaced_IRI.parse _namespace_name "isPolicyFor" |> NamespacedName
-
+    let isPolicyFor = _prefix "isPolicyFor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isRepresentativeFor"></see>
     /// </summary>
-    let isRepresentativeFor =
-        Namespaced_IRI.parse _namespace_name "isRepresentativeFor" |> NamespacedName
-
+    let isRepresentativeFor = _prefix "isRepresentativeFor"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isResidualRiskOf"></see>
     /// </summary>
-    let isResidualRiskOf =
-        Namespaced_IRI.parse _namespace_name "isResidualRiskOf" |> NamespacedName
-
+    let isResidualRiskOf = _prefix "isResidualRiskOf"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#isSubsidiaryOf"></see>
     /// </summary>
-    let isSubsidiaryOf =
-        Namespaced_IRI.parse _namespace_name "isSubsidiaryOf" |> NamespacedName
-
+    let isSubsidiaryOf = _prefix "isSubsidiaryOf"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#mitigatesRisk"></see>
     /// </summary>
-    let mitigatesRisk =
-        Namespaced_IRI.parse _namespace_name "mitigatesRisk" |> NamespacedName
-
+    let mitigatesRisk = _prefix "mitigatesRisk"
     /// <summary>
     ///   <see href="https://w3id.org/dpv#supportsComplianceWith"></see>
     /// </summary>
-    let supportsComplianceWith =
-        Namespaced_IRI.parse _namespace_name "supportsComplianceWith" |> NamespacedName
+    let supportsComplianceWith = _prefix "supportsComplianceWith"

@@ -1,284 +1,234 @@
 namespace http.simile.mit.edu._2003._10.ontologies.vraCore3.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module vra =
     let _namespace_name = "http://simile.mit.edu/2003/10/ontologies/vraCore3#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Corporation"></see>
     /// </summary>
-    let Corporation =
-        Namespaced_IRI.parse _namespace_name "Corporation" |> NamespacedName
-
+    let Corporation = _prefix "Corporation"
     /// <summary>
     /// Entities are creators e.g. people or organisations
     /// <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Entity"></see></summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
+    let Entity = _prefix "Entity"
     /// <summary>
     /// An image record is used for the visual surrogates of objects
     /// <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Image"></see></summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
+    let Image = _prefix "Image"
     /// <summary>
     /// A record is the superclass for Works and Images
     /// <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Record"></see></summary>
-    let Record = Namespaced_IRI.parse _namespace_name "Record" |> NamespacedName
-
+    let Record = _prefix "Record"
     /// <summary>
     /// A work
     /// <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#LargerEntity"></see></summary>
-    let LargerEntity =
-        Namespaced_IRI.parse _namespace_name "LargerEntity" |> NamespacedName
-
+    let LargerEntity = _prefix "LargerEntity"
     /// <summary>
     /// A Series
     /// <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Series"></see></summary>
-    let Series = Namespaced_IRI.parse _namespace_name "Series" |> NamespacedName
+    let Series = _prefix "Series"
     /// <summary>
     /// A work record is used for physical or created objects
     /// <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Work"></see></summary>
-    let Work = Namespaced_IRI.parse _namespace_name "Work" |> NamespacedName
+    let Work = _prefix "Work"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#alteration"></see>
     /// </summary>
-    let alteration = Namespaced_IRI.parse _namespace_name "alteration" |> NamespacedName
+    let alteration = _prefix "alteration"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#date"></see>
     /// </summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
-
+    let date = _prefix "date"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#attribution"></see>
     /// </summary>
-    let attribution =
-        Namespaced_IRI.parse _namespace_name "attribution" |> NamespacedName
-
+    let attribution = _prefix "attribution"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#beginning"></see>
     /// </summary>
-    let beginning = Namespaced_IRI.parse _namespace_name "beginning" |> NamespacedName
+    let beginning = _prefix "beginning"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#completion"></see>
     /// </summary>
-    let completion = Namespaced_IRI.parse _namespace_name "completion" |> NamespacedName
+    let completion = _prefix "completion"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#creation"></see>
     /// </summary>
-    let creation = Namespaced_IRI.parse _namespace_name "creation" |> NamespacedName
+    let creation = _prefix "creation"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#creator"></see>
     /// </summary>
-    let creator = Namespaced_IRI.parse _namespace_name "creator" |> NamespacedName
+    let creator = _prefix "creator"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#culture"></see>
     /// </summary>
-    let culture = Namespaced_IRI.parse _namespace_name "culture" |> NamespacedName
-
+    let culture = _prefix "culture"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#design"></see>
     /// </summary>
-    let design = Namespaced_IRI.parse _namespace_name "design" |> NamespacedName
+    let design = _prefix "design"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#dynasty"></see>
     /// </summary>
-    let dynasty = Namespaced_IRI.parse _namespace_name "dynasty" |> NamespacedName
+    let dynasty = _prefix "dynasty"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#group"></see>
     /// </summary>
-    let group = Namespaced_IRI.parse _namespace_name "group" |> NamespacedName
+    let group = _prefix "group"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
-
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#idCurrentAccession"></see>
     /// </summary>
-    let idCurrentAccession =
-        Namespaced_IRI.parse _namespace_name "idCurrentAccession" |> NamespacedName
-
+    let idCurrentAccession = _prefix "idCurrentAccession"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#idCurrentRepository"></see>
     /// </summary>
-    let idCurrentRepository =
-        Namespaced_IRI.parse _namespace_name "idCurrentRepository" |> NamespacedName
-
+    let idCurrentRepository = _prefix "idCurrentRepository"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#idFormerAccession"></see>
     /// </summary>
-    let idFormerAccession =
-        Namespaced_IRI.parse _namespace_name "idFormerAccession" |> NamespacedName
-
+    let idFormerAccession = _prefix "idFormerAccession"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#idFormerRepository"></see>
     /// </summary>
-    let idFormerRepository =
-        Namespaced_IRI.parse _namespace_name "idFormerRepository" |> NamespacedName
-
+    let idFormerRepository = _prefix "idFormerRepository"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#location"></see>
     /// </summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
-
+    let location = _prefix "location"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#locationCreationSite"></see>
     /// </summary>
-    let locationCreationSite =
-        Namespaced_IRI.parse _namespace_name "locationCreationSite" |> NamespacedName
-
+    let locationCreationSite = _prefix "locationCreationSite"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#locationCurrentRepository"></see>
     /// </summary>
-    let locationCurrentRepository =
-        Namespaced_IRI.parse _namespace_name "locationCurrentRepository" |> NamespacedName
-
+    let locationCurrentRepository = _prefix "locationCurrentRepository"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#locationCurrentSite"></see>
     /// </summary>
-    let locationCurrentSite =
-        Namespaced_IRI.parse _namespace_name "locationCurrentSite" |> NamespacedName
-
+    let locationCurrentSite = _prefix "locationCurrentSite"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#locationDiscoverySite"></see>
     /// </summary>
-    let locationDiscoverySite =
-        Namespaced_IRI.parse _namespace_name "locationDiscoverySite" |> NamespacedName
-
+    let locationDiscoverySite = _prefix "locationDiscoverySite"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#locationFormerRepository"></see>
     /// </summary>
-    let locationFormerRepository =
-        Namespaced_IRI.parse _namespace_name "locationFormerRepository" |> NamespacedName
-
+    let locationFormerRepository = _prefix "locationFormerRepository"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#locationFormerSite"></see>
     /// </summary>
-    let locationFormerSite =
-        Namespaced_IRI.parse _namespace_name "locationFormerSite" |> NamespacedName
-
+    let locationFormerSite = _prefix "locationFormerSite"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#material"></see>
     /// </summary>
-    let material = Namespaced_IRI.parse _namespace_name "material" |> NamespacedName
-
+    let material = _prefix "material"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#measurements"></see>
     /// </summary>
-    let measurements =
-        Namespaced_IRI.parse _namespace_name "measurements" |> NamespacedName
-
+    let measurements = _prefix "measurements"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#measurementsDimensions"></see>
     /// </summary>
-    let measurementsDimensions =
-        Namespaced_IRI.parse _namespace_name "measurementsDimensions" |> NamespacedName
-
+    let measurementsDimensions = _prefix "measurementsDimensions"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#measurementsFormat"></see>
     /// </summary>
-    let measurementsFormat =
-        Namespaced_IRI.parse _namespace_name "measurementsFormat" |> NamespacedName
-
+    let measurementsFormat = _prefix "measurementsFormat"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#measurementsResolution"></see>
     /// </summary>
-    let measurementsResolution =
-        Namespaced_IRI.parse _namespace_name "measurementsResolution" |> NamespacedName
-
+    let measurementsResolution = _prefix "measurementsResolution"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#medium"></see>
     /// </summary>
-    let medium = Namespaced_IRI.parse _namespace_name "medium" |> NamespacedName
+    let medium = _prefix "medium"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#movement"></see>
     /// </summary>
-    let movement = Namespaced_IRI.parse _namespace_name "movement" |> NamespacedName
+    let movement = _prefix "movement"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#period"></see>
     /// </summary>
-    let period = Namespaced_IRI.parse _namespace_name "period" |> NamespacedName
-
+    let period = _prefix "period"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#stylePeriod"></see>
     /// </summary>
-    let stylePeriod =
-        Namespaced_IRI.parse _namespace_name "stylePeriod" |> NamespacedName
-
+    let stylePeriod = _prefix "stylePeriod"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#relation"></see>
     /// </summary>
-    let relation = Namespaced_IRI.parse _namespace_name "relation" |> NamespacedName
+    let relation = _prefix "relation"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#Relation"></see>
     /// </summary>
-    let Relation = Namespaced_IRI.parse _namespace_name "Relation" |> NamespacedName
-
+    let Relation = _prefix "Relation"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#restoration"></see>
     /// </summary>
-    let restoration =
-        Namespaced_IRI.parse _namespace_name "restoration" |> NamespacedName
-
+    let restoration = _prefix "restoration"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#rights"></see>
     /// </summary>
-    let rights = Namespaced_IRI.parse _namespace_name "rights" |> NamespacedName
+    let rights = _prefix "rights"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#role"></see>
     /// </summary>
-    let role = Namespaced_IRI.parse _namespace_name "role" |> NamespacedName
+    let role = _prefix "role"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#school"></see>
     /// </summary>
-    let school = Namespaced_IRI.parse _namespace_name "school" |> NamespacedName
+    let school = _prefix "school"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#source"></see>
     /// </summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
+    let source = _prefix "source"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#style"></see>
     /// </summary>
-    let style = Namespaced_IRI.parse _namespace_name "style" |> NamespacedName
+    let style = _prefix "style"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#support"></see>
     /// </summary>
-    let support = Namespaced_IRI.parse _namespace_name "support" |> NamespacedName
+    let support = _prefix "support"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#technique"></see>
     /// </summary>
-    let technique = Namespaced_IRI.parse _namespace_name "technique" |> NamespacedName
+    let technique = _prefix "technique"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
-
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#titleTranslation"></see>
     /// </summary>
-    let titleTranslation =
-        Namespaced_IRI.parse _namespace_name "titleTranslation" |> NamespacedName
-
+    let titleTranslation = _prefix "titleTranslation"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#titleVariant"></see>
     /// </summary>
-    let titleVariant =
-        Namespaced_IRI.parse _namespace_name "titleVariant" |> NamespacedName
-
+    let titleVariant = _prefix "titleVariant"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"
     /// <summary>
     ///   <see href="http://simile.mit.edu/2003/10/ontologies/vraCore3#typeAAT"></see>
     /// </summary>
-    let typeAAT = Namespaced_IRI.parse _namespace_name "typeAAT" |> NamespacedName
+    let typeAAT = _prefix "typeAAT"

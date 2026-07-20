@@ -1,9 +1,13 @@
 namespace https.w3id.org.noria.ontology.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module noria =
     let _namespace_name = "https://w3id.org/noria/ontology/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Service is an abstract base class for defining the Service hierarchy, i.e. the composition of assets (a.k.a. asset chain, service function chain) for providing a end-to-end data path or processing for some specific Customer or purpose.
     ///
@@ -24,118 +28,81 @@ module noria =
     /// - *IETF*: Assuming a group *Service Functions* (SFs), the `noria:Service` concept relates to the *Service Function Chain (SFC)* definition from the [RFC 7665: SFC Architecture](https://www.rfc-editor.org/rfc/rfc7665) (see also [ITU-T X.1045](https://handle.itu.int/11.1002/1000/14043) for complementary SFC definition).
     ///
     /// <see href="https://w3id.org/noria/ontology/Service"></see></summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
-
+    let Service = _prefix "Service"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/CoreOntology-0.2"></see>
     /// </summary>
-    let ``CoreOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "CoreOntology-0.2" |> NamespacedName
-
+    let ``CoreOntology-0.2`` = _prefix "CoreOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ApplicationOntology-0.2"></see>
     /// </summary>
-    let ``ApplicationOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "ApplicationOntology-0.2" |> NamespacedName
-
+    let ``ApplicationOntology-0.2`` = _prefix "ApplicationOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ObservableOntology-0.2"></see>
     /// </summary>
-    let ``ObservableOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "ObservableOntology-0.2" |> NamespacedName
-
+    let ``ObservableOntology-0.2`` = _prefix "ObservableOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/NotificationOntology-0.2"></see>
     /// </summary>
-    let ``NotificationOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "NotificationOntology-0.2" |> NamespacedName
-
+    let ``NotificationOntology-0.2`` = _prefix "NotificationOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ResourceOntology-0.2"></see>
     /// </summary>
-    let ``ResourceOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "ResourceOntology-0.2" |> NamespacedName
-
+    let ``ResourceOntology-0.2`` = _prefix "ResourceOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/DocumentOntology-0.2"></see>
     /// </summary>
-    let ``DocumentOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "DocumentOntology-0.2" |> NamespacedName
-
+    let ``DocumentOntology-0.2`` = _prefix "DocumentOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/LocationOntology-0.2"></see>
     /// </summary>
-    let ``LocationOntology-0.2`` =
-        Namespaced_IRI.parse _namespace_name "LocationOntology-0.2" |> NamespacedName
-
+    let ``LocationOntology-0.2`` = _prefix "LocationOntology-0.2"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/noria-0.1"></see>
     /// </summary>
-    let ``noria-0.1`` =
-        Namespaced_IRI.parse _namespace_name "noria-0.1" |> NamespacedName
-
+    let ``noria-0.1`` = _prefix "noria-0.1"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/noria-0.2"></see>
     /// </summary>
-    let ``noria-0.2`` =
-        Namespaced_IRI.parse _namespace_name "noria-0.2" |> NamespacedName
-
+    let ``noria-0.2`` = _prefix "noria-0.2"
     /// <summary>
     /// Set of Post Conditions or Potential outcomes that the execution of some OperationPlan may satisfy/lead to/confirm/solve.
     ///
     /// From the *ChangeRequest* perspective this enables to declare what to observe in order to confirm that the Procedure reached its goal; from the *TroubleTicket* perspective this enables to capitalize on expectations and outcomes for a given Procedure.
     /// <see href="https://w3id.org/noria/ontology/ActionPostCondition"></see></summary>
-    let ActionPostCondition =
-        Namespaced_IRI.parse _namespace_name "ActionPostCondition" |> NamespacedName
-
+    let ActionPostCondition = _prefix "ActionPostCondition"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/DocumentOntology"></see>
     /// </summary>
-    let DocumentOntology =
-        Namespaced_IRI.parse _namespace_name "DocumentOntology" |> NamespacedName
-
+    let DocumentOntology = _prefix "DocumentOntology"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ProceduralObject"></see>
     /// </summary>
-    let ProceduralObject =
-        Namespaced_IRI.parse _namespace_name "ProceduralObject" |> NamespacedName
-
+    let ProceduralObject = _prefix "ProceduralObject"
     /// <summary>
     /// Set of Pre Conditions or Hypothesis enabling/leading to the potential execution of some OperationPlan.
     /// <see href="https://w3id.org/noria/ontology/ActionPreCondition"></see></summary>
-    let ActionPreCondition =
-        Namespaced_IRI.parse _namespace_name "ActionPreCondition" |> NamespacedName
-
+    let ActionPreCondition = _prefix "ActionPreCondition"
     /// <summary>
     /// An abstract class for grouping observables and events that, when satisfied by the existence of some instance/value, represents the occurrence of a (complex) fault/failure mode.
     /// <see href="https://w3id.org/noria/ontology/AnomalyPattern"></see></summary>
-    let AnomalyPattern =
-        Namespaced_IRI.parse _namespace_name "AnomalyPattern" |> NamespacedName
-
+    let AnomalyPattern = _prefix "AnomalyPattern"
     /// <summary>
     /// An abstract system based on data processing and presentation.
     /// <see href="https://w3id.org/noria/ontology/Application"></see></summary>
-    let Application =
-        Namespaced_IRI.parse _namespace_name "Application" |> NamespacedName
-
+    let Application = _prefix "Application"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ApplicationOntology"></see>
     /// </summary>
-    let ApplicationOntology =
-        Namespaced_IRI.parse _namespace_name "ApplicationOntology" |> NamespacedName
-
+    let ApplicationOntology = _prefix "ApplicationOntology"
     /// <summary>
     /// Abstract class for services and broadcasting zones above the *Structural* facet (a.k.a. *Functional facet*).
     /// <see href="https://w3id.org/noria/ontology/FunctionalElement"></see></summary>
-    let FunctionalElement =
-        Namespaced_IRI.parse _namespace_name "FunctionalElement" |> NamespacedName
-
+    let FunctionalElement = _prefix "FunctionalElement"
     /// <summary>
     /// A specific and managed instance of an Application.
     /// <see href="https://w3id.org/noria/ontology/ApplicationModule"></see></summary>
-    let ApplicationModule =
-        Namespaced_IRI.parse _namespace_name "ApplicationModule" |> NamespacedName
-
+    let ApplicationModule = _prefix "ApplicationModule"
     /// <summary>
     /// A Change Request represents a record used for reporting and managing change activities on services and resources. It is a key artefact to the Change Management process. Change Management process is to respond to the customer’s changing business requirements while maximizing value and reducing incidents, disruption and network.
     ///
@@ -154,15 +121,11 @@ module noria =
     /// - *BBO*: a ChangeRequest is a DocumentResource in the sense that it is the result of the Change Management process and can be used as an input for another activity. From the BPMN 2.0 perspective, a ChangeRequest is a DataObject.
     ///
     /// <see href="https://w3id.org/noria/ontology/ChangeRequest"></see></summary>
-    let ChangeRequest =
-        Namespaced_IRI.parse _namespace_name "ChangeRequest" |> NamespacedName
-
+    let ChangeRequest = _prefix "ChangeRequest"
     /// <summary>
     /// Abstract class for time-related entities and their potential chaining (a.k.a. *Dynamic facet*).
     /// <see href="https://w3id.org/noria/ontology/DynamicElement"></see></summary>
-    let DynamicElement =
-        Namespaced_IRI.parse _namespace_name "DynamicElement" |> NamespacedName
-
+    let DynamicElement = _prefix "DynamicElement"
     /// <summary>
     /// A trouble ticket represents a record used for reporting and managing the resolution of resource problems. Main trouble ticket attributes are its description, severity, type, priority, related dates (created, target resolution, resolution, etc.), state and related information (change reason, change date), related parties (originator, owner, pilot), notes, trouble causes and impacts.
     ///
@@ -183,15 +146,11 @@ module noria =
     /// - *PEP*: a TroubleTicketNote is a context for (potentially) many *CorrectiveMaintenanceAction* to occur; hence it relates to a `pep:ProcedureExecutionContainer`, which in turns enable to track the corresponding `EventRecord` through the `ldp:member` property.
     ///
     /// <see href="https://w3id.org/noria/ontology/TroubleTicket"></see></summary>
-    let TroubleTicket =
-        Namespaced_IRI.parse _namespace_name "TroubleTicket" |> NamespacedName
-
+    let TroubleTicket = _prefix "TroubleTicket"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/CoreOntology"></see>
     /// </summary>
-    let CoreOntology =
-        Namespaced_IRI.parse _namespace_name "CoreOntology" |> NamespacedName
-
+    let CoreOntology = _prefix "CoreOntology"
     /// <summary>
     /// The Corporate User Identifier (CUid) is the unique identifier of a Person as a member of Organization (i.e. an Employee). It is also the main account of this Person for connecting to the organization's IT resources, including to its personal computer (PC).
     ///
@@ -205,9 +164,7 @@ module noria =
     ///   - The Person (`foaf:Agent`) holding this CUid is also a `observable:Contact`.
     ///
     /// <see href="https://w3id.org/noria/ontology/CorporateUserIdentifier"></see></summary>
-    let CorporateUserIdentifier =
-        Namespaced_IRI.parse _namespace_name "CorporateUserIdentifier" |> NamespacedName
-
+    let CorporateUserIdentifier = _prefix "CorporateUserIdentifier"
     /// <summary>
     /// A file attachment.
     ///
@@ -218,15 +175,11 @@ module noria =
     /// - *BBO*: a DocumentAttachment is a DocumentResource in the sense that it is the result of the Incident Management Process (IMP) or Change Management Process (CMP) and can be used as an input for another activity. From the BPMN 2.0 perspective, a DocumentAttachment is a DataObject.
     ///
     /// <see href="https://w3id.org/noria/ontology/DocumentAttachment"></see></summary>
-    let DocumentAttachment =
-        Namespaced_IRI.parse _namespace_name "DocumentAttachment" |> NamespacedName
-
+    let DocumentAttachment = _prefix "DocumentAttachment"
     /// <summary>
     /// Top abstract class of NORIA Cyber/Physical concepts for describing, managing and analyzing ICT systems.
     /// <see href="https://w3id.org/noria/ontology/ManagedElement"></see></summary>
-    let ManagedElement =
-        Namespaced_IRI.parse _namespace_name "ManagedElement" |> NamespacedName
-
+    let ManagedElement = _prefix "ManagedElement"
     /// <summary>
     /// This managed object represents the information stored in the log as a result of receiving notifications or incoming event reports.
     ///
@@ -254,21 +207,15 @@ module noria =
     /// - *SLOGERT*: an EventRecord is equivalent to a `log:Event`.
     ///
     /// <see href="https://w3id.org/noria/ontology/EventRecord"></see></summary>
-    let EventRecord =
-        Namespaced_IRI.parse _namespace_name "EventRecord" |> NamespacedName
-
+    let EventRecord = _prefix "EventRecord"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/NotificationOntology"></see>
     /// </summary>
-    let NotificationOntology =
-        Namespaced_IRI.parse _namespace_name "NotificationOntology" |> NamespacedName
-
+    let NotificationOntology = _prefix "NotificationOntology"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/LocationOntology"></see>
     /// </summary>
-    let LocationOntology =
-        Namespaced_IRI.parse _namespace_name "LocationOntology" |> NamespacedName
-
+    let LocationOntology = _prefix "LocationOntology"
     /// <summary>
     /// A uniquely identified space for Resources within a given Room.
     ///
@@ -279,8 +226,7 @@ module noria =
     /// - *ORG*: Note that, at instanciation time, `bot:Site` entities may also be `org:Site` (see https://www.w3.org/TR/vocab-org/#org:Site) in order to allow for an Organization (including teams, persons, manufacturers) to be localized (e.g. see `org:basedAt`), and hence allow for intervention distance/time calculus or threat calculus with respect to a given Locus.
     ///
     /// <see href="https://w3id.org/noria/ontology/Locus"></see></summary>
-    let Locus = Namespaced_IRI.parse _namespace_name "Locus" |> NamespacedName
-
+    let Locus = _prefix "Locus"
     /// <summary>
     /// A Network Interface of some Resource (e.g. server, router, virtual routing and forwarding (VRF) instance), and of some type (e.g. physical, virtual).
     ///
@@ -288,21 +234,15 @@ module noria =
     /// - The name of the Network Interface (aka. networkInterfaceName, such as `ge-0/0/0.3013` or `ae52.3028`) can be set with the `rdfs:label` property.
     ///
     /// <see href="https://w3id.org/noria/ontology/NetworkInterface"></see></summary>
-    let NetworkInterface =
-        Namespaced_IRI.parse _namespace_name "NetworkInterface" |> NamespacedName
-
+    let NetworkInterface = _prefix "NetworkInterface"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ResourceOntology"></see>
     /// </summary>
-    let ResourceOntology =
-        Namespaced_IRI.parse _namespace_name "ResourceOntology" |> NamespacedName
-
+    let ResourceOntology = _prefix "ResourceOntology"
     /// <summary>
     /// Abstract class for physical/logical ICT systems's assets and relations (a.k.a. *Structural facet*).
     /// <see href="https://w3id.org/noria/ontology/StructuralElement"></see></summary>
-    let StructuralElement =
-        Namespaced_IRI.parse _namespace_name "StructuralElement" |> NamespacedName
-
+    let StructuralElement = _prefix "StructuralElement"
     /// <summary>
     /// A physical or logical Link between Resources.
     ///
@@ -310,43 +250,31 @@ module noria =
     /// - The organizational unit in charge of the Network Link (i.e. the Support team or Owner of the Network Link) can be set with the `noria:resourceManagedBy` property.
     ///
     /// <see href="https://w3id.org/noria/ontology/NetworkLink"></see></summary>
-    let NetworkLink =
-        Namespaced_IRI.parse _namespace_name "NetworkLink" |> NamespacedName
-
+    let NetworkLink = _prefix "NetworkLink"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ObservableOntology"></see>
     /// </summary>
-    let ObservableOntology =
-        Namespaced_IRI.parse _namespace_name "ObservableOntology" |> NamespacedName
-
+    let ObservableOntology = _prefix "ObservableOntology"
     /// <summary>
     /// An abstract class representing a formal set of operations to be carried out in a standardized/controlled way.
     /// <see href="https://w3id.org/noria/ontology/OperationPlan"></see></summary>
-    let OperationPlan =
-        Namespaced_IRI.parse _namespace_name "OperationPlan" |> NamespacedName
-
+    let OperationPlan = _prefix "OperationPlan"
     /// <summary>
     /// Abstract class for (predeﬁned/computed) operational process (a.k.a. *Procedural facet*).
     /// <see href="https://w3id.org/noria/ontology/ProceduralElement"></see></summary>
-    let ProceduralElement =
-        Namespaced_IRI.parse _namespace_name "ProceduralElement" |> NamespacedName
-
+    let ProceduralElement = _prefix "ProceduralElement"
     /// <summary>
     /// The Product Model of some Resource as per the Manufacturer's naming.
     /// <see href="https://w3id.org/noria/ontology/ProductModel"></see></summary>
-    let ProductModel =
-        Namespaced_IRI.parse _namespace_name "ProductModel" |> NamespacedName
-
+    let ProductModel = _prefix "ProductModel"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/StructuralProperty"></see>
     /// </summary>
-    let StructuralProperty =
-        Namespaced_IRI.parse _namespace_name "StructuralProperty" |> NamespacedName
-
+    let StructuralProperty = _prefix "StructuralProperty"
     /// <summary>
     /// An abstract representation of qualifiable, quantifiable, observable or operable qualities of some Element.
     /// <see href="https://w3id.org/noria/ontology/Property"></see></summary>
-    let Property = Namespaced_IRI.parse _namespace_name "Property" |> NamespacedName
+    let Property = _prefix "Property"
     /// <summary>
     /// General resource record of the Communication Device kind from the logistics park. It is a managed entity that can be either Physical or Virtual.
     ///
@@ -358,7 +286,7 @@ module noria =
     /// - *UCO*: A `noria:Resource` is equivalent to an UCO's observable `Device`.
     ///
     /// <see href="https://w3id.org/noria/ontology/Resource"></see></summary>
-    let Resource = Namespaced_IRI.parse _namespace_name "Resource" |> NamespacedName
+    let Resource = _prefix "Resource"
     /// <summary>
     /// A part of the physical world or a virtual world whose 3D spatial extent is bounded actually or theoretically, and provides for certain functions within the zone it is contained in.
     ///
@@ -366,14 +294,11 @@ module noria =
     /// - *BOT*: A Room is a specialization of a `bot:Space` for common sense understanding.
     ///
     /// <see href="https://w3id.org/noria/ontology/Room"></see></summary>
-    let Room = Namespaced_IRI.parse _namespace_name "Room" |> NamespacedName
-
+    let Room = _prefix "Room"
     /// <summary>
     /// An abstract class for ICT systems's properties that should be defined as classes for extended description capability.
     /// <see href="https://w3id.org/noria/ontology/StructuralObservable"></see></summary>
-    let StructuralObservable =
-        Namespaced_IRI.parse _namespace_name "StructuralObservable" |> NamespacedName
-
+    let StructuralObservable = _prefix "StructuralObservable"
     /// <summary>
     /// A trouble ticket note represents a record used for reporting and information sharing during the incident management process for a given Trouble Ticket.
     ///
@@ -388,33 +313,23 @@ module noria =
     /// - *PEP*: a TroubleTicketNote is a context for (potentially) many *CorrectiveMaintenanceAction* to occur; hence it relates to a `pep:ProcedureExecutionContainer`, which in turns enable to track the corresponding `EventRecord` through the `ldp:member` property.
     ///
     /// <see href="https://w3id.org/noria/ontology/TroubleTicketNote"></see></summary>
-    let TroubleTicketNote =
-        Namespaced_IRI.parse _namespace_name "TroubleTicketNote" |> NamespacedName
-
+    let TroubleTicketNote = _prefix "TroubleTicketNote"
     /// <summary>
     /// The Operation Plan (procedure) guiding the execution of the given Action.
     /// <see href="https://w3id.org/noria/ontology/actionCorrelatedOperationPlan"></see></summary>
-    let actionCorrelatedOperationPlan =
-        Namespaced_IRI.parse _namespace_name "actionCorrelatedOperationPlan" |> NamespacedName
-
+    let actionCorrelatedOperationPlan = _prefix "actionCorrelatedOperationPlan"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/CorrectiveMaintenanceAction"></see>
     /// </summary>
-    let CorrectiveMaintenanceAction =
-        Namespaced_IRI.parse _namespace_name "CorrectiveMaintenanceAction" |> NamespacedName
-
+    let CorrectiveMaintenanceAction = _prefix "CorrectiveMaintenanceAction"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/ChangeAction"></see>
     /// </summary>
-    let ChangeAction =
-        Namespaced_IRI.parse _namespace_name "ChangeAction" |> NamespacedName
-
+    let ChangeAction = _prefix "ChangeAction"
     /// <summary>
     /// Instructions for involving the Agent (Team, Group, Employee).
     /// <see href="https://w3id.org/noria/ontology/agentInstructions"></see></summary>
-    let agentInstructions =
-        Namespaced_IRI.parse _namespace_name "agentInstructions" |> NamespacedName
-
+    let agentInstructions = _prefix "agentInstructions"
     /// <summary>
     /// The Network Element (IT Resource) the Agent is responsible of (supervises).
     ///
@@ -422,64 +337,46 @@ module noria =
     /// - *FOAF*: A team may be interested into following the state of some resources, hence this property is semantically akin to `foaf:topic_interest`.
     ///
     /// <see href="https://w3id.org/noria/ontology/agentManagesResource"></see></summary>
-    let agentManagesResource =
-        Namespaced_IRI.parse _namespace_name "agentManagesResource" |> NamespacedName
-
+    let agentManagesResource = _prefix "agentManagesResource"
     /// <summary>
     /// The Support team or Owner of the Network Element (IT Resource).
     /// <see href="https://w3id.org/noria/ontology/resourceManagedBy"></see></summary>
-    let resourceManagedBy =
-        Namespaced_IRI.parse _namespace_name "resourceManagedBy" |> NamespacedName
-
+    let resourceManagedBy = _prefix "resourceManagedBy"
     /// <summary>
     /// The preferred contact method to reach the Agent (Team, Group, Employee).
     /// <see href="https://w3id.org/noria/ontology/agentPreferredContactMethod"></see></summary>
-    let agentPreferredContactMethod =
-        Namespaced_IRI.parse _namespace_name "agentPreferredContactMethod" |> NamespacedName
-
+    let agentPreferredContactMethod = _prefix "agentPreferredContactMethod"
     /// <summary>
     /// The Working Hours for reaching the Agent (Team, Employee, etc.).
     /// <see href="https://w3id.org/noria/ontology/agentWorkingHours"></see></summary>
-    let agentWorkingHours =
-        Namespaced_IRI.parse _namespace_name "agentWorkingHours" |> NamespacedName
-
+    let agentWorkingHours = _prefix "agentWorkingHours"
     /// <summary>
     /// The ProcedureExecutionContainer (i.e. the set of Procedure Execution(s)) that led to clear the alarm and/or solve the issue.
     ///
     /// This allows, for example, the timely reporting of changing conditions prevalent at the time of the alarm.
     /// <see href="https://w3id.org/noria/ontology/alarmMitigatedBy"></see></summary>
-    let alarmMitigatedBy =
-        Namespaced_IRI.parse _namespace_name "alarmMitigatedBy" |> NamespacedName
-
+    let alarmMitigatedBy = _prefix "alarmMitigatedBy"
     /// <summary>
     /// The Monitored attributes parameter, when present, defines one or more attributes of the managed object and their corresponding values at the time of the alarm.
     /// Managed object definers may specify the set of attributes which are of interest, if any.
     /// This allows, for example, the timely reporting of changing conditions prevalent at the time of the alarm.
     ///
     /// <see href="https://w3id.org/noria/ontology/alarmMonitoredAttribute"></see></summary>
-    let alarmMonitoredAttribute =
-        Namespaced_IRI.parse _namespace_name "alarmMonitoredAttribute" |> NamespacedName
-
+    let alarmMonitoredAttribute = _prefix "alarmMonitoredAttribute"
     /// <summary>
     /// This parameter, when present, is used if the cause is known and the system being managed can suggest one or more solutions.
     /// This parameter is a set of possibilities specified by the object class definer.
     ///
     /// <see href="https://w3id.org/noria/ontology/alarmProposedRepairAction"></see></summary>
-    let alarmProposedRepairAction =
-        Namespaced_IRI.parse _namespace_name "alarmProposedRepairAction" |> NamespacedName
-
+    let alarmProposedRepairAction = _prefix "alarmProposedRepairAction"
     /// <summary>
     /// Indication of how it is perceived that the capability of the managed object has been affected, or how serious are the service affecting conditions (including for security alarms).
     /// <see href="https://w3id.org/noria/ontology/alarmSeverity"></see></summary>
-    let alarmSeverity =
-        Namespaced_IRI.parse _namespace_name "alarmSeverity" |> NamespacedName
-
+    let alarmSeverity = _prefix "alarmSeverity"
     /// <summary>
     /// The importance of the Application from the business impact perspective for risk assessment analysis and incident management prioritization.
     /// <see href="https://w3id.org/noria/ontology/applicationBusinessImportance"></see></summary>
-    let applicationBusinessImportance =
-        Namespaced_IRI.parse _namespace_name "applicationBusinessImportance" |> NamespacedName
-
+    let applicationBusinessImportance = _prefix "applicationBusinessImportance"
     /// <summary>
     /// The functional domain of the Application for describing the organization’s activities from a system point of view.
     ///
@@ -487,9 +384,7 @@ module noria =
     /// - *tmforum*: the `noria:applicationFunctionalDomain` is equivalent to the *Domain* concept of the ODA Functional Framework.
     ///
     /// <see href="https://w3id.org/noria/ontology/applicationFunctionalDomain"></see></summary>
-    let applicationFunctionalDomain =
-        Namespaced_IRI.parse _namespace_name "applicationFunctionalDomain" |> NamespacedName
-
+    let applicationFunctionalDomain = _prefix "applicationFunctionalDomain"
     /// <summary>
     /// The functional sub-domain of the Application for describing the organization’s activities from a system point of view.
     ///
@@ -497,69 +392,56 @@ module noria =
     /// - *tmforum*: the `noria:applicationFunctionalSubDomain` is equivalent to *Aggregate Business Entities* (ABEs) and *Business Entities* (BEs) of the ODA Functional Framework.
     ///
     /// <see href="https://w3id.org/noria/ontology/applicationFunctionalSubDomain"></see></summary>
-    let applicationFunctionalSubDomain =
-        Namespaced_IRI.parse _namespace_name "applicationFunctionalSubDomain" |> NamespacedName
-
+    let applicationFunctionalSubDomain = _prefix "applicationFunctionalSubDomain"
     /// <summary>
     /// Application model code.
     /// <see href="https://w3id.org/noria/ontology/applicationModelIdentifier"></see></summary>
-    let applicationModelIdentifier =
-        Namespaced_IRI.parse _namespace_name "applicationModelIdentifier" |> NamespacedName
+    let applicationModelIdentifier = _prefix "applicationModelIdentifier"
 
     /// <summary>
     /// Administration leader.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleAdministrationLeader"></see></summary>
     let applicationModuleAdministrationLeader =
-        Namespaced_IRI.parse _namespace_name "applicationModuleAdministrationLeader" |> NamespacedName
+        _prefix "applicationModuleAdministrationLeader"
 
     /// <summary>
     /// Generic property for linking a party playing a role in the management of the Application Module.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleRelatedParty"></see></summary>
-    let applicationModuleRelatedParty =
-        Namespaced_IRI.parse _namespace_name "applicationModuleRelatedParty" |> NamespacedName
+    let applicationModuleRelatedParty = _prefix "applicationModuleRelatedParty"
 
     /// <summary>
     /// Administration team.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleAdministrationTeam"></see></summary>
     let applicationModuleAdministrationTeam =
-        Namespaced_IRI.parse _namespace_name "applicationModuleAdministrationTeam" |> NamespacedName
+        _prefix "applicationModuleAdministrationTeam"
 
     /// <summary>
     /// Hotline enabled for issues on a given ApplicationModule.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleHotlineEnabled"></see></summary>
-    let applicationModuleHotlineEnabled =
-        Namespaced_IRI.parse _namespace_name "applicationModuleHotlineEnabled" |> NamespacedName
-
+    let applicationModuleHotlineEnabled = _prefix "applicationModuleHotlineEnabled"
     /// <summary>
     /// Hotline team.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleHotlineGroup"></see></summary>
-    let applicationModuleHotlineGroup =
-        Namespaced_IRI.parse _namespace_name "applicationModuleHotlineGroup" |> NamespacedName
-
+    let applicationModuleHotlineGroup = _prefix "applicationModuleHotlineGroup"
     /// <summary>
     /// Application module code.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleIdentifier"></see></summary>
-    let applicationModuleIdentifier =
-        Namespaced_IRI.parse _namespace_name "applicationModuleIdentifier" |> NamespacedName
-
+    let applicationModuleIdentifier = _prefix "applicationModuleIdentifier"
     /// <summary>
     /// The name of the Application module.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleName"></see></summary>
-    let applicationModuleName =
-        Namespaced_IRI.parse _namespace_name "applicationModuleName" |> NamespacedName
+    let applicationModuleName = _prefix "applicationModuleName"
 
     /// <summary>
     /// The Distinguished Name of the Functional Element Instance (i.e. unique identifier).
     /// <see href="https://w3id.org/noria/ontology/functionalElementDistinguishedName"></see></summary>
     let functionalElementDistinguishedName =
-        Namespaced_IRI.parse _namespace_name "functionalElementDistinguishedName" |> NamespacedName
+        _prefix "functionalElementDistinguishedName"
 
     /// <summary>
     /// A child/parent relationship between a specific and managed instance of an Application (i.e. an Application Module) and the Application.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleOf"></see></summary>
-    let applicationModuleOf =
-        Namespaced_IRI.parse _namespace_name "applicationModuleOf" |> NamespacedName
-
+    let applicationModuleOf = _prefix "applicationModuleOf"
     /// <summary>
     /// The Agent or Owner of the Managed Element.
     ///
@@ -567,207 +449,139 @@ module noria =
     /// - *ORG*: the *elementManagedBy* property can range an `org:Organization` or `org:OrganizationalUnit` entity as the ORG data model defines these class as subClassOf `foaf:Agent` (see [org:Organization](https://www.w3.org/TR/vocab-org/#org:Organization)).
     ///
     /// <see href="https://w3id.org/noria/ontology/elementManagedBy"></see></summary>
-    let elementManagedBy =
-        Namespaced_IRI.parse _namespace_name "elementManagedBy" |> NamespacedName
-
+    let elementManagedBy = _prefix "elementManagedBy"
     /// <summary>
     /// SLA level.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleSlaLevel"></see></summary>
-    let applicationModuleSlaLevel =
-        Namespaced_IRI.parse _namespace_name "applicationModuleSlaLevel" |> NamespacedName
-
+    let applicationModuleSlaLevel = _prefix "applicationModuleSlaLevel"
     /// <summary>
     /// SLA Level date, the date at which the SLA Level has been set or updated.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleSlaLevelDate"></see></summary>
-    let applicationModuleSlaLevelDate =
-        Namespaced_IRI.parse _namespace_name "applicationModuleSlaLevelDate" |> NamespacedName
-
+    let applicationModuleSlaLevelDate = _prefix "applicationModuleSlaLevelDate"
     /// <summary>
     /// Status of the Application Module.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleStatus"></see></summary>
-    let applicationModuleStatus =
-        Namespaced_IRI.parse _namespace_name "applicationModuleStatus" |> NamespacedName
-
+    let applicationModuleStatus = _prefix "applicationModuleStatus"
     /// <summary>
     /// Level 1 support team.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleSupportGroup"></see></summary>
-    let applicationModuleSupportGroup =
-        Namespaced_IRI.parse _namespace_name "applicationModuleSupportGroup" |> NamespacedName
-
+    let applicationModuleSupportGroup = _prefix "applicationModuleSupportGroup"
     /// <summary>
     /// Support leader.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleSupportLeader"></see></summary>
-    let applicationModuleSupportLeader =
-        Namespaced_IRI.parse _namespace_name "applicationModuleSupportLeader" |> NamespacedName
-
+    let applicationModuleSupportLeader = _prefix "applicationModuleSupportLeader"
     /// <summary>
     /// Level 2 Support Team.
     /// <see href="https://w3id.org/noria/ontology/applicationModuleSupportTeam"></see></summary>
-    let applicationModuleSupportTeam =
-        Namespaced_IRI.parse _namespace_name "applicationModuleSupportTeam" |> NamespacedName
-
+    let applicationModuleSupportTeam = _prefix "applicationModuleSupportTeam"
     /// <summary>
     /// Application numerical identifier, the numerical identifier of the Application within the Information System.
     /// <see href="https://w3id.org/noria/ontology/applicationNumericalIdentifier"></see></summary>
-    let applicationNumericalIdentifier =
-        Namespaced_IRI.parse _namespace_name "applicationNumericalIdentifier" |> NamespacedName
-
+    let applicationNumericalIdentifier = _prefix "applicationNumericalIdentifier"
     /// <summary>
     /// Application short identifier, a short string identifier of Application within the Information System.
     /// <see href="https://w3id.org/noria/ontology/applicationShortIdentifier"></see></summary>
-    let applicationShortIdentifier =
-        Namespaced_IRI.parse _namespace_name "applicationShortIdentifier" |> NamespacedName
-
+    let applicationShortIdentifier = _prefix "applicationShortIdentifier"
     /// <summary>
     /// The type of the Application.
     /// <see href="https://w3id.org/noria/ontology/applicationType"></see></summary>
-    let applicationType =
-        Namespaced_IRI.parse _namespace_name "applicationType" |> NamespacedName
-
+    let applicationType = _prefix "applicationType"
     /// <summary>
     /// The actor of the Change Request.
     /// <see href="https://w3id.org/noria/ontology/changeRequestActorParty"></see></summary>
-    let changeRequestActorParty =
-        Namespaced_IRI.parse _namespace_name "changeRequestActorParty" |> NamespacedName
-
+    let changeRequestActorParty = _prefix "changeRequestActorParty"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/changeRequestRelatedParty"></see>
     /// </summary>
-    let changeRequestRelatedParty =
-        Namespaced_IRI.parse _namespace_name "changeRequestRelatedParty" |> NamespacedName
-
+    let changeRequestRelatedParty = _prefix "changeRequestRelatedParty"
     /// <summary>
     /// Date and time on which the Change Request implementation has been completed. It is displayed only after the Change Request implementation has been completed actually.
     /// <see href="https://w3id.org/noria/ontology/changeRequestActualEndTime"></see></summary>
-    let changeRequestActualEndTime =
-        Namespaced_IRI.parse _namespace_name "changeRequestActualEndTime" |> NamespacedName
-
+    let changeRequestActualEndTime = _prefix "changeRequestActualEndTime"
     /// <summary>
     /// Date and time on which the Change Request implementation has started. It is displayed only after the Change Request implementation has started actually.
     /// <see href="https://w3id.org/noria/ontology/changeRequestActualStartTime"></see></summary>
-    let changeRequestActualStartTime =
-        Namespaced_IRI.parse _namespace_name "changeRequestActualStartTime" |> NamespacedName
-
+    let changeRequestActualStartTime = _prefix "changeRequestActualStartTime"
     /// <summary>
     /// Nature of the Change Request
     /// <see href="https://w3id.org/noria/ontology/changeRequestCategory"></see></summary>
-    let changeRequestCategory =
-        Namespaced_IRI.parse _namespace_name "changeRequestCategory" |> NamespacedName
-
+    let changeRequestCategory = _prefix "changeRequestCategory"
     /// <summary>
     /// Cause of (reason for) the Change Request.
     /// <see href="https://w3id.org/noria/ontology/changeRequestChangeCause"></see></summary>
-    let changeRequestChangeCause =
-        Namespaced_IRI.parse _namespace_name "changeRequestChangeCause" |> NamespacedName
-
+    let changeRequestChangeCause = _prefix "changeRequestChangeCause"
     /// <summary>
     /// Set of physical/logical entities on which the Change Request is carried-out.
     /// <see href="https://w3id.org/noria/ontology/changeRequestImpact"></see></summary>
-    let changeRequestImpact =
-        Namespaced_IRI.parse _namespace_name "changeRequestImpact" |> NamespacedName
-
+    let changeRequestImpact = _prefix "changeRequestImpact"
     /// <summary>
     /// The structural or functional element instance some event or time-dependant entity is related with.
     /// <see href="https://w3id.org/noria/ontology/eventRelatedElement"></see></summary>
-    let eventRelatedElement =
-        Namespaced_IRI.parse _namespace_name "eventRelatedElement" |> NamespacedName
-
+    let eventRelatedElement = _prefix "eventRelatedElement"
     /// <summary>
     /// The agent initiating the Change Request.
     /// <see href="https://w3id.org/noria/ontology/changeRequestInitiatorParty"></see></summary>
-    let changeRequestInitiatorParty =
-        Namespaced_IRI.parse _namespace_name "changeRequestInitiatorParty" |> NamespacedName
-
+    let changeRequestInitiatorParty = _prefix "changeRequestInitiatorParty"
     /// <summary>
     /// If *true*, the Change Request is subject to special regulations.
     /// <see href="https://w3id.org/noria/ontology/changeRequestIsRegulated"></see></summary>
-    let changeRequestIsRegulated =
-        Namespaced_IRI.parse _namespace_name "changeRequestIsRegulated" |> NamespacedName
-
+    let changeRequestIsRegulated = _prefix "changeRequestIsRegulated"
     /// <summary>
     /// Expected duration of the outage, if any involved by the Change Request type.
     /// <see href="https://w3id.org/noria/ontology/changeRequestOutageDuration"></see></summary>
-    let changeRequestOutageDuration =
-        Namespaced_IRI.parse _namespace_name "changeRequestOutageDuration" |> NamespacedName
-
+    let changeRequestOutageDuration = _prefix "changeRequestOutageDuration"
     /// <summary>
     /// The pilot of the Change Request.
     /// <see href="https://w3id.org/noria/ontology/changeRequestPilotParty"></see></summary>
-    let changeRequestPilotParty =
-        Namespaced_IRI.parse _namespace_name "changeRequestPilotParty" |> NamespacedName
-
+    let changeRequestPilotParty = _prefix "changeRequestPilotParty"
     /// <summary>
     /// Date and time on which is planned the end of the implementation of the Change Request. It is displayed only before the Change Request implementation is completed.
     /// <see href="https://w3id.org/noria/ontology/changeRequestPlannedEndTime"></see></summary>
-    let changeRequestPlannedEndTime =
-        Namespaced_IRI.parse _namespace_name "changeRequestPlannedEndTime" |> NamespacedName
-
+    let changeRequestPlannedEndTime = _prefix "changeRequestPlannedEndTime"
     /// <summary>
     /// Date and time on which is planned the end of the implementation of the Change Request. It is displayed only before the Change Request implementation is completed.
     /// <see href="https://w3id.org/noria/ontology/changeRequestPlannedStartTime"></see></summary>
-    let changeRequestPlannedStartTime =
-        Namespaced_IRI.parse _namespace_name "changeRequestPlannedStartTime" |> NamespacedName
-
+    let changeRequestPlannedStartTime = _prefix "changeRequestPlannedStartTime"
     /// <summary>
     /// An item of the standard operation plan catalog for recurring activities.
     /// <see href="https://w3id.org/noria/ontology/changeRequestSpecification"></see></summary>
-    let changeRequestSpecification =
-        Namespaced_IRI.parse _namespace_name "changeRequestSpecification" |> NamespacedName
-
+    let changeRequestSpecification = _prefix "changeRequestSpecification"
     /// <summary>
     /// The current status of the Change Request.
     /// <see href="https://w3id.org/noria/ontology/changeRequestStatusCurrent"></see></summary>
-    let changeRequestStatusCurrent =
-        Namespaced_IRI.parse _namespace_name "changeRequestStatusCurrent" |> NamespacedName
-
+    let changeRequestStatusCurrent = _prefix "changeRequestStatusCurrent"
     /// <summary>
     /// The type of the request describes the a priori impact and risk level of the Change Request.
     /// <see href="https://w3id.org/noria/ontology/changeRequestType"></see></summary>
-    let changeRequestType =
-        Namespaced_IRI.parse _namespace_name "changeRequestType" |> NamespacedName
-
+    let changeRequestType = _prefix "changeRequestType"
     /// <summary>
     /// Relates a Resource that is part of a cluster with the cluster controller.
     /// <see href="https://w3id.org/noria/ontology/clusterController"></see></summary>
-    let clusterController =
-        Namespaced_IRI.parse _namespace_name "clusterController" |> NamespacedName
-
+    let clusterController = _prefix "clusterController"
     /// <summary>
     /// ID given by the requestor to facilitate the relationship set up and searches afterwards.
     /// <see href="https://w3id.org/noria/ontology/documentExternalId"></see></summary>
-    let documentExternalId =
-        Namespaced_IRI.parse _namespace_name "documentExternalId" |> NamespacedName
-
+    let documentExternalId = _prefix "documentExternalId"
     /// <summary>
     /// Hyperlink to the TroubleTicket or ChangeRequest entity in the originating information system.
     /// <see href="https://w3id.org/noria/ontology/documentHRef"></see></summary>
-    let documentHRef =
-        Namespaced_IRI.parse _namespace_name "documentHRef" |> NamespacedName
-
+    let documentHRef = _prefix "documentHRef"
     /// <summary>
     /// The status change history of the document as recorded by the system's logging feature.
     /// <see href="https://w3id.org/noria/ontology/documentStatusHistory"></see></summary>
-    let documentStatusHistory =
-        Namespaced_IRI.parse _namespace_name "documentStatusHistory" |> NamespacedName
-
+    let documentStatusHistory = _prefix "documentStatusHistory"
     /// <summary>
     /// The Distinguished Name of the Element Instance (i.e. unique identifier).
     /// <see href="https://w3id.org/noria/ontology/elementDistinguishedName"></see></summary>
-    let elementDistinguishedName =
-        Namespaced_IRI.parse _namespace_name "elementDistinguishedName" |> NamespacedName
-
+    let elementDistinguishedName = _prefix "elementDistinguishedName"
     /// <summary>
     /// An abstract representation of a relationship between some Element instance and some Property instance.
     /// <see href="https://w3id.org/noria/ontology/elementProperty"></see></summary>
-    let elementProperty =
-        Namespaced_IRI.parse _namespace_name "elementProperty" |> NamespacedName
-
+    let elementProperty = _prefix "elementProperty"
     /// <summary>
     /// Party playing a role (stakeholders) in the life cycle of a given event instance or time-dependant entity.
     /// <see href="https://w3id.org/noria/ontology/eventRelatedParty"></see></summary>
-    let eventRelatedParty =
-        Namespaced_IRI.parse _namespace_name "eventRelatedParty" |> NamespacedName
-
+    let eventRelatedParty = _prefix "eventRelatedParty"
     /// <summary>
     /// A uniquely identified space of the Resource within a given Room.
     ///
@@ -776,155 +590,125 @@ module noria =
     /// - *BOT*: This property is akin to the inverse of `bot:hasElement`.
     ///
     /// <see href="https://w3id.org/noria/ontology/locatedAtLocus"></see></summary>
-    let locatedAtLocus =
-        Namespaced_IRI.parse _namespace_name "locatedAtLocus" |> NamespacedName
-
+    let locatedAtLocus = _prefix "locatedAtLocus"
     /// <summary>
     /// The line identifier in a `noria:Room` for a Locus defined by Cartesian coordinates.
     /// <see href="https://w3id.org/noria/ontology/locusLine"></see></summary>
-    let locusLine = Namespaced_IRI.parse _namespace_name "locusLine" |> NamespacedName
+    let locusLine = _prefix "locusLine"
     /// <summary>
     /// The row identifier in a `noria:Room` for a Locus defined by Cartesian coordinates.
     /// <see href="https://w3id.org/noria/ontology/locusRow"></see></summary>
-    let locusRow = Namespaced_IRI.parse _namespace_name "locusRow" |> NamespacedName
-
+    let locusRow = _prefix "locusRow"
     /// <summary>
     /// The Agent at the origin of the Log record whenever it represents some action carried out on the ICT system. This includes information about the service user associated with the service request that caused a security alarm.
     /// <see href="https://w3id.org/noria/ontology/logOriginatingAgent"></see></summary>
-    let logOriginatingAgent =
-        Namespaced_IRI.parse _namespace_name "logOriginatingAgent" |> NamespacedName
-
+    let logOriginatingAgent = _prefix "logOriginatingAgent"
     /// <summary>
     /// The Managed Object entity at the origin of the Log record. This includes information about the service provider associated with the service request that caused a security alarm.
     /// <see href="https://w3id.org/noria/ontology/logOriginatingManagedObject"></see></summary>
-    let logOriginatingManagedObject =
-        Namespaced_IRI.parse _namespace_name "logOriginatingManagedObject" |> NamespacedName
-
+    let logOriginatingManagedObject = _prefix "logOriginatingManagedObject"
     /// <summary>
     /// The Management System that receives, processes and forwards the Log record.
     /// <see href="https://w3id.org/noria/ontology/logOriginatingManagementSystem"></see></summary>
-    let logOriginatingManagementSystem =
-        Namespaced_IRI.parse _namespace_name "logOriginatingManagementSystem" |> NamespacedName
-
+    let logOriginatingManagementSystem = _prefix "logOriginatingManagementSystem"
     /// <summary>
     /// Textual information describing the logged event.
     /// <see href="https://w3id.org/noria/ontology/logText"></see></summary>
-    let logText = Namespaced_IRI.parse _namespace_name "logText" |> NamespacedName
-
+    let logText = _prefix "logText"
     /// <summary>
     /// The Date on which the log record was created in the system.
     /// <see href="https://w3id.org/noria/ontology/loggingTime"></see></summary>
-    let loggingTime =
-        Namespaced_IRI.parse _namespace_name "loggingTime" |> NamespacedName
+    let loggingTime = _prefix "loggingTime"
 
     /// <summary>
     /// The administrative status of the Network Interface.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceAdministrativeStatus"></see></summary>
     let networkInterfaceAdministrativeStatus =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceAdministrativeStatus" |> NamespacedName
+        _prefix "networkInterfaceAdministrativeStatus"
 
     /// <summary>
     /// An abstract representation of a relationship between some StructuralElement instance and some StructuralObservable instance.
     /// <see href="https://w3id.org/noria/ontology/structuralElementObservable"></see></summary>
-    let structuralElementObservable =
-        Namespaced_IRI.parse _namespace_name "structuralElementObservable" |> NamespacedName
-
+    let structuralElementObservable = _prefix "structuralElementObservable"
     /// <summary>
     /// The Network Link the Network Interface is attached-to.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceConnects"></see></summary>
-    let networkInterfaceConnects =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceConnects" |> NamespacedName
-
+    let networkInterfaceConnects = _prefix "networkInterfaceConnects"
     /// <summary>
     /// A human-readable/editable text that describes the network interface. The information included in the description depends on the capabilities of the Resource's operating system.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceDescription"></see></summary>
-    let networkInterfaceDescription =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceDescription" |> NamespacedName
+    let networkInterfaceDescription = _prefix "networkInterfaceDescription"
 
     /// <summary>
     /// The high received power notification threshold.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceLaserRxHighPowerWarningThreshold"></see></summary>
     let networkInterfaceLaserRxHighPowerWarningThreshold =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceLaserRxHighPowerWarningThreshold" |> NamespacedName
+        _prefix "networkInterfaceLaserRxHighPowerWarningThreshold"
 
     /// <summary>
     /// An abstract representation of a relationship between some StructuralElement instance and some literal data.
     /// <see href="https://w3id.org/noria/ontology/structuralElementObservableData"></see></summary>
-    let structuralElementObservableData =
-        Namespaced_IRI.parse _namespace_name "structuralElementObservableData" |> NamespacedName
+    let structuralElementObservableData = _prefix "structuralElementObservableData"
 
     /// <summary>
     /// The low received power notification threshold.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceLaserRxLowPowerWarningThreshold"></see></summary>
     let networkInterfaceLaserRxLowPowerWarningThreshold =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceLaserRxLowPowerWarningThreshold" |> NamespacedName
+        _prefix "networkInterfaceLaserRxLowPowerWarningThreshold"
 
     /// <summary>
     /// The received optical power measure of the Network Interface, in dBm.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceLaserRxOpticalPower"></see></summary>
     let networkInterfaceLaserRxOpticalPower =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceLaserRxOpticalPower" |> NamespacedName
+        _prefix "networkInterfaceLaserRxOpticalPower"
 
     /// <summary>
     /// The average received optical power of the Network Interface, in dBm.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceLaserRxOpticalPowerAverage"></see></summary>
     let networkInterfaceLaserRxOpticalPowerAverage =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceLaserRxOpticalPowerAverage" |> NamespacedName
+        _prefix "networkInterfaceLaserRxOpticalPowerAverage"
 
     /// <summary>
     /// The emitted optical power measure of the Network Interface, in dBm.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceLaserTxOpticalPower"></see></summary>
     let networkInterfaceLaserTxOpticalPower =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceLaserTxOpticalPower" |> NamespacedName
+        _prefix "networkInterfaceLaserTxOpticalPower"
 
     /// <summary>
     /// The Resource the Network Interface is part-of.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceOf"></see></summary>
-    let networkInterfaceOf =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceOf" |> NamespacedName
-
+    let networkInterfaceOf = _prefix "networkInterfaceOf"
     /// <summary>
     /// The operational status of the Network Interface.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceOperationalStatus"></see></summary>
-    let networkInterfaceOperationalStatus =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceOperationalStatus" |> NamespacedName
+    let networkInterfaceOperationalStatus = _prefix "networkInterfaceOperationalStatus"
 
     /// <summary>
     /// The metric value associated to the Network Interface for some routing protocol.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceRoutingPriorityMetric"></see></summary>
     let networkInterfaceRoutingPriorityMetric =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceRoutingPriorityMetric" |> NamespacedName
+        _prefix "networkInterfaceRoutingPriorityMetric"
 
     /// <summary>
     /// The type of the Network Interface.
     /// <see href="https://w3id.org/noria/ontology/networkInterfaceType"></see></summary>
-    let networkInterfaceType =
-        Namespaced_IRI.parse _namespace_name "networkInterfaceType" |> NamespacedName
-
+    let networkInterfaceType = _prefix "networkInterfaceType"
     /// <summary>
     /// The UID of the NetworkLink.
     /// <see href="https://w3id.org/noria/ontology/networkLinkId"></see></summary>
-    let networkLinkId =
-        Namespaced_IRI.parse _namespace_name "networkLinkId" |> NamespacedName
-
+    let networkLinkId = _prefix "networkLinkId"
     /// <summary>
     /// The installation date of the NetworkLink.
     /// <see href="https://w3id.org/noria/ontology/networkLinkInstallationDate"></see></summary>
-    let networkLinkInstallationDate =
-        Namespaced_IRI.parse _namespace_name "networkLinkInstallationDate" |> NamespacedName
-
+    let networkLinkInstallationDate = _prefix "networkLinkInstallationDate"
     /// <summary>
     /// Link termination Resource, the Resource at some end fo the Network Link.
     /// <see href="https://w3id.org/noria/ontology/networkLinkTerminationResource"></see></summary>
-    let networkLinkTerminationResource =
-        Namespaced_IRI.parse _namespace_name "networkLinkTerminationResource" |> NamespacedName
-
+    let networkLinkTerminationResource = _prefix "networkLinkTerminationResource"
     /// <summary>
     /// A description of the type of the Network Link.
     /// <see href="https://w3id.org/noria/ontology/networkLinkType"></see></summary>
-    let networkLinkType =
-        Namespaced_IRI.parse _namespace_name "networkLinkType" |> NamespacedName
-
+    let networkLinkType = _prefix "networkLinkType"
     /// <summary>
     /// The ActionPostCondition to check/that would be observed whenever the OperationPlan is carried out.
     ///
@@ -933,9 +717,7 @@ module noria =
     /// - *BBO*: From the BPMN perspective, the `operationPlanPostCondition` is the description of what should be observed to after the realization of a given Task, hence it is a kind of `BBO:has_completionCondition`.
     ///
     /// <see href="https://w3id.org/noria/ontology/operationPlanPostCondition"></see></summary>
-    let operationPlanPostCondition =
-        Namespaced_IRI.parse _namespace_name "operationPlanPostCondition" |> NamespacedName
-
+    let operationPlanPostCondition = _prefix "operationPlanPostCondition"
     /// <summary>
     /// The ActionPreCondition to check/that would be checked whenever the OperationPlan will be executed/is executed.
     ///
@@ -944,125 +726,89 @@ module noria =
     /// - *BBO*: From the BPMN perspective, the `operationPlanPreCondition` is the description of what may activate the realization of a given Task, hence it is a kind of `BBO:has_activationCondition`.
     ///
     /// <see href="https://w3id.org/noria/ontology/operationPlanPreCondition"></see></summary>
-    let operationPlanPreCondition =
-        Namespaced_IRI.parse _namespace_name "operationPlanPreCondition" |> NamespacedName
-
+    let operationPlanPreCondition = _prefix "operationPlanPreCondition"
     /// <summary>
     /// The *final* nature (for product ticket class) or technical impact (for resource ticket class) of the incident category of any Trouble Ticket or Incident Ticket.
     /// <see href="https://w3id.org/noria/ontology/problemCategory"></see></summary>
-    let problemCategory =
-        Namespaced_IRI.parse _namespace_name "problemCategory" |> NamespacedName
-
+    let problemCategory = _prefix "problemCategory"
     /// <summary>
     /// The *initial* nature (for product ticket class) or technical impact (for resource ticket class) of the incident category of any Trouble Ticket or Incident Ticket.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketCategory"></see></summary>
-    let troubleTicketCategory =
-        Namespaced_IRI.parse _namespace_name "troubleTicketCategory" |> NamespacedName
-
+    let troubleTicketCategory = _prefix "troubleTicketCategory"
     /// <summary>
     /// The *final* area of responsibility identified for the incident.
     /// <see href="https://w3id.org/noria/ontology/problemResponsibility"></see></summary>
-    let problemResponsibility =
-        Namespaced_IRI.parse _namespace_name "problemResponsibility" |> NamespacedName
-
+    let problemResponsibility = _prefix "problemResponsibility"
     /// <summary>
     /// The cause(s) defined for the trouble, in plain text.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketCause"></see></summary>
-    let troubleTicketCause =
-        Namespaced_IRI.parse _namespace_name "troubleTicketCause" |> NamespacedName
-
+    let troubleTicketCause = _prefix "troubleTicketCause"
     /// <summary>
     /// The Manufacturer of the Product Model.
     /// <see href="https://w3id.org/noria/ontology/productManufacturedBy"></see></summary>
-    let productManufacturedBy =
-        Namespaced_IRI.parse _namespace_name "productManufacturedBy" |> NamespacedName
-
+    let productManufacturedBy = _prefix "productManufacturedBy"
     /// <summary>
     /// The Application this Resource is contributing to, whatever the Application type.
     /// <see href="https://w3id.org/noria/ontology/resourceForApplication"></see></summary>
-    let resourceForApplication =
-        Namespaced_IRI.parse _namespace_name "resourceForApplication" |> NamespacedName
-
+    let resourceForApplication = _prefix "resourceForApplication"
     /// <summary>
     /// The hostname (nodename) of the Resource.
     /// <see href="https://w3id.org/noria/ontology/resourceHostName"></see></summary>
-    let resourceHostName =
-        Namespaced_IRI.parse _namespace_name "resourceHostName" |> NamespacedName
+    let resourceHostName = _prefix "resourceHostName"
 
     /// <summary>
     /// The Distinguished Name of the Structural Element Instance (i.e. unique identifier).
     /// <see href="https://w3id.org/noria/ontology/structuralElementDistinguishedName"></see></summary>
     let structuralElementDistinguishedName =
-        Namespaced_IRI.parse _namespace_name "structuralElementDistinguishedName" |> NamespacedName
+        _prefix "structuralElementDistinguishedName"
 
     /// <summary>
     /// The installation date of the Resource.
     /// <see href="https://w3id.org/noria/ontology/resourceInstallationDate"></see></summary>
-    let resourceInstallationDate =
-        Namespaced_IRI.parse _namespace_name "resourceInstallationDate" |> NamespacedName
-
+    let resourceInstallationDate = _prefix "resourceInstallationDate"
     /// <summary>
     /// The logistic UID of the Resource (a.k.a. asset tag).
     /// <see href="https://w3id.org/noria/ontology/resourceLogisticId"></see></summary>
-    let resourceLogisticId =
-        Namespaced_IRI.parse _namespace_name "resourceLogisticId" |> NamespacedName
-
+    let resourceLogisticId = _prefix "resourceLogisticId"
     /// <summary>
     /// Specifies the IP address for remote management of the Resource, if relevant.
     /// <see href="https://w3id.org/noria/ontology/resourceManagementIPAddress"></see></summary>
-    let resourceManagementIPAddress =
-        Namespaced_IRI.parse _namespace_name "resourceManagementIPAddress" |> NamespacedName
-
+    let resourceManagementIPAddress = _prefix "resourceManagementIPAddress"
     /// <summary>
     /// The product model of the Resource.
     /// <see href="https://w3id.org/noria/ontology/resourceProductModel"></see></summary>
-    let resourceProductModel =
-        Namespaced_IRI.parse _namespace_name "resourceProductModel" |> NamespacedName
-
+    let resourceProductModel = _prefix "resourceProductModel"
     /// <summary>
     /// The serial number of the Resource.
     /// <see href="https://w3id.org/noria/ontology/resourceSerialNumber"></see></summary>
-    let resourceSerialNumber =
-        Namespaced_IRI.parse _namespace_name "resourceSerialNumber" |> NamespacedName
-
+    let resourceSerialNumber = _prefix "resourceSerialNumber"
     /// <summary>
     /// The type of the Network Element Resource.
     /// <see href="https://w3id.org/noria/ontology/resourceType"></see></summary>
-    let resourceType =
-        Namespaced_IRI.parse _namespace_name "resourceType" |> NamespacedName
-
+    let resourceType = _prefix "resourceType"
     /// <summary>
     /// The production state of the Resource.
     /// <see href="https://w3id.org/noria/ontology/resourceUsageState"></see></summary>
-    let resourceUsageState =
-        Namespaced_IRI.parse _namespace_name "resourceUsageState" |> NamespacedName
-
+    let resourceUsageState = _prefix "resourceUsageState"
     /// <summary>
     /// The type of the Service.
     /// <see href="https://w3id.org/noria/ontology/serviceType"></see></summary>
-    let serviceType =
-        Namespaced_IRI.parse _namespace_name "serviceType" |> NamespacedName
-
+    let serviceType = _prefix "serviceType"
     /// <summary>
     /// A unique identifier of a Site.
     /// <see href="https://w3id.org/noria/ontology/siteId"></see></summary>
-    let siteId = Namespaced_IRI.parse _namespace_name "siteId" |> NamespacedName
-
+    let siteId = _prefix "siteId"
     /// <summary>
     /// Street address of a Site.
     /// <see href="https://w3id.org/noria/ontology/sitePrincipalAddress"></see></summary>
-    let sitePrincipalAddress =
-        Namespaced_IRI.parse _namespace_name "sitePrincipalAddress" |> NamespacedName
-
+    let sitePrincipalAddress = _prefix "sitePrincipalAddress"
     /// <summary>
     /// City Name for a Site.
     ///
     /// Alignment:
     /// - *GeoNames*: a `P` class `gn:Feature` (city, village, etc.) may correspond to this property.
     /// <see href="https://w3id.org/noria/ontology/sitePrincipalAddressCityName"></see></summary>
-    let sitePrincipalAddressCityName =
-        Namespaced_IRI.parse _namespace_name "sitePrincipalAddressCityName" |> NamespacedName
-
+    let sitePrincipalAddressCityName = _prefix "sitePrincipalAddressCityName"
     /// <summary>
     /// Country name or code for a Site.
     ///
@@ -1072,100 +818,73 @@ module noria =
     ///   - prefer ISO 3166 values for easier matching with `gn:countryCode`.
     ///
     /// <see href="https://w3id.org/noria/ontology/sitePrincipalAddressCountry"></see></summary>
-    let sitePrincipalAddressCountry =
-        Namespaced_IRI.parse _namespace_name "sitePrincipalAddressCountry" |> NamespacedName
-
+    let sitePrincipalAddressCountry = _prefix "sitePrincipalAddressCountry"
     /// <summary>
     /// Postal Code for a Site.
     ///
     /// Alignment:
     /// - *GeoNames*: *ADM2*, *ADM3* or *ADM4* annotations may correspond to this property, depending on the considered country.
     /// <see href="https://w3id.org/noria/ontology/sitePrincipalAddressPostalCode"></see></summary>
-    let sitePrincipalAddressPostalCode =
-        Namespaced_IRI.parse _namespace_name "sitePrincipalAddressPostalCode" |> NamespacedName
-
+    let sitePrincipalAddressPostalCode = _prefix "sitePrincipalAddressPostalCode"
     /// <summary>
     /// Street for a Site.
     /// <see href="https://w3id.org/noria/ontology/sitePrincipalAddressStreet"></see></summary>
-    let sitePrincipalAddressStreet =
-        Namespaced_IRI.parse _namespace_name "sitePrincipalAddressStreet" |> NamespacedName
-
+    let sitePrincipalAddressStreet = _prefix "sitePrincipalAddressStreet"
     /// <summary>
     /// The type of a Site.
     /// <see href="https://w3id.org/noria/ontology/siteType"></see></summary>
-    let siteType = Namespaced_IRI.parse _namespace_name "siteType" |> NamespacedName
-
+    let siteType = _prefix "siteType"
     /// <summary>
     /// Relates some `StructuralObservable` instance to some `StructuralElement` instance.
     /// <see href="https://w3id.org/noria/ontology/structuralObservableOf"></see></summary>
-    let structuralObservableOf =
-        Namespaced_IRI.parse _namespace_name "structuralObservableOf" |> NamespacedName
-
+    let structuralObservableOf = _prefix "structuralObservableOf"
     /// <summary>
     ///   <see href="https://w3id.org/noria/ontology/structuralElementProperty"></see>
     /// </summary>
-    let structuralElementProperty =
-        Namespaced_IRI.parse _namespace_name "structuralElementProperty" |> NamespacedName
-
+    let structuralElementProperty = _prefix "structuralElementProperty"
     /// <summary>
     /// A list of Characteristics of the ticket (TroubleTicketCharacteristic [*]). The Trouble ticket specific characteristics
     /// <see href="https://w3id.org/noria/ontology/troubleTicketCharacteristic"></see></summary>
-    let troubleTicketCharacteristic =
-        Namespaced_IRI.parse _namespace_name "troubleTicketCharacteristic" |> NamespacedName
+    let troubleTicketCharacteristic = _prefix "troubleTicketCharacteristic"
 
     /// <summary>
     /// The Customer Commitment Deadline Date (calculated on product information).
     /// <see href="https://w3id.org/noria/ontology/troubleTicketCommittedRestorationDateTime"></see></summary>
     let troubleTicketCommittedRestorationDateTime =
-        Namespaced_IRI.parse _namespace_name "troubleTicketCommittedRestorationDateTime" |> NamespacedName
+        _prefix "troubleTicketCommittedRestorationDateTime"
 
     /// <summary>
     /// The ticket criticity from the customer impact perspective.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketCriticity"></see></summary>
-    let troubleTicketCriticity =
-        Namespaced_IRI.parse _namespace_name "troubleTicketCriticity" |> NamespacedName
-
+    let troubleTicketCriticity = _prefix "troubleTicketCriticity"
     /// <summary>
     /// The date on which the trouble was discovered.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketDetectionDateTime"></see></summary>
-    let troubleTicketDetectionDateTime =
-        Namespaced_IRI.parse _namespace_name "troubleTicketDetectionDateTime" |> NamespacedName
-
+    let troubleTicketDetectionDateTime = _prefix "troubleTicketDetectionDateTime"
     /// <summary>
     /// The ticket freeze period history.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketFreezeItem"></see></summary>
-    let troubleTicketFreezeItem =
-        Namespaced_IRI.parse _namespace_name "troubleTicketFreezeItem" |> NamespacedName
-
+    let troubleTicketFreezeItem = _prefix "troubleTicketFreezeItem"
     /// <summary>
     /// A list of resources or services (applications) impacted by the trouble.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketImpacts"></see></summary>
-    let troubleTicketImpacts =
-        Namespaced_IRI.parse _namespace_name "troubleTicketImpacts" |> NamespacedName
-
+    let troubleTicketImpacts = _prefix "troubleTicketImpacts"
     /// <summary>
     /// The *Application* or *Service* entity on which trouble ticket has been created.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketRelatedService"></see></summary>
-    let troubleTicketRelatedService =
-        Namespaced_IRI.parse _namespace_name "troubleTicketRelatedService" |> NamespacedName
-
+    let troubleTicketRelatedService = _prefix "troubleTicketRelatedService"
     /// <summary>
     /// The Resource entity on which the trouble ticket has been created.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketRelatedResource"></see></summary>
-    let troubleTicketRelatedResource =
-        Namespaced_IRI.parse _namespace_name "troubleTicketRelatedResource" |> NamespacedName
-
+    let troubleTicketRelatedResource = _prefix "troubleTicketRelatedResource"
     /// <summary>
     /// The *enable* or *disable* external notification on trouble ticket events.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketIsNotificationEnable"></see></summary>
-    let troubleTicketIsNotificationEnable =
-        Namespaced_IRI.parse _namespace_name "troubleTicketIsNotificationEnable" |> NamespacedName
-
+    let troubleTicketIsNotificationEnable = _prefix "troubleTicketIsNotificationEnable"
     /// <summary>
     /// The comment provenance type and/or disclosure rules family.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketNoteCommentType"></see></summary>
-    let troubleTicketNoteCommentType =
-        Namespaced_IRI.parse _namespace_name "troubleTicketNoteCommentType" |> NamespacedName
+    let troubleTicketNoteCommentType = _prefix "troubleTicketNoteCommentType"
 
     /// <summary>
     /// The correlated *ProcedureExecutionContainer* corresponding to the corrective maintenance actions depicted in the Trouble Ticket Note (i.e. the set of `EventRecord` about interactions with the system and as notified by the system).
@@ -1175,44 +894,35 @@ module noria =
     ///
     /// <see href="https://w3id.org/noria/ontology/troubleTicketNoteCorrelatedExecution"></see></summary>
     let troubleTicketNoteCorrelatedExecution =
-        Namespaced_IRI.parse _namespace_name "troubleTicketNoteCorrelatedExecution" |> NamespacedName
+        _prefix "troubleTicketNoteCorrelatedExecution"
 
     /// <summary>
     /// The operation type of the note.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketNoteOperationType"></see></summary>
-    let troubleTicketNoteOperationType =
-        Namespaced_IRI.parse _namespace_name "troubleTicketNoteOperationType" |> NamespacedName
-
+    let troubleTicketNoteOperationType = _prefix "troubleTicketNoteOperationType"
     /// <summary>
     /// The person or group family at the origin of the creation of the Trouble Ticket.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketOrigin"></see></summary>
-    let troubleTicketOrigin =
-        Namespaced_IRI.parse _namespace_name "troubleTicketOrigin" |> NamespacedName
-
+    let troubleTicketOrigin = _prefix "troubleTicketOrigin"
     /// <summary>
     /// The history of groups activation and responsibility transfer.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketPartyIntervention"></see></summary>
-    let troubleTicketPartyIntervention =
-        Namespaced_IRI.parse _namespace_name "troubleTicketPartyIntervention" |> NamespacedName
+    let troubleTicketPartyIntervention = _prefix "troubleTicketPartyIntervention"
 
     /// <summary>
     /// Confirmed to customer planned restoration date ATR (Actual Time to Restore (ATR)).
     /// <see href="https://w3id.org/noria/ontology/troubleTicketPlannedRestorationDateTime"></see></summary>
     let troubleTicketPlannedRestorationDateTime =
-        Namespaced_IRI.parse _namespace_name "troubleTicketPlannedRestorationDateTime" |> NamespacedName
+        _prefix "troubleTicketPlannedRestorationDateTime"
 
     /// <summary>
     /// The trouble management priority.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketPriority"></see></summary>
-    let troubleTicketPriority =
-        Namespaced_IRI.parse _namespace_name "troubleTicketPriority" |> NamespacedName
-
+    let troubleTicketPriority = _prefix "troubleTicketPriority"
     /// <summary>
     /// The related party(ies) that are associated to the ticket.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketRelatedParty"></see></summary>
-    let troubleTicketRelatedParty =
-        Namespaced_IRI.parse _namespace_name "troubleTicketRelatedParty" |> NamespacedName
-
+    let troubleTicketRelatedParty = _prefix "troubleTicketRelatedParty"
     /// <summary>
     /// The criticity of the incident.
     ///
@@ -1220,47 +930,35 @@ module noria =
     /// The thresholds of Incident resolution depend on standards defined per service type.
     /// When the thresholds are exceeded, specific process of escalation may be activated.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketSeverity"></see></summary>
-    let troubleTicketSeverity =
-        Namespaced_IRI.parse _namespace_name "troubleTicketSeverity" |> NamespacedName
-
+    let troubleTicketSeverity = _prefix "troubleTicketSeverity"
     /// <summary>
     /// The current activity status of the trouble ticket.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketStatusCurrent"></see></summary>
-    let troubleTicketStatusCurrent =
-        Namespaced_IRI.parse _namespace_name "troubleTicketStatusCurrent" |> NamespacedName
-
+    let troubleTicketStatusCurrent = _prefix "troubleTicketStatusCurrent"
     /// <summary>
     /// Supervision tool which detected the problem.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketSupervisionTool"></see></summary>
-    let troubleTicketSupervisionTool =
-        Namespaced_IRI.parse _namespace_name "troubleTicketSupervisionTool" |> NamespacedName
+    let troubleTicketSupervisionTool = _prefix "troubleTicketSupervisionTool"
 
     /// <summary>
     /// The Customer initial restoration date Estimated Time to Restore (ETR).
     /// <see href="https://w3id.org/noria/ontology/troubleTicketTargetRestorationDateTime"></see></summary>
     let troubleTicketTargetRestorationDateTime =
-        Namespaced_IRI.parse _namespace_name "troubleTicketTargetRestorationDateTime" |> NamespacedName
+        _prefix "troubleTicketTargetRestorationDateTime"
 
     /// <summary>
     /// The EventRecord at the origin of the creation of the Trouble Ticket.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketTrigger"></see></summary>
-    let troubleTicketTrigger =
-        Namespaced_IRI.parse _namespace_name "troubleTicketTrigger" |> NamespacedName
-
+    let troubleTicketTrigger = _prefix "troubleTicketTrigger"
     /// <summary>
     /// The ticket type.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketType"></see></summary>
-    let troubleTicketType =
-        Namespaced_IRI.parse _namespace_name "troubleTicketType" |> NamespacedName
-
+    let troubleTicketType = _prefix "troubleTicketType"
     /// <summary>
     /// The priority level of the incident.
     /// <see href="https://w3id.org/noria/ontology/troubleTicketUrgency"></see></summary>
-    let troubleTicketUrgency =
-        Namespaced_IRI.parse _namespace_name "troubleTicketUrgency" |> NamespacedName
-
+    let troubleTicketUrgency = _prefix "troubleTicketUrgency"
     /// <summary>
     /// The operational status of the Virtual Server.
     /// <see href="https://w3id.org/noria/ontology/virtualServerStatus"></see></summary>
-    let virtualServerStatus =
-        Namespaced_IRI.parse _namespace_name "virtualServerStatus" |> NamespacedName
+    let virtualServerStatus = _prefix "virtualServerStatus"

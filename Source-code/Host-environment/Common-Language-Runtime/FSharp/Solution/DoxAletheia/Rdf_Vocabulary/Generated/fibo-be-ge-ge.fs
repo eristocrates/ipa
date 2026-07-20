@@ -1,195 +1,139 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.GovernmentEntities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_ge =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/BranchOfGovernment"></see>
     /// </summary>
-    let BranchOfGovernment =
-        Namespaced_IRI.parse _namespace_name "BranchOfGovernment" |> NamespacedName
-
+    let BranchOfGovernment = _prefix "BranchOfGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/GovernmentBody"></see>
     /// </summary>
-    let GovernmentBody =
-        Namespaced_IRI.parse _namespace_name "GovernmentBody" |> NamespacedName
-
+    let GovernmentBody = _prefix "GovernmentBody"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/DevolvedGovernment"></see>
     /// </summary>
-    let DevolvedGovernment =
-        Namespaced_IRI.parse _namespace_name "DevolvedGovernment" |> NamespacedName
-
+    let DevolvedGovernment = _prefix "DevolvedGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/Government"></see>
     /// </summary>
-    let Government = Namespaced_IRI.parse _namespace_name "Government" |> NamespacedName
-
+    let Government = _prefix "Government"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/ExecutiveBranch"></see>
     /// </summary>
-    let ExecutiveBranch =
-        Namespaced_IRI.parse _namespace_name "ExecutiveBranch" |> NamespacedName
-
+    let ExecutiveBranch = _prefix "ExecutiveBranch"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/FederalGovernment"></see>
     /// </summary>
-    let FederalGovernment =
-        Namespaced_IRI.parse _namespace_name "FederalGovernment" |> NamespacedName
-
+    let FederalGovernment = _prefix "FederalGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/NationalGovernment"></see>
     /// </summary>
-    let NationalGovernment =
-        Namespaced_IRI.parse _namespace_name "NationalGovernment" |> NamespacedName
-
+    let NationalGovernment = _prefix "NationalGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/FederatedSovereignty"></see>
     /// </summary>
-    let FederatedSovereignty =
-        Namespaced_IRI.parse _namespace_name "FederatedSovereignty" |> NamespacedName
-
+    let FederatedSovereignty = _prefix "FederatedSovereignty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/SovereignState"></see>
     /// </summary>
-    let SovereignState =
-        Namespaced_IRI.parse _namespace_name "SovereignState" |> NamespacedName
-
+    let SovereignState = _prefix "SovereignState"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/hasFullSovereigntyOver"></see>
     /// </summary>
-    let hasFullSovereigntyOver =
-        Namespaced_IRI.parse _namespace_name "hasFullSovereigntyOver" |> NamespacedName
-
+    let hasFullSovereigntyOver = _prefix "hasFullSovereigntyOver"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/hasSharedSovereigntyOver"></see>
     /// </summary>
-    let hasSharedSovereigntyOver =
-        Namespaced_IRI.parse _namespace_name "hasSharedSovereigntyOver" |> NamespacedName
-
+    let hasSharedSovereigntyOver = _prefix "hasSharedSovereigntyOver"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/isRepresentedBy"></see>
     /// </summary>
-    let isRepresentedBy =
-        Namespaced_IRI.parse _namespace_name "isRepresentedBy" |> NamespacedName
-
+    let isRepresentedBy = _prefix "isRepresentedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/RegionalGovernment"></see>
     /// </summary>
-    let RegionalGovernment =
-        Namespaced_IRI.parse _namespace_name "RegionalGovernment" |> NamespacedName
-
+    let RegionalGovernment = _prefix "RegionalGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/GovernmentAgency"></see>
     /// </summary>
-    let GovernmentAgency =
-        Namespaced_IRI.parse _namespace_name "GovernmentAgency" |> NamespacedName
-
+    let GovernmentAgency = _prefix "GovernmentAgency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/GovernmentDepartment"></see>
     /// </summary>
-    let GovernmentDepartment =
-        Namespaced_IRI.parse _namespace_name "GovernmentDepartment" |> NamespacedName
-
+    let GovernmentDepartment = _prefix "GovernmentDepartment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/Instrumentality"></see>
     /// </summary>
-    let Instrumentality =
-        Namespaced_IRI.parse _namespace_name "Instrumentality" |> NamespacedName
-
+    let Instrumentality = _prefix "Instrumentality"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/GovernmentAppointee"></see>
     /// </summary>
-    let GovernmentAppointee =
-        Namespaced_IRI.parse _namespace_name "GovernmentAppointee" |> NamespacedName
-
+    let GovernmentAppointee = _prefix "GovernmentAppointee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/GovernmentOfficial"></see>
     /// </summary>
-    let GovernmentOfficial =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfficial" |> NamespacedName
-
+    let GovernmentOfficial = _prefix "GovernmentOfficial"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/GovernmentMinister"></see>
     /// </summary>
-    let GovernmentMinister =
-        Namespaced_IRI.parse _namespace_name "GovernmentMinister" |> NamespacedName
-
+    let GovernmentMinister = _prefix "GovernmentMinister"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/isInstrumentOf"></see>
     /// </summary>
-    let isInstrumentOf =
-        Namespaced_IRI.parse _namespace_name "isInstrumentOf" |> NamespacedName
-
+    let isInstrumentOf = _prefix "isInstrumentOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/Judiciary"></see>
     /// </summary>
-    let Judiciary = Namespaced_IRI.parse _namespace_name "Judiciary" |> NamespacedName
-
+    let Judiciary = _prefix "Judiciary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/Legislature"></see>
     /// </summary>
-    let Legislature =
-        Namespaced_IRI.parse _namespace_name "Legislature" |> NamespacedName
-
+    let Legislature = _prefix "Legislature"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/MunicipalEntity"></see>
     /// </summary>
-    let MunicipalEntity =
-        Namespaced_IRI.parse _namespace_name "MunicipalEntity" |> NamespacedName
-
+    let MunicipalEntity = _prefix "MunicipalEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/Polity"></see>
     /// </summary>
-    let Polity = Namespaced_IRI.parse _namespace_name "Polity" |> NamespacedName
-
+    let Polity = _prefix "Polity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/hasSovereigntyOver"></see>
     /// </summary>
-    let hasSovereigntyOver =
-        Namespaced_IRI.parse _namespace_name "hasSovereigntyOver" |> NamespacedName
-
+    let hasSovereigntyOver = _prefix "hasSovereigntyOver"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/MunicipalGovernment"></see>
     /// </summary>
-    let MunicipalGovernment =
-        Namespaced_IRI.parse _namespace_name "MunicipalGovernment" |> NamespacedName
-
+    let MunicipalGovernment = _prefix "MunicipalGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/RegionalSovereignty"></see>
     /// </summary>
-    let RegionalSovereignty =
-        Namespaced_IRI.parse _namespace_name "RegionalSovereignty" |> NamespacedName
-
+    let RegionalSovereignty = _prefix "RegionalSovereignty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/SupranationalEntity"></see>
     /// </summary>
-    let SupranationalEntity =
-        Namespaced_IRI.parse _namespace_name "SupranationalEntity" |> NamespacedName
-
+    let SupranationalEntity = _prefix "SupranationalEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/TribalArea"></see>
     /// </summary>
-    let TribalArea = Namespaced_IRI.parse _namespace_name "TribalArea" |> NamespacedName
-
+    let TribalArea = _prefix "TribalArea"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/TribalEntity"></see>
     /// </summary>
-    let TribalEntity =
-        Namespaced_IRI.parse _namespace_name "TribalEntity" |> NamespacedName
-
+    let TribalEntity = _prefix "TribalEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/TribalGovernment"></see>
     /// </summary>
-    let TribalGovernment =
-        Namespaced_IRI.parse _namespace_name "TribalGovernment" |> NamespacedName
-
+    let TribalGovernment = _prefix "TribalGovernment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/isElectedBy"></see>
     /// </summary>
-    let isElectedBy =
-        Namespaced_IRI.parse _namespace_name "isElectedBy" |> NamespacedName
+    let isElectedBy = _prefix "isElectedBy"

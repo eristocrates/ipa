@@ -1,258 +1,202 @@
 namespace https.schema.edu.ee.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module edu =
     let _namespace_name = "https://schema.edu.ee/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://schema.edu.ee/#Opivaljund"></see>
     /// </summary>
-    let ``_#Opivaljund`` =
-        Namespaced_IRI.parse _namespace_name "#Opivaljund" |> NamespacedName
-
+    let ``_#Opivaljund`` = _prefix "#Opivaljund"
     /// <summary>
     ///   <see href="https://schema.edu.ee/#Oppematerjal"></see>
     /// </summary>
-    let ``_#Oppematerjal`` =
-        Namespaced_IRI.parse _namespace_name "#Oppematerjal" |> NamespacedName
-
+    let ``_#Oppematerjal`` = _prefix "#Oppematerjal"
     /// <summary>
     ///   <see href="https://schema.edu.ee/0.1"></see>
     /// </summary>
-    let ``_0.1`` = Namespaced_IRI.parse _namespace_name "0.1" |> NamespacedName
-
+    let ``_0.1`` = _prefix "0.1"
     /// <summary>
     ///   <see href="https://schema.edu.ee/0.1/html"></see>
     /// </summary>
-    let ``_0.1/html`` =
-        Namespaced_IRI.parse _namespace_name "0.1/html" |> NamespacedName
-
+    let ``_0.1/html`` = _prefix "0.1/html"
     /// <summary>
     ///   <see href="https://schema.edu.ee/0.1/"></see>
     /// </summary>
-    let ``_0.1/`` = Namespaced_IRI.parse _namespace_name "0.1/" |> NamespacedName
+    let ``_0.1/`` = _prefix "0.1/"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Ainekava"></see>
     /// </summary>
-    let Ainekava = Namespaced_IRI.parse _namespace_name "Ainekava" |> NamespacedName
+    let Ainekava = _prefix "Ainekava"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Oppekava"></see>
     /// </summary>
-    let Oppekava = Namespaced_IRI.parse _namespace_name "Oppekava" |> NamespacedName
-
+    let Oppekava = _prefix "Oppekava"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Ainevaldkond"></see>
     /// </summary>
-    let Ainevaldkond =
-        Namespaced_IRI.parse _namespace_name "Ainevaldkond" |> NamespacedName
-
+    let Ainevaldkond = _prefix "Ainevaldkond"
     /// <summary>
     ///   <see href="https://schema.edu.ee/AinevaldkonnaPadevus"></see>
     /// </summary>
-    let AinevaldkonnaPadevus =
-        Namespaced_IRI.parse _namespace_name "AinevaldkonnaPadevus" |> NamespacedName
-
+    let AinevaldkonnaPadevus = _prefix "AinevaldkonnaPadevus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Padevus"></see>
     /// </summary>
-    let Padevus = Namespaced_IRI.parse _namespace_name "Padevus" |> NamespacedName
-
+    let Padevus = _prefix "Padevus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Haridusaste"></see>
     /// </summary>
-    let Haridusaste =
-        Namespaced_IRI.parse _namespace_name "Haridusaste" |> NamespacedName
-
+    let Haridusaste = _prefix "Haridusaste"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Hoiak"></see>
     /// </summary>
-    let Hoiak = Namespaced_IRI.parse _namespace_name "Hoiak" |> NamespacedName
+    let Hoiak = _prefix "Hoiak"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Opivaljund"></see>
     /// </summary>
-    let Opivaljund = Namespaced_IRI.parse _namespace_name "Opivaljund" |> NamespacedName
-
+    let Opivaljund = _prefix "Opivaljund"
     /// <summary>
     ///   <see href="https://schema.edu.ee/IndividuaalneOppekava"></see>
     /// </summary>
-    let IndividuaalneOppekava =
-        Namespaced_IRI.parse _namespace_name "IndividuaalneOppekava" |> NamespacedName
-
+    let IndividuaalneOppekava = _prefix "IndividuaalneOppekava"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Kontrolltoo"></see>
     /// </summary>
-    let Kontrolltoo =
-        Namespaced_IRI.parse _namespace_name "Kontrolltoo" |> NamespacedName
-
+    let Kontrolltoo = _prefix "Kontrolltoo"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Test"></see>
     /// </summary>
-    let Test = Namespaced_IRI.parse _namespace_name "Test" |> NamespacedName
+    let Test = _prefix "Test"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Koolitus"></see>
     /// </summary>
-    let Koolitus = Namespaced_IRI.parse _namespace_name "Koolitus" |> NamespacedName
+    let Koolitus = _prefix "Koolitus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Kusimus"></see>
     /// </summary>
-    let Kusimus = Namespaced_IRI.parse _namespace_name "Kusimus" |> NamespacedName
-
+    let Kusimus = _prefix "Kusimus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/OpetajaTookava"></see>
     /// </summary>
-    let OpetajaTookava =
-        Namespaced_IRI.parse _namespace_name "OpetajaTookava" |> NamespacedName
-
+    let OpetajaTookava = _prefix "OpetajaTookava"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Opirada"></see>
     /// </summary>
-    let Opirada = Namespaced_IRI.parse _namespace_name "Opirada" |> NamespacedName
+    let Opirada = _prefix "Opirada"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Opitulemus"></see>
     /// </summary>
-    let Opitulemus = Namespaced_IRI.parse _namespace_name "Opitulemus" |> NamespacedName
+    let Opitulemus = _prefix "Opitulemus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Oppeaine"></see>
     /// </summary>
-    let Oppeaine = Namespaced_IRI.parse _namespace_name "Oppeaine" |> NamespacedName
-
+    let Oppeaine = _prefix "Oppeaine"
     /// <summary>
     ///   <see href="https://schema.edu.ee/OppeasutuseOppekava"></see>
     /// </summary>
-    let OppeasutuseOppekava =
-        Namespaced_IRI.parse _namespace_name "OppeasutuseOppekava" |> NamespacedName
-
+    let OppeasutuseOppekava = _prefix "OppeasutuseOppekava"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Oppematerjal"></see>
     /// </summary>
-    let Oppematerjal =
-        Namespaced_IRI.parse _namespace_name "Oppematerjal" |> NamespacedName
-
+    let Oppematerjal = _prefix "Oppematerjal"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Oskus"></see>
     /// </summary>
-    let Oskus = Namespaced_IRI.parse _namespace_name "Oskus" |> NamespacedName
-
+    let Oskus = _prefix "Oskus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/RiiklikOppekava"></see>
     /// </summary>
-    let RiiklikOppekava =
-        Namespaced_IRI.parse _namespace_name "RiiklikOppekava" |> NamespacedName
-
+    let RiiklikOppekava = _prefix "RiiklikOppekava"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Sihtgrupp"></see>
     /// </summary>
-    let Sihtgrupp = Namespaced_IRI.parse _namespace_name "Sihtgrupp" |> NamespacedName
+    let Sihtgrupp = _prefix "Sihtgrupp"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Tasemetoo"></see>
     /// </summary>
-    let Tasemetoo = Namespaced_IRI.parse _namespace_name "Tasemetoo" |> NamespacedName
+    let Tasemetoo = _prefix "Tasemetoo"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Teadmine"></see>
     /// </summary>
-    let Teadmine = Namespaced_IRI.parse _namespace_name "Teadmine" |> NamespacedName
+    let Teadmine = _prefix "Teadmine"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Teema"></see>
     /// </summary>
-    let Teema = Namespaced_IRI.parse _namespace_name "Teema" |> NamespacedName
-
+    let Teema = _prefix "Teema"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Tunnikontroll"></see>
     /// </summary>
-    let Tunnikontroll =
-        Namespaced_IRI.parse _namespace_name "Tunnikontroll" |> NamespacedName
-
+    let Tunnikontroll = _prefix "Tunnikontroll"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Ulesanne"></see>
     /// </summary>
-    let Ulesanne = Namespaced_IRI.parse _namespace_name "Ulesanne" |> NamespacedName
+    let Ulesanne = _prefix "Ulesanne"
     /// <summary>
     ///   <see href="https://schema.edu.ee/Vastus"></see>
     /// </summary>
-    let Vastus = Namespaced_IRI.parse _namespace_name "Vastus" |> NamespacedName
-
+    let Vastus = _prefix "Vastus"
     /// <summary>
     ///   <see href="https://schema.edu.ee/ainevaldkondKoosneb"></see>
     /// </summary>
-    let ainevaldkondKoosneb =
-        Namespaced_IRI.parse _namespace_name "ainevaldkondKoosneb" |> NamespacedName
-
+    let ainevaldkondKoosneb = _prefix "ainevaldkondKoosneb"
     /// <summary>
     ///   <see href="https://schema.edu.ee/alateema"></see>
     /// </summary>
-    let alateema = Namespaced_IRI.parse _namespace_name "alateema" |> NamespacedName
+    let alateema = _prefix "alateema"
     /// <summary>
     ///   <see href="https://schema.edu.ee/eeldab"></see>
     /// </summary>
-    let eeldab = Namespaced_IRI.parse _namespace_name "eeldab" |> NamespacedName
-
+    let eeldab = _prefix "eeldab"
     /// <summary>
     ///   <see href="https://schema.edu.ee/hindabOpitulemust"></see>
     /// </summary>
-    let hindabOpitulemust =
-        Namespaced_IRI.parse _namespace_name "hindabOpitulemust" |> NamespacedName
-
+    let hindabOpitulemust = _prefix "hindabOpitulemust"
     /// <summary>
     ///   <see href="https://schema.edu.ee/kooliaste"></see>
     /// </summary>
-    let kooliaste = Namespaced_IRI.parse _namespace_name "kooliaste" |> NamespacedName
-
+    let kooliaste = _prefix "kooliaste"
     /// <summary>
     ///   <see href="https://schema.edu.ee/onEelduseks"></see>
     /// </summary>
-    let onEelduseks =
-        Namespaced_IRI.parse _namespace_name "onEelduseks" |> NamespacedName
-
+    let onEelduseks = _prefix "onEelduseks"
     /// <summary>
     ///   <see href="https://schema.edu.ee/opivaljundEeldab"></see>
     /// </summary>
-    let opivaljundEeldab =
-        Namespaced_IRI.parse _namespace_name "opivaljundEeldab" |> NamespacedName
-
+    let opivaljundEeldab = _prefix "opivaljundEeldab"
     /// <summary>
     ///   <see href="https://schema.edu.ee/seotudAinevaldkond"></see>
     /// </summary>
-    let seotudAinevaldkond =
-        Namespaced_IRI.parse _namespace_name "seotudAinevaldkond" |> NamespacedName
-
+    let seotudAinevaldkond = _prefix "seotudAinevaldkond"
     /// <summary>
     ///   <see href="https://schema.edu.ee/seotudHaridusaste"></see>
     /// </summary>
-    let seotudHaridusaste =
-        Namespaced_IRI.parse _namespace_name "seotudHaridusaste" |> NamespacedName
-
+    let seotudHaridusaste = _prefix "seotudHaridusaste"
     /// <summary>
     ///   <see href="https://schema.edu.ee/seotudOpivaljund"></see>
     /// </summary>
-    let seotudOpivaljund =
-        Namespaced_IRI.parse _namespace_name "seotudOpivaljund" |> NamespacedName
-
+    let seotudOpivaljund = _prefix "seotudOpivaljund"
     /// <summary>
     ///   <see href="https://schema.edu.ee/seotudOppeaine"></see>
     /// </summary>
-    let seotudOppeaine =
-        Namespaced_IRI.parse _namespace_name "seotudOppeaine" |> NamespacedName
-
+    let seotudOppeaine = _prefix "seotudOppeaine"
     /// <summary>
     ///   <see href="https://schema.edu.ee/seotudTeema"></see>
     /// </summary>
-    let seotudTeema =
-        Namespaced_IRI.parse _namespace_name "seotudTeema" |> NamespacedName
-
+    let seotudTeema = _prefix "seotudTeema"
     /// <summary>
     ///   <see href="https://schema.edu.ee/testKoosneb"></see>
     /// </summary>
-    let testKoosneb =
-        Namespaced_IRI.parse _namespace_name "testKoosneb" |> NamespacedName
-
+    let testKoosneb = _prefix "testKoosneb"
     /// <summary>
     ///   <see href="https://schema.edu.ee/ulesanneKoosneb"></see>
     /// </summary>
-    let ulesanneKoosneb =
-        Namespaced_IRI.parse _namespace_name "ulesanneKoosneb" |> NamespacedName
-
+    let ulesanneKoosneb = _prefix "ulesanneKoosneb"
     /// <summary>
     ///   <see href="https://schema.edu.ee/vanuseaste"></see>
     /// </summary>
-    let vanuseaste = Namespaced_IRI.parse _namespace_name "vanuseaste" |> NamespacedName
+    let vanuseaste = _prefix "vanuseaste"

@@ -1,17 +1,21 @@
 namespace https.w3id.org.fossr.ontology.bdi.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module bdi =
     let _namespace_name = "https://w3id.org/fossr/ontology/bdi/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The Belief class represents the mental state of an agent regarding something that the agent holds to be true. It captures the subjective perception or understanding of the world by an agent, which may or may not align with objective reality. In this ontology, beliefs are modelled as descriptions that connect
     /// <see href="https://w3id.org/fossr/ontology/bdi/Belief"></see></summary>
-    let Belief = Namespaced_IRI.parse _namespace_name "Belief" |> NamespacedName
+    let Belief = _prefix "Belief"
     /// <summary>
     /// The Desire class represents a motivational mental state of an agent, encapsulating what the agent wishes or aspires to bring about in the world. Desires are expressions of preferences or goals, but unlike intentions, they do not imply a commitment to act. Desires serve as the driving force behind an agent’s decision-making process, often interacting with beliefs and intentions to influence behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Desire"></see></summary>
-    let Desire = Namespaced_IRI.parse _namespace_name "Desire" |> NamespacedName
+    let Desire = _prefix "Desire"
     /// <summary>
     /// The Intention class represents a deliberative mental state of an agent, characterised by the agent’s commitment to achieving a specific goal or executing a plan. Unlike a desire, which expresses a motivational preference, an intention reflects a higher degree of resolve, where the agent actively decides to pursue the desired outcome.
     ///
@@ -20,70 +24,57 @@ module bdi =
     /// Intentions depend on beliefs about feasibility and current conditions (e.g., "I believe the store is open.").
     /// Intentions emerge from prioritised desires or goals (e.g., "I desire to buy groceries.").
     /// <see href="https://w3id.org/fossr/ontology/bdi/Intention"></see></summary>
-    let Intention = Namespaced_IRI.parse _namespace_name "Intention" |> NamespacedName
+    let Intention = _prefix "Intention"
     /// <summary>
     /// The class :Action represents a concrete activity carried out by an agent within the environment. Unlike :ActionDescription, which models the abstract or planned specification of an activity, :Action captures the actual execution or occurrence of that activity in time and space. Actions may be physical, communicative, or cognitive, and are typically associated with agents, plans, and goals. This class supports the representation of observable behaviours that result from deliberative processes such as planning and intention formation. By distinguishing between action descriptions and executed actions, the ontology enables clear reasoning over the alignment between what was intended and what was performed, supporting traceability, validation, and explanation of agent behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Action"></see></summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
+    let Action = _prefix "Action"
     /// <summary>
     /// A World state represents a temporally situated condition of the environment as perceived or described by an agent. It captures facts, circumstances, or events that hold at a given time, and serves as the basis upon which agents form their beliefs, generate desires, and adopt intentions. A world state can change over time, be influenced by agents’ actions or external events, and may function as a target outcome for plans aiming to realise a specific goal.
     /// <see href="https://w3id.org/fossr/ontology/bdi/WorldState"></see></summary>
-    let WorldState = Namespaced_IRI.parse _namespace_name "WorldState" |> NamespacedName
-
+    let WorldState = _prefix "WorldState"
     /// <summary>
     /// The object property :bringsAbout links a PlanExecution or an Action to the resulting WorldState it produces, modifies, or realises. It models the causal effect that executing a plan has on the environment, enabling reasoning about how agent actions lead to specific changes in the world. This property supports traceability from intentional behaviour to outcomes, and is essential for representing goal achievement, environmental dynamics, and the effects of decision-making over time.
     /// <see href="https://w3id.org/fossr/ontology/bdi/bringsAbout"></see></summary>
-    let bringsAbout =
-        Namespaced_IRI.parse _namespace_name "bringsAbout" |> NamespacedName
-
+    let bringsAbout = _prefix "bringsAbout"
     /// <summary>
     /// The TemporalEntity class represents a general temporal concept that can be either a specific point in time (instant) or a time span (interval).
     /// This class is useful for modeling events, schedules, and historical data where time-related attributes are essential.
     /// <see href="https://w3id.org/fossr/ontology/bdi/TemporalEntity"></see></summary>
-    let TemporalEntity =
-        Namespaced_IRI.parse _namespace_name "TemporalEntity" |> NamespacedName
-
+    let TemporalEntity = _prefix "TemporalEntity"
     /// <summary>
     /// The 'at time' property represents the relationship between a mental entity (such as a belief, desire, or intention) and the temporal entity it produces  or influences. This property is used to model how mental states give rise to time-bound events, processes, or commitments.
     /// <see href="https://w3id.org/fossr/ontology/bdi/atTime"></see></summary>
-    let atTime = Namespaced_IRI.parse _namespace_name "atTime" |> NamespacedName
+    let atTime = _prefix "atTime"
     /// <summary>
     /// The class :Task represents the abstract specification of an action within a plan. It defines the intended activity an agent should perform, including its purpose, expected effects, preconditions, and any constraints relevant to its execution. Unlike concrete actions or events that occur in the world, a Task is a descriptive construct that guides or informs PlanExecutions. This class enables the ontology to model the internal structure of plans as sequences of intentional steps, supporting reasoning over action dependencies, execution order, and alignment with goals. It is particularly useful for representing deliberative and goal-directed behaviour in agent-based systems.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Task"></see></summary>
-    let Task = Namespaced_IRI.parse _namespace_name "Task" |> NamespacedName
+    let Task = _prefix "Task"
     /// <summary>
     /// An Agent is an autonomous entity capable of perceiving its environment, reasoning about it, and acting upon it to achieve specific goals or objectives. Agents can hold mental states such as beliefs, desires, and intentions, which guide their decision-making processes and interactions with the world. Agents may be individuals, organisations, or artificial systems, depending on the context.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Agent"></see></summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
+    let Agent = _prefix "Agent"
     /// <summary>
     /// The object property perceives links an Agent to a WorldState,  representing the act of perceiving or becoming aware of a state of the world. This property captures the epistemic grounding of beliefs: an agent's mental states are often derived from, or justified by, the world states it perceives. The relation is intended to model the cognitive act of perception in a broad sense, encompassing direct sensory input, mediated observations, or information received through communication. By asserting that an Agent :perceives a WorldState, the ontology enables reasoning over how mental entities such as beliefs are anchored in external conditions. This property is the inverse of isPerceivedBy.
     /// <see href="https://w3id.org/fossr/ontology/bdi/perceives"></see></summary>
-    let perceives = Namespaced_IRI.parse _namespace_name "perceives" |> NamespacedName
-
+    let perceives = _prefix "perceives"
     /// <summary>
     /// A mental state is a conceptual representation of an agent's internal condition, which encompasses beliefs, desires, intentions, emotions, and other cognitive or affective states. It is the foundation of an agent’s reasoning, decision-making, and behaviour. Mental states are dynamic and context-dependent, changing in response to external stimuli, internal deliberations, or interactions with other agents.
     /// <see href="https://w3id.org/fossr/ontology/bdi/MentalState"></see></summary>
-    let MentalState =
-        Namespaced_IRI.parse _namespace_name "MentalState" |> NamespacedName
-
+    let MentalState = _prefix "MentalState"
     /// <summary>
     /// has mental state
     /// The hasMentalState property is an object property that links an agent to one or more of its mental states, such as beliefs, desires, or intentions. It establishes a relationship between the agent (as the holder of mental states) and the abstract representations of those states, enabling reasoning about the agent's internal cognitive or motivational processes.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasMentalState"></see></summary>
-    let hasMentalState =
-        Namespaced_IRI.parse _namespace_name "hasMentalState" |> NamespacedName
-
+    let hasMentalState = _prefix "hasMentalState"
     /// <summary>
     /// The class :PlanExecution represents the actual enactment of a Plan by an Agent within a specific temporal and environmental context.  While a Plan provides a structured description of actions or steps intended to achieve a Goal, a PlanExecution captures the situated, real-world unfolding of that plan. This includes the execution of actions, interaction with the environment, and the potential influence of contingencies or external events. By modelling PlanExecution explicitly, the ontology supports reasoning over whether, how, and to what extent plans have been carried out, enabling comparisons between intended and actual behaviour. It also provides a foundation for temporal monitoring, traceability, and post-hoc analysis of agent decisions, which is crucial for explainability and accountability in both human and artificial agents.
     /// <see href="https://w3id.org/fossr/ontology/bdi/PlanExecution"></see></summary>
-    let PlanExecution =
-        Namespaced_IRI.parse _namespace_name "PlanExecution" |> NamespacedName
-
+    let PlanExecution = _prefix "PlanExecution"
     /// <summary>
     /// The object property :executes links an Agent to a PlanExecution, indicating that the agent is responsible for carrying out a specific instance of plan enactment. This property captures the realisation of an intended course of action, as described by a Plan, in the external world by the agent. For example, if an agent has committed to a plan for implementing a new policy, the actual execution of that plan is connected to the agent through :executes. This relation is essential for modelling the transition from intention to action and for enabling traceability and accountability of agent behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/executes"></see></summary>
-    let executes = Namespaced_IRI.parse _namespace_name "executes" |> NamespacedName
-
+    let executes = _prefix "executes"
     /// <summary>
     /// MentalEntity is an abstract class that serves as a unifying concept for representing both mental states and mental processes within an agent's cognitive framework. It provides a high-level categorisation for all entities related to an agent’s reasoning, decision-making, and goal-directed behaviour.
     ///
@@ -91,33 +82,28 @@ module bdi =
     ///
     /// By structuring mental states and processes under a common superclass, MentalEntity facilitates a coherent representation of cognitive dynamics, supporting interoperability and reasoning within the ontology.
     /// <see href="https://w3id.org/fossr/ontology/bdi/MentalEntity"></see></summary>
-    let MentalEntity =
-        Namespaced_IRI.parse _namespace_name "MentalEntity" |> NamespacedName
-
+    let MentalEntity = _prefix "MentalEntity"
     /// <summary>
     /// The object property :cognises links an Agent to a MentalEntity, capturing the act of mentally entertaining, holding, or being aware of a cognitive entity. It is intended as a general relation that covers different types of propositional attitudes, such as believing, desiring, or intending, without reducing them to specific cases. For example, when an agent has a Belief, a Desire, or an Intention, this can be represented as the agent :cognises the corresponding MentalEntity. Similarly, an agent may cognise a MentalProcess, such as a deliberation or planning activity, that structures its reasoning. By introducing :cognises, the ontology provides a unifying mechanism for relating agents to the mental entities they hold, enabling reasoning across different types of cognitive states and processes while preserving the intentional dimension of cognition.
     /// <see href="https://w3id.org/fossr/ontology/bdi/cognises"></see></summary>
-    let cognises = Namespaced_IRI.parse _namespace_name "cognises" |> NamespacedName
+    let cognises = _prefix "cognises"
     /// <summary>
     /// The isBeliefOf property links a belief to the agent that holds it.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isBeliefOf"></see></summary>
-    let isBeliefOf = Namespaced_IRI.parse _namespace_name "isBeliefOf" |> NamespacedName
+    let isBeliefOf = _prefix "isBeliefOf"
     /// <summary>
     /// The object property hasPart formalises meronymic (part–whole) relations among mental entities. It is used to represent the fact that complex mental constructs—whether mental states or mental processes—can be decomposed into constituent parts. This allows the ontology to capture the compositional structure of cognition: for example, a Belief may have parts corresponding to different propositional components (e.g., time, location, agent), or a PlanningProcess may have parts representing successive reasoning steps. By asserting :hasPart relations, mental entities need not be treated as atomic, but can instead be modelled as structured and analyzable wholes, thereby supporting fine-grained reasoning, updates to specific components, and richer forms of explainability. The inverse relation of hasPart is partOf.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasPart"></see></summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
+    let hasPart = _prefix "hasPart"
     /// <summary>
     /// Beliefs often influence or motivate the formation of desires. For example, if an agent believes that exercising improves health, this belief may motivate a desire to exercise.
     /// <see href="https://w3id.org/fossr/ontology/bdi/motivates"></see></summary>
-    let motivates = Namespaced_IRI.parse _namespace_name "motivates" |> NamespacedName
-
+    let motivates = _prefix "motivates"
     /// <summary>
     /// BeliefFormation is the cognitive process through which an agent generates, updates, or modifies beliefs based on perception, inference, or communication with other agents. This process allows agents to maintain a dynamically evolving mental representation of their environment and internal states.
     /// For example, an agent monitoring a public health database initially holds the belief that a disease outbreak is contained. However, upon processing new epidemiological reports, the agent updates its belief to reflect the risk of a wider spread and adjusts its reasoning accordingly.
     /// <see href="https://w3id.org/fossr/ontology/bdi/BeliefProcess"></see></summary>
-    let BeliefProcess =
-        Namespaced_IRI.parse _namespace_name "BeliefProcess" |> NamespacedName
-
+    let BeliefProcess = _prefix "BeliefProcess"
     /// <summary>
     /// The object property affects links a MentalProcess to the MentalState(s)
     /// that it generates, modifies, or suppresses. This property captures the
@@ -131,253 +117,189 @@ module bdi =
     /// supporting reasoning about the lifecycle of cognitive entities and
     /// enhancing explainability of agent behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/affects"></see></summary>
-    let affects = Namespaced_IRI.parse _namespace_name "affects" |> NamespacedName
-
+    let affects = _prefix "affects"
     /// <summary>
     /// The class :MentalProcess represents the cognitive operations through which an agent reasons upon, transforms, or generates mental content. It encompasses processes such as belief revision, desire formation, intention refinement, and planning. Each MentalProcess is understood as a type of activity (subclass of d0:Activity) that operates over one or more MentalStates and may lead to the creation, modification, or suppression of new or existing mental entities. For example, an agent may engage in a BeliefProcess that updates its beliefs in response to new perceptions, or perform a Planning process that generates a Plan from a set of intentions. By modelling such cognitive activities explicitly, :MentalProcess enables the ontology to describe not only the states held by agents, but also the reasoning dynamics and deliberative mechanisms that underpin agent behaviour. This class is essential for supporting explainability, simulation, and agent-based modelling of mental state evolution.
     /// <see href="https://w3id.org/fossr/ontology/bdi/MentalProcess"></see></summary>
-    let MentalProcess =
-        Namespaced_IRI.parse _namespace_name "MentalProcess" |> NamespacedName
-
+    let MentalProcess = _prefix "MentalProcess"
     /// <summary>
     /// The isDesireOf property links a desire to the agent that holds it.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isDesireOf"></see></summary>
-    let isDesireOf = Namespaced_IRI.parse _namespace_name "isDesireOf" |> NamespacedName
-
+    let isDesireOf = _prefix "isDesireOf"
     /// <summary>
     /// The isDesireMotivatedBy property is the inverse of motivatesDesire. It links a desire to the belief(s) that provide the motivational basis for its formation. This property captures the relationship where a belief influences an agent to form or hold a specific desire.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isMotivatedBy"></see></summary>
-    let isMotivatedBy =
-        Namespaced_IRI.parse _namespace_name "isMotivatedBy" |> NamespacedName
-
+    let isMotivatedBy = _prefix "isMotivatedBy"
     /// <summary>
     /// DesireFormation is the mental process by which an agent generates, modifies, or updates desires based on internal motivations, contextual changes, or interactions with external information sources. This process helps agents structure goal-oriented behaviour before intentions are formed.
     /// For example, a decision-support agent in a climate policy system initially lacks any specific desire regarding renewable energy subsidies. After analysing recent economic and environmental reports, it generates a new desire to advocate for increased subsidies, which may later influence its intentions and actions.
     /// <see href="https://w3id.org/fossr/ontology/bdi/DesireProcess"></see></summary>
-    let DesireProcess =
-        Namespaced_IRI.parse _namespace_name "DesireProcess" |> NamespacedName
-
+    let DesireProcess = _prefix "DesireProcess"
     /// <summary>
     /// A Goal represents a desired state or outcome that an agent aspires to achieve. Goals reflect the agent's motivational preferences but do not imply any commitment to act or the feasibility of achieving them. Goals serve as the foundation for forming intentions when prioritised and deemed actionable.
     ///
     /// A example of goal is: "Learn Python programming.". This goal may later lead to an intention: "I intend to enrol in a Python course.".
     /// <see href="https://w3id.org/fossr/ontology/bdi/Goal"></see></summary>
-    let Goal = Namespaced_IRI.parse _namespace_name "Goal" |> NamespacedName
+    let Goal = _prefix "Goal"
     /// <summary>
     /// A plan is a structured sequence of actions or steps devised by an agent to achieve a specific goal or fulfil an intention. It serves as an operational framework that translates an agent’s intentions into actionable strategies, guiding behaviour toward a desired goal.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Plan"></see></summary>
-    let Plan = Namespaced_IRI.parse _namespace_name "Plan" |> NamespacedName
-
+    let Plan = _prefix "Plan"
     /// <summary>
     /// The object property :isAddressedBy is the inverse of :addresses and links a Goal to the Plan(s) designed to fulfil it. This property allows reasoning from the perspective of goals, enabling identification of the plans formulated to achieve a given objective. For instance, a Goal such as ensuring public health safety may be :isAddressedBy multiple Plans representing different intervention strategies. The property supports goal monitoring, plan evaluation, and comparative analysis of alternative courses of action, facilitating transparency and justification in goal-oriented agent behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isAddressedBy"></see></summary>
-    let isAddressedBy =
-        Namespaced_IRI.parse _namespace_name "isAddressedBy" |> NamespacedName
-
+    let isAddressedBy = _prefix "isAddressedBy"
     /// <summary>
     /// GoalProcess is the mental process by which an agent generates, refines, or revises goals based on its current desires, beliefs, and contextual conditions. This process bridges the motivational layer of the agent, where desires express general preferences, and the deliberative layer, where  intentions represent committed courses of action. By elaborating and prioritising goals, the GoalProcess determines which desired outcomes are worth pursuing and prepares them for adoption as actionable intentions.
     ///
     /// For example, an agent holding a general desire to improve its programming skills  undergoes a GoalProcess that refines this broad aspiration into a concrete and actionable goal: learning Python programming. This goal may subsequently lead to the formation of an intention: \"I intend to enrol in a Python course.\", triggering the planning of a structured sequence of learning activities.
     /// <see href="https://w3id.org/fossr/ontology/bdi/GoalProcess"></see></summary>
-    let GoalProcess =
-        Namespaced_IRI.parse _namespace_name "GoalProcess" |> NamespacedName
-
+    let GoalProcess = _prefix "GoalProcess"
     /// <summary>
     /// The isIntentionOf property links an intention to the agent that holds it.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isIntentionOf"></see></summary>
-    let isIntentionOf =
-        Namespaced_IRI.parse _namespace_name "isIntentionOf" |> NamespacedName
-
+    let isIntentionOf = _prefix "isIntentionOf"
     /// <summary>
     /// The fulfills property links an entity, such as an intention or a plan, to the goal it is designed to achieve. It represents the relationship between an agent's commitment or strategy and the desired outcome.
     /// <see href="https://w3id.org/fossr/ontology/bdi/fulfills"></see></summary>
-    let fulfills = Namespaced_IRI.parse _namespace_name "fulfills" |> NamespacedName
-
+    let fulfills = _prefix "fulfills"
     /// <summary>
     /// IntentionFormation is the process by which an agent selects, commits to, and refines intentions based on its desires, available resources, and deliberative reasoning. It determines which desires are pursued as actionable commitments and adapts them as new information emerges.
     /// For example, an autonomous assistant tasked with monitoring policy compliance may develop a desire to verify the implementation of a new regulation. After assessing feasibility and priority, it forms an intention to generate a compliance report, refining it further as new data becomes available.
     /// <see href="https://w3id.org/fossr/ontology/bdi/IntentionProcess"></see></summary>
-    let IntentionProcess =
-        Namespaced_IRI.parse _namespace_name "IntentionProcess" |> NamespacedName
-
+    let IntentionProcess = _prefix "IntentionProcess"
     /// <summary>
     /// A justification is a reason, evidence, or explanation that supports a mental state (e.g., belief, intention). It provides the grounds or basis for a mental state (e.g., why a belief is held or a goal is pursued) and Explains or supports mental states (e.g., "I believe it will rain because the forecast says so"). Justifications are typically agent-specific, reflecting the reasoning or evidence considered by an agent.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Justification"></see></summary>
-    let Justification =
-        Namespaced_IRI.parse _namespace_name "Justification" |> NamespacedName
-
+    let Justification = _prefix "Justification"
     /// <summary>
     /// The justifies property links a justification to the mental entity it supports, providing the rationale, evidence, or explanation for why the mental entity is held.
     /// <see href="https://w3id.org/fossr/ontology/bdi/justifies"></see></summary>
-    let justifies = Namespaced_IRI.parse _namespace_name "justifies" |> NamespacedName
+    let justifies = _prefix "justifies"
     /// <summary>
     /// The object property refersTo links a MentalEntity (e.g. belief, desire, intention) to the WorldState it is about. This property captures the intentional nature of mental states: they are always directed toward or concerned with some state of the world, whether actual, possible, or hypothetical. For example, a belief such as “the meeting is cancelled” refersTo a world state representing the cancellation of the meeting. Similarly, a desire or an intention can refersTo a world state describing a condition that the agent wishes to bring about. By introducing refersTo, the ontology formally encodes the aboutness relation, which is essential for modelling propositional attitudes and supporting explainability.
     /// <see href="https://w3id.org/fossr/ontology/bdi/refersTo"></see></summary>
-    let refersTo = Namespaced_IRI.parse _namespace_name "refersTo" |> NamespacedName
-
+    let refersTo = _prefix "refersTo"
     /// <summary>
     /// The object property :isCognisedBy is the inverse of :cognises. It links a MentalEntity to the Agent that entertains, holds, or is aware of it. This property makes explicit which agent is associated with a given mental entity, such as a Belief, Desire, Intention, or MentalProcess. For example, a Belief that 'the meeting is cancelled' may be :isCognisedBy an agent who holds that belief, while a Plan or Intention may be :isCognisedBy the agent that commits to it. This property is essential for reasoning from the perspective of mental entities, as it allows the ontology to trace mental content back to its cognitive bearer. Together with :cognises, it supports explainability by showing both the mental states an agent holds and the agents that cognise specific mental entities.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isCognisedBy"></see></summary>
-    let isCognisedBy =
-        Namespaced_IRI.parse _namespace_name "isCognisedBy" |> NamespacedName
-
+    let isCognisedBy = _prefix "isCognisedBy"
     /// <summary>
     /// The isJustifiedBy property is the inverse of justifies. It links a mental entity to the justification(s) that support it, enabling reasoning about the basis for the mental entity.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isJustifiedBy"></see></summary>
-    let isJustifiedBy =
-        Namespaced_IRI.parse _namespace_name "isJustifiedBy" |> NamespacedName
-
+    let isJustifiedBy = _prefix "isJustifiedBy"
     /// <summary>
     /// The hasValidity property links an entity to a TemporalEntity during which it is valid, active, or applicable. This property represents the temporal scope or extent of the entity's relevance or operation.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasValidity"></see></summary>
-    let hasValidity =
-        Namespaced_IRI.parse _namespace_name "hasValidity" |> NamespacedName
-
+    let hasValidity = _prefix "hasValidity"
     /// <summary>
     /// The object property :reasonsUpon links a MentalProcess to the MentalState(s) that serve as its cognitive basis. It captures the fact that a mental process — such as planning, deliberation, or belief revision — operates by drawing upon existing mental states, including beliefs, desires, or intentions. This property models the internal reasoning dynamics of an agent, where the mental process depends on or is triggered by certain mental states in order to produce new cognitive outcomes (e.g., new plans or revised beliefs). For example, an IntentionProcess may reason upon a Desire to form a commitment to action. This relation is essential for reconstructing cognitive explanations and supports transparency in decision-making and mental state transitions.
     /// <see href="https://w3id.org/fossr/ontology/bdi/reasonsUpon"></see></summary>
-    let reasonsUpon =
-        Namespaced_IRI.parse _namespace_name "reasonsUpon" |> NamespacedName
-
+    let reasonsUpon = _prefix "reasonsUpon"
     /// <summary>
     /// The isMentalProcessOf property is the inverse object property of hasMentalProcess. It links a mental priocess (such as a belief formation, desire formation, or intentio formationn) to the agent that holds it. This property allows for reasoning and querying in the opposite direction, starting from a mental process and identifying the associated agent.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isMentalProcessOf"></see></summary>
-    let isMentalProcessOf =
-        Namespaced_IRI.parse _namespace_name "isMentalProcessOf" |> NamespacedName
-
+    let isMentalProcessOf = _prefix "isMentalProcessOf"
     /// <summary>
     /// Indicates that a MentalProcess is initiated or caused by a specific mental entity, leading to a modification in the agent’s cognitive state.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isTriggeredBy"></see></summary>
-    let isTriggeredBy =
-        Namespaced_IRI.parse _namespace_name "isTriggeredBy" |> NamespacedName
-
+    let isTriggeredBy = _prefix "isTriggeredBy"
     /// <summary>
     /// The isMentalStateOf property is the inverse object property of hasMentalState. It links a mental state (such as a belief, desire, or intention) to the agent that holds it. This property allows for reasoning and querying in the opposite direction, starting from a mental state and identifying the associated agent.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isMentalStateOf"></see></summary>
-    let isMentalStateOf =
-        Namespaced_IRI.parse _namespace_name "isMentalStateOf" |> NamespacedName
-
+    let isMentalStateOf = _prefix "isMentalStateOf"
     /// <summary>
     /// The TimeInterval class represents a bounded period of time with a defined start and end. It is used to specify the temporal extent of events, states, or processes.
     /// <see href="https://w3id.org/fossr/ontology/bdi/TimeInterval"></see></summary>
-    let TimeInterval =
-        Namespaced_IRI.parse _namespace_name "TimeInterval" |> NamespacedName
-
+    let TimeInterval = _prefix "TimeInterval"
     /// <summary>
     /// The object property :isReasonedUponBy is the inverse of :reasonsUpon. It links a MentalState to the MentalProcess that uses it as input for cognitive deliberation or transformation. This property supports reasoning from the perspective of the mental state, enabling the ontology to answer questions suc as which processes have operated on a given belief, desire, or intention. For example, a Desire may be :isReasonedUponBy an IntentionProcess that evaluates its feasibility and selects it for commitment. The property plays a key role in making explicit the dependency chains within an agent’s reasoning process, thus enhancing explainability and traceability of cognitive dynamics.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isReasonedUponBy"></see></summary>
-    let isReasonedUponBy =
-        Namespaced_IRI.parse _namespace_name "isReasonedUponBy" |> NamespacedName
-
+    let isReasonedUponBy = _prefix "isReasonedUponBy"
     /// <summary>
     /// The object property :endsWith identifies the last element in a structured or ordered sequence. It is used to specify which component marks the ending point of a composite entity such as a plan. This property enables the ontology to model linear or sequential structures with clear entry points, which is essential for temporal reasoning, execution tracing, and validating ordering constraints. For example, a Plan may :endsWith a specific ActionDescription, indicating the last step to be performed. The property is particularly useful in contexts where ordering, precedence, or flow control must be explicitly represented.
     /// <see href="https://w3id.org/fossr/ontology/bdi/endsWith"></see></summary>
-    let endsWith = Namespaced_IRI.parse _namespace_name "endsWith" |> NamespacedName
+    let endsWith = _prefix "endsWith"
     /// <summary>
     /// The object property :beginsWith identifies the first element in a structured or ordered sequence. It is used to specify which component marks the starting point of a composite entity such as a plan. This property enables the ontology to model linear or sequential structures with clear entry points, which is essential for temporal reasoning, execution tracing, and validating ordering constraints. For example, a Plan may :beginsWith a specific ActionDescription, indicating the first step to be performed. The property is particularly useful in contexts where ordering, precedence, or flow control must be explicitly represented.
     /// <see href="https://w3id.org/fossr/ontology/bdi/beginsWith"></see></summary>
-    let beginsWith = Namespaced_IRI.parse _namespace_name "beginsWith" |> NamespacedName
+    let beginsWith = _prefix "beginsWith"
     /// <summary>
     /// Planning is the cognitive process through which an agent generates, structures, and organises a sequence of actions to achieve a desired goal. It transforms an agent’s intentions into a concrete plan that can guide execution. This process involves selecting appropriate steps, considering constraints, and adapting the plan based on available information.
     ///
     /// For example, an autonomous agent responsible for disaster response may form the intention to deliver medical supplies to a remote area. Through the Planning process, it determines the optimal route, identifies necessary resources, and structures the sequence of actions required to execute the delivery efficiently.
     /// <see href="https://w3id.org/fossr/ontology/bdi/Planning"></see></summary>
-    let Planning = Namespaced_IRI.parse _namespace_name "Planning" |> NamespacedName
-
+    let Planning = _prefix "Planning"
     /// <summary>
     /// Indicates that a Plan instance is defined by a specific Planning entity.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isDefinedBy"></see></summary>
-    let isDefinedBy =
-        Namespaced_IRI.parse _namespace_name "isDefinedBy" |> NamespacedName
-
+    let isDefinedBy = _prefix "isDefinedBy"
     /// <summary>
     /// The object property :addresses links a Plan to the Goal it is intended to fulfil. It captures the teleological nature of planning, where a Plan is not arbitrary but constructed with the explicit purpose of realising a desired state of the world, as described by a Goal. This property formalises the intentional link between planning and goal-oriented behaviour in agents. For example, a Plan to deploy renewable energy subsidies may address a Goal of reducing greenhouse gas emissions. The :addresses relation supports reasoning about the relevance and suitability of plans with respect to their objectives, thereby enabling goal-driven agent behaviour and planning traceability.
     /// <see href="https://w3id.org/fossr/ontology/bdi/addresses"></see></summary>
-    let addresses = Namespaced_IRI.parse _namespace_name "addresses" |> NamespacedName
-
+    let addresses = _prefix "addresses"
     /// <summary>
     /// The object property :isSatisfiedBy links a Plan to its corresponding PlanExecution, representing the realisation of the plan in a concrete, time-bounded context. While a Plan describes a structured set of intended actions aimed at achieving a Goal, the PlanExecution represents the actual enactment of that plan by an agent. This property allows the ontology to trace how abstract intentions are translated into actions, enabling reasoning over whether and how a plan has been carried out. For example, a Plan for emergency response may have an associated PlanExecution that occurred during a specific crisis scenario. The :isSatisfiedBy relation supports temporal monitoring, evaluation, and explanation of agent behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isSatisfiedBy"></see></summary>
-    let isSatisfiedBy =
-        Namespaced_IRI.parse _namespace_name "isSatisfiedBy" |> NamespacedName
-
+    let isSatisfiedBy = _prefix "isSatisfiedBy"
     /// <summary>
     /// The object property :hasComponent expresses a compositional relationship in which the subject entity includes the object as one of its components. It is used to model structural or functional parts that collectively form a more complex whole, allowing flexible representation of modular systems, compound entities, or hierarchical structures. This property applies broadly to both physical and abstract entities, such as a plan composed of multiple action descriptions, or a mental model composed of interrelated mental states. The use of :hasComponent supports reasoning over part-whole dependencies, system decomposition, and modular analysis.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasComponent"></see></summary>
-    let hasComponent =
-        Namespaced_IRI.parse _namespace_name "hasComponent" |> NamespacedName
-
+    let hasComponent = _prefix "hasComponent"
     /// <summary>
     /// The object property :satisfies is the inverse of :isSatisfiedBy and connects a PlanExecution to the Plan that it realises. This property captures the instantiation of an abstract plan into a concrete sequence of actions or behaviours carried out by an agent. It enables reasoning from the execution perspective, such as verifying which plan was implemented, comparing intended and actual outcomes, and auditing agent behaviour. For example, a PlanExecution performed by a response team may be :satisfies a Plan for disaster mitigation. This property is central to supporting traceability, accountability, and simulation of agent decision-making in dynamic environments.
     /// <see href="https://w3id.org/fossr/ontology/bdi/satisfies"></see></summary>
-    let satisfies = Namespaced_IRI.parse _namespace_name "satisfies" |> NamespacedName
-
+    let satisfies = _prefix "satisfies"
     /// <summary>
     /// The object property :isExecutedBy is the inverse of :executes and connects a PlanExecution to the Agent that performs it. It specifies who is enacting a particular plan in a given context. This property is crucial for understanding who is operationally responsible for turning a plan into action, allowing the ontology to support explanations of observed behaviours, audit processes, and verification of agent compliance. For instance, a PlanExecution aimed at deploying a new system may be :isExecutedBy the agent tasked with implementing it.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isExecutedBy"></see></summary>
-    let isExecutedBy =
-        Namespaced_IRI.parse _namespace_name "isExecutedBy" |> NamespacedName
-
+    let isExecutedBy = _prefix "isExecutedBy"
     /// <summary>
     /// Relates a Planning entity to one or more Plans, defining the structured actions an agent intends to execute to fulfill its intentions.
     /// <see href="https://w3id.org/fossr/ontology/bdi/defines"></see></summary>
-    let defines = Namespaced_IRI.parse _namespace_name "defines" |> NamespacedName
+    let defines = _prefix "defines"
     /// <summary>
     /// The object property :precedes is the inverse of :follows and indicates that the subject occurs or is intended to occur before the object. It captures the precedence relation between entities, such as actions, events, or cognitive steps. This property is useful for representing structured sequences where the ordering of components is essential to understanding the process or plan. For example, one ActionDescription may :precedes another to define execution order. Used in combination with :follows, this property enables flexible modelling and reasoning over ordered structures in both physical and cognitive domains.
     /// <see href="https://w3id.org/fossr/ontology/bdi/precedes"></see></summary>
-    let precedes = Namespaced_IRI.parse _namespace_name "precedes" |> NamespacedName
+    let precedes = _prefix "precedes"
     /// <summary>
     /// The object property :follows represents a temporal or logical ordering between two entities, where the subject is understood to occur or be positioned after the object. This property is transitive, allowing the expression of sequences in which multiple elements are ordered, such as actions within a plan, events in a process, or reasoning steps in a cognitive sequence. For example, in a plan composed of ordered actions, one ActionDescription may :follows another to indicate that it should be performed subsequently. This property supports temporal reasoning, process traceability, and structural consistency within ordered models.
     /// <see href="https://w3id.org/fossr/ontology/bdi/follows"></see></summary>
-    let follows = Namespaced_IRI.parse _namespace_name "follows" |> NamespacedName
-
+    let follows = _prefix "follows"
     /// <summary>
     /// The TimeInstant class represents an exact time. It is used to specify the time when events occur, start and end.
     /// <see href="https://w3id.org/fossr/ontology/bdi/TimeInstant"></see></summary>
-    let TimeInstant =
-        Namespaced_IRI.parse _namespace_name "TimeInstant" |> NamespacedName
-
+    let TimeInstant = _prefix "TimeInstant"
     /// <summary>
     /// Specifies the value of a temporal entity.
     /// <see href="https://w3id.org/fossr/ontology/bdi/time"></see></summary>
-    let time = Namespaced_IRI.parse _namespace_name "time" |> NamespacedName
+    let time = _prefix "time"
     /// <summary>
     /// Defines the temporal istant by specifying when a TimeInterval concludes. This is essential for modeling the execution timeframe of an agent’s plans, actions, or mental states.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasEndTime"></see></summary>
-    let hasEndTime = Namespaced_IRI.parse _namespace_name "hasEndTime" |> NamespacedName
-
+    let hasEndTime = _prefix "hasEndTime"
     /// <summary>
     /// Defines the temporal istant by specifying when a TimeInterval starts. This is essential for modeling the execution timeframe of an agent’s plans, actions, or mental states.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasStartTime"></see></summary>
-    let hasStartTime =
-        Namespaced_IRI.parse _namespace_name "hasStartTime" |> NamespacedName
-
+    let hasStartTime = _prefix "hasStartTime"
     /// <summary>
     /// The object property isReferredBy is defined as the inverse of :refersTo. It links a WorldState to the MentalEntities (beliefs, desires, intentions) that are directed toward it. This property is useful for tracing how a given world state is cognitively represented across different agents, thereby enabling reasoning over shared beliefs, conflicting desires, or multiple intentions that concern the same state of affairs.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isReferredBy"></see></summary>
-    let isReferredBy =
-        Namespaced_IRI.parse _namespace_name "isReferredBy" |> NamespacedName
-
+    let isReferredBy = _prefix "isReferredBy"
     /// <summary>
     /// The object property isPerceivedBy links a WorldState to an Agent,  indicating that the state of the world is perceived by that agent. This property allows world states to be contextualised with respect to specific agents, supporting reasoning about which agents have knowledge of, or awareness of, a given condition in the environment. For example, a WorldState describing 'the room is cold' may be
     /// :isPerceivedBy an agent, which in turn can generate corresponding beliefs, desires, or intentions. This property is the inverse of perceives.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isPerceivedBy"></see></summary>
-    let isPerceivedBy =
-        Namespaced_IRI.parse _namespace_name "isPerceivedBy" |> NamespacedName
-
+    let isPerceivedBy = _prefix "isPerceivedBy"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/isAffectedBy"></see>
     /// </summary>
-    let isAffectedBy =
-        Namespaced_IRI.parse _namespace_name "isAffectedBy" |> NamespacedName
-
+    let isAffectedBy = _prefix "isAffectedBy"
     /// <summary>
     /// is fulfilled by
     /// The isFulfilledBy property is the inverse of fulfills. It links a goal to the intention(s) or plan(s) that are committed to or designed to achieve it. This property enables reasoning from the perspective of goals to identify the entities working toward their fulfilment.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isFulfilledBy"></see></summary>
-    let isFulfilledBy =
-        Namespaced_IRI.parse _namespace_name "isFulfilledBy" |> NamespacedName
-
+    let isFulfilledBy = _prefix "isFulfilledBy"
     /// <summary>
     /// The object property generates is a subproperty of :affects and captures
     /// the relation between a MentalProcess and a newly created MentalState.
@@ -389,78 +311,55 @@ module bdi =
     /// cognition, ensuring that the ontology can represent the emergence of
     /// mental states as part of an agent's reasoning dynamics.
     /// <see href="https://w3id.org/fossr/ontology/bdi/generates"></see></summary>
-    let generates = Namespaced_IRI.parse _namespace_name "generates" |> NamespacedName
-
+    let generates = _prefix "generates"
     /// <summary>
     /// The object property :isGeneratedBy is the inverse of :generates. It links a MentalState to the MentalProcess that created it. This property enables reasoning over the origin of mental states, supporting explainability and traceability of cognitive dynamics. For example, a Belief may be :isGeneratedBy a BeliefProcessing activity triggered by the perception of a WorldState, while an Intention may be :isGeneratedBy an IntentionProcessing activity that selected a Desire for commitment. By modelling generative origins explicitly, the ontology provides mechanisms for explaining why and how specific mental states come into existence.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isGeneratedBy"></see></summary>
-    let isGeneratedBy =
-        Namespaced_IRI.parse _namespace_name "isGeneratedBy" |> NamespacedName
-
+    let isGeneratedBy = _prefix "isGeneratedBy"
     /// <summary>
     /// The hasBelief property links an agent to the belief(s) they hold, representing the agent’s informational state about the world.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasBelief"></see></summary>
-    let hasBelief = Namespaced_IRI.parse _namespace_name "hasBelief" |> NamespacedName
-
+    let hasBelief = _prefix "hasBelief"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/hasBeliefProcess"></see>
     /// </summary>
-    let hasBeliefProcess =
-        Namespaced_IRI.parse _namespace_name "hasBeliefProcess" |> NamespacedName
-
+    let hasBeliefProcess = _prefix "hasBeliefProcess"
     /// <summary>
     /// "The hasMentalProcess property is an object property that links an agent to one or more of its mental process, such as beliefs formation, desires formation, or intentions formation. It establishes a relationship between the agent (as the holder of mental process) and the abstract representations of those states, enabling changing the agent's mental state.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasMentalProcess"></see></summary>
-    let hasMentalProcess =
-        Namespaced_IRI.parse _namespace_name "hasMentalProcess" |> NamespacedName
-
+    let hasMentalProcess = _prefix "hasMentalProcess"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/isBeliefProcessOf"></see>
     /// </summary>
-    let isBeliefProcessOf =
-        Namespaced_IRI.parse _namespace_name "isBeliefProcessOf" |> NamespacedName
-
+    let isBeliefProcessOf = _prefix "isBeliefProcessOf"
     /// <summary>
     /// The object property :isComponentOf is the inverse of :hasComponent and denotes that the subject entity functions as a component within a larger structure or system. It captures part-to-whole relationships in various contexts, such as an action step being part of a plan. This property facilitates structural reasoning, enabling the identification of higher-level entities to which a given component belongs. It is particularly useful for representing hierarchical, modular, or compositional models in both cognitive and operational domains.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isComponentOf"></see></summary>
-    let isComponentOf =
-        Namespaced_IRI.parse _namespace_name "isComponentOf" |> NamespacedName
-
+    let isComponentOf = _prefix "isComponentOf"
     /// <summary>
     /// The hasDesire property links an agent to the desire(s) they aspire to achieve, representing the agent’s motivational preferences.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasDesire"></see></summary>
-    let hasDesire = Namespaced_IRI.parse _namespace_name "hasDesire" |> NamespacedName
-
+    let hasDesire = _prefix "hasDesire"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/hasDesireProcess"></see>
     /// </summary>
-    let hasDesireProcess =
-        Namespaced_IRI.parse _namespace_name "hasDesireProcess" |> NamespacedName
-
+    let hasDesireProcess = _prefix "hasDesireProcess"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/isDesireProcessOf"></see>
     /// </summary>
-    let isDesireProcessOf =
-        Namespaced_IRI.parse _namespace_name "isDesireProcessOf" |> NamespacedName
-
+    let isDesireProcessOf = _prefix "isDesireProcessOf"
     /// <summary>
     /// The hasIntention property links an agent to the intention(s) they commit to, representing the agent’s deliberative state for action.
     /// <see href="https://w3id.org/fossr/ontology/bdi/hasIntention"></see></summary>
-    let hasIntention =
-        Namespaced_IRI.parse _namespace_name "hasIntention" |> NamespacedName
-
+    let hasIntention = _prefix "hasIntention"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/hasIntentionProcess"></see>
     /// </summary>
-    let hasIntentionProcess =
-        Namespaced_IRI.parse _namespace_name "hasIntentionProcess" |> NamespacedName
-
+    let hasIntentionProcess = _prefix "hasIntentionProcess"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/isIntentionProcessOf"></see>
     /// </summary>
-    let isIntentionProcessOf =
-        Namespaced_IRI.parse _namespace_name "isIntentionProcessOf" |> NamespacedName
-
+    let isIntentionProcessOf = _prefix "isIntentionProcessOf"
     /// <summary>
     /// The object property isPartOf represents the inverse of hasPart,
     /// capturing the fact that a mental entity is a constituent part of another
@@ -471,32 +370,23 @@ module bdi =
     /// to reconstruct the larger cognitive structures to which a mental entity
     /// belongs, complementing the decomposition enabled by hasPart.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isPartOf"></see></summary>
-    let isPartOf = Namespaced_IRI.parse _namespace_name "isPartOf" |> NamespacedName
-
+    let isPartOf = _prefix "isPartOf"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/hasPlanning"></see>
     /// </summary>
-    let hasPlanning =
-        Namespaced_IRI.parse _namespace_name "hasPlanning" |> NamespacedName
-
+    let hasPlanning = _prefix "hasPlanning"
     /// <summary>
     ///   <see href="https://w3id.org/fossr/ontology/bdi/isPlanningOf"></see>
     /// </summary>
-    let isPlanningOf =
-        Namespaced_IRI.parse _namespace_name "isPlanningOf" |> NamespacedName
-
+    let isPlanningOf = _prefix "isPlanningOf"
     /// <summary>
     /// The isTemporalValidityOf property is the inverse of hasTemporalValidity. It links a TimeInterval to the entity it defines the temporal validity for, specifying the time period during which the entity is active or applicable.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isTemporalValidityOf"></see></summary>
-    let isTemporalValidityOf =
-        Namespaced_IRI.parse _namespace_name "isTemporalValidityOf" |> NamespacedName
-
+    let isTemporalValidityOf = _prefix "isTemporalValidityOf"
     /// <summary>
     /// The object property :isModifiedBy is the inverse of :modifies. It links a MentalState to the MentalProcess that has altered it. This property is used to capture the history of changes that a mental state undergoes over time, such as updates, refinements, or adjustments. For instance, a Desire may be :isModifiedBy a DesireProcessing activity that adjusts its priority, or a Belief may be :isModifiedBy a BeliefProcessing activity that incorporates new evidence. The property ensures that modifications to cognitive states can be explicitly represented and traced for purposes of explainability and reasoning about cognitive dynamics.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isModifiedBy"></see></summary>
-    let isModifiedBy =
-        Namespaced_IRI.parse _namespace_name "isModifiedBy" |> NamespacedName
-
+    let isModifiedBy = _prefix "isModifiedBy"
     /// <summary>
     /// The object property modifies is a subproperty of :affects and describes
     /// the relation between a MentalProcess and an existing MentalState whose
@@ -508,47 +398,35 @@ module bdi =
     /// scope or adjusting its temporal constraints. This property reflects the
     /// fact that mental states are dynamic entities subject to continual revision.
     /// <see href="https://w3id.org/fossr/ontology/bdi/modifies"></see></summary>
-    let modifies = Namespaced_IRI.parse _namespace_name "modifies" |> NamespacedName
-
+    let modifies = _prefix "modifies"
     /// <summary>
     /// Indicates that a MentalProcess is performed or carried out by a specific Agent as part of its cognitive activities
     /// <see href="https://w3id.org/fossr/ontology/bdi/isProcessedBy"></see></summary>
-    let isProcessedBy =
-        Namespaced_IRI.parse _namespace_name "isProcessedBy" |> NamespacedName
-
+    let isProcessedBy = _prefix "isProcessedBy"
     /// <summary>
     /// Represents the relationship where an Agent actively engages in a MentalProcess, such as evaluating beliefs, forming desires, or adopting intentions, as part of its cognitive functioning within a BDI framework.
     /// <see href="https://w3id.org/fossr/ontology/bdi/processes"></see></summary>
-    let processes = Namespaced_IRI.parse _namespace_name "processes" |> NamespacedName
-
+    let processes = _prefix "processes"
     /// <summary>
     /// The isSpecifiedBy property is the inverse of specifiesPlan. It links a plan to the intention it is designed to fulfil, enabling reasoning about the motivational context behind the plan.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isSpecifiedBy"></see></summary>
-    let isSpecifiedBy =
-        Namespaced_IRI.parse _namespace_name "isSpecifiedBy" |> NamespacedName
-
+    let isSpecifiedBy = _prefix "isSpecifiedBy"
     /// <summary>
     /// The specifies property links an intention to the plan that operationalises it. This property represents how an agent’s commitment to achieving a goal (intention) is translated into a structured sequence of actions (plan).
     /// <see href="https://w3id.org/fossr/ontology/bdi/specifies"></see></summary>
-    let specifies = Namespaced_IRI.parse _namespace_name "specifies" |> NamespacedName
-
+    let specifies = _prefix "specifies"
     /// <summary>
     /// The isIntentionSupportedBy property is the inverse of supportsIntention. It links an intention to the belief(s) that justify or support the agent’s decision to pursue it.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isSupportedBy"></see></summary>
-    let isSupportedBy =
-        Namespaced_IRI.parse _namespace_name "isSupportedBy" |> NamespacedName
-
+    let isSupportedBy = _prefix "isSupportedBy"
     /// <summary>
     /// The supportsIntention property links a belief to the intention it provides justification or epistemic support for, representing the reasoning or evidence behind the agent’s commitment to act.
     /// <see href="https://w3id.org/fossr/ontology/bdi/supports"></see></summary>
-    let supports = Namespaced_IRI.parse _namespace_name "supports" |> NamespacedName
-
+    let supports = _prefix "supports"
     /// <summary>
     /// The object property :isSuppressedBy is the inverse of :suppresses. It links a MentalState to the MentalProcess that deactivated, abandoned, or removed it from the agent’s active repertoire. This property is particularly important for modelling cognitive adaptability, where agents discard outdated beliefs, abandon unfeasible desires, or drop intentions that are no longer relevant. For example, a Belief may be :isSuppressedBy a BeliefProcessing activity invalidating it, or an Intention may be :isSuppressedBy an IntentionProcessing activity that reprioritises goals. By making suppression explicit, the ontology can represent the disappearance of mental states and support reasoning about why they ceased to influence agent behaviour.
     /// <see href="https://w3id.org/fossr/ontology/bdi/isSuppressedBy"></see></summary>
-    let isSuppressedBy =
-        Namespaced_IRI.parse _namespace_name "isSuppressedBy" |> NamespacedName
-
+    let isSuppressedBy = _prefix "isSuppressedBy"
     /// <summary>
     /// The object property suppresses is a subproperty of :affects and models
     /// the relation between a MentalProcess and a MentalState that is deactivated,
@@ -560,8 +438,8 @@ module bdi =
     /// cognitive repertoire, which is essential for modelling realistic
     /// decision-making and adaptability.
     /// <see href="https://w3id.org/fossr/ontology/bdi/suppresses"></see></summary>
-    let suppresses = Namespaced_IRI.parse _namespace_name "suppresses" |> NamespacedName
+    let suppresses = _prefix "suppresses"
     /// <summary>
     /// Defines a causal relationship where a Mental Entity triggers a MentalProcess, leading to a change in the agent’s internal state, such as updating beliefs, forming new desires, or adopting intentions.
     /// <see href="https://w3id.org/fossr/ontology/bdi/triggers"></see></summary>
-    let triggers = Namespaced_IRI.parse _namespace_name "triggers" |> NamespacedName
+    let triggers = _prefix "triggers"

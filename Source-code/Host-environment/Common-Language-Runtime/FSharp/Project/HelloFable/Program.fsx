@@ -21,6 +21,7 @@ open FSharp.HashCollections
 #r "nuget: dotNetRdf"
 open VDS.RDF
 #r "nuget: Yog.FSharp"
+
 open Yog.Model
 open Yog.Builder
 open Yog.IO
@@ -48,8 +49,10 @@ open QuikGraph.Petri
 
 
 #r "nuget:  Fabulous.AST"
+
 open Fabulous.AST
 open Fantomas.Core.SyntaxOak
+
 open type Fabulous.AST.Ast
 
 
@@ -57,16 +60,17 @@ open type Fabulous.AST.Ast
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Interval_Range\obj\Release\net10.0"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\obj\Release\net10.0"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\ParserCombinator\obj\Release\net10.0"
+#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Registry\obj\Release\net10.0"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\obj\Release\net10.0"
 
 #r "Unicodepoint.dll"
 #r "Interval_Range.dll"
 #r "Ergonomic_Extensions.dll"
 #r "ParserCombinator.dll"
+#r "Rdf_Registry.dll"
 #r "Rdf_Vocabulary.dll"
 
 open DoxAletheia
-open Rdf_Vocabulary
 open GrammarErgonomics
 open StringExtensions
 open IntervalErgonomics
@@ -75,9 +79,24 @@ open XParsecExtensions.Code_Parsers
 open ArrayErgonomics
 open ByteExtensions
 open Interval_Range
+
 open Rdf_Shorthand
 open Rdf_Document
+
+#r "nuget: FSharp.Json"
+open FSharp.Json
 open Namespace_Prefixes
+
+
+
+
+
+
+
+
+
+
+
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\HtmlErgonomics.fsx"
 
 open HtmlErgonomics
@@ -144,11 +163,144 @@ File.WriteAllText(html_document_path, html_document.ToString())
 
 let a = rdf.type_
 
+let watched_file_path =
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\HelloFable\Program.fs"
 
 
 
 
 
+
+
+
+
+let test_name = "test_graph"
+let test_directory = Path.Combine(__SOURCE_DIRECTORY__, test_name)
+
+
+
+
+let force_node_expression (node: Force_Node) =
+    AnonRecordExpr(
+        [
+            RecordFieldExpr("id", Ast.String(node.id))
+        ]
+    )
+
+let force_link_expression (link: Force_Link) =
+    AnonRecordExpr(
+        [
+            RecordFieldExpr("source", Ast.String(link.source))
+            RecordFieldExpr("target", Ast.String(link.target))
+            RecordFieldExpr("predicate", Ast.String(link.predicate))
+        ]
+    )
+let force_graph_data_expression (graph_data: Force_Graph) =
+
+    let node_expressions =
+        graph_data.nodes
+        |> Array.map force_node_expression
+
+    let link_expressions =
+        graph_data.links
+        |> Array.map force_link_expression
+
+    AnonRecordExpr(
+        [
+            RecordFieldExpr(
+                "nodes",
+                ArrayExpr(node_expressions)
+            )
+
+            RecordFieldExpr(
+                "links",
+                ArrayExpr(link_expressions)
+            )
+        ]
+    )
+
+
+let generated_graph_data_oak (graph_data: Force_Graph) =
+    Oak() {
+        AnonymousModule() {
+            Open("Browser.Dom")
+            Open("Browser.Types")
+            Open("Fable.Core")
+            Open("Fable.Core.JsInterop")
+
+            Function(
+                "render_graph_from_json_file",
+                [
+                    ParenPat(
+                        ParameterPat(
+                            "json_url",
+                            "string"
+                        )
+                    )
+
+                    ParenPat(
+                        ParameterPat(
+                            "element",
+                            "HTMLElement"
+                        )
+                    )
+                ],
+                IdentExpr("jsNative"),
+                "JS.Promise<obj>"
+            )
+            |> _.attribute(
+                Attribute(
+                    "Emit",
+                    Ast.String(
+                        """
+fetch($0, { cache: "no-store" })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(
+                "Failed to load graph JSON: HTTP "
+                + response.status
+                + " "
+                + response.statusText
+            );
+        }
+
+        return response.json();
+    })
+    .then(data =>
+        new ForceGraph()($1)
+            .graphData(data)
+    )
+                        """.Trim()
+                    )
+                )
+            )
+
+            Value(
+                "Graph",
+                AppExpr(
+                    "render_graph_from_json_file",
+                    [
+                        ConstantExpr(
+                            Ast.String(
+                                "./test_graph/test_graph.force-graph.2d.json"
+                            )
+                        )
+
+                        ParenExpr(
+                            AppExpr(
+                                "document.getElementById",
+                                ConstantExpr(
+                                    Ast.String("graph")
+                                )
+                            )
+                        )
+                    ]
+                )
+            )
+        }
+    }
+    |> Gen.mkOak
+    |> Gen.run    
 
 
 module dbug =
@@ -180,14 +332,17 @@ module commonplace =
     let _prefix local_name =
         Namespaced_IRI.parse _namespace_name local_name
         |> NamespacedName
+
     let Quest_of_D = _prefix "Quest_of_D"
     let Gitadora = _prefix "Gitadora"
+    let eris = _prefix "eris"
+    let syris = _prefix "syris"
 
 
-
-module The_16th_Sanctuary = 
-    module Rhythm_Games = 
-        module rhythm_game_chat = 
+(*
+module The_16th_Sanctuary =
+    module Rhythm_Games =
+        module rhythm_game_chat =
 
 
             [<Literal>]
@@ -198,9 +353,10 @@ module The_16th_Sanctuary =
 
 
 
+*)
 
 module sanctuary =
-    open DoxAletheia.Rdf_Vocabulary
+    open DoxAletheia
     let _namespace_name = "https://eristocrates.dev/ontology/sanctuary/"
 
     let _prefix local_name =
@@ -212,197 +368,40 @@ module sanctuary =
     let yaladre = _prefix "yaladre"
     let regen = _prefix "regen=Q"
 
+let formula =
+    !| [ dbug.Alice
+         dbug.Bob ]
+    --- a
+    --> foaf.Person
+    -!> dbug.Alice
+    --- foaf.knows
+    -->/ dbug.Bob
+    --- foaf.knows
+    --> dbug.Alice
 
-let draft_document = 
-    !| [ 
-        sanctuary.eristocrates
-        sanctuary.siamesederp
-        sanctuary.yaladre
-        sanctuary.regen
-     ] --- a --> foaf.Person
-     -!> sanctuary.yaladre --- foaf.topic_interest -->| [ commonplace.Quest_of_D  ; commonplace.Gitadora  ]
-let test_name = "test_graph"
-let test_directory = Path.Combine(__SOURCE_DIRECTORY__, test_name)
-draft_document |> write_draft test_directory test_name
-
-
-
-[<CLIMutable>]
-type Force_Node =
-    {
-        id: string
-    }
-
-[<CLIMutable>]
-type Force_Link =
-    {
-        source: string
-        target: string
-        predicate: string
-    }
-
-[<CLIMutable>]
-type Force_Graph_Data =
-    {
-        nodes: Force_Node array
-        links: Force_Link array
-    }
-
-
-let force_graph_data (rdf_graph:Rdf_Graph) =
-
-    let links =
-        rdf_graph.triples
-        |> Array.ofSeq
-        |> Array.map (fun triple ->
-            {
-                source = triple.curSubject.as_raw_string
-                target = triple.curObject.as_raw_string
-                predicate = triple.curPredicate.as_raw_string 
-            }
-        )
-
-    let nodes =
-        links
-        |> Array.collect (fun link ->
-            [|
-                link.source
-                link.target
-            |]
-        )
-        |> Array.distinct
-        |> Array.map (fun id ->
-            {
-                id = id
-            }
-        )
-
-    {
-        nodes = nodes
-        links = links
-    }
-
-
-let test_graph = 
-     draft_document |> Draft_Document.to_rdf_graph
-let force_graph = force_graph_data test_graph
+formula |> write_draft test_directory test_name
+let test_graph = formula |> Formula.to_rdf_graph
 
 
 
 
 
 
-let force_node_expression (node: Force_Node) =
-    AnonRecordExpr(
-        [
-            RecordFieldExpr("id", Ast.String(node.id))
-        ]
-    )
 
-let force_link_expression (link: Force_Link) =
-    AnonRecordExpr(
-        [
-            RecordFieldExpr("source", Ast.String(link.source))
-            RecordFieldExpr("target", Ast.String(link.target))
-            RecordFieldExpr("predicate", Ast.String(link.predicate))
-        ]
-    )
-let force_graph_data_expression (graph_data: Force_Graph_Data) =
-
-    let node_expressions =
-        graph_data.nodes
-        |> Array.map force_node_expression
-
-    let link_expressions =
-        graph_data.links
-        |> Array.map force_link_expression
-
-    AnonRecordExpr(
-        [
-            RecordFieldExpr(
-                "nodes",
-                ArrayExpr(node_expressions)
-            )
-
-            RecordFieldExpr(
-                "links",
-                ArrayExpr(link_expressions)
-            )
-        ]
-    )
+let test_triple = test_graph.triples |> Seq.randomChoice
 
 
-let generated_graph_data_oak (graph_data: Force_Graph_Data) =
-    Oak() {
-        AnonymousModule() {
-                Open("Browser.Dom")
-                Open("Browser.Types")
-                Open("Fable.Core")
-                Open("Fable.Core.JsInterop")
+test_triple.as_rendered_strings ":"global_prefix_map
 
-                Value(
-                    "graphData",
-                    force_graph_data_expression graph_data
-                )
 
-                Function(
-                    "render_graph",
-                    [
-                        ParenPat(
-                            ParameterPat("element", "HTMLElement")
-                        )
 
-                        ParenPat(
-                            ParameterPat("data", "obj")
-                        )
-                    ],
-                    IdentExpr("jsNative"),
-                    "obj"
-                )
-                |> _.attribute(
-                    Attribute(
-                        "Emit",
-                        Ast.String(
-                            "new ForceGraph()($0).linkDirectionalParticles(2).graphData($1)"
-                        )
-                    )
-                )
-                |> _.attribute(
-                    Attribute(
-                        "Emit",
-                        Ast.String(
-                            "new ForceGraph()($0).linkDirectionalParticles(2).graphData($1)"
-                        )
-                    )
-                )
-
-                Value(
-                    "Graph",
-                    AppExpr(
-                        "render_graph",
-                        [
-                            ParenExpr(
-                                AppExpr(
-                                    "document.getElementById",
-                                    Ast.String("graph")
-                                )
-                            )
-
-                            IdentExpr("graphData")
-                        ]
-                    )
-                )
-            }
-            
-        }
-        |> Gen.mkOak
-        |> Gen.run
-    
-
+let force_graph =
+    { nodes = test_graph.force_nodes
+      links = test_graph.force_links
+       }
 let generated_source  =
     force_graph
     |> generated_graph_data_oak
     
-let watched_file_path = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\HelloFable\Program.fs"
+
 File.WriteAllText(watched_file_path, generated_source)
-printfn "%s" generated_source

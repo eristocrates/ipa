@@ -1,277 +1,209 @@
 namespace http.def.seegrid.csiro.au.isotc211.iso19115._2003.dataquality.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dq =
     let _namespace_name =
         "http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#CompletenessOmission"></see>
     /// </summary>
-    let CompletenessOmission =
-        Namespaced_IRI.parse _namespace_name "CompletenessOmission" |> NamespacedName
-
+    let CompletenessOmission = _prefix "CompletenessOmission"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#DataQuality"></see>
     /// </summary>
-    let DataQuality =
-        Namespaced_IRI.parse _namespace_name "DataQuality" |> NamespacedName
-
+    let DataQuality = _prefix "DataQuality"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#Result"></see>
     /// </summary>
-    let Result = Namespaced_IRI.parse _namespace_name "Result" |> NamespacedName
+    let Result = _prefix "Result"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#level"></see>
     /// </summary>
-    let level = Namespaced_IRI.parse _namespace_name "level" |> NamespacedName
+    let level = _prefix "level"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#lineage"></see>
     /// </summary>
-    let lineage = Namespaced_IRI.parse _namespace_name "lineage" |> NamespacedName
-
+    let lineage = _prefix "lineage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#GriddedDataPositionalAccuracy"></see>
     /// </summary>
-    let GriddedDataPositionalAccuracy =
-        Namespaced_IRI.parse _namespace_name "GriddedDataPositionalAccuracy" |> NamespacedName
-
+    let GriddedDataPositionalAccuracy = _prefix "GriddedDataPositionalAccuracy"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#CompletenessCommission"></see>
     /// </summary>
-    let CompletenessCommission =
-        Namespaced_IRI.parse _namespace_name "CompletenessCommission" |> NamespacedName
-
+    let CompletenessCommission = _prefix "CompletenessCommission"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#AccuracyOfATimeMeasurement"></see>
     /// </summary>
-    let AccuracyOfATimeMeasurement =
-        Namespaced_IRI.parse _namespace_name "AccuracyOfATimeMeasurement" |> NamespacedName
-
+    let AccuracyOfATimeMeasurement = _prefix "AccuracyOfATimeMeasurement"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#QuantitativeAttributeAccuracy"></see>
     /// </summary>
-    let QuantitativeAttributeAccuracy =
-        Namespaced_IRI.parse _namespace_name "QuantitativeAttributeAccuracy" |> NamespacedName
-
+    let QuantitativeAttributeAccuracy = _prefix "QuantitativeAttributeAccuracy"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#evaluationMethodType"></see>
     /// </summary>
-    let evaluationMethodType =
-        Namespaced_IRI.parse _namespace_name "evaluationMethodType" |> NamespacedName
-
+    let evaluationMethodType = _prefix "evaluationMethodType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#errorStatistic"></see>
     /// </summary>
-    let errorStatistic =
-        Namespaced_IRI.parse _namespace_name "errorStatistic" |> NamespacedName
-
+    let errorStatistic = _prefix "errorStatistic"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#FormatConsistency"></see>
     /// </summary>
-    let FormatConsistency =
-        Namespaced_IRI.parse _namespace_name "FormatConsistency" |> NamespacedName
+    let FormatConsistency = _prefix "FormatConsistency"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#RelativeInternalPositionalAccuracy"></see>
     /// </summary>
     let RelativeInternalPositionalAccuracy =
-        Namespaced_IRI.parse _namespace_name "RelativeInternalPositionalAccuracy" |> NamespacedName
+        _prefix "RelativeInternalPositionalAccuracy"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#nameOfMeasure"></see>
     /// </summary>
-    let nameOfMeasure =
-        Namespaced_IRI.parse _namespace_name "nameOfMeasure" |> NamespacedName
-
+    let nameOfMeasure = _prefix "nameOfMeasure"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#measureDescription"></see>
     /// </summary>
-    let measureDescription =
-        Namespaced_IRI.parse _namespace_name "measureDescription" |> NamespacedName
-
+    let measureDescription = _prefix "measureDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#TopologicalConsistency"></see>
     /// </summary>
-    let TopologicalConsistency =
-        Namespaced_IRI.parse _namespace_name "TopologicalConsistency" |> NamespacedName
-
+    let TopologicalConsistency = _prefix "TopologicalConsistency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#LogicalConsistency"></see>
     /// </summary>
-    let LogicalConsistency =
-        Namespaced_IRI.parse _namespace_name "LogicalConsistency" |> NamespacedName
-
+    let LogicalConsistency = _prefix "LogicalConsistency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#report"></see>
     /// </summary>
-    let report = Namespaced_IRI.parse _namespace_name "report" |> NamespacedName
-
+    let report = _prefix "report"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#TemporalAccuracy"></see>
     /// </summary>
-    let TemporalAccuracy =
-        Namespaced_IRI.parse _namespace_name "TemporalAccuracy" |> NamespacedName
-
+    let TemporalAccuracy = _prefix "TemporalAccuracy"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#QuantitativeResult"></see>
     /// </summary>
-    let QuantitativeResult =
-        Namespaced_IRI.parse _namespace_name "QuantitativeResult" |> NamespacedName
-
+    let QuantitativeResult = _prefix "QuantitativeResult"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#ConceptualConsistency"></see>
     /// </summary>
-    let ConceptualConsistency =
-        Namespaced_IRI.parse _namespace_name "ConceptualConsistency" |> NamespacedName
-
+    let ConceptualConsistency = _prefix "ConceptualConsistency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#ThematicClassificationCorrectness"></see>
     /// </summary>
-    let ThematicClassificationCorrectness =
-        Namespaced_IRI.parse _namespace_name "ThematicClassificationCorrectness" |> NamespacedName
-
+    let ThematicClassificationCorrectness = _prefix "ThematicClassificationCorrectness"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#evaluationMethodDescription"></see>
     /// </summary>
-    let evaluationMethodDescription =
-        Namespaced_IRI.parse _namespace_name "evaluationMethodDescription" |> NamespacedName
-
+    let evaluationMethodDescription = _prefix "evaluationMethodDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#levelDescription"></see>
     /// </summary>
-    let levelDescription =
-        Namespaced_IRI.parse _namespace_name "levelDescription" |> NamespacedName
-
+    let levelDescription = _prefix "levelDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#ConformanceResult"></see>
     /// </summary>
-    let ConformanceResult =
-        Namespaced_IRI.parse _namespace_name "ConformanceResult" |> NamespacedName
-
+    let ConformanceResult = _prefix "ConformanceResult"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#valueType"></see>
     /// </summary>
-    let valueType = Namespaced_IRI.parse _namespace_name "valueType" |> NamespacedName
+    let valueType = _prefix "valueType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#pass"></see>
     /// </summary>
-    let pass = Namespaced_IRI.parse _namespace_name "pass" |> NamespacedName
-
+    let pass = _prefix "pass"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#TemporalConsistency"></see>
     /// </summary>
-    let TemporalConsistency =
-        Namespaced_IRI.parse _namespace_name "TemporalConsistency" |> NamespacedName
-
+    let TemporalConsistency = _prefix "TemporalConsistency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#NonQuantitativeAttributeAccuracy"></see>
     /// </summary>
-    let NonQuantitativeAttributeAccuracy =
-        Namespaced_IRI.parse _namespace_name "NonQuantitativeAttributeAccuracy" |> NamespacedName
-
+    let NonQuantitativeAttributeAccuracy = _prefix "NonQuantitativeAttributeAccuracy"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#dateTime"></see>
     /// </summary>
-    let dateTime = Namespaced_IRI.parse _namespace_name "dateTime" |> NamespacedName
-
+    let dateTime = _prefix "dateTime"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#measureIdentification"></see>
     /// </summary>
-    let measureIdentification =
-        Namespaced_IRI.parse _namespace_name "measureIdentification" |> NamespacedName
-
+    let measureIdentification = _prefix "measureIdentification"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
-
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#DomainConsistency"></see>
     /// </summary>
-    let DomainConsistency =
-        Namespaced_IRI.parse _namespace_name "DomainConsistency" |> NamespacedName
-
+    let DomainConsistency = _prefix "DomainConsistency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#explanation"></see>
     /// </summary>
-    let explanation =
-        Namespaced_IRI.parse _namespace_name "explanation" |> NamespacedName
-
+    let explanation = _prefix "explanation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#extent"></see>
     /// </summary>
-    let extent = Namespaced_IRI.parse _namespace_name "extent" |> NamespacedName
-
+    let extent = _prefix "extent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#PositionalAccuracy"></see>
     /// </summary>
-    let PositionalAccuracy =
-        Namespaced_IRI.parse _namespace_name "PositionalAccuracy" |> NamespacedName
-
+    let PositionalAccuracy = _prefix "PositionalAccuracy"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#EvaluationMethodTypeCode"></see>
     /// </summary>
-    let EvaluationMethodTypeCode =
-        Namespaced_IRI.parse _namespace_name "EvaluationMethodTypeCode" |> NamespacedName
-
+    let EvaluationMethodTypeCode = _prefix "EvaluationMethodTypeCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#scope"></see>
     /// </summary>
-    let scope = Namespaced_IRI.parse _namespace_name "scope" |> NamespacedName
-
+    let scope = _prefix "scope"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#TemporalValidity"></see>
     /// </summary>
-    let TemporalValidity =
-        Namespaced_IRI.parse _namespace_name "TemporalValidity" |> NamespacedName
-
+    let TemporalValidity = _prefix "TemporalValidity"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#specification"></see>
     /// </summary>
-    let specification =
-        Namespaced_IRI.parse _namespace_name "specification" |> NamespacedName
-
+    let specification = _prefix "specification"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#Element"></see>
     /// </summary>
-    let Element = Namespaced_IRI.parse _namespace_name "Element" |> NamespacedName
+    let Element = _prefix "Element"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#Scope"></see>
     /// </summary>
-    let Scope = Namespaced_IRI.parse _namespace_name "Scope" |> NamespacedName
+    let Scope = _prefix "Scope"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#AbsoluteExternalPositionalAccuracy"></see>
     /// </summary>
     let AbsoluteExternalPositionalAccuracy =
-        Namespaced_IRI.parse _namespace_name "AbsoluteExternalPositionalAccuracy" |> NamespacedName
+        _prefix "AbsoluteExternalPositionalAccuracy"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#evaluationProcedure"></see>
     /// </summary>
-    let evaluationProcedure =
-        Namespaced_IRI.parse _namespace_name "evaluationProcedure" |> NamespacedName
-
+    let evaluationProcedure = _prefix "evaluationProcedure"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#Completeness"></see>
     /// </summary>
-    let Completeness =
-        Namespaced_IRI.parse _namespace_name "Completeness" |> NamespacedName
-
+    let Completeness = _prefix "Completeness"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#result"></see>
     /// </summary>
-    let result = Namespaced_IRI.parse _namespace_name "result" |> NamespacedName
-
+    let result = _prefix "result"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#ThematicAccuracy"></see>
     /// </summary>
-    let ThematicAccuracy =
-        Namespaced_IRI.parse _namespace_name "ThematicAccuracy" |> NamespacedName
-
+    let ThematicAccuracy = _prefix "ThematicAccuracy"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#valueUnit"></see>
     /// </summary>
-    let valueUnit = Namespaced_IRI.parse _namespace_name "valueUnit" |> NamespacedName
+    let valueUnit = _prefix "valueUnit"

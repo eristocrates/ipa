@@ -7,11 +7,22 @@
 
   <ItemGroup>
 	  
+	  <Compile Include="XmlErgonomics.fs" />
+	  
+	  <Compile Include="JsonErgonomics.fs" />
+	  
+	  <Compile Include="RdfExtensions.fs" />
+	  
+	  <Compile Include="PrettierNaming.fs" />
+	  
+	  <Compile Include="IOExtensions.fs" />
+	  
 	  <Compile Include="ConversionErgonomics.fs" />	  
 	  <Compile Include="BooleanExtensions.fs" />
 	  <Compile Include="ByteExtensions.fs" />
     <Compile Include="RuneExtensions.fs" />
     <Compile Include="StringExtensions.fs" />
+	  <Compile Include="PathErgonomics.fs" />
     
     <Compile Include="IntervalErgonomics.fs" />
 	  <Compile Include="ArrayErgonomics.fs" />
@@ -21,7 +32,21 @@
   </ItemGroup>
 
   <ItemGroup>
+	  <PackageReference Include="FSharp.ViewEngine" Version="2026.2.5" />
+	  <PackageReference Include="Fss-lib.Core" Version="3.0.0" />
+	  <PackageReference Include="FSharp.Json" Version="0.4.1" />
+	  <PackageReference Include="FSharp.Data" Version="8.1.14" />
+	  <PackageReference Include="FSharp.Data.JsonSchema.Core" Version="3.0.1" />
+	  <PackageReference Include="FSharp.Data.JsonSchema.OpenApi" Version="3.0.1" />
+	  <PackageReference Include="FSharp.Data.JsonSchema.NJsonSchema" Version="3.0.1" />
+	  <PackageReference Include="Fabulous.AST" Version="2.0.0-pre08" />
+	  <PackageReference Include="Fabulous.AST.Build" Version="2.0.0-pre08">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Fabulous.AST.Json" Version="2.0.0-pre08" />
 	  <PackageReference Include="Blake3" Version="3.0.1" />
+	  <PackageReference Include="FSharp.Compiler.Service" Version="43.10.102" />
 	  <PackageReference Include="LightningDB" Version="0.22.0" />
 	  <PackageReference Include="FRange" Version="1.1.0" />
 	  <PackageReference Include="NeatIntervals" Version="1.0.0" />
@@ -29,7 +54,11 @@
 	  <PackageReference Include="FSharp.UMX" Version="1.1.0" />
 	  <PackageReference Include="FSharp.Units" Version="1.0.15" />
 	  <PackageReference Include="UUIDNext" Version="4.2.4" />
-   
+	  <PackageReference Include="dotNetRdf" Version="3.5.2" />
+	  <PackageReference Include="Iride" Version="0.6.1" />
+	  <PackageReference Include="FsHttp" Version="15.0.3" />
+	  <PackageReference Include="FsHttp.NewtonsoftJson" Version="15.0.3" />
+	  <PackageReference Include="FsHttp.FSharpData" Version="15.0.3" />
   </ItemGroup>    
   
 

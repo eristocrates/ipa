@@ -1,9 +1,13 @@
 namespace http.www.opengis.net.ont.sf.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module sf =
     let _namespace_name = "http://www.opengis.net/ont/sf#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///
     /// A Curve is a 1-dimensional geometric object usually stored as a sequence of Points, with the subtype of Curve specifying the form of the interpolation between Points. This specification defines only one subclass of Curve, LineString, which uses linear interpolation between Points.
@@ -17,7 +21,7 @@ module sf =
     /// A Curve is defined as topologically closed, that is, it contains its endpoints f(a) and f(b).
     ///
     /// <see href="http://www.opengis.net/ont/sf#Curve"></see></summary>
-    let Curve = Namespaced_IRI.parse _namespace_name "Curve" |> NamespacedName
+    let Curve = _prefix "Curve"
     /// <summary>
     ///
     /// Geometry is the root class of the hierarchy.
@@ -26,8 +30,7 @@ module sf =
     /// All Geometry classes described in this specification are defined so that instances of Geometry are topologically closed, i.e. all represented geometries include their boundary as point sets. This does not affect their representation, and open version of the same classes may be used in other circumstances, such as topological representations.
     ///
     /// <see href="http://www.opengis.net/ont/sf#Geometry"></see></summary>
-    let Geometry = Namespaced_IRI.parse _namespace_name "Geometry" |> NamespacedName
-
+    let Geometry = _prefix "Geometry"
     /// <summary>
     ///
     /// A GeometryCollection is a geometric object that is a collection of some number of geometric objects.
@@ -35,27 +38,25 @@ module sf =
     /// GeometryCollection places no other constraints on its elements. Subclasses of GeometryCollection may restrict membership based on dimension and may also place other constraints on the degree of spatial overlap between elements.
     ///
     /// <see href="http://www.opengis.net/ont/sf#GeometryCollection"></see></summary>
-    let GeometryCollection =
-        Namespaced_IRI.parse _namespace_name "GeometryCollection" |> NamespacedName
-
+    let GeometryCollection = _prefix "GeometryCollection"
     /// <summary>
     ///
     /// A Line is a LineString with exactly 2 Points.
     ///
     /// <see href="http://www.opengis.net/ont/sf#Line"></see></summary>
-    let Line = Namespaced_IRI.parse _namespace_name "Line" |> NamespacedName
+    let Line = _prefix "Line"
     /// <summary>
     ///
     /// A LineString is a Curve with linear interpolation between Points. Each consecutive pair of Points defines a Line segment.
     ///
     /// <see href="http://www.opengis.net/ont/sf#LineString"></see></summary>
-    let LineString = Namespaced_IRI.parse _namespace_name "LineString" |> NamespacedName
+    let LineString = _prefix "LineString"
     /// <summary>
     ///
     /// A LinearRing is a LineString that is both closed and simple.
     ///
     /// <see href="http://www.opengis.net/ont/sf#LinearRing"></see></summary>
-    let LinearRing = Namespaced_IRI.parse _namespace_name "LinearRing" |> NamespacedName
+    let LinearRing = _prefix "LinearRing"
     /// <summary>
     ///
     /// A MultiCurve is a 1-dimensional GeometryCollection whose elements are Curves.
@@ -66,16 +67,13 @@ module sf =
     /// A MultiCurve is defined as topologically closed.
     ///
     /// <see href="http://www.opengis.net/ont/sf#MultiCurve"></see></summary>
-    let MultiCurve = Namespaced_IRI.parse _namespace_name "MultiCurve" |> NamespacedName
-
+    let MultiCurve = _prefix "MultiCurve"
     /// <summary>
     ///
     /// A MultiLineString is a MultiCurve whose elements are LineStrings.
     ///
     /// <see href="http://www.opengis.net/ont/sf#MultiLineString"></see></summary>
-    let MultiLineString =
-        Namespaced_IRI.parse _namespace_name "MultiLineString" |> NamespacedName
-
+    let MultiLineString = _prefix "MultiLineString"
     /// <summary>
     ///
     /// A MultiPoint is a 0-dimensional GeometryCollection. The elements of a MultiPoint are restricted to Points. ThePoints are not connected or ordered in any semantically important way.
@@ -84,8 +82,7 @@ module sf =
     /// The boundary of a MultiPoint is the empty set.
     ///
     /// <see href="http://www.opengis.net/ont/sf#MultiPoint"></see></summary>
-    let MultiPoint = Namespaced_IRI.parse _namespace_name "MultiPoint" |> NamespacedName
-
+    let MultiPoint = _prefix "MultiPoint"
     /// <summary>
     ///
     /// A MultiPolygon is a MultiSurface whose elements are Polygons.
@@ -98,18 +95,14 @@ module sf =
     /// The boundary of a MultiPolygon is a set of closed Curves (LineStrings) corresponding to the boundaries of its element Polygons. Each Curve in the boundary of the MultiPolygon is in the boundary of exactly 1 element Polygon, and every Curve in the boundary of an element Polygon is in the boundary of the MultiPolygon.
     ///
     /// <see href="http://www.opengis.net/ont/sf#MultiPolygon"></see></summary>
-    let MultiPolygon =
-        Namespaced_IRI.parse _namespace_name "MultiPolygon" |> NamespacedName
-
+    let MultiPolygon = _prefix "MultiPolygon"
     /// <summary>
     ///
     /// A MultiSurface is a 2-dimensional GeometryCollection whose elements are Surfaces, all using coordinates from the same coordinate reference system. The geometric interiors of any two Surfaces in a MultiSurface may not intersect in the full coordinate system. The boundaries of any two coplanar elements in a MultiSurface may intersect, at most, at a finite number of Points. If they were to meet along a curve, they could be merged into a single surface.
     /// A MultiSurface may be used to represent heterogeneous surfaces collections of polygons and polyhedral surfaces. It defines a set of methods for its subclasses. The subclass of MultiSurface is MultiPolygon corresponding to a collection of Polygons only. Other collections shall use MultiSurface.
     ///
     /// <see href="http://www.opengis.net/ont/sf#MultiSurface"></see></summary>
-    let MultiSurface =
-        Namespaced_IRI.parse _namespace_name "MultiSurface" |> NamespacedName
-
+    let MultiSurface = _prefix "MultiSurface"
     /// <summary>
     ///
     /// A Point is a 0-dimensional geometric object and represents a single location in coordinate space.
@@ -117,7 +110,7 @@ module sf =
     /// The boundary of a Point is the empty set.
     ///
     /// <see href="http://www.opengis.net/ont/sf#Point"></see></summary>
-    let Point = Namespaced_IRI.parse _namespace_name "Point" |> NamespacedName
+    let Point = _prefix "Point"
     /// <summary>
     ///
     /// A Polygon is a planar Surface defined by 1 exterior boundary and 0 or more interior boundaries. Each interior boundary defines a hole in the Polygon.
@@ -131,7 +124,7 @@ module sf =
     /// f) The exterior of a Polygon with 1 or more holes is not connected. Each hole defines a connected component of the exterior.
     ///
     /// <see href="http://www.opengis.net/ont/sf#Polygon"></see></summary>
-    let Polygon = Namespaced_IRI.parse _namespace_name "Polygon" |> NamespacedName
+    let Polygon = _prefix "Polygon"
     /// <summary>
     ///
     /// A Surface is a 2-dimensional geometric object.
@@ -141,8 +134,7 @@ module sf =
     /// A Polygon is a simple Surface that is planar. A PolyhedralSurface is a simple surface, consisting of some number of Polygon patches or facets. If a PolyhedralSurface is closed, then it bounds a solid. A MultiSurface containing a set of closed PolyhedralSurfaces can be used to represent a Solid object with holes.
     ///
     /// <see href="http://www.opengis.net/ont/sf#Surface"></see></summary>
-    let Surface = Namespaced_IRI.parse _namespace_name "Surface" |> NamespacedName
-
+    let Surface = _prefix "Surface"
     /// <summary>
     ///
     /// A PolyhedralSurface is a contiguous collection of polygons, which share common boundary segments. For each pair of polygons that touch, the common boundary shall be expressible as a finite collection of LineStrings. Each such LineString shall be part of the boundary of at most 2 Polygon patches.
@@ -150,18 +142,16 @@ module sf =
     /// If each such LineString is the boundary of exactly 2 Polygon patches, then the PolyhedralSurface is a simple, closed polyhedron and is topologically isomorphic to the surface of a sphere. By the Jordan Surface Theorem (Jordans Theorem for 2-spheres), such polyhedrons enclose a solid topologically isomorphic to the interior of a sphere; the ball. In this case, the top of the surface will either point inward or outward of the enclosed finite solid. If outward, the surface is the exterior boundary of the enclosed surface. If inward, the surface is the interior of the infinite complement of the enclosed solid. A Ball with some number of voids (holes) inside can thus be presented as one exterior boundary shell, and some number in interior boundary shells.
     ///
     /// <see href="http://www.opengis.net/ont/sf#PolyhedralSurface"></see></summary>
-    let PolyhedralSurface =
-        Namespaced_IRI.parse _namespace_name "PolyhedralSurface" |> NamespacedName
-
+    let PolyhedralSurface = _prefix "PolyhedralSurface"
     /// <summary>
     ///
     /// A TIN (triangulated irregular network) is a PolyhedralSurface consisting only of Triangle patches.
     ///
     /// <see href="http://www.opengis.net/ont/sf#TIN"></see></summary>
-    let TIN = Namespaced_IRI.parse _namespace_name "TIN" |> NamespacedName
+    let TIN = _prefix "TIN"
     /// <summary>
     ///
     ///  A Triangle is a polygon with 3 distinct, non-collinear vertices and no interior boundary.
     ///
     /// <see href="http://www.opengis.net/ont/sf#Triangle"></see></summary>
-    let Triangle = Namespaced_IRI.parse _namespace_name "Triangle" |> NamespacedName
+    let Triangle = _prefix "Triangle"

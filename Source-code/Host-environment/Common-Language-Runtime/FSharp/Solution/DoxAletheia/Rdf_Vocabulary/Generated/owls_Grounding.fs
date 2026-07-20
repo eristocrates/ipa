@@ -1,9 +1,12 @@
 namespace http.www.daml.org.services.owl_s._1._2.Grounding.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module owls_Grounding =
     let _namespace_name = "http://www.daml.org/services/owl-s/1.2/Grounding.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     ///
@@ -15,23 +18,17 @@ module owls_Grounding =
     ///     on the specifics of the grounding type.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#AtomicProcessGrounding"></see></summary>
-    let AtomicProcessGrounding =
-        Namespaced_IRI.parse _namespace_name "AtomicProcessGrounding" |> NamespacedName
-
+    let AtomicProcessGrounding = _prefix "AtomicProcessGrounding"
     /// <summary>
     ///
     ///     The atomic process to which this grounding applies.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#owlsProcess"></see></summary>
-    let owlsProcess =
-        Namespaced_IRI.parse _namespace_name "owlsProcess" |> NamespacedName
-
+    let owlsProcess = _prefix "owlsProcess"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#DirectInputMessageMap"></see>
     /// </summary>
-    let DirectInputMessageMap =
-        Namespaced_IRI.parse _namespace_name "DirectInputMessageMap" |> NamespacedName
-
+    let DirectInputMessageMap = _prefix "DirectInputMessageMap"
     /// <summary>
     ///
     /// 	The purpose of a WsdlInputMessageMap is to show how to derive the WSDL
@@ -57,17 +54,13 @@ module owls_Grounding =
     /// 	derived from multiple Inputs.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#WsdlInputMessageMap"></see></summary>
-    let WsdlInputMessageMap =
-        Namespaced_IRI.parse _namespace_name "WsdlInputMessageMap" |> NamespacedName
-
+    let WsdlInputMessageMap = _prefix "WsdlInputMessageMap"
     /// <summary>
     ///
     ///     An input or output property of an atomic process.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#owlsParameter"></see></summary>
-    let owlsParameter =
-        Namespaced_IRI.parse _namespace_name "owlsParameter" |> NamespacedName
-
+    let owlsParameter = _prefix "owlsParameter"
     /// <summary>
     ///
     ///     XSLT Tranformation to transform OWL-S parameters (inputs and outputs)
@@ -77,21 +70,15 @@ module owls_Grounding =
     ///     (Ranges are specified with the sub properties.)
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#xsltTransformation"></see></summary>
-    let xsltTransformation =
-        Namespaced_IRI.parse _namespace_name "xsltTransformation" |> NamespacedName
-
+    let xsltTransformation = _prefix "xsltTransformation"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#XSLTInputMessageMap"></see>
     /// </summary>
-    let XSLTInputMessageMap =
-        Namespaced_IRI.parse _namespace_name "XSLTInputMessageMap" |> NamespacedName
-
+    let XSLTInputMessageMap = _prefix "XSLTInputMessageMap"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#DirectOutputMessageMap"></see>
     /// </summary>
-    let DirectOutputMessageMap =
-        Namespaced_IRI.parse _namespace_name "DirectOutputMessageMap" |> NamespacedName
-
+    let DirectOutputMessageMap = _prefix "DirectOutputMessageMap"
     /// <summary>
     ///
     /// 	The purpose of WsdlOutputMessageMap is to show how to derive OWL-S
@@ -118,39 +105,30 @@ module owls_Grounding =
     /// 	from multiple WSDL message parts.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#WsdlOutputMessageMap"></see></summary>
-    let WsdlOutputMessageMap =
-        Namespaced_IRI.parse _namespace_name "WsdlOutputMessageMap" |> NamespacedName
-
+    let WsdlOutputMessageMap = _prefix "WsdlOutputMessageMap"
     /// <summary>
     ///
     ///     A URI for a WSDL message part element.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlMessagePart"></see></summary>
-    let wsdlMessagePart =
-        Namespaced_IRI.parse _namespace_name "wsdlMessagePart" |> NamespacedName
-
+    let wsdlMessagePart = _prefix "wsdlMessagePart"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#XSLTOutputMessageMap"></see>
     /// </summary>
-    let XSLTOutputMessageMap =
-        Namespaced_IRI.parse _namespace_name "XSLTOutputMessageMap" |> NamespacedName
-
+    let XSLTOutputMessageMap = _prefix "XSLTOutputMessageMap"
     /// <summary>
     ///
     ///     A Grounding is just a collection of AtomicProcessGrounding
     ///     instances, one for each atomic process in the process model.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#Grounding"></see></summary>
-    let Grounding = Namespaced_IRI.parse _namespace_name "Grounding" |> NamespacedName
-
+    let Grounding = _prefix "Grounding"
     /// <summary>
     ///
     ///     A MessageMap that maps inputs to grounding specification
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#InputMessageMap"></see></summary>
-    let InputMessageMap =
-        Namespaced_IRI.parse _namespace_name "InputMessageMap" |> NamespacedName
-
+    let InputMessageMap = _prefix "InputMessageMap"
     /// <summary>
     ///
     ///     A class used to map parameters in OWL-S to the parameters
@@ -158,16 +136,13 @@ module owls_Grounding =
     ///     to specify the OWL-S parameter.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#MessageMap"></see></summary>
-    let MessageMap = Namespaced_IRI.parse _namespace_name "MessageMap" |> NamespacedName
-
+    let MessageMap = _prefix "MessageMap"
     /// <summary>
     ///
     ///     A MessageMap that maps outputs to grounding specification
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#OutputMessageMap"></see></summary>
-    let OutputMessageMap =
-        Namespaced_IRI.parse _namespace_name "OutputMessageMap" |> NamespacedName
-
+    let OutputMessageMap = _prefix "OutputMessageMap"
     /// <summary>
     ///
     ///     A class that relates elements of a OWL-S atomic process to a
@@ -195,41 +170,31 @@ module owls_Grounding =
     ///     by specifying any number of values for wsdlService and/or wsdlPort.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#WsdlAtomicProcessGrounding"></see></summary>
-    let WsdlAtomicProcessGrounding =
-        Namespaced_IRI.parse _namespace_name "WsdlAtomicProcessGrounding" |> NamespacedName
-
+    let WsdlAtomicProcessGrounding = _prefix "WsdlAtomicProcessGrounding"
     /// <summary>
     ///
     ///     A WSDL operation to which the atomic process
     ///     (referenced by owlsProcess) corresponds.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlOperation"></see></summary>
-    let wsdlOperation =
-        Namespaced_IRI.parse _namespace_name "wsdlOperation" |> NamespacedName
-
+    let wsdlOperation = _prefix "wsdlOperation"
     /// <summary>
     ///
     ///     WsdlGrounding is A Grounding that grounds every process to
     ///     a WSDL operation.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#WsdlGrounding"></see></summary>
-    let WsdlGrounding =
-        Namespaced_IRI.parse _namespace_name "WsdlGrounding" |> NamespacedName
-
+    let WsdlGrounding = _prefix "WsdlGrounding"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#hasAtomicProcessGrounding"></see>
     /// </summary>
-    let hasAtomicProcessGrounding =
-        Namespaced_IRI.parse _namespace_name "hasAtomicProcessGrounding" |> NamespacedName
-
+    let hasAtomicProcessGrounding = _prefix "hasAtomicProcessGrounding"
     /// <summary>
     ///
     ///     MessageMap for WSDL inputs and outputs
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#WsdlMessageMap"></see></summary>
-    let WsdlMessageMap =
-        Namespaced_IRI.parse _namespace_name "WsdlMessageMap" |> NamespacedName
-
+    let WsdlMessageMap = _prefix "WsdlMessageMap"
     /// <summary>
     ///
     ///     This class provides a unique specification of a WSDL operation.
@@ -244,18 +209,15 @@ module owls_Grounding =
     ///     Restricting the cardinality of operation to one
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#WsdlOperationRef"></see></summary>
-    let WsdlOperationRef =
-        Namespaced_IRI.parse _namespace_name "WsdlOperationRef" |> NamespacedName
-
+    let WsdlOperationRef = _prefix "WsdlOperationRef"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#portType"></see>
     /// </summary>
-    let portType = Namespaced_IRI.parse _namespace_name "portType" |> NamespacedName
+    let portType = _prefix "portType"
     /// <summary>
     ///   <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#operation"></see>
     /// </summary>
-    let operation = Namespaced_IRI.parse _namespace_name "operation" |> NamespacedName
-
+    let operation = _prefix "operation"
     /// <summary>
     ///
     ///     A URI indicating a WSDL document to
@@ -263,80 +225,64 @@ module owls_Grounding =
     ///     essential; primarily for convenience as documentation.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlDocument"></see></summary>
-    let wsdlDocument =
-        Namespaced_IRI.parse _namespace_name "wsdlDocument" |> NamespacedName
-
+    let wsdlDocument = _prefix "wsdlDocument"
     /// <summary>
     ///
     ///     There should be one instance of this property for each
     ///     message part of the WSDL input message.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlInput"></see></summary>
-    let wsdlInput = Namespaced_IRI.parse _namespace_name "wsdlInput" |> NamespacedName
-
+    let wsdlInput = _prefix "wsdlInput"
     /// <summary>
     ///
     ///     A URI for the WSDL input message element corresponding
     ///     to the inputs of the atomic process.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlInputMessage"></see></summary>
-    let wsdlInputMessage =
-        Namespaced_IRI.parse _namespace_name "wsdlInputMessage" |> NamespacedName
-
+    let wsdlInputMessage = _prefix "wsdlInputMessage"
     /// <summary>
     ///
     ///     There should be one instance of this property for each
     ///     output of the atomic process.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlOutput"></see></summary>
-    let wsdlOutput = Namespaced_IRI.parse _namespace_name "wsdlOutput" |> NamespacedName
-
+    let wsdlOutput = _prefix "wsdlOutput"
     /// <summary>
     ///
     ///     A URI for the WSDL message element corresponding
     ///     to the outputs of the atomic process.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlOutputMessage"></see></summary>
-    let wsdlOutputMessage =
-        Namespaced_IRI.parse _namespace_name "wsdlOutputMessage" |> NamespacedName
-
+    let wsdlOutputMessage = _prefix "wsdlOutputMessage"
     /// <summary>
     ///
     ///     A URI for a WSDL Port that provides the operation to which
     ///     this atomic process is grounded.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlPort"></see></summary>
-    let wsdlPort = Namespaced_IRI.parse _namespace_name "wsdlPort" |> NamespacedName
-
+    let wsdlPort = _prefix "wsdlPort"
     /// <summary>
     ///
     ///     A URI for a WSDL Service that provides the operation to which
     ///     this atomic process is grounded.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlService"></see></summary>
-    let wsdlService =
-        Namespaced_IRI.parse _namespace_name "wsdlService" |> NamespacedName
-
+    let wsdlService = _prefix "wsdlService"
     /// <summary>
     ///
     ///     A URI indicating the version of WSDL being used.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#wsdlVersion"></see></summary>
-    let wsdlVersion =
-        Namespaced_IRI.parse _namespace_name "wsdlVersion" |> NamespacedName
-
+    let wsdlVersion = _prefix "wsdlVersion"
     /// <summary>
     ///
     ///     A string giving an XSLT Tranformation.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#xsltTransformationString"></see></summary>
-    let xsltTransformationString =
-        Namespaced_IRI.parse _namespace_name "xsltTransformationString" |> NamespacedName
-
+    let xsltTransformationString = _prefix "xsltTransformationString"
     /// <summary>
     ///
     ///     A URI for an XSLT Tranformation.
     ///
     /// <see href="http://www.daml.org/services/owl-s/1.2/Grounding.owl#xsltTransformationURI"></see></summary>
-    let xsltTransformationURI =
-        Namespaced_IRI.parse _namespace_name "xsltTransformationURI" |> NamespacedName
+    let xsltTransformationURI = _prefix "xsltTransformationURI"

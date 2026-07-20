@@ -1,120 +1,86 @@
 namespace http.rdvocab.info.ElementsGr3.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rdag3 =
     let _namespace_name = "http://rdvocab.info/ElementsGr3/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/cataloguersNote"></see>
     /// </summary>
-    let cataloguersNote =
-        Namespaced_IRI.parse _namespace_name "cataloguersNote" |> NamespacedName
-
+    let cataloguersNote = _prefix "cataloguersNote"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/identifierForTheConcept"></see>
     /// </summary>
-    let identifierForTheConcept =
-        Namespaced_IRI.parse _namespace_name "identifierForTheConcept" |> NamespacedName
-
+    let identifierForTheConcept = _prefix "identifierForTheConcept"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/identifierForTheEvent"></see>
     /// </summary>
-    let identifierForTheEvent =
-        Namespaced_IRI.parse _namespace_name "identifierForTheEvent" |> NamespacedName
-
+    let identifierForTheEvent = _prefix "identifierForTheEvent"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/identifierForTheObject"></see>
     /// </summary>
-    let identifierForTheObject =
-        Namespaced_IRI.parse _namespace_name "identifierForTheObject" |> NamespacedName
-
+    let identifierForTheObject = _prefix "identifierForTheObject"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/identifierForThePlace"></see>
     /// </summary>
-    let identifierForThePlace =
-        Namespaced_IRI.parse _namespace_name "identifierForThePlace" |> NamespacedName
-
+    let identifierForThePlace = _prefix "identifierForThePlace"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/nameOfTheEvent"></see>
     /// </summary>
-    let nameOfTheEvent =
-        Namespaced_IRI.parse _namespace_name "nameOfTheEvent" |> NamespacedName
-
+    let nameOfTheEvent = _prefix "nameOfTheEvent"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/variantNameForTheEvent"></see>
     /// </summary>
-    let variantNameForTheEvent =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheEvent" |> NamespacedName
-
+    let variantNameForTheEvent = _prefix "variantNameForTheEvent"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/preferredNameForTheEvent"></see>
     /// </summary>
-    let preferredNameForTheEvent =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheEvent" |> NamespacedName
-
+    let preferredNameForTheEvent = _prefix "preferredNameForTheEvent"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/nameOfTheObject"></see>
     /// </summary>
-    let nameOfTheObject =
-        Namespaced_IRI.parse _namespace_name "nameOfTheObject" |> NamespacedName
-
+    let nameOfTheObject = _prefix "nameOfTheObject"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/variantNameForTheObject"></see>
     /// </summary>
-    let variantNameForTheObject =
-        Namespaced_IRI.parse _namespace_name "variantNameForTheObject" |> NamespacedName
-
+    let variantNameForTheObject = _prefix "variantNameForTheObject"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/preferredNameForTheObject"></see>
     /// </summary>
-    let preferredNameForTheObject =
-        Namespaced_IRI.parse _namespace_name "preferredNameForTheObject" |> NamespacedName
-
+    let preferredNameForTheObject = _prefix "preferredNameForTheObject"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/nameOfThePlace"></see>
     /// </summary>
-    let nameOfThePlace =
-        Namespaced_IRI.parse _namespace_name "nameOfThePlace" |> NamespacedName
-
+    let nameOfThePlace = _prefix "nameOfThePlace"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/variantNameForThePlace"></see>
     /// </summary>
-    let variantNameForThePlace =
-        Namespaced_IRI.parse _namespace_name "variantNameForThePlace" |> NamespacedName
-
+    let variantNameForThePlace = _prefix "variantNameForThePlace"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/preferredNameForThePlace"></see>
     /// </summary>
-    let preferredNameForThePlace =
-        Namespaced_IRI.parse _namespace_name "preferredNameForThePlace" |> NamespacedName
-
+    let preferredNameForThePlace = _prefix "preferredNameForThePlace"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/preferredTermForTheConcept"></see>
     /// </summary>
-    let preferredTermForTheConcept =
-        Namespaced_IRI.parse _namespace_name "preferredTermForTheConcept" |> NamespacedName
-
+    let preferredTermForTheConcept = _prefix "preferredTermForTheConcept"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/termForTheConcept"></see>
     /// </summary>
-    let termForTheConcept =
-        Namespaced_IRI.parse _namespace_name "termForTheConcept" |> NamespacedName
-
+    let termForTheConcept = _prefix "termForTheConcept"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/sourceConsulted"></see>
     /// </summary>
-    let sourceConsulted =
-        Namespaced_IRI.parse _namespace_name "sourceConsulted" |> NamespacedName
-
+    let sourceConsulted = _prefix "sourceConsulted"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/statusOfIdentification"></see>
     /// </summary>
-    let statusOfIdentification =
-        Namespaced_IRI.parse _namespace_name "statusOfIdentification" |> NamespacedName
-
+    let statusOfIdentification = _prefix "statusOfIdentification"
     /// <summary>
     ///   <see href="http://rdvocab.info/ElementsGr3/variantTermForTheConcept"></see>
     /// </summary>
-    let variantTermForTheConcept =
-        Namespaced_IRI.parse _namespace_name "variantTermForTheConcept" |> NamespacedName
+    let variantTermForTheConcept = _prefix "variantTermForTheConcept"

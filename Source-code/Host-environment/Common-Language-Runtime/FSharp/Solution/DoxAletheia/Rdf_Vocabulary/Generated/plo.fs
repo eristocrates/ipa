@@ -1,85 +1,70 @@
 namespace http.purl.org.net.po.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module plo =
     let _namespace_name = "http://purl.org/net/po#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A class for representing a playlist. One Playlist instance is connected to one or more PlaylistEntry instances. It contains the name of the playlist and the name of the radio station.
     /// <see href="http://purl.org/net/po#Playlist"></see></summary>
-    let Playlist = Namespaced_IRI.parse _namespace_name "Playlist" |> NamespacedName
-
+    let Playlist = _prefix "Playlist"
     /// <summary>
     /// A class for representing an entry from a playlist. One PlaylistEntry instance is connected to one Song instance and one Playlist instance. It contains information about the 'position' of the Song in the Playlist, for the specific 'week' of the 'year'. It also contains an URL of a 'photo' for the playlist entry.
     /// <see href="http://purl.org/net/po#PlaylistEntry"></see></summary>
-    let PlaylistEntry =
-        Namespaced_IRI.parse _namespace_name "PlaylistEntry" |> NamespacedName
-
+    let PlaylistEntry = _prefix "PlaylistEntry"
     /// <summary>
     /// A class for representing a song. One Song instance is connected to one or more PlaylistEntry instances. It contains the name of the song and the name of the artist. It can also contain external links to mo:Track and/or mo:MusicArtist instances, for creating Linked Data.
     /// <see href="http://purl.org/net/po#Song"></see></summary>
-    let Song = Namespaced_IRI.parse _namespace_name "Song" |> NamespacedName
-
+    let Song = _prefix "Song"
     /// <summary>
     ///   <see href="http://purl.org/net/po#playlistEntrySong"></see>
     /// </summary>
-    let playlistEntrySong =
-        Namespaced_IRI.parse _namespace_name "playlistEntrySong" |> NamespacedName
-
+    let playlistEntrySong = _prefix "playlistEntrySong"
     /// <summary>
     ///   <see href="http://purl.org/net/po#partOfPlaylist"></see>
     /// </summary>
-    let partOfPlaylist =
-        Namespaced_IRI.parse _namespace_name "partOfPlaylist" |> NamespacedName
-
+    let partOfPlaylist = _prefix "partOfPlaylist"
     /// <summary>
     ///   <see href="http://purl.org/net/po#artistInfo"></see>
     /// </summary>
-    let artistInfo = Namespaced_IRI.parse _namespace_name "artistInfo" |> NamespacedName
-
+    let artistInfo = _prefix "artistInfo"
     /// <summary>
     ///   <see href="http://purl.org/net/po#featuredInPlaylistEntry"></see>
     /// </summary>
-    let featuredInPlaylistEntry =
-        Namespaced_IRI.parse _namespace_name "featuredInPlaylistEntry" |> NamespacedName
-
+    let featuredInPlaylistEntry = _prefix "featuredInPlaylistEntry"
     /// <summary>
     ///   <see href="http://purl.org/net/po#hasPlaylistEntry"></see>
     /// </summary>
-    let hasPlaylistEntry =
-        Namespaced_IRI.parse _namespace_name "hasPlaylistEntry" |> NamespacedName
-
+    let hasPlaylistEntry = _prefix "hasPlaylistEntry"
     /// <summary>
     ///   <see href="http://purl.org/net/po#photoURL"></see>
     /// </summary>
-    let photoURL = Namespaced_IRI.parse _namespace_name "photoURL" |> NamespacedName
-
+    let photoURL = _prefix "photoURL"
     /// <summary>
     ///   <see href="http://purl.org/net/po#playlistName"></see>
     /// </summary>
-    let playlistName =
-        Namespaced_IRI.parse _namespace_name "playlistName" |> NamespacedName
-
+    let playlistName = _prefix "playlistName"
     /// <summary>
     ///   <see href="http://purl.org/net/po#position"></see>
     /// </summary>
-    let position = Namespaced_IRI.parse _namespace_name "position" |> NamespacedName
+    let position = _prefix "position"
     /// <summary>
     ///   <see href="http://purl.org/net/po#songInfo"></see>
     /// </summary>
-    let songInfo = Namespaced_IRI.parse _namespace_name "songInfo" |> NamespacedName
-
+    let songInfo = _prefix "songInfo"
     /// <summary>
     ///   <see href="http://purl.org/net/po#stationName"></see>
     /// </summary>
-    let stationName =
-        Namespaced_IRI.parse _namespace_name "stationName" |> NamespacedName
-
+    let stationName = _prefix "stationName"
     /// <summary>
     ///   <see href="http://purl.org/net/po#week"></see>
     /// </summary>
-    let week = Namespaced_IRI.parse _namespace_name "week" |> NamespacedName
+    let week = _prefix "week"
     /// <summary>
     ///   <see href="http://purl.org/net/po#year"></see>
     /// </summary>
-    let year = Namespaced_IRI.parse _namespace_name "year" |> NamespacedName
+    let year = _prefix "year"

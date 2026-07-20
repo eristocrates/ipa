@@ -1,9 +1,12 @@
 namespace http.erlangen_crm.org.current.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ecrm =
     let _namespace_name = "http://erlangen-crm.org/current/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// Scope note:
@@ -27,9 +30,7 @@ module ecrm =
     /// In First Order Logic:
     /// E10(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E10_Transfer_of_Custody"></see></summary>
-    let E10_Transfer_of_Custody =
-        Namespaced_IRI.parse _namespace_name "E10_Transfer_of_Custody" |> NamespacedName
-
+    let E10_Transfer_of_Custody = _prefix "E10_Transfer_of_Custody"
     /// <summary>
     /// Scope note:
     /// This class comprises all persistent physical items with a relatively stable form, man-made or natural.
@@ -51,9 +52,7 @@ module ecrm =
     /// E18(x) ⊃ E72(x)
     /// E18(x) ⊃ E92(x)
     /// <see href="http://erlangen-crm.org/current/E18_Physical_Thing"></see></summary>
-    let E18_Physical_Thing =
-        Namespaced_IRI.parse _namespace_name "E18_Physical_Thing" |> NamespacedName
-
+    let E18_Physical_Thing = _prefix "E18_Physical_Thing"
     /// <summary>
     /// Scope note:
     /// This property identifies an item or items of E18 Physical Thing concerned in an E10 Transfer of Custody activity.
@@ -67,9 +66,7 @@ module ecrm =
     /// P30 (x,y) ⊃ E10(x)
     /// P30 (x,y) ⊃ E18(y)
     /// <see href="http://erlangen-crm.org/current/P30_transferred_custody_of"></see></summary>
-    let P30_transferred_custody_of =
-        Namespaced_IRI.parse _namespace_name "P30_transferred_custody_of" |> NamespacedName
-
+    let P30_transferred_custody_of = _prefix "P30_transferred_custody_of"
     /// <summary>
     /// Scope note:
     /// This class comprises actions intentionally carried out by instances of E39 Actor that result in changes of state in the cultural, social, or physical systems documented.
@@ -89,9 +86,7 @@ module ecrm =
     /// In First Order Logic:
     /// E7(x) ⊃ E5(x)
     /// <see href="http://erlangen-crm.org/current/E7_Activity"></see></summary>
-    let E7_Activity =
-        Namespaced_IRI.parse _namespace_name "E7_Activity" |> NamespacedName
-
+    let E7_Activity = _prefix "E7_Activity"
     /// <summary>
     /// Scope note:
     /// This class comprises all instances of E7 Activity that create, alter or change E24 Physical Man-Made Thing.
@@ -111,9 +106,7 @@ module ecrm =
     /// In First Order Logic:
     /// E11(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E11_Modification"></see></summary>
-    let E11_Modification =
-        Namespaced_IRI.parse _namespace_name "E11_Modification" |> NamespacedName
-
+    let E11_Modification = _prefix "E11_Modification"
     /// <summary>
     /// Scope note:
     /// This property identifies the E24 Physical Man-Made Thing modified in an E11 Modification.
@@ -128,9 +121,7 @@ module ecrm =
     /// P31(x,y) ⊃ E24(y)
     /// P31(x,y) ⊃ P12(x,y)
     /// <see href="http://erlangen-crm.org/current/P31_has_modified"></see></summary>
-    let P31_has_modified =
-        Namespaced_IRI.parse _namespace_name "P31_has_modified" |> NamespacedName
-
+    let P31_has_modified = _prefix "P31_has_modified"
     /// <summary>
     /// Scope note:
     /// This class comprises all persistent physical items that are purposely created by human activity.
@@ -146,9 +137,7 @@ module ecrm =
     /// E24(x) ⊃ E18(x)
     /// E24(x) ⊃ E71(x)
     /// <see href="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing"></see></summary>
-    let ``E24_Physical_Man-Made_Thing`` =
-        Namespaced_IRI.parse _namespace_name "E24_Physical_Man-Made_Thing" |> NamespacedName
-
+    let ``E24_Physical_Man-Made_Thing`` = _prefix "E24_Physical_Man-Made_Thing"
     /// <summary>
     /// Scope note:
     /// This class comprises activities that are designed to, and succeed in, creating one or more new items.
@@ -168,9 +157,7 @@ module ecrm =
     /// E12(x) ⊃ E11(x)
     /// E12(x) ⊃ E63(x)
     /// <see href="http://erlangen-crm.org/current/E12_Production"></see></summary>
-    let E12_Production =
-        Namespaced_IRI.parse _namespace_name "E12_Production" |> NamespacedName
-
+    let E12_Production = _prefix "E12_Production"
     /// <summary>
     /// Scope note:
     /// This property identifies the E24 Physical Man-Made Thing that came into existence as a result of an E12 Production.
@@ -185,9 +172,7 @@ module ecrm =
     /// P108(x,y) ⊃ P31(x,y)
     /// P108(x,y) ⊃ P92(x,y)
     /// <see href="http://erlangen-crm.org/current/P108_has_produced"></see></summary>
-    let P108_has_produced =
-        Namespaced_IRI.parse _namespace_name "P108_has_produced" |> NamespacedName
-
+    let P108_has_produced = _prefix "P108_has_produced"
     /// <summary>
     /// Scope note:
     /// This class comprises events that bring into existence any E77 Persistent Item.
@@ -203,9 +188,7 @@ module ecrm =
     /// In First Order Logic:
     /// E63(x) ⊃ E5(x)
     /// <see href="http://erlangen-crm.org/current/E63_Beginning_of_Existence"></see></summary>
-    let E63_Beginning_of_Existence =
-        Namespaced_IRI.parse _namespace_name "E63_Beginning_of_Existence" |> NamespacedName
-
+    let E63_Beginning_of_Existence = _prefix "E63_Beginning_of_Existence"
     /// <summary>
     /// Scope note:
     /// This class comprises the actions of making assertions about properties of an object or any relation between two items or concepts.
@@ -220,9 +203,7 @@ module ecrm =
     /// In First Order Logic:
     /// E13(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E13_Attribute_Assignment"></see></summary>
-    let E13_Attribute_Assignment =
-        Namespaced_IRI.parse _namespace_name "E13_Attribute_Assignment" |> NamespacedName
-
+    let E13_Attribute_Assignment = _prefix "E13_Attribute_Assignment"
     /// <summary>
     /// Scope note:
     /// This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model.
@@ -240,9 +221,7 @@ module ecrm =
     /// In First Order Logic:
     /// E1(x)
     /// <see href="http://erlangen-crm.org/current/E1_CRM_Entity"></see></summary>
-    let E1_CRM_Entity =
-        Namespaced_IRI.parse _namespace_name "E1_CRM_Entity" |> NamespacedName
-
+    let E1_CRM_Entity = _prefix "E1_CRM_Entity"
     /// <summary>
     /// Scope note:
     /// This property indicates the item to which an attribute or relation is assigned.
@@ -255,9 +234,7 @@ module ecrm =
     /// P140(x,y) ⊃ E13(x)
     /// P140(x,y) ⊃ E1(y)
     /// <see href="http://erlangen-crm.org/current/P140_assigned_attribute_to"></see></summary>
-    let P140_assigned_attribute_to =
-        Namespaced_IRI.parse _namespace_name "P140_assigned_attribute_to" |> NamespacedName
-
+    let P140_assigned_attribute_to = _prefix "P140_assigned_attribute_to"
     /// <summary>
     /// Scope note:
     /// This class describes the act of assessing the state of preservation of an object during a particular period.
@@ -270,9 +247,7 @@ module ecrm =
     /// In First Order Logic:
     /// E14(x) ⊃ E13(x)
     /// <see href="http://erlangen-crm.org/current/E14_Condition_Assessment"></see></summary>
-    let E14_Condition_Assessment =
-        Namespaced_IRI.parse _namespace_name "E14_Condition_Assessment" |> NamespacedName
-
+    let E14_Condition_Assessment = _prefix "E14_Condition_Assessment"
     /// <summary>
     /// Scope note:
     /// This property identifies the E3 Condition State that was observed in an E14 Condition Assessment activity.
@@ -285,9 +260,7 @@ module ecrm =
     /// P35(x,y) ⊃ E3(y)
     /// P35(x,y) ⊃ P141(x,y)
     /// <see href="http://erlangen-crm.org/current/P35_has_identified"></see></summary>
-    let P35_has_identified =
-        Namespaced_IRI.parse _namespace_name "P35_has_identified" |> NamespacedName
-
+    let P35_has_identified = _prefix "P35_has_identified"
     /// <summary>
     /// Scope note:
     /// This property identifies the E18 Physical Thing that was assessed during an E14 Condition Assessment activity.
@@ -301,9 +274,7 @@ module ecrm =
     /// P34(x,y) ⊃ E18(y)
     /// P34(x,y) ⊃ P140(x,y)
     /// <see href="http://erlangen-crm.org/current/P34_concerned"></see></summary>
-    let P34_concerned =
-        Namespaced_IRI.parse _namespace_name "P34_concerned" |> NamespacedName
-
+    let P34_concerned = _prefix "P34_concerned"
     /// <summary>
     /// Scope note:
     /// This class comprises activities that result in the allocation of an identifier to an instance of E1 CRM Entity. An E15 Identifier Assignment may include the creation of the identifier from multiple constituents, which themselves may be instances of E41 Appellation. The syntax and kinds of constituents to be used may be declared in a rule constituting an instance of E29 Design or Procedure.
@@ -320,9 +291,7 @@ module ecrm =
     /// In First Order Logic:
     /// E15(x) ⊃ E13(x)
     /// <see href="http://erlangen-crm.org/current/E15_Identifier_Assignment"></see></summary>
-    let E15_Identifier_Assignment =
-        Namespaced_IRI.parse _namespace_name "E15_Identifier_Assignment" |> NamespacedName
-
+    let E15_Identifier_Assignment = _prefix "E15_Identifier_Assignment"
     /// <summary>
     /// Scope note:
     /// This property records the identifier that was assigned to an item in an Identifier Assignment activity.
@@ -337,9 +306,7 @@ module ecrm =
     /// P37(x,y) ⊃ E42(y)
     /// P37(x,y) ⊃ P141(x,y)
     /// <see href="http://erlangen-crm.org/current/P37_assigned"></see></summary>
-    let P37_assigned =
-        Namespaced_IRI.parse _namespace_name "P37_assigned" |> NamespacedName
-
+    let P37_assigned = _prefix "P37_assigned"
     /// <summary>
     /// Scope note:
     /// This class comprises strings or codes assigned to instances of E1 CRM Entity in order to identify them uniquely and permanently within the context of one or more organisations. Such codes are often known as inventory numbers, registration codes, etc. and are typically composed of alphanumeric sequences. The class E42 Identifier is not normally used for machine-generated identifiers used for automated processing unless these are also used by human agents.
@@ -357,9 +324,7 @@ module ecrm =
     /// In First Order Logic:
     /// E42(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E42_Identifier"></see></summary>
-    let E42_Identifier =
-        Namespaced_IRI.parse _namespace_name "E42_Identifier" |> NamespacedName
-
+    let E42_Identifier = _prefix "E42_Identifier"
     /// <summary>
     /// Scope note:
     /// This class comprises actions measuring physical properties and other values that can be determined by a systematic procedure.
@@ -375,9 +340,7 @@ module ecrm =
     /// In First Order Logic:
     /// E16(x) ⊃ E13(x)
     /// <see href="http://erlangen-crm.org/current/E16_Measurement"></see></summary>
-    let E16_Measurement =
-        Namespaced_IRI.parse _namespace_name "E16_Measurement" |> NamespacedName
-
+    let E16_Measurement = _prefix "E16_Measurement"
     /// <summary>
     /// Scope note:
     /// This property records the dimension that was observed in an E16 Measurement Event.
@@ -393,9 +356,7 @@ module ecrm =
     /// P40(x,y)⊃ E54(y)
     /// P40(x,y) ⊃ P141(x,y)
     /// <see href="http://erlangen-crm.org/current/P40_observed_dimension"></see></summary>
-    let P40_observed_dimension =
-        Namespaced_IRI.parse _namespace_name "P40_observed_dimension" |> NamespacedName
-
+    let P40_observed_dimension = _prefix "P40_observed_dimension"
     /// <summary>
     /// Scope note:
     /// This class comprises quantifiable properties that can be measured by some calibrated means and can be approximated by values, i.e. points or regions in a mathematical or conceptual space, such as natural or real numbers, RGB values etc.
@@ -418,9 +379,7 @@ module ecrm =
     /// In First Order Logic:
     /// E54(x) ⊃ E1(x)
     /// <see href="http://erlangen-crm.org/current/E54_Dimension"></see></summary>
-    let E54_Dimension =
-        Namespaced_IRI.parse _namespace_name "E54_Dimension" |> NamespacedName
-
+    let E54_Dimension = _prefix "E54_Dimension"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E16 Measurement with the instance of E1 CRM Entity to which it applied. An instance of E1 CRM Entity may be measured more than once. Material and immaterial things and processes may be measured, e.g. the number of words in a text, or the duration of an event.
@@ -433,9 +392,7 @@ module ecrm =
     /// P39(x,y) ⊃ E1(y)
     /// P39(x,y) ⊃ P140(x,y)
     /// <see href="http://erlangen-crm.org/current/P39_measured"></see></summary>
-    let P39_measured =
-        Namespaced_IRI.parse _namespace_name "P39_measured" |> NamespacedName
-
+    let P39_measured = _prefix "P39_measured"
     /// <summary>
     /// Scope note:
     /// This class comprises the actions of classifying items of whatever kind. Such items include objects, specimens, people, actions and concepts.
@@ -449,9 +406,7 @@ module ecrm =
     /// In First Order Logic:
     /// E17(x) ⊃ E13(x)
     /// <see href="http://erlangen-crm.org/current/E17_Type_Assignment"></see></summary>
-    let E17_Type_Assignment =
-        Namespaced_IRI.parse _namespace_name "E17_Type_Assignment" |> NamespacedName
-
+    let E17_Type_Assignment = _prefix "E17_Type_Assignment"
     /// <summary>
     /// Scope note:
     /// This property records the item to which a type was assigned in an E17 Type Assignment activity.
@@ -465,9 +420,7 @@ module ecrm =
     /// P41(x,y) ⊃ E1(y)
     /// P41(x,y) ⊃ P140(x,y)
     /// <see href="http://erlangen-crm.org/current/P41_classified"></see></summary>
-    let P41_classified =
-        Namespaced_IRI.parse _namespace_name "P41_classified" |> NamespacedName
-
+    let P41_classified = _prefix "P41_classified"
     /// <summary>
     /// Scope note:
     /// This property records the type that was assigned to an entity by an E17 Type Assignment activity.
@@ -483,9 +436,7 @@ module ecrm =
     /// P42(x,y)⊃ E55(y)
     /// P42(x,y) ⊃ P141(x,y)
     /// <see href="http://erlangen-crm.org/current/P42_assigned"></see></summary>
-    let P42_assigned =
-        Namespaced_IRI.parse _namespace_name "P42_assigned" |> NamespacedName
-
+    let P42_assigned = _prefix "P42_assigned"
     /// <summary>
     /// Scope note:
     /// This class comprises concepts denoted by terms from thesauri and controlled vocabularies used to characterize and classify instances of CRM classes. Instances of E55 Type represent concepts  in contrast to instances of E41 Appellation which are used to name instances of CRM classes.
@@ -505,8 +456,7 @@ module ecrm =
     /// In First Order Logic:
     /// E55(x) ⊃ E28(x)
     /// <see href="http://erlangen-crm.org/current/E55_Type"></see></summary>
-    let E55_Type = Namespaced_IRI.parse _namespace_name "E55_Type" |> NamespacedName
-
+    let E55_Type = _prefix "E55_Type"
     /// <summary>
     /// Scope note:
     /// This class comprises those material or immaterial items to which instances of E30 Right, such as the right of ownership or use, can be applied.
@@ -520,8 +470,7 @@ module ecrm =
     /// In First Order Logic:
     /// E72(x) ⊃ E70(x)
     /// <see href="http://erlangen-crm.org/current/E72_Legal_Object"></see></summary>
-    let E72_Legal_Object =
-        Namespaced_IRI.parse _namespace_name "E72_Legal_Object" |> NamespacedName
+    let E72_Legal_Object = _prefix "E72_Legal_Object"
 
     /// <summary>
     /// Scope note:
@@ -540,7 +489,7 @@ module ecrm =
     /// P53(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P53_has_former_or_current_location"></see></summary>
     let P53_has_former_or_current_location =
-        Namespaced_IRI.parse _namespace_name "P53_has_former_or_current_location" |> NamespacedName
+        _prefix "P53_has_former_or_current_location"
 
     /// <summary>
     /// Scope note:
@@ -561,8 +510,7 @@ module ecrm =
     /// In First Order Logic:
     /// E53(x) ⊃ E1(x)
     /// <see href="http://erlangen-crm.org/current/E53_Place"></see></summary>
-    let E53_Place = Namespaced_IRI.parse _namespace_name "E53_Place" |> NamespacedName
-
+    let E53_Place = _prefix "E53_Place"
     /// <summary>
     /// Scope note:
     /// This class comprises 4 dimensional point sets (volumes) in physical spacetime regardless its true geometric form. They may derive their identity from being the extent of a material phenomenon or from being the interpretation of an expression defining an extent in spacetime. Intersections of instances of E92 Spacetime Volume, Place and Timespan are also regarded as instances of E92 Spacetime Volume. An instance of E92 Spacetime Volume is either contiguous or composed of a finite number of contiguous subsets. Its boundaries may be fuzzy due to the properties of the phenomena it derives from or due to the limited precision up to which defining expression can be identified with a real extent in spacetime. The duration of existence of an instance of a spacetime volume is trivially its projection on time.
@@ -576,15 +524,11 @@ module ecrm =
     /// In First Order Logic:
     /// E92(x) ⊃ E1(x)
     /// <see href="http://erlangen-crm.org/current/E92_Spacetime_Volume"></see></summary>
-    let E92_Spacetime_Volume =
-        Namespaced_IRI.parse _namespace_name "E92_Spacetime_Volume" |> NamespacedName
-
+    let E92_Spacetime_Volume = _prefix "E92_Spacetime_Volume"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P13i_was_destroyed_by"></see>
     /// </summary>
-    let P13i_was_destroyed_by =
-        Namespaced_IRI.parse _namespace_name "P13i_was_destroyed_by" |> NamespacedName
-
+    let P13i_was_destroyed_by = _prefix "P13i_was_destroyed_by"
     /// <summary>
     /// Scope note:
     /// This class is a specialization of E55 Type and comprises the concepts of materials.
@@ -605,9 +549,7 @@ module ecrm =
     /// In First Order Logic:
     /// E57(x) ⊃ E55(x)
     /// <see href="http://erlangen-crm.org/current/E57_Material"></see></summary>
-    let E57_Material =
-        Namespaced_IRI.parse _namespace_name "E57_Material" |> NamespacedName
-
+    let E57_Material = _prefix "E57_Material"
     /// <summary>
     /// Scope note:
     /// This property identifies the instances of E57 Materials of which an instance of E18 Physical Thing is composed.
@@ -623,9 +565,7 @@ module ecrm =
     /// P45(x,y) ⊃ E18(x)
     /// P45(x,y) ⊃ E57(y)
     /// <see href="http://erlangen-crm.org/current/P45_consists_of"></see></summary>
-    let P45_consists_of =
-        Namespaced_IRI.parse _namespace_name "P45_consists_of" |> NamespacedName
-
+    let P45_consists_of = _prefix "P45_consists_of"
     /// <summary>
     /// Scope note:
     /// This class comprises non-material products of our minds and other human produced data that have become objects of a discourse about their identity, circumstances of creation or historical implication. The production of such information may have been supported by the use of technical devices such as cameras or computers.
@@ -644,9 +584,7 @@ module ecrm =
     /// In First Order Logic:
     /// E28(x) ⊃ E71(x)
     /// <see href="http://erlangen-crm.org/current/E28_Conceptual_Object"></see></summary>
-    let E28_Conceptual_Object =
-        Namespaced_IRI.parse _namespace_name "E28_Conceptual_Object" |> NamespacedName
-
+    let E28_Conceptual_Object = _prefix "E28_Conceptual_Object"
     /// <summary>
     /// Scope note:
     /// This class comprises items of a material nature that are units for documentation and have physical boundaries that separate them completely in an objective way from other objects.
@@ -667,9 +605,7 @@ module ecrm =
     /// In First Order Logic:
     /// E19(x) ⊃ E18(x)
     /// <see href="http://erlangen-crm.org/current/E19_Physical_Object"></see></summary>
-    let E19_Physical_Object =
-        Namespaced_IRI.parse _namespace_name "E19_Physical_Object" |> NamespacedName
-
+    let E19_Physical_Object = _prefix "E19_Physical_Object"
     /// <summary>
     /// Scope note:
     /// This property records the location of an E19 Physical Object at the time of validity of the record or database containing the statement that uses this property.
@@ -685,8 +621,7 @@ module ecrm =
     /// P55(x,y) ⊃ E53(y)
     /// P55(x,y) ⊃ P53(x,y)
     /// <see href="http://erlangen-crm.org/current/P55_has_current_location"></see></summary>
-    let P55_has_current_location =
-        Namespaced_IRI.parse _namespace_name "P55_has_current_location" |> NamespacedName
+    let P55_has_current_location = _prefix "P55_has_current_location"
 
     /// <summary>
     /// Scope note:
@@ -698,7 +633,7 @@ module ecrm =
     /// - silver cup 232 (E22) has current permanent location Shelf 3.1, Store 2, Museum of Oxford (E53)
     /// <see href="http://erlangen-crm.org/current/P54_has_current_permanent_location"></see></summary>
     let P54_has_current_permanent_location =
-        Namespaced_IRI.parse _namespace_name "P54_has_current_permanent_location" |> NamespacedName
+        _prefix "P54_has_current_permanent_location"
 
     /// <summary>
     /// Scope note:
@@ -717,9 +652,7 @@ module ecrm =
     /// P48(x,y) ⊃ E42(y)
     /// P48(x,y) ⊃ P1(x,y)
     /// <see href="http://erlangen-crm.org/current/P48_has_preferred_identifier"></see></summary>
-    let P48_has_preferred_identifier =
-        Namespaced_IRI.parse _namespace_name "P48_has_preferred_identifier" |> NamespacedName
-
+    let P48_has_preferred_identifier = _prefix "P48_has_preferred_identifier"
     /// <summary>
     /// Scope note:
     /// This class comprises individual items of a material nature, which live, have lived or are natural products of or from living organisms.
@@ -735,9 +668,7 @@ module ecrm =
     /// In First Order Logic:
     /// E20(x) ⊃ E19(x)
     /// <see href="http://erlangen-crm.org/current/E20_Biological_Object"></see></summary>
-    let E20_Biological_Object =
-        Namespaced_IRI.parse _namespace_name "E20_Biological_Object" |> NamespacedName
-
+    let E20_Biological_Object = _prefix "E20_Biological_Object"
     /// <summary>
     /// Scope note:
     /// This class comprises real persons who live or are assumed to have lived.
@@ -752,14 +683,11 @@ module ecrm =
     /// E21(x) ⊃ E20(x)
     /// E21(x) ⊃ E39(x)
     /// <see href="http://erlangen-crm.org/current/E21_Person"></see></summary>
-    let E21_Person = Namespaced_IRI.parse _namespace_name "E21_Person" |> NamespacedName
-
+    let E21_Person = _prefix "E21_Person"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P98i_was_born"></see>
     /// </summary>
-    let P98i_was_born =
-        Namespaced_IRI.parse _namespace_name "P98i_was_born" |> NamespacedName
-
+    let P98i_was_born = _prefix "P98i_was_born"
     /// <summary>
     /// Scope note:
     /// This class comprises people, either individually or in groups, who have the potential to perform intentional actions of kinds for which someone may be held responsible.
@@ -774,8 +702,7 @@ module ecrm =
     /// In First Order Logic:
     /// E39(x) ⊃ E77(x)
     /// <see href="http://erlangen-crm.org/current/E39_Actor"></see></summary>
-    let E39_Actor = Namespaced_IRI.parse _namespace_name "E39_Actor" |> NamespacedName
-
+    let E39_Actor = _prefix "E39_Actor"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E21 Person with another instance of E21 Person who plays the role of the first instance’s parent, regardless of whether the relationship is biological parenthood, assumed or pretended biological parenthood or an equivalent legal status of rights and obligations obtained by a social or legal act. This property is, among others, a shortcut of the fully developed paths from ‘E21Person’ through ‘P98i was born’, ‘E67 Birth’, ‘P96 by mother’ to ‘E21 Person’, and from ‘E21Person’ through ‘P98i was born’, ‘E67 Birth’, ‘P97 from father’ to ‘E21 Person’.
@@ -791,9 +718,7 @@ module ecrm =
     /// P152(x,y) ⊃ E21(x)
     /// P152(x,y) ⊃ E21(y)
     /// <see href="http://erlangen-crm.org/current/P152_has_parent"></see></summary>
-    let P152_has_parent =
-        Namespaced_IRI.parse _namespace_name "P152_has_parent" |> NamespacedName
-
+    let P152_has_parent = _prefix "P152_has_parent"
     /// <summary>
     /// Scope note:
     /// This class comprises physical objects purposely created by human activity.
@@ -809,15 +734,11 @@ module ecrm =
     /// E22(x) ⊃ E19(x)
     /// E22(x) ⊃ E24(x)
     /// <see href="http://erlangen-crm.org/current/E22_Man-Made_Object"></see></summary>
-    let ``E22_Man-Made_Object`` =
-        Namespaced_IRI.parse _namespace_name "E22_Man-Made_Object" |> NamespacedName
-
+    let ``E22_Man-Made_Object`` = _prefix "E22_Man-Made_Object"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P108i_was_produced_by"></see>
     /// </summary>
-    let P108i_was_produced_by =
-        Namespaced_IRI.parse _namespace_name "P108i_was_produced_by" |> NamespacedName
-
+    let P108i_was_produced_by = _prefix "P108i_was_produced_by"
     /// <summary>
     /// Scope note:
     /// This class comprises discrete, identifiable man-made items that are documented as single units.
@@ -833,9 +754,7 @@ module ecrm =
     /// In First Order Logic:
     /// E71(x) ⊃ E70(x)
     /// <see href="http://erlangen-crm.org/current/E71_Man-Made_Thing"></see></summary>
-    let ``E71_Man-Made_Thing`` =
-        Namespaced_IRI.parse _namespace_name "E71_Man-Made_Thing" |> NamespacedName
-
+    let ``E71_Man-Made_Thing`` = _prefix "E71_Man-Made_Thing"
     /// <summary>
     /// Scope note:
     /// This class comprises physical features that are purposely created by human activity, such as scratches, artificial caves, artificial water channels, etc.
@@ -850,9 +769,7 @@ module ecrm =
     /// E25(x) ⊃ E26(x)
     /// E25(x) ⊃ E24(x)
     /// <see href="http://erlangen-crm.org/current/E25_Man-Made_Feature"></see></summary>
-    let ``E25_Man-Made_Feature`` =
-        Namespaced_IRI.parse _namespace_name "E25_Man-Made_Feature" |> NamespacedName
-
+    let ``E25_Man-Made_Feature`` = _prefix "E25_Man-Made_Feature"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiable features that are physically attached in an integral way to particular physical objects.
@@ -872,15 +789,11 @@ module ecrm =
     /// In First Order Logic:
     /// E26(x) ⊃ E18(x)
     /// <see href="http://erlangen-crm.org/current/E26_Physical_Feature"></see></summary>
-    let E26_Physical_Feature =
-        Namespaced_IRI.parse _namespace_name "E26_Physical_Feature" |> NamespacedName
-
+    let E26_Physical_Feature = _prefix "E26_Physical_Feature"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P56i_is_found_on"></see>
     /// </summary>
-    let P56i_is_found_on =
-        Namespaced_IRI.parse _namespace_name "P56i_is_found_on" |> NamespacedName
-
+    let P56i_is_found_on = _prefix "P56i_is_found_on"
     /// <summary>
     /// Scope note:
     /// This class comprises pieces of land or sea floor.
@@ -899,8 +812,7 @@ module ecrm =
     /// In First Order Logic:
     /// E27(x)⊃ E26(x)
     /// <see href="http://erlangen-crm.org/current/E27_Site"></see></summary>
-    let E27_Site = Namespaced_IRI.parse _namespace_name "E27_Site" |> NamespacedName
-
+    let E27_Site = _prefix "E27_Site"
     /// <summary>
     /// Scope note:
     /// This class comprises events that result in the creation of conceptual items or immaterial products, such as legends, poems, texts, music, images, movies, laws, types etc.
@@ -913,15 +825,11 @@ module ecrm =
     /// E65(x) ⊃ E7(x)
     /// E65(x) ⊃ E63(x)
     /// <see href="http://erlangen-crm.org/current/E65_Creation"></see></summary>
-    let E65_Creation =
-        Namespaced_IRI.parse _namespace_name "E65_Creation" |> NamespacedName
-
+    let E65_Creation = _prefix "E65_Creation"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P94i_was_created_by"></see>
     /// </summary>
-    let P94i_was_created_by =
-        Namespaced_IRI.parse _namespace_name "P94i_was_created_by" |> NamespacedName
-
+    let P94i_was_created_by = _prefix "P94i_was_created_by"
     /// <summary>
     /// Scope note:
     /// This class comprises documented plans for the execution of actions in order to achieve a result of a specific quality, form or contents. In particular it comprises plans for deliberate human activities that may result in the modification or production of instances of E24 Physical Thing.
@@ -945,9 +853,7 @@ module ecrm =
     /// In First Order Logic:
     /// E29(x) ⊃ E73(x)
     /// <see href="http://erlangen-crm.org/current/E29_Design_or_Procedure"></see></summary>
-    let E29_Design_or_Procedure =
-        Namespaced_IRI.parse _namespace_name "E29_Design_or_Procedure" |> NamespacedName
-
+    let E29_Design_or_Procedure = _prefix "E29_Design_or_Procedure"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiable immaterial items, such as a poems, jokes, data sets, images, texts, multimedia objects, procedural prescriptions, computer program code, algorithm or mathematical formulae, that have an objectively recognizable structure and are documented as single units.
@@ -967,9 +873,7 @@ module ecrm =
     /// E73(x) ⊃ E89(x)
     /// E73(x) ⊃ E90(x)
     /// <see href="http://erlangen-crm.org/current/E73_Information_Object"></see></summary>
-    let E73_Information_Object =
-        Namespaced_IRI.parse _namespace_name "E73_Information_Object" |> NamespacedName
-
+    let E73_Information_Object = _prefix "E73_Information_Object"
     /// <summary>
     /// Scope note:
     /// This class comprises all phenomena, such as the instances of E4 Periods, E5 Events and states, which happen over a limited extent in time. This extent in time must be contiguous, i.e., without gaps. In case the defining kinds of phenomena for an instance of E2 Temporal Entity cease to happen, and occur later again at another time, we regard that the former E2 Temporal Entity has ended and a new instance has come into existence. In more intuitive terms, the same event cannot happen twice.
@@ -984,9 +888,7 @@ module ecrm =
     /// In First Order Logic:
     /// E2(x) ⊃ E1(x)
     /// <see href="http://erlangen-crm.org/current/E2_Temporal_Entity"></see></summary>
-    let E2_Temporal_Entity =
-        Namespaced_IRI.parse _namespace_name "E2_Temporal_Entity" |> NamespacedName
-
+    let E2_Temporal_Entity = _prefix "E2_Temporal_Entity"
     /// <summary>
     /// Scope note:
     /// This property describes the temporal confinement of an instance of an E2 Temporal Entity.
@@ -1000,9 +902,7 @@ module ecrm =
     /// P4(x,y) ⊃ E2(x)
     /// P4(x,y) ⊃ E52(y)
     /// <see href="http://erlangen-crm.org/current/P4_has_time-span"></see></summary>
-    let ``P4_has_time-span`` =
-        Namespaced_IRI.parse _namespace_name "P4_has_time-span" |> NamespacedName
-
+    let ``P4_has_time-span`` = _prefix "P4_has_time-span"
     /// <summary>
     /// Scope note:
     /// This class comprises items that have a persistent identity, sometimes known as "endurants" in philosophy.
@@ -1022,9 +922,7 @@ module ecrm =
     /// In First Order Logic:
     /// E77(x) ⊃ E1(x)
     /// <see href="http://erlangen-crm.org/current/E77_Persistent_Item"></see></summary>
-    let E77_Persistent_Item =
-        Namespaced_IRI.parse _namespace_name "E77_Persistent_Item" |> NamespacedName
-
+    let E77_Persistent_Item = _prefix "E77_Persistent_Item"
     /// <summary>
     /// Scope note:
     /// This class comprises legal privileges concerning material and immaterial things or their derivatives.
@@ -1038,14 +936,11 @@ module ecrm =
     /// In First Order Logic:
     /// E30(x) ⊃ E89(x
     /// <see href="http://erlangen-crm.org/current/E30_Right"></see></summary>
-    let E30_Right = Namespaced_IRI.parse _namespace_name "E30_Right" |> NamespacedName
-
+    let E30_Right = _prefix "E30_Right"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P104i_applies_to"></see>
     /// </summary>
-    let P104i_applies_to =
-        Namespaced_IRI.parse _namespace_name "P104i_applies_to" |> NamespacedName
-
+    let P104i_applies_to = _prefix "P104i_applies_to"
     /// <summary>
     /// Scope note:
     /// This class comprises immaterial items, including but not limited to stories, plots, procedural prescriptions, algorithms, laws of physics or images that are, or represent in some sense, sets of propositions about real or imaginary things and that are documented as single units or serve as topic of discourse.
@@ -1062,9 +957,7 @@ module ecrm =
     /// In First Order Logic:
     /// E89(x) ⊃ E28(x)
     /// <see href="http://erlangen-crm.org/current/E89_Propositional_Object"></see></summary>
-    let E89_Propositional_Object =
-        Namespaced_IRI.parse _namespace_name "E89_Propositional_Object" |> NamespacedName
-
+    let E89_Propositional_Object = _prefix "E89_Propositional_Object"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiable immaterial items that make propositions about reality.
@@ -1078,9 +971,7 @@ module ecrm =
     /// In First Order Logic:
     /// E31(x) ⊃ E73(x)
     /// <see href="http://erlangen-crm.org/current/E31_Document"></see></summary>
-    let E31_Document =
-        Namespaced_IRI.parse _namespace_name "E31_Document" |> NamespacedName
-
+    let E31_Document = _prefix "E31_Document"
     /// <summary>
     /// Scope note:
     /// This property describes the CRM Entities documented by instances of E31 Document.
@@ -1095,9 +986,7 @@ module ecrm =
     /// P70 (x,y) ⊃ E1(y)
     /// P70(x,y) ⊃ P67(x,y)
     /// <see href="http://erlangen-crm.org/current/P70_documents"></see></summary>
-    let P70_documents =
-        Namespaced_IRI.parse _namespace_name "P70_documents" |> NamespacedName
-
+    let P70_documents = _prefix "P70_documents"
     /// <summary>
     /// Scope note:
     /// This class comprises encyclopaedia, thesauri, authority lists and other documents that define terminology or conceptual systems for consistent use.
@@ -1110,9 +999,7 @@ module ecrm =
     /// In First Order Logic:
     /// E32(x) ⊃ E31(x)
     /// <see href="http://erlangen-crm.org/current/E32_Authority_Document"></see></summary>
-    let E32_Authority_Document =
-        Namespaced_IRI.parse _namespace_name "E32_Authority_Document" |> NamespacedName
-
+    let E32_Authority_Document = _prefix "E32_Authority_Document"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiable expressions in natural language or languages.
@@ -1129,15 +1016,11 @@ module ecrm =
     /// In First Order Logic:
     /// E33(x) ⊃ E73(x)
     /// <see href="http://erlangen-crm.org/current/E33_Linguistic_Object"></see></summary>
-    let E33_Linguistic_Object =
-        Namespaced_IRI.parse _namespace_name "E33_Linguistic_Object" |> NamespacedName
-
+    let E33_Linguistic_Object = _prefix "E33_Linguistic_Object"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P73i_is_translation_of"></see>
     /// </summary>
-    let P73i_is_translation_of =
-        Namespaced_IRI.parse _namespace_name "P73i_is_translation_of" |> NamespacedName
-
+    let P73i_is_translation_of = _prefix "P73i_is_translation_of"
     /// <summary>
     /// Scope note:
     /// This property describes the E56 Language of an E33 Linguistic Object.
@@ -1151,9 +1034,7 @@ module ecrm =
     /// P72(x,y) ⊃ E33(x)
     /// P72(x,y) ⊃ E56(y)
     /// <see href="http://erlangen-crm.org/current/P72_has_language"></see></summary>
-    let P72_has_language =
-        Namespaced_IRI.parse _namespace_name "P72_has_language" |> NamespacedName
-
+    let P72_has_language = _prefix "P72_has_language"
     /// <summary>
     /// Scope note:
     /// This class comprises recognisable, short texts attached to instances of E24 Physical Man-Made Thing.
@@ -1171,9 +1052,7 @@ module ecrm =
     /// E34(x) ⊃ E33(x)
     /// E34(x) ⊃ E37(x)
     /// <see href="http://erlangen-crm.org/current/E34_Inscription"></see></summary>
-    let E34_Inscription =
-        Namespaced_IRI.parse _namespace_name "E34_Inscription" |> NamespacedName
-
+    let E34_Inscription = _prefix "E34_Inscription"
     /// <summary>
     /// Scope note:
     /// This class comprises symbols, signs, signatures or short texts applied to instances of E24 Physical Man-Made Thing by arbitrary techniques in order to indicate the creator, owner, dedications, purpose, etc.
@@ -1188,7 +1067,7 @@ module ecrm =
     /// In First Order Logic:
     /// E37(x) ⊃ E36(x)
     /// <see href="http://erlangen-crm.org/current/E37_Mark"></see></summary>
-    let E37_Mark = Namespaced_IRI.parse _namespace_name "E37_Mark" |> NamespacedName
+    let E37_Mark = _prefix "E37_Mark"
     /// <summary>
     /// Scope note:
     /// This class comprises the names assigned to works, such as texts, artworks or pieces of music.
@@ -1207,8 +1086,7 @@ module ecrm =
     /// E35(x) ⊃ E33(x)
     /// E35(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E35_Title"></see></summary>
-    let E35_Title = Namespaced_IRI.parse _namespace_name "E35_Title" |> NamespacedName
-
+    let E35_Title = _prefix "E35_Title"
     /// <summary>
     /// Scope note:
     /// This class comprises signs, either meaningful or not, or arrangements of signs following a specific syntax, that are used or can be used to refer to and identify a specific instance of some class or category within a certain context.
@@ -1230,9 +1108,7 @@ module ecrm =
     /// In First Order Logic:
     /// E41(x) ⊃ E90(x)
     /// <see href="http://erlangen-crm.org/current/E41_Appellation"></see></summary>
-    let E41_Appellation =
-        Namespaced_IRI.parse _namespace_name "E41_Appellation" |> NamespacedName
-
+    let E41_Appellation = _prefix "E41_Appellation"
     /// <summary>
     /// Scope note:
     /// This class comprises the intellectual or conceptual aspects of recognisable marks and images.
@@ -1250,9 +1126,7 @@ module ecrm =
     /// In First Order Logic:
     /// E36(x) ⊃ E73(x)
     /// <see href="http://erlangen-crm.org/current/E36_Visual_Item"></see></summary>
-    let E36_Visual_Item =
-        Namespaced_IRI.parse _namespace_name "E36_Visual_Item" |> NamespacedName
-
+    let E36_Visual_Item = _prefix "E36_Visual_Item"
     /// <summary>
     /// Scope note:
     /// This class comprises distributions of form, tone and colour that may be found on surfaces such as photos, paintings, prints and sculptures or directly on electronic media.
@@ -1266,8 +1140,7 @@ module ecrm =
     /// In First Order Logic:
     /// E38(x) ⊃ E36(x)
     /// <see href="http://erlangen-crm.org/current/E38_Image"></see></summary>
-    let E38_Image = Namespaced_IRI.parse _namespace_name "E38_Image" |> NamespacedName
-
+    let E38_Image = _prefix "E38_Image"
     /// <summary>
     /// Scope note:
     /// This class comprises the states of objects characterised by a certain condition over a time-span.
@@ -1287,15 +1160,11 @@ module ecrm =
     /// In First Order Logic:
     /// E3(x) ⊃ E2(x)
     /// <see href="http://erlangen-crm.org/current/E3_Condition_State"></see></summary>
-    let E3_Condition_State =
-        Namespaced_IRI.parse _namespace_name "E3_Condition_State" |> NamespacedName
-
+    let E3_Condition_State = _prefix "E3_Condition_State"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P44i_is_condition_of"></see>
     /// </summary>
-    let P44i_is_condition_of =
-        Namespaced_IRI.parse _namespace_name "P44i_is_condition_of" |> NamespacedName
-
+    let P44i_is_condition_of = _prefix "P44i_is_condition_of"
     /// <summary>
     /// Scope note:
     /// This class comprises institutions or groups of people that have obtained a legal recognition as a group and can act collectively as agents.
@@ -1310,9 +1179,7 @@ module ecrm =
     /// In First Order Logic:
     /// E40(x) ⊃ E74(x)
     /// <see href="http://erlangen-crm.org/current/E40_Legal_Body"></see></summary>
-    let E40_Legal_Body =
-        Namespaced_IRI.parse _namespace_name "E40_Legal_Body" |> NamespacedName
-
+    let E40_Legal_Body = _prefix "E40_Legal_Body"
     /// <summary>
     /// Scope note:
     /// This property identifies former or current instances of E30 Rights held by an E39 Actor.
@@ -1324,9 +1191,7 @@ module ecrm =
     /// P75(x,y) ⊃ E39(x)
     /// P75(x,y) ⊃ E30(y)
     /// <see href="http://erlangen-crm.org/current/P75_possesses"></see></summary>
-    let P75_possesses =
-        Namespaced_IRI.parse _namespace_name "P75_possesses" |> NamespacedName
-
+    let P75_possesses = _prefix "P75_possesses"
     /// <summary>
     /// Scope note:
     /// This class comprises any gatherings or organizations of E39 Actors that act collectively or in a similar way due to any form of unifying relationship. In the wider sense this class also comprises official positions which used to be regarded in certain contexts as one actor, independent of the current holder
@@ -1349,8 +1214,7 @@ module ecrm =
     /// In First Order Logic:
     /// E74(x) ⊃ E39(x)
     /// <see href="http://erlangen-crm.org/current/E74_Group"></see></summary>
-    let E74_Group = Namespaced_IRI.parse _namespace_name "E74_Group" |> NamespacedName
-
+    let E74_Group = _prefix "E74_Group"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiable symbols and any aggregation of symbols, such as characters, identifiers, traffic signs, emblems, texts, data sets, images, musical scores, multimedia objects, computer program code or mathematical formulae that have an objectively recognizable structure and that are documented as single units.
@@ -1373,9 +1237,7 @@ module ecrm =
     /// E90(x) ⊃ E28(x)
     /// E90(x) ⊃ E72(x)
     /// <see href="http://erlangen-crm.org/current/E90_Symbolic_Object"></see></summary>
-    let E90_Symbolic_Object =
-        Namespaced_IRI.parse _namespace_name "E90_Symbolic_Object" |> NamespacedName
-
+    let E90_Symbolic_Object = _prefix "E90_Symbolic_Object"
     /// <summary>
     /// Scope note:
     /// This class comprises any sort of identifier characteristically used to refer to an E53 Place.
@@ -1394,9 +1256,7 @@ module ecrm =
     /// In First Order Logic:
     /// E44(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E44_Place_Appellation"></see></summary>
-    let E44_Place_Appellation =
-        Namespaced_IRI.parse _namespace_name "E44_Place_Appellation" |> NamespacedName
-
+    let E44_Place_Appellation = _prefix "E44_Place_Appellation"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiers expressed in coding systems for places, such as postal addresses used for mailing.
@@ -1411,9 +1271,7 @@ module ecrm =
     /// E45(x) ⊃ E44(x)
     /// E45(x) ⊃ E51(x)
     /// <see href="http://erlangen-crm.org/current/E45_Address"></see></summary>
-    let E45_Address =
-        Namespaced_IRI.parse _namespace_name "E45_Address" |> NamespacedName
-
+    let E45_Address = _prefix "E45_Address"
     /// <summary>
     /// Scope note:
     /// This class comprises identifiers employed, or understood, by communication services to direct communications to an instance of E39 Actor. These include E-mail addresses, telephone numbers, post office boxes, Fax numbers, URLs etc. Most postal addresses can be considered both as instances of E44 Place Appellation and E51 Contact Point. In such cases the subclass E45 Address should be used.
@@ -1426,9 +1284,7 @@ module ecrm =
     /// In First Order Logic:
     /// E51(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E51_Contact_Point"></see></summary>
-    let E51_Contact_Point =
-        Namespaced_IRI.parse _namespace_name "E51_Contact_Point" |> NamespacedName
-
+    let E51_Contact_Point = _prefix "E51_Contact_Point"
     /// <summary>
     /// Scope note:
     /// This class comprises areas of objects referred to in terms specific to the general geometry or structure of its kind.
@@ -1444,15 +1300,11 @@ module ecrm =
     /// In First Order Logic:
     /// E46(x) ⊃ E44(x)
     /// <see href="http://erlangen-crm.org/current/E46_Section_Definition"></see></summary>
-    let E46_Section_Definition =
-        Namespaced_IRI.parse _namespace_name "E46_Section_Definition" |> NamespacedName
-
+    let E46_Section_Definition = _prefix "E46_Section_Definition"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P58i_defines_section"></see>
     /// </summary>
-    let P58i_defines_section =
-        Namespaced_IRI.parse _namespace_name "P58i_defines_section" |> NamespacedName
-
+    let P58i_defines_section = _prefix "P58i_defines_section"
     /// <summary>
     /// Scope note:
     /// This class comprises the textual or numeric information required to locate specific instances of E53 Place within schemes of spatial identification.
@@ -1466,9 +1318,7 @@ module ecrm =
     /// In First Order Logic:
     /// E47(x) ⊃ E44(x)
     /// <see href="http://erlangen-crm.org/current/E47_Spatial_Coordinates"></see></summary>
-    let E47_Spatial_Coordinates =
-        Namespaced_IRI.parse _namespace_name "E47_Spatial_Coordinates" |> NamespacedName
-
+    let E47_Spatial_Coordinates = _prefix "E47_Spatial_Coordinates"
     /// <summary>
     /// Scope note:
     /// This class comprises particular and common forms of E44 Place Appellation.
@@ -1484,9 +1334,7 @@ module ecrm =
     /// In First Order Logic:
     /// E48(x) ⊃ E44(x)
     /// <see href="http://erlangen-crm.org/current/E48_Place_Name"></see></summary>
-    let E48_Place_Name =
-        Namespaced_IRI.parse _namespace_name "E48_Place_Name" |> NamespacedName
-
+    let E48_Place_Name = _prefix "E48_Place_Name"
     /// <summary>
     /// Scope note:
     /// This class comprises all forms of names or codes, such as historical periods, and dates, which are characteristically used to refer to a specific E52 Time-Span.
@@ -1503,9 +1351,7 @@ module ecrm =
     /// In First Order Logic:
     /// E49(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E49_Time_Appellation"></see></summary>
-    let E49_Time_Appellation =
-        Namespaced_IRI.parse _namespace_name "E49_Time_Appellation" |> NamespacedName
-
+    let E49_Time_Appellation = _prefix "E49_Time_Appellation"
     /// <summary>
     /// Scope note:
     /// This class comprises sets of coherent phenomena or cultural manifestations occurring in time and space.
@@ -1538,8 +1384,7 @@ module ecrm =
     /// E4(x) ⊃ E2(x)
     /// E4(x) ⊃ E92(x)
     /// <see href="http://erlangen-crm.org/current/E4_Period"></see></summary>
-    let E4_Period = Namespaced_IRI.parse _namespace_name "E4_Period" |> NamespacedName
-
+    let E4_Period = _prefix "E4_Period"
     /// <summary>
     /// Scope note:
     /// This property describes the spatial location of an instance of E4 Period.
@@ -1555,9 +1400,7 @@ module ecrm =
     /// P7(x,y) ⊃ E4(x)
     /// P7(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P7_took_place_at"></see></summary>
-    let P7_took_place_at =
-        Namespaced_IRI.parse _namespace_name "P7_took_place_at" |> NamespacedName
-
+    let P7_took_place_at = _prefix "P7_took_place_at"
     /// <summary>
     /// Scope note:
     /// This class comprises specific forms of E49 Time Appellation.
@@ -1573,14 +1416,11 @@ module ecrm =
     /// In First Order Logic:
     /// E50(x) ⊃ E49(x)
     /// <see href="http://erlangen-crm.org/current/E50_Date"></see></summary>
-    let E50_Date = Namespaced_IRI.parse _namespace_name "E50_Date" |> NamespacedName
-
+    let E50_Date = _prefix "E50_Date"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P76i_provides_access_to"></see>
     /// </summary>
-    let P76i_provides_access_to =
-        Namespaced_IRI.parse _namespace_name "P76i_provides_access_to" |> NamespacedName
-
+    let P76i_provides_access_to = _prefix "P76i_provides_access_to"
     /// <summary>
     /// Scope note:
     /// This class comprises abstract temporal extents, in the sense of Galilean physics, having a beginning, an end and a duration.
@@ -1601,9 +1441,7 @@ module ecrm =
     /// In First Order Logic:
     /// E52(x) ⊃ E1(x)
     /// <see href="http://erlangen-crm.org/current/E52_Time-Span"></see></summary>
-    let ``E52_Time-Span`` =
-        Namespaced_IRI.parse _namespace_name "E52_Time-Span" |> NamespacedName
-
+    let ``E52_Time-Span`` = _prefix "E52_Time-Span"
     /// <summary>
     /// Scope note:
     /// This property describes the minimum length of time covered by an E52 Time-Span.
@@ -1617,9 +1455,7 @@ module ecrm =
     /// P83(x,y) ⊃ E52(x)
     /// P83(x,y) ⊃ E54(y)
     /// <see href="http://erlangen-crm.org/current/P83_had_at_least_duration"></see></summary>
-    let P83_had_at_least_duration =
-        Namespaced_IRI.parse _namespace_name "P83_had_at_least_duration" |> NamespacedName
-
+    let P83_had_at_least_duration = _prefix "P83_had_at_least_duration"
     /// <summary>
     /// Scope note:
     /// This property describes the maximum length of time covered by an E52 Time-Span.
@@ -1633,21 +1469,15 @@ module ecrm =
     /// P84(x,y) ⊃ E52(x)
     /// P84(x,y) ⊃ E54(y)
     /// <see href="http://erlangen-crm.org/current/P84_had_at_most_duration"></see></summary>
-    let P84_had_at_most_duration =
-        Namespaced_IRI.parse _namespace_name "P84_had_at_most_duration" |> NamespacedName
-
+    let P84_had_at_most_duration = _prefix "P84_had_at_most_duration"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P4i_is_time-span_of"></see>
     /// </summary>
-    let ``P4i_is_time-span_of`` =
-        Namespaced_IRI.parse _namespace_name "P4i_is_time-span_of" |> NamespacedName
-
+    let ``P4i_is_time-span_of`` = _prefix "P4i_is_time-span_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P59i_is_located_on_or_within"></see>
     /// </summary>
-    let P59i_is_located_on_or_within =
-        Namespaced_IRI.parse _namespace_name "P59i_is_located_on_or_within" |> NamespacedName
-
+    let P59i_is_located_on_or_within = _prefix "P59i_is_located_on_or_within"
     /// <summary>
     /// Scope note:
     /// This property shows the type of unit an E54 Dimension was expressed in.
@@ -1659,15 +1489,11 @@ module ecrm =
     /// P91(x,y) ⊃ E54(x)
     /// P91(x,y) ⊃ E58(y)
     /// <see href="http://erlangen-crm.org/current/P91_has_unit"></see></summary>
-    let P91_has_unit =
-        Namespaced_IRI.parse _namespace_name "P91_has_unit" |> NamespacedName
-
+    let P91_has_unit = _prefix "P91_has_unit"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P135i_was_created_by"></see>
     /// </summary>
-    let P135i_was_created_by =
-        Namespaced_IRI.parse _namespace_name "P135i_was_created_by" |> NamespacedName
-
+    let P135i_was_created_by = _prefix "P135i_was_created_by"
     /// <summary>
     /// Scope note:
     /// This class is a specialization of E55 Type and comprises the natural languages in the sense of concepts.
@@ -1686,9 +1512,7 @@ module ecrm =
     /// In First Order Logic:
     /// E56(x) ⊃ E55(x)
     /// <see href="http://erlangen-crm.org/current/E56_Language"></see></summary>
-    let E56_Language =
-        Namespaced_IRI.parse _namespace_name "E56_Language" |> NamespacedName
-
+    let E56_Language = _prefix "E56_Language"
     /// <summary>
     /// Scope note:
     /// This class is a specialization of E55 Type and comprises the types of measurement units: feet, inches, centimetres, litres, lumens, etc.
@@ -1709,15 +1533,11 @@ module ecrm =
     /// In First Order Logic:
     /// E58(x) ⊃ E55(x)
     /// <see href="http://erlangen-crm.org/current/E58_Measurement_Unit"></see></summary>
-    let E58_Measurement_Unit =
-        Namespaced_IRI.parse _namespace_name "E58_Measurement_Unit" |> NamespacedName
-
+    let E58_Measurement_Unit = _prefix "E58_Measurement_Unit"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P91i_is_unit_of"></see>
     /// </summary>
-    let P91i_is_unit_of =
-        Namespaced_IRI.parse _namespace_name "P91i_is_unit_of" |> NamespacedName
-
+    let P91i_is_unit_of = _prefix "P91i_is_unit_of"
     /// <summary>
     /// Scope note:
     /// This class comprises changes of states in cultural, social or physical systems, regardless of scale, brought about by a series or group of coherent physical, cultural, technological or legal phenomena. Such changes of state will affect instances of E77 Persistent Item or its subclasses.
@@ -1737,8 +1557,7 @@ module ecrm =
     /// In First Order Logic:
     /// E5(x) ⊃ E4(x)
     /// <see href="http://erlangen-crm.org/current/E5_Event"></see></summary>
-    let E5_Event = Namespaced_IRI.parse _namespace_name "E5_Event" |> NamespacedName
-
+    let E5_Event = _prefix "E5_Event"
     /// <summary>
     /// Scope note:
     /// This property describes the active or passive presence of an E77 Persistent Item in an E5 Event without implying any specific role.
@@ -1752,9 +1571,7 @@ module ecrm =
     /// P12(x,y) ⊃ E5(x)
     /// P12(x,y) ⊃ E77(y)
     /// <see href="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of"></see></summary>
-    let P12_occurred_in_the_presence_of =
-        Namespaced_IRI.parse _namespace_name "P12_occurred_in_the_presence_of" |> NamespacedName
-
+    let P12_occurred_in_the_presence_of = _prefix "P12_occurred_in_the_presence_of"
     /// <summary>
     /// Scope note:
     /// This property allows an E63 Beginning of Existence event to be linked to the E77 Persistent Item brought into existence by it.
@@ -1769,9 +1586,7 @@ module ecrm =
     /// P92(x,y) ⊃ E77(y)
     /// P92(x,y) ⊃ P12(x,y)
     /// <see href="http://erlangen-crm.org/current/P92_brought_into_existence"></see></summary>
-    let P92_brought_into_existence =
-        Namespaced_IRI.parse _namespace_name "P92_brought_into_existence" |> NamespacedName
-
+    let P92_brought_into_existence = _prefix "P92_brought_into_existence"
     /// <summary>
     /// Scope note:
     /// This class comprises events that end the existence of any E77 Persistent Item.
@@ -1786,9 +1601,7 @@ module ecrm =
     /// In First Order Logic:
     /// E64(x) ⊃ E5(x)
     /// <see href="http://erlangen-crm.org/current/E64_End_of_Existence"></see></summary>
-    let E64_End_of_Existence =
-        Namespaced_IRI.parse _namespace_name "E64_End_of_Existence" |> NamespacedName
-
+    let E64_End_of_Existence = _prefix "E64_End_of_Existence"
     /// <summary>
     /// Scope note:
     /// This property allows an E64 End of Existence event to be linked to the E77 Persistent Item taken out of existence by it.
@@ -1803,9 +1616,7 @@ module ecrm =
     /// P93 (x,y) ⊃ E77(y)
     /// P93(x,y) ⊃ P12(x,y)
     /// <see href="http://erlangen-crm.org/current/P93_took_out_of_existence"></see></summary>
-    let P93_took_out_of_existence =
-        Namespaced_IRI.parse _namespace_name "P93_took_out_of_existence" |> NamespacedName
-
+    let P93_took_out_of_existence = _prefix "P93_took_out_of_existence"
     /// <summary>
     /// Scope note:
     /// This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it.
@@ -1820,9 +1631,7 @@ module ecrm =
     /// P94(x,y) ⊃ E28(y)
     /// P94(x,y) ⊃ P92(x,y)
     /// <see href="http://erlangen-crm.org/current/P94_has_created"></see></summary>
-    let P94_has_created =
-        Namespaced_IRI.parse _namespace_name "P94_has_created" |> NamespacedName
-
+    let P94_has_created = _prefix "P94_has_created"
     /// <summary>
     /// Scope note:
     /// This class comprises events that result in the formation of a formal or informal E74 Group of people,
@@ -1842,9 +1651,7 @@ module ecrm =
     /// E66(x) ⊃ E7(x)
     /// E66(x) ⊃ E63(x)
     /// <see href="http://erlangen-crm.org/current/E66_Formation"></see></summary>
-    let E66_Formation =
-        Namespaced_IRI.parse _namespace_name "E66_Formation" |> NamespacedName
-
+    let E66_Formation = _prefix "E66_Formation"
     /// <summary>
     /// Scope note:
     /// This property links the founding or E66 Formation for an E74 Group with the Group itself.
@@ -1857,9 +1664,7 @@ module ecrm =
     /// P95(x,y) ⊃ E74(y)
     /// P95(x,y) ⊃ P92(x,y)
     /// <see href="http://erlangen-crm.org/current/P95_has_formed"></see></summary>
-    let P95_has_formed =
-        Namespaced_IRI.parse _namespace_name "P95_has_formed" |> NamespacedName
-
+    let P95_has_formed = _prefix "P95_has_formed"
     /// <summary>
     /// Scope note:
     /// This class comprises the births of human beings. E67 Birth is a biological event focussing on the context of people coming into life. (E63 Beginning of Existence comprises the coming into life of any living beings).
@@ -1872,8 +1677,7 @@ module ecrm =
     /// In First Order Logic:
     /// E67(x) ⊃ E63(x)
     /// <see href="http://erlangen-crm.org/current/E67_Birth"></see></summary>
-    let E67_Birth = Namespaced_IRI.parse _namespace_name "E67_Birth" |> NamespacedName
-
+    let E67_Birth = _prefix "E67_Birth"
     /// <summary>
     /// Scope note:
     /// This property links an E67 Birth event to an E21 Person in the role of biological father.
@@ -1889,9 +1693,7 @@ module ecrm =
     /// P97(x,y) ⊃ E67(x)
     /// P97(x,y) ⊃ E21(y)
     /// <see href="http://erlangen-crm.org/current/P97_from_father"></see></summary>
-    let P97_from_father =
-        Namespaced_IRI.parse _namespace_name "P97_from_father" |> NamespacedName
-
+    let P97_from_father = _prefix "P97_from_father"
     /// <summary>
     /// Scope note:
     /// This property links an E67 Birth event to an E21 Person as a participant in the role of birth-giving mother.
@@ -1905,9 +1707,7 @@ module ecrm =
     /// P96(x,y) ⊃ E21(y)
     /// P96(x,y) ⊃ P11(x,y)
     /// <see href="http://erlangen-crm.org/current/P96_by_mother"></see></summary>
-    let P96_by_mother =
-        Namespaced_IRI.parse _namespace_name "P96_by_mother" |> NamespacedName
-
+    let P96_by_mother = _prefix "P96_by_mother"
     /// <summary>
     /// Scope note:
     /// This class comprises the events that result in the formal or informal termination of an E74 Group of people.
@@ -1921,9 +1721,7 @@ module ecrm =
     /// In First Order Logic:
     /// E68(x) ⊃ E64(x)
     /// <see href="http://erlangen-crm.org/current/E68_Dissolution"></see></summary>
-    let E68_Dissolution =
-        Namespaced_IRI.parse _namespace_name "E68_Dissolution" |> NamespacedName
-
+    let E68_Dissolution = _prefix "E68_Dissolution"
     /// <summary>
     /// Scope note:
     /// This property links the disbanding or E68 Dissolution of an E74 Group to the Group itself.
@@ -1937,9 +1735,7 @@ module ecrm =
     /// P99(x,y) ⊃ P11(x,y)
     /// P99(x,y) ⊃ P93(x,y)
     /// <see href="http://erlangen-crm.org/current/P99_dissolved"></see></summary>
-    let P99_dissolved =
-        Namespaced_IRI.parse _namespace_name "P99_dissolved" |> NamespacedName
-
+    let P99_dissolved = _prefix "P99_dissolved"
     /// <summary>
     /// Scope note:
     /// This class comprises the deaths of human beings.
@@ -1952,8 +1748,7 @@ module ecrm =
     /// In First Order Logic:
     /// E69(x) ⊃ E64(x)
     /// <see href="http://erlangen-crm.org/current/E69_Death"></see></summary>
-    let E69_Death = Namespaced_IRI.parse _namespace_name "E69_Death" |> NamespacedName
-
+    let E69_Death = _prefix "E69_Death"
     /// <summary>
     /// Scope note:
     /// This property links an E69 Death event to the E21 Person that died.
@@ -1964,9 +1759,7 @@ module ecrm =
     /// Examples:
     /// - Mozart's death (E69) was death of Mozart (E21)
     /// <see href="http://erlangen-crm.org/current/P100_was_death_of"></see></summary>
-    let P100_was_death_of =
-        Namespaced_IRI.parse _namespace_name "P100_was_death_of" |> NamespacedName
-
+    let P100_was_death_of = _prefix "P100_was_death_of"
     /// <summary>
     /// Scope note:
     /// This class comprises events that destroy one or more instances of E18 Physical Thing such that they lose their identity as the subjects of documentation.
@@ -1986,9 +1779,7 @@ module ecrm =
     /// In First Order Logic:
     /// E6(x) ⊃ E64(x)
     /// <see href="http://erlangen-crm.org/current/E6_Destruction"></see></summary>
-    let E6_Destruction =
-        Namespaced_IRI.parse _namespace_name "E6_Destruction" |> NamespacedName
-
+    let E6_Destruction = _prefix "E6_Destruction"
     /// <summary>
     /// Scope note:
     /// This property allows specific instances of E18 Physical Thing that have been destroyed to be related to a destruction event.
@@ -2002,9 +1793,7 @@ module ecrm =
     /// P13 (x,y) ⊃ E18(y)
     /// P13 (x,y) ⊃ P93(x,y)
     /// <see href="http://erlangen-crm.org/current/P13_destroyed"></see></summary>
-    let P13_destroyed =
-        Namespaced_IRI.parse _namespace_name "P13_destroyed" |> NamespacedName
-
+    let P13_destroyed = _prefix "P13_destroyed"
     /// <summary>
     /// Scope note:
     /// This general class comprises discrete, identifiable, instances of E77 Persistent Item that are documented as single units, that either consist of matter or depend on being carried by matter and are characterized by relative stability.
@@ -2022,8 +1811,7 @@ module ecrm =
     /// In First Order Logic:
     /// E70(x) ⊃ E77(x)
     /// <see href="http://erlangen-crm.org/current/E70_Thing"></see></summary>
-    let E70_Thing = Namespaced_IRI.parse _namespace_name "E70_Thing" |> NamespacedName
-
+    let E70_Thing = _prefix "E70_Thing"
     /// <summary>
     /// Scope note:
     /// This property links a particular E72 Legal Object to the instances of E30 Right to which it is subject.
@@ -2037,9 +1825,7 @@ module ecrm =
     /// P104(x,y) ⊃ E72(x)
     /// P104(x,y) ⊃ E30(y)
     /// <see href="http://erlangen-crm.org/current/P104_is_subject_to"></see></summary>
-    let P104_is_subject_to =
-        Namespaced_IRI.parse _namespace_name "P104_is_subject_to" |> NamespacedName
-
+    let P104_is_subject_to = _prefix "P104_is_subject_to"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor who holds the instances of E30 Right to an E72 Legal Object.
@@ -2054,27 +1840,19 @@ module ecrm =
     /// P105(x,y) ⊃ E72(x)
     /// P105(x,y) ⊃ E39(y)
     /// <see href="http://erlangen-crm.org/current/P105_right_held_by"></see></summary>
-    let P105_right_held_by =
-        Namespaced_IRI.parse _namespace_name "P105_right_held_by" |> NamespacedName
-
+    let P105_right_held_by = _prefix "P105_right_held_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P144i_gained_member_by"></see>
     /// </summary>
-    let P144i_gained_member_by =
-        Namespaced_IRI.parse _namespace_name "P144i_gained_member_by" |> NamespacedName
-
+    let P144i_gained_member_by = _prefix "P144i_gained_member_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P95i_was_formed_by"></see>
     /// </summary>
-    let P95i_was_formed_by =
-        Namespaced_IRI.parse _namespace_name "P95i_was_formed_by" |> NamespacedName
-
+    let P95i_was_formed_by = _prefix "P95i_was_formed_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P146i_lost_member_by"></see>
     /// </summary>
-    let P146i_lost_member_by =
-        Namespaced_IRI.parse _namespace_name "P146i_lost_member_by" |> NamespacedName
-
+    let P146i_lost_member_by = _prefix "P146i_lost_member_by"
     /// <summary>
     /// Scope note:
     /// This property relates an E39 Actor to the E74 Group of which that E39 Actor is a member.
@@ -2096,9 +1874,7 @@ module ecrm =
     ///
     /// Properties: P107.1 kind of member: E55 Type
     /// <see href="http://erlangen-crm.org/current/P107_has_current_or_former_member"></see></summary>
-    let P107_has_current_or_former_member =
-        Namespaced_IRI.parse _namespace_name "P107_has_current_or_former_member" |> NamespacedName
-
+    let P107_has_current_or_former_member = _prefix "P107_has_current_or_former_member"
     /// <summary>
     /// Scope note:
     /// This class comprises all appellations specific to intellectual products or standardized patterns.
@@ -2114,9 +1890,7 @@ module ecrm =
     /// In First Order Logic:
     /// E75(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E75_Conceptual_Object_Appellation"></see></summary>
-    let E75_Conceptual_Object_Appellation =
-        Namespaced_IRI.parse _namespace_name "E75_Conceptual_Object_Appellation" |> NamespacedName
-
+    let E75_Conceptual_Object_Appellation = _prefix "E75_Conceptual_Object_Appellation"
     /// <summary>
     /// Scope note:
     /// This class comprises aggregations of instances of E18 Physical Thing that are assembled and maintained ("curated" and "preserved," in museological terminology) by one or more instances of E39 Actor over time for a specific purpose and audience, and according to a particular collection development plan.
@@ -2133,8 +1907,7 @@ module ecrm =
     /// In First Order Logic:
     /// E78(x) ⊃ E24(x)
     /// <see href="http://erlangen-crm.org/current/E78_Collection"></see></summary>
-    let E78_Collection =
-        Namespaced_IRI.parse _namespace_name "E78_Collection" |> NamespacedName
+    let E78_Collection = _prefix "E78_Collection"
 
     /// <summary>
     /// Scope note:
@@ -2152,7 +1925,7 @@ module ecrm =
     /// P109(x,y) ⊃ P49(x,y)
     /// <see href="http://erlangen-crm.org/current/P109_has_current_or_former_curator"></see></summary>
     let P109_has_current_or_former_curator =
-        Namespaced_IRI.parse _namespace_name "P109_has_current_or_former_curator" |> NamespacedName
+        _prefix "P109_has_current_or_former_curator"
 
     /// <summary>
     /// Scope note:
@@ -2167,9 +1940,7 @@ module ecrm =
     /// In First Order Logic:
     /// E79(x) ⊃ E11(x)
     /// <see href="http://erlangen-crm.org/current/E79_Part_Addition"></see></summary>
-    let E79_Part_Addition =
-        Namespaced_IRI.parse _namespace_name "E79_Part_Addition" |> NamespacedName
-
+    let E79_Part_Addition = _prefix "E79_Part_Addition"
     /// <summary>
     /// Scope note:
     /// This property identifies the E24 Physical Man-Made Thing that is added to (augmented) in an E79 Part Addition.
@@ -2184,9 +1955,7 @@ module ecrm =
     /// P110(x,y) ⊃ E24(y)
     /// P110(x,y) ⊃ P31(x,y)
     /// <see href="http://erlangen-crm.org/current/P110_augmented"></see></summary>
-    let P110_augmented =
-        Namespaced_IRI.parse _namespace_name "P110_augmented" |> NamespacedName
-
+    let P110_augmented = _prefix "P110_augmented"
     /// <summary>
     /// Scope note:
     /// This property identifies the E18 Physical Thing that is added during an E79 Part Addition activity
@@ -2200,8 +1969,7 @@ module ecrm =
     /// P111(x,y) ⊃ P12(x,y)
     /// P111(x,y) ⊃ P16(x,y)
     /// <see href="http://erlangen-crm.org/current/P111_added"></see></summary>
-    let P111_added = Namespaced_IRI.parse _namespace_name "P111_added" |> NamespacedName
-
+    let P111_added = _prefix "P111_added"
     /// <summary>
     /// Scope note:
     /// This property describes the active participation of an E39 Actor in an E7 Activity.
@@ -2217,9 +1985,7 @@ module ecrm =
     /// P14 (x,y) ⊃ P11(x,y)
     /// P14(x,y,z) ⊃ [P14(x,y) ∧ E55(z)]
     /// <see href="http://erlangen-crm.org/current/P14_carried_out_by"></see></summary>
-    let P14_carried_out_by =
-        Namespaced_IRI.parse _namespace_name "P14_carried_out_by" |> NamespacedName
-
+    let P14_carried_out_by = _prefix "P14_carried_out_by"
     /// <summary>
     /// Scope note:
     /// This class comprises the activities that result in an instance of E18 Physical Thing being decreased by the removal of a part.
@@ -2233,9 +1999,7 @@ module ecrm =
     /// In First Order Logic:
     /// E80(x) ⊃ E11(x)
     /// <see href="http://erlangen-crm.org/current/E80_Part_Removal"></see></summary>
-    let E80_Part_Removal =
-        Namespaced_IRI.parse _namespace_name "E80_Part_Removal" |> NamespacedName
-
+    let E80_Part_Removal = _prefix "E80_Part_Removal"
     /// <summary>
     /// Scope note:
     /// This property identifies the E24 Physical Man-Made Thing that was diminished by E80 Part Removal.
@@ -2250,9 +2014,7 @@ module ecrm =
     /// P112(x,y) ⊃ E24(y)
     /// P112(x,y) ⊃ P31(x,y)
     /// <see href="http://erlangen-crm.org/current/P112_diminished"></see></summary>
-    let P112_diminished =
-        Namespaced_IRI.parse _namespace_name "P112_diminished" |> NamespacedName
-
+    let P112_diminished = _prefix "P112_diminished"
     /// <summary>
     /// Scope note:
     /// This property identifies the E18 Physical Thing that is removed during an E80 Part Removal activity.
@@ -2265,9 +2027,7 @@ module ecrm =
     /// P113(x,y) ⊃ E18(y)
     /// P113(x,y) ⊃ P12(x,y)
     /// <see href="http://erlangen-crm.org/current/P113_removed"></see></summary>
-    let P113_removed =
-        Namespaced_IRI.parse _namespace_name "P113_removed" |> NamespacedName
-
+    let P113_removed = _prefix "P113_removed"
     /// <summary>
     /// Scope note:
     /// This class comprises the events that result in the simultaneous destruction of one or more than one E77 Persistent Item and the creation of one or more than one E77 Persistent Item that preserves recognizable substance from the first one(s) but has fundamentally different nature and identity.
@@ -2281,9 +2041,7 @@ module ecrm =
     /// E81(x) ⊃ E63(x)
     /// E81(x) ⊃ E64(x)
     /// <see href="http://erlangen-crm.org/current/E81_Transformation"></see></summary>
-    let E81_Transformation =
-        Namespaced_IRI.parse _namespace_name "E81_Transformation" |> NamespacedName
-
+    let E81_Transformation = _prefix "E81_Transformation"
     /// <summary>
     /// Scope note:
     /// This property identifies the E77 Persistent Item or items that cease to exist due to a E81 Transformation.
@@ -2299,9 +2057,7 @@ module ecrm =
     /// P124(x,y) ⊃ E77(y)
     /// P124(x,y) ⊃ P93(x,y)
     /// <see href="http://erlangen-crm.org/current/P124_transformed"></see></summary>
-    let P124_transformed =
-        Namespaced_IRI.parse _namespace_name "P124_transformed" |> NamespacedName
-
+    let P124_transformed = _prefix "P124_transformed"
     /// <summary>
     /// Scope note:
     /// This property identifies the E77 Persistent Item or items that are the result of an E81 Transformation.
@@ -2317,9 +2073,7 @@ module ecrm =
     /// P123(x,y) ⊃ E77(y)
     /// P123(x,y) ⊃ P92(x,y)
     /// <see href="http://erlangen-crm.org/current/P123_resulted_in"></see></summary>
-    let P123_resulted_in =
-        Namespaced_IRI.parse _namespace_name "P123_resulted_in" |> NamespacedName
-
+    let P123_resulted_in = _prefix "P123_resulted_in"
     /// <summary>
     /// Scope note:
     /// This class comprises any sort of name, number, code or symbol characteristically used to identify an E39 Actor.
@@ -2339,9 +2093,7 @@ module ecrm =
     /// In First Order Logic:
     /// E82(x) ⊃ E41(x)
     /// <see href="http://erlangen-crm.org/current/E82_Actor_Appellation"></see></summary>
-    let E82_Actor_Appellation =
-        Namespaced_IRI.parse _namespace_name "E82_Actor_Appellation" |> NamespacedName
-
+    let E82_Actor_Appellation = _prefix "E82_Actor_Appellation"
     /// <summary>
     /// Scope note:
     /// This class comprises activities formally defining new types of items.
@@ -2355,9 +2107,7 @@ module ecrm =
     /// In First Order Logic:
     /// E83(x) ⊃ E65(x)
     /// <see href="http://erlangen-crm.org/current/E83_Type_Creation"></see></summary>
-    let E83_Type_Creation =
-        Namespaced_IRI.parse _namespace_name "E83_Type_Creation" |> NamespacedName
-
+    let E83_Type_Creation = _prefix "E83_Type_Creation"
     /// <summary>
     /// Scope note:
     /// This property identifies the E55 Type, which is created in an E83Type Creation activity.
@@ -2370,9 +2120,7 @@ module ecrm =
     /// P135(x,y) ⊃ E55(y)
     /// P135(x,y) ⊃ P94(x,y)
     /// <see href="http://erlangen-crm.org/current/P135_created_type"></see></summary>
-    let P135_created_type =
-        Namespaced_IRI.parse _namespace_name "P135_created_type" |> NamespacedName
-
+    let P135_created_type = _prefix "P135_created_type"
     /// <summary>
     /// Scope note:
     /// This class comprises all instances of E22 Man-Made Object that are explicitly designed to act as persistent physical carriers for instances of E73 Information Object.
@@ -2387,9 +2135,7 @@ module ecrm =
     /// In First Order Logic:
     /// E84(x) ⊃ E22(x)
     /// <see href="http://erlangen-crm.org/current/E84_Information_Carrier"></see></summary>
-    let E84_Information_Carrier =
-        Namespaced_IRI.parse _namespace_name "E84_Information_Carrier" |> NamespacedName
-
+    let E84_Information_Carrier = _prefix "E84_Information_Carrier"
     /// <summary>
     /// Scope note:
     /// This class comprises the activities that result in an instance of E39 Actor becoming a member of an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
@@ -2404,9 +2150,7 @@ module ecrm =
     /// In First Order Logic:
     /// E85(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E85_Joining"></see></summary>
-    let E85_Joining =
-        Namespaced_IRI.parse _namespace_name "E85_Joining" |> NamespacedName
-
+    let E85_Joining = _prefix "E85_Joining"
     /// <summary>
     /// Scope note:
     /// This property identifies the instance of E39 Actor that becomes member of a E74 Group in an E85 Joining.
@@ -2423,9 +2167,7 @@ module ecrm =
     /// P143(x,y) ⊃ E39(y)
     /// P143(x,y) ⊃ P11(x,y)
     /// <see href="http://erlangen-crm.org/current/P143_joined"></see></summary>
-    let P143_joined =
-        Namespaced_IRI.parse _namespace_name "P143_joined" |> NamespacedName
-
+    let P143_joined = _prefix "P143_joined"
     /// <summary>
     /// Scope note:
     /// This property identifies the instance of E74 Group of which an instance of E39 Actor becomes a member through an instance of E85 Joining.
@@ -2448,9 +2190,7 @@ module ecrm =
     ///
     /// Properties: P144.1 kind of member: E55 Type
     /// <see href="http://erlangen-crm.org/current/P144_joined_with"></see></summary>
-    let P144_joined_with =
-        Namespaced_IRI.parse _namespace_name "P144_joined_with" |> NamespacedName
-
+    let P144_joined_with = _prefix "P144_joined_with"
     /// <summary>
     /// Scope note:
     /// This class comprises the activities that result in an instance of E39 Actor to be disassociated from an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
@@ -2465,9 +2205,7 @@ module ecrm =
     /// In First Order Logic:
     /// E86(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E86_Leaving"></see></summary>
-    let E86_Leaving =
-        Namespaced_IRI.parse _namespace_name "E86_Leaving" |> NamespacedName
-
+    let E86_Leaving = _prefix "E86_Leaving"
     /// <summary>
     /// Scope note:
     /// This property identifies the instance of E39 Actor that leaves an instance of E74 Group through an instance of E86 Leaving.
@@ -2482,9 +2220,7 @@ module ecrm =
     /// P145(x,y) ⊃ E39(y)
     /// P145(x,y) ⊃ P11(x,y)
     /// <see href="http://erlangen-crm.org/current/P145_separated"></see></summary>
-    let P145_separated =
-        Namespaced_IRI.parse _namespace_name "P145_separated" |> NamespacedName
-
+    let P145_separated = _prefix "P145_separated"
     /// <summary>
     /// Scope note:
     /// This property identifies the instance of E74 Group an instance of E39 Actor leaves through an instance of E86 Leaving.
@@ -2501,9 +2237,7 @@ module ecrm =
     /// P146(x,y) ⊃ E74(y)
     /// P146(x,y) ⊃ P11(x,y)
     /// <see href="http://erlangen-crm.org/current/P146_separated_from"></see></summary>
-    let P146_separated_from =
-        Namespaced_IRI.parse _namespace_name "P146_separated_from" |> NamespacedName
-
+    let P146_separated_from = _prefix "P146_separated_from"
     /// <summary>
     /// Scope note:
     /// This class comprises the activities that result in the continuity of management and the preservation and evolution of instances of E78 Collection, following an implicit or explicit curation plan.
@@ -2518,9 +2252,7 @@ module ecrm =
     /// In First Order Logic:
     /// E87(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E87_Curation_Activity"></see></summary>
-    let E87_Curation_Activity =
-        Namespaced_IRI.parse _namespace_name "E87_Curation_Activity" |> NamespacedName
-
+    let E87_Curation_Activity = _prefix "E87_Curation_Activity"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E87 Curation Activity with the instance of E78 Collection or collections with that is subject of athat curation activity following some implicit or explicit curation plan.
@@ -2534,9 +2266,7 @@ module ecrm =
     /// P147(x,y) ⊃ E87(x)
     /// P147(x,y) ⊃ E78(y)
     /// <see href="http://erlangen-crm.org/current/P147_curated"></see></summary>
-    let P147_curated =
-        Namespaced_IRI.parse _namespace_name "P147_curated" |> NamespacedName
-
+    let P147_curated = _prefix "P147_curated"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E89 Propositional Object with a structural part of it that is by itself an instance of E89 Propositional Object.
@@ -2548,21 +2278,15 @@ module ecrm =
     /// P148(x,y) ⊃ E89(x)
     /// P148(x,y) ⊃ E89(y)
     /// <see href="http://erlangen-crm.org/current/P148_has_component"></see></summary>
-    let P148_has_component =
-        Namespaced_IRI.parse _namespace_name "P148_has_component" |> NamespacedName
-
+    let P148_has_component = _prefix "P148_has_component"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P129i_is_subject_of"></see>
     /// </summary>
-    let P129i_is_subject_of =
-        Namespaced_IRI.parse _namespace_name "P129i_is_subject_of" |> NamespacedName
-
+    let P129i_is_subject_of = _prefix "P129i_is_subject_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P67i_is_referred_to_by"></see>
     /// </summary>
-    let P67i_is_referred_to_by =
-        Namespaced_IRI.parse _namespace_name "P67i_is_referred_to_by" |> NamespacedName
-
+    let P67i_is_referred_to_by = _prefix "P67i_is_referred_to_by"
     /// <summary>
     /// Scope note:
     /// This class comprises transfers of legal ownership from one or more instances of E39 Actor to one or more other instances of E39 Actor.
@@ -2585,9 +2309,7 @@ module ecrm =
     /// In First Order Logic:
     /// E8(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E8_Acquisition"></see></summary>
-    let E8_Acquisition =
-        Namespaced_IRI.parse _namespace_name "E8_Acquisition" |> NamespacedName
-
+    let E8_Acquisition = _prefix "E8_Acquisition"
     /// <summary>
     /// Scope note:
     /// This property identifies the E18 Physical Thing or things involved in an E8 Acquisition.
@@ -2601,9 +2323,7 @@ module ecrm =
     /// P24(x,y) ⊃ E8(x)
     /// P24(x,y) ⊃ E18(y)
     /// <see href="http://erlangen-crm.org/current/P24_transferred_title_of"></see></summary>
-    let P24_transferred_title_of =
-        Namespaced_IRI.parse _namespace_name "P24_transferred_title_of" |> NamespacedName
-
+    let P24_transferred_title_of = _prefix "P24_transferred_title_of"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E90 Symbolic Object with a part of it that is by itself an instance of E90 Symbolic Object, such as fragments of texts or clippings from an image. This property is transitive.
@@ -2616,9 +2336,7 @@ module ecrm =
     /// P106(x,y) ⊃ E90(x)
     /// P106(x,y) ⊃ E90(y)
     /// <see href="http://erlangen-crm.org/current/P106_is_composed_of"></see></summary>
-    let P106_is_composed_of =
-        Namespaced_IRI.parse _namespace_name "P106_is_composed_of" |> NamespacedName
-
+    let P106_is_composed_of = _prefix "P106_is_composed_of"
     /// <summary>
     /// Scope note:
     /// This class comprises instances of E92 Spacetime Volume that result from intersection of instances of
@@ -2629,9 +2347,7 @@ module ecrm =
     /// In First Order Logic:
     /// E93(x) ⊃ E92(x)
     /// <see href="http://erlangen-crm.org/current/E93_Presence"></see></summary>
-    let E93_Presence =
-        Namespaced_IRI.parse _namespace_name "E93_Presence" |> NamespacedName
-
+    let E93_Presence = _prefix "E93_Presence"
     /// <summary>
     /// Scope note:
     /// This class comprises changes of the physical location of the instances of E19 Physical Object.
@@ -2645,8 +2361,7 @@ module ecrm =
     /// In First Order Logic:
     /// E9(x) ⊃ E7(x)
     /// <see href="http://erlangen-crm.org/current/E9_Move"></see></summary>
-    let E9_Move = Namespaced_IRI.parse _namespace_name "E9_Move" |> NamespacedName
-
+    let E9_Move = _prefix "E9_Move"
     /// <summary>
     /// Scope note:
     /// This property identifies a starting E53 Place of an E9 Move.
@@ -2662,9 +2377,7 @@ module ecrm =
     /// P27(x,y) ⊃ E53(y)
     /// P27(x,y) ⊃ (z)[ E53(z) ∧ P7(x,z) ∧ P89(y,z)]
     /// <see href="http://erlangen-crm.org/current/P27_moved_from"></see></summary>
-    let P27_moved_from =
-        Namespaced_IRI.parse _namespace_name "P27_moved_from" |> NamespacedName
-
+    let P27_moved_from = _prefix "P27_moved_from"
     /// <summary>
     /// Scope note:
     /// This property identifies a destination of a E9 Move.
@@ -2680,9 +2393,7 @@ module ecrm =
     /// P26(x,y) ⊃ E53(y)
     /// P26(x,y) ⊃ (z)[ E53(z) ∧ P7(x,z) ∧ P89(y,z)]
     /// <see href="http://erlangen-crm.org/current/P26_moved_to"></see></summary>
-    let P26_moved_to =
-        Namespaced_IRI.parse _namespace_name "P26_moved_to" |> NamespacedName
-
+    let P26_moved_to = _prefix "P26_moved_to"
     /// <summary>
     /// Scope note:
     /// This property identifies an instance of E19 Physical Object that was moved by a move event. A move must concern at least one object.
@@ -2697,19 +2408,17 @@ module ecrm =
     /// P25(x,y) ⊃ E19(y)
     /// P25(x,y) ⊃ P12(x,y)
     /// <see href="http://erlangen-crm.org/current/P25_moved"></see></summary>
-    let P25_moved = Namespaced_IRI.parse _namespace_name "P25_moved" |> NamespacedName
-
+    let P25_moved = _prefix "P25_moved"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P100i_died_in"></see>
     /// </summary>
-    let P100i_died_in =
-        Namespaced_IRI.parse _namespace_name "P100i_died_in" |> NamespacedName
+    let P100i_died_in = _prefix "P100i_died_in"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P93i_was_taken_out_of_existence_by"></see>
     /// </summary>
     let P93i_was_taken_out_of_existence_by =
-        Namespaced_IRI.parse _namespace_name "P93i_was_taken_out_of_existence_by" |> NamespacedName
+        _prefix "P93i_was_taken_out_of_existence_by"
 
     /// <summary>
     /// Scope note:
@@ -2726,15 +2435,11 @@ module ecrm =
     /// P102(x,y,z) ⊃ [P102(x,y) ∧ E55(z)]
     /// P102(x,y) ⊃ P1(x,y)
     /// <see href="http://erlangen-crm.org/current/P101_had_as_general_use"></see></summary>
-    let P101_had_as_general_use =
-        Namespaced_IRI.parse _namespace_name "P101_had_as_general_use" |> NamespacedName
-
+    let P101_had_as_general_use = _prefix "P101_had_as_general_use"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P101i_was_use_of"></see>
     /// </summary>
-    let P101i_was_use_of =
-        Namespaced_IRI.parse _namespace_name "P101i_was_use_of" |> NamespacedName
-
+    let P101i_was_use_of = _prefix "P101i_was_use_of"
     /// <summary>
     /// Scope note:
     /// This property describes the E35 Title applied to an instance of E71 Man-Made Thing. The E55 Type of Title is assigned in a sub property.
@@ -2753,9 +2458,7 @@ module ecrm =
     ///
     /// Properties: P102.1 has type: E55 Type
     /// <see href="http://erlangen-crm.org/current/P102_has_title"></see></summary>
-    let P102_has_title =
-        Namespaced_IRI.parse _namespace_name "P102_has_title" |> NamespacedName
-
+    let P102_has_title = _prefix "P102_has_title"
     /// <summary>
     /// Scope note:
     /// This property describes the naming or identification of any real world item by a name or any other identifier.
@@ -2770,21 +2473,15 @@ module ecrm =
     /// P1(x,y) ⊃ E1(x)
     /// P1(x,y) ⊃ E41(y)
     /// <see href="http://erlangen-crm.org/current/P1_is_identified_by"></see></summary>
-    let P1_is_identified_by =
-        Namespaced_IRI.parse _namespace_name "P1_is_identified_by" |> NamespacedName
-
+    let P1_is_identified_by = _prefix "P1_is_identified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P102i_is_title_of"></see>
     /// </summary>
-    let P102i_is_title_of =
-        Namespaced_IRI.parse _namespace_name "P102i_is_title_of" |> NamespacedName
-
+    let P102i_is_title_of = _prefix "P102i_is_title_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P1i_identifies"></see>
     /// </summary>
-    let P1i_identifies =
-        Namespaced_IRI.parse _namespace_name "P1i_identifies" |> NamespacedName
-
+    let P1i_identifies = _prefix "P1i_identifies"
     /// <summary>
     /// Scope note:
     /// This property links an instance of E71 Man-Made Thing to an E55 Type of usage.
@@ -2798,44 +2495,36 @@ module ecrm =
     /// P103(x,y) ⊃ E71(x)
     /// P103(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P103_was_intended_for"></see></summary>
-    let P103_was_intended_for =
-        Namespaced_IRI.parse _namespace_name "P103_was_intended_for" |> NamespacedName
-
+    let P103_was_intended_for = _prefix "P103_was_intended_for"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P103i_was_intention_of"></see>
     /// </summary>
-    let P103i_was_intention_of =
-        Namespaced_IRI.parse _namespace_name "P103i_was_intention_of" |> NamespacedName
-
+    let P103i_was_intention_of = _prefix "P103i_was_intention_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P105i_has_right_on"></see>
     /// </summary>
-    let P105i_has_right_on =
-        Namespaced_IRI.parse _namespace_name "P105i_has_right_on" |> NamespacedName
-
+    let P105i_has_right_on = _prefix "P105i_has_right_on"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P106i_forms_part_of"></see>
     /// </summary>
-    let P106i_forms_part_of =
-        Namespaced_IRI.parse _namespace_name "P106i_forms_part_of" |> NamespacedName
+    let P106i_forms_part_of = _prefix "P106i_forms_part_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P107i_is_current_or_former_member_of"></see>
     /// </summary>
     let P107i_is_current_or_former_member_of =
-        Namespaced_IRI.parse _namespace_name "P107i_is_current_or_former_member_of" |> NamespacedName
+        _prefix "P107i_is_current_or_former_member_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P31i_was_modified_by"></see>
     /// </summary>
-    let P31i_was_modified_by =
-        Namespaced_IRI.parse _namespace_name "P31i_was_modified_by" |> NamespacedName
+    let P31i_was_modified_by = _prefix "P31i_was_modified_by"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P92i_was_brought_into_existence_by"></see>
     /// </summary>
     let P92i_was_brought_into_existence_by =
-        Namespaced_IRI.parse _namespace_name "P92i_was_brought_into_existence_by" |> NamespacedName
+        _prefix "P92i_was_brought_into_existence_by"
 
     /// <summary>
     /// Scope note:
@@ -2852,20 +2541,19 @@ module ecrm =
     /// P49(x,y) ⊃ E18(x)
     /// P49(x,y) ⊃ E39(y)
     /// <see href="http://erlangen-crm.org/current/P49_has_former_or_current_keeper"></see></summary>
-    let P49_has_former_or_current_keeper =
-        Namespaced_IRI.parse _namespace_name "P49_has_former_or_current_keeper" |> NamespacedName
+    let P49_has_former_or_current_keeper = _prefix "P49_has_former_or_current_keeper"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P109i_is_current_or_former_curator_of"></see>
     /// </summary>
     let P109i_is_current_or_former_curator_of =
-        Namespaced_IRI.parse _namespace_name "P109i_is_current_or_former_curator_of" |> NamespacedName
+        _prefix "P109i_is_current_or_former_curator_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P49i_is_former_or_current_keeper_of"></see>
     /// </summary>
     let P49i_is_former_or_current_keeper_of =
-        Namespaced_IRI.parse _namespace_name "P49i_is_former_or_current_keeper_of" |> NamespacedName
+        _prefix "P49i_is_former_or_current_keeper_of"
 
     /// <summary>
     /// Scope note:
@@ -2878,21 +2566,15 @@ module ecrm =
     /// P10(x,y) ⊃ E92(x)
     /// P10(x,y) ⊃ E92(y)
     /// <see href="http://erlangen-crm.org/current/P10_falls_within"></see></summary>
-    let P10_falls_within =
-        Namespaced_IRI.parse _namespace_name "P10_falls_within" |> NamespacedName
-
+    let P10_falls_within = _prefix "P10_falls_within"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P10i_contains"></see>
     /// </summary>
-    let P10i_contains =
-        Namespaced_IRI.parse _namespace_name "P10i_contains" |> NamespacedName
-
+    let P10i_contains = _prefix "P10i_contains"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P110i_was_augmented_by"></see>
     /// </summary>
-    let P110i_was_augmented_by =
-        Namespaced_IRI.parse _namespace_name "P110i_was_augmented_by" |> NamespacedName
-
+    let P110i_was_augmented_by = _prefix "P110i_was_augmented_by"
     /// <summary>
     /// Scope note:
     /// This property describes the use of material or immaterial things in a way essential to the performance or the outcome of an E7 Activity.
@@ -2914,39 +2596,27 @@ module ecrm =
     /// P16 (x,y) ⊃ P15(x,y)
     /// P16(x,y,z) ⊃ [P16(x,y) ∧ E55(z)]
     /// <see href="http://erlangen-crm.org/current/P16_used_specific_object"></see></summary>
-    let P16_used_specific_object =
-        Namespaced_IRI.parse _namespace_name "P16_used_specific_object" |> NamespacedName
-
+    let P16_used_specific_object = _prefix "P16_used_specific_object"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P111i_was_added_by"></see>
     /// </summary>
-    let P111i_was_added_by =
-        Namespaced_IRI.parse _namespace_name "P111i_was_added_by" |> NamespacedName
-
+    let P111i_was_added_by = _prefix "P111i_was_added_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P16i_was_used_for"></see>
     /// </summary>
-    let P16i_was_used_for =
-        Namespaced_IRI.parse _namespace_name "P16i_was_used_for" |> NamespacedName
-
+    let P16i_was_used_for = _prefix "P16i_was_used_for"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P112i_was_diminished_by"></see>
     /// </summary>
-    let P112i_was_diminished_by =
-        Namespaced_IRI.parse _namespace_name "P112i_was_diminished_by" |> NamespacedName
-
+    let P112i_was_diminished_by = _prefix "P112i_was_diminished_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P113i_was_removed_by"></see>
     /// </summary>
-    let P113i_was_removed_by =
-        Namespaced_IRI.parse _namespace_name "P113i_was_removed_by" |> NamespacedName
-
+    let P113i_was_removed_by = _prefix "P113i_was_removed_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P12i_was_present_at"></see>
     /// </summary>
-    let P12i_was_present_at =
-        Namespaced_IRI.parse _namespace_name "P12i_was_present_at" |> NamespacedName
-
+    let P12i_was_present_at = _prefix "P12i_was_present_at"
     /// <summary>
     /// Scope note:
     /// This symmetric property allows the instances of E2 Temporal Entity with the same E52 Time-Span to be equated.
@@ -2963,9 +2633,7 @@ module ecrm =
     /// P114(x,y) ⊃ E2(y)
     /// P114(x,y) ⊃ P114(y,x)
     /// <see href="http://erlangen-crm.org/current/P114_is_equal_in_time_to"></see></summary>
-    let P114_is_equal_in_time_to =
-        Namespaced_IRI.parse _namespace_name "P114_is_equal_in_time_to" |> NamespacedName
-
+    let P114_is_equal_in_time_to = _prefix "P114_is_equal_in_time_to"
     /// <summary>
     /// Scope note:
     /// This property allows the ending point for a E2 Temporal Entity to be situated by reference to the ending point of another temporal entity of longer duration.
@@ -2980,15 +2648,11 @@ module ecrm =
     /// P115(x,y) ⊃ E2(x)
     /// P115(x,y) ⊃ E2(y)
     /// <see href="http://erlangen-crm.org/current/P115_finishes"></see></summary>
-    let P115_finishes =
-        Namespaced_IRI.parse _namespace_name "P115_finishes" |> NamespacedName
-
+    let P115_finishes = _prefix "P115_finishes"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P115i_is_finished_by"></see>
     /// </summary>
-    let P115i_is_finished_by =
-        Namespaced_IRI.parse _namespace_name "P115i_is_finished_by" |> NamespacedName
-
+    let P115i_is_finished_by = _prefix "P115i_is_finished_by"
     /// <summary>
     /// Scope note:
     /// This property allows the starting point for a E2 Temporal Entity to be situated by reference to the starting point of another temporal entity of longer duration.
@@ -3002,15 +2666,11 @@ module ecrm =
     /// P116(x,y) ⊃ E2(x)
     /// P116(x,y) ⊃ E2(y)
     /// <see href="http://erlangen-crm.org/current/P116_starts"></see></summary>
-    let P116_starts =
-        Namespaced_IRI.parse _namespace_name "P116_starts" |> NamespacedName
-
+    let P116_starts = _prefix "P116_starts"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P116i_is_started_by"></see>
     /// </summary>
-    let P116i_is_started_by =
-        Namespaced_IRI.parse _namespace_name "P116i_is_started_by" |> NamespacedName
-
+    let P116i_is_started_by = _prefix "P116i_is_started_by"
     /// <summary>
     /// Scope note:
     /// This property allows the entire E52 Time-Span of an E2 Temporal Entity to be situated within the Time-Span of another temporal entity that starts before and ends after the included temporal entity.
@@ -3024,15 +2684,11 @@ module ecrm =
     /// P117(x,y) ⊃ E2(x)
     /// P117(x,y) ⊃ E2(y)
     /// <see href="http://erlangen-crm.org/current/P117_occurs_during"></see></summary>
-    let P117_occurs_during =
-        Namespaced_IRI.parse _namespace_name "P117_occurs_during" |> NamespacedName
-
+    let P117_occurs_during = _prefix "P117_occurs_during"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P117i_includes"></see>
     /// </summary>
-    let P117i_includes =
-        Namespaced_IRI.parse _namespace_name "P117i_includes" |> NamespacedName
-
+    let P117i_includes = _prefix "P117i_includes"
     /// <summary>
     /// Scope note:
     /// This property identifies an overlap between the instances of E52 Time-Span of two instances of E2 Temporal Entity.
@@ -3048,15 +2704,11 @@ module ecrm =
     /// P118(x,y) ⊃ E2(x)
     /// P118(x,y) ⊃ E2(y)
     /// <see href="http://erlangen-crm.org/current/P118_overlaps_in_time_with"></see></summary>
-    let P118_overlaps_in_time_with =
-        Namespaced_IRI.parse _namespace_name "P118_overlaps_in_time_with" |> NamespacedName
-
+    let P118_overlaps_in_time_with = _prefix "P118_overlaps_in_time_with"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P118i_is_overlapped_in_time_by"></see>
     /// </summary>
-    let P118i_is_overlapped_in_time_by =
-        Namespaced_IRI.parse _namespace_name "P118i_is_overlapped_in_time_by" |> NamespacedName
-
+    let P118i_is_overlapped_in_time_by = _prefix "P118i_is_overlapped_in_time_by"
     /// <summary>
     /// Scope note:
     /// This property indicates that one E2 Temporal Entity immediately follows another.
@@ -3072,15 +2724,11 @@ module ecrm =
     /// P119(x,y) ⊃ E2(x)
     /// P119(x,y) ⊃ E2(y)
     /// <see href="http://erlangen-crm.org/current/P119_meets_in_time_with"></see></summary>
-    let P119_meets_in_time_with =
-        Namespaced_IRI.parse _namespace_name "P119_meets_in_time_with" |> NamespacedName
-
+    let P119_meets_in_time_with = _prefix "P119_meets_in_time_with"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P119i_is_met_in_time_by"></see>
     /// </summary>
-    let P119i_is_met_in_time_by =
-        Namespaced_IRI.parse _namespace_name "P119i_is_met_in_time_by" |> NamespacedName
-
+    let P119i_is_met_in_time_by = _prefix "P119i_is_met_in_time_by"
     /// <summary>
     /// Scope note:
     /// This property describes the active or passive participation of instances of E39 Actors in an E5 Event.
@@ -3096,15 +2744,11 @@ module ecrm =
     /// P11(x,y) ⊃ E39(y)
     /// P11(x,y) ⊃ P12(x,y)
     /// <see href="http://erlangen-crm.org/current/P11_had_participant"></see></summary>
-    let P11_had_participant =
-        Namespaced_IRI.parse _namespace_name "P11_had_participant" |> NamespacedName
-
+    let P11_had_participant = _prefix "P11_had_participant"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P11i_participated_in"></see>
     /// </summary>
-    let P11i_participated_in =
-        Namespaced_IRI.parse _namespace_name "P11i_participated_in" |> NamespacedName
-
+    let P11i_participated_in = _prefix "P11i_participated_in"
     /// <summary>
     /// Scope note:
     /// This property identifies the relative chronological sequence of two temporal entities.
@@ -3120,15 +2764,11 @@ module ecrm =
     /// P120(x,y) ⊃ E2(x)
     /// P120(x,y) ⊃ E2(y)
     /// <see href="http://erlangen-crm.org/current/P120_occurs_before"></see></summary>
-    let P120_occurs_before =
-        Namespaced_IRI.parse _namespace_name "P120_occurs_before" |> NamespacedName
-
+    let P120_occurs_before = _prefix "P120_occurs_before"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P120i_occurs_after"></see>
     /// </summary>
-    let P120i_occurs_after =
-        Namespaced_IRI.parse _namespace_name "P120i_occurs_after" |> NamespacedName
-
+    let P120i_occurs_after = _prefix "P120i_occurs_after"
     /// <summary>
     /// Scope note:
     /// This symmetric property allows the instances of E53 Place with overlapping geometric extents to be associated with each other.
@@ -3143,9 +2783,7 @@ module ecrm =
     /// P121(x,y) ⊃ E53(y)
     /// P121(x,y) ⊃ P121(y,x)
     /// <see href="http://erlangen-crm.org/current/P121_overlaps_with"></see></summary>
-    let P121_overlaps_with =
-        Namespaced_IRI.parse _namespace_name "P121_overlaps_with" |> NamespacedName
-
+    let P121_overlaps_with = _prefix "P121_overlaps_with"
     /// <summary>
     /// Scope note:
     /// This symmetric property allows the instances of E53 Place which share common borders to be related as such.
@@ -3160,21 +2798,15 @@ module ecrm =
     /// P122(x,y) ⊃ E53(y)
     /// P122(x,y) ⊃ P122(y,x)
     /// <see href="http://erlangen-crm.org/current/P122_borders_with"></see></summary>
-    let P122_borders_with =
-        Namespaced_IRI.parse _namespace_name "P122_borders_with" |> NamespacedName
-
+    let P122_borders_with = _prefix "P122_borders_with"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P123i_resulted_from"></see>
     /// </summary>
-    let P123i_resulted_from =
-        Namespaced_IRI.parse _namespace_name "P123i_resulted_from" |> NamespacedName
-
+    let P123i_resulted_from = _prefix "P123i_resulted_from"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P124i_was_transformed_by"></see>
     /// </summary>
-    let P124i_was_transformed_by =
-        Namespaced_IRI.parse _namespace_name "P124i_was_transformed_by" |> NamespacedName
-
+    let P124i_was_transformed_by = _prefix "P124i_was_transformed_by"
     /// <summary>
     /// Scope note:
     /// This property defines the kind of objects used in an E7 Activity, when the specific instance is either unknown or not of interest, such as use of "a hammer".
@@ -3186,15 +2818,11 @@ module ecrm =
     /// P125(x,y) ⊃ E7(x)
     /// P125(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P125_used_object_of_type"></see></summary>
-    let P125_used_object_of_type =
-        Namespaced_IRI.parse _namespace_name "P125_used_object_of_type" |> NamespacedName
-
+    let P125_used_object_of_type = _prefix "P125_used_object_of_type"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P125i_was_type_of_object_used_in"></see>
     /// </summary>
-    let P125i_was_type_of_object_used_in =
-        Namespaced_IRI.parse _namespace_name "P125i_was_type_of_object_used_in" |> NamespacedName
-
+    let P125i_was_type_of_object_used_in = _prefix "P125i_was_type_of_object_used_in"
     /// <summary>
     /// Scope note:
     /// This property identifies E57 Material employed in an E11 Modification.
@@ -3209,15 +2837,11 @@ module ecrm =
     /// P126(x,y) ⊃ E11(x)
     /// P126(x,y) ⊃ E57(y)
     /// <see href="http://erlangen-crm.org/current/P126_employed"></see></summary>
-    let P126_employed =
-        Namespaced_IRI.parse _namespace_name "P126_employed" |> NamespacedName
-
+    let P126_employed = _prefix "P126_employed"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P126i_was_employed_in"></see>
     /// </summary>
-    let P126i_was_employed_in =
-        Namespaced_IRI.parse _namespace_name "P126i_was_employed_in" |> NamespacedName
-
+    let P126i_was_employed_in = _prefix "P126i_was_employed_in"
     /// <summary>
     /// Scope note:
     /// This property identifies a super-Type to which an E55 Type is related.
@@ -3231,15 +2855,11 @@ module ecrm =
     /// P127(x,y) ⊃ E55(x)
     /// P127(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P127_has_broader_term"></see></summary>
-    let P127_has_broader_term =
-        Namespaced_IRI.parse _namespace_name "P127_has_broader_term" |> NamespacedName
-
+    let P127_has_broader_term = _prefix "P127_has_broader_term"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P127i_has_narrower_term"></see>
     /// </summary>
-    let P127i_has_narrower_term =
-        Namespaced_IRI.parse _namespace_name "P127i_has_narrower_term" |> NamespacedName
-
+    let P127i_has_narrower_term = _prefix "P127i_has_narrower_term"
     /// <summary>
     /// Scope note:
     /// This property identifies an E90 Symbolic Object carried by an instance of E18 Physical Thing.
@@ -3253,9 +2873,7 @@ module ecrm =
     /// P128(x,y) ⊃ E90(y)
     /// P128(x,y) ⊃ P130(x,y)
     /// <see href="http://erlangen-crm.org/current/P128_carries"></see></summary>
-    let P128_carries =
-        Namespaced_IRI.parse _namespace_name "P128_carries" |> NamespacedName
-
+    let P128_carries = _prefix "P128_carries"
     /// <summary>
     /// Scope note:
     /// This property generalises the notions of "copy of" and "similar to" into a directed relationship, where the domain expresses the derivative, if such a direction can be established. Otherwise, the relationship is symmetric. If the reason for similarity is a sort of derivation process, i.e., that the creator has used or had in mind the form of a particular thing during the creation or production, this process should be explicitly modelled. Moreover it expresses similarity in cases that can be stated between two objects only, without historical knowledge about its reasons.
@@ -3272,21 +2890,15 @@ module ecrm =
     ///
     /// Properties: P130.1 kind of similarity: E55 Type
     /// <see href="http://erlangen-crm.org/current/P130_shows_features_of"></see></summary>
-    let P130_shows_features_of =
-        Namespaced_IRI.parse _namespace_name "P130_shows_features_of" |> NamespacedName
-
+    let P130_shows_features_of = _prefix "P130_shows_features_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P128i_is_carried_by"></see>
     /// </summary>
-    let P128i_is_carried_by =
-        Namespaced_IRI.parse _namespace_name "P128i_is_carried_by" |> NamespacedName
-
+    let P128i_is_carried_by = _prefix "P128i_is_carried_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P130i_features_are_also_found_on"></see>
     /// </summary>
-    let P130i_features_are_also_found_on =
-        Namespaced_IRI.parse _namespace_name "P130i_features_are_also_found_on" |> NamespacedName
-
+    let P130i_features_are_also_found_on = _prefix "P130i_features_are_also_found_on"
     /// <summary>
     /// Scope note:
     /// This property documents that an E89 Propositional Object has as subject an instance of E1 CRM Entity.
@@ -3301,9 +2913,7 @@ module ecrm =
     /// P129(x,y) ⊃ E1(y)
     /// P129(x,y) ⊃ P67(x,y)
     /// <see href="http://erlangen-crm.org/current/P129_is_about"></see></summary>
-    let P129_is_about =
-        Namespaced_IRI.parse _namespace_name "P129_is_about" |> NamespacedName
-
+    let P129_is_about = _prefix "P129_is_about"
     /// <summary>
     /// Scope note:
     /// This property documents that an E89 Propositional Object makes a statement about an instance of E1 CRM Entity. P67 refers to (is referred to by) has the P67.1 has type link to an instance of E55 Type. This is intended to allow a more detailed description of the type of reference. This differs from P129 is about (is subject of), which describes the primary subject or subjects of the E89 Propositional Object.
@@ -3318,9 +2928,7 @@ module ecrm =
     ///
     /// Properties: P67.1 has type: E55 Type
     /// <see href="http://erlangen-crm.org/current/P67_refers_to"></see></summary>
-    let P67_refers_to =
-        Namespaced_IRI.parse _namespace_name "P67_refers_to" |> NamespacedName
-
+    let P67_refers_to = _prefix "P67_refers_to"
     /// <summary>
     /// Scope note:
     /// This property identifies a name used specifically to identify an E39 Actor.
@@ -3335,15 +2943,11 @@ module ecrm =
     /// P131(x,y) ⊃ E82(y)
     /// P131(x,y) ⊃ P1(x,y)
     /// <see href="http://erlangen-crm.org/current/P131_is_identified_by"></see></summary>
-    let P131_is_identified_by =
-        Namespaced_IRI.parse _namespace_name "P131_is_identified_by" |> NamespacedName
-
+    let P131_is_identified_by = _prefix "P131_is_identified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P131i_identifies"></see>
     /// </summary>
-    let P131i_identifies =
-        Namespaced_IRI.parse _namespace_name "P131i_identifies" |> NamespacedName
-
+    let P131i_identifies = _prefix "P131i_identifies"
     /// <summary>
     /// Scope note:
     /// This symmetric property associates two instances of E92 Spacetime Volume that have some of their extent in common.
@@ -3356,9 +2960,7 @@ module ecrm =
     /// P132(x,y) ⊃ E92(y)
     /// P132(x,y) ⊃ P132(y,x)
     /// <see href="http://erlangen-crm.org/current/P132_overlaps_with"></see></summary>
-    let P132_overlaps_with =
-        Namespaced_IRI.parse _namespace_name "P132_overlaps_with" |> NamespacedName
-
+    let P132_overlaps_with = _prefix "P132_overlaps_with"
     /// <summary>
     /// Scope note:
     /// This symmetric property associates two instances of E92 Spacetime Volume that have no extent in common
@@ -3371,9 +2973,7 @@ module ecrm =
     /// P133(x,y) ⊃ E92(y)
     /// P133(x,y) ⊃ P133(y,x)
     /// <see href="http://erlangen-crm.org/current/P133_is_separated_from"></see></summary>
-    let P133_is_separated_from =
-        Namespaced_IRI.parse _namespace_name "P133_is_separated_from" |> NamespacedName
-
+    let P133_is_separated_from = _prefix "P133_is_separated_from"
     /// <summary>
     /// Scope note:
     /// This property associates two instances of E7 Activity, where the domain is considered as an intentional continuation of the range. A continuation of an activity may happen when the continued activity is still ongoing or after the continued activity has completely ended. The continuing activity may have started already before it decided to continue the other one. Continuation implies a coherence of intentions and outcomes of the involved activities.
@@ -3386,9 +2986,7 @@ module ecrm =
     /// P134(x,y)⊃ E7(y)
     /// P134(x,y) ⊃ P15(x,y)
     /// <see href="http://erlangen-crm.org/current/P134_continued"></see></summary>
-    let P134_continued =
-        Namespaced_IRI.parse _namespace_name "P134_continued" |> NamespacedName
-
+    let P134_continued = _prefix "P134_continued"
     /// <summary>
     /// Scope note:
     /// This is a high level property, which captures the relationship between an E7 Activity and anything that may have had some bearing upon it.
@@ -3402,21 +3000,15 @@ module ecrm =
     /// P15 (x,y) ⊃ E7(x)
     /// P15 (x,y) ⊃ E1(y)
     /// <see href="http://erlangen-crm.org/current/P15_was_influenced_by"></see></summary>
-    let P15_was_influenced_by =
-        Namespaced_IRI.parse _namespace_name "P15_was_influenced_by" |> NamespacedName
-
+    let P15_was_influenced_by = _prefix "P15_was_influenced_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P134i_was_continued_by"></see>
     /// </summary>
-    let P134i_was_continued_by =
-        Namespaced_IRI.parse _namespace_name "P134i_was_continued_by" |> NamespacedName
-
+    let P134i_was_continued_by = _prefix "P134i_was_continued_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P15i_influenced"></see>
     /// </summary>
-    let P15i_influenced =
-        Namespaced_IRI.parse _namespace_name "P15i_influenced" |> NamespacedName
-
+    let P15i_influenced = _prefix "P15i_influenced"
     /// <summary>
     /// Scope note:
     /// This property identifies one or more items that were used as evidence to declare a new E55 Type.
@@ -3434,15 +3026,11 @@ module ecrm =
     ///
     /// Properties: P136.1 in the taxonomic role: E55 Type
     /// <see href="http://erlangen-crm.org/current/P136_was_based_on"></see></summary>
-    let P136_was_based_on =
-        Namespaced_IRI.parse _namespace_name "P136_was_based_on" |> NamespacedName
-
+    let P136_was_based_on = _prefix "P136_was_based_on"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P136i_supported_type_creation"></see>
     /// </summary>
-    let P136i_supported_type_creation =
-        Namespaced_IRI.parse _namespace_name "P136i_supported_type_creation" |> NamespacedName
-
+    let P136i_supported_type_creation = _prefix "P136i_supported_type_creation"
     /// <summary>
     /// Scope note:
     /// This property allows an item to be declared as a particular example of an E55 Type or taxon
@@ -3459,9 +3047,7 @@ module ecrm =
     ///
     /// Properties: P137.1 in the taxonomic role: E55 Type
     /// <see href="http://erlangen-crm.org/current/P137_exemplifies"></see></summary>
-    let P137_exemplifies =
-        Namespaced_IRI.parse _namespace_name "P137_exemplifies" |> NamespacedName
-
+    let P137_exemplifies = _prefix "P137_exemplifies"
     /// <summary>
     /// Scope note:
     /// This property allows sub typing of CRM entities - a form of specialisation – through the use of a terminological hierarchy, or thesaurus.
@@ -3475,21 +3061,15 @@ module ecrm =
     /// P2(x,y) ⊃ E1(x)
     /// P2(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P2_has_type"></see></summary>
-    let P2_has_type =
-        Namespaced_IRI.parse _namespace_name "P2_has_type" |> NamespacedName
-
+    let P2_has_type = _prefix "P2_has_type"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P137i_is_exemplified_by"></see>
     /// </summary>
-    let P137i_is_exemplified_by =
-        Namespaced_IRI.parse _namespace_name "P137i_is_exemplified_by" |> NamespacedName
-
+    let P137i_is_exemplified_by = _prefix "P137i_is_exemplified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P2i_is_type_of"></see>
     /// </summary>
-    let P2i_is_type_of =
-        Namespaced_IRI.parse _namespace_name "P2i_is_type_of" |> NamespacedName
-
+    let P2i_is_type_of = _prefix "P2i_is_type_of"
     /// <summary>
     /// Scope note:
     /// This property establishes the relationship between an E36 Visual Item and the entity that it visually represents.
@@ -3510,15 +3090,11 @@ module ecrm =
     /// P138(x,y,z) ⊃ [P138(x,y) ∧ E55(z)]
     /// P138(x,y) ⊃ P67(x,y)
     /// <see href="http://erlangen-crm.org/current/P138_represents"></see></summary>
-    let P138_represents =
-        Namespaced_IRI.parse _namespace_name "P138_represents" |> NamespacedName
-
+    let P138_represents = _prefix "P138_represents"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P138i_has_representation"></see>
     /// </summary>
-    let P138i_has_representation =
-        Namespaced_IRI.parse _namespace_name "P138i_has_representation" |> NamespacedName
-
+    let P138i_has_representation = _prefix "P138i_has_representation"
     /// <summary>
     /// Scope note:
     /// This property establishes a relationship of equivalence between two instances of E41 Appellation independent from any item identified by them. It is a dynamic asymmetric relationship, where the range expresses the derivative, if such a direction can be established. Otherwise, the relationship is symmetric. The relationship is not transitive.
@@ -3540,15 +3116,11 @@ module ecrm =
     ///
     /// Properties: P139.1 has type: E55 Type
     /// <see href="http://erlangen-crm.org/current/P139_has_alternative_form"></see></summary>
-    let P139_has_alternative_form =
-        Namespaced_IRI.parse _namespace_name "P139_has_alternative_form" |> NamespacedName
-
+    let P139_has_alternative_form = _prefix "P139_has_alternative_form"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P140i_was_attributed_by"></see>
     /// </summary>
-    let P140i_was_attributed_by =
-        Namespaced_IRI.parse _namespace_name "P140i_was_attributed_by" |> NamespacedName
-
+    let P140i_was_attributed_by = _prefix "P140i_was_attributed_by"
     /// <summary>
     /// Scope note:
     /// This property indicates the attribute that was assigned or the item that was related to the item denoted by a property P140 assigned attribute to in an Attribute assignment action.
@@ -3561,15 +3133,11 @@ module ecrm =
     /// P141(x,y) ⊃ E13(x)
     /// P141(x,y) ⊃ E1(y)
     /// <see href="http://erlangen-crm.org/current/P141_assigned"></see></summary>
-    let P141_assigned =
-        Namespaced_IRI.parse _namespace_name "P141_assigned" |> NamespacedName
-
+    let P141_assigned = _prefix "P141_assigned"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P141i_was_assigned_by"></see>
     /// </summary>
-    let P141i_was_assigned_by =
-        Namespaced_IRI.parse _namespace_name "P141i_was_assigned_by" |> NamespacedName
-
+    let P141i_was_assigned_by = _prefix "P141i_was_assigned_by"
     /// <summary>
     /// Scope note:
     /// This property associates the event of assigning an instance of E42 Identifier with the instances of E90 Symbolic Object that were used as constituents of the identifier.
@@ -3586,39 +3154,27 @@ module ecrm =
     /// P142(x,y) ⊃ E90(y)
     /// P142(x,y) ⊃ P16(x,y)
     /// <see href="http://erlangen-crm.org/current/P142_used_constituent"></see></summary>
-    let P142_used_constituent =
-        Namespaced_IRI.parse _namespace_name "P142_used_constituent" |> NamespacedName
-
+    let P142_used_constituent = _prefix "P142_used_constituent"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P142i_was_used_in"></see>
     /// </summary>
-    let P142i_was_used_in =
-        Namespaced_IRI.parse _namespace_name "P142i_was_used_in" |> NamespacedName
-
+    let P142i_was_used_in = _prefix "P142i_was_used_in"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P143i_was_joined_by"></see>
     /// </summary>
-    let P143i_was_joined_by =
-        Namespaced_IRI.parse _namespace_name "P143i_was_joined_by" |> NamespacedName
-
+    let P143i_was_joined_by = _prefix "P143i_was_joined_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P145i_left_by"></see>
     /// </summary>
-    let P145i_left_by =
-        Namespaced_IRI.parse _namespace_name "P145i_left_by" |> NamespacedName
-
+    let P145i_left_by = _prefix "P145i_left_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P147i_was_curated_by"></see>
     /// </summary>
-    let P147i_was_curated_by =
-        Namespaced_IRI.parse _namespace_name "P147i_was_curated_by" |> NamespacedName
-
+    let P147i_was_curated_by = _prefix "P147i_was_curated_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P148i_is_component_of"></see>
     /// </summary>
-    let P148i_is_component_of =
-        Namespaced_IRI.parse _namespace_name "P148i_is_component_of" |> NamespacedName
-
+    let P148i_is_component_of = _prefix "P148i_is_component_of"
     /// <summary>
     /// Scope note:
     /// This property identifies an instance of E28 Conceptual Object using an instance of E75 Conceptual Object Appellation.
@@ -3631,21 +3187,15 @@ module ecrm =
     /// P149(x,y) ⊃ E75(y)
     /// P149(x,y) ⊃ P1(x,y)
     /// <see href="http://erlangen-crm.org/current/P149_is_identified_by"></see></summary>
-    let P149_is_identified_by =
-        Namespaced_IRI.parse _namespace_name "P149_is_identified_by" |> NamespacedName
-
+    let P149_is_identified_by = _prefix "P149_is_identified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P149i_identifies"></see>
     /// </summary>
-    let P149i_identifies =
-        Namespaced_IRI.parse _namespace_name "P149i_identifies" |> NamespacedName
-
+    let P149i_identifies = _prefix "P149i_identifies"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P14i_performed"></see>
     /// </summary>
-    let P14i_performed =
-        Namespaced_IRI.parse _namespace_name "P14i_performed" |> NamespacedName
-
+    let P14i_performed = _prefix "P14i_performed"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E55 Type “A” with an instance of E55 Type “B”, when items of type “A” typically form part of items of type “B”, such as “car motors” and “cars”. It allows types to be organised into hierarchies based on one type describing a typical part of another. This property is equivalent to "broader term partitive (BTP)" as defined in ISO 2788 and “broaderPartitive” in SKOS.
@@ -3657,15 +3207,11 @@ module ecrm =
     /// P150(x,y) ⊃ (E55 Type)
     /// P150(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P150_defines_typical_parts_of"></see></summary>
-    let P150_defines_typical_parts_of =
-        Namespaced_IRI.parse _namespace_name "P150_defines_typical_parts_of" |> NamespacedName
-
+    let P150_defines_typical_parts_of = _prefix "P150_defines_typical_parts_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P150i_defines_typical_wholes_for"></see>
     /// </summary>
-    let P150i_defines_typical_wholes_for =
-        Namespaced_IRI.parse _namespace_name "P150i_defines_typical_wholes_for" |> NamespacedName
-
+    let P150i_defines_typical_wholes_for = _prefix "P150i_defines_typical_wholes_for"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E66 Formation with an instance of E74 Group from which the
@@ -3679,21 +3225,15 @@ module ecrm =
     /// P151(x,y) ⊃ E74(y)
     /// P151(x,y) ⊃ P11(x,y)
     /// <see href="http://erlangen-crm.org/current/P151_was_formed_from"></see></summary>
-    let P151_was_formed_from =
-        Namespaced_IRI.parse _namespace_name "P151_was_formed_from" |> NamespacedName
-
+    let P151_was_formed_from = _prefix "P151_was_formed_from"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P151i_participated_in"></see>
     /// </summary>
-    let P151i_participated_in =
-        Namespaced_IRI.parse _namespace_name "P151i_participated_in" |> NamespacedName
-
+    let P151i_participated_in = _prefix "P151i_participated_in"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P152i_is_parent_of"></see>
     /// </summary>
-    let P152i_is_parent_of =
-        Namespaced_IRI.parse _namespace_name "P152i_is_parent_of" |> NamespacedName
-
+    let P152i_is_parent_of = _prefix "P152i_is_parent_of"
     /// <summary>
     /// Scope note:
     /// This property describes the largest volume in space that an instance of E18 Physical Thing has occupied at any time during its existence, with respect to the reference space relative to itself. This allows you to describe the thing itself as a place that may contain other things, such as a box that may contain coins. In other words, it is the volume that contains all the points which the thing has covered at some time during its existence. In the case of an E26 Physical Feature the default reference space is the one in which the object that bears the feature or at least the surrounding matter of the feature is at rest. In this case there is a 1:1 relation of E26 Feature and E53 Place. For simplicity of implementation multiple inheritance (E26 Feature IsA E53 Place) may be a practical approach.
@@ -3708,9 +3248,7 @@ module ecrm =
     /// In First Order Logic:
     /// P156 (x,y) = [E18(x) ∧ E53(y) ∧ P161(x,y) ∧ P157(y,x)]
     /// <see href="http://erlangen-crm.org/current/P156_occupies"></see></summary>
-    let P156_occupies =
-        Namespaced_IRI.parse _namespace_name "P156_occupies" |> NamespacedName
-
+    let P156_occupies = _prefix "P156_occupies"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of a E92 Spacetime Volume with an instance of E53 Place that is the result of the spatial projection of the instance of a E92 Spacetime Volume on a reference space. In general there can be more than one useful reference space to describe the spatial projection of a spacetime volume, such as that of a battle ship versus that of the seafloor. Therefore the projection is not unique.
@@ -3722,9 +3260,7 @@ module ecrm =
     /// P161(x,y) ⊃ E92(x)
     /// P161(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P161_has_spatial_projection"></see></summary>
-    let P161_has_spatial_projection =
-        Namespaced_IRI.parse _namespace_name "P161_has_spatial_projection" |> NamespacedName
-
+    let P161_has_spatial_projection = _prefix "P161_has_spatial_projection"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E53 Place with the instance of E18 Physical Thing that determines a reference space for this instance of E53 Place by being at rest with respect to this reference space. The relative stability of form of an E18 Physical Thing defines its default reference space. The reference space is not spatially limited to the referred thing. For example, a ship determines a reference space in terms of which other ships in its neighbourhood may be described. Larger constellations of matter, such as continental plates, may comprise many physical features that are at rest with them and define the same reference space.
@@ -3737,14 +3273,13 @@ module ecrm =
     /// P157(x,y) ⊃ E53(x)
     /// P157(x,y) ⊃ E18(y)
     /// <see href="http://erlangen-crm.org/current/P157_is_at_rest_relative_to"></see></summary>
-    let P157_is_at_rest_relative_to =
-        Namespaced_IRI.parse _namespace_name "P157_is_at_rest_relative_to" |> NamespacedName
+    let P157_is_at_rest_relative_to = _prefix "P157_is_at_rest_relative_to"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P157i_provides_reference_space_for"></see>
     /// </summary>
     let P157i_provides_reference_space_for =
-        Namespaced_IRI.parse _namespace_name "P157i_provides_reference_space_for" |> NamespacedName
+        _prefix "P157i_provides_reference_space_for"
 
     /// <summary>
     /// Scope note:
@@ -3756,9 +3291,7 @@ module ecrm =
     /// P160(x,y) ⊃ E92(x)
     /// P160(x,y)⊃ E52(y)
     /// <see href="http://erlangen-crm.org/current/P160_has_temporal_projection"></see></summary>
-    let P160_has_temporal_projection =
-        Namespaced_IRI.parse _namespace_name "P160_has_temporal_projection" |> NamespacedName
-
+    let P160_has_temporal_projection = _prefix "P160_has_temporal_projection"
     /// <summary>
     /// Scope note:
     /// This property relates an E93 Presence with an arbitrary E52 Time-Span that defines the section of the spacetime volume that this instance of E93 Presence is related to by P166 was a presence of (had presence). that is concerned by this instance of E93 Presence.
@@ -3769,15 +3302,11 @@ module ecrm =
     /// P164 (x,y) ⊃ E93(x)
     /// P164 (x,y) ⊃ E52(y)
     /// <see href="http://erlangen-crm.org/current/P164_during"></see></summary>
-    let P164_during =
-        Namespaced_IRI.parse _namespace_name "P164_during" |> NamespacedName
-
+    let P164_during = _prefix "P164_during"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P164i_was_time-span_of"></see>
     /// </summary>
-    let ``P164i_was_time-span_of`` =
-        Namespaced_IRI.parse _namespace_name "P164i_was_time-span_of" |> NamespacedName
-
+    let ``P164i_was_time-span_of`` = _prefix "P164i_was_time-span_of"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E73 Information Object with an instance of E90 Symbolic Object (or any of its subclasses) that was included in it.
@@ -3796,15 +3325,11 @@ module ecrm =
     /// P165(x,y) ⊃ E90(y)
     /// P165(x,y) ⊃ P106(x,y)
     /// <see href="http://erlangen-crm.org/current/P165_incorporates"></see></summary>
-    let P165_incorporates =
-        Namespaced_IRI.parse _namespace_name "P165_incorporates" |> NamespacedName
-
+    let P165_incorporates = _prefix "P165_incorporates"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P165i_is_incorporated_in"></see>
     /// </summary>
-    let P165i_is_incorporated_in =
-        Namespaced_IRI.parse _namespace_name "P165i_is_incorporated_in" |> NamespacedName
-
+    let P165i_is_incorporated_in = _prefix "P165i_is_incorporated_in"
     /// <summary>
     /// Scope Note:
     /// This property relates an E93 Presence with the STV it is part of...
@@ -3813,15 +3338,11 @@ module ecrm =
     /// P166(x,y) ⊃ E93(x)
     /// P166(x,y) ⊃ E92(y)
     /// <see href="http://erlangen-crm.org/current/P166_was_a_presence_of"></see></summary>
-    let P166_was_a_presence_of =
-        Namespaced_IRI.parse _namespace_name "P166_was_a_presence_of" |> NamespacedName
-
+    let P166_was_a_presence_of = _prefix "P166_was_a_presence_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P166i_had_presence"></see>
     /// </summary>
-    let P166i_had_presence =
-        Namespaced_IRI.parse _namespace_name "P166i_had_presence" |> NamespacedName
-
+    let P166i_had_presence = _prefix "P166i_had_presence"
     /// <summary>
     /// Scope Note:
     /// This property points to a wider area in which my thing /event was ...
@@ -3830,14 +3351,11 @@ module ecrm =
     /// P167(x,y) ⊃ E93(x)
     /// P167(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P167_at"></see></summary>
-    let P167_at = Namespaced_IRI.parse _namespace_name "P167_at" |> NamespacedName
-
+    let P167_at = _prefix "P167_at"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P167i_was_place_of"></see>
     /// </summary>
-    let P167i_was_place_of =
-        Namespaced_IRI.parse _namespace_name "P167i_was_place_of" |> NamespacedName
-
+    let P167i_was_place_of = _prefix "P167i_was_place_of"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E53 Place with an instance of E94 Space Primitive that defines it. Syntactic variants or use of different scripts may result in multiple instances of E94 Space Primitive defining exactly the same place. Transformations between different reference systems in general result in new definitions of places approximating each other and not in alternative definitions. Note that it is possible for a place to be defined by phenomena causal to it or other forms of identification rather than by an instance of E94 Space Primitive. In this case, this property must not be used for approximating the respective instance of E53 Place with an instance of E94 Space Primitive.
@@ -3846,9 +3364,7 @@ module ecrm =
     /// P168(x,y) ⊃ E53(x)
     /// P168(x,y) ⊃ E94(y)
     /// <see href="http://erlangen-crm.org/current/P168_place_is_defined_by"></see></summary>
-    let P168_place_is_defined_by =
-        Namespaced_IRI.parse _namespace_name "P168_place_is_defined_by" |> NamespacedName
-
+    let P168_place_is_defined_by = _prefix "P168_place_is_defined_by"
     /// <summary>
     /// Scope note:
     /// This property describes an item or items that are regarded as a reason for carrying out the E7 Activity.
@@ -3864,15 +3380,11 @@ module ecrm =
     /// P17(x,y) ⊃ E1(y)
     /// P17 (x,y) ⊃ P15(x,y)
     /// <see href="http://erlangen-crm.org/current/P17_was_motivated_by"></see></summary>
-    let P17_was_motivated_by =
-        Namespaced_IRI.parse _namespace_name "P17_was_motivated_by" |> NamespacedName
-
+    let P17_was_motivated_by = _prefix "P17_was_motivated_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P17i_motivated"></see>
     /// </summary>
-    let P17i_motivated =
-        Namespaced_IRI.parse _namespace_name "P17i_motivated" |> NamespacedName
-
+    let P17i_motivated = _prefix "P17i_motivated"
     /// <summary>
     /// Scope note:
     /// This property relates an E7 Activity with objects created specifically for use in the activity.
@@ -3889,15 +3401,11 @@ module ecrm =
     ///
     /// Properties: P19.1 mode of use: E55 Type
     /// <see href="http://erlangen-crm.org/current/P19_was_intended_use_of"></see></summary>
-    let P19_was_intended_use_of =
-        Namespaced_IRI.parse _namespace_name "P19_was_intended_use_of" |> NamespacedName
-
+    let P19_was_intended_use_of = _prefix "P19_was_intended_use_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P19i_was_made_for"></see>
     /// </summary>
-    let P19i_was_made_for =
-        Namespaced_IRI.parse _namespace_name "P19i_was_made_for" |> NamespacedName
-
+    let P19i_was_made_for = _prefix "P19i_was_made_for"
     /// <summary>
     /// Scope note:
     /// This property identifies the relationship between a preparatory activity and the event it is intended to be preparation for.
@@ -3913,15 +3421,11 @@ module ecrm =
     /// P21(x,y) ⊃ E7(x)
     /// P21(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P20_had_specific_purpose"></see></summary>
-    let P20_had_specific_purpose =
-        Namespaced_IRI.parse _namespace_name "P20_had_specific_purpose" |> NamespacedName
-
+    let P20_had_specific_purpose = _prefix "P20_had_specific_purpose"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P20i_was_purpose_of"></see>
     /// </summary>
-    let P20i_was_purpose_of =
-        Namespaced_IRI.parse _namespace_name "P20i_was_purpose_of" |> NamespacedName
-
+    let P20i_was_purpose_of = _prefix "P20i_was_purpose_of"
     /// <summary>
     /// Scope note:
     /// This property describes an intentional relationship between an E7 Activity and some general goal or purpose.
@@ -3937,15 +3441,11 @@ module ecrm =
     /// P21(x,y) ⊃ E7(x)
     /// P21(x,y) ⊃ E55(y)
     /// <see href="http://erlangen-crm.org/current/P21_had_general_purpose"></see></summary>
-    let P21_had_general_purpose =
-        Namespaced_IRI.parse _namespace_name "P21_had_general_purpose" |> NamespacedName
-
+    let P21_had_general_purpose = _prefix "P21_had_general_purpose"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P21i_was_purpose_of"></see>
     /// </summary>
-    let P21i_was_purpose_of =
-        Namespaced_IRI.parse _namespace_name "P21i_was_purpose_of" |> NamespacedName
-
+    let P21i_was_purpose_of = _prefix "P21i_was_purpose_of"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor that acquires the legal ownership of an object as a result of an E8 Acquisition.
@@ -3962,15 +3462,11 @@ module ecrm =
     /// P22(x,y) ⊃ E39(y)
     /// P22 (x,y) ⊃ P14(x,y)
     /// <see href="http://erlangen-crm.org/current/P22_transferred_title_to"></see></summary>
-    let P22_transferred_title_to =
-        Namespaced_IRI.parse _namespace_name "P22_transferred_title_to" |> NamespacedName
-
+    let P22_transferred_title_to = _prefix "P22_transferred_title_to"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P22i_acquired_title_through"></see>
     /// </summary>
-    let P22i_acquired_title_through =
-        Namespaced_IRI.parse _namespace_name "P22i_acquired_title_through" |> NamespacedName
-
+    let P22i_acquired_title_through = _prefix "P22i_acquired_title_through"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor or Actors who relinquish legal ownership as the result of an E8 Acquisition.
@@ -3985,45 +3481,31 @@ module ecrm =
     /// P23(x,y) ⊃ E39(y)
     /// P23 (x,y) ⊃ P14(x,y)
     /// <see href="http://erlangen-crm.org/current/P23_transferred_title_from"></see></summary>
-    let P23_transferred_title_from =
-        Namespaced_IRI.parse _namespace_name "P23_transferred_title_from" |> NamespacedName
-
+    let P23_transferred_title_from = _prefix "P23_transferred_title_from"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P23i_surrendered_title_through"></see>
     /// </summary>
-    let P23i_surrendered_title_through =
-        Namespaced_IRI.parse _namespace_name "P23i_surrendered_title_through" |> NamespacedName
-
+    let P23i_surrendered_title_through = _prefix "P23i_surrendered_title_through"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P24i_changed_ownership_through"></see>
     /// </summary>
-    let P24i_changed_ownership_through =
-        Namespaced_IRI.parse _namespace_name "P24i_changed_ownership_through" |> NamespacedName
-
+    let P24i_changed_ownership_through = _prefix "P24i_changed_ownership_through"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P25i_moved_by"></see>
     /// </summary>
-    let P25i_moved_by =
-        Namespaced_IRI.parse _namespace_name "P25i_moved_by" |> NamespacedName
-
+    let P25i_moved_by = _prefix "P25i_moved_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P26i_was_destination_of"></see>
     /// </summary>
-    let P26i_was_destination_of =
-        Namespaced_IRI.parse _namespace_name "P26i_was_destination_of" |> NamespacedName
-
+    let P26i_was_destination_of = _prefix "P26i_was_destination_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P7i_witnessed"></see>
     /// </summary>
-    let P7i_witnessed =
-        Namespaced_IRI.parse _namespace_name "P7i_witnessed" |> NamespacedName
-
+    let P7i_witnessed = _prefix "P7i_witnessed"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P27i_was_origin_of"></see>
     /// </summary>
-    let P27i_was_origin_of =
-        Namespaced_IRI.parse _namespace_name "P27i_was_origin_of" |> NamespacedName
-
+    let P27i_was_origin_of = _prefix "P27i_was_origin_of"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor or Actors who surrender custody of an instance of E18 Physical Thing in an E10 Transfer of Custody activity.
@@ -4039,15 +3521,11 @@ module ecrm =
     /// P28(x,y) ⊃ E39(y)
     /// P28(x,y) ⊃ P14(x,y)
     /// <see href="http://erlangen-crm.org/current/P28_custody_surrendered_by"></see></summary>
-    let P28_custody_surrendered_by =
-        Namespaced_IRI.parse _namespace_name "P28_custody_surrendered_by" |> NamespacedName
-
+    let P28_custody_surrendered_by = _prefix "P28_custody_surrendered_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P28i_surrendered_custody_through"></see>
     /// </summary>
-    let P28i_surrendered_custody_through =
-        Namespaced_IRI.parse _namespace_name "P28i_surrendered_custody_through" |> NamespacedName
-
+    let P28i_surrendered_custody_through = _prefix "P28i_surrendered_custody_through"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor or Actors who receive custody of an instance of E18 Physical Thing in an E10 Transfer of Custody activity.
@@ -4063,21 +3541,15 @@ module ecrm =
     /// P29 (x,y) ⊃ E39(y)
     /// P29(x,y) ⊃ P14(x,y)
     /// <see href="http://erlangen-crm.org/current/P29_custody_received_by"></see></summary>
-    let P29_custody_received_by =
-        Namespaced_IRI.parse _namespace_name "P29_custody_received_by" |> NamespacedName
-
+    let P29_custody_received_by = _prefix "P29_custody_received_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P29i_received_custody_through"></see>
     /// </summary>
-    let P29i_received_custody_through =
-        Namespaced_IRI.parse _namespace_name "P29i_received_custody_through" |> NamespacedName
-
+    let P29i_received_custody_through = _prefix "P29i_received_custody_through"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P30i_custody_transferred_through"></see>
     /// </summary>
-    let P30i_custody_transferred_through =
-        Namespaced_IRI.parse _namespace_name "P30i_custody_transferred_through" |> NamespacedName
-
+    let P30i_custody_transferred_through = _prefix "P30i_custody_transferred_through"
     /// <summary>
     /// Scope note:
     /// This property identifies the technique or method that was employed in   an activity.
@@ -4092,15 +3564,11 @@ module ecrm =
     /// P32(x,y) ⊃ E55(y)
     /// P32(x,y) ⊃ P125(x,y)
     /// <see href="http://erlangen-crm.org/current/P32_used_general_technique"></see></summary>
-    let P32_used_general_technique =
-        Namespaced_IRI.parse _namespace_name "P32_used_general_technique" |> NamespacedName
-
+    let P32_used_general_technique = _prefix "P32_used_general_technique"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P32i_was_technique_of"></see>
     /// </summary>
-    let P32i_was_technique_of =
-        Namespaced_IRI.parse _namespace_name "P32i_was_technique_of" |> NamespacedName
-
+    let P32i_was_technique_of = _prefix "P32i_was_technique_of"
     /// <summary>
     /// Scope note:
     /// This property identifies a specific instance of E29 Design or Procedure in order to carry out an instance of E7 Activity or parts of it.
@@ -4118,33 +3586,23 @@ module ecrm =
     /// P33(x,y) ⊃ E29(y)
     /// P33(x,y) ⊃ P16(x,y)
     /// <see href="http://erlangen-crm.org/current/P33_used_specific_technique"></see></summary>
-    let P33_used_specific_technique =
-        Namespaced_IRI.parse _namespace_name "P33_used_specific_technique" |> NamespacedName
-
+    let P33_used_specific_technique = _prefix "P33_used_specific_technique"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P33i_was_used_by"></see>
     /// </summary>
-    let P33i_was_used_by =
-        Namespaced_IRI.parse _namespace_name "P33i_was_used_by" |> NamespacedName
-
+    let P33i_was_used_by = _prefix "P33i_was_used_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P34i_was_assessed_by"></see>
     /// </summary>
-    let P34i_was_assessed_by =
-        Namespaced_IRI.parse _namespace_name "P34i_was_assessed_by" |> NamespacedName
-
+    let P34i_was_assessed_by = _prefix "P34i_was_assessed_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P35i_was_identified_by"></see>
     /// </summary>
-    let P35i_was_identified_by =
-        Namespaced_IRI.parse _namespace_name "P35i_was_identified_by" |> NamespacedName
-
+    let P35i_was_identified_by = _prefix "P35i_was_identified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P37i_was_assigned_by"></see>
     /// </summary>
-    let P37i_was_assigned_by =
-        Namespaced_IRI.parse _namespace_name "P37i_was_assigned_by" |> NamespacedName
-
+    let P37i_was_assigned_by = _prefix "P37i_was_assigned_by"
     /// <summary>
     /// Scope note:
     /// This property records the identifier that was deassigned from an instance of E1 CRM Entity.
@@ -4159,21 +3617,15 @@ module ecrm =
     /// P38(x,y) ⊃ E42(y)
     /// P38(x,y) ⊃ P141(x,y)
     /// <see href="http://erlangen-crm.org/current/P38_deassigned"></see></summary>
-    let P38_deassigned =
-        Namespaced_IRI.parse _namespace_name "P38_deassigned" |> NamespacedName
-
+    let P38_deassigned = _prefix "P38_deassigned"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P38i_was_deassigned_by"></see>
     /// </summary>
-    let P38i_was_deassigned_by =
-        Namespaced_IRI.parse _namespace_name "P38i_was_deassigned_by" |> NamespacedName
-
+    let P38i_was_deassigned_by = _prefix "P38i_was_deassigned_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P39i_was_measured_by"></see>
     /// </summary>
-    let P39i_was_measured_by =
-        Namespaced_IRI.parse _namespace_name "P39i_was_measured_by" |> NamespacedName
-
+    let P39i_was_measured_by = _prefix "P39i_was_measured_by"
     /// <summary>
     /// Scope note:
     /// This property is a container for all informal descriptions about an object that have not been expressed in terms of CRM constructs.
@@ -4193,27 +3645,19 @@ module ecrm =
     ///
     /// Properties: P3.1 has type: E55 Type
     /// <see href="http://erlangen-crm.org/current/P3_has_note"></see></summary>
-    let P3_has_note =
-        Namespaced_IRI.parse _namespace_name "P3_has_note" |> NamespacedName
-
+    let P3_has_note = _prefix "P3_has_note"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P40i_was_observed_in"></see>
     /// </summary>
-    let P40i_was_observed_in =
-        Namespaced_IRI.parse _namespace_name "P40i_was_observed_in" |> NamespacedName
-
+    let P40i_was_observed_in = _prefix "P40i_was_observed_in"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P41i_was_classified_by"></see>
     /// </summary>
-    let P41i_was_classified_by =
-        Namespaced_IRI.parse _namespace_name "P41i_was_classified_by" |> NamespacedName
-
+    let P41i_was_classified_by = _prefix "P41i_was_classified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P42i_was_assigned_by"></see>
     /// </summary>
-    let P42i_was_assigned_by =
-        Namespaced_IRI.parse _namespace_name "P42i_was_assigned_by" |> NamespacedName
-
+    let P42i_was_assigned_by = _prefix "P42i_was_assigned_by"
     /// <summary>
     /// Scope note:
     /// This property records a E54 Dimension of some E70 Thing.
@@ -4228,15 +3672,11 @@ module ecrm =
     /// P43(x,y) ⊃ E70(x)
     /// P43(x,y) ⊃ E54(y)
     /// <see href="http://erlangen-crm.org/current/P43_has_dimension"></see></summary>
-    let P43_has_dimension =
-        Namespaced_IRI.parse _namespace_name "P43_has_dimension" |> NamespacedName
-
+    let P43_has_dimension = _prefix "P43_has_dimension"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P43i_is_dimension_of"></see>
     /// </summary>
-    let P43i_is_dimension_of =
-        Namespaced_IRI.parse _namespace_name "P43i_is_dimension_of" |> NamespacedName
-
+    let P43i_is_dimension_of = _prefix "P43i_is_dimension_of"
     /// <summary>
     /// Scope note:
     /// This property records an E3 Condition State for some E18 Physical Thing.
@@ -4252,15 +3692,11 @@ module ecrm =
     /// P44(x,y) ⊃ E18(x)
     /// P44(x,y) ⊃ E3(y)
     /// <see href="http://erlangen-crm.org/current/P44_has_condition"></see></summary>
-    let P44_has_condition =
-        Namespaced_IRI.parse _namespace_name "P44_has_condition" |> NamespacedName
-
+    let P44_has_condition = _prefix "P44_has_condition"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P45i_is_incorporated_in"></see>
     /// </summary>
-    let P45i_is_incorporated_in =
-        Namespaced_IRI.parse _namespace_name "P45i_is_incorporated_in" |> NamespacedName
-
+    let P45i_is_incorporated_in = _prefix "P45i_is_incorporated_in"
     /// <summary>
     /// Scope note:
     /// This property allows instances of E18 Physical Thing to be analysed into component elements.
@@ -4282,21 +3718,15 @@ module ecrm =
     /// P46(x,y) ⊃ (uzw)[E93(u) ∧ P166 (x,u) ∧ E52(z) ∧ P164(u,z) ∧ E93(w) ∧ P166 (y,w) ∧
     /// P164(w,z) ∧ P10(w,u)]
     /// <see href="http://erlangen-crm.org/current/P46_is_composed_of"></see></summary>
-    let P46_is_composed_of =
-        Namespaced_IRI.parse _namespace_name "P46_is_composed_of" |> NamespacedName
-
+    let P46_is_composed_of = _prefix "P46_is_composed_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P46i_forms_part_of"></see>
     /// </summary>
-    let P46i_forms_part_of =
-        Namespaced_IRI.parse _namespace_name "P46i_forms_part_of" |> NamespacedName
-
+    let P46i_forms_part_of = _prefix "P46i_forms_part_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P48i_is_preferred_identifier_of"></see>
     /// </summary>
-    let P48i_is_preferred_identifier_of =
-        Namespaced_IRI.parse _namespace_name "P48i_is_preferred_identifier_of" |> NamespacedName
-
+    let P48i_is_preferred_identifier_of = _prefix "P48i_is_preferred_identifier_of"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor or Actors who had custody of an instance of E18 Physical Thing at the time of validity of the record or database containing the statement that uses this property.
@@ -4311,15 +3741,11 @@ module ecrm =
     /// P50(x,y) ⊃ E39(y)
     /// P50(x,y) ⊃ P49(x,y)
     /// <see href="http://erlangen-crm.org/current/P50_has_current_keeper"></see></summary>
-    let P50_has_current_keeper =
-        Namespaced_IRI.parse _namespace_name "P50_has_current_keeper" |> NamespacedName
-
+    let P50_has_current_keeper = _prefix "P50_has_current_keeper"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P50i_is_current_keeper_of"></see>
     /// </summary>
-    let P50i_is_current_keeper_of =
-        Namespaced_IRI.parse _namespace_name "P50i_is_current_keeper_of" |> NamespacedName
-
+    let P50i_is_current_keeper_of = _prefix "P50i_is_current_keeper_of"
     /// <summary>
     /// Scope note:
     /// This property identifies the E39 Actor that is or has been the legal owner (i.e. title holder) of an instance of E18 Physical Thing at some time.
@@ -4333,14 +3759,13 @@ module ecrm =
     /// P51(x,y) ⊃ E18(x)
     /// P51(x,y) ⊃ E39(y)
     /// <see href="http://erlangen-crm.org/current/P51_has_former_or_current_owner"></see></summary>
-    let P51_has_former_or_current_owner =
-        Namespaced_IRI.parse _namespace_name "P51_has_former_or_current_owner" |> NamespacedName
+    let P51_has_former_or_current_owner = _prefix "P51_has_former_or_current_owner"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P51i_is_former_or_current_owner_of"></see>
     /// </summary>
     let P51i_is_former_or_current_owner_of =
-        Namespaced_IRI.parse _namespace_name "P51i_is_former_or_current_owner_of" |> NamespacedName
+        _prefix "P51i_is_former_or_current_owner_of"
 
     /// <summary>
     /// Scope note:
@@ -4357,33 +3782,28 @@ module ecrm =
     /// P52(x,y) ⊃ P51(x,y)
     /// P52(x,y) ⊃ P105(x,y)
     /// <see href="http://erlangen-crm.org/current/P52_has_current_owner"></see></summary>
-    let P52_has_current_owner =
-        Namespaced_IRI.parse _namespace_name "P52_has_current_owner" |> NamespacedName
-
+    let P52_has_current_owner = _prefix "P52_has_current_owner"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P52i_is_current_owner_of"></see>
     /// </summary>
-    let P52i_is_current_owner_of =
-        Namespaced_IRI.parse _namespace_name "P52i_is_current_owner_of" |> NamespacedName
+    let P52i_is_current_owner_of = _prefix "P52i_is_current_owner_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P53i_is_former_or_current_location_of"></see>
     /// </summary>
     let P53i_is_former_or_current_location_of =
-        Namespaced_IRI.parse _namespace_name "P53i_is_former_or_current_location_of" |> NamespacedName
+        _prefix "P53i_is_former_or_current_location_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P54i_is_current_permanent_location_of"></see>
     /// </summary>
     let P54i_is_current_permanent_location_of =
-        Namespaced_IRI.parse _namespace_name "P54i_is_current_permanent_location_of" |> NamespacedName
+        _prefix "P54i_is_current_permanent_location_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P55i_currently_holds"></see>
     /// </summary>
-    let P55i_currently_holds =
-        Namespaced_IRI.parse _namespace_name "P55i_currently_holds" |> NamespacedName
-
+    let P55i_currently_holds = _prefix "P55i_currently_holds"
     /// <summary>
     /// Scope note:
     /// This property links an instance of E19 Physical Object to an instance of E26 Physical Feature that it bears.
@@ -4399,9 +3819,7 @@ module ecrm =
     /// P56(x,y) ⊃ E26(y)
     /// P56(x,y) ⊃ P46(x,y)
     /// <see href="http://erlangen-crm.org/current/P56_bears_feature"></see></summary>
-    let P56_bears_feature =
-        Namespaced_IRI.parse _namespace_name "P56_bears_feature" |> NamespacedName
-
+    let P56_bears_feature = _prefix "P56_bears_feature"
     /// <summary>
     /// Scope note:
     /// This property documents the E60 Number of parts of which an instance of E19 Physical Object is composed.
@@ -4417,9 +3835,7 @@ module ecrm =
     /// P57(x,y) ⊃ E19(x)
     /// P57(x,y) ⊃ E60(y)
     /// <see href="http://erlangen-crm.org/current/P57_has_number_of_parts"></see></summary>
-    let P57_has_number_of_parts =
-        Namespaced_IRI.parse _namespace_name "P57_has_number_of_parts" |> NamespacedName
-
+    let P57_has_number_of_parts = _prefix "P57_has_number_of_parts"
     /// <summary>
     /// Scope note:
     /// This property links an area (section) named by a E46 Section Definition to the instance of E18 Physical Thing upon which it is found.
@@ -4435,9 +3851,7 @@ module ecrm =
     /// P58(x,y) ⊃ E18(x)
     /// P58(x,y) ⊃ E46(y)
     /// <see href="http://erlangen-crm.org/current/P58_has_section_definition"></see></summary>
-    let P58_has_section_definition =
-        Namespaced_IRI.parse _namespace_name "P58_has_section_definition" |> NamespacedName
-
+    let P58_has_section_definition = _prefix "P58_has_section_definition"
     /// <summary>
     /// Scope note:
     /// This property links an area to the instance of E18 Physical Thing upon which it is found.
@@ -4454,9 +3868,7 @@ module ecrm =
     /// P59(x,y) ⊃ E18(x)
     /// P59(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P59_has_section"></see></summary>
-    let P59_has_section =
-        Namespaced_IRI.parse _namespace_name "P59_has_section" |> NamespacedName
-
+    let P59_has_section = _prefix "P59_has_section"
     /// <summary>
     /// Scope note:
     /// This property describes the decomposition of an E3 Condition State into discrete, subsidiary states.It is assumed that the sub-states into which the condition state is analysed form a logical whole - although the entire story may not be completely known – and that the sub-states are in fact constitutive of the general condition state. For example, a general condition state of “in ruins” may be decomposed
@@ -4470,15 +3882,11 @@ module ecrm =
     /// P5(x,y) ⊃ E3(x)
     /// P5(x,y) ⊃ E3(y)
     /// <see href="http://erlangen-crm.org/current/P5_consists_of"></see></summary>
-    let P5_consists_of =
-        Namespaced_IRI.parse _namespace_name "P5_consists_of" |> NamespacedName
-
+    let P5_consists_of = _prefix "P5_consists_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P5i_forms_part_of"></see>
     /// </summary>
-    let P5i_forms_part_of =
-        Namespaced_IRI.parse _namespace_name "P5i_forms_part_of" |> NamespacedName
-
+    let P5i_forms_part_of = _prefix "P5i_forms_part_of"
     /// <summary>
     /// Scope note:
     /// This property identifies something that is depicted by an instance of E24 Physical Man-Made Thing. Depicting is meant in the sense that the surface of the E24 Physical Man-Made Thing shows, through its passive optical qualities or form, a representation of the entity depicted. It does not pertain to inscriptions or any other information encoding.
@@ -4496,15 +3904,11 @@ module ecrm =
     ///
     /// Properties: P62.1 mode of depiction: E55 Type
     /// <see href="http://erlangen-crm.org/current/P62_depicts"></see></summary>
-    let P62_depicts =
-        Namespaced_IRI.parse _namespace_name "P62_depicts" |> NamespacedName
-
+    let P62_depicts = _prefix "P62_depicts"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P62i_is_depicted_by"></see>
     /// </summary>
-    let P62i_is_depicted_by =
-        Namespaced_IRI.parse _namespace_name "P62i_is_depicted_by" |> NamespacedName
-
+    let P62i_is_depicted_by = _prefix "P62i_is_depicted_by"
     /// <summary>
     /// Scope note:
     /// This property documents an E36 Visual Item shown by an instance of E24 Physical Man-Made Thing.
@@ -4523,15 +3927,11 @@ module ecrm =
     /// P65(x,y) ⊃ E36(y)
     /// P65(x,y) ⊃ P128(x,y)
     /// <see href="http://erlangen-crm.org/current/P65_shows_visual_item"></see></summary>
-    let P65_shows_visual_item =
-        Namespaced_IRI.parse _namespace_name "P65_shows_visual_item" |> NamespacedName
-
+    let P65_shows_visual_item = _prefix "P65_shows_visual_item"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P65i_is_shown_by"></see>
     /// </summary>
-    let P65i_is_shown_by =
-        Namespaced_IRI.parse _namespace_name "P65i_is_shown_by" |> NamespacedName
-
+    let P65i_is_shown_by = _prefix "P65i_is_shown_by"
     /// <summary>
     /// Scope note:
     /// This property identifies an E57 Material foreseeen to be used by an E29 Design or Procedure.
@@ -4548,15 +3948,11 @@ module ecrm =
     /// P68(x,y) ⊃ E57(y)
     /// P68(x,y) ⊃ P67(x,y)
     /// <see href="http://erlangen-crm.org/current/P68_foresees_use_of"></see></summary>
-    let P68_foresees_use_of =
-        Namespaced_IRI.parse _namespace_name "P68_foresees_use_of" |> NamespacedName
-
+    let P68_foresees_use_of = _prefix "P68_foresees_use_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P68i_use_foreseen_by"></see>
     /// </summary>
-    let P68i_use_foreseen_by =
-        Namespaced_IRI.parse _namespace_name "P68i_use_foreseen_by" |> NamespacedName
-
+    let P68i_use_foreseen_by = _prefix "P68i_use_foreseen_by"
     /// <summary>
     /// Scope note:
     /// This property generalises relationships like whole-part, sequence, prerequisite or inspired by between instances of E29 Design or Procedure. Any instance of E29 Design or Procedure may be associated with other designs or procedures. The property is considered to be symmetrical unless otherwise indicated by P69.1 has type.
@@ -4578,21 +3974,15 @@ module ecrm =
     ///
     /// Properties: P69.1 has type: E55 Type
     /// <see href="http://erlangen-crm.org/current/P69_has_association_with"></see></summary>
-    let P69_has_association_with =
-        Namespaced_IRI.parse _namespace_name "P69_has_association_with" |> NamespacedName
-
+    let P69_has_association_with = _prefix "P69_has_association_with"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P69i_is_associated_with"></see>
     /// </summary>
-    let P69i_is_associated_with =
-        Namespaced_IRI.parse _namespace_name "P69i_is_associated_with" |> NamespacedName
-
+    let P69i_is_associated_with = _prefix "P69i_is_associated_with"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P70i_is_documented_in"></see>
     /// </summary>
-    let P70i_is_documented_in =
-        Namespaced_IRI.parse _namespace_name "P70i_is_documented_in" |> NamespacedName
-
+    let P70i_is_documented_in = _prefix "P70i_is_documented_in"
     /// <summary>
     /// Scope note:
     /// This property documents a source E32 Authority Document for an instance of an E1 CRM Entity.
@@ -4605,20 +3995,15 @@ module ecrm =
     /// P71(x,y) ⊃ E1(y)
     /// P71(x,y) ⊃ P67(x,y)
     /// <see href="http://erlangen-crm.org/current/P71_lists"></see></summary>
-    let P71_lists = Namespaced_IRI.parse _namespace_name "P71_lists" |> NamespacedName
-
+    let P71_lists = _prefix "P71_lists"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P71i_is_listed_in"></see>
     /// </summary>
-    let P71i_is_listed_in =
-        Namespaced_IRI.parse _namespace_name "P71i_is_listed_in" |> NamespacedName
-
+    let P71i_is_listed_in = _prefix "P71i_is_listed_in"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P72i_is_language_of"></see>
     /// </summary>
-    let P72i_is_language_of =
-        Namespaced_IRI.parse _namespace_name "P72i_is_language_of" |> NamespacedName
-
+    let P72i_is_language_of = _prefix "P72i_is_language_of"
     /// <summary>
     /// Scope note:
     /// This property describes the source and target of instances of E33Linguistic Object involved in a translation.
@@ -4633,8 +4018,7 @@ module ecrm =
     /// P73(x,y) ⊃ E33(y)
     /// P73(x,y) ⊃ P130(y,x)
     /// <see href="http://erlangen-crm.org/current/P73_has_translation"></see></summary>
-    let P73_has_translation =
-        Namespaced_IRI.parse _namespace_name "P73_has_translation" |> NamespacedName
+    let P73_has_translation = _prefix "P73_has_translation"
 
     /// <summary>
     /// Scope note:
@@ -4650,20 +4034,18 @@ module ecrm =
     /// P74(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P74_has_current_or_former_residence"></see></summary>
     let P74_has_current_or_former_residence =
-        Namespaced_IRI.parse _namespace_name "P74_has_current_or_former_residence" |> NamespacedName
+        _prefix "P74_has_current_or_former_residence"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P74i_is_current_or_former_residence_of"></see>
     /// </summary>
     let P74i_is_current_or_former_residence_of =
-        Namespaced_IRI.parse _namespace_name "P74i_is_current_or_former_residence_of" |> NamespacedName
+        _prefix "P74i_is_current_or_former_residence_of"
 
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P75i_is_possessed_by"></see>
     /// </summary>
-    let P75i_is_possessed_by =
-        Namespaced_IRI.parse _namespace_name "P75i_is_possessed_by" |> NamespacedName
-
+    let P75i_is_possessed_by = _prefix "P75i_is_possessed_by"
     /// <summary>
     /// Scope note:
     /// This property identifies an E51 Contact Point of any type that provides access to an E39 Actor by any communication method, such as e-mail or fax.
@@ -4675,9 +4057,7 @@ module ecrm =
     /// P76(x,y) ⊃ E39(x)
     /// P76(x,y) ⊃ E51(y)
     /// <see href="http://erlangen-crm.org/current/P76_has_contact_point"></see></summary>
-    let P76_has_contact_point =
-        Namespaced_IRI.parse _namespace_name "P76_has_contact_point" |> NamespacedName
-
+    let P76_has_contact_point = _prefix "P76_has_contact_point"
     /// <summary>
     /// Scope note:
     /// This property identifies an E52 Time-Span using an E49Time Appellation.
@@ -4690,15 +4070,11 @@ module ecrm =
     /// P78(x,y) ⊃ E49(y)
     /// P78(x,y) ⊃ P1(x,y)
     /// <see href="http://erlangen-crm.org/current/P78_is_identified_by"></see></summary>
-    let P78_is_identified_by =
-        Namespaced_IRI.parse _namespace_name "P78_is_identified_by" |> NamespacedName
-
+    let P78_is_identified_by = _prefix "P78_is_identified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P78i_identifies"></see>
     /// </summary>
-    let P78i_identifies =
-        Namespaced_IRI.parse _namespace_name "P78i_identifies" |> NamespacedName
-
+    let P78i_identifies = _prefix "P78i_identifies"
     /// <summary>
     /// Scope note:
     /// This property qualifies the beginning of an E52 Time-Span in some way.
@@ -4713,9 +4089,7 @@ module ecrm =
     /// P79 (x,y) ⊃ E62(y)
     /// P79(x,y) ⊃ P3(x,y)
     /// <see href="http://erlangen-crm.org/current/P79_beginning_is_qualified_by"></see></summary>
-    let P79_beginning_is_qualified_by =
-        Namespaced_IRI.parse _namespace_name "P79_beginning_is_qualified_by" |> NamespacedName
-
+    let P79_beginning_is_qualified_by = _prefix "P79_beginning_is_qualified_by"
     /// <summary>
     /// Scope note:
     /// This property qualifies the end of an E52 Time-Span in some way.
@@ -4730,9 +4104,7 @@ module ecrm =
     /// P80(x,y) ⊃ E62(y)
     /// P80(x,y) ⊃ P3(x,y)
     /// <see href="http://erlangen-crm.org/current/P80_end_is_qualified_by"></see></summary>
-    let P80_end_is_qualified_by =
-        Namespaced_IRI.parse _namespace_name "P80_end_is_qualified_by" |> NamespacedName
-
+    let P80_end_is_qualified_by = _prefix "P80_end_is_qualified_by"
     /// <summary>
     /// Scope note:
     /// This property describes the minimum period of time covered by an E52 Time-Span.
@@ -4746,9 +4118,7 @@ module ecrm =
     /// P81 (x,y) ⊃ E52(x)
     /// P81 (x,y) ⊃ E61(y)
     /// <see href="http://erlangen-crm.org/current/P81_ongoing_throughout"></see></summary>
-    let P81_ongoing_throughout =
-        Namespaced_IRI.parse _namespace_name "P81_ongoing_throughout" |> NamespacedName
-
+    let P81_ongoing_throughout = _prefix "P81_ongoing_throughout"
     /// <summary>
     /// Scope note:
     /// This property describes the maximum period of time within which an E52 Time-Span falls.
@@ -4762,21 +4132,15 @@ module ecrm =
     /// P82 (x,y) ⊃ E52(x)
     /// P82 (x,y) ⊃ E61(y)
     /// <see href="http://erlangen-crm.org/current/P82_at_some_time_within"></see></summary>
-    let P82_at_some_time_within =
-        Namespaced_IRI.parse _namespace_name "P82_at_some_time_within" |> NamespacedName
-
+    let P82_at_some_time_within = _prefix "P82_at_some_time_within"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P83i_was_minimum_duration_of"></see>
     /// </summary>
-    let P83i_was_minimum_duration_of =
-        Namespaced_IRI.parse _namespace_name "P83i_was_minimum_duration_of" |> NamespacedName
-
+    let P83i_was_minimum_duration_of = _prefix "P83i_was_minimum_duration_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P84i_was_maximum_duration_of"></see>
     /// </summary>
-    let P84i_was_maximum_duration_of =
-        Namespaced_IRI.parse _namespace_name "P84i_was_maximum_duration_of" |> NamespacedName
-
+    let P84i_was_maximum_duration_of = _prefix "P84i_was_maximum_duration_of"
     /// <summary>
     /// Scope note:
     /// This property describes the inclusion relationship between two instances of E52 Time-Span.
@@ -4791,15 +4155,11 @@ module ecrm =
     /// P86(x,y) ⊃ E52(x)
     /// P86(x,y) ⊃ E52(y)
     /// <see href="http://erlangen-crm.org/current/P86_falls_within"></see></summary>
-    let P86_falls_within =
-        Namespaced_IRI.parse _namespace_name "P86_falls_within" |> NamespacedName
-
+    let P86_falls_within = _prefix "P86_falls_within"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P86i_contains"></see>
     /// </summary>
-    let P86i_contains =
-        Namespaced_IRI.parse _namespace_name "P86i_contains" |> NamespacedName
-
+    let P86i_contains = _prefix "P86i_contains"
     /// <summary>
     /// Scope note:
     /// This property identifies an E53 Place using an E44 Place Appellation.
@@ -4809,15 +4169,11 @@ module ecrm =
     /// Examples:
     /// - the location of the Duke of Wellington's House (E53) is identified by "No 1 London" (E45)
     /// <see href="http://erlangen-crm.org/current/P87_is_identified_by"></see></summary>
-    let P87_is_identified_by =
-        Namespaced_IRI.parse _namespace_name "P87_is_identified_by" |> NamespacedName
-
+    let P87_is_identified_by = _prefix "P87_is_identified_by"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P87i_identifies"></see>
     /// </summary>
-    let P87i_identifies =
-        Namespaced_IRI.parse _namespace_name "P87i_identifies" |> NamespacedName
-
+    let P87i_identifies = _prefix "P87i_identifies"
     /// <summary>
     /// Scope note:
     /// This property identifies an instance of E53 Place that falls wholly within the extent of another E53 Place.
@@ -4832,15 +4188,11 @@ module ecrm =
     /// P89(x,y) ⊃ E53(x)
     /// P89(x,y) ⊃ E53(y)
     /// <see href="http://erlangen-crm.org/current/P89_falls_within"></see></summary>
-    let P89_falls_within =
-        Namespaced_IRI.parse _namespace_name "P89_falls_within" |> NamespacedName
-
+    let P89_falls_within = _prefix "P89_falls_within"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P89i_contains"></see>
     /// </summary>
-    let P89i_contains =
-        Namespaced_IRI.parse _namespace_name "P89i_contains" |> NamespacedName
-
+    let P89i_contains = _prefix "P89i_contains"
     /// <summary>
     /// Scope note:
     /// This property describes the location of an instance of E4 Period with respect to an E19 Physical Object.
@@ -4856,15 +4208,11 @@ module ecrm =
     /// P8(x,y) ⊃ E4(x)
     /// P8(x,y) ⊃ E18(y)
     /// <see href="http://erlangen-crm.org/current/P8_took_place_on_or_within"></see></summary>
-    let P8_took_place_on_or_within =
-        Namespaced_IRI.parse _namespace_name "P8_took_place_on_or_within" |> NamespacedName
-
+    let P8_took_place_on_or_within = _prefix "P8_took_place_on_or_within"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P8i_witnessed"></see>
     /// </summary>
-    let P8i_witnessed =
-        Namespaced_IRI.parse _namespace_name "P8i_witnessed" |> NamespacedName
-
+    let P8i_witnessed = _prefix "P8i_witnessed"
     /// <summary>
     /// Scope note:
     /// This property allows an E54 Dimension to be approximated by an E60 Number primitive.
@@ -4876,21 +4224,15 @@ module ecrm =
     /// P90(x,y) ⊃ E54(x)
     /// P90(x,y) ⊃ E60(y)
     /// <see href="http://erlangen-crm.org/current/P90_has_value"></see></summary>
-    let P90_has_value =
-        Namespaced_IRI.parse _namespace_name "P90_has_value" |> NamespacedName
-
+    let P90_has_value = _prefix "P90_has_value"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P96i_gave_birth"></see>
     /// </summary>
-    let P96i_gave_birth =
-        Namespaced_IRI.parse _namespace_name "P96i_gave_birth" |> NamespacedName
-
+    let P96i_gave_birth = _prefix "P96i_gave_birth"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P97i_was_father_for"></see>
     /// </summary>
-    let P97i_was_father_for =
-        Namespaced_IRI.parse _namespace_name "P97i_was_father_for" |> NamespacedName
-
+    let P97i_was_father_for = _prefix "P97i_was_father_for"
     /// <summary>
     /// Scope note:
     /// This property links an E67Birth event to an E21 Person in the role of offspring.
@@ -4905,15 +4247,11 @@ module ecrm =
     /// P98(x,y) ⊃ E21(y)
     /// P98(x,y) ⊃ P92(x,y)
     /// <see href="http://erlangen-crm.org/current/P98_brought_into_life"></see></summary>
-    let P98_brought_into_life =
-        Namespaced_IRI.parse _namespace_name "P98_brought_into_life" |> NamespacedName
-
+    let P98_brought_into_life = _prefix "P98_brought_into_life"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P99i_was_dissolved_by"></see>
     /// </summary>
-    let P99i_was_dissolved_by =
-        Namespaced_IRI.parse _namespace_name "P99i_was_dissolved_by" |> NamespacedName
-
+    let P99i_was_dissolved_by = _prefix "P99i_was_dissolved_by"
     /// <summary>
     /// Scope note:
     /// This property associates an instance of E4 Period with another instance of E4 Period that is defined by a subset of the phenomena that define the former. Therefore the spacetime volume of the latter must fall
@@ -4929,11 +4267,8 @@ module ecrm =
     /// P9(x,y) ⊃ E4(y)
     /// P9(x,y) ⊃ P10(y,x)
     /// <see href="http://erlangen-crm.org/current/P9_consists_of"></see></summary>
-    let P9_consists_of =
-        Namespaced_IRI.parse _namespace_name "P9_consists_of" |> NamespacedName
-
+    let P9_consists_of = _prefix "P9_consists_of"
     /// <summary>
     ///   <see href="http://erlangen-crm.org/current/P9i_forms_part_of"></see>
     /// </summary>
-    let P9i_forms_part_of =
-        Namespaced_IRI.parse _namespace_name "P9i_forms_part_of" |> NamespacedName
+    let P9i_forms_part_of = _prefix "P9i_forms_part_of"

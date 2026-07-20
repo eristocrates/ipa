@@ -1,315 +1,238 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.AgentsAndPeople.People.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_aap_ppl =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Adult"></see>
     /// </summary>
-    let Adult = Namespaced_IRI.parse _namespace_name "Adult" |> NamespacedName
+    let Adult = _prefix "Adult"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
-
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasAgeOfMajority"></see>
     /// </summary>
-    let hasAgeOfMajority =
-        Namespaced_IRI.parse _namespace_name "hasAgeOfMajority" |> NamespacedName
-
+    let hasAgeOfMajority = _prefix "hasAgeOfMajority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/AgeOfMajority"></see>
     /// </summary>
-    let AgeOfMajority =
-        Namespaced_IRI.parse _namespace_name "AgeOfMajority" |> NamespacedName
-
+    let AgeOfMajority = _prefix "AgeOfMajority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/LegalAge"></see>
     /// </summary>
-    let LegalAge = Namespaced_IRI.parse _namespace_name "LegalAge" |> NamespacedName
-
+    let LegalAge = _prefix "LegalAge"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/BirthCertificate"></see>
     /// </summary>
-    let BirthCertificate =
-        Namespaced_IRI.parse _namespace_name "BirthCertificate" |> NamespacedName
-
+    let BirthCertificate = _prefix "BirthCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/IdentityDocument"></see>
     /// </summary>
-    let IdentityDocument =
-        Namespaced_IRI.parse _namespace_name "IdentityDocument" |> NamespacedName
-
+    let IdentityDocument = _prefix "IdentityDocument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/BirthCertificateIdentifier"></see>
     /// </summary>
-    let BirthCertificateIdentifier =
-        Namespaced_IRI.parse _namespace_name "BirthCertificateIdentifier" |> NamespacedName
+    let BirthCertificateIdentifier = _prefix "BirthCertificateIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/BirthCertificateIdentificationScheme"></see>
     /// </summary>
     let BirthCertificateIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "BirthCertificateIdentificationScheme" |> NamespacedName
+        _prefix "BirthCertificateIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Contact"></see>
     /// </summary>
-    let Contact = Namespaced_IRI.parse _namespace_name "Contact" |> NamespacedName
-
+    let Contact = _prefix "Contact"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/ContactRecord"></see>
     /// </summary>
-    let ContactRecord =
-        Namespaced_IRI.parse _namespace_name "ContactRecord" |> NamespacedName
-
+    let ContactRecord = _prefix "ContactRecord"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DateOfBirth"></see>
     /// </summary>
-    let DateOfBirth =
-        Namespaced_IRI.parse _namespace_name "DateOfBirth" |> NamespacedName
-
+    let DateOfBirth = _prefix "DateOfBirth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DateOfDeath"></see>
     /// </summary>
-    let DateOfDeath =
-        Namespaced_IRI.parse _namespace_name "DateOfDeath" |> NamespacedName
-
+    let DateOfDeath = _prefix "DateOfDeath"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DeathCertificate"></see>
     /// </summary>
-    let DeathCertificate =
-        Namespaced_IRI.parse _namespace_name "DeathCertificate" |> NamespacedName
-
+    let DeathCertificate = _prefix "DeathCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DeathCertificateIdentifier"></see>
     /// </summary>
-    let DeathCertificateIdentifier =
-        Namespaced_IRI.parse _namespace_name "DeathCertificateIdentifier" |> NamespacedName
+    let DeathCertificateIdentifier = _prefix "DeathCertificateIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DeathCertificateIdentificationScheme"></see>
     /// </summary>
     let DeathCertificateIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "DeathCertificateIdentificationScheme" |> NamespacedName
+        _prefix "DeathCertificateIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DriversLicense"></see>
     /// </summary>
-    let DriversLicense =
-        Namespaced_IRI.parse _namespace_name "DriversLicense" |> NamespacedName
-
+    let DriversLicense = _prefix "DriversLicense"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DriversLicenseIdentifier"></see>
     /// </summary>
-    let DriversLicenseIdentifier =
-        Namespaced_IRI.parse _namespace_name "DriversLicenseIdentifier" |> NamespacedName
+    let DriversLicenseIdentifier = _prefix "DriversLicenseIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/DriversLicenseIdentificationScheme"></see>
     /// </summary>
     let DriversLicenseIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "DriversLicenseIdentificationScheme" |> NamespacedName
+        _prefix "DriversLicenseIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/EmancipatedMinor"></see>
     /// </summary>
-    let EmancipatedMinor =
-        Namespaced_IRI.parse _namespace_name "EmancipatedMinor" |> NamespacedName
-
+    let EmancipatedMinor = _prefix "EmancipatedMinor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Minor"></see>
     /// </summary>
-    let Minor = Namespaced_IRI.parse _namespace_name "Minor" |> NamespacedName
-
+    let Minor = _prefix "Minor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/IncapacitatedAdult"></see>
     /// </summary>
-    let IncapacitatedAdult =
-        Namespaced_IRI.parse _namespace_name "IncapacitatedAdult" |> NamespacedName
-
+    let IncapacitatedAdult = _prefix "IncapacitatedAdult"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/LegallyCapableAdult"></see>
     /// </summary>
-    let LegallyCapableAdult =
-        Namespaced_IRI.parse _namespace_name "LegallyCapableAdult" |> NamespacedName
-
+    let LegallyCapableAdult = _prefix "LegallyCapableAdult"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/LegalWorkingAge"></see>
     /// </summary>
-    let LegalWorkingAge =
-        Namespaced_IRI.parse _namespace_name "LegalWorkingAge" |> NamespacedName
-
+    let LegalWorkingAge = _prefix "LegalWorkingAge"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/LegalWorkingAgePerson"></see>
     /// </summary>
-    let LegalWorkingAgePerson =
-        Namespaced_IRI.parse _namespace_name "LegalWorkingAgePerson" |> NamespacedName
-
+    let LegalWorkingAgePerson = _prefix "LegalWorkingAgePerson"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasMinimumLegalWorkingAge"></see>
     /// </summary>
-    let hasMinimumLegalWorkingAge =
-        Namespaced_IRI.parse _namespace_name "hasMinimumLegalWorkingAge" |> NamespacedName
-
+    let hasMinimumLegalWorkingAge = _prefix "hasMinimumLegalWorkingAge"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/NationalIdentificationNumber"></see>
     /// </summary>
-    let NationalIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "NationalIdentificationNumber" |> NamespacedName
+    let NationalIdentificationNumber = _prefix "NationalIdentificationNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/NationalIdentificationNumberScheme"></see>
     /// </summary>
     let NationalIdentificationNumberScheme =
-        Namespaced_IRI.parse _namespace_name "NationalIdentificationNumberScheme" |> NamespacedName
+        _prefix "NationalIdentificationNumberScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Passport"></see>
     /// </summary>
-    let Passport = Namespaced_IRI.parse _namespace_name "Passport" |> NamespacedName
-
+    let Passport = _prefix "Passport"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/PassportNumber"></see>
     /// </summary>
-    let PassportNumber =
-        Namespaced_IRI.parse _namespace_name "PassportNumber" |> NamespacedName
+    let PassportNumber = _prefix "PassportNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/PassportNumberIdentificationScheme"></see>
     /// </summary>
     let PassportNumberIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "PassportNumberIdentificationScheme" |> NamespacedName
+        _prefix "PassportNumberIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasDateOfDeath"></see>
     /// </summary>
-    let hasDateOfDeath =
-        Namespaced_IRI.parse _namespace_name "hasDateOfDeath" |> NamespacedName
-
+    let hasDateOfDeath = _prefix "hasDateOfDeath"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/PersonName"></see>
     /// </summary>
-    let PersonName = Namespaced_IRI.parse _namespace_name "PersonName" |> NamespacedName
-
+    let PersonName = _prefix "PersonName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasResidence"></see>
     /// </summary>
-    let hasResidence =
-        Namespaced_IRI.parse _namespace_name "hasResidence" |> NamespacedName
-
+    let hasResidence = _prefix "hasResidence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasCitizenship"></see>
     /// </summary>
-    let hasCitizenship =
-        Namespaced_IRI.parse _namespace_name "hasCitizenship" |> NamespacedName
-
+    let hasCitizenship = _prefix "hasCitizenship"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasDateOfBirth"></see>
     /// </summary>
-    let hasDateOfBirth =
-        Namespaced_IRI.parse _namespace_name "hasDateOfBirth" |> NamespacedName
-
+    let hasDateOfBirth = _prefix "hasDateOfBirth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasPlaceOfBirth"></see>
     /// </summary>
-    let hasPlaceOfBirth =
-        Namespaced_IRI.parse _namespace_name "hasPlaceOfBirth" |> NamespacedName
-
+    let hasPlaceOfBirth = _prefix "hasPlaceOfBirth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/PlaceOfBirth"></see>
     /// </summary>
-    let PlaceOfBirth =
-        Namespaced_IRI.parse _namespace_name "PlaceOfBirth" |> NamespacedName
-
+    let PlaceOfBirth = _prefix "PlaceOfBirth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasGender"></see>
     /// </summary>
-    let hasGender = Namespaced_IRI.parse _namespace_name "hasGender" |> NamespacedName
-
+    let hasGender = _prefix "hasGender"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasFullLegalName"></see>
     /// </summary>
-    let hasFullLegalName =
-        Namespaced_IRI.parse _namespace_name "hasFullLegalName" |> NamespacedName
-
+    let hasFullLegalName = _prefix "hasFullLegalName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasNamePrefix"></see>
     /// </summary>
-    let hasNamePrefix =
-        Namespaced_IRI.parse _namespace_name "hasNamePrefix" |> NamespacedName
-
+    let hasNamePrefix = _prefix "hasNamePrefix"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasNameSuffix"></see>
     /// </summary>
-    let hasNameSuffix =
-        Namespaced_IRI.parse _namespace_name "hasNameSuffix" |> NamespacedName
-
+    let hasNameSuffix = _prefix "hasNameSuffix"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasSurname"></see>
     /// </summary>
-    let hasSurname = Namespaced_IRI.parse _namespace_name "hasSurname" |> NamespacedName
-
+    let hasSurname = _prefix "hasSurname"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasFamilyName"></see>
     /// </summary>
-    let hasFamilyName =
-        Namespaced_IRI.parse _namespace_name "hasFamilyName" |> NamespacedName
-
+    let hasFamilyName = _prefix "hasFamilyName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasPersonName"></see>
     /// </summary>
-    let hasPersonName =
-        Namespaced_IRI.parse _namespace_name "hasPersonName" |> NamespacedName
-
+    let hasPersonName = _prefix "hasPersonName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasLastName"></see>
     /// </summary>
-    let hasLastName =
-        Namespaced_IRI.parse _namespace_name "hasLastName" |> NamespacedName
-
+    let hasLastName = _prefix "hasLastName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasFirstName"></see>
     /// </summary>
-    let hasFirstName =
-        Namespaced_IRI.parse _namespace_name "hasFirstName" |> NamespacedName
-
+    let hasFirstName = _prefix "hasFirstName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasGivenName"></see>
     /// </summary>
-    let hasGivenName =
-        Namespaced_IRI.parse _namespace_name "hasGivenName" |> NamespacedName
-
+    let hasGivenName = _prefix "hasGivenName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasMaidenName"></see>
     /// </summary>
-    let hasMaidenName =
-        Namespaced_IRI.parse _namespace_name "hasMaidenName" |> NamespacedName
-
+    let hasMaidenName = _prefix "hasMaidenName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasMiddleNameOrInitial"></see>
     /// </summary>
-    let hasMiddleNameOrInitial =
-        Namespaced_IRI.parse _namespace_name "hasMiddleNameOrInitial" |> NamespacedName
-
+    let hasMiddleNameOrInitial = _prefix "hasMiddleNameOrInitial"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasPointOfContact"></see>
     /// </summary>
-    let hasPointOfContact =
-        Namespaced_IRI.parse _namespace_name "hasPointOfContact" |> NamespacedName
-
+    let hasPointOfContact = _prefix "hasPointOfContact"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasPrimaryResidence"></see>
     /// </summary>
-    let hasPrimaryResidence =
-        Namespaced_IRI.parse _namespace_name "hasPrimaryResidence" |> NamespacedName
-
+    let hasPrimaryResidence = _prefix "hasPrimaryResidence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/isPointOfContactFor"></see>
     /// </summary>
-    let isPointOfContactFor =
-        Namespaced_IRI.parse _namespace_name "isPointOfContactFor" |> NamespacedName
+    let isPointOfContactFor = _prefix "isPointOfContactFor"

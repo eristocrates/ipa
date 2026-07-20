@@ -1,390 +1,272 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.FinancialServicesEntities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_fse =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/Bank"></see>
     /// </summary>
-    let Bank = Namespaced_IRI.parse _namespace_name "Bank" |> NamespacedName
-
+    let Bank = _prefix "Bank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/DepositoryInstitution"></see>
     /// </summary>
-    let DepositoryInstitution =
-        Namespaced_IRI.parse _namespace_name "DepositoryInstitution" |> NamespacedName
-
+    let DepositoryInstitution = _prefix "DepositoryInstitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankHoldingCompany"></see>
     /// </summary>
-    let BankHoldingCompany =
-        Namespaced_IRI.parse _namespace_name "BankHoldingCompany" |> NamespacedName
-
+    let BankHoldingCompany = _prefix "BankHoldingCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/HoldingCompany"></see>
     /// </summary>
-    let HoldingCompany =
-        Namespaced_IRI.parse _namespace_name "HoldingCompany" |> NamespacedName
-
+    let HoldingCompany = _prefix "HoldingCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingProduct"></see>
     /// </summary>
-    let BankingProduct =
-        Namespaced_IRI.parse _namespace_name "BankingProduct" |> NamespacedName
-
+    let BankingProduct = _prefix "BankingProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BankingService"></see>
     /// </summary>
-    let BankingService =
-        Namespaced_IRI.parse _namespace_name "BankingService" |> NamespacedName
-
+    let BankingService = _prefix "BankingService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BrokerageFirm"></see>
     /// </summary>
-    let BrokerageFirm =
-        Namespaced_IRI.parse _namespace_name "BrokerageFirm" |> NamespacedName
-
+    let BrokerageFirm = _prefix "BrokerageFirm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/NonDepositoryInstitution"></see>
     /// </summary>
-    let NonDepositoryInstitution =
-        Namespaced_IRI.parse _namespace_name "NonDepositoryInstitution" |> NamespacedName
-
+    let NonDepositoryInstitution = _prefix "NonDepositoryInstitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BusinessIdentifierCode"></see>
     /// </summary>
-    let BusinessIdentifierCode =
-        Namespaced_IRI.parse _namespace_name "BusinessIdentifierCode" |> NamespacedName
-
+    let BusinessIdentifierCode = _prefix "BusinessIdentifierCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BusinessPartyPrefix"></see>
     /// </summary>
-    let BusinessPartyPrefix =
-        Namespaced_IRI.parse _namespace_name "BusinessPartyPrefix" |> NamespacedName
-
+    let BusinessPartyPrefix = _prefix "BusinessPartyPrefix"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BusinessPartySuffix"></see>
     /// </summary>
-    let BusinessPartySuffix =
-        Namespaced_IRI.parse _namespace_name "BusinessPartySuffix" |> NamespacedName
-
+    let BusinessPartySuffix = _prefix "BusinessPartySuffix"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/BusinessIdentifierCodeScheme"></see>
     /// </summary>
-    let BusinessIdentifierCodeScheme =
-        Namespaced_IRI.parse _namespace_name "BusinessIdentifierCodeScheme" |> NamespacedName
-
+    let BusinessIdentifierCodeScheme = _prefix "BusinessIdentifierCodeScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CentralBank"></see>
     /// </summary>
-    let CentralBank =
-        Namespaced_IRI.parse _namespace_name "CentralBank" |> NamespacedName
-
+    let CentralBank = _prefix "CentralBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/MonetaryAuthority"></see>
     /// </summary>
-    let MonetaryAuthority =
-        Namespaced_IRI.parse _namespace_name "MonetaryAuthority" |> NamespacedName
-
+    let MonetaryAuthority = _prefix "MonetaryAuthority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CentralCounterpartyClearingHouse"></see>
     /// </summary>
-    let CentralCounterpartyClearingHouse =
-        Namespaced_IRI.parse _namespace_name "CentralCounterpartyClearingHouse" |> NamespacedName
-
+    let CentralCounterpartyClearingHouse = _prefix "CentralCounterpartyClearingHouse"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ClearingHouse"></see>
     /// </summary>
-    let ClearingHouse =
-        Namespaced_IRI.parse _namespace_name "ClearingHouse" |> NamespacedName
-
+    let ClearingHouse = _prefix "ClearingHouse"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CentralSecuritiesDepository"></see>
     /// </summary>
-    let CentralSecuritiesDepository =
-        Namespaced_IRI.parse _namespace_name "CentralSecuritiesDepository" |> NamespacedName
-
+    let CentralSecuritiesDepository = _prefix "CentralSecuritiesDepository"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ClearingBank"></see>
     /// </summary>
-    let ClearingBank =
-        Namespaced_IRI.parse _namespace_name "ClearingBank" |> NamespacedName
-
+    let ClearingBank = _prefix "ClearingBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CommercialBank"></see>
     /// </summary>
-    let CommercialBank =
-        Namespaced_IRI.parse _namespace_name "CommercialBank" |> NamespacedName
-
+    let CommercialBank = _prefix "CommercialBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ClearingCorporation"></see>
     /// </summary>
-    let ClearingCorporation =
-        Namespaced_IRI.parse _namespace_name "ClearingCorporation" |> NamespacedName
-
+    let ClearingCorporation = _prefix "ClearingCorporation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ClearingService"></see>
     /// </summary>
-    let ClearingService =
-        Namespaced_IRI.parse _namespace_name "ClearingService" |> NamespacedName
-
+    let ClearingService = _prefix "ClearingService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CommercialFinanceCompany"></see>
     /// </summary>
-    let CommercialFinanceCompany =
-        Namespaced_IRI.parse _namespace_name "CommercialFinanceCompany" |> NamespacedName
-
+    let CommercialFinanceCompany = _prefix "CommercialFinanceCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinanceCompany"></see>
     /// </summary>
-    let FinanceCompany =
-        Namespaced_IRI.parse _namespace_name "FinanceCompany" |> NamespacedName
-
+    let FinanceCompany = _prefix "FinanceCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CommodityTradingAdvisor"></see>
     /// </summary>
-    let CommodityTradingAdvisor =
-        Namespaced_IRI.parse _namespace_name "CommodityTradingAdvisor" |> NamespacedName
-
+    let CommodityTradingAdvisor = _prefix "CommodityTradingAdvisor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ConsumerFinanceCompany"></see>
     /// </summary>
-    let ConsumerFinanceCompany =
-        Namespaced_IRI.parse _namespace_name "ConsumerFinanceCompany" |> NamespacedName
-
+    let ConsumerFinanceCompany = _prefix "ConsumerFinanceCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ContractualSavingsInstitution"></see>
     /// </summary>
-    let ContractualSavingsInstitution =
-        Namespaced_IRI.parse _namespace_name "ContractualSavingsInstitution" |> NamespacedName
-
+    let ContractualSavingsInstitution = _prefix "ContractualSavingsInstitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/CreditUnion"></see>
     /// </summary>
-    let CreditUnion =
-        Namespaced_IRI.parse _namespace_name "CreditUnion" |> NamespacedName
-
+    let CreditUnion = _prefix "CreditUnion"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/DataProcessingService"></see>
     /// </summary>
-    let DataProcessingService =
-        Namespaced_IRI.parse _namespace_name "DataProcessingService" |> NamespacedName
-
+    let DataProcessingService = _prefix "DataProcessingService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/DataProcessingServicer"></see>
     /// </summary>
-    let DataProcessingServicer =
-        Namespaced_IRI.parse _namespace_name "DataProcessingServicer" |> NamespacedName
-
+    let DataProcessingServicer = _prefix "DataProcessingServicer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinancialInstitution"></see>
     /// </summary>
-    let FinancialInstitution =
-        Namespaced_IRI.parse _namespace_name "FinancialInstitution" |> NamespacedName
-
+    let FinancialInstitution = _prefix "FinancialInstitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/DevelopmentBank"></see>
     /// </summary>
-    let DevelopmentBank =
-        Namespaced_IRI.parse _namespace_name "DevelopmentBank" |> NamespacedName
-
+    let DevelopmentBank = _prefix "DevelopmentBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ElectronicFundsTransferService"></see>
     /// </summary>
-    let ElectronicFundsTransferService =
-        Namespaced_IRI.parse _namespace_name "ElectronicFundsTransferService" |> NamespacedName
-
+    let ElectronicFundsTransferService = _prefix "ElectronicFundsTransferService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FaceAmountCertificateCompany"></see>
     /// </summary>
-    let FaceAmountCertificateCompany =
-        Namespaced_IRI.parse _namespace_name "FaceAmountCertificateCompany" |> NamespacedName
-
+    let FaceAmountCertificateCompany = _prefix "FaceAmountCertificateCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/InvestmentCompany"></see>
     /// </summary>
-    let InvestmentCompany =
-        Namespaced_IRI.parse _namespace_name "InvestmentCompany" |> NamespacedName
-
+    let InvestmentCompany = _prefix "InvestmentCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/ManagementCompany"></see>
     /// </summary>
-    let ManagementCompany =
-        Namespaced_IRI.parse _namespace_name "ManagementCompany" |> NamespacedName
+    let ManagementCompany = _prefix "ManagementCompany"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinancialServiceProviderIdentifier"></see>
     /// </summary>
     let FinancialServiceProviderIdentifier =
-        Namespaced_IRI.parse _namespace_name "FinancialServiceProviderIdentifier" |> NamespacedName
+        _prefix "FinancialServiceProviderIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinancialServiceProviderIdentifierScheme"></see>
     /// </summary>
     let FinancialServiceProviderIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "FinancialServiceProviderIdentifierScheme" |> NamespacedName
+        _prefix "FinancialServiceProviderIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FuturesCommissionMerchant"></see>
     /// </summary>
-    let FuturesCommissionMerchant =
-        Namespaced_IRI.parse _namespace_name "FuturesCommissionMerchant" |> NamespacedName
-
+    let FuturesCommissionMerchant = _prefix "FuturesCommissionMerchant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/hasPortfolioCompany"></see>
     /// </summary>
-    let hasPortfolioCompany =
-        Namespaced_IRI.parse _namespace_name "hasPortfolioCompany" |> NamespacedName
-
+    let hasPortfolioCompany = _prefix "hasPortfolioCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/InsuranceCompany"></see>
     /// </summary>
-    let InsuranceCompany =
-        Namespaced_IRI.parse _namespace_name "InsuranceCompany" |> NamespacedName
-
+    let InsuranceCompany = _prefix "InsuranceCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/RiskPoolingInstitution"></see>
     /// </summary>
-    let RiskPoolingInstitution =
-        Namespaced_IRI.parse _namespace_name "RiskPoolingInstitution" |> NamespacedName
-
+    let RiskPoolingInstitution = _prefix "RiskPoolingInstitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/InsuranceService"></see>
     /// </summary>
-    let InsuranceService =
-        Namespaced_IRI.parse _namespace_name "InsuranceService" |> NamespacedName
-
+    let InsuranceService = _prefix "InsuranceService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/InvestmentBank"></see>
     /// </summary>
-    let InvestmentBank =
-        Namespaced_IRI.parse _namespace_name "InvestmentBank" |> NamespacedName
-
+    let InvestmentBank = _prefix "InvestmentBank"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/InvestmentService"></see>
     /// </summary>
-    let InvestmentService =
-        Namespaced_IRI.parse _namespace_name "InvestmentService" |> NamespacedName
-
+    let InvestmentService = _prefix "InvestmentService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/UnitInvestmentTrust"></see>
     /// </summary>
-    let UnitInvestmentTrust =
-        Namespaced_IRI.parse _namespace_name "UnitInvestmentTrust" |> NamespacedName
-
+    let UnitInvestmentTrust = _prefix "UnitInvestmentTrust"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/MerchantService"></see>
     /// </summary>
-    let MerchantService =
-        Namespaced_IRI.parse _namespace_name "MerchantService" |> NamespacedName
-
+    let MerchantService = _prefix "MerchantService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/regulatesSupplyOf"></see>
     /// </summary>
-    let regulatesSupplyOf =
-        Namespaced_IRI.parse _namespace_name "regulatesSupplyOf" |> NamespacedName
-
+    let regulatesSupplyOf = _prefix "regulatesSupplyOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/MoneyServicesBusiness"></see>
     /// </summary>
-    let MoneyServicesBusiness =
-        Namespaced_IRI.parse _namespace_name "MoneyServicesBusiness" |> NamespacedName
-
+    let MoneyServicesBusiness = _prefix "MoneyServicesBusiness"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/MortgageCompany"></see>
     /// </summary>
-    let MortgageCompany =
-        Namespaced_IRI.parse _namespace_name "MortgageCompany" |> NamespacedName
-
+    let MortgageCompany = _prefix "MortgageCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/PaymentService"></see>
     /// </summary>
-    let PaymentService =
-        Namespaced_IRI.parse _namespace_name "PaymentService" |> NamespacedName
-
+    let PaymentService = _prefix "PaymentService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/PayrollService"></see>
     /// </summary>
-    let PayrollService =
-        Namespaced_IRI.parse _namespace_name "PayrollService" |> NamespacedName
-
+    let PayrollService = _prefix "PayrollService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/PrincipalUnderwriter"></see>
     /// </summary>
-    let PrincipalUnderwriter =
-        Namespaced_IRI.parse _namespace_name "PrincipalUnderwriter" |> NamespacedName
-
+    let PrincipalUnderwriter = _prefix "PrincipalUnderwriter"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/Underwriter"></see>
     /// </summary>
-    let Underwriter =
-        Namespaced_IRI.parse _namespace_name "Underwriter" |> NamespacedName
-
+    let Underwriter = _prefix "Underwriter"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/RegisteredInvestmentAdvisor"></see>
     /// </summary>
-    let RegisteredInvestmentAdvisor =
-        Namespaced_IRI.parse _namespace_name "RegisteredInvestmentAdvisor" |> NamespacedName
-
+    let RegisteredInvestmentAdvisor = _prefix "RegisteredInvestmentAdvisor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/SalesFinanceCompany"></see>
     /// </summary>
-    let SalesFinanceCompany =
-        Namespaced_IRI.parse _namespace_name "SalesFinanceCompany" |> NamespacedName
-
+    let SalesFinanceCompany = _prefix "SalesFinanceCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/SavingsAssociation"></see>
     /// </summary>
-    let SavingsAssociation =
-        Namespaced_IRI.parse _namespace_name "SavingsAssociation" |> NamespacedName
-
+    let SavingsAssociation = _prefix "SavingsAssociation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/SelfRegulatingOrganization"></see>
     /// </summary>
-    let SelfRegulatingOrganization =
-        Namespaced_IRI.parse _namespace_name "SelfRegulatingOrganization" |> NamespacedName
-
+    let SelfRegulatingOrganization = _prefix "SelfRegulatingOrganization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/TrustCompany"></see>
     /// </summary>
-    let TrustCompany =
-        Namespaced_IRI.parse _namespace_name "TrustCompany" |> NamespacedName
-
+    let TrustCompany = _prefix "TrustCompany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/UnderwritingArrangement"></see>
     /// </summary>
-    let UnderwritingArrangement =
-        Namespaced_IRI.parse _namespace_name "UnderwritingArrangement" |> NamespacedName
-
+    let UnderwritingArrangement = _prefix "UnderwritingArrangement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/WealthManagementService"></see>
     /// </summary>
-    let WealthManagementService =
-        Namespaced_IRI.parse _namespace_name "WealthManagementService" |> NamespacedName
-
+    let WealthManagementService = _prefix "WealthManagementService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/hasDateEstablished"></see>
     /// </summary>
-    let hasDateEstablished =
-        Namespaced_IRI.parse _namespace_name "hasDateEstablished" |> NamespacedName
-
+    let hasDateEstablished = _prefix "hasDateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/hasDateEstablishmentTerminated"></see>
     /// </summary>
-    let hasDateEstablishmentTerminated =
-        Namespaced_IRI.parse _namespace_name "hasDateEstablishmentTerminated" |> NamespacedName
-
+    let hasDateEstablishmentTerminated = _prefix "hasDateEstablishmentTerminated"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/hasDateInsured"></see>
     /// </summary>
-    let hasDateInsured =
-        Namespaced_IRI.parse _namespace_name "hasDateInsured" |> NamespacedName
-
+    let hasDateInsured = _prefix "hasDateInsured"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/isPortfolioCompanyOf"></see>
     /// </summary>
-    let isPortfolioCompanyOf =
-        Namespaced_IRI.parse _namespace_name "isPortfolioCompanyOf" |> NamespacedName
+    let isPortfolioCompanyOf = _prefix "isPortfolioCompanyOf"

@@ -1,79 +1,62 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.SecurityBasedDerivatives.SecurityBasedDerivatives.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_sbd_sbd =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/BasketOfDebtInstruments"></see>
     /// </summary>
-    let BasketOfDebtInstruments =
-        Namespaced_IRI.parse _namespace_name "BasketOfDebtInstruments" |> NamespacedName
+    let BasketOfDebtInstruments = _prefix "BasketOfDebtInstruments"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/CapitalizedLeaseObligationDebtBasket"></see>
     /// </summary>
     let CapitalizedLeaseObligationDebtBasket =
-        Namespaced_IRI.parse _namespace_name "CapitalizedLeaseObligationDebtBasket" |> NamespacedName
+        _prefix "CapitalizedLeaseObligationDebtBasket"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/ContributionDebtBasket"></see>
     /// </summary>
-    let ContributionDebtBasket =
-        Namespaced_IRI.parse _namespace_name "ContributionDebtBasket" |> NamespacedName
-
+    let ContributionDebtBasket = _prefix "ContributionDebtBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/CreditFacilityDebtBasket"></see>
     /// </summary>
-    let CreditFacilityDebtBasket =
-        Namespaced_IRI.parse _namespace_name "CreditFacilityDebtBasket" |> NamespacedName
-
+    let CreditFacilityDebtBasket = _prefix "CreditFacilityDebtBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/DebtInstrumentDerivative"></see>
     /// </summary>
-    let DebtInstrumentDerivative =
-        Namespaced_IRI.parse _namespace_name "DebtInstrumentDerivative" |> NamespacedName
-
+    let DebtInstrumentDerivative = _prefix "DebtInstrumentDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/SecurityBasedDerivative"></see>
     /// </summary>
-    let SecurityBasedDerivative =
-        Namespaced_IRI.parse _namespace_name "SecurityBasedDerivative" |> NamespacedName
-
+    let SecurityBasedDerivative = _prefix "SecurityBasedDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/EquityDerivative"></see>
     /// </summary>
-    let EquityDerivative =
-        Namespaced_IRI.parse _namespace_name "EquityDerivative" |> NamespacedName
-
+    let EquityDerivative = _prefix "EquityDerivative"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/GeneralDebtBasket"></see>
     /// </summary>
-    let GeneralDebtBasket =
-        Namespaced_IRI.parse _namespace_name "GeneralDebtBasket" |> NamespacedName
-
+    let GeneralDebtBasket = _prefix "GeneralDebtBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/IncrementalFacilityDebtBasket"></see>
     /// </summary>
-    let IncrementalFacilityDebtBasket =
-        Namespaced_IRI.parse _namespace_name "IncrementalFacilityDebtBasket" |> NamespacedName
-
+    let IncrementalFacilityDebtBasket = _prefix "IncrementalFacilityDebtBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/LocalLinesOfCreditDebtBasket"></see>
     /// </summary>
-    let LocalLinesOfCreditDebtBasket =
-        Namespaced_IRI.parse _namespace_name "LocalLinesOfCreditDebtBasket" |> NamespacedName
-
+    let LocalLinesOfCreditDebtBasket = _prefix "LocalLinesOfCreditDebtBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/Non-GuarantorDebtBasket"></see>
     /// </summary>
-    let ``Non-GuarantorDebtBasket`` =
-        Namespaced_IRI.parse _namespace_name "Non-GuarantorDebtBasket" |> NamespacedName
-
+    let ``Non-GuarantorDebtBasket`` = _prefix "Non-GuarantorDebtBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/RatioDebtBasket"></see>
     /// </summary>
-    let RatioDebtBasket =
-        Namespaced_IRI.parse _namespace_name "RatioDebtBasket" |> NamespacedName
+    let RatioDebtBasket = _prefix "RatioDebtBasket"

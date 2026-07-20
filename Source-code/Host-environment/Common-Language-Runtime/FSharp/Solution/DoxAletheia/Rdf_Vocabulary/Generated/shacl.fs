@@ -1,1209 +1,984 @@
 namespace http.www.w3.org.ns.shacl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module shacl =
     let _namespace_name = "http://www.w3.org/ns/shacl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The prefix of a prefix declaration.
     /// <see href="http://www.w3.org/ns/shacl#prefix"></see></summary>
-    let prefix = Namespaced_IRI.parse _namespace_name "prefix" |> NamespacedName
+    let prefix = _prefix "prefix"
     /// <summary>
     /// The namespace associated with a prefix in a prefix declaration.
     /// <see href="http://www.w3.org/ns/shacl#namespace"></see></summary>
-    let namespace_ = Namespaced_IRI.parse _namespace_name "namespace" |> NamespacedName
+    let namespace_ = _prefix "namespace"
     /// <summary>
     /// Links a resource with its namespace prefix declarations.
     /// <see href="http://www.w3.org/ns/shacl#declare"></see></summary>
-    let declare = Namespaced_IRI.parse _namespace_name "declare" |> NamespacedName
-
+    let declare = _prefix "declare"
     /// <summary>
     /// Suggested shapes graphs for this ontology. The values of this property may be used in the absence of specific sh:shapesGraph statements.
     /// <see href="http://www.w3.org/ns/shacl#suggestedShapesGraph"></see></summary>
-    let suggestedShapesGraph =
-        Namespaced_IRI.parse _namespace_name "suggestedShapesGraph" |> NamespacedName
-
+    let suggestedShapesGraph = _prefix "suggestedShapesGraph"
     /// <summary>
     /// The base class of validation results, typically not instantiated directly.
     /// <see href="http://www.w3.org/ns/shacl#AbstractResult"></see></summary>
-    let AbstractResult =
-        Namespaced_IRI.parse _namespace_name "AbstractResult" |> NamespacedName
-
+    let AbstractResult = _prefix "AbstractResult"
     /// <summary>
     /// A constraint component that can be used to test whether a value node conforms to all members of a provided list of shapes.
     /// <see href="http://www.w3.org/ns/shacl#AndConstraintComponent"></see></summary>
-    let AndConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "AndConstraintComponent" |> NamespacedName
-
+    let AndConstraintComponent = _prefix "AndConstraintComponent"
     /// <summary>
     /// The class of constraint components.
     /// <see href="http://www.w3.org/ns/shacl#ConstraintComponent"></see></summary>
-    let ConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "ConstraintComponent" |> NamespacedName
-
+    let ConstraintComponent = _prefix "ConstraintComponent"
     /// <summary>
     /// The parameters of a function or constraint component.
     /// <see href="http://www.w3.org/ns/shacl#parameter"></see></summary>
-    let parameter = Namespaced_IRI.parse _namespace_name "parameter" |> NamespacedName
-
+    let parameter = _prefix "parameter"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#AndConstraintComponent-and"></see>
     /// </summary>
-    let ``AndConstraintComponent-and`` =
-        Namespaced_IRI.parse _namespace_name "AndConstraintComponent-and" |> NamespacedName
-
+    let ``AndConstraintComponent-and`` = _prefix "AndConstraintComponent-and"
     /// <summary>
     /// The class of parameter declarations, consisting of a path predicate and (possibly) information about allowed value type, cardinality and other characteristics.
     /// <see href="http://www.w3.org/ns/shacl#Parameter"></see></summary>
-    let Parameter = Namespaced_IRI.parse _namespace_name "Parameter" |> NamespacedName
+    let Parameter = _prefix "Parameter"
     /// <summary>
     /// Specifies the property path of a property shape.
     /// <see href="http://www.w3.org/ns/shacl#path"></see></summary>
-    let path = Namespaced_IRI.parse _namespace_name "path" |> NamespacedName
+    let path = _prefix "path"
     /// <summary>
     /// RDF list of shapes to validate the value nodes against.
     /// <see href="http://www.w3.org/ns/shacl#and"></see></summary>
-    let and_ = Namespaced_IRI.parse _namespace_name "and" |> NamespacedName
+    let and_ = _prefix "and"
     /// <summary>
     /// The node kind of all blank nodes.
     /// <see href="http://www.w3.org/ns/shacl#BlankNode"></see></summary>
-    let BlankNode = Namespaced_IRI.parse _namespace_name "BlankNode" |> NamespacedName
+    let BlankNode = _prefix "BlankNode"
     /// <summary>
     /// The class of all node kinds, including sh:BlankNode, sh:IRI, sh:Literal or the combinations of these: sh:BlankNodeOrIRI, sh:BlankNodeOrLiteral, sh:IRIOrLiteral.
     /// <see href="http://www.w3.org/ns/shacl#NodeKind"></see></summary>
-    let NodeKind = Namespaced_IRI.parse _namespace_name "NodeKind" |> NamespacedName
-
+    let NodeKind = _prefix "NodeKind"
     /// <summary>
     /// The node kind of all blank nodes or IRIs.
     /// <see href="http://www.w3.org/ns/shacl#BlankNodeOrIRI"></see></summary>
-    let BlankNodeOrIRI =
-        Namespaced_IRI.parse _namespace_name "BlankNodeOrIRI" |> NamespacedName
-
+    let BlankNodeOrIRI = _prefix "BlankNodeOrIRI"
     /// <summary>
     /// The node kind of all blank nodes or literals.
     /// <see href="http://www.w3.org/ns/shacl#BlankNodeOrLiteral"></see></summary>
-    let BlankNodeOrLiteral =
-        Namespaced_IRI.parse _namespace_name "BlankNodeOrLiteral" |> NamespacedName
-
+    let BlankNodeOrLiteral = _prefix "BlankNodeOrLiteral"
     /// <summary>
     /// A constraint component that can be used to verify that each value node is an instance of a given type.
     /// <see href="http://www.w3.org/ns/shacl#ClassConstraintComponent"></see></summary>
-    let ClassConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "ClassConstraintComponent" |> NamespacedName
-
+    let ClassConstraintComponent = _prefix "ClassConstraintComponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#ClassConstraintComponent-class"></see>
     /// </summary>
-    let ``ClassConstraintComponent-class`` =
-        Namespaced_IRI.parse _namespace_name "ClassConstraintComponent-class" |> NamespacedName
-
+    let ``ClassConstraintComponent-class`` = _prefix "ClassConstraintComponent-class"
     /// <summary>
     /// Specifies the node kind (e.g. IRI or literal) each value node.
     /// <see href="http://www.w3.org/ns/shacl#nodeKind"></see></summary>
-    let nodeKind = Namespaced_IRI.parse _namespace_name "nodeKind" |> NamespacedName
+    let nodeKind = _prefix "nodeKind"
     /// <summary>
     /// The node kind of all IRIs.
     /// <see href="http://www.w3.org/ns/shacl#IRI"></see></summary>
-    let IRI = Namespaced_IRI.parse _namespace_name "IRI" |> NamespacedName
+    let IRI = _prefix "IRI"
     /// <summary>
     /// The type that all value nodes must have.
     /// <see href="http://www.w3.org/ns/shacl#class"></see></summary>
-    let class_ = Namespaced_IRI.parse _namespace_name "class" |> NamespacedName
-
+    let class_ = _prefix "class"
     /// <summary>
     /// A constraint component that can be used to indicate that focus nodes must only have values for those properties that have been explicitly enumerated via sh:property/sh:path.
     /// <see href="http://www.w3.org/ns/shacl#ClosedConstraintComponent"></see></summary>
-    let ClosedConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "ClosedConstraintComponent" |> NamespacedName
+    let ClosedConstraintComponent = _prefix "ClosedConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#ClosedConstraintComponent-closed"></see>
     /// </summary>
     let ``ClosedConstraintComponent-closed`` =
-        Namespaced_IRI.parse _namespace_name "ClosedConstraintComponent-closed" |> NamespacedName
+        _prefix "ClosedConstraintComponent-closed"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#ClosedConstraintComponent-ignoredProperties"></see>
     /// </summary>
     let ``ClosedConstraintComponent-ignoredProperties`` =
-        Namespaced_IRI.parse _namespace_name "ClosedConstraintComponent-ignoredProperties" |> NamespacedName
+        _prefix "ClosedConstraintComponent-ignoredProperties"
 
     /// <summary>
     /// Specifies an RDF datatype that all value nodes must have.
     /// <see href="http://www.w3.org/ns/shacl#datatype"></see></summary>
-    let datatype = Namespaced_IRI.parse _namespace_name "datatype" |> NamespacedName
+    let datatype = _prefix "datatype"
     /// <summary>
     /// If set to true then the shape is closed.
     /// <see href="http://www.w3.org/ns/shacl#closed"></see></summary>
-    let closed = Namespaced_IRI.parse _namespace_name "closed" |> NamespacedName
+    let closed = _prefix "closed"
     /// <summary>
     /// Indicates whether a parameter is optional.
     /// <see href="http://www.w3.org/ns/shacl#optional"></see></summary>
-    let optional = Namespaced_IRI.parse _namespace_name "optional" |> NamespacedName
-
+    let optional = _prefix "optional"
     /// <summary>
     /// An optional RDF list of properties that are also permitted in addition to those explicitly enumerated via sh:property/sh:path.
     /// <see href="http://www.w3.org/ns/shacl#ignoredProperties"></see></summary>
-    let ignoredProperties =
-        Namespaced_IRI.parse _namespace_name "ignoredProperties" |> NamespacedName
-
+    let ignoredProperties = _prefix "ignoredProperties"
     /// <summary>
     /// Superclass of components that can take parameters, especially functions and constraint components.
     /// <see href="http://www.w3.org/ns/shacl#Parameterizable"></see></summary>
-    let Parameterizable =
-        Namespaced_IRI.parse _namespace_name "Parameterizable" |> NamespacedName
-
+    let Parameterizable = _prefix "Parameterizable"
     /// <summary>
     /// A constraint component that can be used to restrict the datatype of all value nodes.
     /// <see href="http://www.w3.org/ns/shacl#DatatypeConstraintComponent"></see></summary>
-    let DatatypeConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "DatatypeConstraintComponent" |> NamespacedName
+    let DatatypeConstraintComponent = _prefix "DatatypeConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#DatatypeConstraintComponent-datatype"></see>
     /// </summary>
     let ``DatatypeConstraintComponent-datatype`` =
-        Namespaced_IRI.parse _namespace_name "DatatypeConstraintComponent-datatype" |> NamespacedName
+        _prefix "DatatypeConstraintComponent-datatype"
 
     /// <summary>
     /// Specifies the maximum number of values in the set of value nodes.
     /// <see href="http://www.w3.org/ns/shacl#maxCount"></see></summary>
-    let maxCount = Namespaced_IRI.parse _namespace_name "maxCount" |> NamespacedName
-
+    let maxCount = _prefix "maxCount"
     /// <summary>
     /// A constraint component that can be used to verify that the set of value nodes is disjoint with the the set of nodes that have the focus node as subject and the value of a given property as predicate.
     /// <see href="http://www.w3.org/ns/shacl#DisjointConstraintComponent"></see></summary>
-    let DisjointConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "DisjointConstraintComponent" |> NamespacedName
+    let DisjointConstraintComponent = _prefix "DisjointConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#DisjointConstraintComponent-disjoint"></see>
     /// </summary>
     let ``DisjointConstraintComponent-disjoint`` =
-        Namespaced_IRI.parse _namespace_name "DisjointConstraintComponent-disjoint" |> NamespacedName
+        _prefix "DisjointConstraintComponent-disjoint"
 
     /// <summary>
     /// Specifies a property where the set of values must be disjoint with the value nodes.
     /// <see href="http://www.w3.org/ns/shacl#disjoint"></see></summary>
-    let disjoint = Namespaced_IRI.parse _namespace_name "disjoint" |> NamespacedName
-
+    let disjoint = _prefix "disjoint"
     /// <summary>
     /// A constraint component that can be used to verify that the set of value nodes is equal to the set of nodes that have the focus node as subject and the value of a given property as predicate.
     /// <see href="http://www.w3.org/ns/shacl#EqualsConstraintComponent"></see></summary>
-    let EqualsConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "EqualsConstraintComponent" |> NamespacedName
+    let EqualsConstraintComponent = _prefix "EqualsConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#EqualsConstraintComponent-equals"></see>
     /// </summary>
     let ``EqualsConstraintComponent-equals`` =
-        Namespaced_IRI.parse _namespace_name "EqualsConstraintComponent-equals" |> NamespacedName
+        _prefix "EqualsConstraintComponent-equals"
 
     /// <summary>
     /// Specifies a property that must have the same values as the value nodes.
     /// <see href="http://www.w3.org/ns/shacl#equals"></see></summary>
-    let equals = Namespaced_IRI.parse _namespace_name "equals" |> NamespacedName
-
+    let equals = _prefix "equals"
     /// <summary>
     /// A constraint component that can be used to verify that a given node expression produces true for all value nodes.
     /// <see href="http://www.w3.org/ns/shacl#ExpressionConstraintComponent"></see></summary>
-    let ExpressionConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "ExpressionConstraintComponent" |> NamespacedName
+    let ExpressionConstraintComponent = _prefix "ExpressionConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#ExpressionConstraintComponent-expression"></see>
     /// </summary>
     let ``ExpressionConstraintComponent-expression`` =
-        Namespaced_IRI.parse _namespace_name "ExpressionConstraintComponent-expression" |> NamespacedName
+        _prefix "ExpressionConstraintComponent-expression"
 
     /// <summary>
     /// The node expression that must return true for the value nodes.
     /// <see href="http://www.w3.org/ns/shacl#expression"></see></summary>
-    let expression = Namespaced_IRI.parse _namespace_name "expression" |> NamespacedName
+    let expression = _prefix "expression"
     /// <summary>
     /// The class of SHACL functions.
     /// <see href="http://www.w3.org/ns/shacl#Function"></see></summary>
-    let Function = Namespaced_IRI.parse _namespace_name "Function" |> NamespacedName
-
+    let Function = _prefix "Function"
     /// <summary>
     /// A constraint component that can be used to verify that one of the value nodes is a given RDF node.
     /// <see href="http://www.w3.org/ns/shacl#HasValueConstraintComponent"></see></summary>
-    let HasValueConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "HasValueConstraintComponent" |> NamespacedName
+    let HasValueConstraintComponent = _prefix "HasValueConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#HasValueConstraintComponent-hasValue"></see>
     /// </summary>
     let ``HasValueConstraintComponent-hasValue`` =
-        Namespaced_IRI.parse _namespace_name "HasValueConstraintComponent-hasValue" |> NamespacedName
+        _prefix "HasValueConstraintComponent-hasValue"
 
     /// <summary>
     /// Specifies a value that must be among the value nodes.
     /// <see href="http://www.w3.org/ns/shacl#hasValue"></see></summary>
-    let hasValue = Namespaced_IRI.parse _namespace_name "hasValue" |> NamespacedName
-
+    let hasValue = _prefix "hasValue"
     /// <summary>
     /// The node kind of all IRIs or literals.
     /// <see href="http://www.w3.org/ns/shacl#IRIOrLiteral"></see></summary>
-    let IRIOrLiteral =
-        Namespaced_IRI.parse _namespace_name "IRIOrLiteral" |> NamespacedName
-
+    let IRIOrLiteral = _prefix "IRIOrLiteral"
     /// <summary>
     /// A constraint component that can be used to exclusively enumerate the permitted value nodes.
     /// <see href="http://www.w3.org/ns/shacl#InConstraintComponent"></see></summary>
-    let InConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "InConstraintComponent" |> NamespacedName
-
+    let InConstraintComponent = _prefix "InConstraintComponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#InConstraintComponent-in"></see>
     /// </summary>
-    let ``InConstraintComponent-in`` =
-        Namespaced_IRI.parse _namespace_name "InConstraintComponent-in" |> NamespacedName
-
+    let ``InConstraintComponent-in`` = _prefix "InConstraintComponent-in"
     /// <summary>
     /// Specifies a list of allowed values so that each value node must be among the members of the given list.
     /// <see href="http://www.w3.org/ns/shacl#in"></see></summary>
-    let in_ = Namespaced_IRI.parse _namespace_name "in" |> NamespacedName
+    let in_ = _prefix "in"
     /// <summary>
     /// The severity for an informational validation result.
     /// <see href="http://www.w3.org/ns/shacl#Info"></see></summary>
-    let Info = Namespaced_IRI.parse _namespace_name "Info" |> NamespacedName
+    let Info = _prefix "Info"
     /// <summary>
     /// The class of validation result severity levels, including violation and warning levels.
     /// <see href="http://www.w3.org/ns/shacl#Severity"></see></summary>
-    let Severity = Namespaced_IRI.parse _namespace_name "Severity" |> NamespacedName
-
+    let Severity = _prefix "Severity"
     /// <summary>
     /// The class of constraints backed by a JavaScript function.
     /// <see href="http://www.w3.org/ns/shacl#JSConstraint"></see></summary>
-    let JSConstraint =
-        Namespaced_IRI.parse _namespace_name "JSConstraint" |> NamespacedName
-
+    let JSConstraint = _prefix "JSConstraint"
     /// <summary>
     /// Abstract base class of resources that declare an executable JavaScript.
     /// <see href="http://www.w3.org/ns/shacl#JSExecutable"></see></summary>
-    let JSExecutable =
-        Namespaced_IRI.parse _namespace_name "JSExecutable" |> NamespacedName
-
+    let JSExecutable = _prefix "JSExecutable"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#JSConstraint-js"></see>
     /// </summary>
-    let ``JSConstraint-js`` =
-        Namespaced_IRI.parse _namespace_name "JSConstraint-js" |> NamespacedName
-
+    let ``JSConstraint-js`` = _prefix "JSConstraint-js"
     /// <summary>
     /// Constraints expressed in JavaScript.
     /// <see href="http://www.w3.org/ns/shacl#js"></see></summary>
-    let js = Namespaced_IRI.parse _namespace_name "js" |> NamespacedName
-
+    let js = _prefix "js"
     /// <summary>
     /// A constraint component with the parameter sh:js linking to a sh:JSConstraint containing a sh:script.
     /// <see href="http://www.w3.org/ns/shacl#JSConstraintComponent"></see></summary>
-    let JSConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "JSConstraintComponent" |> NamespacedName
-
+    let JSConstraintComponent = _prefix "JSConstraintComponent"
     /// <summary>
     /// The class of SHACL functions that execute a JavaScript function when called.
     /// <see href="http://www.w3.org/ns/shacl#JSFunction"></see></summary>
-    let JSFunction = Namespaced_IRI.parse _namespace_name "JSFunction" |> NamespacedName
+    let JSFunction = _prefix "JSFunction"
     /// <summary>
     /// Represents a JavaScript library, typically identified by one or more URLs of files to include.
     /// <see href="http://www.w3.org/ns/shacl#JSLibrary"></see></summary>
-    let JSLibrary = Namespaced_IRI.parse _namespace_name "JSLibrary" |> NamespacedName
+    let JSLibrary = _prefix "JSLibrary"
     /// <summary>
     /// The class of SHACL rules expressed using JavaScript.
     /// <see href="http://www.w3.org/ns/shacl#JSRule"></see></summary>
-    let JSRule = Namespaced_IRI.parse _namespace_name "JSRule" |> NamespacedName
+    let JSRule = _prefix "JSRule"
     /// <summary>
     /// The class of SHACL rules. Never instantiated directly.
     /// <see href="http://www.w3.org/ns/shacl#Rule"></see></summary>
-    let Rule = Namespaced_IRI.parse _namespace_name "Rule" |> NamespacedName
+    let Rule = _prefix "Rule"
     /// <summary>
     /// The class of targets that are based on JavaScript functions.
     /// <see href="http://www.w3.org/ns/shacl#JSTarget"></see></summary>
-    let JSTarget = Namespaced_IRI.parse _namespace_name "JSTarget" |> NamespacedName
+    let JSTarget = _prefix "JSTarget"
     /// <summary>
     /// The base class of targets such as those based on SPARQL queries.
     /// <see href="http://www.w3.org/ns/shacl#Target"></see></summary>
-    let Target = Namespaced_IRI.parse _namespace_name "Target" |> NamespacedName
-
+    let Target = _prefix "Target"
     /// <summary>
     /// The (meta) class for parameterizable targets that are based on JavaScript functions.
     /// <see href="http://www.w3.org/ns/shacl#JSTargetType"></see></summary>
-    let JSTargetType =
-        Namespaced_IRI.parse _namespace_name "JSTargetType" |> NamespacedName
-
+    let JSTargetType = _prefix "JSTargetType"
     /// <summary>
     /// The (meta) class for parameterizable targets.	Instances of this are instantiated as values of the sh:target property.
     /// <see href="http://www.w3.org/ns/shacl#TargetType"></see></summary>
-    let TargetType = Namespaced_IRI.parse _namespace_name "TargetType" |> NamespacedName
-
+    let TargetType = _prefix "TargetType"
     /// <summary>
     /// A SHACL validator based on JavaScript. This can be used to declare SHACL constraint components that perform JavaScript-based validation when used.
     /// <see href="http://www.w3.org/ns/shacl#JSValidator"></see></summary>
-    let JSValidator =
-        Namespaced_IRI.parse _namespace_name "JSValidator" |> NamespacedName
-
+    let JSValidator = _prefix "JSValidator"
     /// <summary>
     /// The class of validators, which provide instructions on how to process a constraint definition. This class serves as base class for the SPARQL-based validators and other possible implementations.
     /// <see href="http://www.w3.org/ns/shacl#Validator"></see></summary>
-    let Validator = Namespaced_IRI.parse _namespace_name "Validator" |> NamespacedName
-
+    let Validator = _prefix "Validator"
     /// <summary>
     /// A constraint component that can be used to enumerate language tags that all value nodes must have.
     /// <see href="http://www.w3.org/ns/shacl#LanguageInConstraintComponent"></see></summary>
-    let LanguageInConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "LanguageInConstraintComponent" |> NamespacedName
+    let LanguageInConstraintComponent = _prefix "LanguageInConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#LanguageInConstraintComponent-languageIn"></see>
     /// </summary>
     let ``LanguageInConstraintComponent-languageIn`` =
-        Namespaced_IRI.parse _namespace_name "LanguageInConstraintComponent-languageIn" |> NamespacedName
+        _prefix "LanguageInConstraintComponent-languageIn"
 
     /// <summary>
     /// Specifies a list of language tags that all value nodes must have.
     /// <see href="http://www.w3.org/ns/shacl#languageIn"></see></summary>
-    let languageIn = Namespaced_IRI.parse _namespace_name "languageIn" |> NamespacedName
-
+    let languageIn = _prefix "languageIn"
     /// <summary>
     /// A constraint component that can be used to verify that each value node is smaller than all the nodes that have the focus node as subject and the value of a given property as predicate.
     /// <see href="http://www.w3.org/ns/shacl#LessThanConstraintComponent"></see></summary>
-    let LessThanConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "LessThanConstraintComponent" |> NamespacedName
+    let LessThanConstraintComponent = _prefix "LessThanConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#LessThanConstraintComponent-lessThan"></see>
     /// </summary>
     let ``LessThanConstraintComponent-lessThan`` =
-        Namespaced_IRI.parse _namespace_name "LessThanConstraintComponent-lessThan" |> NamespacedName
+        _prefix "LessThanConstraintComponent-lessThan"
 
     /// <summary>
     /// Specifies a property that must have smaller values than the value nodes.
     /// <see href="http://www.w3.org/ns/shacl#lessThan"></see></summary>
-    let lessThan = Namespaced_IRI.parse _namespace_name "lessThan" |> NamespacedName
+    let lessThan = _prefix "lessThan"
 
     /// <summary>
     /// A constraint component that can be used to verify that every value node is smaller than all the nodes that have the focus node as subject and the value of a given property as predicate.
     /// <see href="http://www.w3.org/ns/shacl#LessThanOrEqualsConstraintComponent"></see></summary>
     let LessThanOrEqualsConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "LessThanOrEqualsConstraintComponent" |> NamespacedName
+        _prefix "LessThanOrEqualsConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#LessThanOrEqualsConstraintComponent-lessThanOrEquals"></see>
     /// </summary>
     let ``LessThanOrEqualsConstraintComponent-lessThanOrEquals`` =
-        Namespaced_IRI.parse _namespace_name "LessThanOrEqualsConstraintComponent-lessThanOrEquals" |> NamespacedName
+        _prefix "LessThanOrEqualsConstraintComponent-lessThanOrEquals"
 
     /// <summary>
     /// Specifies a property that must have smaller or equal values than the value nodes.
     /// <see href="http://www.w3.org/ns/shacl#lessThanOrEquals"></see></summary>
-    let lessThanOrEquals =
-        Namespaced_IRI.parse _namespace_name "lessThanOrEquals" |> NamespacedName
-
+    let lessThanOrEquals = _prefix "lessThanOrEquals"
     /// <summary>
     /// The node kind of all literals.
     /// <see href="http://www.w3.org/ns/shacl#Literal"></see></summary>
-    let Literal = Namespaced_IRI.parse _namespace_name "Literal" |> NamespacedName
-
+    let Literal = _prefix "Literal"
     /// <summary>
     /// A constraint component that can be used to restrict the maximum number of value nodes.
     /// <see href="http://www.w3.org/ns/shacl#MaxCountConstraintComponent"></see></summary>
-    let MaxCountConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MaxCountConstraintComponent" |> NamespacedName
+    let MaxCountConstraintComponent = _prefix "MaxCountConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MaxCountConstraintComponent-maxCount"></see>
     /// </summary>
     let ``MaxCountConstraintComponent-maxCount`` =
-        Namespaced_IRI.parse _namespace_name "MaxCountConstraintComponent-maxCount" |> NamespacedName
+        _prefix "MaxCountConstraintComponent-maxCount"
 
     /// <summary>
     /// A constraint component that can be used to restrict the range of value nodes with a maximum exclusive value.
     /// <see href="http://www.w3.org/ns/shacl#MaxExclusiveConstraintComponent"></see></summary>
-    let MaxExclusiveConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MaxExclusiveConstraintComponent" |> NamespacedName
+    let MaxExclusiveConstraintComponent = _prefix "MaxExclusiveConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MaxExclusiveConstraintComponent-maxExclusive"></see>
     /// </summary>
     let ``MaxExclusiveConstraintComponent-maxExclusive`` =
-        Namespaced_IRI.parse _namespace_name "MaxExclusiveConstraintComponent-maxExclusive" |> NamespacedName
+        _prefix "MaxExclusiveConstraintComponent-maxExclusive"
 
     /// <summary>
     /// Specifies the maximum exclusive value of each value node.
     /// <see href="http://www.w3.org/ns/shacl#maxExclusive"></see></summary>
-    let maxExclusive =
-        Namespaced_IRI.parse _namespace_name "maxExclusive" |> NamespacedName
-
+    let maxExclusive = _prefix "maxExclusive"
     /// <summary>
     /// A constraint component that can be used to restrict the range of value nodes with a maximum inclusive value.
     /// <see href="http://www.w3.org/ns/shacl#MaxInclusiveConstraintComponent"></see></summary>
-    let MaxInclusiveConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MaxInclusiveConstraintComponent" |> NamespacedName
+    let MaxInclusiveConstraintComponent = _prefix "MaxInclusiveConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MaxInclusiveConstraintComponent-maxInclusive"></see>
     /// </summary>
     let ``MaxInclusiveConstraintComponent-maxInclusive`` =
-        Namespaced_IRI.parse _namespace_name "MaxInclusiveConstraintComponent-maxInclusive" |> NamespacedName
+        _prefix "MaxInclusiveConstraintComponent-maxInclusive"
 
     /// <summary>
     /// Specifies the maximum inclusive value of each value node.
     /// <see href="http://www.w3.org/ns/shacl#maxInclusive"></see></summary>
-    let maxInclusive =
-        Namespaced_IRI.parse _namespace_name "maxInclusive" |> NamespacedName
-
+    let maxInclusive = _prefix "maxInclusive"
     /// <summary>
     /// A constraint component that can be used to restrict the maximum string length of value nodes.
     /// <see href="http://www.w3.org/ns/shacl#MaxLengthConstraintComponent"></see></summary>
-    let MaxLengthConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MaxLengthConstraintComponent" |> NamespacedName
+    let MaxLengthConstraintComponent = _prefix "MaxLengthConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MaxLengthConstraintComponent-maxLength"></see>
     /// </summary>
     let ``MaxLengthConstraintComponent-maxLength`` =
-        Namespaced_IRI.parse _namespace_name "MaxLengthConstraintComponent-maxLength" |> NamespacedName
+        _prefix "MaxLengthConstraintComponent-maxLength"
 
     /// <summary>
     /// Specifies the maximum string length of each value node.
     /// <see href="http://www.w3.org/ns/shacl#maxLength"></see></summary>
-    let maxLength = Namespaced_IRI.parse _namespace_name "maxLength" |> NamespacedName
-
+    let maxLength = _prefix "maxLength"
     /// <summary>
     /// A constraint component that can be used to restrict the minimum number of value nodes.
     /// <see href="http://www.w3.org/ns/shacl#MinCountConstraintComponent"></see></summary>
-    let MinCountConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MinCountConstraintComponent" |> NamespacedName
+    let MinCountConstraintComponent = _prefix "MinCountConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MinCountConstraintComponent-minCount"></see>
     /// </summary>
     let ``MinCountConstraintComponent-minCount`` =
-        Namespaced_IRI.parse _namespace_name "MinCountConstraintComponent-minCount" |> NamespacedName
+        _prefix "MinCountConstraintComponent-minCount"
 
     /// <summary>
     /// Specifies the minimum number of values in the set of value nodes.
     /// <see href="http://www.w3.org/ns/shacl#minCount"></see></summary>
-    let minCount = Namespaced_IRI.parse _namespace_name "minCount" |> NamespacedName
-
+    let minCount = _prefix "minCount"
     /// <summary>
     /// A constraint component that can be used to restrict the range of value nodes with a minimum exclusive value.
     /// <see href="http://www.w3.org/ns/shacl#MinExclusiveConstraintComponent"></see></summary>
-    let MinExclusiveConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MinExclusiveConstraintComponent" |> NamespacedName
+    let MinExclusiveConstraintComponent = _prefix "MinExclusiveConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MinExclusiveConstraintComponent-minExclusive"></see>
     /// </summary>
     let ``MinExclusiveConstraintComponent-minExclusive`` =
-        Namespaced_IRI.parse _namespace_name "MinExclusiveConstraintComponent-minExclusive" |> NamespacedName
+        _prefix "MinExclusiveConstraintComponent-minExclusive"
 
     /// <summary>
     /// Specifies the minimum exclusive value of each value node.
     /// <see href="http://www.w3.org/ns/shacl#minExclusive"></see></summary>
-    let minExclusive =
-        Namespaced_IRI.parse _namespace_name "minExclusive" |> NamespacedName
-
+    let minExclusive = _prefix "minExclusive"
     /// <summary>
     /// A constraint component that can be used to restrict the range of value nodes with a minimum inclusive value.
     /// <see href="http://www.w3.org/ns/shacl#MinInclusiveConstraintComponent"></see></summary>
-    let MinInclusiveConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MinInclusiveConstraintComponent" |> NamespacedName
+    let MinInclusiveConstraintComponent = _prefix "MinInclusiveConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MinInclusiveConstraintComponent-minInclusive"></see>
     /// </summary>
     let ``MinInclusiveConstraintComponent-minInclusive`` =
-        Namespaced_IRI.parse _namespace_name "MinInclusiveConstraintComponent-minInclusive" |> NamespacedName
+        _prefix "MinInclusiveConstraintComponent-minInclusive"
 
     /// <summary>
     /// Specifies the minimum inclusive value of each value node.
     /// <see href="http://www.w3.org/ns/shacl#minInclusive"></see></summary>
-    let minInclusive =
-        Namespaced_IRI.parse _namespace_name "minInclusive" |> NamespacedName
-
+    let minInclusive = _prefix "minInclusive"
     /// <summary>
     /// A constraint component that can be used to restrict the minimum string length of value nodes.
     /// <see href="http://www.w3.org/ns/shacl#MinLengthConstraintComponent"></see></summary>
-    let MinLengthConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "MinLengthConstraintComponent" |> NamespacedName
+    let MinLengthConstraintComponent = _prefix "MinLengthConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#MinLengthConstraintComponent-minLength"></see>
     /// </summary>
     let ``MinLengthConstraintComponent-minLength`` =
-        Namespaced_IRI.parse _namespace_name "MinLengthConstraintComponent-minLength" |> NamespacedName
+        _prefix "MinLengthConstraintComponent-minLength"
 
     /// <summary>
     /// Specifies the minimum string length of each value node.
     /// <see href="http://www.w3.org/ns/shacl#minLength"></see></summary>
-    let minLength = Namespaced_IRI.parse _namespace_name "minLength" |> NamespacedName
-
+    let minLength = _prefix "minLength"
     /// <summary>
     /// A constraint component that can be used to verify that all value nodes conform to the given node shape.
     /// <see href="http://www.w3.org/ns/shacl#NodeConstraintComponent"></see></summary>
-    let NodeConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "NodeConstraintComponent" |> NamespacedName
-
+    let NodeConstraintComponent = _prefix "NodeConstraintComponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#NodeConstraintComponent-node"></see>
     /// </summary>
-    let ``NodeConstraintComponent-node`` =
-        Namespaced_IRI.parse _namespace_name "NodeConstraintComponent-node" |> NamespacedName
-
+    let ``NodeConstraintComponent-node`` = _prefix "NodeConstraintComponent-node"
     /// <summary>
     /// Specifies the node shape that all value nodes must conform to.
     /// <see href="http://www.w3.org/ns/shacl#node"></see></summary>
-    let node = Namespaced_IRI.parse _namespace_name "node" |> NamespacedName
-
+    let node = _prefix "node"
     /// <summary>
     /// A constraint component that can be used to restrict the RDF node kind of each value node.
     /// <see href="http://www.w3.org/ns/shacl#NodeKindConstraintComponent"></see></summary>
-    let NodeKindConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "NodeKindConstraintComponent" |> NamespacedName
+    let NodeKindConstraintComponent = _prefix "NodeKindConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#NodeKindConstraintComponent-nodeKind"></see>
     /// </summary>
     let ``NodeKindConstraintComponent-nodeKind`` =
-        Namespaced_IRI.parse _namespace_name "NodeKindConstraintComponent-nodeKind" |> NamespacedName
+        _prefix "NodeKindConstraintComponent-nodeKind"
 
     /// <summary>
     /// A node shape is a shape that specifies constraint that need to be met with respect to focus nodes.
     /// <see href="http://www.w3.org/ns/shacl#NodeShape"></see></summary>
-    let NodeShape = Namespaced_IRI.parse _namespace_name "NodeShape" |> NamespacedName
+    let NodeShape = _prefix "NodeShape"
     /// <summary>
     /// A shape is a collection of constraints that may be targeted for certain nodes.
     /// <see href="http://www.w3.org/ns/shacl#Shape"></see></summary>
-    let Shape = Namespaced_IRI.parse _namespace_name "Shape" |> NamespacedName
-
+    let Shape = _prefix "Shape"
     /// <summary>
     /// A constraint component that can be used to verify that value nodes do not conform to a given shape.
     /// <see href="http://www.w3.org/ns/shacl#NotConstraintComponent"></see></summary>
-    let NotConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "NotConstraintComponent" |> NamespacedName
-
+    let NotConstraintComponent = _prefix "NotConstraintComponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#NotConstraintComponent-not"></see>
     /// </summary>
-    let ``NotConstraintComponent-not`` =
-        Namespaced_IRI.parse _namespace_name "NotConstraintComponent-not" |> NamespacedName
-
+    let ``NotConstraintComponent-not`` = _prefix "NotConstraintComponent-not"
     /// <summary>
     /// Specifies a shape that the value nodes must not conform to.
     /// <see href="http://www.w3.org/ns/shacl#not"></see></summary>
-    let ``not`` = Namespaced_IRI.parse _namespace_name "not" |> NamespacedName
-
+    let ``not`` = _prefix "not"
     /// <summary>
     /// A constraint component that can be used to restrict the value nodes so that they conform to at least one out of several provided shapes.
     /// <see href="http://www.w3.org/ns/shacl#OrConstraintComponent"></see></summary>
-    let OrConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "OrConstraintComponent" |> NamespacedName
-
+    let OrConstraintComponent = _prefix "OrConstraintComponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#OrConstraintComponent-or"></see>
     /// </summary>
-    let ``OrConstraintComponent-or`` =
-        Namespaced_IRI.parse _namespace_name "OrConstraintComponent-or" |> NamespacedName
-
+    let ``OrConstraintComponent-or`` = _prefix "OrConstraintComponent-or"
     /// <summary>
     /// Specifies a list of shapes so that the value nodes must conform to at least one of the shapes.
     /// <see href="http://www.w3.org/ns/shacl#or"></see></summary>
-    let or_ = Namespaced_IRI.parse _namespace_name "or" |> NamespacedName
-
+    let or_ = _prefix "or"
     /// <summary>
     /// A property shape is a shape that specifies constraints on the values of a focus node for a given property or path.
     /// <see href="http://www.w3.org/ns/shacl#PropertyShape"></see></summary>
-    let PropertyShape =
-        Namespaced_IRI.parse _namespace_name "PropertyShape" |> NamespacedName
-
+    let PropertyShape = _prefix "PropertyShape"
     /// <summary>
     /// A constraint component that can be used to verify that every value node matches a given regular expression.
     /// <see href="http://www.w3.org/ns/shacl#PatternConstraintComponent"></see></summary>
-    let PatternConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "PatternConstraintComponent" |> NamespacedName
+    let PatternConstraintComponent = _prefix "PatternConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#PatternConstraintComponent-pattern"></see>
     /// </summary>
     let ``PatternConstraintComponent-pattern`` =
-        Namespaced_IRI.parse _namespace_name "PatternConstraintComponent-pattern" |> NamespacedName
+        _prefix "PatternConstraintComponent-pattern"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#PatternConstraintComponent-flags"></see>
     /// </summary>
     let ``PatternConstraintComponent-flags`` =
-        Namespaced_IRI.parse _namespace_name "PatternConstraintComponent-flags" |> NamespacedName
+        _prefix "PatternConstraintComponent-flags"
 
     /// <summary>
     /// An optional flag to be used with regular expression pattern matching.
     /// <see href="http://www.w3.org/ns/shacl#flags"></see></summary>
-    let flags = Namespaced_IRI.parse _namespace_name "flags" |> NamespacedName
+    let flags = _prefix "flags"
     /// <summary>
     /// Specifies a regular expression pattern that the string representations of the value nodes must match.
     /// <see href="http://www.w3.org/ns/shacl#pattern"></see></summary>
-    let pattern = Namespaced_IRI.parse _namespace_name "pattern" |> NamespacedName
-
+    let pattern = _prefix "pattern"
     /// <summary>
     /// The class of prefix declarations, consisting of pairs of a prefix with a namespace.
     /// <see href="http://www.w3.org/ns/shacl#PrefixDeclaration"></see></summary>
-    let PrefixDeclaration =
-        Namespaced_IRI.parse _namespace_name "PrefixDeclaration" |> NamespacedName
-
+    let PrefixDeclaration = _prefix "PrefixDeclaration"
     /// <summary>
     /// A constraint component that can be used to verify that all value nodes conform to the given property shape.
     /// <see href="http://www.w3.org/ns/shacl#PropertyConstraintComponent"></see></summary>
-    let PropertyConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "PropertyConstraintComponent" |> NamespacedName
+    let PropertyConstraintComponent = _prefix "PropertyConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#PropertyConstraintComponent-property"></see>
     /// </summary>
     let ``PropertyConstraintComponent-property`` =
-        Namespaced_IRI.parse _namespace_name "PropertyConstraintComponent-property" |> NamespacedName
+        _prefix "PropertyConstraintComponent-property"
 
     /// <summary>
     /// Links a shape to its property shapes.
     /// <see href="http://www.w3.org/ns/shacl#property"></see></summary>
-    let property = Namespaced_IRI.parse _namespace_name "property" |> NamespacedName
-
+    let property = _prefix "property"
     /// <summary>
     /// Instances of this class represent groups of property shapes that belong together.
     /// <see href="http://www.w3.org/ns/shacl#PropertyGroup"></see></summary>
-    let PropertyGroup =
-        Namespaced_IRI.parse _namespace_name "PropertyGroup" |> NamespacedName
+    let PropertyGroup = _prefix "PropertyGroup"
 
     /// <summary>
     /// A constraint component that can be used to verify that a specified maximum number of value nodes conforms to a given shape.
     /// <see href="http://www.w3.org/ns/shacl#QualifiedMaxCountConstraintComponent"></see></summary>
     let QualifiedMaxCountConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "QualifiedMaxCountConstraintComponent" |> NamespacedName
+        _prefix "QualifiedMaxCountConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#QualifiedMaxCountConstraintComponent-qualifiedMaxCount"></see>
     /// </summary>
     let ``QualifiedMaxCountConstraintComponent-qualifiedMaxCount`` =
-        Namespaced_IRI.parse _namespace_name "QualifiedMaxCountConstraintComponent-qualifiedMaxCount" |> NamespacedName
+        _prefix "QualifiedMaxCountConstraintComponent-qualifiedMaxCount"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#QualifiedMaxCountConstraintComponent-qualifiedValueShape"></see>
     /// </summary>
     let ``QualifiedMaxCountConstraintComponent-qualifiedValueShape`` =
-        Namespaced_IRI.parse _namespace_name "QualifiedMaxCountConstraintComponent-qualifiedValueShape" |> NamespacedName
+        _prefix "QualifiedMaxCountConstraintComponent-qualifiedValueShape"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint"></see>
     /// </summary>
     let ``QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint`` =
-        Namespaced_IRI.parse _namespace_name "QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint" |> NamespacedName
+        _prefix "QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint"
 
     /// <summary>
     /// The maximum number of value nodes that can conform to the shape.
     /// <see href="http://www.w3.org/ns/shacl#qualifiedMaxCount"></see></summary>
-    let qualifiedMaxCount =
-        Namespaced_IRI.parse _namespace_name "qualifiedMaxCount" |> NamespacedName
-
+    let qualifiedMaxCount = _prefix "qualifiedMaxCount"
     /// <summary>
     /// The shape that a specified number of values must conform to.
     /// <see href="http://www.w3.org/ns/shacl#qualifiedValueShape"></see></summary>
-    let qualifiedValueShape =
-        Namespaced_IRI.parse _namespace_name "qualifiedValueShape" |> NamespacedName
-
+    let qualifiedValueShape = _prefix "qualifiedValueShape"
     /// <summary>
     /// Can be used to mark the qualified value shape to be disjoint with its sibling shapes.
     /// <see href="http://www.w3.org/ns/shacl#qualifiedValueShapesDisjoint"></see></summary>
-    let qualifiedValueShapesDisjoint =
-        Namespaced_IRI.parse _namespace_name "qualifiedValueShapesDisjoint" |> NamespacedName
+    let qualifiedValueShapesDisjoint = _prefix "qualifiedValueShapesDisjoint"
 
     /// <summary>
     /// A constraint component that can be used to verify that a specified minimum number of value nodes conforms to a given shape.
     /// <see href="http://www.w3.org/ns/shacl#QualifiedMinCountConstraintComponent"></see></summary>
     let QualifiedMinCountConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "QualifiedMinCountConstraintComponent" |> NamespacedName
+        _prefix "QualifiedMinCountConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#QualifiedMinCountConstraintComponent-qualifiedMinCount"></see>
     /// </summary>
     let ``QualifiedMinCountConstraintComponent-qualifiedMinCount`` =
-        Namespaced_IRI.parse _namespace_name "QualifiedMinCountConstraintComponent-qualifiedMinCount" |> NamespacedName
+        _prefix "QualifiedMinCountConstraintComponent-qualifiedMinCount"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#QualifiedMinCountConstraintComponent-qualifiedValueShape"></see>
     /// </summary>
     let ``QualifiedMinCountConstraintComponent-qualifiedValueShape`` =
-        Namespaced_IRI.parse _namespace_name "QualifiedMinCountConstraintComponent-qualifiedValueShape" |> NamespacedName
+        _prefix "QualifiedMinCountConstraintComponent-qualifiedValueShape"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint"></see>
     /// </summary>
     let ``QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint`` =
-        Namespaced_IRI.parse _namespace_name "QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint" |> NamespacedName
+        _prefix "QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint"
 
     /// <summary>
     /// The minimum number of value nodes that must conform to the shape.
     /// <see href="http://www.w3.org/ns/shacl#qualifiedMinCount"></see></summary>
-    let qualifiedMinCount =
-        Namespaced_IRI.parse _namespace_name "qualifiedMinCount" |> NamespacedName
-
+    let qualifiedMinCount = _prefix "qualifiedMinCount"
     /// <summary>
     /// A class of result annotations, which define the rules to derive the values of a given annotation property as extra values for a validation result.
     /// <see href="http://www.w3.org/ns/shacl#ResultAnnotation"></see></summary>
-    let ResultAnnotation =
-        Namespaced_IRI.parse _namespace_name "ResultAnnotation" |> NamespacedName
-
+    let ResultAnnotation = _prefix "ResultAnnotation"
     /// <summary>
     /// The class of SPARQL executables that are based on an ASK query.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLAskExecutable"></see></summary>
-    let SPARQLAskExecutable =
-        Namespaced_IRI.parse _namespace_name "SPARQLAskExecutable" |> NamespacedName
-
+    let SPARQLAskExecutable = _prefix "SPARQLAskExecutable"
     /// <summary>
     /// The class of resources that encapsulate a SPARQL query.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLExecutable"></see></summary>
-    let SPARQLExecutable =
-        Namespaced_IRI.parse _namespace_name "SPARQLExecutable" |> NamespacedName
-
+    let SPARQLExecutable = _prefix "SPARQLExecutable"
     /// <summary>
     /// The class of validators based on SPARQL ASK queries. The queries are evaluated for each value node and are supposed to return true if the given node conforms.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLAskValidator"></see></summary>
-    let SPARQLAskValidator =
-        Namespaced_IRI.parse _namespace_name "SPARQLAskValidator" |> NamespacedName
-
+    let SPARQLAskValidator = _prefix "SPARQLAskValidator"
     /// <summary>
     /// The class of constraints based on SPARQL SELECT queries.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLConstraint"></see></summary>
-    let SPARQLConstraint =
-        Namespaced_IRI.parse _namespace_name "SPARQLConstraint" |> NamespacedName
-
+    let SPARQLConstraint = _prefix "SPARQLConstraint"
     /// <summary>
     /// The class of SPARQL executables based on a SELECT query.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLSelectExecutable"></see></summary>
-    let SPARQLSelectExecutable =
-        Namespaced_IRI.parse _namespace_name "SPARQLSelectExecutable" |> NamespacedName
-
+    let SPARQLSelectExecutable = _prefix "SPARQLSelectExecutable"
     /// <summary>
     /// A constraint component that can be used to define constraints based on SPARQL queries.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLConstraintComponent"></see></summary>
-    let SPARQLConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "SPARQLConstraintComponent" |> NamespacedName
+    let SPARQLConstraintComponent = _prefix "SPARQLConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#SPARQLConstraintComponent-sparql"></see>
     /// </summary>
     let ``SPARQLConstraintComponent-sparql`` =
-        Namespaced_IRI.parse _namespace_name "SPARQLConstraintComponent-sparql" |> NamespacedName
+        _prefix "SPARQLConstraintComponent-sparql"
 
     /// <summary>
     /// Links a shape with SPARQL constraints.
     /// <see href="http://www.w3.org/ns/shacl#sparql"></see></summary>
-    let sparql = Namespaced_IRI.parse _namespace_name "sparql" |> NamespacedName
-
+    let sparql = _prefix "sparql"
     /// <summary>
     /// The class of SPARQL executables that are based on a CONSTRUCT query.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLConstructExecutable"></see></summary>
-    let SPARQLConstructExecutable =
-        Namespaced_IRI.parse _namespace_name "SPARQLConstructExecutable" |> NamespacedName
-
+    let SPARQLConstructExecutable = _prefix "SPARQLConstructExecutable"
     /// <summary>
     /// A function backed by a SPARQL query - either ASK or SELECT.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLFunction"></see></summary>
-    let SPARQLFunction =
-        Namespaced_IRI.parse _namespace_name "SPARQLFunction" |> NamespacedName
-
+    let SPARQLFunction = _prefix "SPARQLFunction"
     /// <summary>
     /// The class of SHACL rules based on SPARQL CONSTRUCT queries.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLRule"></see></summary>
-    let SPARQLRule = Namespaced_IRI.parse _namespace_name "SPARQLRule" |> NamespacedName
-
+    let SPARQLRule = _prefix "SPARQLRule"
     /// <summary>
     /// The class of validators based on SPARQL SELECT queries. The queries are evaluated for each focus node and are supposed to produce bindings for all focus nodes that do not conform.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLSelectValidator"></see></summary>
-    let SPARQLSelectValidator =
-        Namespaced_IRI.parse _namespace_name "SPARQLSelectValidator" |> NamespacedName
-
+    let SPARQLSelectValidator = _prefix "SPARQLSelectValidator"
     /// <summary>
     /// The class of targets that are based on SPARQL queries.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLTarget"></see></summary>
-    let SPARQLTarget =
-        Namespaced_IRI.parse _namespace_name "SPARQLTarget" |> NamespacedName
-
+    let SPARQLTarget = _prefix "SPARQLTarget"
     /// <summary>
     /// The (meta) class for parameterizable targets that are based on SPARQL queries.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLTargetType"></see></summary>
-    let SPARQLTargetType =
-        Namespaced_IRI.parse _namespace_name "SPARQLTargetType" |> NamespacedName
-
+    let SPARQLTargetType = _prefix "SPARQLTargetType"
     /// <summary>
     /// The class of SPARQL executables based on a SPARQL UPDATE.
     /// <see href="http://www.w3.org/ns/shacl#SPARQLUpdateExecutable"></see></summary>
-    let SPARQLUpdateExecutable =
-        Namespaced_IRI.parse _namespace_name "SPARQLUpdateExecutable" |> NamespacedName
-
+    let SPARQLUpdateExecutable = _prefix "SPARQLUpdateExecutable"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#TripleRule"></see>
     /// </summary>
-    let TripleRule = Namespaced_IRI.parse _namespace_name "TripleRule" |> NamespacedName
-
+    let TripleRule = _prefix "TripleRule"
     /// <summary>
     /// A constraint component that can be used to specify that no pair of value nodes may use the same language tag.
     /// <see href="http://www.w3.org/ns/shacl#UniqueLangConstraintComponent"></see></summary>
-    let UniqueLangConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "UniqueLangConstraintComponent" |> NamespacedName
+    let UniqueLangConstraintComponent = _prefix "UniqueLangConstraintComponent"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#UniqueLangConstraintComponent-uniqueLang"></see>
     /// </summary>
     let ``UniqueLangConstraintComponent-uniqueLang`` =
-        Namespaced_IRI.parse _namespace_name "UniqueLangConstraintComponent-uniqueLang" |> NamespacedName
+        _prefix "UniqueLangConstraintComponent-uniqueLang"
 
     /// <summary>
     /// Specifies whether all node values must have a unique (or no) language tag.
     /// <see href="http://www.w3.org/ns/shacl#uniqueLang"></see></summary>
-    let uniqueLang = Namespaced_IRI.parse _namespace_name "uniqueLang" |> NamespacedName
-
+    let uniqueLang = _prefix "uniqueLang"
     /// <summary>
     /// The class of SHACL validation reports.
     /// <see href="http://www.w3.org/ns/shacl#ValidationReport"></see></summary>
-    let ValidationReport =
-        Namespaced_IRI.parse _namespace_name "ValidationReport" |> NamespacedName
-
+    let ValidationReport = _prefix "ValidationReport"
     /// <summary>
     /// The class of validation results.
     /// <see href="http://www.w3.org/ns/shacl#ValidationResult"></see></summary>
-    let ValidationResult =
-        Namespaced_IRI.parse _namespace_name "ValidationResult" |> NamespacedName
-
+    let ValidationResult = _prefix "ValidationResult"
     /// <summary>
     /// The severity for a violation validation result.
     /// <see href="http://www.w3.org/ns/shacl#Violation"></see></summary>
-    let Violation = Namespaced_IRI.parse _namespace_name "Violation" |> NamespacedName
+    let Violation = _prefix "Violation"
     /// <summary>
     /// The severity for a warning validation result.
     /// <see href="http://www.w3.org/ns/shacl#Warning"></see></summary>
-    let Warning = Namespaced_IRI.parse _namespace_name "Warning" |> NamespacedName
-
+    let Warning = _prefix "Warning"
     /// <summary>
     /// A constraint component that can be used to restrict the value nodes so that they conform to exactly one out of several provided shapes.
     /// <see href="http://www.w3.org/ns/shacl#XoneConstraintComponent"></see></summary>
-    let XoneConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "XoneConstraintComponent" |> NamespacedName
-
+    let XoneConstraintComponent = _prefix "XoneConstraintComponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/shacl#XoneConstraintComponent-xone"></see>
     /// </summary>
-    let ``XoneConstraintComponent-xone`` =
-        Namespaced_IRI.parse _namespace_name "XoneConstraintComponent-xone" |> NamespacedName
-
+    let ``XoneConstraintComponent-xone`` = _prefix "XoneConstraintComponent-xone"
     /// <summary>
     /// Specifies a list of shapes so that the value nodes must conform to exactly one of the shapes.
     /// <see href="http://www.w3.org/ns/shacl#xone"></see></summary>
-    let xone = Namespaced_IRI.parse _namespace_name "xone" |> NamespacedName
-
+    let xone = _prefix "xone"
     /// <summary>
     /// The (single) value of this property must be a list of path elements, representing the elements of alternative paths.
     /// <see href="http://www.w3.org/ns/shacl#alternativePath"></see></summary>
-    let alternativePath =
-        Namespaced_IRI.parse _namespace_name "alternativePath" |> NamespacedName
-
+    let alternativePath = _prefix "alternativePath"
     /// <summary>
     /// The annotation property that shall be set.
     /// <see href="http://www.w3.org/ns/shacl#annotationProperty"></see></summary>
-    let annotationProperty =
-        Namespaced_IRI.parse _namespace_name "annotationProperty" |> NamespacedName
-
+    let annotationProperty = _prefix "annotationProperty"
     /// <summary>
     /// The (default) values of the annotation property.
     /// <see href="http://www.w3.org/ns/shacl#annotationValue"></see></summary>
-    let annotationValue =
-        Namespaced_IRI.parse _namespace_name "annotationValue" |> NamespacedName
-
+    let annotationValue = _prefix "annotationValue"
     /// <summary>
     /// The name of the SPARQL variable from the SELECT clause that shall be used for the values.
     /// <see href="http://www.w3.org/ns/shacl#annotationVarName"></see></summary>
-    let annotationVarName =
-        Namespaced_IRI.parse _namespace_name "annotationVarName" |> NamespacedName
-
+    let annotationVarName = _prefix "annotationVarName"
     /// <summary>
     /// The SPARQL ASK query to execute.
     /// <see href="http://www.w3.org/ns/shacl#ask"></see></summary>
-    let ask = Namespaced_IRI.parse _namespace_name "ask" |> NamespacedName
+    let ask = _prefix "ask"
     /// <summary>
     /// The shapes that the focus nodes need to conform to before a rule is executed on them.
     /// <see href="http://www.w3.org/ns/shacl#condition"></see></summary>
-    let condition = Namespaced_IRI.parse _namespace_name "condition" |> NamespacedName
+    let condition = _prefix "condition"
     /// <summary>
     /// True if the validation did not produce any validation results, and false otherwise.
     /// <see href="http://www.w3.org/ns/shacl#conforms"></see></summary>
-    let conforms = Namespaced_IRI.parse _namespace_name "conforms" |> NamespacedName
+    let conforms = _prefix "conforms"
     /// <summary>
     /// The SPARQL CONSTRUCT query to execute.
     /// <see href="http://www.w3.org/ns/shacl#construct"></see></summary>
-    let construct = Namespaced_IRI.parse _namespace_name "construct" |> NamespacedName
-
+    let construct = _prefix "construct"
     /// <summary>
     /// If set to true then all nodes conform to this.
     /// <see href="http://www.w3.org/ns/shacl#deactivated"></see></summary>
-    let deactivated =
-        Namespaced_IRI.parse _namespace_name "deactivated" |> NamespacedName
-
+    let deactivated = _prefix "deactivated"
     /// <summary>
     /// A default value for a property, for example for user interface tools to pre-populate input fields.
     /// <see href="http://www.w3.org/ns/shacl#defaultValue"></see></summary>
-    let defaultValue =
-        Namespaced_IRI.parse _namespace_name "defaultValue" |> NamespacedName
-
+    let defaultValue = _prefix "defaultValue"
     /// <summary>
     /// Human-readable descriptions for the property in the context of the surrounding shape.
     /// <see href="http://www.w3.org/ns/shacl#description"></see></summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     /// Links a result with other results that provide more details, for example to describe violations against nested shapes.
     /// <see href="http://www.w3.org/ns/shacl#detail"></see></summary>
-    let detail = Namespaced_IRI.parse _namespace_name "detail" |> NamespacedName
+    let detail = _prefix "detail"
     /// <summary>
     /// An entailment regime that indicates what kind of inferencing is required by a shapes graph.
     /// <see href="http://www.w3.org/ns/shacl#entailment"></see></summary>
-    let entailment = Namespaced_IRI.parse _namespace_name "entailment" |> NamespacedName
-
+    let entailment = _prefix "entailment"
     /// <summary>
     /// The shape that all input nodes of the expression need to conform to.
     /// <see href="http://www.w3.org/ns/shacl#filterShape"></see></summary>
-    let filterShape =
-        Namespaced_IRI.parse _namespace_name "filterShape" |> NamespacedName
-
+    let filterShape = _prefix "filterShape"
     /// <summary>
     /// The focus node that was validated when the result was produced.
     /// <see href="http://www.w3.org/ns/shacl#focusNode"></see></summary>
-    let focusNode = Namespaced_IRI.parse _namespace_name "focusNode" |> NamespacedName
+    let focusNode = _prefix "focusNode"
     /// <summary>
     /// Can be used to link to a property group to indicate that a property shape belongs to a group of related property shapes.
     /// <see href="http://www.w3.org/ns/shacl#group"></see></summary>
-    let group = Namespaced_IRI.parse _namespace_name "group" |> NamespacedName
-
+    let group = _prefix "group"
     /// <summary>
     /// A list of node expressions that shall be intersected.
     /// <see href="http://www.w3.org/ns/shacl#intersection"></see></summary>
-    let intersection =
-        Namespaced_IRI.parse _namespace_name "intersection" |> NamespacedName
-
+    let intersection = _prefix "intersection"
     /// <summary>
     /// The (single) value of this property represents an inverse path (object to subject).
     /// <see href="http://www.w3.org/ns/shacl#inversePath"></see></summary>
-    let inversePath =
-        Namespaced_IRI.parse _namespace_name "inversePath" |> NamespacedName
-
+    let inversePath = _prefix "inversePath"
     /// <summary>
     /// The name of the JavaScript function to execute.
     /// <see href="http://www.w3.org/ns/shacl#jsFunctionName"></see></summary>
-    let jsFunctionName =
-        Namespaced_IRI.parse _namespace_name "jsFunctionName" |> NamespacedName
-
+    let jsFunctionName = _prefix "jsFunctionName"
     /// <summary>
     /// Declares which JavaScript libraries are needed to execute this.
     /// <see href="http://www.w3.org/ns/shacl#jsLibrary"></see></summary>
-    let jsLibrary = Namespaced_IRI.parse _namespace_name "jsLibrary" |> NamespacedName
-
+    let jsLibrary = _prefix "jsLibrary"
     /// <summary>
     /// Declares the URLs of a JavaScript library. This should be the absolute URL of a JavaScript file. Implementations may redirect those to local files.
     /// <see href="http://www.w3.org/ns/shacl#jsLibraryURL"></see></summary>
-    let jsLibraryURL =
-        Namespaced_IRI.parse _namespace_name "jsLibraryURL" |> NamespacedName
-
+    let jsLibraryURL = _prefix "jsLibraryURL"
     /// <summary>
     /// Outlines how human-readable labels of instances of the associated Parameterizable shall be produced. The values can contain {?paramName} as placeholders for the actual values of the given parameter.
     /// <see href="http://www.w3.org/ns/shacl#labelTemplate"></see></summary>
-    let labelTemplate =
-        Namespaced_IRI.parse _namespace_name "labelTemplate" |> NamespacedName
-
+    let labelTemplate = _prefix "labelTemplate"
     /// <summary>
     /// A human-readable message (possibly with placeholders for variables) explaining the cause of the result.
     /// <see href="http://www.w3.org/ns/shacl#message"></see></summary>
-    let message = Namespaced_IRI.parse _namespace_name "message" |> NamespacedName
+    let message = _prefix "message"
     /// <summary>
     /// Human-readable labels for the property in the context of the surrounding shape.
     /// <see href="http://www.w3.org/ns/shacl#name"></see></summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
-
+    let name = _prefix "name"
     /// <summary>
     /// The validator(s) used to evaluate a constraint in the context of a node shape.
     /// <see href="http://www.w3.org/ns/shacl#nodeValidator"></see></summary>
-    let nodeValidator =
-        Namespaced_IRI.parse _namespace_name "nodeValidator" |> NamespacedName
-
+    let nodeValidator = _prefix "nodeValidator"
     /// <summary>
     /// The node expression producing the input nodes of a filter shape expression.
     /// <see href="http://www.w3.org/ns/shacl#nodes"></see></summary>
-    let nodes = Namespaced_IRI.parse _namespace_name "nodes" |> NamespacedName
+    let nodes = _prefix "nodes"
     /// <summary>
     /// An expression producing the nodes that shall be inferred as objects.
     /// <see href="http://www.w3.org/ns/shacl#object"></see></summary>
-    let object = Namespaced_IRI.parse _namespace_name "object" |> NamespacedName
-
+    let object = _prefix "object"
     /// <summary>
     /// The (single) value of this property represents a path that is matched one or more times.
     /// <see href="http://www.w3.org/ns/shacl#oneOrMorePath"></see></summary>
-    let oneOrMorePath =
-        Namespaced_IRI.parse _namespace_name "oneOrMorePath" |> NamespacedName
-
+    let oneOrMorePath = _prefix "oneOrMorePath"
     /// <summary>
     /// Specifies the relative order of this compared to its siblings. For example use 0 for the first, 1 for the second.
     /// <see href="http://www.w3.org/ns/shacl#order"></see></summary>
-    let order = Namespaced_IRI.parse _namespace_name "order" |> NamespacedName
+    let order = _prefix "order"
     /// <summary>
     /// An expression producing the properties that shall be inferred as predicates.
     /// <see href="http://www.w3.org/ns/shacl#predicate"></see></summary>
-    let predicate = Namespaced_IRI.parse _namespace_name "predicate" |> NamespacedName
+    let predicate = _prefix "predicate"
     /// <summary>
     /// The prefixes that shall be applied before parsing the associated SPARQL query.
     /// <see href="http://www.w3.org/ns/shacl#prefixes"></see></summary>
-    let prefixes = Namespaced_IRI.parse _namespace_name "prefixes" |> NamespacedName
-
+    let prefixes = _prefix "prefixes"
     /// <summary>
     /// The validator(s) used to evaluate a constraint in the context of a property shape.
     /// <see href="http://www.w3.org/ns/shacl#propertyValidator"></see></summary>
-    let propertyValidator =
-        Namespaced_IRI.parse _namespace_name "propertyValidator" |> NamespacedName
-
+    let propertyValidator = _prefix "propertyValidator"
     /// <summary>
     /// The validation results contained in a validation report.
     /// <see href="http://www.w3.org/ns/shacl#result"></see></summary>
-    let result = Namespaced_IRI.parse _namespace_name "result" |> NamespacedName
-
+    let result = _prefix "result"
     /// <summary>
     /// Links a SPARQL validator with zero or more sh:ResultAnnotation instances, defining how to derive additional result properties based on the variables of the SELECT query.
     /// <see href="http://www.w3.org/ns/shacl#resultAnnotation"></see></summary>
-    let resultAnnotation =
-        Namespaced_IRI.parse _namespace_name "resultAnnotation" |> NamespacedName
-
+    let resultAnnotation = _prefix "resultAnnotation"
     /// <summary>
     /// Human-readable messages explaining the cause of the result.
     /// <see href="http://www.w3.org/ns/shacl#resultMessage"></see></summary>
-    let resultMessage =
-        Namespaced_IRI.parse _namespace_name "resultMessage" |> NamespacedName
-
+    let resultMessage = _prefix "resultMessage"
     /// <summary>
     /// The path of a validation result, based on the path of the validated property shape.
     /// <see href="http://www.w3.org/ns/shacl#resultPath"></see></summary>
-    let resultPath = Namespaced_IRI.parse _namespace_name "resultPath" |> NamespacedName
-
+    let resultPath = _prefix "resultPath"
     /// <summary>
     /// The severity of the result, e.g. warning.
     /// <see href="http://www.w3.org/ns/shacl#resultSeverity"></see></summary>
-    let resultSeverity =
-        Namespaced_IRI.parse _namespace_name "resultSeverity" |> NamespacedName
-
+    let resultSeverity = _prefix "resultSeverity"
     /// <summary>
     /// The expected type of values returned by the associated function.
     /// <see href="http://www.w3.org/ns/shacl#returnType"></see></summary>
-    let returnType = Namespaced_IRI.parse _namespace_name "returnType" |> NamespacedName
+    let returnType = _prefix "returnType"
     /// <summary>
     /// The rules linked to a shape.
     /// <see href="http://www.w3.org/ns/shacl#rule"></see></summary>
-    let rule = Namespaced_IRI.parse _namespace_name "rule" |> NamespacedName
+    let rule = _prefix "rule"
     /// <summary>
     /// The SPARQL SELECT query to execute.
     /// <see href="http://www.w3.org/ns/shacl#select"></see></summary>
-    let select = Namespaced_IRI.parse _namespace_name "select" |> NamespacedName
+    let select = _prefix "select"
     /// <summary>
     /// Defines the severity that validation results produced by a shape must have. Defaults to sh:Violation.
     /// <see href="http://www.w3.org/ns/shacl#severity"></see></summary>
-    let severity = Namespaced_IRI.parse _namespace_name "severity" |> NamespacedName
-
+    let severity = _prefix "severity"
     /// <summary>
     /// Shapes graphs that should be used when validating this data graph.
     /// <see href="http://www.w3.org/ns/shacl#shapesGraph"></see></summary>
-    let shapesGraph =
-        Namespaced_IRI.parse _namespace_name "shapesGraph" |> NamespacedName
-
+    let shapesGraph = _prefix "shapesGraph"
     /// <summary>
     /// If true then the validation engine was certain that the shapes graph has passed all SHACL syntax requirements during the validation process.
     /// <see href="http://www.w3.org/ns/shacl#shapesGraphWellFormed"></see></summary>
-    let shapesGraphWellFormed =
-        Namespaced_IRI.parse _namespace_name "shapesGraphWellFormed" |> NamespacedName
-
+    let shapesGraphWellFormed = _prefix "shapesGraphWellFormed"
     /// <summary>
     /// The constraint that was validated when the result was produced.
     /// <see href="http://www.w3.org/ns/shacl#sourceConstraint"></see></summary>
-    let sourceConstraint =
-        Namespaced_IRI.parse _namespace_name "sourceConstraint" |> NamespacedName
-
+    let sourceConstraint = _prefix "sourceConstraint"
     /// <summary>
     /// The constraint component that is the source of the result.
     /// <see href="http://www.w3.org/ns/shacl#sourceConstraintComponent"></see></summary>
-    let sourceConstraintComponent =
-        Namespaced_IRI.parse _namespace_name "sourceConstraintComponent" |> NamespacedName
-
+    let sourceConstraintComponent = _prefix "sourceConstraintComponent"
     /// <summary>
     /// The shape that is was validated when the result was produced.
     /// <see href="http://www.w3.org/ns/shacl#sourceShape"></see></summary>
-    let sourceShape =
-        Namespaced_IRI.parse _namespace_name "sourceShape" |> NamespacedName
-
+    let sourceShape = _prefix "sourceShape"
     /// <summary>
     /// An expression producing the resources that shall be inferred as subjects.
     /// <see href="http://www.w3.org/ns/shacl#subject"></see></summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     /// Links a shape to a target specified by an extension language, for example instances of sh:SPARQLTarget.
     /// <see href="http://www.w3.org/ns/shacl#target"></see></summary>
-    let target = Namespaced_IRI.parse _namespace_name "target" |> NamespacedName
-
+    let target = _prefix "target"
     /// <summary>
     /// Links a shape to a class, indicating that all instances of the class must conform to the shape.
     /// <see href="http://www.w3.org/ns/shacl#targetClass"></see></summary>
-    let targetClass =
-        Namespaced_IRI.parse _namespace_name "targetClass" |> NamespacedName
-
+    let targetClass = _prefix "targetClass"
     /// <summary>
     /// Links a shape to individual nodes, indicating that these nodes must conform to the shape.
     /// <see href="http://www.w3.org/ns/shacl#targetNode"></see></summary>
-    let targetNode = Namespaced_IRI.parse _namespace_name "targetNode" |> NamespacedName
-
+    let targetNode = _prefix "targetNode"
     /// <summary>
     /// Links a shape to a property, indicating that all all objects of triples that have the given property as their predicate must conform to the shape.
     /// <see href="http://www.w3.org/ns/shacl#targetObjectsOf"></see></summary>
-    let targetObjectsOf =
-        Namespaced_IRI.parse _namespace_name "targetObjectsOf" |> NamespacedName
-
+    let targetObjectsOf = _prefix "targetObjectsOf"
     /// <summary>
     /// Links a shape to a property, indicating that all subjects of triples that have the given property as their predicate must conform to the shape.
     /// <see href="http://www.w3.org/ns/shacl#targetSubjectsOf"></see></summary>
-    let targetSubjectsOf =
-        Namespaced_IRI.parse _namespace_name "targetSubjectsOf" |> NamespacedName
-
+    let targetSubjectsOf = _prefix "targetSubjectsOf"
     /// <summary>
     /// A node expression that represents the current focus node.
     /// <see href="http://www.w3.org/ns/shacl#this"></see></summary>
-    let this = Namespaced_IRI.parse _namespace_name "this" |> NamespacedName
+    let this = _prefix "this"
     /// <summary>
     /// A list of node expressions that shall be used together.
     /// <see href="http://www.w3.org/ns/shacl#union"></see></summary>
-    let union = Namespaced_IRI.parse _namespace_name "union" |> NamespacedName
+    let union = _prefix "union"
     /// <summary>
     /// The SPARQL UPDATE to execute.
     /// <see href="http://www.w3.org/ns/shacl#update"></see></summary>
-    let update = Namespaced_IRI.parse _namespace_name "update" |> NamespacedName
+    let update = _prefix "update"
     /// <summary>
     /// The validator(s) used to evaluate constraints of either node or property shapes.
     /// <see href="http://www.w3.org/ns/shacl#validator"></see></summary>
-    let validator = Namespaced_IRI.parse _namespace_name "validator" |> NamespacedName
+    let validator = _prefix "validator"
     /// <summary>
     /// An RDF node that has caused the result.
     /// <see href="http://www.w3.org/ns/shacl#value"></see></summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
-
+    let value = _prefix "value"
     /// <summary>
     /// The (single) value of this property represents a path that is matched zero or more times.
     /// <see href="http://www.w3.org/ns/shacl#zeroOrMorePath"></see></summary>
-    let zeroOrMorePath =
-        Namespaced_IRI.parse _namespace_name "zeroOrMorePath" |> NamespacedName
-
+    let zeroOrMorePath = _prefix "zeroOrMorePath"
     /// <summary>
     /// The (single) value of this property represents a path that is matched zero or one times.
     /// <see href="http://www.w3.org/ns/shacl#zeroOrOnePath"></see></summary>
-    let zeroOrOnePath =
-        Namespaced_IRI.parse _namespace_name "zeroOrOnePath" |> NamespacedName
+    let zeroOrOnePath = _prefix "zeroOrOnePath"

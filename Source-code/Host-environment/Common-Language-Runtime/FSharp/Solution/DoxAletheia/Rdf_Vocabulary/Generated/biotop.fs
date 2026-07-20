@@ -1,706 +1,523 @@
 namespace http.purl.org.biotop.biotop.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module biotop =
     let _namespace_name = "http://purl.org/biotop/biotop.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ImmaterialThreeDimensionalPhysicalEntity"></see>
     /// </summary>
     let ImmaterialThreeDimensionalPhysicalEntity =
-        Namespaced_IRI.parse _namespace_name "ImmaterialThreeDimensionalPhysicalEntity" |> NamespacedName
+        _prefix "ImmaterialThreeDimensionalPhysicalEntity"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OneDimensionalPhysicalEntity"></see>
     /// </summary>
-    let OneDimensionalPhysicalEntity =
-        Namespaced_IRI.parse _namespace_name "OneDimensionalPhysicalEntity" |> NamespacedName
-
+    let OneDimensionalPhysicalEntity = _prefix "OneDimensionalPhysicalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TwoDimensionalPhysicalEntity"></see>
     /// </summary>
-    let TwoDimensionalPhysicalEntity =
-        Namespaced_IRI.parse _namespace_name "TwoDimensionalPhysicalEntity" |> NamespacedName
-
+    let TwoDimensionalPhysicalEntity = _prefix "TwoDimensionalPhysicalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ImmunologicRole"></see>
     /// </summary>
-    let ImmunologicRole =
-        Namespaced_IRI.parse _namespace_name "ImmunologicRole" |> NamespacedName
-
+    let ImmunologicRole = _prefix "ImmunologicRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SignallingRole"></see>
     /// </summary>
-    let SignallingRole =
-        Namespaced_IRI.parse _namespace_name "SignallingRole" |> NamespacedName
-
+    let SignallingRole = _prefix "SignallingRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#VitaminRole"></see>
     /// </summary>
-    let VitaminRole =
-        Namespaced_IRI.parse _namespace_name "VitaminRole" |> NamespacedName
-
+    let VitaminRole = _prefix "VitaminRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Alga"></see>
     /// </summary>
-    let Alga = Namespaced_IRI.parse _namespace_name "Alga" |> NamespacedName
-
+    let Alga = _prefix "Alga"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AnimalIncludingHuman"></see>
     /// </summary>
-    let AnimalIncludingHuman =
-        Namespaced_IRI.parse _namespace_name "AnimalIncludingHuman" |> NamespacedName
-
+    let AnimalIncludingHuman = _prefix "AnimalIncludingHuman"
     /// <summary>
     /// On fungus organisms
     /// <see href="http://purl.org/biotop/biotop.owl#Fungus"></see></summary>
-    let Fungus = Namespaced_IRI.parse _namespace_name "Fungus" |> NamespacedName
+    let Fungus = _prefix "Fungus"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Plant"></see>
     /// </summary>
-    let Plant = Namespaced_IRI.parse _namespace_name "Plant" |> NamespacedName
+    let Plant = _prefix "Plant"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Protist"></see>
     /// </summary>
-    let Protist = Namespaced_IRI.parse _namespace_name "Protist" |> NamespacedName
-
+    let Protist = _prefix "Protist"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#GroupInteraction"></see>
     /// </summary>
-    let GroupInteraction =
-        Namespaced_IRI.parse _namespace_name "GroupInteraction" |> NamespacedName
-
+    let GroupInteraction = _prefix "GroupInteraction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganismInteraction"></see>
     /// </summary>
-    let OrganismInteraction =
-        Namespaced_IRI.parse _namespace_name "OrganismInteraction" |> NamespacedName
-
+    let OrganismInteraction = _prefix "OrganismInteraction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SubstanceInteraction"></see>
     /// </summary>
-    let SubstanceInteraction =
-        Namespaced_IRI.parse _namespace_name "SubstanceInteraction" |> NamespacedName
-
+    let SubstanceInteraction = _prefix "SubstanceInteraction"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomAnimaliaValueRegion"></see></summary>
-    let KingdomAnimaliaValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomAnimaliaValueRegion" |> NamespacedName
-
+    let KingdomAnimaliaValueRegion = _prefix "KingdomAnimaliaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomArchaeaValueRegion"></see></summary>
-    let KingdomArchaeaValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomArchaeaValueRegion" |> NamespacedName
-
+    let KingdomArchaeaValueRegion = _prefix "KingdomArchaeaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomBacteriaValueRegion"></see></summary>
-    let KingdomBacteriaValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomBacteriaValueRegion" |> NamespacedName
-
+    let KingdomBacteriaValueRegion = _prefix "KingdomBacteriaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomChromistaValueRegion"></see></summary>
-    let KingdomChromistaValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomChromistaValueRegion" |> NamespacedName
-
+    let KingdomChromistaValueRegion = _prefix "KingdomChromistaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomFungiValueRegion"></see></summary>
-    let KingdomFungiValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomFungiValueRegion" |> NamespacedName
-
+    let KingdomFungiValueRegion = _prefix "KingdomFungiValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomPlantaeValueRegion"></see></summary>
-    let KingdomPlantaeValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomPlantaeValueRegion" |> NamespacedName
-
+    let KingdomPlantaeValueRegion = _prefix "KingdomPlantaeValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomProtozoaValueRegion"></see></summary>
-    let KingdomProtozoaValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomProtozoaValueRegion" |> NamespacedName
-
+    let KingdomProtozoaValueRegion = _prefix "KingdomProtozoaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#KingdomVirusesValueRegion"></see></summary>
-    let KingdomVirusesValueRegion =
-        Namespaced_IRI.parse _namespace_name "KingdomVirusesValueRegion" |> NamespacedName
-
+    let KingdomVirusesValueRegion = _prefix "KingdomVirusesValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BodySystem"></see>
     /// </summary>
-    let BodySystem = Namespaced_IRI.parse _namespace_name "BodySystem" |> NamespacedName
+    let BodySystem = _prefix "BodySystem"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Organ"></see>
     /// </summary>
-    let Organ = Namespaced_IRI.parse _namespace_name "Organ" |> NamespacedName
+    let Organ = _prefix "Organ"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganPart"></see>
     /// </summary>
-    let OrganPart = Namespaced_IRI.parse _namespace_name "OrganPart" |> NamespacedName
-
+    let OrganPart = _prefix "OrganPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellMembrane"></see>
     /// </summary>
-    let CellMembrane =
-        Namespaced_IRI.parse _namespace_name "CellMembrane" |> NamespacedName
-
+    let CellMembrane = _prefix "CellMembrane"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellNucleus"></see>
     /// </summary>
-    let CellNucleus =
-        Namespaced_IRI.parse _namespace_name "CellNucleus" |> NamespacedName
-
+    let CellNucleus = _prefix "CellNucleus"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Cytoplasm"></see>
     /// </summary>
-    let Cytoplasm = Namespaced_IRI.parse _namespace_name "Cytoplasm" |> NamespacedName
+    let Cytoplasm = _prefix "Cytoplasm"
     /// <summary>
     /// sum of genetic material in a cell
     /// <see href="http://purl.org/biotop/biotop.owl#Genome"></see></summary>
-    let Genome = Namespaced_IRI.parse _namespace_name "Genome" |> NamespacedName
-
+    let Genome = _prefix "Genome"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EducatorRole"></see>
     /// </summary>
-    let EducatorRole =
-        Namespaced_IRI.parse _namespace_name "EducatorRole" |> NamespacedName
-
+    let EducatorRole = _prefix "EducatorRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HealthProfessionalRole"></see>
     /// </summary>
-    let HealthProfessionalRole =
-        Namespaced_IRI.parse _namespace_name "HealthProfessionalRole" |> NamespacedName
-
+    let HealthProfessionalRole = _prefix "HealthProfessionalRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ResearcherRole"></see>
     /// </summary>
-    let ResearcherRole =
-        Namespaced_IRI.parse _namespace_name "ResearcherRole" |> NamespacedName
-
+    let ResearcherRole = _prefix "ResearcherRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#FindingRole"></see>
     /// </summary>
-    let FindingRole =
-        Namespaced_IRI.parse _namespace_name "FindingRole" |> NamespacedName
-
+    let FindingRole = _prefix "FindingRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#FoodRole"></see>
     /// </summary>
-    let FoodRole = Namespaced_IRI.parse _namespace_name "FoodRole" |> NamespacedName
+    let FoodRole = _prefix "FoodRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PoisonRole"></see>
     /// </summary>
-    let PoisonRole = Namespaced_IRI.parse _namespace_name "PoisonRole" |> NamespacedName
-
+    let PoisonRole = _prefix "PoisonRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PreventiveRole"></see>
     /// </summary>
-    let PreventiveRole =
-        Namespaced_IRI.parse _namespace_name "PreventiveRole" |> NamespacedName
-
+    let PreventiveRole = _prefix "PreventiveRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SubjectOfCareRole"></see>
     /// </summary>
-    let SubjectOfCareRole =
-        Namespaced_IRI.parse _namespace_name "SubjectOfCareRole" |> NamespacedName
-
+    let SubjectOfCareRole = _prefix "SubjectOfCareRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TherapeuticRole"></see>
     /// </summary>
-    let TherapeuticRole =
-        Namespaced_IRI.parse _namespace_name "TherapeuticRole" |> NamespacedName
-
+    let TherapeuticRole = _prefix "TherapeuticRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Electron"></see>
     /// </summary>
-    let Electron = Namespaced_IRI.parse _namespace_name "Electron" |> NamespacedName
+    let Electron = _prefix "Electron"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Neutron"></see>
     /// </summary>
-    let Neutron = Namespaced_IRI.parse _namespace_name "Neutron" |> NamespacedName
+    let Neutron = _prefix "Neutron"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Proton"></see>
     /// </summary>
-    let Proton = Namespaced_IRI.parse _namespace_name "Proton" |> NamespacedName
-
+    let Proton = _prefix "Proton"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Disposition"></see>
     /// </summary>
-    let Disposition =
-        Namespaced_IRI.parse _namespace_name "Disposition" |> NamespacedName
-
+    let Disposition = _prefix "Disposition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ImmaterialObject"></see>
     /// </summary>
-    let ImmaterialObject =
-        Namespaced_IRI.parse _namespace_name "ImmaterialObject" |> NamespacedName
-
+    let ImmaterialObject = _prefix "ImmaterialObject"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#InformationObject"></see>
     /// </summary>
-    let InformationObject =
-        Namespaced_IRI.parse _namespace_name "InformationObject" |> NamespacedName
-
+    let InformationObject = _prefix "InformationObject"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MaterialObject"></see>
     /// </summary>
-    let MaterialObject =
-        Namespaced_IRI.parse _namespace_name "MaterialObject" |> NamespacedName
-
+    let MaterialObject = _prefix "MaterialObject"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Process"></see>
     /// </summary>
-    let Process = Namespaced_IRI.parse _namespace_name "Process" |> NamespacedName
+    let Process = _prefix "Process"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Quality"></see>
     /// </summary>
-    let Quality = Namespaced_IRI.parse _namespace_name "Quality" |> NamespacedName
+    let Quality = _prefix "Quality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Role"></see>
     /// </summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Time"></see>
     /// </summary>
-    let Time = Namespaced_IRI.parse _namespace_name "Time" |> NamespacedName
-
+    let Time = _prefix "Time"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ValueRegion"></see>
     /// </summary>
-    let ValueRegion =
-        Namespaced_IRI.parse _namespace_name "ValueRegion" |> NamespacedName
+    let ValueRegion = _prefix "ValueRegion"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AminoAcidOrPeptideMoleculeOrStructure"></see>
     /// </summary>
     let AminoAcidOrPeptideMoleculeOrStructure =
-        Namespaced_IRI.parse _namespace_name "AminoAcidOrPeptideMoleculeOrStructure" |> NamespacedName
+        _prefix "AminoAcidOrPeptideMoleculeOrStructure"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CarbohydrateMoleculeOrResidue"></see>
     /// </summary>
-    let CarbohydrateMoleculeOrResidue =
-        Namespaced_IRI.parse _namespace_name "CarbohydrateMoleculeOrResidue" |> NamespacedName
-
+    let CarbohydrateMoleculeOrResidue = _prefix "CarbohydrateMoleculeOrResidue"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#FattyAcidMoleculeOrResidue"></see>
     /// </summary>
-    let FattyAcidMoleculeOrResidue =
-        Namespaced_IRI.parse _namespace_name "FattyAcidMoleculeOrResidue" |> NamespacedName
-
+    let FattyAcidMoleculeOrResidue = _prefix "FattyAcidMoleculeOrResidue"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HeterocyclicBaseMoleculeOrResidue"></see>
     /// </summary>
-    let HeterocyclicBaseMoleculeOrResidue =
-        Namespaced_IRI.parse _namespace_name "HeterocyclicBaseMoleculeOrResidue" |> NamespacedName
-
+    let HeterocyclicBaseMoleculeOrResidue = _prefix "HeterocyclicBaseMoleculeOrResidue"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#LipidMoleculeOrResidue"></see>
     /// </summary>
-    let LipidMoleculeOrResidue =
-        Namespaced_IRI.parse _namespace_name "LipidMoleculeOrResidue" |> NamespacedName
+    let LipidMoleculeOrResidue = _prefix "LipidMoleculeOrResidue"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NucleicAcidNucleotideOrNucleosideMoleculeOrResidue"></see>
     /// </summary>
     let NucleicAcidNucleotideOrNucleosideMoleculeOrResidue =
-        Namespaced_IRI.parse _namespace_name "NucleicAcidNucleotideOrNucleosideMoleculeOrResidue" |> NamespacedName
+        _prefix "NucleicAcidNucleotideOrNucleosideMoleculeOrResidue"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalSizeValueRegion"></see>
     /// </summary>
-    let BiologicalSizeValueRegion =
-        Namespaced_IRI.parse _namespace_name "BiologicalSizeValueRegion" |> NamespacedName
-
+    let BiologicalSizeValueRegion = _prefix "BiologicalSizeValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CanonicityValueRegion"></see>
     /// </summary>
-    let CanonicityValueRegion =
-        Namespaced_IRI.parse _namespace_name "CanonicityValueRegion" |> NamespacedName
-
+    let CanonicityValueRegion = _prefix "CanonicityValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#DevelopmentalValueRegion"></see>
     /// </summary>
-    let DevelopmentalValueRegion =
-        Namespaced_IRI.parse _namespace_name "DevelopmentalValueRegion" |> NamespacedName
-
+    let DevelopmentalValueRegion = _prefix "DevelopmentalValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#StateOfMatterValueRegion"></see>
     /// </summary>
-    let StateOfMatterValueRegion =
-        Namespaced_IRI.parse _namespace_name "StateOfMatterValueRegion" |> NamespacedName
-
+    let StateOfMatterValueRegion = _prefix "StateOfMatterValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TaxonValueRegion"></see>
     /// </summary>
-    let TaxonValueRegion =
-        Namespaced_IRI.parse _namespace_name "TaxonValueRegion" |> NamespacedName
-
+    let TaxonValueRegion = _prefix "TaxonValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ChildRole"></see>
     /// </summary>
-    let ChildRole = Namespaced_IRI.parse _namespace_name "ChildRole" |> NamespacedName
+    let ChildRole = _prefix "ChildRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ParentRole"></see>
     /// </summary>
-    let ParentRole = Namespaced_IRI.parse _namespace_name "ParentRole" |> NamespacedName
-
+    let ParentRole = _prefix "ParentRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SiblingRole"></see>
     /// </summary>
-    let SiblingRole =
-        Namespaced_IRI.parse _namespace_name "SiblingRole" |> NamespacedName
-
+    let SiblingRole = _prefix "SiblingRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ArtefactRole"></see>
     /// </summary>
-    let ArtefactRole =
-        Namespaced_IRI.parse _namespace_name "ArtefactRole" |> NamespacedName
-
+    let ArtefactRole = _prefix "ArtefactRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalSystemRole"></see>
     /// </summary>
-    let BiologicalSystemRole =
-        Namespaced_IRI.parse _namespace_name "BiologicalSystemRole" |> NamespacedName
-
+    let BiologicalSystemRole = _prefix "BiologicalSystemRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ChemicalRole"></see>
     /// </summary>
-    let ChemicalRole =
-        Namespaced_IRI.parse _namespace_name "ChemicalRole" |> NamespacedName
-
+    let ChemicalRole = _prefix "ChemicalRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#FamilyRole"></see>
     /// </summary>
-    let FamilyRole = Namespaced_IRI.parse _namespace_name "FamilyRole" |> NamespacedName
-
+    let FamilyRole = _prefix "FamilyRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HealthRelatedRole"></see>
     /// </summary>
-    let HealthRelatedRole =
-        Namespaced_IRI.parse _namespace_name "HealthRelatedRole" |> NamespacedName
-
+    let HealthRelatedRole = _prefix "HealthRelatedRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OccupationalRole"></see>
     /// </summary>
-    let OccupationalRole =
-        Namespaced_IRI.parse _namespace_name "OccupationalRole" |> NamespacedName
-
+    let OccupationalRole = _prefix "OccupationalRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SpatialReferenceRole"></see>
     /// </summary>
-    let SpatialReferenceRole =
-        Namespaced_IRI.parse _namespace_name "SpatialReferenceRole" |> NamespacedName
-
+    let SpatialReferenceRole = _prefix "SpatialReferenceRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NucleicAcidStructure"></see>
     /// </summary>
-    let NucleicAcidStructure =
-        Namespaced_IRI.parse _namespace_name "NucleicAcidStructure" |> NamespacedName
-
+    let NucleicAcidStructure = _prefix "NucleicAcidStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NucleosideMolecule"></see>
     /// </summary>
-    let NucleosideMolecule =
-        Namespaced_IRI.parse _namespace_name "NucleosideMolecule" |> NamespacedName
-
+    let NucleosideMolecule = _prefix "NucleosideMolecule"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NucleotideMolecule"></see>
     /// </summary>
-    let NucleotideMolecule =
-        Namespaced_IRI.parse _namespace_name "NucleotideMolecule" |> NamespacedName
-
+    let NucleotideMolecule = _prefix "NucleotideMolecule"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Eukaryote"></see>
     /// </summary>
-    let Eukaryote = Namespaced_IRI.parse _namespace_name "Eukaryote" |> NamespacedName
+    let Eukaryote = _prefix "Eukaryote"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Prokaryote"></see>
     /// </summary>
-    let Prokaryote = Namespaced_IRI.parse _namespace_name "Prokaryote" |> NamespacedName
+    let Prokaryote = _prefix "Prokaryote"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Virus"></see>
     /// </summary>
-    let Virus = Namespaced_IRI.parse _namespace_name "Virus" |> NamespacedName
+    let Virus = _prefix "Virus"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Atom"></see>
     /// </summary>
-    let Atom = Namespaced_IRI.parse _namespace_name "Atom" |> NamespacedName
-
+    let Atom = _prefix "Atom"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MonoMolecularEntity"></see>
     /// </summary>
-    let MonoMolecularEntity =
-        Namespaced_IRI.parse _namespace_name "MonoMolecularEntity" |> NamespacedName
-
+    let MonoMolecularEntity = _prefix "MonoMolecularEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PolyMolecularCompositeEntity"></see>
     /// </summary>
-    let PolyMolecularCompositeEntity =
-        Namespaced_IRI.parse _namespace_name "PolyMolecularCompositeEntity" |> NamespacedName
-
+    let PolyMolecularCompositeEntity = _prefix "PolyMolecularCompositeEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SubatomicParticle"></see>
     /// </summary>
-    let SubatomicParticle =
-        Namespaced_IRI.parse _namespace_name "SubatomicParticle" |> NamespacedName
-
+    let SubatomicParticle = _prefix "SubatomicParticle"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MoleculeComplex"></see>
     /// </summary>
-    let MoleculeComplex =
-        Namespaced_IRI.parse _namespace_name "MoleculeComplex" |> NamespacedName
-
+    let MoleculeComplex = _prefix "MoleculeComplex"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#StructuredBiologicalEntity"></see>
     /// </summary>
-    let StructuredBiologicalEntity =
-        Namespaced_IRI.parse _namespace_name "StructuredBiologicalEntity" |> NamespacedName
-
+    let StructuredBiologicalEntity = _prefix "StructuredBiologicalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#StructuredNonbiologicalCompound"></see>
     /// </summary>
-    let StructuredNonbiologicalCompound =
-        Namespaced_IRI.parse _namespace_name "StructuredNonbiologicalCompound" |> NamespacedName
-
+    let StructuredNonbiologicalCompound = _prefix "StructuredNonbiologicalCompound"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AgeQuality"></see>
     /// </summary>
-    let AgeQuality = Namespaced_IRI.parse _namespace_name "AgeQuality" |> NamespacedName
-
+    let AgeQuality = _prefix "AgeQuality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalSize"></see>
     /// </summary>
-    let BiologicalSize =
-        Namespaced_IRI.parse _namespace_name "BiologicalSize" |> NamespacedName
-
+    let BiologicalSize = _prefix "BiologicalSize"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Canonicity"></see>
     /// </summary>
-    let Canonicity = Namespaced_IRI.parse _namespace_name "Canonicity" |> NamespacedName
-
+    let Canonicity = _prefix "Canonicity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#DevelopmentalQuality"></see>
     /// </summary>
-    let DevelopmentalQuality =
-        Namespaced_IRI.parse _namespace_name "DevelopmentalQuality" |> NamespacedName
-
+    let DevelopmentalQuality = _prefix "DevelopmentalQuality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicalForce"></see>
     /// </summary>
-    let PhysicalForce =
-        Namespaced_IRI.parse _namespace_name "PhysicalForce" |> NamespacedName
-
+    let PhysicalForce = _prefix "PhysicalForce"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicalLength"></see>
     /// </summary>
-    let PhysicalLength =
-        Namespaced_IRI.parse _namespace_name "PhysicalLength" |> NamespacedName
-
+    let PhysicalLength = _prefix "PhysicalLength"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicalMass"></see>
     /// </summary>
-    let PhysicalMass =
-        Namespaced_IRI.parse _namespace_name "PhysicalMass" |> NamespacedName
-
+    let PhysicalMass = _prefix "PhysicalMass"
     /// <summary>
     /// former name: StateOfAggregation
     /// <see href="http://purl.org/biotop/biotop.owl#PhysicalState"></see></summary>
-    let PhysicalState =
-        Namespaced_IRI.parse _namespace_name "PhysicalState" |> NamespacedName
-
+    let PhysicalState = _prefix "PhysicalState"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicalVolume"></see>
     /// </summary>
-    let PhysicalVolume =
-        Namespaced_IRI.parse _namespace_name "PhysicalVolume" |> NamespacedName
-
+    let PhysicalVolume = _prefix "PhysicalVolume"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#StateOfMatter"></see>
     /// </summary>
-    let StateOfMatter =
-        Namespaced_IRI.parse _namespace_name "StateOfMatter" |> NamespacedName
-
+    let StateOfMatter = _prefix "StateOfMatter"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TaxonQuality"></see>
     /// </summary>
-    let TaxonQuality =
-        Namespaced_IRI.parse _namespace_name "TaxonQuality" |> NamespacedName
-
+    let TaxonQuality = _prefix "TaxonQuality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Amphibian"></see>
     /// </summary>
-    let Amphibian = Namespaced_IRI.parse _namespace_name "Amphibian" |> NamespacedName
+    let Amphibian = _prefix "Amphibian"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Bird"></see>
     /// </summary>
-    let Bird = Namespaced_IRI.parse _namespace_name "Bird" |> NamespacedName
+    let Bird = _prefix "Bird"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Fish"></see>
     /// </summary>
-    let Fish = Namespaced_IRI.parse _namespace_name "Fish" |> NamespacedName
+    let Fish = _prefix "Fish"
     /// <summary>
     /// one mammal
     /// <see href="http://purl.org/biotop/biotop.owl#Mammal"></see></summary>
-    let Mammal = Namespaced_IRI.parse _namespace_name "Mammal" |> NamespacedName
+    let Mammal = _prefix "Mammal"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Reptile"></see>
     /// </summary>
-    let Reptile = Namespaced_IRI.parse _namespace_name "Reptile" |> NamespacedName
-
+    let Reptile = _prefix "Reptile"
     /// <summary>
     /// "adult" as the value of a developmental stage. E.g. a 4 year old dog has a quality which has its value located in "adult value region".
     /// <see href="http://purl.org/biotop/biotop.owl#AdultValueRegion"></see></summary>
-    let AdultValueRegion =
-        Namespaced_IRI.parse _namespace_name "AdultValueRegion" |> NamespacedName
-
+    let AdultValueRegion = _prefix "AdultValueRegion"
     /// <summary>
     /// "embryonic" as the value of a developmental stage. E.g. a 3 days old mouse embryo has a quality which has its value located in "embryonic value region".
     /// <see href="http://purl.org/biotop/biotop.owl#EmbryonicValueRegion"></see></summary>
-    let EmbryonicValueRegion =
-        Namespaced_IRI.parse _namespace_name "EmbryonicValueRegion" |> NamespacedName
-
+    let EmbryonicValueRegion = _prefix "EmbryonicValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#JuvenileValueRegion"></see>
     /// </summary>
-    let JuvenileValueRegion =
-        Namespaced_IRI.parse _namespace_name "JuvenileValueRegion" |> NamespacedName
-
+    let JuvenileValueRegion = _prefix "JuvenileValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HormoneRole"></see>
     /// </summary>
-    let HormoneRole =
-        Namespaced_IRI.parse _namespace_name "HormoneRole" |> NamespacedName
-
+    let HormoneRole = _prefix "HormoneRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NeuroreactiveRole"></see>
     /// </summary>
-    let NeuroreactiveRole =
-        Namespaced_IRI.parse _namespace_name "NeuroreactiveRole" |> NamespacedName
-
+    let NeuroreactiveRole = _prefix "NeuroreactiveRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ReceptorRole"></see>
     /// </summary>
-    let ReceptorRole =
-        Namespaced_IRI.parse _namespace_name "ReceptorRole" |> NamespacedName
-
+    let ReceptorRole = _prefix "ReceptorRole"
     /// <summary>
     /// "gaseous" as the value of a states of matter.  E.g. a portion of air has a quality which has its value located in "gaseous value region"
     /// <see href="http://purl.org/biotop/biotop.owl#GaseousValueRegion"></see></summary>
-    let GaseousValueRegion =
-        Namespaced_IRI.parse _namespace_name "GaseousValueRegion" |> NamespacedName
-
+    let GaseousValueRegion = _prefix "GaseousValueRegion"
     /// <summary>
     /// "liquid" as the value of a states of matter. E.g. a portion of water has a quality which has its value located in "liquid value region"
     /// <see href="http://purl.org/biotop/biotop.owl#LiquidValueRegion"></see></summary>
-    let LiquidValueRegion =
-        Namespaced_IRI.parse _namespace_name "LiquidValueRegion" |> NamespacedName
-
+    let LiquidValueRegion = _prefix "LiquidValueRegion"
     /// <summary>
     /// "solid" as the value of a states of matter. E.g. a stone has a quality which has its value located in "solid value region"
     /// <see href="http://purl.org/biotop/biotop.owl#SolidValueRegion"></see></summary>
-    let SolidValueRegion =
-        Namespaced_IRI.parse _namespace_name "SolidValueRegion" |> NamespacedName
-
+    let SolidValueRegion = _prefix "SolidValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AnimalLanguage"></see>
     /// </summary>
-    let AnimalLanguage =
-        Namespaced_IRI.parse _namespace_name "AnimalLanguage" |> NamespacedName
-
+    let AnimalLanguage = _prefix "AnimalLanguage"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HumanLanguage"></see>
     /// </summary>
-    let HumanLanguage =
-        Namespaced_IRI.parse _namespace_name "HumanLanguage" |> NamespacedName
-
+    let HumanLanguage = _prefix "HumanLanguage"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MachineLanguage"></see>
     /// </summary>
-    let MachineLanguage =
-        Namespaced_IRI.parse _namespace_name "MachineLanguage" |> NamespacedName
-
+    let MachineLanguage = _prefix "MachineLanguage"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Eicosanoid"></see>
     /// </summary>
-    let Eicosanoid = Namespaced_IRI.parse _namespace_name "Eicosanoid" |> NamespacedName
-
+    let Eicosanoid = _prefix "Eicosanoid"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NonSteroidLipid"></see>
     /// </summary>
-    let NonSteroidLipid =
-        Namespaced_IRI.parse _namespace_name "NonSteroidLipid" |> NamespacedName
-
+    let NonSteroidLipid = _prefix "NonSteroidLipid"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Steroid"></see>
     /// </summary>
-    let Steroid = Namespaced_IRI.parse _namespace_name "Steroid" |> NamespacedName
-
+    let Steroid = _prefix "Steroid"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CatalyticRole"></see>
     /// </summary>
-    let CatalyticRole =
-        Namespaced_IRI.parse _namespace_name "CatalyticRole" |> NamespacedName
-
+    let CatalyticRole = _prefix "CatalyticRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#IndicatorRole"></see>
     /// </summary>
-    let IndicatorRole =
-        Namespaced_IRI.parse _namespace_name "IndicatorRole" |> NamespacedName
-
+    let IndicatorRole = _prefix "IndicatorRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ReagentRole"></see>
     /// </summary>
-    let ReagentRole =
-        Namespaced_IRI.parse _namespace_name "ReagentRole" |> NamespacedName
-
+    let ReagentRole = _prefix "ReagentRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AcquiredAbnormalStructure"></see>
     /// </summary>
-    let AcquiredAbnormalStructure =
-        Namespaced_IRI.parse _namespace_name "AcquiredAbnormalStructure" |> NamespacedName
-
+    let AcquiredAbnormalStructure = _prefix "AcquiredAbnormalStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PathologicalStructure"></see>
     /// </summary>
-    let PathologicalStructure =
-        Namespaced_IRI.parse _namespace_name "PathologicalStructure" |> NamespacedName
-
+    let PathologicalStructure = _prefix "PathologicalStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CongenitalAbnormalStructure"></see>
     /// </summary>
-    let CongenitalAbnormalStructure =
-        Namespaced_IRI.parse _namespace_name "CongenitalAbnormalStructure" |> NamespacedName
-
+    let CongenitalAbnormalStructure = _prefix "CongenitalAbnormalStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AcquiredPathologicalCondition"></see>
     /// </summary>
-    let AcquiredPathologicalCondition =
-        Namespaced_IRI.parse _namespace_name "AcquiredPathologicalCondition" |> NamespacedName
-
+    let AcquiredPathologicalCondition = _prefix "AcquiredPathologicalCondition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PathologicalValueRegion"></see>
     /// </summary>
-    let PathologicalValueRegion =
-        Namespaced_IRI.parse _namespace_name "PathologicalValueRegion" |> NamespacedName
-
+    let PathologicalValueRegion = _prefix "PathologicalValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CongenitalPathologicalCondition"></see>
     /// </summary>
-    let CongenitalPathologicalCondition =
-        Namespaced_IRI.parse _namespace_name "CongenitalPathologicalCondition" |> NamespacedName
+    let CongenitalPathologicalCondition = _prefix "CongenitalPathologicalCondition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AcquiredPathologicalStaticProcessualEntity"></see>
     /// </summary>
     let AcquiredPathologicalStaticProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "AcquiredPathologicalStaticProcessualEntity" |> NamespacedName
+        _prefix "AcquiredPathologicalStaticProcessualEntity"
 
     /// <summary>
     /// Condition of an organism that deviates from what is considered normal. Often referred to by the terms "disorder", "disease", "syndrome", "sign", or "symptom". None of these denote clearly delineated ontological categories.
@@ -708,648 +525,471 @@ module biotop =
     /// See disease role etc.
     /// <see href="http://purl.org/biotop/biotop.owl#PathologicalStaticProcessualEntity"></see></summary>
     let PathologicalStaticProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "PathologicalStaticProcessualEntity" |> NamespacedName
+        _prefix "PathologicalStaticProcessualEntity"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#qualityLocated"></see>
     /// </summary>
-    let qualityLocated =
-        Namespaced_IRI.parse _namespace_name "qualityLocated" |> NamespacedName
-
+    let qualityLocated = _prefix "qualityLocated"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasProcessQuality"></see>
     /// </summary>
-    let hasProcessQuality =
-        Namespaced_IRI.parse _namespace_name "hasProcessQuality" |> NamespacedName
-
+    let hasProcessQuality = _prefix "hasProcessQuality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TimeInterval"></see>
     /// </summary>
-    let TimeInterval =
-        Namespaced_IRI.parse _namespace_name "TimeInterval" |> NamespacedName
-
+    let TimeInterval = _prefix "TimeInterval"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasDuration"></see>
     /// </summary>
-    let hasDuration =
-        Namespaced_IRI.parse _namespace_name "hasDuration" |> NamespacedName
-
+    let hasDuration = _prefix "hasDuration"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Particular"></see>
     /// </summary>
-    let Particular = Namespaced_IRI.parse _namespace_name "Particular" |> NamespacedName
+    let Particular = _prefix "Particular"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasAgent"></see>
     /// </summary>
-    let hasAgent = Namespaced_IRI.parse _namespace_name "hasAgent" |> NamespacedName
-
+    let hasAgent = _prefix "hasAgent"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ActionOnBiologicalSystem"></see>
     /// </summary>
-    let ActionOnBiologicalSystem =
-        Namespaced_IRI.parse _namespace_name "ActionOnBiologicalSystem" |> NamespacedName
-
+    let ActionOnBiologicalSystem = _prefix "ActionOnBiologicalSystem"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#LivingOrganism"></see>
     /// </summary>
-    let LivingOrganism =
-        Namespaced_IRI.parse _namespace_name "LivingOrganism" |> NamespacedName
-
+    let LivingOrganism = _prefix "LivingOrganism"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#properPhysicalPartOf"></see>
     /// </summary>
-    let properPhysicalPartOf =
-        Namespaced_IRI.parse _namespace_name "properPhysicalPartOf" |> NamespacedName
-
+    let properPhysicalPartOf = _prefix "properPhysicalPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasPatient"></see>
     /// </summary>
-    let hasPatient = Namespaced_IRI.parse _namespace_name "hasPatient" |> NamespacedName
-
+    let hasPatient = _prefix "hasPatient"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AdultOrganism"></see>
     /// </summary>
-    let AdultOrganism =
-        Namespaced_IRI.parse _namespace_name "AdultOrganism" |> NamespacedName
+    let AdultOrganism = _prefix "AdultOrganism"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganismByDevelopmentalStagePartition"></see>
     /// </summary>
     let OrganismByDevelopmentalStagePartition =
-        Namespaced_IRI.parse _namespace_name "OrganismByDevelopmentalStagePartition" |> NamespacedName
+        _prefix "OrganismByDevelopmentalStagePartition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EmbryonicOrganism"></see>
     /// </summary>
-    let EmbryonicOrganism =
-        Namespaced_IRI.parse _namespace_name "EmbryonicOrganism" |> NamespacedName
-
+    let EmbryonicOrganism = _prefix "EmbryonicOrganism"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#JuvenileOrganism"></see>
     /// </summary>
-    let JuvenileOrganism =
-        Namespaced_IRI.parse _namespace_name "JuvenileOrganism" |> NamespacedName
-
+    let JuvenileOrganism = _prefix "JuvenileOrganism"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#bearerOf"></see>
     /// </summary>
-    let bearerOf = Namespaced_IRI.parse _namespace_name "bearerOf" |> NamespacedName
+    let bearerOf = _prefix "bearerOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Affecting"></see>
     /// </summary>
-    let Affecting = Namespaced_IRI.parse _namespace_name "Affecting" |> NamespacedName
+    let Affecting = _prefix "Affecting"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#inheresIn"></see>
     /// </summary>
-    let inheresIn = Namespaced_IRI.parse _namespace_name "inheresIn" |> NamespacedName
-
+    let inheresIn = _prefix "inheresIn"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ObjectQuality"></see>
     /// </summary>
-    let ObjectQuality =
-        Namespaced_IRI.parse _namespace_name "ObjectQuality" |> NamespacedName
-
+    let ObjectQuality = _prefix "ObjectQuality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AlphaParticle"></see>
     /// </summary>
-    let AlphaParticle =
-        Namespaced_IRI.parse _namespace_name "AlphaParticle" |> NamespacedName
-
+    let AlphaParticle = _prefix "AlphaParticle"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasProperPhysicalPart"></see>
     /// </summary>
-    let hasProperPhysicalPart =
-        Namespaced_IRI.parse _namespace_name "hasProperPhysicalPart" |> NamespacedName
-
+    let hasProperPhysicalPart = _prefix "hasProperPhysicalPart"
     /// <summary>
     /// (QCR) ro:hasPart some CarbonHydrogenSubstructure and ((hasComponent myx 2 CarboxyGroup) and (hasComponent min 1 CarboxyGroup) and (hasComponent exactly 1 AminoGroup)) or ((hasComponent max 2 AminoGroup) and (hasComponent min 1 AminoGroup) and (hasComponent exactly 1 CarboxyGroup))
     /// In chemistry, an amino acid is any molecule that contains both amine and carboxyl functional groups. However, in biochemistry, this more general term is frequently used to refer to alpha amino acids (amino acids in which the amino and carboxylate functionalities are attached to the same carbon, called ?–carbon). Amino Acids have at least one amino and one carboxy group. Those having two carboxy groups have only one amino group and vice versa.
     /// <see href="http://purl.org/biotop/biotop.owl#AminoAcidMoleculeOrResidue"></see></summary>
-    let AminoAcidMoleculeOrResidue =
-        Namespaced_IRI.parse _namespace_name "AminoAcidMoleculeOrResidue" |> NamespacedName
-
+    let AminoAcidMoleculeOrResidue = _prefix "AminoAcidMoleculeOrResidue"
     /// <summary>
     /// A submolecular group or moiety is a group of covalently bound atoms that occurs only as part of a molecule
     /// <see href="http://purl.org/biotop/biotop.owl#SubmolecularGroup"></see></summary>
-    let SubmolecularGroup =
-        Namespaced_IRI.parse _namespace_name "SubmolecularGroup" |> NamespacedName
-
+    let SubmolecularGroup = _prefix "SubmolecularGroup"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasComponentPart"></see>
     /// </summary>
-    let hasComponentPart =
-        Namespaced_IRI.parse _namespace_name "hasComponentPart" |> NamespacedName
-
+    let hasComponentPart = _prefix "hasComponentPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Monomer"></see>
     /// </summary>
-    let Monomer = Namespaced_IRI.parse _namespace_name "Monomer" |> NamespacedName
-
+    let Monomer = _prefix "Monomer"
     /// <summary>
     /// Comment: We here use the term peptide in the most general sense, viz. a oligo or polymer made out of amino acids.
     /// <see href="http://purl.org/biotop/biotop.owl#PeptideStructure"></see></summary>
-    let PeptideStructure =
-        Namespaced_IRI.parse _namespace_name "PeptideStructure" |> NamespacedName
-
+    let PeptideStructure = _prefix "PeptideStructure"
     /// <summary>
     /// Ontologically irrelevant partitioning node. Used for improving ontology housekeeping. Its purpose is to express that all subclasses are mutually disjoint.
     /// <see href="http://purl.org/biotop/biotop.owl#OrganicMolecularEntityPartition"></see></summary>
-    let OrganicMolecularEntityPartition =
-        Namespaced_IRI.parse _namespace_name "OrganicMolecularEntityPartition" |> NamespacedName
-
+    let OrganicMolecularEntityPartition = _prefix "OrganicMolecularEntityPartition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AminoAcidSequence"></see>
     /// </summary>
-    let AminoAcidSequence =
-        Namespaced_IRI.parse _namespace_name "AminoAcidSequence" |> NamespacedName
-
+    let AminoAcidSequence = _prefix "AminoAcidSequence"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AminoAcidSequenceInformation"></see>
     /// </summary>
-    let AminoAcidSequenceInformation =
-        Namespaced_IRI.parse _namespace_name "AminoAcidSequenceInformation" |> NamespacedName
-
+    let AminoAcidSequenceInformation = _prefix "AminoAcidSequenceInformation"
     /// <summary>
     /// Place for currently non maintained classes. It should be assured that they are not being referred to by application ontologies that import BioTop
     /// <see href="http://purl.org/biotop/biotop.owl#DEPRECATED"></see></summary>
-    let DEPRECATED = Namespaced_IRI.parse _namespace_name "DEPRECATED" |> NamespacedName
-
+    let DEPRECATED = _prefix "DEPRECATED"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AmountOfBodySubstance"></see>
     /// </summary>
-    let AmountOfBodySubstance =
-        Namespaced_IRI.parse _namespace_name "AmountOfBodySubstance" |> NamespacedName
+    let AmountOfBodySubstance = _prefix "AmountOfBodySubstance"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CompoundOfCollectiveMaterialEntities"></see>
     /// </summary>
     let CompoundOfCollectiveMaterialEntities =
-        Namespaced_IRI.parse _namespace_name "CompoundOfCollectiveMaterialEntities" |> NamespacedName
+        _prefix "CompoundOfCollectiveMaterialEntities"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AmountOfPureSubstance"></see>
     /// </summary>
-    let AmountOfPureSubstance =
-        Namespaced_IRI.parse _namespace_name "AmountOfPureSubstance" |> NamespacedName
-
+    let AmountOfPureSubstance = _prefix "AmountOfPureSubstance"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasGranularPart"></see>
     /// </summary>
-    let hasGranularPart =
-        Namespaced_IRI.parse _namespace_name "hasGranularPart" |> NamespacedName
-
+    let hasGranularPart = _prefix "hasGranularPart"
     /// <summary>
     /// The fuzzyness of this class is due to the "same sort" criterion.
     /// <see href="http://purl.org/biotop/biotop.owl#CollectiveMaterialEntity"></see></summary>
-    let CollectiveMaterialEntity =
-        Namespaced_IRI.parse _namespace_name "CollectiveMaterialEntity" |> NamespacedName
-
+    let CollectiveMaterialEntity = _prefix "CollectiveMaterialEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PluralityOfOrganisms"></see>
     /// </summary>
-    let PluralityOfOrganisms =
-        Namespaced_IRI.parse _namespace_name "PluralityOfOrganisms" |> NamespacedName
-
+    let PluralityOfOrganisms = _prefix "PluralityOfOrganisms"
     /// <summary>
     /// one vertebrate
     /// <see href="http://purl.org/biotop/biotop.owl#Vertebrate"></see></summary>
-    let Vertebrate = Namespaced_IRI.parse _namespace_name "Vertebrate" |> NamespacedName
+    let Vertebrate = _prefix "Vertebrate"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Analyzing"></see>
     /// </summary>
-    let Analyzing = Namespaced_IRI.parse _namespace_name "Analyzing" |> NamespacedName
-
+    let Analyzing = _prefix "Analyzing"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HumanAction"></see>
     /// </summary>
-    let HumanAction =
-        Namespaced_IRI.parse _namespace_name "HumanAction" |> NamespacedName
-
+    let HumanAction = _prefix "HumanAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AnimalCell"></see>
     /// </summary>
-    let AnimalCell = Namespaced_IRI.parse _namespace_name "AnimalCell" |> NamespacedName
-
+    let AnimalCell = _prefix "AnimalCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellByTaxonPartition"></see>
     /// </summary>
-    let CellByTaxonPartition =
-        Namespaced_IRI.parse _namespace_name "CellByTaxonPartition" |> NamespacedName
-
+    let CellByTaxonPartition = _prefix "CellByTaxonPartition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BacterialCell"></see>
     /// </summary>
-    let BacterialCell =
-        Namespaced_IRI.parse _namespace_name "BacterialCell" |> NamespacedName
-
+    let BacterialCell = _prefix "BacterialCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PlantCell"></see>
     /// </summary>
-    let PlantCell = Namespaced_IRI.parse _namespace_name "PlantCell" |> NamespacedName
+    let PlantCell = _prefix "PlantCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Cell"></see>
     /// </summary>
-    let Cell = Namespaced_IRI.parse _namespace_name "Cell" |> NamespacedName
-
+    let Cell = _prefix "Cell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AnimalExcludingHuman"></see>
     /// </summary>
-    let AnimalExcludingHuman =
-        Namespaced_IRI.parse _namespace_name "AnimalExcludingHuman" |> NamespacedName
-
+    let AnimalExcludingHuman = _prefix "AnimalExcludingHuman"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Human"></see>
     /// </summary>
-    let Human = Namespaced_IRI.parse _namespace_name "Human" |> NamespacedName
-
+    let Human = _prefix "Human"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#LanguagePartition"></see>
     /// </summary>
-    let LanguagePartition =
-        Namespaced_IRI.parse _namespace_name "LanguagePartition" |> NamespacedName
-
+    let LanguagePartition = _prefix "LanguagePartition"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#AnimalPopulation"></see></summary>
-    let AnimalPopulation =
-        Namespaced_IRI.parse _namespace_name "AnimalPopulation" |> NamespacedName
-
+    let AnimalPopulation = _prefix "AnimalPopulation"
     /// <summary>
     /// all child classes of population are only meant as examples demonstrating how population classes can be postcoordinated
     /// <see href="http://purl.org/biotop/biotop.owl#Population"></see></summary>
-    let Population = Namespaced_IRI.parse _namespace_name "Population" |> NamespacedName
-
+    let Population = _prefix "Population"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#AntibioticRole"></see>
     /// </summary>
-    let AntibioticRole =
-        Namespaced_IRI.parse _namespace_name "AntibioticRole" |> NamespacedName
-
+    let AntibioticRole = _prefix "AntibioticRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#DrugRole"></see>
     /// </summary>
-    let DrugRole = Namespaced_IRI.parse _namespace_name "DrugRole" |> NamespacedName
-
+    let DrugRole = _prefix "DrugRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ArchaebacterialCell"></see>
     /// </summary>
-    let ArchaebacterialCell =
-        Namespaced_IRI.parse _namespace_name "ArchaebacterialCell" |> NamespacedName
-
+    let ArchaebacterialCell = _prefix "ArchaebacterialCell"
     /// <summary>
     /// one arthropod
     /// <see href="http://purl.org/biotop/biotop.owl#Arthropod"></see></summary>
-    let Arthropod = Namespaced_IRI.parse _namespace_name "Arthropod" |> NamespacedName
-
+    let Arthropod = _prefix "Arthropod"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#PhylumArthropodaValueRegion"></see></summary>
-    let PhylumArthropodaValueRegion =
-        Namespaced_IRI.parse _namespace_name "PhylumArthropodaValueRegion" |> NamespacedName
-
+    let PhylumArthropodaValueRegion = _prefix "PhylumArthropodaValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Invertebrate"></see>
     /// </summary>
-    let Invertebrate =
-        Namespaced_IRI.parse _namespace_name "Invertebrate" |> NamespacedName
-
+    let Invertebrate = _prefix "Invertebrate"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#ArthropodPopulation"></see></summary>
-    let ArthropodPopulation =
-        Namespaced_IRI.parse _namespace_name "ArthropodPopulation" |> NamespacedName
-
+    let ArthropodPopulation = _prefix "ArthropodPopulation"
     /// <summary>
     /// MaterialEntityBySizePartition
     ///
     /// Ontologically irrelevant partitioning node. Used for improving ontology housekeeping. Its purpose is to express that all subclasses are mutually disjoint.
     /// <see href="http://purl.org/biotop/biotop.owl#MaterialEntityBySizePartition"></see></summary>
-    let MaterialEntityBySizePartition =
-        Namespaced_IRI.parse _namespace_name "MaterialEntityBySizePartition" |> NamespacedName
-
+    let MaterialEntityBySizePartition = _prefix "MaterialEntityBySizePartition"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#BacteriaPopulation"></see></summary>
-    let BacteriaPopulation =
-        Namespaced_IRI.parse _namespace_name "BacteriaPopulation" |> NamespacedName
-
+    let BacteriaPopulation = _prefix "BacteriaPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BacterialColony"></see>
     /// </summary>
-    let BacterialColony =
-        Namespaced_IRI.parse _namespace_name "BacterialColony" |> NamespacedName
-
+    let BacterialColony = _prefix "BacterialColony"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalColony"></see>
     /// </summary>
-    let BiologicalColony =
-        Namespaced_IRI.parse _namespace_name "BiologicalColony" |> NamespacedName
-
+    let BiologicalColony = _prefix "BiologicalColony"
     /// <summary>
     /// one saccharomyces cerevisiae cell
     /// <see href="http://purl.org/biotop/biotop.owl#BakersYeastCell"></see></summary>
-    let BakersYeastCell =
-        Namespaced_IRI.parse _namespace_name "BakersYeastCell" |> NamespacedName
+    let BakersYeastCell = _prefix "BakersYeastCell"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SpeciesSaccharomycesCerevisiaeValueRegion"></see></summary>
     let SpeciesSaccharomycesCerevisiaeValueRegion =
-        Namespaced_IRI.parse _namespace_name "SpeciesSaccharomycesCerevisiaeValueRegion" |> NamespacedName
+        _prefix "SpeciesSaccharomycesCerevisiaeValueRegion"
 
     /// <summary>
     /// Unicellular Fungi.
     /// <see href="http://purl.org/biotop/biotop.owl#YeastCell"></see></summary>
-    let YeastCell = Namespaced_IRI.parse _namespace_name "YeastCell" |> NamespacedName
-
+    let YeastCell = _prefix "YeastCell"
     /// <summary>
     /// One candida albicans cell
     /// <see href="http://purl.org/biotop/biotop.owl#CandidaAlbicansCell"></see></summary>
-    let CandidaAlbicansCell =
-        Namespaced_IRI.parse _namespace_name "CandidaAlbicansCell" |> NamespacedName
-
+    let CandidaAlbicansCell = _prefix "CandidaAlbicansCell"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#BakersYeastPopulation"></see></summary>
-    let BakersYeastPopulation =
-        Namespaced_IRI.parse _namespace_name "BakersYeastPopulation" |> NamespacedName
-
+    let BakersYeastPopulation = _prefix "BakersYeastPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Behavior"></see>
     /// </summary>
-    let Behavior = Namespaced_IRI.parse _namespace_name "Behavior" |> NamespacedName
-
+    let Behavior = _prefix "Behavior"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BioMolecularProcess"></see>
     /// </summary>
-    let BioMolecularProcess =
-        Namespaced_IRI.parse _namespace_name "BioMolecularProcess" |> NamespacedName
-
+    let BioMolecularProcess = _prefix "BioMolecularProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalProcessualEntity"></see>
     /// </summary>
-    let BiologicalProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "BiologicalProcessualEntity" |> NamespacedName
-
+    let BiologicalProcessualEntity = _prefix "BiologicalProcessualEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasParticipant"></see>
     /// </summary>
-    let hasParticipant =
-        Namespaced_IRI.parse _namespace_name "hasParticipant" |> NamespacedName
-
+    let hasParticipant = _prefix "hasParticipant"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BioMolecularSequenceInformation"></see>
     /// </summary>
-    let BioMolecularSequenceInformation =
-        Namespaced_IRI.parse _namespace_name "BioMolecularSequenceInformation" |> NamespacedName
-
+    let BioMolecularSequenceInformation = _prefix "BioMolecularSequenceInformation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BioMolecularSequenceStructure"></see>
     /// </summary>
-    let BioMolecularSequenceStructure =
-        Namespaced_IRI.parse _namespace_name "BioMolecularSequenceStructure" |> NamespacedName
-
+    let BioMolecularSequenceStructure = _prefix "BioMolecularSequenceStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganicMolecularEntity"></see>
     /// </summary>
-    let OrganicMolecularEntity =
-        Namespaced_IRI.parse _namespace_name "OrganicMolecularEntity" |> NamespacedName
-
+    let OrganicMolecularEntity = _prefix "OrganicMolecularEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ChainOfCarbohydrateMonomers"></see>
     /// </summary>
-    let ChainOfCarbohydrateMonomers =
-        Namespaced_IRI.parse _namespace_name "ChainOfCarbohydrateMonomers" |> NamespacedName
-
+    let ChainOfCarbohydrateMonomers = _prefix "ChainOfCarbohydrateMonomers"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ChainOfNucleotideMonomers"></see>
     /// </summary>
-    let ChainOfNucleotideMonomers =
-        Namespaced_IRI.parse _namespace_name "ChainOfNucleotideMonomers" |> NamespacedName
-
+    let ChainOfNucleotideMonomers = _prefix "ChainOfNucleotideMonomers"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#DNAChain"></see>
     /// </summary>
-    let DNAChain = Namespaced_IRI.parse _namespace_name "DNAChain" |> NamespacedName
+    let DNAChain = _prefix "DNAChain"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#RNAChain"></see>
     /// </summary>
-    let RNAChain = Namespaced_IRI.parse _namespace_name "RNAChain" |> NamespacedName
-
+    let RNAChain = _prefix "RNAChain"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalAction"></see>
     /// </summary>
-    let BiologicalAction =
-        Namespaced_IRI.parse _namespace_name "BiologicalAction" |> NamespacedName
-
+    let BiologicalAction = _prefix "BiologicalAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalBoundary"></see>
     /// </summary>
-    let BiologicalBoundary =
-        Namespaced_IRI.parse _namespace_name "BiologicalBoundary" |> NamespacedName
-
+    let BiologicalBoundary = _prefix "BiologicalBoundary"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicalBoundary"></see>
     /// </summary>
-    let PhysicalBoundary =
-        Namespaced_IRI.parse _namespace_name "PhysicalBoundary" |> NamespacedName
-
+    let PhysicalBoundary = _prefix "PhysicalBoundary"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalSpace"></see>
     /// </summary>
-    let BiologicalSpace =
-        Namespaced_IRI.parse _namespace_name "BiologicalSpace" |> NamespacedName
-
+    let BiologicalSpace = _prefix "BiologicalSpace"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyBounds"></see>
     /// </summary>
-    let physicallyBounds =
-        Namespaced_IRI.parse _namespace_name "physicallyBounds" |> NamespacedName
-
+    let physicallyBounds = _prefix "physicallyBounds"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalFunction"></see>
     /// </summary>
-    let BiologicalFunction =
-        Namespaced_IRI.parse _namespace_name "BiologicalFunction" |> NamespacedName
-
+    let BiologicalFunction = _prefix "BiologicalFunction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Function"></see>
     /// </summary>
-    let Function = Namespaced_IRI.parse _namespace_name "Function" |> NamespacedName
-
+    let Function = _prefix "Function"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiologicalLife"></see>
     /// </summary>
-    let BiologicalLife =
-        Namespaced_IRI.parse _namespace_name "BiologicalLife" |> NamespacedName
-
+    let BiologicalLife = _prefix "BiologicalLife"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganismProcess"></see>
     /// </summary>
-    let OrganismProcess =
-        Namespaced_IRI.parse _namespace_name "OrganismProcess" |> NamespacedName
-
+    let OrganismProcess = _prefix "OrganismProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicalProcessualEntity"></see>
     /// </summary>
-    let PhysicalProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "PhysicalProcessualEntity" |> NamespacedName
-
+    let PhysicalProcessualEntity = _prefix "PhysicalProcessualEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasLocus"></see>
     /// </summary>
-    let hasLocus = Namespaced_IRI.parse _namespace_name "hasLocus" |> NamespacedName
-
+    let hasLocus = _prefix "hasLocus"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyContainedIn"></see>
     /// </summary>
-    let physicallyContainedIn =
-        Namespaced_IRI.parse _namespace_name "physicallyContainedIn" |> NamespacedName
-
+    let physicallyContainedIn = _prefix "physicallyContainedIn"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BiomedicalMaterialRole"></see>
     /// </summary>
-    let BiomedicalMaterialRole =
-        Namespaced_IRI.parse _namespace_name "BiomedicalMaterialRole" |> NamespacedName
-
+    let BiomedicalMaterialRole = _prefix "BiomedicalMaterialRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Biomolecule"></see>
     /// </summary>
-    let Biomolecule =
-        Namespaced_IRI.parse _namespace_name "Biomolecule" |> NamespacedName
-
+    let Biomolecule = _prefix "Biomolecule"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#originatesFrom"></see>
     /// </summary>
-    let originatesFrom =
-        Namespaced_IRI.parse _namespace_name "originatesFrom" |> NamespacedName
-
+    let originatesFrom = _prefix "originatesFrom"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Body"></see>
     /// </summary>
-    let Body = Namespaced_IRI.parse _namespace_name "Body" |> NamespacedName
+    let Body = _prefix "Body"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#BodyLiquid"></see>
     /// </summary>
-    let BodyLiquid = Namespaced_IRI.parse _namespace_name "BodyLiquid" |> NamespacedName
-
+    let BodyLiquid = _prefix "BodyLiquid"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#WaterMolecule"></see>
     /// </summary>
-    let WaterMolecule =
-        Namespaced_IRI.parse _namespace_name "WaterMolecule" |> NamespacedName
-
+    let WaterMolecule = _prefix "WaterMolecule"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PortionOfHeterogenousLiquid"></see>
     /// </summary>
-    let PortionOfHeterogenousLiquid =
-        Namespaced_IRI.parse _namespace_name "PortionOfHeterogenousLiquid" |> NamespacedName
-
+    let PortionOfHeterogenousLiquid = _prefix "PortionOfHeterogenousLiquid"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganismPart"></see>
     /// </summary>
-    let OrganismPart =
-        Namespaced_IRI.parse _namespace_name "OrganismPart" |> NamespacedName
-
+    let OrganismPart = _prefix "OrganismPart"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SpeciesCandidaAlbicansValueRegion"></see></summary>
-    let SpeciesCandidaAlbicansValueRegion =
-        Namespaced_IRI.parse _namespace_name "SpeciesCandidaAlbicansValueRegion" |> NamespacedName
-
+    let SpeciesCandidaAlbicansValueRegion = _prefix "SpeciesCandidaAlbicansValueRegion"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#CandidaAlbicansPopulation"></see></summary>
-    let CandidaAlbicansPopulation =
-        Namespaced_IRI.parse _namespace_name "CandidaAlbicansPopulation" |> NamespacedName
-
+    let CandidaAlbicansPopulation = _prefix "CandidaAlbicansPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CanonicalProcessualEntity"></see>
     /// </summary>
-    let CanonicalProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "CanonicalProcessualEntity" |> NamespacedName
-
+    let CanonicalProcessualEntity = _prefix "CanonicalProcessualEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NoncanonicalProcessualEntity"></see>
     /// </summary>
-    let NoncanonicalProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "NoncanonicalProcessualEntity" |> NamespacedName
-
+    let NoncanonicalProcessualEntity = _prefix "NoncanonicalProcessualEntity"
     /// <summary>
     /// abstract region in which the value "canonical" of canonicity is located
     /// <see href="http://purl.org/biotop/biotop.owl#CanonicalValueRegion"></see></summary>
-    let CanonicalValueRegion =
-        Namespaced_IRI.parse _namespace_name "CanonicalValueRegion" |> NamespacedName
-
+    let CanonicalValueRegion = _prefix "CanonicalValueRegion"
     /// <summary>
     /// a biological state that is considered "normal"
     /// <see href="http://purl.org/biotop/biotop.owl#CanonicalStaticProcessualEntity"></see></summary>
-    let CanonicalStaticProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "CanonicalStaticProcessualEntity" |> NamespacedName
+    let CanonicalStaticProcessualEntity = _prefix "CanonicalStaticProcessualEntity"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NoncanonicalStaticProcessualEntity"></see>
     /// </summary>
     let NoncanonicalStaticProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "NoncanonicalStaticProcessualEntity" |> NamespacedName
+        _prefix "NoncanonicalStaticProcessualEntity"
 
     /// <summary>
     /// Static condition as a special case of process in which temporal parts are neglected.
     /// <see href="http://purl.org/biotop/biotop.owl#StaticProcessualEntity"></see></summary>
-    let StaticProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "StaticProcessualEntity" |> NamespacedName
-
+    let StaticProcessualEntity = _prefix "StaticProcessualEntity"
     /// <summary>
     /// abstract region in which the value "noncanonical" of canonicity is located
     /// <see href="http://purl.org/biotop/biotop.owl#NoncanonicalValueRegion"></see></summary>
-    let NoncanonicalValueRegion =
-        Namespaced_IRI.parse _namespace_name "NoncanonicalValueRegion" |> NamespacedName
-
+    let NoncanonicalValueRegion = _prefix "NoncanonicalValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#qualityLocationOf"></see>
     /// </summary>
-    let qualityLocationOf =
-        Namespaced_IRI.parse _namespace_name "qualityLocationOf" |> NamespacedName
-
+    let qualityLocationOf = _prefix "qualityLocationOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CarbohydrateMonomer"></see>
     /// </summary>
-    let CarbohydrateMonomer =
-        Namespaced_IRI.parse _namespace_name "CarbohydrateMonomer" |> NamespacedName
-
+    let CarbohydrateMonomer = _prefix "CarbohydrateMonomer"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CarbohydrateSequenceInformation"></see>
     /// </summary>
-    let CarbohydrateSequenceInformation =
-        Namespaced_IRI.parse _namespace_name "CarbohydrateSequenceInformation" |> NamespacedName
-
+    let CarbohydrateSequenceInformation = _prefix "CarbohydrateSequenceInformation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CategorizationSystem"></see>
     /// </summary>
-    let CategorizationSystem =
-        Namespaced_IRI.parse _namespace_name "CategorizationSystem" |> NamespacedName
-
+    let CategorizationSystem = _prefix "CategorizationSystem"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#IntellectualProduct"></see>
     /// </summary>
-    let IntellectualProduct =
-        Namespaced_IRI.parse _namespace_name "IntellectualProduct" |> NamespacedName
-
+    let IntellectualProduct = _prefix "IntellectualProduct"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#RegulationOrLaw"></see>
     /// </summary>
-    let RegulationOrLaw =
-        Namespaced_IRI.parse _namespace_name "RegulationOrLaw" |> NamespacedName
-
+    let RegulationOrLaw = _prefix "RegulationOrLaw"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Causing"></see>
     /// </summary>
-    let Causing = Namespaced_IRI.parse _namespace_name "Causing" |> NamespacedName
+    let Causing = _prefix "Causing"
 
     /// <summary>
     /// StructuredBiologicalCompoundByGranularityPartition
@@ -1357,1320 +997,962 @@ module biotop =
     /// ontologically irrelevant disjoint partition: structured biological compound by granularity
     /// <see href="http://purl.org/biotop/biotop.owl#StructuredBiologicalCompoundByGranularityPartition"></see></summary>
     let StructuredBiologicalCompoundByGranularityPartition =
-        Namespaced_IRI.parse _namespace_name "StructuredBiologicalCompoundByGranularityPartition" |> NamespacedName
+        _prefix "StructuredBiologicalCompoundByGranularityPartition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellularComponent"></see>
     /// </summary>
-    let CellularComponent =
-        Namespaced_IRI.parse _namespace_name "CellularComponent" |> NamespacedName
-
+    let CellularComponent = _prefix "CellularComponent"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Syncytium"></see>
     /// </summary>
-    let Syncytium = Namespaced_IRI.parse _namespace_name "Syncytium" |> NamespacedName
-
+    let Syncytium = _prefix "Syncytium"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellByLocusPartition"></see>
     /// </summary>
-    let CellByLocusPartition =
-        Namespaced_IRI.parse _namespace_name "CellByLocusPartition" |> NamespacedName
-
+    let CellByLocusPartition = _prefix "CellByLocusPartition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellInVivo"></see>
     /// </summary>
-    let CellInVivo = Namespaced_IRI.parse _namespace_name "CellInVivo" |> NamespacedName
-
+    let CellInVivo = _prefix "CellInVivo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ModifiedCell"></see>
     /// </summary>
-    let ModifiedCell =
-        Namespaced_IRI.parse _namespace_name "ModifiedCell" |> NamespacedName
-
+    let ModifiedCell = _prefix "ModifiedCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CellByTypePartition"></see>
     /// </summary>
-    let CellByTypePartition =
-        Namespaced_IRI.parse _namespace_name "CellByTypePartition" |> NamespacedName
-
+    let CellByTypePartition = _prefix "CellByTypePartition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CentralNervousSystem"></see>
     /// </summary>
-    let CentralNervousSystem =
-        Namespaced_IRI.parse _namespace_name "CentralNervousSystem" |> NamespacedName
-
+    let CentralNervousSystem = _prefix "CentralNervousSystem"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganSystem"></see>
     /// </summary>
-    let OrganSystem =
-        Namespaced_IRI.parse _namespace_name "OrganSystem" |> NamespacedName
-
+    let OrganSystem = _prefix "OrganSystem"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ChlamydiaCell"></see>
     /// </summary>
-    let ChlamydiaCell =
-        Namespaced_IRI.parse _namespace_name "ChlamydiaCell" |> NamespacedName
-
+    let ChlamydiaCell = _prefix "ChlamydiaCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#RickettsiaCell"></see>
     /// </summary>
-    let RickettsiaCell =
-        Namespaced_IRI.parse _namespace_name "RickettsiaCell" |> NamespacedName
-
+    let RickettsiaCell = _prefix "RickettsiaCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Chromosome"></see>
     /// </summary>
-    let Chromosome = Namespaced_IRI.parse _namespace_name "Chromosome" |> NamespacedName
-
+    let Chromosome = _prefix "Chromosome"
     /// <summary>
     /// not (properPartOf some MonoMolecularEntity)  REMOVED
     /// <see href="http://purl.org/biotop/biotop.owl#EntireNucleicAcidMolecule"></see></summary>
-    let EntireNucleicAcidMolecule =
-        Namespaced_IRI.parse _namespace_name "EntireNucleicAcidMolecule" |> NamespacedName
+    let EntireNucleicAcidMolecule = _prefix "EntireNucleicAcidMolecule"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#ClassGammaProteobacteriaValueRegion"></see></summary>
     let ClassGammaProteobacteriaValueRegion =
-        Namespaced_IRI.parse _namespace_name "ClassGammaProteobacteriaValueRegion" |> NamespacedName
+        _prefix "ClassGammaProteobacteriaValueRegion"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#PhylumProteobacteriaValueRegion"></see></summary>
-    let PhylumProteobacteriaValueRegion =
-        Namespaced_IRI.parse _namespace_name "PhylumProteobacteriaValueRegion" |> NamespacedName
-
+    let PhylumProteobacteriaValueRegion = _prefix "PhylumProteobacteriaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#ClassInsectaValueRegion"></see></summary>
-    let ClassInsectaValueRegion =
-        Namespaced_IRI.parse _namespace_name "ClassInsectaValueRegion" |> NamespacedName
-
+    let ClassInsectaValueRegion = _prefix "ClassInsectaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#ClassMammaliaValueRegion"></see></summary>
-    let ClassMammaliaValueRegion =
-        Namespaced_IRI.parse _namespace_name "ClassMammaliaValueRegion" |> NamespacedName
-
+    let ClassMammaliaValueRegion = _prefix "ClassMammaliaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SubphylumVertebrataValueRegion"></see></summary>
-    let SubphylumVertebrataValueRegion =
-        Namespaced_IRI.parse _namespace_name "SubphylumVertebrataValueRegion" |> NamespacedName
-
+    let SubphylumVertebrataValueRegion = _prefix "SubphylumVertebrataValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#ClassSaccharomycetesValueRegion"></see></summary>
-    let ClassSaccharomycetesValueRegion =
-        Namespaced_IRI.parse _namespace_name "ClassSaccharomycetesValueRegion" |> NamespacedName
+    let ClassSaccharomycetesValueRegion = _prefix "ClassSaccharomycetesValueRegion"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SubphylumSaccharomycotinaValueRegion"></see></summary>
     let SubphylumSaccharomycotinaValueRegion =
-        Namespaced_IRI.parse _namespace_name "SubphylumSaccharomycotinaValueRegion" |> NamespacedName
+        _prefix "SubphylumSaccharomycotinaValueRegion"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Complicating"></see>
     /// </summary>
-    let Complicating =
-        Namespaced_IRI.parse _namespace_name "Complicating" |> NamespacedName
-
+    let Complicating = _prefix "Complicating"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Condition"></see>
     /// </summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#CongenitalPathologicalStaticProcessualEntity"></see>
     /// </summary>
     let CongenitalPathologicalStaticProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "CongenitalPathologicalStaticProcessualEntity" |> NamespacedName
+        _prefix "CongenitalPathologicalStaticProcessualEntity"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#DEPRECATED_RELATION"></see>
     /// </summary>
-    let DEPRECATED_RELATION =
-        Namespaced_IRI.parse _namespace_name "DEPRECATED_RELATION" |> NamespacedName
-
+    let DEPRECATED_RELATION = _prefix "DEPRECATED_RELATION"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#DeadBody"></see>
     /// </summary>
-    let DeadBody = Namespaced_IRI.parse _namespace_name "DeadBody" |> NamespacedName
+    let DeadBody = _prefix "DeadBody"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#LivingBody"></see>
     /// </summary>
-    let LivingBody = Namespaced_IRI.parse _namespace_name "LivingBody" |> NamespacedName
+    let LivingBody = _prefix "LivingBody"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Death"></see>
     /// </summary>
-    let Death = Namespaced_IRI.parse _namespace_name "Death" |> NamespacedName
-
+    let Death = _prefix "Death"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PointInTime"></see>
     /// </summary>
-    let PointInTime =
-        Namespaced_IRI.parse _namespace_name "PointInTime" |> NamespacedName
-
+    let PointInTime = _prefix "PointInTime"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasPointInTime"></see>
     /// </summary>
-    let hasPointInTime =
-        Namespaced_IRI.parse _namespace_name "hasPointInTime" |> NamespacedName
-
+    let hasPointInTime = _prefix "hasPointInTime"
     /// <summary>
     /// (OBI 306)
     /// <see href="http://purl.org/biotop/biotop.owl#DigitalEntity"></see></summary>
-    let DigitalEntity =
-        Namespaced_IRI.parse _namespace_name "DigitalEntity" |> NamespacedName
-
+    let DigitalEntity = _prefix "DigitalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Disrupting"></see>
     /// </summary>
-    let Disrupting = Namespaced_IRI.parse _namespace_name "Disrupting" |> NamespacedName
-
+    let Disrupting = _prefix "Disrupting"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SubatomicEntityByChargePartition"></see>
     /// </summary>
-    let SubatomicEntityByChargePartition =
-        Namespaced_IRI.parse _namespace_name "SubatomicEntityByChargePartition" |> NamespacedName
-
+    let SubatomicEntityByChargePartition = _prefix "SubatomicEntityByChargePartition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EmbryonicStructure"></see>
     /// </summary>
-    let EmbryonicStructure =
-        Namespaced_IRI.parse _namespace_name "EmbryonicStructure" |> NamespacedName
-
+    let EmbryonicStructure = _prefix "EmbryonicStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EntireCarbohydrateMonomer"></see>
     /// </summary>
-    let EntireCarbohydrateMonomer =
-        Namespaced_IRI.parse _namespace_name "EntireCarbohydrateMonomer" |> NamespacedName
-
+    let EntireCarbohydrateMonomer = _prefix "EntireCarbohydrateMonomer"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EntireMolecularEntity"></see>
     /// </summary>
-    let EntireMolecularEntity =
-        Namespaced_IRI.parse _namespace_name "EntireMolecularEntity" |> NamespacedName
+    let EntireMolecularEntity = _prefix "EntireMolecularEntity"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MolecularEntityByEntiretyPartition"></see>
     /// </summary>
     let MolecularEntityByEntiretyPartition =
-        Namespaced_IRI.parse _namespace_name "MolecularEntityByEntiretyPartition" |> NamespacedName
+        _prefix "MolecularEntityByEntiretyPartition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MolecularResidue"></see>
     /// </summary>
-    let MolecularResidue =
-        Namespaced_IRI.parse _namespace_name "MolecularResidue" |> NamespacedName
-
+    let MolecularResidue = _prefix "MolecularResidue"
     /// <summary>
     /// (QCR) Peptide and hasComponent min 101 AminoAcidMonomer and not (ro:properPartOf some MolecularEntity)
     /// <see href="http://purl.org/biotop/biotop.owl#EntireProteinMolecule"></see></summary>
-    let EntireProteinMolecule =
-        Namespaced_IRI.parse _namespace_name "EntireProteinMolecule" |> NamespacedName
-
+    let EntireProteinMolecule = _prefix "EntireProteinMolecule"
     /// <summary>
     /// The role a peptide plays in accelerating a biochemical reaction
     /// <see href="http://purl.org/biotop/biotop.owl#EnzymeRole"></see></summary>
-    let EnzymeRole = Namespaced_IRI.parse _namespace_name "EnzymeRole" |> NamespacedName
-
+    let EnzymeRole = _prefix "EnzymeRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EpithelialCell"></see>
     /// </summary>
-    let EpithelialCell =
-        Namespaced_IRI.parse _namespace_name "EpithelialCell" |> NamespacedName
-
+    let EpithelialCell = _prefix "EpithelialCell"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#EscherichiaColiCell"></see>
     /// </summary>
-    let EscherichiaColiCell =
-        Namespaced_IRI.parse _namespace_name "EscherichiaColiCell" |> NamespacedName
-
+    let EscherichiaColiCell = _prefix "EscherichiaColiCell"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SpeciesEscherichiaColiValueRegion"></see></summary>
-    let SpeciesEscherichiaColiValueRegion =
-        Namespaced_IRI.parse _namespace_name "SpeciesEscherichiaColiValueRegion" |> NamespacedName
-
+    let SpeciesEscherichiaColiValueRegion = _prefix "SpeciesEscherichiaColiValueRegion"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#EscherichiaColiPopulation"></see></summary>
-    let EscherichiaColiPopulation =
-        Namespaced_IRI.parse _namespace_name "EscherichiaColiPopulation" |> NamespacedName
-
+    let EscherichiaColiPopulation = _prefix "EscherichiaColiPopulation"
     /// <summary>
     /// Ontologically irrelevant partitioning node. Used for improving ontology housekeeping. Its purpose is to express that all subclasses are mutually disjoint.
     /// <see href="http://purl.org/biotop/biotop.owl#OrganismByTaxonPartition"></see></summary>
-    let OrganismByTaxonPartition =
-        Namespaced_IRI.parse _namespace_name "OrganismByTaxonPartition" |> NamespacedName
-
+    let OrganismByTaxonPartition = _prefix "OrganismByTaxonPartition"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#EukaryotePopulation"></see></summary>
-    let EukaryotePopulation =
-        Namespaced_IRI.parse _namespace_name "EukaryotePopulation" |> NamespacedName
-
+    let EukaryotePopulation = _prefix "EukaryotePopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ExaminationResultRole"></see>
     /// </summary>
-    let ExaminationResultRole =
-        Namespaced_IRI.parse _namespace_name "ExaminationResultRole" |> NamespacedName
-
+    let ExaminationResultRole = _prefix "ExaminationResultRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SignOrSymptomRole"></see>
     /// </summary>
-    let SignOrSymptomRole =
-        Namespaced_IRI.parse _namespace_name "SignOrSymptomRole" |> NamespacedName
-
+    let SignOrSymptomRole = _prefix "SignOrSymptomRole"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#FamilyDrosophilidaeValueRegion"></see></summary>
-    let FamilyDrosophilidaeValueRegion =
-        Namespaced_IRI.parse _namespace_name "FamilyDrosophilidaeValueRegion" |> NamespacedName
-
+    let FamilyDrosophilidaeValueRegion = _prefix "FamilyDrosophilidaeValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#OrderDipteraValueRegion"></see></summary>
-    let OrderDipteraValueRegion =
-        Namespaced_IRI.parse _namespace_name "OrderDipteraValueRegion" |> NamespacedName
+    let OrderDipteraValueRegion = _prefix "OrderDipteraValueRegion"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#FamilyEnterobacteriaceaeaValueRegion"></see></summary>
     let FamilyEnterobacteriaceaeaValueRegion =
-        Namespaced_IRI.parse _namespace_name "FamilyEnterobacteriaceaeaValueRegion" |> NamespacedName
+        _prefix "FamilyEnterobacteriaceaeaValueRegion"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#OrderEnterobacterialesValueRegion"></see></summary>
-    let OrderEnterobacterialesValueRegion =
-        Namespaced_IRI.parse _namespace_name "OrderEnterobacterialesValueRegion" |> NamespacedName
-
+    let OrderEnterobacterialesValueRegion = _prefix "OrderEnterobacterialesValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#FamilyHominidaeValueRegion"></see></summary>
-    let FamilyHominidaeValueRegion =
-        Namespaced_IRI.parse _namespace_name "FamilyHominidaeValueRegion" |> NamespacedName
-
+    let FamilyHominidaeValueRegion = _prefix "FamilyHominidaeValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#OrderPrimatesValueRegion"></see></summary>
-    let OrderPrimatesValueRegion =
-        Namespaced_IRI.parse _namespace_name "OrderPrimatesValueRegion" |> NamespacedName
-
+    let OrderPrimatesValueRegion = _prefix "OrderPrimatesValueRegion"
     /// <summary>
     /// unclear classe. to be revised
     /// <see href="http://purl.org/biotop/biotop.owl#FamilyOfIndividualOrganisms"></see></summary>
-    let FamilyOfIndividualOrganisms =
-        Namespaced_IRI.parse _namespace_name "FamilyOfIndividualOrganisms" |> NamespacedName
+    let FamilyOfIndividualOrganisms = _prefix "FamilyOfIndividualOrganisms"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#FamilySaccharomycetaceaeValueRegion"></see></summary>
     let FamilySaccharomycetaceaeValueRegion =
-        Namespaced_IRI.parse _namespace_name "FamilySaccharomycetaceaeValueRegion" |> NamespacedName
+        _prefix "FamilySaccharomycetaceaeValueRegion"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#OrderSaccharomycetalesValueRegion"></see></summary>
-    let OrderSaccharomycetalesValueRegion =
-        Namespaced_IRI.parse _namespace_name "OrderSaccharomycetalesValueRegion" |> NamespacedName
-
+    let OrderSaccharomycetalesValueRegion = _prefix "OrderSaccharomycetalesValueRegion"
     /// <summary>
     /// one drosophila melanogaster
     /// <see href="http://purl.org/biotop/biotop.owl#FruitFly"></see></summary>
-    let FruitFly = Namespaced_IRI.parse _namespace_name "FruitFly" |> NamespacedName
+    let FruitFly = _prefix "FruitFly"
 
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SpeciesDrosophilaMelanogasterValueRegion"></see></summary>
     let SpeciesDrosophilaMelanogasterValueRegion =
-        Namespaced_IRI.parse _namespace_name "SpeciesDrosophilaMelanogasterValueRegion" |> NamespacedName
+        _prefix "SpeciesDrosophilaMelanogasterValueRegion"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Insect"></see>
     /// </summary>
-    let Insect = Namespaced_IRI.parse _namespace_name "Insect" |> NamespacedName
-
+    let Insect = _prefix "Insect"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#FruitFlyPopulation"></see></summary>
-    let FruitFlyPopulation =
-        Namespaced_IRI.parse _namespace_name "FruitFlyPopulation" |> NamespacedName
-
+    let FruitFlyPopulation = _prefix "FruitFlyPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasRealization"></see>
     /// </summary>
-    let hasRealization =
-        Namespaced_IRI.parse _namespace_name "hasRealization" |> NamespacedName
-
+    let hasRealization = _prefix "hasRealization"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#FungusPopulation"></see></summary>
-    let FungusPopulation =
-        Namespaced_IRI.parse _namespace_name "FungusPopulation" |> NamespacedName
-
+    let FungusPopulation = _prefix "FungusPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Gene"></see>
     /// </summary>
-    let Gene = Namespaced_IRI.parse _namespace_name "Gene" |> NamespacedName
-
+    let Gene = _prefix "Gene"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#GeneticInformation"></see>
     /// </summary>
-    let GeneticInformation =
-        Namespaced_IRI.parse _namespace_name "GeneticInformation" |> NamespacedName
-
+    let GeneticInformation = _prefix "GeneticInformation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#GeneInformation"></see>
     /// </summary>
-    let GeneInformation =
-        Namespaced_IRI.parse _namespace_name "GeneInformation" |> NamespacedName
-
+    let GeneInformation = _prefix "GeneInformation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#GeneRegion"></see>
     /// </summary>
-    let GeneRegion = Namespaced_IRI.parse _namespace_name "GeneRegion" |> NamespacedName
-
+    let GeneRegion = _prefix "GeneRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#GenomeInformation"></see>
     /// </summary>
-    let GenomeInformation =
-        Namespaced_IRI.parse _namespace_name "GenomeInformation" |> NamespacedName
-
+    let GenomeInformation = _prefix "GenomeInformation"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#GenusCandidaValueRegion"></see></summary>
-    let GenusCandidaValueRegion =
-        Namespaced_IRI.parse _namespace_name "GenusCandidaValueRegion" |> NamespacedName
-
+    let GenusCandidaValueRegion = _prefix "GenusCandidaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#GenusSaccharomycesValueRegion"></see></summary>
-    let GenusSaccharomycesValueRegion =
-        Namespaced_IRI.parse _namespace_name "GenusSaccharomycesValueRegion" |> NamespacedName
-
+    let GenusSaccharomycesValueRegion = _prefix "GenusSaccharomycesValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#GenusDrosophilaValueRegion"></see></summary>
-    let GenusDrosophilaValueRegion =
-        Namespaced_IRI.parse _namespace_name "GenusDrosophilaValueRegion" |> NamespacedName
-
+    let GenusDrosophilaValueRegion = _prefix "GenusDrosophilaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SubfamilyDrosophilinaeValueRegion"></see></summary>
-    let SubfamilyDrosophilinaeValueRegion =
-        Namespaced_IRI.parse _namespace_name "SubfamilyDrosophilinaeValueRegion" |> NamespacedName
-
+    let SubfamilyDrosophilinaeValueRegion = _prefix "SubfamilyDrosophilinaeValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#GenusEscherichiaValueRegion"></see></summary>
-    let GenusEscherichiaValueRegion =
-        Namespaced_IRI.parse _namespace_name "GenusEscherichiaValueRegion" |> NamespacedName
-
+    let GenusEscherichiaValueRegion = _prefix "GenusEscherichiaValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#GenusHomoValueRegion"></see></summary>
-    let GenusHomoValueRegion =
-        Namespaced_IRI.parse _namespace_name "GenusHomoValueRegion" |> NamespacedName
-
+    let GenusHomoValueRegion = _prefix "GenusHomoValueRegion"
     /// <summary>
     /// previous name "geographic entity"
     /// <see href="http://purl.org/biotop/biotop.owl#GeographicSurface"></see></summary>
-    let GeographicSurface =
-        Namespaced_IRI.parse _namespace_name "GeographicSurface" |> NamespacedName
-
+    let GeographicSurface = _prefix "GeographicSurface"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Government"></see>
     /// </summary>
-    let Government = Namespaced_IRI.parse _namespace_name "Government" |> NamespacedName
-
+    let Government = _prefix "Government"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Organization"></see>
     /// </summary>
-    let Organization =
-        Namespaced_IRI.parse _namespace_name "Organization" |> NamespacedName
-
+    let Organization = _prefix "Organization"
     /// <summary>
     /// one great ape
     /// <see href="http://purl.org/biotop/biotop.owl#GreatApe"></see></summary>
-    let GreatApe = Namespaced_IRI.parse _namespace_name "GreatApe" |> NamespacedName
-
+    let GreatApe = _prefix "GreatApe"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#GreatApePopulation"></see></summary>
-    let GreatApePopulation =
-        Namespaced_IRI.parse _namespace_name "GreatApePopulation" |> NamespacedName
-
+    let GreatApePopulation = _prefix "GreatApePopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#LegalEntity"></see>
     /// </summary>
-    let LegalEntity =
-        Namespaced_IRI.parse _namespace_name "LegalEntity" |> NamespacedName
-
+    let LegalEntity = _prefix "LegalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Interacting"></see>
     /// </summary>
-    let Interacting =
-        Namespaced_IRI.parse _namespace_name "Interacting" |> NamespacedName
-
+    let Interacting = _prefix "Interacting"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#GrowingProcess"></see>
     /// </summary>
-    let GrowingProcess =
-        Namespaced_IRI.parse _namespace_name "GrowingProcess" |> NamespacedName
-
+    let GrowingProcess = _prefix "GrowingProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TissueProcess"></see>
     /// </summary>
-    let TissueProcess =
-        Namespaced_IRI.parse _namespace_name "TissueProcess" |> NamespacedName
-
+    let TissueProcess = _prefix "TissueProcess"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#SpeciesHomoSapiensValueRegion"></see></summary>
-    let SpeciesHomoSapiensValueRegion =
-        Namespaced_IRI.parse _namespace_name "SpeciesHomoSapiensValueRegion" |> NamespacedName
-
+    let SpeciesHomoSapiensValueRegion = _prefix "SpeciesHomoSapiensValueRegion"
     /// <summary>
     /// one primate
     /// <see href="http://purl.org/biotop/biotop.owl#Primate"></see></summary>
-    let Primate = Namespaced_IRI.parse _namespace_name "Primate" |> NamespacedName
-
+    let Primate = _prefix "Primate"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganismAction"></see>
     /// </summary>
-    let OrganismAction =
-        Namespaced_IRI.parse _namespace_name "OrganismAction" |> NamespacedName
-
+    let OrganismAction = _prefix "OrganismAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HumanEpithelialCell"></see>
     /// </summary>
-    let HumanEpithelialCell =
-        Namespaced_IRI.parse _namespace_name "HumanEpithelialCell" |> NamespacedName
-
+    let HumanEpithelialCell = _prefix "HumanEpithelialCell"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#HumanPopulation"></see></summary>
-    let HumanPopulation =
-        Namespaced_IRI.parse _namespace_name "HumanPopulation" |> NamespacedName
-
+    let HumanPopulation = _prefix "HumanPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#HumanReasoning"></see>
     /// </summary>
-    let HumanReasoning =
-        Namespaced_IRI.parse _namespace_name "HumanReasoning" |> NamespacedName
-
+    let HumanReasoning = _prefix "HumanReasoning"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasOutcome"></see>
     /// </summary>
-    let hasOutcome = Namespaced_IRI.parse _namespace_name "hasOutcome" |> NamespacedName
+    let hasOutcome = _prefix "hasOutcome"
     /// <summary>
     /// negatively affecting a biological system by using physical force
     /// <see href="http://purl.org/biotop/biotop.owl#Hurting"></see></summary>
-    let Hurting = Namespaced_IRI.parse _namespace_name "Hurting" |> NamespacedName
-
+    let Hurting = _prefix "Hurting"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ImmaterialNonphysicalEntity"></see>
     /// </summary>
-    let ImmaterialNonphysicalEntity =
-        Namespaced_IRI.parse _namespace_name "ImmaterialNonphysicalEntity" |> NamespacedName
-
+    let ImmaterialNonphysicalEntity = _prefix "ImmaterialNonphysicalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasPhysicalPart"></see>
     /// </summary>
-    let hasPhysicalPart =
-        Namespaced_IRI.parse _namespace_name "hasPhysicalPart" |> NamespacedName
-
+    let hasPhysicalPart = _prefix "hasPhysicalPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ImmaterialPhysicalEntity"></see>
     /// </summary>
-    let ImmaterialPhysicalEntity =
-        Namespaced_IRI.parse _namespace_name "ImmaterialPhysicalEntity" |> NamespacedName
-
+    let ImmaterialPhysicalEntity = _prefix "ImmaterialPhysicalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ImmaterialProcessualEntity"></see>
     /// </summary>
-    let ImmaterialProcessualEntity =
-        Namespaced_IRI.parse _namespace_name "ImmaterialProcessualEntity" |> NamespacedName
-
+    let ImmaterialProcessualEntity = _prefix "ImmaterialProcessualEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Indicating"></see>
     /// </summary>
-    let Indicating = Namespaced_IRI.parse _namespace_name "Indicating" |> NamespacedName
-
+    let Indicating = _prefix "Indicating"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#IndividualBehavior"></see>
     /// </summary>
-    let IndividualBehavior =
-        Namespaced_IRI.parse _namespace_name "IndividualBehavior" |> NamespacedName
-
+    let IndividualBehavior = _prefix "IndividualBehavior"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SocialBehavior"></see>
     /// </summary>
-    let SocialBehavior =
-        Namespaced_IRI.parse _namespace_name "SocialBehavior" |> NamespacedName
-
+    let SocialBehavior = _prefix "SocialBehavior"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#InformationEntity"></see>
     /// </summary>
-    let InformationEntity =
-        Namespaced_IRI.parse _namespace_name "InformationEntity" |> NamespacedName
-
+    let InformationEntity = _prefix "InformationEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#InorganicMolecularEntity"></see>
     /// </summary>
-    let InorganicMolecularEntity =
-        Namespaced_IRI.parse _namespace_name "InorganicMolecularEntity" |> NamespacedName
+    let InorganicMolecularEntity = _prefix "InorganicMolecularEntity"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MolecularEntityByOrganicInorganicPartition"></see>
     /// </summary>
     let MolecularEntityByOrganicInorganicPartition =
-        Namespaced_IRI.parse _namespace_name "MolecularEntityByOrganicInorganicPartition" |> NamespacedName
+        _prefix "MolecularEntityByOrganicInorganicPartition"
 
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#InsectPopulation"></see></summary>
-    let InsectPopulation =
-        Namespaced_IRI.parse _namespace_name "InsectPopulation" |> NamespacedName
-
+    let InsectPopulation = _prefix "InsectPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#InstantaneousProcess"></see>
     /// </summary>
-    let InstantaneousProcess =
-        Namespaced_IRI.parse _namespace_name "InstantaneousProcess" |> NamespacedName
-
+    let InstantaneousProcess = _prefix "InstantaneousProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#patientIn"></see>
     /// </summary>
-    let patientIn = Namespaced_IRI.parse _namespace_name "patientIn" |> NamespacedName
-
+    let patientIn = _prefix "patientIn"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#IntraCellularProcess"></see>
     /// </summary>
-    let IntraCellularProcess =
-        Namespaced_IRI.parse _namespace_name "IntraCellularProcess" |> NamespacedName
-
+    let IntraCellularProcess = _prefix "IntraCellularProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Language"></see>
     /// </summary>
-    let Language = Namespaced_IRI.parse _namespace_name "Language" |> NamespacedName
-
+    let Language = _prefix "Language"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#participatesIn"></see>
     /// </summary>
-    let participatesIn =
-        Namespaced_IRI.parse _namespace_name "participatesIn" |> NamespacedName
-
+    let participatesIn = _prefix "participatesIn"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MachineAction"></see>
     /// </summary>
-    let MachineAction =
-        Namespaced_IRI.parse _namespace_name "MachineAction" |> NamespacedName
-
+    let MachineAction = _prefix "MachineAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MacroscopicValueRegion"></see>
     /// </summary>
-    let MacroscopicValueRegion =
-        Namespaced_IRI.parse _namespace_name "MacroscopicValueRegion" |> NamespacedName
-
+    let MacroscopicValueRegion = _prefix "MacroscopicValueRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MicroscopicValueRegion"></see>
     /// </summary>
-    let MicroscopicValueRegion =
-        Namespaced_IRI.parse _namespace_name "MicroscopicValueRegion" |> NamespacedName
-
+    let MicroscopicValueRegion = _prefix "MicroscopicValueRegion"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#MammalPopulation"></see></summary>
-    let MammalPopulation =
-        Namespaced_IRI.parse _namespace_name "MammalPopulation" |> NamespacedName
-
+    let MammalPopulation = _prefix "MammalPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ManagingCare"></see>
     /// </summary>
-    let ManagingCare =
-        Namespaced_IRI.parse _namespace_name "ManagingCare" |> NamespacedName
-
+    let ManagingCare = _prefix "ManagingCare"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MaterialEntity"></see>
     /// </summary>
-    let MaterialEntity =
-        Namespaced_IRI.parse _namespace_name "MaterialEntity" |> NamespacedName
-
+    let MaterialEntity = _prefix "MaterialEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Measure"></see>
     /// </summary>
-    let Measure = Namespaced_IRI.parse _namespace_name "Measure" |> NamespacedName
-
+    let Measure = _prefix "Measure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MeasurementMethod"></see>
     /// </summary>
-    let MeasurementMethod =
-        Namespaced_IRI.parse _namespace_name "MeasurementMethod" |> NamespacedName
-
+    let MeasurementMethod = _prefix "MeasurementMethod"
     /// <summary>
     /// (OBI 344)
     /// <see href="http://purl.org/biotop/biotop.owl#Plan"></see></summary>
-    let Plan = Namespaced_IRI.parse _namespace_name "Plan" |> NamespacedName
-
+    let Plan = _prefix "Plan"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MeasuringAction"></see>
     /// </summary>
-    let MeasuringAction =
-        Namespaced_IRI.parse _namespace_name "MeasuringAction" |> NamespacedName
-
+    let MeasuringAction = _prefix "MeasuringAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Membership"></see>
     /// </summary>
-    let Membership = Namespaced_IRI.parse _namespace_name "Membership" |> NamespacedName
-
+    let Membership = _prefix "Membership"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MentalFunction"></see>
     /// </summary>
-    let MentalFunction =
-        Namespaced_IRI.parse _namespace_name "MentalFunction" |> NamespacedName
-
+    let MentalFunction = _prefix "MentalFunction"
     /// <summary>
     /// process in an organism as a realization of a mental function
     /// <see href="http://purl.org/biotop/biotop.owl#MentalProcess"></see></summary>
-    let MentalProcess =
-        Namespaced_IRI.parse _namespace_name "MentalProcess" |> NamespacedName
-
+    let MentalProcess = _prefix "MentalProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Microorganism"></see>
     /// </summary>
-    let Microorganism =
-        Namespaced_IRI.parse _namespace_name "Microorganism" |> NamespacedName
-
+    let Microorganism = _prefix "Microorganism"
     /// <summary>
     /// Difficult concept. Better to be expressed by the primitive "mental function"
     /// <see href="http://purl.org/biotop/biotop.owl#Mind"></see></summary>
-    let Mind = Namespaced_IRI.parse _namespace_name "Mind" |> NamespacedName
-
+    let Mind = _prefix "Mind"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#derivesFrom"></see>
     /// </summary>
-    let derivesFrom =
-        Namespaced_IRI.parse _namespace_name "derivesFrom" |> NamespacedName
+    let derivesFrom = _prefix "derivesFrom"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MolecularEntityByGranularityPartition"></see>
     /// </summary>
     let MolecularEntityByGranularityPartition =
-        Namespaced_IRI.parse _namespace_name "MolecularEntityByGranularityPartition" |> NamespacedName
+        _prefix "MolecularEntityByGranularityPartition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OligoOrPolymer"></see>
     /// </summary>
-    let OligoOrPolymer =
-        Namespaced_IRI.parse _namespace_name "OligoOrPolymer" |> NamespacedName
-
+    let OligoOrPolymer = _prefix "OligoOrPolymer"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MolecularFunction"></see>
     /// </summary>
-    let MolecularFunction =
-        Namespaced_IRI.parse _namespace_name "MolecularFunction" |> NamespacedName
-
+    let MolecularFunction = _prefix "MolecularFunction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#componentPartOf"></see>
     /// </summary>
-    let componentPartOf =
-        Namespaced_IRI.parse _namespace_name "componentPartOf" |> NamespacedName
-
+    let componentPartOf = _prefix "componentPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#MulticellularOrganism"></see>
     /// </summary>
-    let MulticellularOrganism =
-        Namespaced_IRI.parse _namespace_name "MulticellularOrganism" |> NamespacedName
-
+    let MulticellularOrganism = _prefix "MulticellularOrganism"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NeoplasticProcess"></see>
     /// </summary>
-    let NeoplasticProcess =
-        Namespaced_IRI.parse _namespace_name "NeoplasticProcess" |> NamespacedName
-
+    let NeoplasticProcess = _prefix "NeoplasticProcess"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NucleicAcidRegion"></see>
     /// </summary>
-    let NucleicAcidRegion =
-        Namespaced_IRI.parse _namespace_name "NucleicAcidRegion" |> NamespacedName
-
+    let NucleicAcidRegion = _prefix "NucleicAcidRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NucleotideSequenceInformation"></see>
     /// </summary>
-    let NucleotideSequenceInformation =
-        Namespaced_IRI.parse _namespace_name "NucleotideSequenceInformation" |> NamespacedName
-
+    let NucleotideSequenceInformation = _prefix "NucleotideSequenceInformation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#NurseRole"></see>
     /// </summary>
-    let NurseRole = Namespaced_IRI.parse _namespace_name "NurseRole" |> NamespacedName
-
+    let NurseRole = _prefix "NurseRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PhysicianRole"></see>
     /// </summary>
-    let PhysicianRole =
-        Namespaced_IRI.parse _namespace_name "PhysicianRole" |> NamespacedName
-
+    let PhysicianRole = _prefix "PhysicianRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ProcessQuality"></see>
     /// </summary>
-    let ProcessQuality =
-        Namespaced_IRI.parse _namespace_name "ProcessQuality" |> NamespacedName
-
+    let ProcessQuality = _prefix "ProcessQuality"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ObservingAction"></see>
     /// </summary>
-    let ObservingAction =
-        Namespaced_IRI.parse _namespace_name "ObservingAction" |> NamespacedName
-
+    let ObservingAction = _prefix "ObservingAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OneDimensionalBoundary"></see>
     /// </summary>
-    let OneDimensionalBoundary =
-        Namespaced_IRI.parse _namespace_name "OneDimensionalBoundary" |> NamespacedName
-
+    let OneDimensionalBoundary = _prefix "OneDimensionalBoundary"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TwoDimensionalBoundary"></see>
     /// </summary>
-    let TwoDimensionalBoundary =
-        Namespaced_IRI.parse _namespace_name "TwoDimensionalBoundary" |> NamespacedName
-
+    let TwoDimensionalBoundary = _prefix "TwoDimensionalBoundary"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#OrganSystemPart"></see>
     /// </summary>
-    let OrganSystemPart =
-        Namespaced_IRI.parse _namespace_name "OrganSystemPart" |> NamespacedName
-
+    let OrganSystemPart = _prefix "OrganSystemPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Tissue"></see>
     /// </summary>
-    let Tissue = Namespaced_IRI.parse _namespace_name "Tissue" |> NamespacedName
-
+    let Tissue = _prefix "Tissue"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ParticularEntity"></see>
     /// </summary>
-    let ParticularEntity =
-        Namespaced_IRI.parse _namespace_name "ParticularEntity" |> NamespacedName
-
+    let ParticularEntity = _prefix "ParticularEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PathologicalCondition"></see>
     /// </summary>
-    let PathologicalCondition =
-        Namespaced_IRI.parse _namespace_name "PathologicalCondition" |> NamespacedName
-
+    let PathologicalCondition = _prefix "PathologicalCondition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PathologicalDisposition"></see>
     /// </summary>
-    let PathologicalDisposition =
-        Namespaced_IRI.parse _namespace_name "PathologicalDisposition" |> NamespacedName
-
+    let PathologicalDisposition = _prefix "PathologicalDisposition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PathologicalProcess"></see>
     /// </summary>
-    let PathologicalProcess =
-        Namespaced_IRI.parse _namespace_name "PathologicalProcess" |> NamespacedName
+    let PathologicalProcess = _prefix "PathologicalProcess"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#StructuredBiologicalCompoundByCanonicityPartition"></see>
     /// </summary>
     let StructuredBiologicalCompoundByCanonicityPartition =
-        Namespaced_IRI.parse _namespace_name "StructuredBiologicalCompoundByCanonicityPartition" |> NamespacedName
+        _prefix "StructuredBiologicalCompoundByCanonicityPartition"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#WellFormedBiologicalStructure"></see>
     /// </summary>
-    let WellFormedBiologicalStructure =
-        Namespaced_IRI.parse _namespace_name "WellFormedBiologicalStructure" |> NamespacedName
-
+    let WellFormedBiologicalStructure = _prefix "WellFormedBiologicalStructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#processQualityOf"></see>
     /// </summary>
-    let processQualityOf =
-        Namespaced_IRI.parse _namespace_name "processQualityOf" |> NamespacedName
-
+    let processQualityOf = _prefix "processQualityOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PeptideFunction"></see>
     /// </summary>
-    let PeptideFunction =
-        Namespaced_IRI.parse _namespace_name "PeptideFunction" |> NamespacedName
-
+    let PeptideFunction = _prefix "PeptideFunction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Phosphate"></see>
     /// </summary>
-    let Phosphate = Namespaced_IRI.parse _namespace_name "Phosphate" |> NamespacedName
-
+    let Phosphate = _prefix "Phosphate"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#PhylumChordataValueRegion"></see></summary>
-    let PhylumChordataValueRegion =
-        Namespaced_IRI.parse _namespace_name "PhylumChordataValueRegion" |> NamespacedName
-
+    let PhylumChordataValueRegion = _prefix "PhylumChordataValueRegion"
     /// <summary>
     /// EXAMPLE OF TAXON REGION
     /// <see href="http://purl.org/biotop/biotop.owl#PhylumAscomycotaValueRegion"></see></summary>
-    let PhylumAscomycotaValueRegion =
-        Namespaced_IRI.parse _namespace_name "PhylumAscomycotaValueRegion" |> NamespacedName
-
+    let PhylumAscomycotaValueRegion = _prefix "PhylumAscomycotaValueRegion"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#PlantPopulation"></see></summary>
-    let PlantPopulation =
-        Namespaced_IRI.parse _namespace_name "PlantPopulation" |> NamespacedName
+    let PlantPopulation = _prefix "PlantPopulation"
 
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PluralityOfIdenticalPolymolecularEntities"></see>
     /// </summary>
     let PluralityOfIdenticalPolymolecularEntities =
-        Namespaced_IRI.parse _namespace_name "PluralityOfIdenticalPolymolecularEntities" |> NamespacedName
+        _prefix "PluralityOfIdenticalPolymolecularEntities"
 
     /// <summary>
     /// negatively affecting the integrity of a biologival system caused by one or more chemical substances
     /// <see href="http://purl.org/biotop/biotop.owl#Poisoning"></see></summary>
-    let Poisoning = Namespaced_IRI.parse _namespace_name "Poisoning" |> NamespacedName
-
+    let Poisoning = _prefix "Poisoning"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PortionOfHeterogenousSolid"></see>
     /// </summary>
-    let PortionOfHeterogenousSolid =
-        Namespaced_IRI.parse _namespace_name "PortionOfHeterogenousSolid" |> NamespacedName
-
+    let PortionOfHeterogenousSolid = _prefix "PortionOfHeterogenousSolid"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PortionOfHomogenousMatter"></see>
     /// </summary>
-    let PortionOfHomogenousMatter =
-        Namespaced_IRI.parse _namespace_name "PortionOfHomogenousMatter" |> NamespacedName
-
+    let PortionOfHomogenousMatter = _prefix "PortionOfHomogenousMatter"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#PreventionAction"></see>
     /// </summary>
-    let PreventionAction =
-        Namespaced_IRI.parse _namespace_name "PreventionAction" |> NamespacedName
-
+    let PreventionAction = _prefix "PreventionAction"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#PrimatePopulation"></see></summary>
-    let PrimatePopulation =
-        Namespaced_IRI.parse _namespace_name "PrimatePopulation" |> NamespacedName
-
+    let PrimatePopulation = _prefix "PrimatePopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Producing"></see>
     /// </summary>
-    let Producing = Namespaced_IRI.parse _namespace_name "Producing" |> NamespacedName
-
+    let Producing = _prefix "Producing"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ProteinComplex"></see>
     /// </summary>
-    let ProteinComplex =
-        Namespaced_IRI.parse _namespace_name "ProteinComplex" |> NamespacedName
-
+    let ProteinComplex = _prefix "ProteinComplex"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ProteinDomain"></see>
     /// </summary>
-    let ProteinDomain =
-        Namespaced_IRI.parse _namespace_name "ProteinDomain" |> NamespacedName
-
+    let ProteinDomain = _prefix "ProteinDomain"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ProteinSubstructure"></see>
     /// </summary>
-    let ProteinSubstructure =
-        Namespaced_IRI.parse _namespace_name "ProteinSubstructure" |> NamespacedName
-
+    let ProteinSubstructure = _prefix "ProteinSubstructure"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ProteinSubunit"></see>
     /// </summary>
-    let ProteinSubunit =
-        Namespaced_IRI.parse _namespace_name "ProteinSubunit" |> NamespacedName
-
+    let ProteinSubunit = _prefix "ProteinSubunit"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#ProtistPopulation"></see></summary>
-    let ProtistPopulation =
-        Namespaced_IRI.parse _namespace_name "ProtistPopulation" |> NamespacedName
-
+    let ProtistPopulation = _prefix "ProtistPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Radiation"></see>
     /// </summary>
-    let Radiation = Namespaced_IRI.parse _namespace_name "Radiation" |> NamespacedName
+    let Radiation = _prefix "Radiation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Wave"></see>
     /// </summary>
-    let Wave = Namespaced_IRI.parse _namespace_name "Wave" |> NamespacedName
-
+    let Wave = _prefix "Wave"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#RegulatoryBody"></see>
     /// </summary>
-    let RegulatoryBody =
-        Namespaced_IRI.parse _namespace_name "RegulatoryBody" |> NamespacedName
-
+    let RegulatoryBody = _prefix "RegulatoryBody"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SocialAction"></see>
     /// </summary>
-    let SocialAction =
-        Namespaced_IRI.parse _namespace_name "SocialAction" |> NamespacedName
-
+    let SocialAction = _prefix "SocialAction"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#SpatialRegion"></see>
     /// </summary>
-    let SpatialRegion =
-        Namespaced_IRI.parse _namespace_name "SpatialRegion" |> NamespacedName
-
+    let SpatialRegion = _prefix "SpatialRegion"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TemporalEntity"></see>
     /// </summary>
-    let TemporalEntity =
-        Namespaced_IRI.parse _namespace_name "TemporalEntity" |> NamespacedName
-
+    let TemporalEntity = _prefix "TemporalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#Treating"></see>
     /// </summary>
-    let Treating = Namespaced_IRI.parse _namespace_name "Treating" |> NamespacedName
-
+    let Treating = _prefix "Treating"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TreatingCondition"></see>
     /// </summary>
-    let TreatingCondition =
-        Namespaced_IRI.parse _namespace_name "TreatingCondition" |> NamespacedName
-
+    let TreatingCondition = _prefix "TreatingCondition"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TreatingOrganism"></see>
     /// </summary>
-    let TreatingOrganism =
-        Namespaced_IRI.parse _namespace_name "TreatingOrganism" |> NamespacedName
-
+    let TreatingOrganism = _prefix "TreatingOrganism"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#TwoDimensionalBiologicalEntity"></see>
     /// </summary>
-    let TwoDimensionalBiologicalEntity =
-        Namespaced_IRI.parse _namespace_name "TwoDimensionalBiologicalEntity" |> NamespacedName
-
+    let TwoDimensionalBiologicalEntity = _prefix "TwoDimensionalBiologicalEntity"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#UnicellularOrganism"></see>
     /// </summary>
-    let UnicellularOrganism =
-        Namespaced_IRI.parse _namespace_name "UnicellularOrganism" |> NamespacedName
-
+    let UnicellularOrganism = _prefix "UnicellularOrganism"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#UsingAction"></see>
     /// </summary>
-    let UsingAction =
-        Namespaced_IRI.parse _namespace_name "UsingAction" |> NamespacedName
-
+    let UsingAction = _prefix "UsingAction"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#VertebratePopulation"></see></summary>
-    let VertebratePopulation =
-        Namespaced_IRI.parse _namespace_name "VertebratePopulation" |> NamespacedName
-
+    let VertebratePopulation = _prefix "VertebratePopulation"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#VirusPopulation"></see></summary>
-    let VirusPopulation =
-        Namespaced_IRI.parse _namespace_name "VirusPopulation" |> NamespacedName
-
+    let VirusPopulation = _prefix "VirusPopulation"
     /// <summary>
     /// EXAMPLE OF POPULATION
     /// <see href="http://purl.org/biotop/biotop.owl#YeastPopulation"></see></summary>
-    let YeastPopulation =
-        Namespaced_IRI.parse _namespace_name "YeastPopulation" |> NamespacedName
-
+    let YeastPopulation = _prefix "YeastPopulation"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#abstractPartOf"></see>
     /// </summary>
-    let abstractPartOf =
-        Namespaced_IRI.parse _namespace_name "abstractPartOf" |> NamespacedName
-
+    let abstractPartOf = _prefix "abstractPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#abstractlyRelatedTo"></see>
     /// </summary>
-    let abstractlyRelatedTo =
-        Namespaced_IRI.parse _namespace_name "abstractlyRelatedTo" |> NamespacedName
-
+    let abstractlyRelatedTo = _prefix "abstractlyRelatedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasAbstractPart"></see>
     /// </summary>
-    let hasAbstractPart =
-        Namespaced_IRI.parse _namespace_name "hasAbstractPart" |> NamespacedName
-
+    let hasAbstractPart = _prefix "hasAbstractPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#agentIn"></see>
     /// </summary>
-    let agentIn = Namespaced_IRI.parse _namespace_name "agentIn" |> NamespacedName
+    let agentIn = _prefix "agentIn"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#causes"></see>
     /// </summary>
-    let causes = Namespaced_IRI.parse _namespace_name "causes" |> NamespacedName
+    let causes = _prefix "causes"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#attachedTo"></see>
     /// </summary>
-    let attachedTo = Namespaced_IRI.parse _namespace_name "attachedTo" |> NamespacedName
-
+    let attachedTo = _prefix "attachedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#contiguousWith"></see>
     /// </summary>
-    let contiguousWith =
-        Namespaced_IRI.parse _namespace_name "contiguousWith" |> NamespacedName
-
+    let contiguousWith = _prefix "contiguousWith"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#locusOf"></see>
     /// </summary>
-    let locusOf = Namespaced_IRI.parse _namespace_name "locusOf" |> NamespacedName
+    let locusOf = _prefix "locusOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#branchOf"></see>
     /// </summary>
-    let branchOf = Namespaced_IRI.parse _namespace_name "branchOf" |> NamespacedName
+    let branchOf = _prefix "branchOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasBranch"></see>
     /// </summary>
-    let hasBranch = Namespaced_IRI.parse _namespace_name "hasBranch" |> NamespacedName
-
+    let hasBranch = _prefix "hasBranch"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#causallyRelatedTo"></see>
     /// </summary>
-    let causallyRelatedTo =
-        Namespaced_IRI.parse _namespace_name "causallyRelatedTo" |> NamespacedName
-
+    let causallyRelatedTo = _prefix "causallyRelatedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#causedBy"></see>
     /// </summary>
-    let causedBy = Namespaced_IRI.parse _namespace_name "causedBy" |> NamespacedName
-
+    let causedBy = _prefix "causedBy"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyAdjacentTo"></see>
     /// </summary>
-    let physicallyAdjacentTo =
-        Namespaced_IRI.parse _namespace_name "physicallyAdjacentTo" |> NamespacedName
-
+    let physicallyAdjacentTo = _prefix "physicallyAdjacentTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#continuousWith"></see>
     /// </summary>
-    let continuousWith =
-        Namespaced_IRI.parse _namespace_name "continuousWith" |> NamespacedName
-
+    let continuousWith = _prefix "continuousWith"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#cooccurringWith"></see>
     /// </summary>
-    let cooccurringWith =
-        Namespaced_IRI.parse _namespace_name "cooccurringWith" |> NamespacedName
-
+    let cooccurringWith = _prefix "cooccurringWith"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#temporallyRelatedTo"></see>
     /// </summary>
-    let temporallyRelatedTo =
-        Namespaced_IRI.parse _namespace_name "temporallyRelatedTo" |> NamespacedName
-
+    let temporallyRelatedTo = _prefix "temporallyRelatedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#denotedBy"></see>
     /// </summary>
-    let denotedBy = Namespaced_IRI.parse _namespace_name "denotedBy" |> NamespacedName
+    let denotedBy = _prefix "denotedBy"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#denotes"></see>
     /// </summary>
-    let denotes = Namespaced_IRI.parse _namespace_name "denotes" |> NamespacedName
-
+    let denotes = _prefix "denotes"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#derivedInto"></see>
     /// </summary>
-    let derivedInto =
-        Namespaced_IRI.parse _namespace_name "derivedInto" |> NamespacedName
-
+    let derivedInto = _prefix "derivedInto"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasOrigin"></see>
     /// </summary>
-    let hasOrigin = Namespaced_IRI.parse _namespace_name "hasOrigin" |> NamespacedName
+    let hasOrigin = _prefix "hasOrigin"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#encodedBy"></see>
     /// </summary>
-    let encodedBy = Namespaced_IRI.parse _namespace_name "encodedBy" |> NamespacedName
+    let encodedBy = _prefix "encodedBy"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#encodes"></see>
     /// </summary>
-    let encodes = Namespaced_IRI.parse _namespace_name "encodes" |> NamespacedName
+    let encodes = _prefix "encodes"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#featureOf"></see>
     /// </summary>
-    let featureOf = Namespaced_IRI.parse _namespace_name "featureOf" |> NamespacedName
+    let featureOf = _prefix "featureOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasFeature"></see>
     /// </summary>
-    let hasFeature = Namespaced_IRI.parse _namespace_name "hasFeature" |> NamespacedName
-
+    let hasFeature = _prefix "hasFeature"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#granularPartOf"></see>
     /// </summary>
-    let granularPartOf =
-        Namespaced_IRI.parse _namespace_name "granularPartOf" |> NamespacedName
-
+    let granularPartOf = _prefix "granularPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#spatiallyRelatedTo"></see>
     /// </summary>
-    let spatiallyRelatedTo =
-        Namespaced_IRI.parse _namespace_name "spatiallyRelatedTo" |> NamespacedName
-
+    let spatiallyRelatedTo = _prefix "spatiallyRelatedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasOriginalPart"></see>
     /// </summary>
-    let hasOriginalPart =
-        Namespaced_IRI.parse _namespace_name "hasOriginalPart" |> NamespacedName
-
+    let hasOriginalPart = _prefix "hasOriginalPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#originalPartOf"></see>
     /// </summary>
-    let originalPartOf =
-        Namespaced_IRI.parse _namespace_name "originalPartOf" |> NamespacedName
-
+    let originalPartOf = _prefix "originalPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasOriginatingPhysicalPart"></see>
     /// </summary>
-    let hasOriginatingPhysicalPart =
-        Namespaced_IRI.parse _namespace_name "hasOriginatingPhysicalPart" |> NamespacedName
-
+    let hasOriginatingPhysicalPart = _prefix "hasOriginatingPhysicalPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#originatingPhysicalPartOf"></see>
     /// </summary>
-    let originatingPhysicalPartOf =
-        Namespaced_IRI.parse _namespace_name "originatingPhysicalPartOf" |> NamespacedName
-
+    let originatingPhysicalPartOf = _prefix "originatingPhysicalPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#processuallyRelatedTo"></see>
     /// </summary>
-    let processuallyRelatedTo =
-        Namespaced_IRI.parse _namespace_name "processuallyRelatedTo" |> NamespacedName
-
+    let processuallyRelatedTo = _prefix "processuallyRelatedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicalLocationOf"></see>
     /// </summary>
-    let physicalLocationOf =
-        Namespaced_IRI.parse _namespace_name "physicalLocationOf" |> NamespacedName
-
+    let physicalLocationOf = _prefix "physicalLocationOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasProcessRole"></see>
     /// </summary>
-    let hasProcessRole =
-        Namespaced_IRI.parse _namespace_name "hasProcessRole" |> NamespacedName
-
+    let hasProcessRole = _prefix "hasProcessRole"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#hasProcessualPart"></see>
     /// </summary>
-    let hasProcessualPart =
-        Namespaced_IRI.parse _namespace_name "hasProcessualPart" |> NamespacedName
-
+    let hasProcessualPart = _prefix "hasProcessualPart"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#processualPartOf"></see>
     /// </summary>
-    let processualPartOf =
-        Namespaced_IRI.parse _namespace_name "processualPartOf" |> NamespacedName
-
+    let processualPartOf = _prefix "processualPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#realizationOf"></see>
     /// </summary>
-    let realizationOf =
-        Namespaced_IRI.parse _namespace_name "realizationOf" |> NamespacedName
-
+    let realizationOf = _prefix "realizationOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#isAbout"></see>
     /// </summary>
-    let isAbout = Namespaced_IRI.parse _namespace_name "isAbout" |> NamespacedName
+    let isAbout = _prefix "isAbout"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#outcomeOf"></see>
     /// </summary>
-    let outcomeOf = Namespaced_IRI.parse _namespace_name "outcomeOf" |> NamespacedName
-
+    let outcomeOf = _prefix "outcomeOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyConnectedTo"></see>
     /// </summary>
-    let physicallyConnectedTo =
-        Namespaced_IRI.parse _namespace_name "physicallyConnectedTo" |> NamespacedName
-
+    let physicallyConnectedTo = _prefix "physicallyConnectedTo"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicalPartOf"></see>
     /// </summary>
-    let physicalPartOf =
-        Namespaced_IRI.parse _namespace_name "physicalPartOf" |> NamespacedName
-
+    let physicalPartOf = _prefix "physicalPartOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyLocatedIn"></see>
     /// </summary>
-    let physicallyLocatedIn =
-        Namespaced_IRI.parse _namespace_name "physicallyLocatedIn" |> NamespacedName
-
+    let physicallyLocatedIn = _prefix "physicallyLocatedIn"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyBoundedBy"></see>
     /// </summary>
-    let physicallyBoundedBy =
-        Namespaced_IRI.parse _namespace_name "physicallyBoundedBy" |> NamespacedName
-
+    let physicallyBoundedBy = _prefix "physicallyBoundedBy"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyContains"></see>
     /// </summary>
-    let physicallyContains =
-        Namespaced_IRI.parse _namespace_name "physicallyContains" |> NamespacedName
-
+    let physicallyContains = _prefix "physicallyContains"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyDisconnectedFrom"></see>
     /// </summary>
-    let physicallyDisconnectedFrom =
-        Namespaced_IRI.parse _namespace_name "physicallyDisconnectedFrom" |> NamespacedName
-
+    let physicallyDisconnectedFrom = _prefix "physicallyDisconnectedFrom"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyInterconnects"></see>
     /// </summary>
-    let physicallyInterconnects =
-        Namespaced_IRI.parse _namespace_name "physicallyInterconnects" |> NamespacedName
-
+    let physicallyInterconnects = _prefix "physicallyInterconnects"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallySurroundedBy"></see>
     /// </summary>
-    let physicallySurroundedBy =
-        Namespaced_IRI.parse _namespace_name "physicallySurroundedBy" |> NamespacedName
-
+    let physicallySurroundedBy = _prefix "physicallySurroundedBy"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallySurrounds"></see>
     /// </summary>
-    let physicallySurrounds =
-        Namespaced_IRI.parse _namespace_name "physicallySurrounds" |> NamespacedName
-
+    let physicallySurrounds = _prefix "physicallySurrounds"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#physicallyTraverses"></see>
     /// </summary>
-    let physicallyTraverses =
-        Namespaced_IRI.parse _namespace_name "physicallyTraverses" |> NamespacedName
-
+    let physicallyTraverses = _prefix "physicallyTraverses"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#precededBy"></see>
     /// </summary>
-    let precededBy = Namespaced_IRI.parse _namespace_name "precededBy" |> NamespacedName
+    let precededBy = _prefix "precededBy"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#precedes"></see>
     /// </summary>
-    let precedes = Namespaced_IRI.parse _namespace_name "precedes" |> NamespacedName
-
+    let precedes = _prefix "precedes"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#processRoleOf"></see>
     /// </summary>
-    let processRoleOf =
-        Namespaced_IRI.parse _namespace_name "processRoleOf" |> NamespacedName
-
+    let processRoleOf = _prefix "processRoleOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ramificationOf"></see>
     /// </summary>
-    let ramificationOf =
-        Namespaced_IRI.parse _namespace_name "ramificationOf" |> NamespacedName
-
+    let ramificationOf = _prefix "ramificationOf"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#ramifies"></see>
     /// </summary>
-    let ramifies = Namespaced_IRI.parse _namespace_name "ramifies" |> NamespacedName
+    let ramifies = _prefix "ramifies"
     /// <summary>
     ///   <see href="http://purl.org/biotop/biotop.owl#touches"></see>
     /// </summary>
-    let touches = Namespaced_IRI.parse _namespace_name "touches" |> NamespacedName
+    let touches = _prefix "touches"

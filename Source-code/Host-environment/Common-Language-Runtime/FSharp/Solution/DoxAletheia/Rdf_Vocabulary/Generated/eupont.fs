@@ -1,4187 +1,2937 @@
 namespace http.elite.polito.it.ontologies.eupont.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module eupont =
     let _namespace_name = "http://elite.polito.it/ontologies/eupont.owl#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CloseNotification"></see>
     /// </summary>
-    let CloseNotification =
-        Namespaced_IRI.parse _namespace_name "CloseNotification" |> NamespacedName
-
+    let CloseNotification = _prefix "CloseNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectNotification"></see>
     /// </summary>
-    let ConnectNotification =
-        Namespaced_IRI.parse _namespace_name "ConnectNotification" |> NamespacedName
-
+    let ConnectNotification = _prefix "ConnectNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteNotification"></see>
     /// </summary>
-    let DeleteNotification =
-        Namespaced_IRI.parse _namespace_name "DeleteNotification" |> NamespacedName
-
+    let DeleteNotification = _prefix "DeleteNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableNotification"></see>
     /// </summary>
-    let DisableNotification =
-        Namespaced_IRI.parse _namespace_name "DisableNotification" |> NamespacedName
-
+    let DisableNotification = _prefix "DisableNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectNotification"></see>
     /// </summary>
-    let DisconnectNotification =
-        Namespaced_IRI.parse _namespace_name "DisconnectNotification" |> NamespacedName
-
+    let DisconnectNotification = _prefix "DisconnectNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableNotification"></see>
     /// </summary>
-    let EnableNotification =
-        Namespaced_IRI.parse _namespace_name "EnableNotification" |> NamespacedName
-
+    let EnableNotification = _prefix "EnableNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnterNotification"></see>
     /// </summary>
-    let EnterNotification =
-        Namespaced_IRI.parse _namespace_name "EnterNotification" |> NamespacedName
-
+    let EnterNotification = _prefix "EnterNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ExitNotification"></see>
     /// </summary>
-    let ExitNotification =
-        Namespaced_IRI.parse _namespace_name "ExitNotification" |> NamespacedName
-
+    let ExitNotification = _prefix "ExitNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MeasureAboveThresholdNotification"></see>
     /// </summary>
-    let MeasureAboveThresholdNotification =
-        Namespaced_IRI.parse _namespace_name "MeasureAboveThresholdNotification" |> NamespacedName
-
+    let MeasureAboveThresholdNotification = _prefix "MeasureAboveThresholdNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MeasureAvailableNotification"></see>
     /// </summary>
-    let MeasureAvailableNotification =
-        Namespaced_IRI.parse _namespace_name "MeasureAvailableNotification" |> NamespacedName
-
+    let MeasureAvailableNotification = _prefix "MeasureAvailableNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MeasureBelowThresholdNotification"></see>
     /// </summary>
-    let MeasureBelowThresholdNotification =
-        Namespaced_IRI.parse _namespace_name "MeasureBelowThresholdNotification" |> NamespacedName
-
+    let MeasureBelowThresholdNotification = _prefix "MeasureBelowThresholdNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NewNotification"></see>
     /// </summary>
-    let NewNotification =
-        Namespaced_IRI.parse _namespace_name "NewNotification" |> NamespacedName
-
+    let NewNotification = _prefix "NewNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#OpenNotification"></see>
     /// </summary>
-    let OpenNotification =
-        Namespaced_IRI.parse _namespace_name "OpenNotification" |> NamespacedName
-
+    let OpenNotification = _prefix "OpenNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PresenceDetectedNotification"></see>
     /// </summary>
-    let PresenceDetectedNotification =
-        Namespaced_IRI.parse _namespace_name "PresenceDetectedNotification" |> NamespacedName
+    let PresenceDetectedNotification = _prefix "PresenceDetectedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PresenceNoLongerDetectedNotification"></see>
     /// </summary>
     let PresenceNoLongerDetectedNotification =
-        Namespaced_IRI.parse _namespace_name "PresenceNoLongerDetectedNotification" |> NamespacedName
+        _prefix "PresenceNoLongerDetectedNotification"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceiveNotification"></see>
     /// </summary>
-    let ReceiveNotification =
-        Namespaced_IRI.parse _namespace_name "ReceiveNotification" |> NamespacedName
-
+    let ReceiveNotification = _prefix "ReceiveNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RecordNotification"></see>
     /// </summary>
-    let RecordNotification =
-        Namespaced_IRI.parse _namespace_name "RecordNotification" |> NamespacedName
-
+    let RecordNotification = _prefix "RecordNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveNotification"></see>
     /// </summary>
-    let SaveNotification =
-        Namespaced_IRI.parse _namespace_name "SaveNotification" |> NamespacedName
-
+    let SaveNotification = _prefix "SaveNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendNotification"></see>
     /// </summary>
-    let SendNotification =
-        Namespaced_IRI.parse _namespace_name "SendNotification" |> NamespacedName
-
+    let SendNotification = _prefix "SendNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetToNotification"></see>
     /// </summary>
-    let SetToNotification =
-        Namespaced_IRI.parse _namespace_name "SetToNotification" |> NamespacedName
-
+    let SetToNotification = _prefix "SetToNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareNotification"></see>
     /// </summary>
-    let ShareNotification =
-        Namespaced_IRI.parse _namespace_name "ShareNotification" |> NamespacedName
-
+    let ShareNotification = _prefix "ShareNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartNotification"></see>
     /// </summary>
-    let StartNotification =
-        Namespaced_IRI.parse _namespace_name "StartNotification" |> NamespacedName
-
+    let StartNotification = _prefix "StartNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopNotification"></see>
     /// </summary>
-    let StopNotification =
-        Namespaced_IRI.parse _namespace_name "StopNotification" |> NamespacedName
-
+    let StopNotification = _prefix "StopNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnOffNotification"></see>
     /// </summary>
-    let TurnOffNotification =
-        Namespaced_IRI.parse _namespace_name "TurnOffNotification" |> NamespacedName
-
+    let TurnOffNotification = _prefix "TurnOffNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnOnNotification"></see>
     /// </summary>
-    let TurnOnNotification =
-        Namespaced_IRI.parse _namespace_name "TurnOnNotification" |> NamespacedName
-
+    let TurnOnNotification = _prefix "TurnOnNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CloseCommand"></see>
     /// </summary>
-    let CloseCommand =
-        Namespaced_IRI.parse _namespace_name "CloseCommand" |> NamespacedName
-
+    let CloseCommand = _prefix "CloseCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectCommand"></see>
     /// </summary>
-    let ConnectCommand =
-        Namespaced_IRI.parse _namespace_name "ConnectCommand" |> NamespacedName
-
+    let ConnectCommand = _prefix "ConnectCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteCommand"></see>
     /// </summary>
-    let DeleteCommand =
-        Namespaced_IRI.parse _namespace_name "DeleteCommand" |> NamespacedName
-
+    let DeleteCommand = _prefix "DeleteCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableCommand"></see>
     /// </summary>
-    let DisableCommand =
-        Namespaced_IRI.parse _namespace_name "DisableCommand" |> NamespacedName
-
+    let DisableCommand = _prefix "DisableCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectCommand"></see>
     /// </summary>
-    let DisconnectCommand =
-        Namespaced_IRI.parse _namespace_name "DisconnectCommand" |> NamespacedName
-
+    let DisconnectCommand = _prefix "DisconnectCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableCommand"></see>
     /// </summary>
-    let EnableCommand =
-        Namespaced_IRI.parse _namespace_name "EnableCommand" |> NamespacedName
-
+    let EnableCommand = _prefix "EnableCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NewCommand"></see>
     /// </summary>
-    let NewCommand = Namespaced_IRI.parse _namespace_name "NewCommand" |> NamespacedName
-
+    let NewCommand = _prefix "NewCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#OpenCommand"></see>
     /// </summary>
-    let OpenCommand =
-        Namespaced_IRI.parse _namespace_name "OpenCommand" |> NamespacedName
-
+    let OpenCommand = _prefix "OpenCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RecordCommand"></see>
     /// </summary>
-    let RecordCommand =
-        Namespaced_IRI.parse _namespace_name "RecordCommand" |> NamespacedName
-
+    let RecordCommand = _prefix "RecordCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveCommand"></see>
     /// </summary>
-    let SaveCommand =
-        Namespaced_IRI.parse _namespace_name "SaveCommand" |> NamespacedName
-
+    let SaveCommand = _prefix "SaveCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendCommand"></see>
     /// </summary>
-    let SendCommand =
-        Namespaced_IRI.parse _namespace_name "SendCommand" |> NamespacedName
-
+    let SendCommand = _prefix "SendCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetToCommand"></see>
     /// </summary>
-    let SetToCommand =
-        Namespaced_IRI.parse _namespace_name "SetToCommand" |> NamespacedName
-
+    let SetToCommand = _prefix "SetToCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareCommand"></see>
     /// </summary>
-    let ShareCommand =
-        Namespaced_IRI.parse _namespace_name "ShareCommand" |> NamespacedName
-
+    let ShareCommand = _prefix "ShareCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartCommand"></see>
     /// </summary>
-    let StartCommand =
-        Namespaced_IRI.parse _namespace_name "StartCommand" |> NamespacedName
-
+    let StartCommand = _prefix "StartCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopCommand"></see>
     /// </summary>
-    let StopCommand =
-        Namespaced_IRI.parse _namespace_name "StopCommand" |> NamespacedName
-
+    let StopCommand = _prefix "StopCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ToggleCommand"></see>
     /// </summary>
-    let ToggleCommand =
-        Namespaced_IRI.parse _namespace_name "ToggleCommand" |> NamespacedName
-
+    let ToggleCommand = _prefix "ToggleCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnOffCommand"></see>
     /// </summary>
-    let TurnOffCommand =
-        Namespaced_IRI.parse _namespace_name "TurnOffCommand" |> NamespacedName
-
+    let TurnOffCommand = _prefix "TurnOffCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnOnCommand"></see>
     /// </summary>
-    let TurnOnCommand =
-        Namespaced_IRI.parse _namespace_name "TurnOnCommand" |> NamespacedName
-
+    let TurnOnCommand = _prefix "TurnOnCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AcceptCommunicationAction"></see>
     /// </summary>
-    let AcceptCommunicationAction =
-        Namespaced_IRI.parse _namespace_name "AcceptCommunicationAction" |> NamespacedName
-
+    let AcceptCommunicationAction = _prefix "AcceptCommunicationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GetAction"></see>
     /// </summary>
-    let GetAction = Namespaced_IRI.parse _namespace_name "GetAction" |> NamespacedName
+    let GetAction = _prefix "GetAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RuleNominalAxiom"></see>
     /// </summary>
-    let RuleNominalAxiom =
-        Namespaced_IRI.parse _namespace_name "RuleNominalAxiom" |> NamespacedName
-
+    let RuleNominalAxiom = _prefix "RuleNominalAxiom"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ActivateEnvironmentSceneAction"></see>
     /// </summary>
-    let ActivateEnvironmentSceneAction =
-        Namespaced_IRI.parse _namespace_name "ActivateEnvironmentSceneAction" |> NamespacedName
-
+    let ActivateEnvironmentSceneAction = _prefix "ActivateEnvironmentSceneAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetEnvironmentComfortAction"></see>
     /// </summary>
-    let SetEnvironmentComfortAction =
-        Namespaced_IRI.parse _namespace_name "SetEnvironmentComfortAction" |> NamespacedName
-
+    let SetEnvironmentComfortAction = _prefix "SetEnvironmentComfortAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ActivityAction"></see>
     /// </summary>
-    let ActivityAction =
-        Namespaced_IRI.parse _namespace_name "ActivityAction" |> NamespacedName
-
+    let ActivityAction = _prefix "ActivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ActivityTrigger"></see>
     /// </summary>
-    let ActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "ActivityTrigger" |> NamespacedName
-
+    let ActivityTrigger = _prefix "ActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Trigger"></see>
     /// </summary>
-    let Trigger = Namespaced_IRI.parse _namespace_name "Trigger" |> NamespacedName
-
+    let Trigger = _prefix "Trigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddAlarmAction"></see>
     /// </summary>
-    let AddAlarmAction =
-        Namespaced_IRI.parse _namespace_name "AddAlarmAction" |> NamespacedName
-
+    let AddAlarmAction = _prefix "AddAlarmAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddRemindAction"></see>
     /// </summary>
-    let AddRemindAction =
-        Namespaced_IRI.parse _namespace_name "AddRemindAction" |> NamespacedName
-
+    let AddRemindAction = _prefix "AddRemindAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddCalendarItemAction"></see>
     /// </summary>
-    let AddCalendarItemAction =
-        Namespaced_IRI.parse _namespace_name "AddCalendarItemAction" |> NamespacedName
-
+    let AddCalendarItemAction = _prefix "AddCalendarItemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveAction"></see>
     /// </summary>
-    let SaveAction = Namespaced_IRI.parse _namespace_name "SaveAction" |> NamespacedName
-
+    let SaveAction = _prefix "SaveAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddReminderAction"></see>
     /// </summary>
-    let AddReminderAction =
-        Namespaced_IRI.parse _namespace_name "AddReminderAction" |> NamespacedName
-
+    let AddReminderAction = _prefix "AddReminderAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddTimerAction"></see>
     /// </summary>
-    let AddTimerAction =
-        Namespaced_IRI.parse _namespace_name "AddTimerAction" |> NamespacedName
-
+    let AddTimerAction = _prefix "AddTimerAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddedAlarmTrigger"></see>
     /// </summary>
-    let AddedAlarmTrigger =
-        Namespaced_IRI.parse _namespace_name "AddedAlarmTrigger" |> NamespacedName
-
+    let AddedAlarmTrigger = _prefix "AddedAlarmTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddedRemindTrigger"></see>
     /// </summary>
-    let AddedRemindTrigger =
-        Namespaced_IRI.parse _namespace_name "AddedRemindTrigger" |> NamespacedName
-
+    let AddedRemindTrigger = _prefix "AddedRemindTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddedCalendarItemTrigger"></see>
     /// </summary>
-    let AddedCalendarItemTrigger =
-        Namespaced_IRI.parse _namespace_name "AddedCalendarItemTrigger" |> NamespacedName
-
+    let AddedCalendarItemTrigger = _prefix "AddedCalendarItemTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SavedTrigger"></see>
     /// </summary>
-    let SavedTrigger =
-        Namespaced_IRI.parse _namespace_name "SavedTrigger" |> NamespacedName
-
+    let SavedTrigger = _prefix "SavedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddedReminderTrigger"></see>
     /// </summary>
-    let AddedReminderTrigger =
-        Namespaced_IRI.parse _namespace_name "AddedReminderTrigger" |> NamespacedName
-
+    let AddedReminderTrigger = _prefix "AddedReminderTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AddedTimerTrigger"></see>
     /// </summary>
-    let AddedTimerTrigger =
-        Namespaced_IRI.parse _namespace_name "AddedTimerTrigger" |> NamespacedName
-
+    let AddedTimerTrigger = _prefix "AddedTimerTrigger"
     /// <summary>
     /// An agent (eg. person, group, software or physical artifact).
     /// <see href="http://elite.polito.it/ontologies/eupont.owl#Agent"></see></summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
-
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirConditioner"></see>
     /// </summary>
-    let AirConditioner =
-        Namespaced_IRI.parse _namespace_name "AirConditioner" |> NamespacedName
-
+    let AirConditioner = _prefix "AirConditioner"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartEnvironmentSystem"></see>
     /// </summary>
-    let SmartEnvironmentSystem =
-        Namespaced_IRI.parse _namespace_name "SmartEnvironmentSystem" |> NamespacedName
-
+    let SmartEnvironmentSystem = _prefix "SmartEnvironmentSystem"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirMonitor"></see>
     /// </summary>
-    let AirMonitor = Namespaced_IRI.parse _namespace_name "AirMonitor" |> NamespacedName
-
+    let AirMonitor = _prefix "AirMonitor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirPressureService"></see>
     /// </summary>
-    let AirPressureService =
-        Namespaced_IRI.parse _namespace_name "AirPressureService" |> NamespacedName
-
+    let AirPressureService = _prefix "AirPressureService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartEnvironmentService"></see>
     /// </summary>
-    let SmartEnvironmentService =
-        Namespaced_IRI.parse _namespace_name "SmartEnvironmentService" |> NamespacedName
-
+    let SmartEnvironmentService = _prefix "SmartEnvironmentService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirPurifier"></see>
     /// </summary>
-    let AirPurifier =
-        Namespaced_IRI.parse _namespace_name "AirPurifier" |> NamespacedName
-
+    let AirPurifier = _prefix "AirPurifier"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirPurifierDisabledTrigger"></see>
     /// </summary>
-    let AirPurifierDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "AirPurifierDisabledTrigger" |> NamespacedName
-
+    let AirPurifierDisabledTrigger = _prefix "AirPurifierDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedAirQualityTrigger"></see>
     /// </summary>
-    let DecreasedAirQualityTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedAirQualityTrigger" |> NamespacedName
-
+    let DecreasedAirQualityTrigger = _prefix "DecreasedAirQualityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirPurifierEnabledTrigger"></see>
     /// </summary>
-    let AirPurifierEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "AirPurifierEnabledTrigger" |> NamespacedName
-
+    let AirPurifierEnabledTrigger = _prefix "AirPurifierEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedAirQualityTrigger"></see>
     /// </summary>
-    let IncreasedAirQualityTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedAirQualityTrigger" |> NamespacedName
-
+    let IncreasedAirQualityTrigger = _prefix "IncreasedAirQualityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AirPurifierService"></see>
     /// </summary>
-    let AirPurifierService =
-        Namespaced_IRI.parse _namespace_name "AirPurifierService" |> NamespacedName
-
+    let AirPurifierService = _prefix "AirPurifierService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AlarmClockService"></see>
     /// </summary>
-    let AlarmClockService =
-        Namespaced_IRI.parse _namespace_name "AlarmClockService" |> NamespacedName
-
+    let AlarmClockService = _prefix "AlarmClockService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TimeService"></see>
     /// </summary>
-    let TimeService =
-        Namespaced_IRI.parse _namespace_name "TimeService" |> NamespacedName
-
+    let TimeService = _prefix "TimeService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AnswerCallAction"></see>
     /// </summary>
-    let AnswerCallAction =
-        Namespaced_IRI.parse _namespace_name "AnswerCallAction" |> NamespacedName
-
+    let AnswerCallAction = _prefix "AnswerCallAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AntiIntrusionSystem"></see>
     /// </summary>
-    let AntiIntrusionSystem =
-        Namespaced_IRI.parse _namespace_name "AntiIntrusionSystem" |> NamespacedName
-
+    let AntiIntrusionSystem = _prefix "AntiIntrusionSystem"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Appliance"></see>
     /// </summary>
-    let Appliance = Namespaced_IRI.parse _namespace_name "Appliance" |> NamespacedName
-
+    let Appliance = _prefix "Appliance"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PhysicalObject"></see>
     /// </summary>
-    let PhysicalObject =
-        Namespaced_IRI.parse _namespace_name "PhysicalObject" |> NamespacedName
-
+    let PhysicalObject = _prefix "PhysicalObject"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ApplianceService"></see>
     /// </summary>
-    let ApplianceService =
-        Namespaced_IRI.parse _namespace_name "ApplianceService" |> NamespacedName
-
+    let ApplianceService = _prefix "ApplianceService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
-
+    let Service = _prefix "Service"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ArriveOnVehicleTrigger"></see>
     /// </summary>
-    let ArriveOnVehicleTrigger =
-        Namespaced_IRI.parse _namespace_name "ArriveOnVehicleTrigger" |> NamespacedName
-
+    let ArriveOnVehicleTrigger = _prefix "ArriveOnVehicleTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnterTrigger"></see>
     /// </summary>
-    let EnterTrigger =
-        Namespaced_IRI.parse _namespace_name "EnterTrigger" |> NamespacedName
-
+    let EnterTrigger = _prefix "EnterTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AttachementService"></see>
     /// </summary>
-    let AttachementService =
-        Namespaced_IRI.parse _namespace_name "AttachementService" |> NamespacedName
-
+    let AttachementService = _prefix "AttachementService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InformationService"></see>
     /// </summary>
-    let InformationService =
-        Namespaced_IRI.parse _namespace_name "InformationService" |> NamespacedName
-
+    let InformationService = _prefix "InformationService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CommunicationService"></see>
     /// </summary>
-    let CommunicationService =
-        Namespaced_IRI.parse _namespace_name "CommunicationService" |> NamespacedName
-
+    let CommunicationService = _prefix "CommunicationService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AudioRecordingService"></see>
     /// </summary>
-    let AudioRecordingService =
-        Namespaced_IRI.parse _namespace_name "AudioRecordingService" |> NamespacedName
-
+    let AudioRecordingService = _prefix "AudioRecordingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RecordingService"></see>
     /// </summary>
-    let RecordingService =
-        Namespaced_IRI.parse _namespace_name "RecordingService" |> NamespacedName
-
+    let RecordingService = _prefix "RecordingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#AudioService"></see>
     /// </summary>
-    let AudioService =
-        Namespaced_IRI.parse _namespace_name "AudioService" |> NamespacedName
-
+    let AudioService = _prefix "AudioService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#OutputService"></see>
     /// </summary>
-    let OutputService =
-        Namespaced_IRI.parse _namespace_name "OutputService" |> NamespacedName
-
+    let OutputService = _prefix "OutputService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BatteryService"></see>
     /// </summary>
-    let BatteryService =
-        Namespaced_IRI.parse _namespace_name "BatteryService" |> NamespacedName
-
+    let BatteryService = _prefix "BatteryService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceService"></see>
     /// </summary>
-    let DeviceService =
-        Namespaced_IRI.parse _namespace_name "DeviceService" |> NamespacedName
-
+    let DeviceService = _prefix "DeviceService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Beacon"></see>
     /// </summary>
-    let Beacon = Namespaced_IRI.parse _namespace_name "Beacon" |> NamespacedName
-
+    let Beacon = _prefix "Beacon"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BikeTrackingService"></see>
     /// </summary>
-    let BikeTrackingService =
-        Namespaced_IRI.parse _namespace_name "BikeTrackingService" |> NamespacedName
-
+    let BikeTrackingService = _prefix "BikeTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TrackingService"></see>
     /// </summary>
-    let TrackingService =
-        Namespaced_IRI.parse _namespace_name "TrackingService" |> NamespacedName
-
+    let TrackingService = _prefix "TrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BlockCallAction"></see>
     /// </summary>
-    let BlockCallAction =
-        Namespaced_IRI.parse _namespace_name "BlockCallAction" |> NamespacedName
-
+    let BlockCallAction = _prefix "BlockCallAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseUserConnectivityAction"></see>
     /// </summary>
-    let DecreaseUserConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseUserConnectivityAction" |> NamespacedName
-
+    let DecreaseUserConnectivityAction = _prefix "DecreaseUserConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Blog"></see>
     /// </summary>
-    let Blog = Namespaced_IRI.parse _namespace_name "Blog" |> NamespacedName
+    let Blog = _prefix "Blog"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NewsTool"></see>
     /// </summary>
-    let NewsTool = Namespaced_IRI.parse _namespace_name "NewsTool" |> NamespacedName
-
+    let NewsTool = _prefix "NewsTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BluetoothService"></see>
     /// </summary>
-    let BluetoothService =
-        Namespaced_IRI.parse _namespace_name "BluetoothService" |> NamespacedName
-
+    let BluetoothService = _prefix "BluetoothService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NetworkService"></see>
     /// </summary>
-    let NetworkService =
-        Namespaced_IRI.parse _namespace_name "NetworkService" |> NamespacedName
-
+    let NetworkService = _prefix "NetworkService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BrightnessDecreasedTrigger"></see>
     /// </summary>
-    let BrightnessDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "BrightnessDecreasedTrigger" |> NamespacedName
-
+    let BrightnessDecreasedTrigger = _prefix "BrightnessDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImprovedLightingConditionTrigger"></see>
     /// </summary>
-    let ImprovedLightingConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "ImprovedLightingConditionTrigger" |> NamespacedName
-
+    let ImprovedLightingConditionTrigger = _prefix "ImprovedLightingConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BrightnessIncreasedTrigger"></see>
     /// </summary>
-    let BrightnessIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "BrightnessIncreasedTrigger" |> NamespacedName
-
+    let BrightnessIncreasedTrigger = _prefix "BrightnessIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Building"></see>
     /// </summary>
-    let Building = Namespaced_IRI.parse _namespace_name "Building" |> NamespacedName
+    let Building = _prefix "Building"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Location"></see>
     /// </summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
+    let Location = _prefix "Location"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#BuyCommand"></see>
     /// </summary>
-    let BuyCommand = Namespaced_IRI.parse _namespace_name "BuyCommand" |> NamespacedName
+    let BuyCommand = _prefix "BuyCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Command"></see>
     /// </summary>
-    let Command = Namespaced_IRI.parse _namespace_name "Command" |> NamespacedName
-
+    let Command = _prefix "Command"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CalendarService"></see>
     /// </summary>
-    let CalendarService =
-        Namespaced_IRI.parse _namespace_name "CalendarService" |> NamespacedName
-
+    let CalendarService = _prefix "CalendarService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CalendarTool"></see>
     /// </summary>
-    let CalendarTool =
-        Namespaced_IRI.parse _namespace_name "CalendarTool" |> NamespacedName
-
+    let CalendarTool = _prefix "CalendarTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#OrganizerTool"></see>
     /// </summary>
-    let OrganizerTool =
-        Namespaced_IRI.parse _namespace_name "OrganizerTool" |> NamespacedName
-
+    let OrganizerTool = _prefix "OrganizerTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CallService"></see>
     /// </summary>
-    let CallService =
-        Namespaced_IRI.parse _namespace_name "CallService" |> NamespacedName
-
+    let CallService = _prefix "CallService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CallTool"></see>
     /// </summary>
-    let CallTool = Namespaced_IRI.parse _namespace_name "CallTool" |> NamespacedName
-
+    let CallTool = _prefix "CallTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CommunicationTool"></see>
     /// </summary>
-    let CommunicationTool =
-        Namespaced_IRI.parse _namespace_name "CommunicationTool" |> NamespacedName
-
+    let CommunicationTool = _prefix "CommunicationTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Camera"></see>
     /// </summary>
-    let Camera = Namespaced_IRI.parse _namespace_name "Camera" |> NamespacedName
+    let Camera = _prefix "Camera"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Category"></see>
     /// </summary>
-    let Category = Namespaced_IRI.parse _namespace_name "Category" |> NamespacedName
+    let Category = _prefix "Category"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Channel"></see>
     /// </summary>
-    let Channel = Namespaced_IRI.parse _namespace_name "Channel" |> NamespacedName
+    let Channel = _prefix "Channel"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ChatTool"></see>
     /// </summary>
-    let ChatTool = Namespaced_IRI.parse _namespace_name "ChatTool" |> NamespacedName
-
+    let ChatTool = _prefix "ChatTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Notification"></see>
     /// </summary>
-    let Notification =
-        Namespaced_IRI.parse _namespace_name "Notification" |> NamespacedName
-
+    let Notification = _prefix "Notification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CloseSafetyValveAction"></see>
     /// </summary>
-    let CloseSafetyValveAction =
-        Namespaced_IRI.parse _namespace_name "CloseSafetyValveAction" |> NamespacedName
-
+    let CloseSafetyValveAction = _prefix "CloseSafetyValveAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseSecurityAction"></see>
     /// </summary>
-    let IncreaseSecurityAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseSecurityAction" |> NamespacedName
-
+    let IncreaseSecurityAction = _prefix "IncreaseSecurityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CloseWindowFrameAction"></see>
     /// </summary>
-    let CloseWindowFrameAction =
-        Namespaced_IRI.parse _namespace_name "CloseWindowFrameAction" |> NamespacedName
-
+    let CloseWindowFrameAction = _prefix "CloseWindowFrameAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseTemperatureAction"></see>
     /// </summary>
-    let IncreaseTemperatureAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseTemperatureAction" |> NamespacedName
-
+    let IncreaseTemperatureAction = _prefix "IncreaseTemperatureAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseLightingAction"></see>
     /// </summary>
-    let DecreaseLightingAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseLightingAction" |> NamespacedName
-
+    let DecreaseLightingAction = _prefix "DecreaseLightingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CloudPlatform"></see>
     /// </summary>
-    let CloudPlatform =
-        Namespaced_IRI.parse _namespace_name "CloudPlatform" |> NamespacedName
-
+    let CloudPlatform = _prefix "CloudPlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoragePlatform"></see>
     /// </summary>
-    let StoragePlatform =
-        Namespaced_IRI.parse _namespace_name "StoragePlatform" |> NamespacedName
-
+    let StoragePlatform = _prefix "StoragePlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CodeHostingPlatform"></see>
     /// </summary>
-    let CodeHostingPlatform =
-        Namespaced_IRI.parse _namespace_name "CodeHostingPlatform" |> NamespacedName
-
+    let CodeHostingPlatform = _prefix "CodeHostingPlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeveloperTool"></see>
     /// </summary>
-    let DeveloperTool =
-        Namespaced_IRI.parse _namespace_name "DeveloperTool" |> NamespacedName
-
+    let DeveloperTool = _prefix "DeveloperTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CoffeeMaker"></see>
     /// </summary>
-    let CoffeeMaker =
-        Namespaced_IRI.parse _namespace_name "CoffeeMaker" |> NamespacedName
-
+    let CoffeeMaker = _prefix "CoffeeMaker"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CoffeeService"></see>
     /// </summary>
-    let CoffeeService =
-        Namespaced_IRI.parse _namespace_name "CoffeeService" |> NamespacedName
-
+    let CoffeeService = _prefix "CoffeeService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Colleague"></see>
     /// </summary>
-    let Colleague = Namespaced_IRI.parse _namespace_name "Colleague" |> NamespacedName
-
+    let Colleague = _prefix "Colleague"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CommentService"></see>
     /// </summary>
-    let CommentService =
-        Namespaced_IRI.parse _namespace_name "CommentService" |> NamespacedName
-
+    let CommentService = _prefix "CommentService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VirtualObject"></see>
     /// </summary>
-    let VirtualObject =
-        Namespaced_IRI.parse _namespace_name "VirtualObject" |> NamespacedName
-
+    let VirtualObject = _prefix "VirtualObject"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectDeviceAction"></see>
     /// </summary>
-    let ConnectDeviceAction =
-        Namespaced_IRI.parse _namespace_name "ConnectDeviceAction" |> NamespacedName
-
+    let ConnectDeviceAction = _prefix "ConnectDeviceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseConnectivityAction"></see>
     /// </summary>
-    let IncreaseConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseConnectivityAction" |> NamespacedName
-
+    let IncreaseConnectivityAction = _prefix "IncreaseConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectToDeviceAction"></see>
     /// </summary>
-    let ConnectToDeviceAction =
-        Namespaced_IRI.parse _namespace_name "ConnectToDeviceAction" |> NamespacedName
-
+    let ConnectToDeviceAction = _prefix "ConnectToDeviceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectToNetworkAction"></see>
     /// </summary>
-    let ConnectToNetworkAction =
-        Namespaced_IRI.parse _namespace_name "ConnectToNetworkAction" |> NamespacedName
-
+    let ConnectToNetworkAction = _prefix "ConnectToNetworkAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectToWebServiceAction"></see>
     /// </summary>
-    let ConnectToWebServiceAction =
-        Namespaced_IRI.parse _namespace_name "ConnectToWebServiceAction" |> NamespacedName
-
+    let ConnectToWebServiceAction = _prefix "ConnectToWebServiceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectedVehicle"></see>
     /// </summary>
-    let ConnectedVehicle =
-        Namespaced_IRI.parse _namespace_name "ConnectedVehicle" |> NamespacedName
-
+    let ConnectedVehicle = _prefix "ConnectedVehicle"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartCitySystem"></see>
     /// </summary>
-    let SmartCitySystem =
-        Namespaced_IRI.parse _namespace_name "SmartCitySystem" |> NamespacedName
-
+    let SmartCitySystem = _prefix "SmartCitySystem"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectionToDeviceTrigger"></see>
     /// </summary>
-    let ConnectionToDeviceTrigger =
-        Namespaced_IRI.parse _namespace_name "ConnectionToDeviceTrigger" |> NamespacedName
-
+    let ConnectionToDeviceTrigger = _prefix "ConnectionToDeviceTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceConnectedTrigger"></see>
     /// </summary>
-    let DeviceConnectedTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceConnectedTrigger" |> NamespacedName
-
+    let DeviceConnectedTrigger = _prefix "DeviceConnectedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectionToNetworkTrigger"></see>
     /// </summary>
-    let ConnectionToNetworkTrigger =
-        Namespaced_IRI.parse _namespace_name "ConnectionToNetworkTrigger" |> NamespacedName
-
+    let ConnectionToNetworkTrigger = _prefix "ConnectionToNetworkTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectivityAction"></see>
     /// </summary>
-    let ConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "ConnectivityAction" |> NamespacedName
-
+    let ConnectivityAction = _prefix "ConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ConnectivityTrigger"></see>
     /// </summary>
-    let ConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "ConnectivityTrigger" |> NamespacedName
-
+    let ConnectivityTrigger = _prefix "ConnectivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Console"></see>
     /// </summary>
-    let Console = Namespaced_IRI.parse _namespace_name "Console" |> NamespacedName
-
+    let Console = _prefix "Console"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ContactService"></see>
     /// </summary>
-    let ContactService =
-        Namespaced_IRI.parse _namespace_name "ContactService" |> NamespacedName
-
+    let ContactService = _prefix "ContactService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Cooker"></see>
     /// </summary>
-    let Cooker = Namespaced_IRI.parse _namespace_name "Cooker" |> NamespacedName
-
+    let Cooker = _prefix "Cooker"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CoolingService"></see>
     /// </summary>
-    let CoolingService =
-        Namespaced_IRI.parse _namespace_name "CoolingService" |> NamespacedName
-
+    let CoolingService = _prefix "CoolingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CoolingSystemDisabledTrigger"></see>
     /// </summary>
-    let CoolingSystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "CoolingSystemDisabledTrigger" |> NamespacedName
-
+    let CoolingSystemDisabledTrigger = _prefix "CoolingSystemDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedTemperatureTrigger"></see>
     /// </summary>
-    let IncreasedTemperatureTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedTemperatureTrigger" |> NamespacedName
-
+    let IncreasedTemperatureTrigger = _prefix "IncreasedTemperatureTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#CoolingSystemEnabledTrigger"></see>
     /// </summary>
-    let CoolingSystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "CoolingSystemEnabledTrigger" |> NamespacedName
-
+    let CoolingSystemEnabledTrigger = _prefix "CoolingSystemEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedTemperatureTrigger"></see>
     /// </summary>
-    let DecreasedTemperatureTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedTemperatureTrigger" |> NamespacedName
-
+    let DecreasedTemperatureTrigger = _prefix "DecreasedTemperatureTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DIYElectronic"></see>
     /// </summary>
-    let DIYElectronic =
-        Namespaced_IRI.parse _namespace_name "DIYElectronic" |> NamespacedName
-
+    let DIYElectronic = _prefix "DIYElectronic"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DangerousActivityDetectedTrigger"></see>
     /// </summary>
-    let DangerousActivityDetectedTrigger =
-        Namespaced_IRI.parse _namespace_name "DangerousActivityDetectedTrigger" |> NamespacedName
-
+    let DangerousActivityDetectedTrigger = _prefix "DangerousActivityDetectedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#UnhealthyActivityTrigger"></see>
     /// </summary>
-    let UnhealthyActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "UnhealthyActivityTrigger" |> NamespacedName
-
+    let UnhealthyActivityTrigger = _prefix "UnhealthyActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DangerousActivityTrackingService"></see>
     /// </summary>
-    let DangerousActivityTrackingService =
-        Namespaced_IRI.parse _namespace_name "DangerousActivityTrackingService" |> NamespacedName
-
+    let DangerousActivityTrackingService = _prefix "DangerousActivityTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseAirQualityAction"></see>
     /// </summary>
-    let DecreaseAirQualityAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseAirQualityAction" |> NamespacedName
+    let DecreaseAirQualityAction = _prefix "DecreaseAirQualityAction"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseEnvironmentConditionAction"></see>
     /// </summary>
     let DecreaseEnvironmentConditionAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseEnvironmentConditionAction" |> NamespacedName
+        _prefix "DecreaseEnvironmentConditionAction"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseConnectivityAction"></see>
     /// </summary>
-    let DecreaseConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseConnectivityAction" |> NamespacedName
-
+    let DecreaseConnectivityAction = _prefix "DecreaseConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnvironmentAction"></see>
     /// </summary>
-    let EnvironmentAction =
-        Namespaced_IRI.parse _namespace_name "EnvironmentAction" |> NamespacedName
-
+    let EnvironmentAction = _prefix "EnvironmentAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseHumidityAction"></see>
     /// </summary>
-    let DecreaseHumidityAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseHumidityAction" |> NamespacedName
-
+    let DecreaseHumidityAction = _prefix "DecreaseHumidityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseNoiseAction"></see>
     /// </summary>
-    let DecreaseNoiseAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseNoiseAction" |> NamespacedName
-
+    let DecreaseNoiseAction = _prefix "DecreaseNoiseAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseSecurityAction"></see>
     /// </summary>
-    let DecreaseSecurityAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseSecurityAction" |> NamespacedName
-
+    let DecreaseSecurityAction = _prefix "DecreaseSecurityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseTemperatureAction"></see>
     /// </summary>
-    let DecreaseTemperatureAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseTemperatureAction" |> NamespacedName
-
+    let DecreaseTemperatureAction = _prefix "DecreaseTemperatureAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreaseVolumeAction"></see>
     /// </summary>
-    let DecreaseVolumeAction =
-        Namespaced_IRI.parse _namespace_name "DecreaseVolumeAction" |> NamespacedName
-
+    let DecreaseVolumeAction = _prefix "DecreaseVolumeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedAirPressureTrigger"></see>
     /// </summary>
-    let DecreasedAirPressureTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedAirPressureTrigger" |> NamespacedName
+    let DecreasedAirPressureTrigger = _prefix "DecreasedAirPressureTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnvironmentConditionDecreasedTrigger"></see>
     /// </summary>
     let EnvironmentConditionDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "EnvironmentConditionDecreasedTrigger" |> NamespacedName
+        _prefix "EnvironmentConditionDecreasedTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedConnectivityTrigger"></see>
     /// </summary>
-    let DecreasedConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedConnectivityTrigger" |> NamespacedName
-
+    let DecreasedConnectivityTrigger = _prefix "DecreasedConnectivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedHealthConditionTrigger"></see>
     /// </summary>
-    let DecreasedHealthConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedHealthConditionTrigger" |> NamespacedName
-
+    let DecreasedHealthConditionTrigger = _prefix "DecreasedHealthConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HealthTrigger"></see>
     /// </summary>
-    let HealthTrigger =
-        Namespaced_IRI.parse _namespace_name "HealthTrigger" |> NamespacedName
-
+    let HealthTrigger = _prefix "HealthTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedHumidityTrigger"></see>
     /// </summary>
-    let DecreasedHumidityTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedHumidityTrigger" |> NamespacedName
-
+    let DecreasedHumidityTrigger = _prefix "DecreasedHumidityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedLightingTrigger"></see>
     /// </summary>
-    let DecreasedLightingTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedLightingTrigger" |> NamespacedName
-
+    let DecreasedLightingTrigger = _prefix "DecreasedLightingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedNoiseLevelTrigger"></see>
     /// </summary>
-    let DecreasedNoiseLevelTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedNoiseLevelTrigger" |> NamespacedName
-
+    let DecreasedNoiseLevelTrigger = _prefix "DecreasedNoiseLevelTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedSecurityTrigger"></see>
     /// </summary>
-    let DecreasedSecurityTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedSecurityTrigger" |> NamespacedName
-
+    let DecreasedSecurityTrigger = _prefix "DecreasedSecurityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DecreasedWeatherConditionsTrigger"></see>
     /// </summary>
-    let DecreasedWeatherConditionsTrigger =
-        Namespaced_IRI.parse _namespace_name "DecreasedWeatherConditionsTrigger" |> NamespacedName
-
+    let DecreasedWeatherConditionsTrigger = _prefix "DecreasedWeatherConditionsTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Dehumidifier"></see>
     /// </summary>
-    let Dehumidifier =
-        Namespaced_IRI.parse _namespace_name "Dehumidifier" |> NamespacedName
-
+    let Dehumidifier = _prefix "Dehumidifier"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DehumidifierService"></see>
     /// </summary>
-    let DehumidifierService =
-        Namespaced_IRI.parse _namespace_name "DehumidifierService" |> NamespacedName
-
+    let DehumidifierService = _prefix "DehumidifierService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DehumidifierSystemDisabledTrigger"></see>
     /// </summary>
-    let DehumidifierSystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "DehumidifierSystemDisabledTrigger" |> NamespacedName
-
+    let DehumidifierSystemDisabledTrigger = _prefix "DehumidifierSystemDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedHumidityTrigger"></see>
     /// </summary>
-    let IncreasedHumidityTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedHumidityTrigger" |> NamespacedName
-
+    let IncreasedHumidityTrigger = _prefix "IncreasedHumidityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DehumidifierSystemEnabledTrigger"></see>
     /// </summary>
-    let DehumidifierSystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "DehumidifierSystemEnabledTrigger" |> NamespacedName
-
+    let DehumidifierSystemEnabledTrigger = _prefix "DehumidifierSystemEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteAction"></see>
     /// </summary>
-    let DeleteAction =
-        Namespaced_IRI.parse _namespace_name "DeleteAction" |> NamespacedName
-
+    let DeleteAction = _prefix "DeleteAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InformationAction"></see>
     /// </summary>
-    let InformationAction =
-        Namespaced_IRI.parse _namespace_name "InformationAction" |> NamespacedName
-
+    let InformationAction = _prefix "InformationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteAlarmAction"></see>
     /// </summary>
-    let DeleteAlarmAction =
-        Namespaced_IRI.parse _namespace_name "DeleteAlarmAction" |> NamespacedName
-
+    let DeleteAlarmAction = _prefix "DeleteAlarmAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteRemindAction"></see>
     /// </summary>
-    let DeleteRemindAction =
-        Namespaced_IRI.parse _namespace_name "DeleteRemindAction" |> NamespacedName
-
+    let DeleteRemindAction = _prefix "DeleteRemindAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteCalendarItemAction"></see>
     /// </summary>
-    let DeleteCalendarItemAction =
-        Namespaced_IRI.parse _namespace_name "DeleteCalendarItemAction" |> NamespacedName
-
+    let DeleteCalendarItemAction = _prefix "DeleteCalendarItemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteContactAction"></see>
     /// </summary>
-    let DeleteContactAction =
-        Namespaced_IRI.parse _namespace_name "DeleteContactAction" |> NamespacedName
-
+    let DeleteContactAction = _prefix "DeleteContactAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteFromStorageAction"></see>
     /// </summary>
-    let DeleteFromStorageAction =
-        Namespaced_IRI.parse _namespace_name "DeleteFromStorageAction" |> NamespacedName
-
+    let DeleteFromStorageAction = _prefix "DeleteFromStorageAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteFileAction"></see>
     /// </summary>
-    let DeleteFileAction =
-        Namespaced_IRI.parse _namespace_name "DeleteFileAction" |> NamespacedName
-
+    let DeleteFileAction = _prefix "DeleteFileAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteHealthInformationAction"></see>
     /// </summary>
-    let DeleteHealthInformationAction =
-        Namespaced_IRI.parse _namespace_name "DeleteHealthInformationAction" |> NamespacedName
-
+    let DeleteHealthInformationAction = _prefix "DeleteHealthInformationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteMediaInformationAction"></see>
     /// </summary>
-    let DeleteMediaInformationAction =
-        Namespaced_IRI.parse _namespace_name "DeleteMediaInformationAction" |> NamespacedName
-
+    let DeleteMediaInformationAction = _prefix "DeleteMediaInformationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteReminderAction"></see>
     /// </summary>
-    let DeleteReminderAction =
-        Namespaced_IRI.parse _namespace_name "DeleteReminderAction" |> NamespacedName
-
+    let DeleteReminderAction = _prefix "DeleteReminderAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteTimerAction"></see>
     /// </summary>
-    let DeleteTimerAction =
-        Namespaced_IRI.parse _namespace_name "DeleteTimerAction" |> NamespacedName
-
+    let DeleteTimerAction = _prefix "DeleteTimerAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeleteWebBookmarkAction"></see>
     /// </summary>
-    let DeleteWebBookmarkAction =
-        Namespaced_IRI.parse _namespace_name "DeleteWebBookmarkAction" |> NamespacedName
-
+    let DeleteWebBookmarkAction = _prefix "DeleteWebBookmarkAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedAlarmTrigger"></see>
     /// </summary>
-    let DeletedAlarmTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedAlarmTrigger" |> NamespacedName
-
+    let DeletedAlarmTrigger = _prefix "DeletedAlarmTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedRemindTrigger"></see>
     /// </summary>
-    let DeletedRemindTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedRemindTrigger" |> NamespacedName
-
+    let DeletedRemindTrigger = _prefix "DeletedRemindTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedAppTrigger"></see>
     /// </summary>
-    let DeletedAppTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedAppTrigger" |> NamespacedName
-
+    let DeletedAppTrigger = _prefix "DeletedAppTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedFromStorageTrigger"></see>
     /// </summary>
-    let DeletedFromStorageTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedFromStorageTrigger" |> NamespacedName
-
+    let DeletedFromStorageTrigger = _prefix "DeletedFromStorageTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedCalendarItemTrigger"></see>
     /// </summary>
-    let DeletedCalendarItemTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedCalendarItemTrigger" |> NamespacedName
-
+    let DeletedCalendarItemTrigger = _prefix "DeletedCalendarItemTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedContactTrigger"></see>
     /// </summary>
-    let DeletedContactTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedContactTrigger" |> NamespacedName
-
+    let DeletedContactTrigger = _prefix "DeletedContactTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedFileTrigger"></see>
     /// </summary>
-    let DeletedFileTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedFileTrigger" |> NamespacedName
-
+    let DeletedFileTrigger = _prefix "DeletedFileTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedTrigger"></see>
     /// </summary>
-    let DeletedTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedTrigger" |> NamespacedName
-
+    let DeletedTrigger = _prefix "DeletedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedHealthInformationTrigger"></see>
     /// </summary>
-    let DeletedHealthInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedHealthInformationTrigger" |> NamespacedName
-
+    let DeletedHealthInformationTrigger = _prefix "DeletedHealthInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedMediaInformationTrigger"></see>
     /// </summary>
-    let DeletedMediaInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedMediaInformationTrigger" |> NamespacedName
-
+    let DeletedMediaInformationTrigger = _prefix "DeletedMediaInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedReminderTrigger"></see>
     /// </summary>
-    let DeletedReminderTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedReminderTrigger" |> NamespacedName
-
+    let DeletedReminderTrigger = _prefix "DeletedReminderTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedTimerTrigger"></see>
     /// </summary>
-    let DeletedTimerTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedTimerTrigger" |> NamespacedName
-
+    let DeletedTimerTrigger = _prefix "DeletedTimerTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InformationTrigger"></see>
     /// </summary>
-    let InformationTrigger =
-        Namespaced_IRI.parse _namespace_name "InformationTrigger" |> NamespacedName
-
+    let InformationTrigger = _prefix "InformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeletedWebBookmarkTrigger"></see>
     /// </summary>
-    let DeletedWebBookmarkTrigger =
-        Namespaced_IRI.parse _namespace_name "DeletedWebBookmarkTrigger" |> NamespacedName
-
+    let DeletedWebBookmarkTrigger = _prefix "DeletedWebBookmarkTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Detail"></see>
     /// </summary>
-    let Detail = Namespaced_IRI.parse _namespace_name "Detail" |> NamespacedName
-
+    let Detail = _prefix "Detail"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceAction"></see>
     /// </summary>
-    let DeviceAction =
-        Namespaced_IRI.parse _namespace_name "DeviceAction" |> NamespacedName
-
+    let DeviceAction = _prefix "DeviceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnhancedConnectivityTrigger"></see>
     /// </summary>
-    let EnhancedConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "EnhancedConnectivityTrigger" |> NamespacedName
-
+    let EnhancedConnectivityTrigger = _prefix "EnhancedConnectivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceConnectivityDisabledTrigger"></see>
     /// </summary>
-    let DeviceConnectivityDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceConnectivityDisabledTrigger" |> NamespacedName
-
+    let DeviceConnectivityDisabledTrigger = _prefix "DeviceConnectivityDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceConnectivityEnabledTrigger"></see>
     /// </summary>
-    let DeviceConnectivityEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceConnectivityEnabledTrigger" |> NamespacedName
-
+    let DeviceConnectivityEnabledTrigger = _prefix "DeviceConnectivityEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceDisconnectedTrigger"></see>
     /// </summary>
-    let DeviceDisconnectedTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceDisconnectedTrigger" |> NamespacedName
-
+    let DeviceDisconnectedTrigger = _prefix "DeviceDisconnectedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceFailureTrigger"></see>
     /// </summary>
-    let DeviceFailureTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceFailureTrigger" |> NamespacedName
-
+    let DeviceFailureTrigger = _prefix "DeviceFailureTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseFunctionalityTrigger"></see>
     /// </summary>
-    let WorseFunctionalityTrigger =
-        Namespaced_IRI.parse _namespace_name "WorseFunctionalityTrigger" |> NamespacedName
-
+    let WorseFunctionalityTrigger = _prefix "WorseFunctionalityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceLeakTrigger"></see>
     /// </summary>
-    let DeviceLeakTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceLeakTrigger" |> NamespacedName
-
+    let DeviceLeakTrigger = _prefix "DeviceLeakTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DevicePluggedTrigger"></see>
     /// </summary>
-    let DevicePluggedTrigger =
-        Namespaced_IRI.parse _namespace_name "DevicePluggedTrigger" |> NamespacedName
+    let DevicePluggedTrigger = _prefix "DevicePluggedTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImprovedConsumptionConditionTrigger"></see>
     /// </summary>
     let ImprovedConsumptionConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "ImprovedConsumptionConditionTrigger" |> NamespacedName
+        _prefix "ImprovedConsumptionConditionTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceSavingModeDisabledTrigger"></see>
     /// </summary>
-    let DeviceSavingModeDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceSavingModeDisabledTrigger" |> NamespacedName
-
+    let DeviceSavingModeDisabledTrigger = _prefix "DeviceSavingModeDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceSavingModeEnabledTrigger"></see>
     /// </summary>
-    let DeviceSavingModeEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceSavingModeEnabledTrigger" |> NamespacedName
-
+    let DeviceSavingModeEnabledTrigger = _prefix "DeviceSavingModeEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseConsumptionConditionTrigger"></see>
     /// </summary>
-    let WorseConsumptionConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "WorseConsumptionConditionTrigger" |> NamespacedName
-
+    let WorseConsumptionConditionTrigger = _prefix "WorseConsumptionConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceTrigger"></see>
     /// </summary>
-    let DeviceTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceTrigger" |> NamespacedName
-
+    let DeviceTrigger = _prefix "DeviceTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceTurnedOffTrigger"></see>
     /// </summary>
-    let DeviceTurnedOffTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceTurnedOffTrigger" |> NamespacedName
-
+    let DeviceTurnedOffTrigger = _prefix "DeviceTurnedOffTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#UserConnectivityDecreasedTrigger"></see>
     /// </summary>
-    let UserConnectivityDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "UserConnectivityDecreasedTrigger" |> NamespacedName
-
+    let UserConnectivityDecreasedTrigger = _prefix "UserConnectivityDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceTurnedOnTrigger"></see>
     /// </summary>
-    let DeviceTurnedOnTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceTurnedOnTrigger" |> NamespacedName
-
+    let DeviceTurnedOnTrigger = _prefix "DeviceTurnedOnTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#UserConnectivityIncreasedTrigger"></see>
     /// </summary>
-    let UserConnectivityIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "UserConnectivityIncreasedTrigger" |> NamespacedName
-
+    let UserConnectivityIncreasedTrigger = _prefix "UserConnectivityIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceUnpluggedTrigger"></see>
     /// </summary>
-    let DeviceUnpluggedTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceUnpluggedTrigger" |> NamespacedName
-
+    let DeviceUnpluggedTrigger = _prefix "DeviceUnpluggedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DeviceUsageWarningTrigger"></see>
     /// </summary>
-    let DeviceUsageWarningTrigger =
-        Namespaced_IRI.parse _namespace_name "DeviceUsageWarningTrigger" |> NamespacedName
-
+    let DeviceUsageWarningTrigger = _prefix "DeviceUsageWarningTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableAirPurifierSystemAction"></see>
     /// </summary>
-    let DisableAirPurifierSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableAirPurifierSystemAction" |> NamespacedName
-
+    let DisableAirPurifierSystemAction = _prefix "DisableAirPurifierSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableAirplaneModeAction"></see>
     /// </summary>
-    let DisableAirplaneModeAction =
-        Namespaced_IRI.parse _namespace_name "DisableAirplaneModeAction" |> NamespacedName
-
+    let DisableAirplaneModeAction = _prefix "DisableAirplaneModeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableDeviceConnectivityAction"></see>
     /// </summary>
-    let EnableDeviceConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "EnableDeviceConnectivityAction" |> NamespacedName
+    let EnableDeviceConnectivityAction = _prefix "EnableDeviceConnectivityAction"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableBluetoothConnectivityAction"></see>
     /// </summary>
     let DisableBluetoothConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "DisableBluetoothConnectivityAction" |> NamespacedName
+        _prefix "DisableBluetoothConnectivityAction"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableDeviceConnectivityAction"></see>
     /// </summary>
-    let DisableDeviceConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "DisableDeviceConnectivityAction" |> NamespacedName
-
+    let DisableDeviceConnectivityAction = _prefix "DisableDeviceConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableCoolingSystemAction"></see>
     /// </summary>
-    let DisableCoolingSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableCoolingSystemAction" |> NamespacedName
-
+    let DisableCoolingSystemAction = _prefix "DisableCoolingSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableDehumidifierSystemAction"></see>
     /// </summary>
-    let DisableDehumidifierSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableDehumidifierSystemAction" |> NamespacedName
-
+    let DisableDehumidifierSystemAction = _prefix "DisableDehumidifierSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseHumidityAction"></see>
     /// </summary>
-    let IncreaseHumidityAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseHumidityAction" |> NamespacedName
-
+    let IncreaseHumidityAction = _prefix "IncreaseHumidityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableDeviceSavingModeAction"></see>
     /// </summary>
-    let DisableDeviceSavingModeAction =
-        Namespaced_IRI.parse _namespace_name "DisableDeviceSavingModeAction" |> NamespacedName
-
+    let DisableDeviceSavingModeAction = _prefix "DisableDeviceSavingModeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseConsumptionConditionAction"></see>
     /// </summary>
-    let WorseConsumptionConditionAction =
-        Namespaced_IRI.parse _namespace_name "WorseConsumptionConditionAction" |> NamespacedName
-
+    let WorseConsumptionConditionAction = _prefix "WorseConsumptionConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableGPSAction"></see>
     /// </summary>
-    let DisableGPSAction =
-        Namespaced_IRI.parse _namespace_name "DisableGPSAction" |> NamespacedName
-
+    let DisableGPSAction = _prefix "DisableGPSAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableHeatingSystemAction"></see>
     /// </summary>
-    let DisableHeatingSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableHeatingSystemAction" |> NamespacedName
-
+    let DisableHeatingSystemAction = _prefix "DisableHeatingSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableHumidifierSystemAction"></see>
     /// </summary>
-    let DisableHumidifierSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableHumidifierSystemAction" |> NamespacedName
-
+    let DisableHumidifierSystemAction = _prefix "DisableHumidifierSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableInternetConnectivityAction"></see>
     /// </summary>
-    let DisableInternetConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "DisableInternetConnectivityAction" |> NamespacedName
-
+    let DisableInternetConnectivityAction = _prefix "DisableInternetConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableLightingSystemAction"></see>
     /// </summary>
-    let DisableLightingSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableLightingSystemAction" |> NamespacedName
-
+    let DisableLightingSystemAction = _prefix "DisableLightingSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableNFCConnectivityAction"></see>
     /// </summary>
-    let DisableNFCConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "DisableNFCConnectivityAction" |> NamespacedName
-
+    let DisableNFCConnectivityAction = _prefix "DisableNFCConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableNightModeAction"></see>
     /// </summary>
-    let DisableNightModeAction =
-        Namespaced_IRI.parse _namespace_name "DisableNightModeAction" |> NamespacedName
-
+    let DisableNightModeAction = _prefix "DisableNightModeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImproveLightingConditionAction"></see>
     /// </summary>
-    let ImproveLightingConditionAction =
-        Namespaced_IRI.parse _namespace_name "ImproveLightingConditionAction" |> NamespacedName
-
+    let ImproveLightingConditionAction = _prefix "ImproveLightingConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableNotificationsAction"></see>
     /// </summary>
-    let DisableNotificationsAction =
-        Namespaced_IRI.parse _namespace_name "DisableNotificationsAction" |> NamespacedName
-
+    let DisableNotificationsAction = _prefix "DisableNotificationsAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableScreenRotationAction"></see>
     /// </summary>
-    let DisableScreenRotationAction =
-        Namespaced_IRI.parse _namespace_name "DisableScreenRotationAction" |> NamespacedName
-
+    let DisableScreenRotationAction = _prefix "DisableScreenRotationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseUsabilityConditionAction"></see>
     /// </summary>
-    let WorseUsabilityConditionAction =
-        Namespaced_IRI.parse _namespace_name "WorseUsabilityConditionAction" |> NamespacedName
-
+    let WorseUsabilityConditionAction = _prefix "WorseUsabilityConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableSecuritySystemAction"></see>
     /// </summary>
-    let DisableSecuritySystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableSecuritySystemAction" |> NamespacedName
-
+    let DisableSecuritySystemAction = _prefix "DisableSecuritySystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisableWateringSystemAction"></see>
     /// </summary>
-    let DisableWateringSystemAction =
-        Namespaced_IRI.parse _namespace_name "DisableWateringSystemAction" |> NamespacedName
-
+    let DisableWateringSystemAction = _prefix "DisableWateringSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisabledAirplaneModeTrigger"></see>
     /// </summary>
-    let DisabledAirplaneModeTrigger =
-        Namespaced_IRI.parse _namespace_name "DisabledAirplaneModeTrigger" |> NamespacedName
+    let DisabledAirplaneModeTrigger = _prefix "DisabledAirplaneModeTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisabledBluetoothConnectivityTrigger"></see>
     /// </summary>
     let DisabledBluetoothConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "DisabledBluetoothConnectivityTrigger" |> NamespacedName
+        _prefix "DisabledBluetoothConnectivityTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisabledGPSTrigger"></see>
     /// </summary>
-    let DisabledGPSTrigger =
-        Namespaced_IRI.parse _namespace_name "DisabledGPSTrigger" |> NamespacedName
+    let DisabledGPSTrigger = _prefix "DisabledGPSTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisabledInternetConnectivityTrigger"></see>
     /// </summary>
     let DisabledInternetConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "DisabledInternetConnectivityTrigger" |> NamespacedName
+        _prefix "DisabledInternetConnectivityTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisabledNFCConnectivityTrigger"></see>
     /// </summary>
-    let DisabledNFCConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "DisabledNFCConnectivityTrigger" |> NamespacedName
-
+    let DisabledNFCConnectivityTrigger = _prefix "DisabledNFCConnectivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectDeviceAction"></see>
     /// </summary>
-    let DisconnectDeviceAction =
-        Namespaced_IRI.parse _namespace_name "DisconnectDeviceAction" |> NamespacedName
-
+    let DisconnectDeviceAction = _prefix "DisconnectDeviceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectFromDeviceAction"></see>
     /// </summary>
-    let DisconnectFromDeviceAction =
-        Namespaced_IRI.parse _namespace_name "DisconnectFromDeviceAction" |> NamespacedName
-
+    let DisconnectFromDeviceAction = _prefix "DisconnectFromDeviceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectFromNetworkAction"></see>
     /// </summary>
-    let DisconnectFromNetworkAction =
-        Namespaced_IRI.parse _namespace_name "DisconnectFromNetworkAction" |> NamespacedName
-
+    let DisconnectFromNetworkAction = _prefix "DisconnectFromNetworkAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectedFromDeviceTrigger"></see>
     /// </summary>
-    let DisconnectedFromDeviceTrigger =
-        Namespaced_IRI.parse _namespace_name "DisconnectedFromDeviceTrigger" |> NamespacedName
-
+    let DisconnectedFromDeviceTrigger = _prefix "DisconnectedFromDeviceTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisconnectedFromNetworkTrigger"></see>
     /// </summary>
-    let DisconnectedFromNetworkTrigger =
-        Namespaced_IRI.parse _namespace_name "DisconnectedFromNetworkTrigger" |> NamespacedName
-
+    let DisconnectedFromNetworkTrigger = _prefix "DisconnectedFromNetworkTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Dishwasher"></see>
     /// </summary>
-    let Dishwasher = Namespaced_IRI.parse _namespace_name "Dishwasher" |> NamespacedName
-
+    let Dishwasher = _prefix "Dishwasher"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisplaySerivce"></see>
     /// </summary>
-    let DisplaySerivce =
-        Namespaced_IRI.parse _namespace_name "DisplaySerivce" |> NamespacedName
-
+    let DisplaySerivce = _prefix "DisplaySerivce"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DisplyService"></see>
     /// </summary>
-    let DisplyService =
-        Namespaced_IRI.parse _namespace_name "DisplyService" |> NamespacedName
-
+    let DisplyService = _prefix "DisplyService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DiswashingService"></see>
     /// </summary>
-    let DiswashingService =
-        Namespaced_IRI.parse _namespace_name "DiswashingService" |> NamespacedName
-
+    let DiswashingService = _prefix "DiswashingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Dryer"></see>
     /// </summary>
-    let Dryer = Namespaced_IRI.parse _namespace_name "Dryer" |> NamespacedName
-
+    let Dryer = _prefix "Dryer"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DryingService"></see>
     /// </summary>
-    let DryingService =
-        Namespaced_IRI.parse _namespace_name "DryingService" |> NamespacedName
-
+    let DryingService = _prefix "DryingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#DvdPlayer"></see>
     /// </summary>
-    let DvdPlayer = Namespaced_IRI.parse _namespace_name "DvdPlayer" |> NamespacedName
-
+    let DvdPlayer = _prefix "DvdPlayer"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EUDPlatform"></see>
     /// </summary>
-    let EUDPlatform =
-        Namespaced_IRI.parse _namespace_name "EUDPlatform" |> NamespacedName
-
+    let EUDPlatform = _prefix "EUDPlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EcommerceService"></see>
     /// </summary>
-    let EcommerceService =
-        Namespaced_IRI.parse _namespace_name "EcommerceService" |> NamespacedName
-
+    let EcommerceService = _prefix "EcommerceService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EcommerceWebSite"></see>
     /// </summary>
-    let EcommerceWebSite =
-        Namespaced_IRI.parse _namespace_name "EcommerceWebSite" |> NamespacedName
-
+    let EcommerceWebSite = _prefix "EcommerceWebSite"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShoppingTool"></see>
     /// </summary>
-    let ShoppingTool =
-        Namespaced_IRI.parse _namespace_name "ShoppingTool" |> NamespacedName
-
+    let ShoppingTool = _prefix "ShoppingTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EmailTool"></see>
     /// </summary>
-    let EmailTool = Namespaced_IRI.parse _namespace_name "EmailTool" |> NamespacedName
-
+    let EmailTool = _prefix "EmailTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableAirPurifierSystemAction"></see>
     /// </summary>
-    let EnableAirPurifierSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableAirPurifierSystemAction" |> NamespacedName
-
+    let EnableAirPurifierSystemAction = _prefix "EnableAirPurifierSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseAirQualityAction"></see>
     /// </summary>
-    let IncreaseAirQualityAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseAirQualityAction" |> NamespacedName
-
+    let IncreaseAirQualityAction = _prefix "IncreaseAirQualityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableAirplaneModeAction"></see>
     /// </summary>
-    let EnableAirplaneModeAction =
-        Namespaced_IRI.parse _namespace_name "EnableAirplaneModeAction" |> NamespacedName
-
+    let EnableAirplaneModeAction = _prefix "EnableAirplaneModeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableBluetoothConnectivityAction"></see>
     /// </summary>
-    let EnableBluetoothConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "EnableBluetoothConnectivityAction" |> NamespacedName
-
+    let EnableBluetoothConnectivityAction = _prefix "EnableBluetoothConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableCoolingSystemAction"></see>
     /// </summary>
-    let EnableCoolingSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableCoolingSystemAction" |> NamespacedName
-
+    let EnableCoolingSystemAction = _prefix "EnableCoolingSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableDehumidifierSystemAction"></see>
     /// </summary>
-    let EnableDehumidifierSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableDehumidifierSystemAction" |> NamespacedName
-
+    let EnableDehumidifierSystemAction = _prefix "EnableDehumidifierSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableDeviceSavingModeAction"></see>
     /// </summary>
-    let EnableDeviceSavingModeAction =
-        Namespaced_IRI.parse _namespace_name "EnableDeviceSavingModeAction" |> NamespacedName
-
+    let EnableDeviceSavingModeAction = _prefix "EnableDeviceSavingModeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImproveConsumptionConditionAction"></see>
     /// </summary>
-    let ImproveConsumptionConditionAction =
-        Namespaced_IRI.parse _namespace_name "ImproveConsumptionConditionAction" |> NamespacedName
-
+    let ImproveConsumptionConditionAction = _prefix "ImproveConsumptionConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableGPSAction"></see>
     /// </summary>
-    let EnableGPSAction =
-        Namespaced_IRI.parse _namespace_name "EnableGPSAction" |> NamespacedName
-
+    let EnableGPSAction = _prefix "EnableGPSAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableHeatingSystemAction"></see>
     /// </summary>
-    let EnableHeatingSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableHeatingSystemAction" |> NamespacedName
-
+    let EnableHeatingSystemAction = _prefix "EnableHeatingSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableHumidifierSystemAction"></see>
     /// </summary>
-    let EnableHumidifierSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableHumidifierSystemAction" |> NamespacedName
-
+    let EnableHumidifierSystemAction = _prefix "EnableHumidifierSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableInternetConnectivityAction"></see>
     /// </summary>
-    let EnableInternetConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "EnableInternetConnectivityAction" |> NamespacedName
-
+    let EnableInternetConnectivityAction = _prefix "EnableInternetConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableLightingSystemAction"></see>
     /// </summary>
-    let EnableLightingSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableLightingSystemAction" |> NamespacedName
-
+    let EnableLightingSystemAction = _prefix "EnableLightingSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseLightingAction"></see>
     /// </summary>
-    let IncreaseLightingAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseLightingAction" |> NamespacedName
-
+    let IncreaseLightingAction = _prefix "IncreaseLightingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableNFCConnctivityAction"></see>
     /// </summary>
-    let EnableNFCConnctivityAction =
-        Namespaced_IRI.parse _namespace_name "EnableNFCConnctivityAction" |> NamespacedName
-
+    let EnableNFCConnctivityAction = _prefix "EnableNFCConnctivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableNightModeAction"></see>
     /// </summary>
-    let EnableNightModeAction =
-        Namespaced_IRI.parse _namespace_name "EnableNightModeAction" |> NamespacedName
-
+    let EnableNightModeAction = _prefix "EnableNightModeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableNotificationsAction"></see>
     /// </summary>
-    let EnableNotificationsAction =
-        Namespaced_IRI.parse _namespace_name "EnableNotificationsAction" |> NamespacedName
-
+    let EnableNotificationsAction = _prefix "EnableNotificationsAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseUserConnectivityAction"></see>
     /// </summary>
-    let IncreaseUserConnectivityAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseUserConnectivityAction" |> NamespacedName
-
+    let IncreaseUserConnectivityAction = _prefix "IncreaseUserConnectivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableScreenRotationAction"></see>
     /// </summary>
-    let EnableScreenRotationAction =
-        Namespaced_IRI.parse _namespace_name "EnableScreenRotationAction" |> NamespacedName
-
+    let EnableScreenRotationAction = _prefix "EnableScreenRotationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImproveUsabilityConditionAction"></see>
     /// </summary>
-    let ImproveUsabilityConditionAction =
-        Namespaced_IRI.parse _namespace_name "ImproveUsabilityConditionAction" |> NamespacedName
-
+    let ImproveUsabilityConditionAction = _prefix "ImproveUsabilityConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableSecuritySystemAction"></see>
     /// </summary>
-    let EnableSecuritySystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableSecuritySystemAction" |> NamespacedName
-
+    let EnableSecuritySystemAction = _prefix "EnableSecuritySystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableSpeakerphoneAction"></see>
     /// </summary>
-    let EnableSpeakerphoneAction =
-        Namespaced_IRI.parse _namespace_name "EnableSpeakerphoneAction" |> NamespacedName
-
+    let EnableSpeakerphoneAction = _prefix "EnableSpeakerphoneAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnableWateringSystemAction"></see>
     /// </summary>
-    let EnableWateringSystemAction =
-        Namespaced_IRI.parse _namespace_name "EnableWateringSystemAction" |> NamespacedName
-
+    let EnableWateringSystemAction = _prefix "EnableWateringSystemAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnabledAirplaneModeTrigger"></see>
     /// </summary>
-    let EnabledAirplaneModeTrigger =
-        Namespaced_IRI.parse _namespace_name "EnabledAirplaneModeTrigger" |> NamespacedName
+    let EnabledAirplaneModeTrigger = _prefix "EnabledAirplaneModeTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnabledBluetoothConnectivityTrigger"></see>
     /// </summary>
     let EnabledBluetoothConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "EnabledBluetoothConnectivityTrigger" |> NamespacedName
+        _prefix "EnabledBluetoothConnectivityTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnabledGPSTrigger"></see>
     /// </summary>
-    let EnabledGPSTrigger =
-        Namespaced_IRI.parse _namespace_name "EnabledGPSTrigger" |> NamespacedName
+    let EnabledGPSTrigger = _prefix "EnabledGPSTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnabledInternetConnectivityTrigger"></see>
     /// </summary>
     let EnabledInternetConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "EnabledInternetConnectivityTrigger" |> NamespacedName
+        _prefix "EnabledInternetConnectivityTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnabledNFCConnectivityTrigger"></see>
     /// </summary>
-    let EnabledNFCConnectivityTrigger =
-        Namespaced_IRI.parse _namespace_name "EnabledNFCConnectivityTrigger" |> NamespacedName
-
+    let EnabledNFCConnectivityTrigger = _prefix "EnabledNFCConnectivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EndCallAction"></see>
     /// </summary>
-    let EndCallAction =
-        Namespaced_IRI.parse _namespace_name "EndCallAction" |> NamespacedName
-
+    let EndCallAction = _prefix "EndCallAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MovingTrigger"></see>
     /// </summary>
-    let MovingTrigger =
-        Namespaced_IRI.parse _namespace_name "MovingTrigger" |> NamespacedName
-
+    let MovingTrigger = _prefix "MovingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnvironmentTrigger"></see>
     /// </summary>
-    let EnvironmentTrigger =
-        Namespaced_IRI.parse _namespace_name "EnvironmentTrigger" |> NamespacedName
+    let EnvironmentTrigger = _prefix "EnvironmentTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EnvironmentConditionIncreasedTrigger"></see>
     /// </summary>
     let EnvironmentConditionIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "EnvironmentConditionIncreasedTrigger" |> NamespacedName
+        _prefix "EnvironmentConditionIncreasedTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EveryDayTrigger"></see>
     /// </summary>
-    let EveryDayTrigger =
-        Namespaced_IRI.parse _namespace_name "EveryDayTrigger" |> NamespacedName
-
+    let EveryDayTrigger = _prefix "EveryDayTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EveryTimeTrigger"></see>
     /// </summary>
-    let EveryTimeTrigger =
-        Namespaced_IRI.parse _namespace_name "EveryTimeTrigger" |> NamespacedName
-
+    let EveryTimeTrigger = _prefix "EveryTimeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EveryHourTrigger"></see>
     /// </summary>
-    let EveryHourTrigger =
-        Namespaced_IRI.parse _namespace_name "EveryHourTrigger" |> NamespacedName
-
+    let EveryHourTrigger = _prefix "EveryHourTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EveryMonthTrigger"></see>
     /// </summary>
-    let EveryMonthTrigger =
-        Namespaced_IRI.parse _namespace_name "EveryMonthTrigger" |> NamespacedName
-
+    let EveryMonthTrigger = _prefix "EveryMonthTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TimeTrigger"></see>
     /// </summary>
-    let TimeTrigger =
-        Namespaced_IRI.parse _namespace_name "TimeTrigger" |> NamespacedName
-
+    let TimeTrigger = _prefix "TimeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EveryWeekTrigger"></see>
     /// </summary>
-    let EveryWeekTrigger =
-        Namespaced_IRI.parse _namespace_name "EveryWeekTrigger" |> NamespacedName
-
+    let EveryWeekTrigger = _prefix "EveryWeekTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#EveryYearTrigger"></see>
     /// </summary>
-    let EveryYearTrigger =
-        Namespaced_IRI.parse _namespace_name "EveryYearTrigger" |> NamespacedName
-
+    let EveryYearTrigger = _prefix "EveryYearTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ExitTrigger"></see>
     /// </summary>
-    let ExitTrigger =
-        Namespaced_IRI.parse _namespace_name "ExitTrigger" |> NamespacedName
-
+    let ExitTrigger = _prefix "ExitTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#FailureDetectionService"></see>
     /// </summary>
-    let FailureDetectionService =
-        Namespaced_IRI.parse _namespace_name "FailureDetectionService" |> NamespacedName
-
+    let FailureDetectionService = _prefix "FailureDetectionService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Family"></see>
     /// </summary>
-    let Family = Namespaced_IRI.parse _namespace_name "Family" |> NamespacedName
+    let Family = _prefix "Family"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Fax"></see>
     /// </summary>
-    let Fax = Namespaced_IRI.parse _namespace_name "Fax" |> NamespacedName
-
+    let Fax = _prefix "Fax"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#FileService"></see>
     /// </summary>
-    let FileService =
-        Namespaced_IRI.parse _namespace_name "FileService" |> NamespacedName
-
+    let FileService = _prefix "FileService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#FocusTrackingService"></see>
     /// </summary>
-    let FocusTrackingService =
-        Namespaced_IRI.parse _namespace_name "FocusTrackingService" |> NamespacedName
-
+    let FocusTrackingService = _prefix "FocusTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#FrameService"></see>
     /// </summary>
-    let FrameService =
-        Namespaced_IRI.parse _namespace_name "FrameService" |> NamespacedName
-
+    let FrameService = _prefix "FrameService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Fridge"></see>
     /// </summary>
-    let Fridge = Namespaced_IRI.parse _namespace_name "Fridge" |> NamespacedName
+    let Fridge = _prefix "Fridge"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Friend"></see>
     /// </summary>
-    let Friend = Namespaced_IRI.parse _namespace_name "Friend" |> NamespacedName
-
+    let Friend = _prefix "Friend"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GPSEnterAreaTrigger"></see>
     /// </summary>
-    let GPSEnterAreaTrigger =
-        Namespaced_IRI.parse _namespace_name "GPSEnterAreaTrigger" |> NamespacedName
-
+    let GPSEnterAreaTrigger = _prefix "GPSEnterAreaTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GPSExitAreaTrigger"></see>
     /// </summary>
-    let GPSExitAreaTrigger =
-        Namespaced_IRI.parse _namespace_name "GPSExitAreaTrigger" |> NamespacedName
-
+    let GPSExitAreaTrigger = _prefix "GPSExitAreaTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GPSService"></see>
     /// </summary>
-    let GPSService = Namespaced_IRI.parse _namespace_name "GPSService" |> NamespacedName
-
+    let GPSService = _prefix "GPSService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PostioningService"></see>
     /// </summary>
-    let PostioningService =
-        Namespaced_IRI.parse _namespace_name "PostioningService" |> NamespacedName
-
+    let PostioningService = _prefix "PostioningService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GameService"></see>
     /// </summary>
-    let GameService =
-        Namespaced_IRI.parse _namespace_name "GameService" |> NamespacedName
-
+    let GameService = _prefix "GameService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MediaService"></see>
     /// </summary>
-    let MediaService =
-        Namespaced_IRI.parse _namespace_name "MediaService" |> NamespacedName
-
+    let MediaService = _prefix "MediaService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GeographicalArea"></see>
     /// </summary>
-    let GeographicalArea =
-        Namespaced_IRI.parse _namespace_name "GeographicalArea" |> NamespacedName
-
+    let GeographicalArea = _prefix "GeographicalArea"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#GroceryShoppingService"></see>
     /// </summary>
-    let GroceryShoppingService =
-        Namespaced_IRI.parse _namespace_name "GroceryShoppingService" |> NamespacedName
-
+    let GroceryShoppingService = _prefix "GroceryShoppingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HealthInformationService"></see>
     /// </summary>
-    let HealthInformationService =
-        Namespaced_IRI.parse _namespace_name "HealthInformationService" |> NamespacedName
-
+    let HealthInformationService = _prefix "HealthInformationService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HealthyActivityTrigger"></see>
     /// </summary>
-    let HealthyActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "HealthyActivityTrigger" |> NamespacedName
-
+    let HealthyActivityTrigger = _prefix "HealthyActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedHealthConditionTrigger"></see>
     /// </summary>
-    let IncreasedHealthConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedHealthConditionTrigger" |> NamespacedName
-
+    let IncreasedHealthConditionTrigger = _prefix "IncreasedHealthConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HealthyGoalNotReachedTrigger"></see>
     /// </summary>
-    let HealthyGoalNotReachedTrigger =
-        Namespaced_IRI.parse _namespace_name "HealthyGoalNotReachedTrigger" |> NamespacedName
-
+    let HealthyGoalNotReachedTrigger = _prefix "HealthyGoalNotReachedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HealthyGoalReachedTrigger"></see>
     /// </summary>
-    let HealthyGoalReachedTrigger =
-        Namespaced_IRI.parse _namespace_name "HealthyGoalReachedTrigger" |> NamespacedName
-
+    let HealthyGoalReachedTrigger = _prefix "HealthyGoalReachedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Heater"></see>
     /// </summary>
-    let Heater = Namespaced_IRI.parse _namespace_name "Heater" |> NamespacedName
-
+    let Heater = _prefix "Heater"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HeatingService"></see>
     /// </summary>
-    let HeatingService =
-        Namespaced_IRI.parse _namespace_name "HeatingService" |> NamespacedName
-
+    let HeatingService = _prefix "HeatingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HeatingSystemDisabledTrigger"></see>
     /// </summary>
-    let HeatingSystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "HeatingSystemDisabledTrigger" |> NamespacedName
-
+    let HeatingSystemDisabledTrigger = _prefix "HeatingSystemDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HeatingSystemEnabledTrigger"></see>
     /// </summary>
-    let HeatingSystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "HeatingSystemEnabledTrigger" |> NamespacedName
-
+    let HeatingSystemEnabledTrigger = _prefix "HeatingSystemEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HiFi"></see>
     /// </summary>
-    let HiFi = Namespaced_IRI.parse _namespace_name "HiFi" |> NamespacedName
+    let HiFi = _prefix "HiFi"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HighSensedDeviceConsumptionTrigger"></see>
     /// </summary>
     let HighSensedDeviceConsumptionTrigger =
-        Namespaced_IRI.parse _namespace_name "HighSensedDeviceConsumptionTrigger" |> NamespacedName
+        _prefix "HighSensedDeviceConsumptionTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Hub"></see>
     /// </summary>
-    let Hub = Namespaced_IRI.parse _namespace_name "Hub" |> NamespacedName
+    let Hub = _prefix "Hub"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Humidifier"></see>
     /// </summary>
-    let Humidifier = Namespaced_IRI.parse _namespace_name "Humidifier" |> NamespacedName
-
+    let Humidifier = _prefix "Humidifier"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HumidifierService"></see>
     /// </summary>
-    let HumidifierService =
-        Namespaced_IRI.parse _namespace_name "HumidifierService" |> NamespacedName
-
+    let HumidifierService = _prefix "HumidifierService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#HumiditySetToTrigger"></see>
     /// </summary>
-    let HumiditySetToTrigger =
-        Namespaced_IRI.parse _namespace_name "HumiditySetToTrigger" |> NamespacedName
-
+    let HumiditySetToTrigger = _prefix "HumiditySetToTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImproveDeviceConditionAction"></see>
     /// </summary>
-    let ImproveDeviceConditionAction =
-        Namespaced_IRI.parse _namespace_name "ImproveDeviceConditionAction" |> NamespacedName
-
+    let ImproveDeviceConditionAction = _prefix "ImproveDeviceConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImprovedDeviceConditionTrigger"></see>
     /// </summary>
-    let ImprovedDeviceConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "ImprovedDeviceConditionTrigger" |> NamespacedName
-
+    let ImprovedDeviceConditionTrigger = _prefix "ImprovedDeviceConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImprovedHealthyParameterTrigger"></see>
     /// </summary>
-    let ImprovedHealthyParameterTrigger =
-        Namespaced_IRI.parse _namespace_name "ImprovedHealthyParameterTrigger" |> NamespacedName
-
+    let ImprovedHealthyParameterTrigger = _prefix "ImprovedHealthyParameterTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ImprovedUsabilityConditionTrigger"></see>
     /// </summary>
-    let ImprovedUsabilityConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "ImprovedUsabilityConditionTrigger" |> NamespacedName
+    let ImprovedUsabilityConditionTrigger = _prefix "ImprovedUsabilityConditionTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseEnvironmentConditionAction"></see>
     /// </summary>
     let IncreaseEnvironmentConditionAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseEnvironmentConditionAction" |> NamespacedName
+        _prefix "IncreaseEnvironmentConditionAction"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreaseVolumeAction"></see>
     /// </summary>
-    let IncreaseVolumeAction =
-        Namespaced_IRI.parse _namespace_name "IncreaseVolumeAction" |> NamespacedName
-
+    let IncreaseVolumeAction = _prefix "IncreaseVolumeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedAirPressureTrigger"></see>
     /// </summary>
-    let IncreasedAirPressureTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedAirPressureTrigger" |> NamespacedName
-
+    let IncreasedAirPressureTrigger = _prefix "IncreasedAirPressureTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedLightingTrigger"></see>
     /// </summary>
-    let IncreasedLightingTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedLightingTrigger" |> NamespacedName
-
+    let IncreasedLightingTrigger = _prefix "IncreasedLightingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedNoiseLevelTrigger"></see>
     /// </summary>
-    let IncreasedNoiseLevelTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedNoiseLevelTrigger" |> NamespacedName
-
+    let IncreasedNoiseLevelTrigger = _prefix "IncreasedNoiseLevelTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedSecurityTrigger"></see>
     /// </summary>
-    let IncreasedSecurityTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedSecurityTrigger" |> NamespacedName
-
+    let IncreasedSecurityTrigger = _prefix "IncreasedSecurityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IncreasedWeatherConditionTrigger"></see>
     /// </summary>
-    let IncreasedWeatherConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "IncreasedWeatherConditionTrigger" |> NamespacedName
-
+    let IncreasedWeatherConditionTrigger = _prefix "IncreasedWeatherConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InformationWebSite"></see>
     /// </summary>
-    let InformationWebSite =
-        Namespaced_IRI.parse _namespace_name "InformationWebSite" |> NamespacedName
-
+    let InformationWebSite = _prefix "InformationWebSite"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InstantiatedAction"></see>
     /// </summary>
-    let InstantiatedAction =
-        Namespaced_IRI.parse _namespace_name "InstantiatedAction" |> NamespacedName
-
+    let InstantiatedAction = _prefix "InstantiatedAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#nominalAction"></see>
     /// </summary>
-    let nominalAction =
-        Namespaced_IRI.parse _namespace_name "nominalAction" |> NamespacedName
-
+    let nominalAction = _prefix "nominalAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RuleInstantiatedAxiom"></see>
     /// </summary>
-    let RuleInstantiatedAxiom =
-        Namespaced_IRI.parse _namespace_name "RuleInstantiatedAxiom" |> NamespacedName
-
+    let RuleInstantiatedAxiom = _prefix "RuleInstantiatedAxiom"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InstantiatedDetail"></see>
     /// </summary>
-    let InstantiatedDetail =
-        Namespaced_IRI.parse _namespace_name "InstantiatedDetail" |> NamespacedName
-
+    let InstantiatedDetail = _prefix "InstantiatedDetail"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InstantiatedTrigger"></see>
     /// </summary>
-    let InstantiatedTrigger =
-        Namespaced_IRI.parse _namespace_name "InstantiatedTrigger" |> NamespacedName
-
+    let InstantiatedTrigger = _prefix "InstantiatedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#nominalTrigger"></see>
     /// </summary>
-    let nominalTrigger =
-        Namespaced_IRI.parse _namespace_name "nominalTrigger" |> NamespacedName
-
+    let nominalTrigger = _prefix "nominalTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#InteractionService"></see>
     /// </summary>
-    let InteractionService =
-        Namespaced_IRI.parse _namespace_name "InteractionService" |> NamespacedName
-
+    let InteractionService = _prefix "InteractionService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#IoTEntity"></see>
     /// </summary>
-    let IoTEntity = Namespaced_IRI.parse _namespace_name "IoTEntity" |> NamespacedName
+    let IoTEntity = _prefix "IoTEntity"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasService"></see>
     /// </summary>
-    let hasService = Namespaced_IRI.parse _namespace_name "hasService" |> NamespacedName
+    let hasService = _prefix "hasService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Lamp"></see>
     /// </summary>
-    let Lamp = Namespaced_IRI.parse _namespace_name "Lamp" |> NamespacedName
+    let Lamp = _prefix "Lamp"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Laptop"></see>
     /// </summary>
-    let Laptop = Namespaced_IRI.parse _namespace_name "Laptop" |> NamespacedName
+    let Laptop = _prefix "Laptop"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#UserDevice"></see>
     /// </summary>
-    let UserDevice = Namespaced_IRI.parse _namespace_name "UserDevice" |> NamespacedName
-
+    let UserDevice = _prefix "UserDevice"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#LeakDetectionService"></see>
     /// </summary>
-    let LeakDetectionService =
-        Namespaced_IRI.parse _namespace_name "LeakDetectionService" |> NamespacedName
-
+    let LeakDetectionService = _prefix "LeakDetectionService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#LightingService"></see>
     /// </summary>
-    let LightingService =
-        Namespaced_IRI.parse _namespace_name "LightingService" |> NamespacedName
-
+    let LightingService = _prefix "LightingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#LightingSystemDisabledTrigger"></see>
     /// </summary>
-    let LightingSystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "LightingSystemDisabledTrigger" |> NamespacedName
-
+    let LightingSystemDisabledTrigger = _prefix "LightingSystemDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#LightingSystemEnabledTrigger"></see>
     /// </summary>
-    let LightingSystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "LightingSystemEnabledTrigger" |> NamespacedName
-
+    let LightingSystemEnabledTrigger = _prefix "LightingSystemEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#LikeService"></see>
     /// </summary>
-    let LikeService =
-        Namespaced_IRI.parse _namespace_name "LikeService" |> NamespacedName
-
+    let LikeService = _prefix "LikeService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#LowPowerTrigger"></see>
     /// </summary>
-    let LowPowerTrigger =
-        Namespaced_IRI.parse _namespace_name "LowPowerTrigger" |> NamespacedName
-
+    let LowPowerTrigger = _prefix "LowPowerTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MediaInformationService"></see>
     /// </summary>
-    let MediaInformationService =
-        Namespaced_IRI.parse _namespace_name "MediaInformationService" |> NamespacedName
-
+    let MediaInformationService = _prefix "MediaInformationService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MediaTool"></see>
     /// </summary>
-    let MediaTool = Namespaced_IRI.parse _namespace_name "MediaTool" |> NamespacedName
-
+    let MediaTool = _prefix "MediaTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MessageService"></see>
     /// </summary>
-    let MessageService =
-        Namespaced_IRI.parse _namespace_name "MessageService" |> NamespacedName
-
+    let MessageService = _prefix "MessageService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MobileDevice"></see>
     /// </summary>
-    let MobileDevice =
-        Namespaced_IRI.parse _namespace_name "MobileDevice" |> NamespacedName
-
+    let MobileDevice = _prefix "MobileDevice"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MoveAppAction"></see>
     /// </summary>
-    let MoveAppAction =
-        Namespaced_IRI.parse _namespace_name "MoveAppAction" |> NamespacedName
-
+    let MoveAppAction = _prefix "MoveAppAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoreAction"></see>
     /// </summary>
-    let StoreAction =
-        Namespaced_IRI.parse _namespace_name "StoreAction" |> NamespacedName
-
+    let StoreAction = _prefix "StoreAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MoveOnVehicleTrigger"></see>
     /// </summary>
-    let MoveOnVehicleTrigger =
-        Namespaced_IRI.parse _namespace_name "MoveOnVehicleTrigger" |> NamespacedName
-
+    let MoveOnVehicleTrigger = _prefix "MoveOnVehicleTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PlacesTrigger"></see>
     /// </summary>
-    let PlacesTrigger =
-        Namespaced_IRI.parse _namespace_name "PlacesTrigger" |> NamespacedName
-
+    let PlacesTrigger = _prefix "PlacesTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MusicPlatform"></see>
     /// </summary>
-    let MusicPlatform =
-        Namespaced_IRI.parse _namespace_name "MusicPlatform" |> NamespacedName
-
+    let MusicPlatform = _prefix "MusicPlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MusicService"></see>
     /// </summary>
-    let MusicService =
-        Namespaced_IRI.parse _namespace_name "MusicService" |> NamespacedName
-
+    let MusicService = _prefix "MusicService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#MuteCallAction"></see>
     /// </summary>
-    let MuteCallAction =
-        Namespaced_IRI.parse _namespace_name "MuteCallAction" |> NamespacedName
-
+    let MuteCallAction = _prefix "MuteCallAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NFCService"></see>
     /// </summary>
-    let NFCService = Namespaced_IRI.parse _namespace_name "NFCService" |> NamespacedName
-
+    let NFCService = _prefix "NFCService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NewsService"></see>
     /// </summary>
-    let NewsService =
-        Namespaced_IRI.parse _namespace_name "NewsService" |> NamespacedName
-
+    let NewsService = _prefix "NewsService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NewsWebSite"></see>
     /// </summary>
-    let NewsWebSite =
-        Namespaced_IRI.parse _namespace_name "NewsWebSite" |> NamespacedName
-
+    let NewsWebSite = _prefix "NewsWebSite"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NightModeDisabledTrigger"></see>
     /// </summary>
-    let NightModeDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "NightModeDisabledTrigger" |> NamespacedName
-
+    let NightModeDisabledTrigger = _prefix "NightModeDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NightModeEnabledTrigger"></see>
     /// </summary>
-    let NightModeEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "NightModeEnabledTrigger" |> NamespacedName
-
+    let NightModeEnabledTrigger = _prefix "NightModeEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NoiseService"></see>
     /// </summary>
-    let NoiseService =
-        Namespaced_IRI.parse _namespace_name "NoiseService" |> NamespacedName
-
+    let NoiseService = _prefix "NoiseService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NoteTool"></see>
     /// </summary>
-    let NoteTool = Namespaced_IRI.parse _namespace_name "NoteTool" |> NamespacedName
-
+    let NoteTool = _prefix "NoteTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NotificationProfileSetToTrigger"></see>
     /// </summary>
-    let NotificationProfileSetToTrigger =
-        Namespaced_IRI.parse _namespace_name "NotificationProfileSetToTrigger" |> NamespacedName
-
+    let NotificationProfileSetToTrigger = _prefix "NotificationProfileSetToTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NotificationService"></see>
     /// </summary>
-    let NotificationService =
-        Namespaced_IRI.parse _namespace_name "NotificationService" |> NamespacedName
-
+    let NotificationService = _prefix "NotificationService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NotificationTool"></see>
     /// </summary>
-    let NotificationTool =
-        Namespaced_IRI.parse _namespace_name "NotificationTool" |> NamespacedName
-
+    let NotificationTool = _prefix "NotificationTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NotificationsDisabledTrigger"></see>
     /// </summary>
-    let NotificationsDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "NotificationsDisabledTrigger" |> NamespacedName
-
+    let NotificationsDisabledTrigger = _prefix "NotificationsDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#NotificationsEnabledTrigger"></see>
     /// </summary>
-    let NotificationsEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "NotificationsEnabledTrigger" |> NamespacedName
-
+    let NotificationsEnabledTrigger = _prefix "NotificationsEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#OpenWindowFrameAction"></see>
     /// </summary>
-    let OpenWindowFrameAction =
-        Namespaced_IRI.parse _namespace_name "OpenWindowFrameAction" |> NamespacedName
-
+    let OpenWindowFrameAction = _prefix "OpenWindowFrameAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Oven"></see>
     /// </summary>
-    let Oven = Namespaced_IRI.parse _namespace_name "Oven" |> NamespacedName
-
+    let Oven = _prefix "Oven"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#OvenService"></see>
     /// </summary>
-    let OvenService =
-        Namespaced_IRI.parse _namespace_name "OvenService" |> NamespacedName
-
+    let OvenService = _prefix "OvenService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PC"></see>
     /// </summary>
-    let PC = Namespaced_IRI.parse _namespace_name "PC" |> NamespacedName
+    let PC = _prefix "PC"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Phone"></see>
     /// </summary>
-    let Phone = Namespaced_IRI.parse _namespace_name "Phone" |> NamespacedName
-
+    let Phone = _prefix "Phone"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PhoneCallMutedTrigger"></see>
     /// </summary>
-    let PhoneCallMutedTrigger =
-        Namespaced_IRI.parse _namespace_name "PhoneCallMutedTrigger" |> NamespacedName
-
+    let PhoneCallMutedTrigger = _prefix "PhoneCallMutedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PhoneCallRejectedTrigger"></see>
     /// </summary>
-    let PhoneCallRejectedTrigger =
-        Namespaced_IRI.parse _namespace_name "PhoneCallRejectedTrigger" |> NamespacedName
-
+    let PhoneCallRejectedTrigger = _prefix "PhoneCallRejectedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PhotoPlatform"></see>
     /// </summary>
-    let PhotoPlatform =
-        Namespaced_IRI.parse _namespace_name "PhotoPlatform" |> NamespacedName
-
+    let PhotoPlatform = _prefix "PhotoPlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PhotoRecordingService"></see>
     /// </summary>
-    let PhotoRecordingService =
-        Namespaced_IRI.parse _namespace_name "PhotoRecordingService" |> NamespacedName
-
+    let PhotoRecordingService = _prefix "PhotoRecordingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PositionRegistrationService"></see>
     /// </summary>
-    let PositionRegistrationService =
-        Namespaced_IRI.parse _namespace_name "PositionRegistrationService" |> NamespacedName
-
+    let PositionRegistrationService = _prefix "PositionRegistrationService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PositionRegistrationTrigger"></see>
     /// </summary>
-    let PositionRegistrationTrigger =
-        Namespaced_IRI.parse _namespace_name "PositionRegistrationTrigger" |> NamespacedName
-
+    let PositionRegistrationTrigger = _prefix "PositionRegistrationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PostService"></see>
     /// </summary>
-    let PostService =
-        Namespaced_IRI.parse _namespace_name "PostService" |> NamespacedName
-
+    let PostService = _prefix "PostService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PowerService"></see>
     /// </summary>
-    let PowerService =
-        Namespaced_IRI.parse _namespace_name "PowerService" |> NamespacedName
-
+    let PowerService = _prefix "PowerService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#PrintService"></see>
     /// </summary>
-    let PrintService =
-        Namespaced_IRI.parse _namespace_name "PrintService" |> NamespacedName
-
+    let PrintService = _prefix "PrintService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Printer"></see>
     /// </summary>
-    let Printer = Namespaced_IRI.parse _namespace_name "Printer" |> NamespacedName
-
+    let Printer = _prefix "Printer"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ProfileUpdateService"></see>
     /// </summary>
-    let ProfileUpdateService =
-        Namespaced_IRI.parse _namespace_name "ProfileUpdateService" |> NamespacedName
-
+    let ProfileUpdateService = _prefix "ProfileUpdateService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#QuestionService"></see>
     /// </summary>
-    let QuestionService =
-        Namespaced_IRI.parse _namespace_name "QuestionService" |> NamespacedName
-
+    let QuestionService = _prefix "QuestionService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Radio"></see>
     /// </summary>
-    let Radio = Namespaced_IRI.parse _namespace_name "Radio" |> NamespacedName
+    let Radio = _prefix "Radio"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RainfallMeasurementAvailableTrigger"></see>
     /// </summary>
     let RainfallMeasurementAvailableTrigger =
-        Namespaced_IRI.parse _namespace_name "RainfallMeasurementAvailableTrigger" |> NamespacedName
+        _prefix "RainfallMeasurementAvailableTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedAnswerTrigger"></see>
     /// </summary>
-    let ReceivedAnswerTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedAnswerTrigger" |> NamespacedName
-
+    let ReceivedAnswerTrigger = _prefix "ReceivedAnswerTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedPrivateInformationTrigger"></see>
     /// </summary>
-    let ReceivedPrivateInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedPrivateInformationTrigger" |> NamespacedName
-
+    let ReceivedPrivateInformationTrigger = _prefix "ReceivedPrivateInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedAppNotificationTrigger"></see>
     /// </summary>
-    let ReceivedAppNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedAppNotificationTrigger" |> NamespacedName
-
+    let ReceivedAppNotificationTrigger = _prefix "ReceivedAppNotificationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedNotificationTrigger"></see>
     /// </summary>
-    let ReceivedNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedNotificationTrigger" |> NamespacedName
-
+    let ReceivedNotificationTrigger = _prefix "ReceivedNotificationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedAttachmentTrigger"></see>
     /// </summary>
-    let ReceivedAttachmentTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedAttachmentTrigger" |> NamespacedName
-
+    let ReceivedAttachmentTrigger = _prefix "ReceivedAttachmentTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedBreakingNewsTrigger"></see>
     /// </summary>
-    let ReceivedBreakingNewsTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedBreakingNewsTrigger" |> NamespacedName
-
+    let ReceivedBreakingNewsTrigger = _prefix "ReceivedBreakingNewsTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedNewsTrigger"></see>
     /// </summary>
-    let ReceivedNewsTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedNewsTrigger" |> NamespacedName
-
+    let ReceivedNewsTrigger = _prefix "ReceivedNewsTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedCommentTrigger"></see>
     /// </summary>
-    let ReceivedCommentTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedCommentTrigger" |> NamespacedName
+    let ReceivedCommentTrigger = _prefix "ReceivedCommentTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedContactNotificationTrigger"></see>
     /// </summary>
     let ReceivedContactNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedContactNotificationTrigger" |> NamespacedName
+        _prefix "ReceivedContactNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedDocumentInfoNotificationTrigger"></see>
     /// </summary>
     let ReceivedDocumentInfoNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedDocumentInfoNotificationTrigger" |> NamespacedName
+        _prefix "ReceivedDocumentInfoNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedFromDeviceTrigger"></see>
     /// </summary>
-    let ReceivedFromDeviceTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedFromDeviceTrigger" |> NamespacedName
-
+    let ReceivedFromDeviceTrigger = _prefix "ReceivedFromDeviceTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedTrigger"></see>
     /// </summary>
-    let ReceivedTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedTrigger" |> NamespacedName
-
+    let ReceivedTrigger = _prefix "ReceivedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedFromDiyTrigger"></see>
     /// </summary>
-    let ReceivedFromDiyTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedFromDiyTrigger" |> NamespacedName
-
+    let ReceivedFromDiyTrigger = _prefix "ReceivedFromDiyTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedIncomingCallTrigger"></see>
     /// </summary>
-    let ReceivedIncomingCallTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedIncomingCallTrigger" |> NamespacedName
-
+    let ReceivedIncomingCallTrigger = _prefix "ReceivedIncomingCallTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedLikeTrigger"></see>
     /// </summary>
-    let ReceivedLikeTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedLikeTrigger" |> NamespacedName
-
+    let ReceivedLikeTrigger = _prefix "ReceivedLikeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedMessageTrigger"></see>
     /// </summary>
-    let ReceivedMessageTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedMessageTrigger" |> NamespacedName
+    let ReceivedMessageTrigger = _prefix "ReceivedMessageTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedMissedCallNotificationTrigger"></see>
     /// </summary>
     let ReceivedMissedCallNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedMissedCallNotificationTrigger" |> NamespacedName
+        _prefix "ReceivedMissedCallNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedPaymentNotificationTrigger"></see>
     /// </summary>
     let ReceivedPaymentNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedPaymentNotificationTrigger" |> NamespacedName
+        _prefix "ReceivedPaymentNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedPostTrigger"></see>
     /// </summary>
-    let ReceivedPostTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedPostTrigger" |> NamespacedName
+    let ReceivedPostTrigger = _prefix "ReceivedPostTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedRecommendationNotificationTrigger"></see>
     /// </summary>
     let ReceivedRecommendationNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedRecommendationNotificationTrigger" |> NamespacedName
+        _prefix "ReceivedRecommendationNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedRemindNotificationTrigger"></see>
     /// </summary>
-    let ReceivedRemindNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedRemindNotificationTrigger" |> NamespacedName
+    let ReceivedRemindNotificationTrigger = _prefix "ReceivedRemindNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedShippingNotificationTrigger"></see>
     /// </summary>
     let ReceivedShippingNotificationTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedShippingNotificationTrigger" |> NamespacedName
+        _prefix "ReceivedShippingNotificationTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedTagTrigger"></see>
     /// </summary>
-    let ReceivedTagTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedTagTrigger" |> NamespacedName
-
+    let ReceivedTagTrigger = _prefix "ReceivedTagTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReceivedUnlikeTrigger"></see>
     /// </summary>
-    let ReceivedUnlikeTrigger =
-        Namespaced_IRI.parse _namespace_name "ReceivedUnlikeTrigger" |> NamespacedName
-
+    let ReceivedUnlikeTrigger = _prefix "ReceivedUnlikeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RejectCallAction"></see>
     /// </summary>
-    let RejectCallAction =
-        Namespaced_IRI.parse _namespace_name "RejectCallAction" |> NamespacedName
-
+    let RejectCallAction = _prefix "RejectCallAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ReminderService"></see>
     /// </summary>
-    let ReminderService =
-        Namespaced_IRI.parse _namespace_name "ReminderService" |> NamespacedName
-
+    let ReminderService = _prefix "ReminderService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Room"></see>
     /// </summary>
-    let Room = Namespaced_IRI.parse _namespace_name "Room" |> NamespacedName
+    let Room = _prefix "Room"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Rule"></see>
     /// </summary>
-    let Rule = Namespaced_IRI.parse _namespace_name "Rule" |> NamespacedName
+    let Rule = _prefix "Rule"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasTrigger"></see>
     /// </summary>
-    let hasTrigger = Namespaced_IRI.parse _namespace_name "hasTrigger" |> NamespacedName
+    let hasTrigger = _prefix "hasTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasAction"></see>
     /// </summary>
-    let hasAction = Namespaced_IRI.parse _namespace_name "hasAction" |> NamespacedName
+    let hasAction = _prefix "hasAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RuleAxiom"></see>
     /// </summary>
-    let RuleAxiom = Namespaced_IRI.parse _namespace_name "RuleAxiom" |> NamespacedName
-
+    let RuleAxiom = _prefix "RuleAxiom"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#RunTrackingService"></see>
     /// </summary>
-    let RunTrackingService =
-        Namespaced_IRI.parse _namespace_name "RunTrackingService" |> NamespacedName
-
+    let RunTrackingService = _prefix "RunTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SMSTool"></see>
     /// </summary>
-    let SMSTool = Namespaced_IRI.parse _namespace_name "SMSTool" |> NamespacedName
-
+    let SMSTool = _prefix "SMSTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveContactAction"></see>
     /// </summary>
-    let SaveContactAction =
-        Namespaced_IRI.parse _namespace_name "SaveContactAction" |> NamespacedName
-
+    let SaveContactAction = _prefix "SaveContactAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveFileAction"></see>
     /// </summary>
-    let SaveFileAction =
-        Namespaced_IRI.parse _namespace_name "SaveFileAction" |> NamespacedName
-
+    let SaveFileAction = _prefix "SaveFileAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveHealthInformationAction"></see>
     /// </summary>
-    let SaveHealthInformationAction =
-        Namespaced_IRI.parse _namespace_name "SaveHealthInformationAction" |> NamespacedName
-
+    let SaveHealthInformationAction = _prefix "SaveHealthInformationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveMediaInformationAction"></see>
     /// </summary>
-    let SaveMediaInformationAction =
-        Namespaced_IRI.parse _namespace_name "SaveMediaInformationAction" |> NamespacedName
-
+    let SaveMediaInformationAction = _prefix "SaveMediaInformationAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SaveWebBookmarkAction"></see>
     /// </summary>
-    let SaveWebBookmarkAction =
-        Namespaced_IRI.parse _namespace_name "SaveWebBookmarkAction" |> NamespacedName
-
+    let SaveWebBookmarkAction = _prefix "SaveWebBookmarkAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ScanBluetoothTrigger"></see>
     /// </summary>
-    let ScanBluetoothTrigger =
-        Namespaced_IRI.parse _namespace_name "ScanBluetoothTrigger" |> NamespacedName
-
+    let ScanBluetoothTrigger = _prefix "ScanBluetoothTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ScanWifiTrigger"></see>
     /// </summary>
-    let ScanWifiTrigger =
-        Namespaced_IRI.parse _namespace_name "ScanWifiTrigger" |> NamespacedName
-
+    let ScanWifiTrigger = _prefix "ScanWifiTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ScreenRotationDisabledTrigger"></see>
     /// </summary>
-    let ScreenRotationDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "ScreenRotationDisabledTrigger" |> NamespacedName
-
+    let ScreenRotationDisabledTrigger = _prefix "ScreenRotationDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseUsabilityConditionTrigger"></see>
     /// </summary>
-    let WorseUsabilityConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "WorseUsabilityConditionTrigger" |> NamespacedName
-
+    let WorseUsabilityConditionTrigger = _prefix "WorseUsabilityConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ScreenRotationEnabledTrigger"></see>
     /// </summary>
-    let ScreenRotationEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "ScreenRotationEnabledTrigger" |> NamespacedName
-
+    let ScreenRotationEnabledTrigger = _prefix "ScreenRotationEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SecurityService"></see>
     /// </summary>
-    let SecurityService =
-        Namespaced_IRI.parse _namespace_name "SecurityService" |> NamespacedName
-
+    let SecurityService = _prefix "SecurityService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SecurityShutdownAction"></see>
     /// </summary>
-    let SecurityShutdownAction =
-        Namespaced_IRI.parse _namespace_name "SecurityShutdownAction" |> NamespacedName
-
+    let SecurityShutdownAction = _prefix "SecurityShutdownAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SecuritySystemDisabledTrigger"></see>
     /// </summary>
-    let SecuritySystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "SecuritySystemDisabledTrigger" |> NamespacedName
-
+    let SecuritySystemDisabledTrigger = _prefix "SecuritySystemDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SecuritySystemEnabledTrigger"></see>
     /// </summary>
-    let SecuritySystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "SecuritySystemEnabledTrigger" |> NamespacedName
-
+    let SecuritySystemEnabledTrigger = _prefix "SecuritySystemEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendAction"></see>
     /// </summary>
-    let SendAction = Namespaced_IRI.parse _namespace_name "SendAction" |> NamespacedName
-
+    let SendAction = _prefix "SendAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendAttachmentAction"></see>
     /// </summary>
-    let SendAttachmentAction =
-        Namespaced_IRI.parse _namespace_name "SendAttachmentAction" |> NamespacedName
-
+    let SendAttachmentAction = _prefix "SendAttachmentAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendToPersonAction"></see>
     /// </summary>
-    let SendToPersonAction =
-        Namespaced_IRI.parse _namespace_name "SendToPersonAction" |> NamespacedName
-
+    let SendToPersonAction = _prefix "SendToPersonAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendCallAction"></see>
     /// </summary>
-    let SendCallAction =
-        Namespaced_IRI.parse _namespace_name "SendCallAction" |> NamespacedName
-
+    let SendCallAction = _prefix "SendCallAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendMessageAction"></see>
     /// </summary>
-    let SendMessageAction =
-        Namespaced_IRI.parse _namespace_name "SendMessageAction" |> NamespacedName
-
+    let SendMessageAction = _prefix "SendMessageAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendQuestionAction"></see>
     /// </summary>
-    let SendQuestionAction =
-        Namespaced_IRI.parse _namespace_name "SendQuestionAction" |> NamespacedName
-
+    let SendQuestionAction = _prefix "SendQuestionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendRequestAction"></see>
     /// </summary>
-    let SendRequestAction =
-        Namespaced_IRI.parse _namespace_name "SendRequestAction" |> NamespacedName
-
+    let SendRequestAction = _prefix "SendRequestAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendToDeviceAction"></see>
     /// </summary>
-    let SendToDeviceAction =
-        Namespaced_IRI.parse _namespace_name "SendToDeviceAction" |> NamespacedName
-
+    let SendToDeviceAction = _prefix "SendToDeviceAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendToDisplayAction"></see>
     /// </summary>
-    let SendToDisplayAction =
-        Namespaced_IRI.parse _namespace_name "SendToDisplayAction" |> NamespacedName
-
+    let SendToDisplayAction = _prefix "SendToDisplayAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendToDiyAction"></see>
     /// </summary>
-    let SendToDiyAction =
-        Namespaced_IRI.parse _namespace_name "SendToDiyAction" |> NamespacedName
-
+    let SendToDiyAction = _prefix "SendToDiyAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendToPrintAction"></see>
     /// </summary>
-    let SendToPrintAction =
-        Namespaced_IRI.parse _namespace_name "SendToPrintAction" |> NamespacedName
-
+    let SendToPrintAction = _prefix "SendToPrintAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendToSpeakerAction"></see>
     /// </summary>
-    let SendToSpeakerAction =
-        Namespaced_IRI.parse _namespace_name "SendToSpeakerAction" |> NamespacedName
-
+    let SendToSpeakerAction = _prefix "SendToSpeakerAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SendWebRequestAction"></see>
     /// </summary>
-    let SendWebRequestAction =
-        Namespaced_IRI.parse _namespace_name "SendWebRequestAction" |> NamespacedName
-
+    let SendWebRequestAction = _prefix "SendWebRequestAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedAirPressureDecreasedTrigger"></see>
     /// </summary>
-    let SensedAirPressureDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedAirPressureDecreasedTrigger" |> NamespacedName
-
+    let SensedAirPressureDecreasedTrigger = _prefix "SensedAirPressureDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedAirPressureIncreasedTrigger"></see>
     /// </summary>
-    let SensedAirPressureIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedAirPressureIncreasedTrigger" |> NamespacedName
-
+    let SensedAirPressureIncreasedTrigger = _prefix "SensedAirPressureIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedAirQualityDecreasedTrigger"></see>
     /// </summary>
-    let SensedAirQualityDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedAirQualityDecreasedTrigger" |> NamespacedName
-
+    let SensedAirQualityDecreasedTrigger = _prefix "SensedAirQualityDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedAirQualityIncreasedTrigger"></see>
     /// </summary>
-    let SensedAirQualityIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedAirQualityIncreasedTrigger" |> NamespacedName
-
+    let SensedAirQualityIncreasedTrigger = _prefix "SensedAirQualityIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedHealthyParameterTrigger"></see>
     /// </summary>
-    let SensedHealthyParameterTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedHealthyParameterTrigger" |> NamespacedName
-
+    let SensedHealthyParameterTrigger = _prefix "SensedHealthyParameterTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorsenedHealthyParameterTrigger"></see>
     /// </summary>
-    let WorsenedHealthyParameterTrigger =
-        Namespaced_IRI.parse _namespace_name "WorsenedHealthyParameterTrigger" |> NamespacedName
-
+    let WorsenedHealthyParameterTrigger = _prefix "WorsenedHealthyParameterTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedHumididtyDecreasedTrigger"></see>
     /// </summary>
-    let SensedHumididtyDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedHumididtyDecreasedTrigger" |> NamespacedName
-
+    let SensedHumididtyDecreasedTrigger = _prefix "SensedHumididtyDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedHumidityIncreasedTrigger"></see>
     /// </summary>
-    let SensedHumidityIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedHumidityIncreasedTrigger" |> NamespacedName
-
+    let SensedHumidityIncreasedTrigger = _prefix "SensedHumidityIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedLightingDecreasedTrigger"></see>
     /// </summary>
-    let SensedLightingDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedLightingDecreasedTrigger" |> NamespacedName
-
+    let SensedLightingDecreasedTrigger = _prefix "SensedLightingDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedLightingIncreasedTrigger"></see>
     /// </summary>
-    let SensedLightingIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedLightingIncreasedTrigger" |> NamespacedName
-
+    let SensedLightingIncreasedTrigger = _prefix "SensedLightingIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedNoiseLevelDecreasedTrigger"></see>
     /// </summary>
-    let SensedNoiseLevelDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedNoiseLevelDecreasedTrigger" |> NamespacedName
-
+    let SensedNoiseLevelDecreasedTrigger = _prefix "SensedNoiseLevelDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedNoiseLevelIncreasedTrigger"></see>
     /// </summary>
-    let SensedNoiseLevelIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedNoiseLevelIncreasedTrigger" |> NamespacedName
-
+    let SensedNoiseLevelIncreasedTrigger = _prefix "SensedNoiseLevelIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedRainDetectedTrigger"></see>
     /// </summary>
-    let SensedRainDetectedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedRainDetectedTrigger" |> NamespacedName
-
+    let SensedRainDetectedTrigger = _prefix "SensedRainDetectedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedRainNoLongerDetectedTrigger"></see>
     /// </summary>
-    let SensedRainNoLongerDetectedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedRainNoLongerDetectedTrigger" |> NamespacedName
-
+    let SensedRainNoLongerDetectedTrigger = _prefix "SensedRainNoLongerDetectedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedTemperatureDecreasedTrigger"></see>
     /// </summary>
-    let SensedTemperatureDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedTemperatureDecreasedTrigger" |> NamespacedName
-
+    let SensedTemperatureDecreasedTrigger = _prefix "SensedTemperatureDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedTemperatureIncreasedTrigger"></see>
     /// </summary>
-    let SensedTemperatureIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedTemperatureIncreasedTrigger" |> NamespacedName
-
+    let SensedTemperatureIncreasedTrigger = _prefix "SensedTemperatureIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedWindDecreasedTrigger"></see>
     /// </summary>
-    let SensedWindDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedWindDecreasedTrigger" |> NamespacedName
-
+    let SensedWindDecreasedTrigger = _prefix "SensedWindDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensedWindIncreasedTrigger"></see>
     /// </summary>
-    let SensedWindIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensedWindIncreasedTrigger" |> NamespacedName
-
+    let SensedWindIncreasedTrigger = _prefix "SensedWindIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensorPresenceDetectedTrigger"></see>
     /// </summary>
-    let SensorPresenceDetectedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensorPresenceDetectedTrigger" |> NamespacedName
+    let SensorPresenceDetectedTrigger = _prefix "SensorPresenceDetectedTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SensorPresenceNoLongerDetectedTrigger"></see>
     /// </summary>
     let SensorPresenceNoLongerDetectedTrigger =
-        Namespaced_IRI.parse _namespace_name "SensorPresenceNoLongerDetectedTrigger" |> NamespacedName
+        _prefix "SensorPresenceNoLongerDetectedTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentMessageTrigger"></see>
     /// </summary>
-    let SentMessageTrigger =
-        Namespaced_IRI.parse _namespace_name "SentMessageTrigger" |> NamespacedName
-
+    let SentMessageTrigger = _prefix "SentMessageTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentPrivateInformationTrigger"></see>
     /// </summary>
-    let SentPrivateInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "SentPrivateInformationTrigger" |> NamespacedName
-
+    let SentPrivateInformationTrigger = _prefix "SentPrivateInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentOutcomingCallTrigger"></see>
     /// </summary>
-    let SentOutcomingCallTrigger =
-        Namespaced_IRI.parse _namespace_name "SentOutcomingCallTrigger" |> NamespacedName
-
+    let SentOutcomingCallTrigger = _prefix "SentOutcomingCallTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentTrigger"></see>
     /// </summary>
-    let SentTrigger =
-        Namespaced_IRI.parse _namespace_name "SentTrigger" |> NamespacedName
-
+    let SentTrigger = _prefix "SentTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentPullTrigger"></see>
     /// </summary>
-    let SentPullTrigger =
-        Namespaced_IRI.parse _namespace_name "SentPullTrigger" |> NamespacedName
-
+    let SentPullTrigger = _prefix "SentPullTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentRequestTrigger"></see>
     /// </summary>
-    let SentRequestTrigger =
-        Namespaced_IRI.parse _namespace_name "SentRequestTrigger" |> NamespacedName
-
+    let SentRequestTrigger = _prefix "SentRequestTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentQuestionTrigger"></see>
     /// </summary>
-    let SentQuestionTrigger =
-        Namespaced_IRI.parse _namespace_name "SentQuestionTrigger" |> NamespacedName
-
+    let SentQuestionTrigger = _prefix "SentQuestionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentSharedInformationTrigger"></see>
     /// </summary>
-    let SentSharedInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "SentSharedInformationTrigger" |> NamespacedName
-
+    let SentSharedInformationTrigger = _prefix "SentSharedInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SentSubscriptionTrigger"></see>
     /// </summary>
-    let SentSubscriptionTrigger =
-        Namespaced_IRI.parse _namespace_name "SentSubscriptionTrigger" |> NamespacedName
-
+    let SentSubscriptionTrigger = _prefix "SentSubscriptionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasNotification"></see>
     /// </summary>
-    let hasNotification =
-        Namespaced_IRI.parse _namespace_name "hasNotification" |> NamespacedName
-
+    let hasNotification = _prefix "hasNotification"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasCommand"></see>
     /// </summary>
-    let hasCommand = Namespaced_IRI.parse _namespace_name "hasCommand" |> NamespacedName
-
+    let hasCommand = _prefix "hasCommand"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetBrightnessAction"></see>
     /// </summary>
-    let SetBrightnessAction =
-        Namespaced_IRI.parse _namespace_name "SetBrightnessAction" |> NamespacedName
-
+    let SetBrightnessAction = _prefix "SetBrightnessAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetHumidityAction"></see>
     /// </summary>
-    let SetHumidityAction =
-        Namespaced_IRI.parse _namespace_name "SetHumidityAction" |> NamespacedName
-
+    let SetHumidityAction = _prefix "SetHumidityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetLightingAction"></see>
     /// </summary>
-    let SetLightingAction =
-        Namespaced_IRI.parse _namespace_name "SetLightingAction" |> NamespacedName
-
+    let SetLightingAction = _prefix "SetLightingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SetTemperatureAction"></see>
     /// </summary>
-    let SetTemperatureAction =
-        Namespaced_IRI.parse _namespace_name "SetTemperatureAction" |> NamespacedName
-
+    let SetTemperatureAction = _prefix "SetTemperatureAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareAction"></see>
     /// </summary>
-    let ShareAction =
-        Namespaced_IRI.parse _namespace_name "ShareAction" |> NamespacedName
-
+    let ShareAction = _prefix "ShareAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareCommentAction"></see>
     /// </summary>
-    let ShareCommentAction =
-        Namespaced_IRI.parse _namespace_name "ShareCommentAction" |> NamespacedName
-
+    let ShareCommentAction = _prefix "ShareCommentAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareFileAction"></see>
     /// </summary>
-    let ShareFileAction =
-        Namespaced_IRI.parse _namespace_name "ShareFileAction" |> NamespacedName
-
+    let ShareFileAction = _prefix "ShareFileAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareLikeAction"></see>
     /// </summary>
-    let ShareLikeAction =
-        Namespaced_IRI.parse _namespace_name "ShareLikeAction" |> NamespacedName
-
+    let ShareLikeAction = _prefix "ShareLikeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharePostAction"></see>
     /// </summary>
-    let SharePostAction =
-        Namespaced_IRI.parse _namespace_name "SharePostAction" |> NamespacedName
-
+    let SharePostAction = _prefix "SharePostAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareProfileUpdateAction"></see>
     /// </summary>
-    let ShareProfileUpdateAction =
-        Namespaced_IRI.parse _namespace_name "ShareProfileUpdateAction" |> NamespacedName
-
+    let ShareProfileUpdateAction = _prefix "ShareProfileUpdateAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareTagAction"></see>
     /// </summary>
-    let ShareTagAction =
-        Namespaced_IRI.parse _namespace_name "ShareTagAction" |> NamespacedName
-
+    let ShareTagAction = _prefix "ShareTagAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShareUnlikeAction"></see>
     /// </summary>
-    let ShareUnlikeAction =
-        Namespaced_IRI.parse _namespace_name "ShareUnlikeAction" |> NamespacedName
-
+    let ShareUnlikeAction = _prefix "ShareUnlikeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharedCommentTrigger"></see>
     /// </summary>
-    let SharedCommentTrigger =
-        Namespaced_IRI.parse _namespace_name "SharedCommentTrigger" |> NamespacedName
-
+    let SharedCommentTrigger = _prefix "SharedCommentTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharedLikeTrigger"></see>
     /// </summary>
-    let SharedLikeTrigger =
-        Namespaced_IRI.parse _namespace_name "SharedLikeTrigger" |> NamespacedName
-
+    let SharedLikeTrigger = _prefix "SharedLikeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharedPostTrigger"></see>
     /// </summary>
-    let SharedPostTrigger =
-        Namespaced_IRI.parse _namespace_name "SharedPostTrigger" |> NamespacedName
-
+    let SharedPostTrigger = _prefix "SharedPostTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharedProfileUpdateTrigger"></see>
     /// </summary>
-    let SharedProfileUpdateTrigger =
-        Namespaced_IRI.parse _namespace_name "SharedProfileUpdateTrigger" |> NamespacedName
-
+    let SharedProfileUpdateTrigger = _prefix "SharedProfileUpdateTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharedTagTrigger"></see>
     /// </summary>
-    let SharedTagTrigger =
-        Namespaced_IRI.parse _namespace_name "SharedTagTrigger" |> NamespacedName
-
+    let SharedTagTrigger = _prefix "SharedTagTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SharedUnlikeTrigger"></see>
     /// </summary>
-    let SharedUnlikeTrigger =
-        Namespaced_IRI.parse _namespace_name "SharedUnlikeTrigger" |> NamespacedName
-
+    let SharedUnlikeTrigger = _prefix "SharedUnlikeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ShipmentTrackingTool"></see>
     /// </summary>
-    let ShipmentTrackingTool =
-        Namespaced_IRI.parse _namespace_name "ShipmentTrackingTool" |> NamespacedName
-
+    let ShipmentTrackingTool = _prefix "ShipmentTrackingTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SleepTrackingService"></see>
     /// </summary>
-    let SleepTrackingService =
-        Namespaced_IRI.parse _namespace_name "SleepTrackingService" |> NamespacedName
-
+    let SleepTrackingService = _prefix "SleepTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartBlind"></see>
     /// </summary>
-    let SmartBlind = Namespaced_IRI.parse _namespace_name "SmartBlind" |> NamespacedName
-
+    let SmartBlind = _prefix "SmartBlind"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartBracelet"></see>
     /// </summary>
-    let SmartBracelet =
-        Namespaced_IRI.parse _namespace_name "SmartBracelet" |> NamespacedName
-
+    let SmartBracelet = _prefix "SmartBracelet"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartDoor"></see>
     /// </summary>
-    let SmartDoor = Namespaced_IRI.parse _namespace_name "SmartDoor" |> NamespacedName
+    let SmartDoor = _prefix "SmartDoor"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartWatch"></see>
     /// </summary>
-    let SmartWatch = Namespaced_IRI.parse _namespace_name "SmartWatch" |> NamespacedName
-
+    let SmartWatch = _prefix "SmartWatch"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SmartWindow"></see>
     /// </summary>
-    let SmartWindow =
-        Namespaced_IRI.parse _namespace_name "SmartWindow" |> NamespacedName
-
+    let SmartWindow = _prefix "SmartWindow"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Smartphone"></see>
     /// </summary>
-    let Smartphone = Namespaced_IRI.parse _namespace_name "Smartphone" |> NamespacedName
-
+    let Smartphone = _prefix "Smartphone"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SocialNetwork"></see>
     /// </summary>
-    let SocialNetwork =
-        Namespaced_IRI.parse _namespace_name "SocialNetwork" |> NamespacedName
-
+    let SocialNetwork = _prefix "SocialNetwork"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#SpeakerPhoneActivatedTrigger"></see>
     /// </summary>
-    let SpeakerPhoneActivatedTrigger =
-        Namespaced_IRI.parse _namespace_name "SpeakerPhoneActivatedTrigger" |> NamespacedName
-
+    let SpeakerPhoneActivatedTrigger = _prefix "SpeakerPhoneActivatedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Sprinkler"></see>
     /// </summary>
-    let Sprinkler = Namespaced_IRI.parse _namespace_name "Sprinkler" |> NamespacedName
-
+    let Sprinkler = _prefix "Sprinkler"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartActivityAction"></see>
     /// </summary>
-    let StartActivityAction =
-        Namespaced_IRI.parse _namespace_name "StartActivityAction" |> NamespacedName
-
+    let StartActivityAction = _prefix "StartActivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartAppAction"></see>
     /// </summary>
-    let StartAppAction =
-        Namespaced_IRI.parse _namespace_name "StartAppAction" |> NamespacedName
-
+    let StartAppAction = _prefix "StartAppAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartEntertainementAction"></see>
     /// </summary>
-    let StartEntertainementAction =
-        Namespaced_IRI.parse _namespace_name "StartEntertainementAction" |> NamespacedName
-
+    let StartEntertainementAction = _prefix "StartEntertainementAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartBrewingCoffeeAction"></see>
     /// </summary>
-    let StartBrewingCoffeeAction =
-        Namespaced_IRI.parse _namespace_name "StartBrewingCoffeeAction" |> NamespacedName
-
+    let StartBrewingCoffeeAction = _prefix "StartBrewingCoffeeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartCookingAction"></see>
     /// </summary>
-    let StartCookingAction =
-        Namespaced_IRI.parse _namespace_name "StartCookingAction" |> NamespacedName
-
+    let StartCookingAction = _prefix "StartCookingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartBuyingAction"></see>
     /// </summary>
-    let StartBuyingAction =
-        Namespaced_IRI.parse _namespace_name "StartBuyingAction" |> NamespacedName
-
+    let StartBuyingAction = _prefix "StartBuyingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartCleaningAction"></see>
     /// </summary>
-    let StartCleaningAction =
-        Namespaced_IRI.parse _namespace_name "StartCleaningAction" |> NamespacedName
-
+    let StartCleaningAction = _prefix "StartCleaningAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartDiswashingAction"></see>
     /// </summary>
-    let StartDiswashingAction =
-        Namespaced_IRI.parse _namespace_name "StartDiswashingAction" |> NamespacedName
-
+    let StartDiswashingAction = _prefix "StartDiswashingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartWashingAction"></see>
     /// </summary>
-    let StartWashingAction =
-        Namespaced_IRI.parse _namespace_name "StartWashingAction" |> NamespacedName
-
+    let StartWashingAction = _prefix "StartWashingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartDryingAction"></see>
     /// </summary>
-    let StartDryingAction =
-        Namespaced_IRI.parse _namespace_name "StartDryingAction" |> NamespacedName
-
+    let StartDryingAction = _prefix "StartDryingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartFocusingAction"></see>
     /// </summary>
-    let StartFocusingAction =
-        Namespaced_IRI.parse _namespace_name "StartFocusingAction" |> NamespacedName
-
+    let StartFocusingAction = _prefix "StartFocusingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartFocusingSessionAction"></see>
     /// </summary>
-    let StartFocusingSessionAction =
-        Namespaced_IRI.parse _namespace_name "StartFocusingSessionAction" |> NamespacedName
-
+    let StartFocusingSessionAction = _prefix "StartFocusingSessionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartListeningMusicAction"></see>
     /// </summary>
-    let StartListeningMusicAction =
-        Namespaced_IRI.parse _namespace_name "StartListeningMusicAction" |> NamespacedName
-
+    let StartListeningMusicAction = _prefix "StartListeningMusicAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartOvenCookingAction"></see>
     /// </summary>
-    let StartOvenCookingAction =
-        Namespaced_IRI.parse _namespace_name "StartOvenCookingAction" |> NamespacedName
-
+    let StartOvenCookingAction = _prefix "StartOvenCookingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartPlayingAction"></see>
     /// </summary>
-    let StartPlayingAction =
-        Namespaced_IRI.parse _namespace_name "StartPlayingAction" |> NamespacedName
-
+    let StartPlayingAction = _prefix "StartPlayingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartStudyingSessionAction"></see>
     /// </summary>
-    let StartStudyingSessionAction =
-        Namespaced_IRI.parse _namespace_name "StartStudyingSessionAction" |> NamespacedName
-
+    let StartStudyingSessionAction = _prefix "StartStudyingSessionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartSuperMarketBuyingAction"></see>
     /// </summary>
-    let StartSuperMarketBuyingAction =
-        Namespaced_IRI.parse _namespace_name "StartSuperMarketBuyingAction" |> NamespacedName
-
+    let StartSuperMarketBuyingAction = _prefix "StartSuperMarketBuyingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartUsingSmartphoneAction"></see>
     /// </summary>
-    let StartUsingSmartphoneAction =
-        Namespaced_IRI.parse _namespace_name "StartUsingSmartphoneAction" |> NamespacedName
-
+    let StartUsingSmartphoneAction = _prefix "StartUsingSmartphoneAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartVacuumAction"></see>
     /// </summary>
-    let StartVacuumAction =
-        Namespaced_IRI.parse _namespace_name "StartVacuumAction" |> NamespacedName
-
+    let StartVacuumAction = _prefix "StartVacuumAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartWashingClothesAction"></see>
     /// </summary>
-    let StartWashingClothesAction =
-        Namespaced_IRI.parse _namespace_name "StartWashingClothesAction" |> NamespacedName
-
+    let StartWashingClothesAction = _prefix "StartWashingClothesAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartWatchingTvAction"></see>
     /// </summary>
-    let StartWatchingTvAction =
-        Namespaced_IRI.parse _namespace_name "StartWatchingTvAction" |> NamespacedName
-
+    let StartWatchingTvAction = _prefix "StartWatchingTvAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedActivityTrigger"></see>
     /// </summary>
-    let StartedActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedActivityTrigger" |> NamespacedName
-
+    let StartedActivityTrigger = _prefix "StartedActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedAppTrigger"></see>
     /// </summary>
-    let StartedAppTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedAppTrigger" |> NamespacedName
-
+    let StartedAppTrigger = _prefix "StartedAppTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedEntertainementTrigger"></see>
     /// </summary>
-    let StartedEntertainementTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedEntertainementTrigger" |> NamespacedName
-
+    let StartedEntertainementTrigger = _prefix "StartedEntertainementTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedBikeSessionTrigger"></see>
     /// </summary>
-    let StartedBikeSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedBikeSessionTrigger" |> NamespacedName
-
+    let StartedBikeSessionTrigger = _prefix "StartedBikeSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedPhysicalActivityTrigger"></see>
     /// </summary>
-    let StartedPhysicalActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedPhysicalActivityTrigger" |> NamespacedName
-
+    let StartedPhysicalActivityTrigger = _prefix "StartedPhysicalActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedBrewingCoffeeTrigger"></see>
     /// </summary>
-    let StartedBrewingCoffeeTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedBrewingCoffeeTrigger" |> NamespacedName
-
+    let StartedBrewingCoffeeTrigger = _prefix "StartedBrewingCoffeeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedCookingTrigger"></see>
     /// </summary>
-    let StartedCookingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedCookingTrigger" |> NamespacedName
-
+    let StartedCookingTrigger = _prefix "StartedCookingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedCleaningTrigger"></see>
     /// </summary>
-    let StartedCleaningTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedCleaningTrigger" |> NamespacedName
-
+    let StartedCleaningTrigger = _prefix "StartedCleaningTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedDiswashingTrigger"></see>
     /// </summary>
-    let StartedDiswashingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedDiswashingTrigger" |> NamespacedName
-
+    let StartedDiswashingTrigger = _prefix "StartedDiswashingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedWashingTrigger"></see>
     /// </summary>
-    let StartedWashingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedWashingTrigger" |> NamespacedName
-
+    let StartedWashingTrigger = _prefix "StartedWashingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedDryingTrigger"></see>
     /// </summary>
-    let StartedDryingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedDryingTrigger" |> NamespacedName
-
+    let StartedDryingTrigger = _prefix "StartedDryingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedFocusingSessionTrigger"></see>
     /// </summary>
-    let StartedFocusingSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedFocusingSessionTrigger" |> NamespacedName
-
+    let StartedFocusingSessionTrigger = _prefix "StartedFocusingSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedFocusingTrigger"></see>
     /// </summary>
-    let StartedFocusingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedFocusingTrigger" |> NamespacedName
-
+    let StartedFocusingTrigger = _prefix "StartedFocusingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedInteractionTrigger"></see>
     /// </summary>
-    let StartedInteractionTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedInteractionTrigger" |> NamespacedName
-
+    let StartedInteractionTrigger = _prefix "StartedInteractionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedListeningMusicTrigger"></see>
     /// </summary>
-    let StartedListeningMusicTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedListeningMusicTrigger" |> NamespacedName
-
+    let StartedListeningMusicTrigger = _prefix "StartedListeningMusicTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedOvenCookingTrigger"></see>
     /// </summary>
-    let StartedOvenCookingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedOvenCookingTrigger" |> NamespacedName
-
+    let StartedOvenCookingTrigger = _prefix "StartedOvenCookingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedPlayingTrigger"></see>
     /// </summary>
-    let StartedPlayingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedPlayingTrigger" |> NamespacedName
-
+    let StartedPlayingTrigger = _prefix "StartedPlayingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedRelaxingTrigger"></see>
     /// </summary>
-    let StartedRelaxingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedRelaxingTrigger" |> NamespacedName
-
+    let StartedRelaxingTrigger = _prefix "StartedRelaxingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedRunSessionTrigger"></see>
     /// </summary>
-    let StartedRunSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedRunSessionTrigger" |> NamespacedName
-
+    let StartedRunSessionTrigger = _prefix "StartedRunSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedSleepingTrigger"></see>
     /// </summary>
-    let StartedSleepingTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedSleepingTrigger" |> NamespacedName
-
+    let StartedSleepingTrigger = _prefix "StartedSleepingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedStudyingSessionTrigger"></see>
     /// </summary>
-    let StartedStudyingSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedStudyingSessionTrigger" |> NamespacedName
-
+    let StartedStudyingSessionTrigger = _prefix "StartedStudyingSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedUsingSmartphoneTrigger"></see>
     /// </summary>
-    let StartedUsingSmartphoneTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedUsingSmartphoneTrigger" |> NamespacedName
-
+    let StartedUsingSmartphoneTrigger = _prefix "StartedUsingSmartphoneTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedVacuumTrigger"></see>
     /// </summary>
-    let StartedVacuumTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedVacuumTrigger" |> NamespacedName
-
+    let StartedVacuumTrigger = _prefix "StartedVacuumTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedWalkingSessionTrigger"></see>
     /// </summary>
-    let StartedWalkingSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedWalkingSessionTrigger" |> NamespacedName
-
+    let StartedWalkingSessionTrigger = _prefix "StartedWalkingSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartedWatchingTvTrigger"></see>
     /// </summary>
-    let StartedWatchingTvTrigger =
-        Namespaced_IRI.parse _namespace_name "StartedWatchingTvTrigger" |> NamespacedName
-
+    let StartedWatchingTvTrigger = _prefix "StartedWatchingTvTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StartingWashingClothesTrigger"></see>
     /// </summary>
-    let StartingWashingClothesTrigger =
-        Namespaced_IRI.parse _namespace_name "StartingWashingClothesTrigger" |> NamespacedName
-
+    let StartingWashingClothesTrigger = _prefix "StartingWashingClothesTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopActivityAction"></see>
     /// </summary>
-    let StopActivityAction =
-        Namespaced_IRI.parse _namespace_name "StopActivityAction" |> NamespacedName
-
+    let StopActivityAction = _prefix "StopActivityAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopAppAction"></see>
     /// </summary>
-    let StopAppAction =
-        Namespaced_IRI.parse _namespace_name "StopAppAction" |> NamespacedName
-
+    let StopAppAction = _prefix "StopAppAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopEntertainementAction"></see>
     /// </summary>
-    let StopEntertainementAction =
-        Namespaced_IRI.parse _namespace_name "StopEntertainementAction" |> NamespacedName
-
+    let StopEntertainementAction = _prefix "StopEntertainementAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopBrewingCoffeeAction"></see>
     /// </summary>
-    let StopBrewingCoffeeAction =
-        Namespaced_IRI.parse _namespace_name "StopBrewingCoffeeAction" |> NamespacedName
-
+    let StopBrewingCoffeeAction = _prefix "StopBrewingCoffeeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopCookingAction"></see>
     /// </summary>
-    let StopCookingAction =
-        Namespaced_IRI.parse _namespace_name "StopCookingAction" |> NamespacedName
-
+    let StopCookingAction = _prefix "StopCookingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopCleaningAction"></see>
     /// </summary>
-    let StopCleaningAction =
-        Namespaced_IRI.parse _namespace_name "StopCleaningAction" |> NamespacedName
-
+    let StopCleaningAction = _prefix "StopCleaningAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopDiswashingAction"></see>
     /// </summary>
-    let StopDiswashingAction =
-        Namespaced_IRI.parse _namespace_name "StopDiswashingAction" |> NamespacedName
-
+    let StopDiswashingAction = _prefix "StopDiswashingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopWashingAction"></see>
     /// </summary>
-    let StopWashingAction =
-        Namespaced_IRI.parse _namespace_name "StopWashingAction" |> NamespacedName
-
+    let StopWashingAction = _prefix "StopWashingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopDryingAction"></see>
     /// </summary>
-    let StopDryingAction =
-        Namespaced_IRI.parse _namespace_name "StopDryingAction" |> NamespacedName
-
+    let StopDryingAction = _prefix "StopDryingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopFocusingAction"></see>
     /// </summary>
-    let StopFocusingAction =
-        Namespaced_IRI.parse _namespace_name "StopFocusingAction" |> NamespacedName
-
+    let StopFocusingAction = _prefix "StopFocusingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopFocusingSessionAction"></see>
     /// </summary>
-    let StopFocusingSessionAction =
-        Namespaced_IRI.parse _namespace_name "StopFocusingSessionAction" |> NamespacedName
-
+    let StopFocusingSessionAction = _prefix "StopFocusingSessionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopListeningMusicAction"></see>
     /// </summary>
-    let StopListeningMusicAction =
-        Namespaced_IRI.parse _namespace_name "StopListeningMusicAction" |> NamespacedName
-
+    let StopListeningMusicAction = _prefix "StopListeningMusicAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopOvenCookingAction"></see>
     /// </summary>
-    let StopOvenCookingAction =
-        Namespaced_IRI.parse _namespace_name "StopOvenCookingAction" |> NamespacedName
-
+    let StopOvenCookingAction = _prefix "StopOvenCookingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopPlayingAction"></see>
     /// </summary>
-    let StopPlayingAction =
-        Namespaced_IRI.parse _namespace_name "StopPlayingAction" |> NamespacedName
-
+    let StopPlayingAction = _prefix "StopPlayingAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopStudyingSessionAction"></see>
     /// </summary>
-    let StopStudyingSessionAction =
-        Namespaced_IRI.parse _namespace_name "StopStudyingSessionAction" |> NamespacedName
-
+    let StopStudyingSessionAction = _prefix "StopStudyingSessionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopUsingSmartphoneAction"></see>
     /// </summary>
-    let StopUsingSmartphoneAction =
-        Namespaced_IRI.parse _namespace_name "StopUsingSmartphoneAction" |> NamespacedName
-
+    let StopUsingSmartphoneAction = _prefix "StopUsingSmartphoneAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopVacuumAction"></see>
     /// </summary>
-    let StopVacuumAction =
-        Namespaced_IRI.parse _namespace_name "StopVacuumAction" |> NamespacedName
-
+    let StopVacuumAction = _prefix "StopVacuumAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopWashingClothesAction"></see>
     /// </summary>
-    let StopWashingClothesAction =
-        Namespaced_IRI.parse _namespace_name "StopWashingClothesAction" |> NamespacedName
-
+    let StopWashingClothesAction = _prefix "StopWashingClothesAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StopWatchingTvAction"></see>
     /// </summary>
-    let StopWatchingTvAction =
-        Namespaced_IRI.parse _namespace_name "StopWatchingTvAction" |> NamespacedName
-
+    let StopWatchingTvAction = _prefix "StopWatchingTvAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedActivityTrigger"></see>
     /// </summary>
-    let StoppedActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedActivityTrigger" |> NamespacedName
-
+    let StoppedActivityTrigger = _prefix "StoppedActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedAppTrigger"></see>
     /// </summary>
-    let StoppedAppTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedAppTrigger" |> NamespacedName
-
+    let StoppedAppTrigger = _prefix "StoppedAppTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedEntertainementTrigger"></see>
     /// </summary>
-    let StoppedEntertainementTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedEntertainementTrigger" |> NamespacedName
-
+    let StoppedEntertainementTrigger = _prefix "StoppedEntertainementTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedBikeSessionTrigger"></see>
     /// </summary>
-    let StoppedBikeSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedBikeSessionTrigger" |> NamespacedName
-
+    let StoppedBikeSessionTrigger = _prefix "StoppedBikeSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedPhysicalActivityTrigger"></see>
     /// </summary>
-    let StoppedPhysicalActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedPhysicalActivityTrigger" |> NamespacedName
-
+    let StoppedPhysicalActivityTrigger = _prefix "StoppedPhysicalActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedBrewingCoffeeTrigger"></see>
     /// </summary>
-    let StoppedBrewingCoffeeTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedBrewingCoffeeTrigger" |> NamespacedName
-
+    let StoppedBrewingCoffeeTrigger = _prefix "StoppedBrewingCoffeeTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedCookingTrigger"></see>
     /// </summary>
-    let StoppedCookingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedCookingTrigger" |> NamespacedName
-
+    let StoppedCookingTrigger = _prefix "StoppedCookingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedDiswashingTrigger"></see>
     /// </summary>
-    let StoppedDiswashingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedDiswashingTrigger" |> NamespacedName
-
+    let StoppedDiswashingTrigger = _prefix "StoppedDiswashingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedWashingTrigger"></see>
     /// </summary>
-    let StoppedWashingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedWashingTrigger" |> NamespacedName
-
+    let StoppedWashingTrigger = _prefix "StoppedWashingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedDryingTrigger"></see>
     /// </summary>
-    let StoppedDryingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedDryingTrigger" |> NamespacedName
-
+    let StoppedDryingTrigger = _prefix "StoppedDryingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedFocusingSessionTrigger"></see>
     /// </summary>
-    let StoppedFocusingSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedFocusingSessionTrigger" |> NamespacedName
-
+    let StoppedFocusingSessionTrigger = _prefix "StoppedFocusingSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedFocusingTrigger"></see>
     /// </summary>
-    let StoppedFocusingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedFocusingTrigger" |> NamespacedName
-
+    let StoppedFocusingTrigger = _prefix "StoppedFocusingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedListeningMusicTrigger"></see>
     /// </summary>
-    let StoppedListeningMusicTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedListeningMusicTrigger" |> NamespacedName
-
+    let StoppedListeningMusicTrigger = _prefix "StoppedListeningMusicTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedOvenCookingTrigger"></see>
     /// </summary>
-    let StoppedOvenCookingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedOvenCookingTrigger" |> NamespacedName
-
+    let StoppedOvenCookingTrigger = _prefix "StoppedOvenCookingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedPlayingTrigger"></see>
     /// </summary>
-    let StoppedPlayingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedPlayingTrigger" |> NamespacedName
-
+    let StoppedPlayingTrigger = _prefix "StoppedPlayingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedRelaxingTrigger"></see>
     /// </summary>
-    let StoppedRelaxingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedRelaxingTrigger" |> NamespacedName
-
+    let StoppedRelaxingTrigger = _prefix "StoppedRelaxingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedRunSessionTrigger"></see>
     /// </summary>
-    let StoppedRunSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedRunSessionTrigger" |> NamespacedName
-
+    let StoppedRunSessionTrigger = _prefix "StoppedRunSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedSleepingTrigger"></see>
     /// </summary>
-    let StoppedSleepingTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedSleepingTrigger" |> NamespacedName
-
+    let StoppedSleepingTrigger = _prefix "StoppedSleepingTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedStudyingSessionTrigger"></see>
     /// </summary>
-    let StoppedStudyingSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedStudyingSessionTrigger" |> NamespacedName
-
+    let StoppedStudyingSessionTrigger = _prefix "StoppedStudyingSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedUsingSmartphoneTrigger"></see>
     /// </summary>
-    let StoppedUsingSmartphoneTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedUsingSmartphoneTrigger" |> NamespacedName
-
+    let StoppedUsingSmartphoneTrigger = _prefix "StoppedUsingSmartphoneTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedWalkingSessionTrigger"></see>
     /// </summary>
-    let StoppedWalkingSessionTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedWalkingSessionTrigger" |> NamespacedName
-
+    let StoppedWalkingSessionTrigger = _prefix "StoppedWalkingSessionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedWashingClothesTrigger"></see>
     /// </summary>
-    let StoppedWashingClothesTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedWashingClothesTrigger" |> NamespacedName
-
+    let StoppedWashingClothesTrigger = _prefix "StoppedWashingClothesTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoppedWatchingTvTrigger"></see>
     /// </summary>
-    let StoppedWatchingTvTrigger =
-        Namespaced_IRI.parse _namespace_name "StoppedWatchingTvTrigger" |> NamespacedName
-
+    let StoppedWatchingTvTrigger = _prefix "StoppedWatchingTvTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredAppTrigger"></see>
     /// </summary>
-    let StoredAppTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredAppTrigger" |> NamespacedName
-
+    let StoredAppTrigger = _prefix "StoredAppTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredTrigger"></see>
     /// </summary>
-    let StoredTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredTrigger" |> NamespacedName
-
+    let StoredTrigger = _prefix "StoredTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredBackupTrigger"></see>
     /// </summary>
-    let StoredBackupTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredBackupTrigger" |> NamespacedName
-
+    let StoredBackupTrigger = _prefix "StoredBackupTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredContactTrigger"></see>
     /// </summary>
-    let StoredContactTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredContactTrigger" |> NamespacedName
-
+    let StoredContactTrigger = _prefix "StoredContactTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredFileTrigger"></see>
     /// </summary>
-    let StoredFileTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredFileTrigger" |> NamespacedName
-
+    let StoredFileTrigger = _prefix "StoredFileTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredHealthInformationTrigger"></see>
     /// </summary>
-    let StoredHealthInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredHealthInformationTrigger" |> NamespacedName
-
+    let StoredHealthInformationTrigger = _prefix "StoredHealthInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredMediaInformationTrigger"></see>
     /// </summary>
-    let StoredMediaInformationTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredMediaInformationTrigger" |> NamespacedName
-
+    let StoredMediaInformationTrigger = _prefix "StoredMediaInformationTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StoredWebBookmarkTrigger"></see>
     /// </summary>
-    let StoredWebBookmarkTrigger =
-        Namespaced_IRI.parse _namespace_name "StoredWebBookmarkTrigger" |> NamespacedName
-
+    let StoredWebBookmarkTrigger = _prefix "StoredWebBookmarkTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#StudyingTrackingService"></see>
     /// </summary>
-    let StudyingTrackingService =
-        Namespaced_IRI.parse _namespace_name "StudyingTrackingService" |> NamespacedName
-
+    let StudyingTrackingService = _prefix "StudyingTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TVService"></see>
     /// </summary>
-    let TVService = Namespaced_IRI.parse _namespace_name "TVService" |> NamespacedName
+    let TVService = _prefix "TVService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Tablet"></see>
     /// </summary>
-    let Tablet = Namespaced_IRI.parse _namespace_name "Tablet" |> NamespacedName
+    let Tablet = _prefix "Tablet"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TagService"></see>
     /// </summary>
-    let TagService = Namespaced_IRI.parse _namespace_name "TagService" |> NamespacedName
+    let TagService = _prefix "TagService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakeAction"></see>
     /// </summary>
-    let TakeAction = Namespaced_IRI.parse _namespace_name "TakeAction" |> NamespacedName
-
+    let TakeAction = _prefix "TakeAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakeAudioAction"></see>
     /// </summary>
-    let TakeAudioAction =
-        Namespaced_IRI.parse _namespace_name "TakeAudioAction" |> NamespacedName
-
+    let TakeAudioAction = _prefix "TakeAudioAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakePhotoAction"></see>
     /// </summary>
-    let TakePhotoAction =
-        Namespaced_IRI.parse _namespace_name "TakePhotoAction" |> NamespacedName
-
+    let TakePhotoAction = _prefix "TakePhotoAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakeVideoAction"></see>
     /// </summary>
-    let TakeVideoAction =
-        Namespaced_IRI.parse _namespace_name "TakeVideoAction" |> NamespacedName
-
+    let TakeVideoAction = _prefix "TakeVideoAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakenAudioTrigger"></see>
     /// </summary>
-    let TakenAudioTrigger =
-        Namespaced_IRI.parse _namespace_name "TakenAudioTrigger" |> NamespacedName
-
+    let TakenAudioTrigger = _prefix "TakenAudioTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakenTrigger"></see>
     /// </summary>
-    let TakenTrigger =
-        Namespaced_IRI.parse _namespace_name "TakenTrigger" |> NamespacedName
-
+    let TakenTrigger = _prefix "TakenTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakenImageTrigger"></see>
     /// </summary>
-    let TakenImageTrigger =
-        Namespaced_IRI.parse _namespace_name "TakenImageTrigger" |> NamespacedName
-
+    let TakenImageTrigger = _prefix "TakenImageTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TakenVideoTrigger"></see>
     /// </summary>
-    let TakenVideoTrigger =
-        Namespaced_IRI.parse _namespace_name "TakenVideoTrigger" |> NamespacedName
-
+    let TakenVideoTrigger = _prefix "TakenVideoTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TapButtonActivityTrigger"></see>
     /// </summary>
-    let TapButtonActivityTrigger =
-        Namespaced_IRI.parse _namespace_name "TapButtonActivityTrigger" |> NamespacedName
-
+    let TapButtonActivityTrigger = _prefix "TapButtonActivityTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TemperatureSetToTrigger"></see>
     /// </summary>
-    let TemperatureSetToTrigger =
-        Namespaced_IRI.parse _namespace_name "TemperatureSetToTrigger" |> NamespacedName
-
+    let TemperatureSetToTrigger = _prefix "TemperatureSetToTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TemporalTrigger"></see>
     /// </summary>
-    let TemporalTrigger =
-        Namespaced_IRI.parse _namespace_name "TemporalTrigger" |> NamespacedName
-
+    let TemporalTrigger = _prefix "TemporalTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Thermostat"></see>
     /// </summary>
-    let Thermostat = Namespaced_IRI.parse _namespace_name "Thermostat" |> NamespacedName
-
+    let Thermostat = _prefix "Thermostat"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TimeManagementTool"></see>
     /// </summary>
-    let TimeManagementTool =
-        Namespaced_IRI.parse _namespace_name "TimeManagementTool" |> NamespacedName
-
+    let TimeManagementTool = _prefix "TimeManagementTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TimerService"></see>
     /// </summary>
-    let TimerService =
-        Namespaced_IRI.parse _namespace_name "TimerService" |> NamespacedName
-
+    let TimerService = _prefix "TimerService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ToDoTool"></see>
     /// </summary>
-    let ToDoTool = Namespaced_IRI.parse _namespace_name "ToDoTool" |> NamespacedName
-
+    let ToDoTool = _prefix "ToDoTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#ToggleSwitchTrigger"></see>
     /// </summary>
-    let ToggleSwitchTrigger =
-        Namespaced_IRI.parse _namespace_name "ToggleSwitchTrigger" |> NamespacedName
-
+    let ToggleSwitchTrigger = _prefix "ToggleSwitchTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnAlarmOffAction"></see>
     /// </summary>
-    let TurnAlarmOffAction =
-        Namespaced_IRI.parse _namespace_name "TurnAlarmOffAction" |> NamespacedName
-
+    let TurnAlarmOffAction = _prefix "TurnAlarmOffAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnDeviceOffAction"></see>
     /// </summary>
-    let TurnDeviceOffAction =
-        Namespaced_IRI.parse _namespace_name "TurnDeviceOffAction" |> NamespacedName
-
+    let TurnDeviceOffAction = _prefix "TurnDeviceOffAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#TurnDeviceOnAction"></see>
     /// </summary>
-    let TurnDeviceOnAction =
-        Namespaced_IRI.parse _namespace_name "TurnDeviceOnAction" |> NamespacedName
-
+    let TurnDeviceOnAction = _prefix "TurnDeviceOnAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Tv"></see>
     /// </summary>
-    let Tv = Namespaced_IRI.parse _namespace_name "Tv" |> NamespacedName
-
+    let Tv = _prefix "Tv"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#UnlikeService"></see>
     /// </summary>
-    let UnlikeService =
-        Namespaced_IRI.parse _namespace_name "UnlikeService" |> NamespacedName
-
+    let UnlikeService = _prefix "UnlikeService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#UpdatedWallpaperTrigger"></see>
     /// </summary>
-    let UpdatedWallpaperTrigger =
-        Namespaced_IRI.parse _namespace_name "UpdatedWallpaperTrigger" |> NamespacedName
-
+    let UpdatedWallpaperTrigger = _prefix "UpdatedWallpaperTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VacuumService"></see>
     /// </summary>
-    let VacuumService =
-        Namespaced_IRI.parse _namespace_name "VacuumService" |> NamespacedName
-
+    let VacuumService = _prefix "VacuumService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VehicleTrackingService"></see>
     /// </summary>
-    let VehicleTrackingService =
-        Namespaced_IRI.parse _namespace_name "VehicleTrackingService" |> NamespacedName
-
+    let VehicleTrackingService = _prefix "VehicleTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#Ventilator"></see>
     /// </summary>
-    let Ventilator = Namespaced_IRI.parse _namespace_name "Ventilator" |> NamespacedName
-
+    let Ventilator = _prefix "Ventilator"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VideoPlatform"></see>
     /// </summary>
-    let VideoPlatform =
-        Namespaced_IRI.parse _namespace_name "VideoPlatform" |> NamespacedName
-
+    let VideoPlatform = _prefix "VideoPlatform"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VideoRecordingService"></see>
     /// </summary>
-    let VideoRecordingService =
-        Namespaced_IRI.parse _namespace_name "VideoRecordingService" |> NamespacedName
-
+    let VideoRecordingService = _prefix "VideoRecordingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VideoService"></see>
     /// </summary>
-    let VideoService =
-        Namespaced_IRI.parse _namespace_name "VideoService" |> NamespacedName
-
+    let VideoService = _prefix "VideoService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VoiceAssistant"></see>
     /// </summary>
-    let VoiceAssistant =
-        Namespaced_IRI.parse _namespace_name "VoiceAssistant" |> NamespacedName
-
+    let VoiceAssistant = _prefix "VoiceAssistant"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VolumeDecreasedTrigger"></see>
     /// </summary>
-    let VolumeDecreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "VolumeDecreasedTrigger" |> NamespacedName
-
+    let VolumeDecreasedTrigger = _prefix "VolumeDecreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VolumeIncreasedTrigger"></see>
     /// </summary>
-    let VolumeIncreasedTrigger =
-        Namespaced_IRI.parse _namespace_name "VolumeIncreasedTrigger" |> NamespacedName
-
+    let VolumeIncreasedTrigger = _prefix "VolumeIncreasedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#VolumeService"></see>
     /// </summary>
-    let VolumeService =
-        Namespaced_IRI.parse _namespace_name "VolumeService" |> NamespacedName
-
+    let VolumeService = _prefix "VolumeService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WalkTrackingService"></see>
     /// </summary>
-    let WalkTrackingService =
-        Namespaced_IRI.parse _namespace_name "WalkTrackingService" |> NamespacedName
-
+    let WalkTrackingService = _prefix "WalkTrackingService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WashingMachine"></see>
     /// </summary>
-    let WashingMachine =
-        Namespaced_IRI.parse _namespace_name "WashingMachine" |> NamespacedName
-
+    let WashingMachine = _prefix "WashingMachine"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WashingService"></see>
     /// </summary>
-    let WashingService =
-        Namespaced_IRI.parse _namespace_name "WashingService" |> NamespacedName
+    let WashingService = _prefix "WashingService"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WaterTemperatureSystemDisabledTrigger"></see>
     /// </summary>
     let WaterTemperatureSystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "WaterTemperatureSystemDisabledTrigger" |> NamespacedName
+        _prefix "WaterTemperatureSystemDisabledTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WaterTemperatureSystemEnabledTrigger"></see>
     /// </summary>
     let WaterTemperatureSystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "WaterTemperatureSystemEnabledTrigger" |> NamespacedName
+        _prefix "WaterTemperatureSystemEnabledTrigger"
 
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WateringService"></see>
     /// </summary>
-    let WateringService =
-        Namespaced_IRI.parse _namespace_name "WateringService" |> NamespacedName
-
+    let WateringService = _prefix "WateringService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WateringSystemDisabledTrigger"></see>
     /// </summary>
-    let WateringSystemDisabledTrigger =
-        Namespaced_IRI.parse _namespace_name "WateringSystemDisabledTrigger" |> NamespacedName
-
+    let WateringSystemDisabledTrigger = _prefix "WateringSystemDisabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WateringSystemEnabledTrigger"></see>
     /// </summary>
-    let WateringSystemEnabledTrigger =
-        Namespaced_IRI.parse _namespace_name "WateringSystemEnabledTrigger" |> NamespacedName
-
+    let WateringSystemEnabledTrigger = _prefix "WateringSystemEnabledTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WeatherService"></see>
     /// </summary>
-    let WeatherService =
-        Namespaced_IRI.parse _namespace_name "WeatherService" |> NamespacedName
-
+    let WeatherService = _prefix "WeatherService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WeatherStation"></see>
     /// </summary>
-    let WeatherStation =
-        Namespaced_IRI.parse _namespace_name "WeatherStation" |> NamespacedName
-
+    let WeatherStation = _prefix "WeatherStation"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WeatherWebSite"></see>
     /// </summary>
-    let WeatherWebSite =
-        Namespaced_IRI.parse _namespace_name "WeatherWebSite" |> NamespacedName
-
+    let WeatherWebSite = _prefix "WeatherWebSite"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WebBookmarkService"></see>
     /// </summary>
-    let WebBookmarkService =
-        Namespaced_IRI.parse _namespace_name "WebBookmarkService" |> NamespacedName
-
+    let WebBookmarkService = _prefix "WebBookmarkService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WebBookmarkTool"></see>
     /// </summary>
-    let WebBookmarkTool =
-        Namespaced_IRI.parse _namespace_name "WebBookmarkTool" |> NamespacedName
-
+    let WebBookmarkTool = _prefix "WebBookmarkTool"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WebRequestService"></see>
     /// </summary>
-    let WebRequestService =
-        Namespaced_IRI.parse _namespace_name "WebRequestService" |> NamespacedName
-
+    let WebRequestService = _prefix "WebRequestService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WifiService"></see>
     /// </summary>
-    let WifiService =
-        Namespaced_IRI.parse _namespace_name "WifiService" |> NamespacedName
-
+    let WifiService = _prefix "WifiService"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WindowFrameClosedTrigger"></see>
     /// </summary>
-    let WindowFrameClosedTrigger =
-        Namespaced_IRI.parse _namespace_name "WindowFrameClosedTrigger" |> NamespacedName
-
+    let WindowFrameClosedTrigger = _prefix "WindowFrameClosedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WindowFrameOpenedTrigger"></see>
     /// </summary>
-    let WindowFrameOpenedTrigger =
-        Namespaced_IRI.parse _namespace_name "WindowFrameOpenedTrigger" |> NamespacedName
-
+    let WindowFrameOpenedTrigger = _prefix "WindowFrameOpenedTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseDeviceConditionAction"></see>
     /// </summary>
-    let WorseDeviceConditionAction =
-        Namespaced_IRI.parse _namespace_name "WorseDeviceConditionAction" |> NamespacedName
-
+    let WorseDeviceConditionAction = _prefix "WorseDeviceConditionAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#WorseDeviceConditionTrigger"></see>
     /// </summary>
-    let WorseDeviceConditionTrigger =
-        Namespaced_IRI.parse _namespace_name "WorseDeviceConditionTrigger" |> NamespacedName
-
+    let WorseDeviceConditionTrigger = _prefix "WorseDeviceConditionTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#allowTo"></see>
     /// </summary>
-    let allowTo = Namespaced_IRI.parse _namespace_name "allowTo" |> NamespacedName
+    let allowTo = _prefix "allowTo"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#canControl"></see>
     /// </summary>
-    let canControl = Namespaced_IRI.parse _namespace_name "canControl" |> NamespacedName
-
+    let canControl = _prefix "canControl"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#channelOffer"></see>
     /// </summary>
-    let channelOffer =
-        Namespaced_IRI.parse _namespace_name "channelOffer" |> NamespacedName
-
+    let channelOffer = _prefix "channelOffer"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#isOfChannel"></see>
     /// </summary>
-    let isOfChannel =
-        Namespaced_IRI.parse _namespace_name "isOfChannel" |> NamespacedName
-
+    let isOfChannel = _prefix "isOfChannel"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#commandAllowTo"></see>
     /// </summary>
-    let commandAllowTo =
-        Namespaced_IRI.parse _namespace_name "commandAllowTo" |> NamespacedName
-
+    let commandAllowTo = _prefix "commandAllowTo"
     /// <summary>
     /// description
     /// <see href="http://elite.polito.it/ontologies/eupont.owl#description"></see></summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     /// detail
     /// <see href="http://elite.polito.it/ontologies/eupont.owl#detail"></see></summary>
-    let detail = Namespaced_IRI.parse _namespace_name "detail" |> NamespacedName
-
+    let detail = _prefix "detail"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasCategory"></see>
     /// </summary>
-    let hasCategory =
-        Namespaced_IRI.parse _namespace_name "hasCategory" |> NamespacedName
-
+    let hasCategory = _prefix "hasCategory"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasDetail"></see>
     /// </summary>
-    let hasDetail = Namespaced_IRI.parse _namespace_name "hasDetail" |> NamespacedName
-
+    let hasDetail = _prefix "hasDetail"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasRegisteredEntity"></see>
     /// </summary>
-    let hasRegisteredEntity =
-        Namespaced_IRI.parse _namespace_name "hasRegisteredEntity" |> NamespacedName
-
+    let hasRegisteredEntity = _prefix "hasRegisteredEntity"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#hasTechnology"></see>
     /// </summary>
-    let hasTechnology =
-        Namespaced_IRI.parse _namespace_name "hasTechnology" |> NamespacedName
-
+    let hasTechnology = _prefix "hasTechnology"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#location"></see>
     /// </summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
+    let location = _prefix "location"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#nominal"></see>
     /// </summary>
-    let nominal = Namespaced_IRI.parse _namespace_name "nominal" |> NamespacedName
-
+    let nominal = _prefix "nominal"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#nominalDetail"></see>
     /// </summary>
-    let nominalDetail =
-        Namespaced_IRI.parse _namespace_name "nominalDetail" |> NamespacedName
-
+    let nominalDetail = _prefix "nominalDetail"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#notificationAllowTo"></see>
     /// </summary>
-    let notificationAllowTo =
-        Namespaced_IRI.parse _namespace_name "notificationAllowTo" |> NamespacedName
-
+    let notificationAllowTo = _prefix "notificationAllowTo"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#offerAction"></see>
     /// </summary>
-    let offerAction =
-        Namespaced_IRI.parse _namespace_name "offerAction" |> NamespacedName
-
+    let offerAction = _prefix "offerAction"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#offerDetail"></see>
     /// </summary>
-    let offerDetail =
-        Namespaced_IRI.parse _namespace_name "offerDetail" |> NamespacedName
-
+    let offerDetail = _prefix "offerDetail"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#offerTrigger"></see>
     /// </summary>
-    let offerTrigger =
-        Namespaced_IRI.parse _namespace_name "offerTrigger" |> NamespacedName
-
+    let offerTrigger = _prefix "offerTrigger"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#triggers"></see>
     /// </summary>
-    let triggers = Namespaced_IRI.parse _namespace_name "triggers" |> NamespacedName
+    let triggers = _prefix "triggers"
     /// <summary>
     /// type
     /// <see href="http://elite.polito.it/ontologies/eupont.owl#type"></see></summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"
     /// <summary>
     /// value
     /// <see href="http://elite.polito.it/ontologies/eupont.owl#value"></see></summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#where"></see>
     /// </summary>
-    let where = Namespaced_IRI.parse _namespace_name "where" |> NamespacedName
+    let where = _prefix "where"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#which"></see>
     /// </summary>
-    let which = Namespaced_IRI.parse _namespace_name "which" |> NamespacedName
+    let which = _prefix "which"
     /// <summary>
     ///   <see href="http://elite.polito.it/ontologies/eupont.owl#who"></see>
     /// </summary>
-    let who = Namespaced_IRI.parse _namespace_name "who" |> NamespacedName
+    let who = _prefix "who"

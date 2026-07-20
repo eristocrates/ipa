@@ -1,1447 +1,1450 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Equities.EquityCFIClassificationIndividuals.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_eq_10962 =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonEnhancedVotingRestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonEnhancedVotingRestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonEnhancedVotingRestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonEnhancedVotingRestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESETFR"></see>
     /// </summary>
-    let ESETFR = Namespaced_IRI.parse _namespace_name "ESETFR" |> NamespacedName
+    let ESETFR = _prefix "ESETFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonEnhancedVotingRestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonEnhancedVotingRestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonEnhancedVotingRestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonEnhancedVotingRestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESETOR"></see>
     /// </summary>
-    let ESETOR = Namespaced_IRI.parse _namespace_name "ESETOR" |> NamespacedName
+    let ESETOR = _prefix "ESETOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESETPR"></see>
     /// </summary>
-    let ESETPR = Namespaced_IRI.parse _namespace_name "ESETPR" |> NamespacedName
+    let ESETPR = _prefix "ESETPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESEUFR"></see>
     /// </summary>
-    let ESEUFR = Namespaced_IRI.parse _namespace_name "ESEUFR" |> NamespacedName
+    let ESEUFR = _prefix "ESEUFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESEUOR"></see>
     /// </summary>
-    let ESEUOR = Namespaced_IRI.parse _namespace_name "ESEUOR" |> NamespacedName
+    let ESEUOR = _prefix "ESEUOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESEUPR"></see>
     /// </summary>
-    let ESEUPR = Namespaced_IRI.parse _namespace_name "ESEUPR" |> NamespacedName
+    let ESEUPR = _prefix "ESEUPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonNonVotingRestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonNonVotingRestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonNonVotingRestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonNonVotingRestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESNTFR"></see>
     /// </summary>
-    let ESNTFR = Namespaced_IRI.parse _namespace_name "ESNTFR" |> NamespacedName
+    let ESNTFR = _prefix "ESNTFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonNonVotingRestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonNonVotingRestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonNonVotingRestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonNonVotingRestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESNTOR"></see>
     /// </summary>
-    let ESNTOR = Namespaced_IRI.parse _namespace_name "ESNTOR" |> NamespacedName
+    let ESNTOR = _prefix "ESNTOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonNonVotingRestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonNonVotingRestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonNonVotingRestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonNonVotingRestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESNTPR"></see>
     /// </summary>
-    let ESNTPR = Namespaced_IRI.parse _namespace_name "ESNTPR" |> NamespacedName
+    let ESNTPR = _prefix "ESNTPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonNonVotingUnrestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonNonVotingUnrestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonNonVotingUnrestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonNonVotingUnrestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESNUFR"></see>
     /// </summary>
-    let ESNUFR = Namespaced_IRI.parse _namespace_name "ESNUFR" |> NamespacedName
+    let ESNUFR = _prefix "ESNUFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonNonVotingUnrestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonNonVotingUnrestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonNonVotingUnrestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonNonVotingUnrestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESNUOR"></see>
     /// </summary>
-    let ESNUOR = Namespaced_IRI.parse _namespace_name "ESNUOR" |> NamespacedName
+    let ESNUOR = _prefix "ESNUOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonNonVotingUnrestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonNonVotingUnrestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonNonVotingUnrestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonNonVotingUnrestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESNUPR"></see>
     /// </summary>
-    let ESNUPR = Namespaced_IRI.parse _namespace_name "ESNUPR" |> NamespacedName
+    let ESNUPR = _prefix "ESNUPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonRestrictedVotingRestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonRestrictedVotingRestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonRestrictedVotingRestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonRestrictedVotingRestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESRTFR"></see>
     /// </summary>
-    let ESRTFR = Namespaced_IRI.parse _namespace_name "ESRTFR" |> NamespacedName
+    let ESRTFR = _prefix "ESRTFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonRestrictedVotingRestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonRestrictedVotingRestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonRestrictedVotingRestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonRestrictedVotingRestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESRTOR"></see>
     /// </summary>
-    let ESRTOR = Namespaced_IRI.parse _namespace_name "ESRTOR" |> NamespacedName
+    let ESRTOR = _prefix "ESRTOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESRTPR"></see>
     /// </summary>
-    let ESRTPR = Namespaced_IRI.parse _namespace_name "ESRTPR" |> NamespacedName
+    let ESRTPR = _prefix "ESRTPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESRUFR"></see>
     /// </summary>
-    let ESRUFR = Namespaced_IRI.parse _namespace_name "ESRUFR" |> NamespacedName
+    let ESRUFR = _prefix "ESRUFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESRUOR"></see>
     /// </summary>
-    let ESRUOR = Namespaced_IRI.parse _namespace_name "ESRUOR" |> NamespacedName
+    let ESRUOR = _prefix "ESRUOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESRUPR"></see>
     /// </summary>
-    let ESRUPR = Namespaced_IRI.parse _namespace_name "ESRUPR" |> NamespacedName
+    let ESRUPR = _prefix "ESRUPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonVotingRestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonVotingRestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonVotingRestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonVotingRestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESVTFR"></see>
     /// </summary>
-    let ESVTFR = Namespaced_IRI.parse _namespace_name "ESVTFR" |> NamespacedName
+    let ESVTFR = _prefix "ESVTFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonVotingRestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonVotingRestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonVotingRestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonVotingRestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESVTOR"></see>
     /// </summary>
-    let ESVTOR = Namespaced_IRI.parse _namespace_name "ESVTOR" |> NamespacedName
+    let ESVTOR = _prefix "ESVTOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonVotingRestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonVotingRestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonVotingRestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonVotingRestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESVTPR"></see>
     /// </summary>
-    let ESVTPR = Namespaced_IRI.parse _namespace_name "ESVTPR" |> NamespacedName
+    let ESVTPR = _prefix "ESVTPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonVotingUnrestrictedFullyPaidRegisteredShare"></see>
     /// </summary>
     let CommonVotingUnrestrictedFullyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonVotingUnrestrictedFullyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonVotingUnrestrictedFullyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESVUFR"></see>
     /// </summary>
-    let ESVUFR = Namespaced_IRI.parse _namespace_name "ESVUFR" |> NamespacedName
+    let ESVUFR = _prefix "ESVUFR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonVotingUnrestrictedNilPaidRegisteredShare"></see>
     /// </summary>
     let CommonVotingUnrestrictedNilPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonVotingUnrestrictedNilPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonVotingUnrestrictedNilPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESVUOR"></see>
     /// </summary>
-    let ESVUOR = Namespaced_IRI.parse _namespace_name "ESVUOR" |> NamespacedName
+    let ESVUOR = _prefix "ESVUOR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/CommonVotingUnrestrictedPartlyPaidRegisteredShare"></see>
     /// </summary>
     let CommonVotingUnrestrictedPartlyPaidRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "CommonVotingUnrestrictedPartlyPaidRegisteredShare" |> NamespacedName
+        _prefix "CommonVotingUnrestrictedPartlyPaidRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/ESVUPR"></see>
     /// </summary>
-    let ESVUPR = Namespaced_IRI.parse _namespace_name "ESVUPR" |> NamespacedName
+    let ESVUPR = _prefix "ESVUPR"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingPerpetualParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingPerpetualParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingPerpetualParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingPerpetualParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredEnhancedVotingRedeemableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredEnhancedVotingRedeemableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredEnhancedVotingRedeemableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredEnhancedVotingRedeemableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingPerpetualParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingPerpetualParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingPerpetualParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingPerpetualParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredNonVotingRedeemableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredNonVotingRedeemableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredNonVotingRedeemableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredNonVotingRedeemableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingPerpetualParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingPerpetualParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingPerpetualParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingPerpetualParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredRestrictedVotingRedeemableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredRestrictedVotingRedeemableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredRestrictedVotingRedeemableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredRestrictedVotingRedeemableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingPerpetualParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingPerpetualParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingPerpetualParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingPerpetualParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExchangeableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExchangeableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExchangeableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExchangeableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableCumulativeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableCumulativeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableCumulativeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableCumulativeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableExtendableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableExtendableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableExtendableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableExtendableParticipatingRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableFixedIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableFixedIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableFixedIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableFixedIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableNormalIncomeRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableNormalIncomeRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableNormalIncomeRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableNormalIncomeRegisteredShare"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/PreferredVotingRedeemableParticipatingRegisteredShare"></see>
     /// </summary>
     let PreferredVotingRedeemableParticipatingRegisteredShare =
-        Namespaced_IRI.parse _namespace_name "PreferredVotingRedeemableParticipatingRegisteredShare" |> NamespacedName
+        _prefix "PreferredVotingRedeemableParticipatingRegisteredShare"

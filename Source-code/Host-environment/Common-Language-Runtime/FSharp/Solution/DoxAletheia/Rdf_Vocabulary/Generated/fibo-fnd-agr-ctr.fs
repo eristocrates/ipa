@@ -1,444 +1,307 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Agreements.Contracts.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_agr_ctr =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isEvidenceFor"></see>
     /// </summary>
-    let isEvidenceFor =
-        Namespaced_IRI.parse _namespace_name "isEvidenceFor" |> NamespacedName
-
+    let isEvidenceFor = _prefix "isEvidenceFor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/AssignableContract"></see>
     /// </summary>
-    let AssignableContract =
-        Namespaced_IRI.parse _namespace_name "AssignableContract" |> NamespacedName
-
+    let AssignableContract = _prefix "AssignableContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/TransferableContract"></see>
     /// </summary>
-    let TransferableContract =
-        Namespaced_IRI.parse _namespace_name "TransferableContract" |> NamespacedName
-
+    let TransferableContract = _prefix "TransferableContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isAssignable"></see>
     /// </summary>
-    let isAssignable =
-        Namespaced_IRI.parse _namespace_name "isAssignable" |> NamespacedName
-
+    let isAssignable = _prefix "isAssignable"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BilateralContract"></see>
     /// </summary>
-    let BilateralContract =
-        Namespaced_IRI.parse _namespace_name "BilateralContract" |> NamespacedName
-
+    let BilateralContract = _prefix "BilateralContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/WrittenContract"></see>
     /// </summary>
-    let WrittenContract =
-        Namespaced_IRI.parse _namespace_name "WrittenContract" |> NamespacedName
-
+    let WrittenContract = _prefix "WrittenContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BilateralNettingProvision"></see>
     /// </summary>
-    let BilateralNettingProvision =
-        Namespaced_IRI.parse _namespace_name "BilateralNettingProvision" |> NamespacedName
-
+    let BilateralNettingProvision = _prefix "BilateralNettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NettingProvision"></see>
     /// </summary>
-    let NettingProvision =
-        Namespaced_IRI.parse _namespace_name "NettingProvision" |> NamespacedName
-
+    let NettingProvision = _prefix "NettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BreachOfContract"></see>
     /// </summary>
-    let BreachOfContract =
-        Namespaced_IRI.parse _namespace_name "BreachOfContract" |> NamespacedName
-
+    let BreachOfContract = _prefix "BreachOfContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract"></see>
     /// </summary>
-    let Contract = Namespaced_IRI.parse _namespace_name "Contract" |> NamespacedName
-
+    let Contract = _prefix "Contract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractualCommitment"></see>
     /// </summary>
-    let ContractualCommitment =
-        Namespaced_IRI.parse _namespace_name "ContractualCommitment" |> NamespacedName
-
+    let ContractualCommitment = _prefix "ContractualCommitment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/BreachOfCovenant"></see>
     /// </summary>
-    let BreachOfCovenant =
-        Namespaced_IRI.parse _namespace_name "BreachOfCovenant" |> NamespacedName
-
+    let BreachOfCovenant = _prefix "BreachOfCovenant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/CloseOutNettingProvision"></see>
     /// </summary>
-    let CloseOutNettingProvision =
-        Namespaced_IRI.parse _namespace_name "CloseOutNettingProvision" |> NamespacedName
-
+    let CloseOutNettingProvision = _prefix "CloseOutNettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/SettlementNettingProvision"></see>
     /// </summary>
-    let SettlementNettingProvision =
-        Namespaced_IRI.parse _namespace_name "SettlementNettingProvision" |> NamespacedName
-
+    let SettlementNettingProvision = _prefix "SettlementNettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/CollateralAgreement"></see>
     /// </summary>
-    let CollateralAgreement =
-        Namespaced_IRI.parse _namespace_name "CollateralAgreement" |> NamespacedName
-
+    let CollateralAgreement = _prefix "CollateralAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isSubordinateTo"></see>
     /// </summary>
-    let isSubordinateTo =
-        Namespaced_IRI.parse _namespace_name "isSubordinateTo" |> NamespacedName
-
+    let isSubordinateTo = _prefix "isSubordinateTo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ConditionPrecedent"></see>
     /// </summary>
-    let ConditionPrecedent =
-        Namespaced_IRI.parse _namespace_name "ConditionPrecedent" |> NamespacedName
-
+    let ConditionPrecedent = _prefix "ConditionPrecedent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractualElement"></see>
     /// </summary>
-    let ContractualElement =
-        Namespaced_IRI.parse _namespace_name "ContractualElement" |> NamespacedName
-
+    let ContractualElement = _prefix "ContractualElement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEffectiveDate"></see>
     /// </summary>
-    let hasEffectiveDate =
-        Namespaced_IRI.parse _namespace_name "hasEffectiveDate" |> NamespacedName
-
+    let hasEffectiveDate = _prefix "hasEffectiveDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractParty"></see>
     /// </summary>
-    let hasContractParty =
-        Namespaced_IRI.parse _namespace_name "hasContractParty" |> NamespacedName
-
+    let hasContractParty = _prefix "hasContractParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractParty"></see>
     /// </summary>
-    let ContractParty =
-        Namespaced_IRI.parse _namespace_name "ContractParty" |> NamespacedName
-
+    let ContractParty = _prefix "ContractParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractualElement"></see>
     /// </summary>
-    let hasContractualElement =
-        Namespaced_IRI.parse _namespace_name "hasContractualElement" |> NamespacedName
-
+    let hasContractualElement = _prefix "hasContractualElement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractDocument"></see>
     /// </summary>
-    let ContractDocument =
-        Namespaced_IRI.parse _namespace_name "ContractDocument" |> NamespacedName
-
+    let ContractDocument = _prefix "ContractDocument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractMilestone"></see>
     /// </summary>
-    let ContractMilestone =
-        Namespaced_IRI.parse _namespace_name "ContractMilestone" |> NamespacedName
-
+    let ContractMilestone = _prefix "ContractMilestone"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MilestoneEvent"></see>
     /// </summary>
-    let MilestoneEvent =
-        Namespaced_IRI.parse _namespace_name "MilestoneEvent" |> NamespacedName
-
+    let MilestoneEvent = _prefix "MilestoneEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractPrincipal"></see>
     /// </summary>
-    let ContractPrincipal =
-        Namespaced_IRI.parse _namespace_name "ContractPrincipal" |> NamespacedName
-
+    let ContractPrincipal = _prefix "ContractPrincipal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractThirdParty"></see>
     /// </summary>
-    let ContractThirdParty =
-        Namespaced_IRI.parse _namespace_name "ContractThirdParty" |> NamespacedName
-
+    let ContractThirdParty = _prefix "ContractThirdParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractualDefinition"></see>
     /// </summary>
-    let ContractualDefinition =
-        Namespaced_IRI.parse _namespace_name "ContractualDefinition" |> NamespacedName
-
+    let ContractualDefinition = _prefix "ContractualDefinition"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasLegalDescription"></see>
     /// </summary>
-    let hasLegalDescription =
-        Namespaced_IRI.parse _namespace_name "hasLegalDescription" |> NamespacedName
-
+    let hasLegalDescription = _prefix "hasLegalDescription"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Counterparty"></see>
     /// </summary>
-    let Counterparty =
-        Namespaced_IRI.parse _namespace_name "Counterparty" |> NamespacedName
-
+    let Counterparty = _prefix "Counterparty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/DisclosureProvision"></see>
     /// </summary>
-    let DisclosureProvision =
-        Namespaced_IRI.parse _namespace_name "DisclosureProvision" |> NamespacedName
-
+    let DisclosureProvision = _prefix "DisclosureProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/EarlyTerminationProvision"></see>
     /// </summary>
-    let EarlyTerminationProvision =
-        Namespaced_IRI.parse _namespace_name "EarlyTerminationProvision" |> NamespacedName
-
+    let EarlyTerminationProvision = _prefix "EarlyTerminationProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/TerminationProvision"></see>
     /// </summary>
-    let TerminationProvision =
-        Namespaced_IRI.parse _namespace_name "TerminationProvision" |> NamespacedName
-
+    let TerminationProvision = _prefix "TerminationProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ExtensionProvision"></see>
     /// </summary>
-    let ExtensionProvision =
-        Namespaced_IRI.parse _namespace_name "ExtensionProvision" |> NamespacedName
-
+    let ExtensionProvision = _prefix "ExtensionProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExtendablePeriod"></see>
     /// </summary>
-    let hasExtendablePeriod =
-        Namespaced_IRI.parse _namespace_name "hasExtendablePeriod" |> NamespacedName
-
+    let hasExtendablePeriod = _prefix "hasExtendablePeriod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MasterAgreement"></see>
     /// </summary>
-    let MasterAgreement =
-        Namespaced_IRI.parse _namespace_name "MasterAgreement" |> NamespacedName
-
+    let MasterAgreement = _prefix "MasterAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MilestoneSchedule"></see>
     /// </summary>
-    let MilestoneSchedule =
-        Namespaced_IRI.parse _namespace_name "MilestoneSchedule" |> NamespacedName
-
+    let MilestoneSchedule = _prefix "MilestoneSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MultilateralContract"></see>
     /// </summary>
-    let MultilateralContract =
-        Namespaced_IRI.parse _namespace_name "MultilateralContract" |> NamespacedName
-
+    let MultilateralContract = _prefix "MultilateralContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MultilateralNettingProvision"></see>
     /// </summary>
-    let MultilateralNettingProvision =
-        Namespaced_IRI.parse _namespace_name "MultilateralNettingProvision" |> NamespacedName
-
+    let MultilateralNettingProvision = _prefix "MultilateralNettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/MutualContractualAgreement"></see>
     /// </summary>
-    let MutualContractualAgreement =
-        Namespaced_IRI.parse _namespace_name "MutualContractualAgreement" |> NamespacedName
-
+    let MutualContractualAgreement = _prefix "MutualContractualAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NonBindingTerm"></see>
     /// </summary>
-    let NonBindingTerm =
-        Namespaced_IRI.parse _namespace_name "NonBindingTerm" |> NamespacedName
-
+    let NonBindingTerm = _prefix "NonBindingTerm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NonTransferableContract"></see>
     /// </summary>
-    let NonTransferableContract =
-        Namespaced_IRI.parse _namespace_name "NonTransferableContract" |> NamespacedName
-
+    let NonTransferableContract = _prefix "NonTransferableContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NotificationProvision"></see>
     /// </summary>
-    let NotificationProvision =
-        Namespaced_IRI.parse _namespace_name "NotificationProvision" |> NamespacedName
-
+    let NotificationProvision = _prefix "NotificationProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NovateableContract"></see>
     /// </summary>
-    let NovateableContract =
-        Namespaced_IRI.parse _namespace_name "NovateableContract" |> NamespacedName
-
+    let NovateableContract = _prefix "NovateableContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/NovationNettingProvision"></see>
     /// </summary>
-    let NovationNettingProvision =
-        Namespaced_IRI.parse _namespace_name "NovationNettingProvision" |> NamespacedName
-
+    let NovationNettingProvision = _prefix "NovationNettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/PaymentNettingProvision"></see>
     /// </summary>
-    let PaymentNettingProvision =
-        Namespaced_IRI.parse _namespace_name "PaymentNettingProvision" |> NamespacedName
-
+    let PaymentNettingProvision = _prefix "PaymentNettingProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Representation"></see>
     /// </summary>
-    let Representation =
-        Namespaced_IRI.parse _namespace_name "Representation" |> NamespacedName
-
+    let Representation = _prefix "Representation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/TermSheet"></see>
     /// </summary>
-    let TermSheet = Namespaced_IRI.parse _namespace_name "TermSheet" |> NamespacedName
-
+    let TermSheet = _prefix "TermSheet"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasNonBindingTerm"></see>
     /// </summary>
-    let hasNonBindingTerm =
-        Namespaced_IRI.parse _namespace_name "hasNonBindingTerm" |> NamespacedName
-
+    let hasNonBindingTerm = _prefix "hasNonBindingTerm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/UnilateralContract"></see>
     /// </summary>
-    let UnilateralContract =
-        Namespaced_IRI.parse _namespace_name "UnilateralContract" |> NamespacedName
-
+    let UnilateralContract = _prefix "UnilateralContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/UseOfProceedsProvision"></see>
     /// </summary>
-    let UseOfProceedsProvision =
-        Namespaced_IRI.parse _namespace_name "UseOfProceedsProvision" |> NamespacedName
-
+    let UseOfProceedsProvision = _prefix "UseOfProceedsProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/VerbalContract"></see>
     /// </summary>
-    let VerbalContract =
-        Namespaced_IRI.parse _namespace_name "VerbalContract" |> NamespacedName
-
+    let VerbalContract = _prefix "VerbalContract"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Warranty"></see>
     /// </summary>
-    let Warranty = Namespaced_IRI.parse _namespace_name "Warranty" |> NamespacedName
-
+    let Warranty = _prefix "Warranty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExecutionDate"></see>
     /// </summary>
-    let hasExecutionDate =
-        Namespaced_IRI.parse _namespace_name "hasExecutionDate" |> NamespacedName
-
+    let hasExecutionDate = _prefix "hasExecutionDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEffectiveDateTimeStamp"></see>
     /// </summary>
-    let hasEffectiveDateTimeStamp =
-        Namespaced_IRI.parse _namespace_name "hasEffectiveDateTimeStamp" |> NamespacedName
-
+    let hasEffectiveDateTimeStamp = _prefix "hasEffectiveDateTimeStamp"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExecutionDateTimeStamp"></see>
     /// </summary>
-    let hasExecutionDateTimeStamp =
-        Namespaced_IRI.parse _namespace_name "hasExecutionDateTimeStamp" |> NamespacedName
-
+    let hasExecutionDateTimeStamp = _prefix "hasExecutionDateTimeStamp"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasCounterparty"></see>
     /// </summary>
-    let hasCounterparty =
-        Namespaced_IRI.parse _namespace_name "hasCounterparty" |> NamespacedName
-
+    let hasCounterparty = _prefix "hasCounterparty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasPrincipalParty"></see>
     /// </summary>
-    let hasPrincipalParty =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalParty" |> NamespacedName
-
+    let hasPrincipalParty = _prefix "hasPrincipalParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isEvidencedBy"></see>
     /// </summary>
-    let isEvidencedBy =
-        Namespaced_IRI.parse _namespace_name "isEvidencedBy" |> NamespacedName
-
+    let isEvidencedBy = _prefix "isEvidencedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/definesTermsFor"></see>
     /// </summary>
-    let definesTermsFor =
-        Namespaced_IRI.parse _namespace_name "definesTermsFor" |> NamespacedName
-
+    let definesTermsFor = _prefix "definesTermsFor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasBeneficiary"></see>
     /// </summary>
-    let hasBeneficiary =
-        Namespaced_IRI.parse _namespace_name "hasBeneficiary" |> NamespacedName
-
+    let hasBeneficiary = _prefix "hasBeneficiary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractDuration"></see>
     /// </summary>
-    let hasContractDuration =
-        Namespaced_IRI.parse _namespace_name "hasContractDuration" |> NamespacedName
-
+    let hasContractDuration = _prefix "hasContractDuration"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasTerm"></see>
     /// </summary>
-    let hasTerm = Namespaced_IRI.parse _namespace_name "hasTerm" |> NamespacedName
-
+    let hasTerm = _prefix "hasTerm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasEarlyTerminationDate"></see>
     /// </summary>
-    let hasEarlyTerminationDate =
-        Namespaced_IRI.parse _namespace_name "hasEarlyTerminationDate" |> NamespacedName
-
+    let hasEarlyTerminationDate = _prefix "hasEarlyTerminationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasExtensionProvision"></see>
     /// </summary>
-    let hasExtensionProvision =
-        Namespaced_IRI.parse _namespace_name "hasExtensionProvision" |> NamespacedName
-
+    let hasExtensionProvision = _prefix "hasExtensionProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasGoverningJurisdiction"></see>
     /// </summary>
-    let hasGoverningJurisdiction =
-        Namespaced_IRI.parse _namespace_name "hasGoverningJurisdiction" |> NamespacedName
-
+    let hasGoverningJurisdiction = _prefix "hasGoverningJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasMilestoneProvision"></see>
     /// </summary>
-    let hasMilestoneProvision =
-        Namespaced_IRI.parse _namespace_name "hasMilestoneProvision" |> NamespacedName
-
+    let hasMilestoneProvision = _prefix "hasMilestoneProvision"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasThirdParty"></see>
     /// </summary>
-    let hasThirdParty =
-        Namespaced_IRI.parse _namespace_name "hasThirdParty" |> NamespacedName
-
+    let hasThirdParty = _prefix "hasThirdParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isBeneficiaryOf"></see>
     /// </summary>
-    let isBeneficiaryOf =
-        Namespaced_IRI.parse _namespace_name "isBeneficiaryOf" |> NamespacedName
-
+    let isBeneficiaryOf = _prefix "isBeneficiaryOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isNettingAutomatic"></see>
     /// </summary>
-    let isNettingAutomatic =
-        Namespaced_IRI.parse _namespace_name "isNettingAutomatic" |> NamespacedName
-
+    let isNettingAutomatic = _prefix "isNettingAutomatic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isPrimaryContractFor"></see>
     /// </summary>
-    let isPrimaryContractFor =
-        Namespaced_IRI.parse _namespace_name "isPrimaryContractFor" |> NamespacedName
-
+    let isPrimaryContractFor = _prefix "isPrimaryContractFor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/isQualifiedBy"></see>
     /// </summary>
-    let isQualifiedBy =
-        Namespaced_IRI.parse _namespace_name "isQualifiedBy" |> NamespacedName
-
+    let isQualifiedBy = _prefix "isQualifiedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/qualifies"></see>
     /// </summary>
-    let qualifies = Namespaced_IRI.parse _namespace_name "qualifies" |> NamespacedName
+    let qualifies = _prefix "qualifies"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/supersedes"></see>
     /// </summary>
-    let supersedes = Namespaced_IRI.parse _namespace_name "supersedes" |> NamespacedName
+    let supersedes = _prefix "supersedes"

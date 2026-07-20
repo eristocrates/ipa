@@ -1,169 +1,131 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.EuropeanJurisdiction.WesternEuropeGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_weuj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/AustrianEntity"></see>
     /// </summary>
-    let AustrianEntity =
-        Namespaced_IRI.parse _namespace_name "AustrianEntity" |> NamespacedName
-
+    let AustrianEntity = _prefix "AustrianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfAustria"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfAustria =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfAustria" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfAustria = _prefix "GovernmentOfTheRepublicOfAustria"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/BelgianEntity"></see>
     /// </summary>
-    let BelgianEntity =
-        Namespaced_IRI.parse _namespace_name "BelgianEntity" |> NamespacedName
-
+    let BelgianEntity = _prefix "BelgianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfBelgium"></see>
     /// </summary>
-    let GovernmentOfTheKingdomOfBelgium =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfBelgium" |> NamespacedName
-
+    let GovernmentOfTheKingdomOfBelgium = _prefix "GovernmentOfTheKingdomOfBelgium"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/FrenchEntity"></see>
     /// </summary>
-    let FrenchEntity =
-        Namespaced_IRI.parse _namespace_name "FrenchEntity" |> NamespacedName
-
+    let FrenchEntity = _prefix "FrenchEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheFrenchRepublic"></see>
     /// </summary>
-    let GovernmentOfTheFrenchRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheFrenchRepublic" |> NamespacedName
-
+    let GovernmentOfTheFrenchRepublic = _prefix "GovernmentOfTheFrenchRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GermanEntity"></see>
     /// </summary>
-    let GermanEntity =
-        Namespaced_IRI.parse _namespace_name "GermanEntity" |> NamespacedName
+    let GermanEntity = _prefix "GermanEntity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheFederalRepublicOfGermany"></see>
     /// </summary>
     let GovernmentOfTheFederalRepublicOfGermany =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheFederalRepublicOfGermany" |> NamespacedName
+        _prefix "GovernmentOfTheFederalRepublicOfGermany"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfGermany"></see>
     /// </summary>
-    let JurisdictionOfGermany =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfGermany" |> NamespacedName
-
+    let JurisdictionOfGermany = _prefix "JurisdictionOfGermany"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfFrance"></see>
     /// </summary>
-    let JurisdictionOfFrance =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfFrance" |> NamespacedName
+    let JurisdictionOfFrance = _prefix "JurisdictionOfFrance"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheGrandDuchyOfLuxembourg"></see>
     /// </summary>
     let GovernmentOfTheGrandDuchyOfLuxembourg =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheGrandDuchyOfLuxembourg" |> NamespacedName
+        _prefix "GovernmentOfTheGrandDuchyOfLuxembourg"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfLuxembourg"></see>
     /// </summary>
-    let JurisdictionOfLuxembourg =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfLuxembourg" |> NamespacedName
-
+    let JurisdictionOfLuxembourg = _prefix "JurisdictionOfLuxembourg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfBelgium"></see>
     /// </summary>
-    let JurisdictionOfBelgium =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfBelgium" |> NamespacedName
-
+    let JurisdictionOfBelgium = _prefix "JurisdictionOfBelgium"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheNetherlands"></see>
     /// </summary>
-    let GovernmentOfTheNetherlands =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheNetherlands" |> NamespacedName
-
+    let GovernmentOfTheNetherlands = _prefix "GovernmentOfTheNetherlands"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfTheNetherlands"></see>
     /// </summary>
-    let JurisdictionOfTheNetherlands =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheNetherlands" |> NamespacedName
+    let JurisdictionOfTheNetherlands = _prefix "JurisdictionOfTheNetherlands"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfThePrincipalityOfLiechtenstein"></see>
     /// </summary>
     let GovernmentOfThePrincipalityOfLiechtenstein =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfThePrincipalityOfLiechtenstein" |> NamespacedName
+        _prefix "GovernmentOfThePrincipalityOfLiechtenstein"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfLiechtenstein"></see>
     /// </summary>
-    let JurisdictionOfLiechtenstein =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfLiechtenstein" |> NamespacedName
+    let JurisdictionOfLiechtenstein = _prefix "JurisdictionOfLiechtenstein"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfThePrincipalityOfMonaco"></see>
     /// </summary>
     let GovernmentOfThePrincipalityOfMonaco =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfThePrincipalityOfMonaco" |> NamespacedName
+        _prefix "GovernmentOfThePrincipalityOfMonaco"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfMonaco"></see>
     /// </summary>
-    let JurisdictionOfMonaco =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfMonaco" |> NamespacedName
-
+    let JurisdictionOfMonaco = _prefix "JurisdictionOfMonaco"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfAustria"></see>
     /// </summary>
-    let JurisdictionOfAustria =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfAustria" |> NamespacedName
-
+    let JurisdictionOfAustria = _prefix "JurisdictionOfAustria"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheSwissConfederation"></see>
     /// </summary>
-    let GovernmentOfTheSwissConfederation =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheSwissConfederation" |> NamespacedName
-
+    let GovernmentOfTheSwissConfederation = _prefix "GovernmentOfTheSwissConfederation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfSwitzerland"></see>
     /// </summary>
-    let JurisdictionOfSwitzerland =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSwitzerland" |> NamespacedName
-
+    let JurisdictionOfSwitzerland = _prefix "JurisdictionOfSwitzerland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/LiechtensteinerEntity"></see>
     /// </summary>
-    let LiechtensteinerEntity =
-        Namespaced_IRI.parse _namespace_name "LiechtensteinerEntity" |> NamespacedName
-
+    let LiechtensteinerEntity = _prefix "LiechtensteinerEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/LuxembourgerEntity"></see>
     /// </summary>
-    let LuxembourgerEntity =
-        Namespaced_IRI.parse _namespace_name "LuxembourgerEntity" |> NamespacedName
-
+    let LuxembourgerEntity = _prefix "LuxembourgerEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/MonegasqueEntity"></see>
     /// </summary>
-    let MonegasqueEntity =
-        Namespaced_IRI.parse _namespace_name "MonegasqueEntity" |> NamespacedName
-
+    let MonegasqueEntity = _prefix "MonegasqueEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/NetherlandsEntity"></see>
     /// </summary>
-    let NetherlandsEntity =
-        Namespaced_IRI.parse _namespace_name "NetherlandsEntity" |> NamespacedName
-
+    let NetherlandsEntity = _prefix "NetherlandsEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/SwissEntity"></see>
     /// </summary>
-    let SwissEntity =
-        Namespaced_IRI.parse _namespace_name "SwissEntity" |> NamespacedName
+    let SwissEntity = _prefix "SwissEntity"

@@ -1,407 +1,290 @@
 namespace http.w3id.org.nfdi4ing.metadata4ing.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module m4i =
     let _namespace_name = "http://w3id.org/nfdi4ing/metadata4ing#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#ProcessingStep"></see>
     /// </summary>
-    let ProcessingStep =
-        Namespaced_IRI.parse _namespace_name "ProcessingStep" |> NamespacedName
-
+    let ProcessingStep = _prefix "ProcessingStep"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#ContactPerson"></see>
     /// </summary>
-    let ContactPerson =
-        Namespaced_IRI.parse _namespace_name "ContactPerson" |> NamespacedName
-
+    let ContactPerson = _prefix "ContactPerson"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#DataCollector"></see>
     /// </summary>
-    let DataCollector =
-        Namespaced_IRI.parse _namespace_name "DataCollector" |> NamespacedName
-
+    let DataCollector = _prefix "DataCollector"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#DataCurator"></see>
     /// </summary>
-    let DataCurator =
-        Namespaced_IRI.parse _namespace_name "DataCurator" |> NamespacedName
-
+    let DataCurator = _prefix "DataCurator"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#DataManager"></see>
     /// </summary>
-    let DataManager =
-        Namespaced_IRI.parse _namespace_name "DataManager" |> NamespacedName
-
+    let DataManager = _prefix "DataManager"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Distributor"></see>
     /// </summary>
-    let Distributor =
-        Namespaced_IRI.parse _namespace_name "Distributor" |> NamespacedName
-
+    let Distributor = _prefix "Distributor"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Editor"></see>
     /// </summary>
-    let Editor = Namespaced_IRI.parse _namespace_name "Editor" |> NamespacedName
-
+    let Editor = _prefix "Editor"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#HostingInstitution"></see>
     /// </summary>
-    let HostingInstitution =
-        Namespaced_IRI.parse _namespace_name "HostingInstitution" |> NamespacedName
-
+    let HostingInstitution = _prefix "HostingInstitution"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Method"></see>
     /// </summary>
-    let Method = Namespaced_IRI.parse _namespace_name "Method" |> NamespacedName
-
+    let Method = _prefix "Method"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#NumericalAssignment"></see>
     /// </summary>
-    let NumericalAssignment =
-        Namespaced_IRI.parse _namespace_name "NumericalAssignment" |> NamespacedName
-
+    let NumericalAssignment = _prefix "NumericalAssignment"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#NumericalVariable"></see>
     /// </summary>
-    let NumericalVariable =
-        Namespaced_IRI.parse _namespace_name "NumericalVariable" |> NamespacedName
-
+    let NumericalVariable = _prefix "NumericalVariable"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Other"></see>
     /// </summary>
-    let Other = Namespaced_IRI.parse _namespace_name "Other" |> NamespacedName
+    let Other = _prefix "Other"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Producer"></see>
     /// </summary>
-    let Producer = Namespaced_IRI.parse _namespace_name "Producer" |> NamespacedName
-
+    let Producer = _prefix "Producer"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#ProjectLeader"></see>
     /// </summary>
-    let ProjectLeader =
-        Namespaced_IRI.parse _namespace_name "ProjectLeader" |> NamespacedName
-
+    let ProjectLeader = _prefix "ProjectLeader"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#ProjectManager"></see>
     /// </summary>
-    let ProjectManager =
-        Namespaced_IRI.parse _namespace_name "ProjectManager" |> NamespacedName
-
+    let ProjectManager = _prefix "ProjectManager"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#ProjectMember"></see>
     /// </summary>
-    let ProjectMember =
-        Namespaced_IRI.parse _namespace_name "ProjectMember" |> NamespacedName
-
+    let ProjectMember = _prefix "ProjectMember"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#RegistrationAgency"></see>
     /// </summary>
-    let RegistrationAgency =
-        Namespaced_IRI.parse _namespace_name "RegistrationAgency" |> NamespacedName
-
+    let RegistrationAgency = _prefix "RegistrationAgency"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#RegistrationAuthority"></see>
     /// </summary>
-    let RegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "RegistrationAuthority" |> NamespacedName
-
+    let RegistrationAuthority = _prefix "RegistrationAuthority"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#RelatedPerson"></see>
     /// </summary>
-    let RelatedPerson =
-        Namespaced_IRI.parse _namespace_name "RelatedPerson" |> NamespacedName
-
+    let RelatedPerson = _prefix "RelatedPerson"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#ResearchGroup"></see>
     /// </summary>
-    let ResearchGroup =
-        Namespaced_IRI.parse _namespace_name "ResearchGroup" |> NamespacedName
-
+    let ResearchGroup = _prefix "ResearchGroup"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Researcher"></see>
     /// </summary>
-    let Researcher = Namespaced_IRI.parse _namespace_name "Researcher" |> NamespacedName
-
+    let Researcher = _prefix "Researcher"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#RightsHolder"></see>
     /// </summary>
-    let RightsHolder =
-        Namespaced_IRI.parse _namespace_name "RightsHolder" |> NamespacedName
-
+    let RightsHolder = _prefix "RightsHolder"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Sponsor"></see>
     /// </summary>
-    let Sponsor = Namespaced_IRI.parse _namespace_name "Sponsor" |> NamespacedName
+    let Sponsor = _prefix "Sponsor"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Supervisor"></see>
     /// </summary>
-    let Supervisor = Namespaced_IRI.parse _namespace_name "Supervisor" |> NamespacedName
-
+    let Supervisor = _prefix "Supervisor"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#TextVariable"></see>
     /// </summary>
-    let TextVariable =
-        Namespaced_IRI.parse _namespace_name "TextVariable" |> NamespacedName
-
+    let TextVariable = _prefix "TextVariable"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#Tool"></see>
     /// </summary>
-    let Tool = Namespaced_IRI.parse _namespace_name "Tool" |> NamespacedName
-
+    let Tool = _prefix "Tool"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#UncertaintyDeclaration"></see>
     /// </summary>
-    let UncertaintyDeclaration =
-        Namespaced_IRI.parse _namespace_name "UncertaintyDeclaration" |> NamespacedName
-
+    let UncertaintyDeclaration = _prefix "UncertaintyDeclaration"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#UsageInstruction"></see>
     /// </summary>
-    let UsageInstruction =
-        Namespaced_IRI.parse _namespace_name "UsageInstruction" |> NamespacedName
-
+    let UsageInstruction = _prefix "UsageInstruction"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#WorkPackageLeader"></see>
     /// </summary>
-    let WorkPackageLeader =
-        Namespaced_IRI.parse _namespace_name "WorkPackageLeader" |> NamespacedName
-
+    let WorkPackageLeader = _prefix "WorkPackageLeader"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#endOfProject"></see>
     /// </summary>
-    let endOfProject =
-        Namespaced_IRI.parse _namespace_name "endOfProject" |> NamespacedName
-
+    let endOfProject = _prefix "endOfProject"
     /// <summary>
     /// redundant information: applicable unit can be deduced from quantity kind. If one wants to enforce the use of a specific unit, use a SHACL constraint.
     /// <see href="http://w3id.org/nfdi4ing/metadata4ing#hasAdmissibleUnit"></see></summary>
-    let hasAdmissibleUnit =
-        Namespaced_IRI.parse _namespace_name "hasAdmissibleUnit" |> NamespacedName
-
+    let hasAdmissibleUnit = _prefix "hasAdmissibleUnit"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasAdmissibleValue"></see>
     /// </summary>
-    let hasAdmissibleValue =
-        Namespaced_IRI.parse _namespace_name "hasAdmissibleValue" |> NamespacedName
-
+    let hasAdmissibleValue = _prefix "hasAdmissibleValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasAssignedValue"></see>
     /// </summary>
-    let hasAssignedValue =
-        Namespaced_IRI.parse _namespace_name "hasAssignedValue" |> NamespacedName
-
+    let hasAssignedValue = _prefix "hasAssignedValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasAssignmentTimestamp"></see>
     /// </summary>
-    let hasAssignmentTimestamp =
-        Namespaced_IRI.parse _namespace_name "hasAssignmentTimestamp" |> NamespacedName
-
+    let hasAssignmentTimestamp = _prefix "hasAssignmentTimestamp"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasCoverageInterval"></see>
     /// </summary>
-    let hasCoverageInterval =
-        Namespaced_IRI.parse _namespace_name "hasCoverageInterval" |> NamespacedName
-
+    let hasCoverageInterval = _prefix "hasCoverageInterval"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasUncertaintyDeclaration"></see>
     /// </summary>
-    let hasUncertaintyDeclaration =
-        Namespaced_IRI.parse _namespace_name "hasUncertaintyDeclaration" |> NamespacedName
-
+    let hasUncertaintyDeclaration = _prefix "hasUncertaintyDeclaration"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasDateAssignmentCreated"></see>
     /// </summary>
-    let hasDateAssignmentCreated =
-        Namespaced_IRI.parse _namespace_name "hasDateAssignmentCreated" |> NamespacedName
-
+    let hasDateAssignmentCreated = _prefix "hasDateAssignmentCreated"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasDateAssignmentDeleted"></see>
     /// </summary>
-    let hasDateAssignmentDeleted =
-        Namespaced_IRI.parse _namespace_name "hasDateAssignmentDeleted" |> NamespacedName
-
+    let hasDateAssignmentDeleted = _prefix "hasDateAssignmentDeleted"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasDateAssignmentModified"></see>
     /// </summary>
-    let hasDateAssignmentModified =
-        Namespaced_IRI.parse _namespace_name "hasDateAssignmentModified" |> NamespacedName
-
+    let hasDateAssignmentModified = _prefix "hasDateAssignmentModified"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasDateAssignmentValidFrom"></see>
     /// </summary>
-    let hasDateAssignmentValidFrom =
-        Namespaced_IRI.parse _namespace_name "hasDateAssignmentValidFrom" |> NamespacedName
-
+    let hasDateAssignmentValidFrom = _prefix "hasDateAssignmentValidFrom"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasDateAssignmentValidUntil"></see>
     /// </summary>
-    let hasDateAssignmentValidUntil =
-        Namespaced_IRI.parse _namespace_name "hasDateAssignmentValidUntil" |> NamespacedName
-
+    let hasDateAssignmentValidUntil = _prefix "hasDateAssignmentValidUntil"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasEmployedTool"></see>
     /// </summary>
-    let hasEmployedTool =
-        Namespaced_IRI.parse _namespace_name "hasEmployedTool" |> NamespacedName
-
+    let hasEmployedTool = _prefix "hasEmployedTool"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#isEmployedToolIn"></see>
     /// </summary>
-    let isEmployedToolIn =
-        Namespaced_IRI.parse _namespace_name "isEmployedToolIn" |> NamespacedName
-
+    let isEmployedToolIn = _prefix "isEmployedToolIn"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasExpandedUnc"></see>
     /// </summary>
-    let hasExpandedUnc =
-        Namespaced_IRI.parse _namespace_name "hasExpandedUnc" |> NamespacedName
-
+    let hasExpandedUnc = _prefix "hasExpandedUnc"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasKindOfQuantity"></see>
     /// </summary>
-    let hasKindOfQuantity =
-        Namespaced_IRI.parse _namespace_name "hasKindOfQuantity" |> NamespacedName
-
+    let hasKindOfQuantity = _prefix "hasKindOfQuantity"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasMaximumValue"></see>
     /// </summary>
-    let hasMaximumValue =
-        Namespaced_IRI.parse _namespace_name "hasMaximumValue" |> NamespacedName
-
+    let hasMaximumValue = _prefix "hasMaximumValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasValue"></see>
     /// </summary>
-    let hasValue = Namespaced_IRI.parse _namespace_name "hasValue" |> NamespacedName
-
+    let hasValue = _prefix "hasValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasMinimumValue"></see>
     /// </summary>
-    let hasMinimumValue =
-        Namespaced_IRI.parse _namespace_name "hasMinimumValue" |> NamespacedName
-
+    let hasMinimumValue = _prefix "hasMinimumValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasNumericalValue"></see>
     /// </summary>
-    let hasNumericalValue =
-        Namespaced_IRI.parse _namespace_name "hasNumericalValue" |> NamespacedName
-
+    let hasNumericalValue = _prefix "hasNumericalValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasParameter"></see>
     /// </summary>
-    let hasParameter =
-        Namespaced_IRI.parse _namespace_name "hasParameter" |> NamespacedName
-
+    let hasParameter = _prefix "hasParameter"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasRorId"></see>
     /// </summary>
-    let hasRorId = Namespaced_IRI.parse _namespace_name "hasRorId" |> NamespacedName
+    let hasRorId = _prefix "hasRorId"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#identifier"></see>
     /// </summary>
-    let identifier = Namespaced_IRI.parse _namespace_name "identifier" |> NamespacedName
-
+    let identifier = _prefix "identifier"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasRuntimeAssignment"></see>
     /// </summary>
-    let hasRuntimeAssignment =
-        Namespaced_IRI.parse _namespace_name "hasRuntimeAssignment" |> NamespacedName
-
+    let hasRuntimeAssignment = _prefix "hasRuntimeAssignment"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasStepSize"></see>
     /// </summary>
-    let hasStepSize =
-        Namespaced_IRI.parse _namespace_name "hasStepSize" |> NamespacedName
-
+    let hasStepSize = _prefix "hasStepSize"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasStringValue"></see>
     /// </summary>
-    let hasStringValue =
-        Namespaced_IRI.parse _namespace_name "hasStringValue" |> NamespacedName
-
+    let hasStringValue = _prefix "hasStringValue"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasSymbol"></see>
     /// </summary>
-    let hasSymbol = Namespaced_IRI.parse _namespace_name "hasSymbol" |> NamespacedName
+    let hasSymbol = _prefix "hasSymbol"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasUnit"></see>
     /// </summary>
-    let hasUnit = Namespaced_IRI.parse _namespace_name "hasUnit" |> NamespacedName
-
+    let hasUnit = _prefix "hasUnit"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasVariable"></see>
     /// </summary>
-    let hasVariable =
-        Namespaced_IRI.parse _namespace_name "hasVariable" |> NamespacedName
-
+    let hasVariable = _prefix "hasVariable"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#hasVariableDescription"></see>
     /// </summary>
-    let hasVariableDescription =
-        Namespaced_IRI.parse _namespace_name "hasVariableDescription" |> NamespacedName
-
+    let hasVariableDescription = _prefix "hasVariableDescription"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#implementedByTool"></see>
     /// </summary>
-    let implementedByTool =
-        Namespaced_IRI.parse _namespace_name "implementedByTool" |> NamespacedName
-
+    let implementedByTool = _prefix "implementedByTool"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#implementsMethod"></see>
     /// </summary>
-    let implementsMethod =
-        Namespaced_IRI.parse _namespace_name "implementsMethod" |> NamespacedName
-
+    let implementsMethod = _prefix "implementsMethod"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#inProject"></see>
     /// </summary>
-    let inProject = Namespaced_IRI.parse _namespace_name "inProject" |> NamespacedName
-
+    let inProject = _prefix "inProject"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#projectParticipant"></see>
     /// </summary>
-    let projectParticipant =
-        Namespaced_IRI.parse _namespace_name "projectParticipant" |> NamespacedName
-
+    let projectParticipant = _prefix "projectParticipant"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#investigates"></see>
     /// </summary>
-    let investigates =
-        Namespaced_IRI.parse _namespace_name "investigates" |> NamespacedName
-
+    let investigates = _prefix "investigates"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#investigatesProperty"></see>
     /// </summary>
-    let investigatesProperty =
-        Namespaced_IRI.parse _namespace_name "investigatesProperty" |> NamespacedName
-
+    let investigatesProperty = _prefix "investigatesProperty"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#orcidId"></see>
     /// </summary>
-    let orcidId = Namespaced_IRI.parse _namespace_name "orcidId" |> NamespacedName
-
+    let orcidId = _prefix "orcidId"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#projectReferenceID"></see>
     /// </summary>
-    let projectReferenceID =
-        Namespaced_IRI.parse _namespace_name "projectReferenceID" |> NamespacedName
-
+    let projectReferenceID = _prefix "projectReferenceID"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#realizesMethod"></see>
     /// </summary>
-    let realizesMethod =
-        Namespaced_IRI.parse _namespace_name "realizesMethod" |> NamespacedName
-
+    let realizesMethod = _prefix "realizesMethod"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#representsVariable"></see>
     /// </summary>
-    let representsVariable =
-        Namespaced_IRI.parse _namespace_name "representsVariable" |> NamespacedName
-
+    let representsVariable = _prefix "representsVariable"
     /// <summary>
     ///   <see href="http://w3id.org/nfdi4ing/metadata4ing#startOfProject"></see>
     /// </summary>
-    let startOfProject =
-        Namespaced_IRI.parse _namespace_name "startOfProject" |> NamespacedName
+    let startOfProject = _prefix "startOfProject"

@@ -1,343 +1,258 @@
 namespace http.data.cochrane.org.ontologies.pico.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module pico =
     let _namespace_name = "http://data.cochrane.org/ontologies/pico/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The age of a population group
     /// <see href="http://data.cochrane.org/ontologies/pico/Age"></see></summary>
-    let Age = Namespaced_IRI.parse _namespace_name "Age" |> NamespacedName
-
+    let Age = _prefix "Age"
     /// <summary>
     /// Outcome aggregation method
     /// <see href="http://data.cochrane.org/ontologies/pico/AggregationMethod"></see></summary>
-    let AggregationMethod =
-        Namespaced_IRI.parse _namespace_name "AggregationMethod" |> NamespacedName
-
+    let AggregationMethod = _prefix "AggregationMethod"
     /// <summary>
     /// Abstract class, the intervention applied (procedure, materials etc)
     /// <see href="http://data.cochrane.org/ontologies/pico/AppliedIntervention"></see></summary>
-    let AppliedIntervention =
-        Namespaced_IRI.parse _namespace_name "AppliedIntervention" |> NamespacedName
-
+    let AppliedIntervention = _prefix "AppliedIntervention"
     /// <summary>
     /// Outcome assessment scale, e.g. SCTID:273249006
     /// <see href="http://data.cochrane.org/ontologies/pico/AssessmentScale"></see></summary>
-    let AssessmentScale =
-        Namespaced_IRI.parse _namespace_name "AssessmentScale" |> NamespacedName
-
+    let AssessmentScale = _prefix "AssessmentScale"
     /// <summary>
     /// Conditions for example illness or disease.
     /// <see href="http://data.cochrane.org/ontologies/pico/Condition"></see></summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
     /// <summary>
     /// Dose in an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/Dose"></see></summary>
-    let Dose = Namespaced_IRI.parse _namespace_name "Dose" |> NamespacedName
+    let Dose = _prefix "Dose"
     /// <summary>
     /// Duration of some action
     /// <see href="http://data.cochrane.org/ontologies/pico/Duration"></see></summary>
-    let Duration = Namespaced_IRI.parse _namespace_name "Duration" |> NamespacedName
-
+    let Duration = _prefix "Duration"
     /// <summary>
     /// An intervention in a PICO question is an action under consideration for this population.
     /// <see href="http://data.cochrane.org/ontologies/pico/Intervention"></see></summary>
-    let Intervention =
-        Namespaced_IRI.parse _namespace_name "Intervention" |> NamespacedName
-
+    let Intervention = _prefix "Intervention"
     /// <summary>
     /// The type of intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/InterventionClassification"></see></summary>
-    let InterventionClassification =
-        Namespaced_IRI.parse _namespace_name "InterventionClassification" |> NamespacedName
-
+    let InterventionClassification = _prefix "InterventionClassification"
     /// <summary>
     /// An intervention group is a group of interventions for example an arm of a trial.
     /// <see href="http://data.cochrane.org/ontologies/pico/InterventionGroup"></see></summary>
-    let InterventionGroup =
-        Namespaced_IRI.parse _namespace_name "InterventionGroup" |> NamespacedName
-
+    let InterventionGroup = _prefix "InterventionGroup"
     /// <summary>
     /// The provider of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/InterventionProvider"></see></summary>
-    let InterventionProvider =
-        Namespaced_IRI.parse _namespace_name "InterventionProvider" |> NamespacedName
-
+    let InterventionProvider = _prefix "InterventionProvider"
     /// <summary>
     /// The rationale of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/InterventionRationale"></see></summary>
-    let InterventionRationale =
-        Namespaced_IRI.parse _namespace_name "InterventionRationale" |> NamespacedName
-
+    let InterventionRationale = _prefix "InterventionRationale"
     /// <summary>
     /// Mode of delivery for an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/ModeOfDelivery"></see></summary>
-    let ModeOfDelivery =
-        Namespaced_IRI.parse _namespace_name "ModeOfDelivery" |> NamespacedName
-
+    let ModeOfDelivery = _prefix "ModeOfDelivery"
     /// <summary>
     /// The desired outcome of an intervention.
     /// <see href="http://data.cochrane.org/ontologies/pico/Outcome"></see></summary>
-    let Outcome = Namespaced_IRI.parse _namespace_name "Outcome" |> NamespacedName
-
+    let Outcome = _prefix "Outcome"
     /// <summary>
     /// Classification scheme describing the type of outcome
     /// <see href="http://data.cochrane.org/ontologies/pico/OutcomeClassification"></see></summary>
-    let OutcomeClassification =
-        Namespaced_IRI.parse _namespace_name "OutcomeClassification" |> NamespacedName
-
+    let OutcomeClassification = _prefix "OutcomeClassification"
     /// <summary>
     /// The outcome domain, typically a Condition.
     /// <see href="http://data.cochrane.org/ontologies/pico/OutcomeDomain"></see></summary>
-    let OutcomeDomain =
-        Namespaced_IRI.parse _namespace_name "OutcomeDomain" |> NamespacedName
-
+    let OutcomeDomain = _prefix "OutcomeDomain"
     /// <summary>
     /// An outcome group is a group of outcomes.
     /// <see href="http://data.cochrane.org/ontologies/pico/OutcomeGroup"></see></summary>
-    let OutcomeGroup =
-        Namespaced_IRI.parse _namespace_name "OutcomeGroup" |> NamespacedName
-
+    let OutcomeGroup = _prefix "OutcomeGroup"
     /// <summary>
     /// A PICO class represents an object that defines a research or a clinical question.
     /// <see href="http://data.cochrane.org/ontologies/pico/PICO"></see></summary>
-    let PICO = Namespaced_IRI.parse _namespace_name "PICO" |> NamespacedName
+    let PICO = _prefix "PICO"
     /// <summary>
     /// A population defines a group of people/patient in a PICO question.
     /// <see href="http://data.cochrane.org/ontologies/pico/Population"></see></summary>
-    let Population = Namespaced_IRI.parse _namespace_name "Population" |> NamespacedName
+    let Population = _prefix "Population"
     /// <summary>
     /// Schedule of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/Schedule"></see></summary>
-    let Schedule = Namespaced_IRI.parse _namespace_name "Schedule" |> NamespacedName
+    let Schedule = _prefix "Schedule"
     /// <summary>
     /// Setting of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/Setting"></see></summary>
-    let Setting = Namespaced_IRI.parse _namespace_name "Setting" |> NamespacedName
+    let Setting = _prefix "Setting"
     /// <summary>
     /// The sex of a population group
     /// <see href="http://data.cochrane.org/ontologies/pico/Sex"></see></summary>
-    let Sex = Namespaced_IRI.parse _namespace_name "Sex" |> NamespacedName
-
+    let Sex = _prefix "Sex"
     /// <summary>
     /// Social context of a population
     /// <see href="http://data.cochrane.org/ontologies/pico/SocialContext"></see></summary>
-    let SocialContext =
-        Namespaced_IRI.parse _namespace_name "SocialContext" |> NamespacedName
-
+    let SocialContext = _prefix "SocialContext"
     /// <summary>
     /// Specific metric of an outcome
     /// <see href="http://data.cochrane.org/ontologies/pico/SpecificMetric"></see></summary>
-    let SpecificMetric =
-        Namespaced_IRI.parse _namespace_name "SpecificMetric" |> NamespacedName
-
+    let SpecificMetric = _prefix "SpecificMetric"
     /// <summary>
     /// Some treatment of a population
     /// <see href="http://data.cochrane.org/ontologies/pico/Treatment"></see></summary>
-    let Treatment = Namespaced_IRI.parse _namespace_name "Treatment" |> NamespacedName
+    let Treatment = _prefix "Treatment"
     /// <summary>
     /// The age of a population
     /// <see href="http://data.cochrane.org/ontologies/pico/age"></see></summary>
-    let age = Namespaced_IRI.parse _namespace_name "age" |> NamespacedName
-
+    let age = _prefix "age"
     /// <summary>
     /// The aggregation method of an outcome.
     /// <see href="http://data.cochrane.org/ontologies/pico/aggregationMethod"></see></summary>
-    let aggregationMethod =
-        Namespaced_IRI.parse _namespace_name "aggregationMethod" |> NamespacedName
-
+    let aggregationMethod = _prefix "aggregationMethod"
     /// <summary>
     /// Associates an appliedIntervention (material, procedure) with a PICO Intervention instance.
     /// <see href="http://data.cochrane.org/ontologies/pico/appliedIntervention"></see></summary>
-    let appliedIntervention =
-        Namespaced_IRI.parse _namespace_name "appliedIntervention" |> NamespacedName
-
+    let appliedIntervention = _prefix "appliedIntervention"
     /// <summary>
     /// The child intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/childIntervention"></see></summary>
-    let childIntervention =
-        Namespaced_IRI.parse _namespace_name "childIntervention" |> NamespacedName
-
+    let childIntervention = _prefix "childIntervention"
     /// <summary>
     /// The child outcome
     /// <see href="http://data.cochrane.org/ontologies/pico/childOutcome"></see></summary>
-    let childOutcome =
-        Namespaced_IRI.parse _namespace_name "childOutcome" |> NamespacedName
-
+    let childOutcome = _prefix "childOutcome"
     /// <summary>
     /// A comparator intervention group
     /// <see href="http://data.cochrane.org/ontologies/pico/comparatorGroup"></see></summary>
-    let comparatorGroup =
-        Namespaced_IRI.parse _namespace_name "comparatorGroup" |> NamespacedName
-
+    let comparatorGroup = _prefix "comparatorGroup"
     /// <summary>
     /// A precondition of the population.
     /// <see href="http://data.cochrane.org/ontologies/pico/condition"></see></summary>
-    let condition = Namespaced_IRI.parse _namespace_name "condition" |> NamespacedName
+    let condition = _prefix "condition"
     /// <summary>
     /// Dose used in an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/dose"></see></summary>
-    let dose = Namespaced_IRI.parse _namespace_name "dose" |> NamespacedName
+    let dose = _prefix "dose"
     /// <summary>
     /// duration of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/duration"></see></summary>
-    let duration = Namespaced_IRI.parse _namespace_name "duration" |> NamespacedName
+    let duration = _prefix "duration"
     /// <summary>
     /// An endpoint of an outcome group, by duration
     /// <see href="http://data.cochrane.org/ontologies/pico/endpoint"></see></summary>
-    let endpoint = Namespaced_IRI.parse _namespace_name "endpoint" |> NamespacedName
-
+    let endpoint = _prefix "endpoint"
     /// <summary>
     /// An excluded intervention.
     /// <see href="http://data.cochrane.org/ontologies/pico/excludedIntervention"></see></summary>
-    let excludedIntervention =
-        Namespaced_IRI.parse _namespace_name "excludedIntervention" |> NamespacedName
-
+    let excludedIntervention = _prefix "excludedIntervention"
     /// <summary>
     /// An excluded outcome.
     /// <see href="http://data.cochrane.org/ontologies/pico/excludedOutcome"></see></summary>
-    let excludedOutcome =
-        Namespaced_IRI.parse _namespace_name "excludedOutcome" |> NamespacedName
-
+    let excludedOutcome = _prefix "excludedOutcome"
     /// <summary>
     /// An excluded sub-population.
     /// <see href="http://data.cochrane.org/ontologies/pico/excludedPopulation"></see></summary>
-    let excludedPopulation =
-        Namespaced_IRI.parse _namespace_name "excludedPopulation" |> NamespacedName
-
+    let excludedPopulation = _prefix "excludedPopulation"
     /// <summary>
     /// An intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/intervention"></see></summary>
-    let intervention =
-        Namespaced_IRI.parse _namespace_name "intervention" |> NamespacedName
-
+    let intervention = _prefix "intervention"
     /// <summary>
     /// The type of intervention.
     /// <see href="http://data.cochrane.org/ontologies/pico/interventionClassification"></see></summary>
-    let interventionClassification =
-        Namespaced_IRI.parse _namespace_name "interventionClassification" |> NamespacedName
-
+    let interventionClassification = _prefix "interventionClassification"
     /// <summary>
     /// An intervention group
     /// <see href="http://data.cochrane.org/ontologies/pico/interventionGroup"></see></summary>
-    let interventionGroup =
-        Namespaced_IRI.parse _namespace_name "interventionGroup" |> NamespacedName
-
+    let interventionGroup = _prefix "interventionGroup"
     /// <summary>
     /// Intervention provider of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/interventionProvider"></see></summary>
-    let interventionProvider =
-        Namespaced_IRI.parse _namespace_name "interventionProvider" |> NamespacedName
-
+    let interventionProvider = _prefix "interventionProvider"
     /// <summary>
     /// Rationale of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/interventionRationale"></see></summary>
-    let interventionRationale =
-        Namespaced_IRI.parse _namespace_name "interventionRationale" |> NamespacedName
-
+    let interventionRationale = _prefix "interventionRationale"
     /// <summary>
     /// The comparator flag (Deprecated).
     /// <see href="http://data.cochrane.org/ontologies/pico/isComparator"></see></summary>
-    let isComparator =
-        Namespaced_IRI.parse _namespace_name "isComparator" |> NamespacedName
-
+    let isComparator = _prefix "isComparator"
     /// <summary>
     /// mode of delivery
     /// <see href="http://data.cochrane.org/ontologies/pico/modeOfDelivery"></see></summary>
-    let modeOfDelivery =
-        Namespaced_IRI.parse _namespace_name "modeOfDelivery" |> NamespacedName
-
+    let modeOfDelivery = _prefix "modeOfDelivery"
     /// <summary>
     /// The number of participants in a population an intervention is being applied to
     /// <see href="http://data.cochrane.org/ontologies/pico/numberOfParticipants"></see></summary>
-    let numberOfParticipants =
-        Namespaced_IRI.parse _namespace_name "numberOfParticipants" |> NamespacedName
-
+    let numberOfParticipants = _prefix "numberOfParticipants"
     /// <summary>
     /// Relates a outcome group to an outcome
     /// <see href="http://data.cochrane.org/ontologies/pico/outcome"></see></summary>
-    let outcome = Namespaced_IRI.parse _namespace_name "outcome" |> NamespacedName
-
+    let outcome = _prefix "outcome"
     /// <summary>
     /// The type of outcome.
     /// <see href="http://data.cochrane.org/ontologies/pico/outcomeClassification"></see></summary>
-    let outcomeClassification =
-        Namespaced_IRI.parse _namespace_name "outcomeClassification" |> NamespacedName
-
+    let outcomeClassification = _prefix "outcomeClassification"
     /// <summary>
     /// The domain of an outome, e.g. a side effect outcome, typically a condition.
     /// <see href="http://data.cochrane.org/ontologies/pico/outcomeDomain"></see></summary>
-    let outcomeDomain =
-        Namespaced_IRI.parse _namespace_name "outcomeDomain" |> NamespacedName
-
+    let outcomeDomain = _prefix "outcomeDomain"
     /// <summary>
     /// Relates a pico to an outcome group
     /// <see href="http://data.cochrane.org/ontologies/pico/outcomeGroup"></see></summary>
-    let outcomeGroup =
-        Namespaced_IRI.parse _namespace_name "outcomeGroup" |> NamespacedName
-
+    let outcomeGroup = _prefix "outcomeGroup"
     /// <summary>
     /// The outcome measurement assessment scale.
     /// <see href="http://data.cochrane.org/ontologies/pico/outcomeMeasurement"></see></summary>
-    let outcomeMeasurement =
-        Namespaced_IRI.parse _namespace_name "outcomeMeasurement" |> NamespacedName
-
+    let outcomeMeasurement = _prefix "outcomeMeasurement"
     /// <summary>
     /// Free text associated with an Outcome.
     /// <see href="http://data.cochrane.org/ontologies/pico/outcomeText"></see></summary>
-    let outcomeText =
-        Namespaced_IRI.parse _namespace_name "outcomeText" |> NamespacedName
-
+    let outcomeText = _prefix "outcomeText"
     /// <summary>
     /// The outcome treatment.
     /// <see href="http://data.cochrane.org/ontologies/pico/outcomeTreatment"></see></summary>
-    let outcomeTreatment =
-        Namespaced_IRI.parse _namespace_name "outcomeTreatment" |> NamespacedName
-
+    let outcomeTreatment = _prefix "outcomeTreatment"
     /// <summary>
     /// The parent intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/parentIntervention"></see></summary>
-    let parentIntervention =
-        Namespaced_IRI.parse _namespace_name "parentIntervention" |> NamespacedName
-
+    let parentIntervention = _prefix "parentIntervention"
     /// <summary>
     /// References the parent outcome
     /// <see href="http://data.cochrane.org/ontologies/pico/parentOutcome"></see></summary>
-    let parentOutcome =
-        Namespaced_IRI.parse _namespace_name "parentOutcome" |> NamespacedName
-
+    let parentOutcome = _prefix "parentOutcome"
     /// <summary>
     /// A population
     /// <see href="http://data.cochrane.org/ontologies/pico/population"></see></summary>
-    let population = Namespaced_IRI.parse _namespace_name "population" |> NamespacedName
-
+    let population = _prefix "population"
     /// <summary>
     /// The primary endpoint of an outcome group, by duration
     /// <see href="http://data.cochrane.org/ontologies/pico/primaryEndpoint"></see></summary>
-    let primaryEndpoint =
-        Namespaced_IRI.parse _namespace_name "primaryEndpoint" |> NamespacedName
-
+    let primaryEndpoint = _prefix "primaryEndpoint"
     /// <summary>
     /// schedule of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/schedule"></see></summary>
-    let schedule = Namespaced_IRI.parse _namespace_name "schedule" |> NamespacedName
+    let schedule = _prefix "schedule"
     /// <summary>
     /// setting of an intervention
     /// <see href="http://data.cochrane.org/ontologies/pico/setting"></see></summary>
-    let setting = Namespaced_IRI.parse _namespace_name "setting" |> NamespacedName
+    let setting = _prefix "setting"
     /// <summary>
     /// The sex of a population
     /// <see href="http://data.cochrane.org/ontologies/pico/sex"></see></summary>
-    let sex = Namespaced_IRI.parse _namespace_name "sex" |> NamespacedName
-
+    let sex = _prefix "sex"
     /// <summary>
     /// The social context of a population
     /// <see href="http://data.cochrane.org/ontologies/pico/socialContext"></see></summary>
-    let socialContext =
-        Namespaced_IRI.parse _namespace_name "socialContext" |> NamespacedName
-
+    let socialContext = _prefix "socialContext"
     /// <summary>
     /// A treatment of a population
     /// <see href="http://data.cochrane.org/ontologies/pico/treatment"></see></summary>
-    let treatment = Namespaced_IRI.parse _namespace_name "treatment" |> NamespacedName
+    let treatment = _prefix "treatment"

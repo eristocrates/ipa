@@ -1,362 +1,273 @@
 namespace http.mex.aksw.org.mex_perf.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module mexperf =
     let _namespace_name = "http://mex.aksw.org/mex-perf#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#ClassificationMeasure"></see>
     /// </summary>
-    let ClassificationMeasure =
-        Namespaced_IRI.parse _namespace_name "ClassificationMeasure" |> NamespacedName
-
+    let ClassificationMeasure = _prefix "ClassificationMeasure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#PerformanceMeasure"></see>
     /// </summary>
-    let PerformanceMeasure =
-        Namespaced_IRI.parse _namespace_name "PerformanceMeasure" |> NamespacedName
-
+    let PerformanceMeasure = _prefix "PerformanceMeasure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#ClusteringMeasure"></see>
     /// </summary>
-    let ClusteringMeasure =
-        Namespaced_IRI.parse _namespace_name "ClusteringMeasure" |> NamespacedName
-
+    let ClusteringMeasure = _prefix "ClusteringMeasure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#ExamplePerformanceMeasure"></see>
     /// </summary>
-    let ExamplePerformanceMeasure =
-        Namespaced_IRI.parse _namespace_name "ExamplePerformanceMeasure" |> NamespacedName
+    let ExamplePerformanceMeasure = _prefix "ExamplePerformanceMeasure"
 
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#ExamplePerformanceMeasureCollection"></see>
     /// </summary>
     let ExamplePerformanceMeasureCollection =
-        Namespaced_IRI.parse _namespace_name "ExamplePerformanceMeasureCollection" |> NamespacedName
+        _prefix "ExamplePerformanceMeasureCollection"
 
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#ExecutionPerformance"></see>
     /// </summary>
-    let ExecutionPerformance =
-        Namespaced_IRI.parse _namespace_name "ExecutionPerformance" |> NamespacedName
-
+    let ExecutionPerformance = _prefix "ExecutionPerformance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#L1norm"></see>
     /// </summary>
-    let L1norm = Namespaced_IRI.parse _namespace_name "L1norm" |> NamespacedName
-
+    let L1norm = _prefix "L1norm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#StatisticalMeasure"></see>
     /// </summary>
-    let StatisticalMeasure =
-        Namespaced_IRI.parse _namespace_name "StatisticalMeasure" |> NamespacedName
-
+    let StatisticalMeasure = _prefix "StatisticalMeasure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#L2norm"></see>
     /// </summary>
-    let L2norm = Namespaced_IRI.parse _namespace_name "L2norm" |> NamespacedName
+    let L2norm = _prefix "L2norm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#Linfnorm"></see>
     /// </summary>
-    let Linfnorm = Namespaced_IRI.parse _namespace_name "Linfnorm" |> NamespacedName
-
+    let Linfnorm = _prefix "Linfnorm"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#RegressionMeasure"></see>
     /// </summary>
-    let RegressionMeasure =
-        Namespaced_IRI.parse _namespace_name "RegressionMeasure" |> NamespacedName
-
+    let RegressionMeasure = _prefix "RegressionMeasure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#UserDefinedMeasure"></see>
     /// </summary>
-    let UserDefinedMeasure =
-        Namespaced_IRI.parse _namespace_name "UserDefinedMeasure" |> NamespacedName
-
+    let UserDefinedMeasure = _prefix "UserDefinedMeasure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#UserDefinedMeasureCollection"></see>
     /// </summary>
-    let UserDefinedMeasureCollection =
-        Namespaced_IRI.parse _namespace_name "UserDefinedMeasureCollection" |> NamespacedName
-
+    let UserDefinedMeasureCollection = _prefix "UserDefinedMeasureCollection"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#accuracy"></see>
     /// </summary>
-    let accuracy = Namespaced_IRI.parse _namespace_name "accuracy" |> NamespacedName
-
+    let accuracy = _prefix "accuracy"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#bonferroniDunn"></see>
     /// </summary>
-    let bonferroniDunn =
-        Namespaced_IRI.parse _namespace_name "bonferroniDunn" |> NamespacedName
-
+    let bonferroniDunn = _prefix "bonferroniDunn"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#chebyschevDistance"></see>
     /// </summary>
-    let chebyschevDistance =
-        Namespaced_IRI.parse _namespace_name "chebyschevDistance" |> NamespacedName
-
+    let chebyschevDistance = _prefix "chebyschevDistance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#chiSquare"></see>
     /// </summary>
-    let chiSquare = Namespaced_IRI.parse _namespace_name "chiSquare" |> NamespacedName
-
+    let chiSquare = _prefix "chiSquare"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#correlationCoefficient"></see>
     /// </summary>
-    let correlationCoefficient =
-        Namespaced_IRI.parse _namespace_name "correlationCoefficient" |> NamespacedName
-
+    let correlationCoefficient = _prefix "correlationCoefficient"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#cosine"></see>
     /// </summary>
-    let cosine = Namespaced_IRI.parse _namespace_name "cosine" |> NamespacedName
-
+    let cosine = _prefix "cosine"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#costParameter"></see>
     /// </summary>
-    let costParameter =
-        Namespaced_IRI.parse _namespace_name "costParameter" |> NamespacedName
-
+    let costParameter = _prefix "costParameter"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#error"></see>
     /// </summary>
-    let error = Namespaced_IRI.parse _namespace_name "error" |> NamespacedName
-
+    let error = _prefix "error"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#euclideanDistance"></see>
     /// </summary>
-    let euclideanDistance =
-        Namespaced_IRI.parse _namespace_name "euclideanDistance" |> NamespacedName
-
+    let euclideanDistance = _prefix "euclideanDistance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#f1Measure"></see>
     /// </summary>
-    let f1Measure = Namespaced_IRI.parse _namespace_name "f1Measure" |> NamespacedName
-
+    let f1Measure = _prefix "f1Measure"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#falseNegative"></see>
     /// </summary>
-    let falseNegative =
-        Namespaced_IRI.parse _namespace_name "falseNegative" |> NamespacedName
-
+    let falseNegative = _prefix "falseNegative"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#falseNegativeRate"></see>
     /// </summary>
-    let falseNegativeRate =
-        Namespaced_IRI.parse _namespace_name "falseNegativeRate" |> NamespacedName
-
+    let falseNegativeRate = _prefix "falseNegativeRate"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#falsePositive"></see>
     /// </summary>
-    let falsePositive =
-        Namespaced_IRI.parse _namespace_name "falsePositive" |> NamespacedName
-
+    let falsePositive = _prefix "falsePositive"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#falsePositiveRate"></see>
     /// </summary>
-    let falsePositiveRate =
-        Namespaced_IRI.parse _namespace_name "falsePositiveRate" |> NamespacedName
-
+    let falsePositiveRate = _prefix "falsePositiveRate"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#folds"></see>
     /// </summary>
-    let folds = Namespaced_IRI.parse _namespace_name "folds" |> NamespacedName
+    let folds = _prefix "folds"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#formula"></see>
     /// </summary>
-    let formula = Namespaced_IRI.parse _namespace_name "formula" |> NamespacedName
+    let formula = _prefix "formula"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#friedman"></see>
     /// </summary>
-    let friedman = Namespaced_IRI.parse _namespace_name "friedman" |> NamespacedName
-
+    let friedman = _prefix "friedman"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#genSimilarityCoefficient"></see>
     /// </summary>
-    let genSimilarityCoefficient =
-        Namespaced_IRI.parse _namespace_name "genSimilarityCoefficient" |> NamespacedName
-
+    let genSimilarityCoefficient = _prefix "genSimilarityCoefficient"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#hammingDistance"></see>
     /// </summary>
-    let hammingDistance =
-        Namespaced_IRI.parse _namespace_name "hammingDistance" |> NamespacedName
-
+    let hammingDistance = _prefix "hammingDistance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#kappaStatistics"></see>
     /// </summary>
-    let kappaStatistics =
-        Namespaced_IRI.parse _namespace_name "kappaStatistics" |> NamespacedName
-
+    let kappaStatistics = _prefix "kappaStatistics"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#kernel"></see>
     /// </summary>
-    let kernel = Namespaced_IRI.parse _namespace_name "kernel" |> NamespacedName
-
+    let kernel = _prefix "kernel"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#kolmogorovSmirnov"></see>
     /// </summary>
-    let kolmogorovSmirnov =
-        Namespaced_IRI.parse _namespace_name "kolmogorovSmirnov" |> NamespacedName
-
+    let kolmogorovSmirnov = _prefix "kolmogorovSmirnov"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#manhattanDistance"></see>
     /// </summary>
-    let manhattanDistance =
-        Namespaced_IRI.parse _namespace_name "manhattanDistance" |> NamespacedName
-
+    let manhattanDistance = _prefix "manhattanDistance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#mean"></see>
     /// </summary>
-    let mean = Namespaced_IRI.parse _namespace_name "mean" |> NamespacedName
-
+    let mean = _prefix "mean"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#meanAbsoluteDeviation"></see>
     /// </summary>
-    let meanAbsoluteDeviation =
-        Namespaced_IRI.parse _namespace_name "meanAbsoluteDeviation" |> NamespacedName
-
+    let meanAbsoluteDeviation = _prefix "meanAbsoluteDeviation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#meanSquaredError"></see>
     /// </summary>
-    let meanSquaredError =
-        Namespaced_IRI.parse _namespace_name "meanSquaredError" |> NamespacedName
-
+    let meanSquaredError = _prefix "meanSquaredError"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#median"></see>
     /// </summary>
-    let median = Namespaced_IRI.parse _namespace_name "median" |> NamespacedName
-
+    let median = _prefix "median"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#medianAbsoluteDeviation"></see>
     /// </summary>
-    let medianAbsoluteDeviation =
-        Namespaced_IRI.parse _namespace_name "medianAbsoluteDeviation" |> NamespacedName
-
+    let medianAbsoluteDeviation = _prefix "medianAbsoluteDeviation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#mode"></see>
     /// </summary>
-    let mode = Namespaced_IRI.parse _namespace_name "mode" |> NamespacedName
+    let mode = _prefix "mode"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#nemenyi"></see>
     /// </summary>
-    let nemenyi = Namespaced_IRI.parse _namespace_name "nemenyi" |> NamespacedName
-
+    let nemenyi = _prefix "nemenyi"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#pearsonCorrelation"></see>
     /// </summary>
-    let pearsonCorrelation =
-        Namespaced_IRI.parse _namespace_name "pearsonCorrelation" |> NamespacedName
-
+    let pearsonCorrelation = _prefix "pearsonCorrelation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#pmi"></see>
     /// </summary>
-    let pmi = Namespaced_IRI.parse _namespace_name "pmi" |> NamespacedName
+    let pmi = _prefix "pmi"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#precision"></see>
     /// </summary>
-    let precision = Namespaced_IRI.parse _namespace_name "precision" |> NamespacedName
-
+    let precision = _prefix "precision"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#predictedValue"></see>
     /// </summary>
-    let predictedValue =
-        Namespaced_IRI.parse _namespace_name "predictedValue" |> NamespacedName
-
+    let predictedValue = _prefix "predictedValue"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#realValue"></see>
     /// </summary>
-    let realValue = Namespaced_IRI.parse _namespace_name "realValue" |> NamespacedName
+    let realValue = _prefix "realValue"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#recall"></see>
     /// </summary>
-    let recall = Namespaced_IRI.parse _namespace_name "recall" |> NamespacedName
-
+    let recall = _prefix "recall"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#relativeAbsoluteError"></see>
     /// </summary>
-    let relativeAbsoluteError =
-        Namespaced_IRI.parse _namespace_name "relativeAbsoluteError" |> NamespacedName
-
+    let relativeAbsoluteError = _prefix "relativeAbsoluteError"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#residual"></see>
     /// </summary>
-    let residual = Namespaced_IRI.parse _namespace_name "residual" |> NamespacedName
+    let residual = _prefix "residual"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#roc"></see>
     /// </summary>
-    let roc = Namespaced_IRI.parse _namespace_name "roc" |> NamespacedName
-
+    let roc = _prefix "roc"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#rootMeanSquaredError"></see>
     /// </summary>
-    let rootMeanSquaredError =
-        Namespaced_IRI.parse _namespace_name "rootMeanSquaredError" |> NamespacedName
-
+    let rootMeanSquaredError = _prefix "rootMeanSquaredError"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#rootRelativeSquaredError"></see>
     /// </summary>
-    let rootRelativeSquaredError =
-        Namespaced_IRI.parse _namespace_name "rootRelativeSquaredError" |> NamespacedName
-
+    let rootRelativeSquaredError = _prefix "rootRelativeSquaredError"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#sensitivity"></see>
     /// </summary>
-    let sensitivity =
-        Namespaced_IRI.parse _namespace_name "sensitivity" |> NamespacedName
-
+    let sensitivity = _prefix "sensitivity"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#specificity"></see>
     /// </summary>
-    let specificity =
-        Namespaced_IRI.parse _namespace_name "specificity" |> NamespacedName
-
+    let specificity = _prefix "specificity"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#spmi"></see>
     /// </summary>
-    let spmi = Namespaced_IRI.parse _namespace_name "spmi" |> NamespacedName
-
+    let spmi = _prefix "spmi"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#standardDeviation"></see>
     /// </summary>
-    let standardDeviation =
-        Namespaced_IRI.parse _namespace_name "standardDeviation" |> NamespacedName
-
+    let standardDeviation = _prefix "standardDeviation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#totalError"></see>
     /// </summary>
-    let totalError = Namespaced_IRI.parse _namespace_name "totalError" |> NamespacedName
-
+    let totalError = _prefix "totalError"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#trueNegative"></see>
     /// </summary>
-    let trueNegative =
-        Namespaced_IRI.parse _namespace_name "trueNegative" |> NamespacedName
-
+    let trueNegative = _prefix "trueNegative"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#trueNegativeRate"></see>
     /// </summary>
-    let trueNegativeRate =
-        Namespaced_IRI.parse _namespace_name "trueNegativeRate" |> NamespacedName
-
+    let trueNegativeRate = _prefix "trueNegativeRate"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#truePositive"></see>
     /// </summary>
-    let truePositive =
-        Namespaced_IRI.parse _namespace_name "truePositive" |> NamespacedName
-
+    let truePositive = _prefix "truePositive"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#truePositiveRate"></see>
     /// </summary>
-    let truePositiveRate =
-        Namespaced_IRI.parse _namespace_name "truePositiveRate" |> NamespacedName
-
+    let truePositiveRate = _prefix "truePositiveRate"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#variance"></see>
     /// </summary>
-    let variance = Namespaced_IRI.parse _namespace_name "variance" |> NamespacedName
+    let variance = _prefix "variance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-perf#wilcoxon"></see>
     /// </summary>
-    let wilcoxon = Namespaced_IRI.parse _namespace_name "wilcoxon" |> NamespacedName
+    let wilcoxon = _prefix "wilcoxon"

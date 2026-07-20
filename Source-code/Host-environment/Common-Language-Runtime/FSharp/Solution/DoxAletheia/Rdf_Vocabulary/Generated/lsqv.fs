@@ -1,227 +1,206 @@
 namespace http.lsq.aksw.org.vocab.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module lsqv =
     let _namespace_name = "http://lsq.aksw.org/vocab#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Avg"></see>
     /// </summary>
-    let Avg = Namespaced_IRI.parse _namespace_name "Avg" |> NamespacedName
+    let Avg = _prefix "Avg"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Bind"></see>
     /// </summary>
-    let Bind = Namespaced_IRI.parse _namespace_name "Bind" |> NamespacedName
+    let Bind = _prefix "Bind"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Count"></see>
     /// </summary>
-    let Count = Namespaced_IRI.parse _namespace_name "Count" |> NamespacedName
+    let Count = _prefix "Count"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Distinct"></see>
     /// </summary>
-    let Distinct = Namespaced_IRI.parse _namespace_name "Distinct" |> NamespacedName
+    let Distinct = _prefix "Distinct"
     /// <summary>
     /// Each instance is an execution of a particular query against a particular endpoint at a particular time by a particular agent
     /// <see href="http://lsq.aksw.org/vocab#Execution"></see></summary>
-    let Execution = Namespaced_IRI.parse _namespace_name "Execution" |> NamespacedName
+    let Execution = _prefix "Execution"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Filter"></see>
     /// </summary>
-    let Filter = Namespaced_IRI.parse _namespace_name "Filter" |> NamespacedName
+    let Filter = _prefix "Filter"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#FromNamed"></see>
     /// </summary>
-    let FromNamed = Namespaced_IRI.parse _namespace_name "FromNamed" |> NamespacedName
+    let FromNamed = _prefix "FromNamed"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#GroupBy"></see>
     /// </summary>
-    let GroupBy = Namespaced_IRI.parse _namespace_name "GroupBy" |> NamespacedName
+    let GroupBy = _prefix "GroupBy"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Having"></see>
     /// </summary>
-    let Having = Namespaced_IRI.parse _namespace_name "Having" |> NamespacedName
+    let Having = _prefix "Having"
     /// <summary>
     /// Each instance is a hybrid join vertex (position) in the query (at least one incoming edge, at least one outgoing edge, at least three edges)
     /// <see href="http://lsq.aksw.org/vocab#Hybrid"></see></summary>
-    let Hybrid = Namespaced_IRI.parse _namespace_name "Hybrid" |> NamespacedName
+    let Hybrid = _prefix "Hybrid"
     /// <summary>
     /// Each instance is a join vertex (position) in the query
     /// <see href="http://lsq.aksw.org/vocab#JoinVertex"></see></summary>
-    let JoinVertex = Namespaced_IRI.parse _namespace_name "JoinVertex" |> NamespacedName
+    let JoinVertex = _prefix "JoinVertex"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Limit"></see>
     /// </summary>
-    let Limit = Namespaced_IRI.parse _namespace_name "Limit" |> NamespacedName
+    let Limit = _prefix "Limit"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Max"></see>
     /// </summary>
-    let Max = Namespaced_IRI.parse _namespace_name "Max" |> NamespacedName
+    let Max = _prefix "Max"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Min"></see>
     /// </summary>
-    let Min = Namespaced_IRI.parse _namespace_name "Min" |> NamespacedName
+    let Min = _prefix "Min"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Minus"></see>
     /// </summary>
-    let Minus = Namespaced_IRI.parse _namespace_name "Minus" |> NamespacedName
+    let Minus = _prefix "Minus"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#NamedGraph"></see>
     /// </summary>
-    let NamedGraph = Namespaced_IRI.parse _namespace_name "NamedGraph" |> NamespacedName
+    let NamedGraph = _prefix "NamedGraph"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#namedGraph"></see>
     /// </summary>
-    let namedGraph = Namespaced_IRI.parse _namespace_name "namedGraph" |> NamespacedName
+    let namedGraph = _prefix "namedGraph"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Offset"></see>
     /// </summary>
-    let Offset = Namespaced_IRI.parse _namespace_name "Offset" |> NamespacedName
+    let Offset = _prefix "Offset"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Optional"></see>
     /// </summary>
-    let Optional = Namespaced_IRI.parse _namespace_name "Optional" |> NamespacedName
+    let Optional = _prefix "Optional"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#OrderBy"></see>
     /// </summary>
-    let OrderBy = Namespaced_IRI.parse _namespace_name "OrderBy" |> NamespacedName
+    let OrderBy = _prefix "OrderBy"
     /// <summary>
     /// Each instance is a path-shaped join vertex (position) in the query (one incoming edge, one outgoing edge)
     /// <see href="http://lsq.aksw.org/vocab#Path"></see></summary>
-    let Path = Namespaced_IRI.parse _namespace_name "Path" |> NamespacedName
+    let Path = _prefix "Path"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Regex"></see>
     /// </summary>
-    let Regex = Namespaced_IRI.parse _namespace_name "Regex" |> NamespacedName
+    let Regex = _prefix "Regex"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Service"></see>
     /// </summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
+    let Service = _prefix "Service"
     /// <summary>
     /// Each instance is a sink join vertex (position) in the query (multiple incoming edges, zero outgoing edges)
     /// <see href="http://lsq.aksw.org/vocab#Sink"></see></summary>
-    let Sink = Namespaced_IRI.parse _namespace_name "Sink" |> NamespacedName
+    let Sink = _prefix "Sink"
     /// <summary>
     /// Each instance is a star-shaped join vertex (position) in the query (zero incoming edges, multiple outgoing edges)
     /// <see href="http://lsq.aksw.org/vocab#Star"></see></summary>
-    let Star = Namespaced_IRI.parse _namespace_name "Star" |> NamespacedName
+    let Star = _prefix "Star"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#SubQuery"></see>
     /// </summary>
-    let SubQuery = Namespaced_IRI.parse _namespace_name "SubQuery" |> NamespacedName
+    let SubQuery = _prefix "SubQuery"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Sum"></see>
     /// </summary>
-    let Sum = Namespaced_IRI.parse _namespace_name "Sum" |> NamespacedName
+    let Sum = _prefix "Sum"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Union"></see>
     /// </summary>
-    let Union = Namespaced_IRI.parse _namespace_name "Union" |> NamespacedName
+    let Union = _prefix "Union"
     /// <summary>
     ///   <see href="http://lsq.aksw.org/vocab#Values"></see>
     /// </summary>
-    let Values = Namespaced_IRI.parse _namespace_name "Values" |> NamespacedName
+    let Values = _prefix "Values"
     /// <summary>
     /// Links a query execution instance to the agent that initiated the execution
     /// <see href="http://lsq.aksw.org/vocab#agent"></see></summary>
-    let agent = Namespaced_IRI.parse _namespace_name "agent" |> NamespacedName
+    let agent = _prefix "agent"
     /// <summary>
     /// The number of Basic Graph Patterns in a query
     /// <see href="http://lsq.aksw.org/vocab#bgps"></see></summary>
-    let bgps = Namespaced_IRI.parse _namespace_name "bgps" |> NamespacedName
+    let bgps = _prefix "bgps"
     /// <summary>
     /// Links a query execution instance to the endpoint against which it was run
     /// <see href="http://lsq.aksw.org/vocab#endpoint"></see></summary>
-    let endpoint = Namespaced_IRI.parse _namespace_name "endpoint" |> NamespacedName
+    let endpoint = _prefix "endpoint"
     /// <summary>
     /// Links a query to an execution of it against a particular endpoint by a particular agent at a particular time
     /// <see href="http://lsq.aksw.org/vocab#execution"></see></summary>
-    let execution = Namespaced_IRI.parse _namespace_name "execution" |> NamespacedName
-
+    let execution = _prefix "execution"
     /// <summary>
     /// The text of an error encountered during a query execution
     /// <see href="http://lsq.aksw.org/vocab#executionError"></see></summary>
-    let executionError =
-        Namespaced_IRI.parse _namespace_name "executionError" |> NamespacedName
-
+    let executionError = _prefix "executionError"
     /// <summary>
     /// Links a query to a join vertex it contains
     /// <see href="http://lsq.aksw.org/vocab#joinVertex"></see></summary>
-    let joinVertex = Namespaced_IRI.parse _namespace_name "joinVertex" |> NamespacedName
-
+    let joinVertex = _prefix "joinVertex"
     /// <summary>
     /// Links a join vertex to the type of vertex it is
     /// <see href="http://lsq.aksw.org/vocab#joinVertexType"></see></summary>
-    let joinVertexType =
-        Namespaced_IRI.parse _namespace_name "joinVertexType" |> NamespacedName
-
+    let joinVertexType = _prefix "joinVertexType"
     /// <summary>
     /// The number of join vertices in a query
     /// <see href="http://lsq.aksw.org/vocab#joinVertices"></see></summary>
-    let joinVertices =
-        Namespaced_IRI.parse _namespace_name "joinVertices" |> NamespacedName
-
+    let joinVertices = _prefix "joinVertices"
     /// <summary>
     /// The mean degree across all the join vertices
     /// <see href="http://lsq.aksw.org/vocab#meanJoinVerticesDegree"></see></summary>
-    let meanJoinVerticesDegree =
-        Namespaced_IRI.parse _namespace_name "meanJoinVerticesDegree" |> NamespacedName
-
+    let meanJoinVerticesDegree = _prefix "meanJoinVerticesDegree"
     /// <summary>
     /// The mean selectivity of all triple patterns
     /// <see href="http://lsq.aksw.org/vocab#meanTriplePatternSelectivity"></see></summary>
-    let meanTriplePatternSelectivity =
-        Namespaced_IRI.parse _namespace_name "meanTriplePatternSelectivity" |> NamespacedName
-
+    let meanTriplePatternSelectivity = _prefix "meanTriplePatternSelectivity"
     /// <summary>
     /// Links a query to a term it mentions in the object of a triple pattern
     /// <see href="http://lsq.aksw.org/vocab#mentionsObject"></see></summary>
-    let mentionsObject =
-        Namespaced_IRI.parse _namespace_name "mentionsObject" |> NamespacedName
-
+    let mentionsObject = _prefix "mentionsObject"
     /// <summary>
     /// Links a query to a term it mentions in the predicate of a triple pattern
     /// <see href="http://lsq.aksw.org/vocab#mentionsPredicate"></see></summary>
-    let mentionsPredicate =
-        Namespaced_IRI.parse _namespace_name "mentionsPredicate" |> NamespacedName
-
+    let mentionsPredicate = _prefix "mentionsPredicate"
     /// <summary>
     /// Links a query to a term it mentions in the subject of a triple pattern
     /// <see href="http://lsq.aksw.org/vocab#mentionsSubject"></see></summary>
-    let mentionsSubject =
-        Namespaced_IRI.parse _namespace_name "mentionsSubject" |> NamespacedName
-
+    let mentionsSubject = _prefix "mentionsSubject"
     /// <summary>
     /// The text of an error encountered when parsing query
     /// <see href="http://lsq.aksw.org/vocab#parseError"></see></summary>
-    let parseError = Namespaced_IRI.parse _namespace_name "parseError" |> NamespacedName
+    let parseError = _prefix "parseError"
     /// <summary>
     /// Number of results returned when executed locally
     /// <see href="http://lsq.aksw.org/vocab#resultSize"></see></summary>
-    let resultSize = Namespaced_IRI.parse _namespace_name "resultSize" |> NamespacedName
+    let resultSize = _prefix "resultSize"
     /// <summary>
     /// The run time of the query in milliseconds when executed locally
     /// <see href="http://lsq.aksw.org/vocab#runTimeMs"></see></summary>
-    let runTimeMs = Namespaced_IRI.parse _namespace_name "runTimeMs" |> NamespacedName
-
+    let runTimeMs = _prefix "runTimeMs"
     /// <summary>
     /// The text of an error encountered when running the query locally
     /// <see href="http://lsq.aksw.org/vocab#runtimeError"></see></summary>
-    let runtimeError =
-        Namespaced_IRI.parse _namespace_name "runtimeError" |> NamespacedName
-
+    let runtimeError = _prefix "runtimeError"
     /// <summary>
     /// The text of an error encountered when generating the SPIN description
     /// <see href="http://lsq.aksw.org/vocab#spinError"></see></summary>
-    let spinError = Namespaced_IRI.parse _namespace_name "spinError" |> NamespacedName
-
+    let spinError = _prefix "spinError"
     /// <summary>
     /// The number of triple patterns in a query
     /// <see href="http://lsq.aksw.org/vocab#triplePatterns"></see></summary>
-    let triplePatterns =
-        Namespaced_IRI.parse _namespace_name "triplePatterns" |> NamespacedName
-
+    let triplePatterns = _prefix "triplePatterns"
     /// <summary>
     /// A feature used by the query
     /// <see href="http://lsq.aksw.org/vocab#usesFeature"></see></summary>
-    let usesFeature =
-        Namespaced_IRI.parse _namespace_name "usesFeature" |> NamespacedName
+    let usesFeature = _prefix "usesFeature"

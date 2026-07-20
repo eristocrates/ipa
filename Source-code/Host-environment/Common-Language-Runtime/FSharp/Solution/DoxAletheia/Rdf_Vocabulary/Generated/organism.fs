@@ -1,302 +1,250 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.organism.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module organism =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/organism#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Alive"></see>
     /// </summary>
-    let Alive = Namespaced_IRI.parse _namespace_name "Alive" |> NamespacedName
+    let Alive = _prefix "Alive"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Ancestry"></see>
     /// </summary>
-    let Ancestry = Namespaced_IRI.parse _namespace_name "Ancestry" |> NamespacedName
+    let Ancestry = _prefix "Ancestry"
     /// <summary>
     /// Organism that is an earlier form of another organism.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Ascendant"></see></summary>
-    let Ascendant = Namespaced_IRI.parse _namespace_name "Ascendant" |> NamespacedName
+    let Ascendant = _prefix "Ascendant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Organism"></see>
     /// </summary>
-    let Organism = Namespaced_IRI.parse _namespace_name "Organism" |> NamespacedName
+    let Organism = _prefix "Organism"
     /// <summary>
     /// Organism that is produced by another.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Child"></see></summary>
-    let Child = Namespaced_IRI.parse _namespace_name "Child" |> NamespacedName
+    let Child = _prefix "Child"
     /// <summary>
     /// Organism deriving from an earlier form.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Descendant"></see></summary>
-    let Descendant = Namespaced_IRI.parse _namespace_name "Descendant" |> NamespacedName
+    let Descendant = _prefix "Descendant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasParent"></see>
     /// </summary>
-    let hasParent = Namespaced_IRI.parse _namespace_name "hasParent" |> NamespacedName
+    let hasParent = _prefix "hasParent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Children"></see>
     /// </summary>
-    let Children = Namespaced_IRI.parse _namespace_name "Children" |> NamespacedName
+    let Children = _prefix "Children"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Offspring"></see>
     /// </summary>
-    let Offspring = Namespaced_IRI.parse _namespace_name "Offspring" |> NamespacedName
+    let Offspring = _prefix "Offspring"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNA"></see>
     /// </summary>
-    let DNA = Namespaced_IRI.parse _namespace_name "DNA" |> NamespacedName
-
+    let DNA = _prefix "DNA"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequence"></see>
     /// </summary>
-    let DNASequence =
-        Namespaced_IRI.parse _namespace_name "DNASequence" |> NamespacedName
-
+    let DNASequence = _prefix "DNASequence"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Sequence"></see>
     /// </summary>
-    let Sequence = Namespaced_IRI.parse _namespace_name "Sequence" |> NamespacedName
-
+    let Sequence = _prefix "Sequence"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DNASequencing"></see>
     /// </summary>
-    let DNASequencing =
-        Namespaced_IRI.parse _namespace_name "DNASequencing" |> NamespacedName
-
+    let DNASequencing = _prefix "DNASequencing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#sequenceOf"></see>
     /// </summary>
-    let sequenceOf = Namespaced_IRI.parse _namespace_name "sequenceOf" |> NamespacedName
+    let sequenceOf = _prefix "sequenceOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Sequencing"></see>
     /// </summary>
-    let Sequencing = Namespaced_IRI.parse _namespace_name "Sequencing" |> NamespacedName
+    let Sequencing = _prefix "Sequencing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Dead"></see>
     /// </summary>
-    let Dead = Namespaced_IRI.parse _namespace_name "Dead" |> NamespacedName
+    let Dead = _prefix "Dead"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Death"></see>
     /// </summary>
-    let Death = Namespaced_IRI.parse _namespace_name "Death" |> NamespacedName
+    let Death = _prefix "Death"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DeathCause"></see>
     /// </summary>
-    let DeathCause = Namespaced_IRI.parse _namespace_name "DeathCause" |> NamespacedName
-
+    let DeathCause = _prefix "DeathCause"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#DevelopmentState"></see>
     /// </summary>
-    let DevelopmentState =
-        Namespaced_IRI.parse _namespace_name "DevelopmentState" |> NamespacedName
-
+    let DevelopmentState = _prefix "DevelopmentState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Eukaryote"></see>
     /// </summary>
-    let Eukaryote = Namespaced_IRI.parse _namespace_name "Eukaryote" |> NamespacedName
+    let Eukaryote = _prefix "Eukaryote"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Father"></see>
     /// </summary>
-    let Father = Namespaced_IRI.parse _namespace_name "Father" |> NamespacedName
+    let Father = _prefix "Father"
     /// <summary>
     /// Organism that produces another.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Parent"></see></summary>
-    let Parent = Namespaced_IRI.parse _namespace_name "Parent" |> NamespacedName
+    let Parent = _prefix "Parent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Genome"></see>
     /// </summary>
-    let Genome = Namespaced_IRI.parse _namespace_name "Genome" |> NamespacedName
+    let Genome = _prefix "Genome"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Gravidity"></see>
     /// </summary>
-    let Gravidity = Namespaced_IRI.parse _namespace_name "Gravidity" |> NamespacedName
+    let Gravidity = _prefix "Gravidity"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Pregnant"></see>
     /// </summary>
-    let Pregnant = Namespaced_IRI.parse _namespace_name "Pregnant" |> NamespacedName
-
+    let Pregnant = _prefix "Pregnant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Nonpregnant"></see>
     /// </summary>
-    let Nonpregnant =
-        Namespaced_IRI.parse _namespace_name "Nonpregnant" |> NamespacedName
-
+    let Nonpregnant = _prefix "Nonpregnant"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Immature"></see>
     /// </summary>
-    let Immature = Namespaced_IRI.parse _namespace_name "Immature" |> NamespacedName
-
+    let Immature = _prefix "Immature"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#ImmatureOrganism"></see>
     /// </summary>
-    let ImmatureOrganism =
-        Namespaced_IRI.parse _namespace_name "ImmatureOrganism" |> NamespacedName
-
+    let ImmatureOrganism = _prefix "ImmatureOrganism"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDevelopmentState"></see>
     /// </summary>
-    let hasDevelopmentState =
-        Namespaced_IRI.parse _namespace_name "hasDevelopmentState" |> NamespacedName
-
+    let hasDevelopmentState = _prefix "hasDevelopmentState"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#IndividualLife"></see>
     /// </summary>
-    let IndividualLife =
-        Namespaced_IRI.parse _namespace_name "IndividualLife" |> NamespacedName
-
+    let IndividualLife = _prefix "IndividualLife"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Life"></see>
     /// </summary>
-    let Life = Namespaced_IRI.parse _namespace_name "Life" |> NamespacedName
+    let Life = _prefix "Life"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotype"></see>
     /// </summary>
-    let Karyotype = Namespaced_IRI.parse _namespace_name "Karyotype" |> NamespacedName
-
+    let Karyotype = _prefix "Karyotype"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Karyotyping"></see>
     /// </summary>
-    let Karyotyping =
-        Namespaced_IRI.parse _namespace_name "Karyotyping" |> NamespacedName
-
+    let Karyotyping = _prefix "Karyotyping"
     /// <summary>
     /// A criterium can be: capable of reproduction.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mature"></see></summary>
-    let Mature = Namespaced_IRI.parse _namespace_name "Mature" |> NamespacedName
-
+    let Mature = _prefix "Mature"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#MatureOrganism"></see>
     /// </summary>
-    let MatureOrganism =
-        Namespaced_IRI.parse _namespace_name "MatureOrganism" |> NamespacedName
-
+    let MatureOrganism = _prefix "MatureOrganism"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mortal"></see>
     /// </summary>
-    let Mortal = Namespaced_IRI.parse _namespace_name "Mortal" |> NamespacedName
+    let Mortal = _prefix "Mortal"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Mother"></see>
     /// </summary>
-    let Mother = Namespaced_IRI.parse _namespace_name "Mother" |> NamespacedName
+    let Mother = _prefix "Mother"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasChild"></see>
     /// </summary>
-    let hasChild = Namespaced_IRI.parse _namespace_name "hasChild" |> NamespacedName
+    let hasChild = _prefix "hasChild"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#Parents"></see>
     /// </summary>
-    let Parents = Namespaced_IRI.parse _namespace_name "Parents" |> NamespacedName
-
+    let Parents = _prefix "Parents"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#PregnantOrganism"></see>
     /// </summary>
-    let PregnantOrganism =
-        Namespaced_IRI.parse _namespace_name "PregnantOrganism" |> NamespacedName
-
+    let PregnantOrganism = _prefix "PregnantOrganism"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasGravidity"></see>
     /// </summary>
-    let hasGravidity =
-        Namespaced_IRI.parse _namespace_name "hasGravidity" |> NamespacedName
-
+    let hasGravidity = _prefix "hasGravidity"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#UnbranchedBioPolymer"></see>
     /// </summary>
-    let UnbranchedBioPolymer =
-        Namespaced_IRI.parse _namespace_name "UnbranchedBioPolymer" |> NamespacedName
-
+    let UnbranchedBioPolymer = _prefix "UnbranchedBioPolymer"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#beginDate"></see>
     /// </summary>
-    let beginDate = Namespaced_IRI.parse _namespace_name "beginDate" |> NamespacedName
+    let beginDate = _prefix "beginDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#begins"></see>
     /// </summary>
-    let begins = Namespaced_IRI.parse _namespace_name "begins" |> NamespacedName
+    let begins = _prefix "begins"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#endDate"></see>
     /// </summary>
-    let endDate = Namespaced_IRI.parse _namespace_name "endDate" |> NamespacedName
+    let endDate = _prefix "endDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#ends"></see>
     /// </summary>
-    let ends = Namespaced_IRI.parse _namespace_name "ends" |> NamespacedName
-
+    let ends = _prefix "ends"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDate"></see>
     /// </summary>
-    let hasBirthDate =
-        Namespaced_IRI.parse _namespace_name "hasBirthDate" |> NamespacedName
-
+    let hasBirthDate = _prefix "hasBirthDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#lives"></see>
     /// </summary>
-    let lives = Namespaced_IRI.parse _namespace_name "lives" |> NamespacedName
-
+    let lives = _prefix "lives"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthDateTime"></see>
     /// </summary>
-    let hasBirthDateTime =
-        Namespaced_IRI.parse _namespace_name "hasBirthDateTime" |> NamespacedName
-
+    let hasBirthDateTime = _prefix "hasBirthDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasBirthTime"></see>
     /// </summary>
-    let hasBirthTime =
-        Namespaced_IRI.parse _namespace_name "hasBirthTime" |> NamespacedName
-
+    let hasBirthTime = _prefix "hasBirthTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasCauseOfDeath"></see>
     /// </summary>
-    let hasCauseOfDeath =
-        Namespaced_IRI.parse _namespace_name "hasCauseOfDeath" |> NamespacedName
-
+    let hasCauseOfDeath = _prefix "hasCauseOfDeath"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDNASequence"></see>
     /// </summary>
-    let hasDNASequence =
-        Namespaced_IRI.parse _namespace_name "hasDNASequence" |> NamespacedName
-
+    let hasDNASequence = _prefix "hasDNASequence"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDate"></see>
     /// </summary>
-    let hasDeathDate =
-        Namespaced_IRI.parse _namespace_name "hasDeathDate" |> NamespacedName
-
+    let hasDeathDate = _prefix "hasDeathDate"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathDateTime"></see>
     /// </summary>
-    let hasDeathDateTime =
-        Namespaced_IRI.parse _namespace_name "hasDeathDateTime" |> NamespacedName
-
+    let hasDeathDateTime = _prefix "hasDeathDateTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasDeathTime"></see>
     /// </summary>
-    let hasDeathTime =
-        Namespaced_IRI.parse _namespace_name "hasDeathTime" |> NamespacedName
-
+    let hasDeathTime = _prefix "hasDeathTime"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasFather"></see>
     /// </summary>
-    let hasFather = Namespaced_IRI.parse _namespace_name "hasFather" |> NamespacedName
-
+    let hasFather = _prefix "hasFather"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasKaryotype"></see>
     /// </summary>
-    let hasKaryotype =
-        Namespaced_IRI.parse _namespace_name "hasKaryotype" |> NamespacedName
-
+    let hasKaryotype = _prefix "hasKaryotype"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasMother"></see>
     /// </summary>
-    let hasMother = Namespaced_IRI.parse _namespace_name "hasMother" |> NamespacedName
-
+    let hasMother = _prefix "hasMother"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasSequence"></see>
     /// </summary>
-    let hasSequence =
-        Namespaced_IRI.parse _namespace_name "hasSequence" |> NamespacedName
-
+    let hasSequence = _prefix "hasSequence"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/organism#hasTaxon"></see>
     /// </summary>
-    let hasTaxon = Namespaced_IRI.parse _namespace_name "hasTaxon" |> NamespacedName
+    let hasTaxon = _prefix "hasTaxon"

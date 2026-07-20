@@ -1,130 +1,126 @@
 namespace http.premon.fbk.eu.ontology.nb.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module pmonb =
     let _namespace_name = "http://premon.fbk.eu/ontology/nb#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#Argument"></see>
     /// </summary>
-    let Argument = Namespaced_IRI.parse _namespace_name "Argument" |> NamespacedName
+    let Argument = _prefix "Argument"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#Modifier"></see>
     /// </summary>
-    let Modifier = Namespaced_IRI.parse _namespace_name "Modifier" |> NamespacedName
-
+    let Modifier = _prefix "Modifier"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#NumberedArgument"></see>
     /// </summary>
-    let NumberedArgument =
-        Namespaced_IRI.parse _namespace_name "NumberedArgument" |> NamespacedName
-
+    let NumberedArgument = _prefix "NumberedArgument"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-cau"></see>
     /// </summary>
-    let ``argm-cau`` = Namespaced_IRI.parse _namespace_name "argm-cau" |> NamespacedName
+    let ``argm-cau`` = _prefix "argm-cau"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-tmp"></see>
     /// </summary>
-    let ``argm-tmp`` = Namespaced_IRI.parse _namespace_name "argm-tmp" |> NamespacedName
+    let ``argm-tmp`` = _prefix "argm-tmp"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-dis"></see>
     /// </summary>
-    let ``argm-dis`` = Namespaced_IRI.parse _namespace_name "argm-dis" |> NamespacedName
+    let ``argm-dis`` = _prefix "argm-dis"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-dir"></see>
     /// </summary>
-    let ``argm-dir`` = Namespaced_IRI.parse _namespace_name "argm-dir" |> NamespacedName
+    let ``argm-dir`` = _prefix "argm-dir"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-prd"></see>
     /// </summary>
-    let ``argm-prd`` = Namespaced_IRI.parse _namespace_name "argm-prd" |> NamespacedName
+    let ``argm-prd`` = _prefix "argm-prd"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-ext"></see>
     /// </summary>
-    let ``argm-ext`` = Namespaced_IRI.parse _namespace_name "argm-ext" |> NamespacedName
+    let ``argm-ext`` = _prefix "argm-ext"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-mnr"></see>
     /// </summary>
-    let ``argm-mnr`` = Namespaced_IRI.parse _namespace_name "argm-mnr" |> NamespacedName
+    let ``argm-mnr`` = _prefix "argm-mnr"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-loc"></see>
     /// </summary>
-    let ``argm-loc`` = Namespaced_IRI.parse _namespace_name "argm-loc" |> NamespacedName
+    let ``argm-loc`` = _prefix "argm-loc"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-neg"></see>
     /// </summary>
-    let ``argm-neg`` = Namespaced_IRI.parse _namespace_name "argm-neg" |> NamespacedName
+    let ``argm-neg`` = _prefix "argm-neg"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-pnc"></see>
     /// </summary>
-    let ``argm-pnc`` = Namespaced_IRI.parse _namespace_name "argm-pnc" |> NamespacedName
+    let ``argm-pnc`` = _prefix "argm-pnc"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argm-adv"></see>
     /// </summary>
-    let ``argm-adv`` = Namespaced_IRI.parse _namespace_name "argm-adv" |> NamespacedName
+    let ``argm-adv`` = _prefix "argm-adv"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#arg5"></see>
     /// </summary>
-    let arg5 = Namespaced_IRI.parse _namespace_name "arg5" |> NamespacedName
+    let arg5 = _prefix "arg5"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#arg4"></see>
     /// </summary>
-    let arg4 = Namespaced_IRI.parse _namespace_name "arg4" |> NamespacedName
+    let arg4 = _prefix "arg4"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#arg3"></see>
     /// </summary>
-    let arg3 = Namespaced_IRI.parse _namespace_name "arg3" |> NamespacedName
+    let arg3 = _prefix "arg3"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#arg2"></see>
     /// </summary>
-    let arg2 = Namespaced_IRI.parse _namespace_name "arg2" |> NamespacedName
+    let arg2 = _prefix "arg2"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#arg1"></see>
     /// </summary>
-    let arg1 = Namespaced_IRI.parse _namespace_name "arg1" |> NamespacedName
+    let arg1 = _prefix "arg1"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#arg0"></see>
     /// </summary>
-    let arg0 = Namespaced_IRI.parse _namespace_name "arg0" |> NamespacedName
+    let arg0 = _prefix "arg0"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#Roleset"></see>
     /// </summary>
-    let Roleset = Namespaced_IRI.parse _namespace_name "Roleset" |> NamespacedName
-
+    let Roleset = _prefix "Roleset"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#SemanticRole"></see>
     /// </summary>
-    let SemanticRole =
-        Namespaced_IRI.parse _namespace_name "SemanticRole" |> NamespacedName
-
+    let SemanticRole = _prefix "SemanticRole"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#argument"></see>
     /// </summary>
-    let argument = Namespaced_IRI.parse _namespace_name "argument" |> NamespacedName
+    let argument = _prefix "argument"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#Tag"></see>
     /// </summary>
-    let Tag = Namespaced_IRI.parse _namespace_name "Tag" |> NamespacedName
+    let Tag = _prefix "Tag"
     /// <summary>
     /// Set to true if the semantic role explicitly occurs in a frame file
     /// <see href="http://premon.fbk.eu/ontology/nb#core"></see></summary>
-    let core = Namespaced_IRI.parse _namespace_name "core" |> NamespacedName
+    let core = _prefix "core"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#tag"></see>
     /// </summary>
-    let tag = Namespaced_IRI.parse _namespace_name "tag" |> NamespacedName
+    let tag = _prefix "tag"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#tag-prd"></see>
     /// </summary>
-    let ``tag-prd`` = Namespaced_IRI.parse _namespace_name "tag-prd" |> NamespacedName
+    let ``tag-prd`` = _prefix "tag-prd"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#tag-ref"></see>
     /// </summary>
-    let ``tag-ref`` = Namespaced_IRI.parse _namespace_name "tag-ref" |> NamespacedName
-
+    let ``tag-ref`` = _prefix "tag-ref"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/nb#tag-support"></see>
     /// </summary>
-    let ``tag-support`` =
-        Namespaced_IRI.parse _namespace_name "tag-support" |> NamespacedName
+    let ``tag-support`` = _prefix "tag-support"

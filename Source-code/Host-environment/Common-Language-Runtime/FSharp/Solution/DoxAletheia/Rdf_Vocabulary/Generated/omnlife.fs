@@ -1,180 +1,150 @@
 namespace http.open_multinet.info.ontology.omn_lifecycle.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module omnlife =
     let _namespace_name = "http://open-multinet.info/ontology/omn-lifecycle#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The related resource/service is actively performing an action
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Active"></see></summary>
-    let Active = Namespaced_IRI.parse _namespace_name "Active" |> NamespacedName
+    let Active = _prefix "Active"
     /// <summary>
     /// The current state of the resource, service or group
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#State"></see></summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
+    let State = _prefix "State"
     /// <summary>
     /// The related resources/services are reserved
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Allocated"></see></summary>
-    let Allocated = Namespaced_IRI.parse _namespace_name "Allocated" |> NamespacedName
-
+    let Allocated = _prefix "Allocated"
     /// <summary>
     /// The current state of a reservation
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#ReservationState"></see></summary>
-    let ReservationState =
-        Namespaced_IRI.parse _namespace_name "ReservationState" |> NamespacedName
-
+    let ReservationState = _prefix "ReservationState"
     /// <summary>
     /// The related resource/service has been cleaned
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Cleaned"></see></summary>
-    let Cleaned = Namespaced_IRI.parse _namespace_name "Cleaned" |> NamespacedName
-
+    let Cleaned = _prefix "Cleaned"
     /// <summary>
     /// A collection (group) of resources/services/groups confirmed to be allocated for the user.
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Confirmation"></see></summary>
-    let Confirmation =
-        Namespaced_IRI.parse _namespace_name "Confirmation" |> NamespacedName
-
+    let Confirmation = _prefix "Confirmation"
     /// <summary>
     /// The related resource/service is in an error state
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Error"></see></summary>
-    let Error = Namespaced_IRI.parse _namespace_name "Error" |> NamespacedName
-
+    let Error = _prefix "Error"
     /// <summary>
     /// The related resource/service has been initialized
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Initialized"></see></summary>
-    let Initialized =
-        Namespaced_IRI.parse _namespace_name "Initialized" |> NamespacedName
-
+    let Initialized = _prefix "Initialized"
     /// <summary>
     /// The related resource/service has been installed
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Installed"></see></summary>
-    let Installed = Namespaced_IRI.parse _namespace_name "Installed" |> NamespacedName
+    let Installed = _prefix "Installed"
     /// <summary>
     /// A collection (group) of resources/services/groups allocated for the user.
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Manifest"></see></summary>
-    let Manifest = Namespaced_IRI.parse _namespace_name "Manifest" |> NamespacedName
-
+    let Manifest = _prefix "Manifest"
     /// <summary>
     /// The related resource/service are not yet active/ready
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#NotYetInitialized"></see></summary>
-    let NotYetInitialized =
-        Namespaced_IRI.parse _namespace_name "NotYetInitialized" |> NamespacedName
-
+    let NotYetInitialized = _prefix "NotYetInitialized"
     /// <summary>
     /// A collection (group) of services and resources provided by an Infrastructure. The collection is the result of the application of Policies.
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Offering"></see></summary>
-    let Offering = Namespaced_IRI.parse _namespace_name "Offering" |> NamespacedName
+    let Offering = _prefix "Offering"
     /// <summary>
     /// The related resource/service is not yet provisioned
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Pending"></see></summary>
-    let Pending = Namespaced_IRI.parse _namespace_name "Pending" |> NamespacedName
+    let Pending = _prefix "Pending"
     /// <summary>
     /// The related resource/service is currently configuring
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Preinit"></see></summary>
-    let Preinit = Namespaced_IRI.parse _namespace_name "Preinit" |> NamespacedName
-
+    let Preinit = _prefix "Preinit"
     /// <summary>
     /// The related resources/services are provisioned
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Provisioned"></see></summary>
-    let Provisioned =
-        Namespaced_IRI.parse _namespace_name "Provisioned" |> NamespacedName
-
+    let Provisioned = _prefix "Provisioned"
     /// <summary>
     /// The related resource/service is ready
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Ready"></see></summary>
-    let Ready = Namespaced_IRI.parse _namespace_name "Ready" |> NamespacedName
+    let Ready = _prefix "Ready"
     /// <summary>
     /// The related resource/service gets removed
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Removing"></see></summary>
-    let Removing = Namespaced_IRI.parse _namespace_name "Removing" |> NamespacedName
+    let Removing = _prefix "Removing"
     /// <summary>
     /// A collection (group) of resources/services/groups requested by the user
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Request"></see></summary>
-    let Request = Namespaced_IRI.parse _namespace_name "Request" |> NamespacedName
+    let Request = _prefix "Request"
     /// <summary>
     /// The related resource/service has been started
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Started"></see></summary>
-    let Started = Namespaced_IRI.parse _namespace_name "Started" |> NamespacedName
+    let Started = _prefix "Started"
     /// <summary>
     /// The related resource/service is stopped
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Stopped"></see></summary>
-    let Stopped = Namespaced_IRI.parse _namespace_name "Stopped" |> NamespacedName
+    let Stopped = _prefix "Stopped"
     /// <summary>
     /// The related resource/service is stopping
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Stopping"></see></summary>
-    let Stopping = Namespaced_IRI.parse _namespace_name "Stopping" |> NamespacedName
-
+    let Stopping = _prefix "Stopping"
     /// <summary>
     /// The related resources/services are not reserved
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Unallocated"></see></summary>
-    let Unallocated =
-        Namespaced_IRI.parse _namespace_name "Unallocated" |> NamespacedName
-
+    let Unallocated = _prefix "Unallocated"
     /// <summary>
     /// The related resource/service is not complete
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Uncompleted"></see></summary>
-    let Uncompleted =
-        Namespaced_IRI.parse _namespace_name "Uncompleted" |> NamespacedName
-
+    let Uncompleted = _prefix "Uncompleted"
     /// <summary>
     /// The related resource/service is getting updated
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#Updating"></see></summary>
-    let Updating = Namespaced_IRI.parse _namespace_name "Updating" |> NamespacedName
-
+    let Updating = _prefix "Updating"
     /// <summary>
     /// A specific authentification information for the management system
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#hasAuthenticationInformation"></see></summary>
-    let hasAuthenticationInformation =
-        Namespaced_IRI.parse _namespace_name "hasAuthenticationInformation" |> NamespacedName
-
+    let hasAuthenticationInformation = _prefix "hasAuthenticationInformation"
     /// <summary>
     /// A unique identifier set by the management system
     /// <see href="http://open-multinet.info/ontology/omn-lifecycle#hasID"></see></summary>
-    let hasID = Namespaced_IRI.parse _namespace_name "hasID" |> NamespacedName
-
+    let hasID = _prefix "hasID"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#hasReservationState"></see>
     /// </summary>
-    let hasReservationState =
-        Namespaced_IRI.parse _namespace_name "hasReservationState" |> NamespacedName
-
+    let hasReservationState = _prefix "hasReservationState"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#hasState"></see>
     /// </summary>
-    let hasState = Namespaced_IRI.parse _namespace_name "hasState" |> NamespacedName
-
+    let hasState = _prefix "hasState"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#implementedBy"></see>
     /// </summary>
-    let implementedBy =
-        Namespaced_IRI.parse _namespace_name "implementedBy" |> NamespacedName
-
+    let implementedBy = _prefix "implementedBy"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#implements"></see>
     /// </summary>
-    let implements = Namespaced_IRI.parse _namespace_name "implements" |> NamespacedName
-
+    let implements = _prefix "implements"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#isReservationStateOf"></see>
     /// </summary>
-    let isReservationStateOf =
-        Namespaced_IRI.parse _namespace_name "isReservationStateOf" |> NamespacedName
-
+    let isReservationStateOf = _prefix "isReservationStateOf"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#isStateOf"></see>
     /// </summary>
-    let isStateOf = Namespaced_IRI.parse _namespace_name "isStateOf" |> NamespacedName
+    let isStateOf = _prefix "isStateOf"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#parentOf"></see>
     /// </summary>
-    let parentOf = Namespaced_IRI.parse _namespace_name "parentOf" |> NamespacedName
+    let parentOf = _prefix "parentOf"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#parentTo"></see>
     /// </summary>
-    let parentTo = Namespaced_IRI.parse _namespace_name "parentTo" |> NamespacedName
-
+    let parentTo = _prefix "parentTo"
     /// <summary>
     ///   <see href="http://open-multinet.info/ontology/omn-lifecycle#usesService"></see>
     /// </summary>
-    let usesService =
-        Namespaced_IRI.parse _namespace_name "usesService" |> NamespacedName
+    let usesService = _prefix "usesService"

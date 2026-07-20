@@ -1,6 +1,7 @@
 namespace DoxAletheia
-open Rdf_Vocabulary
+
 module Mime_Substring =
+    open DoxAletheia
     module application =
         let application_1d_interleaved_parityfec =
             { registry = "application"

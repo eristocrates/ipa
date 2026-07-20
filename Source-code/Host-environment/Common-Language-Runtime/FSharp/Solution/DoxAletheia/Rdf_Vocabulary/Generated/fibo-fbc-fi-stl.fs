@@ -1,96 +1,73 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FinancialInstruments.Settlement.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fi_stl =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/CashSettlementTerms"></see>
     /// </summary>
-    let CashSettlementTerms =
-        Namespaced_IRI.parse _namespace_name "CashSettlementTerms" |> NamespacedName
-
+    let CashSettlementTerms = _prefix "CashSettlementTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/hasDeliveryMethod"></see>
     /// </summary>
-    let hasDeliveryMethod =
-        Namespaced_IRI.parse _namespace_name "hasDeliveryMethod" |> NamespacedName
-
+    let hasDeliveryMethod = _prefix "hasDeliveryMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/DeliveryInCash"></see>
     /// </summary>
-    let DeliveryInCash =
-        Namespaced_IRI.parse _namespace_name "DeliveryInCash" |> NamespacedName
-
+    let DeliveryInCash = _prefix "DeliveryInCash"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/hasSettlementAmount"></see>
     /// </summary>
-    let hasSettlementAmount =
-        Namespaced_IRI.parse _namespace_name "hasSettlementAmount" |> NamespacedName
-
+    let hasSettlementAmount = _prefix "hasSettlementAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/DeliveryMethod"></see>
     /// </summary>
-    let DeliveryMethod =
-        Namespaced_IRI.parse _namespace_name "DeliveryMethod" |> NamespacedName
-
+    let DeliveryMethod = _prefix "DeliveryMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/ElectAtExerciseMethod"></see>
     /// </summary>
-    let ElectAtExerciseMethod =
-        Namespaced_IRI.parse _namespace_name "ElectAtExerciseMethod" |> NamespacedName
-
+    let ElectAtExerciseMethod = _prefix "ElectAtExerciseMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/NonDeliverableMethod"></see>
     /// </summary>
-    let NonDeliverableMethod =
-        Namespaced_IRI.parse _namespace_name "NonDeliverableMethod" |> NamespacedName
-
+    let NonDeliverableMethod = _prefix "NonDeliverableMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/PhysicalDeliveryMethod"></see>
     /// </summary>
-    let PhysicalDeliveryMethod =
-        Namespaced_IRI.parse _namespace_name "PhysicalDeliveryMethod" |> NamespacedName
-
+    let PhysicalDeliveryMethod = _prefix "PhysicalDeliveryMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/PhysicalSettlementTerms"></see>
     /// </summary>
-    let PhysicalSettlementTerms =
-        Namespaced_IRI.parse _namespace_name "PhysicalSettlementTerms" |> NamespacedName
-
+    let PhysicalSettlementTerms = _prefix "PhysicalSettlementTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/Settlement"></see>
     /// </summary>
-    let Settlement = Namespaced_IRI.parse _namespace_name "Settlement" |> NamespacedName
-
+    let Settlement = _prefix "Settlement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/SettlementConvention"></see>
     /// </summary>
-    let SettlementConvention =
-        Namespaced_IRI.parse _namespace_name "SettlementConvention" |> NamespacedName
-
+    let SettlementConvention = _prefix "SettlementConvention"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/SettlementEvent"></see>
     /// </summary>
-    let SettlementEvent =
-        Namespaced_IRI.parse _namespace_name "SettlementEvent" |> NamespacedName
-
+    let SettlementEvent = _prefix "SettlementEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/hasPreferredSettlementCurrency"></see>
     /// </summary>
-    let hasPreferredSettlementCurrency =
-        Namespaced_IRI.parse _namespace_name "hasPreferredSettlementCurrency" |> NamespacedName
-
+    let hasPreferredSettlementCurrency = _prefix "hasPreferredSettlementCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/isFractionalEligible"></see>
     /// </summary>
-    let isFractionalEligible =
-        Namespaced_IRI.parse _namespace_name "isFractionalEligible" |> NamespacedName
+    let isFractionalEligible = _prefix "isFractionalEligible"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/isFullyAutomatedSecuritiesTransferApplicable"></see>
     /// </summary>
     let isFullyAutomatedSecuritiesTransferApplicable =
-        Namespaced_IRI.parse _namespace_name "isFullyAutomatedSecuritiesTransferApplicable" |> NamespacedName
+        _prefix "isFullyAutomatedSecuritiesTransferApplicable"

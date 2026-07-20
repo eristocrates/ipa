@@ -1,180 +1,146 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.foster.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module swap_foster =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/foster#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Code"></see>
     /// </summary>
-    let Code = Namespaced_IRI.parse _namespace_name "Code" |> NamespacedName
+    let Code = _prefix "Code"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/physicalResource&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Compound"></see></summary>
-    let Compound = Namespaced_IRI.parse _namespace_name "Compound" |> NamespacedName
-
+    let Compound = _prefix "Compound"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#ConfidentialityCode"></see>
     /// </summary>
-    let ConfidentialityCode =
-        Namespaced_IRI.parse _namespace_name "ConfidentialityCode" |> NamespacedName
-
+    let ConfidentialityCode = _prefix "ConfidentialityCode"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/physicalResource&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Device"></see></summary>
-    let Device = Namespaced_IRI.parse _namespace_name "Device" |> NamespacedName
+    let Device = _prefix "Device"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Group"></see>
     /// </summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasMember"></see>
     /// </summary>
-    let hasMember = Namespaced_IRI.parse _namespace_name "hasMember" |> NamespacedName
+    let hasMember = _prefix "hasMember"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Language"></see>
     /// </summary>
-    let Language = Namespaced_IRI.parse _namespace_name "Language" |> NamespacedName
+    let Language = _prefix "Language"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Level"></see>
     /// </summary>
-    let Level = Namespaced_IRI.parse _namespace_name "Level" |> NamespacedName
-
+    let Level = _prefix "Level"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Nationality"></see>
     /// </summary>
-    let Nationality =
-        Namespaced_IRI.parse _namespace_name "Nationality" |> NamespacedName
-
+    let Nationality = _prefix "Nationality"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/physicalResource&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Product"></see></summary>
-    let Product = Namespaced_IRI.parse _namespace_name "Product" |> NamespacedName
+    let Product = _prefix "Product"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/physicalResource&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Specimen"></see></summary>
-    let Specimen = Namespaced_IRI.parse _namespace_name "Specimen" |> NamespacedName
+    let Specimen = _prefix "Specimen"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#Summary"></see>
     /// </summary>
-    let Summary = Namespaced_IRI.parse _namespace_name "Summary" |> NamespacedName
+    let Summary = _prefix "Summary"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#codes"></see></summary>
-    let codes = Namespaced_IRI.parse _namespace_name "codes" |> NamespacedName
+    let codes = _prefix "codes"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCode"></see></summary>
-    let hasCode = Namespaced_IRI.parse _namespace_name "hasCode" |> NamespacedName
-
+    let hasCode = _prefix "hasCode"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/physicalResource&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#complexityOf"></see></summary>
-    let complexityOf =
-        Namespaced_IRI.parse _namespace_name "complexityOf" |> NamespacedName
-
+    let complexityOf = _prefix "complexityOf"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/physicalResource&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasComplexity"></see></summary>
-    let hasComplexity =
-        Namespaced_IRI.parse _namespace_name "hasComplexity" |> NamespacedName
-
+    let hasComplexity = _prefix "hasComplexity"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/space&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#containedBy"></see></summary>
-    let containedBy =
-        Namespaced_IRI.parse _namespace_name "containedBy" |> NamespacedName
-
+    let containedBy = _prefix "containedBy"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/space&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#contains"></see></summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasBrandName"></see>
     /// </summary>
-    let hasBrandName =
-        Namespaced_IRI.parse _namespace_name "hasBrandName" |> NamespacedName
-
+    let hasBrandName = _prefix "hasBrandName"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasBroaderCode"></see></summary>
-    let hasBroaderCode =
-        Namespaced_IRI.parse _namespace_name "hasBroaderCode" |> NamespacedName
-
+    let hasBroaderCode = _prefix "hasBroaderCode"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCodeAuthority"></see></summary>
-    let hasCodeAuthority =
-        Namespaced_IRI.parse _namespace_name "hasCodeAuthority" |> NamespacedName
-
+    let hasCodeAuthority = _prefix "hasCodeAuthority"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCodeExpirationDateTime"></see></summary>
-    let hasCodeExpirationDateTime =
-        Namespaced_IRI.parse _namespace_name "hasCodeExpirationDateTime" |> NamespacedName
-
+    let hasCodeExpirationDateTime = _prefix "hasCodeExpirationDateTime"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCodeSystem"></see></summary>
-    let hasCodeSystem =
-        Namespaced_IRI.parse _namespace_name "hasCodeSystem" |> NamespacedName
-
+    let hasCodeSystem = _prefix "hasCodeSystem"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCodeValue"></see></summary>
-    let hasCodeValue =
-        Namespaced_IRI.parse _namespace_name "hasCodeValue" |> NamespacedName
-
+    let hasCodeValue = _prefix "hasCodeValue"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCodeVersion"></see></summary>
-    let hasCodeVersion =
-        Namespaced_IRI.parse _namespace_name "hasCodeVersion" |> NamespacedName
-
+    let hasCodeVersion = _prefix "hasCodeVersion"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasConfidentialityCode"></see></summary>
-    let hasConfidentialityCode =
-        Namespaced_IRI.parse _namespace_name "hasConfidentialityCode" |> NamespacedName
-
+    let hasConfidentialityCode = _prefix "hasConfidentialityCode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasCountry"></see>
     /// </summary>
-    let hasCountry = Namespaced_IRI.parse _namespace_name "hasCountry" |> NamespacedName
-
+    let hasCountry = _prefix "hasCountry"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasLanguage"></see>
     /// </summary>
-    let hasLanguage =
-        Namespaced_IRI.parse _namespace_name "hasLanguage" |> NamespacedName
-
+    let hasLanguage = _prefix "hasLanguage"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasLevel"></see>
     /// </summary>
-    let hasLevel = Namespaced_IRI.parse _namespace_name "hasLevel" |> NamespacedName
-
+    let hasLevel = _prefix "hasLevel"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasNationality"></see>
     /// </summary>
-    let hasNationality =
-        Namespaced_IRI.parse _namespace_name "hasNationality" |> NamespacedName
-
+    let hasNationality = _prefix "hasNationality"
     /// <summary>
     /// Declared in &lt;http://eulersharp.sourceforge.net/2003/03swap/coding&gt;
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#hasSKOSCode"></see></summary>
-    let hasSKOSCode =
-        Namespaced_IRI.parse _namespace_name "hasSKOSCode" |> NamespacedName
-
+    let hasSKOSCode = _prefix "hasSKOSCode"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#memberOf"></see>
     /// </summary>
-    let memberOf = Namespaced_IRI.parse _namespace_name "memberOf" |> NamespacedName
+    let memberOf = _prefix "memberOf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#refersTo"></see>
     /// </summary>
-    let refersTo = Namespaced_IRI.parse _namespace_name "refersTo" |> NamespacedName
+    let refersTo = _prefix "refersTo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/foster#summaryOf"></see>
     /// </summary>
-    let summaryOf = Namespaced_IRI.parse _namespace_name "summaryOf" |> NamespacedName
+    let summaryOf = _prefix "summaryOf"

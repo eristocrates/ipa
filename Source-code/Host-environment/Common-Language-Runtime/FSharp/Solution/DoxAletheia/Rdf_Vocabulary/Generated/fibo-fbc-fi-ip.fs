@@ -1,267 +1,198 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FinancialInstruments.InstrumentPricing.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fi_ip =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/AdjustedClosingPrice"></see>
     /// </summary>
-    let AdjustedClosingPrice =
-        Namespaced_IRI.parse _namespace_name "AdjustedClosingPrice" |> NamespacedName
-
+    let AdjustedClosingPrice = _prefix "AdjustedClosingPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/ClosingPrice"></see>
     /// </summary>
-    let ClosingPrice =
-        Namespaced_IRI.parse _namespace_name "ClosingPrice" |> NamespacedName
-
+    let ClosingPrice = _prefix "ClosingPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/AuctionMethod"></see>
     /// </summary>
-    let AuctionMethod =
-        Namespaced_IRI.parse _namespace_name "AuctionMethod" |> NamespacedName
-
+    let AuctionMethod = _prefix "AuctionMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/PriceDeterminationMethod"></see>
     /// </summary>
-    let PriceDeterminationMethod =
-        Namespaced_IRI.parse _namespace_name "PriceDeterminationMethod" |> NamespacedName
-
+    let PriceDeterminationMethod = _prefix "PriceDeterminationMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/BestBid"></see>
     /// </summary>
-    let BestBid = Namespaced_IRI.parse _namespace_name "BestBid" |> NamespacedName
+    let BestBid = _prefix "BestBid"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/BidPrice"></see>
     /// </summary>
-    let BidPrice = Namespaced_IRI.parse _namespace_name "BidPrice" |> NamespacedName
+    let BidPrice = _prefix "BidPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/BestOffer"></see>
     /// </summary>
-    let BestOffer = Namespaced_IRI.parse _namespace_name "BestOffer" |> NamespacedName
+    let BestOffer = _prefix "BestOffer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/OfferPrice"></see>
     /// </summary>
-    let OfferPrice = Namespaced_IRI.parse _namespace_name "OfferPrice" |> NamespacedName
-
+    let OfferPrice = _prefix "OfferPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/BidAskSpread"></see>
     /// </summary>
-    let BidAskSpread =
-        Namespaced_IRI.parse _namespace_name "BidAskSpread" |> NamespacedName
-
+    let BidAskSpread = _prefix "BidAskSpread"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/PriceSpread"></see>
     /// </summary>
-    let PriceSpread =
-        Namespaced_IRI.parse _namespace_name "PriceSpread" |> NamespacedName
-
+    let PriceSpread = _prefix "PriceSpread"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/SecurityPrice"></see>
     /// </summary>
-    let SecurityPrice =
-        Namespaced_IRI.parse _namespace_name "SecurityPrice" |> NamespacedName
-
+    let SecurityPrice = _prefix "SecurityPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/CleanPrice"></see>
     /// </summary>
-    let CleanPrice = Namespaced_IRI.parse _namespace_name "CleanPrice" |> NamespacedName
+    let CleanPrice = _prefix "CleanPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/DirtyPrice"></see>
     /// </summary>
-    let DirtyPrice = Namespaced_IRI.parse _namespace_name "DirtyPrice" |> NamespacedName
-
+    let DirtyPrice = _prefix "DirtyPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/MarketPrice"></see>
     /// </summary>
-    let MarketPrice =
-        Namespaced_IRI.parse _namespace_name "MarketPrice" |> NamespacedName
-
+    let MarketPrice = _prefix "MarketPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/ClosingPriceDeterminationMethod"></see>
     /// </summary>
-    let ClosingPriceDeterminationMethod =
-        Namespaced_IRI.parse _namespace_name "ClosingPriceDeterminationMethod" |> NamespacedName
-
+    let ClosingPriceDeterminationMethod = _prefix "ClosingPriceDeterminationMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/CollectionOfSecurityPrices"></see>
     /// </summary>
-    let CollectionOfSecurityPrices =
-        Namespaced_IRI.parse _namespace_name "CollectionOfSecurityPrices" |> NamespacedName
-
+    let CollectionOfSecurityPrices = _prefix "CollectionOfSecurityPrices"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/CompositeMarket"></see>
     /// </summary>
-    let CompositeMarket =
-        Namespaced_IRI.parse _namespace_name "CompositeMarket" |> NamespacedName
-
+    let CompositeMarket = _prefix "CompositeMarket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/DerivedPrice"></see>
     /// </summary>
-    let DerivedPrice =
-        Namespaced_IRI.parse _namespace_name "DerivedPrice" |> NamespacedName
-
+    let DerivedPrice = _prefix "DerivedPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/HighPrice"></see>
     /// </summary>
-    let HighPrice = Namespaced_IRI.parse _namespace_name "HighPrice" |> NamespacedName
-
+    let HighPrice = _prefix "HighPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/InternalRateOfReturn"></see>
     /// </summary>
-    let InternalRateOfReturn =
-        Namespaced_IRI.parse _namespace_name "InternalRateOfReturn" |> NamespacedName
-
+    let InternalRateOfReturn = _prefix "InternalRateOfReturn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/RateOfReturn"></see>
     /// </summary>
-    let RateOfReturn =
-        Namespaced_IRI.parse _namespace_name "RateOfReturn" |> NamespacedName
-
+    let RateOfReturn = _prefix "RateOfReturn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/IntraDayPrice"></see>
     /// </summary>
-    let IntraDayPrice =
-        Namespaced_IRI.parse _namespace_name "IntraDayPrice" |> NamespacedName
-
+    let IntraDayPrice = _prefix "IntraDayPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/LowPrice"></see>
     /// </summary>
-    let LowPrice = Namespaced_IRI.parse _namespace_name "LowPrice" |> NamespacedName
-
+    let LowPrice = _prefix "LowPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasPricingSource"></see>
     /// </summary>
-    let hasPricingSource =
-        Namespaced_IRI.parse _namespace_name "hasPricingSource" |> NamespacedName
-
+    let hasPricingSource = _prefix "hasPricingSource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/MeanPriceDetermination"></see>
     /// </summary>
-    let MeanPriceDetermination =
-        Namespaced_IRI.parse _namespace_name "MeanPriceDetermination" |> NamespacedName
-
+    let MeanPriceDetermination = _prefix "MeanPriceDetermination"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/MidPrice"></see>
     /// </summary>
-    let MidPrice = Namespaced_IRI.parse _namespace_name "MidPrice" |> NamespacedName
-
+    let MidPrice = _prefix "MidPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/OfficialClosingPrice"></see>
     /// </summary>
-    let OfficialClosingPrice =
-        Namespaced_IRI.parse _namespace_name "OfficialClosingPrice" |> NamespacedName
+    let OfficialClosingPrice = _prefix "OfficialClosingPrice"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasClosingPriceDeterminationMethod"></see>
     /// </summary>
     let hasClosingPriceDeterminationMethod =
-        Namespaced_IRI.parse _namespace_name "hasClosingPriceDeterminationMethod" |> NamespacedName
+        _prefix "hasClosingPriceDeterminationMethod"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/OpeningPrice"></see>
     /// </summary>
-    let OpeningPrice =
-        Namespaced_IRI.parse _namespace_name "OpeningPrice" |> NamespacedName
-
+    let OpeningPrice = _prefix "OpeningPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/PriceAnalytic"></see>
     /// </summary>
-    let PriceAnalytic =
-        Namespaced_IRI.parse _namespace_name "PriceAnalytic" |> NamespacedName
-
+    let PriceAnalytic = _prefix "PriceAnalytic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/PricingModel"></see>
     /// </summary>
-    let PricingModel =
-        Namespaced_IRI.parse _namespace_name "PricingModel" |> NamespacedName
-
+    let PricingModel = _prefix "PricingModel"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/TradingDay"></see>
     /// </summary>
-    let TradingDay = Namespaced_IRI.parse _namespace_name "TradingDay" |> NamespacedName
-
+    let TradingDay = _prefix "TradingDay"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/TradingSession"></see>
     /// </summary>
-    let TradingSession =
-        Namespaced_IRI.parse _namespace_name "TradingSession" |> NamespacedName
-
+    let TradingSession = _prefix "TradingSession"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/VolumeWeightedAveragePrice"></see>
     /// </summary>
-    let VolumeWeightedAveragePrice =
-        Namespaced_IRI.parse _namespace_name "VolumeWeightedAveragePrice" |> NamespacedName
-
+    let VolumeWeightedAveragePrice = _prefix "VolumeWeightedAveragePrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/VolumeWeightedOpenPrice"></see>
     /// </summary>
-    let VolumeWeightedOpenPrice =
-        Namespaced_IRI.parse _namespace_name "VolumeWeightedOpenPrice" |> NamespacedName
-
+    let VolumeWeightedOpenPrice = _prefix "VolumeWeightedOpenPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/Yield"></see>
     /// </summary>
-    let Yield = Namespaced_IRI.parse _namespace_name "Yield" |> NamespacedName
-
+    let Yield = _prefix "Yield"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/YieldSpread"></see>
     /// </summary>
-    let YieldSpread =
-        Namespaced_IRI.parse _namespace_name "YieldSpread" |> NamespacedName
-
+    let YieldSpread = _prefix "YieldSpread"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasBookDepth"></see>
     /// </summary>
-    let hasBookDepth =
-        Namespaced_IRI.parse _namespace_name "hasBookDepth" |> NamespacedName
-
+    let hasBookDepth = _prefix "hasBookDepth"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasPriceDeterminationMethod"></see>
     /// </summary>
-    let hasPriceDeterminationMethod =
-        Namespaced_IRI.parse _namespace_name "hasPriceDeterminationMethod" |> NamespacedName
-
+    let hasPriceDeterminationMethod = _prefix "hasPriceDeterminationMethod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasLotSize"></see>
     /// </summary>
-    let hasLotSize = Namespaced_IRI.parse _namespace_name "hasLotSize" |> NamespacedName
-
+    let hasLotSize = _prefix "hasLotSize"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasNumberOfDaysAccrued"></see>
     /// </summary>
-    let hasNumberOfDaysAccrued =
-        Namespaced_IRI.parse _namespace_name "hasNumberOfDaysAccrued" |> NamespacedName
-
+    let hasNumberOfDaysAccrued = _prefix "hasNumberOfDaysAccrued"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasQuoteLotSize"></see>
     /// </summary>
-    let hasQuoteLotSize =
-        Namespaced_IRI.parse _namespace_name "hasQuoteLotSize" |> NamespacedName
-
+    let hasQuoteLotSize = _prefix "hasQuoteLotSize"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasRateOfReturn"></see>
     /// </summary>
-    let hasRateOfReturn =
-        Namespaced_IRI.parse _namespace_name "hasRateOfReturn" |> NamespacedName
-
+    let hasRateOfReturn = _prefix "hasRateOfReturn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasRoundLotSize"></see>
     /// </summary>
-    let hasRoundLotSize =
-        Namespaced_IRI.parse _namespace_name "hasRoundLotSize" |> NamespacedName
-
+    let hasRoundLotSize = _prefix "hasRoundLotSize"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasTradingDateTime"></see>
     /// </summary>
-    let hasTradingDateTime =
-        Namespaced_IRI.parse _namespace_name "hasTradingDateTime" |> NamespacedName
-
+    let hasTradingDateTime = _prefix "hasTradingDateTime"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/hasTradingVolume"></see>
     /// </summary>
-    let hasTradingVolume =
-        Namespaced_IRI.parse _namespace_name "hasTradingVolume" |> NamespacedName
+    let hasTradingVolume = _prefix "hasTradingVolume"

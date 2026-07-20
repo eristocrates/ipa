@@ -1,121 +1,90 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.IND.ForeignExchange.ForeignExchange.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_ind_fx_fx =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencyConversionService"></see>
     /// </summary>
-    let CurrencyConversionService =
-        Namespaced_IRI.parse _namespace_name "CurrencyConversionService" |> NamespacedName
-
+    let CurrencyConversionService = _prefix "CurrencyConversionService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/ForeignExchangeService"></see>
     /// </summary>
-    let ForeignExchangeService =
-        Namespaced_IRI.parse _namespace_name "ForeignExchangeService" |> NamespacedName
-
+    let ForeignExchangeService = _prefix "ForeignExchangeService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencyForwardRate"></see>
     /// </summary>
-    let CurrencyForwardRate =
-        Namespaced_IRI.parse _namespace_name "CurrencyForwardRate" |> NamespacedName
-
+    let CurrencyForwardRate = _prefix "CurrencyForwardRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/QuotedExchangeRate"></see>
     /// </summary>
-    let QuotedExchangeRate =
-        Namespaced_IRI.parse _namespace_name "QuotedExchangeRate" |> NamespacedName
-
+    let QuotedExchangeRate = _prefix "QuotedExchangeRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencyForwardRateVolatility"></see>
     /// </summary>
-    let CurrencyForwardRateVolatility =
-        Namespaced_IRI.parse _namespace_name "CurrencyForwardRateVolatility" |> NamespacedName
-
+    let CurrencyForwardRateVolatility = _prefix "CurrencyForwardRateVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/ExchangeRateVolatility"></see>
     /// </summary>
-    let ExchangeRateVolatility =
-        Namespaced_IRI.parse _namespace_name "ExchangeRateVolatility" |> NamespacedName
-
+    let ExchangeRateVolatility = _prefix "ExchangeRateVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencySpotBuyRate"></see>
     /// </summary>
-    let CurrencySpotBuyRate =
-        Namespaced_IRI.parse _namespace_name "CurrencySpotBuyRate" |> NamespacedName
-
+    let CurrencySpotBuyRate = _prefix "CurrencySpotBuyRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencySpotRate"></see>
     /// </summary>
-    let CurrencySpotRate =
-        Namespaced_IRI.parse _namespace_name "CurrencySpotRate" |> NamespacedName
-
+    let CurrencySpotRate = _prefix "CurrencySpotRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencySpotMidRate"></see>
     /// </summary>
-    let CurrencySpotMidRate =
-        Namespaced_IRI.parse _namespace_name "CurrencySpotMidRate" |> NamespacedName
-
+    let CurrencySpotMidRate = _prefix "CurrencySpotMidRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencySpotSellRate"></see>
     /// </summary>
-    let CurrencySpotSellRate =
-        Namespaced_IRI.parse _namespace_name "CurrencySpotSellRate" |> NamespacedName
-
+    let CurrencySpotSellRate = _prefix "CurrencySpotSellRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/CurrencySpotVolatility"></see>
     /// </summary>
-    let CurrencySpotVolatility =
-        Namespaced_IRI.parse _namespace_name "CurrencySpotVolatility" |> NamespacedName
-
+    let CurrencySpotVolatility = _prefix "CurrencySpotVolatility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/ExchangeRateStructure"></see>
     /// </summary>
-    let ExchangeRateStructure =
-        Namespaced_IRI.parse _namespace_name "ExchangeRateStructure" |> NamespacedName
+    let ExchangeRateStructure = _prefix "ExchangeRateStructure"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/InternationalElectronicFundsTransferService"></see>
     /// </summary>
     let InternationalElectronicFundsTransferService =
-        Namespaced_IRI.parse _namespace_name "InternationalElectronicFundsTransferService" |> NamespacedName
+        _prefix "InternationalElectronicFundsTransferService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/hasQuoteCurrency"></see>
     /// </summary>
-    let hasQuoteCurrency =
-        Namespaced_IRI.parse _namespace_name "hasQuoteCurrency" |> NamespacedName
-
+    let hasQuoteCurrency = _prefix "hasQuoteCurrency"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/hasExchangeRateQuotationSource"></see>
     /// </summary>
-    let hasExchangeRateQuotationSource =
-        Namespaced_IRI.parse _namespace_name "hasExchangeRateQuotationSource" |> NamespacedName
-
+    let hasExchangeRateQuotationSource = _prefix "hasExchangeRateQuotationSource"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/hasQuotationBlockAmountBasis"></see>
     /// </summary>
-    let hasQuotationBlockAmountBasis =
-        Namespaced_IRI.parse _namespace_name "hasQuotationBlockAmountBasis" |> NamespacedName
-
+    let hasQuotationBlockAmountBasis = _prefix "hasQuotationBlockAmountBasis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/hasQuotationSettlementBasis"></see>
     /// </summary>
-    let hasQuotationSettlementBasis =
-        Namespaced_IRI.parse _namespace_name "hasQuotationSettlementBasis" |> NamespacedName
-
+    let hasQuotationSettlementBasis = _prefix "hasQuotationSettlementBasis"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/hasQuotedExchangeRate"></see>
     /// </summary>
-    let hasQuotedExchangeRate =
-        Namespaced_IRI.parse _namespace_name "hasQuotedExchangeRate" |> NamespacedName
-
+    let hasQuotedExchangeRate = _prefix "hasQuotedExchangeRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/isPremiumOn"></see>
     /// </summary>
-    let isPremiumOn =
-        Namespaced_IRI.parse _namespace_name "isPremiumOn" |> NamespacedName
+    let isPremiumOn = _prefix "isPremiumOn"

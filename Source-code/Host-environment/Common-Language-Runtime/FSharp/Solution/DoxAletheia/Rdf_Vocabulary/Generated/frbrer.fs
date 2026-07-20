@@ -1,870 +1,874 @@
 namespace http.iflastandards.info.ns.fr.frbr.frbrer.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module frbrer =
     let _namespace_name = "http://iflastandards.info/ns/fr/frbr/frbrer/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1001"></see>
     /// </summary>
-    let C1001 = Namespaced_IRI.parse _namespace_name "C1001" |> NamespacedName
+    let C1001 = _prefix "C1001"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1002"></see>
     /// </summary>
-    let C1002 = Namespaced_IRI.parse _namespace_name "C1002" |> NamespacedName
+    let C1002 = _prefix "C1002"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1003"></see>
     /// </summary>
-    let C1003 = Namespaced_IRI.parse _namespace_name "C1003" |> NamespacedName
+    let C1003 = _prefix "C1003"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1004"></see>
     /// </summary>
-    let C1004 = Namespaced_IRI.parse _namespace_name "C1004" |> NamespacedName
+    let C1004 = _prefix "C1004"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1005"></see>
     /// </summary>
-    let C1005 = Namespaced_IRI.parse _namespace_name "C1005" |> NamespacedName
+    let C1005 = _prefix "C1005"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1006"></see>
     /// </summary>
-    let C1006 = Namespaced_IRI.parse _namespace_name "C1006" |> NamespacedName
+    let C1006 = _prefix "C1006"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1007"></see>
     /// </summary>
-    let C1007 = Namespaced_IRI.parse _namespace_name "C1007" |> NamespacedName
+    let C1007 = _prefix "C1007"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1008"></see>
     /// </summary>
-    let C1008 = Namespaced_IRI.parse _namespace_name "C1008" |> NamespacedName
+    let C1008 = _prefix "C1008"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1009"></see>
     /// </summary>
-    let C1009 = Namespaced_IRI.parse _namespace_name "C1009" |> NamespacedName
+    let C1009 = _prefix "C1009"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/C1010"></see>
     /// </summary>
-    let C1010 = Namespaced_IRI.parse _namespace_name "C1010" |> NamespacedName
+    let C1010 = _prefix "C1010"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2001"></see>
     /// </summary>
-    let P2001 = Namespaced_IRI.parse _namespace_name "P2001" |> NamespacedName
+    let P2001 = _prefix "P2001"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2002"></see>
     /// </summary>
-    let P2002 = Namespaced_IRI.parse _namespace_name "P2002" |> NamespacedName
+    let P2002 = _prefix "P2002"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3001"></see>
     /// </summary>
-    let P3001 = Namespaced_IRI.parse _namespace_name "P3001" |> NamespacedName
+    let P3001 = _prefix "P3001"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3005"></see>
     /// </summary>
-    let P3005 = Namespaced_IRI.parse _namespace_name "P3005" |> NamespacedName
+    let P3005 = _prefix "P3005"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3006"></see>
     /// </summary>
-    let P3006 = Namespaced_IRI.parse _namespace_name "P3006" |> NamespacedName
+    let P3006 = _prefix "P3006"
     /// <summary>
     /// Source documentation has label "Other Distinguishing Characteristic", used also for an Expression attribute.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3004"></see></summary>
-    let P3004 = Namespaced_IRI.parse _namespace_name "P3004" |> NamespacedName
+    let P3004 = _prefix "P3004"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3002"></see>
     /// </summary>
-    let P3002 = Namespaced_IRI.parse _namespace_name "P3002" |> NamespacedName
+    let P3002 = _prefix "P3002"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3007"></see>
     /// </summary>
-    let P3007 = Namespaced_IRI.parse _namespace_name "P3007" |> NamespacedName
+    let P3007 = _prefix "P3007"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3003"></see>
     /// </summary>
-    let P3003 = Namespaced_IRI.parse _namespace_name "P3003" |> NamespacedName
+    let P3003 = _prefix "P3003"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2003"></see>
     /// </summary>
-    let P2003 = Namespaced_IRI.parse _namespace_name "P2003" |> NamespacedName
+    let P2003 = _prefix "P2003"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2004"></see>
     /// </summary>
-    let P2004 = Namespaced_IRI.parse _namespace_name "P2004" |> NamespacedName
+    let P2004 = _prefix "P2004"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2005"></see>
     /// </summary>
-    let P2005 = Namespaced_IRI.parse _namespace_name "P2005" |> NamespacedName
+    let P2005 = _prefix "P2005"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2006"></see>
     /// </summary>
-    let P2006 = Namespaced_IRI.parse _namespace_name "P2006" |> NamespacedName
+    let P2006 = _prefix "P2006"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2007"></see>
     /// </summary>
-    let P2007 = Namespaced_IRI.parse _namespace_name "P2007" |> NamespacedName
+    let P2007 = _prefix "P2007"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2008"></see>
     /// </summary>
-    let P2008 = Namespaced_IRI.parse _namespace_name "P2008" |> NamespacedName
+    let P2008 = _prefix "P2008"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2009"></see>
     /// </summary>
-    let P2009 = Namespaced_IRI.parse _namespace_name "P2009" |> NamespacedName
+    let P2009 = _prefix "P2009"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2010"></see>
     /// </summary>
-    let P2010 = Namespaced_IRI.parse _namespace_name "P2010" |> NamespacedName
+    let P2010 = _prefix "P2010"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2011"></see>
     /// </summary>
-    let P2011 = Namespaced_IRI.parse _namespace_name "P2011" |> NamespacedName
+    let P2011 = _prefix "P2011"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2012"></see>
     /// </summary>
-    let P2012 = Namespaced_IRI.parse _namespace_name "P2012" |> NamespacedName
+    let P2012 = _prefix "P2012"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2013"></see>
     /// </summary>
-    let P2013 = Namespaced_IRI.parse _namespace_name "P2013" |> NamespacedName
+    let P2013 = _prefix "P2013"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2014"></see>
     /// </summary>
-    let P2014 = Namespaced_IRI.parse _namespace_name "P2014" |> NamespacedName
+    let P2014 = _prefix "P2014"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2015"></see>
     /// </summary>
-    let P2015 = Namespaced_IRI.parse _namespace_name "P2015" |> NamespacedName
+    let P2015 = _prefix "P2015"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2016"></see>
     /// </summary>
-    let P2016 = Namespaced_IRI.parse _namespace_name "P2016" |> NamespacedName
+    let P2016 = _prefix "P2016"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2017"></see>
     /// </summary>
-    let P2017 = Namespaced_IRI.parse _namespace_name "P2017" |> NamespacedName
+    let P2017 = _prefix "P2017"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2018"></see>
     /// </summary>
-    let P2018 = Namespaced_IRI.parse _namespace_name "P2018" |> NamespacedName
+    let P2018 = _prefix "P2018"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2019"></see>
     /// </summary>
-    let P2019 = Namespaced_IRI.parse _namespace_name "P2019" |> NamespacedName
+    let P2019 = _prefix "P2019"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2020"></see>
     /// </summary>
-    let P2020 = Namespaced_IRI.parse _namespace_name "P2020" |> NamespacedName
+    let P2020 = _prefix "P2020"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2021"></see>
     /// </summary>
-    let P2021 = Namespaced_IRI.parse _namespace_name "P2021" |> NamespacedName
+    let P2021 = _prefix "P2021"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2022"></see>
     /// </summary>
-    let P2022 = Namespaced_IRI.parse _namespace_name "P2022" |> NamespacedName
+    let P2022 = _prefix "P2022"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2023"></see>
     /// </summary>
-    let P2023 = Namespaced_IRI.parse _namespace_name "P2023" |> NamespacedName
+    let P2023 = _prefix "P2023"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2024"></see>
     /// </summary>
-    let P2024 = Namespaced_IRI.parse _namespace_name "P2024" |> NamespacedName
+    let P2024 = _prefix "P2024"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2025"></see>
     /// </summary>
-    let P2025 = Namespaced_IRI.parse _namespace_name "P2025" |> NamespacedName
+    let P2025 = _prefix "P2025"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2026"></see>
     /// </summary>
-    let P2026 = Namespaced_IRI.parse _namespace_name "P2026" |> NamespacedName
+    let P2026 = _prefix "P2026"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2027"></see>
     /// </summary>
-    let P2027 = Namespaced_IRI.parse _namespace_name "P2027" |> NamespacedName
+    let P2027 = _prefix "P2027"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2028"></see>
     /// </summary>
-    let P2028 = Namespaced_IRI.parse _namespace_name "P2028" |> NamespacedName
+    let P2028 = _prefix "P2028"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2029"></see>
     /// </summary>
-    let P2029 = Namespaced_IRI.parse _namespace_name "P2029" |> NamespacedName
+    let P2029 = _prefix "P2029"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2030"></see>
     /// </summary>
-    let P2030 = Namespaced_IRI.parse _namespace_name "P2030" |> NamespacedName
+    let P2030 = _prefix "P2030"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2031"></see>
     /// </summary>
-    let P2031 = Namespaced_IRI.parse _namespace_name "P2031" |> NamespacedName
+    let P2031 = _prefix "P2031"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2032"></see>
     /// </summary>
-    let P2032 = Namespaced_IRI.parse _namespace_name "P2032" |> NamespacedName
+    let P2032 = _prefix "P2032"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2033"></see>
     /// </summary>
-    let P2033 = Namespaced_IRI.parse _namespace_name "P2033" |> NamespacedName
+    let P2033 = _prefix "P2033"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2034"></see>
     /// </summary>
-    let P2034 = Namespaced_IRI.parse _namespace_name "P2034" |> NamespacedName
+    let P2034 = _prefix "P2034"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2035"></see>
     /// </summary>
-    let P2035 = Namespaced_IRI.parse _namespace_name "P2035" |> NamespacedName
+    let P2035 = _prefix "P2035"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2036"></see>
     /// </summary>
-    let P2036 = Namespaced_IRI.parse _namespace_name "P2036" |> NamespacedName
+    let P2036 = _prefix "P2036"
     /// <summary>
     /// Source documentation has "literary genre", but other genres allowed.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2054"></see></summary>
-    let P2054 = Namespaced_IRI.parse _namespace_name "P2054" |> NamespacedName
+    let P2054 = _prefix "P2054"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2047"></see>
     /// </summary>
-    let P2047 = Namespaced_IRI.parse _namespace_name "P2047" |> NamespacedName
+    let P2047 = _prefix "P2047"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2044"></see>
     /// </summary>
-    let P2044 = Namespaced_IRI.parse _namespace_name "P2044" |> NamespacedName
+    let P2044 = _prefix "P2044"
     /// <summary>
     /// Source documentation has "literary genre", but other genres allowed.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2053"></see></summary>
-    let P2053 = Namespaced_IRI.parse _namespace_name "P2053" |> NamespacedName
+    let P2053 = _prefix "P2053"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2052"></see>
     /// </summary>
-    let P2052 = Namespaced_IRI.parse _namespace_name "P2052" |> NamespacedName
+    let P2052 = _prefix "P2052"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2058"></see>
     /// </summary>
-    let P2058 = Namespaced_IRI.parse _namespace_name "P2058" |> NamespacedName
+    let P2058 = _prefix "P2058"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2050"></see>
     /// </summary>
-    let P2050 = Namespaced_IRI.parse _namespace_name "P2050" |> NamespacedName
+    let P2050 = _prefix "P2050"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2049"></see>
     /// </summary>
-    let P2049 = Namespaced_IRI.parse _namespace_name "P2049" |> NamespacedName
+    let P2049 = _prefix "P2049"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2045"></see>
     /// </summary>
-    let P2045 = Namespaced_IRI.parse _namespace_name "P2045" |> NamespacedName
+    let P2045 = _prefix "P2045"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2098"></see>
     /// </summary>
-    let P2098 = Namespaced_IRI.parse _namespace_name "P2098" |> NamespacedName
+    let P2098 = _prefix "P2098"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2057"></see>
     /// </summary>
-    let P2057 = Namespaced_IRI.parse _namespace_name "P2057" |> NamespacedName
+    let P2057 = _prefix "P2057"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2043"></see>
     /// </summary>
-    let P2043 = Namespaced_IRI.parse _namespace_name "P2043" |> NamespacedName
+    let P2043 = _prefix "P2043"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2046"></see>
     /// </summary>
-    let P2046 = Namespaced_IRI.parse _namespace_name "P2046" |> NamespacedName
+    let P2046 = _prefix "P2046"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2037"></see>
     /// </summary>
-    let P2037 = Namespaced_IRI.parse _namespace_name "P2037" |> NamespacedName
+    let P2037 = _prefix "P2037"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2038"></see>
     /// </summary>
-    let P2038 = Namespaced_IRI.parse _namespace_name "P2038" |> NamespacedName
+    let P2038 = _prefix "P2038"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2039"></see>
     /// </summary>
-    let P2039 = Namespaced_IRI.parse _namespace_name "P2039" |> NamespacedName
+    let P2039 = _prefix "P2039"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2040"></see>
     /// </summary>
-    let P2040 = Namespaced_IRI.parse _namespace_name "P2040" |> NamespacedName
+    let P2040 = _prefix "P2040"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2041"></see>
     /// </summary>
-    let P2041 = Namespaced_IRI.parse _namespace_name "P2041" |> NamespacedName
+    let P2041 = _prefix "P2041"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2042"></see>
     /// </summary>
-    let P2042 = Namespaced_IRI.parse _namespace_name "P2042" |> NamespacedName
+    let P2042 = _prefix "P2042"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2048"></see>
     /// </summary>
-    let P2048 = Namespaced_IRI.parse _namespace_name "P2048" |> NamespacedName
+    let P2048 = _prefix "P2048"
     /// <summary>
     /// Source documentation has label "has adaptation"; amended to improve consistency.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2051"></see></summary>
-    let P2051 = Namespaced_IRI.parse _namespace_name "P2051" |> NamespacedName
+    let P2051 = _prefix "P2051"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2055"></see>
     /// </summary>
-    let P2055 = Namespaced_IRI.parse _namespace_name "P2055" |> NamespacedName
+    let P2055 = _prefix "P2055"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2056"></see>
     /// </summary>
-    let P2056 = Namespaced_IRI.parse _namespace_name "P2056" |> NamespacedName
+    let P2056 = _prefix "P2056"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2059"></see>
     /// </summary>
-    let P2059 = Namespaced_IRI.parse _namespace_name "P2059" |> NamespacedName
+    let P2059 = _prefix "P2059"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2060"></see>
     /// </summary>
-    let P2060 = Namespaced_IRI.parse _namespace_name "P2060" |> NamespacedName
+    let P2060 = _prefix "P2060"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2061"></see>
     /// </summary>
-    let P2061 = Namespaced_IRI.parse _namespace_name "P2061" |> NamespacedName
+    let P2061 = _prefix "P2061"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2062"></see>
     /// </summary>
-    let P2062 = Namespaced_IRI.parse _namespace_name "P2062" |> NamespacedName
+    let P2062 = _prefix "P2062"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2063"></see>
     /// </summary>
-    let P2063 = Namespaced_IRI.parse _namespace_name "P2063" |> NamespacedName
+    let P2063 = _prefix "P2063"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2064"></see>
     /// </summary>
-    let P2064 = Namespaced_IRI.parse _namespace_name "P2064" |> NamespacedName
+    let P2064 = _prefix "P2064"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2065"></see>
     /// </summary>
-    let P2065 = Namespaced_IRI.parse _namespace_name "P2065" |> NamespacedName
+    let P2065 = _prefix "P2065"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2066"></see>
     /// </summary>
-    let P2066 = Namespaced_IRI.parse _namespace_name "P2066" |> NamespacedName
+    let P2066 = _prefix "P2066"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2067"></see>
     /// </summary>
-    let P2067 = Namespaced_IRI.parse _namespace_name "P2067" |> NamespacedName
+    let P2067 = _prefix "P2067"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2068"></see>
     /// </summary>
-    let P2068 = Namespaced_IRI.parse _namespace_name "P2068" |> NamespacedName
+    let P2068 = _prefix "P2068"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2069"></see>
     /// </summary>
-    let P2069 = Namespaced_IRI.parse _namespace_name "P2069" |> NamespacedName
+    let P2069 = _prefix "P2069"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2070"></see>
     /// </summary>
-    let P2070 = Namespaced_IRI.parse _namespace_name "P2070" |> NamespacedName
+    let P2070 = _prefix "P2070"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2071"></see>
     /// </summary>
-    let P2071 = Namespaced_IRI.parse _namespace_name "P2071" |> NamespacedName
+    let P2071 = _prefix "P2071"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2072"></see>
     /// </summary>
-    let P2072 = Namespaced_IRI.parse _namespace_name "P2072" |> NamespacedName
+    let P2072 = _prefix "P2072"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2073"></see>
     /// </summary>
-    let P2073 = Namespaced_IRI.parse _namespace_name "P2073" |> NamespacedName
+    let P2073 = _prefix "P2073"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2074"></see>
     /// </summary>
-    let P2074 = Namespaced_IRI.parse _namespace_name "P2074" |> NamespacedName
+    let P2074 = _prefix "P2074"
     /// <summary>
     /// Source documentation has "literary genre", but other genres allowed.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2075"></see></summary>
-    let P2075 = Namespaced_IRI.parse _namespace_name "P2075" |> NamespacedName
+    let P2075 = _prefix "P2075"
     /// <summary>
     /// Source documentation has "literary genre", but other genres allowed.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2076"></see></summary>
-    let P2076 = Namespaced_IRI.parse _namespace_name "P2076" |> NamespacedName
+    let P2076 = _prefix "P2076"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2077"></see>
     /// </summary>
-    let P2077 = Namespaced_IRI.parse _namespace_name "P2077" |> NamespacedName
+    let P2077 = _prefix "P2077"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2078"></see>
     /// </summary>
-    let P2078 = Namespaced_IRI.parse _namespace_name "P2078" |> NamespacedName
+    let P2078 = _prefix "P2078"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2079"></see>
     /// </summary>
-    let P2079 = Namespaced_IRI.parse _namespace_name "P2079" |> NamespacedName
+    let P2079 = _prefix "P2079"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2080"></see>
     /// </summary>
-    let P2080 = Namespaced_IRI.parse _namespace_name "P2080" |> NamespacedName
+    let P2080 = _prefix "P2080"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2081"></see>
     /// </summary>
-    let P2081 = Namespaced_IRI.parse _namespace_name "P2081" |> NamespacedName
+    let P2081 = _prefix "P2081"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2082"></see>
     /// </summary>
-    let P2082 = Namespaced_IRI.parse _namespace_name "P2082" |> NamespacedName
+    let P2082 = _prefix "P2082"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2083"></see>
     /// </summary>
-    let P2083 = Namespaced_IRI.parse _namespace_name "P2083" |> NamespacedName
+    let P2083 = _prefix "P2083"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2085"></see>
     /// </summary>
-    let P2085 = Namespaced_IRI.parse _namespace_name "P2085" |> NamespacedName
+    let P2085 = _prefix "P2085"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2086"></see>
     /// </summary>
-    let P2086 = Namespaced_IRI.parse _namespace_name "P2086" |> NamespacedName
+    let P2086 = _prefix "P2086"
     /// <summary>
     /// Source documentation has label "has reconfiguration", amended to improve consistency.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2087"></see></summary>
-    let P2087 = Namespaced_IRI.parse _namespace_name "P2087" |> NamespacedName
+    let P2087 = _prefix "P2087"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2088"></see>
     /// </summary>
-    let P2088 = Namespaced_IRI.parse _namespace_name "P2088" |> NamespacedName
+    let P2088 = _prefix "P2088"
     /// <summary>
     /// Source documentation has label "has reproduction"; amended to improve consistency.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2089"></see></summary>
-    let P2089 = Namespaced_IRI.parse _namespace_name "P2089" |> NamespacedName
+    let P2089 = _prefix "P2089"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2090"></see>
     /// </summary>
-    let P2090 = Namespaced_IRI.parse _namespace_name "P2090" |> NamespacedName
+    let P2090 = _prefix "P2090"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2091"></see>
     /// </summary>
-    let P2091 = Namespaced_IRI.parse _namespace_name "P2091" |> NamespacedName
+    let P2091 = _prefix "P2091"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2092"></see>
     /// </summary>
-    let P2092 = Namespaced_IRI.parse _namespace_name "P2092" |> NamespacedName
+    let P2092 = _prefix "P2092"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2093"></see>
     /// </summary>
-    let P2093 = Namespaced_IRI.parse _namespace_name "P2093" |> NamespacedName
+    let P2093 = _prefix "P2093"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2094"></see>
     /// </summary>
-    let P2094 = Namespaced_IRI.parse _namespace_name "P2094" |> NamespacedName
+    let P2094 = _prefix "P2094"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2095"></see>
     /// </summary>
-    let P2095 = Namespaced_IRI.parse _namespace_name "P2095" |> NamespacedName
+    let P2095 = _prefix "P2095"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2096"></see>
     /// </summary>
-    let P2096 = Namespaced_IRI.parse _namespace_name "P2096" |> NamespacedName
+    let P2096 = _prefix "P2096"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2097"></see>
     /// </summary>
-    let P2097 = Namespaced_IRI.parse _namespace_name "P2097" |> NamespacedName
+    let P2097 = _prefix "P2097"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2099"></see>
     /// </summary>
-    let P2099 = Namespaced_IRI.parse _namespace_name "P2099" |> NamespacedName
+    let P2099 = _prefix "P2099"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2100"></see>
     /// </summary>
-    let P2100 = Namespaced_IRI.parse _namespace_name "P2100" |> NamespacedName
+    let P2100 = _prefix "P2100"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2101"></see>
     /// </summary>
-    let P2101 = Namespaced_IRI.parse _namespace_name "P2101" |> NamespacedName
+    let P2101 = _prefix "P2101"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2102"></see>
     /// </summary>
-    let P2102 = Namespaced_IRI.parse _namespace_name "P2102" |> NamespacedName
+    let P2102 = _prefix "P2102"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2103"></see>
     /// </summary>
-    let P2103 = Namespaced_IRI.parse _namespace_name "P2103" |> NamespacedName
+    let P2103 = _prefix "P2103"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2104"></see>
     /// </summary>
-    let P2104 = Namespaced_IRI.parse _namespace_name "P2104" |> NamespacedName
+    let P2104 = _prefix "P2104"
     /// <summary>
     /// Source documentation has "literary genre", but other genres allowed.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2105"></see></summary>
-    let P2105 = Namespaced_IRI.parse _namespace_name "P2105" |> NamespacedName
+    let P2105 = _prefix "P2105"
     /// <summary>
     /// Source documentation has "literary genre", but other genres allowed.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2106"></see></summary>
-    let P2106 = Namespaced_IRI.parse _namespace_name "P2106" |> NamespacedName
+    let P2106 = _prefix "P2106"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2107"></see>
     /// </summary>
-    let P2107 = Namespaced_IRI.parse _namespace_name "P2107" |> NamespacedName
+    let P2107 = _prefix "P2107"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2108"></see>
     /// </summary>
-    let P2108 = Namespaced_IRI.parse _namespace_name "P2108" |> NamespacedName
+    let P2108 = _prefix "P2108"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2109"></see>
     /// </summary>
-    let P2109 = Namespaced_IRI.parse _namespace_name "P2109" |> NamespacedName
+    let P2109 = _prefix "P2109"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P2110"></see>
     /// </summary>
-    let P2110 = Namespaced_IRI.parse _namespace_name "P2110" |> NamespacedName
+    let P2110 = _prefix "P2110"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3008"></see>
     /// </summary>
-    let P3008 = Namespaced_IRI.parse _namespace_name "P3008" |> NamespacedName
+    let P3008 = _prefix "P3008"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3009"></see>
     /// </summary>
-    let P3009 = Namespaced_IRI.parse _namespace_name "P3009" |> NamespacedName
+    let P3009 = _prefix "P3009"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3010"></see>
     /// </summary>
-    let P3010 = Namespaced_IRI.parse _namespace_name "P3010" |> NamespacedName
+    let P3010 = _prefix "P3010"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3011"></see>
     /// </summary>
-    let P3011 = Namespaced_IRI.parse _namespace_name "P3011" |> NamespacedName
+    let P3011 = _prefix "P3011"
     /// <summary>
     /// Source document has label "Other Distinguishing Characteristic" used also for a Work attribute.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3012"></see></summary>
-    let P3012 = Namespaced_IRI.parse _namespace_name "P3012" |> NamespacedName
+    let P3012 = _prefix "P3012"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3013"></see>
     /// </summary>
-    let P3013 = Namespaced_IRI.parse _namespace_name "P3013" |> NamespacedName
+    let P3013 = _prefix "P3013"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3014"></see>
     /// </summary>
-    let P3014 = Namespaced_IRI.parse _namespace_name "P3014" |> NamespacedName
+    let P3014 = _prefix "P3014"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3015"></see>
     /// </summary>
-    let P3015 = Namespaced_IRI.parse _namespace_name "P3015" |> NamespacedName
+    let P3015 = _prefix "P3015"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3016"></see>
     /// </summary>
-    let P3016 = Namespaced_IRI.parse _namespace_name "P3016" |> NamespacedName
+    let P3016 = _prefix "P3016"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3017"></see>
     /// </summary>
-    let P3017 = Namespaced_IRI.parse _namespace_name "P3017" |> NamespacedName
+    let P3017 = _prefix "P3017"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3018"></see>
     /// </summary>
-    let P3018 = Namespaced_IRI.parse _namespace_name "P3018" |> NamespacedName
+    let P3018 = _prefix "P3018"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3019"></see>
     /// </summary>
-    let P3019 = Namespaced_IRI.parse _namespace_name "P3019" |> NamespacedName
+    let P3019 = _prefix "P3019"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3020"></see>
     /// </summary>
-    let P3020 = Namespaced_IRI.parse _namespace_name "P3020" |> NamespacedName
+    let P3020 = _prefix "P3020"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3021"></see>
     /// </summary>
-    let P3021 = Namespaced_IRI.parse _namespace_name "P3021" |> NamespacedName
+    let P3021 = _prefix "P3021"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3022"></see>
     /// </summary>
-    let P3022 = Namespaced_IRI.parse _namespace_name "P3022" |> NamespacedName
+    let P3022 = _prefix "P3022"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3023"></see>
     /// </summary>
-    let P3023 = Namespaced_IRI.parse _namespace_name "P3023" |> NamespacedName
+    let P3023 = _prefix "P3023"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3024"></see>
     /// </summary>
-    let P3024 = Namespaced_IRI.parse _namespace_name "P3024" |> NamespacedName
+    let P3024 = _prefix "P3024"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3025"></see>
     /// </summary>
-    let P3025 = Namespaced_IRI.parse _namespace_name "P3025" |> NamespacedName
+    let P3025 = _prefix "P3025"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3026"></see>
     /// </summary>
-    let P3026 = Namespaced_IRI.parse _namespace_name "P3026" |> NamespacedName
+    let P3026 = _prefix "P3026"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3027"></see>
     /// </summary>
-    let P3027 = Namespaced_IRI.parse _namespace_name "P3027" |> NamespacedName
+    let P3027 = _prefix "P3027"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3028"></see>
     /// </summary>
-    let P3028 = Namespaced_IRI.parse _namespace_name "P3028" |> NamespacedName
+    let P3028 = _prefix "P3028"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3029"></see>
     /// </summary>
-    let P3029 = Namespaced_IRI.parse _namespace_name "P3029" |> NamespacedName
+    let P3029 = _prefix "P3029"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3030"></see>
     /// </summary>
-    let P3030 = Namespaced_IRI.parse _namespace_name "P3030" |> NamespacedName
+    let P3030 = _prefix "P3030"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3031"></see>
     /// </summary>
-    let P3031 = Namespaced_IRI.parse _namespace_name "P3031" |> NamespacedName
+    let P3031 = _prefix "P3031"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3032"></see>
     /// </summary>
-    let P3032 = Namespaced_IRI.parse _namespace_name "P3032" |> NamespacedName
+    let P3032 = _prefix "P3032"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3033"></see>
     /// </summary>
-    let P3033 = Namespaced_IRI.parse _namespace_name "P3033" |> NamespacedName
+    let P3033 = _prefix "P3033"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3034"></see>
     /// </summary>
-    let P3034 = Namespaced_IRI.parse _namespace_name "P3034" |> NamespacedName
+    let P3034 = _prefix "P3034"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3035"></see>
     /// </summary>
-    let P3035 = Namespaced_IRI.parse _namespace_name "P3035" |> NamespacedName
+    let P3035 = _prefix "P3035"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3036"></see>
     /// </summary>
-    let P3036 = Namespaced_IRI.parse _namespace_name "P3036" |> NamespacedName
+    let P3036 = _prefix "P3036"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3037"></see>
     /// </summary>
-    let P3037 = Namespaced_IRI.parse _namespace_name "P3037" |> NamespacedName
+    let P3037 = _prefix "P3037"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3038"></see>
     /// </summary>
-    let P3038 = Namespaced_IRI.parse _namespace_name "P3038" |> NamespacedName
+    let P3038 = _prefix "P3038"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3039"></see>
     /// </summary>
-    let P3039 = Namespaced_IRI.parse _namespace_name "P3039" |> NamespacedName
+    let P3039 = _prefix "P3039"
     /// <summary>
     /// Source documentation has "includes" prefixing the definition, interpreted as "and other dates" in the property description.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3040"></see></summary>
-    let P3040 = Namespaced_IRI.parse _namespace_name "P3040" |> NamespacedName
+    let P3040 = _prefix "P3040"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3041"></see>
     /// </summary>
-    let P3041 = Namespaced_IRI.parse _namespace_name "P3041" |> NamespacedName
+    let P3041 = _prefix "P3041"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3042"></see>
     /// </summary>
-    let P3042 = Namespaced_IRI.parse _namespace_name "P3042" |> NamespacedName
+    let P3042 = _prefix "P3042"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3043"></see>
     /// </summary>
-    let P3043 = Namespaced_IRI.parse _namespace_name "P3043" |> NamespacedName
+    let P3043 = _prefix "P3043"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3044"></see>
     /// </summary>
-    let P3044 = Namespaced_IRI.parse _namespace_name "P3044" |> NamespacedName
+    let P3044 = _prefix "P3044"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3045"></see>
     /// </summary>
-    let P3045 = Namespaced_IRI.parse _namespace_name "P3045" |> NamespacedName
+    let P3045 = _prefix "P3045"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3046"></see>
     /// </summary>
-    let P3046 = Namespaced_IRI.parse _namespace_name "P3046" |> NamespacedName
+    let P3046 = _prefix "P3046"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3047"></see>
     /// </summary>
-    let P3047 = Namespaced_IRI.parse _namespace_name "P3047" |> NamespacedName
+    let P3047 = _prefix "P3047"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3048"></see>
     /// </summary>
-    let P3048 = Namespaced_IRI.parse _namespace_name "P3048" |> NamespacedName
+    let P3048 = _prefix "P3048"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3049"></see>
     /// </summary>
-    let P3049 = Namespaced_IRI.parse _namespace_name "P3049" |> NamespacedName
+    let P3049 = _prefix "P3049"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3050"></see>
     /// </summary>
-    let P3050 = Namespaced_IRI.parse _namespace_name "P3050" |> NamespacedName
+    let P3050 = _prefix "P3050"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3051"></see>
     /// </summary>
-    let P3051 = Namespaced_IRI.parse _namespace_name "P3051" |> NamespacedName
+    let P3051 = _prefix "P3051"
     /// <summary>
     /// Source documentation has "marks/inscriptions"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3052"></see></summary>
-    let P3052 = Namespaced_IRI.parse _namespace_name "P3052" |> NamespacedName
+    let P3052 = _prefix "P3052"
     /// <summary>
     /// Source documentation has "acquisition/access"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3053"></see></summary>
-    let P3053 = Namespaced_IRI.parse _namespace_name "P3053" |> NamespacedName
+    let P3053 = _prefix "P3053"
     /// <summary>
     /// Source documentation has "fabricator/manufacturer"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3054"></see></summary>
-    let P3054 = Namespaced_IRI.parse _namespace_name "P3054" |> NamespacedName
+    let P3054 = _prefix "P3054"
     /// <summary>
     /// Source documentation has "publication/distribution"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3055"></see></summary>
-    let P3055 = Namespaced_IRI.parse _namespace_name "P3055" |> NamespacedName
+    let P3055 = _prefix "P3055"
     /// <summary>
     /// Source documentation has "publisher/distributor"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3056"></see></summary>
-    let P3056 = Namespaced_IRI.parse _namespace_name "P3056" |> NamespacedName
+    let P3056 = _prefix "P3056"
     /// <summary>
     /// Source documentation has "publication/distribution"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3057"></see></summary>
-    let P3057 = Namespaced_IRI.parse _namespace_name "P3057" |> NamespacedName
+    let P3057 = _prefix "P3057"
     /// <summary>
     /// Source documentation has "edition/issue"; slash character replaced with "or" to improve clarity.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3058"></see></summary>
-    let P3058 = Namespaced_IRI.parse _namespace_name "P3058" |> NamespacedName
+    let P3058 = _prefix "P3058"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3059"></see>
     /// </summary>
-    let P3059 = Namespaced_IRI.parse _namespace_name "P3059" |> NamespacedName
+    let P3059 = _prefix "P3059"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3060"></see>
     /// </summary>
-    let P3060 = Namespaced_IRI.parse _namespace_name "P3060" |> NamespacedName
+    let P3060 = _prefix "P3060"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3061"></see>
     /// </summary>
-    let P3061 = Namespaced_IRI.parse _namespace_name "P3061" |> NamespacedName
+    let P3061 = _prefix "P3061"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3062"></see>
     /// </summary>
-    let P3062 = Namespaced_IRI.parse _namespace_name "P3062" |> NamespacedName
+    let P3062 = _prefix "P3062"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3063"></see>
     /// </summary>
-    let P3063 = Namespaced_IRI.parse _namespace_name "P3063" |> NamespacedName
+    let P3063 = _prefix "P3063"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3064"></see>
     /// </summary>
-    let P3064 = Namespaced_IRI.parse _namespace_name "P3064" |> NamespacedName
+    let P3064 = _prefix "P3064"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3065"></see>
     /// </summary>
-    let P3065 = Namespaced_IRI.parse _namespace_name "P3065" |> NamespacedName
+    let P3065 = _prefix "P3065"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3066"></see>
     /// </summary>
-    let P3066 = Namespaced_IRI.parse _namespace_name "P3066" |> NamespacedName
+    let P3066 = _prefix "P3066"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3067"></see>
     /// </summary>
-    let P3067 = Namespaced_IRI.parse _namespace_name "P3067" |> NamespacedName
+    let P3067 = _prefix "P3067"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3068"></see>
     /// </summary>
-    let P3068 = Namespaced_IRI.parse _namespace_name "P3068" |> NamespacedName
+    let P3068 = _prefix "P3068"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3070"></see>
     /// </summary>
-    let P3070 = Namespaced_IRI.parse _namespace_name "P3070" |> NamespacedName
+    let P3070 = _prefix "P3070"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3071"></see>
     /// </summary>
-    let P3071 = Namespaced_IRI.parse _namespace_name "P3071" |> NamespacedName
+    let P3071 = _prefix "P3071"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3072"></see>
     /// </summary>
-    let P3072 = Namespaced_IRI.parse _namespace_name "P3072" |> NamespacedName
+    let P3072 = _prefix "P3072"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3074"></see>
     /// </summary>
-    let P3074 = Namespaced_IRI.parse _namespace_name "P3074" |> NamespacedName
+    let P3074 = _prefix "P3074"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3075"></see>
     /// </summary>
-    let P3075 = Namespaced_IRI.parse _namespace_name "P3075" |> NamespacedName
+    let P3075 = _prefix "P3075"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3076"></see>
     /// </summary>
-    let P3076 = Namespaced_IRI.parse _namespace_name "P3076" |> NamespacedName
+    let P3076 = _prefix "P3076"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3077"></see>
     /// </summary>
-    let P3077 = Namespaced_IRI.parse _namespace_name "P3077" |> NamespacedName
+    let P3077 = _prefix "P3077"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3078"></see>
     /// </summary>
-    let P3078 = Namespaced_IRI.parse _namespace_name "P3078" |> NamespacedName
+    let P3078 = _prefix "P3078"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3079"></see>
     /// </summary>
-    let P3079 = Namespaced_IRI.parse _namespace_name "P3079" |> NamespacedName
+    let P3079 = _prefix "P3079"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3080"></see>
     /// </summary>
-    let P3080 = Namespaced_IRI.parse _namespace_name "P3080" |> NamespacedName
+    let P3080 = _prefix "P3080"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3081"></see>
     /// </summary>
-    let P3081 = Namespaced_IRI.parse _namespace_name "P3081" |> NamespacedName
+    let P3081 = _prefix "P3081"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3082"></see>
     /// </summary>
-    let P3082 = Namespaced_IRI.parse _namespace_name "P3082" |> NamespacedName
+    let P3082 = _prefix "P3082"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3083"></see>
     /// </summary>
-    let P3083 = Namespaced_IRI.parse _namespace_name "P3083" |> NamespacedName
+    let P3083 = _prefix "P3083"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3084"></see>
     /// </summary>
-    let P3084 = Namespaced_IRI.parse _namespace_name "P3084" |> NamespacedName
+    let P3084 = _prefix "P3084"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3085"></see>
     /// </summary>
-    let P3085 = Namespaced_IRI.parse _namespace_name "P3085" |> NamespacedName
+    let P3085 = _prefix "P3085"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3086"></see>
     /// </summary>
-    let P3086 = Namespaced_IRI.parse _namespace_name "P3086" |> NamespacedName
+    let P3086 = _prefix "P3086"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3087"></see>
     /// </summary>
-    let P3087 = Namespaced_IRI.parse _namespace_name "P3087" |> NamespacedName
+    let P3087 = _prefix "P3087"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3088"></see>
     /// </summary>
-    let P3088 = Namespaced_IRI.parse _namespace_name "P3088" |> NamespacedName
+    let P3088 = _prefix "P3088"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3089"></see>
     /// </summary>
-    let P3089 = Namespaced_IRI.parse _namespace_name "P3089" |> NamespacedName
+    let P3089 = _prefix "P3089"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3090"></see>
     /// </summary>
-    let P3090 = Namespaced_IRI.parse _namespace_name "P3090" |> NamespacedName
+    let P3090 = _prefix "P3090"
     /// <summary>
     /// Source documentation has "includes" prefixing the definition, interpreted as "and other system components" in the property description.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3093"></see></summary>
-    let P3093 = Namespaced_IRI.parse _namespace_name "P3093" |> NamespacedName
+    let P3093 = _prefix "P3093"
     /// <summary>
     /// Source documentation has "include" prefixing the definition, removed for being redundant with respect to "and other characteristics" in the property description.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3094"></see></summary>
-    let P3094 = Namespaced_IRI.parse _namespace_name "P3094" |> NamespacedName
+    let P3094 = _prefix "P3094"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3095"></see>
     /// </summary>
-    let P3095 = Namespaced_IRI.parse _namespace_name "P3095" |> NamespacedName
+    let P3095 = _prefix "P3095"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3096"></see>
     /// </summary>
-    let P3096 = Namespaced_IRI.parse _namespace_name "P3096" |> NamespacedName
+    let P3096 = _prefix "P3096"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3097"></see>
     /// </summary>
-    let P3097 = Namespaced_IRI.parse _namespace_name "P3097" |> NamespacedName
+    let P3097 = _prefix "P3097"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3098"></see>
     /// </summary>
-    let P3098 = Namespaced_IRI.parse _namespace_name "P3098" |> NamespacedName
+    let P3098 = _prefix "P3098"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3099"></see>
     /// </summary>
-    let P3099 = Namespaced_IRI.parse _namespace_name "P3099" |> NamespacedName
+    let P3099 = _prefix "P3099"
     /// <summary>
     ///   <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3100"></see>
     /// </summary>
-    let P3100 = Namespaced_IRI.parse _namespace_name "P3100" |> NamespacedName
+    let P3100 = _prefix "P3100"
     /// <summary>
     /// Source documentation has "includes" prefixing the definition, interpreted as "and other geodetic, grid and vertical measurements" in the property description.
     /// <see href="http://iflastandards.info/ns/fr/frbr/frbrer/P3101"></see></summary>
-    let P3101 = Namespaced_IRI.parse _namespace_name "P3101" |> NamespacedName
+    let P3101 = _prefix "P3101"

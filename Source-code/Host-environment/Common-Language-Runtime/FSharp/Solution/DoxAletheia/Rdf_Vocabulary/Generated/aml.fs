@@ -1,723 +1,514 @@
 namespace https.w3id.org.i40.aml.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module aml =
     let _namespace_name = "https://w3id.org/i40/aml#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#CAEXFile"></see>
     /// </summary>
-    let CAEXFile = Namespaced_IRI.parse _namespace_name "CAEXFile" |> NamespacedName
+    let CAEXFile = _prefix "CAEXFile"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#AILevelSW"></see>
     /// </summary>
-    let AILevelSW = Namespaced_IRI.parse _namespace_name "AILevelSW" |> NamespacedName
-
+    let AILevelSW = _prefix "AILevelSW"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#ExternalInterface"></see>
     /// </summary>
-    let ExternalInterface =
-        Namespaced_IRI.parse _namespace_name "ExternalInterface" |> NamespacedName
-
+    let ExternalInterface = _prefix "ExternalInterface"
     /// <summary>
     /// Unique ID for the Interface Class
     /// <see href="https://w3id.org/i40/aml#hasICID"></see></summary>
-    let hasICID = Namespaced_IRI.parse _namespace_name "hasICID" |> NamespacedName
+    let hasICID = _prefix "hasICID"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameIC"></see>
     /// </summary>
-    let hasNameIC = Namespaced_IRI.parse _namespace_name "hasNameIC" |> NamespacedName
-
+    let hasNameIC = _prefix "hasNameIC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefBaseClassPathIC"></see>
     /// </summary>
-    let hasRefBaseClassPathIC =
-        Namespaced_IRI.parse _namespace_name "hasRefBaseClassPathIC" |> NamespacedName
-
+    let hasRefBaseClassPathIC = _prefix "hasRefBaseClassPathIC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#AdditionalInformation"></see>
     /// </summary>
-    let AdditionalInformation =
-        Namespaced_IRI.parse _namespace_name "AdditionalInformation" |> NamespacedName
-
+    let AdditionalInformation = _prefix "AdditionalInformation"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#AdditionalInformation1"></see>
     /// </summary>
-    let AdditionalInformation1 =
-        Namespaced_IRI.parse _namespace_name "AdditionalInformation1" |> NamespacedName
-
+    let AdditionalInformation1 = _prefix "AdditionalInformation1"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAMLVersion"></see>
     /// </summary>
-    let hasAMLVersion =
-        Namespaced_IRI.parse _namespace_name "hasAMLVersion" |> NamespacedName
-
+    let hasAMLVersion = _prefix "hasAMLVersion"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasWriterId"></see>
     /// </summary>
-    let hasWriterId =
-        Namespaced_IRI.parse _namespace_name "hasWriterId" |> NamespacedName
-
+    let hasWriterId = _prefix "hasWriterId"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasWriterName"></see>
     /// </summary>
-    let hasWriterName =
-        Namespaced_IRI.parse _namespace_name "hasWriterName" |> NamespacedName
-
+    let hasWriterName = _prefix "hasWriterName"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasWriterRelease"></see>
     /// </summary>
-    let hasWriterRelease =
-        Namespaced_IRI.parse _namespace_name "hasWriterRelease" |> NamespacedName
-
+    let hasWriterRelease = _prefix "hasWriterRelease"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasWriterVendor"></see>
     /// </summary>
-    let hasWriterVendor =
-        Namespaced_IRI.parse _namespace_name "hasWriterVendor" |> NamespacedName
-
+    let hasWriterVendor = _prefix "hasWriterVendor"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasWriterVendorURL"></see>
     /// </summary>
-    let hasWriterVendorURL =
-        Namespaced_IRI.parse _namespace_name "hasWriterVendorURL" |> NamespacedName
-
+    let hasWriterVendorURL = _prefix "hasWriterVendorURL"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasWriterVersion"></see>
     /// </summary>
-    let hasWriterVersion =
-        Namespaced_IRI.parse _namespace_name "hasWriterVersion" |> NamespacedName
-
+    let hasWriterVersion = _prefix "hasWriterVersion"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#lastWritingDateTime"></see>
     /// </summary>
-    let lastWritingDateTime =
-        Namespaced_IRI.parse _namespace_name "lastWritingDateTime" |> NamespacedName
-
+    let lastWritingDateTime = _prefix "lastWritingDateTime"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#AttValue1"></see>
     /// </summary>
-    let AttValue1 = Namespaced_IRI.parse _namespace_name "AttValue1" |> NamespacedName
-
+    let AttValue1 = _prefix "AttValue1"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#numerical_value"></see>
     /// </summary>
-    let numerical_value =
-        Namespaced_IRI.parse _namespace_name "numerical_value" |> NamespacedName
-
+    let numerical_value = _prefix "numerical_value"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#Attribute"></see>
     /// </summary>
-    let Attribute = Namespaced_IRI.parse _namespace_name "Attribute" |> NamespacedName
+    let Attribute = _prefix "Attribute"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#DemoArea"></see>
     /// </summary>
-    let DemoArea = Namespaced_IRI.parse _namespace_name "DemoArea" |> NamespacedName
-
+    let DemoArea = _prefix "DemoArea"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#InternalElement"></see>
     /// </summary>
-    let InternalElement =
-        Namespaced_IRI.parse _namespace_name "InternalElement" |> NamespacedName
-
+    let InternalElement = _prefix "InternalElement"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasIDIE"></see>
     /// </summary>
-    let hasIDIE = Namespaced_IRI.parse _namespace_name "hasIDIE" |> NamespacedName
+    let hasIDIE = _prefix "hasIDIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameIE"></see>
     /// </summary>
-    let hasNameIE = Namespaced_IRI.parse _namespace_name "hasNameIE" |> NamespacedName
+    let hasNameIE = _prefix "hasNameIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#isPartOfIE"></see>
     /// </summary>
-    let isPartOfIE = Namespaced_IRI.parse _namespace_name "isPartOfIE" |> NamespacedName
+    let isPartOfIE = _prefix "isPartOfIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#DemoSite"></see>
     /// </summary>
-    let DemoSite = Namespaced_IRI.parse _namespace_name "DemoSite" |> NamespacedName
-
+    let DemoSite = _prefix "DemoSite"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#DemoEnterprise"></see>
     /// </summary>
-    let DemoEnterprise =
-        Namespaced_IRI.parse _namespace_name "DemoEnterprise" |> NamespacedName
-
+    let DemoEnterprise = _prefix "DemoEnterprise"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#ExampleInstanceHierarchy"></see>
     /// </summary>
-    let ExampleInstanceHierarchy =
-        Namespaced_IRI.parse _namespace_name "ExampleInstanceHierarchy" |> NamespacedName
-
+    let ExampleInstanceHierarchy = _prefix "ExampleInstanceHierarchy"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#InterfaceClass"></see>
     /// </summary>
-    let InterfaceClass =
-        Namespaced_IRI.parse _namespace_name "InterfaceClass" |> NamespacedName
-
+    let InterfaceClass = _prefix "InterfaceClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#ExternalReference"></see>
     /// </summary>
-    let ExternalReference =
-        Namespaced_IRI.parse _namespace_name "ExternalReference" |> NamespacedName
-
+    let ExternalReference = _prefix "ExternalReference"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#ExternalStandard"></see>
     /// </summary>
-    let ExternalStandard =
-        Namespaced_IRI.parse _namespace_name "ExternalStandard" |> NamespacedName
-
+    let ExternalStandard = _prefix "ExternalStandard"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#FlowchartNumber"></see>
     /// </summary>
-    let FlowchartNumber =
-        Namespaced_IRI.parse _namespace_name "FlowchartNumber" |> NamespacedName
-
+    let FlowchartNumber = _prefix "FlowchartNumber"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeDataType"></see>
     /// </summary>
-    let hasAttributeDataType =
-        Namespaced_IRI.parse _namespace_name "hasAttributeDataType" |> NamespacedName
-
+    let hasAttributeDataType = _prefix "hasAttributeDataType"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeDescription"></see>
     /// </summary>
-    let hasAttributeDescription =
-        Namespaced_IRI.parse _namespace_name "hasAttributeDescription" |> NamespacedName
-
+    let hasAttributeDescription = _prefix "hasAttributeDescription"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeValue"></see>
     /// </summary>
-    let hasAttributeValue =
-        Namespaced_IRI.parse _namespace_name "hasAttributeValue" |> NamespacedName
-
+    let hasAttributeValue = _prefix "hasAttributeValue"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameAttribute"></see>
     /// </summary>
-    let hasNameAttribute =
-        Namespaced_IRI.parse _namespace_name "hasNameAttribute" |> NamespacedName
-
+    let hasNameAttribute = _prefix "hasNameAttribute"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#refSemanticAttribute"></see>
     /// </summary>
-    let refSemanticAttribute =
-        Namespaced_IRI.parse _namespace_name "refSemanticAttribute" |> NamespacedName
-
+    let refSemanticAttribute = _prefix "refSemanticAttribute"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#GMA6.16BeispielPIDVersion2.97"></see>
     /// </summary>
-    let ``GMA6.16BeispielPIDVersion2.97`` =
-        Namespaced_IRI.parse _namespace_name "GMA6.16BeispielPIDVersion2.97" |> NamespacedName
-
+    let ``GMA6.16BeispielPIDVersion2.97`` = _prefix "GMA6.16BeispielPIDVersion2.97"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAdditionalInformation"></see>
     /// </summary>
-    let hasAdditionalInformation =
-        Namespaced_IRI.parse _namespace_name "hasAdditionalInformation" |> NamespacedName
-
+    let hasAdditionalInformation = _prefix "hasAdditionalInformation"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameFile"></see>
     /// </summary>
-    let hasNameFile =
-        Namespaced_IRI.parse _namespace_name "hasNameFile" |> NamespacedName
-
+    let hasNameFile = _prefix "hasNameFile"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSchemaVersion"></see>
     /// </summary>
-    let hasSchemaVersion =
-        Namespaced_IRI.parse _namespace_name "hasSchemaVersion" |> NamespacedName
-
+    let hasSchemaVersion = _prefix "hasSchemaVersion"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#InstanceHierarchy"></see>
     /// </summary>
-    let InstanceHierarchy =
-        Namespaced_IRI.parse _namespace_name "InstanceHierarchy" |> NamespacedName
-
+    let InstanceHierarchy = _prefix "InstanceHierarchy"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#InterfaceClassLib"></see>
     /// </summary>
-    let InterfaceClassLib =
-        Namespaced_IRI.parse _namespace_name "InterfaceClassLib" |> NamespacedName
-
+    let InterfaceClassLib = _prefix "InterfaceClassLib"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#InternalLink"></see>
     /// </summary>
-    let InternalLink =
-        Namespaced_IRI.parse _namespace_name "InternalLink" |> NamespacedName
-
+    let InternalLink = _prefix "InternalLink"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#L1001"></see>
     /// </summary>
-    let L1001 = Namespaced_IRI.parse _namespace_name "L1001" |> NamespacedName
-
+    let L1001 = _prefix "L1001"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttribute"></see>
     /// </summary>
-    let hasAttribute =
-        Namespaced_IRI.parse _namespace_name "hasAttribute" |> NamespacedName
-
+    let hasAttribute = _prefix "hasAttribute"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#PCEDescription"></see>
     /// </summary>
-    let PCEDescription =
-        Namespaced_IRI.parse _namespace_name "PCEDescription" |> NamespacedName
-
+    let PCEDescription = _prefix "PCEDescription"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#refBaseSystemUnitPath"></see>
     /// </summary>
-    let refBaseSystemUnitPath =
-        Namespaced_IRI.parse _namespace_name "refBaseSystemUnitPath" |> NamespacedName
-
+    let refBaseSystemUnitPath = _prefix "refBaseSystemUnitPath"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#LIRCS1"></see>
     /// </summary>
-    let LIRCS1 = Namespaced_IRI.parse _namespace_name "LIRCS1" |> NamespacedName
-
+    let LIRCS1 = _prefix "LIRCS1"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeIE"></see>
     /// </summary>
-    let hasAttributeIE =
-        Namespaced_IRI.parse _namespace_name "hasAttributeIE" |> NamespacedName
-
+    let hasAttributeIE = _prefix "hasAttributeIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#PCEInitial"></see>
     /// </summary>
-    let PCEInitial = Namespaced_IRI.parse _namespace_name "PCEInitial" |> NamespacedName
-
+    let PCEInitial = _prefix "PCEInitial"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#PCEFunction"></see>
     /// </summary>
-    let PCEFunction =
-        Namespaced_IRI.parse _namespace_name "PCEFunction" |> NamespacedName
-
+    let PCEFunction = _prefix "PCEFunction"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasExternalInterface"></see>
     /// </summary>
-    let hasExternalInterface =
-        Namespaced_IRI.parse _namespace_name "hasExternalInterface" |> NamespacedName
-
+    let hasExternalInterface = _prefix "hasExternalInterface"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#MaxConveyingSpeed"></see>
     /// </summary>
-    let MaxConveyingSpeed =
-        Namespaced_IRI.parse _namespace_name "MaxConveyingSpeed" |> NamespacedName
-
+    let MaxConveyingSpeed = _prefix "MaxConveyingSpeed"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasUnitAttribute"></see>
     /// </summary>
-    let hasUnitAttribute =
-        Namespaced_IRI.parse _namespace_name "hasUnitAttribute" |> NamespacedName
-
+    let hasUnitAttribute = _prefix "hasUnitAttribute"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#speedMeasurement"></see>
     /// </summary>
-    let speedMeasurement =
-        Namespaced_IRI.parse _namespace_name "speedMeasurement" |> NamespacedName
-
+    let speedMeasurement = _prefix "speedMeasurement"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#MeasurementRangeEnd"></see>
     /// </summary>
-    let MeasurementRangeEnd =
-        Namespaced_IRI.parse _namespace_name "MeasurementRangeEnd" |> NamespacedName
-
+    let MeasurementRangeEnd = _prefix "MeasurementRangeEnd"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#MeasurementRangeStart"></see>
     /// </summary>
-    let MeasurementRangeStart =
-        Namespaced_IRI.parse _namespace_name "MeasurementRangeStart" |> NamespacedName
-
+    let MeasurementRangeStart = _prefix "MeasurementRangeStart"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#NE150DemoProject"></see>
     /// </summary>
-    let NE150DemoProject =
-        Namespaced_IRI.parse _namespace_name "NE150DemoProject" |> NamespacedName
-
+    let NE150DemoProject = _prefix "NE150DemoProject"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInternalElement"></see>
     /// </summary>
-    let hasInternalElement =
-        Namespaced_IRI.parse _namespace_name "hasInternalElement" |> NamespacedName
-
+    let hasInternalElement = _prefix "hasInternalElement"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameIH"></see>
     /// </summary>
-    let hasNameIH = Namespaced_IRI.parse _namespace_name "hasNameIH" |> NamespacedName
+    let hasNameIH = _prefix "hasNameIH"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#OldPCE"></see>
     /// </summary>
-    let OldPCE = Namespaced_IRI.parse _namespace_name "OldPCE" |> NamespacedName
+    let OldPCE = _prefix "OldPCE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#Project"></see>
     /// </summary>
-    let Project = Namespaced_IRI.parse _namespace_name "Project" |> NamespacedName
+    let Project = _prefix "Project"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#RoleClass"></see>
     /// </summary>
-    let RoleClass = Namespaced_IRI.parse _namespace_name "RoleClass" |> NamespacedName
-
+    let RoleClass = _prefix "RoleClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#RoleClassLib"></see>
     /// </summary>
-    let RoleClassLib =
-        Namespaced_IRI.parse _namespace_name "RoleClassLib" |> NamespacedName
-
+    let RoleClassLib = _prefix "RoleClassLib"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#SoftwareSignalName"></see>
     /// </summary>
-    let SoftwareSignalName =
-        Namespaced_IRI.parse _namespace_name "SoftwareSignalName" |> NamespacedName
-
+    let SoftwareSignalName = _prefix "SoftwareSignalName"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeIC"></see>
     /// </summary>
-    let hasAttributeIC =
-        Namespaced_IRI.parse _namespace_name "hasAttributeIC" |> NamespacedName
-
+    let hasAttributeIC = _prefix "hasAttributeIC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#SystemUnitClass"></see>
     /// </summary>
-    let SystemUnitClass =
-        Namespaced_IRI.parse _namespace_name "SystemUnitClass" |> NamespacedName
-
+    let SystemUnitClass = _prefix "SystemUnitClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#SystemUnitClassLib"></see>
     /// </summary>
-    let SystemUnitClassLib =
-        Namespaced_IRI.parse _namespace_name "SystemUnitClassLib" |> NamespacedName
-
+    let SystemUnitClassLib = _prefix "SystemUnitClassLib"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#contains"></see>
     /// </summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#eClassSpecification"></see>
     /// </summary>
-    let eClassSpecification =
-        Namespaced_IRI.parse _namespace_name "eClassSpecification" |> NamespacedName
-
+    let eClassSpecification = _prefix "eClassSpecification"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeName"></see>
     /// </summary>
-    let hasAttributeName =
-        Namespaced_IRI.parse _namespace_name "hasAttributeName" |> NamespacedName
-
+    let hasAttributeName = _prefix "hasAttributeName"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeRC"></see>
     /// </summary>
-    let hasAttributeRC =
-        Namespaced_IRI.parse _namespace_name "hasAttributeRC" |> NamespacedName
-
+    let hasAttributeRC = _prefix "hasAttributeRC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasAttributeSUC"></see>
     /// </summary>
-    let hasAttributeSUC =
-        Namespaced_IRI.parse _namespace_name "hasAttributeSUC" |> NamespacedName
-
+    let hasAttributeSUC = _prefix "hasAttributeSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasBaseSystemUnitClass"></see>
     /// </summary>
-    let hasBaseSystemUnitClass =
-        Namespaced_IRI.parse _namespace_name "hasBaseSystemUnitClass" |> NamespacedName
-
+    let hasBaseSystemUnitClass = _prefix "hasBaseSystemUnitClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasClassificationClass"></see>
     /// </summary>
-    let hasClassificationClass =
-        Namespaced_IRI.parse _namespace_name "hasClassificationClass" |> NamespacedName
-
+    let hasClassificationClass = _prefix "hasClassificationClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasExternalReference"></see>
     /// </summary>
-    let hasExternalReference =
-        Namespaced_IRI.parse _namespace_name "hasExternalReference" |> NamespacedName
-
+    let hasExternalReference = _prefix "hasExternalReference"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasExternalReferenceAlias"></see>
     /// </summary>
-    let hasExternalReferenceAlias =
-        Namespaced_IRI.parse _namespace_name "hasExternalReferenceAlias" |> NamespacedName
-
+    let hasExternalReferenceAlias = _prefix "hasExternalReferenceAlias"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasExternalReferencePath"></see>
     /// </summary>
-    let hasExternalReferencePath =
-        Namespaced_IRI.parse _namespace_name "hasExternalReferencePath" |> NamespacedName
-
+    let hasExternalReferencePath = _prefix "hasExternalReferencePath"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasIRDIeClass"></see>
     /// </summary>
-    let hasIRDIeClass =
-        Namespaced_IRI.parse _namespace_name "hasIRDIeClass" |> NamespacedName
-
+    let hasIRDIeClass = _prefix "hasIRDIeClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInstanceHierarchy"></see>
     /// </summary>
-    let hasInstanceHierarchy =
-        Namespaced_IRI.parse _namespace_name "hasInstanceHierarchy" |> NamespacedName
-
+    let hasInstanceHierarchy = _prefix "hasInstanceHierarchy"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInterface"></see>
     /// </summary>
-    let hasInterface =
-        Namespaced_IRI.parse _namespace_name "hasInterface" |> NamespacedName
-
+    let hasInterface = _prefix "hasInterface"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInterfaceClass"></see>
     /// </summary>
-    let hasInterfaceClass =
-        Namespaced_IRI.parse _namespace_name "hasInterfaceClass" |> NamespacedName
-
+    let hasInterfaceClass = _prefix "hasInterfaceClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInterfaceClassLib"></see>
     /// </summary>
-    let hasInterfaceClassLib =
-        Namespaced_IRI.parse _namespace_name "hasInterfaceClassLib" |> NamespacedName
-
+    let hasInterfaceClassLib = _prefix "hasInterfaceClassLib"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInterfaceIE"></see>
     /// </summary>
-    let hasInterfaceIE =
-        Namespaced_IRI.parse _namespace_name "hasInterfaceIE" |> NamespacedName
-
+    let hasInterfaceIE = _prefix "hasInterfaceIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInterfaceRC"></see>
     /// </summary>
-    let hasInterfaceRC =
-        Namespaced_IRI.parse _namespace_name "hasInterfaceRC" |> NamespacedName
-
+    let hasInterfaceRC = _prefix "hasInterfaceRC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInterfaceSUC"></see>
     /// </summary>
-    let hasInterfaceSUC =
-        Namespaced_IRI.parse _namespace_name "hasInterfaceSUC" |> NamespacedName
-
+    let hasInterfaceSUC = _prefix "hasInterfaceSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasInternalLink"></see>
     /// </summary>
-    let hasInternalLink =
-        Namespaced_IRI.parse _namespace_name "hasInternalLink" |> NamespacedName
-
+    let hasInternalLink = _prefix "hasInternalLink"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameRC"></see>
     /// </summary>
-    let hasNameRC = Namespaced_IRI.parse _namespace_name "hasNameRC" |> NamespacedName
+    let hasNameRC = _prefix "hasNameRC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasNameSUC"></see>
     /// </summary>
-    let hasNameSUC = Namespaced_IRI.parse _namespace_name "hasNameSUC" |> NamespacedName
+    let hasNameSUC = _prefix "hasNameSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasProject"></see>
     /// </summary>
-    let hasProject = Namespaced_IRI.parse _namespace_name "hasProject" |> NamespacedName
-
+    let hasProject = _prefix "hasProject"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasProjectId"></see>
     /// </summary>
-    let hasProjectId =
-        Namespaced_IRI.parse _namespace_name "hasProjectId" |> NamespacedName
-
+    let hasProjectId = _prefix "hasProjectId"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasProjectTitle"></see>
     /// </summary>
-    let hasProjectTitle =
-        Namespaced_IRI.parse _namespace_name "hasProjectTitle" |> NamespacedName
-
+    let hasProjectTitle = _prefix "hasProjectTitle"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefBaseClassPath"></see>
     /// </summary>
-    let hasRefBaseClassPath =
-        Namespaced_IRI.parse _namespace_name "hasRefBaseClassPath" |> NamespacedName
-
+    let hasRefBaseClassPath = _prefix "hasRefBaseClassPath"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefBaseClassPathRC"></see>
     /// </summary>
-    let hasRefBaseClassPathRC =
-        Namespaced_IRI.parse _namespace_name "hasRefBaseClassPathRC" |> NamespacedName
-
+    let hasRefBaseClassPathRC = _prefix "hasRefBaseClassPathRC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefBaseClassPathSUC"></see>
     /// </summary>
-    let hasRefBaseClassPathSUC =
-        Namespaced_IRI.parse _namespace_name "hasRefBaseClassPathSUC" |> NamespacedName
-
+    let hasRefBaseClassPathSUC = _prefix "hasRefBaseClassPathSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefBaseRoleClassPath"></see>
     /// </summary>
-    let hasRefBaseRoleClassPath =
-        Namespaced_IRI.parse _namespace_name "hasRefBaseRoleClassPath" |> NamespacedName
-
+    let hasRefBaseRoleClassPath = _prefix "hasRefBaseRoleClassPath"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefBaseSystemUnitPath"></see>
     /// </summary>
-    let hasRefBaseSystemUnitPath =
-        Namespaced_IRI.parse _namespace_name "hasRefBaseSystemUnitPath" |> NamespacedName
-
+    let hasRefBaseSystemUnitPath = _prefix "hasRefBaseSystemUnitPath"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefPartnerSideA"></see>
     /// </summary>
-    let hasRefPartnerSideA =
-        Namespaced_IRI.parse _namespace_name "hasRefPartnerSideA" |> NamespacedName
-
+    let hasRefPartnerSideA = _prefix "hasRefPartnerSideA"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefPartnerSideB"></see>
     /// </summary>
-    let hasRefPartnerSideB =
-        Namespaced_IRI.parse _namespace_name "hasRefPartnerSideB" |> NamespacedName
-
+    let hasRefPartnerSideB = _prefix "hasRefPartnerSideB"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefRoleClassPath"></see>
     /// </summary>
-    let hasRefRoleClassPath =
-        Namespaced_IRI.parse _namespace_name "hasRefRoleClassPath" |> NamespacedName
-
+    let hasRefRoleClassPath = _prefix "hasRefRoleClassPath"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefSemAttribute"></see>
     /// </summary>
-    let hasRefSemAttribute =
-        Namespaced_IRI.parse _namespace_name "hasRefSemAttribute" |> NamespacedName
-
+    let hasRefSemAttribute = _prefix "hasRefSemAttribute"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSemanticRef"></see>
     /// </summary>
-    let hasSemanticRef =
-        Namespaced_IRI.parse _namespace_name "hasSemanticRef" |> NamespacedName
-
+    let hasSemanticRef = _prefix "hasSemanticRef"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRefSemRC"></see>
     /// </summary>
-    let hasRefSemRC =
-        Namespaced_IRI.parse _namespace_name "hasRefSemRC" |> NamespacedName
-
+    let hasRefSemRC = _prefix "hasRefSemRC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRoleClass"></see>
     /// </summary>
-    let hasRoleClass =
-        Namespaced_IRI.parse _namespace_name "hasRoleClass" |> NamespacedName
-
+    let hasRoleClass = _prefix "hasRoleClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRoleClassLib"></see>
     /// </summary>
-    let hasRoleClassLib =
-        Namespaced_IRI.parse _namespace_name "hasRoleClassLib" |> NamespacedName
-
+    let hasRoleClassLib = _prefix "hasRoleClassLib"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRoleRequeriment"></see>
     /// </summary>
-    let hasRoleRequeriment =
-        Namespaced_IRI.parse _namespace_name "hasRoleRequeriment" |> NamespacedName
-
+    let hasRoleRequeriment = _prefix "hasRoleRequeriment"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRoleRequirementIE"></see>
     /// </summary>
-    let hasRoleRequirementIE =
-        Namespaced_IRI.parse _namespace_name "hasRoleRequirementIE" |> NamespacedName
-
+    let hasRoleRequirementIE = _prefix "hasRoleRequirementIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasRoleRequirementSUC"></see>
     /// </summary>
-    let hasRoleRequirementSUC =
-        Namespaced_IRI.parse _namespace_name "hasRoleRequirementSUC" |> NamespacedName
-
+    let hasRoleRequirementSUC = _prefix "hasRoleRequirementSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSupportedRoleClass"></see>
     /// </summary>
-    let hasSupportedRoleClass =
-        Namespaced_IRI.parse _namespace_name "hasSupportedRoleClass" |> NamespacedName
-
+    let hasSupportedRoleClass = _prefix "hasSupportedRoleClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSupportedRoleClassIE"></see>
     /// </summary>
-    let hasSupportedRoleClassIE =
-        Namespaced_IRI.parse _namespace_name "hasSupportedRoleClassIE" |> NamespacedName
-
+    let hasSupportedRoleClassIE = _prefix "hasSupportedRoleClassIE"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSupportedRoleClassSUC"></see>
     /// </summary>
-    let hasSupportedRoleClassSUC =
-        Namespaced_IRI.parse _namespace_name "hasSupportedRoleClassSUC" |> NamespacedName
-
+    let hasSupportedRoleClassSUC = _prefix "hasSupportedRoleClassSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSystemUnitClass"></see>
     /// </summary>
-    let hasSystemUnitClass =
-        Namespaced_IRI.parse _namespace_name "hasSystemUnitClass" |> NamespacedName
-
+    let hasSystemUnitClass = _prefix "hasSystemUnitClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasSystemUnitClassLib"></see>
     /// </summary>
-    let hasSystemUnitClassLib =
-        Namespaced_IRI.parse _namespace_name "hasSystemUnitClassLib" |> NamespacedName
-
+    let hasSystemUnitClassLib = _prefix "hasSystemUnitClassLib"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasUnit"></see>
     /// </summary>
-    let hasUnit = Namespaced_IRI.parse _namespace_name "hasUnit" |> NamespacedName
-
+    let hasUnit = _prefix "hasUnit"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasUnitValue"></see>
     /// </summary>
-    let hasUnitValue =
-        Namespaced_IRI.parse _namespace_name "hasUnitValue" |> NamespacedName
-
+    let hasUnitValue = _prefix "hasUnitValue"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasVersion"></see>
     /// </summary>
-    let hasVersion = Namespaced_IRI.parse _namespace_name "hasVersion" |> NamespacedName
-
+    let hasVersion = _prefix "hasVersion"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasVersionEClass"></see>
     /// </summary>
-    let hasVersionEClass =
-        Namespaced_IRI.parse _namespace_name "hasVersionEClass" |> NamespacedName
-
+    let hasVersionEClass = _prefix "hasVersionEClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasVersionICL"></see>
     /// </summary>
-    let hasVersionICL =
-        Namespaced_IRI.parse _namespace_name "hasVersionICL" |> NamespacedName
-
+    let hasVersionICL = _prefix "hasVersionICL"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasVersionRCL"></see>
     /// </summary>
-    let hasVersionRCL =
-        Namespaced_IRI.parse _namespace_name "hasVersionRCL" |> NamespacedName
-
+    let hasVersionRCL = _prefix "hasVersionRCL"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#hasVersionSUC"></see>
     /// </summary>
-    let hasVersionSUC =
-        Namespaced_IRI.parse _namespace_name "hasVersionSUC" |> NamespacedName
-
+    let hasVersionSUC = _prefix "hasVersionSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#isConnectedToEClass"></see>
     /// </summary>
-    let isConnectedToEClass =
-        Namespaced_IRI.parse _namespace_name "isConnectedToEClass" |> NamespacedName
-
+    let isConnectedToEClass = _prefix "isConnectedToEClass"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#isPartOfIC"></see>
     /// </summary>
-    let isPartOfIC = Namespaced_IRI.parse _namespace_name "isPartOfIC" |> NamespacedName
-
+    let isPartOfIC = _prefix "isPartOfIC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#isPartOfSUC"></see>
     /// </summary>
-    let isPartOfSUC =
-        Namespaced_IRI.parse _namespace_name "isPartOfSUC" |> NamespacedName
-
+    let isPartOfSUC = _prefix "isPartOfSUC"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#milliampere"></see>
     /// </summary>
-    let milliampere =
-        Namespaced_IRI.parse _namespace_name "milliampere" |> NamespacedName
-
+    let milliampere = _prefix "milliampere"
     /// <summary>
     ///   <see href="https://w3id.org/i40/aml#unit_of_measure"></see>
     /// </summary>
-    let unit_of_measure =
-        Namespaced_IRI.parse _namespace_name "unit_of_measure" |> NamespacedName
+    let unit_of_measure = _prefix "unit_of_measure"

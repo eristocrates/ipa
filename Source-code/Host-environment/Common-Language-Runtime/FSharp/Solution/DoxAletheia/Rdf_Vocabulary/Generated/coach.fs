@@ -1,151 +1,114 @@
 namespace https.w3id.org.coach.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module coach =
     let _namespace_name = "https://w3id.org/coach#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/coach#AgeScheme"></see>
     /// </summary>
-    let AgeScheme = Namespaced_IRI.parse _namespace_name "AgeScheme" |> NamespacedName
-
+    let AgeScheme = _prefix "AgeScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#AgreeablenessScheme"></see>
     /// </summary>
-    let AgreeablenessScheme =
-        Namespaced_IRI.parse _namespace_name "AgreeablenessScheme" |> NamespacedName
-
+    let AgreeablenessScheme = _prefix "AgreeablenessScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#Character"></see>
     /// </summary>
-    let Character = Namespaced_IRI.parse _namespace_name "Character" |> NamespacedName
+    let Character = _prefix "Character"
     /// <summary>
     ///   <see href="https://w3id.org/coach#dimension"></see>
     /// </summary>
-    let dimension = Namespaced_IRI.parse _namespace_name "dimension" |> NamespacedName
-
+    let dimension = _prefix "dimension"
     /// <summary>
     ///   <see href="https://w3id.org/coach#ConscientiousnessScheme"></see>
     /// </summary>
-    let ConscientiousnessScheme =
-        Namespaced_IRI.parse _namespace_name "ConscientiousnessScheme" |> NamespacedName
-
+    let ConscientiousnessScheme = _prefix "ConscientiousnessScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#EducationScheme"></see>
     /// </summary>
-    let EducationScheme =
-        Namespaced_IRI.parse _namespace_name "EducationScheme" |> NamespacedName
-
+    let EducationScheme = _prefix "EducationScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#ExtraversionScheme"></see>
     /// </summary>
-    let ExtraversionScheme =
-        Namespaced_IRI.parse _namespace_name "ExtraversionScheme" |> NamespacedName
-
+    let ExtraversionScheme = _prefix "ExtraversionScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#NeuroticismScheme"></see>
     /// </summary>
-    let NeuroticismScheme =
-        Namespaced_IRI.parse _namespace_name "NeuroticismScheme" |> NamespacedName
-
+    let NeuroticismScheme = _prefix "NeuroticismScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#OpenessScheme"></see>
     /// </summary>
-    let OpenessScheme =
-        Namespaced_IRI.parse _namespace_name "OpenessScheme" |> NamespacedName
-
+    let OpenessScheme = _prefix "OpenessScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#PoliticalOrientationScheme"></see>
     /// </summary>
-    let PoliticalOrientationScheme =
-        Namespaced_IRI.parse _namespace_name "PoliticalOrientationScheme" |> NamespacedName
-
+    let PoliticalOrientationScheme = _prefix "PoliticalOrientationScheme"
     /// <summary>
     ///   <see href="https://w3id.org/coach#dislikes"></see>
     /// </summary>
-    let dislikes = Namespaced_IRI.parse _namespace_name "dislikes" |> NamespacedName
+    let dislikes = _prefix "dislikes"
     /// <summary>
     ///   <see href="https://w3id.org/coach#likes"></see>
     /// </summary>
-    let likes = Namespaced_IRI.parse _namespace_name "likes" |> NamespacedName
+    let likes = _prefix "likes"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasAge"></see>
     /// </summary>
-    let hasAge = Namespaced_IRI.parse _namespace_name "hasAge" |> NamespacedName
-
+    let hasAge = _prefix "hasAge"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasAgreeableness"></see>
     /// </summary>
-    let hasAgreeableness =
-        Namespaced_IRI.parse _namespace_name "hasAgreeableness" |> NamespacedName
-
+    let hasAgreeableness = _prefix "hasAgreeableness"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasCitizenship"></see>
     /// </summary>
-    let hasCitizenship =
-        Namespaced_IRI.parse _namespace_name "hasCitizenship" |> NamespacedName
-
+    let hasCitizenship = _prefix "hasCitizenship"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasConscientiousness"></see>
     /// </summary>
-    let hasConscientiousness =
-        Namespaced_IRI.parse _namespace_name "hasConscientiousness" |> NamespacedName
-
+    let hasConscientiousness = _prefix "hasConscientiousness"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasCountryOfBirth"></see>
     /// </summary>
-    let hasCountryOfBirth =
-        Namespaced_IRI.parse _namespace_name "hasCountryOfBirth" |> NamespacedName
-
+    let hasCountryOfBirth = _prefix "hasCountryOfBirth"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasEducation"></see>
     /// </summary>
-    let hasEducation =
-        Namespaced_IRI.parse _namespace_name "hasEducation" |> NamespacedName
-
+    let hasEducation = _prefix "hasEducation"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasExtraversion"></see>
     /// </summary>
-    let hasExtraversion =
-        Namespaced_IRI.parse _namespace_name "hasExtraversion" |> NamespacedName
-
+    let hasExtraversion = _prefix "hasExtraversion"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasLanguage"></see>
     /// </summary>
-    let hasLanguage =
-        Namespaced_IRI.parse _namespace_name "hasLanguage" |> NamespacedName
-
+    let hasLanguage = _prefix "hasLanguage"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasNeuroticism"></see>
     /// </summary>
-    let hasNeuroticism =
-        Namespaced_IRI.parse _namespace_name "hasNeuroticism" |> NamespacedName
-
+    let hasNeuroticism = _prefix "hasNeuroticism"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasOpenness"></see>
     /// </summary>
-    let hasOpenness =
-        Namespaced_IRI.parse _namespace_name "hasOpenness" |> NamespacedName
-
+    let hasOpenness = _prefix "hasOpenness"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasPoliticalOrientation"></see>
     /// </summary>
-    let hasPoliticalOrientation =
-        Namespaced_IRI.parse _namespace_name "hasPoliticalOrientation" |> NamespacedName
-
+    let hasPoliticalOrientation = _prefix "hasPoliticalOrientation"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasReligion"></see>
     /// </summary>
-    let hasReligion =
-        Namespaced_IRI.parse _namespace_name "hasReligion" |> NamespacedName
-
+    let hasReligion = _prefix "hasReligion"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasSex"></see>
     /// </summary>
-    let hasSex = Namespaced_IRI.parse _namespace_name "hasSex" |> NamespacedName
-
+    let hasSex = _prefix "hasSex"
     /// <summary>
     ///   <see href="https://w3id.org/coach#hasSexualOrientation"></see>
     /// </summary>
-    let hasSexualOrientation =
-        Namespaced_IRI.parse _namespace_name "hasSexualOrientation" |> NamespacedName
+    let hasSexualOrientation = _prefix "hasSexualOrientation"

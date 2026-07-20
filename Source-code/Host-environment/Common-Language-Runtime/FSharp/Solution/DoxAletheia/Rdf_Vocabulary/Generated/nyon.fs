@@ -1,840 +1,644 @@
 namespace https.w3id.org.def.nyon.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module nyon =
     let _namespace_name = "https://w3id.org/def/nyon#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// represnts the judge opinion on the case either with majority, dissent or concurrence
     /// <see href="https://w3id.org/def/nyon#withOpinion"></see></summary>
-    let withOpinion =
-        Namespaced_IRI.parse _namespace_name "withOpinion" |> NamespacedName
-
+    let withOpinion = _prefix "withOpinion"
     /// <summary>
     /// specifies the nyon:CourtCase being cited by nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#citedBy"></see></summary>
-    let citedBy = Namespaced_IRI.parse _namespace_name "citedBy" |> NamespacedName
+    let citedBy = _prefix "citedBy"
     /// <summary>
     /// specifies the nyon:CourtCase is citing another nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#cites"></see></summary>
-    let cites = Namespaced_IRI.parse _namespace_name "cites" |> NamespacedName
+    let cites = _prefix "cites"
     /// <summary>
     /// specifies an author (nyon:Author) (any judge (nyon:Judge) from the bench) of the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasAuthor"></see></summary>
-    let hasAuthor = Namespaced_IRI.parse _namespace_name "hasAuthor" |> NamespacedName
+    let hasAuthor = _prefix "hasAuthor"
     /// <summary>
     /// specifies the bench associated with nyon:Bench of the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasBench"></see></summary>
-    let hasBench = Namespaced_IRI.parse _namespace_name "hasBench" |> NamespacedName
-
+    let hasBench = _prefix "hasBench"
     /// <summary>
     /// specifies the court official represented with nyon:CourtOfficial connected to the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasCourtOfficial"></see></summary>
-    let hasCourtOfficial =
-        Namespaced_IRI.parse _namespace_name "hasCourtOfficial" |> NamespacedName
-
+    let hasCourtOfficial = _prefix "hasCourtOfficial"
     /// <summary>
     /// specifies the date of the judgment of the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasDateOfJudgment"></see></summary>
-    let hasDateOfJudgment =
-        Namespaced_IRI.parse _namespace_name "hasDateOfJudgment" |> NamespacedName
-
+    let hasDateOfJudgment = _prefix "hasDateOfJudgment"
     /// <summary>
     /// specifies the evidence associated with the nyon:Evidence instance for the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasEvidence"></see></summary>
-    let hasEvidence =
-        Namespaced_IRI.parse _namespace_name "hasEvidence" |> NamespacedName
-
+    let hasEvidence = _prefix "hasEvidence"
     /// <summary>
     /// specifies the fact associated with nyon:Fact belonging to a specific nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasFact"></see></summary>
-    let hasFact = Namespaced_IRI.parse _namespace_name "hasFact" |> NamespacedName
-
+    let hasFact = _prefix "hasFact"
     /// <summary>
     /// specifies the final verdict associated with the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasFinalDecision"></see></summary>
-    let hasFinalDecision =
-        Namespaced_IRI.parse _namespace_name "hasFinalDecision" |> NamespacedName
-
+    let hasFinalDecision = _prefix "hasFinalDecision"
     /// <summary>
     /// specifies the type of judgment (nyon:CaseType) for nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasJudgmentType"></see></summary>
-    let hasJudgmentType =
-        Namespaced_IRI.parse _namespace_name "hasJudgmentType" |> NamespacedName
-
+    let hasJudgmentType = _prefix "hasJudgmentType"
     /// <summary>
     /// specifies the obiter dicta associated with nyon:ObiterDictum mentioned in nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasObiterDictum"></see></summary>
-    let hasObiterDictum =
-        Namespaced_IRI.parse _namespace_name "hasObiterDictum" |> NamespacedName
-
+    let hasObiterDictum = _prefix "hasObiterDictum"
     /// <summary>
     /// specifies the party (nyon:Party) associated with nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasParty"></see></summary>
-    let hasParty = Namespaced_IRI.parse _namespace_name "hasParty" |> NamespacedName
-
+    let hasParty = _prefix "hasParty"
     /// <summary>
     /// specifies the police officer (nyon:PolicePersonnel) doing mentioned in nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasPolicePersonnel"></see></summary>
-    let hasPolicePersonnel =
-        Namespaced_IRI.parse _namespace_name "hasPolicePersonnel" |> NamespacedName
-
+    let hasPolicePersonnel = _prefix "hasPolicePersonnel"
     /// <summary>
     /// specifies the judges ratio of decision (nyon:RatioDecidendi) for nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasRatioDecidendi"></see></summary>
-    let hasRatioDecidendi =
-        Namespaced_IRI.parse _namespace_name "hasRatioDecidendi" |> NamespacedName
-
+    let hasRatioDecidendi = _prefix "hasRatioDecidendi"
     /// <summary>
     /// specifies the ruling (previous judgments nyon:CourtCase) of the lower court (nyon:Court)
     /// <see href="https://w3id.org/def/nyon#hasRulingOf"></see></summary>
-    let hasRulingOf =
-        Namespaced_IRI.parse _namespace_name "hasRulingOf" |> NamespacedName
-
+    let hasRulingOf = _prefix "hasRulingOf"
     /// <summary>
     /// specifies the statute (nyon:Statute) mentioned in nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasStatue"></see></summary>
-    let hasStatue = Namespaced_IRI.parse _namespace_name "hasStatue" |> NamespacedName
+    let hasStatue = _prefix "hasStatue"
     /// <summary>
     /// specifies the witness (nyon:Witness) mentioned in nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasWitness"></see></summary>
-    let hasWitness = Namespaced_IRI.parse _namespace_name "hasWitness" |> NamespacedName
-
+    let hasWitness = _prefix "hasWitness"
     /// <summary>
     /// specifies the phrases and words (specially nyon:Issue) mentioned in nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasWordPhrase"></see></summary>
-    let hasWordPhrase =
-        Namespaced_IRI.parse _namespace_name "hasWordPhrase" |> NamespacedName
-
+    let hasWordPhrase = _prefix "hasWordPhrase"
     /// <summary>
     /// signifies the domain words, facts and issue related words in the case
     /// <see href="https://w3id.org/def/nyon#hasWords"></see></summary>
-    let hasWords = Namespaced_IRI.parse _namespace_name "hasWords" |> NamespacedName
-
+    let hasWords = _prefix "hasWords"
     /// <summary>
     /// decisions result when a judge agrees with the ultimate conclusion made by the majority of the court but disagrees on how they reached that decision
     /// <see href="https://w3id.org/def/nyon#Concurrence"></see></summary>
-    let Concurrence =
-        Namespaced_IRI.parse _namespace_name "Concurrence" |> NamespacedName
-
+    let Concurrence = _prefix "Concurrence"
     /// <summary>
     /// judges who do not agree with the majority of the Court
     /// <see href="https://w3id.org/def/nyon#Dissent"></see></summary>
-    let Dissent = Namespaced_IRI.parse _namespace_name "Dissent" |> NamespacedName
+    let Dissent = _prefix "Dissent"
     /// <summary>
     /// Majority decisions are the ones where a majority of the judges agree
     /// <see href="https://w3id.org/def/nyon#Majority"></see></summary>
-    let Majority = Namespaced_IRI.parse _namespace_name "Majority" |> NamespacedName
-
+    let Majority = _prefix "Majority"
     /// <summary>
     /// specifies the argument made by the respondent (nyon:Respondent) of nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#respondentArgument"></see></summary>
-    let respondentArgument =
-        Namespaced_IRI.parse _namespace_name "respondentArgument" |> NamespacedName
-
+    let respondentArgument = _prefix "respondentArgument"
     /// <summary>
     /// specifies the judicial body (nyon:Judge) of nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasJudge"></see></summary>
-    let hasJudge = Namespaced_IRI.parse _namespace_name "hasJudge" |> NamespacedName
-
+    let hasJudge = _prefix "hasJudge"
     /// <summary>
     /// specifies the judge (nyon:Judge) gives the opinion in majority (nyon:Majority) of the court
     /// <see href="https://w3id.org/def/nyon#withMajority"></see></summary>
-    let withMajority =
-        Namespaced_IRI.parse _namespace_name "withMajority" |> NamespacedName
-
+    let withMajority = _prefix "withMajority"
     /// <summary>
     /// represents the court judgment given by a court of law
     /// <see href="https://w3id.org/def/nyon#CourtCase"></see></summary>
-    let CourtCase = Namespaced_IRI.parse _namespace_name "CourtCase" |> NamespacedName
+    let CourtCase = _prefix "CourtCase"
     /// <summary>
     /// one who makes the petition
     /// <see href="https://w3id.org/def/nyon#Petitioner"></see></summary>
-    let Petitioner = Namespaced_IRI.parse _namespace_name "Petitioner" |> NamespacedName
-
+    let Petitioner = _prefix "Petitioner"
     /// <summary>
     /// specifies the arguments done in nyon:CourtCase by some party (nyon:Party)
     /// <see href="https://w3id.org/def/nyon#makeArgument"></see></summary>
-    let makeArgument =
-        Namespaced_IRI.parse _namespace_name "makeArgument" |> NamespacedName
-
+    let makeArgument = _prefix "makeArgument"
     /// <summary>
     /// Argument made by any of the party
     /// <see href="https://w3id.org/def/nyon#Argument"></see></summary>
-    let Argument = Namespaced_IRI.parse _namespace_name "Argument" |> NamespacedName
-
+    let Argument = _prefix "Argument"
     /// <summary>
     /// lower court at metropolitan level after High Courts for civil cases
     /// <see href="https://w3id.org/def/nyon#City_Civil_Courts"></see></summary>
-    let City_Civil_Courts =
-        Namespaced_IRI.parse _namespace_name "City_Civil_Courts" |> NamespacedName
-
+    let City_Civil_Courts = _prefix "City_Civil_Courts"
     /// <summary>
     /// lowest court after City Civil Courts at metropolitan level for civil cases
     /// <see href="https://w3id.org/def/nyon#Courts_of_Smaller_Causes"></see></summary>
-    let Courts_of_Smaller_Causes =
-        Namespaced_IRI.parse _namespace_name "Courts_of_Smaller_Causes" |> NamespacedName
-
+    let Courts_of_Smaller_Causes = _prefix "Courts_of_Smaller_Causes"
     /// <summary>
     /// a term in judicial system in India in which a case is heard and judged by at least 2 judges
     /// <see href="https://w3id.org/def/nyon#District_Court"></see></summary>
-    let District_Court =
-        Namespaced_IRI.parse _namespace_name "District_Court" |> NamespacedName
-
+    let District_Court = _prefix "District_Court"
     /// <summary>
     /// lowest court in heirarchy for civil ases at district level after Principal Junior Civil Court
     /// <see href="https://w3id.org/def/nyon#Munsif_Court"></see></summary>
-    let Munsif_Court =
-        Namespaced_IRI.parse _namespace_name "Munsif_Court" |> NamespacedName
-
+    let Munsif_Court = _prefix "Munsif_Court"
     /// <summary>
     /// third lower court in hierarchy at district level for civil cases
     /// <see href="https://w3id.org/def/nyon#Principal_Junior_Civil_Court"></see></summary>
-    let Principal_Junior_Civil_Court =
-        Namespaced_IRI.parse _namespace_name "Principal_Junior_Civil_Court" |> NamespacedName
-
+    let Principal_Junior_Civil_Court = _prefix "Principal_Junior_Civil_Court"
     /// <summary>
     /// second lower court in hierarchy at District level for civil cases
     /// <see href="https://w3id.org/def/nyon#Sub_Court"></see></summary>
-    let Sub_Court = Namespaced_IRI.parse _namespace_name "Sub_Court" |> NamespacedName
-
+    let Sub_Court = _prefix "Sub_Court"
     /// <summary>
     /// specifies the past cases (nyon:CourtCase) overruled by the judge in the current case
     /// <see href="https://w3id.org/def/nyon#precedentOverruled"></see></summary>
-    let precedentOverruled =
-        Namespaced_IRI.parse _namespace_name "precedentOverruled" |> NamespacedName
-
+    let precedentOverruled = _prefix "precedentOverruled"
     /// <summary>
     /// specifies the past cases (nyon:CourtCase) referred by the judge on which the current judgment relies on
     /// <see href="https://w3id.org/def/nyon#precedentReliedUpon"></see></summary>
-    let precedentReliedUpon =
-        Namespaced_IRI.parse _namespace_name "precedentReliedUpon" |> NamespacedName
-
+    let precedentReliedUpon = _prefix "precedentReliedUpon"
     /// <summary>
     /// specifies the previous cases (nyon:CourtCase) referred by the judge on which the case decision does not rely on
     /// <see href="https://w3id.org/def/nyon#precendentNotReliedUpon"></see></summary>
-    let precendentNotReliedUpon =
-        Namespaced_IRI.parse _namespace_name "precendentNotReliedUpon" |> NamespacedName
-
+    let precendentNotReliedUpon = _prefix "precendentNotReliedUpon"
     /// <summary>
     /// A country
     /// <see href="https://w3id.org/def/nyon#Country"></see></summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
+    let Country = _prefix "Country"
     /// <summary>
     /// represents district name/location
     /// <see href="https://w3id.org/def/nyon#District"></see></summary>
-    let District = Namespaced_IRI.parse _namespace_name "District" |> NamespacedName
+    let District = _prefix "District"
     /// <summary>
     /// represents state name/location
     /// <see href="https://w3id.org/def/nyon#State"></see></summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
+    let State = _prefix "State"
     /// <summary>
     /// represents taluka name/location
     /// <see href="https://w3id.org/def/nyon#Taluka"></see></summary>
-    let Taluka = Namespaced_IRI.parse _namespace_name "Taluka" |> NamespacedName
-
+    let Taluka = _prefix "Taluka"
     /// <summary>
     /// jurisdiction type is a advisory jurisdiction
     /// <see href="https://w3id.org/def/nyon#Advisory_Jurisdiction"></see></summary>
-    let Advisory_Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Advisory_Jurisdiction" |> NamespacedName
-
+    let Advisory_Jurisdiction = _prefix "Advisory_Jurisdiction"
     /// <summary>
     /// jurisdiction type is a appellant jurisdiction
     /// <see href="https://w3id.org/def/nyon#Appellant_Jurisdiction"></see></summary>
-    let Appellant_Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Appellant_Jurisdiction" |> NamespacedName
-
+    let Appellant_Jurisdiction = _prefix "Appellant_Jurisdiction"
     /// <summary>
     /// jurisdiction type is a original jurisdiction
     /// <see href="https://w3id.org/def/nyon#Original_Jurisdiction"></see></summary>
-    let Original_Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Original_Jurisdiction" |> NamespacedName
-
+    let Original_Jurisdiction = _prefix "Original_Jurisdiction"
     /// <summary>
     /// jurisdiction type is a review jurisdiction
     /// <see href="https://w3id.org/def/nyon#Review_Jurisdiction"></see></summary>
-    let Review_Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Review_Jurisdiction" |> NamespacedName
-
+    let Review_Jurisdiction = _prefix "Review_Jurisdiction"
     /// <summary>
     /// party called upon to respond or answer a petition, a cliam or a appeal
     /// <see href="https://w3id.org/def/nyon#Respondent"></see></summary>
-    let Respondent = Namespaced_IRI.parse _namespace_name "Respondent" |> NamespacedName
-
+    let Respondent = _prefix "Respondent"
     /// <summary>
     /// specifies the judge (nyon:Judge) gives the opinion in concurrence (nyon:Concurrence) of the court
     /// <see href="https://w3id.org/def/nyon#withConcurrence"></see></summary>
-    let withConcurrence =
-        Namespaced_IRI.parse _namespace_name "withConcurrence" |> NamespacedName
-
+    let withConcurrence = _prefix "withConcurrence"
     /// <summary>
     /// specifies the argument made by the appellant (nyon:Appellant) of nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#appellantArgument"></see></summary>
-    let appellantArgument =
-        Namespaced_IRI.parse _namespace_name "appellantArgument" |> NamespacedName
-
+    let appellantArgument = _prefix "appellantArgument"
     /// <summary>
     /// specifies the argument made by the defendant (nyon:Defendant) of nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#defendentArgument"></see></summary>
-    let defendentArgument =
-        Namespaced_IRI.parse _namespace_name "defendentArgument" |> NamespacedName
-
+    let defendentArgument = _prefix "defendentArgument"
     /// <summary>
     /// specifies the argument made by the Petitioner (nyon:Petitioner) of nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#petitionerArgument"></see></summary>
-    let petitionerArgument =
-        Namespaced_IRI.parse _namespace_name "petitionerArgument" |> NamespacedName
-
+    let petitionerArgument = _prefix "petitionerArgument"
     /// <summary>
     /// specifies the argument made by the plaintiff (nyon:Plaintiff) of nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#plaintiffArgument"></see></summary>
-    let plaintiffArgument =
-        Namespaced_IRI.parse _namespace_name "plaintiffArgument" |> NamespacedName
-
+    let plaintiffArgument = _prefix "plaintiffArgument"
     /// <summary>
     /// A police officer is a warranted law employee of a police force
     /// <see href="https://w3id.org/def/nyon#Investigator"></see></summary>
-    let Investigator =
-        Namespaced_IRI.parse _namespace_name "Investigator" |> NamespacedName
-
+    let Investigator = _prefix "Investigator"
     /// <summary>
     /// represents the judge of the case
     /// <see href="https://w3id.org/def/nyon#Judge"></see></summary>
-    let Judge = Namespaced_IRI.parse _namespace_name "Judge" |> NamespacedName
+    let Judge = _prefix "Judge"
     /// <summary>
     /// represents solicitor, learned counsel or laywer of the case
     /// <see href="https://w3id.org/def/nyon#Solicitor"></see></summary>
-    let Solicitor = Namespaced_IRI.parse _namespace_name "Solicitor" |> NamespacedName
+    let Solicitor = _prefix "Solicitor"
     /// <summary>
     /// party of the case are the group of people on one side against another group of people or individual or state
     /// <see href="https://w3id.org/def/nyon#Group"></see></summary>
-    let Group = Namespaced_IRI.parse _namespace_name "Group" |> NamespacedName
+    let Group = _prefix "Group"
     /// <summary>
     /// participants of the case are the individual persons
     /// <see href="https://w3id.org/def/nyon#Individual"></see></summary>
-    let Individual = Namespaced_IRI.parse _namespace_name "Individual" |> NamespacedName
-
+    let Individual = _prefix "Individual"
     /// <summary>
     /// specifies the judge (nyon:Judge) gives the opinion in dissent (nyon:Dissent) of the court
     /// <see href="https://w3id.org/def/nyon#withDissent"></see></summary>
-    let withDissent =
-        Namespaced_IRI.parse _namespace_name "withDissent" |> NamespacedName
-
+    let withDissent = _prefix "withDissent"
     /// <summary>
     /// lower court at metropolitan level after Sessions Court for criminal cases
     /// <see href="https://w3id.org/def/nyon#Chief_Meterpolitan_Court"></see></summary>
-    let Chief_Meterpolitan_Court =
-        Namespaced_IRI.parse _namespace_name "Chief_Meterpolitan_Court" |> NamespacedName
-
+    let Chief_Meterpolitan_Court = _prefix "Chief_Meterpolitan_Court"
     /// <summary>
     /// lowest court after Chief Metropolitan Court at metropolitan level for criminal cases
     /// <see href="https://w3id.org/def/nyon#Metropolitan_Magistrate_Courts"></see></summary>
-    let Metropolitan_Magistrate_Courts =
-        Namespaced_IRI.parse _namespace_name "Metropolitan_Magistrate_Courts" |> NamespacedName
-
+    let Metropolitan_Magistrate_Courts = _prefix "Metropolitan_Magistrate_Courts"
     /// <summary>
     /// lower court at both distrcit and metropolitan level after High Courts specific for criminal cases
     /// <see href="https://w3id.org/def/nyon#Session_Court"></see></summary>
-    let Session_Court =
-        Namespaced_IRI.parse _namespace_name "Session_Court" |> NamespacedName
+    let Session_Court = _prefix "Session_Court"
 
     /// <summary>
     /// second lower court at distrcit level after districit level Session Court for criminal cases
     /// <see href="https://w3id.org/def/nyon#Judicial_Magistrate_Court(First_Class)"></see></summary>
     let ``Judicial_Magistrate_Court(First_Class)`` =
-        Namespaced_IRI.parse _namespace_name "Judicial_Magistrate_Court(First_Class)" |> NamespacedName
+        _prefix "Judicial_Magistrate_Court(First_Class)"
 
     /// <summary>
     /// lowest court after Judicial Magistrate Court (First Class) at distrcit level for criminal cases
     /// <see href="https://w3id.org/def/nyon#Judicial_Magistrate_Court(Second_Class)"></see></summary>
     let ``Judicial_Magistrate_Court(Second_Class)`` =
-        Namespaced_IRI.parse _namespace_name "Judicial_Magistrate_Court(Second_Class)" |> NamespacedName
+        _prefix "Judicial_Magistrate_Court(Second_Class)"
 
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#hasDate"></see>
     /// </summary>
-    let hasDate = Namespaced_IRI.parse _namespace_name "hasDate" |> NamespacedName
+    let hasDate = _prefix "hasDate"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#hasMonth"></see>
     /// </summary>
-    let hasMonth = Namespaced_IRI.parse _namespace_name "hasMonth" |> NamespacedName
+    let hasMonth = _prefix "hasMonth"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#hasYear"></see>
     /// </summary>
-    let hasYear = Namespaced_IRI.parse _namespace_name "hasYear" |> NamespacedName
-
+    let hasYear = _prefix "hasYear"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#argumentSequenceNum"></see>
     /// </summary>
-    let argumentSequenceNum =
-        Namespaced_IRI.parse _namespace_name "argumentSequenceNum" |> NamespacedName
-
+    let argumentSequenceNum = _prefix "argumentSequenceNum"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#argumentValue"></see>
     /// </summary>
-    let argumentValue =
-        Namespaced_IRI.parse _namespace_name "argumentValue" |> NamespacedName
-
+    let argumentValue = _prefix "argumentValue"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#catchwordValue"></see>
     /// </summary>
-    let catchwordValue =
-        Namespaced_IRI.parse _namespace_name "catchwordValue" |> NamespacedName
-
+    let catchwordValue = _prefix "catchwordValue"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#courtName"></see>
     /// </summary>
-    let courtName = Namespaced_IRI.parse _namespace_name "courtName" |> NamespacedName
-
+    let courtName = _prefix "courtName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#courtOffName"></see>
     /// </summary>
-    let courtOffName =
-        Namespaced_IRI.parse _namespace_name "courtOffName" |> NamespacedName
-
+    let courtOffName = _prefix "courtOffName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#dateOfJudgment"></see>
     /// </summary>
-    let dateOfJudgment =
-        Namespaced_IRI.parse _namespace_name "dateOfJudgment" |> NamespacedName
-
+    let dateOfJudgment = _prefix "dateOfJudgment"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#evidenceLocation"></see>
     /// </summary>
-    let evidenceLocation =
-        Namespaced_IRI.parse _namespace_name "evidenceLocation" |> NamespacedName
-
+    let evidenceLocation = _prefix "evidenceLocation"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#factSequenceNum"></see>
     /// </summary>
-    let factSequenceNum =
-        Namespaced_IRI.parse _namespace_name "factSequenceNum" |> NamespacedName
-
+    let factSequenceNum = _prefix "factSequenceNum"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#factValue"></see>
     /// </summary>
-    let factValue = Namespaced_IRI.parse _namespace_name "factValue" |> NamespacedName
-
+    let factValue = _prefix "factValue"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#finalDecisionValue"></see>
     /// </summary>
-    let finalDecisionValue =
-        Namespaced_IRI.parse _namespace_name "finalDecisionValue" |> NamespacedName
-
+    let finalDecisionValue = _prefix "finalDecisionValue"
     /// <summary>
     /// Case has a unique ID
     /// <see href="https://w3id.org/def/nyon#hasCaseID"></see></summary>
-    let hasCaseID = Namespaced_IRI.parse _namespace_name "hasCaseID" |> NamespacedName
-
+    let hasCaseID = _prefix "hasCaseID"
     /// <summary>
     /// represents the name of a case usually contains the name of both the parties
     /// <see href="https://w3id.org/def/nyon#hasCaseName"></see></summary>
-    let hasCaseName =
-        Namespaced_IRI.parse _namespace_name "hasCaseName" |> NamespacedName
-
+    let hasCaseName = _prefix "hasCaseName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#hasDesignation"></see>
     /// </summary>
-    let hasDesignation =
-        Namespaced_IRI.parse _namespace_name "hasDesignation" |> NamespacedName
-
+    let hasDesignation = _prefix "hasDesignation"
     /// <summary>
     /// represents the name of the police personnel involved in the case
     /// <see href="https://w3id.org/def/nyon#hasPolicePersonnelName"></see></summary>
-    let hasPolicePersonnelName =
-        Namespaced_IRI.parse _namespace_name "hasPolicePersonnelName" |> NamespacedName
-
+    let hasPolicePersonnelName = _prefix "hasPolicePersonnelName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#issueSequenceNum"></see>
     /// </summary>
-    let issueSequenceNum =
-        Namespaced_IRI.parse _namespace_name "issueSequenceNum" |> NamespacedName
-
+    let issueSequenceNum = _prefix "issueSequenceNum"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#issueValue"></see>
     /// </summary>
-    let issueValue = Namespaced_IRI.parse _namespace_name "issueValue" |> NamespacedName
-
+    let issueValue = _prefix "issueValue"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#locationName"></see>
     /// </summary>
-    let locationName =
-        Namespaced_IRI.parse _namespace_name "locationName" |> NamespacedName
-
+    let locationName = _prefix "locationName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#obiterDictumSequenceNum"></see>
     /// </summary>
-    let obiterDictumSequenceNum =
-        Namespaced_IRI.parse _namespace_name "obiterDictumSequenceNum" |> NamespacedName
-
+    let obiterDictumSequenceNum = _prefix "obiterDictumSequenceNum"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#obiterDictumValue"></see>
     /// </summary>
-    let obiterDictumValue =
-        Namespaced_IRI.parse _namespace_name "obiterDictumValue" |> NamespacedName
-
+    let obiterDictumValue = _prefix "obiterDictumValue"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#partyName"></see>
     /// </summary>
-    let partyName = Namespaced_IRI.parse _namespace_name "partyName" |> NamespacedName
-
+    let partyName = _prefix "partyName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#ratioDecidendiSequenceNum"></see>
     /// </summary>
-    let ratioDecidendiSequenceNum =
-        Namespaced_IRI.parse _namespace_name "ratioDecidendiSequenceNum" |> NamespacedName
-
+    let ratioDecidendiSequenceNum = _prefix "ratioDecidendiSequenceNum"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#ratioDecidendiValue"></see>
     /// </summary>
-    let ratioDecidendiValue =
-        Namespaced_IRI.parse _namespace_name "ratioDecidendiValue" |> NamespacedName
-
+    let ratioDecidendiValue = _prefix "ratioDecidendiValue"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#witnessName"></see>
     /// </summary>
-    let witnessName =
-        Namespaced_IRI.parse _namespace_name "witnessName" |> NamespacedName
-
+    let witnessName = _prefix "witnessName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#witnessStatement"></see>
     /// </summary>
-    let witnessStatement =
-        Namespaced_IRI.parse _namespace_name "witnessStatement" |> NamespacedName
-
+    let witnessStatement = _prefix "witnessStatement"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#wordPhraseValue"></see>
     /// </summary>
-    let wordPhraseValue =
-        Namespaced_IRI.parse _namespace_name "wordPhraseValue" |> NamespacedName
-
+    let wordPhraseValue = _prefix "wordPhraseValue"
     /// <summary>
     /// represents the types of party involved in the case viz. individual, organization, govt. etc.
     /// <see href="https://w3id.org/def/nyon#Party_Type"></see></summary>
-    let Party_Type = Namespaced_IRI.parse _namespace_name "Party_Type" |> NamespacedName
+    let Party_Type = _prefix "Party_Type"
     /// <summary>
     /// represents the location of the courts, etc and also used for evidence locations
     /// <see href="https://w3id.org/def/nyon#Location"></see></summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
+    let Location = _prefix "Location"
     /// <summary>
     /// person against whom an allegation has been made that he has committed an offence, or who is charge with an offence
     /// <see href="https://w3id.org/def/nyon#Accussed"></see></summary>
-    let Accussed = Namespaced_IRI.parse _namespace_name "Accussed" |> NamespacedName
+    let Accussed = _prefix "Accussed"
     /// <summary>
     /// case is a criminal case
     /// <see href="https://w3id.org/def/nyon#Criminal"></see></summary>
-    let Criminal = Namespaced_IRI.parse _namespace_name "Criminal" |> NamespacedName
+    let Criminal = _prefix "Criminal"
     /// <summary>
     /// specifies the law domain (nyon:CaseDomain) the court case (nyon:CourtCase) belongs to
     /// <see href="https://w3id.org/def/nyon#OfDomian"></see></summary>
-    let OfDomian = Namespaced_IRI.parse _namespace_name "OfDomian" |> NamespacedName
+    let OfDomian = _prefix "OfDomian"
     /// <summary>
     /// party or people involved in the case
     /// <see href="https://w3id.org/def/nyon#Party"></see></summary>
-    let Party = Namespaced_IRI.parse _namespace_name "Party" |> NamespacedName
-
+    let Party = _prefix "Party"
     /// <summary>
     /// the extent to which a court of law can exercise its authority over any cases filed across a region
     /// <see href="https://w3id.org/def/nyon#Jurisdiction"></see></summary>
-    let Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Jurisdiction" |> NamespacedName
-
+    let Jurisdiction = _prefix "Jurisdiction"
     /// <summary>
     /// party who makes an appeal
     /// <see href="https://w3id.org/def/nyon#Appellant"></see></summary>
-    let Appellant = Namespaced_IRI.parse _namespace_name "Appellant" |> NamespacedName
+    let Appellant = _prefix "Appellant"
     /// <summary>
     /// Author (Judge) who is responsible for a creation of case document
     /// <see href="https://w3id.org/def/nyon#Author"></see></summary>
-    let Author = Namespaced_IRI.parse _namespace_name "Author" |> NamespacedName
+    let Author = _prefix "Author"
     /// <summary>
     /// Defines the bench of the case.
     /// <see href="https://w3id.org/def/nyon#Bench"></see></summary>
-    let Bench = Namespaced_IRI.parse _namespace_name "Bench" |> NamespacedName
-
+    let Bench = _prefix "Bench"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#COFirstName"></see>
     /// </summary>
-    let COFirstName =
-        Namespaced_IRI.parse _namespace_name "COFirstName" |> NamespacedName
-
+    let COFirstName = _prefix "COFirstName"
     /// <summary>
     /// legal system related people involved in a case
     /// <see href="https://w3id.org/def/nyon#Court_Official"></see></summary>
-    let Court_Official =
-        Namespaced_IRI.parse _namespace_name "Court_Official" |> NamespacedName
-
+    let Court_Official = _prefix "Court_Official"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#COLastName"></see>
     /// </summary>
-    let COLastName = Namespaced_IRI.parse _namespace_name "COLastName" |> NamespacedName
+    let COLastName = _prefix "COLastName"
     /// <summary>
     /// case belongs to specific proceeding like civil or criminal
     /// <see href="https://w3id.org/def/nyon#CaseDomain"></see></summary>
-    let CaseDomain = Namespaced_IRI.parse _namespace_name "CaseDomain" |> NamespacedName
+    let CaseDomain = _prefix "CaseDomain"
     /// <summary>
     /// classification of types of cases
     /// <see href="https://w3id.org/def/nyon#CaseType"></see></summary>
-    let CaseType = Namespaced_IRI.parse _namespace_name "CaseType" |> NamespacedName
+    let CaseType = _prefix "CaseType"
     /// <summary>
     /// Descriptive words or phrases used to categorise the subject matter of a case along with some keywords representing the issues in the case
     /// <see href="https://w3id.org/def/nyon#CatchWord"></see></summary>
-    let CatchWord = Namespaced_IRI.parse _namespace_name "CatchWord" |> NamespacedName
+    let CatchWord = _prefix "CatchWord"
     /// <summary>
     /// issues in the case arised by the party
     /// <see href="https://w3id.org/def/nyon#Issue"></see></summary>
-    let Issue = Namespaced_IRI.parse _namespace_name "Issue" |> NamespacedName
-
+    let Issue = _prefix "Issue"
     /// <summary>
     /// courts for crimnial cases
     /// <see href="https://w3id.org/def/nyon#Courts_for_Criminal"></see></summary>
-    let Courts_for_Criminal =
-        Namespaced_IRI.parse _namespace_name "Courts_for_Criminal" |> NamespacedName
-
+    let Courts_for_Criminal = _prefix "Courts_for_Criminal"
     /// <summary>
     /// court for civil cases
     /// <see href="https://w3id.org/def/nyon#Courts_for_Civil"></see></summary>
-    let Courts_for_Civil =
-        Namespaced_IRI.parse _namespace_name "Courts_for_Civil" |> NamespacedName
-
+    let Courts_for_Civil = _prefix "Courts_for_Civil"
     /// <summary>
     /// case is a civil case
     /// <see href="https://w3id.org/def/nyon#Civil"></see></summary>
-    let Civil = Namespaced_IRI.parse _namespace_name "Civil" |> NamespacedName
+    let Civil = _prefix "Civil"
     /// <summary>
     /// judge opinion with respect to case or judgment
     /// <see href="https://w3id.org/def/nyon#Opinion"></see></summary>
-    let Opinion = Namespaced_IRI.parse _namespace_name "Opinion" |> NamespacedName
+    let Opinion = _prefix "Opinion"
     /// <summary>
     /// courts in the judicial system
     /// <see href="https://w3id.org/def/nyon#Court"></see></summary>
-    let Court = Namespaced_IRI.parse _namespace_name "Court" |> NamespacedName
-
+    let Court = _prefix "Court"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#CourtDecision"></see>
     /// </summary>
-    let CourtDecision =
-        Namespaced_IRI.parse _namespace_name "CourtDecision" |> NamespacedName
-
+    let CourtDecision = _prefix "CourtDecision"
     /// <summary>
     /// signifies the final date on which the judgment is given by the court of law
     /// <see href="https://w3id.org/def/nyon#DateOfJudgment"></see></summary>
-    let DateOfJudgment =
-        Namespaced_IRI.parse _namespace_name "DateOfJudgment" |> NamespacedName
-
+    let DateOfJudgment = _prefix "DateOfJudgment"
     /// <summary>
     /// formal order issued by the judges
     /// <see href="https://w3id.org/def/nyon#Decree"></see></summary>
-    let Decree = Namespaced_IRI.parse _namespace_name "Decree" |> NamespacedName
+    let Decree = _prefix "Decree"
     /// <summary>
     /// a person sued in the court of law
     /// <see href="https://w3id.org/def/nyon#Defendant"></see></summary>
-    let Defendant = Namespaced_IRI.parse _namespace_name "Defendant" |> NamespacedName
-
+    let Defendant = _prefix "Defendant"
     /// <summary>
     /// a term in judicial system in India in which a case is heard and judged by at least 2 judges
     /// <see href="https://w3id.org/def/nyon#Division_Bench"></see></summary>
-    let Division_Bench =
-        Namespaced_IRI.parse _namespace_name "Division_Bench" |> NamespacedName
-
+    let Division_Bench = _prefix "Division_Bench"
     /// <summary>
     /// evidences presented in front of the court in the case
     /// <see href="https://w3id.org/def/nyon#Evidence"></see></summary>
-    let Evidence = Namespaced_IRI.parse _namespace_name "Evidence" |> NamespacedName
+    let Evidence = _prefix "Evidence"
     /// <summary>
     /// represents factual statements in the case law
     /// <see href="https://w3id.org/def/nyon#Fact"></see></summary>
-    let Fact = Namespaced_IRI.parse _namespace_name "Fact" |> NamespacedName
+    let Fact = _prefix "Fact"
     /// <summary>
     /// court at the state level
     /// <see href="https://w3id.org/def/nyon#High_Court"></see></summary>
-    let High_Court = Namespaced_IRI.parse _namespace_name "High_Court" |> NamespacedName
+    let High_Court = _prefix "High_Court"
     /// <summary>
     /// Judgement given by the judge
     /// <see href="https://w3id.org/def/nyon#Judgement"></see></summary>
-    let Judgement = Namespaced_IRI.parse _namespace_name "Judgement" |> NamespacedName
-
+    let Judgement = _prefix "Judgement"
     /// <summary>
     /// a term in judicial system in India in which a case is heard and judged by three or five judges
     /// <see href="https://w3id.org/def/nyon#Larger_Bench"></see></summary>
-    let Larger_Bench =
-        Namespaced_IRI.parse _namespace_name "Larger_Bench" |> NamespacedName
-
+    let Larger_Bench = _prefix "Larger_Bench"
     /// <summary>
     /// Lawyer is a term of reference to the attroneys and advocates collectively in litigation
     /// <see href="https://w3id.org/def/nyon#Lawyer"></see></summary>
-    let Lawyer = Namespaced_IRI.parse _namespace_name "Lawyer" |> NamespacedName
-
+    let Lawyer = _prefix "Lawyer"
     /// <summary>
     /// Learned counsel is a term of reference to the lawyers and advocates collectively in litigation
     /// <see href="https://w3id.org/def/nyon#LearnedCounsel"></see></summary>
-    let LearnedCounsel =
-        Namespaced_IRI.parse _namespace_name "LearnedCounsel" |> NamespacedName
-
+    let LearnedCounsel = _prefix "LearnedCounsel"
     /// <summary>
     /// court for population more than 10 lakh city
     /// <see href="https://w3id.org/def/nyon#Metropolitian_Courts"></see></summary>
-    let Metropolitian_Courts =
-        Namespaced_IRI.parse _namespace_name "Metropolitian_Courts" |> NamespacedName
-
+    let Metropolitian_Courts = _prefix "Metropolitian_Courts"
     /// <summary>
     /// additional obersvations, remarks, and opinions made by the judge that are not the part of the reason for the decision
     /// <see href="https://w3id.org/def/nyon#ObiterDictum"></see></summary>
-    let ObiterDictum =
-        Namespaced_IRI.parse _namespace_name "ObiterDictum" |> NamespacedName
-
+    let ObiterDictum = _prefix "ObiterDictum"
     /// <summary>
     /// order given by the court
     /// <see href="https://w3id.org/def/nyon#Order"></see></summary>
-    let Order = Namespaced_IRI.parse _namespace_name "Order" |> NamespacedName
+    let Order = _prefix "Order"
     /// <summary>
     /// party who brings the suit in the court of law
     /// <see href="https://w3id.org/def/nyon#Plaintiff"></see></summary>
-    let Plaintiff = Namespaced_IRI.parse _namespace_name "Plaintiff" |> NamespacedName
+    let Plaintiff = _prefix "Plaintiff"
     /// <summary>
     /// all the past cases referred in the current judgment b ythe judge
     /// <see href="https://w3id.org/def/nyon#Precedent"></see></summary>
-    let Precedent = Namespaced_IRI.parse _namespace_name "Precedent" |> NamespacedName
-
+    let Precedent = _prefix "Precedent"
     /// <summary>
     /// specifies the previous cases of type nyon:CourtCase
     /// represents past cases referred by the judge in the judgment
     /// <see href="https://w3id.org/def/nyon#hasPrecedent"></see></summary>
-    let hasPrecedent =
-        Namespaced_IRI.parse _namespace_name "hasPrecedent" |> NamespacedName
-
+    let hasPrecedent = _prefix "hasPrecedent"
     /// <summary>
     /// clause or section number or article number applied/used in the case law
     /// <see href="https://w3id.org/def/nyon#Provision"></see></summary>
-    let Provision = Namespaced_IRI.parse _namespace_name "Provision" |> NamespacedName
-
+    let Provision = _prefix "Provision"
     /// <summary>
     /// the rationale for the decision
     /// <see href="https://w3id.org/def/nyon#RatioDecidendi"></see></summary>
-    let RatioDecidendi =
-        Namespaced_IRI.parse _namespace_name "RatioDecidendi" |> NamespacedName
-
+    let RatioDecidendi = _prefix "RatioDecidendi"
     /// <summary>
     /// a case heard and judged by a single judge
     /// <see href="https://w3id.org/def/nyon#Single_Judge"></see></summary>
-    let Single_Judge =
-        Namespaced_IRI.parse _namespace_name "Single_Judge" |> NamespacedName
-
+    let Single_Judge = _prefix "Single_Judge"
     /// <summary>
     /// means the Bench constituted by or under the orders of the Chief Justice to hear a case or particular class of cases
     /// <see href="https://w3id.org/def/nyon#Special_Bench"></see></summary>
-    let Special_Bench =
-        Namespaced_IRI.parse _namespace_name "Special_Bench" |> NamespacedName
-
+    let Special_Bench = _prefix "Special_Bench"
     /// <summary>
     /// includes the acts and norms of the law
     /// <see href="https://w3id.org/def/nyon#Statue"></see></summary>
-    let Statue = Namespaced_IRI.parse _namespace_name "Statue" |> NamespacedName
+    let Statue = _prefix "Statue"
     /// <summary>
     /// institutions established for discharging judicial or quasi-judicial duties under the Government of India
     /// <see href="https://w3id.org/def/nyon#Tribunal"></see></summary>
-    let Tribunal = Namespaced_IRI.parse _namespace_name "Tribunal" |> NamespacedName
-
+    let Tribunal = _prefix "Tribunal"
     /// <summary>
     /// highest court in the judicial system
     /// <see href="https://w3id.org/def/nyon#SupremeCourt"></see></summary>
-    let SupremeCourt =
-        Namespaced_IRI.parse _namespace_name "SupremeCourt" |> NamespacedName
-
+    let SupremeCourt = _prefix "SupremeCourt"
     /// <summary>
     /// Bench deals with tribunals cases
     /// <see href="https://w3id.org/def/nyon#Tribunal_Bench"></see></summary>
-    let Tribunal_Bench =
-        Namespaced_IRI.parse _namespace_name "Tribunal_Bench" |> NamespacedName
-
+    let Tribunal_Bench = _prefix "Tribunal_Bench"
     /// <summary>
     /// witness involved/presented in the case
     /// <see href="https://w3id.org/def/nyon#Witness"></see></summary>
-    let Witness = Namespaced_IRI.parse _namespace_name "Witness" |> NamespacedName
-
+    let Witness = _prefix "Witness"
     /// <summary>
     /// words or phrases exctracted from the case to make the search better for the cases or find relevent cases or judgment
     /// <see href="https://w3id.org/def/nyon#WordAndPhrase"></see></summary>
-    let WordAndPhrase =
-        Namespaced_IRI.parse _namespace_name "WordAndPhrase" |> NamespacedName
-
+    let WordAndPhrase = _prefix "WordAndPhrase"
     /// <summary>
     /// jurisdiction type is a writ jurisdiction
     /// <see href="https://w3id.org/def/nyon#Writ_Jurisdiction"></see></summary>
-    let Writ_Jurisdiction =
-        Namespaced_IRI.parse _namespace_name "Writ_Jurisdiction" |> NamespacedName
-
+    let Writ_Jurisdiction = _prefix "Writ_Jurisdiction"
     /// <summary>
     /// equivalent citations provided by the various law reporters.
     /// <see href="https://w3id.org/def/nyon#equivalentCitation"></see></summary>
-    let equivalentCitation =
-        Namespaced_IRI.parse _namespace_name "equivalentCitation" |> NamespacedName
-
+    let equivalentCitation = _prefix "equivalentCitation"
     /// <summary>
     /// represents neutral citations given by the court itself
     /// <see href="https://w3id.org/def/nyon#neutralCitations"></see></summary>
-    let neutralCitations =
-        Namespaced_IRI.parse _namespace_name "neutralCitations" |> NamespacedName
-
+    let neutralCitations = _prefix "neutralCitations"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#firstName"></see>
     /// </summary>
-    let firstName = Namespaced_IRI.parse _namespace_name "firstName" |> NamespacedName
+    let firstName = _prefix "firstName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#lastName"></see>
     /// </summary>
-    let lastName = Namespaced_IRI.parse _namespace_name "lastName" |> NamespacedName
-
+    let lastName = _prefix "lastName"
     /// <summary>
     /// specifies the location of the nyon:Court
     /// <see href="https://w3id.org/def/nyon#hasCourtLoc"></see></summary>
-    let hasCourtLoc =
-        Namespaced_IRI.parse _namespace_name "hasCourtLoc" |> NamespacedName
-
+    let hasCourtLoc = _prefix "hasCourtLoc"
     /// <summary>
     /// specifies the evidence location associated with the nyon:Evidence instance for the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasEvidenceLoc"></see></summary>
-    let hasEvidenceLoc =
-        Namespaced_IRI.parse _namespace_name "hasEvidenceLoc" |> NamespacedName
-
+    let hasEvidenceLoc = _prefix "hasEvidenceLoc"
     /// <summary>
     /// specifies the issue associated with the nyon:Issue instance mentioned in the nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasIssue"></see></summary>
-    let hasIssue = Namespaced_IRI.parse _namespace_name "hasIssue" |> NamespacedName
-
+    let hasIssue = _prefix "hasIssue"
     /// <summary>
     /// specifies the jurisdiction (nyon:Jurisdiction) for nyon:Court
     /// <see href="https://w3id.org/def/nyon#hasJurisdiction"></see></summary>
-    let hasJurisdiction =
-        Namespaced_IRI.parse _namespace_name "hasJurisdiction" |> NamespacedName
-
+    let hasJurisdiction = _prefix "hasJurisdiction"
     /// <summary>
     /// specifies the type of party (nyon:PartyType) involved in nyon:CourtCase
     /// <see href="https://w3id.org/def/nyon#hasPartyType"></see></summary>
-    let hasPartyType =
-        Namespaced_IRI.parse _namespace_name "hasPartyType" |> NamespacedName
-
+    let hasPartyType = _prefix "hasPartyType"
     /// <summary>
     /// specifies a clause or norm (nyon:Provision) in a legal instrument or a law
     /// <see href="https://w3id.org/def/nyon#hasProvision"></see></summary>
-    let hasProvision =
-        Namespaced_IRI.parse _namespace_name "hasProvision" |> NamespacedName
-
+    let hasProvision = _prefix "hasProvision"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#wFirstName"></see>
     /// </summary>
-    let wFirstName = Namespaced_IRI.parse _namespace_name "wFirstName" |> NamespacedName
+    let wFirstName = _prefix "wFirstName"
     /// <summary>
     ///   <see href="https://w3id.org/def/nyon#wLastName"></see>
     /// </summary>
-    let wLastName = Namespaced_IRI.parse _namespace_name "wLastName" |> NamespacedName
+    let wLastName = _prefix "wLastName"
     /// <summary>
     /// specifies the judge (nyon:Judge) working in court (nyon:Court)
     /// <see href="https://w3id.org/def/nyon#worksIn"></see></summary>
-    let worksIn = Namespaced_IRI.parse _namespace_name "worksIn" |> NamespacedName
+    let worksIn = _prefix "worksIn"

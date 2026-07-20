@@ -1,475 +1,346 @@
 namespace http.mex.aksw.org.mex_core.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module mexcore =
     let _namespace_name = "http://mex.aksw.org/mex-core#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Test"></see>
     /// </summary>
-    let Test = Namespaced_IRI.parse _namespace_name "Test" |> NamespacedName
+    let Test = _prefix "Test"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Training"></see>
     /// </summary>
-    let Training = Namespaced_IRI.parse _namespace_name "Training" |> NamespacedName
+    let Training = _prefix "Training"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Validation"></see>
     /// </summary>
-    let Validation = Namespaced_IRI.parse _namespace_name "Validation" |> NamespacedName
-
+    let Validation = _prefix "Validation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#AdaptativeWebSites"></see>
     /// </summary>
-    let AdaptativeWebSites =
-        Namespaced_IRI.parse _namespace_name "AdaptativeWebSites" |> NamespacedName
-
+    let AdaptativeWebSites = _prefix "AdaptativeWebSites"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
-
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#AffectiveComputing"></see>
     /// </summary>
-    let AffectiveComputing =
-        Namespaced_IRI.parse _namespace_name "AffectiveComputing" |> NamespacedName
-
+    let AffectiveComputing = _prefix "AffectiveComputing"
     /// <summary>
     /// describes the context of the experiment, such as NLP, Stock Market Forecast, BioInformatics, Text-Retrieval AND contact informations/publication
     /// <see href="http://mex.aksw.org/mex-core#ApplicationContext"></see></summary>
-    let ApplicationContext =
-        Namespaced_IRI.parse _namespace_name "ApplicationContext" |> NamespacedName
-
+    let ApplicationContext = _prefix "ApplicationContext"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#DomainConceptSpace"></see>
     /// </summary>
-    let DomainConceptSpace =
-        Namespaced_IRI.parse _namespace_name "DomainConceptSpace" |> NamespacedName
-
+    let DomainConceptSpace = _prefix "DomainConceptSpace"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Bioinformatics"></see>
     /// </summary>
-    let Bioinformatics =
-        Namespaced_IRI.parse _namespace_name "Bioinformatics" |> NamespacedName
-
+    let Bioinformatics = _prefix "Bioinformatics"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Bootstrapping"></see>
     /// </summary>
-    let Bootstrapping =
-        Namespaced_IRI.parse _namespace_name "Bootstrapping" |> NamespacedName
-
+    let Bootstrapping = _prefix "Bootstrapping"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SamplingMethod"></see>
     /// </summary>
-    let SamplingMethod =
-        Namespaced_IRI.parse _namespace_name "SamplingMethod" |> NamespacedName
-
+    let SamplingMethod = _prefix "SamplingMethod"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#BrainMachineInterfaces"></see>
     /// </summary>
-    let BrainMachineInterfaces =
-        Namespaced_IRI.parse _namespace_name "BrainMachineInterfaces" |> NamespacedName
-
+    let BrainMachineInterfaces = _prefix "BrainMachineInterfaces"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Cheminformatics"></see>
     /// </summary>
-    let Cheminformatics =
-        Namespaced_IRI.parse _namespace_name "Cheminformatics" |> NamespacedName
-
+    let Cheminformatics = _prefix "Cheminformatics"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ClassifyingDNAsequences"></see>
     /// </summary>
-    let ClassifyingDNAsequences =
-        Namespaced_IRI.parse _namespace_name "ClassifyingDNAsequences" |> NamespacedName
-
+    let ClassifyingDNAsequences = _prefix "ClassifyingDNAsequences"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ComputationalAdversiting"></see>
     /// </summary>
-    let ComputationalAdversiting =
-        Namespaced_IRI.parse _namespace_name "ComputationalAdversiting" |> NamespacedName
-
+    let ComputationalAdversiting = _prefix "ComputationalAdversiting"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ComputationalFinance"></see>
     /// </summary>
-    let ComputationalFinance =
-        Namespaced_IRI.parse _namespace_name "ComputationalFinance" |> NamespacedName
-
+    let ComputationalFinance = _prefix "ComputationalFinance"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ComputerVision"></see>
     /// </summary>
-    let ComputerVision =
-        Namespaced_IRI.parse _namespace_name "ComputerVision" |> NamespacedName
-
+    let ComputerVision = _prefix "ComputerVision"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#CrossValidation"></see>
     /// </summary>
-    let CrossValidation =
-        Namespaced_IRI.parse _namespace_name "CrossValidation" |> NamespacedName
-
+    let CrossValidation = _prefix "CrossValidation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Dataset"></see>
     /// </summary>
-    let Dataset = Namespaced_IRI.parse _namespace_name "Dataset" |> NamespacedName
-
+    let Dataset = _prefix "Dataset"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#DetectingCreditCardFrauds"></see>
     /// </summary>
-    let DetectingCreditCardFrauds =
-        Namespaced_IRI.parse _namespace_name "DetectingCreditCardFrauds" |> NamespacedName
-
+    let DetectingCreditCardFrauds = _prefix "DetectingCreditCardFrauds"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ValuePartition"></see>
     /// </summary>
-    let ValuePartition =
-        Namespaced_IRI.parse _namespace_name "ValuePartition" |> NamespacedName
-
+    let ValuePartition = _prefix "ValuePartition"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Example"></see>
     /// </summary>
-    let Example = Namespaced_IRI.parse _namespace_name "Example" |> NamespacedName
-
+    let Example = _prefix "Example"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ExampleCollection"></see>
     /// </summary>
-    let ExampleCollection =
-        Namespaced_IRI.parse _namespace_name "ExampleCollection" |> NamespacedName
-
+    let ExampleCollection = _prefix "ExampleCollection"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Execution"></see>
     /// </summary>
-    let Execution = Namespaced_IRI.parse _namespace_name "Execution" |> NamespacedName
-
+    let Execution = _prefix "Execution"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ExecutionOverall"></see>
     /// </summary>
-    let ExecutionOverall =
-        Namespaced_IRI.parse _namespace_name "ExecutionOverall" |> NamespacedName
-
+    let ExecutionOverall = _prefix "ExecutionOverall"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ExecutionSingle"></see>
     /// </summary>
-    let ExecutionSingle =
-        Namespaced_IRI.parse _namespace_name "ExecutionSingle" |> NamespacedName
-
+    let ExecutionSingle = _prefix "ExecutionSingle"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Experiment"></see>
     /// </summary>
-    let Experiment = Namespaced_IRI.parse _namespace_name "Experiment" |> NamespacedName
-
+    let Experiment = _prefix "Experiment"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ExperimentConfiguration"></see>
     /// </summary>
-    let ExperimentConfiguration =
-        Namespaced_IRI.parse _namespace_name "ExperimentConfiguration" |> NamespacedName
-
+    let ExperimentConfiguration = _prefix "ExperimentConfiguration"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#FactPrediction"></see>
     /// </summary>
-    let FactPrediction =
-        Namespaced_IRI.parse _namespace_name "FactPrediction" |> NamespacedName
-
+    let FactPrediction = _prefix "FactPrediction"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Feature"></see>
     /// </summary>
-    let Feature = Namespaced_IRI.parse _namespace_name "Feature" |> NamespacedName
-
+    let Feature = _prefix "Feature"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#FeatureCollection"></see>
     /// </summary>
-    let FeatureCollection =
-        Namespaced_IRI.parse _namespace_name "FeatureCollection" |> NamespacedName
-
+    let FeatureCollection = _prefix "FeatureCollection"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#GamePlaying"></see>
     /// </summary>
-    let GamePlaying =
-        Namespaced_IRI.parse _namespace_name "GamePlaying" |> NamespacedName
-
+    let GamePlaying = _prefix "GamePlaying"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#HardwareConfiguration"></see>
     /// </summary>
-    let HardwareConfiguration =
-        Namespaced_IRI.parse _namespace_name "HardwareConfiguration" |> NamespacedName
-
+    let HardwareConfiguration = _prefix "HardwareConfiguration"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Holdout"></see>
     /// </summary>
-    let Holdout = Namespaced_IRI.parse _namespace_name "Holdout" |> NamespacedName
-
+    let Holdout = _prefix "Holdout"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#InformationRetrieval"></see>
     /// </summary>
-    let InformationRetrieval =
-        Namespaced_IRI.parse _namespace_name "InformationRetrieval" |> NamespacedName
-
+    let InformationRetrieval = _prefix "InformationRetrieval"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#InternetFraudDetection"></see>
     /// </summary>
-    let InternetFraudDetection =
-        Namespaced_IRI.parse _namespace_name "InternetFraudDetection" |> NamespacedName
-
+    let InternetFraudDetection = _prefix "InternetFraudDetection"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#LeaveOneOut"></see>
     /// </summary>
-    let LeaveOneOut =
-        Namespaced_IRI.parse _namespace_name "LeaveOneOut" |> NamespacedName
-
+    let LeaveOneOut = _prefix "LeaveOneOut"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#LinkDiscovery"></see>
     /// </summary>
-    let LinkDiscovery =
-        Namespaced_IRI.parse _namespace_name "LinkDiscovery" |> NamespacedName
-
+    let LinkDiscovery = _prefix "LinkDiscovery"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#MachinePerception"></see>
     /// </summary>
-    let MachinePerception =
-        Namespaced_IRI.parse _namespace_name "MachinePerception" |> NamespacedName
-
+    let MachinePerception = _prefix "MachinePerception"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#MedicalDiagnosis"></see>
     /// </summary>
-    let MedicalDiagnosis =
-        Namespaced_IRI.parse _namespace_name "MedicalDiagnosis" |> NamespacedName
-
+    let MedicalDiagnosis = _prefix "MedicalDiagnosis"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Metaheuristics"></see>
     /// </summary>
-    let Metaheuristics =
-        Namespaced_IRI.parse _namespace_name "Metaheuristics" |> NamespacedName
-
+    let Metaheuristics = _prefix "Metaheuristics"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Model"></see>
     /// </summary>
-    let Model = Namespaced_IRI.parse _namespace_name "Model" |> NamespacedName
-
+    let Model = _prefix "Model"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#NFoldsCrossValidation"></see>
     /// </summary>
-    let NFoldsCrossValidation =
-        Namespaced_IRI.parse _namespace_name "NFoldsCrossValidation" |> NamespacedName
-
+    let NFoldsCrossValidation = _prefix "NFoldsCrossValidation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#NaturalLanguageProcessing"></see>
     /// </summary>
-    let NaturalLanguageProcessing =
-        Namespaced_IRI.parse _namespace_name "NaturalLanguageProcessing" |> NamespacedName
-
+    let NaturalLanguageProcessing = _prefix "NaturalLanguageProcessing"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#ObjectRecognition"></see>
     /// </summary>
-    let ObjectRecognition =
-        Namespaced_IRI.parse _namespace_name "ObjectRecognition" |> NamespacedName
-
+    let ObjectRecognition = _prefix "ObjectRecognition"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Optimization"></see>
     /// </summary>
-    let Optimization =
-        Namespaced_IRI.parse _namespace_name "Optimization" |> NamespacedName
-
+    let Optimization = _prefix "Optimization"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Phase"></see>
     /// </summary>
-    let Phase = Namespaced_IRI.parse _namespace_name "Phase" |> NamespacedName
-
+    let Phase = _prefix "Phase"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#RecomenderSystems"></see>
     /// </summary>
-    let RecomenderSystems =
-        Namespaced_IRI.parse _namespace_name "RecomenderSystems" |> NamespacedName
-
+    let RecomenderSystems = _prefix "RecomenderSystems"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#Robotics"></see>
     /// </summary>
-    let Robotics = Namespaced_IRI.parse _namespace_name "Robotics" |> NamespacedName
-
+    let Robotics = _prefix "Robotics"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SearchEngines"></see>
     /// </summary>
-    let SearchEngines =
-        Namespaced_IRI.parse _namespace_name "SearchEngines" |> NamespacedName
-
+    let SearchEngines = _prefix "SearchEngines"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SentimentAnalysis"></see>
     /// </summary>
-    let SentimentAnalysis =
-        Namespaced_IRI.parse _namespace_name "SentimentAnalysis" |> NamespacedName
-
+    let SentimentAnalysis = _prefix "SentimentAnalysis"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SequenceMining"></see>
     /// </summary>
-    let SequenceMining =
-        Namespaced_IRI.parse _namespace_name "SequenceMining" |> NamespacedName
-
+    let SequenceMining = _prefix "SequenceMining"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SlidingCrossValidation"></see>
     /// </summary>
-    let SlidingCrossValidation =
-        Namespaced_IRI.parse _namespace_name "SlidingCrossValidation" |> NamespacedName
-
+    let SlidingCrossValidation = _prefix "SlidingCrossValidation"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SoftwareEngineering"></see>
     /// </summary>
-    let SoftwareEngineering =
-        Namespaced_IRI.parse _namespace_name "SoftwareEngineering" |> NamespacedName
-
+    let SoftwareEngineering = _prefix "SoftwareEngineering"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SpeechAndHandwritingRecognition"></see>
     /// </summary>
-    let SpeechAndHandwritingRecognition =
-        Namespaced_IRI.parse _namespace_name "SpeechAndHandwritingRecognition" |> NamespacedName
-
+    let SpeechAndHandwritingRecognition = _prefix "SpeechAndHandwritingRecognition"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#StockMarketAnalysis"></see>
     /// </summary>
-    let StockMarketAnalysis =
-        Namespaced_IRI.parse _namespace_name "StockMarketAnalysis" |> NamespacedName
-
+    let StockMarketAnalysis = _prefix "StockMarketAnalysis"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#StructuralHealthMonitoring"></see>
     /// </summary>
-    let StructuralHealthMonitoring =
-        Namespaced_IRI.parse _namespace_name "StructuralHealthMonitoring" |> NamespacedName
-
+    let StructuralHealthMonitoring = _prefix "StructuralHealthMonitoring"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#SyntacticLanguageProcessing"></see>
     /// </summary>
-    let SyntacticLanguageProcessing =
-        Namespaced_IRI.parse _namespace_name "SyntacticLanguageProcessing" |> NamespacedName
-
+    let SyntacticLanguageProcessing = _prefix "SyntacticLanguageProcessing"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#attributeSelectionDescription"></see>
     /// </summary>
-    let attributeSelectionDescription =
-        Namespaced_IRI.parse _namespace_name "attributeSelectionDescription" |> NamespacedName
-
+    let attributeSelectionDescription = _prefix "attributeSelectionDescription"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#cpu"></see>
     /// </summary>
-    let cpu = Namespaced_IRI.parse _namespace_name "cpu" |> NamespacedName
+    let cpu = _prefix "cpu"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#cpuCache"></see>
     /// </summary>
-    let cpuCache = Namespaced_IRI.parse _namespace_name "cpuCache" |> NamespacedName
-
+    let cpuCache = _prefix "cpuCache"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#dataNormalizedDescription"></see>
     /// </summary>
-    let dataNormalizedDescription =
-        Namespaced_IRI.parse _namespace_name "dataNormalizedDescription" |> NamespacedName
-
+    let dataNormalizedDescription = _prefix "dataNormalizedDescription"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#datasetColumn"></see>
     /// </summary>
-    let datasetColumn =
-        Namespaced_IRI.parse _namespace_name "datasetColumn" |> NamespacedName
-
+    let datasetColumn = _prefix "datasetColumn"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#datasetRow"></see>
     /// </summary>
-    let datasetRow = Namespaced_IRI.parse _namespace_name "datasetRow" |> NamespacedName
+    let datasetRow = _prefix "datasetRow"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#endsAt"></see>
     /// </summary>
-    let endsAt = Namespaced_IRI.parse _namespace_name "endsAt" |> NamespacedName
-
+    let endsAt = _prefix "endsAt"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#endsAtPosition"></see>
     /// </summary>
-    let endsAtPosition =
-        Namespaced_IRI.parse _namespace_name "endsAtPosition" |> NamespacedName
-
+    let endsAtPosition = _prefix "endsAtPosition"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#folds"></see>
     /// </summary>
-    let folds = Namespaced_IRI.parse _namespace_name "folds" |> NamespacedName
-
+    let folds = _prefix "folds"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#hasApplicationContext"></see>
     /// </summary>
-    let hasApplicationContext =
-        Namespaced_IRI.parse _namespace_name "hasApplicationContext" |> NamespacedName
-
+    let hasApplicationContext = _prefix "hasApplicationContext"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#hasPhase"></see>
     /// </summary>
-    let hasPhase = Namespaced_IRI.parse _namespace_name "hasPhase" |> NamespacedName
-
+    let hasPhase = _prefix "hasPhase"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#hasSamplingMethod"></see>
     /// </summary>
-    let hasSamplingMethod =
-        Namespaced_IRI.parse _namespace_name "hasSamplingMethod" |> NamespacedName
-
+    let hasSamplingMethod = _prefix "hasSamplingMethod"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#hdType"></see>
     /// </summary>
-    let hdType = Namespaced_IRI.parse _namespace_name "hdType" |> NamespacedName
+    let hdType = _prefix "hdType"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#memory"></see>
     /// </summary>
-    let memory = Namespaced_IRI.parse _namespace_name "memory" |> NamespacedName
-
+    let memory = _prefix "memory"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#noiseRemovedDescription"></see>
     /// </summary>
-    let noiseRemovedDescription =
-        Namespaced_IRI.parse _namespace_name "noiseRemovedDescription" |> NamespacedName
-
+    let noiseRemovedDescription = _prefix "noiseRemovedDescription"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#numberOfIteraction"></see>
     /// </summary>
-    let numberOfIteraction =
-        Namespaced_IRI.parse _namespace_name "numberOfIteraction" |> NamespacedName
-
+    let numberOfIteraction = _prefix "numberOfIteraction"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#outliersRemovedDescription"></see>
     /// </summary>
-    let outliersRemovedDescription =
-        Namespaced_IRI.parse _namespace_name "outliersRemovedDescription" |> NamespacedName
-
+    let outliersRemovedDescription = _prefix "outliersRemovedDescription"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#sequential"></see>
     /// </summary>
-    let sequential = Namespaced_IRI.parse _namespace_name "sequential" |> NamespacedName
+    let sequential = _prefix "sequential"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#startsAt"></see>
     /// </summary>
-    let startsAt = Namespaced_IRI.parse _namespace_name "startsAt" |> NamespacedName
-
+    let startsAt = _prefix "startsAt"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#startsAtPosition"></see>
     /// </summary>
-    let startsAtPosition =
-        Namespaced_IRI.parse _namespace_name "startsAtPosition" |> NamespacedName
-
+    let startsAtPosition = _prefix "startsAtPosition"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#targetClass"></see>
     /// </summary>
-    let targetClass =
-        Namespaced_IRI.parse _namespace_name "targetClass" |> NamespacedName
-
+    let targetClass = _prefix "targetClass"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#testSize"></see>
     /// </summary>
-    let testSize = Namespaced_IRI.parse _namespace_name "testSize" |> NamespacedName
+    let testSize = _prefix "testSize"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#trainSize"></see>
     /// </summary>
-    let trainSize = Namespaced_IRI.parse _namespace_name "trainSize" |> NamespacedName
+    let trainSize = _prefix "trainSize"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#trustyURI"></see>
     /// </summary>
-    let trustyURI = Namespaced_IRI.parse _namespace_name "trustyURI" |> NamespacedName
-
+    let trustyURI = _prefix "trustyURI"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#trustyURIHash"></see>
     /// </summary>
-    let trustyURIHash =
-        Namespaced_IRI.parse _namespace_name "trustyURIHash" |> NamespacedName
-
+    let trustyURIHash = _prefix "trustyURIHash"
     /// <summary>
     ///   <see href="http://mex.aksw.org/mex-core#videoGraphs"></see>
     /// </summary>
-    let videoGraphs =
-        Namespaced_IRI.parse _namespace_name "videoGraphs" |> NamespacedName
+    let videoGraphs = _prefix "videoGraphs"

@@ -1,52 +1,43 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Debt.TradedShortTermDebt.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_dbt_tstd =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/BankersAcceptance"></see>
     /// </summary>
-    let BankersAcceptance =
-        Namespaced_IRI.parse _namespace_name "BankersAcceptance" |> NamespacedName
-
+    let BankersAcceptance = _prefix "BankersAcceptance"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/BillOfExchange"></see>
     /// </summary>
-    let BillOfExchange =
-        Namespaced_IRI.parse _namespace_name "BillOfExchange" |> NamespacedName
-
+    let BillOfExchange = _prefix "BillOfExchange"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/MoneyMarketInstrument"></see>
     /// </summary>
-    let MoneyMarketInstrument =
-        Namespaced_IRI.parse _namespace_name "MoneyMarketInstrument" |> NamespacedName
-
+    let MoneyMarketInstrument = _prefix "MoneyMarketInstrument"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/Drawee"></see>
     /// </summary>
-    let Drawee = Namespaced_IRI.parse _namespace_name "Drawee" |> NamespacedName
+    let Drawee = _prefix "Drawee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/Drawer"></see>
     /// </summary>
-    let Drawer = Namespaced_IRI.parse _namespace_name "Drawer" |> NamespacedName
-
+    let Drawer = _prefix "Drawer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/CommercialPaper"></see>
     /// </summary>
-    let CommercialPaper =
-        Namespaced_IRI.parse _namespace_name "CommercialPaper" |> NamespacedName
-
+    let CommercialPaper = _prefix "CommercialPaper"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/EurodollarDeposit"></see>
     /// </summary>
-    let EurodollarDeposit =
-        Namespaced_IRI.parse _namespace_name "EurodollarDeposit" |> NamespacedName
-
+    let EurodollarDeposit = _prefix "EurodollarDeposit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/RepurchaseAgreement"></see>
     /// </summary>
-    let RepurchaseAgreement =
-        Namespaced_IRI.parse _namespace_name "RepurchaseAgreement" |> NamespacedName
+    let RepurchaseAgreement = _prefix "RepurchaseAgreement"

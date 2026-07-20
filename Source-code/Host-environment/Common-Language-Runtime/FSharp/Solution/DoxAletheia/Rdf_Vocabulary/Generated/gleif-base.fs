@@ -1,451 +1,325 @@
 namespace https.www.gleif.org.ontology.Base.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gleif_base =
     let _namespace_name = "https://www.gleif.org/ontology/Base/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityStatusActive"></see>
     /// </summary>
-    let EntityStatusActive =
-        Namespaced_IRI.parse _namespace_name "EntityStatusActive" |> NamespacedName
-
+    let EntityStatusActive = _prefix "EntityStatusActive"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityStatusInactive"></see>
     /// </summary>
-    let EntityStatusInactive =
-        Namespaced_IRI.parse _namespace_name "EntityStatusInactive" |> NamespacedName
+    let EntityStatusInactive = _prefix "EntityStatusInactive"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityExpirationReasonCorporateAction"></see>
     /// </summary>
     let EntityExpirationReasonCorporateAction =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReasonCorporateAction" |> NamespacedName
+        _prefix "EntityExpirationReasonCorporateAction"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityExpirationReasonDissolved"></see>
     /// </summary>
-    let EntityExpirationReasonDissolved =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReasonDissolved" |> NamespacedName
-
+    let EntityExpirationReasonDissolved = _prefix "EntityExpirationReasonDissolved"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityExpirationReasonOther"></see>
     /// </summary>
-    let EntityExpirationReasonOther =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReasonOther" |> NamespacedName
-
+    let EntityExpirationReasonOther = _prefix "EntityExpirationReasonOther"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/GLEIF"></see>
     /// </summary>
-    let GLEIF = Namespaced_IRI.parse _namespace_name "GLEIF" |> NamespacedName
+    let GLEIF = _prefix "GLEIF"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/Entity"></see>
     /// </summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
-
+    let Entity = _prefix "Entity"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasEntityExpirationDate"></see>
     /// </summary>
-    let hasEntityExpirationDate =
-        Namespaced_IRI.parse _namespace_name "hasEntityExpirationDate" |> NamespacedName
-
+    let hasEntityExpirationDate = _prefix "hasEntityExpirationDate"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasSuccessor"></see>
     /// </summary>
-    let hasSuccessor =
-        Namespaced_IRI.parse _namespace_name "hasSuccessor" |> NamespacedName
-
+    let hasSuccessor = _prefix "hasSuccessor"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasEntityStatus"></see>
     /// </summary>
-    let hasEntityStatus =
-        Namespaced_IRI.parse _namespace_name "hasEntityStatus" |> NamespacedName
-
+    let hasEntityStatus = _prefix "hasEntityStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityStatus"></see>
     /// </summary>
-    let EntityStatus =
-        Namespaced_IRI.parse _namespace_name "EntityStatus" |> NamespacedName
-
+    let EntityStatus = _prefix "EntityStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasEntityExpirationReason"></see>
     /// </summary>
-    let hasEntityExpirationReason =
-        Namespaced_IRI.parse _namespace_name "hasEntityExpirationReason" |> NamespacedName
-
+    let hasEntityExpirationReason = _prefix "hasEntityExpirationReason"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/EntityExpirationReason"></see>
     /// </summary>
-    let EntityExpirationReason =
-        Namespaced_IRI.parse _namespace_name "EntityExpirationReason" |> NamespacedName
-
+    let EntityExpirationReason = _prefix "EntityExpirationReason"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameLegalLocal"></see>
     /// </summary>
-    let hasNameLegalLocal =
-        Namespaced_IRI.parse _namespace_name "hasNameLegalLocal" |> NamespacedName
-
+    let hasNameLegalLocal = _prefix "hasNameLegalLocal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasLegalJurisdiction"></see>
     /// </summary>
-    let hasLegalJurisdiction =
-        Namespaced_IRI.parse _namespace_name "hasLegalJurisdiction" |> NamespacedName
-
+    let hasLegalJurisdiction = _prefix "hasLegalJurisdiction"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasTag"></see>
     /// </summary>
-    let hasTag = Namespaced_IRI.parse _namespace_name "hasTag" |> NamespacedName
-
+    let hasTag = _prefix "hasTag"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/RegistrationAuthority"></see>
     /// </summary>
-    let RegistrationAuthority =
-        Namespaced_IRI.parse _namespace_name "RegistrationAuthority" |> NamespacedName
-
+    let RegistrationAuthority = _prefix "RegistrationAuthority"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasLegalName"></see>
     /// </summary>
-    let hasLegalName =
-        Namespaced_IRI.parse _namespace_name "hasLegalName" |> NamespacedName
-
+    let hasLegalName = _prefix "hasLegalName"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/Identifier"></see>
     /// </summary>
-    let Identifier = Namespaced_IRI.parse _namespace_name "Identifier" |> NamespacedName
+    let Identifier = _prefix "Identifier"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/identifies"></see>
     /// </summary>
-    let identifies = Namespaced_IRI.parse _namespace_name "identifies" |> NamespacedName
-
+    let identifies = _prefix "identifies"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/LegalEntityRelationship"></see>
     /// </summary>
-    let LegalEntityRelationship =
-        Namespaced_IRI.parse _namespace_name "LegalEntityRelationship" |> NamespacedName
-
+    let LegalEntityRelationship = _prefix "LegalEntityRelationship"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasSource"></see>
     /// </summary>
-    let hasSource = Namespaced_IRI.parse _namespace_name "hasSource" |> NamespacedName
+    let hasSource = _prefix "hasSource"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasTarget"></see>
     /// </summary>
-    let hasTarget = Namespaced_IRI.parse _namespace_name "hasTarget" |> NamespacedName
-
+    let hasTarget = _prefix "hasTarget"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/LegalPerson"></see>
     /// </summary>
-    let LegalPerson =
-        Namespaced_IRI.parse _namespace_name "LegalPerson" |> NamespacedName
-
+    let LegalPerson = _prefix "LegalPerson"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/Period"></see>
     /// </summary>
-    let Period = Namespaced_IRI.parse _namespace_name "Period" |> NamespacedName
+    let Period = _prefix "Period"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasEnd"></see>
     /// </summary>
-    let hasEnd = Namespaced_IRI.parse _namespace_name "hasEnd" |> NamespacedName
+    let hasEnd = _prefix "hasEnd"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasStart"></see>
     /// </summary>
-    let hasStart = Namespaced_IRI.parse _namespace_name "hasStart" |> NamespacedName
-
+    let hasStart = _prefix "hasStart"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/PhysicalAddress"></see>
     /// </summary>
-    let PhysicalAddress =
-        Namespaced_IRI.parse _namespace_name "PhysicalAddress" |> NamespacedName
-
+    let PhysicalAddress = _prefix "PhysicalAddress"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressNumber"></see>
     /// </summary>
-    let hasAddressNumber =
-        Namespaced_IRI.parse _namespace_name "hasAddressNumber" |> NamespacedName
-
+    let hasAddressNumber = _prefix "hasAddressNumber"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasCity"></see>
     /// </summary>
-    let hasCity = Namespaced_IRI.parse _namespace_name "hasCity" |> NamespacedName
-
+    let hasCity = _prefix "hasCity"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressNumberWithinBuilding"></see>
     /// </summary>
-    let hasAddressNumberWithinBuilding =
-        Namespaced_IRI.parse _namespace_name "hasAddressNumberWithinBuilding" |> NamespacedName
-
+    let hasAddressNumberWithinBuilding = _prefix "hasAddressNumberWithinBuilding"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressLine1"></see>
     /// </summary>
-    let hasAddressLine1 =
-        Namespaced_IRI.parse _namespace_name "hasAddressLine1" |> NamespacedName
-
+    let hasAddressLine1 = _prefix "hasAddressLine1"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressLine3"></see>
     /// </summary>
-    let hasAddressLine3 =
-        Namespaced_IRI.parse _namespace_name "hasAddressLine3" |> NamespacedName
-
+    let hasAddressLine3 = _prefix "hasAddressLine3"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasCountry"></see>
     /// </summary>
-    let hasCountry = Namespaced_IRI.parse _namespace_name "hasCountry" |> NamespacedName
-
+    let hasCountry = _prefix "hasCountry"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasMailRouting"></see>
     /// </summary>
-    let hasMailRouting =
-        Namespaced_IRI.parse _namespace_name "hasMailRouting" |> NamespacedName
-
+    let hasMailRouting = _prefix "hasMailRouting"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasPostalCode"></see>
     /// </summary>
-    let hasPostalCode =
-        Namespaced_IRI.parse _namespace_name "hasPostalCode" |> NamespacedName
-
+    let hasPostalCode = _prefix "hasPostalCode"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasRegion"></see>
     /// </summary>
-    let hasRegion = Namespaced_IRI.parse _namespace_name "hasRegion" |> NamespacedName
-
+    let hasRegion = _prefix "hasRegion"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressLine2"></see>
     /// </summary>
-    let hasAddressLine2 =
-        Namespaced_IRI.parse _namespace_name "hasAddressLine2" |> NamespacedName
-
+    let hasAddressLine2 = _prefix "hasAddressLine2"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressLine4"></see>
     /// </summary>
-    let hasAddressLine4 =
-        Namespaced_IRI.parse _namespace_name "hasAddressLine4" |> NamespacedName
-
+    let hasAddressLine4 = _prefix "hasAddressLine4"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/PhysicalAddressASCII"></see>
     /// </summary>
-    let PhysicalAddressASCII =
-        Namespaced_IRI.parse _namespace_name "PhysicalAddressASCII" |> NamespacedName
-
+    let PhysicalAddressASCII = _prefix "PhysicalAddressASCII"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/RegistrationStatus"></see>
     /// </summary>
-    let RegistrationStatus =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatus" |> NamespacedName
-
+    let RegistrationStatus = _prefix "RegistrationStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/Registry"></see>
     /// </summary>
-    let Registry = Namespaced_IRI.parse _namespace_name "Registry" |> NamespacedName
-
+    let Registry = _prefix "Registry"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/isManagedBy"></see>
     /// </summary>
-    let isManagedBy =
-        Namespaced_IRI.parse _namespace_name "isManagedBy" |> NamespacedName
-
+    let isManagedBy = _prefix "isManagedBy"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/RegistryEntry"></see>
     /// </summary>
-    let RegistryEntry =
-        Namespaced_IRI.parse _namespace_name "RegistryEntry" |> NamespacedName
-
+    let RegistryEntry = _prefix "RegistryEntry"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/RegistryIdentifier"></see>
     /// </summary>
-    let RegistryIdentifier =
-        Namespaced_IRI.parse _namespace_name "RegistryIdentifier" |> NamespacedName
-
+    let RegistryIdentifier = _prefix "RegistryIdentifier"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/isRegisteredIn"></see>
     /// </summary>
-    let isRegisteredIn =
-        Namespaced_IRI.parse _namespace_name "isRegisteredIn" |> NamespacedName
-
+    let isRegisteredIn = _prefix "isRegisteredIn"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAbbreviation"></see>
     /// </summary>
-    let hasAbbreviation =
-        Namespaced_IRI.parse _namespace_name "hasAbbreviation" |> NamespacedName
-
+    let hasAbbreviation = _prefix "hasAbbreviation"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAbbreviationLocal"></see>
     /// </summary>
-    let hasAbbreviationLocal =
-        Namespaced_IRI.parse _namespace_name "hasAbbreviationLocal" |> NamespacedName
-
+    let hasAbbreviationLocal = _prefix "hasAbbreviationLocal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAbbreviationTransliterated"></see>
     /// </summary>
-    let hasAbbreviationTransliterated =
-        Namespaced_IRI.parse _namespace_name "hasAbbreviationTransliterated" |> NamespacedName
-
+    let hasAbbreviationTransliterated = _prefix "hasAbbreviationTransliterated"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAdditionalAddressLine"></see>
     /// </summary>
-    let hasAdditionalAddressLine =
-        Namespaced_IRI.parse _namespace_name "hasAdditionalAddressLine" |> NamespacedName
-
+    let hasAdditionalAddressLine = _prefix "hasAdditionalAddressLine"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddress"></see>
     /// </summary>
-    let hasAddress = Namespaced_IRI.parse _namespace_name "hasAddress" |> NamespacedName
-
+    let hasAddress = _prefix "hasAddress"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressHeadquarters"></see>
     /// </summary>
-    let hasAddressHeadquarters =
-        Namespaced_IRI.parse _namespace_name "hasAddressHeadquarters" |> NamespacedName
-
+    let hasAddressHeadquarters = _prefix "hasAddressHeadquarters"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressLegal"></see>
     /// </summary>
-    let hasAddressLegal =
-        Namespaced_IRI.parse _namespace_name "hasAddressLegal" |> NamespacedName
-
+    let hasAddressLegal = _prefix "hasAddressLegal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasAddressTransliterated"></see>
     /// </summary>
-    let hasAddressTransliterated =
-        Namespaced_IRI.parse _namespace_name "hasAddressTransliterated" |> NamespacedName
-
+    let hasAddressTransliterated = _prefix "hasAddressTransliterated"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasGeographicRegion"></see>
     /// </summary>
-    let hasGeographicRegion =
-        Namespaced_IRI.parse _namespace_name "hasGeographicRegion" |> NamespacedName
-
+    let hasGeographicRegion = _prefix "hasGeographicRegion"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasCoverageArea"></see>
     /// </summary>
-    let hasCoverageArea =
-        Namespaced_IRI.parse _namespace_name "hasCoverageArea" |> NamespacedName
-
+    let hasCoverageArea = _prefix "hasCoverageArea"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasFirstAddressLine"></see>
     /// </summary>
-    let hasFirstAddressLine =
-        Namespaced_IRI.parse _namespace_name "hasFirstAddressLine" |> NamespacedName
-
+    let hasFirstAddressLine = _prefix "hasFirstAddressLine"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasInitialRegistrationDate"></see>
     /// </summary>
-    let hasInitialRegistrationDate =
-        Namespaced_IRI.parse _namespace_name "hasInitialRegistrationDate" |> NamespacedName
-
+    let hasInitialRegistrationDate = _prefix "hasInitialRegistrationDate"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasLastUpdateDate"></see>
     /// </summary>
-    let hasLastUpdateDate =
-        Namespaced_IRI.parse _namespace_name "hasLastUpdateDate" |> NamespacedName
-
+    let hasLastUpdateDate = _prefix "hasLastUpdateDate"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameASCII"></see>
     /// </summary>
-    let hasNameASCII =
-        Namespaced_IRI.parse _namespace_name "hasNameASCII" |> NamespacedName
-
+    let hasNameASCII = _prefix "hasNameASCII"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameTransliterated"></see>
     /// </summary>
-    let hasNameTransliterated =
-        Namespaced_IRI.parse _namespace_name "hasNameTransliterated" |> NamespacedName
-
+    let hasNameTransliterated = _prefix "hasNameTransliterated"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameASCIIAutomatic"></see>
     /// </summary>
-    let hasNameASCIIAutomatic =
-        Namespaced_IRI.parse _namespace_name "hasNameASCIIAutomatic" |> NamespacedName
-
+    let hasNameASCIIAutomatic = _prefix "hasNameASCIIAutomatic"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameLegal"></see>
     /// </summary>
-    let hasNameLegal =
-        Namespaced_IRI.parse _namespace_name "hasNameLegal" |> NamespacedName
-
+    let hasNameLegal = _prefix "hasNameLegal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameASCIIPreferred"></see>
     /// </summary>
-    let hasNameASCIIPreferred =
-        Namespaced_IRI.parse _namespace_name "hasNameASCIIPreferred" |> NamespacedName
-
+    let hasNameASCIIPreferred = _prefix "hasNameASCIIPreferred"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameAdditional"></see>
     /// </summary>
-    let hasNameAdditional =
-        Namespaced_IRI.parse _namespace_name "hasNameAdditional" |> NamespacedName
-
+    let hasNameAdditional = _prefix "hasNameAdditional"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameAdditionalLocal"></see>
     /// </summary>
-    let hasNameAdditionalLocal =
-        Namespaced_IRI.parse _namespace_name "hasNameAdditionalLocal" |> NamespacedName
-
+    let hasNameAdditionalLocal = _prefix "hasNameAdditionalLocal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameLocal"></see>
     /// </summary>
-    let hasNameLocal =
-        Namespaced_IRI.parse _namespace_name "hasNameLocal" |> NamespacedName
-
+    let hasNameLocal = _prefix "hasNameLocal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNamePreviousLegal"></see>
     /// </summary>
-    let hasNamePreviousLegal =
-        Namespaced_IRI.parse _namespace_name "hasNamePreviousLegal" |> NamespacedName
-
+    let hasNamePreviousLegal = _prefix "hasNamePreviousLegal"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameTradingOrOperating"></see>
     /// </summary>
-    let hasNameTradingOrOperating =
-        Namespaced_IRI.parse _namespace_name "hasNameTradingOrOperating" |> NamespacedName
-
+    let hasNameTradingOrOperating = _prefix "hasNameTradingOrOperating"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNameTranslatedEnglish"></see>
     /// </summary>
-    let hasNameTranslatedEnglish =
-        Namespaced_IRI.parse _namespace_name "hasNameTranslatedEnglish" |> NamespacedName
-
+    let hasNameTranslatedEnglish = _prefix "hasNameTranslatedEnglish"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasNextRenewalDate"></see>
     /// </summary>
-    let hasNextRenewalDate =
-        Namespaced_IRI.parse _namespace_name "hasNextRenewalDate" |> NamespacedName
-
+    let hasNextRenewalDate = _prefix "hasNextRenewalDate"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasRegistrationStatus"></see>
     /// </summary>
-    let hasRegistrationStatus =
-        Namespaced_IRI.parse _namespace_name "hasRegistrationStatus" |> NamespacedName
-
+    let hasRegistrationStatus = _prefix "hasRegistrationStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasSuccessorName"></see>
     /// </summary>
-    let hasSuccessorName =
-        Namespaced_IRI.parse _namespace_name "hasSuccessorName" |> NamespacedName
-
+    let hasSuccessorName = _prefix "hasSuccessorName"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/hasWebsite"></see>
     /// </summary>
-    let hasWebsite = Namespaced_IRI.parse _namespace_name "hasWebsite" |> NamespacedName
-
+    let hasWebsite = _prefix "hasWebsite"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/isQualifiedBy"></see>
     /// </summary>
-    let isQualifiedBy =
-        Namespaced_IRI.parse _namespace_name "isQualifiedBy" |> NamespacedName
-
+    let isQualifiedBy = _prefix "isQualifiedBy"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/isQuantifiedBy"></see>
     /// </summary>
-    let isQuantifiedBy =
-        Namespaced_IRI.parse _namespace_name "isQuantifiedBy" |> NamespacedName
-
+    let isQuantifiedBy = _prefix "isQuantifiedBy"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/Base/records"></see>
     /// </summary>
-    let records = Namespaced_IRI.parse _namespace_name "records" |> NamespacedName
+    let records = _prefix "records"

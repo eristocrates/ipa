@@ -1,9 +1,12 @@
 namespace http.purl.org.ontology.is.core.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module is =
     let _namespace_name = "http://purl.org/ontology/is/core#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// Extended definition:
@@ -24,17 +27,13 @@ module is =
     ///
     /// [1] https://infoserviceonto.wordpress.com/2010/06/23/what-is-an-information-service/
     /// <see href="http://purl.org/ontology/is/core#InfoService"></see></summary>
-    let InfoService =
-        Namespaced_IRI.parse _namespace_name "InfoService" |> NamespacedName
-
+    let InfoService = _prefix "InfoService"
     /// <summary>
     /// This concept is for describing the different contributor types of information services, e.g. expert,
     /// community or mixed. Please feel free to define further information service contributor types.
     /// Please use therefore the namespace "http://purl.org/ontology/is/ctypes/".
     /// <see href="http://purl.org/ontology/is/core#InfoServiceContributorType"></see></summary>
-    let InfoServiceContributorType =
-        Namespaced_IRI.parse _namespace_name "InfoServiceContributorType" |> NamespacedName
-
+    let InfoServiceContributorType = _prefix "InfoServiceContributorType"
     /// <summary>
     /// This concept is for describing specific quality levels or ratings, e.g. good or bad or more detailed ones, of
     /// information services. Please feel free to use this concept as hook for more complex and detailed information service quality description
@@ -42,48 +41,35 @@ module is =
     /// service ratings could be done by different information service rating agencies, so that the customer of such ratings could select
     /// its information service ratings agency of choice.
     /// <see href="http://purl.org/ontology/is/core#InfoServiceQuality"></see></summary>
-    let InfoServiceQuality =
-        Namespaced_IRI.parse _namespace_name "InfoServiceQuality" |> NamespacedName
-
+    let InfoServiceQuality = _prefix "InfoServiceQuality"
     /// <summary>
     /// This concept is for describing the type of an information service, e.g. 'social network service',
     /// 'recommender service' or 'encyclopedia'. Please feel free to define further information service types for categorization.
     /// Please use therefore the namespace "http://purl.org/ontology/is/types/".
     /// <see href="http://purl.org/ontology/is/core#InfoServiceType"></see></summary>
-    let InfoServiceType =
-        Namespaced_IRI.parse _namespace_name "InfoServiceType" |> NamespacedName
-
+    let InfoServiceType = _prefix "InfoServiceType"
     /// <summary>
     /// Every subject related by this property is made available by an is:InfoService individual. This property could be used to associate a semantic graph based description or especially a website link, e.g. typed as foaf:Document, to the specific is:InfoService individual. This enables the consumer of this resource to retrieve more information (descriptions, ratings) about the underlying information service of this resource.
     /// <see href="http://purl.org/ontology/is/core#info_service"></see></summary>
-    let info_service =
-        Namespaced_IRI.parse _namespace_name "info_service" |> NamespacedName
-
+    let info_service = _prefix "info_service"
     /// <summary>
     /// With this property it is possible to associate a specific information service contributor type, e.g. expert,
     /// community or mixed, to an is:InfoService instance.
     /// <see href="http://purl.org/ontology/is/core#info_service_contributor_type"></see></summary>
-    let info_service_contributor_type =
-        Namespaced_IRI.parse _namespace_name "info_service_contributor_type" |> NamespacedName
-
+    let info_service_contributor_type = _prefix "info_service_contributor_type"
     /// <summary>
     /// With this property it is possible to associate a specific quality level, information service quality rating
     /// or an extended information service quality description to an is:InfoService instance
     /// <see href="http://purl.org/ontology/is/core#info_service_quality"></see></summary>
-    let info_service_quality =
-        Namespaced_IRI.parse _namespace_name "info_service_quality" |> NamespacedName
-
+    let info_service_quality = _prefix "info_service_quality"
     /// <summary>
     /// With this property it is possible to associate a specific information service type, e.g. 'social network service',
     /// 'recommender service' or 'encyclopedia', to an is:InfoService instance. This property could be used multiple times that means an
     /// is:InfoService instance could be for example of the information service type 'social network site' and 'recommender system'.
     /// <see href="http://purl.org/ontology/is/core#info_service_type"></see></summary>
-    let info_service_type =
-        Namespaced_IRI.parse _namespace_name "info_service_type" |> NamespacedName
-
+    let info_service_type = _prefix "info_service_type"
     /// <summary>
     /// This property is for defining the main subject of an is:InfoService instance that means this
     /// info service address mainly this concern.
     /// <see href="http://purl.org/ontology/is/core#main_subject"></see></summary>
-    let main_subject =
-        Namespaced_IRI.parse _namespace_name "main_subject" |> NamespacedName
+    let main_subject = _prefix "main_subject"

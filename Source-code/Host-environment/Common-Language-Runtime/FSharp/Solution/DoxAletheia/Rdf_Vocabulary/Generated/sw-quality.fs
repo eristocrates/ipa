@@ -1,426 +1,298 @@
 namespace https.w3id.org.squap.SoftwareQuality.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module sw_quality =
     let _namespace_name = "https://w3id.org/squap/SoftwareQuality/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Analysability"></see>
     /// </summary>
-    let Analysability =
-        Namespaced_IRI.parse _namespace_name "Analysability" |> NamespacedName
-
+    let Analysability = _prefix "Analysability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FunctionalCorrectness"></see>
     /// </summary>
-    let FunctionalCorrectness =
-        Namespaced_IRI.parse _namespace_name "FunctionalCorrectness" |> NamespacedName
-
+    let FunctionalCorrectness = _prefix "FunctionalCorrectness"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FunctionalCompleteness"></see>
     /// </summary>
-    let FunctionalCompleteness =
-        Namespaced_IRI.parse _namespace_name "FunctionalCompleteness" |> NamespacedName
-
+    let FunctionalCompleteness = _prefix "FunctionalCompleteness"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Modifiability"></see>
     /// </summary>
-    let Modifiability =
-        Namespaced_IRI.parse _namespace_name "Modifiability" |> NamespacedName
-
+    let Modifiability = _prefix "Modifiability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Replaceability"></see>
     /// </summary>
-    let Replaceability =
-        Namespaced_IRI.parse _namespace_name "Replaceability" |> NamespacedName
-
+    let Replaceability = _prefix "Replaceability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FunctionalAppropriateness"></see>
     /// </summary>
-    let FunctionalAppropriateness =
-        Namespaced_IRI.parse _namespace_name "FunctionalAppropriateness" |> NamespacedName
-
+    let FunctionalAppropriateness = _prefix "FunctionalAppropriateness"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Operability"></see>
     /// </summary>
-    let Operability =
-        Namespaced_IRI.parse _namespace_name "Operability" |> NamespacedName
-
+    let Operability = _prefix "Operability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Maturity"></see>
     /// </summary>
-    let Maturity = Namespaced_IRI.parse _namespace_name "Maturity" |> NamespacedName
-
+    let Maturity = _prefix "Maturity"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Reusability"></see>
     /// </summary>
-    let Reusability =
-        Namespaced_IRI.parse _namespace_name "Reusability" |> NamespacedName
-
+    let Reusability = _prefix "Reusability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Adaptability"></see>
     /// </summary>
-    let Adaptability =
-        Namespaced_IRI.parse _namespace_name "Adaptability" |> NamespacedName
-
+    let Adaptability = _prefix "Adaptability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Learnability"></see>
     /// </summary>
-    let Learnability =
-        Namespaced_IRI.parse _namespace_name "Learnability" |> NamespacedName
-
+    let Learnability = _prefix "Learnability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Testability"></see>
     /// </summary>
-    let Testability =
-        Namespaced_IRI.parse _namespace_name "Testability" |> NamespacedName
-
+    let Testability = _prefix "Testability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Accountability"></see>
     /// </summary>
-    let Accountability =
-        Namespaced_IRI.parse _namespace_name "Accountability" |> NamespacedName
-
+    let Accountability = _prefix "Accountability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Integrity"></see>
     /// </summary>
-    let Integrity = Namespaced_IRI.parse _namespace_name "Integrity" |> NamespacedName
-
+    let Integrity = _prefix "Integrity"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Installability"></see>
     /// </summary>
-    let Installability =
-        Namespaced_IRI.parse _namespace_name "Installability" |> NamespacedName
-
+    let Installability = _prefix "Installability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Modularity"></see>
     /// </summary>
-    let Modularity = Namespaced_IRI.parse _namespace_name "Modularity" |> NamespacedName
-
+    let Modularity = _prefix "Modularity"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Non-repudiation"></see>
     /// </summary>
-    let ``Non-repudiation`` =
-        Namespaced_IRI.parse _namespace_name "Non-repudiation" |> NamespacedName
-
+    let ``Non-repudiation`` = _prefix "Non-repudiation"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/TimeBehaviour"></see>
     /// </summary>
-    let TimeBehaviour =
-        Namespaced_IRI.parse _namespace_name "TimeBehaviour" |> NamespacedName
-
+    let TimeBehaviour = _prefix "TimeBehaviour"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Interoperability"></see>
     /// </summary>
-    let Interoperability =
-        Namespaced_IRI.parse _namespace_name "Interoperability" |> NamespacedName
-
+    let Interoperability = _prefix "Interoperability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Co-existence"></see>
     /// </summary>
-    let ``Co-existence`` =
-        Namespaced_IRI.parse _namespace_name "Co-existence" |> NamespacedName
-
+    let ``Co-existence`` = _prefix "Co-existence"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/ResourceUtilization"></see>
     /// </summary>
-    let ResourceUtilization =
-        Namespaced_IRI.parse _namespace_name "ResourceUtilization" |> NamespacedName
-
+    let ResourceUtilization = _prefix "ResourceUtilization"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FaultTolerance"></see>
     /// </summary>
-    let FaultTolerance =
-        Namespaced_IRI.parse _namespace_name "FaultTolerance" |> NamespacedName
-
+    let FaultTolerance = _prefix "FaultTolerance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/AccessibilityInUse"></see>
     /// </summary>
-    let AccessibilityInUse =
-        Namespaced_IRI.parse _namespace_name "AccessibilityInUse" |> NamespacedName
-
+    let AccessibilityInUse = _prefix "AccessibilityInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FlexibilityInUse"></see>
     /// </summary>
-    let FlexibilityInUse =
-        Namespaced_IRI.parse _namespace_name "FlexibilityInUse" |> NamespacedName
-
+    let FlexibilityInUse = _prefix "FlexibilityInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Security"></see>
     /// </summary>
-    let Security = Namespaced_IRI.parse _namespace_name "Security" |> NamespacedName
+    let Security = _prefix "Security"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Accuracy"></see>
     /// </summary>
-    let Accuracy = Namespaced_IRI.parse _namespace_name "Accuracy" |> NamespacedName
-
+    let Accuracy = _prefix "Accuracy"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FunctionalSuitability"></see>
     /// </summary>
-    let FunctionalSuitability =
-        Namespaced_IRI.parse _namespace_name "FunctionalSuitability" |> NamespacedName
-
+    let FunctionalSuitability = _prefix "FunctionalSuitability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Transferability"></see>
     /// </summary>
-    let Transferability =
-        Namespaced_IRI.parse _namespace_name "Transferability" |> NamespacedName
-
+    let Transferability = _prefix "Transferability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Compatibility"></see>
     /// </summary>
-    let Compatibility =
-        Namespaced_IRI.parse _namespace_name "Compatibility" |> NamespacedName
-
+    let Compatibility = _prefix "Compatibility"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Appropriateness"></see>
     /// </summary>
-    let Appropriateness =
-        Namespaced_IRI.parse _namespace_name "Appropriateness" |> NamespacedName
-
+    let Appropriateness = _prefix "Appropriateness"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/AppropriatenessRecognisability"></see>
     /// </summary>
-    let AppropriatenessRecognisability =
-        Namespaced_IRI.parse _namespace_name "AppropriatenessRecognisability" |> NamespacedName
-
+    let AppropriatenessRecognisability = _prefix "AppropriatenessRecognisability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Attractiveness"></see>
     /// </summary>
-    let Attractiveness =
-        Namespaced_IRI.parse _namespace_name "Attractiveness" |> NamespacedName
-
+    let Attractiveness = _prefix "Attractiveness"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Authenticity"></see>
     /// </summary>
-    let Authenticity =
-        Namespaced_IRI.parse _namespace_name "Authenticity" |> NamespacedName
-
+    let Authenticity = _prefix "Authenticity"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Availability"></see>
     /// </summary>
-    let Availability =
-        Namespaced_IRI.parse _namespace_name "Availability" |> NamespacedName
-
+    let Availability = _prefix "Availability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Reliability"></see>
     /// </summary>
-    let Reliability =
-        Namespaced_IRI.parse _namespace_name "Reliability" |> NamespacedName
-
+    let Reliability = _prefix "Reliability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Changeability"></see>
     /// </summary>
-    let Changeability =
-        Namespaced_IRI.parse _namespace_name "Changeability" |> NamespacedName
-
+    let Changeability = _prefix "Changeability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Comfort"></see>
     /// </summary>
-    let Comfort = Namespaced_IRI.parse _namespace_name "Comfort" |> NamespacedName
-
+    let Comfort = _prefix "Comfort"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/SatisfactionInUse"></see>
     /// </summary>
-    let SatisfactionInUse =
-        Namespaced_IRI.parse _namespace_name "SatisfactionInUse" |> NamespacedName
-
+    let SatisfactionInUse = _prefix "SatisfactionInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/CommercialDamageInUse"></see>
     /// </summary>
-    let CommercialDamageInUse =
-        Namespaced_IRI.parse _namespace_name "CommercialDamageInUse" |> NamespacedName
-
+    let CommercialDamageInUse = _prefix "CommercialDamageInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Safety"></see>
     /// </summary>
-    let Safety = Namespaced_IRI.parse _namespace_name "Safety" |> NamespacedName
-
+    let Safety = _prefix "Safety"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/SoftwareProductQuality"></see>
     /// </summary>
-    let SoftwareProductQuality =
-        Namespaced_IRI.parse _namespace_name "SoftwareProductQuality" |> NamespacedName
-
+    let SoftwareProductQuality = _prefix "SoftwareProductQuality"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/CompatibilityCompliance"></see>
     /// </summary>
-    let CompatibilityCompliance =
-        Namespaced_IRI.parse _namespace_name "CompatibilityCompliance" |> NamespacedName
-
+    let CompatibilityCompliance = _prefix "CompatibilityCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Confidentiality"></see>
     /// </summary>
-    let Confidentiality =
-        Namespaced_IRI.parse _namespace_name "Confidentiality" |> NamespacedName
-
+    let Confidentiality = _prefix "Confidentiality"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/ContextConformityInUse"></see>
     /// </summary>
-    let ContextConformityInUse =
-        Namespaced_IRI.parse _namespace_name "ContextConformityInUse" |> NamespacedName
-
+    let ContextConformityInUse = _prefix "ContextConformityInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/ContextExtendibilityInUse"></see>
     /// </summary>
-    let ContextExtendibilityInUse =
-        Namespaced_IRI.parse _namespace_name "ContextExtendibilityInUse" |> NamespacedName
-
+    let ContextExtendibilityInUse = _prefix "ContextExtendibilityInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/EaseOfUse"></see>
     /// </summary>
-    let EaseOfUse = Namespaced_IRI.parse _namespace_name "EaseOfUse" |> NamespacedName
-
+    let EaseOfUse = _prefix "EaseOfUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/EffectivenessInUse"></see>
     /// </summary>
-    let EffectivenessInUse =
-        Namespaced_IRI.parse _namespace_name "EffectivenessInUse" |> NamespacedName
-
+    let EffectivenessInUse = _prefix "EffectivenessInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/UsabilityInUse"></see>
     /// </summary>
-    let UsabilityInUse =
-        Namespaced_IRI.parse _namespace_name "UsabilityInUse" |> NamespacedName
-
+    let UsabilityInUse = _prefix "UsabilityInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/EfficiencyInUse"></see>
     /// </summary>
-    let EfficiencyInUse =
-        Namespaced_IRI.parse _namespace_name "EfficiencyInUse" |> NamespacedName
-
+    let EfficiencyInUse = _prefix "EfficiencyInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/EnvironmentalHarmInUse"></see>
     /// </summary>
-    let EnvironmentalHarmInUse =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalHarmInUse" |> NamespacedName
-
+    let EnvironmentalHarmInUse = _prefix "EnvironmentalHarmInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/QualityInUse"></see>
     /// </summary>
-    let QualityInUse =
-        Namespaced_IRI.parse _namespace_name "QualityInUse" |> NamespacedName
-
+    let QualityInUse = _prefix "QualityInUse"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/FlexibilityInUseCompliance"></see>
     /// </summary>
-    let FlexibilityInUseCompliance =
-        Namespaced_IRI.parse _namespace_name "FlexibilityInUseCompliance" |> NamespacedName
-
+    let FlexibilityInUseCompliance = _prefix "FlexibilityInUseCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Helpfulness"></see>
     /// </summary>
-    let Helpfulness =
-        Namespaced_IRI.parse _namespace_name "Helpfulness" |> NamespacedName
-
+    let Helpfulness = _prefix "Helpfulness"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Likability"></see>
     /// </summary>
-    let Likability = Namespaced_IRI.parse _namespace_name "Likability" |> NamespacedName
-
+    let Likability = _prefix "Likability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Maintainability"></see>
     /// </summary>
-    let Maintainability =
-        Namespaced_IRI.parse _namespace_name "Maintainability" |> NamespacedName
-
+    let Maintainability = _prefix "Maintainability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/MaintainabilityCompliance"></see>
     /// </summary>
-    let MaintainabilityCompliance =
-        Namespaced_IRI.parse _namespace_name "MaintainabilityCompliance" |> NamespacedName
-
+    let MaintainabilityCompliance = _prefix "MaintainabilityCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/ModificationStability"></see>
     /// </summary>
-    let ModificationStability =
-        Namespaced_IRI.parse _namespace_name "ModificationStability" |> NamespacedName
-
+    let ModificationStability = _prefix "ModificationStability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/OperabilityCompliance"></see>
     /// </summary>
-    let OperabilityCompliance =
-        Namespaced_IRI.parse _namespace_name "OperabilityCompliance" |> NamespacedName
-
+    let OperabilityCompliance = _prefix "OperabilityCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/OperatorHealthAndSafety"></see>
     /// </summary>
-    let OperatorHealthAndSafety =
-        Namespaced_IRI.parse _namespace_name "OperatorHealthAndSafety" |> NamespacedName
-
+    let OperatorHealthAndSafety = _prefix "OperatorHealthAndSafety"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/PerformanceEfficiency"></see>
     /// </summary>
-    let PerformanceEfficiency =
-        Namespaced_IRI.parse _namespace_name "PerformanceEfficiency" |> NamespacedName
-
+    let PerformanceEfficiency = _prefix "PerformanceEfficiency"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/PerformanceEfficiencyCompliance"></see>
     /// </summary>
-    let PerformanceEfficiencyCompliance =
-        Namespaced_IRI.parse _namespace_name "PerformanceEfficiencyCompliance" |> NamespacedName
-
+    let PerformanceEfficiencyCompliance = _prefix "PerformanceEfficiencyCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Pleasure"></see>
     /// </summary>
-    let Pleasure = Namespaced_IRI.parse _namespace_name "Pleasure" |> NamespacedName
-
+    let Pleasure = _prefix "Pleasure"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Portability"></see>
     /// </summary>
-    let Portability =
-        Namespaced_IRI.parse _namespace_name "Portability" |> NamespacedName
-
+    let Portability = _prefix "Portability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/PublicHealthAndSafety"></see>
     /// </summary>
-    let PublicHealthAndSafety =
-        Namespaced_IRI.parse _namespace_name "PublicHealthAndSafety" |> NamespacedName
-
+    let PublicHealthAndSafety = _prefix "PublicHealthAndSafety"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Recoverability"></see>
     /// </summary>
-    let Recoverability =
-        Namespaced_IRI.parse _namespace_name "Recoverability" |> NamespacedName
-
+    let Recoverability = _prefix "Recoverability"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/ReliabilityCompliance"></see>
     /// </summary>
-    let ReliabilityCompliance =
-        Namespaced_IRI.parse _namespace_name "ReliabilityCompliance" |> NamespacedName
-
+    let ReliabilityCompliance = _prefix "ReliabilityCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/SafetyCompliance"></see>
     /// </summary>
-    let SafetyCompliance =
-        Namespaced_IRI.parse _namespace_name "SafetyCompliance" |> NamespacedName
-
+    let SafetyCompliance = _prefix "SafetyCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/SecurityCompliance"></see>
     /// </summary>
-    let SecurityCompliance =
-        Namespaced_IRI.parse _namespace_name "SecurityCompliance" |> NamespacedName
-
+    let SecurityCompliance = _prefix "SecurityCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/TechnicalAccessibility"></see>
     /// </summary>
-    let TechnicalAccessibility =
-        Namespaced_IRI.parse _namespace_name "TechnicalAccessibility" |> NamespacedName
-
+    let TechnicalAccessibility = _prefix "TechnicalAccessibility"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/TransferabilityCompliance"></see>
     /// </summary>
-    let TransferabilityCompliance =
-        Namespaced_IRI.parse _namespace_name "TransferabilityCompliance" |> NamespacedName
-
+    let TransferabilityCompliance = _prefix "TransferabilityCompliance"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/Trust"></see>
     /// </summary>
-    let Trust = Namespaced_IRI.parse _namespace_name "Trust" |> NamespacedName
-
+    let Trust = _prefix "Trust"
     /// <summary>
     ///   <see href="https://w3id.org/squap/SoftwareQuality/UsabilityInUseCompliance"></see>
     /// </summary>
-    let UsabilityInUseCompliance =
-        Namespaced_IRI.parse _namespace_name "UsabilityInUseCompliance" |> NamespacedName
+    let UsabilityInUseCompliance = _prefix "UsabilityInUseCompliance"

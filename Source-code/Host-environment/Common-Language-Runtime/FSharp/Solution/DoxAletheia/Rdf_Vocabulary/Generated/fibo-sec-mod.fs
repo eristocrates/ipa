@@ -1,10 +1,14 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.MetadataSEC.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_mod =
     let _namespace_name = "https://spec.edmcouncil.org/fibo/ontology/SEC/MetadataSEC/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/MetadataSEC/SECDomain"></see>
     /// </summary>
-    let SECDomain = Namespaced_IRI.parse _namespace_name "SECDomain" |> NamespacedName
+    let SECDomain = _prefix "SECDomain"

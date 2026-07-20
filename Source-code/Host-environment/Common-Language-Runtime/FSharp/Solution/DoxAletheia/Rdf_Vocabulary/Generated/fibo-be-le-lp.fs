@@ -1,85 +1,63 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.LegalEntities.LegalPersons.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_le_lp =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/BusinessEntity"></see>
     /// </summary>
-    let BusinessEntity =
-        Namespaced_IRI.parse _namespace_name "BusinessEntity" |> NamespacedName
-
+    let BusinessEntity = _prefix "BusinessEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/BusinessLicense"></see>
     /// </summary>
-    let BusinessLicense =
-        Namespaced_IRI.parse _namespace_name "BusinessLicense" |> NamespacedName
-
+    let BusinessLicense = _prefix "BusinessLicense"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/CharteredLegalPerson"></see>
     /// </summary>
-    let CharteredLegalPerson =
-        Namespaced_IRI.parse _namespace_name "CharteredLegalPerson" |> NamespacedName
-
+    let CharteredLegalPerson = _prefix "CharteredLegalPerson"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/LegallyCompetentNaturalPerson"></see>
     /// </summary>
-    let LegallyCompetentNaturalPerson =
-        Namespaced_IRI.parse _namespace_name "LegallyCompetentNaturalPerson" |> NamespacedName
-
+    let LegallyCompetentNaturalPerson = _prefix "LegallyCompetentNaturalPerson"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/NotForProfitObjective"></see>
     /// </summary>
-    let NotForProfitObjective =
-        Namespaced_IRI.parse _namespace_name "NotForProfitObjective" |> NamespacedName
-
+    let NotForProfitObjective = _prefix "NotForProfitObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/ProfitObjective"></see>
     /// </summary>
-    let ProfitObjective =
-        Namespaced_IRI.parse _namespace_name "ProfitObjective" |> NamespacedName
-
+    let ProfitObjective = _prefix "ProfitObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/PowerOfAttorney"></see>
     /// </summary>
-    let PowerOfAttorney =
-        Namespaced_IRI.parse _namespace_name "PowerOfAttorney" |> NamespacedName
-
+    let PowerOfAttorney = _prefix "PowerOfAttorney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/PublicPurpose"></see>
     /// </summary>
-    let PublicPurpose =
-        Namespaced_IRI.parse _namespace_name "PublicPurpose" |> NamespacedName
-
+    let PublicPurpose = _prefix "PublicPurpose"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/ReligiousObjective"></see>
     /// </summary>
-    let ReligiousObjective =
-        Namespaced_IRI.parse _namespace_name "ReligiousObjective" |> NamespacedName
-
+    let ReligiousObjective = _prefix "ReligiousObjective"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/SpecialPurposeVehicle"></see>
     /// </summary>
-    let SpecialPurposeVehicle =
-        Namespaced_IRI.parse _namespace_name "SpecialPurposeVehicle" |> NamespacedName
-
+    let SpecialPurposeVehicle = _prefix "SpecialPurposeVehicle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/hasIntendedLiquidationDate"></see>
     /// </summary>
-    let hasIntendedLiquidationDate =
-        Namespaced_IRI.parse _namespace_name "hasIntendedLiquidationDate" |> NamespacedName
-
+    let hasIntendedLiquidationDate = _prefix "hasIntendedLiquidationDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/StatutoryBody"></see>
     /// </summary>
-    let StatutoryBody =
-        Namespaced_IRI.parse _namespace_name "StatutoryBody" |> NamespacedName
-
+    let StatutoryBody = _prefix "StatutoryBody"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/VariableInterestEntity"></see>
     /// </summary>
-    let VariableInterestEntity =
-        Namespaced_IRI.parse _namespace_name "VariableInterestEntity" |> NamespacedName
+    let VariableInterestEntity = _prefix "VariableInterestEntity"

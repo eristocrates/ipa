@@ -1,414 +1,313 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.IND.EconomicIndicators.EconomicIndicators.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_ind_ei_ei =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/AverageDailyEarnings"></see>
     /// </summary>
-    let AverageDailyEarnings =
-        Namespaced_IRI.parse _namespace_name "AverageDailyEarnings" |> NamespacedName
-
+    let AverageDailyEarnings = _prefix "AverageDailyEarnings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/AverageEarnings"></see>
     /// </summary>
-    let AverageEarnings =
-        Namespaced_IRI.parse _namespace_name "AverageEarnings" |> NamespacedName
-
+    let AverageEarnings = _prefix "AverageEarnings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Daily"></see>
     /// </summary>
-    let Daily = Namespaced_IRI.parse _namespace_name "Daily" |> NamespacedName
-
+    let Daily = _prefix "Daily"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EconomicIndicator"></see>
     /// </summary>
-    let EconomicIndicator =
-        Namespaced_IRI.parse _namespace_name "EconomicIndicator" |> NamespacedName
-
+    let EconomicIndicator = _prefix "EconomicIndicator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/AverageHourlyEarnings"></see>
     /// </summary>
-    let AverageHourlyEarnings =
-        Namespaced_IRI.parse _namespace_name "AverageHourlyEarnings" |> NamespacedName
-
+    let AverageHourlyEarnings = _prefix "AverageHourlyEarnings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Hourly"></see>
     /// </summary>
-    let Hourly = Namespaced_IRI.parse _namespace_name "Hourly" |> NamespacedName
-
+    let Hourly = _prefix "Hourly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/AverageMonthlyEarnings"></see>
     /// </summary>
-    let AverageMonthlyEarnings =
-        Namespaced_IRI.parse _namespace_name "AverageMonthlyEarnings" |> NamespacedName
-
+    let AverageMonthlyEarnings = _prefix "AverageMonthlyEarnings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Monthly"></see>
     /// </summary>
-    let Monthly = Namespaced_IRI.parse _namespace_name "Monthly" |> NamespacedName
-
+    let Monthly = _prefix "Monthly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/AverageWeeklyEarnings"></see>
     /// </summary>
-    let AverageWeeklyEarnings =
-        Namespaced_IRI.parse _namespace_name "AverageWeeklyEarnings" |> NamespacedName
-
+    let AverageWeeklyEarnings = _prefix "AverageWeeklyEarnings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Weekly"></see>
     /// </summary>
-    let Weekly = Namespaced_IRI.parse _namespace_name "Weekly" |> NamespacedName
+    let Weekly = _prefix "Weekly"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CapitalLaborEnergyMaterialsMultifactorProductivity"></see>
     /// </summary>
     let CapitalLaborEnergyMaterialsMultifactorProductivity =
-        Namespaced_IRI.parse _namespace_name "CapitalLaborEnergyMaterialsMultifactorProductivity" |> NamespacedName
+        _prefix "CapitalLaborEnergyMaterialsMultifactorProductivity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Productivity"></see>
     /// </summary>
-    let Productivity =
-        Namespaced_IRI.parse _namespace_name "Productivity" |> NamespacedName
+    let Productivity = _prefix "Productivity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CapitalLaborMultifactorProductivityValueAdded"></see>
     /// </summary>
     let CapitalLaborMultifactorProductivityValueAdded =
-        Namespaced_IRI.parse _namespace_name "CapitalLaborMultifactorProductivityValueAdded" |> NamespacedName
+        _prefix "CapitalLaborMultifactorProductivityValueAdded"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CapitalProductivityValueAdded"></see>
     /// </summary>
-    let CapitalProductivityValueAdded =
-        Namespaced_IRI.parse _namespace_name "CapitalProductivityValueAdded" |> NamespacedName
-
+    let CapitalProductivityValueAdded = _prefix "CapitalProductivityValueAdded"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Civilian"></see>
     /// </summary>
-    let Civilian = Namespaced_IRI.parse _namespace_name "Civilian" |> NamespacedName
-
+    let Civilian = _prefix "Civilian"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CivilianLaborForce"></see>
     /// </summary>
-    let CivilianLaborForce =
-        Namespaced_IRI.parse _namespace_name "CivilianLaborForce" |> NamespacedName
+    let CivilianLaborForce = _prefix "CivilianLaborForce"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CivilianNonInstitutionalPopulation"></see>
     /// </summary>
     let CivilianNonInstitutionalPopulation =
-        Namespaced_IRI.parse _namespace_name "CivilianNonInstitutionalPopulation" |> NamespacedName
+        _prefix "CivilianNonInstitutionalPopulation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/PopulationNotInLaborForce"></see>
     /// </summary>
-    let PopulationNotInLaborForce =
-        Namespaced_IRI.parse _namespace_name "PopulationNotInLaborForce" |> NamespacedName
+    let PopulationNotInLaborForce = _prefix "PopulationNotInLaborForce"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CivilianLaborForceParticipationRate"></see>
     /// </summary>
     let CivilianLaborForceParticipationRate =
-        Namespaced_IRI.parse _namespace_name "CivilianLaborForceParticipationRate" |> NamespacedName
+        _prefix "CivilianLaborForceParticipationRate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/hasBaselinePopulation"></see>
     /// </summary>
-    let hasBaselinePopulation =
-        Namespaced_IRI.parse _namespace_name "hasBaselinePopulation" |> NamespacedName
-
+    let hasBaselinePopulation = _prefix "hasBaselinePopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/hasComparisonPopulation"></see>
     /// </summary>
-    let hasComparisonPopulation =
-        Namespaced_IRI.parse _namespace_name "hasComparisonPopulation" |> NamespacedName
-
+    let hasComparisonPopulation = _prefix "hasComparisonPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CivilianNonInstitutionalPerson"></see>
     /// </summary>
-    let CivilianNonInstitutionalPerson =
-        Namespaced_IRI.parse _namespace_name "CivilianNonInstitutionalPerson" |> NamespacedName
-
+    let CivilianNonInstitutionalPerson = _prefix "CivilianNonInstitutionalPerson"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/InstitutionalPerson"></see>
     /// </summary>
-    let InstitutionalPerson =
-        Namespaced_IRI.parse _namespace_name "InstitutionalPerson" |> NamespacedName
-
+    let InstitutionalPerson = _prefix "InstitutionalPerson"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/CombinedStatisticalArea"></see>
     /// </summary>
-    let CombinedStatisticalArea =
-        Namespaced_IRI.parse _namespace_name "CombinedStatisticalArea" |> NamespacedName
+    let CombinedStatisticalArea = _prefix "CombinedStatisticalArea"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/GovernmentSpecifiedStatisticalArea"></see>
     /// </summary>
     let GovernmentSpecifiedStatisticalArea =
-        Namespaced_IRI.parse _namespace_name "GovernmentSpecifiedStatisticalArea" |> NamespacedName
+        _prefix "GovernmentSpecifiedStatisticalArea"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/ConsumerPriceIndex"></see>
     /// </summary>
-    let ConsumerPriceIndex =
-        Namespaced_IRI.parse _namespace_name "ConsumerPriceIndex" |> NamespacedName
-
+    let ConsumerPriceIndex = _prefix "ConsumerPriceIndex"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/FixedBasket"></see>
     /// </summary>
-    let FixedBasket =
-        Namespaced_IRI.parse _namespace_name "FixedBasket" |> NamespacedName
-
+    let FixedBasket = _prefix "FixedBasket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EmploymentPopulationRatio"></see>
     /// </summary>
-    let EmploymentPopulationRatio =
-        Namespaced_IRI.parse _namespace_name "EmploymentPopulationRatio" |> NamespacedName
-
+    let EmploymentPopulationRatio = _prefix "EmploymentPopulationRatio"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/GrossDomesticProduct"></see>
     /// </summary>
-    let GrossDomesticProduct =
-        Namespaced_IRI.parse _namespace_name "GrossDomesticProduct" |> NamespacedName
-
+    let GrossDomesticProduct = _prefix "GrossDomesticProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/InflationRate"></see>
     /// </summary>
-    let InflationRate =
-        Namespaced_IRI.parse _namespace_name "InflationRate" |> NamespacedName
-
+    let InflationRate = _prefix "InflationRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/UnemploymentRate"></see>
     /// </summary>
-    let UnemploymentRate =
-        Namespaced_IRI.parse _namespace_name "UnemploymentRate" |> NamespacedName
-
+    let UnemploymentRate = _prefix "UnemploymentRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/DiscouragedWorkerPopulation"></see>
     /// </summary>
-    let DiscouragedWorkerPopulation =
-        Namespaced_IRI.parse _namespace_name "DiscouragedWorkerPopulation" |> NamespacedName
-
+    let DiscouragedWorkerPopulation = _prefix "DiscouragedWorkerPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/MarginallyAttachedPopulation"></see>
     /// </summary>
-    let MarginallyAttachedPopulation =
-        Namespaced_IRI.parse _namespace_name "MarginallyAttachedPopulation" |> NamespacedName
-
+    let MarginallyAttachedPopulation = _prefix "MarginallyAttachedPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/isSeasonallyAdjusted"></see>
     /// </summary>
-    let isSeasonallyAdjusted =
-        Namespaced_IRI.parse _namespace_name "isSeasonallyAdjusted" |> NamespacedName
-
+    let isSeasonallyAdjusted = _prefix "isSeasonallyAdjusted"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/hasSeriesOrigin"></see>
     /// </summary>
-    let hasSeriesOrigin =
-        Namespaced_IRI.parse _namespace_name "hasSeriesOrigin" |> NamespacedName
-
+    let hasSeriesOrigin = _prefix "hasSeriesOrigin"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EmployedPopulation"></see>
     /// </summary>
-    let EmployedPopulation =
-        Namespaced_IRI.parse _namespace_name "EmployedPopulation" |> NamespacedName
-
+    let EmployedPopulation = _prefix "EmployedPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EmployedPopulationPartTime"></see>
     /// </summary>
-    let EmployedPopulationPartTime =
-        Namespaced_IRI.parse _namespace_name "EmployedPopulationPartTime" |> NamespacedName
+    let EmployedPopulationPartTime = _prefix "EmployedPopulationPartTime"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EmployedPopulationPartTimeForEconomicReasons"></see>
     /// </summary>
     let EmployedPopulationPartTimeForEconomicReasons =
-        Namespaced_IRI.parse _namespace_name "EmployedPopulationPartTimeForEconomicReasons" |> NamespacedName
+        _prefix "EmployedPopulationPartTimeForEconomicReasons"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/UnderemployedPopulation"></see>
     /// </summary>
-    let UnderemployedPopulation =
-        Namespaced_IRI.parse _namespace_name "UnderemployedPopulation" |> NamespacedName
+    let UnderemployedPopulation = _prefix "UnderemployedPopulation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EmployedPopulationPartTimeForNonEconomicReasons"></see>
     /// </summary>
     let EmployedPopulationPartTimeForNonEconomicReasons =
-        Namespaced_IRI.parse _namespace_name "EmployedPopulationPartTimeForNonEconomicReasons" |> NamespacedName
+        _prefix "EmployedPopulationPartTimeForNonEconomicReasons"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EmployedPopulationTemporarilyNotAtWork"></see>
     /// </summary>
     let EmployedPopulationTemporarilyNotAtWork =
-        Namespaced_IRI.parse _namespace_name "EmployedPopulationTemporarilyNotAtWork" |> NamespacedName
+        _prefix "EmployedPopulationTemporarilyNotAtWork"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Enterprise"></see>
     /// </summary>
-    let Enterprise = Namespaced_IRI.parse _namespace_name "Enterprise" |> NamespacedName
-
+    let Enterprise = _prefix "Enterprise"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/InstitutionalUnit"></see>
     /// </summary>
-    let InstitutionalUnit =
-        Namespaced_IRI.parse _namespace_name "InstitutionalUnit" |> NamespacedName
-
+    let InstitutionalUnit = _prefix "InstitutionalUnit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Establishment"></see>
     /// </summary>
-    let Establishment =
-        Namespaced_IRI.parse _namespace_name "Establishment" |> NamespacedName
-
+    let Establishment = _prefix "Establishment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EnterprisePopulation"></see>
     /// </summary>
-    let EnterprisePopulation =
-        Namespaced_IRI.parse _namespace_name "EnterprisePopulation" |> NamespacedName
-
+    let EnterprisePopulation = _prefix "EnterprisePopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EstablishmentEmployment"></see>
     /// </summary>
-    let EstablishmentEmployment =
-        Namespaced_IRI.parse _namespace_name "EstablishmentEmployment" |> NamespacedName
-
+    let EstablishmentEmployment = _prefix "EstablishmentEmployment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/EstablishmentPopulation"></see>
     /// </summary>
-    let EstablishmentPopulation =
-        Namespaced_IRI.parse _namespace_name "EstablishmentPopulation" |> NamespacedName
-
+    let EstablishmentPopulation = _prefix "EstablishmentPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/FixedBasketConstituent"></see>
     /// </summary>
-    let FixedBasketConstituent =
-        Namespaced_IRI.parse _namespace_name "FixedBasketConstituent" |> NamespacedName
-
+    let FixedBasketConstituent = _prefix "FixedBasketConstituent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/FixedBasketPopulation"></see>
     /// </summary>
-    let FixedBasketPopulation =
-        Namespaced_IRI.parse _namespace_name "FixedBasketPopulation" |> NamespacedName
-
+    let FixedBasketPopulation = _prefix "FixedBasketPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/Household"></see>
     /// </summary>
-    let Household = Namespaced_IRI.parse _namespace_name "Household" |> NamespacedName
-
+    let Household = _prefix "Household"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/HousingUnit"></see>
     /// </summary>
-    let HousingUnit =
-        Namespaced_IRI.parse _namespace_name "HousingUnit" |> NamespacedName
-
+    let HousingUnit = _prefix "HousingUnit"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/InputProducerPriceIndex"></see>
     /// </summary>
-    let InputProducerPriceIndex =
-        Namespaced_IRI.parse _namespace_name "InputProducerPriceIndex" |> NamespacedName
-
+    let InputProducerPriceIndex = _prefix "InputProducerPriceIndex"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/ProducerPriceIndex"></see>
     /// </summary>
-    let ProducerPriceIndex =
-        Namespaced_IRI.parse _namespace_name "ProducerPriceIndex" |> NamespacedName
-
+    let ProducerPriceIndex = _prefix "ProducerPriceIndex"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/LaborProductivityGrossOutput"></see>
     /// </summary>
-    let LaborProductivityGrossOutput =
-        Namespaced_IRI.parse _namespace_name "LaborProductivityGrossOutput" |> NamespacedName
-
+    let LaborProductivityGrossOutput = _prefix "LaborProductivityGrossOutput"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/LaborProductivityValueAdded"></see>
     /// </summary>
-    let LaborProductivityValueAdded =
-        Namespaced_IRI.parse _namespace_name "LaborProductivityValueAdded" |> NamespacedName
-
+    let LaborProductivityValueAdded = _prefix "LaborProductivityValueAdded"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/MetropolitanStatisticalArea"></see>
     /// </summary>
-    let MetropolitanStatisticalArea =
-        Namespaced_IRI.parse _namespace_name "MetropolitanStatisticalArea" |> NamespacedName
-
+    let MetropolitanStatisticalArea = _prefix "MetropolitanStatisticalArea"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/MicropolitanStatisticalArea"></see>
     /// </summary>
-    let MicropolitanStatisticalArea =
-        Namespaced_IRI.parse _namespace_name "MicropolitanStatisticalArea" |> NamespacedName
-
+    let MicropolitanStatisticalArea = _prefix "MicropolitanStatisticalArea"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/MilitaryPerson"></see>
     /// </summary>
-    let MilitaryPerson =
-        Namespaced_IRI.parse _namespace_name "MilitaryPerson" |> NamespacedName
-
+    let MilitaryPerson = _prefix "MilitaryPerson"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/OutputProducerPriceIndex"></see>
     /// </summary>
-    let OutputProducerPriceIndex =
-        Namespaced_IRI.parse _namespace_name "OutputProducerPriceIndex" |> NamespacedName
-
+    let OutputProducerPriceIndex = _prefix "OutputProducerPriceIndex"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/PersonalConsumptionExpenditures"></see>
     /// </summary>
-    let PersonalConsumptionExpenditures =
-        Namespaced_IRI.parse _namespace_name "PersonalConsumptionExpenditures" |> NamespacedName
-
+    let PersonalConsumptionExpenditures = _prefix "PersonalConsumptionExpenditures"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/StatisticalInformationPublisher"></see>
     /// </summary>
-    let StatisticalInformationPublisher =
-        Namespaced_IRI.parse _namespace_name "StatisticalInformationPublisher" |> NamespacedName
-
+    let StatisticalInformationPublisher = _prefix "StatisticalInformationPublisher"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/UltimateConsumer"></see>
     /// </summary>
-    let UltimateConsumer =
-        Namespaced_IRI.parse _namespace_name "UltimateConsumer" |> NamespacedName
+    let UltimateConsumer = _prefix "UltimateConsumer"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/UnderemployedPopulationWithRespectToOccupation"></see>
     /// </summary>
     let UnderemployedPopulationWithRespectToOccupation =
-        Namespaced_IRI.parse _namespace_name "UnderemployedPopulationWithRespectToOccupation" |> NamespacedName
+        _prefix "UnderemployedPopulationWithRespectToOccupation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/UnderutilizedPopulation"></see>
     /// </summary>
-    let UnderutilizedPopulation =
-        Namespaced_IRI.parse _namespace_name "UnderutilizedPopulation" |> NamespacedName
-
+    let UnderutilizedPopulation = _prefix "UnderutilizedPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/UnemployedPopulation"></see>
     /// </summary>
-    let UnemployedPopulation =
-        Namespaced_IRI.parse _namespace_name "UnemployedPopulation" |> NamespacedName
-
+    let UnemployedPopulation = _prefix "UnemployedPopulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/hasDurationOfUnemployment"></see>
     /// </summary>
-    let hasDurationOfUnemployment =
-        Namespaced_IRI.parse _namespace_name "hasDurationOfUnemployment" |> NamespacedName
-
+    let hasDurationOfUnemployment = _prefix "hasDurationOfUnemployment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/ValueAddedProducerPriceIndex"></see>
     /// </summary>
-    let ValueAddedProducerPriceIndex =
-        Namespaced_IRI.parse _namespace_name "ValueAddedProducerPriceIndex" |> NamespacedName
-
+    let ValueAddedProducerPriceIndex = _prefix "ValueAddedProducerPriceIndex"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/excludesEnergyAndFood"></see>
     /// </summary>
-    let excludesEnergyAndFood =
-        Namespaced_IRI.parse _namespace_name "excludesEnergyAndFood" |> NamespacedName
-
+    let excludesEnergyAndFood = _prefix "excludesEnergyAndFood"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/hasIndicatorValue"></see>
     /// </summary>
-    let hasIndicatorValue =
-        Namespaced_IRI.parse _namespace_name "hasIndicatorValue" |> NamespacedName
+    let hasIndicatorValue = _prefix "hasIndicatorValue"

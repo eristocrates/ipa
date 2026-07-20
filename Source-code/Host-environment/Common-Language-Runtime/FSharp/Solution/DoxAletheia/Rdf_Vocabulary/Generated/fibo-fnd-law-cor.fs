@@ -1,36 +1,34 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Law.LegalCore.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_law_cor =
     let _namespace_name = "https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/Constitution"></see>
     /// </summary>
-    let Constitution =
-        Namespaced_IRI.parse _namespace_name "Constitution" |> NamespacedName
-
+    let Constitution = _prefix "Constitution"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/Law"></see>
     /// </summary>
-    let Law = Namespaced_IRI.parse _namespace_name "Law" |> NamespacedName
+    let Law = _prefix "Law"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/CourtOfLaw"></see>
     /// </summary>
-    let CourtOfLaw = Namespaced_IRI.parse _namespace_name "CourtOfLaw" |> NamespacedName
+    let CourtOfLaw = _prefix "CourtOfLaw"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/StatuteLaw"></see>
     /// </summary>
-    let StatuteLaw = Namespaced_IRI.parse _namespace_name "StatuteLaw" |> NamespacedName
-
+    let StatuteLaw = _prefix "StatuteLaw"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/isInForceIn"></see>
     /// </summary>
-    let isInForceIn =
-        Namespaced_IRI.parse _namespace_name "isInForceIn" |> NamespacedName
-
+    let isInForceIn = _prefix "isInForceIn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/hasInForce"></see>
     /// </summary>
-    let hasInForce = Namespaced_IRI.parse _namespace_name "hasInForce" |> NamespacedName
+    let hasInForce = _prefix "hasInForce"

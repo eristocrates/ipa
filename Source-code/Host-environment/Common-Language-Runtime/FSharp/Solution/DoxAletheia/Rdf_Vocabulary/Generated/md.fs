@@ -1,1377 +1,984 @@
 namespace http.def.seegrid.csiro.au.isotc211.iso19115._2003.metadata.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module md =
     let _namespace_name = "http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#graphicOverview"></see>
     /// </summary>
-    let graphicOverview =
-        Namespaced_IRI.parse _namespace_name "graphicOverview" |> NamespacedName
-
+    let graphicOverview = _prefix "graphicOverview"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#CharacterSetCode"></see>
     /// </summary>
-    let CharacterSetCode =
-        Namespaced_IRI.parse _namespace_name "CharacterSetCode" |> NamespacedName
-
+    let CharacterSetCode = _prefix "CharacterSetCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#language"></see>
     /// </summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
-
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#KeywordTypeCode"></see>
     /// </summary>
-    let KeywordTypeCode =
-        Namespaced_IRI.parse _namespace_name "KeywordTypeCode" |> NamespacedName
-
+    let KeywordTypeCode = _prefix "KeywordTypeCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#abstract"></see>
     /// </summary>
-    let abstract_ = Namespaced_IRI.parse _namespace_name "abstract" |> NamespacedName
-
+    let abstract_ = _prefix "abstract"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#FeatureCatalogueDescription"></see>
     /// </summary>
-    let FeatureCatalogueDescription =
-        Namespaced_IRI.parse _namespace_name "FeatureCatalogueDescription" |> NamespacedName
-
+    let FeatureCatalogueDescription = _prefix "FeatureCatalogueDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#orderingInstructions"></see>
     /// </summary>
-    let orderingInstructions =
-        Namespaced_IRI.parse _namespace_name "orderingInstructions" |> NamespacedName
+    let orderingInstructions = _prefix "orderingInstructions"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#cameraCalibrationInformationAvailability"></see>
     /// </summary>
     let cameraCalibrationInformationAvailability =
-        Namespaced_IRI.parse _namespace_name "cameraCalibrationInformationAvailability" |> NamespacedName
+        _prefix "cameraCalibrationInformationAvailability"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#plannedAvailableDateTime"></see>
     /// </summary>
-    let plannedAvailableDateTime =
-        Namespaced_IRI.parse _namespace_name "plannedAvailableDateTime" |> NamespacedName
-
+    let plannedAvailableDateTime = _prefix "plannedAvailableDateTime"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#topicCategory"></see>
     /// </summary>
-    let topicCategory =
-        Namespaced_IRI.parse _namespace_name "topicCategory" |> NamespacedName
-
+    let topicCategory = _prefix "topicCategory"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#obligation"></see>
     /// </summary>
-    let obligation = Namespaced_IRI.parse _namespace_name "obligation" |> NamespacedName
+    let obligation = _prefix "obligation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Metadata"></see>
     /// </summary>
-    let Metadata = Namespaced_IRI.parse _namespace_name "Metadata" |> NamespacedName
-
+    let Metadata = _prefix "Metadata"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#geometricObjects"></see>
     /// </summary>
-    let geometricObjects =
-        Namespaced_IRI.parse _namespace_name "geometricObjects" |> NamespacedName
-
+    let geometricObjects = _prefix "geometricObjects"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#propertyType"></see>
     /// </summary>
-    let propertyType =
-        Namespaced_IRI.parse _namespace_name "propertyType" |> NamespacedName
-
+    let propertyType = _prefix "propertyType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#formatDistributor"></see>
     /// </summary>
-    let formatDistributor =
-        Namespaced_IRI.parse _namespace_name "formatDistributor" |> NamespacedName
-
+    let formatDistributor = _prefix "formatDistributor"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#processingLevelCode"></see>
     /// </summary>
-    let processingLevelCode =
-        Namespaced_IRI.parse _namespace_name "processingLevelCode" |> NamespacedName
-
+    let processingLevelCode = _prefix "processingLevelCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#volumes"></see>
     /// </summary>
-    let volumes = Namespaced_IRI.parse _namespace_name "volumes" |> NamespacedName
-
+    let volumes = _prefix "volumes"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributorFormat"></see>
     /// </summary>
-    let distributorFormat =
-        Namespaced_IRI.parse _namespace_name "distributorFormat" |> NamespacedName
-
+    let distributorFormat = _prefix "distributorFormat"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#schemaLanguage"></see>
     /// </summary>
-    let schemaLanguage =
-        Namespaced_IRI.parse _namespace_name "schemaLanguage" |> NamespacedName
-
+    let schemaLanguage = _prefix "schemaLanguage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#citation"></see>
     /// </summary>
-    let citation = Namespaced_IRI.parse _namespace_name "citation" |> NamespacedName
+    let citation = _prefix "citation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#mediumNote"></see>
     /// </summary>
-    let mediumNote = Namespaced_IRI.parse _namespace_name "mediumNote" |> NamespacedName
-
+    let mediumNote = _prefix "mediumNote"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#resourceSpecificUsage"></see>
     /// </summary>
-    let resourceSpecificUsage =
-        Namespaced_IRI.parse _namespace_name "resourceSpecificUsage" |> NamespacedName
-
+    let resourceSpecificUsage = _prefix "resourceSpecificUsage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#online"></see>
     /// </summary>
-    let online = Namespaced_IRI.parse _namespace_name "online" |> NamespacedName
-
+    let online = _prefix "online"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#cellGeometry"></see>
     /// </summary>
-    let cellGeometry =
-        Namespaced_IRI.parse _namespace_name "cellGeometry" |> NamespacedName
-
+    let cellGeometry = _prefix "cellGeometry"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#describes"></see>
     /// </summary>
-    let describes = Namespaced_IRI.parse _namespace_name "describes" |> NamespacedName
+    let describes = _prefix "describes"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
-
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dimensionName"></see>
     /// </summary>
-    let dimensionName =
-        Namespaced_IRI.parse _namespace_name "dimensionName" |> NamespacedName
-
+    let dimensionName = _prefix "dimensionName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#spatialResolution"></see>
     /// </summary>
-    let spatialResolution =
-        Namespaced_IRI.parse _namespace_name "spatialResolution" |> NamespacedName
-
+    let spatialResolution = _prefix "spatialResolution"
     /// <summary>
     /// Value should be chosen from &lt;http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata/MaintenanceFrequenceCode&gt;
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#maintenanceAndUpdateFrequency"></see></summary>
-    let maintenanceAndUpdateFrequency =
-        Namespaced_IRI.parse _namespace_name "maintenanceAndUpdateFrequency" |> NamespacedName
-
+    let maintenanceAndUpdateFrequency = _prefix "maintenanceAndUpdateFrequency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Georectified"></see>
     /// </summary>
-    let Georectified =
-        Namespaced_IRI.parse _namespace_name "Georectified" |> NamespacedName
-
+    let Georectified = _prefix "Georectified"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#aggregateDataSetIdentifier"></see>
     /// </summary>
-    let aggregateDataSetIdentifier =
-        Namespaced_IRI.parse _namespace_name "aggregateDataSetIdentifier" |> NamespacedName
-
+    let aggregateDataSetIdentifier = _prefix "aggregateDataSetIdentifier"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#MaintenanceInformation"></see>
     /// </summary>
-    let MaintenanceInformation =
-        Namespaced_IRI.parse _namespace_name "MaintenanceInformation" |> NamespacedName
-
+    let MaintenanceInformation = _prefix "MaintenanceInformation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#shortName"></see>
     /// </summary>
-    let shortName = Namespaced_IRI.parse _namespace_name "shortName" |> NamespacedName
-
+    let shortName = _prefix "shortName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#DataIdentification"></see>
     /// </summary>
-    let DataIdentification =
-        Namespaced_IRI.parse _namespace_name "DataIdentification" |> NamespacedName
-
+    let DataIdentification = _prefix "DataIdentification"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#geometricObjectType"></see>
     /// </summary>
-    let geometricObjectType =
-        Namespaced_IRI.parse _namespace_name "geometricObjectType" |> NamespacedName
-
+    let geometricObjectType = _prefix "geometricObjectType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Distributor"></see>
     /// </summary>
-    let Distributor =
-        Namespaced_IRI.parse _namespace_name "Distributor" |> NamespacedName
-
+    let Distributor = _prefix "Distributor"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#source"></see>
     /// </summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
-
+    let source = _prefix "source"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#useLimitation"></see>
     /// </summary>
-    let useLimitation =
-        Namespaced_IRI.parse _namespace_name "useLimitation" |> NamespacedName
-
+    let useLimitation = _prefix "useLimitation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#scaleFactor"></see>
     /// </summary>
-    let scaleFactor =
-        Namespaced_IRI.parse _namespace_name "scaleFactor" |> NamespacedName
-
+    let scaleFactor = _prefix "scaleFactor"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#supplementalInformation"></see>
     /// </summary>
-    let supplementalInformation =
-        Namespaced_IRI.parse _namespace_name "supplementalInformation" |> NamespacedName
-
+    let supplementalInformation = _prefix "supplementalInformation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#rationale"></see>
     /// </summary>
-    let rationale = Namespaced_IRI.parse _namespace_name "rationale" |> NamespacedName
-
+    let rationale = _prefix "rationale"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#attributeDescription"></see>
     /// </summary>
-    let attributeDescription =
-        Namespaced_IRI.parse _namespace_name "attributeDescription" |> NamespacedName
-
+    let attributeDescription = _prefix "attributeDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#resolution"></see>
     /// </summary>
-    let resolution = Namespaced_IRI.parse _namespace_name "resolution" |> NamespacedName
+    let resolution = _prefix "resolution"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#userNote"></see>
     /// </summary>
-    let userNote = Namespaced_IRI.parse _namespace_name "userNote" |> NamespacedName
+    let userNote = _prefix "userNote"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Format"></see>
     /// </summary>
-    let Format = Namespaced_IRI.parse _namespace_name "Format" |> NamespacedName
-
+    let Format = _prefix "Format"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#referenceSystemIdentifier"></see>
     /// </summary>
-    let referenceSystemIdentifier =
-        Namespaced_IRI.parse _namespace_name "referenceSystemIdentifier" |> NamespacedName
-
+    let referenceSystemIdentifier = _prefix "referenceSystemIdentifier"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#resourceFormat"></see>
     /// </summary>
-    let resourceFormat =
-        Namespaced_IRI.parse _namespace_name "resourceFormat" |> NamespacedName
-
+    let resourceFormat = _prefix "resourceFormat"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#thesaurusName"></see>
     /// </summary>
-    let thesaurusName =
-        Namespaced_IRI.parse _namespace_name "thesaurusName" |> NamespacedName
-
+    let thesaurusName = _prefix "thesaurusName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#complianceCode"></see>
     /// </summary>
-    let complianceCode =
-        Namespaced_IRI.parse _namespace_name "complianceCode" |> NamespacedName
-
+    let complianceCode = _prefix "complianceCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#georeferencedParameters"></see>
     /// </summary>
-    let georeferencedParameters =
-        Namespaced_IRI.parse _namespace_name "georeferencedParameters" |> NamespacedName
-
+    let georeferencedParameters = _prefix "georeferencedParameters"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#density"></see>
     /// </summary>
-    let density = Namespaced_IRI.parse _namespace_name "density" |> NamespacedName
-
+    let density = _prefix "density"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#compressionGenerationQuantity"></see>
     /// </summary>
-    let compressionGenerationQuantity =
-        Namespaced_IRI.parse _namespace_name "compressionGenerationQuantity" |> NamespacedName
-
+    let compressionGenerationQuantity = _prefix "compressionGenerationQuantity"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ExtendedElementInformation"></see>
     /// </summary>
-    let ExtendedElementInformation =
-        Namespaced_IRI.parse _namespace_name "ExtendedElementInformation" |> NamespacedName
-
+    let ExtendedElementInformation = _prefix "ExtendedElementInformation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#SecurityConstraints"></see>
     /// </summary>
-    let SecurityConstraints =
-        Namespaced_IRI.parse _namespace_name "SecurityConstraints" |> NamespacedName
-
+    let SecurityConstraints = _prefix "SecurityConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#AggregateInformation"></see>
     /// </summary>
-    let AggregateInformation =
-        Namespaced_IRI.parse _namespace_name "AggregateInformation" |> NamespacedName
-
+    let AggregateInformation = _prefix "AggregateInformation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#authority"></see>
     /// </summary>
-    let authority = Namespaced_IRI.parse _namespace_name "authority" |> NamespacedName
-
+    let authority = _prefix "authority"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#SpatialRepresentationTypeCode"></see>
     /// </summary>
-    let SpatialRepresentationTypeCode =
-        Namespaced_IRI.parse _namespace_name "SpatialRepresentationTypeCode" |> NamespacedName
-
+    let SpatialRepresentationTypeCode = _prefix "SpatialRepresentationTypeCode"
     /// <summary>
     /// Value should be chosen from &lt;http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata/RestrictionCode&gt;
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#accessConstraints"></see></summary>
-    let accessConstraints =
-        Namespaced_IRI.parse _namespace_name "accessConstraints" |> NamespacedName
-
+    let accessConstraints = _prefix "accessConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#metadataExtensionInfo"></see>
     /// </summary>
-    let metadataExtensionInfo =
-        Namespaced_IRI.parse _namespace_name "metadataExtensionInfo" |> NamespacedName
-
+    let metadataExtensionInfo = _prefix "metadataExtensionInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#purpose"></see>
     /// </summary>
-    let purpose = Namespaced_IRI.parse _namespace_name "purpose" |> NamespacedName
-
+    let purpose = _prefix "purpose"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#portrayalCatalogueInfo"></see>
     /// </summary>
-    let portrayalCatalogueInfo =
-        Namespaced_IRI.parse _namespace_name "portrayalCatalogueInfo" |> NamespacedName
-
+    let portrayalCatalogueInfo = _prefix "portrayalCatalogueInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#offLine"></see>
     /// </summary>
-    let offLine = Namespaced_IRI.parse _namespace_name "offLine" |> NamespacedName
+    let offLine = _prefix "offLine"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#minValue"></see>
     /// </summary>
-    let minValue = Namespaced_IRI.parse _namespace_name "minValue" |> NamespacedName
-
+    let minValue = _prefix "minValue"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dataQualityInfo"></see>
     /// </summary>
-    let dataQualityInfo =
-        Namespaced_IRI.parse _namespace_name "dataQualityInfo" |> NamespacedName
-
+    let dataQualityInfo = _prefix "dataQualityInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dateStamp"></see>
     /// </summary>
-    let dateStamp = Namespaced_IRI.parse _namespace_name "dateStamp" |> NamespacedName
-
+    let dateStamp = _prefix "dateStamp"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#illuminationAzimuthAngle"></see>
     /// </summary>
-    let illuminationAzimuthAngle =
-        Namespaced_IRI.parse _namespace_name "illuminationAzimuthAngle" |> NamespacedName
-
+    let illuminationAzimuthAngle = _prefix "illuminationAzimuthAngle"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ImagingConditionCode"></see>
     /// </summary>
-    let ImagingConditionCode =
-        Namespaced_IRI.parse _namespace_name "ImagingConditionCode" |> NamespacedName
-
+    let ImagingConditionCode = _prefix "ImagingConditionCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#assocationType"></see>
     /// </summary>
-    let assocationType =
-        Namespaced_IRI.parse _namespace_name "assocationType" |> NamespacedName
-
+    let assocationType = _prefix "assocationType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#credit"></see>
     /// </summary>
-    let credit = Namespaced_IRI.parse _namespace_name "credit" |> NamespacedName
+    let credit = _prefix "credit"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Keywords"></see>
     /// </summary>
-    let Keywords = Namespaced_IRI.parse _namespace_name "Keywords" |> NamespacedName
-
+    let Keywords = _prefix "Keywords"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#PortrayalCatalogueReference"></see>
     /// </summary>
-    let PortrayalCatalogueReference =
-        Namespaced_IRI.parse _namespace_name "PortrayalCatalogueReference" |> NamespacedName
-
+    let PortrayalCatalogueReference = _prefix "PortrayalCatalogueReference"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#DigitalTransferOptions"></see>
     /// </summary>
-    let DigitalTransferOptions =
-        Namespaced_IRI.parse _namespace_name "DigitalTransferOptions" |> NamespacedName
-
+    let DigitalTransferOptions = _prefix "DigitalTransferOptions"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#softwareDevelopmentFileFormat"></see>
     /// </summary>
-    let softwareDevelopmentFileFormat =
-        Namespaced_IRI.parse _namespace_name "softwareDevelopmentFileFormat" |> NamespacedName
-
+    let softwareDevelopmentFileFormat = _prefix "softwareDevelopmentFileFormat"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#checkPointDescription"></see>
     /// </summary>
-    let checkPointDescription =
-        Namespaced_IRI.parse _namespace_name "checkPointDescription" |> NamespacedName
-
+    let checkPointDescription = _prefix "checkPointDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#fileType"></see>
     /// </summary>
-    let fileType = Namespaced_IRI.parse _namespace_name "fileType" |> NamespacedName
-
+    let fileType = _prefix "fileType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#fileDecompressionTechnique"></see>
     /// </summary>
-    let fileDecompressionTechnique =
-        Namespaced_IRI.parse _namespace_name "fileDecompressionTechnique" |> NamespacedName
-
+    let fileDecompressionTechnique = _prefix "fileDecompressionTechnique"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#SpatialRepresentation"></see>
     /// </summary>
-    let SpatialRepresentation =
-        Namespaced_IRI.parse _namespace_name "SpatialRepresentation" |> NamespacedName
-
+    let SpatialRepresentation = _prefix "SpatialRepresentation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#equivalentScale"></see>
     /// </summary>
-    let equivalentScale =
-        Namespaced_IRI.parse _namespace_name "equivalentScale" |> NamespacedName
-
+    let equivalentScale = _prefix "equivalentScale"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributor"></see>
     /// </summary>
-    let distributor =
-        Namespaced_IRI.parse _namespace_name "distributor" |> NamespacedName
-
+    let distributor = _prefix "distributor"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#toneGradation"></see>
     /// </summary>
-    let toneGradation =
-        Namespaced_IRI.parse _namespace_name "toneGradation" |> NamespacedName
-
+    let toneGradation = _prefix "toneGradation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#descriptor"></see>
     /// </summary>
-    let descriptor = Namespaced_IRI.parse _namespace_name "descriptor" |> NamespacedName
-
+    let descriptor = _prefix "descriptor"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#domainValue"></see>
     /// </summary>
-    let domainValue =
-        Namespaced_IRI.parse _namespace_name "domainValue" |> NamespacedName
-
+    let domainValue = _prefix "domainValue"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#fileDescription"></see>
     /// </summary>
-    let fileDescription =
-        Namespaced_IRI.parse _namespace_name "fileDescription" |> NamespacedName
-
+    let fileDescription = _prefix "fileDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#resourceMaintenance"></see>
     /// </summary>
-    let resourceMaintenance =
-        Namespaced_IRI.parse _namespace_name "resourceMaintenance" |> NamespacedName
-
+    let resourceMaintenance = _prefix "resourceMaintenance"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#spatialRepresentationInfo"></see>
     /// </summary>
-    let spatialRepresentationInfo =
-        Namespaced_IRI.parse _namespace_name "spatialRepresentationInfo" |> NamespacedName
-
+    let spatialRepresentationInfo = _prefix "spatialRepresentationInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#parentIdentifier"></see>
     /// </summary>
-    let parentIdentifier =
-        Namespaced_IRI.parse _namespace_name "parentIdentifier" |> NamespacedName
-
+    let parentIdentifier = _prefix "parentIdentifier"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#peakResponse"></see>
     /// </summary>
-    let peakResponse =
-        Namespaced_IRI.parse _namespace_name "peakResponse" |> NamespacedName
-
+    let peakResponse = _prefix "peakResponse"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#featureAttribute"></see>
     /// </summary>
-    let featureAttribute =
-        Namespaced_IRI.parse _namespace_name "featureAttribute" |> NamespacedName
-
+    let featureAttribute = _prefix "featureAttribute"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#descriptiveKeywords"></see>
     /// </summary>
-    let descriptiveKeywords =
-        Namespaced_IRI.parse _namespace_name "descriptiveKeywords" |> NamespacedName
-
+    let descriptiveKeywords = _prefix "descriptiveKeywords"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#triangulationIndicator"></see>
     /// </summary>
-    let triangulationIndicator =
-        Namespaced_IRI.parse _namespace_name "triangulationIndicator" |> NamespacedName
-
+    let triangulationIndicator = _prefix "triangulationIndicator"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#contentType"></see>
     /// </summary>
-    let contentType =
-        Namespaced_IRI.parse _namespace_name "contentType" |> NamespacedName
-
+    let contentType = _prefix "contentType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Distribution"></see>
     /// </summary>
-    let Distribution =
-        Namespaced_IRI.parse _namespace_name "Distribution" |> NamespacedName
-
+    let Distribution = _prefix "Distribution"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#resourceConstraints"></see>
     /// </summary>
-    let resourceConstraints =
-        Namespaced_IRI.parse _namespace_name "resourceConstraints" |> NamespacedName
-
+    let resourceConstraints = _prefix "resourceConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#pointInPixel"></see>
     /// </summary>
-    let pointInPixel =
-        Namespaced_IRI.parse _namespace_name "pointInPixel" |> NamespacedName
-
+    let pointInPixel = _prefix "pointInPixel"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#graphicsFile"></see>
     /// </summary>
-    let graphicsFile =
-        Namespaced_IRI.parse _namespace_name "graphicsFile" |> NamespacedName
-
+    let graphicsFile = _prefix "graphicsFile"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#CellGeometryCode"></see>
     /// </summary>
-    let CellGeometryCode =
-        Namespaced_IRI.parse _namespace_name "CellGeometryCode" |> NamespacedName
-
+    let CellGeometryCode = _prefix "CellGeometryCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dimensionSize"></see>
     /// </summary>
-    let dimensionSize =
-        Namespaced_IRI.parse _namespace_name "dimensionSize" |> NamespacedName
-
+    let dimensionSize = _prefix "dimensionSize"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#GridSpatialRepresentation"></see>
     /// </summary>
-    let GridSpatialRepresentation =
-        Namespaced_IRI.parse _namespace_name "GridSpatialRepresentation" |> NamespacedName
-
+    let GridSpatialRepresentation = _prefix "GridSpatialRepresentation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#specificUsage"></see>
     /// </summary>
-    let specificUsage =
-        Namespaced_IRI.parse _namespace_name "specificUsage" |> NamespacedName
-
+    let specificUsage = _prefix "specificUsage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
-
+    let type_ = _prefix "type"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#environmentDescription"></see>
     /// </summary>
-    let environmentDescription =
-        Namespaced_IRI.parse _namespace_name "environmentDescription" |> NamespacedName
-
+    let environmentDescription = _prefix "environmentDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#CoverageDescription"></see>
     /// </summary>
-    let CoverageDescription =
-        Namespaced_IRI.parse _namespace_name "CoverageDescription" |> NamespacedName
-
+    let CoverageDescription = _prefix "CoverageDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#fees"></see>
     /// </summary>
-    let fees = Namespaced_IRI.parse _namespace_name "fees" |> NamespacedName
-
+    let fees = _prefix "fees"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#useConstraints"></see>
     /// </summary>
-    let useConstraints =
-        Namespaced_IRI.parse _namespace_name "useConstraints" |> NamespacedName
-
+    let useConstraints = _prefix "useConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#checkPointAvailability"></see>
     /// </summary>
-    let checkPointAvailability =
-        Namespaced_IRI.parse _namespace_name "checkPointAvailability" |> NamespacedName
-
+    let checkPointAvailability = _prefix "checkPointAvailability"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#contentInfo"></see>
     /// </summary>
-    let contentInfo =
-        Namespaced_IRI.parse _namespace_name "contentInfo" |> NamespacedName
-
+    let contentInfo = _prefix "contentInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#MaintenanceFrequencyCode"></see>
     /// </summary>
-    let MaintenanceFrequencyCode =
-        Namespaced_IRI.parse _namespace_name "MaintenanceFrequencyCode" |> NamespacedName
-
+    let MaintenanceFrequencyCode = _prefix "MaintenanceFrequencyCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#contact"></see>
     /// </summary>
-    let contact = Namespaced_IRI.parse _namespace_name "contact" |> NamespacedName
-
+    let contact = _prefix "contact"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Constraints"></see>
     /// </summary>
-    let Constraints =
-        Namespaced_IRI.parse _namespace_name "Constraints" |> NamespacedName
-
+    let Constraints = _prefix "Constraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dataSet"></see>
     /// </summary>
-    let dataSet = Namespaced_IRI.parse _namespace_name "dataSet" |> NamespacedName
-
+    let dataSet = _prefix "dataSet"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ImageDescription"></see>
     /// </summary>
-    let ImageDescription =
-        Namespaced_IRI.parse _namespace_name "ImageDescription" |> NamespacedName
-
+    let ImageDescription = _prefix "ImageDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#PixelOrientationCode"></see>
     /// </summary>
-    let PixelOrientationCode =
-        Namespaced_IRI.parse _namespace_name "PixelOrientationCode" |> NamespacedName
-
+    let PixelOrientationCode = _prefix "PixelOrientationCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#metadataStandardVersion"></see>
     /// </summary>
-    let metadataStandardVersion =
-        Namespaced_IRI.parse _namespace_name "metadataStandardVersion" |> NamespacedName
-
+    let metadataStandardVersion = _prefix "metadataStandardVersion"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#DistributionUnits"></see>
     /// </summary>
-    let DistributionUnits =
-        Namespaced_IRI.parse _namespace_name "DistributionUnits" |> NamespacedName
-
+    let DistributionUnits = _prefix "DistributionUnits"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#userDefinedMaintenanceFrequency"></see>
     /// </summary>
-    let userDefinedMaintenanceFrequency =
-        Namespaced_IRI.parse _namespace_name "userDefinedMaintenanceFrequency" |> NamespacedName
-
+    let userDefinedMaintenanceFrequency = _prefix "userDefinedMaintenanceFrequency"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#MediumFormatCode"></see>
     /// </summary>
-    let MediumFormatCode =
-        Namespaced_IRI.parse _namespace_name "MediumFormatCode" |> NamespacedName
-
+    let MediumFormatCode = _prefix "MediumFormatCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#turnaround"></see>
     /// </summary>
-    let turnaround = Namespaced_IRI.parse _namespace_name "turnaround" |> NamespacedName
-
+    let turnaround = _prefix "turnaround"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#userContactInfo"></see>
     /// </summary>
-    let userContactInfo =
-        Namespaced_IRI.parse _namespace_name "userContactInfo" |> NamespacedName
-
+    let userContactInfo = _prefix "userContactInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#GeometricObjectTypeCode"></see>
     /// </summary>
-    let GeometricObjectTypeCode =
-        Namespaced_IRI.parse _namespace_name "GeometricObjectTypeCode" |> NamespacedName
-
+    let GeometricObjectTypeCode = _prefix "GeometricObjectTypeCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#featureType"></see>
     /// </summary>
-    let featureType =
-        Namespaced_IRI.parse _namespace_name "featureType" |> NamespacedName
-
+    let featureType = _prefix "featureType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#pointOfContact"></see>
     /// </summary>
-    let pointOfContact =
-        Namespaced_IRI.parse _namespace_name "pointOfContact" |> NamespacedName
-
+    let pointOfContact = _prefix "pointOfContact"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#portrayalCatalogueCitation"></see>
     /// </summary>
-    let portrayalCatalogueCitation =
-        Namespaced_IRI.parse _namespace_name "portrayalCatalogueCitation" |> NamespacedName
-
+    let portrayalCatalogueCitation = _prefix "portrayalCatalogueCitation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#handlingDescription"></see>
     /// </summary>
-    let handlingDescription =
-        Namespaced_IRI.parse _namespace_name "handlingDescription" |> NamespacedName
-
+    let handlingDescription = _prefix "handlingDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#extensionOnLineResource"></see>
     /// </summary>
-    let extensionOnLineResource =
-        Namespaced_IRI.parse _namespace_name "extensionOnLineResource" |> NamespacedName
-
+    let extensionOnLineResource = _prefix "extensionOnLineResource"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
-
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#maintenanceNote"></see>
     /// </summary>
-    let maintenanceNote =
-        Namespaced_IRI.parse _namespace_name "maintenanceNote" |> NamespacedName
-
+    let maintenanceNote = _prefix "maintenanceNote"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#aggregateDataSetName"></see>
     /// </summary>
-    let aggregateDataSetName =
-        Namespaced_IRI.parse _namespace_name "aggregateDataSetName" |> NamespacedName
-
+    let aggregateDataSetName = _prefix "aggregateDataSetName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributionInfo"></see>
     /// </summary>
-    let distributionInfo =
-        Namespaced_IRI.parse _namespace_name "distributionInfo" |> NamespacedName
-
+    let distributionInfo = _prefix "distributionInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ApplicationSchema.name"></see>
     /// </summary>
-    let ``ApplicationSchema.name`` =
-        Namespaced_IRI.parse _namespace_name "ApplicationSchema.name" |> NamespacedName
-
+    let ``ApplicationSchema.name`` = _prefix "ApplicationSchema.name"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#LegalConstraints"></see>
     /// </summary>
-    let LegalConstraints =
-        Namespaced_IRI.parse _namespace_name "LegalConstraints" |> NamespacedName
-
+    let LegalConstraints = _prefix "LegalConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#domainCode"></see>
     /// </summary>
-    let domainCode = Namespaced_IRI.parse _namespace_name "domainCode" |> NamespacedName
-
+    let domainCode = _prefix "domainCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#referenceSystemInfo"></see>
     /// </summary>
-    let referenceSystemInfo =
-        Namespaced_IRI.parse _namespace_name "referenceSystemInfo" |> NamespacedName
-
+    let referenceSystemInfo = _prefix "referenceSystemInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#parameterCitation"></see>
     /// </summary>
-    let parameterCitation =
-        Namespaced_IRI.parse _namespace_name "parameterCitation" |> NamespacedName
-
+    let parameterCitation = _prefix "parameterCitation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Usage"></see>
     /// </summary>
-    let Usage = Namespaced_IRI.parse _namespace_name "Usage" |> NamespacedName
-
+    let Usage = _prefix "Usage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#hierarchyLevelName"></see>
     /// </summary>
-    let hierarchyLevelName =
-        Namespaced_IRI.parse _namespace_name "hierarchyLevelName" |> NamespacedName
-
+    let hierarchyLevelName = _prefix "hierarchyLevelName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ApplicationSchemaInformation"></see>
     /// </summary>
-    let ApplicationSchemaInformation =
-        Namespaced_IRI.parse _namespace_name "ApplicationSchemaInformation" |> NamespacedName
-
+    let ApplicationSchemaInformation = _prefix "ApplicationSchemaInformation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#aggregationInfo"></see>
     /// </summary>
-    let aggregationInfo =
-        Namespaced_IRI.parse _namespace_name "aggregationInfo" |> NamespacedName
-
+    let aggregationInfo = _prefix "aggregationInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#series"></see>
     /// </summary>
-    let series = Namespaced_IRI.parse _namespace_name "series" |> NamespacedName
-
+    let series = _prefix "series"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ContentInformation"></see>
     /// </summary>
-    let ContentInformation =
-        Namespaced_IRI.parse _namespace_name "ContentInformation" |> NamespacedName
+    let ContentInformation = _prefix "ContentInformation"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#radiometricCalibrationInformationAvailability"></see>
     /// </summary>
     let radiometricCalibrationInformationAvailability =
-        Namespaced_IRI.parse _namespace_name "radiometricCalibrationInformationAvailability" |> NamespacedName
+        _prefix "radiometricCalibrationInformationAvailability"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#offset"></see>
     /// </summary>
-    let offset = Namespaced_IRI.parse _namespace_name "offset" |> NamespacedName
-
+    let offset = _prefix "offset"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dateOfNextUpdate"></see>
     /// </summary>
-    let dateOfNextUpdate =
-        Namespaced_IRI.parse _namespace_name "dateOfNextUpdate" |> NamespacedName
-
+    let dateOfNextUpdate = _prefix "dateOfNextUpdate"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dataType"></see>
     /// </summary>
-    let dataType = Namespaced_IRI.parse _namespace_name "dataType" |> NamespacedName
-
+    let dataType = _prefix "dataType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#featureCatalogueCitation"></see>
     /// </summary>
-    let featureCatalogueCitation =
-        Namespaced_IRI.parse _namespace_name "featureCatalogueCitation" |> NamespacedName
-
+    let featureCatalogueCitation = _prefix "featureCatalogueCitation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributionOrderProcess"></see>
     /// </summary>
-    let distributionOrderProcess =
-        Namespaced_IRI.parse _namespace_name "distributionOrderProcess" |> NamespacedName
-
+    let distributionOrderProcess = _prefix "distributionOrderProcess"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#TopologyLevelCode"></see>
     /// </summary>
-    let TopologyLevelCode =
-        Namespaced_IRI.parse _namespace_name "TopologyLevelCode" |> NamespacedName
-
+    let TopologyLevelCode = _prefix "TopologyLevelCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#mediumFormat"></see>
     /// </summary>
-    let mediumFormat =
-        Namespaced_IRI.parse _namespace_name "mediumFormat" |> NamespacedName
-
+    let mediumFormat = _prefix "mediumFormat"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Dimension"></see>
     /// </summary>
-    let Dimension = Namespaced_IRI.parse _namespace_name "Dimension" |> NamespacedName
-
+    let Dimension = _prefix "Dimension"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#fileIdentifier"></see>
     /// </summary>
-    let fileIdentifier =
-        Namespaced_IRI.parse _namespace_name "fileIdentifier" |> NamespacedName
-
+    let fileIdentifier = _prefix "fileIdentifier"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#TopicCategoryCode"></see>
     /// </summary>
-    let TopicCategoryCode =
-        Namespaced_IRI.parse _namespace_name "TopicCategoryCode" |> NamespacedName
-
+    let TopicCategoryCode = _prefix "TopicCategoryCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#extendedElementInformation"></see>
     /// </summary>
-    let extendedElementInformation =
-        Namespaced_IRI.parse _namespace_name "extendedElementInformation" |> NamespacedName
-
+    let extendedElementInformation = _prefix "extendedElementInformation"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#cloudCoverPercentage"></see>
     /// </summary>
-    let cloudCoverPercentage =
-        Namespaced_IRI.parse _namespace_name "cloudCoverPercentage" |> NamespacedName
-
+    let cloudCoverPercentage = _prefix "cloudCoverPercentage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ReferenceSystem"></see>
     /// </summary>
-    let ReferenceSystem =
-        Namespaced_IRI.parse _namespace_name "ReferenceSystem" |> NamespacedName
-
+    let ReferenceSystem = _prefix "ReferenceSystem"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributorTransferOptions"></see>
     /// </summary>
-    let distributorTransferOptions =
-        Namespaced_IRI.parse _namespace_name "distributorTransferOptions" |> NamespacedName
-
+    let distributorTransferOptions = _prefix "distributorTransferOptions"
     /// <summary>
     /// Sequence members are gm:Point
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#centerPoint"></see></summary>
-    let centerPoint =
-        Namespaced_IRI.parse _namespace_name "centerPoint" |> NamespacedName
-
+    let centerPoint = _prefix "centerPoint"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Identification"></see>
     /// </summary>
-    let Identification =
-        Namespaced_IRI.parse _namespace_name "Identification" |> NamespacedName
-
+    let Identification = _prefix "Identification"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#StandardOrderProcess"></see>
     /// </summary>
-    let StandardOrderProcess =
-        Namespaced_IRI.parse _namespace_name "StandardOrderProcess" |> NamespacedName
-
+    let StandardOrderProcess = _prefix "StandardOrderProcess"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributionFormat"></see>
     /// </summary>
-    let distributionFormat =
-        Namespaced_IRI.parse _namespace_name "distributionFormat" |> NamespacedName
-
+    let distributionFormat = _prefix "distributionFormat"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#controlPointAvailability"></see>
     /// </summary>
-    let controlPointAvailability =
-        Namespaced_IRI.parse _namespace_name "controlPointAvailability" |> NamespacedName
-
+    let controlPointAvailability = _prefix "controlPointAvailability"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#RangeDimension"></see>
     /// </summary>
-    let RangeDimension =
-        Namespaced_IRI.parse _namespace_name "RangeDimension" |> NamespacedName
-
+    let RangeDimension = _prefix "RangeDimension"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#GeometricObjects"></see>
     /// </summary>
-    let GeometricObjects =
-        Namespaced_IRI.parse _namespace_name "GeometricObjects" |> NamespacedName
-
+    let GeometricObjects = _prefix "GeometricObjects"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#rule"></see>
     /// </summary>
-    let rule = Namespaced_IRI.parse _namespace_name "rule" |> NamespacedName
-
+    let rule = _prefix "rule"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#denominator"></see>
     /// </summary>
-    let denominator =
-        Namespaced_IRI.parse _namespace_name "denominator" |> NamespacedName
-
+    let denominator = _prefix "denominator"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#identificationInfo"></see>
     /// </summary>
-    let identificationInfo =
-        Namespaced_IRI.parse _namespace_name "identificationInfo" |> NamespacedName
-
+    let identificationInfo = _prefix "identificationInfo"
     /// <summary>
     /// Value should be chosen from &lt;http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata/ScopeCode&gt;
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#updateScope"></see></summary>
-    let updateScope =
-        Namespaced_IRI.parse _namespace_name "updateScope" |> NamespacedName
-
+    let updateScope = _prefix "updateScope"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Georeferenceable"></see>
     /// </summary>
-    let Georeferenceable =
-        Namespaced_IRI.parse _namespace_name "Georeferenceable" |> NamespacedName
-
+    let Georeferenceable = _prefix "Georeferenceable"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Medium"></see>
     /// </summary>
-    let Medium = Namespaced_IRI.parse _namespace_name "Medium" |> NamespacedName
-
+    let Medium = _prefix "Medium"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#hierarchyLevel"></see>
     /// </summary>
-    let hierarchyLevel =
-        Namespaced_IRI.parse _namespace_name "hierarchyLevel" |> NamespacedName
-
+    let hierarchyLevel = _prefix "hierarchyLevel"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#constraintLanguage"></see>
     /// </summary>
-    let constraintLanguage =
-        Namespaced_IRI.parse _namespace_name "constraintLanguage" |> NamespacedName
-
+    let constraintLanguage = _prefix "constraintLanguage"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#transferSize"></see>
     /// </summary>
-    let transferSize =
-        Namespaced_IRI.parse _namespace_name "transferSize" |> NamespacedName
-
+    let transferSize = _prefix "transferSize"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#imageQualityCode"></see>
     /// </summary>
-    let imageQualityCode =
-        Namespaced_IRI.parse _namespace_name "imageQualityCode" |> NamespacedName
-
+    let imageQualityCode = _prefix "imageQualityCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#applicationSchemaInfo"></see>
     /// </summary>
-    let applicationSchemaInfo =
-        Namespaced_IRI.parse _namespace_name "applicationSchemaInfo" |> NamespacedName
-
+    let applicationSchemaInfo = _prefix "applicationSchemaInfo"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#specification"></see>
     /// </summary>
-    let specification =
-        Namespaced_IRI.parse _namespace_name "specification" |> NamespacedName
-
+    let specification = _prefix "specification"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#topologyLevel"></see>
     /// </summary>
-    let topologyLevel =
-        Namespaced_IRI.parse _namespace_name "topologyLevel" |> NamespacedName
-
+    let topologyLevel = _prefix "topologyLevel"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#distributorContact"></see>
     /// </summary>
-    let distributorContact =
-        Namespaced_IRI.parse _namespace_name "distributorContact" |> NamespacedName
-
+    let distributorContact = _prefix "distributorContact"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ClassificationCode"></see>
     /// </summary>
-    let ClassificationCode =
-        Namespaced_IRI.parse _namespace_name "ClassificationCode" |> NamespacedName
-
+    let ClassificationCode = _prefix "ClassificationCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#orientationParameterDescription"></see>
     /// </summary>
-    let orientationParameterDescription =
-        Namespaced_IRI.parse _namespace_name "orientationParameterDescription" |> NamespacedName
+    let orientationParameterDescription = _prefix "orientationParameterDescription"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#filmDistortionInformationAvailability"></see>
     /// </summary>
     let filmDistortionInformationAvailability =
-        Namespaced_IRI.parse _namespace_name "filmDistortionInformationAvailability" |> NamespacedName
+        _prefix "filmDistortionInformationAvailability"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ObligationCode"></see>
     /// </summary>
-    let ObligationCode =
-        Namespaced_IRI.parse _namespace_name "ObligationCode" |> NamespacedName
-
+    let ObligationCode = _prefix "ObligationCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#softwareDevelopmentFile"></see>
     /// </summary>
-    let softwareDevelopmentFile =
-        Namespaced_IRI.parse _namespace_name "softwareDevelopmentFile" |> NamespacedName
-
+    let softwareDevelopmentFile = _prefix "softwareDevelopmentFile"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#RestrictionCode"></see>
     /// </summary>
-    let RestrictionCode =
-        Namespaced_IRI.parse _namespace_name "RestrictionCode" |> NamespacedName
-
+    let RestrictionCode = _prefix "RestrictionCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#VectorSpatialRepresentation"></see>
     /// </summary>
-    let VectorSpatialRepresentation =
-        Namespaced_IRI.parse _namespace_name "VectorSpatialRepresentation" |> NamespacedName
+    let VectorSpatialRepresentation = _prefix "VectorSpatialRepresentation"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#lensDistortionInformationAvailability"></see>
     /// </summary>
     let lensDistortionInformationAvailability =
-        Namespaced_IRI.parse _namespace_name "lensDistortionInformationAvailability" |> NamespacedName
+        _prefix "lensDistortionInformationAvailability"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#RepresentativeFraction"></see>
     /// </summary>
-    let RepresentativeFraction =
-        Namespaced_IRI.parse _namespace_name "RepresentativeFraction" |> NamespacedName
-
+    let RepresentativeFraction = _prefix "RepresentativeFraction"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#schemaAscii"></see>
     /// </summary>
-    let schemaAscii =
-        Namespaced_IRI.parse _namespace_name "schemaAscii" |> NamespacedName
-
+    let schemaAscii = _prefix "schemaAscii"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#fileName"></see>
     /// </summary>
-    let fileName = Namespaced_IRI.parse _namespace_name "fileName" |> NamespacedName
-
+    let fileName = _prefix "fileName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ScopeDescription"></see>
     /// </summary>
-    let ScopeDescription =
-        Namespaced_IRI.parse _namespace_name "ScopeDescription" |> NamespacedName
-
+    let ScopeDescription = _prefix "ScopeDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#DatatypeCode"></see>
     /// </summary>
-    let DatatypeCode =
-        Namespaced_IRI.parse _namespace_name "DatatypeCode" |> NamespacedName
-
+    let DatatypeCode = _prefix "DatatypeCode"
     /// <summary>
     /// Sequence members are md:Dimension
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#axisDimensionProperties"></see></summary>
-    let axisDimensionProperties =
-        Namespaced_IRI.parse _namespace_name "axisDimensionProperties" |> NamespacedName
-
+    let axisDimensionProperties = _prefix "axisDimensionProperties"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#units"></see>
     /// </summary>
-    let units = Namespaced_IRI.parse _namespace_name "units" |> NamespacedName
-
+    let units = _prefix "units"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#spatialRepresentationType"></see>
     /// </summary>
-    let spatialRepresentationType =
-        Namespaced_IRI.parse _namespace_name "spatialRepresentationType" |> NamespacedName
-
+    let spatialRepresentationType = _prefix "spatialRepresentationType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#locale"></see>
     /// </summary>
-    let locale = Namespaced_IRI.parse _namespace_name "locale" |> NamespacedName
-
+    let locale = _prefix "locale"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#maximumOccurrence"></see>
     /// </summary>
-    let maximumOccurrence =
-        Namespaced_IRI.parse _namespace_name "maximumOccurrence" |> NamespacedName
-
+    let maximumOccurrence = _prefix "maximumOccurrence"
     /// <summary>
     /// Sequence members are GM_Point
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#cornerPoints"></see></summary>
-    let cornerPoints =
-        Namespaced_IRI.parse _namespace_name "cornerPoints" |> NamespacedName
-
+    let cornerPoints = _prefix "cornerPoints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Resolution"></see>
     /// </summary>
-    let Resolution = Namespaced_IRI.parse _namespace_name "Resolution" |> NamespacedName
+    let Resolution = _prefix "Resolution"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Band"></see>
     /// </summary>
-    let Band = Namespaced_IRI.parse _namespace_name "Band" |> NamespacedName
-
+    let Band = _prefix "Band"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#orientationParameterAvailability"></see>
     /// </summary>
-    let orientationParameterAvailability =
-        Namespaced_IRI.parse _namespace_name "orientationParameterAvailability" |> NamespacedName
-
+    let orientationParameterAvailability = _prefix "orientationParameterAvailability"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#Medium.name"></see>
     /// </summary>
-    let ``Medium.name`` =
-        Namespaced_IRI.parse _namespace_name "Medium.name" |> NamespacedName
-
+    let ``Medium.name`` = _prefix "Medium.name"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#imagingCondition"></see>
     /// </summary>
-    let imagingCondition =
-        Namespaced_IRI.parse _namespace_name "imagingCondition" |> NamespacedName
-
+    let imagingCondition = _prefix "imagingCondition"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ProgressCode"></see>
     /// </summary>
-    let ProgressCode =
-        Namespaced_IRI.parse _namespace_name "ProgressCode" |> NamespacedName
-
+    let ProgressCode = _prefix "ProgressCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#metadataStandardName"></see>
     /// </summary>
-    let metadataStandardName =
-        Namespaced_IRI.parse _namespace_name "metadataStandardName" |> NamespacedName
-
+    let metadataStandardName = _prefix "metadataStandardName"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#definition"></see>
     /// </summary>
-    let definition = Namespaced_IRI.parse _namespace_name "definition" |> NamespacedName
+    let definition = _prefix "definition"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dimension"></see>
     /// </summary>
-    let dimension = Namespaced_IRI.parse _namespace_name "dimension" |> NamespacedName
+    let dimension = _prefix "dimension"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#transformationParameterAvailability"></see>
     /// </summary>
     let transformationParameterAvailability =
-        Namespaced_IRI.parse _namespace_name "transformationParameterAvailability" |> NamespacedName
+        _prefix "transformationParameterAvailability"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#updateScopeDescription"></see>
     /// </summary>
-    let updateScopeDescription =
-        Namespaced_IRI.parse _namespace_name "updateScopeDescription" |> NamespacedName
-
+    let updateScopeDescription = _prefix "updateScopeDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#keyword"></see>
     /// </summary>
-    let keyword = Namespaced_IRI.parse _namespace_name "keyword" |> NamespacedName
-
+    let keyword = _prefix "keyword"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#amendmentNumber"></see>
     /// </summary>
-    let amendmentNumber =
-        Namespaced_IRI.parse _namespace_name "amendmentNumber" |> NamespacedName
-
+    let amendmentNumber = _prefix "amendmentNumber"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#sequenceIdentifier"></see>
     /// </summary>
-    let sequenceIdentifier =
-        Namespaced_IRI.parse _namespace_name "sequenceIdentifier" |> NamespacedName
-
+    let sequenceIdentifier = _prefix "sequenceIdentifier"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#numberOfDimensions"></see>
     /// </summary>
-    let numberOfDimensions =
-        Namespaced_IRI.parse _namespace_name "numberOfDimensions" |> NamespacedName
-
+    let numberOfDimensions = _prefix "numberOfDimensions"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#userDeterminedLimitations"></see>
     /// </summary>
-    let userDeterminedLimitations =
-        Namespaced_IRI.parse _namespace_name "userDeterminedLimitations" |> NamespacedName
-
+    let userDeterminedLimitations = _prefix "userDeterminedLimitations"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#maxValue"></see>
     /// </summary>
-    let maxValue = Namespaced_IRI.parse _namespace_name "maxValue" |> NamespacedName
-
+    let maxValue = _prefix "maxValue"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#characterSet"></see>
     /// </summary>
-    let characterSet =
-        Namespaced_IRI.parse _namespace_name "characterSet" |> NamespacedName
-
+    let characterSet = _prefix "characterSet"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#metadataConstraints"></see>
     /// </summary>
-    let metadataConstraints =
-        Namespaced_IRI.parse _namespace_name "metadataConstraints" |> NamespacedName
-
+    let metadataConstraints = _prefix "metadataConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#densityUnits"></see>
     /// </summary>
-    let densityUnits =
-        Namespaced_IRI.parse _namespace_name "densityUnits" |> NamespacedName
-
+    let densityUnits = _prefix "densityUnits"
     /// <summary>
     /// Value should be chosen from &lt;http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset/InitiativeTypeCode&gt;
     /// <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#initiativeType"></see></summary>
-    let initiativeType =
-        Namespaced_IRI.parse _namespace_name "initiativeType" |> NamespacedName
-
+    let initiativeType = _prefix "initiativeType"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ScopeCode"></see>
     /// </summary>
-    let ScopeCode = Namespaced_IRI.parse _namespace_name "ScopeCode" |> NamespacedName
+    let ScopeCode = _prefix "ScopeCode"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#transformationDimensionDescription"></see>
     /// </summary>
     let transformationDimensionDescription =
-        Namespaced_IRI.parse _namespace_name "transformationDimensionDescription" |> NamespacedName
+        _prefix "transformationDimensionDescription"
 
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#bitsPerValue"></see>
     /// </summary>
-    let bitsPerValue =
-        Namespaced_IRI.parse _namespace_name "bitsPerValue" |> NamespacedName
-
+    let bitsPerValue = _prefix "bitsPerValue"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#classification"></see>
     /// </summary>
-    let classification =
-        Namespaced_IRI.parse _namespace_name "classification" |> NamespacedName
-
+    let classification = _prefix "classification"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#condition"></see>
     /// </summary>
-    let condition = Namespaced_IRI.parse _namespace_name "condition" |> NamespacedName
+    let condition = _prefix "condition"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#extent"></see>
     /// </summary>
-    let extent = Namespaced_IRI.parse _namespace_name "extent" |> NamespacedName
-
+    let extent = _prefix "extent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#usageDateTime"></see>
     /// </summary>
-    let usageDateTime =
-        Namespaced_IRI.parse _namespace_name "usageDateTime" |> NamespacedName
-
+    let usageDateTime = _prefix "usageDateTime"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#featureTypes"></see>
     /// </summary>
-    let featureTypes =
-        Namespaced_IRI.parse _namespace_name "featureTypes" |> NamespacedName
-
+    let featureTypes = _prefix "featureTypes"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#geometricObjectCount"></see>
     /// </summary>
-    let geometricObjectCount =
-        Namespaced_IRI.parse _namespace_name "geometricObjectCount" |> NamespacedName
-
+    let geometricObjectCount = _prefix "geometricObjectCount"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#classificationSystem"></see>
     /// </summary>
-    let classificationSystem =
-        Namespaced_IRI.parse _namespace_name "classificationSystem" |> NamespacedName
-
+    let classificationSystem = _prefix "classificationSystem"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#metadataMaintenance"></see>
     /// </summary>
-    let metadataMaintenance =
-        Namespaced_IRI.parse _namespace_name "metadataMaintenance" |> NamespacedName
-
+    let metadataMaintenance = _prefix "metadataMaintenance"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#transferOptions"></see>
     /// </summary>
-    let transferOptions =
-        Namespaced_IRI.parse _namespace_name "transferOptions" |> NamespacedName
-
+    let transferOptions = _prefix "transferOptions"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#includedWithDataset"></see>
     /// </summary>
-    let includedWithDataset =
-        Namespaced_IRI.parse _namespace_name "includedWithDataset" |> NamespacedName
-
+    let includedWithDataset = _prefix "includedWithDataset"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#transformationDimensionMapping"></see>
     /// </summary>
-    let transformationDimensionMapping =
-        Namespaced_IRI.parse _namespace_name "transformationDimensionMapping" |> NamespacedName
-
+    let transformationDimensionMapping = _prefix "transformationDimensionMapping"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#parentEntity"></see>
     /// </summary>
-    let parentEntity =
-        Namespaced_IRI.parse _namespace_name "parentEntity" |> NamespacedName
-
+    let parentEntity = _prefix "parentEntity"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#DimensionNameTypeCode"></see>
     /// </summary>
-    let DimensionNameTypeCode =
-        Namespaced_IRI.parse _namespace_name "DimensionNameTypeCode" |> NamespacedName
-
+    let DimensionNameTypeCode = _prefix "DimensionNameTypeCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#illuminationElevationAngle"></see>
     /// </summary>
-    let illuminationElevationAngle =
-        Namespaced_IRI.parse _namespace_name "illuminationElevationAngle" |> NamespacedName
-
+    let illuminationElevationAngle = _prefix "illuminationElevationAngle"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#unitsOfDistribution"></see>
     /// </summary>
-    let unitsOfDistribution =
-        Namespaced_IRI.parse _namespace_name "unitsOfDistribution" |> NamespacedName
-
+    let unitsOfDistribution = _prefix "unitsOfDistribution"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#CoverageContentTypeCode"></see>
     /// </summary>
-    let CoverageContentTypeCode =
-        Namespaced_IRI.parse _namespace_name "CoverageContentTypeCode" |> NamespacedName
-
+    let CoverageContentTypeCode = _prefix "CoverageContentTypeCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#MediumNameCode"></see>
     /// </summary>
-    let MediumNameCode =
-        Namespaced_IRI.parse _namespace_name "MediumNameCode" |> NamespacedName
-
+    let MediumNameCode = _prefix "MediumNameCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#otherConstraints"></see>
     /// </summary>
-    let otherConstraints =
-        Namespaced_IRI.parse _namespace_name "otherConstraints" |> NamespacedName
-
+    let otherConstraints = _prefix "otherConstraints"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
-
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#BrowseGraphic"></see>
     /// </summary>
-    let BrowseGraphic =
-        Namespaced_IRI.parse _namespace_name "BrowseGraphic" |> NamespacedName
-
+    let BrowseGraphic = _prefix "BrowseGraphic"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#MetadataExtensionInformation"></see>
     /// </summary>
-    let MetadataExtensionInformation =
-        Namespaced_IRI.parse _namespace_name "MetadataExtensionInformation" |> NamespacedName
+    let MetadataExtensionInformation = _prefix "MetadataExtensionInformation"

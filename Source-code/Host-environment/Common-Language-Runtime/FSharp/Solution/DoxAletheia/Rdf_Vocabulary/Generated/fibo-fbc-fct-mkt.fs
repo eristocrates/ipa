@@ -1,347 +1,245 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.Markets.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_mkt =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ActiveMICStatus"></see>
     /// </summary>
-    let ActiveMICStatus =
-        Namespaced_IRI.parse _namespace_name "ActiveMICStatus" |> NamespacedName
-
+    let ActiveMICStatus = _prefix "ActiveMICStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketIdentifierCodeStatus"></see>
     /// </summary>
-    let MarketIdentifierCodeStatus =
-        Namespaced_IRI.parse _namespace_name "MarketIdentifierCodeStatus" |> NamespacedName
-
+    let MarketIdentifierCodeStatus = _prefix "MarketIdentifierCodeStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/AlternativeTradingSystem"></see>
     /// </summary>
-    let AlternativeTradingSystem =
-        Namespaced_IRI.parse _namespace_name "AlternativeTradingSystem" |> NamespacedName
-
+    let AlternativeTradingSystem = _prefix "AlternativeTradingSystem"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/Exchange"></see>
     /// </summary>
-    let Exchange = Namespaced_IRI.parse _namespace_name "Exchange" |> NamespacedName
-
+    let Exchange = _prefix "Exchange"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-ATSS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-ATSS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-ATSS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-ATSS`` = _prefix "MarketCategoryClassifier-ATSS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ApprovedPublicationArrangement"></see>
     /// </summary>
-    let ApprovedPublicationArrangement =
-        Namespaced_IRI.parse _namespace_name "ApprovedPublicationArrangement" |> NamespacedName
-
+    let ApprovedPublicationArrangement = _prefix "ApprovedPublicationArrangement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/DataReportingServicesProvider"></see>
     /// </summary>
-    let DataReportingServicesProvider =
-        Namespaced_IRI.parse _namespace_name "DataReportingServicesProvider" |> NamespacedName
-
+    let DataReportingServicesProvider = _prefix "DataReportingServicesProvider"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-APPA"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-APPA`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-APPA" |> NamespacedName
-
+    let ``MarketCategoryClassifier-APPA`` = _prefix "MarketCategoryClassifier-APPA"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ApprovedReportingMechanism"></see>
     /// </summary>
-    let ApprovedReportingMechanism =
-        Namespaced_IRI.parse _namespace_name "ApprovedReportingMechanism" |> NamespacedName
-
+    let ApprovedReportingMechanism = _prefix "ApprovedReportingMechanism"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-ARMS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-ARMS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-ARMS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-ARMS`` = _prefix "MarketCategoryClassifier-ARMS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/AuctionMarket"></see>
     /// </summary>
-    let AuctionMarket =
-        Namespaced_IRI.parse _namespace_name "AuctionMarket" |> NamespacedName
-
+    let AuctionMarket = _prefix "AuctionMarket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ConsolidatedTapeProvider"></see>
     /// </summary>
-    let ConsolidatedTapeProvider =
-        Namespaced_IRI.parse _namespace_name "ConsolidatedTapeProvider" |> NamespacedName
-
+    let ConsolidatedTapeProvider = _prefix "ConsolidatedTapeProvider"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-CTPS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-CTPS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-CTPS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-CTPS`` = _prefix "MarketCategoryClassifier-CTPS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/CryptoAssetServicesProvider"></see>
     /// </summary>
-    let CryptoAssetServicesProvider =
-        Namespaced_IRI.parse _namespace_name "CryptoAssetServicesProvider" |> NamespacedName
-
+    let CryptoAssetServicesProvider = _prefix "CryptoAssetServicesProvider"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-CASP"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-CASP`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-CASP" |> NamespacedName
-
+    let ``MarketCategoryClassifier-CASP`` = _prefix "MarketCategoryClassifier-CASP"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketIdentifier"></see>
     /// </summary>
-    let MarketIdentifier =
-        Namespaced_IRI.parse _namespace_name "MarketIdentifier" |> NamespacedName
-
+    let MarketIdentifier = _prefix "MarketIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/hasFacilityAcronym"></see>
     /// </summary>
-    let hasFacilityAcronym =
-        Namespaced_IRI.parse _namespace_name "hasFacilityAcronym" |> NamespacedName
-
+    let hasFacilityAcronym = _prefix "hasFacilityAcronym"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/operatesInCountry"></see>
     /// </summary>
-    let operatesInCountry =
-        Namespaced_IRI.parse _namespace_name "operatesInCountry" |> NamespacedName
-
+    let operatesInCountry = _prefix "operatesInCountry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/operatesInMunicipality"></see>
     /// </summary>
-    let operatesInMunicipality =
-        Namespaced_IRI.parse _namespace_name "operatesInMunicipality" |> NamespacedName
-
+    let operatesInMunicipality = _prefix "operatesInMunicipality"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/DarkPool"></see>
     /// </summary>
-    let DarkPool = Namespaced_IRI.parse _namespace_name "DarkPool" |> NamespacedName
-
+    let DarkPool = _prefix "DarkPool"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/DesignatedContractMarket"></see>
     /// </summary>
-    let DesignatedContractMarket =
-        Namespaced_IRI.parse _namespace_name "DesignatedContractMarket" |> NamespacedName
-
+    let DesignatedContractMarket = _prefix "DesignatedContractMarket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-DCMS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-DCMS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-DCMS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-DCMS`` = _prefix "MarketCategoryClassifier-DCMS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ElectronicCommunicationNetwork"></see>
     /// </summary>
-    let ElectronicCommunicationNetwork =
-        Namespaced_IRI.parse _namespace_name "ElectronicCommunicationNetwork" |> NamespacedName
-
+    let ElectronicCommunicationNetwork = _prefix "ElectronicCommunicationNetwork"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ExchangeParticipant"></see>
     /// </summary>
-    let ExchangeParticipant =
-        Namespaced_IRI.parse _namespace_name "ExchangeParticipant" |> NamespacedName
-
+    let ExchangeParticipant = _prefix "ExchangeParticipant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ExpiredMICStatus"></see>
     /// </summary>
-    let ExpiredMICStatus =
-        Namespaced_IRI.parse _namespace_name "ExpiredMICStatus" |> NamespacedName
-
+    let ExpiredMICStatus = _prefix "ExpiredMICStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/ISO10383-ClassificationScheme"></see>
     /// </summary>
-    let ``ISO10383-ClassificationScheme`` =
-        Namespaced_IRI.parse _namespace_name "ISO10383-ClassificationScheme" |> NamespacedName
-
+    let ``ISO10383-ClassificationScheme`` = _prefix "ISO10383-ClassificationScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/InterdealerQuotationSystem"></see>
     /// </summary>
-    let InterdealerQuotationSystem =
-        Namespaced_IRI.parse _namespace_name "InterdealerQuotationSystem" |> NamespacedName
-
+    let InterdealerQuotationSystem = _prefix "InterdealerQuotationSystem"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-IDQS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-IDQS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-IDQS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-IDQS`` = _prefix "MarketCategoryClassifier-IDQS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier"></see>
     /// </summary>
-    let MarketCategoryClassifier =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier" |> NamespacedName
-
+    let MarketCategoryClassifier = _prefix "MarketCategoryClassifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/TradeReportingFacility"></see>
     /// </summary>
-    let TradeReportingFacility =
-        Namespaced_IRI.parse _namespace_name "TradeReportingFacility" |> NamespacedName
-
+    let TradeReportingFacility = _prefix "TradeReportingFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-MLTF"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-MLTF`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-MLTF" |> NamespacedName
-
+    let ``MarketCategoryClassifier-MLTF`` = _prefix "MarketCategoryClassifier-MLTF"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-NSPD"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-NSPD`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-NSPD" |> NamespacedName
-
+    let ``MarketCategoryClassifier-NSPD`` = _prefix "MarketCategoryClassifier-NSPD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-OTFS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-OTFS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-OTFS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-OTFS`` = _prefix "MarketCategoryClassifier-OTFS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-OTHR"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-OTHR`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-OTHR" |> NamespacedName
-
+    let ``MarketCategoryClassifier-OTHR`` = _prefix "MarketCategoryClassifier-OTHR"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-RMKT"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-RMKT`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-RMKT" |> NamespacedName
-
+    let ``MarketCategoryClassifier-RMKT`` = _prefix "MarketCategoryClassifier-RMKT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-RMOS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-RMOS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-RMOS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-RMOS`` = _prefix "MarketCategoryClassifier-RMOS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-SEFS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-SEFS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-SEFS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-SEFS`` = _prefix "MarketCategoryClassifier-SEFS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-SINT"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-SINT`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-SINT" |> NamespacedName
-
+    let ``MarketCategoryClassifier-SINT`` = _prefix "MarketCategoryClassifier-SINT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketCategoryClassifier-TRFS"></see>
     /// </summary>
-    let ``MarketCategoryClassifier-TRFS`` =
-        Namespaced_IRI.parse _namespace_name "MarketCategoryClassifier-TRFS" |> NamespacedName
-
+    let ``MarketCategoryClassifier-TRFS`` = _prefix "MarketCategoryClassifier-TRFS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketLevelClassifier"></see>
     /// </summary>
-    let MarketLevelClassifier =
-        Namespaced_IRI.parse _namespace_name "MarketLevelClassifier" |> NamespacedName
-
+    let MarketLevelClassifier = _prefix "MarketLevelClassifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketLevelClassifier-OPRT"></see>
     /// </summary>
-    let ``MarketLevelClassifier-OPRT`` =
-        Namespaced_IRI.parse _namespace_name "MarketLevelClassifier-OPRT" |> NamespacedName
-
+    let ``MarketLevelClassifier-OPRT`` = _prefix "MarketLevelClassifier-OPRT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketLevelClassifier-SGMT"></see>
     /// </summary>
-    let ``MarketLevelClassifier-SGMT`` =
-        Namespaced_IRI.parse _namespace_name "MarketLevelClassifier-SGMT" |> NamespacedName
-
+    let ``MarketLevelClassifier-SGMT`` = _prefix "MarketLevelClassifier-SGMT"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketSegmentLevelMarket"></see>
     /// </summary>
-    let MarketSegmentLevelMarket =
-        Namespaced_IRI.parse _namespace_name "MarketSegmentLevelMarket" |> NamespacedName
-
+    let MarketSegmentLevelMarket = _prefix "MarketSegmentLevelMarket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/OperatingLevelMarket"></see>
     /// </summary>
-    let OperatingLevelMarket =
-        Namespaced_IRI.parse _namespace_name "OperatingLevelMarket" |> NamespacedName
+    let OperatingLevelMarket = _prefix "OperatingLevelMarket"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MarketSegmentLevelMarketIdentifier"></see>
     /// </summary>
     let MarketSegmentLevelMarketIdentifier =
-        Namespaced_IRI.parse _namespace_name "MarketSegmentLevelMarketIdentifier" |> NamespacedName
+        _prefix "MarketSegmentLevelMarketIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MultilateralTradingFacility"></see>
     /// </summary>
-    let MultilateralTradingFacility =
-        Namespaced_IRI.parse _namespace_name "MultilateralTradingFacility" |> NamespacedName
-
+    let MultilateralTradingFacility = _prefix "MultilateralTradingFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/OffMarketFacility"></see>
     /// </summary>
-    let OffMarketFacility =
-        Namespaced_IRI.parse _namespace_name "OffMarketFacility" |> NamespacedName
-
+    let OffMarketFacility = _prefix "OffMarketFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/OperatingLevelMarketIdentifier"></see>
     /// </summary>
-    let OperatingLevelMarketIdentifier =
-        Namespaced_IRI.parse _namespace_name "OperatingLevelMarketIdentifier" |> NamespacedName
-
+    let OperatingLevelMarketIdentifier = _prefix "OperatingLevelMarketIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/OrganizedTradingFacility"></see>
     /// </summary>
-    let OrganizedTradingFacility =
-        Namespaced_IRI.parse _namespace_name "OrganizedTradingFacility" |> NamespacedName
-
+    let OrganizedTradingFacility = _prefix "OrganizedTradingFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/QuoteDrivenMarket"></see>
     /// </summary>
-    let QuoteDrivenMarket =
-        Namespaced_IRI.parse _namespace_name "QuoteDrivenMarket" |> NamespacedName
-
+    let QuoteDrivenMarket = _prefix "QuoteDrivenMarket"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/RecognizedMarketOperator"></see>
     /// </summary>
-    let RecognizedMarketOperator =
-        Namespaced_IRI.parse _namespace_name "RecognizedMarketOperator" |> NamespacedName
+    let RecognizedMarketOperator = _prefix "RecognizedMarketOperator"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/RegisteredMultilateralTradingFacility"></see>
     /// </summary>
     let RegisteredMultilateralTradingFacility =
-        Namespaced_IRI.parse _namespace_name "RegisteredMultilateralTradingFacility" |> NamespacedName
+        _prefix "RegisteredMultilateralTradingFacility"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/RegulatedExchange"></see>
     /// </summary>
-    let RegulatedExchange =
-        Namespaced_IRI.parse _namespace_name "RegulatedExchange" |> NamespacedName
-
+    let RegulatedExchange = _prefix "RegulatedExchange"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/SwapExecutionFacility"></see>
     /// </summary>
-    let SwapExecutionFacility =
-        Namespaced_IRI.parse _namespace_name "SwapExecutionFacility" |> NamespacedName
-
+    let SwapExecutionFacility = _prefix "SwapExecutionFacility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/SystematicInternaliser"></see>
     /// </summary>
-    let SystematicInternaliser =
-        Namespaced_IRI.parse _namespace_name "SystematicInternaliser" |> NamespacedName
-
+    let SystematicInternaliser = _prefix "SystematicInternaliser"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/UpdatedMICStatus"></see>
     /// </summary>
-    let UpdatedMICStatus =
-        Namespaced_IRI.parse _namespace_name "UpdatedMICStatus" |> NamespacedName
-
+    let UpdatedMICStatus = _prefix "UpdatedMICStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/hasMarketIdentifierCodeStatus"></see>
     /// </summary>
-    let hasMarketIdentifierCodeStatus =
-        Namespaced_IRI.parse _namespace_name "hasMarketIdentifierCodeStatus" |> NamespacedName
+    let hasMarketIdentifierCodeStatus = _prefix "hasMarketIdentifierCodeStatus"

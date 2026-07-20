@@ -1,48 +1,46 @@
 namespace http.purl.org.ontology.olo.core.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module olo =
     let _namespace_name = "http://purl.org/ontology/olo/core#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// An ordered list with a given length an indexed items.
     /// <see href="http://purl.org/ontology/olo/core#OrderedList"></see></summary>
-    let OrderedList =
-        Namespaced_IRI.parse _namespace_name "OrderedList" |> NamespacedName
-
+    let OrderedList = _prefix "OrderedList"
     /// <summary>
     /// The length of an ordered list.
     /// <see href="http://purl.org/ontology/olo/core#length"></see></summary>
-    let length = Namespaced_IRI.parse _namespace_name "length" |> NamespacedName
+    let length = _prefix "length"
     /// <summary>
     /// A slot in an ordered list with a fixed index.
     /// <see href="http://purl.org/ontology/olo/core#Slot"></see></summary>
-    let Slot = Namespaced_IRI.parse _namespace_name "Slot" |> NamespacedName
+    let Slot = _prefix "Slot"
     /// <summary>
     /// An index of a slot in an ordered list.
     /// <see href="http://purl.org/ontology/olo/core#index"></see></summary>
-    let index = Namespaced_IRI.parse _namespace_name "index" |> NamespacedName
+    let index = _prefix "index"
     /// <summary>
     /// Associates the next slot in an ordered list.
     /// <see href="http://purl.org/ontology/olo/core#next"></see></summary>
-    let next = Namespaced_IRI.parse _namespace_name "next" |> NamespacedName
+    let next = _prefix "next"
     /// <summary>
     /// Associates the previous slot in an ordered list
     /// <see href="http://purl.org/ontology/olo/core#previous"></see></summary>
-    let previous = Namespaced_IRI.parse _namespace_name "previous" |> NamespacedName
-
+    let previous = _prefix "previous"
     /// <summary>
     /// An ordered list of an slot.
     /// <see href="http://purl.org/ontology/olo/core#ordered_list"></see></summary>
-    let ordered_list =
-        Namespaced_IRI.parse _namespace_name "ordered_list" |> NamespacedName
-
+    let ordered_list = _prefix "ordered_list"
     /// <summary>
     /// An item of a slot in an ordered list.
     /// <see href="http://purl.org/ontology/olo/core#item"></see></summary>
-    let item = Namespaced_IRI.parse _namespace_name "item" |> NamespacedName
+    let item = _prefix "item"
     /// <summary>
     /// A slot in an ordered list.
     /// <see href="http://purl.org/ontology/olo/core#slot"></see></summary>
-    let slot = Namespaced_IRI.parse _namespace_name "slot" |> NamespacedName
+    let slot = _prefix "slot"

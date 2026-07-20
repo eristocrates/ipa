@@ -1,45 +1,38 @@
 namespace http.purl.org.dcx.lrmi_vocabs.alignmentType.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module lrmi_alignmentType =
     let _namespace_name = "http://purl.org/dcx/lrmi-vocabs/alignmentType/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/assesses"></see>
     /// </summary>
-    let assesses = Namespaced_IRI.parse _namespace_name "assesses" |> NamespacedName
-
+    let assesses = _prefix "assesses"
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/complexityLevel"></see>
     /// </summary>
-    let complexityLevel =
-        Namespaced_IRI.parse _namespace_name "complexityLevel" |> NamespacedName
-
+    let complexityLevel = _prefix "complexityLevel"
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/educationalLevel"></see>
     /// </summary>
-    let educationalLevel =
-        Namespaced_IRI.parse _namespace_name "educationalLevel" |> NamespacedName
-
+    let educationalLevel = _prefix "educationalLevel"
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/educationalSubject"></see>
     /// </summary>
-    let educationalSubject =
-        Namespaced_IRI.parse _namespace_name "educationalSubject" |> NamespacedName
-
+    let educationalSubject = _prefix "educationalSubject"
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/prerequisite"></see>
     /// </summary>
-    let prerequisite =
-        Namespaced_IRI.parse _namespace_name "prerequisite" |> NamespacedName
-
+    let prerequisite = _prefix "prerequisite"
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/readingLevel"></see>
     /// </summary>
-    let readingLevel =
-        Namespaced_IRI.parse _namespace_name "readingLevel" |> NamespacedName
-
+    let readingLevel = _prefix "readingLevel"
     /// <summary>
     ///   <see href="http://purl.org/dcx/lrmi-vocabs/alignmentType/teaches"></see>
     /// </summary>
-    let teaches = Namespaced_IRI.parse _namespace_name "teaches" |> NamespacedName
+    let teaches = _prefix "teaches"

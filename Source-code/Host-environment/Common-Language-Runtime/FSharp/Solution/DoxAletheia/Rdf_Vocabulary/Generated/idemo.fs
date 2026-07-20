@@ -1,39 +1,34 @@
 namespace http.rdf.insee.fr.def.demo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module idemo =
     let _namespace_name = "http://rdf.insee.fr/def/demo#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdf.insee.fr/def/demo#PopulationLegale"></see>
     /// </summary>
-    let PopulationLegale =
-        Namespaced_IRI.parse _namespace_name "PopulationLegale" |> NamespacedName
-
+    let PopulationLegale = _prefix "PopulationLegale"
     /// <summary>
     ///   <see href="http://rdf.insee.fr/def/demo#date"></see>
     /// </summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     ///   <see href="http://rdf.insee.fr/def/demo#population"></see>
     /// </summary>
-    let population = Namespaced_IRI.parse _namespace_name "population" |> NamespacedName
-
+    let population = _prefix "population"
     /// <summary>
     ///   <see href="http://rdf.insee.fr/def/demo#populationCompteeAPart"></see>
     /// </summary>
-    let populationCompteeAPart =
-        Namespaced_IRI.parse _namespace_name "populationCompteeAPart" |> NamespacedName
-
+    let populationCompteeAPart = _prefix "populationCompteeAPart"
     /// <summary>
     ///   <see href="http://rdf.insee.fr/def/demo#populationMunicipale"></see>
     /// </summary>
-    let populationMunicipale =
-        Namespaced_IRI.parse _namespace_name "populationMunicipale" |> NamespacedName
-
+    let populationMunicipale = _prefix "populationMunicipale"
     /// <summary>
     ///   <see href="http://rdf.insee.fr/def/demo#populationTotale"></see>
     /// </summary>
-    let populationTotale =
-        Namespaced_IRI.parse _namespace_name "populationTotale" |> NamespacedName
+    let populationTotale = _prefix "populationTotale"

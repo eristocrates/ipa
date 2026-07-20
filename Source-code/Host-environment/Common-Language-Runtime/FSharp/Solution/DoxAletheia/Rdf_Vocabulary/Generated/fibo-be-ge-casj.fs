@@ -1,97 +1,84 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.AsianJurisdiction.CentralAsiaGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_casj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheKyrgyzRepublic"></see>
     /// </summary>
-    let GovernmentOfTheKyrgyzRepublic =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKyrgyzRepublic" |> NamespacedName
-
+    let GovernmentOfTheKyrgyzRepublic = _prefix "GovernmentOfTheKyrgyzRepublic"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheKyrgyzRepublic"></see>
     /// </summary>
-    let JurisdictionOfTheKyrgyzRepublic =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheKyrgyzRepublic" |> NamespacedName
+    let JurisdictionOfTheKyrgyzRepublic = _prefix "JurisdictionOfTheKyrgyzRepublic"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfKazakhstan"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfKazakhstan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfKazakhstan" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfKazakhstan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfKazakhstan"></see>
     /// </summary>
     let JurisdictionOfTheRepublicOfKazakhstan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfKazakhstan" |> NamespacedName
+        _prefix "JurisdictionOfTheRepublicOfKazakhstan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfTajikistan"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfTajikistan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfTajikistan" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfTajikistan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfTajikistan"></see>
     /// </summary>
     let JurisdictionOfTheRepublicOfTajikistan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfTajikistan" |> NamespacedName
+        _prefix "JurisdictionOfTheRepublicOfTajikistan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfUzbekistan"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfUzbekistan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfUzbekistan" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfUzbekistan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTheRepublicOfUzbekistan"></see>
     /// </summary>
     let JurisdictionOfTheRepublicOfUzbekistan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheRepublicOfUzbekistan" |> NamespacedName
+        _prefix "JurisdictionOfTheRepublicOfUzbekistan"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/GovernmentOfTurkmenistan"></see>
     /// </summary>
-    let GovernmentOfTurkmenistan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTurkmenistan" |> NamespacedName
-
+    let GovernmentOfTurkmenistan = _prefix "GovernmentOfTurkmenistan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/JurisdictionOfTurkmenistan"></see>
     /// </summary>
-    let JurisdictionOfTurkmenistan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTurkmenistan" |> NamespacedName
-
+    let JurisdictionOfTurkmenistan = _prefix "JurisdictionOfTurkmenistan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/StateOfKazakhstan"></see>
     /// </summary>
-    let StateOfKazakhstan =
-        Namespaced_IRI.parse _namespace_name "StateOfKazakhstan" |> NamespacedName
-
+    let StateOfKazakhstan = _prefix "StateOfKazakhstan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/StateOfKyrgyzstan"></see>
     /// </summary>
-    let StateOfKyrgyzstan =
-        Namespaced_IRI.parse _namespace_name "StateOfKyrgyzstan" |> NamespacedName
-
+    let StateOfKyrgyzstan = _prefix "StateOfKyrgyzstan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/StateOfTajikistan"></see>
     /// </summary>
-    let StateOfTajikistan =
-        Namespaced_IRI.parse _namespace_name "StateOfTajikistan" |> NamespacedName
-
+    let StateOfTajikistan = _prefix "StateOfTajikistan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/StateOfTurkmenistan"></see>
     /// </summary>
-    let StateOfTurkmenistan =
-        Namespaced_IRI.parse _namespace_name "StateOfTurkmenistan" |> NamespacedName
-
+    let StateOfTurkmenistan = _prefix "StateOfTurkmenistan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/StateOfUzbekistan"></see>
     /// </summary>
-    let StateOfUzbekistan =
-        Namespaced_IRI.parse _namespace_name "StateOfUzbekistan" |> NamespacedName
+    let StateOfUzbekistan = _prefix "StateOfUzbekistan"

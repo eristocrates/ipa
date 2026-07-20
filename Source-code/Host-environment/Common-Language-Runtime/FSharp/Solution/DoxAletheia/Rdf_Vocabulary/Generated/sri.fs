@@ -1,271 +1,227 @@
 namespace https.w3id.org.sri.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module sri =
     let _namespace_name = "https://w3id.org/sri#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// This represents a building which is assessed.
     /// <see href="https://w3id.org/sri#Building"></see></summary>
-    let Building = Namespaced_IRI.parse _namespace_name "Building" |> NamespacedName
+    let Building = _prefix "Building"
     /// <summary>
     /// Class of technical domains.
     /// <see href="https://w3id.org/sri#Domain"></see></summary>
-    let Domain = Namespaced_IRI.parse _namespace_name "Domain" |> NamespacedName
+    let Domain = _prefix "Domain"
     /// <summary>
     /// Class for Services.
     /// <see href="https://w3id.org/sri#Service"></see></summary>
-    let Service = Namespaced_IRI.parse _namespace_name "Service" |> NamespacedName
-
+    let Service = _prefix "Service"
     /// <summary>
     /// Class of instances in the functional hierarchy, this includes Domains and Services.
     /// <see href="https://w3id.org/sri#FunctionalThing"></see></summary>
-    let FunctionalThing =
-        Namespaced_IRI.parse _namespace_name "FunctionalThing" |> NamespacedName
-
+    let FunctionalThing = _prefix "FunctionalThing"
     /// <summary>
     /// Class of Impacts.
     /// <see href="https://w3id.org/sri#Impact"></see></summary>
-    let Impact = Namespaced_IRI.parse _namespace_name "Impact" |> NamespacedName
-
+    let Impact = _prefix "Impact"
     /// <summary>
     /// Class of all Key Capabilities, aggregation of Impacts.
     /// <see href="https://w3id.org/sri#KeyCapability"></see></summary>
-    let KeyCapability =
-        Namespaced_IRI.parse _namespace_name "KeyCapability" |> NamespacedName
-
+    let KeyCapability = _prefix "KeyCapability"
     /// <summary>
     /// Class of all instances in the impact hierarchy, this includes Impacts and Key Capabilities.
     /// <see href="https://w3id.org/sri#ImpactThing"></see></summary>
-    let ImpactThing =
-        Namespaced_IRI.parse _namespace_name "ImpactThing" |> NamespacedName
-
+    let ImpactThing = _prefix "ImpactThing"
     /// <summary>
     /// Class of service levels.
     /// <see href="https://w3id.org/sri#Level"></see></summary>
-    let Level = Namespaced_IRI.parse _namespace_name "Level" |> NamespacedName
-
+    let Level = _prefix "Level"
     /// <summary>
     /// A Service Catalogue is a collection of services used in an assessment.
     /// <see href="https://w3id.org/sri#ServiceCatalogue"></see></summary>
-    let ServiceCatalogue =
-        Namespaced_IRI.parse _namespace_name "ServiceCatalogue" |> NamespacedName
-
+    let ServiceCatalogue = _prefix "ServiceCatalogue"
     /// <summary>
     /// Class for all ServiceLevel instances, which are all allowed/defined combinations of Services and Levels.
     /// <see href="https://w3id.org/sri#ServiceLevel"></see></summary>
-    let ServiceLevel =
-        Namespaced_IRI.parse _namespace_name "ServiceLevel" |> NamespacedName
-
+    let ServiceLevel = _prefix "ServiceLevel"
     /// <summary>
     /// Relates something to a FunctionalThing.
     /// <see href="https://w3id.org/sri#function"></see></summary>
-    let function_ = Namespaced_IRI.parse _namespace_name "function" |> NamespacedName
+    let function_ = _prefix "function"
     /// <summary>
     /// Relates something to a Level.
     /// <see href="https://w3id.org/sri#level"></see></summary>
-    let level = Namespaced_IRI.parse _namespace_name "level" |> NamespacedName
+    let level = _prefix "level"
 
     /// <summary>
     ///   <see href="https://w3id.org/sri#adaptTheirOperationToTheNeedsOfTheOccupant"></see>
     /// </summary>
     let adaptTheirOperationToTheNeedsOfTheOccupant =
-        Namespaced_IRI.parse _namespace_name "adaptTheirOperationToTheNeedsOfTheOccupant" |> NamespacedName
+        _prefix "adaptTheirOperationToTheNeedsOfTheOccupant"
 
     /// <summary>
     ///   <see href="https://w3id.org/sri#comfort"></see>
     /// </summary>
-    let comfort = Namespaced_IRI.parse _namespace_name "comfort" |> NamespacedName
-
+    let comfort = _prefix "comfort"
     /// <summary>
     ///   <see href="https://w3id.org/sri#convenience"></see>
     /// </summary>
-    let convenience =
-        Namespaced_IRI.parse _namespace_name "convenience" |> NamespacedName
+    let convenience = _prefix "convenience"
 
     /// <summary>
     ///   <see href="https://w3id.org/sri#health_well_being_and_accessibility"></see>
     /// </summary>
     let health_well_being_and_accessibility =
-        Namespaced_IRI.parse _namespace_name "health_well_being_and_accessibility" |> NamespacedName
+        _prefix "health_well_being_and_accessibility"
 
     /// <summary>
     ///   <see href="https://w3id.org/sri#information_to_occupants"></see>
     /// </summary>
-    let information_to_occupants =
-        Namespaced_IRI.parse _namespace_name "information_to_occupants" |> NamespacedName
-
+    let information_to_occupants = _prefix "information_to_occupants"
     /// <summary>
     ///   <see href="https://w3id.org/sri#adaptToSignalsFromTheGrid"></see>
     /// </summary>
-    let adaptToSignalsFromTheGrid =
-        Namespaced_IRI.parse _namespace_name "adaptToSignalsFromTheGrid" |> NamespacedName
-
+    let adaptToSignalsFromTheGrid = _prefix "adaptToSignalsFromTheGrid"
     /// <summary>
     ///   <see href="https://w3id.org/sri#energy_flexibility_and_storage"></see>
     /// </summary>
-    let energy_flexibility_and_storage =
-        Namespaced_IRI.parse _namespace_name "energy_flexibility_and_storage" |> NamespacedName
-
+    let energy_flexibility_and_storage = _prefix "energy_flexibility_and_storage"
     /// <summary>
     /// Additional Level if share is &lt; 100%.
     /// <see href="https://w3id.org/sri#additionalLevel"></see></summary>
-    let additionalLevel =
-        Namespaced_IRI.parse _namespace_name "additionalLevel" |> NamespacedName
-
+    let additionalLevel = _prefix "additionalLevel"
     /// <summary>
     /// Relates something to an assessment dataset.
     /// <see href="https://w3id.org/sri#assessment"></see></summary>
-    let assessment = Namespaced_IRI.parse _namespace_name "assessment" |> NamespacedName
-
+    let assessment = _prefix "assessment"
     /// <summary>
     ///   <see href="https://w3id.org/sri#dsd-assessment"></see>
     /// </summary>
-    let ``dsd-assessment`` =
-        Namespaced_IRI.parse _namespace_name "dsd-assessment" |> NamespacedName
-
+    let ``dsd-assessment`` = _prefix "dsd-assessment"
     /// <summary>
     /// Relates something to a Building.
     /// <see href="https://w3id.org/sri#building"></see></summary>
-    let building = Namespaced_IRI.parse _namespace_name "building" |> NamespacedName
+    let building = _prefix "building"
     /// <summary>
     ///   <see href="https://w3id.org/sri#cooling"></see>
     /// </summary>
-    let cooling = Namespaced_IRI.parse _namespace_name "cooling" |> NamespacedName
+    let cooling = _prefix "cooling"
     /// <summary>
     ///   <see href="https://w3id.org/sri#dE"></see>
     /// </summary>
-    let dE = Namespaced_IRI.parse _namespace_name "dE" |> NamespacedName
+    let dE = _prefix "dE"
     /// <summary>
     ///   <see href="https://w3id.org/sri#dHW"></see>
     /// </summary>
-    let dHW = Namespaced_IRI.parse _namespace_name "dHW" |> NamespacedName
+    let dHW = _prefix "dHW"
     /// <summary>
     /// Relates something to an ImpactThing.
     /// <see href="https://w3id.org/sri#impact"></see></summary>
-    let impact = Namespaced_IRI.parse _namespace_name "impact" |> NamespacedName
-
+    let impact = _prefix "impact"
     /// <summary>
     ///   <see href="https://w3id.org/sri#dsd-scores"></see>
     /// </summary>
-    let ``dsd-scores`` =
-        Namespaced_IRI.parse _namespace_name "dsd-scores" |> NamespacedName
-
+    let ``dsd-scores`` = _prefix "dsd-scores"
     /// <summary>
     /// The smart-readiness score is defined for ImpactThings on all levels from Impacts to the complete Building (Steps 5, 6, and 7) and optionally for Domains (Step 8)
     /// <see href="https://w3id.org/sri#score"></see></summary>
-    let score = Namespaced_IRI.parse _namespace_name "score" |> NamespacedName
-
+    let score = _prefix "score"
     /// <summary>
     ///   <see href="https://w3id.org/sri#dsd-sriscores"></see>
     /// </summary>
-    let ``dsd-sriscores`` =
-        Namespaced_IRI.parse _namespace_name "dsd-sriscores" |> NamespacedName
-
+    let ``dsd-sriscores`` = _prefix "dsd-sriscores"
     /// <summary>
     /// The impact criterion score is defined for Services and calculated for Domains in Step 3.
     /// <see href="https://w3id.org/sri#icscore"></see></summary>
-    let icscore = Namespaced_IRI.parse _namespace_name "icscore" |> NamespacedName
+    let icscore = _prefix "icscore"
     /// <summary>
     /// A weight of the weight matrix used for weighing the smart-readiness scores before aggregation.
     /// <see href="https://w3id.org/sri#weight"></see></summary>
-    let weight = Namespaced_IRI.parse _namespace_name "weight" |> NamespacedName
-
+    let weight = _prefix "weight"
     /// <summary>
     ///   <see href="https://w3id.org/sri#dsd-weights"></see>
     /// </summary>
-    let ``dsd-weights`` =
-        Namespaced_IRI.parse _namespace_name "dsd-weights" |> NamespacedName
-
+    let ``dsd-weights`` = _prefix "dsd-weights"
     /// <summary>
     ///   <see href="https://w3id.org/sri#eV"></see>
     /// </summary>
-    let eV = Namespaced_IRI.parse _namespace_name "eV" |> NamespacedName
-
+    let eV = _prefix "eV"
     /// <summary>
     ///   <see href="https://w3id.org/sri#electricity"></see>
     /// </summary>
-    let electricity =
-        Namespaced_IRI.parse _namespace_name "electricity" |> NamespacedName
-
+    let electricity = _prefix "electricity"
     /// <summary>
     ///   <see href="https://w3id.org/sri#energy_efficiency"></see>
     /// </summary>
-    let energy_efficiency =
-        Namespaced_IRI.parse _namespace_name "energy_efficiency" |> NamespacedName
-
+    let energy_efficiency = _prefix "energy_efficiency"
     /// <summary>
     ///   <see href="https://w3id.org/sri#heating"></see>
     /// </summary>
-    let heating = Namespaced_IRI.parse _namespace_name "heating" |> NamespacedName
+    let heating = _prefix "heating"
     /// <summary>
     ///   <see href="https://w3id.org/sri#level0"></see>
     /// </summary>
-    let level0 = Namespaced_IRI.parse _namespace_name "level0" |> NamespacedName
+    let level0 = _prefix "level0"
     /// <summary>
     ///   <see href="https://w3id.org/sri#level1"></see>
     /// </summary>
-    let level1 = Namespaced_IRI.parse _namespace_name "level1" |> NamespacedName
+    let level1 = _prefix "level1"
     /// <summary>
     ///   <see href="https://w3id.org/sri#level2"></see>
     /// </summary>
-    let level2 = Namespaced_IRI.parse _namespace_name "level2" |> NamespacedName
+    let level2 = _prefix "level2"
     /// <summary>
     ///   <see href="https://w3id.org/sri#level3"></see>
     /// </summary>
-    let level3 = Namespaced_IRI.parse _namespace_name "level3" |> NamespacedName
+    let level3 = _prefix "level3"
     /// <summary>
     ///   <see href="https://w3id.org/sri#level4"></see>
     /// </summary>
-    let level4 = Namespaced_IRI.parse _namespace_name "level4" |> NamespacedName
+    let level4 = _prefix "level4"
     /// <summary>
     ///   <see href="https://w3id.org/sri#lighting"></see>
     /// </summary>
-    let lighting = Namespaced_IRI.parse _namespace_name "lighting" |> NamespacedName
+    let lighting = _prefix "lighting"
     /// <summary>
     ///   <see href="https://w3id.org/sri#mC"></see>
     /// </summary>
-    let mC = Namespaced_IRI.parse _namespace_name "mC" |> NamespacedName
-
+    let mC = _prefix "mC"
     /// <summary>
     ///   <see href="https://w3id.org/sri#maintenance_and_fault_prediction"></see>
     /// </summary>
-    let maintenance_and_fault_prediction =
-        Namespaced_IRI.parse _namespace_name "maintenance_and_fault_prediction" |> NamespacedName
-
+    let maintenance_and_fault_prediction = _prefix "maintenance_and_fault_prediction"
     /// <summary>
     /// Maximum impact criterion score. This is defined for Domains and calculated in Step 4.
     /// <see href="https://w3id.org/sri#max"></see></summary>
-    let max = Namespaced_IRI.parse _namespace_name "max" |> NamespacedName
+    let max = _prefix "max"
 
     /// <summary>
     ///   <see href="https://w3id.org/sri#optimiseEnergyEfficiencyAndOverallIn-UsePerformance"></see>
     /// </summary>
     let ``optimiseEnergyEfficiencyAndOverallIn-UsePerformance`` =
-        Namespaced_IRI.parse _namespace_name "optimiseEnergyEfficiencyAndOverallIn-UsePerformance" |> NamespacedName
+        _prefix "optimiseEnergyEfficiencyAndOverallIn-UsePerformance"
 
     /// <summary>
     /// Relates something to a ServiceCatalogue.
     /// <see href="https://w3id.org/sri#serviceCatalogue"></see></summary>
-    let serviceCatalogue =
-        Namespaced_IRI.parse _namespace_name "serviceCatalogue" |> NamespacedName
-
+    let serviceCatalogue = _prefix "serviceCatalogue"
     /// <summary>
     /// A percentage (value between 0.0 and 1.0) which expresses that parts of a building are assessed with different levels wrt. a Service. If share is &lt; 100% then additionalLevel has to be defined.
     /// <see href="https://w3id.org/sri#share"></see></summary>
-    let share = Namespaced_IRI.parse _namespace_name "share" |> NamespacedName
+    let share = _prefix "share"
     /// <summary>
     ///   <see href="https://w3id.org/sri#topDomain"></see>
     /// </summary>
-    let topDomain = Namespaced_IRI.parse _namespace_name "topDomain" |> NamespacedName
-
+    let topDomain = _prefix "topDomain"
     /// <summary>
     ///   <see href="https://w3id.org/sri#ventilation"></see>
     /// </summary>
-    let ventilation =
-        Namespaced_IRI.parse _namespace_name "ventilation" |> NamespacedName
-
+    let ventilation = _prefix "ventilation"
     /// <summary>
     ///   <see href="https://w3id.org/sri#topImpact"></see>
     /// </summary>
-    let topImpact = Namespaced_IRI.parse _namespace_name "topImpact" |> NamespacedName
+    let topImpact = _prefix "topImpact"

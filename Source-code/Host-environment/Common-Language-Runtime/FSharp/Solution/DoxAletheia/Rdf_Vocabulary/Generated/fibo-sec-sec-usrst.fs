@@ -1,72 +1,65 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Securities.NorthAmericanSecurities.USSecuritiesRestrictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_sec_usrst =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/BlueSkyLaw"></see>
     /// </summary>
-    let BlueSkyLaw = Namespaced_IRI.parse _namespace_name "BlueSkyLaw" |> NamespacedName
-
+    let BlueSkyLaw = _prefix "BlueSkyLaw"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/RegulationD"></see>
     /// </summary>
-    let RegulationD =
-        Namespaced_IRI.parse _namespace_name "RegulationD" |> NamespacedName
-
+    let RegulationD = _prefix "RegulationD"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/RegulationS"></see>
     /// </summary>
-    let RegulationS =
-        Namespaced_IRI.parse _namespace_name "RegulationS" |> NamespacedName
-
+    let RegulationS = _prefix "RegulationS"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/Rule144A"></see>
     /// </summary>
-    let Rule144A = Namespaced_IRI.parse _namespace_name "Rule144A" |> NamespacedName
-
+    let Rule144A = _prefix "Rule144A"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/SECExemption3c7"></see>
     /// </summary>
-    let SECExemption3c7 =
-        Namespaced_IRI.parse _namespace_name "SECExemption3c7" |> NamespacedName
-
+    let SECExemption3c7 = _prefix "SECExemption3c7"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/SECRule15c3-3"></see>
     /// </summary>
-    let ``SECRule15c3-3`` =
-        Namespaced_IRI.parse _namespace_name "SECRule15c3-3" |> NamespacedName
-
+    let ``SECRule15c3-3`` = _prefix "SECRule15c3-3"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/SECRule201"></see>
     /// </summary>
-    let SECRule201 = Namespaced_IRI.parse _namespace_name "SECRule201" |> NamespacedName
+    let SECRule201 = _prefix "SECRule201"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/TEFRACRule"></see>
     /// </summary>
-    let TEFRACRule = Namespaced_IRI.parse _namespace_name "TEFRACRule" |> NamespacedName
+    let TEFRACRule = _prefix "TEFRACRule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/TEFRADRule"></see>
     /// </summary>
-    let TEFRADRule = Namespaced_IRI.parse _namespace_name "TEFRADRule" |> NamespacedName
+    let TEFRADRule = _prefix "TEFRADRule"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/isEmployeeRetirementIncomeSecurityActConformant"></see>
     /// </summary>
     let isEmployeeRetirementIncomeSecurityActConformant =
-        Namespaced_IRI.parse _namespace_name "isEmployeeRetirementIncomeSecurityActConformant" |> NamespacedName
+        _prefix "isEmployeeRetirementIncomeSecurityActConformant"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/isFederalDepositInsuranceCorporationInsured"></see>
     /// </summary>
     let isFederalDepositInsuranceCorporationInsured =
-        Namespaced_IRI.parse _namespace_name "isFederalDepositInsuranceCorporationInsured" |> NamespacedName
+        _prefix "isFederalDepositInsuranceCorporationInsured"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions/isSubjectToFederalReserveBoardRegulationT"></see>
     /// </summary>
     let isSubjectToFederalReserveBoardRegulationT =
-        Namespaced_IRI.parse _namespace_name "isSubjectToFederalReserveBoardRegulationT" |> NamespacedName
+        _prefix "isSubjectToFederalReserveBoardRegulationT"

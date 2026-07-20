@@ -1,134 +1,105 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.OwnershipAndControl.ControlParties.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_oac_cpty =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/ContractualControl"></see>
     /// </summary>
-    let ContractualControl =
-        Namespaced_IRI.parse _namespace_name "ContractualControl" |> NamespacedName
-
+    let ContractualControl = _prefix "ContractualControl"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/ControlledParty"></see>
     /// </summary>
-    let ControlledParty =
-        Namespaced_IRI.parse _namespace_name "ControlledParty" |> NamespacedName
-
+    let ControlledParty = _prefix "ControlledParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/ControllingAlliance"></see>
     /// </summary>
-    let ControllingAlliance =
-        Namespaced_IRI.parse _namespace_name "ControllingAlliance" |> NamespacedName
-
+    let ControllingAlliance = _prefix "ControllingAlliance"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/CourtAppointedControl"></see>
     /// </summary>
-    let CourtAppointedControl =
-        Namespaced_IRI.parse _namespace_name "CourtAppointedControl" |> NamespacedName
-
+    let CourtAppointedControl = _prefix "CourtAppointedControl"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/DeFactoControllingInterestParty"></see>
     /// </summary>
-    let DeFactoControllingInterestParty =
-        Namespaced_IRI.parse _namespace_name "DeFactoControllingInterestParty" |> NamespacedName
-
+    let DeFactoControllingInterestParty = _prefix "DeFactoControllingInterestParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/DeJureControllingInterestParty"></see>
     /// </summary>
-    let DeJureControllingInterestParty =
-        Namespaced_IRI.parse _namespace_name "DeJureControllingInterestParty" |> NamespacedName
-
+    let DeJureControllingInterestParty = _prefix "DeJureControllingInterestParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/EntityControllingParty"></see>
     /// </summary>
-    let EntityControllingParty =
-        Namespaced_IRI.parse _namespace_name "EntityControllingParty" |> NamespacedName
-
+    let EntityControllingParty = _prefix "EntityControllingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/InfluenceBasedDeFactoControl"></see>
     /// </summary>
-    let InfluenceBasedDeFactoControl =
-        Namespaced_IRI.parse _namespace_name "InfluenceBasedDeFactoControl" |> NamespacedName
+    let InfluenceBasedDeFactoControl = _prefix "InfluenceBasedDeFactoControl"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/InfluenceBasedDeFactoControllingParty"></see>
     /// </summary>
     let InfluenceBasedDeFactoControllingParty =
-        Namespaced_IRI.parse _namespace_name "InfluenceBasedDeFactoControllingParty" |> NamespacedName
+        _prefix "InfluenceBasedDeFactoControllingParty"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/InvestmentBasedDeFactoControl"></see>
     /// </summary>
-    let InvestmentBasedDeFactoControl =
-        Namespaced_IRI.parse _namespace_name "InvestmentBasedDeFactoControl" |> NamespacedName
+    let InvestmentBasedDeFactoControl = _prefix "InvestmentBasedDeFactoControl"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/InvestmentBasedDeFactoControllingInterestParty"></see>
     /// </summary>
     let InvestmentBasedDeFactoControllingInterestParty =
-        Namespaced_IRI.parse _namespace_name "InvestmentBasedDeFactoControllingInterestParty" |> NamespacedName
+        _prefix "InvestmentBasedDeFactoControllingInterestParty"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/JointControllingParty"></see>
     /// </summary>
-    let JointControllingParty =
-        Namespaced_IRI.parse _namespace_name "JointControllingParty" |> NamespacedName
-
+    let JointControllingParty = _prefix "JointControllingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/SoleControllingParty"></see>
     /// </summary>
-    let SoleControllingParty =
-        Namespaced_IRI.parse _namespace_name "SoleControllingParty" |> NamespacedName
-
+    let SoleControllingParty = _prefix "SoleControllingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/MajorityControllingParty"></see>
     /// </summary>
-    let MajorityControllingParty =
-        Namespaced_IRI.parse _namespace_name "MajorityControllingParty" |> NamespacedName
-
+    let MajorityControllingParty = _prefix "MajorityControllingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/Receiver"></see>
     /// </summary>
-    let Receiver = Namespaced_IRI.parse _namespace_name "Receiver" |> NamespacedName
+    let Receiver = _prefix "Receiver"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/TotalOwner"></see>
     /// </summary>
-    let TotalOwner = Namespaced_IRI.parse _namespace_name "TotalOwner" |> NamespacedName
+    let TotalOwner = _prefix "TotalOwner"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/advises"></see>
     /// </summary>
-    let advises = Namespaced_IRI.parse _namespace_name "advises" |> NamespacedName
-
+    let advises = _prefix "advises"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/isAdvisedBy"></see>
     /// </summary>
-    let isAdvisedBy =
-        Namespaced_IRI.parse _namespace_name "isAdvisedBy" |> NamespacedName
-
+    let isAdvisedBy = _prefix "isAdvisedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/hasControllingOrganizationMember"></see>
     /// </summary>
-    let hasControllingOrganizationMember =
-        Namespaced_IRI.parse _namespace_name "hasControllingOrganizationMember" |> NamespacedName
-
+    let hasControllingOrganizationMember = _prefix "hasControllingOrganizationMember"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/isControllingMemberOf"></see>
     /// </summary>
-    let isControllingMemberOf =
-        Namespaced_IRI.parse _namespace_name "isControllingMemberOf" |> NamespacedName
-
+    let isControllingMemberOf = _prefix "isControllingMemberOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/hasMajorityControllingParty"></see>
     /// </summary>
-    let hasMajorityControllingParty =
-        Namespaced_IRI.parse _namespace_name "hasMajorityControllingParty" |> NamespacedName
-
+    let hasMajorityControllingParty = _prefix "hasMajorityControllingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/isBasedOnInvestmentEquity"></see>
     /// </summary>
-    let isBasedOnInvestmentEquity =
-        Namespaced_IRI.parse _namespace_name "isBasedOnInvestmentEquity" |> NamespacedName
+    let isBasedOnInvestmentEquity = _prefix "isBasedOnInvestmentEquity"

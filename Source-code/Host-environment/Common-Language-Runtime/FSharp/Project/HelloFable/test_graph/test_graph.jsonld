@@ -1,0 +1,32 @@
+{
+  "@graph": [
+    {
+      "@id": "https://eristocrates.dev/ontology/dbug/Alice",
+      "@type": "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/knows": {
+        "@id": "https://eristocrates.dev/ontology/dbug/Bob"
+      }
+    },
+    {
+      "@id": "https://eristocrates.dev/ontology/dbug/Bob",
+      "@type": "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/knows": {
+        "@id": "https://eristocrates.dev/ontology/dbug/Alice"
+      }
+    }
+  ],
+  "@context": {
+    "rdf": {
+      "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "@prefix": true
+    },
+    "rdfs": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#",
+      "@prefix": true
+    },
+    "xsd": {
+      "@id": "http://www.w3.org/2001/XMLSchema#",
+      "@prefix": true
+    }
+  }
+}

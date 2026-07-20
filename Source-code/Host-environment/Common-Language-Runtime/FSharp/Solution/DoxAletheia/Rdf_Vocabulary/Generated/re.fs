@@ -1,37 +1,35 @@
 namespace http.www.w3.org._2000._10.swap.reason.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module re =
     let _namespace_name = "http://www.w3.org/2000/10/swap/reason#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A binding is given eg in a proof or query result.
     /// 	The binding specifies which variable was bound (:variable),
     /// 	and what term it was bound to.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/reason#Binding"></see></summary>
-    let Binding = Namespaced_IRI.parse _namespace_name "Binding" |> NamespacedName
-
+    let Binding = _prefix "Binding"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/reason#CommandLine"></see>
     /// </summary>
-    let CommandLine =
-        Namespaced_IRI.parse _namespace_name "CommandLine" |> NamespacedName
-
+    let CommandLine = _prefix "CommandLine"
     /// <summary>
     /// A step in a proof.
     ///
     /// 	See :gives for the arc to the formula actually proved at this step.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/reason#Step"></see></summary>
-    let Step = Namespaced_IRI.parse _namespace_name "Step" |> NamespacedName
-
+    let Step = _prefix "Step"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/reason#Conjunction"></see>
     /// </summary>
-    let Conjunction =
-        Namespaced_IRI.parse _namespace_name "Conjunction" |> NamespacedName
-
+    let Conjunction = _prefix "Conjunction"
     /// <summary>
     /// The step of taking one statement out of a formula.
     /// 	The step is identified by the :gives formula (the statement)
@@ -39,16 +37,16 @@ module re =
     /// 	from).
     ///
     /// <see href="http://www.w3.org/2000/10/swap/reason#Extraction"></see></summary>
-    let Extraction = Namespaced_IRI.parse _namespace_name "Extraction" |> NamespacedName
+    let Extraction = _prefix "Extraction"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/reason#Inference"></see>
     /// </summary>
-    let Inference = Namespaced_IRI.parse _namespace_name "Inference" |> NamespacedName
+    let Inference = _prefix "Inference"
     /// <summary>
     /// The formula given was derived from parsing a
     /// 	resource.
     /// <see href="http://www.w3.org/2000/10/swap/reason#Parsing"></see></summary>
-    let Parsing = Namespaced_IRI.parse _namespace_name "Parsing" |> NamespacedName
+    let Parsing = _prefix "Parsing"
     /// <summary>
     /// A Proof step is the last step in the proof,
     /// 	a step which :gives that which was to be proved.
@@ -57,38 +55,35 @@ module re =
     /// 	the Formula proved - Q.E.D. .
     ///
     /// <see href="http://www.w3.org/2000/10/swap/reason#Proof"></see></summary>
-    let Proof = Namespaced_IRI.parse _namespace_name "Proof" |> NamespacedName
+    let Proof = _prefix "Proof"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/reason#args"></see>
     /// </summary>
-    let args = Namespaced_IRI.parse _namespace_name "args" |> NamespacedName
-
+    let args = _prefix "args"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/reason#Commandline"></see>
     /// </summary>
-    let Commandline =
-        Namespaced_IRI.parse _namespace_name "Commandline" |> NamespacedName
-
+    let Commandline = _prefix "Commandline"
     /// <summary>
     /// gives the step whose data was input to this step.
     /// <see href="http://www.w3.org/2000/10/swap/reason#because"></see></summary>
-    let because = Namespaced_IRI.parse _namespace_name "because" |> NamespacedName
+    let because = _prefix "because"
     /// <summary>
     ///
     /// 	This binding binds its variable to this term.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/reason#boundTo"></see></summary>
-    let boundTo = Namespaced_IRI.parse _namespace_name "boundTo" |> NamespacedName
+    let boundTo = _prefix "boundTo"
     /// <summary>
     /// A step whose data was used in building this conjunction
     /// <see href="http://www.w3.org/2000/10/swap/reason#component"></see></summary>
-    let component_ = Namespaced_IRI.parse _namespace_name "component" |> NamespacedName
+    let component_ = _prefix "component"
     /// <summary>
     /// The :evidence for a GMP inference step is a list of
     ///     formulas, each proved by other means, which combined entail the
     ///     result of making the given substitution in the antecedent of the rule.
     /// <see href="http://www.w3.org/2000/10/swap/reason#evidence"></see></summary>
-    let evidence = Namespaced_IRI.parse _namespace_name "evidence" |> NamespacedName
+    let evidence = _prefix "evidence"
     /// <summary>
     /// The proof step gives the formula as a result.
     /// 	For some steps, like extraction of a statement from a formula,
@@ -97,17 +92,17 @@ module re =
     /// 	the specification of the rule and bindings defines the result,
     /// 	and so the proof can still be checked if the reason:gives ars
     /// <see href="http://www.w3.org/2000/10/swap/reason#gives"></see></summary>
-    let gives = Namespaced_IRI.parse _namespace_name "gives" |> NamespacedName
+    let gives = _prefix "gives"
     /// <summary>
     /// The inference step was performed using a rule (implication)
     ///     given.
     /// <see href="http://www.w3.org/2000/10/swap/reason#rule"></see></summary>
-    let rule = Namespaced_IRI.parse _namespace_name "rule" |> NamespacedName
+    let rule = _prefix "rule"
     /// <summary>
     /// The source document which was parsed.
     ///
     /// <see href="http://www.w3.org/2000/10/swap/reason#source"></see></summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
+    let source = _prefix "source"
     /// <summary>
     ///
     /// 	The given string is that used as the identifier of the variable
@@ -115,4 +110,4 @@ module re =
     /// 	a string, rather than the variable being put here, or the variable
     /// 	would be treated as a variable.
     /// <see href="http://www.w3.org/2000/10/swap/reason#variable"></see></summary>
-    let variable = Namespaced_IRI.parse _namespace_name "variable" |> NamespacedName
+    let variable = _prefix "variable"

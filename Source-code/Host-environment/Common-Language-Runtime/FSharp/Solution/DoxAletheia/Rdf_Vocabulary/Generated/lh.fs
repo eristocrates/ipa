@@ -1,333 +1,246 @@
 namespace https.w3id.org.legalhtml.ov.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module lh =
     let _namespace_name = "https://w3id.org/legalhtml/ov#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Change"></see>
     /// </summary>
-    let Change = Namespaced_IRI.parse _namespace_name "Change" |> NamespacedName
+    let Change = _prefix "Change"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ChangeSet"></see>
     /// </summary>
-    let ChangeSet = Namespaced_IRI.parse _namespace_name "ChangeSet" |> NamespacedName
-
+    let ChangeSet = _prefix "ChangeSet"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ConsolidatedResource"></see>
     /// </summary>
-    let ConsolidatedResource =
-        Namespaced_IRI.parse _namespace_name "ConsolidatedResource" |> NamespacedName
-
+    let ConsolidatedResource = _prefix "ConsolidatedResource"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#EfficacyChange"></see>
     /// </summary>
-    let EfficacyChange =
-        Namespaced_IRI.parse _namespace_name "EfficacyChange" |> NamespacedName
-
+    let EfficacyChange = _prefix "EfficacyChange"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#EndOfEfficacy"></see>
     /// </summary>
-    let EndOfEfficacy =
-        Namespaced_IRI.parse _namespace_name "EndOfEfficacy" |> NamespacedName
-
+    let EndOfEfficacy = _prefix "EndOfEfficacy"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#EndOfEnactment"></see>
     /// </summary>
-    let EndOfEnactment =
-        Namespaced_IRI.parse _namespace_name "EndOfEnactment" |> NamespacedName
-
+    let EndOfEnactment = _prefix "EndOfEnactment"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ForceChange"></see>
     /// </summary>
-    let ForceChange =
-        Namespaced_IRI.parse _namespace_name "ForceChange" |> NamespacedName
-
+    let ForceChange = _prefix "ForceChange"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#EntryIntoEfficacy"></see>
     /// </summary>
-    let EntryIntoEfficacy =
-        Namespaced_IRI.parse _namespace_name "EntryIntoEfficacy" |> NamespacedName
-
+    let EntryIntoEfficacy = _prefix "EntryIntoEfficacy"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#EntryIntoForce"></see>
     /// </summary>
-    let EntryIntoForce =
-        Namespaced_IRI.parse _namespace_name "EntryIntoForce" |> NamespacedName
-
+    let EntryIntoForce = _prefix "EntryIntoForce"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Extraefficacy"></see>
     /// </summary>
-    let Extraefficacy =
-        Namespaced_IRI.parse _namespace_name "Extraefficacy" |> NamespacedName
-
+    let Extraefficacy = _prefix "Extraefficacy"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Inapplication"></see>
     /// </summary>
-    let Inapplication =
-        Namespaced_IRI.parse _namespace_name "Inapplication" |> NamespacedName
-
+    let Inapplication = _prefix "Inapplication"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Insertion"></see>
     /// </summary>
-    let Insertion = Namespaced_IRI.parse _namespace_name "Insertion" |> NamespacedName
-
+    let Insertion = _prefix "Insertion"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#TextualChange"></see>
     /// </summary>
-    let TextualChange =
-        Namespaced_IRI.parse _namespace_name "TextualChange" |> NamespacedName
-
+    let TextualChange = _prefix "TextualChange"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Legislature"></see>
     /// </summary>
-    let Legislature =
-        Namespaced_IRI.parse _namespace_name "Legislature" |> NamespacedName
-
+    let Legislature = _prefix "Legislature"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#PostponementOfEfficacy"></see>
     /// </summary>
-    let PostponementOfEfficacy =
-        Namespaced_IRI.parse _namespace_name "PostponementOfEfficacy" |> NamespacedName
-
+    let PostponementOfEfficacy = _prefix "PostponementOfEfficacy"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#PostponementOfEntryIntoForce"></see>
     /// </summary>
-    let PostponementOfEntryIntoForce =
-        Namespaced_IRI.parse _namespace_name "PostponementOfEntryIntoForce" |> NamespacedName
-
+    let PostponementOfEntryIntoForce = _prefix "PostponementOfEntryIntoForce"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ProcedureStage"></see>
     /// </summary>
-    let ProcedureStage =
-        Namespaced_IRI.parse _namespace_name "ProcedureStage" |> NamespacedName
-
+    let ProcedureStage = _prefix "ProcedureStage"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ProrogationOfEfficacy"></see>
     /// </summary>
-    let ProrogationOfEfficacy =
-        Namespaced_IRI.parse _namespace_name "ProrogationOfEfficacy" |> NamespacedName
-
+    let ProrogationOfEfficacy = _prefix "ProrogationOfEfficacy"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ProrogationOfForce"></see>
     /// </summary>
-    let ProrogationOfForce =
-        Namespaced_IRI.parse _namespace_name "ProrogationOfForce" |> NamespacedName
-
+    let ProrogationOfForce = _prefix "ProrogationOfForce"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#ReEnactment"></see>
     /// </summary>
-    let ReEnactment =
-        Namespaced_IRI.parse _namespace_name "ReEnactment" |> NamespacedName
-
+    let ReEnactment = _prefix "ReEnactment"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Repeal"></see>
     /// </summary>
-    let Repeal = Namespaced_IRI.parse _namespace_name "Repeal" |> NamespacedName
-
+    let Repeal = _prefix "Repeal"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Retroactivity"></see>
     /// </summary>
-    let Retroactivity =
-        Namespaced_IRI.parse _namespace_name "Retroactivity" |> NamespacedName
-
+    let Retroactivity = _prefix "Retroactivity"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Role"></see>
     /// </summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Signature"></see>
     /// </summary>
-    let Signature = Namespaced_IRI.parse _namespace_name "Signature" |> NamespacedName
+    let Signature = _prefix "Signature"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Status"></see>
     /// </summary>
-    let Status = Namespaced_IRI.parse _namespace_name "Status" |> NamespacedName
-
+    let Status = _prefix "Status"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Substitution"></see>
     /// </summary>
-    let Substitution =
-        Namespaced_IRI.parse _namespace_name "Substitution" |> NamespacedName
-
+    let Substitution = _prefix "Substitution"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#Unconstitutionality"></see>
     /// </summary>
-    let Unconstitutionality =
-        Namespaced_IRI.parse _namespace_name "Unconstitutionality" |> NamespacedName
-
+    let Unconstitutionality = _prefix "Unconstitutionality"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#actingEntity"></see>
     /// </summary>
-    let actingEntity =
-        Namespaced_IRI.parse _namespace_name "actingEntity" |> NamespacedName
-
+    let actingEntity = _prefix "actingEntity"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#addendum"></see>
     /// </summary>
-    let addendum = Namespaced_IRI.parse _namespace_name "addendum" |> NamespacedName
+    let addendum = _prefix "addendum"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#addressee"></see>
     /// </summary>
-    let addressee = Namespaced_IRI.parse _namespace_name "addressee" |> NamespacedName
-
+    let addressee = _prefix "addressee"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#amendedText"></see>
     /// </summary>
-    let amendedText =
-        Namespaced_IRI.parse _namespace_name "amendedText" |> NamespacedName
-
+    let amendedText = _prefix "amendedText"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#amendingText"></see>
     /// </summary>
-    let amendingText =
-        Namespaced_IRI.parse _namespace_name "amendingText" |> NamespacedName
-
+    let amendingText = _prefix "amendingText"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#applicability"></see>
     /// </summary>
-    let applicability =
-        Namespaced_IRI.parse _namespace_name "applicability" |> NamespacedName
-
+    let applicability = _prefix "applicability"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#change"></see>
     /// </summary>
-    let change = Namespaced_IRI.parse _namespace_name "change" |> NamespacedName
+    let change = _prefix "change"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#changeSet"></see>
     /// </summary>
-    let changeSet = Namespaced_IRI.parse _namespace_name "changeSet" |> NamespacedName
-
+    let changeSet = _prefix "changeSet"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#changingAct"></see>
     /// </summary>
-    let changingAct =
-        Namespaced_IRI.parse _namespace_name "changingAct" |> NamespacedName
-
+    let changingAct = _prefix "changingAct"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#deletion"></see>
     /// </summary>
-    let deletion = Namespaced_IRI.parse _namespace_name "deletion" |> NamespacedName
-
+    let deletion = _prefix "deletion"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#entryIntoForce"></see>
     /// </summary>
-    let entryIntoForce =
-        Namespaced_IRI.parse _namespace_name "entryIntoForce" |> NamespacedName
-
+    let entryIntoForce = _prefix "entryIntoForce"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#forceChange"></see>
     /// </summary>
-    let forceChange =
-        Namespaced_IRI.parse _namespace_name "forceChange" |> NamespacedName
-
+    let forceChange = _prefix "forceChange"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#issuer"></see>
     /// </summary>
-    let issuer = Namespaced_IRI.parse _namespace_name "issuer" |> NamespacedName
-
+    let issuer = _prefix "issuer"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#legislature"></see>
     /// </summary>
-    let legislature =
-        Namespaced_IRI.parse _namespace_name "legislature" |> NamespacedName
-
+    let legislature = _prefix "legislature"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#originalLanguage"></see>
     /// </summary>
-    let originalLanguage =
-        Namespaced_IRI.parse _namespace_name "originalLanguage" |> NamespacedName
-
+    let originalLanguage = _prefix "originalLanguage"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#procedureID"></see>
     /// </summary>
-    let procedureID =
-        Namespaced_IRI.parse _namespace_name "procedureID" |> NamespacedName
-
+    let procedureID = _prefix "procedureID"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#procedureStage"></see>
     /// </summary>
-    let procedureStage =
-        Namespaced_IRI.parse _namespace_name "procedureStage" |> NamespacedName
-
+    let procedureStage = _prefix "procedureStage"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#proposingEntity"></see>
     /// </summary>
-    let proposingEntity =
-        Namespaced_IRI.parse _namespace_name "proposingEntity" |> NamespacedName
-
+    let proposingEntity = _prefix "proposingEntity"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#published"></see>
     /// </summary>
-    let published = Namespaced_IRI.parse _namespace_name "published" |> NamespacedName
+    let published = _prefix "published"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#reference"></see>
     /// </summary>
-    let reference = Namespaced_IRI.parse _namespace_name "reference" |> NamespacedName
+    let reference = _prefix "reference"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#relevance"></see>
     /// </summary>
-    let relevance = Namespaced_IRI.parse _namespace_name "relevance" |> NamespacedName
-
+    let relevance = _prefix "relevance"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#replacedContent"></see>
     /// </summary>
-    let replacedContent =
-        Namespaced_IRI.parse _namespace_name "replacedContent" |> NamespacedName
-
+    let replacedContent = _prefix "replacedContent"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#replacement"></see>
     /// </summary>
-    let replacement =
-        Namespaced_IRI.parse _namespace_name "replacement" |> NamespacedName
-
+    let replacement = _prefix "replacement"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#signatory"></see>
     /// </summary>
-    let signatory = Namespaced_IRI.parse _namespace_name "signatory" |> NamespacedName
-
+    let signatory = _prefix "signatory"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#signatoryOrganization"></see>
     /// </summary>
-    let signatoryOrganization =
-        Namespaced_IRI.parse _namespace_name "signatoryOrganization" |> NamespacedName
-
+    let signatoryOrganization = _prefix "signatoryOrganization"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#signatoryRole"></see>
     /// </summary>
-    let signatoryRole =
-        Namespaced_IRI.parse _namespace_name "signatoryRole" |> NamespacedName
-
+    let signatoryRole = _prefix "signatoryRole"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#signature"></see>
     /// </summary>
-    let signature = Namespaced_IRI.parse _namespace_name "signature" |> NamespacedName
-
+    let signature = _prefix "signature"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#signatureDate"></see>
     /// </summary>
-    let signatureDate =
-        Namespaced_IRI.parse _namespace_name "signatureDate" |> NamespacedName
-
+    let signatureDate = _prefix "signatureDate"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#signaturePlace"></see>
     /// </summary>
-    let signaturePlace =
-        Namespaced_IRI.parse _namespace_name "signaturePlace" |> NamespacedName
-
+    let signaturePlace = _prefix "signaturePlace"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#startOfApplicability"></see>
     /// </summary>
-    let startOfApplicability =
-        Namespaced_IRI.parse _namespace_name "startOfApplicability" |> NamespacedName
-
+    let startOfApplicability = _prefix "startOfApplicability"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
-
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="https://w3id.org/legalhtml/ov#textualChange"></see>
     /// </summary>
-    let textualChange =
-        Namespaced_IRI.parse _namespace_name "textualChange" |> NamespacedName
+    let textualChange = _prefix "textualChange"

@@ -1,85 +1,67 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Agreements.Agreements.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_agr_agr =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/Agreement"></see>
     /// </summary>
-    let Agreement = Namespaced_IRI.parse _namespace_name "Agreement" |> NamespacedName
+    let Agreement = _prefix "Agreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/Commitment"></see>
     /// </summary>
-    let Commitment = Namespaced_IRI.parse _namespace_name "Commitment" |> NamespacedName
-
+    let Commitment = _prefix "Commitment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/Beneficiary"></see>
     /// </summary>
-    let Beneficiary =
-        Namespaced_IRI.parse _namespace_name "Beneficiary" |> NamespacedName
-
+    let Beneficiary = _prefix "Beneficiary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/BilateralAgreement"></see>
     /// </summary>
-    let BilateralAgreement =
-        Namespaced_IRI.parse _namespace_name "BilateralAgreement" |> NamespacedName
-
+    let BilateralAgreement = _prefix "BilateralAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/CommitmentAtLarge"></see>
     /// </summary>
-    let CommitmentAtLarge =
-        Namespaced_IRI.parse _namespace_name "CommitmentAtLarge" |> NamespacedName
-
+    let CommitmentAtLarge = _prefix "CommitmentAtLarge"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/UnilateralCommitment"></see>
     /// </summary>
-    let UnilateralCommitment =
-        Namespaced_IRI.parse _namespace_name "UnilateralCommitment" |> NamespacedName
-
+    let UnilateralCommitment = _prefix "UnilateralCommitment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/IndividualUnilateralCommitment"></see>
     /// </summary>
-    let IndividualUnilateralCommitment =
-        Namespaced_IRI.parse _namespace_name "IndividualUnilateralCommitment" |> NamespacedName
-
+    let IndividualUnilateralCommitment = _prefix "IndividualUnilateralCommitment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/MultilateralAgreement"></see>
     /// </summary>
-    let MultilateralAgreement =
-        Namespaced_IRI.parse _namespace_name "MultilateralAgreement" |> NamespacedName
-
+    let MultilateralAgreement = _prefix "MultilateralAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/MutualAgreement"></see>
     /// </summary>
-    let MutualAgreement =
-        Namespaced_IRI.parse _namespace_name "MutualAgreement" |> NamespacedName
-
+    let MutualAgreement = _prefix "MutualAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/MutualCommitment"></see>
     /// </summary>
-    let MutualCommitment =
-        Namespaced_IRI.parse _namespace_name "MutualCommitment" |> NamespacedName
-
+    let MutualCommitment = _prefix "MutualCommitment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/Obligee"></see>
     /// </summary>
-    let Obligee = Namespaced_IRI.parse _namespace_name "Obligee" |> NamespacedName
+    let Obligee = _prefix "Obligee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/Obligor"></see>
     /// </summary>
-    let Obligor = Namespaced_IRI.parse _namespace_name "Obligor" |> NamespacedName
-
+    let Obligor = _prefix "Obligor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/hasObligation"></see>
     /// </summary>
-    let hasObligation =
-        Namespaced_IRI.parse _namespace_name "hasObligation" |> NamespacedName
-
+    let hasObligation = _prefix "hasObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/isObligationOf"></see>
     /// </summary>
-    let isObligationOf =
-        Namespaced_IRI.parse _namespace_name "isObligationOf" |> NamespacedName
+    let isObligationOf = _prefix "isObligationOf"

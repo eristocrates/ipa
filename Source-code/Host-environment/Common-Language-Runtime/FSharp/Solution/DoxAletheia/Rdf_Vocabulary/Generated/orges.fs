@@ -1,101 +1,78 @@
 namespace http.datos.gob.es.def.sector_publico.organizacion.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module orges =
     let _namespace_name = "http://datos.gob.es/def/sector-publico/organizacion#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#1.0.0"></see>
     /// </summary>
-    let ``_1.0.0`` = Namespaced_IRI.parse _namespace_name "1.0.0" |> NamespacedName
-
+    let ``_1.0.0`` = _prefix "1.0.0"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#EntidadDerechoPublico"></see>
     /// </summary>
-    let EntidadDerechoPublico =
-        Namespaced_IRI.parse _namespace_name "EntidadDerechoPublico" |> NamespacedName
-
+    let EntidadDerechoPublico = _prefix "EntidadDerechoPublico"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#UnidadOrganicaNoRaiz"></see>
     /// </summary>
-    let UnidadOrganicaNoRaiz =
-        Namespaced_IRI.parse _namespace_name "UnidadOrganicaNoRaiz" |> NamespacedName
-
+    let UnidadOrganicaNoRaiz = _prefix "UnidadOrganicaNoRaiz"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#Oficina"></see>
     /// </summary>
-    let Oficina = Namespaced_IRI.parse _namespace_name "Oficina" |> NamespacedName
+    let Oficina = _prefix "Oficina"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#UGEP"></see>
     /// </summary>
-    let UGEP = Namespaced_IRI.parse _namespace_name "UGEP" |> NamespacedName
-
+    let UGEP = _prefix "UGEP"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#ambitoCompetencias"></see>
     /// </summary>
-    let ambitoCompetencias =
-        Namespaced_IRI.parse _namespace_name "ambitoCompetencias" |> NamespacedName
-
+    let ambitoCompetencias = _prefix "ambitoCompetencias"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#diasInhabiles"></see>
     /// </summary>
-    let diasInhabiles =
-        Namespaced_IRI.parse _namespace_name "diasInhabiles" |> NamespacedName
-
+    let diasInhabiles = _prefix "diasInhabiles"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#disposicionLegal"></see>
     /// </summary>
-    let disposicionLegal =
-        Namespaced_IRI.parse _namespace_name "disposicionLegal" |> NamespacedName
-
+    let disposicionLegal = _prefix "disposicionLegal"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#estado"></see>
     /// </summary>
-    let estado = Namespaced_IRI.parse _namespace_name "estado" |> NamespacedName
-
+    let estado = _prefix "estado"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#horarioAtencion"></see>
     /// </summary>
-    let horarioAtencion =
-        Namespaced_IRI.parse _namespace_name "horarioAtencion" |> NamespacedName
-
+    let horarioAtencion = _prefix "horarioAtencion"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#identificadorExterno"></see>
     /// </summary>
-    let identificadorExterno =
-        Namespaced_IRI.parse _namespace_name "identificadorExterno" |> NamespacedName
-
+    let identificadorExterno = _prefix "identificadorExterno"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#nivelAdministracion"></see>
     /// </summary>
-    let nivelAdministracion =
-        Namespaced_IRI.parse _namespace_name "nivelAdministracion" |> NamespacedName
-
+    let nivelAdministracion = _prefix "nivelAdministracion"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#nivelJerarquico"></see>
     /// </summary>
-    let nivelJerarquico =
-        Namespaced_IRI.parse _namespace_name "nivelJerarquico" |> NamespacedName
-
+    let nivelJerarquico = _prefix "nivelJerarquico"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#observacionBaja"></see>
     /// </summary>
-    let observacionBaja =
-        Namespaced_IRI.parse _namespace_name "observacionBaja" |> NamespacedName
-
+    let observacionBaja = _prefix "observacionBaja"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#otroContacto"></see>
     /// </summary>
-    let otroContacto =
-        Namespaced_IRI.parse _namespace_name "otroContacto" |> NamespacedName
-
+    let otroContacto = _prefix "otroContacto"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#servicio"></see>
     /// </summary>
-    let servicio = Namespaced_IRI.parse _namespace_name "servicio" |> NamespacedName
-
+    let servicio = _prefix "servicio"
     /// <summary>
     ///   <see href="http://datos.gob.es/def/sector-publico/organizacion#tieneUORaiz"></see>
     /// </summary>
-    let tieneUORaiz =
-        Namespaced_IRI.parse _namespace_name "tieneUORaiz" |> NamespacedName
+    let tieneUORaiz = _prefix "tieneUORaiz"

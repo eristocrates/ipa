@@ -924,7 +924,7 @@ module Rdf_Literal =
 // TODO consider FSharp.HashCollections
 
 
-type Draft_Document =
+type Formula =
     {
 
       subjects: Rdf_Subject array
@@ -1252,7 +1252,7 @@ module D2 =
     let graph_text (rdf_graph: Rdf_Graph) =
         rdf_graph |> graph_lines |> String.concat "\n"
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         let file_text = { triples = draft.triples } |> graph_text
 
         let file_path = syntax.file_path parent_directory stem
@@ -1482,7 +1482,7 @@ module Turtle =
         writer.Save(graph, syntax.file_path parent_directory stem)
 
 *)
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         let file_path = syntax.file_path parent_directory stem
 
         { triples = draft.triples }
@@ -1511,7 +1511,7 @@ module ddot =
         let graph_text (rdf_graph: Rdf_Graph) =
             rdf_graph |> graph_lines |> String.concat "\n"
 
-        let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+        let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
             let file_text = { triples = draft.triples } |> graph_text
 
             let file_path = syntax.file_path parent_directory stem
@@ -1572,17 +1572,17 @@ module Dot =
         dot_graph.Generate(new FileDotEngine(), (syntax.file_path parent_directory stem))
         |> ignore
 
-    let write_draft_from_yograph (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft_from_yograph (parent_directory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
         |> Rdf_Graph.to_yograph
         |> write_yograph parent_directory $"{stem}.yog"
 
-    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
         |> Rdf_Graph.to_quik_graph
         |> write_quik_graph parent_directory $"{stem}.quik"
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         draft
         |> write_draft_from_yograph parent_directory stem
 
@@ -1620,7 +1620,7 @@ module Mermaid =
         let file_path = syntax.file_path parent_directory stem
         Mermaid.writeFile file_path options yograph
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
         { triples = draft.triples }
         |> Rdf_Graph.to_yograph
         |> write_yograph parent_directory stem
@@ -1628,13 +1628,30 @@ module Mermaid =
 
 
 
-module Draft_Document =
-    let materialize_triples (draft: Draft_Document) = draft.materialize_triples
-    let emit_triples (draft: Draft_Document) = draft.triples
-    let to_rdf_graph (draft: Draft_Document) = { triples = draft.triples }
+module Formula =
+    let materialize_triples (draft: Formula) = draft.materialize_triples
+    let emit_triples (draft: Formula) = draft.triples
+    let to_rdf_graph (draft: Formula) = { triples = draft.triples }
 
-    let to_igraph (draft: Draft_Document) =
+    let to_igraph (draft: Formula) =
         draft |> to_rdf_graph |> Rdf_Graph.to_igraph
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1652,38 +1669,38 @@ let (^^) lexical_form datatype =
 
 
 // unary starters
-let inline (!>) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) : Draft_Document =
-    Draft_Document.from_subject subject_term.as_subject
+let inline (!>) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) : Formula =
+    Formula.from_subject subject_term.as_subject
 
 let inline (!|)
     (subject_terms: ^SubjectType list when ^SubjectType: (member as_subject: Rdf_Subject))
-    : Draft_Document =
+    : Formula =
     subject_terms
     |> List.map (fun subject_term -> subject_term.as_subject)
-    |> Draft_Document.from_subjects
+    |> Formula.from_subjects
 
 let inline (!/)
     (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    : Draft_Document =
-    Draft_Document.from_predicate predicate_term.as_predicate
+    : Formula =
+    Formula.from_predicate predicate_term.as_predicate
 
-let inline (!<) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) : Draft_Document =
-    Draft_Document.from_object object_term.as_object
+let inline (!<) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) : Formula =
+    Formula.from_object object_term.as_object
 
 let inline (!<=) value_object =
     Rdf_Literal.autotyped value_object
     |> Rdf_Object.LiteralObject
-    |> Draft_Document.from_object
+    |> Formula.from_object
 
 
 // subject adders
 let inline (-!>)
-    (draft: Draft_Document)
+    (draft: Formula)
     (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
     =
     draft.add_subject subject_term.as_subject
 let inline (-!|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (subject_terms: ^SubjectType list when ^SubjectType: (member as_subject: Rdf_Subject))
     =
     subject_terms
@@ -1694,13 +1711,13 @@ let inline (-!|)
 
 // predicate adders
 let inline (---)
-    (draft: Draft_Document)
+    (draft: Formula)
     (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
     =
     draft.add_predicate predicate_term.as_predicate
 
 let inline (--|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (predicate_terms: ^PredicateType list when ^PredicateType: (member as_predicate: Rdf_Predicate))
     =
     predicate_terms
@@ -1709,16 +1726,16 @@ let inline (--|)
     |> draft.add_predicates
 
 // predicateObjectList adders
-let inline (-~|) (draft: Draft_Document) (predicateObjectLists: PredicateObjectList list) =
+let inline (-~|) (draft: Formula) (predicateObjectLists: PredicateObjectList list) =
     predicateObjectLists
     |> List.toArray
     |> draft.add_predicateObjectLists
 
-let inline (-~|>) (draft: Draft_Document) (predicateObjectLists: PredicateObjectList list) =
+let inline (-~|>) (draft: Formula) (predicateObjectLists: PredicateObjectList list) =
     predicateObjectLists
     |> List.toArray
     |> draft.add_predicateObjectLists
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
 let inline (->-)
@@ -1755,24 +1772,24 @@ let inline (->=|) (predicate: ^PredicateType when ^PredicateType: (member as_pre
     PredicateObjectList.from_terms predicate.as_predicate objects
 
 
-let inline (-->) (draft: Draft_Document) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
+let inline (-->) (draft: Formula) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
     draft.add_object object_term.as_object
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 let inline (-<-)
-    (draft: Draft_Document)
+    (draft: Formula)
     (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
     =
     draft.add_subject subject_term.as_subject
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 let inline (-<-/)
-    (draft: Draft_Document)
+    (draft: Formula)
     (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
     =
     let materialized_draft =
         draft.add_subject subject_term.as_subject
-        |> Draft_Document.materialize_triples
+        |> Formula.materialize_triples
 
     { materialized_draft with
 
@@ -1780,10 +1797,10 @@ let inline (-<-/)
 
      }
 
-let inline (-->/) (draft: Draft_Document) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
+let inline (-->/) (draft: Formula) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
     let materialized_draft =
         draft.add_object object_term.as_object
-        |> Draft_Document.materialize_triples
+        |> Formula.materialize_triples
 
     { materialized_draft with
 
@@ -1794,48 +1811,48 @@ let inline (-->/) (draft: Draft_Document) (object_term: ^ObjectType when ^Object
 
      }
 
-let inline (-->=) (draft: Draft_Document) literal =
+let inline (-->=) (draft: Formula) literal =
     draft.add_literal literal
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->^) (draft: Draft_Document) (lexical_form: string) (datatype: IRIREF) =
+let inline (-->^) (draft: Formula) (lexical_form: string) (datatype: IRIREF) =
     draft.add_literal (lexical_form ^^ datatype)
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->@) (draft: Draft_Document) (lexical_form: string) (language_tag: Language_Tag) =
+let inline (-->@) (draft: Formula) (lexical_form: string) (language_tag: Language_Tag) =
     lexical_form ^@ language_tag
     |> draft.add_literal
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 let inline (-->@@)
-    (draft: Draft_Document)
+    (draft: Formula)
     (lexical_form: string)
     (language_tag: Language_Tag)
     (region_subtag: Region_Subtag)
     =
     lexical_form ^@@ (language_tag, region_subtag)
     |> draft.add_literal
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
-let inline (-->=|) (draft: Draft_Document) literals =
+let inline (-->=|) (draft: Formula) literals =
     draft.add_literals literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->^|) (draft: Draft_Document) (lexical_forms: string list) (datatype: IRIREF) =
+let inline (-->^|) (draft: Formula) (lexical_forms: string list) (datatype: IRIREF) =
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^^ datatype)
     |> draft.add_literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->@|) (draft: Draft_Document) (lexical_forms: string list) (language_tag: Language_Tag) =
+let inline (-->@|) (draft: Formula) (lexical_forms: string list) (language_tag: Language_Tag) =
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^@ language_tag)
     |> draft.add_literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 let inline (-->@@|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (lexical_forms: string list)
     (language_tag: Language_Tag)
     (region_subtag: Region_Subtag)
@@ -1843,21 +1860,21 @@ let inline (-->@@|)
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^@@ (language_tag, region_subtag))
     |> draft.add_literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
 
 
 /// predicate object+
 let inline (-->|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (object_terms: ^ObjectType list when ^ObjectType: (member as_object: Rdf_Object))
     =
     object_terms
     |> List.toArray
     |> Array.Parallel.map (fun object_term -> object_term.as_object)
     |> draft.add_objects
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
 
@@ -1954,380 +1971,6 @@ let write_draft parent_directory stem draft =
     ddot.it.write_draft parent_directory stem draft
     Mermaid.write_draft parent_directory stem draft
     D2.write_draft parent_directory stem draft
-
-
-
-
-
-
-
-
-
-
-
-
-let lmdb_directory_path = @"D:\Persistence\LMDB\DoxAletheia"
-
-
-
-let blake3_hash (string_input:string) = 
-    string_input
-    |> Encoding.UTF8.GetBytes
-    |> Blake3.Hasher.Hash
-
-
-type String_Index =
-    private
-    | StringIndex of uint64
-    member this.unwrap  =
-        match this with 
-        | StringIndex value -> value
-
-    member this.as_bytes  =
-        BitConverter.GetBytes this.unwrap
-    static member wrap_bytes (bytes:byte array) = bytes |> BitConverter.ToUInt64 |> StringIndex
-    static member wrap_mdb(mdb_string_index:MDBValue)  = String_Index.wrap_bytes mdb_string_index.as_bytes 
-    static member some_mdb(mdb_string_index:MDBValue)  = Some (String_Index.wrap_mdb mdb_string_index)
-
-
-
-
-
-
-
-
-
-let batch_size = 100_000
-let cache_capacity = 200_000
-
-
-
-
-
-
-
-
-let GiB = 1024L * 1024L * 1024L
-let bytes_to_gib (bytes: int64) = float bytes / 1024.0 / 1024.0 / 1024.0
-let map_size = int64 5 * GiB
-
-Directory.CreateDirectory(lmdb_directory_path)
-|> ignore
-
-
-let environment = new LightningEnvironment(lmdb_directory_path)
-
-
-environment.MapSize <- map_size
-environment.MaxDatabases <- 30
-
-
-environment.Open()
-
-let print_stats () =
-
-
-    let info = environment.Info
-    let stat = environment.EnvironmentStats
-
-    let page_size = int64 stat.PageSize
-
-    let used_bytes = (int64 info.LastPageNumber + 1L) * page_size
-
-    let map_size = info.MapSize
-
-    let remaining_bytes = map_size - used_bytes
-
-    let used_percent = (float used_bytes / float map_size) * 100.0
-
-    printfn ""
-    printfn "LMDB Environment"
-    printfn "----------------"
-    printfn "Page Size:        %i bytes" page_size
-    printfn "Last Page Number: %i" info.LastPageNumber
-    printfn "Map Size:         %.2f GiB" (bytes_to_gib map_size)
-    printfn "Used:             %.2f GiB" (bytes_to_gib used_bytes)
-    printfn "Remaining:        %.2f GiB" (bytes_to_gib remaining_bytes)
-    printfn "Usage:            %.2f%%" used_percent
-    printfn ""
-
-
-
-module Transaction = 
-    let read() = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
-    let write() = environment.BeginTransaction()
-    let commit (transaction:LightningTransaction) = transaction.Commit() |> ignore
-
-
-
-type Memory_Map<'InputType,'OutputType> = 
-    {
-        name:string
-        database:LightningDatabase
-        flags:DatabaseOpenFlags
-    }
-    static member from_name_flags (name:string)(flags:DatabaseOpenFlags) =
-        use transaction = environment.BeginTransaction()
-        
-
-        let database =
-            transaction.OpenDatabase(
-                name,
-                DatabaseConfiguration(
-                    Flags = flags
-
-                )
-            )
-
-        transaction.Commit() |> ignore
-        {
-
-            name = name 
-            database = database
-            flags = flags
-
-        }
-    member this.Get
-        (key_as_bytes: byte array)
-        (some_continuation: MDBValue -> 'OutputType option)
-        : 'OutputType option =
-
-        use transaction =
-            Transaction.read()
-
-        match transaction.Get(this.database, key_as_bytes) with
-        | struct (MDBResultCode.Success, _, mdb_value) ->
-            some_continuation mdb_value
-
-        | struct (MDBResultCode.NotFound, _, _) ->
-            None
-
-        | struct (result_code, _, _) ->
-            failwithf
-                "%s.Get failed with MDBResultCode: %A"
-                this.name
-                result_code
-    member this.MDBContinuation (transaction: LightningTransaction)(mdb_result:MDBResultCode)   =
-                    if mdb_result <> MDBResultCode.Success then
-                        failwithf "%s.Put failed: %A" this.name mdb_result
-                    else
-                        transaction
-    member this.MDBCommit (transaction: LightningTransaction) (mdb_result:MDBResultCode)   = 
-    
-                    if mdb_result <> MDBResultCode.Success then
-                        failwithf "%s.Put failed: %A" this.name mdb_result
-                    else
-                        transaction.Commit() |> ignore
-
-    member this.Put (key_as_bytes:byte array)(value_as_bytes:byte array) (transaction: LightningTransaction) = transaction.Put(this.database, key_as_bytes,value_as_bytes) |> this.MDBContinuation transaction
-    member this.Delete (key_as_bytes:byte array) (transaction: LightningTransaction) = transaction.Delete(this.database, key_as_bytes)
-module Memory_Map = 
-    let string_index_to_string:Memory_Map<String_Index,string> =                 
-                    Memory_Map.from_name_flags
-                        "String_Index_to_String"
-                        (
-                            DatabaseOpenFlags.Create
-                            ||| DatabaseOpenFlags.IntegerKey
-                        )
-
-    let string_hash_to_string_index:Memory_Map<Hash,String_Index> =  Memory_Map.from_name_flags "String_Hash_to_String_Index" DatabaseOpenFlags.Create
-
-
-type Inbox<'MessageType> = MailboxProcessor<'MessageType>
-
-
-    
-type Index_Message =
-    | EnsureStringIndex of Blake3.Hash * string * AsyncReplyChannel<String_Index>
-        
-let rec watch_inbox(inbox:Inbox<'MessageType>) = 
-    async{
-
-        let! message = inbox.Receive()
-
-        printfn "\nmessage is: %A\n" message
-
-        return! watch_inbox inbox
-        }
-    
-
-    
-type Data_Index
-    (
-        string_index_to_string:
-            Memory_Map<String_Index, string>,
-
-        string_hash_to_string_index:
-            Memory_Map<Hash, String_Index>
-    ) =
-
-    let load_string_array () =
-
-        let string_array =
-            ResizeArray<string>()
-
-        use transaction =
-            Transaction.read()
-
-        use cursor =
-            transaction.CreateCursor(
-                string_index_to_string.database
-            )
-
-        let mutable cursor_result =
-            cursor.First()
-
-        let mutable continue_loading =
-            true
-
-        while continue_loading do
-
-            match cursor_result with
-            | struct (
-                MDBResultCode.Success,
-                mdb_string_index,
-                mdb_string
-              ) ->
-
-                let persisted_string_index =
-                    String_Index.wrap_mdb mdb_string_index
-
-                let expected_string_index =
-                    uint64 string_array.Count
-
-                if
-                    persisted_string_index.unwrap
-                    <> expected_string_index
-                then
-                    failwithf
-                        "Expected String_Index %i, but LMDB contained String_Index %i."
-                        expected_string_index
-                        persisted_string_index.unwrap
-
-                let string_value =
-                    mdb_string.as_bytes
-                    |> Encoding.UTF8.GetString
-
-                string_array.Add string_value
-
-                cursor_result <-
-                    cursor.Next()
-
-            | struct (MDBResultCode.NotFound, _, _) ->
-                continue_loading <- false
-
-            | struct (result_code, _, _) ->
-                failwithf
-                    "Initial String_Index_to_String load failed with MDBResultCode: %A"
-                    result_code
-
-        string_array
-
-
-    // Evaluated exactly once while this Data_Index is constructed.
-    let string_array =
-        load_string_array()
-
-
-    // Also created exactly once.
-    let index_agent =
-        MailboxProcessor.Start(fun inbox ->
-
-            let rec loop () =
-                async {
-                    let! message =
-                        inbox.Receive()
-
-                    match message with
-                    | EnsureStringIndex(
-                        string_hash,
-                        string_value,
-                        reply
-                      ) ->
-
-                        let string_index =
-                            uint64 string_array.Count
-                            |> StringIndex
-
-                        use transaction =
-                            Transaction.write()
-
-                        transaction
-                        |> string_hash_to_string_index.Put
-                            string_hash.as_bytes
-                            string_index.as_bytes
-                        |> string_index_to_string.Put
-                            string_index.as_bytes
-                            string_value.as_bytes
-                        |> Transaction.commit
-
-                        string_array.Add string_value
-
-                        reply.Reply string_index
-
-                    return! loop ()
-                }
-
-            loop ()
-        )
-
-
-    member _.maybe_string_index_for_hash
-        (string_hash: Hash)
-        : String_Index option =
-
-        String_Index.some_mdb
-        |> string_hash_to_string_index.Get string_hash.as_bytes
-            
-
-
-    member _.get_string_for_string_index
-        (string_index: String_Index)
-        : string =
-
-        string_index_to_string.Get
-            string_index.as_bytes
-            (fun mdb_string ->
-                mdb_string.as_bytes
-                |> Encoding.UTF8.GetString
-                |> Some
-            )
-        |> Option.get
-
-
-    member this.ensure_string_index_for_string
-        (string_value: string)
-        : String_Index =
-
-        let string_hash =
-            blake3_hash string_value
-
-        index_agent.PostAndReply(fun reply ->
-            EnsureStringIndex(
-                string_hash,
-                string_value,
-                reply
-            )
-        )
-
-
-    member this.intern_string
-        (string_value: string)
-        : unit =
-
-        this.ensure_string_index_for_string string_value
-        |> ignore
-
-
-
-
-
-let data_index = Data_Index(
-    Memory_Map.string_index_to_string,Memory_Map.string_hash_to_string_index
-)
-
-data_index.intern_string(String.Empty)   
-
 
 
 

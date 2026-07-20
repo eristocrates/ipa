@@ -1,331 +1,239 @@
 namespace http.ontology.cybershare.utep.edu.ELSEWeb.elseweb_edac.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module edac =
     let _namespace_name =
         "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#AggregateMonthly"></see>
     /// </summary>
-    let AggregateMonthly =
-        Namespaced_IRI.parse _namespace_name "AggregateMonthly" |> NamespacedName
-
+    let AggregateMonthly = _prefix "AggregateMonthly"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#PRISMDatasetProcessing"></see>
     /// </summary>
-    let PRISMDatasetProcessing =
-        Namespaced_IRI.parse _namespace_name "PRISMDatasetProcessing" |> NamespacedName
-
+    let PRISMDatasetProcessing = _prefix "PRISMDatasetProcessing"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#AggregateOverThirtyYears"></see>
     /// </summary>
-    let AggregateOverThirtyYears =
-        Namespaced_IRI.parse _namespace_name "AggregateOverThirtyYears" |> NamespacedName
-
+    let AggregateOverThirtyYears = _prefix "AggregateOverThirtyYears"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#AggregateYearly"></see>
     /// </summary>
-    let AggregateYearly =
-        Namespaced_IRI.parse _namespace_name "AggregateYearly" |> NamespacedName
-
+    let AggregateYearly = _prefix "AggregateYearly"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Air"></see>
     /// </summary>
-    let Air = Namespaced_IRI.parse _namespace_name "Air" |> NamespacedName
-
+    let Air = _prefix "Air"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#AtmosphericFeature"></see>
     /// </summary>
-    let AtmosphericFeature =
-        Namespaced_IRI.parse _namespace_name "AtmosphericFeature" |> NamespacedName
-
+    let AtmosphericFeature = _prefix "AtmosphericFeature"
     /// <summary>
     /// A characteristic that can be measured as a quantity.
     /// <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Amount"></see></summary>
-    let Amount = Namespaced_IRI.parse _namespace_name "Amount" |> NamespacedName
-
+    let Amount = _prefix "Amount"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#ConvertASCIIToTIFF"></see>
     /// </summary>
-    let ConvertASCIIToTIFF =
-        Namespaced_IRI.parse _namespace_name "ConvertASCIIToTIFF" |> NamespacedName
-
+    let ConvertASCIIToTIFF = _prefix "ConvertASCIIToTIFF"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#DatasetProcessing"></see>
     /// </summary>
-    let DatasetProcessing =
-        Namespaced_IRI.parse _namespace_name "DatasetProcessing" |> NamespacedName
-
+    let DatasetProcessing = _prefix "DatasetProcessing"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#ConvertedDataset"></see>
     /// </summary>
-    let ConvertedDataset =
-        Namespaced_IRI.parse _namespace_name "ConvertedDataset" |> NamespacedName
-
+    let ConvertedDataset = _prefix "ConvertedDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#RGISPrepublishedRasterDataset"></see>
     /// </summary>
-    let RGISPrepublishedRasterDataset =
-        Namespaced_IRI.parse _namespace_name "RGISPrepublishedRasterDataset" |> NamespacedName
-
+    let RGISPrepublishedRasterDataset = _prefix "RGISPrepublishedRasterDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#DataBandProcessing"></see>
     /// </summary>
-    let DataBandProcessing =
-        Namespaced_IRI.parse _namespace_name "DataBandProcessing" |> NamespacedName
-
+    let DataBandProcessing = _prefix "DataBandProcessing"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Processing"></see>
     /// </summary>
-    let Processing = Namespaced_IRI.parse _namespace_name "Processing" |> NamespacedName
-
+    let Processing = _prefix "Processing"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#DatasetManipulationSoftware"></see>
     /// </summary>
-    let DatasetManipulationSoftware =
-        Namespaced_IRI.parse _namespace_name "DatasetManipulationSoftware" |> NamespacedName
-
+    let DatasetManipulationSoftware = _prefix "DatasetManipulationSoftware"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Processor"></see>
     /// </summary>
-    let Processor = Namespaced_IRI.parse _namespace_name "Processor" |> NamespacedName
+    let Processor = _prefix "Processor"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#hadInput"></see>
     /// </summary>
-    let hadInput = Namespaced_IRI.parse _namespace_name "hadInput" |> NamespacedName
-
+    let hadInput = _prefix "hadInput"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#wasAssociatedWith"></see>
     /// </summary>
-    let wasAssociatedWith =
-        Namespaced_IRI.parse _namespace_name "wasAssociatedWith" |> NamespacedName
-
+    let wasAssociatedWith = _prefix "wasAssociatedWith"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#DewPointTemperature"></see>
     /// </summary>
-    let DewPointTemperature =
-        Namespaced_IRI.parse _namespace_name "DewPointTemperature" |> NamespacedName
-
+    let DewPointTemperature = _prefix "DewPointTemperature"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Temperature"></see>
     /// </summary>
-    let Temperature =
-        Namespaced_IRI.parse _namespace_name "Temperature" |> NamespacedName
-
+    let Temperature = _prefix "Temperature"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Download"></see>
     /// </summary>
-    let Download = Namespaced_IRI.parse _namespace_name "Download" |> NamespacedName
-
+    let Download = _prefix "Download"
     /// <summary>
     /// A MODIS dataset that has been obtained from a URL.
     /// <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#DownloadedMODISDataset"></see></summary>
-    let DownloadedMODISDataset =
-        Namespaced_IRI.parse _namespace_name "DownloadedMODISDataset" |> NamespacedName
-
+    let DownloadedMODISDataset = _prefix "DownloadedMODISDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#MODISDataset"></see>
     /// </summary>
-    let MODISDataset =
-        Namespaced_IRI.parse _namespace_name "MODISDataset" |> NamespacedName
-
+    let MODISDataset = _prefix "MODISDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#DownloadedPRISMDataset"></see>
     /// </summary>
-    let DownloadedPRISMDataset =
-        Namespaced_IRI.parse _namespace_name "DownloadedPRISMDataset" |> NamespacedName
-
+    let DownloadedPRISMDataset = _prefix "DownloadedPRISMDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#PRISMDataset"></see>
     /// </summary>
-    let PRISMDataset =
-        Namespaced_IRI.parse _namespace_name "PRISMDataset" |> NamespacedName
-
+    let PRISMDataset = _prefix "PRISMDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#EcologicalCommunity"></see>
     /// </summary>
-    let EcologicalCommunity =
-        Namespaced_IRI.parse _namespace_name "EcologicalCommunity" |> NamespacedName
-
+    let EcologicalCommunity = _prefix "EcologicalCommunity"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#ExtractAndReproject"></see>
     /// </summary>
-    let ExtractAndReproject =
-        Namespaced_IRI.parse _namespace_name "ExtractAndReproject" |> NamespacedName
-
+    let ExtractAndReproject = _prefix "ExtractAndReproject"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#hadInputBandID"></see>
     /// </summary>
-    let hadInputBandID =
-        Namespaced_IRI.parse _namespace_name "hadInputBandID" |> NamespacedName
-
+    let hadInputBandID = _prefix "hadInputBandID"
     /// <summary>
     /// A raster dataset that was output by an extraction processing, such as a payload extraction.
     /// <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#ExtractedDataset"></see></summary>
-    let ExtractedDataset =
-        Namespaced_IRI.parse _namespace_name "ExtractedDataset" |> NamespacedName
-
+    let ExtractedDataset = _prefix "ExtractedDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Index"></see>
     /// </summary>
-    let Index = Namespaced_IRI.parse _namespace_name "Index" |> NamespacedName
+    let Index = _prefix "Index"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#MODIS"></see>
     /// </summary>
-    let MODIS = Namespaced_IRI.parse _namespace_name "MODIS" |> NamespacedName
+    let MODIS = _prefix "MODIS"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Sensor"></see>
     /// </summary>
-    let Sensor = Namespaced_IRI.parse _namespace_name "Sensor" |> NamespacedName
-
+    let Sensor = _prefix "Sensor"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#MODISMeasurement"></see>
     /// </summary>
-    let MODISMeasurement =
-        Namespaced_IRI.parse _namespace_name "MODISMeasurement" |> NamespacedName
-
+    let MODISMeasurement = _prefix "MODISMeasurement"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Measurement"></see>
     /// </summary>
-    let Measurement =
-        Namespaced_IRI.parse _namespace_name "Measurement" |> NamespacedName
-
+    let Measurement = _prefix "Measurement"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Modelling"></see>
     /// </summary>
-    let Modelling = Namespaced_IRI.parse _namespace_name "Modelling" |> NamespacedName
-
+    let Modelling = _prefix "Modelling"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#ModellingAgent"></see>
     /// </summary>
-    let ModellingAgent =
-        Namespaced_IRI.parse _namespace_name "ModellingAgent" |> NamespacedName
-
+    let ModellingAgent = _prefix "ModellingAgent"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Mosaic"></see>
     /// </summary>
-    let Mosaic = Namespaced_IRI.parse _namespace_name "Mosaic" |> NamespacedName
-
+    let Mosaic = _prefix "Mosaic"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#MosaicDataset"></see>
     /// </summary>
-    let MosaicDataset =
-        Namespaced_IRI.parse _namespace_name "MosaicDataset" |> NamespacedName
-
+    let MosaicDataset = _prefix "MosaicDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#PRISM"></see>
     /// </summary>
-    let PRISM = Namespaced_IRI.parse _namespace_name "PRISM" |> NamespacedName
-
+    let PRISM = _prefix "PRISM"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#PRISMModelling"></see>
     /// </summary>
-    let PRISMModelling =
-        Namespaced_IRI.parse _namespace_name "PRISMModelling" |> NamespacedName
-
+    let PRISMModelling = _prefix "PRISMModelling"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Precipitation"></see>
     /// </summary>
-    let Precipitation =
-        Namespaced_IRI.parse _namespace_name "Precipitation" |> NamespacedName
-
+    let Precipitation = _prefix "Precipitation"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#TerrestrialFeature"></see>
     /// </summary>
-    let TerrestrialFeature =
-        Namespaced_IRI.parse _namespace_name "TerrestrialFeature" |> NamespacedName
-
+    let TerrestrialFeature = _prefix "TerrestrialFeature"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#hasProcessorName"></see>
     /// </summary>
-    let hasProcessorName =
-        Namespaced_IRI.parse _namespace_name "hasProcessorName" |> NamespacedName
-
+    let hasProcessorName = _prefix "hasProcessorName"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Publish"></see>
     /// </summary>
-    let Publish = Namespaced_IRI.parse _namespace_name "Publish" |> NamespacedName
-
+    let Publish = _prefix "Publish"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#PublishedMODISDataset"></see>
     /// </summary>
-    let PublishedMODISDataset =
-        Namespaced_IRI.parse _namespace_name "PublishedMODISDataset" |> NamespacedName
-
+    let PublishedMODISDataset = _prefix "PublishedMODISDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#RGISWCSDataset"></see>
     /// </summary>
-    let RGISWCSDataset =
-        Namespaced_IRI.parse _namespace_name "RGISWCSDataset" |> NamespacedName
-
+    let RGISWCSDataset = _prefix "RGISWCSDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#PublishedPRISMDataset"></see>
     /// </summary>
-    let PublishedPRISMDataset =
-        Namespaced_IRI.parse _namespace_name "PublishedPRISMDataset" |> NamespacedName
-
+    let PublishedPRISMDataset = _prefix "PublishedPRISMDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#RGISDataBand"></see>
     /// </summary>
-    let RGISDataBand =
-        Namespaced_IRI.parse _namespace_name "RGISDataBand" |> NamespacedName
-
+    let RGISDataBand = _prefix "RGISDataBand"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#wasMeasuredBy"></see>
     /// </summary>
-    let wasMeasuredBy =
-        Namespaced_IRI.parse _namespace_name "wasMeasuredBy" |> NamespacedName
-
+    let wasMeasuredBy = _prefix "wasMeasuredBy"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#wasModelledBy"></see>
     /// </summary>
-    let wasModelledBy =
-        Namespaced_IRI.parse _namespace_name "wasModelledBy" |> NamespacedName
-
+    let wasModelledBy = _prefix "wasModelledBy"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#wasOutputBy"></see>
     /// </summary>
-    let wasOutputBy =
-        Namespaced_IRI.parse _namespace_name "wasOutputBy" |> NamespacedName
-
+    let wasOutputBy = _prefix "wasOutputBy"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#RGISWCSManifestation"></see>
     /// </summary>
-    let RGISWCSManifestation =
-        Namespaced_IRI.parse _namespace_name "RGISWCSManifestation" |> NamespacedName
-
+    let RGISWCSManifestation = _prefix "RGISWCSManifestation"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#wasPublishedBy"></see>
     /// </summary>
-    let wasPublishedBy =
-        Namespaced_IRI.parse _namespace_name "wasPublishedBy" |> NamespacedName
-
+    let wasPublishedBy = _prefix "wasPublishedBy"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#hasJSONCapabilitiesDigestURL"></see>
     /// </summary>
-    let hasJSONCapabilitiesDigestURL =
-        Namespaced_IRI.parse _namespace_name "hasJSONCapabilitiesDigestURL" |> NamespacedName
-
+    let hasJSONCapabilitiesDigestURL = _prefix "hasJSONCapabilitiesDigestURL"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Reproject"></see>
     /// </summary>
-    let Reproject = Namespaced_IRI.parse _namespace_name "Reproject" |> NamespacedName
-
+    let Reproject = _prefix "Reproject"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#ReprojectedDataset"></see>
     /// </summary>
-    let ReprojectedDataset =
-        Namespaced_IRI.parse _namespace_name "ReprojectedDataset" |> NamespacedName
-
+    let ReprojectedDataset = _prefix "ReprojectedDataset"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#SurfaceLayer"></see>
     /// </summary>
-    let SurfaceLayer =
-        Namespaced_IRI.parse _namespace_name "SurfaceLayer" |> NamespacedName
-
+    let SurfaceLayer = _prefix "SurfaceLayer"
     /// <summary>
     ///   <see href="http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#Vegetation"></see>
     /// </summary>
-    let Vegetation = Namespaced_IRI.parse _namespace_name "Vegetation" |> NamespacedName
+    let Vegetation = _prefix "Vegetation"

@@ -1,107 +1,102 @@
 namespace https.yogaontology.org.ontology.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module yoga =
     let _namespace_name = "https://yogaontology.org/ontology/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Acidity"></see>
     /// </summary>
-    let Acidity = Namespaced_IRI.parse _namespace_name "Acidity" |> NamespacedName
+    let Acidity = _prefix "Acidity"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Arm"></see>
     /// </summary>
-    let Arm = Namespaced_IRI.parse _namespace_name "Arm" |> NamespacedName
+    let Arm = _prefix "Arm"
     /// <summary>
     /// Body part is any part of an organism, such as a limb or an organ.
     /// <see href="https://yogaontology.org/ontology/BodyPart"></see></summary>
-    let BodyPart = Namespaced_IRI.parse _namespace_name "BodyPart" |> NamespacedName
+    let BodyPart = _prefix "BodyPart"
     /// <summary>
     /// Asana is a comfortable and stable body posture in yoga.
     /// <see href="https://yogaontology.org/ontology/Asana"></see></summary>
-    let Asana = Namespaced_IRI.parse _namespace_name "Asana" |> NamespacedName
+    let Asana = _prefix "Asana"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Sequence"></see>
     /// </summary>
-    let Sequence = Namespaced_IRI.parse _namespace_name "Sequence" |> NamespacedName
+    let Sequence = _prefix "Sequence"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Block"></see>
     /// </summary>
-    let Block = Namespaced_IRI.parse _namespace_name "Block" |> NamespacedName
+    let Block = _prefix "Block"
     /// <summary>
     /// Different equipment that could be used for yoga practice.
     /// <see href="https://yogaontology.org/ontology/Props"></see></summary>
-    let Props = Namespaced_IRI.parse _namespace_name "Props" |> NamespacedName
+    let Props = _prefix "Props"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Body"></see>
     /// </summary>
-    let Body = Namespaced_IRI.parse _namespace_name "Body" |> NamespacedName
+    let Body = _prefix "Body"
     /// <summary>
     /// Health complaints
     /// <see href="https://yogaontology.org/ontology/Condition"></see></summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/LeftArm"></see>
     /// </summary>
-    let LeftArm = Namespaced_IRI.parse _namespace_name "LeftArm" |> NamespacedName
+    let LeftArm = _prefix "LeftArm"
     /// <summary>
     /// Mind is the totality of conscious and unconscious mental processes and activities
     /// <see href="https://yogaontology.org/ontology/Mind"></see></summary>
-    let Mind = Namespaced_IRI.parse _namespace_name "Mind" |> NamespacedName
+    let Mind = _prefix "Mind"
     /// <summary>
     /// Position is the way the body is placed in the space
     /// <see href="https://yogaontology.org/ontology/Position"></see></summary>
-    let Position = Namespaced_IRI.parse _namespace_name "Position" |> NamespacedName
+    let Position = _prefix "Position"
     /// <summary>
     /// Prana means the breath, life, vitality, respiration; Ayama could be translated as stretch, extension, restrain or control. Thus pranayama is the control of breath (inhalation and exhalation) in a steady pose.
     /// <see href="https://yogaontology.org/ontology/Pranayama"></see></summary>
-    let Pranayama = Namespaced_IRI.parse _namespace_name "Pranayama" |> NamespacedName
+    let Pranayama = _prefix "Pranayama"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Pubis"></see>
     /// </summary>
-    let Pubis = Namespaced_IRI.parse _namespace_name "Pubis" |> NamespacedName
+    let Pubis = _prefix "Pubis"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Sitting"></see>
     /// </summary>
-    let Sitting = Namespaced_IRI.parse _namespace_name "Sitting" |> NamespacedName
+    let Sitting = _prefix "Sitting"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Standing"></see>
     /// </summary>
-    let Standing = Namespaced_IRI.parse _namespace_name "Standing" |> NamespacedName
+    let Standing = _prefix "Standing"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/Viloma"></see>
     /// </summary>
-    let Viloma = Namespaced_IRI.parse _namespace_name "Viloma" |> NamespacedName
+    let Viloma = _prefix "Viloma"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/consistsOf"></see>
     /// </summary>
-    let consistsOf = Namespaced_IRI.parse _namespace_name "consistsOf" |> NamespacedName
-
+    let consistsOf = _prefix "consistsOf"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/hasEffectOn"></see>
     /// </summary>
-    let hasEffectOn =
-        Namespaced_IRI.parse _namespace_name "hasEffectOn" |> NamespacedName
-
+    let hasEffectOn = _prefix "hasEffectOn"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/hasPosition"></see>
     /// </summary>
-    let hasPosition =
-        Namespaced_IRI.parse _namespace_name "hasPosition" |> NamespacedName
-
+    let hasPosition = _prefix "hasPosition"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/performedInPosition"></see>
     /// </summary>
-    let performedInPosition =
-        Namespaced_IRI.parse _namespace_name "performedInPosition" |> NamespacedName
-
+    let performedInPosition = _prefix "performedInPosition"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/preparesFor"></see>
     /// </summary>
-    let preparesFor =
-        Namespaced_IRI.parse _namespace_name "preparesFor" |> NamespacedName
-
+    let preparesFor = _prefix "preparesFor"
     /// <summary>
     ///   <see href="https://yogaontology.org/ontology/uses"></see>
     /// </summary>
-    let uses = Namespaced_IRI.parse _namespace_name "uses" |> NamespacedName
+    let uses = _prefix "uses"

@@ -1,65 +1,50 @@
 namespace http.purl.org.ontology.ssso.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ssso =
     let _namespace_name = "http://purl.org/ontology/ssso#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#ExecutedService"></see>
     /// </summary>
-    let ExecutedService =
-        Namespaced_IRI.parse _namespace_name "ExecutedService" |> NamespacedName
-
+    let ExecutedService = _prefix "ExecutedService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#ServiceEvent"></see>
     /// </summary>
-    let ServiceEvent =
-        Namespaced_IRI.parse _namespace_name "ServiceEvent" |> NamespacedName
-
+    let ServiceEvent = _prefix "ServiceEvent"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#ReservedService"></see>
     /// </summary>
-    let ReservedService =
-        Namespaced_IRI.parse _namespace_name "ReservedService" |> NamespacedName
-
+    let ReservedService = _prefix "ReservedService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#RejectedService"></see>
     /// </summary>
-    let RejectedService =
-        Namespaced_IRI.parse _namespace_name "RejectedService" |> NamespacedName
-
+    let RejectedService = _prefix "RejectedService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#ProvidedService"></see>
     /// </summary>
-    let ProvidedService =
-        Namespaced_IRI.parse _namespace_name "ProvidedService" |> NamespacedName
-
+    let ProvidedService = _prefix "ProvidedService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#PreparedService"></see>
     /// </summary>
-    let PreparedService =
-        Namespaced_IRI.parse _namespace_name "PreparedService" |> NamespacedName
-
+    let PreparedService = _prefix "PreparedService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#ServiceFulfillment"></see>
     /// </summary>
-    let ServiceFulfillment =
-        Namespaced_IRI.parse _namespace_name "ServiceFulfillment" |> NamespacedName
-
+    let ServiceFulfillment = _prefix "ServiceFulfillment"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#TimeTravel"></see>
     /// </summary>
-    let TimeTravel = Namespaced_IRI.parse _namespace_name "TimeTravel" |> NamespacedName
-
+    let TimeTravel = _prefix "TimeTravel"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#nextService"></see>
     /// </summary>
-    let nextService =
-        Namespaced_IRI.parse _namespace_name "nextService" |> NamespacedName
-
+    let nextService = _prefix "nextService"
     /// <summary>
     ///   <see href="http://purl.org/ontology/ssso#previousService"></see>
     /// </summary>
-    let previousService =
-        Namespaced_IRI.parse _namespace_name "previousService" |> NamespacedName
+    let previousService = _prefix "previousService"

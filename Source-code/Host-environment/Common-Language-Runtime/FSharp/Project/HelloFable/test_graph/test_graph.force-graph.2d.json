@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "id": "https://eristocrates.dev/ontology/dbug/Alice"
+    },
+    {
+      "id": "https://eristocrates.dev/ontology/dbug/Bob"
+    },
+    {
+      "id": "http://xmlns.com/foaf/0.1/Person"
+    }
+  ],
+  "links": [
+    {
+      "source": "https://eristocrates.dev/ontology/dbug/Alice",
+      "target": "https://eristocrates.dev/ontology/dbug/Bob",
+      "predicate": "http://xmlns.com/foaf/0.1/knows"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/dbug/Bob",
+      "target": "https://eristocrates.dev/ontology/dbug/Alice",
+      "predicate": "http://xmlns.com/foaf/0.1/knows"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/dbug/Bob",
+      "target": "http://xmlns.com/foaf/0.1/Person",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    },
+    {
+      "source": "https://eristocrates.dev/ontology/dbug/Alice",
+      "target": "http://xmlns.com/foaf/0.1/Person",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    }
+  ]
+}

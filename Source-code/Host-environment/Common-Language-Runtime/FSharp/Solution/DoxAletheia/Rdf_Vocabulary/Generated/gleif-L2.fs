@@ -1,219 +1,171 @@
 namespace https.www.gleif.org.ontology.L2.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gleif_L2 =
     let _namespace_name = "https://www.gleif.org/ontology/L2/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusAnnulled"></see>
     /// </summary>
-    let RegistrationStatusAnnulled =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusAnnulled" |> NamespacedName
-
+    let RegistrationStatusAnnulled = _prefix "RegistrationStatusAnnulled"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusDuplicate"></see>
     /// </summary>
-    let RegistrationStatusDuplicate =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusDuplicate" |> NamespacedName
-
+    let RegistrationStatusDuplicate = _prefix "RegistrationStatusDuplicate"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusLapsed"></see>
     /// </summary>
-    let RegistrationStatusLapsed =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusLapsed" |> NamespacedName
-
+    let RegistrationStatusLapsed = _prefix "RegistrationStatusLapsed"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusPendingArchival"></see>
     /// </summary>
-    let RegistrationStatusPendingArchival =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusPendingArchival" |> NamespacedName
-
+    let RegistrationStatusPendingArchival = _prefix "RegistrationStatusPendingArchival"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusPendingTransfer"></see>
     /// </summary>
-    let RegistrationStatusPendingTransfer =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusPendingTransfer" |> NamespacedName
-
+    let RegistrationStatusPendingTransfer = _prefix "RegistrationStatusPendingTransfer"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusPublished"></see>
     /// </summary>
-    let RegistrationStatusPublished =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusPublished" |> NamespacedName
-
+    let RegistrationStatusPublished = _prefix "RegistrationStatusPublished"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatusRetired"></see>
     /// </summary>
-    let RegistrationStatusRetired =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatusRetired" |> NamespacedName
-
+    let RegistrationStatusRetired = _prefix "RegistrationStatusRetired"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandardIFRS"></see>
     /// </summary>
-    let AccountingStandardIFRS =
-        Namespaced_IRI.parse _namespace_name "AccountingStandardIFRS" |> NamespacedName
+    let AccountingStandardIFRS = _prefix "AccountingStandardIFRS"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandardOtherAccountingStandard"></see>
     /// </summary>
     let AccountingStandardOtherAccountingStandard =
-        Namespaced_IRI.parse _namespace_name "AccountingStandardOtherAccountingStandard" |> NamespacedName
+        _prefix "AccountingStandardOtherAccountingStandard"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandardUSGAAP"></see>
     /// </summary>
-    let AccountingStandardUSGAAP =
-        Namespaced_IRI.parse _namespace_name "AccountingStandardUSGAAP" |> NamespacedName
+    let AccountingStandardUSGAAP = _prefix "AccountingStandardUSGAAP"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindAccountsFiling"></see>
     /// </summary>
     let RelationshipValidationDocumentsKindAccountsFiling =
-        Namespaced_IRI.parse _namespace_name "RelationshipValidationDocumentsKindAccountsFiling" |> NamespacedName
+        _prefix "RelationshipValidationDocumentsKindAccountsFiling"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindContracts"></see>
     /// </summary>
     let RelationshipValidationDocumentsKindContracts =
-        Namespaced_IRI.parse _namespace_name "RelationshipValidationDocumentsKindContracts" |> NamespacedName
+        _prefix "RelationshipValidationDocumentsKindContracts"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindOtherOfficialDocuments"></see>
     /// </summary>
     let RelationshipValidationDocumentsKindOtherOfficialDocuments =
-        Namespaced_IRI.parse _namespace_name "RelationshipValidationDocumentsKindOtherOfficialDocuments" |> NamespacedName
+        _prefix "RelationshipValidationDocumentsKindOtherOfficialDocuments"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindRegulatoryFiling"></see>
     /// </summary>
     let RelationshipValidationDocumentsKindRegulatoryFiling =
-        Namespaced_IRI.parse _namespace_name "RelationshipValidationDocumentsKindRegulatoryFiling" |> NamespacedName
+        _prefix "RelationshipValidationDocumentsKindRegulatoryFiling"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKindSupportingDocuments"></see>
     /// </summary>
     let RelationshipValidationDocumentsKindSupportingDocuments =
-        Namespaced_IRI.parse _namespace_name "RelationshipValidationDocumentsKindSupportingDocuments" |> NamespacedName
+        _prefix "RelationshipValidationDocumentsKindSupportingDocuments"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipStatusActive"></see>
     /// </summary>
-    let RelationshipStatusActive =
-        Namespaced_IRI.parse _namespace_name "RelationshipStatusActive" |> NamespacedName
-
+    let RelationshipStatusActive = _prefix "RelationshipStatusActive"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipStatusInactive"></see>
     /// </summary>
-    let RelationshipStatusInactive =
-        Namespaced_IRI.parse _namespace_name "RelationshipStatusInactive" |> NamespacedName
-
+    let RelationshipStatusInactive = _prefix "RelationshipStatusInactive"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasRelationshipStatus"></see>
     /// </summary>
-    let hasRelationshipStatus =
-        Namespaced_IRI.parse _namespace_name "hasRelationshipStatus" |> NamespacedName
-
+    let hasRelationshipStatus = _prefix "hasRelationshipStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipStatus"></see>
     /// </summary>
-    let RelationshipStatus =
-        Namespaced_IRI.parse _namespace_name "RelationshipStatus" |> NamespacedName
-
+    let RelationshipStatus = _prefix "RelationshipStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasChild"></see>
     /// </summary>
-    let hasChild = Namespaced_IRI.parse _namespace_name "hasChild" |> NamespacedName
+    let hasChild = _prefix "hasChild"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasParent"></see>
     /// </summary>
-    let hasParent = Namespaced_IRI.parse _namespace_name "hasParent" |> NamespacedName
-
+    let hasParent = _prefix "hasParent"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasRelationshipPeriod"></see>
     /// </summary>
-    let hasRelationshipPeriod =
-        Namespaced_IRI.parse _namespace_name "hasRelationshipPeriod" |> NamespacedName
-
+    let hasRelationshipPeriod = _prefix "hasRelationshipPeriod"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/AccountingConsolidation"></see>
     /// </summary>
-    let AccountingConsolidation =
-        Namespaced_IRI.parse _namespace_name "AccountingConsolidation" |> NamespacedName
-
+    let AccountingConsolidation = _prefix "AccountingConsolidation"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasAccountingStandard"></see>
     /// </summary>
-    let hasAccountingStandard =
-        Namespaced_IRI.parse _namespace_name "hasAccountingStandard" |> NamespacedName
-
+    let hasAccountingStandard = _prefix "hasAccountingStandard"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/AccountingStandard"></see>
     /// </summary>
-    let AccountingStandard =
-        Namespaced_IRI.parse _namespace_name "AccountingStandard" |> NamespacedName
-
+    let AccountingStandard = _prefix "AccountingStandard"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/DirectConsolidation"></see>
     /// </summary>
-    let DirectConsolidation =
-        Namespaced_IRI.parse _namespace_name "DirectConsolidation" |> NamespacedName
-
+    let DirectConsolidation = _prefix "DirectConsolidation"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/InternationalBranchRelationship"></see>
     /// </summary>
-    let InternationalBranchRelationship =
-        Namespaced_IRI.parse _namespace_name "InternationalBranchRelationship" |> NamespacedName
-
+    let InternationalBranchRelationship = _prefix "InternationalBranchRelationship"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/LegalEntityRelationshipRecord"></see>
     /// </summary>
-    let LegalEntityRelationshipRecord =
-        Namespaced_IRI.parse _namespace_name "LegalEntityRelationshipRecord" |> NamespacedName
-
+    let LegalEntityRelationshipRecord = _prefix "LegalEntityRelationshipRecord"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasValidationDocuments"></see>
     /// </summary>
-    let hasValidationDocuments =
-        Namespaced_IRI.parse _namespace_name "hasValidationDocuments" |> NamespacedName
+    let hasValidationDocuments = _prefix "hasValidationDocuments"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKind"></see>
     /// </summary>
     let RelationshipValidationDocumentsKind =
-        Namespaced_IRI.parse _namespace_name "RelationshipValidationDocumentsKind" |> NamespacedName
+        _prefix "RelationshipValidationDocumentsKind"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasDocumentFilingPeriod"></see>
     /// </summary>
-    let hasDocumentFilingPeriod =
-        Namespaced_IRI.parse _namespace_name "hasDocumentFilingPeriod" |> NamespacedName
-
+    let hasDocumentFilingPeriod = _prefix "hasDocumentFilingPeriod"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasAccountingPeriod"></see>
     /// </summary>
-    let hasAccountingPeriod =
-        Namespaced_IRI.parse _namespace_name "hasAccountingPeriod" |> NamespacedName
-
+    let hasAccountingPeriod = _prefix "hasAccountingPeriod"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasValidationSources"></see>
     /// </summary>
-    let hasValidationSources =
-        Namespaced_IRI.parse _namespace_name "hasValidationSources" |> NamespacedName
-
+    let hasValidationSources = _prefix "hasValidationSources"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/hasValidationReference"></see>
     /// </summary>
-    let hasValidationReference =
-        Namespaced_IRI.parse _namespace_name "hasValidationReference" |> NamespacedName
-
+    let hasValidationReference = _prefix "hasValidationReference"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/RegistrationStatus"></see>
     /// </summary>
-    let RegistrationStatus =
-        Namespaced_IRI.parse _namespace_name "RegistrationStatus" |> NamespacedName
-
+    let RegistrationStatus = _prefix "RegistrationStatus"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/L2/UltimateConsolidation"></see>
     /// </summary>
-    let UltimateConsolidation =
-        Namespaced_IRI.parse _namespace_name "UltimateConsolidation" |> NamespacedName
+    let UltimateConsolidation = _prefix "UltimateConsolidation"

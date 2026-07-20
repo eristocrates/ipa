@@ -1,43 +1,35 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Places.VirtualPlaces.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_plc_vrt =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/ElectronicMailAddress"></see>
     /// </summary>
-    let ElectronicMailAddress =
-        Namespaced_IRI.parse _namespace_name "ElectronicMailAddress" |> NamespacedName
-
+    let ElectronicMailAddress = _prefix "ElectronicMailAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/NetworkLocation"></see>
     /// </summary>
-    let NetworkLocation =
-        Namespaced_IRI.parse _namespace_name "NetworkLocation" |> NamespacedName
-
+    let NetworkLocation = _prefix "NetworkLocation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/NotionalPlace"></see>
     /// </summary>
-    let NotionalPlace =
-        Namespaced_IRI.parse _namespace_name "NotionalPlace" |> NamespacedName
-
+    let NotionalPlace = _prefix "NotionalPlace"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/TelephoneNumber"></see>
     /// </summary>
-    let TelephoneNumber =
-        Namespaced_IRI.parse _namespace_name "TelephoneNumber" |> NamespacedName
-
+    let TelephoneNumber = _prefix "TelephoneNumber"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/hasElectronicMailAddress"></see>
     /// </summary>
-    let hasElectronicMailAddress =
-        Namespaced_IRI.parse _namespace_name "hasElectronicMailAddress" |> NamespacedName
-
+    let hasElectronicMailAddress = _prefix "hasElectronicMailAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/hasTelephoneNumber"></see>
     /// </summary>
-    let hasTelephoneNumber =
-        Namespaced_IRI.parse _namespace_name "hasTelephoneNumber" |> NamespacedName
+    let hasTelephoneNumber = _prefix "hasTelephoneNumber"

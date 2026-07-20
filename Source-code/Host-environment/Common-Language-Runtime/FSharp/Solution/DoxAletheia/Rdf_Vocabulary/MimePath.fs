@@ -1,5 +1,5 @@
 namespace DoxAletheia
-open Rdf_Vocabulary
+
 module Mime_Path =
     module application =
         module _1d =

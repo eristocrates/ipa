@@ -1,327 +1,270 @@
 namespace http.www.opengis.net.ont.geosparql.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module geosparql =
     let _namespace_name = "http://www.opengis.net/ont/geosparql#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#Feature"></see>
     /// </summary>
-    let Feature = Namespaced_IRI.parse _namespace_name "Feature" |> NamespacedName
-
+    let Feature = _prefix "Feature"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#SpatialObject"></see>
     /// </summary>
-    let SpatialObject =
-        Namespaced_IRI.parse _namespace_name "SpatialObject" |> NamespacedName
-
+    let SpatialObject = _prefix "SpatialObject"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#Geometry"></see>
     /// </summary>
-    let Geometry = Namespaced_IRI.parse _namespace_name "Geometry" |> NamespacedName
-
+    let Geometry = _prefix "Geometry"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#FeatureCollection"></see>
     /// </summary>
-    let FeatureCollection =
-        Namespaced_IRI.parse _namespace_name "FeatureCollection" |> NamespacedName
-
+    let FeatureCollection = _prefix "FeatureCollection"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#SpatialObjectCollection"></see>
     /// </summary>
-    let SpatialObjectCollection =
-        Namespaced_IRI.parse _namespace_name "SpatialObjectCollection" |> NamespacedName
-
+    let SpatialObjectCollection = _prefix "SpatialObjectCollection"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#GeometryCollection"></see>
     /// </summary>
-    let GeometryCollection =
-        Namespaced_IRI.parse _namespace_name "GeometryCollection" |> NamespacedName
-
+    let GeometryCollection = _prefix "GeometryCollection"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#asDGGS"></see>
     /// </summary>
-    let asDGGS = Namespaced_IRI.parse _namespace_name "asDGGS" |> NamespacedName
-
+    let asDGGS = _prefix "asDGGS"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#dggsLiteral"></see>
     /// </summary>
-    let dggsLiteral =
-        Namespaced_IRI.parse _namespace_name "dggsLiteral" |> NamespacedName
-
+    let dggsLiteral = _prefix "dggsLiteral"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasSerialization"></see>
     /// </summary>
-    let hasSerialization =
-        Namespaced_IRI.parse _namespace_name "hasSerialization" |> NamespacedName
-
+    let hasSerialization = _prefix "hasSerialization"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#asGML"></see>
     /// </summary>
-    let asGML = Namespaced_IRI.parse _namespace_name "asGML" |> NamespacedName
+    let asGML = _prefix "asGML"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#gmlLiteral"></see>
     /// </summary>
-    let gmlLiteral = Namespaced_IRI.parse _namespace_name "gmlLiteral" |> NamespacedName
+    let gmlLiteral = _prefix "gmlLiteral"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#asGeoJSON"></see>
     /// </summary>
-    let asGeoJSON = Namespaced_IRI.parse _namespace_name "asGeoJSON" |> NamespacedName
-
+    let asGeoJSON = _prefix "asGeoJSON"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#geoJSONLiteral"></see>
     /// </summary>
-    let geoJSONLiteral =
-        Namespaced_IRI.parse _namespace_name "geoJSONLiteral" |> NamespacedName
-
+    let geoJSONLiteral = _prefix "geoJSONLiteral"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#asKML"></see>
     /// </summary>
-    let asKML = Namespaced_IRI.parse _namespace_name "asKML" |> NamespacedName
+    let asKML = _prefix "asKML"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#kmlLiteral"></see>
     /// </summary>
-    let kmlLiteral = Namespaced_IRI.parse _namespace_name "kmlLiteral" |> NamespacedName
+    let kmlLiteral = _prefix "kmlLiteral"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#asWKT"></see>
     /// </summary>
-    let asWKT = Namespaced_IRI.parse _namespace_name "asWKT" |> NamespacedName
+    let asWKT = _prefix "asWKT"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#wktLiteral"></see>
     /// </summary>
-    let wktLiteral = Namespaced_IRI.parse _namespace_name "wktLiteral" |> NamespacedName
-
+    let wktLiteral = _prefix "wktLiteral"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#coordinateDimension"></see>
     /// </summary>
-    let coordinateDimension =
-        Namespaced_IRI.parse _namespace_name "coordinateDimension" |> NamespacedName
-
+    let coordinateDimension = _prefix "coordinateDimension"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#defaultGeometry"></see>
     /// </summary>
-    let defaultGeometry =
-        Namespaced_IRI.parse _namespace_name "defaultGeometry" |> NamespacedName
-
+    let defaultGeometry = _prefix "defaultGeometry"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasGeometry"></see>
     /// </summary>
-    let hasGeometry =
-        Namespaced_IRI.parse _namespace_name "hasGeometry" |> NamespacedName
-
+    let hasGeometry = _prefix "hasGeometry"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasDefaultGeometry"></see>
     /// </summary>
-    let hasDefaultGeometry =
-        Namespaced_IRI.parse _namespace_name "hasDefaultGeometry" |> NamespacedName
-
+    let hasDefaultGeometry = _prefix "hasDefaultGeometry"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#dimension"></see>
     /// </summary>
-    let dimension = Namespaced_IRI.parse _namespace_name "dimension" |> NamespacedName
+    let dimension = _prefix "dimension"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehContains"></see>
     /// </summary>
-    let ehContains = Namespaced_IRI.parse _namespace_name "ehContains" |> NamespacedName
-
+    let ehContains = _prefix "ehContains"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehCoveredBy"></see>
     /// </summary>
-    let ehCoveredBy =
-        Namespaced_IRI.parse _namespace_name "ehCoveredBy" |> NamespacedName
-
+    let ehCoveredBy = _prefix "ehCoveredBy"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehCovers"></see>
     /// </summary>
-    let ehCovers = Namespaced_IRI.parse _namespace_name "ehCovers" |> NamespacedName
+    let ehCovers = _prefix "ehCovers"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehDisjoint"></see>
     /// </summary>
-    let ehDisjoint = Namespaced_IRI.parse _namespace_name "ehDisjoint" |> NamespacedName
+    let ehDisjoint = _prefix "ehDisjoint"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfDisjoint"></see>
     /// </summary>
-    let sfDisjoint = Namespaced_IRI.parse _namespace_name "sfDisjoint" |> NamespacedName
+    let sfDisjoint = _prefix "sfDisjoint"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehEquals"></see>
     /// </summary>
-    let ehEquals = Namespaced_IRI.parse _namespace_name "ehEquals" |> NamespacedName
+    let ehEquals = _prefix "ehEquals"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfEquals"></see>
     /// </summary>
-    let sfEquals = Namespaced_IRI.parse _namespace_name "sfEquals" |> NamespacedName
+    let sfEquals = _prefix "sfEquals"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehInside"></see>
     /// </summary>
-    let ehInside = Namespaced_IRI.parse _namespace_name "ehInside" |> NamespacedName
+    let ehInside = _prefix "ehInside"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehMeet"></see>
     /// </summary>
-    let ehMeet = Namespaced_IRI.parse _namespace_name "ehMeet" |> NamespacedName
+    let ehMeet = _prefix "ehMeet"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfTouches"></see>
     /// </summary>
-    let sfTouches = Namespaced_IRI.parse _namespace_name "sfTouches" |> NamespacedName
+    let sfTouches = _prefix "sfTouches"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#ehOverlap"></see>
     /// </summary>
-    let ehOverlap = Namespaced_IRI.parse _namespace_name "ehOverlap" |> NamespacedName
+    let ehOverlap = _prefix "ehOverlap"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasArea"></see>
     /// </summary>
-    let hasArea = Namespaced_IRI.parse _namespace_name "hasArea" |> NamespacedName
+    let hasArea = _prefix "hasArea"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasSize"></see>
     /// </summary>
-    let hasSize = Namespaced_IRI.parse _namespace_name "hasSize" |> NamespacedName
-
+    let hasSize = _prefix "hasSize"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasBoundingBox"></see>
     /// </summary>
-    let hasBoundingBox =
-        Namespaced_IRI.parse _namespace_name "hasBoundingBox" |> NamespacedName
-
+    let hasBoundingBox = _prefix "hasBoundingBox"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasCentroid"></see>
     /// </summary>
-    let hasCentroid =
-        Namespaced_IRI.parse _namespace_name "hasCentroid" |> NamespacedName
-
+    let hasCentroid = _prefix "hasCentroid"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasLength"></see>
     /// </summary>
-    let hasLength = Namespaced_IRI.parse _namespace_name "hasLength" |> NamespacedName
-
+    let hasLength = _prefix "hasLength"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricArea"></see>
     /// </summary>
-    let hasMetricArea =
-        Namespaced_IRI.parse _namespace_name "hasMetricArea" |> NamespacedName
-
+    let hasMetricArea = _prefix "hasMetricArea"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricSize"></see>
     /// </summary>
-    let hasMetricSize =
-        Namespaced_IRI.parse _namespace_name "hasMetricSize" |> NamespacedName
-
+    let hasMetricSize = _prefix "hasMetricSize"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricLength"></see>
     /// </summary>
-    let hasMetricLength =
-        Namespaced_IRI.parse _namespace_name "hasMetricLength" |> NamespacedName
-
+    let hasMetricLength = _prefix "hasMetricLength"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricPerimeterLength"></see>
     /// </summary>
-    let hasMetricPerimeterLength =
-        Namespaced_IRI.parse _namespace_name "hasMetricPerimeterLength" |> NamespacedName
-
+    let hasMetricPerimeterLength = _prefix "hasMetricPerimeterLength"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricSpatialAccuracy"></see>
     /// </summary>
-    let hasMetricSpatialAccuracy =
-        Namespaced_IRI.parse _namespace_name "hasMetricSpatialAccuracy" |> NamespacedName
-
+    let hasMetricSpatialAccuracy = _prefix "hasMetricSpatialAccuracy"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricSpatialResolution"></see>
     /// </summary>
-    let hasMetricSpatialResolution =
-        Namespaced_IRI.parse _namespace_name "hasMetricSpatialResolution" |> NamespacedName
-
+    let hasMetricSpatialResolution = _prefix "hasMetricSpatialResolution"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasMetricVolume"></see>
     /// </summary>
-    let hasMetricVolume =
-        Namespaced_IRI.parse _namespace_name "hasMetricVolume" |> NamespacedName
-
+    let hasMetricVolume = _prefix "hasMetricVolume"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasPerimeterLength"></see>
     /// </summary>
-    let hasPerimeterLength =
-        Namespaced_IRI.parse _namespace_name "hasPerimeterLength" |> NamespacedName
-
+    let hasPerimeterLength = _prefix "hasPerimeterLength"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasSpatialAccuracy"></see>
     /// </summary>
-    let hasSpatialAccuracy =
-        Namespaced_IRI.parse _namespace_name "hasSpatialAccuracy" |> NamespacedName
-
+    let hasSpatialAccuracy = _prefix "hasSpatialAccuracy"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasSpatialResolution"></see>
     /// </summary>
-    let hasSpatialResolution =
-        Namespaced_IRI.parse _namespace_name "hasSpatialResolution" |> NamespacedName
-
+    let hasSpatialResolution = _prefix "hasSpatialResolution"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#hasVolume"></see>
     /// </summary>
-    let hasVolume = Namespaced_IRI.parse _namespace_name "hasVolume" |> NamespacedName
+    let hasVolume = _prefix "hasVolume"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#isEmpty"></see>
     /// </summary>
-    let isEmpty = Namespaced_IRI.parse _namespace_name "isEmpty" |> NamespacedName
+    let isEmpty = _prefix "isEmpty"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#isSimple"></see>
     /// </summary>
-    let isSimple = Namespaced_IRI.parse _namespace_name "isSimple" |> NamespacedName
+    let isSimple = _prefix "isSimple"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8dc"></see>
     /// </summary>
-    let rcc8dc = Namespaced_IRI.parse _namespace_name "rcc8dc" |> NamespacedName
+    let rcc8dc = _prefix "rcc8dc"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8ec"></see>
     /// </summary>
-    let rcc8ec = Namespaced_IRI.parse _namespace_name "rcc8ec" |> NamespacedName
+    let rcc8ec = _prefix "rcc8ec"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8eq"></see>
     /// </summary>
-    let rcc8eq = Namespaced_IRI.parse _namespace_name "rcc8eq" |> NamespacedName
+    let rcc8eq = _prefix "rcc8eq"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8ntpp"></see>
     /// </summary>
-    let rcc8ntpp = Namespaced_IRI.parse _namespace_name "rcc8ntpp" |> NamespacedName
+    let rcc8ntpp = _prefix "rcc8ntpp"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8ntppi"></see>
     /// </summary>
-    let rcc8ntppi = Namespaced_IRI.parse _namespace_name "rcc8ntppi" |> NamespacedName
+    let rcc8ntppi = _prefix "rcc8ntppi"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8po"></see>
     /// </summary>
-    let rcc8po = Namespaced_IRI.parse _namespace_name "rcc8po" |> NamespacedName
+    let rcc8po = _prefix "rcc8po"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8tpp"></see>
     /// </summary>
-    let rcc8tpp = Namespaced_IRI.parse _namespace_name "rcc8tpp" |> NamespacedName
+    let rcc8tpp = _prefix "rcc8tpp"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#rcc8tppi"></see>
     /// </summary>
-    let rcc8tppi = Namespaced_IRI.parse _namespace_name "rcc8tppi" |> NamespacedName
+    let rcc8tppi = _prefix "rcc8tppi"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfContains"></see>
     /// </summary>
-    let sfContains = Namespaced_IRI.parse _namespace_name "sfContains" |> NamespacedName
+    let sfContains = _prefix "sfContains"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfCrosses"></see>
     /// </summary>
-    let sfCrosses = Namespaced_IRI.parse _namespace_name "sfCrosses" |> NamespacedName
-
+    let sfCrosses = _prefix "sfCrosses"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfIntersects"></see>
     /// </summary>
-    let sfIntersects =
-        Namespaced_IRI.parse _namespace_name "sfIntersects" |> NamespacedName
-
+    let sfIntersects = _prefix "sfIntersects"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfOverlaps"></see>
     /// </summary>
-    let sfOverlaps = Namespaced_IRI.parse _namespace_name "sfOverlaps" |> NamespacedName
+    let sfOverlaps = _prefix "sfOverlaps"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#sfWithin"></see>
     /// </summary>
-    let sfWithin = Namespaced_IRI.parse _namespace_name "sfWithin" |> NamespacedName
-
+    let sfWithin = _prefix "sfWithin"
     /// <summary>
     ///   <see href="http://www.opengis.net/ont/geosparql#spatialDimension"></see>
     /// </summary>
-    let spatialDimension =
-        Namespaced_IRI.parse _namespace_name "spatialDimension" |> NamespacedName
+    let spatialDimension = _prefix "spatialDimension"

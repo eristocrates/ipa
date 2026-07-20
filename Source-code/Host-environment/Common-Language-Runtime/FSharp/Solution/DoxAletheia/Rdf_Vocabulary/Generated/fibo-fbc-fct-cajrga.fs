@@ -1,217 +1,203 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.NorthAmericanEntities.CARegulatoryAgencies.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_cajrga =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BankOfCanada"></see>
     /// </summary>
-    let BankOfCanada =
-        Namespaced_IRI.parse _namespace_name "BankOfCanada" |> NamespacedName
-
+    let BankOfCanada = _prefix "BankOfCanada"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BankOfCanadaHeadOfficeAddress"></see>
     /// </summary>
-    let BankOfCanadaHeadOfficeAddress =
-        Namespaced_IRI.parse _namespace_name "BankOfCanadaHeadOfficeAddress" |> NamespacedName
+    let BankOfCanadaHeadOfficeAddress = _prefix "BankOfCanadaHeadOfficeAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BankOfCanadaLegalEntityIdentifierRegistryEntry"></see>
     /// </summary>
     let BankOfCanadaLegalEntityIdentifierRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "BankOfCanadaLegalEntityIdentifierRegistryEntry" |> NamespacedName
+        _prefix "BankOfCanadaLegalEntityIdentifierRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BusinessNumber"></see>
     /// </summary>
-    let BusinessNumber =
-        Namespaced_IRI.parse _namespace_name "BusinessNumber" |> NamespacedName
+    let BusinessNumber = _prefix "BusinessNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BusinessNumberRegistrationIdentifierScheme"></see>
     /// </summary>
     let BusinessNumberRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "BusinessNumberRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "BusinessNumberRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BusinessNumberRegistrationService"></see>
     /// </summary>
-    let BusinessNumberRegistrationService =
-        Namespaced_IRI.parse _namespace_name "BusinessNumberRegistrationService" |> NamespacedName
-
+    let BusinessNumberRegistrationService = _prefix "BusinessNumberRegistrationService"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CanadianBusinessTaxRegistrar"></see>
     /// </summary>
-    let CanadianBusinessTaxRegistrar =
-        Namespaced_IRI.parse _namespace_name "CanadianBusinessTaxRegistrar" |> NamespacedName
-
+    let CanadianBusinessTaxRegistrar = _prefix "CanadianBusinessTaxRegistrar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/BusinessNumberRegistry"></see>
     /// </summary>
-    let BusinessNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "BusinessNumberRegistry" |> NamespacedName
-
+    let BusinessNumberRegistry = _prefix "BusinessNumberRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CanadaRevenueAgency"></see>
     /// </summary>
-    let CanadaRevenueAgency =
-        Namespaced_IRI.parse _namespace_name "CanadaRevenueAgency" |> NamespacedName
+    let CanadaRevenueAgency = _prefix "CanadaRevenueAgency"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CanadaRevenueAgencyHeadOfficeAddress"></see>
     /// </summary>
     let CanadaRevenueAgencyHeadOfficeAddress =
-        Namespaced_IRI.parse _namespace_name "CanadaRevenueAgencyHeadOfficeAddress" |> NamespacedName
+        _prefix "CanadaRevenueAgencyHeadOfficeAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CanadianBankingRegulatoryAgencyAndCentralBank"></see>
     /// </summary>
     let CanadianBankingRegulatoryAgencyAndCentralBank =
-        Namespaced_IRI.parse _namespace_name "CanadianBankingRegulatoryAgencyAndCentralBank" |> NamespacedName
+        _prefix "CanadianBankingRegulatoryAgencyAndCentralBank"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CorporationIncomeTaxNumber"></see>
     /// </summary>
-    let CorporationIncomeTaxNumber =
-        Namespaced_IRI.parse _namespace_name "CorporationIncomeTaxNumber" |> NamespacedName
+    let CorporationIncomeTaxNumber = _prefix "CorporationIncomeTaxNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CorporationIncomeTaxNumberIdentifierScheme"></see>
     /// </summary>
     let CorporationIncomeTaxNumberIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "CorporationIncomeTaxNumberIdentifierScheme" |> NamespacedName
+        _prefix "CorporationIncomeTaxNumberIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CorporationIncomeTaxNumberRegistrationService"></see>
     /// </summary>
     let CorporationIncomeTaxNumberRegistrationService =
-        Namespaced_IRI.parse _namespace_name "CorporationIncomeTaxNumberRegistrationService" |> NamespacedName
+        _prefix "CorporationIncomeTaxNumberRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/CorporationIncomeTaxNumberRegistry"></see>
     /// </summary>
     let CorporationIncomeTaxNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "CorporationIncomeTaxNumberRegistry" |> NamespacedName
+        _prefix "CorporationIncomeTaxNumberRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/GoodsServicesTaxHarmonizedSalesTaxNumberRegistry"></see>
     /// </summary>
     let GoodsServicesTaxHarmonizedSalesTaxNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "GoodsServicesTaxHarmonizedSalesTaxNumberRegistry" |> NamespacedName
+        _prefix "GoodsServicesTaxHarmonizedSalesTaxNumberRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme"></see>
     /// </summary>
     let GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme" |> NamespacedName
+        _prefix "GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/GoodsServicesTaxHarmonizedSalesTaxRegistrationNumber"></see>
     /// </summary>
     let GoodsServicesTaxHarmonizedSalesTaxRegistrationNumber =
-        Namespaced_IRI.parse _namespace_name "GoodsServicesTaxHarmonizedSalesTaxRegistrationNumber" |> NamespacedName
+        _prefix "GoodsServicesTaxHarmonizedSalesTaxRegistrationNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/GoodsServicesTaxHarmonizedSalesTaxRegistrationService"></see>
     /// </summary>
     let GoodsServicesTaxHarmonizedSalesTaxRegistrationService =
-        Namespaced_IRI.parse _namespace_name "GoodsServicesTaxHarmonizedSalesTaxRegistrationService" |> NamespacedName
+        _prefix "GoodsServicesTaxHarmonizedSalesTaxRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/ImportExportProgramNumber"></see>
     /// </summary>
-    let ImportExportProgramNumber =
-        Namespaced_IRI.parse _namespace_name "ImportExportProgramNumber" |> NamespacedName
+    let ImportExportProgramNumber = _prefix "ImportExportProgramNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/ImportExportProgramNumberIdentifierScheme"></see>
     /// </summary>
     let ImportExportProgramNumberIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "ImportExportProgramNumberIdentifierScheme" |> NamespacedName
+        _prefix "ImportExportProgramNumberIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/ImportExportProgramNumberRegistrationService"></see>
     /// </summary>
     let ImportExportProgramNumberRegistrationService =
-        Namespaced_IRI.parse _namespace_name "ImportExportProgramNumberRegistrationService" |> NamespacedName
+        _prefix "ImportExportProgramNumberRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/ImportExportProgramNumberRegistry"></see>
     /// </summary>
-    let ImportExportProgramNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "ImportExportProgramNumberRegistry" |> NamespacedName
+    let ImportExportProgramNumberRegistry = _prefix "ImportExportProgramNumberRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/InformationReturnsIdentifierScheme"></see>
     /// </summary>
     let InformationReturnsIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "InformationReturnsIdentifierScheme" |> NamespacedName
+        _prefix "InformationReturnsIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/InformationReturnsProgramNumber"></see>
     /// </summary>
-    let InformationReturnsProgramNumber =
-        Namespaced_IRI.parse _namespace_name "InformationReturnsProgramNumber" |> NamespacedName
+    let InformationReturnsProgramNumber = _prefix "InformationReturnsProgramNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/InformationReturnsProgramNumberRegistrationService"></see>
     /// </summary>
     let InformationReturnsProgramNumberRegistrationService =
-        Namespaced_IRI.parse _namespace_name "InformationReturnsProgramNumberRegistrationService" |> NamespacedName
+        _prefix "InformationReturnsProgramNumberRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/InformationReturnsProgramNumberRegistry"></see>
     /// </summary>
     let InformationReturnsProgramNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "InformationReturnsProgramNumberRegistry" |> NamespacedName
+        _prefix "InformationReturnsProgramNumberRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/PayrollDeductionsProgramIdentifierRegistrationService"></see>
     /// </summary>
     let PayrollDeductionsProgramIdentifierRegistrationService =
-        Namespaced_IRI.parse _namespace_name "PayrollDeductionsProgramIdentifierRegistrationService" |> NamespacedName
+        _prefix "PayrollDeductionsProgramIdentifierRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/PayrollDeductionsProgramIdentifierScheme"></see>
     /// </summary>
     let PayrollDeductionsProgramIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "PayrollDeductionsProgramIdentifierScheme" |> NamespacedName
+        _prefix "PayrollDeductionsProgramIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/PayrollDeductionsProgramNumber"></see>
     /// </summary>
-    let PayrollDeductionsProgramNumber =
-        Namespaced_IRI.parse _namespace_name "PayrollDeductionsProgramNumber" |> NamespacedName
+    let PayrollDeductionsProgramNumber = _prefix "PayrollDeductionsProgramNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/PayrollDeductionsProgramNumberRegistry"></see>
     /// </summary>
     let PayrollDeductionsProgramNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "PayrollDeductionsProgramNumberRegistry" |> NamespacedName
+        _prefix "PayrollDeductionsProgramNumberRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/RegisteredCharityProgramNumber"></see>
     /// </summary>
-    let RegisteredCharityProgramNumber =
-        Namespaced_IRI.parse _namespace_name "RegisteredCharityProgramNumber" |> NamespacedName
+    let RegisteredCharityProgramNumber = _prefix "RegisteredCharityProgramNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/RegisteredCharityProgramNumberIdentifierScheme"></see>
     /// </summary>
     let RegisteredCharityProgramNumberIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "RegisteredCharityProgramNumberIdentifierScheme" |> NamespacedName
+        _prefix "RegisteredCharityProgramNumberIdentifierScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/RegisteredCharityProgramNumberRegistrationService"></see>
     /// </summary>
     let RegisteredCharityProgramNumberRegistrationService =
-        Namespaced_IRI.parse _namespace_name "RegisteredCharityProgramNumberRegistrationService" |> NamespacedName
+        _prefix "RegisteredCharityProgramNumberRegistrationService"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/RegisteredCharityProgramNumberRegistry"></see>
     /// </summary>
     let RegisteredCharityProgramNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "RegisteredCharityProgramNumberRegistry" |> NamespacedName
+        _prefix "RegisteredCharityProgramNumberRegistry"

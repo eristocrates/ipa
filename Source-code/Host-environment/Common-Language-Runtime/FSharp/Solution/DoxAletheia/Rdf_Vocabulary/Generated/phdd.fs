@@ -1,9 +1,13 @@
 namespace http.rdf_vocabulary.ddialliance.org.phdd.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module phdd =
     let _namespace_name = "http://rdf-vocabulary.ddialliance.org/phdd#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///
     /// 	A column of a table. Other terms are variable or data item.
@@ -14,45 +18,33 @@ module phdd =
     /// 	DDI 3.2 Documentation:  http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/logicalproduct_xsd/elements/Variable.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#Column"></see></summary>
-    let Column = Namespaced_IRI.parse _namespace_name "Column" |> NamespacedName
-
+    let Column = _prefix "Column"
     /// <summary>
     ///
     /// 	Detailed description of a column. It comprehends common properties of delimited column and fixed column data.
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#ColumnDescription"></see></summary>
-    let ColumnDescription =
-        Namespaced_IRI.parse _namespace_name "ColumnDescription" |> NamespacedName
-
+    let ColumnDescription = _prefix "ColumnDescription"
     /// <summary>
     /// Detailed description of a table with character-separated values additionally to the common properties in "TableStructure".
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#Delimited"></see></summary>
-    let Delimited = Namespaced_IRI.parse _namespace_name "Delimited" |> NamespacedName
-
+    let Delimited = _prefix "Delimited"
     /// <summary>
     /// The table properties described by default parameters of the data values.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#TableStructure"></see></summary>
-    let TableStructure =
-        Namespaced_IRI.parse _namespace_name "TableStructure" |> NamespacedName
-
+    let TableStructure = _prefix "TableStructure"
     /// <summary>
     /// Detailed description of a column in CSV data additionally to the common properties in "ColumnDescription".
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#DelimitedColumnDescription"></see></summary>
-    let DelimitedColumnDescription =
-        Namespaced_IRI.parse _namespace_name "DelimitedColumnDescription" |> NamespacedName
-
+    let DelimitedColumnDescription = _prefix "DelimitedColumnDescription"
     /// <summary>
     /// Detailed description of a column in fixed record length data in addition to the common properties in "ColumnDescription".
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#FixedColumnDescription"></see></summary>
-    let FixedColumnDescription =
-        Namespaced_IRI.parse _namespace_name "FixedColumnDescription" |> NamespacedName
-
+    let FixedColumnDescription = _prefix "FixedColumnDescription"
     /// <summary>
     /// Detailed description of a table with fixed record length additionally to the common properties in "TableStructure".
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#FixedRecordLength"></see></summary>
-    let FixedRecordLength =
-        Namespaced_IRI.parse _namespace_name "FixedRecordLength" |> NamespacedName
-
+    let FixedRecordLength = _prefix "FixedRecordLength"
     /// <summary>
     /// Program or program statements for reading the data.
     ///
@@ -60,15 +52,11 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/CommandFile.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#InputProgram"></see></summary>
-    let InputProgram =
-        Namespaced_IRI.parse _namespace_name "InputProgram" |> NamespacedName
-
+    let InputProgram = _prefix "InputProgram"
     /// <summary>
     /// Description of a table by significant parameters.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#TableDescription"></see></summary>
-    let TableDescription =
-        Namespaced_IRI.parse _namespace_name "TableDescription" |> NamespacedName
-
+    let TableDescription = _prefix "TableDescription"
     /// <summary>
     /// Program or program statements for reading the data.
     ///
@@ -76,9 +64,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/CommandFile.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#inputProgram"></see></summary>
-    let inputProgram =
-        Namespaced_IRI.parse _namespace_name "inputProgram" |> NamespacedName
-
+    let inputProgram = _prefix "inputProgram"
     /// <summary>
     /// A table, which could be a rectangular file with character-separated values (CSV) or a rectangular file with fixed record length.
     ///
@@ -89,14 +75,11 @@ module phdd =
     /// 	DDI 3.2 Documentation:  http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/PhysicalDataProduct.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#Table"></see></summary>
-    let Table = Namespaced_IRI.parse _namespace_name "Table" |> NamespacedName
-
+    let Table = _prefix "Table"
     /// <summary>
     /// is described by
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#isDescribedBy"></see></summary>
-    let isDescribedBy =
-        Namespaced_IRI.parse _namespace_name "isDescribedBy" |> NamespacedName
-
+    let isDescribedBy = _prefix "isDescribedBy"
     /// <summary>
     ///
     /// 	Number of cases or observations in the table.
@@ -105,9 +88,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicalinstance_xsd/elements/CaseQuantity.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#caseQuantity"></see></summary>
-    let caseQuantity =
-        Namespaced_IRI.parse _namespace_name "caseQuantity" |> NamespacedName
-
+    let caseQuantity = _prefix "caseQuantity"
     /// <summary>
     ///
     /// 	The character set or encoding used in the table. Supports the use of an external controlled vocabulary in SKOS.
@@ -116,9 +97,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/CharacterSet.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#characterSet"></see></summary>
-    let characterSet =
-        Namespaced_IRI.parse _namespace_name "characterSet" |> NamespacedName
-
+    let characterSet = _prefix "characterSet"
     /// <summary>
     ///
     /// 	A column of a table. Other terms are variable or data item.
@@ -129,8 +108,7 @@ module phdd =
     /// 	DDI 3.2 Documentation:  http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/logicalproduct_xsd/elements/Variable.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#column"></see></summary>
-    let column = Namespaced_IRI.parse _namespace_name "column" |> NamespacedName
-
+    let column = _prefix "column"
     /// <summary>
     ///
     /// 	Position number of the column for delimited records.
@@ -139,9 +117,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/ArrayPosition.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#columnPosition"></see></summary>
-    let columnPosition =
-        Namespaced_IRI.parse _namespace_name "columnPosition" |> NamespacedName
-
+    let columnPosition = _prefix "columnPosition"
     /// <summary>
     ///
     /// 	Indicates how consecutive delimiters should be handed by the software.
@@ -150,9 +126,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/complexTypes/DelimiterType.html#a6
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#consecutiveDelimitersAsOne"></see></summary>
-    let consecutiveDelimitersAsOne =
-        Namespaced_IRI.parse _namespace_name "consecutiveDelimitersAsOne" |> NamespacedName
-
+    let consecutiveDelimitersAsOne = _prefix "consecutiveDelimitersAsOne"
     /// <summary>
     ///
     /// 	Number of decimal places for data values with an implied decimal separator. Another expression is decimal scaling factor. Default is 0.
@@ -161,9 +135,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/DecimalPositions.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#decimalPositions"></see></summary>
-    let decimalPositions =
-        Namespaced_IRI.parse _namespace_name "decimalPositions" |> NamespacedName
-
+    let decimalPositions = _prefix "decimalPositions"
     /// <summary>
     ///
     /// 	Number of decimal places for data values with an implied decimal separator. It applies to the whole table. Another expression is decimal scaling factor. Default is 0.
@@ -172,9 +144,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/DefaultDecimalPositions.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#defaultDecimalPositions"></see></summary>
-    let defaultDecimalPositions =
-        Namespaced_IRI.parse _namespace_name "defaultDecimalPositions" |> NamespacedName
-
+    let defaultDecimalPositions = _prefix "defaultDecimalPositions"
     /// <summary>
     ///
     /// 	The character used to separate whole numbers from decimals expressed as a one character string.
@@ -183,9 +153,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/DefaultDecimalSeparator.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#defaultDecimalSeparator"></see></summary>
-    let defaultDecimalSeparator =
-        Namespaced_IRI.parse _namespace_name "defaultDecimalSeparator" |> NamespacedName
-
+    let defaultDecimalSeparator = _prefix "defaultDecimalSeparator"
     /// <summary>
     ///
     /// 	The character used to separate the component of whole numbers (thousands, millions, etc.) expressed as a one character string.
@@ -194,9 +162,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/DefaultDigitGroupSeparator.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#defaultDigitGroupSeparator"></see></summary>
-    let defaultDigitGroupSeparator =
-        Namespaced_IRI.parse _namespace_name "defaultDigitGroupSeparator" |> NamespacedName
-
+    let defaultDigitGroupSeparator = _prefix "defaultDigitGroupSeparator"
     /// <summary>
     ///
     /// 	Default language of text in the table. Supports the use of an external controlled vocabulary in SKOS.
@@ -205,9 +171,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/LanguageOfData.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#defaultLanguage"></see></summary>
-    let defaultLanguage =
-        Namespaced_IRI.parse _namespace_name "defaultLanguage" |> NamespacedName
-
+    let defaultLanguage = _prefix "defaultLanguage"
     /// <summary>
     ///
     /// 	The default locale of text in the table. It is a set of parameters that defines the country, and any special variant preferences similar to BCP 47. The language can be defined by "defaultLanguage". Supports the use of an external controlled vocabulary in SKOS.
@@ -216,9 +180,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/LocaleOfData.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#defaultLocale"></see></summary>
-    let defaultLocale =
-        Namespaced_IRI.parse _namespace_name "defaultLocale" |> NamespacedName
-
+    let defaultLocale = _prefix "defaultLocale"
     /// <summary>
     ///
     /// 	Defines the delimiter used to separate variables in a delimited record.
@@ -227,8 +189,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/Delimiter.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#delimiter"></see></summary>
-    let delimiter = Namespaced_IRI.parse _namespace_name "delimiter" |> NamespacedName
-
+    let delimiter = _prefix "delimiter"
     /// <summary>
     ///
     /// 	Position of the last character of the column in a table with fixed record length. Must be specified if a value for "width" is not provided.
@@ -237,9 +198,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/EndPosition.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#endPosition"></see></summary>
-    let endPosition =
-        Namespaced_IRI.parse _namespace_name "endPosition" |> NamespacedName
-
+    let endPosition = _prefix "endPosition"
     /// <summary>
     ///
     /// 	The file name or URI of the table.
@@ -248,20 +207,15 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicalinstance_xsd/elements/DataFileIdentification.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#fileName"></see></summary>
-    let fileName = Namespaced_IRI.parse _namespace_name "fileName" |> NamespacedName
-
+    let fileName = _prefix "fileName"
     /// <summary>
     /// First line where the data start. Default is 2.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#firstDataLine"></see></summary>
-    let firstDataLine =
-        Namespaced_IRI.parse _namespace_name "firstDataLine" |> NamespacedName
-
+    let firstDataLine = _prefix "firstDataLine"
     /// <summary>
     /// is structured by
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#isStructuredBy"></see></summary>
-    let isStructuredBy =
-        Namespaced_IRI.parse _namespace_name "isStructuredBy" |> NamespacedName
-
+    let isStructuredBy = _prefix "isStructuredBy"
     /// <summary>
     ///
     /// 	Indicates if the first row of the table contains the names of the columns. Default is true.
@@ -270,9 +224,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/complexTypes/RecordLayoutType.html#a5
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#namesOnFirstRow"></see></summary>
-    let namesOnFirstRow =
-        Namespaced_IRI.parse _namespace_name "namesOnFirstRow" |> NamespacedName
-
+    let namesOnFirstRow = _prefix "namesOnFirstRow"
     /// <summary>
     ///
     /// 	Specifies the end-of-line (EOL) marker used in the file as produced. If no value is provided assume the use of a CRLF (carriage return and line feed)
@@ -281,8 +233,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/EndOfLineMarker.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#newLine"></see></summary>
-    let newLine = Namespaced_IRI.parse _namespace_name "newLine" |> NamespacedName
-
+    let newLine = _prefix "newLine"
     /// <summary>
     ///
     /// 	Overall record count in the table.
@@ -291,21 +242,15 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicalinstance_xsd/elements/OverallRecordCount.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#overallRecordCount"></see></summary>
-    let overallRecordCount =
-        Namespaced_IRI.parse _namespace_name "overallRecordCount" |> NamespacedName
-
+    let overallRecordCount = _prefix "overallRecordCount"
     /// <summary>
     /// File name or URI of the input program.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#programFileName"></see></summary>
-    let programFileName =
-        Namespaced_IRI.parse _namespace_name "programFileName" |> NamespacedName
-
+    let programFileName = _prefix "programFileName"
     /// <summary>
     /// Version of the software used of the program for reading the data.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#programVersion"></see></summary>
-    let programVersion =
-        Namespaced_IRI.parse _namespace_name "programVersion" |> NamespacedName
-
+    let programVersion = _prefix "programVersion"
     /// <summary>
     ///
     /// 	The data type as recommended by the data producer.
@@ -314,9 +259,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/RecommendedDataType.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#recommendedDataType"></see></summary>
-    let recommendedDataType =
-        Namespaced_IRI.parse _namespace_name "recommendedDataType" |> NamespacedName
-
+    let recommendedDataType = _prefix "recommendedDataType"
     /// <summary>
     ///
     /// 	The recommended display format of the data values of a column. Supports the use of an external controlled vocabulary in SKOS.
@@ -325,15 +268,11 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/GenericOutputFormat.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#recommendedDisplayDataFormat"></see></summary>
-    let recommendedDisplayDataFormat =
-        Namespaced_IRI.parse _namespace_name "recommendedDisplayDataFormat" |> NamespacedName
-
+    let recommendedDisplayDataFormat = _prefix "recommendedDisplayDataFormat"
     /// <summary>
     /// The length of a record with fixed length.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#recordLength"></see></summary>
-    let recordLength =
-        Namespaced_IRI.parse _namespace_name "recordLength" |> NamespacedName
-
+    let recordLength = _prefix "recordLength"
     /// <summary>
     ///
     /// 	The record number where this data item ("Column") is included. This applies only to tables with cases using multiple records. Default is 1.
@@ -342,15 +281,11 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/complexTypes/PhysicalRecordSegmentType.html#a6
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#recordNumber"></see></summary>
-    let recordNumber =
-        Namespaced_IRI.parse _namespace_name "recordNumber" |> NamespacedName
-
+    let recordNumber = _prefix "recordNumber"
     /// <summary>
     /// The number of records per case. Multiple records could represent one case. The default is 1.
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#recordsPerCase"></see></summary>
-    let recordsPerCase =
-        Namespaced_IRI.parse _namespace_name "recordsPerCase" |> NamespacedName
-
+    let recordsPerCase = _prefix "recordsPerCase"
     /// <summary>
     ///
     /// 	Software or program language used of the program for reading the data.
@@ -359,9 +294,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/reusable_xsd/elements/ProgramLanguage.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#softwareType"></see></summary>
-    let softwareType =
-        Namespaced_IRI.parse _namespace_name "softwareType" |> NamespacedName
-
+    let softwareType = _prefix "softwareType"
     /// <summary>
     ///
     /// 	Position of the first character of the column in a table with fixed record length.
@@ -370,9 +303,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/StartPosition.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#startPosition"></see></summary>
-    let startPosition =
-        Namespaced_IRI.parse _namespace_name "startPosition" |> NamespacedName
-
+    let startPosition = _prefix "startPosition"
     /// <summary>
     ///
     /// 	Definition of the storage format of data values of a column. Supports the use of an external controlled vocabulary in SKOS.
@@ -381,9 +312,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/StorageFormat.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#storageFormat"></see></summary>
-    let storageFormat =
-        Namespaced_IRI.parse _namespace_name "storageFormat" |> NamespacedName
-
+    let storageFormat = _prefix "storageFormat"
     /// <summary>
     ///
     /// 	Use for delimited files to designate the which text qualifier, if any, was used. Valid values include: single quote, double quote, and none.
@@ -392,9 +321,7 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/complexTypes/BaseRecordLayoutType.html#a5
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#textQualifier"></see></summary>
-    let textQualifier =
-        Namespaced_IRI.parse _namespace_name "textQualifier" |> NamespacedName
-
+    let textQualifier = _prefix "textQualifier"
     /// <summary>
     ///
     /// 	Column width in a table with fixed record length. Must be specified if a value for "endPosition" is not provided.
@@ -403,4 +330,4 @@ module phdd =
     /// 	DDI 3.2 Documentation: http://www.ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/schemas/physicaldataproduct_xsd/elements/Width.html
     ///
     /// <see href="http://rdf-vocabulary.ddialliance.org/phdd#width"></see></summary>
-    let width = Namespaced_IRI.parse _namespace_name "width" |> NamespacedName
+    let width = _prefix "width"

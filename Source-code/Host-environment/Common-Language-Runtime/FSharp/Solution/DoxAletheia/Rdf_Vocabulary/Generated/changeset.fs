@@ -1,57 +1,49 @@
 namespace http.purl.org.vocab.changeset.schema.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module changeset =
     let _namespace_name = "http://purl.org/vocab/changeset/schema#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/vocab/changeset/schema#ChangeSet"></see>
     /// </summary>
-    let ChangeSet = Namespaced_IRI.parse _namespace_name "ChangeSet" |> NamespacedName
+    let ChangeSet = _prefix "ChangeSet"
     /// <summary>
     ///   <see href="http://purl.org/vocab/changeset/schema#statement"></see>
     /// </summary>
-    let statement = Namespaced_IRI.parse _namespace_name "statement" |> NamespacedName
-
+    let statement = _prefix "statement"
     /// <summary>
     ///   <see href="http://purl.org/vocab/changeset/schema#previousChangeSet"></see>
     /// </summary>
-    let previousChangeSet =
-        Namespaced_IRI.parse _namespace_name "previousChangeSet" |> NamespacedName
-
+    let previousChangeSet = _prefix "previousChangeSet"
     /// <summary>
     ///   <see href="http://purl.org/vocab/changeset/schema#subjectOfChange"></see>
     /// </summary>
-    let subjectOfChange =
-        Namespaced_IRI.parse _namespace_name "subjectOfChange" |> NamespacedName
-
+    let subjectOfChange = _prefix "subjectOfChange"
     /// <summary>
     ///
     ///       The date should be in W3CDTF format
     ///
     /// <see href="http://purl.org/vocab/changeset/schema#createdDate"></see></summary>
-    let createdDate =
-        Namespaced_IRI.parse _namespace_name "createdDate" |> NamespacedName
-
+    let createdDate = _prefix "createdDate"
     /// <summary>
     ///   <see href="http://purl.org/vocab/changeset/schema#creatorName"></see>
     /// </summary>
-    let creatorName =
-        Namespaced_IRI.parse _namespace_name "creatorName" |> NamespacedName
-
+    let creatorName = _prefix "creatorName"
     /// <summary>
     ///   <see href="http://purl.org/vocab/changeset/schema#changeReason"></see>
     /// </summary>
-    let changeReason =
-        Namespaced_IRI.parse _namespace_name "changeReason" |> NamespacedName
-
+    let changeReason = _prefix "changeReason"
     /// <summary>
     ///
     ///       By convention the subject of the triple being added should be the same as the subjectOfChange
     ///
     /// <see href="http://purl.org/vocab/changeset/schema#addition"></see></summary>
-    let addition = Namespaced_IRI.parse _namespace_name "addition" |> NamespacedName
-
+    let addition = _prefix "addition"
     /// <summary>
     ///
     ///       This property can be used to build a history of changes to a particular resource description. The first
@@ -65,12 +57,10 @@ module changeset =
     ///       Conversely, the earliest ChangeSet is the one that is not the subject of a precedingChangeSet property.
     ///
     /// <see href="http://purl.org/vocab/changeset/schema#precedingChangeSet"></see></summary>
-    let precedingChangeSet =
-        Namespaced_IRI.parse _namespace_name "precedingChangeSet" |> NamespacedName
-
+    let precedingChangeSet = _prefix "precedingChangeSet"
     /// <summary>
     ///
     ///       By convention the subject of the triple being removed should be the same as the subjectOfChange
     ///
     /// <see href="http://purl.org/vocab/changeset/schema#removal"></see></summary>
-    let removal = Namespaced_IRI.parse _namespace_name "removal" |> NamespacedName
+    let removal = _prefix "removal"

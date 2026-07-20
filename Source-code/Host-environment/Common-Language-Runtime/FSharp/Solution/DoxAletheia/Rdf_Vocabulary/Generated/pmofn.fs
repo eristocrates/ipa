@@ -1,201 +1,154 @@
 namespace http.premon.fbk.eu.ontology.fn.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module pmofn =
     let _namespace_name = "http://premon.fbk.eu/ontology/fn#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#inheritsFrom"></see>
     /// </summary>
-    let inheritsFrom =
-        Namespaced_IRI.parse _namespace_name "inheritsFrom" |> NamespacedName
-
+    let inheritsFrom = _prefix "inheritsFrom"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#isCausativeOf"></see>
     /// </summary>
-    let isCausativeOf =
-        Namespaced_IRI.parse _namespace_name "isCausativeOf" |> NamespacedName
-
+    let isCausativeOf = _prefix "isCausativeOf"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#isInchoativeOf"></see>
     /// </summary>
-    let isInchoativeOf =
-        Namespaced_IRI.parse _namespace_name "isInchoativeOf" |> NamespacedName
-
+    let isInchoativeOf = _prefix "isInchoativeOf"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#perspectiveOn"></see>
     /// </summary>
-    let perspectiveOn =
-        Namespaced_IRI.parse _namespace_name "perspectiveOn" |> NamespacedName
-
+    let perspectiveOn = _prefix "perspectiveOn"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#precedes"></see>
     /// </summary>
-    let precedes = Namespaced_IRI.parse _namespace_name "precedes" |> NamespacedName
-
+    let precedes = _prefix "precedes"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#reFrameMapping"></see>
     /// </summary>
-    let reFrameMapping =
-        Namespaced_IRI.parse _namespace_name "reFrameMapping" |> NamespacedName
-
+    let reFrameMapping = _prefix "reFrameMapping"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#seeAlso"></see>
     /// </summary>
-    let seeAlso = Namespaced_IRI.parse _namespace_name "seeAlso" |> NamespacedName
+    let seeAlso = _prefix "seeAlso"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#subframeOf"></see>
     /// </summary>
-    let subframeOf = Namespaced_IRI.parse _namespace_name "subframeOf" |> NamespacedName
+    let subframeOf = _prefix "subframeOf"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#uses"></see>
     /// </summary>
-    let uses = Namespaced_IRI.parse _namespace_name "uses" |> NamespacedName
-
+    let uses = _prefix "uses"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#CoreFrameElement"></see>
     /// </summary>
-    let CoreFrameElement =
-        Namespaced_IRI.parse _namespace_name "CoreFrameElement" |> NamespacedName
-
+    let CoreFrameElement = _prefix "CoreFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#FrameElement"></see>
     /// </summary>
-    let FrameElement =
-        Namespaced_IRI.parse _namespace_name "FrameElement" |> NamespacedName
-
+    let FrameElement = _prefix "FrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#CoreUnexpressedFrameElement"></see>
     /// </summary>
-    let CoreUnexpressedFrameElement =
-        Namespaced_IRI.parse _namespace_name "CoreUnexpressedFrameElement" |> NamespacedName
-
+    let CoreUnexpressedFrameElement = _prefix "CoreUnexpressedFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#ExtraThematicFrameElement"></see>
     /// </summary>
-    let ExtraThematicFrameElement =
-        Namespaced_IRI.parse _namespace_name "ExtraThematicFrameElement" |> NamespacedName
-
+    let ExtraThematicFrameElement = _prefix "ExtraThematicFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#FECoreSet"></see>
     /// </summary>
-    let FECoreSet = Namespaced_IRI.parse _namespace_name "FECoreSet" |> NamespacedName
+    let FECoreSet = _prefix "FECoreSet"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#Frame"></see>
     /// </summary>
-    let Frame = Namespaced_IRI.parse _namespace_name "Frame" |> NamespacedName
-
+    let Frame = _prefix "Frame"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#LexicalUnit"></see>
     /// </summary>
-    let LexicalUnit =
-        Namespaced_IRI.parse _namespace_name "LexicalUnit" |> NamespacedName
-
+    let LexicalUnit = _prefix "LexicalUnit"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#PeripheralFrameElement"></see>
     /// </summary>
-    let PeripheralFrameElement =
-        Namespaced_IRI.parse _namespace_name "PeripheralFrameElement" |> NamespacedName
-
+    let PeripheralFrameElement = _prefix "PeripheralFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#LUStatus"></see>
     /// </summary>
-    let LUStatus = Namespaced_IRI.parse _namespace_name "LUStatus" |> NamespacedName
+    let LUStatus = _prefix "LUStatus"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#SemType"></see>
     /// </summary>
-    let SemType = Namespaced_IRI.parse _namespace_name "SemType" |> NamespacedName
-
+    let SemType = _prefix "SemType"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#excludesFrameElement"></see>
     /// </summary>
-    let excludesFrameElement =
-        Namespaced_IRI.parse _namespace_name "excludesFrameElement" |> NamespacedName
-
+    let excludesFrameElement = _prefix "excludesFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#requiresFrameElement"></see>
     /// </summary>
-    let requiresFrameElement =
-        Namespaced_IRI.parse _namespace_name "requiresFrameElement" |> NamespacedName
-
+    let requiresFrameElement = _prefix "requiresFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#feCoreSet"></see>
     /// </summary>
-    let feCoreSet = Namespaced_IRI.parse _namespace_name "feCoreSet" |> NamespacedName
-
+    let feCoreSet = _prefix "feCoreSet"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#frameRelation"></see>
     /// </summary>
-    let frameRelation =
-        Namespaced_IRI.parse _namespace_name "frameRelation" |> NamespacedName
-
+    let frameRelation = _prefix "frameRelation"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#implicitIn"></see>
     /// </summary>
-    let implicitIn = Namespaced_IRI.parse _namespace_name "implicitIn" |> NamespacedName
-
+    let implicitIn = _prefix "implicitIn"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#incorporatedFrameElement"></see>
     /// </summary>
-    let incorporatedFrameElement =
-        Namespaced_IRI.parse _namespace_name "incorporatedFrameElement" |> NamespacedName
-
+    let incorporatedFrameElement = _prefix "incorporatedFrameElement"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#inheritsFromFER"></see>
     /// </summary>
-    let inheritsFromFER =
-        Namespaced_IRI.parse _namespace_name "inheritsFromFER" |> NamespacedName
-
+    let inheritsFromFER = _prefix "inheritsFromFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#isCausativeOfFER"></see>
     /// </summary>
-    let isCausativeOfFER =
-        Namespaced_IRI.parse _namespace_name "isCausativeOfFER" |> NamespacedName
-
+    let isCausativeOfFER = _prefix "isCausativeOfFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#isInchoativeOfFER"></see>
     /// </summary>
-    let isInchoativeOfFER =
-        Namespaced_IRI.parse _namespace_name "isInchoativeOfFER" |> NamespacedName
-
+    let isInchoativeOfFER = _prefix "isInchoativeOfFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#perspectiveOnFER"></see>
     /// </summary>
-    let perspectiveOnFER =
-        Namespaced_IRI.parse _namespace_name "perspectiveOnFER" |> NamespacedName
-
+    let perspectiveOnFER = _prefix "perspectiveOnFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#precedesFER"></see>
     /// </summary>
-    let precedesFER =
-        Namespaced_IRI.parse _namespace_name "precedesFER" |> NamespacedName
-
+    let precedesFER = _prefix "precedesFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#reFrameMappingFER"></see>
     /// </summary>
-    let reFrameMappingFER =
-        Namespaced_IRI.parse _namespace_name "reFrameMappingFER" |> NamespacedName
-
+    let reFrameMappingFER = _prefix "reFrameMappingFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#seeAlsoFER"></see>
     /// </summary>
-    let seeAlsoFER = Namespaced_IRI.parse _namespace_name "seeAlsoFER" |> NamespacedName
+    let seeAlsoFER = _prefix "seeAlsoFER"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#semType"></see>
     /// </summary>
-    let semType = Namespaced_IRI.parse _namespace_name "semType" |> NamespacedName
+    let semType = _prefix "semType"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#subTypeOf"></see>
     /// </summary>
-    let subTypeOf = Namespaced_IRI.parse _namespace_name "subTypeOf" |> NamespacedName
-
+    let subTypeOf = _prefix "subTypeOf"
     /// <summary>
     ///   <see href="http://premon.fbk.eu/ontology/fn#subframeOfFER"></see>
     /// </summary>
-    let subframeOfFER =
-        Namespaced_IRI.parse _namespace_name "subframeOfFER" |> NamespacedName
+    let subframeOfFER = _prefix "subframeOfFER"

@@ -1,57 +1,47 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.ProductsAndServices.PaymentsAndSchedules.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_pas_psch =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/Payee"></see>
     /// </summary>
-    let Payee = Namespaced_IRI.parse _namespace_name "Payee" |> NamespacedName
-
+    let Payee = _prefix "Payee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/PaymentObligation"></see>
     /// </summary>
-    let PaymentObligation =
-        Namespaced_IRI.parse _namespace_name "PaymentObligation" |> NamespacedName
-
+    let PaymentObligation = _prefix "PaymentObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/Payer"></see>
     /// </summary>
-    let Payer = Namespaced_IRI.parse _namespace_name "Payer" |> NamespacedName
+    let Payer = _prefix "Payer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/Payment"></see>
     /// </summary>
-    let Payment = Namespaced_IRI.parse _namespace_name "Payment" |> NamespacedName
-
+    let Payment = _prefix "Payment"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/hasPaymentAmount"></see>
     /// </summary>
-    let hasPaymentAmount =
-        Namespaced_IRI.parse _namespace_name "hasPaymentAmount" |> NamespacedName
-
+    let hasPaymentAmount = _prefix "hasPaymentAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/PaymentEvent"></see>
     /// </summary>
-    let PaymentEvent =
-        Namespaced_IRI.parse _namespace_name "PaymentEvent" |> NamespacedName
-
+    let PaymentEvent = _prefix "PaymentEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/PaymentSchedule"></see>
     /// </summary>
-    let PaymentSchedule =
-        Namespaced_IRI.parse _namespace_name "PaymentSchedule" |> NamespacedName
-
+    let PaymentSchedule = _prefix "PaymentSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/fulfillsObligation"></see>
     /// </summary>
-    let fulfillsObligation =
-        Namespaced_IRI.parse _namespace_name "fulfillsObligation" |> NamespacedName
-
+    let fulfillsObligation = _prefix "fulfillsObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/hasPaymentSchedule"></see>
     /// </summary>
-    let hasPaymentSchedule =
-        Namespaced_IRI.parse _namespace_name "hasPaymentSchedule" |> NamespacedName
+    let hasPaymentSchedule = _prefix "hasPaymentSchedule"

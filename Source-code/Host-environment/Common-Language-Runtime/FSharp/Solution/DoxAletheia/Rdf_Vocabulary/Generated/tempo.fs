@@ -1,22 +1,25 @@
 namespace http.purl.org.tempo.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module tempo =
     let _namespace_name = "http://purl.org/tempo/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/tempo/0.1/"></see>
     /// </summary>
-    let ``_0.1/`` = Namespaced_IRI.parse _namespace_name "0.1/" |> NamespacedName
+    let ``_0.1/`` = _prefix "0.1/"
     /// <summary>
     ///   <see href="http://purl.org/tempo/rdf"></see>
     /// </summary>
-    let rdf = Namespaced_IRI.parse _namespace_name "rdf" |> NamespacedName
+    let rdf = _prefix "rdf"
     /// <summary>
     ///   <see href="http://purl.org/tempo/ttl"></see>
     /// </summary>
-    let ttl = Namespaced_IRI.parse _namespace_name "ttl" |> NamespacedName
-
+    let ttl = _prefix "ttl"
     /// <summary>
     /// Temporal constraint box to capture a consistent set of validity and efficacy intervals.
     ///
@@ -41,15 +44,11 @@ module tempo =
     ///
     /// meaning the currency code 'EUR' became valid in Germany in 1999 whereas in Greece it became valid in 2001.
     /// <see href="http://purl.org/tempo/TemporalConstraint"></see></summary>
-    let TemporalConstraint =
-        Namespaced_IRI.parse _namespace_name "TemporalConstraint" |> NamespacedName
-
+    let TemporalConstraint = _prefix "TemporalConstraint"
     /// <summary>
     /// A temporal constraint associated with this resource.
     /// <see href="http://purl.org/tempo/constrainedBy"></see></summary>
-    let constrainedBy =
-        Namespaced_IRI.parse _namespace_name "constrainedBy" |> NamespacedName
-
+    let constrainedBy = _prefix "constrainedBy"
     /// <summary>
     /// The date or time when this resource becomes efficacious.
     ///
@@ -88,9 +87,7 @@ module tempo =
     ///
     /// the use of ex:XY's label on 2004-08-01 is anachronistic (use before its validated life-span) or illegal (use before efficacy).
     /// <see href="http://purl.org/tempo/efficaciousFrom"></see></summary>
-    let efficaciousFrom =
-        Namespaced_IRI.parse _namespace_name "efficaciousFrom" |> NamespacedName
-
+    let efficaciousFrom = _prefix "efficaciousFrom"
     /// <summary>
     /// The date or time when this resource becomes valid.
     ///
@@ -158,8 +155,7 @@ module tempo =
     /// is discouraged.
     ///
     /// <see href="http://purl.org/tempo/validFrom"></see></summary>
-    let validFrom = Namespaced_IRI.parse _namespace_name "validFrom" |> NamespacedName
-
+    let validFrom = _prefix "validFrom"
     /// <summary>
     /// The date or time when this resource becomes inefficacious.
     ///
@@ -186,9 +182,7 @@ module tempo =
     ///
     /// A point in time in tempo:efficaciousTill is always exclusive.  See tempo:validTill for further explanation and implications.
     /// <see href="http://purl.org/tempo/efficaciousTill"></see></summary>
-    let efficaciousTill =
-        Namespaced_IRI.parse _namespace_name "efficaciousTill" |> NamespacedName
-
+    let efficaciousTill = _prefix "efficaciousTill"
     /// <summary>
     /// The date or time when this resource becomes invalid.
     ///
@@ -227,4 +221,4 @@ module tempo =
     /// is discouraged.
     ///
     /// <see href="http://purl.org/tempo/validTill"></see></summary>
-    let validTill = Namespaced_IRI.parse _namespace_name "validTill" |> NamespacedName
+    let validTill = _prefix "validTill"

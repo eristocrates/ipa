@@ -1,862 +1,734 @@
 namespace https.w3id.org.tribont.material.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module tribont_material =
     let _namespace_name = "https://w3id.org/tribont/material#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Content of Ag in a material.
     /// <see href="https://w3id.org/tribont/material#Ag"></see></summary>
-    let Ag = Namespaced_IRI.parse _namespace_name "Ag" |> NamespacedName
+    let Ag = _prefix "Ag"
     /// <summary>
     /// Content of Al in a material.
     /// <see href="https://w3id.org/tribont/material#Al"></see></summary>
-    let Al = Namespaced_IRI.parse _namespace_name "Al" |> NamespacedName
+    let Al = _prefix "Al"
     /// <summary>
     /// Content of Al203 in a material.
     /// <see href="https://w3id.org/tribont/material#Al203"></see></summary>
-    let Al203 = Namespaced_IRI.parse _namespace_name "Al203" |> NamespacedName
+    let Al203 = _prefix "Al203"
     /// <summary>
     /// Content of AlN in a material.
     /// <see href="https://w3id.org/tribont/material#AlN"></see></summary>
-    let AlN = Namespaced_IRI.parse _namespace_name "AlN" |> NamespacedName
-
+    let AlN = _prefix "AlN"
     /// <summary>
     /// Content of ArsenicOxide in a material.
     /// <see href="https://w3id.org/tribont/material#ArsenicOxide"></see></summary>
-    let ArsenicOxide =
-        Namespaced_IRI.parse _namespace_name "ArsenicOxide" |> NamespacedName
-
+    let ArsenicOxide = _prefix "ArsenicOxide"
     /// <summary>
     /// Content of As in a material.
     /// <see href="https://w3id.org/tribont/material#As"></see></summary>
-    let As = Namespaced_IRI.parse _namespace_name "As" |> NamespacedName
+    let As = _prefix "As"
     /// <summary>
     /// Content of Au in a material.
     /// <see href="https://w3id.org/tribont/material#Au"></see></summary>
-    let Au = Namespaced_IRI.parse _namespace_name "Au" |> NamespacedName
+    let Au = _prefix "Au"
     /// <summary>
     /// Content of B in a material.
     /// <see href="https://w3id.org/tribont/material#B"></see></summary>
-    let B = Namespaced_IRI.parse _namespace_name "B" |> NamespacedName
+    let B = _prefix "B"
     /// <summary>
     /// Content of B203 in a material.
     /// <see href="https://w3id.org/tribont/material#B203"></see></summary>
-    let B203 = Namespaced_IRI.parse _namespace_name "B203" |> NamespacedName
+    let B203 = _prefix "B203"
     /// <summary>
     /// Content of B4C in a material.
     /// <see href="https://w3id.org/tribont/material#B4C"></see></summary>
-    let B4C = Namespaced_IRI.parse _namespace_name "B4C" |> NamespacedName
+    let B4C = _prefix "B4C"
     /// <summary>
     /// Content of BN in a material.
     /// <see href="https://w3id.org/tribont/material#BN"></see></summary>
-    let BN = Namespaced_IRI.parse _namespace_name "BN" |> NamespacedName
+    let BN = _prefix "BN"
     /// <summary>
     /// Content of BaO in a material.
     /// <see href="https://w3id.org/tribont/material#BaO"></see></summary>
-    let BaO = Namespaced_IRI.parse _namespace_name "BaO" |> NamespacedName
+    let BaO = _prefix "BaO"
     /// <summary>
     /// Content of Be in a material.
     /// <see href="https://w3id.org/tribont/material#Be"></see></summary>
-    let Be = Namespaced_IRI.parse _namespace_name "Be" |> NamespacedName
+    let Be = _prefix "Be"
     /// <summary>
     /// Content of BeO in a material.
     /// <see href="https://w3id.org/tribont/material#BeO"></see></summary>
-    let BeO = Namespaced_IRI.parse _namespace_name "BeO" |> NamespacedName
+    let BeO = _prefix "BeO"
     /// <summary>
     /// Content of Biin a material.
     /// <see href="https://w3id.org/tribont/material#Bi"></see></summary>
-    let Bi = Namespaced_IRI.parse _namespace_name "Bi" |> NamespacedName
+    let Bi = _prefix "Bi"
     /// <summary>
     /// Content of C in a material.
     /// <see href="https://w3id.org/tribont/material#C"></see></summary>
-    let C = Namespaced_IRI.parse _namespace_name "C" |> NamespacedName
+    let C = _prefix "C"
     /// <summary>
     /// Content of Ca in a material.
     /// <see href="https://w3id.org/tribont/material#Ca"></see></summary>
-    let Ca = Namespaced_IRI.parse _namespace_name "Ca" |> NamespacedName
+    let Ca = _prefix "Ca"
     /// <summary>
     /// Content of CaCO3 in a material.
     /// <see href="https://w3id.org/tribont/material#CaCO3"></see></summary>
-    let CaCO3 = Namespaced_IRI.parse _namespace_name "CaCO3" |> NamespacedName
+    let CaCO3 = _prefix "CaCO3"
     /// <summary>
     /// Content of CaO in a material.
     /// <see href="https://w3id.org/tribont/material#CaO"></see></summary>
-    let CaO = Namespaced_IRI.parse _namespace_name "CaO" |> NamespacedName
+    let CaO = _prefix "CaO"
     /// <summary>
     /// Content of Cd in a material.
     /// <see href="https://w3id.org/tribont/material#Cd"></see></summary>
-    let Cd = Namespaced_IRI.parse _namespace_name "Cd" |> NamespacedName
+    let Cd = _prefix "Cd"
     /// <summary>
     /// Content of CdS in a material.
     /// <see href="https://w3id.org/tribont/material#CdS"></see></summary>
-    let CdS = Namespaced_IRI.parse _namespace_name "CdS" |> NamespacedName
+    let CdS = _prefix "CdS"
     /// <summary>
     /// Content of Ce in a material.
     /// <see href="https://w3id.org/tribont/material#Ce"></see></summary>
-    let Ce = Namespaced_IRI.parse _namespace_name "Ce" |> NamespacedName
+    let Ce = _prefix "Ce"
     /// <summary>
     /// Content of Co in a material.
     /// <see href="https://w3id.org/tribont/material#Co"></see></summary>
-    let Co = Namespaced_IRI.parse _namespace_name "Co" |> NamespacedName
+    let Co = _prefix "Co"
     /// <summary>
     /// Content of Cr in a material.
     /// <see href="https://w3id.org/tribont/material#Cr"></see></summary>
-    let Cr = Namespaced_IRI.parse _namespace_name "Cr" |> NamespacedName
+    let Cr = _prefix "Cr"
     /// <summary>
     /// Content of Cr203 in a material.
     /// <see href="https://w3id.org/tribont/material#Cr203"></see></summary>
-    let Cr203 = Namespaced_IRI.parse _namespace_name "Cr203" |> NamespacedName
+    let Cr203 = _prefix "Cr203"
     /// <summary>
     /// Content of Cu in a material.
     /// <see href="https://w3id.org/tribont/material#Cu"></see></summary>
-    let Cu = Namespaced_IRI.parse _namespace_name "Cu" |> NamespacedName
+    let Cu = _prefix "Cu"
     /// <summary>
     /// Content of Dy in a material.
     /// <see href="https://w3id.org/tribont/material#Dy"></see></summary>
-    let Dy = Namespaced_IRI.parse _namespace_name "Dy" |> NamespacedName
+    let Dy = _prefix "Dy"
     /// <summary>
     /// Content of Er in a material.
     /// <see href="https://w3id.org/tribont/material#Er"></see></summary>
-    let Er = Namespaced_IRI.parse _namespace_name "Er" |> NamespacedName
+    let Er = _prefix "Er"
     /// <summary>
     /// Content of Eu in a material.
     /// <see href="https://w3id.org/tribont/material#Eu"></see></summary>
-    let Eu = Namespaced_IRI.parse _namespace_name "Eu" |> NamespacedName
+    let Eu = _prefix "Eu"
     /// <summary>
     /// Content of F in a material.
     /// <see href="https://w3id.org/tribont/material#F"></see></summary>
-    let F = Namespaced_IRI.parse _namespace_name "F" |> NamespacedName
+    let F = _prefix "F"
     /// <summary>
     /// Content of Fe in a material.
     /// <see href="https://w3id.org/tribont/material#Fe"></see></summary>
-    let Fe = Namespaced_IRI.parse _namespace_name "Fe" |> NamespacedName
+    let Fe = _prefix "Fe"
     /// <summary>
     /// Content of Fe203 in a material.
     /// <see href="https://w3id.org/tribont/material#Fe203"></see></summary>
-    let Fe203 = Namespaced_IRI.parse _namespace_name "Fe203" |> NamespacedName
+    let Fe203 = _prefix "Fe203"
     /// <summary>
     /// Content of Gd in a material.
     /// <see href="https://w3id.org/tribont/material#Gd"></see></summary>
-    let Gd = Namespaced_IRI.parse _namespace_name "Gd" |> NamespacedName
+    let Gd = _prefix "Gd"
     /// <summary>
     /// Content of Ge in a material.
     /// <see href="https://w3id.org/tribont/material#Ge"></see></summary>
-    let Ge = Namespaced_IRI.parse _namespace_name "Ge" |> NamespacedName
+    let Ge = _prefix "Ge"
     /// <summary>
     /// Content of H in a material.
     /// <see href="https://w3id.org/tribont/material#H"></see></summary>
-    let H = Namespaced_IRI.parse _namespace_name "H" |> NamespacedName
+    let H = _prefix "H"
     /// <summary>
     /// Content of H2O in a material.
     /// <see href="https://w3id.org/tribont/material#H2O"></see></summary>
-    let H2O = Namespaced_IRI.parse _namespace_name "H2O" |> NamespacedName
+    let H2O = _prefix "H2O"
     /// <summary>
     /// Content of Hf in a material.
     /// <see href="https://w3id.org/tribont/material#Hf"></see></summary>
-    let Hf = Namespaced_IRI.parse _namespace_name "Hf" |> NamespacedName
+    let Hf = _prefix "Hf"
     /// <summary>
     /// Content of Hg in a material.
     /// <see href="https://w3id.org/tribont/material#Hg"></see></summary>
-    let Hg = Namespaced_IRI.parse _namespace_name "Hg" |> NamespacedName
+    let Hg = _prefix "Hg"
     /// <summary>
     /// Content of Ho in a material.
     /// <see href="https://w3id.org/tribont/material#Ho"></see></summary>
-    let Ho = Namespaced_IRI.parse _namespace_name "Ho" |> NamespacedName
+    let Ho = _prefix "Ho"
     /// <summary>
     /// Content of In in a material.
     /// <see href="https://w3id.org/tribont/material#In"></see></summary>
-    let In = Namespaced_IRI.parse _namespace_name "In" |> NamespacedName
+    let In = _prefix "In"
     /// <summary>
     /// Content of Ir in a material.
     /// <see href="https://w3id.org/tribont/material#Ir"></see></summary>
-    let Ir = Namespaced_IRI.parse _namespace_name "Ir" |> NamespacedName
+    let Ir = _prefix "Ir"
     /// <summary>
     /// Content of La in a material.
     /// <see href="https://w3id.org/tribont/material#La"></see></summary>
-    let La = Namespaced_IRI.parse _namespace_name "La" |> NamespacedName
+    let La = _prefix "La"
     /// <summary>
     /// Content of Li in a material.
     /// <see href="https://w3id.org/tribont/material#Li"></see></summary>
-    let Li = Namespaced_IRI.parse _namespace_name "Li" |> NamespacedName
+    let Li = _prefix "Li"
     /// <summary>
     /// Content of Li2O in a material.
     /// <see href="https://w3id.org/tribont/material#Li2O"></see></summary>
-    let Li2O = Namespaced_IRI.parse _namespace_name "Li2O" |> NamespacedName
+    let Li2O = _prefix "Li2O"
     /// <summary>
     /// Content of Lu in a material.
     /// <see href="https://w3id.org/tribont/material#Lu"></see></summary>
-    let Lu = Namespaced_IRI.parse _namespace_name "Lu" |> NamespacedName
+    let Lu = _prefix "Lu"
     /// <summary>
     /// Content of Mg in a material.
     /// <see href="https://w3id.org/tribont/material#Mg"></see></summary>
-    let Mg = Namespaced_IRI.parse _namespace_name "Mg" |> NamespacedName
+    let Mg = _prefix "Mg"
     /// <summary>
     /// Content of Mn in a material.
     /// <see href="https://w3id.org/tribont/material#Mn"></see></summary>
-    let Mn = Namespaced_IRI.parse _namespace_name "Mn" |> NamespacedName
+    let Mn = _prefix "Mn"
     /// <summary>
     /// Content of Mo in a material.
     /// <see href="https://w3id.org/tribont/material#Mo"></see></summary>
-    let Mo = Namespaced_IRI.parse _namespace_name "Mo" |> NamespacedName
+    let Mo = _prefix "Mo"
     /// <summary>
     /// Content of N in a material.
     /// <see href="https://w3id.org/tribont/material#N"></see></summary>
-    let N = Namespaced_IRI.parse _namespace_name "N" |> NamespacedName
+    let N = _prefix "N"
     /// <summary>
     /// Content of Na2O in a material.
     /// <see href="https://w3id.org/tribont/material#Na2O"></see></summary>
-    let Na2O = Namespaced_IRI.parse _namespace_name "Na2O" |> NamespacedName
+    let Na2O = _prefix "Na2O"
     /// <summary>
     /// Content of NaCl in a material.
     /// <see href="https://w3id.org/tribont/material#NaCl"></see></summary>
-    let NaCl = Namespaced_IRI.parse _namespace_name "NaCl" |> NamespacedName
+    let NaCl = _prefix "NaCl"
     /// <summary>
     /// Content of Nb in a material.
     /// <see href="https://w3id.org/tribont/material#Nb"></see></summary>
-    let Nb = Namespaced_IRI.parse _namespace_name "Nb" |> NamespacedName
+    let Nb = _prefix "Nb"
     /// <summary>
     /// Content of Nd in a material.
     /// <see href="https://w3id.org/tribont/material#Nd"></see></summary>
-    let Nd = Namespaced_IRI.parse _namespace_name "Nd" |> NamespacedName
+    let Nd = _prefix "Nd"
     /// <summary>
     /// Content of Ni in a material.
     /// <see href="https://w3id.org/tribont/material#Ni"></see></summary>
-    let Ni = Namespaced_IRI.parse _namespace_name "Ni" |> NamespacedName
+    let Ni = _prefix "Ni"
     /// <summary>
     /// Content of O in a material.
     /// <see href="https://w3id.org/tribont/material#O"></see></summary>
-    let O = Namespaced_IRI.parse _namespace_name "O" |> NamespacedName
+    let O = _prefix "O"
     /// <summary>
     /// Content of O2 in a material.
     /// <see href="https://w3id.org/tribont/material#O2"></see></summary>
-    let O2 = Namespaced_IRI.parse _namespace_name "O2" |> NamespacedName
+    let O2 = _prefix "O2"
     /// <summary>
     /// Content of Os in a material.
     /// <see href="https://w3id.org/tribont/material#Os"></see></summary>
-    let Os = Namespaced_IRI.parse _namespace_name "Os" |> NamespacedName
+    let Os = _prefix "Os"
     /// <summary>
     /// Content of P in a material.
     /// <see href="https://w3id.org/tribont/material#P"></see></summary>
-    let P = Namespaced_IRI.parse _namespace_name "P" |> NamespacedName
+    let P = _prefix "P"
     /// <summary>
     /// Content of Pb in a material.
     /// <see href="https://w3id.org/tribont/material#Pb"></see></summary>
-    let Pb = Namespaced_IRI.parse _namespace_name "Pb" |> NamespacedName
+    let Pb = _prefix "Pb"
     /// <summary>
     /// Content of PbO in a material.
     /// <see href="https://w3id.org/tribont/material#PbO"></see></summary>
-    let PbO = Namespaced_IRI.parse _namespace_name "PbO" |> NamespacedName
+    let PbO = _prefix "PbO"
     /// <summary>
     /// Content of Pd in a material.
     /// <see href="https://w3id.org/tribont/material#Pd"></see></summary>
-    let Pd = Namespaced_IRI.parse _namespace_name "Pd" |> NamespacedName
+    let Pd = _prefix "Pd"
     /// <summary>
     /// Content of Pr in a material.
     /// <see href="https://w3id.org/tribont/material#Pr"></see></summary>
-    let Pr = Namespaced_IRI.parse _namespace_name "Pr" |> NamespacedName
+    let Pr = _prefix "Pr"
     /// <summary>
     /// Content of Pt in a material.
     /// <see href="https://w3id.org/tribont/material#Pt"></see></summary>
-    let Pt = Namespaced_IRI.parse _namespace_name "Pt" |> NamespacedName
+    let Pt = _prefix "Pt"
     /// <summary>
     /// Content of Re in a material.
     /// <see href="https://w3id.org/tribont/material#Re"></see></summary>
-    let Re = Namespaced_IRI.parse _namespace_name "Re" |> NamespacedName
+    let Re = _prefix "Re"
     /// <summary>
     /// Content of Rh in a material.
     /// <see href="https://w3id.org/tribont/material#Rh"></see></summary>
-    let Rh = Namespaced_IRI.parse _namespace_name "Rh" |> NamespacedName
+    let Rh = _prefix "Rh"
     /// <summary>
     /// Content of Ru in a material.
     /// <see href="https://w3id.org/tribont/material#Ru"></see></summary>
-    let Ru = Namespaced_IRI.parse _namespace_name "Ru" |> NamespacedName
+    let Ru = _prefix "Ru"
     /// <summary>
     /// Content of S in a material.
     /// <see href="https://w3id.org/tribont/material#S"></see></summary>
-    let S = Namespaced_IRI.parse _namespace_name "S" |> NamespacedName
+    let S = _prefix "S"
     /// <summary>
     /// Content of Sb in a material.
     /// <see href="https://w3id.org/tribont/material#Sb"></see></summary>
-    let Sb = Namespaced_IRI.parse _namespace_name "Sb" |> NamespacedName
+    let Sb = _prefix "Sb"
     /// <summary>
     /// Content of Sc in a material.
     /// <see href="https://w3id.org/tribont/material#Sc"></see></summary>
-    let Sc = Namespaced_IRI.parse _namespace_name "Sc" |> NamespacedName
+    let Sc = _prefix "Sc"
     /// <summary>
     /// Content of Se in a material.
     /// <see href="https://w3id.org/tribont/material#Se"></see></summary>
-    let Se = Namespaced_IRI.parse _namespace_name "Se" |> NamespacedName
+    let Se = _prefix "Se"
     /// <summary>
     /// Content of Si in a material.
     /// <see href="https://w3id.org/tribont/material#Si"></see></summary>
-    let Si = Namespaced_IRI.parse _namespace_name "Si" |> NamespacedName
+    let Si = _prefix "Si"
     /// <summary>
     /// Content of Si3N4 in a material.
     /// <see href="https://w3id.org/tribont/material#Si3N4"></see></summary>
-    let Si3N4 = Namespaced_IRI.parse _namespace_name "Si3N4" |> NamespacedName
+    let Si3N4 = _prefix "Si3N4"
     /// <summary>
     /// Content of SiC in a material.
     /// <see href="https://w3id.org/tribont/material#SiC"></see></summary>
-    let SiC = Namespaced_IRI.parse _namespace_name "SiC" |> NamespacedName
+    let SiC = _prefix "SiC"
     /// <summary>
     /// Content of SiO2 in a material.
     /// <see href="https://w3id.org/tribont/material#SiO2"></see></summary>
-    let SiO2 = Namespaced_IRI.parse _namespace_name "SiO2" |> NamespacedName
+    let SiO2 = _prefix "SiO2"
     /// <summary>
     /// Content of Sm  in a material.
     /// <see href="https://w3id.org/tribont/material#Sm"></see></summary>
-    let Sm = Namespaced_IRI.parse _namespace_name "Sm" |> NamespacedName
+    let Sm = _prefix "Sm"
     /// <summary>
     /// Content of Sn in a material.
     /// <see href="https://w3id.org/tribont/material#Sn"></see></summary>
-    let Sn = Namespaced_IRI.parse _namespace_name "Sn" |> NamespacedName
+    let Sn = _prefix "Sn"
     /// <summary>
     /// Content of Sr in a material.
     /// <see href="https://w3id.org/tribont/material#Sr"></see></summary>
-    let Sr = Namespaced_IRI.parse _namespace_name "Sr" |> NamespacedName
+    let Sr = _prefix "Sr"
     /// <summary>
     /// Content of Ta in a material.
     /// <see href="https://w3id.org/tribont/material#Ta"></see></summary>
-    let Ta = Namespaced_IRI.parse _namespace_name "Ta" |> NamespacedName
+    let Ta = _prefix "Ta"
     /// <summary>
     /// Content of TaC in a material.
     /// <see href="https://w3id.org/tribont/material#TaC"></see></summary>
-    let TaC = Namespaced_IRI.parse _namespace_name "TaC" |> NamespacedName
+    let TaC = _prefix "TaC"
     /// <summary>
     /// Content of Tb in a material.
     /// <see href="https://w3id.org/tribont/material#Tb"></see></summary>
-    let Tb = Namespaced_IRI.parse _namespace_name "Tb" |> NamespacedName
+    let Tb = _prefix "Tb"
     /// <summary>
     /// Content of Te in a material.
     /// <see href="https://w3id.org/tribont/material#Te"></see></summary>
-    let Te = Namespaced_IRI.parse _namespace_name "Te" |> NamespacedName
+    let Te = _prefix "Te"
     /// <summary>
     /// Content of ThO2 in a material.
     /// <see href="https://w3id.org/tribont/material#ThO2"></see></summary>
-    let ThO2 = Namespaced_IRI.parse _namespace_name "ThO2" |> NamespacedName
+    let ThO2 = _prefix "ThO2"
     /// <summary>
     /// Content of Ti in a material.
     /// <see href="https://w3id.org/tribont/material#Ti"></see></summary>
-    let Ti = Namespaced_IRI.parse _namespace_name "Ti" |> NamespacedName
+    let Ti = _prefix "Ti"
     /// <summary>
     /// Content of TiB2 in a material.
     /// <see href="https://w3id.org/tribont/material#TiB2"></see></summary>
-    let TiB2 = Namespaced_IRI.parse _namespace_name "TiB2" |> NamespacedName
+    let TiB2 = _prefix "TiB2"
     /// <summary>
     /// Content of TiC in a material.
     /// <see href="https://w3id.org/tribont/material#TiC"></see></summary>
-    let TiC = Namespaced_IRI.parse _namespace_name "TiC" |> NamespacedName
+    let TiC = _prefix "TiC"
     /// <summary>
     /// Content of TiO2 in a material.
     /// <see href="https://w3id.org/tribont/material#TiO2"></see></summary>
-    let TiO2 = Namespaced_IRI.parse _namespace_name "TiO2" |> NamespacedName
+    let TiO2 = _prefix "TiO2"
     /// <summary>
     /// Content of Tl in a material.
     /// <see href="https://w3id.org/tribont/material#Tl"></see></summary>
-    let Tl = Namespaced_IRI.parse _namespace_name "Tl" |> NamespacedName
+    let Tl = _prefix "Tl"
     /// <summary>
     /// Content of Tm in a material.
     /// <see href="https://w3id.org/tribont/material#Tm"></see></summary>
-    let Tm = Namespaced_IRI.parse _namespace_name "Tm" |> NamespacedName
+    let Tm = _prefix "Tm"
     /// <summary>
     /// Content of U in a material.
     /// <see href="https://w3id.org/tribont/material#U"></see></summary>
-    let U = Namespaced_IRI.parse _namespace_name "U" |> NamespacedName
+    let U = _prefix "U"
     /// <summary>
     /// Content of V in a material.
     /// <see href="https://w3id.org/tribont/material#V"></see></summary>
-    let V = Namespaced_IRI.parse _namespace_name "V" |> NamespacedName
+    let V = _prefix "V"
     /// <summary>
     /// Content of W in a material.
     /// <see href="https://w3id.org/tribont/material#W"></see></summary>
-    let W = Namespaced_IRI.parse _namespace_name "W" |> NamespacedName
+    let W = _prefix "W"
     /// <summary>
     /// Content of WC in a material.
     /// <see href="https://w3id.org/tribont/material#WC"></see></summary>
-    let WC = Namespaced_IRI.parse _namespace_name "WC" |> NamespacedName
+    let WC = _prefix "WC"
     /// <summary>
     /// Content of Y in a material.
     /// <see href="https://w3id.org/tribont/material#Y"></see></summary>
-    let Y = Namespaced_IRI.parse _namespace_name "Y" |> NamespacedName
+    let Y = _prefix "Y"
     /// <summary>
     /// Content of Y203 in a material.
     /// <see href="https://w3id.org/tribont/material#Y203"></see></summary>
-    let Y203 = Namespaced_IRI.parse _namespace_name "Y203" |> NamespacedName
+    let Y203 = _prefix "Y203"
     /// <summary>
     /// Content of Yb in a material.
     /// <see href="https://w3id.org/tribont/material#Yb"></see></summary>
-    let Yb = Namespaced_IRI.parse _namespace_name "Yb" |> NamespacedName
+    let Yb = _prefix "Yb"
     /// <summary>
     /// Content of Zn in a material.
     /// <see href="https://w3id.org/tribont/material#Zn"></see></summary>
-    let Zn = Namespaced_IRI.parse _namespace_name "Zn" |> NamespacedName
+    let Zn = _prefix "Zn"
     /// <summary>
     /// Content of ZnO in a material.
     /// <see href="https://w3id.org/tribont/material#ZnO"></see></summary>
-    let ZnO = Namespaced_IRI.parse _namespace_name "ZnO" |> NamespacedName
+    let ZnO = _prefix "ZnO"
     /// <summary>
     /// Content of Zr in a material.
     /// <see href="https://w3id.org/tribont/material#Zr"></see></summary>
-    let Zr = Namespaced_IRI.parse _namespace_name "Zr" |> NamespacedName
+    let Zr = _prefix "Zr"
     /// <summary>
     /// Content of ZrO2 in a material.
     /// <see href="https://w3id.org/tribont/material#ZrO2"></see></summary>
-    let ZrO2 = Namespaced_IRI.parse _namespace_name "ZrO2" |> NamespacedName
-
+    let ZrO2 = _prefix "ZrO2"
     /// <summary>
     /// The possible uses of a material.
     /// <see href="https://w3id.org/tribont/material#MaterialApplication"></see></summary>
-    let MaterialApplication =
-        Namespaced_IRI.parse _namespace_name "MaterialApplication" |> NamespacedName
-
+    let MaterialApplication = _prefix "MaterialApplication"
     /// <summary>
     /// Something that identifies a material.
     /// <see href="https://w3id.org/tribont/material#MaterialIdentification"></see></summary>
-    let MaterialIdentification =
-        Namespaced_IRI.parse _namespace_name "MaterialIdentification" |> NamespacedName
-
+    let MaterialIdentification = _prefix "MaterialIdentification"
     /// <summary>
     /// Concentration of an specific element in a material.
     /// <see href="https://w3id.org/tribont/material#ElementConcentration"></see></summary>
-    let ElementConcentration =
-        Namespaced_IRI.parse _namespace_name "ElementConcentration" |> NamespacedName
-
+    let ElementConcentration = _prefix "ElementConcentration"
     /// <summary>
     /// The basic material from which something is made.
     /// <see href="https://w3id.org/tribont/material#Material"></see></summary>
-    let Material = Namespaced_IRI.parse _namespace_name "Material" |> NamespacedName
+    let Material = _prefix "Material"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#AISI_52100"></see>
     /// </summary>
-    let AISI_52100 = Namespaced_IRI.parse _namespace_name "AISI_52100" |> NamespacedName
-
+    let AISI_52100 = _prefix "AISI_52100"
     /// <summary>
     /// A document approved by a recognized body that provides common to by fullfiled by a material.
     /// <see href="https://w3id.org/tribont/material#MaterialStandard"></see></summary>
-    let MaterialStandard =
-        Namespaced_IRI.parse _namespace_name "MaterialStandard" |> NamespacedName
-
+    let MaterialStandard = _prefix "MaterialStandard"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#ASTM_A295"></see>
     /// </summary>
-    let ASTM_A295 = Namespaced_IRI.parse _namespace_name "ASTM_A295" |> NamespacedName
-
+    let ASTM_A295 = _prefix "ASTM_A295"
     /// <summary>
     /// Concentration of chemical element in a material.
     /// <see href="https://w3id.org/tribont/material#ChemicalElementConcentration"></see></summary>
-    let ChemicalElementConcentration =
-        Namespaced_IRI.parse _namespace_name "ChemicalElementConcentration" |> NamespacedName
-
+    let ChemicalElementConcentration = _prefix "ChemicalElementConcentration"
     /// <summary>
     /// Content of Alluminium-Flake in a material.
     /// <see href="https://w3id.org/tribont/material#Alluminium-Flake"></see></summary>
-    let ``Alluminium-Flake`` =
-        Namespaced_IRI.parse _namespace_name "Alluminium-Flake" |> NamespacedName
-
+    let ``Alluminium-Flake`` = _prefix "Alluminium-Flake"
     /// <summary>
     /// Concentration of polymer element in a material.
     /// <see href="https://w3id.org/tribont/material#PolymerElementConcentration"></see></summary>
-    let PolymerElementConcentration =
-        Namespaced_IRI.parse _namespace_name "PolymerElementConcentration" |> NamespacedName
-
+    let PolymerElementConcentration = _prefix "PolymerElementConcentration"
     /// <summary>
     /// Alluminium alloy.
     /// <see href="https://w3id.org/tribont/material#AlluminiumAlloy"></see></summary>
-    let AlluminiumAlloy =
-        Namespaced_IRI.parse _namespace_name "AlluminiumAlloy" |> NamespacedName
-
+    let AlluminiumAlloy = _prefix "AlluminiumAlloy"
     /// <summary>
     /// Metal and alloy material.
     /// <see href="https://w3id.org/tribont/material#MetallicMaterial"></see></summary>
-    let MetallicMaterial =
-        Namespaced_IRI.parse _namespace_name "MetallicMaterial" |> NamespacedName
-
+    let MetallicMaterial = _prefix "MetallicMaterial"
     /// <summary>
     /// Content of Anti-friction/wearLubricant in a material.
     /// <see href="https://w3id.org/tribont/material#AntifrictionLubricant"></see></summary>
-    let AntifrictionLubricant =
-        Namespaced_IRI.parse _namespace_name "AntifrictionLubricant" |> NamespacedName
-
+    let AntifrictionLubricant = _prefix "AntifrictionLubricant"
     /// <summary>
     /// Concentration  of an additive element in a material.
     /// <see href="https://w3id.org/tribont/material#OtherElementConcentration"></see></summary>
-    let OtherElementConcentration =
-        Namespaced_IRI.parse _namespace_name "OtherElementConcentration" |> NamespacedName
-
+    let OtherElementConcentration = _prefix "OtherElementConcentration"
     /// <summary>
     /// Antioxidant content for something.
     /// <see href="https://w3id.org/tribont/material#Antioxidant"></see></summary>
-    let Antioxidant =
-        Namespaced_IRI.parse _namespace_name "Antioxidant" |> NamespacedName
-
+    let Antioxidant = _prefix "Antioxidant"
     /// <summary>
     /// Content of Aramid-Fiber in a material.
     /// <see href="https://w3id.org/tribont/material#Aramid-Fiber"></see></summary>
-    let ``Aramid-Fiber`` =
-        Namespaced_IRI.parse _namespace_name "Aramid-Fiber" |> NamespacedName
-
+    let ``Aramid-Fiber`` = _prefix "Aramid-Fiber"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#BS_970"></see>
     /// </summary>
-    let BS_970 = Namespaced_IRI.parse _namespace_name "BS_970" |> NamespacedName
+    let BS_970 = _prefix "BS_970"
     /// <summary>
     /// Content of BaSO4 in a material.
     /// <see href="https://w3id.org/tribont/material#BaSO4"></see></summary>
-    let BaSO4 = Namespaced_IRI.parse _namespace_name "BaSO4" |> NamespacedName
+    let BaSO4 = _prefix "BaSO4"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#CAS_Number"></see>
     /// </summary>
-    let CAS_Number = Namespaced_IRI.parse _namespace_name "CAS_Number" |> NamespacedName
-
+    let CAS_Number = _prefix "CAS_Number"
     /// <summary>
     /// Content of CalciumCarbonate-Powder in a material.
     /// <see href="https://w3id.org/tribont/material#CalciumCarbonate-Powder"></see></summary>
-    let ``CalciumCarbonate-Powder`` =
-        Namespaced_IRI.parse _namespace_name "CalciumCarbonate-Powder" |> NamespacedName
-
+    let ``CalciumCarbonate-Powder`` = _prefix "CalciumCarbonate-Powder"
     /// <summary>
     /// Content of Carbon-Fiber in a material.
     /// <see href="https://w3id.org/tribont/material#Carbon-Fiber"></see></summary>
-    let ``Carbon-Fiber`` =
-        Namespaced_IRI.parse _namespace_name "Carbon-Fiber" |> NamespacedName
-
+    let ``Carbon-Fiber`` = _prefix "Carbon-Fiber"
     /// <summary>
     /// Content of Carbon-Powder in a material.
     /// <see href="https://w3id.org/tribont/material#Carbon-Powder"></see></summary>
-    let ``Carbon-Powder`` =
-        Namespaced_IRI.parse _namespace_name "Carbon-Powder" |> NamespacedName
-
+    let ``Carbon-Powder`` = _prefix "Carbon-Powder"
     /// <summary>
     /// Content of Cellulose in a material.
     /// <see href="https://w3id.org/tribont/material#Cellulose"></see></summary>
-    let Cellulose = Namespaced_IRI.parse _namespace_name "Cellulose" |> NamespacedName
-
+    let Cellulose = _prefix "Cellulose"
     /// <summary>
     /// Ceramic material.
     /// <see href="https://w3id.org/tribont/material#CeramicMaterial"></see></summary>
-    let CeramicMaterial =
-        Namespaced_IRI.parse _namespace_name "CeramicMaterial" |> NamespacedName
-
+    let CeramicMaterial = _prefix "CeramicMaterial"
     /// <summary>
     /// Solid material.
     /// <see href="https://w3id.org/tribont/material#SolidMaterial"></see></summary>
-    let SolidMaterial =
-        Namespaced_IRI.parse _namespace_name "SolidMaterial" |> NamespacedName
-
+    let SolidMaterial = _prefix "SolidMaterial"
     /// <summary>
     /// Composite material.
     /// <see href="https://w3id.org/tribont/material#CompositeMaterial"></see></summary>
-    let CompositeMaterial =
-        Namespaced_IRI.parse _namespace_name "CompositeMaterial" |> NamespacedName
-
+    let CompositeMaterial = _prefix "CompositeMaterial"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#DIN_17230"></see>
     /// </summary>
-    let DIN_17230 = Namespaced_IRI.parse _namespace_name "DIN_17230" |> NamespacedName
-
+    let DIN_17230 = _prefix "DIN_17230"
     /// <summary>
     /// Elastomer thermoplastic material.
     /// <see href="https://w3id.org/tribont/material#ElastomerThermoplastic"></see></summary>
-    let ElastomerThermoplastic =
-        Namespaced_IRI.parse _namespace_name "ElastomerThermoplastic" |> NamespacedName
-
+    let ElastomerThermoplastic = _prefix "ElastomerThermoplastic"
     /// <summary>
     /// Any polymer
     /// <see href="https://w3id.org/tribont/material#PolymerMaterial"></see></summary>
-    let PolymerMaterial =
-        Namespaced_IRI.parse _namespace_name "PolymerMaterial" |> NamespacedName
-
+    let PolymerMaterial = _prefix "PolymerMaterial"
     /// <summary>
     /// Elastomer thermoset material.
     /// <see href="https://w3id.org/tribont/material#ElastomerThermoset"></see></summary>
-    let ElastomerThermoset =
-        Namespaced_IRI.parse _namespace_name "ElastomerThermoset" |> NamespacedName
-
+    let ElastomerThermoset = _prefix "ElastomerThermoset"
     /// <summary>
     /// The position or purpose that an element has in a situation or relationship.
     /// <see href="https://w3id.org/tribont/material#ElementRole"></see></summary>
-    let ElementRole =
-        Namespaced_IRI.parse _namespace_name "ElementRole" |> NamespacedName
-
+    let ElementRole = _prefix "ElementRole"
     /// <summary>
     /// Relationship between an element and its role,
     /// <see href="https://w3id.org/tribont/material#hasElementRole"></see></summary>
-    let hasElementRole =
-        Namespaced_IRI.parse _namespace_name "hasElementRole" |> NamespacedName
-
+    let hasElementRole = _prefix "hasElementRole"
     /// <summary>
     /// Content of FlameRetardant in a material.
     /// <see href="https://w3id.org/tribont/material#FlameRetardant"></see></summary>
-    let FlameRetardant =
-        Namespaced_IRI.parse _namespace_name "FlameRetardant" |> NamespacedName
-
+    let FlameRetardant = _prefix "FlameRetardant"
     /// <summary>
     /// Fluid lubricant material.
     /// <see href="https://w3id.org/tribont/material#FluidLubricant"></see></summary>
-    let FluidLubricant =
-        Namespaced_IRI.parse _namespace_name "FluidLubricant" |> NamespacedName
-
+    let FluidLubricant = _prefix "FluidLubricant"
     /// <summary>
     /// Liquid material.
     /// <see href="https://w3id.org/tribont/material#LiquidMaterial"></see></summary>
-    let LiquidMaterial =
-        Namespaced_IRI.parse _namespace_name "LiquidMaterial" |> NamespacedName
-
+    let LiquidMaterial = _prefix "LiquidMaterial"
     /// <summary>
     /// Glass material.
     /// <see href="https://w3id.org/tribont/material#Glass"></see></summary>
-    let Glass = Namespaced_IRI.parse _namespace_name "Glass" |> NamespacedName
-
+    let Glass = _prefix "Glass"
     /// <summary>
     /// Content of Glass-Fiber in a material.
     /// <see href="https://w3id.org/tribont/material#Glass-Fiber"></see></summary>
-    let ``Glass-Fiber`` =
-        Namespaced_IRI.parse _namespace_name "Glass-Fiber" |> NamespacedName
-
+    let ``Glass-Fiber`` = _prefix "Glass-Fiber"
     /// <summary>
     /// Content of Glass-MatFabric in a material.
     /// <see href="https://w3id.org/tribont/material#Glass-MatFabric"></see></summary>
-    let ``Glass-MatFabric`` =
-        Namespaced_IRI.parse _namespace_name "Glass-MatFabric" |> NamespacedName
-
+    let ``Glass-MatFabric`` = _prefix "Glass-MatFabric"
     /// <summary>
     /// Content of glycol of something.
     /// <see href="https://w3id.org/tribont/material#Glycol"></see></summary>
-    let Glycol = Namespaced_IRI.parse _namespace_name "Glycol" |> NamespacedName
-
+    let Glycol = _prefix "Glycol"
     /// <summary>
     /// Content of Graphite-Powder in a material.
     /// <see href="https://w3id.org/tribont/material#Graphite-Powder"></see></summary>
-    let ``Graphite-Powder`` =
-        Namespaced_IRI.parse _namespace_name "Graphite-Powder" |> NamespacedName
-
+    let ``Graphite-Powder`` = _prefix "Graphite-Powder"
     /// <summary>
     /// Grease material.
     /// <see href="https://w3id.org/tribont/material#Grease"></see></summary>
-    let Grease = Namespaced_IRI.parse _namespace_name "Grease" |> NamespacedName
+    let Grease = _prefix "Grease"
     /// <summary>
     /// Oil material.
     /// <see href="https://w3id.org/tribont/material#Oil"></see></summary>
-    let Oil = Namespaced_IRI.parse _namespace_name "Oil" |> NamespacedName
-
+    let Oil = _prefix "Oil"
     /// <summary>
     /// High alloy steel material.
     /// <see href="https://w3id.org/tribont/material#HighAlloySteel"></see></summary>
-    let HighAlloySteel =
-        Namespaced_IRI.parse _namespace_name "HighAlloySteel" |> NamespacedName
-
+    let HighAlloySteel = _prefix "HighAlloySteel"
     /// <summary>
     /// Steel material.
     /// <see href="https://w3id.org/tribont/material#Steel"></see></summary>
-    let Steel = Namespaced_IRI.parse _namespace_name "Steel" |> NamespacedName
-
+    let Steel = _prefix "Steel"
     /// <summary>
     /// Content of ImpactModifier in a material.
     /// <see href="https://w3id.org/tribont/material#ImpactModifier"></see></summary>
-    let ImpactModifier =
-        Namespaced_IRI.parse _namespace_name "ImpactModifier" |> NamespacedName
-
+    let ImpactModifier = _prefix "ImpactModifier"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#JIS_G4805"></see>
     /// </summary>
-    let JIS_G4805 = Namespaced_IRI.parse _namespace_name "JIS_G4805" |> NamespacedName
-
+    let JIS_G4805 = _prefix "JIS_G4805"
     /// <summary>
     /// Low alloy steel material.
     /// <see href="https://w3id.org/tribont/material#LowAlloySteel"></see></summary>
-    let LowAlloySteel =
-        Namespaced_IRI.parse _namespace_name "LowAlloySteel" |> NamespacedName
-
+    let LowAlloySteel = _prefix "LowAlloySteel"
     /// <summary>
     /// Relationship between something and  its typical application.
     /// <see href="https://w3id.org/tribont/material#hasTypicalUse"></see></summary>
-    let hasTypicalUse =
-        Namespaced_IRI.parse _namespace_name "hasTypicalUse" |> NamespacedName
-
+    let hasTypicalUse = _prefix "hasTypicalUse"
     /// <summary>
     /// Relationship between something and the name identifying it.
     /// <see href="https://w3id.org/tribont/material#hasNaming"></see></summary>
-    let hasNaming = Namespaced_IRI.parse _namespace_name "hasNaming" |> NamespacedName
-
+    let hasNaming = _prefix "hasNaming"
     /// <summary>
     /// A unique name asssigned to a material independently of the manufacturer.
     /// <see href="https://w3id.org/tribont/material#MaterialNaming"></see></summary>
-    let MaterialNaming =
-        Namespaced_IRI.parse _namespace_name "MaterialNaming" |> NamespacedName
-
+    let MaterialNaming = _prefix "MaterialNaming"
     /// <summary>
     /// Defined number for the unique designation of materials.
     /// <see href="https://w3id.org/tribont/material#number"></see></summary>
-    let number = Namespaced_IRI.parse _namespace_name "number" |> NamespacedName
-
+    let number = _prefix "number"
     /// <summary>
     /// Commercial name of a material defined by the manufactuer company.
     /// <see href="https://w3id.org/tribont/material#MaterialTradename"></see></summary>
-    let MaterialTradename =
-        Namespaced_IRI.parse _namespace_name "MaterialTradename" |> NamespacedName
-
+    let MaterialTradename = _prefix "MaterialTradename"
     /// <summary>
     /// Content of Mica in a material.
     /// <see href="https://w3id.org/tribont/material#Mica"></see></summary>
-    let Mica = Namespaced_IRI.parse _namespace_name "Mica" |> NamespacedName
+    let Mica = _prefix "Mica"
     /// <summary>
     /// Content of Mineral in a material.
     /// <see href="https://w3id.org/tribont/material#Mineral"></see></summary>
-    let Mineral = Namespaced_IRI.parse _namespace_name "Mineral" |> NamespacedName
+    let Mineral = _prefix "Mineral"
     /// <summary>
     /// Content of MoS2 in a material.
     /// <see href="https://w3id.org/tribont/material#MoS2"></see></summary>
-    let MoS2 = Namespaced_IRI.parse _namespace_name "MoS2" |> NamespacedName
-
+    let MoS2 = _prefix "MoS2"
     /// <summary>
     /// Any Non Ferrous Metal Inhibitors Content.
     /// <see href="https://w3id.org/tribont/material#NonFerrousMetalInhibitor"></see></summary>
-    let NonFerrousMetalInhibitor =
-        Namespaced_IRI.parse _namespace_name "NonFerrousMetalInhibitor" |> NamespacedName
-
+    let NonFerrousMetalInhibitor = _prefix "NonFerrousMetalInhibitor"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#additive"></see>
     /// </summary>
-    let additive = Namespaced_IRI.parse _namespace_name "additive" |> NamespacedName
-
+    let additive = _prefix "additive"
     /// <summary>
     /// PTFE-Lubricant material.
     /// <see href="https://w3id.org/tribont/material#PTFE-Lubricant"></see></summary>
-    let ``PTFE-Lubricant`` =
-        Namespaced_IRI.parse _namespace_name "PTFE-Lubricant" |> NamespacedName
-
+    let ``PTFE-Lubricant`` = _prefix "PTFE-Lubricant"
     /// <summary>
     /// Solid lubricant material.
     /// <see href="https://w3id.org/tribont/material#SolidLubricant"></see></summary>
-    let SolidLubricant =
-        Namespaced_IRI.parse _namespace_name "SolidLubricant" |> NamespacedName
-
+    let SolidLubricant = _prefix "SolidLubricant"
     /// <summary>
     /// Plastic thermoplastic material.
     /// <see href="https://w3id.org/tribont/material#PlasticThermoplastic"></see></summary>
-    let PlasticThermoplastic =
-        Namespaced_IRI.parse _namespace_name "PlasticThermoplastic" |> NamespacedName
-
+    let PlasticThermoplastic = _prefix "PlasticThermoplastic"
     /// <summary>
     /// Plastic Thermoset material.
     /// <see href="https://w3id.org/tribont/material#PlasticThermoset"></see></summary>
-    let PlasticThermoset =
-        Namespaced_IRI.parse _namespace_name "PlasticThermoset" |> NamespacedName
-
+    let PlasticThermoset = _prefix "PlasticThermoset"
     /// <summary>
     /// Content of Plasticizer/Oil in a material.
     /// <see href="https://w3id.org/tribont/material#PlasticizerOil"></see></summary>
-    let PlasticizerOil =
-        Namespaced_IRI.parse _namespace_name "PlasticizerOil" |> NamespacedName
-
+    let PlasticizerOil = _prefix "PlasticizerOil"
     /// <summary>
     /// Content of Rag-Cotton-Fabric in a material.
     /// <see href="https://w3id.org/tribont/material#Rag-Cotton-Fabric"></see></summary>
-    let ``Rag-Cotton-Fabric`` =
-        Namespaced_IRI.parse _namespace_name "Rag-Cotton-Fabric" |> NamespacedName
-
+    let ``Rag-Cotton-Fabric`` = _prefix "Rag-Cotton-Fabric"
     /// <summary>
     /// Content of Silica-Fumed in a material.
     /// <see href="https://w3id.org/tribont/material#Silica-Fumed"></see></summary>
-    let ``Silica-Fumed`` =
-        Namespaced_IRI.parse _namespace_name "Silica-Fumed" |> NamespacedName
-
+    let ``Silica-Fumed`` = _prefix "Silica-Fumed"
     /// <summary>
     /// Silicone-Lubricant material.
     /// <see href="https://w3id.org/tribont/material#Silicone-Lubricant"></see></summary>
-    let ``Silicone-Lubricant`` =
-        Namespaced_IRI.parse _namespace_name "Silicone-Lubricant" |> NamespacedName
-
+    let ``Silicone-Lubricant`` = _prefix "Silicone-Lubricant"
     /// <summary>
     /// Solid contaminants.
     /// <see href="https://w3id.org/tribont/material#SolidContaminants"></see></summary>
-    let SolidContaminants =
-        Namespaced_IRI.parse _namespace_name "SolidContaminants" |> NamespacedName
-
+    let SolidContaminants = _prefix "SolidContaminants"
     /// <summary>
     /// Stainless steel material.
     /// <see href="https://w3id.org/tribont/material#StainlessSteel"></see></summary>
-    let StainlessSteel =
-        Namespaced_IRI.parse _namespace_name "StainlessSteel" |> NamespacedName
-
+    let StainlessSteel = _prefix "StainlessSteel"
     /// <summary>
     /// Content of StainlessSteel-Fiber in a material.
     /// <see href="https://w3id.org/tribont/material#StainlessSteel-Fiber"></see></summary>
-    let ``StainlessSteel-Fiber`` =
-        Namespaced_IRI.parse _namespace_name "StainlessSteel-Fiber" |> NamespacedName
-
+    let ``StainlessSteel-Fiber`` = _prefix "StainlessSteel-Fiber"
     /// <summary>
     /// Sulfate ash .
     /// <see href="https://w3id.org/tribont/material#SulfateAsh"></see></summary>
-    let SulfateAsh = Namespaced_IRI.parse _namespace_name "SulfateAsh" |> NamespacedName
+    let SulfateAsh = _prefix "SulfateAsh"
     /// <summary>
     /// Content of Talc in a material.
     /// <see href="https://w3id.org/tribont/material#Talc"></see></summary>
-    let Talc = Namespaced_IRI.parse _namespace_name "Talc" |> NamespacedName
-
+    let Talc = _prefix "Talc"
     /// <summary>
     /// Titanium alloy material.
     /// <see href="https://w3id.org/tribont/material#TitaniumAlloy"></see></summary>
-    let TitaniumAlloy =
-        Namespaced_IRI.parse _namespace_name "TitaniumAlloy" |> NamespacedName
-
+    let TitaniumAlloy = _prefix "TitaniumAlloy"
     /// <summary>
     /// Tolyltriazole concentration
     /// <see href="https://w3id.org/tribont/material#Tolyltriazole"></see></summary>
-    let Tolyltriazole =
-        Namespaced_IRI.parse _namespace_name "Tolyltriazole" |> NamespacedName
-
+    let Tolyltriazole = _prefix "Tolyltriazole"
     /// <summary>
     /// Steel used for tooling.
     /// <see href="https://w3id.org/tribont/material#ToolSteel"></see></summary>
-    let ToolSteel = Namespaced_IRI.parse _namespace_name "ToolSteel" |> NamespacedName
-
+    let ToolSteel = _prefix "ToolSteel"
     /// <summary>
     /// Content of UVStabilizer in a material.
     /// <see href="https://w3id.org/tribont/material#UVStabilizer"></see></summary>
-    let UVStabilizer =
-        Namespaced_IRI.parse _namespace_name "UVStabilizer" |> NamespacedName
-
+    let UVStabilizer = _prefix "UVStabilizer"
     /// <summary>
     /// Water content of something.
     /// <see href="https://w3id.org/tribont/material#Water"></see></summary>
-    let Water = Namespaced_IRI.parse _namespace_name "Water" |> NamespacedName
+    let Water = _prefix "Water"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#basic"></see>
     /// </summary>
-    let basic = Namespaced_IRI.parse _namespace_name "basic" |> NamespacedName
+    let basic = _prefix "basic"
     /// <summary>
     ///   <see href="https://w3id.org/tribont/material#filler"></see>
     /// </summary>
-    let filler = Namespaced_IRI.parse _namespace_name "filler" |> NamespacedName
-
+    let filler = _prefix "filler"
     /// <summary>
     /// Relationship between a role and the  element to which it applies.
     /// <see href="https://w3id.org/tribont/material#isElementRoleFor"></see></summary>
-    let isElementRoleFor =
-        Namespaced_IRI.parse _namespace_name "isElementRoleFor" |> NamespacedName
-
+    let isElementRoleFor = _prefix "isElementRoleFor"
     /// <summary>
     /// Relationship between a name and what it identifies..
     /// <see href="https://w3id.org/tribont/material#isNamingFor"></see></summary>
-    let isNamingFor =
-        Namespaced_IRI.parse _namespace_name "isNamingFor" |> NamespacedName
-
+    let isNamingFor = _prefix "isNamingFor"
     /// <summary>
     /// Relationship between a company and what it supplies..
     /// <see href="https://w3id.org/tribont/material#hasSupplier"></see></summary>
-    let hasSupplier =
-        Namespaced_IRI.parse _namespace_name "hasSupplier" |> NamespacedName
-
+    let hasSupplier = _prefix "hasSupplier"
     /// <summary>
     /// Relationship between something and the company supplying it.
     /// <see href="https://w3id.org/tribont/material#isSuppliedBy"></see></summary>
-    let isSuppliedBy =
-        Namespaced_IRI.parse _namespace_name "isSuppliedBy" |> NamespacedName
-
+    let isSuppliedBy = _prefix "isSuppliedBy"
     /// <summary>
     /// Relationship between an application and what it is usually applied to,
     /// <see href="https://w3id.org/tribont/material#isTypicalUseFor"></see></summary>
-    let isTypicalUseFor =
-        Namespaced_IRI.parse _namespace_name "isTypicalUseFor" |> NamespacedName
+    let isTypicalUseFor = _prefix "isTypicalUseFor"

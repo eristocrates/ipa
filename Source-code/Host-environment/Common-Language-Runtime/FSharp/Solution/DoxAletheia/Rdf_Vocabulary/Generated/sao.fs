@@ -1,50 +1,46 @@
 namespace http.salt.semanticauthoring.org.ontologies.sao.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module sao =
     let _namespace_name = "http://salt.semanticauthoring.org/ontologies/sao#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#Annotation"></see>
     /// </summary>
-    let Annotation = Namespaced_IRI.parse _namespace_name "Annotation" |> NamespacedName
-
+    let Annotation = _prefix "Annotation"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#CitationContext"></see>
     /// </summary>
-    let CitationContext =
-        Namespaced_IRI.parse _namespace_name "CitationContext" |> NamespacedName
-
+    let CitationContext = _prefix "CitationContext"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#annotates"></see>
     /// </summary>
-    let annotates = Namespaced_IRI.parse _namespace_name "annotates" |> NamespacedName
+    let annotates = _prefix "annotates"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#cites"></see>
     /// </summary>
-    let cites = Namespaced_IRI.parse _namespace_name "cites" |> NamespacedName
-
+    let cites = _prefix "cites"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#hasCitationContext"></see>
     /// </summary>
-    let hasCitationContext =
-        Namespaced_IRI.parse _namespace_name "hasCitationContext" |> NamespacedName
-
+    let hasCitationContext = _prefix "hasCitationContext"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#hasCitationKey"></see>
     /// </summary>
-    let hasCitationKey =
-        Namespaced_IRI.parse _namespace_name "hasCitationKey" |> NamespacedName
-
+    let hasCitationKey = _prefix "hasCitationKey"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#hasTopic"></see>
     /// </summary>
-    let hasTopic = Namespaced_IRI.parse _namespace_name "hasTopic" |> NamespacedName
+    let hasTopic = _prefix "hasTopic"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#isCitedBy"></see>
     /// </summary>
-    let isCitedBy = Namespaced_IRI.parse _namespace_name "isCitedBy" |> NamespacedName
+    let isCitedBy = _prefix "isCitedBy"
     /// <summary>
     ///   <see href="http://salt.semanticauthoring.org/ontologies/sao#pointsTo"></see>
     /// </summary>
-    let pointsTo = Namespaced_IRI.parse _namespace_name "pointsTo" |> NamespacedName
+    let pointsTo = _prefix "pointsTo"

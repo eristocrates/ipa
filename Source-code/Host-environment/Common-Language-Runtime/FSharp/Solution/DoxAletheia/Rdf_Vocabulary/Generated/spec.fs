@@ -1,672 +1,508 @@
 namespace http.www.w3.org.ns.spec.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module spec =
     let _namespace_name = "http://www.w3.org/ns/spec#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#API"></see>
     /// </summary>
-    let API = Namespaced_IRI.parse _namespace_name "API" |> NamespacedName
-
+    let API = _prefix "API"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#AccessibilityConsiderations"></see>
     /// </summary>
-    let AccessibilityConsiderations =
-        Namespaced_IRI.parse _namespace_name "AccessibilityConsiderations" |> NamespacedName
-
+    let AccessibilityConsiderations = _prefix "AccessibilityConsiderations"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Considerations"></see>
     /// </summary>
-    let Considerations =
-        Namespaced_IRI.parse _namespace_name "Considerations" |> NamespacedName
-
+    let Considerations = _prefix "Considerations"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Advisement"></see>
     /// </summary>
-    let Advisement = Namespaced_IRI.parse _namespace_name "Advisement" |> NamespacedName
-
+    let Advisement = _prefix "Advisement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#AdvisementLevel"></see>
     /// </summary>
-    let AdvisementLevel =
-        Namespaced_IRI.parse _namespace_name "AdvisementLevel" |> NamespacedName
-
+    let AdvisementLevel = _prefix "AdvisementLevel"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Can"></see>
     /// </summary>
-    let Can = Namespaced_IRI.parse _namespace_name "Can" |> NamespacedName
+    let Can = _prefix "Can"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Cannot"></see>
     /// </summary>
-    let Cannot = Namespaced_IRI.parse _namespace_name "Cannot" |> NamespacedName
+    let Cannot = _prefix "Cannot"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Change"></see>
     /// </summary>
-    let Change = Namespaced_IRI.parse _namespace_name "Change" |> NamespacedName
+    let Change = _prefix "Change"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Changelog"></see>
     /// </summary>
-    let Changelog = Namespaced_IRI.parse _namespace_name "Changelog" |> NamespacedName
-
+    let Changelog = _prefix "Changelog"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#ClassesOfProducts"></see>
     /// </summary>
-    let ClassesOfProducts =
-        Namespaced_IRI.parse _namespace_name "ClassesOfProducts" |> NamespacedName
-
+    let ClassesOfProducts = _prefix "ClassesOfProducts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Content"></see>
     /// </summary>
-    let Content = Namespaced_IRI.parse _namespace_name "Content" |> NamespacedName
-
+    let Content = _prefix "Content"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#ProducerOfContent"></see>
     /// </summary>
-    let ProducerOfContent =
-        Namespaced_IRI.parse _namespace_name "ProducerOfContent" |> NamespacedName
-
+    let ProducerOfContent = _prefix "ProducerOfContent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Player"></see>
     /// </summary>
-    let Player = Namespaced_IRI.parse _namespace_name "Player" |> NamespacedName
+    let Player = _prefix "Player"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Consumer"></see>
     /// </summary>
-    let Consumer = Namespaced_IRI.parse _namespace_name "Consumer" |> NamespacedName
-
+    let Consumer = _prefix "Consumer"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#RespondingAgent"></see>
     /// </summary>
-    let RespondingAgent =
-        Namespaced_IRI.parse _namespace_name "RespondingAgent" |> NamespacedName
-
+    let RespondingAgent = _prefix "RespondingAgent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Processor"></see>
     /// </summary>
-    let Processor = Namespaced_IRI.parse _namespace_name "Processor" |> NamespacedName
+    let Processor = _prefix "Processor"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Module"></see>
     /// </summary>
-    let Module = Namespaced_IRI.parse _namespace_name "Module" |> NamespacedName
-
+    let Module = _prefix "Module"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#ProducerOfInstructions"></see>
     /// </summary>
-    let ProducerOfInstructions =
-        Namespaced_IRI.parse _namespace_name "ProducerOfInstructions" |> NamespacedName
-
+    let ProducerOfInstructions = _prefix "ProducerOfInstructions"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Profile"></see>
     /// </summary>
-    let Profile = Namespaced_IRI.parse _namespace_name "Profile" |> NamespacedName
-
+    let Profile = _prefix "Profile"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SpecificationGuidelines"></see>
     /// </summary>
-    let SpecificationGuidelines =
-        Namespaced_IRI.parse _namespace_name "SpecificationGuidelines" |> NamespacedName
-
+    let SpecificationGuidelines = _prefix "SpecificationGuidelines"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Client"></see>
     /// </summary>
-    let Client = Namespaced_IRI.parse _namespace_name "Client" |> NamespacedName
-
+    let Client = _prefix "Client"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Conformance"></see>
     /// </summary>
-    let Conformance =
-        Namespaced_IRI.parse _namespace_name "Conformance" |> NamespacedName
-
+    let Conformance = _prefix "Conformance"
     /// <summary>
     /// Functional levels — or in common usage simply levels — are used to group functionality into nested subsets, ranging from minimal or core functionality to full or complete functionally. Level 1 is the minimum or core of the technology. Level 2 includes all of level 1 plus additional functionality. This nesting continues until level n, which consists of the entire technology.
     /// <see href="http://www.w3.org/ns/spec#ConformanceFunctionalLevel"></see></summary>
-    let ConformanceFunctionalLevel =
-        Namespaced_IRI.parse _namespace_name "ConformanceFunctionalLevel" |> NamespacedName
-
+    let ConformanceFunctionalLevel = _prefix "ConformanceFunctionalLevel"
     /// <summary>
     /// Modules are discrete divisions or functional groupings of the technology and do not necessarily fit in a simple hierarchical structure.
     /// <see href="http://www.w3.org/ns/spec#ConformanceModule"></see></summary>
-    let ConformanceModule =
-        Namespaced_IRI.parse _namespace_name "ConformanceModule" |> NamespacedName
-
+    let ConformanceModule = _prefix "ConformanceModule"
     /// <summary>
     /// A profile is a subset of the technology that supports a particular functional objective or a subset of a set of technologies defining how they are required to operate together (e.g., XHTML plus MathML plus SVG).
     /// <see href="http://www.w3.org/ns/spec#ConformanceProfile"></see></summary>
-    let ConformanceProfile =
-        Namespaced_IRI.parse _namespace_name "ConformanceProfile" |> NamespacedName
-
+    let ConformanceProfile = _prefix "ConformanceProfile"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#ContentData"></see>
     /// </summary>
-    let ContentData =
-        Namespaced_IRI.parse _namespace_name "ContentData" |> NamespacedName
-
+    let ContentData = _prefix "ContentData"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Could"></see>
     /// </summary>
-    let Could = Namespaced_IRI.parse _namespace_name "Could" |> NamespacedName
+    let Could = _prefix "Could"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#CouldNot"></see>
     /// </summary>
-    let CouldNot = Namespaced_IRI.parse _namespace_name "CouldNot" |> NamespacedName
-
+    let CouldNot = _prefix "CouldNot"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Discouraged"></see>
     /// </summary>
-    let Discouraged =
-        Namespaced_IRI.parse _namespace_name "Discouraged" |> NamespacedName
-
+    let Discouraged = _prefix "Discouraged"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Encouraged"></see>
     /// </summary>
-    let Encouraged = Namespaced_IRI.parse _namespace_name "Encouraged" |> NamespacedName
-
+    let Encouraged = _prefix "Encouraged"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Extensibility"></see>
     /// </summary>
-    let Extensibility =
-        Namespaced_IRI.parse _namespace_name "Extensibility" |> NamespacedName
-
+    let Extensibility = _prefix "Extensibility"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#FoundationOrAbstract"></see>
     /// </summary>
-    let FoundationOrAbstract =
-        Namespaced_IRI.parse _namespace_name "FoundationOrAbstract" |> NamespacedName
+    let FoundationOrAbstract = _prefix "FoundationOrAbstract"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#InternationalizationConsiderations"></see>
     /// </summary>
     let InternationalizationConsiderations =
-        Namespaced_IRI.parse _namespace_name "InternationalizationConsiderations" |> NamespacedName
+        _prefix "InternationalizationConsiderations"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#MAY"></see>
     /// </summary>
-    let MAY = Namespaced_IRI.parse _namespace_name "MAY" |> NamespacedName
+    let MAY = _prefix "MAY"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#OPTIONAL"></see>
     /// </summary>
-    let OPTIONAL = Namespaced_IRI.parse _namespace_name "OPTIONAL" |> NamespacedName
-
+    let OPTIONAL = _prefix "OPTIONAL"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#RequirementLevel"></see>
     /// </summary>
-    let RequirementLevel =
-        Namespaced_IRI.parse _namespace_name "RequirementLevel" |> NamespacedName
-
+    let RequirementLevel = _prefix "RequirementLevel"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#MUST"></see>
     /// </summary>
-    let MUST = Namespaced_IRI.parse _namespace_name "MUST" |> NamespacedName
+    let MUST = _prefix "MUST"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#REQUIRED"></see>
     /// </summary>
-    let REQUIRED = Namespaced_IRI.parse _namespace_name "REQUIRED" |> NamespacedName
+    let REQUIRED = _prefix "REQUIRED"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SHALL"></see>
     /// </summary>
-    let SHALL = Namespaced_IRI.parse _namespace_name "SHALL" |> NamespacedName
+    let SHALL = _prefix "SHALL"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#MUSTNOT"></see>
     /// </summary>
-    let MUSTNOT = Namespaced_IRI.parse _namespace_name "MUSTNOT" |> NamespacedName
+    let MUSTNOT = _prefix "MUSTNOT"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SHALLNOT"></see>
     /// </summary>
-    let SHALLNOT = Namespaced_IRI.parse _namespace_name "SHALLNOT" |> NamespacedName
+    let SHALLNOT = _prefix "SHALLNOT"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Might"></see>
     /// </summary>
-    let Might = Namespaced_IRI.parse _namespace_name "Might" |> NamespacedName
+    let Might = _prefix "Might"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#MightNot"></see>
     /// </summary>
-    let MightNot = Namespaced_IRI.parse _namespace_name "MightNot" |> NamespacedName
-
+    let MightNot = _prefix "MightNot"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#NOTRECOMMENDED"></see>
     /// </summary>
-    let NOTRECOMMENDED =
-        Namespaced_IRI.parse _namespace_name "NOTRECOMMENDED" |> NamespacedName
-
+    let NOTRECOMMENDED = _prefix "NOTRECOMMENDED"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SHOULDNOT"></see>
     /// </summary>
-    let SHOULDNOT = Namespaced_IRI.parse _namespace_name "SHOULDNOT" |> NamespacedName
-
+    let SHOULDNOT = _prefix "SHOULDNOT"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#NotationSyntax"></see>
     /// </summary>
-    let NotationSyntax =
-        Namespaced_IRI.parse _namespace_name "NotationSyntax" |> NamespacedName
-
+    let NotationSyntax = _prefix "NotationSyntax"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#PrivacyConsiderations"></see>
     /// </summary>
-    let PrivacyConsiderations =
-        Namespaced_IRI.parse _namespace_name "PrivacyConsiderations" |> NamespacedName
-
+    let PrivacyConsiderations = _prefix "PrivacyConsiderations"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#ProcessorBehavior"></see>
     /// </summary>
-    let ProcessorBehavior =
-        Namespaced_IRI.parse _namespace_name "ProcessorBehavior" |> NamespacedName
-
+    let ProcessorBehavior = _prefix "ProcessorBehavior"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Protocol"></see>
     /// </summary>
-    let Protocol = Namespaced_IRI.parse _namespace_name "Protocol" |> NamespacedName
-
+    let Protocol = _prefix "Protocol"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#RECOMMENDED"></see>
     /// </summary>
-    let RECOMMENDED =
-        Namespaced_IRI.parse _namespace_name "RECOMMENDED" |> NamespacedName
-
+    let RECOMMENDED = _prefix "RECOMMENDED"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SHOULD"></see>
     /// </summary>
-    let SHOULD = Namespaced_IRI.parse _namespace_name "SHOULD" |> NamespacedName
-
+    let SHOULD = _prefix "SHOULD"
     /// <summary>
     /// Registration considerations for collection of values or data at standards organisations, e.g., IANA, W3C.
     /// <see href="http://www.w3.org/ns/spec#RegistrationConsiderations"></see></summary>
-    let RegistrationConsiderations =
-        Namespaced_IRI.parse _namespace_name "RegistrationConsiderations" |> NamespacedName
-
+    let RegistrationConsiderations = _prefix "RegistrationConsiderations"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Requirement"></see>
     /// </summary>
-    let Requirement =
-        Namespaced_IRI.parse _namespace_name "Requirement" |> NamespacedName
-
+    let Requirement = _prefix "Requirement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#RulesForDerivingProfiles"></see>
     /// </summary>
-    let RulesForDerivingProfiles =
-        Namespaced_IRI.parse _namespace_name "RulesForDerivingProfiles" |> NamespacedName
-
+    let RulesForDerivingProfiles = _prefix "RulesForDerivingProfiles"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SecurityConsiderations"></see>
     /// </summary>
-    let SecurityConsiderations =
-        Namespaced_IRI.parse _namespace_name "SecurityConsiderations" |> NamespacedName
-
+    let SecurityConsiderations = _prefix "SecurityConsiderations"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SelfReviewQuestionnaire"></see>
     /// </summary>
-    let SelfReviewQuestionnaire =
-        Namespaced_IRI.parse _namespace_name "SelfReviewQuestionnaire" |> NamespacedName
+    let SelfReviewQuestionnaire = _prefix "SelfReviewQuestionnaire"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SelfReviewQuestionnaireSecurityPrivacy"></see>
     /// </summary>
     let SelfReviewQuestionnaireSecurityPrivacy =
-        Namespaced_IRI.parse _namespace_name "SelfReviewQuestionnaireSecurityPrivacy" |> NamespacedName
+        _prefix "SelfReviewQuestionnaireSecurityPrivacy"
 
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Server"></see>
     /// </summary>
-    let Server = Namespaced_IRI.parse _namespace_name "Server" |> NamespacedName
-
+    let Server = _prefix "Server"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SetOfEvents"></see>
     /// </summary>
-    let SetOfEvents =
-        Namespaced_IRI.parse _namespace_name "SetOfEvents" |> NamespacedName
-
+    let SetOfEvents = _prefix "SetOfEvents"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SetOfGuidelines"></see>
     /// </summary>
-    let SetOfGuidelines =
-        Namespaced_IRI.parse _namespace_name "SetOfGuidelines" |> NamespacedName
-
+    let SetOfGuidelines = _prefix "SetOfGuidelines"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Specification"></see>
     /// </summary>
-    let Specification =
-        Namespaced_IRI.parse _namespace_name "Specification" |> NamespacedName
-
+    let Specification = _prefix "Specification"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#SpecificationCategory"></see>
     /// </summary>
-    let SpecificationCategory =
-        Namespaced_IRI.parse _namespace_name "SpecificationCategory" |> NamespacedName
-
+    let SpecificationCategory = _prefix "SpecificationCategory"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#StronglyDiscouraged"></see>
     /// </summary>
-    let StronglyDiscouraged =
-        Namespaced_IRI.parse _namespace_name "StronglyDiscouraged" |> NamespacedName
-
+    let StronglyDiscouraged = _prefix "StronglyDiscouraged"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#StronglyEncouraged"></see>
     /// </summary>
-    let StronglyEncouraged =
-        Namespaced_IRI.parse _namespace_name "StronglyEncouraged" |> NamespacedName
-
+    let StronglyEncouraged = _prefix "StronglyEncouraged"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#Variability"></see>
     /// </summary>
-    let Variability =
-        Namespaced_IRI.parse _namespace_name "Variability" |> NamespacedName
-
+    let Variability = _prefix "Variability"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#acknowledgements"></see>
     /// </summary>
-    let acknowledgements =
-        Namespaced_IRI.parse _namespace_name "acknowledgements" |> NamespacedName
-
+    let acknowledgements = _prefix "acknowledgements"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#advisement"></see>
     /// </summary>
-    let advisement = Namespaced_IRI.parse _namespace_name "advisement" |> NamespacedName
-
+    let advisement = _prefix "advisement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#advisementLevel"></see>
     /// </summary>
-    let advisementLevel =
-        Namespaced_IRI.parse _namespace_name "advisementLevel" |> NamespacedName
-
+    let advisementLevel = _prefix "advisementLevel"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#author"></see>
     /// </summary>
-    let author = Namespaced_IRI.parse _namespace_name "author" |> NamespacedName
-
+    let author = _prefix "author"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#basedOnConsensus"></see>
     /// </summary>
-    let basedOnConsensus =
-        Namespaced_IRI.parse _namespace_name "basedOnConsensus" |> NamespacedName
-
+    let basedOnConsensus = _prefix "basedOnConsensus"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#buildUpon"></see>
     /// </summary>
-    let buildUpon = Namespaced_IRI.parse _namespace_name "buildUpon" |> NamespacedName
+    let buildUpon = _prefix "buildUpon"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#defines"></see>
     /// </summary>
-    let defines = Namespaced_IRI.parse _namespace_name "defines" |> NamespacedName
+    let defines = _prefix "defines"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#change"></see>
     /// </summary>
-    let change = Namespaced_IRI.parse _namespace_name "change" |> NamespacedName
-
+    let change = _prefix "change"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#changeClass"></see>
     /// </summary>
-    let changeClass =
-        Namespaced_IRI.parse _namespace_name "changeClass" |> NamespacedName
-
+    let changeClass = _prefix "changeClass"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#changeSubject"></see>
     /// </summary>
-    let changeSubject =
-        Namespaced_IRI.parse _namespace_name "changeSubject" |> NamespacedName
-
+    let changeSubject = _prefix "changeSubject"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#changelog"></see>
     /// </summary>
-    let changelog = Namespaced_IRI.parse _namespace_name "changelog" |> NamespacedName
+    let changelog = _prefix "changelog"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#citation"></see>
     /// </summary>
-    let citation = Namespaced_IRI.parse _namespace_name "citation" |> NamespacedName
-
+    let citation = _prefix "citation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#classesOfProducts"></see>
     /// </summary>
-    let classesOfProducts =
-        Namespaced_IRI.parse _namespace_name "classesOfProducts" |> NamespacedName
-
+    let classesOfProducts = _prefix "classesOfProducts"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#complianceWithOtherSpecifications"></see>
     /// </summary>
-    let complianceWithOtherSpecifications =
-        Namespaced_IRI.parse _namespace_name "complianceWithOtherSpecifications" |> NamespacedName
-
+    let complianceWithOtherSpecifications = _prefix "complianceWithOtherSpecifications"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#composedOf"></see>
     /// </summary>
-    let composedOf = Namespaced_IRI.parse _namespace_name "composedOf" |> NamespacedName
-
+    let composedOf = _prefix "composedOf"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#conformance"></see>
     /// </summary>
-    let conformance =
-        Namespaced_IRI.parse _namespace_name "conformance" |> NamespacedName
-
+    let conformance = _prefix "conformance"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#consideration"></see>
     /// </summary>
-    let consideration =
-        Namespaced_IRI.parse _namespace_name "consideration" |> NamespacedName
-
+    let consideration = _prefix "consideration"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#contributor"></see>
     /// </summary>
-    let contributor =
-        Namespaced_IRI.parse _namespace_name "contributor" |> NamespacedName
-
+    let contributor = _prefix "contributor"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#conventions"></see>
     /// </summary>
-    let conventions =
-        Namespaced_IRI.parse _namespace_name "conventions" |> NamespacedName
-
+    let conventions = _prefix "conventions"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#deprecation"></see>
     /// </summary>
-    let deprecation =
-        Namespaced_IRI.parse _namespace_name "deprecation" |> NamespacedName
-
+    let deprecation = _prefix "deprecation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#discretionaryItem"></see>
     /// </summary>
-    let discretionaryItem =
-        Namespaced_IRI.parse _namespace_name "discretionaryItem" |> NamespacedName
-
+    let discretionaryItem = _prefix "discretionaryItem"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#documentStatus"></see>
     /// </summary>
-    let documentStatus =
-        Namespaced_IRI.parse _namespace_name "documentStatus" |> NamespacedName
-
+    let documentStatus = _prefix "documentStatus"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#editor"></see>
     /// </summary>
-    let editor = Namespaced_IRI.parse _namespace_name "editor" |> NamespacedName
-
+    let editor = _prefix "editor"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#errorHandling"></see>
     /// </summary>
-    let errorHandling =
-        Namespaced_IRI.parse _namespace_name "errorHandling" |> NamespacedName
-
+    let errorHandling = _prefix "errorHandling"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#example"></see>
     /// </summary>
-    let example = Namespaced_IRI.parse _namespace_name "example" |> NamespacedName
-
+    let example = _prefix "example"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#exitCriteria"></see>
     /// </summary>
-    let exitCriteria =
-        Namespaced_IRI.parse _namespace_name "exitCriteria" |> NamespacedName
-
+    let exitCriteria = _prefix "exitCriteria"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#extensibility"></see>
     /// </summary>
-    let extensibility =
-        Namespaced_IRI.parse _namespace_name "extensibility" |> NamespacedName
-
+    let extensibility = _prefix "extensibility"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#functionalLevel"></see>
     /// </summary>
-    let functionalLevel =
-        Namespaced_IRI.parse _namespace_name "functionalLevel" |> NamespacedName
-
+    let functionalLevel = _prefix "functionalLevel"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#implementation"></see>
     /// </summary>
-    let implementation =
-        Namespaced_IRI.parse _namespace_name "implementation" |> NamespacedName
-
+    let implementation = _prefix "implementation"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#implementationReport"></see>
     /// </summary>
-    let implementationReport =
-        Namespaced_IRI.parse _namespace_name "implementationReport" |> NamespacedName
-
+    let implementationReport = _prefix "implementationReport"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#intellectualPropertyRights"></see>
     /// </summary>
-    let intellectualPropertyRights =
-        Namespaced_IRI.parse _namespace_name "intellectualPropertyRights" |> NamespacedName
-
+    let intellectualPropertyRights = _prefix "intellectualPropertyRights"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#issue"></see>
     /// </summary>
-    let issue = Namespaced_IRI.parse _namespace_name "issue" |> NamespacedName
-
+    let issue = _prefix "issue"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#issueTracker"></see>
     /// </summary>
-    let issueTracker =
-        Namespaced_IRI.parse _namespace_name "issueTracker" |> NamespacedName
-
+    let issueTracker = _prefix "issueTracker"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#latestVersion"></see>
     /// </summary>
-    let latestVersion =
-        Namespaced_IRI.parse _namespace_name "latestVersion" |> NamespacedName
-
+    let latestVersion = _prefix "latestVersion"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#level"></see>
     /// </summary>
-    let level = Namespaced_IRI.parse _namespace_name "level" |> NamespacedName
+    let level = _prefix "level"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#module"></see>
     /// </summary>
-    let module_ = Namespaced_IRI.parse _namespace_name "module" |> NamespacedName
+    let module_ = _prefix "module"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#note"></see>
     /// </summary>
-    let note = Namespaced_IRI.parse _namespace_name "note" |> NamespacedName
-
+    let note = _prefix "note"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#operativeProcess"></see>
     /// </summary>
-    let operativeProcess =
-        Namespaced_IRI.parse _namespace_name "operativeProcess" |> NamespacedName
-
+    let operativeProcess = _prefix "operativeProcess"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#previousVersion"></see>
     /// </summary>
-    let previousVersion =
-        Namespaced_IRI.parse _namespace_name "previousVersion" |> NamespacedName
-
+    let previousVersion = _prefix "previousVersion"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#profile"></see>
     /// </summary>
-    let profile = Namespaced_IRI.parse _namespace_name "profile" |> NamespacedName
-
+    let profile = _prefix "profile"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#publicationRules"></see>
     /// </summary>
-    let publicationRules =
-        Namespaced_IRI.parse _namespace_name "publicationRules" |> NamespacedName
-
+    let publicationRules = _prefix "publicationRules"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#repository"></see>
     /// </summary>
-    let repository = Namespaced_IRI.parse _namespace_name "repository" |> NamespacedName
-
+    let repository = _prefix "repository"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#requirement"></see>
     /// </summary>
-    let requirement =
-        Namespaced_IRI.parse _namespace_name "requirement" |> NamespacedName
-
+    let requirement = _prefix "requirement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#requirementLevel"></see>
     /// </summary>
-    let requirementLevel =
-        Namespaced_IRI.parse _namespace_name "requirementLevel" |> NamespacedName
-
+    let requirementLevel = _prefix "requirementLevel"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#requirementReference"></see>
     /// </summary>
-    let requirementReference =
-        Namespaced_IRI.parse _namespace_name "requirementReference" |> NamespacedName
-
+    let requirementReference = _prefix "requirementReference"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#requirementSubject"></see>
     /// </summary>
-    let requirementSubject =
-        Namespaced_IRI.parse _namespace_name "requirementSubject" |> NamespacedName
-
+    let requirementSubject = _prefix "requirementSubject"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#reviewProcess"></see>
     /// </summary>
-    let reviewProcess =
-        Namespaced_IRI.parse _namespace_name "reviewProcess" |> NamespacedName
-
+    let reviewProcess = _prefix "reviewProcess"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#scope"></see>
     /// </summary>
-    let scope = Namespaced_IRI.parse _namespace_name "scope" |> NamespacedName
-
+    let scope = _prefix "scope"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#specificationCategory"></see>
     /// </summary>
-    let specificationCategory =
-        Namespaced_IRI.parse _namespace_name "specificationCategory" |> NamespacedName
-
+    let specificationCategory = _prefix "specificationCategory"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#statement"></see>
     /// </summary>
-    let statement = Namespaced_IRI.parse _namespace_name "statement" |> NamespacedName
-
+    let statement = _prefix "statement"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#successCriteria"></see>
     /// </summary>
-    let successCriteria =
-        Namespaced_IRI.parse _namespace_name "successCriteria" |> NamespacedName
-
+    let successCriteria = _prefix "successCriteria"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#suitedFor"></see>
     /// </summary>
-    let suitedFor = Namespaced_IRI.parse _namespace_name "suitedFor" |> NamespacedName
-
+    let suitedFor = _prefix "suitedFor"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#terminology"></see>
     /// </summary>
-    let terminology =
-        Namespaced_IRI.parse _namespace_name "terminology" |> NamespacedName
-
+    let terminology = _prefix "terminology"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#testCase"></see>
     /// </summary>
-    let testCase = Namespaced_IRI.parse _namespace_name "testCase" |> NamespacedName
+    let testCase = _prefix "testCase"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#testScript"></see>
     /// </summary>
-    let testScript = Namespaced_IRI.parse _namespace_name "testScript" |> NamespacedName
+    let testScript = _prefix "testScript"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#testSuite"></see>
     /// </summary>
-    let testSuite = Namespaced_IRI.parse _namespace_name "testSuite" |> NamespacedName
-
+    let testSuite = _prefix "testSuite"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#thisVersion"></see>
     /// </summary>
-    let thisVersion =
-        Namespaced_IRI.parse _namespace_name "thisVersion" |> NamespacedName
-
+    let thisVersion = _prefix "thisVersion"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/spec#violatesAdvice"></see>
     /// </summary>
-    let violatesAdvice =
-        Namespaced_IRI.parse _namespace_name "violatesAdvice" |> NamespacedName
+    let violatesAdvice = _prefix "violatesAdvice"

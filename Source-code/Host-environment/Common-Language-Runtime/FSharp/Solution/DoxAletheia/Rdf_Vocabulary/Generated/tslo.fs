@@ -1,139 +1,110 @@
 namespace http.tracker.api.gnome.org.ontology.v3.slo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module tslo =
     let _namespace_name = "http://tracker.api.gnome.org/ontology/v3/slo#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A place in the space, can be defined by coordinates or text
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#GeoLocation"></see></summary>
-    let GeoLocation =
-        Namespaced_IRI.parse _namespace_name "GeoLocation" |> NamespacedName
-
+    let GeoLocation = _prefix "GeoLocation"
     /// <summary>
     /// Use the nie title, description, ... properties
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#Landmark"></see></summary>
-    let Landmark = Namespaced_IRI.parse _namespace_name "Landmark" |> NamespacedName
-
+    let Landmark = _prefix "Landmark"
     /// <summary>
     /// Predefined set of instances for categories of landmarks
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#LandmarkCategory"></see></summary>
-    let LandmarkCategory =
-        Namespaced_IRI.parse _namespace_name "LandmarkCategory" |> NamespacedName
-
+    let LandmarkCategory = _prefix "LandmarkCategory"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/slo#Route"></see>
     /// </summary>
-    let Route = Namespaced_IRI.parse _namespace_name "Route" |> NamespacedName
+    let Route = _prefix "Route"
     /// <summary>
     /// Altitude following WGS 84 reference
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#altitude"></see></summary>
-    let altitude = Namespaced_IRI.parse _namespace_name "altitude" |> NamespacedName
-
+    let altitude = _prefix "altitude"
     /// <summary>
     /// Relation of a landmark with a landmark category
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#belongsToCategory"></see></summary>
-    let belongsToCategory =
-        Namespaced_IRI.parse _namespace_name "belongsToCategory" |> NamespacedName
-
+    let belongsToCategory = _prefix "belongsToCategory"
     /// <summary>
     /// Northern latitude of the bounding box
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#boundingLatitudeMax"></see></summary>
-    let boundingLatitudeMax =
-        Namespaced_IRI.parse _namespace_name "boundingLatitudeMax" |> NamespacedName
-
+    let boundingLatitudeMax = _prefix "boundingLatitudeMax"
     /// <summary>
     /// Southern latitude of the bounding box
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#boundingLatitudeMin"></see></summary>
-    let boundingLatitudeMin =
-        Namespaced_IRI.parse _namespace_name "boundingLatitudeMin" |> NamespacedName
-
+    let boundingLatitudeMin = _prefix "boundingLatitudeMin"
     /// <summary>
     /// Eastern longitude of the bounding box
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#boundingLongitudeMax"></see></summary>
-    let boundingLongitudeMax =
-        Namespaced_IRI.parse _namespace_name "boundingLongitudeMax" |> NamespacedName
-
+    let boundingLongitudeMax = _prefix "boundingLongitudeMax"
     /// <summary>
     /// Western longitude of the bounding box
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#boundingLongitudeMin"></see></summary>
-    let boundingLongitudeMin =
-        Namespaced_IRI.parse _namespace_name "boundingLongitudeMin" |> NamespacedName
-
+    let boundingLongitudeMin = _prefix "boundingLongitudeMin"
     /// <summary>
     /// Url of the icon that corresponds to this category.
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#categoryIconUrl"></see></summary>
-    let categoryIconUrl =
-        Namespaced_IRI.parse _namespace_name "categoryIconUrl" |> NamespacedName
-
+    let categoryIconUrl = _prefix "categoryIconUrl"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/slo#endTime"></see>
     /// </summary>
-    let endTime = Namespaced_IRI.parse _namespace_name "endTime" |> NamespacedName
+    let endTime = _prefix "endTime"
     /// <summary>
     /// The contact information of the landmark in question
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#hasContact"></see></summary>
-    let hasContact = Namespaced_IRI.parse _namespace_name "hasContact" |> NamespacedName
-
+    let hasContact = _prefix "hasContact"
     /// <summary>
     /// Represents the error estimate of horizontal (earths-surface) accuracy in meters.
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#horizontalAccuracy"></see></summary>
-    let horizontalAccuracy =
-        Namespaced_IRI.parse _namespace_name "horizontalAccuracy" |> NamespacedName
-
+    let horizontalAccuracy = _prefix "horizontalAccuracy"
     /// <summary>
     /// Url of the icon that corresponds to this landmark.
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#iconUrl"></see></summary>
-    let iconUrl = Namespaced_IRI.parse _namespace_name "iconUrl" |> NamespacedName
-
+    let iconUrl = _prefix "iconUrl"
     /// <summary>
     /// Flag to indicate if this instance is removable. This restriction is not enforced by tracker; it is API responsability to honor the value
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#isRemovable"></see></summary>
-    let isRemovable =
-        Namespaced_IRI.parse _namespace_name "isRemovable" |> NamespacedName
-
+    let isRemovable = _prefix "isRemovable"
     /// <summary>
     /// Positive values for the north hemisphere, negative for the south
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#latitude"></see></summary>
-    let latitude = Namespaced_IRI.parse _namespace_name "latitude" |> NamespacedName
+    let latitude = _prefix "latitude"
     /// <summary>
     /// This can be subclassed to add semantics
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#location"></see></summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
+    let location = _prefix "location"
     /// <summary>
     /// Positive to the East of the Greenwich meridian, negative to the West (following WGS-84)
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#longitude"></see></summary>
-    let longitude = Namespaced_IRI.parse _namespace_name "longitude" |> NamespacedName
-
+    let longitude = _prefix "longitude"
     /// <summary>
     /// Representation of the location as text address
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#postalAddress"></see></summary>
-    let postalAddress =
-        Namespaced_IRI.parse _namespace_name "postalAddress" |> NamespacedName
-
+    let postalAddress = _prefix "postalAddress"
     /// <summary>
     /// Radius from the center to define an area. Some applications can use it in 2D sense, making then a circle instead of a sphere
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#radius"></see></summary>
-    let radius = Namespaced_IRI.parse _namespace_name "radius" |> NamespacedName
-
+    let radius = _prefix "radius"
     /// <summary>
     /// FIXME Domain can be resource if we handle map-files correctly in the ontology
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#routeDetails"></see></summary>
-    let routeDetails =
-        Namespaced_IRI.parse _namespace_name "routeDetails" |> NamespacedName
-
+    let routeDetails = _prefix "routeDetails"
     /// <summary>
     ///   <see href="http://tracker.api.gnome.org/ontology/v3/slo#startTime"></see>
     /// </summary>
-    let startTime = Namespaced_IRI.parse _namespace_name "startTime" |> NamespacedName
+    let startTime = _prefix "startTime"
     /// <summary>
     /// Timestamp when the geolocation is referenced. Create subproperties for certain use cases
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#timestamp"></see></summary>
-    let timestamp = Namespaced_IRI.parse _namespace_name "timestamp" |> NamespacedName
-
+    let timestamp = _prefix "timestamp"
     /// <summary>
     /// Represents the error estimate of vertical (earths-surface) accuracy in meters.
     /// <see href="http://tracker.api.gnome.org/ontology/v3/slo#verticalAccuracy"></see></summary>
-    let verticalAccuracy =
-        Namespaced_IRI.parse _namespace_name "verticalAccuracy" |> NamespacedName
+    let verticalAccuracy = _prefix "verticalAccuracy"

@@ -1,231 +1,171 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.Swaps.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_swp =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/BasisSwap"></see>
     /// </summary>
-    let BasisSwap = Namespaced_IRI.parse _namespace_name "BasisSwap" |> NamespacedName
+    let BasisSwap = _prefix "BasisSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/RatesSwap"></see>
     /// </summary>
-    let RatesSwap = Namespaced_IRI.parse _namespace_name "RatesSwap" |> NamespacedName
-
+    let RatesSwap = _prefix "RatesSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/CorrelationLeg"></see>
     /// </summary>
-    let CorrelationLeg =
-        Namespaced_IRI.parse _namespace_name "CorrelationLeg" |> NamespacedName
-
+    let CorrelationLeg = _prefix "CorrelationLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/PerformanceBasedVariableLeg"></see>
     /// </summary>
-    let PerformanceBasedVariableLeg =
-        Namespaced_IRI.parse _namespace_name "PerformanceBasedVariableLeg" |> NamespacedName
-
+    let PerformanceBasedVariableLeg = _prefix "PerformanceBasedVariableLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/isLegOf"></see>
     /// </summary>
-    let isLegOf = Namespaced_IRI.parse _namespace_name "isLegOf" |> NamespacedName
-
+    let isLegOf = _prefix "isLegOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/CorrelationSwap"></see>
     /// </summary>
-    let CorrelationSwap =
-        Namespaced_IRI.parse _namespace_name "CorrelationSwap" |> NamespacedName
-
+    let CorrelationSwap = _prefix "CorrelationSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/StatisticalSwap"></see>
     /// </summary>
-    let StatisticalSwap =
-        Namespaced_IRI.parse _namespace_name "StatisticalSwap" |> NamespacedName
-
+    let StatisticalSwap = _prefix "StatisticalSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/DispersionLeg"></see>
     /// </summary>
-    let DispersionLeg =
-        Namespaced_IRI.parse _namespace_name "DispersionLeg" |> NamespacedName
-
+    let DispersionLeg = _prefix "DispersionLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/DispersionSwap"></see>
     /// </summary>
-    let DispersionSwap =
-        Namespaced_IRI.parse _namespace_name "DispersionSwap" |> NamespacedName
-
+    let DispersionSwap = _prefix "DispersionSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/hasLeg"></see>
     /// </summary>
-    let hasLeg = Namespaced_IRI.parse _namespace_name "hasLeg" |> NamespacedName
-
+    let hasLeg = _prefix "hasLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/ExcessReturnSwap"></see>
     /// </summary>
-    let ExcessReturnSwap =
-        Namespaced_IRI.parse _namespace_name "ExcessReturnSwap" |> NamespacedName
-
+    let ExcessReturnSwap = _prefix "ExcessReturnSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/IndexReturnSwap"></see>
     /// </summary>
-    let IndexReturnSwap =
-        Namespaced_IRI.parse _namespace_name "IndexReturnSwap" |> NamespacedName
-
+    let IndexReturnSwap = _prefix "IndexReturnSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/FixedLeg"></see>
     /// </summary>
-    let FixedLeg = Namespaced_IRI.parse _namespace_name "FixedLeg" |> NamespacedName
+    let FixedLeg = _prefix "FixedLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapLeg"></see>
     /// </summary>
-    let SwapLeg = Namespaced_IRI.parse _namespace_name "SwapLeg" |> NamespacedName
-
+    let SwapLeg = _prefix "SwapLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/FloatingLeg"></see>
     /// </summary>
-    let FloatingLeg =
-        Namespaced_IRI.parse _namespace_name "FloatingLeg" |> NamespacedName
-
+    let FloatingLeg = _prefix "FloatingLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/FixedPaymentLeg"></see>
     /// </summary>
-    let FixedPaymentLeg =
-        Namespaced_IRI.parse _namespace_name "FixedPaymentLeg" |> NamespacedName
-
+    let FixedPaymentLeg = _prefix "FixedPaymentLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/ReturnSwap"></see>
     /// </summary>
-    let ReturnSwap = Namespaced_IRI.parse _namespace_name "ReturnSwap" |> NamespacedName
-
+    let ReturnSwap = _prefix "ReturnSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/MajorSwapParticipant"></see>
     /// </summary>
-    let MajorSwapParticipant =
-        Namespaced_IRI.parse _namespace_name "MajorSwapParticipant" |> NamespacedName
-
+    let MajorSwapParticipant = _prefix "MajorSwapParticipant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/RateBasedLeg"></see>
     /// </summary>
-    let RateBasedLeg =
-        Namespaced_IRI.parse _namespace_name "RateBasedLeg" |> NamespacedName
-
+    let RateBasedLeg = _prefix "RateBasedLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/Swap"></see>
     /// </summary>
-    let Swap = Namespaced_IRI.parse _namespace_name "Swap" |> NamespacedName
-
+    let Swap = _prefix "Swap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/RealizedVariableLeg"></see>
     /// </summary>
-    let RealizedVariableLeg =
-        Namespaced_IRI.parse _namespace_name "RealizedVariableLeg" |> NamespacedName
-
+    let RealizedVariableLeg = _prefix "RealizedVariableLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/ReturnLeg"></see>
     /// </summary>
-    let ReturnLeg = Namespaced_IRI.parse _namespace_name "ReturnLeg" |> NamespacedName
-
+    let ReturnLeg = _prefix "ReturnLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/hasFundingLeg"></see>
     /// </summary>
-    let hasFundingLeg =
-        Namespaced_IRI.parse _namespace_name "hasFundingLeg" |> NamespacedName
-
+    let hasFundingLeg = _prefix "hasFundingLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/hasReturnLeg"></see>
     /// </summary>
-    let hasReturnLeg =
-        Namespaced_IRI.parse _namespace_name "hasReturnLeg" |> NamespacedName
-
+    let hasReturnLeg = _prefix "hasReturnLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SimpleReturnLeg"></see>
     /// </summary>
-    let SimpleReturnLeg =
-        Namespaced_IRI.parse _namespace_name "SimpleReturnLeg" |> NamespacedName
-
+    let SimpleReturnLeg = _prefix "SimpleReturnLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/StrikeLeg"></see>
     /// </summary>
-    let StrikeLeg = Namespaced_IRI.parse _namespace_name "StrikeLeg" |> NamespacedName
-
+    let StrikeLeg = _prefix "StrikeLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/UniqueSwapIdentifier"></see>
     /// </summary>
-    let UniqueSwapIdentifier =
-        Namespaced_IRI.parse _namespace_name "UniqueSwapIdentifier" |> NamespacedName
-
+    let UniqueSwapIdentifier = _prefix "UniqueSwapIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapParty"></see>
     /// </summary>
-    let SwapParty = Namespaced_IRI.parse _namespace_name "SwapParty" |> NamespacedName
+    let SwapParty = _prefix "SwapParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapTerms"></see>
     /// </summary>
-    let SwapTerms = Namespaced_IRI.parse _namespace_name "SwapTerms" |> NamespacedName
-
+    let SwapTerms = _prefix "SwapTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapConfirmation"></see>
     /// </summary>
-    let SwapConfirmation =
-        Namespaced_IRI.parse _namespace_name "SwapConfirmation" |> NamespacedName
-
+    let SwapConfirmation = _prefix "SwapConfirmation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapLifecycleEvent"></see>
     /// </summary>
-    let SwapLifecycleEvent =
-        Namespaced_IRI.parse _namespace_name "SwapLifecycleEvent" |> NamespacedName
-
+    let SwapLifecycleEvent = _prefix "SwapLifecycleEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapDataRepository"></see>
     /// </summary>
-    let SwapDataRepository =
-        Namespaced_IRI.parse _namespace_name "SwapDataRepository" |> NamespacedName
-
+    let SwapDataRepository = _prefix "SwapDataRepository"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapDealer"></see>
     /// </summary>
-    let SwapDealer = Namespaced_IRI.parse _namespace_name "SwapDealer" |> NamespacedName
-
+    let SwapDealer = _prefix "SwapDealer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapPayingParty"></see>
     /// </summary>
-    let SwapPayingParty =
-        Namespaced_IRI.parse _namespace_name "SwapPayingParty" |> NamespacedName
-
+    let SwapPayingParty = _prefix "SwapPayingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapReceivingParty"></see>
     /// </summary>
-    let SwapReceivingParty =
-        Namespaced_IRI.parse _namespace_name "SwapReceivingParty" |> NamespacedName
-
+    let SwapReceivingParty = _prefix "SwapReceivingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapLegEvent"></see>
     /// </summary>
-    let SwapLegEvent =
-        Namespaced_IRI.parse _namespace_name "SwapLegEvent" |> NamespacedName
-
+    let SwapLegEvent = _prefix "SwapLegEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/SwapLifecycleEventIdentifier"></see>
     /// </summary>
-    let SwapLifecycleEventIdentifier =
-        Namespaced_IRI.parse _namespace_name "SwapLifecycleEventIdentifier" |> NamespacedName
-
+    let SwapLifecycleEventIdentifier = _prefix "SwapLifecycleEventIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/hasSwapIdentifier"></see>
     /// </summary>
-    let hasSwapIdentifier =
-        Namespaced_IRI.parse _namespace_name "hasSwapIdentifier" |> NamespacedName
-
+    let hasSwapIdentifier = _prefix "hasSwapIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/TotalReturnLeg"></see>
     /// </summary>
-    let TotalReturnLeg =
-        Namespaced_IRI.parse _namespace_name "TotalReturnLeg" |> NamespacedName
-
+    let TotalReturnLeg = _prefix "TotalReturnLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/TotalReturnSwap"></see>
     /// </summary>
-    let TotalReturnSwap =
-        Namespaced_IRI.parse _namespace_name "TotalReturnSwap" |> NamespacedName
+    let TotalReturnSwap = _prefix "TotalReturnSwap"

@@ -1,169 +1,139 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.ProductsAndServices.ProductsAndServices.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_pas_pas =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/NegotiableCommodity"></see>
     /// </summary>
-    let NegotiableCommodity =
-        Namespaced_IRI.parse _namespace_name "NegotiableCommodity" |> NamespacedName
-
+    let NegotiableCommodity = _prefix "NegotiableCommodity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Buyer"></see>
     /// </summary>
-    let Buyer = Namespaced_IRI.parse _namespace_name "Buyer" |> NamespacedName
+    let Buyer = _prefix "Buyer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/buys"></see>
     /// </summary>
-    let buys = Namespaced_IRI.parse _namespace_name "buys" |> NamespacedName
+    let buys = _prefix "buys"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Product"></see>
     /// </summary>
-    let Product = Namespaced_IRI.parse _namespace_name "Product" |> NamespacedName
+    let Product = _prefix "Product"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Client"></see>
     /// </summary>
-    let Client = Namespaced_IRI.parse _namespace_name "Client" |> NamespacedName
-
+    let Client = _prefix "Client"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/ServiceAgreement"></see>
     /// </summary>
-    let ServiceAgreement =
-        Namespaced_IRI.parse _namespace_name "ServiceAgreement" |> NamespacedName
-
+    let ServiceAgreement = _prefix "ServiceAgreement"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/ClientIdentifier"></see>
     /// </summary>
-    let ClientIdentifier =
-        Namespaced_IRI.parse _namespace_name "ClientIdentifier" |> NamespacedName
-
+    let ClientIdentifier = _prefix "ClientIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Commodity"></see>
     /// </summary>
-    let Commodity = Namespaced_IRI.parse _namespace_name "Commodity" |> NamespacedName
+    let Commodity = _prefix "Commodity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Good"></see>
     /// </summary>
-    let Good = Namespaced_IRI.parse _namespace_name "Good" |> NamespacedName
+    let Good = _prefix "Good"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Consumer"></see>
     /// </summary>
-    let Consumer = Namespaced_IRI.parse _namespace_name "Consumer" |> NamespacedName
-
+    let Consumer = _prefix "Consumer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/ContractualProduct"></see>
     /// </summary>
-    let ContractualProduct =
-        Namespaced_IRI.parse _namespace_name "ContractualProduct" |> NamespacedName
-
+    let ContractualProduct = _prefix "ContractualProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/ContractualTemplateProduct"></see>
     /// </summary>
-    let ContractualTemplateProduct =
-        Namespaced_IRI.parse _namespace_name "ContractualTemplateProduct" |> NamespacedName
-
+    let ContractualTemplateProduct = _prefix "ContractualTemplateProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/OffTheShelfProduct"></see>
     /// </summary>
-    let OffTheShelfProduct =
-        Namespaced_IRI.parse _namespace_name "OffTheShelfProduct" |> NamespacedName
-
+    let OffTheShelfProduct = _prefix "OffTheShelfProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/CustomProduct"></see>
     /// </summary>
-    let CustomProduct =
-        Namespaced_IRI.parse _namespace_name "CustomProduct" |> NamespacedName
-
+    let CustomProduct = _prefix "CustomProduct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Customer"></see>
     /// </summary>
-    let Customer = Namespaced_IRI.parse _namespace_name "Customer" |> NamespacedName
+    let Customer = _prefix "Customer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/buysFrom"></see>
     /// </summary>
-    let buysFrom = Namespaced_IRI.parse _namespace_name "buysFrom" |> NamespacedName
+    let buysFrom = _prefix "buysFrom"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Supplier"></see>
     /// </summary>
-    let Supplier = Namespaced_IRI.parse _namespace_name "Supplier" |> NamespacedName
-
+    let Supplier = _prefix "Supplier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/CustomerIdentifier"></see>
     /// </summary>
-    let CustomerIdentifier =
-        Namespaced_IRI.parse _namespace_name "CustomerIdentifier" |> NamespacedName
-
+    let CustomerIdentifier = _prefix "CustomerIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Producer"></see>
     /// </summary>
-    let Producer = Namespaced_IRI.parse _namespace_name "Producer" |> NamespacedName
-
+    let Producer = _prefix "Producer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/ProductIdentifier"></see>
     /// </summary>
-    let ProductIdentifier =
-        Namespaced_IRI.parse _namespace_name "ProductIdentifier" |> NamespacedName
-
+    let ProductIdentifier = _prefix "ProductIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Sale"></see>
     /// </summary>
-    let Sale = Namespaced_IRI.parse _namespace_name "Sale" |> NamespacedName
-
+    let Sale = _prefix "Sale"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/TransactionEvent"></see>
     /// </summary>
-    let TransactionEvent =
-        Namespaced_IRI.parse _namespace_name "TransactionEvent" |> NamespacedName
-
+    let TransactionEvent = _prefix "TransactionEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/hasBuyer"></see>
     /// </summary>
-    let hasBuyer = Namespaced_IRI.parse _namespace_name "hasBuyer" |> NamespacedName
+    let hasBuyer = _prefix "hasBuyer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/hasSeller"></see>
     /// </summary>
-    let hasSeller = Namespaced_IRI.parse _namespace_name "hasSeller" |> NamespacedName
+    let hasSeller = _prefix "hasSeller"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Seller"></see>
     /// </summary>
-    let Seller = Namespaced_IRI.parse _namespace_name "Seller" |> NamespacedName
+    let Seller = _prefix "Seller"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/sells"></see>
     /// </summary>
-    let sells = Namespaced_IRI.parse _namespace_name "sells" |> NamespacedName
+    let sells = _prefix "sells"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/supplies"></see>
     /// </summary>
-    let supplies = Namespaced_IRI.parse _namespace_name "supplies" |> NamespacedName
-
+    let supplies = _prefix "supplies"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/TransactionConfirmation"></see>
     /// </summary>
-    let TransactionConfirmation =
-        Namespaced_IRI.parse _namespace_name "TransactionConfirmation" |> NamespacedName
-
+    let TransactionConfirmation = _prefix "TransactionConfirmation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/isProvisionedBy"></see>
     /// </summary>
-    let isProvisionedBy =
-        Namespaced_IRI.parse _namespace_name "isProvisionedBy" |> NamespacedName
-
+    let isProvisionedBy = _prefix "isProvisionedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/provisions"></see>
     /// </summary>
-    let provisions = Namespaced_IRI.parse _namespace_name "provisions" |> NamespacedName
-
+    let provisions = _prefix "provisions"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/isSuppliedBy"></see>
     /// </summary>
-    let isSuppliedBy =
-        Namespaced_IRI.parse _namespace_name "isSuppliedBy" |> NamespacedName
-
+    let isSuppliedBy = _prefix "isSuppliedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/sellsTo"></see>
     /// </summary>
-    let sellsTo = Namespaced_IRI.parse _namespace_name "sellsTo" |> NamespacedName
+    let sellsTo = _prefix "sellsTo"

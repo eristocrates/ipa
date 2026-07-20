@@ -1,204 +1,158 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.humanBody.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module humanbody =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/humanBody#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AcquiredStructure"></see>
     /// </summary>
-    let AcquiredStructure =
-        Namespaced_IRI.parse _namespace_name "AcquiredStructure" |> NamespacedName
-
+    let AcquiredStructure = _prefix "AcquiredStructure"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Structure"></see>
     /// </summary>
-    let Structure = Namespaced_IRI.parse _namespace_name "Structure" |> NamespacedName
-
+    let Structure = _prefix "Structure"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AnatomicalStructure"></see>
     /// </summary>
-    let AnatomicalStructure =
-        Namespaced_IRI.parse _namespace_name "AnatomicalStructure" |> NamespacedName
-
+    let AnatomicalStructure = _prefix "AnatomicalStructure"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndex"></see>
     /// </summary>
-    let AdultBodyMassIndex =
-        Namespaced_IRI.parse _namespace_name "AdultBodyMassIndex" |> NamespacedName
-
+    let AdultBodyMassIndex = _prefix "AdultBodyMassIndex"
     /// <summary>
     /// May overestimate body fat in athletes and others who have a muscular build; may underestimate body fat in older persons and others who have lost muscle mass.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#AdultBodyMassIndexMeasurement"></see></summary>
-    let AdultBodyMassIndexMeasurement =
-        Namespaced_IRI.parse _namespace_name "AdultBodyMassIndexMeasurement" |> NamespacedName
-
+    let AdultBodyMassIndexMeasurement = _prefix "AdultBodyMassIndexMeasurement"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeight"></see>
     /// </summary>
-    let BirthWeight =
-        Namespaced_IRI.parse _namespace_name "BirthWeight" |> NamespacedName
-
+    let BirthWeight = _prefix "BirthWeight"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weight"></see>
     /// </summary>
-    let Weight = Namespaced_IRI.parse _namespace_name "Weight" |> NamespacedName
-
+    let Weight = _prefix "Weight"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#BirthWeightMeasurement"></see>
     /// </summary>
-    let BirthWeightMeasurement =
-        Namespaced_IRI.parse _namespace_name "BirthWeightMeasurement" |> NamespacedName
-
+    let BirthWeightMeasurement = _prefix "BirthWeightMeasurement"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightMeasurement"></see>
     /// </summary>
-    let WeightMeasurement =
-        Namespaced_IRI.parse _namespace_name "WeightMeasurement" |> NamespacedName
-
+    let WeightMeasurement = _prefix "WeightMeasurement"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Weighing"></see>
     /// </summary>
-    let Weighing = Namespaced_IRI.parse _namespace_name "Weighing" |> NamespacedName
+    let Weighing = _prefix "Weighing"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Body"></see>
     /// </summary>
-    let Body = Namespaced_IRI.parse _namespace_name "Body" |> NamespacedName
+    let Body = _prefix "Body"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#DeadBody"></see>
     /// </summary>
-    let DeadBody = Namespaced_IRI.parse _namespace_name "DeadBody" |> NamespacedName
+    let DeadBody = _prefix "DeadBody"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Death"></see>
     /// </summary>
-    let Death = Namespaced_IRI.parse _namespace_name "Death" |> NamespacedName
+    let Death = _prefix "Death"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Length"></see>
     /// </summary>
-    let Length = Namespaced_IRI.parse _namespace_name "Length" |> NamespacedName
-
+    let Length = _prefix "Length"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasurement"></see>
     /// </summary>
-    let LengthMeasurement =
-        Namespaced_IRI.parse _namespace_name "LengthMeasurement" |> NamespacedName
-
+    let LengthMeasurement = _prefix "LengthMeasurement"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#LengthMeasuring"></see>
     /// </summary>
-    let LengthMeasuring =
-        Namespaced_IRI.parse _namespace_name "LengthMeasuring" |> NamespacedName
-
+    let LengthMeasuring = _prefix "LengthMeasuring"
     /// <summary>
     /// Body mass index ranging 35-44.9 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#MorbidlyObese"></see></summary>
-    let MorbidlyObese =
-        Namespaced_IRI.parse _namespace_name "MorbidlyObese" |> NamespacedName
-
+    let MorbidlyObese = _prefix "MorbidlyObese"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeightStatus"></see>
     /// </summary>
-    let WeightStatus =
-        Namespaced_IRI.parse _namespace_name "WeightStatus" |> NamespacedName
-
+    let WeightStatus = _prefix "WeightStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Newborn"></see>
     /// </summary>
-    let Newborn = Namespaced_IRI.parse _namespace_name "Newborn" |> NamespacedName
+    let Newborn = _prefix "Newborn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeight"></see>
     /// </summary>
-    let hasWeight = Namespaced_IRI.parse _namespace_name "hasWeight" |> NamespacedName
-
+    let hasWeight = _prefix "hasWeight"
     /// <summary>
     /// Body mass index ranging 18.5-24.9 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#NormalWeight"></see></summary>
-    let NormalWeight =
-        Namespaced_IRI.parse _namespace_name "NormalWeight" |> NamespacedName
-
+    let NormalWeight = _prefix "NormalWeight"
     /// <summary>
     /// Body mass index ranging 30-34.9 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Obese"></see></summary>
-    let Obese = Namespaced_IRI.parse _namespace_name "Obese" |> NamespacedName
+    let Obese = _prefix "Obese"
     /// <summary>
     /// Body mass index ranging 25-29.9 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Overweight"></see></summary>
-    let Overweight = Namespaced_IRI.parse _namespace_name "Overweight" |> NamespacedName
-
+    let Overweight = _prefix "Overweight"
     /// <summary>
     /// Body mass index lower than 16 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SeverelyUnderweight"></see></summary>
-    let SeverelyUnderweight =
-        Namespaced_IRI.parse _namespace_name "SeverelyUnderweight" |> NamespacedName
-
+    let SeverelyUnderweight = _prefix "SeverelyUnderweight"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Substance"></see>
     /// </summary>
-    let Substance = Namespaced_IRI.parse _namespace_name "Substance" |> NamespacedName
+    let Substance = _prefix "Substance"
     /// <summary>
     /// Body mass index over 44.9 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SuperObese"></see></summary>
-    let SuperObese = Namespaced_IRI.parse _namespace_name "SuperObese" |> NamespacedName
+    let SuperObese = _prefix "SuperObese"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Surface"></see>
     /// </summary>
-    let Surface = Namespaced_IRI.parse _namespace_name "Surface" |> NamespacedName
-
+    let Surface = _prefix "Surface"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceArea"></see>
     /// </summary>
-    let SurfaceArea =
-        Namespaced_IRI.parse _namespace_name "SurfaceArea" |> NamespacedName
-
+    let SurfaceArea = _prefix "SurfaceArea"
     /// <summary>
     /// Approximative calculation, e.g. in an N3 rule with formula of Mosteller, see http://eulersharp.sourceforge.net/2003/03swap/bodySurfaceArea_rules.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#SurfaceAreaMeasurement"></see></summary>
-    let SurfaceAreaMeasurement =
-        Namespaced_IRI.parse _namespace_name "SurfaceAreaMeasurement" |> NamespacedName
-
+    let SurfaceAreaMeasurement = _prefix "SurfaceAreaMeasurement"
     /// <summary>
     /// Body mass index ranging 16-18.4 kg/m2.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#Underweight"></see></summary>
-    let Underweight =
-        Namespaced_IRI.parse _namespace_name "Underweight" |> NamespacedName
-
+    let Underweight = _prefix "Underweight"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#WeighingDevice"></see>
     /// </summary>
-    let WeighingDevice =
-        Namespaced_IRI.parse _namespace_name "WeighingDevice" |> NamespacedName
-
+    let WeighingDevice = _prefix "WeighingDevice"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBirthWeight"></see>
     /// </summary>
-    let hasBirthWeight =
-        Namespaced_IRI.parse _namespace_name "hasBirthWeight" |> NamespacedName
-
+    let hasBirthWeight = _prefix "hasBirthWeight"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasBodyMassIndex"></see>
     /// </summary>
-    let hasBodyMassIndex =
-        Namespaced_IRI.parse _namespace_name "hasBodyMassIndex" |> NamespacedName
-
+    let hasBodyMassIndex = _prefix "hasBodyMassIndex"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasLength"></see>
     /// </summary>
-    let hasLength = Namespaced_IRI.parse _namespace_name "hasLength" |> NamespacedName
-
+    let hasLength = _prefix "hasLength"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasSurfaceArea"></see>
     /// </summary>
-    let hasSurfaceArea =
-        Namespaced_IRI.parse _namespace_name "hasSurfaceArea" |> NamespacedName
-
+    let hasSurfaceArea = _prefix "hasSurfaceArea"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#hasWeightStatus"></see>
     /// </summary>
-    let hasWeightStatus =
-        Namespaced_IRI.parse _namespace_name "hasWeightStatus" |> NamespacedName
-
+    let hasWeightStatus = _prefix "hasWeightStatus"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/humanBody#weightOf"></see>
     /// </summary>
-    let weightOf = Namespaced_IRI.parse _namespace_name "weightOf" |> NamespacedName
+    let weightOf = _prefix "weightOf"

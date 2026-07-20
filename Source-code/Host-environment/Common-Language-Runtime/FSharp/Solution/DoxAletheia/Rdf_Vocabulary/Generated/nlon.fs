@@ -1,875 +1,641 @@
 namespace http.lod.nl.go.kr.ontology.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module nlon =
     let _namespace_name = "http://lod.nl.go.kr/ontology/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/AlternativeMaterial"></see>
     /// </summary>
-    let AlternativeMaterial =
-        Namespaced_IRI.parse _namespace_name "AlternativeMaterial" |> NamespacedName
-
+    let AlternativeMaterial = _prefix "AlternativeMaterial"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Archives"></see>
     /// </summary>
-    let Archives = Namespaced_IRI.parse _namespace_name "Archives" |> NamespacedName
+    let Archives = _prefix "Archives"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Author"></see>
     /// </summary>
-    let Author = Namespaced_IRI.parse _namespace_name "Author" |> NamespacedName
+    let Author = _prefix "Author"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Book"></see>
     /// </summary>
-    let Book = Namespaced_IRI.parse _namespace_name "Book" |> NamespacedName
-
+    let Book = _prefix "Book"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/OfflineMaterial"></see>
     /// </summary>
-    let OfflineMaterial =
-        Namespaced_IRI.parse _namespace_name "OfflineMaterial" |> NamespacedName
-
+    let OfflineMaterial = _prefix "OfflineMaterial"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Classification"></see>
     /// </summary>
-    let Classification =
-        Namespaced_IRI.parse _namespace_name "Classification" |> NamespacedName
-
+    let Classification = _prefix "Classification"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/ComplexDocument"></see>
     /// </summary>
-    let ComplexDocument =
-        Namespaced_IRI.parse _namespace_name "ComplexDocument" |> NamespacedName
-
+    let ComplexDocument = _prefix "ComplexDocument"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Concept"></see>
     /// </summary>
-    let Concept = Namespaced_IRI.parse _namespace_name "Concept" |> NamespacedName
-
+    let Concept = _prefix "Concept"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/ContinuousDataType"></see>
     /// </summary>
-    let ContinuousDataType =
-        Namespaced_IRI.parse _namespace_name "ContinuousDataType" |> NamespacedName
-
+    let ContinuousDataType = _prefix "ContinuousDataType"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Country"></see>
     /// </summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
+    let Country = _prefix "Country"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/DataType"></see>
     /// </summary>
-    let DataType = Namespaced_IRI.parse _namespace_name "DataType" |> NamespacedName
-
+    let DataType = _prefix "DataType"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/ElectronicDocument"></see>
     /// </summary>
-    let ElectronicDocument =
-        Namespaced_IRI.parse _namespace_name "ElectronicDocument" |> NamespacedName
-
+    let ElectronicDocument = _prefix "ElectronicDocument"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Government"></see>
     /// </summary>
-    let Government = Namespaced_IRI.parse _namespace_name "Government" |> NamespacedName
+    let Government = _prefix "Government"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Librarian"></see>
     /// </summary>
-    let Librarian = Namespaced_IRI.parse _namespace_name "Librarian" |> NamespacedName
+    let Librarian = _prefix "Librarian"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Library"></see>
     /// </summary>
-    let Library = Namespaced_IRI.parse _namespace_name "Library" |> NamespacedName
+    let Library = _prefix "Library"
     /// <summary>
     /// 지역
     /// <see href="http://lod.nl.go.kr/ontology/Location"></see></summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
+    let Location = _prefix "Location"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/NonBook"></see>
     /// </summary>
-    let NonBook = Namespaced_IRI.parse _namespace_name "NonBook" |> NamespacedName
+    let NonBook = _prefix "NonBook"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/OldBook"></see>
     /// </summary>
-    let OldBook = Namespaced_IRI.parse _namespace_name "OldBook" |> NamespacedName
-
+    let OldBook = _prefix "OldBook"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/OnlineMaterial"></see>
     /// </summary>
-    let OnlineMaterial =
-        Namespaced_IRI.parse _namespace_name "OnlineMaterial" |> NamespacedName
-
+    let OnlineMaterial = _prefix "OnlineMaterial"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/OnlineMaterialType"></see>
     /// </summary>
-    let OnlineMaterialType =
-        Namespaced_IRI.parse _namespace_name "OnlineMaterialType" |> NamespacedName
-
+    let OnlineMaterialType = _prefix "OnlineMaterialType"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/PublicationFrequencyType"></see>
     /// </summary>
-    let PublicationFrequencyType =
-        Namespaced_IRI.parse _namespace_name "PublicationFrequencyType" |> NamespacedName
-
+    let PublicationFrequencyType = _prefix "PublicationFrequencyType"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/PublicationStatusType"></see>
     /// </summary>
-    let PublicationStatusType =
-        Namespaced_IRI.parse _namespace_name "PublicationStatusType" |> NamespacedName
-
+    let PublicationStatusType = _prefix "PublicationStatusType"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/Score"></see>
     /// </summary>
-    let Score = Namespaced_IRI.parse _namespace_name "Score" |> NamespacedName
+    let Score = _prefix "Score"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/University"></see>
     /// </summary>
-    let University = Namespaced_IRI.parse _namespace_name "University" |> NamespacedName
-
+    let University = _prefix "University"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/abbreviatedTitle"></see>
     /// </summary>
-    let abbreviatedTitle =
-        Namespaced_IRI.parse _namespace_name "abbreviatedTitle" |> NamespacedName
-
+    let abbreviatedTitle = _prefix "abbreviatedTitle"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/antecedentSource"></see>
     /// </summary>
-    let antecedentSource =
-        Namespaced_IRI.parse _namespace_name "antecedentSource" |> NamespacedName
-
+    let antecedentSource = _prefix "antecedentSource"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/audienceNote"></see>
     /// </summary>
-    let audienceNote =
-        Namespaced_IRI.parse _namespace_name "audienceNote" |> NamespacedName
-
+    let audienceNote = _prefix "audienceNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/authenticationCode"></see>
     /// </summary>
-    let authenticationCode =
-        Namespaced_IRI.parse _namespace_name "authenticationCode" |> NamespacedName
-
+    let authenticationCode = _prefix "authenticationCode"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/awardedFrom"></see>
     /// </summary>
-    let awardedFrom =
-        Namespaced_IRI.parse _namespace_name "awardedFrom" |> NamespacedName
-
+    let awardedFrom = _prefix "awardedFrom"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/awardsNote"></see>
     /// </summary>
-    let awardsNote = Namespaced_IRI.parse _namespace_name "awardsNote" |> NamespacedName
-
+    let awardsNote = _prefix "awardsNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/bibliography"></see>
     /// </summary>
-    let bibliography =
-        Namespaced_IRI.parse _namespace_name "bibliography" |> NamespacedName
-
+    let bibliography = _prefix "bibliography"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/biographicalNote"></see>
     /// </summary>
-    let biographicalNote =
-        Namespaced_IRI.parse _namespace_name "biographicalNote" |> NamespacedName
-
+    let biographicalNote = _prefix "biographicalNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/birthYear"></see>
     /// </summary>
-    let birthYear = Namespaced_IRI.parse _namespace_name "birthYear" |> NamespacedName
+    let birthYear = _prefix "birthYear"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/cip"></see>
     /// </summary>
-    let cip = Namespaced_IRI.parse _namespace_name "cip" |> NamespacedName
-
+    let cip = _prefix "cip"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/citationReferenceNote"></see>
     /// </summary>
-    let citationReferenceNote =
-        Namespaced_IRI.parse _namespace_name "citationReferenceNote" |> NamespacedName
-
+    let citationReferenceNote = _prefix "citationReferenceNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/classificationNumber"></see>
     /// </summary>
-    let classificationNumber =
-        Namespaced_IRI.parse _namespace_name "classificationNumber" |> NamespacedName
-
+    let classificationNumber = _prefix "classificationNumber"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/classificationNumberOfLC"></see>
     /// </summary>
-    let classificationNumberOfLC =
-        Namespaced_IRI.parse _namespace_name "classificationNumberOfLC" |> NamespacedName
-
+    let classificationNumberOfLC = _prefix "classificationNumberOfLC"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/classificationNumberOfNLK"></see>
     /// </summary>
-    let classificationNumberOfNLK =
-        Namespaced_IRI.parse _namespace_name "classificationNumberOfNLK" |> NamespacedName
-
+    let classificationNumberOfNLK = _prefix "classificationNumberOfNLK"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/confirmDate"></see>
     /// </summary>
-    let confirmDate =
-        Namespaced_IRI.parse _namespace_name "confirmDate" |> NamespacedName
-
+    let confirmDate = _prefix "confirmDate"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/confirmedBy"></see>
     /// </summary>
-    let confirmedBy =
-        Namespaced_IRI.parse _namespace_name "confirmedBy" |> NamespacedName
-
+    let confirmedBy = _prefix "confirmedBy"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/managedBy"></see>
     /// </summary>
-    let managedBy = Namespaced_IRI.parse _namespace_name "managedBy" |> NamespacedName
+    let managedBy = _prefix "managedBy"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/create"></see>
     /// </summary>
-    let create = Namespaced_IRI.parse _namespace_name "create" |> NamespacedName
-
+    let create = _prefix "create"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/currentPublicationFrequency"></see>
     /// </summary>
-    let currentPublicationFrequency =
-        Namespaced_IRI.parse _namespace_name "currentPublicationFrequency" |> NamespacedName
-
+    let currentPublicationFrequency = _prefix "currentPublicationFrequency"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateLinked"></see>
     /// </summary>
-    let dateLinked = Namespaced_IRI.parse _namespace_name "dateLinked" |> NamespacedName
-
+    let dateLinked = _prefix "dateLinked"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfClosed"></see>
     /// </summary>
-    let dateOfClosed =
-        Namespaced_IRI.parse _namespace_name "dateOfClosed" |> NamespacedName
-
+    let dateOfClosed = _prefix "dateOfClosed"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfCurrentPublicationFrequency"></see>
     /// </summary>
-    let dateOfCurrentPublicationFrequency =
-        Namespaced_IRI.parse _namespace_name "dateOfCurrentPublicationFrequency" |> NamespacedName
-
+    let dateOfCurrentPublicationFrequency = _prefix "dateOfCurrentPublicationFrequency"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfDistribute"></see>
     /// </summary>
-    let dateOfDistribute =
-        Namespaced_IRI.parse _namespace_name "dateOfDistribute" |> NamespacedName
-
+    let dateOfDistribute = _prefix "dateOfDistribute"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfFormerPublicationFrequency"></see>
     /// </summary>
-    let dateOfFormerPublicationFrequency =
-        Namespaced_IRI.parse _namespace_name "dateOfFormerPublicationFrequency" |> NamespacedName
-
+    let dateOfFormerPublicationFrequency = _prefix "dateOfFormerPublicationFrequency"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfManufacture"></see>
     /// </summary>
-    let dateOfManufacture =
-        Namespaced_IRI.parse _namespace_name "dateOfManufacture" |> NamespacedName
-
+    let dateOfManufacture = _prefix "dateOfManufacture"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfOpening"></see>
     /// </summary>
-    let dateOfOpening =
-        Namespaced_IRI.parse _namespace_name "dateOfOpening" |> NamespacedName
+    let dateOfOpening = _prefix "dateOfOpening"
 
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateOfPublicationSequentialDesignation"></see>
     /// </summary>
     let dateOfPublicationSequentialDesignation =
-        Namespaced_IRI.parse _namespace_name "dateOfPublicationSequentialDesignation" |> NamespacedName
+        _prefix "dateOfPublicationSequentialDesignation"
 
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/datePublished"></see>
     /// </summary>
-    let datePublished =
-        Namespaced_IRI.parse _namespace_name "datePublished" |> NamespacedName
-
+    let datePublished = _prefix "datePublished"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/dateSequentialDesignation"></see>
     /// </summary>
-    let dateSequentialDesignation =
-        Namespaced_IRI.parse _namespace_name "dateSequentialDesignation" |> NamespacedName
-
+    let dateSequentialDesignation = _prefix "dateSequentialDesignation"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/ddc"></see>
     /// </summary>
-    let ddc = Namespaced_IRI.parse _namespace_name "ddc" |> NamespacedName
+    let ddc = _prefix "ddc"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/ddcn"></see>
     /// </summary>
-    let ddcn = Namespaced_IRI.parse _namespace_name "ddcn" |> NamespacedName
+    let ddcn = _prefix "ddcn"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/deathYear"></see>
     /// </summary>
-    let deathYear = Namespaced_IRI.parse _namespace_name "deathYear" |> NamespacedName
+    let deathYear = _prefix "deathYear"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/degreeYear"></see>
     /// </summary>
-    let degreeYear = Namespaced_IRI.parse _namespace_name "degreeYear" |> NamespacedName
+    let degreeYear = _prefix "degreeYear"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/department"></see>
     /// </summary>
-    let department = Namespaced_IRI.parse _namespace_name "department" |> NamespacedName
-
+    let department = _prefix "department"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/distributionPlace"></see>
     /// </summary>
-    let distributionPlace =
-        Namespaced_IRI.parse _namespace_name "distributionPlace" |> NamespacedName
-
+    let distributionPlace = _prefix "distributionPlace"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/distributor"></see>
     /// </summary>
-    let distributor =
-        Namespaced_IRI.parse _namespace_name "distributor" |> NamespacedName
-
+    let distributor = _prefix "distributor"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/editionOfDDC"></see>
     /// </summary>
-    let editionOfDDC =
-        Namespaced_IRI.parse _namespace_name "editionOfDDC" |> NamespacedName
-
+    let editionOfDDC = _prefix "editionOfDDC"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/editionOfKDC"></see>
     /// </summary>
-    let editionOfKDC =
-        Namespaced_IRI.parse _namespace_name "editionOfKDC" |> NamespacedName
-
+    let editionOfKDC = _prefix "editionOfKDC"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/exhibition"></see>
     /// </summary>
-    let exhibition = Namespaced_IRI.parse _namespace_name "exhibition" |> NamespacedName
+    let exhibition = _prefix "exhibition"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/fax"></see>
     /// </summary>
-    let fax = Namespaced_IRI.parse _namespace_name "fax" |> NamespacedName
-
+    let fax = _prefix "fax"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/formerPublicationFrequency"></see>
     /// </summary>
-    let formerPublicationFrequency =
-        Namespaced_IRI.parse _namespace_name "formerPublicationFrequency" |> NamespacedName
-
+    let formerPublicationFrequency = _prefix "formerPublicationFrequency"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/formerTitle"></see>
     /// </summary>
-    let formerTitle =
-        Namespaced_IRI.parse _namespace_name "formerTitle" |> NamespacedName
-
+    let formerTitle = _prefix "formerTitle"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/formerTitleComplexityNote"></see>
     /// </summary>
-    let formerTitleComplexityNote =
-        Namespaced_IRI.parse _namespace_name "formerTitleComplexityNote" |> NamespacedName
-
+    let formerTitleComplexityNote = _prefix "formerTitleComplexityNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/genre"></see>
     /// </summary>
-    let genre = Namespaced_IRI.parse _namespace_name "genre" |> NamespacedName
+    let genre = _prefix "genre"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/gpo"></see>
     /// </summary>
-    let gpo = Namespaced_IRI.parse _namespace_name "gpo" |> NamespacedName
+    let gpo = _prefix "gpo"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/gprn"></see>
     /// </summary>
-    let gprn = Namespaced_IRI.parse _namespace_name "gprn" |> NamespacedName
-
+    let gprn = _prefix "gprn"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/headingOfOriginalLanguage"></see>
     /// </summary>
-    let headingOfOriginalLanguage =
-        Namespaced_IRI.parse _namespace_name "headingOfOriginalLanguage" |> NamespacedName
-
+    let headingOfOriginalLanguage = _prefix "headingOfOriginalLanguage"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/headingOfTranslation"></see>
     /// </summary>
-    let headingOfTranslation =
-        Namespaced_IRI.parse _namespace_name "headingOfTranslation" |> NamespacedName
-
+    let headingOfTranslation = _prefix "headingOfTranslation"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/holdingInstitution"></see>
     /// </summary>
-    let holdingInstitution =
-        Namespaced_IRI.parse _namespace_name "holdingInstitution" |> NamespacedName
-
+    let holdingInstitution = _prefix "holdingInstitution"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/holdingItemNote"></see>
     /// </summary>
-    let holdingItemNote =
-        Namespaced_IRI.parse _namespace_name "holdingItemNote" |> NamespacedName
-
+    let holdingItemNote = _prefix "holdingItemNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/inputDate"></see>
     /// </summary>
-    let inputDate = Namespaced_IRI.parse _namespace_name "inputDate" |> NamespacedName
+    let inputDate = _prefix "inputDate"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/inputedBy"></see>
     /// </summary>
-    let inputedBy = Namespaced_IRI.parse _namespace_name "inputedBy" |> NamespacedName
+    let inputedBy = _prefix "inputedBy"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/isClosed"></see>
     /// </summary>
-    let isClosed = Namespaced_IRI.parse _namespace_name "isClosed" |> NamespacedName
-
+    let isClosed = _prefix "isClosed"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/isGeographicAreaOf"></see>
     /// </summary>
-    let isGeographicAreaOf =
-        Namespaced_IRI.parse _namespace_name "isGeographicAreaOf" |> NamespacedName
-
+    let isGeographicAreaOf = _prefix "isGeographicAreaOf"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/isSubjectOf"></see>
     /// </summary>
-    let isSubjectOf =
-        Namespaced_IRI.parse _namespace_name "isSubjectOf" |> NamespacedName
-
+    let isSubjectOf = _prefix "isSubjectOf"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/issuingBodyNote"></see>
     /// </summary>
-    let issuingBodyNote =
-        Namespaced_IRI.parse _namespace_name "issuingBodyNote" |> NamespacedName
-
+    let issuingBodyNote = _prefix "issuingBodyNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/itemNumber"></see>
     /// </summary>
-    let itemNumber = Namespaced_IRI.parse _namespace_name "itemNumber" |> NamespacedName
-
+    let itemNumber = _prefix "itemNumber"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/itemNumberOfDDC"></see>
     /// </summary>
-    let itemNumberOfDDC =
-        Namespaced_IRI.parse _namespace_name "itemNumberOfDDC" |> NamespacedName
-
+    let itemNumberOfDDC = _prefix "itemNumberOfDDC"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/itemNumberOfLC"></see>
     /// </summary>
-    let itemNumberOfLC =
-        Namespaced_IRI.parse _namespace_name "itemNumberOfLC" |> NamespacedName
-
+    let itemNumberOfLC = _prefix "itemNumberOfLC"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/itemNumberOfNLK"></see>
     /// </summary>
-    let itemNumberOfNLK =
-        Namespaced_IRI.parse _namespace_name "itemNumberOfNLK" |> NamespacedName
-
+    let itemNumberOfNLK = _prefix "itemNumberOfNLK"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/itemNumberOfOtherNumber"></see>
     /// </summary>
-    let itemNumberOfOtherNumber =
-        Namespaced_IRI.parse _namespace_name "itemNumberOfOtherNumber" |> NamespacedName
-
+    let itemNumberOfOtherNumber = _prefix "itemNumberOfOtherNumber"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/itermNumberOfKDC"></see>
     /// </summary>
-    let itermNumberOfKDC =
-        Namespaced_IRI.parse _namespace_name "itermNumberOfKDC" |> NamespacedName
-
+    let itermNumberOfKDC = _prefix "itermNumberOfKDC"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/kdc"></see>
     /// </summary>
-    let kdc = Namespaced_IRI.parse _namespace_name "kdc" |> NamespacedName
+    let kdc = _prefix "kdc"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/kdcn"></see>
     /// </summary>
-    let kdcn = Namespaced_IRI.parse _namespace_name "kdcn" |> NamespacedName
+    let kdcn = _prefix "kdcn"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/keyTitle"></see>
     /// </summary>
-    let keyTitle = Namespaced_IRI.parse _namespace_name "keyTitle" |> NamespacedName
+    let keyTitle = _prefix "keyTitle"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/keyword"></see>
     /// </summary>
-    let keyword = Namespaced_IRI.parse _namespace_name "keyword" |> NamespacedName
-
+    let keyword = _prefix "keyword"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/languageNote"></see>
     /// </summary>
-    let languageNote =
-        Namespaced_IRI.parse _namespace_name "languageNote" |> NamespacedName
-
+    let languageNote = _prefix "languageNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/libraryType"></see>
     /// </summary>
-    let libraryType =
-        Namespaced_IRI.parse _namespace_name "libraryType" |> NamespacedName
-
+    let libraryType = _prefix "libraryType"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/linkingEntryComplexityNote"></see>
     /// </summary>
-    let linkingEntryComplexityNote =
-        Namespaced_IRI.parse _namespace_name "linkingEntryComplexityNote" |> NamespacedName
-
+    let linkingEntryComplexityNote = _prefix "linkingEntryComplexityNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/localHolding"></see>
     /// </summary>
-    let localHolding =
-        Namespaced_IRI.parse _namespace_name "localHolding" |> NamespacedName
-
+    let localHolding = _prefix "localHolding"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/locationNote"></see>
     /// </summary>
-    let locationNote =
-        Namespaced_IRI.parse _namespace_name "locationNote" |> NamespacedName
-
+    let locationNote = _prefix "locationNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/mainEntryHeading"></see>
     /// </summary>
-    let mainEntryHeading =
-        Namespaced_IRI.parse _namespace_name "mainEntryHeading" |> NamespacedName
-
+    let mainEntryHeading = _prefix "mainEntryHeading"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/manufacturer"></see>
     /// </summary>
-    let manufacturer =
-        Namespaced_IRI.parse _namespace_name "manufacturer" |> NamespacedName
-
+    let manufacturer = _prefix "manufacturer"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/manufacturingPlace"></see>
     /// </summary>
-    let manufacturingPlace =
-        Namespaced_IRI.parse _namespace_name "manufacturingPlace" |> NamespacedName
-
+    let manufacturingPlace = _prefix "manufacturingPlace"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/medium"></see>
     /// </summary>
-    let medium = Namespaced_IRI.parse _namespace_name "medium" |> NamespacedName
-
+    let medium = _prefix "medium"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/meetingInformation"></see>
     /// </summary>
-    let meetingInformation =
-        Namespaced_IRI.parse _namespace_name "meetingInformation" |> NamespacedName
-
+    let meetingInformation = _prefix "meetingInformation"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/modificationDate"></see>
     /// </summary>
-    let modificationDate =
-        Namespaced_IRI.parse _namespace_name "modificationDate" |> NamespacedName
-
+    let modificationDate = _prefix "modificationDate"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/modifiedBy"></see>
     /// </summary>
-    let modifiedBy = Namespaced_IRI.parse _namespace_name "modifiedBy" |> NamespacedName
-
+    let modifiedBy = _prefix "modifiedBy"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/municipalLevel"></see>
     /// </summary>
-    let municipalLevel =
-        Namespaced_IRI.parse _namespace_name "municipalLevel" |> NamespacedName
-
+    let municipalLevel = _prefix "municipalLevel"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/numberMark"></see>
     /// </summary>
-    let numberMark = Namespaced_IRI.parse _namespace_name "numberMark" |> NamespacedName
-
+    let numberMark = _prefix "numberMark"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/numberingPeculiaritiesNote"></see>
     /// </summary>
-    let numberingPeculiaritiesNote =
-        Namespaced_IRI.parse _namespace_name "numberingPeculiaritiesNote" |> NamespacedName
-
+    let numberingPeculiaritiesNote = _prefix "numberingPeculiaritiesNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/openingYear"></see>
     /// </summary>
-    let openingYear =
-        Namespaced_IRI.parse _namespace_name "openingYear" |> NamespacedName
-
+    let openingYear = _prefix "openingYear"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/originalVersionNote"></see>
     /// </summary>
-    let originalVersionNote =
-        Namespaced_IRI.parse _namespace_name "originalVersionNote" |> NamespacedName
-
+    let originalVersionNote = _prefix "originalVersionNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/otherNumber"></see>
     /// </summary>
-    let otherNumber =
-        Namespaced_IRI.parse _namespace_name "otherNumber" |> NamespacedName
-
+    let otherNumber = _prefix "otherNumber"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/physicalFormAvailableNote"></see>
     /// </summary>
-    let physicalFormAvailableNote =
-        Namespaced_IRI.parse _namespace_name "physicalFormAvailableNote" |> NamespacedName
-
+    let physicalFormAvailableNote = _prefix "physicalFormAvailableNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/producer"></see>
     /// </summary>
-    let producer = Namespaced_IRI.parse _namespace_name "producer" |> NamespacedName
-
+    let producer = _prefix "producer"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/productionPlace"></see>
     /// </summary>
-    let productionPlace =
-        Namespaced_IRI.parse _namespace_name "productionPlace" |> NamespacedName
-
+    let productionPlace = _prefix "productionPlace"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/projection"></see>
     /// </summary>
-    let projection = Namespaced_IRI.parse _namespace_name "projection" |> NamespacedName
-
+    let projection = _prefix "projection"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/provincialLevel"></see>
     /// </summary>
-    let provincialLevel =
-        Namespaced_IRI.parse _namespace_name "provincialLevel" |> NamespacedName
-
+    let provincialLevel = _prefix "provincialLevel"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/publicationPlace"></see>
     /// </summary>
-    let publicationPlace =
-        Namespaced_IRI.parse _namespace_name "publicationPlace" |> NamespacedName
-
+    let publicationPlace = _prefix "publicationPlace"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/publish"></see>
     /// </summary>
-    let publish = Namespaced_IRI.parse _namespace_name "publish" |> NamespacedName
-
+    let publish = _prefix "publish"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/publishedIn"></see>
     /// </summary>
-    let publishedIn =
-        Namespaced_IRI.parse _namespace_name "publishedIn" |> NamespacedName
-
+    let publishedIn = _prefix "publishedIn"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/rank"></see>
     /// </summary>
-    let rank = Namespaced_IRI.parse _namespace_name "rank" |> NamespacedName
-
+    let rank = _prefix "rank"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/relatedParts"></see>
     /// </summary>
-    let relatedParts =
-        Namespaced_IRI.parse _namespace_name "relatedParts" |> NamespacedName
-
+    let relatedParts = _prefix "relatedParts"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/relationshipInformation"></see>
     /// </summary>
-    let relationshipInformation =
-        Namespaced_IRI.parse _namespace_name "relationshipInformation" |> NamespacedName
-
+    let relationshipInformation = _prefix "relationshipInformation"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/remainderOfTitle"></see>
     /// </summary>
-    let remainderOfTitle =
-        Namespaced_IRI.parse _namespace_name "remainderOfTitle" |> NamespacedName
-
+    let remainderOfTitle = _prefix "remainderOfTitle"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/reproductionDate"></see>
     /// </summary>
-    let reproductionDate =
-        Namespaced_IRI.parse _namespace_name "reproductionDate" |> NamespacedName
-
+    let reproductionDate = _prefix "reproductionDate"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/reproductionNote"></see>
     /// </summary>
-    let reproductionNote =
-        Namespaced_IRI.parse _namespace_name "reproductionNote" |> NamespacedName
-
+    let reproductionNote = _prefix "reproductionNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/reproductionInstitution"></see>
     /// </summary>
-    let reproductionInstitution =
-        Namespaced_IRI.parse _namespace_name "reproductionInstitution" |> NamespacedName
-
+    let reproductionInstitution = _prefix "reproductionInstitution"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/reproductionPlace"></see>
     /// </summary>
-    let reproductionPlace =
-        Namespaced_IRI.parse _namespace_name "reproductionPlace" |> NamespacedName
-
+    let reproductionPlace = _prefix "reproductionPlace"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/restriction"></see>
     /// </summary>
-    let restriction =
-        Namespaced_IRI.parse _namespace_name "restriction" |> NamespacedName
-
+    let restriction = _prefix "restriction"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/scale"></see>
     /// </summary>
-    let scale = Namespaced_IRI.parse _namespace_name "scale" |> NamespacedName
-
+    let scale = _prefix "scale"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/sourceOfInformation"></see>
     /// </summary>
-    let sourceOfInformation =
-        Namespaced_IRI.parse _namespace_name "sourceOfInformation" |> NamespacedName
-
+    let sourceOfInformation = _prefix "sourceOfInformation"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/sourceOfOtherNumber"></see>
     /// </summary>
-    let sourceOfOtherNumber =
-        Namespaced_IRI.parse _namespace_name "sourceOfOtherNumber" |> NamespacedName
-
+    let sourceOfOtherNumber = _prefix "sourceOfOtherNumber"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/strn"></see>
     /// </summary>
-    let strn = Namespaced_IRI.parse _namespace_name "strn" |> NamespacedName
-
+    let strn = _prefix "strn"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/subseriesEntryHeading"></see>
     /// </summary>
-    let subseriesEntryHeading =
-        Namespaced_IRI.parse _namespace_name "subseriesEntryHeading" |> NamespacedName
-
+    let subseriesEntryHeading = _prefix "subseriesEntryHeading"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/subtitle"></see>
     /// </summary>
-    let subtitle = Namespaced_IRI.parse _namespace_name "subtitle" |> NamespacedName
-
+    let subtitle = _prefix "subtitle"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/summerOpenTime"></see>
     /// </summary>
-    let summerOpenTime =
-        Namespaced_IRI.parse _namespace_name "summerOpenTime" |> NamespacedName
-
+    let summerOpenTime = _prefix "summerOpenTime"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/supplementNote"></see>
     /// </summary>
-    let supplementNote =
-        Namespaced_IRI.parse _namespace_name "supplementNote" |> NamespacedName
-
+    let supplementNote = _prefix "supplementNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfAdditionalPhysicalForm"></see>
     /// </summary>
-    let titleOfAdditionalPhysicalForm =
-        Namespaced_IRI.parse _namespace_name "titleOfAdditionalPhysicalForm" |> NamespacedName
-
+    let titleOfAdditionalPhysicalForm = _prefix "titleOfAdditionalPhysicalForm"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfConstituentUnit"></see>
     /// </summary>
-    let titleOfConstituentUnit =
-        Namespaced_IRI.parse _namespace_name "titleOfConstituentUnit" |> NamespacedName
-
+    let titleOfConstituentUnit = _prefix "titleOfConstituentUnit"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfHostItem"></see>
     /// </summary>
-    let titleOfHostItem =
-        Namespaced_IRI.parse _namespace_name "titleOfHostItem" |> NamespacedName
-
+    let titleOfHostItem = _prefix "titleOfHostItem"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfMainSeries"></see>
     /// </summary>
-    let titleOfMainSeries =
-        Namespaced_IRI.parse _namespace_name "titleOfMainSeries" |> NamespacedName
-
+    let titleOfMainSeries = _prefix "titleOfMainSeries"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfOriginalLanguage"></see>
     /// </summary>
-    let titleOfOriginalLanguage =
-        Namespaced_IRI.parse _namespace_name "titleOfOriginalLanguage" |> NamespacedName
-
+    let titleOfOriginalLanguage = _prefix "titleOfOriginalLanguage"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfOtherEdition"></see>
     /// </summary>
-    let titleOfOtherEdition =
-        Namespaced_IRI.parse _namespace_name "titleOfOtherEdition" |> NamespacedName
-
+    let titleOfOtherEdition = _prefix "titleOfOtherEdition"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfPreceding"></see>
     /// </summary>
-    let titleOfPreceding =
-        Namespaced_IRI.parse _namespace_name "titleOfPreceding" |> NamespacedName
-
+    let titleOfPreceding = _prefix "titleOfPreceding"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfSeries"></see>
     /// </summary>
-    let titleOfSeries =
-        Namespaced_IRI.parse _namespace_name "titleOfSeries" |> NamespacedName
-
+    let titleOfSeries = _prefix "titleOfSeries"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfSubSeries"></see>
     /// </summary>
-    let titleOfSubSeries =
-        Namespaced_IRI.parse _namespace_name "titleOfSubSeries" |> NamespacedName
-
+    let titleOfSubSeries = _prefix "titleOfSubSeries"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfSucceeding"></see>
     /// </summary>
-    let titleOfSucceeding =
-        Namespaced_IRI.parse _namespace_name "titleOfSucceeding" |> NamespacedName
-
+    let titleOfSucceeding = _prefix "titleOfSucceeding"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfSupplement"></see>
     /// </summary>
-    let titleOfSupplement =
-        Namespaced_IRI.parse _namespace_name "titleOfSupplement" |> NamespacedName
-
+    let titleOfSupplement = _prefix "titleOfSupplement"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfSupplementParent"></see>
     /// </summary>
-    let titleOfSupplementParent =
-        Namespaced_IRI.parse _namespace_name "titleOfSupplementParent" |> NamespacedName
-
+    let titleOfSupplementParent = _prefix "titleOfSupplementParent"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/titleOfTranslation"></see>
     /// </summary>
-    let titleOfTranslation =
-        Namespaced_IRI.parse _namespace_name "titleOfTranslation" |> NamespacedName
-
+    let titleOfTranslation = _prefix "titleOfTranslation"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/typeOfContinuousData"></see>
     /// </summary>
-    let typeOfContinuousData =
-        Namespaced_IRI.parse _namespace_name "typeOfContinuousData" |> NamespacedName
-
+    let typeOfContinuousData = _prefix "typeOfContinuousData"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/typeOfData"></see>
     /// </summary>
-    let typeOfData = Namespaced_IRI.parse _namespace_name "typeOfData" |> NamespacedName
-
+    let typeOfData = _prefix "typeOfData"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/typeOfPublicationFrequency"></see>
     /// </summary>
-    let typeOfPublicationFrequency =
-        Namespaced_IRI.parse _namespace_name "typeOfPublicationFrequency" |> NamespacedName
-
+    let typeOfPublicationFrequency = _prefix "typeOfPublicationFrequency"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/typeOfPublicationStatus"></see>
     /// </summary>
-    let typeOfPublicationStatus =
-        Namespaced_IRI.parse _namespace_name "typeOfPublicationStatus" |> NamespacedName
-
+    let typeOfPublicationStatus = _prefix "typeOfPublicationStatus"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/typeOfResource"></see>
     /// </summary>
-    let typeOfResource =
-        Namespaced_IRI.parse _namespace_name "typeOfResource" |> NamespacedName
-
+    let typeOfResource = _prefix "typeOfResource"
     /// <summary>
     /// 한국형 URN 식별 체계
     /// <see href="http://lod.nl.go.kr/ontology/uci"></see></summary>
-    let uci = Namespaced_IRI.parse _namespace_name "uci" |> NamespacedName
-
+    let uci = _prefix "uci"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/uniformTitleOfSeries"></see>
     /// </summary>
-    let uniformTitleOfSeries =
-        Namespaced_IRI.parse _namespace_name "uniformTitleOfSeries" |> NamespacedName
-
+    let uniformTitleOfSeries = _prefix "uniformTitleOfSeries"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/useAndReproductionNote"></see>
     /// </summary>
-    let useAndReproductionNote =
-        Namespaced_IRI.parse _namespace_name "useAndReproductionNote" |> NamespacedName
-
+    let useAndReproductionNote = _prefix "useAndReproductionNote"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/volumeOfNLK"></see>
     /// </summary>
-    let volumeOfNLK =
-        Namespaced_IRI.parse _namespace_name "volumeOfNLK" |> NamespacedName
-
+    let volumeOfNLK = _prefix "volumeOfNLK"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/volumeOfSeries"></see>
     /// </summary>
-    let volumeOfSeries =
-        Namespaced_IRI.parse _namespace_name "volumeOfSeries" |> NamespacedName
-
+    let volumeOfSeries = _prefix "volumeOfSeries"
     /// <summary>
     ///   <see href="http://lod.nl.go.kr/ontology/winterOpenTime"></see>
     /// </summary>
-    let winterOpenTime =
-        Namespaced_IRI.parse _namespace_name "winterOpenTime" |> NamespacedName
+    let winterOpenTime = _prefix "winterOpenTime"

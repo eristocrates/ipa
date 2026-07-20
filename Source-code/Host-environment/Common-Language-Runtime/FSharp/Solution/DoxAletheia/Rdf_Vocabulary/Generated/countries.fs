@@ -1,1016 +1,1010 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.countries.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module countries =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/countries#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ad"></see>
     /// </summary>
-    let ad = Namespaced_IRI.parse _namespace_name "ad" |> NamespacedName
-
+    let ad = _prefix "ad"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2"></see>
     /// </summary>
-    let ``iso3166-1-alpha-2`` =
-        Namespaced_IRI.parse _namespace_name "iso3166-1-alpha-2" |> NamespacedName
-
+    let ``iso3166-1-alpha-2`` = _prefix "iso3166-1-alpha-2"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3"></see>
     /// </summary>
-    let ``iso3166-1-alpha-3`` =
-        Namespaced_IRI.parse _namespace_name "iso3166-1-alpha-3" |> NamespacedName
-
+    let ``iso3166-1-alpha-3`` = _prefix "iso3166-1-alpha-3"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ae"></see>
     /// </summary>
-    let ae = Namespaced_IRI.parse _namespace_name "ae" |> NamespacedName
+    let ae = _prefix "ae"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#af"></see>
     /// </summary>
-    let af = Namespaced_IRI.parse _namespace_name "af" |> NamespacedName
+    let af = _prefix "af"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ag"></see>
     /// </summary>
-    let ag = Namespaced_IRI.parse _namespace_name "ag" |> NamespacedName
+    let ag = _prefix "ag"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ai"></see>
     /// </summary>
-    let ai = Namespaced_IRI.parse _namespace_name "ai" |> NamespacedName
+    let ai = _prefix "ai"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#al"></see>
     /// </summary>
-    let al = Namespaced_IRI.parse _namespace_name "al" |> NamespacedName
+    let al = _prefix "al"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#am"></see>
     /// </summary>
-    let am = Namespaced_IRI.parse _namespace_name "am" |> NamespacedName
+    let am = _prefix "am"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#an"></see>
     /// </summary>
-    let an = Namespaced_IRI.parse _namespace_name "an" |> NamespacedName
+    let an = _prefix "an"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ao"></see>
     /// </summary>
-    let ao = Namespaced_IRI.parse _namespace_name "ao" |> NamespacedName
+    let ao = _prefix "ao"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#aq"></see>
     /// </summary>
-    let aq = Namespaced_IRI.parse _namespace_name "aq" |> NamespacedName
+    let aq = _prefix "aq"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ar"></see>
     /// </summary>
-    let ar = Namespaced_IRI.parse _namespace_name "ar" |> NamespacedName
+    let ar = _prefix "ar"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#as"></see>
     /// </summary>
-    let as_ = Namespaced_IRI.parse _namespace_name "as" |> NamespacedName
+    let as_ = _prefix "as"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#at"></see>
     /// </summary>
-    let at = Namespaced_IRI.parse _namespace_name "at" |> NamespacedName
+    let at = _prefix "at"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#au"></see>
     /// </summary>
-    let au = Namespaced_IRI.parse _namespace_name "au" |> NamespacedName
+    let au = _prefix "au"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#aw"></see>
     /// </summary>
-    let aw = Namespaced_IRI.parse _namespace_name "aw" |> NamespacedName
+    let aw = _prefix "aw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ax"></see>
     /// </summary>
-    let ax = Namespaced_IRI.parse _namespace_name "ax" |> NamespacedName
+    let ax = _prefix "ax"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#az"></see>
     /// </summary>
-    let az = Namespaced_IRI.parse _namespace_name "az" |> NamespacedName
+    let az = _prefix "az"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ba"></see>
     /// </summary>
-    let ba = Namespaced_IRI.parse _namespace_name "ba" |> NamespacedName
+    let ba = _prefix "ba"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bb"></see>
     /// </summary>
-    let bb = Namespaced_IRI.parse _namespace_name "bb" |> NamespacedName
+    let bb = _prefix "bb"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bd"></see>
     /// </summary>
-    let bd = Namespaced_IRI.parse _namespace_name "bd" |> NamespacedName
+    let bd = _prefix "bd"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#be"></see>
     /// </summary>
-    let be = Namespaced_IRI.parse _namespace_name "be" |> NamespacedName
+    let be = _prefix "be"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bf"></see>
     /// </summary>
-    let bf = Namespaced_IRI.parse _namespace_name "bf" |> NamespacedName
+    let bf = _prefix "bf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bg"></see>
     /// </summary>
-    let bg = Namespaced_IRI.parse _namespace_name "bg" |> NamespacedName
+    let bg = _prefix "bg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bh"></see>
     /// </summary>
-    let bh = Namespaced_IRI.parse _namespace_name "bh" |> NamespacedName
+    let bh = _prefix "bh"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bi"></see>
     /// </summary>
-    let bi = Namespaced_IRI.parse _namespace_name "bi" |> NamespacedName
+    let bi = _prefix "bi"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bj"></see>
     /// </summary>
-    let bj = Namespaced_IRI.parse _namespace_name "bj" |> NamespacedName
+    let bj = _prefix "bj"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bl"></see>
     /// </summary>
-    let bl = Namespaced_IRI.parse _namespace_name "bl" |> NamespacedName
+    let bl = _prefix "bl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bm"></see>
     /// </summary>
-    let bm = Namespaced_IRI.parse _namespace_name "bm" |> NamespacedName
+    let bm = _prefix "bm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bn"></see>
     /// </summary>
-    let bn = Namespaced_IRI.parse _namespace_name "bn" |> NamespacedName
+    let bn = _prefix "bn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bo"></see>
     /// </summary>
-    let bo = Namespaced_IRI.parse _namespace_name "bo" |> NamespacedName
+    let bo = _prefix "bo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#br"></see>
     /// </summary>
-    let br = Namespaced_IRI.parse _namespace_name "br" |> NamespacedName
+    let br = _prefix "br"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bs"></see>
     /// </summary>
-    let bs = Namespaced_IRI.parse _namespace_name "bs" |> NamespacedName
+    let bs = _prefix "bs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bt"></see>
     /// </summary>
-    let bt = Namespaced_IRI.parse _namespace_name "bt" |> NamespacedName
+    let bt = _prefix "bt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bv"></see>
     /// </summary>
-    let bv = Namespaced_IRI.parse _namespace_name "bv" |> NamespacedName
+    let bv = _prefix "bv"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bw"></see>
     /// </summary>
-    let bw = Namespaced_IRI.parse _namespace_name "bw" |> NamespacedName
+    let bw = _prefix "bw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#by"></see>
     /// </summary>
-    let by = Namespaced_IRI.parse _namespace_name "by" |> NamespacedName
+    let by = _prefix "by"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#bz"></see>
     /// </summary>
-    let bz = Namespaced_IRI.parse _namespace_name "bz" |> NamespacedName
+    let bz = _prefix "bz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ca"></see>
     /// </summary>
-    let ca = Namespaced_IRI.parse _namespace_name "ca" |> NamespacedName
+    let ca = _prefix "ca"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cc"></see>
     /// </summary>
-    let cc = Namespaced_IRI.parse _namespace_name "cc" |> NamespacedName
+    let cc = _prefix "cc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cd"></see>
     /// </summary>
-    let cd = Namespaced_IRI.parse _namespace_name "cd" |> NamespacedName
+    let cd = _prefix "cd"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cf"></see>
     /// </summary>
-    let cf = Namespaced_IRI.parse _namespace_name "cf" |> NamespacedName
+    let cf = _prefix "cf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cg"></see>
     /// </summary>
-    let cg = Namespaced_IRI.parse _namespace_name "cg" |> NamespacedName
+    let cg = _prefix "cg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ch"></see>
     /// </summary>
-    let ch = Namespaced_IRI.parse _namespace_name "ch" |> NamespacedName
+    let ch = _prefix "ch"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ci"></see>
     /// </summary>
-    let ci = Namespaced_IRI.parse _namespace_name "ci" |> NamespacedName
+    let ci = _prefix "ci"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ck"></see>
     /// </summary>
-    let ck = Namespaced_IRI.parse _namespace_name "ck" |> NamespacedName
+    let ck = _prefix "ck"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cl"></see>
     /// </summary>
-    let cl = Namespaced_IRI.parse _namespace_name "cl" |> NamespacedName
+    let cl = _prefix "cl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cm"></see>
     /// </summary>
-    let cm = Namespaced_IRI.parse _namespace_name "cm" |> NamespacedName
+    let cm = _prefix "cm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cn"></see>
     /// </summary>
-    let cn = Namespaced_IRI.parse _namespace_name "cn" |> NamespacedName
+    let cn = _prefix "cn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#co"></see>
     /// </summary>
-    let co = Namespaced_IRI.parse _namespace_name "co" |> NamespacedName
+    let co = _prefix "co"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cr"></see>
     /// </summary>
-    let cr = Namespaced_IRI.parse _namespace_name "cr" |> NamespacedName
+    let cr = _prefix "cr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cu"></see>
     /// </summary>
-    let cu = Namespaced_IRI.parse _namespace_name "cu" |> NamespacedName
+    let cu = _prefix "cu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cv"></see>
     /// </summary>
-    let cv = Namespaced_IRI.parse _namespace_name "cv" |> NamespacedName
+    let cv = _prefix "cv"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cx"></see>
     /// </summary>
-    let cx = Namespaced_IRI.parse _namespace_name "cx" |> NamespacedName
+    let cx = _prefix "cx"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cy"></see>
     /// </summary>
-    let cy = Namespaced_IRI.parse _namespace_name "cy" |> NamespacedName
+    let cy = _prefix "cy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#cz"></see>
     /// </summary>
-    let cz = Namespaced_IRI.parse _namespace_name "cz" |> NamespacedName
+    let cz = _prefix "cz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#de"></see>
     /// </summary>
-    let de = Namespaced_IRI.parse _namespace_name "de" |> NamespacedName
+    let de = _prefix "de"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dj"></see>
     /// </summary>
-    let dj = Namespaced_IRI.parse _namespace_name "dj" |> NamespacedName
+    let dj = _prefix "dj"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dk"></see>
     /// </summary>
-    let dk = Namespaced_IRI.parse _namespace_name "dk" |> NamespacedName
+    let dk = _prefix "dk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dm"></see>
     /// </summary>
-    let dm = Namespaced_IRI.parse _namespace_name "dm" |> NamespacedName
+    let dm = _prefix "dm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#do"></see>
     /// </summary>
-    let do_ = Namespaced_IRI.parse _namespace_name "do" |> NamespacedName
+    let do_ = _prefix "do"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#dz"></see>
     /// </summary>
-    let dz = Namespaced_IRI.parse _namespace_name "dz" |> NamespacedName
+    let dz = _prefix "dz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ec"></see>
     /// </summary>
-    let ec = Namespaced_IRI.parse _namespace_name "ec" |> NamespacedName
+    let ec = _prefix "ec"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ee"></see>
     /// </summary>
-    let ee = Namespaced_IRI.parse _namespace_name "ee" |> NamespacedName
+    let ee = _prefix "ee"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#eg"></see>
     /// </summary>
-    let eg = Namespaced_IRI.parse _namespace_name "eg" |> NamespacedName
+    let eg = _prefix "eg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#eh"></see>
     /// </summary>
-    let eh = Namespaced_IRI.parse _namespace_name "eh" |> NamespacedName
+    let eh = _prefix "eh"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#er"></see>
     /// </summary>
-    let er = Namespaced_IRI.parse _namespace_name "er" |> NamespacedName
+    let er = _prefix "er"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#es"></see>
     /// </summary>
-    let es = Namespaced_IRI.parse _namespace_name "es" |> NamespacedName
+    let es = _prefix "es"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#et"></see>
     /// </summary>
-    let et = Namespaced_IRI.parse _namespace_name "et" |> NamespacedName
+    let et = _prefix "et"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fi"></see>
     /// </summary>
-    let fi = Namespaced_IRI.parse _namespace_name "fi" |> NamespacedName
+    let fi = _prefix "fi"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fj"></see>
     /// </summary>
-    let fj = Namespaced_IRI.parse _namespace_name "fj" |> NamespacedName
+    let fj = _prefix "fj"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fk"></see>
     /// </summary>
-    let fk = Namespaced_IRI.parse _namespace_name "fk" |> NamespacedName
+    let fk = _prefix "fk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fm"></see>
     /// </summary>
-    let fm = Namespaced_IRI.parse _namespace_name "fm" |> NamespacedName
+    let fm = _prefix "fm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fo"></see>
     /// </summary>
-    let fo = Namespaced_IRI.parse _namespace_name "fo" |> NamespacedName
+    let fo = _prefix "fo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#fr"></see>
     /// </summary>
-    let fr = Namespaced_IRI.parse _namespace_name "fr" |> NamespacedName
+    let fr = _prefix "fr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ga"></see>
     /// </summary>
-    let ga = Namespaced_IRI.parse _namespace_name "ga" |> NamespacedName
+    let ga = _prefix "ga"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gb"></see>
     /// </summary>
-    let gb = Namespaced_IRI.parse _namespace_name "gb" |> NamespacedName
+    let gb = _prefix "gb"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gd"></see>
     /// </summary>
-    let gd = Namespaced_IRI.parse _namespace_name "gd" |> NamespacedName
+    let gd = _prefix "gd"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ge"></see>
     /// </summary>
-    let ge = Namespaced_IRI.parse _namespace_name "ge" |> NamespacedName
+    let ge = _prefix "ge"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gf"></see>
     /// </summary>
-    let gf = Namespaced_IRI.parse _namespace_name "gf" |> NamespacedName
+    let gf = _prefix "gf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gg"></see>
     /// </summary>
-    let gg = Namespaced_IRI.parse _namespace_name "gg" |> NamespacedName
+    let gg = _prefix "gg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gh"></see>
     /// </summary>
-    let gh = Namespaced_IRI.parse _namespace_name "gh" |> NamespacedName
+    let gh = _prefix "gh"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gi"></see>
     /// </summary>
-    let gi = Namespaced_IRI.parse _namespace_name "gi" |> NamespacedName
+    let gi = _prefix "gi"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gl"></see>
     /// </summary>
-    let gl = Namespaced_IRI.parse _namespace_name "gl" |> NamespacedName
+    let gl = _prefix "gl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gm"></see>
     /// </summary>
-    let gm = Namespaced_IRI.parse _namespace_name "gm" |> NamespacedName
+    let gm = _prefix "gm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gn"></see>
     /// </summary>
-    let gn = Namespaced_IRI.parse _namespace_name "gn" |> NamespacedName
+    let gn = _prefix "gn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gp"></see>
     /// </summary>
-    let gp = Namespaced_IRI.parse _namespace_name "gp" |> NamespacedName
+    let gp = _prefix "gp"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gq"></see>
     /// </summary>
-    let gq = Namespaced_IRI.parse _namespace_name "gq" |> NamespacedName
+    let gq = _prefix "gq"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gr"></see>
     /// </summary>
-    let gr = Namespaced_IRI.parse _namespace_name "gr" |> NamespacedName
+    let gr = _prefix "gr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gs"></see>
     /// </summary>
-    let gs = Namespaced_IRI.parse _namespace_name "gs" |> NamespacedName
+    let gs = _prefix "gs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gt"></see>
     /// </summary>
-    let gt = Namespaced_IRI.parse _namespace_name "gt" |> NamespacedName
+    let gt = _prefix "gt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gu"></see>
     /// </summary>
-    let gu = Namespaced_IRI.parse _namespace_name "gu" |> NamespacedName
+    let gu = _prefix "gu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gw"></see>
     /// </summary>
-    let gw = Namespaced_IRI.parse _namespace_name "gw" |> NamespacedName
+    let gw = _prefix "gw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#gy"></see>
     /// </summary>
-    let gy = Namespaced_IRI.parse _namespace_name "gy" |> NamespacedName
+    let gy = _prefix "gy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hk"></see>
     /// </summary>
-    let hk = Namespaced_IRI.parse _namespace_name "hk" |> NamespacedName
+    let hk = _prefix "hk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hm"></see>
     /// </summary>
-    let hm = Namespaced_IRI.parse _namespace_name "hm" |> NamespacedName
+    let hm = _prefix "hm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hn"></see>
     /// </summary>
-    let hn = Namespaced_IRI.parse _namespace_name "hn" |> NamespacedName
+    let hn = _prefix "hn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hr"></see>
     /// </summary>
-    let hr = Namespaced_IRI.parse _namespace_name "hr" |> NamespacedName
+    let hr = _prefix "hr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ht"></see>
     /// </summary>
-    let ht = Namespaced_IRI.parse _namespace_name "ht" |> NamespacedName
+    let ht = _prefix "ht"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#hu"></see>
     /// </summary>
-    let hu = Namespaced_IRI.parse _namespace_name "hu" |> NamespacedName
+    let hu = _prefix "hu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ie"></see>
     /// </summary>
-    let ie = Namespaced_IRI.parse _namespace_name "ie" |> NamespacedName
+    let ie = _prefix "ie"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#il"></see>
     /// </summary>
-    let il = Namespaced_IRI.parse _namespace_name "il" |> NamespacedName
+    let il = _prefix "il"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#im"></see>
     /// </summary>
-    let im = Namespaced_IRI.parse _namespace_name "im" |> NamespacedName
+    let im = _prefix "im"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#in"></see>
     /// </summary>
-    let in_ = Namespaced_IRI.parse _namespace_name "in" |> NamespacedName
+    let in_ = _prefix "in"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#io"></see>
     /// </summary>
-    let io = Namespaced_IRI.parse _namespace_name "io" |> NamespacedName
+    let io = _prefix "io"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iq"></see>
     /// </summary>
-    let iq = Namespaced_IRI.parse _namespace_name "iq" |> NamespacedName
+    let iq = _prefix "iq"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ir"></see>
     /// </summary>
-    let ir = Namespaced_IRI.parse _namespace_name "ir" |> NamespacedName
+    let ir = _prefix "ir"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#is"></see>
     /// </summary>
-    let is = Namespaced_IRI.parse _namespace_name "is" |> NamespacedName
-
+    let is = _prefix "is"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-2DT"></see>
     /// </summary>
-    let ``iso3166-1-alpha-2DT`` =
-        Namespaced_IRI.parse _namespace_name "iso3166-1-alpha-2DT" |> NamespacedName
-
+    let ``iso3166-1-alpha-2DT`` = _prefix "iso3166-1-alpha-2DT"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#iso3166-1-alpha-3DT"></see>
     /// </summary>
-    let ``iso3166-1-alpha-3DT`` =
-        Namespaced_IRI.parse _namespace_name "iso3166-1-alpha-3DT" |> NamespacedName
-
+    let ``iso3166-1-alpha-3DT`` = _prefix "iso3166-1-alpha-3DT"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#it"></see>
     /// </summary>
-    let it = Namespaced_IRI.parse _namespace_name "it" |> NamespacedName
+    let it = _prefix "it"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#je"></see>
     /// </summary>
-    let je = Namespaced_IRI.parse _namespace_name "je" |> NamespacedName
+    let je = _prefix "je"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#jm"></see>
     /// </summary>
-    let jm = Namespaced_IRI.parse _namespace_name "jm" |> NamespacedName
+    let jm = _prefix "jm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#jo"></see>
     /// </summary>
-    let jo = Namespaced_IRI.parse _namespace_name "jo" |> NamespacedName
+    let jo = _prefix "jo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#jp"></see>
     /// </summary>
-    let jp = Namespaced_IRI.parse _namespace_name "jp" |> NamespacedName
+    let jp = _prefix "jp"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ke"></see>
     /// </summary>
-    let ke = Namespaced_IRI.parse _namespace_name "ke" |> NamespacedName
+    let ke = _prefix "ke"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kg"></see>
     /// </summary>
-    let kg = Namespaced_IRI.parse _namespace_name "kg" |> NamespacedName
+    let kg = _prefix "kg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kh"></see>
     /// </summary>
-    let kh = Namespaced_IRI.parse _namespace_name "kh" |> NamespacedName
+    let kh = _prefix "kh"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ki"></see>
     /// </summary>
-    let ki = Namespaced_IRI.parse _namespace_name "ki" |> NamespacedName
+    let ki = _prefix "ki"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#km"></see>
     /// </summary>
-    let km = Namespaced_IRI.parse _namespace_name "km" |> NamespacedName
+    let km = _prefix "km"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kn"></see>
     /// </summary>
-    let kn = Namespaced_IRI.parse _namespace_name "kn" |> NamespacedName
+    let kn = _prefix "kn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kp"></see>
     /// </summary>
-    let kp = Namespaced_IRI.parse _namespace_name "kp" |> NamespacedName
+    let kp = _prefix "kp"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kr"></see>
     /// </summary>
-    let kr = Namespaced_IRI.parse _namespace_name "kr" |> NamespacedName
+    let kr = _prefix "kr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kw"></see>
     /// </summary>
-    let kw = Namespaced_IRI.parse _namespace_name "kw" |> NamespacedName
+    let kw = _prefix "kw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ky"></see>
     /// </summary>
-    let ky = Namespaced_IRI.parse _namespace_name "ky" |> NamespacedName
+    let ky = _prefix "ky"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#kz"></see>
     /// </summary>
-    let kz = Namespaced_IRI.parse _namespace_name "kz" |> NamespacedName
+    let kz = _prefix "kz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#la"></see>
     /// </summary>
-    let la = Namespaced_IRI.parse _namespace_name "la" |> NamespacedName
+    let la = _prefix "la"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lb"></see>
     /// </summary>
-    let lb = Namespaced_IRI.parse _namespace_name "lb" |> NamespacedName
+    let lb = _prefix "lb"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lc"></see>
     /// </summary>
-    let lc = Namespaced_IRI.parse _namespace_name "lc" |> NamespacedName
+    let lc = _prefix "lc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#li"></see>
     /// </summary>
-    let li = Namespaced_IRI.parse _namespace_name "li" |> NamespacedName
+    let li = _prefix "li"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lk"></see>
     /// </summary>
-    let lk = Namespaced_IRI.parse _namespace_name "lk" |> NamespacedName
+    let lk = _prefix "lk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lr"></see>
     /// </summary>
-    let lr = Namespaced_IRI.parse _namespace_name "lr" |> NamespacedName
+    let lr = _prefix "lr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ls"></see>
     /// </summary>
-    let ls = Namespaced_IRI.parse _namespace_name "ls" |> NamespacedName
+    let ls = _prefix "ls"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lt"></see>
     /// </summary>
-    let lt = Namespaced_IRI.parse _namespace_name "lt" |> NamespacedName
+    let lt = _prefix "lt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lu"></see>
     /// </summary>
-    let lu = Namespaced_IRI.parse _namespace_name "lu" |> NamespacedName
+    let lu = _prefix "lu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#lv"></see>
     /// </summary>
-    let lv = Namespaced_IRI.parse _namespace_name "lv" |> NamespacedName
+    let lv = _prefix "lv"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ly"></see>
     /// </summary>
-    let ly = Namespaced_IRI.parse _namespace_name "ly" |> NamespacedName
+    let ly = _prefix "ly"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ma"></see>
     /// </summary>
-    let ma = Namespaced_IRI.parse _namespace_name "ma" |> NamespacedName
+    let ma = _prefix "ma"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mc"></see>
     /// </summary>
-    let mc = Namespaced_IRI.parse _namespace_name "mc" |> NamespacedName
+    let mc = _prefix "mc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#md"></see>
     /// </summary>
-    let md = Namespaced_IRI.parse _namespace_name "md" |> NamespacedName
+    let md = _prefix "md"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#me"></see>
     /// </summary>
-    let me = Namespaced_IRI.parse _namespace_name "me" |> NamespacedName
+    let me = _prefix "me"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mf"></see>
     /// </summary>
-    let mf = Namespaced_IRI.parse _namespace_name "mf" |> NamespacedName
+    let mf = _prefix "mf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mg"></see>
     /// </summary>
-    let mg = Namespaced_IRI.parse _namespace_name "mg" |> NamespacedName
+    let mg = _prefix "mg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mh"></see>
     /// </summary>
-    let mh = Namespaced_IRI.parse _namespace_name "mh" |> NamespacedName
+    let mh = _prefix "mh"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mk"></see>
     /// </summary>
-    let mk = Namespaced_IRI.parse _namespace_name "mk" |> NamespacedName
+    let mk = _prefix "mk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ml"></see>
     /// </summary>
-    let ml = Namespaced_IRI.parse _namespace_name "ml" |> NamespacedName
+    let ml = _prefix "ml"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mm"></see>
     /// </summary>
-    let mm = Namespaced_IRI.parse _namespace_name "mm" |> NamespacedName
+    let mm = _prefix "mm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mn"></see>
     /// </summary>
-    let mn = Namespaced_IRI.parse _namespace_name "mn" |> NamespacedName
+    let mn = _prefix "mn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mo"></see>
     /// </summary>
-    let mo = Namespaced_IRI.parse _namespace_name "mo" |> NamespacedName
+    let mo = _prefix "mo"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mp"></see>
     /// </summary>
-    let mp = Namespaced_IRI.parse _namespace_name "mp" |> NamespacedName
+    let mp = _prefix "mp"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mq"></see>
     /// </summary>
-    let mq = Namespaced_IRI.parse _namespace_name "mq" |> NamespacedName
+    let mq = _prefix "mq"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mr"></see>
     /// </summary>
-    let mr = Namespaced_IRI.parse _namespace_name "mr" |> NamespacedName
+    let mr = _prefix "mr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ms"></see>
     /// </summary>
-    let ms = Namespaced_IRI.parse _namespace_name "ms" |> NamespacedName
+    let ms = _prefix "ms"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mt"></see>
     /// </summary>
-    let mt = Namespaced_IRI.parse _namespace_name "mt" |> NamespacedName
+    let mt = _prefix "mt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mu"></see>
     /// </summary>
-    let mu = Namespaced_IRI.parse _namespace_name "mu" |> NamespacedName
+    let mu = _prefix "mu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mv"></see>
     /// </summary>
-    let mv = Namespaced_IRI.parse _namespace_name "mv" |> NamespacedName
+    let mv = _prefix "mv"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mw"></see>
     /// </summary>
-    let mw = Namespaced_IRI.parse _namespace_name "mw" |> NamespacedName
+    let mw = _prefix "mw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mx"></see>
     /// </summary>
-    let mx = Namespaced_IRI.parse _namespace_name "mx" |> NamespacedName
+    let mx = _prefix "mx"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#my"></see>
     /// </summary>
-    let my = Namespaced_IRI.parse _namespace_name "my" |> NamespacedName
+    let my = _prefix "my"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#mz"></see>
     /// </summary>
-    let mz = Namespaced_IRI.parse _namespace_name "mz" |> NamespacedName
+    let mz = _prefix "mz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#na"></see>
     /// </summary>
-    let na = Namespaced_IRI.parse _namespace_name "na" |> NamespacedName
+    let na = _prefix "na"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nc"></see>
     /// </summary>
-    let nc = Namespaced_IRI.parse _namespace_name "nc" |> NamespacedName
+    let nc = _prefix "nc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ne"></see>
     /// </summary>
-    let ne = Namespaced_IRI.parse _namespace_name "ne" |> NamespacedName
+    let ne = _prefix "ne"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nf"></see>
     /// </summary>
-    let nf = Namespaced_IRI.parse _namespace_name "nf" |> NamespacedName
+    let nf = _prefix "nf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ng"></see>
     /// </summary>
-    let ng = Namespaced_IRI.parse _namespace_name "ng" |> NamespacedName
+    let ng = _prefix "ng"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ni"></see>
     /// </summary>
-    let ni = Namespaced_IRI.parse _namespace_name "ni" |> NamespacedName
+    let ni = _prefix "ni"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nl"></see>
     /// </summary>
-    let nl = Namespaced_IRI.parse _namespace_name "nl" |> NamespacedName
+    let nl = _prefix "nl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#no"></see>
     /// </summary>
-    let no = Namespaced_IRI.parse _namespace_name "no" |> NamespacedName
+    let no = _prefix "no"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#np"></see>
     /// </summary>
-    let np = Namespaced_IRI.parse _namespace_name "np" |> NamespacedName
+    let np = _prefix "np"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nr"></see>
     /// </summary>
-    let nr = Namespaced_IRI.parse _namespace_name "nr" |> NamespacedName
+    let nr = _prefix "nr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nu"></see>
     /// </summary>
-    let nu = Namespaced_IRI.parse _namespace_name "nu" |> NamespacedName
+    let nu = _prefix "nu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#nz"></see>
     /// </summary>
-    let nz = Namespaced_IRI.parse _namespace_name "nz" |> NamespacedName
+    let nz = _prefix "nz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#om"></see>
     /// </summary>
-    let om = Namespaced_IRI.parse _namespace_name "om" |> NamespacedName
+    let om = _prefix "om"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pa"></see>
     /// </summary>
-    let pa = Namespaced_IRI.parse _namespace_name "pa" |> NamespacedName
+    let pa = _prefix "pa"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pe"></see>
     /// </summary>
-    let pe = Namespaced_IRI.parse _namespace_name "pe" |> NamespacedName
+    let pe = _prefix "pe"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pf"></see>
     /// </summary>
-    let pf = Namespaced_IRI.parse _namespace_name "pf" |> NamespacedName
+    let pf = _prefix "pf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pg"></see>
     /// </summary>
-    let pg = Namespaced_IRI.parse _namespace_name "pg" |> NamespacedName
+    let pg = _prefix "pg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ph"></see>
     /// </summary>
-    let ph = Namespaced_IRI.parse _namespace_name "ph" |> NamespacedName
+    let ph = _prefix "ph"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pk"></see>
     /// </summary>
-    let pk = Namespaced_IRI.parse _namespace_name "pk" |> NamespacedName
+    let pk = _prefix "pk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pl"></see>
     /// </summary>
-    let pl = Namespaced_IRI.parse _namespace_name "pl" |> NamespacedName
+    let pl = _prefix "pl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pm"></see>
     /// </summary>
-    let pm = Namespaced_IRI.parse _namespace_name "pm" |> NamespacedName
+    let pm = _prefix "pm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pn"></see>
     /// </summary>
-    let pn = Namespaced_IRI.parse _namespace_name "pn" |> NamespacedName
+    let pn = _prefix "pn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pr"></see>
     /// </summary>
-    let pr = Namespaced_IRI.parse _namespace_name "pr" |> NamespacedName
+    let pr = _prefix "pr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ps"></see>
     /// </summary>
-    let ps = Namespaced_IRI.parse _namespace_name "ps" |> NamespacedName
+    let ps = _prefix "ps"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pt"></see>
     /// </summary>
-    let pt = Namespaced_IRI.parse _namespace_name "pt" |> NamespacedName
+    let pt = _prefix "pt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#pw"></see>
     /// </summary>
-    let pw = Namespaced_IRI.parse _namespace_name "pw" |> NamespacedName
+    let pw = _prefix "pw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#py"></see>
     /// </summary>
-    let py = Namespaced_IRI.parse _namespace_name "py" |> NamespacedName
+    let py = _prefix "py"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#qa"></see>
     /// </summary>
-    let qa = Namespaced_IRI.parse _namespace_name "qa" |> NamespacedName
+    let qa = _prefix "qa"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#re"></see>
     /// </summary>
-    let re = Namespaced_IRI.parse _namespace_name "re" |> NamespacedName
+    let re = _prefix "re"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ro"></see>
     /// </summary>
-    let ro = Namespaced_IRI.parse _namespace_name "ro" |> NamespacedName
+    let ro = _prefix "ro"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#rs"></see>
     /// </summary>
-    let rs = Namespaced_IRI.parse _namespace_name "rs" |> NamespacedName
+    let rs = _prefix "rs"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ru"></see>
     /// </summary>
-    let ru = Namespaced_IRI.parse _namespace_name "ru" |> NamespacedName
+    let ru = _prefix "ru"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#rw"></see>
     /// </summary>
-    let rw = Namespaced_IRI.parse _namespace_name "rw" |> NamespacedName
+    let rw = _prefix "rw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sa"></see>
     /// </summary>
-    let sa = Namespaced_IRI.parse _namespace_name "sa" |> NamespacedName
+    let sa = _prefix "sa"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sb"></see>
     /// </summary>
-    let sb = Namespaced_IRI.parse _namespace_name "sb" |> NamespacedName
+    let sb = _prefix "sb"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sc"></see>
     /// </summary>
-    let sc = Namespaced_IRI.parse _namespace_name "sc" |> NamespacedName
+    let sc = _prefix "sc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sd"></see>
     /// </summary>
-    let sd = Namespaced_IRI.parse _namespace_name "sd" |> NamespacedName
+    let sd = _prefix "sd"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#se"></see>
     /// </summary>
-    let se = Namespaced_IRI.parse _namespace_name "se" |> NamespacedName
+    let se = _prefix "se"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sg"></see>
     /// </summary>
-    let sg = Namespaced_IRI.parse _namespace_name "sg" |> NamespacedName
+    let sg = _prefix "sg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sh"></see>
     /// </summary>
-    let sh = Namespaced_IRI.parse _namespace_name "sh" |> NamespacedName
+    let sh = _prefix "sh"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#si"></see>
     /// </summary>
-    let si = Namespaced_IRI.parse _namespace_name "si" |> NamespacedName
+    let si = _prefix "si"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sj"></see>
     /// </summary>
-    let sj = Namespaced_IRI.parse _namespace_name "sj" |> NamespacedName
+    let sj = _prefix "sj"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sk"></see>
     /// </summary>
-    let sk = Namespaced_IRI.parse _namespace_name "sk" |> NamespacedName
+    let sk = _prefix "sk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sl"></see>
     /// </summary>
-    let sl = Namespaced_IRI.parse _namespace_name "sl" |> NamespacedName
+    let sl = _prefix "sl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sm"></see>
     /// </summary>
-    let sm = Namespaced_IRI.parse _namespace_name "sm" |> NamespacedName
+    let sm = _prefix "sm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sn"></see>
     /// </summary>
-    let sn = Namespaced_IRI.parse _namespace_name "sn" |> NamespacedName
+    let sn = _prefix "sn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#so"></see>
     /// </summary>
-    let so = Namespaced_IRI.parse _namespace_name "so" |> NamespacedName
+    let so = _prefix "so"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sr"></see>
     /// </summary>
-    let sr = Namespaced_IRI.parse _namespace_name "sr" |> NamespacedName
+    let sr = _prefix "sr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#st"></see>
     /// </summary>
-    let st = Namespaced_IRI.parse _namespace_name "st" |> NamespacedName
+    let st = _prefix "st"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sv"></see>
     /// </summary>
-    let sv = Namespaced_IRI.parse _namespace_name "sv" |> NamespacedName
+    let sv = _prefix "sv"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sy"></see>
     /// </summary>
-    let sy = Namespaced_IRI.parse _namespace_name "sy" |> NamespacedName
+    let sy = _prefix "sy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#sz"></see>
     /// </summary>
-    let sz = Namespaced_IRI.parse _namespace_name "sz" |> NamespacedName
+    let sz = _prefix "sz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tc"></see>
     /// </summary>
-    let tc = Namespaced_IRI.parse _namespace_name "tc" |> NamespacedName
+    let tc = _prefix "tc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#td"></see>
     /// </summary>
-    let td = Namespaced_IRI.parse _namespace_name "td" |> NamespacedName
+    let td = _prefix "td"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tf"></see>
     /// </summary>
-    let tf = Namespaced_IRI.parse _namespace_name "tf" |> NamespacedName
+    let tf = _prefix "tf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tg"></see>
     /// </summary>
-    let tg = Namespaced_IRI.parse _namespace_name "tg" |> NamespacedName
+    let tg = _prefix "tg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#th"></see>
     /// </summary>
-    let th = Namespaced_IRI.parse _namespace_name "th" |> NamespacedName
+    let th = _prefix "th"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tj"></see>
     /// </summary>
-    let tj = Namespaced_IRI.parse _namespace_name "tj" |> NamespacedName
+    let tj = _prefix "tj"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tk"></see>
     /// </summary>
-    let tk = Namespaced_IRI.parse _namespace_name "tk" |> NamespacedName
+    let tk = _prefix "tk"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tl"></see>
     /// </summary>
-    let tl = Namespaced_IRI.parse _namespace_name "tl" |> NamespacedName
+    let tl = _prefix "tl"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tm"></see>
     /// </summary>
-    let tm = Namespaced_IRI.parse _namespace_name "tm" |> NamespacedName
+    let tm = _prefix "tm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tn"></see>
     /// </summary>
-    let tn = Namespaced_IRI.parse _namespace_name "tn" |> NamespacedName
+    let tn = _prefix "tn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#to"></see>
     /// </summary>
-    let to_ = Namespaced_IRI.parse _namespace_name "to" |> NamespacedName
+    let to_ = _prefix "to"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tr"></see>
     /// </summary>
-    let tr = Namespaced_IRI.parse _namespace_name "tr" |> NamespacedName
+    let tr = _prefix "tr"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tt"></see>
     /// </summary>
-    let tt = Namespaced_IRI.parse _namespace_name "tt" |> NamespacedName
+    let tt = _prefix "tt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tv"></see>
     /// </summary>
-    let tv = Namespaced_IRI.parse _namespace_name "tv" |> NamespacedName
+    let tv = _prefix "tv"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tw"></see>
     /// </summary>
-    let tw = Namespaced_IRI.parse _namespace_name "tw" |> NamespacedName
+    let tw = _prefix "tw"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#tz"></see>
     /// </summary>
-    let tz = Namespaced_IRI.parse _namespace_name "tz" |> NamespacedName
+    let tz = _prefix "tz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ua"></see>
     /// </summary>
-    let ua = Namespaced_IRI.parse _namespace_name "ua" |> NamespacedName
+    let ua = _prefix "ua"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ug"></see>
     /// </summary>
-    let ug = Namespaced_IRI.parse _namespace_name "ug" |> NamespacedName
+    let ug = _prefix "ug"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#um"></see>
     /// </summary>
-    let um = Namespaced_IRI.parse _namespace_name "um" |> NamespacedName
+    let um = _prefix "um"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#us"></see>
     /// </summary>
-    let us = Namespaced_IRI.parse _namespace_name "us" |> NamespacedName
+    let us = _prefix "us"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#uy"></see>
     /// </summary>
-    let uy = Namespaced_IRI.parse _namespace_name "uy" |> NamespacedName
+    let uy = _prefix "uy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#uz"></see>
     /// </summary>
-    let uz = Namespaced_IRI.parse _namespace_name "uz" |> NamespacedName
+    let uz = _prefix "uz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#va"></see>
     /// </summary>
-    let va = Namespaced_IRI.parse _namespace_name "va" |> NamespacedName
+    let va = _prefix "va"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vc"></see>
     /// </summary>
-    let vc = Namespaced_IRI.parse _namespace_name "vc" |> NamespacedName
+    let vc = _prefix "vc"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ve"></see>
     /// </summary>
-    let ve = Namespaced_IRI.parse _namespace_name "ve" |> NamespacedName
+    let ve = _prefix "ve"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vg"></see>
     /// </summary>
-    let vg = Namespaced_IRI.parse _namespace_name "vg" |> NamespacedName
+    let vg = _prefix "vg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vi"></see>
     /// </summary>
-    let vi = Namespaced_IRI.parse _namespace_name "vi" |> NamespacedName
+    let vi = _prefix "vi"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vn"></see>
     /// </summary>
-    let vn = Namespaced_IRI.parse _namespace_name "vn" |> NamespacedName
+    let vn = _prefix "vn"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#vu"></see>
     /// </summary>
-    let vu = Namespaced_IRI.parse _namespace_name "vu" |> NamespacedName
+    let vu = _prefix "vu"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#wf"></see>
     /// </summary>
-    let wf = Namespaced_IRI.parse _namespace_name "wf" |> NamespacedName
+    let wf = _prefix "wf"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ws"></see>
     /// </summary>
-    let ws = Namespaced_IRI.parse _namespace_name "ws" |> NamespacedName
+    let ws = _prefix "ws"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#ye"></see>
     /// </summary>
-    let ye = Namespaced_IRI.parse _namespace_name "ye" |> NamespacedName
+    let ye = _prefix "ye"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#yt"></see>
     /// </summary>
-    let yt = Namespaced_IRI.parse _namespace_name "yt" |> NamespacedName
+    let yt = _prefix "yt"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#za"></see>
     /// </summary>
-    let za = Namespaced_IRI.parse _namespace_name "za" |> NamespacedName
+    let za = _prefix "za"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#zm"></see>
     /// </summary>
-    let zm = Namespaced_IRI.parse _namespace_name "zm" |> NamespacedName
+    let zm = _prefix "zm"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/countries#zw"></see>
     /// </summary>
-    let zw = Namespaced_IRI.parse _namespace_name "zw" |> NamespacedName
+    let zw = _prefix "zw"

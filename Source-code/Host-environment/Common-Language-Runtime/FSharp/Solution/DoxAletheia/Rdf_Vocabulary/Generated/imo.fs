@@ -1,80 +1,78 @@
 namespace http.imgpedia.dcc.uchile.cl.ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module imo =
     let _namespace_name = "http://imgpedia.dcc.uchile.cl/ontology#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#CLD"></see>
     /// </summary>
-    let CLD = Namespaced_IRI.parse _namespace_name "CLD" |> NamespacedName
+    let CLD = _prefix "CLD"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#Descriptor"></see>
     /// </summary>
-    let Descriptor = Namespaced_IRI.parse _namespace_name "Descriptor" |> NamespacedName
+    let Descriptor = _prefix "Descriptor"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#GHD"></see>
     /// </summary>
-    let GHD = Namespaced_IRI.parse _namespace_name "GHD" |> NamespacedName
+    let GHD = _prefix "GHD"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#HOG"></see>
     /// </summary>
-    let HOG = Namespaced_IRI.parse _namespace_name "HOG" |> NamespacedName
+    let HOG = _prefix "HOG"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#Image"></see>
     /// </summary>
-    let Image = Namespaced_IRI.parse _namespace_name "Image" |> NamespacedName
-
+    let Image = _prefix "Image"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#ImageRelation"></see>
     /// </summary>
-    let ImageRelation =
-        Namespaced_IRI.parse _namespace_name "ImageRelation" |> NamespacedName
-
+    let ImageRelation = _prefix "ImageRelation"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#appearsIn"></see>
     /// </summary>
-    let appearsIn = Namespaced_IRI.parse _namespace_name "appearsIn" |> NamespacedName
+    let appearsIn = _prefix "appearsIn"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#describes"></see>
     /// </summary>
-    let describes = Namespaced_IRI.parse _namespace_name "describes" |> NamespacedName
+    let describes = _prefix "describes"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#distance"></see>
     /// </summary>
-    let distance = Namespaced_IRI.parse _namespace_name "distance" |> NamespacedName
+    let distance = _prefix "distance"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#fileURL"></see>
     /// </summary>
-    let fileURL = Namespaced_IRI.parse _namespace_name "fileURL" |> NamespacedName
+    let fileURL = _prefix "fileURL"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#height"></see>
     /// </summary>
-    let height = Namespaced_IRI.parse _namespace_name "height" |> NamespacedName
+    let height = _prefix "height"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#similar"></see>
     /// </summary>
-    let similar = Namespaced_IRI.parse _namespace_name "similar" |> NamespacedName
+    let similar = _prefix "similar"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#sourceImg"></see>
     /// </summary>
-    let sourceImg = Namespaced_IRI.parse _namespace_name "sourceImg" |> NamespacedName
+    let sourceImg = _prefix "sourceImg"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#targetImg"></see>
     /// </summary>
-    let targetImg = Namespaced_IRI.parse _namespace_name "targetImg" |> NamespacedName
-
+    let targetImg = _prefix "targetImg"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#usesDescriptor"></see>
     /// </summary>
-    let usesDescriptor =
-        Namespaced_IRI.parse _namespace_name "usesDescriptor" |> NamespacedName
-
+    let usesDescriptor = _prefix "usesDescriptor"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="http://imgpedia.dcc.uchile.cl/ontology#width"></see>
     /// </summary>
-    let width = Namespaced_IRI.parse _namespace_name "width" |> NamespacedName
+    let width = _prefix "width"

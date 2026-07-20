@@ -1,7 +1,7 @@
 module DoxAletheia.Rdf_Shorthand
 
 open Rdf_Document
-open Rdf_Vocabulary
+
 open System
 open System.Globalization
 open System.Xml
@@ -26,39 +26,32 @@ let (^^) lexical_form datatype =
 
 
 // unary starters
-let inline (!>) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) : Draft_Document =
-    Draft_Document.from_subject subject_term.as_subject
+let inline (!>) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) : Formula =
+    Formula.from_subject subject_term.as_subject
 
-let inline (!|)
-    (subject_terms: ^SubjectType list when ^SubjectType: (member as_subject: Rdf_Subject))
-    : Draft_Document =
+let inline (!|) (subject_terms: ^SubjectType list when ^SubjectType: (member as_subject: Rdf_Subject)) : Formula =
     subject_terms
     |> List.map (fun subject_term -> subject_term.as_subject)
-    |> Draft_Document.from_subjects
+    |> Formula.from_subjects
 
-let inline (!/)
-    (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
-    : Draft_Document =
-    Draft_Document.from_predicate predicate_term.as_predicate
+let inline (!/) (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) : Formula =
+    Formula.from_predicate predicate_term.as_predicate
 
-let inline (!<) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) : Draft_Document =
-    Draft_Document.from_object object_term.as_object
+let inline (!<) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) : Formula =
+    Formula.from_object object_term.as_object
 
 let inline (!<=) value_object =
-    Rdf_Literal.autotyped value_object
+    Literal.autotyped value_object
     |> Rdf_Object.LiteralObject
-    |> Draft_Document.from_object
+    |> Formula.from_object
 
 
 // subject adders
-let inline (-!>)
-    (draft: Draft_Document)
-    (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
-    =
+let inline (-!>) (draft: Formula) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) =
     draft.add_subject subject_term.as_subject
 
 let inline (-!|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (subject_terms: ^SubjectType list when ^SubjectType: (member as_subject: Rdf_Subject))
     =
     subject_terms
@@ -69,13 +62,13 @@ let inline (-!|)
 
 // predicate adders
 let inline (---)
-    (draft: Draft_Document)
+    (draft: Formula)
     (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate))
     =
     draft.add_predicate predicate_term.as_predicate
 
 let inline (--|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (predicate_terms: ^PredicateType list when ^PredicateType: (member as_predicate: Rdf_Predicate))
     =
     predicate_terms
@@ -84,16 +77,16 @@ let inline (--|)
     |> draft.add_predicates
 
 // predicateObjectList adders
-let inline (-~|) (draft: Draft_Document) (predicateObjectLists: PredicateObjectList list) =
+let inline (-~|) (draft: Formula) (predicateObjectLists: PredicateObjectList list) =
     predicateObjectLists
     |> List.toArray
     |> draft.add_predicateObjectLists
 
-let inline (-~|>) (draft: Draft_Document) (predicateObjectLists: PredicateObjectList list) =
+let inline (-~|>) (draft: Formula) (predicateObjectLists: PredicateObjectList list) =
     predicateObjectLists
     |> List.toArray
     |> draft.add_predicateObjectLists
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
 let inline (->-)
@@ -116,38 +109,32 @@ let inline (->|)
 let inline (->=) (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) value_object =
     PredicateObjectList.from_terms
         predicate.as_predicate
-        [| Rdf_Literal.autotyped value_object
+        [| Literal.autotyped value_object
            |> Rdf_Object.LiteralObject |]
 
 let inline (->=|) (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) value_objects =
     let objects =
         value_objects
         |> List.map (fun value_object ->
-            Rdf_Literal.autotyped value_object
+            Literal.autotyped value_object
             |> Rdf_Object.LiteralObject)
         |> List.toArray
 
     PredicateObjectList.from_terms predicate.as_predicate objects
 
 
-let inline (-->) (draft: Draft_Document) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
+let inline (-->) (draft: Formula) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
     draft.add_object object_term.as_object
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-<-)
-    (draft: Draft_Document)
-    (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
-    =
+let inline (-<-) (draft: Formula) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) =
     draft.add_subject subject_term.as_subject
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-<-/)
-    (draft: Draft_Document)
-    (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject))
-    =
+let inline (-<-/) (draft: Formula) (subject_term: ^SubjectType when ^SubjectType: (member as_subject: Rdf_Subject)) =
     let materialized_draft =
         draft.add_subject subject_term.as_subject
-        |> Draft_Document.materialize_triples
+        |> Formula.materialize_triples
 
     { materialized_draft with
 
@@ -155,10 +142,10 @@ let inline (-<-/)
 
      }
 
-let inline (-->/) (draft: Draft_Document) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
+let inline (-->/) (draft: Formula) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) =
     let materialized_draft =
         draft.add_object object_term.as_object
-        |> Draft_Document.materialize_triples
+        |> Formula.materialize_triples
 
     { materialized_draft with
 
@@ -169,48 +156,43 @@ let inline (-->/) (draft: Draft_Document) (object_term: ^ObjectType when ^Object
 
      }
 
-let inline (-->=) (draft: Draft_Document) literal =
+let inline (-->=) (draft: Formula) literal =
     draft.add_literal literal
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->^) (draft: Draft_Document) (lexical_form: string) (datatype: IRIREF) =
+let inline (-->^) (draft: Formula) (lexical_form: string) (datatype: IRIREF) =
     draft.add_literal (lexical_form ^^ datatype)
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->@) (draft: Draft_Document) (lexical_form: string) (language_tag: Language_Tag) =
+let inline (-->@) (draft: Formula) (lexical_form: string) (language_tag: Language_Tag) =
     lexical_form ^@ language_tag
     |> draft.add_literal
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->@@)
-    (draft: Draft_Document)
-    (lexical_form: string)
-    (language_tag: Language_Tag)
-    (region_subtag: Region_Subtag)
-    =
+let inline (-->@@) (draft: Formula) (lexical_form: string) (language_tag: Language_Tag) (region_subtag: Region_Subtag) =
     lexical_form ^@@ (language_tag, region_subtag)
     |> draft.add_literal
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
-let inline (-->=|) (draft: Draft_Document) literals =
+let inline (-->=|) (draft: Formula) literals =
     draft.add_literals literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->^|) (draft: Draft_Document) (lexical_forms: string list) (datatype: IRIREF) =
+let inline (-->^|) (draft: Formula) (lexical_forms: string list) (datatype: IRIREF) =
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^^ datatype)
     |> draft.add_literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
-let inline (-->@|) (draft: Draft_Document) (lexical_forms: string list) (language_tag: Language_Tag) =
+let inline (-->@|) (draft: Formula) (lexical_forms: string list) (language_tag: Language_Tag) =
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^@ language_tag)
     |> draft.add_literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 let inline (-->@@|)
-    (draft: Draft_Document)
+    (draft: Formula)
     (lexical_forms: string list)
     (language_tag: Language_Tag)
     (region_subtag: Region_Subtag)
@@ -218,18 +200,15 @@ let inline (-->@@|)
     lexical_forms
     |> List.map (fun lexical_form -> lexical_form ^@@ (language_tag, region_subtag))
     |> draft.add_literals
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples
 
 
 
 
 /// predicate object+
-let inline (-->|)
-    (draft: Draft_Document)
-    (object_terms: ^ObjectType list when ^ObjectType: (member as_object: Rdf_Object))
-    =
+let inline (-->|) (draft: Formula) (object_terms: ^ObjectType list when ^ObjectType: (member as_object: Rdf_Object)) =
     object_terms
     |> List.toArray
     |> Array.Parallel.map (fun object_term -> object_term.as_object)
     |> draft.add_objects
-    |> Draft_Document.materialize_triples
+    |> Formula.materialize_triples

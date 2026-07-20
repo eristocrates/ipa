@@ -1,335 +1,262 @@
 namespace http.culturalis.org.oad.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module oad =
     let _namespace_name = "http://culturalis.org/oad#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The class represents the administrative and biographical history.
     /// <see href="http://culturalis.org/oad#AdministrativeBiographicalHistory"></see></summary>
-    let AdministrativeBiographicalHistory =
-        Namespaced_IRI.parse _namespace_name "AdministrativeBiographicalHistory" |> NamespacedName
-
+    let AdministrativeBiographicalHistory = _prefix "AdministrativeBiographicalHistory"
     /// <summary>
     /// oad:ArchivalResource is the class that represents the object of the description (i.e., a single document or a set of document).
     /// <see href="http://culturalis.org/oad#ArchivalResource"></see></summary>
-    let ArchivalResource =
-        Namespaced_IRI.parse _namespace_name "ArchivalResource" |> NamespacedName
-
+    let ArchivalResource = _prefix "ArchivalResource"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#Custody"></see>
     /// </summary>
-    let Custody = Namespaced_IRI.parse _namespace_name "Custody" |> NamespacedName
+    let Custody = _prefix "Custody"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#EadElement"></see>
     /// </summary>
-    let EadElement = Namespaced_IRI.parse _namespace_name "EadElement" |> NamespacedName
-
+    let EadElement = _prefix "EadElement"
     /// <summary>
     /// The class represents the description about extent and medium.
     /// <see href="http://culturalis.org/oad#ExtentAndMedium"></see></summary>
-    let ExtentAndMedium =
-        Namespaced_IRI.parse _namespace_name "ExtentAndMedium" |> NamespacedName
-
+    let ExtentAndMedium = _prefix "ExtentAndMedium"
     /// <summary>
     /// The class represents a finding aid.
     /// <see href="http://culturalis.org/oad#FindingAid"></see></summary>
-    let FindingAid = Namespaced_IRI.parse _namespace_name "FindingAid" |> NamespacedName
+    let FindingAid = _prefix "FindingAid"
     /// <summary>
     /// The class represents the descriptive entry of an archival resource
     /// <see href="http://culturalis.org/oad#Instance"></see></summary>
-    let Instance = Namespaced_IRI.parse _namespace_name "Instance" |> NamespacedName
-
+    let Instance = _prefix "Instance"
     /// <summary>
     /// The class represents the archival description level
     /// <see href="http://culturalis.org/oad#LevelOfDescription"></see></summary>
-    let LevelOfDescription =
-        Namespaced_IRI.parse _namespace_name "LevelOfDescription" |> NamespacedName
-
+    let LevelOfDescription = _prefix "LevelOfDescription"
     /// <summary>
     /// The class represents a physical place
     /// <see href="http://culturalis.org/oad#Place"></see></summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#Production"></see>
     /// </summary>
-    let Production = Namespaced_IRI.parse _namespace_name "Production" |> NamespacedName
-
+    let Production = _prefix "Production"
     /// <summary>
     /// The class represents a bibliography
     /// <see href="http://culturalis.org/oad#PublicationNote"></see></summary>
-    let PublicationNote =
-        Namespaced_IRI.parse _namespace_name "PublicationNote" |> NamespacedName
-
+    let PublicationNote = _prefix "PublicationNote"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#UoD"></see>
     /// </summary>
-    let UoD = Namespaced_IRI.parse _namespace_name "UoD" |> NamespacedName
+    let UoD = _prefix "UoD"
     /// <summary>
     /// The property represents expected increase.
     /// <see href="http://culturalis.org/oad#accruals"></see></summary>
-    let accruals = Namespaced_IRI.parse _namespace_name "accruals" |> NamespacedName
+    let accruals = _prefix "accruals"
 
     /// <summary>
     /// The property represents appraisal, destruction and scheduling information
     /// <see href="http://culturalis.org/oad#appraisalDestructionAndSchedulingInformation"></see></summary>
     let appraisalDestructionAndSchedulingInformation =
-        Namespaced_IRI.parse _namespace_name "appraisalDestructionAndSchedulingInformation" |> NamespacedName
+        _prefix "appraisalDestructionAndSchedulingInformation"
 
     /// <summary>
     /// The property represents information about the history of the instance
     /// <see href="http://culturalis.org/oad#archivalHistory"></see></summary>
-    let archivalHistory =
-        Namespaced_IRI.parse _namespace_name "archivalHistory" |> NamespacedName
-
+    let archivalHistory = _prefix "archivalHistory"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#archivistsNote"></see>
     /// </summary>
-    let archivistsNote =
-        Namespaced_IRI.parse _namespace_name "archivistsNote" |> NamespacedName
-
+    let archivistsNote = _prefix "archivistsNote"
     /// <summary>
     /// The property represents condition governing access of the instance
     /// <see href="http://culturalis.org/oad#conditionsGoverningAccess"></see></summary>
-    let conditionsGoverningAccess =
-        Namespaced_IRI.parse _namespace_name "conditionsGoverningAccess" |> NamespacedName
-
+    let conditionsGoverningAccess = _prefix "conditionsGoverningAccess"
     /// <summary>
     /// The property represents condition governing reproduction of the instance
     /// <see href="http://culturalis.org/oad#conditionsGoverningReproduction"></see></summary>
-    let conditionsGoverningReproduction =
-        Namespaced_IRI.parse _namespace_name "conditionsGoverningReproduction" |> NamespacedName
-
+    let conditionsGoverningReproduction = _prefix "conditionsGoverningReproduction"
     /// <summary>
     /// Inverse property of oad:isContainedIn
     /// <see href="http://culturalis.org/oad#contains"></see></summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#custody"></see>
     /// </summary>
-    let custody = Namespaced_IRI.parse _namespace_name "custody" |> NamespacedName
+    let custody = _prefix "custody"
     /// <summary>
     /// The property represents a date
     /// <see href="http://culturalis.org/oad#date"></see></summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     /// This functional property links a finding aid to the archival resource described
     /// <see href="http://culturalis.org/oad#describes"></see></summary>
-    let describes = Namespaced_IRI.parse _namespace_name "describes" |> NamespacedName
-
+    let describes = _prefix "describes"
     /// <summary>
     /// Inverse property of oad:describes
     /// <see href="http://culturalis.org/oad#isDescribedBy"></see></summary>
-    let isDescribedBy =
-        Namespaced_IRI.parse _namespace_name "isDescribedBy" |> NamespacedName
-
+    let isDescribedBy = _prefix "isDescribedBy"
     /// <summary>
     /// The property represents the existence and location of copies
     /// <see href="http://culturalis.org/oad#existenceAndLocationOfCopies"></see></summary>
-    let existenceAndLocationOfCopies =
-        Namespaced_IRI.parse _namespace_name "existenceAndLocationOfCopies" |> NamespacedName
-
+    let existenceAndLocationOfCopies = _prefix "existenceAndLocationOfCopies"
     /// <summary>
     /// The property represents the existence and location of originals
     /// <see href="http://culturalis.org/oad#existenceAndLocationOfOriginals"></see></summary>
-    let existenceAndLocationOfOriginals =
-        Namespaced_IRI.parse _namespace_name "existenceAndLocationOfOriginals" |> NamespacedName
-
+    let existenceAndLocationOfOriginals = _prefix "existenceAndLocationOfOriginals"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#extentAndMedium"></see>
     /// </summary>
-    let extentAndMedium =
-        Namespaced_IRI.parse _namespace_name "extentAndMedium" |> NamespacedName
-
+    let extentAndMedium = _prefix "extentAndMedium"
     /// <summary>
     /// The property represents an access point
     /// <see href="http://culturalis.org/oad#hasAccessPoint"></see></summary>
-    let hasAccessPoint =
-        Namespaced_IRI.parse _namespace_name "hasAccessPoint" |> NamespacedName
-
+    let hasAccessPoint = _prefix "hasAccessPoint"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasAccessPointCorporateBody"></see>
     /// </summary>
-    let hasAccessPointCorporateBody =
-        Namespaced_IRI.parse _namespace_name "hasAccessPointCorporateBody" |> NamespacedName
-
+    let hasAccessPointCorporateBody = _prefix "hasAccessPointCorporateBody"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasAccessPointFamily"></see>
     /// </summary>
-    let hasAccessPointFamily =
-        Namespaced_IRI.parse _namespace_name "hasAccessPointFamily" |> NamespacedName
-
+    let hasAccessPointFamily = _prefix "hasAccessPointFamily"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasAccessPointPerson"></see>
     /// </summary>
-    let hasAccessPointPerson =
-        Namespaced_IRI.parse _namespace_name "hasAccessPointPerson" |> NamespacedName
-
+    let hasAccessPointPerson = _prefix "hasAccessPointPerson"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasAccessPointPlace"></see>
     /// </summary>
-    let hasAccessPointPlace =
-        Namespaced_IRI.parse _namespace_name "hasAccessPointPlace" |> NamespacedName
+    let hasAccessPointPlace = _prefix "hasAccessPointPlace"
 
     /// <summary>
     /// The property links and instace to information about administrative and biographica history.
     /// <see href="http://culturalis.org/oad#hasAdministrativeBiographicalHistory"></see></summary>
     let hasAdministrativeBiographicalHistory =
-        Namespaced_IRI.parse _namespace_name "hasAdministrativeBiographicalHistory" |> NamespacedName
+        _prefix "hasAdministrativeBiographicalHistory"
 
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasCustody"></see>
     /// </summary>
-    let hasCustody = Namespaced_IRI.parse _namespace_name "hasCustody" |> NamespacedName
+    let hasCustody = _prefix "hasCustody"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasEntity"></see>
     /// </summary>
-    let hasEntity = Namespaced_IRI.parse _namespace_name "hasEntity" |> NamespacedName
+    let hasEntity = _prefix "hasEntity"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasEntry"></see>
     /// </summary>
-    let hasEntry = Namespaced_IRI.parse _namespace_name "hasEntry" |> NamespacedName
-
+    let hasEntry = _prefix "hasEntry"
     /// <summary>
     /// The property links an instance to information about extent and medium
     /// <see href="http://culturalis.org/oad#hasExtentAndMedium"></see></summary>
-    let hasExtentAndMedium =
-        Namespaced_IRI.parse _namespace_name "hasExtentAndMedium" |> NamespacedName
-
+    let hasExtentAndMedium = _prefix "hasExtentAndMedium"
     /// <summary>
     /// The property represents an extent type and it is related to a skos vocabulary
     /// <see href="http://culturalis.org/oad#hasExtentType"></see></summary>
-    let hasExtentType =
-        Namespaced_IRI.parse _namespace_name "hasExtentType" |> NamespacedName
-
+    let hasExtentType = _prefix "hasExtentType"
     /// <summary>
     /// The property links an instance to a classification system
     /// <see href="http://culturalis.org/oad#hasFilePlan"></see></summary>
-    let hasFilePlan =
-        Namespaced_IRI.parse _namespace_name "hasFilePlan" |> NamespacedName
-
+    let hasFilePlan = _prefix "hasFilePlan"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasFindingAid"></see>
     /// </summary>
-    let hasFindingAid =
-        Namespaced_IRI.parse _namespace_name "hasFindingAid" |> NamespacedName
-
+    let hasFindingAid = _prefix "hasFindingAid"
     /// <summary>
     /// The property links an instance to its language information
     /// <see href="http://culturalis.org/oad#hasLanguageScriptsOfMaterial"></see></summary>
-    let hasLanguageScriptsOfMaterial =
-        Namespaced_IRI.parse _namespace_name "hasLanguageScriptsOfMaterial" |> NamespacedName
-
+    let hasLanguageScriptsOfMaterial = _prefix "hasLanguageScriptsOfMaterial"
     /// <summary>
     /// The property links an archival resource to its level of description
     /// <see href="http://culturalis.org/oad#hasLevel"></see></summary>
-    let hasLevel = Namespaced_IRI.parse _namespace_name "hasLevel" |> NamespacedName
-
+    let hasLevel = _prefix "hasLevel"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasNameOfCreator"></see>
     /// </summary>
-    let hasNameOfCreator =
-        Namespaced_IRI.parse _namespace_name "hasNameOfCreator" |> NamespacedName
-
+    let hasNameOfCreator = _prefix "hasNameOfCreator"
     /// <summary>
     /// The property links an instance to the following sibling
     /// <see href="http://culturalis.org/oad#hasNextInSequence"></see></summary>
-    let hasNextInSequence =
-        Namespaced_IRI.parse _namespace_name "hasNextInSequence" |> NamespacedName
-
+    let hasNextInSequence = _prefix "hasNextInSequence"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasProduction"></see>
     /// </summary>
-    let hasProduction =
-        Namespaced_IRI.parse _namespace_name "hasProduction" |> NamespacedName
-
+    let hasProduction = _prefix "hasProduction"
     /// <summary>
     /// The property links an instance to its bibliography information
     /// <see href="http://culturalis.org/oad#hasPublicationNote"></see></summary>
-    let hasPublicationNote =
-        Namespaced_IRI.parse _namespace_name "hasPublicationNote" |> NamespacedName
-
+    let hasPublicationNote = _prefix "hasPublicationNote"
     /// <summary>
     /// The property links two or more instances related
     /// <see href="http://culturalis.org/oad#hasRelatedInstance"></see></summary>
-    let hasRelatedInstance =
-        Namespaced_IRI.parse _namespace_name "hasRelatedInstance" |> NamespacedName
-
+    let hasRelatedInstance = _prefix "hasRelatedInstance"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#hasRepository"></see>
     /// </summary>
-    let hasRepository =
-        Namespaced_IRI.parse _namespace_name "hasRepository" |> NamespacedName
+    let hasRepository = _prefix "hasRepository"
 
     /// <summary>
     /// The property represents an immediate source of acquisition or transfer
     /// <see href="http://culturalis.org/oad#immediateSourceOfAcquisitionOrTransfer"></see></summary>
     let immediateSourceOfAcquisitionOrTransfer =
-        Namespaced_IRI.parse _namespace_name "immediateSourceOfAcquisitionOrTransfer" |> NamespacedName
+        _prefix "immediateSourceOfAcquisitionOrTransfer"
 
     /// <summary>
     /// The property represents the relationship between an instance and the finding aid in which it is contained
     /// <see href="http://culturalis.org/oad#isContainedIn"></see></summary>
-    let isContainedIn =
-        Namespaced_IRI.parse _namespace_name "isContainedIn" |> NamespacedName
-
+    let isContainedIn = _prefix "isContainedIn"
     /// <summary>
     /// The property links an instance to an archival resource
     /// <see href="http://culturalis.org/oad#isEntryOf"></see></summary>
-    let isEntryOf = Namespaced_IRI.parse _namespace_name "isEntryOf" |> NamespacedName
-
+    let isEntryOf = _prefix "isEntryOf"
     /// <summary>
     /// The property links the archival resource described to the entity responsible for the production of the resource
     /// <see href="http://culturalis.org/oad#isProducedBy"></see></summary>
-    let isProducedBy =
-        Namespaced_IRI.parse _namespace_name "isProducedBy" |> NamespacedName
-
+    let isProducedBy = _prefix "isProducedBy"
     /// <summary>
     /// The property represents information that cannot be accommodated in any of the other properties.
     /// <see href="http://culturalis.org/oad#note"></see></summary>
-    let note = Namespaced_IRI.parse _namespace_name "note" |> NamespacedName
+    let note = _prefix "note"
     /// <summary>
     /// The property represents an otherlevel of description
     /// <see href="http://culturalis.org/oad#otherlevel"></see></summary>
-    let otherlevel = Namespaced_IRI.parse _namespace_name "otherlevel" |> NamespacedName
+    let otherlevel = _prefix "otherlevel"
 
     /// <summary>
     /// The property represents physical characteristics and technical requirements
     /// <see href="http://culturalis.org/oad#physicalCharacteristicsAndTechnicalRequirements"></see></summary>
     let physicalCharacteristicsAndTechnicalRequirements =
-        Namespaced_IRI.parse _namespace_name "physicalCharacteristicsAndTechnicalRequirements" |> NamespacedName
+        _prefix "physicalCharacteristicsAndTechnicalRequirements"
 
     /// <summary>
     ///   <see href="http://culturalis.org/oad#production"></see>
     /// </summary>
-    let production = Namespaced_IRI.parse _namespace_name "production" |> NamespacedName
-
+    let production = _prefix "production"
     /// <summary>
     /// The property represents an identification code of the described resource
     /// <see href="http://culturalis.org/oad#referenceCode"></see></summary>
-    let referenceCode =
-        Namespaced_IRI.parse _namespace_name "referenceCode" |> NamespacedName
-
+    let referenceCode = _prefix "referenceCode"
     /// <summary>
     /// The property represents the scope and the content of the described resource
     /// <see href="http://culturalis.org/oad#scopeAndContent"></see></summary>
-    let scopeAndContent =
-        Namespaced_IRI.parse _namespace_name "scopeAndContent" |> NamespacedName
-
+    let scopeAndContent = _prefix "scopeAndContent"
     /// <summary>
     /// The property represents the internal structure, the order and/or the system of classification of the described resource
     /// <see href="http://culturalis.org/oad#systemOfArrangement"></see></summary>
-    let systemOfArrangement =
-        Namespaced_IRI.parse _namespace_name "systemOfArrangement" |> NamespacedName
-
+    let systemOfArrangement = _prefix "systemOfArrangement"
     /// <summary>
     /// The property represents the name shown in a description
     /// <see href="http://culturalis.org/oad#title"></see></summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
-
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://culturalis.org/oad#useEadElement"></see>
     /// </summary>
-    let useEadElement =
-        Namespaced_IRI.parse _namespace_name "useEadElement" |> NamespacedName
+    let useEadElement = _prefix "useEadElement"

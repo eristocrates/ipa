@@ -1,133 +1,95 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.EuropeanJurisdiction.UKGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_ukj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/EnglandAndWalesJurisdiction"></see>
     /// </summary>
-    let EnglandAndWalesJurisdiction =
-        Namespaced_IRI.parse _namespace_name "EnglandAndWalesJurisdiction" |> NamespacedName
-
+    let EnglandAndWalesJurisdiction = _prefix "EnglandAndWalesJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/NationalAssemblyForWales"></see>
     /// </summary>
-    let NationalAssemblyForWales =
-        Namespaced_IRI.parse _namespace_name "NationalAssemblyForWales" |> NamespacedName
-
+    let NationalAssemblyForWales = _prefix "NationalAssemblyForWales"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/GovernmentOfGuernsey"></see>
     /// </summary>
-    let GovernmentOfGuernsey =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfGuernsey" |> NamespacedName
-
+    let GovernmentOfGuernsey = _prefix "GovernmentOfGuernsey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/JurisdictionOfGuernsey"></see>
     /// </summary>
-    let JurisdictionOfGuernsey =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfGuernsey" |> NamespacedName
-
+    let JurisdictionOfGuernsey = _prefix "JurisdictionOfGuernsey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/GovernmentOfJersey"></see>
     /// </summary>
-    let GovernmentOfJersey =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfJersey" |> NamespacedName
-
+    let GovernmentOfJersey = _prefix "GovernmentOfJersey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/JurisdictionOfJersey"></see>
     /// </summary>
-    let JurisdictionOfJersey =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfJersey" |> NamespacedName
-
+    let JurisdictionOfJersey = _prefix "JurisdictionOfJersey"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/GovernmentOfScotland"></see>
     /// </summary>
-    let GovernmentOfScotland =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfScotland" |> NamespacedName
-
+    let GovernmentOfScotland = _prefix "GovernmentOfScotland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/ScotlandJurisdiction"></see>
     /// </summary>
-    let ScotlandJurisdiction =
-        Namespaced_IRI.parse _namespace_name "ScotlandJurisdiction" |> NamespacedName
-
+    let ScotlandJurisdiction = _prefix "ScotlandJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/GovernmentOfTheIsleOfMan"></see>
     /// </summary>
-    let GovernmentOfTheIsleOfMan =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheIsleOfMan" |> NamespacedName
-
+    let GovernmentOfTheIsleOfMan = _prefix "GovernmentOfTheIsleOfMan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/JurisdictionOfTheIsleOfMan"></see>
     /// </summary>
-    let JurisdictionOfTheIsleOfMan =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfTheIsleOfMan" |> NamespacedName
-
+    let JurisdictionOfTheIsleOfMan = _prefix "JurisdictionOfTheIsleOfMan"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/GovernmentOfTheUnitedKingdom"></see>
     /// </summary>
-    let GovernmentOfTheUnitedKingdom =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheUnitedKingdom" |> NamespacedName
-
+    let GovernmentOfTheUnitedKingdom = _prefix "GovernmentOfTheUnitedKingdom"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/UnitedKingdomJurisdiction"></see>
     /// </summary>
-    let UnitedKingdomJurisdiction =
-        Namespaced_IRI.parse _namespace_name "UnitedKingdomJurisdiction" |> NamespacedName
-
+    let UnitedKingdomJurisdiction = _prefix "UnitedKingdomJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/GuernseyEntity"></see>
     /// </summary>
-    let GuernseyEntity =
-        Namespaced_IRI.parse _namespace_name "GuernseyEntity" |> NamespacedName
-
+    let GuernseyEntity = _prefix "GuernseyEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/IsleOfManEntity"></see>
     /// </summary>
-    let IsleOfManEntity =
-        Namespaced_IRI.parse _namespace_name "IsleOfManEntity" |> NamespacedName
-
+    let IsleOfManEntity = _prefix "IsleOfManEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/JerseyEntity"></see>
     /// </summary>
-    let JerseyEntity =
-        Namespaced_IRI.parse _namespace_name "JerseyEntity" |> NamespacedName
-
+    let JerseyEntity = _prefix "JerseyEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/NorthernIrelandAssembly"></see>
     /// </summary>
-    let NorthernIrelandAssembly =
-        Namespaced_IRI.parse _namespace_name "NorthernIrelandAssembly" |> NamespacedName
-
+    let NorthernIrelandAssembly = _prefix "NorthernIrelandAssembly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/NorthernIrelandJurisdiction"></see>
     /// </summary>
-    let NorthernIrelandJurisdiction =
-        Namespaced_IRI.parse _namespace_name "NorthernIrelandJurisdiction" |> NamespacedName
-
+    let NorthernIrelandJurisdiction = _prefix "NorthernIrelandJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/NorthernIrelandEntity"></see>
     /// </summary>
-    let NorthernIrelandEntity =
-        Namespaced_IRI.parse _namespace_name "NorthernIrelandEntity" |> NamespacedName
-
+    let NorthernIrelandEntity = _prefix "NorthernIrelandEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/ScotlandEntity"></see>
     /// </summary>
-    let ScotlandEntity =
-        Namespaced_IRI.parse _namespace_name "ScotlandEntity" |> NamespacedName
-
+    let ScotlandEntity = _prefix "ScotlandEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/UnitedKingdomEntity"></see>
     /// </summary>
-    let UnitedKingdomEntity =
-        Namespaced_IRI.parse _namespace_name "UnitedKingdomEntity" |> NamespacedName
-
+    let UnitedKingdomEntity = _prefix "UnitedKingdomEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/WelshEntity"></see>
     /// </summary>
-    let WelshEntity =
-        Namespaced_IRI.parse _namespace_name "WelshEntity" |> NamespacedName
+    let WelshEntity = _prefix "WelshEntity"

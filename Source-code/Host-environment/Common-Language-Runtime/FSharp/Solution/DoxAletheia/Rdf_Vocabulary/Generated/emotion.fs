@@ -1,109 +1,110 @@
 namespace http.ns.inria.fr.emoca.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module emotion =
     let _namespace_name = "http://ns.inria.fr/emoca#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Anger"></see>
     /// </summary>
-    let Anger = Namespaced_IRI.parse _namespace_name "Anger" |> NamespacedName
+    let Anger = _prefix "Anger"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Emotion"></see>
     /// </summary>
-    let Emotion = Namespaced_IRI.parse _namespace_name "Emotion" |> NamespacedName
+    let Emotion = _prefix "Emotion"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Arousal"></see>
     /// </summary>
-    let Arousal = Namespaced_IRI.parse _namespace_name "Arousal" |> NamespacedName
+    let Arousal = _prefix "Arousal"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Component"></see>
     /// </summary>
-    let Component = Namespaced_IRI.parse _namespace_name "Component" |> NamespacedName
+    let Component = _prefix "Component"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Coordinate"></see>
     /// </summary>
-    let Coordinate = Namespaced_IRI.parse _namespace_name "Coordinate" |> NamespacedName
+    let Coordinate = _prefix "Coordinate"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Disgust"></see>
     /// </summary>
-    let Disgust = Namespaced_IRI.parse _namespace_name "Disgust" |> NamespacedName
+    let Disgust = _prefix "Disgust"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Fear"></see>
     /// </summary>
-    let Fear = Namespaced_IRI.parse _namespace_name "Fear" |> NamespacedName
+    let Fear = _prefix "Fear"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Impact"></see>
     /// </summary>
-    let Impact = Namespaced_IRI.parse _namespace_name "Impact" |> NamespacedName
+    let Impact = _prefix "Impact"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Joy"></see>
     /// </summary>
-    let Joy = Namespaced_IRI.parse _namespace_name "Joy" |> NamespacedName
+    let Joy = _prefix "Joy"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Radius"></see>
     /// </summary>
-    let Radius = Namespaced_IRI.parse _namespace_name "Radius" |> NamespacedName
+    let Radius = _prefix "Radius"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Sadness"></see>
     /// </summary>
-    let Sadness = Namespaced_IRI.parse _namespace_name "Sadness" |> NamespacedName
+    let Sadness = _prefix "Sadness"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Stimulus"></see>
     /// </summary>
-    let Stimulus = Namespaced_IRI.parse _namespace_name "Stimulus" |> NamespacedName
+    let Stimulus = _prefix "Stimulus"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Surprise"></see>
     /// </summary>
-    let Surprise = Namespaced_IRI.parse _namespace_name "Surprise" |> NamespacedName
+    let Surprise = _prefix "Surprise"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Trait"></see>
     /// </summary>
-    let Trait = Namespaced_IRI.parse _namespace_name "Trait" |> NamespacedName
+    let Trait = _prefix "Trait"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#Valence"></see>
     /// </summary>
-    let Valence = Namespaced_IRI.parse _namespace_name "Valence" |> NamespacedName
+    let Valence = _prefix "Valence"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#hasEffect"></see>
     /// </summary>
-    let hasEffect = Namespaced_IRI.parse _namespace_name "hasEffect" |> NamespacedName
+    let hasEffect = _prefix "hasEffect"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#hasImpact"></see>
     /// </summary>
-    let hasImpact = Namespaced_IRI.parse _namespace_name "hasImpact" |> NamespacedName
+    let hasImpact = _prefix "hasImpact"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#hasMaximum"></see>
     /// </summary>
-    let hasMaximum = Namespaced_IRI.parse _namespace_name "hasMaximum" |> NamespacedName
+    let hasMaximum = _prefix "hasMaximum"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#hasMinimum"></see>
     /// </summary>
-    let hasMinimum = Namespaced_IRI.parse _namespace_name "hasMinimum" |> NamespacedName
+    let hasMinimum = _prefix "hasMinimum"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#hasTrait"></see>
     /// </summary>
-    let hasTrait = Namespaced_IRI.parse _namespace_name "hasTrait" |> NamespacedName
+    let hasTrait = _prefix "hasTrait"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#involves"></see>
     /// </summary>
-    let involves = Namespaced_IRI.parse _namespace_name "involves" |> NamespacedName
-
+    let involves = _prefix "involves"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#isDefinedBy"></see>
     /// </summary>
-    let isDefinedBy =
-        Namespaced_IRI.parse _namespace_name "isDefinedBy" |> NamespacedName
-
+    let isDefinedBy = _prefix "isDefinedBy"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#pertainsTo"></see>
     /// </summary>
-    let pertainsTo = Namespaced_IRI.parse _namespace_name "pertainsTo" |> NamespacedName
+    let pertainsTo = _prefix "pertainsTo"
     /// <summary>
     ///   <see href="http://ns.inria.fr/emoca#relatesTo"></see>
     /// </summary>
-    let relatesTo = Namespaced_IRI.parse _namespace_name "relatesTo" |> NamespacedName
+    let relatesTo = _prefix "relatesTo"

@@ -1,338 +1,287 @@
 namespace http.purl.org.ctic.empleo.oferta.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module emp =
     let _namespace_name = "http://purl.org/ctic/empleo/oferta#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#AnuncioOferta"></see>
     /// </summary>
-    let AnuncioOferta =
-        Namespaced_IRI.parse _namespace_name "AnuncioOferta" |> NamespacedName
-
+    let AnuncioOferta = _prefix "AnuncioOferta"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#OfertaEmpleo"></see>
     /// </summary>
-    let OfertaEmpleo =
-        Namespaced_IRI.parse _namespace_name "OfertaEmpleo" |> NamespacedName
-
+    let OfertaEmpleo = _prefix "OfertaEmpleo"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#PlantillaPersonal"></see>
     /// </summary>
-    let PlantillaPersonal =
-        Namespaced_IRI.parse _namespace_name "PlantillaPersonal" |> NamespacedName
-
+    let PlantillaPersonal = _prefix "PlantillaPersonal"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#anoOferta"></see>
     /// </summary>
-    let anoOferta = Namespaced_IRI.parse _namespace_name "anoOferta" |> NamespacedName
+    let anoOferta = _prefix "anoOferta"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#anuncio"></see>
     /// </summary>
-    let anuncio = Namespaced_IRI.parse _namespace_name "anuncio" |> NamespacedName
+    let anuncio = _prefix "anuncio"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#bases"></see>
     /// </summary>
-    let bases = Namespaced_IRI.parse _namespace_name "bases" |> NamespacedName
+    let bases = _prefix "bases"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#boa"></see>
     /// </summary>
-    let boa = Namespaced_IRI.parse _namespace_name "boa" |> NamespacedName
+    let boa = _prefix "boa"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#boe"></see>
     /// </summary>
-    let boe = Namespaced_IRI.parse _namespace_name "boe" |> NamespacedName
+    let boe = _prefix "boe"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#bop"></see>
     /// </summary>
-    let bop = Namespaced_IRI.parse _namespace_name "bop" |> NamespacedName
-
+    let bop = _prefix "bop"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#categoriaProfesional"></see>
     /// </summary>
-    let categoriaProfesional =
-        Namespaced_IRI.parse _namespace_name "categoriaProfesional" |> NamespacedName
-
+    let categoriaProfesional = _prefix "categoriaProfesional"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#duracionContrato"></see>
     /// </summary>
-    let duracionContrato =
-        Namespaced_IRI.parse _namespace_name "duracionContrato" |> NamespacedName
-
+    let duracionContrato = _prefix "duracionContrato"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#escalaProfesional"></see>
     /// </summary>
-    let escalaProfesional =
-        Namespaced_IRI.parse _namespace_name "escalaProfesional" |> NamespacedName
-
+    let escalaProfesional = _prefix "escalaProfesional"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias"></see>
     /// </summary>
-    let esquemaCategorias =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias" |> NamespacedName
+    let esquemaCategorias = _prefix "esquemaCategorias"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-administracion"></see>
     /// </summary>
     let ``esquemaCategorias-administracion`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-administracion" |> NamespacedName
+        _prefix "esquemaCategorias-administracion"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-agricultura_alimentacion"></see>
     /// </summary>
     let ``esquemaCategorias-agricultura_alimentacion`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-agricultura_alimentacion" |> NamespacedName
+        _prefix "esquemaCategorias-agricultura_alimentacion"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-almacenes"></see>
     /// </summary>
-    let ``esquemaCategorias-almacenes`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-almacenes" |> NamespacedName
+    let ``esquemaCategorias-almacenes`` = _prefix "esquemaCategorias-almacenes"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-arquitectura_dise%C3%B1o"></see>
     /// </summary>
     let ``esquemaCategorias-arquitectura_dise%C3%B1o`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-arquitectura_dise%C3%B1o" |> NamespacedName
+        _prefix "esquemaCategorias-arquitectura_dise%C3%B1o"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-comercial_ventas"></see>
     /// </summary>
     let ``esquemaCategorias-comercial_ventas`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-comercial_ventas" |> NamespacedName
+        _prefix "esquemaCategorias-comercial_ventas"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-comunicacion_cultura"></see>
     /// </summary>
     let ``esquemaCategorias-comunicacion_cultura`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-comunicacion_cultura" |> NamespacedName
+        _prefix "esquemaCategorias-comunicacion_cultura"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-construccion"></see>
     /// </summary>
-    let ``esquemaCategorias-construccion`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-construccion" |> NamespacedName
+    let ``esquemaCategorias-construccion`` = _prefix "esquemaCategorias-construccion"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-derecho_psicologia"></see>
     /// </summary>
     let ``esquemaCategorias-derecho_psicologia`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-derecho_psicologia" |> NamespacedName
+        _prefix "esquemaCategorias-derecho_psicologia"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-directivos"></see>
     /// </summary>
-    let ``esquemaCategorias-directivos`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-directivos" |> NamespacedName
+    let ``esquemaCategorias-directivos`` = _prefix "esquemaCategorias-directivos"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-educacion_serviciossociales"></see>
     /// </summary>
     let ``esquemaCategorias-educacion_serviciossociales`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-educacion_serviciossociales" |> NamespacedName
+        _prefix "esquemaCategorias-educacion_serviciossociales"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-electricidad_energia"></see>
     /// </summary>
     let ``esquemaCategorias-electricidad_energia`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-electricidad_energia" |> NamespacedName
+        _prefix "esquemaCategorias-electricidad_energia"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-industria"></see>
     /// </summary>
-    let ``esquemaCategorias-industria`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-industria" |> NamespacedName
-
+    let ``esquemaCategorias-industria`` = _prefix "esquemaCategorias-industria"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-informacion"></see>
     /// </summary>
-    let ``esquemaCategorias-informacion`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-informacion" |> NamespacedName
+    let ``esquemaCategorias-informacion`` = _prefix "esquemaCategorias-informacion"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-informatica_telecomunicaciones"></see>
     /// </summary>
     let ``esquemaCategorias-informatica_telecomunicaciones`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-informatica_telecomunicaciones" |> NamespacedName
+        _prefix "esquemaCategorias-informatica_telecomunicaciones"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-ingenieria_ciencias"></see>
     /// </summary>
     let ``esquemaCategorias-ingenieria_ciencias`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-ingenieria_ciencias" |> NamespacedName
+        _prefix "esquemaCategorias-ingenieria_ciencias"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-limpieza_cuidadopersonas"></see>
     /// </summary>
     let ``esquemaCategorias-limpieza_cuidadopersonas`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-limpieza_cuidadopersonas" |> NamespacedName
+        _prefix "esquemaCategorias-limpieza_cuidadopersonas"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-metal_mecanica"></see>
     /// </summary>
     let ``esquemaCategorias-metal_mecanica`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-metal_mecanica" |> NamespacedName
+        _prefix "esquemaCategorias-metal_mecanica"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-peluqueria_estetica"></see>
     /// </summary>
     let ``esquemaCategorias-peluqueria_estetica`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-peluqueria_estetica" |> NamespacedName
+        _prefix "esquemaCategorias-peluqueria_estetica"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-primer_empleo"></see>
     /// </summary>
-    let ``esquemaCategorias-primer_empleo`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-primer_empleo" |> NamespacedName
-
+    let ``esquemaCategorias-primer_empleo`` = _prefix "esquemaCategorias-primer_empleo"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-salud_deporte"></see>
     /// </summary>
-    let ``esquemaCategorias-salud_deporte`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-salud_deporte" |> NamespacedName
-
+    let ``esquemaCategorias-salud_deporte`` = _prefix "esquemaCategorias-salud_deporte"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-transporte"></see>
     /// </summary>
-    let ``esquemaCategorias-transporte`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-transporte" |> NamespacedName
+    let ``esquemaCategorias-transporte`` = _prefix "esquemaCategorias-transporte"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-turismo_hosteleria"></see>
     /// </summary>
     let ``esquemaCategorias-turismo_hosteleria`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-turismo_hosteleria" |> NamespacedName
+        _prefix "esquemaCategorias-turismo_hosteleria"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaCategorias-vigilancia_servicios"></see>
     /// </summary>
     let ``esquemaCategorias-vigilancia_servicios`` =
-        Namespaced_IRI.parse _namespace_name "esquemaCategorias-vigilancia_servicios" |> NamespacedName
+        _prefix "esquemaCategorias-vigilancia_servicios"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaTiposContrato"></see>
     /// </summary>
-    let esquemaTiposContrato =
-        Namespaced_IRI.parse _namespace_name "esquemaTiposContrato" |> NamespacedName
+    let esquemaTiposContrato = _prefix "esquemaTiposContrato"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaTiposContrato-laboral_indefinido"></see>
     /// </summary>
     let ``esquemaTiposContrato-laboral_indefinido`` =
-        Namespaced_IRI.parse _namespace_name "esquemaTiposContrato-laboral_indefinido" |> NamespacedName
+        _prefix "esquemaTiposContrato-laboral_indefinido"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaTiposContrato-laboral_temporal"></see>
     /// </summary>
     let ``esquemaTiposContrato-laboral_temporal`` =
-        Namespaced_IRI.parse _namespace_name "esquemaTiposContrato-laboral_temporal" |> NamespacedName
+        _prefix "esquemaTiposContrato-laboral_temporal"
 
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#esquemaTiposContrato-mercantil"></see>
     /// </summary>
-    let ``esquemaTiposContrato-mercantil`` =
-        Namespaced_IRI.parse _namespace_name "esquemaTiposContrato-mercantil" |> NamespacedName
-
+    let ``esquemaTiposContrato-mercantil`` = _prefix "esquemaTiposContrato-mercantil"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#examen"></see>
     /// </summary>
-    let examen = Namespaced_IRI.parse _namespace_name "examen" |> NamespacedName
+    let examen = _prefix "examen"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#expediente"></see>
     /// </summary>
-    let expediente = Namespaced_IRI.parse _namespace_name "expediente" |> NamespacedName
-
+    let expediente = _prefix "expediente"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#fechaPresentacion"></see>
     /// </summary>
-    let fechaPresentacion =
-        Namespaced_IRI.parse _namespace_name "fechaPresentacion" |> NamespacedName
-
+    let fechaPresentacion = _prefix "fechaPresentacion"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#grupoProfesional"></see>
     /// </summary>
-    let grupoProfesional =
-        Namespaced_IRI.parse _namespace_name "grupoProfesional" |> NamespacedName
-
+    let grupoProfesional = _prefix "grupoProfesional"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#jornada"></see>
     /// </summary>
-    let jornada = Namespaced_IRI.parse _namespace_name "jornada" |> NamespacedName
-
+    let jornada = _prefix "jornada"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#plantillaPersonal"></see>
     /// </summary>
-    let plantillaPersonal =
-        Namespaced_IRI.parse _namespace_name "plantillaPersonal" |> NamespacedName
-
+    let plantillaPersonal = _prefix "plantillaPersonal"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#plazasInternas"></see>
     /// </summary>
-    let plazasInternas =
-        Namespaced_IRI.parse _namespace_name "plazasInternas" |> NamespacedName
-
+    let plazasInternas = _prefix "plazasInternas"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#plazasMinusvalidos"></see>
     /// </summary>
-    let plazasMinusvalidos =
-        Namespaced_IRI.parse _namespace_name "plazasMinusvalidos" |> NamespacedName
-
+    let plazasMinusvalidos = _prefix "plazasMinusvalidos"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#plazasTotal"></see>
     /// </summary>
-    let plazasTotal =
-        Namespaced_IRI.parse _namespace_name "plazasTotal" |> NamespacedName
-
+    let plazasTotal = _prefix "plazasTotal"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#requisito"></see>
     /// </summary>
-    let requisito = Namespaced_IRI.parse _namespace_name "requisito" |> NamespacedName
-
+    let requisito = _prefix "requisito"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#requisito-experiencia"></see>
     /// </summary>
-    let ``requisito-experiencia`` =
-        Namespaced_IRI.parse _namespace_name "requisito-experiencia" |> NamespacedName
-
+    let ``requisito-experiencia`` = _prefix "requisito-experiencia"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#requisito-formacion"></see>
     /// </summary>
-    let ``requisito-formacion`` =
-        Namespaced_IRI.parse _namespace_name "requisito-formacion" |> NamespacedName
-
+    let ``requisito-formacion`` = _prefix "requisito-formacion"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#requisito-idiomas"></see>
     /// </summary>
-    let ``requisito-idiomas`` =
-        Namespaced_IRI.parse _namespace_name "requisito-idiomas" |> NamespacedName
-
+    let ``requisito-idiomas`` = _prefix "requisito-idiomas"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#requisito-inform%C3%A1tica"></see>
     /// </summary>
-    let ``requisito-inform%C3%A1tica`` =
-        Namespaced_IRI.parse _namespace_name "requisito-inform%C3%A1tica" |> NamespacedName
-
+    let ``requisito-inform%C3%A1tica`` = _prefix "requisito-inform%C3%A1tica"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#salario"></see>
     /// </summary>
-    let salario = Namespaced_IRI.parse _namespace_name "salario" |> NamespacedName
-
+    let salario = _prefix "salario"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#tipoContrato"></see>
     /// </summary>
-    let tipoContrato =
-        Namespaced_IRI.parse _namespace_name "tipoContrato" |> NamespacedName
-
+    let tipoContrato = _prefix "tipoContrato"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#titulacion"></see>
     /// </summary>
-    let titulacion = Namespaced_IRI.parse _namespace_name "titulacion" |> NamespacedName
+    let titulacion = _prefix "titulacion"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#tribunal"></see>
     /// </summary>
-    let tribunal = Namespaced_IRI.parse _namespace_name "tribunal" |> NamespacedName
+    let tribunal = _prefix "tribunal"
     /// <summary>
     ///   <see href="http://purl.org/ctic/empleo/oferta#turno"></see>
     /// </summary>
-    let turno = Namespaced_IRI.parse _namespace_name "turno" |> NamespacedName
+    let turno = _prefix "turno"

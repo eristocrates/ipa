@@ -1,269 +1,206 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.RightsAndWarrants.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_raw =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/AllotmentRight"></see>
     /// </summary>
-    let AllotmentRight =
-        Namespaced_IRI.parse _namespace_name "AllotmentRight" |> NamespacedName
-
+    let AllotmentRight = _prefix "AllotmentRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/AllotmentRightFormula"></see>
     /// </summary>
-    let AllotmentRightFormula =
-        Namespaced_IRI.parse _namespace_name "AllotmentRightFormula" |> NamespacedName
+    let AllotmentRightFormula = _prefix "AllotmentRightFormula"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/BarrierInstrumentBasedMiniFutureCertificate"></see>
     /// </summary>
     let BarrierInstrumentBasedMiniFutureCertificate =
-        Namespaced_IRI.parse _namespace_name "BarrierInstrumentBasedMiniFutureCertificate" |> NamespacedName
+        _prefix "BarrierInstrumentBasedMiniFutureCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/MiniFutureCertificate"></see>
     /// </summary>
-    let MiniFutureCertificate =
-        Namespaced_IRI.parse _namespace_name "MiniFutureCertificate" |> NamespacedName
+    let MiniFutureCertificate = _prefix "MiniFutureCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/BarrierUnderlyingMiniFutureCertificate"></see>
     /// </summary>
     let BarrierUnderlyingMiniFutureCertificate =
-        Namespaced_IRI.parse _namespace_name "BarrierUnderlyingMiniFutureCertificate" |> NamespacedName
+        _prefix "BarrierUnderlyingMiniFutureCertificate"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/BasketWarrant"></see>
     /// </summary>
-    let BasketWarrant =
-        Namespaced_IRI.parse _namespace_name "BasketWarrant" |> NamespacedName
-
+    let BasketWarrant = _prefix "BasketWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/Warrant"></see>
     /// </summary>
-    let Warrant = Namespaced_IRI.parse _namespace_name "Warrant" |> NamespacedName
-
+    let Warrant = _prefix "Warrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/BondPurchaseRight"></see>
     /// </summary>
-    let BondPurchaseRight =
-        Namespaced_IRI.parse _namespace_name "BondPurchaseRight" |> NamespacedName
-
+    let BondPurchaseRight = _prefix "BondPurchaseRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PurchaseRight"></see>
     /// </summary>
-    let PurchaseRight =
-        Namespaced_IRI.parse _namespace_name "PurchaseRight" |> NamespacedName
-
+    let PurchaseRight = _prefix "PurchaseRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/BondSubscriptionRight"></see>
     /// </summary>
-    let BondSubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "BondSubscriptionRight" |> NamespacedName
-
+    let BondSubscriptionRight = _prefix "BondSubscriptionRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/SubscriptionRight"></see>
     /// </summary>
-    let SubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "SubscriptionRight" |> NamespacedName
-
+    let SubscriptionRight = _prefix "SubscriptionRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CallPutWarrant"></see>
     /// </summary>
-    let CallPutWarrant =
-        Namespaced_IRI.parse _namespace_name "CallPutWarrant" |> NamespacedName
-
+    let CallPutWarrant = _prefix "CallPutWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CallWarrant"></see>
     /// </summary>
-    let CallWarrant =
-        Namespaced_IRI.parse _namespace_name "CallWarrant" |> NamespacedName
-
+    let CallWarrant = _prefix "CallWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PutWarrant"></see>
     /// </summary>
-    let PutWarrant = Namespaced_IRI.parse _namespace_name "PutWarrant" |> NamespacedName
-
+    let PutWarrant = _prefix "PutWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CombinedInstrumentsPurchaseRight"></see>
     /// </summary>
-    let CombinedInstrumentsPurchaseRight =
-        Namespaced_IRI.parse _namespace_name "CombinedInstrumentsPurchaseRight" |> NamespacedName
+    let CombinedInstrumentsPurchaseRight = _prefix "CombinedInstrumentsPurchaseRight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CombinedInstrumentsSubscriptionRight"></see>
     /// </summary>
     let CombinedInstrumentsSubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "CombinedInstrumentsSubscriptionRight" |> NamespacedName
+        _prefix "CombinedInstrumentsSubscriptionRight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CommodityWarrant"></see>
     /// </summary>
-    let CommodityWarrant =
-        Namespaced_IRI.parse _namespace_name "CommodityWarrant" |> NamespacedName
+    let CommodityWarrant = _prefix "CommodityWarrant"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CommonConvertibleSharePurchaseRight"></see>
     /// </summary>
     let CommonConvertibleSharePurchaseRight =
-        Namespaced_IRI.parse _namespace_name "CommonConvertibleSharePurchaseRight" |> NamespacedName
+        _prefix "CommonConvertibleSharePurchaseRight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CommonConvertibleShareSubscriptionRight"></see>
     /// </summary>
     let CommonConvertibleShareSubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "CommonConvertibleShareSubscriptionRight" |> NamespacedName
+        _prefix "CommonConvertibleShareSubscriptionRight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CommonSharePurchaseRight"></see>
     /// </summary>
-    let CommonSharePurchaseRight =
-        Namespaced_IRI.parse _namespace_name "CommonSharePurchaseRight" |> NamespacedName
-
+    let CommonSharePurchaseRight = _prefix "CommonSharePurchaseRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CommonShareSubscriptionRight"></see>
     /// </summary>
-    let CommonShareSubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "CommonShareSubscriptionRight" |> NamespacedName
-
+    let CommonShareSubscriptionRight = _prefix "CommonShareSubscriptionRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CompanyWarrant"></see>
     /// </summary>
-    let CompanyWarrant =
-        Namespaced_IRI.parse _namespace_name "CompanyWarrant" |> NamespacedName
-
+    let CompanyWarrant = _prefix "CompanyWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/EquityWarrant"></see>
     /// </summary>
-    let EquityWarrant =
-        Namespaced_IRI.parse _namespace_name "EquityWarrant" |> NamespacedName
-
+    let EquityWarrant = _prefix "EquityWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/ConstantLeverageCertificate"></see>
     /// </summary>
-    let ConstantLeverageCertificate =
-        Namespaced_IRI.parse _namespace_name "ConstantLeverageCertificate" |> NamespacedName
-
+    let ConstantLeverageCertificate = _prefix "ConstantLeverageCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CoveredWarrant"></see>
     /// </summary>
-    let CoveredWarrant =
-        Namespaced_IRI.parse _namespace_name "CoveredWarrant" |> NamespacedName
-
+    let CoveredWarrant = _prefix "CoveredWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/CurrencyWarrant"></see>
     /// </summary>
-    let CurrencyWarrant =
-        Namespaced_IRI.parse _namespace_name "CurrencyWarrant" |> NamespacedName
-
+    let CurrencyWarrant = _prefix "CurrencyWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/DebtWarrant"></see>
     /// </summary>
-    let DebtWarrant =
-        Namespaced_IRI.parse _namespace_name "DebtWarrant" |> NamespacedName
-
+    let DebtWarrant = _prefix "DebtWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/TraditionalWarrant"></see>
     /// </summary>
-    let TraditionalWarrant =
-        Namespaced_IRI.parse _namespace_name "TraditionalWarrant" |> NamespacedName
-
+    let TraditionalWarrant = _prefix "TraditionalWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/ExchangeTradedWarrant"></see>
     /// </summary>
-    let ExchangeTradedWarrant =
-        Namespaced_IRI.parse _namespace_name "ExchangeTradedWarrant" |> NamespacedName
-
+    let ExchangeTradedWarrant = _prefix "ExchangeTradedWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PublicWarrant"></see>
     /// </summary>
-    let PublicWarrant =
-        Namespaced_IRI.parse _namespace_name "PublicWarrant" |> NamespacedName
-
+    let PublicWarrant = _prefix "PublicWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/ExoticWarrant"></see>
     /// </summary>
-    let ExoticWarrant =
-        Namespaced_IRI.parse _namespace_name "ExoticWarrant" |> NamespacedName
-
+    let ExoticWarrant = _prefix "ExoticWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/IndexWarrant"></see>
     /// </summary>
-    let IndexWarrant =
-        Namespaced_IRI.parse _namespace_name "IndexWarrant" |> NamespacedName
-
+    let IndexWarrant = _prefix "IndexWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/LongMiniFutureCertificate"></see>
     /// </summary>
-    let LongMiniFutureCertificate =
-        Namespaced_IRI.parse _namespace_name "LongMiniFutureCertificate" |> NamespacedName
-
+    let LongMiniFutureCertificate = _prefix "LongMiniFutureCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/NakedWarrant"></see>
     /// </summary>
-    let NakedWarrant =
-        Namespaced_IRI.parse _namespace_name "NakedWarrant" |> NamespacedName
-
+    let NakedWarrant = _prefix "NakedWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PerpetualWarrant"></see>
     /// </summary>
-    let PerpetualWarrant =
-        Namespaced_IRI.parse _namespace_name "PerpetualWarrant" |> NamespacedName
+    let PerpetualWarrant = _prefix "PerpetualWarrant"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PreferredConvertibleSharePurchaseRight"></see>
     /// </summary>
     let PreferredConvertibleSharePurchaseRight =
-        Namespaced_IRI.parse _namespace_name "PreferredConvertibleSharePurchaseRight" |> NamespacedName
+        _prefix "PreferredConvertibleSharePurchaseRight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PreferredConvertibleShareSubscriptionRight"></see>
     /// </summary>
     let PreferredConvertibleShareSubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "PreferredConvertibleShareSubscriptionRight" |> NamespacedName
+        _prefix "PreferredConvertibleShareSubscriptionRight"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PreferredSharePurchaseRight"></see>
     /// </summary>
-    let PreferredSharePurchaseRight =
-        Namespaced_IRI.parse _namespace_name "PreferredSharePurchaseRight" |> NamespacedName
-
+    let PreferredSharePurchaseRight = _prefix "PreferredSharePurchaseRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PreferredShareSubscriptionRight"></see>
     /// </summary>
-    let PreferredShareSubscriptionRight =
-        Namespaced_IRI.parse _namespace_name "PreferredShareSubscriptionRight" |> NamespacedName
-
+    let PreferredShareSubscriptionRight = _prefix "PreferredShareSubscriptionRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/PrivateWarrant"></see>
     /// </summary>
-    let PrivateWarrant =
-        Namespaced_IRI.parse _namespace_name "PrivateWarrant" |> NamespacedName
-
+    let PrivateWarrant = _prefix "PrivateWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/ShortMiniFutureCertificate"></see>
     /// </summary>
-    let ShortMiniFutureCertificate =
-        Namespaced_IRI.parse _namespace_name "ShortMiniFutureCertificate" |> NamespacedName
-
+    let ShortMiniFutureCertificate = _prefix "ShortMiniFutureCertificate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/StructuredWarrant"></see>
     /// </summary>
-    let StructuredWarrant =
-        Namespaced_IRI.parse _namespace_name "StructuredWarrant" |> NamespacedName
-
+    let StructuredWarrant = _prefix "StructuredWarrant"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/hasConversionRatio"></see>
     /// </summary>
-    let hasConversionRatio =
-        Namespaced_IRI.parse _namespace_name "hasConversionRatio" |> NamespacedName
-
+    let hasConversionRatio = _prefix "hasConversionRatio"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/hasOversubscribeOption"></see>
     /// </summary>
-    let hasOversubscribeOption =
-        Namespaced_IRI.parse _namespace_name "hasOversubscribeOption" |> NamespacedName
+    let hasOversubscribeOption = _prefix "hasOversubscribeOption"

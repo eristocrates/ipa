@@ -1,112 +1,98 @@
 namespace http.purl.org.ontology.storyline.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module nsl =
     let _namespace_name = "http://purl.org/ontology/storyline/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://purl.org/ontology/storyline/0.2"></see>
     /// </summary>
-    let ``_0.2`` = Namespaced_IRI.parse _namespace_name "0.2" |> NamespacedName
+    let ``_0.2`` = _prefix "0.2"
     /// <summary>
     ///   <see href="http://purl.org/ontology/storyline/0.3"></see>
     /// </summary>
-    let ``_0.3`` = Namespaced_IRI.parse _namespace_name "0.3" |> NamespacedName
-
+    let ``_0.3`` = _prefix "0.3"
     /// <summary>
     /// Attribution of a storyline used for attributing the interpretation of the storyline to some agent. An interface class, that doesn't restrict the implementation of an attribution.
     /// <see href="http://purl.org/ontology/storyline/Attribution"></see></summary>
-    let Attribution =
-        Namespaced_IRI.parse _namespace_name "Attribution" |> NamespacedName
-
+    let Attribution = _prefix "Attribution"
     /// <summary>
     /// A newsworthy event. An un-disputable real world event.
     /// <see href="http://purl.org/ontology/storyline/Event"></see></summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     /// An abstract parent class of storyline components.
     /// <see href="http://purl.org/ontology/storyline/StorylineComponent"></see></summary>
-    let StorylineComponent =
-        Namespaced_IRI.parse _namespace_name "StorylineComponent" |> NamespacedName
-
+    let StorylineComponent = _prefix "StorylineComponent"
     /// <summary>
     /// A news storyline.
     /// <see href="http://purl.org/ontology/storyline/Storyline"></see></summary>
-    let Storyline = Namespaced_IRI.parse _namespace_name "Storyline" |> NamespacedName
-
+    let Storyline = _prefix "Storyline"
     /// <summary>
     /// A storyline slot, used as a container for storyline components.
     /// <see href="http://purl.org/ontology/storyline/StorylineSlot"></see></summary>
-    let StorylineSlot =
-        Namespaced_IRI.parse _namespace_name "StorylineSlot" |> NamespacedName
-
+    let StorylineSlot = _prefix "StorylineSlot"
     /// <summary>
     /// The topic of a storyline. An interface to some concept in a knowledge domain.
     /// <see href="http://purl.org/ontology/storyline/Topic"></see></summary>
-    let Topic = Namespaced_IRI.parse _namespace_name "Topic" |> NamespacedName
-
+    let Topic = _prefix "Topic"
     /// <summary>
     /// Associates a storyline to its attribution. Provides for interpretation provenance through attribution
     /// <see href="http://purl.org/ontology/storyline/attributedTo"></see></summary>
-    let attributedTo =
-        Namespaced_IRI.parse _namespace_name "attributedTo" |> NamespacedName
-
+    let attributedTo = _prefix "attributedTo"
     /// <summary>
     /// An editorial comment on a storyline
     /// <see href="http://purl.org/ontology/storyline/comment"></see></summary>
-    let comment = Namespaced_IRI.parse _namespace_name "comment" |> NamespacedName
+    let comment = _prefix "comment"
     /// <summary>
     /// Associates a Slot to a StorylineComponent contained therein. Can be a news event or another storyline
     /// <see href="http://purl.org/ontology/storyline/contains"></see></summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
-
+    let contains = _prefix "contains"
     /// <summary>
     /// The date a storyline was created
     /// <see href="http://purl.org/ontology/storyline/dateCreated"></see></summary>
-    let dateCreated =
-        Namespaced_IRI.parse _namespace_name "dateCreated" |> NamespacedName
-
+    let dateCreated = _prefix "dateCreated"
     /// <summary>
     /// Allows one or more slots to be sequenced. Slot A follows Slot B.
     /// <see href="http://purl.org/ontology/storyline/follows"></see></summary>
-    let follows = Namespaced_IRI.parse _namespace_name "follows" |> NamespacedName
+    let follows = _prefix "follows"
     /// <summary>
     /// Associates a slot to a storyline as a chapter of an existing storyline.
     /// <see href="http://purl.org/ontology/storyline/hasChapter"></see></summary>
-    let hasChapter = Namespaced_IRI.parse _namespace_name "hasChapter" |> NamespacedName
+    let hasChapter = _prefix "hasChapter"
     /// <summary>
     /// Associates a slot to a storyline. A storyline can have many slots
     /// <see href="http://purl.org/ontology/storyline/hasSlot"></see></summary>
-    let hasSlot = Namespaced_IRI.parse _namespace_name "hasSlot" |> NamespacedName
-
+    let hasSlot = _prefix "hasSlot"
     /// <summary>
     /// Associates a slot to a storyline as a development of an existing storyline.
     /// <see href="http://purl.org/ontology/storyline/hasDevelopment"></see></summary>
-    let hasDevelopment =
-        Namespaced_IRI.parse _namespace_name "hasDevelopment" |> NamespacedName
-
+    let hasDevelopment = _prefix "hasDevelopment"
     /// <summary>
     /// Associates a slot to a storyline as an update to an existing storyline.
     /// <see href="http://purl.org/ontology/storyline/hasUpdate"></see></summary>
-    let hasUpdate = Namespaced_IRI.parse _namespace_name "hasUpdate" |> NamespacedName
+    let hasUpdate = _prefix "hasUpdate"
     /// <summary>
     /// A slot index. Allows slots to be ordered numerically
     /// <see href="http://purl.org/ontology/storyline/index"></see></summary>
-    let index = Namespaced_IRI.parse _namespace_name "index" |> NamespacedName
+    let index = _prefix "index"
     /// <summary>
     /// The synopsis of a storyline
     /// <see href="http://purl.org/ontology/storyline/synopsis"></see></summary>
-    let synopsis = Namespaced_IRI.parse _namespace_name "synopsis" |> NamespacedName
+    let synopsis = _prefix "synopsis"
     /// <summary>
     /// The time of a slot. A Temporal entity, an interval. Allows slots to be ordered temporally.
     /// <see href="http://purl.org/ontology/storyline/time"></see></summary>
-    let time = Namespaced_IRI.parse _namespace_name "time" |> NamespacedName
+    let time = _prefix "time"
     /// <summary>
     /// A title of a storyline
     /// <see href="http://purl.org/ontology/storyline/title"></see></summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
+    let title = _prefix "title"
     /// <summary>
     /// Associates a slot to a topic
     /// <see href="http://purl.org/ontology/storyline/topic"></see></summary>
-    let topic = Namespaced_IRI.parse _namespace_name "topic" |> NamespacedName
+    let topic = _prefix "topic"

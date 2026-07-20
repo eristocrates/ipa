@@ -1,147 +1,106 @@
 namespace http.def.seegrid.csiro.au.isotc211.iso19115._2003.extent.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ext =
     let _namespace_name = "http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#GeographicBoundingBox"></see>
     /// </summary>
-    let GeographicBoundingBox =
-        Namespaced_IRI.parse _namespace_name "GeographicBoundingBox" |> NamespacedName
-
+    let GeographicBoundingBox = _prefix "GeographicBoundingBox"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#westBoundLongitude"></see>
     /// </summary>
-    let westBoundLongitude =
-        Namespaced_IRI.parse _namespace_name "westBoundLongitude" |> NamespacedName
-
+    let westBoundLongitude = _prefix "westBoundLongitude"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#VerticalExtent"></see>
     /// </summary>
-    let VerticalExtent =
-        Namespaced_IRI.parse _namespace_name "VerticalExtent" |> NamespacedName
-
+    let VerticalExtent = _prefix "VerticalExtent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#northBoundLatitude"></see>
     /// </summary>
-    let northBoundLatitude =
-        Namespaced_IRI.parse _namespace_name "northBoundLatitude" |> NamespacedName
-
+    let northBoundLatitude = _prefix "northBoundLatitude"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#eastBoundLongitude"></see>
     /// </summary>
-    let eastBoundLongitude =
-        Namespaced_IRI.parse _namespace_name "eastBoundLongitude" |> NamespacedName
-
+    let eastBoundLongitude = _prefix "eastBoundLongitude"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#TemporalExtent"></see>
     /// </summary>
-    let TemporalExtent =
-        Namespaced_IRI.parse _namespace_name "TemporalExtent" |> NamespacedName
-
+    let TemporalExtent = _prefix "TemporalExtent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#GeographicDescription"></see>
     /// </summary>
-    let GeographicDescription =
-        Namespaced_IRI.parse _namespace_name "GeographicDescription" |> NamespacedName
-
+    let GeographicDescription = _prefix "GeographicDescription"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#extent"></see>
     /// </summary>
-    let extent = Namespaced_IRI.parse _namespace_name "extent" |> NamespacedName
-
+    let extent = _prefix "extent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#GeographicExtent"></see>
     /// </summary>
-    let GeographicExtent =
-        Namespaced_IRI.parse _namespace_name "GeographicExtent" |> NamespacedName
-
+    let GeographicExtent = _prefix "GeographicExtent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#minumumValue"></see>
     /// </summary>
-    let minumumValue =
-        Namespaced_IRI.parse _namespace_name "minumumValue" |> NamespacedName
-
+    let minumumValue = _prefix "minumumValue"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#geographicIdentifier"></see>
     /// </summary>
-    let geographicIdentifier =
-        Namespaced_IRI.parse _namespace_name "geographicIdentifier" |> NamespacedName
-
+    let geographicIdentifier = _prefix "geographicIdentifier"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#extentTypeCode"></see>
     /// </summary>
-    let extentTypeCode =
-        Namespaced_IRI.parse _namespace_name "extentTypeCode" |> NamespacedName
-
+    let extentTypeCode = _prefix "extentTypeCode"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#SpatialTemporalExtent"></see>
     /// </summary>
-    let SpatialTemporalExtent =
-        Namespaced_IRI.parse _namespace_name "SpatialTemporalExtent" |> NamespacedName
-
+    let SpatialTemporalExtent = _prefix "SpatialTemporalExtent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#spatialExtent"></see>
     /// </summary>
-    let spatialExtent =
-        Namespaced_IRI.parse _namespace_name "spatialExtent" |> NamespacedName
-
+    let spatialExtent = _prefix "spatialExtent"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#temporalElement"></see>
     /// </summary>
-    let temporalElement =
-        Namespaced_IRI.parse _namespace_name "temporalElement" |> NamespacedName
-
+    let temporalElement = _prefix "temporalElement"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#BoundingPolygon"></see>
     /// </summary>
-    let BoundingPolygon =
-        Namespaced_IRI.parse _namespace_name "BoundingPolygon" |> NamespacedName
-
+    let BoundingPolygon = _prefix "BoundingPolygon"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#verticalCRS"></see>
     /// </summary>
-    let verticalCRS =
-        Namespaced_IRI.parse _namespace_name "verticalCRS" |> NamespacedName
-
+    let verticalCRS = _prefix "verticalCRS"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#geographicElement"></see>
     /// </summary>
-    let geographicElement =
-        Namespaced_IRI.parse _namespace_name "geographicElement" |> NamespacedName
-
+    let geographicElement = _prefix "geographicElement"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#southBoundLatitude"></see>
     /// </summary>
-    let southBoundLatitude =
-        Namespaced_IRI.parse _namespace_name "southBoundLatitude" |> NamespacedName
-
+    let southBoundLatitude = _prefix "southBoundLatitude"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#maximumValue"></see>
     /// </summary>
-    let maximumValue =
-        Namespaced_IRI.parse _namespace_name "maximumValue" |> NamespacedName
-
+    let maximumValue = _prefix "maximumValue"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#polygon"></see>
     /// </summary>
-    let polygon = Namespaced_IRI.parse _namespace_name "polygon" |> NamespacedName
-
+    let polygon = _prefix "polygon"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#verticalElement"></see>
     /// </summary>
-    let verticalElement =
-        Namespaced_IRI.parse _namespace_name "verticalElement" |> NamespacedName
-
+    let verticalElement = _prefix "verticalElement"
     /// <summary>
     ///   <see href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent"></see>
     /// </summary>
-    let Extent = Namespaced_IRI.parse _namespace_name "Extent" |> NamespacedName
+    let Extent = _prefix "Extent"

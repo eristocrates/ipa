@@ -1,391 +1,298 @@
 namespace http.www.linkedmodel.org.schema.vaem.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module vaem =
     let _namespace_name = "http://www.linkedmodel.org/schema/vaem#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasGraphMetadata"></see>
     /// </summary>
-    let hasGraphMetadata =
-        Namespaced_IRI.parse _namespace_name "hasGraphMetadata" |> NamespacedName
-
+    let hasGraphMetadata = _prefix "hasGraphMetadata"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#GMD_VAEM"></see>
     /// </summary>
-    let GMD_VAEM = Namespaced_IRI.parse _namespace_name "GMD_VAEM" |> NamespacedName
+    let GMD_VAEM = _prefix "GMD_VAEM"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#Aspect"></see>
     /// </summary>
-    let Aspect = Namespaced_IRI.parse _namespace_name "Aspect" |> NamespacedName
+    let Aspect = _prefix "Aspect"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#Dimension"></see>
     /// </summary>
-    let Dimension = Namespaced_IRI.parse _namespace_name "Dimension" |> NamespacedName
-
+    let Dimension = _prefix "Dimension"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#CatalogEntry"></see>
     /// </summary>
-    let CatalogEntry =
-        Namespaced_IRI.parse _namespace_name "CatalogEntry" |> NamespacedName
-
+    let CatalogEntry = _prefix "CatalogEntry"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#CollectionGraph"></see>
     /// </summary>
-    let CollectionGraph =
-        Namespaced_IRI.parse _namespace_name "CollectionGraph" |> NamespacedName
-
+    let CollectionGraph = _prefix "CollectionGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#filePrefix"></see>
     /// </summary>
-    let filePrefix = Namespaced_IRI.parse _namespace_name "filePrefix" |> NamespacedName
+    let filePrefix = _prefix "filePrefix"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#GraphRole"></see>
     /// </summary>
-    let GraphRole = Namespaced_IRI.parse _namespace_name "GraphRole" |> NamespacedName
-
+    let GraphRole = _prefix "GraphRole"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#ConstraintsGraph"></see>
     /// </summary>
-    let ConstraintsGraph =
-        Namespaced_IRI.parse _namespace_name "ConstraintsGraph" |> NamespacedName
-
+    let ConstraintsGraph = _prefix "ConstraintsGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#ControllersGraph"></see>
     /// </summary>
-    let ControllersGraph =
-        Namespaced_IRI.parse _namespace_name "ControllersGraph" |> NamespacedName
-
+    let ControllersGraph = _prefix "ControllersGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#CurationGraph"></see>
     /// </summary>
-    let CurationGraph =
-        Namespaced_IRI.parse _namespace_name "CurationGraph" |> NamespacedName
-
+    let CurationGraph = _prefix "CurationGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#DataGraph"></see>
     /// </summary>
-    let DataGraph = Namespaced_IRI.parse _namespace_name "DataGraph" |> NamespacedName
+    let DataGraph = _prefix "DataGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#Discipline"></see>
     /// </summary>
-    let Discipline = Namespaced_IRI.parse _namespace_name "Discipline" |> NamespacedName
-
+    let Discipline = _prefix "Discipline"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#DocumentationGraph"></see>
     /// </summary>
-    let DocumentationGraph =
-        Namespaced_IRI.parse _namespace_name "DocumentationGraph" |> NamespacedName
-
+    let DocumentationGraph = _prefix "DocumentationGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#Domain"></see>
     /// </summary>
-    let Domain = Namespaced_IRI.parse _namespace_name "Domain" |> NamespacedName
-
+    let Domain = _prefix "Domain"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#FunctionsGraph"></see>
     /// </summary>
-    let FunctionsGraph =
-        Namespaced_IRI.parse _namespace_name "FunctionsGraph" |> NamespacedName
-
+    let FunctionsGraph = _prefix "FunctionsGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasGraphRole"></see>
     /// </summary>
-    let hasGraphRole =
-        Namespaced_IRI.parse _namespace_name "hasGraphRole" |> NamespacedName
-
+    let hasGraphRole = _prefix "hasGraphRole"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#SchemaGraph"></see>
     /// </summary>
-    let SchemaGraph =
-        Namespaced_IRI.parse _namespace_name "SchemaGraph" |> NamespacedName
-
+    let SchemaGraph = _prefix "SchemaGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasOwner"></see>
     /// </summary>
-    let hasOwner = Namespaced_IRI.parse _namespace_name "hasOwner" |> NamespacedName
-
+    let hasOwner = _prefix "hasOwner"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#TopQuadrant"></see>
     /// </summary>
-    let TopQuadrant =
-        Namespaced_IRI.parse _namespace_name "TopQuadrant" |> NamespacedName
-
+    let TopQuadrant = _prefix "TopQuadrant"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasSteward"></see>
     /// </summary>
-    let hasSteward = Namespaced_IRI.parse _namespace_name "hasSteward" |> NamespacedName
+    let hasSteward = _prefix "hasSteward"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#intent"></see>
     /// </summary>
-    let intent = Namespaced_IRI.parse _namespace_name "intent" |> NamespacedName
-
+    let intent = _prefix "intent"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#latestPublishedVersion"></see>
     /// </summary>
-    let latestPublishedVersion =
-        Namespaced_IRI.parse _namespace_name "latestPublishedVersion" |> NamespacedName
-
+    let latestPublishedVersion = _prefix "latestPublishedVersion"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#logo"></see>
     /// </summary>
-    let logo = Namespaced_IRI.parse _namespace_name "logo" |> NamespacedName
+    let logo = _prefix "logo"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#namespace"></see>
     /// </summary>
-    let namespace_ = Namespaced_IRI.parse _namespace_name "namespace" |> NamespacedName
-
+    let namespace_ = _prefix "namespace"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#namespacePrefix"></see>
     /// </summary>
-    let namespacePrefix =
-        Namespaced_IRI.parse _namespace_name "namespacePrefix" |> NamespacedName
-
+    let namespacePrefix = _prefix "namespacePrefix"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#owner"></see>
     /// </summary>
-    let owner = Namespaced_IRI.parse _namespace_name "owner" |> NamespacedName
-
+    let owner = _prefix "owner"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#previousPublishedVersion"></see>
     /// </summary>
-    let previousPublishedVersion =
-        Namespaced_IRI.parse _namespace_name "previousPublishedVersion" |> NamespacedName
-
+    let previousPublishedVersion = _prefix "previousPublishedVersion"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#rdfxmlFileURL"></see>
     /// </summary>
-    let rdfxmlFileURL =
-        Namespaced_IRI.parse _namespace_name "rdfxmlFileURL" |> NamespacedName
-
+    let rdfxmlFileURL = _prefix "rdfxmlFileURL"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#revision"></see>
     /// </summary>
-    let revision = Namespaced_IRI.parse _namespace_name "revision" |> NamespacedName
+    let revision = _prefix "revision"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
-
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#turtleFileURL"></see>
     /// </summary>
-    let turtleFileURL =
-        Namespaced_IRI.parse _namespace_name "turtleFileURL" |> NamespacedName
-
+    let turtleFileURL = _prefix "turtleFileURL"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#usesNonImportedResource"></see>
     /// </summary>
-    let usesNonImportedResource =
-        Namespaced_IRI.parse _namespace_name "usesNonImportedResource" |> NamespacedName
-
+    let usesNonImportedResource = _prefix "usesNonImportedResource"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#withAttributionTo"></see>
     /// </summary>
-    let withAttributionTo =
-        Namespaced_IRI.parse _namespace_name "withAttributionTo" |> NamespacedName
-
+    let withAttributionTo = _prefix "withAttributionTo"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#GraphMetaData"></see>
     /// </summary>
-    let GraphMetaData =
-        Namespaced_IRI.parse _namespace_name "GraphMetaData" |> NamespacedName
-
+    let GraphMetaData = _prefix "GraphMetaData"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasAspect"></see>
     /// </summary>
-    let hasAspect = Namespaced_IRI.parse _namespace_name "hasAspect" |> NamespacedName
+    let hasAspect = _prefix "hasAspect"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasDomain"></see>
     /// </summary>
-    let hasDomain = Namespaced_IRI.parse _namespace_name "hasDomain" |> NamespacedName
-
+    let hasDomain = _prefix "hasDomain"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasDiscipline"></see>
     /// </summary>
-    let hasDiscipline =
-        Namespaced_IRI.parse _namespace_name "hasDiscipline" |> NamespacedName
-
+    let hasDiscipline = _prefix "hasDiscipline"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#Viewpoint"></see>
     /// </summary>
-    let Viewpoint = Namespaced_IRI.parse _namespace_name "Viewpoint" |> NamespacedName
-
+    let Viewpoint = _prefix "Viewpoint"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasViewpoint"></see>
     /// </summary>
-    let hasViewpoint =
-        Namespaced_IRI.parse _namespace_name "hasViewpoint" |> NamespacedName
-
+    let hasViewpoint = _prefix "hasViewpoint"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasMetadata"></see>
     /// </summary>
-    let hasMetadata =
-        Namespaced_IRI.parse _namespace_name "hasMetadata" |> NamespacedName
-
+    let hasMetadata = _prefix "hasMetadata"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasIdentifier"></see>
     /// </summary>
-    let hasIdentifier =
-        Namespaced_IRI.parse _namespace_name "hasIdentifier" |> NamespacedName
-
+    let hasIdentifier = _prefix "hasIdentifier"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasLicenseType"></see>
     /// </summary>
-    let hasLicenseType =
-        Namespaced_IRI.parse _namespace_name "hasLicenseType" |> NamespacedName
-
+    let hasLicenseType = _prefix "hasLicenseType"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#Party"></see>
     /// </summary>
-    let Party = Namespaced_IRI.parse _namespace_name "Party" |> NamespacedName
-
+    let Party = _prefix "Party"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#specificity"></see>
     /// </summary>
-    let specificity =
-        Namespaced_IRI.parse _namespace_name "specificity" |> NamespacedName
-
+    let specificity = _prefix "specificity"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#LinkSetGraph"></see>
     /// </summary>
-    let LinkSetGraph =
-        Namespaced_IRI.parse _namespace_name "LinkSetGraph" |> NamespacedName
-
+    let LinkSetGraph = _prefix "LinkSetGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#MappingGraph"></see>
     /// </summary>
-    let MappingGraph =
-        Namespaced_IRI.parse _namespace_name "MappingGraph" |> NamespacedName
-
+    let MappingGraph = _prefix "MappingGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#url"></see>
     /// </summary>
-    let url = Namespaced_IRI.parse _namespace_name "url" |> NamespacedName
+    let url = _prefix "url"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#ProxyGraph"></see>
     /// </summary>
-    let ProxyGraph = Namespaced_IRI.parse _namespace_name "ProxyGraph" |> NamespacedName
+    let ProxyGraph = _prefix "ProxyGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#RulesGraph"></see>
     /// </summary>
-    let RulesGraph = Namespaced_IRI.parse _namespace_name "RulesGraph" |> NamespacedName
-
+    let RulesGraph = _prefix "RulesGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#ScriptGraph"></see>
     /// </summary>
-    let ScriptGraph =
-        Namespaced_IRI.parse _namespace_name "ScriptGraph" |> NamespacedName
-
+    let ScriptGraph = _prefix "ScriptGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#TransformsGraph"></see>
     /// </summary>
-    let TransformsGraph =
-        Namespaced_IRI.parse _namespace_name "TransformsGraph" |> NamespacedName
-
+    let TransformsGraph = _prefix "TransformsGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#ViewGraph"></see>
     /// </summary>
-    let ViewGraph = Namespaced_IRI.parse _namespace_name "ViewGraph" |> NamespacedName
-
+    let ViewGraph = _prefix "ViewGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#VocabularyGraph"></see>
     /// </summary>
-    let VocabularyGraph =
-        Namespaced_IRI.parse _namespace_name "VocabularyGraph" |> NamespacedName
-
+    let VocabularyGraph = _prefix "VocabularyGraph"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#abbreviation"></see>
     /// </summary>
-    let abbreviation =
-        Namespaced_IRI.parse _namespace_name "abbreviation" |> NamespacedName
-
+    let abbreviation = _prefix "abbreviation"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#acronym"></see>
     /// </summary>
-    let acronym = Namespaced_IRI.parse _namespace_name "acronym" |> NamespacedName
+    let acronym = _prefix "acronym"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#comment"></see>
     /// </summary>
-    let comment = Namespaced_IRI.parse _namespace_name "comment" |> NamespacedName
+    let comment = _prefix "comment"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#date"></see>
     /// </summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
-
+    let date = _prefix "date"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#dateCreated"></see>
     /// </summary>
-    let dateCreated =
-        Namespaced_IRI.parse _namespace_name "dateCreated" |> NamespacedName
-
+    let dateCreated = _prefix "dateCreated"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#hasDimension"></see>
     /// </summary>
-    let hasDimension =
-        Namespaced_IRI.parse _namespace_name "hasDimension" |> NamespacedName
-
+    let hasDimension = _prefix "hasDimension"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#idString"></see>
     /// </summary>
-    let idString = Namespaced_IRI.parse _namespace_name "idString" |> NamespacedName
-
+    let idString = _prefix "idString"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#isElaboratedIn"></see>
     /// </summary>
-    let isElaboratedIn =
-        Namespaced_IRI.parse _namespace_name "isElaboratedIn" |> NamespacedName
-
+    let isElaboratedIn = _prefix "isElaboratedIn"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#lastUpdated"></see>
     /// </summary>
-    let lastUpdated =
-        Namespaced_IRI.parse _namespace_name "lastUpdated" |> NamespacedName
-
+    let lastUpdated = _prefix "lastUpdated"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#ownedBy"></see>
     /// </summary>
-    let ownedBy = Namespaced_IRI.parse _namespace_name "ownedBy" |> NamespacedName
-
+    let ownedBy = _prefix "ownedBy"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#owningParty"></see>
     /// </summary>
-    let owningParty =
-        Namespaced_IRI.parse _namespace_name "owningParty" |> NamespacedName
-
+    let owningParty = _prefix "owningParty"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#rationale"></see>
     /// </summary>
-    let rationale = Namespaced_IRI.parse _namespace_name "rationale" |> NamespacedName
-
+    let rationale = _prefix "rationale"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#reifiableBy"></see>
     /// </summary>
-    let reifiableBy =
-        Namespaced_IRI.parse _namespace_name "reifiableBy" |> NamespacedName
-
+    let reifiableBy = _prefix "reifiableBy"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#releaseDate"></see>
     /// </summary>
-    let releaseDate =
-        Namespaced_IRI.parse _namespace_name "releaseDate" |> NamespacedName
-
+    let releaseDate = _prefix "releaseDate"
     /// <summary>
     ///   <see href="http://www.linkedmodel.org/schema/vaem#todo"></see>
     /// </summary>
-    let todo = Namespaced_IRI.parse _namespace_name "todo" |> NamespacedName
+    let todo = _prefix "todo"

@@ -1,797 +1,563 @@
 namespace http.w3id.org.emmo_hpo.hpo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module hpo =
     let _namespace_name = "http://w3id.org/emmo-hpo/hpo#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// A polymer obtained through an addition reaction, that is, a reaction involving the creation of a single bond between the atoms of different molecules which are involved in a double or triple bond.
     /// <see href="http://w3id.org/emmo-hpo/hpo#AdditionPolymer"></see></summary>
-    let AdditionPolymer =
-        Namespaced_IRI.parse _namespace_name "AdditionPolymer" |> NamespacedName
-
+    let AdditionPolymer = _prefix "AdditionPolymer"
     /// <summary>
     /// A term used for a large number of specialist chemicals which are added to compounds to impart specific properties.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Additive"></see></summary>
-    let Additive = Namespaced_IRI.parse _namespace_name "Additive" |> NamespacedName
-
+    let Additive = _prefix "Additive"
     /// <summary>
     /// Intermediate mixture to make a formulation that allows formulated resin differentiation.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinIngredient"></see></summary>
-    let ResinIngredient =
-        Namespaced_IRI.parse _namespace_name "ResinIngredient" |> NamespacedName
-
+    let ResinIngredient = _prefix "ResinIngredient"
     /// <summary>
     /// A class of structures characterised by a branched skeleton.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Branched"></see></summary>
-    let Branched = Namespaced_IRI.parse _namespace_name "Branched" |> NamespacedName
-
+    let Branched = _prefix "Branched"
     /// <summary>
     /// A 2-dimensional representation of chemical structures of organic compounds, showing the chemical bonds as lines, carbon atoms as vertices, and hetero atoms with labels. Hydrogen atoms are omitted in the representation since their presence can be derived from the valence of carbon atoms.
     /// <see href="http://w3id.org/emmo-hpo/hpo#SkeletalFormula"></see></summary>
-    let SkeletalFormula =
-        Namespaced_IRI.parse _namespace_name "SkeletalFormula" |> NamespacedName
-
+    let SkeletalFormula = _prefix "SkeletalFormula"
     /// <summary>
     /// A polymer whose molecular structure is characterised by a regular or irregular attachment of side chains to the main backbone chain. .
     /// <see href="http://w3id.org/emmo-hpo/hpo#BranchedChainPolymer"></see></summary>
-    let BranchedChainPolymer =
-        Namespaced_IRI.parse _namespace_name "BranchedChainPolymer" |> NamespacedName
-
+    let BranchedChainPolymer = _prefix "BranchedChainPolymer"
     /// <summary>
     /// Experimental procedure for resin reactivity measurement.
     /// <see href="http://w3id.org/emmo-hpo/hpo#COMPEVODSCAnalysis"></see></summary>
-    let COMPEVODSCAnalysis =
-        Namespaced_IRI.parse _namespace_name "COMPEVODSCAnalysis" |> NamespacedName
-
+    let COMPEVODSCAnalysis = _prefix "COMPEVODSCAnalysis"
     /// <summary>
     /// A substance that increases the rate of a reaction without modifying the overall standard Gibbs energy change in the reaction.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Catalyst"></see></summary>
-    let Catalyst = Namespaced_IRI.parse _namespace_name "Catalyst" |> NamespacedName
-
+    let Catalyst = _prefix "Catalyst"
     /// <summary>
     /// Catalyst suppliers trade name for the purchased catalyst formulation.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CatalystCommercialName"></see></summary>
-    let CatalystCommercialName =
-        Namespaced_IRI.parse _namespace_name "CatalystCommercialName" |> NamespacedName
-
+    let CatalystCommercialName = _prefix "CatalystCommercialName"
     /// <summary>
     ///   <see href="http://w3id.org/emmo-hpo/hpo#CatalystProperty"></see>
     /// </summary>
-    let CatalystProperty =
-        Namespaced_IRI.parse _namespace_name "CatalystProperty" |> NamespacedName
-
+    let CatalystProperty = _prefix "CatalystProperty"
     /// <summary>
     /// Mass density of the catalyst.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CatalystDensity"></see></summary>
-    let CatalystDensity =
-        Namespaced_IRI.parse _namespace_name "CatalystDensity" |> NamespacedName
-
+    let CatalystDensity = _prefix "CatalystDensity"
     /// <summary>
     /// Average molecular weight of the catalyst molecular consituents.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CatalystMolecularWeight"></see></summary>
-    let CatalystMolecularWeight =
-        Namespaced_IRI.parse _namespace_name "CatalystMolecularWeight" |> NamespacedName
-
+    let CatalystMolecularWeight = _prefix "CatalystMolecularWeight"
     /// <summary>
     /// Catalyst viscosity at 25°C.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CatalystViscosity"></see></summary>
-    let CatalystViscosity =
-        Namespaced_IRI.parse _namespace_name "CatalystViscosity" |> NamespacedName
-
+    let CatalystViscosity = _prefix "CatalystViscosity"
     /// <summary>
     /// A polymer derived from the polymerisation of more than one species of monomer.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoPolymer"></see></summary>
-    let CoPolymer = Namespaced_IRI.parse _namespace_name "CoPolymer" |> NamespacedName
-
+    let CoPolymer = _prefix "CoPolymer"
     /// <summary>
     /// The manufacturing of a component made of a composite material.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ComponentManufacturing"></see></summary>
-    let ComponentManufacturing =
-        Namespaced_IRI.parse _namespace_name "ComponentManufacturing" |> NamespacedName
-
+    let ComponentManufacturing = _prefix "ComponentManufacturing"
     /// <summary>
     /// An arrangement of prepreg parts (ply) orientations and material components in a laminate specified with respect to some reference direction.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Stacking"></see></summary>
-    let Stacking = Namespaced_IRI.parse _namespace_name "Stacking" |> NamespacedName
-
+    let Stacking = _prefix "Stacking"
     /// <summary>
     /// The process of shaping composite materials into a solid mass of prescribed shape and size, using a mold or tool.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ShapingAndCuring"></see></summary>
-    let ShapingAndCuring =
-        Namespaced_IRI.parse _namespace_name "ShapingAndCuring" |> NamespacedName
-
+    let ShapingAndCuring = _prefix "ShapingAndCuring"
     /// <summary>
     /// A manufacturing line processing a composite material into a component.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ComponentManufacturingLine"></see></summary>
-    let ComponentManufacturingLine =
-        Namespaced_IRI.parse _namespace_name "ComponentManufacturingLine" |> NamespacedName
-
+    let ComponentManufacturingLine = _prefix "ComponentManufacturingLine"
     /// <summary>
     /// A lubricant used to prevent a part from sticking to a mold surface.
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldReleaseLayer"></see></summary>
-    let MouldReleaseLayer =
-        Namespaced_IRI.parse _namespace_name "MouldReleaseLayer" |> NamespacedName
-
+    let MouldReleaseLayer = _prefix "MouldReleaseLayer"
     /// <summary>
     /// The mold, either one- or two-sided and either open or closed, in or upon which composite material is placed in order to make a part.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverTool"></see></summary>
-    let CoverTool = Namespaced_IRI.parse _namespace_name "CoverTool" |> NamespacedName
-
+    let CoverTool = _prefix "CoverTool"
     /// <summary>
     /// A manufacturing line is a set of sequential operations in a factory where materials are processed, assembled, and/or refined to produce a finished product or an intermediate product for further processing.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ManufacturingLine"></see></summary>
-    let ManufacturingLine =
-        Namespaced_IRI.parse _namespace_name "ManufacturingLine" |> NamespacedName
-
+    let ManufacturingLine = _prefix "ManufacturingLine"
     /// <summary>
     /// A release layer applied to a cover placed over the laminate.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverReleaseLayer"></see></summary>
-    let CoverReleaseLayer =
-        Namespaced_IRI.parse _namespace_name "CoverReleaseLayer" |> NamespacedName
-
+    let CoverReleaseLayer = _prefix "CoverReleaseLayer"
     /// <summary>
     /// An enclosed cavity or open form from which a composite component takes its shape, size and exterior surface appearance (also known as a tool).
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldTool"></see></summary>
-    let MouldTool = Namespaced_IRI.parse _namespace_name "MouldTool" |> NamespacedName
-
+    let MouldTool = _prefix "MouldTool"
     /// <summary>
     ///   <see href="http://w3id.org/emmo-hpo/hpo#ComponentManufacturingProperty"></see>
     /// </summary>
-    let ComponentManufacturingProperty =
-        Namespaced_IRI.parse _namespace_name "ComponentManufacturingProperty" |> NamespacedName
-
+    let ComponentManufacturingProperty = _prefix "ComponentManufacturingProperty"
     /// <summary>
     /// A material made up of resin and reinforcement (usually fibre).
     /// <see href="http://w3id.org/emmo-hpo/hpo#Composite"></see></summary>
-    let Composite = Namespaced_IRI.parse _namespace_name "Composite" |> NamespacedName
-
+    let Composite = _prefix "Composite"
     /// <summary>
     ///   <see href="http://w3id.org/emmo-hpo/hpo#CompositeLaminate"></see>
     /// </summary>
-    let CompositeLaminate =
-        Namespaced_IRI.parse _namespace_name "CompositeLaminate" |> NamespacedName
-
+    let CompositeLaminate = _prefix "CompositeLaminate"
     /// <summary>
     /// Arrangement of ply prepregs in a laminate.
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepreg"></see></summary>
-    let StackedPrepreg =
-        Namespaced_IRI.parse _namespace_name "StackedPrepreg" |> NamespacedName
-
+    let StackedPrepreg = _prefix "StackedPrepreg"
     /// <summary>
     /// The structure resulting from the curing of multiple stacked prepreg plies.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Laminate"></see></summary>
-    let Laminate = Namespaced_IRI.parse _namespace_name "Laminate" |> NamespacedName
-
+    let Laminate = _prefix "Laminate"
     /// <summary>
     /// After performing a cross-cut perpendicular to the specimen surface, based on a light microscopy image, the apparent surface area fraction occupied by pores is evaluated.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CompositeLaminateBulkPorosity"></see></summary>
-    let CompositeLaminateBulkPorosity =
-        Namespaced_IRI.parse _namespace_name "CompositeLaminateBulkPorosity" |> NamespacedName
-
+    let CompositeLaminateBulkPorosity = _prefix "CompositeLaminateBulkPorosity"
     /// <summary>
     ///   <see href="http://w3id.org/emmo-hpo/hpo#CompositeLaminateProperty"></see>
     /// </summary>
-    let CompositeLaminateProperty =
-        Namespaced_IRI.parse _namespace_name "CompositeLaminateProperty" |> NamespacedName
+    let CompositeLaminateProperty = _prefix "CompositeLaminateProperty"
 
     /// <summary>
     /// Based on a light microscopy image of the smoother surface (i.e. the one visible to a user) of the composite laminate, the apparent surface area fraction occupied by pores is evaluated.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CompositeLaminateSurfaceRegionPorosity"></see></summary>
     let CompositeLaminateSurfaceRegionPorosity =
-        Namespaced_IRI.parse _namespace_name "CompositeLaminateSurfaceRegionPorosity" |> NamespacedName
+        _prefix "CompositeLaminateSurfaceRegionPorosity"
 
     /// <summary>
     /// Using a (set of) specimen illumination settings, the appearance is compared with the appearance of a specified set of (reference) specimens.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CompositeLaminateVisualSurfaceFinish"></see></summary>
     let CompositeLaminateVisualSurfaceFinish =
-        Namespaced_IRI.parse _namespace_name "CompositeLaminateVisualSurfaceFinish" |> NamespacedName
+        _prefix "CompositeLaminateVisualSurfaceFinish"
 
     /// <summary>
     /// A polymer obtained through a condensation reaction, that is, where two molecules form a chemical bond by eliminating a small molecule such as water.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CondensationPolymer"></see></summary>
-    let CondensationPolymer =
-        Namespaced_IRI.parse _namespace_name "CondensationPolymer" |> NamespacedName
-
+    let CondensationPolymer = _prefix "CondensationPolymer"
     /// <summary>
     /// A specially formulated material placed between the mold and uncured resin/fiber (usually sprayed or painted on the mold surface) to prevent permanent bonding between the two during cure and facilitates demolding after cure.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ReleaseLayer"></see></summary>
-    let ReleaseLayer =
-        Namespaced_IRI.parse _namespace_name "ReleaseLayer" |> NamespacedName
-
+    let ReleaseLayer = _prefix "ReleaseLayer"
     /// <summary>
     /// Commercial name of the applied consumable (product), differentiating available product providers and product lots.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverReleaseLayerIdentifier"></see></summary>
-    let CoverReleaseLayerIdentifier =
-        Namespaced_IRI.parse _namespace_name "CoverReleaseLayerIdentifier" |> NamespacedName
-
+    let CoverReleaseLayerIdentifier = _prefix "CoverReleaseLayerIdentifier"
     /// <summary>
     ///   <see href="http://w3id.org/emmo-hpo/hpo#CoverReleaseLayerProperty"></see>
     /// </summary>
-    let CoverReleaseLayerProperty =
-        Namespaced_IRI.parse _namespace_name "CoverReleaseLayerProperty" |> NamespacedName
-
+    let CoverReleaseLayerProperty = _prefix "CoverReleaseLayerProperty"
     /// <summary>
     /// Average distance between holes.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverToolHoleDistance"></see></summary>
-    let CoverToolHoleDistance =
-        Namespaced_IRI.parse _namespace_name "CoverToolHoleDistance" |> NamespacedName
-
+    let CoverToolHoleDistance = _prefix "CoverToolHoleDistance"
     /// <summary>
     ///   <see href="http://w3id.org/emmo-hpo/hpo#CoverToolProperty"></see>
     /// </summary>
-    let CoverToolProperty =
-        Namespaced_IRI.parse _namespace_name "CoverToolProperty" |> NamespacedName
-
+    let CoverToolProperty = _prefix "CoverToolProperty"
     /// <summary>
     /// Length (contributing to the size of the tool).
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverToolLength"></see></summary>
-    let CoverToolLength =
-        Namespaced_IRI.parse _namespace_name "CoverToolLength" |> NamespacedName
-
+    let CoverToolLength = _prefix "CoverToolLength"
     /// <summary>
     /// Amount of holes.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverToolNumberOfHoles"></see></summary>
-    let CoverToolNumberOfHoles =
-        Namespaced_IRI.parse _namespace_name "CoverToolNumberOfHoles" |> NamespacedName
-
+    let CoverToolNumberOfHoles = _prefix "CoverToolNumberOfHoles"
     /// <summary>
     /// Average diameter of holes.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverToolSizeOfHoles"></see></summary>
-    let CoverToolSizeOfHoles =
-        Namespaced_IRI.parse _namespace_name "CoverToolSizeOfHoles" |> NamespacedName
-
+    let CoverToolSizeOfHoles = _prefix "CoverToolSizeOfHoles"
     /// <summary>
     /// Width (contributing to the size of the tool).
     /// <see href="http://w3id.org/emmo-hpo/hpo#CoverToolWidth"></see></summary>
-    let CoverToolWidth =
-        Namespaced_IRI.parse _namespace_name "CoverToolWidth" |> NamespacedName
-
+    let CoverToolWidth = _prefix "CoverToolWidth"
     /// <summary>
     /// A class of structures characterised by a bond or a short sequence of bonds connecting different macromolecules.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Crosslinked"></see></summary>
-    let Crosslinked =
-        Namespaced_IRI.parse _namespace_name "Crosslinked" |> NamespacedName
-
+    let Crosslinked = _prefix "Crosslinked"
     /// <summary>
     /// A polymer whose molecular structure is characterised by additional covalent bonds connecting several chains together.
     /// <see href="http://w3id.org/emmo-hpo/hpo#CrosslinkedPolymer"></see></summary>
-    let CrosslinkedPolymer =
-        Namespaced_IRI.parse _namespace_name "CrosslinkedPolymer" |> NamespacedName
-
+    let CrosslinkedPolymer = _prefix "CrosslinkedPolymer"
     /// <summary>
     /// Duration of the degassing.
     /// <see href="http://w3id.org/emmo-hpo/hpo#DegassingStepDuration"></see></summary>
-    let DegassingStepDuration =
-        Namespaced_IRI.parse _namespace_name "DegassingStepDuration" |> NamespacedName
-
+    let DegassingStepDuration = _prefix "DegassingStepDuration"
     /// <summary>
     /// A polymer characterised by weak intermolecular forces and viscoelasticity.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Elastomer"></see></summary>
-    let Elastomer = Namespaced_IRI.parse _namespace_name "Elastomer" |> NamespacedName
-
+    let Elastomer = _prefix "Elastomer"
     /// <summary>
     /// Ratio between increased length and initial length after breakage.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ElongationAtBreak"></see></summary>
-    let ElongationAtBreak =
-        Namespaced_IRI.parse _namespace_name "ElongationAtBreak" |> NamespacedName
-
+    let ElongationAtBreak = _prefix "ElongationAtBreak"
     /// <summary>
     /// A polymer characterised by strong intermolecular forces and high tensile strength.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Fibre"></see></summary>
-    let Fibre = Namespaced_IRI.parse _namespace_name "Fibre" |> NamespacedName
-
+    let Fibre = _prefix "Fibre"
     /// <summary>
     /// Mass per unit volume of the facbric.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FibreDensity"></see></summary>
-    let FibreDensity =
-        Namespaced_IRI.parse _namespace_name "FibreDensity" |> NamespacedName
-
+    let FibreDensity = _prefix "FibreDensity"
     /// <summary>
     /// A collection of the properties of textile fabrics.
     /// <see href="http://w3id.org/emmo-hpo/hpo#TextileFabricProperty"></see></summary>
-    let TextileFabricProperty =
-        Namespaced_IRI.parse _namespace_name "TextileFabricProperty" |> NamespacedName
-
+    let TextileFabricProperty = _prefix "TextileFabricProperty"
     /// <summary>
     /// Diameter of the fibre composing the fabric.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FibreDiameter"></see></summary>
-    let FibreDiameter =
-        Namespaced_IRI.parse _namespace_name "FibreDiameter" |> NamespacedName
-
+    let FibreDiameter = _prefix "FibreDiameter"
     /// <summary>
     /// Commercial name of the applied consumable (product), differentiating available product providers and product lots.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FibreIdentifier"></see></summary>
-    let FibreIdentifier =
-        Namespaced_IRI.parse _namespace_name "FibreIdentifier" |> NamespacedName
-
+    let FibreIdentifier = _prefix "FibreIdentifier"
     /// <summary>
     /// Ratio between the volume of fibre and the volume of the composite laminate.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FibreVolumeContent"></see></summary>
-    let FibreVolumeContent =
-        Namespaced_IRI.parse _namespace_name "FibreVolumeContent" |> NamespacedName
-
+    let FibreVolumeContent = _prefix "FibreVolumeContent"
     /// <summary>
     /// A material (usually low cost) added to a resin to extend it, or give special properties
     /// <see href="http://w3id.org/emmo-hpo/hpo#Filler"></see></summary>
-    let Filler = Namespaced_IRI.parse _namespace_name "Filler" |> NamespacedName
-
+    let Filler = _prefix "Filler"
     /// <summary>
     /// Final pressure of the container during step.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FinalStepPressure"></see></summary>
-    let FinalStepPressure =
-        Namespaced_IRI.parse _namespace_name "FinalStepPressure" |> NamespacedName
-
+    let FinalStepPressure = _prefix "FinalStepPressure"
     /// <summary>
     /// Final temperature of the container during step.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FinalStepTemperature"></see></summary>
-    let FinalStepTemperature =
-        Namespaced_IRI.parse _namespace_name "FinalStepTemperature" |> NamespacedName
-
+    let FinalStepTemperature = _prefix "FinalStepTemperature"
     /// <summary>
     /// Tangent of the stress-strain curve under flexural stress.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FlexualModulus"></see></summary>
-    let FlexualModulus =
-        Namespaced_IRI.parse _namespace_name "FlexualModulus" |> NamespacedName
-
+    let FlexualModulus = _prefix "FlexualModulus"
     /// <summary>
     /// Maximum value of the stress-strain curve under flexural stress.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FlexuralStrength"></see></summary>
-    let FlexuralStrength =
-        Namespaced_IRI.parse _namespace_name "FlexuralStrength" |> NamespacedName
-
+    let FlexuralStrength = _prefix "FlexuralStrength"
     /// <summary>
     /// A manufactured mixture of a resin and ingredients.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResin"></see></summary>
-    let FormulatedResin =
-        Namespaced_IRI.parse _namespace_name "FormulatedResin" |> NamespacedName
-
+    let FormulatedResin = _prefix "FormulatedResin"
     /// <summary>
     /// Soft solid or highly viscous substance, usually containing prepolymers with reactive groups.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Resin"></see></summary>
-    let Resin = Namespaced_IRI.parse _namespace_name "Resin" |> NamespacedName
-
+    let Resin = _prefix "Resin"
     /// <summary>
     /// Temperature required to start the process of cure of the resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinCuringTemperature"></see></summary>
-    let FormulatedResinCuringTemperature =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinCuringTemperature" |> NamespacedName
-
+    let FormulatedResinCuringTemperature = _prefix "FormulatedResinCuringTemperature"
     /// <summary>
     /// A collection of the properties of formulated resins.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinProperty"></see></summary>
-    let FormulatedResinProperty =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinProperty" |> NamespacedName
-
+    let FormulatedResinProperty = _prefix "FormulatedResinProperty"
     /// <summary>
     /// Time at which the curing temperature must be held to achieve a certain level of cure.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinCuringTime"></see></summary>
-    let FormulatedResinCuringTime =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinCuringTime" |> NamespacedName
+    let FormulatedResinCuringTime = _prefix "FormulatedResinCuringTime"
 
     /// <summary>
     /// Process in which a polymer melt changes on cooling to a polymer glass or a polymer glass changes on heating to a polymer melt.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinGlassTransitionTemperature"></see></summary>
     let FormulatedResinGlassTransitionTemperature =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinGlassTransitionTemperature" |> NamespacedName
+        _prefix "FormulatedResinGlassTransitionTemperature"
 
     /// <summary>
     /// Mass of water released per mass of resin throughout the applied chemical (curing) reaction.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinSpecificCondensateFormation"></see></summary>
     let FormulatedResinSpecificCondensateFormation =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinSpecificCondensateFormation" |> NamespacedName
+        _prefix "FormulatedResinSpecificCondensateFormation"
 
     /// <summary>
     /// Dynamic viscosity of the resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinViscosity"></see></summary>
-    let FormulatedResinViscosity =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinViscosity" |> NamespacedName
-
+    let FormulatedResinViscosity = _prefix "FormulatedResinViscosity"
     /// <summary>
     /// Weight percentage of (dissolved and freezable) water in the base resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#FormulatedResinWaterContent"></see></summary>
-    let FormulatedResinWaterContent =
-        Namespaced_IRI.parse _namespace_name "FormulatedResinWaterContent" |> NamespacedName
-
+    let FormulatedResinWaterContent = _prefix "FormulatedResinWaterContent"
     /// <summary>
     /// Temperature for transition from glassy state into a viscous one.
     /// <see href="http://w3id.org/emmo-hpo/hpo#GlassTransitionTemperature"></see></summary>
-    let GlassTransitionTemperature =
-        Namespaced_IRI.parse _namespace_name "GlassTransitionTemperature" |> NamespacedName
-
+    let GlassTransitionTemperature = _prefix "GlassTransitionTemperature"
     /// <summary>
     /// Heating rate during step.
     /// <see href="http://w3id.org/emmo-hpo/hpo#HeatingRateDuringStep"></see></summary>
-    let HeatingRateDuringStep =
-        Namespaced_IRI.parse _namespace_name "HeatingRateDuringStep" |> NamespacedName
-
+    let HeatingRateDuringStep = _prefix "HeatingRateDuringStep"
     /// <summary>
     /// A polymer derived from the polymerisation of one kind of monomer.
     /// <see href="http://w3id.org/emmo-hpo/hpo#HomoPolymer"></see></summary>
-    let HomoPolymer =
-        Namespaced_IRI.parse _namespace_name "HomoPolymer" |> NamespacedName
-
+    let HomoPolymer = _prefix "HomoPolymer"
     /// <summary>
     /// Pressure during step.
     /// <see href="http://w3id.org/emmo-hpo/hpo#InitialStepPressure"></see></summary>
-    let InitialStepPressure =
-        Namespaced_IRI.parse _namespace_name "InitialStepPressure" |> NamespacedName
-
+    let InitialStepPressure = _prefix "InitialStepPressure"
     /// <summary>
     /// Initial temperature of the container during step.
     /// <see href="http://w3id.org/emmo-hpo/hpo#InitialStepTemperature"></see></summary>
-    let InitialStepTemperature =
-        Namespaced_IRI.parse _namespace_name "InitialStepTemperature" |> NamespacedName
-
+    let InitialStepTemperature = _prefix "InitialStepTemperature"
     /// <summary>
     /// Mechanical property associated with the matrix-fibre interaction.
     /// <see href="http://w3id.org/emmo-hpo/hpo#InterlaminarShearStrength"></see></summary>
-    let InterlaminarShearStrength =
-        Namespaced_IRI.parse _namespace_name "InterlaminarShearStrength" |> NamespacedName
-
+    let InterlaminarShearStrength = _prefix "InterlaminarShearStrength"
     /// <summary>
     /// A class of structures characterised by a linear skeleton.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Linear"></see></summary>
-    let Linear = Namespaced_IRI.parse _namespace_name "Linear" |> NamespacedName
-
+    let Linear = _prefix "Linear"
     /// <summary>
     /// A polymer whose molecular structure is characterised by a linear chain of repeating units.
     /// <see href="http://w3id.org/emmo-hpo/hpo#LinearPolymer"></see></summary>
-    let LinearPolymer =
-        Namespaced_IRI.parse _namespace_name "LinearPolymer" |> NamespacedName
-
+    let LinearPolymer = _prefix "LinearPolymer"
     /// <summary>
     /// A single molecule that reacts with like or unlike molecules to form a polymer.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Monomer"></see></summary>
-    let Monomer = Namespaced_IRI.parse _namespace_name "Monomer" |> NamespacedName
-
+    let Monomer = _prefix "Monomer"
     /// <summary>
     /// Commercial name of the applied consumable (product), differentiating available product providers and product lots.
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldReleaseLayerIdentifier"></see></summary>
-    let MouldReleaseLayerIdentifier =
-        Namespaced_IRI.parse _namespace_name "MouldReleaseLayerIdentifier" |> NamespacedName
-
+    let MouldReleaseLayerIdentifier = _prefix "MouldReleaseLayerIdentifier"
     /// <summary>
     /// A collection of the properties of the release layer of a mould or tool.
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldReleaseLayerProperty"></see></summary>
-    let MouldReleaseLayerProperty =
-        Namespaced_IRI.parse _namespace_name "MouldReleaseLayerProperty" |> NamespacedName
-
+    let MouldReleaseLayerProperty = _prefix "MouldReleaseLayerProperty"
     /// <summary>
     /// Length (contributing to the size of the tool).
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldToolLength"></see></summary>
-    let MouldToolLength =
-        Namespaced_IRI.parse _namespace_name "MouldToolLength" |> NamespacedName
-
+    let MouldToolLength = _prefix "MouldToolLength"
     /// <summary>
     /// A collection of the properties of moulds or tools.
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldToolProperty"></see></summary>
-    let MouldToolProperty =
-        Namespaced_IRI.parse _namespace_name "MouldToolProperty" |> NamespacedName
-
+    let MouldToolProperty = _prefix "MouldToolProperty"
     /// <summary>
     /// Arithmetic average of the absolute values of the profile height deviations from the mean line, recorded within the evaluation length.
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldToolSurfaceRoughness"></see></summary>
-    let MouldToolSurfaceRoughness =
-        Namespaced_IRI.parse _namespace_name "MouldToolSurfaceRoughness" |> NamespacedName
-
+    let MouldToolSurfaceRoughness = _prefix "MouldToolSurfaceRoughness"
     /// <summary>
     /// Width (contributing to the size of the tool).
     /// <see href="http://w3id.org/emmo-hpo/hpo#MouldToolWidth"></see></summary>
-    let MouldToolWidth =
-        Namespaced_IRI.parse _namespace_name "MouldToolWidth" |> NamespacedName
-
+    let MouldToolWidth = _prefix "MouldToolWidth"
     /// <summary>
     /// A naturally occurring polymer produced by living organisms.
     /// <see href="http://w3id.org/emmo-hpo/hpo#NaturalPolymer"></see></summary>
-    let NaturalPolymer =
-        Namespaced_IRI.parse _namespace_name "NaturalPolymer" |> NamespacedName
-
+    let NaturalPolymer = _prefix "NaturalPolymer"
     /// <summary>
     /// Parts manufactured per minute.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PartsTurnover"></see></summary>
-    let PartsTurnover =
-        Namespaced_IRI.parse _namespace_name "PartsTurnover" |> NamespacedName
-
+    let PartsTurnover = _prefix "PartsTurnover"
     /// <summary>
     /// After cutting a test sample out of the specimen to be tested, gravimetric and volumetric findings are used to calculate an (average) density that is compared to the density of a qualified (reference) “in order (i.o.)” specimen.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PorosityInferredFromDensity"></see></summary>
-    let PorosityInferredFromDensity =
-        Namespaced_IRI.parse _namespace_name "PorosityInferredFromDensity" |> NamespacedName
-
+    let PorosityInferredFromDensity = _prefix "PorosityInferredFromDensity"
     /// <summary>
     /// A factory-made combination of reactive resins and reinforcing fibres, plus other necessary additive chemicals, ready to be moulded.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Prepreg"></see></summary>
-    let Prepreg = Namespaced_IRI.parse _namespace_name "Prepreg" |> NamespacedName
-
+    let Prepreg = _prefix "Prepreg"
     /// <summary>
     /// Percentage of the (feasible) curing (that is no more available for cross-linking reaction(s))
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregCuringDegree"></see></summary>
-    let PrepregCuringDegree =
-        Namespaced_IRI.parse _namespace_name "PrepregCuringDegree" |> NamespacedName
-
+    let PrepregCuringDegree = _prefix "PrepregCuringDegree"
     /// <summary>
     /// A collection of the properties of prepregs.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregProperty"></see></summary>
-    let PrepregProperty =
-        Namespaced_IRI.parse _namespace_name "PrepregProperty" |> NamespacedName
-
+    let PrepregProperty = _prefix "PrepregProperty"
     /// <summary>
     /// Mass per unit volume of the prepreg.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregDensity"></see></summary>
-    let PrepregDensity =
-        Namespaced_IRI.parse _namespace_name "PrepregDensity" |> NamespacedName
-
+    let PrepregDensity = _prefix "PrepregDensity"
     /// <summary>
     /// EXPECTED ratio between increased length and initial length after breakage AFTER CURING.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregExpectedElongationAtBreak"></see></summary>
-    let PrepregExpectedElongationAtBreak =
-        Namespaced_IRI.parse _namespace_name "PrepregExpectedElongationAtBreak" |> NamespacedName
-
+    let PrepregExpectedElongationAtBreak = _prefix "PrepregExpectedElongationAtBreak"
     /// <summary>
     /// EXPECTED Tangent of the stress-strain curve under flexural stress AFTER CURING.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregExpectedFlexualModulus"></see></summary>
-    let PrepregExpectedFlexualModulus =
-        Namespaced_IRI.parse _namespace_name "PrepregExpectedFlexualModulus" |> NamespacedName
-
+    let PrepregExpectedFlexualModulus = _prefix "PrepregExpectedFlexualModulus"
     /// <summary>
     /// EXPECTED Maximum value of the stress-strain curve under flexural stress AFTER CURING.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregExpectedFlexuralStrength"></see></summary>
-    let PrepregExpectedFlexuralStrength =
-        Namespaced_IRI.parse _namespace_name "PrepregExpectedFlexuralStrength" |> NamespacedName
-
+    let PrepregExpectedFlexuralStrength = _prefix "PrepregExpectedFlexuralStrength"
     /// <summary>
     /// EXPECTED Tangent of the stress-strain curve under tensile stress AFTER CURING.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregExpectedTensileModulus"></see></summary>
-    let PrepregExpectedTensileModulus =
-        Namespaced_IRI.parse _namespace_name "PrepregExpectedTensileModulus" |> NamespacedName
-
+    let PrepregExpectedTensileModulus = _prefix "PrepregExpectedTensileModulus"
     /// <summary>
     /// EXPECTED Maximum value of the stress-strain curve under tensile stress AFTER CURING.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregExpectedTensileStrength"></see></summary>
-    let PrepregExpectedTensileStrength =
-        Namespaced_IRI.parse _namespace_name "PrepregExpectedTensileStrength" |> NamespacedName
-
+    let PrepregExpectedTensileStrength = _prefix "PrepregExpectedTensileStrength"
     /// <summary>
     /// Ratio between the volume of fibre and the volume of the composite.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregFibreVolumeContent"></see></summary>
-    let PrepregFibreVolumeContent =
-        Namespaced_IRI.parse _namespace_name "PrepregFibreVolumeContent" |> NamespacedName
-
+    let PrepregFibreVolumeContent = _prefix "PrepregFibreVolumeContent"
     /// <summary>
     /// Characteristic temperature (range) of the process in which a polymer melt changes on cooling to a polymer glass or a polymer glass changes on heating to a polymer melt.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregGlassTransitionTemperature"></see></summary>
-    let PrepregGlassTransitionTemperature =
-        Namespaced_IRI.parse _namespace_name "PrepregGlassTransitionTemperature" |> NamespacedName
-
+    let PrepregGlassTransitionTemperature = _prefix "PrepregGlassTransitionTemperature"
     /// <summary>
     /// A manufacturing line processing a prepreg for later use.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregLine"></see></summary>
-    let PrepregLine =
-        Namespaced_IRI.parse _namespace_name "PrepregLine" |> NamespacedName
-
+    let PrepregLine = _prefix "PrepregLine"
     /// <summary>
     /// A prepreg a piece cut from a prepreg roll, which can be stacked.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregPiece"></see></summary>
-    let PrepregPiece =
-        Namespaced_IRI.parse _namespace_name "PrepregPiece" |> NamespacedName
-
+    let PrepregPiece = _prefix "PrepregPiece"
     /// <summary>
     /// A roll of prepreg material.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregRoll"></see></summary>
-    let PrepregRoll =
-        Namespaced_IRI.parse _namespace_name "PrepregRoll" |> NamespacedName
-
+    let PrepregRoll = _prefix "PrepregRoll"
     /// <summary>
     /// A planar textile constructed with fibres (or yarns), which can be either woven (interlaced using a weaving process) or non-woven (not interlaced).
     /// <see href="http://w3id.org/emmo-hpo/hpo#TextileFabric"></see></summary>
-    let TextileFabric =
-        Namespaced_IRI.parse _namespace_name "TextileFabric" |> NamespacedName
+    let TextileFabric = _prefix "TextileFabric"
 
     /// <summary>
     /// Mass of water released per mass of prepreg throughout the applied chemical (curing) reaction.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregSpecificCondensateFormation"></see></summary>
     let PrepregSpecificCondensateFormation =
-        Namespaced_IRI.parse _namespace_name "PrepregSpecificCondensateFormation" |> NamespacedName
+        _prefix "PrepregSpecificCondensateFormation"
 
     /// <summary>
     /// Thickness of the prepreg.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregThickness"></see></summary>
-    let PrepregThickness =
-        Namespaced_IRI.parse _namespace_name "PrepregThickness" |> NamespacedName
-
+    let PrepregThickness = _prefix "PrepregThickness"
     /// <summary>
     /// Weight percentage of water in the prepreg (that can be dried and is not formed during the curing reaction).
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregWaterContent"></see></summary>
-    let PrepregWaterContent =
-        Namespaced_IRI.parse _namespace_name "PrepregWaterContent" |> NamespacedName
-
+    let PrepregWaterContent = _prefix "PrepregWaterContent"
     /// <summary>
     /// Effective and anisotropic proportionality constant between the molar (or mass) flux due to molecular diffusion (out of the prepreg specimen).
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregWaterDiffusionCoefficient"></see></summary>
-    let PrepregWaterDiffusionCoefficient =
-        Namespaced_IRI.parse _namespace_name "PrepregWaterDiffusionCoefficient" |> NamespacedName
-
+    let PrepregWaterDiffusionCoefficient = _prefix "PrepregWaterDiffusionCoefficient"
     /// <summary>
     /// Width of the prepreg.
     /// <see href="http://w3id.org/emmo-hpo/hpo#PrepregWidth"></see></summary>
-    let PrepregWidth =
-        Namespaced_IRI.parse _namespace_name "PrepregWidth" |> NamespacedName
-
+    let PrepregWidth = _prefix "PrepregWidth"
     /// <summary>
     /// The process of prepreg manufacturing.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Prepregging"></see></summary>
-    let Prepregging =
-        Namespaced_IRI.parse _namespace_name "Prepregging" |> NamespacedName
-
+    let Prepregging = _prefix "Prepregging"
     /// <summary>
     /// A polymer that becomes irreversibly hard by creating an extensive network of cross-linking between the individual chains.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ThermosettingPolymer"></see></summary>
-    let ThermosettingPolymer =
-        Namespaced_IRI.parse _namespace_name "ThermosettingPolymer" |> NamespacedName
-
+    let ThermosettingPolymer = _prefix "ThermosettingPolymer"
     /// <summary>
     /// Total composition of the resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinComposition"></see></summary>
-    let ResinComposition =
-        Namespaced_IRI.parse _namespace_name "ResinComposition" |> NamespacedName
-
+    let ResinComposition = _prefix "ResinComposition"
     /// <summary>
     /// A collection of the properties of resins.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinProperty"></see></summary>
-    let ResinProperty =
-        Namespaced_IRI.parse _namespace_name "ResinProperty" |> NamespacedName
-
+    let ResinProperty = _prefix "ResinProperty"
     /// <summary>
     /// Mass density of the resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinDensity"></see></summary>
-    let ResinDensity =
-        Namespaced_IRI.parse _namespace_name "ResinDensity" |> NamespacedName
-
+    let ResinDensity = _prefix "ResinDensity"
     /// <summary>
     /// A batch resin mixer.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinMixer"></see></summary>
-    let ResinMixer = Namespaced_IRI.parse _namespace_name "ResinMixer" |> NamespacedName
-
+    let ResinMixer = _prefix "ResinMixer"
     /// <summary>
     /// Average molecular weight of the main resin molecular consituents.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinMolecularWeight"></see></summary>
-    let ResinMolecularWeight =
-        Namespaced_IRI.parse _namespace_name "ResinMolecularWeight" |> NamespacedName
-
+    let ResinMolecularWeight = _prefix "ResinMolecularWeight"
     /// <summary>
     /// Preparing a resin involves mixing the precursor (monomers) with a hardener or a catalyst, fillers, and additives.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinPreparation"></see></summary>
-    let ResinPreparation =
-        Namespaced_IRI.parse _namespace_name "ResinPreparation" |> NamespacedName
-
+    let ResinPreparation = _prefix "ResinPreparation"
     /// <summary>
     /// Maximum amount of energy released in case of complete conversion.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinReactivity"></see></summary>
-    let ResinReactivity =
-        Namespaced_IRI.parse _namespace_name "ResinReactivity" |> NamespacedName
-
+    let ResinReactivity = _prefix "ResinReactivity"
     /// <summary>
     /// Viscosity at 25°C.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinViscosity"></see></summary>
-    let ResinViscosity =
-        Namespaced_IRI.parse _namespace_name "ResinViscosity" |> NamespacedName
-
+    let ResinViscosity = _prefix "ResinViscosity"
     /// <summary>
     /// Percentage of water in the base resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinWaterContent"></see></summary>
-    let ResinWaterContent =
-        Namespaced_IRI.parse _namespace_name "ResinWaterContent" |> NamespacedName
-
+    let ResinWaterContent = _prefix "ResinWaterContent"
     /// <summary>
     /// pH of the resin.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ResinpH"></see></summary>
-    let ResinpH = Namespaced_IRI.parse _namespace_name "ResinpH" |> NamespacedName
-
+    let ResinpH = _prefix "ResinpH"
     /// <summary>
     /// A polymer synthesised from biomass sources.
     /// <see href="http://w3id.org/emmo-hpo/hpo#SemiSyntheticPolymer"></see></summary>
-    let SemiSyntheticPolymer =
-        Namespaced_IRI.parse _namespace_name "SemiSyntheticPolymer" |> NamespacedName
-
+    let SemiSyntheticPolymer = _prefix "SemiSyntheticPolymer"
     /// <summary>
     /// Length (contributing to the size of the object).
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepregLength"></see></summary>
-    let StackedPrepregLength =
-        Namespaced_IRI.parse _namespace_name "StackedPrepregLength" |> NamespacedName
-
+    let StackedPrepregLength = _prefix "StackedPrepregLength"
     /// <summary>
     /// A collection of the properties of stacked prepregs.
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepregProperty"></see></summary>
-    let StackedPrepregProperty =
-        Namespaced_IRI.parse _namespace_name "StackedPrepregProperty" |> NamespacedName
-
+    let StackedPrepregProperty = _prefix "StackedPrepregProperty"
     /// <summary>
     /// Sum of the thicknesses of prepreg layer.
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepregNominalThickness"></see></summary>
-    let StackedPrepregNominalThickness =
-        Namespaced_IRI.parse _namespace_name "StackedPrepregNominalThickness" |> NamespacedName
-
+    let StackedPrepregNominalThickness = _prefix "StackedPrepregNominalThickness"
     /// <summary>
     /// Number of stacked prepreg layers
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepregNumberOfLayers"></see></summary>
-    let StackedPrepregNumberOfLayers =
-        Namespaced_IRI.parse _namespace_name "StackedPrepregNumberOfLayers" |> NamespacedName
-
+    let StackedPrepregNumberOfLayers = _prefix "StackedPrepregNumberOfLayers"
     /// <summary>
     /// List of the orientation (degreees) of each prepreg layer.
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepregStackingSequence"></see></summary>
-    let StackedPrepregStackingSequence =
-        Namespaced_IRI.parse _namespace_name "StackedPrepregStackingSequence" |> NamespacedName
-
+    let StackedPrepregStackingSequence = _prefix "StackedPrepregStackingSequence"
     /// <summary>
     /// Width (contributing to the size of the object).
     /// <see href="http://w3id.org/emmo-hpo/hpo#StackedPrepregWidth"></see></summary>
-    let StackedPrepregWidth =
-        Namespaced_IRI.parse _namespace_name "StackedPrepregWidth" |> NamespacedName
-
+    let StackedPrepregWidth = _prefix "StackedPrepregWidth"
     /// <summary>
     /// Step duration
     /// <see href="http://w3id.org/emmo-hpo/hpo#StepDuration"></see></summary>
-    let StepDuration =
-        Namespaced_IRI.parse _namespace_name "StepDuration" |> NamespacedName
-
+    let StepDuration = _prefix "StepDuration"
     /// <summary>
     /// The storage modulus in viscoelastic materials measure the stored energy representing the elastic portion.
     /// <see href="http://w3id.org/emmo-hpo/hpo#StorageModulus"></see></summary>
-    let StorageModulus =
-        Namespaced_IRI.parse _namespace_name "StorageModulus" |> NamespacedName
-
+    let StorageModulus = _prefix "StorageModulus"
     /// <summary>
     /// A polymer synthesised from other manufactured chemicals.
     /// <see href="http://w3id.org/emmo-hpo/hpo#SyntheticPolymer"></see></summary>
-    let SyntheticPolymer =
-        Namespaced_IRI.parse _namespace_name "SyntheticPolymer" |> NamespacedName
-
+    let SyntheticPolymer = _prefix "SyntheticPolymer"
     /// <summary>
     /// Tangent of the stress-strain curve under tensile stress.
     /// <see href="http://w3id.org/emmo-hpo/hpo#TensileModulus"></see></summary>
-    let TensileModulus =
-        Namespaced_IRI.parse _namespace_name "TensileModulus" |> NamespacedName
-
+    let TensileModulus = _prefix "TensileModulus"
     /// <summary>
     /// Maximum value of the stress-strain curve under tensile stress.
     /// <see href="http://w3id.org/emmo-hpo/hpo#TensileStrength"></see></summary>
-    let TensileStrength =
-        Namespaced_IRI.parse _namespace_name "TensileStrength" |> NamespacedName
-
+    let TensileStrength = _prefix "TensileStrength"
     /// <summary>
     /// Textile fabric thickness
     /// <see href="http://w3id.org/emmo-hpo/hpo#TextileFabricThickness"></see></summary>
-    let TextileFabricThickness =
-        Namespaced_IRI.parse _namespace_name "TextileFabricThickness" |> NamespacedName
-
+    let TextileFabricThickness = _prefix "TextileFabricThickness"
     /// <summary>
     /// Pattern of fibre weaving.
     /// <see href="http://w3id.org/emmo-hpo/hpo#TextileFabricWeaveStyle"></see></summary>
-    let TextileFabricWeaveStyle =
-        Namespaced_IRI.parse _namespace_name "TextileFabricWeaveStyle" |> NamespacedName
-
+    let TextileFabricWeaveStyle = _prefix "TextileFabricWeaveStyle"
     /// <summary>
     /// Width of the fabric.
     /// <see href="http://w3id.org/emmo-hpo/hpo#TextileFabricWidth"></see></summary>
-    let TextileFabricWidth =
-        Namespaced_IRI.parse _namespace_name "TextileFabricWidth" |> NamespacedName
-
+    let TextileFabricWidth = _prefix "TextileFabricWidth"
     /// <summary>
     /// A polymer that becomes pliable and mouldable (i.e. plastic) above a certain temperature, and that reversibly solidifies upon cooling. Thermoplastics typically have linear chains and high molecular weight, increasing the strength of intermolecular interactions.
     /// <see href="http://w3id.org/emmo-hpo/hpo#ThermoplasticPolymer"></see></summary>
-    let ThermoplasticPolymer =
-        Namespaced_IRI.parse _namespace_name "ThermoplasticPolymer" |> NamespacedName
-
+    let ThermoplasticPolymer = _prefix "ThermoplasticPolymer"
     /// <summary>
     /// Solvents, such as water and alcohol, in a sizing or resin formulation that can be vaporized at ambient or slightly elevated temperatures.
     /// <see href="http://w3id.org/emmo-hpo/hpo#Volatile"></see></summary>
-    let Volatile = Namespaced_IRI.parse _namespace_name "Volatile" |> NamespacedName
-
+    let Volatile = _prefix "Volatile"
     /// <summary>
     /// List of steps for the mixing process.
     /// <see href="http://w3id.org/emmo-hpo/hpo#WorkingStepsOrder"></see></summary>
-    let WorkingStepsOrder =
-        Namespaced_IRI.parse _namespace_name "WorkingStepsOrder" |> NamespacedName
+    let WorkingStepsOrder = _prefix "WorkingStepsOrder"

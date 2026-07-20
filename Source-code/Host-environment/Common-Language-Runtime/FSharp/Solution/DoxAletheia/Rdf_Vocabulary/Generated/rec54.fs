@@ -1,222 +1,194 @@
 namespace http.www.w3.org._2001._02pd.rec54.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rec54 =
     let _namespace_name = "http://www.w3.org/2001/02pd/rec54#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#APreview"></see>
     /// </summary>
-    let APreview = Namespaced_IRI.parse _namespace_name "APreview" |> NamespacedName
+    let APreview = _prefix "APreview"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ACaction"></see>
     /// </summary>
-    let ACaction = Namespaced_IRI.parse _namespace_name "ACaction" |> NamespacedName
+    let ACaction = _prefix "ACaction"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#cites"></see>
     /// </summary>
-    let cites = Namespaced_IRI.parse _namespace_name "cites" |> NamespacedName
+    let cites = _prefix "cites"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#OrgJoins"></see>
     /// </summary>
-    let OrgJoins = Namespaced_IRI.parse _namespace_name "OrgJoins" |> NamespacedName
-
+    let OrgJoins = _prefix "OrgJoins"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ActivityProposal"></see>
     /// </summary>
-    let ActivityProposal =
-        Namespaced_IRI.parse _namespace_name "ActivityProposal" |> NamespacedName
-
+    let ActivityProposal = _prefix "ActivityProposal"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ActivityCreation"></see>
     /// </summary>
-    let ActivityCreation =
-        Namespaced_IRI.parse _namespace_name "ActivityCreation" |> NamespacedName
-
+    let ActivityCreation = _prefix "ActivityCreation"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ACnotice"></see>
     /// </summary>
-    let ACnotice = Namespaced_IRI.parse _namespace_name "ACnotice" |> NamespacedName
+    let ACnotice = _prefix "ACnotice"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#effect"></see>
     /// </summary>
-    let effect = Namespaced_IRI.parse _namespace_name "effect" |> NamespacedName
-
+    let effect = _prefix "effect"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ActivityStatement"></see>
     /// </summary>
-    let ActivityStatement =
-        Namespaced_IRI.parse _namespace_name "ActivityStatement" |> NamespacedName
-
+    let ActivityStatement = _prefix "ActivityStatement"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#CFI"></see>
     /// </summary>
-    let CFI = Namespaced_IRI.parse _namespace_name "CFI" |> NamespacedName
+    let CFI = _prefix "CFI"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#CRreq"></see>
     /// </summary>
-    let CRreq = Namespaced_IRI.parse _namespace_name "CRreq" |> NamespacedName
+    let CRreq = _prefix "CRreq"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#CR"></see>
     /// </summary>
-    let CR = Namespaced_IRI.parse _namespace_name "CR" |> NamespacedName
+    let CR = _prefix "CR"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#CFP"></see>
     /// </summary>
-    let CFP = Namespaced_IRI.parse _namespace_name "CFP" |> NamespacedName
+    let CFP = _prefix "CFP"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#Charter"></see>
     /// </summary>
-    let Charter = Namespaced_IRI.parse _namespace_name "Charter" |> NamespacedName
+    let Charter = _prefix "Charter"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#CFR"></see>
     /// </summary>
-    let CFR = Namespaced_IRI.parse _namespace_name "CFR" |> NamespacedName
+    let CFR = _prefix "CFR"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#PRreq"></see>
     /// </summary>
-    let PRreq = Namespaced_IRI.parse _namespace_name "PRreq" |> NamespacedName
+    let PRreq = _prefix "PRreq"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#PR"></see>
     /// </summary>
-    let PR = Namespaced_IRI.parse _namespace_name "PR" |> NamespacedName
+    let PR = _prefix "PR"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#TRPub"></see>
     /// </summary>
-    let TRPub = Namespaced_IRI.parse _namespace_name "TRPub" |> NamespacedName
+    let TRPub = _prefix "TRPub"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#WD"></see>
     /// </summary>
-    let WD = Namespaced_IRI.parse _namespace_name "WD" |> NamespacedName
+    let WD = _prefix "WD"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#WGAction"></see>
     /// </summary>
-    let WGAction = Namespaced_IRI.parse _namespace_name "WGAction" |> NamespacedName
+    let WGAction = _prefix "WGAction"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#LastCall"></see>
     /// </summary>
-    let LastCall = Namespaced_IRI.parse _namespace_name "LastCall" |> NamespacedName
+    let LastCall = _prefix "LastCall"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ED"></see>
     /// </summary>
-    let ED = Namespaced_IRI.parse _namespace_name "ED" |> NamespacedName
-
+    let ED = _prefix "ED"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#FirstEdition"></see>
     /// </summary>
-    let FirstEdition =
-        Namespaced_IRI.parse _namespace_name "FirstEdition" |> NamespacedName
-
+    let FirstEdition = _prefix "FirstEdition"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#REC"></see>
     /// </summary>
-    let REC = Namespaced_IRI.parse _namespace_name "REC" |> NamespacedName
-
+    let REC = _prefix "REC"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#ImpEvidence"></see>
     /// </summary>
-    let ImpEvidence =
-        Namespaced_IRI.parse _namespace_name "ImpEvidence" |> NamespacedName
-
+    let ImpEvidence = _prefix "ImpEvidence"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#LCann"></see>
     /// </summary>
-    let LCann = Namespaced_IRI.parse _namespace_name "LCann" |> NamespacedName
+    let LCann = _prefix "LCann"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#NOTE"></see>
     /// </summary>
-    let NOTE = Namespaced_IRI.parse _namespace_name "NOTE" |> NamespacedName
+    let NOTE = _prefix "NOTE"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#PER"></see>
     /// </summary>
-    let PER = Namespaced_IRI.parse _namespace_name "PER" |> NamespacedName
+    let PER = _prefix "PER"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#PRReview"></see>
     /// </summary>
-    let PRReview = Namespaced_IRI.parse _namespace_name "PRReview" |> NamespacedName
+    let PRReview = _prefix "PRReview"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#RECdd"></see>
     /// </summary>
-    let RECdd = Namespaced_IRI.parse _namespace_name "RECdd" |> NamespacedName
+    let RECdd = _prefix "RECdd"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#RSCND"></see>
     /// </summary>
-    let RSCND = Namespaced_IRI.parse _namespace_name "RSCND" |> NamespacedName
+    let RSCND = _prefix "RSCND"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#Retired"></see>
     /// </summary>
-    let Retired = Namespaced_IRI.parse _namespace_name "Retired" |> NamespacedName
+    let Retired = _prefix "Retired"
     /// <summary>
     /// Another work has superseded this one, which should not be considered as current any more.
     /// <see href="http://www.w3.org/2001/02pd/rec54#Superseded"></see></summary>
-    let Superseded = Namespaced_IRI.parse _namespace_name "Superseded" |> NamespacedName
+    let Superseded = _prefix "Superseded"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#WDreq"></see>
     /// </summary>
-    let WDreq = Namespaced_IRI.parse _namespace_name "WDreq" |> NamespacedName
+    let WDreq = _prefix "WDreq"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#editor"></see>
     /// </summary>
-    let editor = Namespaced_IRI.parse _namespace_name "editor" |> NamespacedName
-
+    let editor = _prefix "editor"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#formerShortname"></see>
     /// </summary>
-    let formerShortname =
-        Namespaced_IRI.parse _namespace_name "formerShortname" |> NamespacedName
-
+    let formerShortname = _prefix "formerShortname"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#fromSubmission"></see>
     /// </summary>
-    let fromSubmission =
-        Namespaced_IRI.parse _namespace_name "fromSubmission" |> NamespacedName
-
+    let fromSubmission = _prefix "fromSubmission"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#implementationFeedbackDue"></see>
     /// </summary>
-    let implementationFeedbackDue =
-        Namespaced_IRI.parse _namespace_name "implementationFeedbackDue" |> NamespacedName
-
+    let implementationFeedbackDue = _prefix "implementationFeedbackDue"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#lastCallFeedBackDue"></see>
     /// </summary>
-    let lastCallFeedBackDue =
-        Namespaced_IRI.parse _namespace_name "lastCallFeedBackDue" |> NamespacedName
-
+    let lastCallFeedBackDue = _prefix "lastCallFeedBackDue"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#nomination"></see>
     /// </summary>
-    let nomination = Namespaced_IRI.parse _namespace_name "nomination" |> NamespacedName
-
+    let nomination = _prefix "nomination"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#participation"></see>
     /// </summary>
-    let participation =
-        Namespaced_IRI.parse _namespace_name "participation" |> NamespacedName
-
+    let participation = _prefix "participation"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#patentRules"></see>
     /// </summary>
-    let patentRules =
-        Namespaced_IRI.parse _namespace_name "patentRules" |> NamespacedName
-
+    let patentRules = _prefix "patentRules"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#prReviewsDue"></see>
     /// </summary>
-    let prReviewsDue =
-        Namespaced_IRI.parse _namespace_name "prReviewsDue" |> NamespacedName
-
+    let prReviewsDue = _prefix "prReviewsDue"
     /// <summary>
     ///   <see href="http://www.w3.org/2001/02pd/rec54#previousEdition"></see>
     /// </summary>
-    let previousEdition =
-        Namespaced_IRI.parse _namespace_name "previousEdition" |> NamespacedName
-
+    let previousEdition = _prefix "previousEdition"
     /// <summary>
     /// Specs that shouldn't be used anymore because a newer one is available
     /// <see href="http://www.w3.org/2001/02pd/rec54#replaces"></see></summary>
-    let replaces = Namespaced_IRI.parse _namespace_name "replaces" |> NamespacedName
+    let replaces = _prefix "replaces"
     /// <summary>
     /// this Work supersedes what was one in that Work
     /// <see href="http://www.w3.org/2001/02pd/rec54#supersedes"></see></summary>
-    let supersedes = Namespaced_IRI.parse _namespace_name "supersedes" |> NamespacedName
+    let supersedes = _prefix "supersedes"

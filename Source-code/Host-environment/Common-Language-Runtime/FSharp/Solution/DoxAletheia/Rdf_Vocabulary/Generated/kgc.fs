@@ -1,279 +1,246 @@
 namespace http.kgc.knowledge_graph.jp.ontology.kgc.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module kgc =
     let _namespace_name = "http://kgc.knowledge-graph.jp/ontology/kgc.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#1.0.0"></see>
     /// </summary>
-    let ``_1.0.0`` = Namespaced_IRI.parse _namespace_name "1.0.0" |> NamespacedName
-
+    let ``_1.0.0`` = _prefix "1.0.0"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#AbstractTime"></see>
     /// </summary>
-    let AbstractTime =
-        Namespaced_IRI.parse _namespace_name "AbstractTime" |> NamespacedName
-
+    let AbstractTime = _prefix "AbstractTime"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#ActionOption"></see>
     /// </summary>
-    let ActionOption =
-        Namespaced_IRI.parse _namespace_name "ActionOption" |> NamespacedName
-
+    let ActionOption = _prefix "ActionOption"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Animal"></see>
     /// </summary>
-    let Animal = Namespaced_IRI.parse _namespace_name "Animal" |> NamespacedName
+    let Animal = _prefix "Animal"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Object"></see>
     /// </summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
-
+    let Object = _prefix "Object"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#CanNotAction"></see>
     /// </summary>
-    let CanNotAction =
-        Namespaced_IRI.parse _namespace_name "CanNotAction" |> NamespacedName
-
+    let CanNotAction = _prefix "CanNotAction"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#NotAction"></see>
     /// </summary>
-    let NotAction = Namespaced_IRI.parse _namespace_name "NotAction" |> NamespacedName
-
+    let NotAction = _prefix "NotAction"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#LocationProperty"></see>
     /// </summary>
-    let LocationProperty =
-        Namespaced_IRI.parse _namespace_name "LocationProperty" |> NamespacedName
-
+    let LocationProperty = _prefix "LocationProperty"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#SceneObjectProperty"></see>
     /// </summary>
-    let SceneObjectProperty =
-        Namespaced_IRI.parse _namespace_name "SceneObjectProperty" |> NamespacedName
-
+    let SceneObjectProperty = _prefix "SceneObjectProperty"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Not"></see>
     /// </summary>
-    let Not = Namespaced_IRI.parse _namespace_name "Not" |> NamespacedName
+    let Not = _prefix "Not"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#OFobj"></see>
     /// </summary>
-    let OFobj = Namespaced_IRI.parse _namespace_name "OFobj" |> NamespacedName
+    let OFobj = _prefix "OFobj"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#ORobj"></see>
     /// </summary>
-    let ORobj = Namespaced_IRI.parse _namespace_name "ORobj" |> NamespacedName
+    let ORobj = _prefix "ORobj"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Person"></see>
     /// </summary>
-    let Person = Namespaced_IRI.parse _namespace_name "Person" |> NamespacedName
+    let Person = _prefix "Person"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Property"></see>
     /// </summary>
-    let Property = Namespaced_IRI.parse _namespace_name "Property" |> NamespacedName
-
+    let Property = _prefix "Property"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#RelationBetweenScene"></see>
     /// </summary>
-    let RelationBetweenScene =
-        Namespaced_IRI.parse _namespace_name "RelationBetweenScene" |> NamespacedName
-
+    let RelationBetweenScene = _prefix "RelationBetweenScene"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Scene"></see>
     /// </summary>
-    let Scene = Namespaced_IRI.parse _namespace_name "Scene" |> NamespacedName
-
+    let Scene = _prefix "Scene"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#SceneProperty"></see>
     /// </summary>
-    let SceneProperty =
-        Namespaced_IRI.parse _namespace_name "SceneProperty" |> NamespacedName
-
+    let SceneProperty = _prefix "SceneProperty"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Situation"></see>
     /// </summary>
-    let Situation = Namespaced_IRI.parse _namespace_name "Situation" |> NamespacedName
+    let Situation = _prefix "Situation"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Statement"></see>
     /// </summary>
-    let Statement = Namespaced_IRI.parse _namespace_name "Statement" |> NamespacedName
+    let Statement = _prefix "Statement"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Talk"></see>
     /// </summary>
-    let Talk = Namespaced_IRI.parse _namespace_name "Talk" |> NamespacedName
-
+    let Talk = _prefix "Talk"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#TargetObjProperty"></see>
     /// </summary>
-    let TargetObjProperty =
-        Namespaced_IRI.parse _namespace_name "TargetObjProperty" |> NamespacedName
-
+    let TargetObjProperty = _prefix "TargetObjProperty"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#Thought"></see>
     /// </summary>
-    let Thought = Namespaced_IRI.parse _namespace_name "Thought" |> NamespacedName
+    let Thought = _prefix "Thought"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#adjunct"></see>
     /// </summary>
-    let adjunct = Namespaced_IRI.parse _namespace_name "adjunct" |> NamespacedName
+    let adjunct = _prefix "adjunct"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#around"></see>
     /// </summary>
-    let around = Namespaced_IRI.parse _namespace_name "around" |> NamespacedName
-
+    let around = _prefix "around"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#at_the_same_time"></see>
     /// </summary>
-    let at_the_same_time =
-        Namespaced_IRI.parse _namespace_name "at_the_same_time" |> NamespacedName
-
+    let at_the_same_time = _prefix "at_the_same_time"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#because"></see>
     /// </summary>
-    let because = Namespaced_IRI.parse _namespace_name "because" |> NamespacedName
+    let because = _prefix "because"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#canNot"></see>
     /// </summary>
-    let canNot = Namespaced_IRI.parse _namespace_name "canNot" |> NamespacedName
+    let canNot = _prefix "canNot"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#from"></see>
     /// </summary>
-    let from = Namespaced_IRI.parse _namespace_name "from" |> NamespacedName
+    let from = _prefix "from"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#hasPart"></see>
     /// </summary>
-    let hasPart = Namespaced_IRI.parse _namespace_name "hasPart" |> NamespacedName
-
+    let hasPart = _prefix "hasPart"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#hasPredicate"></see>
     /// </summary>
-    let hasPredicate =
-        Namespaced_IRI.parse _namespace_name "hasPredicate" |> NamespacedName
-
+    let hasPredicate = _prefix "hasPredicate"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#hasProperty"></see>
     /// </summary>
-    let hasProperty =
-        Namespaced_IRI.parse _namespace_name "hasProperty" |> NamespacedName
-
+    let hasProperty = _prefix "hasProperty"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#how"></see>
     /// </summary>
-    let how = Namespaced_IRI.parse _namespace_name "how" |> NamespacedName
+    let how = _prefix "how"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#if"></see>
     /// </summary>
-    let if_ = Namespaced_IRI.parse _namespace_name "if" |> NamespacedName
-
+    let if_ = _prefix "if"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#infoReceiver"></see>
     /// </summary>
-    let infoReceiver =
-        Namespaced_IRI.parse _namespace_name "infoReceiver" |> NamespacedName
-
+    let infoReceiver = _prefix "infoReceiver"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#infoSource"></see>
     /// </summary>
-    let infoSource = Namespaced_IRI.parse _namespace_name "infoSource" |> NamespacedName
+    let infoSource = _prefix "infoSource"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#left"></see>
     /// </summary>
-    let left = Namespaced_IRI.parse _namespace_name "left" |> NamespacedName
+    let left = _prefix "left"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#middle"></see>
     /// </summary>
-    let middle = Namespaced_IRI.parse _namespace_name "middle" |> NamespacedName
+    let middle = _prefix "middle"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#near"></see>
     /// </summary>
-    let near = Namespaced_IRI.parse _namespace_name "near" |> NamespacedName
+    let near = _prefix "near"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#next_to"></see>
     /// </summary>
-    let next_to = Namespaced_IRI.parse _namespace_name "next_to" |> NamespacedName
+    let next_to = _prefix "next_to"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#ofPart"></see>
     /// </summary>
-    let ofPart = Namespaced_IRI.parse _namespace_name "ofPart" |> NamespacedName
+    let ofPart = _prefix "ofPart"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#ofWhole"></see>
     /// </summary>
-    let ofWhole = Namespaced_IRI.parse _namespace_name "ofWhole" |> NamespacedName
+    let ofWhole = _prefix "ofWhole"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#on"></see>
     /// </summary>
-    let on = Namespaced_IRI.parse _namespace_name "on" |> NamespacedName
+    let on = _prefix "on"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#opposite"></see>
     /// </summary>
-    let opposite = Namespaced_IRI.parse _namespace_name "opposite" |> NamespacedName
+    let opposite = _prefix "opposite"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#orTarget"></see>
     /// </summary>
-    let orTarget = Namespaced_IRI.parse _namespace_name "orTarget" |> NamespacedName
+    let orTarget = _prefix "orTarget"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#otherwise"></see>
     /// </summary>
-    let otherwise = Namespaced_IRI.parse _namespace_name "otherwise" |> NamespacedName
+    let otherwise = _prefix "otherwise"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#right"></see>
     /// </summary>
-    let right = Namespaced_IRI.parse _namespace_name "right" |> NamespacedName
+    let right = _prefix "right"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#then"></see>
     /// </summary>
-    let then_ = Namespaced_IRI.parse _namespace_name "then" |> NamespacedName
+    let then_ = _prefix "then"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#therefore"></see>
     /// </summary>
-    let therefore = Namespaced_IRI.parse _namespace_name "therefore" |> NamespacedName
+    let therefore = _prefix "therefore"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#time"></see>
     /// </summary>
-    let time = Namespaced_IRI.parse _namespace_name "time" |> NamespacedName
+    let time = _prefix "time"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#to"></see>
     /// </summary>
-    let to_ = Namespaced_IRI.parse _namespace_name "to" |> NamespacedName
+    let to_ = _prefix "to"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#what"></see>
     /// </summary>
-    let what = Namespaced_IRI.parse _namespace_name "what" |> NamespacedName
+    let what = _prefix "what"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#when"></see>
     /// </summary>
-    let when_ = Namespaced_IRI.parse _namespace_name "when" |> NamespacedName
-
+    let when_ = _prefix "when"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#when_during"></see>
     /// </summary>
-    let when_during =
-        Namespaced_IRI.parse _namespace_name "when_during" |> NamespacedName
-
+    let when_during = _prefix "when_during"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#where"></see>
     /// </summary>
-    let where = Namespaced_IRI.parse _namespace_name "where" |> NamespacedName
+    let where = _prefix "where"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#whom"></see>
     /// </summary>
-    let whom = Namespaced_IRI.parse _namespace_name "whom" |> NamespacedName
+    let whom = _prefix "whom"
     /// <summary>
     ///   <see href="http://kgc.knowledge-graph.jp/ontology/kgc.owl#why"></see>
     /// </summary>
-    let why = Namespaced_IRI.parse _namespace_name "why" |> NamespacedName
+    let why = _prefix "why"

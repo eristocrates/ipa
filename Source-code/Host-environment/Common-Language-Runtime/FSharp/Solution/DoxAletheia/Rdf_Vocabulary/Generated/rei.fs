@@ -1,17 +1,21 @@
 namespace http.www.w3.org._2004._06.rei.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module rei =
     let _namespace_name = "http://www.w3.org/2004/06/rei#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#BNode"></see>
     /// </summary>
-    let BNode = Namespaced_IRI.parse _namespace_name "BNode" |> NamespacedName
+    let BNode = _prefix "BNode"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#Term"></see>
     /// </summary>
-    let Term = Namespaced_IRI.parse _namespace_name "Term" |> NamespacedName
+    let Term = _prefix "Term"
     /// <summary>
     /// A formula is identified by an unordered set of statements,
     /// 	with a sets of existentially and universally quantified symbols.
@@ -32,7 +36,7 @@ module rei =
     /// 	equal to the other.
     ///
     /// <see href="http://www.w3.org/2004/06/rei#Formula"></see></summary>
-    let Formula = Namespaced_IRI.parse _namespace_name "Formula" |> NamespacedName
+    let Formula = _prefix "Formula"
     /// <summary>
     /// Literals are identified by their string value, their
     /// 	datatype (or absence thereof) and their language code
@@ -40,17 +44,17 @@ module rei =
     /// 	we can just use a literal the value of a literal.
     ///
     /// <see href="http://www.w3.org/2004/06/rei#Literal"></see></summary>
-    let Literal = Namespaced_IRI.parse _namespace_name "Literal" |> NamespacedName
+    let Literal = _prefix "Literal"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#RDFTerm"></see>
     /// </summary>
-    let RDFTerm = Namespaced_IRI.parse _namespace_name "RDFTerm" |> NamespacedName
+    let RDFTerm = _prefix "RDFTerm"
     /// <summary>
     /// A formula which meets the constaints of being
     /// 	an RDF Graph as per the RDF spec. No universally qualified variables,
     /// 	no nested formulae, no literals as subject, etc.
     /// <see href="http://www.w3.org/2004/06/rei#RDFGraph"></see></summary>
-    let RDFGraph = Namespaced_IRI.parse _namespace_name "RDFGraph" |> NamespacedName
+    let RDFGraph = _prefix "RDFGraph"
     /// <summary>
     /// A statement is the unit of information.
     /// 	It expresses a binary relation.
@@ -58,81 +62,78 @@ module rei =
     /// 	generally referred to as its predicate.
     ///
     /// <see href="http://www.w3.org/2004/06/rei#Statement"></see></summary>
-    let Statement = Namespaced_IRI.parse _namespace_name "Statement" |> NamespacedName
+    let Statement = _prefix "Statement"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#Symbol"></see>
     /// </summary>
-    let Symbol = Namespaced_IRI.parse _namespace_name "Symbol" |> NamespacedName
-
+    let Symbol = _prefix "Symbol"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#existentials"></see>
     /// </summary>
-    let existentials =
-        Namespaced_IRI.parse _namespace_name "existentials" |> NamespacedName
-
+    let existentials = _prefix "existentials"
     /// <summary>
     /// Shorhand for object!uri
     /// <see href="http://www.w3.org/2004/06/rei#objURI"></see></summary>
-    let objURI = Namespaced_IRI.parse _namespace_name "objURI" |> NamespacedName
+    let objURI = _prefix "objURI"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#String"></see>
     /// </summary>
-    let String = Namespaced_IRI.parse _namespace_name "String" |> NamespacedName
+    let String = _prefix "String"
     /// <summary>
     /// Shorhand for object!Literal
     /// <see href="http://www.w3.org/2004/06/rei#objValue"></see></summary>
-    let objValue = Namespaced_IRI.parse _namespace_name "objValue" |> NamespacedName
+    let objValue = _prefix "objValue"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#object"></see>
     /// </summary>
-    let object = Namespaced_IRI.parse _namespace_name "object" |> NamespacedName
+    let object = _prefix "object"
     /// <summary>
     /// Shorhand for predicate!uri
     /// <see href="http://www.w3.org/2004/06/rei#predURI"></see></summary>
-    let predURI = Namespaced_IRI.parse _namespace_name "predURI" |> NamespacedName
+    let predURI = _prefix "predURI"
     /// <summary>
     /// Shorhand for predicate!Literal. Not RDF 1.0.
     /// <see href="http://www.w3.org/2004/06/rei#predValue"></see></summary>
-    let predValue = Namespaced_IRI.parse _namespace_name "predValue" |> NamespacedName
+    let predValue = _prefix "predValue"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#predicate"></see>
     /// </summary>
-    let predicate = Namespaced_IRI.parse _namespace_name "predicate" |> NamespacedName
+    let predicate = _prefix "predicate"
     /// <summary>
     /// The order of the statements is irrelevant.
     /// 	They are given as a rdf:List because rdf:Lists exist,
     /// 	and we want a closed set.
     ///
     /// <see href="http://www.w3.org/2004/06/rei#statements"></see></summary>
-    let statements = Namespaced_IRI.parse _namespace_name "statements" |> NamespacedName
+    let statements = _prefix "statements"
     /// <summary>
     /// Shorhand for subject!uri
     /// <see href="http://www.w3.org/2004/06/rei#subjURI"></see></summary>
-    let subjURI = Namespaced_IRI.parse _namespace_name "subjURI" |> NamespacedName
+    let subjURI = _prefix "subjURI"
     /// <summary>
     /// Shorhand for subject!Literal. Not in RDF 1.0
     /// <see href="http://www.w3.org/2004/06/rei#subjValue"></see></summary>
-    let subjValue = Namespaced_IRI.parse _namespace_name "subjValue" |> NamespacedName
+    let subjValue = _prefix "subjValue"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#subject"></see>
     /// </summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#universals"></see>
     /// </summary>
-    let universals = Namespaced_IRI.parse _namespace_name "universals" |> NamespacedName
+    let universals = _prefix "universals"
     /// <summary>
     /// The URI of the symbol is all that is needed to identify it.
     /// 	This is the name string.
     /// <see href="http://www.w3.org/2004/06/rei#uri"></see></summary>
-    let uri = Namespaced_IRI.parse _namespace_name "uri" |> NamespacedName
+    let uri = _prefix "uri"
     /// <summary>
     /// The value of a literal.
     ///
     /// 	Value is the relation between a node (which happens to be a literal, list etc,..) and the value it takes.
     /// <see href="http://www.w3.org/2004/06/rei#value"></see></summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"
     /// <summary>
     ///   <see href="http://www.w3.org/2004/06/rei#iteral"></see>
     /// </summary>
-    let iteral = Namespaced_IRI.parse _namespace_name "iteral" |> NamespacedName
+    let iteral = _prefix "iteral"

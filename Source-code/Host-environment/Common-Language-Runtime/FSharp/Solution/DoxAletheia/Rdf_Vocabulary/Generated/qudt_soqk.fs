@@ -1,51 +1,46 @@
 namespace http.qudt.org.vocab.soqk.bare
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module qudt_soqk =
     let _namespace_name = "http://qudt.org/vocab/soqk"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/CGS"></see>
     /// </summary>
-    let ``_/CGS`` = Namespaced_IRI.parse _namespace_name "/CGS" |> NamespacedName
-
+    let ``_/CGS`` = _prefix "/CGS"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/CGS-EMU"></see>
     /// </summary>
-    let ``_/CGS-EMU`` =
-        Namespaced_IRI.parse _namespace_name "/CGS-EMU" |> NamespacedName
-
+    let ``_/CGS-EMU`` = _prefix "/CGS-EMU"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/CGS-ESU"></see>
     /// </summary>
-    let ``_/CGS-ESU`` =
-        Namespaced_IRI.parse _namespace_name "/CGS-ESU" |> NamespacedName
-
+    let ``_/CGS-ESU`` = _prefix "/CGS-ESU"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/CGS-Gauss"></see>
     /// </summary>
-    let ``_/CGS-Gauss`` =
-        Namespaced_IRI.parse _namespace_name "/CGS-Gauss" |> NamespacedName
-
+    let ``_/CGS-Gauss`` = _prefix "/CGS-Gauss"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/IMPERIAL"></see>
     /// </summary>
-    let ``_/IMPERIAL`` =
-        Namespaced_IRI.parse _namespace_name "/IMPERIAL" |> NamespacedName
-
+    let ``_/IMPERIAL`` = _prefix "/IMPERIAL"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/ISQ"></see>
     /// </summary>
-    let ``_/ISQ`` = Namespaced_IRI.parse _namespace_name "/ISQ" |> NamespacedName
+    let ``_/ISQ`` = _prefix "/ISQ"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/Planck"></see>
     /// </summary>
-    let ``_/Planck`` = Namespaced_IRI.parse _namespace_name "/Planck" |> NamespacedName
+    let ``_/Planck`` = _prefix "/Planck"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/SI"></see>
     /// </summary>
-    let ``_/SI`` = Namespaced_IRI.parse _namespace_name "/SI" |> NamespacedName
+    let ``_/SI`` = _prefix "/SI"
     /// <summary>
     ///   <see href="http://qudt.org/vocab/soqk/USCS"></see>
     /// </summary>
-    let ``_/USCS`` = Namespaced_IRI.parse _namespace_name "/USCS" |> NamespacedName
+    let ``_/USCS`` = _prefix "/USCS"

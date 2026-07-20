@@ -1,9 +1,13 @@
 namespace http.www.purl.org.drammar.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module drammar =
     let _namespace_name = "http://www.purl.org/drammar#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// List List is inspired by a well known ontology
     ///             (http://smiy.sourceforge.net/olo/spec/orderedlistontology.html#ordered_list); however,
@@ -12,7 +16,7 @@ module drammar =
     ///             List in drama: - Plan: sequence of plans (abstract plans) or single actions (directly
     ///             executable plans); - Timeline: sequence of units.
     /// <see href="http://www.purl.org/drammar#List"></see></summary>
-    let List = Namespaced_IRI.parse _namespace_name "List" |> NamespacedName
+    let List = _prefix "List"
     /// <summary>
     /// Set The class of set structures. The relation between sets and set members is
     ///             represented by the hasMember object property. It includes specific subclasses, with each
@@ -20,7 +24,7 @@ module drammar =
     ///             sets of conflicting plans; - ConsistentStateSets: sets of consistent states (left and
     ///             right boundaries of timelines and plans). - Units: sets of actions.
     /// <see href="http://www.purl.org/drammar#Set"></see></summary>
-    let Set = Namespaced_IRI.parse _namespace_name "Set" |> NamespacedName
+    let Set = _prefix "Set"
     /// <summary>
     /// Tree The class of tree
     ///             structures. The relation between trees and tree nodes is represented by the containsTN
@@ -28,8 +32,7 @@ module drammar =
     ///             subtrees, which are scenes at different levels. The subtree relationship is established
     ///             between scenes (property hasChild), which are actually tree nodes.
     /// <see href="http://www.purl.org/drammar#Tree"></see></summary>
-    let Tree = Namespaced_IRI.parse _namespace_name "Tree" |> NamespacedName
-
+    let Tree = _prefix "Tree"
     /// <summary>
     /// ADTComponent This class includes the entities which provide the components of
     ///             abstract data types. Currently, only the list data type includes a component, the
@@ -37,24 +40,18 @@ module drammar =
     ///             hasADTComponent object property, which has the AbstractDataType class as its domain, and
     ///             the ADTComponent class as its range.
     /// <see href="http://www.purl.org/drammar#ADTComponent"></see></summary>
-    let ADTComponent =
-        Namespaced_IRI.parse _namespace_name "ADTComponent" |> NamespacedName
-
+    let ADTComponent = _prefix "ADTComponent"
     /// <summary>
     /// DataStructure This class encodes the data structures that provide structural
     ///             organization to the other entities. It includes abstract data types (namely sets, lists
     ///             and trees) and data type components.
     /// <see href="http://www.purl.org/drammar#DataStructure"></see></summary>
-    let DataStructure =
-        Namespaced_IRI.parse _namespace_name "DataStructure" |> NamespacedName
-
+    let DataStructure = _prefix "DataStructure"
     /// <summary>
     /// AbstractDataType The data types needed for describing drama are sets, lists
     ///             and trees (more precisely, tree nodes).
     /// <see href="http://www.purl.org/drammar#AbstractDataType"></see></summary>
-    let AbstractDataType =
-        Namespaced_IRI.parse _namespace_name "AbstractDataType" |> NamespacedName
-
+    let AbstractDataType = _prefix "AbstractDataType"
     /// <summary>
     /// Abstract Plan An abstract plan is a recursive plan, i.e., a plan whose
     ///             elements are plans. Formally, an AbstractPlan is a list (List class) containing
@@ -62,9 +59,7 @@ module drammar =
     ///             The plans contained in an abstract plan can be either abstract plans or directly
     ///             executable plans.
     /// <see href="http://www.purl.org/drammar#AbstractPlan"></see></summary>
-    let AbstractPlan =
-        Namespaced_IRI.parse _namespace_name "AbstractPlan" |> NamespacedName
-
+    let AbstractPlan = _prefix "AbstractPlan"
     /// <summary>
     /// Plan A plan is a sequence of actions devised by an agent to achieve some Goal.
     ///             In the BDI model, the agent's 'intention' to execute a plan is the bridge
@@ -78,7 +73,7 @@ module drammar =
     ///             executable plans). A plan is related to its elements by the containsOLE
     ///             property.
     /// <see href="http://www.purl.org/drammar#Plan"></see></summary>
-    let Plan = Namespaced_IRI.parse _namespace_name "Plan" |> NamespacedName
+    let Plan = _prefix "Plan"
     /// <summary>
     /// The Goal class represents the objectives of an agent. In the BDI model, the
     ///             agent is driven by her desires, or goal, and forms plans to achieve them. In Drammar, a
@@ -99,12 +94,11 @@ module drammar =
     ///             state or process (currently not implemented) These are guidelines for writing the plans
     ///             correctly.
     /// <see href="http://www.purl.org/drammar#Goal"></see></summary>
-    let Goal = Namespaced_IRI.parse _namespace_name "Goal" |> NamespacedName
+    let Goal = _prefix "Goal"
     /// <summary>
     /// achieves links a Plan to the Goal it aims at achieving
     /// <see href="http://www.purl.org/drammar#achieves"></see></summary>
-    let achieves = Namespaced_IRI.parse _namespace_name "achieves" |> NamespacedName
-
+    let achieves = _prefix "achieves"
     /// <summary>
     /// Class of the elements of the ordered lists (lists are plans and timelines).
     ///             Sometimes referred to as OLE. The hasOrderedListElement object property has the List
@@ -114,23 +108,18 @@ module drammar =
     ///             i.e. the content of the item. For example, the OrderedListElements Plans have other
     ///             plans or actions as their data.
     /// <see href="http://www.purl.org/drammar#OrderedListElement"></see></summary>
-    let OrderedListElement =
-        Namespaced_IRI.parse _namespace_name "OrderedListElement" |> NamespacedName
-
+    let OrderedListElement = _prefix "OrderedListElement"
     /// <summary>
     /// Property that connects a structural element (e.g. of the class OLE) with the
     ///             data contained in it. Range is not defined; it is defined for each specific structure
     ///             element.
     /// <see href="http://www.purl.org/drammar#hasData"></see></summary>
-    let hasData = Namespaced_IRI.parse _namespace_name "hasData" |> NamespacedName
-
+    let hasData = _prefix "hasData"
     /// <summary>
     /// Inverse of isOLElementOf. Connects the ordered list to its elements.
     ///
     /// <see href="http://www.purl.org/drammar#containsOLE"></see></summary>
-    let containsOLE =
-        Namespaced_IRI.parse _namespace_name "containsOLE" |> NamespacedName
-
+    let containsOLE = _prefix "containsOLE"
     /// <summary>
     /// Timeline Timeline is a subclass of List whose function is to impose some
     ///             ordering on the units in a drama. Notice that the notion of timeline cannot be collapsed
@@ -147,8 +136,7 @@ module drammar =
     ///             object property). The relation between units and timelines is independent of the
     ///             scene/timeline relation.
     /// <see href="http://www.purl.org/drammar#Timeline"></see></summary>
-    let Timeline = Namespaced_IRI.parse _namespace_name "Timeline" |> NamespacedName
-
+    let Timeline = _prefix "Timeline"
     /// <summary>
     /// A plan is the motivation for a timeline, namely for a list of units containing
     ///             actions. This property is functional: so, a plan can motivate only a timeline. Notice
@@ -157,9 +145,7 @@ module drammar =
     ///             course, the fact that this property is functional does not imply that a single timeline
     ///             cannot be motivated by more plans.
     /// <see href="http://www.purl.org/drammar#isMotivationFor"></see></summary>
-    let isMotivationFor =
-        Namespaced_IRI.parse _namespace_name "isMotivationFor" |> NamespacedName
-
+    let isMotivationFor = _prefix "isMotivationFor"
     /// <summary>
     /// An Action is an intentional Process, which is a type of Process. Formally, an
     ///             action is an Process which is constrained to be contained (isMemberOf) some Unit. In
@@ -171,7 +157,7 @@ module drammar =
     ///             annotators will use actions directly in the units (i.e. without explicitly introducing a
     ///             plan for it).
     /// <see href="http://www.purl.org/drammar#Action"></see></summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
+    let Action = _prefix "Action"
     /// <summary>
     /// Processes represents the dynamic class of the perdurants: they are gathered
     ///             into units, which are contained into ordered timelines bordered by states. Process is
@@ -196,15 +182,12 @@ module drammar =
     ///             Same happens in parallel to the States, although in that case the trait concerns the
     ///             state schema.
     /// <see href="http://www.purl.org/drammar#Process"></see></summary>
-    let Process = Namespaced_IRI.parse _namespace_name "Process" |> NamespacedName
-
+    let Process = _prefix "Process"
     /// <summary>
     /// UnintentionalProcess is an unintentional Process. So, an UnintentionalProcess
     ///             is a Process with the property isIntentional that values FALSE.
     /// <see href="http://www.purl.org/drammar#UnintentionalProcess"></see></summary>
-    let UnintentionalProcess =
-        Namespaced_IRI.parse _namespace_name "UnintentionalProcess" |> NamespacedName
-
+    let UnintentionalProcess = _prefix "UnintentionalProcess"
     /// <summary>
     /// Class of the elements
     ///             of the sets (sets are conflict sets, consistent state sets, and units). Sometimes
@@ -215,7 +198,7 @@ module drammar =
     ///             specific Set that is a Unit hasMember some SetMember that hasData some
     ///             Action.
     /// <see href="http://www.purl.org/drammar#SetMember"></see></summary>
-    let SetMember = Namespaced_IRI.parse _namespace_name "SetMember" |> NamespacedName
+    let SetMember = _prefix "SetMember"
     /// <summary>
     /// Unit Units are the segmentation of drama. A drama can have multiple
     ///             segmentations. Units are ordered by some Timeline. Units are devoted to the
@@ -227,24 +210,21 @@ module drammar =
     ///             in the description of at least an action of every unit. A Unit has one or more actions
     ///             as its members (hasMember property).
     /// <see href="http://www.purl.org/drammar#Unit"></see></summary>
-    let Unit = Namespaced_IRI.parse _namespace_name "Unit" |> NamespacedName
+    let Unit = _prefix "Unit"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isMemberOf"></see>
     /// </summary>
-    let isMemberOf = Namespaced_IRI.parse _namespace_name "isMemberOf" |> NamespacedName
+    let isMemberOf = _prefix "isMemberOf"
     /// <summary>
     /// isDataOf connects some entity to a data structure component (namely, an
     ///             OrderedListElement) of which it is the content.
     /// <see href="http://www.purl.org/drammar#isDataOf"></see></summary>
-    let isDataOf = Namespaced_IRI.parse _namespace_name "isDataOf" |> NamespacedName
-
+    let isDataOf = _prefix "isDataOf"
     /// <summary>
     /// Boolean property for Intentionality of processes. Applies to Processes to
     ///             distinguish Action from an UnintentionalProcess.
     /// <see href="http://www.purl.org/drammar#isIntentional"></see></summary>
-    let isIntentional =
-        Namespaced_IRI.parse _namespace_name "isIntentional" |> NamespacedName
-
+    let isIntentional = _prefix "isIntentional"
     /// <summary>
     /// Agent. Derived from BDI model, a mentalist model of agent which sees the agent
     ///             as a rational entity who form intentions, or plans, (based on her beliefs) to achieve
@@ -266,8 +246,7 @@ module drammar =
     ///             4(3), 349-355. Cohen, P. R., &amp; Levesque, H. J. (1995, June). Communicative Actions
     ///             for Artificial Agents. In ICMAS (Vol. 95, pp. 65-72).
     /// <see href="http://www.purl.org/drammar#Agent"></see></summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
-
+    let Agent = _prefix "Agent"
     /// <summary>
     /// DramaEndurant is an entity of drama that can be described as an endurant
     ///             following Gangemi et al. 2002. In Gangemi et al. 2002 "Endurants are wholly present
@@ -288,9 +267,7 @@ module drammar =
     ///             In Knowledge engineering and knowledge management: Ontologies and the semantic Web (pp.
     ///             166-181). Springer Berlin Heidelberg.
     /// <see href="http://www.purl.org/drammar#DramaEndurant"></see></summary>
-    let DramaEndurant =
-        Namespaced_IRI.parse _namespace_name "DramaEndurant" |> NamespacedName
-
+    let DramaEndurant = _prefix "DramaEndurant"
     /// <summary>
     /// Object Class of entities (endurant) that participates into Perdurants, but
     ///             without having intentions. An object is formally defined as a subclass of DramaEndurant
@@ -299,11 +276,11 @@ module drammar =
     ///             (i.e. the entity that changes ownership as a consequence of a giving act). This class is
     ///             formally disjoint from Agents (Disjoint property).
     /// <see href="http://www.purl.org/drammar#Object"></see></summary>
-    let Object = Namespaced_IRI.parse _namespace_name "Object" |> NamespacedName
+    let Object = _prefix "Object"
     /// <summary>
     /// Intends has as domain an Agent and as range a Plan.
     /// <see href="http://www.purl.org/drammar#intends"></see></summary>
-    let intends = Namespaced_IRI.parse _namespace_name "intends" |> NamespacedName
+    let intends = _prefix "intends"
     /// <summary>
     /// A belief is what an agent believes (which may be true or not in the world) In
     ///             the BDI model, beliefs form the agent's knowledge about the world that the agent
@@ -315,8 +292,7 @@ module drammar =
     ///             precondition or effect of a Plan. SWRL rules for mapping project a belief onto some
     ///             ConsistentStateSet which precedes or follows a timeline.
     /// <see href="http://www.purl.org/drammar#Belief"></see></summary>
-    let Belief = Namespaced_IRI.parse _namespace_name "Belief" |> NamespacedName
-
+    let Belief = _prefix "Belief"
     /// <summary>
     /// MentalStates are EventiveStates that are attributed to the mind of an agent.
     ///             There are four types of mental states: 1. Emotion 2. Belief 3. Goal 4. Value Belief and
@@ -331,14 +307,11 @@ module drammar =
     ///             depending on the MentalState type: so, the MentalStateSchema type works as a selector
     ///             for the right trait of the mental schema.
     /// <see href="http://www.purl.org/drammar#MentalState"></see></summary>
-    let MentalState =
-        Namespaced_IRI.parse _namespace_name "MentalState" |> NamespacedName
-
+    let MentalState = _prefix "MentalState"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isKnownBy"></see>
     /// </summary>
-    let isKnownBy = Namespaced_IRI.parse _namespace_name "isKnownBy" |> NamespacedName
-
+    let isKnownBy = _prefix "isKnownBy"
     /// <summary>
     /// The BeliefSchema class describes a Belief (a type of MentalState). This class
     ///             is formally defined as the subclass of MentalStateSchema having as its quale_schemaType
@@ -346,16 +319,12 @@ module drammar =
     ///             (via the propositionalContent object property) a factual process (FactualProcess class)
     ///             or state (FactualState class).
     /// <see href="http://www.purl.org/drammar#BeliefSchema"></see></summary>
-    let BeliefSchema =
-        Namespaced_IRI.parse _namespace_name "BeliefSchema" |> NamespacedName
-
+    let BeliefSchema = _prefix "BeliefSchema"
     /// <summary>
     /// Inverse of describes, this property connects a Dynamics (Process or State)
     ///             with the SituationSchema that describes it.
     /// <see href="http://www.purl.org/drammar#isDescribedBy"></see></summary>
-    let isDescribedBy =
-        Namespaced_IRI.parse _namespace_name "isDescribedBy" |> NamespacedName
-
+    let isDescribedBy = _prefix "isDescribedBy"
     /// <summary>
     /// The MentalStateSchema class collects all the schemata that license the
     ///             behavior of the mental states. Following the guidelines for describing mental states in
@@ -367,9 +336,7 @@ module drammar =
     ///             DramaPerdurant class as eventive mental states (MentalState class) or as factual mental
     ///             states (F_MentalState class).
     /// <see href="http://www.purl.org/drammar#MentalStateSchema"></see></summary>
-    let MentalStateSchema =
-        Namespaced_IRI.parse _namespace_name "MentalStateSchema" |> NamespacedName
-
+    let MentalStateSchema = _prefix "MentalStateSchema"
     /// <summary>
     /// This datatype property represents the type of schema for some construct. Its
     ///             value correspond to the different types of state acknowledged in Drammar : beliefs,
@@ -377,9 +344,7 @@ module drammar =
     ///             Belief class. In particular, framenet is the magic word for the schemata extracted from
     ///             Framenet.
     /// <see href="http://www.purl.org/drammar#Schema_type"></see></summary>
-    let Schema_type =
-        Namespaced_IRI.parse _namespace_name "Schema_type" |> NamespacedName
-
+    let Schema_type = _prefix "Schema_type"
     /// <summary>
     /// This class represents the relation of conflict distributed over a set of
     ///             plans. It represents the orchestration of conflicts in drama. Although conflict may
@@ -387,15 +352,12 @@ module drammar =
     ///             conflict with each other, ir the same character may experience conflicting emotions),
     ///             here we reduce the notion of conflict to this single class.
     /// <see href="http://www.purl.org/drammar#ConflictSet"></see></summary>
-    let ConflictSet =
-        Namespaced_IRI.parse _namespace_name "ConflictSet" |> NamespacedName
-
+    let ConflictSet = _prefix "ConflictSet"
     /// <summary>
     /// The specific property for modelling Sets (as a data structure). Any entity, in
     ///             Drammar, can be a member of a Set.
     /// <see href="http://www.purl.org/drammar#hasMember"></see></summary>
-    let hasMember = Namespaced_IRI.parse _namespace_name "hasMember" |> NamespacedName
-
+    let hasMember = _prefix "hasMember"
     /// <summary>
     /// A ConsistentStateSet is a set of states held consistent by definition. It can
     ///             be a set of states bordering a timeline (i.e., the state of affairs holding before and
@@ -406,33 +368,23 @@ module drammar =
     ///             ConsistentStateSet with a Plan. A ConsistentStateSet has one or more states as its
     ///             members (hasMember property)
     /// <see href="http://www.purl.org/drammar#ConsistentStateSet"></see></summary>
-    let ConsistentStateSet =
-        Namespaced_IRI.parse _namespace_name "ConsistentStateSet" |> NamespacedName
-
+    let ConsistentStateSet = _prefix "ConsistentStateSet"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isPlanEffectOf"></see>
     /// </summary>
-    let isPlanEffectOf =
-        Namespaced_IRI.parse _namespace_name "isPlanEffectOf" |> NamespacedName
-
+    let isPlanEffectOf = _prefix "isPlanEffectOf"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isPlanPreconditionOf"></see>
     /// </summary>
-    let isPlanPreconditionOf =
-        Namespaced_IRI.parse _namespace_name "isPlanPreconditionOf" |> NamespacedName
-
+    let isPlanPreconditionOf = _prefix "isPlanPreconditionOf"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isTimelineEffectOf"></see>
     /// </summary>
-    let isTimelineEffectOf =
-        Namespaced_IRI.parse _namespace_name "isTimelineEffectOf" |> NamespacedName
-
+    let isTimelineEffectOf = _prefix "isTimelineEffectOf"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isTimelinePreconditionOf"></see>
     /// </summary>
-    let isTimelinePreconditionOf =
-        Namespaced_IRI.parse _namespace_name "isTimelinePreconditionOf" |> NamespacedName
-
+    let isTimelinePreconditionOf = _prefix "isTimelinePreconditionOf"
     /// <summary>
     /// State represents the static class of the Perdurant. State is the class that
     ///             bridges to the concept of State in upper ontologies, externally to Drammar. For example,
@@ -446,8 +398,7 @@ module drammar =
     ///             subclasses are: - MentalState: the mental state of an agent; - StateOfAffairs: an
     ///             objective state of the story world.
     /// <see href="http://www.purl.org/drammar#State"></see></summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
-
+    let State = _prefix "State"
     /// <summary>
     /// DescriptionTemplate This class contains a well known role-based pattern for
     ///             representing the linguistic schemata that describe the elements of drama, such as the
@@ -479,9 +430,7 @@ module drammar =
     ///             then, bridges each pattern component onto the corresponding component within the
     ///             external knowledge source via a specific data type property.
     /// <see href="http://www.purl.org/drammar#DescriptionTemplate"></see></summary>
-    let DescriptionTemplate =
-        Namespaced_IRI.parse _namespace_name "DescriptionTemplate" |> NamespacedName
-
+    let DescriptionTemplate = _prefix "DescriptionTemplate"
     /// <summary>
     /// DramaEntity Class of all the dramatic entities, that is, of all the entities
     ///             that are peculiar to drama. Its sisters are classes that are not peculiar to drama, but
@@ -489,18 +438,14 @@ module drammar =
     ///             systems (ExternalReference) and data structures (DataStructure) from computer
     ///             science.
     /// <see href="http://www.purl.org/drammar#DramaEntity"></see></summary>
-    let DramaEntity =
-        Namespaced_IRI.parse _namespace_name "DramaEntity" |> NamespacedName
-
+    let DramaEntity = _prefix "DramaEntity"
     /// <summary>
     /// DirectlyExecutablePlans Directly executable plans are plans that contain only
     ///             actions. Formally, a directly executale plan is a list (List class) that contains
     ///             (containsOLE) only elements (OrderedListElement) that have actions as their data
     ///             (hasData).
     /// <see href="http://www.purl.org/drammar#DirectlyExecutablePlan"></see></summary>
-    let DirectlyExecutablePlan =
-        Namespaced_IRI.parse _namespace_name "DirectlyExecutablePlan" |> NamespacedName
-
+    let DirectlyExecutablePlan = _prefix "DirectlyExecutablePlan"
     /// <summary>
     /// The DramaPerdurant class contains the entities of drama that can described as
     ///             perdurants in DOLCE (Gangemi et al. 2002): "Perdurants [...] just extend in time by
@@ -519,9 +464,7 @@ module drammar =
     ///             DOLCE. In Knowledge engineering and knowledge management: Ontologies and the semantic
     ///             Web (pp. 166-181). Springer Berlin Heidelberg.
     /// <see href="http://www.purl.org/drammar#DramaPerdurant"></see></summary>
-    let DramaPerdurant =
-        Namespaced_IRI.parse _namespace_name "DramaPerdurant" |> NamespacedName
-
+    let DramaPerdurant = _prefix "DramaPerdurant"
     /// <summary>
     /// The situation schema provides the pattern for the description of incidents and states. It is inspired by the Situation ontology Pattern of the Ontology Design Pattern initiative (http://ontologydesignpatterns.org/). So, a SituationSchema describes ("describes" object property) a DramaPerdurant (either a State or a Process).
     /// The schema works as a hub for the roles involved in a situation. The property hasRole links the Situation class (its domain) with the Role class (the range of the property). Also, notice that, as illustrated in the documentation of the SituationSchema class, a Situation Schema (or, better, its subclasses) does not directly refer to the external linguistic knowledge employed to describe drama: rather, it refers to the ExternalRefSchema class (subclass of the top level ExternalReference class), which in  turn refers to the linguistic knowledge. The SituationSchema class specializes into specific schemata for describing specific type of situations:
@@ -531,18 +474,14 @@ module drammar =
     /// Finally, it is worth mentioning that is a specific design choice of Drammar not to represent the nesting of states: only the type of the top level state, e.g., a belief, is represented, independent of what that belief contains in turn. This flat style of representation is determined by the decision not to commit to a specific logical account of state types. When Drammar is employed for annotation, the content nested into a state is described informally in natural language description accompanying the state, if needed.
     /// Refs: Gangemi, A., &amp; Presutti, V. (2009). Ontology design patterns. In Handbook on ontologies (pp. 221-243). Springer Berlin, Heidelberg.
     /// <see href="http://www.purl.org/drammar#SituationSchema"></see></summary>
-    let SituationSchema =
-        Namespaced_IRI.parse _namespace_name "SituationSchema" |> NamespacedName
-
+    let SituationSchema = _prefix "SituationSchema"
     /// <summary>
     /// DrammarScene A DrammarScene is a type of scene that hinges on characters'
     ///             conflicting plans. In Drammar, the conflict over plans is represented by a class, the
     ///             ConflictSet, which contains the set of plans in conflict. The hingesOn object property
     ///             connects the DrammarScene with the Conflict Set.
     /// <see href="http://www.purl.org/drammar#DrammarScene"></see></summary>
-    let DrammarScene =
-        Namespaced_IRI.parse _namespace_name "DrammarScene" |> NamespacedName
-
+    let DrammarScene = _prefix "DrammarScene"
     /// <summary>
     /// Scene Drama is divided into scenes, which correspond to an extent of the
     ///             'text' of drama. Scenes (as a type of TreeNode) form a hierarchy, which
@@ -552,11 +491,11 @@ module drammar =
     ///             object property), i.e., they have a correspondance with some extent of the drama text
     ///             (represented by the Timeline class).
     /// <see href="http://www.purl.org/drammar#Scene"></see></summary>
-    let Scene = Namespaced_IRI.parse _namespace_name "Scene" |> NamespacedName
+    let Scene = _prefix "Scene"
     /// <summary>
     /// A DrammarScene hinges on some ConflictSet
     /// <see href="http://www.purl.org/drammar#hingesOn"></see></summary>
-    let hingesOn = Namespaced_IRI.parse _namespace_name "hingesOn" |> NamespacedName
+    let hingesOn = _prefix "hingesOn"
     /// <summary>
     /// Emotion is the class of emotions felt by an agent in a scene. Formally, it is
     ///             described as the subclass of MentalState described by an EmotionSchema. The emotions
@@ -567,8 +506,7 @@ module drammar =
     ///             emotion): a specifi object property connects each emotion type with its target (e.g.,
     ///             shame_target, love_target, etc.).
     /// <see href="http://www.purl.org/drammar#Emotion"></see></summary>
-    let Emotion = Namespaced_IRI.parse _namespace_name "Emotion" |> NamespacedName
-
+    let Emotion = _prefix "Emotion"
     /// <summary>
     /// An EmotionSchema represents the description of an EmotionState, bridged onto
     ///             some external linguistic or semantic system through the mediation of the
@@ -578,9 +516,7 @@ module drammar =
     ///             ExternalRefEmotionType class which in turn links the description of the Emotion to a
     ///             reference theory of emotions.
     /// <see href="http://www.purl.org/drammar#EmotionSchema"></see></summary>
-    let EmotionSchema =
-        Namespaced_IRI.parse _namespace_name "EmotionSchema" |> NamespacedName
-
+    let EmotionSchema = _prefix "EmotionSchema"
     /// <summary>
     /// This class includes individuals for all the 22 emotion types referred by OCC
     ///             theory. The individuals are bridge individuals to some external formal OCC-based
@@ -589,9 +525,7 @@ module drammar =
     ///             be different from the adoption of the OCC theory, as committed in
     ///             Drammar.
     /// <see href="http://www.purl.org/drammar#ExternalRefEmotionType"></see></summary>
-    let ExternalRefEmotionType =
-        Namespaced_IRI.parse _namespace_name "ExternalRefEmotionType" |> NamespacedName
-
+    let ExternalRefEmotionType = _prefix "ExternalRefEmotionType"
     /// <summary>
     /// ExternalReference This is a class that provides the service of accumulating
     ///             all the "quale" datatype properties that refer to external linguistic or
@@ -599,9 +533,7 @@ module drammar =
     ///             is bridged onto some external lexicon or ontology. Its subclasses are useful in
     ///             grouping, but do not represent specific issues in support.
     /// <see href="http://www.purl.org/drammar#ExternalReference"></see></summary>
-    let ExternalReference =
-        Namespaced_IRI.parse _namespace_name "ExternalReference" |> NamespacedName
-
+    let ExternalReference = _prefix "ExternalReference"
     /// <summary>
     /// The ExternalRefEntity class has the function of bridging the description of a
     ///             DramaEntity (not an entity in general) to some external linguistic or semantic resource
@@ -610,9 +542,7 @@ module drammar =
     ///             ExternalRefEntity iherits the "quale" data property from its direct ancestor,
     ///             ExternalReference class.
     /// <see href="http://www.purl.org/drammar#ExternalRefEntity"></see></summary>
-    let ExternalRefEntity =
-        Namespaced_IRI.parse _namespace_name "ExternalRefEntity" |> NamespacedName
-
+    let ExternalRefEntity = _prefix "ExternalRefEntity"
     /// <summary>
     /// The ExternalRefRole class has the function of bridging the description of a
     ///             Role (not an entity in general) to a description of the role in some external linguistic
@@ -623,9 +553,7 @@ module drammar =
     ///             corresponding role in FrameNet - role_verbnetRoleType: connects the Role to the name of
     ///             the corresponding role in VerdNet (a string) - role_ID_resource
     /// <see href="http://www.purl.org/drammar#ExternalRefRole"></see></summary>
-    let ExternalRefRole =
-        Namespaced_IRI.parse _namespace_name "ExternalRefRole" |> NamespacedName
-
+    let ExternalRefRole = _prefix "ExternalRefRole"
     /// <summary>
     /// The ExternalRefSchema class has the function of bridging the description of a
     ///             SituationSchema to some external lexical-semantic resource representing apt to represent
@@ -635,9 +563,7 @@ module drammar =
     ///             SituationSchema with the FrameNet frame which correponds to it, following the paradigm
     ///             of Linked Data.
     /// <see href="http://www.purl.org/drammar#ExternalRefSchema"></see></summary>
-    let ExternalRefSchema =
-        Namespaced_IRI.parse _namespace_name "ExternalRefSchema" |> NamespacedName
-
+    let ExternalRefSchema = _prefix "ExternalRefSchema"
     /// <summary>
     /// A FrameNetSchema corresponds to a process or state describable by a frame in
     ///             Framenet (https://framenet2.icsi.berkeley.edu/fnReports/data/frameIndex.xml). The
@@ -648,13 +574,11 @@ module drammar =
     ///             property. The quale_frame_URI, then, bridges the ExternalRefSchema class onto the URI of
     ///             the appropriate frame.
     /// <see href="http://www.purl.org/drammar#FrameNetSchema"></see></summary>
-    let FrameNetSchema =
-        Namespaced_IRI.parse _namespace_name "FrameNetSchema" |> NamespacedName
-
+    let FrameNetSchema = _prefix "FrameNetSchema"
     /// <summary>
     /// inverse of hasGoal
     /// <see href="http://www.purl.org/drammar#isGoalOf"></see></summary>
-    let isGoalOf = Namespaced_IRI.parse _namespace_name "isGoalOf" |> NamespacedName
+    let isGoalOf = _prefix "isGoalOf"
     /// <summary>
     /// The GoalSchema class describes a Goal (a type of MentalState). This class is
     ///             formally defined as the subclass of MentalStateSchema having as its quale_schemaType
@@ -662,39 +586,30 @@ module drammar =
     ///             the propositionalContent object property) a factual process (FactualProcess class) or
     ///             state (FactualState class).
     /// <see href="http://www.purl.org/drammar#GoalSchema"></see></summary>
-    let GoalSchema = Namespaced_IRI.parse _namespace_name "GoalSchema" |> NamespacedName
+    let GoalSchema = _prefix "GoalSchema"
     /// <summary>
     /// Type of the goal: one of the strings "Achievement"
     ///             "Maintainance" "Perform" "Query"
     /// <see href="http://www.purl.org/drammar#Goal_type"></see></summary>
-    let Goal_type = Namespaced_IRI.parse _namespace_name "Goal_type" |> NamespacedName
-
+    let Goal_type = _prefix "Goal_type"
     /// <summary>
     /// Last OLE of a
     ///             List.
     /// <see href="http://www.purl.org/drammar#containsLastOLE"></see></summary>
-    let containsLastOLE =
-        Namespaced_IRI.parse _namespace_name "containsLastOLE" |> NamespacedName
-
+    let containsLastOLE = _prefix "containsLastOLE"
     /// <summary>
     /// First OLE of a
     ///             List.
     /// <see href="http://www.purl.org/drammar#containsFirstOLE"></see></summary>
-    let containsFirstOLE =
-        Namespaced_IRI.parse _namespace_name "containsFirstOLE" |> NamespacedName
-
+    let containsFirstOLE = _prefix "containsFirstOLE"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isMentalStateOf"></see>
     /// </summary>
-    let isMentalStateOf =
-        Namespaced_IRI.parse _namespace_name "isMentalStateOf" |> NamespacedName
-
+    let isMentalStateOf = _prefix "isMentalStateOf"
     /// <summary>
     /// Inverse of intends.
     /// <see href="http://www.purl.org/drammar#isIntendedBy"></see></summary>
-    let isIntendedBy =
-        Namespaced_IRI.parse _namespace_name "isIntendedBy" |> NamespacedName
-
+    let isIntendedBy = _prefix "isIntendedBy"
     /// <summary>
     /// Role provides the pattern for the role fillers in a frame instantiation, that
     ///             occurs in SituationSchema, for describing processes and states. A Role is filled by a
@@ -717,32 +632,31 @@ module drammar =
     ///             properties (namely, the Role_framenetRoleID and Role_verbnetRoleType data properties
     ///             respectively for FrameNet and VerbNet).
     /// <see href="http://www.purl.org/drammar#Role"></see></summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
+    let Role = _prefix "Role"
     /// <summary>
     /// Filler is the property that connects a Role of a FrameNetSchema with the
     ///             DramaEntity (DramaEndurant or DramaPerdurant) that fills that Role.
     /// <see href="http://www.purl.org/drammar#hasFiller"></see></summary>
-    let hasFiller = Namespaced_IRI.parse _namespace_name "hasFiller" |> NamespacedName
+    let hasFiller = _prefix "hasFiller"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isRoleOf"></see>
     /// </summary>
-    let isRoleOf = Namespaced_IRI.parse _namespace_name "isRoleOf" |> NamespacedName
+    let isRoleOf = _prefix "isRoleOf"
     /// <summary>
     /// TreeNode The TreeNode class represents tree-like structures in drama, namely
     ///             Scenes. This class only represents the recursive structure of drama without an explicit
     ///             commitment to the notion of 'drama as a tree'.
     /// <see href="http://www.purl.org/drammar#TreeNode"></see></summary>
-    let TreeNode = Namespaced_IRI.parse _namespace_name "TreeNode" |> NamespacedName
+    let TreeNode = _prefix "TreeNode"
     /// <summary>
     /// The coincidence relation of a Scene on a Timeline.
     /// <see href="http://www.purl.org/drammar#spans"></see></summary>
-    let spans = Namespaced_IRI.parse _namespace_name "spans" |> NamespacedName
+    let spans = _prefix "spans"
     /// <summary>
     /// the basic relation employed for modelling the computational data structure of
     ///             tree.
     /// <see href="http://www.purl.org/drammar#hasChild"></see></summary>
-    let hasChild = Namespaced_IRI.parse _namespace_name "hasChild" |> NamespacedName
-
+    let hasChild = _prefix "hasChild"
     /// <summary>
     /// StateofAffairs are states that concern the storyworld as a whole; they are
     ///             described by a FrameNetSchema, namely a SituationSchema that points (through the
@@ -750,35 +664,28 @@ module drammar =
     ///             are external to the characters' mental states, and can be linguistically described
     ///             through some external resources such as FrameNet.
     /// <see href="http://www.purl.org/drammar#StateOfAffairs"></see></summary>
-    let StateOfAffairs =
-        Namespaced_IRI.parse _namespace_name "StateOfAffairs" |> NamespacedName
-
+    let StateOfAffairs = _prefix "StateOfAffairs"
     /// <summary>
     /// Property that connect a Timeline with the ConsistentStateState which forms its
     ///             effects.
     /// <see href="http://www.purl.org/drammar#hasTimelineEffect"></see></summary>
-    let hasTimelineEffect =
-        Namespaced_IRI.parse _namespace_name "hasTimelineEffect" |> NamespacedName
-
+    let hasTimelineEffect = _prefix "hasTimelineEffect"
     /// <summary>
     /// Property that connect a Timeline with the ConsistentStateState which forms its
     ///             precondition.
     /// <see href="http://www.purl.org/drammar#hasTimelinePrecondition"></see></summary>
-    let hasTimelinePrecondition =
-        Namespaced_IRI.parse _namespace_name "hasTimelinePrecondition" |> NamespacedName
-
+    let hasTimelinePrecondition = _prefix "hasTimelinePrecondition"
     /// <summary>
     /// Connects the Tree with
     ///             the TreeNode that is its Root.
     /// <see href="http://www.purl.org/drammar#hasRoot"></see></summary>
-    let hasRoot = Namespaced_IRI.parse _namespace_name "hasRoot" |> NamespacedName
+    let hasRoot = _prefix "hasRoot"
     /// <summary>
     /// Connects the tree to
     ///             its (tree) nodes. E.g., the drama is a tree and the scenes are its tree
     ///             nodes.
     /// <see href="http://www.purl.org/drammar#containsTN"></see></summary>
-    let containsTN = Namespaced_IRI.parse _namespace_name "containsTN" |> NamespacedName
-
+    let containsTN = _prefix "containsTN"
     /// <summary>
     /// An UnderspecifiedPlan is a plan that is part of a larger plan to achieve some
     ///             goal, but has not been executed. In drama, it represents the unobservable part of a plan
@@ -792,21 +699,16 @@ module drammar =
     ///             part of its definition as an Equivalent Class, distinguish it from Abstract and Directly
     ///             Executable Plans.
     /// <see href="http://www.purl.org/drammar#UnderspecifiedPlan"></see></summary>
-    let UnderspecifiedPlan =
-        Namespaced_IRI.parse _namespace_name "UnderspecifiedPlan" |> NamespacedName
-
+    let UnderspecifiedPlan = _prefix "UnderspecifiedPlan"
     /// <summary>
     /// Connects a SituationSchema ( modelled by a frame-like linguistic structure)
     ///             with each Role of the schema.
     /// <see href="http://www.purl.org/drammar#hasRole"></see></summary>
-    let hasRole = Namespaced_IRI.parse _namespace_name "hasRole" |> NamespacedName
-
+    let hasRole = _prefix "hasRole"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isOrderedBy"></see>
     /// </summary>
-    let isOrderedBy =
-        Namespaced_IRI.parse _namespace_name "isOrderedBy" |> NamespacedName
-
+    let isOrderedBy = _prefix "isOrderedBy"
     /// <summary>
     /// The Value Class represents the values of an agent. These values are
     ///             engaged in drama by the execution of the agents' plans. Formally, a Value is
@@ -817,142 +719,108 @@ module drammar =
     ///             answer "At home, my Lord", being a lie, results in a state that puts at stake
     ///             Hamlet's value of honesty.
     /// <see href="http://www.purl.org/drammar#Value"></see></summary>
-    let Value = Namespaced_IRI.parse _namespace_name "Value" |> NamespacedName
+    let Value = _prefix "Value"
     /// <summary>
     /// Boolean property of a Value: - true, if the value is at stake; - false,
     ///             if the value is balanced.
     /// <see href="http://www.purl.org/drammar#atStake"></see></summary>
-    let atStake = Namespaced_IRI.parse _namespace_name "atStake" |> NamespacedName
-
+    let atStake = _prefix "atStake"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isValueEngagedOf"></see>
     /// </summary>
-    let isValueEngagedOf =
-        Namespaced_IRI.parse _namespace_name "isValueEngagedOf" |> NamespacedName
-
+    let isValueEngagedOf = _prefix "isValueEngagedOf"
     /// <summary>
     /// The ValueSchema class describes an agent's Value. Formally,
     ///             it is a subclass of MentalStateSchema whose property quale_schemaType is constrained to
     ///             the string "value".
     /// <see href="http://www.purl.org/drammar#ValueSchema"></see></summary>
-    let ValueSchema =
-        Namespaced_IRI.parse _namespace_name "ValueSchema" |> NamespacedName
-
+    let ValueSchema = _prefix "ValueSchema"
     /// <summary>
     /// Accomplished = true stands for entirely executed and goal achieved
     ///             Accomplished = false stands for entirely executed and goal not achieved When missing,
     ///             nothing is said about execution.
     /// <see href="http://www.purl.org/drammar#accomplished"></see></summary>
-    let accomplished =
-        Namespaced_IRI.parse _namespace_name "accomplished" |> NamespacedName
-
+    let accomplished = _prefix "accomplished"
     /// <summary>
     /// This property connects a goal with the plan that achieves it.
     /// <see href="http://www.purl.org/drammar#isAchievedBy"></see></summary>
-    let isAchievedBy =
-        Namespaced_IRI.parse _namespace_name "isAchievedBy" |> NamespacedName
-
+    let isAchievedBy = _prefix "isAchievedBy"
     /// <summary>
     /// The appraisingAgent property connects an Emotion with the Agent who appraises
     ///             it. It encompasses specific subproperties for the specific emotion types (in OCC theory,
     ///             there are 22 emotion types such as Love or Shame)
     /// <see href="http://www.purl.org/drammar#appraisingAgent"></see></summary>
-    let appraisingAgent =
-        Namespaced_IRI.parse _namespace_name "appraisingAgent" |> NamespacedName
-
+    let appraisingAgent = _prefix "appraisingAgent"
     /// <summary>
     /// coOccurInScene can be used to describe the fact that two Plans co-occur in the
     ///             same Scene.
     /// <see href="http://www.purl.org/drammar#coOccurInScene"></see></summary>
-    let coOccurInScene =
-        Namespaced_IRI.parse _namespace_name "coOccurInScene" |> NamespacedName
-
+    let coOccurInScene = _prefix "coOccurInScene"
     /// <summary>
     /// A generic property for representing the relation among a given abstract
     ///             structure type and its components.
     /// <see href="http://www.purl.org/drammar#hasADTComponent"></see></summary>
-    let hasADTComponent =
-        Namespaced_IRI.parse _namespace_name "hasADTComponent" |> NamespacedName
-
+    let hasADTComponent = _prefix "hasADTComponent"
     /// <summary>
     /// Connects the element of an ordered list to the ordered list.
     /// <see href="http://www.purl.org/drammar#isOLEContained"></see></summary>
-    let isOLEContained =
-        Namespaced_IRI.parse _namespace_name "isOLEContained" |> NamespacedName
-
+    let isOLEContained = _prefix "isOLEContained"
     /// <summary>
     /// A SituationSchema describes a DramaPerdurant, i.e. provides a template for
     ///             describing processes and states.
     /// <see href="http://www.purl.org/drammar#describes"></see></summary>
-    let describes = Namespaced_IRI.parse _namespace_name "describes" |> NamespacedName
+    let describes = _prefix "describes"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#feels"></see>
     /// </summary>
-    let feels = Namespaced_IRI.parse _namespace_name "feels" |> NamespacedName
-
+    let feels = _prefix "feels"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#hasMentalState"></see>
     /// </summary>
-    let hasMentalState =
-        Namespaced_IRI.parse _namespace_name "hasMentalState" |> NamespacedName
-
+    let hasMentalState = _prefix "hasMentalState"
     /// <summary>
     /// Connects an emotion with the agent who feels it.
     /// <see href="http://www.purl.org/drammar#isEmotionOf"></see></summary>
-    let isEmotionOf =
-        Namespaced_IRI.parse _namespace_name "isEmotionOf" |> NamespacedName
-
+    let isEmotionOf = _prefix "isEmotionOf"
     /// <summary>
     /// Inverse of precedes. Sequential order in an ordered list.
     /// <see href="http://www.purl.org/drammar#follows"></see></summary>
-    let follows = Namespaced_IRI.parse _namespace_name "follows" |> NamespacedName
+    let follows = _prefix "follows"
     /// <summary>
     /// Sequential order in an ordered list.
     /// <see href="http://www.purl.org/drammar#precedes"></see></summary>
-    let precedes = Namespaced_IRI.parse _namespace_name "precedes" |> NamespacedName
-
+    let precedes = _prefix "precedes"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#happyFor_appraisingAgent"></see>
     /// </summary>
-    let happyFor_appraisingAgent =
-        Namespaced_IRI.parse _namespace_name "happyFor_appraisingAgent" |> NamespacedName
-
+    let happyFor_appraisingAgent = _prefix "happyFor_appraisingAgent"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#happyFor_target"></see>
     /// </summary>
-    let happyFor_target =
-        Namespaced_IRI.parse _namespace_name "happyFor_target" |> NamespacedName
-
+    let happyFor_target = _prefix "happyFor_target"
     /// <summary>
     /// A generic property for describing the relation of an appraised emotional state
     ///             with the target of the emotion, further articulated into more specific target types for
     ///             each emotion type (see appraisingAgent property).
     /// <see href="http://www.purl.org/drammar#target"></see></summary>
-    let target = Namespaced_IRI.parse _namespace_name "target" |> NamespacedName
+    let target = _prefix "target"
     /// <summary>
     /// The parent/child relation for modelling tree structures.
     /// <see href="http://www.purl.org/drammar#hasParent"></see></summary>
-    let hasParent = Namespaced_IRI.parse _namespace_name "hasParent" |> NamespacedName
-
+    let hasParent = _prefix "hasParent"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#hasDoneState"></see>
     /// </summary>
-    let hasDoneState =
-        Namespaced_IRI.parse _namespace_name "hasDoneState" |> NamespacedName
-
+    let hasDoneState = _prefix "hasDoneState"
     /// <summary>
     /// This is the property that connects a process with a particular state, called a
     ///             done state, that holds whether the process has terminated.
     /// <see href="http://www.purl.org/drammar#isDoneStateOf"></see></summary>
-    let isDoneStateOf =
-        Namespaced_IRI.parse _namespace_name "isDoneStateOf" |> NamespacedName
-
+    let isDoneStateOf = _prefix "isDoneStateOf"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#hasEmotionType"></see>
     /// </summary>
-    let hasEmotionType =
-        Namespaced_IRI.parse _namespace_name "hasEmotionType" |> NamespacedName
-
+    let hasEmotionType = _prefix "hasEmotionType"
     /// <summary>
     /// Quality of an entity (DramaEndurant) In particular: Object_type This property
     ///             provides a URI, in YAGOSUMO or in Wordnet, or a custom string that defines the class of
@@ -967,100 +835,78 @@ module drammar =
     ///             environment. E.g. 20th century, 1710's, 50's. Can be a URI or forced custom
     ///             string. This is why Range is empty.
     /// <see href="http://www.purl.org/drammar#hasExtRef"></see></summary>
-    let hasExtRef = Namespaced_IRI.parse _namespace_name "hasExtRef" |> NamespacedName
+    let hasExtRef = _prefix "hasExtRef"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isExtRefOf"></see>
     /// </summary>
-    let isExtRefOf = Namespaced_IRI.parse _namespace_name "isExtRefOf" |> NamespacedName
+    let isExtRefOf = _prefix "isExtRefOf"
     /// <summary>
     /// Connects some DramaEndurant or Perdurant to a Role in a
     ///             SituationSchema
     /// <see href="http://www.purl.org/drammar#isFillerOf"></see></summary>
-    let isFillerOf = Namespaced_IRI.parse _namespace_name "isFillerOf" |> NamespacedName
+    let isFillerOf = _prefix "isFillerOf"
     /// <summary>
     /// The property which connects an agent with her/his goals.
     /// <see href="http://www.purl.org/drammar#hasGoal"></see></summary>
-    let hasGoal = Namespaced_IRI.parse _namespace_name "hasGoal" |> NamespacedName
-
+    let hasGoal = _prefix "hasGoal"
     /// <summary>
     /// hasManifestation This property connects a Unit to a manifestation of drama
     ///             according to FRBR model. In the real world, a manifestation is represented by a IRI
     ///             (e.g., the URL of a movie, of the recording of a performance, or of the digital edition
     ///             of a novel).
     /// <see href="http://www.purl.org/drammar#hasManifestation"></see></summary>
-    let hasManifestation =
-        Namespaced_IRI.parse _namespace_name "hasManifestation" |> NamespacedName
-
+    let hasManifestation = _prefix "hasManifestation"
     /// <summary>
     /// Anything can convey a message. Standard cases: Signpost at a city entrance
     ///             "Ciudad de Mexico"; Toothpaste brand name on the object toothpaste:
     ///             "Colgate" A specific utterance in a communication action.
     /// <see href="http://www.purl.org/drammar#hasMessage"></see></summary>
-    let hasMessage = Namespaced_IRI.parse _namespace_name "hasMessage" |> NamespacedName
-
+    let hasMessage = _prefix "hasMessage"
     /// <summary>
     /// The hasMotivation property represents the relation bewteen a plan and the
     ///             timeline it motivates (namely, where the actions of the plan are actually
     ///             contained).
     /// <see href="http://www.purl.org/drammar#hasMotivationIn"></see></summary>
-    let hasMotivationIn =
-        Namespaced_IRI.parse _namespace_name "hasMotivationIn" |> NamespacedName
-
+    let hasMotivationIn = _prefix "hasMotivationIn"
     /// <summary>
     /// Property that connects a plan with the consistent set of states that is the
     ///             effect of a plan (ConsistentStateSet).
     /// <see href="http://www.purl.org/drammar#hasPlanEffect"></see></summary>
-    let hasPlanEffect =
-        Namespaced_IRI.parse _namespace_name "hasPlanEffect" |> NamespacedName
-
+    let hasPlanEffect = _prefix "hasPlanEffect"
     /// <summary>
     /// Property that connect a plan with the ConsistentStateState which forms its
     ///             precondition.
     /// <see href="http://www.purl.org/drammar#hasPlanPrecondition"></see></summary>
-    let hasPlanPrecondition =
-        Namespaced_IRI.parse _namespace_name "hasPlanPrecondition" |> NamespacedName
-
+    let hasPlanPrecondition = _prefix "hasPlanPrecondition"
     /// <summary>
     /// hasPropositionalContent links a BeliefSchema or a GoalSchema to the its
     ///             content (a factual state or process), that is, the Process or State that is the actual
     ///             content of the belief or the goal.
     /// <see href="http://www.purl.org/drammar#hasPropositionalContent"></see></summary>
-    let hasPropositionalContent =
-        Namespaced_IRI.parse _namespace_name "hasPropositionalContent" |> NamespacedName
-
+    let hasPropositionalContent = _prefix "hasPropositionalContent"
     /// <summary>
     /// Inverse of hasPropositionalContent. It links a BeliefSchema or a GoalSchema to
     ///             a State or Process.
     /// <see href="http://www.purl.org/drammar#isPropositionalContentOf"></see></summary>
-    let isPropositionalContentOf =
-        Namespaced_IRI.parse _namespace_name "isPropositionalContentOf" |> NamespacedName
-
+    let isPropositionalContentOf = _prefix "isPropositionalContentOf"
     /// <summary>
     /// The property hasValue connects an agent to her/his values
     /// <see href="http://www.purl.org/drammar#hasValueEngaged"></see></summary>
-    let hasValueEngaged =
-        Namespaced_IRI.parse _namespace_name "hasValueEngaged" |> NamespacedName
-
+    let hasValueEngaged = _prefix "hasValueEngaged"
     /// <summary>
     /// Inverse of hingesOn.
     /// <see href="http://www.purl.org/drammar#isHingedOnBy"></see></summary>
-    let isHingedOnBy =
-        Namespaced_IRI.parse _namespace_name "isHingedOnBy" |> NamespacedName
-
+    let isHingedOnBy = _prefix "isHingedOnBy"
     /// <summary>
     /// The conflict relation over plans. The ontology is neutral with respect with
     ///             conflicts over other entity types, such a goals: it only assumes that conflicts over
     ///             plans are observable.
     /// <see href="http://www.purl.org/drammar#inConflictWith"></see></summary>
-    let inConflictWith =
-        Namespaced_IRI.parse _namespace_name "inConflictWith" |> NamespacedName
-
+    let inConflictWith = _prefix "inConflictWith"
     /// <summary>
     /// The support relation over goals (parallel to inConflictWith)
     /// <see href="http://www.purl.org/drammar#inSupportOf"></see></summary>
-    let inSupportOf =
-        Namespaced_IRI.parse _namespace_name "inSupportOf" |> NamespacedName
-
+    let inSupportOf = _prefix "inSupportOf"
     /// <summary>
     /// This property chain serves the purpose of connecting a frame role with the
     ///             frame it belongs to, via the following property chain: isExtRefOf o isRoleOf o hasExtRef
@@ -1070,44 +916,33 @@ module drammar =
     ///             "quale" data property to the classes that represent the external
     ///             references)
     /// <see href="http://www.purl.org/drammar#isExtRefRoleOfExtRefSchema"></see></summary>
-    let isExtRefRoleOfExtRefSchema =
-        Namespaced_IRI.parse _namespace_name "isExtRefRoleOfExtRefSchema" |> NamespacedName
-
+    let isExtRefRoleOfExtRefSchema = _prefix "isExtRefRoleOfExtRefSchema"
     /// <summary>
     /// Property of an agent, who BELIEVES a Belief (a mental state with a
     ///             propositional content). BELIEVES = KNOWS.
     /// <see href="http://www.purl.org/drammar#knows"></see></summary>
-    let knows = Namespaced_IRI.parse _namespace_name "knows" |> NamespacedName
+    let knows = _prefix "knows"
     /// <summary>
     /// A Timeline orders Unit.
     /// <see href="http://www.purl.org/drammar#orders"></see></summary>
-    let orders = Namespaced_IRI.parse _namespace_name "orders" |> NamespacedName
-
+    let orders = _prefix "orders"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#isSpannedBy"></see>
     /// </summary>
-    let isSpannedBy =
-        Namespaced_IRI.parse _namespace_name "isSpannedBy" |> NamespacedName
-
+    let isSpannedBy = _prefix "isSpannedBy"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#love_appraisingAgent"></see>
     /// </summary>
-    let love_appraisingAgent =
-        Namespaced_IRI.parse _namespace_name "love_appraisingAgent" |> NamespacedName
-
+    let love_appraisingAgent = _prefix "love_appraisingAgent"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#love_target"></see>
     /// </summary>
-    let love_target =
-        Namespaced_IRI.parse _namespace_name "love_target" |> NamespacedName
-
+    let love_target = _prefix "love_target"
     /// <summary>
     /// This is the string originally inserted for searching the URI in the external
     ///             ontology. E.g. "parlare" "eleganza"
     /// <see href="http://www.purl.org/drammar#originalTerm"></see></summary>
-    let originalTerm =
-        Namespaced_IRI.parse _namespace_name "originalTerm" |> NamespacedName
-
+    let originalTerm = _prefix "originalTerm"
     /// <summary>
     /// Any quality associated to anything. Its range is a string (if a URI is needed
     ///             to resolve the reference, this is dealt with when processing the annotation) All its
@@ -1115,55 +950,41 @@ module drammar =
     ///             current subproperties refer to FrameNet, VerbNet, YagoSumo, MWN corpora,
     ///             respectively.
     /// <see href="http://www.purl.org/drammar#quale"></see></summary>
-    let quale = Namespaced_IRI.parse _namespace_name "quale" |> NamespacedName
-
+    let quale = _prefix "quale"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#quale_MWNSense"></see>
     /// </summary>
-    let quale_MWNSense =
-        Namespaced_IRI.parse _namespace_name "quale_MWNSense" |> NamespacedName
-
+    let quale_MWNSense = _prefix "quale_MWNSense"
     /// <summary>
     /// The range is a concept in YagoSUMO. E.g. &amp;%Speaking+, &amp;%Arriving=,
     ///             these two probably from SUMO;
     ///             http://www.mpii.de/yago/resource/wordnet_bathing_100427853, probably from
     ///             YAGO.
     /// <see href="http://www.purl.org/drammar#quale_YAGOSUMOConcept"></see></summary>
-    let quale_YAGOSUMOConcept =
-        Namespaced_IRI.parse _namespace_name "quale_YAGOSUMOConcept" |> NamespacedName
-
+    let quale_YAGOSUMOConcept = _prefix "quale_YAGOSUMOConcept"
     /// <summary>
     /// This property of the ExternalRefSchema links the schema to the frame it
     ///             corresponds to, needed to describe some state or process occurring in drama. The value
     ///             is the ID in Framenet. Currently, in the implementation, it is the string of the number
     ///             of choice in the list of frames returned. E.g. "1"
     /// <see href="http://www.purl.org/drammar#quale_framenetFrame"></see></summary>
-    let quale_framenetFrame =
-        Namespaced_IRI.parse _namespace_name "quale_framenetFrame" |> NamespacedName
-
+    let quale_framenetFrame = _prefix "quale_framenetFrame"
     /// <summary>
     /// Role_framenetRoleID ID of the role as stated by Framenet. It is the string
     ///             returned through the access to Framenet. The string represent the ID of the Frame
     ///             Element.
     /// <see href="http://www.purl.org/drammar#quale_framenetRoleID"></see></summary>
-    let quale_framenetRoleID =
-        Namespaced_IRI.parse _namespace_name "quale_framenetRoleID" |> NamespacedName
-
+    let quale_framenetRoleID = _prefix "quale_framenetRoleID"
     /// <summary>
     /// Type of the role as stated by Verbnet. It is the string returned through the
     ///             access to Verbnet. This happens when the access to Framenet fails.
     /// <see href="http://www.purl.org/drammar#quale_verbnetRoleLabel"></see></summary>
-    let quale_verbnetRoleLabel =
-        Namespaced_IRI.parse _namespace_name "quale_verbnetRoleLabel" |> NamespacedName
-
+    let quale_verbnetRoleLabel = _prefix "quale_verbnetRoleLabel"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#shame_appraisingAgent"></see>
     /// </summary>
-    let shame_appraisingAgent =
-        Namespaced_IRI.parse _namespace_name "shame_appraisingAgent" |> NamespacedName
-
+    let shame_appraisingAgent = _prefix "shame_appraisingAgent"
     /// <summary>
     ///   <see href="http://www.purl.org/drammar#shame_target"></see>
     /// </summary>
-    let shame_target =
-        Namespaced_IRI.parse _namespace_name "shame_target" |> NamespacedName
+    let shame_target = _prefix "shame_target"

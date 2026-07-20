@@ -1,100 +1,75 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.genomeAbnormality.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module genab =
     let _namespace_name =
         "http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Aneuploidy"></see>
     /// </summary>
-    let Aneuploidy = Namespaced_IRI.parse _namespace_name "Aneuploidy" |> NamespacedName
-
+    let Aneuploidy = _prefix "Aneuploidy"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeAbnormality"></see>
     /// </summary>
-    let ChromosomeAbnormality =
-        Namespaced_IRI.parse _namespace_name "ChromosomeAbnormality" |> NamespacedName
-
+    let ChromosomeAbnormality = _prefix "ChromosomeAbnormality"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#GenomeAbnormality"></see>
     /// </summary>
-    let GenomeAbnormality =
-        Namespaced_IRI.parse _namespace_name "GenomeAbnormality" |> NamespacedName
-
+    let GenomeAbnormality = _prefix "GenomeAbnormality"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDeletion"></see>
     /// </summary>
-    let ChromosomeDeletion =
-        Namespaced_IRI.parse _namespace_name "ChromosomeDeletion" |> NamespacedName
-
+    let ChromosomeDeletion = _prefix "ChromosomeDeletion"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#SingleChromosomeMutation"></see>
     /// </summary>
-    let SingleChromosomeMutation =
-        Namespaced_IRI.parse _namespace_name "SingleChromosomeMutation" |> NamespacedName
-
+    let SingleChromosomeMutation = _prefix "SingleChromosomeMutation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDuplication"></see>
     /// </summary>
-    let ChromosomeDuplication =
-        Namespaced_IRI.parse _namespace_name "ChromosomeDuplication" |> NamespacedName
-
+    let ChromosomeDuplication = _prefix "ChromosomeDuplication"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeInsertion"></see>
     /// </summary>
-    let ChromosomeInsertion =
-        Namespaced_IRI.parse _namespace_name "ChromosomeInsertion" |> NamespacedName
-
+    let ChromosomeInsertion = _prefix "ChromosomeInsertion"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#TwoChromosomeMutation"></see>
     /// </summary>
-    let TwoChromosomeMutation =
-        Namespaced_IRI.parse _namespace_name "TwoChromosomeMutation" |> NamespacedName
-
+    let TwoChromosomeMutation = _prefix "TwoChromosomeMutation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeInversion"></see>
     /// </summary>
-    let ChromosomeInversion =
-        Namespaced_IRI.parse _namespace_name "ChromosomeInversion" |> NamespacedName
-
+    let ChromosomeInversion = _prefix "ChromosomeInversion"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeMutation"></see>
     /// </summary>
-    let ChromosomeMutation =
-        Namespaced_IRI.parse _namespace_name "ChromosomeMutation" |> NamespacedName
-
+    let ChromosomeMutation = _prefix "ChromosomeMutation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeTranslocation"></see>
     /// </summary>
-    let ChromosomeTranslocation =
-        Namespaced_IRI.parse _namespace_name "ChromosomeTranslocation" |> NamespacedName
-
+    let ChromosomeTranslocation = _prefix "ChromosomeTranslocation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#GeneAbnormality"></see>
     /// </summary>
-    let GeneAbnormality =
-        Namespaced_IRI.parse _namespace_name "GeneAbnormality" |> NamespacedName
-
+    let GeneAbnormality = _prefix "GeneAbnormality"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#MonogenicMutation"></see>
     /// </summary>
-    let MonogenicMutation =
-        Namespaced_IRI.parse _namespace_name "MonogenicMutation" |> NamespacedName
-
+    let MonogenicMutation = _prefix "MonogenicMutation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Mutated"></see>
     /// </summary>
-    let Mutated = Namespaced_IRI.parse _namespace_name "Mutated" |> NamespacedName
-
+    let Mutated = _prefix "Mutated"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#PolygenicMutation"></see>
     /// </summary>
-    let PolygenicMutation =
-        Namespaced_IRI.parse _namespace_name "PolygenicMutation" |> NamespacedName
-
+    let PolygenicMutation = _prefix "PolygenicMutation"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Unmutated"></see>
     /// </summary>
-    let Unmutated = Namespaced_IRI.parse _namespace_name "Unmutated" |> NamespacedName
+    let Unmutated = _prefix "Unmutated"

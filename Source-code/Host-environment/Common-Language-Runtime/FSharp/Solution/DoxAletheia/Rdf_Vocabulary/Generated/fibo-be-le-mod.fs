@@ -1,13 +1,15 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.LegalEntities.MetadataBELegalEntities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_le_mod =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/MetadataBELegalEntities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/MetadataBELegalEntities/LegalEntitiesModule"></see>
     /// </summary>
-    let LegalEntitiesModule =
-        Namespaced_IRI.parse _namespace_name "LegalEntitiesModule" |> NamespacedName
+    let LegalEntitiesModule = _prefix "LegalEntitiesModule"

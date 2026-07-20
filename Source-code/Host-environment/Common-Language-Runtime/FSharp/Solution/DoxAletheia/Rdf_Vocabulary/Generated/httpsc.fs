@@ -1,321 +1,234 @@
 namespace http.www.w3.org._2011.http_statusCodes.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module httpsc =
     let _namespace_name = "http://www.w3.org/2011/http-statusCodes#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Accepted"></see>
     /// </summary>
-    let Accepted = Namespaced_IRI.parse _namespace_name "Accepted" |> NamespacedName
-
+    let Accepted = _prefix "Accepted"
     /// <summary>
     /// A status code starting with 2
     /// <see href="http://www.w3.org/2011/http-statusCodes#StatusCode2xx"></see></summary>
-    let StatusCode2xx =
-        Namespaced_IRI.parse _namespace_name "StatusCode2xx" |> NamespacedName
-
+    let StatusCode2xx = _prefix "StatusCode2xx"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#BadGateway"></see>
     /// </summary>
-    let BadGateway = Namespaced_IRI.parse _namespace_name "BadGateway" |> NamespacedName
-
+    let BadGateway = _prefix "BadGateway"
     /// <summary>
     /// A status code starting with 5
     /// <see href="http://www.w3.org/2011/http-statusCodes#StatusCode5xx"></see></summary>
-    let StatusCode5xx =
-        Namespaced_IRI.parse _namespace_name "StatusCode5xx" |> NamespacedName
-
+    let StatusCode5xx = _prefix "StatusCode5xx"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#BadRequest"></see>
     /// </summary>
-    let BadRequest = Namespaced_IRI.parse _namespace_name "BadRequest" |> NamespacedName
-
+    let BadRequest = _prefix "BadRequest"
     /// <summary>
     /// A status code starting with 4
     /// <see href="http://www.w3.org/2011/http-statusCodes#StatusCode4xx"></see></summary>
-    let StatusCode4xx =
-        Namespaced_IRI.parse _namespace_name "StatusCode4xx" |> NamespacedName
-
+    let StatusCode4xx = _prefix "StatusCode4xx"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Conflict"></see>
     /// </summary>
-    let Conflict = Namespaced_IRI.parse _namespace_name "Conflict" |> NamespacedName
+    let Conflict = _prefix "Conflict"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Continue"></see>
     /// </summary>
-    let Continue = Namespaced_IRI.parse _namespace_name "Continue" |> NamespacedName
-
+    let Continue = _prefix "Continue"
     /// <summary>
     /// A status code starting with 1
     /// <see href="http://www.w3.org/2011/http-statusCodes#StatusCode1xx"></see></summary>
-    let StatusCode1xx =
-        Namespaced_IRI.parse _namespace_name "StatusCode1xx" |> NamespacedName
-
+    let StatusCode1xx = _prefix "StatusCode1xx"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Created"></see>
     /// </summary>
-    let Created = Namespaced_IRI.parse _namespace_name "Created" |> NamespacedName
-
+    let Created = _prefix "Created"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#ExpectationFailed"></see>
     /// </summary>
-    let ExpectationFailed =
-        Namespaced_IRI.parse _namespace_name "ExpectationFailed" |> NamespacedName
-
+    let ExpectationFailed = _prefix "ExpectationFailed"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#FailedDependency"></see>
     /// </summary>
-    let FailedDependency =
-        Namespaced_IRI.parse _namespace_name "FailedDependency" |> NamespacedName
-
+    let FailedDependency = _prefix "FailedDependency"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Forbidden"></see>
     /// </summary>
-    let Forbidden = Namespaced_IRI.parse _namespace_name "Forbidden" |> NamespacedName
+    let Forbidden = _prefix "Forbidden"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Found"></see>
     /// </summary>
-    let Found = Namespaced_IRI.parse _namespace_name "Found" |> NamespacedName
-
+    let Found = _prefix "Found"
     /// <summary>
     /// A status code starting with 3
     /// <see href="http://www.w3.org/2011/http-statusCodes#StatusCode3xx"></see></summary>
-    let StatusCode3xx =
-        Namespaced_IRI.parse _namespace_name "StatusCode3xx" |> NamespacedName
-
+    let StatusCode3xx = _prefix "StatusCode3xx"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#GatewayTimeout"></see>
     /// </summary>
-    let GatewayTimeout =
-        Namespaced_IRI.parse _namespace_name "GatewayTimeout" |> NamespacedName
-
+    let GatewayTimeout = _prefix "GatewayTimeout"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Gone"></see>
     /// </summary>
-    let Gone = Namespaced_IRI.parse _namespace_name "Gone" |> NamespacedName
-
+    let Gone = _prefix "Gone"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#HTTPVersionNotSupported"></see>
     /// </summary>
-    let HTTPVersionNotSupported =
-        Namespaced_IRI.parse _namespace_name "HTTPVersionNotSupported" |> NamespacedName
-
+    let HTTPVersionNotSupported = _prefix "HTTPVersionNotSupported"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#IMUsed"></see>
     /// </summary>
-    let IMUsed = Namespaced_IRI.parse _namespace_name "IMUsed" |> NamespacedName
-
+    let IMUsed = _prefix "IMUsed"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#InsufficientStorage"></see>
     /// </summary>
-    let InsufficientStorage =
-        Namespaced_IRI.parse _namespace_name "InsufficientStorage" |> NamespacedName
-
+    let InsufficientStorage = _prefix "InsufficientStorage"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#InternalServerError"></see>
     /// </summary>
-    let InternalServerError =
-        Namespaced_IRI.parse _namespace_name "InternalServerError" |> NamespacedName
-
+    let InternalServerError = _prefix "InternalServerError"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#LengthRequired"></see>
     /// </summary>
-    let LengthRequired =
-        Namespaced_IRI.parse _namespace_name "LengthRequired" |> NamespacedName
-
+    let LengthRequired = _prefix "LengthRequired"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Locked"></see>
     /// </summary>
-    let Locked = Namespaced_IRI.parse _namespace_name "Locked" |> NamespacedName
-
+    let Locked = _prefix "Locked"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#MethodNotAllowed"></see>
     /// </summary>
-    let MethodNotAllowed =
-        Namespaced_IRI.parse _namespace_name "MethodNotAllowed" |> NamespacedName
-
+    let MethodNotAllowed = _prefix "MethodNotAllowed"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#MovedPermanently"></see>
     /// </summary>
-    let MovedPermanently =
-        Namespaced_IRI.parse _namespace_name "MovedPermanently" |> NamespacedName
-
+    let MovedPermanently = _prefix "MovedPermanently"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#MultiStatus"></see>
     /// </summary>
-    let MultiStatus =
-        Namespaced_IRI.parse _namespace_name "MultiStatus" |> NamespacedName
-
+    let MultiStatus = _prefix "MultiStatus"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#MultipleChoices"></see>
     /// </summary>
-    let MultipleChoices =
-        Namespaced_IRI.parse _namespace_name "MultipleChoices" |> NamespacedName
-
+    let MultipleChoices = _prefix "MultipleChoices"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NoContent"></see>
     /// </summary>
-    let NoContent = Namespaced_IRI.parse _namespace_name "NoContent" |> NamespacedName
-
+    let NoContent = _prefix "NoContent"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NonAuthoritativeInformation"></see>
     /// </summary>
-    let NonAuthoritativeInformation =
-        Namespaced_IRI.parse _namespace_name "NonAuthoritativeInformation" |> NamespacedName
-
+    let NonAuthoritativeInformation = _prefix "NonAuthoritativeInformation"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NotAcceptable"></see>
     /// </summary>
-    let NotAcceptable =
-        Namespaced_IRI.parse _namespace_name "NotAcceptable" |> NamespacedName
-
+    let NotAcceptable = _prefix "NotAcceptable"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NotExtended"></see>
     /// </summary>
-    let NotExtended =
-        Namespaced_IRI.parse _namespace_name "NotExtended" |> NamespacedName
-
+    let NotExtended = _prefix "NotExtended"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NotFound"></see>
     /// </summary>
-    let NotFound = Namespaced_IRI.parse _namespace_name "NotFound" |> NamespacedName
-
+    let NotFound = _prefix "NotFound"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NotImplemented"></see>
     /// </summary>
-    let NotImplemented =
-        Namespaced_IRI.parse _namespace_name "NotImplemented" |> NamespacedName
-
+    let NotImplemented = _prefix "NotImplemented"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#NotModified"></see>
     /// </summary>
-    let NotModified =
-        Namespaced_IRI.parse _namespace_name "NotModified" |> NamespacedName
-
+    let NotModified = _prefix "NotModified"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#OK"></see>
     /// </summary>
-    let OK = Namespaced_IRI.parse _namespace_name "OK" |> NamespacedName
-
+    let OK = _prefix "OK"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#PartialContent"></see>
     /// </summary>
-    let PartialContent =
-        Namespaced_IRI.parse _namespace_name "PartialContent" |> NamespacedName
-
+    let PartialContent = _prefix "PartialContent"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#PaymentRequired"></see>
     /// </summary>
-    let PaymentRequired =
-        Namespaced_IRI.parse _namespace_name "PaymentRequired" |> NamespacedName
-
+    let PaymentRequired = _prefix "PaymentRequired"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#PreconditionFailed"></see>
     /// </summary>
-    let PreconditionFailed =
-        Namespaced_IRI.parse _namespace_name "PreconditionFailed" |> NamespacedName
-
+    let PreconditionFailed = _prefix "PreconditionFailed"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Processing"></see>
     /// </summary>
-    let Processing = Namespaced_IRI.parse _namespace_name "Processing" |> NamespacedName
-
+    let Processing = _prefix "Processing"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#ProxyAuthenticationRequired"></see>
     /// </summary>
-    let ProxyAuthenticationRequired =
-        Namespaced_IRI.parse _namespace_name "ProxyAuthenticationRequired" |> NamespacedName
-
+    let ProxyAuthenticationRequired = _prefix "ProxyAuthenticationRequired"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#RequestEntityTooLarge"></see>
     /// </summary>
-    let RequestEntityTooLarge =
-        Namespaced_IRI.parse _namespace_name "RequestEntityTooLarge" |> NamespacedName
-
+    let RequestEntityTooLarge = _prefix "RequestEntityTooLarge"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#RequestTimeout"></see>
     /// </summary>
-    let RequestTimeout =
-        Namespaced_IRI.parse _namespace_name "RequestTimeout" |> NamespacedName
-
+    let RequestTimeout = _prefix "RequestTimeout"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#RequestURITooLong"></see>
     /// </summary>
-    let RequestURITooLong =
-        Namespaced_IRI.parse _namespace_name "RequestURITooLong" |> NamespacedName
-
+    let RequestURITooLong = _prefix "RequestURITooLong"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#RequestedRangeNotSatisfiable"></see>
     /// </summary>
-    let RequestedRangeNotSatisfiable =
-        Namespaced_IRI.parse _namespace_name "RequestedRangeNotSatisfiable" |> NamespacedName
-
+    let RequestedRangeNotSatisfiable = _prefix "RequestedRangeNotSatisfiable"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Reserved"></see>
     /// </summary>
-    let Reserved = Namespaced_IRI.parse _namespace_name "Reserved" |> NamespacedName
-
+    let Reserved = _prefix "Reserved"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#ResetContent"></see>
     /// </summary>
-    let ResetContent =
-        Namespaced_IRI.parse _namespace_name "ResetContent" |> NamespacedName
-
+    let ResetContent = _prefix "ResetContent"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#SeeOther"></see>
     /// </summary>
-    let SeeOther = Namespaced_IRI.parse _namespace_name "SeeOther" |> NamespacedName
-
+    let SeeOther = _prefix "SeeOther"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#ServiceUnavailable"></see>
     /// </summary>
-    let ServiceUnavailable =
-        Namespaced_IRI.parse _namespace_name "ServiceUnavailable" |> NamespacedName
-
+    let ServiceUnavailable = _prefix "ServiceUnavailable"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#SwitchingProtocols"></see>
     /// </summary>
-    let SwitchingProtocols =
-        Namespaced_IRI.parse _namespace_name "SwitchingProtocols" |> NamespacedName
-
+    let SwitchingProtocols = _prefix "SwitchingProtocols"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#TemporaryRedirect"></see>
     /// </summary>
-    let TemporaryRedirect =
-        Namespaced_IRI.parse _namespace_name "TemporaryRedirect" |> NamespacedName
-
+    let TemporaryRedirect = _prefix "TemporaryRedirect"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#Unauthorized"></see>
     /// </summary>
-    let Unauthorized =
-        Namespaced_IRI.parse _namespace_name "Unauthorized" |> NamespacedName
-
+    let Unauthorized = _prefix "Unauthorized"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#UnprocessableEntity"></see>
     /// </summary>
-    let UnprocessableEntity =
-        Namespaced_IRI.parse _namespace_name "UnprocessableEntity" |> NamespacedName
-
+    let UnprocessableEntity = _prefix "UnprocessableEntity"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#UnsupportedMediaType"></see>
     /// </summary>
-    let UnsupportedMediaType =
-        Namespaced_IRI.parse _namespace_name "UnsupportedMediaType" |> NamespacedName
-
+    let UnsupportedMediaType = _prefix "UnsupportedMediaType"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#UpgradeRequired"></see>
     /// </summary>
-    let UpgradeRequired =
-        Namespaced_IRI.parse _namespace_name "UpgradeRequired" |> NamespacedName
-
+    let UpgradeRequired = _prefix "UpgradeRequired"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#UseProxy"></see>
     /// </summary>
-    let UseProxy = Namespaced_IRI.parse _namespace_name "UseProxy" |> NamespacedName
-
+    let UseProxy = _prefix "UseProxy"
     /// <summary>
     ///   <see href="http://www.w3.org/2011/http-statusCodes#VariantAlsoNegotiates"></see>
     /// </summary>
-    let VariantAlsoNegotiates =
-        Namespaced_IRI.parse _namespace_name "VariantAlsoNegotiates" |> NamespacedName
+    let VariantAlsoNegotiates = _prefix "VariantAlsoNegotiates"

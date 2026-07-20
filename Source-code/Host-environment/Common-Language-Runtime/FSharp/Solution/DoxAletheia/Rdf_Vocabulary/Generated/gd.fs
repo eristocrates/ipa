@@ -1,77 +1,78 @@
 namespace http.reference.data.gov.def.govdata.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gd =
     let _namespace_name = "http://reference.data.gov/def/govdata/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/Country"></see>
     /// </summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
+    let Country = _prefix "Country"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/County"></see>
     /// </summary>
-    let County = Namespaced_IRI.parse _namespace_name "County" |> NamespacedName
+    let County = _prefix "County"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/Record"></see>
     /// </summary>
-    let Record = Namespaced_IRI.parse _namespace_name "Record" |> NamespacedName
+    let Record = _prefix "Record"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/RecordSet"></see>
     /// </summary>
-    let RecordSet = Namespaced_IRI.parse _namespace_name "RecordSet" |> NamespacedName
+    let RecordSet = _prefix "RecordSet"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/Report"></see>
     /// </summary>
-    let Report = Namespaced_IRI.parse _namespace_name "Report" |> NamespacedName
+    let Report = _prefix "Report"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/Site"></see>
     /// </summary>
-    let Site = Namespaced_IRI.parse _namespace_name "Site" |> NamespacedName
+    let Site = _prefix "Site"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/State"></see>
     /// </summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
+    let State = _prefix "State"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/Survey"></see>
     /// </summary>
-    let Survey = Namespaced_IRI.parse _namespace_name "Survey" |> NamespacedName
+    let Survey = _prefix "Survey"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/count"></see>
     /// </summary>
-    let count = Namespaced_IRI.parse _namespace_name "count" |> NamespacedName
+    let count = _prefix "count"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/country"></see>
     /// </summary>
-    let country = Namespaced_IRI.parse _namespace_name "country" |> NamespacedName
+    let country = _prefix "country"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/countyCode"></see>
     /// </summary>
-    let countyCode = Namespaced_IRI.parse _namespace_name "countyCode" |> NamespacedName
-
+    let countyCode = _prefix "countyCode"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/denominator"></see>
     /// </summary>
-    let denominator =
-        Namespaced_IRI.parse _namespace_name "denominator" |> NamespacedName
-
+    let denominator = _prefix "denominator"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/median"></see>
     /// </summary>
-    let median = Namespaced_IRI.parse _namespace_name "median" |> NamespacedName
+    let median = _prefix "median"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/percentage"></see>
     /// </summary>
-    let percentage = Namespaced_IRI.parse _namespace_name "percentage" |> NamespacedName
+    let percentage = _prefix "percentage"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/record"></see>
     /// </summary>
-    let record = Namespaced_IRI.parse _namespace_name "record" |> NamespacedName
+    let record = _prefix "record"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/recordset"></see>
     /// </summary>
-    let recordset = Namespaced_IRI.parse _namespace_name "recordset" |> NamespacedName
+    let recordset = _prefix "recordset"
     /// <summary>
     ///   <see href="http://reference.data.gov/def/govdata/stateCode"></see>
     /// </summary>
-    let stateCode = Namespaced_IRI.parse _namespace_name "stateCode" |> NamespacedName
+    let stateCode = _prefix "stateCode"

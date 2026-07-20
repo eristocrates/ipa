@@ -1,292 +1,252 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.NorthAmericanEntities.USMarketsAndExchangesIndividuals.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_usmkt =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/CBOEGlobalMarketsBusinessEntityIdentifier"></see>
     /// </summary>
     let CBOEGlobalMarketsBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "CBOEGlobalMarketsBusinessEntityIdentifier" |> NamespacedName
+        _prefix "CBOEGlobalMarketsBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/CBOEGlobalMarketsInc-US-DE"></see>
     /// </summary>
-    let ``CBOEGlobalMarketsInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "CBOEGlobalMarketsInc-US-DE" |> NamespacedName
-
+    let ``CBOEGlobalMarketsInc-US-DE`` = _prefix "CBOEGlobalMarketsInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/CBOEGlobalMarketsDateEstablished"></see>
     /// </summary>
-    let CBOEGlobalMarketsDateEstablished =
-        Namespaced_IRI.parse _namespace_name "CBOEGlobalMarketsDateEstablished" |> NamespacedName
+    let CBOEGlobalMarketsDateEstablished = _prefix "CBOEGlobalMarketsDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/CBOEGlobalMarketsHeadquartersAddress"></see>
     /// </summary>
     let CBOEGlobalMarketsHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "CBOEGlobalMarketsHeadquartersAddress" |> NamespacedName
+        _prefix "CBOEGlobalMarketsHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/ChicagoBoardOptionsExchange"></see>
     /// </summary>
-    let ChicagoBoardOptionsExchange =
-        Namespaced_IRI.parse _namespace_name "ChicagoBoardOptionsExchange" |> NamespacedName
+    let ChicagoBoardOptionsExchange = _prefix "ChicagoBoardOptionsExchange"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/ChicagoBoardOptionsExchangeDateEstablished"></see>
     /// </summary>
     let ChicagoBoardOptionsExchangeDateEstablished =
-        Namespaced_IRI.parse _namespace_name "ChicagoBoardOptionsExchangeDateEstablished" |> NamespacedName
+        _prefix "ChicagoBoardOptionsExchangeDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/ChicagoBoardOptionsExchangeAsServiceProvider"></see>
     /// </summary>
     let ChicagoBoardOptionsExchangeAsServiceProvider =
-        Namespaced_IRI.parse _namespace_name "ChicagoBoardOptionsExchangeAsServiceProvider" |> NamespacedName
+        _prefix "ChicagoBoardOptionsExchangeAsServiceProvider"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/IntercontinentalExchangeHoldings"></see>
     /// </summary>
-    let IntercontinentalExchangeHoldings =
-        Namespaced_IRI.parse _namespace_name "IntercontinentalExchangeHoldings" |> NamespacedName
-
+    let IntercontinentalExchangeHoldings = _prefix "IntercontinentalExchangeHoldings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEAmericanOptions"></see>
     /// </summary>
-    let NYSEAmericanOptions =
-        Namespaced_IRI.parse _namespace_name "NYSEAmericanOptions" |> NamespacedName
+    let NYSEAmericanOptions = _prefix "NYSEAmericanOptions"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEAmericanOptionsDateEstablished"></see>
     /// </summary>
     let NYSEAmericanOptionsDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NYSEAmericanOptionsDateEstablished" |> NamespacedName
+        _prefix "NYSEAmericanOptionsDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchange"></see>
     /// </summary>
-    let NewYorkStockExchange =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchange" |> NamespacedName
+    let NewYorkStockExchange = _prefix "NewYorkStockExchange"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEAmericanOptionsAsServiceProvider"></see>
     /// </summary>
     let NYSEAmericanOptionsAsServiceProvider =
-        Namespaced_IRI.parse _namespace_name "NYSEAmericanOptionsAsServiceProvider" |> NamespacedName
+        _prefix "NYSEAmericanOptionsAsServiceProvider"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEAmericanOptionsLLC-US-DE"></see>
     /// </summary>
-    let ``NYSEAmericanOptionsLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "NYSEAmericanOptionsLLC-US-DE" |> NamespacedName
+    let ``NYSEAmericanOptionsLLC-US-DE`` = _prefix "NYSEAmericanOptionsLLC-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEAmericanOptionsBusinessEntityIdentifier"></see>
     /// </summary>
     let NYSEAmericanOptionsBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "NYSEAmericanOptionsBusinessEntityIdentifier" |> NamespacedName
+        _prefix "NYSEAmericanOptionsBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchangeHeadquartersAddress"></see>
     /// </summary>
     let NewYorkStockExchangeHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeHeadquartersAddress" |> NamespacedName
+        _prefix "NewYorkStockExchangeHeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroup-Delaware"></see>
     /// </summary>
-    let ``UnitedAgentGroup-Delaware`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroup-Delaware" |> NamespacedName
-
+    let ``UnitedAgentGroup-Delaware`` = _prefix "UnitedAgentGroup-Delaware"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArca"></see>
     /// </summary>
-    let NYSEArca = Namespaced_IRI.parse _namespace_name "NYSEArca" |> NamespacedName
-
+    let NYSEArca = _prefix "NYSEArca"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaDateEstablished"></see>
     /// </summary>
-    let NYSEArcaDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaDateEstablished" |> NamespacedName
-
+    let NYSEArcaDateEstablished = _prefix "NYSEArcaDateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaAsServiceProvider"></see>
     /// </summary>
-    let NYSEArcaAsServiceProvider =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaAsServiceProvider" |> NamespacedName
-
+    let NYSEArcaAsServiceProvider = _prefix "NYSEArcaAsServiceProvider"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaInc-US-DE"></see>
     /// </summary>
-    let ``NYSEArcaInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaInc-US-DE" |> NamespacedName
-
+    let ``NYSEArcaInc-US-DE`` = _prefix "NYSEArcaInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaBusinessEntityIdentifier"></see>
     /// </summary>
-    let NYSEArcaBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaBusinessEntityIdentifier" |> NamespacedName
-
+    let NYSEArcaBusinessEntityIdentifier = _prefix "NYSEArcaBusinessEntityIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaHoldings"></see>
     /// </summary>
-    let NYSEArcaHoldings =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaHoldings" |> NamespacedName
-
+    let NYSEArcaHoldings = _prefix "NYSEArcaHoldings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaHoldingsInc-US-DE"></see>
     /// </summary>
-    let ``NYSEArcaHoldingsInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaHoldingsInc-US-DE" |> NamespacedName
+    let ``NYSEArcaHoldingsInc-US-DE`` = _prefix "NYSEArcaHoldingsInc-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaHoldingsBusinessEntityIdentifier"></see>
     /// </summary>
     let NYSEArcaHoldingsBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaHoldingsBusinessEntityIdentifier" |> NamespacedName
+        _prefix "NYSEArcaHoldingsBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaIncHeadquartersAddress"></see>
     /// </summary>
-    let NYSEArcaIncHeadquartersAddress =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaIncHeadquartersAddress" |> NamespacedName
-
+    let NYSEArcaIncHeadquartersAddress = _prefix "NYSEArcaIncHeadquartersAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEGroup"></see>
     /// </summary>
-    let NYSEGroup = Namespaced_IRI.parse _namespace_name "NYSEGroup" |> NamespacedName
+    let NYSEGroup = _prefix "NYSEGroup"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaHoldingsIncDateEstablished"></see>
     /// </summary>
     let NYSEArcaHoldingsIncDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaHoldingsIncDateEstablished" |> NamespacedName
+        _prefix "NYSEArcaHoldingsIncDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEArcaIncDateEstablished"></see>
     /// </summary>
-    let NYSEArcaIncDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NYSEArcaIncDateEstablished" |> NamespacedName
-
+    let NYSEArcaIncDateEstablished = _prefix "NYSEArcaIncDateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEDark"></see>
     /// </summary>
-    let NYSEDark = Namespaced_IRI.parse _namespace_name "NYSEDark" |> NamespacedName
-
+    let NYSEDark = _prefix "NYSEDark"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEGroupInc-US-DE"></see>
     /// </summary>
-    let ``NYSEGroupInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "NYSEGroupInc-US-DE" |> NamespacedName
-
+    let ``NYSEGroupInc-US-DE`` = _prefix "NYSEGroupInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEGroupBusinessEntityIdentifier"></see>
     /// </summary>
-    let NYSEGroupBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "NYSEGroupBusinessEntityIdentifier" |> NamespacedName
-
+    let NYSEGroupBusinessEntityIdentifier = _prefix "NYSEGroupBusinessEntityIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEGroupDateEstablished"></see>
     /// </summary>
-    let NYSEGroupDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NYSEGroupDateEstablished" |> NamespacedName
-
+    let NYSEGroupDateEstablished = _prefix "NYSEGroupDateEstablished"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEHoldings"></see>
     /// </summary>
-    let NYSEHoldings =
-        Namespaced_IRI.parse _namespace_name "NYSEHoldings" |> NamespacedName
-
+    let NYSEHoldings = _prefix "NYSEHoldings"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEHoldingsLLC-US-DE"></see>
     /// </summary>
-    let ``NYSEHoldingsLLC-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "NYSEHoldingsLLC-US-DE" |> NamespacedName
+    let ``NYSEHoldingsLLC-US-DE`` = _prefix "NYSEHoldingsLLC-US-DE"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEHoldingsBusinessEntityIdentifier"></see>
     /// </summary>
     let NYSEHoldingsBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "NYSEHoldingsBusinessEntityIdentifier" |> NamespacedName
+        _prefix "NYSEHoldingsBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NYSEHoldingsDateEstablished"></see>
     /// </summary>
-    let NYSEHoldingsDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NYSEHoldingsDateEstablished" |> NamespacedName
+    let NYSEHoldingsDateEstablished = _prefix "NYSEHoldingsDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchangeDateEstablished"></see>
     /// </summary>
     let NewYorkStockExchangeDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeDateEstablished" |> NamespacedName
+        _prefix "NewYorkStockExchangeDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchangeAsServiceProvider"></see>
     /// </summary>
     let NewYorkStockExchangeAsServiceProvider =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeAsServiceProvider" |> NamespacedName
+        _prefix "NewYorkStockExchangeAsServiceProvider"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchangeLLC-US-NY"></see>
     /// </summary>
-    let ``NewYorkStockExchangeLLC-US-NY`` =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeLLC-US-NY" |> NamespacedName
+    let ``NewYorkStockExchangeLLC-US-NY`` = _prefix "NewYorkStockExchangeLLC-US-NY"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchangeLLCDateEstablished"></see>
     /// </summary>
     let NewYorkStockExchangeLLCDateEstablished =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeLLCDateEstablished" |> NamespacedName
+        _prefix "NewYorkStockExchangeLLCDateEstablished"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroup-NewYork"></see>
     /// </summary>
-    let ``UnitedAgentGroup-NewYork`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroup-NewYork" |> NamespacedName
+    let ``UnitedAgentGroup-NewYork`` = _prefix "UnitedAgentGroup-NewYork"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/NewYorkStockExchangeLLCBusinessEntityIdentifier"></see>
     /// </summary>
     let NewYorkStockExchangeLLCBusinessEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "NewYorkStockExchangeLLCBusinessEntityIdentifier" |> NamespacedName
+        _prefix "NewYorkStockExchangeLLCBusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroupInc-US-DE"></see>
     /// </summary>
-    let ``UnitedAgentGroupInc-US-DE`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroupInc-US-DE" |> NamespacedName
-
+    let ``UnitedAgentGroupInc-US-DE`` = _prefix "UnitedAgentGroupInc-US-DE"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroupInc-US-NY"></see>
     /// </summary>
-    let ``UnitedAgentGroupInc-US-NY`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroupInc-US-NY" |> NamespacedName
+    let ``UnitedAgentGroupInc-US-NY`` = _prefix "UnitedAgentGroupInc-US-NY"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroupInc-US-DE-HeadquartersAddress"></see>
     /// </summary>
     let ``UnitedAgentGroupInc-US-DE-HeadquartersAddress`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroupInc-US-DE-HeadquartersAddress" |> NamespacedName
+        _prefix "UnitedAgentGroupInc-US-DE-HeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroupInc-US-DE-BusinessEntityIdentifier"></see>
     /// </summary>
     let ``UnitedAgentGroupInc-US-DE-BusinessEntityIdentifier`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroupInc-US-DE-BusinessEntityIdentifier" |> NamespacedName
+        _prefix "UnitedAgentGroupInc-US-DE-BusinessEntityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroupInc-US-NY-HeadquartersAddress"></see>
     /// </summary>
     let ``UnitedAgentGroupInc-US-NY-HeadquartersAddress`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroupInc-US-NY-HeadquartersAddress" |> NamespacedName
+        _prefix "UnitedAgentGroupInc-US-NY-HeadquartersAddress"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USMarketsAndExchangesIndividuals/UnitedAgentGroupInc-US-NY-BusinessEntityIdentifier"></see>
     /// </summary>
     let ``UnitedAgentGroupInc-US-NY-BusinessEntityIdentifier`` =
-        Namespaced_IRI.parse _namespace_name "UnitedAgentGroupInc-US-NY-BusinessEntityIdentifier" |> NamespacedName
+        _prefix "UnitedAgentGroupInc-US-NY-BusinessEntityIdentifier"

@@ -1,21 +1,25 @@
 namespace http.rdfs.co.bevon.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module bevon =
     let _namespace_name = "http://rdfs.co/bevon/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Distillery"></see>
     /// </summary>
-    let Distillery = Namespaced_IRI.parse _namespace_name "Distillery" |> NamespacedName
+    let Distillery = _prefix "Distillery"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/abv"></see>
     /// </summary>
-    let abv = Namespaced_IRI.parse _namespace_name "abv" |> NamespacedName
+    let abv = _prefix "abv"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/distillery"></see>
     /// </summary>
-    let distillery = Namespaced_IRI.parse _namespace_name "distillery" |> NamespacedName
+    let distillery = _prefix "distillery"
     /// <summary>
     ///
     ///     Most of the descriptions given here are from Wikipedia or from the websites
@@ -29,127 +33,105 @@ module bevon =
     ///     &lt;/div&gt;
     ///
     /// <see href="http://rdfs.co/bevon/0.8"></see></summary>
-    let ``_0.8`` = Namespaced_IRI.parse _namespace_name "0.8" |> NamespacedName
+    let ``_0.8`` = _prefix "0.8"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/0.8/rdf"></see>
     /// </summary>
-    let ``_0.8/rdf`` = Namespaced_IRI.parse _namespace_name "0.8/rdf" |> NamespacedName
-
+    let ``_0.8/rdf`` = _prefix "0.8/rdf"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/0.8/html"></see>
     /// </summary>
-    let ``_0.8/html`` =
-        Namespaced_IRI.parse _namespace_name "0.8/html" |> NamespacedName
-
+    let ``_0.8/html`` = _prefix "0.8/html"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/0.8/ttl"></see>
     /// </summary>
-    let ``_0.8/ttl`` = Namespaced_IRI.parse _namespace_name "0.8/ttl" |> NamespacedName
+    let ``_0.8/ttl`` = _prefix "0.8/ttl"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/0.7"></see>
     /// </summary>
-    let ``_0.7`` = Namespaced_IRI.parse _namespace_name "0.7" |> NamespacedName
+    let ``_0.7`` = _prefix "0.7"
     /// <summary>
     ///
     ///     In addition to the BEVON core terms, there are a number of terms for use
     ///     when describing beverages categorized under Beer.
     ///
     /// <see href="http://rdfs.co/bevon/BeerGroup"></see></summary>
-    let BeerGroup = Namespaced_IRI.parse _namespace_name "BeerGroup" |> NamespacedName
-
+    let BeerGroup = _prefix "BeerGroup"
     /// <summary>
     ///
     ///     These properties are used for describing relations between beverages.
     ///
     /// <see href="http://rdfs.co/bevon/RelationGroup"></see></summary>
-    let RelationGroup =
-        Namespaced_IRI.parse _namespace_name "RelationGroup" |> NamespacedName
-
+    let RelationGroup = _prefix "RelationGroup"
     /// <summary>
     ///
     ///     These classes and properties are used to describe beverage containers.
     ///
     /// <see href="http://rdfs.co/bevon/ContainerGroup"></see></summary>
-    let ContainerGroup =
-        Namespaced_IRI.parse _namespace_name "ContainerGroup" |> NamespacedName
-
+    let ContainerGroup = _prefix "ContainerGroup"
     /// <summary>
     ///
     ///     These classes and properties form the core of BEVON. They describe
     ///     characteristics of beverages in relatively broad terms.
     ///
     /// <see href="http://rdfs.co/bevon/CoreGroup"></see></summary>
-    let CoreGroup = Namespaced_IRI.parse _namespace_name "CoreGroup" |> NamespacedName
+    let CoreGroup = _prefix "CoreGroup"
     /// <summary>
     ///
     ///     These classes describe types of wines.
     ///
     /// <see href="http://rdfs.co/bevon/WineGroup"></see></summary>
-    let WineGroup = Namespaced_IRI.parse _namespace_name "WineGroup" |> NamespacedName
-
+    let WineGroup = _prefix "WineGroup"
     /// <summary>
     ///
     ///     These classes and properties are for describing beverages categorized under
     ///     Mixed Drink.
     ///
     /// <see href="http://rdfs.co/bevon/CocktailGroup"></see></summary>
-    let CocktailGroup =
-        Namespaced_IRI.parse _namespace_name "CocktailGroup" |> NamespacedName
-
+    let CocktailGroup = _prefix "CocktailGroup"
     /// <summary>
     ///
     ///     These classes describe types of whiskies.
     ///
     /// <see href="http://rdfs.co/bevon/WhiskyGroup"></see></summary>
-    let WhiskyGroup =
-        Namespaced_IRI.parse _namespace_name "WhiskyGroup" |> NamespacedName
-
+    let WhiskyGroup = _prefix "WhiskyGroup"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Aging"></see>
     /// </summary>
-    let Aging = Namespaced_IRI.parse _namespace_name "Aging" |> NamespacedName
-
+    let Aging = _prefix "Aging"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/AlcoholicBeverage"></see>
     /// </summary>
-    let AlcoholicBeverage =
-        Namespaced_IRI.parse _namespace_name "AlcoholicBeverage" |> NamespacedName
-
+    let AlcoholicBeverage = _prefix "AlcoholicBeverage"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Beverage"></see>
     /// </summary>
-    let Beverage = Namespaced_IRI.parse _namespace_name "Beverage" |> NamespacedName
-
+    let Beverage = _prefix "Beverage"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/NonAlcoholicBeverage"></see>
     /// </summary>
-    let NonAlcoholicBeverage =
-        Namespaced_IRI.parse _namespace_name "NonAlcoholicBeverage" |> NamespacedName
-
+    let NonAlcoholicBeverage = _prefix "NonAlcoholicBeverage"
     /// <summary>
     ///
     ///     The yeast will ferment the beer quickly, giving it a sweet, full bodied and
     ///     fruity taste.
     ///
     /// <see href="http://rdfs.co/bevon/Ale"></see></summary>
-    let Ale = Namespaced_IRI.parse _namespace_name "Ale" |> NamespacedName
+    let Ale = _prefix "Ale"
     /// <summary>
     ///
     ///     The starch and saccharification enzymes are often derived from malted
     ///     cereal grains, most commonly malted barley and malted wheat.
     ///
     /// <see href="http://rdfs.co/bevon/Beer"></see></summary>
-    let Beer = Namespaced_IRI.parse _namespace_name "Beer" |> NamespacedName
-
+    let Beer = _prefix "Beer"
     /// <summary>
     ///
     ///     The production and labeling of American whiskey are governed by Title 27 of
     ///     the U.S. Code of Federal Regulations.
     ///
     /// <see href="http://rdfs.co/bevon/AmericanWhiskey"></see></summary>
-    let AmericanWhiskey =
-        Namespaced_IRI.parse _namespace_name "AmericanWhiskey" |> NamespacedName
-
+    let AmericanWhiskey = _prefix "AmericanWhiskey"
     /// <summary>
     ///
     ///     Different grains are used for different varieties, including barley, malted
@@ -157,43 +139,33 @@ module bevon =
     ///     wooden casks, made generally of charred white oak.
     ///
     /// <see href="http://rdfs.co/bevon/Whisky"></see></summary>
-    let Whisky = Namespaced_IRI.parse _namespace_name "Whisky" |> NamespacedName
-
+    let Whisky = _prefix "Whisky"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/FermentedBeverage"></see>
     /// </summary>
-    let FermentedBeverage =
-        Namespaced_IRI.parse _namespace_name "FermentedBeverage" |> NamespacedName
-
+    let FermentedBeverage = _prefix "FermentedBeverage"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/NonAlcoholicBeer"></see>
     /// </summary>
-    let NonAlcoholicBeer =
-        Namespaced_IRI.parse _namespace_name "NonAlcoholicBeer" |> NamespacedName
-
+    let NonAlcoholicBeer = _prefix "NonAlcoholicBeer"
     /// <summary>
     ///
     ///     Dark amber or brown glass greatly reduces UV light from spoiling the beer.
     ///     However, lighter colored bottles are often used for marketing reasons.
     ///
     /// <see href="http://rdfs.co/bevon/BeerBottle"></see></summary>
-    let BeerBottle = Namespaced_IRI.parse _namespace_name "BeerBottle" |> NamespacedName
-
+    let BeerBottle = _prefix "BeerBottle"
     /// <summary>
     ///
     ///     Glass bottles can vary in size considerably, but are most commonly found in
     ///     sizes ranging between about 10ml and 5 litres.
     ///
     /// <see href="http://rdfs.co/bevon/GlassBottle"></see></summary>
-    let GlassBottle =
-        Namespaced_IRI.parse _namespace_name "GlassBottle" |> NamespacedName
-
+    let GlassBottle = _prefix "GlassBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/BeerCocktail"></see>
     /// </summary>
-    let BeerCocktail =
-        Namespaced_IRI.parse _namespace_name "BeerCocktail" |> NamespacedName
-
+    let BeerCocktail = _prefix "BeerCocktail"
     /// <summary>
     ///
     ///     Cocktails were originally a mixture of spirits, sugar, water, and bitters.
@@ -204,24 +176,24 @@ module bevon =
     ///     herbs.
     ///
     /// <see href="http://rdfs.co/bevon/Cocktail"></see></summary>
-    let Cocktail = Namespaced_IRI.parse _namespace_name "Cocktail" |> NamespacedName
+    let Cocktail = _prefix "Cocktail"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/PaleLager"></see>
     /// </summary>
-    let PaleLager = Namespaced_IRI.parse _namespace_name "PaleLager" |> NamespacedName
+    let PaleLager = _prefix "PaleLager"
     /// <summary>
     ///
     ///     It took its name from the city of Pilsen (Plzeň, Bohemia, Czech Republic,
     ///     where it was first produced in 1842).
     ///
     /// <see href="http://rdfs.co/bevon/Pilsner"></see></summary>
-    let Pilsner = Namespaced_IRI.parse _namespace_name "Pilsner" |> NamespacedName
+    let Pilsner = _prefix "Pilsner"
     /// <summary>
     ///
     ///     A company that makes beer is called either a brewery or a brewing company.
     ///
     /// <see href="http://rdfs.co/bevon/Brewery"></see></summary>
-    let Brewery = Namespaced_IRI.parse _namespace_name "Brewery" |> NamespacedName
+    let Brewery = _prefix "Brewery"
     /// <summary>
     ///
     ///     It is known as the standard longneck bottle or industry standard bottle
@@ -232,58 +204,55 @@ module bevon =
     ///     the bottle without transferring body heat to the beer from one's hand.
     ///
     /// <see href="http://rdfs.co/bevon/Longneck"></see></summary>
-    let Longneck = Namespaced_IRI.parse _namespace_name "Longneck" |> NamespacedName
+    let Longneck = _prefix "Longneck"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/BeerKeg"></see>
     /// </summary>
-    let BeerKeg = Namespaced_IRI.parse _namespace_name "BeerKeg" |> NamespacedName
+    let BeerKeg = _prefix "BeerKeg"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/ibu"></see>
     /// </summary>
-    let ibu = Namespaced_IRI.parse _namespace_name "ibu" |> NamespacedName
+    let ibu = _prefix "ibu"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/srm"></see>
     /// </summary>
-    let srm = Namespaced_IRI.parse _namespace_name "srm" |> NamespacedName
+    let srm = _prefix "srm"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/brewery"></see>
     /// </summary>
-    let brewery = Namespaced_IRI.parse _namespace_name "brewery" |> NamespacedName
+    let brewery = _prefix "brewery"
     /// <summary>
     ///
     ///     It is one of the world's major beer styles.
     ///
     /// <see href="http://rdfs.co/bevon/PaleAle"></see></summary>
-    let PaleAle = Namespaced_IRI.parse _namespace_name "PaleAle" |> NamespacedName
-
+    let PaleAle = _prefix "PaleAle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/IrishRedAle"></see>
     /// </summary>
-    let IrishRedAle =
-        Namespaced_IRI.parse _namespace_name "IrishRedAle" |> NamespacedName
-
+    let IrishRedAle = _prefix "IrishRedAle"
     /// <summary>
     ///
     ///     The name came about as a result of its popularity with street and river
     ///     porters.
     ///
     /// <see href="http://rdfs.co/bevon/Porter"></see></summary>
-    let Porter = Namespaced_IRI.parse _namespace_name "Porter" |> NamespacedName
+    let Porter = _prefix "Porter"
     /// <summary>
     ///
     ///     Stouts were traditionally the generic term for the strongest or stoutest
     ///     porters, typically 7% or 8%, produced by a brewery.
     ///
     /// <see href="http://rdfs.co/bevon/Stout"></see></summary>
-    let Stout = Namespaced_IRI.parse _namespace_name "Stout" |> NamespacedName
+    let Stout = _prefix "Stout"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/DryStout"></see>
     /// </summary>
-    let DryStout = Namespaced_IRI.parse _namespace_name "DryStout" |> NamespacedName
+    let DryStout = _prefix "DryStout"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Lager"></see>
     /// </summary>
-    let Lager = Namespaced_IRI.parse _namespace_name "Lager" |> NamespacedName
+    let Lager = _prefix "Lager"
     /// <summary>
     ///
     ///     Dunkel is the German word meaning dark, and dunkel beers typically range in
@@ -291,26 +260,22 @@ module bevon =
     ///     smooth malty flavor.
     ///
     /// <see href="http://rdfs.co/bevon/Dunkel"></see></summary>
-    let Dunkel = Namespaced_IRI.parse _namespace_name "Dunkel" |> NamespacedName
+    let Dunkel = _prefix "Dunkel"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Keg"></see>
     /// </summary>
-    let Keg = Namespaced_IRI.parse _namespace_name "Keg" |> NamespacedName
-
+    let Keg = _prefix "Keg"
     /// <summary>
     ///
     ///     Beverage cans are made of aluminium (75% of worldwide production) or
     ///     tin-plated steel (25% worldwide production).
     ///
     /// <see href="http://rdfs.co/bevon/BeverageCan"></see></summary>
-    let BeverageCan =
-        Namespaced_IRI.parse _namespace_name "BeverageCan" |> NamespacedName
-
+    let BeverageCan = _prefix "BeverageCan"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Container"></see>
     /// </summary>
-    let Container = Namespaced_IRI.parse _namespace_name "Container" |> NamespacedName
-
+    let Container = _prefix "Container"
     /// <summary>
     ///
     ///     The name of the spirit derives from its historical association with an area
@@ -321,15 +286,11 @@ module bevon =
     ///     general, and Kentucky in particular.
     ///
     /// <see href="http://rdfs.co/bevon/BourbonWhiskey"></see></summary>
-    let BourbonWhiskey =
-        Namespaced_IRI.parse _namespace_name "BourbonWhiskey" |> NamespacedName
-
+    let BourbonWhiskey = _prefix "BourbonWhiskey"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/AmericanWhisky"></see>
     /// </summary>
-    let AmericanWhisky =
-        Namespaced_IRI.parse _namespace_name "AmericanWhisky" |> NamespacedName
-
+    let AmericanWhisky = _prefix "AmericanWhisky"
     /// <summary>
     ///
     ///     Brandy generally contains 35–60% alcohol by volume (70–120 US proof) and is
@@ -339,17 +300,14 @@ module bevon =
     ///     coloring.
     ///
     /// <see href="http://rdfs.co/bevon/Brandy"></see></summary>
-    let Brandy = Namespaced_IRI.parse _namespace_name "Brandy" |> NamespacedName
-
+    let Brandy = _prefix "Brandy"
     /// <summary>
     ///
     ///      This excludes undistilled fermented beverages such as beer, wine, and
     ///      cider.
     ///
     /// <see href="http://rdfs.co/bevon/DistilledBeverage"></see></summary>
-    let DistilledBeverage =
-        Namespaced_IRI.parse _namespace_name "DistilledBeverage" |> NamespacedName
-
+    let DistilledBeverage = _prefix "DistilledBeverage"
     /// <summary>
     ///
     ///     Most Canadian whiskies are blended multi-grain liquors containing a large
@@ -357,41 +315,37 @@ module bevon =
     ///     other whisky styles.
     ///
     /// <see href="http://rdfs.co/bevon/CanadianWhisky"></see></summary>
-    let CanadianWhisky =
-        Namespaced_IRI.parse _namespace_name "CanadianWhisky" |> NamespacedName
-
+    let CanadianWhisky = _prefix "CanadianWhisky"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/CarbonatedWater"></see>
     /// </summary>
-    let CarbonatedWater =
-        Namespaced_IRI.parse _namespace_name "CarbonatedWater" |> NamespacedName
-
+    let CarbonatedWater = _prefix "CarbonatedWater"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Water"></see>
     /// </summary>
-    let Water = Namespaced_IRI.parse _namespace_name "Water" |> NamespacedName
+    let Water = _prefix "Water"
     /// <summary>
     ///
     ///     Some mixed drinks are alcoholic beverages that contain liquor; others are
     ///     non-alcoholic.
     ///
     /// <see href="http://rdfs.co/bevon/MixedDrink"></see></summary>
-    let MixedDrink = Namespaced_IRI.parse _namespace_name "MixedDrink" |> NamespacedName
+    let MixedDrink = _prefix "MixedDrink"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Mocktail"></see>
     /// </summary>
-    let Mocktail = Namespaced_IRI.parse _namespace_name "Mocktail" |> NamespacedName
+    let Mocktail = _prefix "Mocktail"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Highball"></see>
     /// </summary>
-    let Highball = Namespaced_IRI.parse _namespace_name "Highball" |> NamespacedName
+    let Highball = _prefix "Highball"
     /// <summary>
     ///
     ///     The proportions of the two ingredients are adjusted to taste, usually
     ///     half-and-half.
     ///
     /// <see href="http://rdfs.co/bevon/Shandy"></see></summary>
-    let Shandy = Namespaced_IRI.parse _namespace_name "Shandy" |> NamespacedName
+    let Shandy = _prefix "Shandy"
     /// <summary>
     ///
     ///     It is produced in the wine-growing region surrounding the town from which
@@ -399,51 +353,42 @@ module bevon =
     ///     Charente-Maritime.
     ///
     /// <see href="http://rdfs.co/bevon/Cognac"></see></summary>
-    let Cognac = Namespaced_IRI.parse _namespace_name "Cognac" |> NamespacedName
-
+    let Cognac = _prefix "Cognac"
     /// <summary>
     ///
     ///     Plastic bottles are typically used to store liquids such as water, soft
     ///     drinks, motor oil, cooking oil, medicine, shampoo, milk, and ink.
     ///
     /// <see href="http://rdfs.co/bevon/PlasticBottle"></see></summary>
-    let PlasticBottle =
-        Namespaced_IRI.parse _namespace_name "PlasticBottle" |> NamespacedName
-
+    let PlasticBottle = _prefix "PlasticBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/volume"></see>
     /// </summary>
-    let volume = Namespaced_IRI.parse _namespace_name "volume" |> NamespacedName
+    let volume = _prefix "volume"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
-
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/origin"></see>
     /// </summary>
-    let origin = Namespaced_IRI.parse _namespace_name "origin" |> NamespacedName
-
+    let origin = _prefix "origin"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/manufacturer"></see>
     /// </summary>
-    let manufacturer =
-        Namespaced_IRI.parse _namespace_name "manufacturer" |> NamespacedName
-
+    let manufacturer = _prefix "manufacturer"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/color"></see>
     /// </summary>
-    let color = Namespaced_IRI.parse _namespace_name "color" |> NamespacedName
+    let color = _prefix "color"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/launch"></see>
     /// </summary>
-    let launch = Namespaced_IRI.parse _namespace_name "launch" |> NamespacedName
+    let launch = _prefix "launch"
     /// <summary>
     ///
     ///     The term was originally used in the United Kingdom and was defined as 7/4
@@ -452,53 +397,42 @@ module bevon =
     ///     the percentage of ABV.
     ///
     /// <see href="http://rdfs.co/bevon/proof"></see></summary>
-    let proof = Namespaced_IRI.parse _namespace_name "proof" |> NamespacedName
+    let proof = _prefix "proof"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container"></see>
     /// </summary>
-    let container = Namespaced_IRI.parse _namespace_name "container" |> NamespacedName
+    let container = _prefix "container"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/aging"></see>
     /// </summary>
-    let aging = Namespaced_IRI.parse _namespace_name "aging" |> NamespacedName
-
+    let aging = _prefix "aging"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/fermentation_base"></see>
     /// </summary>
-    let fermentation_base =
-        Namespaced_IRI.parse _namespace_name "fermentation_base" |> NamespacedName
-
+    let fermentation_base = _prefix "fermentation_base"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/ingredient"></see>
     /// </summary>
-    let ingredient = Namespaced_IRI.parse _namespace_name "ingredient" |> NamespacedName
-
+    let ingredient = _prefix "ingredient"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/FermentationBase"></see>
     /// </summary>
-    let FermentationBase =
-        Namespaced_IRI.parse _namespace_name "FermentationBase" |> NamespacedName
-
+    let FermentationBase = _prefix "FermentationBase"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/DilutedSoju"></see>
     /// </summary>
-    let DilutedSoju =
-        Namespaced_IRI.parse _namespace_name "DilutedSoju" |> NamespacedName
-
+    let DilutedSoju = _prefix "DilutedSoju"
     /// <summary>
     ///
     ///     Its taste is comparable to vodka, though often slightly sweeter due to
     ///     sugars added in the manufacturing process.
     ///
     /// <see href="http://rdfs.co/bevon/Soju"></see></summary>
-    let Soju = Namespaced_IRI.parse _namespace_name "Soju" |> NamespacedName
-
+    let Soju = _prefix "Soju"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/DistilledSoju"></see>
     /// </summary>
-    let DistilledSoju =
-        Namespaced_IRI.parse _namespace_name "DistilledSoju" |> NamespacedName
-
+    let DistilledSoju = _prefix "DistilledSoju"
     /// <summary>
     ///
     ///     This definition is sometimes broadened to include any fermented alcoholic
@@ -506,25 +440,22 @@ module bevon =
     ///     also excluded from the definition of fruit wine.
     ///
     /// <see href="http://rdfs.co/bevon/FruitWine"></see></summary>
-    let FruitWine = Namespaced_IRI.parse _namespace_name "FruitWine" |> NamespacedName
+    let FruitWine = _prefix "FruitWine"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Wine"></see>
     /// </summary>
-    let Wine = Namespaced_IRI.parse _namespace_name "Wine" |> NamespacedName
+    let Wine = _prefix "Wine"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Gin"></see>
     /// </summary>
-    let Gin = Namespaced_IRI.parse _namespace_name "Gin" |> NamespacedName
-
+    let Gin = _prefix "Gin"
     /// <summary>
     ///
     ///     Key regulations defining Irish whiskey and its production are established
     ///     by the Irish Whiskey Act of 1980.
     ///
     /// <see href="http://rdfs.co/bevon/IrishWhiskey"></see></summary>
-    let IrishWhiskey =
-        Namespaced_IRI.parse _namespace_name "IrishWhiskey" |> NamespacedName
-
+    let IrishWhiskey = _prefix "IrishWhiskey"
     /// <summary>
     ///
     ///     Whisky production in Japan began around 1870, but the first commercial
@@ -535,9 +466,7 @@ module bevon =
     ///     the letter "e").
     ///
     /// <see href="http://rdfs.co/bevon/JapaneseWhisky"></see></summary>
-    let JapaneseWhisky =
-        Namespaced_IRI.parse _namespace_name "JapaneseWhisky" |> NamespacedName
-
+    let JapaneseWhisky = _prefix "JapaneseWhisky"
     /// <summary>
     ///
     ///     Liqueurs are typically quite sweet; they are usually not aged for long
@@ -545,24 +474,21 @@ module bevon =
     ///     production to allow flavors to marry.
     ///
     /// <see href="http://rdfs.co/bevon/Liqueur"></see></summary>
-    let Liqueur = Namespaced_IRI.parse _namespace_name "Liqueur" |> NamespacedName
+    let Liqueur = _prefix "Liqueur"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/MaltWhisky"></see>
     /// </summary>
-    let MaltWhisky = Namespaced_IRI.parse _namespace_name "MaltWhisky" |> NamespacedName
-
+    let MaltWhisky = _prefix "MaltWhisky"
     /// <summary>
     ///
     ///     Mineral water may be sparkling due to contained gases.
     ///
     /// <see href="http://rdfs.co/bevon/MineralWater"></see></summary>
-    let MineralWater =
-        Namespaced_IRI.parse _namespace_name "MineralWater" |> NamespacedName
-
+    let MineralWater = _prefix "MineralWater"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Pisco"></see>
     /// </summary>
-    let Pisco = Namespaced_IRI.parse _namespace_name "Pisco" |> NamespacedName
+    let Pisco = _prefix "Pisco"
     /// <summary>
     ///
     ///     The actual colour of the wine can range from intense violet, typical of
@@ -570,42 +496,38 @@ module bevon =
     ///     wines.
     ///
     /// <see href="http://rdfs.co/bevon/RedWine"></see></summary>
-    let RedWine = Namespaced_IRI.parse _namespace_name "RedWine" |> NamespacedName
+    let RedWine = _prefix "RedWine"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/related"></see>
     /// </summary>
-    let related = Namespaced_IRI.parse _namespace_name "related" |> NamespacedName
+    let related = _prefix "related"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/similar"></see>
     /// </summary>
-    let similar = Namespaced_IRI.parse _namespace_name "similar" |> NamespacedName
+    let similar = _prefix "similar"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/variant"></see>
     /// </summary>
-    let variant = Namespaced_IRI.parse _namespace_name "variant" |> NamespacedName
+    let variant = _prefix "variant"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/variantOf"></see>
     /// </summary>
-    let variantOf = Namespaced_IRI.parse _namespace_name "variantOf" |> NamespacedName
-
+    let variantOf = _prefix "variantOf"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/non_alcoholic_version"></see>
     /// </summary>
-    let non_alcoholic_version =
-        Namespaced_IRI.parse _namespace_name "non_alcoholic_version" |> NamespacedName
-
+    let non_alcoholic_version = _prefix "non_alcoholic_version"
     /// <summary>
     ///
     ///     The distillate, a clear liquid, is then usually aged in
     ///     oak barrels.
     ///
     /// <see href="http://rdfs.co/bevon/Rum"></see></summary>
-    let Rum = Namespaced_IRI.parse _namespace_name "Rum" |> NamespacedName
+    let Rum = _prefix "Rum"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Sake"></see>
     /// </summary>
-    let Sake = Namespaced_IRI.parse _namespace_name "Sake" |> NamespacedName
-
+    let Sake = _prefix "Sake"
     /// <summary>
     ///
     ///     All Scotch whisky was originally made from malt barley. Commercial
@@ -613,9 +535,7 @@ module bevon =
     ///     eighteenth century.
     ///
     /// <see href="http://rdfs.co/bevon/ScotchWhisky"></see></summary>
-    let ScotchWhisky =
-        Namespaced_IRI.parse _namespace_name "ScotchWhisky" |> NamespacedName
-
+    let ScotchWhisky = _prefix "ScotchWhisky"
     /// <summary>
     ///
     ///     As with any Scotch whisky, a single malt Scotch must be distilled in
@@ -623,39 +543,30 @@ module bevon =
     ///     (most single malts are matured longer).
     ///
     /// <see href="http://rdfs.co/bevon/SingleMaltScotch"></see></summary>
-    let SingleMaltScotch =
-        Namespaced_IRI.parse _namespace_name "SingleMaltScotch" |> NamespacedName
-
+    let SingleMaltScotch = _prefix "SingleMaltScotch"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/SingleMaltWhisky"></see>
     /// </summary>
-    let SingleMaltWhisky =
-        Namespaced_IRI.parse _namespace_name "SingleMaltWhisky" |> NamespacedName
-
+    let SingleMaltWhisky = _prefix "SingleMaltWhisky"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/SpeysideSingleMalt"></see>
     /// </summary>
-    let SpeysideSingleMalt =
-        Namespaced_IRI.parse _namespace_name "SpeysideSingleMalt" |> NamespacedName
-
+    let SpeysideSingleMalt = _prefix "SpeysideSingleMalt"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/Tequila"></see>
     /// </summary>
-    let Tequila = Namespaced_IRI.parse _namespace_name "Tequila" |> NamespacedName
-
+    let Tequila = _prefix "Tequila"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/TequilaBlanco"></see>
     /// </summary>
-    let TequilaBlanco =
-        Namespaced_IRI.parse _namespace_name "TequilaBlanco" |> NamespacedName
-
+    let TequilaBlanco = _prefix "TequilaBlanco"
     /// <summary>
     ///
     ///     Vodka is made by the distillation of fermented substances such as grains,
     ///     potatoes, or sometimes fruits or sugar.
     ///
     /// <see href="http://rdfs.co/bevon/Vodka"></see></summary>
-    let Vodka = Namespaced_IRI.parse _namespace_name "Vodka" |> NamespacedName
+    let Vodka = _prefix "Vodka"
     /// <summary>
     ///
     ///     It is produced by the alcoholic fermentation of the non-coloured pulp of
@@ -663,203 +574,140 @@ module bevon =
     ///     maintain a yellow transparent colour in the final product.
     ///
     /// <see href="http://rdfs.co/bevon/WhiteWine"></see></summary>
-    let WhiteWine = Namespaced_IRI.parse _namespace_name "WhiteWine" |> NamespacedName
-
+    let WhiteWine = _prefix "WhiteWine"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Budweiser"></see>
     /// </summary>
-    let ``beverage/Budweiser`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Budweiser" |> NamespacedName
-
+    let ``beverage/Budweiser`` = _prefix "beverage/Budweiser"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/330mlLongneck"></see>
     /// </summary>
-    let ``container/330mlLongneck`` =
-        Namespaced_IRI.parse _namespace_name "container/330mlLongneck" |> NamespacedName
-
+    let ``container/330mlLongneck`` = _prefix "container/330mlLongneck"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/500mlBeverageCan"></see>
     /// </summary>
-    let ``container/500mlBeverageCan`` =
-        Namespaced_IRI.parse _namespace_name "container/500mlBeverageCan" |> NamespacedName
-
+    let ``container/500mlBeverageCan`` = _prefix "container/500mlBeverageCan"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/355mlBeverageCan"></see>
     /// </summary>
-    let ``container/355mlBeverageCan`` =
-        Namespaced_IRI.parse _namespace_name "container/355mlBeverageCan" |> NamespacedName
-
+    let ``container/355mlBeverageCan`` = _prefix "container/355mlBeverageCan"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Chamisul"></see>
     /// </summary>
-    let ``beverage/Chamisul`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Chamisul" |> NamespacedName
-
+    let ``beverage/Chamisul`` = _prefix "beverage/Chamisul"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/1_8lPlasticBottle"></see>
     /// </summary>
-    let ``container/1_8lPlasticBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/1_8lPlasticBottle" |> NamespacedName
-
+    let ``container/1_8lPlasticBottle`` = _prefix "container/1_8lPlasticBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/640mlPlasticBottle"></see>
     /// </summary>
-    let ``container/640mlPlasticBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/640mlPlasticBottle" |> NamespacedName
-
+    let ``container/640mlPlasticBottle`` = _prefix "container/640mlPlasticBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/200mlPlasticBottle"></see>
     /// </summary>
-    let ``container/200mlPlasticBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/200mlPlasticBottle" |> NamespacedName
-
+    let ``container/200mlPlasticBottle`` = _prefix "container/200mlPlasticBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/360mlGlassBottle"></see>
     /// </summary>
-    let ``container/360mlGlassBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/360mlGlassBottle" |> NamespacedName
-
+    let ``container/360mlGlassBottle`` = _prefix "container/360mlGlassBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Chum-Churum"></see>
     /// </summary>
-    let ``beverage/Chum-Churum`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Chum-Churum" |> NamespacedName
-
+    let ``beverage/Chum-Churum`` = _prefix "beverage/Chum-Churum"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/360mlPlasticBottle"></see>
     /// </summary>
-    let ``container/360mlPlasticBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/360mlPlasticBottle" |> NamespacedName
-
+    let ``container/360mlPlasticBottle`` = _prefix "container/360mlPlasticBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/DonJulioBlanco"></see>
     /// </summary>
-    let ``beverage/DonJulioBlanco`` =
-        Namespaced_IRI.parse _namespace_name "beverage/DonJulioBlanco" |> NamespacedName
-
+    let ``beverage/DonJulioBlanco`` = _prefix "beverage/DonJulioBlanco"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/750mlGlassBottle"></see>
     /// </summary>
-    let ``container/750mlGlassBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/750mlGlassBottle" |> NamespacedName
-
+    let ``container/750mlGlassBottle`` = _prefix "container/750mlGlassBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Glenfiddich12YearOld"></see>
     /// </summary>
-    let ``beverage/Glenfiddich12YearOld`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Glenfiddich12YearOld" |> NamespacedName
-
+    let ``beverage/Glenfiddich12YearOld`` = _prefix "beverage/Glenfiddich12YearOld"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/duration"></see>
     /// </summary>
-    let duration = Namespaced_IRI.parse _namespace_name "duration" |> NamespacedName
-
+    let duration = _prefix "duration"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/previous_content"></see>
     /// </summary>
-    let previous_content =
-        Namespaced_IRI.parse _namespace_name "previous_content" |> NamespacedName
-
+    let previous_content = _prefix "previous_content"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/material"></see>
     /// </summary>
-    let material = Namespaced_IRI.parse _namespace_name "material" |> NamespacedName
-
+    let material = _prefix "material"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/700mlGlassBottle"></see>
     /// </summary>
-    let ``container/700mlGlassBottle`` =
-        Namespaced_IRI.parse _namespace_name "container/700mlGlassBottle" |> NamespacedName
-
+    let ``container/700mlGlassBottle`` = _prefix "container/700mlGlassBottle"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Guinness"></see>
     /// </summary>
-    let ``beverage/Guinness`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Guinness" |> NamespacedName
-
+    let ``beverage/Guinness`` = _prefix "beverage/Guinness"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/15lBeerKeg"></see>
     /// </summary>
-    let ``container/15lBeerKeg`` =
-        Namespaced_IRI.parse _namespace_name "container/15lBeerKeg" |> NamespacedName
-
+    let ``container/15lBeerKeg`` = _prefix "container/15lBeerKeg"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/30lBeerKeg"></see>
     /// </summary>
-    let ``container/30lBeerKeg`` =
-        Namespaced_IRI.parse _namespace_name "container/30lBeerKeg" |> NamespacedName
-
+    let ``container/30lBeerKeg`` = _prefix "container/30lBeerKeg"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/330mlBeverageCan"></see>
     /// </summary>
-    let ``container/330mlBeverageCan`` =
-        Namespaced_IRI.parse _namespace_name "container/330mlBeverageCan" |> NamespacedName
-
+    let ``container/330mlBeverageCan`` = _prefix "container/330mlBeverageCan"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Kilkenny"></see>
     /// </summary>
-    let ``beverage/Kilkenny`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Kilkenny" |> NamespacedName
-
+    let ``beverage/Kilkenny`` = _prefix "beverage/Kilkenny"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/440mlBeverageCan"></see>
     /// </summary>
-    let ``container/440mlBeverageCan`` =
-        Namespaced_IRI.parse _namespace_name "container/440mlBeverageCan" |> NamespacedName
-
+    let ``container/440mlBeverageCan`` = _prefix "container/440mlBeverageCan"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Smithwicks"></see>
     /// </summary>
-    let ``beverage/Smithwicks`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Smithwicks" |> NamespacedName
-
+    let ``beverage/Smithwicks`` = _prefix "beverage/Smithwicks"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/KozelDark"></see>
     /// </summary>
-    let ``beverage/KozelDark`` =
-        Namespaced_IRI.parse _namespace_name "beverage/KozelDark" |> NamespacedName
-
+    let ``beverage/KozelDark`` = _prefix "beverage/KozelDark"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/500mlLongneck"></see>
     /// </summary>
-    let ``container/500mlLongneck`` =
-        Namespaced_IRI.parse _namespace_name "container/500mlLongneck" |> NamespacedName
-
+    let ``container/500mlLongneck`` = _prefix "container/500mlLongneck"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/Tsingtao"></see>
     /// </summary>
-    let ``beverage/Tsingtao`` =
-        Namespaced_IRI.parse _namespace_name "beverage/Tsingtao" |> NamespacedName
-
+    let ``beverage/Tsingtao`` = _prefix "beverage/Tsingtao"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/640mlLongneck"></see>
     /// </summary>
-    let ``container/640mlLongneck`` =
-        Namespaced_IRI.parse _namespace_name "container/640mlLongneck" |> NamespacedName
-
+    let ``container/640mlLongneck`` = _prefix "container/640mlLongneck"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/beverage/WhiskyAndSoda"></see>
     /// </summary>
-    let ``beverage/WhiskyAndSoda`` =
-        Namespaced_IRI.parse _namespace_name "beverage/WhiskyAndSoda" |> NamespacedName
-
+    let ``beverage/WhiskyAndSoda`` = _prefix "beverage/WhiskyAndSoda"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/food"></see>
     /// </summary>
-    let food = Namespaced_IRI.parse _namespace_name "food" |> NamespacedName
+    let food = _prefix "food"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/quantity"></see>
     /// </summary>
-    let quantity = Namespaced_IRI.parse _namespace_name "quantity" |> NamespacedName
-
+    let quantity = _prefix "quantity"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/25lBeerKeg"></see>
     /// </summary>
-    let ``container/25lBeerKeg`` =
-        Namespaced_IRI.parse _namespace_name "container/25lBeerKeg" |> NamespacedName
-
+    let ``container/25lBeerKeg`` = _prefix "container/25lBeerKeg"
     /// <summary>
     ///   <see href="http://rdfs.co/bevon/container/50lBeerKeg"></see>
     /// </summary>
-    let ``container/50lBeerKeg`` =
-        Namespaced_IRI.parse _namespace_name "container/50lBeerKeg" |> NamespacedName
+    let ``container/50lBeerKeg`` = _prefix "container/50lBeerKeg"

@@ -1,1268 +1,955 @@
 namespace http.www.arpenteur.org.ontology.Arpenteur.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module arp =
     let _namespace_name = "http://www.arpenteur.org/ontology/Arpenteur.owl#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Alcyonacea"></see>
     /// </summary>
-    let Alcyonacea = Namespaced_IRI.parse _namespace_name "Alcyonacea" |> NamespacedName
+    let Alcyonacea = _prefix "Alcyonacea"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Zoology"></see>
     /// </summary>
-    let Zoology = Namespaced_IRI.parse _namespace_name "Zoology" |> NamespacedName
+    let Zoology = _prefix "Zoology"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Amphorae"></see>
     /// </summary>
-    let Amphorae = Namespaced_IRI.parse _namespace_name "Amphorae" |> NamespacedName
-
+    let Amphorae = _prefix "Amphorae"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#RecipientTransport"></see>
     /// </summary>
-    let RecipientTransport =
-        Namespaced_IRI.parse _namespace_name "RecipientTransport" |> NamespacedName
-
+    let RecipientTransport = _prefix "RecipientTransport"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Archaeology"></see>
     /// </summary>
-    let Archaeology =
-        Namespaced_IRI.parse _namespace_name "Archaeology" |> NamespacedName
-
+    let Archaeology = _prefix "Archaeology"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Measurable"></see>
     /// </summary>
-    let Measurable = Namespaced_IRI.parse _namespace_name "Measurable" |> NamespacedName
-
+    let Measurable = _prefix "Measurable"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Architecture"></see>
     /// </summary>
-    let Architecture =
-        Namespaced_IRI.parse _namespace_name "Architecture" |> NamespacedName
-
+    let Architecture = _prefix "Architecture"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#AreaFunzionale"></see>
     /// </summary>
-    let AreaFunzionale =
-        Namespaced_IRI.parse _namespace_name "AreaFunzionale" |> NamespacedName
-
+    let AreaFunzionale = _prefix "AreaFunzionale"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#UnitaArcheologica"></see>
     /// </summary>
-    let UnitaArcheologica =
-        Namespaced_IRI.parse _namespace_name "UnitaArcheologica" |> NamespacedName
-
+    let UnitaArcheologica = _prefix "UnitaArcheologica"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Artifact"></see>
     /// </summary>
-    let Artifact = Namespaced_IRI.parse _namespace_name "Artifact" |> NamespacedName
+    let Artifact = _prefix "Artifact"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Attivita"></see>
     /// </summary>
-    let Attivita = Namespaced_IRI.parse _namespace_name "Attivita" |> NamespacedName
-
+    let Attivita = _prefix "Attivita"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ElementoStratigrafico"></see>
     /// </summary>
-    let ElementoStratigrafico =
-        Namespaced_IRI.parse _namespace_name "ElementoStratigrafico" |> NamespacedName
-
+    let ElementoStratigrafico = _prefix "ElementoStratigrafico"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Bloc"></see>
     /// </summary>
-    let Bloc = Namespaced_IRI.parse _namespace_name "Bloc" |> NamespacedName
-
+    let Bloc = _prefix "Bloc"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ElementDeParement"></see>
     /// </summary>
-    let ElementDeParement =
-        Namespaced_IRI.parse _namespace_name "ElementDeParement" |> NamespacedName
-
+    let ElementDeParement = _prefix "ElementDeParement"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#BoundingBox"></see>
     /// </summary>
-    let BoundingBox =
-        Namespaced_IRI.parse _namespace_name "BoundingBox" |> NamespacedName
-
+    let BoundingBox = _prefix "BoundingBox"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#MathematicalObject"></see>
     /// </summary>
-    let MathematicalObject =
-        Namespaced_IRI.parse _namespace_name "MathematicalObject" |> NamespacedName
-
+    let MathematicalObject = _prefix "MathematicalObject"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Brique"></see>
     /// </summary>
-    let Brique = Namespaced_IRI.parse _namespace_name "Brique" |> NamespacedName
-
+    let Brique = _prefix "Brique"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#BundleModel"></see>
     /// </summary>
-    let BundleModel =
-        Namespaced_IRI.parse _namespace_name "BundleModel" |> NamespacedName
-
+    let BundleModel = _prefix "BundleModel"
     /// <summary>
     /// This is a photogrammetric model. It contains a set of oriented photograph and a set of 3D points which are at least visible on two oriented photographs.
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Model"></see></summary>
-    let Model = Namespaced_IRI.parse _namespace_name "Model" |> NamespacedName
+    let Model = _prefix "Model"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Camera"></see>
     /// </summary>
-    let Camera = Namespaced_IRI.parse _namespace_name "Camera" |> NamespacedName
-
+    let Camera = _prefix "Camera"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Photogrammetry"></see>
     /// </summary>
-    let Photogrammetry =
-        Namespaced_IRI.parse _namespace_name "Photogrammetry" |> NamespacedName
-
+    let Photogrammetry = _prefix "Photogrammetry"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#CameraManager"></see>
     /// </summary>
-    let CameraManager =
-        Namespaced_IRI.parse _namespace_name "CameraManager" |> NamespacedName
-
+    let CameraManager = _prefix "CameraManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#GenericManager"></see>
     /// </summary>
-    let GenericManager =
-        Namespaced_IRI.parse _namespace_name "GenericManager" |> NamespacedName
-
+    let GenericManager = _prefix "GenericManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Cassettone"></see>
     /// </summary>
-    let Cassettone = Namespaced_IRI.parse _namespace_name "Cassettone" |> NamespacedName
-
+    let Cassettone = _prefix "Cassettone"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ElementDeCouverture"></see>
     /// </summary>
-    let ElementDeCouverture =
-        Namespaced_IRI.parse _namespace_name "ElementDeCouverture" |> NamespacedName
-
+    let ElementDeCouverture = _prefix "ElementDeCouverture"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ComplessoArchitettonico"></see>
     /// </summary>
-    let ComplessoArchitettonico =
-        Namespaced_IRI.parse _namespace_name "ComplessoArchitettonico" |> NamespacedName
-
+    let ComplessoArchitettonico = _prefix "ComplessoArchitettonico"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ConstraintManager"></see>
     /// </summary>
-    let ConstraintManager =
-        Namespaced_IRI.parse _namespace_name "ConstraintManager" |> NamespacedName
-
+    let ConstraintManager = _prefix "ConstraintManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ControlPoint"></see>
     /// </summary>
-    let ControlPoint =
-        Namespaced_IRI.parse _namespace_name "ControlPoint" |> NamespacedName
-
+    let ControlPoint = _prefix "ControlPoint"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#IPoint3D"></see>
     /// </summary>
-    let IPoint3D = Namespaced_IRI.parse _namespace_name "IPoint3D" |> NamespacedName
-
+    let IPoint3D = _prefix "IPoint3D"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Coralliidae"></see>
     /// </summary>
-    let Coralliidae =
-        Namespaced_IRI.parse _namespace_name "Coralliidae" |> NamespacedName
-
+    let Coralliidae = _prefix "Coralliidae"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#CoralliumRubrum"></see>
     /// </summary>
-    let CoralliumRubrum =
-        Namespaced_IRI.parse _namespace_name "CoralliumRubrum" |> NamespacedName
-
+    let CoralliumRubrum = _prefix "CoralliumRubrum"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#CorpoDiFabbrica"></see>
     /// </summary>
-    let CorpoDiFabbrica =
-        Namespaced_IRI.parse _namespace_name "CorpoDiFabbrica" |> NamespacedName
-
+    let CorpoDiFabbrica = _prefix "CorpoDiFabbrica"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#DigitalCamera"></see>
     /// </summary>
-    let DigitalCamera =
-        Namespaced_IRI.parse _namespace_name "DigitalCamera" |> NamespacedName
-
+    let DigitalCamera = _prefix "DigitalCamera"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#FilmBasedCamera"></see>
     /// </summary>
-    let FilmBasedCamera =
-        Namespaced_IRI.parse _namespace_name "FilmBasedCamera" |> NamespacedName
-
+    let FilmBasedCamera = _prefix "FilmBasedCamera"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Dolia"></see>
     /// </summary>
-    let Dolia = Namespaced_IRI.parse _namespace_name "Dolia" |> NamespacedName
-
+    let Dolia = _prefix "Dolia"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#IIdentifiedObject"></see>
     /// </summary>
-    let IIdentifiedObject =
-        Namespaced_IRI.parse _namespace_name "IIdentifiedObject" |> NamespacedName
-
+    let IIdentifiedObject = _prefix "IIdentifiedObject"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Geometry"></see>
     /// </summary>
-    let Geometry = Namespaced_IRI.parse _namespace_name "Geometry" |> NamespacedName
-
+    let Geometry = _prefix "Geometry"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#GrindingStone"></see>
     /// </summary>
-    let GrindingStone =
-        Namespaced_IRI.parse _namespace_name "GrindingStone" |> NamespacedName
-
+    let GrindingStone = _prefix "GrindingStone"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#StoneTool"></see>
     /// </summary>
-    let StoneTool = Namespaced_IRI.parse _namespace_name "StoneTool" |> NamespacedName
-
+    let StoneTool = _prefix "StoneTool"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#IColoredPoint"></see>
     /// </summary>
-    let IColoredPoint =
-        Namespaced_IRI.parse _namespace_name "IColoredPoint" |> NamespacedName
-
+    let IColoredPoint = _prefix "IColoredPoint"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#IFixedPoint"></see>
     /// </summary>
-    let IFixedPoint =
-        Namespaced_IRI.parse _namespace_name "IFixedPoint" |> NamespacedName
-
+    let IFixedPoint = _prefix "IFixedPoint"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#IPoint"></see>
     /// </summary>
-    let IPoint = Namespaced_IRI.parse _namespace_name "IPoint" |> NamespacedName
+    let IPoint = _prefix "IPoint"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#IPoint2D"></see>
     /// </summary>
-    let IPoint2D = Namespaced_IRI.parse _namespace_name "IPoint2D" |> NamespacedName
+    let IPoint2D = _prefix "IPoint2D"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ImagePoint"></see>
     /// </summary>
-    let ImagePoint = Namespaced_IRI.parse _namespace_name "ImagePoint" |> NamespacedName
-
+    let ImagePoint = _prefix "ImagePoint"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ImagePointManager"></see>
     /// </summary>
-    let ImagePointManager =
-        Namespaced_IRI.parse _namespace_name "ImagePointManager" |> NamespacedName
-
+    let ImagePointManager = _prefix "ImagePointManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Point2DManager"></see>
     /// </summary>
-    let Point2DManager =
-        Namespaced_IRI.parse _namespace_name "Point2DManager" |> NamespacedName
-
+    let Point2DManager = _prefix "Point2DManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Matrix"></see>
     /// </summary>
-    let Matrix = Namespaced_IRI.parse _namespace_name "Matrix" |> NamespacedName
-
+    let Matrix = _prefix "Matrix"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#SpatialObject"></see>
     /// </summary>
-    let SpatialObject =
-        Namespaced_IRI.parse _namespace_name "SpatialObject" |> NamespacedName
-
+    let SpatialObject = _prefix "SpatialObject"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#MeasuredPointManager"></see>
     /// </summary>
-    let MeasuredPointManager =
-        Namespaced_IRI.parse _namespace_name "MeasuredPointManager" |> NamespacedName
-
+    let MeasuredPointManager = _prefix "MeasuredPointManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Point3DManager"></see>
     /// </summary>
-    let Point3DManager =
-        Namespaced_IRI.parse _namespace_name "Point3DManager" |> NamespacedName
-
+    let Point3DManager = _prefix "Point3DManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#NauticalArchaeology"></see>
     /// </summary>
-    let NauticalArchaeology =
-        Namespaced_IRI.parse _namespace_name "NauticalArchaeology" |> NamespacedName
-
+    let NauticalArchaeology = _prefix "NauticalArchaeology"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Ollae"></see>
     /// </summary>
-    let Ollae = Namespaced_IRI.parse _namespace_name "Ollae" |> NamespacedName
+    let Ollae = _prefix "Ollae"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#PetraData"></see>
     /// </summary>
-    let PetraData = Namespaced_IRI.parse _namespace_name "PetraData" |> NamespacedName
-
+    let PetraData = _prefix "PetraData"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#PhotoManager"></see>
     /// </summary>
-    let PhotoManager =
-        Namespaced_IRI.parse _namespace_name "PhotoManager" |> NamespacedName
-
+    let PhotoManager = _prefix "PhotoManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Photograph"></see>
     /// </summary>
-    let Photograph = Namespaced_IRI.parse _namespace_name "Photograph" |> NamespacedName
-
+    let Photograph = _prefix "Photograph"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#PointManager"></see>
     /// </summary>
-    let PointManager =
-        Namespaced_IRI.parse _namespace_name "PointManager" |> NamespacedName
-
+    let PointManager = _prefix "PointManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Point_3D"></see>
     /// </summary>
-    let Point_3D = Namespaced_IRI.parse _namespace_name "Point_3D" |> NamespacedName
+    let Point_3D = _prefix "Point_3D"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Prospetto"></see>
     /// </summary>
-    let Prospetto = Namespaced_IRI.parse _namespace_name "Prospetto" |> NamespacedName
-
+    let Prospetto = _prefix "Prospetto"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ProspettoGenerale"></see>
     /// </summary>
-    let ProspettoGenerale =
-        Namespaced_IRI.parse _namespace_name "ProspettoGenerale" |> NamespacedName
-
+    let ProspettoGenerale = _prefix "ProspettoGenerale"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ProspettoParticolare"></see>
     /// </summary>
-    let ProspettoParticolare =
-        Namespaced_IRI.parse _namespace_name "ProspettoParticolare" |> NamespacedName
-
+    let ProspettoParticolare = _prefix "ProspettoParticolare"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#RadialDecenteringDistortion"></see>
     /// </summary>
-    let RadialDecenteringDistortion =
-        Namespaced_IRI.parse _namespace_name "RadialDecenteringDistortion" |> NamespacedName
-
+    let RadialDecenteringDistortion = _prefix "RadialDecenteringDistortion"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#RotationMatrix"></see>
     /// </summary>
-    let RotationMatrix =
-        Namespaced_IRI.parse _namespace_name "RotationMatrix" |> NamespacedName
-
+    let RotationMatrix = _prefix "RotationMatrix"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRotationMatrix"></see>
     /// </summary>
-    let hasRotationMatrix =
-        Namespaced_IRI.parse _namespace_name "hasRotationMatrix" |> NamespacedName
-
+    let hasRotationMatrix = _prefix "hasRotationMatrix"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Transformation3D"></see>
     /// </summary>
-    let Transformation3D =
-        Namespaced_IRI.parse _namespace_name "Transformation3D" |> NamespacedName
-
+    let Transformation3D = _prefix "Transformation3D"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#SitiList"></see>
     /// </summary>
-    let SitiList = Namespaced_IRI.parse _namespace_name "SitiList" |> NamespacedName
+    let SitiList = _prefix "SitiList"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Sito"></see>
     /// </summary>
-    let Sito = Namespaced_IRI.parse _namespace_name "Sito" |> NamespacedName
-
+    let Sito = _prefix "Sito"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#SpatialLocalization"></see>
     /// </summary>
-    let SpatialLocalization =
-        Namespaced_IRI.parse _namespace_name "SpatialLocalization" |> NamespacedName
-
+    let SpatialLocalization = _prefix "SpatialLocalization"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Subergorgia"></see>
     /// </summary>
-    let Subergorgia =
-        Namespaced_IRI.parse _namespace_name "Subergorgia" |> NamespacedName
-
+    let Subergorgia = _prefix "Subergorgia"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#TriangleManager"></see>
     /// </summary>
-    let TriangleManager =
-        Namespaced_IRI.parse _namespace_name "TriangleManager" |> NamespacedName
-
+    let TriangleManager = _prefix "TriangleManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#Tuile"></see>
     /// </summary>
-    let Tuile = Namespaced_IRI.parse _namespace_name "Tuile" |> NamespacedName
+    let Tuile = _prefix "Tuile"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#TuileRonde"></see>
     /// </summary>
-    let TuileRonde = Namespaced_IRI.parse _namespace_name "TuileRonde" |> NamespacedName
-
+    let TuileRonde = _prefix "TuileRonde"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#UnitaFunzionale"></see>
     /// </summary>
-    let UnitaFunzionale =
-        Namespaced_IRI.parse _namespace_name "UnitaFunzionale" |> NamespacedName
-
+    let UnitaFunzionale = _prefix "UnitaFunzionale"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#UnitaStratigrafica"></see>
     /// </summary>
-    let UnitaStratigrafica =
-        Namespaced_IRI.parse _namespace_name "UnitaStratigrafica" |> NamespacedName
-
+    let UnitaStratigrafica = _prefix "UnitaStratigrafica"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#UnitaStratigraficaMurale"></see>
     /// </summary>
-    let UnitaStratigraficaMurale =
-        Namespaced_IRI.parse _namespace_name "UnitaStratigraficaMurale" |> NamespacedName
-
+    let UnitaStratigraficaMurale = _prefix "UnitaStratigraficaMurale"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#UnitaTopografica"></see>
     /// </summary>
-    let UnitaTopografica =
-        Namespaced_IRI.parse _namespace_name "UnitaTopografica" |> NamespacedName
-
+    let UnitaTopografica = _prefix "UnitaTopografica"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#belongToUSM"></see>
     /// </summary>
-    let belongToUSM =
-        Namespaced_IRI.parse _namespace_name "belongToUSM" |> NamespacedName
-
+    let belongToUSM = _prefix "belongToUSM"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOf3DPoint"></see>
     /// </summary>
-    let hasASetOf3DPoint =
-        Namespaced_IRI.parse _namespace_name "hasASetOf3DPoint" |> NamespacedName
-
+    let hasASetOf3DPoint = _prefix "hasASetOf3DPoint"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOf3DPointWithObs"></see>
     /// </summary>
-    let hasASetOf3DPointWithObs =
-        Namespaced_IRI.parse _namespace_name "hasASetOf3DPointWithObs" |> NamespacedName
-
+    let hasASetOf3DPointWithObs = _prefix "hasASetOf3DPointWithObs"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfCA"></see>
     /// </summary>
-    let hasASetOfCA =
-        Namespaced_IRI.parse _namespace_name "hasASetOfCA" |> NamespacedName
-
+    let hasASetOfCA = _prefix "hasASetOfCA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfCF"></see>
     /// </summary>
-    let hasASetOfCF =
-        Namespaced_IRI.parse _namespace_name "hasASetOfCF" |> NamespacedName
-
+    let hasASetOfCF = _prefix "hasASetOfCF"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfCamera"></see>
     /// </summary>
-    let hasASetOfCamera =
-        Namespaced_IRI.parse _namespace_name "hasASetOfCamera" |> NamespacedName
-
+    let hasASetOfCamera = _prefix "hasASetOfCamera"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfObservation"></see>
     /// </summary>
-    let hasASetOfObservation =
-        Namespaced_IRI.parse _namespace_name "hasASetOfObservation" |> NamespacedName
-
+    let hasASetOfObservation = _prefix "hasASetOfObservation"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfPP"></see>
     /// </summary>
-    let hasASetOfPP =
-        Namespaced_IRI.parse _namespace_name "hasASetOfPP" |> NamespacedName
-
+    let hasASetOfPP = _prefix "hasASetOfPP"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfSiti"></see>
     /// </summary>
-    let hasASetOfSiti =
-        Namespaced_IRI.parse _namespace_name "hasASetOfSiti" |> NamespacedName
-
+    let hasASetOfSiti = _prefix "hasASetOfSiti"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#ManagerCA"></see>
     /// </summary>
-    let ManagerCA = Namespaced_IRI.parse _namespace_name "ManagerCA" |> NamespacedName
-
+    let ManagerCA = _prefix "ManagerCA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfSito"></see>
     /// </summary>
-    let hasASetOfSito =
-        Namespaced_IRI.parse _namespace_name "hasASetOfSito" |> NamespacedName
-
+    let hasASetOfSito = _prefix "hasASetOfSito"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfUS"></see>
     /// </summary>
-    let hasASetOfUS =
-        Namespaced_IRI.parse _namespace_name "hasASetOfUS" |> NamespacedName
-
+    let hasASetOfUS = _prefix "hasASetOfUS"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasASetOfUT"></see>
     /// </summary>
-    let hasASetOfUT =
-        Namespaced_IRI.parse _namespace_name "hasASetOfUT" |> NamespacedName
-
+    let hasASetOfUT = _prefix "hasASetOfUT"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasBellyDiameter"></see>
     /// </summary>
-    let hasBellyDiameter =
-        Namespaced_IRI.parse _namespace_name "hasBellyDiameter" |> NamespacedName
-
+    let hasBellyDiameter = _prefix "hasBellyDiameter"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasBoundingBox"></see>
     /// </summary>
-    let hasBoundingBox =
-        Namespaced_IRI.parse _namespace_name "hasBoundingBox" |> NamespacedName
-
+    let hasBoundingBox = _prefix "hasBoundingBox"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCA"></see>
     /// </summary>
-    let hasCA = Namespaced_IRI.parse _namespace_name "hasCA" |> NamespacedName
+    let hasCA = _prefix "hasCA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCF"></see>
     /// </summary>
-    let hasCF = Namespaced_IRI.parse _namespace_name "hasCF" |> NamespacedName
+    let hasCF = _prefix "hasCF"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCamera"></see>
     /// </summary>
-    let hasCamera = Namespaced_IRI.parse _namespace_name "hasCamera" |> NamespacedName
-
+    let hasCamera = _prefix "hasCamera"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCameraManager"></see>
     /// </summary>
-    let hasCameraManager =
-        Namespaced_IRI.parse _namespace_name "hasCameraManager" |> NamespacedName
-
+    let hasCameraManager = _prefix "hasCameraManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCenter"></see>
     /// </summary>
-    let hasCenter = Namespaced_IRI.parse _namespace_name "hasCenter" |> NamespacedName
+    let hasCenter = _prefix "hasCenter"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCoef_K1"></see>
     /// </summary>
-    let hasCoef_K1 = Namespaced_IRI.parse _namespace_name "hasCoef_K1" |> NamespacedName
+    let hasCoef_K1 = _prefix "hasCoef_K1"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCoef_K2"></see>
     /// </summary>
-    let hasCoef_K2 = Namespaced_IRI.parse _namespace_name "hasCoef_K2" |> NamespacedName
+    let hasCoef_K2 = _prefix "hasCoef_K2"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCoef_K3"></see>
     /// </summary>
-    let hasCoef_K3 = Namespaced_IRI.parse _namespace_name "hasCoef_K3" |> NamespacedName
+    let hasCoef_K3 = _prefix "hasCoef_K3"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCoef_K4"></see>
     /// </summary>
-    let hasCoef_K4 = Namespaced_IRI.parse _namespace_name "hasCoef_K4" |> NamespacedName
+    let hasCoef_K4 = _prefix "hasCoef_K4"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCoef_P1"></see>
     /// </summary>
-    let hasCoef_P1 = Namespaced_IRI.parse _namespace_name "hasCoef_P1" |> NamespacedName
+    let hasCoef_P1 = _prefix "hasCoef_P1"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCoef_P2"></see>
     /// </summary>
-    let hasCoef_P2 = Namespaced_IRI.parse _namespace_name "hasCoef_P2" |> NamespacedName
+    let hasCoef_P2 = _prefix "hasCoef_P2"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasColor_B"></see>
     /// </summary>
-    let hasColor_B = Namespaced_IRI.parse _namespace_name "hasColor_B" |> NamespacedName
+    let hasColor_B = _prefix "hasColor_B"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasColor_G"></see>
     /// </summary>
-    let hasColor_G = Namespaced_IRI.parse _namespace_name "hasColor_G" |> NamespacedName
+    let hasColor_G = _prefix "hasColor_G"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasColor_R"></see>
     /// </summary>
-    let hasColor_R = Namespaced_IRI.parse _namespace_name "hasColor_R" |> NamespacedName
+    let hasColor_R = _prefix "hasColor_R"
     /// <summary>
     /// manual evaluation of the Percent of necrosed part in a colony
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasComment"></see></summary>
-    let hasComment = Namespaced_IRI.parse _namespace_name "hasComment" |> NamespacedName
-
+    let hasComment = _prefix "hasComment"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasCorrelationCoef"></see>
     /// </summary>
-    let hasCorrelationCoef =
-        Namespaced_IRI.parse _namespace_name "hasCorrelationCoef" |> NamespacedName
-
+    let hasCorrelationCoef = _prefix "hasCorrelationCoef"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasData"></see>
     /// </summary>
-    let hasData = Namespaced_IRI.parse _namespace_name "hasData" |> NamespacedName
-
+    let hasData = _prefix "hasData"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDefinition"></see>
     /// </summary>
-    let hasDefinition =
-        Namespaced_IRI.parse _namespace_name "hasDefinition" |> NamespacedName
-
+    let hasDefinition = _prefix "hasDefinition"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDescription"></see>
     /// </summary>
-    let hasDescription =
-        Namespaced_IRI.parse _namespace_name "hasDescription" |> NamespacedName
-
+    let hasDescription = _prefix "hasDescription"
     /// <summary>
     /// Should be max Diameter
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDiameter"></see></summary>
-    let hasDiameter =
-        Namespaced_IRI.parse _namespace_name "hasDiameter" |> NamespacedName
-
+    let hasDiameter = _prefix "hasDiameter"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDiameterNeck"></see>
     /// </summary>
-    let hasDiameterNeck =
-        Namespaced_IRI.parse _namespace_name "hasDiameterNeck" |> NamespacedName
-
+    let hasDiameterNeck = _prefix "hasDiameterNeck"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDiameterSupport"></see>
     /// </summary>
-    let hasDiameterSupport =
-        Namespaced_IRI.parse _namespace_name "hasDiameterSupport" |> NamespacedName
-
+    let hasDiameterSupport = _prefix "hasDiameterSupport"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDirettore"></see>
     /// </summary>
-    let hasDirettore =
-        Namespaced_IRI.parse _namespace_name "hasDirettore" |> NamespacedName
-
+    let hasDirettore = _prefix "hasDirettore"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDistanceHandles"></see>
     /// </summary>
-    let hasDistanceHandles =
-        Namespaced_IRI.parse _namespace_name "hasDistanceHandles" |> NamespacedName
-
+    let hasDistanceHandles = _prefix "hasDistanceHandles"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasDistortion"></see>
     /// </summary>
-    let hasDistortion =
-        Namespaced_IRI.parse _namespace_name "hasDistortion" |> NamespacedName
-
+    let hasDistortion = _prefix "hasDistortion"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudeDepth"></see>
     /// </summary>
-    let hasExtrudeDepth =
-        Namespaced_IRI.parse _namespace_name "hasExtrudeDepth" |> NamespacedName
-
+    let hasExtrudeDepth = _prefix "hasExtrudeDepth"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedData1"></see>
     /// </summary>
-    let hasExtrudedData1 =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedData1" |> NamespacedName
-
+    let hasExtrudedData1 = _prefix "hasExtrudedData1"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedData2"></see>
     /// </summary>
-    let hasExtrudedData2 =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedData2" |> NamespacedName
-
+    let hasExtrudedData2 = _prefix "hasExtrudedData2"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedPt1X"></see>
     /// </summary>
-    let hasExtrudedPt1X =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedPt1X" |> NamespacedName
-
+    let hasExtrudedPt1X = _prefix "hasExtrudedPt1X"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedPt1Y"></see>
     /// </summary>
-    let hasExtrudedPt1Y =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedPt1Y" |> NamespacedName
-
+    let hasExtrudedPt1Y = _prefix "hasExtrudedPt1Y"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedPt1Z"></see>
     /// </summary>
-    let hasExtrudedPt1Z =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedPt1Z" |> NamespacedName
-
+    let hasExtrudedPt1Z = _prefix "hasExtrudedPt1Z"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedPt2X"></see>
     /// </summary>
-    let hasExtrudedPt2X =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedPt2X" |> NamespacedName
-
+    let hasExtrudedPt2X = _prefix "hasExtrudedPt2X"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedPt2Y"></see>
     /// </summary>
-    let hasExtrudedPt2Y =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedPt2Y" |> NamespacedName
-
+    let hasExtrudedPt2Y = _prefix "hasExtrudedPt2Y"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasExtrudedPt2Z"></see>
     /// </summary>
-    let hasExtrudedPt2Z =
-        Namespaced_IRI.parse _namespace_name "hasExtrudedPt2Z" |> NamespacedName
-
+    let hasExtrudedPt2Z = _prefix "hasExtrudedPt2Z"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFinitura"></see>
     /// </summary>
-    let hasFinitura =
-        Namespaced_IRI.parse _namespace_name "hasFinitura" |> NamespacedName
-
+    let hasFinitura = _prefix "hasFinitura"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFocalLength"></see>
     /// </summary>
-    let hasFocalLength =
-        Namespaced_IRI.parse _namespace_name "hasFocalLength" |> NamespacedName
-
+    let hasFocalLength = _prefix "hasFocalLength"
     /// <summary>
     /// manual evaluation of the Percent of necrosed part in a colony
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFootDiameter"></see></summary>
-    let hasFootDiameter =
-        Namespaced_IRI.parse _namespace_name "hasFootDiameter" |> NamespacedName
-
+    let hasFootDiameter = _prefix "hasFootDiameter"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFrameHeigthInPixel"></see>
     /// </summary>
-    let hasFrameHeigthInPixel =
-        Namespaced_IRI.parse _namespace_name "hasFrameHeigthInPixel" |> NamespacedName
-
+    let hasFrameHeigthInPixel = _prefix "hasFrameHeigthInPixel"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFrameHeigthInmm"></see>
     /// </summary>
-    let hasFrameHeigthInmm =
-        Namespaced_IRI.parse _namespace_name "hasFrameHeigthInmm" |> NamespacedName
-
+    let hasFrameHeigthInmm = _prefix "hasFrameHeigthInmm"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFrameWidthInPixel"></see>
     /// </summary>
-    let hasFrameWidthInPixel =
-        Namespaced_IRI.parse _namespace_name "hasFrameWidthInPixel" |> NamespacedName
-
+    let hasFrameWidthInPixel = _prefix "hasFrameWidthInPixel"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFrameWidthInmm"></see>
     /// </summary>
-    let hasFrameWidthInmm =
-        Namespaced_IRI.parse _namespace_name "hasFrameWidthInmm" |> NamespacedName
-
+    let hasFrameWidthInmm = _prefix "hasFrameWidthInmm"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasFullFileName"></see>
     /// </summary>
-    let hasFullFileName =
-        Namespaced_IRI.parse _namespace_name "hasFullFileName" |> NamespacedName
-
+    let hasFullFileName = _prefix "hasFullFileName"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasHandlesWidth"></see>
     /// </summary>
-    let hasHandlesWidth =
-        Namespaced_IRI.parse _namespace_name "hasHandlesWidth" |> NamespacedName
-
+    let hasHandlesWidth = _prefix "hasHandlesWidth"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasHeight"></see>
     /// </summary>
-    let hasHeight = Namespaced_IRI.parse _namespace_name "hasHeight" |> NamespacedName
-
+    let hasHeight = _prefix "hasHeight"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasHeightLips"></see>
     /// </summary>
-    let hasHeightLips =
-        Namespaced_IRI.parse _namespace_name "hasHeightLips" |> NamespacedName
-
+    let hasHeightLips = _prefix "hasHeightLips"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasId"></see>
     /// </summary>
-    let hasId = Namespaced_IRI.parse _namespace_name "hasId" |> NamespacedName
+    let hasId = _prefix "hasId"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasIdn"></see>
     /// </summary>
-    let hasIdn = Namespaced_IRI.parse _namespace_name "hasIdn" |> NamespacedName
-
+    let hasIdn = _prefix "hasIdn"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasImagePointManager"></see>
     /// </summary>
-    let hasImagePointManager =
-        Namespaced_IRI.parse _namespace_name "hasImagePointManager" |> NamespacedName
-
+    let hasImagePointManager = _prefix "hasImagePointManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasInternalVolume"></see>
     /// </summary>
-    let hasInternalVolume =
-        Namespaced_IRI.parse _namespace_name "hasInternalVolume" |> NamespacedName
-
+    let hasInternalVolume = _prefix "hasInternalVolume"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasLavorazione"></see>
     /// </summary>
-    let hasLavorazione =
-        Namespaced_IRI.parse _namespace_name "hasLavorazione" |> NamespacedName
-
+    let hasLavorazione = _prefix "hasLavorazione"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasLength"></see>
     /// </summary>
-    let hasLength = Namespaced_IRI.parse _namespace_name "hasLength" |> NamespacedName
-
+    let hasLength = _prefix "hasLength"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasLitotipo"></see>
     /// </summary>
-    let hasLitotipo =
-        Namespaced_IRI.parse _namespace_name "hasLitotipo" |> NamespacedName
-
+    let hasLitotipo = _prefix "hasLitotipo"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasMass"></see>
     /// </summary>
-    let hasMass = Namespaced_IRI.parse _namespace_name "hasMass" |> NamespacedName
-
+    let hasMass = _prefix "hasMass"
     /// <summary>
     /// Should be Diameter
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasMaxDiameter"></see></summary>
-    let hasMaxDiameter =
-        Namespaced_IRI.parse _namespace_name "hasMaxDiameter" |> NamespacedName
-
+    let hasMaxDiameter = _prefix "hasMaxDiameter"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasMeasuredPointManager"></see>
     /// </summary>
-    let hasMeasuredPointManager =
-        Namespaced_IRI.parse _namespace_name "hasMeasuredPointManager" |> NamespacedName
-
+    let hasMeasuredPointManager = _prefix "hasMeasuredPointManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     /// manual evaluation of the Percent of necrosed part in a colony
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasNbBranch"></see></summary>
-    let hasNbBranch =
-        Namespaced_IRI.parse _namespace_name "hasNbBranch" |> NamespacedName
-
+    let hasNbBranch = _prefix "hasNbBranch"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasNormalizedDiamMaxPos"></see>
     /// </summary>
-    let hasNormalizedDiamMaxPos =
-        Namespaced_IRI.parse _namespace_name "hasNormalizedDiamMaxPos" |> NamespacedName
-
+    let hasNormalizedDiamMaxPos = _prefix "hasNormalizedDiamMaxPos"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasObservation"></see>
     /// </summary>
-    let hasObservation =
-        Namespaced_IRI.parse _namespace_name "hasObservation" |> NamespacedName
-
+    let hasObservation = _prefix "hasObservation"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPPX"></see>
     /// </summary>
-    let hasPPX = Namespaced_IRI.parse _namespace_name "hasPPX" |> NamespacedName
+    let hasPPX = _prefix "hasPPX"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPPY"></see>
     /// </summary>
-    let hasPPY = Namespaced_IRI.parse _namespace_name "hasPPY" |> NamespacedName
-
+    let hasPPY = _prefix "hasPPY"
     /// <summary>
     /// manual evaluation of the Percent of necrosed part in a colony
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPercentNecrose"></see></summary>
-    let hasPercentNecrose =
-        Namespaced_IRI.parse _namespace_name "hasPercentNecrose" |> NamespacedName
-
+    let hasPercentNecrose = _prefix "hasPercentNecrose"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPhotoManager"></see>
     /// </summary>
-    let hasPhotoManager =
-        Namespaced_IRI.parse _namespace_name "hasPhotoManager" |> NamespacedName
-
+    let hasPhotoManager = _prefix "hasPhotoManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPhotograph"></see>
     /// </summary>
-    let hasPhotograph =
-        Namespaced_IRI.parse _namespace_name "hasPhotograph" |> NamespacedName
-
+    let hasPhotograph = _prefix "hasPhotograph"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPixelHeight_mm"></see>
     /// </summary>
-    let hasPixelHeight_mm =
-        Namespaced_IRI.parse _namespace_name "hasPixelHeight_mm" |> NamespacedName
-
+    let hasPixelHeight_mm = _prefix "hasPixelHeight_mm"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPixelWidth_mm"></see>
     /// </summary>
-    let hasPixelWidth_mm =
-        Namespaced_IRI.parse _namespace_name "hasPixelWidth_mm" |> NamespacedName
-
+    let hasPixelWidth_mm = _prefix "hasPixelWidth_mm"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasPointManager"></see>
     /// </summary>
-    let hasPointManager =
-        Namespaced_IRI.parse _namespace_name "hasPointManager" |> NamespacedName
-
+    let hasPointManager = _prefix "hasPointManager"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRatioDiamHeight"></see>
     /// </summary>
-    let hasRatioDiamHeight =
-        Namespaced_IRI.parse _namespace_name "hasRatioDiamHeight" |> NamespacedName
-
+    let hasRatioDiamHeight = _prefix "hasRatioDiamHeight"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationAnteriorita"></see>
     /// </summary>
-    let hasRelationAnteriorita =
-        Namespaced_IRI.parse _namespace_name "hasRelationAnteriorita" |> NamespacedName
-
+    let hasRelationAnteriorita = _prefix "hasRelationAnteriorita"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationAppoggiatoA"></see>
     /// </summary>
-    let hasRelationAppoggiatoA =
-        Namespaced_IRI.parse _namespace_name "hasRelationAppoggiatoA" |> NamespacedName
-
+    let hasRelationAppoggiatoA = _prefix "hasRelationAppoggiatoA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationCollegatoA"></see>
     /// </summary>
-    let hasRelationCollegatoA =
-        Namespaced_IRI.parse _namespace_name "hasRelationCollegatoA" |> NamespacedName
-
+    let hasRelationCollegatoA = _prefix "hasRelationCollegatoA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationContemporaneita"></see>
     /// </summary>
-    let hasRelationContemporaneita =
-        Namespaced_IRI.parse _namespace_name "hasRelationContemporaneita" |> NamespacedName
-
+    let hasRelationContemporaneita = _prefix "hasRelationContemporaneita"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationCopertoDa"></see>
     /// </summary>
-    let hasRelationCopertoDa =
-        Namespaced_IRI.parse _namespace_name "hasRelationCopertoDa" |> NamespacedName
-
+    let hasRelationCopertoDa = _prefix "hasRelationCopertoDa"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationCopre"></see>
     /// </summary>
-    let hasRelationCopre =
-        Namespaced_IRI.parse _namespace_name "hasRelationCopre" |> NamespacedName
-
+    let hasRelationCopre = _prefix "hasRelationCopre"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationGliSiAppoggia"></see>
     /// </summary>
-    let hasRelationGliSiAppoggia =
-        Namespaced_IRI.parse _namespace_name "hasRelationGliSiAppoggia" |> NamespacedName
-
+    let hasRelationGliSiAppoggia = _prefix "hasRelationGliSiAppoggia"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationLegatoA"></see>
     /// </summary>
-    let hasRelationLegatoA =
-        Namespaced_IRI.parse _namespace_name "hasRelationLegatoA" |> NamespacedName
-
+    let hasRelationLegatoA = _prefix "hasRelationLegatoA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationPosteriorita"></see>
     /// </summary>
-    let hasRelationPosteriorita =
-        Namespaced_IRI.parse _namespace_name "hasRelationPosteriorita" |> NamespacedName
-
+    let hasRelationPosteriorita = _prefix "hasRelationPosteriorita"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationRiempie"></see>
     /// </summary>
-    let hasRelationRiempie =
-        Namespaced_IRI.parse _namespace_name "hasRelationRiempie" |> NamespacedName
-
+    let hasRelationRiempie = _prefix "hasRelationRiempie"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationRiempitoDa"></see>
     /// </summary>
-    let hasRelationRiempitoDa =
-        Namespaced_IRI.parse _namespace_name "hasRelationRiempitoDa" |> NamespacedName
-
+    let hasRelationRiempitoDa = _prefix "hasRelationRiempitoDa"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationTaglia"></see>
     /// </summary>
-    let hasRelationTaglia =
-        Namespaced_IRI.parse _namespace_name "hasRelationTaglia" |> NamespacedName
-
+    let hasRelationTaglia = _prefix "hasRelationTaglia"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationTagliatoDa"></see>
     /// </summary>
-    let hasRelationTagliatoDa =
-        Namespaced_IRI.parse _namespace_name "hasRelationTagliatoDa" |> NamespacedName
-
+    let hasRelationTagliatoDa = _prefix "hasRelationTagliatoDa"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasRelationUgualeA"></see>
     /// </summary>
-    let hasRelationUgualeA =
-        Namespaced_IRI.parse _namespace_name "hasRelationUgualeA" |> NamespacedName
-
+    let hasRelationUgualeA = _prefix "hasRelationUgualeA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasReprojectionResidual"></see>
     /// </summary>
-    let hasReprojectionResidual =
-        Namespaced_IRI.parse _namespace_name "hasReprojectionResidual" |> NamespacedName
-
+    let hasReprojectionResidual = _prefix "hasReprojectionResidual"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasResidual"></see>
     /// </summary>
-    let hasResidual =
-        Namespaced_IRI.parse _namespace_name "hasResidual" |> NamespacedName
-
+    let hasResidual = _prefix "hasResidual"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasResidualX"></see>
     /// </summary>
-    let hasResidualX =
-        Namespaced_IRI.parse _namespace_name "hasResidualX" |> NamespacedName
-
+    let hasResidualX = _prefix "hasResidualX"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasResidualY"></see>
     /// </summary>
-    let hasResidualY =
-        Namespaced_IRI.parse _namespace_name "hasResidualY" |> NamespacedName
-
+    let hasResidualY = _prefix "hasResidualY"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasResidualZ"></see>
     /// </summary>
-    let hasResidualZ =
-        Namespaced_IRI.parse _namespace_name "hasResidualZ" |> NamespacedName
-
+    let hasResidualZ = _prefix "hasResidualZ"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasScale"></see>
     /// </summary>
-    let hasScale = Namespaced_IRI.parse _namespace_name "hasScale" |> NamespacedName
+    let hasScale = _prefix "hasScale"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasSigla"></see>
     /// </summary>
-    let hasSigla = Namespaced_IRI.parse _namespace_name "hasSigla" |> NamespacedName
+    let hasSigla = _prefix "hasSigla"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasSito"></see>
     /// </summary>
-    let hasSito = Namespaced_IRI.parse _namespace_name "hasSito" |> NamespacedName
-
+    let hasSito = _prefix "hasSito"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStateOfConservation"></see>
     /// </summary>
-    let hasStateOfConservation =
-        Namespaced_IRI.parse _namespace_name "hasStateOfConservation" |> NamespacedName
+    let hasStateOfConservation = _prefix "hasStateOfConservation"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationAnteriorita"></see>
     /// </summary>
     let hasStratigraphicRelationAnteriorita =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationAnteriorita" |> NamespacedName
+        _prefix "hasStratigraphicRelationAnteriorita"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationAppoggiatoA"></see>
     /// </summary>
     let hasStratigraphicRelationAppoggiatoA =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationAppoggiatoA" |> NamespacedName
+        _prefix "hasStratigraphicRelationAppoggiatoA"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationCollegatoA"></see>
     /// </summary>
     let hasStratigraphicRelationCollegatoA =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationCollegatoA" |> NamespacedName
+        _prefix "hasStratigraphicRelationCollegatoA"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationContemporaneita"></see>
     /// </summary>
     let hasStratigraphicRelationContemporaneita =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationContemporaneita" |> NamespacedName
+        _prefix "hasStratigraphicRelationContemporaneita"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationCopertoDa"></see>
     /// </summary>
-    let hasStratigraphicRelationCopertoDa =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationCopertoDa" |> NamespacedName
-
+    let hasStratigraphicRelationCopertoDa = _prefix "hasStratigraphicRelationCopertoDa"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationCopre"></see>
     /// </summary>
-    let hasStratigraphicRelationCopre =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationCopre" |> NamespacedName
+    let hasStratigraphicRelationCopre = _prefix "hasStratigraphicRelationCopre"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationGliSiAppoggia"></see>
     /// </summary>
     let hasStratigraphicRelationGliSiAppoggia =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationGliSiAppoggia" |> NamespacedName
+        _prefix "hasStratigraphicRelationGliSiAppoggia"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationLegatoA"></see>
     /// </summary>
-    let hasStratigraphicRelationLegatoA =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationLegatoA" |> NamespacedName
+    let hasStratigraphicRelationLegatoA = _prefix "hasStratigraphicRelationLegatoA"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationPosteriorita"></see>
     /// </summary>
     let hasStratigraphicRelationPosteriorita =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationPosteriorita" |> NamespacedName
+        _prefix "hasStratigraphicRelationPosteriorita"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationRiempie"></see>
     /// </summary>
-    let hasStratigraphicRelationRiempie =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationRiempie" |> NamespacedName
+    let hasStratigraphicRelationRiempie = _prefix "hasStratigraphicRelationRiempie"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationRiempitoDa"></see>
     /// </summary>
     let hasStratigraphicRelationRiempitoDa =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationRiempitoDa" |> NamespacedName
+        _prefix "hasStratigraphicRelationRiempitoDa"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationTaglia"></see>
     /// </summary>
-    let hasStratigraphicRelationTaglia =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationTaglia" |> NamespacedName
+    let hasStratigraphicRelationTaglia = _prefix "hasStratigraphicRelationTaglia"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationTagliatoDa"></see>
     /// </summary>
     let hasStratigraphicRelationTagliatoDa =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationTagliatoDa" |> NamespacedName
+        _prefix "hasStratigraphicRelationTagliatoDa"
 
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasStratigraphicRelationUgualeA"></see>
     /// </summary>
-    let hasStratigraphicRelationUgualeA =
-        Namespaced_IRI.parse _namespace_name "hasStratigraphicRelationUgualeA" |> NamespacedName
-
+    let hasStratigraphicRelationUgualeA = _prefix "hasStratigraphicRelationUgualeA"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasTransformation3D"></see>
     /// </summary>
-    let hasTransformation3D =
-        Namespaced_IRI.parse _namespace_name "hasTransformation3D" |> NamespacedName
-
+    let hasTransformation3D = _prefix "hasTransformation3D"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasTranslation"></see>
     /// </summary>
-    let hasTranslation =
-        Namespaced_IRI.parse _namespace_name "hasTranslation" |> NamespacedName
-
+    let hasTranslation = _prefix "hasTranslation"
     /// <summary>
     /// Typology name, often used to compute the paradigm filename in ply
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasTypologyName"></see></summary>
-    let hasTypologyName =
-        Namespaced_IRI.parse _namespace_name "hasTypologyName" |> NamespacedName
-
+    let hasTypologyName = _prefix "hasTypologyName"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasUnitaStratigrafica"></see>
     /// </summary>
-    let hasUnitaStratigrafica =
-        Namespaced_IRI.parse _namespace_name "hasUnitaStratigrafica" |> NamespacedName
-
+    let hasUnitaStratigrafica = _prefix "hasUnitaStratigrafica"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasVolume"></see>
     /// </summary>
-    let hasVolume = Namespaced_IRI.parse _namespace_name "hasVolume" |> NamespacedName
+    let hasVolume = _prefix "hasVolume"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasWidth"></see>
     /// </summary>
-    let hasWidth = Namespaced_IRI.parse _namespace_name "hasWidth" |> NamespacedName
-
+    let hasWidth = _prefix "hasWidth"
     /// <summary>
     /// For more accuracy we take widht between upper hadles in adition to the diameter which is between down handles
     /// <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasWidthBetweenUpperHandles"></see></summary>
-    let hasWidthBetweenUpperHandles =
-        Namespaced_IRI.parse _namespace_name "hasWidthBetweenUpperHandles" |> NamespacedName
-
+    let hasWidthBetweenUpperHandles = _prefix "hasWidthBetweenUpperHandles"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasWidthLips"></see>
     /// </summary>
-    let hasWidthLips =
-        Namespaced_IRI.parse _namespace_name "hasWidthLips" |> NamespacedName
-
+    let hasWidthLips = _prefix "hasWidthLips"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasX"></see>
     /// </summary>
-    let hasX = Namespaced_IRI.parse _namespace_name "hasX" |> NamespacedName
+    let hasX = _prefix "hasX"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasXMax"></see>
     /// </summary>
-    let hasXMax = Namespaced_IRI.parse _namespace_name "hasXMax" |> NamespacedName
+    let hasXMax = _prefix "hasXMax"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasXMin"></see>
     /// </summary>
-    let hasXMin = Namespaced_IRI.parse _namespace_name "hasXMin" |> NamespacedName
+    let hasXMin = _prefix "hasXMin"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasY"></see>
     /// </summary>
-    let hasY = Namespaced_IRI.parse _namespace_name "hasY" |> NamespacedName
+    let hasY = _prefix "hasY"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasYMax"></see>
     /// </summary>
-    let hasYMax = Namespaced_IRI.parse _namespace_name "hasYMax" |> NamespacedName
+    let hasYMax = _prefix "hasYMax"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasYMin"></see>
     /// </summary>
-    let hasYMin = Namespaced_IRI.parse _namespace_name "hasYMin" |> NamespacedName
+    let hasYMin = _prefix "hasYMin"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasZ"></see>
     /// </summary>
-    let hasZ = Namespaced_IRI.parse _namespace_name "hasZ" |> NamespacedName
+    let hasZ = _prefix "hasZ"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasZMax"></see>
     /// </summary>
-    let hasZMax = Namespaced_IRI.parse _namespace_name "hasZMax" |> NamespacedName
+    let hasZMax = _prefix "hasZMax"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#hasZMin"></see>
     /// </summary>
-    let hasZMin = Namespaced_IRI.parse _namespace_name "hasZMin" |> NamespacedName
+    let hasZMin = _prefix "hasZMin"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m00"></see>
     /// </summary>
-    let has_m00 = Namespaced_IRI.parse _namespace_name "has_m00" |> NamespacedName
+    let has_m00 = _prefix "has_m00"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m01"></see>
     /// </summary>
-    let has_m01 = Namespaced_IRI.parse _namespace_name "has_m01" |> NamespacedName
+    let has_m01 = _prefix "has_m01"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m02"></see>
     /// </summary>
-    let has_m02 = Namespaced_IRI.parse _namespace_name "has_m02" |> NamespacedName
+    let has_m02 = _prefix "has_m02"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m10"></see>
     /// </summary>
-    let has_m10 = Namespaced_IRI.parse _namespace_name "has_m10" |> NamespacedName
+    let has_m10 = _prefix "has_m10"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m11"></see>
     /// </summary>
-    let has_m11 = Namespaced_IRI.parse _namespace_name "has_m11" |> NamespacedName
+    let has_m11 = _prefix "has_m11"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m12"></see>
     /// </summary>
-    let has_m12 = Namespaced_IRI.parse _namespace_name "has_m12" |> NamespacedName
+    let has_m12 = _prefix "has_m12"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m20"></see>
     /// </summary>
-    let has_m20 = Namespaced_IRI.parse _namespace_name "has_m20" |> NamespacedName
+    let has_m20 = _prefix "has_m20"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m21"></see>
     /// </summary>
-    let has_m21 = Namespaced_IRI.parse _namespace_name "has_m21" |> NamespacedName
+    let has_m21 = _prefix "has_m21"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#has_m22"></see>
     /// </summary>
-    let has_m22 = Namespaced_IRI.parse _namespace_name "has_m22" |> NamespacedName
-
+    let has_m22 = _prefix "has_m22"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#haveASetOfPhotograph"></see>
     /// </summary>
-    let haveASetOfPhotograph =
-        Namespaced_IRI.parse _namespace_name "haveASetOfPhotograph" |> NamespacedName
-
+    let haveASetOfPhotograph = _prefix "haveASetOfPhotograph"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isActive"></see>
     /// </summary>
-    let isActive = Namespaced_IRI.parse _namespace_name "isActive" |> NamespacedName
-
+    let isActive = _prefix "isActive"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isElementOf"></see>
     /// </summary>
-    let isElementOf =
-        Namespaced_IRI.parse _namespace_name "isElementOf" |> NamespacedName
-
+    let isElementOf = _prefix "isElementOf"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isExtruded"></see>
     /// </summary>
-    let isExtruded = Namespaced_IRI.parse _namespace_name "isExtruded" |> NamespacedName
-
+    let isExtruded = _prefix "isExtruded"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isExtrudedBy"></see>
     /// </summary>
-    let isExtrudedBy =
-        Namespaced_IRI.parse _namespace_name "isExtrudedBy" |> NamespacedName
-
+    let isExtrudedBy = _prefix "isExtrudedBy"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isNegative"></see>
     /// </summary>
-    let isNegative = Namespaced_IRI.parse _namespace_name "isNegative" |> NamespacedName
-
+    let isNegative = _prefix "isNegative"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isObservationOf"></see>
     /// </summary>
-    let isObservationOf =
-        Namespaced_IRI.parse _namespace_name "isObservationOf" |> NamespacedName
-
+    let isObservationOf = _prefix "isObservationOf"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isPhotographOf"></see>
     /// </summary>
-    let isPhotographOf =
-        Namespaced_IRI.parse _namespace_name "isPhotographOf" |> NamespacedName
-
+    let isPhotographOf = _prefix "isPhotographOf"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#isValid"></see>
     /// </summary>
-    let isValid = Namespaced_IRI.parse _namespace_name "isValid" |> NamespacedName
-
+    let isValid = _prefix "isValid"
     /// <summary>
     ///   <see href="http://www.arpenteur.org/ontology/Arpenteur.owl#percentOfMeasured"></see>
     /// </summary>
-    let percentOfMeasured =
-        Namespaced_IRI.parse _namespace_name "percentOfMeasured" |> NamespacedName
+    let percentOfMeasured = _prefix "percentOfMeasured"

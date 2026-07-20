@@ -1,6 +1,4 @@
-<https://eristocrates.dev/ontology/sanctuary/siamesederp>..<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..<http://xmlns.com/foaf/0.1/Person>
-<https://eristocrates.dev/ontology/sanctuary/eristocrates>..<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..<http://xmlns.com/foaf/0.1/Person>
-<https://eristocrates.dev/ontology/sanctuary/yaladre>..<http://xmlns.com/foaf/0.1/topic_interest>..<https://eristocrates.dev/ontology/commonplace/Quest_of_D>
-<https://eristocrates.dev/ontology/sanctuary/yaladre>..<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..<http://xmlns.com/foaf/0.1/Person>
-<https://eristocrates.dev/ontology/sanctuary/regen>..<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..<http://xmlns.com/foaf/0.1/Person>
-<https://eristocrates.dev/ontology/sanctuary/yaladre>..<http://xmlns.com/foaf/0.1/topic_interest>..<https://eristocrates.dev/ontology/commonplace/Gitadora>
+<https://eristocrates.dev/ontology/dbug/Alice>..<http://xmlns.com/foaf/0.1/knows>..<https://eristocrates.dev/ontology/dbug/Bob>
+<https://eristocrates.dev/ontology/dbug/Bob>..<http://xmlns.com/foaf/0.1/knows>..<https://eristocrates.dev/ontology/dbug/Alice>
+<https://eristocrates.dev/ontology/dbug/Bob>..<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..<http://xmlns.com/foaf/0.1/Person>
+<https://eristocrates.dev/ontology/dbug/Alice>..<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..<http://xmlns.com/foaf/0.1/Person>

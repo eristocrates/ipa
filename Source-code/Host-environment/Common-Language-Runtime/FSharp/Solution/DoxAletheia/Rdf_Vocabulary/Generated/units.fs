@@ -1,476 +1,390 @@
 namespace http.eulersharp.sourceforge.net._2003._03swap.units.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module units =
     let _namespace_name = "http://eulersharp.sourceforge.net/2003/03swap/units#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#Unit"></see>
     /// </summary>
-    let Unit = Namespaced_IRI.parse _namespace_name "Unit" |> NamespacedName
+    let Unit = _prefix "Unit"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#atto"></see>
     /// </summary>
-    let atto = Namespaced_IRI.parse _namespace_name "atto" |> NamespacedName
+    let atto = _prefix "atto"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#bit"></see>
     /// </summary>
-    let bit = Namespaced_IRI.parse _namespace_name "bit" |> NamespacedName
+    let bit = _prefix "bit"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#byte"></see>
     /// </summary>
-    let byte = Namespaced_IRI.parse _namespace_name "byte" |> NamespacedName
+    let byte = _prefix "byte"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#centiliter"></see>
     /// </summary>
-    let centiliter = Namespaced_IRI.parse _namespace_name "centiliter" |> NamespacedName
+    let centiliter = _prefix "centiliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#liter"></see>
     /// </summary>
-    let liter = Namespaced_IRI.parse _namespace_name "liter" |> NamespacedName
+    let liter = _prefix "liter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#centimeter"></see>
     /// </summary>
-    let centimeter = Namespaced_IRI.parse _namespace_name "centimeter" |> NamespacedName
-
+    let centimeter = _prefix "centimeter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#centimeterCubed"></see>
     /// </summary>
-    let centimeterCubed =
-        Namespaced_IRI.parse _namespace_name "centimeterCubed" |> NamespacedName
-
+    let centimeterCubed = _prefix "centimeterCubed"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#centimeterPerSecond"></see>
     /// </summary>
-    let centimeterPerSecond =
-        Namespaced_IRI.parse _namespace_name "centimeterPerSecond" |> NamespacedName
-
+    let centimeterPerSecond = _prefix "centimeterPerSecond"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#century"></see>
     /// </summary>
-    let century = Namespaced_IRI.parse _namespace_name "century" |> NamespacedName
+    let century = _prefix "century"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#cubicMeter"></see>
     /// </summary>
-    let cubicMeter = Namespaced_IRI.parse _namespace_name "cubicMeter" |> NamespacedName
-
+    let cubicMeter = _prefix "cubicMeter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#cubicMeterPerSecond"></see>
     /// </summary>
-    let cubicMeterPerSecond =
-        Namespaced_IRI.parse _namespace_name "cubicMeterPerSecond" |> NamespacedName
-
+    let cubicMeterPerSecond = _prefix "cubicMeterPerSecond"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#hertz"></see>
     /// </summary>
-    let hertz = Namespaced_IRI.parse _namespace_name "hertz" |> NamespacedName
+    let hertz = _prefix "hertz"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#day"></see>
     /// </summary>
-    let day = Namespaced_IRI.parse _namespace_name "day" |> NamespacedName
+    let day = _prefix "day"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#second"></see>
     /// </summary>
-    let second = Namespaced_IRI.parse _namespace_name "second" |> NamespacedName
+    let second = _prefix "second"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#decade"></see>
     /// </summary>
-    let decade = Namespaced_IRI.parse _namespace_name "decade" |> NamespacedName
+    let decade = _prefix "decade"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#deci"></see>
     /// </summary>
-    let deci = Namespaced_IRI.parse _namespace_name "deci" |> NamespacedName
+    let deci = _prefix "deci"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#deciliter"></see>
     /// </summary>
-    let deciliter = Namespaced_IRI.parse _namespace_name "deciliter" |> NamespacedName
+    let deciliter = _prefix "deciliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#decimeter"></see>
     /// </summary>
-    let decimeter = Namespaced_IRI.parse _namespace_name "decimeter" |> NamespacedName
+    let decimeter = _prefix "decimeter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#meter"></see>
     /// </summary>
-    let meter = Namespaced_IRI.parse _namespace_name "meter" |> NamespacedName
-
+    let meter = _prefix "meter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#decimeterCubed"></see>
     /// </summary>
-    let decimeterCubed =
-        Namespaced_IRI.parse _namespace_name "decimeterCubed" |> NamespacedName
-
+    let decimeterCubed = _prefix "decimeterCubed"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#degreeC"></see>
     /// </summary>
-    let degreeC = Namespaced_IRI.parse _namespace_name "degreeC" |> NamespacedName
+    let degreeC = _prefix "degreeC"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#degreeF"></see>
     /// </summary>
-    let degreeF = Namespaced_IRI.parse _namespace_name "degreeF" |> NamespacedName
+    let degreeF = _prefix "degreeF"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#femto"></see>
     /// </summary>
-    let femto = Namespaced_IRI.parse _namespace_name "femto" |> NamespacedName
+    let femto = _prefix "femto"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#femtoliter"></see>
     /// </summary>
-    let femtoliter = Namespaced_IRI.parse _namespace_name "femtoliter" |> NamespacedName
+    let femtoliter = _prefix "femtoliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#gigaByte"></see>
     /// </summary>
-    let gigaByte = Namespaced_IRI.parse _namespace_name "gigaByte" |> NamespacedName
+    let gigaByte = _prefix "gigaByte"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#gram"></see>
     /// </summary>
-    let gram = Namespaced_IRI.parse _namespace_name "gram" |> NamespacedName
+    let gram = _prefix "gram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#kilogram"></see>
     /// </summary>
-    let kilogram = Namespaced_IRI.parse _namespace_name "kilogram" |> NamespacedName
-
+    let kilogram = _prefix "kilogram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#gramPerDeciliter"></see>
     /// </summary>
-    let gramPerDeciliter =
-        Namespaced_IRI.parse _namespace_name "gramPerDeciliter" |> NamespacedName
-
+    let gramPerDeciliter = _prefix "gramPerDeciliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perDeciliter"></see>
     /// </summary>
-    let perDeciliter =
-        Namespaced_IRI.parse _namespace_name "perDeciliter" |> NamespacedName
-
+    let perDeciliter = _prefix "perDeciliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#gramPerLiter"></see>
     /// </summary>
-    let gramPerLiter =
-        Namespaced_IRI.parse _namespace_name "gramPerLiter" |> NamespacedName
-
+    let gramPerLiter = _prefix "gramPerLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perLiter"></see>
     /// </summary>
-    let perLiter = Namespaced_IRI.parse _namespace_name "perLiter" |> NamespacedName
+    let perLiter = _prefix "perLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#hour"></see>
     /// </summary>
-    let hour = Namespaced_IRI.parse _namespace_name "hour" |> NamespacedName
-
+    let hour = _prefix "hour"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#internationalUnitsPerMilliliter"></see>
     /// </summary>
-    let internationalUnitsPerMilliliter =
-        Namespaced_IRI.parse _namespace_name "internationalUnitsPerMilliliter" |> NamespacedName
-
+    let internationalUnitsPerMilliliter = _prefix "internationalUnitsPerMilliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#kelvin"></see>
     /// </summary>
-    let kelvin = Namespaced_IRI.parse _namespace_name "kelvin" |> NamespacedName
+    let kelvin = _prefix "kelvin"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#kiloByte"></see>
     /// </summary>
-    let kiloByte = Namespaced_IRI.parse _namespace_name "kiloByte" |> NamespacedName
-
+    let kiloByte = _prefix "kiloByte"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#kilogramPerMeterSquare"></see>
     /// </summary>
-    let kilogramPerMeterSquare =
-        Namespaced_IRI.parse _namespace_name "kilogramPerMeterSquare" |> NamespacedName
-
+    let kilogramPerMeterSquare = _prefix "kilogramPerMeterSquare"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#megaByte"></see>
     /// </summary>
-    let megaByte = Namespaced_IRI.parse _namespace_name "megaByte" |> NamespacedName
-
+    let megaByte = _prefix "megaByte"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#meterPerSecond"></see>
     /// </summary>
-    let meterPerSecond =
-        Namespaced_IRI.parse _namespace_name "meterPerSecond" |> NamespacedName
-
+    let meterPerSecond = _prefix "meterPerSecond"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#microgram"></see>
     /// </summary>
-    let microgram = Namespaced_IRI.parse _namespace_name "microgram" |> NamespacedName
-
+    let microgram = _prefix "microgram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#microgramPerKilogram"></see>
     /// </summary>
-    let microgramPerKilogram =
-        Namespaced_IRI.parse _namespace_name "microgramPerKilogram" |> NamespacedName
-
+    let microgramPerKilogram = _prefix "microgramPerKilogram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#microgramPerKilogramPerMinute"></see>
     /// </summary>
-    let microgramPerKilogramPerMinute =
-        Namespaced_IRI.parse _namespace_name "microgramPerKilogramPerMinute" |> NamespacedName
-
+    let microgramPerKilogramPerMinute = _prefix "microgramPerKilogramPerMinute"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perKilogram"></see>
     /// </summary>
-    let perKilogram =
-        Namespaced_IRI.parse _namespace_name "perKilogram" |> NamespacedName
-
+    let perKilogram = _prefix "perKilogram"
     /// <summary>
     /// E.g. unit for the frequency of respiration cycle, heart pumping cycle.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perMinute"></see></summary>
-    let perMinute = Namespaced_IRI.parse _namespace_name "perMinute" |> NamespacedName
-
+    let perMinute = _prefix "perMinute"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#microgramPerMilliliter"></see>
     /// </summary>
-    let microgramPerMilliliter =
-        Namespaced_IRI.parse _namespace_name "microgramPerMilliliter" |> NamespacedName
-
+    let microgramPerMilliliter = _prefix "microgramPerMilliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perMilliliter"></see>
     /// </summary>
-    let perMilliliter =
-        Namespaced_IRI.parse _namespace_name "perMilliliter" |> NamespacedName
-
+    let perMilliliter = _prefix "perMilliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#microgramPerMinute"></see>
     /// </summary>
-    let microgramPerMinute =
-        Namespaced_IRI.parse _namespace_name "microgramPerMinute" |> NamespacedName
-
+    let microgramPerMinute = _prefix "microgramPerMinute"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#micrometer"></see>
     /// </summary>
-    let micrometer = Namespaced_IRI.parse _namespace_name "micrometer" |> NamespacedName
+    let micrometer = _prefix "micrometer"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#micromole"></see>
     /// </summary>
-    let micromole = Namespaced_IRI.parse _namespace_name "micromole" |> NamespacedName
+    let micromole = _prefix "micromole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#mole"></see>
     /// </summary>
-    let mole = Namespaced_IRI.parse _namespace_name "mole" |> NamespacedName
-
+    let mole = _prefix "mole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#micromolePerLiter"></see>
     /// </summary>
-    let micromolePerLiter =
-        Namespaced_IRI.parse _namespace_name "micromolePerLiter" |> NamespacedName
-
+    let micromolePerLiter = _prefix "micromolePerLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milliInternationalUnitsPerLiter"></see>
     /// </summary>
-    let milliInternationalUnitsPerLiter =
-        Namespaced_IRI.parse _namespace_name "milliInternationalUnitsPerLiter" |> NamespacedName
-
+    let milliInternationalUnitsPerLiter = _prefix "milliInternationalUnitsPerLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligram"></see>
     /// </summary>
-    let milligram = Namespaced_IRI.parse _namespace_name "milligram" |> NamespacedName
-
+    let milligram = _prefix "milligram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligramPerDeciliter"></see>
     /// </summary>
-    let milligramPerDeciliter =
-        Namespaced_IRI.parse _namespace_name "milligramPerDeciliter" |> NamespacedName
-
+    let milligramPerDeciliter = _prefix "milligramPerDeciliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligramPerGram"></see>
     /// </summary>
-    let milligramPerGram =
-        Namespaced_IRI.parse _namespace_name "milligramPerGram" |> NamespacedName
-
+    let milligramPerGram = _prefix "milligramPerGram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perGram"></see>
     /// </summary>
-    let perGram = Namespaced_IRI.parse _namespace_name "perGram" |> NamespacedName
-
+    let perGram = _prefix "perGram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligramPerHour"></see>
     /// </summary>
-    let milligramPerHour =
-        Namespaced_IRI.parse _namespace_name "milligramPerHour" |> NamespacedName
-
+    let milligramPerHour = _prefix "milligramPerHour"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perHour"></see>
     /// </summary>
-    let perHour = Namespaced_IRI.parse _namespace_name "perHour" |> NamespacedName
-
+    let perHour = _prefix "perHour"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligramPerKilogram"></see>
     /// </summary>
-    let milligramPerKilogram =
-        Namespaced_IRI.parse _namespace_name "milligramPerKilogram" |> NamespacedName
-
+    let milligramPerKilogram = _prefix "milligramPerKilogram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligramPerLiter"></see>
     /// </summary>
-    let milligramPerLiter =
-        Namespaced_IRI.parse _namespace_name "milligramPerLiter" |> NamespacedName
-
+    let milligramPerLiter = _prefix "milligramPerLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milligramPerMilliliter"></see>
     /// </summary>
-    let milligramPerMilliliter =
-        Namespaced_IRI.parse _namespace_name "milligramPerMilliliter" |> NamespacedName
-
+    let milligramPerMilliliter = _prefix "milligramPerMilliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milliliter"></see>
     /// </summary>
-    let milliliter = Namespaced_IRI.parse _namespace_name "milliliter" |> NamespacedName
-
+    let milliliter = _prefix "milliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milliliterPerKilogramPerHour"></see>
     /// </summary>
-    let milliliterPerKilogramPerHour =
-        Namespaced_IRI.parse _namespace_name "milliliterPerKilogramPerHour" |> NamespacedName
-
+    let milliliterPerKilogramPerHour = _prefix "milliliterPerKilogramPerHour"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#milliliterPerMinute"></see>
     /// </summary>
-    let milliliterPerMinute =
-        Namespaced_IRI.parse _namespace_name "milliliterPerMinute" |> NamespacedName
-
+    let milliliterPerMinute = _prefix "milliliterPerMinute"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#millimeter"></see>
     /// </summary>
-    let millimeter = Namespaced_IRI.parse _namespace_name "millimeter" |> NamespacedName
-
+    let millimeter = _prefix "millimeter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#millimeterCubed"></see>
     /// </summary>
-    let millimeterCubed =
-        Namespaced_IRI.parse _namespace_name "millimeterCubed" |> NamespacedName
-
+    let millimeterCubed = _prefix "millimeterCubed"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#millimole"></see>
     /// </summary>
-    let millimole = Namespaced_IRI.parse _namespace_name "millimole" |> NamespacedName
-
+    let millimole = _prefix "millimole"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#millimolePerLiter"></see>
     /// </summary>
-    let millimolePerLiter =
-        Namespaced_IRI.parse _namespace_name "millimolePerLiter" |> NamespacedName
-
+    let millimolePerLiter = _prefix "millimolePerLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#millisecond"></see>
     /// </summary>
-    let millisecond =
-        Namespaced_IRI.parse _namespace_name "millisecond" |> NamespacedName
-
+    let millisecond = _prefix "millisecond"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#minute"></see>
     /// </summary>
-    let minute = Namespaced_IRI.parse _namespace_name "minute" |> NamespacedName
+    let minute = _prefix "minute"
     /// <summary>
     /// 760 mmHg corresponds with 101.325 kPa.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#mmHg"></see></summary>
-    let mmHg = Namespaced_IRI.parse _namespace_name "mmHg" |> NamespacedName
+    let mmHg = _prefix "mmHg"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#pascal"></see>
     /// </summary>
-    let pascal = Namespaced_IRI.parse _namespace_name "pascal" |> NamespacedName
+    let pascal = _prefix "pascal"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#month"></see>
     /// </summary>
-    let month = Namespaced_IRI.parse _namespace_name "month" |> NamespacedName
+    let month = _prefix "month"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#nanogram"></see>
     /// </summary>
-    let nanogram = Namespaced_IRI.parse _namespace_name "nanogram" |> NamespacedName
-
+    let nanogram = _prefix "nanogram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#nanogramPerMilliliter"></see>
     /// </summary>
-    let nanogramPerMilliliter =
-        Namespaced_IRI.parse _namespace_name "nanogramPerMilliliter" |> NamespacedName
-
+    let nanogramPerMilliliter = _prefix "nanogramPerMilliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#nanometer"></see>
     /// </summary>
-    let nanometer = Namespaced_IRI.parse _namespace_name "nanometer" |> NamespacedName
+    let nanometer = _prefix "nanometer"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#ohm"></see>
     /// </summary>
-    let ohm = Namespaced_IRI.parse _namespace_name "ohm" |> NamespacedName
+    let ohm = _prefix "ohm"
     /// <summary>
     /// E.g. unit for the frequency of clinical drug administration.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perDay"></see></summary>
-    let perDay = Namespaced_IRI.parse _namespace_name "perDay" |> NamespacedName
-
+    let perDay = _prefix "perDay"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perMillimeterCubed"></see>
     /// </summary>
-    let perMillimeterCubed =
-        Namespaced_IRI.parse _namespace_name "perMillimeterCubed" |> NamespacedName
-
+    let perMillimeterCubed = _prefix "perMillimeterCubed"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perTeaspoon"></see>
     /// </summary>
-    let perTeaspoon =
-        Namespaced_IRI.parse _namespace_name "perTeaspoon" |> NamespacedName
-
+    let perTeaspoon = _prefix "perTeaspoon"
     /// <summary>
     /// Equals 5ml, e.g. of a clinical drug administration form sirup.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#teaspoon"></see></summary>
-    let teaspoon = Namespaced_IRI.parse _namespace_name "teaspoon" |> NamespacedName
+    let teaspoon = _prefix "teaspoon"
     /// <summary>
     /// E.g. unit for the frequency of clinical vaccination.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#perYear"></see></summary>
-    let perYear = Namespaced_IRI.parse _namespace_name "perYear" |> NamespacedName
+    let perYear = _prefix "perYear"
     /// <summary>
     /// Replaced by &lt;http://eulersharp.sourceforge.net/2003/03swap/quantities#percent&gt;.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#percent"></see></summary>
-    let percent = Namespaced_IRI.parse _namespace_name "percent" |> NamespacedName
+    let percent = _prefix "percent"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#pico"></see>
     /// </summary>
-    let pico = Namespaced_IRI.parse _namespace_name "pico" |> NamespacedName
+    let pico = _prefix "pico"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#picogram"></see>
     /// </summary>
-    let picogram = Namespaced_IRI.parse _namespace_name "picogram" |> NamespacedName
+    let picogram = _prefix "picogram"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#picometer"></see>
     /// </summary>
-    let picometer = Namespaced_IRI.parse _namespace_name "picometer" |> NamespacedName
-
+    let picometer = _prefix "picometer"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#squareMeter"></see>
     /// </summary>
-    let squareMeter =
-        Namespaced_IRI.parse _namespace_name "squareMeter" |> NamespacedName
-
+    let squareMeter = _prefix "squareMeter"
     /// <summary>
     /// Equals 15ml, e.g. of a clinical drug administration form sirup.
     /// <see href="http://eulersharp.sourceforge.net/2003/03swap/units#tablespoon"></see></summary>
-    let tablespoon = Namespaced_IRI.parse _namespace_name "tablespoon" |> NamespacedName
+    let tablespoon = _prefix "tablespoon"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#teraByte"></see>
     /// </summary>
-    let teraByte = Namespaced_IRI.parse _namespace_name "teraByte" |> NamespacedName
-
+    let teraByte = _prefix "teraByte"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#unitsPerLiter"></see>
     /// </summary>
-    let unitsPerLiter =
-        Namespaced_IRI.parse _namespace_name "unitsPerLiter" |> NamespacedName
-
+    let unitsPerLiter = _prefix "unitsPerLiter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#unitsPerMilliliter"></see>
     /// </summary>
-    let unitsPerMilliliter =
-        Namespaced_IRI.parse _namespace_name "unitsPerMilliliter" |> NamespacedName
-
+    let unitsPerMilliliter = _prefix "unitsPerMilliliter"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#week"></see>
     /// </summary>
-    let week = Namespaced_IRI.parse _namespace_name "week" |> NamespacedName
+    let week = _prefix "week"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#year"></see>
     /// </summary>
-    let year = Namespaced_IRI.parse _namespace_name "year" |> NamespacedName
+    let year = _prefix "year"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#yocto"></see>
     /// </summary>
-    let yocto = Namespaced_IRI.parse _namespace_name "yocto" |> NamespacedName
+    let yocto = _prefix "yocto"
     /// <summary>
     ///   <see href="http://eulersharp.sourceforge.net/2003/03swap/units#zepto"></see>
     /// </summary>
-    let zepto = Namespaced_IRI.parse _namespace_name "zepto" |> NamespacedName
+    let zepto = _prefix "zepto"

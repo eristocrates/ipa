@@ -1,153 +1,114 @@
 namespace https.w3id.org.dt.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dt =
     let _namespace_name = "https://w3id.org/dt#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// object of interest in the context of a construction process
     /// <see href="https://w3id.org/dt#ConstructionObject"></see></summary>
-    let ConstructionObject =
-        Namespaced_IRI.parse _namespace_name "ConstructionObject" |> NamespacedName
-
+    let ConstructionObject = _prefix "ConstructionObject"
     /// <summary>
     /// named and individually scheduled physical item and feature that might require management, such as inspection, maintenance, servicing or replacement, during the in-use phase
     /// <see href="https://w3id.org/dt#LibraryComponent"></see></summary>
-    let LibraryComponent =
-        Namespaced_IRI.parse _namespace_name "LibraryComponent" |> NamespacedName
-
+    let LibraryComponent = _prefix "LibraryComponent"
     /// <summary>
     /// data structure used to describe the characteristics of construction objects
     /// <see href="https://w3id.org/dt#DataTemplate"></see></summary>
-    let DataTemplate =
-        Namespaced_IRI.parse _namespace_name "DataTemplate" |> NamespacedName
-
+    let DataTemplate = _prefix "DataTemplate"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasProperty"></see>
     /// </summary>
-    let hasProperty =
-        Namespaced_IRI.parse _namespace_name "hasProperty" |> NamespacedName
-
+    let hasProperty = _prefix "hasProperty"
     /// <summary>
     /// a set of properties that can be applied to a data template
     /// <see href="https://w3id.org/dt#SetOfProperties"></see></summary>
-    let SetOfProperties =
-        Namespaced_IRI.parse _namespace_name "SetOfProperties" |> NamespacedName
-
+    let SetOfProperties = _prefix "SetOfProperties"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasSetOfProperties"></see>
     /// </summary>
-    let hasSetOfProperties =
-        Namespaced_IRI.parse _namespace_name "hasSetOfProperties" |> NamespacedName
-
+    let hasSetOfProperties = _prefix "hasSetOfProperties"
     /// <summary>
     ///   <see href="https://w3id.org/dt#isDataTemplateFor"></see>
     /// </summary>
-    let isDataTemplateFor =
-        Namespaced_IRI.parse _namespace_name "isDataTemplateFor" |> NamespacedName
-
+    let isDataTemplateFor = _prefix "isDataTemplateFor"
     /// <summary>
     /// reference to an external dictionary, which is a centralized repository of information about data such as meaning, relationships to other data, origin, usage and format
     /// <see href="https://w3id.org/dt#ExternalDictionaryReference"></see></summary>
-    let ExternalDictionaryReference =
-        Namespaced_IRI.parse _namespace_name "ExternalDictionaryReference" |> NamespacedName
-
+    let ExternalDictionaryReference = _prefix "ExternalDictionaryReference"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasExternalDictionary"></see>
     /// </summary>
-    let hasExternalDictionary =
-        Namespaced_IRI.parse _namespace_name "hasExternalDictionary" |> NamespacedName
-
+    let hasExternalDictionary = _prefix "hasExternalDictionary"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasExternalDictionaryProperty"></see>
     /// </summary>
-    let hasExternalDictionaryProperty =
-        Namespaced_IRI.parse _namespace_name "hasExternalDictionaryProperty" |> NamespacedName
-
+    let hasExternalDictionaryProperty = _prefix "hasExternalDictionaryProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dt#ISBN"></see>
     /// </summary>
-    let ISBN = Namespaced_IRI.parse _namespace_name "ISBN" |> NamespacedName
-
+    let ISBN = _prefix "ISBN"
     /// <summary>
     /// publication that is consulted to find specific information, particularly in a technical or scientific domain
     /// <see href="https://w3id.org/dt#ReferenceDocument"></see></summary>
-    let ReferenceDocument =
-        Namespaced_IRI.parse _namespace_name "ReferenceDocument" |> NamespacedName
-
+    let ReferenceDocument = _prefix "ReferenceDocument"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasReferenceDocument"></see>
     /// </summary>
-    let hasReferenceDocument =
-        Namespaced_IRI.parse _namespace_name "hasReferenceDocument" |> NamespacedName
-
+    let hasReferenceDocument = _prefix "hasReferenceDocument"
     /// <summary>
     /// the physical quantity of a library component
     /// <see href="https://w3id.org/dt#PhysicalQuantity"></see></summary>
-    let PhysicalQuantity =
-        Namespaced_IRI.parse _namespace_name "PhysicalQuantity" |> NamespacedName
-
+    let PhysicalQuantity = _prefix "PhysicalQuantity"
     /// <summary>
     /// the physical quantity of a library component
     /// <see href="https://w3id.org/dt#PredefinedValueItem"></see></summary>
-    let PredefinedValueItem =
-        Namespaced_IRI.parse _namespace_name "PredefinedValueItem" |> NamespacedName
-
+    let PredefinedValueItem = _prefix "PredefinedValueItem"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasIndex"></see>
     /// </summary>
-    let hasIndex = Namespaced_IRI.parse _namespace_name "hasIndex" |> NamespacedName
-
+    let hasIndex = _prefix "hasIndex"
     /// <summary>
     /// list of predefined values
     /// <see href="https://w3id.org/dt#PredefinedValuesList"></see></summary>
-    let PredefinedValuesList =
-        Namespaced_IRI.parse _namespace_name "PredefinedValuesList" |> NamespacedName
-
+    let PredefinedValuesList = _prefix "PredefinedValuesList"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasPredefinedValueItem"></see>
     /// </summary>
-    let hasPredefinedValueItem =
-        Namespaced_IRI.parse _namespace_name "hasPredefinedValueItem" |> NamespacedName
-
+    let hasPredefinedValueItem = _prefix "hasPredefinedValueItem"
     /// <summary>
     /// inherent or acquired feature of an item
     /// <see href="https://w3id.org/dt#Property"></see></summary>
-    let Property = Namespaced_IRI.parse _namespace_name "Property" |> NamespacedName
-
+    let Property = _prefix "Property"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasPredefinedValues"></see>
     /// </summary>
-    let hasPredefinedValues =
-        Namespaced_IRI.parse _namespace_name "hasPredefinedValues" |> NamespacedName
-
+    let hasPredefinedValues = _prefix "hasPredefinedValues"
     /// <summary>
     ///   <see href="https://w3id.org/dt#author"></see>
     /// </summary>
-    let author = Namespaced_IRI.parse _namespace_name "author" |> NamespacedName
+    let author = _prefix "author"
     /// <summary>
     ///   <see href="https://w3id.org/dt#uri"></see>
     /// </summary>
-    let uri = Namespaced_IRI.parse _namespace_name "uri" |> NamespacedName
+    let uri = _prefix "uri"
     /// <summary>
     ///   <see href="https://w3id.org/dt#publisher"></see>
     /// </summary>
-    let publisher = Namespaced_IRI.parse _namespace_name "publisher" |> NamespacedName
-
+    let publisher = _prefix "publisher"
     /// <summary>
     ///   <see href="https://w3id.org/dt#dateOfPublication"></see>
     /// </summary>
-    let dateOfPublication =
-        Namespaced_IRI.parse _namespace_name "dateOfPublication" |> NamespacedName
-
+    let dateOfPublication = _prefix "dateOfPublication"
     /// <summary>
     /// real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number
     /// <see href="https://w3id.org/dt#Unit"></see></summary>
-    let Unit = Namespaced_IRI.parse _namespace_name "Unit" |> NamespacedName
-
+    let Unit = _prefix "Unit"
     /// <summary>
     ///   <see href="https://w3id.org/dt#hasExternalDictionaryReference"></see>
     /// </summary>
-    let hasExternalDictionaryReference =
-        Namespaced_IRI.parse _namespace_name "hasExternalDictionaryReference" |> NamespacedName
+    let hasExternalDictionaryReference = _prefix "hasExternalDictionaryReference"

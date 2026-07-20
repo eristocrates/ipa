@@ -1,218 +1,163 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Law.LegalCapacity.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_law_lcap =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/isPredicatedOn"></see>
     /// </summary>
-    let isPredicatedOn =
-        Namespaced_IRI.parse _namespace_name "isPredicatedOn" |> NamespacedName
-
+    let isPredicatedOn = _prefix "isPredicatedOn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContractualObligation"></see>
     /// </summary>
-    let ContractualObligation =
-        Namespaced_IRI.parse _namespace_name "ContractualObligation" |> NamespacedName
-
+    let ContractualObligation = _prefix "ContractualObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Claim"></see>
     /// </summary>
-    let Claim = Namespaced_IRI.parse _namespace_name "Claim" |> NamespacedName
-
+    let Claim = _prefix "Claim"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LegalConstruct"></see>
     /// </summary>
-    let LegalConstruct =
-        Namespaced_IRI.parse _namespace_name "LegalConstruct" |> NamespacedName
-
+    let LegalConstruct = _prefix "LegalConstruct"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContingentObligation"></see>
     /// </summary>
-    let ContingentObligation =
-        Namespaced_IRI.parse _namespace_name "ContingentObligation" |> NamespacedName
-
+    let ContingentObligation = _prefix "ContingentObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Duty"></see>
     /// </summary>
-    let Duty = Namespaced_IRI.parse _namespace_name "Duty" |> NamespacedName
-
+    let Duty = _prefix "Duty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/isImpliedBy"></see>
     /// </summary>
-    let isImpliedBy =
-        Namespaced_IRI.parse _namespace_name "isImpliedBy" |> NamespacedName
-
+    let isImpliedBy = _prefix "isImpliedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContingentRight"></see>
     /// </summary>
-    let ContingentRight =
-        Namespaced_IRI.parse _namespace_name "ContingentRight" |> NamespacedName
-
+    let ContingentRight = _prefix "ContingentRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Right"></see>
     /// </summary>
-    let Right = Namespaced_IRI.parse _namespace_name "Right" |> NamespacedName
+    let Right = _prefix "Right"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/implies"></see>
     /// </summary>
-    let implies = Namespaced_IRI.parse _namespace_name "implies" |> NamespacedName
-
+    let implies = _prefix "implies"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/isConferredOn"></see>
     /// </summary>
-    let isConferredOn =
-        Namespaced_IRI.parse _namespace_name "isConferredOn" |> NamespacedName
-
+    let isConferredOn = _prefix "isConferredOn"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContractualCapability"></see>
     /// </summary>
-    let ContractualCapability =
-        Namespaced_IRI.parse _namespace_name "ContractualCapability" |> NamespacedName
-
+    let ContractualCapability = _prefix "ContractualCapability"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LegalCapacity"></see>
     /// </summary>
-    let LegalCapacity =
-        Namespaced_IRI.parse _namespace_name "LegalCapacity" |> NamespacedName
-
+    let LegalCapacity = _prefix "LegalCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContractualInterest"></see>
     /// </summary>
-    let ContractualInterest =
-        Namespaced_IRI.parse _namespace_name "ContractualInterest" |> NamespacedName
-
+    let ContractualInterest = _prefix "ContractualInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContractualRight"></see>
     /// </summary>
-    let ContractualRight =
-        Namespaced_IRI.parse _namespace_name "ContractualRight" |> NamespacedName
-
+    let ContractualRight = _prefix "ContractualRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/hasFractionalInterest"></see>
     /// </summary>
-    let hasFractionalInterest =
-        Namespaced_IRI.parse _namespace_name "hasFractionalInterest" |> NamespacedName
-
+    let hasFractionalInterest = _prefix "hasFractionalInterest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LegalObligation"></see>
     /// </summary>
-    let LegalObligation =
-        Namespaced_IRI.parse _namespace_name "LegalObligation" |> NamespacedName
-
+    let LegalObligation = _prefix "LegalObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ContractualOption"></see>
     /// </summary>
-    let ContractualOption =
-        Namespaced_IRI.parse _namespace_name "ContractualOption" |> NamespacedName
-
+    let ContractualOption = _prefix "ContractualOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/DelegatedLegalAuthority"></see>
     /// </summary>
-    let DelegatedLegalAuthority =
-        Namespaced_IRI.parse _namespace_name "DelegatedLegalAuthority" |> NamespacedName
-
+    let DelegatedLegalAuthority = _prefix "DelegatedLegalAuthority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/DeliveryObligation"></see>
     /// </summary>
-    let DeliveryObligation =
-        Namespaced_IRI.parse _namespace_name "DeliveryObligation" |> NamespacedName
-
+    let DeliveryObligation = _prefix "DeliveryObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Regulation"></see>
     /// </summary>
-    let Regulation = Namespaced_IRI.parse _namespace_name "Regulation" |> NamespacedName
+    let Regulation = _prefix "Regulation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LegalRight"></see>
     /// </summary>
-    let LegalRight = Namespaced_IRI.parse _namespace_name "LegalRight" |> NamespacedName
-
+    let LegalRight = _prefix "LegalRight"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LiabilityCapacity"></see>
     /// </summary>
-    let LiabilityCapacity =
-        Namespaced_IRI.parse _namespace_name "LiabilityCapacity" |> NamespacedName
-
+    let LiabilityCapacity = _prefix "LiabilityCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/License"></see>
     /// </summary>
-    let License = Namespaced_IRI.parse _namespace_name "License" |> NamespacedName
+    let License = _prefix "License"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Licensor"></see>
     /// </summary>
-    let Licensor = Namespaced_IRI.parse _namespace_name "Licensor" |> NamespacedName
+    let Licensor = _prefix "Licensor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Licensee"></see>
     /// </summary>
-    let Licensee = Namespaced_IRI.parse _namespace_name "Licensee" |> NamespacedName
-
+    let Licensee = _prefix "Licensee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LicenseIdentifier"></see>
     /// </summary>
-    let LicenseIdentifier =
-        Namespaced_IRI.parse _namespace_name "LicenseIdentifier" |> NamespacedName
-
+    let LicenseIdentifier = _prefix "LicenseIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/licenses"></see>
     /// </summary>
-    let licenses = Namespaced_IRI.parse _namespace_name "licenses" |> NamespacedName
-
+    let licenses = _prefix "licenses"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/LitigationCapacity"></see>
     /// </summary>
-    let LitigationCapacity =
-        Namespaced_IRI.parse _namespace_name "LitigationCapacity" |> NamespacedName
-
+    let LitigationCapacity = _prefix "LitigationCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/NotificationObligation"></see>
     /// </summary>
-    let NotificationObligation =
-        Namespaced_IRI.parse _namespace_name "NotificationObligation" |> NamespacedName
-
+    let NotificationObligation = _prefix "NotificationObligation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Policy"></see>
     /// </summary>
-    let Policy = Namespaced_IRI.parse _namespace_name "Policy" |> NamespacedName
+    let Policy = _prefix "Policy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/implements"></see>
     /// </summary>
-    let implements = Namespaced_IRI.parse _namespace_name "implements" |> NamespacedName
-
+    let implements = _prefix "implements"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/ReportingPolicy"></see>
     /// </summary>
-    let ReportingPolicy =
-        Namespaced_IRI.parse _namespace_name "ReportingPolicy" |> NamespacedName
-
+    let ReportingPolicy = _prefix "ReportingPolicy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/SignatoryCapacity"></see>
     /// </summary>
-    let SignatoryCapacity =
-        Namespaced_IRI.parse _namespace_name "SignatoryCapacity" |> NamespacedName
-
+    let SignatoryCapacity = _prefix "SignatoryCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/hasCapacity"></see>
     /// </summary>
-    let hasCapacity =
-        Namespaced_IRI.parse _namespace_name "hasCapacity" |> NamespacedName
-
+    let hasCapacity = _prefix "hasCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/isCapacityOf"></see>
     /// </summary>
-    let isCapacityOf =
-        Namespaced_IRI.parse _namespace_name "isCapacityOf" |> NamespacedName
-
+    let isCapacityOf = _prefix "isCapacityOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/isImplementedBy"></see>
     /// </summary>
-    let isImplementedBy =
-        Namespaced_IRI.parse _namespace_name "isImplementedBy" |> NamespacedName
-
+    let isImplementedBy = _prefix "isImplementedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/isLicensedBy"></see>
     /// </summary>
-    let isLicensedBy =
-        Namespaced_IRI.parse _namespace_name "isLicensedBy" |> NamespacedName
+    let isLicensedBy = _prefix "isLicensedBy"

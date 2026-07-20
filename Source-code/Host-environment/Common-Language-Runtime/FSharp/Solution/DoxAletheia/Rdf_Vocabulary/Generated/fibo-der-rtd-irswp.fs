@@ -1,181 +1,139 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.RateDerivatives.IRSwaps.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_rtd_irswp =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/CrossCurrencyInterestRateSwap"></see>
     /// </summary>
-    let CrossCurrencyInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "CrossCurrencyInterestRateSwap" |> NamespacedName
-
+    let CrossCurrencyInterestRateSwap = _prefix "CrossCurrencyInterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/InterestRateSwap"></see>
     /// </summary>
-    let InterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "InterestRateSwap" |> NamespacedName
-
+    let InterestRateSwap = _prefix "InterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FixedFixedInterestRateSwap"></see>
     /// </summary>
-    let FixedFixedInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FixedFixedInterestRateSwap" |> NamespacedName
-
+    let FixedFixedInterestRateSwap = _prefix "FixedFixedInterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FixedInterestRateLeg"></see>
     /// </summary>
-    let FixedInterestRateLeg =
-        Namespaced_IRI.parse _namespace_name "FixedInterestRateLeg" |> NamespacedName
+    let FixedInterestRateLeg = _prefix "FixedInterestRateLeg"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FixedFloatCrossCurrencyInterestRateSwap"></see>
     /// </summary>
     let FixedFloatCrossCurrencyInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FixedFloatCrossCurrencyInterestRateSwap" |> NamespacedName
+        _prefix "FixedFloatCrossCurrencyInterestRateSwap"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FixedFloatInterestRateSwap"></see>
     /// </summary>
-    let FixedFloatInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FixedFloatInterestRateSwap" |> NamespacedName
-
+    let FixedFloatInterestRateSwap = _prefix "FixedFloatInterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FloatingInterestRateLeg"></see>
     /// </summary>
-    let FloatingInterestRateLeg =
-        Namespaced_IRI.parse _namespace_name "FloatingInterestRateLeg" |> NamespacedName
+    let FloatingInterestRateLeg = _prefix "FloatingInterestRateLeg"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FixedFloatSingleCurrencyInterestRateSwap"></see>
     /// </summary>
     let FixedFloatSingleCurrencyInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FixedFloatSingleCurrencyInterestRateSwap" |> NamespacedName
+        _prefix "FixedFloatSingleCurrencyInterestRateSwap"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/SingleCurrencyInterestRateSwap"></see>
     /// </summary>
-    let SingleCurrencyInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "SingleCurrencyInterestRateSwap" |> NamespacedName
-
+    let SingleCurrencyInterestRateSwap = _prefix "SingleCurrencyInterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/InterestRateSwapLeg"></see>
     /// </summary>
-    let InterestRateSwapLeg =
-        Namespaced_IRI.parse _namespace_name "InterestRateSwapLeg" |> NamespacedName
+    let InterestRateSwapLeg = _prefix "InterestRateSwapLeg"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FloatFloatCrossCurrencyInterestRateSwap"></see>
     /// </summary>
     let FloatFloatCrossCurrencyInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FloatFloatCrossCurrencyInterestRateSwap" |> NamespacedName
+        _prefix "FloatFloatCrossCurrencyInterestRateSwap"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FloatFloatInterestRateSwap"></see>
     /// </summary>
-    let FloatFloatInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FloatFloatInterestRateSwap" |> NamespacedName
+    let FloatFloatInterestRateSwap = _prefix "FloatFloatInterestRateSwap"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/FloatFloatSingleCurrencyInterestRateSwap"></see>
     /// </summary>
     let FloatFloatSingleCurrencyInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "FloatFloatSingleCurrencyInterestRateSwap" |> NamespacedName
+        _prefix "FloatFloatSingleCurrencyInterestRateSwap"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/InflationLeg"></see>
     /// </summary>
-    let InflationLeg =
-        Namespaced_IRI.parse _namespace_name "InflationLeg" |> NamespacedName
-
+    let InflationLeg = _prefix "InflationLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/InflationSwap"></see>
     /// </summary>
-    let InflationSwap =
-        Namespaced_IRI.parse _namespace_name "InflationSwap" |> NamespacedName
-
+    let InflationSwap = _prefix "InflationSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/NotionalStepSchedule"></see>
     /// </summary>
-    let NotionalStepSchedule =
-        Namespaced_IRI.parse _namespace_name "NotionalStepSchedule" |> NamespacedName
-
+    let NotionalStepSchedule = _prefix "NotionalStepSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/NotionalStepAmount"></see>
     /// </summary>
-    let NotionalStepAmount =
-        Namespaced_IRI.parse _namespace_name "NotionalStepAmount" |> NamespacedName
-
+    let NotionalStepAmount = _prefix "NotionalStepAmount"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/NotionalStepChangeEvent"></see>
     /// </summary>
-    let NotionalStepChangeEvent =
-        Namespaced_IRI.parse _namespace_name "NotionalStepChangeEvent" |> NamespacedName
-
+    let NotionalStepChangeEvent = _prefix "NotionalStepChangeEvent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/NotionalStepPeriodLength"></see>
     /// </summary>
-    let NotionalStepPeriodLength =
-        Namespaced_IRI.parse _namespace_name "NotionalStepPeriodLength" |> NamespacedName
-
+    let NotionalStepPeriodLength = _prefix "NotionalStepPeriodLength"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/OvernightIndexSwap"></see>
     /// </summary>
-    let OvernightIndexSwap =
-        Namespaced_IRI.parse _namespace_name "OvernightIndexSwap" |> NamespacedName
-
+    let OvernightIndexSwap = _prefix "OvernightIndexSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/OvernightRateIndexLeg"></see>
     /// </summary>
-    let OvernightRateIndexLeg =
-        Namespaced_IRI.parse _namespace_name "OvernightRateIndexLeg" |> NamespacedName
-
+    let OvernightRateIndexLeg = _prefix "OvernightRateIndexLeg"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/PlainVanillaInterestRateSwap"></see>
     /// </summary>
-    let PlainVanillaInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "PlainVanillaInterestRateSwap" |> NamespacedName
-
+    let PlainVanillaInterestRateSwap = _prefix "PlainVanillaInterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/ZeroCouponInterestRateSwap"></see>
     /// </summary>
-    let ZeroCouponInterestRateSwap =
-        Namespaced_IRI.parse _namespace_name "ZeroCouponInterestRateSwap" |> NamespacedName
-
+    let ZeroCouponInterestRateSwap = _prefix "ZeroCouponInterestRateSwap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/hasFirstNotionalStepDate"></see>
     /// </summary>
-    let hasFirstNotionalStepDate =
-        Namespaced_IRI.parse _namespace_name "hasFirstNotionalStepDate" |> NamespacedName
-
+    let hasFirstNotionalStepDate = _prefix "hasFirstNotionalStepDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/hasFloatingRateCap"></see>
     /// </summary>
-    let hasFloatingRateCap =
-        Namespaced_IRI.parse _namespace_name "hasFloatingRateCap" |> NamespacedName
-
+    let hasFloatingRateCap = _prefix "hasFloatingRateCap"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/hasFloatingRateFloor"></see>
     /// </summary>
-    let hasFloatingRateFloor =
-        Namespaced_IRI.parse _namespace_name "hasFloatingRateFloor" |> NamespacedName
-
+    let hasFloatingRateFloor = _prefix "hasFloatingRateFloor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/hasFloatingRateSpread"></see>
     /// </summary>
-    let hasFloatingRateSpread =
-        Namespaced_IRI.parse _namespace_name "hasFloatingRateSpread" |> NamespacedName
-
+    let hasFloatingRateSpread = _prefix "hasFloatingRateSpread"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/hasLastNotionalStepDate"></see>
     /// </summary>
-    let hasLastNotionalStepDate =
-        Namespaced_IRI.parse _namespace_name "hasLastNotionalStepDate" |> NamespacedName
-
+    let hasLastNotionalStepDate = _prefix "hasLastNotionalStepDate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/hasRateMultiplier"></see>
     /// </summary>
-    let hasRateMultiplier =
-        Namespaced_IRI.parse _namespace_name "hasRateMultiplier" |> NamespacedName
+    let hasRateMultiplier = _prefix "hasRateMultiplier"

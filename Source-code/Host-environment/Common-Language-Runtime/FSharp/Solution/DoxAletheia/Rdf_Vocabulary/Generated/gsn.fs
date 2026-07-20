@@ -1,467 +1,398 @@
 namespace https.w3id.org.OntoGSN.ontology.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gsn =
     let _namespace_name = "https://w3id.org/OntoGSN/ontology#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Solution"></see>
     /// </summary>
-    let Solution = Namespaced_IRI.parse _namespace_name "Solution" |> NamespacedName
+    let Solution = _prefix "Solution"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#A"></see>
     /// </summary>
-    let A = Namespaced_IRI.parse _namespace_name "A" |> NamespacedName
+    let A = _prefix "A"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#B"></see>
     /// </summary>
-    let B = Namespaced_IRI.parse _namespace_name "B" |> NamespacedName
+    let B = _prefix "B"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#true"></see>
     /// </summary>
-    let true_ = Namespaced_IRI.parse _namespace_name "true" |> NamespacedName
-
+    let true_ = _prefix "true"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#supportedBy"></see>
     /// </summary>
-    let supportedBy =
-        Namespaced_IRI.parse _namespace_name "supportedBy" |> NamespacedName
-
+    let supportedBy = _prefix "supportedBy"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#C"></see>
     /// </summary>
-    let C = Namespaced_IRI.parse _namespace_name "C" |> NamespacedName
+    let C = _prefix "C"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#X"></see>
     /// </summary>
-    let X = Namespaced_IRI.parse _namespace_name "X" |> NamespacedName
+    let X = _prefix "X"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Goal"></see>
     /// </summary>
-    let Goal = Namespaced_IRI.parse _namespace_name "Goal" |> NamespacedName
+    let Goal = _prefix "Goal"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#valid"></see>
     /// </summary>
-    let valid = Namespaced_IRI.parse _namespace_name "valid" |> NamespacedName
+    let valid = _prefix "valid"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#M1"></see>
     /// </summary>
-    let M1 = Namespaced_IRI.parse _namespace_name "M1" |> NamespacedName
+    let M1 = _prefix "M1"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#R"></see>
     /// </summary>
-    let R = Namespaced_IRI.parse _namespace_name "R" |> NamespacedName
+    let R = _prefix "R"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Module"></see>
     /// </summary>
-    let Module = Namespaced_IRI.parse _namespace_name "Module" |> NamespacedName
+    let Module = _prefix "Module"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#M2"></see>
     /// </summary>
-    let M2 = Namespaced_IRI.parse _namespace_name "M2" |> NamespacedName
+    let M2 = _prefix "M2"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#contains"></see>
     /// </summary>
-    let contains = Namespaced_IRI.parse _namespace_name "contains" |> NamespacedName
+    let contains = _prefix "contains"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#contract"></see>
     /// </summary>
-    let contract = Namespaced_IRI.parse _namespace_name "contract" |> NamespacedName
+    let contract = _prefix "contract"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#M"></see>
     /// </summary>
-    let M = Namespaced_IRI.parse _namespace_name "M" |> NamespacedName
+    let M = _prefix "M"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#N"></see>
     /// </summary>
-    let N = Namespaced_IRI.parse _namespace_name "N" |> NamespacedName
+    let N = _prefix "N"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#away"></see>
     /// </summary>
-    let away = Namespaced_IRI.parse _namespace_name "away" |> NamespacedName
+    let away = _prefix "away"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#G1"></see>
     /// </summary>
-    let G1 = Namespaced_IRI.parse _namespace_name "G1" |> NamespacedName
+    let G1 = _prefix "G1"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#G2"></see>
     /// </summary>
-    let G2 = Namespaced_IRI.parse _namespace_name "G2" |> NamespacedName
-
+    let G2 = _prefix "G2"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#inContextOf"></see>
     /// </summary>
-    let inContextOf =
-        Namespaced_IRI.parse _namespace_name "inContextOf" |> NamespacedName
-
+    let inContextOf = _prefix "inContextOf"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#C1"></see>
     /// </summary>
-    let C1 = Namespaced_IRI.parse _namespace_name "C1" |> NamespacedName
+    let C1 = _prefix "C1"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#C2"></see>
     /// </summary>
-    let C2 = Namespaced_IRI.parse _namespace_name "C2" |> NamespacedName
+    let C2 = _prefix "C2"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Context"></see>
     /// </summary>
-    let Context = Namespaced_IRI.parse _namespace_name "Context" |> NamespacedName
-
+    let Context = _prefix "Context"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#consistentWith"></see>
     /// </summary>
-    let consistentWith =
-        Namespaced_IRI.parse _namespace_name "consistentWith" |> NamespacedName
-
+    let consistentWith = _prefix "consistentWith"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Assumption"></see>
     /// </summary>
-    let Assumption = Namespaced_IRI.parse _namespace_name "Assumption" |> NamespacedName
+    let Assumption = _prefix "Assumption"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#M3"></see>
     /// </summary>
-    let M3 = Namespaced_IRI.parse _namespace_name "M3" |> NamespacedName
+    let M3 = _prefix "M3"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#statement"></see>
     /// </summary>
-    let statement = Namespaced_IRI.parse _namespace_name "statement" |> NamespacedName
+    let statement = _prefix "statement"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#E1"></see>
     /// </summary>
-    let E1 = Namespaced_IRI.parse _namespace_name "E1" |> NamespacedName
+    let E1 = _prefix "E1"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#E2"></see>
     /// </summary>
-    let E2 = Namespaced_IRI.parse _namespace_name "E2" |> NamespacedName
+    let E2 = _prefix "E2"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Template"></see>
     /// </summary>
-    let Template = Namespaced_IRI.parse _namespace_name "Template" |> NamespacedName
-
+    let Template = _prefix "Template"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#undeveloped"></see>
     /// </summary>
-    let undeveloped =
-        Namespaced_IRI.parse _namespace_name "undeveloped" |> NamespacedName
-
+    let undeveloped = _prefix "undeveloped"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#published"></see>
     /// </summary>
-    let published = Namespaced_IRI.parse _namespace_name "published" |> NamespacedName
-
+    let published = _prefix "published"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#toBeSupportedByContract"></see>
     /// </summary>
-    let toBeSupportedByContract =
-        Namespaced_IRI.parse _namespace_name "toBeSupportedByContract" |> NamespacedName
-
+    let toBeSupportedByContract = _prefix "toBeSupportedByContract"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#E"></see>
     /// </summary>
-    let E = Namespaced_IRI.parse _namespace_name "E" |> NamespacedName
-
+    let E = _prefix "E"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#relationshipType"></see>
     /// </summary>
-    let relationshipType =
-        Namespaced_IRI.parse _namespace_name "relationshipType" |> NamespacedName
-
+    let relationshipType = _prefix "relationshipType"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#inDoubt"></see>
     /// </summary>
-    let inDoubt = Namespaced_IRI.parse _namespace_name "inDoubt" |> NamespacedName
-
+    let inDoubt = _prefix "inDoubt"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Relationship"></see>
     /// </summary>
-    let Relationship =
-        Namespaced_IRI.parse _namespace_name "Relationship" |> NamespacedName
-
+    let Relationship = _prefix "Relationship"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#defeated"></see>
     /// </summary>
-    let defeated = Namespaced_IRI.parse _namespace_name "defeated" |> NamespacedName
+    let defeated = _prefix "defeated"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#S"></see>
     /// </summary>
-    let S = Namespaced_IRI.parse _namespace_name "S" |> NamespacedName
+    let S = _prefix "S"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#G3"></see>
     /// </summary>
-    let G3 = Namespaced_IRI.parse _namespace_name "G3" |> NamespacedName
+    let G3 = _prefix "G3"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#D"></see>
     /// </summary>
-    let D = Namespaced_IRI.parse _namespace_name "D" |> NamespacedName
+    let D = _prefix "D"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#challenges"></see>
     /// </summary>
-    let challenges = Namespaced_IRI.parse _namespace_name "challenges" |> NamespacedName
+    let challenges = _prefix "challenges"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Strategy"></see>
     /// </summary>
-    let Strategy = Namespaced_IRI.parse _namespace_name "Strategy" |> NamespacedName
+    let Strategy = _prefix "Strategy"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Argument"></see>
     /// </summary>
-    let Argument = Namespaced_IRI.parse _namespace_name "Argument" |> NamespacedName
-
+    let Argument = _prefix "Argument"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#coreOrExtension"></see>
     /// </summary>
-    let coreOrExtension =
-        Namespaced_IRI.parse _namespace_name "coreOrExtension" |> NamespacedName
-
+    let coreOrExtension = _prefix "coreOrExtension"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Defeater"></see>
     /// </summary>
-    let Defeater = Namespaced_IRI.parse _namespace_name "Defeater" |> NamespacedName
+    let Defeater = _prefix "Defeater"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#G"></see>
     /// </summary>
-    let G = Namespaced_IRI.parse _namespace_name "G" |> NamespacedName
-
+    let G = _prefix "G"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#substitutedBy"></see>
     /// </summary>
-    let substitutedBy =
-        Namespaced_IRI.parse _namespace_name "substitutedBy" |> NamespacedName
-
+    let substitutedBy = _prefix "substitutedBy"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#J"></see>
     /// </summary>
-    let J = Namespaced_IRI.parse _namespace_name "J" |> NamespacedName
-
+    let J = _prefix "J"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Justification"></see>
     /// </summary>
-    let Justification =
-        Namespaced_IRI.parse _namespace_name "Justification" |> NamespacedName
-
+    let Justification = _prefix "Justification"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#S2"></see>
     /// </summary>
-    let S2 = Namespaced_IRI.parse _namespace_name "S2" |> NamespacedName
+    let S2 = _prefix "S2"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#S1"></see>
     /// </summary>
-    let S1 = Namespaced_IRI.parse _namespace_name "S1" |> NamespacedName
+    let S1 = _prefix "S1"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#R1"></see>
     /// </summary>
-    let R1 = Namespaced_IRI.parse _namespace_name "R1" |> NamespacedName
-
+    let R1 = _prefix "R1"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#RelationshipWithConfidence"></see>
     /// </summary>
-    let RelationshipWithConfidence =
-        Namespaced_IRI.parse _namespace_name "RelationshipWithConfidence" |> NamespacedName
-
+    let RelationshipWithConfidence = _prefix "RelationshipWithConfidence"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#R2"></see>
     /// </summary>
-    let R2 = Namespaced_IRI.parse _namespace_name "R2" |> NamespacedName
-
+    let R2 = _prefix "R2"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#associatedWith"></see>
     /// </summary>
-    let associatedWith =
-        Namespaced_IRI.parse _namespace_name "associatedWith" |> NamespacedName
-
+    let associatedWith = _prefix "associatedWith"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#assuranceClaimPoint"></see>
     /// </summary>
-    let assuranceClaimPoint =
-        Namespaced_IRI.parse _namespace_name "assuranceClaimPoint" |> NamespacedName
-
+    let assuranceClaimPoint = _prefix "assuranceClaimPoint"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#ArtefactReference"></see>
     /// </summary>
-    let ArtefactReference =
-        Namespaced_IRI.parse _namespace_name "ArtefactReference" |> NamespacedName
-
+    let ArtefactReference = _prefix "ArtefactReference"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#top"></see>
     /// </summary>
-    let top = Namespaced_IRI.parse _namespace_name "top" |> NamespacedName
+    let top = _prefix "top"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#R3"></see>
     /// </summary>
-    let R3 = Namespaced_IRI.parse _namespace_name "R3" |> NamespacedName
+    let R3 = _prefix "R3"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#public"></see>
     /// </summary>
-    let public_ = Namespaced_IRI.parse _namespace_name "public" |> NamespacedName
+    let public_ = _prefix "public"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#P"></see>
     /// </summary>
-    let P = Namespaced_IRI.parse _namespace_name "P" |> NamespacedName
+    let P = _prefix "P"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#ID"></see>
     /// </summary>
-    let ID = Namespaced_IRI.parse _namespace_name "ID" |> NamespacedName
-
+    let ID = _prefix "ID"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#instantiationOf"></see>
     /// </summary>
-    let instantiationOf =
-        Namespaced_IRI.parse _namespace_name "instantiationOf" |> NamespacedName
-
+    let instantiationOf = _prefix "instantiationOf"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#final"></see>
     /// </summary>
-    let final = Namespaced_IRI.parse _namespace_name "final" |> NamespacedName
+    let final = _prefix "final"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Pattern"></see>
     /// </summary>
-    let Pattern = Namespaced_IRI.parse _namespace_name "Pattern" |> NamespacedName
+    let Pattern = _prefix "Pattern"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#GSNElement"></see>
     /// </summary>
-    let GSNElement = Namespaced_IRI.parse _namespace_name "GSNElement" |> NamespacedName
+    let GSNElement = _prefix "GSNElement"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Artefact"></see>
     /// </summary>
-    let Artefact = Namespaced_IRI.parse _namespace_name "Artefact" |> NamespacedName
+    let Artefact = _prefix "Artefact"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#renderedAs"></see>
     /// </summary>
-    let renderedAs = Namespaced_IRI.parse _namespace_name "renderedAs" |> NamespacedName
-
+    let renderedAs = _prefix "renderedAs"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#AssuranceCase"></see>
     /// </summary>
-    let AssuranceCase =
-        Namespaced_IRI.parse _namespace_name "AssuranceCase" |> NamespacedName
-
+    let AssuranceCase = _prefix "AssuranceCase"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#Catalogue"></see>
     /// </summary>
-    let Catalogue = Namespaced_IRI.parse _namespace_name "Catalogue" |> NamespacedName
-
+    let Catalogue = _prefix "Catalogue"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#InstantiationDataReference"></see>
     /// </summary>
-    let InstantiationDataReference =
-        Namespaced_IRI.parse _namespace_name "InstantiationDataReference" |> NamespacedName
-
+    let InstantiationDataReference = _prefix "InstantiationDataReference"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#argumentType"></see>
     /// </summary>
-    let argumentType =
-        Namespaced_IRI.parse _namespace_name "argumentType" |> NamespacedName
-
+    let argumentType = _prefix "argumentType"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#View"></see>
     /// </summary>
-    let View = Namespaced_IRI.parse _namespace_name "View" |> NamespacedName
-
+    let View = _prefix "View"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#applicability"></see>
     /// </summary>
-    let applicability =
-        Namespaced_IRI.parse _namespace_name "applicability" |> NamespacedName
-
+    let applicability = _prefix "applicability"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#attachedTo"></see>
     /// </summary>
-    let attachedTo = Namespaced_IRI.parse _namespace_name "attachedTo" |> NamespacedName
+    let attachedTo = _prefix "attachedTo"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#choice"></see>
     /// </summary>
-    let choice = Namespaced_IRI.parse _namespace_name "choice" |> NamespacedName
-
+    let choice = _prefix "choice"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#collaboration"></see>
     /// </summary>
-    let collaboration =
-        Namespaced_IRI.parse _namespace_name "collaboration" |> NamespacedName
-
+    let collaboration = _prefix "collaboration"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#consequences"></see>
     /// </summary>
-    let consequences =
-        Namespaced_IRI.parse _namespace_name "consequences" |> NamespacedName
-
+    let consequences = _prefix "consequences"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#examples"></see>
     /// </summary>
-    let examples = Namespaced_IRI.parse _namespace_name "examples" |> NamespacedName
-
+    let examples = _prefix "examples"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#implementation"></see>
     /// </summary>
-    let implementation =
-        Namespaced_IRI.parse _namespace_name "implementation" |> NamespacedName
-
+    let implementation = _prefix "implementation"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#intent"></see>
     /// </summary>
-    let intent = Namespaced_IRI.parse _namespace_name "intent" |> NamespacedName
+    let intent = _prefix "intent"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#knownUses"></see>
     /// </summary>
-    let knownUses = Namespaced_IRI.parse _namespace_name "knownUses" |> NamespacedName
-
+    let knownUses = _prefix "knownUses"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#maxCardinality"></see>
     /// </summary>
-    let maxCardinality =
-        Namespaced_IRI.parse _namespace_name "maxCardinality" |> NamespacedName
-
+    let maxCardinality = _prefix "maxCardinality"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#minCardinality"></see>
     /// </summary>
-    let minCardinality =
-        Namespaced_IRI.parse _namespace_name "minCardinality" |> NamespacedName
-
+    let minCardinality = _prefix "minCardinality"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#motivation"></see>
     /// </summary>
-    let motivation = Namespaced_IRI.parse _namespace_name "motivation" |> NamespacedName
+    let motivation = _prefix "motivation"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#multiple"></see>
     /// </summary>
-    let multiple = Namespaced_IRI.parse _namespace_name "multiple" |> NamespacedName
+    let multiple = _prefix "multiple"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#offDiagram"></see>
     /// </summary>
-    let offDiagram = Namespaced_IRI.parse _namespace_name "offDiagram" |> NamespacedName
+    let offDiagram = _prefix "offDiagram"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#optional"></see>
     /// </summary>
-    let optional = Namespaced_IRI.parse _namespace_name "optional" |> NamespacedName
-
+    let optional = _prefix "optional"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#participants"></see>
     /// </summary>
-    let participants =
-        Namespaced_IRI.parse _namespace_name "participants" |> NamespacedName
-
+    let participants = _prefix "participants"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#refersTo"></see>
     /// </summary>
-    let refersTo = Namespaced_IRI.parse _namespace_name "refersTo" |> NamespacedName
+    let refersTo = _prefix "refersTo"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#relatedTo"></see>
     /// </summary>
-    let relatedTo = Namespaced_IRI.parse _namespace_name "relatedTo" |> NamespacedName
+    let relatedTo = _prefix "relatedTo"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#structure"></see>
     /// </summary>
-    let structure = Namespaced_IRI.parse _namespace_name "structure" |> NamespacedName
+    let structure = _prefix "structure"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#structured"></see>
     /// </summary>
-    let structured = Namespaced_IRI.parse _namespace_name "structured" |> NamespacedName
-
+    let structured = _prefix "structured"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#uninstantiated"></see>
     /// </summary>
-    let uninstantiated =
-        Namespaced_IRI.parse _namespace_name "uninstantiated" |> NamespacedName
-
+    let uninstantiated = _prefix "uninstantiated"
     /// <summary>
     ///   <see href="https://w3id.org/OntoGSN/ontology#viewType"></see>
     /// </summary>
-    let viewType = Namespaced_IRI.parse _namespace_name "viewType" |> NamespacedName
+    let viewType = _prefix "viewType"

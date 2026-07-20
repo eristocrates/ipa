@@ -1,9 +1,12 @@
 namespace http.data.europa.eu.esco.model.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module esco =
     let _namespace_name = "http://data.europa.eu/esco/model#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// The class of awarding bodies registered by ESCO.
@@ -12,9 +15,7 @@ module esco =
     ///
     /// The geo-location(s) of an awarding body is given by http://data.europa.eu/esco/model#location
     /// <see href="http://data.europa.eu/esco/model#AwardingBody"></see></summary>
-    let AwardingBody =
-        Namespaced_IRI.parse _namespace_name "AwardingBody" |> NamespacedName
-
+    let AwardingBody = _prefix "AwardingBody"
     /// <summary>
     /// The class of ESCO qualifications.
     /// An ESCO qualification is an ESCO concepts of the ESCO qualification pillar.
@@ -33,9 +34,7 @@ module esco =
     /// - The property http://data.europa.eu/esco/model#expirationPeriod indicates the qualification is limited for a period of time.  Such a limitation may be provided in a descriptive way using the qualification description (see http://www.w3.org/2004/02/skos/core#definition)
     /// - The value 'true' of the boolean flag http://data.europa.eu/esco/model#isIndirect indicates the Qualifications is not managed by ESCO but represented by ESCO based on an external source (e.g. national qualifications).
     /// <see href="http://data.europa.eu/esco/model#Qualification"></see></summary>
-    let Qualification =
-        Namespaced_IRI.parse _namespace_name "Qualification" |> NamespacedName
-
+    let Qualification = _prefix "Qualification"
     /// <summary>
     /// The class of ESCO pillar concepts.
     ///
@@ -82,14 +81,11 @@ module esco =
     /// - contributor : modifier (http://purl.org/dc/terms/contributor) - required
     /// - modified : last modification date (http://purl.org/dc/terms/modified) - required
     /// <see href="http://data.europa.eu/esco/model#Concept"></see></summary>
-    let Concept = Namespaced_IRI.parse _namespace_name "Concept" |> NamespacedName
-
+    let Concept = _prefix "Concept"
     /// <summary>
     /// The business or editorial status of a concept or label
     /// <see href="http://data.europa.eu/esco/model#editorialStatus"></see></summary>
-    let editorialStatus =
-        Namespaced_IRI.parse _namespace_name "editorialStatus" |> NamespacedName
-
+    let editorialStatus = _prefix "editorialStatus"
     /// <summary>
     /// Concepts of this class are specifically used to be referenced in CV or job postings.  Typically these concepts are at the more specialized levels of the hierarchy.
     /// Example: A particular occupation, not a group of occupations.
@@ -98,26 +94,21 @@ module esco =
     /// - (2) one or more http://data.europa.eu/esco/model#memberOfGroup relationships to http://data.europa.eu/esco/model#GroupConcept
     /// However, some Member concept may be specializations of other ones.  In general these specializations will not comply to (1). General group membership within ESCO pillars is provided by esco:memberOfGroup.
     /// <see href="http://data.europa.eu/esco/model#MemberConcept"></see></summary>
-    let MemberConcept =
-        Namespaced_IRI.parse _namespace_name "MemberConcept" |> NamespacedName
-
+    let MemberConcept = _prefix "MemberConcept"
     /// <summary>
     /// A compound equivalence label for the subject concept.
     /// The subject concept is a Simple ESCO concept used as a component of a Faceted ESCO concept (i.e. a compound concept).
     /// The label of this faceted concept is a compound term (i.e. a split non preferred term) and the value of esco:plusUF (i.e. a UF++).
     /// There can be any number of compound terms per language and per faceted concept.
     /// <see href="http://data.europa.eu/esco/model#plusUF"></see></summary>
-    let plusUF = Namespaced_IRI.parse _namespace_name "plusUF" |> NamespacedName
-
+    let plusUF = _prefix "plusUF"
     /// <summary>
     /// The class of simple ESCO concepts.
     ///
     /// A simple ESCO concept is not decomposed into components (for compound ESCO concepts see http://data.europa.eu/esco/model#FacetedConcept).
     /// A simple concept may be further specialized by faceted concepts.  The facets used for this specialization are represented by the property http://data.europa.eu/esco/model#facet.
     /// <see href="http://data.europa.eu/esco/model#SimpleConcept"></see></summary>
-    let SimpleConcept =
-        Namespaced_IRI.parse _namespace_name "SimpleConcept" |> NamespacedName
-
+    let SimpleConcept = _prefix "SimpleConcept"
     /// <summary>
     /// Concepts
     ///  of this type are aggregations.  The property http://data.europa.eu/esco/model#hasGroupMember gives the members concepts of the group.  The member concepts have type http://data.europa.eu/esco/model#MemberConcept.  These member concepts are skos:narrowerTransitive spcializations of the group concept.  Among GroupConcept, the skos:broader/skos:narrower is like a super-group/sub-group relation meaning that all members of the (narrower) sub-group also are members of the (broader) super-group.
@@ -129,9 +120,7 @@ module esco =
     /// - in the upper levels of an ESCO pillar (or concept schema)
     /// - in an external concept schema (e.g. ISCO)
     /// <see href="http://data.europa.eu/esco/model#GroupConcept"></see></summary>
-    let GroupConcept =
-        Namespaced_IRI.parse _namespace_name "GroupConcept" |> NamespacedName
-
+    let GroupConcept = _prefix "GroupConcept"
     /// <summary>
     /// The class of compound ESCO pillar concepts.
     /// A compound concept is a concept that is broken down in a set of mare basic component concepts  (e.g. a pianist is a 'musician' performing on a 'piano')
@@ -158,18 +147,14 @@ module esco =
     /// - the skillType and the skillReuseLevel of the occasional Skill it is constructed from
     /// Further, inheritance rules apply as on ESCO concepts (see http://data.europa.eu/esco/model#Concept).
     /// <see href="http://data.europa.eu/esco/model#FacetedConcept"></see></summary>
-    let FacetedConcept =
-        Namespaced_IRI.parse _namespace_name "FacetedConcept" |> NamespacedName
-
+    let FacetedConcept = _prefix "FacetedConcept"
     /// <summary>
     /// A Group (or aggregation) concept, having no sub-groups anymore.
     ///
     /// Narrower concepts only can be members (or narrower instances) of the group concept.
     /// The specialization http://data.europa.eu/esco/model#narrowerInstance of skos:narrower is used to identify the top level members of the group.
     /// <see href="http://data.europa.eu/esco/model#LeafGroupConcept"></see></summary>
-    let LeafGroupConcept =
-        Namespaced_IRI.parse _namespace_name "LeafGroupConcept" |> NamespacedName
-
+    let LeafGroupConcept = _prefix "LeafGroupConcept"
     /// <summary>
     /// The class of ESCO Occupation concepts. An Occuaption is an ESCO pillar concept (see http://data.europa.eu/esco/model#Concept).
     /// Occupation have an broader match relation to an ISCO level 4 code (see http://data.europa.eu/esco/model#memberOfISCOGroup).
@@ -188,7 +173,7 @@ module esco =
     ///
     /// ESCO Occupations are maintained in the ESCO concept scheme http://data.europa.eu/esco/ConceptScheme/ESCO_Occupations.
     /// <see href="http://data.europa.eu/esco/model#Occupation"></see></summary>
-    let Occupation = Namespaced_IRI.parse _namespace_name "Occupation" |> NamespacedName
+    let Occupation = _prefix "Occupation"
     /// <summary>
     /// The class of ESCO Skill concepts.
     ///
@@ -212,7 +197,7 @@ module esco =
     /// - Occupations a skill is optional for are concepts of type esco:Occupation indicated by http://data.europa.eu/esco/model#isEssentialSkillFor
     /// The property http://data.europa.eu/esco/model#hasRelationship details the relationships (see http://data.europa.eu/esco/model#Relationship)
     /// <see href="http://data.europa.eu/esco/model#Skill"></see></summary>
-    let Skill = Namespaced_IRI.parse _namespace_name "Skill" |> NamespacedName
+    let Skill = _prefix "Skill"
     /// <summary>
     /// A teritorial area like a federation, a country, a region, a jurisdiction area.
     ///
@@ -222,7 +207,7 @@ module esco =
     /// - geonames - http://www.geonames.org/ (includes ISO 3166)
     /// - EU publication Office - http://publications.europa.eu/mdr/authority/country/index.html
     /// <see href="http://data.europa.eu/esco/model#Location"></see></summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
+    let Location = _prefix "Location"
     /// <summary>
     /// Industry sector code NACE rev2
     ///
@@ -230,7 +215,7 @@ module esco =
     /// The RDF version is available from: http://ec.europa.eu/eurostat/ramon/rdfdata/nace_r2.rdf - Note, this is not SKOS but can be made SKOS compliant.
     /// ESCO keeps a SKOS compliant copy of NACE codes. These are organized in the concept scheme http://data.europa.eu/esco/ConceptScheme/NACErev2/cs
     /// <see href="http://data.europa.eu/esco/model#NACECode"></see></summary>
-    let NACECode = Namespaced_IRI.parse _namespace_name "NACECode" |> NamespacedName
+    let NACECode = _prefix "NACECode"
     /// <summary>
     /// The class of language concepts.
     /// Each language is
@@ -244,7 +229,7 @@ module esco =
     ///
     /// The esco:ConceptScheme identifies the languages actually used via its property esco:supportedLanguage.
     /// <see href="http://data.europa.eu/esco/model#Language"></see></summary>
-    let Language = Namespaced_IRI.parse _namespace_name "Language" |> NamespacedName
+    let Language = _prefix "Language"
     /// <summary>
     /// The class of ISCED 2013/FoET classificaton code (International Standard Classification of Education: Fields of Education and Training 2013)
     ///
@@ -255,13 +240,12 @@ module esco =
     /// - http://www.uis.unesco.org/Education/Documents/isced-37c-fos-review-222729e.pdf
     /// - http://www.uis.unesco.org/EDUCATION/Pages/international-standard-classification-of-education.aspx
     /// <see href="http://data.europa.eu/esco/model#FoETCode"></see></summary>
-    let FoETCode = Namespaced_IRI.parse _namespace_name "FoETCode" |> NamespacedName
+    let FoETCode = _prefix "FoETCode"
     /// <summary>
     /// The EQF levels have been published as recommendation by the EU Publication office under CELEX number 32008H0506(01)
     ///  See http://publications.europa.eu/resource/celex/32008H0506%2801%29
     /// <see href="http://data.europa.eu/esco/model#EQFLevel"></see></summary>
-    let EQFLevel = Namespaced_IRI.parse _namespace_name "EQFLevel" |> NamespacedName
-
+    let EQFLevel = _prefix "EQFLevel"
     /// <summary>
     /// The ESCO concept schemes (pillars)
     ///
@@ -278,14 +262,11 @@ module esco =
     /// - contributor : modifier (http://purl.org/dc/terms/contributor) - required
     /// - modified : last modification date (http://purl.org/dc/terms/modified) - required
     /// <see href="http://data.europa.eu/esco/model#ConceptScheme"></see></summary>
-    let ConceptScheme =
-        Namespaced_IRI.parse _namespace_name "ConceptScheme" |> NamespacedName
-
+    let ConceptScheme = _prefix "ConceptScheme"
     /// <summary>
     /// Relevant standards for country locations are documented under the super class: http://data.europa.eu/esco/model#Location
     /// <see href="http://data.europa.eu/esco/model#Country"></see></summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
-
+    let Country = _prefix "Country"
     /// <summary>
     /// A Facet concept group (i.e. an instance of the class esco:FacetConceptGroup) is a sub-set of concepts from a facet.
     /// A facet is a supporting taxonomy for ESCO.  Examples are:
@@ -324,9 +305,7 @@ module esco =
     ///
     /// The name of the facet group is given by skos:prefLabel
     /// <see href="http://data.europa.eu/esco/model#FacetConceptGroup"></see></summary>
-    let FacetConceptGroup =
-        Namespaced_IRI.parse _namespace_name "FacetConceptGroup" |> NamespacedName
-
+    let FacetConceptGroup = _prefix "FacetConceptGroup"
     /// <summary>
     /// The facet concept group, a group of concepts used to expand:
     /// - the subject (ESCO) concept
@@ -363,7 +342,7 @@ module esco =
     /// - - - - - ... (other facet group 1 members)
     /// - - - ... (other facet group 2 members)
     /// <see href="http://data.europa.eu/esco/model#facet"></see></summary>
-    let facet = Namespaced_IRI.parse _namespace_name "facet" |> NamespacedName
+    let facet = _prefix "facet"
     /// <summary>
     /// A faceted ESCO concept (e.g.) is a compound concept constructed from an ESCO pillar concept and one or more facets.
     /// The typical example is the (foreign) language skills.
@@ -372,8 +351,7 @@ module esco =
     ///   - the specific language of the expertise (en, fr, el, bg, nl ... )
     ///   - the skill levels defined by CEFR (writing, understanding interactively, ...).
     /// <see href="http://data.europa.eu/esco/model#hasFacet"></see></summary>
-    let hasFacet = Namespaced_IRI.parse _namespace_name "hasFacet" |> NamespacedName
-
+    let hasFacet = _prefix "hasFacet"
     /// <summary>
     /// The unique (simple) ESCO concept used to construct the (subject) faceted ESCO concept.
     ///
@@ -399,26 +377,21 @@ module esco =
     ///   3) ...
     /// - Each of these (more) specialized faceted concepts all have the (simple) ESCO occupation "Teacher" as value for esco:constructedFrom
     /// <see href="http://data.europa.eu/esco/model#constructedFrom"></see></summary>
-    let constructedFrom =
-        Namespaced_IRI.parse _namespace_name "constructedFrom" |> NamespacedName
-
+    let constructedFrom = _prefix "constructedFrom"
     /// <summary>
     /// The parent ISCO 88 codes of a specific occupation.
     /// The format is ''&lt;code&gt;[,&lt;code&gt;]*''^^xsd:string
     ///
     /// e.g ''3139,3131''^^xsd:string  means the occupation has 2 parent occupation groups in isco88. One with iscocode 3139 and one with iscocode 3131
     /// <see href="http://data.europa.eu/esco/model#ISCO88Code"></see></summary>
-    let ISCO88Code = Namespaced_IRI.parse _namespace_name "ISCO88Code" |> NamespacedName
-
+    let ISCO88Code = _prefix "ISCO88Code"
     /// <summary>
     /// The direct hierarchical broader ISCO concept of the (subject) ESCO occupation.
     /// The 'direct' (or one step) relationship is to be understood in terms of extending the ISCO taxonomy the (object) concept belongs to.
     ///
     /// The ISCO concept may be of any ISCO version.  The ISCO version can be determined by the inScheme property on the ISCO concept and the version information on the ISCO concept scheme (referenced by the object - i.e. by the ISCO concept).
     /// <see href="http://data.europa.eu/esco/model#memberOfISCOGroup"></see></summary>
-    let memberOfISCOGroup =
-        Namespaced_IRI.parse _namespace_name "memberOfISCOGroup" |> NamespacedName
-
+    let memberOfISCOGroup = _prefix "memberOfISCOGroup"
     /// <summary>
     /// The class of labels used on esco pillar Concepts.
     ///
@@ -434,8 +407,7 @@ module esco =
     /// - contributor : modifier (http://purl.org/dc/terms/contributor) - required
     /// - modified : last modification date (http://purl.org/dc/terms/modified) - required
     /// <see href="http://data.europa.eu/esco/model#Label"></see></summary>
-    let Label = Namespaced_IRI.parse _namespace_name "Label" |> NamespacedName
-
+    let Label = _prefix "Label"
     /// <summary>
     /// A tagging concept providing the gender specific typing of an ESCO label.
     /// Each ESCO label can have
@@ -445,9 +417,7 @@ module esco =
     /// - a male respectively female preferred label is the standard male respectively standard female label
     ///
     /// <see href="http://data.europa.eu/esco/model#hasLabelRole"></see></summary>
-    let hasLabelRole =
-        Namespaced_IRI.parse _namespace_name "hasLabelRole" |> NamespacedName
-
+    let hasLabelRole = _prefix "hasLabelRole"
     /// <summary>
     /// Allows to capture one or more particular characteristics of a name.
     ///
@@ -458,33 +428,27 @@ module esco =
     ///   - Job posting generation with gender neutral terms
     ///   - CV generation with gender specific terms
     /// <see href="http://data.europa.eu/esco/model#LabelRole"></see></summary>
-    let LabelRole = Namespaced_IRI.parse _namespace_name "LabelRole" |> NamespacedName
+    let LabelRole = _prefix "LabelRole"
     /// <summary>
     /// The language of the subject resource.
     /// <see href="http://data.europa.eu/esco/model#language"></see></summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
-
+    let language = _prefix "language"
     /// <summary>
     /// The detailed (typed, annotated and documented) ESCO relationship (see http://data.europa.eu/esco/model#Relationship) for the subject ESCO concept.
     ///
     /// The relationship identifies a related ESCO concept.
     /// The relationship properties provide formal semantics to the ESCO concept relationship.
     /// <see href="http://data.europa.eu/esco/model#hasRelationship"></see></summary>
-    let hasRelationship =
-        Namespaced_IRI.parse _namespace_name "hasRelationship" |> NamespacedName
-
+    let hasRelationship = _prefix "hasRelationship"
     /// <summary>
     /// The Country or region the subject is associated with.
     /// Typically a tagging concept.
     /// <see href="http://data.europa.eu/esco/model#location"></see></summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
-
+    let location = _prefix "location"
     /// <summary>
     /// A tagging concept using the NACE codes to specify the industry sector of the tagged subject.
     /// <see href="http://data.europa.eu/esco/model#hasNACECode"></see></summary>
-    let hasNACECode =
-        Namespaced_IRI.parse _namespace_name "hasNACECode" |> NamespacedName
-
+    let hasNACECode = _prefix "hasNACECode"
     /// <summary>
     /// The class of collections of overlapping esco:Skill concepts. All skills within one collection of overlapping skills have overlapping semantics with each other.
     ///
@@ -492,17 +456,13 @@ module esco =
     ///
     /// As clarifications about the overlapping emerge, a decision from ESCO editorial team may instruct to merge some or all of the member concepts of this collection or to relate its members in another way.
     /// <see href="http://data.europa.eu/esco/model#OverlappingSkillGroup"></see></summary>
-    let OverlappingSkillGroup =
-        Namespaced_IRI.parse _namespace_name "OverlappingSkillGroup" |> NamespacedName
-
+    let OverlappingSkillGroup = _prefix "OverlappingSkillGroup"
     /// <summary>
     /// Period how long a qualification is valid.
     ///
     /// Example: a qualification for aircraft pilot may be subject to hours flight and/or testing within a specified period in order to pro-long the qualification.
     /// <see href="http://data.europa.eu/esco/model#expirationPeriod"></see></summary>
-    let expirationPeriod =
-        Namespaced_IRI.parse _namespace_name "expirationPeriod" |> NamespacedName
-
+    let expirationPeriod = _prefix "expirationPeriod"
     /// <summary>
     /// The class of directed relationships between two ESCO Pillar concepts (e.g. between an esco:Occupation and an esco:Qualification).
     ///
@@ -513,9 +473,7 @@ module esco =
     /// - is typed by the tagging property http://data.europa.eu/esco/model#hasRelationshipType.
     /// A relationship may be industry sector or location specific. This can be acieved by tagging the relationship using esco:hasNACECode or esco:location respectively.
     /// <see href="http://data.europa.eu/esco/model#Relationship"></see></summary>
-    let Relationship =
-        Namespaced_IRI.parse _namespace_name "Relationship" |> NamespacedName
-
+    let Relationship = _prefix "Relationship"
     /// <summary>
     /// The ESCO concept referred by the (subject) ESCO relationship.
     /// The esco:Relationship gives a more elaborate semantic description of related ESCO concepts.  These related concepts are identied by the esco:Relationship propertief
@@ -526,20 +484,15 @@ module esco =
     /// - a description
     /// - .. (other possible extensions)
     /// <see href="http://data.europa.eu/esco/model#refersConcept"></see></summary>
-    let refersConcept =
-        Namespaced_IRI.parse _namespace_name "refersConcept" |> NamespacedName
-
+    let refersConcept = _prefix "refersConcept"
     /// <summary>
     /// The ESCO concept the (subject) relationship starts from (see http://data.europa.eu/esco/model#Relationship).
     /// <see href="http://data.europa.eu/esco/model#isRelationshipFor"></see></summary>
-    let isRelationshipFor =
-        Namespaced_IRI.parse _namespace_name "isRelationshipFor" |> NamespacedName
-
+    let isRelationshipFor = _prefix "isRelationshipFor"
     /// <summary>
     /// A tagging concept detailing the type of the (subject) ESCO relationship
     /// <see href="http://data.europa.eu/esco/model#hasRelationshipType"></see></summary>
-    let hasRelationshipType =
-        Namespaced_IRI.parse _namespace_name "hasRelationshipType" |> NamespacedName
+    let hasRelationshipType = _prefix "hasRelationshipType"
 
     /// <summary>
     /// The ESCO qualification (certification) that is legally required for the subject occupation or skill.
@@ -551,24 +504,20 @@ module esco =
     /// - could be tagged with a location or NUTS code (see http://data.europa.eu/esco/model#location)
     /// <see href="http://data.europa.eu/esco/model#relatedLegallyRequiredQualification"></see></summary>
     let relatedLegallyRequiredQualification =
-        Namespaced_IRI.parse _namespace_name "relatedLegallyRequiredQualification" |> NamespacedName
+        _prefix "relatedLegallyRequiredQualification"
 
     /// <summary>
     /// The class of the types of ESCO relations.
     /// The concepts having this type are managed in the small SKOS taxonomy (see http://data.europa.eu/esco/ConceptScheme/RelationshipType).
     /// <see href="http://data.europa.eu/esco/model#RelationshipType"></see></summary>
-    let RelationshipType =
-        Namespaced_IRI.parse _namespace_name "RelationshipType" |> NamespacedName
-
+    let RelationshipType = _prefix "RelationshipType"
     /// <summary>
     /// A sector breakdown concept can be used in the Occupation and in the Skill/Competences pillar to organize navigation.  As such, it may be related (or characterize) a group of occupations as well as a group of skills.
     /// It is not an industry sector, but it may be tagged with NACE codes.
     ///
     /// This notion is specifically used for organizing the ESCO thesaurus creation (cfr. ESCO v1 methdology and SREF groups).
     /// <see href="http://data.europa.eu/esco/model#SectorBreakDownConcept"></see></summary>
-    let SectorBreakDownConcept =
-        Namespaced_IRI.parse _namespace_name "SectorBreakDownConcept" |> NamespacedName
-
+    let SectorBreakDownConcept = _prefix "SectorBreakDownConcept"
     /// <summary>
     /// Re-usability level of a Skill or competence.
     /// Details are provided by the ESCOpedia article on Cross-sector skills and competences (see https://ec.europa.eu/esco/escopedia/-/escopedia/Cross-sector_skills_and_competences?resetLanguage=true&amp;newLanguage=en")
@@ -579,62 +528,46 @@ module esco =
     /// - reuse level A is a broader transitive of reuse level B.
     /// A skill can have at most one re-use level (see http://data.europa.eu/esco/model#Skill).
     /// <see href="http://data.europa.eu/esco/model#SkillReuseLevel"></see></summary>
-    let SkillReuseLevel =
-        Namespaced_IRI.parse _namespace_name "SkillReuseLevel" |> NamespacedName
-
+    let SkillReuseLevel = _prefix "SkillReuseLevel"
     /// <summary>
     /// Type of competence (a tagging concept)
     /// <see href="http://data.europa.eu/esco/model#skillType"></see></summary>
-    let skillType = Namespaced_IRI.parse _namespace_name "skillType" |> NamespacedName
-
+    let skillType = _prefix "skillType"
     /// <summary>
     /// Reuseability level of a skill
     /// <see href="http://data.europa.eu/esco/model#skillReuseLevel"></see></summary>
-    let skillReuseLevel =
-        Namespaced_IRI.parse _namespace_name "skillReuseLevel" |> NamespacedName
-
+    let skillReuseLevel = _prefix "skillReuseLevel"
     /// <summary>
     /// Sub-Typing of a Skill Concept:
     /// - Skill/Competence
     /// - Knowledge
     /// <see href="http://data.europa.eu/esco/model#SkillCompetenceType"></see></summary>
-    let SkillCompetenceType =
-        Namespaced_IRI.parse _namespace_name "SkillCompetenceType" |> NamespacedName
-
+    let SkillCompetenceType = _prefix "SkillCompetenceType"
     /// <summary>
     /// The class of work contexts registered by ESCO
     /// A work context iIdentifies types of business, environmental conditions, types of product, etc.
     /// ESCO manages and organizes work context in the concept scheme: http://data.europa.eu/esco/ConceptScheme/WorkContext/cs
     ///
     /// <see href="http://data.europa.eu/esco/model#WorkContext"></see></summary>
-    let WorkContext =
-        Namespaced_IRI.parse _namespace_name "WorkContext" |> NamespacedName
-
+    let WorkContext = _prefix "WorkContext"
     /// <summary>
     /// An awarding body provided using a descriptive text.
     /// A more precise definition of an awarding body known by ESCO can be given using http://data.europa.eu/esco/model#hasAwardingBody
     /// <see href="http://data.europa.eu/esco/model#awardingBodyDescription"></see></summary>
-    let awardingBodyDescription =
-        Namespaced_IRI.parse _namespace_name "awardingBodyDescription" |> NamespacedName
-
+    let awardingBodyDescription = _prefix "awardingBodyDescription"
     /// <summary>
     /// The Leaf Group the (subject) ESCO member concept (Skill or Occupation or Qualification) belongs to.
     /// Only member properties having a Leaf Group type as broader concept must have this property,  Specializations of member concepts (like Faceted Concepts) do not have this property.
     /// <see href="http://data.europa.eu/esco/model#broaderInstance"></see></summary>
-    let broaderInstance =
-        Namespaced_IRI.parse _namespace_name "broaderInstance" |> NamespacedName
-
+    let broaderInstance = _prefix "broaderInstance"
     /// <summary>
     /// The ESCO Group (pillar) concept containing the subject ESCO concept as a member.
     /// <see href="http://data.europa.eu/esco/model#memberOfGroup"></see></summary>
-    let memberOfGroup =
-        Namespaced_IRI.parse _namespace_name "memberOfGroup" |> NamespacedName
-
+    let memberOfGroup = _prefix "memberOfGroup"
     /// <summary>
     ///   <see href="http://data.europa.eu/esco/model#rule"></see>
     /// </summary>
-    let rule = Namespaced_IRI.parse _namespace_name "rule" |> NamespacedName
-
+    let rule = _prefix "rule"
     /// <summary>
     /// list of status values used for managing ESCO vocabulary changes.
     /// The editorial status is only managed by a human with the role of taxonomy editor.
@@ -645,21 +578,15 @@ module esco =
     /// When a review considers the label or concept not relevant any more, the publication status is (automatically) set to "obsolete" by the relevant deprecation action.
     ///
     /// <see href="http://data.europa.eu/esco/model#editorialStatusDataType"></see></summary>
-    let editorialStatusDataType =
-        Namespaced_IRI.parse _namespace_name "editorialStatusDataType" |> NamespacedName
-
+    let editorialStatusDataType = _prefix "editorialStatusDataType"
     /// <summary>
     ///   <see href="http://data.europa.eu/esco/model#expirationNote"></see>
     /// </summary>
-    let expirationNote =
-        Namespaced_IRI.parse _namespace_name "expirationNote" |> NamespacedName
-
+    let expirationNote = _prefix "expirationNote"
     /// <summary>
     /// The institutiution, organisation or company that issues the (subject) qualification (certification).
     /// <see href="http://data.europa.eu/esco/model#hasAwardingBody"></see></summary>
-    let hasAwardingBody =
-        Namespaced_IRI.parse _namespace_name "hasAwardingBody" |> NamespacedName
-
+    let hasAwardingBody = _prefix "hasAwardingBody"
     /// <summary>
     /// The ESCO facet group the thesaurus array is being built from.
     ///
@@ -672,60 +599,42 @@ module esco =
     ///
     /// Note: Complementary to esco:hasDivisionCharacteristic the iso-thes:superOrdinate identifies the ESCO member concept used to create the faceted concepts that are members of the thesaurus array.
     /// <see href="http://data.europa.eu/esco/model#hasDivisionCharacteristic"></see></summary>
-    let hasDivisionCharacteristic =
-        Namespaced_IRI.parse _namespace_name "hasDivisionCharacteristic" |> NamespacedName
-
+    let hasDivisionCharacteristic = _prefix "hasDivisionCharacteristic"
     /// <summary>
     /// The level (as specified by the European Qualification Framework) applicable to the subject qualification.
     /// <see href="http://data.europa.eu/esco/model#hasEQFLevel"></see></summary>
-    let hasEQFLevel =
-        Namespaced_IRI.parse _namespace_name "hasEQFLevel" |> NamespacedName
-
+    let hasEQFLevel = _prefix "hasEQFLevel"
     /// <summary>
     /// A tagging concept identifying the Field of Education Code as specified by the UNESCO Institute for Statistics (UIS).
     /// <see href="http://data.europa.eu/esco/model#hasFoETCode"></see></summary>
-    let hasFoETCode =
-        Namespaced_IRI.parse _namespace_name "hasFoETCode" |> NamespacedName
-
+    let hasFoETCode = _prefix "hasFoETCode"
     /// <summary>
     /// Identifies the member Concept of the (subject) Group concept.
     /// <see href="http://data.europa.eu/esco/model#hasGroupMember"></see></summary>
-    let hasGroupMember =
-        Namespaced_IRI.parse _namespace_name "hasGroupMember" |> NamespacedName
-
+    let hasGroupMember = _prefix "hasGroupMember"
     /// <summary>
     /// true: Indicates wether a ESCO thesaurus/taxonomy supports poly-hierarchy. Not present or false indicate mono-hierarchy.
     /// <see href="http://data.europa.eu/esco/model#hasPolyHierarchy"></see></summary>
-    let hasPolyHierarchy =
-        Namespaced_IRI.parse _namespace_name "hasPolyHierarchy" |> NamespacedName
-
+    let hasPolyHierarchy = _prefix "hasPolyHierarchy"
     /// <summary>
     /// The ordered set of relationships starting at the subject ESCO pillar concept.
     ///
     /// For any resource, every item in the list given as the value of the
     ///       esco:hasRelationshipList property is also a value of the esco:hasRelationship property.
     /// <see href="http://data.europa.eu/esco/model#hasRelationshipList"></see></summary>
-    let hasRelationshipList =
-        Namespaced_IRI.parse _namespace_name "hasRelationshipList" |> NamespacedName
-
+    let hasRelationshipList = _prefix "hasRelationshipList"
     /// <summary>
     /// The possible working context of the (subject) occupation.
     /// <see href="http://data.europa.eu/esco/model#hasWorkContext"></see></summary>
-    let hasWorkContext =
-        Namespaced_IRI.parse _namespace_name "hasWorkContext" |> NamespacedName
-
+    let hasWorkContext = _prefix "hasWorkContext"
     /// <summary>
     /// The inverse of esco:relatedEssentialSkill.
     /// <see href="http://data.europa.eu/esco/model#isEssentialSkillFor"></see></summary>
-    let isEssentialSkillFor =
-        Namespaced_IRI.parse _namespace_name "isEssentialSkillFor" |> NamespacedName
-
+    let isEssentialSkillFor = _prefix "isEssentialSkillFor"
     /// <summary>
     /// The ESCO skill or competence that is essential for the subject occupation or skill.
     /// <see href="http://data.europa.eu/esco/model#relatedEssentialSkill"></see></summary>
-    let relatedEssentialSkill =
-        Namespaced_IRI.parse _namespace_name "relatedEssentialSkill" |> NamespacedName
-
+    let relatedEssentialSkill = _prefix "relatedEssentialSkill"
     /// <summary>
     /// True: Indicates the subject concept (like a qualification) is not directly managed by ESCO. instead the concept is loaded into ESCO when it is provided by an external (typical national) body or agent.
     ///
@@ -733,20 +642,15 @@ module esco =
     ///
     /// Assertion (to 'true') is required in case external contribution must be affirmed.
     /// <see href="http://data.europa.eu/esco/model#isIndirect"></see></summary>
-    let isIndirect = Namespaced_IRI.parse _namespace_name "isIndirect" |> NamespacedName
-
+    let isIndirect = _prefix "isIndirect"
     /// <summary>
     /// The inverse of esco:relatedOptionalSkill.
     /// <see href="http://data.europa.eu/esco/model#isOptionalSkillFor"></see></summary>
-    let isOptionalSkillFor =
-        Namespaced_IRI.parse _namespace_name "isOptionalSkillFor" |> NamespacedName
-
+    let isOptionalSkillFor = _prefix "isOptionalSkillFor"
     /// <summary>
     /// The ESCO skill or competence that is relevant (but optional) for the subject occuption.
     /// <see href="http://data.europa.eu/esco/model#relatedOptionalSkill"></see></summary>
-    let relatedOptionalSkill =
-        Namespaced_IRI.parse _namespace_name "relatedOptionalSkill" |> NamespacedName
-
+    let relatedOptionalSkill = _prefix "relatedOptionalSkill"
     /// <summary>
     /// Typical to indicate that a concept (like a skill) is not job or sector specific.  It is cross sector.
     ///
@@ -756,52 +660,39 @@ module esco =
     ///
     /// Skill re-usability levels can be tagged in case the level implies transversal scope of the skills having the re-usability level.
     /// <see href="http://data.europa.eu/esco/model#isTransversal"></see></summary>
-    let isTransversal =
-        Namespaced_IRI.parse _namespace_name "isTransversal" |> NamespacedName
-
+    let isTransversal = _prefix "isTransversal"
     /// <summary>
     /// The ISCO label of an occupation group.
     /// Provided in case the preferred label has been replaced by an esco specific one.
     ///
     /// Typically this can happen in order not to have duplicate preferred labels in the ESCO thesaurus.
     /// <see href="http://data.europa.eu/esco/model#iscoLabel"></see></summary>
-    let iscoLabel = Namespaced_IRI.parse _namespace_name "iscoLabel" |> NamespacedName
-
+    let iscoLabel = _prefix "iscoLabel"
     /// <summary>
     /// The original label of a concept of a support taxonomy.
     /// Provided in case the preferred label has been replaced by an ESCO specific one.
     ///
     /// Typically used on arguable names for exceptional concepts like 'Country'
     /// <see href="http://data.europa.eu/esco/model#originalLabel"></see></summary>
-    let originalLabel =
-        Namespaced_IRI.parse _namespace_name "originalLabel" |> NamespacedName
-
+    let originalLabel = _prefix "originalLabel"
     /// <summary>
     /// ISO 3166 country code - A2
     /// <see href="http://data.europa.eu/esco/model#isoCountryCodeA2"></see></summary>
-    let isoCountryCodeA2 =
-        Namespaced_IRI.parse _namespace_name "isoCountryCodeA2" |> NamespacedName
-
+    let isoCountryCodeA2 = _prefix "isoCountryCodeA2"
     /// <summary>
     /// ISO 3166 country code - A3
     /// <see href="http://data.europa.eu/esco/model#isoCountryCodeA3"></see></summary>
-    let isoCountryCodeA3 =
-        Namespaced_IRI.parse _namespace_name "isoCountryCodeA3" |> NamespacedName
-
+    let isoCountryCodeA3 = _prefix "isoCountryCodeA3"
     /// <summary>
     /// a note documenting the learning outcomes.
     /// <see href="http://data.europa.eu/esco/model#learningOutcomeNote"></see></summary>
-    let learningOutcomeNote =
-        Namespaced_IRI.parse _namespace_name "learningOutcomeNote" |> NamespacedName
-
+    let learningOutcomeNote = _prefix "learningOutcomeNote"
     /// <summary>
     /// The ESCO concepts (occupation, skill or qualification) that are immediate (one step) narrower concepts of the (subject) leaf group.  These narrower concepts are top level (member) concepts of the subject leaf concept group.
     ///
     /// The (subject) leaf group may have more members, not provided by its esco:narrowerInstance properties.  Typically, these other members are specializations (e.g. faceted concepts) of the top level members of the (subject) leaf concept group.
     /// <see href="http://data.europa.eu/esco/model#narrowerInstance"></see></summary>
-    let narrowerInstance =
-        Namespaced_IRI.parse _namespace_name "narrowerInstance" |> NamespacedName
-
+    let narrowerInstance = _prefix "narrowerInstance"
     /// <summary>
     /// An xml literal taking a plain text or xhtml.body.type content type.
     ///
@@ -812,9 +703,7 @@ module esco =
     /// - Provides structure content (XML literal) according a format that can be validated.
     /// - xml:lang and rdf:parseType="Literal" can not be provided on the same property.
     /// <see href="http://data.europa.eu/esco/model#noteLiteral"></see></summary>
-    let noteLiteral =
-        Namespaced_IRI.parse _namespace_name "noteLiteral" |> NamespacedName
-
+    let noteLiteral = _prefix "noteLiteral"
     /// <summary>
     /// Reference language for a concept.
     ///
@@ -822,69 +711,52 @@ module esco =
     ///
     /// In case the concept needs to be shown or translated in a new language (not having a PT yet), the label in the reference language is shown.
     /// <see href="http://data.europa.eu/esco/model#referenceLanguage"></see></summary>
-    let referenceLanguage =
-        Namespaced_IRI.parse _namespace_name "referenceLanguage" |> NamespacedName
-
+    let referenceLanguage = _prefix "referenceLanguage"
     /// <summary>
     /// The subject occupation is regulated according the description in the note.  The note typically contains a hyperlink.
     /// <see href="http://data.europa.eu/esco/model#regulatedProfessionNote"></see></summary>
-    let regulatedProfessionNote =
-        Namespaced_IRI.parse _namespace_name "regulatedProfessionNote" |> NamespacedName
-
+    let regulatedProfessionNote = _prefix "regulatedProfessionNote"
     /// <summary>
     /// The ESCO skill/competence related to (or asserted by) the subject ESCO qualification.
     /// I.e. when asserted on a subject qualification, the related competence is a learning outcome of that qualification.
     /// <see href="http://data.europa.eu/esco/model#relatedCompetence"></see></summary>
-    let relatedCompetence =
-        Namespaced_IRI.parse _namespace_name "relatedCompetence" |> NamespacedName
-
+    let relatedCompetence = _prefix "relatedCompetence"
     /// <summary>
     /// The ESCO qualification (certification) that is required for the subject occupation or skill.
     /// <see href="http://data.europa.eu/esco/model#relatedQualification"></see></summary>
-    let relatedQualification =
-        Namespaced_IRI.parse _namespace_name "relatedQualification" |> NamespacedName
-
+    let relatedQualification = _prefix "relatedQualification"
     /// <summary>
     /// A web site that is relevant for the subject (any modelled class, including an ESCO concept or term).
     ///
     /// Such URL may be part literal content value of a description, a definition or a scope note.
     /// A relevant URI may be language specific (hence the range is literal).
     /// <see href="http://data.europa.eu/esco/model#relevantURL"></see></summary>
-    let relevantURL =
-        Namespaced_IRI.parse _namespace_name "relevantURL" |> NamespacedName
-
+    let relevantURL = _prefix "relevantURL"
     /// <summary>
     /// Typical for a deprecated concept that has been replaced by one or more other concepts.
     ///
     /// Should be made a sub-property of, or be replaced by: http://purl.org/dc/terms/isReplacedBy
     /// <see href="http://data.europa.eu/esco/model#replacedBy"></see></summary>
-    let replacedBy = Namespaced_IRI.parse _namespace_name "replacedBy" |> NamespacedName
-
+    let replacedBy = _prefix "replacedBy"
     /// <summary>
     /// Typical for a chain of changes and deprecations of a concept over different versions.
     /// <see href="http://data.europa.eu/esco/model#replacedByTransitive"></see></summary>
-    let replacedByTransitive =
-        Namespaced_IRI.parse _namespace_name "replacedByTransitive" |> NamespacedName
-
+    let replacedByTransitive = _prefix "replacedByTransitive"
     /// <summary>
     /// Typical for a deprecated concept that replaces one or more other concepts.
     ///
     /// Should be made a sub-property of, or be replaced by: http://purl.org/dc/terms/replaces
     /// <see href="http://data.europa.eu/esco/model#replaces"></see></summary>
-    let replaces = Namespaced_IRI.parse _namespace_name "replaces" |> NamespacedName
-
+    let replaces = _prefix "replaces"
     /// <summary>
     /// Typical for a chain of deprecated concepts that replaces one or more other concepts over more than one version.
     /// <see href="http://data.europa.eu/esco/model#replacesTransitive"></see></summary>
-    let replacesTransitive =
-        Namespaced_IRI.parse _namespace_name "replacesTransitive" |> NamespacedName
-
+    let replacesTransitive = _prefix "replacesTransitive"
     /// <summary>
     /// The formatted string used to establish sorting among concepts.
     /// Deprecated by use of skos:OrderedCollection and iso-thes:subordinateArray
     /// <see href="http://data.europa.eu/esco/model#sortString"></see></summary>
-    let sortString = Namespaced_IRI.parse _namespace_name "sortString" |> NamespacedName
-
+    let sortString = _prefix "sortString"
     /// <summary>
     /// list of status values used for managing ESCO release status.
     /// On creation of a concept or label, the default state is "to be reviewed"
@@ -894,34 +766,26 @@ module esco =
     ///
     /// All state changes are system managed.
     /// <see href="http://data.europa.eu/esco/model#statusDataType"></see></summary>
-    let statusDataType =
-        Namespaced_IRI.parse _namespace_name "statusDataType" |> NamespacedName
-
+    let statusDataType = _prefix "statusDataType"
     /// <summary>
     /// Denotes a description of the languages supported by the (subject) concept scheme.
     /// Required for ESCO taxonomy or thesauri.
     /// <see href="http://data.europa.eu/esco/model#supportedLanguage"></see></summary>
-    let supportedLanguage =
-        Namespaced_IRI.parse _namespace_name "supportedLanguage" |> NamespacedName
-
+    let supportedLanguage = _prefix "supportedLanguage"
     /// <summary>
     /// list of status values used for managing ESCO ontology changes.
     /// <see href="http://data.europa.eu/esco/model#termStatusDataType"></see></summary>
-    let termStatusDataType =
-        Namespaced_IRI.parse _namespace_name "termStatusDataType" |> NamespacedName
-
+    let termStatusDataType = _prefix "termStatusDataType"
     /// <summary>
     /// Typically specified in case the subject collection is a concept group having a hierarchical representation (hierarchy based on broader/narrower). The referenced concepts are the hierarchical entry points of the concept group hierarchy.
     /// The top may be concepts as well as collections.
     /// <see href="http://data.europa.eu/esco/model#topMember"></see></summary>
-    let topMember = Namespaced_IRI.parse _namespace_name "topMember" |> NamespacedName
+    let topMember = _prefix "topMember"
     /// <summary>
     /// undefined skill is a skill that has no optional, recommended or required property assigned to it.
     /// <see href="http://data.europa.eu/esco/model#undefined"></see></summary>
-    let undefined = Namespaced_IRI.parse _namespace_name "undefined" |> NamespacedName
-
+    let undefined = _prefix "undefined"
     /// <summary>
     ///   <see href="http://data.europa.eu/esco/model#undefinedOf"></see>
     /// </summary>
-    let undefinedOf =
-        Namespaced_IRI.parse _namespace_name "undefinedOf" |> NamespacedName
+    let undefinedOf = _prefix "undefinedOf"

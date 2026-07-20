@@ -1,543 +1,402 @@
 namespace http.reference.data.gov.au.def.ont.iso19160_1_address.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module isoadr =
     let _namespace_name = "http://reference.data.gov.au/def/ont/iso19160-1-address#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address"></see>
     /// </summary>
-    let Address = Namespaced_IRI.parse _namespace_name "Address" |> NamespacedName
-
+    let Address = _prefix "Address"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.preferenceLevel"></see>
     /// </summary>
-    let ``Address.preferenceLevel`` =
-        Namespaced_IRI.parse _namespace_name "Address.preferenceLevel" |> NamespacedName
-
+    let ``Address.preferenceLevel`` = _prefix "Address.preferenceLevel"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.position"></see>
     /// </summary>
-    let ``Address.position`` =
-        Namespaced_IRI.parse _namespace_name "Address.position" |> NamespacedName
-
+    let ``Address.position`` = _prefix "Address.position"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressPosition"></see>
     /// </summary>
-    let AddressPosition =
-        Namespaced_IRI.parse _namespace_name "AddressPosition" |> NamespacedName
-
+    let AddressPosition = _prefix "AddressPosition"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.status"></see>
     /// </summary>
-    let ``Address.status`` =
-        Namespaced_IRI.parse _namespace_name "Address.status" |> NamespacedName
-
+    let ``Address.status`` = _prefix "Address.status"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressStatus"></see>
     /// </summary>
-    let AddressStatus =
-        Namespaced_IRI.parse _namespace_name "AddressStatus" |> NamespacedName
-
+    let AddressStatus = _prefix "AddressStatus"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.lifespan"></see>
     /// </summary>
-    let ``Address.lifespan`` =
-        Namespaced_IRI.parse _namespace_name "Address.lifespan" |> NamespacedName
-
+    let ``Address.lifespan`` = _prefix "Address.lifespan"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.addressComponent"></see>
     /// </summary>
-    let ``Address.addressComponent`` =
-        Namespaced_IRI.parse _namespace_name "Address.addressComponent" |> NamespacedName
-
+    let ``Address.addressComponent`` = _prefix "Address.addressComponent"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.business_branch"></see>
     /// </summary>
-    let ``Address.business_branch`` =
-        Namespaced_IRI.parse _namespace_name "Address.business_branch" |> NamespacedName
-
+    let ``Address.business_branch`` = _prefix "Address.business_branch"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Lifespan"></see>
     /// </summary>
-    let Lifespan = Namespaced_IRI.parse _namespace_name "Lifespan" |> NamespacedName
-
+    let Lifespan = _prefix "Lifespan"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.employee"></see>
     /// </summary>
-    let ``Address.employee`` =
-        Namespaced_IRI.parse _namespace_name "Address.employee" |> NamespacedName
-
+    let ``Address.employee`` = _prefix "Address.employee"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.locale"></see>
     /// </summary>
-    let ``Address.locale`` =
-        Namespaced_IRI.parse _namespace_name "Address.locale" |> NamespacedName
-
+    let ``Address.locale`` = _prefix "Address.locale"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.lifecycleStage"></see>
     /// </summary>
-    let ``Address.lifecycleStage`` =
-        Namespaced_IRI.parse _namespace_name "Address.lifecycleStage" |> NamespacedName
-
+    let ``Address.lifecycleStage`` = _prefix "Address.lifecycleStage"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.specification"></see>
     /// </summary>
-    let ``Address.specification`` =
-        Namespaced_IRI.parse _namespace_name "Address.specification" |> NamespacedName
-
+    let ``Address.specification`` = _prefix "Address.specification"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressSpecification"></see>
     /// </summary>
-    let AddressSpecification =
-        Namespaced_IRI.parse _namespace_name "AddressSpecification" |> NamespacedName
-
+    let AddressSpecification = _prefix "AddressSpecification"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.theAddressAlias"></see>
     /// </summary>
-    let ``Address.theAddressAlias`` =
-        Namespaced_IRI.parse _namespace_name "Address.theAddressAlias" |> NamespacedName
-
+    let ``Address.theAddressAlias`` = _prefix "Address.theAddressAlias"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressAlias"></see>
     /// </summary>
-    let AddressAlias =
-        Namespaced_IRI.parse _namespace_name "AddressAlias" |> NamespacedName
-
+    let AddressAlias = _prefix "AddressAlias"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.id"></see>
     /// </summary>
-    let ``Address.id`` =
-        Namespaced_IRI.parse _namespace_name "Address.id" |> NamespacedName
-
+    let ``Address.id`` = _prefix "Address.id"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.childAddress"></see>
     /// </summary>
-    let ``Address.childAddress`` =
-        Namespaced_IRI.parse _namespace_name "Address.childAddress" |> NamespacedName
-
+    let ``Address.childAddress`` = _prefix "Address.childAddress"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.business_headOffice"></see>
     /// </summary>
-    let ``Address.business_headOffice`` =
-        Namespaced_IRI.parse _namespace_name "Address.business_headOffice" |> NamespacedName
-
+    let ``Address.business_headOffice`` = _prefix "Address.business_headOffice"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent"></see>
     /// </summary>
-    let AddressComponent =
-        Namespaced_IRI.parse _namespace_name "AddressComponent" |> NamespacedName
-
+    let AddressComponent = _prefix "AddressComponent"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.theAddressedPeriod"></see>
     /// </summary>
-    let ``Address.theAddressedPeriod`` =
-        Namespaced_IRI.parse _namespace_name "Address.theAddressedPeriod" |> NamespacedName
-
+    let ``Address.theAddressedPeriod`` = _prefix "Address.theAddressedPeriod"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressedPeriod"></see>
     /// </summary>
-    let AddressedPeriod =
-        Namespaced_IRI.parse _namespace_name "AddressedPeriod" |> NamespacedName
-
+    let AddressedPeriod = _prefix "AddressedPeriod"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.class"></see>
     /// </summary>
-    let ``Address.class`` =
-        Namespaced_IRI.parse _namespace_name "Address.class" |> NamespacedName
-
+    let ``Address.class`` = _prefix "Address.class"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressClass"></see>
     /// </summary>
-    let AddressClass =
-        Namespaced_IRI.parse _namespace_name "AddressClass" |> NamespacedName
-
+    let AddressClass = _prefix "AddressClass"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.parentAddress"></see>
     /// </summary>
-    let ``Address.parentAddress`` =
-        Namespaced_IRI.parse _namespace_name "Address.parentAddress" |> NamespacedName
-
+    let ``Address.parentAddress`` = _prefix "Address.parentAddress"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.provenance"></see>
     /// </summary>
-    let ``Address.provenance`` =
-        Namespaced_IRI.parse _namespace_name "Address.provenance" |> NamespacedName
-
+    let ``Address.provenance`` = _prefix "Address.provenance"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressProvenance"></see>
     /// </summary>
-    let AddressProvenance =
-        Namespaced_IRI.parse _namespace_name "AddressProvenance" |> NamespacedName
-
+    let AddressProvenance = _prefix "AddressProvenance"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressLifecycleStage"></see>
     /// </summary>
-    let AddressLifecycleStage =
-        Namespaced_IRI.parse _namespace_name "AddressLifecycleStage" |> NamespacedName
-
+    let AddressLifecycleStage = _prefix "AddressLifecycleStage"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address.client"></see>
     /// </summary>
-    let ``Address.client`` =
-        Namespaced_IRI.parse _namespace_name "Address.client" |> NamespacedName
-
+    let ``Address.client`` = _prefix "Address.client"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressAlias.address"></see>
     /// </summary>
-    let ``AddressAlias.address`` =
-        Namespaced_IRI.parse _namespace_name "AddressAlias.address" |> NamespacedName
-
+    let ``AddressAlias.address`` = _prefix "AddressAlias.address"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressAlias.aliasAddress"></see>
     /// </summary>
-    let ``AddressAlias.aliasAddress`` =
-        Namespaced_IRI.parse _namespace_name "AddressAlias.aliasAddress" |> NamespacedName
-
+    let ``AddressAlias.aliasAddress`` = _prefix "AddressAlias.aliasAddress"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressedPeriod.address"></see>
     /// </summary>
-    let ``AddressedPeriod.address`` =
-        Namespaced_IRI.parse _namespace_name "AddressedPeriod.address" |> NamespacedName
-
+    let ``AddressedPeriod.address`` = _prefix "AddressedPeriod.address"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressAlias.type"></see>
     /// </summary>
-    let ``AddressAlias.type`` =
-        Namespaced_IRI.parse _namespace_name "AddressAlias.type" |> NamespacedName
-
+    let ``AddressAlias.type`` = _prefix "AddressAlias.type"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressAliasType"></see>
     /// </summary>
-    let AddressAliasType =
-        Namespaced_IRI.parse _namespace_name "AddressAliasType" |> NamespacedName
-
+    let AddressAliasType = _prefix "AddressAliasType"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressClassSpecification"></see>
     /// </summary>
-    let AddressClassSpecification =
-        Namespaced_IRI.parse _namespace_name "AddressClassSpecification" |> NamespacedName
+    let AddressClassSpecification = _prefix "AddressClassSpecification"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressClassSpecification.component"></see>
     /// </summary>
     let ``AddressClassSpecification.component`` =
-        Namespaced_IRI.parse _namespace_name "AddressClassSpecification.component" |> NamespacedName
+        _prefix "AddressClassSpecification.component"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressClassSpecification.typology"></see>
     /// </summary>
     let ``AddressClassSpecification.typology`` =
-        Namespaced_IRI.parse _namespace_name "AddressClassSpecification.typology" |> NamespacedName
+        _prefix "AddressClassSpecification.typology"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressTypology"></see>
     /// </summary>
-    let AddressTypology =
-        Namespaced_IRI.parse _namespace_name "AddressTypology" |> NamespacedName
-
+    let AddressTypology = _prefix "AddressTypology"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressClassSpecification.class"></see>
     /// </summary>
-    let ``AddressClassSpecification.class`` =
-        Namespaced_IRI.parse _namespace_name "AddressClassSpecification.class" |> NamespacedName
-
+    let ``AddressClassSpecification.class`` = _prefix "AddressClassSpecification.class"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentType"></see>
     /// </summary>
-    let AddressComponentType =
-        Namespaced_IRI.parse _namespace_name "AddressComponentType" |> NamespacedName
-
+    let AddressComponentType = _prefix "AddressComponentType"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.type"></see>
     /// </summary>
-    let ``AddressComponent.type`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.type" |> NamespacedName
-
+    let ``AddressComponent.type`` = _prefix "AddressComponent.type"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.scopeComponent"></see>
     /// </summary>
-    let ``AddressComponent.scopeComponent`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.scopeComponent" |> NamespacedName
-
+    let ``AddressComponent.scopeComponent`` = _prefix "AddressComponent.scopeComponent"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.provenance"></see>
     /// </summary>
-    let ``AddressComponent.provenance`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.provenance" |> NamespacedName
-
+    let ``AddressComponent.provenance`` = _prefix "AddressComponent.provenance"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.lifespan"></see>
     /// </summary>
-    let ``AddressComponent.lifespan`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.lifespan" |> NamespacedName
-
+    let ``AddressComponent.lifespan`` = _prefix "AddressComponent.lifespan"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.locale"></see>
     /// </summary>
-    let ``AddressComponent.locale`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.locale" |> NamespacedName
-
+    let ``AddressComponent.locale`` = _prefix "AddressComponent.locale"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.valueComponent"></see>
     /// </summary>
-    let ``AddressComponent.valueComponent`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.valueComponent" |> NamespacedName
-
+    let ``AddressComponent.valueComponent`` = _prefix "AddressComponent.valueComponent"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.id"></see>
     /// </summary>
-    let ``AddressComponent.id`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.id" |> NamespacedName
-
+    let ``AddressComponent.id`` = _prefix "AddressComponent.id"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.lifecycleStage"></see>
     /// </summary>
-    let ``AddressComponent.lifecycleStage`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.lifecycleStage" |> NamespacedName
+    let ``AddressComponent.lifecycleStage`` = _prefix "AddressComponent.lifecycleStage"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.valueInformation"></see>
     /// </summary>
     let ``AddressComponent.valueInformation`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.valueInformation" |> NamespacedName
+        _prefix "AddressComponent.valueInformation"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentValue"></see>
     /// </summary>
-    let AddressComponentValue =
-        Namespaced_IRI.parse _namespace_name "AddressComponentValue" |> NamespacedName
+    let AddressComponentValue = _prefix "AddressComponentValue"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponent.referenceObject"></see>
     /// </summary>
     let ``AddressComponent.referenceObject`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponent.referenceObject" |> NamespacedName
+        _prefix "AddressComponent.referenceObject"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#ReferenceObject"></see>
     /// </summary>
-    let ReferenceObject =
-        Namespaced_IRI.parse _namespace_name "ReferenceObject" |> NamespacedName
+    let ReferenceObject = _prefix "ReferenceObject"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#ReferenceObject.addressComponent"></see>
     /// </summary>
     let ``ReferenceObject.addressComponent`` =
-        Namespaced_IRI.parse _namespace_name "ReferenceObject.addressComponent" |> NamespacedName
+        _prefix "ReferenceObject.addressComponent"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentValue.preferenceLevel"></see>
     /// </summary>
     let ``AddressComponentValue.preferenceLevel`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponentValue.preferenceLevel" |> NamespacedName
+        _prefix "AddressComponentValue.preferenceLevel"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentValue.type"></see>
     /// </summary>
-    let ``AddressComponentValue.type`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponentValue.type" |> NamespacedName
-
+    let ``AddressComponentValue.type`` = _prefix "AddressComponentValue.type"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentValueType"></see>
     /// </summary>
-    let AddressComponentValueType =
-        Namespaced_IRI.parse _namespace_name "AddressComponentValueType" |> NamespacedName
-
+    let AddressComponentValueType = _prefix "AddressComponentValueType"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentValue.locale"></see>
     /// </summary>
-    let ``AddressComponentValue.locale`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponentValue.locale" |> NamespacedName
-
+    let ``AddressComponentValue.locale`` = _prefix "AddressComponentValue.locale"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressComponentValue.value"></see>
     /// </summary>
-    let ``AddressComponentValue.value`` =
-        Namespaced_IRI.parse _namespace_name "AddressComponentValue.value" |> NamespacedName
-
+    let ``AddressComponentValue.value`` = _prefix "AddressComponentValue.value"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressPosition.geometry"></see>
     /// </summary>
-    let ``AddressPosition.geometry`` =
-        Namespaced_IRI.parse _namespace_name "AddressPosition.geometry" |> NamespacedName
-
+    let ``AddressPosition.geometry`` = _prefix "AddressPosition.geometry"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressPosition.type"></see>
     /// </summary>
-    let ``AddressPosition.type`` =
-        Namespaced_IRI.parse _namespace_name "AddressPosition.type" |> NamespacedName
-
+    let ``AddressPosition.type`` = _prefix "AddressPosition.type"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressPositionType"></see>
     /// </summary>
-    let AddressPositionType =
-        Namespaced_IRI.parse _namespace_name "AddressPositionType" |> NamespacedName
-
+    let AddressPositionType = _prefix "AddressPositionType"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressProvenance.authority"></see>
     /// </summary>
-    let ``AddressProvenance.authority`` =
-        Namespaced_IRI.parse _namespace_name "AddressProvenance.authority" |> NamespacedName
-
+    let ``AddressProvenance.authority`` = _prefix "AddressProvenance.authority"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressProvenance.lineage"></see>
     /// </summary>
-    let ``AddressProvenance.lineage`` =
-        Namespaced_IRI.parse _namespace_name "AddressProvenance.lineage" |> NamespacedName
-
+    let ``AddressProvenance.lineage`` = _prefix "AddressProvenance.lineage"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressProvenance.owner"></see>
     /// </summary>
-    let ``AddressProvenance.owner`` =
-        Namespaced_IRI.parse _namespace_name "AddressProvenance.owner" |> NamespacedName
+    let ``AddressProvenance.owner`` = _prefix "AddressProvenance.owner"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressSpecification.addressSpecificationCitation"></see>
     /// </summary>
     let ``AddressSpecification.addressSpecificationCitation`` =
-        Namespaced_IRI.parse _namespace_name "AddressSpecification.addressSpecificationCitation" |> NamespacedName
+        _prefix "AddressSpecification.addressSpecificationCitation"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressSpecification.classSpecification"></see>
     /// </summary>
     let ``AddressSpecification.classSpecification`` =
-        Namespaced_IRI.parse _namespace_name "AddressSpecification.classSpecification" |> NamespacedName
+        _prefix "AddressSpecification.classSpecification"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject"></see>
     /// </summary>
-    let AddressableObject =
-        Namespaced_IRI.parse _namespace_name "AddressableObject" |> NamespacedName
-
+    let AddressableObject = _prefix "AddressableObject"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.type"></see>
     /// </summary>
-    let ``AddressableObject.type`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.type" |> NamespacedName
-
+    let ``AddressableObject.type`` = _prefix "AddressableObject.type"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.position"></see>
     /// </summary>
-    let ``AddressableObject.position`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.position" |> NamespacedName
-
+    let ``AddressableObject.position`` = _prefix "AddressableObject.position"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.lifespan"></see>
     /// </summary>
-    let ``AddressableObject.lifespan`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.lifespan" |> NamespacedName
-
+    let ``AddressableObject.lifespan`` = _prefix "AddressableObject.lifespan"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.id"></see>
     /// </summary>
-    let ``AddressableObject.id`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.id" |> NamespacedName
+    let ``AddressableObject.id`` = _prefix "AddressableObject.id"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.lifecycleStage"></see>
     /// </summary>
     let ``AddressableObject.lifecycleStage`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.lifecycleStage" |> NamespacedName
+        _prefix "AddressableObject.lifecycleStage"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObjectLifecycleStage"></see>
     /// </summary>
-    let AddressableObjectLifecycleStage =
-        Namespaced_IRI.parse _namespace_name "AddressableObjectLifecycleStage" |> NamespacedName
+    let AddressableObjectLifecycleStage = _prefix "AddressableObjectLifecycleStage"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.parentAddressableObject"></see>
     /// </summary>
     let ``AddressableObject.parentAddressableObject`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.parentAddressableObject" |> NamespacedName
+        _prefix "AddressableObject.parentAddressableObject"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObjectType"></see>
     /// </summary>
-    let AddressableObjectType =
-        Namespaced_IRI.parse _namespace_name "AddressableObjectType" |> NamespacedName
+    let AddressableObjectType = _prefix "AddressableObjectType"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.theAddressedPeriod"></see>
     /// </summary>
     let ``AddressableObject.theAddressedPeriod`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.theAddressedPeriod" |> NamespacedName
+        _prefix "AddressableObject.theAddressedPeriod"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressableObject.childAddressableObject"></see>
     /// </summary>
     let ``AddressableObject.childAddressableObject`` =
-        Namespaced_IRI.parse _namespace_name "AddressableObject.childAddressableObject" |> NamespacedName
+        _prefix "AddressableObject.childAddressableObject"
 
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressedPeriod.addressedObject"></see>
     /// </summary>
-    let ``AddressedPeriod.addressedObject`` =
-        Namespaced_IRI.parse _namespace_name "AddressedPeriod.addressedObject" |> NamespacedName
-
+    let ``AddressedPeriod.addressedObject`` = _prefix "AddressedPeriod.addressedObject"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressedPeriod.addressedFrom"></see>
     /// </summary>
-    let ``AddressedPeriod.addressedFrom`` =
-        Namespaced_IRI.parse _namespace_name "AddressedPeriod.addressedFrom" |> NamespacedName
-
+    let ``AddressedPeriod.addressedFrom`` = _prefix "AddressedPeriod.addressedFrom"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#AddressedPeriod.addressedTo"></see>
     /// </summary>
-    let ``AddressedPeriod.addressedTo`` =
-        Namespaced_IRI.parse _namespace_name "AddressedPeriod.addressedTo" |> NamespacedName
-
+    let ``AddressedPeriod.addressedTo`` = _prefix "AddressedPeriod.addressedTo"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Lifespan.validFrom"></see>
     /// </summary>
-    let ``Lifespan.validFrom`` =
-        Namespaced_IRI.parse _namespace_name "Lifespan.validFrom" |> NamespacedName
-
+    let ``Lifespan.validFrom`` = _prefix "Lifespan.validFrom"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Lifespan.openRecord"></see>
     /// </summary>
-    let ``Lifespan.openRecord`` =
-        Namespaced_IRI.parse _namespace_name "Lifespan.openRecord" |> NamespacedName
-
+    let ``Lifespan.openRecord`` = _prefix "Lifespan.openRecord"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Lifespan.closeRecord"></see>
     /// </summary>
-    let ``Lifespan.closeRecord`` =
-        Namespaced_IRI.parse _namespace_name "Lifespan.closeRecord" |> NamespacedName
-
+    let ``Lifespan.closeRecord`` = _prefix "Lifespan.closeRecord"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Lifespan.version"></see>
     /// </summary>
-    let ``Lifespan.version`` =
-        Namespaced_IRI.parse _namespace_name "Lifespan.version" |> NamespacedName
-
+    let ``Lifespan.version`` = _prefix "Lifespan.version"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#Lifespan.validTo"></see>
     /// </summary>
-    let ``Lifespan.validTo`` =
-        Namespaced_IRI.parse _namespace_name "Lifespan.validTo" |> NamespacedName
-
+    let ``Lifespan.validTo`` = _prefix "Lifespan.validTo"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#ReferenceObject.geometry"></see>
     /// </summary>
-    let ``ReferenceObject.geometry`` =
-        Namespaced_IRI.parse _namespace_name "ReferenceObject.geometry" |> NamespacedName
-
+    let ``ReferenceObject.geometry`` = _prefix "ReferenceObject.geometry"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#ReferenceObject.id"></see>
     /// </summary>
-    let ``ReferenceObject.id`` =
-        Namespaced_IRI.parse _namespace_name "ReferenceObject.id" |> NamespacedName
-
+    let ``ReferenceObject.id`` = _prefix "ReferenceObject.id"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#ReferenceObject.type"></see>
     /// </summary>
-    let ``ReferenceObject.type`` =
-        Namespaced_IRI.parse _namespace_name "ReferenceObject.type" |> NamespacedName
-
+    let ``ReferenceObject.type`` = _prefix "ReferenceObject.type"
     /// <summary>
     ///   <see href="http://reference.data.gov.au/def/ont/iso19160-1-address#ReferenceObjectType"></see>
     /// </summary>
-    let ReferenceObjectType =
-        Namespaced_IRI.parse _namespace_name "ReferenceObjectType" |> NamespacedName
+    let ReferenceObjectType = _prefix "ReferenceObjectType"

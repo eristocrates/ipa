@@ -1,831 +1,630 @@
 namespace http.dati.camera.it.ocd.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module ocd =
     let _namespace_name = "http://dati.camera.it/ocd/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/organo"></see>
     /// </summary>
-    let organo = Namespaced_IRI.parse _namespace_name "organo" |> NamespacedName
-
+    let organo = _prefix "organo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/organoGoverno"></see>
     /// </summary>
-    let organoGoverno =
-        Namespaced_IRI.parse _namespace_name "organoGoverno" |> NamespacedName
-
+    let organoGoverno = _prefix "organoGoverno"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/dibattito"></see>
     /// </summary>
-    let dibattito = Namespaced_IRI.parse _namespace_name "dibattito" |> NamespacedName
-
+    let dibattito = _prefix "dibattito"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/discussione"></see>
     /// </summary>
-    let discussione =
-        Namespaced_IRI.parse _namespace_name "discussione" |> NamespacedName
-
+    let discussione = _prefix "discussione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/seduta"></see>
     /// </summary>
-    let seduta = Namespaced_IRI.parse _namespace_name "seduta" |> NamespacedName
+    let seduta = _prefix "seduta"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/intervento"></see>
     /// </summary>
-    let intervento = Namespaced_IRI.parse _namespace_name "intervento" |> NamespacedName
+    let intervento = _prefix "intervento"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/atto"></see>
     /// </summary>
-    let atto = Namespaced_IRI.parse _namespace_name "atto" |> NamespacedName
-
+    let atto = _prefix "atto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/richiestaParere"></see>
     /// </summary>
-    let richiestaParere =
-        Namespaced_IRI.parse _namespace_name "richiestaParere" |> NamespacedName
-
+    let richiestaParere = _prefix "richiestaParere"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/stralcio"></see>
     /// </summary>
-    let stralcio = Namespaced_IRI.parse _namespace_name "stralcio" |> NamespacedName
+    let stralcio = _prefix "stralcio"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/statoIter"></see>
     /// </summary>
-    let statoIter = Namespaced_IRI.parse _namespace_name "statoIter" |> NamespacedName
-
+    let statoIter = _prefix "statoIter"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/abbinamento"></see>
     /// </summary>
-    let abbinamento =
-        Namespaced_IRI.parse _namespace_name "abbinamento" |> NamespacedName
-
+    let abbinamento = _prefix "abbinamento"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/assegnazione"></see>
     /// </summary>
-    let assegnazione =
-        Namespaced_IRI.parse _namespace_name "assegnazione" |> NamespacedName
-
+    let assegnazione = _prefix "assegnazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/natura"></see>
     /// </summary>
-    let natura = Namespaced_IRI.parse _namespace_name "natura" |> NamespacedName
+    let natura = _prefix "natura"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/votazione"></see>
     /// </summary>
-    let votazione = Namespaced_IRI.parse _namespace_name "votazione" |> NamespacedName
+    let votazione = _prefix "votazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/voto"></see>
     /// </summary>
-    let voto = Namespaced_IRI.parse _namespace_name "voto" |> NamespacedName
-
+    let voto = _prefix "voto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/membroGoverno"></see>
     /// </summary>
-    let membroGoverno =
-        Namespaced_IRI.parse _namespace_name "membroGoverno" |> NamespacedName
-
+    let membroGoverno = _prefix "membroGoverno"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/governo"></see>
     /// </summary>
-    let governo = Namespaced_IRI.parse _namespace_name "governo" |> NamespacedName
+    let governo = _prefix "governo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/elezione"></see>
     /// </summary>
-    let elezione = Namespaced_IRI.parse _namespace_name "elezione" |> NamespacedName
-
+    let elezione = _prefix "elezione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/sistemaElettorale"></see>
     /// </summary>
-    let sistemaElettorale =
-        Namespaced_IRI.parse _namespace_name "sistemaElettorale" |> NamespacedName
-
+    let sistemaElettorale = _prefix "sistemaElettorale"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/legislatura"></see>
     /// </summary>
-    let legislatura =
-        Namespaced_IRI.parse _namespace_name "legislatura" |> NamespacedName
-
+    let legislatura = _prefix "legislatura"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/presidenteCamera"></see>
     /// </summary>
-    let presidenteCamera =
-        Namespaced_IRI.parse _namespace_name "presidenteCamera" |> NamespacedName
-
+    let presidenteCamera = _prefix "presidenteCamera"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/presidenteConsiglioMinistri"></see>
     /// </summary>
-    let presidenteConsiglioMinistri =
-        Namespaced_IRI.parse _namespace_name "presidenteConsiglioMinistri" |> NamespacedName
-
+    let presidenteConsiglioMinistri = _prefix "presidenteConsiglioMinistri"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/senatore"></see>
     /// </summary>
-    let senatore = Namespaced_IRI.parse _namespace_name "senatore" |> NamespacedName
-
+    let senatore = _prefix "senatore"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/mandatoCamera"></see>
     /// </summary>
-    let mandatoCamera =
-        Namespaced_IRI.parse _namespace_name "mandatoCamera" |> NamespacedName
-
+    let mandatoCamera = _prefix "mandatoCamera"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/mandatoSenato"></see>
     /// </summary>
-    let mandatoSenato =
-        Namespaced_IRI.parse _namespace_name "mandatoSenato" |> NamespacedName
-
+    let mandatoSenato = _prefix "mandatoSenato"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/ufficioParlamentare"></see>
     /// </summary>
-    let ufficioParlamentare =
-        Namespaced_IRI.parse _namespace_name "ufficioParlamentare" |> NamespacedName
-
+    let ufficioParlamentare = _prefix "ufficioParlamentare"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/gruppoParlamentare"></see>
     /// </summary>
-    let gruppoParlamentare =
-        Namespaced_IRI.parse _namespace_name "gruppoParlamentare" |> NamespacedName
-
+    let gruppoParlamentare = _prefix "gruppoParlamentare"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/componenteGruppoMisto"></see>
     /// </summary>
-    let componenteGruppoMisto =
-        Namespaced_IRI.parse _namespace_name "componenteGruppoMisto" |> NamespacedName
-
+    let componenteGruppoMisto = _prefix "componenteGruppoMisto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/incarico"></see>
     /// </summary>
-    let incarico = Namespaced_IRI.parse _namespace_name "incarico" |> NamespacedName
+    let incarico = _prefix "incarico"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/aic"></see>
     /// </summary>
-    let aic = Namespaced_IRI.parse _namespace_name "aic" |> NamespacedName
+    let aic = _prefix "aic"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/luogo"></see>
     /// </summary>
-    let luogo = Namespaced_IRI.parse _namespace_name "luogo" |> NamespacedName
+    let luogo = _prefix "luogo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/DOC"></see>
     /// </summary>
-    let DOC = Namespaced_IRI.parse _namespace_name "DOC" |> NamespacedName
+    let DOC = _prefix "DOC"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/ac"></see>
     /// </summary>
-    let ac = Namespaced_IRI.parse _namespace_name "ac" |> NamespacedName
-
+    let ac = _prefix "ac"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/documentazione"></see>
     /// </summary>
-    let documentazione =
-        Namespaced_IRI.parse _namespace_name "documentazione" |> NamespacedName
-
+    let documentazione = _prefix "documentazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/dossier"></see>
     /// </summary>
-    let dossier = Namespaced_IRI.parse _namespace_name "dossier" |> NamespacedName
+    let dossier = _prefix "dossier"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/dottrina"></see>
     /// </summary>
-    let dottrina = Namespaced_IRI.parse _namespace_name "dottrina" |> NamespacedName
-
+    let dottrina = _prefix "dottrina"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/giurisprudenza"></see>
     /// </summary>
-    let giurisprudenza =
-        Namespaced_IRI.parse _namespace_name "giurisprudenza" |> NamespacedName
-
+    let giurisprudenza = _prefix "giurisprudenza"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/normativa"></see>
     /// </summary>
-    let normativa = Namespaced_IRI.parse _namespace_name "normativa" |> NamespacedName
+    let normativa = _prefix "normativa"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/note"></see>
     /// </summary>
-    let note = Namespaced_IRI.parse _namespace_name "note" |> NamespacedName
-
+    let note = _prefix "note"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/pubblicistica"></see>
     /// </summary>
-    let pubblicistica =
-        Namespaced_IRI.parse _namespace_name "pubblicistica" |> NamespacedName
-
+    let pubblicistica = _prefix "pubblicistica"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/aderisce"></see>
     /// </summary>
-    let aderisce = Namespaced_IRI.parse _namespace_name "aderisce" |> NamespacedName
+    let aderisce = _prefix "aderisce"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/deputato"></see>
     /// </summary>
-    let deputato = Namespaced_IRI.parse _namespace_name "deputato" |> NamespacedName
-
+    let deputato = _prefix "deputato"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/adesioneGruppo"></see>
     /// </summary>
-    let adesioneGruppo =
-        Namespaced_IRI.parse _namespace_name "adesioneGruppo" |> NamespacedName
-
+    let adesioneGruppo = _prefix "adesioneGruppo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_gruppoParlamentare"></see>
     /// </summary>
-    let rif_gruppoParlamentare =
-        Namespaced_IRI.parse _namespace_name "rif_gruppoParlamentare" |> NamespacedName
-
+    let rif_gruppoParlamentare = _prefix "rif_gruppoParlamentare"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/adesioneGruppoMisto"></see>
     /// </summary>
-    let adesioneGruppoMisto =
-        Namespaced_IRI.parse _namespace_name "adesioneGruppoMisto" |> NamespacedName
-
+    let adesioneGruppoMisto = _prefix "adesioneGruppoMisto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_componente"></see>
     /// </summary>
-    let rif_componente =
-        Namespaced_IRI.parse _namespace_name "rif_componente" |> NamespacedName
-
+    let rif_componente = _prefix "rif_componente"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/lavori"></see>
     /// </summary>
-    let lavori = Namespaced_IRI.parse _namespace_name "lavori" |> NamespacedName
-
+    let lavori = _prefix "lavori"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/allegatoDiscussione"></see>
     /// </summary>
-    let allegatoDiscussione =
-        Namespaced_IRI.parse _namespace_name "allegatoDiscussione" |> NamespacedName
-
+    let allegatoDiscussione = _prefix "allegatoDiscussione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/altro_firmatario"></see>
     /// </summary>
-    let altro_firmatario =
-        Namespaced_IRI.parse _namespace_name "altro_firmatario" |> NamespacedName
-
+    let altro_firmatario = _prefix "altro_firmatario"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/appartenenzaOrgano"></see>
     /// </summary>
-    let appartenenzaOrgano =
-        Namespaced_IRI.parse _namespace_name "appartenenzaOrgano" |> NamespacedName
-
+    let appartenenzaOrgano = _prefix "appartenenzaOrgano"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_deputato"></see>
     /// </summary>
-    let rif_deputato =
-        Namespaced_IRI.parse _namespace_name "rif_deputato" |> NamespacedName
-
+    let rif_deputato = _prefix "rif_deputato"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_organo"></see>
     /// </summary>
-    let rif_organo = Namespaced_IRI.parse _namespace_name "rif_organo" |> NamespacedName
+    let rif_organo = _prefix "rif_organo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/approvato"></see>
     /// </summary>
-    let approvato = Namespaced_IRI.parse _namespace_name "approvato" |> NamespacedName
+    let approvato = _prefix "approvato"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/assemblea"></see>
     /// </summary>
-    let assemblea = Namespaced_IRI.parse _namespace_name "assemblea" |> NamespacedName
+    let assemblea = _prefix "assemblea"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/astenuti"></see>
     /// </summary>
-    let astenuti = Namespaced_IRI.parse _namespace_name "astenuti" |> NamespacedName
+    let astenuti = _prefix "astenuti"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/documenti"></see>
     /// </summary>
-    let documenti = Namespaced_IRI.parse _namespace_name "documenti" |> NamespacedName
+    let documenti = _prefix "documenti"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/autore"></see>
     /// </summary>
-    let autore = Namespaced_IRI.parse _namespace_name "autore" |> NamespacedName
+    let autore = _prefix "autore"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/bollettino"></see>
     /// </summary>
-    let bollettino = Namespaced_IRI.parse _namespace_name "bollettino" |> NamespacedName
-
+    let bollettino = _prefix "bollettino"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/cambioDenominazione"></see>
     /// </summary>
-    let cambioDenominazione =
-        Namespaced_IRI.parse _namespace_name "cambioDenominazione" |> NamespacedName
-
+    let cambioDenominazione = _prefix "cambioDenominazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/carica"></see>
     /// </summary>
-    let carica = Namespaced_IRI.parse _namespace_name "carica" |> NamespacedName
-
+    let carica = _prefix "carica"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/circoscrizionePlurieletto"></see>
     /// </summary>
-    let circoscrizionePlurieletto =
-        Namespaced_IRI.parse _namespace_name "circoscrizionePlurieletto" |> NamespacedName
-
+    let circoscrizionePlurieletto = _prefix "circoscrizionePlurieletto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/componente"></see>
     /// </summary>
-    let componente = Namespaced_IRI.parse _namespace_name "componente" |> NamespacedName
-
+    let componente = _prefix "componente"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/composizioneOrgano"></see>
     /// </summary>
-    let composizioneOrgano =
-        Namespaced_IRI.parse _namespace_name "composizioneOrgano" |> NamespacedName
-
+    let composizioneOrgano = _prefix "composizioneOrgano"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/concluso"></see>
     /// </summary>
-    let concluso = Namespaced_IRI.parse _namespace_name "concluso" |> NamespacedName
+    let concluso = _prefix "concluso"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/contrari"></see>
     /// </summary>
-    let contrari = Namespaced_IRI.parse _namespace_name "contrari" |> NamespacedName
+    let contrari = _prefix "contrari"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/convalida"></see>
     /// </summary>
-    let convalida = Namespaced_IRI.parse _namespace_name "convalida" |> NamespacedName
-
+    let convalida = _prefix "convalida"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/costituzionale"></see>
     /// </summary>
-    let costituzionale =
-        Namespaced_IRI.parse _namespace_name "costituzionale" |> NamespacedName
-
+    let costituzionale = _prefix "costituzionale"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/cronologia"></see>
     /// </summary>
-    let cronologia = Namespaced_IRI.parse _namespace_name "cronologia" |> NamespacedName
-
+    let cronologia = _prefix "cronologia"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/denominazione"></see>
     /// </summary>
-    let denominazione =
-        Namespaced_IRI.parse _namespace_name "denominazione" |> NamespacedName
-
+    let denominazione = _prefix "denominazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/persona"></see>
     /// </summary>
-    let persona = Namespaced_IRI.parse _namespace_name "persona" |> NamespacedName
-
+    let persona = _prefix "persona"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/destinatario"></see>
     /// </summary>
-    let destinatario =
-        Namespaced_IRI.parse _namespace_name "destinatario" |> NamespacedName
-
+    let destinatario = _prefix "destinatario"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/dicastero"></see>
     /// </summary>
-    let dicastero = Namespaced_IRI.parse _namespace_name "dicastero" |> NamespacedName
+    let dicastero = _prefix "dicastero"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/diventa"></see>
     /// </summary>
-    let diventa = Namespaced_IRI.parse _namespace_name "diventa" |> NamespacedName
-
+    let diventa = _prefix "diventa"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/trasformazioneGruppo"></see>
     /// </summary>
-    let trasformazioneGruppo =
-        Namespaced_IRI.parse _namespace_name "trasformazioneGruppo" |> NamespacedName
-
+    let trasformazioneGruppo = _prefix "trasformazioneGruppo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/doc"></see>
     /// </summary>
-    let doc = Namespaced_IRI.parse _namespace_name "doc" |> NamespacedName
+    let doc = _prefix "doc"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/endDate"></see>
     /// </summary>
-    let endDate = Namespaced_IRI.parse _namespace_name "endDate" |> NamespacedName
-
+    let endDate = _prefix "endDate"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/fa_parte_della"></see>
     /// </summary>
-    let fa_parte_della =
-        Namespaced_IRI.parse _namespace_name "fa_parte_della" |> NamespacedName
-
+    let fa_parte_della = _prefix "fa_parte_della"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/favorevoli"></see>
     /// </summary>
-    let favorevoli = Namespaced_IRI.parse _namespace_name "favorevoli" |> NamespacedName
+    let favorevoli = _prefix "favorevoli"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/griglia"></see>
     /// </summary>
-    let griglia = Namespaced_IRI.parse _namespace_name "griglia" |> NamespacedName
-
+    let griglia = _prefix "griglia"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/risorsa_web"></see>
     /// </summary>
-    let risorsa_web =
-        Namespaced_IRI.parse _namespace_name "risorsa_web" |> NamespacedName
-
+    let risorsa_web = _prefix "risorsa_web"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/haMembro"></see>
     /// </summary>
-    let haMembro = Namespaced_IRI.parse _namespace_name "haMembro" |> NamespacedName
-
+    let haMembro = _prefix "haMembro"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/incaricoGovernativo"></see>
     /// </summary>
-    let incaricoGovernativo =
-        Namespaced_IRI.parse _namespace_name "incaricoGovernativo" |> NamespacedName
-
+    let incaricoGovernativo = _prefix "incaricoGovernativo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/incaricoGoverno"></see>
     /// </summary>
-    let incaricoGoverno =
-        Namespaced_IRI.parse _namespace_name "incaricoGoverno" |> NamespacedName
-
+    let incaricoGoverno = _prefix "incaricoGoverno"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/iniziativa"></see>
     /// </summary>
-    let iniziativa = Namespaced_IRI.parse _namespace_name "iniziativa" |> NamespacedName
+    let iniziativa = _prefix "iniziativa"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/interim"></see>
     /// </summary>
-    let interim = Namespaced_IRI.parse _namespace_name "interim" |> NamespacedName
-
+    let interim = _prefix "interim"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/lavoriPreparatori"></see>
     /// </summary>
-    let lavoriPreparatori =
-        Namespaced_IRI.parse _namespace_name "lavoriPreparatori" |> NamespacedName
-
+    let lavoriPreparatori = _prefix "lavoriPreparatori"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/lavoriPreparatoriLegge"></see>
     /// </summary>
-    let lavoriPreparatoriLegge =
-        Namespaced_IRI.parse _namespace_name "lavoriPreparatoriLegge" |> NamespacedName
-
+    let lavoriPreparatoriLegge = _prefix "lavoriPreparatoriLegge"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/legge"></see>
     /// </summary>
-    let legge = Namespaced_IRI.parse _namespace_name "legge" |> NamespacedName
+    let legge = _prefix "legge"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/lex"></see>
     /// </summary>
-    let lex = Namespaced_IRI.parse _namespace_name "lex" |> NamespacedName
+    let lex = _prefix "lex"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/lista"></see>
     /// </summary>
-    let lista = Namespaced_IRI.parse _namespace_name "lista" |> NamespacedName
-
+    let lista = _prefix "lista"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/maggioranza"></see>
     /// </summary>
-    let maggioranza =
-        Namespaced_IRI.parse _namespace_name "maggioranza" |> NamespacedName
-
+    let maggioranza = _prefix "maggioranza"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/membro"></see>
     /// </summary>
-    let membro = Namespaced_IRI.parse _namespace_name "membro" |> NamespacedName
-
+    let membro = _prefix "membro"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/membroConsulta"></see>
     /// </summary>
-    let membroConsulta =
-        Namespaced_IRI.parse _namespace_name "membroConsulta" |> NamespacedName
-
+    let membroConsulta = _prefix "membroConsulta"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/motivoTermine"></see>
     /// </summary>
-    let motivoTermine =
-        Namespaced_IRI.parse _namespace_name "motivoTermine" |> NamespacedName
-
+    let motivoTermine = _prefix "motivoTermine"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/name"></see>
     /// </summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/nomina"></see>
     /// </summary>
-    let nomina = Namespaced_IRI.parse _namespace_name "nomina" |> NamespacedName
+    let nomina = _prefix "nomina"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/opzione"></see>
     /// </summary>
-    let opzione = Namespaced_IRI.parse _namespace_name "opzione" |> NamespacedName
+    let opzione = _prefix "opzione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/parentADM1"></see>
     /// </summary>
-    let parentADM1 = Namespaced_IRI.parse _namespace_name "parentADM1" |> NamespacedName
+    let parentADM1 = _prefix "parentADM1"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/parentADM2"></see>
     /// </summary>
-    let parentADM2 = Namespaced_IRI.parse _namespace_name "parentADM2" |> NamespacedName
+    let parentADM2 = _prefix "parentADM2"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/parentADM3"></see>
     /// </summary>
-    let parentADM3 = Namespaced_IRI.parse _namespace_name "parentADM3" |> NamespacedName
-
+    let parentADM3 = _prefix "parentADM3"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/parentCountry"></see>
     /// </summary>
-    let parentCountry =
-        Namespaced_IRI.parse _namespace_name "parentCountry" |> NamespacedName
-
+    let parentCountry = _prefix "parentCountry"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/plurieletto"></see>
     /// </summary>
-    let plurieletto =
-        Namespaced_IRI.parse _namespace_name "plurieletto" |> NamespacedName
-
+    let plurieletto = _prefix "plurieletto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/presenti"></see>
     /// </summary>
-    let presenti = Namespaced_IRI.parse _namespace_name "presenti" |> NamespacedName
-
+    let presenti = _prefix "presenti"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/presidenteRepubblica"></see>
     /// </summary>
-    let presidenteRepubblica =
-        Namespaced_IRI.parse _namespace_name "presidenteRepubblica" |> NamespacedName
-
+    let presidenteRepubblica = _prefix "presidenteRepubblica"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/primo_firmatario"></see>
     /// </summary>
-    let primo_firmatario =
-        Namespaced_IRI.parse _namespace_name "primo_firmatario" |> NamespacedName
-
+    let primo_firmatario = _prefix "primo_firmatario"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/proclamazione"></see>
     /// </summary>
-    let proclamazione =
-        Namespaced_IRI.parse _namespace_name "proclamazione" |> NamespacedName
-
+    let proclamazione = _prefix "proclamazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/relatore"></see>
     /// </summary>
-    let relatore = Namespaced_IRI.parse _namespace_name "relatore" |> NamespacedName
-
+    let relatore = _prefix "relatore"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/richiestaFiducia"></see>
     /// </summary>
-    let richiestaFiducia =
-        Namespaced_IRI.parse _namespace_name "richiestaFiducia" |> NamespacedName
-
+    let richiestaFiducia = _prefix "richiestaFiducia"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_abbinamento"></see>
     /// </summary>
-    let rif_abbinamento =
-        Namespaced_IRI.parse _namespace_name "rif_abbinamento" |> NamespacedName
-
+    let rif_abbinamento = _prefix "rif_abbinamento"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_allegatoDiscussione"></see>
     /// </summary>
-    let rif_allegatoDiscussione =
-        Namespaced_IRI.parse _namespace_name "rif_allegatoDiscussione" |> NamespacedName
-
+    let rif_allegatoDiscussione = _prefix "rif_allegatoDiscussione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_assegnazione"></see>
     /// </summary>
-    let rif_assegnazione =
-        Namespaced_IRI.parse _namespace_name "rif_assegnazione" |> NamespacedName
-
+    let rif_assegnazione = _prefix "rif_assegnazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_attoCamera"></see>
     /// </summary>
-    let rif_attoCamera =
-        Namespaced_IRI.parse _namespace_name "rif_attoCamera" |> NamespacedName
-
+    let rif_attoCamera = _prefix "rif_attoCamera"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_bollettino"></see>
     /// </summary>
-    let rif_bollettino =
-        Namespaced_IRI.parse _namespace_name "rif_bollettino" |> NamespacedName
-
+    let rif_bollettino = _prefix "rif_bollettino"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_dibattito"></see>
     /// </summary>
-    let rif_dibattito =
-        Namespaced_IRI.parse _namespace_name "rif_dibattito" |> NamespacedName
-
+    let rif_dibattito = _prefix "rif_dibattito"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_discussione"></see>
     /// </summary>
-    let rif_discussione =
-        Namespaced_IRI.parse _namespace_name "rif_discussione" |> NamespacedName
-
+    let rif_discussione = _prefix "rif_discussione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_doc"></see>
     /// </summary>
-    let rif_doc = Namespaced_IRI.parse _namespace_name "rif_doc" |> NamespacedName
-
+    let rif_doc = _prefix "rif_doc"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_dossier"></see>
     /// </summary>
-    let rif_dossier =
-        Namespaced_IRI.parse _namespace_name "rif_dossier" |> NamespacedName
-
+    let rif_dossier = _prefix "rif_dossier"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_elezione"></see>
     /// </summary>
-    let rif_elezione =
-        Namespaced_IRI.parse _namespace_name "rif_elezione" |> NamespacedName
-
+    let rif_elezione = _prefix "rif_elezione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_governo"></see>
     /// </summary>
-    let rif_governo =
-        Namespaced_IRI.parse _namespace_name "rif_governo" |> NamespacedName
-
+    let rif_governo = _prefix "rif_governo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_incarico"></see>
     /// </summary>
-    let rif_incarico =
-        Namespaced_IRI.parse _namespace_name "rif_incarico" |> NamespacedName
-
+    let rif_incarico = _prefix "rif_incarico"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_incaricoGoverno"></see>
     /// </summary>
-    let rif_incaricoGoverno =
-        Namespaced_IRI.parse _namespace_name "rif_incaricoGoverno" |> NamespacedName
-
+    let rif_incaricoGoverno = _prefix "rif_incaricoGoverno"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_intervento"></see>
     /// </summary>
-    let rif_intervento =
-        Namespaced_IRI.parse _namespace_name "rif_intervento" |> NamespacedName
-
+    let rif_intervento = _prefix "rif_intervento"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_leg"></see>
     /// </summary>
-    let rif_leg = Namespaced_IRI.parse _namespace_name "rif_leg" |> NamespacedName
+    let rif_leg = _prefix "rif_leg"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_luogo"></see>
     /// </summary>
-    let rif_luogo = Namespaced_IRI.parse _namespace_name "rif_luogo" |> NamespacedName
-
+    let rif_luogo = _prefix "rif_luogo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_mandatoCamera"></see>
     /// </summary>
-    let rif_mandatoCamera =
-        Namespaced_IRI.parse _namespace_name "rif_mandatoCamera" |> NamespacedName
-
+    let rif_mandatoCamera = _prefix "rif_mandatoCamera"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_mandatoSenato"></see>
     /// </summary>
-    let rif_mandatoSenato =
-        Namespaced_IRI.parse _namespace_name "rif_mandatoSenato" |> NamespacedName
-
+    let rif_mandatoSenato = _prefix "rif_mandatoSenato"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_membroGoverno"></see>
     /// </summary>
-    let rif_membroGoverno =
-        Namespaced_IRI.parse _namespace_name "rif_membroGoverno" |> NamespacedName
-
+    let rif_membroGoverno = _prefix "rif_membroGoverno"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_natura"></see>
     /// </summary>
-    let rif_natura = Namespaced_IRI.parse _namespace_name "rif_natura" |> NamespacedName
-
+    let rif_natura = _prefix "rif_natura"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_organoGoverno"></see>
     /// </summary>
-    let rif_organoGoverno =
-        Namespaced_IRI.parse _namespace_name "rif_organoGoverno" |> NamespacedName
-
+    let rif_organoGoverno = _prefix "rif_organoGoverno"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_persona"></see>
     /// </summary>
-    let rif_persona =
-        Namespaced_IRI.parse _namespace_name "rif_persona" |> NamespacedName
-
+    let rif_persona = _prefix "rif_persona"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_presidenteConsiglioMinistri"></see>
     /// </summary>
-    let rif_presidenteConsiglioMinistri =
-        Namespaced_IRI.parse _namespace_name "rif_presidenteConsiglioMinistri" |> NamespacedName
-
+    let rif_presidenteConsiglioMinistri = _prefix "rif_presidenteConsiglioMinistri"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_richiestaParere"></see>
     /// </summary>
-    let rif_richiestaParere =
-        Namespaced_IRI.parse _namespace_name "rif_richiestaParere" |> NamespacedName
-
+    let rif_richiestaParere = _prefix "rif_richiestaParere"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_seduta"></see>
     /// </summary>
-    let rif_seduta = Namespaced_IRI.parse _namespace_name "rif_seduta" |> NamespacedName
-
+    let rif_seduta = _prefix "rif_seduta"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_senatore"></see>
     /// </summary>
-    let rif_senatore =
-        Namespaced_IRI.parse _namespace_name "rif_senatore" |> NamespacedName
-
+    let rif_senatore = _prefix "rif_senatore"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_sistemaElettorale"></see>
     /// </summary>
-    let rif_sistemaElettorale =
-        Namespaced_IRI.parse _namespace_name "rif_sistemaElettorale" |> NamespacedName
-
+    let rif_sistemaElettorale = _prefix "rif_sistemaElettorale"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_statoIter"></see>
     /// </summary>
-    let rif_statoIter =
-        Namespaced_IRI.parse _namespace_name "rif_statoIter" |> NamespacedName
-
+    let rif_statoIter = _prefix "rif_statoIter"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_trasmissione"></see>
     /// </summary>
-    let rif_trasmissione =
-        Namespaced_IRI.parse _namespace_name "rif_trasmissione" |> NamespacedName
-
+    let rif_trasmissione = _prefix "rif_trasmissione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/trasmissione"></see>
     /// </summary>
-    let trasmissione =
-        Namespaced_IRI.parse _namespace_name "trasmissione" |> NamespacedName
-
+    let trasmissione = _prefix "trasmissione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_ufficioParlamentare"></see>
     /// </summary>
-    let rif_ufficioParlamentare =
-        Namespaced_IRI.parse _namespace_name "rif_ufficioParlamentare" |> NamespacedName
-
+    let rif_ufficioParlamentare = _prefix "rif_ufficioParlamentare"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_unitaOrganizzativa"></see>
     /// </summary>
-    let rif_unitaOrganizzativa =
-        Namespaced_IRI.parse _namespace_name "rif_unitaOrganizzativa" |> NamespacedName
-
+    let rif_unitaOrganizzativa = _prefix "rif_unitaOrganizzativa"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/unitaOrganizzativa"></see>
     /// </summary>
-    let unitaOrganizzativa =
-        Namespaced_IRI.parse _namespace_name "unitaOrganizzativa" |> NamespacedName
-
+    let unitaOrganizzativa = _prefix "unitaOrganizzativa"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_versioneTestoAtto"></see>
     /// </summary>
-    let rif_versioneTestoAtto =
-        Namespaced_IRI.parse _namespace_name "rif_versioneTestoAtto" |> NamespacedName
-
+    let rif_versioneTestoAtto = _prefix "rif_versioneTestoAtto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/versioneTestoAtto"></see>
     /// </summary>
-    let versioneTestoAtto =
-        Namespaced_IRI.parse _namespace_name "versioneTestoAtto" |> NamespacedName
-
+    let versioneTestoAtto = _prefix "versioneTestoAtto"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rif_votazione"></see>
     /// </summary>
-    let rif_votazione =
-        Namespaced_IRI.parse _namespace_name "rif_votazione" |> NamespacedName
-
+    let rif_votazione = _prefix "rif_votazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/risposta"></see>
     /// </summary>
-    let risposta = Namespaced_IRI.parse _namespace_name "risposta" |> NamespacedName
-
+    let risposta = _prefix "risposta"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/rispostaAIC"></see>
     /// </summary>
-    let rispostaAIC =
-        Namespaced_IRI.parse _namespace_name "rispostaAIC" |> NamespacedName
-
+    let rispostaAIC = _prefix "rispostaAIC"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/ruolo"></see>
     /// </summary>
-    let ruolo = Namespaced_IRI.parse _namespace_name "ruolo" |> NamespacedName
-
+    let ruolo = _prefix "ruolo"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/siComponeDi"></see>
     /// </summary>
-    let siComponeDi =
-        Namespaced_IRI.parse _namespace_name "siComponeDi" |> NamespacedName
-
+    let siComponeDi = _prefix "siComponeDi"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/startDate"></see>
     /// </summary>
-    let startDate = Namespaced_IRI.parse _namespace_name "startDate" |> NamespacedName
-
+    let startDate = _prefix "startDate"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/tipoElezione"></see>
     /// </summary>
-    let tipoElezione =
-        Namespaced_IRI.parse _namespace_name "tipoElezione" |> NamespacedName
-
+    let tipoElezione = _prefix "tipoElezione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/tipoProclamazione"></see>
     /// </summary>
-    let tipoProclamazione =
-        Namespaced_IRI.parse _namespace_name "tipoProclamazione" |> NamespacedName
-
+    let tipoProclamazione = _prefix "tipoProclamazione"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/tipologia"></see>
     /// </summary>
-    let tipologia = Namespaced_IRI.parse _namespace_name "tipologia" |> NamespacedName
+    let tipologia = _prefix "tipologia"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/votanti"></see>
     /// </summary>
-    let votanti = Namespaced_IRI.parse _namespace_name "votanti" |> NamespacedName
-
+    let votanti = _prefix "votanti"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/votazioneFinale"></see>
     /// </summary>
-    let votazioneFinale =
-        Namespaced_IRI.parse _namespace_name "votazioneFinale" |> NamespacedName
-
+    let votazioneFinale = _prefix "votazioneFinale"
     /// <summary>
     ///   <see href="http://dati.camera.it/ocd/votazioneSegreta"></see>
     /// </summary>
-    let votazioneSegreta =
-        Namespaced_IRI.parse _namespace_name "votazioneSegreta" |> NamespacedName
+    let votazioneSegreta = _prefix "votazioneSegreta"

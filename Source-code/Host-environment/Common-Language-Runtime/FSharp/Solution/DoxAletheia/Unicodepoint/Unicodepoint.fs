@@ -409,6 +409,13 @@ let Scalars =
     |> IntervalSet.from_interval_list
 
 
+let interval_0_4 = 0 +-+ 4
+let interval_0_5 = 0 +-+ 5
+let interval_1_9 = 1 +-+ 9
+
+
+
+
 
 
 

@@ -1,13 +1,15 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.ProductsAndServices.MetadataFBCProductsAndServices.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_pas_mod =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/MetadataFBCProductsAndServices/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/MetadataFBCProductsAndServices/FBCProductsAndServicesModule"></see>
     /// </summary>
-    let FBCProductsAndServicesModule =
-        Namespaced_IRI.parse _namespace_name "FBCProductsAndServicesModule" |> NamespacedName
+    let FBCProductsAndServicesModule = _prefix "FBCProductsAndServicesModule"

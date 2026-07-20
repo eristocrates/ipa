@@ -1,17 +1,13 @@
 digraph G {
   node [shape=ellipse];
   edge [fontname="Helvetica", fontsize=10];
-  0 [label="sanctuary:siamesederp"];
-  1 [label="foaf:Person"];
-  2 [label="sanctuary:eristocrates"];
-  3 [label="sanctuary:yaladre"];
-  4 [label="commonplace:Quest_of_D"];
-  5 [label="sanctuary:regen"];
-  6 [label="commonplace:Gitadora"];
-  0 -> 1 [label="rdf:type"];
-  2 -> 1 [label="rdf:type"];
-  3 -> 1 [label="rdf:type"];
-  3 -> 4 [label="foaf:topic_interest"];
-  3 -> 6 [label="foaf:topic_interest"];
-  5 -> 1 [label="rdf:type"];
+  0 [label="dbug:Alice"];
+  1 [label="dbug:Bob"];
+  2 [label="dbug:Bob"];
+  3 [label="dbug:Alice"];
+  4 [label="foaf:Person"];
+  0 -> 1 [label="foaf:knows"];
+  0 -> 4 [label="a"];
+  2 -> 3 [label="foaf:knows"];
+  2 -> 4 [label="a"];
 }

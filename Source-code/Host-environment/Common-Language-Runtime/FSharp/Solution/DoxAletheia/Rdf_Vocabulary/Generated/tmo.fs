@@ -1,9 +1,12 @@
 namespace http.www.semanticdesktop.org.ontologies._2008._05._20.tmo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module tmo =
     let _namespace_name = "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// AbilityCarrier is an abstract class which circumferences all entities which can take action or which are somehow involved in tasks.
@@ -21,636 +24,517 @@ module tmo =
     /// hereby allows specifying how the ability carrying entity is or was
     /// involved.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrier"></see></summary>
-    let AbilityCarrier =
-        Namespaced_IRI.parse _namespace_name "AbilityCarrier" |> NamespacedName
-
+    let AbilityCarrier = _prefix "AbilityCarrier"
     /// <summary>
     /// The class AbilityCarrier_Involvement ties together an AbilityCarrier with an AbilityCarrier_Role. This is a role based modelling approach. An n-ary relation is realized.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierInvolvement"></see></summary>
-    let AbilityCarrierInvolvement =
-        Namespaced_IRI.parse _namespace_name "AbilityCarrierInvolvement" |> NamespacedName
-
+    let AbilityCarrierInvolvement = _prefix "AbilityCarrierInvolvement"
     /// <summary>
     /// Examples instances  of AbilityCarrirRoles are e.g. "requested", "required" and "used" which further specify the type a person was involved in.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierRole"></see></summary>
-    let AbilityCarrierRole =
-        Namespaced_IRI.parse _namespace_name "AbilityCarrierRole" |> NamespacedName
-
+    let AbilityCarrierRole = _prefix "AbilityCarrierRole"
     /// <summary>
     /// StateTypeRole is an abstract class which subsumes various other classes which represent "states" or roles e.g. in role based modelling conpetualisations.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"></see></summary>
-    let StateTypeRole =
-        Namespaced_IRI.parse _namespace_name "StateTypeRole" |> NamespacedName
-
+    let StateTypeRole = _prefix "StateTypeRole"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AgentAbilityCarrier"></see>
     /// </summary>
-    let AgentAbilityCarrier =
-        Namespaced_IRI.parse _namespace_name "AgentAbilityCarrier" |> NamespacedName
-
+    let AgentAbilityCarrier = _prefix "AgentAbilityCarrier"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AssociationDependency"></see>
     /// </summary>
-    let AssociationDependency =
-        Namespaced_IRI.parse _namespace_name "AssociationDependency" |> NamespacedName
-
+    let AssociationDependency = _prefix "AssociationDependency"
     /// <summary>
     /// A symmetric relations between task.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#UndirectedDependency"></see></summary>
-    let UndirectedDependency =
-        Namespaced_IRI.parse _namespace_name "UndirectedDependency" |> NamespacedName
-
+    let UndirectedDependency = _prefix "UndirectedDependency"
     /// <summary>
     /// By means of attachments, references to other resources can be established. Resources are information objects. Every Thing, which can be referenced, on the SSD is an information object. In contrast to the usual SSD references/associations, here additionally information can be specified. Further metadata about the role an attachment plays can be stated by means of instances of AttachmentRole. It can be expressed what the Role of attachment is e.g., regarding "desired/requested" or "required" or "potentially useful / somehow related" or "used/produced/achieved". The reference property models the actual link to the attached piece of information.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment"></see></summary>
-    let Attachment = Namespaced_IRI.parse _namespace_name "Attachment" |> NamespacedName
-
+    let Attachment = _prefix "Attachment"
     /// <summary>
     /// AttachmentRoles further specify the type of how an attachment relates to a task. Example instances  of AttachmentRoles are e.g. "desired_request", "required" and "used".
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AttachmentRole"></see></summary>
-    let AttachmentRole =
-        Namespaced_IRI.parse _namespace_name "AttachmentRole" |> NamespacedName
-
+    let AttachmentRole = _prefix "AttachmentRole"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Delegability"></see>
     /// </summary>
-    let Delegability =
-        Namespaced_IRI.parse _namespace_name "Delegability" |> NamespacedName
-
+    let Delegability = _prefix "Delegability"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Importance"></see>
     /// </summary>
-    let Importance = Namespaced_IRI.parse _namespace_name "Importance" |> NamespacedName
-
+    let Importance = _prefix "Importance"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Interdependence"></see>
     /// </summary>
-    let Interdependence =
-        Namespaced_IRI.parse _namespace_name "Interdependence" |> NamespacedName
-
+    let Interdependence = _prefix "Interdependence"
     /// <summary>
     /// PersonInvolvement  realizes n-ary associations to Persons which are realtedd to an task. The involvement is further characterized by an PersonTaskRole.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvement"></see></summary>
-    let PersonInvolvement =
-        Namespaced_IRI.parse _namespace_name "PersonInvolvement" |> NamespacedName
-
+    let PersonInvolvement = _prefix "PersonInvolvement"
     /// <summary>
     /// They further specify the type a person was related to an task.
     /// Examples instances  of AttachmentRoles are e.g.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvementRole"></see></summary>
-    let PersonInvolvementRole =
-        Namespaced_IRI.parse _namespace_name "PersonInvolvementRole" |> NamespacedName
-
+    let PersonInvolvementRole = _prefix "PersonInvolvementRole"
     /// <summary>
     /// In a  PredecessorDependency the dependencyMemberA is the task which is to be executed before dependencyMemberB.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PredecessorDependency"></see></summary>
-    let PredecessorDependency =
-        Namespaced_IRI.parse _namespace_name "PredecessorDependency" |> NamespacedName
-
+    let PredecessorDependency = _prefix "PredecessorDependency"
     /// <summary>
     /// The PredecessorSuccessorDependency enables a directed relation between task. By means of the concrete sublcasses one can further distinguish from which point of view this relation is created.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PredecessorSuccessorDependency"></see></summary>
-    let PredecessorSuccessorDependency =
-        Namespaced_IRI.parse _namespace_name "PredecessorSuccessorDependency" |> NamespacedName
-
+    let PredecessorSuccessorDependency = _prefix "PredecessorSuccessorDependency"
     /// <summary>
     /// Between the tasks, further dependencies may exist. These dependencies allow for a graph network structure. For ease of use, dependencies should not be too frequent, otherwise the primarily character of a hierarchy would be diminished and a consequent graph representation would become considerable. However, such a graph representation has other drawbacks, the user is likely to loose oversight, tree structures are more helpful in structuring the work.
     ///
     /// A dependency relation is characterized by the type of the relation and by an additional description. There are different possibilities for dependency relations between tasks.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"></see></summary>
-    let TaskDependency =
-        Namespaced_IRI.parse _namespace_name "TaskDependency" |> NamespacedName
-
+    let TaskDependency = _prefix "TaskDependency"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Priority"></see>
     /// </summary>
-    let Priority = Namespaced_IRI.parse _namespace_name "Priority" |> NamespacedName
+    let Priority = _prefix "Priority"
     /// <summary>
     /// examples: Architect, Developer, ...
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Role"></see></summary>
-    let Role = Namespaced_IRI.parse _namespace_name "Role" |> NamespacedName
-
+    let Role = _prefix "Role"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#SimilarityDependence"></see>
     /// </summary>
-    let SimilarityDependence =
-        Namespaced_IRI.parse _namespace_name "SimilarityDependence" |> NamespacedName
-
+    let SimilarityDependence = _prefix "SimilarityDependence"
     /// <summary>
     /// examples are e.g. technologies like Java, XML,  ...
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Skill"></see></summary>
-    let Skill = Namespaced_IRI.parse _namespace_name "Skill" |> NamespacedName
-
+    let Skill = _prefix "Skill"
     /// <summary>
     /// In a SuccessorrDependency the dependencyMemberA is the task which is to be executed after dependencyMemberB.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#SuccessorDependency"></see></summary>
-    let SuccessorDependency =
-        Namespaced_IRI.parse _namespace_name "SuccessorDependency" |> NamespacedName
-
+    let SuccessorDependency = _prefix "SuccessorDependency"
     /// <summary>
     /// By means of the SuperSubTaskDependency one can further describe the subtask-supertask relation .e.g by an descriptin. This enables an n-ary relation between subtask and supertask.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#SuperSubTaskDependency"></see></summary>
-    let SuperSubTaskDependency =
-        Namespaced_IRI.parse _namespace_name "SuperSubTaskDependency" |> NamespacedName
+    let SuperSubTaskDependency = _prefix "SuperSubTaskDependency"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AbilityCarrierRole_Requested"></see>
     /// </summary>
     let TMO_Instance_AbilityCarrierRole_Requested =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AbilityCarrierRole_Requested" |> NamespacedName
+        _prefix "TMO_Instance_AbilityCarrierRole_Requested"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AbilityCarrierRole_Required"></see>
     /// </summary>
     let TMO_Instance_AbilityCarrierRole_Required =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AbilityCarrierRole_Required" |> NamespacedName
+        _prefix "TMO_Instance_AbilityCarrierRole_Required"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AbilityCarrierRole_Used"></see>
     /// </summary>
     let TMO_Instance_AbilityCarrierRole_Used =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AbilityCarrierRole_Used" |> NamespacedName
+        _prefix "TMO_Instance_AbilityCarrierRole_Used"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Desired_Requested"></see>
     /// </summary>
     let TMO_Instance_AttachmentRole_Desired_Requested =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AttachmentRole_Desired_Requested" |> NamespacedName
+        _prefix "TMO_Instance_AttachmentRole_Desired_Requested"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Related"></see>
     /// </summary>
     let TMO_Instance_AttachmentRole_Related =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AttachmentRole_Related" |> NamespacedName
+        _prefix "TMO_Instance_AttachmentRole_Related"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Required"></see>
     /// </summary>
     let TMO_Instance_AttachmentRole_Required =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AttachmentRole_Required" |> NamespacedName
+        _prefix "TMO_Instance_AttachmentRole_Required"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Used"></see>
     /// </summary>
-    let TMO_Instance_AttachmentRole_Used =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_AttachmentRole_Used" |> NamespacedName
-
+    let TMO_Instance_AttachmentRole_Used = _prefix "TMO_Instance_AttachmentRole_Used"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_High"></see>
     /// </summary>
-    let TMO_Instance_Delegability_High =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Delegability_High" |> NamespacedName
-
+    let TMO_Instance_Delegability_High = _prefix "TMO_Instance_Delegability_High"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Low"></see>
     /// </summary>
-    let TMO_Instance_Delegability_Low =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Delegability_Low" |> NamespacedName
-
+    let TMO_Instance_Delegability_Low = _prefix "TMO_Instance_Delegability_Low"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Medium"></see>
     /// </summary>
-    let TMO_Instance_Delegability_Medium =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Delegability_Medium" |> NamespacedName
-
+    let TMO_Instance_Delegability_Medium = _prefix "TMO_Instance_Delegability_Medium"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Never"></see>
     /// </summary>
-    let TMO_Instance_Delegability_Never =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Delegability_Never" |> NamespacedName
+    let TMO_Instance_Delegability_Never = _prefix "TMO_Instance_Delegability_Never"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Unrestricted"></see>
     /// </summary>
     let TMO_Instance_Delegability_Unrestricted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Delegability_Unrestricted" |> NamespacedName
+        _prefix "TMO_Instance_Delegability_Unrestricted"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_01"></see>
     /// </summary>
-    let TMO_Instance_Importance_01 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_01" |> NamespacedName
-
+    let TMO_Instance_Importance_01 = _prefix "TMO_Instance_Importance_01"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_02"></see>
     /// </summary>
-    let TMO_Instance_Importance_02 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_02" |> NamespacedName
-
+    let TMO_Instance_Importance_02 = _prefix "TMO_Instance_Importance_02"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_03"></see>
     /// </summary>
-    let TMO_Instance_Importance_03 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_03" |> NamespacedName
-
+    let TMO_Instance_Importance_03 = _prefix "TMO_Instance_Importance_03"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_04"></see>
     /// </summary>
-    let TMO_Instance_Importance_04 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_04" |> NamespacedName
-
+    let TMO_Instance_Importance_04 = _prefix "TMO_Instance_Importance_04"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_05"></see>
     /// </summary>
-    let TMO_Instance_Importance_05 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_05" |> NamespacedName
-
+    let TMO_Instance_Importance_05 = _prefix "TMO_Instance_Importance_05"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_06"></see>
     /// </summary>
-    let TMO_Instance_Importance_06 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_06" |> NamespacedName
-
+    let TMO_Instance_Importance_06 = _prefix "TMO_Instance_Importance_06"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_07"></see>
     /// </summary>
-    let TMO_Instance_Importance_07 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_07" |> NamespacedName
-
+    let TMO_Instance_Importance_07 = _prefix "TMO_Instance_Importance_07"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_08"></see>
     /// </summary>
-    let TMO_Instance_Importance_08 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_08" |> NamespacedName
-
+    let TMO_Instance_Importance_08 = _prefix "TMO_Instance_Importance_08"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_09"></see>
     /// </summary>
-    let TMO_Instance_Importance_09 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_09" |> NamespacedName
-
+    let TMO_Instance_Importance_09 = _prefix "TMO_Instance_Importance_09"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_10"></see>
     /// </summary>
-    let TMO_Instance_Importance_10 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Importance_10" |> NamespacedName
+    let TMO_Instance_Importance_10 = _prefix "TMO_Instance_Importance_10"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Analyst"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Analyst =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Analyst" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Analyst"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Co-worker"></see>
     /// </summary>
     let ``TMO_Instance_PersonInvolvementRole_Co-worker`` =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Co-worker" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Co-worker"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Collaborator"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Collaborator =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Collaborator" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Collaborator"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Controller"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Controller =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Controller" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Controller"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Creator"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Creator =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Creator" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Creator"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Delegate"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Delegate =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Delegate" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Delegate"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Executor"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Executor =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Executor" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Executor"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_ExternalObserver"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_ExternalObserver =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_ExternalObserver" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_ExternalObserver"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Initiator"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Initiator =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Initiator" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Initiator"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_InternalObserver"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_InternalObserver =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_InternalObserver" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_InternalObserver"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Involved"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Involved =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Involved" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Involved"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Observer"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Observer =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Observer" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Observer"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Owner"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Owner =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Owner" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Owner"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Receiver"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Receiver =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Receiver" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Receiver"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Related"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Related =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Related" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Related"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Reviewer"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Reviewer =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Reviewer" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Reviewer"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Suggested"></see>
     /// </summary>
     let TMO_Instance_PersonInvolvementRole_Suggested =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_PersonInvolvementRole_Suggested" |> NamespacedName
+        _prefix "TMO_Instance_PersonInvolvementRole_Suggested"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Priority_High"></see>
     /// </summary>
-    let TMO_Instance_Priority_High =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Priority_High" |> NamespacedName
-
+    let TMO_Instance_Priority_High = _prefix "TMO_Instance_Priority_High"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Priority_Low"></see>
     /// </summary>
-    let TMO_Instance_Priority_Low =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Priority_Low" |> NamespacedName
-
+    let TMO_Instance_Priority_Low = _prefix "TMO_Instance_Priority_Low"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Priority_Medium"></see>
     /// </summary>
-    let TMO_Instance_Priority_Medium =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Priority_Medium" |> NamespacedName
+    let TMO_Instance_Priority_Medium = _prefix "TMO_Instance_Priority_Medium"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_activetasks"></see>
     /// </summary>
     let TMO_Instance_TaskContainer_activetasks =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskContainer_activetasks" |> NamespacedName
+        _prefix "TMO_Instance_TaskContainer_activetasks"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskContainer"></see>
     /// </summary>
-    let TaskContainer =
-        Namespaced_IRI.parse _namespace_name "TaskContainer" |> NamespacedName
+    let TaskContainer = _prefix "TaskContainer"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_archive"></see>
     /// </summary>
     let TMO_Instance_TaskContainer_archive =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskContainer_archive" |> NamespacedName
+        _prefix "TMO_Instance_TaskContainer_archive"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_inbox"></see>
     /// </summary>
-    let TMO_Instance_TaskContainer_inbox =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskContainer_inbox" |> NamespacedName
-
+    let TMO_Instance_TaskContainer_inbox = _prefix "TMO_Instance_TaskContainer_inbox"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_outbox"></see>
     /// </summary>
-    let TMO_Instance_TaskContainer_outbox =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskContainer_outbox" |> NamespacedName
+    let TMO_Instance_TaskContainer_outbox = _prefix "TMO_Instance_TaskContainer_outbox"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_trashtasks"></see>
     /// </summary>
     let TMO_Instance_TaskContainer_trashtasks =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskContainer_trashtasks" |> NamespacedName
+        _prefix "TMO_Instance_TaskContainer_trashtasks"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskPrivacy_Private"></see>
     /// </summary>
-    let TMO_Instance_TaskPrivacy_Private =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskPrivacy_Private" |> NamespacedName
-
+    let TMO_Instance_TaskPrivacy_Private = _prefix "TMO_Instance_TaskPrivacy_Private"
     /// <summary>
     /// Privacy Status serves for the separation between a professional and a private purpose of a task. This attribute provides with the values "professional/private" a high-level separation of privacy in terms of setting distribution and access
     /// rights to other users for the task.
     /// This separation may arise as a general Nepomuk issue and may therefore be handled in conjunction with a privacy preserving SSD architecture.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskPrivacyState"></see></summary>
-    let TaskPrivacyState =
-        Namespaced_IRI.parse _namespace_name "TaskPrivacyState" |> NamespacedName
+    let TaskPrivacyState = _prefix "TaskPrivacyState"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskPrivacy_Professional"></see>
     /// </summary>
     let TMO_Instance_TaskPrivacy_Professional =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskPrivacy_Professional" |> NamespacedName
+        _prefix "TMO_Instance_TaskPrivacy_Professional"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Archived"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Archived =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Archived" |> NamespacedName
-
+    let TMO_Instance_TaskState_Archived = _prefix "TMO_Instance_TaskState_Archived"
     /// <summary>
     /// The task state property allows tracking a task during its lifecycle. Initially the state is just "created".
     /// The TaskState class was modeled so that for each state can be set which the typical prior and posterior states are. This has the advantage that e.g. a UI can retrieve the allowed states at runtime from the ontology; rather can having this potentially changing knowledge hard coded. But the prior and posterior states are only defaults; the human user is always free to change the state.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState"></see></summary>
-    let TaskState = Namespaced_IRI.parse _namespace_name "TaskState" |> NamespacedName
-
+    let TaskState = _prefix "TaskState"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Completed"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Completed =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Completed" |> NamespacedName
-
+    let TMO_Instance_TaskState_Completed = _prefix "TMO_Instance_TaskState_Completed"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Deleted"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Deleted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Deleted" |> NamespacedName
-
+    let TMO_Instance_TaskState_Deleted = _prefix "TMO_Instance_TaskState_Deleted"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Finalized"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Finalized =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Finalized" |> NamespacedName
-
+    let TMO_Instance_TaskState_Finalized = _prefix "TMO_Instance_TaskState_Finalized"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_New"></see>
     /// </summary>
-    let TMO_Instance_TaskState_New =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_New" |> NamespacedName
-
+    let TMO_Instance_TaskState_New = _prefix "TMO_Instance_TaskState_New"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Running"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Running =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Running" |> NamespacedName
-
+    let TMO_Instance_TaskState_Running = _prefix "TMO_Instance_TaskState_Running"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Suspended"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Suspended =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Suspended" |> NamespacedName
-
+    let TMO_Instance_TaskState_Suspended = _prefix "TMO_Instance_TaskState_Suspended"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Terminated"></see>
     /// </summary>
-    let TMO_Instance_TaskState_Terminated =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TaskState_Terminated" |> NamespacedName
+    let TMO_Instance_TaskState_Terminated = _prefix "TMO_Instance_TaskState_Terminated"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Accepted_NotTransmitted"></see>
     /// </summary>
     let TMO_Instance_TransmissionState_Accepted_NotTransmitted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionState_Accepted_NotTransmitted" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionState_Accepted_NotTransmitted"
 
     /// <summary>
     /// States a task can go through during transmission of an task.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState"></see></summary>
-    let TransmissionState =
-        Namespaced_IRI.parse _namespace_name "TransmissionState" |> NamespacedName
+    let TransmissionState = _prefix "TransmissionState"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Accepted_Transmitted"></see>
     /// </summary>
     let TMO_Instance_TransmissionState_Accepted_Transmitted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionState_Accepted_Transmitted" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionState_Accepted_Transmitted"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_NotTransmitted"></see>
     /// </summary>
     let TMO_Instance_TransmissionState_NotTransmitted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionState_NotTransmitted" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionState_NotTransmitted"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Rejected_NotTransmitted"></see>
     /// </summary>
     let TMO_Instance_TransmissionState_Rejected_NotTransmitted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionState_Rejected_NotTransmitted" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionState_Rejected_NotTransmitted"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Rejected_Transmitted"></see>
     /// </summary>
     let TMO_Instance_TransmissionState_Rejected_Transmitted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionState_Rejected_Transmitted" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionState_Rejected_Transmitted"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Transmitted"></see>
     /// </summary>
     let TMO_Instance_TransmissionState_Transmitted =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionState_Transmitted" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionState_Transmitted"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionType_Delegation"></see>
     /// </summary>
     let TMO_Instance_TransmissionType_Delegation =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionType_Delegation" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionType_Delegation"
 
     /// <summary>
     /// By means of the TransmissionType one can distinguish several different types which might imply a different business logic. e.g. delegation can mean that the results of the task fulfillment care to be reported back to the sender of the task.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionType"></see></summary>
-    let TransmissionType =
-        Namespaced_IRI.parse _namespace_name "TransmissionType" |> NamespacedName
+    let TransmissionType = _prefix "TransmissionType"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionType_Join"></see>
     /// </summary>
     let TMO_Instance_TransmissionType_Join =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionType_Join" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionType_Join"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionType_Transfer"></see>
     /// </summary>
     let TMO_Instance_TransmissionType_Transfer =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_TransmissionType_Transfer" |> NamespacedName
+        _prefix "TMO_Instance_TransmissionType_Transfer"
 
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_01"></see>
     /// </summary>
-    let TMO_Instance_Urgency_01 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_01" |> NamespacedName
-
+    let TMO_Instance_Urgency_01 = _prefix "TMO_Instance_Urgency_01"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Urgency"></see>
     /// </summary>
-    let Urgency = Namespaced_IRI.parse _namespace_name "Urgency" |> NamespacedName
-
+    let Urgency = _prefix "Urgency"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_02"></see>
     /// </summary>
-    let TMO_Instance_Urgency_02 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_02" |> NamespacedName
-
+    let TMO_Instance_Urgency_02 = _prefix "TMO_Instance_Urgency_02"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_03"></see>
     /// </summary>
-    let TMO_Instance_Urgency_03 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_03" |> NamespacedName
-
+    let TMO_Instance_Urgency_03 = _prefix "TMO_Instance_Urgency_03"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_04"></see>
     /// </summary>
-    let TMO_Instance_Urgency_04 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_04" |> NamespacedName
-
+    let TMO_Instance_Urgency_04 = _prefix "TMO_Instance_Urgency_04"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_05"></see>
     /// </summary>
-    let TMO_Instance_Urgency_05 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_05" |> NamespacedName
-
+    let TMO_Instance_Urgency_05 = _prefix "TMO_Instance_Urgency_05"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_06"></see>
     /// </summary>
-    let TMO_Instance_Urgency_06 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_06" |> NamespacedName
-
+    let TMO_Instance_Urgency_06 = _prefix "TMO_Instance_Urgency_06"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_07"></see>
     /// </summary>
-    let TMO_Instance_Urgency_07 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_07" |> NamespacedName
-
+    let TMO_Instance_Urgency_07 = _prefix "TMO_Instance_Urgency_07"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_08"></see>
     /// </summary>
-    let TMO_Instance_Urgency_08 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_08" |> NamespacedName
-
+    let TMO_Instance_Urgency_08 = _prefix "TMO_Instance_Urgency_08"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_09"></see>
     /// </summary>
-    let TMO_Instance_Urgency_09 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_09" |> NamespacedName
-
+    let TMO_Instance_Urgency_09 = _prefix "TMO_Instance_Urgency_09"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_10"></see>
     /// </summary>
-    let TMO_Instance_Urgency_10 =
-        Namespaced_IRI.parse _namespace_name "TMO_Instance_Urgency_10" |> NamespacedName
-
+    let TMO_Instance_Urgency_10 = _prefix "TMO_Instance_Urgency_10"
     /// <summary>
     /// The tmo:task is the central entitiey of the tmo. Task can range from vague things to be possibly done in e distant future to concrete things to be done in a precise forseeable manner. It is not unrealisitc to assume that knowledge worker have hundred or more tasks a day.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"></see></summary>
-    let Task = Namespaced_IRI.parse _namespace_name "Task" |> NamespacedName
-
+    let Task = _prefix "Task"
     /// <summary>
     /// On the SSD, tasks are not restricted to one person and may cross from
     /// the PTM of one person to the PTM of another. With transmission, we
@@ -675,388 +559,280 @@ module tmo =
     /// receiver. This is like sending an email but with the advantage that the
     /// information is transferred in the "task space" of the participating persons.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"></see></summary>
-    let TaskTransmission =
-        Namespaced_IRI.parse _namespace_name "TaskTransmission" |> NamespacedName
-
+    let TaskTransmission = _prefix "TaskTransmission"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrier"></see>
     /// </summary>
-    let abilityCarrier =
-        Namespaced_IRI.parse _namespace_name "abilityCarrier" |> NamespacedName
-
+    let abilityCarrier = _prefix "abilityCarrier"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrierInvolvement"></see>
     /// </summary>
-    let abilityCarrierInvolvement =
-        Namespaced_IRI.parse _namespace_name "abilityCarrierInvolvement" |> NamespacedName
-
+    let abilityCarrierInvolvement = _prefix "abilityCarrierInvolvement"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrierTask"></see>
     /// </summary>
-    let abilityCarrierTask =
-        Namespaced_IRI.parse _namespace_name "abilityCarrierTask" |> NamespacedName
-
+    let abilityCarrierTask = _prefix "abilityCarrierTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrierRole"></see>
     /// </summary>
-    let abilityCarrierRole =
-        Namespaced_IRI.parse _namespace_name "abilityCarrierRole" |> NamespacedName
-
+    let abilityCarrierRole = _prefix "abilityCarrierRole"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"></see>
     /// </summary>
-    let stateTypeRole =
-        Namespaced_IRI.parse _namespace_name "stateTypeRole" |> NamespacedName
-
+    let stateTypeRole = _prefix "stateTypeRole"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualCompletion"></see>
     /// </summary>
-    let actualCompletion =
-        Namespaced_IRI.parse _namespace_name "actualCompletion" |> NamespacedName
-
+    let actualCompletion = _prefix "actualCompletion"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#progress"></see>
     /// </summary>
-    let progress = Namespaced_IRI.parse _namespace_name "progress" |> NamespacedName
-
+    let progress = _prefix "progress"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualEndTime"></see>
     /// </summary>
-    let actualEndTime =
-        Namespaced_IRI.parse _namespace_name "actualEndTime" |> NamespacedName
-
+    let actualEndTime = _prefix "actualEndTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#endTime"></see>
     /// </summary>
-    let endTime = Namespaced_IRI.parse _namespace_name "endTime" |> NamespacedName
+    let endTime = _prefix "endTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualTime"></see>
     /// </summary>
-    let actualTime = Namespaced_IRI.parse _namespace_name "actualTime" |> NamespacedName
-
+    let actualTime = _prefix "actualTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualStartTime"></see>
     /// </summary>
-    let actualStartTime =
-        Namespaced_IRI.parse _namespace_name "actualStartTime" |> NamespacedName
-
+    let actualStartTime = _prefix "actualStartTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#startTime"></see>
     /// </summary>
-    let startTime = Namespaced_IRI.parse _namespace_name "startTime" |> NamespacedName
+    let startTime = _prefix "startTime"
     /// <summary>
     /// dateTime subsumes various properties with Range XMLSchema:dateTime. If possible they are further grouped by "abstract" properties.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"></see></summary>
-    let dateTime = Namespaced_IRI.parse _namespace_name "dateTime" |> NamespacedName
+    let dateTime = _prefix "dateTime"
     /// <summary>
     /// connects a Task with an Attachment object. Attachments are associations of Things.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachment"></see></summary>
-    let attachment = Namespaced_IRI.parse _namespace_name "attachment" |> NamespacedName
-
+    let attachment = _prefix "attachment"
     /// <summary>
     /// Inverse of attachment, connects an Attachment Association to the associated Task. Is required for every instance of Attachment.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentTask"></see></summary>
-    let attachmentTask =
-        Namespaced_IRI.parse _namespace_name "attachmentTask" |> NamespacedName
-
+    let attachmentTask = _prefix "attachmentTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentReference"></see>
     /// </summary>
-    let attachmentReference =
-        Namespaced_IRI.parse _namespace_name "attachmentReference" |> NamespacedName
-
+    let attachmentReference = _prefix "attachmentReference"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentRole"></see>
     /// </summary>
-    let attachmentRole =
-        Namespaced_IRI.parse _namespace_name "attachmentRole" |> NamespacedName
-
+    let attachmentRole = _prefix "attachmentRole"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#containsTask"></see>
     /// </summary>
-    let containsTask =
-        Namespaced_IRI.parse _namespace_name "containsTask" |> NamespacedName
-
+    let containsTask = _prefix "containsTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#contextTask"></see>
     /// </summary>
-    let contextTask =
-        Namespaced_IRI.parse _namespace_name "contextTask" |> NamespacedName
-
+    let contextTask = _prefix "contextTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#contextThread"></see>
     /// </summary>
-    let contextThread =
-        Namespaced_IRI.parse _namespace_name "contextThread" |> NamespacedName
-
+    let contextThread = _prefix "contextThread"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#createdBy"></see>
     /// </summary>
-    let createdBy = Namespaced_IRI.parse _namespace_name "createdBy" |> NamespacedName
-
+    let createdBy = _prefix "createdBy"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#delegability"></see>
     /// </summary>
-    let delegability =
-        Namespaced_IRI.parse _namespace_name "delegability" |> NamespacedName
-
+    let delegability = _prefix "delegability"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timemanagement"></see>
     /// </summary>
-    let timemanagement =
-        Namespaced_IRI.parse _namespace_name "timemanagement" |> NamespacedName
-
+    let timemanagement = _prefix "timemanagement"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependency"></see>
     /// </summary>
-    let dependency = Namespaced_IRI.parse _namespace_name "dependency" |> NamespacedName
-
+    let dependency = _prefix "dependency"
     /// <summary>
     /// Endusers can clarify why they created a depedency.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyDescription"></see></summary>
-    let dependencyDescription =
-        Namespaced_IRI.parse _namespace_name "dependencyDescription" |> NamespacedName
-
+    let dependencyDescription = _prefix "dependencyDescription"
     /// <summary>
     /// The semantic of this relation is defined in the sublclass of undirected Dependency on which this property is stated. (The subject of the statment where this property is expressed)
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyMemberA"></see></summary>
-    let dependencyMemberA =
-        Namespaced_IRI.parse _namespace_name "dependencyMemberA" |> NamespacedName
-
+    let dependencyMemberA = _prefix "dependencyMemberA"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskReference"></see>
     /// </summary>
-    let taskReference =
-        Namespaced_IRI.parse _namespace_name "taskReference" |> NamespacedName
-
+    let taskReference = _prefix "taskReference"
     /// <summary>
     /// The semantic of this relation is defined in the sublclass of undirected Dependency on which this property is stated. (The subject of the statment where this property is expressed)
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyMemberB"></see></summary>
-    let dependencyMemberB =
-        Namespaced_IRI.parse _namespace_name "dependencyMemberB" |> NamespacedName
-
+    let dependencyMemberB = _prefix "dependencyMemberB"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyOrderNumber"></see>
     /// </summary>
-    let dependencyOrderNumber =
-        Namespaced_IRI.parse _namespace_name "dependencyOrderNumber" |> NamespacedName
-
+    let dependencyOrderNumber = _prefix "dependencyOrderNumber"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyType"></see>
     /// </summary>
-    let dependencyType =
-        Namespaced_IRI.parse _namespace_name "dependencyType" |> NamespacedName
-
+    let dependencyType = _prefix "dependencyType"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dueDate"></see>
     /// </summary>
-    let dueDate = Namespaced_IRI.parse _namespace_name "dueDate" |> NamespacedName
+    let dueDate = _prefix "dueDate"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#importance"></see>
     /// </summary>
-    let importance = Namespaced_IRI.parse _namespace_name "importance" |> NamespacedName
-
+    let importance = _prefix "importance"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#indexPosition"></see>
     /// </summary>
-    let indexPosition =
-        Namespaced_IRI.parse _namespace_name "indexPosition" |> NamespacedName
-
+    let indexPosition = _prefix "indexPosition"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#involvedPerson"></see>
     /// </summary>
-    let involvedPerson =
-        Namespaced_IRI.parse _namespace_name "involvedPerson" |> NamespacedName
-
+    let involvedPerson = _prefix "involvedPerson"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#involvedPersonRole"></see>
     /// </summary>
-    let involvedPersonRole =
-        Namespaced_IRI.parse _namespace_name "involvedPersonRole" |> NamespacedName
-
+    let involvedPersonRole = _prefix "involvedPersonRole"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#involvedPersonTask"></see>
     /// </summary>
-    let involvedPersonTask =
-        Namespaced_IRI.parse _namespace_name "involvedPersonTask" |> NamespacedName
-
+    let involvedPersonTask = _prefix "involvedPersonTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#involvedPersons"></see>
     /// </summary>
-    let involvedPersons =
-        Namespaced_IRI.parse _namespace_name "involvedPersons" |> NamespacedName
-
+    let involvedPersons = _prefix "involvedPersons"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#lastReviewDate"></see>
     /// </summary>
-    let lastReviewDate =
-        Namespaced_IRI.parse _namespace_name "lastReviewDate" |> NamespacedName
-
+    let lastReviewDate = _prefix "lastReviewDate"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#logEntry"></see>
     /// </summary>
-    let logEntry = Namespaced_IRI.parse _namespace_name "logEntry" |> NamespacedName
-
+    let logEntry = _prefix "logEntry"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#nextReviewIntervall"></see>
     /// </summary>
-    let nextReviewIntervall =
-        Namespaced_IRI.parse _namespace_name "nextReviewIntervall" |> NamespacedName
-
+    let nextReviewIntervall = _prefix "nextReviewIntervall"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#priority"></see>
     /// </summary>
-    let priority = Namespaced_IRI.parse _namespace_name "priority" |> NamespacedName
-
+    let priority = _prefix "priority"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#receiveDateTime"></see>
     /// </summary>
-    let receiveDateTime =
-        Namespaced_IRI.parse _namespace_name "receiveDateTime" |> NamespacedName
-
+    let receiveDateTime = _prefix "receiveDateTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#sendDateTime"></see>
     /// </summary>
-    let sendDateTime =
-        Namespaced_IRI.parse _namespace_name "sendDateTime" |> NamespacedName
-
+    let sendDateTime = _prefix "sendDateTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#subTask"></see>
     /// </summary>
-    let subTask = Namespaced_IRI.parse _namespace_name "subTask" |> NamespacedName
+    let subTask = _prefix "subTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#superTask"></see>
     /// </summary>
-    let superTask = Namespaced_IRI.parse _namespace_name "superTask" |> NamespacedName
-
+    let superTask = _prefix "superTask"
     /// <summary>
     /// Ordering of the subtasks listed in the tmo:subTasks property of this Task. This is only for ordering/sorting in GUIs, the semantic relation is defined in subTasks, and if this and subTasks differ, subTasks is the correct list.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#subTaskOrdering"></see></summary>
-    let subTaskOrdering =
-        Namespaced_IRI.parse _namespace_name "subTaskOrdering" |> NamespacedName
-
+    let subTaskOrdering = _prefix "subTaskOrdering"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetCompletion"></see>
     /// </summary>
-    let targetCompletion =
-        Namespaced_IRI.parse _namespace_name "targetCompletion" |> NamespacedName
-
+    let targetCompletion = _prefix "targetCompletion"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetEndTime"></see>
     /// </summary>
-    let targetEndTime =
-        Namespaced_IRI.parse _namespace_name "targetEndTime" |> NamespacedName
-
+    let targetEndTime = _prefix "targetEndTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetTime"></see>
     /// </summary>
-    let targetTime = Namespaced_IRI.parse _namespace_name "targetTime" |> NamespacedName
-
+    let targetTime = _prefix "targetTime"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetStartTime"></see>
     /// </summary>
-    let targetStartTime =
-        Namespaced_IRI.parse _namespace_name "targetStartTime" |> NamespacedName
-
+    let targetStartTime = _prefix "targetStartTime"
     /// <summary>
     /// The task description helps users to understand the goal and the proceeding of a task. It can also describe the context of a task. The task description is composed at minimum of a summary of what is done to reach the goal. The task description is the main source for identifying related information, e.g., suitable patterns.
     /// A Task Description can be either an informal, described textual content (TextualDescription) or it can be a more formally structured representation (FormalDescription).
     /// Technology considerations: Informal descriptions allow for text similarity processing, a formal description allows for applying case based similarity measures.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskDescription"></see></summary>
-    let taskDescription =
-        Namespaced_IRI.parse _namespace_name "taskDescription" |> NamespacedName
-
+    let taskDescription = _prefix "taskDescription"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskGoal"></see>
     /// </summary>
-    let taskGoal = Namespaced_IRI.parse _namespace_name "taskGoal" |> NamespacedName
+    let taskGoal = _prefix "taskGoal"
     /// <summary>
     /// The Task Identifier allows a unique identification of a task object within the range of all Nepomuk objects.
     /// The Task Identifier is automatically generated during the creation of a task. The generation of identifiers (IDs) is a Nepomuk architecture issue (Wp2000/WP6000).
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskId"></see></summary>
-    let taskId = Namespaced_IRI.parse _namespace_name "taskId" |> NamespacedName
+    let taskId = _prefix "taskId"
     /// <summary>
     /// The Task Name helps the user to identify a task in a list. It should be expressive enough to give a meaningful recognition. Details should be written in the description attribute instead. A name attribute is not allowed to contain line breaks.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskName"></see></summary>
-    let taskName = Namespaced_IRI.parse _namespace_name "taskName" |> NamespacedName
-
+    let taskName = _prefix "taskName"
     /// <summary>
     /// For the separation between professional and private purpose of a task, this attribute provides with the values "professional/private" a high level separation of privacy in terms of setting distribution rights to other users for the task.
     /// This separation may arise as a general Nepomuk issue and may therefore be handled in conjunction with a privacy preserving SSD architecture.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskPrivacyState"></see></summary>
-    let taskPrivacyState =
-        Namespaced_IRI.parse _namespace_name "taskPrivacyState" |> NamespacedName
-
+    let taskPrivacyState = _prefix "taskPrivacyState"
     /// <summary>
     /// here can be stated from which sources a task was derived. e.g from another task or from an task pattern
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskSource"></see></summary>
-    let taskSource = Namespaced_IRI.parse _namespace_name "taskSource" |> NamespacedName
+    let taskSource = _prefix "taskSource"
     /// <summary>
     /// The task state describes the current state of the task as described in Section 5.2.7.
     /// <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskState"></see></summary>
-    let taskState = Namespaced_IRI.parse _namespace_name "taskState" |> NamespacedName
-
+    let taskState = _prefix "taskState"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskStateChangesFrom"></see>
     /// </summary>
-    let taskStateChangesFrom =
-        Namespaced_IRI.parse _namespace_name "taskStateChangesFrom" |> NamespacedName
-
+    let taskStateChangesFrom = _prefix "taskStateChangesFrom"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskStateChangesTo"></see>
     /// </summary>
-    let taskStateChangesTo =
-        Namespaced_IRI.parse _namespace_name "taskStateChangesTo" |> NamespacedName
-
+    let taskStateChangesTo = _prefix "taskStateChangesTo"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskTransmission"></see>
     /// </summary>
-    let taskTransmission =
-        Namespaced_IRI.parse _namespace_name "taskTransmission" |> NamespacedName
-
+    let taskTransmission = _prefix "taskTransmission"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionTask"></see>
     /// </summary>
-    let transmissionTask =
-        Namespaced_IRI.parse _namespace_name "transmissionTask" |> NamespacedName
-
+    let transmissionTask = _prefix "transmissionTask"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionFrom"></see>
     /// </summary>
-    let transmissionFrom =
-        Namespaced_IRI.parse _namespace_name "transmissionFrom" |> NamespacedName
-
+    let transmissionFrom = _prefix "transmissionFrom"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionState"></see>
     /// </summary>
-    let transmissionState =
-        Namespaced_IRI.parse _namespace_name "transmissionState" |> NamespacedName
-
+    let transmissionState = _prefix "transmissionState"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionStateChangesFrom"></see>
     /// </summary>
-    let transmissionStateChangesFrom =
-        Namespaced_IRI.parse _namespace_name "transmissionStateChangesFrom" |> NamespacedName
-
+    let transmissionStateChangesFrom = _prefix "transmissionStateChangesFrom"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionStateChangesTo"></see>
     /// </summary>
-    let transmissionStateChangesTo =
-        Namespaced_IRI.parse _namespace_name "transmissionStateChangesTo" |> NamespacedName
-
+    let transmissionStateChangesTo = _prefix "transmissionStateChangesTo"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionTo"></see>
     /// </summary>
-    let transmissionTo =
-        Namespaced_IRI.parse _namespace_name "transmissionTo" |> NamespacedName
-
+    let transmissionTo = _prefix "transmissionTo"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionType"></see>
     /// </summary>
-    let transmissionType =
-        Namespaced_IRI.parse _namespace_name "transmissionType" |> NamespacedName
-
+    let transmissionType = _prefix "transmissionType"
     /// <summary>
     ///   <see href="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#urgency"></see>
     /// </summary>
-    let urgency = Namespaced_IRI.parse _namespace_name "urgency" |> NamespacedName
+    let urgency = _prefix "urgency"

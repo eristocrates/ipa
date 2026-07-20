@@ -1,156 +1,138 @@
 namespace http.ontologi.es.doap_bugs.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dbug =
     let _namespace_name = "http://ontologi.es/doap-bugs#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#Bug"></see>
     /// </summary>
-    let Bug = Namespaced_IRI.parse _namespace_name "Bug" |> NamespacedName
+    let Bug = _prefix "Bug"
     /// <summary>
     /// Provide a quick summary as an rdfs:label and a more extensive summary (if necessary) as an rdfs:comment.
     /// <see href="http://ontologi.es/doap-bugs#Issue"></see></summary>
-    let Issue = Namespaced_IRI.parse _namespace_name "Issue" |> NamespacedName
-
+    let Issue = _prefix "Issue"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#Enhancement"></see>
     /// </summary>
-    let Enhancement =
-        Namespaced_IRI.parse _namespace_name "Enhancement" |> NamespacedName
-
+    let Enhancement = _prefix "Enhancement"
     /// <summary>
     /// Please use these unless you have an important requirement to use your own severity level scheme. If you do design your own scheme, use skos:closeMatch, skos:exactMatch and so on to link to the definitions here.
     /// <see href="http://ontologi.es/doap-bugs#SEVERITY_LEVELS"></see></summary>
-    let SEVERITY_LEVELS =
-        Namespaced_IRI.parse _namespace_name "SEVERITY_LEVELS" |> NamespacedName
-
+    let SEVERITY_LEVELS = _prefix "SEVERITY_LEVELS"
     /// <summary>
     /// Please use these unless you have an important requirement to use your own status scheme. If you do design your own scheme, use skos:closeMatch, skos:exactMatch and so on to link to the definitions here.
     /// <see href="http://ontologi.es/doap-bugs#STATUS_TYPES"></see></summary>
-    let STATUS_TYPES =
-        Namespaced_IRI.parse _namespace_name "STATUS_TYPES" |> NamespacedName
-
+    let STATUS_TYPES = _prefix "STATUS_TYPES"
     /// <summary>
     /// An issue that in some way compromises the security of affected versions of its project.
     /// <see href="http://ontologi.es/doap-bugs#SecurityIssue"></see></summary>
-    let SecurityIssue =
-        Namespaced_IRI.parse _namespace_name "SecurityIssue" |> NamespacedName
-
+    let SecurityIssue = _prefix "SecurityIssue"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#SeverityLevel"></see>
     /// </summary>
-    let SeverityLevel =
-        Namespaced_IRI.parse _namespace_name "SeverityLevel" |> NamespacedName
-
+    let SeverityLevel = _prefix "SeverityLevel"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#StatusType"></see>
     /// </summary>
-    let StatusType = Namespaced_IRI.parse _namespace_name "StatusType" |> NamespacedName
+    let StatusType = _prefix "StatusType"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#affects"></see>
     /// </summary>
-    let affects = Namespaced_IRI.parse _namespace_name "affects" |> NamespacedName
+    let affects = _prefix "affects"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#assignee"></see>
     /// </summary>
-    let assignee = Namespaced_IRI.parse _namespace_name "assignee" |> NamespacedName
+    let assignee = _prefix "assignee"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#blocks"></see>
     /// </summary>
-    let blocks = Namespaced_IRI.parse _namespace_name "blocks" |> NamespacedName
-
+    let blocks = _prefix "blocks"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#classification"></see>
     /// </summary>
-    let classification =
-        Namespaced_IRI.parse _namespace_name "classification" |> NamespacedName
-
+    let classification = _prefix "classification"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#comment"></see>
     /// </summary>
-    let comment = Namespaced_IRI.parse _namespace_name "comment" |> NamespacedName
+    let comment = _prefix "comment"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#confirmed"></see>
     /// </summary>
-    let confirmed = Namespaced_IRI.parse _namespace_name "confirmed" |> NamespacedName
+    let confirmed = _prefix "confirmed"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#critical"></see>
     /// </summary>
-    let critical = Namespaced_IRI.parse _namespace_name "critical" |> NamespacedName
+    let critical = _prefix "critical"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#fixed"></see>
     /// </summary>
-    let fixed_ = Namespaced_IRI.parse _namespace_name "fixed" |> NamespacedName
+    let fixed_ = _prefix "fixed"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#fixed-in"></see>
     /// </summary>
-    let ``fixed-in`` = Namespaced_IRI.parse _namespace_name "fixed-in" |> NamespacedName
+    let ``fixed-in`` = _prefix "fixed-in"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
-
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#in-progress"></see>
     /// </summary>
-    let ``in-progress`` =
-        Namespaced_IRI.parse _namespace_name "in-progress" |> NamespacedName
-
+    let ``in-progress`` = _prefix "in-progress"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#invalid"></see>
     /// </summary>
-    let invalid = Namespaced_IRI.parse _namespace_name "invalid" |> NamespacedName
+    let invalid = _prefix "invalid"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#issue"></see>
     /// </summary>
-    let issue = Namespaced_IRI.parse _namespace_name "issue" |> NamespacedName
+    let issue = _prefix "issue"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#major"></see>
     /// </summary>
-    let major = Namespaced_IRI.parse _namespace_name "major" |> NamespacedName
+    let major = _prefix "major"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#minor"></see>
     /// </summary>
-    let minor = Namespaced_IRI.parse _namespace_name "minor" |> NamespacedName
+    let minor = _prefix "minor"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#new"></see>
     /// </summary>
-    let new_ = Namespaced_IRI.parse _namespace_name "new" |> NamespacedName
+    let new_ = _prefix "new"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#page"></see>
     /// </summary>
-    let page = Namespaced_IRI.parse _namespace_name "page" |> NamespacedName
+    let page = _prefix "page"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#reporter"></see>
     /// </summary>
-    let reporter = Namespaced_IRI.parse _namespace_name "reporter" |> NamespacedName
+    let reporter = _prefix "reporter"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#severity"></see>
     /// </summary>
-    let severity = Namespaced_IRI.parse _namespace_name "severity" |> NamespacedName
+    let severity = _prefix "severity"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
-
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#third-party"></see>
     /// </summary>
-    let ``third-party`` =
-        Namespaced_IRI.parse _namespace_name "third-party" |> NamespacedName
-
+    let ``third-party`` = _prefix "third-party"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#trivial"></see>
     /// </summary>
-    let trivial = Namespaced_IRI.parse _namespace_name "trivial" |> NamespacedName
+    let trivial = _prefix "trivial"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#wont-fix"></see>
     /// </summary>
-    let ``wont-fix`` = Namespaced_IRI.parse _namespace_name "wont-fix" |> NamespacedName
-
+    let ``wont-fix`` = _prefix "wont-fix"
     /// <summary>
     ///   <see href="http://ontologi.es/doap-bugs#works-for-me"></see>
     /// </summary>
-    let ``works-for-me`` =
-        Namespaced_IRI.parse _namespace_name "works-for-me" |> NamespacedName
+    let ``works-for-me`` = _prefix "works-for-me"

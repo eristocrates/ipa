@@ -1,521 +1,406 @@
 namespace http.data.ign.fr.def.topo.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module topo =
     let _namespace_name = "http://data.ign.fr/def/topo#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#AireDePeage"></see>
     /// </summary>
-    let AireDePeage =
-        Namespaced_IRI.parse _namespace_name "AireDePeage" |> NamespacedName
-
+    let AireDePeage = _prefix "AireDePeage"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#ElementReseauRoutier"></see>
     /// </summary>
-    let ElementReseauRoutier =
-        Namespaced_IRI.parse _namespace_name "ElementReseauRoutier" |> NamespacedName
-
+    let ElementReseauRoutier = _prefix "ElementReseauRoutier"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#AireDeTriage"></see>
     /// </summary>
-    let AireDeTriage =
-        Namespaced_IRI.parse _namespace_name "AireDeTriage" |> NamespacedName
-
+    let AireDeTriage = _prefix "AireDeTriage"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#ElementReseauFerroviaire"></see>
     /// </summary>
-    let ElementReseauFerroviaire =
-        Namespaced_IRI.parse _namespace_name "ElementReseauFerroviaire" |> NamespacedName
-
+    let ElementReseauFerroviaire = _prefix "ElementReseauFerroviaire"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Bassin"></see>
     /// </summary>
-    let Bassin = Namespaced_IRI.parse _namespace_name "Bassin" |> NamespacedName
-
+    let Bassin = _prefix "Bassin"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#EntiteHydrographiqueTerrestre"></see>
     /// </summary>
-    let EntiteHydrographiqueTerrestre =
-        Namespaced_IRI.parse _namespace_name "EntiteHydrographiqueTerrestre" |> NamespacedName
-
+    let EntiteHydrographiqueTerrestre = _prefix "EntiteHydrographiqueTerrestre"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Bati"></see>
     /// </summary>
-    let Bati = Namespaced_IRI.parse _namespace_name "Bati" |> NamespacedName
-
+    let Bati = _prefix "Bati"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#EntiteTopographique"></see>
     /// </summary>
-    let EntiteTopographique =
-        Namespaced_IRI.parse _namespace_name "EntiteTopographique" |> NamespacedName
-
+    let EntiteTopographique = _prefix "EntiteTopographique"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Batiment"></see>
     /// </summary>
-    let Batiment = Namespaced_IRI.parse _namespace_name "Batiment" |> NamespacedName
-
+    let Batiment = _prefix "Batiment"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#BornePostale"></see>
     /// </summary>
-    let BornePostale =
-        Namespaced_IRI.parse _namespace_name "BornePostale" |> NamespacedName
-
+    let BornePostale = _prefix "BornePostale"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#CanalisationDEau"></see>
     /// </summary>
-    let CanalisationDEau =
-        Namespaced_IRI.parse _namespace_name "CanalisationDEau" |> NamespacedName
-
+    let CanalisationDEau = _prefix "CanalisationDEau"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Cimetiere"></see>
     /// </summary>
-    let Cimetiere = Namespaced_IRI.parse _namespace_name "Cimetiere" |> NamespacedName
+    let Cimetiere = _prefix "Cimetiere"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Conduite"></see>
     /// </summary>
-    let Conduite = Namespaced_IRI.parse _namespace_name "Conduite" |> NamespacedName
-
+    let Conduite = _prefix "Conduite"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#InfrastructureTransportEnergie"></see>
     /// </summary>
-    let InfrastructureTransportEnergie =
-        Namespaced_IRI.parse _namespace_name "InfrastructureTransportEnergie" |> NamespacedName
-
+    let InfrastructureTransportEnergie = _prefix "InfrastructureTransportEnergie"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Construction"></see>
     /// </summary>
-    let Construction =
-        Namespaced_IRI.parse _namespace_name "Construction" |> NamespacedName
-
+    let Construction = _prefix "Construction"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#CoursDEau"></see>
     /// </summary>
-    let CoursDEau = Namespaced_IRI.parse _namespace_name "CoursDEau" |> NamespacedName
-
+    let CoursDEau = _prefix "CoursDEau"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#ElementDuRelief"></see>
     /// </summary>
-    let ElementDuRelief =
-        Namespaced_IRI.parse _namespace_name "ElementDuRelief" |> NamespacedName
-
+    let ElementDuRelief = _prefix "ElementDuRelief"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Laisse"></see>
     /// </summary>
-    let Laisse = Namespaced_IRI.parse _namespace_name "Laisse" |> NamespacedName
-
+    let Laisse = _prefix "Laisse"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#LigneElectrique"></see>
     /// </summary>
-    let LigneElectrique =
-        Namespaced_IRI.parse _namespace_name "LigneElectrique" |> NamespacedName
-
+    let LigneElectrique = _prefix "LigneElectrique"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#LigneTransportCable"></see>
     /// </summary>
-    let LigneTransportCable =
-        Namespaced_IRI.parse _namespace_name "LigneTransportCable" |> NamespacedName
-
+    let LigneTransportCable = _prefix "LigneTransportCable"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Parking"></see>
     /// </summary>
-    let Parking = Namespaced_IRI.parse _namespace_name "Parking" |> NamespacedName
-
+    let Parking = _prefix "Parking"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#PisteAerodrome"></see>
     /// </summary>
-    let PisteAerodrome =
-        Namespaced_IRI.parse _namespace_name "PisteAerodrome" |> NamespacedName
-
+    let PisteAerodrome = _prefix "PisteAerodrome"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#PointDEau"></see>
     /// </summary>
-    let PointDEau = Namespaced_IRI.parse _namespace_name "PointDEau" |> NamespacedName
-
+    let PointDEau = _prefix "PointDEau"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#PosteTransformation"></see>
     /// </summary>
-    let PosteTransformation =
-        Namespaced_IRI.parse _namespace_name "PosteTransformation" |> NamespacedName
-
+    let PosteTransformation = _prefix "PosteTransformation"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Pylone"></see>
     /// </summary>
-    let Pylone = Namespaced_IRI.parse _namespace_name "Pylone" |> NamespacedName
+    let Pylone = _prefix "Pylone"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Reservoir"></see>
     /// </summary>
-    let Reservoir = Namespaced_IRI.parse _namespace_name "Reservoir" |> NamespacedName
+    let Reservoir = _prefix "Reservoir"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Route"></see>
     /// </summary>
-    let Route = Namespaced_IRI.parse _namespace_name "Route" |> NamespacedName
+    let Route = _prefix "Route"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#Voie"></see>
     /// </summary>
-    let Voie = Namespaced_IRI.parse _namespace_name "Voie" |> NamespacedName
-
+    let Voie = _prefix "Voie"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#SurfaceDEau"></see>
     /// </summary>
-    let SurfaceDEau =
-        Namespaced_IRI.parse _namespace_name "SurfaceDEau" |> NamespacedName
-
+    let SurfaceDEau = _prefix "SurfaceDEau"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TerrainDeSport"></see>
     /// </summary>
-    let TerrainDeSport =
-        Namespaced_IRI.parse _namespace_name "TerrainDeSport" |> NamespacedName
-
+    let TerrainDeSport = _prefix "TerrainDeSport"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeBatiment"></see>
     /// </summary>
-    let TypeDeBatiment =
-        Namespaced_IRI.parse _namespace_name "TypeDeBatiment" |> NamespacedName
-
+    let TypeDeBatiment = _prefix "TypeDeBatiment"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeConstruction"></see>
     /// </summary>
-    let TypeDeConstruction =
-        Namespaced_IRI.parse _namespace_name "TypeDeConstruction" |> NamespacedName
-
+    let TypeDeConstruction = _prefix "TypeDeConstruction"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeFranchissement"></see>
     /// </summary>
-    let TypeDeFranchissement =
-        Namespaced_IRI.parse _namespace_name "TypeDeFranchissement" |> NamespacedName
-
+    let TypeDeFranchissement = _prefix "TypeDeFranchissement"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeLaisse"></see>
     /// </summary>
-    let TypeDeLaisse =
-        Namespaced_IRI.parse _namespace_name "TypeDeLaisse" |> NamespacedName
-
+    let TypeDeLaisse = _prefix "TypeDeLaisse"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDePointDEau"></see>
     /// </summary>
-    let TypeDePointDEau =
-        Namespaced_IRI.parse _namespace_name "TypeDePointDEau" |> NamespacedName
-
+    let TypeDePointDEau = _prefix "TypeDePointDEau"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeRelief"></see>
     /// </summary>
-    let TypeDeRelief =
-        Namespaced_IRI.parse _namespace_name "TypeDeRelief" |> NamespacedName
-
+    let TypeDeRelief = _prefix "TypeDeRelief"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeReservoir"></see>
     /// </summary>
-    let TypeDeReservoir =
-        Namespaced_IRI.parse _namespace_name "TypeDeReservoir" |> NamespacedName
-
+    let TypeDeReservoir = _prefix "TypeDeReservoir"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeRoute"></see>
     /// </summary>
-    let TypeDeRoute =
-        Namespaced_IRI.parse _namespace_name "TypeDeRoute" |> NamespacedName
-
+    let TypeDeRoute = _prefix "TypeDeRoute"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeTerrainDeSport"></see>
     /// </summary>
-    let TypeDeTerrainDeSport =
-        Namespaced_IRI.parse _namespace_name "TypeDeTerrainDeSport" |> NamespacedName
-
+    let TypeDeTerrainDeSport = _prefix "TypeDeTerrainDeSport"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeTransportCable"></see>
     /// </summary>
-    let TypeDeTransportCable =
-        Namespaced_IRI.parse _namespace_name "TypeDeTransportCable" |> NamespacedName
-
+    let TypeDeTransportCable = _prefix "TypeDeTransportCable"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeVegetation"></see>
     /// </summary>
-    let TypeDeVegetation =
-        Namespaced_IRI.parse _namespace_name "TypeDeVegetation" |> NamespacedName
-
+    let TypeDeVegetation = _prefix "TypeDeVegetation"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeVoieFerree"></see>
     /// </summary>
-    let TypeDeVoieFerree =
-        Namespaced_IRI.parse _namespace_name "TypeDeVoieFerree" |> NamespacedName
-
+    let TypeDeVoieFerree = _prefix "TypeDeVoieFerree"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#TypeDeZAI"></see>
     /// </summary>
-    let TypeDeZAI = Namespaced_IRI.parse _namespace_name "TypeDeZAI" |> NamespacedName
+    let TypeDeZAI = _prefix "TypeDeZAI"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#VoieFerree"></see>
     /// </summary>
-    let VoieFerree = Namespaced_IRI.parse _namespace_name "VoieFerree" |> NamespacedName
-
+    let VoieFerree = _prefix "VoieFerree"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#ZoneActiviteInteret"></see>
     /// </summary>
-    let ZoneActiviteInteret =
-        Namespaced_IRI.parse _namespace_name "ZoneActiviteInteret" |> NamespacedName
-
+    let ZoneActiviteInteret = _prefix "ZoneActiviteInteret"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#ZoneDeVegetation"></see>
     /// </summary>
-    let ZoneDeVegetation =
-        Namespaced_IRI.parse _namespace_name "ZoneDeVegetation" |> NamespacedName
-
+    let ZoneDeVegetation = _prefix "ZoneDeVegetation"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#artif"></see>
     /// </summary>
-    let artif = Namespaced_IRI.parse _namespace_name "artif" |> NamespacedName
+    let artif = _prefix "artif"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#borneFin"></see>
     /// </summary>
-    let borneFin = Namespaced_IRI.parse _namespace_name "borneFin" |> NamespacedName
+    let borneFin = _prefix "borneFin"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#borneIni"></see>
     /// </summary>
-    let borneIni = Namespaced_IRI.parse _namespace_name "borneIni" |> NamespacedName
+    let borneIni = _prefix "borneIni"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#clAdmin"></see>
     /// </summary>
-    let clAdmin = Namespaced_IRI.parse _namespace_name "clAdmin" |> NamespacedName
+    let clAdmin = _prefix "clAdmin"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#codePostal"></see>
     /// </summary>
-    let codePostal = Namespaced_IRI.parse _namespace_name "codePostal" |> NamespacedName
+    let codePostal = _prefix "codePostal"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#concerne"></see>
     /// </summary>
-    let concerne = Namespaced_IRI.parse _namespace_name "concerne" |> NamespacedName
+    let concerne = _prefix "concerne"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#electrifie"></see>
     /// </summary>
-    let electrifie = Namespaced_IRI.parse _namespace_name "electrifie" |> NamespacedName
-
+    let electrifie = _prefix "electrifie"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#enConstruction"></see>
     /// </summary>
-    let enConstruction =
-        Namespaced_IRI.parse _namespace_name "enConstruction" |> NamespacedName
-
+    let enConstruction = _prefix "enConstruction"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#fictif"></see>
     /// </summary>
-    let fictif = Namespaced_IRI.parse _namespace_name "fictif" |> NamespacedName
+    let fictif = _prefix "fictif"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#gestion"></see>
     /// </summary>
-    let gestion = Namespaced_IRI.parse _namespace_name "gestion" |> NamespacedName
-
+    let gestion = _prefix "gestion"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#gestionVoie"></see>
     /// </summary>
-    let gestionVoie =
-        Namespaced_IRI.parse _namespace_name "gestionVoie" |> NamespacedName
-
+    let gestionVoie = _prefix "gestionVoie"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#hauteur"></see>
     /// </summary>
-    let hauteur = Namespaced_IRI.parse _namespace_name "hauteur" |> NamespacedName
+    let hauteur = _prefix "hauteur"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#importance"></see>
     /// </summary>
-    let importance = Namespaced_IRI.parse _namespace_name "importance" |> NamespacedName
+    let importance = _prefix "importance"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#itEurop"></see>
     /// </summary>
-    let itEurop = Namespaced_IRI.parse _namespace_name "itEurop" |> NamespacedName
+    let itEurop = _prefix "itEurop"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#itVert"></see>
     /// </summary>
-    let itVert = Namespaced_IRI.parse _namespace_name "itVert" |> NamespacedName
-
+    let itVert = _prefix "itVert"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#largeurChaussee"></see>
     /// </summary>
-    let largeurChaussee =
-        Namespaced_IRI.parse _namespace_name "largeurChaussee" |> NamespacedName
-
+    let largeurChaussee = _prefix "largeurChaussee"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#largeurVF"></see>
     /// </summary>
-    let largeurVF = Namespaced_IRI.parse _namespace_name "largeurVF" |> NamespacedName
+    let largeurVF = _prefix "largeurVF"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#militaire"></see>
     /// </summary>
-    let militaire = Namespaced_IRI.parse _namespace_name "militaire" |> NamespacedName
+    let militaire = _prefix "militaire"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#nature"></see>
     /// </summary>
-    let nature = Namespaced_IRI.parse _namespace_name "nature" |> NamespacedName
-
+    let nature = _prefix "nature"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#miseEnService"></see>
     /// </summary>
-    let miseEnService =
-        Namespaced_IRI.parse _namespace_name "miseEnService" |> NamespacedName
-
+    let miseEnService = _prefix "miseEnService"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#nbVoiesCirculation"></see>
     /// </summary>
-    let nbVoiesCirculation =
-        Namespaced_IRI.parse _namespace_name "nbVoiesCirculation" |> NamespacedName
-
+    let nbVoiesCirculation = _prefix "nbVoiesCirculation"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#nbVoiesFerrees"></see>
     /// </summary>
-    let nbVoiesFerrees =
-        Namespaced_IRI.parse _namespace_name "nbVoiesFerrees" |> NamespacedName
-
+    let nbVoiesFerrees = _prefix "nbVoiesFerrees"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#nomIti"></see>
     /// </summary>
-    let nomIti = Namespaced_IRI.parse _namespace_name "nomIti" |> NamespacedName
+    let nomIti = _prefix "nomIti"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#numero"></see>
     /// </summary>
-    let numero = Namespaced_IRI.parse _namespace_name "numero" |> NamespacedName
-
+    let numero = _prefix "numero"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#numeroBorne"></see>
     /// </summary>
-    let numeroBorne =
-        Namespaced_IRI.parse _namespace_name "numeroBorne" |> NamespacedName
-
+    let numeroBorne = _prefix "numeroBorne"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#origine"></see>
     /// </summary>
-    let origine = Namespaced_IRI.parse _namespace_name "origine" |> NamespacedName
+    let origine = _prefix "origine"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#posSol"></see>
     /// </summary>
-    let posSol = Namespaced_IRI.parse _namespace_name "posSol" |> NamespacedName
+    let posSol = _prefix "posSol"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#precAlti"></see>
     /// </summary>
-    let precAlti = Namespaced_IRI.parse _namespace_name "precAlti" |> NamespacedName
+    let precAlti = _prefix "precAlti"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#precPlani"></see>
     /// </summary>
-    let precPlani = Namespaced_IRI.parse _namespace_name "precPlani" |> NamespacedName
+    let precPlani = _prefix "precPlani"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#regime"></see>
     /// </summary>
-    let regime = Namespaced_IRI.parse _namespace_name "regime" |> NamespacedName
+    let regime = _prefix "regime"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#sens"></see>
     /// </summary>
-    let sens = Namespaced_IRI.parse _namespace_name "sens" |> NamespacedName
+    let sens = _prefix "sens"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typAdres"></see>
     /// </summary>
-    let typAdres = Namespaced_IRI.parse _namespace_name "typAdres" |> NamespacedName
-
+    let typAdres = _prefix "typAdres"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeBatiment"></see>
     /// </summary>
-    let typeDeBatiment =
-        Namespaced_IRI.parse _namespace_name "typeDeBatiment" |> NamespacedName
-
+    let typeDeBatiment = _prefix "typeDeBatiment"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeConstruction"></see>
     /// </summary>
-    let typeDeConstruction =
-        Namespaced_IRI.parse _namespace_name "typeDeConstruction" |> NamespacedName
-
+    let typeDeConstruction = _prefix "typeDeConstruction"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeFranchissement"></see>
     /// </summary>
-    let typeDeFranchissement =
-        Namespaced_IRI.parse _namespace_name "typeDeFranchissement" |> NamespacedName
-
+    let typeDeFranchissement = _prefix "typeDeFranchissement"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeLaisse"></see>
     /// </summary>
-    let typeDeLaisse =
-        Namespaced_IRI.parse _namespace_name "typeDeLaisse" |> NamespacedName
-
+    let typeDeLaisse = _prefix "typeDeLaisse"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDePiste"></see>
     /// </summary>
-    let typeDePiste =
-        Namespaced_IRI.parse _namespace_name "typeDePiste" |> NamespacedName
-
+    let typeDePiste = _prefix "typeDePiste"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDePointDEau"></see>
     /// </summary>
-    let typeDePointDEau =
-        Namespaced_IRI.parse _namespace_name "typeDePointDEau" |> NamespacedName
-
+    let typeDePointDEau = _prefix "typeDePointDEau"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeRelief"></see>
     /// </summary>
-    let typeDeRelief =
-        Namespaced_IRI.parse _namespace_name "typeDeRelief" |> NamespacedName
-
+    let typeDeRelief = _prefix "typeDeRelief"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeReservoir"></see>
     /// </summary>
-    let typeDeReservoir =
-        Namespaced_IRI.parse _namespace_name "typeDeReservoir" |> NamespacedName
-
+    let typeDeReservoir = _prefix "typeDeReservoir"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeRoute"></see>
     /// </summary>
-    let typeDeRoute =
-        Namespaced_IRI.parse _namespace_name "typeDeRoute" |> NamespacedName
-
+    let typeDeRoute = _prefix "typeDeRoute"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeTerrainDeSport"></see>
     /// </summary>
-    let typeDeTerrainDeSport =
-        Namespaced_IRI.parse _namespace_name "typeDeTerrainDeSport" |> NamespacedName
-
+    let typeDeTerrainDeSport = _prefix "typeDeTerrainDeSport"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeTransportCable"></see>
     /// </summary>
-    let typeDeTransportCable =
-        Namespaced_IRI.parse _namespace_name "typeDeTransportCable" |> NamespacedName
-
+    let typeDeTransportCable = _prefix "typeDeTransportCable"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeVegetation"></see>
     /// </summary>
-    let typeDeVegetation =
-        Namespaced_IRI.parse _namespace_name "typeDeVegetation" |> NamespacedName
-
+    let typeDeVegetation = _prefix "typeDeVegetation"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeVoieFerree"></see>
     /// </summary>
-    let typeDeVoieFerree =
-        Namespaced_IRI.parse _namespace_name "typeDeVoieFerree" |> NamespacedName
-
+    let typeDeVoieFerree = _prefix "typeDeVoieFerree"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#typeDeZAI"></see>
     /// </summary>
-    let typeDeZAI = Namespaced_IRI.parse _namespace_name "typeDeZAI" |> NamespacedName
+    let typeDeZAI = _prefix "typeDeZAI"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#voltage"></see>
     /// </summary>
-    let voltage = Namespaced_IRI.parse _namespace_name "voltage" |> NamespacedName
+    let voltage = _prefix "voltage"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#zFin"></see>
     /// </summary>
-    let zFin = Namespaced_IRI.parse _namespace_name "zFin" |> NamespacedName
+    let zFin = _prefix "zFin"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#zIni"></see>
     /// </summary>
-    let zIni = Namespaced_IRI.parse _namespace_name "zIni" |> NamespacedName
+    let zIni = _prefix "zIni"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#zMax"></see>
     /// </summary>
-    let zMax = Namespaced_IRI.parse _namespace_name "zMax" |> NamespacedName
+    let zMax = _prefix "zMax"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#zMin"></see>
     /// </summary>
-    let zMin = Namespaced_IRI.parse _namespace_name "zMin" |> NamespacedName
+    let zMin = _prefix "zMin"
     /// <summary>
     ///   <see href="http://data.ign.fr/def/topo#zMoyen"></see>
     /// </summary>
-    let zMoyen = Namespaced_IRI.parse _namespace_name "zMoyen" |> NamespacedName
+    let zMoyen = _prefix "zMoyen"

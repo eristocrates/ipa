@@ -1,199 +1,151 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FND.Places.NorthAmerica.USPostalServiceAddresses.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fnd_plc_uspsa =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/East"></see>
     /// </summary>
-    let East = Namespaced_IRI.parse _namespace_name "East" |> NamespacedName
+    let East = _prefix "East"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/North"></see>
     /// </summary>
-    let North = Namespaced_IRI.parse _namespace_name "North" |> NamespacedName
+    let North = _prefix "North"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/Northeast"></see>
     /// </summary>
-    let Northeast = Namespaced_IRI.parse _namespace_name "Northeast" |> NamespacedName
+    let Northeast = _prefix "Northeast"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/Northwest"></see>
     /// </summary>
-    let Northwest = Namespaced_IRI.parse _namespace_name "Northwest" |> NamespacedName
+    let Northwest = _prefix "Northwest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/South"></see>
     /// </summary>
-    let South = Namespaced_IRI.parse _namespace_name "South" |> NamespacedName
+    let South = _prefix "South"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/Southeast"></see>
     /// </summary>
-    let Southeast = Namespaced_IRI.parse _namespace_name "Southeast" |> NamespacedName
+    let Southeast = _prefix "Southeast"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/Southwest"></see>
     /// </summary>
-    let Southwest = Namespaced_IRI.parse _namespace_name "Southwest" |> NamespacedName
+    let Southwest = _prefix "Southwest"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/West"></see>
     /// </summary>
-    let West = Namespaced_IRI.parse _namespace_name "West" |> NamespacedName
-
+    let West = _prefix "West"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/CompleteAddress"></see>
     /// </summary>
-    let CompleteAddress =
-        Namespaced_IRI.parse _namespace_name "CompleteAddress" |> NamespacedName
-
+    let CompleteAddress = _prefix "CompleteAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/StandardizedAddress"></see>
     /// </summary>
-    let StandardizedAddress =
-        Namespaced_IRI.parse _namespace_name "StandardizedAddress" |> NamespacedName
-
+    let StandardizedAddress = _prefix "StandardizedAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/DeliveryAddressCodeSet"></see>
     /// </summary>
-    let DeliveryAddressCodeSet =
-        Namespaced_IRI.parse _namespace_name "DeliveryAddressCodeSet" |> NamespacedName
-
+    let DeliveryAddressCodeSet = _prefix "DeliveryAddressCodeSet"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/USPostalServiceAddressIdentifier"></see>
     /// </summary>
-    let USPostalServiceAddressIdentifier =
-        Namespaced_IRI.parse _namespace_name "USPostalServiceAddressIdentifier" |> NamespacedName
-
+    let USPostalServiceAddressIdentifier = _prefix "USPostalServiceAddressIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/DeliveryPointCode"></see>
     /// </summary>
-    let DeliveryPointCode =
-        Namespaced_IRI.parse _namespace_name "DeliveryPointCode" |> NamespacedName
-
+    let DeliveryPointCode = _prefix "DeliveryPointCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/DeliveryPointCodeSet"></see>
     /// </summary>
-    let DeliveryPointCodeSet =
-        Namespaced_IRI.parse _namespace_name "DeliveryPointCodeSet" |> NamespacedName
-
+    let DeliveryPointCodeSet = _prefix "DeliveryPointCodeSet"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/DepartmentOfStateAddress"></see>
     /// </summary>
-    let DepartmentOfStateAddress =
-        Namespaced_IRI.parse _namespace_name "DepartmentOfStateAddress" |> NamespacedName
-
+    let DepartmentOfStateAddress = _prefix "DepartmentOfStateAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/DepartmentOfStateUnitComponent"></see>
     /// </summary>
-    let DepartmentOfStateUnitComponent =
-        Namespaced_IRI.parse _namespace_name "DepartmentOfStateUnitComponent" |> NamespacedName
-
+    let DepartmentOfStateUnitComponent = _prefix "DepartmentOfStateUnitComponent"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/Mailbox"></see>
     /// </summary>
-    let Mailbox = Namespaced_IRI.parse _namespace_name "Mailbox" |> NamespacedName
-
+    let Mailbox = _prefix "Mailbox"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/GeneralDeliveryAddress"></see>
     /// </summary>
-    let GeneralDeliveryAddress =
-        Namespaced_IRI.parse _namespace_name "GeneralDeliveryAddress" |> NamespacedName
-
+    let GeneralDeliveryAddress = _prefix "GeneralDeliveryAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/HighwayContractRoute"></see>
     /// </summary>
-    let HighwayContractRoute =
-        Namespaced_IRI.parse _namespace_name "HighwayContractRoute" |> NamespacedName
-
+    let HighwayContractRoute = _prefix "HighwayContractRoute"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/HighwayContractRouteDesignator"></see>
     /// </summary>
-    let HighwayContractRouteDesignator =
-        Namespaced_IRI.parse _namespace_name "HighwayContractRouteDesignator" |> NamespacedName
-
+    let HighwayContractRouteDesignator = _prefix "HighwayContractRouteDesignator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/HighwayContractRouteAddress"></see>
     /// </summary>
-    let HighwayContractRouteAddress =
-        Namespaced_IRI.parse _namespace_name "HighwayContractRouteAddress" |> NamespacedName
-
+    let HighwayContractRouteAddress = _prefix "HighwayContractRouteAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/InternationalAddress"></see>
     /// </summary>
-    let InternationalAddress =
-        Namespaced_IRI.parse _namespace_name "InternationalAddress" |> NamespacedName
-
+    let InternationalAddress = _prefix "InternationalAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/MailboxDesignator"></see>
     /// </summary>
-    let MailboxDesignator =
-        Namespaced_IRI.parse _namespace_name "MailboxDesignator" |> NamespacedName
-
+    let MailboxDesignator = _prefix "MailboxDesignator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/OverseasMilitaryAddress"></see>
     /// </summary>
-    let OverseasMilitaryAddress =
-        Namespaced_IRI.parse _namespace_name "OverseasMilitaryAddress" |> NamespacedName
-
+    let OverseasMilitaryAddress = _prefix "OverseasMilitaryAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/PrivateMailBoxAddress"></see>
     /// </summary>
-    let PrivateMailBoxAddress =
-        Namespaced_IRI.parse _namespace_name "PrivateMailBoxAddress" |> NamespacedName
-
+    let PrivateMailBoxAddress = _prefix "PrivateMailBoxAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/PuertoRicoAddress"></see>
     /// </summary>
-    let PuertoRicoAddress =
-        Namespaced_IRI.parse _namespace_name "PuertoRicoAddress" |> NamespacedName
-
+    let PuertoRicoAddress = _prefix "PuertoRicoAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/Urbanization"></see>
     /// </summary>
-    let Urbanization =
-        Namespaced_IRI.parse _namespace_name "Urbanization" |> NamespacedName
-
+    let Urbanization = _prefix "Urbanization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/RuralRoute"></see>
     /// </summary>
-    let RuralRoute = Namespaced_IRI.parse _namespace_name "RuralRoute" |> NamespacedName
-
+    let RuralRoute = _prefix "RuralRoute"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/RuralRouteDesignator"></see>
     /// </summary>
-    let RuralRouteDesignator =
-        Namespaced_IRI.parse _namespace_name "RuralRouteDesignator" |> NamespacedName
-
+    let RuralRouteDesignator = _prefix "RuralRouteDesignator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/RuralRouteAddress"></see>
     /// </summary>
-    let RuralRouteAddress =
-        Namespaced_IRI.parse _namespace_name "RuralRouteAddress" |> NamespacedName
-
+    let RuralRouteAddress = _prefix "RuralRouteAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/USPostOfficeBoxDesignator"></see>
     /// </summary>
-    let USPostOfficeBoxDesignator =
-        Namespaced_IRI.parse _namespace_name "USPostOfficeBoxDesignator" |> NamespacedName
-
+    let USPostOfficeBoxDesignator = _prefix "USPostOfficeBoxDesignator"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/ZIPPlus4Code"></see>
     /// </summary>
-    let ZIPPlus4Code =
-        Namespaced_IRI.parse _namespace_name "ZIPPlus4Code" |> NamespacedName
-
+    let ZIPPlus4Code = _prefix "ZIPPlus4Code"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/ZIPCode"></see>
     /// </summary>
-    let ZIPCode = Namespaced_IRI.parse _namespace_name "ZIPCode" |> NamespacedName
-
+    let ZIPCode = _prefix "ZIPCode"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/ZipCodeScheme"></see>
     /// </summary>
-    let ZipCodeScheme =
-        Namespaced_IRI.parse _namespace_name "ZipCodeScheme" |> NamespacedName
-
+    let ZipCodeScheme = _prefix "ZipCodeScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/hasUrbanization"></see>
     /// </summary>
-    let hasUrbanization =
-        Namespaced_IRI.parse _namespace_name "hasUrbanization" |> NamespacedName
+    let hasUrbanization = _prefix "hasUrbanization"

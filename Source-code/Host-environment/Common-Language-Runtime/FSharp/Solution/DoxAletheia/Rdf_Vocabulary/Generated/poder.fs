@@ -1,631 +1,457 @@
 namespace http.dev.poderopedia.com.vocab.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module poder =
     let _namespace_name = "http://dev.poderopedia.com/vocab/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// The connection between a person and an Educational Organization (university, school, etc)
     /// <see href="http://dev.poderopedia.com/vocab/AcademicConnection"></see></summary>
-    let AcademicConnection =
-        Namespaced_IRI.parse _namespace_name "AcademicConnection" |> NamespacedName
-
+    let AcademicConnection = _prefix "AcademicConnection"
     /// <summary>
     /// A generic connection between two or more entities during a certain period of time
     /// <see href="http://dev.poderopedia.com/vocab/Connection"></see></summary>
-    let Connection = Namespaced_IRI.parse _namespace_name "Connection" |> NamespacedName
-
+    let Connection = _prefix "Connection"
     /// <summary>
     /// An educational organization, such a school or university
     /// <see href="http://dev.poderopedia.com/vocab/AcademicOrganization"></see></summary>
-    let AcademicOrganization =
-        Namespaced_IRI.parse _namespace_name "AcademicOrganization" |> NamespacedName
-
+    let AcademicOrganization = _prefix "AcademicOrganization"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/Acquaintance"></see>
     /// </summary>
-    let Acquaintance =
-        Namespaced_IRI.parse _namespace_name "Acquaintance" |> NamespacedName
-
+    let Acquaintance = _prefix "Acquaintance"
     /// <summary>
     /// Connection between a two people, like friendship, acquaintances, etc.
     /// <see href="http://dev.poderopedia.com/vocab/SocialConnection"></see></summary>
-    let SocialConnection =
-        Namespaced_IRI.parse _namespace_name "SocialConnection" |> NamespacedName
-
+    let SocialConnection = _prefix "SocialConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/AcquisitionCompanyConnection"></see>
     /// </summary>
-    let AcquisitionCompanyConnection =
-        Namespaced_IRI.parse _namespace_name "AcquisitionCompanyConnection" |> NamespacedName
-
+    let AcquisitionCompanyConnection = _prefix "AcquisitionCompanyConnection"
     /// <summary>
     /// The connection between two companies
     /// <see href="http://dev.poderopedia.com/vocab/CompanyConnection"></see></summary>
-    let CompanyConnection =
-        Namespaced_IRI.parse _namespace_name "CompanyConnection" |> NamespacedName
-
+    let CompanyConnection = _prefix "CompanyConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/AlumniEducationalConnection"></see>
     /// </summary>
-    let AlumniEducationalConnection =
-        Namespaced_IRI.parse _namespace_name "AlumniEducationalConnection" |> NamespacedName
-
+    let AlumniEducationalConnection = _prefix "AlumniEducationalConnection"
     /// <summary>
     /// These connections reflects that a person studied (at least for some time) in an academic organization.
     /// <see href="http://dev.poderopedia.com/vocab/EducationalConnection"></see></summary>
-    let EducationalConnection =
-        Namespaced_IRI.parse _namespace_name "EducationalConnection" |> NamespacedName
-
+    let EducationalConnection = _prefix "EducationalConnection"
     /// <summary>
     /// The connection between an entity and a Organization (Opus Dei, a Think Tank) without been affiliated to it necessarily
     /// <see href="http://dev.poderopedia.com/vocab/AssociationConnection"></see></summary>
-    let AssociationConnection =
-        Namespaced_IRI.parse _namespace_name "AssociationConnection" |> NamespacedName
-
+    let AssociationConnection = _prefix "AssociationConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/Biography"></see>
     /// </summary>
-    let Biography = Namespaced_IRI.parse _namespace_name "Biography" |> NamespacedName
-
+    let Biography = _prefix "Biography"
     /// <summary>
     /// Abstract class  of any entity that has a source where its information was taken from
     /// <see href="http://dev.poderopedia.com/vocab/SourcedEntity"></see></summary>
-    let SourcedEntity =
-        Namespaced_IRI.parse _namespace_name "SourcedEntity" |> NamespacedName
-
+    let SourcedEntity = _prefix "SourcedEntity"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/CivilUnion"></see>
     /// </summary>
-    let CivilUnion = Namespaced_IRI.parse _namespace_name "CivilUnion" |> NamespacedName
-
+    let CivilUnion = _prefix "CivilUnion"
     /// <summary>
     /// Class of possible marital status a person can be
     /// <see href="http://dev.poderopedia.com/vocab/SentimentalRelationshipConnection"></see></summary>
-    let SentimentalRelationshipConnection =
-        Namespaced_IRI.parse _namespace_name "SentimentalRelationshipConnection" |> NamespacedName
-
+    let SentimentalRelationshipConnection = _prefix "SentimentalRelationshipConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/Classmate"></see>
     /// </summary>
-    let Classmate = Namespaced_IRI.parse _namespace_name "Classmate" |> NamespacedName
+    let Classmate = _prefix "Classmate"
     /// <summary>
     /// A for profit organization
     /// <see href="http://dev.poderopedia.com/vocab/Company"></see></summary>
-    let Company = Namespaced_IRI.parse _namespace_name "Company" |> NamespacedName
+    let Company = _prefix "Company"
     /// <summary>
     /// A region legally defined as a distinct entity in political geography
     /// <see href="http://dev.poderopedia.com/vocab/Country"></see></summary>
-    let Country = Namespaced_IRI.parse _namespace_name "Country" |> NamespacedName
+    let Country = _prefix "Country"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/Dating"></see>
     /// </summary>
-    let Dating = Namespaced_IRI.parse _namespace_name "Dating" |> NamespacedName
-
+    let Dating = _prefix "Dating"
     /// <summary>
     /// Class that describes documents related to a person or organization, including its release date
     /// <see href="http://dev.poderopedia.com/vocab/Documentation"></see></summary>
-    let Documentation =
-        Namespaced_IRI.parse _namespace_name "Documentation" |> NamespacedName
-
+    let Documentation = _prefix "Documentation"
     /// <summary>
     /// Class that describes any type of data related to an organization including a relevant date
     /// <see href="http://dev.poderopedia.com/vocab/RelatedData"></see></summary>
-    let RelatedData =
-        Namespaced_IRI.parse _namespace_name "RelatedData" |> NamespacedName
-
+    let RelatedData = _prefix "RelatedData"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/DomesticPartnership"></see>
     /// </summary>
-    let DomesticPartnership =
-        Namespaced_IRI.parse _namespace_name "DomesticPartnership" |> NamespacedName
-
+    let DomesticPartnership = _prefix "DomesticPartnership"
     /// <summary>
     /// Any financial information related to an organization (e.g., anual profit)
     /// <see href="http://dev.poderopedia.com/vocab/FinancialInformation"></see></summary>
-    let FinancialInformation =
-        Namespaced_IRI.parse _namespace_name "FinancialInformation" |> NamespacedName
-
+    let FinancialInformation = _prefix "FinancialInformation"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/FinancierAssociationConnection"></see>
     /// </summary>
-    let FinancierAssociationConnection =
-        Namespaced_IRI.parse _namespace_name "FinancierAssociationConnection" |> NamespacedName
-
+    let FinancierAssociationConnection = _prefix "FinancierAssociationConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/Friendship"></see>
     /// </summary>
-    let Friendship = Namespaced_IRI.parse _namespace_name "Friendship" |> NamespacedName
+    let Friendship = _prefix "Friendship"
     /// <summary>
     /// Gender of a person
     /// <see href="http://dev.poderopedia.com/vocab/Gender"></see></summary>
-    let Gender = Namespaced_IRI.parse _namespace_name "Gender" |> NamespacedName
-
+    let Gender = _prefix "Gender"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/GraduateEducationalConnection"></see>
     /// </summary>
-    let GraduateEducationalConnection =
-        Namespaced_IRI.parse _namespace_name "GraduateEducationalConnection" |> NamespacedName
-
+    let GraduateEducationalConnection = _prefix "GraduateEducationalConnection"
     /// <summary>
     /// An international organization, like UN, UNESCO, etc.
     /// <see href="http://dev.poderopedia.com/vocab/InternationalOrganization"></see></summary>
-    let InternationalOrganization =
-        Namespaced_IRI.parse _namespace_name "InternationalOrganization" |> NamespacedName
-
+    let InternationalOrganization = _prefix "InternationalOrganization"
     /// <summary>
     /// Long description of a person, organization, etc
     /// <see href="http://dev.poderopedia.com/vocab/LongBiography"></see></summary>
-    let LongBiography =
-        Namespaced_IRI.parse _namespace_name "LongBiography" |> NamespacedName
-
+    let LongBiography = _prefix "LongBiography"
     /// <summary>
     /// Short description of a person, organization, etc
     /// <see href="http://dev.poderopedia.com/vocab/ShortBiography"></see></summary>
-    let ShortBiography =
-        Namespaced_IRI.parse _namespace_name "ShortBiography" |> NamespacedName
-
+    let ShortBiography = _prefix "ShortBiography"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/Marriage"></see>
     /// </summary>
-    let Marriage = Namespaced_IRI.parse _namespace_name "Marriage" |> NamespacedName
-
+    let Marriage = _prefix "Marriage"
     /// <summary>
     /// Official member of an organization (social club, religious group, etc.)
     /// <see href="http://dev.poderopedia.com/vocab/MembershipAssociationConnection"></see></summary>
-    let MembershipAssociationConnection =
-        Namespaced_IRI.parse _namespace_name "MembershipAssociationConnection" |> NamespacedName
-
+    let MembershipAssociationConnection = _prefix "MembershipAssociationConnection"
     /// <summary>
     /// The connection between an entity and an Educational Organization (university, school, etc)
     /// <see href="http://dev.poderopedia.com/vocab/MergeCompanyConnection"></see></summary>
-    let MergeCompanyConnection =
-        Namespaced_IRI.parse _namespace_name "MergeCompanyConnection" |> NamespacedName
-
+    let MergeCompanyConnection = _prefix "MergeCompanyConnection"
     /// <summary>
     /// An event relevant from the point of view of journalism
     /// <see href="http://dev.poderopedia.com/vocab/NewsEvent"></see></summary>
-    let NewsEvent = Namespaced_IRI.parse _namespace_name "NewsEvent" |> NamespacedName
-
+    let NewsEvent = _prefix "NewsEvent"
     /// <summary>
     /// Describes the relation of a person with a news event during a specific period of time
     /// <see href="http://dev.poderopedia.com/vocab/NewsEventConnection"></see></summary>
-    let NewsEventConnection =
-        Namespaced_IRI.parse _namespace_name "NewsEventConnection" |> NamespacedName
-
+    let NewsEventConnection = _prefix "NewsEventConnection"
     /// <summary>
     /// An non-governmental organization (NGO)
     /// <see href="http://dev.poderopedia.com/vocab/NonGovernmentalOrganization"></see></summary>
-    let NonGovernmentalOrganization =
-        Namespaced_IRI.parse _namespace_name "NonGovernmentalOrganization" |> NamespacedName
-
+    let NonGovernmentalOrganization = _prefix "NonGovernmentalOrganization"
     /// <summary>
     /// Numeric datum for an organization for a certain year
     /// <see href="http://dev.poderopedia.com/vocab/NumericDatum"></see></summary>
-    let NumericDatum =
-        Namespaced_IRI.parse _namespace_name "NumericDatum" |> NamespacedName
-
+    let NumericDatum = _prefix "NumericDatum"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/OtherAssociationConnection"></see>
     /// </summary>
-    let OtherAssociationConnection =
-        Namespaced_IRI.parse _namespace_name "OtherAssociationConnection" |> NamespacedName
-
+    let OtherAssociationConnection = _prefix "OtherAssociationConnection"
     /// <summary>
     /// Connection between a political organization and other entities
     /// <see href="http://dev.poderopedia.com/vocab/PoliticalConnection"></see></summary>
-    let PoliticalConnection =
-        Namespaced_IRI.parse _namespace_name "PoliticalConnection" |> NamespacedName
-
+    let PoliticalConnection = _prefix "PoliticalConnection"
     /// <summary>
     /// An Political organization, like parties.
     /// <see href="http://dev.poderopedia.com/vocab/PoliticalOrganization"></see></summary>
-    let PoliticalOrganization =
-        Namespaced_IRI.parse _namespace_name "PoliticalOrganization" |> NamespacedName
-
+    let PoliticalOrganization = _prefix "PoliticalOrganization"
     /// <summary>
     /// An programmatic organization, like think tanks.
     /// <see href="http://dev.poderopedia.com/vocab/ProgrammaticOrganization"></see></summary>
-    let ProgrammaticOrganization =
-        Namespaced_IRI.parse _namespace_name "ProgrammaticOrganization" |> NamespacedName
-
+    let ProgrammaticOrganization = _prefix "ProgrammaticOrganization"
     /// <summary>
     /// An religious organization, like Opus Dei, Catholic church, etc.
     /// <see href="http://dev.poderopedia.com/vocab/ReligiousOrganization"></see></summary>
-    let ReligiousOrganization =
-        Namespaced_IRI.parse _namespace_name "ReligiousOrganization" |> NamespacedName
-
+    let ReligiousOrganization = _prefix "ReligiousOrganization"
     /// <summary>
     /// A restricted access organization, like social clubs, golf clubs, etc.
     /// <see href="http://dev.poderopedia.com/vocab/RestrictedAccessOrganization"></see></summary>
-    let RestrictedAccessOrganization =
-        Namespaced_IRI.parse _namespace_name "RestrictedAccessOrganization" |> NamespacedName
-
+    let RestrictedAccessOrganization = _prefix "RestrictedAccessOrganization"
     /// <summary>
     /// Productive sector related to an agent
     /// <see href="http://dev.poderopedia.com/vocab/Sector"></see></summary>
-    let Sector = Namespaced_IRI.parse _namespace_name "Sector" |> NamespacedName
-
+    let Sector = _prefix "Sector"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/StudentEducationalConnection"></see>
     /// </summary>
-    let StudentEducationalConnection =
-        Namespaced_IRI.parse _namespace_name "StudentEducationalConnection" |> NamespacedName
-
+    let StudentEducationalConnection = _prefix "StudentEducationalConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/SympathizerAssociationConnection"></see>
     /// </summary>
-    let SympathizerAssociationConnection =
-        Namespaced_IRI.parse _namespace_name "SympathizerAssociationConnection" |> NamespacedName
-
+    let SympathizerAssociationConnection = _prefix "SympathizerAssociationConnection"
     /// <summary>
     /// The connection between an entity and an Educational Organization (university, school, etc)
     /// <see href="http://dev.poderopedia.com/vocab/WorkConnection"></see></summary>
-    let WorkConnection =
-        Namespaced_IRI.parse _namespace_name "WorkConnection" |> NamespacedName
-
+    let WorkConnection = _prefix "WorkConnection"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/WorkRole"></see>
     /// </summary>
-    let WorkRole = Namespaced_IRI.parse _namespace_name "WorkRole" |> NamespacedName
-
+    let WorkRole = _prefix "WorkRole"
     /// <summary>
     /// An academic organization (school, university) who is part of this connection
     /// <see href="http://dev.poderopedia.com/vocab/academicParticipant"></see></summary>
-    let academicParticipant =
-        Namespaced_IRI.parse _namespace_name "academicParticipant" |> NamespacedName
-
+    let academicParticipant = _prefix "academicParticipant"
     /// <summary>
     /// An alias for a person
     /// <see href="http://dev.poderopedia.com/vocab/alias"></see></summary>
-    let alias = Namespaced_IRI.parse _namespace_name "alias" |> NamespacedName
-
+    let alias = _prefix "alias"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/buyerCompany"></see>
     /// </summary>
-    let buyerCompany =
-        Namespaced_IRI.parse _namespace_name "buyerCompany" |> NamespacedName
-
+    let buyerCompany = _prefix "buyerCompany"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/ceo"></see>
     /// </summary>
-    let ceo = Namespaced_IRI.parse _namespace_name "ceo" |> NamespacedName
-
+    let ceo = _prefix "ceo"
     /// <summary>
     /// Relation between companies where one is the subsidiary of the second
     /// <see href="http://dev.poderopedia.com/vocab/commercialRepresentativesOf"></see></summary>
-    let commercialRepresentativesOf =
-        Namespaced_IRI.parse _namespace_name "commercialRepresentativesOf" |> NamespacedName
-
+    let commercialRepresentativesOf = _prefix "commercialRepresentativesOf"
     /// <summary>
     /// Entity from where two persons know each other (school, college, church, etc.)
     /// <see href="http://dev.poderopedia.com/vocab/connectedVia"></see></summary>
-    let connectedVia =
-        Namespaced_IRI.parse _namespace_name "connectedVia" |> NamespacedName
-
+    let connectedVia = _prefix "connectedVia"
     /// <summary>
     /// Date when connection between entities ended
     /// <see href="http://dev.poderopedia.com/vocab/connectionEndDate"></see></summary>
-    let connectionEndDate =
-        Namespaced_IRI.parse _namespace_name "connectionEndDate" |> NamespacedName
-
+    let connectionEndDate = _prefix "connectionEndDate"
     /// <summary>
     /// Date when connection between entities started
     /// <see href="http://dev.poderopedia.com/vocab/connectionStartDate"></see></summary>
-    let connectionStartDate =
-        Namespaced_IRI.parse _namespace_name "connectionStartDate" |> NamespacedName
-
+    let connectionStartDate = _prefix "connectionStartDate"
     /// <summary>
     /// Country where the organization's headquarters are located
     /// <see href="http://dev.poderopedia.com/vocab/countryOfResidence"></see></summary>
-    let countryOfResidence =
-        Namespaced_IRI.parse _namespace_name "countryOfResidence" |> NamespacedName
-
+    let countryOfResidence = _prefix "countryOfResidence"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/cto"></see>
     /// </summary>
-    let cto = Namespaced_IRI.parse _namespace_name "cto" |> NamespacedName
-
+    let cto = _prefix "cto"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/declarationOfInterests"></see>
     /// </summary>
-    let declarationOfInterests =
-        Namespaced_IRI.parse _namespace_name "declarationOfInterests" |> NamespacedName
-
+    let declarationOfInterests = _prefix "declarationOfInterests"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/declarationOfPatrimony"></see>
     /// </summary>
-    let declarationOfPatrimony =
-        Namespaced_IRI.parse _namespace_name "declarationOfPatrimony" |> NamespacedName
-
+    let declarationOfPatrimony = _prefix "declarationOfPatrimony"
     /// <summary>
     /// A depiction of some organization or person.
     /// <see href="http://dev.poderopedia.com/vocab/depiction"></see></summary>
-    let depiction = Namespaced_IRI.parse _namespace_name "depiction" |> NamespacedName
-
+    let depiction = _prefix "depiction"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/firstLastName"></see>
     /// </summary>
-    let firstLastName =
-        Namespaced_IRI.parse _namespace_name "firstLastName" |> NamespacedName
-
+    let firstLastName = _prefix "firstLastName"
     /// <summary>
     /// Entity from where two persons know each other (school, college, church, etc.)
     /// <see href="http://dev.poderopedia.com/vocab/hasAcademicOrganization"></see></summary>
-    let hasAcademicOrganization =
-        Namespaced_IRI.parse _namespace_name "hasAcademicOrganization" |> NamespacedName
-
+    let hasAcademicOrganization = _prefix "hasAcademicOrganization"
     /// <summary>
     /// Main sector not listed in hasMainSector
     /// <see href="http://dev.poderopedia.com/vocab/hasAlternativeMainSector"></see></summary>
-    let hasAlternativeMainSector =
-        Namespaced_IRI.parse _namespace_name "hasAlternativeMainSector" |> NamespacedName
-
+    let hasAlternativeMainSector = _prefix "hasAlternativeMainSector"
     /// <summary>
     /// Other sector not listed in hasOtherSector
     /// <see href="http://dev.poderopedia.com/vocab/hasAlternativeOtherSector"></see></summary>
-    let hasAlternativeOtherSector =
-        Namespaced_IRI.parse _namespace_name "hasAlternativeOtherSector" |> NamespacedName
-
+    let hasAlternativeOtherSector = _prefix "hasAlternativeOtherSector"
     /// <summary>
     /// Sectors related to NGOs not lister previously
     /// <see href="http://dev.poderopedia.com/vocab/hasAnotherPhilantropySector"></see></summary>
-    let hasAnotherPhilantropySector =
-        Namespaced_IRI.parse _namespace_name "hasAnotherPhilantropySector" |> NamespacedName
-
+    let hasAnotherPhilantropySector = _prefix "hasAnotherPhilantropySector"
     /// <summary>
     /// Describes relation where a person (object) is the sibling of one of the parents of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasAuntOrUncle"></see></summary>
-    let hasAuntOrUncle =
-        Namespaced_IRI.parse _namespace_name "hasAuntOrUncle" |> NamespacedName
-
+    let hasAuntOrUncle = _prefix "hasAuntOrUncle"
     /// <summary>
     /// Describes relation where a person (object) is the child of one of the siblings of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasNieceOrNephew"></see></summary>
-    let hasNieceOrNephew =
-        Namespaced_IRI.parse _namespace_name "hasNieceOrNephew" |> NamespacedName
-
+    let hasNieceOrNephew = _prefix "hasNieceOrNephew"
     /// <summary>
     /// Describes relation where a person (object) is a parent of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasChild"></see></summary>
-    let hasChild = Namespaced_IRI.parse _namespace_name "hasChild" |> NamespacedName
+    let hasChild = _prefix "hasChild"
     /// <summary>
     /// Describes relation where a person (object) is a parent of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasParent"></see></summary>
-    let hasParent = Namespaced_IRI.parse _namespace_name "hasParent" |> NamespacedName
+    let hasParent = _prefix "hasParent"
     /// <summary>
     /// Describes relation where a person (object) is the cousin (their parents are siblings) of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasCousin"></see></summary>
-    let hasCousin = Namespaced_IRI.parse _namespace_name "hasCousin" |> NamespacedName
-
+    let hasCousin = _prefix "hasCousin"
     /// <summary>
     /// URL where the document is located
     /// <see href="http://dev.poderopedia.com/vocab/hasDocumentURL"></see></summary>
-    let hasDocumentURL =
-        Namespaced_IRI.parse _namespace_name "hasDocumentURL" |> NamespacedName
-
+    let hasDocumentURL = _prefix "hasDocumentURL"
     /// <summary>
     /// Associates an agent with related documentation
     /// <see href="http://dev.poderopedia.com/vocab/hasDocumentation"></see></summary>
-    let hasDocumentation =
-        Namespaced_IRI.parse _namespace_name "hasDocumentation" |> NamespacedName
+    let hasDocumentation = _prefix "hasDocumentation"
 
     /// <summary>
     /// Organization or company associated with this economic connection
     /// <see href="http://dev.poderopedia.com/vocab/hasEconomicOrganizationParticipant"></see></summary>
     let hasEconomicOrganizationParticipant =
-        Namespaced_IRI.parse _namespace_name "hasEconomicOrganizationParticipant" |> NamespacedName
+        _prefix "hasEconomicOrganizationParticipant"
 
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasFinancialInformationYear"></see>
     /// </summary>
-    let hasFinancialInformationYear =
-        Namespaced_IRI.parse _namespace_name "hasFinancialInformationYear" |> NamespacedName
-
+    let hasFinancialInformationYear = _prefix "hasFinancialInformationYear"
     /// <summary>
     /// Gender of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasGender"></see></summary>
-    let hasGender = Namespaced_IRI.parse _namespace_name "hasGender" |> NamespacedName
-
+    let hasGender = _prefix "hasGender"
     /// <summary>
     /// Describes relation where a person (object) is the child of the person's child
     /// <see href="http://dev.poderopedia.com/vocab/hasGrandChild"></see></summary>
-    let hasGrandChild =
-        Namespaced_IRI.parse _namespace_name "hasGrandChild" |> NamespacedName
-
+    let hasGrandChild = _prefix "hasGrandChild"
     /// <summary>
     /// Describes relation where a person (object) is the parent of the person's parent
     /// <see href="http://dev.poderopedia.com/vocab/hasGrandparent"></see></summary>
-    let hasGrandparent =
-        Namespaced_IRI.parse _namespace_name "hasGrandparent" |> NamespacedName
-
+    let hasGrandparent = _prefix "hasGrandparent"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasLegalConstitution"></see>
     /// </summary>
-    let hasLegalConstitution =
-        Namespaced_IRI.parse _namespace_name "hasLegalConstitution" |> NamespacedName
-
+    let hasLegalConstitution = _prefix "hasLegalConstitution"
     /// <summary>
     /// Logo of the organization
     /// <see href="http://dev.poderopedia.com/vocab/hasLogo"></see></summary>
-    let hasLogo = Namespaced_IRI.parse _namespace_name "hasLogo" |> NamespacedName
-
+    let hasLogo = _prefix "hasLogo"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasLongBiography"></see>
     /// </summary>
-    let hasLongBiography =
-        Namespaced_IRI.parse _namespace_name "hasLongBiography" |> NamespacedName
-
+    let hasLongBiography = _prefix "hasLongBiography"
     /// <summary>
     /// Main sector related to the organization
     /// <see href="http://dev.poderopedia.com/vocab/hasMainSector"></see></summary>
-    let hasMainSector =
-        Namespaced_IRI.parse _namespace_name "hasMainSector" |> NamespacedName
-
+    let hasMainSector = _prefix "hasMainSector"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasMap"></see>
     /// </summary>
-    let hasMap = Namespaced_IRI.parse _namespace_name "hasMap" |> NamespacedName
-
+    let hasMap = _prefix "hasMap"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasNumberEmployees"></see>
     /// </summary>
-    let hasNumberEmployees =
-        Namespaced_IRI.parse _namespace_name "hasNumberEmployees" |> NamespacedName
-
+    let hasNumberEmployees = _prefix "hasNumberEmployees"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasNumericDatum"></see>
     /// </summary>
-    let hasNumericDatum =
-        Namespaced_IRI.parse _namespace_name "hasNumericDatum" |> NamespacedName
-
+    let hasNumericDatum = _prefix "hasNumericDatum"
     /// <summary>
     /// Documents describing the organigram this agent
     /// <see href="http://dev.poderopedia.com/vocab/hasOrganigramDocumentation"></see></summary>
-    let hasOrganigramDocumentation =
-        Namespaced_IRI.parse _namespace_name "hasOrganigramDocumentation" |> NamespacedName
-
+    let hasOrganigramDocumentation = _prefix "hasOrganigramDocumentation"
     /// <summary>
     /// Miscelaneous document related to this agent
     /// <see href="http://dev.poderopedia.com/vocab/hasOtherDocumentation"></see></summary>
-    let hasOtherDocumentation =
-        Namespaced_IRI.parse _namespace_name "hasOtherDocumentation" |> NamespacedName
-
+    let hasOtherDocumentation = _prefix "hasOtherDocumentation"
     /// <summary>
     /// Other sector related to the organization
     /// <see href="http://dev.poderopedia.com/vocab/hasOtherSector"></see></summary>
-    let hasOtherSector =
-        Namespaced_IRI.parse _namespace_name "hasOtherSector" |> NamespacedName
-
+    let hasOtherSector = _prefix "hasOtherSector"
     /// <summary>
     /// Sectors related to NGOs
     /// <see href="http://dev.poderopedia.com/vocab/hasPhilantropySector"></see></summary>
-    let hasPhilantropySector =
-        Namespaced_IRI.parse _namespace_name "hasPhilantropySector" |> NamespacedName
-
+    let hasPhilantropySector = _prefix "hasPhilantropySector"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/PhilantropySector"></see>
     /// </summary>
-    let PhilantropySector =
-        Namespaced_IRI.parse _namespace_name "PhilantropySector" |> NamespacedName
-
+    let PhilantropySector = _prefix "PhilantropySector"
     /// <summary>
     /// Date related to this data (e.g., release date, last modification, etc.)
     /// <see href="http://dev.poderopedia.com/vocab/hasRelevantDate"></see></summary>
-    let hasRelevantDate =
-        Namespaced_IRI.parse _namespace_name "hasRelevantDate" |> NamespacedName
-
+    let hasRelevantDate = _prefix "hasRelevantDate"
     /// <summary>
     /// Documents describing legal sanctions related to this agent
     /// <see href="http://dev.poderopedia.com/vocab/hasSanctionDocumentation"></see></summary>
-    let hasSanctionDocumentation =
-        Namespaced_IRI.parse _namespace_name "hasSanctionDocumentation" |> NamespacedName
-
+    let hasSanctionDocumentation = _prefix "hasSanctionDocumentation"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasShortBiography"></see>
     /// </summary>
-    let hasShortBiography =
-        Namespaced_IRI.parse _namespace_name "hasShortBiography" |> NamespacedName
-
+    let hasShortBiography = _prefix "hasShortBiography"
     /// <summary>
     /// Describes relation where a person (object) is the sibling (i.e., they have at least one parent in common) of this person
     /// <see href="http://dev.poderopedia.com/vocab/hasSibling"></see></summary>
-    let hasSibling = Namespaced_IRI.parse _namespace_name "hasSibling" |> NamespacedName
-
+    let hasSibling = _prefix "hasSibling"
     /// <summary>
     /// An alias for a person
     /// <see href="http://dev.poderopedia.com/vocab/hasSocialReason"></see></summary>
-    let hasSocialReason =
-        Namespaced_IRI.parse _namespace_name "hasSocialReason" |> NamespacedName
-
+    let hasSocialReason = _prefix "hasSocialReason"
     /// <summary>
     /// Source where the information about a connection was obtained
     /// <see href="http://dev.poderopedia.com/vocab/hasSource"></see></summary>
-    let hasSource = Namespaced_IRI.parse _namespace_name "hasSource" |> NamespacedName
+    let hasSource = _prefix "hasSource"
     /// <summary>
     /// Connection between two people that establishes a marriage, domestic partnership, civil union, sentimental relationship, etc.
     /// <see href="http://dev.poderopedia.com/vocab/hasSpouse"></see></summary>
-    let hasSpouse = Namespaced_IRI.parse _namespace_name "hasSpouse" |> NamespacedName
+    let hasSpouse = _prefix "hasSpouse"
     /// <summary>
     /// Person involved in an Education Connection
     /// <see href="http://dev.poderopedia.com/vocab/hasStudent"></see></summary>
-    let hasStudent = Namespaced_IRI.parse _namespace_name "hasStudent" |> NamespacedName
+    let hasStudent = _prefix "hasStudent"
     /// <summary>
     /// ID that identifies an organization or person for tax purposes
     /// <see href="http://dev.poderopedia.com/vocab/hasTaxId"></see></summary>
-    let hasTaxId = Namespaced_IRI.parse _namespace_name "hasTaxId" |> NamespacedName
-
+    let hasTaxId = _prefix "hasTaxId"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasTickerSymbol"></see>
     /// </summary>
-    let hasTickerSymbol =
-        Namespaced_IRI.parse _namespace_name "hasTickerSymbol" |> NamespacedName
-
+    let hasTickerSymbol = _prefix "hasTickerSymbol"
     /// <summary>
     /// Any URL related to this organization or person (including social media, corporate sites, etc.)
     /// <see href="http://dev.poderopedia.com/vocab/hasUrl"></see></summary>
-    let hasUrl = Namespaced_IRI.parse _namespace_name "hasUrl" |> NamespacedName
+    let hasUrl = _prefix "hasUrl"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/hasValue"></see>
     /// </summary>
-    let hasValue = Namespaced_IRI.parse _namespace_name "hasValue" |> NamespacedName
-
+    let hasValue = _prefix "hasValue"
     /// <summary>
     /// Position or role of the person in this economic connection
     /// <see href="http://dev.poderopedia.com/vocab/hasWorkRole"></see></summary>
-    let hasWorkRole =
-        Namespaced_IRI.parse _namespace_name "hasWorkRole" |> NamespacedName
-
+    let hasWorkRole = _prefix "hasWorkRole"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/mergeCompany"></see>
     /// </summary>
-    let mergeCompany =
-        Namespaced_IRI.parse _namespace_name "mergeCompany" |> NamespacedName
-
+    let mergeCompany = _prefix "mergeCompany"
     /// <summary>
     /// A news event which is part of this connection
     /// <see href="http://dev.poderopedia.com/vocab/newsEventParticipant"></see></summary>
-    let newsEventParticipant =
-        Namespaced_IRI.parse _namespace_name "newsEventParticipant" |> NamespacedName
-
+    let newsEventParticipant = _prefix "newsEventParticipant"
     /// <summary>
     /// An academic organization (school, university) who is part of this connection
     /// <see href="http://dev.poderopedia.com/vocab/organizationParticipant"></see></summary>
-    let organizationParticipant =
-        Namespaced_IRI.parse _namespace_name "organizationParticipant" |> NamespacedName
-
+    let organizationParticipant = _prefix "organizationParticipant"
     /// <summary>
     /// Other last name, different from the first one
     /// <see href="http://dev.poderopedia.com/vocab/otherLastName"></see></summary>
-    let otherLastName =
-        Namespaced_IRI.parse _namespace_name "otherLastName" |> NamespacedName
-
+    let otherLastName = _prefix "otherLastName"
     /// <summary>
     /// A a member of an organization
     /// <see href="http://dev.poderopedia.com/vocab/personParticipant"></see></summary>
-    let personParticipant =
-        Namespaced_IRI.parse _namespace_name "personParticipant" |> NamespacedName
-
+    let personParticipant = _prefix "personParticipant"
     /// <summary>
     /// A political organization who is part of this connection
     /// <see href="http://dev.poderopedia.com/vocab/politicalParticipant"></see></summary>
-    let politicalParticipant =
-        Namespaced_IRI.parse _namespace_name "politicalParticipant" |> NamespacedName
-
+    let politicalParticipant = _prefix "politicalParticipant"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/schema"></see>
     /// </summary>
-    let schema = Namespaced_IRI.parse _namespace_name "schema" |> NamespacedName
-
+    let schema = _prefix "schema"
     /// <summary>
     /// Relation between companies where one is the subsidiary of the second
     /// <see href="http://dev.poderopedia.com/vocab/subsidiaryCompanyOf"></see></summary>
-    let subsidiaryCompanyOf =
-        Namespaced_IRI.parse _namespace_name "subsidiaryCompanyOf" |> NamespacedName
-
+    let subsidiaryCompanyOf = _prefix "subsidiaryCompanyOf"
     /// <summary>
     ///   <see href="http://dev.poderopedia.com/vocab/targetCompany"></see>
     /// </summary>
-    let targetCompany =
-        Namespaced_IRI.parse _namespace_name "targetCompany" |> NamespacedName
+    let targetCompany = _prefix "targetCompany"

@@ -1,298 +1,206 @@
 namespace http.lod.taxonconcept.org.ontology.sci_people.owl.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module scip =
     let _namespace_name = "http://lod.taxonconcept.org/ontology/sci_people.owl#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#PersonPublicationListHTML"></see>
     /// </summary>
-    let PersonPublicationListHTML =
-        Namespaced_IRI.parse _namespace_name "PersonPublicationListHTML" |> NamespacedName
-
+    let PersonPublicationListHTML = _prefix "PersonPublicationListHTML"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#PersonPublicationListRDF"></see>
     /// </summary>
-    let PersonPublicationListRDF =
-        Namespaced_IRI.parse _namespace_name "PersonPublicationListRDF" |> NamespacedName
-
+    let PersonPublicationListRDF = _prefix "PersonPublicationListRDF"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#ScientificMethod"></see>
     /// </summary>
-    let ScientificMethod =
-        Namespaced_IRI.parse _namespace_name "ScientificMethod" |> NamespacedName
-
+    let ScientificMethod = _prefix "ScientificMethod"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#citationUse"></see>
     /// </summary>
-    let citationUse =
-        Namespaced_IRI.parse _namespace_name "citationUse" |> NamespacedName
-
+    let citationUse = _prefix "citationUse"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthor"></see>
     /// </summary>
-    let hasAuthor = Namespaced_IRI.parse _namespace_name "hasAuthor" |> NamespacedName
-
+    let hasAuthor = _prefix "hasAuthor"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthored"></see>
     /// </summary>
-    let hasAuthored =
-        Namespaced_IRI.parse _namespace_name "hasAuthored" |> NamespacedName
-
+    let hasAuthored = _prefix "hasAuthored"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredArticle"></see>
     /// </summary>
-    let hasAuthoredArticle =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredArticle" |> NamespacedName
-
+    let hasAuthoredArticle = _prefix "hasAuthoredArticle"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredBinomialName"></see>
     /// </summary>
-    let hasAuthoredBinomialName =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredBinomialName" |> NamespacedName
-
+    let hasAuthoredBinomialName = _prefix "hasAuthoredBinomialName"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredScientificName"></see>
     /// </summary>
-    let hasAuthoredScientificName =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredScientificName" |> NamespacedName
-
+    let hasAuthoredScientificName = _prefix "hasAuthoredScientificName"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredEmail"></see>
     /// </summary>
-    let hasAuthoredEmail =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredEmail" |> NamespacedName
-
+    let hasAuthoredEmail = _prefix "hasAuthoredEmail"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredName"></see>
     /// </summary>
-    let hasAuthoredName =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredName" |> NamespacedName
-
+    let hasAuthoredName = _prefix "hasAuthoredName"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredTaxonomicDescription"></see>
     /// </summary>
-    let hasAuthoredTaxonomicDescription =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredTaxonomicDescription" |> NamespacedName
-
+    let hasAuthoredTaxonomicDescription = _prefix "hasAuthoredTaxonomicDescription"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredTaxonomicOpinion"></see>
     /// </summary>
-    let hasAuthoredTaxonomicOpinion =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredTaxonomicOpinion" |> NamespacedName
-
+    let hasAuthoredTaxonomicOpinion = _prefix "hasAuthoredTaxonomicOpinion"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredTaxonomicRevision"></see>
     /// </summary>
-    let hasAuthoredTaxonomicRevision =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredTaxonomicRevision" |> NamespacedName
-
+    let hasAuthoredTaxonomicRevision = _prefix "hasAuthoredTaxonomicRevision"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredWebComment"></see>
     /// </summary>
-    let hasAuthoredWebComment =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredWebComment" |> NamespacedName
-
+    let hasAuthoredWebComment = _prefix "hasAuthoredWebComment"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasAuthoredWebPage"></see>
     /// </summary>
-    let hasAuthoredWebPage =
-        Namespaced_IRI.parse _namespace_name "hasAuthoredWebPage" |> NamespacedName
-
+    let hasAuthoredWebPage = _prefix "hasAuthoredWebPage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasBlog"></see>
     /// </summary>
-    let hasBlog = Namespaced_IRI.parse _namespace_name "hasBlog" |> NamespacedName
-
+    let hasBlog = _prefix "hasBlog"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasPublicationListHTML"></see>
     /// </summary>
-    let hasPublicationListHTML =
-        Namespaced_IRI.parse _namespace_name "hasPublicationListHTML" |> NamespacedName
-
+    let hasPublicationListHTML = _prefix "hasPublicationListHTML"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasPublicationListRDF"></see>
     /// </summary>
-    let hasPublicationListRDF =
-        Namespaced_IRI.parse _namespace_name "hasPublicationListRDF" |> NamespacedName
-
+    let hasPublicationListRDF = _prefix "hasPublicationListRDF"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasRevisedName"></see>
     /// </summary>
-    let hasRevisedName =
-        Namespaced_IRI.parse _namespace_name "hasRevisedName" |> NamespacedName
-
+    let hasRevisedName = _prefix "hasRevisedName"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasTaxonomicAuthor"></see>
     /// </summary>
-    let hasTaxonomicAuthor =
-        Namespaced_IRI.parse _namespace_name "hasTaxonomicAuthor" |> NamespacedName
-
+    let hasTaxonomicAuthor = _prefix "hasTaxonomicAuthor"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasTaxonomicRevisor"></see>
     /// </summary>
-    let hasTaxonomicRevisor =
-        Namespaced_IRI.parse _namespace_name "hasTaxonomicRevisor" |> NamespacedName
-
+    let hasTaxonomicRevisor = _prefix "hasTaxonomicRevisor"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#hasWorkedWith"></see>
     /// </summary>
-    let hasWorkedWith =
-        Namespaced_IRI.parse _namespace_name "hasWorkedWith" |> NamespacedName
-
+    let hasWorkedWith = _prefix "hasWorkedWith"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isOriginalAuthorOfRecGroup"></see>
     /// </summary>
-    let isOriginalAuthorOfRecGroup =
-        Namespaced_IRI.parse _namespace_name "isOriginalAuthorOfRecGroup" |> NamespacedName
-
+    let isOriginalAuthorOfRecGroup = _prefix "isOriginalAuthorOfRecGroup"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isOriginalAuthorOfSpecies"></see>
     /// </summary>
-    let isOriginalAuthorOfSpecies =
-        Namespaced_IRI.parse _namespace_name "isOriginalAuthorOfSpecies" |> NamespacedName
-
+    let isOriginalAuthorOfSpecies = _prefix "isOriginalAuthorOfSpecies"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isOriginalAuthorOfTaxon"></see>
     /// </summary>
-    let isOriginalAuthorOfTaxon =
-        Namespaced_IRI.parse _namespace_name "isOriginalAuthorOfTaxon" |> NamespacedName
-
+    let isOriginalAuthorOfTaxon = _prefix "isOriginalAuthorOfTaxon"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isOriginalAuthorOfTaxonLiteral"></see>
     /// </summary>
-    let isOriginalAuthorOfTaxonLiteral =
-        Namespaced_IRI.parse _namespace_name "isOriginalAuthorOfTaxonLiteral" |> NamespacedName
-
+    let isOriginalAuthorOfTaxonLiteral = _prefix "isOriginalAuthorOfTaxonLiteral"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isRevisionalAuthorOfRecGroup"></see>
     /// </summary>
-    let isRevisionalAuthorOfRecGroup =
-        Namespaced_IRI.parse _namespace_name "isRevisionalAuthorOfRecGroup" |> NamespacedName
-
+    let isRevisionalAuthorOfRecGroup = _prefix "isRevisionalAuthorOfRecGroup"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isRevisionalAuthorOfSpecies"></see>
     /// </summary>
-    let isRevisionalAuthorOfSpecies =
-        Namespaced_IRI.parse _namespace_name "isRevisionalAuthorOfSpecies" |> NamespacedName
-
+    let isRevisionalAuthorOfSpecies = _prefix "isRevisionalAuthorOfSpecies"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isRevisionalAuthorOfTaxon"></see>
     /// </summary>
-    let isRevisionalAuthorOfTaxon =
-        Namespaced_IRI.parse _namespace_name "isRevisionalAuthorOfTaxon" |> NamespacedName
-
+    let isRevisionalAuthorOfTaxon = _prefix "isRevisionalAuthorOfTaxon"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#isRevisionalAuthorOfTaxonLiteral"></see>
     /// </summary>
-    let isRevisionalAuthorOfTaxonLiteral =
-        Namespaced_IRI.parse _namespace_name "isRevisionalAuthorOfTaxonLiteral" |> NamespacedName
-
+    let isRevisionalAuthorOfTaxonLiteral = _prefix "isRevisionalAuthorOfTaxonLiteral"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personAltPublicationName"></see>
     /// </summary>
-    let personAltPublicationName =
-        Namespaced_IRI.parse _namespace_name "personAltPublicationName" |> NamespacedName
-
+    let personAltPublicationName = _prefix "personAltPublicationName"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personAuthorAbbreviation"></see>
     /// </summary>
-    let personAuthorAbbreviation =
-        Namespaced_IRI.parse _namespace_name "personAuthorAbbreviation" |> NamespacedName
-
+    let personAuthorAbbreviation = _prefix "personAuthorAbbreviation"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personFirstname"></see>
     /// </summary>
-    let personFirstname =
-        Namespaced_IRI.parse _namespace_name "personFirstname" |> NamespacedName
-
+    let personFirstname = _prefix "personFirstname"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personFullname"></see>
     /// </summary>
-    let personFullname =
-        Namespaced_IRI.parse _namespace_name "personFullname" |> NamespacedName
-
+    let personFullname = _prefix "personFullname"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personHasWikispeciesPage"></see>
     /// </summary>
-    let personHasWikispeciesPage =
-        Namespaced_IRI.parse _namespace_name "personHasWikispeciesPage" |> NamespacedName
-
+    let personHasWikispeciesPage = _prefix "personHasWikispeciesPage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personWikispeciesPage"></see>
     /// </summary>
-    let personWikispeciesPage =
-        Namespaced_IRI.parse _namespace_name "personWikispeciesPage" |> NamespacedName
-
+    let personWikispeciesPage = _prefix "personWikispeciesPage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personLastname"></see>
     /// </summary>
-    let personLastname =
-        Namespaced_IRI.parse _namespace_name "personLastname" |> NamespacedName
-
+    let personLastname = _prefix "personLastname"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personMiddleInitial"></see>
     /// </summary>
-    let personMiddleInitial =
-        Namespaced_IRI.parse _namespace_name "personMiddleInitial" |> NamespacedName
-
+    let personMiddleInitial = _prefix "personMiddleInitial"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personMiddlename"></see>
     /// </summary>
-    let personMiddlename =
-        Namespaced_IRI.parse _namespace_name "personMiddlename" |> NamespacedName
-
+    let personMiddlename = _prefix "personMiddlename"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personPublicationName"></see>
     /// </summary>
-    let personPublicationName =
-        Namespaced_IRI.parse _namespace_name "personPublicationName" |> NamespacedName
-
+    let personPublicationName = _prefix "personPublicationName"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personUsedScientificMethod"></see>
     /// </summary>
-    let personUsedScientificMethod =
-        Namespaced_IRI.parse _namespace_name "personUsedScientificMethod" |> NamespacedName
-
+    let personUsedScientificMethod = _prefix "personUsedScientificMethod"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personWikipediaPage"></see>
     /// </summary>
-    let personWikipediaPage =
-        Namespaced_IRI.parse _namespace_name "personWikipediaPage" |> NamespacedName
-
+    let personWikipediaPage = _prefix "personWikipediaPage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personWorkpage"></see>
     /// </summary>
-    let personWorkpage =
-        Namespaced_IRI.parse _namespace_name "personWorkpage" |> NamespacedName
-
+    let personWorkpage = _prefix "personWorkpage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personWorkplacePage"></see>
     /// </summary>
-    let personWorkplacePage =
-        Namespaced_IRI.parse _namespace_name "personWorkplacePage" |> NamespacedName
-
+    let personWorkplacePage = _prefix "personWorkplacePage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#personhasWikipediaPage"></see>
     /// </summary>
-    let personhasWikipediaPage =
-        Namespaced_IRI.parse _namespace_name "personhasWikipediaPage" |> NamespacedName
-
+    let personhasWikipediaPage = _prefix "personhasWikipediaPage"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#referencesScientificMethod"></see>
     /// </summary>
-    let referencesScientificMethod =
-        Namespaced_IRI.parse _namespace_name "referencesScientificMethod" |> NamespacedName
-
+    let referencesScientificMethod = _prefix "referencesScientificMethod"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#yearOfBirth"></see>
     /// </summary>
-    let yearOfBirth =
-        Namespaced_IRI.parse _namespace_name "yearOfBirth" |> NamespacedName
-
+    let yearOfBirth = _prefix "yearOfBirth"
     /// <summary>
     ///   <see href="http://lod.taxonconcept.org/ontology/sci_people.owl#yearOfDeath"></see>
     /// </summary>
-    let yearOfDeath =
-        Namespaced_IRI.parse _namespace_name "yearOfDeath" |> NamespacedName
+    let yearOfDeath = _prefix "yearOfDeath"

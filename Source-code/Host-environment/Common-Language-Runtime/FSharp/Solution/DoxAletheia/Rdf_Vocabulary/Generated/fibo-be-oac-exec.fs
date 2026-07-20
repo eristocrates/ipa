@@ -1,285 +1,203 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.OwnershipAndControl.Executives.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_oac_exec =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/nominates"></see>
     /// </summary>
-    let nominates = Namespaced_IRI.parse _namespace_name "nominates" |> NamespacedName
-
+    let nominates = _prefix "nominates"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/BoardMember"></see>
     /// </summary>
-    let BoardMember =
-        Namespaced_IRI.parse _namespace_name "BoardMember" |> NamespacedName
-
+    let BoardMember = _prefix "BoardMember"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/elects"></see>
     /// </summary>
-    let elects = Namespaced_IRI.parse _namespace_name "elects" |> NamespacedName
-
+    let elects = _prefix "elects"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ControllingNominee"></see>
     /// </summary>
-    let ControllingNominee =
-        Namespaced_IRI.parse _namespace_name "ControllingNominee" |> NamespacedName
-
+    let ControllingNominee = _prefix "ControllingNominee"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ArticlesOfIncorporation"></see>
     /// </summary>
-    let ArticlesOfIncorporation =
-        Namespaced_IRI.parse _namespace_name "ArticlesOfIncorporation" |> NamespacedName
-
+    let ArticlesOfIncorporation = _prefix "ArticlesOfIncorporation"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/Auditor"></see>
     /// </summary>
-    let Auditor = Namespaced_IRI.parse _namespace_name "Auditor" |> NamespacedName
-
+    let Auditor = _prefix "Auditor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/Authorization"></see>
     /// </summary>
-    let Authorization =
-        Namespaced_IRI.parse _namespace_name "Authorization" |> NamespacedName
-
+    let Authorization = _prefix "Authorization"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/AuthorizedIndividual"></see>
     /// </summary>
-    let AuthorizedIndividual =
-        Namespaced_IRI.parse _namespace_name "AuthorizedIndividual" |> NamespacedName
-
+    let AuthorizedIndividual = _prefix "AuthorizedIndividual"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/AuthorizedParty"></see>
     /// </summary>
-    let AuthorizedParty =
-        Namespaced_IRI.parse _namespace_name "AuthorizedParty" |> NamespacedName
-
+    let AuthorizedParty = _prefix "AuthorizedParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/AuthorizingParty"></see>
     /// </summary>
-    let AuthorizingParty =
-        Namespaced_IRI.parse _namespace_name "AuthorizingParty" |> NamespacedName
-
+    let AuthorizingParty = _prefix "AuthorizingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/BoardCapacity"></see>
     /// </summary>
-    let BoardCapacity =
-        Namespaced_IRI.parse _namespace_name "BoardCapacity" |> NamespacedName
-
+    let BoardCapacity = _prefix "BoardCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/CompanyLaw"></see>
     /// </summary>
-    let CompanyLaw = Namespaced_IRI.parse _namespace_name "CompanyLaw" |> NamespacedName
+    let CompanyLaw = _prefix "CompanyLaw"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/Bylaws"></see>
     /// </summary>
-    let Bylaws = Namespaced_IRI.parse _namespace_name "Bylaws" |> NamespacedName
-
+    let Bylaws = _prefix "Bylaws"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/BoardCompositionControl"></see>
     /// </summary>
-    let BoardCompositionControl =
-        Namespaced_IRI.parse _namespace_name "BoardCompositionControl" |> NamespacedName
-
+    let BoardCompositionControl = _prefix "BoardCompositionControl"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/BoardOfDirectors"></see>
     /// </summary>
-    let BoardOfDirectors =
-        Namespaced_IRI.parse _namespace_name "BoardOfDirectors" |> NamespacedName
-
+    let BoardOfDirectors = _prefix "BoardOfDirectors"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/BoardMembership"></see>
     /// </summary>
-    let BoardMembership =
-        Namespaced_IRI.parse _namespace_name "BoardMembership" |> NamespacedName
-
+    let BoardMembership = _prefix "BoardMembership"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/CorporateOfficer"></see>
     /// </summary>
-    let CorporateOfficer =
-        Namespaced_IRI.parse _namespace_name "CorporateOfficer" |> NamespacedName
-
+    let CorporateOfficer = _prefix "CorporateOfficer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ChiefExecutiveOfficer"></see>
     /// </summary>
-    let ChiefExecutiveOfficer =
-        Namespaced_IRI.parse _namespace_name "ChiefExecutiveOfficer" |> NamespacedName
-
+    let ChiefExecutiveOfficer = _prefix "ChiefExecutiveOfficer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ExecutiveBoardMember"></see>
     /// </summary>
-    let ExecutiveBoardMember =
-        Namespaced_IRI.parse _namespace_name "ExecutiveBoardMember" |> NamespacedName
-
+    let ExecutiveBoardMember = _prefix "ExecutiveBoardMember"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/PrincipalParty"></see>
     /// </summary>
-    let PrincipalParty =
-        Namespaced_IRI.parse _namespace_name "PrincipalParty" |> NamespacedName
-
+    let PrincipalParty = _prefix "PrincipalParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ChiefFinancialOfficer"></see>
     /// </summary>
-    let ChiefFinancialOfficer =
-        Namespaced_IRI.parse _namespace_name "ChiefFinancialOfficer" |> NamespacedName
-
+    let ChiefFinancialOfficer = _prefix "ChiefFinancialOfficer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/CompanySecretary"></see>
     /// </summary>
-    let CompanySecretary =
-        Namespaced_IRI.parse _namespace_name "CompanySecretary" |> NamespacedName
-
+    let CompanySecretary = _prefix "CompanySecretary"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/CorporateBylaws"></see>
     /// </summary>
-    let CorporateBylaws =
-        Namespaced_IRI.parse _namespace_name "CorporateBylaws" |> NamespacedName
-
+    let CorporateBylaws = _prefix "CorporateBylaws"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/Executive"></see>
     /// </summary>
-    let Executive = Namespaced_IRI.parse _namespace_name "Executive" |> NamespacedName
+    let Executive = _prefix "Executive"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/Signatory"></see>
     /// </summary>
-    let Signatory = Namespaced_IRI.parse _namespace_name "Signatory" |> NamespacedName
-
+    let Signatory = _prefix "Signatory"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ExternalAuditor"></see>
     /// </summary>
-    let ExternalAuditor =
-        Namespaced_IRI.parse _namespace_name "ExternalAuditor" |> NamespacedName
-
+    let ExternalAuditor = _prefix "ExternalAuditor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/InternalAuditor"></see>
     /// </summary>
-    let InternalAuditor =
-        Namespaced_IRI.parse _namespace_name "InternalAuditor" |> NamespacedName
-
+    let InternalAuditor = _prefix "InternalAuditor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/LegallyDelegatedAuthority"></see>
     /// </summary>
-    let LegallyDelegatedAuthority =
-        Namespaced_IRI.parse _namespace_name "LegallyDelegatedAuthority" |> NamespacedName
-
+    let LegallyDelegatedAuthority = _prefix "LegallyDelegatedAuthority"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/NonExecutiveBoardMember"></see>
     /// </summary>
-    let NonExecutiveBoardMember =
-        Namespaced_IRI.parse _namespace_name "NonExecutiveBoardMember" |> NamespacedName
-
+    let NonExecutiveBoardMember = _prefix "NonExecutiveBoardMember"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/authorizes"></see>
     /// </summary>
-    let authorizes = Namespaced_IRI.parse _namespace_name "authorizes" |> NamespacedName
-
+    let authorizes = _prefix "authorizes"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/authorizesThrough"></see>
     /// </summary>
-    let authorizesThrough =
-        Namespaced_IRI.parse _namespace_name "authorizesThrough" |> NamespacedName
-
+    let authorizesThrough = _prefix "authorizesThrough"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/delegatesControlTo"></see>
     /// </summary>
-    let delegatesControlTo =
-        Namespaced_IRI.parse _namespace_name "delegatesControlTo" |> NamespacedName
-
+    let delegatesControlTo = _prefix "delegatesControlTo"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/designatesSignatory"></see>
     /// </summary>
-    let designatesSignatory =
-        Namespaced_IRI.parse _namespace_name "designatesSignatory" |> NamespacedName
-
+    let designatesSignatory = _prefix "designatesSignatory"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasAuthorizedParty"></see>
     /// </summary>
-    let hasAuthorizedParty =
-        Namespaced_IRI.parse _namespace_name "hasAuthorizedParty" |> NamespacedName
-
+    let hasAuthorizedParty = _prefix "hasAuthorizedParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasAuthorizingParty"></see>
     /// </summary>
-    let hasAuthorizingParty =
-        Namespaced_IRI.parse _namespace_name "hasAuthorizingParty" |> NamespacedName
-
+    let hasAuthorizingParty = _prefix "hasAuthorizingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasCorporateOfficer"></see>
     /// </summary>
-    let hasCorporateOfficer =
-        Namespaced_IRI.parse _namespace_name "hasCorporateOfficer" |> NamespacedName
-
+    let hasCorporateOfficer = _prefix "hasCorporateOfficer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasDelegatedControlOf"></see>
     /// </summary>
-    let hasDelegatedControlOf =
-        Namespaced_IRI.parse _namespace_name "hasDelegatedControlOf" |> NamespacedName
-
+    let hasDelegatedControlOf = _prefix "hasDelegatedControlOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasDirector"></see>
     /// </summary>
-    let hasDirector =
-        Namespaced_IRI.parse _namespace_name "hasDirector" |> NamespacedName
-
+    let hasDirector = _prefix "hasDirector"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasPrincipalManagingParty"></see>
     /// </summary>
-    let hasPrincipalManagingParty =
-        Namespaced_IRI.parse _namespace_name "hasPrincipalManagingParty" |> NamespacedName
-
+    let hasPrincipalManagingParty = _prefix "hasPrincipalManagingParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/isPrincipalPartyOf"></see>
     /// </summary>
-    let isPrincipalPartyOf =
-        Namespaced_IRI.parse _namespace_name "isPrincipalPartyOf" |> NamespacedName
-
+    let isPrincipalPartyOf = _prefix "isPrincipalPartyOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasResponsibility"></see>
     /// </summary>
-    let hasResponsibility =
-        Namespaced_IRI.parse _namespace_name "hasResponsibility" |> NamespacedName
-
+    let hasResponsibility = _prefix "hasResponsibility"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasResponsibleParty"></see>
     /// </summary>
-    let hasResponsibleParty =
-        Namespaced_IRI.parse _namespace_name "hasResponsibleParty" |> NamespacedName
-
+    let hasResponsibleParty = _prefix "hasResponsibleParty"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasSigningAuthorityFor"></see>
     /// </summary>
-    let hasSigningAuthorityFor =
-        Namespaced_IRI.parse _namespace_name "hasSigningAuthorityFor" |> NamespacedName
-
+    let hasSigningAuthorityFor = _prefix "hasSigningAuthorityFor"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/hasVestedInIt"></see>
     /// </summary>
-    let hasVestedInIt =
-        Namespaced_IRI.parse _namespace_name "hasVestedInIt" |> NamespacedName
-
+    let hasVestedInIt = _prefix "hasVestedInIt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/isAuthorizedBy"></see>
     /// </summary>
-    let isAuthorizedBy =
-        Namespaced_IRI.parse _namespace_name "isAuthorizedBy" |> NamespacedName
-
+    let isAuthorizedBy = _prefix "isAuthorizedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/isAuthorizedThrough"></see>
     /// </summary>
-    let isAuthorizedThrough =
-        Namespaced_IRI.parse _namespace_name "isAuthorizedThrough" |> NamespacedName
-
+    let isAuthorizedThrough = _prefix "isAuthorizedThrough"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/isDirectorOf"></see>
     /// </summary>
-    let isDirectorOf =
-        Namespaced_IRI.parse _namespace_name "isDirectorOf" |> NamespacedName
-
+    let isDirectorOf = _prefix "isDirectorOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/isOfficerOf"></see>
     /// </summary>
-    let isOfficerOf =
-        Namespaced_IRI.parse _namespace_name "isOfficerOf" |> NamespacedName
+    let isOfficerOf = _prefix "isOfficerOf"

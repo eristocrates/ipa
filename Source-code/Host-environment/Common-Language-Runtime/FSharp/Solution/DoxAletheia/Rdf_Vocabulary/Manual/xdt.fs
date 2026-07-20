@@ -1,6 +1,6 @@
 namespace https.www.w3.org._2003._05.xpath_datatypes.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 
 module xdt =

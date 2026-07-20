@@ -1,291 +1,214 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.DER.DerivativesContracts.Options.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_der_drc_opt =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/AtTheMoney"></see>
     /// </summary>
-    let AtTheMoney = Namespaced_IRI.parse _namespace_name "AtTheMoney" |> NamespacedName
+    let AtTheMoney = _prefix "AtTheMoney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/Moneyness"></see>
     /// </summary>
-    let Moneyness = Namespaced_IRI.parse _namespace_name "Moneyness" |> NamespacedName
-
+    let Moneyness = _prefix "Moneyness"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/BasketOption"></see>
     /// </summary>
-    let BasketOption =
-        Namespaced_IRI.parse _namespace_name "BasketOption" |> NamespacedName
-
+    let BasketOption = _prefix "BasketOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/ExoticOption"></see>
     /// </summary>
-    let ExoticOption =
-        Namespaced_IRI.parse _namespace_name "ExoticOption" |> NamespacedName
-
+    let ExoticOption = _prefix "ExoticOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/BondOption"></see>
     /// </summary>
-    let BondOption = Namespaced_IRI.parse _namespace_name "BondOption" |> NamespacedName
-
+    let BondOption = _prefix "BondOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/FixedIncomeOption"></see>
     /// </summary>
-    let FixedIncomeOption =
-        Namespaced_IRI.parse _namespace_name "FixedIncomeOption" |> NamespacedName
-
+    let FixedIncomeOption = _prefix "FixedIncomeOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/Butterfly"></see>
     /// </summary>
-    let Butterfly = Namespaced_IRI.parse _namespace_name "Butterfly" |> NamespacedName
-
+    let Butterfly = _prefix "Butterfly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OptionTradingStrategy"></see>
     /// </summary>
-    let OptionTradingStrategy =
-        Namespaced_IRI.parse _namespace_name "OptionTradingStrategy" |> NamespacedName
-
+    let OptionTradingStrategy = _prefix "OptionTradingStrategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasExercisePrice"></see>
     /// </summary>
-    let hasExercisePrice =
-        Namespaced_IRI.parse _namespace_name "hasExercisePrice" |> NamespacedName
-
+    let hasExercisePrice = _prefix "hasExercisePrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/StrikePrice"></see>
     /// </summary>
-    let StrikePrice =
-        Namespaced_IRI.parse _namespace_name "StrikePrice" |> NamespacedName
-
+    let StrikePrice = _prefix "StrikePrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/CallOption"></see>
     /// </summary>
-    let CallOption = Namespaced_IRI.parse _namespace_name "CallOption" |> NamespacedName
-
+    let CallOption = _prefix "CallOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/CappedOption"></see>
     /// </summary>
-    let CappedOption =
-        Namespaced_IRI.parse _namespace_name "CappedOption" |> NamespacedName
-
+    let CappedOption = _prefix "CappedOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/VanillaOption"></see>
     /// </summary>
-    let VanillaOption =
-        Namespaced_IRI.parse _namespace_name "VanillaOption" |> NamespacedName
-
+    let VanillaOption = _prefix "VanillaOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasCapPrice"></see>
     /// </summary>
-    let hasCapPrice =
-        Namespaced_IRI.parse _namespace_name "hasCapPrice" |> NamespacedName
-
+    let hasCapPrice = _prefix "hasCapPrice"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/Collar"></see>
     /// </summary>
-    let Collar = Namespaced_IRI.parse _namespace_name "Collar" |> NamespacedName
+    let Collar = _prefix "Collar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/PutOption"></see>
     /// </summary>
-    let PutOption = Namespaced_IRI.parse _namespace_name "PutOption" |> NamespacedName
-
+    let PutOption = _prefix "PutOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/CondorSpread"></see>
     /// </summary>
-    let CondorSpread =
-        Namespaced_IRI.parse _namespace_name "CondorSpread" |> NamespacedName
-
+    let CondorSpread = _prefix "CondorSpread"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/CoveredCall"></see>
     /// </summary>
-    let CoveredCall =
-        Namespaced_IRI.parse _namespace_name "CoveredCall" |> NamespacedName
-
+    let CoveredCall = _prefix "CoveredCall"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/EquityOption"></see>
     /// </summary>
-    let EquityOption =
-        Namespaced_IRI.parse _namespace_name "EquityOption" |> NamespacedName
-
+    let EquityOption = _prefix "EquityOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasExerciseStyle"></see>
     /// </summary>
-    let hasExerciseStyle =
-        Namespaced_IRI.parse _namespace_name "hasExerciseStyle" |> NamespacedName
-
+    let hasExerciseStyle = _prefix "hasExerciseStyle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/ExtrinsicValue"></see>
     /// </summary>
-    let ExtrinsicValue =
-        Namespaced_IRI.parse _namespace_name "ExtrinsicValue" |> NamespacedName
-
+    let ExtrinsicValue = _prefix "ExtrinsicValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/IntrinsicValue"></see>
     /// </summary>
-    let IntrinsicValue =
-        Namespaced_IRI.parse _namespace_name "IntrinsicValue" |> NamespacedName
-
+    let IntrinsicValue = _prefix "IntrinsicValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/Fence"></see>
     /// </summary>
-    let Fence = Namespaced_IRI.parse _namespace_name "Fence" |> NamespacedName
+    let Fence = _prefix "Fence"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/InTheMoney"></see>
     /// </summary>
-    let InTheMoney = Namespaced_IRI.parse _namespace_name "InTheMoney" |> NamespacedName
-
+    let InTheMoney = _prefix "InTheMoney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/InterestRateOption"></see>
     /// </summary>
-    let InterestRateOption =
-        Namespaced_IRI.parse _namespace_name "InterestRateOption" |> NamespacedName
-
+    let InterestRateOption = _prefix "InterestRateOption"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasStrikeRate"></see>
     /// </summary>
-    let hasStrikeRate =
-        Namespaced_IRI.parse _namespace_name "hasStrikeRate" |> NamespacedName
-
+    let hasStrikeRate = _prefix "hasStrikeRate"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/IronButterfly"></see>
     /// </summary>
-    let IronButterfly =
-        Namespaced_IRI.parse _namespace_name "IronButterfly" |> NamespacedName
-
+    let IronButterfly = _prefix "IronButterfly"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/IronCondor"></see>
     /// </summary>
-    let IronCondor = Namespaced_IRI.parse _namespace_name "IronCondor" |> NamespacedName
+    let IronCondor = _prefix "IronCondor"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/LongTermEquityAnticipationSecurity"></see>
     /// </summary>
     let LongTermEquityAnticipationSecurity =
-        Namespaced_IRI.parse _namespace_name "LongTermEquityAnticipationSecurity" |> NamespacedName
+        _prefix "LongTermEquityAnticipationSecurity"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OptionHolder"></see>
     /// </summary>
-    let OptionHolder =
-        Namespaced_IRI.parse _namespace_name "OptionHolder" |> NamespacedName
-
+    let OptionHolder = _prefix "OptionHolder"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OptionIssuer"></see>
     /// </summary>
-    let OptionIssuer =
-        Namespaced_IRI.parse _namespace_name "OptionIssuer" |> NamespacedName
-
+    let OptionIssuer = _prefix "OptionIssuer"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OptionOnFuture"></see>
     /// </summary>
-    let OptionOnFuture =
-        Namespaced_IRI.parse _namespace_name "OptionOnFuture" |> NamespacedName
-
+    let OptionOnFuture = _prefix "OptionOnFuture"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OptionPremium"></see>
     /// </summary>
-    let OptionPremium =
-        Namespaced_IRI.parse _namespace_name "OptionPremium" |> NamespacedName
-
+    let OptionPremium = _prefix "OptionPremium"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OptionPremiumFormula"></see>
     /// </summary>
-    let OptionPremiumFormula =
-        Namespaced_IRI.parse _namespace_name "OptionPremiumFormula" |> NamespacedName
-
+    let OptionPremiumFormula = _prefix "OptionPremiumFormula"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/OutOfTheMoney"></see>
     /// </summary>
-    let OutOfTheMoney =
-        Namespaced_IRI.parse _namespace_name "OutOfTheMoney" |> NamespacedName
-
+    let OutOfTheMoney = _prefix "OutOfTheMoney"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/ProtectiveCollar"></see>
     /// </summary>
-    let ProtectiveCollar =
-        Namespaced_IRI.parse _namespace_name "ProtectiveCollar" |> NamespacedName
-
+    let ProtectiveCollar = _prefix "ProtectiveCollar"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/ProtectivePut"></see>
     /// </summary>
-    let ProtectivePut =
-        Namespaced_IRI.parse _namespace_name "ProtectivePut" |> NamespacedName
-
+    let ProtectivePut = _prefix "ProtectivePut"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasCalculatedMarketValue"></see>
     /// </summary>
-    let hasCalculatedMarketValue =
-        Namespaced_IRI.parse _namespace_name "hasCalculatedMarketValue" |> NamespacedName
-
+    let hasCalculatedMarketValue = _prefix "hasCalculatedMarketValue"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/RiskReversal"></see>
     /// </summary>
-    let RiskReversal =
-        Namespaced_IRI.parse _namespace_name "RiskReversal" |> NamespacedName
-
+    let RiskReversal = _prefix "RiskReversal"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/StandardizedOptionsTerms"></see>
     /// </summary>
-    let StandardizedOptionsTerms =
-        Namespaced_IRI.parse _namespace_name "StandardizedOptionsTerms" |> NamespacedName
-
+    let StandardizedOptionsTerms = _prefix "StandardizedOptionsTerms"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/Straddle"></see>
     /// </summary>
-    let Straddle = Namespaced_IRI.parse _namespace_name "Straddle" |> NamespacedName
+    let Straddle = _prefix "Straddle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/Strangle"></see>
     /// </summary>
-    let Strangle = Namespaced_IRI.parse _namespace_name "Strangle" |> NamespacedName
-
+    let Strangle = _prefix "Strangle"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/StripStrategy"></see>
     /// </summary>
-    let StripStrategy =
-        Namespaced_IRI.parse _namespace_name "StripStrategy" |> NamespacedName
-
+    let StripStrategy = _prefix "StripStrategy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasExerciseDateOffset"></see>
     /// </summary>
-    let hasExerciseDateOffset =
-        Namespaced_IRI.parse _namespace_name "hasExerciseDateOffset" |> NamespacedName
-
+    let hasExerciseDateOffset = _prefix "hasExerciseDateOffset"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasExerciseSchedule"></see>
     /// </summary>
-    let hasExerciseSchedule =
-        Namespaced_IRI.parse _namespace_name "hasExerciseSchedule" |> NamespacedName
-
+    let hasExerciseSchedule = _prefix "hasExerciseSchedule"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasInterestAccrualDateOffset"></see>
     /// </summary>
-    let hasInterestAccrualDateOffset =
-        Namespaced_IRI.parse _namespace_name "hasInterestAccrualDateOffset" |> NamespacedName
-
+    let hasInterestAccrualDateOffset = _prefix "hasInterestAccrualDateOffset"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasOptionHolder"></see>
     /// </summary>
-    let hasOptionHolder =
-        Namespaced_IRI.parse _namespace_name "hasOptionHolder" |> NamespacedName
-
+    let hasOptionHolder = _prefix "hasOptionHolder"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasOptionWriter"></see>
     /// </summary>
-    let hasOptionWriter =
-        Namespaced_IRI.parse _namespace_name "hasOptionWriter" |> NamespacedName
-
+    let hasOptionWriter = _prefix "hasOptionWriter"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasSettlementDateOffset"></see>
     /// </summary>
-    let hasSettlementDateOffset =
-        Namespaced_IRI.parse _namespace_name "hasSettlementDateOffset" |> NamespacedName
-
+    let hasSettlementDateOffset = _prefix "hasSettlementDateOffset"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/hasStrikePercentageAmount"></see>
     /// </summary>
-    let hasStrikePercentageAmount =
-        Namespaced_IRI.parse _namespace_name "hasStrikePercentageAmount" |> NamespacedName
+    let hasStrikePercentageAmount = _prefix "hasStrikePercentageAmount"

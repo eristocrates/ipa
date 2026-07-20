@@ -1,239 +1,196 @@
 namespace http.www.europeana.eu.schemas.edm.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module edm =
     let _namespace_name = "http://www.europeana.eu/schemas/edm/"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/hasMet"></see>
     /// </summary>
-    let hasMet = Namespaced_IRI.parse _namespace_name "hasMet" |> NamespacedName
+    let hasMet = _prefix "hasMet"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/hasType"></see>
     /// </summary>
-    let hasType = Namespaced_IRI.parse _namespace_name "hasType" |> NamespacedName
-
+    let hasType = _prefix "hasType"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isRelatedTo"></see>
     /// </summary>
-    let isRelatedTo =
-        Namespaced_IRI.parse _namespace_name "isRelatedTo" |> NamespacedName
-
+    let isRelatedTo = _prefix "isRelatedTo"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isDerivativeOf"></see>
     /// </summary>
-    let isDerivativeOf =
-        Namespaced_IRI.parse _namespace_name "isDerivativeOf" |> NamespacedName
-
+    let isDerivativeOf = _prefix "isDerivativeOf"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/hasView"></see>
     /// </summary>
-    let hasView = Namespaced_IRI.parse _namespace_name "hasView" |> NamespacedName
+    let hasView = _prefix "hasView"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/begin"></see>
     /// </summary>
-    let begin_ = Namespaced_IRI.parse _namespace_name "begin" |> NamespacedName
+    let begin_ = _prefix "begin"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/end"></see>
     /// </summary>
-    let end_ = Namespaced_IRI.parse _namespace_name "end" |> NamespacedName
+    let end_ = _prefix "end"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/Agent"></see>
     /// </summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
-
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/NonInformationResource"></see>
     /// </summary>
-    let NonInformationResource =
-        Namespaced_IRI.parse _namespace_name "NonInformationResource" |> NamespacedName
-
+    let NonInformationResource = _prefix "NonInformationResource"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/EuropeanaAggregation"></see>
     /// </summary>
-    let EuropeanaAggregation =
-        Namespaced_IRI.parse _namespace_name "EuropeanaAggregation" |> NamespacedName
-
+    let EuropeanaAggregation = _prefix "EuropeanaAggregation"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/EuropeanaObject"></see>
     /// </summary>
-    let EuropeanaObject =
-        Namespaced_IRI.parse _namespace_name "EuropeanaObject" |> NamespacedName
-
+    let EuropeanaObject = _prefix "EuropeanaObject"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/aggregatedCHO"></see>
     /// </summary>
-    let aggregatedCHO =
-        Namespaced_IRI.parse _namespace_name "aggregatedCHO" |> NamespacedName
-
+    let aggregatedCHO = _prefix "aggregatedCHO"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/WebResource"></see>
     /// </summary>
-    let WebResource =
-        Namespaced_IRI.parse _namespace_name "WebResource" |> NamespacedName
-
+    let WebResource = _prefix "WebResource"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/happenedAt"></see>
     /// </summary>
-    let happenedAt = Namespaced_IRI.parse _namespace_name "happenedAt" |> NamespacedName
-
+    let happenedAt = _prefix "happenedAt"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/InformationResource"></see>
     /// </summary>
-    let InformationResource =
-        Namespaced_IRI.parse _namespace_name "InformationResource" |> NamespacedName
-
+    let InformationResource = _prefix "InformationResource"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/PhysicalThing"></see>
     /// </summary>
-    let PhysicalThing =
-        Namespaced_IRI.parse _namespace_name "PhysicalThing" |> NamespacedName
-
+    let PhysicalThing = _prefix "PhysicalThing"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/Place"></see>
     /// </summary>
-    let Place = Namespaced_IRI.parse _namespace_name "Place" |> NamespacedName
-
+    let Place = _prefix "Place"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/ProvidedCHO"></see>
     /// </summary>
-    let ProvidedCHO =
-        Namespaced_IRI.parse _namespace_name "ProvidedCHO" |> NamespacedName
-
+    let ProvidedCHO = _prefix "ProvidedCHO"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/TimeSpan"></see>
     /// </summary>
-    let TimeSpan = Namespaced_IRI.parse _namespace_name "TimeSpan" |> NamespacedName
+    let TimeSpan = _prefix "TimeSpan"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/country"></see>
     /// </summary>
-    let country = Namespaced_IRI.parse _namespace_name "country" |> NamespacedName
-
+    let country = _prefix "country"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/currentLocation"></see>
     /// </summary>
-    let currentLocation =
-        Namespaced_IRI.parse _namespace_name "currentLocation" |> NamespacedName
-
+    let currentLocation = _prefix "currentLocation"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/dataProvider"></see>
     /// </summary>
-    let dataProvider =
-        Namespaced_IRI.parse _namespace_name "dataProvider" |> NamespacedName
-
+    let dataProvider = _prefix "dataProvider"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/incorporates"></see>
     /// </summary>
-    let incorporates =
-        Namespaced_IRI.parse _namespace_name "incorporates" |> NamespacedName
-
+    let incorporates = _prefix "incorporates"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isSimilarTo"></see>
     /// </summary>
-    let isSimilarTo =
-        Namespaced_IRI.parse _namespace_name "isSimilarTo" |> NamespacedName
-
+    let isSimilarTo = _prefix "isSimilarTo"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isAnnotationOf"></see>
     /// </summary>
-    let isAnnotationOf =
-        Namespaced_IRI.parse _namespace_name "isAnnotationOf" |> NamespacedName
-
+    let isAnnotationOf = _prefix "isAnnotationOf"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isNextInSequence"></see>
     /// </summary>
-    let isNextInSequence =
-        Namespaced_IRI.parse _namespace_name "isNextInSequence" |> NamespacedName
-
+    let isNextInSequence = _prefix "isNextInSequence"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isRepresentationOf"></see>
     /// </summary>
-    let isRepresentationOf =
-        Namespaced_IRI.parse _namespace_name "isRepresentationOf" |> NamespacedName
-
+    let isRepresentationOf = _prefix "isRepresentationOf"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isShownAt"></see>
     /// </summary>
-    let isShownAt = Namespaced_IRI.parse _namespace_name "isShownAt" |> NamespacedName
+    let isShownAt = _prefix "isShownAt"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isShownBy"></see>
     /// </summary>
-    let isShownBy = Namespaced_IRI.parse _namespace_name "isShownBy" |> NamespacedName
-
+    let isShownBy = _prefix "isShownBy"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/isSuccessorOf"></see>
     /// </summary>
-    let isSuccessorOf =
-        Namespaced_IRI.parse _namespace_name "isSuccessorOf" |> NamespacedName
-
+    let isSuccessorOf = _prefix "isSuccessorOf"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/landingPage"></see>
     /// </summary>
-    let landingPage =
-        Namespaced_IRI.parse _namespace_name "landingPage" |> NamespacedName
-
+    let landingPage = _prefix "landingPage"
     /// <summary>
     /// The recommended best practice is to use a controlled vocabulary such as
     /// RFC 4646 (http://www.rfc-archive.org/getrfc.php?rfc=4646) which, in
     /// conjunction with ISO 639, defines two- and three-letter primary language tags. Either a coded value or text string can be represented here.
     /// <see href="http://www.europeana.eu/schemas/edm/language"></see></summary>
-    let language = Namespaced_IRI.parse _namespace_name "language" |> NamespacedName
+    let language = _prefix "language"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/object"></see>
     /// </summary>
-    let object = Namespaced_IRI.parse _namespace_name "object" |> NamespacedName
+    let object = _prefix "object"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/occurredAt"></see>
     /// </summary>
-    let occurredAt = Namespaced_IRI.parse _namespace_name "occurredAt" |> NamespacedName
+    let occurredAt = _prefix "occurredAt"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/preview"></see>
     /// </summary>
-    let preview = Namespaced_IRI.parse _namespace_name "preview" |> NamespacedName
+    let preview = _prefix "preview"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/provider"></see>
     /// </summary>
-    let provider = Namespaced_IRI.parse _namespace_name "provider" |> NamespacedName
+    let provider = _prefix "provider"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/realizes"></see>
     /// </summary>
-    let realizes = Namespaced_IRI.parse _namespace_name "realizes" |> NamespacedName
+    let realizes = _prefix "realizes"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/rights"></see>
     /// </summary>
-    let rights = Namespaced_IRI.parse _namespace_name "rights" |> NamespacedName
+    let rights = _prefix "rights"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/type"></see>
     /// </summary>
-    let type_ = Namespaced_IRI.parse _namespace_name "type" |> NamespacedName
+    let type_ = _prefix "type"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/ugc"></see>
     /// </summary>
-    let ugc = Namespaced_IRI.parse _namespace_name "ugc" |> NamespacedName
+    let ugc = _prefix "ugc"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/unstored"></see>
     /// </summary>
-    let unstored = Namespaced_IRI.parse _namespace_name "unstored" |> NamespacedName
+    let unstored = _prefix "unstored"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/uri"></see>
     /// </summary>
-    let uri = Namespaced_IRI.parse _namespace_name "uri" |> NamespacedName
+    let uri = _prefix "uri"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/userTag"></see>
     /// </summary>
-    let userTag = Namespaced_IRI.parse _namespace_name "userTag" |> NamespacedName
-
+    let userTag = _prefix "userTag"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/wasPresentAt"></see>
     /// </summary>
-    let wasPresentAt =
-        Namespaced_IRI.parse _namespace_name "wasPresentAt" |> NamespacedName
-
+    let wasPresentAt = _prefix "wasPresentAt"
     /// <summary>
     ///   <see href="http://www.europeana.eu/schemas/edm/year"></see>
     /// </summary>
-    let year = Namespaced_IRI.parse _namespace_name "year" |> NamespacedName
+    let year = _prefix "year"

@@ -1,69 +1,70 @@
 namespace http.www.w3.org._2000._10.swap.pim.email.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module email =
     let _namespace_name = "http://www.w3.org/2000/10/swap/pim/email#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// "AGENT (person,  system  or  process)" -- RFC822 4.4.2
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#Agent"></see></summary>
-    let Agent = Namespaced_IRI.parse _namespace_name "Agent" |> NamespacedName
+    let Agent = _prefix "Agent"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#Mailbox"></see>
     /// </summary>
-    let Mailbox = Namespaced_IRI.parse _namespace_name "Mailbox" |> NamespacedName
+    let Mailbox = _prefix "Mailbox"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#Message"></see>
     /// </summary>
-    let Message = Namespaced_IRI.parse _namespace_name "Message" |> NamespacedName
+    let Message = _prefix "Message"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#cc"></see>
     /// </summary>
-    let cc = Namespaced_IRI.parse _namespace_name "cc" |> NamespacedName
+    let cc = _prefix "cc"
     /// <summary>
     /// unmodified date header field value
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#date"></see></summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     /// date header field converted to YYYY-MM-DDTHH:MM:SSZ form
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#date_iso"></see></summary>
-    let date_iso = Namespaced_IRI.parse _namespace_name "date_iso" |> NamespacedName
+    let date_iso = _prefix "date_iso"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#from"></see>
     /// </summary>
-    let from = Namespaced_IRI.parse _namespace_name "from" |> NamespacedName
+    let from = _prefix "from"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#mbox"></see>
     /// </summary>
-    let mbox = Namespaced_IRI.parse _namespace_name "mbox" |> NamespacedName
+    let mbox = _prefix "mbox"
     /// <summary>
     /// note handling of non-ascii chars
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#phrase"></see></summary>
-    let phrase = Namespaced_IRI.parse _namespace_name "phrase" |> NamespacedName
-
+    let phrase = _prefix "phrase"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#received_iso"></see>
     /// </summary>
-    let received_iso =
-        Namespaced_IRI.parse _namespace_name "received_iso" |> NamespacedName
-
+    let received_iso = _prefix "received_iso"
     /// <summary>
     /// @@not in RFC822. artificial. explain/motivate?
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#recipients"></see></summary>
-    let recipients = Namespaced_IRI.parse _namespace_name "recipients" |> NamespacedName
+    let recipients = _prefix "recipients"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#references"></see>
     /// </summary>
-    let references = Namespaced_IRI.parse _namespace_name "references" |> NamespacedName
+    let references = _prefix "references"
     /// <summary>
     /// @@not in RFC822. artificial. explain/motivate?
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#senders"></see></summary>
-    let senders = Namespaced_IRI.parse _namespace_name "senders" |> NamespacedName
+    let senders = _prefix "senders"
     /// <summary>
     /// domain message. note handling of non-ascii chars
     /// <see href="http://www.w3.org/2000/10/swap/pim/email#subject"></see></summary>
-    let subject = Namespaced_IRI.parse _namespace_name "subject" |> NamespacedName
+    let subject = _prefix "subject"
     /// <summary>
     ///   <see href="http://www.w3.org/2000/10/swap/pim/email#to"></see>
     /// </summary>
-    let to_ = Namespaced_IRI.parse _namespace_name "to" |> NamespacedName
+    let to_ = _prefix "to"

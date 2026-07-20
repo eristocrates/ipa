@@ -1,145 +1,109 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Equities.DepositaryReceipts.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_eq_dr =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/AmericanDepositaryReceipt"></see>
     /// </summary>
-    let AmericanDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "AmericanDepositaryReceipt" |> NamespacedName
-
+    let AmericanDepositaryReceipt = _prefix "AmericanDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/DepositaryReceipt"></see>
     /// </summary>
-    let DepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "DepositaryReceipt" |> NamespacedName
-
+    let DepositaryReceipt = _prefix "DepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/AmericanDepositaryReceiptLevel"></see>
     /// </summary>
-    let AmericanDepositaryReceiptLevel =
-        Namespaced_IRI.parse _namespace_name "AmericanDepositaryReceiptLevel" |> NamespacedName
+    let AmericanDepositaryReceiptLevel = _prefix "AmericanDepositaryReceiptLevel"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/AmericanDepositaryReceiptLevelScheme"></see>
     /// </summary>
     let AmericanDepositaryReceiptLevelScheme =
-        Namespaced_IRI.parse _namespace_name "AmericanDepositaryReceiptLevelScheme" |> NamespacedName
+        _prefix "AmericanDepositaryReceiptLevelScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/ChineseDepositaryReceipt"></see>
     /// </summary>
-    let ChineseDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "ChineseDepositaryReceipt" |> NamespacedName
-
+    let ChineseDepositaryReceipt = _prefix "ChineseDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/GlobalDepositaryReceipt"></see>
     /// </summary>
-    let GlobalDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "GlobalDepositaryReceipt" |> NamespacedName
-
+    let GlobalDepositaryReceipt = _prefix "GlobalDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/hasMultiplier"></see>
     /// </summary>
-    let hasMultiplier =
-        Namespaced_IRI.parse _namespace_name "hasMultiplier" |> NamespacedName
-
+    let hasMultiplier = _prefix "hasMultiplier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/hasTradedSecurity"></see>
     /// </summary>
-    let hasTradedSecurity =
-        Namespaced_IRI.parse _namespace_name "hasTradedSecurity" |> NamespacedName
-
+    let hasTradedSecurity = _prefix "hasTradedSecurity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/EuropeanDepositaryReceipt"></see>
     /// </summary>
-    let EuropeanDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "EuropeanDepositaryReceipt" |> NamespacedName
-
+    let EuropeanDepositaryReceipt = _prefix "EuropeanDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/HongKongDepositaryReceipt"></see>
     /// </summary>
-    let HongKongDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "HongKongDepositaryReceipt" |> NamespacedName
-
+    let HongKongDepositaryReceipt = _prefix "HongKongDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/IndianDepositoryReceipt"></see>
     /// </summary>
-    let IndianDepositoryReceipt =
-        Namespaced_IRI.parse _namespace_name "IndianDepositoryReceipt" |> NamespacedName
-
+    let IndianDepositoryReceipt = _prefix "IndianDepositoryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/JapaneseDepositaryReceipt"></see>
     /// </summary>
-    let JapaneseDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "JapaneseDepositaryReceipt" |> NamespacedName
-
+    let JapaneseDepositaryReceipt = _prefix "JapaneseDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/LevelIAmericanDepositaryReceipt"></see>
     /// </summary>
-    let LevelIAmericanDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "LevelIAmericanDepositaryReceipt" |> NamespacedName
-
+    let LevelIAmericanDepositaryReceipt = _prefix "LevelIAmericanDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/LevelIIAmericanDepositaryReceipt"></see>
     /// </summary>
-    let LevelIIAmericanDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "LevelIIAmericanDepositaryReceipt" |> NamespacedName
-
+    let LevelIIAmericanDepositaryReceipt = _prefix "LevelIIAmericanDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/LevelIIIAmericanDepositaryReceipt"></see>
     /// </summary>
-    let LevelIIIAmericanDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "LevelIIIAmericanDepositaryReceipt" |> NamespacedName
-
+    let LevelIIIAmericanDepositaryReceipt = _prefix "LevelIIIAmericanDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/LuxembourgDepositaryReceipt"></see>
     /// </summary>
-    let LuxembourgDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "LuxembourgDepositaryReceipt" |> NamespacedName
-
+    let LuxembourgDepositaryReceipt = _prefix "LuxembourgDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/OffshoreDepositaryReceipt"></see>
     /// </summary>
-    let OffshoreDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "OffshoreDepositaryReceipt" |> NamespacedName
-
+    let OffshoreDepositaryReceipt = _prefix "OffshoreDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/SponsoredDepositaryReceipt"></see>
     /// </summary>
-    let SponsoredDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "SponsoredDepositaryReceipt" |> NamespacedName
-
+    let SponsoredDepositaryReceipt = _prefix "SponsoredDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/ParticipatoryNote"></see>
     /// </summary>
-    let ParticipatoryNote =
-        Namespaced_IRI.parse _namespace_name "ParticipatoryNote" |> NamespacedName
-
+    let ParticipatoryNote = _prefix "ParticipatoryNote"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/PrivatelyPlacedDepositaryReceipt"></see>
     /// </summary>
-    let PrivatelyPlacedDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "PrivatelyPlacedDepositaryReceipt" |> NamespacedName
-
+    let PrivatelyPlacedDepositaryReceipt = _prefix "PrivatelyPlacedDepositaryReceipt"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/UnsponsoredDepositaryReceipt"></see>
     /// </summary>
-    let UnsponsoredDepositaryReceipt =
-        Namespaced_IRI.parse _namespace_name "UnsponsoredDepositaryReceipt" |> NamespacedName
+    let UnsponsoredDepositaryReceipt = _prefix "UnsponsoredDepositaryReceipt"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/hasNumberOfDepositaryReceiptsIssued"></see>
     /// </summary>
     let hasNumberOfDepositaryReceiptsIssued =
-        Namespaced_IRI.parse _namespace_name "hasNumberOfDepositaryReceiptsIssued" |> NamespacedName
+        _prefix "hasNumberOfDepositaryReceiptsIssued"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/DepositaryReceipts/hasTradedShare"></see>
     /// </summary>
-    let hasTradedShare =
-        Namespaced_IRI.parse _namespace_name "hasTradedShare" |> NamespacedName
+    let hasTradedShare = _prefix "hasTradedShare"

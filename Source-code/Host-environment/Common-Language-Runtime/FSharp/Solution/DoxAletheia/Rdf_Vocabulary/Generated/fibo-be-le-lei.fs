@@ -1,205 +1,152 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.LegalEntities.LEIEntities.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_le_lei =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/AccountingFramework"></see>
     /// </summary>
-    let AccountingFramework =
-        Namespaced_IRI.parse _namespace_name "AccountingFramework" |> NamespacedName
-
+    let AccountingFramework = _prefix "AccountingFramework"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/RelationshipQualifier"></see>
     /// </summary>
-    let RelationshipQualifier =
-        Namespaced_IRI.parse _namespace_name "RelationshipQualifier" |> NamespacedName
-
+    let RelationshipQualifier = _prefix "RelationshipQualifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/AccountingPeriod"></see>
     /// </summary>
-    let AccountingPeriod =
-        Namespaced_IRI.parse _namespace_name "AccountingPeriod" |> NamespacedName
-
+    let AccountingPeriod = _prefix "AccountingPeriod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/RelationshipPeriodQualifier"></see>
     /// </summary>
-    let RelationshipPeriodQualifier =
-        Namespaced_IRI.parse _namespace_name "RelationshipPeriodQualifier" |> NamespacedName
-
+    let RelationshipPeriodQualifier = _prefix "RelationshipPeriodQualifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/ContractuallyCapableEntity"></see>
     /// </summary>
-    let ContractuallyCapableEntity =
-        Namespaced_IRI.parse _namespace_name "ContractuallyCapableEntity" |> NamespacedName
-
+    let ContractuallyCapableEntity = _prefix "ContractuallyCapableEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/DocumentFilingPeriod"></see>
     /// </summary>
-    let DocumentFilingPeriod =
-        Namespaced_IRI.parse _namespace_name "DocumentFilingPeriod" |> NamespacedName
-
+    let DocumentFilingPeriod = _prefix "DocumentFilingPeriod"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/EntityLegalForm"></see>
     /// </summary>
-    let EntityLegalForm =
-        Namespaced_IRI.parse _namespace_name "EntityLegalForm" |> NamespacedName
-
+    let EntityLegalForm = _prefix "EntityLegalForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasLegalFormAbbreviation"></see>
     /// </summary>
-    let hasLegalFormAbbreviation =
-        Namespaced_IRI.parse _namespace_name "hasLegalFormAbbreviation" |> NamespacedName
+    let hasLegalFormAbbreviation = _prefix "hasLegalFormAbbreviation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasTransliteratedLegalFormAbbreviation"></see>
     /// </summary>
     let hasTransliteratedLegalFormAbbreviation =
-        Namespaced_IRI.parse _namespace_name "hasTransliteratedLegalFormAbbreviation" |> NamespacedName
+        _prefix "hasTransliteratedLegalFormAbbreviation"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasTransliteratedName"></see>
     /// </summary>
-    let hasTransliteratedName =
-        Namespaced_IRI.parse _namespace_name "hasTransliteratedName" |> NamespacedName
-
+    let hasTransliteratedName = _prefix "hasTransliteratedName"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/EntityLegalFormScheme"></see>
     /// </summary>
-    let EntityLegalFormScheme =
-        Namespaced_IRI.parse _namespace_name "EntityLegalFormScheme" |> NamespacedName
-
+    let EntityLegalFormScheme = _prefix "EntityLegalFormScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/EntityLegalFormIdentifier"></see>
     /// </summary>
-    let EntityLegalFormIdentifier =
-        Namespaced_IRI.parse _namespace_name "EntityLegalFormIdentifier" |> NamespacedName
+    let EntityLegalFormIdentifier = _prefix "EntityLegalFormIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/GenerallyAcceptedAccountingPrinciples"></see>
     /// </summary>
     let GenerallyAcceptedAccountingPrinciples =
-        Namespaced_IRI.parse _namespace_name "GenerallyAcceptedAccountingPrinciples" |> NamespacedName
+        _prefix "GenerallyAcceptedAccountingPrinciples"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/ISO17442-CodeSet"></see>
     /// </summary>
-    let ``ISO17442-CodeSet`` =
-        Namespaced_IRI.parse _namespace_name "ISO17442-CodeSet" |> NamespacedName
-
+    let ``ISO17442-CodeSet`` = _prefix "ISO17442-CodeSet"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/LegalEntityIdentifierScheme"></see>
     /// </summary>
-    let LegalEntityIdentifierScheme =
-        Namespaced_IRI.parse _namespace_name "LegalEntityIdentifierScheme" |> NamespacedName
-
+    let LegalEntityIdentifierScheme = _prefix "LegalEntityIdentifierScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/ISO20275-CodeSet"></see>
     /// </summary>
-    let ``ISO20275-CodeSet`` =
-        Namespaced_IRI.parse _namespace_name "ISO20275-CodeSet" |> NamespacedName
+    let ``ISO20275-CodeSet`` = _prefix "ISO20275-CodeSet"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/InternationalFinancialReportingStandard"></see>
     /// </summary>
     let InternationalFinancialReportingStandard =
-        Namespaced_IRI.parse _namespace_name "InternationalFinancialReportingStandard" |> NamespacedName
+        _prefix "InternationalFinancialReportingStandard"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/LEIRegisteredEntity"></see>
     /// </summary>
-    let LEIRegisteredEntity =
-        Namespaced_IRI.parse _namespace_name "LEIRegisteredEntity" |> NamespacedName
-
+    let LEIRegisteredEntity = _prefix "LEIRegisteredEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/LegalEntityIdentifier"></see>
     /// </summary>
-    let LegalEntityIdentifier =
-        Namespaced_IRI.parse _namespace_name "LegalEntityIdentifier" |> NamespacedName
-
+    let LegalEntityIdentifier = _prefix "LegalEntityIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/OtherAccountingFramework"></see>
     /// </summary>
-    let OtherAccountingFramework =
-        Namespaced_IRI.parse _namespace_name "OtherAccountingFramework" |> NamespacedName
-
+    let OtherAccountingFramework = _prefix "OtherAccountingFramework"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/RelationshipRecord"></see>
     /// </summary>
-    let RelationshipRecord =
-        Namespaced_IRI.parse _namespace_name "RelationshipRecord" |> NamespacedName
-
+    let RelationshipRecord = _prefix "RelationshipRecord"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isQuantifiedBy"></see>
     /// </summary>
-    let isQuantifiedBy =
-        Namespaced_IRI.parse _namespace_name "isQuantifiedBy" |> NamespacedName
-
+    let isQuantifiedBy = _prefix "isQuantifiedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/RelationshipStatus"></see>
     /// </summary>
-    let RelationshipStatus =
-        Namespaced_IRI.parse _namespace_name "RelationshipStatus" |> NamespacedName
-
+    let RelationshipStatus = _prefix "RelationshipStatus"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/RelationshipStatusActive"></see>
     /// </summary>
-    let RelationshipStatusActive =
-        Namespaced_IRI.parse _namespace_name "RelationshipStatusActive" |> NamespacedName
-
+    let RelationshipStatusActive = _prefix "RelationshipStatusActive"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/RelationshipStatusInactive"></see>
     /// </summary>
-    let RelationshipStatusInactive =
-        Namespaced_IRI.parse _namespace_name "RelationshipStatusInactive" |> NamespacedName
-
+    let RelationshipStatusInactive = _prefix "RelationshipStatusInactive"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasLegalAddress"></see>
     /// </summary>
-    let hasLegalAddress =
-        Namespaced_IRI.parse _namespace_name "hasLegalAddress" |> NamespacedName
-
+    let hasLegalAddress = _prefix "hasLegalAddress"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasLegalForm"></see>
     /// </summary>
-    let hasLegalForm =
-        Namespaced_IRI.parse _namespace_name "hasLegalForm" |> NamespacedName
-
+    let hasLegalForm = _prefix "hasLegalForm"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/hasOwnershipPercentage"></see>
     /// </summary>
-    let hasOwnershipPercentage =
-        Namespaced_IRI.parse _namespace_name "hasOwnershipPercentage" |> NamespacedName
-
+    let hasOwnershipPercentage = _prefix "hasOwnershipPercentage"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isConsolidatedBy"></see>
     /// </summary>
-    let isConsolidatedBy =
-        Namespaced_IRI.parse _namespace_name "isConsolidatedBy" |> NamespacedName
-
+    let isConsolidatedBy = _prefix "isConsolidatedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isConsolidationOf"></see>
     /// </summary>
-    let isConsolidationOf =
-        Namespaced_IRI.parse _namespace_name "isConsolidationOf" |> NamespacedName
-
+    let isConsolidationOf = _prefix "isConsolidationOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isDirectlyConsolidatedBy"></see>
     /// </summary>
-    let isDirectlyConsolidatedBy =
-        Namespaced_IRI.parse _namespace_name "isDirectlyConsolidatedBy" |> NamespacedName
-
+    let isDirectlyConsolidatedBy = _prefix "isDirectlyConsolidatedBy"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isInternationalBranchOf"></see>
     /// </summary>
-    let isInternationalBranchOf =
-        Namespaced_IRI.parse _namespace_name "isInternationalBranchOf" |> NamespacedName
-
+    let isInternationalBranchOf = _prefix "isInternationalBranchOf"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/isUltimatelyConsolidatedBy"></see>
     /// </summary>
-    let isUltimatelyConsolidatedBy =
-        Namespaced_IRI.parse _namespace_name "isUltimatelyConsolidatedBy" |> NamespacedName
+    let isUltimatelyConsolidatedBy = _prefix "isUltimatelyConsolidatedBy"

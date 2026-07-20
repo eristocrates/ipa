@@ -1,385 +1,275 @@
 namespace https.ns.verisav.fr.wty.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module wty =
     let _namespace_name = "https://ns.verisav.fr/wty#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     /// Automated assessment of a claim against warranty or contract, determining coverage and payment responsibility.
     /// <see href="https://ns.verisav.fr/wty#ClaimAssessment"></see></summary>
-    let ClaimAssessment =
-        Namespaced_IRI.parse _namespace_name "ClaimAssessment" |> NamespacedName
-
+    let ClaimAssessment = _prefix "ClaimAssessment"
     /// <summary>
     /// A condition that must be met for warranty or contract to apply (normal use, proper installation, documentation, etc.).
     /// <see href="https://ns.verisav.fr/wty#Condition"></see></summary>
-    let Condition = Namespaced_IRI.parse _namespace_name "Condition" |> NamespacedName
+    let Condition = _prefix "Condition"
     /// <summary>
     /// A contract (maintenance, extension, insurance) that defines terms and coverage for after-sales service.
     /// <see href="https://ns.verisav.fr/wty#Contract"></see></summary>
-    let Contract = Namespaced_IRI.parse _namespace_name "Contract" |> NamespacedName
+    let Contract = _prefix "Contract"
     /// <summary>
     /// Defines what is covered by a warranty or contract (components, defect types, repair types, periods).
     /// <see href="https://ns.verisav.fr/wty#Coverage"></see></summary>
-    let Coverage = Namespaced_IRI.parse _namespace_name "Coverage" |> NamespacedName
+    let Coverage = _prefix "Coverage"
     /// <summary>
     /// Defines what is NOT covered by a warranty or contract (excluded defect types, causes, components).
     /// <see href="https://ns.verisav.fr/wty#Exclusion"></see></summary>
-    let Exclusion = Namespaced_IRI.parse _namespace_name "Exclusion" |> NamespacedName
+    let Exclusion = _prefix "Exclusion"
     /// <summary>
     /// An invoice generated automatically based on warranty/contract payment rules and claim assessment.
     /// <see href="https://ns.verisav.fr/wty#Invoice"></see></summary>
-    let Invoice = Namespaced_IRI.parse _namespace_name "Invoice" |> NamespacedName
+    let Invoice = _prefix "Invoice"
     /// <summary>
     /// Defines limits (financial, temporal, quantity) for warranty or contract coverage.
     /// <see href="https://ns.verisav.fr/wty#Limit"></see></summary>
-    let Limit = Namespaced_IRI.parse _namespace_name "Limit" |> NamespacedName
-
+    let Limit = _prefix "Limit"
     /// <summary>
     /// Defines who pays for what (diagnostic, repair, parts, travel) and payment splits between parties.
     /// <see href="https://ns.verisav.fr/wty#PaymentRule"></see></summary>
-    let PaymentRule =
-        Namespaced_IRI.parse _namespace_name "PaymentRule" |> NamespacedName
-
+    let PaymentRule = _prefix "PaymentRule"
     /// <summary>
     /// An extended warranty that defines coverage, exclusions, payment rules, and conditions in a machine-readable format for automation.
     /// <see href="https://ns.verisav.fr/wty#Warranty"></see></summary>
-    let Warranty = Namespaced_IRI.parse _namespace_name "Warranty" |> NamespacedName
-
+    let Warranty = _prefix "Warranty"
     /// <summary>
     /// Links a claim assessment to the coverage that applies.
     /// <see href="https://ns.verisav.fr/wty#appliedCoverage"></see></summary>
-    let appliedCoverage =
-        Namespaced_IRI.parse _namespace_name "appliedCoverage" |> NamespacedName
-
+    let appliedCoverage = _prefix "appliedCoverage"
     /// <summary>
     /// Links a claim assessment to exclusions that apply.
     /// <see href="https://ns.verisav.fr/wty#appliedExclusions"></see></summary>
-    let appliedExclusions =
-        Namespaced_IRI.parse _namespace_name "appliedExclusions" |> NamespacedName
-
+    let appliedExclusions = _prefix "appliedExclusions"
     /// <summary>
     /// Links a claim assessment to the ticket or claim being assessed.
     /// <see href="https://ns.verisav.fr/wty#assessesClaim"></see></summary>
-    let assessesClaim =
-        Namespaced_IRI.parse _namespace_name "assessesClaim" |> NamespacedName
-
+    let assessesClaim = _prefix "assessesClaim"
     /// <summary>
     /// Date when the assessment was performed.
     /// <see href="https://ns.verisav.fr/wty#assessmentDate"></see></summary>
-    let assessmentDate =
-        Namespaced_IRI.parse _namespace_name "assessmentDate" |> NamespacedName
-
+    let assessmentDate = _prefix "assessmentDate"
     /// <summary>
     /// Reason for the assessment result (explanation of why covered or not).
     /// <see href="https://ns.verisav.fr/wty#assessmentReason"></see></summary>
-    let assessmentReason =
-        Namespaced_IRI.parse _namespace_name "assessmentReason" |> NamespacedName
-
+    let assessmentReason = _prefix "assessmentReason"
     /// <summary>
     /// Result of the assessment (covered, not_covered, partially_covered, pending_verification).
     /// <see href="https://ns.verisav.fr/wty#assessmentResult"></see></summary>
-    let assessmentResult =
-        Namespaced_IRI.parse _namespace_name "assessmentResult" |> NamespacedName
-
+    let assessmentResult = _prefix "assessmentResult"
     /// <summary>
     /// Whether the contract auto-renews.
     /// <see href="https://ns.verisav.fr/wty#autoRenewal"></see></summary>
-    let autoRenewal =
-        Namespaced_IRI.parse _namespace_name "autoRenewal" |> NamespacedName
-
+    let autoRenewal = _prefix "autoRenewal"
     /// <summary>
     /// Links a claim assessment to the coverage being checked.
     /// <see href="https://ns.verisav.fr/wty#checksCoverage"></see></summary>
-    let checksCoverage =
-        Namespaced_IRI.parse _namespace_name "checksCoverage" |> NamespacedName
-
+    let checksCoverage = _prefix "checksCoverage"
     /// <summary>
     /// Links a claim assessment to exclusions being checked.
     /// <see href="https://ns.verisav.fr/wty#checksExclusions"></see></summary>
-    let checksExclusions =
-        Namespaced_IRI.parse _namespace_name "checksExclusions" |> NamespacedName
-
+    let checksExclusions = _prefix "checksExclusions"
     /// <summary>
     /// Description of the condition that must be met.
     /// <see href="https://ns.verisav.fr/wty#conditionDescription"></see></summary>
-    let conditionDescription =
-        Namespaced_IRI.parse _namespace_name "conditionDescription" |> NamespacedName
-
+    let conditionDescription = _prefix "conditionDescription"
     /// <summary>
     /// Type of condition (normal_use, proper_installation, documentation, proof_of_purchase, etc.).
     /// <see href="https://ns.verisav.fr/wty#conditionType"></see></summary>
-    let conditionType =
-        Namespaced_IRI.parse _namespace_name "conditionType" |> NamespacedName
-
+    let conditionType = _prefix "conditionType"
     /// <summary>
     /// End date of the contract.
     /// <see href="https://ns.verisav.fr/wty#contractEndDate"></see></summary>
-    let contractEndDate =
-        Namespaced_IRI.parse _namespace_name "contractEndDate" |> NamespacedName
-
+    let contractEndDate = _prefix "contractEndDate"
     /// <summary>
     /// Unique identifier for the contract.
     /// <see href="https://ns.verisav.fr/wty#contractNumber"></see></summary>
-    let contractNumber =
-        Namespaced_IRI.parse _namespace_name "contractNumber" |> NamespacedName
-
+    let contractNumber = _prefix "contractNumber"
     /// <summary>
     /// Start date of the contract.
     /// <see href="https://ns.verisav.fr/wty#contractStartDate"></see></summary>
-    let contractStartDate =
-        Namespaced_IRI.parse _namespace_name "contractStartDate" |> NamespacedName
-
+    let contractStartDate = _prefix "contractStartDate"
     /// <summary>
     /// Status of the contract (active, expired, suspended, cancelled, renewed).
     /// <see href="https://ns.verisav.fr/wty#contractStatus"></see></summary>
-    let contractStatus =
-        Namespaced_IRI.parse _namespace_name "contractStatus" |> NamespacedName
-
+    let contractStatus = _prefix "contractStatus"
     /// <summary>
     /// Type of contract (maintenance, extension, insurance, service_agreement).
     /// <see href="https://ns.verisav.fr/wty#contractType"></see></summary>
-    let contractType =
-        Namespaced_IRI.parse _namespace_name "contractType" |> NamespacedName
-
+    let contractType = _prefix "contractType"
     /// <summary>
     /// End date of coverage period.
     /// <see href="https://ns.verisav.fr/wty#coverageEndDate"></see></summary>
-    let coverageEndDate =
-        Namespaced_IRI.parse _namespace_name "coverageEndDate" |> NamespacedName
-
+    let coverageEndDate = _prefix "coverageEndDate"
     /// <summary>
     /// The period during which coverage applies (e.g., '24_months', 'lifetime').
     /// <see href="https://ns.verisav.fr/wty#coveragePeriod"></see></summary>
-    let coveragePeriod =
-        Namespaced_IRI.parse _namespace_name "coveragePeriod" |> NamespacedName
-
+    let coveragePeriod = _prefix "coveragePeriod"
     /// <summary>
     /// Start date of coverage period.
     /// <see href="https://ns.verisav.fr/wty#coverageStartDate"></see></summary>
-    let coverageStartDate =
-        Namespaced_IRI.parse _namespace_name "coverageStartDate" |> NamespacedName
-
+    let coverageStartDate = _prefix "coverageStartDate"
     /// <summary>
     /// Amount covered by warranty/contract for this claim.
     /// <see href="https://ns.verisav.fr/wty#coveredAmount"></see></summary>
-    let coveredAmount =
-        Namespaced_IRI.parse _namespace_name "coveredAmount" |> NamespacedName
-
+    let coveredAmount = _prefix "coveredAmount"
     /// <summary>
     /// Currency code for the covered amount (ISO 4217).
     /// <see href="https://ns.verisav.fr/wty#coveredCurrency"></see></summary>
-    let coveredCurrency =
-        Namespaced_IRI.parse _namespace_name "coveredCurrency" |> NamespacedName
-
+    let coveredCurrency = _prefix "coveredCurrency"
     /// <summary>
     /// Links coverage to specific product components that are covered.
     /// <see href="https://ns.verisav.fr/wty#coversComponent"></see></summary>
-    let coversComponent =
-        Namespaced_IRI.parse _namespace_name "coversComponent" |> NamespacedName
-
+    let coversComponent = _prefix "coversComponent"
     /// <summary>
     /// Links coverage to types of defects that are covered.
     /// <see href="https://ns.verisav.fr/wty#coversDefectType"></see></summary>
-    let coversDefectType =
-        Namespaced_IRI.parse _namespace_name "coversDefectType" |> NamespacedName
-
+    let coversDefectType = _prefix "coversDefectType"
     /// <summary>
     /// Links coverage to types of repairs that are covered.
     /// <see href="https://ns.verisav.fr/wty#coversRepairType"></see></summary>
-    let coversRepairType =
-        Namespaced_IRI.parse _namespace_name "coversRepairType" |> NamespacedName
-
+    let coversRepairType = _prefix "coversRepairType"
     /// <summary>
     /// Amount the customer is responsible for.
     /// <see href="https://ns.verisav.fr/wty#customerResponsibility"></see></summary>
-    let customerResponsibility =
-        Namespaced_IRI.parse _namespace_name "customerResponsibility" |> NamespacedName
-
+    let customerResponsibility = _prefix "customerResponsibility"
     /// <summary>
     /// Links a warranty or contract to its conditions.
     /// <see href="https://ns.verisav.fr/wty#definesConditions"></see></summary>
-    let definesConditions =
-        Namespaced_IRI.parse _namespace_name "definesConditions" |> NamespacedName
-
+    let definesConditions = _prefix "definesConditions"
     /// <summary>
     /// Links a warranty or contract to its coverage definition.
     /// <see href="https://ns.verisav.fr/wty#definesCoverage"></see></summary>
-    let definesCoverage =
-        Namespaced_IRI.parse _namespace_name "definesCoverage" |> NamespacedName
-
+    let definesCoverage = _prefix "definesCoverage"
     /// <summary>
     /// Links a warranty or contract to its exclusion definitions.
     /// <see href="https://ns.verisav.fr/wty#definesExclusions"></see></summary>
-    let definesExclusions =
-        Namespaced_IRI.parse _namespace_name "definesExclusions" |> NamespacedName
-
+    let definesExclusions = _prefix "definesExclusions"
     /// <summary>
     /// Links a warranty or contract to its limits.
     /// <see href="https://ns.verisav.fr/wty#definesLimits"></see></summary>
-    let definesLimits =
-        Namespaced_IRI.parse _namespace_name "definesLimits" |> NamespacedName
-
+    let definesLimits = _prefix "definesLimits"
     /// <summary>
     /// Links a warranty or contract to its payment rule.
     /// <see href="https://ns.verisav.fr/wty#definesPaymentRule"></see></summary>
-    let definesPaymentRule =
-        Namespaced_IRI.parse _namespace_name "definesPaymentRule" |> NamespacedName
-
+    let definesPaymentRule = _prefix "definesPaymentRule"
     /// <summary>
     /// Links a claim assessment to the payment rule used to determine payment responsibility.
     /// <see href="https://ns.verisav.fr/wty#determinesPayment"></see></summary>
-    let determinesPayment =
-        Namespaced_IRI.parse _namespace_name "determinesPayment" |> NamespacedName
-
+    let determinesPayment = _prefix "determinesPayment"
     /// <summary>
     /// Links exclusion to causes that are excluded (normal wear, damage, misuse, etc.).
     /// <see href="https://ns.verisav.fr/wty#excludedCause"></see></summary>
-    let excludedCause =
-        Namespaced_IRI.parse _namespace_name "excludedCause" |> NamespacedName
-
+    let excludedCause = _prefix "excludedCause"
     /// <summary>
     /// Links exclusion to specific components that are excluded.
     /// <see href="https://ns.verisav.fr/wty#excludedComponent"></see></summary>
-    let excludedComponent =
-        Namespaced_IRI.parse _namespace_name "excludedComponent" |> NamespacedName
-
+    let excludedComponent = _prefix "excludedComponent"
     /// <summary>
     /// Links exclusion to types of defects that are excluded.
     /// <see href="https://ns.verisav.fr/wty#excludedDefectType"></see></summary>
-    let excludedDefectType =
-        Namespaced_IRI.parse _namespace_name "excludedDefectType" |> NamespacedName
-
+    let excludedDefectType = _prefix "excludedDefectType"
     /// <summary>
     /// The party (organization or person) that pays first or primarily.
     /// <see href="https://ns.verisav.fr/wty#firstParty"></see></summary>
-    let firstParty = Namespaced_IRI.parse _namespace_name "firstParty" |> NamespacedName
-
+    let firstParty = _prefix "firstParty"
     /// <summary>
     /// Links a claim assessment to the invoice generated.
     /// <see href="https://ns.verisav.fr/wty#generatesInvoice"></see></summary>
-    let generatesInvoice =
-        Namespaced_IRI.parse _namespace_name "generatesInvoice" |> NamespacedName
-
+    let generatesInvoice = _prefix "generatesInvoice"
     /// <summary>
     /// Whether the payment rule has a limit.
     /// <see href="https://ns.verisav.fr/wty#hasPaymentLimit"></see></summary>
-    let hasPaymentLimit =
-        Namespaced_IRI.parse _namespace_name "hasPaymentLimit" |> NamespacedName
-
+    let hasPaymentLimit = _prefix "hasPaymentLimit"
     /// <summary>
     /// Total amount of the invoice.
     /// <see href="https://ns.verisav.fr/wty#invoiceAmount"></see></summary>
-    let invoiceAmount =
-        Namespaced_IRI.parse _namespace_name "invoiceAmount" |> NamespacedName
-
+    let invoiceAmount = _prefix "invoiceAmount"
     /// <summary>
     /// Currency code for the invoice amount (ISO 4217).
     /// <see href="https://ns.verisav.fr/wty#invoiceCurrency"></see></summary>
-    let invoiceCurrency =
-        Namespaced_IRI.parse _namespace_name "invoiceCurrency" |> NamespacedName
-
+    let invoiceCurrency = _prefix "invoiceCurrency"
     /// <summary>
     /// Date when the invoice was generated.
     /// <see href="https://ns.verisav.fr/wty#invoiceDate"></see></summary>
-    let invoiceDate =
-        Namespaced_IRI.parse _namespace_name "invoiceDate" |> NamespacedName
-
+    let invoiceDate = _prefix "invoiceDate"
     /// <summary>
     /// Unique identifier for the invoice.
     /// <see href="https://ns.verisav.fr/wty#invoiceNumber"></see></summary>
-    let invoiceNumber =
-        Namespaced_IRI.parse _namespace_name "invoiceNumber" |> NamespacedName
-
+    let invoiceNumber = _prefix "invoiceNumber"
     /// <summary>
     /// Status of the invoice (draft, sent, paid, overdue, cancelled).
     /// <see href="https://ns.verisav.fr/wty#invoiceStatus"></see></summary>
-    let invoiceStatus =
-        Namespaced_IRI.parse _namespace_name "invoiceStatus" |> NamespacedName
-
+    let invoiceStatus = _prefix "invoiceStatus"
     /// <summary>
     /// Links an invoice to the intervention, repair, or service being invoiced.
     /// <see href="https://ns.verisav.fr/wty#invoices"></see></summary>
-    let invoices = Namespaced_IRI.parse _namespace_name "invoices" |> NamespacedName
-
+    let invoices = _prefix "invoices"
     /// <summary>
     /// Maximum amount for the limit.
     /// <see href="https://ns.verisav.fr/wty#limitAmount"></see></summary>
-    let limitAmount =
-        Namespaced_IRI.parse _namespace_name "limitAmount" |> NamespacedName
-
+    let limitAmount = _prefix "limitAmount"
     /// <summary>
     /// Currency code for the limit amount (ISO 4217).
     /// <see href="https://ns.verisav.fr/wty#limitCurrency"></see></summary>
-    let limitCurrency =
-        Namespaced_IRI.parse _namespace_name "limitCurrency" |> NamespacedName
-
+    let limitCurrency = _prefix "limitCurrency"
     /// <summary>
     /// Period over which the limit applies (per_month, per_year, total, etc.).
     /// <see href="https://ns.verisav.fr/wty#limitPeriod"></see></summary>
-    let limitPeriod =
-        Namespaced_IRI.parse _namespace_name "limitPeriod" |> NamespacedName
-
+    let limitPeriod = _prefix "limitPeriod"
     /// <summary>
     /// Maximum quantity (for number-based limits like interventions).
     /// <see href="https://ns.verisav.fr/wty#limitQuantity"></see></summary>
-    let limitQuantity =
-        Namespaced_IRI.parse _namespace_name "limitQuantity" |> NamespacedName
-
+    let limitQuantity = _prefix "limitQuantity"
     /// <summary>
     /// Type of limit (amount, number_of_interventions, per_incident, total, etc.).
     /// <see href="https://ns.verisav.fr/wty#limitType"></see></summary>
-    let limitType = Namespaced_IRI.parse _namespace_name "limitType" |> NamespacedName
+    let limitType = _prefix "limitType"
     /// <summary>
     /// The party responsible for paying the invoice.
     /// <see href="https://ns.verisav.fr/wty#payer"></see></summary>
-    let payer = Namespaced_IRI.parse _namespace_name "payer" |> NamespacedName
-
+    let payer = _prefix "payer"
     /// <summary>
     /// Links a claim assessment to the payment rule that determines who pays.
     /// <see href="https://ns.verisav.fr/wty#paymentDecision"></see></summary>
-    let paymentDecision =
-        Namespaced_IRI.parse _namespace_name "paymentDecision" |> NamespacedName
-
+    let paymentDecision = _prefix "paymentDecision"
     /// <summary>
     /// Percentage of cost paid by the first party (0-100).
     /// <see href="https://ns.verisav.fr/wty#paymentPercentage"></see></summary>
-    let paymentPercentage =
-        Namespaced_IRI.parse _namespace_name "paymentPercentage" |> NamespacedName
-
+    let paymentPercentage = _prefix "paymentPercentage"
     /// <summary>
     /// JSON string describing payment split between multiple parties.
     /// JSON string describing how payment is split between parties (if multiple payers).
     /// <see href="https://ns.verisav.fr/wty#paymentSplit"></see></summary>
-    let paymentSplit =
-        Namespaced_IRI.parse _namespace_name "paymentSplit" |> NamespacedName
-
+    let paymentSplit = _prefix "paymentSplit"
     /// <summary>
     /// Links a payment rule to what it pays for (diagnostic, repair, parts, travel, etc.).
     /// <see href="https://ns.verisav.fr/wty#paysFor"></see></summary>
-    let paysFor = Namespaced_IRI.parse _namespace_name "paysFor" |> NamespacedName
-
+    let paysFor = _prefix "paysFor"
     /// <summary>
     /// Whether documentation is required (proof of purchase, installation certificate, etc.).
     /// <see href="https://ns.verisav.fr/wty#requiresDocumentation"></see></summary>
-    let requiresDocumentation =
-        Namespaced_IRI.parse _namespace_name "requiresDocumentation" |> NamespacedName
-
+    let requiresDocumentation = _prefix "requiresDocumentation"
     /// <summary>
     /// Whether proof is required (photos, diagnostic report, etc.).
     /// <see href="https://ns.verisav.fr/wty#requiresProof"></see></summary>
-    let requiresProof =
-        Namespaced_IRI.parse _namespace_name "requiresProof" |> NamespacedName
-
+    let requiresProof = _prefix "requiresProof"
     /// <summary>
     /// Links a ticket or claim to a claim assessment.
     /// <see href="https://ns.verisav.fr/wty#triggersAssessment"></see></summary>
-    let triggersAssessment =
-        Namespaced_IRI.parse _namespace_name "triggersAssessment" |> NamespacedName
-
+    let triggersAssessment = _prefix "triggersAssessment"
     /// <summary>
     /// Period during which the condition is valid (e.g., 'warranty_period', 'lifetime').
     /// <see href="https://ns.verisav.fr/wty#validityPeriod"></see></summary>
-    let validityPeriod =
-        Namespaced_IRI.parse _namespace_name "validityPeriod" |> NamespacedName
+    let validityPeriod = _prefix "validityPeriod"

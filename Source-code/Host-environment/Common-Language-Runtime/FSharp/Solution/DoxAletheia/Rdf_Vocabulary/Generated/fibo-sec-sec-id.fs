@@ -1,103 +1,94 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Securities.SecuritiesIdentification.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_sec_id =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/FinancialInstrumentIdentificationScheme"></see>
     /// </summary>
     let FinancialInstrumentIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrumentIdentificationScheme" |> NamespacedName
+        _prefix "FinancialInstrumentIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/InternationalSecuritiesIdentificationNumber"></see>
     /// </summary>
     let InternationalSecuritiesIdentificationNumber =
-        Namespaced_IRI.parse _namespace_name "InternationalSecuritiesIdentificationNumber" |> NamespacedName
+        _prefix "InternationalSecuritiesIdentificationNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/SecurityIdentifier"></see>
     /// </summary>
-    let SecurityIdentifier =
-        Namespaced_IRI.parse _namespace_name "SecurityIdentifier" |> NamespacedName
+    let SecurityIdentifier = _prefix "SecurityIdentifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/NationalSecuritiesIdentifyingNumber"></see>
     /// </summary>
     let NationalSecuritiesIdentifyingNumber =
-        Namespaced_IRI.parse _namespace_name "NationalSecuritiesIdentifyingNumber" |> NamespacedName
+        _prefix "NationalSecuritiesIdentifyingNumber"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/InternationalSecuritiesIdentificationNumberingScheme"></see>
     /// </summary>
     let InternationalSecuritiesIdentificationNumberingScheme =
-        Namespaced_IRI.parse _namespace_name "InternationalSecuritiesIdentificationNumberingScheme" |> NamespacedName
+        _prefix "InternationalSecuritiesIdentificationNumberingScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/SecurityIdentificationScheme"></see>
     /// </summary>
-    let SecurityIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "SecurityIdentificationScheme" |> NamespacedName
-
+    let SecurityIdentificationScheme = _prefix "SecurityIdentificationScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ListedSecurityIdentifier"></see>
     /// </summary>
-    let ListedSecurityIdentifier =
-        Namespaced_IRI.parse _namespace_name "ListedSecurityIdentifier" |> NamespacedName
-
+    let ListedSecurityIdentifier = _prefix "ListedSecurityIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/SecurityRegistry"></see>
     /// </summary>
-    let SecurityRegistry =
-        Namespaced_IRI.parse _namespace_name "SecurityRegistry" |> NamespacedName
-
+    let SecurityRegistry = _prefix "SecurityRegistry"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/NationalNumberingAgency"></see>
     /// </summary>
-    let NationalNumberingAgency =
-        Namespaced_IRI.parse _namespace_name "NationalNumberingAgency" |> NamespacedName
+    let NationalNumberingAgency = _prefix "NationalNumberingAgency"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/NationalSecuritiesIdentifyingNumberRegistry"></see>
     /// </summary>
     let NationalSecuritiesIdentifyingNumberRegistry =
-        Namespaced_IRI.parse _namespace_name "NationalSecuritiesIdentifyingNumberRegistry" |> NamespacedName
+        _prefix "NationalSecuritiesIdentifyingNumberRegistry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/NationalSecurityIdentificationScheme"></see>
     /// </summary>
     let NationalSecurityIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "NationalSecurityIdentificationScheme" |> NamespacedName
+        _prefix "NationalSecurityIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/NationalSecuritiesIdentifyingNumberRegistryEntry"></see>
     /// </summary>
     let NationalSecuritiesIdentifyingNumberRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "NationalSecuritiesIdentifyingNumberRegistryEntry" |> NamespacedName
+        _prefix "NationalSecuritiesIdentifyingNumberRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/SecurityRegistryEntry"></see>
     /// </summary>
-    let SecurityRegistryEntry =
-        Namespaced_IRI.parse _namespace_name "SecurityRegistryEntry" |> NamespacedName
+    let SecurityRegistryEntry = _prefix "SecurityRegistryEntry"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ProprietarySecurityIdentificationScheme"></see>
     /// </summary>
     let ProprietarySecurityIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "ProprietarySecurityIdentificationScheme" |> NamespacedName
+        _prefix "ProprietarySecurityIdentificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ProprietarySecurityIdentifier"></see>
     /// </summary>
-    let ProprietarySecurityIdentifier =
-        Namespaced_IRI.parse _namespace_name "ProprietarySecurityIdentifier" |> NamespacedName
-
+    let ProprietarySecurityIdentifier = _prefix "ProprietarySecurityIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/TickerSymbol"></see>
     /// </summary>
-    let TickerSymbol =
-        Namespaced_IRI.parse _namespace_name "TickerSymbol" |> NamespacedName
+    let TickerSymbol = _prefix "TickerSymbol"

@@ -1,1228 +1,886 @@
 namespace https.w3id.org.dco.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module dco =
     let _namespace_name = "https://w3id.org/dco#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasSite"></see>
     /// </summary>
-    let hasSite = Namespaced_IRI.parse _namespace_name "hasSite" |> NamespacedName
-
+    let hasSite = _prefix "hasSite"
     /// <summary>
     ///   <see href="https://w3id.org/dco#dCOCoreModel"></see>
     /// </summary>
-    let dCOCoreModel =
-        Namespaced_IRI.parse _namespace_name "dCOCoreModel" |> NamespacedName
-
+    let dCOCoreModel = _prefix "dCOCoreModel"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Action"></see>
     /// </summary>
-    let Action = Namespaced_IRI.parse _namespace_name "Action" |> NamespacedName
-
+    let Action = _prefix "Action"
     /// <summary>
     ///   <see href="https://w3id.org/dco#InteractionAffordance"></see>
     /// </summary>
-    let InteractionAffordance =
-        Namespaced_IRI.parse _namespace_name "InteractionAffordance" |> NamespacedName
-
+    let InteractionAffordance = _prefix "InteractionAffordance"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActiveEnergy"></see>
     /// </summary>
-    let ActiveEnergy =
-        Namespaced_IRI.parse _namespace_name "ActiveEnergy" |> NamespacedName
-
+    let ActiveEnergy = _prefix "ActiveEnergy"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyProperty"></see>
     /// </summary>
-    let EnergyProperty =
-        Namespaced_IRI.parse _namespace_name "EnergyProperty" |> NamespacedName
-
+    let EnergyProperty = _prefix "EnergyProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActiveEnergyExport"></see>
     /// </summary>
-    let ActiveEnergyExport =
-        Namespaced_IRI.parse _namespace_name "ActiveEnergyExport" |> NamespacedName
-
+    let ActiveEnergyExport = _prefix "ActiveEnergyExport"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActiveEnergyImport"></see>
     /// </summary>
-    let ActiveEnergyImport =
-        Namespaced_IRI.parse _namespace_name "ActiveEnergyImport" |> NamespacedName
-
+    let ActiveEnergyImport = _prefix "ActiveEnergyImport"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActivePower"></see>
     /// </summary>
-    let ActivePower =
-        Namespaced_IRI.parse _namespace_name "ActivePower" |> NamespacedName
-
+    let ActivePower = _prefix "ActivePower"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PowerProperty"></see>
     /// </summary>
-    let PowerProperty =
-        Namespaced_IRI.parse _namespace_name "PowerProperty" |> NamespacedName
-
+    let PowerProperty = _prefix "PowerProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActivePowerExport"></see>
     /// </summary>
-    let ActivePowerExport =
-        Namespaced_IRI.parse _namespace_name "ActivePowerExport" |> NamespacedName
-
+    let ActivePowerExport = _prefix "ActivePowerExport"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActivePowerImport"></see>
     /// </summary>
-    let ActivePowerImport =
-        Namespaced_IRI.parse _namespace_name "ActivePowerImport" |> NamespacedName
-
+    let ActivePowerImport = _prefix "ActivePowerImport"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ActualPower"></see>
     /// </summary>
-    let ActualPower =
-        Namespaced_IRI.parse _namespace_name "ActualPower" |> NamespacedName
-
+    let ActualPower = _prefix "ActualPower"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Actuator"></see>
     /// </summary>
-    let Actuator = Namespaced_IRI.parse _namespace_name "Actuator" |> NamespacedName
+    let Actuator = _prefix "Actuator"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Relay"></see>
     /// </summary>
-    let Relay = Namespaced_IRI.parse _namespace_name "Relay" |> NamespacedName
-
+    let Relay = _prefix "Relay"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmbientHumidity"></see>
     /// </summary>
-    let AmbientHumidity =
-        Namespaced_IRI.parse _namespace_name "AmbientHumidity" |> NamespacedName
-
+    let AmbientHumidity = _prefix "AmbientHumidity"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HumidityProperty"></see>
     /// </summary>
-    let HumidityProperty =
-        Namespaced_IRI.parse _namespace_name "HumidityProperty" |> NamespacedName
-
+    let HumidityProperty = _prefix "HumidityProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmbientSensor"></see>
     /// </summary>
-    let AmbientSensor =
-        Namespaced_IRI.parse _namespace_name "AmbientSensor" |> NamespacedName
-
+    let AmbientSensor = _prefix "AmbientSensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Sensor"></see>
     /// </summary>
-    let Sensor = Namespaced_IRI.parse _namespace_name "Sensor" |> NamespacedName
-
+    let Sensor = _prefix "Sensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmbientTemperature"></see>
     /// </summary>
-    let AmbientTemperature =
-        Namespaced_IRI.parse _namespace_name "AmbientTemperature" |> NamespacedName
-
+    let AmbientTemperature = _prefix "AmbientTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#TemperatureProperty"></see>
     /// </summary>
-    let TemperatureProperty =
-        Namespaced_IRI.parse _namespace_name "TemperatureProperty" |> NamespacedName
-
+    let TemperatureProperty = _prefix "TemperatureProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Amperage"></see>
     /// </summary>
-    let Amperage = Namespaced_IRI.parse _namespace_name "Amperage" |> NamespacedName
-
+    let Amperage = _prefix "Amperage"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmperageProperty"></see>
     /// </summary>
-    let AmperageProperty =
-        Namespaced_IRI.parse _namespace_name "AmperageProperty" |> NamespacedName
-
+    let AmperageProperty = _prefix "AmperageProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmperageClamp1"></see>
     /// </summary>
-    let AmperageClamp1 =
-        Namespaced_IRI.parse _namespace_name "AmperageClamp1" |> NamespacedName
-
+    let AmperageClamp1 = _prefix "AmperageClamp1"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmperageClamp2"></see>
     /// </summary>
-    let AmperageClamp2 =
-        Namespaced_IRI.parse _namespace_name "AmperageClamp2" |> NamespacedName
-
+    let AmperageClamp2 = _prefix "AmperageClamp2"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AmperageClamp3"></see>
     /// </summary>
-    let AmperageClamp3 =
-        Namespaced_IRI.parse _namespace_name "AmperageClamp3" |> NamespacedName
-
+    let AmperageClamp3 = _prefix "AmperageClamp3"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Property"></see>
     /// </summary>
-    let Property = Namespaced_IRI.parse _namespace_name "Property" |> NamespacedName
+    let Property = _prefix "Property"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Ampere"></see>
     /// </summary>
-    let Ampere = Namespaced_IRI.parse _namespace_name "Ampere" |> NamespacedName
-
+    let Ampere = _prefix "Ampere"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ElectricUnit"></see>
     /// </summary>
-    let ElectricUnit =
-        Namespaced_IRI.parse _namespace_name "ElectricUnit" |> NamespacedName
-
+    let ElectricUnit = _prefix "ElectricUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Apartment"></see>
     /// </summary>
-    let Apartment = Namespaced_IRI.parse _namespace_name "Apartment" |> NamespacedName
+    let Apartment = _prefix "Apartment"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Space"></see>
     /// </summary>
-    let Space = Namespaced_IRI.parse _namespace_name "Space" |> NamespacedName
+    let Space = _prefix "Space"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Appliance"></see>
     /// </summary>
-    let Appliance = Namespaced_IRI.parse _namespace_name "Appliance" |> NamespacedName
+    let Appliance = _prefix "Appliance"
     /// <summary>
     ///   <see href="https://w3id.org/dco#AreaUnit"></see>
     /// </summary>
-    let AreaUnit = Namespaced_IRI.parse _namespace_name "AreaUnit" |> NamespacedName
-
+    let AreaUnit = _prefix "AreaUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#UnitsOfMeasurements"></see>
     /// </summary>
-    let UnitsOfMeasurements =
-        Namespaced_IRI.parse _namespace_name "UnitsOfMeasurements" |> NamespacedName
-
+    let UnitsOfMeasurements = _prefix "UnitsOfMeasurements"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Bathroom"></see>
     /// </summary>
-    let Bathroom = Namespaced_IRI.parse _namespace_name "Bathroom" |> NamespacedName
+    let Bathroom = _prefix "Bathroom"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Room"></see>
     /// </summary>
-    let Room = Namespaced_IRI.parse _namespace_name "Room" |> NamespacedName
-
+    let Room = _prefix "Room"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BatteryLevel"></see>
     /// </summary>
-    let BatteryLevel =
-        Namespaced_IRI.parse _namespace_name "BatteryLevel" |> NamespacedName
-
+    let BatteryLevel = _prefix "BatteryLevel"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BatteryProperty"></see>
     /// </summary>
-    let BatteryProperty =
-        Namespaced_IRI.parse _namespace_name "BatteryProperty" |> NamespacedName
-
+    let BatteryProperty = _prefix "BatteryProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Bedroom"></see>
     /// </summary>
-    let Bedroom = Namespaced_IRI.parse _namespace_name "Bedroom" |> NamespacedName
+    let Bedroom = _prefix "Bedroom"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Building"></see>
     /// </summary>
-    let Building = Namespaced_IRI.parse _namespace_name "Building" |> NamespacedName
-
+    let Building = _prefix "Building"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingAddress"></see>
     /// </summary>
-    let BuildingAddress =
-        Namespaced_IRI.parse _namespace_name "BuildingAddress" |> NamespacedName
-
+    let BuildingAddress = _prefix "BuildingAddress"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingMetadata"></see>
     /// </summary>
-    let BuildingMetadata =
-        Namespaced_IRI.parse _namespace_name "BuildingMetadata" |> NamespacedName
-
+    let BuildingMetadata = _prefix "BuildingMetadata"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingCity"></see>
     /// </summary>
-    let BuildingCity =
-        Namespaced_IRI.parse _namespace_name "BuildingCity" |> NamespacedName
-
+    let BuildingCity = _prefix "BuildingCity"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingConstructionYear"></see>
     /// </summary>
-    let BuildingConstructionYear =
-        Namespaced_IRI.parse _namespace_name "BuildingConstructionYear" |> NamespacedName
-
+    let BuildingConstructionYear = _prefix "BuildingConstructionYear"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingHeatedSurface"></see>
     /// </summary>
-    let BuildingHeatedSurface =
-        Namespaced_IRI.parse _namespace_name "BuildingHeatedSurface" |> NamespacedName
-
+    let BuildingHeatedSurface = _prefix "BuildingHeatedSurface"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingLivingArea"></see>
     /// </summary>
-    let BuildingLivingArea =
-        Namespaced_IRI.parse _namespace_name "BuildingLivingArea" |> NamespacedName
-
+    let BuildingLivingArea = _prefix "BuildingLivingArea"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingModel"></see>
     /// </summary>
-    let BuildingModel =
-        Namespaced_IRI.parse _namespace_name "BuildingModel" |> NamespacedName
-
+    let BuildingModel = _prefix "BuildingModel"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingName"></see>
     /// </summary>
-    let BuildingName =
-        Namespaced_IRI.parse _namespace_name "BuildingName" |> NamespacedName
-
+    let BuildingName = _prefix "BuildingName"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingNumberOfInhabitants"></see>
     /// </summary>
-    let BuildingNumberOfInhabitants =
-        Namespaced_IRI.parse _namespace_name "BuildingNumberOfInhabitants" |> NamespacedName
-
+    let BuildingNumberOfInhabitants = _prefix "BuildingNumberOfInhabitants"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingRenovationDate"></see>
     /// </summary>
-    let BuildingRenovationDate =
-        Namespaced_IRI.parse _namespace_name "BuildingRenovationDate" |> NamespacedName
-
+    let BuildingRenovationDate = _prefix "BuildingRenovationDate"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingTopology"></see>
     /// </summary>
-    let BuildingTopology =
-        Namespaced_IRI.parse _namespace_name "BuildingTopology" |> NamespacedName
-
+    let BuildingTopology = _prefix "BuildingTopology"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingTotalSpace"></see>
     /// </summary>
-    let BuildingTotalSpace =
-        Namespaced_IRI.parse _namespace_name "BuildingTotalSpace" |> NamespacedName
-
+    let BuildingTotalSpace = _prefix "BuildingTotalSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BuildingType"></see>
     /// </summary>
-    let BuildingType =
-        Namespaced_IRI.parse _namespace_name "BuildingType" |> NamespacedName
-
+    let BuildingType = _prefix "BuildingType"
     /// <summary>
     ///   <see href="https://w3id.org/dco#BusinessBuilding"></see>
     /// </summary>
-    let BusinessBuilding =
-        Namespaced_IRI.parse _namespace_name "BusinessBuilding" |> NamespacedName
-
+    let BusinessBuilding = _prefix "BusinessBuilding"
     /// <summary>
     ///   <see href="https://w3id.org/dco#CO2Concentration"></see>
     /// </summary>
-    let CO2Concentration =
-        Namespaced_IRI.parse _namespace_name "CO2Concentration" |> NamespacedName
-
+    let CO2Concentration = _prefix "CO2Concentration"
     /// <summary>
     ///   <see href="https://w3id.org/dco#CarbonDioxideProperty"></see>
     /// </summary>
-    let CarbonDioxideProperty =
-        Namespaced_IRI.parse _namespace_name "CarbonDioxideProperty" |> NamespacedName
-
+    let CarbonDioxideProperty = _prefix "CarbonDioxideProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Celsius"></see>
     /// </summary>
-    let Celsius = Namespaced_IRI.parse _namespace_name "Celsius" |> NamespacedName
-
+    let Celsius = _prefix "Celsius"
     /// <summary>
     ///   <see href="https://w3id.org/dco#TemperatureUnit"></see>
     /// </summary>
-    let TemperatureUnit =
-        Namespaced_IRI.parse _namespace_name "TemperatureUnit" |> NamespacedName
-
+    let TemperatureUnit = _prefix "TemperatureUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#CloseState"></see>
     /// </summary>
-    let CloseState = Namespaced_IRI.parse _namespace_name "CloseState" |> NamespacedName
-
+    let CloseState = _prefix "CloseState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OpenCloseState"></see>
     /// </summary>
-    let OpenCloseState =
-        Namespaced_IRI.parse _namespace_name "OpenCloseState" |> NamespacedName
-
+    let OpenCloseState = _prefix "OpenCloseState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ClosedLoopEnergyEfficiencyService"></see>
     /// </summary>
-    let ClosedLoopEnergyEfficiencyService =
-        Namespaced_IRI.parse _namespace_name "ClosedLoopEnergyEfficiencyService" |> NamespacedName
-
+    let ClosedLoopEnergyEfficiencyService = _prefix "ClosedLoopEnergyEfficiencyService"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Controller"></see>
     /// </summary>
-    let Controller = Namespaced_IRI.parse _namespace_name "Controller" |> NamespacedName
+    let Controller = _prefix "Controller"
     /// <summary>
     ///   <see href="https://w3id.org/dco#CubicMeter"></see>
     /// </summary>
-    let CubicMeter = Namespaced_IRI.parse _namespace_name "CubicMeter" |> NamespacedName
+    let CubicMeter = _prefix "CubicMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#VolumeUnit"></see>
     /// </summary>
-    let VolumeUnit = Namespaced_IRI.parse _namespace_name "VolumeUnit" |> NamespacedName
-
+    let VolumeUnit = _prefix "VolumeUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#CubicMeterPerHour"></see>
     /// </summary>
-    let CubicMeterPerHour =
-        Namespaced_IRI.parse _namespace_name "CubicMeterPerHour" |> NamespacedName
-
+    let CubicMeterPerHour = _prefix "CubicMeterPerHour"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DefineTemperatureSetpoint"></see>
     /// </summary>
-    let DefineTemperatureSetpoint =
-        Namespaced_IRI.parse _namespace_name "DefineTemperatureSetpoint" |> NamespacedName
-
+    let DefineTemperatureSetpoint = _prefix "DefineTemperatureSetpoint"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DesiredValveOpening"></see>
     /// </summary>
-    let DesiredValveOpening =
-        Namespaced_IRI.parse _namespace_name "DesiredValveOpening" |> NamespacedName
-
+    let DesiredValveOpening = _prefix "DesiredValveOpening"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveProperty"></see>
     /// </summary>
-    let ValveProperty =
-        Namespaced_IRI.parse _namespace_name "ValveProperty" |> NamespacedName
-
+    let ValveProperty = _prefix "ValveProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceIdentifier"></see>
     /// </summary>
-    let DeviceIdentifier =
-        Namespaced_IRI.parse _namespace_name "DeviceIdentifier" |> NamespacedName
-
+    let DeviceIdentifier = _prefix "DeviceIdentifier"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceMetadata"></see>
     /// </summary>
-    let DeviceMetadata =
-        Namespaced_IRI.parse _namespace_name "DeviceMetadata" |> NamespacedName
-
+    let DeviceMetadata = _prefix "DeviceMetadata"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceManifucturer"></see>
     /// </summary>
-    let DeviceManifucturer =
-        Namespaced_IRI.parse _namespace_name "DeviceManifucturer" |> NamespacedName
-
+    let DeviceManifucturer = _prefix "DeviceManifucturer"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceMaximumDisabledTime"></see>
     /// </summary>
-    let DeviceMaximumDisabledTime =
-        Namespaced_IRI.parse _namespace_name "DeviceMaximumDisabledTime" |> NamespacedName
-
+    let DeviceMaximumDisabledTime = _prefix "DeviceMaximumDisabledTime"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceMaximumPower"></see>
     /// </summary>
-    let DeviceMaximumPower =
-        Namespaced_IRI.parse _namespace_name "DeviceMaximumPower" |> NamespacedName
-
+    let DeviceMaximumPower = _prefix "DeviceMaximumPower"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceMinimumEnabledTime"></see>
     /// </summary>
-    let DeviceMinimumEnabledTime =
-        Namespaced_IRI.parse _namespace_name "DeviceMinimumEnabledTime" |> NamespacedName
-
+    let DeviceMinimumEnabledTime = _prefix "DeviceMinimumEnabledTime"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceSerialNumber"></see>
     /// </summary>
-    let DeviceSerialNumber =
-        Namespaced_IRI.parse _namespace_name "DeviceSerialNumber" |> NamespacedName
-
+    let DeviceSerialNumber = _prefix "DeviceSerialNumber"
     /// <summary>
     ///   <see href="https://w3id.org/dco#DeviceSoftwareVersion"></see>
     /// </summary>
-    let DeviceSoftwareVersion =
-        Namespaced_IRI.parse _namespace_name "DeviceSoftwareVersion" |> NamespacedName
-
+    let DeviceSoftwareVersion = _prefix "DeviceSoftwareVersion"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EVChargingAppliance"></see>
     /// </summary>
-    let EVChargingAppliance =
-        Namespaced_IRI.parse _namespace_name "EVChargingAppliance" |> NamespacedName
-
+    let EVChargingAppliance = _prefix "EVChargingAppliance"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyClamp1"></see>
     /// </summary>
-    let EnergyClamp1 =
-        Namespaced_IRI.parse _namespace_name "EnergyClamp1" |> NamespacedName
-
+    let EnergyClamp1 = _prefix "EnergyClamp1"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyClamp2"></see>
     /// </summary>
-    let EnergyClamp2 =
-        Namespaced_IRI.parse _namespace_name "EnergyClamp2" |> NamespacedName
-
+    let EnergyClamp2 = _prefix "EnergyClamp2"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyClamp3"></see>
     /// </summary>
-    let EnergyClamp3 =
-        Namespaced_IRI.parse _namespace_name "EnergyClamp3" |> NamespacedName
-
+    let EnergyClamp3 = _prefix "EnergyClamp3"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyFlow"></see>
     /// </summary>
-    let EnergyFlow = Namespaced_IRI.parse _namespace_name "EnergyFlow" |> NamespacedName
-
+    let EnergyFlow = _prefix "EnergyFlow"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyMeter"></see>
     /// </summary>
-    let EnergyMeter =
-        Namespaced_IRI.parse _namespace_name "EnergyMeter" |> NamespacedName
-
+    let EnergyMeter = _prefix "EnergyMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Meter"></see>
     /// </summary>
-    let Meter = Namespaced_IRI.parse _namespace_name "Meter" |> NamespacedName
-
+    let Meter = _prefix "Meter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyQuadrant1"></see>
     /// </summary>
-    let EnergyQuadrant1 =
-        Namespaced_IRI.parse _namespace_name "EnergyQuadrant1" |> NamespacedName
-
+    let EnergyQuadrant1 = _prefix "EnergyQuadrant1"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyQuadrant2"></see>
     /// </summary>
-    let EnergyQuadrant2 =
-        Namespaced_IRI.parse _namespace_name "EnergyQuadrant2" |> NamespacedName
-
+    let EnergyQuadrant2 = _prefix "EnergyQuadrant2"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyQuadrant3"></see>
     /// </summary>
-    let EnergyQuadrant3 =
-        Namespaced_IRI.parse _namespace_name "EnergyQuadrant3" |> NamespacedName
-
+    let EnergyQuadrant3 = _prefix "EnergyQuadrant3"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyQuadrant4"></see>
     /// </summary>
-    let EnergyQuadrant4 =
-        Namespaced_IRI.parse _namespace_name "EnergyQuadrant4" |> NamespacedName
-
+    let EnergyQuadrant4 = _prefix "EnergyQuadrant4"
     /// <summary>
     ///   <see href="https://w3id.org/dco#EnergyUnit"></see>
     /// </summary>
-    let EnergyUnit = Namespaced_IRI.parse _namespace_name "EnergyUnit" |> NamespacedName
+    let EnergyUnit = _prefix "EnergyUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Event"></see>
     /// </summary>
-    let Event = Namespaced_IRI.parse _namespace_name "Event" |> NamespacedName
-
+    let Event = _prefix "Event"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ExportedEnergy"></see>
     /// </summary>
-    let ExportedEnergy =
-        Namespaced_IRI.parse _namespace_name "ExportedEnergy" |> NamespacedName
-
+    let ExportedEnergy = _prefix "ExportedEnergy"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ExportedEnergyWithPricing1"></see>
     /// </summary>
-    let ExportedEnergyWithPricing1 =
-        Namespaced_IRI.parse _namespace_name "ExportedEnergyWithPricing1" |> NamespacedName
-
+    let ExportedEnergyWithPricing1 = _prefix "ExportedEnergyWithPricing1"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ExportedEnergyWithPricing2"></see>
     /// </summary>
-    let ExportedEnergyWithPricing2 =
-        Namespaced_IRI.parse _namespace_name "ExportedEnergyWithPricing2" |> NamespacedName
-
+    let ExportedEnergyWithPricing2 = _prefix "ExportedEnergyWithPricing2"
     /// <summary>
     ///   <see href="https://w3id.org/dco#FeatureOfInterest"></see>
     /// </summary>
-    let FeatureOfInterest =
-        Namespaced_IRI.parse _namespace_name "FeatureOfInterest" |> NamespacedName
-
+    let FeatureOfInterest = _prefix "FeatureOfInterest"
     /// <summary>
     ///   <see href="https://w3id.org/dco#FeatureProperty"></see>
     /// </summary>
-    let FeatureProperty =
-        Namespaced_IRI.parse _namespace_name "FeatureProperty" |> NamespacedName
-
+    let FeatureProperty = _prefix "FeatureProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#FlexibilityService"></see>
     /// </summary>
-    let FlexibilityService =
-        Namespaced_IRI.parse _namespace_name "FlexibilityService" |> NamespacedName
-
+    let FlexibilityService = _prefix "FlexibilityService"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Floor"></see>
     /// </summary>
-    let Floor = Namespaced_IRI.parse _namespace_name "Floor" |> NamespacedName
+    let Floor = _prefix "Floor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#GasBoiler"></see>
     /// </summary>
-    let GasBoiler = Namespaced_IRI.parse _namespace_name "GasBoiler" |> NamespacedName
-
+    let GasBoiler = _prefix "GasBoiler"
     /// <summary>
     ///   <see href="https://w3id.org/dco#GasBoilerActuator"></see>
     /// </summary>
-    let GasBoilerActuator =
-        Namespaced_IRI.parse _namespace_name "GasBoilerActuator" |> NamespacedName
-
+    let GasBoilerActuator = _prefix "GasBoilerActuator"
     /// <summary>
     ///   <see href="https://w3id.org/dco#GasMeter"></see>
     /// </summary>
-    let GasMeter = Namespaced_IRI.parse _namespace_name "GasMeter" |> NamespacedName
+    let GasMeter = _prefix "GasMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Gateway"></see>
     /// </summary>
-    let Gateway = Namespaced_IRI.parse _namespace_name "Gateway" |> NamespacedName
-
+    let Gateway = _prefix "Gateway"
     /// <summary>
     ///   <see href="https://w3id.org/dco#GetTemperatureSetpoint"></see>
     /// </summary>
-    let GetTemperatureSetpoint =
-        Namespaced_IRI.parse _namespace_name "GetTemperatureSetpoint" |> NamespacedName
-
+    let GetTemperatureSetpoint = _prefix "GetTemperatureSetpoint"
     /// <summary>
     ///   <see href="https://w3id.org/dco#GetValveOpeningPercentage"></see>
     /// </summary>
-    let GetValveOpeningPercentage =
-        Namespaced_IRI.parse _namespace_name "GetValveOpeningPercentage" |> NamespacedName
-
+    let GetValveOpeningPercentage = _prefix "GetValveOpeningPercentage"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeatMeter"></see>
     /// </summary>
-    let HeatMeter = Namespaced_IRI.parse _namespace_name "HeatMeter" |> NamespacedName
-
+    let HeatMeter = _prefix "HeatMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeatPumpAppliance"></see>
     /// </summary>
-    let HeatPumpAppliance =
-        Namespaced_IRI.parse _namespace_name "HeatPumpAppliance" |> NamespacedName
-
+    let HeatPumpAppliance = _prefix "HeatPumpAppliance"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeatPumpRelay"></see>
     /// </summary>
-    let HeatPumpRelay =
-        Namespaced_IRI.parse _namespace_name "HeatPumpRelay" |> NamespacedName
-
+    let HeatPumpRelay = _prefix "HeatPumpRelay"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeaterMaximalPower"></see>
     /// </summary>
-    let HeaterMaximalPower =
-        Namespaced_IRI.parse _namespace_name "HeaterMaximalPower" |> NamespacedName
-
+    let HeaterMaximalPower = _prefix "HeaterMaximalPower"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeaterMinimumPower"></see>
     /// </summary>
-    let HeaterMinimumPower =
-        Namespaced_IRI.parse _namespace_name "HeaterMinimumPower" |> NamespacedName
-
+    let HeaterMinimumPower = _prefix "HeaterMinimumPower"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeatingActuator"></see>
     /// </summary>
-    let HeatingActuator =
-        Namespaced_IRI.parse _namespace_name "HeatingActuator" |> NamespacedName
-
+    let HeatingActuator = _prefix "HeatingActuator"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HeatingService"></see>
     /// </summary>
-    let HeatingService =
-        Namespaced_IRI.parse _namespace_name "HeatingService" |> NamespacedName
-
+    let HeatingService = _prefix "HeatingService"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HotWaterProductionService"></see>
     /// </summary>
-    let HotWaterProductionService =
-        Namespaced_IRI.parse _namespace_name "HotWaterProductionService" |> NamespacedName
-
+    let HotWaterProductionService = _prefix "HotWaterProductionService"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HouseholdType"></see>
     /// </summary>
-    let HouseholdType =
-        Namespaced_IRI.parse _namespace_name "HouseholdType" |> NamespacedName
-
+    let HouseholdType = _prefix "HouseholdType"
     /// <summary>
     ///   <see href="https://w3id.org/dco#HumiditySensor"></see>
     /// </summary>
-    let HumiditySensor =
-        Namespaced_IRI.parse _namespace_name "HumiditySensor" |> NamespacedName
-
+    let HumiditySensor = _prefix "HumiditySensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ImportedEnergy"></see>
     /// </summary>
-    let ImportedEnergy =
-        Namespaced_IRI.parse _namespace_name "ImportedEnergy" |> NamespacedName
-
+    let ImportedEnergy = _prefix "ImportedEnergy"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ImportedEnergyWithPricing1"></see>
     /// </summary>
-    let ImportedEnergyWithPricing1 =
-        Namespaced_IRI.parse _namespace_name "ImportedEnergyWithPricing1" |> NamespacedName
-
+    let ImportedEnergyWithPricing1 = _prefix "ImportedEnergyWithPricing1"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ImportedEnergyWithPricing2"></see>
     /// </summary>
-    let ImportedEnergyWithPricing2 =
-        Namespaced_IRI.parse _namespace_name "ImportedEnergyWithPricing2" |> NamespacedName
-
+    let ImportedEnergyWithPricing2 = _prefix "ImportedEnergyWithPricing2"
     /// <summary>
     ///   <see href="https://w3id.org/dco#IndustrialBuilding"></see>
     /// </summary>
-    let IndustrialBuilding =
-        Namespaced_IRI.parse _namespace_name "IndustrialBuilding" |> NamespacedName
-
+    let IndustrialBuilding = _prefix "IndustrialBuilding"
     /// <summary>
     ///   <see href="https://w3id.org/dco#IntelTemperature"></see>
     /// </summary>
-    let IntelTemperature =
-        Namespaced_IRI.parse _namespace_name "IntelTemperature" |> NamespacedName
-
+    let IntelTemperature = _prefix "IntelTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ThingDescriptionModel"></see>
     /// </summary>
-    let ThingDescriptionModel =
-        Namespaced_IRI.parse _namespace_name "ThingDescriptionModel" |> NamespacedName
-
+    let ThingDescriptionModel = _prefix "ThingDescriptionModel"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Kitchen"></see>
     /// </summary>
-    let Kitchen = Namespaced_IRI.parse _namespace_name "Kitchen" |> NamespacedName
+    let Kitchen = _prefix "Kitchen"
     /// <summary>
     ///   <see href="https://w3id.org/dco#LivingRoom"></see>
     /// </summary>
-    let LivingRoom = Namespaced_IRI.parse _namespace_name "LivingRoom" |> NamespacedName
+    let LivingRoom = _prefix "LivingRoom"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Lobby"></see>
     /// </summary>
-    let Lobby = Namespaced_IRI.parse _namespace_name "Lobby" |> NamespacedName
-
+    let Lobby = _prefix "Lobby"
     /// <summary>
     ///   <see href="https://w3id.org/dco#MagnetSensor"></see>
     /// </summary>
-    let MagnetSensor =
-        Namespaced_IRI.parse _namespace_name "MagnetSensor" |> NamespacedName
-
+    let MagnetSensor = _prefix "MagnetSensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#MeasureTimeStamp"></see>
     /// </summary>
-    let MeasureTimeStamp =
-        Namespaced_IRI.parse _namespace_name "MeasureTimeStamp" |> NamespacedName
-
+    let MeasureTimeStamp = _prefix "MeasureTimeStamp"
     /// <summary>
     ///   <see href="https://w3id.org/dco#MeasuredValveOpening"></see>
     /// </summary>
-    let MeasuredValveOpening =
-        Namespaced_IRI.parse _namespace_name "MeasuredValveOpening" |> NamespacedName
-
+    let MeasuredValveOpening = _prefix "MeasuredValveOpening"
     /// <summary>
     ///   <see href="https://w3id.org/dco#MultiFamilyHouse"></see>
     /// </summary>
-    let MultiFamilyHouse =
-        Namespaced_IRI.parse _namespace_name "MultiFamilyHouse" |> NamespacedName
-
+    let MultiFamilyHouse = _prefix "MultiFamilyHouse"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OffAction"></see>
     /// </summary>
-    let OffAction = Namespaced_IRI.parse _namespace_name "OffAction" |> NamespacedName
+    let OffAction = _prefix "OffAction"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OffState"></see>
     /// </summary>
-    let OffState = Namespaced_IRI.parse _namespace_name "OffState" |> NamespacedName
+    let OffState = _prefix "OffState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OnOffState"></see>
     /// </summary>
-    let OnOffState = Namespaced_IRI.parse _namespace_name "OnOffState" |> NamespacedName
+    let OnOffState = _prefix "OnOffState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OnAction"></see>
     /// </summary>
-    let OnAction = Namespaced_IRI.parse _namespace_name "OnAction" |> NamespacedName
+    let OnAction = _prefix "OnAction"
     /// <summary>
     ///   <see href="https://w3id.org/dco#State"></see>
     /// </summary>
-    let State = Namespaced_IRI.parse _namespace_name "State" |> NamespacedName
+    let State = _prefix "State"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OnState"></see>
     /// </summary>
-    let OnState = Namespaced_IRI.parse _namespace_name "OnState" |> NamespacedName
+    let OnState = _prefix "OnState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OpenState"></see>
     /// </summary>
-    let OpenState = Namespaced_IRI.parse _namespace_name "OpenState" |> NamespacedName
-
+    let OpenState = _prefix "OpenState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#OutdoorTemperature"></see>
     /// </summary>
-    let OutdoorTemperature =
-        Namespaced_IRI.parse _namespace_name "OutdoorTemperature" |> NamespacedName
-
+    let OutdoorTemperature = _prefix "OutdoorTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PartsPerMillion"></see>
     /// </summary>
-    let PartsPerMillion =
-        Namespaced_IRI.parse _namespace_name "PartsPerMillion" |> NamespacedName
-
+    let PartsPerMillion = _prefix "PartsPerMillion"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PartsPerNotationUnit"></see>
     /// </summary>
-    let PartsPerNotationUnit =
-        Namespaced_IRI.parse _namespace_name "PartsPerNotationUnit" |> NamespacedName
-
+    let PartsPerNotationUnit = _prefix "PartsPerNotationUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Percentage"></see>
     /// </summary>
-    let Percentage = Namespaced_IRI.parse _namespace_name "Percentage" |> NamespacedName
-
+    let Percentage = _prefix "Percentage"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PercentageUnit"></see>
     /// </summary>
-    let PercentageUnit =
-        Namespaced_IRI.parse _namespace_name "PercentageUnit" |> NamespacedName
-
+    let PercentageUnit = _prefix "PercentageUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PipeTemperature"></see>
     /// </summary>
-    let PipeTemperature =
-        Namespaced_IRI.parse _namespace_name "PipeTemperature" |> NamespacedName
-
+    let PipeTemperature = _prefix "PipeTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PowerMeter"></see>
     /// </summary>
-    let PowerMeter = Namespaced_IRI.parse _namespace_name "PowerMeter" |> NamespacedName
+    let PowerMeter = _prefix "PowerMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#PowerUnit"></see>
     /// </summary>
-    let PowerUnit = Namespaced_IRI.parse _namespace_name "PowerUnit" |> NamespacedName
-
+    let PowerUnit = _prefix "PowerUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ReactiveEnergy"></see>
     /// </summary>
-    let ReactiveEnergy =
-        Namespaced_IRI.parse _namespace_name "ReactiveEnergy" |> NamespacedName
-
+    let ReactiveEnergy = _prefix "ReactiveEnergy"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ReactivePower"></see>
     /// </summary>
-    let ReactivePower =
-        Namespaced_IRI.parse _namespace_name "ReactivePower" |> NamespacedName
-
+    let ReactivePower = _prefix "ReactivePower"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ReactivePowerExport"></see>
     /// </summary>
-    let ReactivePowerExport =
-        Namespaced_IRI.parse _namespace_name "ReactivePowerExport" |> NamespacedName
-
+    let ReactivePowerExport = _prefix "ReactivePowerExport"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ReactivePowerImport"></see>
     /// </summary>
-    let ReactivePowerImport =
-        Namespaced_IRI.parse _namespace_name "ReactivePowerImport" |> NamespacedName
-
+    let ReactivePowerImport = _prefix "ReactivePowerImport"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ResidentialBuilding"></see>
     /// </summary>
-    let ResidentialBuilding =
-        Namespaced_IRI.parse _namespace_name "ResidentialBuilding" |> NamespacedName
-
+    let ResidentialBuilding = _prefix "ResidentialBuilding"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ReturnTemperatureSensor"></see>
     /// </summary>
-    let ReturnTemperatureSensor =
-        Namespaced_IRI.parse _namespace_name "ReturnTemperatureSensor" |> NamespacedName
-
+    let ReturnTemperatureSensor = _prefix "ReturnTemperatureSensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Setpoint"></see>
     /// </summary>
-    let Setpoint = Namespaced_IRI.parse _namespace_name "Setpoint" |> NamespacedName
-
+    let Setpoint = _prefix "Setpoint"
     /// <summary>
     ///   <see href="https://w3id.org/dco#SingleFamilyHouse"></see>
     /// </summary>
-    let SingleFamilyHouse =
-        Namespaced_IRI.parse _namespace_name "SingleFamilyHouse" |> NamespacedName
-
+    let SingleFamilyHouse = _prefix "SingleFamilyHouse"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Site"></see>
     /// </summary>
-    let Site = Namespaced_IRI.parse _namespace_name "Site" |> NamespacedName
+    let Site = _prefix "Site"
     /// <summary>
     ///   <see href="https://w3id.org/dco#SmartMeter"></see>
     /// </summary>
-    let SmartMeter = Namespaced_IRI.parse _namespace_name "SmartMeter" |> NamespacedName
-
+    let SmartMeter = _prefix "SmartMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#SolarPanelsAppliance"></see>
     /// </summary>
-    let SolarPanelsAppliance =
-        Namespaced_IRI.parse _namespace_name "SolarPanelsAppliance" |> NamespacedName
-
+    let SolarPanelsAppliance = _prefix "SolarPanelsAppliance"
     /// <summary>
     ///   <see href="https://w3id.org/dco#SquareMeter"></see>
     /// </summary>
-    let SquareMeter =
-        Namespaced_IRI.parse _namespace_name "SquareMeter" |> NamespacedName
-
+    let SquareMeter = _prefix "SquareMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#StartState"></see>
     /// </summary>
-    let StartState = Namespaced_IRI.parse _namespace_name "StartState" |> NamespacedName
-
+    let StartState = _prefix "StartState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#StartStopState"></see>
     /// </summary>
-    let StartStopState =
-        Namespaced_IRI.parse _namespace_name "StartStopState" |> NamespacedName
-
+    let StartStopState = _prefix "StartStopState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#StopState"></see>
     /// </summary>
-    let StopState = Namespaced_IRI.parse _namespace_name "StopState" |> NamespacedName
-
+    let StopState = _prefix "StopState"
     /// <summary>
     ///   <see href="https://w3id.org/dco#SupplyTemperatureSensor"></see>
     /// </summary>
-    let SupplyTemperatureSensor =
-        Namespaced_IRI.parse _namespace_name "SupplyTemperatureSensor" |> NamespacedName
-
+    let SupplyTemperatureSensor = _prefix "SupplyTemperatureSensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#TankTemperature"></see>
     /// </summary>
-    let TankTemperature =
-        Namespaced_IRI.parse _namespace_name "TankTemperature" |> NamespacedName
-
+    let TankTemperature = _prefix "TankTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#TemperatureSensor"></see>
     /// </summary>
-    let TemperatureSensor =
-        Namespaced_IRI.parse _namespace_name "TemperatureSensor" |> NamespacedName
-
+    let TemperatureSensor = _prefix "TemperatureSensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#TemperatureSetpoint"></see>
     /// </summary>
-    let TemperatureSetpoint =
-        Namespaced_IRI.parse _namespace_name "TemperatureSetpoint" |> NamespacedName
-
+    let TemperatureSetpoint = _prefix "TemperatureSetpoint"
     /// <summary>
     ///   <see href="https://w3id.org/dco#TertiaryBuilding"></see>
     /// </summary>
-    let TertiaryBuilding =
-        Namespaced_IRI.parse _namespace_name "TertiaryBuilding" |> NamespacedName
-
+    let TertiaryBuilding = _prefix "TertiaryBuilding"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Thermostat"></see>
     /// </summary>
-    let Thermostat = Namespaced_IRI.parse _namespace_name "Thermostat" |> NamespacedName
-
+    let Thermostat = _prefix "Thermostat"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ThermostaticValveActuator"></see>
     /// </summary>
-    let ThermostaticValveActuator =
-        Namespaced_IRI.parse _namespace_name "ThermostaticValveActuator" |> NamespacedName
-
+    let ThermostaticValveActuator = _prefix "ThermostaticValveActuator"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ToggleAction"></see>
     /// </summary>
-    let ToggleAction =
-        Namespaced_IRI.parse _namespace_name "ToggleAction" |> NamespacedName
-
+    let ToggleAction = _prefix "ToggleAction"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveActuator"></see>
     /// </summary>
-    let ValveActuator =
-        Namespaced_IRI.parse _namespace_name "ValveActuator" |> NamespacedName
-
+    let ValveActuator = _prefix "ValveActuator"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveController"></see>
     /// </summary>
-    let ValveController =
-        Namespaced_IRI.parse _namespace_name "ValveController" |> NamespacedName
-
+    let ValveController = _prefix "ValveController"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveMaximumOpening"></see>
     /// </summary>
-    let ValveMaximumOpening =
-        Namespaced_IRI.parse _namespace_name "ValveMaximumOpening" |> NamespacedName
-
+    let ValveMaximumOpening = _prefix "ValveMaximumOpening"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveMaximumTemperature"></see>
     /// </summary>
-    let ValveMaximumTemperature =
-        Namespaced_IRI.parse _namespace_name "ValveMaximumTemperature" |> NamespacedName
-
+    let ValveMaximumTemperature = _prefix "ValveMaximumTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveMinimumOpening"></see>
     /// </summary>
-    let ValveMinimumOpening =
-        Namespaced_IRI.parse _namespace_name "ValveMinimumOpening" |> NamespacedName
-
+    let ValveMinimumOpening = _prefix "ValveMinimumOpening"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValveMinimumTemperature"></see>
     /// </summary>
-    let ValveMinimumTemperature =
-        Namespaced_IRI.parse _namespace_name "ValveMinimumTemperature" |> NamespacedName
-
+    let ValveMinimumTemperature = _prefix "ValveMinimumTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#ValvePosition"></see>
     /// </summary>
-    let ValvePosition =
-        Namespaced_IRI.parse _namespace_name "ValvePosition" |> NamespacedName
-
+    let ValvePosition = _prefix "ValvePosition"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Volt-ampereReactive"></see>
     /// </summary>
-    let ``Volt-ampereReactive`` =
-        Namespaced_IRI.parse _namespace_name "Volt-ampereReactive" |> NamespacedName
-
+    let ``Volt-ampereReactive`` = _prefix "Volt-ampereReactive"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Voltage"></see>
     /// </summary>
-    let Voltage = Namespaced_IRI.parse _namespace_name "Voltage" |> NamespacedName
-
+    let Voltage = _prefix "Voltage"
     /// <summary>
     ///   <see href="https://w3id.org/dco#VoltageProperty"></see>
     /// </summary>
-    let VoltageProperty =
-        Namespaced_IRI.parse _namespace_name "VoltageProperty" |> NamespacedName
-
+    let VoltageProperty = _prefix "VoltageProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#VoltageClamp1"></see>
     /// </summary>
-    let VoltageClamp1 =
-        Namespaced_IRI.parse _namespace_name "VoltageClamp1" |> NamespacedName
-
+    let VoltageClamp1 = _prefix "VoltageClamp1"
     /// <summary>
     ///   <see href="https://w3id.org/dco#VoltageClamp2"></see>
     /// </summary>
-    let VoltageClamp2 =
-        Namespaced_IRI.parse _namespace_name "VoltageClamp2" |> NamespacedName
-
+    let VoltageClamp2 = _prefix "VoltageClamp2"
     /// <summary>
     ///   <see href="https://w3id.org/dco#VoltageClamp3"></see>
     /// </summary>
-    let VoltageClamp3 =
-        Namespaced_IRI.parse _namespace_name "VoltageClamp3" |> NamespacedName
-
+    let VoltageClamp3 = _prefix "VoltageClamp3"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WaterFlow"></see>
     /// </summary>
-    let WaterFlow = Namespaced_IRI.parse _namespace_name "WaterFlow" |> NamespacedName
-
+    let WaterFlow = _prefix "WaterFlow"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WaterProperty"></see>
     /// </summary>
-    let WaterProperty =
-        Namespaced_IRI.parse _namespace_name "WaterProperty" |> NamespacedName
-
+    let WaterProperty = _prefix "WaterProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WaterFlowMeter"></see>
     /// </summary>
-    let WaterFlowMeter =
-        Namespaced_IRI.parse _namespace_name "WaterFlowMeter" |> NamespacedName
-
+    let WaterFlowMeter = _prefix "WaterFlowMeter"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WaterTemperature"></see>
     /// </summary>
-    let WaterTemperature =
-        Namespaced_IRI.parse _namespace_name "WaterTemperature" |> NamespacedName
-
+    let WaterTemperature = _prefix "WaterTemperature"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WaterTemperatureSensor"></see>
     /// </summary>
-    let WaterTemperatureSensor =
-        Namespaced_IRI.parse _namespace_name "WaterTemperatureSensor" |> NamespacedName
-
+    let WaterTemperatureSensor = _prefix "WaterTemperatureSensor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WaterVolume"></see>
     /// </summary>
-    let WaterVolume =
-        Namespaced_IRI.parse _namespace_name "WaterVolume" |> NamespacedName
-
+    let WaterVolume = _prefix "WaterVolume"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Watt"></see>
     /// </summary>
-    let Watt = Namespaced_IRI.parse _namespace_name "Watt" |> NamespacedName
-
+    let Watt = _prefix "Watt"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WattHourBasedUnit"></see>
     /// </summary>
-    let WattHourBasedUnit =
-        Namespaced_IRI.parse _namespace_name "WattHourBasedUnit" |> NamespacedName
-
+    let WattHourBasedUnit = _prefix "WattHourBasedUnit"
     /// <summary>
     ///   <see href="https://w3id.org/dco#WoTThing"></see>
     /// </summary>
-    let WoTThing = Namespaced_IRI.parse _namespace_name "WoTThing" |> NamespacedName
+    let WoTThing = _prefix "WoTThing"
     /// <summary>
     ///   <see href="https://w3id.org/dco#Zone"></see>
     /// </summary>
-    let Zone = Namespaced_IRI.parse _namespace_name "Zone" |> NamespacedName
-
+    let Zone = _prefix "Zone"
     /// <summary>
     ///   <see href="https://w3id.org/dco#buildingZipCode"></see>
     /// </summary>
-    let buildingZipCode =
-        Namespaced_IRI.parse _namespace_name "buildingZipCode" |> NamespacedName
-
+    let buildingZipCode = _prefix "buildingZipCode"
     /// <summary>
     ///   <see href="https://w3id.org/dco#consitsOf"></see>
     /// </summary>
-    let consitsOf = Namespaced_IRI.parse _namespace_name "consitsOf" |> NamespacedName
-
+    let consitsOf = _prefix "consitsOf"
     /// <summary>
     ///   <see href="https://w3id.org/dco#containsDevice"></see>
     /// </summary>
-    let containsDevice =
-        Namespaced_IRI.parse _namespace_name "containsDevice" |> NamespacedName
-
+    let containsDevice = _prefix "containsDevice"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isLocatedAt"></see>
     /// </summary>
-    let isLocatedAt =
-        Namespaced_IRI.parse _namespace_name "isLocatedAt" |> NamespacedName
-
+    let isLocatedAt = _prefix "isLocatedAt"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasAddress"></see>
     /// </summary>
-    let hasAddress = Namespaced_IRI.parse _namespace_name "hasAddress" |> NamespacedName
-
+    let hasAddress = _prefix "hasAddress"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasApartment"></see>
     /// </summary>
-    let hasApartment =
-        Namespaced_IRI.parse _namespace_name "hasApartment" |> NamespacedName
-
+    let hasApartment = _prefix "hasApartment"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isApartmentOF"></see>
     /// </summary>
-    let isApartmentOF =
-        Namespaced_IRI.parse _namespace_name "isApartmentOF" |> NamespacedName
-
+    let isApartmentOF = _prefix "isApartmentOF"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasBuilding"></see>
     /// </summary>
-    let hasBuilding =
-        Namespaced_IRI.parse _namespace_name "hasBuilding" |> NamespacedName
-
+    let hasBuilding = _prefix "hasBuilding"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasCity"></see>
     /// </summary>
-    let hasCity = Namespaced_IRI.parse _namespace_name "hasCity" |> NamespacedName
-
+    let hasCity = _prefix "hasCity"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasConstructionYear"></see>
     /// </summary>
-    let hasConstructionYear =
-        Namespaced_IRI.parse _namespace_name "hasConstructionYear" |> NamespacedName
-
+    let hasConstructionYear = _prefix "hasConstructionYear"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasFloor"></see>
     /// </summary>
-    let hasFloor = Namespaced_IRI.parse _namespace_name "hasFloor" |> NamespacedName
+    let hasFloor = _prefix "hasFloor"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isFloorOf"></see>
     /// </summary>
-    let isFloorOf = Namespaced_IRI.parse _namespace_name "isFloorOf" |> NamespacedName
+    let isFloorOf = _prefix "isFloorOf"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasID"></see>
     /// </summary>
-    let hasID = Namespaced_IRI.parse _namespace_name "hasID" |> NamespacedName
+    let hasID = _prefix "hasID"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasName"></see>
     /// </summary>
-    let hasName = Namespaced_IRI.parse _namespace_name "hasName" |> NamespacedName
-
+    let hasName = _prefix "hasName"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasNumberOfInhabitants"></see>
     /// </summary>
-    let hasNumberOfInhabitants =
-        Namespaced_IRI.parse _namespace_name "hasNumberOfInhabitants" |> NamespacedName
-
+    let hasNumberOfInhabitants = _prefix "hasNumberOfInhabitants"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasRenovationDate"></see>
     /// </summary>
-    let hasRenovationDate =
-        Namespaced_IRI.parse _namespace_name "hasRenovationDate" |> NamespacedName
-
+    let hasRenovationDate = _prefix "hasRenovationDate"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasSpace"></see>
     /// </summary>
-    let hasSpace = Namespaced_IRI.parse _namespace_name "hasSpace" |> NamespacedName
-
+    let hasSpace = _prefix "hasSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasThingDescriptionAction"></see>
     /// </summary>
-    let hasThingDescriptionAction =
-        Namespaced_IRI.parse _namespace_name "hasThingDescriptionAction" |> NamespacedName
-
+    let hasThingDescriptionAction = _prefix "hasThingDescriptionAction"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isActionOf"></see>
     /// </summary>
-    let isActionOf = Namespaced_IRI.parse _namespace_name "isActionOf" |> NamespacedName
-
+    let isActionOf = _prefix "isActionOf"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasThingDescriptionEvent"></see>
     /// </summary>
-    let hasThingDescriptionEvent =
-        Namespaced_IRI.parse _namespace_name "hasThingDescriptionEvent" |> NamespacedName
-
+    let hasThingDescriptionEvent = _prefix "hasThingDescriptionEvent"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isEventOf"></see>
     /// </summary>
-    let isEventOf = Namespaced_IRI.parse _namespace_name "isEventOf" |> NamespacedName
-
+    let isEventOf = _prefix "isEventOf"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasThingDescriptionProperty"></see>
     /// </summary>
-    let hasThingDescriptionProperty =
-        Namespaced_IRI.parse _namespace_name "hasThingDescriptionProperty" |> NamespacedName
-
+    let hasThingDescriptionProperty = _prefix "hasThingDescriptionProperty"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isPropertyOf"></see>
     /// </summary>
-    let isPropertyOf =
-        Namespaced_IRI.parse _namespace_name "isPropertyOf" |> NamespacedName
-
+    let isPropertyOf = _prefix "isPropertyOf"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasTotalSpace"></see>
     /// </summary>
-    let hasTotalSpace =
-        Namespaced_IRI.parse _namespace_name "hasTotalSpace" |> NamespacedName
-
+    let hasTotalSpace = _prefix "hasTotalSpace"
     /// <summary>
     ///   <see href="https://w3id.org/dco#hasZipCode"></see>
     /// </summary>
-    let hasZipCode = Namespaced_IRI.parse _namespace_name "hasZipCode" |> NamespacedName
-
+    let hasZipCode = _prefix "hasZipCode"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isMeasuredIn"></see>
     /// </summary>
-    let isMeasuredIn =
-        Namespaced_IRI.parse _namespace_name "isMeasuredIn" |> NamespacedName
-
+    let isMeasuredIn = _prefix "isMeasuredIn"
     /// <summary>
     ///   <see href="https://w3id.org/dco#isUnitOfMeasurementOf"></see>
     /// </summary>
-    let isUnitOfMeasurementOf =
-        Namespaced_IRI.parse _namespace_name "isUnitOfMeasurementOf" |> NamespacedName
-
+    let isUnitOfMeasurementOf = _prefix "isUnitOfMeasurementOf"
     /// <summary>
     ///   <see href="https://w3id.org/dco#kilowatt-hour"></see>
     /// </summary>
-    let ``kilowatt-hour`` =
-        Namespaced_IRI.parse _namespace_name "kilowatt-hour" |> NamespacedName
-
+    let ``kilowatt-hour`` = _prefix "kilowatt-hour"
     /// <summary>
     ///   <see href="https://w3id.org/dco#makesMeasurement"></see>
     /// </summary>
-    let makesMeasurement =
-        Namespaced_IRI.parse _namespace_name "makesMeasurement" |> NamespacedName
-
+    let makesMeasurement = _prefix "makesMeasurement"
     /// <summary>
     ///   <see href="https://w3id.org/dco#measurementMadeBy"></see>
     /// </summary>
-    let measurementMadeBy =
-        Namespaced_IRI.parse _namespace_name "measurementMadeBy" |> NamespacedName
-
+    let measurementMadeBy = _prefix "measurementMadeBy"
     /// <summary>
     ///   <see href="https://w3id.org/dco#offersService"></see>
     /// </summary>
-    let offersService =
-        Namespaced_IRI.parse _namespace_name "offersService" |> NamespacedName
-
+    let offersService = _prefix "offersService"
     /// <summary>
     ///   <see href="https://w3id.org/dco#serviceOfferedBy"></see>
     /// </summary>
-    let serviceOfferedBy =
-        Namespaced_IRI.parse _namespace_name "serviceOfferedBy" |> NamespacedName
-
+    let serviceOfferedBy = _prefix "serviceOfferedBy"
     /// <summary>
     ///   <see href="https://w3id.org/dco#watt-hour"></see>
     /// </summary>
-    let ``watt-hour`` =
-        Namespaced_IRI.parse _namespace_name "watt-hour" |> NamespacedName
+    let ``watt-hour`` = _prefix "watt-hour"

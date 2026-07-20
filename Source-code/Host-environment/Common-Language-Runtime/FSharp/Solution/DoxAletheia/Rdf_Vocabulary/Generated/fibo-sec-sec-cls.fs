@@ -1,66 +1,66 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.SEC.Securities.SecuritiesClassification.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_sec_sec_cls =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/FinancialInstrumentClassifier"></see>
     /// </summary>
-    let FinancialInstrumentClassifier =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrumentClassifier" |> NamespacedName
-
+    let FinancialInstrumentClassifier = _prefix "FinancialInstrumentClassifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/AssetClass"></see>
     /// </summary>
-    let AssetClass = Namespaced_IRI.parse _namespace_name "AssetClass" |> NamespacedName
+    let AssetClass = _prefix "AssetClass"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/ClassificationOfFinancialInstrumentsCodeScheme"></see>
     /// </summary>
     let ClassificationOfFinancialInstrumentsCodeScheme =
-        Namespaced_IRI.parse _namespace_name "ClassificationOfFinancialInstrumentsCodeScheme" |> NamespacedName
+        _prefix "ClassificationOfFinancialInstrumentsCodeScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/FinancialInstrumentClassificationScheme"></see>
     /// </summary>
     let FinancialInstrumentClassificationScheme =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrumentClassificationScheme" |> NamespacedName
+        _prefix "FinancialInstrumentClassificationScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/FinancialInstrumentClassificationCode"></see>
     /// </summary>
     let FinancialInstrumentClassificationCode =
-        Namespaced_IRI.parse _namespace_name "FinancialInstrumentClassificationCode" |> NamespacedName
+        _prefix "FinancialInstrumentClassificationCode"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/GlobalIndustryClassificationStandardsClassifier"></see>
     /// </summary>
     let GlobalIndustryClassificationStandardsClassifier =
-        Namespaced_IRI.parse _namespace_name "GlobalIndustryClassificationStandardsClassifier" |> NamespacedName
+        _prefix "GlobalIndustryClassificationStandardsClassifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/GlobalIndustryClassificationStandardsScheme"></see>
     /// </summary>
     let GlobalIndustryClassificationStandardsScheme =
-        Namespaced_IRI.parse _namespace_name "GlobalIndustryClassificationStandardsScheme" |> NamespacedName
+        _prefix "GlobalIndustryClassificationStandardsScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/ISO10962-201910-CodeScheme"></see>
     /// </summary>
-    let ``ISO10962-201910-CodeScheme`` =
-        Namespaced_IRI.parse _namespace_name "ISO10962-201910-CodeScheme" |> NamespacedName
+    let ``ISO10962-201910-CodeScheme`` = _prefix "ISO10962-201910-CodeScheme"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/IndustryClassificationBenchmarkClassifier"></see>
     /// </summary>
     let IndustryClassificationBenchmarkClassifier =
-        Namespaced_IRI.parse _namespace_name "IndustryClassificationBenchmarkClassifier" |> NamespacedName
+        _prefix "IndustryClassificationBenchmarkClassifier"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/IndustryClassificationBenchmarkScheme"></see>
     /// </summary>
     let IndustryClassificationBenchmarkScheme =
-        Namespaced_IRI.parse _namespace_name "IndustryClassificationBenchmarkScheme" |> NamespacedName
+        _prefix "IndustryClassificationBenchmarkScheme"

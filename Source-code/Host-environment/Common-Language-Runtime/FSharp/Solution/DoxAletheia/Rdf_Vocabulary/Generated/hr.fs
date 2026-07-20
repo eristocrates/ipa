@@ -1,70 +1,58 @@
 namespace http.iserve.kmi._open.ac.uk.ns.hrests.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module hr =
     let _namespace_name = "http://iserve.kmi.open.ac.uk/ns/hrests#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#AuthenticationCredential"></see>
     /// </summary>
-    let AuthenticationCredential =
-        Namespaced_IRI.parse _namespace_name "AuthenticationCredential" |> NamespacedName
-
+    let AuthenticationCredential = _prefix "AuthenticationCredential"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#MediaType"></see>
     /// </summary>
-    let MediaType = Namespaced_IRI.parse _namespace_name "MediaType" |> NamespacedName
-
+    let MediaType = _prefix "MediaType"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#OutputFormatParameter"></see>
     /// </summary>
-    let OutputFormatParameter =
-        Namespaced_IRI.parse _namespace_name "OutputFormatParameter" |> NamespacedName
-
+    let OutputFormatParameter = _prefix "OutputFormatParameter"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#URITemplate"></see>
     /// </summary>
-    let URITemplate =
-        Namespaced_IRI.parse _namespace_name "URITemplate" |> NamespacedName
-
+    let URITemplate = _prefix "URITemplate"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#acceptsContentType"></see>
     /// </summary>
-    let acceptsContentType =
-        Namespaced_IRI.parse _namespace_name "acceptsContentType" |> NamespacedName
-
+    let acceptsContentType = _prefix "acceptsContentType"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#automaticallyExtractedDescription"></see>
     /// </summary>
-    let automaticallyExtractedDescription =
-        Namespaced_IRI.parse _namespace_name "automaticallyExtractedDescription" |> NamespacedName
-
+    let automaticallyExtractedDescription = _prefix "automaticallyExtractedDescription"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#hasAddress"></see>
     /// </summary>
-    let hasAddress = Namespaced_IRI.parse _namespace_name "hasAddress" |> NamespacedName
+    let hasAddress = _prefix "hasAddress"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#hasComment"></see>
     /// </summary>
-    let hasComment = Namespaced_IRI.parse _namespace_name "hasComment" |> NamespacedName
+    let hasComment = _prefix "hasComment"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#hasMethod"></see>
     /// </summary>
-    let hasMethod = Namespaced_IRI.parse _namespace_name "hasMethod" |> NamespacedName
+    let hasMethod = _prefix "hasMethod"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#Method"></see>
     /// </summary>
-    let Method = Namespaced_IRI.parse _namespace_name "Method" |> NamespacedName
-
+    let Method = _prefix "Method"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#isGroundedIn"></see>
     /// </summary>
-    let isGroundedIn =
-        Namespaced_IRI.parse _namespace_name "isGroundedIn" |> NamespacedName
-
+    let isGroundedIn = _prefix "isGroundedIn"
     /// <summary>
     ///   <see href="http://iserve.kmi.open.ac.uk/ns/hrests#producesContentType"></see>
     /// </summary>
-    let producesContentType =
-        Namespaced_IRI.parse _namespace_name "producesContentType" |> NamespacedName
+    let producesContentType = _prefix "producesContentType"

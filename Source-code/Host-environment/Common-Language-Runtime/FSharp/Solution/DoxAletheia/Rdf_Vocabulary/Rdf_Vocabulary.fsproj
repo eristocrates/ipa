@@ -3,23 +3,32 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>	  
 	  
-	  <Compile Include="Namespace_Prefixes.fs" />
+
 	  <Compile Include="LanguageTag.fs" />
-	  <Compile Include="Types.fs" />
+	  <Compile Include="Grammar.fs" />
+	  
+	  
+	  <Compile Include="Iana.fs" />
+	  <Compile Include="Iana_Schemes.fs" />
 	  <Compile Include="MimeTypes.fs" />
 	  <Compile Include="MimePath.fs" />
 	  <Compile Include="MimeSubstring.fs" />
+	  
+
 	  <Compile Include=".\xsd.fs" />
 	  <Compile Include=".\Manual\xml.fs" /> 
 	  <Compile Include=".\Manual\xsi.fs" />
 	  <Compile Include=".\Manual\xdt.fs" />
 	  <Compile Include=".\Generated\*.fs" />
-	  <Compile Include="Rdf_Literal.fs" />
+	  <Compile Include="Literal.fs" />
+	  <Compile Include="Graph_Data.fs" />
 	  <Compile Include="Rdf_Document.fs" />
+	  
 	  <Compile Include="Rdf_Shorthand.fs" />
 	  <Compile Include="Data_Store.fs" />
 	  
@@ -28,6 +37,17 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Unquote" Version="7.0.1" />
+		<PackageReference Include="FSharp.Json" Version="0.4.1" />
+		<PackageReference Include="FSharp.Data.Json" Version="1.0.0" />
+		<PackageReference Include="FSharp.Data.JsonPath" Version="1.1.3" />
+		<PackageReference Include="Fleece" Version="0.11.0-static-interfaces.1" />
+		<PackageReference Include="FSharpPlus" Version="1.9.1" />
+		<PackageReference Include="Fleece.FSharpData" Version="0.11.0-static-interfaces.1" />
+		<PackageReference Include="FsHttp" Version="15.0.3" />
+		<PackageReference Include="FsHttp.NewtonsoftJson" Version="15.0.3" />
+		<PackageReference Include="FsHttp.FSharpData" Version="15.0.3" />
+		<PackageReference Include="X.Web.MetaExtractor.ContentLoaders.FsHttp" Version="2.1.1" />
+		<PackageReference Include="X.PagedList" Version="10.5.9" />
 		<PackageReference Include="Yog.FSharp" Version="0.6.0" />
 		<PackageReference Include="GraphShape" Version="1.2.1" />
 		<PackageReference Include="QuikGraph" Version="2.5.0" />
@@ -44,6 +64,7 @@
 		<PackageReference Include="BitFaster.Caching" Version="2.6.0" />
 		<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
 		<PackageReference Include="FSharp.UMX" Version="1.1.0" />
+		<PackageReference Include="Rubjerg.Graphviz" Version="3.0.5" />
 
 		
 	</ItemGroup>
@@ -53,6 +74,7 @@
     <ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
     <ProjectReference Include="..\Interval_Range\Interval_Range.fsproj" />
     <ProjectReference Include="..\ParserCombinator\ParserCombinator.fsproj" />
+    <ProjectReference Include="..\Rdf_Registry\Rdf_Registry.fsproj" />
     <ProjectReference Include="..\Unicodepoint\Unicodepoint.fsproj" />
   </ItemGroup>
 

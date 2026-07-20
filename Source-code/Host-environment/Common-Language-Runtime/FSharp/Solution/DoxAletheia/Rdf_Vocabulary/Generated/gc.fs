@@ -1,356 +1,296 @@
 namespace http.www.oegov.org.core.owl.gc.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gc =
     let _namespace_name = "http://www.oegov.org/core/owl/gc#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense"></see>
     /// </summary>
     let ``CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense`` =
-        Namespaced_IRI.parse _namespace_name "CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense" |> NamespacedName
+        _prefix "CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense"
 
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#attributedSource"></see>
     /// </summary>
-    let attributedSource =
-        Namespaced_IRI.parse _namespace_name "attributedSource" |> NamespacedName
-
+    let attributedSource = _prefix "attributedSource"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#TopQuadrantAttribution"></see>
     /// </summary>
-    let TopQuadrantAttribution =
-        Namespaced_IRI.parse _namespace_name "TopQuadrantAttribution" |> NamespacedName
-
+    let TopQuadrantAttribution = _prefix "TopQuadrantAttribution"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#revision"></see>
     /// </summary>
-    let revision = Namespaced_IRI.parse _namespace_name "revision" |> NamespacedName
+    let revision = _prefix "revision"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Anarcy"></see>
     /// </summary>
-    let Anarcy = Namespaced_IRI.parse _namespace_name "Anarcy" |> NamespacedName
-
+    let Anarcy = _prefix "Anarcy"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#PoliticalSystem"></see>
     /// </summary>
-    let PoliticalSystem =
-        Namespaced_IRI.parse _namespace_name "PoliticalSystem" |> NamespacedName
-
+    let PoliticalSystem = _prefix "PoliticalSystem"
     /// <summary>
     /// The name, url and other details of an attribution.
     /// <see href="http://www.oegov.org/core/owl/gc#AttributedSource"></see></summary>
-    let AttributedSource =
-        Namespaced_IRI.parse _namespace_name "AttributedSource" |> NamespacedName
-
+    let AttributedSource = _prefix "AttributedSource"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#pointOfContact"></see>
     /// </summary>
-    let pointOfContact =
-        Namespaced_IRI.parse _namespace_name "pointOfContact" |> NamespacedName
-
+    let pointOfContact = _prefix "pointOfContact"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#CSV-Format"></see>
     /// </summary>
-    let ``CSV-Format`` =
-        Namespaced_IRI.parse _namespace_name "CSV-Format" |> NamespacedName
-
+    let ``CSV-Format`` = _prefix "CSV-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#DataFormat"></see>
     /// </summary>
-    let DataFormat = Namespaced_IRI.parse _namespace_name "DataFormat" |> NamespacedName
+    let DataFormat = _prefix "DataFormat"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Category"></see>
     /// </summary>
-    let Category = Namespaced_IRI.parse _namespace_name "Category" |> NamespacedName
-
+    let Category = _prefix "Category"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#subCategory"></see>
     /// </summary>
-    let subCategory =
-        Namespaced_IRI.parse _namespace_name "subCategory" |> NamespacedName
-
+    let subCategory = _prefix "subCategory"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#CommunistState"></see>
     /// </summary>
-    let CommunistState =
-        Namespaced_IRI.parse _namespace_name "CommunistState" |> NamespacedName
-
+    let CommunistState = _prefix "CommunistState"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#DateUnion"></see>
     /// </summary>
-    let DateUnion = Namespaced_IRI.parse _namespace_name "DateUnion" |> NamespacedName
+    let DateUnion = _prefix "DateUnion"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Democracy"></see>
     /// </summary>
-    let Democracy = Namespaced_IRI.parse _namespace_name "Democracy" |> NamespacedName
-
+    let Democracy = _prefix "Democracy"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Dictatorship"></see>
     /// </summary>
-    let Dictatorship =
-        Namespaced_IRI.parse _namespace_name "Dictatorship" |> NamespacedName
-
+    let Dictatorship = _prefix "Dictatorship"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Entity"></see>
     /// </summary>
-    let Entity = Namespaced_IRI.parse _namespace_name "Entity" |> NamespacedName
+    let Entity = _prefix "Entity"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#hashtag"></see>
     /// </summary>
-    let hashtag = Namespaced_IRI.parse _namespace_name "hashtag" |> NamespacedName
+    let hashtag = _prefix "hashtag"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#url"></see>
     /// </summary>
-    let url = Namespaced_IRI.parse _namespace_name "url" |> NamespacedName
-
+    let url = _prefix "url"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#HTML-Format"></see>
     /// </summary>
-    let ``HTML-Format`` =
-        Namespaced_IRI.parse _namespace_name "HTML-Format" |> NamespacedName
-
+    let ``HTML-Format`` = _prefix "HTML-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#KML-Format"></see>
     /// </summary>
-    let ``KML-Format`` =
-        Namespaced_IRI.parse _namespace_name "KML-Format" |> NamespacedName
-
+    let ``KML-Format`` = _prefix "KML-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#KMZ-Format"></see>
     /// </summary>
-    let ``KMZ-Format`` =
-        Namespaced_IRI.parse _namespace_name "KMZ-Format" |> NamespacedName
-
+    let ``KMZ-Format`` = _prefix "KMZ-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Monarchy"></see>
     /// </summary>
-    let Monarchy = Namespaced_IRI.parse _namespace_name "Monarchy" |> NamespacedName
-
+    let Monarchy = _prefix "Monarchy"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#OWL-Format"></see>
     /// </summary>
-    let ``OWL-Format`` =
-        Namespaced_IRI.parse _namespace_name "OWL-Format" |> NamespacedName
-
+    let ``OWL-Format`` = _prefix "OWL-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Period"></see>
     /// </summary>
-    let Period = Namespaced_IRI.parse _namespace_name "Period" |> NamespacedName
+    let Period = _prefix "Period"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Q1"></see>
     /// </summary>
-    let Q1 = Namespaced_IRI.parse _namespace_name "Q1" |> NamespacedName
+    let Q1 = _prefix "Q1"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Quarter"></see>
     /// </summary>
-    let Quarter = Namespaced_IRI.parse _namespace_name "Quarter" |> NamespacedName
+    let Quarter = _prefix "Quarter"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Q2"></see>
     /// </summary>
-    let Q2 = Namespaced_IRI.parse _namespace_name "Q2" |> NamespacedName
+    let Q2 = _prefix "Q2"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Q3"></see>
     /// </summary>
-    let Q3 = Namespaced_IRI.parse _namespace_name "Q3" |> NamespacedName
+    let Q3 = _prefix "Q3"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Q4"></see>
     /// </summary>
-    let Q4 = Namespaced_IRI.parse _namespace_name "Q4" |> NamespacedName
-
+    let Q4 = _prefix "Q4"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#RDF-Format"></see>
     /// </summary>
-    let ``RDF-Format`` =
-        Namespaced_IRI.parse _namespace_name "RDF-Format" |> NamespacedName
-
+    let ``RDF-Format`` = _prefix "RDF-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#RSS-Format"></see>
     /// </summary>
-    let ``RSS-Format`` =
-        Namespaced_IRI.parse _namespace_name "RSS-Format" |> NamespacedName
-
+    let ``RSS-Format`` = _prefix "RSS-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Republic"></see>
     /// </summary>
-    let Republic = Namespaced_IRI.parse _namespace_name "Republic" |> NamespacedName
-
+    let Republic = _prefix "Republic"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#ShapefileFormat"></see>
     /// </summary>
-    let ShapefileFormat =
-        Namespaced_IRI.parse _namespace_name "ShapefileFormat" |> NamespacedName
-
+    let ShapefileFormat = _prefix "ShapefileFormat"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#SocialistState"></see>
     /// </summary>
-    let SocialistState =
-        Namespaced_IRI.parse _namespace_name "SocialistState" |> NamespacedName
-
+    let SocialistState = _prefix "SocialistState"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#TextFormat"></see>
     /// </summary>
-    let TextFormat = Namespaced_IRI.parse _namespace_name "TextFormat" |> NamespacedName
+    let TextFormat = _prefix "TextFormat"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Theocracy"></see>
     /// </summary>
-    let Theocracy = Namespaced_IRI.parse _namespace_name "Theocracy" |> NamespacedName
+    let Theocracy = _prefix "Theocracy"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#Tribal"></see>
     /// </summary>
-    let Tribal = Namespaced_IRI.parse _namespace_name "Tribal" |> NamespacedName
-
+    let Tribal = _prefix "Tribal"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#UnstructuredDataFormat"></see>
     /// </summary>
-    let UnstructuredDataFormat =
-        Namespaced_IRI.parse _namespace_name "UnstructuredDataFormat" |> NamespacedName
-
+    let UnstructuredDataFormat = _prefix "UnstructuredDataFormat"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#XML-Format"></see>
     /// </summary>
-    let ``XML-Format`` =
-        Namespaced_IRI.parse _namespace_name "XML-Format" |> NamespacedName
-
+    let ``XML-Format`` = _prefix "XML-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#XSL-Format"></see>
     /// </summary>
-    let ``XSL-Format`` =
-        Namespaced_IRI.parse _namespace_name "XSL-Format" |> NamespacedName
-
+    let ``XSL-Format`` = _prefix "XSL-Format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#archiveURL"></see>
     /// </summary>
-    let archiveURL = Namespaced_IRI.parse _namespace_name "archiveURL" |> NamespacedName
+    let archiveURL = _prefix "archiveURL"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#awardDate"></see>
     /// </summary>
-    let awardDate = Namespaced_IRI.parse _namespace_name "awardDate" |> NamespacedName
+    let awardDate = _prefix "awardDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#date"></see>
     /// </summary>
-    let date = Namespaced_IRI.parse _namespace_name "date" |> NamespacedName
+    let date = _prefix "date"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#category"></see>
     /// </summary>
-    let category = Namespaced_IRI.parse _namespace_name "category" |> NamespacedName
+    let category = _prefix "category"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#cause"></see>
     /// </summary>
-    let cause = Namespaced_IRI.parse _namespace_name "cause" |> NamespacedName
-
+    let cause = _prefix "cause"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#cessationDate"></see>
     /// </summary>
-    let cessationDate =
-        Namespaced_IRI.parse _namespace_name "cessationDate" |> NamespacedName
-
+    let cessationDate = _prefix "cessationDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#clause"></see>
     /// </summary>
-    let clause = Namespaced_IRI.parse _namespace_name "clause" |> NamespacedName
-
+    let clause = _prefix "clause"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#creationDate"></see>
     /// </summary>
-    let creationDate =
-        Namespaced_IRI.parse _namespace_name "creationDate" |> NamespacedName
-
+    let creationDate = _prefix "creationDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#currency"></see>
     /// </summary>
-    let currency = Namespaced_IRI.parse _namespace_name "currency" |> NamespacedName
+    let currency = _prefix "currency"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#endDate"></see>
     /// </summary>
-    let endDate = Namespaced_IRI.parse _namespace_name "endDate" |> NamespacedName
+    let endDate = _prefix "endDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#format"></see>
     /// </summary>
-    let format = Namespaced_IRI.parse _namespace_name "format" |> NamespacedName
+    let format = _prefix "format"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#foundedOn"></see>
     /// </summary>
-    let foundedOn = Namespaced_IRI.parse _namespace_name "foundedOn" |> NamespacedName
+    let foundedOn = _prefix "foundedOn"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#identifier"></see>
     /// </summary>
-    let identifier = Namespaced_IRI.parse _namespace_name "identifier" |> NamespacedName
+    let identifier = _prefix "identifier"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#image"></see>
     /// </summary>
-    let image = Namespaced_IRI.parse _namespace_name "image" |> NamespacedName
+    let image = _prefix "image"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#licence"></see>
     /// </summary>
-    let licence = Namespaced_IRI.parse _namespace_name "licence" |> NamespacedName
+    let licence = _prefix "licence"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#member"></see>
     /// </summary>
-    let member_ = Namespaced_IRI.parse _namespace_name "member" |> NamespacedName
+    let member_ = _prefix "member"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#number"></see>
     /// </summary>
-    let number = Namespaced_IRI.parse _namespace_name "number" |> NamespacedName
+    let number = _prefix "number"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#person"></see>
     /// </summary>
-    let person = Namespaced_IRI.parse _namespace_name "person" |> NamespacedName
-
+    let person = _prefix "person"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#releasedDate"></see>
     /// </summary>
-    let releasedDate =
-        Namespaced_IRI.parse _namespace_name "releasedDate" |> NamespacedName
-
+    let releasedDate = _prefix "releasedDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#result"></see>
     /// </summary>
-    let result = Namespaced_IRI.parse _namespace_name "result" |> NamespacedName
+    let result = _prefix "result"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#section"></see>
     /// </summary>
-    let section = Namespaced_IRI.parse _namespace_name "section" |> NamespacedName
+    let section = _prefix "section"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#shortTitle"></see>
     /// </summary>
-    let shortTitle = Namespaced_IRI.parse _namespace_name "shortTitle" |> NamespacedName
+    let shortTitle = _prefix "shortTitle"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#startDate"></see>
     /// </summary>
-    let startDate = Namespaced_IRI.parse _namespace_name "startDate" |> NamespacedName
+    let startDate = _prefix "startDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#status"></see>
     /// </summary>
-    let status = Namespaced_IRI.parse _namespace_name "status" |> NamespacedName
-
+    let status = _prefix "status"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#submissionDate"></see>
     /// </summary>
-    let submissionDate =
-        Namespaced_IRI.parse _namespace_name "submissionDate" |> NamespacedName
-
+    let submissionDate = _prefix "submissionDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#summary"></see>
     /// </summary>
-    let summary = Namespaced_IRI.parse _namespace_name "summary" |> NamespacedName
+    let summary = _prefix "summary"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#text"></see>
     /// </summary>
-    let text = Namespaced_IRI.parse _namespace_name "text" |> NamespacedName
+    let text = _prefix "text"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#title"></see>
     /// </summary>
-    let title = Namespaced_IRI.parse _namespace_name "title" |> NamespacedName
-
+    let title = _prefix "title"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#updatedDate"></see>
     /// </summary>
-    let updatedDate =
-        Namespaced_IRI.parse _namespace_name "updatedDate" |> NamespacedName
-
+    let updatedDate = _prefix "updatedDate"
     /// <summary>
     ///   <see href="http://www.oegov.org/core/owl/gc#year"></see>
     /// </summary>
-    let year = Namespaced_IRI.parse _namespace_name "year" |> NamespacedName
+    let year = _prefix "year"

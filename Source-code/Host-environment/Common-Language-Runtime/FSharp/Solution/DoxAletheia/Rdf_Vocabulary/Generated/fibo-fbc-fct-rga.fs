@@ -1,42 +1,35 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.FBC.FunctionalEntities.RegulatoryAgencies.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_fbc_fct_rga =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/Examiner"></see>
     /// </summary>
-    let Examiner = Namespaced_IRI.parse _namespace_name "Examiner" |> NamespacedName
-
+    let Examiner = _prefix "Examiner"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/RegulatoryCapacity"></see>
     /// </summary>
-    let RegulatoryCapacity =
-        Namespaced_IRI.parse _namespace_name "RegulatoryCapacity" |> NamespacedName
-
+    let RegulatoryCapacity = _prefix "RegulatoryCapacity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/GovernmentIssuedLicense"></see>
     /// </summary>
-    let GovernmentIssuedLicense =
-        Namespaced_IRI.parse _namespace_name "GovernmentIssuedLicense" |> NamespacedName
-
+    let GovernmentIssuedLicense = _prefix "GovernmentIssuedLicense"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/RegulationIdentificationScheme"></see>
     /// </summary>
-    let RegulationIdentificationScheme =
-        Namespaced_IRI.parse _namespace_name "RegulationIdentificationScheme" |> NamespacedName
-
+    let RegulationIdentificationScheme = _prefix "RegulationIdentificationScheme"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/RegulationIdentifier"></see>
     /// </summary>
-    let RegulationIdentifier =
-        Namespaced_IRI.parse _namespace_name "RegulationIdentifier" |> NamespacedName
-
+    let RegulationIdentifier = _prefix "RegulationIdentifier"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/TaxAuthority"></see>
     /// </summary>
-    let TaxAuthority =
-        Namespaced_IRI.parse _namespace_name "TaxAuthority" |> NamespacedName
+    let TaxAuthority = _prefix "TaxAuthority"

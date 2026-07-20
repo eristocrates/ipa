@@ -1,12367 +1,8910 @@
 namespace http.vocab.datex.org.terms.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module datex =
     let _namespace_name = "http://vocab.datex.org/terms#"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AbandonedVehicle"></see>
     /// </summary>
-    let AbandonedVehicle =
-        Namespaced_IRI.parse _namespace_name "AbandonedVehicle" |> NamespacedName
-
+    let AbandonedVehicle = _prefix "AbandonedVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AbnormalLoad"></see>
     /// </summary>
-    let AbnormalLoad =
-        Namespaced_IRI.parse _namespace_name "AbnormalLoad" |> NamespacedName
-
+    let AbnormalLoad = _prefix "AbnormalLoad"
     /// <summary>
     /// A traffic condition which is not normal.
     /// <see href="http://vocab.datex.org/terms#AbnormalTraffic"></see></summary>
-    let AbnormalTraffic =
-        Namespaced_IRI.parse _namespace_name "AbnormalTraffic" |> NamespacedName
-
+    let AbnormalTraffic = _prefix "AbnormalTraffic"
     /// <summary>
     /// Accidents are events where one or more vehicles are involved in collisions or in leaving the roadway. These include collisions between vehicles or with other road users or obstacles.
     /// <see href="http://vocab.datex.org/terms#Accident"></see></summary>
-    let Accident = Namespaced_IRI.parse _namespace_name "Accident" |> NamespacedName
-
+    let Accident = _prefix "Accident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvestigationWork"></see>
     /// </summary>
-    let AccidentInvestigationWork =
-        Namespaced_IRI.parse _namespace_name "AccidentInvestigationWork" |> NamespacedName
-
+    let AccidentInvestigationWork = _prefix "AccidentInvestigationWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingBicycles"></see>
     /// </summary>
-    let AccidentInvolvingBicycles =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingBicycles" |> NamespacedName
-
+    let AccidentInvolvingBicycles = _prefix "AccidentInvolvingBicycles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingBuses"></see>
     /// </summary>
-    let AccidentInvolvingBuses =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingBuses" |> NamespacedName
+    let AccidentInvolvingBuses = _prefix "AccidentInvolvingBuses"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingHazardousMaterials"></see>
     /// </summary>
     let AccidentInvolvingHazardousMaterials =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingHazardousMaterials" |> NamespacedName
+        _prefix "AccidentInvolvingHazardousMaterials"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingHeavyLorries"></see>
     /// </summary>
-    let AccidentInvolvingHeavyLorries =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingHeavyLorries" |> NamespacedName
+    let AccidentInvolvingHeavyLorries = _prefix "AccidentInvolvingHeavyLorries"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingMassTransitVehicle"></see>
     /// </summary>
     let AccidentInvolvingMassTransitVehicle =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingMassTransitVehicle" |> NamespacedName
+        _prefix "AccidentInvolvingMassTransitVehicle"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingMopeds"></see>
     /// </summary>
-    let AccidentInvolvingMopeds =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingMopeds" |> NamespacedName
-
+    let AccidentInvolvingMopeds = _prefix "AccidentInvolvingMopeds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingMotorcycles"></see>
     /// </summary>
-    let AccidentInvolvingMotorcycles =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingMotorcycles" |> NamespacedName
+    let AccidentInvolvingMotorcycles = _prefix "AccidentInvolvingMotorcycles"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingRadioactiveMaterial"></see>
     /// </summary>
     let AccidentInvolvingRadioactiveMaterial =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingRadioactiveMaterial" |> NamespacedName
+        _prefix "AccidentInvolvingRadioactiveMaterial"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AccidentInvolvingTrain"></see>
     /// </summary>
-    let AccidentInvolvingTrain =
-        Namespaced_IRI.parse _namespace_name "AccidentInvolvingTrain" |> NamespacedName
-
+    let AccidentInvolvingTrain = _prefix "AccidentInvolvingTrain"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ActiveSpeedControlInOperation"></see>
     /// </summary>
-    let ActiveSpeedControlInOperation =
-        Namespaced_IRI.parse _namespace_name "ActiveSpeedControlInOperation" |> NamespacedName
-
+    let ActiveSpeedControlInOperation = _prefix "ActiveSpeedControlInOperation"
     /// <summary>
     /// Deliberate human action external to the traffic stream or roadway which could disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#Activity"></see></summary>
-    let Activity = Namespaced_IRI.parse _namespace_name "Activity" |> NamespacedName
-
+    let Activity = _prefix "Activity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AdverseInfrastructureConditions"></see>
     /// </summary>
-    let AdverseInfrastructureConditions =
-        Namespaced_IRI.parse _namespace_name "AdverseInfrastructureConditions" |> NamespacedName
-
+    let AdverseInfrastructureConditions = _prefix "AdverseInfrastructureConditions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AgriculturalShow"></see>
     /// </summary>
-    let AgriculturalShow =
-        Namespaced_IRI.parse _namespace_name "AgriculturalShow" |> NamespacedName
-
+    let AgriculturalShow = _prefix "AgriculturalShow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AirAmbulance"></see>
     /// </summary>
-    let AirAmbulance =
-        Namespaced_IRI.parse _namespace_name "AirAmbulance" |> NamespacedName
-
+    let AirAmbulance = _prefix "AirAmbulance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AirRaid"></see>
     /// </summary>
-    let AirRaid = Namespaced_IRI.parse _namespace_name "AirRaid" |> NamespacedName
+    let AirRaid = _prefix "AirRaid"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AirShow"></see>
     /// </summary>
-    let AirShow = Namespaced_IRI.parse _namespace_name "AirShow" |> NamespacedName
-
+    let AirShow = _prefix "AirShow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AltercationOfVehicleOccupants"></see>
     /// </summary>
-    let AltercationOfVehicleOccupants =
-        Namespaced_IRI.parse _namespace_name "AltercationOfVehicleOccupants" |> NamespacedName
-
+    let AltercationOfVehicleOccupants = _prefix "AltercationOfVehicleOccupants"
     /// <summary>
     /// An obstruction on the road resulting from the presence of animals.
     /// <see href="http://vocab.datex.org/terms#AnimalPresenceObstruction"></see></summary>
-    let AnimalPresenceObstruction =
-        Namespaced_IRI.parse _namespace_name "AnimalPresenceObstruction" |> NamespacedName
-
+    let AnimalPresenceObstruction = _prefix "AnimalPresenceObstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AnimalsOnTheInfrastructure"></see>
     /// </summary>
-    let AnimalsOnTheInfrastructure =
-        Namespaced_IRI.parse _namespace_name "AnimalsOnTheInfrastructure" |> NamespacedName
-
+    let AnimalsOnTheInfrastructure = _prefix "AnimalsOnTheInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AnprCameraFailure"></see>
     /// </summary>
-    let AnprCameraFailure =
-        Namespaced_IRI.parse _namespace_name "AnprCameraFailure" |> NamespacedName
-
+    let AnprCameraFailure = _prefix "AnprCameraFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AnprCamerasFault"></see>
     /// </summary>
-    let AnprCamerasFault =
-        Namespaced_IRI.parse _namespace_name "AnprCamerasFault" |> NamespacedName
-
+    let AnprCamerasFault = _prefix "AnprCamerasFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Assault"></see>
     /// </summary>
-    let Assault = Namespaced_IRI.parse _namespace_name "Assault" |> NamespacedName
-
+    let Assault = _prefix "Assault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AssetDestruction"></see>
     /// </summary>
-    let AssetDestruction =
-        Namespaced_IRI.parse _namespace_name "AssetDestruction" |> NamespacedName
-
+    let AssetDestruction = _prefix "AssetDestruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AthleticsMeeting"></see>
     /// </summary>
-    let AthleticsMeeting =
-        Namespaced_IRI.parse _namespace_name "AthleticsMeeting" |> NamespacedName
-
+    let AthleticsMeeting = _prefix "AthleticsMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Attack"></see>
     /// </summary>
-    let Attack = Namespaced_IRI.parse _namespace_name "Attack" |> NamespacedName
-
+    let Attack = _prefix "Attack"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AttackOnVehicle"></see>
     /// </summary>
-    let AttackOnVehicle =
-        Namespaced_IRI.parse _namespace_name "AttackOnVehicle" |> NamespacedName
-
+    let AttackOnVehicle = _prefix "AttackOnVehicle"
     /// <summary>
     /// Authority initiated operation or activity that could disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#AuthorityOperation"></see></summary>
-    let AuthorityOperation =
-        Namespaced_IRI.parse _namespace_name "AuthorityOperation" |> NamespacedName
-
+    let AuthorityOperation = _prefix "AuthorityOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AutomatedTollSystemFailure"></see>
     /// </summary>
-    let AutomatedTollSystemFailure =
-        Namespaced_IRI.parse _namespace_name "AutomatedTollSystemFailure" |> NamespacedName
-
+    let AutomatedTollSystemFailure = _prefix "AutomatedTollSystemFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#AutomatedTollSystemFault"></see>
     /// </summary>
-    let AutomatedTollSystemFault =
-        Namespaced_IRI.parse _namespace_name "AutomatedTollSystemFault" |> NamespacedName
-
+    let AutomatedTollSystemFault = _prefix "AutomatedTollSystemFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Avalanches"></see>
     /// </summary>
-    let Avalanches = Namespaced_IRI.parse _namespace_name "Avalanches" |> NamespacedName
+    let Avalanches = _prefix "Avalanches"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BadWeather"></see>
     /// </summary>
-    let BadWeather = Namespaced_IRI.parse _namespace_name "BadWeather" |> NamespacedName
+    let BadWeather = _prefix "BadWeather"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BallGame"></see>
     /// </summary>
-    let BallGame = Namespaced_IRI.parse _namespace_name "BallGame" |> NamespacedName
-
+    let BallGame = _prefix "BallGame"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BaseballGame"></see>
     /// </summary>
-    let BaseballGame =
-        Namespaced_IRI.parse _namespace_name "BaseballGame" |> NamespacedName
-
+    let BaseballGame = _prefix "BaseballGame"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BasketballGame"></see>
     /// </summary>
-    let BasketballGame =
-        Namespaced_IRI.parse _namespace_name "BasketballGame" |> NamespacedName
-
+    let BasketballGame = _prefix "BasketballGame"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BicycleRace"></see>
     /// </summary>
-    let BicycleRace =
-        Namespaced_IRI.parse _namespace_name "BicycleRace" |> NamespacedName
-
+    let BicycleRace = _prefix "BicycleRace"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BlackIce"></see>
     /// </summary>
-    let BlackIce = Namespaced_IRI.parse _namespace_name "BlackIce" |> NamespacedName
-
+    let BlackIce = _prefix "BlackIce"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BlastingWork"></see>
     /// </summary>
-    let BlastingWork =
-        Namespaced_IRI.parse _namespace_name "BlastingWork" |> NamespacedName
-
+    let BlastingWork = _prefix "BlastingWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Blizzard"></see>
     /// </summary>
-    let Blizzard = Namespaced_IRI.parse _namespace_name "Blizzard" |> NamespacedName
-
+    let Blizzard = _prefix "Blizzard"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BlockadeOrBarrier"></see>
     /// </summary>
-    let BlockadeOrBarrier =
-        Namespaced_IRI.parse _namespace_name "BlockadeOrBarrier" |> NamespacedName
-
+    let BlockadeOrBarrier = _prefix "BlockadeOrBarrier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BlowingDust"></see>
     /// </summary>
-    let BlowingDust =
-        Namespaced_IRI.parse _namespace_name "BlowingDust" |> NamespacedName
-
+    let BlowingDust = _prefix "BlowingDust"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BlowingSnow"></see>
     /// </summary>
-    let BlowingSnow =
-        Namespaced_IRI.parse _namespace_name "BlowingSnow" |> NamespacedName
-
+    let BlowingSnow = _prefix "BlowingSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BoatRace"></see>
     /// </summary>
-    let BoatRace = Namespaced_IRI.parse _namespace_name "BoatRace" |> NamespacedName
+    let BoatRace = _prefix "BoatRace"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BoatShow"></see>
     /// </summary>
-    let BoatShow = Namespaced_IRI.parse _namespace_name "BoatShow" |> NamespacedName
+    let BoatShow = _prefix "BoatShow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BombAlert"></see>
     /// </summary>
-    let BombAlert = Namespaced_IRI.parse _namespace_name "BombAlert" |> NamespacedName
-
+    let BombAlert = _prefix "BombAlert"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BombSquadInAction"></see>
     /// </summary>
-    let BombSquadInAction =
-        Namespaced_IRI.parse _namespace_name "BombSquadInAction" |> NamespacedName
-
+    let BombSquadInAction = _prefix "BombSquadInAction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BoxingTournament"></see>
     /// </summary>
-    let BoxingTournament =
-        Namespaced_IRI.parse _namespace_name "BoxingTournament" |> NamespacedName
-
+    let BoxingTournament = _prefix "BoxingTournament"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BridgeSwingInOperation"></see>
     /// </summary>
-    let BridgeSwingInOperation =
-        Namespaced_IRI.parse _namespace_name "BridgeSwingInOperation" |> NamespacedName
-
+    let BridgeSwingInOperation = _prefix "BridgeSwingInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BrokenDownBus"></see>
     /// </summary>
-    let BrokenDownBus =
-        Namespaced_IRI.parse _namespace_name "BrokenDownBus" |> NamespacedName
-
+    let BrokenDownBus = _prefix "BrokenDownBus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BrokenDownHeavyLorry"></see>
     /// </summary>
-    let BrokenDownHeavyLorry =
-        Namespaced_IRI.parse _namespace_name "BrokenDownHeavyLorry" |> NamespacedName
-
+    let BrokenDownHeavyLorry = _prefix "BrokenDownHeavyLorry"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BrokenDownVehicle"></see>
     /// </summary>
-    let BrokenDownVehicle =
-        Namespaced_IRI.parse _namespace_name "BrokenDownVehicle" |> NamespacedName
-
+    let BrokenDownVehicle = _prefix "BrokenDownVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BullFight"></see>
     /// </summary>
-    let BullFight = Namespaced_IRI.parse _namespace_name "BullFight" |> NamespacedName
+    let BullFight = _prefix "BullFight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BurstPipe"></see>
     /// </summary>
-    let BurstPipe = Namespaced_IRI.parse _namespace_name "BurstPipe" |> NamespacedName
-
+    let BurstPipe = _prefix "BurstPipe"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#BurstWaterMain"></see>
     /// </summary>
-    let BurstWaterMain =
-        Namespaced_IRI.parse _namespace_name "BurstWaterMain" |> NamespacedName
-
+    let BurstWaterMain = _prefix "BurstWaterMain"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CarPoolLaneInOperation"></see>
     /// </summary>
-    let CarPoolLaneInOperation =
-        Namespaced_IRI.parse _namespace_name "CarPoolLaneInOperation" |> NamespacedName
-
+    let CarPoolLaneInOperation = _prefix "CarPoolLaneInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CarriagewayClosures"></see>
     /// </summary>
-    let CarriagewayClosures =
-        Namespaced_IRI.parse _namespace_name "CarriagewayClosures" |> NamespacedName
-
+    let CarriagewayClosures = _prefix "CarriagewayClosures"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CctvCamerasFailure"></see>
     /// </summary>
-    let CctvCamerasFailure =
-        Namespaced_IRI.parse _namespace_name "CctvCamerasFailure" |> NamespacedName
-
+    let CctvCamerasFailure = _prefix "CctvCamerasFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CctvCamerasFault"></see>
     /// </summary>
-    let CctvCamerasFault =
-        Namespaced_IRI.parse _namespace_name "CctvCamerasFault" |> NamespacedName
-
+    let CctvCamerasFault = _prefix "CctvCamerasFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CeremonialEvent"></see>
     /// </summary>
-    let CeremonialEvent =
-        Namespaced_IRI.parse _namespace_name "CeremonialEvent" |> NamespacedName
-
+    let CeremonialEvent = _prefix "CeremonialEvent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ChemicalSpillageAccident"></see>
     /// </summary>
-    let ChemicalSpillageAccident =
-        Namespaced_IRI.parse _namespace_name "ChemicalSpillageAccident" |> NamespacedName
-
+    let ChemicalSpillageAccident = _prefix "ChemicalSpillageAccident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CivilEmergency"></see>
     /// </summary>
-    let CivilEmergency =
-        Namespaced_IRI.parse _namespace_name "CivilEmergency" |> NamespacedName
-
+    let CivilEmergency = _prefix "CivilEmergency"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ClearanceWork"></see>
     /// </summary>
-    let ClearanceWork =
-        Namespaced_IRI.parse _namespace_name "ClearanceWork" |> NamespacedName
-
+    let ClearanceWork = _prefix "ClearanceWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ClosedPermanentlyForTheWinter"></see>
     /// </summary>
-    let ClosedPermanentlyForTheWinter =
-        Namespaced_IRI.parse _namespace_name "ClosedPermanentlyForTheWinter" |> NamespacedName
-
+    let ClosedPermanentlyForTheWinter = _prefix "ClosedPermanentlyForTheWinter"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CollapsedSewer"></see>
     /// </summary>
-    let CollapsedSewer =
-        Namespaced_IRI.parse _namespace_name "CollapsedSewer" |> NamespacedName
-
+    let CollapsedSewer = _prefix "CollapsedSewer"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Collision"></see>
     /// </summary>
-    let Collision = Namespaced_IRI.parse _namespace_name "Collision" |> NamespacedName
-
+    let Collision = _prefix "Collision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CollisionWithAnimal"></see>
     /// </summary>
-    let CollisionWithAnimal =
-        Namespaced_IRI.parse _namespace_name "CollisionWithAnimal" |> NamespacedName
-
+    let CollisionWithAnimal = _prefix "CollisionWithAnimal"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CollisionWithObstruction"></see>
     /// </summary>
-    let CollisionWithObstruction =
-        Namespaced_IRI.parse _namespace_name "CollisionWithObstruction" |> NamespacedName
-
+    let CollisionWithObstruction = _prefix "CollisionWithObstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CollisionWithPerson"></see>
     /// </summary>
-    let CollisionWithPerson =
-        Namespaced_IRI.parse _namespace_name "CollisionWithPerson" |> NamespacedName
-
+    let CollisionWithPerson = _prefix "CollisionWithPerson"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CommercialEvent"></see>
     /// </summary>
-    let CommercialEvent =
-        Namespaced_IRI.parse _namespace_name "CommercialEvent" |> NamespacedName
-
+    let CommercialEvent = _prefix "CommercialEvent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Concert"></see>
     /// </summary>
-    let Concert = Namespaced_IRI.parse _namespace_name "Concert" |> NamespacedName
+    let Concert = _prefix "Concert"
     /// <summary>
     /// Any conditions which have the potential to degrade normal driving conditions.
     /// <see href="http://vocab.datex.org/terms#Conditions"></see></summary>
-    let Conditions = Namespaced_IRI.parse _namespace_name "Conditions" |> NamespacedName
-
+    let Conditions = _prefix "Conditions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ConstructionWork"></see>
     /// </summary>
-    let ConstructionWork =
-        Namespaced_IRI.parse _namespace_name "ConstructionWork" |> NamespacedName
-
+    let ConstructionWork = _prefix "ConstructionWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Contraflow"></see>
     /// </summary>
-    let Contraflow = Namespaced_IRI.parse _namespace_name "Contraflow" |> NamespacedName
-
+    let Contraflow = _prefix "Contraflow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ControlledAvalanche"></see>
     /// </summary>
-    let ControlledAvalanche =
-        Namespaced_IRI.parse _namespace_name "ControlledAvalanche" |> NamespacedName
-
+    let ControlledAvalanche = _prefix "ControlledAvalanche"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Convoy"></see>
     /// </summary>
-    let Convoy = Namespaced_IRI.parse _namespace_name "Convoy" |> NamespacedName
-
+    let Convoy = _prefix "Convoy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ConvoyService"></see>
     /// </summary>
-    let ConvoyService =
-        Namespaced_IRI.parse _namespace_name "ConvoyService" |> NamespacedName
-
+    let ConvoyService = _prefix "ConvoyService"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CricketMatch"></see>
     /// </summary>
-    let CricketMatch =
-        Namespaced_IRI.parse _namespace_name "CricketMatch" |> NamespacedName
-
+    let CricketMatch = _prefix "CricketMatch"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Crosswinds"></see>
     /// </summary>
-    let Crosswinds = Namespaced_IRI.parse _namespace_name "Crosswinds" |> NamespacedName
+    let Crosswinds = _prefix "Crosswinds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Crowd"></see>
     /// </summary>
-    let Crowd = Namespaced_IRI.parse _namespace_name "Crowd" |> NamespacedName
-
+    let Crowd = _prefix "Crowd"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CulturalEvent"></see>
     /// </summary>
-    let CulturalEvent =
-        Namespaced_IRI.parse _namespace_name "CulturalEvent" |> NamespacedName
-
+    let CulturalEvent = _prefix "CulturalEvent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#CustomsOperation"></see>
     /// </summary>
-    let CustomsOperation =
-        Namespaced_IRI.parse _namespace_name "CustomsOperation" |> NamespacedName
-
+    let CustomsOperation = _prefix "CustomsOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedBridge"></see>
     /// </summary>
-    let DamagedBridge =
-        Namespaced_IRI.parse _namespace_name "DamagedBridge" |> NamespacedName
-
+    let DamagedBridge = _prefix "DamagedBridge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedCrashBarrier"></see>
     /// </summary>
-    let DamagedCrashBarrier =
-        Namespaced_IRI.parse _namespace_name "DamagedCrashBarrier" |> NamespacedName
-
+    let DamagedCrashBarrier = _prefix "DamagedCrashBarrier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedFlyover"></see>
     /// </summary>
-    let DamagedFlyover =
-        Namespaced_IRI.parse _namespace_name "DamagedFlyover" |> NamespacedName
-
+    let DamagedFlyover = _prefix "DamagedFlyover"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedGallery"></see>
     /// </summary>
-    let DamagedGallery =
-        Namespaced_IRI.parse _namespace_name "DamagedGallery" |> NamespacedName
-
+    let DamagedGallery = _prefix "DamagedGallery"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedGantry"></see>
     /// </summary>
-    let DamagedGantry =
-        Namespaced_IRI.parse _namespace_name "DamagedGantry" |> NamespacedName
-
+    let DamagedGantry = _prefix "DamagedGantry"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedRoadSurface"></see>
     /// </summary>
-    let DamagedRoadSurface =
-        Namespaced_IRI.parse _namespace_name "DamagedRoadSurface" |> NamespacedName
-
+    let DamagedRoadSurface = _prefix "DamagedRoadSurface"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedTunnel"></see>
     /// </summary>
-    let DamagedTunnel =
-        Namespaced_IRI.parse _namespace_name "DamagedTunnel" |> NamespacedName
-
+    let DamagedTunnel = _prefix "DamagedTunnel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedVehicle"></see>
     /// </summary>
-    let DamagedVehicle =
-        Namespaced_IRI.parse _namespace_name "DamagedVehicle" |> NamespacedName
-
+    let DamagedVehicle = _prefix "DamagedVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagedViaduct"></see>
     /// </summary>
-    let DamagedViaduct =
-        Namespaced_IRI.parse _namespace_name "DamagedViaduct" |> NamespacedName
-
+    let DamagedViaduct = _prefix "DamagedViaduct"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DamagingHail"></see>
     /// </summary>
-    let DamagingHail =
-        Namespaced_IRI.parse _namespace_name "DamagingHail" |> NamespacedName
-
+    let DamagingHail = _prefix "DamagingHail"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DangerousSlowMovingVehicle"></see>
     /// </summary>
-    let DangerousSlowMovingVehicle =
-        Namespaced_IRI.parse _namespace_name "DangerousSlowMovingVehicle" |> NamespacedName
-
+    let DangerousSlowMovingVehicle = _prefix "DangerousSlowMovingVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DeepSnow"></see>
     /// </summary>
-    let DeepSnow = Namespaced_IRI.parse _namespace_name "DeepSnow" |> NamespacedName
-
+    let DeepSnow = _prefix "DeepSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DemolitionWork"></see>
     /// </summary>
-    let DemolitionWork =
-        Namespaced_IRI.parse _namespace_name "DemolitionWork" |> NamespacedName
-
+    let DemolitionWork = _prefix "DemolitionWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Demonstration"></see>
     /// </summary>
-    let Demonstration =
-        Namespaced_IRI.parse _namespace_name "Demonstration" |> NamespacedName
-
+    let Demonstration = _prefix "Demonstration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DenseFog"></see>
     /// </summary>
-    let DenseFog = Namespaced_IRI.parse _namespace_name "DenseFog" |> NamespacedName
-
+    let DenseFog = _prefix "DenseFog"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DieselOnInfrastructure"></see>
     /// </summary>
-    let DieselOnInfrastructure =
-        Namespaced_IRI.parse _namespace_name "DieselOnInfrastructure" |> NamespacedName
-
+    let DieselOnInfrastructure = _prefix "DieselOnInfrastructure"
     /// <summary>
     /// Deliberate human action of either a public disorder nature or of a situation alert type which could disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#DisturbanceActivity"></see></summary>
-    let DisturbanceActivity =
-        Namespaced_IRI.parse _namespace_name "DisturbanceActivity" |> NamespacedName
-
+    let DisturbanceActivity = _prefix "DisturbanceActivity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#DrivingCondition"></see>
     /// </summary>
-    let DrivingCondition =
-        Namespaced_IRI.parse _namespace_name "DrivingCondition" |> NamespacedName
-
+    let DrivingCondition = _prefix "DrivingCondition"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Dry"></see>
     /// </summary>
-    let Dry = Namespaced_IRI.parse _namespace_name "Dry" |> NamespacedName
-
+    let Dry = _prefix "Dry"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#EarthquakeDamage"></see>
     /// </summary>
-    let EarthquakeDamage =
-        Namespaced_IRI.parse _namespace_name "EarthquakeDamage" |> NamespacedName
-
+    let EarthquakeDamage = _prefix "EarthquakeDamage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Eclipse"></see>
     /// </summary>
-    let Eclipse = Namespaced_IRI.parse _namespace_name "Eclipse" |> NamespacedName
-
+    let Eclipse = _prefix "Eclipse"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#EmergencyRoadsideTelephoneFailure"></see>
     /// </summary>
-    let EmergencyRoadsideTelephoneFailure =
-        Namespaced_IRI.parse _namespace_name "EmergencyRoadsideTelephoneFailure" |> NamespacedName
-
+    let EmergencyRoadsideTelephoneFailure = _prefix "EmergencyRoadsideTelephoneFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#EmergencyRoadsideTelephoneFault"></see>
     /// </summary>
-    let EmergencyRoadsideTelephoneFault =
-        Namespaced_IRI.parse _namespace_name "EmergencyRoadsideTelephoneFault" |> NamespacedName
-
+    let EmergencyRoadsideTelephoneFault = _prefix "EmergencyRoadsideTelephoneFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#EmergencyServices"></see>
     /// </summary>
-    let EmergencyServices =
-        Namespaced_IRI.parse _namespace_name "EmergencyServices" |> NamespacedName
-
+    let EmergencyServices = _prefix "EmergencyServices"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#EmergencyVehicle"></see>
     /// </summary>
-    let EmergencyVehicle =
-        Namespaced_IRI.parse _namespace_name "EmergencyVehicle" |> NamespacedName
-
+    let EmergencyVehicle = _prefix "EmergencyVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#EnvironmentalConditions"></see>
     /// </summary>
-    let EnvironmentalConditions =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalConditions" |> NamespacedName
-
+    let EnvironmentalConditions = _prefix "EnvironmentalConditions"
     /// <summary>
     /// An obstruction on the road resulting from an environmental cause.
     /// <see href="http://vocab.datex.org/terms#EnvironmentalObstruction"></see></summary>
-    let EnvironmentalObstruction =
-        Namespaced_IRI.parse _namespace_name "EnvironmentalObstruction" |> NamespacedName
-
+    let EnvironmentalObstruction = _prefix "EnvironmentalObstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Evacuation"></see>
     /// </summary>
-    let Evacuation = Namespaced_IRI.parse _namespace_name "Evacuation" |> NamespacedName
+    let Evacuation = _prefix "Evacuation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Exhibition"></see>
     /// </summary>
-    let Exhibition = Namespaced_IRI.parse _namespace_name "Exhibition" |> NamespacedName
-
+    let Exhibition = _prefix "Exhibition"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ExtremeCold"></see>
     /// </summary>
-    let ExtremeCold =
-        Namespaced_IRI.parse _namespace_name "ExtremeCold" |> NamespacedName
-
+    let ExtremeCold = _prefix "ExtremeCold"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ExtremeHeat"></see>
     /// </summary>
-    let ExtremeHeat =
-        Namespaced_IRI.parse _namespace_name "ExtremeHeat" |> NamespacedName
-
+    let ExtremeHeat = _prefix "ExtremeHeat"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Fair"></see>
     /// </summary>
-    let Fair = Namespaced_IRI.parse _namespace_name "Fair" |> NamespacedName
-
+    let Fair = _prefix "Fair"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FallenPowerCables"></see>
     /// </summary>
-    let FallenPowerCables =
-        Namespaced_IRI.parse _namespace_name "FallenPowerCables" |> NamespacedName
-
+    let FallenPowerCables = _prefix "FallenPowerCables"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FallenTrees"></see>
     /// </summary>
-    let FallenTrees =
-        Namespaced_IRI.parse _namespace_name "FallenTrees" |> NamespacedName
-
+    let FallenTrees = _prefix "FallenTrees"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FallingIce"></see>
     /// </summary>
-    let FallingIce = Namespaced_IRI.parse _namespace_name "FallingIce" |> NamespacedName
-
+    let FallingIce = _prefix "FallingIce"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FallingLightIceOrSnow"></see>
     /// </summary>
-    let FallingLightIceOrSnow =
-        Namespaced_IRI.parse _namespace_name "FallingLightIceOrSnow" |> NamespacedName
-
+    let FallingLightIceOrSnow = _prefix "FallingLightIceOrSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Festival"></see>
     /// </summary>
-    let Festival = Namespaced_IRI.parse _namespace_name "Festival" |> NamespacedName
-
+    let Festival = _prefix "Festival"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FilmTVMaking"></see>
     /// </summary>
-    let FilmTVMaking =
-        Namespaced_IRI.parse _namespace_name "FilmTVMaking" |> NamespacedName
-
+    let FilmTVMaking = _prefix "FilmTVMaking"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FilterBlockade"></see>
     /// </summary>
-    let FilterBlockade =
-        Namespaced_IRI.parse _namespace_name "FilterBlockade" |> NamespacedName
-
+    let FilterBlockade = _prefix "FilterBlockade"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FirstAid"></see>
     /// </summary>
-    let FirstAid = Namespaced_IRI.parse _namespace_name "FirstAid" |> NamespacedName
-
+    let FirstAid = _prefix "FirstAid"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FlashFloods"></see>
     /// </summary>
-    let FlashFloods =
-        Namespaced_IRI.parse _namespace_name "FlashFloods" |> NamespacedName
-
+    let FlashFloods = _prefix "FlashFloods"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Flooding"></see>
     /// </summary>
-    let Flooding = Namespaced_IRI.parse _namespace_name "Flooding" |> NamespacedName
+    let Flooding = _prefix "Flooding"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Fog"></see>
     /// </summary>
-    let Fog = Namespaced_IRI.parse _namespace_name "Fog" |> NamespacedName
-
+    let Fog = _prefix "Fog"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FoodDelivery"></see>
     /// </summary>
-    let FoodDelivery =
-        Namespaced_IRI.parse _namespace_name "FoodDelivery" |> NamespacedName
-
+    let FoodDelivery = _prefix "FoodDelivery"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FootballMatch"></see>
     /// </summary>
-    let FootballMatch =
-        Namespaced_IRI.parse _namespace_name "FootballMatch" |> NamespacedName
-
+    let FootballMatch = _prefix "FootballMatch"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ForestFire"></see>
     /// </summary>
-    let ForestFire = Namespaced_IRI.parse _namespace_name "ForestFire" |> NamespacedName
-
+    let ForestFire = _prefix "ForestFire"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FreezingFog"></see>
     /// </summary>
-    let FreezingFog =
-        Namespaced_IRI.parse _namespace_name "FreezingFog" |> NamespacedName
+    let FreezingFog = _prefix "FreezingFog"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FreezingOfWetInfrastructureSurface"></see>
     /// </summary>
     let FreezingOfWetInfrastructureSurface =
-        Namespaced_IRI.parse _namespace_name "FreezingOfWetInfrastructureSurface" |> NamespacedName
+        _prefix "FreezingOfWetInfrastructureSurface"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FreezingPavements"></see>
     /// </summary>
-    let FreezingPavements =
-        Namespaced_IRI.parse _namespace_name "FreezingPavements" |> NamespacedName
-
+    let FreezingPavements = _prefix "FreezingPavements"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FreezingRain"></see>
     /// </summary>
-    let FreezingRain =
-        Namespaced_IRI.parse _namespace_name "FreezingRain" |> NamespacedName
-
+    let FreezingRain = _prefix "FreezingRain"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FreshSnow"></see>
     /// </summary>
-    let FreshSnow = Namespaced_IRI.parse _namespace_name "FreshSnow" |> NamespacedName
+    let FreshSnow = _prefix "FreshSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Frost"></see>
     /// </summary>
-    let Frost = Namespaced_IRI.parse _namespace_name "Frost" |> NamespacedName
-
+    let Frost = _prefix "Frost"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#FuelSpillageAccident"></see>
     /// </summary>
-    let FuelSpillageAccident =
-        Namespaced_IRI.parse _namespace_name "FuelSpillageAccident" |> NamespacedName
-
+    let FuelSpillageAccident = _prefix "FuelSpillageAccident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Funfair"></see>
     /// </summary>
-    let Funfair = Namespaced_IRI.parse _namespace_name "Funfair" |> NamespacedName
+    let Funfair = _prefix "Funfair"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Gales"></see>
     /// </summary>
-    let Gales = Namespaced_IRI.parse _namespace_name "Gales" |> NamespacedName
-
+    let Gales = _prefix "Gales"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GalleryLightsFailure"></see>
     /// </summary>
-    let GalleryLightsFailure =
-        Namespaced_IRI.parse _namespace_name "GalleryLightsFailure" |> NamespacedName
-
+    let GalleryLightsFailure = _prefix "GalleryLightsFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GalleryLightsFault"></see>
     /// </summary>
-    let GalleryLightsFault =
-        Namespaced_IRI.parse _namespace_name "GalleryLightsFault" |> NamespacedName
-
+    let GalleryLightsFault = _prefix "GalleryLightsFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GardeningOrFlowerShow"></see>
     /// </summary>
-    let GardeningOrFlowerShow =
-        Namespaced_IRI.parse _namespace_name "GardeningOrFlowerShow" |> NamespacedName
-
+    let GardeningOrFlowerShow = _prefix "GardeningOrFlowerShow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GasLeak"></see>
     /// </summary>
-    let GasLeak = Namespaced_IRI.parse _namespace_name "GasLeak" |> NamespacedName
-
+    let GasLeak = _prefix "GasLeak"
     /// <summary>
     /// Network management action that is instigated either manually or automatically by the network/road operator.  Compliance with any resulting control may be advisory or mandatory.
     /// <see href="http://vocab.datex.org/terms#GeneralNetworkManagement"></see></summary>
-    let GeneralNetworkManagement =
-        Namespaced_IRI.parse _namespace_name "GeneralNetworkManagement" |> NamespacedName
-
+    let GeneralNetworkManagement = _prefix "GeneralNetworkManagement"
     /// <summary>
     /// Any stationary or moving obstacle of a physical nature, other than of an animal, vehicle, environmental, or damaged equipment nature.
     /// <see href="http://vocab.datex.org/terms#GeneralObstruction"></see></summary>
-    let GeneralObstruction =
-        Namespaced_IRI.parse _namespace_name "GeneralObstruction" |> NamespacedName
-
+    let GeneralObstruction = _prefix "GeneralObstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GoSlowOperation"></see>
     /// </summary>
-    let GoSlowOperation =
-        Namespaced_IRI.parse _namespace_name "GoSlowOperation" |> NamespacedName
-
+    let GoSlowOperation = _prefix "GoSlowOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GolfTournament"></see>
     /// </summary>
-    let GolfTournament =
-        Namespaced_IRI.parse _namespace_name "GolfTournament" |> NamespacedName
-
+    let GolfTournament = _prefix "GolfTournament"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GrassCuttingWork"></see>
     /// </summary>
-    let GrassCuttingWork =
-        Namespaced_IRI.parse _namespace_name "GrassCuttingWork" |> NamespacedName
-
+    let GrassCuttingWork = _prefix "GrassCuttingWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GrassFire"></see>
     /// </summary>
-    let GrassFire = Namespaced_IRI.parse _namespace_name "GrassFire" |> NamespacedName
-
+    let GrassFire = _prefix "GrassFire"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GunfireOnRoadway"></see>
     /// </summary>
-    let GunfireOnRoadway =
-        Namespaced_IRI.parse _namespace_name "GunfireOnRoadway" |> NamespacedName
-
+    let GunfireOnRoadway = _prefix "GunfireOnRoadway"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#GustyWinds"></see>
     /// </summary>
-    let GustyWinds = Namespaced_IRI.parse _namespace_name "GustyWinds" |> NamespacedName
+    let GustyWinds = _prefix "GustyWinds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Hail"></see>
     /// </summary>
-    let Hail = Namespaced_IRI.parse _namespace_name "Hail" |> NamespacedName
-
+    let Hail = _prefix "Hail"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HardShoulderRunningInOperation"></see>
     /// </summary>
-    let HardShoulderRunningInOperation =
-        Namespaced_IRI.parse _namespace_name "HardShoulderRunningInOperation" |> NamespacedName
-
+    let HardShoulderRunningInOperation = _prefix "HardShoulderRunningInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Hazardous"></see>
     /// </summary>
-    let Hazardous = Namespaced_IRI.parse _namespace_name "Hazardous" |> NamespacedName
-
+    let Hazardous = _prefix "Hazardous"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeadOnCollision"></see>
     /// </summary>
-    let HeadOnCollision =
-        Namespaced_IRI.parse _namespace_name "HeadOnCollision" |> NamespacedName
-
+    let HeadOnCollision = _prefix "HeadOnCollision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeadOnOrSideCollision"></see>
     /// </summary>
-    let HeadOnOrSideCollision =
-        Namespaced_IRI.parse _namespace_name "HeadOnOrSideCollision" |> NamespacedName
-
+    let HeadOnOrSideCollision = _prefix "HeadOnOrSideCollision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeavyFrost"></see>
     /// </summary>
-    let HeavyFrost = Namespaced_IRI.parse _namespace_name "HeavyFrost" |> NamespacedName
+    let HeavyFrost = _prefix "HeavyFrost"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeavyRain"></see>
     /// </summary>
-    let HeavyRain = Namespaced_IRI.parse _namespace_name "HeavyRain" |> NamespacedName
-
+    let HeavyRain = _prefix "HeavyRain"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeavySnowfall"></see>
     /// </summary>
-    let HeavySnowfall =
-        Namespaced_IRI.parse _namespace_name "HeavySnowfall" |> NamespacedName
-
+    let HeavySnowfall = _prefix "HeavySnowfall"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeavyTraffic"></see>
     /// </summary>
-    let HeavyTraffic =
-        Namespaced_IRI.parse _namespace_name "HeavyTraffic" |> NamespacedName
-
+    let HeavyTraffic = _prefix "HeavyTraffic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HeightRestrictionInOperation"></see>
     /// </summary>
-    let HeightRestrictionInOperation =
-        Namespaced_IRI.parse _namespace_name "HeightRestrictionInOperation" |> NamespacedName
-
+    let HeightRestrictionInOperation = _prefix "HeightRestrictionInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HelicopterRescue"></see>
     /// </summary>
-    let HelicopterRescue =
-        Namespaced_IRI.parse _namespace_name "HelicopterRescue" |> NamespacedName
-
+    let HelicopterRescue = _prefix "HelicopterRescue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HerdOfAnimalsOnTheInfrastructure"></see>
     /// </summary>
-    let HerdOfAnimalsOnTheInfrastructure =
-        Namespaced_IRI.parse _namespace_name "HerdOfAnimalsOnTheInfrastructure" |> NamespacedName
-
+    let HerdOfAnimalsOnTheInfrastructure = _prefix "HerdOfAnimalsOnTheInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HighSpeedEmergencyVehicle"></see>
     /// </summary>
-    let HighSpeedEmergencyVehicle =
-        Namespaced_IRI.parse _namespace_name "HighSpeedEmergencyVehicle" |> NamespacedName
-
+    let HighSpeedEmergencyVehicle = _prefix "HighSpeedEmergencyVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HockeyGame"></see>
     /// </summary>
-    let HockeyGame = Namespaced_IRI.parse _namespace_name "HockeyGame" |> NamespacedName
-
+    let HockeyGame = _prefix "HockeyGame"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HorseRaceMeeting"></see>
     /// </summary>
-    let HorseRaceMeeting =
-        Namespaced_IRI.parse _namespace_name "HorseRaceMeeting" |> NamespacedName
-
+    let HorseRaceMeeting = _prefix "HorseRaceMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#HurricaneForceWinds"></see>
     /// </summary>
-    let HurricaneForceWinds =
-        Namespaced_IRI.parse _namespace_name "HurricaneForceWinds" |> NamespacedName
-
+    let HurricaneForceWinds = _prefix "HurricaneForceWinds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Ice"></see>
     /// </summary>
-    let Ice = Namespaced_IRI.parse _namespace_name "Ice" |> NamespacedName
+    let Ice = _prefix "Ice"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#IceBuildUp"></see>
     /// </summary>
-    let IceBuildUp = Namespaced_IRI.parse _namespace_name "IceBuildUp" |> NamespacedName
-
+    let IceBuildUp = _prefix "IceBuildUp"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#IceWithWheelBarTracks"></see>
     /// </summary>
-    let IceWithWheelBarTracks =
-        Namespaced_IRI.parse _namespace_name "IceWithWheelBarTracks" |> NamespacedName
-
+    let IceWithWheelBarTracks = _prefix "IceWithWheelBarTracks"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#IcyPatches"></see>
     /// </summary>
-    let IcyPatches = Namespaced_IRI.parse _namespace_name "IcyPatches" |> NamespacedName
-
+    let IcyPatches = _prefix "IcyPatches"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#IllVehicleOccupants"></see>
     /// </summary>
-    let IllVehicleOccupants =
-        Namespaced_IRI.parse _namespace_name "IllVehicleOccupants" |> NamespacedName
-
+    let IllVehicleOccupants = _prefix "IllVehicleOccupants"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Impossible"></see>
     /// </summary>
-    let Impossible = Namespaced_IRI.parse _namespace_name "Impossible" |> NamespacedName
-
+    let Impossible = _prefix "Impossible"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureConstruction"></see>
     /// </summary>
-    let InfrastructureConstruction =
-        Namespaced_IRI.parse _namespace_name "InfrastructureConstruction" |> NamespacedName
-
+    let InfrastructureConstruction = _prefix "InfrastructureConstruction"
     /// <summary>
     /// An obstruction on the road resulting from the failure or damage of infrastructure on, under, above or close to the road.
     /// <see href="http://vocab.datex.org/terms#InfrastructureDamageObstruction"></see></summary>
-    let InfrastructureDamageObstruction =
-        Namespaced_IRI.parse _namespace_name "InfrastructureDamageObstruction" |> NamespacedName
-
+    let InfrastructureDamageObstruction = _prefix "InfrastructureDamageObstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureFailure"></see>
     /// </summary>
-    let InfrastructureFailure =
-        Namespaced_IRI.parse _namespace_name "InfrastructureFailure" |> NamespacedName
-
+    let InfrastructureFailure = _prefix "InfrastructureFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureFault"></see>
     /// </summary>
-    let InfrastructureFault =
-        Namespaced_IRI.parse _namespace_name "InfrastructureFault" |> NamespacedName
+    let InfrastructureFault = _prefix "InfrastructureFault"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureImprovementOrUpgrading"></see>
     /// </summary>
     let InfrastructureImprovementOrUpgrading =
-        Namespaced_IRI.parse _namespace_name "InfrastructureImprovementOrUpgrading" |> NamespacedName
+        _prefix "InfrastructureImprovementOrUpgrading"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureMaintenance"></see>
     /// </summary>
-    let InfrastructureMaintenance =
-        Namespaced_IRI.parse _namespace_name "InfrastructureMaintenance" |> NamespacedName
-
+    let InfrastructureMaintenance = _prefix "InfrastructureMaintenance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSideAssistance"></see>
     /// </summary>
-    let InfrastructureSideAssistance =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSideAssistance" |> NamespacedName
+    let InfrastructureSideAssistance = _prefix "InfrastructureSideAssistance"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSideCommunicationsSystemFailure"></see>
     /// </summary>
     let InfrastructureSideCommunicationsSystemFailure =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSideCommunicationsSystemFailure" |> NamespacedName
+        _prefix "InfrastructureSideCommunicationsSystemFailure"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSideCommunicationsSystemFault"></see>
     /// </summary>
     let InfrastructureSideCommunicationsSystemFault =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSideCommunicationsSystemFault" |> NamespacedName
+        _prefix "InfrastructureSideCommunicationsSystemFault"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSidePowerSystemFailure"></see>
     /// </summary>
     let InfrastructureSidePowerSystemFailure =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSidePowerSystemFailure" |> NamespacedName
+        _prefix "InfrastructureSidePowerSystemFailure"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSidePowerSystemFault"></see>
     /// </summary>
     let InfrastructureSidePowerSystemFault =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSidePowerSystemFault" |> NamespacedName
+        _prefix "InfrastructureSidePowerSystemFault"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSideWork"></see>
     /// </summary>
-    let InfrastructureSideWork =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSideWork" |> NamespacedName
+    let InfrastructureSideWork = _prefix "InfrastructureSideWork"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureSurfaceInPoorCondition"></see>
     /// </summary>
     let InfrastructureSurfaceInPoorCondition =
-        Namespaced_IRI.parse _namespace_name "InfrastructureSurfaceInPoorCondition" |> NamespacedName
+        _prefix "InfrastructureSurfaceInPoorCondition"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureWorks"></see>
     /// </summary>
-    let InfrastructureWorks =
-        Namespaced_IRI.parse _namespace_name "InfrastructureWorks" |> NamespacedName
-
+    let InfrastructureWorks = _prefix "InfrastructureWorks"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InfrastructureWorksClearance"></see>
     /// </summary>
-    let InfrastructureWorksClearance =
-        Namespaced_IRI.parse _namespace_name "InfrastructureWorksClearance" |> NamespacedName
-
+    let InfrastructureWorksClearance = _prefix "InfrastructureWorksClearance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InstallationWork"></see>
     /// </summary>
-    let InstallationWork =
-        Namespaced_IRI.parse _namespace_name "InstallationWork" |> NamespacedName
-
+    let InstallationWork = _prefix "InstallationWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#IntermittentShortTermClosures"></see>
     /// </summary>
-    let IntermittentShortTermClosures =
-        Namespaced_IRI.parse _namespace_name "IntermittentShortTermClosures" |> NamespacedName
-
+    let IntermittentShortTermClosures = _prefix "IntermittentShortTermClosures"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#InternationalSportsMeeting"></see>
     /// </summary>
-    let InternationalSportsMeeting =
-        Namespaced_IRI.parse _namespace_name "InternationalSportsMeeting" |> NamespacedName
-
+    let InternationalSportsMeeting = _prefix "InternationalSportsMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#JackknifedArticulatedLorry"></see>
     /// </summary>
-    let JackknifedArticulatedLorry =
-        Namespaced_IRI.parse _namespace_name "JackknifedArticulatedLorry" |> NamespacedName
-
+    let JackknifedArticulatedLorry = _prefix "JackknifedArticulatedLorry"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#JackknifedCaravan"></see>
     /// </summary>
-    let JackknifedCaravan =
-        Namespaced_IRI.parse _namespace_name "JackknifedCaravan" |> NamespacedName
-
+    let JackknifedCaravan = _prefix "JackknifedCaravan"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#JackknifedTrailer"></see>
     /// </summary>
-    let JackknifedTrailer =
-        Namespaced_IRI.parse _namespace_name "JackknifedTrailer" |> NamespacedName
-
+    let JackknifedTrailer = _prefix "JackknifedTrailer"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#JuridicalReconstruction"></see>
     /// </summary>
-    let JuridicalReconstruction =
-        Namespaced_IRI.parse _namespace_name "JuridicalReconstruction" |> NamespacedName
-
+    let JuridicalReconstruction = _prefix "JuridicalReconstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Landslips"></see>
     /// </summary>
-    let Landslips = Namespaced_IRI.parse _namespace_name "Landslips" |> NamespacedName
-
+    let Landslips = _prefix "Landslips"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LaneClosure"></see>
     /// </summary>
-    let LaneClosure =
-        Namespaced_IRI.parse _namespace_name "LaneClosure" |> NamespacedName
-
+    let LaneClosure = _prefix "LaneClosure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LaneControlSignFailure"></see>
     /// </summary>
-    let LaneControlSignFailure =
-        Namespaced_IRI.parse _namespace_name "LaneControlSignFailure" |> NamespacedName
-
+    let LaneControlSignFailure = _prefix "LaneControlSignFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LaneControlSignFault"></see>
     /// </summary>
-    let LaneControlSignFault =
-        Namespaced_IRI.parse _namespace_name "LaneControlSignFault" |> NamespacedName
-
+    let LaneControlSignFault = _prefix "LaneControlSignFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LanesDeviated"></see>
     /// </summary>
-    let LanesDeviated =
-        Namespaced_IRI.parse _namespace_name "LanesDeviated" |> NamespacedName
-
+    let LanesDeviated = _prefix "LanesDeviated"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LargeAnimalsOnTheInfrastructure"></see>
     /// </summary>
-    let LargeAnimalsOnTheInfrastructure =
-        Namespaced_IRI.parse _namespace_name "LargeAnimalsOnTheInfrastructure" |> NamespacedName
-
+    let LargeAnimalsOnTheInfrastructure = _prefix "LargeAnimalsOnTheInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LeavesOnInfrastructure"></see>
     /// </summary>
-    let LeavesOnInfrastructure =
-        Namespaced_IRI.parse _namespace_name "LeavesOnInfrastructure" |> NamespacedName
-
+    let LeavesOnInfrastructure = _prefix "LeavesOnInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LevelCrossingFailure"></see>
     /// </summary>
-    let LevelCrossingFailure =
-        Namespaced_IRI.parse _namespace_name "LevelCrossingFailure" |> NamespacedName
-
+    let LevelCrossingFailure = _prefix "LevelCrossingFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LevelCrossingFault"></see>
     /// </summary>
-    let LevelCrossingFault =
-        Namespaced_IRI.parse _namespace_name "LevelCrossingFault" |> NamespacedName
-
+    let LevelCrossingFault = _prefix "LevelCrossingFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LitterClearance"></see>
     /// </summary>
-    let LitterClearance =
-        Namespaced_IRI.parse _namespace_name "LitterClearance" |> NamespacedName
-
+    let LitterClearance = _prefix "LitterClearance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LongLoad"></see>
     /// </summary>
-    let LongLoad = Namespaced_IRI.parse _namespace_name "LongLoad" |> NamespacedName
-
+    let LongLoad = _prefix "LongLoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LooseChippings"></see>
     /// </summary>
-    let LooseChippings =
-        Namespaced_IRI.parse _namespace_name "LooseChippings" |> NamespacedName
-
+    let LooseChippings = _prefix "LooseChippings"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LooseSandOnInfrastructure"></see>
     /// </summary>
-    let LooseSandOnInfrastructure =
-        Namespaced_IRI.parse _namespace_name "LooseSandOnInfrastructure" |> NamespacedName
-
+    let LooseSandOnInfrastructure = _prefix "LooseSandOnInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LooseSnow"></see>
     /// </summary>
-    let LooseSnow = Namespaced_IRI.parse _namespace_name "LooseSnow" |> NamespacedName
-
+    let LooseSnow = _prefix "LooseSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#LowSunGlare"></see>
     /// </summary>
-    let LowSunGlare =
-        Namespaced_IRI.parse _namespace_name "LowSunGlare" |> NamespacedName
-
+    let LowSunGlare = _prefix "LowSunGlare"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MaintenanceWork"></see>
     /// </summary>
-    let MaintenanceWork =
-        Namespaced_IRI.parse _namespace_name "MaintenanceWork" |> NamespacedName
-
+    let MaintenanceWork = _prefix "MaintenanceWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MajorEvent"></see>
     /// </summary>
-    let MajorEvent = Namespaced_IRI.parse _namespace_name "MajorEvent" |> NamespacedName
+    let MajorEvent = _prefix "MajorEvent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Marathon"></see>
     /// </summary>
-    let Marathon = Namespaced_IRI.parse _namespace_name "Marathon" |> NamespacedName
+    let Marathon = _prefix "Marathon"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#March"></see>
     /// </summary>
-    let March = Namespaced_IRI.parse _namespace_name "March" |> NamespacedName
+    let March = _prefix "March"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Market"></see>
     /// </summary>
-    let Market = Namespaced_IRI.parse _namespace_name "Market" |> NamespacedName
+    let Market = _prefix "Market"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Match"></see>
     /// </summary>
-    let Match = Namespaced_IRI.parse _namespace_name "Match" |> NamespacedName
-
+    let Match = _prefix "Match"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MatrixSignFailure"></see>
     /// </summary>
-    let MatrixSignFailure =
-        Namespaced_IRI.parse _namespace_name "MatrixSignFailure" |> NamespacedName
-
+    let MatrixSignFailure = _prefix "MatrixSignFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MatrixSignFault"></see>
     /// </summary>
-    let MatrixSignFault =
-        Namespaced_IRI.parse _namespace_name "MatrixSignFault" |> NamespacedName
-
+    let MatrixSignFault = _prefix "MatrixSignFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MilitaryConvoy"></see>
     /// </summary>
-    let MilitaryConvoy =
-        Namespaced_IRI.parse _namespace_name "MilitaryConvoy" |> NamespacedName
-
+    let MilitaryConvoy = _prefix "MilitaryConvoy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ModerateFog"></see>
     /// </summary>
-    let ModerateFog =
-        Namespaced_IRI.parse _namespace_name "ModerateFog" |> NamespacedName
-
+    let ModerateFog = _prefix "ModerateFog"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MotorShow"></see>
     /// </summary>
-    let MotorShow = Namespaced_IRI.parse _namespace_name "MotorShow" |> NamespacedName
-
+    let MotorShow = _prefix "MotorShow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MotorSportRaceMeeting"></see>
     /// </summary>
-    let MotorSportRaceMeeting =
-        Namespaced_IRI.parse _namespace_name "MotorSportRaceMeeting" |> NamespacedName
-
+    let MotorSportRaceMeeting = _prefix "MotorSportRaceMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MudOnInfrastructure"></see>
     /// </summary>
-    let MudOnInfrastructure =
-        Namespaced_IRI.parse _namespace_name "MudOnInfrastructure" |> NamespacedName
-
+    let MudOnInfrastructure = _prefix "MudOnInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MudSlide"></see>
     /// </summary>
-    let MudSlide = Namespaced_IRI.parse _namespace_name "MudSlide" |> NamespacedName
-
+    let MudSlide = _prefix "MudSlide"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MultipleVehicleCollision"></see>
     /// </summary>
-    let MultipleVehicleCollision =
-        Namespaced_IRI.parse _namespace_name "MultipleVehicleCollision" |> NamespacedName
-
+    let MultipleVehicleCollision = _prefix "MultipleVehicleCollision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MultivehicleAccident"></see>
     /// </summary>
-    let MultivehicleAccident =
-        Namespaced_IRI.parse _namespace_name "MultivehicleAccident" |> NamespacedName
-
+    let MultivehicleAccident = _prefix "MultivehicleAccident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#NarrowLanes"></see>
     /// </summary>
-    let NarrowLanes =
-        Namespaced_IRI.parse _namespace_name "NarrowLanes" |> NamespacedName
-
+    let NarrowLanes = _prefix "NarrowLanes"
     /// <summary>
     /// Network management action which is applicable to the road network and its users.
     /// <see href="http://vocab.datex.org/terms#NetworkManagement"></see></summary>
-    let NetworkManagement =
-        Namespaced_IRI.parse _namespace_name "NetworkManagement" |> NamespacedName
-
+    let NetworkManagement = _prefix "NetworkManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#NewRoadworksLayout"></see>
     /// </summary>
-    let NewRoadworksLayout =
-        Namespaced_IRI.parse _namespace_name "NewRoadworksLayout" |> NamespacedName
-
+    let NewRoadworksLayout = _prefix "NewRoadworksLayout"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Normal"></see>
     /// </summary>
-    let Normal = Namespaced_IRI.parse _namespace_name "Normal" |> NamespacedName
+    let Normal = _prefix "Normal"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#NormalWinterConditionsForPedestrians"></see>
     /// </summary>
     let NormalWinterConditionsForPedestrians =
-        Namespaced_IRI.parse _namespace_name "NormalWinterConditionsForPedestrians" |> NamespacedName
+        _prefix "NormalWinterConditionsForPedestrians"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ObstacleSignalling"></see>
     /// </summary>
-    let ObstacleSignalling =
-        Namespaced_IRI.parse _namespace_name "ObstacleSignalling" |> NamespacedName
-
+    let ObstacleSignalling = _prefix "ObstacleSignalling"
     /// <summary>
     /// Any stationary or moving obstacle of a physical nature (e.g. obstacles or vehicles from an earlier accident, shed loads on carriageway, rock fall, abnormal or dangerous loads, or animals etc.) which could disrupt or endanger traffic.
     /// <see href="http://vocab.datex.org/terms#Obstruction"></see></summary>
-    let Obstruction =
-        Namespaced_IRI.parse _namespace_name "Obstruction" |> NamespacedName
-
+    let Obstruction = _prefix "Obstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OilOnInfrastructure"></see>
     /// </summary>
-    let OilOnInfrastructure =
-        Namespaced_IRI.parse _namespace_name "OilOnInfrastructure" |> NamespacedName
-
+    let OilOnInfrastructure = _prefix "OilOnInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OilSpillageAccident"></see>
     /// </summary>
-    let OilSpillageAccident =
-        Namespaced_IRI.parse _namespace_name "OilSpillageAccident" |> NamespacedName
-
+    let OilSpillageAccident = _prefix "OilSpillageAccident"
     /// <summary>
     /// Actions that a traffic operator can decide to implement to prevent or help correct dangerous or poor driving conditions, including maintenance of the road infrastructure.
     /// <see href="http://vocab.datex.org/terms#OperatorAction"></see></summary>
-    let OperatorAction =
-        Namespaced_IRI.parse _namespace_name "OperatorAction" |> NamespacedName
-
+    let OperatorAction = _prefix "OperatorAction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OverheadWorks"></see>
     /// </summary>
-    let OverheadWorks =
-        Namespaced_IRI.parse _namespace_name "OverheadWorks" |> NamespacedName
-
+    let OverheadWorks = _prefix "OverheadWorks"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OverheightVehicle"></see>
     /// </summary>
-    let OverheightVehicle =
-        Namespaced_IRI.parse _namespace_name "OverheightVehicle" |> NamespacedName
-
+    let OverheightVehicle = _prefix "OverheightVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OvernightClosures"></see>
     /// </summary>
-    let OvernightClosures =
-        Namespaced_IRI.parse _namespace_name "OvernightClosures" |> NamespacedName
-
+    let OvernightClosures = _prefix "OvernightClosures"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OverturnedHeavyLorry"></see>
     /// </summary>
-    let OverturnedHeavyLorry =
-        Namespaced_IRI.parse _namespace_name "OverturnedHeavyLorry" |> NamespacedName
-
+    let OverturnedHeavyLorry = _prefix "OverturnedHeavyLorry"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OverturnedTrailer"></see>
     /// </summary>
-    let OverturnedTrailer =
-        Namespaced_IRI.parse _namespace_name "OverturnedTrailer" |> NamespacedName
-
+    let OverturnedTrailer = _prefix "OverturnedTrailer"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OverturnedVehicle"></see>
     /// </summary>
-    let OverturnedVehicle =
-        Namespaced_IRI.parse _namespace_name "OverturnedVehicle" |> NamespacedName
-
+    let OverturnedVehicle = _prefix "OverturnedVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#OzonePollution"></see>
     /// </summary>
-    let OzonePollution =
-        Namespaced_IRI.parse _namespace_name "OzonePollution" |> NamespacedName
-
+    let OzonePollution = _prefix "OzonePollution"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PackedSnow"></see>
     /// </summary>
-    let PackedSnow = Namespaced_IRI.parse _namespace_name "PackedSnow" |> NamespacedName
+    let PackedSnow = _prefix "PackedSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Parade"></see>
     /// </summary>
-    let Parade = Namespaced_IRI.parse _namespace_name "Parade" |> NamespacedName
-
+    let Parade = _prefix "Parade"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PassableWithCare"></see>
     /// </summary>
-    let PassableWithCare =
-        Namespaced_IRI.parse _namespace_name "PassableWithCare" |> NamespacedName
-
+    let PassableWithCare = _prefix "PassableWithCare"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PassengerAssistance"></see>
     /// </summary>
-    let PassengerAssistance =
-        Namespaced_IRI.parse _namespace_name "PassengerAssistance" |> NamespacedName
-
+    let PassengerAssistance = _prefix "PassengerAssistance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PatchyFog"></see>
     /// </summary>
-    let PatchyFog = Namespaced_IRI.parse _namespace_name "PatchyFog" |> NamespacedName
-
+    let PatchyFog = _prefix "PatchyFog"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PetrolOnInfrastructure"></see>
     /// </summary>
-    let PetrolOnInfrastructure =
-        Namespaced_IRI.parse _namespace_name "PetrolOnInfrastructure" |> NamespacedName
-
+    let PetrolOnInfrastructure = _prefix "PetrolOnInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PoliceCheckPoint"></see>
     /// </summary>
-    let PoliceCheckPoint =
-        Namespaced_IRI.parse _namespace_name "PoliceCheckPoint" |> NamespacedName
-
+    let PoliceCheckPoint = _prefix "PoliceCheckPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PoliceInvestigation"></see>
     /// </summary>
-    let PoliceInvestigation =
-        Namespaced_IRI.parse _namespace_name "PoliceInvestigation" |> NamespacedName
-
+    let PoliceInvestigation = _prefix "PoliceInvestigation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PoliceSpeedChecksInOperation"></see>
     /// </summary>
-    let PoliceSpeedChecksInOperation =
-        Namespaced_IRI.parse _namespace_name "PoliceSpeedChecksInOperation" |> NamespacedName
-
+    let PoliceSpeedChecksInOperation = _prefix "PoliceSpeedChecksInOperation"
     /// <summary>
     /// Details of atmospheric pollution.
     /// <see href="http://vocab.datex.org/terms#Pollution"></see></summary>
-    let Pollution = Namespaced_IRI.parse _namespace_name "Pollution" |> NamespacedName
-
+    let Pollution = _prefix "Pollution"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PrecipitationInTheArea"></see>
     /// </summary>
-    let PrecipitationInTheArea =
-        Namespaced_IRI.parse _namespace_name "PrecipitationInTheArea" |> NamespacedName
-
+    let PrecipitationInTheArea = _prefix "PrecipitationInTheArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Procession"></see>
     /// </summary>
-    let Procession = Namespaced_IRI.parse _namespace_name "Procession" |> NamespacedName
-
+    let Procession = _prefix "Procession"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ProhibitedVehicleOnTheRoadway"></see>
     /// </summary>
-    let ProhibitedVehicleOnTheRoadway =
-        Namespaced_IRI.parse _namespace_name "ProhibitedVehicleOnTheRoadway" |> NamespacedName
-
+    let ProhibitedVehicleOnTheRoadway = _prefix "ProhibitedVehicleOnTheRoadway"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#PublicDisturbance"></see>
     /// </summary>
-    let PublicDisturbance =
-        Namespaced_IRI.parse _namespace_name "PublicDisturbance" |> NamespacedName
-
+    let PublicDisturbance = _prefix "PublicDisturbance"
     /// <summary>
     /// Organised public event which could disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#PublicEvent"></see></summary>
-    let PublicEvent =
-        Namespaced_IRI.parse _namespace_name "PublicEvent" |> NamespacedName
-
+    let PublicEvent = _prefix "PublicEvent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#QueuingTraffic"></see>
     /// </summary>
-    let QueuingTraffic =
-        Namespaced_IRI.parse _namespace_name "QueuingTraffic" |> NamespacedName
-
+    let QueuingTraffic = _prefix "QueuingTraffic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RaceMeeting"></see>
     /// </summary>
-    let RaceMeeting =
-        Namespaced_IRI.parse _namespace_name "RaceMeeting" |> NamespacedName
-
+    let RaceMeeting = _prefix "RaceMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RadioactiveLeakAlert"></see>
     /// </summary>
-    let RadioactiveLeakAlert =
-        Namespaced_IRI.parse _namespace_name "RadioactiveLeakAlert" |> NamespacedName
-
+    let RadioactiveLeakAlert = _prefix "RadioactiveLeakAlert"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Rain"></see>
     /// </summary>
-    let Rain = Namespaced_IRI.parse _namespace_name "Rain" |> NamespacedName
-
+    let Rain = _prefix "Rain"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RainChangingToSnow"></see>
     /// </summary>
-    let RainChangingToSnow =
-        Namespaced_IRI.parse _namespace_name "RainChangingToSnow" |> NamespacedName
-
+    let RainChangingToSnow = _prefix "RainChangingToSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RampControlFailure"></see>
     /// </summary>
-    let RampControlFailure =
-        Namespaced_IRI.parse _namespace_name "RampControlFailure" |> NamespacedName
-
+    let RampControlFailure = _prefix "RampControlFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RampControlFault"></see>
     /// </summary>
-    let RampControlFault =
-        Namespaced_IRI.parse _namespace_name "RampControlFault" |> NamespacedName
-
+    let RampControlFault = _prefix "RampControlFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RampMeteringInOperation"></see>
     /// </summary>
-    let RampMeteringInOperation =
-        Namespaced_IRI.parse _namespace_name "RampMeteringInOperation" |> NamespacedName
-
+    let RampMeteringInOperation = _prefix "RampMeteringInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RearCollision"></see>
     /// </summary>
-    let RearCollision =
-        Namespaced_IRI.parse _namespace_name "RearCollision" |> NamespacedName
-
+    let RearCollision = _prefix "RearCollision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RepairWork"></see>
     /// </summary>
-    let RepairWork = Namespaced_IRI.parse _namespace_name "RepairWork" |> NamespacedName
-
+    let RepairWork = _prefix "RepairWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ResurfacingWork"></see>
     /// </summary>
-    let ResurfacingWork =
-        Namespaced_IRI.parse _namespace_name "ResurfacingWork" |> NamespacedName
-
+    let ResurfacingWork = _prefix "ResurfacingWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Riot"></see>
     /// </summary>
-    let Riot = Namespaced_IRI.parse _namespace_name "Riot" |> NamespacedName
-
+    let Riot = _prefix "Riot"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RoadCleared"></see>
     /// </summary>
-    let RoadCleared =
-        Namespaced_IRI.parse _namespace_name "RoadCleared" |> NamespacedName
-
+    let RoadCleared = _prefix "RoadCleared"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RoadClosure"></see>
     /// </summary>
-    let RoadClosure =
-        Namespaced_IRI.parse _namespace_name "RoadClosure" |> NamespacedName
-
+    let RoadClosure = _prefix "RoadClosure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RoadMarkingWork"></see>
     /// </summary>
-    let RoadMarkingWork =
-        Namespaced_IRI.parse _namespace_name "RoadMarkingWork" |> NamespacedName
-
+    let RoadMarkingWork = _prefix "RoadMarkingWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RoadOperatorCheckPoint"></see>
     /// </summary>
-    let RoadOperatorCheckPoint =
-        Namespaced_IRI.parse _namespace_name "RoadOperatorCheckPoint" |> NamespacedName
-
+    let RoadOperatorCheckPoint = _prefix "RoadOperatorCheckPoint"
     /// <summary>
     /// Road, carriageway or lane management action that is instigated by the network/road operator.
     /// <see href="http://vocab.datex.org/terms#RoadOrCarriagewayOrLaneManagement"></see></summary>
-    let RoadOrCarriagewayOrLaneManagement =
-        Namespaced_IRI.parse _namespace_name "RoadOrCarriagewayOrLaneManagement" |> NamespacedName
-
+    let RoadOrCarriagewayOrLaneManagement = _prefix "RoadOrCarriagewayOrLaneManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RoadSurfaceMelting"></see>
     /// </summary>
-    let RoadSurfaceMelting =
-        Namespaced_IRI.parse _namespace_name "RoadSurfaceMelting" |> NamespacedName
-
+    let RoadSurfaceMelting = _prefix "RoadSurfaceMelting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RoadWideningWork"></see>
     /// </summary>
-    let RoadWideningWork =
-        Namespaced_IRI.parse _namespace_name "RoadWideningWork" |> NamespacedName
-
+    let RoadWideningWork = _prefix "RoadWideningWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RockFallPreventativeMaintenance"></see>
     /// </summary>
-    let RockFallPreventativeMaintenance =
-        Namespaced_IRI.parse _namespace_name "RockFallPreventativeMaintenance" |> NamespacedName
-
+    let RockFallPreventativeMaintenance = _prefix "RockFallPreventativeMaintenance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Rockfalls"></see>
     /// </summary>
-    let Rockfalls = Namespaced_IRI.parse _namespace_name "Rockfalls" |> NamespacedName
-
+    let Rockfalls = _prefix "Rockfalls"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RollingRoadBlock"></see>
     /// </summary>
-    let RollingRoadBlock =
-        Namespaced_IRI.parse _namespace_name "RollingRoadBlock" |> NamespacedName
-
+    let RollingRoadBlock = _prefix "RollingRoadBlock"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RugbyMatch"></see>
     /// </summary>
-    let RugbyMatch = Namespaced_IRI.parse _namespace_name "RugbyMatch" |> NamespacedName
-
+    let RugbyMatch = _prefix "RugbyMatch"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#RushHourLaneInOperation"></see>
     /// </summary>
-    let RushHourLaneInOperation =
-        Namespaced_IRI.parse _namespace_name "RushHourLaneInOperation" |> NamespacedName
-
+    let RushHourLaneInOperation = _prefix "RushHourLaneInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Sabotage"></see>
     /// </summary>
-    let Sabotage = Namespaced_IRI.parse _namespace_name "Sabotage" |> NamespacedName
-
+    let Sabotage = _prefix "Sabotage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SaltingInProgress"></see>
     /// </summary>
-    let SaltingInProgress =
-        Namespaced_IRI.parse _namespace_name "SaltingInProgress" |> NamespacedName
-
+    let SaltingInProgress = _prefix "SaltingInProgress"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SaltingOrGrittingVehicleInUse"></see>
     /// </summary>
-    let SaltingOrGrittingVehicleInUse =
-        Namespaced_IRI.parse _namespace_name "SaltingOrGrittingVehicleInUse" |> NamespacedName
-
+    let SaltingOrGrittingVehicleInUse = _prefix "SaltingOrGrittingVehicleInUse"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SandStorms"></see>
     /// </summary>
-    let SandStorms = Namespaced_IRI.parse _namespace_name "SandStorms" |> NamespacedName
-
+    let SandStorms = _prefix "SandStorms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SecurityAlert"></see>
     /// </summary>
-    let SecurityAlert =
-        Namespaced_IRI.parse _namespace_name "SecurityAlert" |> NamespacedName
-
+    let SecurityAlert = _prefix "SecurityAlert"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SecurityIncident"></see>
     /// </summary>
-    let SecurityIncident =
-        Namespaced_IRI.parse _namespace_name "SecurityIncident" |> NamespacedName
-
+    let SecurityIncident = _prefix "SecurityIncident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SeriousAccident"></see>
     /// </summary>
-    let SeriousAccident =
-        Namespaced_IRI.parse _namespace_name "SeriousAccident" |> NamespacedName
-
+    let SeriousAccident = _prefix "SeriousAccident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SeriousFire"></see>
     /// </summary>
-    let SeriousFire =
-        Namespaced_IRI.parse _namespace_name "SeriousFire" |> NamespacedName
-
+    let SeriousFire = _prefix "SeriousFire"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SeveralMajorEvents"></see>
     /// </summary>
-    let SeveralMajorEvents =
-        Namespaced_IRI.parse _namespace_name "SeveralMajorEvents" |> NamespacedName
-
+    let SeveralMajorEvents = _prefix "SeveralMajorEvents"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SevereExhaustPollution"></see>
     /// </summary>
-    let SevereExhaustPollution =
-        Namespaced_IRI.parse _namespace_name "SevereExhaustPollution" |> NamespacedName
-
+    let SevereExhaustPollution = _prefix "SevereExhaustPollution"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SevereSmog"></see>
     /// </summary>
-    let SevereSmog = Namespaced_IRI.parse _namespace_name "SevereSmog" |> NamespacedName
-
+    let SevereSmog = _prefix "SevereSmog"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SewerOverflow"></see>
     /// </summary>
-    let SewerOverflow =
-        Namespaced_IRI.parse _namespace_name "SewerOverflow" |> NamespacedName
-
+    let SewerOverflow = _prefix "SewerOverflow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Show"></see>
     /// </summary>
-    let Show = Namespaced_IRI.parse _namespace_name "Show" |> NamespacedName
-
+    let Show = _prefix "Show"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ShowJumping"></see>
     /// </summary>
-    let ShowJumping =
-        Namespaced_IRI.parse _namespace_name "ShowJumping" |> NamespacedName
-
+    let ShowJumping = _prefix "ShowJumping"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Showers"></see>
     /// </summary>
-    let Showers = Namespaced_IRI.parse _namespace_name "Showers" |> NamespacedName
-
+    let Showers = _prefix "Showers"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SideCollision"></see>
     /// </summary>
-    let SideCollision =
-        Namespaced_IRI.parse _namespace_name "SideCollision" |> NamespacedName
-
+    let SideCollision = _prefix "SideCollision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SightseersObstructingAccess"></see>
     /// </summary>
-    let SightseersObstructingAccess =
-        Namespaced_IRI.parse _namespace_name "SightseersObstructingAccess" |> NamespacedName
-
+    let SightseersObstructingAccess = _prefix "SightseersObstructingAccess"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SingleAlternateLineTraffic"></see>
     /// </summary>
-    let SingleAlternateLineTraffic =
-        Namespaced_IRI.parse _namespace_name "SingleAlternateLineTraffic" |> NamespacedName
-
+    let SingleAlternateLineTraffic = _prefix "SingleAlternateLineTraffic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Sleet"></see>
     /// </summary>
-    let Sleet = Namespaced_IRI.parse _namespace_name "Sleet" |> NamespacedName
-
+    let Sleet = _prefix "Sleet"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SlipperyRoad"></see>
     /// </summary>
-    let SlipperyRoad =
-        Namespaced_IRI.parse _namespace_name "SlipperyRoad" |> NamespacedName
-
+    let SlipperyRoad = _prefix "SlipperyRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SlowMovingMaintenanceVehicle"></see>
     /// </summary>
-    let SlowMovingMaintenanceVehicle =
-        Namespaced_IRI.parse _namespace_name "SlowMovingMaintenanceVehicle" |> NamespacedName
-
+    let SlowMovingMaintenanceVehicle = _prefix "SlowMovingMaintenanceVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SlowTraffic"></see>
     /// </summary>
-    let SlowTraffic =
-        Namespaced_IRI.parse _namespace_name "SlowTraffic" |> NamespacedName
-
+    let SlowTraffic = _prefix "SlowTraffic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SlowVehicle"></see>
     /// </summary>
-    let SlowVehicle =
-        Namespaced_IRI.parse _namespace_name "SlowVehicle" |> NamespacedName
-
+    let SlowVehicle = _prefix "SlowVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SlushOnRoad"></see>
     /// </summary>
-    let SlushOnRoad =
-        Namespaced_IRI.parse _namespace_name "SlushOnRoad" |> NamespacedName
-
+    let SlushOnRoad = _prefix "SlushOnRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SlushStrings"></see>
     /// </summary>
-    let SlushStrings =
-        Namespaced_IRI.parse _namespace_name "SlushStrings" |> NamespacedName
-
+    let SlushStrings = _prefix "SlushStrings"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SmogAlert"></see>
     /// </summary>
-    let SmogAlert = Namespaced_IRI.parse _namespace_name "SmogAlert" |> NamespacedName
-
+    let SmogAlert = _prefix "SmogAlert"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SmokeHazard"></see>
     /// </summary>
-    let SmokeHazard =
-        Namespaced_IRI.parse _namespace_name "SmokeHazard" |> NamespacedName
-
+    let SmokeHazard = _prefix "SmokeHazard"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SmokeOrFumes"></see>
     /// </summary>
-    let SmokeOrFumes =
-        Namespaced_IRI.parse _namespace_name "SmokeOrFumes" |> NamespacedName
-
+    let SmokeOrFumes = _prefix "SmokeOrFumes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SnowChangingToRain"></see>
     /// </summary>
-    let SnowChangingToRain =
-        Namespaced_IRI.parse _namespace_name "SnowChangingToRain" |> NamespacedName
-
+    let SnowChangingToRain = _prefix "SnowChangingToRain"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SnowDrifts"></see>
     /// </summary>
-    let SnowDrifts = Namespaced_IRI.parse _namespace_name "SnowDrifts" |> NamespacedName
-
+    let SnowDrifts = _prefix "SnowDrifts"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SnowOnPavement"></see>
     /// </summary>
-    let SnowOnPavement =
-        Namespaced_IRI.parse _namespace_name "SnowOnPavement" |> NamespacedName
-
+    let SnowOnPavement = _prefix "SnowOnPavement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SnowOnTheInfrastructure"></see>
     /// </summary>
-    let SnowOnTheInfrastructure =
-        Namespaced_IRI.parse _namespace_name "SnowOnTheInfrastructure" |> NamespacedName
-
+    let SnowOnTheInfrastructure = _prefix "SnowOnTheInfrastructure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Snowfall"></see>
     /// </summary>
-    let Snowfall = Namespaced_IRI.parse _namespace_name "Snowfall" |> NamespacedName
+    let Snowfall = _prefix "Snowfall"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Snowplough"></see>
     /// </summary>
-    let Snowplough = Namespaced_IRI.parse _namespace_name "Snowplough" |> NamespacedName
-
+    let Snowplough = _prefix "Snowplough"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SnowploughsInUse"></see>
     /// </summary>
-    let SnowploughsInUse =
-        Namespaced_IRI.parse _namespace_name "SnowploughsInUse" |> NamespacedName
-
+    let SnowploughsInUse = _prefix "SnowploughsInUse"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SpeedControlSignFailure"></see>
     /// </summary>
-    let SpeedControlSignFailure =
-        Namespaced_IRI.parse _namespace_name "SpeedControlSignFailure" |> NamespacedName
-
+    let SpeedControlSignFailure = _prefix "SpeedControlSignFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SpeedControlSignFault"></see>
     /// </summary>
-    let SpeedControlSignFault =
-        Namespaced_IRI.parse _namespace_name "SpeedControlSignFault" |> NamespacedName
-
+    let SpeedControlSignFault = _prefix "SpeedControlSignFault"
     /// <summary>
     /// Speed management action that is instigated by the network/road operator.
     /// <see href="http://vocab.datex.org/terms#SpeedManagement"></see></summary>
-    let SpeedManagement =
-        Namespaced_IRI.parse _namespace_name "SpeedManagement" |> NamespacedName
-
+    let SpeedManagement = _prefix "SpeedManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SpeedRestriction"></see>
     /// </summary>
-    let SpeedRestriction =
-        Namespaced_IRI.parse _namespace_name "SpeedRestriction" |> NamespacedName
-
+    let SpeedRestriction = _prefix "SpeedRestriction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SportsMeeting"></see>
     /// </summary>
-    let SportsMeeting =
-        Namespaced_IRI.parse _namespace_name "SportsMeeting" |> NamespacedName
-
+    let SportsMeeting = _prefix "SportsMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SprayHazard"></see>
     /// </summary>
-    let SprayHazard =
-        Namespaced_IRI.parse _namespace_name "SprayHazard" |> NamespacedName
-
+    let SprayHazard = _prefix "SprayHazard"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StateOccasion"></see>
     /// </summary>
-    let StateOccasion =
-        Namespaced_IRI.parse _namespace_name "StateOccasion" |> NamespacedName
-
+    let StateOccasion = _prefix "StateOccasion"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StationaryTraffic"></see>
     /// </summary>
-    let StationaryTraffic =
-        Namespaced_IRI.parse _namespace_name "StationaryTraffic" |> NamespacedName
-
+    let StationaryTraffic = _prefix "StationaryTraffic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StormDamage"></see>
     /// </summary>
-    let StormDamage =
-        Namespaced_IRI.parse _namespace_name "StormDamage" |> NamespacedName
-
+    let StormDamage = _prefix "StormDamage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StormForceWinds"></see>
     /// </summary>
-    let StormForceWinds =
-        Namespaced_IRI.parse _namespace_name "StormForceWinds" |> NamespacedName
-
+    let StormForceWinds = _prefix "StormForceWinds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StreetLightingFailure"></see>
     /// </summary>
-    let StreetLightingFailure =
-        Namespaced_IRI.parse _namespace_name "StreetLightingFailure" |> NamespacedName
-
+    let StreetLightingFailure = _prefix "StreetLightingFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StreetLightingFault"></see>
     /// </summary>
-    let StreetLightingFault =
-        Namespaced_IRI.parse _namespace_name "StreetLightingFault" |> NamespacedName
-
+    let StreetLightingFault = _prefix "StreetLightingFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Strike"></see>
     /// </summary>
-    let Strike = Namespaced_IRI.parse _namespace_name "Strike" |> NamespacedName
-
+    let Strike = _prefix "Strike"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StrongGustsOfWind"></see>
     /// </summary>
-    let StrongGustsOfWind =
-        Namespaced_IRI.parse _namespace_name "StrongGustsOfWind" |> NamespacedName
-
+    let StrongGustsOfWind = _prefix "StrongGustsOfWind"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#StrongWinds"></see>
     /// </summary>
-    let StrongWinds =
-        Namespaced_IRI.parse _namespace_name "StrongWinds" |> NamespacedName
-
+    let StrongWinds = _prefix "StrongWinds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Subsidence"></see>
     /// </summary>
-    let Subsidence = Namespaced_IRI.parse _namespace_name "Subsidence" |> NamespacedName
-
+    let Subsidence = _prefix "Subsidence"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SurfaceWater"></see>
     /// </summary>
-    let SurfaceWater =
-        Namespaced_IRI.parse _namespace_name "SurfaceWater" |> NamespacedName
-
+    let SurfaceWater = _prefix "SurfaceWater"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Survey"></see>
     /// </summary>
-    let Survey = Namespaced_IRI.parse _namespace_name "Survey" |> NamespacedName
-
+    let Survey = _prefix "Survey"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SwarmsOfInsects"></see>
     /// </summary>
-    let SwarmsOfInsects =
-        Namespaced_IRI.parse _namespace_name "SwarmsOfInsects" |> NamespacedName
-
+    let SwarmsOfInsects = _prefix "SwarmsOfInsects"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#SweepingOfRoad"></see>
     /// </summary>
-    let SweepingOfRoad =
-        Namespaced_IRI.parse _namespace_name "SweepingOfRoad" |> NamespacedName
-
+    let SweepingOfRoad = _prefix "SweepingOfRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TemperatureFalling"></see>
     /// </summary>
-    let TemperatureFalling =
-        Namespaced_IRI.parse _namespace_name "TemperatureFalling" |> NamespacedName
-
+    let TemperatureFalling = _prefix "TemperatureFalling"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TemporaryTrafficLights"></see>
     /// </summary>
-    let TemporaryTrafficLights =
-        Namespaced_IRI.parse _namespace_name "TemporaryTrafficLights" |> NamespacedName
-
+    let TemporaryTrafficLights = _prefix "TemporaryTrafficLights"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TemporaryTrafficLightsFailure"></see>
     /// </summary>
-    let TemporaryTrafficLightsFailure =
-        Namespaced_IRI.parse _namespace_name "TemporaryTrafficLightsFailure" |> NamespacedName
-
+    let TemporaryTrafficLightsFailure = _prefix "TemporaryTrafficLightsFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TemporaryTrafficLightsFault"></see>
     /// </summary>
-    let TemporaryTrafficLightsFault =
-        Namespaced_IRI.parse _namespace_name "TemporaryTrafficLightsFault" |> NamespacedName
-
+    let TemporaryTrafficLightsFault = _prefix "TemporaryTrafficLightsFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TennisTournament"></see>
     /// </summary>
-    let TennisTournament =
-        Namespaced_IRI.parse _namespace_name "TennisTournament" |> NamespacedName
-
+    let TennisTournament = _prefix "TennisTournament"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TerroristIncident"></see>
     /// </summary>
-    let TerroristIncident =
-        Namespaced_IRI.parse _namespace_name "TerroristIncident" |> NamespacedName
-
+    let TerroristIncident = _prefix "TerroristIncident"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Theft"></see>
     /// </summary>
-    let Theft = Namespaced_IRI.parse _namespace_name "Theft" |> NamespacedName
-
+    let Theft = _prefix "Theft"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Thunderstorms"></see>
     /// </summary>
-    let Thunderstorms =
-        Namespaced_IRI.parse _namespace_name "Thunderstorms" |> NamespacedName
-
+    let Thunderstorms = _prefix "Thunderstorms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TidalFlowLaneInOperation"></see>
     /// </summary>
-    let TidalFlowLaneInOperation =
-        Namespaced_IRI.parse _namespace_name "TidalFlowLaneInOperation" |> NamespacedName
-
+    let TidalFlowLaneInOperation = _prefix "TidalFlowLaneInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TollGatesFailure"></see>
     /// </summary>
-    let TollGatesFailure =
-        Namespaced_IRI.parse _namespace_name "TollGatesFailure" |> NamespacedName
-
+    let TollGatesFailure = _prefix "TollGatesFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TollGatesFault"></see>
     /// </summary>
-    let TollGatesFault =
-        Namespaced_IRI.parse _namespace_name "TollGatesFault" |> NamespacedName
-
+    let TollGatesFault = _prefix "TollGatesFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TollGatesOpen"></see>
     /// </summary>
-    let TollGatesOpen =
-        Namespaced_IRI.parse _namespace_name "TollGatesOpen" |> NamespacedName
-
+    let TollGatesOpen = _prefix "TollGatesOpen"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Tornadoes"></see>
     /// </summary>
-    let Tornadoes = Namespaced_IRI.parse _namespace_name "Tornadoes" |> NamespacedName
+    let Tornadoes = _prefix "Tornadoes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Tournament"></see>
     /// </summary>
-    let Tournament = Namespaced_IRI.parse _namespace_name "Tournament" |> NamespacedName
-
+    let Tournament = _prefix "Tournament"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#ToxicCloudAlert"></see>
     /// </summary>
-    let ToxicCloudAlert =
-        Namespaced_IRI.parse _namespace_name "ToxicCloudAlert" |> NamespacedName
-
+    let ToxicCloudAlert = _prefix "ToxicCloudAlert"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrackLayingVehicle"></see>
     /// </summary>
-    let TrackLayingVehicle =
-        Namespaced_IRI.parse _namespace_name "TrackLayingVehicle" |> NamespacedName
-
+    let TrackLayingVehicle = _prefix "TrackLayingVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TradeFair"></see>
     /// </summary>
-    let TradeFair = Namespaced_IRI.parse _namespace_name "TradeFair" |> NamespacedName
-
+    let TradeFair = _prefix "TradeFair"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficBeingManuallyDirected"></see>
     /// </summary>
-    let TrafficBeingManuallyDirected =
-        Namespaced_IRI.parse _namespace_name "TrafficBeingManuallyDirected" |> NamespacedName
-
+    let TrafficBeingManuallyDirected = _prefix "TrafficBeingManuallyDirected"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficElementEvent"></see>
     /// </summary>
-    let TrafficElementEvent =
-        Namespaced_IRI.parse _namespace_name "TrafficElementEvent" |> NamespacedName
-
+    let TrafficElementEvent = _prefix "TrafficElementEvent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficHeld"></see>
     /// </summary>
-    let TrafficHeld =
-        Namespaced_IRI.parse _namespace_name "TrafficHeld" |> NamespacedName
-
+    let TrafficHeld = _prefix "TrafficHeld"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficLightSetFailure"></see>
     /// </summary>
-    let TrafficLightSetFailure =
-        Namespaced_IRI.parse _namespace_name "TrafficLightSetFailure" |> NamespacedName
-
+    let TrafficLightSetFailure = _prefix "TrafficLightSetFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficLightSetFault"></see>
     /// </summary>
-    let TrafficLightSetFault =
-        Namespaced_IRI.parse _namespace_name "TrafficLightSetFault" |> NamespacedName
-
+    let TrafficLightSetFault = _prefix "TrafficLightSetFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficSignalsFailure"></see>
     /// </summary>
-    let TrafficSignalsFailure =
-        Namespaced_IRI.parse _namespace_name "TrafficSignalsFailure" |> NamespacedName
-
+    let TrafficSignalsFailure = _prefix "TrafficSignalsFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TrafficSignalsFault"></see>
     /// </summary>
-    let TrafficSignalsFault =
-        Namespaced_IRI.parse _namespace_name "TrafficSignalsFault" |> NamespacedName
-
+    let TrafficSignalsFault = _prefix "TrafficSignalsFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TransportOfVip"></see>
     /// </summary>
-    let TransportOfVip =
-        Namespaced_IRI.parse _namespace_name "TransportOfVip" |> NamespacedName
-
+    let TransportOfVip = _prefix "TransportOfVip"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TreeAndVegetationCuttingWork"></see>
     /// </summary>
-    let TreeAndVegetationCuttingWork =
-        Namespaced_IRI.parse _namespace_name "TreeAndVegetationCuttingWork" |> NamespacedName
-
+    let TreeAndVegetationCuttingWork = _prefix "TreeAndVegetationCuttingWork"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TunnelLightFailure"></see>
     /// </summary>
-    let TunnelLightFailure =
-        Namespaced_IRI.parse _namespace_name "TunnelLightFailure" |> NamespacedName
-
+    let TunnelLightFailure = _prefix "TunnelLightFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TunnelLightFault"></see>
     /// </summary>
-    let TunnelLightFault =
-        Namespaced_IRI.parse _namespace_name "TunnelLightFault" |> NamespacedName
-
+    let TunnelLightFault = _prefix "TunnelLightFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TunnelVentilationFailure"></see>
     /// </summary>
-    let TunnelVentilationFailure =
-        Namespaced_IRI.parse _namespace_name "TunnelVentilationFailure" |> NamespacedName
-
+    let TunnelVentilationFailure = _prefix "TunnelVentilationFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TunnelVentilationFault"></see>
     /// </summary>
-    let TunnelVentilationFault =
-        Namespaced_IRI.parse _namespace_name "TunnelVentilationFault" |> NamespacedName
-
+    let TunnelVentilationFault = _prefix "TunnelVentilationFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#TurnAroundInOperation"></see>
     /// </summary>
-    let TurnAroundInOperation =
-        Namespaced_IRI.parse _namespace_name "TurnAroundInOperation" |> NamespacedName
-
+    let TurnAroundInOperation = _prefix "TurnAroundInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#UndefinedAuthorityActivity"></see>
     /// </summary>
-    let UndefinedAuthorityActivity =
-        Namespaced_IRI.parse _namespace_name "UndefinedAuthorityActivity" |> NamespacedName
-
+    let UndefinedAuthorityActivity = _prefix "UndefinedAuthorityActivity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Unknown"></see>
     /// </summary>
-    let Unknown = Namespaced_IRI.parse _namespace_name "Unknown" |> NamespacedName
-
+    let Unknown = _prefix "Unknown"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#UnlitVehicleOnTheRoad"></see>
     /// </summary>
-    let UnlitVehicleOnTheRoad =
-        Namespaced_IRI.parse _namespace_name "UnlitVehicleOnTheRoad" |> NamespacedName
-
+    let UnlitVehicleOnTheRoad = _prefix "UnlitVehicleOnTheRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#UnspecifiedAbnormalTraffic"></see>
     /// </summary>
-    let UnspecifiedAbnormalTraffic =
-        Namespaced_IRI.parse _namespace_name "UnspecifiedAbnormalTraffic" |> NamespacedName
-
+    let UnspecifiedAbnormalTraffic = _prefix "UnspecifiedAbnormalTraffic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#UnspecifiedAlert"></see>
     /// </summary>
-    let UnspecifiedAlert =
-        Namespaced_IRI.parse _namespace_name "UnspecifiedAlert" |> NamespacedName
+    let UnspecifiedAlert = _prefix "UnspecifiedAlert"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#UseOfSpecifiedLanesOrCarriagewaysAllowed"></see>
     /// </summary>
     let UseOfSpecifiedLanesOrCarriagewaysAllowed =
-        Namespaced_IRI.parse _namespace_name "UseOfSpecifiedLanesOrCarriagewaysAllowed" |> NamespacedName
+        _prefix "UseOfSpecifiedLanesOrCarriagewaysAllowed"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VariableMessageSignFailure"></see>
     /// </summary>
-    let VariableMessageSignFailure =
-        Namespaced_IRI.parse _namespace_name "VariableMessageSignFailure" |> NamespacedName
-
+    let VariableMessageSignFailure = _prefix "VariableMessageSignFailure"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VariableMessageSignFault"></see>
     /// </summary>
-    let VariableMessageSignFault =
-        Namespaced_IRI.parse _namespace_name "VariableMessageSignFault" |> NamespacedName
-
+    let VariableMessageSignFault = _prefix "VariableMessageSignFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleCarryingHazardousMaterials"></see>
     /// </summary>
-    let VehicleCarryingHazardousMaterials =
-        Namespaced_IRI.parse _namespace_name "VehicleCarryingHazardousMaterials" |> NamespacedName
-
+    let VehicleCarryingHazardousMaterials = _prefix "VehicleCarryingHazardousMaterials"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleInDifficulty"></see>
     /// </summary>
-    let VehicleInDifficulty =
-        Namespaced_IRI.parse _namespace_name "VehicleInDifficulty" |> NamespacedName
-
+    let VehicleInDifficulty = _prefix "VehicleInDifficulty"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleInspectionCheckPoint"></see>
     /// </summary>
-    let VehicleInspectionCheckPoint =
-        Namespaced_IRI.parse _namespace_name "VehicleInspectionCheckPoint" |> NamespacedName
-
+    let VehicleInspectionCheckPoint = _prefix "VehicleInspectionCheckPoint"
     /// <summary>
     /// An obstruction on the road caused by one or more vehicles.
     /// <see href="http://vocab.datex.org/terms#VehicleObstruction"></see></summary>
-    let VehicleObstruction =
-        Namespaced_IRI.parse _namespace_name "VehicleObstruction" |> NamespacedName
-
+    let VehicleObstruction = _prefix "VehicleObstruction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleOffRoad"></see>
     /// </summary>
-    let VehicleOffRoad =
-        Namespaced_IRI.parse _namespace_name "VehicleOffRoad" |> NamespacedName
-
+    let VehicleOffRoad = _prefix "VehicleOffRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleOnFire"></see>
     /// </summary>
-    let VehicleOnFire =
-        Namespaced_IRI.parse _namespace_name "VehicleOnFire" |> NamespacedName
-
+    let VehicleOnFire = _prefix "VehicleOnFire"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleOnWrongCarriageway"></see>
     /// </summary>
-    let VehicleOnWrongCarriageway =
-        Namespaced_IRI.parse _namespace_name "VehicleOnWrongCarriageway" |> NamespacedName
-
+    let VehicleOnWrongCarriageway = _prefix "VehicleOnWrongCarriageway"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleRecovery"></see>
     /// </summary>
-    let VehicleRecovery =
-        Namespaced_IRI.parse _namespace_name "VehicleRecovery" |> NamespacedName
-
+    let VehicleRecovery = _prefix "VehicleRecovery"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleRepair"></see>
     /// </summary>
-    let VehicleRepair =
-        Namespaced_IRI.parse _namespace_name "VehicleRepair" |> NamespacedName
-
+    let VehicleRepair = _prefix "VehicleRepair"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleSpunAround"></see>
     /// </summary>
-    let VehicleSpunAround =
-        Namespaced_IRI.parse _namespace_name "VehicleSpunAround" |> NamespacedName
-
+    let VehicleSpunAround = _prefix "VehicleSpunAround"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleStorageInOperation"></see>
     /// </summary>
-    let VehicleStorageInOperation =
-        Namespaced_IRI.parse _namespace_name "VehicleStorageInOperation" |> NamespacedName
-
+    let VehicleStorageInOperation = _prefix "VehicleStorageInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleStuck"></see>
     /// </summary>
-    let VehicleStuck =
-        Namespaced_IRI.parse _namespace_name "VehicleStuck" |> NamespacedName
-
+    let VehicleStuck = _prefix "VehicleStuck"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleStuckUnderBridge"></see>
     /// </summary>
-    let VehicleStuckUnderBridge =
-        Namespaced_IRI.parse _namespace_name "VehicleStuckUnderBridge" |> NamespacedName
-
+    let VehicleStuckUnderBridge = _prefix "VehicleStuckUnderBridge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleWeighing"></see>
     /// </summary>
-    let VehicleWeighing =
-        Namespaced_IRI.parse _namespace_name "VehicleWeighing" |> NamespacedName
-
+    let VehicleWeighing = _prefix "VehicleWeighing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleWithOverheightLoad"></see>
     /// </summary>
-    let VehicleWithOverheightLoad =
-        Namespaced_IRI.parse _namespace_name "VehicleWithOverheightLoad" |> NamespacedName
-
+    let VehicleWithOverheightLoad = _prefix "VehicleWithOverheightLoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VehicleWithOverwideLoad"></see>
     /// </summary>
-    let VehicleWithOverwideLoad =
-        Namespaced_IRI.parse _namespace_name "VehicleWithOverwideLoad" |> NamespacedName
-
+    let VehicleWithOverwideLoad = _prefix "VehicleWithOverwideLoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VeryHazardous"></see>
     /// </summary>
-    let VeryHazardous =
-        Namespaced_IRI.parse _namespace_name "VeryHazardous" |> NamespacedName
-
+    let VeryHazardous = _prefix "VeryHazardous"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VeryStrongGustsOfWind"></see>
     /// </summary>
-    let VeryStrongGustsOfWind =
-        Namespaced_IRI.parse _namespace_name "VeryStrongGustsOfWind" |> NamespacedName
-
+    let VeryStrongGustsOfWind = _prefix "VeryStrongGustsOfWind"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VisibilityReduced"></see>
     /// </summary>
-    let VisibilityReduced =
-        Namespaced_IRI.parse _namespace_name "VisibilityReduced" |> NamespacedName
-
+    let VisibilityReduced = _prefix "VisibilityReduced"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WaterSportsMeeting"></see>
     /// </summary>
-    let WaterSportsMeeting =
-        Namespaced_IRI.parse _namespace_name "WaterSportsMeeting" |> NamespacedName
-
+    let WaterSportsMeeting = _prefix "WaterSportsMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WeakBridge"></see>
     /// </summary>
-    let WeakBridge = Namespaced_IRI.parse _namespace_name "WeakBridge" |> NamespacedName
-
+    let WeakBridge = _prefix "WeakBridge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WeatherRelatedConditions"></see>
     /// </summary>
-    let WeatherRelatedConditions =
-        Namespaced_IRI.parse _namespace_name "WeatherRelatedConditions" |> NamespacedName
-
+    let WeatherRelatedConditions = _prefix "WeatherRelatedConditions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WeighInMotion"></see>
     /// </summary>
-    let WeighInMotion =
-        Namespaced_IRI.parse _namespace_name "WeighInMotion" |> NamespacedName
-
+    let WeighInMotion = _prefix "WeighInMotion"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WeightRestrictionInOperation"></see>
     /// </summary>
-    let WeightRestrictionInOperation =
-        Namespaced_IRI.parse _namespace_name "WeightRestrictionInOperation" |> NamespacedName
-
+    let WeightRestrictionInOperation = _prefix "WeightRestrictionInOperation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Wet"></see>
     /// </summary>
-    let Wet = Namespaced_IRI.parse _namespace_name "Wet" |> NamespacedName
-
+    let Wet = _prefix "Wet"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WetAndIcyRoad"></see>
     /// </summary>
-    let WetAndIcyRoad =
-        Namespaced_IRI.parse _namespace_name "WetAndIcyRoad" |> NamespacedName
-
+    let WetAndIcyRoad = _prefix "WetAndIcyRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WetIcyPavement"></see>
     /// </summary>
-    let WetIcyPavement =
-        Namespaced_IRI.parse _namespace_name "WetIcyPavement" |> NamespacedName
-
+    let WetIcyPavement = _prefix "WetIcyPavement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WhiteOut"></see>
     /// </summary>
-    let WhiteOut = Namespaced_IRI.parse _namespace_name "WhiteOut" |> NamespacedName
-
+    let WhiteOut = _prefix "WhiteOut"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WinterConditions"></see>
     /// </summary>
-    let WinterConditions =
-        Namespaced_IRI.parse _namespace_name "WinterConditions" |> NamespacedName
-
+    let WinterConditions = _prefix "WinterConditions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WinterSportsMeeting"></see>
     /// </summary>
-    let WinterSportsMeeting =
-        Namespaced_IRI.parse _namespace_name "WinterSportsMeeting" |> NamespacedName
-
+    let WinterSportsMeeting = _prefix "WinterSportsMeeting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#WinterStorm"></see>
     /// </summary>
-    let WinterStorm =
-        Namespaced_IRI.parse _namespace_name "WinterStorm" |> NamespacedName
-
+    let WinterStorm = _prefix "WinterStorm"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Ontology"></see>
     /// </summary>
-    let Ontology = Namespaced_IRI.parse _namespace_name "Ontology" |> NamespacedName
-
+    let Ontology = _prefix "Ontology"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#abnormalTrafficExtension"></see>
     /// </summary>
-    let abnormalTrafficExtension =
-        Namespaced_IRI.parse _namespace_name "abnormalTrafficExtension" |> NamespacedName
-
+    let abnormalTrafficExtension = _prefix "abnormalTrafficExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ExtensionType"></see>
     /// </summary>
-    let _ExtensionType =
-        Namespaced_IRI.parse _namespace_name "_ExtensionType" |> NamespacedName
-
+    let _ExtensionType = _prefix "_ExtensionType"
     /// <summary>
     /// A characterization of the nature of abnormal traffic flow, i.e. specifically relating to the nature of the traffic movement.
     /// <see href="http://vocab.datex.org/terms#abnormalTrafficType"></see></summary>
-    let abnormalTrafficType =
-        Namespaced_IRI.parse _namespace_name "abnormalTrafficType" |> NamespacedName
-
+    let abnormalTrafficType = _prefix "abnormalTrafficType"
     /// <summary>
     /// The number of vehicles waiting in a queue.
     /// <see href="http://vocab.datex.org/terms#numberOfVehiclesWaiting"></see></summary>
-    let numberOfVehiclesWaiting =
-        Namespaced_IRI.parse _namespace_name "numberOfVehiclesWaiting" |> NamespacedName
-
+    let numberOfVehiclesWaiting = _prefix "numberOfVehiclesWaiting"
     /// <summary>
     /// The length of a queue or the average length of queues in separate lanes due to a situation.
     /// <see href="http://vocab.datex.org/terms#queueLength"></see></summary>
-    let queueLength =
-        Namespaced_IRI.parse _namespace_name "queueLength" |> NamespacedName
-
+    let queueLength = _prefix "queueLength"
     /// <summary>
     /// Assessment of the traffic flow conditions relative to normally expected conditions at this date/time.
     /// <see href="http://vocab.datex.org/terms#relativeTrafficFlow"></see></summary>
-    let relativeTrafficFlow =
-        Namespaced_IRI.parse _namespace_name "relativeTrafficFlow" |> NamespacedName
-
+    let relativeTrafficFlow = _prefix "relativeTrafficFlow"
     /// <summary>
     /// A characterization of the traffic flow.
     /// <see href="http://vocab.datex.org/terms#trafficFlowCharacteristics"></see></summary>
-    let trafficFlowCharacteristics =
-        Namespaced_IRI.parse _namespace_name "trafficFlowCharacteristics" |> NamespacedName
-
+    let trafficFlowCharacteristics = _prefix "trafficFlowCharacteristics"
     /// <summary>
     /// A characterization of the trend in the traffic conditions at the specified location and direction.
     /// <see href="http://vocab.datex.org/terms#trafficTrendType"></see></summary>
-    let trafficTrendType =
-        Namespaced_IRI.parse _namespace_name "trafficTrendType" |> NamespacedName
-
+    let trafficTrendType = _prefix "trafficTrendType"
     /// <summary>
     /// An event which is not planned by the traffic operator, which is affecting, or has the potential to affect traffic flow.
     /// <see href="http://vocab.datex.org/terms#TrafficElement"></see></summary>
-    let TrafficElement =
-        Namespaced_IRI.parse _namespace_name "TrafficElement" |> NamespacedName
-
+    let TrafficElement = _prefix "TrafficElement"
     /// <summary>
     /// Use this class to describe details in case acceptedMeansOfPayment is set to 'paymentCard'.
     /// <see href="http://vocab.datex.org/terms#AcceptedPaymentCards"></see></summary>
-    let AcceptedPaymentCards =
-        Namespaced_IRI.parse _namespace_name "AcceptedPaymentCards" |> NamespacedName
-
+    let AcceptedPaymentCards = _prefix "AcceptedPaymentCards"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#acceptedPaymentCardsExtension"></see>
     /// </summary>
-    let acceptedPaymentCardsExtension =
-        Namespaced_IRI.parse _namespace_name "acceptedPaymentCardsExtension" |> NamespacedName
-
+    let acceptedPaymentCardsExtension = _prefix "acceptedPaymentCardsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#otherPaymentCardBrands"></see>
     /// </summary>
-    let otherPaymentCardBrands =
-        Namespaced_IRI.parse _namespace_name "otherPaymentCardBrands" |> NamespacedName
-
+    let otherPaymentCardBrands = _prefix "otherPaymentCardBrands"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#otherPaymentCards"></see>
     /// </summary>
-    let otherPaymentCards =
-        Namespaced_IRI.parse _namespace_name "otherPaymentCards" |> NamespacedName
-
+    let otherPaymentCards = _prefix "otherPaymentCards"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#paymentCardBrands"></see>
     /// </summary>
-    let paymentCardBrands =
-        Namespaced_IRI.parse _namespace_name "paymentCardBrands" |> NamespacedName
-
+    let paymentCardBrands = _prefix "paymentCardBrands"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#paymentCards"></see>
     /// </summary>
-    let paymentCards =
-        Namespaced_IRI.parse _namespace_name "paymentCards" |> NamespacedName
-
+    let paymentCards = _prefix "paymentCards"
     /// <summary>
     /// A descriptor indicating the most significant factor causing an accident.
     /// <see href="http://vocab.datex.org/terms#accidentCause"></see></summary>
-    let accidentCause =
-        Namespaced_IRI.parse _namespace_name "accidentCause" |> NamespacedName
-
+    let accidentCause = _prefix "accidentCause"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accidentExtension"></see>
     /// </summary>
-    let accidentExtension =
-        Namespaced_IRI.parse _namespace_name "accidentExtension" |> NamespacedName
-
+    let accidentExtension = _prefix "accidentExtension"
     /// <summary>
     /// A characterization of the nature of the accident.
     /// <see href="http://vocab.datex.org/terms#accidentType"></see></summary>
-    let accidentType =
-        Namespaced_IRI.parse _namespace_name "accidentType" |> NamespacedName
-
+    let accidentType = _prefix "accidentType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfPeopleInvolved"></see>
     /// </summary>
-    let groupOfPeopleInvolved =
-        Namespaced_IRI.parse _namespace_name "groupOfPeopleInvolved" |> NamespacedName
-
+    let groupOfPeopleInvolved = _prefix "groupOfPeopleInvolved"
     /// <summary>
     /// Group of people involved in the event having common characteristics and/or status.
     /// <see href="http://vocab.datex.org/terms#GroupOfPeopleInvolved"></see></summary>
-    let GroupOfPeopleInvolved =
-        Namespaced_IRI.parse _namespace_name "GroupOfPeopleInvolved" |> NamespacedName
-
+    let GroupOfPeopleInvolved = _prefix "GroupOfPeopleInvolved"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfVehiclesInvolved"></see>
     /// </summary>
-    let groupOfVehiclesInvolved =
-        Namespaced_IRI.parse _namespace_name "groupOfVehiclesInvolved" |> NamespacedName
-
+    let groupOfVehiclesInvolved = _prefix "groupOfVehiclesInvolved"
     /// <summary>
     /// Group of the vehicles involved having common characteristics and/or status.
     /// <see href="http://vocab.datex.org/terms#GroupOfVehiclesInvolved"></see></summary>
-    let GroupOfVehiclesInvolved =
-        Namespaced_IRI.parse _namespace_name "GroupOfVehiclesInvolved" |> NamespacedName
-
+    let GroupOfVehiclesInvolved = _prefix "GroupOfVehiclesInvolved"
     /// <summary>
     /// The total number of people that are involved.
     /// <see href="http://vocab.datex.org/terms#totalNumberOfPeopleInvolved"></see></summary>
-    let totalNumberOfPeopleInvolved =
-        Namespaced_IRI.parse _namespace_name "totalNumberOfPeopleInvolved" |> NamespacedName
-
+    let totalNumberOfPeopleInvolved = _prefix "totalNumberOfPeopleInvolved"
     /// <summary>
     /// The total number of vehicles that are involved.
     /// <see href="http://vocab.datex.org/terms#totalNumberOfVehiclesInvolved"></see></summary>
-    let totalNumberOfVehiclesInvolved =
-        Namespaced_IRI.parse _namespace_name "totalNumberOfVehiclesInvolved" |> NamespacedName
-
+    let totalNumberOfVehiclesInvolved = _prefix "totalNumberOfVehiclesInvolved"
     /// <summary>
     /// The vehicle involved in the accident.
     /// <see href="http://vocab.datex.org/terms#vehicleInvolved"></see></summary>
-    let vehicleInvolved =
-        Namespaced_IRI.parse _namespace_name "vehicleInvolved" |> NamespacedName
-
+    let vehicleInvolved = _prefix "vehicleInvolved"
     /// <summary>
     /// Details of an individual vehicle.
     /// <see href="http://vocab.datex.org/terms#Vehicle"></see></summary>
-    let Vehicle = Namespaced_IRI.parse _namespace_name "Vehicle" |> NamespacedName
-
+    let Vehicle = _prefix "Vehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#activityExtension"></see>
     /// </summary>
-    let activityExtension =
-        Namespaced_IRI.parse _namespace_name "activityExtension" |> NamespacedName
-
+    let activityExtension = _prefix "activityExtension"
     /// <summary>
     /// Mobility of the activity.
     /// <see href="http://vocab.datex.org/terms#mobilityOfActivity"></see></summary>
-    let mobilityOfActivity =
-        Namespaced_IRI.parse _namespace_name "mobilityOfActivity" |> NamespacedName
-
+    let mobilityOfActivity = _prefix "mobilityOfActivity"
     /// <summary>
     /// An indication of whether the associated instance of a SituationRecord is mobile (e.g. a march or parade moving along a road) or stationary.
     /// <see href="http://vocab.datex.org/terms#Mobility"></see></summary>
-    let Mobility = Namespaced_IRI.parse _namespace_name "Mobility" |> NamespacedName
-
+    let Mobility = _prefix "Mobility"
     /// <summary>
     /// Supplementary positional information which details carriageway and lane locations. Several instances may exist where the element being described extends over more than one carriageway.
     /// <see href="http://vocab.datex.org/terms#AffectedCarriagewayAndLanes"></see></summary>
-    let AffectedCarriagewayAndLanes =
-        Namespaced_IRI.parse _namespace_name "AffectedCarriagewayAndLanes" |> NamespacedName
+    let AffectedCarriagewayAndLanes = _prefix "AffectedCarriagewayAndLanes"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#affectedCarriagewayAndLanesExtension"></see>
     /// </summary>
     let affectedCarriagewayAndLanesExtension =
-        Namespaced_IRI.parse _namespace_name "affectedCarriagewayAndLanesExtension" |> NamespacedName
+        _prefix "affectedCarriagewayAndLanesExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#carriageway"></see>
     /// </summary>
-    let carriageway =
-        Namespaced_IRI.parse _namespace_name "carriageway" |> NamespacedName
-
+    let carriageway = _prefix "carriageway"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#footpath"></see>
     /// </summary>
-    let footpath = Namespaced_IRI.parse _namespace_name "footpath" |> NamespacedName
+    let footpath = _prefix "footpath"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lane"></see>
     /// </summary>
-    let lane = Namespaced_IRI.parse _namespace_name "lane" |> NamespacedName
-
+    let lane = _prefix "lane"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lengthAffected"></see>
     /// </summary>
-    let lengthAffected =
-        Namespaced_IRI.parse _namespace_name "lengthAffected" |> NamespacedName
-
+    let lengthAffected = _prefix "lengthAffected"
     /// <summary>
     /// An area defined by reference to a predefined ALERT-C location table.
     /// <see href="http://vocab.datex.org/terms#AlertCArea"></see></summary>
-    let AlertCArea = Namespaced_IRI.parse _namespace_name "AlertCArea" |> NamespacedName
-
+    let AlertCArea = _prefix "AlertCArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCAreaExtension"></see>
     /// </summary>
-    let alertCAreaExtension =
-        Namespaced_IRI.parse _namespace_name "alertCAreaExtension" |> NamespacedName
-
+    let alertCAreaExtension = _prefix "alertCAreaExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLocationCountryCode"></see>
     /// </summary>
-    let alertCLocationCountryCode =
-        Namespaced_IRI.parse _namespace_name "alertCLocationCountryCode" |> NamespacedName
-
+    let alertCLocationCountryCode = _prefix "alertCLocationCountryCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLocationTableNumber"></see>
     /// </summary>
-    let alertCLocationTableNumber =
-        Namespaced_IRI.parse _namespace_name "alertCLocationTableNumber" |> NamespacedName
-
+    let alertCLocationTableNumber = _prefix "alertCLocationTableNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLocationTableVersion"></see>
     /// </summary>
-    let alertCLocationTableVersion =
-        Namespaced_IRI.parse _namespace_name "alertCLocationTableVersion" |> NamespacedName
-
+    let alertCLocationTableVersion = _prefix "alertCLocationTableVersion"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#areaLocation"></see>
     /// </summary>
-    let areaLocation =
-        Namespaced_IRI.parse _namespace_name "areaLocation" |> NamespacedName
-
+    let areaLocation = _prefix "areaLocation"
     /// <summary>
     /// Identification of a specific point, linear or area location in an ALERT-C location table.
     /// <see href="http://vocab.datex.org/terms#AlertCLocation"></see></summary>
-    let AlertCLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCLocation" |> NamespacedName
-
+    let AlertCLocation = _prefix "AlertCLocation"
     /// <summary>
     /// The direction of traffic flow along the road to which the information relates.
     /// <see href="http://vocab.datex.org/terms#AlertCDirection"></see></summary>
-    let AlertCDirection =
-        Namespaced_IRI.parse _namespace_name "AlertCDirection" |> NamespacedName
-
+    let AlertCDirection = _prefix "AlertCDirection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCDirectionCoded"></see>
     /// </summary>
-    let alertCDirectionCoded =
-        Namespaced_IRI.parse _namespace_name "alertCDirectionCoded" |> NamespacedName
-
+    let alertCDirectionCoded = _prefix "alertCDirectionCoded"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCDirectionExtension"></see>
     /// </summary>
-    let alertCDirectionExtension =
-        Namespaced_IRI.parse _namespace_name "alertCDirectionExtension" |> NamespacedName
-
+    let alertCDirectionExtension = _prefix "alertCDirectionExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCDirectionNamed"></see>
     /// </summary>
-    let alertCDirectionNamed =
-        Namespaced_IRI.parse _namespace_name "alertCDirectionNamed" |> NamespacedName
-
+    let alertCDirectionNamed = _prefix "alertCDirectionNamed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MultilingualString"></see>
     /// </summary>
-    let MultilingualString =
-        Namespaced_IRI.parse _namespace_name "MultilingualString" |> NamespacedName
-
+    let MultilingualString = _prefix "MultilingualString"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCDirectionSense"></see>
     /// </summary>
-    let alertCDirectionSense =
-        Namespaced_IRI.parse _namespace_name "alertCDirectionSense" |> NamespacedName
-
+    let alertCDirectionSense = _prefix "alertCDirectionSense"
     /// <summary>
     /// A linear section along a road defined between two points on the road by reference to a pre-defined ALERT-C location table.
     /// <see href="http://vocab.datex.org/terms#AlertCLinear"></see></summary>
-    let AlertCLinear =
-        Namespaced_IRI.parse _namespace_name "AlertCLinear" |> NamespacedName
-
+    let AlertCLinear = _prefix "AlertCLinear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLinearExtension"></see>
     /// </summary>
-    let alertCLinearExtension =
-        Namespaced_IRI.parse _namespace_name "alertCLinearExtension" |> NamespacedName
-
+    let alertCLinearExtension = _prefix "alertCLinearExtension"
     /// <summary>
     /// A linear section along a road defined by reference to a linear section in a pre-defined ALERT-C location table.
     /// <see href="http://vocab.datex.org/terms#AlertCLinearByCode"></see></summary>
-    let AlertCLinearByCode =
-        Namespaced_IRI.parse _namespace_name "AlertCLinearByCode" |> NamespacedName
-
+    let AlertCLinearByCode = _prefix "AlertCLinearByCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCDirection"></see>
     /// </summary>
-    let alertCDirection =
-        Namespaced_IRI.parse _namespace_name "alertCDirection" |> NamespacedName
-
+    let alertCDirection = _prefix "alertCDirection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLinearByCodeExtension"></see>
     /// </summary>
-    let alertCLinearByCodeExtension =
-        Namespaced_IRI.parse _namespace_name "alertCLinearByCodeExtension" |> NamespacedName
-
+    let alertCLinearByCodeExtension = _prefix "alertCLinearByCodeExtension"
     /// <summary>
     /// Linear location defined by a specific Alert-C location.
     /// <see href="http://vocab.datex.org/terms#locationCodeForLinearLocation"></see></summary>
-    let locationCodeForLinearLocation =
-        Namespaced_IRI.parse _namespace_name "locationCodeForLinearLocation" |> NamespacedName
-
+    let locationCodeForLinearLocation = _prefix "locationCodeForLinearLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLocationExtension"></see>
     /// </summary>
-    let alertCLocationExtension =
-        Namespaced_IRI.parse _namespace_name "alertCLocationExtension" |> NamespacedName
-
+    let alertCLocationExtension = _prefix "alertCLocationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLocationName"></see>
     /// </summary>
-    let alertCLocationName =
-        Namespaced_IRI.parse _namespace_name "alertCLocationName" |> NamespacedName
-
+    let alertCLocationName = _prefix "alertCLocationName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specificLocation"></see>
     /// </summary>
-    let specificLocation =
-        Namespaced_IRI.parse _namespace_name "specificLocation" |> NamespacedName
-
+    let specificLocation = _prefix "specificLocation"
     /// <summary>
     /// A linear section along a road between two points, Primary and Secondary, which are pre-defined in an ALERT-C location table. Direction is FROM the Secondary point TO the Primary point, i.e. the Primary point is downstream of the Secondary point.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod2Linear"></see></summary>
-    let AlertCMethod2Linear =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2Linear" |> NamespacedName
-
+    let AlertCMethod2Linear = _prefix "AlertCMethod2Linear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod2LinearExtension"></see>
     /// </summary>
-    let alertCMethod2LinearExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod2LinearExtension" |> NamespacedName
-
+    let alertCMethod2LinearExtension = _prefix "alertCMethod2LinearExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod2PrimaryPointLocation"></see>
     /// </summary>
-    let alertCMethod2PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "alertCMethod2PrimaryPointLocation" |> NamespacedName
-
+    let alertCMethod2PrimaryPointLocation = _prefix "alertCMethod2PrimaryPointLocation"
     /// <summary>
     /// The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod2PrimaryPointLocation"></see></summary>
-    let AlertCMethod2PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2PrimaryPointLocation" |> NamespacedName
+    let AlertCMethod2PrimaryPointLocation = _prefix "AlertCMethod2PrimaryPointLocation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod2SecondaryPointLocation"></see>
     /// </summary>
     let alertCMethod2SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "alertCMethod2SecondaryPointLocation" |> NamespacedName
+        _prefix "alertCMethod2SecondaryPointLocation"
 
     /// <summary>
     /// The point (called Secondary point) which is at the upstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod2SecondaryPointLocation"></see></summary>
     let AlertCMethod2SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2SecondaryPointLocation" |> NamespacedName
+        _prefix "AlertCMethod2SecondaryPointLocation"
 
     /// <summary>
     /// A single point on the road network defined by reference to a point in a pre-defined ALERT-C location table and which has an associated direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod2Point"></see></summary>
-    let AlertCMethod2Point =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod2Point" |> NamespacedName
-
+    let AlertCMethod2Point = _prefix "AlertCMethod2Point"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod2PointExtension"></see>
     /// </summary>
-    let alertCMethod2PointExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod2PointExtension" |> NamespacedName
-
+    let alertCMethod2PointExtension = _prefix "alertCMethod2PointExtension"
     /// <summary>
     /// A single point on the road network defined by reference to a pre-defined ALERT-C location table and which has an associated direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#AlertCPoint"></see></summary>
-    let AlertCPoint =
-        Namespaced_IRI.parse _namespace_name "AlertCPoint" |> NamespacedName
-
+    let AlertCPoint = _prefix "AlertCPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLocation"></see>
     /// </summary>
-    let alertCLocation =
-        Namespaced_IRI.parse _namespace_name "alertCLocation" |> NamespacedName
+    let alertCLocation = _prefix "alertCLocation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod2PrimaryPointLocationExtension"></see>
     /// </summary>
     let alertCMethod2PrimaryPointLocationExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod2PrimaryPointLocationExtension" |> NamespacedName
+        _prefix "alertCMethod2PrimaryPointLocationExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod2SecondaryPointLocationExtension"></see>
     /// </summary>
     let alertCMethod2SecondaryPointLocationExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod2SecondaryPointLocationExtension" |> NamespacedName
+        _prefix "alertCMethod2SecondaryPointLocationExtension"
 
     /// <summary>
     /// A linear section along a road between two points, Primary and Secondary, which are pre-defined ALERT-C locations plus offset distance. Direction is FROM the Secondary point TO the Primary point, i.e. the Primary point is downstream of the Secondary point.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod4Linear"></see></summary>
-    let AlertCMethod4Linear =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4Linear" |> NamespacedName
-
+    let AlertCMethod4Linear = _prefix "AlertCMethod4Linear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod4LinearExtension"></see>
     /// </summary>
-    let alertCMethod4LinearExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod4LinearExtension" |> NamespacedName
-
+    let alertCMethod4LinearExtension = _prefix "alertCMethod4LinearExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod4PrimaryPointLocation"></see>
     /// </summary>
-    let alertCMethod4PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "alertCMethod4PrimaryPointLocation" |> NamespacedName
-
+    let alertCMethod4PrimaryPointLocation = _prefix "alertCMethod4PrimaryPointLocation"
     /// <summary>
     /// The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table plus a non-negative offset distance.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod4PrimaryPointLocation"></see></summary>
-    let AlertCMethod4PrimaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4PrimaryPointLocation" |> NamespacedName
+    let AlertCMethod4PrimaryPointLocation = _prefix "AlertCMethod4PrimaryPointLocation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod4SecondaryPointLocation"></see>
     /// </summary>
     let alertCMethod4SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "alertCMethod4SecondaryPointLocation" |> NamespacedName
+        _prefix "alertCMethod4SecondaryPointLocation"
 
     /// <summary>
     /// The point (called Secondary point) which is at the upstream end of a linear road section. The point is specified by a reference to a point in a pre-defined Alert-C location table plus a non-negative offset distance.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod4SecondaryPointLocation"></see></summary>
     let AlertCMethod4SecondaryPointLocation =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4SecondaryPointLocation" |> NamespacedName
+        _prefix "AlertCMethod4SecondaryPointLocation"
 
     /// <summary>
     /// A single point on the road network defined by reference to a point in a pre-defined ALERT-C location table plus an offset distance and which has an associated direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#AlertCMethod4Point"></see></summary>
-    let AlertCMethod4Point =
-        Namespaced_IRI.parse _namespace_name "AlertCMethod4Point" |> NamespacedName
-
+    let AlertCMethod4Point = _prefix "AlertCMethod4Point"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod4PointExtension"></see>
     /// </summary>
-    let alertCMethod4PointExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod4PointExtension" |> NamespacedName
+    let alertCMethod4PointExtension = _prefix "alertCMethod4PointExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod4PrimaryPointLocationExtension"></see>
     /// </summary>
     let alertCMethod4PrimaryPointLocationExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod4PrimaryPointLocationExtension" |> NamespacedName
+        _prefix "alertCMethod4PrimaryPointLocationExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#offsetDistance"></see>
     /// </summary>
-    let offsetDistance =
-        Namespaced_IRI.parse _namespace_name "offsetDistance" |> NamespacedName
-
+    let offsetDistance = _prefix "offsetDistance"
     /// <summary>
     /// The non negative offset distance from the ALERT-C referenced point to the actual point.
     /// <see href="http://vocab.datex.org/terms#OffsetDistance"></see></summary>
-    let OffsetDistance =
-        Namespaced_IRI.parse _namespace_name "OffsetDistance" |> NamespacedName
+    let OffsetDistance = _prefix "OffsetDistance"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCMethod4SecondaryPointLocationExtension"></see>
     /// </summary>
     let alertCMethod4SecondaryPointLocationExtension =
-        Namespaced_IRI.parse _namespace_name "alertCMethod4SecondaryPointLocationExtension" |> NamespacedName
+        _prefix "alertCMethod4SecondaryPointLocationExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCPointExtension"></see>
     /// </summary>
-    let alertCPointExtension =
-        Namespaced_IRI.parse _namespace_name "alertCPointExtension" |> NamespacedName
-
+    let alertCPointExtension = _prefix "alertCPointExtension"
     /// <summary>
     /// Indicates whether the identified animals are dead (immobile) or alive (potentially mobile).
     /// <see href="http://vocab.datex.org/terms#alive"></see></summary>
-    let alive = Namespaced_IRI.parse _namespace_name "alive" |> NamespacedName
+    let alive = _prefix "alive"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#animalPresenceObstructionExtension"></see>
     /// </summary>
     let animalPresenceObstructionExtension =
-        Namespaced_IRI.parse _namespace_name "animalPresenceObstructionExtension" |> NamespacedName
+        _prefix "animalPresenceObstructionExtension"
 
     /// <summary>
     /// Indicates the nature of animals present on or near the roadway.
     /// <see href="http://vocab.datex.org/terms#animalPresenceType"></see></summary>
-    let animalPresenceType =
-        Namespaced_IRI.parse _namespace_name "animalPresenceType" |> NamespacedName
-
+    let animalPresenceType = _prefix "animalPresenceType"
     /// <summary>
     /// A measured or calculated value of the application rate of a substance.
     /// <see href="http://vocab.datex.org/terms#ApplicationRateValue"></see></summary>
-    let ApplicationRateValue =
-        Namespaced_IRI.parse _namespace_name "ApplicationRateValue" |> NamespacedName
-
+    let ApplicationRateValue = _prefix "ApplicationRateValue"
     /// <summary>
     /// A value of the rate of application of a substance expressed in kilogrammes per square metre.
     /// <see href="http://vocab.datex.org/terms#applicationRate"></see></summary>
-    let applicationRate =
-        Namespaced_IRI.parse _namespace_name "applicationRate" |> NamespacedName
-
+    let applicationRate = _prefix "applicationRate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicationRateValueExtension"></see>
     /// </summary>
-    let applicationRateValueExtension =
-        Namespaced_IRI.parse _namespace_name "applicationRateValueExtension" |> NamespacedName
-
+    let applicationRateValueExtension = _prefix "applicationRateValueExtension"
     /// <summary>
     /// A data value of something that can be measured or calculated. Any provided meta-data values specified in the attributes override any specified generic characteristics such as defined for a specific measurement in the MeasurementSiteTable.
     /// <see href="http://vocab.datex.org/terms#DataValue"></see></summary>
-    let DataValue = Namespaced_IRI.parse _namespace_name "DataValue" |> NamespacedName
+    let DataValue = _prefix "DataValue"
     /// <summary>
     /// A geographic or geometric defined area which may be qualified by height information to provide additional geospatial discrimination (e.g. for snow in an area but only above a certain altitude).
     /// <see href="http://vocab.datex.org/terms#Area"></see></summary>
-    let Area = Namespaced_IRI.parse _namespace_name "Area" |> NamespacedName
+    let Area = _prefix "Area"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCArea"></see>
     /// </summary>
-    let alertCArea = Namespaced_IRI.parse _namespace_name "alertCArea" |> NamespacedName
-
+    let alertCArea = _prefix "alertCArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#areaExtension"></see>
     /// </summary>
-    let areaExtension =
-        Namespaced_IRI.parse _namespace_name "areaExtension" |> NamespacedName
-
+    let areaExtension = _prefix "areaExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_AreaExtensionType"></see>
     /// </summary>
-    let _AreaExtensionType =
-        Namespaced_IRI.parse _namespace_name "_AreaExtensionType" |> NamespacedName
-
+    let _AreaExtensionType = _prefix "_AreaExtensionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegAreaLocation"></see>
     /// </summary>
-    let tpegAreaLocation =
-        Namespaced_IRI.parse _namespace_name "tpegAreaLocation" |> NamespacedName
-
+    let tpegAreaLocation = _prefix "tpegAreaLocation"
     /// <summary>
     /// A geographic or geometric area defined by a TPEG-Loc structure which may include height information for additional geospatial discrimination.
     /// <see href="http://vocab.datex.org/terms#TpegAreaLocation"></see></summary>
-    let TpegAreaLocation =
-        Namespaced_IRI.parse _namespace_name "TpegAreaLocation" |> NamespacedName
-
+    let TpegAreaLocation = _prefix "TpegAreaLocation"
     /// <summary>
     /// The specification of a location either on a network (as a point or a linear location) or as an area. This may be provided in one or more referencing systems.
     /// <see href="http://vocab.datex.org/terms#Location"></see></summary>
-    let Location = Namespaced_IRI.parse _namespace_name "Location" |> NamespacedName
-
+    let Location = _prefix "Location"
     /// <summary>
     /// The specification of the destination of a defined route or itinerary which is an area.
     /// <see href="http://vocab.datex.org/terms#AreaDestination"></see></summary>
-    let AreaDestination =
-        Namespaced_IRI.parse _namespace_name "AreaDestination" |> NamespacedName
-
+    let AreaDestination = _prefix "AreaDestination"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#area"></see>
     /// </summary>
-    let area = Namespaced_IRI.parse _namespace_name "area" |> NamespacedName
-
+    let area = _prefix "area"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#areaDestinationExtension"></see>
     /// </summary>
-    let areaDestinationExtension =
-        Namespaced_IRI.parse _namespace_name "areaDestinationExtension" |> NamespacedName
-
+    let areaDestinationExtension = _prefix "areaDestinationExtension"
     /// <summary>
     /// The specification a destination. This may be either a point location or an area location.
     /// <see href="http://vocab.datex.org/terms#Destination"></see></summary>
-    let Destination =
-        Namespaced_IRI.parse _namespace_name "Destination" |> NamespacedName
-
+    let Destination = _prefix "Destination"
     /// <summary>
     /// Extension class for area used in parking publication extension.
     /// <see href="http://vocab.datex.org/terms#AreaExtended"></see></summary>
-    let AreaExtended =
-        Namespaced_IRI.parse _namespace_name "AreaExtended" |> NamespacedName
-
+    let AreaExtended = _prefix "AreaExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#namedArea"></see>
     /// </summary>
-    let namedArea = Namespaced_IRI.parse _namespace_name "namedArea" |> NamespacedName
+    let namedArea = _prefix "namedArea"
     /// <summary>
     /// An area defined by a name and/or in terms of known boundaries, such as country or county boundaries or allocated control area of particular authority. The attributes do not form a union; instead, the smallest intersection forms the resulting area.
     /// <see href="http://vocab.datex.org/terms#NamedArea"></see></summary>
-    let NamedArea = Namespaced_IRI.parse _namespace_name "NamedArea" |> NamespacedName
-
+    let NamedArea = _prefix "NamedArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#polygonArea"></see>
     /// </summary>
-    let polygonArea =
-        Namespaced_IRI.parse _namespace_name "polygonArea" |> NamespacedName
-
+    let polygonArea = _prefix "polygonArea"
     /// <summary>
     /// defines points for a closed polygon-shape describing the area
     /// <see href="http://vocab.datex.org/terms#PolygonArea"></see></summary>
-    let PolygonArea =
-        Namespaced_IRI.parse _namespace_name "PolygonArea" |> NamespacedName
-
+    let PolygonArea = _prefix "PolygonArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#authorityOperationExtension"></see>
     /// </summary>
-    let authorityOperationExtension =
-        Namespaced_IRI.parse _namespace_name "authorityOperationExtension" |> NamespacedName
-
+    let authorityOperationExtension = _prefix "authorityOperationExtension"
     /// <summary>
     /// Type of authority initiated operation or activity that could disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#authorityOperationType"></see></summary>
-    let authorityOperationType =
-        Namespaced_IRI.parse _namespace_name "authorityOperationType" |> NamespacedName
-
+    let authorityOperationType = _prefix "authorityOperationType"
     /// <summary>
     /// A measured or calculated value of the flow rate of vehicle axles.
     /// <see href="http://vocab.datex.org/terms#AxleFlowValue"></see></summary>
-    let AxleFlowValue =
-        Namespaced_IRI.parse _namespace_name "AxleFlowValue" |> NamespacedName
-
+    let AxleFlowValue = _prefix "AxleFlowValue"
     /// <summary>
     /// A value of the flow rate of vehicle axles expressed in axles per hour.
     /// <see href="http://vocab.datex.org/terms#axleFlowRate"></see></summary>
-    let axleFlowRate =
-        Namespaced_IRI.parse _namespace_name "axleFlowRate" |> NamespacedName
-
+    let axleFlowRate = _prefix "axleFlowRate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleFlowValueExtension"></see>
     /// </summary>
-    let axleFlowValueExtension =
-        Namespaced_IRI.parse _namespace_name "axleFlowValueExtension" |> NamespacedName
-
+    let axleFlowValueExtension = _prefix "axleFlowValueExtension"
     /// <summary>
     /// The spacing details between the axle sets of an individual vehicle numbered from the front to the back of the vehicle.
     /// <see href="http://vocab.datex.org/terms#AxleSpacing"></see></summary>
-    let AxleSpacing =
-        Namespaced_IRI.parse _namespace_name "AxleSpacing" |> NamespacedName
-
+    let AxleSpacing = _prefix "AxleSpacing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleSpacing"></see>
     /// </summary>
-    let axleSpacing =
-        Namespaced_IRI.parse _namespace_name "axleSpacing" |> NamespacedName
-
+    let axleSpacing = _prefix "axleSpacing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleSpacingExtension"></see>
     /// </summary>
-    let axleSpacingExtension =
-        Namespaced_IRI.parse _namespace_name "axleSpacingExtension" |> NamespacedName
-
+    let axleSpacingExtension = _prefix "axleSpacingExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleSpacingSequenceIdentifier"></see>
     /// </summary>
-    let axleSpacingSequenceIdentifier =
-        Namespaced_IRI.parse _namespace_name "axleSpacingSequenceIdentifier" |> NamespacedName
-
+    let axleSpacingSequenceIdentifier = _prefix "axleSpacingSequenceIdentifier"
     /// <summary>
     /// The weight details of a specific axle on the vehicle.
     /// <see href="http://vocab.datex.org/terms#AxleWeight"></see></summary>
-    let AxleWeight = Namespaced_IRI.parse _namespace_name "AxleWeight" |> NamespacedName
-
+    let AxleWeight = _prefix "AxleWeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axlePositionIdentifier"></see>
     /// </summary>
-    let axlePositionIdentifier =
-        Namespaced_IRI.parse _namespace_name "axlePositionIdentifier" |> NamespacedName
-
+    let axlePositionIdentifier = _prefix "axlePositionIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleWeight"></see>
     /// </summary>
-    let axleWeight = Namespaced_IRI.parse _namespace_name "axleWeight" |> NamespacedName
-
+    let axleWeight = _prefix "axleWeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleWeightExtension"></see>
     /// </summary>
-    let axleWeightExtension =
-        Namespaced_IRI.parse _namespace_name "axleWeightExtension" |> NamespacedName
-
+    let axleWeightExtension = _prefix "axleWeightExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maximumPermittedAxleWeight"></see>
     /// </summary>
-    let maximumPermittedAxleWeight =
-        Namespaced_IRI.parse _namespace_name "maximumPermittedAxleWeight" |> NamespacedName
-
+    let maximumPermittedAxleWeight = _prefix "maximumPermittedAxleWeight"
     /// <summary>
     /// Data that is either measured or calculated (elaborated) at the same time or over the same time period.
     /// <see href="http://vocab.datex.org/terms#BasicData"></see></summary>
-    let BasicData = Namespaced_IRI.parse _namespace_name "BasicData" |> NamespacedName
+    let BasicData = _prefix "BasicData"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementOrCalculatedTimePrecision"></see>
     /// </summary>
     let measurementOrCalculatedTimePrecision =
-        Namespaced_IRI.parse _namespace_name "measurementOrCalculatedTimePrecision" |> NamespacedName
+        _prefix "measurementOrCalculatedTimePrecision"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#basicDataExtension"></see>
     /// </summary>
-    let basicDataExtension =
-        Namespaced_IRI.parse _namespace_name "basicDataExtension" |> NamespacedName
-
+    let basicDataExtension = _prefix "basicDataExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementOrCalculationPeriod"></see>
     /// </summary>
-    let measurementOrCalculationPeriod =
-        Namespaced_IRI.parse _namespace_name "measurementOrCalculationPeriod" |> NamespacedName
-
+    let measurementOrCalculationPeriod = _prefix "measurementOrCalculationPeriod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementOrCalculationTime"></see>
     /// </summary>
-    let measurementOrCalculationTime =
-        Namespaced_IRI.parse _namespace_name "measurementOrCalculationTime" |> NamespacedName
-
+    let measurementOrCalculationTime = _prefix "measurementOrCalculationTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pertinentLocation"></see>
     /// </summary>
-    let pertinentLocation =
-        Namespaced_IRI.parse _namespace_name "pertinentLocation" |> NamespacedName
-
+    let pertinentLocation = _prefix "pertinentLocation"
     /// <summary>
     /// One or more physically separate locations. Multiple locations may be related, as in an itinerary (or route), or may be unrelated. It is not for identifying the same physical location using different Location objects for different referencing systems.
     /// <see href="http://vocab.datex.org/terms#GroupOfLocations"></see></summary>
-    let GroupOfLocations =
-        Namespaced_IRI.parse _namespace_name "GroupOfLocations" |> NamespacedName
-
+    let GroupOfLocations = _prefix "GroupOfLocations"
     /// <summary>
     /// Provides information on the status of one or more car parks.
     /// <see href="http://vocab.datex.org/terms#CarParks"></see></summary>
-    let CarParks = Namespaced_IRI.parse _namespace_name "CarParks" |> NamespacedName
-
+    let CarParks = _prefix "CarParks"
     /// <summary>
     /// The configuration/layout of a car park.
     /// <see href="http://vocab.datex.org/terms#carParkConfiguration"></see></summary>
-    let carParkConfiguration =
-        Namespaced_IRI.parse _namespace_name "carParkConfiguration" |> NamespacedName
-
+    let carParkConfiguration = _prefix "carParkConfiguration"
     /// <summary>
     /// The identity of one or a group of car parks.
     /// <see href="http://vocab.datex.org/terms#carParkIdentity"></see></summary>
-    let carParkIdentity =
-        Namespaced_IRI.parse _namespace_name "carParkIdentity" |> NamespacedName
-
+    let carParkIdentity = _prefix "carParkIdentity"
     /// <summary>
     /// The percentage value of car parking spaces occupied.
     /// <see href="http://vocab.datex.org/terms#carParkOccupancy"></see></summary>
-    let carParkOccupancy =
-        Namespaced_IRI.parse _namespace_name "carParkOccupancy" |> NamespacedName
-
+    let carParkOccupancy = _prefix "carParkOccupancy"
     /// <summary>
     /// Indicates the status of one or more specified car parks.
     /// <see href="http://vocab.datex.org/terms#carParkStatus"></see></summary>
-    let carParkStatus =
-        Namespaced_IRI.parse _namespace_name "carParkStatus" |> NamespacedName
-
+    let carParkStatus = _prefix "carParkStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#carParksExtension"></see>
     /// </summary>
-    let carParksExtension =
-        Namespaced_IRI.parse _namespace_name "carParksExtension" |> NamespacedName
-
+    let carParksExtension = _prefix "carParksExtension"
     /// <summary>
     /// The rate at which vehicles are exiting the car park.
     /// <see href="http://vocab.datex.org/terms#exitRate"></see></summary>
-    let exitRate = Namespaced_IRI.parse _namespace_name "exitRate" |> NamespacedName
+    let exitRate = _prefix "exitRate"
     /// <summary>
     /// The rate at which vehicles are entering the car park.
     /// <see href="http://vocab.datex.org/terms#fillRate"></see></summary>
-    let fillRate = Namespaced_IRI.parse _namespace_name "fillRate" |> NamespacedName
-
+    let fillRate = _prefix "fillRate"
     /// <summary>
     /// Indicates the number of vacant parking spaces available in a specified parking area.
     /// <see href="http://vocab.datex.org/terms#numberOfVacantParkingSpaces"></see></summary>
-    let numberOfVacantParkingSpaces =
-        Namespaced_IRI.parse _namespace_name "numberOfVacantParkingSpaces" |> NamespacedName
-
+    let numberOfVacantParkingSpaces = _prefix "numberOfVacantParkingSpaces"
     /// <summary>
     /// Number of currently occupied spaces.
     /// <see href="http://vocab.datex.org/terms#occupiedSpaces"></see></summary>
-    let occupiedSpaces =
-        Namespaced_IRI.parse _namespace_name "occupiedSpaces" |> NamespacedName
-
+    let occupiedSpaces = _prefix "occupiedSpaces"
     /// <summary>
     /// The current queuing time (duration) for entering the car park.
     /// <see href="http://vocab.datex.org/terms#queuingTime"></see></summary>
-    let queuingTime =
-        Namespaced_IRI.parse _namespace_name "queuingTime" |> NamespacedName
-
+    let queuingTime = _prefix "queuingTime"
     /// <summary>
     /// Total number of car parking spaces.
     /// <see href="http://vocab.datex.org/terms#totalCapacity"></see></summary>
-    let totalCapacity =
-        Namespaced_IRI.parse _namespace_name "totalCapacity" |> NamespacedName
-
+    let totalCapacity = _prefix "totalCapacity"
     /// <summary>
     /// Information about an event which is not on the road, but which may influence the behaviour of drivers and hence the characteristics of the traffic flow.
     /// <see href="http://vocab.datex.org/terms#NonRoadEventInformation"></see></summary>
-    let NonRoadEventInformation =
-        Namespaced_IRI.parse _namespace_name "NonRoadEventInformation" |> NamespacedName
-
+    let NonRoadEventInformation = _prefix "NonRoadEventInformation"
     /// <summary>
     /// Identification of the supplier's data catalogue in a data exchange context.
     /// <see href="http://vocab.datex.org/terms#CatalogueReference"></see></summary>
-    let CatalogueReference =
-        Namespaced_IRI.parse _namespace_name "CatalogueReference" |> NamespacedName
-
+    let CatalogueReference = _prefix "CatalogueReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#catalogueReferenceExtension"></see>
     /// </summary>
-    let catalogueReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "catalogueReferenceExtension" |> NamespacedName
-
+    let catalogueReferenceExtension = _prefix "catalogueReferenceExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#keyCatalogueReference"></see>
     /// </summary>
-    let keyCatalogueReference =
-        Namespaced_IRI.parse _namespace_name "keyCatalogueReference" |> NamespacedName
-
+    let keyCatalogueReference = _prefix "keyCatalogueReference"
     /// <summary>
     /// Contains details of the cause of a record within a situation
     /// <see href="http://vocab.datex.org/terms#Cause"></see></summary>
-    let Cause = Namespaced_IRI.parse _namespace_name "Cause" |> NamespacedName
-
+    let Cause = _prefix "Cause"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#causeExtension"></see>
     /// </summary>
-    let causeExtension =
-        Namespaced_IRI.parse _namespace_name "causeExtension" |> NamespacedName
-
+    let causeExtension = _prefix "causeExtension"
     /// <summary>
     /// A particular charge for a specified interval belonging a charge band.
     /// <see href="http://vocab.datex.org/terms#Charge"></see></summary>
-    let Charge = Namespaced_IRI.parse _namespace_name "Charge" |> NamespacedName
+    let Charge = _prefix "Charge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#charge"></see>
     /// </summary>
-    let charge = Namespaced_IRI.parse _namespace_name "charge" |> NamespacedName
-
+    let charge = _prefix "charge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeExtension"></see>
     /// </summary>
-    let chargeExtension =
-        Namespaced_IRI.parse _namespace_name "chargeExtension" |> NamespacedName
-
+    let chargeExtension = _prefix "chargeExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeInterval"></see>
     /// </summary>
-    let chargeInterval =
-        Namespaced_IRI.parse _namespace_name "chargeInterval" |> NamespacedName
-
+    let chargeInterval = _prefix "chargeInterval"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeOrderIndex"></see>
     /// </summary>
-    let chargeOrderIndex =
-        Namespaced_IRI.parse _namespace_name "chargeOrderIndex" |> NamespacedName
-
+    let chargeOrderIndex = _prefix "chargeOrderIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeType"></see>
     /// </summary>
-    let chargeType = Namespaced_IRI.parse _namespace_name "chargeType" |> NamespacedName
-
+    let chargeType = _prefix "chargeType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeTypeDescription"></see>
     /// </summary>
-    let chargeTypeDescription =
-        Namespaced_IRI.parse _namespace_name "chargeTypeDescription" |> NamespacedName
-
+    let chargeTypeDescription = _prefix "chargeTypeDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxIterationsOfCharge"></see>
     /// </summary>
-    let maxIterationsOfCharge =
-        Namespaced_IRI.parse _namespace_name "maxIterationsOfCharge" |> NamespacedName
-
+    let maxIterationsOfCharge = _prefix "maxIterationsOfCharge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#minIterationsOfCharge"></see>
     /// </summary>
-    let minIterationsOfCharge =
-        Namespaced_IRI.parse _namespace_name "minIterationsOfCharge" |> NamespacedName
-
+    let minIterationsOfCharge = _prefix "minIterationsOfCharge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#timePeriodOfDay"></see>
     /// </summary>
-    let timePeriodOfDay =
-        Namespaced_IRI.parse _namespace_name "timePeriodOfDay" |> NamespacedName
-
+    let timePeriodOfDay = _prefix "timePeriodOfDay"
     /// <summary>
     /// Specification of a continuous period of time within a 24 hour period.
     /// <see href="http://vocab.datex.org/terms#TimePeriodOfDay"></see></summary>
-    let TimePeriodOfDay =
-        Namespaced_IRI.parse _namespace_name "TimePeriodOfDay" |> NamespacedName
-
+    let TimePeriodOfDay = _prefix "TimePeriodOfDay"
     /// <summary>
     /// A charge band in accordance with the specified conditions, possibly up to a maximum duration, during a specified period and for a vehicle of specified characteristics (in case of parking).
     /// <see href="http://vocab.datex.org/terms#ChargeBand"></see></summary>
-    let ChargeBand = Namespaced_IRI.parse _namespace_name "ChargeBand" |> NamespacedName
+    let ChargeBand = _prefix "ChargeBand"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#version"></see>
     /// </summary>
-    let version = Namespaced_IRI.parse _namespace_name "version" |> NamespacedName
+    let version = _prefix "version"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#id"></see>
     /// </summary>
-    let id = Namespaced_IRI.parse _namespace_name "id" |> NamespacedName
-
+    let id = _prefix "id"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicableForPeriod"></see>
     /// </summary>
-    let applicableForPeriod =
-        Namespaced_IRI.parse _namespace_name "applicableForPeriod" |> NamespacedName
-
+    let applicableForPeriod = _prefix "applicableForPeriod"
     /// <summary>
     /// A continuous or discontinuous period of validity defined by overall bounding start and end times and the possible intersection of valid periods (potentially recurring) with the complement of exception periods (also potentially recurring).
     /// <see href="http://vocab.datex.org/terms#OverallPeriod"></see></summary>
-    let OverallPeriod =
-        Namespaced_IRI.parse _namespace_name "OverallPeriod" |> NamespacedName
-
+    let OverallPeriod = _prefix "OverallPeriod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicableForUser"></see>
     /// </summary>
-    let applicableForUser =
-        Namespaced_IRI.parse _namespace_name "applicableForUser" |> NamespacedName
-
+    let applicableForUser = _prefix "applicableForUser"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicableForVehicles"></see>
     /// </summary>
-    let applicableForVehicles =
-        Namespaced_IRI.parse _namespace_name "applicableForVehicles" |> NamespacedName
-
+    let applicableForVehicles = _prefix "applicableForVehicles"
     /// <summary>
     /// The characteristics of a vehicle, e.g. lorry of gross weight greater than 30 tonnes.
     /// <see href="http://vocab.datex.org/terms#VehicleCharacteristics"></see></summary>
-    let VehicleCharacteristics =
-        Namespaced_IRI.parse _namespace_name "VehicleCharacteristics" |> NamespacedName
-
+    let VehicleCharacteristics = _prefix "VehicleCharacteristics"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeBandExtension"></see>
     /// </summary>
-    let chargeBandExtension =
-        Namespaced_IRI.parse _namespace_name "chargeBandExtension" |> NamespacedName
-
+    let chargeBandExtension = _prefix "chargeBandExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeBandName"></see>
     /// </summary>
-    let chargeBandName =
-        Namespaced_IRI.parse _namespace_name "chargeBandName" |> NamespacedName
-
+    let chargeBandName = _prefix "chargeBandName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeCurrency"></see>
     /// </summary>
-    let chargeCurrency =
-        Namespaced_IRI.parse _namespace_name "chargeCurrency" |> NamespacedName
-
+    let chargeCurrency = _prefix "chargeCurrency"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maximumDuration"></see>
     /// </summary>
-    let maximumDuration =
-        Namespaced_IRI.parse _namespace_name "maximumDuration" |> NamespacedName
-
+    let maximumDuration = _prefix "maximumDuration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPermit"></see>
     /// </summary>
-    let parkingPermit =
-        Namespaced_IRI.parse _namespace_name "parkingPermit" |> NamespacedName
-
+    let parkingPermit = _prefix "parkingPermit"
     /// <summary>
     /// A permission for parking.
     /// <see href="http://vocab.datex.org/terms#ParkingPermit"></see></summary>
-    let ParkingPermit =
-        Namespaced_IRI.parse _namespace_name "ParkingPermit" |> NamespacedName
-
+    let ParkingPermit = _prefix "ParkingPermit"
     /// <summary>
     /// Using (a) prior defined charge band(s), identified by its reference.
     /// <see href="http://vocab.datex.org/terms#ChargeBandByReference"></see></summary>
-    let ChargeBandByReference =
-        Namespaced_IRI.parse _namespace_name "ChargeBandByReference" |> NamespacedName
-
+    let ChargeBandByReference = _prefix "ChargeBandByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeBandByReferenceExtension"></see>
     /// </summary>
-    let chargeBandByReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "chargeBandByReferenceExtension" |> NamespacedName
-
+    let chargeBandByReferenceExtension = _prefix "chargeBandByReferenceExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeBandReference"></see>
     /// </summary>
-    let chargeBandReference =
-        Namespaced_IRI.parse _namespace_name "chargeBandReference" |> NamespacedName
-
+    let chargeBandReference = _prefix "chargeBandReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ChargeBandVersionedReference"></see>
     /// </summary>
-    let _ChargeBandVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_ChargeBandVersionedReference" |> NamespacedName
-
+    let _ChargeBandVersionedReference = _prefix "_ChargeBandVersionedReference"
     /// <summary>
     /// A free text comment with an optional date/time stamp that can be used by the operator to convey un-coded observations/information.
     /// <see href="http://vocab.datex.org/terms#Comment"></see></summary>
-    let Comment = Namespaced_IRI.parse _namespace_name "Comment" |> NamespacedName
+    let Comment = _prefix "Comment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#comment"></see>
     /// </summary>
-    let comment = Namespaced_IRI.parse _namespace_name "comment" |> NamespacedName
-
+    let comment = _prefix "comment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#commentDateTime"></see>
     /// </summary>
-    let commentDateTime =
-        Namespaced_IRI.parse _namespace_name "commentDateTime" |> NamespacedName
-
+    let commentDateTime = _prefix "commentDateTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#commentExtension"></see>
     /// </summary>
-    let commentExtension =
-        Namespaced_IRI.parse _namespace_name "commentExtension" |> NamespacedName
-
+    let commentExtension = _prefix "commentExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#commentType"></see>
     /// </summary>
-    let commentType =
-        Namespaced_IRI.parse _namespace_name "commentType" |> NamespacedName
-
+    let commentType = _prefix "commentType"
     /// <summary>
     /// A measured or calculated value of the concentration of vehicles on a unit stretch of road in a given direction.
     /// <see href="http://vocab.datex.org/terms#ConcentrationOfVehiclesValue"></see></summary>
-    let ConcentrationOfVehiclesValue =
-        Namespaced_IRI.parse _namespace_name "ConcentrationOfVehiclesValue" |> NamespacedName
-
+    let ConcentrationOfVehiclesValue = _prefix "ConcentrationOfVehiclesValue"
     /// <summary>
     /// A value of traffic density expressed in the number of vehicles per kilometre of road.
     /// <see href="http://vocab.datex.org/terms#concentrationOfVehicles"></see></summary>
-    let concentrationOfVehicles =
-        Namespaced_IRI.parse _namespace_name "concentrationOfVehicles" |> NamespacedName
+    let concentrationOfVehicles = _prefix "concentrationOfVehicles"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#concentrationOfVehiclesValueExtension"></see>
     /// </summary>
     let concentrationOfVehiclesValueExtension =
-        Namespaced_IRI.parse _namespace_name "concentrationOfVehiclesValueExtension" |> NamespacedName
+        _prefix "concentrationOfVehiclesValueExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#conditionsExtension"></see>
     /// </summary>
-    let conditionsExtension =
-        Namespaced_IRI.parse _namespace_name "conditionsExtension" |> NamespacedName
-
+    let conditionsExtension = _prefix "conditionsExtension"
     /// <summary>
     /// Description of the driving conditions at the specified location.
     /// <see href="http://vocab.datex.org/terms#drivingConditionType"></see></summary>
-    let drivingConditionType =
-        Namespaced_IRI.parse _namespace_name "drivingConditionType" |> NamespacedName
-
+    let drivingConditionType = _prefix "drivingConditionType"
     /// <summary>
     /// Roadworks involving the construction of new infrastructure.
     /// <see href="http://vocab.datex.org/terms#ConstructionWorks"></see></summary>
-    let ConstructionWorks =
-        Namespaced_IRI.parse _namespace_name "ConstructionWorks" |> NamespacedName
-
+    let ConstructionWorks = _prefix "ConstructionWorks"
     /// <summary>
     /// The type of construction work being performed.
     /// <see href="http://vocab.datex.org/terms#constructionWorkType"></see></summary>
-    let constructionWorkType =
-        Namespaced_IRI.parse _namespace_name "constructionWorkType" |> NamespacedName
-
+    let constructionWorkType = _prefix "constructionWorkType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#constructionWorksExtension"></see>
     /// </summary>
-    let constructionWorksExtension =
-        Namespaced_IRI.parse _namespace_name "constructionWorksExtension" |> NamespacedName
-
+    let constructionWorksExtension = _prefix "constructionWorksExtension"
     /// <summary>
     /// Highway maintenance, installation and construction activities that may potentially affect traffic operations.
     /// <see href="http://vocab.datex.org/terms#Roadworks"></see></summary>
-    let Roadworks = Namespaced_IRI.parse _namespace_name "Roadworks" |> NamespacedName
+    let Roadworks = _prefix "Roadworks"
     /// <summary>
     /// Address and contact information about some person, service or the parking site, provided in detail or via reference.
     /// <see href="http://vocab.datex.org/terms#Contact"></see></summary>
-    let Contact = Namespaced_IRI.parse _namespace_name "Contact" |> NamespacedName
-
+    let Contact = _prefix "Contact"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#contactExtension"></see>
     /// </summary>
-    let contactExtension =
-        Namespaced_IRI.parse _namespace_name "contactExtension" |> NamespacedName
-
+    let contactExtension = _prefix "contactExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#contactNotDefined"></see>
     /// </summary>
-    let contactNotDefined =
-        Namespaced_IRI.parse _namespace_name "contactNotDefined" |> NamespacedName
-
+    let contactNotDefined = _prefix "contactNotDefined"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#contactUnknown"></see>
     /// </summary>
-    let contactUnknown =
-        Namespaced_IRI.parse _namespace_name "contactUnknown" |> NamespacedName
-
+    let contactUnknown = _prefix "contactUnknown"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#validityOfContact"></see>
     /// </summary>
-    let validityOfContact =
-        Namespaced_IRI.parse _namespace_name "validityOfContact" |> NamespacedName
-
+    let validityOfContact = _prefix "validityOfContact"
     /// <summary>
     /// Contact information that is addressed via a reference.
     /// <see href="http://vocab.datex.org/terms#ContactByReference"></see></summary>
-    let ContactByReference =
-        Namespaced_IRI.parse _namespace_name "ContactByReference" |> NamespacedName
-
+    let ContactByReference = _prefix "ContactByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#contactByReferenceExtension"></see>
     /// </summary>
-    let contactByReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "contactByReferenceExtension" |> NamespacedName
-
+    let contactByReferenceExtension = _prefix "contactByReferenceExtension"
     /// <summary>
     /// Contact information provided by a reference.
     /// <see href="http://vocab.datex.org/terms#contactReference"></see></summary>
-    let contactReference =
-        Namespaced_IRI.parse _namespace_name "contactReference" |> NamespacedName
-
+    let contactReference = _prefix "contactReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ContactDetailsVersionedReference"></see>
     /// </summary>
-    let _ContactDetailsVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_ContactDetailsVersionedReference" |> NamespacedName
-
+    let _ContactDetailsVersionedReference = _prefix "_ContactDetailsVersionedReference"
     /// <summary>
     /// Details for some person, service or the parking site itself, especially address information.
     /// <see href="http://vocab.datex.org/terms#ContactDetails"></see></summary>
-    let ContactDetails =
-        Namespaced_IRI.parse _namespace_name "ContactDetails" |> NamespacedName
-
+    let ContactDetails = _prefix "ContactDetails"
     /// <summary>
     /// Specifies if the availability is 24 hours a day. If omitted, this information is unknown or heterogeneous.
     /// <see href="http://vocab.datex.org/terms#available24hours"></see></summary>
-    let available24hours =
-        Namespaced_IRI.parse _namespace_name "available24hours" |> NamespacedName
-
+    let available24hours = _prefix "available24hours"
     /// <summary>
     /// Complete address of the contact. Alternatively use the separate fields to describe the address.
     /// <see href="http://vocab.datex.org/terms#contactDetailsAddress"></see></summary>
-    let contactDetailsAddress =
-        Namespaced_IRI.parse _namespace_name "contactDetailsAddress" |> NamespacedName
-
+    let contactDetailsAddress = _prefix "contactDetailsAddress"
     /// <summary>
     /// City of the contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsCity"></see></summary>
-    let contactDetailsCity =
-        Namespaced_IRI.parse _namespace_name "contactDetailsCity" |> NamespacedName
-
+    let contactDetailsCity = _prefix "contactDetailsCity"
     /// <summary>
     /// E-Mail address of the contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsEMail"></see></summary>
-    let contactDetailsEMail =
-        Namespaced_IRI.parse _namespace_name "contactDetailsEMail" |> NamespacedName
-
+    let contactDetailsEMail = _prefix "contactDetailsEMail"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#contactDetailsExtension"></see>
     /// </summary>
-    let contactDetailsExtension =
-        Namespaced_IRI.parse _namespace_name "contactDetailsExtension" |> NamespacedName
-
+    let contactDetailsExtension = _prefix "contactDetailsExtension"
     /// <summary>
     /// Fax of the contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsFax"></see></summary>
-    let contactDetailsFax =
-        Namespaced_IRI.parse _namespace_name "contactDetailsFax" |> NamespacedName
-
+    let contactDetailsFax = _prefix "contactDetailsFax"
     /// <summary>
     /// House number of the contact. Supports a multiplicity up to two, to specify lower and upper numbers.
     /// <see href="http://vocab.datex.org/terms#contactDetailsHouseNumber"></see></summary>
-    let contactDetailsHouseNumber =
-        Namespaced_IRI.parse _namespace_name "contactDetailsHouseNumber" |> NamespacedName
-
+    let contactDetailsHouseNumber = _prefix "contactDetailsHouseNumber"
     /// <summary>
     /// Language(s) this contact is able to speak resp. understand.
     /// <see href="http://vocab.datex.org/terms#contactDetailsLanguage"></see></summary>
-    let contactDetailsLanguage =
-        Namespaced_IRI.parse _namespace_name "contactDetailsLanguage" |> NamespacedName
-
+    let contactDetailsLanguage = _prefix "contactDetailsLanguage"
     /// <summary>
     /// Url to define a logo of this contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsLogoUrl"></see></summary>
-    let contactDetailsLogoUrl =
-        Namespaced_IRI.parse _namespace_name "contactDetailsLogoUrl" |> NamespacedName
-
+    let contactDetailsLogoUrl = _prefix "contactDetailsLogoUrl"
     /// <summary>
     /// Additional information relating to the contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsMoreInfo"></see></summary>
-    let contactDetailsMoreInfo =
-        Namespaced_IRI.parse _namespace_name "contactDetailsMoreInfo" |> NamespacedName
-
+    let contactDetailsMoreInfo = _prefix "contactDetailsMoreInfo"
     /// <summary>
     /// Information if the contact in question is a private or public institution.
     /// <see href="http://vocab.datex.org/terms#contactDetailsOwnership"></see></summary>
-    let contactDetailsOwnership =
-        Namespaced_IRI.parse _namespace_name "contactDetailsOwnership" |> NamespacedName
-
+    let contactDetailsOwnership = _prefix "contactDetailsOwnership"
     /// <summary>
     /// Postcode of the contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsPostcode"></see></summary>
-    let contactDetailsPostcode =
-        Namespaced_IRI.parse _namespace_name "contactDetailsPostcode" |> NamespacedName
-
+    let contactDetailsPostcode = _prefix "contactDetailsPostcode"
     /// <summary>
     /// Specification of what service or equipment the contact is responsible for.
     /// <see href="http://vocab.datex.org/terms#contactDetailsResponsibility"></see></summary>
-    let contactDetailsResponsibility =
-        Namespaced_IRI.parse _namespace_name "contactDetailsResponsibility" |> NamespacedName
-
+    let contactDetailsResponsibility = _prefix "contactDetailsResponsibility"
     /// <summary>
     /// Street of the contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsStreet"></see></summary>
-    let contactDetailsStreet =
-        Namespaced_IRI.parse _namespace_name "contactDetailsStreet" |> NamespacedName
-
+    let contactDetailsStreet = _prefix "contactDetailsStreet"
     /// <summary>
     /// Telephone Number of contact.
     /// <see href="http://vocab.datex.org/terms#contactDetailsTelephoneNumber"></see></summary>
-    let contactDetailsTelephoneNumber =
-        Namespaced_IRI.parse _namespace_name "contactDetailsTelephoneNumber" |> NamespacedName
-
+    let contactDetailsTelephoneNumber = _prefix "contactDetailsTelephoneNumber"
     /// <summary>
     /// Name of the organisation or service. Do not use this attribute in combination with role "parkingSiteAddress".
     /// <see href="http://vocab.datex.org/terms#contactOrganisationName"></see></summary>
-    let contactOrganisationName =
-        Namespaced_IRI.parse _namespace_name "contactOrganisationName" |> NamespacedName
-
+    let contactOrganisationName = _prefix "contactOrganisationName"
     /// <summary>
     /// First name of the contact person.
     /// <see href="http://vocab.datex.org/terms#contactPersonFirstName"></see></summary>
-    let contactPersonFirstName =
-        Namespaced_IRI.parse _namespace_name "contactPersonFirstName" |> NamespacedName
-
+    let contactPersonFirstName = _prefix "contactPersonFirstName"
     /// <summary>
     /// Name of the contact person.
     /// <see href="http://vocab.datex.org/terms#contactPersonName"></see></summary>
-    let contactPersonName =
-        Namespaced_IRI.parse _namespace_name "contactPersonName" |> NamespacedName
-
+    let contactPersonName = _prefix "contactPersonName"
     /// <summary>
     /// The position of the contact person.
     /// <see href="http://vocab.datex.org/terms#contactPersonPosition"></see></summary>
-    let contactPersonPosition =
-        Namespaced_IRI.parse _namespace_name "contactPersonPosition" |> NamespacedName
-
+    let contactPersonPosition = _prefix "contactPersonPosition"
     /// <summary>
     /// ISO 3166-1 two character country code.
     /// <see href="http://vocab.datex.org/terms#country"></see></summary>
-    let country = Namespaced_IRI.parse _namespace_name "country" |> NamespacedName
-
+    let country = _prefix "country"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfLocations"></see>
     /// </summary>
-    let groupOfLocations =
-        Namespaced_IRI.parse _namespace_name "groupOfLocations" |> NamespacedName
-
+    let groupOfLocations = _prefix "groupOfLocations"
     /// <summary>
     /// Indication, whether the contact accepted publishing its contact information.
     /// <see href="http://vocab.datex.org/terms#publishingAgreement"></see></summary>
-    let publishingAgreement =
-        Namespaced_IRI.parse _namespace_name "publishingAgreement" |> NamespacedName
-
+    let publishingAgreement = _prefix "publishingAgreement"
     /// <summary>
     /// A Uniform Resource Locator (URL) address pointing to a resource available on the Internet from where further relevant information may be obtained.
     /// <see href="http://vocab.datex.org/terms#urlLinkAddress"></see></summary>
-    let urlLinkAddress =
-        Namespaced_IRI.parse _namespace_name "urlLinkAddress" |> NamespacedName
-
+    let urlLinkAddress = _prefix "urlLinkAddress"
     /// <summary>
     /// The DATEX II logical model comprising exchange, content payload and management sub-models.
     /// <see href="http://vocab.datex.org/terms#D2LogicalModel"></see></summary>
-    let D2LogicalModel =
-        Namespaced_IRI.parse _namespace_name "D2LogicalModel" |> NamespacedName
-
+    let D2LogicalModel = _prefix "D2LogicalModel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#modelBaseVersion"></see>
     /// </summary>
-    let modelBaseVersion =
-        Namespaced_IRI.parse _namespace_name "modelBaseVersion" |> NamespacedName
-
+    let modelBaseVersion = _prefix "modelBaseVersion"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#d2LogicalModelExtension"></see>
     /// </summary>
-    let d2LogicalModelExtension =
-        Namespaced_IRI.parse _namespace_name "d2LogicalModelExtension" |> NamespacedName
-
+    let d2LogicalModelExtension = _prefix "d2LogicalModelExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#exchange"></see>
     /// </summary>
-    let exchange = Namespaced_IRI.parse _namespace_name "exchange" |> NamespacedName
+    let exchange = _prefix "exchange"
     /// <summary>
     /// Details associated with the management of the exchange between the supplier and the client.
     /// <see href="http://vocab.datex.org/terms#Exchange"></see></summary>
-    let Exchange = Namespaced_IRI.parse _namespace_name "Exchange" |> NamespacedName
-
+    let Exchange = _prefix "Exchange"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#payloadPublication"></see>
     /// </summary>
-    let payloadPublication =
-        Namespaced_IRI.parse _namespace_name "payloadPublication" |> NamespacedName
-
+    let payloadPublication = _prefix "payloadPublication"
     /// <summary>
     /// A payload publication of traffic related information or associated management information created at a specific point in time that can be exchanged via a DATEX II interface.
     /// <see href="http://vocab.datex.org/terms#PayloadPublication"></see></summary>
-    let PayloadPublication =
-        Namespaced_IRI.parse _namespace_name "PayloadPublication" |> NamespacedName
-
+    let PayloadPublication = _prefix "PayloadPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplierCalculatedDataQuality"></see>
     /// </summary>
-    let supplierCalculatedDataQuality =
-        Namespaced_IRI.parse _namespace_name "supplierCalculatedDataQuality" |> NamespacedName
-
+    let supplierCalculatedDataQuality = _prefix "supplierCalculatedDataQuality"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfInputValuesUsed"></see>
     /// </summary>
-    let numberOfInputValuesUsed =
-        Namespaced_IRI.parse _namespace_name "numberOfInputValuesUsed" |> NamespacedName
-
+    let numberOfInputValuesUsed = _prefix "numberOfInputValuesUsed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#smoothingFactor"></see>
     /// </summary>
-    let smoothingFactor =
-        Namespaced_IRI.parse _namespace_name "smoothingFactor" |> NamespacedName
-
+    let smoothingFactor = _prefix "smoothingFactor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accuracy"></see>
     /// </summary>
-    let accuracy = Namespaced_IRI.parse _namespace_name "accuracy" |> NamespacedName
-
+    let accuracy = _prefix "accuracy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#standardDeviation"></see>
     /// </summary>
-    let standardDeviation =
-        Namespaced_IRI.parse _namespace_name "standardDeviation" |> NamespacedName
-
+    let standardDeviation = _prefix "standardDeviation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dataError"></see>
     /// </summary>
-    let dataError = Namespaced_IRI.parse _namespace_name "dataError" |> NamespacedName
-
+    let dataError = _prefix "dataError"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dataValueExtension"></see>
     /// </summary>
-    let dataValueExtension =
-        Namespaced_IRI.parse _namespace_name "dataValueExtension" |> NamespacedName
-
+    let dataValueExtension = _prefix "dataValueExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#reasonForDataError"></see>
     /// </summary>
-    let reasonForDataError =
-        Namespaced_IRI.parse _namespace_name "reasonForDataError" |> NamespacedName
-
+    let reasonForDataError = _prefix "reasonForDataError"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#computationalMethod"></see>
     /// </summary>
-    let computationalMethod =
-        Namespaced_IRI.parse _namespace_name "computationalMethod" |> NamespacedName
-
+    let computationalMethod = _prefix "computationalMethod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfIncompleteInputs"></see>
     /// </summary>
-    let numberOfIncompleteInputs =
-        Namespaced_IRI.parse _namespace_name "numberOfIncompleteInputs" |> NamespacedName
-
+    let numberOfIncompleteInputs = _prefix "numberOfIncompleteInputs"
     /// <summary>
     /// A measured or calculated value of an instance in time.
     /// <see href="http://vocab.datex.org/terms#DateTimeValue"></see></summary>
-    let DateTimeValue =
-        Namespaced_IRI.parse _namespace_name "DateTimeValue" |> NamespacedName
-
+    let DateTimeValue = _prefix "DateTimeValue"
     /// <summary>
     /// A time stamp defining an instance in time.
     /// <see href="http://vocab.datex.org/terms#dateTime"></see></summary>
-    let dateTime = Namespaced_IRI.parse _namespace_name "dateTime" |> NamespacedName
-
+    let dateTime = _prefix "dateTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dateTimeValueExtension"></see>
     /// </summary>
-    let dateTimeValueExtension =
-        Namespaced_IRI.parse _namespace_name "dateTimeValueExtension" |> NamespacedName
-
+    let dateTimeValueExtension = _prefix "dateTimeValueExtension"
     /// <summary>
     /// Specification of periods defined by the intersection of days, weeks and months.
     /// <see href="http://vocab.datex.org/terms#DayWeekMonth"></see></summary>
-    let DayWeekMonth =
-        Namespaced_IRI.parse _namespace_name "DayWeekMonth" |> NamespacedName
-
+    let DayWeekMonth = _prefix "DayWeekMonth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicableDay"></see>
     /// </summary>
-    let applicableDay =
-        Namespaced_IRI.parse _namespace_name "applicableDay" |> NamespacedName
-
+    let applicableDay = _prefix "applicableDay"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicableMonth"></see>
     /// </summary>
-    let applicableMonth =
-        Namespaced_IRI.parse _namespace_name "applicableMonth" |> NamespacedName
-
+    let applicableMonth = _prefix "applicableMonth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#applicableWeek"></see>
     /// </summary>
-    let applicableWeek =
-        Namespaced_IRI.parse _namespace_name "applicableWeek" |> NamespacedName
-
+    let applicableWeek = _prefix "applicableWeek"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dayWeekMonthExtension"></see>
     /// </summary>
-    let dayWeekMonthExtension =
-        Namespaced_IRI.parse _namespace_name "dayWeekMonthExtension" |> NamespacedName
-
+    let dayWeekMonthExtension = _prefix "dayWeekMonthExtension"
     /// <summary>
     /// Reference to an access of any type (vehicles, pedestrian, ...).
     /// <see href="http://vocab.datex.org/terms#DedicatedAccess"></see></summary>
-    let DedicatedAccess =
-        Namespaced_IRI.parse _namespace_name "DedicatedAccess" |> NamespacedName
-
+    let DedicatedAccess = _prefix "DedicatedAccess"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dedicatedAccess"></see>
     /// </summary>
-    let dedicatedAccess =
-        Namespaced_IRI.parse _namespace_name "dedicatedAccess" |> NamespacedName
-
+    let dedicatedAccess = _prefix "dedicatedAccess"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingAccessReference"></see>
     /// </summary>
-    let _ParkingAccessReference =
-        Namespaced_IRI.parse _namespace_name "_ParkingAccessReference" |> NamespacedName
-
+    let _ParkingAccessReference = _prefix "_ParkingAccessReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dedicatedAccessExtension"></see>
     /// </summary>
-    let dedicatedAccessExtension =
-        Namespaced_IRI.parse _namespace_name "dedicatedAccessExtension" |> NamespacedName
-
+    let dedicatedAccessExtension = _prefix "dedicatedAccessExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceFromParkingSpace"></see>
     /// </summary>
-    let distanceFromParkingSpace =
-        Namespaced_IRI.parse _namespace_name "distanceFromParkingSpace" |> NamespacedName
-
+    let distanceFromParkingSpace = _prefix "distanceFromParkingSpace"
     /// <summary>
     /// The details of the delays being caused by the situation element defined in the situation record. It is recommended to only use one of the optional attributes to avoid confusion.
     /// <see href="http://vocab.datex.org/terms#Delays"></see></summary>
-    let Delays = Namespaced_IRI.parse _namespace_name "Delays" |> NamespacedName
+    let Delays = _prefix "Delays"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#delayBand"></see>
     /// </summary>
-    let delayBand = Namespaced_IRI.parse _namespace_name "delayBand" |> NamespacedName
-
+    let delayBand = _prefix "delayBand"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#delayTimeValue"></see>
     /// </summary>
-    let delayTimeValue =
-        Namespaced_IRI.parse _namespace_name "delayTimeValue" |> NamespacedName
-
+    let delayTimeValue = _prefix "delayTimeValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#delaysExtension"></see>
     /// </summary>
-    let delaysExtension =
-        Namespaced_IRI.parse _namespace_name "delaysExtension" |> NamespacedName
-
+    let delaysExtension = _prefix "delaysExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#delaysType"></see>
     /// </summary>
-    let delaysType = Namespaced_IRI.parse _namespace_name "delaysType" |> NamespacedName
-
+    let delaysType = _prefix "delaysType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#destinationExtension"></see>
     /// </summary>
-    let destinationExtension =
-        Namespaced_IRI.parse _namespace_name "destinationExtension" |> NamespacedName
-
+    let destinationExtension = _prefix "destinationExtension"
     /// <summary>
     /// A component that provides dimension information. The product of width and height must not be necessarily be the square footage (e.g. in multi-storey buildings or when some zones are not part of the square footage).
     /// <see href="http://vocab.datex.org/terms#Dimension"></see></summary>
-    let Dimension = Namespaced_IRI.parse _namespace_name "Dimension" |> NamespacedName
-
+    let Dimension = _prefix "Dimension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dimensionExtension"></see>
     /// </summary>
-    let dimensionExtension =
-        Namespaced_IRI.parse _namespace_name "dimensionExtension" |> NamespacedName
-
+    let dimensionExtension = _prefix "dimensionExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dimensionHeight"></see>
     /// </summary>
-    let dimensionHeight =
-        Namespaced_IRI.parse _namespace_name "dimensionHeight" |> NamespacedName
-
+    let dimensionHeight = _prefix "dimensionHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dimensionLength"></see>
     /// </summary>
-    let dimensionLength =
-        Namespaced_IRI.parse _namespace_name "dimensionLength" |> NamespacedName
-
+    let dimensionLength = _prefix "dimensionLength"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dimensionUsableArea"></see>
     /// </summary>
-    let dimensionUsableArea =
-        Namespaced_IRI.parse _namespace_name "dimensionUsableArea" |> NamespacedName
-
+    let dimensionUsableArea = _prefix "dimensionUsableArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dimensionWidth"></see>
     /// </summary>
-    let dimensionWidth =
-        Namespaced_IRI.parse _namespace_name "dimensionWidth" |> NamespacedName
-
+    let dimensionWidth = _prefix "dimensionWidth"
     /// <summary>
     /// A measured or calculated value of direction as a bearing.
     /// <see href="http://vocab.datex.org/terms#DirectionBearingValue"></see></summary>
-    let DirectionBearingValue =
-        Namespaced_IRI.parse _namespace_name "DirectionBearingValue" |> NamespacedName
-
+    let DirectionBearingValue = _prefix "DirectionBearingValue"
     /// <summary>
     /// A value of direction expressed in terms of a bearing measured in whole degrees. Unless otherwise specified the reference direction corresponding to 0 degrees is North.
     /// <see href="http://vocab.datex.org/terms#directionBearing"></see></summary>
-    let directionBearing =
-        Namespaced_IRI.parse _namespace_name "directionBearing" |> NamespacedName
-
+    let directionBearing = _prefix "directionBearing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#directionBearingValueExtension"></see>
     /// </summary>
-    let directionBearingValueExtension =
-        Namespaced_IRI.parse _namespace_name "directionBearingValueExtension" |> NamespacedName
-
+    let directionBearingValueExtension = _prefix "directionBearingValueExtension"
     /// <summary>
     /// A measured or calculated value of direction as a point of the compass.
     /// <see href="http://vocab.datex.org/terms#DirectionCompassValue"></see></summary>
-    let DirectionCompassValue =
-        Namespaced_IRI.parse _namespace_name "DirectionCompassValue" |> NamespacedName
-
+    let DirectionCompassValue = _prefix "DirectionCompassValue"
     /// <summary>
     /// A value of direction expressed in terms of points of the compass.
     /// <see href="http://vocab.datex.org/terms#directionCompass"></see></summary>
-    let directionCompass =
-        Namespaced_IRI.parse _namespace_name "directionCompass" |> NamespacedName
-
+    let directionCompass = _prefix "directionCompass"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#directionCompassValueExtension"></see>
     /// </summary>
-    let directionCompassValueExtension =
-        Namespaced_IRI.parse _namespace_name "directionCompassValueExtension" |> NamespacedName
-
+    let directionCompassValueExtension = _prefix "directionCompassValueExtension"
     /// <summary>
     /// Distance of a point along a linear element either measured from the start node or a defined referent on that linear element, where the start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#DistanceAlongLinearElement"></see></summary>
-    let DistanceAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "DistanceAlongLinearElement" |> NamespacedName
+    let DistanceAlongLinearElement = _prefix "DistanceAlongLinearElement"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceAlongLinearElementExtension"></see>
     /// </summary>
     let distanceAlongLinearElementExtension =
-        Namespaced_IRI.parse _namespace_name "distanceAlongLinearElementExtension" |> NamespacedName
+        _prefix "distanceAlongLinearElementExtension"
 
     /// <summary>
     /// Distance of a point along a linear element measured from a "from referent" on the linear element, in the sense relative to the linear element definition rather than the direction of traffic flow or optionally towards a "towards referent".
     /// <see href="http://vocab.datex.org/terms#DistanceFromLinearElementReferent"></see></summary>
-    let DistanceFromLinearElementReferent =
-        Namespaced_IRI.parse _namespace_name "DistanceFromLinearElementReferent" |> NamespacedName
-
+    let DistanceFromLinearElementReferent = _prefix "DistanceFromLinearElementReferent"
     /// <summary>
     /// A measure of distance along a linear element.
     /// <see href="http://vocab.datex.org/terms#distanceAlong"></see></summary>
-    let distanceAlong =
-        Namespaced_IRI.parse _namespace_name "distanceAlong" |> NamespacedName
+    let distanceAlong = _prefix "distanceAlong"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceFromLinearElementReferentExtension"></see>
     /// </summary>
     let distanceFromLinearElementReferentExtension =
-        Namespaced_IRI.parse _namespace_name "distanceFromLinearElementReferentExtension" |> NamespacedName
+        _prefix "distanceFromLinearElementReferentExtension"
 
     /// <summary>
     /// A known location along the linear element from which the distanceAlong is measured, termed the "fromReferent" in ISO 19148.
     /// <see href="http://vocab.datex.org/terms#fromReferent"></see></summary>
-    let fromReferent =
-        Namespaced_IRI.parse _namespace_name "fromReferent" |> NamespacedName
-
+    let fromReferent = _prefix "fromReferent"
     /// <summary>
     /// A referent on a linear object that has a known location such as a node, a reference marker (e.g. a markerpost), an intersection etc.
     /// <see href="http://vocab.datex.org/terms#Referent"></see></summary>
-    let Referent = Namespaced_IRI.parse _namespace_name "Referent" |> NamespacedName
-
+    let Referent = _prefix "Referent"
     /// <summary>
     /// A known location along the linear element towards which the distanceAlong is measured, termed the "towardsReferent" in ISO 19148.
     /// <see href="http://vocab.datex.org/terms#towardsReferent"></see></summary>
-    let towardsReferent =
-        Namespaced_IRI.parse _namespace_name "towardsReferent" |> NamespacedName
-
+    let towardsReferent = _prefix "towardsReferent"
     /// <summary>
     /// Distance of a point along a linear element measured from the start node of the linear element, where start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#DistanceFromLinearElementStart"></see></summary>
-    let DistanceFromLinearElementStart =
-        Namespaced_IRI.parse _namespace_name "DistanceFromLinearElementStart" |> NamespacedName
+    let DistanceFromLinearElementStart = _prefix "DistanceFromLinearElementStart"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceFromLinearElementStartExtension"></see>
     /// </summary>
     let distanceFromLinearElementStartExtension =
-        Namespaced_IRI.parse _namespace_name "distanceFromLinearElementStartExtension" |> NamespacedName
+        _prefix "distanceFromLinearElementStartExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#disturbanceActivityExtension"></see>
     /// </summary>
-    let disturbanceActivityExtension =
-        Namespaced_IRI.parse _namespace_name "disturbanceActivityExtension" |> NamespacedName
-
+    let disturbanceActivityExtension = _prefix "disturbanceActivityExtension"
     /// <summary>
     /// Includes all situations of a public disorder type or of an alert type, with potential to disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#disturbanceActivityType"></see></summary>
-    let disturbanceActivityType =
-        Namespaced_IRI.parse _namespace_name "disturbanceActivityType" |> NamespacedName
-
+    let disturbanceActivityType = _prefix "disturbanceActivityType"
     /// <summary>
     /// A measured or calculated value of a period of time.
     /// <see href="http://vocab.datex.org/terms#DurationValue"></see></summary>
-    let DurationValue =
-        Namespaced_IRI.parse _namespace_name "DurationValue" |> NamespacedName
-
+    let DurationValue = _prefix "DurationValue"
     /// <summary>
     /// A period of time expressed in seconds.
     /// <see href="http://vocab.datex.org/terms#duration"></see></summary>
-    let duration = Namespaced_IRI.parse _namespace_name "duration" |> NamespacedName
-
+    let duration = _prefix "duration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#durationValueExtension"></see>
     /// </summary>
-    let durationValueExtension =
-        Namespaced_IRI.parse _namespace_name "durationValueExtension" |> NamespacedName
-
+    let durationValueExtension = _prefix "durationValueExtension"
     /// <summary>
     /// An instance of data which is derived/computed from one or more measurements over a period of time. It may be a current value or a forecast value predicted from historical measurements.
     /// <see href="http://vocab.datex.org/terms#ElaboratedData"></see></summary>
-    let ElaboratedData =
-        Namespaced_IRI.parse _namespace_name "ElaboratedData" |> NamespacedName
-
+    let ElaboratedData = _prefix "ElaboratedData"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#basicData"></see>
     /// </summary>
-    let basicData = Namespaced_IRI.parse _namespace_name "basicData" |> NamespacedName
-
+    let basicData = _prefix "basicData"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#elaboratedDataExtension"></see>
     /// </summary>
-    let elaboratedDataExtension =
-        Namespaced_IRI.parse _namespace_name "elaboratedDataExtension" |> NamespacedName
-
+    let elaboratedDataExtension = _prefix "elaboratedDataExtension"
     /// <summary>
     /// The type of fault which is being reported for the specified elaborated data.
     /// <see href="http://vocab.datex.org/terms#elaboratedDataFault"></see></summary>
-    let elaboratedDataFault =
-        Namespaced_IRI.parse _namespace_name "elaboratedDataFault" |> NamespacedName
-
+    let elaboratedDataFault = _prefix "elaboratedDataFault"
     /// <summary>
     /// Details of a fault which is being reported for the related elaborated data.
     /// <see href="http://vocab.datex.org/terms#ElaboratedDataFault"></see></summary>
-    let ElaboratedDataFault =
-        Namespaced_IRI.parse _namespace_name "ElaboratedDataFault" |> NamespacedName
-
+    let ElaboratedDataFault = _prefix "ElaboratedDataFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#forecast"></see>
     /// </summary>
-    let forecast = Namespaced_IRI.parse _namespace_name "forecast" |> NamespacedName
+    let forecast = _prefix "forecast"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#source"></see>
     /// </summary>
-    let source = Namespaced_IRI.parse _namespace_name "source" |> NamespacedName
+    let source = _prefix "source"
     /// <summary>
     /// Details of the source from which the information was obtained.
     /// <see href="http://vocab.datex.org/terms#Source"></see></summary>
-    let Source = Namespaced_IRI.parse _namespace_name "Source" |> NamespacedName
+    let Source = _prefix "Source"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#validity"></see>
     /// </summary>
-    let validity = Namespaced_IRI.parse _namespace_name "validity" |> NamespacedName
+    let validity = _prefix "validity"
     /// <summary>
     /// Specification of validity, either explicitly or by a validity time period specification which may be discontinuous.
     /// <see href="http://vocab.datex.org/terms#Validity"></see></summary>
-    let Validity = Namespaced_IRI.parse _namespace_name "Validity" |> NamespacedName
-
+    let Validity = _prefix "Validity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#elaboratedDataFaultExtension"></see>
     /// </summary>
-    let elaboratedDataFaultExtension =
-        Namespaced_IRI.parse _namespace_name "elaboratedDataFaultExtension" |> NamespacedName
-
+    let elaboratedDataFaultExtension = _prefix "elaboratedDataFaultExtension"
     /// <summary>
     /// Information about a fault relating to a specific piece of equipment or process.
     /// <see href="http://vocab.datex.org/terms#Fault"></see></summary>
-    let Fault = Namespaced_IRI.parse _namespace_name "Fault" |> NamespacedName
-
+    let Fault = _prefix "Fault"
     /// <summary>
     /// A publication containing one or more elaborated data sets.
     /// <see href="http://vocab.datex.org/terms#ElaboratedDataPublication"></see></summary>
-    let ElaboratedDataPublication =
-        Namespaced_IRI.parse _namespace_name "ElaboratedDataPublication" |> NamespacedName
-
+    let ElaboratedDataPublication = _prefix "ElaboratedDataPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#elaboratedData"></see>
     /// </summary>
-    let elaboratedData =
-        Namespaced_IRI.parse _namespace_name "elaboratedData" |> NamespacedName
+    let elaboratedData = _prefix "elaboratedData"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#elaboratedDataPublicationExtension"></see>
     /// </summary>
     let elaboratedDataPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "elaboratedDataPublicationExtension" |> NamespacedName
+        _prefix "elaboratedDataPublicationExtension"
 
     /// <summary>
     /// The default value for the publication of whether the elaborated data is a forecast (true = forecast).
     /// <see href="http://vocab.datex.org/terms#forecastDefault"></see></summary>
-    let forecastDefault =
-        Namespaced_IRI.parse _namespace_name "forecastDefault" |> NamespacedName
-
+    let forecastDefault = _prefix "forecastDefault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#headerInformation"></see>
     /// </summary>
-    let headerInformation =
-        Namespaced_IRI.parse _namespace_name "headerInformation" |> NamespacedName
-
+    let headerInformation = _prefix "headerInformation"
     /// <summary>
     /// Management information relating to the data contained within a publication.
     /// <see href="http://vocab.datex.org/terms#HeaderInformation"></see></summary>
-    let HeaderInformation =
-        Namespaced_IRI.parse _namespace_name "HeaderInformation" |> NamespacedName
-
+    let HeaderInformation = _prefix "HeaderInformation"
     /// <summary>
     /// The default value for the publication of the time elapsed between the beginning and the end of the sampling or measurement period. This item may differ from the unit attribute; e.g. an hourly flow can be estimated from a 5-minute measurement period.
     /// <see href="http://vocab.datex.org/terms#periodDefault"></see></summary>
-    let periodDefault =
-        Namespaced_IRI.parse _namespace_name "periodDefault" |> NamespacedName
-
+    let periodDefault = _prefix "periodDefault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referenceSettings"></see>
     /// </summary>
-    let referenceSettings =
-        Namespaced_IRI.parse _namespace_name "referenceSettings" |> NamespacedName
-
+    let referenceSettings = _prefix "referenceSettings"
     /// <summary>
     /// Specification of the default value for traffic status on a group of predefined locations on the road network. Only when traffic status differs from this value at a location in the group need a value be sent.
     /// <see href="http://vocab.datex.org/terms#ReferenceSettings"></see></summary>
-    let ReferenceSettings =
-        Namespaced_IRI.parse _namespace_name "ReferenceSettings" |> NamespacedName
-
+    let ReferenceSettings = _prefix "ReferenceSettings"
     /// <summary>
     /// The default for the publication of the time at which the values have been computed/derived.
     /// <see href="http://vocab.datex.org/terms#timeDefault"></see></summary>
-    let timeDefault =
-        Namespaced_IRI.parse _namespace_name "timeDefault" |> NamespacedName
-
+    let timeDefault = _prefix "timeDefault"
     /// <summary>
     /// Additional information for the equipment 'electricChargingStation'. This component refers to the number of charging stations specified in the attribute 'numberOfEquipmentOrServiceFacilities'.
     /// <see href="http://vocab.datex.org/terms#ElectricCharging"></see></summary>
-    let ElectricCharging =
-        Namespaced_IRI.parse _namespace_name "ElectricCharging" |> NamespacedName
-
+    let ElectricCharging = _prefix "ElectricCharging"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargingStationConnectorType"></see>
     /// </summary>
-    let chargingStationConnectorType =
-        Namespaced_IRI.parse _namespace_name "chargingStationConnectorType" |> NamespacedName
-
+    let chargingStationConnectorType = _prefix "chargingStationConnectorType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargingStationModelType"></see>
     /// </summary>
-    let chargingStationModelType =
-        Namespaced_IRI.parse _namespace_name "chargingStationModelType" |> NamespacedName
-
+    let chargingStationModelType = _prefix "chargingStationModelType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargingStationUsageType"></see>
     /// </summary>
-    let chargingStationUsageType =
-        Namespaced_IRI.parse _namespace_name "chargingStationUsageType" |> NamespacedName
-
+    let chargingStationUsageType = _prefix "chargingStationUsageType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#electricChargingExtension"></see>
     /// </summary>
-    let electricChargingExtension =
-        Namespaced_IRI.parse _namespace_name "electricChargingExtension" |> NamespacedName
-
+    let electricChargingExtension = _prefix "electricChargingExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maximumCurrent"></see>
     /// </summary>
-    let maximumCurrent =
-        Namespaced_IRI.parse _namespace_name "maximumCurrent" |> NamespacedName
-
+    let maximumCurrent = _prefix "maximumCurrent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfChargingPoints"></see>
     /// </summary>
-    let numberOfChargingPoints =
-        Namespaced_IRI.parse _namespace_name "numberOfChargingPoints" |> NamespacedName
-
+    let numberOfChargingPoints = _prefix "numberOfChargingPoints"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#voltage"></see>
     /// </summary>
-    let voltage = Namespaced_IRI.parse _namespace_name "voltage" |> NamespacedName
+    let voltage = _prefix "voltage"
     /// <summary>
     /// The depth of flooding or of snow on the road.
     /// <see href="http://vocab.datex.org/terms#depth"></see></summary>
-    let depth = Namespaced_IRI.parse _namespace_name "depth" |> NamespacedName
-
+    let depth = _prefix "depth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#environmentalObstructionExtension"></see>
     /// </summary>
-    let environmentalObstructionExtension =
-        Namespaced_IRI.parse _namespace_name "environmentalObstructionExtension" |> NamespacedName
-
+    let environmentalObstructionExtension = _prefix "environmentalObstructionExtension"
     /// <summary>
     /// Characterization of an obstruction on the road resulting from an environmental cause.
     /// <see href="http://vocab.datex.org/terms#environmentalObstructionType"></see></summary>
-    let environmentalObstructionType =
-        Namespaced_IRI.parse _namespace_name "environmentalObstructionType" |> NamespacedName
-
+    let environmentalObstructionType = _prefix "environmentalObstructionType"
     /// <summary>
     /// One type of equipment, that is available on the parking site.
     /// <see href="http://vocab.datex.org/terms#Equipment"></see></summary>
-    let Equipment = Namespaced_IRI.parse _namespace_name "Equipment" |> NamespacedName
-
+    let Equipment = _prefix "Equipment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#electricCharging"></see>
     /// </summary>
-    let electricCharging =
-        Namespaced_IRI.parse _namespace_name "electricCharging" |> NamespacedName
-
+    let electricCharging = _prefix "electricCharging"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#equipmentExtension"></see>
     /// </summary>
-    let equipmentExtension =
-        Namespaced_IRI.parse _namespace_name "equipmentExtension" |> NamespacedName
-
+    let equipmentExtension = _prefix "equipmentExtension"
     /// <summary>
     /// One type of equipment, that is available on the parking site.
     /// <see href="http://vocab.datex.org/terms#equipmentType"></see></summary>
-    let equipmentType =
-        Namespaced_IRI.parse _namespace_name "equipmentType" |> NamespacedName
-
+    let equipmentType = _prefix "equipmentType"
     /// <summary>
     /// One type of equipment or additional service facility that is available at the parking site, parking space or group of parking spaces.
     /// <see href="http://vocab.datex.org/terms#ParkingEquipmentOrServiceFacility"></see></summary>
-    let ParkingEquipmentOrServiceFacility =
-        Namespaced_IRI.parse _namespace_name "ParkingEquipmentOrServiceFacility" |> NamespacedName
-
+    let ParkingEquipmentOrServiceFacility = _prefix "ParkingEquipmentOrServiceFacility"
     /// <summary>
     /// Equipment or system which is faulty, malfunctioning or not in a fully operational state that may be of interest or concern to road operators and road users.
     /// <see href="http://vocab.datex.org/terms#EquipmentOrSystemFault"></see></summary>
-    let EquipmentOrSystemFault =
-        Namespaced_IRI.parse _namespace_name "EquipmentOrSystemFault" |> NamespacedName
-
+    let EquipmentOrSystemFault = _prefix "EquipmentOrSystemFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#equipmentOrSystemFaultExtension"></see>
     /// </summary>
-    let equipmentOrSystemFaultExtension =
-        Namespaced_IRI.parse _namespace_name "equipmentOrSystemFaultExtension" |> NamespacedName
-
+    let equipmentOrSystemFaultExtension = _prefix "equipmentOrSystemFaultExtension"
     /// <summary>
     /// Failure, malfunction or non operational condition of equipment or system.
     /// <see href="http://vocab.datex.org/terms#equipmentOrSystemFaultType"></see></summary>
-    let equipmentOrSystemFaultType =
-        Namespaced_IRI.parse _namespace_name "equipmentOrSystemFaultType" |> NamespacedName
-
+    let equipmentOrSystemFaultType = _prefix "equipmentOrSystemFaultType"
     /// <summary>
     /// The type of equipment or system which is faulty, malfunctioning or not in a fully operational state.
     /// <see href="http://vocab.datex.org/terms#faultyEquipmentOrSystemType"></see></summary>
-    let faultyEquipmentOrSystemType =
-        Namespaced_IRI.parse _namespace_name "faultyEquipmentOrSystemType" |> NamespacedName
-
+    let faultyEquipmentOrSystemType = _prefix "faultyEquipmentOrSystemType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#catalogueReference"></see>
     /// </summary>
-    let catalogueReference =
-        Namespaced_IRI.parse _namespace_name "catalogueReference" |> NamespacedName
-
+    let catalogueReference = _prefix "catalogueReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#changedFlag"></see>
     /// </summary>
-    let changedFlag =
-        Namespaced_IRI.parse _namespace_name "changedFlag" |> NamespacedName
-
+    let changedFlag = _prefix "changedFlag"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#clientIdentification"></see>
     /// </summary>
-    let clientIdentification =
-        Namespaced_IRI.parse _namespace_name "clientIdentification" |> NamespacedName
-
+    let clientIdentification = _prefix "clientIdentification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#deliveryBreak"></see>
     /// </summary>
-    let deliveryBreak =
-        Namespaced_IRI.parse _namespace_name "deliveryBreak" |> NamespacedName
-
+    let deliveryBreak = _prefix "deliveryBreak"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#denyReason"></see>
     /// </summary>
-    let denyReason = Namespaced_IRI.parse _namespace_name "denyReason" |> NamespacedName
-
+    let denyReason = _prefix "denyReason"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#exchangeExtension"></see>
     /// </summary>
-    let exchangeExtension =
-        Namespaced_IRI.parse _namespace_name "exchangeExtension" |> NamespacedName
-
+    let exchangeExtension = _prefix "exchangeExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterReference"></see>
     /// </summary>
-    let filterReference =
-        Namespaced_IRI.parse _namespace_name "filterReference" |> NamespacedName
-
+    let filterReference = _prefix "filterReference"
     /// <summary>
     /// Details of a supplier's filter in a data exchange context.
     /// <see href="http://vocab.datex.org/terms#FilterReference"></see></summary>
-    let FilterReference =
-        Namespaced_IRI.parse _namespace_name "FilterReference" |> NamespacedName
-
+    let FilterReference = _prefix "FilterReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#historicalStartDate"></see>
     /// </summary>
-    let historicalStartDate =
-        Namespaced_IRI.parse _namespace_name "historicalStartDate" |> NamespacedName
-
+    let historicalStartDate = _prefix "historicalStartDate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#historicalStopDate"></see>
     /// </summary>
-    let historicalStopDate =
-        Namespaced_IRI.parse _namespace_name "historicalStopDate" |> NamespacedName
-
+    let historicalStopDate = _prefix "historicalStopDate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#keepAlive"></see>
     /// </summary>
-    let keepAlive = Namespaced_IRI.parse _namespace_name "keepAlive" |> NamespacedName
-
+    let keepAlive = _prefix "keepAlive"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#requestType"></see>
     /// </summary>
-    let requestType =
-        Namespaced_IRI.parse _namespace_name "requestType" |> NamespacedName
-
+    let requestType = _prefix "requestType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#response"></see>
     /// </summary>
-    let response = Namespaced_IRI.parse _namespace_name "response" |> NamespacedName
-
+    let response = _prefix "response"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subscription"></see>
     /// </summary>
-    let subscription =
-        Namespaced_IRI.parse _namespace_name "subscription" |> NamespacedName
-
+    let subscription = _prefix "subscription"
     /// <summary>
     /// This item contains all information relating to a customer subscription.
     /// <see href="http://vocab.datex.org/terms#Subscription"></see></summary>
-    let Subscription =
-        Namespaced_IRI.parse _namespace_name "Subscription" |> NamespacedName
-
+    let Subscription = _prefix "Subscription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subscriptionReference"></see>
     /// </summary>
-    let subscriptionReference =
-        Namespaced_IRI.parse _namespace_name "subscriptionReference" |> NamespacedName
-
+    let subscriptionReference = _prefix "subscriptionReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplierIdentification"></see>
     /// </summary>
-    let supplierIdentification =
-        Namespaced_IRI.parse _namespace_name "supplierIdentification" |> NamespacedName
-
+    let supplierIdentification = _prefix "supplierIdentification"
     /// <summary>
     /// An identifier/name whose range is specific to the particular country.
     /// <see href="http://vocab.datex.org/terms#InternationalIdentifier"></see></summary>
-    let InternationalIdentifier =
-        Namespaced_IRI.parse _namespace_name "InternationalIdentifier" |> NamespacedName
-
+    let InternationalIdentifier = _prefix "InternationalIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#target"></see>
     /// </summary>
-    let target = Namespaced_IRI.parse _namespace_name "target" |> NamespacedName
+    let target = _prefix "target"
     /// <summary>
     /// The details of a DATEX II target client.
     /// <see href="http://vocab.datex.org/terms#Target"></see></summary>
-    let Target = Namespaced_IRI.parse _namespace_name "Target" |> NamespacedName
-
+    let Target = _prefix "Target"
     /// <summary>
     /// A location defined by reference to an external/other referencing system.
     /// <see href="http://vocab.datex.org/terms#ExternalReferencing"></see></summary>
-    let ExternalReferencing =
-        Namespaced_IRI.parse _namespace_name "ExternalReferencing" |> NamespacedName
-
+    let ExternalReferencing = _prefix "ExternalReferencing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#externalLocationCode"></see>
     /// </summary>
-    let externalLocationCode =
-        Namespaced_IRI.parse _namespace_name "externalLocationCode" |> NamespacedName
-
+    let externalLocationCode = _prefix "externalLocationCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#externalReferencingExtension"></see>
     /// </summary>
-    let externalReferencingExtension =
-        Namespaced_IRI.parse _namespace_name "externalReferencingExtension" |> NamespacedName
-
+    let externalReferencingExtension = _prefix "externalReferencingExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#externalReferencingSystem"></see>
     /// </summary>
-    let externalReferencingSystem =
-        Namespaced_IRI.parse _namespace_name "externalReferencingSystem" |> NamespacedName
-
+    let externalReferencingSystem = _prefix "externalReferencingSystem"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#faultCreationTime"></see>
     /// </summary>
-    let faultCreationTime =
-        Namespaced_IRI.parse _namespace_name "faultCreationTime" |> NamespacedName
-
+    let faultCreationTime = _prefix "faultCreationTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#faultDescription"></see>
     /// </summary>
-    let faultDescription =
-        Namespaced_IRI.parse _namespace_name "faultDescription" |> NamespacedName
-
+    let faultDescription = _prefix "faultDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#faultExtension"></see>
     /// </summary>
-    let faultExtension =
-        Namespaced_IRI.parse _namespace_name "faultExtension" |> NamespacedName
-
+    let faultExtension = _prefix "faultExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#faultIdentifier"></see>
     /// </summary>
-    let faultIdentifier =
-        Namespaced_IRI.parse _namespace_name "faultIdentifier" |> NamespacedName
-
+    let faultIdentifier = _prefix "faultIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#faultLastUpdateTime"></see>
     /// </summary>
-    let faultLastUpdateTime =
-        Namespaced_IRI.parse _namespace_name "faultLastUpdateTime" |> NamespacedName
-
+    let faultLastUpdateTime = _prefix "faultLastUpdateTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#faultSeverity"></see>
     /// </summary>
-    let faultSeverity =
-        Namespaced_IRI.parse _namespace_name "faultSeverity" |> NamespacedName
-
+    let faultSeverity = _prefix "faultSeverity"
     /// <summary>
     /// Filter indicators management information.
     /// <see href="http://vocab.datex.org/terms#FilterExitManagement"></see></summary>
-    let FilterExitManagement =
-        Namespaced_IRI.parse _namespace_name "FilterExitManagement" |> NamespacedName
-
+    let FilterExitManagement = _prefix "FilterExitManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterEnd"></see>
     /// </summary>
-    let filterEnd = Namespaced_IRI.parse _namespace_name "filterEnd" |> NamespacedName
-
+    let filterEnd = _prefix "filterEnd"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterExitManagementExtension"></see>
     /// </summary>
-    let filterExitManagementExtension =
-        Namespaced_IRI.parse _namespace_name "filterExitManagementExtension" |> NamespacedName
-
+    let filterExitManagementExtension = _prefix "filterExitManagementExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterOutOfRange"></see>
     /// </summary>
-    let filterOutOfRange =
-        Namespaced_IRI.parse _namespace_name "filterOutOfRange" |> NamespacedName
-
+    let filterOutOfRange = _prefix "filterOutOfRange"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#deleteFilter"></see>
     /// </summary>
-    let deleteFilter =
-        Namespaced_IRI.parse _namespace_name "deleteFilter" |> NamespacedName
-
+    let deleteFilter = _prefix "deleteFilter"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterOperationApproved"></see>
     /// </summary>
-    let filterOperationApproved =
-        Namespaced_IRI.parse _namespace_name "filterOperationApproved" |> NamespacedName
-
+    let filterOperationApproved = _prefix "filterOperationApproved"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterReferenceExtension"></see>
     /// </summary>
-    let filterReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "filterReferenceExtension" |> NamespacedName
-
+    let filterReferenceExtension = _prefix "filterReferenceExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#keyFilterReference"></see>
     /// </summary>
-    let keyFilterReference =
-        Namespaced_IRI.parse _namespace_name "keyFilterReference" |> NamespacedName
-
+    let keyFilterReference = _prefix "keyFilterReference"
     /// <summary>
     /// A measured or calculated value of distance in metres in a floating point format.
     /// <see href="http://vocab.datex.org/terms#FloatingPointMetreDistanceValue"></see></summary>
-    let FloatingPointMetreDistanceValue =
-        Namespaced_IRI.parse _namespace_name "FloatingPointMetreDistanceValue" |> NamespacedName
-
+    let FloatingPointMetreDistanceValue = _prefix "FloatingPointMetreDistanceValue"
     /// <summary>
     /// A value of distance expressed in metres in a floating point format.
     /// <see href="http://vocab.datex.org/terms#floatingPointMetreDistance"></see></summary>
-    let floatingPointMetreDistance =
-        Namespaced_IRI.parse _namespace_name "floatingPointMetreDistance" |> NamespacedName
+    let floatingPointMetreDistance = _prefix "floatingPointMetreDistance"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#floatingPointMetreDistanceValueExtension"></see>
     /// </summary>
     let floatingPointMetreDistanceValueExtension =
-        Namespaced_IRI.parse _namespace_name "floatingPointMetreDistanceValueExtension" |> NamespacedName
+        _prefix "floatingPointMetreDistanceValueExtension"
 
     /// <summary>
     /// General instruction and/or message that is issued by the network/road operator which is applicable to drivers and sometimes passengers.
     /// <see href="http://vocab.datex.org/terms#GeneralInstructionOrMessageToRoadUsers"></see></summary>
     let GeneralInstructionOrMessageToRoadUsers =
-        Namespaced_IRI.parse _namespace_name "GeneralInstructionOrMessageToRoadUsers" |> NamespacedName
+        _prefix "GeneralInstructionOrMessageToRoadUsers"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#generalInstructionOrMessageToRoadUsersExtension"></see>
     /// </summary>
     let generalInstructionOrMessageToRoadUsersExtension =
-        Namespaced_IRI.parse _namespace_name "generalInstructionOrMessageToRoadUsersExtension" |> NamespacedName
+        _prefix "generalInstructionOrMessageToRoadUsersExtension"
 
     /// <summary>
     /// General instruction that is issued by the network/road operator which is applicable to drivers and sometimes passengers.
     /// <see href="http://vocab.datex.org/terms#generalInstructionToRoadUsersType"></see></summary>
-    let generalInstructionToRoadUsersType =
-        Namespaced_IRI.parse _namespace_name "generalInstructionToRoadUsersType" |> NamespacedName
-
+    let generalInstructionToRoadUsersType = _prefix "generalInstructionToRoadUsersType"
     /// <summary>
     /// General message that is issued by the network/road operator which is applicable to drivers and sometimes passengers, e.g. details about an amber alert (missing or abducted child alert).
     /// <see href="http://vocab.datex.org/terms#generalMessageToRoadUsers"></see></summary>
-    let generalMessageToRoadUsers =
-        Namespaced_IRI.parse _namespace_name "generalMessageToRoadUsers" |> NamespacedName
-
+    let generalMessageToRoadUsers = _prefix "generalMessageToRoadUsers"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#generalNetworkManagementExtension"></see>
     /// </summary>
-    let generalNetworkManagementExtension =
-        Namespaced_IRI.parse _namespace_name "generalNetworkManagementExtension" |> NamespacedName
-
+    let generalNetworkManagementExtension = _prefix "generalNetworkManagementExtension"
     /// <summary>
     /// The type of traffic management action instigated by the network/road operator.
     /// <see href="http://vocab.datex.org/terms#generalNetworkManagementType"></see></summary>
-    let generalNetworkManagementType =
-        Namespaced_IRI.parse _namespace_name "generalNetworkManagementType" |> NamespacedName
-
+    let generalNetworkManagementType = _prefix "generalNetworkManagementType"
     /// <summary>
     /// Type of person that is manually directing traffic (applicable if generalNetworkManagementType is set to "trafficBeingManuallyDirected").
     /// <see href="http://vocab.datex.org/terms#trafficManuallyDirectedBy"></see></summary>
-    let trafficManuallyDirectedBy =
-        Namespaced_IRI.parse _namespace_name "trafficManuallyDirectedBy" |> NamespacedName
-
+    let trafficManuallyDirectedBy = _prefix "trafficManuallyDirectedBy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#generalObstructionExtension"></see>
     /// </summary>
-    let generalObstructionExtension =
-        Namespaced_IRI.parse _namespace_name "generalObstructionExtension" |> NamespacedName
-
+    let generalObstructionExtension = _prefix "generalObstructionExtension"
     /// <summary>
     /// Characterization of the type of general obstruction.
     /// <see href="http://vocab.datex.org/terms#obstructionType"></see></summary>
-    let obstructionType =
-        Namespaced_IRI.parse _namespace_name "obstructionType" |> NamespacedName
-
+    let obstructionType = _prefix "obstructionType"
     /// <summary>
     /// A publication used to make level B extensions at the publication level.
     /// <see href="http://vocab.datex.org/terms#GenericPublication"></see></summary>
-    let GenericPublication =
-        Namespaced_IRI.parse _namespace_name "GenericPublication" |> NamespacedName
-
+    let GenericPublication = _prefix "GenericPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#genericPublicationExtension"></see>
     /// </summary>
-    let genericPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "genericPublicationExtension" |> NamespacedName
-
+    let genericPublicationExtension = _prefix "genericPublicationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_GenericPublicationExtensionType"></see>
     /// </summary>
-    let _GenericPublicationExtensionType =
-        Namespaced_IRI.parse _namespace_name "_GenericPublicationExtensionType" |> NamespacedName
-
+    let _GenericPublicationExtensionType = _prefix "_GenericPublicationExtensionType"
     /// <summary>
     /// The name of the generic publication.
     /// <see href="http://vocab.datex.org/terms#genericPublicationName"></see></summary>
-    let genericPublicationName =
-        Namespaced_IRI.parse _namespace_name "genericPublicationName" |> NamespacedName
-
+    let genericPublicationName = _prefix "genericPublicationName"
     /// <summary>
     /// A generic SituationRecord for use when adding level B extensions at the SituationRecord level.
     /// <see href="http://vocab.datex.org/terms#GenericSituationRecord"></see></summary>
-    let GenericSituationRecord =
-        Namespaced_IRI.parse _namespace_name "GenericSituationRecord" |> NamespacedName
-
+    let GenericSituationRecord = _prefix "GenericSituationRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#genericSituationRecordExtension"></see>
     /// </summary>
-    let genericSituationRecordExtension =
-        Namespaced_IRI.parse _namespace_name "genericSituationRecordExtension" |> NamespacedName
-
+    let genericSituationRecordExtension = _prefix "genericSituationRecordExtension"
     /// <summary>
     /// The name of the GenericSituationRecord.
     /// <see href="http://vocab.datex.org/terms#genericSituationRecordName"></see></summary>
-    let genericSituationRecordName =
-        Namespaced_IRI.parse _namespace_name "genericSituationRecordName" |> NamespacedName
-
+    let genericSituationRecordName = _prefix "genericSituationRecordName"
     /// <summary>
     /// An identifiable versioned instance of a single record/element within a situation.
     /// <see href="http://vocab.datex.org/terms#SituationRecord"></see></summary>
-    let SituationRecord =
-        Namespaced_IRI.parse _namespace_name "SituationRecord" |> NamespacedName
-
+    let SituationRecord = _prefix "SituationRecord"
     /// <summary>
     /// Gross weight characteristic of a vehicle.
     /// <see href="http://vocab.datex.org/terms#GrossWeightCharacteristic"></see></summary>
-    let GrossWeightCharacteristic =
-        Namespaced_IRI.parse _namespace_name "GrossWeightCharacteristic" |> NamespacedName
-
+    let GrossWeightCharacteristic = _prefix "GrossWeightCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#comparisonOperator"></see>
     /// </summary>
-    let comparisonOperator =
-        Namespaced_IRI.parse _namespace_name "comparisonOperator" |> NamespacedName
-
+    let comparisonOperator = _prefix "comparisonOperator"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#grossVehicleWeight"></see>
     /// </summary>
-    let grossVehicleWeight =
-        Namespaced_IRI.parse _namespace_name "grossVehicleWeight" |> NamespacedName
+    let grossVehicleWeight = _prefix "grossVehicleWeight"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#grossWeightCharacteristicExtension"></see>
     /// </summary>
     let grossWeightCharacteristicExtension =
-        Namespaced_IRI.parse _namespace_name "grossWeightCharacteristicExtension" |> NamespacedName
+        _prefix "grossWeightCharacteristicExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfLocationsExtension"></see>
     /// </summary>
-    let groupOfLocationsExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfLocationsExtension" |> NamespacedName
-
+    let groupOfLocationsExtension = _prefix "groupOfLocationsExtension"
     /// <summary>
     /// A logical composition of parking sites with aggregated properties (e.g. number of spaces). Examples: Urban parking area "West" or all truck parkings along a motorway. The included parking sites may -but must not- be specified as subcomponents.
     /// <see href="http://vocab.datex.org/terms#GroupOfParkingSites"></see></summary>
-    let GroupOfParkingSites =
-        Namespaced_IRI.parse _namespace_name "GroupOfParkingSites" |> NamespacedName
-
+    let GroupOfParkingSites = _prefix "GroupOfParkingSites"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSitesExtension"></see>
     /// </summary>
-    let groupOfParkingSitesExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSitesExtension" |> NamespacedName
-
+    let groupOfParkingSitesExtension = _prefix "groupOfParkingSitesExtension"
     /// <summary>
     /// The type of this group of parking sites.
     /// <see href="http://vocab.datex.org/terms#groupOfParkingSitesType"></see></summary>
-    let groupOfParkingSitesType =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSitesType" |> NamespacedName
-
+    let groupOfParkingSitesType = _prefix "groupOfParkingSitesType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSite"></see>
     /// </summary>
-    let parkingSite =
-        Namespaced_IRI.parse _namespace_name "parkingSite" |> NamespacedName
-
+    let parkingSite = _prefix "parkingSite"
     /// <summary>
     /// A record containing static details of a parking site. Must be specialised as an 'Urban-' or 'InterUrbanParkingSite' or a 'SpecialLocationParkingSite'.
     /// <see href="http://vocab.datex.org/terms#ParkingSite"></see></summary>
-    let ParkingSite =
-        Namespaced_IRI.parse _namespace_name "ParkingSite" |> NamespacedName
-
+    let ParkingSite = _prefix "ParkingSite"
     /// <summary>
     /// Parking sites of this collection defined by reference.
     /// <see href="http://vocab.datex.org/terms#parkingSiteByReference"></see></summary>
-    let parkingSiteByReference =
-        Namespaced_IRI.parse _namespace_name "parkingSiteByReference" |> NamespacedName
-
+    let parkingSiteByReference = _prefix "parkingSiteByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRecordVersionedReference"></see>
     /// </summary>
-    let _ParkingRecordVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_ParkingRecordVersionedReference" |> NamespacedName
-
+    let _ParkingRecordVersionedReference = _prefix "_ParkingRecordVersionedReference"
     /// <summary>
     /// A container for static parking information. Must be specialised as a parking site or as a group of parking sites.
     /// <see href="http://vocab.datex.org/terms#ParkingRecord"></see></summary>
-    let ParkingRecord =
-        Namespaced_IRI.parse _namespace_name "ParkingRecord" |> NamespacedName
-
+    let ParkingRecord = _prefix "ParkingRecord"
     /// <summary>
     /// Dynamic status information for the static object 'GroupOfParkingSites'.
     /// <see href="http://vocab.datex.org/terms#GroupOfParkingSitesStatus"></see></summary>
-    let GroupOfParkingSitesStatus =
-        Namespaced_IRI.parse _namespace_name "GroupOfParkingSitesStatus" |> NamespacedName
-
+    let GroupOfParkingSitesStatus = _prefix "GroupOfParkingSitesStatus"
     /// <summary>
     /// The status of the group of parking sites (available spaces or not).
     /// <see href="http://vocab.datex.org/terms#groupOfParkingSitesStatus"></see></summary>
-    let groupOfParkingSitesStatus =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSitesStatus" |> NamespacedName
+    let groupOfParkingSitesStatus = _prefix "groupOfParkingSitesStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSitesStatusExtension"></see>
     /// </summary>
     let groupOfParkingSitesStatusExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSitesStatusExtension" |> NamespacedName
+        _prefix "groupOfParkingSitesStatusExtension"
 
     /// <summary>
     /// Contains the current status of one parking record defined in the static model (i.e. parking site or group of parking sites) or historical or forecasted data for one parking. Only for the second case, 'parkingStatusTime' must be specified.
     /// <see href="http://vocab.datex.org/terms#ParkingRecordStatus"></see></summary>
-    let ParkingRecordStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingRecordStatus" |> NamespacedName
-
+    let ParkingRecordStatus = _prefix "ParkingRecordStatus"
     /// <summary>
     /// A group of parking spaces. All information provided has to be identical for all places in this group. Can also be used just to give the number of lorry parkings, for example. 'GroupOfParkingSpaces' may be multiple defined or include each other.
     /// <see href="http://vocab.datex.org/terms#GroupOfParkingSpaces"></see></summary>
-    let GroupOfParkingSpaces =
-        Namespaced_IRI.parse _namespace_name "GroupOfParkingSpaces" |> NamespacedName
-
+    let GroupOfParkingSpaces = _prefix "GroupOfParkingSpaces"
     /// <summary>
     /// Dimension of a virtual rectangle encapsulating the group of parking spaces. Use 'dimensionUsableArea' to define the total space available for parking within this group. Do not use 'dimensionHeight'.
     /// <see href="http://vocab.datex.org/terms#dimensionOfGroup"></see></summary>
-    let dimensionOfGroup =
-        Namespaced_IRI.parse _namespace_name "dimensionOfGroup" |> NamespacedName
-
+    let dimensionOfGroup = _prefix "dimensionOfGroup"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSpacesExtension"></see>
     /// </summary>
-    let groupOfParkingSpacesExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSpacesExtension" |> NamespacedName
-
+    let groupOfParkingSpacesExtension = _prefix "groupOfParkingSpacesExtension"
     /// <summary>
     /// Points to another instance of 'GroupOfParkingSpaces', which is identical from a local point of view. To be used when defining mixed parking areas with different time slots.
     /// <see href="http://vocab.datex.org/terms#identicalToGroup"></see></summary>
-    let identicalToGroup =
-        Namespaced_IRI.parse _namespace_name "identicalToGroup" |> NamespacedName
-
+    let identicalToGroup = _prefix "identicalToGroup"
     /// <summary>
     /// Dimension of the largest space within this group (i.e. there must be at least one space of this dimension). If the comparison of dimension values is not unique, the length is decisive.
     /// <see href="http://vocab.datex.org/terms#maximumParkingSpaceDimension"></see></summary>
-    let maximumParkingSpaceDimension =
-        Namespaced_IRI.parse _namespace_name "maximumParkingSpaceDimension" |> NamespacedName
-
+    let maximumParkingSpaceDimension = _prefix "maximumParkingSpaceDimension"
     /// <summary>
     /// Lower dimension boundaries for all spaces within the group. Note that there must not exist a space with this dimension, but each space's dimension values must be equal or higher.
     /// <see href="http://vocab.datex.org/terms#minimumParkingSpaceDimension"></see></summary>
-    let minimumParkingSpaceDimension =
-        Namespaced_IRI.parse _namespace_name "minimumParkingSpaceDimension" |> NamespacedName
-
+    let minimumParkingSpaceDimension = _prefix "minimumParkingSpaceDimension"
     /// <summary>
     /// Number of parking spaces (attribute is used for a parking record as well as for a group of parking spaces).
     /// <see href="http://vocab.datex.org/terms#parkingNumberOfSpaces"></see></summary>
-    let parkingNumberOfSpaces =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfSpaces" |> NamespacedName
-
+    let parkingNumberOfSpaces = _prefix "parkingNumberOfSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpace"></see>
     /// </summary>
-    let parkingSpace =
-        Namespaced_IRI.parse _namespace_name "parkingSpace" |> NamespacedName
+    let parkingSpace = _prefix "parkingSpace"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_GroupOfParkingSpacesParkingSpaceIndexParkingSpace"></see>
     /// </summary>
     let _GroupOfParkingSpacesParkingSpaceIndexParkingSpace =
-        Namespaced_IRI.parse _namespace_name "_GroupOfParkingSpacesParkingSpaceIndexParkingSpace" |> NamespacedName
+        _prefix "_GroupOfParkingSpacesParkingSpaceIndexParkingSpace"
 
     /// <summary>
     /// Defines the type of this group specification.
     /// <see href="http://vocab.datex.org/terms#parkingTypeOfGroup"></see></summary>
-    let parkingTypeOfGroup =
-        Namespaced_IRI.parse _namespace_name "parkingTypeOfGroup" |> NamespacedName
-
+    let parkingTypeOfGroup = _prefix "parkingTypeOfGroup"
     /// <summary>
     /// Points to another instance of 'GroupOfParkingSpaces', which is a real superset from a local point of view. To be used when defining mixed parking areas with different time slots.
     /// <see href="http://vocab.datex.org/terms#realSubsetOfGroup"></see></summary>
-    let realSubsetOfGroup =
-        Namespaced_IRI.parse _namespace_name "realSubsetOfGroup" |> NamespacedName
-
+    let realSubsetOfGroup = _prefix "realSubsetOfGroup"
     /// <summary>
     /// Common properties of parking spaces and groups of parking spaces.
     /// <see href="http://vocab.datex.org/terms#ParkingSpaceBasics"></see></summary>
-    let ParkingSpaceBasics =
-        Namespaced_IRI.parse _namespace_name "ParkingSpaceBasics" |> NamespacedName
-
+    let ParkingSpaceBasics = _prefix "ParkingSpaceBasics"
     /// <summary>
     /// The status of the assigned parking spaces in the specified parking site, i.e. the status of those spaces assigned for particular types of person or vehicle and/or for specific duration types (e.g. short stay).
     /// <see href="http://vocab.datex.org/terms#GroupOfParkingSpacesStatus"></see></summary>
-    let GroupOfParkingSpacesStatus =
-        Namespaced_IRI.parse _namespace_name "GroupOfParkingSpacesStatus" |> NamespacedName
-
+    let GroupOfParkingSpacesStatus = _prefix "GroupOfParkingSpacesStatus"
     /// <summary>
     /// Override validity of AssignedParkingSpaces: True = Parking space declaration is valid now; False = Parking space declaration is invalid now; Omitted = Static validity information is significant (if static validity is omitted too, declaration is valid).
     /// <see href="http://vocab.datex.org/terms#groupDeclarationValidNow"></see></summary>
-    let groupDeclarationValidNow =
-        Namespaced_IRI.parse _namespace_name "groupDeclarationValidNow" |> NamespacedName
-
+    let groupDeclarationValidNow = _prefix "groupDeclarationValidNow"
     /// <summary>
     /// True: The group of parking spaces is closed / not accessible. False or omitted: The group of parking spaces is accessible. This is no statement about its occupation.
     /// <see href="http://vocab.datex.org/terms#groupOfParkingSpacesClosed"></see></summary>
-    let groupOfParkingSpacesClosed =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSpacesClosed" |> NamespacedName
+    let groupOfParkingSpacesClosed = _prefix "groupOfParkingSpacesClosed"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSpacesStatusExtension"></see>
     /// </summary>
     let groupOfParkingSpacesStatusExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSpacesStatusExtension" |> NamespacedName
+        _prefix "groupOfParkingSpacesStatusExtension"
 
     /// <summary>
     /// Parking capacity information for the parking site as well as for AssignedParkingSpaces.
     /// <see href="http://vocab.datex.org/terms#ParkingOccupancy"></see></summary>
-    let ParkingOccupancy =
-        Namespaced_IRI.parse _namespace_name "ParkingOccupancy" |> NamespacedName
-
+    let ParkingOccupancy = _prefix "ParkingOccupancy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#categoryOfPeopleInvolved"></see>
     /// </summary>
-    let categoryOfPeopleInvolved =
-        Namespaced_IRI.parse _namespace_name "categoryOfPeopleInvolved" |> NamespacedName
-
+    let categoryOfPeopleInvolved = _prefix "categoryOfPeopleInvolved"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfPeopleInvolvedExtension"></see>
     /// </summary>
-    let groupOfPeopleInvolvedExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfPeopleInvolvedExtension" |> NamespacedName
-
+    let groupOfPeopleInvolvedExtension = _prefix "groupOfPeopleInvolvedExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#injuryStatus"></see>
     /// </summary>
-    let injuryStatus =
-        Namespaced_IRI.parse _namespace_name "injuryStatus" |> NamespacedName
-
+    let injuryStatus = _prefix "injuryStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#involvementRole"></see>
     /// </summary>
-    let involvementRole =
-        Namespaced_IRI.parse _namespace_name "involvementRole" |> NamespacedName
-
+    let involvementRole = _prefix "involvementRole"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfPeople"></see>
     /// </summary>
-    let numberOfPeople =
-        Namespaced_IRI.parse _namespace_name "numberOfPeople" |> NamespacedName
-
+    let numberOfPeople = _prefix "numberOfPeople"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfVehiclesInvolvedExtension"></see>
     /// </summary>
-    let groupOfVehiclesInvolvedExtension =
-        Namespaced_IRI.parse _namespace_name "groupOfVehiclesInvolvedExtension" |> NamespacedName
-
+    let groupOfVehiclesInvolvedExtension = _prefix "groupOfVehiclesInvolvedExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfVehicles"></see>
     /// </summary>
-    let numberOfVehicles =
-        Namespaced_IRI.parse _namespace_name "numberOfVehicles" |> NamespacedName
-
+    let numberOfVehicles = _prefix "numberOfVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCharacteristics"></see>
     /// </summary>
-    let vehicleCharacteristics =
-        Namespaced_IRI.parse _namespace_name "vehicleCharacteristics" |> NamespacedName
-
+    let vehicleCharacteristics = _prefix "vehicleCharacteristics"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleStatus"></see>
     /// </summary>
-    let vehicleStatus =
-        Namespaced_IRI.parse _namespace_name "vehicleStatus" |> NamespacedName
-
+    let vehicleStatus = _prefix "vehicleStatus"
     /// <summary>
     /// Details of hazardous materials.
     /// <see href="http://vocab.datex.org/terms#HazardousMaterials"></see></summary>
-    let HazardousMaterials =
-        Namespaced_IRI.parse _namespace_name "HazardousMaterials" |> NamespacedName
-
+    let HazardousMaterials = _prefix "HazardousMaterials"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chemicalName"></see>
     /// </summary>
-    let chemicalName =
-        Namespaced_IRI.parse _namespace_name "chemicalName" |> NamespacedName
-
+    let chemicalName = _prefix "chemicalName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dangerousGoodsFlashPoint"></see>
     /// </summary>
-    let dangerousGoodsFlashPoint =
-        Namespaced_IRI.parse _namespace_name "dangerousGoodsFlashPoint" |> NamespacedName
-
+    let dangerousGoodsFlashPoint = _prefix "dangerousGoodsFlashPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dangerousGoodsRegulations"></see>
     /// </summary>
-    let dangerousGoodsRegulations =
-        Namespaced_IRI.parse _namespace_name "dangerousGoodsRegulations" |> NamespacedName
-
+    let dangerousGoodsRegulations = _prefix "dangerousGoodsRegulations"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#hazardCodeIdentification"></see>
     /// </summary>
-    let hazardCodeIdentification =
-        Namespaced_IRI.parse _namespace_name "hazardCodeIdentification" |> NamespacedName
-
+    let hazardCodeIdentification = _prefix "hazardCodeIdentification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#hazardCodeVersionNumber"></see>
     /// </summary>
-    let hazardCodeVersionNumber =
-        Namespaced_IRI.parse _namespace_name "hazardCodeVersionNumber" |> NamespacedName
-
+    let hazardCodeVersionNumber = _prefix "hazardCodeVersionNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#hazardSubstanceItemPageNumber"></see>
     /// </summary>
-    let hazardSubstanceItemPageNumber =
-        Namespaced_IRI.parse _namespace_name "hazardSubstanceItemPageNumber" |> NamespacedName
-
+    let hazardSubstanceItemPageNumber = _prefix "hazardSubstanceItemPageNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#hazardousMaterialsExtension"></see>
     /// </summary>
-    let hazardousMaterialsExtension =
-        Namespaced_IRI.parse _namespace_name "hazardousMaterialsExtension" |> NamespacedName
-
+    let hazardousMaterialsExtension = _prefix "hazardousMaterialsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tremCardNumber"></see>
     /// </summary>
-    let tremCardNumber =
-        Namespaced_IRI.parse _namespace_name "tremCardNumber" |> NamespacedName
-
+    let tremCardNumber = _prefix "tremCardNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#undgNumber"></see>
     /// </summary>
-    let undgNumber = Namespaced_IRI.parse _namespace_name "undgNumber" |> NamespacedName
-
+    let undgNumber = _prefix "undgNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#volumeOfDangerousGoods"></see>
     /// </summary>
-    let volumeOfDangerousGoods =
-        Namespaced_IRI.parse _namespace_name "volumeOfDangerousGoods" |> NamespacedName
-
+    let volumeOfDangerousGoods = _prefix "volumeOfDangerousGoods"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#weightOfDangerousGoods"></see>
     /// </summary>
-    let weightOfDangerousGoods =
-        Namespaced_IRI.parse _namespace_name "weightOfDangerousGoods" |> NamespacedName
-
+    let weightOfDangerousGoods = _prefix "weightOfDangerousGoods"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#areaOfInterest"></see>
     /// </summary>
-    let areaOfInterest =
-        Namespaced_IRI.parse _namespace_name "areaOfInterest" |> NamespacedName
-
+    let areaOfInterest = _prefix "areaOfInterest"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#confidentiality"></see>
     /// </summary>
-    let confidentiality =
-        Namespaced_IRI.parse _namespace_name "confidentiality" |> NamespacedName
-
+    let confidentiality = _prefix "confidentiality"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#headerInformationExtension"></see>
     /// </summary>
-    let headerInformationExtension =
-        Namespaced_IRI.parse _namespace_name "headerInformationExtension" |> NamespacedName
-
+    let headerInformationExtension = _prefix "headerInformationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#informationStatus"></see>
     /// </summary>
-    let informationStatus =
-        Namespaced_IRI.parse _namespace_name "informationStatus" |> NamespacedName
-
+    let informationStatus = _prefix "informationStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#urgency"></see>
     /// </summary>
-    let urgency = Namespaced_IRI.parse _namespace_name "urgency" |> NamespacedName
-
+    let urgency = _prefix "urgency"
     /// <summary>
     /// Weight characteristic of the heaviest axle on the vehicle.
     /// <see href="http://vocab.datex.org/terms#HeaviestAxleWeightCharacteristic"></see></summary>
-    let HeaviestAxleWeightCharacteristic =
-        Namespaced_IRI.parse _namespace_name "HeaviestAxleWeightCharacteristic" |> NamespacedName
-
+    let HeaviestAxleWeightCharacteristic = _prefix "HeaviestAxleWeightCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heaviestAxleWeight"></see>
     /// </summary>
-    let heaviestAxleWeight =
-        Namespaced_IRI.parse _namespace_name "heaviestAxleWeight" |> NamespacedName
+    let heaviestAxleWeight = _prefix "heaviestAxleWeight"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heaviestAxleWeightCharacteristicExtension"></see>
     /// </summary>
     let heaviestAxleWeightCharacteristicExtension =
-        Namespaced_IRI.parse _namespace_name "heaviestAxleWeightCharacteristicExtension" |> NamespacedName
+        _prefix "heaviestAxleWeightCharacteristicExtension"
 
     /// <summary>
     /// Height characteristic of a vehicle.
     /// <see href="http://vocab.datex.org/terms#HeightCharacteristic"></see></summary>
-    let HeightCharacteristic =
-        Namespaced_IRI.parse _namespace_name "HeightCharacteristic" |> NamespacedName
-
+    let HeightCharacteristic = _prefix "HeightCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heightCharacteristicExtension"></see>
     /// </summary>
-    let heightCharacteristicExtension =
-        Namespaced_IRI.parse _namespace_name "heightCharacteristicExtension" |> NamespacedName
-
+    let heightCharacteristicExtension = _prefix "heightCharacteristicExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleHeight"></see>
     /// </summary>
-    let vehicleHeight =
-        Namespaced_IRI.parse _namespace_name "vehicleHeight" |> NamespacedName
-
+    let vehicleHeight = _prefix "vehicleHeight"
     /// <summary>
     /// Details of atmospheric humidity.
     /// <see href="http://vocab.datex.org/terms#Humidity"></see></summary>
-    let Humidity = Namespaced_IRI.parse _namespace_name "Humidity" |> NamespacedName
-
+    let Humidity = _prefix "Humidity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#humidityExtension"></see>
     /// </summary>
-    let humidityExtension =
-        Namespaced_IRI.parse _namespace_name "humidityExtension" |> NamespacedName
-
+    let humidityExtension = _prefix "humidityExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#relativeHumidity"></see>
     /// </summary>
-    let relativeHumidity =
-        Namespaced_IRI.parse _namespace_name "relativeHumidity" |> NamespacedName
-
+    let relativeHumidity = _prefix "relativeHumidity"
     /// <summary>
     /// A measured or calculated value expressed as a percentage.
     /// <see href="http://vocab.datex.org/terms#PercentageValue"></see></summary>
-    let PercentageValue =
-        Namespaced_IRI.parse _namespace_name "PercentageValue" |> NamespacedName
-
+    let PercentageValue = _prefix "PercentageValue"
     /// <summary>
     /// Measurements of atmospheric humidity.
     /// <see href="http://vocab.datex.org/terms#HumidityInformation"></see></summary>
-    let HumidityInformation =
-        Namespaced_IRI.parse _namespace_name "HumidityInformation" |> NamespacedName
-
+    let HumidityInformation = _prefix "HumidityInformation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#humidity"></see>
     /// </summary>
-    let humidity = Namespaced_IRI.parse _namespace_name "humidity" |> NamespacedName
-
+    let humidity = _prefix "humidity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#humidityInformationExtension"></see>
     /// </summary>
-    let humidityInformationExtension =
-        Namespaced_IRI.parse _namespace_name "humidityInformationExtension" |> NamespacedName
-
+    let humidityInformationExtension = _prefix "humidityInformationExtension"
     /// <summary>
     /// Measured or derived values relating to the weather at a specific location or locations.
     /// <see href="http://vocab.datex.org/terms#WeatherData"></see></summary>
-    let WeatherData =
-        Namespaced_IRI.parse _namespace_name "WeatherData" |> NamespacedName
-
+    let WeatherData = _prefix "WeatherData"
     /// <summary>
     /// An assessment of the impact that an event or operator action defined by the situation record has on the driving conditions.
     /// <see href="http://vocab.datex.org/terms#Impact"></see></summary>
-    let Impact = Namespaced_IRI.parse _namespace_name "Impact" |> NamespacedName
-
+    let Impact = _prefix "Impact"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#capacityRemaining"></see>
     /// </summary>
-    let capacityRemaining =
-        Namespaced_IRI.parse _namespace_name "capacityRemaining" |> NamespacedName
-
+    let capacityRemaining = _prefix "capacityRemaining"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#delays"></see>
     /// </summary>
-    let delays = Namespaced_IRI.parse _namespace_name "delays" |> NamespacedName
-
+    let delays = _prefix "delays"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#impactExtension"></see>
     /// </summary>
-    let impactExtension =
-        Namespaced_IRI.parse _namespace_name "impactExtension" |> NamespacedName
-
+    let impactExtension = _prefix "impactExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfLanesRestricted"></see>
     /// </summary>
-    let numberOfLanesRestricted =
-        Namespaced_IRI.parse _namespace_name "numberOfLanesRestricted" |> NamespacedName
-
+    let numberOfLanesRestricted = _prefix "numberOfLanesRestricted"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfOperationalLanes"></see>
     /// </summary>
-    let numberOfOperationalLanes =
-        Namespaced_IRI.parse _namespace_name "numberOfOperationalLanes" |> NamespacedName
-
+    let numberOfOperationalLanes = _prefix "numberOfOperationalLanes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#originalNumberOfLanes"></see>
     /// </summary>
-    let originalNumberOfLanes =
-        Namespaced_IRI.parse _namespace_name "originalNumberOfLanes" |> NamespacedName
-
+    let originalNumberOfLanes = _prefix "originalNumberOfLanes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#residualRoadWidth"></see>
     /// </summary>
-    let residualRoadWidth =
-        Namespaced_IRI.parse _namespace_name "residualRoadWidth" |> NamespacedName
-
+    let residualRoadWidth = _prefix "residualRoadWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficConstrictionType"></see>
     /// </summary>
-    let trafficConstrictionType =
-        Namespaced_IRI.parse _namespace_name "trafficConstrictionType" |> NamespacedName
-
+    let trafficConstrictionType = _prefix "trafficConstrictionType"
     /// <summary>
     /// Information on the individual charge for parking the specified vehicle.
     /// <see href="http://vocab.datex.org/terms#IndividualCharge"></see></summary>
-    let IndividualCharge =
-        Namespaced_IRI.parse _namespace_name "IndividualCharge" |> NamespacedName
-
+    let IndividualCharge = _prefix "IndividualCharge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargePaid"></see>
     /// </summary>
-    let chargePaid = Namespaced_IRI.parse _namespace_name "chargePaid" |> NamespacedName
-
+    let chargePaid = _prefix "chargePaid"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#individualChargeExtension"></see>
     /// </summary>
-    let individualChargeExtension =
-        Namespaced_IRI.parse _namespace_name "individualChargeExtension" |> NamespacedName
-
+    let individualChargeExtension = _prefix "individualChargeExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#usedMeansOfPayment"></see>
     /// </summary>
-    let usedMeansOfPayment =
-        Namespaced_IRI.parse _namespace_name "usedMeansOfPayment" |> NamespacedName
-
+    let usedMeansOfPayment = _prefix "usedMeansOfPayment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#usedPaymentCard"></see>
     /// </summary>
-    let usedPaymentCard =
-        Namespaced_IRI.parse _namespace_name "usedPaymentCard" |> NamespacedName
-
+    let usedPaymentCard = _prefix "usedPaymentCard"
     /// <summary>
     /// The used payment card for this parking vehicle.
     /// <see href="http://vocab.datex.org/terms#UsedPaymentCard"></see></summary>
-    let UsedPaymentCard =
-        Namespaced_IRI.parse _namespace_name "UsedPaymentCard" |> NamespacedName
-
+    let UsedPaymentCard = _prefix "UsedPaymentCard"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#withReservation"></see>
     /// </summary>
-    let withReservation =
-        Namespaced_IRI.parse _namespace_name "withReservation" |> NamespacedName
-
+    let withReservation = _prefix "withReservation"
     /// <summary>
     /// Measured or calculated data values relating to individual vehicles derived from detectors at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#IndividualVehicleDataValues"></see></summary>
-    let IndividualVehicleDataValues =
-        Namespaced_IRI.parse _namespace_name "IndividualVehicleDataValues" |> NamespacedName
-
+    let IndividualVehicleDataValues = _prefix "IndividualVehicleDataValues"
     /// <summary>
     /// The time of the arrival of an individual vehicle in a detection zone.
     /// <see href="http://vocab.datex.org/terms#arrivalTime"></see></summary>
-    let arrivalTime =
-        Namespaced_IRI.parse _namespace_name "arrivalTime" |> NamespacedName
-
+    let arrivalTime = _prefix "arrivalTime"
     /// <summary>
     /// The measured distance between the front of this vehicle and the rear of the preceding one, in metres at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#distanceGap"></see></summary>
-    let distanceGap =
-        Namespaced_IRI.parse _namespace_name "distanceGap" |> NamespacedName
-
+    let distanceGap = _prefix "distanceGap"
     /// <summary>
     /// The measured distance between the front (respectively back) of this vehicle and the front (respectively  back) of the preceding vehicle at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#distanceHeadway"></see></summary>
-    let distanceHeadway =
-        Namespaced_IRI.parse _namespace_name "distanceHeadway" |> NamespacedName
-
+    let distanceHeadway = _prefix "distanceHeadway"
     /// <summary>
     /// The time when an individual vehicle leaves a detection zone.
     /// <see href="http://vocab.datex.org/terms#exitTime"></see></summary>
-    let exitTime = Namespaced_IRI.parse _namespace_name "exitTime" |> NamespacedName
+    let exitTime = _prefix "exitTime"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#individualVehicleDataValuesExtension"></see>
     /// </summary>
     let individualVehicleDataValuesExtension =
-        Namespaced_IRI.parse _namespace_name "individualVehicleDataValuesExtension" |> NamespacedName
+        _prefix "individualVehicleDataValuesExtension"
 
     /// <summary>
     /// The measured speed of the individual vehicle at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#individualVehicleSpeed"></see></summary>
-    let individualVehicleSpeed =
-        Namespaced_IRI.parse _namespace_name "individualVehicleSpeed" |> NamespacedName
-
+    let individualVehicleSpeed = _prefix "individualVehicleSpeed"
     /// <summary>
     /// A measured or calculated value of speed.
     /// <see href="http://vocab.datex.org/terms#SpeedValue"></see></summary>
-    let SpeedValue = Namespaced_IRI.parse _namespace_name "SpeedValue" |> NamespacedName
-
+    let SpeedValue = _prefix "SpeedValue"
     /// <summary>
     /// The time elapsed between an individual vehicle entering a detection zone and exiting the same detection zone as detected by entry and exit sensors.
     /// <see href="http://vocab.datex.org/terms#passageDurationTime"></see></summary>
-    let passageDurationTime =
-        Namespaced_IRI.parse _namespace_name "passageDurationTime" |> NamespacedName
-
+    let passageDurationTime = _prefix "passageDurationTime"
     /// <summary>
     /// The period of time during which a vehicle activates a presence sensor.
     /// <see href="http://vocab.datex.org/terms#presenceDurationTime"></see></summary>
-    let presenceDurationTime =
-        Namespaced_IRI.parse _namespace_name "presenceDurationTime" |> NamespacedName
-
+    let presenceDurationTime = _prefix "presenceDurationTime"
     /// <summary>
     /// The time interval between the arrival of this vehicle's front at a point on the roadway, and that of the departure of the rear of the preceding one.
     /// <see href="http://vocab.datex.org/terms#timeGap"></see></summary>
-    let timeGap = Namespaced_IRI.parse _namespace_name "timeGap" |> NamespacedName
-
+    let timeGap = _prefix "timeGap"
     /// <summary>
     /// The measured time interval between this vehicle's arrival at (or departure from) a point on the roadway, and that of the preceding one.
     /// <see href="http://vocab.datex.org/terms#timeHeadway"></see></summary>
-    let timeHeadway =
-        Namespaced_IRI.parse _namespace_name "timeHeadway" |> NamespacedName
-
+    let timeHeadway = _prefix "timeHeadway"
     /// <summary>
     /// Measured or derived values relating to traffic or individual vehicle movements on a specific section or at a specific point on the road network.
     /// <see href="http://vocab.datex.org/terms#TrafficData"></see></summary>
-    let TrafficData =
-        Namespaced_IRI.parse _namespace_name "TrafficData" |> NamespacedName
+    let TrafficData = _prefix "TrafficData"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#infrastructureDamageObstructionExtension"></see>
     /// </summary>
     let infrastructureDamageObstructionExtension =
-        Namespaced_IRI.parse _namespace_name "infrastructureDamageObstructionExtension" |> NamespacedName
+        _prefix "infrastructureDamageObstructionExtension"
 
     /// <summary>
     /// Characterization of an obstruction on the road resulting from the failure or damage of infrastructure on, under, above or close to the road.
     /// <see href="http://vocab.datex.org/terms#infrastructureDamageType"></see></summary>
-    let infrastructureDamageType =
-        Namespaced_IRI.parse _namespace_name "infrastructureDamageType" |> NamespacedName
-
+    let infrastructureDamageType = _prefix "infrastructureDamageType"
     /// <summary>
     /// A measured or calculated value of distance in whole metres.
     /// <see href="http://vocab.datex.org/terms#IntegerMetreDistanceValue"></see></summary>
-    let IntegerMetreDistanceValue =
-        Namespaced_IRI.parse _namespace_name "IntegerMetreDistanceValue" |> NamespacedName
-
+    let IntegerMetreDistanceValue = _prefix "IntegerMetreDistanceValue"
     /// <summary>
     /// A value of distance expressed in metres in a non negative integer format.
     /// <see href="http://vocab.datex.org/terms#integerMetreDistance"></see></summary>
-    let integerMetreDistance =
-        Namespaced_IRI.parse _namespace_name "integerMetreDistance" |> NamespacedName
+    let integerMetreDistance = _prefix "integerMetreDistance"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#integerMetreDistanceValueExtension"></see>
     /// </summary>
     let integerMetreDistanceValueExtension =
-        Namespaced_IRI.parse _namespace_name "integerMetreDistanceValueExtension" |> NamespacedName
+        _prefix "integerMetreDistanceValueExtension"
 
     /// <summary>
     /// A parking site in an interurban context.
     /// <see href="http://vocab.datex.org/terms#InterUrbanParkingSite"></see></summary>
-    let InterUrbanParkingSite =
-        Namespaced_IRI.parse _namespace_name "InterUrbanParkingSite" |> NamespacedName
-
+    let InterUrbanParkingSite = _prefix "InterUrbanParkingSite"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#interUrbanParkingSiteExtension"></see>
     /// </summary>
-    let interUrbanParkingSiteExtension =
-        Namespaced_IRI.parse _namespace_name "interUrbanParkingSiteExtension" |> NamespacedName
-
+    let interUrbanParkingSiteExtension = _prefix "interUrbanParkingSiteExtension"
     /// <summary>
     /// Defines whether the interurban parking site is located in or nearby a motorway context, is a layby or on-street parking.
     /// <see href="http://vocab.datex.org/terms#interUrbanParkingSiteLocation"></see></summary>
-    let interUrbanParkingSiteLocation =
-        Namespaced_IRI.parse _namespace_name "interUrbanParkingSiteLocation" |> NamespacedName
-
+    let interUrbanParkingSiteLocation = _prefix "interUrbanParkingSiteLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#internationalIdentifierExtension"></see>
     /// </summary>
-    let internationalIdentifierExtension =
-        Namespaced_IRI.parse _namespace_name "internationalIdentifierExtension" |> NamespacedName
-
+    let internationalIdentifierExtension = _prefix "internationalIdentifierExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nationalIdentifier"></see>
     /// </summary>
-    let nationalIdentifier =
-        Namespaced_IRI.parse _namespace_name "nationalIdentifier" |> NamespacedName
-
+    let nationalIdentifier = _prefix "nationalIdentifier"
     /// <summary>
     /// Multiple (i.e. more than one) physically separate locations arranged as an ordered set that defines an itinerary or route.
     /// <see href="http://vocab.datex.org/terms#Itinerary"></see></summary>
-    let Itinerary = Namespaced_IRI.parse _namespace_name "Itinerary" |> NamespacedName
-
+    let Itinerary = _prefix "Itinerary"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#itineraryExtension"></see>
     /// </summary>
-    let itineraryExtension =
-        Namespaced_IRI.parse _namespace_name "itineraryExtension" |> NamespacedName
-
+    let itineraryExtension = _prefix "itineraryExtension"
     /// <summary>
     /// Destination of a route or final location in an itinerary.
     /// <see href="http://vocab.datex.org/terms#routeDestination"></see></summary>
-    let routeDestination =
-        Namespaced_IRI.parse _namespace_name "routeDestination" |> NamespacedName
-
+    let routeDestination = _prefix "routeDestination"
     /// <summary>
     /// Multiple physically separate locations arranged as an ordered set that defines an itinerary or route. The index qualifier indicates the order.
     /// <see href="http://vocab.datex.org/terms#ItineraryByIndexedLocations"></see></summary>
-    let ItineraryByIndexedLocations =
-        Namespaced_IRI.parse _namespace_name "ItineraryByIndexedLocations" |> NamespacedName
+    let ItineraryByIndexedLocations = _prefix "ItineraryByIndexedLocations"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#itineraryByIndexedLocationsExtension"></see>
     /// </summary>
     let itineraryByIndexedLocationsExtension =
-        Namespaced_IRI.parse _namespace_name "itineraryByIndexedLocationsExtension" |> NamespacedName
+        _prefix "itineraryByIndexedLocationsExtension"
 
     /// <summary>
     /// A location contained in an itinerary (i.e. an ordered set of locations defining a route or itinerary).
     /// <see href="http://vocab.datex.org/terms#locationContainedInItinerary"></see></summary>
-    let locationContainedInItinerary =
-        Namespaced_IRI.parse _namespace_name "locationContainedInItinerary" |> NamespacedName
-
+    let locationContainedInItinerary = _prefix "locationContainedInItinerary"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_LocationContainedInItinerary"></see>
     /// </summary>
-    let _LocationContainedInItinerary =
-        Namespaced_IRI.parse _namespace_name "_LocationContainedInItinerary" |> NamespacedName
-
+    let _LocationContainedInItinerary = _prefix "_LocationContainedInItinerary"
     /// <summary>
     /// Multiple (i.e. more than one) physically separate locations which are ordered that constitute an itinerary or route where they are defined by reference to a predefined itinerary.
     /// <see href="http://vocab.datex.org/terms#ItineraryByReference"></see></summary>
-    let ItineraryByReference =
-        Namespaced_IRI.parse _namespace_name "ItineraryByReference" |> NamespacedName
-
+    let ItineraryByReference = _prefix "ItineraryByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#itineraryByReferenceExtension"></see>
     /// </summary>
-    let itineraryByReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "itineraryByReferenceExtension" |> NamespacedName
-
+    let itineraryByReferenceExtension = _prefix "itineraryByReferenceExtension"
     /// <summary>
     /// A reference to a versioned instance of a predefined itinerary as specified in a PredefinedLocationsPublication.
     /// <see href="http://vocab.datex.org/terms#predefinedItineraryReference"></see></summary>
-    let predefinedItineraryReference =
-        Namespaced_IRI.parse _namespace_name "predefinedItineraryReference" |> NamespacedName
+    let predefinedItineraryReference = _prefix "predefinedItineraryReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PredefinedItineraryVersionedReference"></see>
     /// </summary>
     let _PredefinedItineraryVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_PredefinedItineraryVersionedReference" |> NamespacedName
+        _prefix "_PredefinedItineraryVersionedReference"
 
     /// <summary>
     /// Junction (on a highway), can also be an interchange or if applicable also a motorway service station (see junctionClassification).
     /// <see href="http://vocab.datex.org/terms#Junction"></see></summary>
-    let Junction = Namespaced_IRI.parse _namespace_name "Junction" |> NamespacedName
-
+    let Junction = _prefix "Junction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#destinationMotorway"></see>
     /// </summary>
-    let destinationMotorway =
-        Namespaced_IRI.parse _namespace_name "destinationMotorway" |> NamespacedName
-
+    let destinationMotorway = _prefix "destinationMotorway"
     /// <summary>
     /// Identification of a road by its name, identifier, type ...
     /// <see href="http://vocab.datex.org/terms#Road"></see></summary>
-    let Road = Namespaced_IRI.parse _namespace_name "Road" |> NamespacedName
-
+    let Road = _prefix "Road"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#junctionClassification"></see>
     /// </summary>
-    let junctionClassification =
-        Namespaced_IRI.parse _namespace_name "junctionClassification" |> NamespacedName
-
+    let junctionClassification = _prefix "junctionClassification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#junctionExtension"></see>
     /// </summary>
-    let junctionExtension =
-        Namespaced_IRI.parse _namespace_name "junctionExtension" |> NamespacedName
-
+    let junctionExtension = _prefix "junctionExtension"
     /// <summary>
     /// Name of the junction.
     /// <see href="http://vocab.datex.org/terms#junctionName"></see></summary>
-    let junctionName =
-        Namespaced_IRI.parse _namespace_name "junctionName" |> NamespacedName
-
+    let junctionName = _prefix "junctionName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#junctionNumber"></see>
     /// </summary>
-    let junctionNumber =
-        Namespaced_IRI.parse _namespace_name "junctionNumber" |> NamespacedName
-
+    let junctionNumber = _prefix "junctionNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#motorway"></see>
     /// </summary>
-    let motorway = Namespaced_IRI.parse _namespace_name "motorway" |> NamespacedName
-
+    let motorway = _prefix "motorway"
     /// <summary>
     /// A measured or calculated value of concentration of a substance in grams per unit volume.
     /// <see href="http://vocab.datex.org/terms#KilogramsConcentrationValue"></see></summary>
-    let KilogramsConcentrationValue =
-        Namespaced_IRI.parse _namespace_name "KilogramsConcentrationValue" |> NamespacedName
-
+    let KilogramsConcentrationValue = _prefix "KilogramsConcentrationValue"
     /// <summary>
     /// A value defining the amount of a substance in a given volume (concentration) expressed in kilograms per cubic metre.
     /// <see href="http://vocab.datex.org/terms#kilogramsConcentration"></see></summary>
-    let kilogramsConcentration =
-        Namespaced_IRI.parse _namespace_name "kilogramsConcentration" |> NamespacedName
+    let kilogramsConcentration = _prefix "kilogramsConcentration"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#kilogramsConcentrationValueExtension"></see>
     /// </summary>
     let kilogramsConcentrationValueExtension =
-        Namespaced_IRI.parse _namespace_name "kilogramsConcentrationValueExtension" |> NamespacedName
+        _prefix "kilogramsConcentrationValueExtension"
 
     /// <summary>
     /// Length characteristic of a vehicle.
     /// <see href="http://vocab.datex.org/terms#LengthCharacteristic"></see></summary>
-    let LengthCharacteristic =
-        Namespaced_IRI.parse _namespace_name "LengthCharacteristic" |> NamespacedName
-
+    let LengthCharacteristic = _prefix "LengthCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lengthCharacteristicExtension"></see>
     /// </summary>
-    let lengthCharacteristicExtension =
-        Namespaced_IRI.parse _namespace_name "lengthCharacteristicExtension" |> NamespacedName
-
+    let lengthCharacteristicExtension = _prefix "lengthCharacteristicExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleLength"></see>
     /// </summary>
-    let vehicleLength =
-        Namespaced_IRI.parse _namespace_name "vehicleLength" |> NamespacedName
-
+    let vehicleLength = _prefix "vehicleLength"
     /// <summary>
     /// Information relating to the life cycle management of the situation record.
     /// <see href="http://vocab.datex.org/terms#LifeCycleManagement"></see></summary>
-    let LifeCycleManagement =
-        Namespaced_IRI.parse _namespace_name "LifeCycleManagement" |> NamespacedName
-
+    let LifeCycleManagement = _prefix "LifeCycleManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#cancel"></see>
     /// </summary>
-    let cancel = Namespaced_IRI.parse _namespace_name "cancel" |> NamespacedName
+    let cancel = _prefix "cancel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#end"></see>
     /// </summary>
-    let end_ = Namespaced_IRI.parse _namespace_name "end" |> NamespacedName
-
+    let end_ = _prefix "end"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lifeCycleManagementExtension"></see>
     /// </summary>
-    let lifeCycleManagementExtension =
-        Namespaced_IRI.parse _namespace_name "lifeCycleManagementExtension" |> NamespacedName
-
+    let lifeCycleManagementExtension = _prefix "lifeCycleManagementExtension"
     /// <summary>
     /// A linear section along a single road with optional directionality defined between two points on the same road.
     /// <see href="http://vocab.datex.org/terms#Linear"></see></summary>
-    let Linear = Namespaced_IRI.parse _namespace_name "Linear" |> NamespacedName
-
+    let Linear = _prefix "Linear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCLinear"></see>
     /// </summary>
-    let alertCLinear =
-        Namespaced_IRI.parse _namespace_name "alertCLinear" |> NamespacedName
-
+    let alertCLinear = _prefix "alertCLinear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearExtension"></see>
     /// </summary>
-    let linearExtension =
-        Namespaced_IRI.parse _namespace_name "linearExtension" |> NamespacedName
-
+    let linearExtension = _prefix "linearExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_LinearExtensionType"></see>
     /// </summary>
-    let _LinearExtensionType =
-        Namespaced_IRI.parse _namespace_name "_LinearExtensionType" |> NamespacedName
-
+    let _LinearExtensionType = _prefix "_LinearExtensionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearWithinLinearElement"></see>
     /// </summary>
-    let linearWithinLinearElement =
-        Namespaced_IRI.parse _namespace_name "linearWithinLinearElement" |> NamespacedName
-
+    let linearWithinLinearElement = _prefix "linearWithinLinearElement"
     /// <summary>
     /// A linear section along a linear element where the linear element is either a part of or the whole of a linear object (i.e. a road), consistent with ISO 19148 definitions.
     /// <see href="http://vocab.datex.org/terms#LinearWithinLinearElement"></see></summary>
-    let LinearWithinLinearElement =
-        Namespaced_IRI.parse _namespace_name "LinearWithinLinearElement" |> NamespacedName
-
+    let LinearWithinLinearElement = _prefix "LinearWithinLinearElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegLinearLocation"></see>
     /// </summary>
-    let tpegLinearLocation =
-        Namespaced_IRI.parse _namespace_name "tpegLinearLocation" |> NamespacedName
-
+    let tpegLinearLocation = _prefix "tpegLinearLocation"
     /// <summary>
     /// A linear section along a single road defined between two points on the same road by a TPEG-Loc structure.
     /// <see href="http://vocab.datex.org/terms#TpegLinearLocation"></see></summary>
-    let TpegLinearLocation =
-        Namespaced_IRI.parse _namespace_name "TpegLinearLocation" |> NamespacedName
-
+    let TpegLinearLocation = _prefix "TpegLinearLocation"
     /// <summary>
     /// The specification of a location on a network (as a point or a linear location).
     /// <see href="http://vocab.datex.org/terms#NetworkLocation"></see></summary>
-    let NetworkLocation =
-        Namespaced_IRI.parse _namespace_name "NetworkLocation" |> NamespacedName
-
+    let NetworkLocation = _prefix "NetworkLocation"
     /// <summary>
     /// A linear element along a single linear object, consistent with ISO 19148 definitions.
     /// <see href="http://vocab.datex.org/terms#LinearElement"></see></summary>
-    let LinearElement =
-        Namespaced_IRI.parse _namespace_name "LinearElement" |> NamespacedName
-
+    let LinearElement = _prefix "LinearElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElementExtension"></see>
     /// </summary>
-    let linearElementExtension =
-        Namespaced_IRI.parse _namespace_name "linearElementExtension" |> NamespacedName
-
+    let linearElementExtension = _prefix "linearElementExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElementNature"></see>
     /// </summary>
-    let linearElementNature =
-        Namespaced_IRI.parse _namespace_name "linearElementNature" |> NamespacedName
-
+    let linearElementNature = _prefix "linearElementNature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElementReferenceModel"></see>
     /// </summary>
-    let linearElementReferenceModel =
-        Namespaced_IRI.parse _namespace_name "linearElementReferenceModel" |> NamespacedName
+    let linearElementReferenceModel = _prefix "linearElementReferenceModel"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElementReferenceModelVersion"></see>
     /// </summary>
     let linearElementReferenceModelVersion =
-        Namespaced_IRI.parse _namespace_name "linearElementReferenceModelVersion" |> NamespacedName
+        _prefix "linearElementReferenceModelVersion"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadName"></see>
     /// </summary>
-    let roadName = Namespaced_IRI.parse _namespace_name "roadName" |> NamespacedName
+    let roadName = _prefix "roadName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadNumber"></see>
     /// </summary>
-    let roadNumber = Namespaced_IRI.parse _namespace_name "roadNumber" |> NamespacedName
-
+    let roadNumber = _prefix "roadNumber"
     /// <summary>
     /// A linear element along a single linear object defined by its identifier or code in a road network reference model (specified in LinearElement class) which segments the road network according to specific business rules.
     /// <see href="http://vocab.datex.org/terms#LinearElementByCode"></see></summary>
-    let LinearElementByCode =
-        Namespaced_IRI.parse _namespace_name "LinearElementByCode" |> NamespacedName
-
+    let LinearElementByCode = _prefix "LinearElementByCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElementByCodeExtension"></see>
     /// </summary>
-    let linearElementByCodeExtension =
-        Namespaced_IRI.parse _namespace_name "linearElementByCodeExtension" |> NamespacedName
-
+    let linearElementByCodeExtension = _prefix "linearElementByCodeExtension"
     /// <summary>
     /// An identifier or code of a linear element (or link) in the road network reference model that is specified in the LinearElement class.
     /// <see href="http://vocab.datex.org/terms#linearElementIdentifier"></see></summary>
-    let linearElementIdentifier =
-        Namespaced_IRI.parse _namespace_name "linearElementIdentifier" |> NamespacedName
-
+    let linearElementIdentifier = _prefix "linearElementIdentifier"
     /// <summary>
     /// A linear element along a single linear object defined by its start and end points.
     /// <see href="http://vocab.datex.org/terms#LinearElementByPoints"></see></summary>
-    let LinearElementByPoints =
-        Namespaced_IRI.parse _namespace_name "LinearElementByPoints" |> NamespacedName
-
+    let LinearElementByPoints = _prefix "LinearElementByPoints"
     /// <summary>
     /// The referent at a known location on the linear object which defines the end of the linear element.
     /// <see href="http://vocab.datex.org/terms#endPointOfLinearElement"></see></summary>
-    let endPointOfLinearElement =
-        Namespaced_IRI.parse _namespace_name "endPointOfLinearElement" |> NamespacedName
-
+    let endPointOfLinearElement = _prefix "endPointOfLinearElement"
     /// <summary>
     /// A referent at a known location on the linear object which is neither the start or end of the linear element.
     /// <see href="http://vocab.datex.org/terms#intermediatePointOnLinearElement"></see></summary>
-    let intermediatePointOnLinearElement =
-        Namespaced_IRI.parse _namespace_name "intermediatePointOnLinearElement" |> NamespacedName
-
+    let intermediatePointOnLinearElement = _prefix "intermediatePointOnLinearElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_IntermediatePointOnLinearElement"></see>
     /// </summary>
-    let _IntermediatePointOnLinearElement =
-        Namespaced_IRI.parse _namespace_name "_IntermediatePointOnLinearElement" |> NamespacedName
-
+    let _IntermediatePointOnLinearElement = _prefix "_IntermediatePointOnLinearElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElementByPointsExtension"></see>
     /// </summary>
-    let linearElementByPointsExtension =
-        Namespaced_IRI.parse _namespace_name "linearElementByPointsExtension" |> NamespacedName
-
+    let linearElementByPointsExtension = _prefix "linearElementByPointsExtension"
     /// <summary>
     /// The referent at a known location on the linear object which defines the start of the linear element.
     /// <see href="http://vocab.datex.org/terms#startPointOfLinearElement"></see></summary>
-    let startPointOfLinearElement =
-        Namespaced_IRI.parse _namespace_name "startPointOfLinearElement" |> NamespacedName
-
+    let startPointOfLinearElement = _prefix "startPointOfLinearElement"
     /// <summary>
     /// An identifiable instance of a linear traffic view at a single point in time relating to a linear section of road, comprising one or more traffic view records.
     /// <see href="http://vocab.datex.org/terms#LinearTrafficView"></see></summary>
-    let LinearTrafficView =
-        Namespaced_IRI.parse _namespace_name "LinearTrafficView" |> NamespacedName
-
+    let LinearTrafficView = _prefix "LinearTrafficView"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearPredefinedLocationReference"></see>
     /// </summary>
-    let linearPredefinedLocationReference =
-        Namespaced_IRI.parse _namespace_name "linearPredefinedLocationReference" |> NamespacedName
+    let linearPredefinedLocationReference = _prefix "linearPredefinedLocationReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PredefinedLocationVersionedReference"></see>
     /// </summary>
     let _PredefinedLocationVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_PredefinedLocationVersionedReference" |> NamespacedName
+        _prefix "_PredefinedLocationVersionedReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearTrafficViewExtension"></see>
     /// </summary>
-    let linearTrafficViewExtension =
-        Namespaced_IRI.parse _namespace_name "linearTrafficViewExtension" |> NamespacedName
-
+    let linearTrafficViewExtension = _prefix "linearTrafficViewExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficViewRecord"></see>
     /// </summary>
-    let trafficViewRecord =
-        Namespaced_IRI.parse _namespace_name "trafficViewRecord" |> NamespacedName
-
+    let trafficViewRecord = _prefix "trafficViewRecord"
     /// <summary>
     /// An identifiable instance of a single record within a traffic view which shall comprise at most one instance of each of the following: OperatorAction, TrafficElement, ElaboratedData and CCTVImages.
     /// <see href="http://vocab.datex.org/terms#TrafficViewRecord"></see></summary>
-    let TrafficViewRecord =
-        Namespaced_IRI.parse _namespace_name "TrafficViewRecord" |> NamespacedName
-
+    let TrafficViewRecord = _prefix "TrafficViewRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#administrativeAreaOfLinearSection"></see>
     /// </summary>
-    let administrativeAreaOfLinearSection =
-        Namespaced_IRI.parse _namespace_name "administrativeAreaOfLinearSection" |> NamespacedName
-
+    let administrativeAreaOfLinearSection = _prefix "administrativeAreaOfLinearSection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#directionBoundOnLinearSection"></see>
     /// </summary>
-    let directionBoundOnLinearSection =
-        Namespaced_IRI.parse _namespace_name "directionBoundOnLinearSection" |> NamespacedName
-
+    let directionBoundOnLinearSection = _prefix "directionBoundOnLinearSection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#directionRelativeOnLinearSection"></see>
     /// </summary>
-    let directionRelativeOnLinearSection =
-        Namespaced_IRI.parse _namespace_name "directionRelativeOnLinearSection" |> NamespacedName
-
+    let directionRelativeOnLinearSection = _prefix "directionRelativeOnLinearSection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#fromPoint"></see>
     /// </summary>
-    let fromPoint = Namespaced_IRI.parse _namespace_name "fromPoint" |> NamespacedName
-
+    let fromPoint = _prefix "fromPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heightGradeOfLinearSection"></see>
     /// </summary>
-    let heightGradeOfLinearSection =
-        Namespaced_IRI.parse _namespace_name "heightGradeOfLinearSection" |> NamespacedName
-
+    let heightGradeOfLinearSection = _prefix "heightGradeOfLinearSection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearElement"></see>
     /// </summary>
-    let linearElement =
-        Namespaced_IRI.parse _namespace_name "linearElement" |> NamespacedName
+    let linearElement = _prefix "linearElement"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearWithinLinearElementExtension"></see>
     /// </summary>
     let linearWithinLinearElementExtension =
-        Namespaced_IRI.parse _namespace_name "linearWithinLinearElementExtension" |> NamespacedName
+        _prefix "linearWithinLinearElementExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#toPoint"></see>
     /// </summary>
-    let toPoint = Namespaced_IRI.parse _namespace_name "toPoint" |> NamespacedName
-
+    let toPoint = _prefix "toPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#externalReferencing"></see>
     /// </summary>
-    let externalReferencing =
-        Namespaced_IRI.parse _namespace_name "externalReferencing" |> NamespacedName
-
+    let externalReferencing = _prefix "externalReferencing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#locationExtension"></see>
     /// </summary>
-    let locationExtension =
-        Namespaced_IRI.parse _namespace_name "locationExtension" |> NamespacedName
-
+    let locationExtension = _prefix "locationExtension"
     /// <summary>
     /// A location which may be used by clients for visual display on user interfaces.
     /// <see href="http://vocab.datex.org/terms#locationForDisplay"></see></summary>
-    let locationForDisplay =
-        Namespaced_IRI.parse _namespace_name "locationForDisplay" |> NamespacedName
-
+    let locationForDisplay = _prefix "locationForDisplay"
     /// <summary>
     /// A pair of coordinates defining the geodetic position of a single point using the European Terrestrial Reference System 1989 (ETRS89).
     /// <see href="http://vocab.datex.org/terms#PointCoordinates"></see></summary>
-    let PointCoordinates =
-        Namespaced_IRI.parse _namespace_name "PointCoordinates" |> NamespacedName
-
+    let PointCoordinates = _prefix "PointCoordinates"
     /// <summary>
     /// A location defined by reference to a predefined location.
     /// <see href="http://vocab.datex.org/terms#LocationByReference"></see></summary>
-    let LocationByReference =
-        Namespaced_IRI.parse _namespace_name "LocationByReference" |> NamespacedName
-
+    let LocationByReference = _prefix "LocationByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#locationByReferenceExtension"></see>
     /// </summary>
-    let locationByReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "locationByReferenceExtension" |> NamespacedName
-
+    let locationByReferenceExtension = _prefix "locationByReferenceExtension"
     /// <summary>
     /// A reference to a versioned predefined location.
     /// <see href="http://vocab.datex.org/terms#predefinedLocationReference"></see></summary>
-    let predefinedLocationReference =
-        Namespaced_IRI.parse _namespace_name "predefinedLocationReference" |> NamespacedName
-
+    let predefinedLocationReference = _prefix "predefinedLocationReference"
     /// <summary>
     /// Location characteristics which override values set in the referenced measurement point.
     /// <see href="http://vocab.datex.org/terms#LocationCharacteristicsOverride"></see></summary>
-    let LocationCharacteristicsOverride =
-        Namespaced_IRI.parse _namespace_name "LocationCharacteristicsOverride" |> NamespacedName
+    let LocationCharacteristicsOverride = _prefix "LocationCharacteristicsOverride"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#locationCharacteristicsOverrideExtension"></see>
     /// </summary>
     let locationCharacteristicsOverrideExtension =
-        Namespaced_IRI.parse _namespace_name "locationCharacteristicsOverrideExtension" |> NamespacedName
+        _prefix "locationCharacteristicsOverrideExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementLanesOverride"></see>
     /// </summary>
-    let measurementLanesOverride =
-        Namespaced_IRI.parse _namespace_name "measurementLanesOverride" |> NamespacedName
-
+    let measurementLanesOverride = _prefix "measurementLanesOverride"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#reversedFlow"></see>
     /// </summary>
-    let reversedFlow =
-        Namespaced_IRI.parse _namespace_name "reversedFlow" |> NamespacedName
-
+    let reversedFlow = _prefix "reversedFlow"
     /// <summary>
     /// Details of the maintenance vehicles involved in the roadworks activity.
     /// <see href="http://vocab.datex.org/terms#MaintenanceVehicles"></see></summary>
-    let MaintenanceVehicles =
-        Namespaced_IRI.parse _namespace_name "MaintenanceVehicles" |> NamespacedName
-
+    let MaintenanceVehicles = _prefix "MaintenanceVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maintenanceVehicleActions"></see>
     /// </summary>
-    let maintenanceVehicleActions =
-        Namespaced_IRI.parse _namespace_name "maintenanceVehicleActions" |> NamespacedName
-
+    let maintenanceVehicleActions = _prefix "maintenanceVehicleActions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maintenanceVehiclesExtension"></see>
     /// </summary>
-    let maintenanceVehiclesExtension =
-        Namespaced_IRI.parse _namespace_name "maintenanceVehiclesExtension" |> NamespacedName
-
+    let maintenanceVehiclesExtension = _prefix "maintenanceVehiclesExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfMaintenanceVehicles"></see>
     /// </summary>
-    let numberOfMaintenanceVehicles =
-        Namespaced_IRI.parse _namespace_name "numberOfMaintenanceVehicles" |> NamespacedName
-
+    let numberOfMaintenanceVehicles = _prefix "numberOfMaintenanceVehicles"
     /// <summary>
     /// Roadworks involving the maintenance or installation of infrastructure.
     /// <see href="http://vocab.datex.org/terms#MaintenanceWorks"></see></summary>
-    let MaintenanceWorks =
-        Namespaced_IRI.parse _namespace_name "MaintenanceWorks" |> NamespacedName
-
+    let MaintenanceWorks = _prefix "MaintenanceWorks"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maintenanceWorksExtension"></see>
     /// </summary>
-    let maintenanceWorksExtension =
-        Namespaced_IRI.parse _namespace_name "maintenanceWorksExtension" |> NamespacedName
-
+    let maintenanceWorksExtension = _prefix "maintenanceWorksExtension"
     /// <summary>
     /// The type of road maintenance or installation work at the specified location.
     /// <see href="http://vocab.datex.org/terms#roadMaintenanceType"></see></summary>
-    let roadMaintenanceType =
-        Namespaced_IRI.parse _namespace_name "roadMaintenanceType" |> NamespacedName
-
+    let roadMaintenanceType = _prefix "roadMaintenanceType"
     /// <summary>
     /// A cause of this situation record which is managed by the publication creator, i.e. one which is represented by another situation record produced by the same publication creator.
     /// <see href="http://vocab.datex.org/terms#ManagedCause"></see></summary>
-    let ManagedCause =
-        Namespaced_IRI.parse _namespace_name "ManagedCause" |> NamespacedName
-
+    let ManagedCause = _prefix "ManagedCause"
     /// <summary>
     /// A reference to another situation record produced by the same publication creator which defines a cause of the event defined here.
     /// <see href="http://vocab.datex.org/terms#managedCause"></see></summary>
-    let managedCause =
-        Namespaced_IRI.parse _namespace_name "managedCause" |> NamespacedName
+    let managedCause = _prefix "managedCause"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_SituationRecordVersionedReference"></see>
     /// </summary>
     let _SituationRecordVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_SituationRecordVersionedReference" |> NamespacedName
+        _prefix "_SituationRecordVersionedReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#managedCauseExtension"></see>
     /// </summary>
-    let managedCauseExtension =
-        Namespaced_IRI.parse _namespace_name "managedCauseExtension" |> NamespacedName
-
+    let managedCauseExtension = _prefix "managedCauseExtension"
     /// <summary>
     /// Information relating to the management of the situation record.
     /// <see href="http://vocab.datex.org/terms#Management"></see></summary>
-    let Management = Namespaced_IRI.parse _namespace_name "Management" |> NamespacedName
-
+    let Management = _prefix "Management"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#filterExitManagement"></see>
     /// </summary>
-    let filterExitManagement =
-        Namespaced_IRI.parse _namespace_name "filterExitManagement" |> NamespacedName
-
+    let filterExitManagement = _prefix "filterExitManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lifeCycleManagement"></see>
     /// </summary>
-    let lifeCycleManagement =
-        Namespaced_IRI.parse _namespace_name "lifeCycleManagement" |> NamespacedName
-
+    let lifeCycleManagement = _prefix "lifeCycleManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#managementExtension"></see>
     /// </summary>
-    let managementExtension =
-        Namespaced_IRI.parse _namespace_name "managementExtension" |> NamespacedName
-
+    let managementExtension = _prefix "managementExtension"
     /// <summary>
     /// A publication containing one or more measurement data sets, each set being measured at a single measurement site.
     /// <see href="http://vocab.datex.org/terms#MeasuredDataPublication"></see></summary>
-    let MeasuredDataPublication =
-        Namespaced_IRI.parse _namespace_name "MeasuredDataPublication" |> NamespacedName
-
+    let MeasuredDataPublication = _prefix "MeasuredDataPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measuredDataPublicationExtension"></see>
     /// </summary>
-    let measuredDataPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "measuredDataPublicationExtension" |> NamespacedName
-
+    let measuredDataPublicationExtension = _prefix "measuredDataPublicationExtension"
     /// <summary>
     /// A reference to a versioned Measurement Site table.
     /// <see href="http://vocab.datex.org/terms#measurementSiteTableReference"></see></summary>
-    let measurementSiteTableReference =
-        Namespaced_IRI.parse _namespace_name "measurementSiteTableReference" |> NamespacedName
+    let measurementSiteTableReference = _prefix "measurementSiteTableReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_MeasurementSiteTableVersionedReference"></see>
     /// </summary>
     let _MeasurementSiteTableVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_MeasurementSiteTableVersionedReference" |> NamespacedName
+        _prefix "_MeasurementSiteTableVersionedReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#siteMeasurements"></see>
     /// </summary>
-    let siteMeasurements =
-        Namespaced_IRI.parse _namespace_name "siteMeasurements" |> NamespacedName
-
+    let siteMeasurements = _prefix "siteMeasurements"
     /// <summary>
     /// A  measurement data set derived from a specific measurement site.
     /// <see href="http://vocab.datex.org/terms#SiteMeasurements"></see></summary>
-    let SiteMeasurements =
-        Namespaced_IRI.parse _namespace_name "SiteMeasurements" |> NamespacedName
-
+    let SiteMeasurements = _prefix "SiteMeasurements"
     /// <summary>
     /// Contains optional characteristics for the specific measured value (indexed to correspond with the defined characteristics of the measurement at the referenced measurement site) which override the static characteristics defined in the MeasurementSiteTable.
     /// <see href="http://vocab.datex.org/terms#MeasuredValue"></see></summary>
-    let MeasuredValue =
-        Namespaced_IRI.parse _namespace_name "MeasuredValue" |> NamespacedName
-
+    let MeasuredValue = _prefix "MeasuredValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#locationCharacteristicsOverride"></see>
     /// </summary>
-    let locationCharacteristicsOverride =
-        Namespaced_IRI.parse _namespace_name "locationCharacteristicsOverride" |> NamespacedName
-
+    let locationCharacteristicsOverride = _prefix "locationCharacteristicsOverride"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measuredValueExtension"></see>
     /// </summary>
-    let measuredValueExtension =
-        Namespaced_IRI.parse _namespace_name "measuredValueExtension" |> NamespacedName
-
+    let measuredValueExtension = _prefix "measuredValueExtension"
     /// <summary>
     /// The type of fault which is being reported for the specified measurement equipment.
     /// <see href="http://vocab.datex.org/terms#measurementEquipmentFault"></see></summary>
-    let measurementEquipmentFault =
-        Namespaced_IRI.parse _namespace_name "measurementEquipmentFault" |> NamespacedName
-
+    let measurementEquipmentFault = _prefix "measurementEquipmentFault"
     /// <summary>
     /// Details of a fault which is being reported for the related measurement equipment.
     /// <see href="http://vocab.datex.org/terms#MeasurementEquipmentFault"></see></summary>
-    let MeasurementEquipmentFault =
-        Namespaced_IRI.parse _namespace_name "MeasurementEquipmentFault" |> NamespacedName
-
+    let MeasurementEquipmentFault = _prefix "MeasurementEquipmentFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementEquipmentTypeUsed"></see>
     /// </summary>
-    let measurementEquipmentTypeUsed =
-        Namespaced_IRI.parse _namespace_name "measurementEquipmentTypeUsed" |> NamespacedName
+    let measurementEquipmentTypeUsed = _prefix "measurementEquipmentTypeUsed"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementEquipmentFaultExtension"></see>
     /// </summary>
     let measurementEquipmentFaultExtension =
-        Namespaced_IRI.parse _namespace_name "measurementEquipmentFaultExtension" |> NamespacedName
+        _prefix "measurementEquipmentFaultExtension"
 
     /// <summary>
     /// An identifiable single measurement site entry/record in the Measurement Site table.
     /// <see href="http://vocab.datex.org/terms#MeasurementSiteRecord"></see></summary>
-    let MeasurementSiteRecord =
-        Namespaced_IRI.parse _namespace_name "MeasurementSiteRecord" |> NamespacedName
-
+    let MeasurementSiteRecord = _prefix "MeasurementSiteRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#computationMethod"></see>
     /// </summary>
-    let computationMethod =
-        Namespaced_IRI.parse _namespace_name "computationMethod" |> NamespacedName
-
+    let computationMethod = _prefix "computationMethod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementEquipmentReference"></see>
     /// </summary>
-    let measurementEquipmentReference =
-        Namespaced_IRI.parse _namespace_name "measurementEquipmentReference" |> NamespacedName
-
+    let measurementEquipmentReference = _prefix "measurementEquipmentReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSide"></see>
     /// </summary>
-    let measurementSide =
-        Namespaced_IRI.parse _namespace_name "measurementSide" |> NamespacedName
-
+    let measurementSide = _prefix "measurementSide"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteIdentification"></see>
     /// </summary>
-    let measurementSiteIdentification =
-        Namespaced_IRI.parse _namespace_name "measurementSiteIdentification" |> NamespacedName
-
+    let measurementSiteIdentification = _prefix "measurementSiteIdentification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteLocation"></see>
     /// </summary>
-    let measurementSiteLocation =
-        Namespaced_IRI.parse _namespace_name "measurementSiteLocation" |> NamespacedName
-
+    let measurementSiteLocation = _prefix "measurementSiteLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteName"></see>
     /// </summary>
-    let measurementSiteName =
-        Namespaced_IRI.parse _namespace_name "measurementSiteName" |> NamespacedName
-
+    let measurementSiteName = _prefix "measurementSiteName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteNumberOfLanes"></see>
     /// </summary>
-    let measurementSiteNumberOfLanes =
-        Namespaced_IRI.parse _namespace_name "measurementSiteNumberOfLanes" |> NamespacedName
-
+    let measurementSiteNumberOfLanes = _prefix "measurementSiteNumberOfLanes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteRecordExtension"></see>
     /// </summary>
-    let measurementSiteRecordExtension =
-        Namespaced_IRI.parse _namespace_name "measurementSiteRecordExtension" |> NamespacedName
-
+    let measurementSiteRecordExtension = _prefix "measurementSiteRecordExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteRecordVersionTime"></see>
     /// </summary>
-    let measurementSiteRecordVersionTime =
-        Namespaced_IRI.parse _namespace_name "measurementSiteRecordVersionTime" |> NamespacedName
+    let measurementSiteRecordVersionTime = _prefix "measurementSiteRecordVersionTime"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSpecificCharacteristics"></see>
     /// </summary>
     let measurementSpecificCharacteristics =
-        Namespaced_IRI.parse _namespace_name "measurementSpecificCharacteristics" |> NamespacedName
+        _prefix "measurementSpecificCharacteristics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_MeasurementSiteRecordIndexMeasurementSpecificCharacteristics"></see>
     /// </summary>
     let _MeasurementSiteRecordIndexMeasurementSpecificCharacteristics =
-        Namespaced_IRI.parse _namespace_name "_MeasurementSiteRecordIndexMeasurementSpecificCharacteristics" |> NamespacedName
+        _prefix "_MeasurementSiteRecordIndexMeasurementSpecificCharacteristics"
 
     /// <summary>
     /// A Measurement Site Table comprising a number of sets of data, each describing the location from where a stream of measured data may be derived.  Each location is known as a "measurement site" which can be a point, a linear road section or an area.
     /// <see href="http://vocab.datex.org/terms#MeasurementSiteTable"></see></summary>
-    let MeasurementSiteTable =
-        Namespaced_IRI.parse _namespace_name "MeasurementSiteTable" |> NamespacedName
-
+    let MeasurementSiteTable = _prefix "MeasurementSiteTable"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteRecord"></see>
     /// </summary>
-    let measurementSiteRecord =
-        Namespaced_IRI.parse _namespace_name "measurementSiteRecord" |> NamespacedName
-
+    let measurementSiteRecord = _prefix "measurementSiteRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteTableExtension"></see>
     /// </summary>
-    let measurementSiteTableExtension =
-        Namespaced_IRI.parse _namespace_name "measurementSiteTableExtension" |> NamespacedName
+    let measurementSiteTableExtension = _prefix "measurementSiteTableExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteTableIdentification"></see>
     /// </summary>
     let measurementSiteTableIdentification =
-        Namespaced_IRI.parse _namespace_name "measurementSiteTableIdentification" |> NamespacedName
+        _prefix "measurementSiteTableIdentification"
 
     /// <summary>
     /// A publication containing one or more Measurment Site Tables.
     /// <see href="http://vocab.datex.org/terms#MeasurementSiteTablePublication"></see></summary>
-    let MeasurementSiteTablePublication =
-        Namespaced_IRI.parse _namespace_name "MeasurementSiteTablePublication" |> NamespacedName
-
+    let MeasurementSiteTablePublication = _prefix "MeasurementSiteTablePublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteTable"></see>
     /// </summary>
-    let measurementSiteTable =
-        Namespaced_IRI.parse _namespace_name "measurementSiteTable" |> NamespacedName
+    let measurementSiteTable = _prefix "measurementSiteTable"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteTablePublicationExtension"></see>
     /// </summary>
     let measurementSiteTablePublicationExtension =
-        Namespaced_IRI.parse _namespace_name "measurementSiteTablePublicationExtension" |> NamespacedName
+        _prefix "measurementSiteTablePublicationExtension"
 
     /// <summary>
     /// Characteristics which are specific to an individual measurement type (specified in a known order) at the given measurement site.
     /// <see href="http://vocab.datex.org/terms#MeasurementSpecificCharacteristics"></see></summary>
     let MeasurementSpecificCharacteristics =
-        Namespaced_IRI.parse _namespace_name "MeasurementSpecificCharacteristics" |> NamespacedName
+        _prefix "MeasurementSpecificCharacteristics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSpecificCharacteristicsExtension"></see>
     /// </summary>
     let measurementSpecificCharacteristicsExtension =
-        Namespaced_IRI.parse _namespace_name "measurementSpecificCharacteristicsExtension" |> NamespacedName
+        _prefix "measurementSpecificCharacteristicsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#period"></see>
     /// </summary>
-    let period = Namespaced_IRI.parse _namespace_name "period" |> NamespacedName
-
+    let period = _prefix "period"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specificLane"></see>
     /// </summary>
-    let specificLane =
-        Namespaced_IRI.parse _namespace_name "specificLane" |> NamespacedName
-
+    let specificLane = _prefix "specificLane"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specificMeasurementValueType"></see>
     /// </summary>
-    let specificMeasurementValueType =
-        Namespaced_IRI.parse _namespace_name "specificMeasurementValueType" |> NamespacedName
-
+    let specificMeasurementValueType = _prefix "specificMeasurementValueType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specificVehicleCharacteristics"></see>
     /// </summary>
-    let specificVehicleCharacteristics =
-        Namespaced_IRI.parse _namespace_name "specificVehicleCharacteristics" |> NamespacedName
-
+    let specificVehicleCharacteristics = _prefix "specificVehicleCharacteristics"
     /// <summary>
     /// A measured or calculated value of concentration of a substance in micrograms per unit volume.
     /// <see href="http://vocab.datex.org/terms#MicrogramsConcentrationValue"></see></summary>
-    let MicrogramsConcentrationValue =
-        Namespaced_IRI.parse _namespace_name "MicrogramsConcentrationValue" |> NamespacedName
-
+    let MicrogramsConcentrationValue = _prefix "MicrogramsConcentrationValue"
     /// <summary>
     /// A value of the amount of a substance in a given volume (concentration) expressed in µg/m3 (microgrammes/cubic metre).
     /// <see href="http://vocab.datex.org/terms#microgramsConcentration"></see></summary>
-    let microgramsConcentration =
-        Namespaced_IRI.parse _namespace_name "microgramsConcentration" |> NamespacedName
+    let microgramsConcentration = _prefix "microgramsConcentration"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#microgramsConcentrationValueExtension"></see>
     /// </summary>
     let microgramsConcentrationValueExtension =
-        Namespaced_IRI.parse _namespace_name "microgramsConcentrationValueExtension" |> NamespacedName
+        _prefix "microgramsConcentrationValueExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#mobilityExtension"></see>
     /// </summary>
-    let mobilityExtension =
-        Namespaced_IRI.parse _namespace_name "mobilityExtension" |> NamespacedName
-
+    let mobilityExtension = _prefix "mobilityExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#mobilityType"></see>
     /// </summary>
-    let mobilityType =
-        Namespaced_IRI.parse _namespace_name "mobilityType" |> NamespacedName
-
+    let mobilityType = _prefix "mobilityType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#values"></see>
     /// </summary>
-    let values = Namespaced_IRI.parse _namespace_name "values" |> NamespacedName
+    let values = _prefix "values"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#valuesType"></see>
     /// </summary>
-    let valuesType = Namespaced_IRI.parse _namespace_name "valuesType" |> NamespacedName
-
+    let valuesType = _prefix "valuesType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#MultilingualStringValue"></see>
     /// </summary>
-    let MultilingualStringValue =
-        Namespaced_IRI.parse _namespace_name "MultilingualStringValue" |> NamespacedName
-
+    let MultilingualStringValue = _prefix "MultilingualStringValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lang"></see>
     /// </summary>
-    let lang = Namespaced_IRI.parse _namespace_name "lang" |> NamespacedName
+    let lang = _prefix "lang"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#areaName"></see>
     /// </summary>
-    let areaName = Namespaced_IRI.parse _namespace_name "areaName" |> NamespacedName
+    let areaName = _prefix "areaName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#county"></see>
     /// </summary>
-    let county = Namespaced_IRI.parse _namespace_name "county" |> NamespacedName
-
+    let county = _prefix "county"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#namedAreaExtension"></see>
     /// </summary>
-    let namedAreaExtension =
-        Namespaced_IRI.parse _namespace_name "namedAreaExtension" |> NamespacedName
-
+    let namedAreaExtension = _prefix "namedAreaExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nation"></see>
     /// </summary>
-    let nation = Namespaced_IRI.parse _namespace_name "nation" |> NamespacedName
-
+    let nation = _prefix "nation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#policeForceControlArea"></see>
     /// </summary>
-    let policeForceControlArea =
-        Namespaced_IRI.parse _namespace_name "policeForceControlArea" |> NamespacedName
-
+    let policeForceControlArea = _prefix "policeForceControlArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadOperatorControlArea"></see>
     /// </summary>
-    let roadOperatorControlArea =
-        Namespaced_IRI.parse _namespace_name "roadOperatorControlArea" |> NamespacedName
-
+    let roadOperatorControlArea = _prefix "roadOperatorControlArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#destination"></see>
     /// </summary>
-    let destination =
-        Namespaced_IRI.parse _namespace_name "destination" |> NamespacedName
-
+    let destination = _prefix "destination"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#networkLocationExtension"></see>
     /// </summary>
-    let networkLocationExtension =
-        Namespaced_IRI.parse _namespace_name "networkLocationExtension" |> NamespacedName
+    let networkLocationExtension = _prefix "networkLocationExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPositionalDescription"></see>
     /// </summary>
     let supplementaryPositionalDescription =
-        Namespaced_IRI.parse _namespace_name "supplementaryPositionalDescription" |> NamespacedName
+        _prefix "supplementaryPositionalDescription"
 
     /// <summary>
     /// A collection of supplementary positional information which improves the precision of the location.
     /// <see href="http://vocab.datex.org/terms#SupplementaryPositionalDescription"></see></summary>
     let SupplementaryPositionalDescription =
-        Namespaced_IRI.parse _namespace_name "SupplementaryPositionalDescription" |> NamespacedName
+        _prefix "SupplementaryPositionalDescription"
 
     /// <summary>
     /// The ultimate traffic direction to which the network management is applicable.
     /// <see href="http://vocab.datex.org/terms#applicableForTrafficDirection"></see></summary>
-    let applicableForTrafficDirection =
-        Namespaced_IRI.parse _namespace_name "applicableForTrafficDirection" |> NamespacedName
-
+    let applicableForTrafficDirection = _prefix "applicableForTrafficDirection"
     /// <summary>
     /// The type of traffic to which the network management is applicable.
     /// <see href="http://vocab.datex.org/terms#applicableForTrafficType"></see></summary>
-    let applicableForTrafficType =
-        Namespaced_IRI.parse _namespace_name "applicableForTrafficType" |> NamespacedName
-
+    let applicableForTrafficType = _prefix "applicableForTrafficType"
     /// <summary>
     /// Defines whether the network management is initiated by an automatic system.
     /// <see href="http://vocab.datex.org/terms#automaticallyInitiated"></see></summary>
-    let automaticallyInitiated =
-        Namespaced_IRI.parse _namespace_name "automaticallyInitiated" |> NamespacedName
-
+    let automaticallyInitiated = _prefix "automaticallyInitiated"
     /// <summary>
     /// Defines whether the network management instruction or the control resulting from a network management action is advisory or mandatory.
     /// <see href="http://vocab.datex.org/terms#complianceOption"></see></summary>
-    let complianceOption =
-        Namespaced_IRI.parse _namespace_name "complianceOption" |> NamespacedName
-
+    let complianceOption = _prefix "complianceOption"
     /// <summary>
     /// The characteristics of those vehicles for which the network management is applicable.
     /// Used to define the vehicle characteristics to which the TrafficValue is applicable primarily in Elaborated Data Publications, but may also be used in Measured Data Publications to override vehicle characteristics defined for the measurement site.
     /// <see href="http://vocab.datex.org/terms#forVehiclesWithCharacteristicsOf"></see></summary>
-    let forVehiclesWithCharacteristicsOf =
-        Namespaced_IRI.parse _namespace_name "forVehiclesWithCharacteristicsOf" |> NamespacedName
-
+    let forVehiclesWithCharacteristicsOf = _prefix "forVehiclesWithCharacteristicsOf"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#networkManagementExtension"></see>
     /// </summary>
-    let networkManagementExtension =
-        Namespaced_IRI.parse _namespace_name "networkManagementExtension" |> NamespacedName
-
+    let networkManagementExtension = _prefix "networkManagementExtension"
     /// <summary>
     /// Places, in generic terms, at which the network management applies.
     /// <see href="http://vocab.datex.org/terms#placesAtWhichApplicable"></see></summary>
-    let placesAtWhichApplicable =
-        Namespaced_IRI.parse _namespace_name "placesAtWhichApplicable" |> NamespacedName
-
+    let placesAtWhichApplicable = _prefix "placesAtWhichApplicable"
     /// <summary>
     /// A cause of this situation record which is not managed by the publication creator, i.e. one which is not represented by another situation record produced by the same publication creator.
     /// <see href="http://vocab.datex.org/terms#NonManagedCause"></see></summary>
-    let NonManagedCause =
-        Namespaced_IRI.parse _namespace_name "NonManagedCause" |> NamespacedName
-
+    let NonManagedCause = _prefix "NonManagedCause"
     /// <summary>
     /// Description of a cause which is not managed by the publication creator (e.g. an off network cause).
     /// <see href="http://vocab.datex.org/terms#causeDescription"></see></summary>
-    let causeDescription =
-        Namespaced_IRI.parse _namespace_name "causeDescription" |> NamespacedName
-
+    let causeDescription = _prefix "causeDescription"
     /// <summary>
     /// Indicates an external influence that may be the causation of components of a situation.
     /// <see href="http://vocab.datex.org/terms#causeType"></see></summary>
-    let causeType = Namespaced_IRI.parse _namespace_name "causeType" |> NamespacedName
-
+    let causeType = _prefix "causeType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonManagedCauseExtension"></see>
     /// </summary>
-    let nonManagedCauseExtension =
-        Namespaced_IRI.parse _namespace_name "nonManagedCauseExtension" |> NamespacedName
-
+    let nonManagedCauseExtension = _prefix "nonManagedCauseExtension"
     /// <summary>
     /// A group of (i.e. more than one) physically separate locations which have no specific order and where each location is explicitly listed.
     /// <see href="http://vocab.datex.org/terms#NonOrderedLocationGroupByList"></see></summary>
-    let NonOrderedLocationGroupByList =
-        Namespaced_IRI.parse _namespace_name "NonOrderedLocationGroupByList" |> NamespacedName
-
+    let NonOrderedLocationGroupByList = _prefix "NonOrderedLocationGroupByList"
     /// <summary>
     /// A location contained in a non ordered group of locations.
     /// <see href="http://vocab.datex.org/terms#locationContainedInGroup"></see></summary>
-    let locationContainedInGroup =
-        Namespaced_IRI.parse _namespace_name "locationContainedInGroup" |> NamespacedName
+    let locationContainedInGroup = _prefix "locationContainedInGroup"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonOrderedLocationGroupByListExtension"></see>
     /// </summary>
     let nonOrderedLocationGroupByListExtension =
-        Namespaced_IRI.parse _namespace_name "nonOrderedLocationGroupByListExtension" |> NamespacedName
+        _prefix "nonOrderedLocationGroupByListExtension"
 
     /// <summary>
     /// Multiple (i.e. more than one) physically separate locations which have no specific order.
     /// <see href="http://vocab.datex.org/terms#NonOrderedLocations"></see></summary>
-    let NonOrderedLocations =
-        Namespaced_IRI.parse _namespace_name "NonOrderedLocations" |> NamespacedName
+    let NonOrderedLocations = _prefix "NonOrderedLocations"
 
     /// <summary>
     /// A group of (i.e. more than one) physically separate locations which have no specific order that are defined by reference to a predefined non ordered location group.
     /// <see href="http://vocab.datex.org/terms#NonOrderedLocationGroupByReference"></see></summary>
     let NonOrderedLocationGroupByReference =
-        Namespaced_IRI.parse _namespace_name "NonOrderedLocationGroupByReference" |> NamespacedName
+        _prefix "NonOrderedLocationGroupByReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonOrderedLocationGroupByReferenceExtension"></see>
     /// </summary>
     let nonOrderedLocationGroupByReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "nonOrderedLocationGroupByReferenceExtension" |> NamespacedName
+        _prefix "nonOrderedLocationGroupByReferenceExtension"
 
     /// <summary>
     /// A reference to a versioned instance of a predefined non ordered location group as specified in a PredefinedLocationsPublication.
     /// <see href="http://vocab.datex.org/terms#predefinedNonOrderedLocationGroupReference"></see></summary>
     let predefinedNonOrderedLocationGroupReference =
-        Namespaced_IRI.parse _namespace_name "predefinedNonOrderedLocationGroupReference" |> NamespacedName
+        _prefix "predefinedNonOrderedLocationGroupReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PredefinedNonOrderedLocationGroupVersionedReference"></see>
     /// </summary>
     let _PredefinedNonOrderedLocationGroupVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_PredefinedNonOrderedLocationGroupVersionedReference" |> NamespacedName
+        _prefix "_PredefinedNonOrderedLocationGroupVersionedReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonOrderedLocationsExtension"></see>
     /// </summary>
-    let nonOrderedLocationsExtension =
-        Namespaced_IRI.parse _namespace_name "nonOrderedLocationsExtension" |> NamespacedName
-
+    let nonOrderedLocationsExtension = _prefix "nonOrderedLocationsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonRoadEventInformationExtension"></see>
     /// </summary>
-    let nonRoadEventInformationExtension =
-        Namespaced_IRI.parse _namespace_name "nonRoadEventInformationExtension" |> NamespacedName
-
+    let nonRoadEventInformationExtension = _prefix "nonRoadEventInformationExtension"
     /// <summary>
     /// Road surface conditions that are not related to the weather but which may affect driving conditions.
     /// <see href="http://vocab.datex.org/terms#NonWeatherRelatedRoadConditions"></see></summary>
-    let NonWeatherRelatedRoadConditions =
-        Namespaced_IRI.parse _namespace_name "NonWeatherRelatedRoadConditions" |> NamespacedName
+    let NonWeatherRelatedRoadConditions = _prefix "NonWeatherRelatedRoadConditions"
 
     /// <summary>
     /// The type of road conditions which are not related to the weather.
     /// <see href="http://vocab.datex.org/terms#nonWeatherRelatedRoadConditionType"></see></summary>
     let nonWeatherRelatedRoadConditionType =
-        Namespaced_IRI.parse _namespace_name "nonWeatherRelatedRoadConditionType" |> NamespacedName
+        _prefix "nonWeatherRelatedRoadConditionType"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonWeatherRelatedRoadConditionsExtension"></see>
     /// </summary>
     let nonWeatherRelatedRoadConditionsExtension =
-        Namespaced_IRI.parse _namespace_name "nonWeatherRelatedRoadConditionsExtension" |> NamespacedName
+        _prefix "nonWeatherRelatedRoadConditionsExtension"
 
     /// <summary>
     /// Conditions of the road surface which may affect driving conditions. These may be related to the weather (e.g. ice, snow etc.) or to other conditions (e.g. oil, mud, leaves etc. on the road)
     /// <see href="http://vocab.datex.org/terms#RoadConditions"></see></summary>
-    let RoadConditions =
-        Namespaced_IRI.parse _namespace_name "RoadConditions" |> NamespacedName
-
+    let RoadConditions = _prefix "RoadConditions"
     /// <summary>
     /// Number of axles characteristic of a vehicle.
     /// <see href="http://vocab.datex.org/terms#NumberOfAxlesCharacteristic"></see></summary>
-    let NumberOfAxlesCharacteristic =
-        Namespaced_IRI.parse _namespace_name "NumberOfAxlesCharacteristic" |> NamespacedName
-
+    let NumberOfAxlesCharacteristic = _prefix "NumberOfAxlesCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfAxles"></see>
     /// </summary>
-    let numberOfAxles =
-        Namespaced_IRI.parse _namespace_name "numberOfAxles" |> NamespacedName
+    let numberOfAxles = _prefix "numberOfAxles"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfAxlesCharacteristicExtension"></see>
     /// </summary>
     let numberOfAxlesCharacteristicExtension =
-        Namespaced_IRI.parse _namespace_name "numberOfAxlesCharacteristicExtension" |> NamespacedName
+        _prefix "numberOfAxlesCharacteristicExtension"
 
     /// <summary>
     /// The mobility of the obstruction.
     /// <see href="http://vocab.datex.org/terms#mobilityOfObstruction"></see></summary>
-    let mobilityOfObstruction =
-        Namespaced_IRI.parse _namespace_name "mobilityOfObstruction" |> NamespacedName
-
+    let mobilityOfObstruction = _prefix "mobilityOfObstruction"
     /// <summary>
     /// The number of obstructions that are partly or wholly blocking the road.
     /// <see href="http://vocab.datex.org/terms#numberOfObstructions"></see></summary>
-    let numberOfObstructions =
-        Namespaced_IRI.parse _namespace_name "numberOfObstructions" |> NamespacedName
-
+    let numberOfObstructions = _prefix "numberOfObstructions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#obstructionExtension"></see>
     /// </summary>
-    let obstructionExtension =
-        Namespaced_IRI.parse _namespace_name "obstructionExtension" |> NamespacedName
-
+    let obstructionExtension = _prefix "obstructionExtension"
     /// <summary>
     /// A measured or calculated value of change of occupied parking spaces expressed as integer.
     /// <see href="http://vocab.datex.org/terms#OccupancyChangeValue"></see></summary>
-    let OccupancyChangeValue =
-        Namespaced_IRI.parse _namespace_name "OccupancyChangeValue" |> NamespacedName
-
+    let OccupancyChangeValue = _prefix "OccupancyChangeValue"
     /// <summary>
     /// A measured or calculated absolut change of occupied parking spaces within a specified time expressed as integer.
     /// <see href="http://vocab.datex.org/terms#occupancyChange"></see></summary>
-    let occupancyChange =
-        Namespaced_IRI.parse _namespace_name "occupancyChange" |> NamespacedName
-
+    let occupancyChange = _prefix "occupancyChange"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#occupancyChangeValueExtension"></see>
     /// </summary>
-    let occupancyChangeValueExtension =
-        Namespaced_IRI.parse _namespace_name "occupancyChangeValueExtension" |> NamespacedName
-
+    let occupancyChangeValueExtension = _prefix "occupancyChangeValueExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#offsetDistanceExtension"></see>
     /// </summary>
-    let offsetDistanceExtension =
-        Namespaced_IRI.parse _namespace_name "offsetDistanceExtension" |> NamespacedName
-
+    let offsetDistanceExtension = _prefix "offsetDistanceExtension"
     /// <summary>
     /// A specification of opening times (e.g. for a parking site, a service facility, an access or the availability for equipment).
     /// <see href="http://vocab.datex.org/terms#OpeningTimes"></see></summary>
-    let OpeningTimes =
-        Namespaced_IRI.parse _namespace_name "OpeningTimes" |> NamespacedName
-
+    let OpeningTimes = _prefix "OpeningTimes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lastUpdated"></see>
     /// </summary>
-    let lastUpdated =
-        Namespaced_IRI.parse _namespace_name "lastUpdated" |> NamespacedName
-
+    let lastUpdated = _prefix "lastUpdated"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openAllYear"></see>
     /// </summary>
-    let openAllYear =
-        Namespaced_IRI.parse _namespace_name "openAllYear" |> NamespacedName
-
+    let openAllYear = _prefix "openAllYear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openingTimesExtension"></see>
     /// </summary>
-    let openingTimesExtension =
-        Namespaced_IRI.parse _namespace_name "openingTimesExtension" |> NamespacedName
-
+    let openingTimesExtension = _prefix "openingTimesExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openingTimesNotSpecified"></see>
     /// </summary>
-    let openingTimesNotSpecified =
-        Namespaced_IRI.parse _namespace_name "openingTimesNotSpecified" |> NamespacedName
-
+    let openingTimesNotSpecified = _prefix "openingTimesNotSpecified"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openingTimesUnknown"></see>
     /// </summary>
-    let openingTimesUnknown =
-        Namespaced_IRI.parse _namespace_name "openingTimesUnknown" |> NamespacedName
-
+    let openingTimesUnknown = _prefix "openingTimesUnknown"
     /// <summary>
     /// a two-dimensional part of the surface of the earth which is bounded by a closed curve. An area location may cover parts of the road network but does not necessarily need to. It is represente according to the OpenLR standard for Area Locations
     /// <see href="http://vocab.datex.org/terms#OpenlrAreaLocationReference"></see></summary>
-    let OpenlrAreaLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrAreaLocationReference" |> NamespacedName
+    let OpenlrAreaLocationReference = _prefix "OpenlrAreaLocationReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrAreaLocationReferenceExtension"></see>
     /// </summary>
     let openlrAreaLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrAreaLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrAreaLocationReferenceExtension"
 
     /// <summary>
     /// Base class used to hold data about a reference point.
     /// <see href="http://vocab.datex.org/terms#OpenlrBaseLocationReferencePoint"></see></summary>
-    let OpenlrBaseLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrBaseLocationReferencePoint" |> NamespacedName
+    let OpenlrBaseLocationReferencePoint = _prefix "OpenlrBaseLocationReferencePoint"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrBaseLocationReferencePointExtension"></see>
     /// </summary>
     let openlrBaseLocationReferencePointExtension =
-        Namespaced_IRI.parse _namespace_name "openlrBaseLocationReferencePointExtension" |> NamespacedName
+        _prefix "openlrBaseLocationReferencePointExtension"
 
     /// <summary>
     /// The coordinate of the actual point of interest
     /// <see href="http://vocab.datex.org/terms#openlrCoordinate"></see></summary>
-    let openlrCoordinate =
-        Namespaced_IRI.parse _namespace_name "openlrCoordinate" |> NamespacedName
-
+    let openlrCoordinate = _prefix "openlrCoordinate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLineAttributes"></see>
     /// </summary>
-    let openlrLineAttributes =
-        Namespaced_IRI.parse _namespace_name "openlrLineAttributes" |> NamespacedName
-
+    let openlrLineAttributes = _prefix "openlrLineAttributes"
     /// <summary>
     /// Line attributes are part of a location reference point and consists of functional road class (FRC),form of way (FOW) and bearing (BEAR) data.
     /// <see href="http://vocab.datex.org/terms#OpenlrLineAttributes"></see></summary>
-    let OpenlrLineAttributes =
-        Namespaced_IRI.parse _namespace_name "OpenlrLineAttributes" |> NamespacedName
-
+    let OpenlrLineAttributes = _prefix "OpenlrLineAttributes"
     /// <summary>
     /// Holds common data that are used both in OpenlrPointAccessPoint and OpenlrPointAlongLine.
     /// <see href="http://vocab.datex.org/terms#OpenlrBasePointLocation"></see></summary>
-    let OpenlrBasePointLocation =
-        Namespaced_IRI.parse _namespace_name "OpenlrBasePointLocation" |> NamespacedName
-
+    let OpenlrBasePointLocation = _prefix "OpenlrBasePointLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrBasePointLocationExtension"></see>
     /// </summary>
-    let openlrBasePointLocationExtension =
-        Namespaced_IRI.parse _namespace_name "openlrBasePointLocationExtension" |> NamespacedName
-
+    let openlrBasePointLocationExtension = _prefix "openlrBasePointLocationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLastLocationReferencePoint"></see>
     /// </summary>
-    let openlrLastLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "openlrLastLocationReferencePoint" |> NamespacedName
-
+    let openlrLastLocationReferencePoint = _prefix "openlrLastLocationReferencePoint"
     /// <summary>
     /// The sequence of location reference points is terminated by a last location reference point.
     /// <see href="http://vocab.datex.org/terms#OpenlrLastLocationReferencePoint"></see></summary>
-    let OpenlrLastLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrLastLocationReferencePoint" |> NamespacedName
-
+    let OpenlrLastLocationReferencePoint = _prefix "OpenlrLastLocationReferencePoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLocationReferencePoint"></see>
     /// </summary>
-    let openlrLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "openlrLocationReferencePoint" |> NamespacedName
-
+    let openlrLocationReferencePoint = _prefix "openlrLocationReferencePoint"
     /// <summary>
     /// The basis of a location reference is a sequence of location reference points (LRPs).
     /// <see href="http://vocab.datex.org/terms#OpenlrLocationReferencePoint"></see></summary>
-    let OpenlrLocationReferencePoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrLocationReferencePoint" |> NamespacedName
-
+    let OpenlrLocationReferencePoint = _prefix "OpenlrLocationReferencePoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrOrientation"></see>
     /// </summary>
-    let openlrOrientation =
-        Namespaced_IRI.parse _namespace_name "openlrOrientation" |> NamespacedName
-
+    let openlrOrientation = _prefix "openlrOrientation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPositiveOffset"></see>
     /// </summary>
-    let openlrPositiveOffset =
-        Namespaced_IRI.parse _namespace_name "openlrPositiveOffset" |> NamespacedName
-
+    let openlrPositiveOffset = _prefix "openlrPositiveOffset"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrSideOfRoad"></see>
     /// </summary>
-    let openlrSideOfRoad =
-        Namespaced_IRI.parse _namespace_name "openlrSideOfRoad" |> NamespacedName
-
+    let openlrSideOfRoad = _prefix "openlrSideOfRoad"
     /// <summary>
     /// the openLR method of areadefinition by providing a center position and a radius
     /// <see href="http://vocab.datex.org/terms#OpenlrCircleLocationReference"></see></summary>
-    let OpenlrCircleLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrCircleLocationReference" |> NamespacedName
+    let OpenlrCircleLocationReference = _prefix "OpenlrCircleLocationReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrCircleLocationReferenceExtension"></see>
     /// </summary>
     let openlrCircleLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrCircleLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrCircleLocationReferenceExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrGeoCoordinate"></see>
     /// </summary>
-    let openlrGeoCoordinate =
-        Namespaced_IRI.parse _namespace_name "openlrGeoCoordinate" |> NamespacedName
-
+    let openlrGeoCoordinate = _prefix "openlrGeoCoordinate"
     /// <summary>
     /// A geo-coordinate pair is a position in a map defined by its longitude and latitude coordinate values.
     /// <see href="http://vocab.datex.org/terms#OpenlrGeoCoordinate"></see></summary>
-    let OpenlrGeoCoordinate =
-        Namespaced_IRI.parse _namespace_name "OpenlrGeoCoordinate" |> NamespacedName
-
+    let OpenlrGeoCoordinate = _prefix "OpenlrGeoCoordinate"
     /// <summary>
     /// The radius of the geometric area identified.
     /// <see href="http://vocab.datex.org/terms#radius"></see></summary>
-    let radius = Namespaced_IRI.parse _namespace_name "radius" |> NamespacedName
-
+    let radius = _prefix "radius"
     /// <summary>
     /// the openLR method of areadefinition by providing a closed path (i.e. a circuit) in the road network. The boundary always consists of road segments
     /// <see href="http://vocab.datex.org/terms#OpenlrClosedLineLocationReference"></see></summary>
-    let OpenlrClosedLineLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrClosedLineLocationReference" |> NamespacedName
+    let OpenlrClosedLineLocationReference = _prefix "OpenlrClosedLineLocationReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrClosedLineLocationReferenceExtension"></see>
     /// </summary>
     let openlrClosedLineLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrClosedLineLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrClosedLineLocationReferenceExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLastLine"></see>
     /// </summary>
-    let openlrLastLine =
-        Namespaced_IRI.parse _namespace_name "openlrLastLine" |> NamespacedName
-
+    let openlrLastLine = _prefix "openlrLastLine"
     /// <summary>
     /// Extension to provide Area information in openLR format
     /// <see href="http://vocab.datex.org/terms#OpenlrExtendedArea"></see></summary>
-    let OpenlrExtendedArea =
-        Namespaced_IRI.parse _namespace_name "OpenlrExtendedArea" |> NamespacedName
-
+    let OpenlrExtendedArea = _prefix "OpenlrExtendedArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrAreaLocationReference"></see>
     /// </summary>
-    let openlrAreaLocationReference =
-        Namespaced_IRI.parse _namespace_name "openlrAreaLocationReference" |> NamespacedName
-
+    let openlrAreaLocationReference = _prefix "openlrAreaLocationReference"
     /// <summary>
     /// Extension class for OpenLR Line location reference
     /// <see href="http://vocab.datex.org/terms#OpenlrExtendedLinear"></see></summary>
-    let OpenlrExtendedLinear =
-        Namespaced_IRI.parse _namespace_name "OpenlrExtendedLinear" |> NamespacedName
-
+    let OpenlrExtendedLinear = _prefix "OpenlrExtendedLinear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#firstDirection"></see>
     /// </summary>
-    let firstDirection =
-        Namespaced_IRI.parse _namespace_name "firstDirection" |> NamespacedName
-
+    let firstDirection = _prefix "firstDirection"
     /// <summary>
     /// A LineLocationReference is defined by an ordered sequence of location reference points and a terminating last location reference point.
     /// <see href="http://vocab.datex.org/terms#OpenlrLineLocationReference"></see></summary>
-    let OpenlrLineLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrLineLocationReference" |> NamespacedName
-
+    let OpenlrLineLocationReference = _prefix "OpenlrLineLocationReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#oppositeDirection"></see>
     /// </summary>
-    let oppositeDirection =
-        Namespaced_IRI.parse _namespace_name "oppositeDirection" |> NamespacedName
-
+    let oppositeDirection = _prefix "oppositeDirection"
     /// <summary>
     /// Extension class for OpenLR point.
     /// <see href="http://vocab.datex.org/terms#OpenlrExtendedPoint"></see></summary>
-    let OpenlrExtendedPoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrExtendedPoint" |> NamespacedName
-
+    let OpenlrExtendedPoint = _prefix "OpenlrExtendedPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPointLocationReference"></see>
     /// </summary>
-    let openlrPointLocationReference =
-        Namespaced_IRI.parse _namespace_name "openlrPointLocationReference" |> NamespacedName
-
+    let openlrPointLocationReference = _prefix "openlrPointLocationReference"
     /// <summary>
     /// A point location is a zero-dimensional element in a map that specifies a geometric location.
     /// <see href="http://vocab.datex.org/terms#OpenlrPointLocationReference"></see></summary>
-    let OpenlrPointLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrPointLocationReference" |> NamespacedName
-
+    let OpenlrPointLocationReference = _prefix "OpenlrPointLocationReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrGeoCoordinateExtension"></see>
     /// </summary>
-    let openlrGeoCoordinateExtension =
-        Namespaced_IRI.parse _namespace_name "openlrGeoCoordinateExtension" |> NamespacedName
-
+    let openlrGeoCoordinateExtension = _prefix "openlrGeoCoordinateExtension"
     /// <summary>
     /// attributes required for the grid method
     /// <see href="http://vocab.datex.org/terms#OpenlrGridAttributes"></see></summary>
-    let OpenlrGridAttributes =
-        Namespaced_IRI.parse _namespace_name "OpenlrGridAttributes" |> NamespacedName
-
+    let OpenlrGridAttributes = _prefix "OpenlrGridAttributes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrGridAttributesExtension"></see>
     /// </summary>
-    let openlrGridAttributesExtension =
-        Namespaced_IRI.parse _namespace_name "openlrGridAttributesExtension" |> NamespacedName
-
+    let openlrGridAttributesExtension = _prefix "openlrGridAttributesExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrNumColumns"></see>
     /// </summary>
-    let openlrNumColumns =
-        Namespaced_IRI.parse _namespace_name "openlrNumColumns" |> NamespacedName
-
+    let openlrNumColumns = _prefix "openlrNumColumns"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrNumRows"></see>
     /// </summary>
-    let openlrNumRows =
-        Namespaced_IRI.parse _namespace_name "openlrNumRows" |> NamespacedName
-
+    let openlrNumRows = _prefix "openlrNumRows"
     /// <summary>
     /// the openLR method of areadefinition by providing repeating rectangles
     /// <see href="http://vocab.datex.org/terms#OpenlrGridLocationReference"></see></summary>
-    let OpenlrGridLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrGridLocationReference" |> NamespacedName
-
+    let OpenlrGridLocationReference = _prefix "OpenlrGridLocationReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrGridAttributes"></see>
     /// </summary>
-    let openlrGridAttributes =
-        Namespaced_IRI.parse _namespace_name "openlrGridAttributes" |> NamespacedName
+    let openlrGridAttributes = _prefix "openlrGridAttributes"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrGridLocationReferenceExtension"></see>
     /// </summary>
     let openlrGridLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrGridLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrGridLocationReferenceExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrRectangle"></see>
     /// </summary>
-    let openlrRectangle =
-        Namespaced_IRI.parse _namespace_name "openlrRectangle" |> NamespacedName
-
+    let openlrRectangle = _prefix "openlrRectangle"
     /// <summary>
     /// two geo-coordinate pairs defining the rectangular
     /// <see href="http://vocab.datex.org/terms#OpenlrRectangle"></see></summary>
-    let OpenlrRectangle =
-        Namespaced_IRI.parse _namespace_name "OpenlrRectangle" |> NamespacedName
+    let OpenlrRectangle = _prefix "OpenlrRectangle"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLastLocationReferencePointExtension"></see>
     /// </summary>
     let openlrLastLocationReferencePointExtension =
-        Namespaced_IRI.parse _namespace_name "openlrLastLocationReferencePointExtension" |> NamespacedName
+        _prefix "openlrLastLocationReferencePointExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrBearing"></see>
     /// </summary>
-    let openlrBearing =
-        Namespaced_IRI.parse _namespace_name "openlrBearing" |> NamespacedName
-
+    let openlrBearing = _prefix "openlrBearing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrFormOfWay"></see>
     /// </summary>
-    let openlrFormOfWay =
-        Namespaced_IRI.parse _namespace_name "openlrFormOfWay" |> NamespacedName
-
+    let openlrFormOfWay = _prefix "openlrFormOfWay"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrFunctionalRoadClass"></see>
     /// </summary>
-    let openlrFunctionalRoadClass =
-        Namespaced_IRI.parse _namespace_name "openlrFunctionalRoadClass" |> NamespacedName
-
+    let openlrFunctionalRoadClass = _prefix "openlrFunctionalRoadClass"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLineAttributesExtension"></see>
     /// </summary>
-    let openlrLineAttributesExtension =
-        Namespaced_IRI.parse _namespace_name "openlrLineAttributesExtension" |> NamespacedName
+    let openlrLineAttributesExtension = _prefix "openlrLineAttributesExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLineLocationReferenceExtension"></see>
     /// </summary>
     let openlrLineLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrLineLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrLineLocationReferenceExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrOffsets"></see>
     /// </summary>
-    let openlrOffsets =
-        Namespaced_IRI.parse _namespace_name "openlrOffsets" |> NamespacedName
-
+    let openlrOffsets = _prefix "openlrOffsets"
     /// <summary>
     /// Offsets are used to locate the start and end of a location more precisely than bounding to the nodes in a network.
     /// <see href="http://vocab.datex.org/terms#OpenlrOffsets"></see></summary>
-    let OpenlrOffsets =
-        Namespaced_IRI.parse _namespace_name "OpenlrOffsets" |> NamespacedName
+    let OpenlrOffsets = _prefix "OpenlrOffsets"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLocationReferencePointExtension"></see>
     /// </summary>
     let openlrLocationReferencePointExtension =
-        Namespaced_IRI.parse _namespace_name "openlrLocationReferencePointExtension" |> NamespacedName
+        _prefix "openlrLocationReferencePointExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPathAttributes"></see>
     /// </summary>
-    let openlrPathAttributes =
-        Namespaced_IRI.parse _namespace_name "openlrPathAttributes" |> NamespacedName
-
+    let openlrPathAttributes = _prefix "openlrPathAttributes"
     /// <summary>
     /// The field path attributes is part of a location reference point (except for the last location reference point) and consists of lowest functional road class (LFRCNP) and distance to next point (DNP) data.
     /// <see href="http://vocab.datex.org/terms#OpenlrPathAttributes"></see></summary>
-    let OpenlrPathAttributes =
-        Namespaced_IRI.parse _namespace_name "OpenlrPathAttributes" |> NamespacedName
-
+    let OpenlrPathAttributes = _prefix "OpenlrPathAttributes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrNegativeOffset"></see>
     /// </summary>
-    let openlrNegativeOffset =
-        Namespaced_IRI.parse _namespace_name "openlrNegativeOffset" |> NamespacedName
-
+    let openlrNegativeOffset = _prefix "openlrNegativeOffset"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrOffsetsExtension"></see>
     /// </summary>
-    let openlrOffsetsExtension =
-        Namespaced_IRI.parse _namespace_name "openlrOffsetsExtension" |> NamespacedName
-
+    let openlrOffsetsExtension = _prefix "openlrOffsetsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrDistanceToNextLRPoint"></see>
     /// </summary>
-    let openlrDistanceToNextLRPoint =
-        Namespaced_IRI.parse _namespace_name "openlrDistanceToNextLRPoint" |> NamespacedName
-
+    let openlrDistanceToNextLRPoint = _prefix "openlrDistanceToNextLRPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLowestFRCToNextLRPoint"></see>
     /// </summary>
-    let openlrLowestFRCToNextLRPoint =
-        Namespaced_IRI.parse _namespace_name "openlrLowestFRCToNextLRPoint" |> NamespacedName
-
+    let openlrLowestFRCToNextLRPoint = _prefix "openlrLowestFRCToNextLRPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPathAttributesExtension"></see>
     /// </summary>
-    let openlrPathAttributesExtension =
-        Namespaced_IRI.parse _namespace_name "openlrPathAttributesExtension" |> NamespacedName
-
+    let openlrPathAttributesExtension = _prefix "openlrPathAttributesExtension"
     /// <summary>
     /// Point along line with access is a point location which is defined by a line,an offset value and a coordinate.
     /// <see href="http://vocab.datex.org/terms#OpenlrPoiWithAccessPoint"></see></summary>
-    let OpenlrPoiWithAccessPoint =
-        Namespaced_IRI.parse _namespace_name "OpenlrPoiWithAccessPoint" |> NamespacedName
-
+    let OpenlrPoiWithAccessPoint = _prefix "OpenlrPoiWithAccessPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPoiWithAccessPointExtension"></see>
     /// </summary>
-    let openlrPoiWithAccessPointExtension =
-        Namespaced_IRI.parse _namespace_name "openlrPoiWithAccessPointExtension" |> NamespacedName
-
+    let openlrPoiWithAccessPointExtension = _prefix "openlrPoiWithAccessPointExtension"
     /// <summary>
     /// Point along a line
     /// <see href="http://vocab.datex.org/terms#OpenlrPointAlongLine"></see></summary>
-    let OpenlrPointAlongLine =
-        Namespaced_IRI.parse _namespace_name "OpenlrPointAlongLine" |> NamespacedName
-
+    let OpenlrPointAlongLine = _prefix "OpenlrPointAlongLine"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPointAlongLineExtension"></see>
     /// </summary>
-    let openlrPointAlongLineExtension =
-        Namespaced_IRI.parse _namespace_name "openlrPointAlongLineExtension" |> NamespacedName
-
+    let openlrPointAlongLineExtension = _prefix "openlrPointAlongLineExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPoiWithAccessPoint"></see>
     /// </summary>
-    let openlrPoiWithAccessPoint =
-        Namespaced_IRI.parse _namespace_name "openlrPoiWithAccessPoint" |> NamespacedName
-
+    let openlrPoiWithAccessPoint = _prefix "openlrPoiWithAccessPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPointAlongLine"></see>
     /// </summary>
-    let openlrPointAlongLine =
-        Namespaced_IRI.parse _namespace_name "openlrPointAlongLine" |> NamespacedName
+    let openlrPointAlongLine = _prefix "openlrPointAlongLine"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPointLocationReferenceExtension"></see>
     /// </summary>
     let openlrPointLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrPointLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrPointLocationReferenceExtension"
 
     /// <summary>
     /// geo-coordinate pairs. The coordinate pairs defining the corners of the underlying geometrical polygon.
     /// <see href="http://vocab.datex.org/terms#OpenlrPolygonCorners"></see></summary>
-    let OpenlrPolygonCorners =
-        Namespaced_IRI.parse _namespace_name "OpenlrPolygonCorners" |> NamespacedName
-
+    let OpenlrPolygonCorners = _prefix "OpenlrPolygonCorners"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPolygonCornersExtension"></see>
     /// </summary>
-    let openlrPolygonCornersExtension =
-        Namespaced_IRI.parse _namespace_name "openlrPolygonCornersExtension" |> NamespacedName
-
+    let openlrPolygonCornersExtension = _prefix "openlrPolygonCornersExtension"
     /// <summary>
     /// the openLR method of areadefinition by providing points that bound the area
     /// <see href="http://vocab.datex.org/terms#OpenlrPolygonLocationReference"></see></summary>
-    let OpenlrPolygonLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrPolygonLocationReference" |> NamespacedName
-
+    let OpenlrPolygonLocationReference = _prefix "OpenlrPolygonLocationReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPolygonCorners"></see>
     /// </summary>
-    let openlrPolygonCorners =
-        Namespaced_IRI.parse _namespace_name "openlrPolygonCorners" |> NamespacedName
+    let openlrPolygonCorners = _prefix "openlrPolygonCorners"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrPolygonLocationReferenceExtension"></see>
     /// </summary>
     let openlrPolygonLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrPolygonLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrPolygonLocationReferenceExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrLowerLeft"></see>
     /// </summary>
-    let openlrLowerLeft =
-        Namespaced_IRI.parse _namespace_name "openlrLowerLeft" |> NamespacedName
-
+    let openlrLowerLeft = _prefix "openlrLowerLeft"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrRectangleExtension"></see>
     /// </summary>
-    let openlrRectangleExtension =
-        Namespaced_IRI.parse _namespace_name "openlrRectangleExtension" |> NamespacedName
-
+    let openlrRectangleExtension = _prefix "openlrRectangleExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrUpperRight"></see>
     /// </summary>
-    let openlrUpperRight =
-        Namespaced_IRI.parse _namespace_name "openlrUpperRight" |> NamespacedName
-
+    let openlrUpperRight = _prefix "openlrUpperRight"
     /// <summary>
     /// the openLR method of areadefinition by providing a rectangular shape defined by two geo-coordinate pairs
     /// <see href="http://vocab.datex.org/terms#OpenlrRectangleLocationReference"></see></summary>
-    let OpenlrRectangleLocationReference =
-        Namespaced_IRI.parse _namespace_name "OpenlrRectangleLocationReference" |> NamespacedName
+    let OpenlrRectangleLocationReference = _prefix "OpenlrRectangleLocationReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrRectangleLocationReferenceExtension"></see>
     /// </summary>
     let openlrRectangleLocationReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "openlrRectangleLocationReferenceExtension" |> NamespacedName
+        _prefix "openlrRectangleLocationReferenceExtension"
 
     /// <summary>
     /// Indicates whether the actions to be undertaken by the operator are the result of an internal operation or external influence.
     /// <see href="http://vocab.datex.org/terms#actionOrigin"></see></summary>
-    let actionOrigin =
-        Namespaced_IRI.parse _namespace_name "actionOrigin" |> NamespacedName
-
+    let actionOrigin = _prefix "actionOrigin"
     /// <summary>
     /// The identifier of the traffic management action plan to which this action relates.
     /// <see href="http://vocab.datex.org/terms#actionPlanIdentifier"></see></summary>
-    let actionPlanIdentifier =
-        Namespaced_IRI.parse _namespace_name "actionPlanIdentifier" |> NamespacedName
-
+    let actionPlanIdentifier = _prefix "actionPlanIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#operatorActionExtension"></see>
     /// </summary>
-    let operatorActionExtension =
-        Namespaced_IRI.parse _namespace_name "operatorActionExtension" |> NamespacedName
-
+    let operatorActionExtension = _prefix "operatorActionExtension"
     /// <summary>
     /// The status of the defined operator action.
     /// <see href="http://vocab.datex.org/terms#operatorActionStatus"></see></summary>
-    let operatorActionStatus =
-        Namespaced_IRI.parse _namespace_name "operatorActionStatus" |> NamespacedName
-
+    let operatorActionStatus = _prefix "operatorActionStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#exceptionPeriod"></see>
     /// </summary>
-    let exceptionPeriod =
-        Namespaced_IRI.parse _namespace_name "exceptionPeriod" |> NamespacedName
-
+    let exceptionPeriod = _prefix "exceptionPeriod"
     /// <summary>
     /// A continuous time period or a set of discontinuous time periods defined by the intersection of a set of criteria all within an overall delimiting interval.
     /// <see href="http://vocab.datex.org/terms#Period"></see></summary>
-    let Period = Namespaced_IRI.parse _namespace_name "Period" |> NamespacedName
-
+    let Period = _prefix "Period"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overallEndTime"></see>
     /// </summary>
-    let overallEndTime =
-        Namespaced_IRI.parse _namespace_name "overallEndTime" |> NamespacedName
-
+    let overallEndTime = _prefix "overallEndTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overallPeriodExtension"></see>
     /// </summary>
-    let overallPeriodExtension =
-        Namespaced_IRI.parse _namespace_name "overallPeriodExtension" |> NamespacedName
-
+    let overallPeriodExtension = _prefix "overallPeriodExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overallStartTime"></see>
     /// </summary>
-    let overallStartTime =
-        Namespaced_IRI.parse _namespace_name "overallStartTime" |> NamespacedName
-
+    let overallStartTime = _prefix "overallStartTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#validPeriod"></see>
     /// </summary>
-    let validPeriod =
-        Namespaced_IRI.parse _namespace_name "validPeriod" |> NamespacedName
-
+    let validPeriod = _prefix "validPeriod"
     /// <summary>
     /// Describes one entrance or exit (or both) to a parking site.
     /// <see href="http://vocab.datex.org/terms#ParkingAccess"></see></summary>
-    let ParkingAccess =
-        Namespaced_IRI.parse _namespace_name "ParkingAccess" |> NamespacedName
-
+    let ParkingAccess = _prefix "ParkingAccess"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessAssignedAmongOthers"></see>
     /// </summary>
-    let accessAssignedAmongOthers =
-        Namespaced_IRI.parse _namespace_name "accessAssignedAmongOthers" |> NamespacedName
-
+    let accessAssignedAmongOthers = _prefix "accessAssignedAmongOthers"
     /// <summary>
     /// One set of prohibited/only allowed/convenient assignment for parking space(s), parking site(s) or an access. Same kind of data forms a union (e.g. lorries OR buses), different kind of data forms an intersection (e.g. residents AND long-term).
     /// <see href="http://vocab.datex.org/terms#ParkingAssignment"></see></summary>
-    let ParkingAssignment =
-        Namespaced_IRI.parse _namespace_name "ParkingAssignment" |> NamespacedName
-
+    let ParkingAssignment = _prefix "ParkingAssignment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessCategory"></see>
     /// </summary>
-    let accessCategory =
-        Namespaced_IRI.parse _namespace_name "accessCategory" |> NamespacedName
-
+    let accessCategory = _prefix "accessCategory"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessEquipment"></see>
     /// </summary>
-    let accessEquipment =
-        Namespaced_IRI.parse _namespace_name "accessEquipment" |> NamespacedName
-
+    let accessEquipment = _prefix "accessEquipment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessName"></see>
     /// </summary>
-    let accessName = Namespaced_IRI.parse _namespace_name "accessName" |> NamespacedName
-
+    let accessName = _prefix "accessName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessOnlyAssignedFor"></see>
     /// </summary>
-    let accessOnlyAssignedFor =
-        Namespaced_IRI.parse _namespace_name "accessOnlyAssignedFor" |> NamespacedName
-
+    let accessOnlyAssignedFor = _prefix "accessOnlyAssignedFor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessProhibitedFor"></see>
     /// </summary>
-    let accessProhibitedFor =
-        Namespaced_IRI.parse _namespace_name "accessProhibitedFor" |> NamespacedName
-
+    let accessProhibitedFor = _prefix "accessProhibitedFor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessibility"></see>
     /// </summary>
-    let accessibility =
-        Namespaced_IRI.parse _namespace_name "accessibility" |> NamespacedName
-
+    let accessibility = _prefix "accessibility"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#location"></see>
     /// </summary>
-    let location = Namespaced_IRI.parse _namespace_name "location" |> NamespacedName
-
+    let location = _prefix "location"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openingTimes"></see>
     /// </summary>
-    let openingTimes =
-        Namespaced_IRI.parse _namespace_name "openingTimes" |> NamespacedName
-
+    let openingTimes = _prefix "openingTimes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingAccessExtension"></see>
     /// </summary>
-    let parkingAccessExtension =
-        Namespaced_IRI.parse _namespace_name "parkingAccessExtension" |> NamespacedName
-
+    let parkingAccessExtension = _prefix "parkingAccessExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#photoUrl"></see>
     /// </summary>
-    let photoUrl = Namespaced_IRI.parse _namespace_name "photoUrl" |> NamespacedName
-
+    let photoUrl = _prefix "photoUrl"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#primaryRoad"></see>
     /// </summary>
-    let primaryRoad =
-        Namespaced_IRI.parse _namespace_name "primaryRoad" |> NamespacedName
-
+    let primaryRoad = _prefix "primaryRoad"
     /// <summary>
     /// The opening and fault status of one access.
     /// <see href="http://vocab.datex.org/terms#ParkingAccessStatus"></see></summary>
-    let ParkingAccessStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingAccessStatus" |> NamespacedName
-
+    let ParkingAccessStatus = _prefix "ParkingAccessStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessFault"></see>
     /// </summary>
-    let accessFault =
-        Namespaced_IRI.parse _namespace_name "accessFault" |> NamespacedName
-
+    let accessFault = _prefix "accessFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessOpeningStatus"></see>
     /// </summary>
-    let accessOpeningStatus =
-        Namespaced_IRI.parse _namespace_name "accessOpeningStatus" |> NamespacedName
-
+    let accessOpeningStatus = _prefix "accessOpeningStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#accessReference"></see>
     /// </summary>
-    let accessReference =
-        Namespaced_IRI.parse _namespace_name "accessReference" |> NamespacedName
-
+    let accessReference = _prefix "accessReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingAccessStatusExtension"></see>
     /// </summary>
-    let parkingAccessStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingAccessStatusExtension" |> NamespacedName
-
+    let parkingAccessStatusExtension = _prefix "parkingAccessStatusExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#hazardousMaterials"></see>
     /// </summary>
-    let hazardousMaterials =
-        Namespaced_IRI.parse _namespace_name "hazardousMaterials" |> NamespacedName
-
+    let hazardousMaterials = _prefix "hazardousMaterials"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingAssignmentExtension"></see>
     /// </summary>
-    let parkingAssignmentExtension =
-        Namespaced_IRI.parse _namespace_name "parkingAssignmentExtension" |> NamespacedName
-
+    let parkingAssignmentExtension = _prefix "parkingAssignmentExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingDuration"></see>
     /// </summary>
-    let parkingDuration =
-        Namespaced_IRI.parse _namespace_name "parkingDuration" |> NamespacedName
-
+    let parkingDuration = _prefix "parkingDuration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#timePeriodByHour"></see>
     /// </summary>
-    let timePeriodByHour =
-        Namespaced_IRI.parse _namespace_name "timePeriodByHour" |> NamespacedName
-
+    let timePeriodByHour = _prefix "timePeriodByHour"
     /// <summary>
     /// Specification of a continuous period within a 24 hour period by times.
     /// <see href="http://vocab.datex.org/terms#TimePeriodByHour"></see></summary>
-    let TimePeriodByHour =
-        Namespaced_IRI.parse _namespace_name "TimePeriodByHour" |> NamespacedName
-
+    let TimePeriodByHour = _prefix "TimePeriodByHour"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#additionalDescription"></see>
     /// </summary>
-    let additionalDescription =
-        Namespaced_IRI.parse _namespace_name "additionalDescription" |> NamespacedName
-
+    let additionalDescription = _prefix "additionalDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#availability"></see>
     /// </summary>
-    let availability =
-        Namespaced_IRI.parse _namespace_name "availability" |> NamespacedName
-
+    let availability = _prefix "availability"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#availabilityAndOpeningTimes"></see>
     /// </summary>
-    let availabilityAndOpeningTimes =
-        Namespaced_IRI.parse _namespace_name "availabilityAndOpeningTimes" |> NamespacedName
+    let availabilityAndOpeningTimes = _prefix "availabilityAndOpeningTimes"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#equipmentOrServiceFacilityIdentifier"></see>
     /// </summary>
     let equipmentOrServiceFacilityIdentifier =
-        Namespaced_IRI.parse _namespace_name "equipmentOrServiceFacilityIdentifier" |> NamespacedName
+        _prefix "equipmentOrServiceFacilityIdentifier"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nameOrBrand"></see>
     /// </summary>
-    let nameOrBrand =
-        Namespaced_IRI.parse _namespace_name "nameOrBrand" |> NamespacedName
+    let nameOrBrand = _prefix "nameOrBrand"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfEquipmentOrServiceFacility"></see>
     /// </summary>
     let numberOfEquipmentOrServiceFacility =
-        Namespaced_IRI.parse _namespace_name "numberOfEquipmentOrServiceFacility" |> NamespacedName
+        _prefix "numberOfEquipmentOrServiceFacility"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#otherEquipmentOrServiceFacility"></see>
     /// </summary>
-    let otherEquipmentOrServiceFacility =
-        Namespaced_IRI.parse _namespace_name "otherEquipmentOrServiceFacility" |> NamespacedName
+    let otherEquipmentOrServiceFacility = _prefix "otherEquipmentOrServiceFacility"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingEquipmentOrServiceFacilityExtension"></see>
     /// </summary>
     let parkingEquipmentOrServiceFacilityExtension =
-        Namespaced_IRI.parse _namespace_name "parkingEquipmentOrServiceFacilityExtension" |> NamespacedName
+        _prefix "parkingEquipmentOrServiceFacilityExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tariffsAndPayment"></see>
     /// </summary>
-    let tariffsAndPayment =
-        Namespaced_IRI.parse _namespace_name "tariffsAndPayment" |> NamespacedName
-
+    let tariffsAndPayment = _prefix "tariffsAndPayment"
     /// <summary>
     /// A table of charges under various conditions, primary used for parking.
     /// <see href="http://vocab.datex.org/terms#TariffsAndPayment"></see></summary>
-    let TariffsAndPayment =
-        Namespaced_IRI.parse _namespace_name "TariffsAndPayment" |> NamespacedName
+    let TariffsAndPayment = _prefix "TariffsAndPayment"
 
     /// <summary>
     /// The number of E&amp;S can be overridden here (for example during restoration). Furthermore, the current availability of E&amp;S can be given (for example number of free electric charging stations). The E&amp;S are identified from the static model by an index.
     /// <see href="http://vocab.datex.org/terms#ParkingEquipmentOrServiceFacilityStatus"></see></summary>
     let ParkingEquipmentOrServiceFacilityStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingEquipmentOrServiceFacilityStatus" |> NamespacedName
+        _prefix "ParkingEquipmentOrServiceFacilityStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#equipmentOperationStatus"></see>
     /// </summary>
-    let equipmentOperationStatus =
-        Namespaced_IRI.parse _namespace_name "equipmentOperationStatus" |> NamespacedName
+    let equipmentOperationStatus = _prefix "equipmentOperationStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfEquipmentOrServiceFacilityOverride"></see>
     /// </summary>
     let numberOfEquipmentOrServiceFacilityOverride =
-        Namespaced_IRI.parse _namespace_name "numberOfEquipmentOrServiceFacilityOverride" |> NamespacedName
+        _prefix "numberOfEquipmentOrServiceFacilityOverride"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfSubitemsOverride"></see>
     /// </summary>
-    let numberOfSubitemsOverride =
-        Namespaced_IRI.parse _namespace_name "numberOfSubitemsOverride" |> NamespacedName
+    let numberOfSubitemsOverride = _prefix "numberOfSubitemsOverride"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingEquipmentOrServiceFacilityStatusExtension"></see>
     /// </summary>
     let parkingEquipmentOrServiceFacilityStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingEquipmentOrServiceFacilityStatusExtension" |> NamespacedName
+        _prefix "parkingEquipmentOrServiceFacilityStatusExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#serviceFacilityOpeningStatus"></see>
     /// </summary>
-    let serviceFacilityOpeningStatus =
-        Namespaced_IRI.parse _namespace_name "serviceFacilityOpeningStatus" |> NamespacedName
+    let serviceFacilityOpeningStatus = _prefix "serviceFacilityOpeningStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vacantEquipmentOrServiceFacilitySubitems"></see>
     /// </summary>
     let vacantEquipmentOrServiceFacilitySubitems =
-        Namespaced_IRI.parse _namespace_name "vacantEquipmentOrServiceFacilitySubitems" |> NamespacedName
+        _prefix "vacantEquipmentOrServiceFacilitySubitems"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNotAllowed"></see>
     /// </summary>
-    let parkingNotAllowed =
-        Namespaced_IRI.parse _namespace_name "parkingNotAllowed" |> NamespacedName
-
+    let parkingNotAllowed = _prefix "parkingNotAllowed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfOccupiedSpaces"></see>
     /// </summary>
-    let parkingNumberOfOccupiedSpaces =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfOccupiedSpaces" |> NamespacedName
-
+    let parkingNumberOfOccupiedSpaces = _prefix "parkingNumberOfOccupiedSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfSpacesOverride"></see>
     /// </summary>
-    let parkingNumberOfSpacesOverride =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfSpacesOverride" |> NamespacedName
-
+    let parkingNumberOfSpacesOverride = _prefix "parkingNumberOfSpacesOverride"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfVacantSpaces"></see>
     /// </summary>
-    let parkingNumberOfVacantSpaces =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfVacantSpaces" |> NamespacedName
-
+    let parkingNumberOfVacantSpaces = _prefix "parkingNumberOfVacantSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfVacantSpacesGraded"></see>
     /// </summary>
-    let parkingNumberOfVacantSpacesGraded =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfVacantSpacesGraded" |> NamespacedName
+    let parkingNumberOfVacantSpacesGraded = _prefix "parkingNumberOfVacantSpacesGraded"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfVacantSpacesHigherThan"></see>
     /// </summary>
     let parkingNumberOfVacantSpacesHigherThan =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfVacantSpacesHigherThan" |> NamespacedName
+        _prefix "parkingNumberOfVacantSpacesHigherThan"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfVacantSpacesLowerThan"></see>
     /// </summary>
     let parkingNumberOfVacantSpacesLowerThan =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfVacantSpacesLowerThan" |> NamespacedName
+        _prefix "parkingNumberOfVacantSpacesLowerThan"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingNumberOfVehicles"></see>
     /// </summary>
-    let parkingNumberOfVehicles =
-        Namespaced_IRI.parse _namespace_name "parkingNumberOfVehicles" |> NamespacedName
-
+    let parkingNumberOfVehicles = _prefix "parkingNumberOfVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingOccupancy"></see>
     /// </summary>
-    let parkingOccupancy =
-        Namespaced_IRI.parse _namespace_name "parkingOccupancy" |> NamespacedName
-
+    let parkingOccupancy = _prefix "parkingOccupancy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingOccupancyExtension"></see>
     /// </summary>
-    let parkingOccupancyExtension =
-        Namespaced_IRI.parse _namespace_name "parkingOccupancyExtension" |> NamespacedName
-
+    let parkingOccupancyExtension = _prefix "parkingOccupancyExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingOccupancyGraded"></see>
     /// </summary>
-    let parkingOccupancyGraded =
-        Namespaced_IRI.parse _namespace_name "parkingOccupancyGraded" |> NamespacedName
-
+    let parkingOccupancyGraded = _prefix "parkingOccupancyGraded"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingOccupancyTrend"></see>
     /// </summary>
-    let parkingOccupancyTrend =
-        Namespaced_IRI.parse _namespace_name "parkingOccupancyTrend" |> NamespacedName
-
+    let parkingOccupancyTrend = _prefix "parkingOccupancyTrend"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCountAndRate"></see>
     /// </summary>
-    let vehicleCountAndRate =
-        Namespaced_IRI.parse _namespace_name "vehicleCountAndRate" |> NamespacedName
-
+    let vehicleCountAndRate = _prefix "vehicleCountAndRate"
     /// <summary>
     /// Vehicle rates can be assigned to a parking site or to assigned parking spaces. Furthermore, they can reference to a measurement site or to an entrance/exit.
     /// <see href="http://vocab.datex.org/terms#VehicleCountAndRate"></see></summary>
-    let VehicleCountAndRate =
-        Namespaced_IRI.parse _namespace_name "VehicleCountAndRate" |> NamespacedName
-
+    let VehicleCountAndRate = _prefix "VehicleCountAndRate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPermitExtension"></see>
     /// </summary>
-    let parkingPermitExtension =
-        Namespaced_IRI.parse _namespace_name "parkingPermitExtension" |> NamespacedName
-
+    let parkingPermitExtension = _prefix "parkingPermitExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPermitIdentifier"></see>
     /// </summary>
-    let parkingPermitIdentifier =
-        Namespaced_IRI.parse _namespace_name "parkingPermitIdentifier" |> NamespacedName
-
+    let parkingPermitIdentifier = _prefix "parkingPermitIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPermitScheme"></see>
     /// </summary>
-    let parkingPermitScheme =
-        Namespaced_IRI.parse _namespace_name "parkingPermitScheme" |> NamespacedName
-
+    let parkingPermitScheme = _prefix "parkingPermitScheme"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPermitType"></see>
     /// </summary>
-    let parkingPermitType =
-        Namespaced_IRI.parse _namespace_name "parkingPermitType" |> NamespacedName
-
+    let parkingPermitType = _prefix "parkingPermitType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#assignedParkingAmongOthers"></see>
     /// </summary>
-    let assignedParkingAmongOthers =
-        Namespaced_IRI.parse _namespace_name "assignedParkingAmongOthers" |> NamespacedName
-
+    let assignedParkingAmongOthers = _prefix "assignedParkingAmongOthers"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#emergencyAssemblyPoint"></see>
     /// </summary>
-    let emergencyAssemblyPoint =
-        Namespaced_IRI.parse _namespace_name "emergencyAssemblyPoint" |> NamespacedName
-
+    let emergencyAssemblyPoint = _prefix "emergencyAssemblyPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#emergencyContact"></see>
     /// </summary>
-    let emergencyContact =
-        Namespaced_IRI.parse _namespace_name "emergencyContact" |> NamespacedName
-
+    let emergencyContact = _prefix "emergencyContact"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#entireArea"></see>
     /// </summary>
-    let entireArea = Namespaced_IRI.parse _namespace_name "entireArea" |> NamespacedName
-
+    let entireArea = _prefix "entireArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSpaces"></see>
     /// </summary>
-    let groupOfParkingSpaces =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSpaces" |> NamespacedName
-
+    let groupOfParkingSpaces = _prefix "groupOfParkingSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_GroupOfParkingSpaces"></see>
     /// </summary>
-    let _GroupOfParkingSpaces =
-        Namespaced_IRI.parse _namespace_name "_GroupOfParkingSpaces" |> NamespacedName
-
+    let _GroupOfParkingSpaces = _prefix "_GroupOfParkingSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maximumParkingDuration"></see>
     /// </summary>
-    let maximumParkingDuration =
-        Namespaced_IRI.parse _namespace_name "maximumParkingDuration" |> NamespacedName
-
+    let maximumParkingDuration = _prefix "maximumParkingDuration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#onlyAssignedParking"></see>
     /// </summary>
-    let onlyAssignedParking =
-        Namespaced_IRI.parse _namespace_name "onlyAssignedParking" |> NamespacedName
-
+    let onlyAssignedParking = _prefix "onlyAssignedParking"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#operator"></see>
     /// </summary>
-    let operator = Namespaced_IRI.parse _namespace_name "operator" |> NamespacedName
+    let operator = _prefix "operator"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#owner"></see>
     /// </summary>
-    let owner = Namespaced_IRI.parse _namespace_name "owner" |> NamespacedName
-
+    let owner = _prefix "owner"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingAlias"></see>
     /// </summary>
-    let parkingAlias =
-        Namespaced_IRI.parse _namespace_name "parkingAlias" |> NamespacedName
-
+    let parkingAlias = _prefix "parkingAlias"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingColour"></see>
     /// </summary>
-    let parkingColour =
-        Namespaced_IRI.parse _namespace_name "parkingColour" |> NamespacedName
-
+    let parkingColour = _prefix "parkingColour"
     /// <summary>
     /// An RGB colour described by values for red, green and blue (0..255) as well as an optional name.
     /// <see href="http://vocab.datex.org/terms#RGBColour"></see></summary>
-    let RGBColour = Namespaced_IRI.parse _namespace_name "RGBColour" |> NamespacedName
-
+    let RGBColour = _prefix "RGBColour"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingDescription"></see>
     /// </summary>
-    let parkingDescription =
-        Namespaced_IRI.parse _namespace_name "parkingDescription" |> NamespacedName
-
+    let parkingDescription = _prefix "parkingDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingEquipmentOrServiceFacility"></see>
     /// </summary>
-    let parkingEquipmentOrServiceFacility =
-        Namespaced_IRI.parse _namespace_name "parkingEquipmentOrServiceFacility" |> NamespacedName
+    let parkingEquipmentOrServiceFacility = _prefix "parkingEquipmentOrServiceFacility"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRecordEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility"></see>
     /// </summary>
     let _ParkingRecordEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility =
-        Namespaced_IRI.parse _namespace_name "_ParkingRecordEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility" |> NamespacedName
+        _prefix "_ParkingRecordEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingLocation"></see>
     /// </summary>
-    let parkingLocation =
-        Namespaced_IRI.parse _namespace_name "parkingLocation" |> NamespacedName
-
+    let parkingLocation = _prefix "parkingLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingName"></see>
     /// </summary>
-    let parkingName =
-        Namespaced_IRI.parse _namespace_name "parkingName" |> NamespacedName
-
+    let parkingName = _prefix "parkingName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingOccupanyDetectionType"></see>
     /// </summary>
-    let parkingOccupanyDetectionType =
-        Namespaced_IRI.parse _namespace_name "parkingOccupanyDetectionType" |> NamespacedName
-
+    let parkingOccupanyDetectionType = _prefix "parkingOccupanyDetectionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPrincipalNumberOfSpaces"></see>
     /// </summary>
-    let parkingPrincipalNumberOfSpaces =
-        Namespaced_IRI.parse _namespace_name "parkingPrincipalNumberOfSpaces" |> NamespacedName
-
+    let parkingPrincipalNumberOfSpaces = _prefix "parkingPrincipalNumberOfSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecordDimension"></see>
     /// </summary>
-    let parkingRecordDimension =
-        Namespaced_IRI.parse _namespace_name "parkingRecordDimension" |> NamespacedName
-
+    let parkingRecordDimension = _prefix "parkingRecordDimension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecordExtension"></see>
     /// </summary>
-    let parkingRecordExtension =
-        Namespaced_IRI.parse _namespace_name "parkingRecordExtension" |> NamespacedName
-
+    let parkingRecordExtension = _prefix "parkingRecordExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecordVersionTime"></see>
     /// </summary>
-    let parkingRecordVersionTime =
-        Namespaced_IRI.parse _namespace_name "parkingRecordVersionTime" |> NamespacedName
-
+    let parkingRecordVersionTime = _prefix "parkingRecordVersionTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRoute"></see>
     /// </summary>
-    let parkingRoute =
-        Namespaced_IRI.parse _namespace_name "parkingRoute" |> NamespacedName
-
+    let parkingRoute = _prefix "parkingRoute"
     /// <summary>
     /// A parking route, defined by ParkingRouteDetails or by a reference.
     /// <see href="http://vocab.datex.org/terms#ParkingRoute"></see></summary>
-    let ParkingRoute =
-        Namespaced_IRI.parse _namespace_name "ParkingRoute" |> NamespacedName
-
+    let ParkingRoute = _prefix "ParkingRoute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingSpace"></see>
     /// </summary>
-    let _ParkingSpace =
-        Namespaced_IRI.parse _namespace_name "_ParkingSpace" |> NamespacedName
-
+    let _ParkingSpace = _prefix "_ParkingSpace"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingThresholds"></see>
     /// </summary>
-    let parkingThresholds =
-        Namespaced_IRI.parse _namespace_name "parkingThresholds" |> NamespacedName
-
+    let parkingThresholds = _prefix "parkingThresholds"
     /// <summary>
     /// Configuration parameters of the parking site, used among others for the dynamic attribute 'parkingStatus'. This component or all elements of it can be overridden in the dynamic model.
     /// <see href="http://vocab.datex.org/terms#ParkingThresholds"></see></summary>
-    let ParkingThresholds =
-        Namespaced_IRI.parse _namespace_name "ParkingThresholds" |> NamespacedName
-
+    let ParkingThresholds = _prefix "ParkingThresholds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingVMS"></see>
     /// </summary>
-    let parkingVMS = Namespaced_IRI.parse _namespace_name "parkingVMS" |> NamespacedName
+    let parkingVMS = _prefix "parkingVMS"
     /// <summary>
     /// A reference to a record that contains the metadata for a specific VMS unit that may be used to manage the parking site (e.g. to indicate to drivers the current availability of spaces).
     /// <see href="http://vocab.datex.org/terms#ParkingVMS"></see></summary>
-    let ParkingVMS = Namespaced_IRI.parse _namespace_name "ParkingVMS" |> NamespacedName
-
+    let ParkingVMS = _prefix "ParkingVMS"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#permitsAndProhibitions"></see>
     /// </summary>
-    let permitsAndProhibitions =
-        Namespaced_IRI.parse _namespace_name "permitsAndProhibitions" |> NamespacedName
-
+    let permitsAndProhibitions = _prefix "permitsAndProhibitions"
     /// <summary>
     /// Defines sets of action and regulations to specify permitted and prohibited issues.
     /// <see href="http://vocab.datex.org/terms#PermitsAndProhibitions"></see></summary>
-    let PermitsAndProhibitions =
-        Namespaced_IRI.parse _namespace_name "PermitsAndProhibitions" |> NamespacedName
-
+    let PermitsAndProhibitions = _prefix "PermitsAndProhibitions"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#prohibitedParking"></see>
     /// </summary>
-    let prohibitedParking =
-        Namespaced_IRI.parse _namespace_name "prohibitedParking" |> NamespacedName
-
+    let prohibitedParking = _prefix "prohibitedParking"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#responisbleAuthority"></see>
     /// </summary>
-    let responisbleAuthority =
-        Namespaced_IRI.parse _namespace_name "responisbleAuthority" |> NamespacedName
-
+    let responisbleAuthority = _prefix "responisbleAuthority"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#securityService"></see>
     /// </summary>
-    let securityService =
-        Namespaced_IRI.parse _namespace_name "securityService" |> NamespacedName
-
+    let securityService = _prefix "securityService"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#servicePartner"></see>
     /// </summary>
-    let servicePartner =
-        Namespaced_IRI.parse _namespace_name "servicePartner" |> NamespacedName
-
+    let servicePartner = _prefix "servicePartner"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#blurredAvailability"></see>
     /// </summary>
-    let blurredAvailability =
-        Namespaced_IRI.parse _namespace_name "blurredAvailability" |> NamespacedName
-
+    let blurredAvailability = _prefix "blurredAvailability"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSpacesStatus"></see>
     /// </summary>
-    let groupOfParkingSpacesStatus =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSpacesStatus" |> NamespacedName
+    let groupOfParkingSpacesStatus = _prefix "groupOfParkingSpacesStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRecordStatusGroupIndexGroupOfParkingSpacesStatus"></see>
     /// </summary>
     let _ParkingRecordStatusGroupIndexGroupOfParkingSpacesStatus =
-        Namespaced_IRI.parse _namespace_name "_ParkingRecordStatusGroupIndexGroupOfParkingSpacesStatus" |> NamespacedName
+        _prefix "_ParkingRecordStatusGroupIndexGroupOfParkingSpacesStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overrideParkingThresholds"></see>
     /// </summary>
-    let overrideParkingThresholds =
-        Namespaced_IRI.parse _namespace_name "overrideParkingThresholds" |> NamespacedName
-
+    let overrideParkingThresholds = _prefix "overrideParkingThresholds"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingAccessStatus"></see>
     /// </summary>
-    let parkingAccessStatus =
-        Namespaced_IRI.parse _namespace_name "parkingAccessStatus" |> NamespacedName
-
+    let parkingAccessStatus = _prefix "parkingAccessStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingConditions"></see>
     /// </summary>
-    let parkingConditions =
-        Namespaced_IRI.parse _namespace_name "parkingConditions" |> NamespacedName
+    let parkingConditions = _prefix "parkingConditions"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingEquipmentOrServiceFacilityStatus"></see>
     /// </summary>
     let parkingEquipmentOrServiceFacilityStatus =
-        Namespaced_IRI.parse _namespace_name "parkingEquipmentOrServiceFacilityStatus" |> NamespacedName
+        _prefix "parkingEquipmentOrServiceFacilityStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRecordStatusEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacilityStatus"></see>
     /// </summary>
     let _ParkingRecordStatusEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacilityStatus =
-        Namespaced_IRI.parse _namespace_name "_ParkingRecordStatusEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacilityStatus" |> NamespacedName
+        _prefix "_ParkingRecordStatusEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacilityStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingFault"></see>
     /// </summary>
-    let parkingFault =
-        Namespaced_IRI.parse _namespace_name "parkingFault" |> NamespacedName
-
+    let parkingFault = _prefix "parkingFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingQueueingTime"></see>
     /// </summary>
-    let parkingQueueingTime =
-        Namespaced_IRI.parse _namespace_name "parkingQueueingTime" |> NamespacedName
-
+    let parkingQueueingTime = _prefix "parkingQueueingTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecordReference"></see>
     /// </summary>
-    let parkingRecordReference =
-        Namespaced_IRI.parse _namespace_name "parkingRecordReference" |> NamespacedName
-
+    let parkingRecordReference = _prefix "parkingRecordReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecordStatusExtension"></see>
     /// </summary>
-    let parkingRecordStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingRecordStatusExtension" |> NamespacedName
-
+    let parkingRecordStatusExtension = _prefix "parkingRecordStatusExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteStatus"></see>
     /// </summary>
-    let parkingRouteStatus =
-        Namespaced_IRI.parse _namespace_name "parkingRouteStatus" |> NamespacedName
-
+    let parkingRouteStatus = _prefix "parkingRouteStatus"
     /// <summary>
     /// The status of a parking route (active/inactive) defined in the static part of the model.
     /// <see href="http://vocab.datex.org/terms#ParkingRouteStatus"></see></summary>
-    let ParkingRouteStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingRouteStatus" |> NamespacedName
-
+    let ParkingRouteStatus = _prefix "ParkingRouteStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceStatus"></see>
     /// </summary>
-    let parkingSpaceStatus =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceStatus" |> NamespacedName
+    let parkingSpaceStatus = _prefix "parkingSpaceStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRecordStatusParkingSpaceIndexParkingSpaceStatus"></see>
     /// </summary>
     let _ParkingRecordStatusParkingSpaceIndexParkingSpaceStatus =
-        Namespaced_IRI.parse _namespace_name "_ParkingRecordStatusParkingSpaceIndexParkingSpaceStatus" |> NamespacedName
+        _prefix "_ParkingRecordStatusParkingSpaceIndexParkingSpaceStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusDescription"></see>
     /// </summary>
-    let parkingStatusDescription =
-        Namespaced_IRI.parse _namespace_name "parkingStatusDescription" |> NamespacedName
-
+    let parkingStatusDescription = _prefix "parkingStatusDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusOriginTime"></see>
     /// </summary>
-    let parkingStatusOriginTime =
-        Namespaced_IRI.parse _namespace_name "parkingStatusOriginTime" |> NamespacedName
-
+    let parkingStatusOriginTime = _prefix "parkingStatusOriginTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusValidity"></see>
     /// </summary>
-    let parkingStatusValidity =
-        Namespaced_IRI.parse _namespace_name "parkingStatusValidity" |> NamespacedName
-
+    let parkingStatusValidity = _prefix "parkingStatusValidity"
     /// <summary>
     /// To be used only for historical or forecasted data. Choose between an explicit point of time, an offset or all points of time within a specified period.
     /// <see href="http://vocab.datex.org/terms#ParkingStatusValidity"></see></summary>
-    let ParkingStatusValidity =
-        Namespaced_IRI.parse _namespace_name "ParkingStatusValidity" |> NamespacedName
-
+    let ParkingStatusValidity = _prefix "ParkingStatusValidity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingUsageScenarioStatus"></see>
     /// </summary>
-    let parkingUsageScenarioStatus =
-        Namespaced_IRI.parse _namespace_name "parkingUsageScenarioStatus" |> NamespacedName
+    let parkingUsageScenarioStatus = _prefix "parkingUsageScenarioStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRecordStatusScenarioIndexParkingUsageScenarioStatus"></see>
     /// </summary>
     let _ParkingRecordStatusScenarioIndexParkingUsageScenarioStatus =
-        Namespaced_IRI.parse _namespace_name "_ParkingRecordStatusScenarioIndexParkingUsageScenarioStatus" |> NamespacedName
+        _prefix "_ParkingRecordStatusScenarioIndexParkingUsageScenarioStatus"
 
     /// <summary>
     /// Type of winter equipment management action instigated by operator.
     /// <see href="http://vocab.datex.org/terms#winterEquipmentManagementType"></see></summary>
-    let winterEquipmentManagementType =
-        Namespaced_IRI.parse _namespace_name "winterEquipmentManagementType" |> NamespacedName
-
+    let winterEquipmentManagementType = _prefix "winterEquipmentManagementType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteColour"></see>
     /// </summary>
-    let parkingRouteColour =
-        Namespaced_IRI.parse _namespace_name "parkingRouteColour" |> NamespacedName
-
+    let parkingRouteColour = _prefix "parkingRouteColour"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteExtension"></see>
     /// </summary>
-    let parkingRouteExtension =
-        Namespaced_IRI.parse _namespace_name "parkingRouteExtension" |> NamespacedName
-
+    let parkingRouteExtension = _prefix "parkingRouteExtension"
     /// <summary>
     /// A route defined by a reference to an earlier specified route.
     /// <see href="http://vocab.datex.org/terms#ParkingRouteByReference"></see></summary>
-    let ParkingRouteByReference =
-        Namespaced_IRI.parse _namespace_name "ParkingRouteByReference" |> NamespacedName
-
+    let ParkingRouteByReference = _prefix "ParkingRouteByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteByReferenceExtension"></see>
     /// </summary>
-    let parkingRouteByReferenceExtension =
-        Namespaced_IRI.parse _namespace_name "parkingRouteByReferenceExtension" |> NamespacedName
-
+    let parkingRouteByReferenceExtension = _prefix "parkingRouteByReferenceExtension"
     /// <summary>
     /// A reference to a parking route.
     /// <see href="http://vocab.datex.org/terms#parkingRouteReference"></see></summary>
-    let parkingRouteReference =
-        Namespaced_IRI.parse _namespace_name "parkingRouteReference" |> NamespacedName
+    let parkingRouteReference = _prefix "parkingRouteReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingRouteDetailsVersionedReference"></see>
     /// </summary>
     let _ParkingRouteDetailsVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_ParkingRouteDetailsVersionedReference" |> NamespacedName
+        _prefix "_ParkingRouteDetailsVersionedReference"
 
     /// <summary>
     /// Urban context: Defining parking routes leading to the parking site. Truck parking context: Can be used to define a dynamic route management.
     /// <see href="http://vocab.datex.org/terms#ParkingRouteDetails"></see></summary>
-    let ParkingRouteDetails =
-        Namespaced_IRI.parse _namespace_name "ParkingRouteDetails" |> NamespacedName
-
+    let ParkingRouteDetails = _prefix "ParkingRouteDetails"
     /// <summary>
     /// Indicates that there is dynamic route management for truck parking, i.e. a management system concerning several truck parkings (including this one) along a route.
     /// <see href="http://vocab.datex.org/terms#dynamicRouteManagement"></see></summary>
-    let dynamicRouteManagement =
-        Namespaced_IRI.parse _namespace_name "dynamicRouteManagement" |> NamespacedName
-
+    let dynamicRouteManagement = _prefix "dynamicRouteManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteDetailsExtension"></see>
     /// </summary>
-    let parkingRouteDetailsExtension =
-        Namespaced_IRI.parse _namespace_name "parkingRouteDetailsExtension" |> NamespacedName
-
+    let parkingRouteDetailsExtension = _prefix "parkingRouteDetailsExtension"
     /// <summary>
     /// The direction of traffic, for which the parking route can be used. If not specified, the route can be used in the order of the given locations.
     /// <see href="http://vocab.datex.org/terms#parkingRouteDirection"></see></summary>
-    let parkingRouteDirection =
-        Namespaced_IRI.parse _namespace_name "parkingRouteDirection" |> NamespacedName
-
+    let parkingRouteDirection = _prefix "parkingRouteDirection"
     /// <summary>
     /// Additional directions of traffic, for which the parking route can be used. If not specified, the route can be used in the order of the given locations.
     /// <see href="http://vocab.datex.org/terms#parkingRouteDirection2"></see></summary>
-    let parkingRouteDirection2 =
-        Namespaced_IRI.parse _namespace_name "parkingRouteDirection2" |> NamespacedName
-
+    let parkingRouteDirection2 = _prefix "parkingRouteDirection2"
     /// <summary>
     /// An index, which can identify some icon for visualisation of the route. Note that form and usage of this index as well as the icons itself are not further determined here.
     /// <see href="http://vocab.datex.org/terms#parkingRouteIconIndex"></see></summary>
-    let parkingRouteIconIndex =
-        Namespaced_IRI.parse _namespace_name "parkingRouteIconIndex" |> NamespacedName
-
+    let parkingRouteIconIndex = _prefix "parkingRouteIconIndex"
     /// <summary>
     /// Name of the parking route.
     /// <see href="http://vocab.datex.org/terms#parkingRouteName"></see></summary>
-    let parkingRouteName =
-        Namespaced_IRI.parse _namespace_name "parkingRouteName" |> NamespacedName
-
+    let parkingRouteName = _prefix "parkingRouteName"
     /// <summary>
     /// The type of parking route. If not specified, the route is designed for any type of vehicles.
     /// <see href="http://vocab.datex.org/terms#parkingRouteType"></see></summary>
-    let parkingRouteType =
-        Namespaced_IRI.parse _namespace_name "parkingRouteType" |> NamespacedName
-
+    let parkingRouteType = _prefix "parkingRouteType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteActive"></see>
     /// </summary>
-    let parkingRouteActive =
-        Namespaced_IRI.parse _namespace_name "parkingRouteActive" |> NamespacedName
-
+    let parkingRouteActive = _prefix "parkingRouteActive"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRouteStatusExtension"></see>
     /// </summary>
-    let parkingRouteStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingRouteStatusExtension" |> NamespacedName
-
+    let parkingRouteStatusExtension = _prefix "parkingRouteStatusExtension"
     /// <summary>
     /// Highest floor of the parking site. It is possible to have negative values here in case it is underground only. Must be higher or equal than 'lowestFloor'.
     /// <see href="http://vocab.datex.org/terms#highestFloor"></see></summary>
-    let highestFloor =
-        Namespaced_IRI.parse _namespace_name "highestFloor" |> NamespacedName
-
+    let highestFloor = _prefix "highestFloor"
     /// <summary>
     /// Lowest floor of the parking site. Positive values may apply in case it is over ground only. Must be lower or equal than 'highestFloor'.
     /// <see href="http://vocab.datex.org/terms#lowestFloor"></see></summary>
-    let lowestFloor =
-        Namespaced_IRI.parse _namespace_name "lowestFloor" |> NamespacedName
-
+    let lowestFloor = _prefix "lowestFloor"
     /// <summary>
     /// An exit from the parking facility onto the road network from any parking space unless separate exits are specified for assigned parking spaces, in which case this is an exit from only the principal parking spaces.
     /// <see href="http://vocab.datex.org/terms#parkingAccess"></see></summary>
-    let parkingAccess =
-        Namespaced_IRI.parse _namespace_name "parkingAccess" |> NamespacedName
-
+    let parkingAccess = _prefix "parkingAccess"
     /// <summary>
     /// Layout of the parking site.
     /// <see href="http://vocab.datex.org/terms#parkingLayout"></see></summary>
-    let parkingLayout =
-        Namespaced_IRI.parse _namespace_name "parkingLayout" |> NamespacedName
-
+    let parkingLayout = _prefix "parkingLayout"
     /// <summary>
     /// Indication of whether a parking reservation service is available and/or mandatory.
     /// <see href="http://vocab.datex.org/terms#parkingReservation"></see></summary>
-    let parkingReservation =
-        Namespaced_IRI.parse _namespace_name "parkingReservation" |> NamespacedName
-
+    let parkingReservation = _prefix "parkingReservation"
     /// <summary>
     /// Information about the parking site itself (address etc.). The 'GroupOfLocations' association must not be used for this role.
     /// <see href="http://vocab.datex.org/terms#parkingSiteAddress"></see></summary>
-    let parkingSiteAddress =
-        Namespaced_IRI.parse _namespace_name "parkingSiteAddress" |> NamespacedName
-
+    let parkingSiteAddress = _prefix "parkingSiteAddress"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSiteExtension"></see>
     /// </summary>
-    let parkingSiteExtension =
-        Namespaced_IRI.parse _namespace_name "parkingSiteExtension" |> NamespacedName
-
+    let parkingSiteExtension = _prefix "parkingSiteExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStandardsAndSecurity"></see>
     /// </summary>
-    let parkingStandardsAndSecurity =
-        Namespaced_IRI.parse _namespace_name "parkingStandardsAndSecurity" |> NamespacedName
-
+    let parkingStandardsAndSecurity = _prefix "parkingStandardsAndSecurity"
     /// <summary>
     /// Security measures and standards or standard-like categorization for a parking site.
     /// <see href="http://vocab.datex.org/terms#ParkingStandardsAndSecurity"></see></summary>
-    let ParkingStandardsAndSecurity =
-        Namespaced_IRI.parse _namespace_name "ParkingStandardsAndSecurity" |> NamespacedName
-
+    let ParkingStandardsAndSecurity = _prefix "ParkingStandardsAndSecurity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingUsageScenario"></see>
     /// </summary>
-    let parkingUsageScenario =
-        Namespaced_IRI.parse _namespace_name "parkingUsageScenario" |> NamespacedName
+    let parkingUsageScenario = _prefix "parkingUsageScenario"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingSiteScenarioIndexParkingUsageScenario"></see>
     /// </summary>
     let _ParkingSiteScenarioIndexParkingUsageScenario =
-        Namespaced_IRI.parse _namespace_name "_ParkingSiteScenarioIndexParkingUsageScenario" |> NamespacedName
+        _prefix "_ParkingSiteScenarioIndexParkingUsageScenario"
 
     /// <summary>
     /// Reservation service (for end users). It is recommended to give URL and telephone.
     /// <see href="http://vocab.datex.org/terms#reservationService"></see></summary>
-    let reservationService =
-        Namespaced_IRI.parse _namespace_name "reservationService" |> NamespacedName
-
+    let reservationService = _prefix "reservationService"
     /// <summary>
     /// Indicates that the parking site is on a temporary basis. It might close permanently within short notice or might only be partial equipped. The physical parking possibilities might be provisional, too.
     /// <see href="http://vocab.datex.org/terms#temporaryParking"></see></summary>
-    let temporaryParking =
-        Namespaced_IRI.parse _namespace_name "temporaryParking" |> NamespacedName
-
+    let temporaryParking = _prefix "temporaryParking"
     /// <summary>
     /// Dynamic status information for the static object 'ParkingSite'.
     /// <see href="http://vocab.datex.org/terms#ParkingSiteStatus"></see></summary>
-    let ParkingSiteStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingSiteStatus" |> NamespacedName
-
+    let ParkingSiteStatus = _prefix "ParkingSiteStatus"
     /// <summary>
     /// The parking site is full at the specified floor(s).
     /// <see href="http://vocab.datex.org/terms#parkingSiteFullAtFloor"></see></summary>
-    let parkingSiteFullAtFloor =
-        Namespaced_IRI.parse _namespace_name "parkingSiteFullAtFloor" |> NamespacedName
-
+    let parkingSiteFullAtFloor = _prefix "parkingSiteFullAtFloor"
     /// <summary>
     /// The opening status of the parking site (open or not).
     /// <see href="http://vocab.datex.org/terms#parkingSiteOpeningStatus"></see></summary>
-    let parkingSiteOpeningStatus =
-        Namespaced_IRI.parse _namespace_name "parkingSiteOpeningStatus" |> NamespacedName
-
+    let parkingSiteOpeningStatus = _prefix "parkingSiteOpeningStatus"
     /// <summary>
     /// The overcrowding status of the parking site. Choose between using a two-stage approach or the more general statement ‘(not) overcrowding’. You can sharpen this information by using the ‘Thresholds’ component.
     /// <see href="http://vocab.datex.org/terms#parkingSiteOvercrowdingStatus"></see></summary>
-    let parkingSiteOvercrowdingStatus =
-        Namespaced_IRI.parse _namespace_name "parkingSiteOvercrowdingStatus" |> NamespacedName
-
+    let parkingSiteOvercrowdingStatus = _prefix "parkingSiteOvercrowdingStatus"
     /// <summary>
     /// The status of the parking site (spaces available or not).
     /// <see href="http://vocab.datex.org/terms#parkingSiteStatus"></see></summary>
-    let parkingSiteStatus =
-        Namespaced_IRI.parse _namespace_name "parkingSiteStatus" |> NamespacedName
-
+    let parkingSiteStatus = _prefix "parkingSiteStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSiteStatusExtension"></see>
     /// </summary>
-    let parkingSiteStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingSiteStatusExtension" |> NamespacedName
-
+    let parkingSiteStatusExtension = _prefix "parkingSiteStatusExtension"
     /// <summary>
     /// A single parking space. It is possible to define the same parking space more than once with different properties, e.g. when there is a different parking assignment for different times.
     /// <see href="http://vocab.datex.org/terms#ParkingSpace"></see></summary>
-    let ParkingSpace =
-        Namespaced_IRI.parse _namespace_name "ParkingSpace" |> NamespacedName
-
+    let ParkingSpace = _prefix "ParkingSpace"
     /// <summary>
     /// Points to another instance of 'ParkingSpace', which is identical from a local point of view (i.e. which is the same parking space). To be used when defining mixed parking areas (with using different time slots).
     /// <see href="http://vocab.datex.org/terms#identicalToParkingSpace"></see></summary>
-    let identicalToParkingSpace =
-        Namespaced_IRI.parse _namespace_name "identicalToParkingSpace" |> NamespacedName
-
+    let identicalToParkingSpace = _prefix "identicalToParkingSpace"
     /// <summary>
     /// Dimension of the parking space (not all dimension attributes need to be provided). If the parking space is not rectangular, its dimension is specified as the smallest rectangle fitting inside its shape.
     /// <see href="http://vocab.datex.org/terms#parkingSpaceDimension"></see></summary>
-    let parkingSpaceDimension =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceDimension" |> NamespacedName
-
+    let parkingSpaceDimension = _prefix "parkingSpaceDimension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceExtension"></see>
     /// </summary>
-    let parkingSpaceExtension =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceExtension" |> NamespacedName
-
+    let parkingSpaceExtension = _prefix "parkingSpaceExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceFromPrimaryRoad"></see>
     /// </summary>
-    let distanceFromPrimaryRoad =
-        Namespaced_IRI.parse _namespace_name "distanceFromPrimaryRoad" |> NamespacedName
+    let distanceFromPrimaryRoad = _prefix "distanceFromPrimaryRoad"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingSpaceBasicsEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility"></see>
     /// </summary>
     let _ParkingSpaceBasicsEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility =
-        Namespaced_IRI.parse _namespace_name "_ParkingSpaceBasicsEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility" |> NamespacedName
+        _prefix "_ParkingSpaceBasicsEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingFloorOrLevel"></see>
     /// </summary>
-    let parkingFloorOrLevel =
-        Namespaced_IRI.parse _namespace_name "parkingFloorOrLevel" |> NamespacedName
-
+    let parkingFloorOrLevel = _prefix "parkingFloorOrLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingMode"></see>
     /// </summary>
-    let parkingMode =
-        Namespaced_IRI.parse _namespace_name "parkingMode" |> NamespacedName
-
+    let parkingMode = _prefix "parkingMode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSecurity"></see>
     /// </summary>
-    let parkingSecurity =
-        Namespaced_IRI.parse _namespace_name "parkingSecurity" |> NamespacedName
-
+    let parkingSecurity = _prefix "parkingSecurity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceAccessibility"></see>
     /// </summary>
-    let parkingSpaceAccessibility =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceAccessibility" |> NamespacedName
-
+    let parkingSpaceAccessibility = _prefix "parkingSpaceAccessibility"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceBasicsExtension"></see>
     /// </summary>
-    let parkingSpaceBasicsExtension =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceBasicsExtension" |> NamespacedName
-
+    let parkingSpaceBasicsExtension = _prefix "parkingSpaceBasicsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceOrGroupIdentifier"></see>
     /// </summary>
-    let parkingSpaceOrGroupIdentifier =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceOrGroupIdentifier" |> NamespacedName
-
+    let parkingSpaceOrGroupIdentifier = _prefix "parkingSpaceOrGroupIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpacePhysics"></see>
     /// </summary>
-    let parkingSpacePhysics =
-        Namespaced_IRI.parse _namespace_name "parkingSpacePhysics" |> NamespacedName
+    let parkingSpacePhysics = _prefix "parkingSpacePhysics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingSpaceBasicsScenarioIndexParkingUsageScenario"></see>
     /// </summary>
     let _ParkingSpaceBasicsScenarioIndexParkingUsageScenario =
-        Namespaced_IRI.parse _namespace_name "_ParkingSpaceBasicsScenarioIndexParkingUsageScenario" |> NamespacedName
+        _prefix "_ParkingSpaceBasicsScenarioIndexParkingUsageScenario"
 
     /// <summary>
     /// Status (occupied or closed) for a single parking space which was defined in the static part of the model.
     /// <see href="http://vocab.datex.org/terms#ParkingSpaceStatus"></see></summary>
-    let ParkingSpaceStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingSpaceStatus" |> NamespacedName
-
+    let ParkingSpaceStatus = _prefix "ParkingSpaceStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lastCalibration"></see>
     /// </summary>
-    let lastCalibration =
-        Namespaced_IRI.parse _namespace_name "lastCalibration" |> NamespacedName
-
+    let lastCalibration = _prefix "lastCalibration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceClosed"></see>
     /// </summary>
-    let parkingSpaceClosed =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceClosed" |> NamespacedName
-
+    let parkingSpaceClosed = _prefix "parkingSpaceClosed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceDeclarationValidNow"></see>
     /// </summary>
-    let parkingSpaceDeclarationValidNow =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceDeclarationValidNow" |> NamespacedName
-
+    let parkingSpaceDeclarationValidNow = _prefix "parkingSpaceDeclarationValidNow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceOccupied"></see>
     /// </summary>
-    let parkingSpaceOccupied =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceOccupied" |> NamespacedName
-
+    let parkingSpaceOccupied = _prefix "parkingSpaceOccupied"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceStatusExtension"></see>
     /// </summary>
-    let parkingSpaceStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceStatusExtension" |> NamespacedName
-
+    let parkingSpaceStatusExtension = _prefix "parkingSpaceStatusExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#certifiedSecureParking"></see>
     /// </summary>
-    let certifiedSecureParking =
-        Namespaced_IRI.parse _namespace_name "certifiedSecureParking" |> NamespacedName
-
+    let certifiedSecureParking = _prefix "certifiedSecureParking"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dateOfCertification"></see>
     /// </summary>
-    let dateOfCertification =
-        Namespaced_IRI.parse _namespace_name "dateOfCertification" |> NamespacedName
-
+    let dateOfCertification = _prefix "dateOfCertification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#labelSecurityLevel"></see>
     /// </summary>
-    let labelSecurityLevel =
-        Namespaced_IRI.parse _namespace_name "labelSecurityLevel" |> NamespacedName
-
+    let labelSecurityLevel = _prefix "labelSecurityLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#labelSecurityLevelSelfAssessment"></see>
     /// </summary>
-    let labelSecurityLevelSelfAssessment =
-        Namespaced_IRI.parse _namespace_name "labelSecurityLevelSelfAssessment" |> NamespacedName
-
+    let labelSecurityLevelSelfAssessment = _prefix "labelSecurityLevelSelfAssessment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#labelServiceLevel"></see>
     /// </summary>
-    let labelServiceLevel =
-        Namespaced_IRI.parse _namespace_name "labelServiceLevel" |> NamespacedName
-
+    let labelServiceLevel = _prefix "labelServiceLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#labelServiceLevelSelfAssessment"></see>
     /// </summary>
-    let labelServiceLevelSelfAssessment =
-        Namespaced_IRI.parse _namespace_name "labelServiceLevelSelfAssessment" |> NamespacedName
-
+    let labelServiceLevelSelfAssessment = _prefix "labelServiceLevelSelfAssessment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingAdditionalSecurity"></see>
     /// </summary>
-    let parkingAdditionalSecurity =
-        Namespaced_IRI.parse _namespace_name "parkingAdditionalSecurity" |> NamespacedName
+    let parkingAdditionalSecurity = _prefix "parkingAdditionalSecurity"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSecurityNationalClassification"></see>
     /// </summary>
     let parkingSecurityNationalClassification =
-        Namespaced_IRI.parse _namespace_name "parkingSecurityNationalClassification" |> NamespacedName
+        _prefix "parkingSecurityNationalClassification"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStandardsAndSecurityExtension"></see>
     /// </summary>
     let parkingStandardsAndSecurityExtension =
-        Namespaced_IRI.parse _namespace_name "parkingStandardsAndSecurityExtension" |> NamespacedName
+        _prefix "parkingStandardsAndSecurityExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSupervision"></see>
     /// </summary>
-    let parkingSupervision =
-        Namespaced_IRI.parse _namespace_name "parkingSupervision" |> NamespacedName
-
+    let parkingSupervision = _prefix "parkingSupervision"
     /// <summary>
     /// Defines a pair of 'parkingSiteStatus' and a corresponding colour.
     /// <see href="http://vocab.datex.org/terms#ParkingStatusColourMapping"></see></summary>
-    let ParkingStatusColourMapping =
-        Namespaced_IRI.parse _namespace_name "ParkingStatusColourMapping" |> NamespacedName
+    let ParkingStatusColourMapping = _prefix "ParkingStatusColourMapping"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusColourMappingExtension"></see>
     /// </summary>
     let parkingStatusColourMappingExtension =
-        Namespaced_IRI.parse _namespace_name "parkingStatusColourMappingExtension" |> NamespacedName
+        _prefix "parkingStatusColourMappingExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#rgbColour"></see>
     /// </summary>
-    let rgbColour = Namespaced_IRI.parse _namespace_name "rgbColour" |> NamespacedName
-
+    let rgbColour = _prefix "rgbColour"
     /// <summary>
     /// A publication containing the current status of one or more parking sites and/or group of parking sites.
     /// <see href="http://vocab.datex.org/terms#ParkingStatusPublication"></see></summary>
-    let ParkingStatusPublication =
-        Namespaced_IRI.parse _namespace_name "ParkingStatusPublication" |> NamespacedName
-
+    let ParkingStatusPublication = _prefix "ParkingStatusPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecordStatus"></see>
     /// </summary>
-    let parkingRecordStatus =
-        Namespaced_IRI.parse _namespace_name "parkingRecordStatus" |> NamespacedName
-
+    let parkingRecordStatus = _prefix "parkingRecordStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingTableReference"></see>
     /// </summary>
-    let parkingTableReference =
-        Namespaced_IRI.parse _namespace_name "parkingTableReference" |> NamespacedName
-
+    let parkingTableReference = _prefix "parkingTableReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_ParkingTableVersionedReference"></see>
     /// </summary>
-    let _ParkingTableVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_ParkingTableVersionedReference" |> NamespacedName
-
+    let _ParkingTableVersionedReference = _prefix "_ParkingTableVersionedReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusTime"></see>
     /// </summary>
-    let parkingStatusTime =
-        Namespaced_IRI.parse _namespace_name "parkingStatusTime" |> NamespacedName
-
+    let parkingStatusTime = _prefix "parkingStatusTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusTimeOffsetToOrigin"></see>
     /// </summary>
-    let parkingStatusTimeOffsetToOrigin =
-        Namespaced_IRI.parse _namespace_name "parkingStatusTimeOffsetToOrigin" |> NamespacedName
-
+    let parkingStatusTimeOffsetToOrigin = _prefix "parkingStatusTimeOffsetToOrigin"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusValidityExtension"></see>
     /// </summary>
-    let parkingStatusValidityExtension =
-        Namespaced_IRI.parse _namespace_name "parkingStatusValidityExtension" |> NamespacedName
-
+    let parkingStatusValidityExtension = _prefix "parkingStatusValidityExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#validityTimeSpecification"></see>
     /// </summary>
-    let validityTimeSpecification =
-        Namespaced_IRI.parse _namespace_name "validityTimeSpecification" |> NamespacedName
-
+    let validityTimeSpecification = _prefix "validityTimeSpecification"
     /// <summary>
     /// A collection of parking records, which can be parking sites or groups of parking sites.
     /// <see href="http://vocab.datex.org/terms#ParkingTable"></see></summary>
-    let ParkingTable =
-        Namespaced_IRI.parse _namespace_name "ParkingTable" |> NamespacedName
-
+    let ParkingTable = _prefix "ParkingTable"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingRecord"></see>
     /// </summary>
-    let parkingRecord =
-        Namespaced_IRI.parse _namespace_name "parkingRecord" |> NamespacedName
-
+    let parkingRecord = _prefix "parkingRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingTableExtension"></see>
     /// </summary>
-    let parkingTableExtension =
-        Namespaced_IRI.parse _namespace_name "parkingTableExtension" |> NamespacedName
-
+    let parkingTableExtension = _prefix "parkingTableExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingTableName"></see>
     /// </summary>
-    let parkingTableName =
-        Namespaced_IRI.parse _namespace_name "parkingTableName" |> NamespacedName
-
+    let parkingTableName = _prefix "parkingTableName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingTableVersionTime"></see>
     /// </summary>
-    let parkingTableVersionTime =
-        Namespaced_IRI.parse _namespace_name "parkingTableVersionTime" |> NamespacedName
-
+    let parkingTableVersionTime = _prefix "parkingTableVersionTime"
     /// <summary>
     /// A publication defining one or more tables that have entries of parking sites or groups of them, located in an urban or interurban context.
     /// <see href="http://vocab.datex.org/terms#ParkingTablePublication"></see></summary>
-    let ParkingTablePublication =
-        Namespaced_IRI.parse _namespace_name "ParkingTablePublication" |> NamespacedName
-
+    let ParkingTablePublication = _prefix "ParkingTablePublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingTable"></see>
     /// </summary>
-    let parkingTable =
-        Namespaced_IRI.parse _namespace_name "parkingTable" |> NamespacedName
-
+    let parkingTable = _prefix "parkingTable"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#almostFullDecreasing"></see>
     /// </summary>
-    let almostFullDecreasing =
-        Namespaced_IRI.parse _namespace_name "almostFullDecreasing" |> NamespacedName
-
+    let almostFullDecreasing = _prefix "almostFullDecreasing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#almostFullIncreasing"></see>
     /// </summary>
-    let almostFullIncreasing =
-        Namespaced_IRI.parse _namespace_name "almostFullIncreasing" |> NamespacedName
-
+    let almostFullIncreasing = _prefix "almostFullIncreasing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#entranceFull"></see>
     /// </summary>
-    let entranceFull =
-        Namespaced_IRI.parse _namespace_name "entranceFull" |> NamespacedName
-
+    let entranceFull = _prefix "entranceFull"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#fullDecreasing"></see>
     /// </summary>
-    let fullDecreasing =
-        Namespaced_IRI.parse _namespace_name "fullDecreasing" |> NamespacedName
-
+    let fullDecreasing = _prefix "fullDecreasing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#fullIncreasing"></see>
     /// </summary>
-    let fullIncreasing =
-        Namespaced_IRI.parse _namespace_name "fullIncreasing" |> NamespacedName
-
+    let fullIncreasing = _prefix "fullIncreasing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overcrowding"></see>
     /// </summary>
-    let overcrowding =
-        Namespaced_IRI.parse _namespace_name "overcrowding" |> NamespacedName
-
+    let overcrowding = _prefix "overcrowding"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overcrowdingLevel1"></see>
     /// </summary>
-    let overcrowdingLevel1 =
-        Namespaced_IRI.parse _namespace_name "overcrowdingLevel1" |> NamespacedName
-
+    let overcrowdingLevel1 = _prefix "overcrowdingLevel1"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overcrowdingLevel2"></see>
     /// </summary>
-    let overcrowdingLevel2 =
-        Namespaced_IRI.parse _namespace_name "overcrowdingLevel2" |> NamespacedName
-
+    let overcrowdingLevel2 = _prefix "overcrowdingLevel2"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingLastMaximumOccupancy"></see>
     /// </summary>
-    let parkingLastMaximumOccupancy =
-        Namespaced_IRI.parse _namespace_name "parkingLastMaximumOccupancy" |> NamespacedName
-
+    let parkingLastMaximumOccupancy = _prefix "parkingLastMaximumOccupancy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusColourMapping"></see>
     /// </summary>
-    let parkingStatusColourMapping =
-        Namespaced_IRI.parse _namespace_name "parkingStatusColourMapping" |> NamespacedName
-
+    let parkingStatusColourMapping = _prefix "parkingStatusColourMapping"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingThresholdsExtension"></see>
     /// </summary>
-    let parkingThresholdsExtension =
-        Namespaced_IRI.parse _namespace_name "parkingThresholdsExtension" |> NamespacedName
-
+    let parkingThresholdsExtension = _prefix "parkingThresholdsExtension"
     /// <summary>
     /// A special type of usage available for the parking site or the group of parking spaces. In the 'ParkingStatusPublication', the operation type (in operation or not) can be defined.
     /// <see href="http://vocab.datex.org/terms#ParkingUsageScenario"></see></summary>
-    let ParkingUsageScenario =
-        Namespaced_IRI.parse _namespace_name "ParkingUsageScenario" |> NamespacedName
-
+    let ParkingUsageScenario = _prefix "ParkingUsageScenario"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#eventParkingType"></see>
     /// </summary>
-    let eventParkingType =
-        Namespaced_IRI.parse _namespace_name "eventParkingType" |> NamespacedName
-
+    let eventParkingType = _prefix "eventParkingType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#eventParkingType2"></see>
     /// </summary>
-    let eventParkingType2 =
-        Namespaced_IRI.parse _namespace_name "eventParkingType2" |> NamespacedName
-
+    let eventParkingType2 = _prefix "eventParkingType2"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingUsageScenarioExtension"></see>
     /// </summary>
-    let parkingUsageScenarioExtension =
-        Namespaced_IRI.parse _namespace_name "parkingUsageScenarioExtension" |> NamespacedName
-
+    let parkingUsageScenarioExtension = _prefix "parkingUsageScenarioExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#scenarioAvailability"></see>
     /// </summary>
-    let scenarioAvailability =
-        Namespaced_IRI.parse _namespace_name "scenarioAvailability" |> NamespacedName
-
+    let scenarioAvailability = _prefix "scenarioAvailability"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#truckParkingDynamicManagement"></see>
     /// </summary>
-    let truckParkingDynamicManagement =
-        Namespaced_IRI.parse _namespace_name "truckParkingDynamicManagement" |> NamespacedName
-
+    let truckParkingDynamicManagement = _prefix "truckParkingDynamicManagement"
     /// <summary>
     /// The current status for this parking usage scenario.
     /// <see href="http://vocab.datex.org/terms#ParkingUsageScenarioStatus"></see></summary>
-    let ParkingUsageScenarioStatus =
-        Namespaced_IRI.parse _namespace_name "ParkingUsageScenarioStatus" |> NamespacedName
+    let ParkingUsageScenarioStatus = _prefix "ParkingUsageScenarioStatus"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingUsageScenarioStatusExtension"></see>
     /// </summary>
     let parkingUsageScenarioStatusExtension =
-        Namespaced_IRI.parse _namespace_name "parkingUsageScenarioStatusExtension" |> NamespacedName
+        _prefix "parkingUsageScenarioStatusExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#usageScenarioOperationStatus"></see>
     /// </summary>
-    let usageScenarioOperationStatus =
-        Namespaced_IRI.parse _namespace_name "usageScenarioOperationStatus" |> NamespacedName
-
+    let usageScenarioOperationStatus = _prefix "usageScenarioOperationStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingVMSExtension"></see>
     /// </summary>
-    let parkingVMSExtension =
-        Namespaced_IRI.parse _namespace_name "parkingVMSExtension" |> NamespacedName
-
+    let parkingVMSExtension = _prefix "parkingVMSExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsOperator"></see>
     /// </summary>
-    let vmsOperator =
-        Namespaced_IRI.parse _namespace_name "vmsOperator" |> NamespacedName
-
+    let vmsOperator = _prefix "vmsOperator"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitUsedToManageParking"></see>
     /// </summary>
-    let vmsUnitUsedToManageParking =
-        Namespaced_IRI.parse _namespace_name "vmsUnitUsedToManageParking" |> NamespacedName
-
+    let vmsUnitUsedToManageParking = _prefix "vmsUnitUsedToManageParking"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsUnitRecordVersionedReference"></see>
     /// </summary>
-    let _VmsUnitRecordVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_VmsUnitRecordVersionedReference" |> NamespacedName
-
+    let _VmsUnitRecordVersionedReference = _prefix "_VmsUnitRecordVersionedReference"
     /// <summary>
     /// Information about one individual parking vehicle.
     /// <see href="http://vocab.datex.org/terms#ParkingVehicle"></see></summary>
-    let ParkingVehicle =
-        Namespaced_IRI.parse _namespace_name "ParkingVehicle" |> NamespacedName
-
+    let ParkingVehicle = _prefix "ParkingVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupOfParkingSpacesReference"></see>
     /// </summary>
-    let groupOfParkingSpacesReference =
-        Namespaced_IRI.parse _namespace_name "groupOfParkingSpacesReference" |> NamespacedName
-
+    let groupOfParkingSpacesReference = _prefix "groupOfParkingSpacesReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#individualCharge"></see>
     /// </summary>
-    let individualCharge =
-        Namespaced_IRI.parse _namespace_name "individualCharge" |> NamespacedName
-
+    let individualCharge = _prefix "individualCharge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingPeriod"></see>
     /// </summary>
-    let parkingPeriod =
-        Namespaced_IRI.parse _namespace_name "parkingPeriod" |> NamespacedName
-
+    let parkingPeriod = _prefix "parkingPeriod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceReference"></see>
     /// </summary>
-    let parkingSpaceReference =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceReference" |> NamespacedName
-
+    let parkingSpaceReference = _prefix "parkingSpaceReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingVehicleExtension"></see>
     /// </summary>
-    let parkingVehicleExtension =
-        Namespaced_IRI.parse _namespace_name "parkingVehicleExtension" |> NamespacedName
-
+    let parkingVehicleExtension = _prefix "parkingVehicleExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicle"></see>
     /// </summary>
-    let vehicle = Namespaced_IRI.parse _namespace_name "vehicle" |> NamespacedName
-
+    let vehicle = _prefix "vehicle"
     /// <summary>
     /// Information about individual parking vehicles.
     /// <see href="http://vocab.datex.org/terms#ParkingVehiclesPublication"></see></summary>
-    let ParkingVehiclesPublication =
-        Namespaced_IRI.parse _namespace_name "ParkingVehiclesPublication" |> NamespacedName
-
+    let ParkingVehiclesPublication = _prefix "ParkingVehiclesPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingVehicle"></see>
     /// </summary>
-    let parkingVehicle =
-        Namespaced_IRI.parse _namespace_name "parkingVehicle" |> NamespacedName
-
+    let parkingVehicle = _prefix "parkingVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#feedDescription"></see>
     /// </summary>
-    let feedDescription =
-        Namespaced_IRI.parse _namespace_name "feedDescription" |> NamespacedName
-
+    let feedDescription = _prefix "feedDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#feedType"></see>
     /// </summary>
-    let feedType = Namespaced_IRI.parse _namespace_name "feedType" |> NamespacedName
-
+    let feedType = _prefix "feedType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#payloadPublicationExtension"></see>
     /// </summary>
-    let payloadPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "payloadPublicationExtension" |> NamespacedName
-
+    let payloadPublicationExtension = _prefix "payloadPublicationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicationCreator"></see>
     /// </summary>
-    let publicationCreator =
-        Namespaced_IRI.parse _namespace_name "publicationCreator" |> NamespacedName
-
+    let publicationCreator = _prefix "publicationCreator"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicationTime"></see>
     /// </summary>
-    let publicationTime =
-        Namespaced_IRI.parse _namespace_name "publicationTime" |> NamespacedName
-
+    let publicationTime = _prefix "publicationTime"
     /// <summary>
     /// A measured or calculated value of the flow rate of passenger car units.
     /// <see href="http://vocab.datex.org/terms#PcuFlowValue"></see></summary>
-    let PcuFlowValue =
-        Namespaced_IRI.parse _namespace_name "PcuFlowValue" |> NamespacedName
-
+    let PcuFlowValue = _prefix "PcuFlowValue"
     /// <summary>
     /// A value of passenger car unit flow rate expressed in passenger car units per hour.
     /// <see href="http://vocab.datex.org/terms#pcuFlowRate"></see></summary>
-    let pcuFlowRate =
-        Namespaced_IRI.parse _namespace_name "pcuFlowRate" |> NamespacedName
-
+    let pcuFlowRate = _prefix "pcuFlowRate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pcuFlowValueExtension"></see>
     /// </summary>
-    let pcuFlowValueExtension =
-        Namespaced_IRI.parse _namespace_name "pcuFlowValueExtension" |> NamespacedName
+    let pcuFlowValueExtension = _prefix "pcuFlowValueExtension"
 
     /// <summary>
     /// Distance of a point along a linear element measured from the start node expressed as a percentage of the whole length of the linear element, where start node is relative to the element definition rather than the direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#PercentageDistanceAlongLinearElement"></see></summary>
     let PercentageDistanceAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "PercentageDistanceAlongLinearElement" |> NamespacedName
+        _prefix "PercentageDistanceAlongLinearElement"
 
     /// <summary>
     /// A measure of distance along a linear element from the start of the element expressed as a percentage of the total length of the linear object.
     /// <see href="http://vocab.datex.org/terms#percentageDistanceAlong"></see></summary>
-    let percentageDistanceAlong =
-        Namespaced_IRI.parse _namespace_name "percentageDistanceAlong" |> NamespacedName
+    let percentageDistanceAlong = _prefix "percentageDistanceAlong"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#percentageDistanceAlongLinearElementExtension"></see>
     /// </summary>
     let percentageDistanceAlongLinearElementExtension =
-        Namespaced_IRI.parse _namespace_name "percentageDistanceAlongLinearElementExtension" |> NamespacedName
+        _prefix "percentageDistanceAlongLinearElementExtension"
 
     /// <summary>
     /// A value expressed as a percentage.
     /// <see href="http://vocab.datex.org/terms#percentage"></see></summary>
-    let percentage = Namespaced_IRI.parse _namespace_name "percentage" |> NamespacedName
-
+    let percentage = _prefix "percentage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#percentageValueExtension"></see>
     /// </summary>
-    let percentageValueExtension =
-        Namespaced_IRI.parse _namespace_name "percentageValueExtension" |> NamespacedName
-
+    let percentageValueExtension = _prefix "percentageValueExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#endOfPeriod"></see>
     /// </summary>
-    let endOfPeriod =
-        Namespaced_IRI.parse _namespace_name "endOfPeriod" |> NamespacedName
-
+    let endOfPeriod = _prefix "endOfPeriod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#periodExtension"></see>
     /// </summary>
-    let periodExtension =
-        Namespaced_IRI.parse _namespace_name "periodExtension" |> NamespacedName
-
+    let periodExtension = _prefix "periodExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PeriodExtensionType"></see>
     /// </summary>
-    let _PeriodExtensionType =
-        Namespaced_IRI.parse _namespace_name "_PeriodExtensionType" |> NamespacedName
-
+    let _PeriodExtensionType = _prefix "_PeriodExtensionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#periodName"></see>
     /// </summary>
-    let periodName = Namespaced_IRI.parse _namespace_name "periodName" |> NamespacedName
-
+    let periodName = _prefix "periodName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#recurringDayWeekMonthPeriod"></see>
     /// </summary>
-    let recurringDayWeekMonthPeriod =
-        Namespaced_IRI.parse _namespace_name "recurringDayWeekMonthPeriod" |> NamespacedName
-
+    let recurringDayWeekMonthPeriod = _prefix "recurringDayWeekMonthPeriod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#recurringTimePeriodOfDay"></see>
     /// </summary>
-    let recurringTimePeriodOfDay =
-        Namespaced_IRI.parse _namespace_name "recurringTimePeriodOfDay" |> NamespacedName
-
+    let recurringTimePeriodOfDay = _prefix "recurringTimePeriodOfDay"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#startOfPeriod"></see>
     /// </summary>
-    let startOfPeriod =
-        Namespaced_IRI.parse _namespace_name "startOfPeriod" |> NamespacedName
-
+    let startOfPeriod = _prefix "startOfPeriod"
     /// <summary>
     /// An extension point for Period offering the possibility to describe special days and public holidays.
     /// <see href="http://vocab.datex.org/terms#PeriodExtended"></see></summary>
-    let PeriodExtended =
-        Namespaced_IRI.parse _namespace_name "PeriodExtended" |> NamespacedName
-
+    let PeriodExtended = _prefix "PeriodExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#recurringSpecialDay"></see>
     /// </summary>
-    let recurringSpecialDay =
-        Namespaced_IRI.parse _namespace_name "recurringSpecialDay" |> NamespacedName
-
+    let recurringSpecialDay = _prefix "recurringSpecialDay"
     /// <summary>
     /// Specification of a special day, for example schoolDay, electionDay, ...  Gives also the possibility to define a public holiday (country specific).
     /// <see href="http://vocab.datex.org/terms#SpecialDay"></see></summary>
-    let SpecialDay = Namespaced_IRI.parse _namespace_name "SpecialDay" |> NamespacedName
+    let SpecialDay = _prefix "SpecialDay"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#activity"></see>
     /// </summary>
-    let activity = Namespaced_IRI.parse _namespace_name "activity" |> NamespacedName
-
+    let activity = _prefix "activity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#permitsAndProhibitionsExtension"></see>
     /// </summary>
-    let permitsAndProhibitionsExtension =
-        Namespaced_IRI.parse _namespace_name "permitsAndProhibitionsExtension" |> NamespacedName
-
+    let permitsAndProhibitionsExtension = _prefix "permitsAndProhibitionsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#regulation"></see>
     /// </summary>
-    let regulation = Namespaced_IRI.parse _namespace_name "regulation" |> NamespacedName
-
+    let regulation = _prefix "regulation"
     /// <summary>
     /// Settings specific to a distinct pictogram display area on the VMS (where pictogramIndex indicates which pictogram area it relates to if there is more than one pictogram display area on the VMS).
     /// <see href="http://vocab.datex.org/terms#PictogramDisplayAreaSettings"></see></summary>
-    let PictogramDisplayAreaSettings =
-        Namespaced_IRI.parse _namespace_name "PictogramDisplayAreaSettings" |> NamespacedName
+    let PictogramDisplayAreaSettings = _prefix "PictogramDisplayAreaSettings"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramDisplayAreaSettingsExtension"></see>
     /// </summary>
     let pictogramDisplayAreaSettingsExtension =
-        Namespaced_IRI.parse _namespace_name "pictogramDisplayAreaSettingsExtension" |> NamespacedName
+        _prefix "pictogramDisplayAreaSettingsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramLanternsOn"></see>
     /// </summary>
-    let pictogramLanternsOn =
-        Namespaced_IRI.parse _namespace_name "pictogramLanternsOn" |> NamespacedName
-
+    let pictogramLanternsOn = _prefix "pictogramLanternsOn"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramLuminanceLevel"></see>
     /// </summary>
-    let pictogramLuminanceLevel =
-        Namespaced_IRI.parse _namespace_name "pictogramLuminanceLevel" |> NamespacedName
-
+    let pictogramLuminanceLevel = _prefix "pictogramLuminanceLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramLuminanceLevelName"></see>
     /// </summary>
-    let pictogramLuminanceLevelName =
-        Namespaced_IRI.parse _namespace_name "pictogramLuminanceLevelName" |> NamespacedName
-
+    let pictogramLuminanceLevelName = _prefix "pictogramLuminanceLevelName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramLuminanceOverride"></see>
     /// </summary>
-    let pictogramLuminanceOverride =
-        Namespaced_IRI.parse _namespace_name "pictogramLuminanceOverride" |> NamespacedName
-
+    let pictogramLuminanceOverride = _prefix "pictogramLuminanceOverride"
     /// <summary>
     /// A single geospatial point.
     /// <see href="http://vocab.datex.org/terms#Point"></see></summary>
-    let Point = Namespaced_IRI.parse _namespace_name "Point" |> NamespacedName
-
+    let Point = _prefix "Point"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#alertCPoint"></see>
     /// </summary>
-    let alertCPoint =
-        Namespaced_IRI.parse _namespace_name "alertCPoint" |> NamespacedName
-
+    let alertCPoint = _prefix "alertCPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointAlongLinearElement"></see>
     /// </summary>
-    let pointAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "pointAlongLinearElement" |> NamespacedName
-
+    let pointAlongLinearElement = _prefix "pointAlongLinearElement"
     /// <summary>
     /// A point on a linear element where the linear element is either a part of or the whole of a linear object (i.e. a road), consistent with ISO 19148 definitions.
     /// <see href="http://vocab.datex.org/terms#PointAlongLinearElement"></see></summary>
-    let PointAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "PointAlongLinearElement" |> NamespacedName
-
+    let PointAlongLinearElement = _prefix "PointAlongLinearElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointByCoordinates"></see>
     /// </summary>
-    let pointByCoordinates =
-        Namespaced_IRI.parse _namespace_name "pointByCoordinates" |> NamespacedName
-
+    let pointByCoordinates = _prefix "pointByCoordinates"
     /// <summary>
     /// A single point defined only by a coordinate set with an optional bearing direction.
     /// <see href="http://vocab.datex.org/terms#PointByCoordinates"></see></summary>
-    let PointByCoordinates =
-        Namespaced_IRI.parse _namespace_name "PointByCoordinates" |> NamespacedName
-
+    let PointByCoordinates = _prefix "PointByCoordinates"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointExtension"></see>
     /// </summary>
-    let pointExtension =
-        Namespaced_IRI.parse _namespace_name "pointExtension" |> NamespacedName
-
+    let pointExtension = _prefix "pointExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PointExtensionType"></see>
     /// </summary>
-    let _PointExtensionType =
-        Namespaced_IRI.parse _namespace_name "_PointExtensionType" |> NamespacedName
-
+    let _PointExtensionType = _prefix "_PointExtensionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegPointLocation"></see>
     /// </summary>
-    let tpegPointLocation =
-        Namespaced_IRI.parse _namespace_name "tpegPointLocation" |> NamespacedName
-
+    let tpegPointLocation = _prefix "tpegPointLocation"
     /// <summary>
     /// A single point on the road network defined by a TPEG-Loc structure and which has an associated direction of traffic flow.
     /// <see href="http://vocab.datex.org/terms#TpegPointLocation"></see></summary>
-    let TpegPointLocation =
-        Namespaced_IRI.parse _namespace_name "TpegPointLocation" |> NamespacedName
-
+    let TpegPointLocation = _prefix "TpegPointLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#administrativeAreaOfPoint"></see>
     /// </summary>
-    let administrativeAreaOfPoint =
-        Namespaced_IRI.parse _namespace_name "administrativeAreaOfPoint" |> NamespacedName
-
+    let administrativeAreaOfPoint = _prefix "administrativeAreaOfPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#directionBoundAtPoint"></see>
     /// </summary>
-    let directionBoundAtPoint =
-        Namespaced_IRI.parse _namespace_name "directionBoundAtPoint" |> NamespacedName
-
+    let directionBoundAtPoint = _prefix "directionBoundAtPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#directionRelativeAtPoint"></see>
     /// </summary>
-    let directionRelativeAtPoint =
-        Namespaced_IRI.parse _namespace_name "directionRelativeAtPoint" |> NamespacedName
-
+    let directionRelativeAtPoint = _prefix "directionRelativeAtPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceAlongLinearElement"></see>
     /// </summary>
-    let distanceAlongLinearElement =
-        Namespaced_IRI.parse _namespace_name "distanceAlongLinearElement" |> NamespacedName
-
+    let distanceAlongLinearElement = _prefix "distanceAlongLinearElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heightGradeOfPoint"></see>
     /// </summary>
-    let heightGradeOfPoint =
-        Namespaced_IRI.parse _namespace_name "heightGradeOfPoint" |> NamespacedName
-
+    let heightGradeOfPoint = _prefix "heightGradeOfPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointAlongLinearElementExtension"></see>
     /// </summary>
-    let pointAlongLinearElementExtension =
-        Namespaced_IRI.parse _namespace_name "pointAlongLinearElementExtension" |> NamespacedName
-
+    let pointAlongLinearElementExtension = _prefix "pointAlongLinearElementExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#bearing"></see>
     /// </summary>
-    let bearing = Namespaced_IRI.parse _namespace_name "bearing" |> NamespacedName
-
+    let bearing = _prefix "bearing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointByCoordinatesExtension"></see>
     /// </summary>
-    let pointByCoordinatesExtension =
-        Namespaced_IRI.parse _namespace_name "pointByCoordinatesExtension" |> NamespacedName
-
+    let pointByCoordinatesExtension = _prefix "pointByCoordinatesExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointCoordinates"></see>
     /// </summary>
-    let pointCoordinates =
-        Namespaced_IRI.parse _namespace_name "pointCoordinates" |> NamespacedName
-
+    let pointCoordinates = _prefix "pointCoordinates"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#latitude"></see>
     /// </summary>
-    let latitude = Namespaced_IRI.parse _namespace_name "latitude" |> NamespacedName
+    let latitude = _prefix "latitude"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#longitude"></see>
     /// </summary>
-    let longitude = Namespaced_IRI.parse _namespace_name "longitude" |> NamespacedName
-
+    let longitude = _prefix "longitude"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointCoordinatesExtension"></see>
     /// </summary>
-    let pointCoordinatesExtension =
-        Namespaced_IRI.parse _namespace_name "pointCoordinatesExtension" |> NamespacedName
-
+    let pointCoordinatesExtension = _prefix "pointCoordinatesExtension"
     /// <summary>
     /// The specification of the destination of a defined route or itinerary which is a point.
     /// <see href="http://vocab.datex.org/terms#PointDestination"></see></summary>
-    let PointDestination =
-        Namespaced_IRI.parse _namespace_name "PointDestination" |> NamespacedName
-
+    let PointDestination = _prefix "PointDestination"
     /// <summary>
     /// A single point defined by a coordinate set and TPEG decriptors.
     /// <see href="http://vocab.datex.org/terms#point"></see></summary>
-    let point = Namespaced_IRI.parse _namespace_name "point" |> NamespacedName
-
+    let point = _prefix "point"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointDestinationExtension"></see>
     /// </summary>
-    let pointDestinationExtension =
-        Namespaced_IRI.parse _namespace_name "pointDestinationExtension" |> NamespacedName
-
+    let pointDestinationExtension = _prefix "pointDestinationExtension"
     /// <summary>
     /// Extension point for 'Point' to support the description of junctions (and other alternative point descriptions).
     /// <see href="http://vocab.datex.org/terms#PointExtended"></see></summary>
-    let PointExtended =
-        Namespaced_IRI.parse _namespace_name "PointExtended" |> NamespacedName
-
+    let PointExtended = _prefix "PointExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#description"></see>
     /// </summary>
-    let description =
-        Namespaced_IRI.parse _namespace_name "description" |> NamespacedName
-
+    let description = _prefix "description"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#junction"></see>
     /// </summary>
-    let junction = Namespaced_IRI.parse _namespace_name "junction" |> NamespacedName
-
+    let junction = _prefix "junction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pollutantConcentration"></see>
     /// </summary>
-    let pollutantConcentration =
-        Namespaced_IRI.parse _namespace_name "pollutantConcentration" |> NamespacedName
-
+    let pollutantConcentration = _prefix "pollutantConcentration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pollutantType"></see>
     /// </summary>
-    let pollutantType =
-        Namespaced_IRI.parse _namespace_name "pollutantType" |> NamespacedName
-
+    let pollutantType = _prefix "pollutantType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pollutionExtension"></see>
     /// </summary>
-    let pollutionExtension =
-        Namespaced_IRI.parse _namespace_name "pollutionExtension" |> NamespacedName
-
+    let pollutionExtension = _prefix "pollutionExtension"
     /// <summary>
     /// Measurements of atmospheric pollution.
     /// <see href="http://vocab.datex.org/terms#PollutionInformation"></see></summary>
-    let PollutionInformation =
-        Namespaced_IRI.parse _namespace_name "PollutionInformation" |> NamespacedName
-
+    let PollutionInformation = _prefix "PollutionInformation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pollution"></see>
     /// </summary>
-    let pollution = Namespaced_IRI.parse _namespace_name "pollution" |> NamespacedName
-
+    let pollution = _prefix "pollution"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pollutionInformationExtension"></see>
     /// </summary>
-    let pollutionInformationExtension =
-        Namespaced_IRI.parse _namespace_name "pollutionInformationExtension" |> NamespacedName
-
+    let pollutionInformationExtension = _prefix "pollutionInformationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PolygonAreaIndexPointCoordinates"></see>
     /// </summary>
-    let _PolygonAreaIndexPointCoordinates =
-        Namespaced_IRI.parse _namespace_name "_PolygonAreaIndexPointCoordinates" |> NamespacedName
-
+    let _PolygonAreaIndexPointCoordinates = _prefix "_PolygonAreaIndexPointCoordinates"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#polygonAreaExtension"></see>
     /// </summary>
-    let polygonAreaExtension =
-        Namespaced_IRI.parse _namespace_name "polygonAreaExtension" |> NamespacedName
-
+    let polygonAreaExtension = _prefix "polygonAreaExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sectionName"></see>
     /// </summary>
-    let sectionName =
-        Namespaced_IRI.parse _namespace_name "sectionName" |> NamespacedName
-
+    let sectionName = _prefix "sectionName"
     /// <summary>
     /// Any environmental conditions which may be affecting the driving conditions on the road.
     /// <see href="http://vocab.datex.org/terms#PoorEnvironmentConditions"></see></summary>
-    let PoorEnvironmentConditions =
-        Namespaced_IRI.parse _namespace_name "PoorEnvironmentConditions" |> NamespacedName
+    let PoorEnvironmentConditions = _prefix "PoorEnvironmentConditions"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#poorEnvironmentConditionsExtension"></see>
     /// </summary>
     let poorEnvironmentConditionsExtension =
-        Namespaced_IRI.parse _namespace_name "poorEnvironmentConditionsExtension" |> NamespacedName
+        _prefix "poorEnvironmentConditionsExtension"
 
     /// <summary>
     /// The type of environment condition which is affecting driving conditions.
     /// <see href="http://vocab.datex.org/terms#poorEnvironmentType"></see></summary>
-    let poorEnvironmentType =
-        Namespaced_IRI.parse _namespace_name "poorEnvironmentType" |> NamespacedName
-
+    let poorEnvironmentType = _prefix "poorEnvironmentType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#precipitationDetail"></see>
     /// </summary>
-    let precipitationDetail =
-        Namespaced_IRI.parse _namespace_name "precipitationDetail" |> NamespacedName
-
+    let precipitationDetail = _prefix "precipitationDetail"
     /// <summary>
     /// Details of precipitation (rain, snow etc.).
     /// <see href="http://vocab.datex.org/terms#PrecipitationDetail"></see></summary>
-    let PrecipitationDetail =
-        Namespaced_IRI.parse _namespace_name "PrecipitationDetail" |> NamespacedName
-
+    let PrecipitationDetail = _prefix "PrecipitationDetail"
     /// <summary>
     /// A value of temperature expressed in degrees Celsius.
     /// <see href="http://vocab.datex.org/terms#temperature"></see></summary>
-    let temperature =
-        Namespaced_IRI.parse _namespace_name "temperature" |> NamespacedName
-
+    let temperature = _prefix "temperature"
     /// <summary>
     /// Details of atmospheric temperature.
     /// <see href="http://vocab.datex.org/terms#Temperature"></see></summary>
-    let Temperature =
-        Namespaced_IRI.parse _namespace_name "Temperature" |> NamespacedName
-
+    let Temperature = _prefix "Temperature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#visibility"></see>
     /// </summary>
-    let visibility = Namespaced_IRI.parse _namespace_name "visibility" |> NamespacedName
+    let visibility = _prefix "visibility"
     /// <summary>
     /// Details of atmospheric visibility.
     /// <see href="http://vocab.datex.org/terms#Visibility"></see></summary>
-    let Visibility = Namespaced_IRI.parse _namespace_name "Visibility" |> NamespacedName
+    let Visibility = _prefix "Visibility"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#wind"></see>
     /// </summary>
-    let wind = Namespaced_IRI.parse _namespace_name "wind" |> NamespacedName
+    let wind = _prefix "wind"
     /// <summary>
     /// Wind conditions on the road.
     /// <see href="http://vocab.datex.org/terms#Wind"></see></summary>
-    let Wind = Namespaced_IRI.parse _namespace_name "Wind" |> NamespacedName
-
+    let Wind = _prefix "Wind"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#depositionDepth"></see>
     /// </summary>
-    let depositionDepth =
-        Namespaced_IRI.parse _namespace_name "depositionDepth" |> NamespacedName
-
+    let depositionDepth = _prefix "depositionDepth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#precipitationDetailExtension"></see>
     /// </summary>
-    let precipitationDetailExtension =
-        Namespaced_IRI.parse _namespace_name "precipitationDetailExtension" |> NamespacedName
-
+    let precipitationDetailExtension = _prefix "precipitationDetailExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#precipitationIntensity"></see>
     /// </summary>
-    let precipitationIntensity =
-        Namespaced_IRI.parse _namespace_name "precipitationIntensity" |> NamespacedName
-
+    let precipitationIntensity = _prefix "precipitationIntensity"
     /// <summary>
     /// A measured or calculated value of the accumulation rate of precipitation.
     /// <see href="http://vocab.datex.org/terms#PrecipitationIntensityValue"></see></summary>
-    let PrecipitationIntensityValue =
-        Namespaced_IRI.parse _namespace_name "PrecipitationIntensityValue" |> NamespacedName
-
+    let PrecipitationIntensityValue = _prefix "PrecipitationIntensityValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#precipitationType"></see>
     /// </summary>
-    let precipitationType =
-        Namespaced_IRI.parse _namespace_name "precipitationType" |> NamespacedName
-
+    let precipitationType = _prefix "precipitationType"
     /// <summary>
     /// Measurements of precipitation.
     /// <see href="http://vocab.datex.org/terms#PrecipitationInformation"></see></summary>
-    let PrecipitationInformation =
-        Namespaced_IRI.parse _namespace_name "PrecipitationInformation" |> NamespacedName
-
+    let PrecipitationInformation = _prefix "PrecipitationInformation"
     /// <summary>
     /// Indication of whether precipitation is present or not. True indicates there is no precipitation.
     /// <see href="http://vocab.datex.org/terms#noPrecipitation"></see></summary>
-    let noPrecipitation =
-        Namespaced_IRI.parse _namespace_name "noPrecipitation" |> NamespacedName
-
+    let noPrecipitation = _prefix "noPrecipitation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#precipitationInformationExtension"></see>
     /// </summary>
-    let precipitationInformationExtension =
-        Namespaced_IRI.parse _namespace_name "precipitationInformationExtension" |> NamespacedName
-
+    let precipitationInformationExtension = _prefix "precipitationInformationExtension"
     /// <summary>
     /// A value of precipitation intensity expressed in units of millimetres per hour.
     /// <see href="http://vocab.datex.org/terms#millimetresPerHourIntensity"></see></summary>
-    let millimetresPerHourIntensity =
-        Namespaced_IRI.parse _namespace_name "millimetresPerHourIntensity" |> NamespacedName
+    let millimetresPerHourIntensity = _prefix "millimetresPerHourIntensity"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#precipitationIntensityValueExtension"></see>
     /// </summary>
     let precipitationIntensityValueExtension =
-        Namespaced_IRI.parse _namespace_name "precipitationIntensityValueExtension" |> NamespacedName
+        _prefix "precipitationIntensityValueExtension"
 
     /// <summary>
     /// An identifiable versioned instance of a predefined itinerary.
     /// <see href="http://vocab.datex.org/terms#PredefinedItinerary"></see></summary>
-    let PredefinedItinerary =
-        Namespaced_IRI.parse _namespace_name "PredefinedItinerary" |> NamespacedName
-
+    let PredefinedItinerary = _prefix "PredefinedItinerary"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedItineraryExtension"></see>
     /// </summary>
-    let predefinedItineraryExtension =
-        Namespaced_IRI.parse _namespace_name "predefinedItineraryExtension" |> NamespacedName
-
+    let predefinedItineraryExtension = _prefix "predefinedItineraryExtension"
     /// <summary>
     /// A name assigned to the predefined itinerary.
     /// <see href="http://vocab.datex.org/terms#predefinedItineraryName"></see></summary>
-    let predefinedItineraryName =
-        Namespaced_IRI.parse _namespace_name "predefinedItineraryName" |> NamespacedName
-
+    let predefinedItineraryName = _prefix "predefinedItineraryName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedLocation"></see>
     /// </summary>
-    let predefinedLocation =
-        Namespaced_IRI.parse _namespace_name "predefinedLocation" |> NamespacedName
+    let predefinedLocation = _prefix "predefinedLocation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_PredefinedItineraryIndexPredefinedLocation"></see>
     /// </summary>
     let _PredefinedItineraryIndexPredefinedLocation =
-        Namespaced_IRI.parse _namespace_name "_PredefinedItineraryIndexPredefinedLocation" |> NamespacedName
+        _prefix "_PredefinedItineraryIndexPredefinedLocation"
 
     /// <summary>
     /// A container which may comprise the definition of a predefined itinerary, non ordered group of locations or single location.
     /// <see href="http://vocab.datex.org/terms#PredefinedLocationContainer"></see></summary>
-    let PredefinedLocationContainer =
-        Namespaced_IRI.parse _namespace_name "PredefinedLocationContainer" |> NamespacedName
-
+    let PredefinedLocationContainer = _prefix "PredefinedLocationContainer"
     /// <summary>
     /// An identifiable versioned instance of a single predefined location.
     /// <see href="http://vocab.datex.org/terms#PredefinedLocation"></see></summary>
-    let PredefinedLocation =
-        Namespaced_IRI.parse _namespace_name "PredefinedLocation" |> NamespacedName
-
+    let PredefinedLocation = _prefix "PredefinedLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedLocationExtension"></see>
     /// </summary>
-    let predefinedLocationExtension =
-        Namespaced_IRI.parse _namespace_name "predefinedLocationExtension" |> NamespacedName
-
+    let predefinedLocationExtension = _prefix "predefinedLocationExtension"
     /// <summary>
     /// A name assigned to the predefined location (e.g. extracted out of the network operator's gazetteer).
     /// <see href="http://vocab.datex.org/terms#predefinedLocationName"></see></summary>
-    let predefinedLocationName =
-        Namespaced_IRI.parse _namespace_name "predefinedLocationName" |> NamespacedName
+    let predefinedLocationName = _prefix "predefinedLocationName"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedLocationContainerExtension"></see>
     /// </summary>
     let predefinedLocationContainerExtension =
-        Namespaced_IRI.parse _namespace_name "predefinedLocationContainerExtension" |> NamespacedName
+        _prefix "predefinedLocationContainerExtension"
 
     /// <summary>
     /// A publication containing one or more groups of predefined locations organised either as litineraries, non ordered groups or as individual locations.
     /// <see href="http://vocab.datex.org/terms#PredefinedLocationsPublication"></see></summary>
-    let PredefinedLocationsPublication =
-        Namespaced_IRI.parse _namespace_name "PredefinedLocationsPublication" |> NamespacedName
-
+    let PredefinedLocationsPublication = _prefix "PredefinedLocationsPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedLocationContainer"></see>
     /// </summary>
-    let predefinedLocationContainer =
-        Namespaced_IRI.parse _namespace_name "predefinedLocationContainer" |> NamespacedName
+    let predefinedLocationContainer = _prefix "predefinedLocationContainer"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedLocationsPublicationExtension"></see>
     /// </summary>
     let predefinedLocationsPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "predefinedLocationsPublicationExtension" |> NamespacedName
+        _prefix "predefinedLocationsPublicationExtension"
 
     /// <summary>
     /// An identifiable versioned instance of a predefined group of non ordered locations (i.e. more than one).
     /// <see href="http://vocab.datex.org/terms#PredefinedNonOrderedLocationGroup"></see></summary>
-    let PredefinedNonOrderedLocationGroup =
-        Namespaced_IRI.parse _namespace_name "PredefinedNonOrderedLocationGroup" |> NamespacedName
+    let PredefinedNonOrderedLocationGroup = _prefix "PredefinedNonOrderedLocationGroup"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#predefinedNonOrderedLocationGroupExtension"></see>
     /// </summary>
     let predefinedNonOrderedLocationGroupExtension =
-        Namespaced_IRI.parse _namespace_name "predefinedNonOrderedLocationGroupExtension" |> NamespacedName
+        _prefix "predefinedNonOrderedLocationGroupExtension"
 
     /// <summary>
     /// A name assigned to the predefined group of non ordered locations.
     /// <see href="http://vocab.datex.org/terms#predefinedNonOrderedLocationGroupName"></see></summary>
     let predefinedNonOrderedLocationGroupName =
-        Namespaced_IRI.parse _namespace_name "predefinedNonOrderedLocationGroupName" |> NamespacedName
+        _prefix "predefinedNonOrderedLocationGroupName"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicEventExtension"></see>
     /// </summary>
-    let publicEventExtension =
-        Namespaced_IRI.parse _namespace_name "publicEventExtension" |> NamespacedName
-
+    let publicEventExtension = _prefix "publicEventExtension"
     /// <summary>
     /// Type of public event which could disrupt traffic.
     /// <see href="http://vocab.datex.org/terms#publicEventType"></see></summary>
-    let publicEventType =
-        Namespaced_IRI.parse _namespace_name "publicEventType" |> NamespacedName
-
+    let publicEventType = _prefix "publicEventType"
     /// <summary>
     /// Specification of the public holiday type in a specific country or region. Use this component only when specialDayType is set to 'publicHoliday' or 'holidays'.
     /// <see href="http://vocab.datex.org/terms#PublicHoliday"></see></summary>
-    let PublicHoliday =
-        Namespaced_IRI.parse _namespace_name "PublicHoliday" |> NamespacedName
-
+    let PublicHoliday = _prefix "PublicHoliday"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#countrySubdivision"></see>
     /// </summary>
-    let countrySubdivision =
-        Namespaced_IRI.parse _namespace_name "countrySubdivision" |> NamespacedName
-
+    let countrySubdivision = _prefix "countrySubdivision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicHolidayExtension"></see>
     /// </summary>
-    let publicHolidayExtension =
-        Namespaced_IRI.parse _namespace_name "publicHolidayExtension" |> NamespacedName
-
+    let publicHolidayExtension = _prefix "publicHolidayExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicHolidayName"></see>
     /// </summary>
-    let publicHolidayName =
-        Namespaced_IRI.parse _namespace_name "publicHolidayName" |> NamespacedName
-
+    let publicHolidayName = _prefix "publicHolidayName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicHolidayType"></see>
     /// </summary>
-    let publicHolidayType =
-        Namespaced_IRI.parse _namespace_name "publicHolidayType" |> NamespacedName
-
+    let publicHolidayType = _prefix "publicHolidayType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#region"></see>
     /// </summary>
-    let region = Namespaced_IRI.parse _namespace_name "region" |> NamespacedName
+    let region = _prefix "region"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#colourName"></see>
     /// </summary>
-    let colourName = Namespaced_IRI.parse _namespace_name "colourName" |> NamespacedName
-
+    let colourName = _prefix "colourName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#rgbBlueValue"></see>
     /// </summary>
-    let rgbBlueValue =
-        Namespaced_IRI.parse _namespace_name "rgbBlueValue" |> NamespacedName
-
+    let rgbBlueValue = _prefix "rgbBlueValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#rgbColourExtension"></see>
     /// </summary>
-    let rgbColourExtension =
-        Namespaced_IRI.parse _namespace_name "rgbColourExtension" |> NamespacedName
-
+    let rgbColourExtension = _prefix "rgbColourExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#rgbGreenValue"></see>
     /// </summary>
-    let rgbGreenValue =
-        Namespaced_IRI.parse _namespace_name "rgbGreenValue" |> NamespacedName
-
+    let rgbGreenValue = _prefix "rgbGreenValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#rgbRedValue"></see>
     /// </summary>
-    let rgbRedValue =
-        Namespaced_IRI.parse _namespace_name "rgbRedValue" |> NamespacedName
-
+    let rgbRedValue = _prefix "rgbRedValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#Reference"></see>
     /// </summary>
-    let Reference = Namespaced_IRI.parse _namespace_name "Reference" |> NamespacedName
-
+    let Reference = _prefix "Reference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referenceSettingsExtension"></see>
     /// </summary>
-    let referenceSettingsExtension =
-        Namespaced_IRI.parse _namespace_name "referenceSettingsExtension" |> NamespacedName
-
+    let referenceSettingsExtension = _prefix "referenceSettingsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficStatusDefault"></see>
     /// </summary>
-    let trafficStatusDefault =
-        Namespaced_IRI.parse _namespace_name "trafficStatusDefault" |> NamespacedName
-
+    let trafficStatusDefault = _prefix "trafficStatusDefault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referentDescription"></see>
     /// </summary>
-    let referentDescription =
-        Namespaced_IRI.parse _namespace_name "referentDescription" |> NamespacedName
-
+    let referentDescription = _prefix "referentDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referentExtension"></see>
     /// </summary>
-    let referentExtension =
-        Namespaced_IRI.parse _namespace_name "referentExtension" |> NamespacedName
-
+    let referentExtension = _prefix "referentExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referentIdentifier"></see>
     /// </summary>
-    let referentIdentifier =
-        Namespaced_IRI.parse _namespace_name "referentIdentifier" |> NamespacedName
-
+    let referentIdentifier = _prefix "referentIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referentName"></see>
     /// </summary>
-    let referentName =
-        Namespaced_IRI.parse _namespace_name "referentName" |> NamespacedName
-
+    let referentName = _prefix "referentName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referentType"></see>
     /// </summary>
-    let referentType =
-        Namespaced_IRI.parse _namespace_name "referentType" |> NamespacedName
-
+    let referentType = _prefix "referentType"
     /// <summary>
     /// Rerouting management action that is issued by the network/road operator.
     /// <see href="http://vocab.datex.org/terms#ReroutingManagement"></see></summary>
-    let ReroutingManagement =
-        Namespaced_IRI.parse _namespace_name "ReroutingManagement" |> NamespacedName
-
+    let ReroutingManagement = _prefix "ReroutingManagement"
     /// <summary>
     /// The definition of the alternative route (rerouting) specified as an ordered set of locations (itinerary) which may be specific to one or more defined destinations.
     /// <see href="http://vocab.datex.org/terms#alternativeRoute"></see></summary>
-    let alternativeRoute =
-        Namespaced_IRI.parse _namespace_name "alternativeRoute" |> NamespacedName
-
+    let alternativeRoute = _prefix "alternativeRoute"
     /// <summary>
     /// The specified entry on to another road at which the alternative route commences.
     /// <see href="http://vocab.datex.org/terms#entry"></see></summary>
-    let entry = Namespaced_IRI.parse _namespace_name "entry" |> NamespacedName
+    let entry = _prefix "entry"
     /// <summary>
     /// The specified exit from the normal route/road at which the alternative route commences.
     /// <see href="http://vocab.datex.org/terms#exit"></see></summary>
-    let exit = Namespaced_IRI.parse _namespace_name "exit" |> NamespacedName
-
+    let exit = _prefix "exit"
     /// <summary>
     /// A description of the rerouting itinerary.
     /// <see href="http://vocab.datex.org/terms#reroutingItineraryDescription"></see></summary>
-    let reroutingItineraryDescription =
-        Namespaced_IRI.parse _namespace_name "reroutingItineraryDescription" |> NamespacedName
-
+    let reroutingItineraryDescription = _prefix "reroutingItineraryDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#reroutingManagementExtension"></see>
     /// </summary>
-    let reroutingManagementExtension =
-        Namespaced_IRI.parse _namespace_name "reroutingManagementExtension" |> NamespacedName
-
+    let reroutingManagementExtension = _prefix "reroutingManagementExtension"
     /// <summary>
     /// Type of rerouting management action instigated by operator.
     /// <see href="http://vocab.datex.org/terms#reroutingManagementType"></see></summary>
-    let reroutingManagementType =
-        Namespaced_IRI.parse _namespace_name "reroutingManagementType" |> NamespacedName
-
+    let reroutingManagementType = _prefix "reroutingManagementType"
     /// <summary>
     /// The intersecting road or the junction at which the alternative route commences.
     /// <see href="http://vocab.datex.org/terms#roadOrJunctionNumber"></see></summary>
-    let roadOrJunctionNumber =
-        Namespaced_IRI.parse _namespace_name "roadOrJunctionNumber" |> NamespacedName
-
+    let roadOrJunctionNumber = _prefix "roadOrJunctionNumber"
     /// <summary>
     /// Indication of whether the rerouting is signed.
     /// <see href="http://vocab.datex.org/terms#signedRerouting"></see></summary>
-    let signedRerouting =
-        Namespaced_IRI.parse _namespace_name "signedRerouting" |> NamespacedName
-
+    let signedRerouting = _prefix "signedRerouting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceToThisRoad"></see>
     /// </summary>
-    let distanceToThisRoad =
-        Namespaced_IRI.parse _namespace_name "distanceToThisRoad" |> NamespacedName
-
+    let distanceToThisRoad = _prefix "distanceToThisRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nameOfRoad"></see>
     /// </summary>
-    let nameOfRoad = Namespaced_IRI.parse _namespace_name "nameOfRoad" |> NamespacedName
-
+    let nameOfRoad = _prefix "nameOfRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadDestination"></see>
     /// </summary>
-    let roadDestination =
-        Namespaced_IRI.parse _namespace_name "roadDestination" |> NamespacedName
-
+    let roadDestination = _prefix "roadDestination"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadExtension"></see>
     /// </summary>
-    let roadExtension =
-        Namespaced_IRI.parse _namespace_name "roadExtension" |> NamespacedName
-
+    let roadExtension = _prefix "roadExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadIdentifier"></see>
     /// </summary>
-    let roadIdentifier =
-        Namespaced_IRI.parse _namespace_name "roadIdentifier" |> NamespacedName
-
+    let roadIdentifier = _prefix "roadIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadOrigination"></see>
     /// </summary>
-    let roadOrigination =
-        Namespaced_IRI.parse _namespace_name "roadOrigination" |> NamespacedName
-
+    let roadOrigination = _prefix "roadOrigination"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#typeOfRoad"></see>
     /// </summary>
-    let typeOfRoad = Namespaced_IRI.parse _namespace_name "typeOfRoad" |> NamespacedName
-
+    let typeOfRoad = _prefix "typeOfRoad"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadConditionsExtension"></see>
     /// </summary>
-    let roadConditionsExtension =
-        Namespaced_IRI.parse _namespace_name "roadConditionsExtension" |> NamespacedName
-
+    let roadConditionsExtension = _prefix "roadConditionsExtension"
     /// <summary>
     /// A road node as part of the specialised road identified by the name of a junctionon on this road.
     /// <see href="http://vocab.datex.org/terms#RoadNode"></see></summary>
-    let RoadNode = Namespaced_IRI.parse _namespace_name "RoadNode" |> NamespacedName
-
+    let RoadNode = _prefix "RoadNode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadNodeExtension"></see>
     /// </summary>
-    let roadNodeExtension =
-        Namespaced_IRI.parse _namespace_name "roadNodeExtension" |> NamespacedName
-
+    let roadNodeExtension = _prefix "roadNodeExtension"
     /// <summary>
     /// Details of disruption to normal road operator services
     /// <see href="http://vocab.datex.org/terms#RoadOperatorServiceDisruption"></see></summary>
-    let RoadOperatorServiceDisruption =
-        Namespaced_IRI.parse _namespace_name "RoadOperatorServiceDisruption" |> NamespacedName
+    let RoadOperatorServiceDisruption = _prefix "RoadOperatorServiceDisruption"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadOperatorServiceDisruptionExtension"></see>
     /// </summary>
     let roadOperatorServiceDisruptionExtension =
-        Namespaced_IRI.parse _namespace_name "roadOperatorServiceDisruptionExtension" |> NamespacedName
+        _prefix "roadOperatorServiceDisruptionExtension"
 
     /// <summary>
     /// The type of road operator service which is disrupted.
     /// <see href="http://vocab.datex.org/terms#roadOperatorServiceDisruptionType"></see></summary>
-    let roadOperatorServiceDisruptionType =
-        Namespaced_IRI.parse _namespace_name "roadOperatorServiceDisruptionType" |> NamespacedName
-
+    let roadOperatorServiceDisruptionType = _prefix "roadOperatorServiceDisruptionType"
     /// <summary>
     /// The minimum number of persons required in a vehicle in order for it to be allowed to transit the specified road section.
     /// <see href="http://vocab.datex.org/terms#minimumCarOccupancy"></see></summary>
-    let minimumCarOccupancy =
-        Namespaced_IRI.parse _namespace_name "minimumCarOccupancy" |> NamespacedName
+    let minimumCarOccupancy = _prefix "minimumCarOccupancy"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadOrCarriagewayOrLaneManagementExtension"></see>
     /// </summary>
     let roadOrCarriagewayOrLaneManagementExtension =
-        Namespaced_IRI.parse _namespace_name "roadOrCarriagewayOrLaneManagementExtension" |> NamespacedName
+        _prefix "roadOrCarriagewayOrLaneManagementExtension"
 
     /// <summary>
     /// Type of road, carriageway or lane management action instigated by operator.
     /// <see href="http://vocab.datex.org/terms#roadOrCarriagewayOrLaneManagementType"></see></summary>
     let roadOrCarriagewayOrLaneManagementType =
-        Namespaced_IRI.parse _namespace_name "roadOrCarriagewayOrLaneManagementType" |> NamespacedName
+        _prefix "roadOrCarriagewayOrLaneManagementType"
 
     /// <summary>
     /// Measurements of road surface conditions which are related to the weather.
     /// <see href="http://vocab.datex.org/terms#RoadSurfaceConditionInformation"></see></summary>
-    let RoadSurfaceConditionInformation =
-        Namespaced_IRI.parse _namespace_name "RoadSurfaceConditionInformation" |> NamespacedName
+    let RoadSurfaceConditionInformation = _prefix "RoadSurfaceConditionInformation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadSurfaceConditionInformationExtension"></see>
     /// </summary>
     let roadSurfaceConditionInformationExtension =
-        Namespaced_IRI.parse _namespace_name "roadSurfaceConditionInformationExtension" |> NamespacedName
+        _prefix "roadSurfaceConditionInformationExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadSurfaceConditionMeasurements"></see>
     /// </summary>
-    let roadSurfaceConditionMeasurements =
-        Namespaced_IRI.parse _namespace_name "roadSurfaceConditionMeasurements" |> NamespacedName
-
+    let roadSurfaceConditionMeasurements = _prefix "roadSurfaceConditionMeasurements"
     /// <summary>
     /// Measurements of the road surface condition which relate specifically to the weather.
     /// <see href="http://vocab.datex.org/terms#RoadSurfaceConditionMeasurements"></see></summary>
-    let RoadSurfaceConditionMeasurements =
-        Namespaced_IRI.parse _namespace_name "RoadSurfaceConditionMeasurements" |> NamespacedName
-
+    let RoadSurfaceConditionMeasurements = _prefix "RoadSurfaceConditionMeasurements"
     /// <summary>
     /// The type of road surface condition that is related to the weather which is affecting the driving conditions.
     /// <see href="http://vocab.datex.org/terms#weatherRelatedRoadConditionType"></see></summary>
-    let weatherRelatedRoadConditionType =
-        Namespaced_IRI.parse _namespace_name "weatherRelatedRoadConditionType" |> NamespacedName
-
+    let weatherRelatedRoadConditionType = _prefix "weatherRelatedRoadConditionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#deIcingApplicationRate"></see>
     /// </summary>
-    let deIcingApplicationRate =
-        Namespaced_IRI.parse _namespace_name "deIcingApplicationRate" |> NamespacedName
-
+    let deIcingApplicationRate = _prefix "deIcingApplicationRate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#deIcingConcentration"></see>
     /// </summary>
-    let deIcingConcentration =
-        Namespaced_IRI.parse _namespace_name "deIcingConcentration" |> NamespacedName
-
+    let deIcingConcentration = _prefix "deIcingConcentration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#depthOfSnow"></see>
     /// </summary>
-    let depthOfSnow =
-        Namespaced_IRI.parse _namespace_name "depthOfSnow" |> NamespacedName
-
+    let depthOfSnow = _prefix "depthOfSnow"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#protectionTemperature"></see>
     /// </summary>
-    let protectionTemperature =
-        Namespaced_IRI.parse _namespace_name "protectionTemperature" |> NamespacedName
-
+    let protectionTemperature = _prefix "protectionTemperature"
     /// <summary>
     /// A measured or calculated value of temperature.
     /// <see href="http://vocab.datex.org/terms#TemperatureValue"></see></summary>
-    let TemperatureValue =
-        Namespaced_IRI.parse _namespace_name "TemperatureValue" |> NamespacedName
+    let TemperatureValue = _prefix "TemperatureValue"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadSurfaceConditionMeasurementsExtension"></see>
     /// </summary>
     let roadSurfaceConditionMeasurementsExtension =
-        Namespaced_IRI.parse _namespace_name "roadSurfaceConditionMeasurementsExtension" |> NamespacedName
+        _prefix "roadSurfaceConditionMeasurementsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadSurfaceTemperature"></see>
     /// </summary>
-    let roadSurfaceTemperature =
-        Namespaced_IRI.parse _namespace_name "roadSurfaceTemperature" |> NamespacedName
-
+    let roadSurfaceTemperature = _prefix "roadSurfaceTemperature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#waterFilmThickness"></see>
     /// </summary>
-    let waterFilmThickness =
-        Namespaced_IRI.parse _namespace_name "waterFilmThickness" |> NamespacedName
-
+    let waterFilmThickness = _prefix "waterFilmThickness"
     /// <summary>
     /// Details of road side assistance required or being given.
     /// <see href="http://vocab.datex.org/terms#RoadsideAssistance"></see></summary>
-    let RoadsideAssistance =
-        Namespaced_IRI.parse _namespace_name "RoadsideAssistance" |> NamespacedName
-
+    let RoadsideAssistance = _prefix "RoadsideAssistance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadsideAssistanceExtension"></see>
     /// </summary>
-    let roadsideAssistanceExtension =
-        Namespaced_IRI.parse _namespace_name "roadsideAssistanceExtension" |> NamespacedName
-
+    let roadsideAssistanceExtension = _prefix "roadsideAssistanceExtension"
     /// <summary>
     /// Indicates the nature of the road side assistance that will be, is or has been provided.
     /// <see href="http://vocab.datex.org/terms#roadsideAssistanceType"></see></summary>
-    let roadsideAssistanceType =
-        Namespaced_IRI.parse _namespace_name "roadsideAssistanceType" |> NamespacedName
-
+    let roadsideAssistanceType = _prefix "roadsideAssistanceType"
     /// <summary>
     /// Details of disruption to normal roadside services (e.g. specific services at a service area).
     /// <see href="http://vocab.datex.org/terms#RoadsideServiceDisruption"></see></summary>
-    let RoadsideServiceDisruption =
-        Namespaced_IRI.parse _namespace_name "RoadsideServiceDisruption" |> NamespacedName
+    let RoadsideServiceDisruption = _prefix "RoadsideServiceDisruption"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadsideServiceDisruptionExtension"></see>
     /// </summary>
     let roadsideServiceDisruptionExtension =
-        Namespaced_IRI.parse _namespace_name "roadsideServiceDisruptionExtension" |> NamespacedName
+        _prefix "roadsideServiceDisruptionExtension"
 
     /// <summary>
     /// The type of roadside service which is disrupted.
     /// <see href="http://vocab.datex.org/terms#roadsideServiceDisruptionType"></see></summary>
-    let roadsideServiceDisruptionType =
-        Namespaced_IRI.parse _namespace_name "roadsideServiceDisruptionType" |> NamespacedName
-
+    let roadsideServiceDisruptionType = _prefix "roadsideServiceDisruptionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maintenanceVehicles"></see>
     /// </summary>
-    let maintenanceVehicles =
-        Namespaced_IRI.parse _namespace_name "maintenanceVehicles" |> NamespacedName
-
+    let maintenanceVehicles = _prefix "maintenanceVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#mobility"></see>
     /// </summary>
-    let mobility = Namespaced_IRI.parse _namespace_name "mobility" |> NamespacedName
-
+    let mobility = _prefix "mobility"
     /// <summary>
     /// Indicates in general terms the expected duration of the roadworks.
     /// <see href="http://vocab.datex.org/terms#roadworksDuration"></see></summary>
-    let roadworksDuration =
-        Namespaced_IRI.parse _namespace_name "roadworksDuration" |> NamespacedName
-
+    let roadworksDuration = _prefix "roadworksDuration"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#roadworksExtension"></see>
     /// </summary>
-    let roadworksExtension =
-        Namespaced_IRI.parse _namespace_name "roadworksExtension" |> NamespacedName
-
+    let roadworksExtension = _prefix "roadworksExtension"
     /// <summary>
     /// Indication of the scale of the roadworks in terms of the traffic disruption they are likely to cause.
     /// <see href="http://vocab.datex.org/terms#roadworksScale"></see></summary>
-    let roadworksScale =
-        Namespaced_IRI.parse _namespace_name "roadworksScale" |> NamespacedName
-
+    let roadworksScale = _prefix "roadworksScale"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subjects"></see>
     /// </summary>
-    let subjects = Namespaced_IRI.parse _namespace_name "subjects" |> NamespacedName
+    let subjects = _prefix "subjects"
     /// <summary>
     /// The subjects with which the roadworks are associated.
     /// <see href="http://vocab.datex.org/terms#Subjects"></see></summary>
-    let Subjects = Namespaced_IRI.parse _namespace_name "Subjects" |> NamespacedName
-
+    let Subjects = _prefix "Subjects"
     /// <summary>
     /// Indicates that the road section where the roadworks are located is under traffic or not under traffic. 'True' indicates the road is under traffic.
     /// <see href="http://vocab.datex.org/terms#underTraffic"></see></summary>
-    let underTraffic =
-        Namespaced_IRI.parse _namespace_name "underTraffic" |> NamespacedName
-
+    let underTraffic = _prefix "underTraffic"
     /// <summary>
     /// Indication of whether the roadworks are considered to be urgent whereby emergency work is being, or needs to be, undertaken to mitigate safety concerns. 'True' indicates they are urgent.
     /// <see href="http://vocab.datex.org/terms#urgentRoadworks"></see></summary>
-    let urgentRoadworks =
-        Namespaced_IRI.parse _namespace_name "urgentRoadworks" |> NamespacedName
-
+    let urgentRoadworks = _prefix "urgentRoadworks"
     /// <summary>
     /// One type of service facility that is available on the parking site or located next to it. You can specify the number of this service facility type (e.g. 5 restaurants) as well as the number of subitems (e.g. 200 restaurant places).
     /// <see href="http://vocab.datex.org/terms#ServiceFacility"></see></summary>
-    let ServiceFacility =
-        Namespaced_IRI.parse _namespace_name "ServiceFacility" |> NamespacedName
-
+    let ServiceFacility = _prefix "ServiceFacility"
     /// <summary>
     /// If the service facility is not located on the parking site itself, its distance can be specified here in metres.
     /// <see href="http://vocab.datex.org/terms#distanceFromParkingSite"></see></summary>
-    let distanceFromParkingSite =
-        Namespaced_IRI.parse _namespace_name "distanceFromParkingSite" |> NamespacedName
-
+    let distanceFromParkingSite = _prefix "distanceFromParkingSite"
     /// <summary>
     /// The quantity of sub items to this service facility type, e.g. the total number of restaurant places or fuel dispensers etc.
     /// <see href="http://vocab.datex.org/terms#numberOfSubitems"></see></summary>
-    let numberOfSubitems =
-        Namespaced_IRI.parse _namespace_name "numberOfSubitems" |> NamespacedName
-
+    let numberOfSubitems = _prefix "numberOfSubitems"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#serviceFacilityExtension"></see>
     /// </summary>
-    let serviceFacilityExtension =
-        Namespaced_IRI.parse _namespace_name "serviceFacilityExtension" |> NamespacedName
-
+    let serviceFacilityExtension = _prefix "serviceFacilityExtension"
     /// <summary>
     /// One type of service, that is available on the parking site.
     /// <see href="http://vocab.datex.org/terms#serviceFacilityType"></see></summary>
-    let serviceFacilityType =
-        Namespaced_IRI.parse _namespace_name "serviceFacilityType" |> NamespacedName
-
+    let serviceFacilityType = _prefix "serviceFacilityType"
     /// <summary>
     /// Provides information on message signs and the information currently displayed.
     /// <see href="http://vocab.datex.org/terms#SignSetting"></see></summary>
-    let SignSetting =
-        Namespaced_IRI.parse _namespace_name "SignSetting" |> NamespacedName
-
+    let SignSetting = _prefix "SignSetting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#signSettingExtension"></see>
     /// </summary>
-    let signSettingExtension =
-        Namespaced_IRI.parse _namespace_name "signSettingExtension" |> NamespacedName
-
+    let signSettingExtension = _prefix "signSettingExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSetting"></see>
     /// </summary>
-    let vmsSetting = Namespaced_IRI.parse _namespace_name "vmsSetting" |> NamespacedName
+    let vmsSetting = _prefix "vmsSetting"
     /// <summary>
     /// Provides information on variable message signs and the information currently displayed.
     /// <see href="http://vocab.datex.org/terms#VmsSetting"></see></summary>
-    let VmsSetting = Namespaced_IRI.parse _namespace_name "VmsSetting" |> NamespacedName
-
+    let VmsSetting = _prefix "VmsSetting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measuredValue"></see>
     /// </summary>
-    let measuredValue =
-        Namespaced_IRI.parse _namespace_name "measuredValue" |> NamespacedName
+    let measuredValue = _prefix "measuredValue"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_SiteMeasurementsIndexMeasuredValue"></see>
     /// </summary>
     let _SiteMeasurementsIndexMeasuredValue =
-        Namespaced_IRI.parse _namespace_name "_SiteMeasurementsIndexMeasuredValue" |> NamespacedName
+        _prefix "_SiteMeasurementsIndexMeasuredValue"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementSiteReference"></see>
     /// </summary>
-    let measurementSiteReference =
-        Namespaced_IRI.parse _namespace_name "measurementSiteReference" |> NamespacedName
+    let measurementSiteReference = _prefix "measurementSiteReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_MeasurementSiteRecordVersionedReference"></see>
     /// </summary>
     let _MeasurementSiteRecordVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_MeasurementSiteRecordVersionedReference" |> NamespacedName
+        _prefix "_MeasurementSiteRecordVersionedReference"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementTimeDefault"></see>
     /// </summary>
-    let measurementTimeDefault =
-        Namespaced_IRI.parse _namespace_name "measurementTimeDefault" |> NamespacedName
-
+    let measurementTimeDefault = _prefix "measurementTimeDefault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#siteMeasurementsExtension"></see>
     /// </summary>
-    let siteMeasurementsExtension =
-        Namespaced_IRI.parse _namespace_name "siteMeasurementsExtension" |> NamespacedName
-
+    let siteMeasurementsExtension = _prefix "siteMeasurementsExtension"
     /// <summary>
     /// An identifiable instance of a traffic/travel situation comprising one or more traffic/travel circumstances which are linked by one or more causal relationships. Each traffic/travel circumstance is represented by a Situation Record.
     /// <see href="http://vocab.datex.org/terms#Situation"></see></summary>
-    let Situation = Namespaced_IRI.parse _namespace_name "Situation" |> NamespacedName
-
+    let Situation = _prefix "Situation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overallSeverity"></see>
     /// </summary>
-    let overallSeverity =
-        Namespaced_IRI.parse _namespace_name "overallSeverity" |> NamespacedName
-
+    let overallSeverity = _prefix "overallSeverity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#relatedSituation"></see>
     /// </summary>
-    let relatedSituation =
-        Namespaced_IRI.parse _namespace_name "relatedSituation" |> NamespacedName
-
+    let relatedSituation = _prefix "relatedSituation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_SituationVersionedReference"></see>
     /// </summary>
-    let _SituationVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_SituationVersionedReference" |> NamespacedName
-
+    let _SituationVersionedReference = _prefix "_SituationVersionedReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationExtension"></see>
     /// </summary>
-    let situationExtension =
-        Namespaced_IRI.parse _namespace_name "situationExtension" |> NamespacedName
-
+    let situationExtension = _prefix "situationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecord"></see>
     /// </summary>
-    let situationRecord =
-        Namespaced_IRI.parse _namespace_name "situationRecord" |> NamespacedName
-
+    let situationRecord = _prefix "situationRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationVersionTime"></see>
     /// </summary>
-    let situationVersionTime =
-        Namespaced_IRI.parse _namespace_name "situationVersionTime" |> NamespacedName
-
+    let situationVersionTime = _prefix "situationVersionTime"
     /// <summary>
     /// A publication containing zero or more traffic/travel situations.
     /// <see href="http://vocab.datex.org/terms#SituationPublication"></see></summary>
-    let SituationPublication =
-        Namespaced_IRI.parse _namespace_name "SituationPublication" |> NamespacedName
-
+    let SituationPublication = _prefix "SituationPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situation"></see>
     /// </summary>
-    let situation = Namespaced_IRI.parse _namespace_name "situation" |> NamespacedName
-
+    let situation = _prefix "situation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationPublicationExtension"></see>
     /// </summary>
-    let situationPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "situationPublicationExtension" |> NamespacedName
-
+    let situationPublicationExtension = _prefix "situationPublicationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#cause"></see>
     /// </summary>
-    let cause = Namespaced_IRI.parse _namespace_name "cause" |> NamespacedName
-
+    let cause = _prefix "cause"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#confidentialityOverride"></see>
     /// </summary>
-    let confidentialityOverride =
-        Namespaced_IRI.parse _namespace_name "confidentialityOverride" |> NamespacedName
-
+    let confidentialityOverride = _prefix "confidentialityOverride"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#generalPublicComment"></see>
     /// </summary>
-    let generalPublicComment =
-        Namespaced_IRI.parse _namespace_name "generalPublicComment" |> NamespacedName
-
+    let generalPublicComment = _prefix "generalPublicComment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#impact"></see>
     /// </summary>
-    let impact = Namespaced_IRI.parse _namespace_name "impact" |> NamespacedName
+    let impact = _prefix "impact"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#management"></see>
     /// </summary>
-    let management = Namespaced_IRI.parse _namespace_name "management" |> NamespacedName
-
+    let management = _prefix "management"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#nonGeneralPublicComment"></see>
     /// </summary>
-    let nonGeneralPublicComment =
-        Namespaced_IRI.parse _namespace_name "nonGeneralPublicComment" |> NamespacedName
-
+    let nonGeneralPublicComment = _prefix "nonGeneralPublicComment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#probabilityOfOccurrence"></see>
     /// </summary>
-    let probabilityOfOccurrence =
-        Namespaced_IRI.parse _namespace_name "probabilityOfOccurrence" |> NamespacedName
-
+    let probabilityOfOccurrence = _prefix "probabilityOfOccurrence"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#severity"></see>
     /// </summary>
-    let severity = Namespaced_IRI.parse _namespace_name "severity" |> NamespacedName
-
+    let severity = _prefix "severity"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordCreationReference"></see>
     /// </summary>
-    let situationRecordCreationReference =
-        Namespaced_IRI.parse _namespace_name "situationRecordCreationReference" |> NamespacedName
-
+    let situationRecordCreationReference = _prefix "situationRecordCreationReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordCreationTime"></see>
     /// </summary>
-    let situationRecordCreationTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordCreationTime" |> NamespacedName
-
+    let situationRecordCreationTime = _prefix "situationRecordCreationTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordExtension"></see>
     /// </summary>
-    let situationRecordExtension =
-        Namespaced_IRI.parse _namespace_name "situationRecordExtension" |> NamespacedName
-
+    let situationRecordExtension = _prefix "situationRecordExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_SituationRecordExtensionType"></see>
     /// </summary>
-    let _SituationRecordExtensionType =
-        Namespaced_IRI.parse _namespace_name "_SituationRecordExtensionType" |> NamespacedName
+    let _SituationRecordExtensionType = _prefix "_SituationRecordExtensionType"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordFirstSupplierVersionTime"></see>
     /// </summary>
     let situationRecordFirstSupplierVersionTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordFirstSupplierVersionTime" |> NamespacedName
+        _prefix "situationRecordFirstSupplierVersionTime"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordObservationTime"></see>
     /// </summary>
-    let situationRecordObservationTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordObservationTime" |> NamespacedName
-
+    let situationRecordObservationTime = _prefix "situationRecordObservationTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordVersionTime"></see>
     /// </summary>
-    let situationRecordVersionTime =
-        Namespaced_IRI.parse _namespace_name "situationRecordVersionTime" |> NamespacedName
-
+    let situationRecordVersionTime = _prefix "situationRecordVersionTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#urlLink"></see>
     /// </summary>
-    let urlLink = Namespaced_IRI.parse _namespace_name "urlLink" |> NamespacedName
+    let urlLink = _prefix "urlLink"
     /// <summary>
     /// Details of a Uniform Resource Locator (URL) address pointing to a resource available on the Internet from where further relevant information may be obtained.
     /// <see href="http://vocab.datex.org/terms#UrlLink"></see></summary>
-    let UrlLink = Namespaced_IRI.parse _namespace_name "UrlLink" |> NamespacedName
-
+    let UrlLink = _prefix "UrlLink"
     /// <summary>
     /// Extension class for SituationRecord.
     /// <see href="http://vocab.datex.org/terms#SituationRecordExtendedApproved"></see></summary>
-    let SituationRecordExtendedApproved =
-        Namespaced_IRI.parse _namespace_name "SituationRecordExtendedApproved" |> NamespacedName
-
+    let SituationRecordExtendedApproved = _prefix "SituationRecordExtendedApproved"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#safetyRelatedMessage"></see>
     /// </summary>
-    let safetyRelatedMessage =
-        Namespaced_IRI.parse _namespace_name "safetyRelatedMessage" |> NamespacedName
-
+    let safetyRelatedMessage = _prefix "safetyRelatedMessage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#reliable"></see>
     /// </summary>
-    let reliable = Namespaced_IRI.parse _namespace_name "reliable" |> NamespacedName
-
+    let reliable = _prefix "reliable"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sourceCountry"></see>
     /// </summary>
-    let sourceCountry =
-        Namespaced_IRI.parse _namespace_name "sourceCountry" |> NamespacedName
-
+    let sourceCountry = _prefix "sourceCountry"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sourceExtension"></see>
     /// </summary>
-    let sourceExtension =
-        Namespaced_IRI.parse _namespace_name "sourceExtension" |> NamespacedName
-
+    let sourceExtension = _prefix "sourceExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sourceIdentification"></see>
     /// </summary>
-    let sourceIdentification =
-        Namespaced_IRI.parse _namespace_name "sourceIdentification" |> NamespacedName
-
+    let sourceIdentification = _prefix "sourceIdentification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sourceName"></see>
     /// </summary>
-    let sourceName = Namespaced_IRI.parse _namespace_name "sourceName" |> NamespacedName
+    let sourceName = _prefix "sourceName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sourceType"></see>
     /// </summary>
-    let sourceType = Namespaced_IRI.parse _namespace_name "sourceType" |> NamespacedName
-
+    let sourceType = _prefix "sourceType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#intersectWithApplicableDays"></see>
     /// </summary>
-    let intersectWithApplicableDays =
-        Namespaced_IRI.parse _namespace_name "intersectWithApplicableDays" |> NamespacedName
-
+    let intersectWithApplicableDays = _prefix "intersectWithApplicableDays"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#publicHoliday"></see>
     /// </summary>
-    let publicHoliday =
-        Namespaced_IRI.parse _namespace_name "publicHoliday" |> NamespacedName
-
+    let publicHoliday = _prefix "publicHoliday"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specialDayExtension"></see>
     /// </summary>
-    let specialDayExtension =
-        Namespaced_IRI.parse _namespace_name "specialDayExtension" |> NamespacedName
-
+    let specialDayExtension = _prefix "specialDayExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specialDayName"></see>
     /// </summary>
-    let specialDayName =
-        Namespaced_IRI.parse _namespace_name "specialDayName" |> NamespacedName
-
+    let specialDayName = _prefix "specialDayName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specialDayType"></see>
     /// </summary>
-    let specialDayType =
-        Namespaced_IRI.parse _namespace_name "specialDayType" |> NamespacedName
-
+    let specialDayType = _prefix "specialDayType"
     /// <summary>
     /// A parking site which is located at a special location, often associated with some building.
     /// <see href="http://vocab.datex.org/terms#SpecialLocationParkingSite"></see></summary>
-    let SpecialLocationParkingSite =
-        Namespaced_IRI.parse _namespace_name "SpecialLocationParkingSite" |> NamespacedName
-
+    let SpecialLocationParkingSite = _prefix "SpecialLocationParkingSite"
     /// <summary>
     /// A special location not available in the enumeration. Use literal 'other' in this case.
     /// <see href="http://vocab.datex.org/terms#parkingOtherSpecialLocation"></see></summary>
-    let parkingOtherSpecialLocation =
-        Namespaced_IRI.parse _namespace_name "parkingOtherSpecialLocation" |> NamespacedName
-
+    let parkingOtherSpecialLocation = _prefix "parkingOtherSpecialLocation"
     /// <summary>
     /// The special location of the parking site.
     /// <see href="http://vocab.datex.org/terms#parkingSpecialLocation"></see></summary>
-    let parkingSpecialLocation =
-        Namespaced_IRI.parse _namespace_name "parkingSpecialLocation" |> NamespacedName
+    let parkingSpecialLocation = _prefix "parkingSpecialLocation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specialLocationParkingSiteExtension"></see>
     /// </summary>
     let specialLocationParkingSiteExtension =
-        Namespaced_IRI.parse _namespace_name "specialLocationParkingSiteExtension" |> NamespacedName
+        _prefix "specialLocationParkingSiteExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#speedManagementExtension"></see>
     /// </summary>
-    let speedManagementExtension =
-        Namespaced_IRI.parse _namespace_name "speedManagementExtension" |> NamespacedName
-
+    let speedManagementExtension = _prefix "speedManagementExtension"
     /// <summary>
     /// Type of speed management action instigated by operator.
     /// <see href="http://vocab.datex.org/terms#speedManagementType"></see></summary>
-    let speedManagementType =
-        Namespaced_IRI.parse _namespace_name "speedManagementType" |> NamespacedName
-
+    let speedManagementType = _prefix "speedManagementType"
     /// <summary>
     /// Temporary limit defining the maximum advisory or mandatory speed of vehicles.
     /// <see href="http://vocab.datex.org/terms#temporarySpeedLimit"></see></summary>
-    let temporarySpeedLimit =
-        Namespaced_IRI.parse _namespace_name "temporarySpeedLimit" |> NamespacedName
-
+    let temporarySpeedLimit = _prefix "temporarySpeedLimit"
     /// <summary>
     /// Details of percentage (from an observation set) of vehicles whose speeds fall below a stated value.
     /// <see href="http://vocab.datex.org/terms#SpeedPercentile"></see></summary>
-    let SpeedPercentile =
-        Namespaced_IRI.parse _namespace_name "SpeedPercentile" |> NamespacedName
-
+    let SpeedPercentile = _prefix "SpeedPercentile"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#speedPercentile"></see>
     /// </summary>
-    let speedPercentile =
-        Namespaced_IRI.parse _namespace_name "speedPercentile" |> NamespacedName
-
+    let speedPercentile = _prefix "speedPercentile"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#speedPercentileExtension"></see>
     /// </summary>
-    let speedPercentileExtension =
-        Namespaced_IRI.parse _namespace_name "speedPercentileExtension" |> NamespacedName
-
+    let speedPercentileExtension = _prefix "speedPercentileExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehiclePercentage"></see>
     /// </summary>
-    let vehiclePercentage =
-        Namespaced_IRI.parse _namespace_name "vehiclePercentage" |> NamespacedName
-
+    let vehiclePercentage = _prefix "vehiclePercentage"
     /// <summary>
     /// A value of speed expressed in kilometres per hour.
     /// <see href="http://vocab.datex.org/terms#speed"></see></summary>
-    let speed = Namespaced_IRI.parse _namespace_name "speed" |> NamespacedName
-
+    let speed = _prefix "speed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#speedValueExtension"></see>
     /// </summary>
-    let speedValueExtension =
-        Namespaced_IRI.parse _namespace_name "speedValueExtension" |> NamespacedName
-
+    let speedValueExtension = _prefix "speedValueExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfSubjects"></see>
     /// </summary>
-    let numberOfSubjects =
-        Namespaced_IRI.parse _namespace_name "numberOfSubjects" |> NamespacedName
-
+    let numberOfSubjects = _prefix "numberOfSubjects"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subjectTypeOfWorks"></see>
     /// </summary>
-    let subjectTypeOfWorks =
-        Namespaced_IRI.parse _namespace_name "subjectTypeOfWorks" |> NamespacedName
-
+    let subjectTypeOfWorks = _prefix "subjectTypeOfWorks"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subjectsExtension"></see>
     /// </summary>
-    let subjectsExtension =
-        Namespaced_IRI.parse _namespace_name "subjectsExtension" |> NamespacedName
-
+    let subjectsExtension = _prefix "subjectsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#deleteSubscription"></see>
     /// </summary>
-    let deleteSubscription =
-        Namespaced_IRI.parse _namespace_name "deleteSubscription" |> NamespacedName
-
+    let deleteSubscription = _prefix "deleteSubscription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#deliveryInterval"></see>
     /// </summary>
-    let deliveryInterval =
-        Namespaced_IRI.parse _namespace_name "deliveryInterval" |> NamespacedName
-
+    let deliveryInterval = _prefix "deliveryInterval"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#operatingMode"></see>
     /// </summary>
-    let operatingMode =
-        Namespaced_IRI.parse _namespace_name "operatingMode" |> NamespacedName
-
+    let operatingMode = _prefix "operatingMode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subscriptionExtension"></see>
     /// </summary>
-    let subscriptionExtension =
-        Namespaced_IRI.parse _namespace_name "subscriptionExtension" |> NamespacedName
-
+    let subscriptionExtension = _prefix "subscriptionExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subscriptionStartTime"></see>
     /// </summary>
-    let subscriptionStartTime =
-        Namespaced_IRI.parse _namespace_name "subscriptionStartTime" |> NamespacedName
-
+    let subscriptionStartTime = _prefix "subscriptionStartTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subscriptionState"></see>
     /// </summary>
-    let subscriptionState =
-        Namespaced_IRI.parse _namespace_name "subscriptionState" |> NamespacedName
-
+    let subscriptionState = _prefix "subscriptionState"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#subscriptionStopTime"></see>
     /// </summary>
-    let subscriptionStopTime =
-        Namespaced_IRI.parse _namespace_name "subscriptionStopTime" |> NamespacedName
-
+    let subscriptionStopTime = _prefix "subscriptionStopTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#updateMethod"></see>
     /// </summary>
-    let updateMethod =
-        Namespaced_IRI.parse _namespace_name "updateMethod" |> NamespacedName
-
+    let updateMethod = _prefix "updateMethod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#locationPrecision"></see>
     /// </summary>
-    let locationPrecision =
-        Namespaced_IRI.parse _namespace_name "locationPrecision" |> NamespacedName
-
+    let locationPrecision = _prefix "locationPrecision"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#affectedCarriagewayAndLanes"></see>
     /// </summary>
-    let affectedCarriagewayAndLanes =
-        Namespaced_IRI.parse _namespace_name "affectedCarriagewayAndLanes" |> NamespacedName
-
+    let affectedCarriagewayAndLanes = _prefix "affectedCarriagewayAndLanes"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#locationDescriptor"></see>
     /// </summary>
-    let locationDescriptor =
-        Namespaced_IRI.parse _namespace_name "locationDescriptor" |> NamespacedName
-
+    let locationDescriptor = _prefix "locationDescriptor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#sequentialRampNumber"></see>
     /// </summary>
-    let sequentialRampNumber =
-        Namespaced_IRI.parse _namespace_name "sequentialRampNumber" |> NamespacedName
+    let sequentialRampNumber = _prefix "sequentialRampNumber"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPositionalDescriptionExtension"></see>
     /// </summary>
     let supplementaryPositionalDescriptionExtension =
-        Namespaced_IRI.parse _namespace_name "supplementaryPositionalDescriptionExtension" |> NamespacedName
+        _prefix "supplementaryPositionalDescriptionExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#address"></see>
     /// </summary>
-    let address = Namespaced_IRI.parse _namespace_name "address" |> NamespacedName
+    let address = _prefix "address"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#protocol"></see>
     /// </summary>
-    let protocol = Namespaced_IRI.parse _namespace_name "protocol" |> NamespacedName
-
+    let protocol = _prefix "protocol"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#targetExtension"></see>
     /// </summary>
-    let targetExtension =
-        Namespaced_IRI.parse _namespace_name "targetExtension" |> NamespacedName
-
+    let targetExtension = _prefix "targetExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#acceptedMeansOfPayment"></see>
     /// </summary>
-    let acceptedMeansOfPayment =
-        Namespaced_IRI.parse _namespace_name "acceptedMeansOfPayment" |> NamespacedName
-
+    let acceptedMeansOfPayment = _prefix "acceptedMeansOfPayment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#acceptedPaymentCards"></see>
     /// </summary>
-    let acceptedPaymentCards =
-        Namespaced_IRI.parse _namespace_name "acceptedPaymentCards" |> NamespacedName
-
+    let acceptedPaymentCards = _prefix "acceptedPaymentCards"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeBand"></see>
     /// </summary>
-    let chargeBand = Namespaced_IRI.parse _namespace_name "chargeBand" |> NamespacedName
-
+    let chargeBand = _prefix "chargeBand"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#chargeBandByReference"></see>
     /// </summary>
-    let chargeBandByReference =
-        Namespaced_IRI.parse _namespace_name "chargeBandByReference" |> NamespacedName
-
+    let chargeBandByReference = _prefix "chargeBandByReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#freeOfCharge"></see>
     /// </summary>
-    let freeOfCharge =
-        Namespaced_IRI.parse _namespace_name "freeOfCharge" |> NamespacedName
-
+    let freeOfCharge = _prefix "freeOfCharge"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#paymentAdditionalDescription"></see>
     /// </summary>
-    let paymentAdditionalDescription =
-        Namespaced_IRI.parse _namespace_name "paymentAdditionalDescription" |> NamespacedName
-
+    let paymentAdditionalDescription = _prefix "paymentAdditionalDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#paymentMode"></see>
     /// </summary>
-    let paymentMode =
-        Namespaced_IRI.parse _namespace_name "paymentMode" |> NamespacedName
-
+    let paymentMode = _prefix "paymentMode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#reservationFee"></see>
     /// </summary>
-    let reservationFee =
-        Namespaced_IRI.parse _namespace_name "reservationFee" |> NamespacedName
-
+    let reservationFee = _prefix "reservationFee"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tariffsAndPaymentExtension"></see>
     /// </summary>
-    let tariffsAndPaymentExtension =
-        Namespaced_IRI.parse _namespace_name "tariffsAndPaymentExtension" |> NamespacedName
-
+    let tariffsAndPaymentExtension = _prefix "tariffsAndPaymentExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#airTemperature"></see>
     /// </summary>
-    let airTemperature =
-        Namespaced_IRI.parse _namespace_name "airTemperature" |> NamespacedName
-
+    let airTemperature = _prefix "airTemperature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dewPointTemperature"></see>
     /// </summary>
-    let dewPointTemperature =
-        Namespaced_IRI.parse _namespace_name "dewPointTemperature" |> NamespacedName
-
+    let dewPointTemperature = _prefix "dewPointTemperature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maximumTemperature"></see>
     /// </summary>
-    let maximumTemperature =
-        Namespaced_IRI.parse _namespace_name "maximumTemperature" |> NamespacedName
-
+    let maximumTemperature = _prefix "maximumTemperature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#minimumTemperature"></see>
     /// </summary>
-    let minimumTemperature =
-        Namespaced_IRI.parse _namespace_name "minimumTemperature" |> NamespacedName
-
+    let minimumTemperature = _prefix "minimumTemperature"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#temperatureExtension"></see>
     /// </summary>
-    let temperatureExtension =
-        Namespaced_IRI.parse _namespace_name "temperatureExtension" |> NamespacedName
-
+    let temperatureExtension = _prefix "temperatureExtension"
     /// <summary>
     /// Measurements of atmospheric temperature.
     /// <see href="http://vocab.datex.org/terms#TemperatureInformation"></see></summary>
-    let TemperatureInformation =
-        Namespaced_IRI.parse _namespace_name "TemperatureInformation" |> NamespacedName
-
+    let TemperatureInformation = _prefix "TemperatureInformation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#temperatureInformationExtension"></see>
     /// </summary>
-    let temperatureInformationExtension =
-        Namespaced_IRI.parse _namespace_name "temperatureInformationExtension" |> NamespacedName
-
+    let temperatureInformationExtension = _prefix "temperatureInformationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#temperatureValueExtension"></see>
     /// </summary>
-    let temperatureValueExtension =
-        Namespaced_IRI.parse _namespace_name "temperatureValueExtension" |> NamespacedName
-
+    let temperatureValueExtension = _prefix "temperatureValueExtension"
     /// <summary>
     /// Settings specific to a distinct text display area on the VMS.
     /// <see href="http://vocab.datex.org/terms#TextDisplayAreaSettings"></see></summary>
-    let TextDisplayAreaSettings =
-        Namespaced_IRI.parse _namespace_name "TextDisplayAreaSettings" |> NamespacedName
-
+    let TextDisplayAreaSettings = _prefix "TextDisplayAreaSettings"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textDisplayAreaSettingsExtension"></see>
     /// </summary>
-    let textDisplayAreaSettingsExtension =
-        Namespaced_IRI.parse _namespace_name "textDisplayAreaSettingsExtension" |> NamespacedName
-
+    let textDisplayAreaSettingsExtension = _prefix "textDisplayAreaSettingsExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textLanternsOn"></see>
     /// </summary>
-    let textLanternsOn =
-        Namespaced_IRI.parse _namespace_name "textLanternsOn" |> NamespacedName
-
+    let textLanternsOn = _prefix "textLanternsOn"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textLuminanceLevel"></see>
     /// </summary>
-    let textLuminanceLevel =
-        Namespaced_IRI.parse _namespace_name "textLuminanceLevel" |> NamespacedName
-
+    let textLuminanceLevel = _prefix "textLuminanceLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textLuminanceLevelName"></see>
     /// </summary>
-    let textLuminanceLevelName =
-        Namespaced_IRI.parse _namespace_name "textLuminanceLevelName" |> NamespacedName
-
+    let textLuminanceLevelName = _prefix "textLuminanceLevelName"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textLuminanceOverride"></see>
     /// </summary>
-    let textLuminanceOverride =
-        Namespaced_IRI.parse _namespace_name "textLuminanceOverride" |> NamespacedName
-
+    let textLuminanceOverride = _prefix "textLuminanceOverride"
     /// <summary>
     /// End of time period.
     /// <see href="http://vocab.datex.org/terms#endTimeOfPeriod"></see></summary>
-    let endTimeOfPeriod =
-        Namespaced_IRI.parse _namespace_name "endTimeOfPeriod" |> NamespacedName
-
+    let endTimeOfPeriod = _prefix "endTimeOfPeriod"
     /// <summary>
     /// Start of time period.
     /// <see href="http://vocab.datex.org/terms#startTimeOfPeriod"></see></summary>
-    let startTimeOfPeriod =
-        Namespaced_IRI.parse _namespace_name "startTimeOfPeriod" |> NamespacedName
-
+    let startTimeOfPeriod = _prefix "startTimeOfPeriod"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#timePeriodByHourExtension"></see>
     /// </summary>
-    let timePeriodByHourExtension =
-        Namespaced_IRI.parse _namespace_name "timePeriodByHourExtension" |> NamespacedName
-
+    let timePeriodByHourExtension = _prefix "timePeriodByHourExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#timePeriodOfDayExtension"></see>
     /// </summary>
-    let timePeriodOfDayExtension =
-        Namespaced_IRI.parse _namespace_name "timePeriodOfDayExtension" |> NamespacedName
-
+    let timePeriodOfDayExtension = _prefix "timePeriodOfDayExtension"
     /// <summary>
     /// A descriptor for describing an area location.
     /// <see href="http://vocab.datex.org/terms#TpegAreaDescriptor"></see></summary>
-    let TpegAreaDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegAreaDescriptor" |> NamespacedName
-
+    let TpegAreaDescriptor = _prefix "TpegAreaDescriptor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegAreaDescriptorExtension"></see>
     /// </summary>
-    let tpegAreaDescriptorExtension =
-        Namespaced_IRI.parse _namespace_name "tpegAreaDescriptorExtension" |> NamespacedName
-
+    let tpegAreaDescriptorExtension = _prefix "tpegAreaDescriptorExtension"
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://vocab.datex.org/terms#tpegAreaDescriptorType"></see></summary>
-    let tpegAreaDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegAreaDescriptorType" |> NamespacedName
-
+    let tpegAreaDescriptorType = _prefix "tpegAreaDescriptorType"
     /// <summary>
     /// A collection of information providing descriptive references to locations using the TPEG-Loc location referencing approach.
     /// <see href="http://vocab.datex.org/terms#TpegDescriptor"></see></summary>
-    let TpegDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegDescriptor" |> NamespacedName
-
+    let TpegDescriptor = _prefix "TpegDescriptor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegAreaLocationExtension"></see>
     /// </summary>
-    let tpegAreaLocationExtension =
-        Namespaced_IRI.parse _namespace_name "tpegAreaLocationExtension" |> NamespacedName
-
+    let tpegAreaLocationExtension = _prefix "tpegAreaLocationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegAreaLocationType"></see>
     /// </summary>
-    let tpegAreaLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegAreaLocationType" |> NamespacedName
-
+    let tpegAreaLocationType = _prefix "tpegAreaLocationType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegHeight"></see>
     /// </summary>
-    let tpegHeight = Namespaced_IRI.parse _namespace_name "tpegHeight" |> NamespacedName
+    let tpegHeight = _prefix "tpegHeight"
     /// <summary>
     /// Height information which provides additional discrimination for the applicable area.
     /// <see href="http://vocab.datex.org/terms#TpegHeight"></see></summary>
-    let TpegHeight = Namespaced_IRI.parse _namespace_name "TpegHeight" |> NamespacedName
+    let TpegHeight = _prefix "TpegHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#descriptor"></see>
     /// </summary>
-    let descriptor = Namespaced_IRI.parse _namespace_name "descriptor" |> NamespacedName
-
+    let descriptor = _prefix "descriptor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegDescriptorExtension"></see>
     /// </summary>
-    let tpegDescriptorExtension =
-        Namespaced_IRI.parse _namespace_name "tpegDescriptorExtension" |> NamespacedName
-
+    let tpegDescriptorExtension = _prefix "tpegDescriptorExtension"
     /// <summary>
     /// A point on the road network which is framed between two other points on the same road.
     /// <see href="http://vocab.datex.org/terms#TpegFramedPoint"></see></summary>
-    let TpegFramedPoint =
-        Namespaced_IRI.parse _namespace_name "TpegFramedPoint" |> NamespacedName
-
+    let TpegFramedPoint = _prefix "TpegFramedPoint"
     /// <summary>
     /// A single non junction point on the road network which is framed between two other specified points on the road network.
     /// <see href="http://vocab.datex.org/terms#framedPoint"></see></summary>
-    let framedPoint =
-        Namespaced_IRI.parse _namespace_name "framedPoint" |> NamespacedName
-
+    let framedPoint = _prefix "framedPoint"
     /// <summary>
     /// A point on the road network which is not a road junction point.
     /// <see href="http://vocab.datex.org/terms#TpegNonJunctionPoint"></see></summary>
-    let TpegNonJunctionPoint =
-        Namespaced_IRI.parse _namespace_name "TpegNonJunctionPoint" |> NamespacedName
-
+    let TpegNonJunctionPoint = _prefix "TpegNonJunctionPoint"
     /// <summary>
     /// The location at the up stream end of the section of road which frames the TPEGFramedPoint.
     /// <see href="http://vocab.datex.org/terms#from"></see></summary>
-    let from = Namespaced_IRI.parse _namespace_name "from" |> NamespacedName
+    let from = _prefix "from"
     /// <summary>
     /// A point on the road network which is either a junction point or a non junction point.
     /// <see href="http://vocab.datex.org/terms#TpegPoint"></see></summary>
-    let TpegPoint = Namespaced_IRI.parse _namespace_name "TpegPoint" |> NamespacedName
+    let TpegPoint = _prefix "TpegPoint"
     /// <summary>
     /// The location at the down stream end of the section of road which frames the TPEGFramedPoint.
     /// <see href="http://vocab.datex.org/terms#to"></see></summary>
-    let to_ = Namespaced_IRI.parse _namespace_name "to" |> NamespacedName
-
+    let to_ = _prefix "to"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegFramedPointExtension"></see>
     /// </summary>
-    let tpegFramedPointExtension =
-        Namespaced_IRI.parse _namespace_name "tpegFramedPointExtension" |> NamespacedName
-
+    let tpegFramedPointExtension = _prefix "tpegFramedPointExtension"
     /// <summary>
     /// The type of TPEG location.
     /// <see href="http://vocab.datex.org/terms#tpegFramedPointLocationType"></see></summary>
-    let tpegFramedPointLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegFramedPointLocationType" |> NamespacedName
-
+    let tpegFramedPointLocationType = _prefix "tpegFramedPointLocationType"
     /// <summary>
     /// A geometric area defined by a centre point and a radius.
     /// <see href="http://vocab.datex.org/terms#TpegGeometricArea"></see></summary>
-    let TpegGeometricArea =
-        Namespaced_IRI.parse _namespace_name "TpegGeometricArea" |> NamespacedName
-
+    let TpegGeometricArea = _prefix "TpegGeometricArea"
     /// <summary>
     /// Centre point of a circular geometric area.
     /// <see href="http://vocab.datex.org/terms#centrePoint"></see></summary>
-    let centrePoint =
-        Namespaced_IRI.parse _namespace_name "centrePoint" |> NamespacedName
-
+    let centrePoint = _prefix "centrePoint"
     /// <summary>
     /// A descriptive name which helps to identify the non junction point. At least one descriptor must identify the road on which the point is located, i.e. must be of type 'linkName' or 'localLinkName'.
     /// A name which identifies a junction point on the road network
     /// Name of area.
     /// <see href="http://vocab.datex.org/terms#name"></see></summary>
-    let name = Namespaced_IRI.parse _namespace_name "name" |> NamespacedName
-
+    let name = _prefix "name"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegGeometricAreaExtension"></see>
     /// </summary>
-    let tpegGeometricAreaExtension =
-        Namespaced_IRI.parse _namespace_name "tpegGeometricAreaExtension" |> NamespacedName
-
+    let tpegGeometricAreaExtension = _prefix "tpegGeometricAreaExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#height"></see>
     /// </summary>
-    let height = Namespaced_IRI.parse _namespace_name "height" |> NamespacedName
+    let height = _prefix "height"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heightType"></see>
     /// </summary>
-    let heightType = Namespaced_IRI.parse _namespace_name "heightType" |> NamespacedName
-
+    let heightType = _prefix "heightType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegHeightExtension"></see>
     /// </summary>
-    let tpegHeightExtension =
-        Namespaced_IRI.parse _namespace_name "tpegHeightExtension" |> NamespacedName
-
+    let tpegHeightExtension = _prefix "tpegHeightExtension"
     /// <summary>
     /// A descriptor for describing a junction by defining the intersecting roads.
     /// <see href="http://vocab.datex.org/terms#TpegIlcPointDescriptor"></see></summary>
-    let TpegIlcPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegIlcPointDescriptor" |> NamespacedName
-
+    let TpegIlcPointDescriptor = _prefix "TpegIlcPointDescriptor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegIlcPointDescriptorExtension"></see>
     /// </summary>
-    let tpegIlcPointDescriptorExtension =
-        Namespaced_IRI.parse _namespace_name "tpegIlcPointDescriptorExtension" |> NamespacedName
-
+    let tpegIlcPointDescriptorExtension = _prefix "tpegIlcPointDescriptorExtension"
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://vocab.datex.org/terms#tpegIlcPointDescriptorType"></see></summary>
-    let tpegIlcPointDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegIlcPointDescriptorType" |> NamespacedName
-
+    let tpegIlcPointDescriptorType = _prefix "tpegIlcPointDescriptorType"
     /// <summary>
     /// A descriptor for describing a point location.
     /// <see href="http://vocab.datex.org/terms#TpegPointDescriptor"></see></summary>
-    let TpegPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegPointDescriptor" |> NamespacedName
-
+    let TpegPointDescriptor = _prefix "TpegPointDescriptor"
     /// <summary>
     /// A point on the road network which is a road junction point.
     /// <see href="http://vocab.datex.org/terms#TpegJunction"></see></summary>
-    let TpegJunction =
-        Namespaced_IRI.parse _namespace_name "TpegJunction" |> NamespacedName
-
+    let TpegJunction = _prefix "TpegJunction"
     /// <summary>
     /// A descriptor for describing a junction by identifying the intersecting roads at a road junction.
     /// <see href="http://vocab.datex.org/terms#ilc"></see></summary>
-    let ilc = Namespaced_IRI.parse _namespace_name "ilc" |> NamespacedName
-
+    let ilc = _prefix "ilc"
     /// <summary>
     /// A descriptor for describing a point at a junction on a road network.
     /// <see href="http://vocab.datex.org/terms#TpegJunctionPointDescriptor"></see></summary>
-    let TpegJunctionPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegJunctionPointDescriptor" |> NamespacedName
-
+    let TpegJunctionPointDescriptor = _prefix "TpegJunctionPointDescriptor"
     /// <summary>
     /// A descriptive name which helps to identify the junction point.
     /// <see href="http://vocab.datex.org/terms#otherName"></see></summary>
-    let otherName = Namespaced_IRI.parse _namespace_name "otherName" |> NamespacedName
-
+    let otherName = _prefix "otherName"
     /// <summary>
     /// General descriptor for describing a point.
     /// <see href="http://vocab.datex.org/terms#TpegOtherPointDescriptor"></see></summary>
-    let TpegOtherPointDescriptor =
-        Namespaced_IRI.parse _namespace_name "TpegOtherPointDescriptor" |> NamespacedName
-
+    let TpegOtherPointDescriptor = _prefix "TpegOtherPointDescriptor"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegJunctionExtension"></see>
     /// </summary>
-    let tpegJunctionExtension =
-        Namespaced_IRI.parse _namespace_name "tpegJunctionExtension" |> NamespacedName
+    let tpegJunctionExtension = _prefix "tpegJunctionExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegJunctionPointDescriptorExtension"></see>
     /// </summary>
     let tpegJunctionPointDescriptorExtension =
-        Namespaced_IRI.parse _namespace_name "tpegJunctionPointDescriptorExtension" |> NamespacedName
+        _prefix "tpegJunctionPointDescriptorExtension"
 
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://vocab.datex.org/terms#tpegJunctionPointDescriptorType"></see></summary>
-    let tpegJunctionPointDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegJunctionPointDescriptorType" |> NamespacedName
-
+    let tpegJunctionPointDescriptorType = _prefix "tpegJunctionPointDescriptorType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegDirection"></see>
     /// </summary>
-    let tpegDirection =
-        Namespaced_IRI.parse _namespace_name "tpegDirection" |> NamespacedName
-
+    let tpegDirection = _prefix "tpegDirection"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegLinearLocationExtension"></see>
     /// </summary>
-    let tpegLinearLocationExtension =
-        Namespaced_IRI.parse _namespace_name "tpegLinearLocationExtension" |> NamespacedName
-
+    let tpegLinearLocationExtension = _prefix "tpegLinearLocationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegLinearLocationType"></see>
     /// </summary>
-    let tpegLinearLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegLinearLocationType" |> NamespacedName
-
+    let tpegLinearLocationType = _prefix "tpegLinearLocationType"
     /// <summary>
     /// An area defined by a well-known name.
     /// <see href="http://vocab.datex.org/terms#TpegNamedOnlyArea"></see></summary>
-    let TpegNamedOnlyArea =
-        Namespaced_IRI.parse _namespace_name "TpegNamedOnlyArea" |> NamespacedName
-
+    let TpegNamedOnlyArea = _prefix "TpegNamedOnlyArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegNamedOnlyAreaExtension"></see>
     /// </summary>
-    let tpegNamedOnlyAreaExtension =
-        Namespaced_IRI.parse _namespace_name "tpegNamedOnlyAreaExtension" |> NamespacedName
-
+    let tpegNamedOnlyAreaExtension = _prefix "tpegNamedOnlyAreaExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegNonJunctionPointExtension"></see>
     /// </summary>
-    let tpegNonJunctionPointExtension =
-        Namespaced_IRI.parse _namespace_name "tpegNonJunctionPointExtension" |> NamespacedName
-
+    let tpegNonJunctionPointExtension = _prefix "tpegNonJunctionPointExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegOtherPointDescriptorExtension"></see>
     /// </summary>
-    let tpegOtherPointDescriptorExtension =
-        Namespaced_IRI.parse _namespace_name "tpegOtherPointDescriptorExtension" |> NamespacedName
-
+    let tpegOtherPointDescriptorExtension = _prefix "tpegOtherPointDescriptorExtension"
     /// <summary>
     /// The nature of the descriptor used to define the location under consideration (derived from the TPEG Loc table 03).
     /// <see href="http://vocab.datex.org/terms#tpegOtherPointDescriptorType"></see></summary>
-    let tpegOtherPointDescriptorType =
-        Namespaced_IRI.parse _namespace_name "tpegOtherPointDescriptorType" |> NamespacedName
-
+    let tpegOtherPointDescriptorType = _prefix "tpegOtherPointDescriptorType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegPointExtension"></see>
     /// </summary>
-    let tpegPointExtension =
-        Namespaced_IRI.parse _namespace_name "tpegPointExtension" |> NamespacedName
-
+    let tpegPointExtension = _prefix "tpegPointExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegPointDescriptorExtension"></see>
     /// </summary>
-    let tpegPointDescriptorExtension =
-        Namespaced_IRI.parse _namespace_name "tpegPointDescriptorExtension" |> NamespacedName
-
+    let tpegPointDescriptorExtension = _prefix "tpegPointDescriptorExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegPointLocationExtension"></see>
     /// </summary>
-    let tpegPointLocationExtension =
-        Namespaced_IRI.parse _namespace_name "tpegPointLocationExtension" |> NamespacedName
-
+    let tpegPointLocationExtension = _prefix "tpegPointLocationExtension"
     /// <summary>
     /// A point on the road network which is not bounded by any other points on the road network.
     /// <see href="http://vocab.datex.org/terms#TpegSimplePoint"></see></summary>
-    let TpegSimplePoint =
-        Namespaced_IRI.parse _namespace_name "TpegSimplePoint" |> NamespacedName
-
+    let TpegSimplePoint = _prefix "TpegSimplePoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#tpegSimplePointExtension"></see>
     /// </summary>
-    let tpegSimplePointExtension =
-        Namespaced_IRI.parse _namespace_name "tpegSimplePointExtension" |> NamespacedName
-
+    let tpegSimplePointExtension = _prefix "tpegSimplePointExtension"
     /// <summary>
     /// The type of TPEG location.
     /// <see href="http://vocab.datex.org/terms#tpegSimplePointLocationType"></see></summary>
-    let tpegSimplePointLocationType =
-        Namespaced_IRI.parse _namespace_name "tpegSimplePointLocationType" |> NamespacedName
-
+    let tpegSimplePointLocationType = _prefix "tpegSimplePointLocationType"
     /// <summary>
     /// Averaged measurements or calculations of traffic concentration.
     /// <see href="http://vocab.datex.org/terms#TrafficConcentration"></see></summary>
-    let TrafficConcentration =
-        Namespaced_IRI.parse _namespace_name "TrafficConcentration" |> NamespacedName
-
+    let TrafficConcentration = _prefix "TrafficConcentration"
     /// <summary>
     /// An averaged measurement or calculation of the concentration of vehicles at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#concentration"></see></summary>
-    let concentration =
-        Namespaced_IRI.parse _namespace_name "concentration" |> NamespacedName
-
+    let concentration = _prefix "concentration"
     /// <summary>
     /// An averaged measurement or calculation of the percentage of time that a section of road at the specified measurement site is occupied by vehicles.
     /// <see href="http://vocab.datex.org/terms#occupancy"></see></summary>
-    let occupancy = Namespaced_IRI.parse _namespace_name "occupancy" |> NamespacedName
-
+    let occupancy = _prefix "occupancy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficConcentrationExtension"></see>
     /// </summary>
-    let trafficConcentrationExtension =
-        Namespaced_IRI.parse _namespace_name "trafficConcentrationExtension" |> NamespacedName
-
+    let trafficConcentrationExtension = _prefix "trafficConcentrationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficDataExtension"></see>
     /// </summary>
-    let trafficDataExtension =
-        Namespaced_IRI.parse _namespace_name "trafficDataExtension" |> NamespacedName
-
+    let trafficDataExtension = _prefix "trafficDataExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficElementExtension"></see>
     /// </summary>
-    let trafficElementExtension =
-        Namespaced_IRI.parse _namespace_name "trafficElementExtension" |> NamespacedName
-
+    let trafficElementExtension = _prefix "trafficElementExtension"
     /// <summary>
     /// Averaged measurements or calculations of traffic flow rates.
     /// <see href="http://vocab.datex.org/terms#TrafficFlow"></see></summary>
-    let TrafficFlow =
-        Namespaced_IRI.parse _namespace_name "TrafficFlow" |> NamespacedName
-
+    let TrafficFlow = _prefix "TrafficFlow"
     /// <summary>
     /// An averaged measurement or calculation of flow rate defined in terms of the number of vehicle axles passing the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#axleFlow"></see></summary>
-    let axleFlow = Namespaced_IRI.parse _namespace_name "axleFlow" |> NamespacedName
+    let axleFlow = _prefix "axleFlow"
     /// <summary>
     /// An averaged measurement or calculation of flow rate defined in terms of the number of passenger car units passing the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#pcuFlow"></see></summary>
-    let pcuFlow = Namespaced_IRI.parse _namespace_name "pcuFlow" |> NamespacedName
-
+    let pcuFlow = _prefix "pcuFlow"
     /// <summary>
     /// An averaged measurement or calculation of the percentage of long vehicles contained in the traffic flow at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#percentageLongVehicles"></see></summary>
-    let percentageLongVehicles =
-        Namespaced_IRI.parse _namespace_name "percentageLongVehicles" |> NamespacedName
-
+    let percentageLongVehicles = _prefix "percentageLongVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficFlowExtension"></see>
     /// </summary>
-    let trafficFlowExtension =
-        Namespaced_IRI.parse _namespace_name "trafficFlowExtension" |> NamespacedName
-
+    let trafficFlowExtension = _prefix "trafficFlowExtension"
     /// <summary>
     /// An averaged measurement of flow rate defined in terms of the number of vehicles passing the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#vehicleFlow"></see></summary>
-    let vehicleFlow =
-        Namespaced_IRI.parse _namespace_name "vehicleFlow" |> NamespacedName
-
+    let vehicleFlow = _prefix "vehicleFlow"
     /// <summary>
     /// A measured or calculated value of the flow rate of vehicles.
     /// <see href="http://vocab.datex.org/terms#VehicleFlowValue"></see></summary>
-    let VehicleFlowValue =
-        Namespaced_IRI.parse _namespace_name "VehicleFlowValue" |> NamespacedName
-
+    let VehicleFlowValue = _prefix "VehicleFlowValue"
     /// <summary>
     /// Averaged measurements or calculations of traffic headway, i.e. the distance or time interval between vehicles. This measure is measured from the head of one vehicle to the head of the following vehicle.
     /// <see href="http://vocab.datex.org/terms#TrafficHeadway"></see></summary>
-    let TrafficHeadway =
-        Namespaced_IRI.parse _namespace_name "TrafficHeadway" |> NamespacedName
-
+    let TrafficHeadway = _prefix "TrafficHeadway"
     /// <summary>
     /// The average distance between the front (respectively back) of this vehicle and the front (respectively  back) of the preceding vehicle, averaged for all vehicles within a defined measurement period at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#averageDistanceHeadway"></see></summary>
-    let averageDistanceHeadway =
-        Namespaced_IRI.parse _namespace_name "averageDistanceHeadway" |> NamespacedName
-
+    let averageDistanceHeadway = _prefix "averageDistanceHeadway"
     /// <summary>
     /// The average time gap between the front (respectively back) of this vehicle and the front (respectively  back) of the preceding vehicle, averaged for all vehicles within a defined measurement period at the specified measurement site.
     /// <see href="http://vocab.datex.org/terms#averageTimeHeadway"></see></summary>
-    let averageTimeHeadway =
-        Namespaced_IRI.parse _namespace_name "averageTimeHeadway" |> NamespacedName
-
+    let averageTimeHeadway = _prefix "averageTimeHeadway"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficHeadwayExtension"></see>
     /// </summary>
-    let trafficHeadwayExtension =
-        Namespaced_IRI.parse _namespace_name "trafficHeadwayExtension" |> NamespacedName
-
+    let trafficHeadwayExtension = _prefix "trafficHeadwayExtension"
     /// <summary>
     /// Averaged measurements or calculations of traffic speed.
     /// <see href="http://vocab.datex.org/terms#TrafficSpeed"></see></summary>
-    let TrafficSpeed =
-        Namespaced_IRI.parse _namespace_name "TrafficSpeed" |> NamespacedName
-
+    let TrafficSpeed = _prefix "TrafficSpeed"
     /// <summary>
     /// An averaged measurement or calculation of the speed of vehicles at the specified location.
     /// <see href="http://vocab.datex.org/terms#averageVehicleSpeed"></see></summary>
-    let averageVehicleSpeed =
-        Namespaced_IRI.parse _namespace_name "averageVehicleSpeed" |> NamespacedName
-
+    let averageVehicleSpeed = _prefix "averageVehicleSpeed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficSpeedExtension"></see>
     /// </summary>
-    let trafficSpeedExtension =
-        Namespaced_IRI.parse _namespace_name "trafficSpeedExtension" |> NamespacedName
-
+    let trafficSpeedExtension = _prefix "trafficSpeedExtension"
     /// <summary>
     /// The status of traffic conditions on a specific section or at a specific point on the road network.
     /// <see href="http://vocab.datex.org/terms#TrafficStatus"></see></summary>
-    let TrafficStatus =
-        Namespaced_IRI.parse _namespace_name "TrafficStatus" |> NamespacedName
-
+    let TrafficStatus = _prefix "TrafficStatus"
     /// <summary>
     /// Status of traffic conditions on the identified section of road in the specified direction.
     /// <see href="http://vocab.datex.org/terms#trafficStatus"></see></summary>
-    let trafficStatus =
-        Namespaced_IRI.parse _namespace_name "trafficStatus" |> NamespacedName
-
+    let trafficStatus = _prefix "trafficStatus"
     /// <summary>
     /// A measured or calculated value of the status of traffic conditions on a section of road in a specified direction.
     /// <see href="http://vocab.datex.org/terms#TrafficStatusValue"></see></summary>
-    let TrafficStatusValue =
-        Namespaced_IRI.parse _namespace_name "TrafficStatusValue" |> NamespacedName
-
+    let TrafficStatusValue = _prefix "TrafficStatusValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficStatusExtension"></see>
     /// </summary>
-    let trafficStatusExtension =
-        Namespaced_IRI.parse _namespace_name "trafficStatusExtension" |> NamespacedName
-
+    let trafficStatusExtension = _prefix "trafficStatusExtension"
     /// <summary>
     /// A status value of traffic conditions on the identified section of road in the specified direction.
     /// <see href="http://vocab.datex.org/terms#trafficStatusValue"></see></summary>
-    let trafficStatusValue =
-        Namespaced_IRI.parse _namespace_name "trafficStatusValue" |> NamespacedName
-
+    let trafficStatusValue = _prefix "trafficStatusValue"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficStatusValueExtension"></see>
     /// </summary>
-    let trafficStatusValueExtension =
-        Namespaced_IRI.parse _namespace_name "trafficStatusValueExtension" |> NamespacedName
-
+    let trafficStatusValueExtension = _prefix "trafficStatusValueExtension"
     /// <summary>
     /// An identifiable instance of a traffic view at a single point in time relating to a predefined location set, comprising one or more linear traffic views each of which comprise one or more traffic view records.
     /// <see href="http://vocab.datex.org/terms#TrafficView"></see></summary>
-    let TrafficView =
-        Namespaced_IRI.parse _namespace_name "TrafficView" |> NamespacedName
-
+    let TrafficView = _prefix "TrafficView"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#linearTrafficView"></see>
     /// </summary>
-    let linearTrafficView =
-        Namespaced_IRI.parse _namespace_name "linearTrafficView" |> NamespacedName
-
+    let linearTrafficView = _prefix "linearTrafficView"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficViewExtension"></see>
     /// </summary>
-    let trafficViewExtension =
-        Namespaced_IRI.parse _namespace_name "trafficViewExtension" |> NamespacedName
-
+    let trafficViewExtension = _prefix "trafficViewExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficViewTime"></see>
     /// </summary>
-    let trafficViewTime =
-        Namespaced_IRI.parse _namespace_name "trafficViewTime" |> NamespacedName
-
+    let trafficViewTime = _prefix "trafficViewTime"
     /// <summary>
     /// A publication containing one or more traffic views.
     /// <see href="http://vocab.datex.org/terms#TrafficViewPublication"></see></summary>
-    let TrafficViewPublication =
-        Namespaced_IRI.parse _namespace_name "TrafficViewPublication" |> NamespacedName
-
+    let TrafficViewPublication = _prefix "TrafficViewPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficView"></see>
     /// </summary>
-    let trafficView =
-        Namespaced_IRI.parse _namespace_name "trafficView" |> NamespacedName
-
+    let trafficView = _prefix "trafficView"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficViewPublicationExtension"></see>
     /// </summary>
-    let trafficViewPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "trafficViewPublicationExtension" |> NamespacedName
-
+    let trafficViewPublicationExtension = _prefix "trafficViewPublicationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#operatorAction"></see>
     /// </summary>
-    let operatorAction =
-        Namespaced_IRI.parse _namespace_name "operatorAction" |> NamespacedName
-
+    let operatorAction = _prefix "operatorAction"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#recordSequenceNumber"></see>
     /// </summary>
-    let recordSequenceNumber =
-        Namespaced_IRI.parse _namespace_name "recordSequenceNumber" |> NamespacedName
-
+    let recordSequenceNumber = _prefix "recordSequenceNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficElement"></see>
     /// </summary>
-    let trafficElement =
-        Namespaced_IRI.parse _namespace_name "trafficElement" |> NamespacedName
-
+    let trafficElement = _prefix "trafficElement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#trafficViewRecordExtension"></see>
     /// </summary>
-    let trafficViewRecordExtension =
-        Namespaced_IRI.parse _namespace_name "trafficViewRecordExtension" |> NamespacedName
-
+    let trafficViewRecordExtension = _prefix "trafficViewRecordExtension"
     /// <summary>
     /// The availability of transit services and information relating to their departures. This is limited to those transit services which are of direct relevance to road users, e.g. connecting rail or ferry services.
     /// <see href="http://vocab.datex.org/terms#TransitInformation"></see></summary>
-    let TransitInformation =
-        Namespaced_IRI.parse _namespace_name "TransitInformation" |> NamespacedName
-
+    let TransitInformation = _prefix "TransitInformation"
     /// <summary>
     /// Indicates the stated termination point of the transit journey.
     /// <see href="http://vocab.datex.org/terms#journeyDestination"></see></summary>
-    let journeyDestination =
-        Namespaced_IRI.parse _namespace_name "journeyDestination" |> NamespacedName
-
+    let journeyDestination = _prefix "journeyDestination"
     /// <summary>
     /// Indicates the stated starting point of the transit journey.
     /// <see href="http://vocab.datex.org/terms#journeyOrigin"></see></summary>
-    let journeyOrigin =
-        Namespaced_IRI.parse _namespace_name "journeyOrigin" |> NamespacedName
-
+    let journeyOrigin = _prefix "journeyOrigin"
     /// <summary>
     /// Indicates a transit service journey number.
     /// <see href="http://vocab.datex.org/terms#journeyReference"></see></summary>
-    let journeyReference =
-        Namespaced_IRI.parse _namespace_name "journeyReference" |> NamespacedName
-
+    let journeyReference = _prefix "journeyReference"
     /// <summary>
     /// Indicates the timetabled departure time of a transit service for a specified location.
     /// <see href="http://vocab.datex.org/terms#scheduledDepartureTime"></see></summary>
-    let scheduledDepartureTime =
-        Namespaced_IRI.parse _namespace_name "scheduledDepartureTime" |> NamespacedName
-
+    let scheduledDepartureTime = _prefix "scheduledDepartureTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#transitInformationExtension"></see>
     /// </summary>
-    let transitInformationExtension =
-        Namespaced_IRI.parse _namespace_name "transitInformationExtension" |> NamespacedName
-
+    let transitInformationExtension = _prefix "transitInformationExtension"
     /// <summary>
     /// Information about transit services.
     /// <see href="http://vocab.datex.org/terms#transitServiceInformation"></see></summary>
-    let transitServiceInformation =
-        Namespaced_IRI.parse _namespace_name "transitServiceInformation" |> NamespacedName
-
+    let transitServiceInformation = _prefix "transitServiceInformation"
     /// <summary>
     /// The type of transit service to which the information relates.
     /// <see href="http://vocab.datex.org/terms#transitServiceType"></see></summary>
-    let transitServiceType =
-        Namespaced_IRI.parse _namespace_name "transitServiceType" |> NamespacedName
-
+    let transitServiceType = _prefix "transitServiceType"
     /// <summary>
     /// Derived/computed travel time information relating to a linear section of the road network; forecast = true means a forecast for a vehicle at the start of the specified location, forecast = false means calculation/measurement at the end.
     /// <see href="http://vocab.datex.org/terms#TravelTimeData"></see></summary>
-    let TravelTimeData =
-        Namespaced_IRI.parse _namespace_name "TravelTimeData" |> NamespacedName
-
+    let TravelTimeData = _prefix "TravelTimeData"
     /// <summary>
     /// The free flow speed expected under ideal conditions, corresponding to the freeFlowTravelTime.
     /// <see href="http://vocab.datex.org/terms#freeFlowSpeed"></see></summary>
-    let freeFlowSpeed =
-        Namespaced_IRI.parse _namespace_name "freeFlowSpeed" |> NamespacedName
-
+    let freeFlowSpeed = _prefix "freeFlowSpeed"
     /// <summary>
     /// The travel time which would be expected under ideal free flow conditions.
     /// <see href="http://vocab.datex.org/terms#freeFlowTravelTime"></see></summary>
-    let freeFlowTravelTime =
-        Namespaced_IRI.parse _namespace_name "freeFlowTravelTime" |> NamespacedName
-
+    let freeFlowTravelTime = _prefix "freeFlowTravelTime"
     /// <summary>
     /// The travel time which is expected for the given period (e.g. date/time, holiday status etc.) and any known quasi-static conditions (e.g. long term roadworks). This value is derived from historical analysis.
     /// <see href="http://vocab.datex.org/terms#normallyExpectedTravelTime"></see></summary>
-    let normallyExpectedTravelTime =
-        Namespaced_IRI.parse _namespace_name "normallyExpectedTravelTime" |> NamespacedName
-
+    let normallyExpectedTravelTime = _prefix "normallyExpectedTravelTime"
     /// <summary>
     /// Derived/computed travel time information relating to a specific group of locations.
     /// <see href="http://vocab.datex.org/terms#travelTime"></see></summary>
-    let travelTime = Namespaced_IRI.parse _namespace_name "travelTime" |> NamespacedName
-
+    let travelTime = _prefix "travelTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#travelTimeDataExtension"></see>
     /// </summary>
-    let travelTimeDataExtension =
-        Namespaced_IRI.parse _namespace_name "travelTimeDataExtension" |> NamespacedName
-
+    let travelTimeDataExtension = _prefix "travelTimeDataExtension"
     /// <summary>
     /// The current trend in the travel time between the defined locations in the specified direction.
     /// <see href="http://vocab.datex.org/terms#travelTimeTrendType"></see></summary>
-    let travelTimeTrendType =
-        Namespaced_IRI.parse _namespace_name "travelTimeTrendType" |> NamespacedName
-
+    let travelTimeTrendType = _prefix "travelTimeTrendType"
     /// <summary>
     /// Indication of the way in which the travel time is derived.
     /// <see href="http://vocab.datex.org/terms#travelTimeType"></see></summary>
-    let travelTimeType =
-        Namespaced_IRI.parse _namespace_name "travelTimeType" |> NamespacedName
-
+    let travelTimeType = _prefix "travelTimeType"
     /// <summary>
     /// Vehicle type.
     /// <see href="http://vocab.datex.org/terms#vehicleType"></see></summary>
-    let vehicleType =
-        Namespaced_IRI.parse _namespace_name "vehicleType" |> NamespacedName
-
+    let vehicleType = _prefix "vehicleType"
     /// <summary>
     /// A parking site in an urban context.
     /// <see href="http://vocab.datex.org/terms#UrbanParkingSite"></see></summary>
-    let UrbanParkingSite =
-        Namespaced_IRI.parse _namespace_name "UrbanParkingSite" |> NamespacedName
-
+    let UrbanParkingSite = _prefix "UrbanParkingSite"
     /// <summary>
     /// Name or identifier of a parking zone this parking site belongs to. To be filled with the string value 'True', if there is a parking zone with unknown name.
     /// <see href="http://vocab.datex.org/terms#parkingZone"></see></summary>
-    let parkingZone =
-        Namespaced_IRI.parse _namespace_name "parkingZone" |> NamespacedName
-
+    let parkingZone = _prefix "parkingZone"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#urbanParkingSiteExtension"></see>
     /// </summary>
-    let urbanParkingSiteExtension =
-        Namespaced_IRI.parse _namespace_name "urbanParkingSiteExtension" |> NamespacedName
-
+    let urbanParkingSiteExtension = _prefix "urbanParkingSiteExtension"
     /// <summary>
     /// The type of urban parking site.
     /// <see href="http://vocab.datex.org/terms#urbanParkingSiteType"></see></summary>
-    let urbanParkingSiteType =
-        Namespaced_IRI.parse _namespace_name "urbanParkingSiteType" |> NamespacedName
-
+    let urbanParkingSiteType = _prefix "urbanParkingSiteType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#urlLinkDescription"></see>
     /// </summary>
-    let urlLinkDescription =
-        Namespaced_IRI.parse _namespace_name "urlLinkDescription" |> NamespacedName
-
+    let urlLinkDescription = _prefix "urlLinkDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#urlLinkExtension"></see>
     /// </summary>
-    let urlLinkExtension =
-        Namespaced_IRI.parse _namespace_name "urlLinkExtension" |> NamespacedName
-
+    let urlLinkExtension = _prefix "urlLinkExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#urlLinkType"></see>
     /// </summary>
-    let urlLinkType =
-        Namespaced_IRI.parse _namespace_name "urlLinkType" |> NamespacedName
-
+    let urlLinkType = _prefix "urlLinkType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#otherPaymentCard"></see>
     /// </summary>
-    let otherPaymentCard =
-        Namespaced_IRI.parse _namespace_name "otherPaymentCard" |> NamespacedName
-
+    let otherPaymentCard = _prefix "otherPaymentCard"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#otherPaymentCardBrand"></see>
     /// </summary>
-    let otherPaymentCardBrand =
-        Namespaced_IRI.parse _namespace_name "otherPaymentCardBrand" |> NamespacedName
-
+    let otherPaymentCardBrand = _prefix "otherPaymentCardBrand"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#paymentCard"></see>
     /// </summary>
-    let paymentCard =
-        Namespaced_IRI.parse _namespace_name "paymentCard" |> NamespacedName
-
+    let paymentCard = _prefix "paymentCard"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#paymentCardBrand"></see>
     /// </summary>
-    let paymentCardBrand =
-        Namespaced_IRI.parse _namespace_name "paymentCardBrand" |> NamespacedName
-
+    let paymentCardBrand = _prefix "paymentCardBrand"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#usedPaymentCardExtension"></see>
     /// </summary>
-    let usedPaymentCardExtension =
-        Namespaced_IRI.parse _namespace_name "usedPaymentCardExtension" |> NamespacedName
-
+    let usedPaymentCardExtension = _prefix "usedPaymentCardExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#overrunning"></see>
     /// </summary>
-    let overrunning =
-        Namespaced_IRI.parse _namespace_name "overrunning" |> NamespacedName
-
+    let overrunning = _prefix "overrunning"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#validityExtension"></see>
     /// </summary>
-    let validityExtension =
-        Namespaced_IRI.parse _namespace_name "validityExtension" |> NamespacedName
-
+    let validityExtension = _prefix "validityExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#validityStatus"></see>
     /// </summary>
-    let validityStatus =
-        Namespaced_IRI.parse _namespace_name "validityStatus" |> NamespacedName
-
+    let validityStatus = _prefix "validityStatus"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#axleSpacingOnVehicle"></see>
     /// </summary>
-    let axleSpacingOnVehicle =
-        Namespaced_IRI.parse _namespace_name "axleSpacingOnVehicle" |> NamespacedName
+    let axleSpacingOnVehicle = _prefix "axleSpacingOnVehicle"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#hazardousGoodsAssociatedWithVehicle"></see>
     /// </summary>
     let hazardousGoodsAssociatedWithVehicle =
-        Namespaced_IRI.parse _namespace_name "hazardousGoodsAssociatedWithVehicle" |> NamespacedName
+        _prefix "hazardousGoodsAssociatedWithVehicle"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#specificAxleWeight"></see>
     /// </summary>
-    let specificAxleWeight =
-        Namespaced_IRI.parse _namespace_name "specificAxleWeight" |> NamespacedName
-
+    let specificAxleWeight = _prefix "specificAxleWeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleColour"></see>
     /// </summary>
-    let vehicleColour =
-        Namespaced_IRI.parse _namespace_name "vehicleColour" |> NamespacedName
-
+    let vehicleColour = _prefix "vehicleColour"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCountryOfOrigin"></see>
     /// </summary>
-    let vehicleCountryOfOrigin =
-        Namespaced_IRI.parse _namespace_name "vehicleCountryOfOrigin" |> NamespacedName
-
+    let vehicleCountryOfOrigin = _prefix "vehicleCountryOfOrigin"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleExtension"></see>
     /// </summary>
-    let vehicleExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleExtension" |> NamespacedName
-
+    let vehicleExtension = _prefix "vehicleExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleIdentifier"></see>
     /// </summary>
-    let vehicleIdentifier =
-        Namespaced_IRI.parse _namespace_name "vehicleIdentifier" |> NamespacedName
-
+    let vehicleIdentifier = _prefix "vehicleIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleManufacturer"></see>
     /// </summary>
-    let vehicleManufacturer =
-        Namespaced_IRI.parse _namespace_name "vehicleManufacturer" |> NamespacedName
-
+    let vehicleManufacturer = _prefix "vehicleManufacturer"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleModel"></see>
     /// </summary>
-    let vehicleModel =
-        Namespaced_IRI.parse _namespace_name "vehicleModel" |> NamespacedName
+    let vehicleModel = _prefix "vehicleModel"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleRegistrationPlateIdentifier"></see>
     /// </summary>
     let vehicleRegistrationPlateIdentifier =
-        Namespaced_IRI.parse _namespace_name "vehicleRegistrationPlateIdentifier" |> NamespacedName
+        _prefix "vehicleRegistrationPlateIdentifier"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#fuelType"></see>
     /// </summary>
-    let fuelType = Namespaced_IRI.parse _namespace_name "fuelType" |> NamespacedName
-
+    let fuelType = _prefix "fuelType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#grossWeightCharacteristic"></see>
     /// </summary>
-    let grossWeightCharacteristic =
-        Namespaced_IRI.parse _namespace_name "grossWeightCharacteristic" |> NamespacedName
-
+    let grossWeightCharacteristic = _prefix "grossWeightCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heaviestAxleWeightCharacteristic"></see>
     /// </summary>
-    let heaviestAxleWeightCharacteristic =
-        Namespaced_IRI.parse _namespace_name "heaviestAxleWeightCharacteristic" |> NamespacedName
-
+    let heaviestAxleWeightCharacteristic = _prefix "heaviestAxleWeightCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heightCharacteristic"></see>
     /// </summary>
-    let heightCharacteristic =
-        Namespaced_IRI.parse _namespace_name "heightCharacteristic" |> NamespacedName
-
+    let heightCharacteristic = _prefix "heightCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lengthCharacteristic"></see>
     /// </summary>
-    let lengthCharacteristic =
-        Namespaced_IRI.parse _namespace_name "lengthCharacteristic" |> NamespacedName
-
+    let lengthCharacteristic = _prefix "lengthCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#loadType"></see>
     /// </summary>
-    let loadType = Namespaced_IRI.parse _namespace_name "loadType" |> NamespacedName
-
+    let loadType = _prefix "loadType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfAxlesCharacteristic"></see>
     /// </summary>
-    let numberOfAxlesCharacteristic =
-        Namespaced_IRI.parse _namespace_name "numberOfAxlesCharacteristic" |> NamespacedName
-
+    let numberOfAxlesCharacteristic = _prefix "numberOfAxlesCharacteristic"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCharacteristicsExtension"></see>
     /// </summary>
-    let vehicleCharacteristicsExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleCharacteristicsExtension" |> NamespacedName
+    let vehicleCharacteristicsExtension = _prefix "vehicleCharacteristicsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VehicleCharacteristicsExtensionType"></see>
     /// </summary>
     let _VehicleCharacteristicsExtensionType =
-        Namespaced_IRI.parse _namespace_name "_VehicleCharacteristicsExtensionType" |> NamespacedName
+        _prefix "_VehicleCharacteristicsExtensionType"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleEquipment"></see>
     /// </summary>
-    let vehicleEquipment =
-        Namespaced_IRI.parse _namespace_name "vehicleEquipment" |> NamespacedName
-
+    let vehicleEquipment = _prefix "vehicleEquipment"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleUsage"></see>
     /// </summary>
-    let vehicleUsage =
-        Namespaced_IRI.parse _namespace_name "vehicleUsage" |> NamespacedName
-
+    let vehicleUsage = _prefix "vehicleUsage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#widthCharacteristic"></see>
     /// </summary>
-    let widthCharacteristic =
-        Namespaced_IRI.parse _namespace_name "widthCharacteristic" |> NamespacedName
-
+    let widthCharacteristic = _prefix "widthCharacteristic"
     /// <summary>
     /// Width characteristic of a vehicle.
     /// <see href="http://vocab.datex.org/terms#WidthCharacteristic"></see></summary>
-    let WidthCharacteristic =
-        Namespaced_IRI.parse _namespace_name "WidthCharacteristic" |> NamespacedName
-
+    let WidthCharacteristic = _prefix "WidthCharacteristic"
     /// <summary>
     /// Extension point for 'VehicleCharacteristics' to support additional attributes and literals like additional fuel types, load types etc.
     /// <see href="http://vocab.datex.org/terms#VehicleCharacteristicsExtended"></see></summary>
-    let VehicleCharacteristicsExtended =
-        Namespaced_IRI.parse _namespace_name "VehicleCharacteristicsExtended" |> NamespacedName
-
+    let VehicleCharacteristicsExtended = _prefix "VehicleCharacteristicsExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#emissionClassification"></see>
     /// </summary>
-    let emissionClassification =
-        Namespaced_IRI.parse _namespace_name "emissionClassification" |> NamespacedName
-
+    let emissionClassification = _prefix "emissionClassification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#fuelType2"></see>
     /// </summary>
-    let fuelType2 = Namespaced_IRI.parse _namespace_name "fuelType2" |> NamespacedName
+    let fuelType2 = _prefix "fuelType2"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#loadType2"></see>
     /// </summary>
-    let loadType2 = Namespaced_IRI.parse _namespace_name "loadType2" |> NamespacedName
-
+    let loadType2 = _prefix "loadType2"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#operationFreeOfEmission"></see>
     /// </summary>
-    let operationFreeOfEmission =
-        Namespaced_IRI.parse _namespace_name "operationFreeOfEmission" |> NamespacedName
-
+    let operationFreeOfEmission = _prefix "operationFreeOfEmission"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleType2"></see>
     /// </summary>
-    let vehicleType2 =
-        Namespaced_IRI.parse _namespace_name "vehicleType2" |> NamespacedName
-
+    let vehicleType2 = _prefix "vehicleType2"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleUsage2"></see>
     /// </summary>
-    let vehicleUsage2 =
-        Namespaced_IRI.parse _namespace_name "vehicleUsage2" |> NamespacedName
-
+    let vehicleUsage2 = _prefix "vehicleUsage2"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#coveringPetrolStationArea"></see>
     /// </summary>
-    let coveringPetrolStationArea =
-        Namespaced_IRI.parse _namespace_name "coveringPetrolStationArea" |> NamespacedName
-
+    let coveringPetrolStationArea = _prefix "coveringPetrolStationArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measuredValueIndex"></see>
     /// </summary>
-    let measuredValueIndex =
-        Namespaced_IRI.parse _namespace_name "measuredValueIndex" |> NamespacedName
-
+    let measuredValueIndex = _prefix "measuredValueIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCountAndRateExtension"></see>
     /// </summary>
-    let vehicleCountAndRateExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleCountAndRateExtension" |> NamespacedName
-
+    let vehicleCountAndRateExtension = _prefix "vehicleCountAndRateExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCountWithinInterval"></see>
     /// </summary>
-    let vehicleCountWithinInterval =
-        Namespaced_IRI.parse _namespace_name "vehicleCountWithinInterval" |> NamespacedName
-
+    let vehicleCountWithinInterval = _prefix "vehicleCountWithinInterval"
     /// <summary>
     /// Gives incoming and/or outgoing vehicles and/or change of occupied spaces within a given interval. The interval is given in positive or negative seconds related to 'measurementOrCalculationTime' or 'measurementDefaultTime'.
     /// <see href="http://vocab.datex.org/terms#VehicleCountWithinInterval"></see></summary>
-    let VehicleCountWithinInterval =
-        Namespaced_IRI.parse _namespace_name "VehicleCountWithinInterval" |> NamespacedName
-
+    let VehicleCountWithinInterval = _prefix "VehicleCountWithinInterval"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleRate"></see>
     /// </summary>
-    let vehicleRate =
-        Namespaced_IRI.parse _namespace_name "vehicleRate" |> NamespacedName
-
+    let vehicleRate = _prefix "vehicleRate"
     /// <summary>
     /// Gives information about fill and exit rates OR vehicle flow rate (without direction). If the time stamp is omitted, 'measurementTimeDefault' is used.
     /// <see href="http://vocab.datex.org/terms#VehicleRate"></see></summary>
-    let VehicleRate =
-        Namespaced_IRI.parse _namespace_name "VehicleRate" |> NamespacedName
-
+    let VehicleRate = _prefix "VehicleRate"
     /// <summary>
     /// A measured or calculated value of absolute count of vehicles within a specified period of time expressed as non negative integer.
     /// <see href="http://vocab.datex.org/terms#VehicleCountValue"></see></summary>
-    let VehicleCountValue =
-        Namespaced_IRI.parse _namespace_name "VehicleCountValue" |> NamespacedName
-
+    let VehicleCountValue = _prefix "VehicleCountValue"
     /// <summary>
     /// A measured or calculated absolute count of vehicles within a specified period of time expressed as non negative integer.
     /// <see href="http://vocab.datex.org/terms#vehicleCount"></see></summary>
-    let vehicleCount =
-        Namespaced_IRI.parse _namespace_name "vehicleCount" |> NamespacedName
-
+    let vehicleCount = _prefix "vehicleCount"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCountValueExtension"></see>
     /// </summary>
-    let vehicleCountValueExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleCountValueExtension" |> NamespacedName
-
+    let vehicleCountValueExtension = _prefix "vehicleCountValueExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#changeOfOccupiedSpaces"></see>
     /// </summary>
-    let changeOfOccupiedSpaces =
-        Namespaced_IRI.parse _namespace_name "changeOfOccupiedSpaces" |> NamespacedName
-
+    let changeOfOccupiedSpaces = _prefix "changeOfOccupiedSpaces"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#countedVehicles"></see>
     /// </summary>
-    let countedVehicles =
-        Namespaced_IRI.parse _namespace_name "countedVehicles" |> NamespacedName
-
+    let countedVehicles = _prefix "countedVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementInterval"></see>
     /// </summary>
-    let measurementInterval =
-        Namespaced_IRI.parse _namespace_name "measurementInterval" |> NamespacedName
-
+    let measurementInterval = _prefix "measurementInterval"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measurementOrCalcualtionTime"></see>
     /// </summary>
-    let measurementOrCalcualtionTime =
-        Namespaced_IRI.parse _namespace_name "measurementOrCalcualtionTime" |> NamespacedName
-
+    let measurementOrCalcualtionTime = _prefix "measurementOrCalcualtionTime"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfIncomingVehicles"></see>
     /// </summary>
-    let numberOfIncomingVehicles =
-        Namespaced_IRI.parse _namespace_name "numberOfIncomingVehicles" |> NamespacedName
-
+    let numberOfIncomingVehicles = _prefix "numberOfIncomingVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfOutgoingVehicles"></see>
     /// </summary>
-    let numberOfOutgoingVehicles =
-        Namespaced_IRI.parse _namespace_name "numberOfOutgoingVehicles" |> NamespacedName
+    let numberOfOutgoingVehicles = _prefix "numberOfOutgoingVehicles"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCountWithinIntervalExtension"></see>
     /// </summary>
     let vehicleCountWithinIntervalExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleCountWithinIntervalExtension" |> NamespacedName
+        _prefix "vehicleCountWithinIntervalExtension"
 
     /// <summary>
     /// A value of vehicle flow rate expressed in vehicles per hour.
     /// <see href="http://vocab.datex.org/terms#vehicleFlowRate"></see></summary>
-    let vehicleFlowRate =
-        Namespaced_IRI.parse _namespace_name "vehicleFlowRate" |> NamespacedName
-
+    let vehicleFlowRate = _prefix "vehicleFlowRate"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleFlowValueExtension"></see>
     /// </summary>
-    let vehicleFlowValueExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleFlowValueExtension" |> NamespacedName
-
+    let vehicleFlowValueExtension = _prefix "vehicleFlowValueExtension"
     /// <summary>
     /// The obstructing vehicle.
     /// <see href="http://vocab.datex.org/terms#obstructingVehicle"></see></summary>
-    let obstructingVehicle =
-        Namespaced_IRI.parse _namespace_name "obstructingVehicle" |> NamespacedName
-
+    let obstructingVehicle = _prefix "obstructingVehicle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleObstructionExtension"></see>
     /// </summary>
-    let vehicleObstructionExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleObstructionExtension" |> NamespacedName
-
+    let vehicleObstructionExtension = _prefix "vehicleObstructionExtension"
     /// <summary>
     /// Characterization of an obstruction on the road caused by one or more vehicles.
     /// <see href="http://vocab.datex.org/terms#vehicleObstructionType"></see></summary>
-    let vehicleObstructionType =
-        Namespaced_IRI.parse _namespace_name "vehicleObstructionType" |> NamespacedName
-
+    let vehicleObstructionType = _prefix "vehicleObstructionType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#measuredVehicles"></see>
     /// </summary>
-    let measuredVehicles =
-        Namespaced_IRI.parse _namespace_name "measuredVehicles" |> NamespacedName
-
+    let measuredVehicles = _prefix "measuredVehicles"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleRateExtension"></see>
     /// </summary>
-    let vehicleRateExtension =
-        Namespaced_IRI.parse _namespace_name "vehicleRateExtension" |> NamespacedName
-
+    let vehicleRateExtension = _prefix "vehicleRateExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#VersionedReference"></see>
     /// </summary>
-    let VersionedReference =
-        Namespaced_IRI.parse _namespace_name "VersionedReference" |> NamespacedName
-
+    let VersionedReference = _prefix "VersionedReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#minimumVisibilityDistance"></see>
     /// </summary>
-    let minimumVisibilityDistance =
-        Namespaced_IRI.parse _namespace_name "minimumVisibilityDistance" |> NamespacedName
-
+    let minimumVisibilityDistance = _prefix "minimumVisibilityDistance"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#visibilityExtension"></see>
     /// </summary>
-    let visibilityExtension =
-        Namespaced_IRI.parse _namespace_name "visibilityExtension" |> NamespacedName
-
+    let visibilityExtension = _prefix "visibilityExtension"
     /// <summary>
     /// Measurements of atmospheric visibility.
     /// <see href="http://vocab.datex.org/terms#VisibilityInformation"></see></summary>
-    let VisibilityInformation =
-        Namespaced_IRI.parse _namespace_name "VisibilityInformation" |> NamespacedName
-
+    let VisibilityInformation = _prefix "VisibilityInformation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#visibilityInformationExtension"></see>
     /// </summary>
-    let visibilityInformationExtension =
-        Namespaced_IRI.parse _namespace_name "visibilityInformationExtension" |> NamespacedName
-
+    let visibilityInformationExtension = _prefix "visibilityInformationExtension"
     /// <summary>
     /// Provides the current status and settings of the VMS and the currently displayed information. Where a VMS is displaying a sequence or alternating set of messages these are ordered according to the messageIndex qualifier.
     /// <see href="http://vocab.datex.org/terms#Vms"></see></summary>
-    let Vms = Namespaced_IRI.parse _namespace_name "Vms" |> NamespacedName
-
+    let Vms = _prefix "Vms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#managedLogicalLocationOverride"></see>
     /// </summary>
-    let managedLogicalLocationOverride =
-        Namespaced_IRI.parse _namespace_name "managedLogicalLocationOverride" |> NamespacedName
-
+    let managedLogicalLocationOverride = _prefix "managedLogicalLocationOverride"
     /// <summary>
     /// The logical location (e.g. a car park, a section of road, a junction etc.) which a VMS contributes to the management of.
     /// <see href="http://vocab.datex.org/terms#VmsManagedLogicalLocation"></see></summary>
-    let VmsManagedLogicalLocation =
-        Namespaced_IRI.parse _namespace_name "VmsManagedLogicalLocation" |> NamespacedName
-
+    let VmsManagedLogicalLocation = _prefix "VmsManagedLogicalLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramDisplayAreaSettings"></see>
     /// </summary>
-    let pictogramDisplayAreaSettings =
-        Namespaced_IRI.parse _namespace_name "pictogramDisplayAreaSettings" |> NamespacedName
+    let pictogramDisplayAreaSettings = _prefix "pictogramDisplayAreaSettings"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsPictogramDisplayAreaIndexPictogramDisplayAreaSettings"></see>
     /// </summary>
     let _VmsPictogramDisplayAreaIndexPictogramDisplayAreaSettings =
-        Namespaced_IRI.parse _namespace_name "_VmsPictogramDisplayAreaIndexPictogramDisplayAreaSettings" |> NamespacedName
+        _prefix "_VmsPictogramDisplayAreaIndexPictogramDisplayAreaSettings"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textDisplayAreaSettings"></see>
     /// </summary>
-    let textDisplayAreaSettings =
-        Namespaced_IRI.parse _namespace_name "textDisplayAreaSettings" |> NamespacedName
-
+    let textDisplayAreaSettings = _prefix "textDisplayAreaSettings"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsDynamicCharacteristics"></see>
     /// </summary>
-    let vmsDynamicCharacteristics =
-        Namespaced_IRI.parse _namespace_name "vmsDynamicCharacteristics" |> NamespacedName
-
+    let vmsDynamicCharacteristics = _prefix "vmsDynamicCharacteristics"
     /// <summary>
     /// Provides the current characteristic settings for the VMS which can be dynamically configured and therefore which override any corresponding characteristics set for the VMS in the relevant VmsUnitPublication.
     /// <see href="http://vocab.datex.org/terms#VmsDynamicCharacteristics"></see></summary>
-    let VmsDynamicCharacteristics =
-        Namespaced_IRI.parse _namespace_name "VmsDynamicCharacteristics" |> NamespacedName
-
+    let VmsDynamicCharacteristics = _prefix "VmsDynamicCharacteristics"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsExtension"></see>
     /// </summary>
-    let vmsExtension =
-        Namespaced_IRI.parse _namespace_name "vmsExtension" |> NamespacedName
-
+    let vmsExtension = _prefix "vmsExtension"
     /// <summary>
     /// The type of fault which is being reported for the specified variable message sign panel.
     /// <see href="http://vocab.datex.org/terms#vmsFault"></see></summary>
-    let vmsFault = Namespaced_IRI.parse _namespace_name "vmsFault" |> NamespacedName
+    let vmsFault = _prefix "vmsFault"
     /// <summary>
     /// Details of the fault which is being reported for the specified variable message sign panel.
     /// <see href="http://vocab.datex.org/terms#VmsFault"></see></summary>
-    let VmsFault = Namespaced_IRI.parse _namespace_name "VmsFault" |> NamespacedName
-
+    let VmsFault = _prefix "VmsFault"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsLocationOverride"></see>
     /// </summary>
-    let vmsLocationOverride =
-        Namespaced_IRI.parse _namespace_name "vmsLocationOverride" |> NamespacedName
-
+    let vmsLocationOverride = _prefix "vmsLocationOverride"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsMessage"></see>
     /// </summary>
-    let vmsMessage = Namespaced_IRI.parse _namespace_name "vmsMessage" |> NamespacedName
-
+    let vmsMessage = _prefix "vmsMessage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsMessageIndexVmsMessage"></see>
     /// </summary>
-    let _VmsMessageIndexVmsMessage =
-        Namespaced_IRI.parse _namespace_name "_VmsMessageIndexVmsMessage" |> NamespacedName
-
+    let _VmsMessageIndexVmsMessage = _prefix "_VmsMessageIndexVmsMessage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsMessageSequencingInterval"></see>
     /// </summary>
-    let vmsMessageSequencingInterval =
-        Namespaced_IRI.parse _namespace_name "vmsMessageSequencingInterval" |> NamespacedName
-
+    let vmsMessageSequencingInterval = _prefix "vmsMessageSequencingInterval"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsWorking"></see>
     /// </summary>
-    let vmsWorking = Namespaced_IRI.parse _namespace_name "vmsWorking" |> NamespacedName
-
+    let vmsWorking = _prefix "vmsWorking"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfPictogramDisplayAreas"></see>
     /// </summary>
-    let numberOfPictogramDisplayAreas =
-        Namespaced_IRI.parse _namespace_name "numberOfPictogramDisplayAreas" |> NamespacedName
+    let numberOfPictogramDisplayAreas = _prefix "numberOfPictogramDisplayAreas"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsDynamicCharacteristicsExtension"></see>
     /// </summary>
     let vmsDynamicCharacteristicsExtension =
-        Namespaced_IRI.parse _namespace_name "vmsDynamicCharacteristicsExtension" |> NamespacedName
+        _prefix "vmsDynamicCharacteristicsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPictogramDisplayCharacteristics"></see>
     /// </summary>
     let vmsPictogramDisplayCharacteristics =
-        Namespaced_IRI.parse _namespace_name "vmsPictogramDisplayCharacteristics" |> NamespacedName
+        _prefix "vmsPictogramDisplayCharacteristics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsDynamicCharacteristicsPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics"></see>
     /// </summary>
     let _VmsDynamicCharacteristicsPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics =
-        Namespaced_IRI.parse _namespace_name "_VmsDynamicCharacteristicsPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics" |> NamespacedName
+        _prefix "_VmsDynamicCharacteristicsPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextDisplayCharacteristics"></see>
     /// </summary>
-    let vmsTextDisplayCharacteristics =
-        Namespaced_IRI.parse _namespace_name "vmsTextDisplayCharacteristics" |> NamespacedName
-
+    let vmsTextDisplayCharacteristics = _prefix "vmsTextDisplayCharacteristics"
     /// <summary>
     /// Characteristics specific to the textual display area on the VMS.
     /// <see href="http://vocab.datex.org/terms#VmsTextDisplayCharacteristics"></see></summary>
-    let VmsTextDisplayCharacteristics =
-        Namespaced_IRI.parse _namespace_name "VmsTextDisplayCharacteristics" |> NamespacedName
-
+    let VmsTextDisplayCharacteristics = _prefix "VmsTextDisplayCharacteristics"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsFaultExtension"></see>
     /// </summary>
-    let vmsFaultExtension =
-        Namespaced_IRI.parse _namespace_name "vmsFaultExtension" |> NamespacedName
-
+    let vmsFaultExtension = _prefix "vmsFaultExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceFromLogicalLocation"></see>
     /// </summary>
-    let distanceFromLogicalLocation =
-        Namespaced_IRI.parse _namespace_name "distanceFromLogicalLocation" |> NamespacedName
-
+    let distanceFromLogicalLocation = _prefix "distanceFromLogicalLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#managedLocation"></see>
     /// </summary>
-    let managedLocation =
-        Namespaced_IRI.parse _namespace_name "managedLocation" |> NamespacedName
-
+    let managedLocation = _prefix "managedLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#managedLogicalLocation"></see>
     /// </summary>
-    let managedLogicalLocation =
-        Namespaced_IRI.parse _namespace_name "managedLogicalLocation" |> NamespacedName
+    let managedLogicalLocation = _prefix "managedLogicalLocation"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsManagedLogicalLocationExtension"></see>
     /// </summary>
     let vmsManagedLogicalLocationExtension =
-        Namespaced_IRI.parse _namespace_name "vmsManagedLogicalLocationExtension" |> NamespacedName
+        _prefix "vmsManagedLogicalLocationExtension"
 
     /// <summary>
     /// A message displayed on a VMS which may comprise one or more sequentially displayed text pages and/or pictograms with supplementary details. When in a sequence of displayed messages sequencing of text pages and pictograms within a message are prohibited.
     /// <see href="http://vocab.datex.org/terms#VmsMessage"></see></summary>
-    let VmsMessage = Namespaced_IRI.parse _namespace_name "VmsMessage" |> NamespacedName
+    let VmsMessage = _prefix "VmsMessage"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#associatedManagementOrDiversionPlan"></see>
     /// </summary>
     let associatedManagementOrDiversionPlan =
-        Namespaced_IRI.parse _namespace_name "associatedManagementOrDiversionPlan" |> NamespacedName
+        _prefix "associatedManagementOrDiversionPlan"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#codedReasonForSetting"></see>
     /// </summary>
-    let codedReasonForSetting =
-        Namespaced_IRI.parse _namespace_name "codedReasonForSetting" |> NamespacedName
-
+    let codedReasonForSetting = _prefix "codedReasonForSetting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceFromSituationRecord"></see>
     /// </summary>
-    let distanceFromSituationRecord =
-        Namespaced_IRI.parse _namespace_name "distanceFromSituationRecord" |> NamespacedName
-
+    let distanceFromSituationRecord = _prefix "distanceFromSituationRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#mareNostrumCompliant"></see>
     /// </summary>
-    let mareNostrumCompliant =
-        Namespaced_IRI.parse _namespace_name "mareNostrumCompliant" |> NamespacedName
-
+    let mareNostrumCompliant = _prefix "mareNostrumCompliant"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#messageSetBy"></see>
     /// </summary>
-    let messageSetBy =
-        Namespaced_IRI.parse _namespace_name "messageSetBy" |> NamespacedName
-
+    let messageSetBy = _prefix "messageSetBy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#primarySetting"></see>
     /// </summary>
-    let primarySetting =
-        Namespaced_IRI.parse _namespace_name "primarySetting" |> NamespacedName
-
+    let primarySetting = _prefix "primarySetting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#reasonForSetting"></see>
     /// </summary>
-    let reasonForSetting =
-        Namespaced_IRI.parse _namespace_name "reasonForSetting" |> NamespacedName
-
+    let reasonForSetting = _prefix "reasonForSetting"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#requestedBy"></see>
     /// </summary>
-    let requestedBy =
-        Namespaced_IRI.parse _namespace_name "requestedBy" |> NamespacedName
-
+    let requestedBy = _prefix "requestedBy"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#setBySystem"></see>
     /// </summary>
-    let setBySystem =
-        Namespaced_IRI.parse _namespace_name "setBySystem" |> NamespacedName
+    let setBySystem = _prefix "setBySystem"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordToWhichMessageIsRelated"></see>
     /// </summary>
     let situationRecordToWhichMessageIsRelated =
-        Namespaced_IRI.parse _namespace_name "situationRecordToWhichMessageIsRelated" |> NamespacedName
+        _prefix "situationRecordToWhichMessageIsRelated"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationToWhichMessageIsRelated"></see>
     /// </summary>
-    let situationToWhichMessageIsRelated =
-        Namespaced_IRI.parse _namespace_name "situationToWhichMessageIsRelated" |> NamespacedName
-
+    let situationToWhichMessageIsRelated = _prefix "situationToWhichMessageIsRelated"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPage"></see>
     /// </summary>
-    let textPage = Namespaced_IRI.parse _namespace_name "textPage" |> NamespacedName
+    let textPage = _prefix "textPage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_TextPage"></see>
     /// </summary>
-    let _TextPage = Namespaced_IRI.parse _namespace_name "_TextPage" |> NamespacedName
-
+    let _TextPage = _prefix "_TextPage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPictogramSequencingInterval"></see>
     /// </summary>
-    let textPictogramSequencingInterval =
-        Namespaced_IRI.parse _namespace_name "textPictogramSequencingInterval" |> NamespacedName
-
+    let textPictogramSequencingInterval = _prefix "textPictogramSequencingInterval"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#timeLastSet"></see>
     /// </summary>
-    let timeLastSet =
-        Namespaced_IRI.parse _namespace_name "timeLastSet" |> NamespacedName
-
+    let timeLastSet = _prefix "timeLastSet"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsMessageExtension"></see>
     /// </summary>
-    let vmsMessageExtension =
-        Namespaced_IRI.parse _namespace_name "vmsMessageExtension" |> NamespacedName
-
+    let vmsMessageExtension = _prefix "vmsMessageExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsMessageInformationType"></see>
     /// </summary>
-    let vmsMessageInformationType =
-        Namespaced_IRI.parse _namespace_name "vmsMessageInformationType" |> NamespacedName
-
+    let vmsMessageInformationType = _prefix "vmsMessageInformationType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPictogramDisplayArea"></see>
     /// </summary>
-    let vmsPictogramDisplayArea =
-        Namespaced_IRI.parse _namespace_name "vmsPictogramDisplayArea" |> NamespacedName
+    let vmsPictogramDisplayArea = _prefix "vmsPictogramDisplayArea"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsMessagePictogramDisplayAreaIndexVmsPictogramDisplayArea"></see>
     /// </summary>
     let _VmsMessagePictogramDisplayAreaIndexVmsPictogramDisplayArea =
-        Namespaced_IRI.parse _namespace_name "_VmsMessagePictogramDisplayAreaIndexVmsPictogramDisplayArea" |> NamespacedName
+        _prefix "_VmsMessagePictogramDisplayAreaIndexVmsPictogramDisplayArea"
 
     /// <summary>
     /// A main pictogram displayable on the VMS panel. Note a main pictogram may have an associated supplementary panel which may itself contain a further pictogram and line of text.
     /// <see href="http://vocab.datex.org/terms#VmsPictogram"></see></summary>
-    let VmsPictogram =
-        Namespaced_IRI.parse _namespace_name "VmsPictogram" |> NamespacedName
-
+    let VmsPictogram = _prefix "VmsPictogram"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#additionalPictogramDescription"></see>
     /// </summary>
-    let additionalPictogramDescription =
-        Namespaced_IRI.parse _namespace_name "additionalPictogramDescription" |> NamespacedName
-
+    let additionalPictogramDescription = _prefix "additionalPictogramDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#distanceAttribute"></see>
     /// </summary>
-    let distanceAttribute =
-        Namespaced_IRI.parse _namespace_name "distanceAttribute" |> NamespacedName
-
+    let distanceAttribute = _prefix "distanceAttribute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#heightAttribute"></see>
     /// </summary>
-    let heightAttribute =
-        Namespaced_IRI.parse _namespace_name "heightAttribute" |> NamespacedName
-
+    let heightAttribute = _prefix "heightAttribute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lengthAttribute"></see>
     /// </summary>
-    let lengthAttribute =
-        Namespaced_IRI.parse _namespace_name "lengthAttribute" |> NamespacedName
-
+    let lengthAttribute = _prefix "lengthAttribute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramCode"></see>
     /// </summary>
-    let pictogramCode =
-        Namespaced_IRI.parse _namespace_name "pictogramCode" |> NamespacedName
-
+    let pictogramCode = _prefix "pictogramCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramDescription"></see>
     /// </summary>
-    let pictogramDescription =
-        Namespaced_IRI.parse _namespace_name "pictogramDescription" |> NamespacedName
-
+    let pictogramDescription = _prefix "pictogramDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramFlashing"></see>
     /// </summary>
-    let pictogramFlashing =
-        Namespaced_IRI.parse _namespace_name "pictogramFlashing" |> NamespacedName
-
+    let pictogramFlashing = _prefix "pictogramFlashing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramInInverseColour"></see>
     /// </summary>
-    let pictogramInInverseColour =
-        Namespaced_IRI.parse _namespace_name "pictogramInInverseColour" |> NamespacedName
-
+    let pictogramInInverseColour = _prefix "pictogramInInverseColour"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramUrl"></see>
     /// </summary>
-    let pictogramUrl =
-        Namespaced_IRI.parse _namespace_name "pictogramUrl" |> NamespacedName
-
+    let pictogramUrl = _prefix "pictogramUrl"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#presenceOfRedTriangle"></see>
     /// </summary>
-    let presenceOfRedTriangle =
-        Namespaced_IRI.parse _namespace_name "presenceOfRedTriangle" |> NamespacedName
-
+    let presenceOfRedTriangle = _prefix "presenceOfRedTriangle"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#speedAttribute"></see>
     /// </summary>
-    let speedAttribute =
-        Namespaced_IRI.parse _namespace_name "speedAttribute" |> NamespacedName
-
+    let speedAttribute = _prefix "speedAttribute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#viennaConventionCompliant"></see>
     /// </summary>
-    let viennaConventionCompliant =
-        Namespaced_IRI.parse _namespace_name "viennaConventionCompliant" |> NamespacedName
-
+    let viennaConventionCompliant = _prefix "viennaConventionCompliant"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPictogramExtension"></see>
     /// </summary>
-    let vmsPictogramExtension =
-        Namespaced_IRI.parse _namespace_name "vmsPictogramExtension" |> NamespacedName
-
+    let vmsPictogramExtension = _prefix "vmsPictogramExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryPanel"></see>
     /// </summary>
-    let vmsSupplementaryPanel =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryPanel" |> NamespacedName
-
+    let vmsSupplementaryPanel = _prefix "vmsSupplementaryPanel"
     /// <summary>
     /// A panel which may display information or a regulatory instruction which is supplemental to the associated pictogram, comprising either an additional line of text or a pictogram or both.
     /// <see href="http://vocab.datex.org/terms#VmsSupplementaryPanel"></see></summary>
-    let VmsSupplementaryPanel =
-        Namespaced_IRI.parse _namespace_name "VmsSupplementaryPanel" |> NamespacedName
-
+    let VmsSupplementaryPanel = _prefix "VmsSupplementaryPanel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#weightAttribute"></see>
     /// </summary>
-    let weightAttribute =
-        Namespaced_IRI.parse _namespace_name "weightAttribute" |> NamespacedName
-
+    let weightAttribute = _prefix "weightAttribute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#weightPerAxleAttribute"></see>
     /// </summary>
-    let weightPerAxleAttribute =
-        Namespaced_IRI.parse _namespace_name "weightPerAxleAttribute" |> NamespacedName
-
+    let weightPerAxleAttribute = _prefix "weightPerAxleAttribute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#widthAttribute"></see>
     /// </summary>
-    let widthAttribute =
-        Namespaced_IRI.parse _namespace_name "widthAttribute" |> NamespacedName
-
+    let widthAttribute = _prefix "widthAttribute"
     /// <summary>
     /// An area on a VMS used for the display of pictograms and associated supplemental information or instructions.
     /// <see href="http://vocab.datex.org/terms#VmsPictogramDisplayArea"></see></summary>
-    let VmsPictogramDisplayArea =
-        Namespaced_IRI.parse _namespace_name "VmsPictogramDisplayArea" |> NamespacedName
+    let VmsPictogramDisplayArea = _prefix "VmsPictogramDisplayArea"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#synchronizedSequencingWithTextPages"></see>
     /// </summary>
     let synchronizedSequencingWithTextPages =
-        Namespaced_IRI.parse _namespace_name "synchronizedSequencingWithTextPages" |> NamespacedName
+        _prefix "synchronizedSequencingWithTextPages"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPictogram"></see>
     /// </summary>
-    let vmsPictogram =
-        Namespaced_IRI.parse _namespace_name "vmsPictogram" |> NamespacedName
+    let vmsPictogram = _prefix "vmsPictogram"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsPictogramDisplayAreaPictogramSequencingIndexVmsPictogram"></see>
     /// </summary>
     let _VmsPictogramDisplayAreaPictogramSequencingIndexVmsPictogram =
-        Namespaced_IRI.parse _namespace_name "_VmsPictogramDisplayAreaPictogramSequencingIndexVmsPictogram" |> NamespacedName
+        _prefix "_VmsPictogramDisplayAreaPictogramSequencingIndexVmsPictogram"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPictogramDisplayAreaExtension"></see>
     /// </summary>
-    let vmsPictogramDisplayAreaExtension =
-        Namespaced_IRI.parse _namespace_name "vmsPictogramDisplayAreaExtension" |> NamespacedName
+    let vmsPictogramDisplayAreaExtension = _prefix "vmsPictogramDisplayAreaExtension"
 
     /// <summary>
     /// Characteristics specific to the pictogram display area(s) on the VMS where pictogramDisplayAreaIndex indicates which pictogram area it relates to.
     /// <see href="http://vocab.datex.org/terms#VmsPictogramDisplayCharacteristics"></see></summary>
     let VmsPictogramDisplayCharacteristics =
-        Namespaced_IRI.parse _namespace_name "VmsPictogramDisplayCharacteristics" |> NamespacedName
+        _prefix "VmsPictogramDisplayCharacteristics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxNumberOfSequentialPictograms"></see>
     /// </summary>
-    let maxNumberOfSequentialPictograms =
-        Namespaced_IRI.parse _namespace_name "maxNumberOfSequentialPictograms" |> NamespacedName
-
+    let maxNumberOfSequentialPictograms = _prefix "maxNumberOfSequentialPictograms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxPictogramLuminanceLevel"></see>
     /// </summary>
-    let maxPictogramLuminanceLevel =
-        Namespaced_IRI.parse _namespace_name "maxPictogramLuminanceLevel" |> NamespacedName
-
+    let maxPictogramLuminanceLevel = _prefix "maxPictogramLuminanceLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramCodeListIdentifier"></see>
     /// </summary>
-    let pictogramCodeListIdentifier =
-        Namespaced_IRI.parse _namespace_name "pictogramCodeListIdentifier" |> NamespacedName
-
+    let pictogramCodeListIdentifier = _prefix "pictogramCodeListIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramDisplayHeight"></see>
     /// </summary>
-    let pictogramDisplayHeight =
-        Namespaced_IRI.parse _namespace_name "pictogramDisplayHeight" |> NamespacedName
-
+    let pictogramDisplayHeight = _prefix "pictogramDisplayHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramDisplayWidth"></see>
     /// </summary>
-    let pictogramDisplayWidth =
-        Namespaced_IRI.parse _namespace_name "pictogramDisplayWidth" |> NamespacedName
-
+    let pictogramDisplayWidth = _prefix "pictogramDisplayWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramLanternsPresent"></see>
     /// </summary>
-    let pictogramLanternsPresent =
-        Namespaced_IRI.parse _namespace_name "pictogramLanternsPresent" |> NamespacedName
-
+    let pictogramLanternsPresent = _prefix "pictogramLanternsPresent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramNumberOfColours"></see>
     /// </summary>
-    let pictogramNumberOfColours =
-        Namespaced_IRI.parse _namespace_name "pictogramNumberOfColours" |> NamespacedName
-
+    let pictogramNumberOfColours = _prefix "pictogramNumberOfColours"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramPixelsAcross"></see>
     /// </summary>
-    let pictogramPixelsAcross =
-        Namespaced_IRI.parse _namespace_name "pictogramPixelsAcross" |> NamespacedName
-
+    let pictogramPixelsAcross = _prefix "pictogramPixelsAcross"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramPixelsDown"></see>
     /// </summary>
-    let pictogramPixelsDown =
-        Namespaced_IRI.parse _namespace_name "pictogramPixelsDown" |> NamespacedName
-
+    let pictogramPixelsDown = _prefix "pictogramPixelsDown"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramPositionAbsolute"></see>
     /// </summary>
-    let pictogramPositionAbsolute =
-        Namespaced_IRI.parse _namespace_name "pictogramPositionAbsolute" |> NamespacedName
-
+    let pictogramPositionAbsolute = _prefix "pictogramPositionAbsolute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramPositionRelativeToText"></see>
     /// </summary>
-    let pictogramPositionRelativeToText =
-        Namespaced_IRI.parse _namespace_name "pictogramPositionRelativeToText" |> NamespacedName
-
+    let pictogramPositionRelativeToText = _prefix "pictogramPositionRelativeToText"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramPositionX"></see>
     /// </summary>
-    let pictogramPositionX =
-        Namespaced_IRI.parse _namespace_name "pictogramPositionX" |> NamespacedName
-
+    let pictogramPositionX = _prefix "pictogramPositionX"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramPositionY"></see>
     /// </summary>
-    let pictogramPositionY =
-        Namespaced_IRI.parse _namespace_name "pictogramPositionY" |> NamespacedName
-
+    let pictogramPositionY = _prefix "pictogramPositionY"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramSequencingCapable"></see>
     /// </summary>
-    let pictogramSequencingCapable =
-        Namespaced_IRI.parse _namespace_name "pictogramSequencingCapable" |> NamespacedName
+    let pictogramSequencingCapable = _prefix "pictogramSequencingCapable"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPictogramDisplayCharacteristicsExtension"></see>
     /// </summary>
     let vmsPictogramDisplayCharacteristicsExtension =
-        Namespaced_IRI.parse _namespace_name "vmsPictogramDisplayCharacteristicsExtension" |> NamespacedName
+        _prefix "vmsPictogramDisplayCharacteristicsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryPanelCharacteristics"></see>
     /// </summary>
     let vmsSupplementaryPanelCharacteristics =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryPanelCharacteristics" |> NamespacedName
+        _prefix "vmsSupplementaryPanelCharacteristics"
 
     /// <summary>
     /// Characteristics of a panel which may display details (sometimes regulatory in nature) that are supplemental to the main pictogram, comprising an additional line of text and/or a pictogram.
     /// <see href="http://vocab.datex.org/terms#VmsSupplementaryPanelCharacteristics"></see></summary>
     let VmsSupplementaryPanelCharacteristics =
-        Namespaced_IRI.parse _namespace_name "VmsSupplementaryPanelCharacteristics" |> NamespacedName
+        _prefix "VmsSupplementaryPanelCharacteristics"
 
     /// <summary>
     /// A publication containing the current status and settings of one or more VMS units, each unit controlling one or more individual variable message signs.
     /// <see href="http://vocab.datex.org/terms#VmsPublication"></see></summary>
-    let VmsPublication =
-        Namespaced_IRI.parse _namespace_name "VmsPublication" |> NamespacedName
-
+    let VmsPublication = _prefix "VmsPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPublicationExtension"></see>
     /// </summary>
-    let vmsPublicationExtension =
-        Namespaced_IRI.parse _namespace_name "vmsPublicationExtension" |> NamespacedName
-
+    let vmsPublicationExtension = _prefix "vmsPublicationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnit"></see>
     /// </summary>
-    let vmsUnit = Namespaced_IRI.parse _namespace_name "vmsUnit" |> NamespacedName
+    let vmsUnit = _prefix "vmsUnit"
     /// <summary>
     /// Status of a VMS unit which may control one or more variable message signs on a single gantry or on different gantries.
     /// <see href="http://vocab.datex.org/terms#VmsUnit"></see></summary>
-    let VmsUnit = Namespaced_IRI.parse _namespace_name "VmsUnit" |> NamespacedName
+    let VmsUnit = _prefix "VmsUnit"
     /// <summary>
     /// A sub-record in the VMS Unit table defining the characteristics of a single variable message sign that is controlled by a specific VMS unit. Locations are on or adjacent to the road network but may be updated over time if relating to a mobile VMS unit.
     /// <see href="http://vocab.datex.org/terms#VmsRecord"></see></summary>
-    let VmsRecord = Namespaced_IRI.parse _namespace_name "VmsRecord" |> NamespacedName
-
+    let VmsRecord = _prefix "VmsRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#backgroundImageUrl"></see>
     /// </summary>
-    let backgroundImageUrl =
-        Namespaced_IRI.parse _namespace_name "backgroundImageUrl" |> NamespacedName
+    let backgroundImageUrl = _prefix "backgroundImageUrl"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#dynamicallyConfigurableDisplayAreas"></see>
     /// </summary>
     let dynamicallyConfigurableDisplayAreas =
-        Namespaced_IRI.parse _namespace_name "dynamicallyConfigurableDisplayAreas" |> NamespacedName
+        _prefix "dynamicallyConfigurableDisplayAreas"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsDescription"></see>
     /// </summary>
-    let vmsDescription =
-        Namespaced_IRI.parse _namespace_name "vmsDescription" |> NamespacedName
-
+    let vmsDescription = _prefix "vmsDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsDisplayHeight"></see>
     /// </summary>
-    let vmsDisplayHeight =
-        Namespaced_IRI.parse _namespace_name "vmsDisplayHeight" |> NamespacedName
-
+    let vmsDisplayHeight = _prefix "vmsDisplayHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsDisplayWidth"></see>
     /// </summary>
-    let vmsDisplayWidth =
-        Namespaced_IRI.parse _namespace_name "vmsDisplayWidth" |> NamespacedName
-
+    let vmsDisplayWidth = _prefix "vmsDisplayWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsHeightAboveRoadway"></see>
     /// </summary>
-    let vmsHeightAboveRoadway =
-        Namespaced_IRI.parse _namespace_name "vmsHeightAboveRoadway" |> NamespacedName
-
+    let vmsHeightAboveRoadway = _prefix "vmsHeightAboveRoadway"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsLocation"></see>
     /// </summary>
-    let vmsLocation =
-        Namespaced_IRI.parse _namespace_name "vmsLocation" |> NamespacedName
-
+    let vmsLocation = _prefix "vmsLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsManagedLogicalLocation"></see>
     /// </summary>
-    let vmsManagedLogicalLocation =
-        Namespaced_IRI.parse _namespace_name "vmsManagedLogicalLocation" |> NamespacedName
-
+    let vmsManagedLogicalLocation = _prefix "vmsManagedLogicalLocation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsOwner"></see>
     /// </summary>
-    let vmsOwner = Namespaced_IRI.parse _namespace_name "vmsOwner" |> NamespacedName
-
+    let vmsOwner = _prefix "vmsOwner"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsPhysicalMounting"></see>
     /// </summary>
-    let vmsPhysicalMounting =
-        Namespaced_IRI.parse _namespace_name "vmsPhysicalMounting" |> NamespacedName
+    let vmsPhysicalMounting = _prefix "vmsPhysicalMounting"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsRecordPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics"></see>
     /// </summary>
     let _VmsRecordPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics =
-        Namespaced_IRI.parse _namespace_name "_VmsRecordPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics" |> NamespacedName
+        _prefix "_VmsRecordPictogramDisplayAreaIndexVmsPictogramDisplayCharacteristics"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsRecordExtension"></see>
     /// </summary>
-    let vmsRecordExtension =
-        Namespaced_IRI.parse _namespace_name "vmsRecordExtension" |> NamespacedName
-
+    let vmsRecordExtension = _prefix "vmsRecordExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsType"></see>
     /// </summary>
-    let vmsType = Namespaced_IRI.parse _namespace_name "vmsType" |> NamespacedName
-
+    let vmsType = _prefix "vmsType"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTypeCode"></see>
     /// </summary>
-    let vmsTypeCode =
-        Namespaced_IRI.parse _namespace_name "vmsTypeCode" |> NamespacedName
-
+    let vmsTypeCode = _prefix "vmsTypeCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSettingExtension"></see>
     /// </summary>
-    let vmsSettingExtension =
-        Namespaced_IRI.parse _namespace_name "vmsSettingExtension" |> NamespacedName
-
+    let vmsSettingExtension = _prefix "vmsSettingExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryMessageDescription"></see>
     /// </summary>
-    let supplementaryMessageDescription =
-        Namespaced_IRI.parse _namespace_name "supplementaryMessageDescription" |> NamespacedName
-
+    let supplementaryMessageDescription = _prefix "supplementaryMessageDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryPanelExtension"></see>
     /// </summary>
-    let vmsSupplementaryPanelExtension =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryPanelExtension" |> NamespacedName
-
+    let vmsSupplementaryPanelExtension = _prefix "vmsSupplementaryPanelExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryPictogram"></see>
     /// </summary>
-    let vmsSupplementaryPictogram =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryPictogram" |> NamespacedName
-
+    let vmsSupplementaryPictogram = _prefix "vmsSupplementaryPictogram"
     /// <summary>
     /// An additional pictogram that is displayed in the panel which is supplemental to the associated pictogram display.
     /// <see href="http://vocab.datex.org/terms#VmsSupplementaryPictogram"></see></summary>
-    let VmsSupplementaryPictogram =
-        Namespaced_IRI.parse _namespace_name "VmsSupplementaryPictogram" |> NamespacedName
-
+    let VmsSupplementaryPictogram = _prefix "VmsSupplementaryPictogram"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryText"></see>
     /// </summary>
-    let vmsSupplementaryText =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryText" |> NamespacedName
-
+    let vmsSupplementaryText = _prefix "vmsSupplementaryText"
     /// <summary>
     /// A single line of text on a text display area or supplementary panel.
     /// <see href="http://vocab.datex.org/terms#VmsTextLine"></see></summary>
-    let VmsTextLine =
-        Namespaced_IRI.parse _namespace_name "VmsTextLine" |> NamespacedName
-
+    let VmsTextLine = _prefix "VmsTextLine"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#relativePositionToPictogramArea"></see>
     /// </summary>
-    let relativePositionToPictogramArea =
-        Namespaced_IRI.parse _namespace_name "relativePositionToPictogramArea" |> NamespacedName
-
+    let relativePositionToPictogramArea = _prefix "relativePositionToPictogramArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPanelDisplayHeight"></see>
     /// </summary>
-    let supplementaryPanelDisplayHeight =
-        Namespaced_IRI.parse _namespace_name "supplementaryPanelDisplayHeight" |> NamespacedName
-
+    let supplementaryPanelDisplayHeight = _prefix "supplementaryPanelDisplayHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPanelDisplayWidth"></see>
     /// </summary>
-    let supplementaryPanelDisplayWidth =
-        Namespaced_IRI.parse _namespace_name "supplementaryPanelDisplayWidth" |> NamespacedName
-
+    let supplementaryPanelDisplayWidth = _prefix "supplementaryPanelDisplayWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPanelPixelsAcross"></see>
     /// </summary>
-    let supplementaryPanelPixelsAcross =
-        Namespaced_IRI.parse _namespace_name "supplementaryPanelPixelsAcross" |> NamespacedName
-
+    let supplementaryPanelPixelsAcross = _prefix "supplementaryPanelPixelsAcross"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPanelPixelsDown"></see>
     /// </summary>
-    let supplementaryPanelPixelsDown =
-        Namespaced_IRI.parse _namespace_name "supplementaryPanelPixelsDown" |> NamespacedName
-
+    let supplementaryPanelPixelsDown = _prefix "supplementaryPanelPixelsDown"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPanelPositionX"></see>
     /// </summary>
-    let supplementaryPanelPositionX =
-        Namespaced_IRI.parse _namespace_name "supplementaryPanelPositionX" |> NamespacedName
-
+    let supplementaryPanelPositionX = _prefix "supplementaryPanelPositionX"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPanelPositionY"></see>
     /// </summary>
-    let supplementaryPanelPositionY =
-        Namespaced_IRI.parse _namespace_name "supplementaryPanelPositionY" |> NamespacedName
+    let supplementaryPanelPositionY = _prefix "supplementaryPanelPositionY"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPictogramCodeListIdentifier"></see>
     /// </summary>
     let supplementaryPictogramCodeListIdentifier =
-        Namespaced_IRI.parse _namespace_name "supplementaryPictogramCodeListIdentifier" |> NamespacedName
+        _prefix "supplementaryPictogramCodeListIdentifier"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryPanelCharacteristicsExtension"></see>
     /// </summary>
     let vmsSupplementaryPanelCharacteristicsExtension =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryPanelCharacteristicsExtension" |> NamespacedName
+        _prefix "vmsSupplementaryPanelCharacteristicsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#additionalSupplementaryPictogramDescription"></see>
     /// </summary>
     let additionalSupplementaryPictogramDescription =
-        Namespaced_IRI.parse _namespace_name "additionalSupplementaryPictogramDescription" |> NamespacedName
+        _prefix "additionalSupplementaryPictogramDescription"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPictogramCode"></see>
     /// </summary>
-    let supplementaryPictogramCode =
-        Namespaced_IRI.parse _namespace_name "supplementaryPictogramCode" |> NamespacedName
-
+    let supplementaryPictogramCode = _prefix "supplementaryPictogramCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPictogramDescription"></see>
     /// </summary>
-    let supplementaryPictogramDescription =
-        Namespaced_IRI.parse _namespace_name "supplementaryPictogramDescription" |> NamespacedName
-
+    let supplementaryPictogramDescription = _prefix "supplementaryPictogramDescription"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#supplementaryPictogramUrl"></see>
     /// </summary>
-    let supplementaryPictogramUrl =
-        Namespaced_IRI.parse _namespace_name "supplementaryPictogramUrl" |> NamespacedName
+    let supplementaryPictogramUrl = _prefix "supplementaryPictogramUrl"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsSupplementaryPictogramExtension"></see>
     /// </summary>
     let vmsSupplementaryPictogramExtension =
-        Namespaced_IRI.parse _namespace_name "vmsSupplementaryPictogramExtension" |> NamespacedName
+        _prefix "vmsSupplementaryPictogramExtension"
 
     /// <summary>
     /// A publication containing one or more VMS Unit Tables each comprising a set of records which hold details of VMS units.
     /// <see href="http://vocab.datex.org/terms#VmsTablePublication"></see></summary>
-    let VmsTablePublication =
-        Namespaced_IRI.parse _namespace_name "VmsTablePublication" |> NamespacedName
-
+    let VmsTablePublication = _prefix "VmsTablePublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTablePublicationExtension"></see>
     /// </summary>
-    let vmsTablePublicationExtension =
-        Namespaced_IRI.parse _namespace_name "vmsTablePublicationExtension" |> NamespacedName
-
+    let vmsTablePublicationExtension = _prefix "vmsTablePublicationExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitTable"></see>
     /// </summary>
-    let vmsUnitTable =
-        Namespaced_IRI.parse _namespace_name "vmsUnitTable" |> NamespacedName
-
+    let vmsUnitTable = _prefix "vmsUnitTable"
     /// <summary>
     /// A versioned VMS Unit Table comprising a number of data records, each record defining the characteristics of a specific deployed variable message sign unit.
     /// <see href="http://vocab.datex.org/terms#VmsUnitTable"></see></summary>
-    let VmsUnitTable =
-        Namespaced_IRI.parse _namespace_name "VmsUnitTable" |> NamespacedName
-
+    let VmsUnitTable = _prefix "VmsUnitTable"
     /// <summary>
     /// A page of text (comprising one or more ordered lines) that are displayed simultaneously on the VMS. Where more than one page is defined these are sequentially displayed according to their "pageNumber".
     /// <see href="http://vocab.datex.org/terms#VmsText"></see></summary>
-    let VmsText = Namespaced_IRI.parse _namespace_name "VmsText" |> NamespacedName
-
+    let VmsText = _prefix "VmsText"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsLegendCode"></see>
     /// </summary>
-    let vmsLegendCode =
-        Namespaced_IRI.parse _namespace_name "vmsLegendCode" |> NamespacedName
-
+    let vmsLegendCode = _prefix "vmsLegendCode"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextExtension"></see>
     /// </summary>
-    let vmsTextExtension =
-        Namespaced_IRI.parse _namespace_name "vmsTextExtension" |> NamespacedName
-
+    let vmsTextExtension = _prefix "vmsTextExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextImageUrl"></see>
     /// </summary>
-    let vmsTextImageUrl =
-        Namespaced_IRI.parse _namespace_name "vmsTextImageUrl" |> NamespacedName
-
+    let vmsTextImageUrl = _prefix "vmsTextImageUrl"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextLine"></see>
     /// </summary>
-    let vmsTextLine =
-        Namespaced_IRI.parse _namespace_name "vmsTextLine" |> NamespacedName
-
+    let vmsTextLine = _prefix "vmsTextLine"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsTextLineIndexVmsTextLine"></see>
     /// </summary>
-    let _VmsTextLineIndexVmsTextLine =
-        Namespaced_IRI.parse _namespace_name "_VmsTextLineIndexVmsTextLine" |> NamespacedName
-
+    let _VmsTextLineIndexVmsTextLine = _prefix "_VmsTextLineIndexVmsTextLine"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#legendCodeListIdentifier"></see>
     /// </summary>
-    let legendCodeListIdentifier =
-        Namespaced_IRI.parse _namespace_name "legendCodeListIdentifier" |> NamespacedName
-
+    let legendCodeListIdentifier = _prefix "legendCodeListIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxFontHeight"></see>
     /// </summary>
-    let maxFontHeight =
-        Namespaced_IRI.parse _namespace_name "maxFontHeight" |> NamespacedName
-
+    let maxFontHeight = _prefix "maxFontHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxFontSpacing"></see>
     /// </summary>
-    let maxFontSpacing =
-        Namespaced_IRI.parse _namespace_name "maxFontSpacing" |> NamespacedName
-
+    let maxFontSpacing = _prefix "maxFontSpacing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxFontWidth"></see>
     /// </summary>
-    let maxFontWidth =
-        Namespaced_IRI.parse _namespace_name "maxFontWidth" |> NamespacedName
-
+    let maxFontWidth = _prefix "maxFontWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxNumberOfCharacters"></see>
     /// </summary>
-    let maxNumberOfCharacters =
-        Namespaced_IRI.parse _namespace_name "maxNumberOfCharacters" |> NamespacedName
-
+    let maxNumberOfCharacters = _prefix "maxNumberOfCharacters"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxNumberOfRows"></see>
     /// </summary>
-    let maxNumberOfRows =
-        Namespaced_IRI.parse _namespace_name "maxNumberOfRows" |> NamespacedName
-
+    let maxNumberOfRows = _prefix "maxNumberOfRows"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxNumberOfSequentialPages"></see>
     /// </summary>
-    let maxNumberOfSequentialPages =
-        Namespaced_IRI.parse _namespace_name "maxNumberOfSequentialPages" |> NamespacedName
-
+    let maxNumberOfSequentialPages = _prefix "maxNumberOfSequentialPages"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maxTextLuminanceLevel"></see>
     /// </summary>
-    let maxTextLuminanceLevel =
-        Namespaced_IRI.parse _namespace_name "maxTextLuminanceLevel" |> NamespacedName
-
+    let maxTextLuminanceLevel = _prefix "maxTextLuminanceLevel"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#minFontHeight"></see>
     /// </summary>
-    let minFontHeight =
-        Namespaced_IRI.parse _namespace_name "minFontHeight" |> NamespacedName
-
+    let minFontHeight = _prefix "minFontHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#minFontSpacing"></see>
     /// </summary>
-    let minFontSpacing =
-        Namespaced_IRI.parse _namespace_name "minFontSpacing" |> NamespacedName
-
+    let minFontSpacing = _prefix "minFontSpacing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#minFontWidth"></see>
     /// </summary>
-    let minFontWidth =
-        Namespaced_IRI.parse _namespace_name "minFontWidth" |> NamespacedName
-
+    let minFontWidth = _prefix "minFontWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textDisplayHeight"></see>
     /// </summary>
-    let textDisplayHeight =
-        Namespaced_IRI.parse _namespace_name "textDisplayHeight" |> NamespacedName
-
+    let textDisplayHeight = _prefix "textDisplayHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textDisplayWidth"></see>
     /// </summary>
-    let textDisplayWidth =
-        Namespaced_IRI.parse _namespace_name "textDisplayWidth" |> NamespacedName
-
+    let textDisplayWidth = _prefix "textDisplayWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textLanternsPresent"></see>
     /// </summary>
-    let textLanternsPresent =
-        Namespaced_IRI.parse _namespace_name "textLanternsPresent" |> NamespacedName
-
+    let textLanternsPresent = _prefix "textLanternsPresent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPageSequencingCapable"></see>
     /// </summary>
-    let textPageSequencingCapable =
-        Namespaced_IRI.parse _namespace_name "textPageSequencingCapable" |> NamespacedName
-
+    let textPageSequencingCapable = _prefix "textPageSequencingCapable"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPixelsAcross"></see>
     /// </summary>
-    let textPixelsAcross =
-        Namespaced_IRI.parse _namespace_name "textPixelsAcross" |> NamespacedName
-
+    let textPixelsAcross = _prefix "textPixelsAcross"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPixelsDown"></see>
     /// </summary>
-    let textPixelsDown =
-        Namespaced_IRI.parse _namespace_name "textPixelsDown" |> NamespacedName
-
+    let textPixelsDown = _prefix "textPixelsDown"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPositionAbsolute"></see>
     /// </summary>
-    let textPositionAbsolute =
-        Namespaced_IRI.parse _namespace_name "textPositionAbsolute" |> NamespacedName
-
+    let textPositionAbsolute = _prefix "textPositionAbsolute"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPositionX"></see>
     /// </summary>
-    let textPositionX =
-        Namespaced_IRI.parse _namespace_name "textPositionX" |> NamespacedName
-
+    let textPositionX = _prefix "textPositionX"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#textPositionY"></see>
     /// </summary>
-    let textPositionY =
-        Namespaced_IRI.parse _namespace_name "textPositionY" |> NamespacedName
+    let textPositionY = _prefix "textPositionY"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextDisplayCharacteristicsExtension"></see>
     /// </summary>
     let vmsTextDisplayCharacteristicsExtension =
-        Namespaced_IRI.parse _namespace_name "vmsTextDisplayCharacteristicsExtension" |> NamespacedName
+        _prefix "vmsTextDisplayCharacteristicsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextLineColour"></see>
     /// </summary>
-    let vmsTextLineColour =
-        Namespaced_IRI.parse _namespace_name "vmsTextLineColour" |> NamespacedName
-
+    let vmsTextLineColour = _prefix "vmsTextLineColour"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextLineExtension"></see>
     /// </summary>
-    let vmsTextLineExtension =
-        Namespaced_IRI.parse _namespace_name "vmsTextLineExtension" |> NamespacedName
-
+    let vmsTextLineExtension = _prefix "vmsTextLineExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextLineFlashing"></see>
     /// </summary>
-    let vmsTextLineFlashing =
-        Namespaced_IRI.parse _namespace_name "vmsTextLineFlashing" |> NamespacedName
-
+    let vmsTextLineFlashing = _prefix "vmsTextLineFlashing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextLineHtml"></see>
     /// </summary>
-    let vmsTextLineHtml =
-        Namespaced_IRI.parse _namespace_name "vmsTextLineHtml" |> NamespacedName
-
+    let vmsTextLineHtml = _prefix "vmsTextLineHtml"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsTextLineLanguage"></see>
     /// </summary>
-    let vmsTextLineLanguage =
-        Namespaced_IRI.parse _namespace_name "vmsTextLineLanguage" |> NamespacedName
-
+    let vmsTextLineLanguage = _prefix "vmsTextLineLanguage"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vms"></see>
     /// </summary>
-    let vms = Namespaced_IRI.parse _namespace_name "vms" |> NamespacedName
-
+    let vms = _prefix "vms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsUnitVmsIndexVms"></see>
     /// </summary>
-    let _VmsUnitVmsIndexVms =
-        Namespaced_IRI.parse _namespace_name "_VmsUnitVmsIndexVms" |> NamespacedName
-
+    let _VmsUnitVmsIndexVms = _prefix "_VmsUnitVmsIndexVms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitExtension"></see>
     /// </summary>
-    let vmsUnitExtension =
-        Namespaced_IRI.parse _namespace_name "vmsUnitExtension" |> NamespacedName
-
+    let vmsUnitExtension = _prefix "vmsUnitExtension"
     /// <summary>
     /// The type of fault which is being reported for the VMS unit.
     /// <see href="http://vocab.datex.org/terms#vmsUnitFault"></see></summary>
-    let vmsUnitFault =
-        Namespaced_IRI.parse _namespace_name "vmsUnitFault" |> NamespacedName
-
+    let vmsUnitFault = _prefix "vmsUnitFault"
     /// <summary>
     /// Details of the fault which is being reported for the specified variable message sign control unit.
     /// <see href="http://vocab.datex.org/terms#VmsUnitFault"></see></summary>
-    let VmsUnitFault =
-        Namespaced_IRI.parse _namespace_name "VmsUnitFault" |> NamespacedName
-
+    let VmsUnitFault = _prefix "VmsUnitFault"
     /// <summary>
     /// A reference to a versioned VMS unit record in a VMS Unit table which defines the characteristics of the VMS unit.
     /// <see href="http://vocab.datex.org/terms#vmsUnitReference"></see></summary>
-    let vmsUnitReference =
-        Namespaced_IRI.parse _namespace_name "vmsUnitReference" |> NamespacedName
-
+    let vmsUnitReference = _prefix "vmsUnitReference"
     /// <summary>
     /// A reference to a versioned VMS Unit table.
     /// <see href="http://vocab.datex.org/terms#vmsUnitTableReference"></see></summary>
-    let vmsUnitTableReference =
-        Namespaced_IRI.parse _namespace_name "vmsUnitTableReference" |> NamespacedName
-
+    let vmsUnitTableReference = _prefix "vmsUnitTableReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsUnitTableVersionedReference"></see>
     /// </summary>
-    let _VmsUnitTableVersionedReference =
-        Namespaced_IRI.parse _namespace_name "_VmsUnitTableVersionedReference" |> NamespacedName
-
+    let _VmsUnitTableVersionedReference = _prefix "_VmsUnitTableVersionedReference"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitFaultExtension"></see>
     /// </summary>
-    let vmsUnitFaultExtension =
-        Namespaced_IRI.parse _namespace_name "vmsUnitFaultExtension" |> NamespacedName
-
+    let vmsUnitFaultExtension = _prefix "vmsUnitFaultExtension"
     /// <summary>
     /// A versioned single VMS unit entry/record in the VMS Unit table that defines the characteristics of the VMS unit.
     /// <see href="http://vocab.datex.org/terms#VmsUnitRecord"></see></summary>
-    let VmsUnitRecord =
-        Namespaced_IRI.parse _namespace_name "VmsUnitRecord" |> NamespacedName
-
+    let VmsUnitRecord = _prefix "VmsUnitRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#numberOfVms"></see>
     /// </summary>
-    let numberOfVms =
-        Namespaced_IRI.parse _namespace_name "numberOfVms" |> NamespacedName
-
+    let numberOfVms = _prefix "numberOfVms"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsRecord"></see>
     /// </summary>
-    let vmsRecord = Namespaced_IRI.parse _namespace_name "vmsRecord" |> NamespacedName
-
+    let vmsRecord = _prefix "vmsRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#_VmsUnitRecordVmsIndexVmsRecord"></see>
     /// </summary>
-    let _VmsUnitRecordVmsIndexVmsRecord =
-        Namespaced_IRI.parse _namespace_name "_VmsUnitRecordVmsIndexVmsRecord" |> NamespacedName
-
+    let _VmsUnitRecordVmsIndexVmsRecord = _prefix "_VmsUnitRecordVmsIndexVmsRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitElectronicAddress"></see>
     /// </summary>
-    let vmsUnitElectronicAddress =
-        Namespaced_IRI.parse _namespace_name "vmsUnitElectronicAddress" |> NamespacedName
-
+    let vmsUnitElectronicAddress = _prefix "vmsUnitElectronicAddress"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitIPAddress"></see>
     /// </summary>
-    let vmsUnitIPAddress =
-        Namespaced_IRI.parse _namespace_name "vmsUnitIPAddress" |> NamespacedName
-
+    let vmsUnitIPAddress = _prefix "vmsUnitIPAddress"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitIdentifier"></see>
     /// </summary>
-    let vmsUnitIdentifier =
-        Namespaced_IRI.parse _namespace_name "vmsUnitIdentifier" |> NamespacedName
-
+    let vmsUnitIdentifier = _prefix "vmsUnitIdentifier"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitRecordExtension"></see>
     /// </summary>
-    let vmsUnitRecordExtension =
-        Namespaced_IRI.parse _namespace_name "vmsUnitRecordExtension" |> NamespacedName
-
+    let vmsUnitRecordExtension = _prefix "vmsUnitRecordExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitRecord"></see>
     /// </summary>
-    let vmsUnitRecord =
-        Namespaced_IRI.parse _namespace_name "vmsUnitRecord" |> NamespacedName
-
+    let vmsUnitRecord = _prefix "vmsUnitRecord"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitTableExtension"></see>
     /// </summary>
-    let vmsUnitTableExtension =
-        Namespaced_IRI.parse _namespace_name "vmsUnitTableExtension" |> NamespacedName
-
+    let vmsUnitTableExtension = _prefix "vmsUnitTableExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsUnitTableIdentification"></see>
     /// </summary>
-    let vmsUnitTableIdentification =
-        Namespaced_IRI.parse _namespace_name "vmsUnitTableIdentification" |> NamespacedName
-
+    let vmsUnitTableIdentification = _prefix "vmsUnitTableIdentification"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#weatherDataExtension"></see>
     /// </summary>
-    let weatherDataExtension =
-        Namespaced_IRI.parse _namespace_name "weatherDataExtension" |> NamespacedName
-
+    let weatherDataExtension = _prefix "weatherDataExtension"
     /// <summary>
     /// Road surface conditions that are related to the weather which may affect the driving conditions, such as ice, snow or water.
     /// <see href="http://vocab.datex.org/terms#WeatherRelatedRoadConditions"></see></summary>
-    let WeatherRelatedRoadConditions =
-        Namespaced_IRI.parse _namespace_name "WeatherRelatedRoadConditions" |> NamespacedName
+    let WeatherRelatedRoadConditions = _prefix "WeatherRelatedRoadConditions"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#weatherRelatedRoadConditionsExtension"></see>
     /// </summary>
     let weatherRelatedRoadConditionsExtension =
-        Namespaced_IRI.parse _namespace_name "weatherRelatedRoadConditionsExtension" |> NamespacedName
+        _prefix "weatherRelatedRoadConditionsExtension"
 
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleWidth"></see>
     /// </summary>
-    let vehicleWidth =
-        Namespaced_IRI.parse _namespace_name "vehicleWidth" |> NamespacedName
-
+    let vehicleWidth = _prefix "vehicleWidth"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#widthCharacteristicExtension"></see>
     /// </summary>
-    let widthCharacteristicExtension =
-        Namespaced_IRI.parse _namespace_name "widthCharacteristicExtension" |> NamespacedName
-
+    let widthCharacteristicExtension = _prefix "widthCharacteristicExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#maximumWindSpeed"></see>
     /// </summary>
-    let maximumWindSpeed =
-        Namespaced_IRI.parse _namespace_name "maximumWindSpeed" |> NamespacedName
-
+    let maximumWindSpeed = _prefix "maximumWindSpeed"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#windDirectionBearing"></see>
     /// </summary>
-    let windDirectionBearing =
-        Namespaced_IRI.parse _namespace_name "windDirectionBearing" |> NamespacedName
-
+    let windDirectionBearing = _prefix "windDirectionBearing"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#windDirectionCompass"></see>
     /// </summary>
-    let windDirectionCompass =
-        Namespaced_IRI.parse _namespace_name "windDirectionCompass" |> NamespacedName
-
+    let windDirectionCompass = _prefix "windDirectionCompass"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#windExtension"></see>
     /// </summary>
-    let windExtension =
-        Namespaced_IRI.parse _namespace_name "windExtension" |> NamespacedName
-
+    let windExtension = _prefix "windExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#windMeasurementHeight"></see>
     /// </summary>
-    let windMeasurementHeight =
-        Namespaced_IRI.parse _namespace_name "windMeasurementHeight" |> NamespacedName
-
+    let windMeasurementHeight = _prefix "windMeasurementHeight"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#windSpeed"></see>
     /// </summary>
-    let windSpeed = Namespaced_IRI.parse _namespace_name "windSpeed" |> NamespacedName
-
+    let windSpeed = _prefix "windSpeed"
     /// <summary>
     /// Measurements of wind conditions.
     /// <see href="http://vocab.datex.org/terms#WindInformation"></see></summary>
-    let WindInformation =
-        Namespaced_IRI.parse _namespace_name "WindInformation" |> NamespacedName
-
+    let WindInformation = _prefix "WindInformation"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#windInformationExtension"></see>
     /// </summary>
-    let windInformationExtension =
-        Namespaced_IRI.parse _namespace_name "windInformationExtension" |> NamespacedName
-
+    let windInformationExtension = _prefix "windInformationExtension"
     /// <summary>
     /// Winter driving management action that is instigated by the network/road operator.
     /// <see href="http://vocab.datex.org/terms#WinterDrivingManagement"></see></summary>
-    let WinterDrivingManagement =
-        Namespaced_IRI.parse _namespace_name "WinterDrivingManagement" |> NamespacedName
-
+    let WinterDrivingManagement = _prefix "WinterDrivingManagement"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#winterDrivingManagementExtension"></see>
     /// </summary>
-    let winterDrivingManagementExtension =
-        Namespaced_IRI.parse _namespace_name "winterDrivingManagementExtension" |> NamespacedName
-
+    let winterDrivingManagementExtension = _prefix "winterDrivingManagementExtension"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#areaExtended"></see>
     /// </summary>
-    let areaExtended =
-        Namespaced_IRI.parse _namespace_name "areaExtended" |> NamespacedName
-
+    let areaExtended = _prefix "areaExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrExtendedArea"></see>
     /// </summary>
-    let openlrExtendedArea =
-        Namespaced_IRI.parse _namespace_name "openlrExtendedArea" |> NamespacedName
-
+    let openlrExtendedArea = _prefix "openlrExtendedArea"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#any"></see>
     /// </summary>
-    let any = Namespaced_IRI.parse _namespace_name "any" |> NamespacedName
-
+    let any = _prefix "any"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#targetClass"></see>
     /// </summary>
-    let targetClass =
-        Namespaced_IRI.parse _namespace_name "targetClass" |> NamespacedName
-
+    let targetClass = _prefix "targetClass"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingStatusPublication"></see>
     /// </summary>
-    let parkingStatusPublication =
-        Namespaced_IRI.parse _namespace_name "parkingStatusPublication" |> NamespacedName
-
+    let parkingStatusPublication = _prefix "parkingStatusPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingTablePublication"></see>
     /// </summary>
-    let parkingTablePublication =
-        Namespaced_IRI.parse _namespace_name "parkingTablePublication" |> NamespacedName
-
+    let parkingTablePublication = _prefix "parkingTablePublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingVehiclesPublication"></see>
     /// </summary>
-    let parkingVehiclesPublication =
-        Namespaced_IRI.parse _namespace_name "parkingVehiclesPublication" |> NamespacedName
-
+    let parkingVehiclesPublication = _prefix "parkingVehiclesPublication"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#groupIndex"></see>
     /// </summary>
-    let groupIndex = Namespaced_IRI.parse _namespace_name "groupIndex" |> NamespacedName
-
+    let groupIndex = _prefix "groupIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceBasics"></see>
     /// </summary>
-    let parkingSpaceBasics =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceBasics" |> NamespacedName
-
+    let parkingSpaceBasics = _prefix "parkingSpaceBasics"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#parkingSpaceIndex"></see>
     /// </summary>
-    let parkingSpaceIndex =
-        Namespaced_IRI.parse _namespace_name "parkingSpaceIndex" |> NamespacedName
-
+    let parkingSpaceIndex = _prefix "parkingSpaceIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#index"></see>
     /// </summary>
-    let index = Namespaced_IRI.parse _namespace_name "index" |> NamespacedName
+    let index = _prefix "index"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#referent"></see>
     /// </summary>
-    let referent = Namespaced_IRI.parse _namespace_name "referent" |> NamespacedName
-
+    let referent = _prefix "referent"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrExtendedLinear"></see>
     /// </summary>
-    let openlrExtendedLinear =
-        Namespaced_IRI.parse _namespace_name "openlrExtendedLinear" |> NamespacedName
-
+    let openlrExtendedLinear = _prefix "openlrExtendedLinear"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#equipmentOrServiceFacilityIndex"></see>
     /// </summary>
-    let equipmentOrServiceFacilityIndex =
-        Namespaced_IRI.parse _namespace_name "equipmentOrServiceFacilityIndex" |> NamespacedName
-
+    let equipmentOrServiceFacilityIndex = _prefix "equipmentOrServiceFacilityIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#scenarioIndex"></see>
     /// </summary>
-    let scenarioIndex =
-        Namespaced_IRI.parse _namespace_name "scenarioIndex" |> NamespacedName
-
+    let scenarioIndex = _prefix "scenarioIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#periodExtended"></see>
     /// </summary>
-    let periodExtended =
-        Namespaced_IRI.parse _namespace_name "periodExtended" |> NamespacedName
-
+    let periodExtended = _prefix "periodExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#openlrExtendedPoint"></see>
     /// </summary>
-    let openlrExtendedPoint =
-        Namespaced_IRI.parse _namespace_name "openlrExtendedPoint" |> NamespacedName
-
+    let openlrExtendedPoint = _prefix "openlrExtendedPoint"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pointExtended"></see>
     /// </summary>
-    let pointExtended =
-        Namespaced_IRI.parse _namespace_name "pointExtended" |> NamespacedName
-
+    let pointExtended = _prefix "pointExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#situationRecordExtendedApproved"></see>
     /// </summary>
-    let situationRecordExtendedApproved =
-        Namespaced_IRI.parse _namespace_name "situationRecordExtendedApproved" |> NamespacedName
-
+    let situationRecordExtendedApproved = _prefix "situationRecordExtendedApproved"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pageNumber"></see>
     /// </summary>
-    let pageNumber = Namespaced_IRI.parse _namespace_name "pageNumber" |> NamespacedName
+    let pageNumber = _prefix "pageNumber"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsText"></see>
     /// </summary>
-    let vmsText = Namespaced_IRI.parse _namespace_name "vmsText" |> NamespacedName
-
+    let vmsText = _prefix "vmsText"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vehicleCharacteristicsExtended"></see>
     /// </summary>
-    let vehicleCharacteristicsExtended =
-        Namespaced_IRI.parse _namespace_name "vehicleCharacteristicsExtended" |> NamespacedName
-
+    let vehicleCharacteristicsExtended = _prefix "vehicleCharacteristicsExtended"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramDisplayAreaIndex"></see>
     /// </summary>
-    let pictogramDisplayAreaIndex =
-        Namespaced_IRI.parse _namespace_name "pictogramDisplayAreaIndex" |> NamespacedName
-
+    let pictogramDisplayAreaIndex = _prefix "pictogramDisplayAreaIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#messageIndex"></see>
     /// </summary>
-    let messageIndex =
-        Namespaced_IRI.parse _namespace_name "messageIndex" |> NamespacedName
-
+    let messageIndex = _prefix "messageIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#pictogramSequencingIndex"></see>
     /// </summary>
-    let pictogramSequencingIndex =
-        Namespaced_IRI.parse _namespace_name "pictogramSequencingIndex" |> NamespacedName
-
+    let pictogramSequencingIndex = _prefix "pictogramSequencingIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#lineIndex"></see>
     /// </summary>
-    let lineIndex = Namespaced_IRI.parse _namespace_name "lineIndex" |> NamespacedName
+    let lineIndex = _prefix "lineIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#vmsIndex"></see>
     /// </summary>
-    let vmsIndex = Namespaced_IRI.parse _namespace_name "vmsIndex" |> NamespacedName
-
+    let vmsIndex = _prefix "vmsIndex"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#d2LogicalModel"></see>
     /// </summary>
-    let d2LogicalModel =
-        Namespaced_IRI.parse _namespace_name "d2LogicalModel" |> NamespacedName
-
+    let d2LogicalModel = _prefix "d2LogicalModel"
     /// <summary>
     /// An example mapping of Datex2 to an OWL vocabulary
     /// <see href="http://vocab.datex.org/terms#ontology"></see></summary>
-    let ontology = Namespaced_IRI.parse _namespace_name "ontology" |> NamespacedName
+    let ontology = _prefix "ontology"
     /// <summary>
     ///   <see href="http://vocab.datex.org/terms#value"></see>
     /// </summary>
-    let value = Namespaced_IRI.parse _namespace_name "value" |> NamespacedName
+    let value = _prefix "value"

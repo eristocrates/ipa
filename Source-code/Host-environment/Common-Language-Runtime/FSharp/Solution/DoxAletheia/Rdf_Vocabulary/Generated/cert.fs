@@ -1,9 +1,12 @@
 namespace http.www.w3.org.ns.auth.cert.hash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module cert =
     let _namespace_name = "http://www.w3.org/ns/auth/cert#"
+
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
 
     /// <summary>
     /// A certificate is a Document that is signed.
@@ -15,63 +18,52 @@ module cert =
     ///         * One or more digital signatures.'
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#Certificate"></see></summary>
-    let Certificate =
-        Namespaced_IRI.parse _namespace_name "Certificate" |> NamespacedName
-
+    let Certificate = _prefix "Certificate"
     /// <summary>
     /// the class of keys
     /// <see href="http://www.w3.org/ns/auth/cert#Key"></see></summary>
-    let Key = Namespaced_IRI.parse _namespace_name "Key" |> NamespacedName
-
+    let Key = _prefix "Key"
     /// <summary>
     /// the class of PGP Certificates
     /// <see href="http://www.w3.org/ns/auth/cert#PGPCertificate"></see></summary>
-    let PGPCertificate =
-        Namespaced_IRI.parse _namespace_name "PGPCertificate" |> NamespacedName
-
+    let PGPCertificate = _prefix "PGPCertificate"
     /// <summary>
     /// Private Key
     /// <see href="http://www.w3.org/ns/auth/cert#PrivateKey"></see></summary>
-    let PrivateKey = Namespaced_IRI.parse _namespace_name "PrivateKey" |> NamespacedName
+    let PrivateKey = _prefix "PrivateKey"
     /// <summary>
     /// Public Key
     /// <see href="http://www.w3.org/ns/auth/cert#PublicKey"></see></summary>
-    let PublicKey = Namespaced_IRI.parse _namespace_name "PublicKey" |> NamespacedName
+    let PublicKey = _prefix "PublicKey"
     /// <summary>
     ///
     ///     The union of the public and private components of an RSAKey.
     ///     Usually those pieces are not kept together
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#RSAKey"></see></summary>
-    let RSAKey = Namespaced_IRI.parse _namespace_name "RSAKey" |> NamespacedName
-
+    let RSAKey = _prefix "RSAKey"
     /// <summary>
     ///
     ///     The RSA public key.  Padded message m are encrypted by applying the function
     ///       modulus(power(m,exponent),modulus)
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#RSAPublicKey"></see></summary>
-    let RSAPublicKey =
-        Namespaced_IRI.parse _namespace_name "RSAPublicKey" |> NamespacedName
-
+    let RSAPublicKey = _prefix "RSAPublicKey"
     /// <summary>
     /// the class of signtatures
     /// <see href="http://www.w3.org/ns/auth/cert#Signature"></see></summary>
-    let Signature = Namespaced_IRI.parse _namespace_name "Signature" |> NamespacedName
-
+    let Signature = _prefix "Signature"
     /// <summary>
     /// the class of X509 Certificates
     /// <see href="http://www.w3.org/ns/auth/cert#X509Certificate"></see></summary>
-    let X509Certificate =
-        Namespaced_IRI.parse _namespace_name "X509Certificate" |> NamespacedName
-
+    let X509Certificate = _prefix "X509Certificate"
     /// <summary>
     ///
     ///        The exponent used to encrypt the message. Number chosen between
     ///        1 and the totient(p*q). Often named 'e' .
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#exponent"></see></summary>
-    let exponent = Namespaced_IRI.parse _namespace_name "exponent" |> NamespacedName
+    let exponent = _prefix "exponent"
     /// <summary>
     /// &lt;span xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;p&gt;
     ///    An encoding of a positive integer (from 0 to infinity) as a hexadecimal string that makes it easy to read and/or fun to present on the web.&lt;/p&gt;
@@ -113,7 +105,7 @@ module cert =
     ///    &lt;/span&gt;
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#hex"></see></summary>
-    let hex = Namespaced_IRI.parse _namespace_name "hex" |> NamespacedName
+    let hex = _prefix "hex"
     /// <summary>
     ///
     ///     the identity of the public key. This is the entity that knows the private key and
@@ -121,11 +113,11 @@ module cert =
     ///     be decrypted with the public key.
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#identity"></see></summary>
-    let identity = Namespaced_IRI.parse _namespace_name "identity" |> NamespacedName
+    let identity = _prefix "identity"
     /// <summary>
     /// relates an agent to a key - most often the public key.
     /// <see href="http://www.w3.org/ns/auth/cert#key"></see></summary>
-    let key = Namespaced_IRI.parse _namespace_name "key" |> NamespacedName
+    let key = _prefix "key"
     /// <summary>
     ///
     ///    &lt;p&gt;The modulus of an RSA public and private key.
@@ -140,12 +132,11 @@ module cert =
     ///  &lt;p&gt;It would have been better had there been a hexInteger datatype that was standard and supported by all tools.&lt;/p&gt;
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#modulus"></see></summary>
-    let modulus = Namespaced_IRI.parse _namespace_name "modulus" |> NamespacedName
+    let modulus = _prefix "modulus"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/auth/cert#DSAKey"></see>
     /// </summary>
-    let DSAKey = Namespaced_IRI.parse _namespace_name "DSAKey" |> NamespacedName
-
+    let DSAKey = _prefix "DSAKey"
     /// <summary>
     ///
     ///        The exponent used to decrypt the message
@@ -154,11 +145,8 @@ module cert =
     ///        The private exponent is often named 'd'
     ///
     /// <see href="http://www.w3.org/ns/auth/cert#privateExponent"></see></summary>
-    let privateExponent =
-        Namespaced_IRI.parse _namespace_name "privateExponent" |> NamespacedName
-
+    let privateExponent = _prefix "privateExponent"
     /// <summary>
     ///   <see href="http://www.w3.org/ns/auth/cert#RSAPrivateKey"></see>
     /// </summary>
-    let RSAPrivateKey =
-        Namespaced_IRI.parse _namespace_name "RSAPrivateKey" |> NamespacedName
+    let RSAPrivateKey = _prefix "RSAPrivateKey"

@@ -1,187 +1,134 @@
 namespace https.spec.edmcouncil.org.fibo.ontology.BE.GovernmentEntities.EuropeanJurisdiction.NorthernEuropeGovernmentEntitiesAndJurisdictions.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module fibo_be_ge_neuj =
     let _namespace_name =
         "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/AlandIslandsJurisdiction"></see>
     /// </summary>
-    let AlandIslandsJurisdiction =
-        Namespaced_IRI.parse _namespace_name "AlandIslandsJurisdiction" |> NamespacedName
-
+    let AlandIslandsJurisdiction = _prefix "AlandIslandsJurisdiction"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfAland"></see>
     /// </summary>
-    let GovernmentOfAland =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfAland" |> NamespacedName
-
+    let GovernmentOfAland = _prefix "GovernmentOfAland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/AlandicEntity"></see>
     /// </summary>
-    let AlandicEntity =
-        Namespaced_IRI.parse _namespace_name "AlandicEntity" |> NamespacedName
-
+    let AlandicEntity = _prefix "AlandicEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/DanishEntity"></see>
     /// </summary>
-    let DanishEntity =
-        Namespaced_IRI.parse _namespace_name "DanishEntity" |> NamespacedName
-
+    let DanishEntity = _prefix "DanishEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfDenmark"></see>
     /// </summary>
-    let GovernmentOfTheKingdomOfDenmark =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfDenmark" |> NamespacedName
-
+    let GovernmentOfTheKingdomOfDenmark = _prefix "GovernmentOfTheKingdomOfDenmark"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/EstonianEntity"></see>
     /// </summary>
-    let EstonianEntity =
-        Namespaced_IRI.parse _namespace_name "EstonianEntity" |> NamespacedName
-
+    let EstonianEntity = _prefix "EstonianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfEstonia"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfEstonia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfEstonia" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfEstonia = _prefix "GovernmentOfTheRepublicOfEstonia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/FinnishEntity"></see>
     /// </summary>
-    let FinnishEntity =
-        Namespaced_IRI.parse _namespace_name "FinnishEntity" |> NamespacedName
-
+    let FinnishEntity = _prefix "FinnishEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfFinland"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfFinland =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfFinland" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfFinland = _prefix "GovernmentOfTheRepublicOfFinland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfIceland"></see>
     /// </summary>
-    let GovernmentOfIceland =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfIceland" |> NamespacedName
-
+    let GovernmentOfIceland = _prefix "GovernmentOfIceland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfIceland"></see>
     /// </summary>
-    let JurisdictionOfIceland =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfIceland" |> NamespacedName
-
+    let JurisdictionOfIceland = _prefix "JurisdictionOfIceland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfDenmark"></see>
     /// </summary>
-    let JurisdictionOfDenmark =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfDenmark" |> NamespacedName
-
+    let JurisdictionOfDenmark = _prefix "JurisdictionOfDenmark"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfNorway"></see>
     /// </summary>
-    let GovernmentOfTheKingdomOfNorway =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfNorway" |> NamespacedName
-
+    let GovernmentOfTheKingdomOfNorway = _prefix "GovernmentOfTheKingdomOfNorway"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfNorway"></see>
     /// </summary>
-    let JurisdictionOfNorway =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfNorway" |> NamespacedName
-
+    let JurisdictionOfNorway = _prefix "JurisdictionOfNorway"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheKingdomOfSweden"></see>
     /// </summary>
-    let GovernmentOfTheKingdomOfSweden =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheKingdomOfSweden" |> NamespacedName
-
+    let GovernmentOfTheKingdomOfSweden = _prefix "GovernmentOfTheKingdomOfSweden"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfSweden"></see>
     /// </summary>
-    let JurisdictionOfSweden =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfSweden" |> NamespacedName
-
+    let JurisdictionOfSweden = _prefix "JurisdictionOfSweden"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfEstonia"></see>
     /// </summary>
-    let JurisdictionOfEstonia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfEstonia" |> NamespacedName
-
+    let JurisdictionOfEstonia = _prefix "JurisdictionOfEstonia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfFinland"></see>
     /// </summary>
-    let JurisdictionOfFinland =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfFinland" |> NamespacedName
-
+    let JurisdictionOfFinland = _prefix "JurisdictionOfFinland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfIreland"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfIreland =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfIreland" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfIreland = _prefix "GovernmentOfTheRepublicOfIreland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfIreland"></see>
     /// </summary>
-    let JurisdictionOfIreland =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfIreland" |> NamespacedName
-
+    let JurisdictionOfIreland = _prefix "JurisdictionOfIreland"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfLatvia"></see>
     /// </summary>
-    let GovernmentOfTheRepublicOfLatvia =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfLatvia" |> NamespacedName
-
+    let GovernmentOfTheRepublicOfLatvia = _prefix "GovernmentOfTheRepublicOfLatvia"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfLatvia"></see>
     /// </summary>
-    let JurisdictionOfLatvia =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfLatvia" |> NamespacedName
+    let JurisdictionOfLatvia = _prefix "JurisdictionOfLatvia"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/GovernmentOfTheRepublicOfLithuania"></see>
     /// </summary>
     let GovernmentOfTheRepublicOfLithuania =
-        Namespaced_IRI.parse _namespace_name "GovernmentOfTheRepublicOfLithuania" |> NamespacedName
+        _prefix "GovernmentOfTheRepublicOfLithuania"
 
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/JurisdictionOfLithuania"></see>
     /// </summary>
-    let JurisdictionOfLithuania =
-        Namespaced_IRI.parse _namespace_name "JurisdictionOfLithuania" |> NamespacedName
-
+    let JurisdictionOfLithuania = _prefix "JurisdictionOfLithuania"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/IcelandicEntity"></see>
     /// </summary>
-    let IcelandicEntity =
-        Namespaced_IRI.parse _namespace_name "IcelandicEntity" |> NamespacedName
-
+    let IcelandicEntity = _prefix "IcelandicEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/IrishEntity"></see>
     /// </summary>
-    let IrishEntity =
-        Namespaced_IRI.parse _namespace_name "IrishEntity" |> NamespacedName
-
+    let IrishEntity = _prefix "IrishEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/LatvianEntity"></see>
     /// </summary>
-    let LatvianEntity =
-        Namespaced_IRI.parse _namespace_name "LatvianEntity" |> NamespacedName
-
+    let LatvianEntity = _prefix "LatvianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/LithuanianEntity"></see>
     /// </summary>
-    let LithuanianEntity =
-        Namespaced_IRI.parse _namespace_name "LithuanianEntity" |> NamespacedName
-
+    let LithuanianEntity = _prefix "LithuanianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/NorwegianEntity"></see>
     /// </summary>
-    let NorwegianEntity =
-        Namespaced_IRI.parse _namespace_name "NorwegianEntity" |> NamespacedName
-
+    let NorwegianEntity = _prefix "NorwegianEntity"
     /// <summary>
     ///   <see href="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/SwedishEntity"></see>
     /// </summary>
-    let SwedishEntity =
-        Namespaced_IRI.parse _namespace_name "SwedishEntity" |> NamespacedName
+    let SwedishEntity = _prefix "SwedishEntity"

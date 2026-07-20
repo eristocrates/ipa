@@ -1,175 +1,127 @@
 namespace https.www.auto.tuwien.ac.at.downloads.thinkhome.ontology.WeatherOntology.owl.bare
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module hw =
     let _namespace_name =
         "https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LightWind"></see>
     /// </summary>
-    let ``_#LightWind`` =
-        Namespaced_IRI.parse _namespace_name "#LightWind" |> NamespacedName
-
+    let ``_#LightWind`` = _prefix "#LightWind"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#NoWind"></see>
     /// </summary>
-    let ``_#NoWind`` = Namespaced_IRI.parse _namespace_name "#NoWind" |> NamespacedName
+    let ``_#NoWind`` = _prefix "#NoWind"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Storm"></see>
     /// </summary>
-    let ``_#Storm`` = Namespaced_IRI.parse _namespace_name "#Storm" |> NamespacedName
-
+    let ``_#Storm`` = _prefix "#Storm"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#StrongWind"></see>
     /// </summary>
-    let ``_#StrongWind`` =
-        Namespaced_IRI.parse _namespace_name "#StrongWind" |> NamespacedName
-
+    let ``_#StrongWind`` = _prefix "#StrongWind"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#MostlyCloudy"></see>
     /// </summary>
-    let ``_#MostlyCloudy`` =
-        Namespaced_IRI.parse _namespace_name "#MostlyCloudy" |> NamespacedName
-
+    let ``_#MostlyCloudy`` = _prefix "#MostlyCloudy"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#NoCloudCover"></see>
     /// </summary>
-    let ``_#NoCloudCover`` =
-        Namespaced_IRI.parse _namespace_name "#NoCloudCover" |> NamespacedName
-
+    let ``_#NoCloudCover`` = _prefix "#NoCloudCover"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Overcast"></see>
     /// </summary>
-    let ``_#Overcast`` =
-        Namespaced_IRI.parse _namespace_name "#Overcast" |> NamespacedName
-
+    let ``_#Overcast`` = _prefix "#Overcast"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#PartlyCloudy"></see>
     /// </summary>
-    let ``_#PartlyCloudy`` =
-        Namespaced_IRI.parse _namespace_name "#PartlyCloudy" |> NamespacedName
-
+    let ``_#PartlyCloudy`` = _prefix "#PartlyCloudy"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#UnknownCloudCover"></see>
     /// </summary>
-    let ``_#UnknownCloudCover`` =
-        Namespaced_IRI.parse _namespace_name "#UnknownCloudCover" |> NamespacedName
-
+    let ``_#UnknownCloudCover`` = _prefix "#UnknownCloudCover"
     /// <summary>
     /// One-word description of the observed weather condition
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherCondition"></see></summary>
-    let ``_#WeatherCondition`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherCondition" |> NamespacedName
-
+    let ``_#WeatherCondition`` = _prefix "#WeatherCondition"
     /// <summary>
     /// different weather phenomena that may influence the current and forecasted weather state.
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherPhenomenon"></see></summary>
-    let ``_#WeatherPhenomenon`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherPhenomenon" |> NamespacedName
-
+    let ``_#WeatherPhenomenon`` = _prefix "#WeatherPhenomenon"
     /// <summary>
     /// a weather report that can be retrieved through a local sensor (e.g. weather station integrated in the smart home) or a remote internet service. Further a time division has been realized to differentiate between current, short, mid and long term forecasts.
     ///
     /// For the smart home domain, a time window of 24 hours for weather forecasts has been seen as suitable with a 24 hours forecast being classified as long-term forecast
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherReport"></see></summary>
-    let ``_#WeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherReport" |> NamespacedName
-
+    let ``_#WeatherReport`` = _prefix "#WeatherReport"
     /// <summary>
     /// Holds information about the origins of weather reports
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherReportSource"></see></summary>
-    let ``_#WeatherReportSource`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherReportSource" |> NamespacedName
-
+    let ``_#WeatherReportSource`` = _prefix "#WeatherReportSource"
     /// <summary>
     /// Describes the actual weather reported through information from the weather source.
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherState"></see></summary>
-    let ``_#WeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherState" |> NamespacedName
-
+    let ``_#WeatherState`` = _prefix "#WeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#HighAirPollution"></see>
     /// </summary>
-    let ``_#HighAirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#HighAirPollution" |> NamespacedName
-
+    let ``_#HighAirPollution`` = _prefix "#HighAirPollution"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LowAirPollution"></see>
     /// </summary>
-    let ``_#LowAirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#LowAirPollution" |> NamespacedName
-
+    let ``_#LowAirPollution`` = _prefix "#LowAirPollution"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#MediumAirPollution"></see>
     /// </summary>
-    let ``_#MediumAirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#MediumAirPollution" |> NamespacedName
-
+    let ``_#MediumAirPollution`` = _prefix "#MediumAirPollution"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#VeryHighAirPollution"></see>
     /// </summary>
-    let ``_#VeryHighAirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#VeryHighAirPollution" |> NamespacedName
-
+    let ``_#VeryHighAirPollution`` = _prefix "#VeryHighAirPollution"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#VeryLowAirPollution"></see>
     /// </summary>
-    let ``_#VeryLowAirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#VeryLowAirPollution" |> NamespacedName
-
+    let ``_#VeryLowAirPollution`` = _prefix "#VeryLowAirPollution"
     /// <summary>
     /// the current air pollution represented as European Air Quality Index value. The index value is based on 3 pollutants of major concern in Europe: PM10, NO2, O3 and will be able to take into account to 3 additional pollutants (CO, PM2.5 and SO2) where data are also available.
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#AirPollution"></see></summary>
-    let ``_#AirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#AirPollution" |> NamespacedName
-
+    let ``_#AirPollution`` = _prefix "#AirPollution"
     /// <summary>
     /// atmospheric pressure in hectopascal (hPa)
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#AtmosphericPressure"></see></summary>
-    let ``_#AtmosphericPressure`` =
-        Namespaced_IRI.parse _namespace_name "#AtmosphericPressure" |> NamespacedName
-
+    let ``_#AtmosphericPressure`` = _prefix "#AtmosphericPressure"
     /// <summary>
     /// clound cover in the unit "Okta"
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#CloudCover"></see></summary>
-    let ``_#CloudCover`` =
-        Namespaced_IRI.parse _namespace_name "#CloudCover" |> NamespacedName
-
+    let ``_#CloudCover`` = _prefix "#CloudCover"
     /// <summary>
     /// this concept was known as "DewPoint" in prior versions of the ontology
     /// The dewpoint temperature in degrees Celsius. It is the temperature at which the air can no longer hold all of its water vapor, and some of the water vapor must condense into liquid water. The dew point is always lower than (or equal to) the air temperature.
     ///
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#DewPointTemperature"></see></summary>
-    let ``_#DewPointTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#DewPointTemperature" |> NamespacedName
-
+    let ``_#DewPointTemperature`` = _prefix "#DewPointTemperature"
     /// <summary>
     /// represents the relative humidity of the air in percent
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Humidity"></see></summary>
-    let ``_#Humidity`` =
-        Namespaced_IRI.parse _namespace_name "#Humidity" |> NamespacedName
-
+    let ``_#Humidity`` = _prefix "#Humidity"
     /// <summary>
     /// represents precipitation in millimetres
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Precipitation"></see></summary>
-    let ``_#Precipitation`` =
-        Namespaced_IRI.parse _namespace_name "#Precipitation" |> NamespacedName
-
+    let ``_#Precipitation`` = _prefix "#Precipitation"
     /// <summary>
     /// this concept was known as "SolarRadiation" in prior versions of the ontology
     /// measurement of solar irrradiation at a specific location in Watts per square meter (W/m²)
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#SolarIrradiance"></see></summary>
-    let ``_#SolarIrradiance`` =
-        Namespaced_IRI.parse _namespace_name "#SolarIrradiance" |> NamespacedName
-
+    let ``_#SolarIrradiance`` = _prefix "#SolarIrradiance"
     /// <summary>
     /// exterior temperature in degrees Celsius
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Temperature"></see></summary>
-    let ``_#Temperature`` =
-        Namespaced_IRI.parse _namespace_name "#Temperature" |> NamespacedName
-
+    let ``_#Temperature`` = _prefix "#Temperature"
     /// <summary>
     /// Wind direction and speed are represented as datatype properties"hasDirection" and "hasSpeed"
     ///
@@ -177,727 +129,497 @@ module hw =
     /// Unit of wind direction is degrees
     ///
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Wind"></see></summary>
-    let ``_#Wind`` = Namespaced_IRI.parse _namespace_name "#Wind" |> NamespacedName
-
+    let ``_#Wind`` = _prefix "#Wind"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast12HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast12HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast12HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast12HoursWeatherReport`` = _prefix "#Forecast12HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast15HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast15HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast15HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast15HoursWeatherReport`` = _prefix "#Forecast15HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast18HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast18HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast18HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast18HoursWeatherReport`` = _prefix "#Forecast18HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast1HourWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast1HourWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast1HourWeatherReport" |> NamespacedName
-
+    let ``_#Forecast1HourWeatherReport`` = _prefix "#Forecast1HourWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast21HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast21HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast21HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast21HoursWeatherReport`` = _prefix "#Forecast21HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast24HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast24HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast24HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast24HoursWeatherReport`` = _prefix "#Forecast24HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast2HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast2HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast2HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast2HoursWeatherReport`` = _prefix "#Forecast2HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast3HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast3HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast3HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast3HoursWeatherReport`` = _prefix "#Forecast3HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast6HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast6HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast6HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast6HoursWeatherReport`` = _prefix "#Forecast6HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast9HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast9HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast9HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast9HoursWeatherReport`` = _prefix "#Forecast9HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#HeavyPrecipitation"></see>
     /// </summary>
-    let ``_#HeavyPrecipitation`` =
-        Namespaced_IRI.parse _namespace_name "#HeavyPrecipitation" |> NamespacedName
-
+    let ``_#HeavyPrecipitation`` = _prefix "#HeavyPrecipitation"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LightPrecipitation"></see>
     /// </summary>
-    let ``_#LightPrecipitation`` =
-        Namespaced_IRI.parse _namespace_name "#LightPrecipitation" |> NamespacedName
-
+    let ``_#LightPrecipitation`` = _prefix "#LightPrecipitation"
     /// <summary>
     /// this concept was known as "MediumPrecipitation" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ModeratePrecipitation"></see></summary>
-    let ``_#ModeratePrecipitation`` =
-        Namespaced_IRI.parse _namespace_name "#ModeratePrecipitation" |> NamespacedName
-
+    let ``_#ModeratePrecipitation`` = _prefix "#ModeratePrecipitation"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#NoPrecipitation"></see>
     /// </summary>
-    let ``_#NoPrecipitation`` =
-        Namespaced_IRI.parse _namespace_name "#NoPrecipitation" |> NamespacedName
-
+    let ``_#NoPrecipitation`` = _prefix "#NoPrecipitation"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#DryHumidity"></see>
     /// </summary>
-    let ``_#DryHumidity`` =
-        Namespaced_IRI.parse _namespace_name "#DryHumidity" |> NamespacedName
-
+    let ``_#DryHumidity`` = _prefix "#DryHumidity"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#MoistHumidity"></see>
     /// </summary>
-    let ``_#MoistHumidity`` =
-        Namespaced_IRI.parse _namespace_name "#MoistHumidity" |> NamespacedName
-
+    let ``_#MoistHumidity`` = _prefix "#MoistHumidity"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#OptimumHumidity"></see>
     /// </summary>
-    let ``_#OptimumHumidity`` =
-        Namespaced_IRI.parse _namespace_name "#OptimumHumidity" |> NamespacedName
-
+    let ``_#OptimumHumidity`` = _prefix "#OptimumHumidity"
     /// <summary>
     /// this concept was known as "HighSolarRadiation" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#HighSolarIrradiance"></see></summary>
-    let ``_#HighSolarIrradiance`` =
-        Namespaced_IRI.parse _namespace_name "#HighSolarIrradiance" |> NamespacedName
-
+    let ``_#HighSolarIrradiance`` = _prefix "#HighSolarIrradiance"
     /// <summary>
     /// this concept was known as "LowSolarRadiation" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LowSolarIrradiance"></see></summary>
-    let ``_#LowSolarIrradiance`` =
-        Namespaced_IRI.parse _namespace_name "#LowSolarIrradiance" |> NamespacedName
-
+    let ``_#LowSolarIrradiance`` = _prefix "#LowSolarIrradiance"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ModerateSolarIrradiance"></see>
     /// </summary>
-    let ``_#ModerateSolarIrradiance`` =
-        Namespaced_IRI.parse _namespace_name "#ModerateSolarIrradiance" |> NamespacedName
-
+    let ``_#ModerateSolarIrradiance`` = _prefix "#ModerateSolarIrradiance"
     /// <summary>
     /// this concept was known as "NeglectibleSolarRadiation" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#NeglectibleSolarIrradiance"></see></summary>
-    let ``_#NeglectibleSolarIrradiance`` =
-        Namespaced_IRI.parse _namespace_name "#NeglectibleSolarIrradiance" |> NamespacedName
-
+    let ``_#NeglectibleSolarIrradiance`` = _prefix "#NeglectibleSolarIrradiance"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#AboveRoomTemperature"></see>
     /// </summary>
-    let ``_#AboveRoomTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#AboveRoomTemperature" |> NamespacedName
-
+    let ``_#AboveRoomTemperature`` = _prefix "#AboveRoomTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasValue"></see>
     /// </summary>
-    let ``_#hasValue`` =
-        Namespaced_IRI.parse _namespace_name "#hasValue" |> NamespacedName
-
+    let ``_#hasValue`` = _prefix "#hasValue"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#AboveZeroTemperature"></see>
     /// </summary>
-    let ``_#AboveZeroTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#AboveZeroTemperature" |> NamespacedName
-
+    let ``_#AboveZeroTemperature`` = _prefix "#AboveZeroTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#AiringWeatherState"></see>
     /// </summary>
-    let ``_#AiringWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#AiringWeatherState" |> NamespacedName
-
+    let ``_#AiringWeatherState`` = _prefix "#AiringWeatherState"
     /// <summary>
     /// Relation between weather states and the phenomena that are observed or forecasted
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasWeatherPhenomenon"></see></summary>
-    let ``_#hasWeatherPhenomenon`` =
-        Namespaced_IRI.parse _namespace_name "#hasWeatherPhenomenon" |> NamespacedName
-
+    let ``_#hasWeatherPhenomenon`` = _prefix "#hasWeatherPhenomenon"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#BelowOrZeroTemperature"></see>
     /// </summary>
-    let ``_#BelowOrZeroTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#BelowOrZeroTemperature" |> NamespacedName
-
+    let ``_#BelowOrZeroTemperature`` = _prefix "#BelowOrZeroTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#BelowRoomTemperature"></see>
     /// </summary>
-    let ``_#BelowRoomTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#BelowRoomTemperature" |> NamespacedName
-
+    let ``_#BelowRoomTemperature`` = _prefix "#BelowRoomTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Cloud"></see>
     /// </summary>
-    let ``_#Cloud`` = Namespaced_IRI.parse _namespace_name "#Cloud" |> NamespacedName
-
+    let ``_#Cloud`` = _prefix "#Cloud"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasCloudCoverValue"></see>
     /// </summary>
-    let ``_#hasCloudCoverValue`` =
-        Namespaced_IRI.parse _namespace_name "#hasCloudCoverValue" |> NamespacedName
-
+    let ``_#hasCloudCoverValue`` = _prefix "#hasCloudCoverValue"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasCloudAltitude"></see>
     /// </summary>
-    let ``_#hasCloudAltitude`` =
-        Namespaced_IRI.parse _namespace_name "#hasCloudAltitude" |> NamespacedName
-
+    let ``_#hasCloudAltitude`` = _prefix "#hasCloudAltitude"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#CoolingWeatherState"></see>
     /// </summary>
-    let ``_#CoolingWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#CoolingWeatherState" |> NamespacedName
-
+    let ``_#CoolingWeatherState`` = _prefix "#CoolingWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#CurrentWeatherReport"></see>
     /// </summary>
-    let ``_#CurrentWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#CurrentWeatherReport" |> NamespacedName
-
+    let ``_#CurrentWeatherReport`` = _prefix "#CurrentWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ForecastWeatherReport"></see>
     /// </summary>
-    let ``_#ForecastWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#ForecastWeatherReport" |> NamespacedName
-
+    let ``_#ForecastWeatherReport`` = _prefix "#ForecastWeatherReport"
     /// <summary>
     /// this property describes an interval that denotes the time in the future (offset) for which the weather is reported
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#reportsWeatherForTimeInterval"></see></summary>
-    let ``_#reportsWeatherForTimeInterval`` =
-        Namespaced_IRI.parse _namespace_name "#reportsWeatherForTimeInterval" |> NamespacedName
-
+    let ``_#reportsWeatherForTimeInterval`` = _prefix "#reportsWeatherForTimeInterval"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#CurrentWeatherReportFromSensor"></see>
     /// </summary>
-    let ``_#CurrentWeatherReportFromSensor`` =
-        Namespaced_IRI.parse _namespace_name "#CurrentWeatherReportFromSensor" |> NamespacedName
-
+    let ``_#CurrentWeatherReportFromSensor`` = _prefix "#CurrentWeatherReportFromSensor"
     /// <summary>
     /// this class was known as "SensorSource" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#SensorReportSource"></see></summary>
-    let ``_#SensorReportSource`` =
-        Namespaced_IRI.parse _namespace_name "#SensorReportSource" |> NamespacedName
-
+    let ``_#SensorReportSource`` = _prefix "#SensorReportSource"
     /// <summary>
     /// links a weather report to the reporting source, either an internet weather service or a local weather sensor
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasSource"></see></summary>
-    let ``_#hasSource`` =
-        Namespaced_IRI.parse _namespace_name "#hasSource" |> NamespacedName
+    let ``_#hasSource`` = _prefix "#hasSource"
 
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#CurrentWeatherReportFromService"></see>
     /// </summary>
     let ``_#CurrentWeatherReportFromService`` =
-        Namespaced_IRI.parse _namespace_name "#CurrentWeatherReportFromService" |> NamespacedName
+        _prefix "#CurrentWeatherReportFromService"
 
     /// <summary>
     /// this class was known as "ServiceSource" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ServiceReportSource"></see></summary>
-    let ``_#ServiceReportSource`` =
-        Namespaced_IRI.parse _namespace_name "#ServiceReportSource" |> NamespacedName
-
+    let ``_#ServiceReportSource`` = _prefix "#ServiceReportSource"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ExtremeFrost"></see>
     /// </summary>
-    let ``_#ExtremeFrost`` =
-        Namespaced_IRI.parse _namespace_name "#ExtremeFrost" |> NamespacedName
-
+    let ``_#ExtremeFrost`` = _prefix "#ExtremeFrost"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ExtremeHeat"></see>
     /// </summary>
-    let ``_#ExtremeHeat`` =
-        Namespaced_IRI.parse _namespace_name "#ExtremeHeat" |> NamespacedName
-
+    let ``_#ExtremeHeat`` = _prefix "#ExtremeHeat"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#FairWeatherState"></see>
     /// </summary>
-    let ``_#FairWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#FairWeatherState" |> NamespacedName
-
+    let ``_#FairWeatherState`` = _prefix "#FairWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Fog"></see>
     /// </summary>
-    let ``_#Fog`` = Namespaced_IRI.parse _namespace_name "#Fog" |> NamespacedName
-
+    let ``_#Fog`` = _prefix "#Fog"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast10HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast10HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast10HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast10HoursWeatherReport`` = _prefix "#Forecast10HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast11HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast11HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast11HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast11HoursWeatherReport`` = _prefix "#Forecast11HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast13HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast13HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast13HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast13HoursWeatherReport`` = _prefix "#Forecast13HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast14HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast14HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast14HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast14HoursWeatherReport`` = _prefix "#Forecast14HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast16HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast16HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast16HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast16HoursWeatherReport`` = _prefix "#Forecast16HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast17HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast17HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast17HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast17HoursWeatherReport`` = _prefix "#Forecast17HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast19HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast19HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast19HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast19HoursWeatherReport`` = _prefix "#Forecast19HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast20HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast20HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast20HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast20HoursWeatherReport`` = _prefix "#Forecast20HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast22HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast22HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast22HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast22HoursWeatherReport`` = _prefix "#Forecast22HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast23HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast23HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast23HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast23HoursWeatherReport`` = _prefix "#Forecast23HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast4HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast4HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast4HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast4HoursWeatherReport`` = _prefix "#Forecast4HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast5HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast5HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast5HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast5HoursWeatherReport`` = _prefix "#Forecast5HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast7HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast7HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast7HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast7HoursWeatherReport`` = _prefix "#Forecast7HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Forecast8HoursWeatherReport"></see>
     /// </summary>
-    let ``_#Forecast8HoursWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#Forecast8HoursWeatherReport" |> NamespacedName
-
+    let ``_#Forecast8HoursWeatherReport`` = _prefix "#Forecast8HoursWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#FreshBreeze"></see>
     /// </summary>
-    let ``_#FreshBreeze`` =
-        Namespaced_IRI.parse _namespace_name "#FreshBreeze" |> NamespacedName
-
+    let ``_#FreshBreeze`` = _prefix "#FreshBreeze"
     /// <summary>
     /// wind speed in metres per second (m/s)
     /// Wind speed
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasSpeed"></see></summary>
-    let ``_#hasSpeed`` =
-        Namespaced_IRI.parse _namespace_name "#hasSpeed" |> NamespacedName
-
+    let ``_#hasSpeed`` = _prefix "#hasSpeed"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#FreshGale"></see>
     /// </summary>
-    let ``_#FreshGale`` =
-        Namespaced_IRI.parse _namespace_name "#FreshGale" |> NamespacedName
-
+    let ``_#FreshGale`` = _prefix "#FreshGale"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Frost"></see>
     /// </summary>
-    let ``_#Frost`` = Namespaced_IRI.parse _namespace_name "#Frost" |> NamespacedName
-
+    let ``_#Frost`` = _prefix "#Frost"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#GentleBreeze"></see>
     /// </summary>
-    let ``_#GentleBreeze`` =
-        Namespaced_IRI.parse _namespace_name "#GentleBreeze" |> NamespacedName
-
+    let ``_#GentleBreeze`` = _prefix "#GentleBreeze"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Hail"></see>
     /// </summary>
-    let ``_#Hail`` = Namespaced_IRI.parse _namespace_name "#Hail" |> NamespacedName
+    let ``_#Hail`` = _prefix "#Hail"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Heat"></see>
     /// </summary>
-    let ``_#Heat`` = Namespaced_IRI.parse _namespace_name "#Heat" |> NamespacedName
-
+    let ``_#Heat`` = _prefix "#Heat"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#HeatingWeatherState"></see>
     /// </summary>
-    let ``_#HeatingWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#HeatingWeatherState" |> NamespacedName
-
+    let ``_#HeatingWeatherState`` = _prefix "#HeatingWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasIntensity"></see>
     /// </summary>
-    let ``_#hasIntensity`` =
-        Namespaced_IRI.parse _namespace_name "#hasIntensity" |> NamespacedName
-
+    let ``_#hasIntensity`` = _prefix "#hasIntensity"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#HumidifyingWeatherState"></see>
     /// </summary>
-    let ``_#HumidifyingWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#HumidifyingWeatherState" |> NamespacedName
-
+    let ``_#HumidifyingWeatherState`` = _prefix "#HumidifyingWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Hurricane"></see>
     /// </summary>
-    let ``_#Hurricane`` =
-        Namespaced_IRI.parse _namespace_name "#Hurricane" |> NamespacedName
-
+    let ``_#Hurricane`` = _prefix "#Hurricane"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LightAir"></see>
     /// </summary>
-    let ``_#LightAir`` =
-        Namespaced_IRI.parse _namespace_name "#LightAir" |> NamespacedName
-
+    let ``_#LightAir`` = _prefix "#LightAir"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LightBreeze"></see>
     /// </summary>
-    let ``_#LightBreeze`` =
-        Namespaced_IRI.parse _namespace_name "#LightBreeze" |> NamespacedName
-
+    let ``_#LightBreeze`` = _prefix "#LightBreeze"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LightCloud"></see>
     /// </summary>
-    let ``_#LightCloud`` =
-        Namespaced_IRI.parse _namespace_name "#LightCloud" |> NamespacedName
-
+    let ``_#LightCloud`` = _prefix "#LightCloud"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LightRainSun"></see>
     /// </summary>
-    let ``_#LightRainSun`` =
-        Namespaced_IRI.parse _namespace_name "#LightRainSun" |> NamespacedName
-
+    let ``_#LightRainSun`` = _prefix "#LightRainSun"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#LongRangeForecast"></see>
     /// </summary>
-    let ``_#LongRangeForecast`` =
-        Namespaced_IRI.parse _namespace_name "#LongRangeForecast" |> NamespacedName
-
+    let ``_#LongRangeForecast`` = _prefix "#LongRangeForecast"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#MidRangeForecast"></see>
     /// </summary>
-    let ``_#MidRangeForecast`` =
-        Namespaced_IRI.parse _namespace_name "#MidRangeForecast" |> NamespacedName
-
+    let ``_#MidRangeForecast`` = _prefix "#MidRangeForecast"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ModerateBreeze"></see>
     /// </summary>
-    let ``_#ModerateBreeze`` =
-        Namespaced_IRI.parse _namespace_name "#ModerateBreeze" |> NamespacedName
-
+    let ``_#ModerateBreeze`` = _prefix "#ModerateBreeze"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ModerateGale"></see>
     /// </summary>
-    let ``_#ModerateGale`` =
-        Namespaced_IRI.parse _namespace_name "#ModerateGale" |> NamespacedName
-
+    let ``_#ModerateGale`` = _prefix "#ModerateGale"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#NeutralWeatherState"></see>
     /// </summary>
-    let ``_#NeutralWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#NeutralWeatherState" |> NamespacedName
-
+    let ``_#NeutralWeatherState`` = _prefix "#NeutralWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#SevereWeatherState"></see>
     /// </summary>
-    let ``_#SevereWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#SevereWeatherState" |> NamespacedName
-
+    let ``_#SevereWeatherState`` = _prefix "#SevereWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#PartlyCloud"></see>
     /// </summary>
-    let ``_#PartlyCloud`` =
-        Namespaced_IRI.parse _namespace_name "#PartlyCloud" |> NamespacedName
-
+    let ``_#PartlyCloud`` = _prefix "#PartlyCloud"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Rain"></see>
     /// </summary>
-    let ``_#Rain`` = Namespaced_IRI.parse _namespace_name "#Rain" |> NamespacedName
-
+    let ``_#Rain`` = _prefix "#Rain"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#RainyWeatherState"></see>
     /// </summary>
-    let ``_#RainyWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#RainyWeatherState" |> NamespacedName
-
+    let ``_#RainyWeatherState`` = _prefix "#RainyWeatherState"
     /// <summary>
     /// relation of weather states and a one-word description for the observed weather situation
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasWeatherCondition"></see></summary>
-    let ``_#hasWeatherCondition`` =
-        Namespaced_IRI.parse _namespace_name "#hasWeatherCondition" |> NamespacedName
-
+    let ``_#hasWeatherCondition`` = _prefix "#hasWeatherCondition"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#RoomTemperature"></see>
     /// </summary>
-    let ``_#RoomTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#RoomTemperature" |> NamespacedName
-
+    let ``_#RoomTemperature`` = _prefix "#RoomTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasAssociatedSensor"></see>
     /// </summary>
-    let ``_#hasAssociatedSensor`` =
-        Namespaced_IRI.parse _namespace_name "#hasAssociatedSensor" |> NamespacedName
-
+    let ``_#hasAssociatedSensor`` = _prefix "#hasAssociatedSensor"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ShortRangeForecast"></see>
     /// </summary>
-    let ``_#ShortRangeForecast`` =
-        Namespaced_IRI.parse _namespace_name "#ShortRangeForecast" |> NamespacedName
-
+    let ``_#ShortRangeForecast`` = _prefix "#ShortRangeForecast"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Sleet"></see>
     /// </summary>
-    let ``_#Sleet`` = Namespaced_IRI.parse _namespace_name "#Sleet" |> NamespacedName
+    let ``_#Sleet`` = _prefix "#Sleet"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Snow"></see>
     /// </summary>
-    let ``_#Snow`` = Namespaced_IRI.parse _namespace_name "#Snow" |> NamespacedName
-
+    let ``_#Snow`` = _prefix "#Snow"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#SnowyWeatherState"></see>
     /// </summary>
-    let ``_#SnowyWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#SnowyWeatherState" |> NamespacedName
-
+    let ``_#SnowyWeatherState`` = _prefix "#SnowyWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#StrongBreeze"></see>
     /// </summary>
-    let ``_#StrongBreeze`` =
-        Namespaced_IRI.parse _namespace_name "#StrongBreeze" |> NamespacedName
-
+    let ``_#StrongBreeze`` = _prefix "#StrongBreeze"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#StrongGale"></see>
     /// </summary>
-    let ``_#StrongGale`` =
-        Namespaced_IRI.parse _namespace_name "#StrongGale" |> NamespacedName
-
+    let ``_#StrongGale`` = _prefix "#StrongGale"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Sun"></see>
     /// </summary>
-    let ``_#Sun`` = Namespaced_IRI.parse _namespace_name "#Sun" |> NamespacedName
-
+    let ``_#Sun`` = _prefix "#Sun"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#SunnyWeatherState"></see>
     /// </summary>
-    let ``_#SunnyWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#SunnyWeatherState" |> NamespacedName
-
+    let ``_#SunnyWeatherState`` = _prefix "#SunnyWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Thunder"></see>
     /// </summary>
-    let ``_#Thunder`` =
-        Namespaced_IRI.parse _namespace_name "#Thunder" |> NamespacedName
-
+    let ``_#Thunder`` = _prefix "#Thunder"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#Thunderstorm"></see>
     /// </summary>
-    let ``_#Thunderstorm`` =
-        Namespaced_IRI.parse _namespace_name "#Thunderstorm" |> NamespacedName
-
+    let ``_#Thunderstorm`` = _prefix "#Thunderstorm"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#ViolentStorm"></see>
     /// </summary>
-    let ``_#ViolentStorm`` =
-        Namespaced_IRI.parse _namespace_name "#ViolentStorm" |> NamespacedName
-
+    let ``_#ViolentStorm`` = _prefix "#ViolentStorm"
     /// <summary>
     /// The instant at which a weather report is created
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#createdAt"></see></summary>
-    let ``_#createdAt`` =
-        Namespaced_IRI.parse _namespace_name "#createdAt" |> NamespacedName
-
+    let ``_#createdAt`` = _prefix "#createdAt"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasPriority"></see>
     /// </summary>
-    let ``_#hasPriority`` =
-        Namespaced_IRI.parse _namespace_name "#hasPriority" |> NamespacedName
-
+    let ``_#hasPriority`` = _prefix "#hasPriority"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#reportsWeatherObservation"></see>
     /// </summary>
-    let ``_#reportsWeatherObservation`` =
-        Namespaced_IRI.parse _namespace_name "#reportsWeatherObservation" |> NamespacedName
-
+    let ``_#reportsWeatherObservation`` = _prefix "#reportsWeatherObservation"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherReportFromSensor"></see>
     /// </summary>
-    let ``_#WeatherReportFromSensor`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherReportFromSensor" |> NamespacedName
-
+    let ``_#WeatherReportFromSensor`` = _prefix "#WeatherReportFromSensor"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WeatherReportFromService"></see>
     /// </summary>
-    let ``_#WeatherReportFromService`` =
-        Namespaced_IRI.parse _namespace_name "#WeatherReportFromService" |> NamespacedName
-
+    let ``_#WeatherReportFromService`` = _prefix "#WeatherReportFromService"
     /// <summary>
     /// Denotes the time a weather state has been observed or is forecasted for.
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasObservationTime"></see></summary>
-    let ``_#hasObservationTime`` =
-        Namespaced_IRI.parse _namespace_name "#hasObservationTime" |> NamespacedName
-
+    let ``_#hasObservationTime`` = _prefix "#hasObservationTime"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#WholeGale"></see>
     /// </summary>
-    let ``_#WholeGale`` =
-        Namespaced_IRI.parse _namespace_name "#WholeGale" |> NamespacedName
-
+    let ``_#WholeGale`` = _prefix "#WholeGale"
     /// <summary>
     /// Wind direction represented in degrees
     /// Wind direction
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasDirection"></see></summary>
-    let ``_#hasDirection`` =
-        Namespaced_IRI.parse _namespace_name "#hasDirection" |> NamespacedName
-
+    let ``_#hasDirection`` = _prefix "#hasDirection"
     /// <summary>
     /// this property was known as "belongsToState" in prior versions of the ontology
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#belongsToWeatherState"></see></summary>
-    let ``_#belongsToWeatherState`` =
-        Namespaced_IRI.parse _namespace_name "#belongsToWeatherState" |> NamespacedName
-
+    let ``_#belongsToWeatherState`` = _prefix "#belongsToWeatherState"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasAirPollution"></see>
     /// </summary>
-    let ``_#hasAirPollution`` =
-        Namespaced_IRI.parse _namespace_name "#hasAirPollution" |> NamespacedName
-
+    let ``_#hasAirPollution`` = _prefix "#hasAirPollution"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasAtmosphericPressure"></see>
     /// </summary>
-    let ``_#hasAtmosphericPressure`` =
-        Namespaced_IRI.parse _namespace_name "#hasAtmosphericPressure" |> NamespacedName
-
+    let ``_#hasAtmosphericPressure`` = _prefix "#hasAtmosphericPressure"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasCloudCover"></see>
     /// </summary>
-    let ``_#hasCloudCover`` =
-        Namespaced_IRI.parse _namespace_name "#hasCloudCover" |> NamespacedName
-
+    let ``_#hasCloudCover`` = _prefix "#hasCloudCover"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasDewPointTemperature"></see>
     /// </summary>
-    let ``_#hasDewPointTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#hasDewPointTemperature" |> NamespacedName
-
+    let ``_#hasDewPointTemperature`` = _prefix "#hasDewPointTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasEndTime"></see>
     /// </summary>
-    let ``_#hasEndTime`` =
-        Namespaced_IRI.parse _namespace_name "#hasEndTime" |> NamespacedName
-
+    let ``_#hasEndTime`` = _prefix "#hasEndTime"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasExteriorTemperature"></see>
     /// </summary>
-    let ``_#hasExteriorTemperature`` =
-        Namespaced_IRI.parse _namespace_name "#hasExteriorTemperature" |> NamespacedName
-
+    let ``_#hasExteriorTemperature`` = _prefix "#hasExteriorTemperature"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasHumidity"></see>
     /// </summary>
-    let ``_#hasHumidity`` =
-        Namespaced_IRI.parse _namespace_name "#hasHumidity" |> NamespacedName
-
+    let ``_#hasHumidity`` = _prefix "#hasHumidity"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasLatitude"></see>
     /// </summary>
-    let ``_#hasLatitude`` =
-        Namespaced_IRI.parse _namespace_name "#hasLatitude" |> NamespacedName
-
+    let ``_#hasLatitude`` = _prefix "#hasLatitude"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasLongitude"></see>
     /// </summary>
-    let ``_#hasLongitude`` =
-        Namespaced_IRI.parse _namespace_name "#hasLongitude" |> NamespacedName
-
+    let ``_#hasLongitude`` = _prefix "#hasLongitude"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasPrecipitation"></see>
     /// </summary>
-    let ``_#hasPrecipitation`` =
-        Namespaced_IRI.parse _namespace_name "#hasPrecipitation" |> NamespacedName
-
+    let ``_#hasPrecipitation`` = _prefix "#hasPrecipitation"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasSolarIrradiation"></see>
     /// </summary>
-    let ``_#hasSolarIrradiation`` =
-        Namespaced_IRI.parse _namespace_name "#hasSolarIrradiation" |> NamespacedName
-
+    let ``_#hasSolarIrradiation`` = _prefix "#hasSolarIrradiation"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasStartTime"></see>
     /// </summary>
-    let ``_#hasStartTime`` =
-        Namespaced_IRI.parse _namespace_name "#hasStartTime" |> NamespacedName
-
+    let ``_#hasStartTime`` = _prefix "#hasStartTime"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasTime"></see>
     /// </summary>
-    let ``_#hasTime`` =
-        Namespaced_IRI.parse _namespace_name "#hasTime" |> NamespacedName
-
+    let ``_#hasTime`` = _prefix "#hasTime"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasUnit"></see>
     /// </summary>
-    let ``_#hasUnit`` =
-        Namespaced_IRI.parse _namespace_name "#hasUnit" |> NamespacedName
-
+    let ``_#hasUnit`` = _prefix "#hasUnit"
     /// <summary>
     /// a specific weather state is reported for a location by a weather report.
     /// <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasWeatherReport"></see></summary>
-    let ``_#hasWeatherReport`` =
-        Namespaced_IRI.parse _namespace_name "#hasWeatherReport" |> NamespacedName
-
+    let ``_#hasWeatherReport`` = _prefix "#hasWeatherReport"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#hasWind"></see>
     /// </summary>
-    let ``_#hasWind`` =
-        Namespaced_IRI.parse _namespace_name "#hasWind" |> NamespacedName
-
+    let ``_#hasWind`` = _prefix "#hasWind"
     /// <summary>
     ///   <see href="https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl#isSourceOf"></see>
     /// </summary>
-    let ``_#isSourceOf`` =
-        Namespaced_IRI.parse _namespace_name "#isSourceOf" |> NamespacedName
+    let ``_#isSourceOf`` = _prefix "#isSourceOf"

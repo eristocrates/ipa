@@ -52,7 +52,6 @@ open XmlErgonomics
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Namespace_Prefixes.fsx"
 open Namespace_Prefixes
 
-let global_prefix_map = global_prefix_declarations |> Map.ofArray
 
 
 [<Literal>]
@@ -208,8 +207,8 @@ let generate_vocabulary (rdf_namespace_name: string) (rdf_sources: string)(label
                         let local_part = iri_string[rdf_namespace_name.Length..]
 
                         let property_name =
-                            match label_override, labels with
-                            | true, labels when labels.Length > 0 -> labels.[0]
+                            match rdf_namespace_name, labels with
+                            | "", labels when labels.Length > 0 -> labels.[0]
                             | _ -> local_part
                         Value(property_name, $"Namespaced_IRI.parse _namespace_name \"{local_part}\"")
                         |> _.xmlDocs(IriDocs.xmldoc comments iri_string)

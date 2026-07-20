@@ -1,108 +1,97 @@
 namespace https.www.gleif.org.ontology.ReportingException.slash
 
-open DoxAletheia.Rdf_Vocabulary
+open DoxAletheia
 
 module gleif_repex =
     let _namespace_name = "https://www.gleif.org/ontology/ReportingException/"
 
+    let _prefix local_name =
+        Namespaced_IRI.parse _namespace_name local_name |> NamespacedName
+
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindNoLEI"></see>
     /// </summary>
-    let ExceptionReasonKindNoLEI =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindNoLEI" |> NamespacedName
-
+    let ExceptionReasonKindNoLEI = _prefix "ExceptionReasonKindNoLEI"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindNaturalPersons"></see>
     /// </summary>
-    let ExceptionReasonKindNaturalPersons =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindNaturalPersons" |> NamespacedName
+    let ExceptionReasonKindNaturalPersons = _prefix "ExceptionReasonKindNaturalPersons"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindNonConsolidating"></see>
     /// </summary>
     let ExceptionReasonKindNonConsolidating =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindNonConsolidating" |> NamespacedName
+        _prefix "ExceptionReasonKindNonConsolidating"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindNoKnownPerson"></see>
     /// </summary>
-    let ExceptionReasonKindNoKnownPerson =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindNoKnownPerson" |> NamespacedName
-
+    let ExceptionReasonKindNoKnownPerson = _prefix "ExceptionReasonKindNoKnownPerson"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindLegalObstacles"></see>
     /// </summary>
-    let ExceptionReasonKindLegalObstacles =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindLegalObstacles" |> NamespacedName
+    let ExceptionReasonKindLegalObstacles = _prefix "ExceptionReasonKindLegalObstacles"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindConsentNotObtained"></see>
     /// </summary>
     let ExceptionReasonKindConsentNotObtained =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindConsentNotObtained" |> NamespacedName
+        _prefix "ExceptionReasonKindConsentNotObtained"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindLegalCommitments"></see>
     /// </summary>
     let ExceptionReasonKindLegalCommitments =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindLegalCommitments" |> NamespacedName
+        _prefix "ExceptionReasonKindLegalCommitments"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindDetrimentNotExcluded"></see>
     /// </summary>
     let ExceptionReasonKindDetrimentNotExcluded =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindDetrimentNotExcluded" |> NamespacedName
+        _prefix "ExceptionReasonKindDetrimentNotExcluded"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindDisclosureDetrimental"></see>
     /// </summary>
     let ExceptionReasonKindDisclosureDetrimental =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindDisclosureDetrimental" |> NamespacedName
+        _prefix "ExceptionReasonKindDisclosureDetrimental"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/DirectConsolidationReportingException"></see>
     /// </summary>
     let DirectConsolidationReportingException =
-        Namespaced_IRI.parse _namespace_name "DirectConsolidationReportingException" |> NamespacedName
+        _prefix "DirectConsolidationReportingException"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ReportingException"></see>
     /// </summary>
-    let ReportingException =
-        Namespaced_IRI.parse _namespace_name "ReportingException" |> NamespacedName
-
+    let ReportingException = _prefix "ReportingException"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKind"></see>
     /// </summary>
-    let ExceptionReasonKind =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKind" |> NamespacedName
+    let ExceptionReasonKind = _prefix "ExceptionReasonKind"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/ExceptionReasonKindBindingLegalCommitments"></see>
     /// </summary>
     let ExceptionReasonKindBindingLegalCommitments =
-        Namespaced_IRI.parse _namespace_name "ExceptionReasonKindBindingLegalCommitments" |> NamespacedName
+        _prefix "ExceptionReasonKindBindingLegalCommitments"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/hasReportingEntity"></see>
     /// </summary>
-    let hasReportingEntity =
-        Namespaced_IRI.parse _namespace_name "hasReportingEntity" |> NamespacedName
-
+    let hasReportingEntity = _prefix "hasReportingEntity"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/hasExceptionReason"></see>
     /// </summary>
-    let hasExceptionReason =
-        Namespaced_IRI.parse _namespace_name "hasExceptionReason" |> NamespacedName
-
+    let hasExceptionReason = _prefix "hasExceptionReason"
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/hasExceptionReference"></see>
     /// </summary>
-    let hasExceptionReference =
-        Namespaced_IRI.parse _namespace_name "hasExceptionReference" |> NamespacedName
+    let hasExceptionReference = _prefix "hasExceptionReference"
 
     /// <summary>
     ///   <see href="https://www.gleif.org/ontology/ReportingException/UltimateConsolidationReportingException"></see>
     /// </summary>
     let UltimateConsolidationReportingException =
-        Namespaced_IRI.parse _namespace_name "UltimateConsolidationReportingException" |> NamespacedName
+        _prefix "UltimateConsolidationReportingException"
